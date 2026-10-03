@@ -1,0 +1,258 @@
+{
+  "case_count": 1315,
+  "commands": [
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/resource_json.bend"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n",
+      "wall_seconds": 0.719046208076179
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/resource_json.bend"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "",
+      "wall_seconds": 5.18234062474221
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/resource_json.bend",
+        "--verdict"
+      ],
+      "exit_code": 1,
+      "stderr": "SOME PROOFS FAIL\nSorry - this is a mismatch between the TypeScript implementation, and the formalized BendTT kernel. Your proofs may or may not be correct, and we cannot validate them yet. This will be addressed in a future update. Meanwhile, feel free to open an issue to report this bug.\n",
+      "stdout": "",
+      "wall_seconds": 3.140764916315675
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/resource_json.bend",
+        "--verdict"
+      ],
+      "exit_code": 1,
+      "stderr": "SOME PROOFS FAIL\nSorry - this is a mismatch between the TypeScript implementation, and the formalized BendTT kernel. Your proofs may or may not be correct, and we cannot validate them yet. This will be addressed in a future update. Meanwhile, feel free to open an issue to report this bug.\n",
+      "stdout": "",
+      "wall_seconds": 7.046666249632835
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-json/parser-kernel.bend",
+        "--verdict"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "ALL PROOFS CHECK\n",
+      "wall_seconds": 37.35594441648573
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/resource_json.bend",
+        "-o",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-json/resource-json-tests"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "",
+      "wall_seconds": 9.880772832781076
+    }
+  ],
+  "compiler": {
+    "bytes": 63885392,
+    "file": "bend",
+    "sha1": "ddce6e432357be618d905b19c0f79abe3d28c388",
+    "sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e"
+  },
+  "confidence": "high for recorded and tested cases; no universal Gson correctness theorem",
+  "default_budget": {
+    "max_container_depth": 255,
+    "max_input_bend_characters": 1048576,
+    "max_numeric_ascii_units": 1023
+  },
+  "explicit_policy_cases": 16,
+  "fresh_java": {
+    "cases": 774,
+    "execution": {
+      "exit_code": 0,
+      "raw_output_sha256": "1c9506071d5557de5148a9f630c2e81e9486adfa04758a90af3fc391aa674b12"
+    },
+    "inputs_sha256": "dceba820bcb20bc7376710d9a114ba0f8a0b0f622ab1d1f310f6735722c95f91",
+    "observations_sha256": "0619ee08dfdd226d1ddd35d8b8bcf242c14847add1d45d32ce0d608f079917d6",
+    "reference_assets": [
+      "assets/minecraft/models/item/copper_ingot.json",
+      "assets/minecraft/models/item/netherite_boots_lapis_trim.json",
+      "assets/minecraft/models/block/orientable.json",
+      "assets/minecraft/models/item/iron_leggings_resin_trim.json",
+      "assets/minecraft/models/item/music_disc_cat.json",
+      "assets/minecraft/models/block/lime_candle_cake_lit.json",
+      "assets/minecraft/models/block/template_bed.json",
+      "assets/minecraft/models/block/polished_blackstone_slab.json",
+      "assets/minecraft/models/item/compass_12.json",
+      "assets/minecraft/models/block/black_concrete_stairs_outer.json",
+      "assets/minecraft/models/item/mace.json",
+      "assets/minecraft/models/block/diorite_wall_side_tall.json",
+      "assets/minecraft/models/block/jungle_stairs_inner.json",
+      "assets/minecraft/models/block/activator_rail.json",
+      "assets/minecraft/models/block/template_hanging_lantern.json",
+      "assets/minecraft/models/block/respawn_anchor_2.json",
+      "assets/minecraft/models/block/light_blue_candle_four_candles_lit.json",
+      "assets/minecraft/models/block/spruce_slab.json",
+      "assets/minecraft/models/block/mangrove_hanging_sign_attached_rot_2.json",
+      "assets/minecraft/models/block/dark_oak_fence_post.json",
+      "assets/minecraft/models/block/blue_candle_three_candles.json",
+      "assets/minecraft/models/block/acacia_trapdoor_bottom.json",
+      "assets/minecraft/models/item/green_stained_glass_pane.json",
+      "assets/minecraft/models/block/template_three_candles.json",
+      "assets/minecraft/models/item/compass_15.json",
+      "assets/minecraft/models/item/oxeye_daisy.json",
+      "assets/minecraft/models/item/copper_axe.json",
+      "assets/minecraft/models/block/tripwire_hook_attached.json",
+      "assets/minecraft/models/item/snowball.json",
+      "assets/minecraft/models/block/lever.json",
+      "assets/minecraft/models/block/iron_bars_side_alt.json",
+      "assets/minecraft/models/item/handheld_mace.json",
+      "assets/minecraft/models/item/phantom_spawn_egg.json",
+      "assets/minecraft/models/item/cobweb.json",
+      "assets/minecraft/models/block/sunflower_bottom.json",
+      "assets/minecraft/models/block/light_blue_stained_glass.json",
+      "assets/minecraft/models/block/stem_growth1.json",
+      "assets/minecraft/models/block/acacia_stairs_inner.json",
+      "assets/minecraft/models/block/repeater_4tick_on_locked.json",
+      "assets/minecraft/models/block/piston_head.json",
+      "assets/minecraft/models/block/powered_rail_raised_sw.json",
+      "assets/minecraft/models/block/orange_candle_two_candles.json",
+      "assets/minecraft/models/item/diamond_helmet_netherite_trim.json",
+      "assets/minecraft/models/item/crimson_sign.json",
+      "assets/minecraft/models/block/dark_oak_shelf_unconnected.json",
+      "assets/minecraft/models/block/magenta_concrete_powder.json",
+      "assets/minecraft/models/block/polished_blackstone_button_inventory.json",
+      "assets/minecraft/models/block/birch_fence_gate.json",
+      "assets/minecraft/models/block/quartz_pillar_horizontal.json",
+      "assets/minecraft/models/block/polished_sulfur_stairs_inner.json",
+      "assets/minecraft/models/item/chainmail_chestplate_redstone_trim.json",
+      "assets/minecraft/models/block/verdant_froglight_horizontal.json",
+      "assets/minecraft/models/item/map.json",
+      "assets/minecraft/models/block/smooth_quartz_stairs_outer.json",
+      "assets/minecraft/models/item/iron_chestplate_quartz_trim.json",
+      "assets/minecraft/models/item/compass_04.json",
+      "assets/minecraft/models/block/birch_door_top_left_open.json",
+      "assets/minecraft/models/block/red_candle_two_candles_lit.json",
+      "assets/minecraft/models/block/birch_hanging_sign_attached_rot_2.json",
+      "assets/minecraft/models/block/cobbled_deepslate_wall_side.json",
+      "assets/minecraft/models/block/cobbled_deepslate_slab_top.json",
+      "assets/minecraft/models/block/spruce_door_top_left_open.json",
+      "assets/minecraft/models/item/weeping_vines.json",
+      "assets/minecraft/models/block/weathered_copper_door_bottom_right_open.json"
+    ]
+  },
+  "independent_kernel_status": "complete production-definition projection and seven finite laws pass; full import-closure attempts recorded separately",
+  "input_sha256": "feb699868f413aa262ca632f198315dde721421ce6d4f9113c9b609d7eea464f",
+  "kernel_projection": {
+    "ast_declarations_sha256": "19308473106c0e63119b2b7cf2d5abd48493d9f053aab0f006074d7c33ceff97",
+    "projection_sha256": "f8d9d4ccc7713643fb38f47b05dd7a58451180f71afb761571bb1d8a7a99e5d7",
+    "source_characters": 20622,
+    "source_sha256": "271f9ace6304fdd42ced039ab2e7f95459eed1f20f011115f399b619f2bc6ffb",
+    "transformation": "Retain every production parser definition verbatim except import deletion and J. namespace substitution; retain exact Value/Member/Limits declarations except a capture-avoiding namespace prefix; append verbatim seven finite-law helpers with import/namespace substitution. No production definition, check, fuel, or law is omitted."
+  },
+  "large_string_check_boundary": "Strings <=2048 UTF-16 units compare every unit; larger declarative stress strings compare parsed kind, unit count, and 32-bit FNV, not every output unit. Expected stress shape is separately checked against actual Java SHA256/depth/node summary.",
+  "native": {
+    "accepted": 708,
+    "batches": 55,
+    "categories": {
+      "controls": 30,
+      "delimiter_sweep": 264,
+      "depth": 32,
+      "escapes_utf16": 24,
+      "explicit_policy": 16,
+      "generated_direct_java": 512,
+      "malformed_token_direct_java": 120,
+      "numeric_buffer_boundary": 78,
+      "pinned_model_resource": 64,
+      "reader_forms": 100,
+      "size": 34,
+      "tokens": 41
+    },
+    "observed_sha256": "0dc83e719445a8d103a9a3482af87fc823d6e01831da39043f537f9ec38c09b9",
+    "rejected": 607,
+    "wall_seconds_including_startup_file_read_parser_observer_output": 4.677747708745301
+  },
+  "native_binary": {
+    "bytes": 1370544,
+    "file": "resource-json-tests",
+    "sha1": "cf4b13d15c9eb46be680cf4c443006539a68d130",
+    "sha256": "1187ed670473e65488ab8d26d0670cfd820f8f06bcd65609c3ed1a99e6617683"
+  },
+  "platform": {
+    "machine": "arm64",
+    "release": "25.4.0",
+    "system": "Darwin"
+  },
+  "reference": {
+    "bytes": 1304875,
+    "file": "resource_json.json",
+    "sha1": "bd2c3c0624bdd987385cf5c7e933ad3e7a5945c3",
+    "sha256": "1d0dce652873c66c1c2039c8d06f930f40dfb9af560aa0f4f1966c37c23c1364"
+  },
+  "reference_counts": {
+    "apis": {
+      "cuboid_from_stream": {
+        "error": 484,
+        "ok": 41
+      },
+      "gson_helper_tree": {
+        "error": 394,
+        "ok": 131
+      },
+      "parse_json_reader": {
+        "error": 30,
+        "ok": 495
+      },
+      "parse_reader": {
+        "error": 105,
+        "ok": 420
+      }
+    },
+    "cases": 525
+  },
+  "reference_observations_sha256": "0deba14f530b428b7f669b87c0719162498661202b9be682e6415d4f9aa17f48",
+  "reproduce": "python3 tools/reference_resource_json_probe.py selftest; python3 tools/test_resource_json.py",
+  "schema": 1,
+  "scope": "Pinned 26.3 production GsonHelper STRICT first-tree text behavior; caller Cuboid/model semantics and general LENIENT parser compatibility are not established.",
+  "source_files": {
+    "src/resource_json.bend": {
+      "bytes": 20622,
+      "file": "resource_json.bend",
+      "sha1": "80ad860ba8f5e9489aa957f6056559d7a90d69a6",
+      "sha256": "271f9ace6304fdd42ced039ab2e7f95459eed1f20f011115f399b619f2bc6ffb"
+    },
+    "tests/resource_json.bend": {
+      "bytes": 7062,
+      "file": "resource_json.bend",
+      "sha1": "4f148c8b12f9689a45d7cd45b5151f52450b24a9",
+      "sha256": "201928ab89f9322f7d25537197b9c725e60333b8fa3770cc58083afa7e443c1a"
+    },
+    "tools/reference_resource_json_probe.py": {
+      "bytes": 25676,
+      "file": "reference_resource_json_probe.py",
+      "sha1": "a4e89ea882a7db903945ebd3528a40b099cd0166",
+      "sha256": "162cb2c3360203244e4d6d0d21f1d90d92b51a22eba780feb2b6c2e8d6edf992"
+    },
+    "tools/test_resource_json.py": {
+      "bytes": 20739,
+      "file": "test_resource_json.py",
+      "sha1": "50bc700e63029b110cc3ffc58dd9d5484c75b9df",
+      "sha256": "569a2736f4ffe66c06e65d006ba2ea0cc43537e06cd64c4d0e9775088045af2b"
+    }
+  },
+  "status": "pass"
+}
