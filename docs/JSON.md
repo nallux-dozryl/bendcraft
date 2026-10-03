@@ -20,7 +20,12 @@ type Value is Data:
 type Member is Data:
   JMember{key: String, value: Value}
 
+type Limits is Data:
+  Limits{max_codepoints: Nat, max_depth: U32}
+
+default_limits() -> Limits
 parse(text: String) -> Result<&2, &2, String, Value>
+parse_with(text: String, limits: Limits) -> Result<&2, &2, String, Value>
 encode(value: Value) -> String
 member(value: Value, key: String) -> Maybe<&2, Value>
 as_u32(value: Value) -> Maybe<&2, U32>
@@ -66,13 +71,18 @@ encoding validity is outside this module's tested claim.
 
 ## Bounds and errors
 
-The maximum input is **16,384 code points**, including whitespace and escape
-syntax. The maximum simultaneously open array/object depth is **64**; a scalar
-has depth zero. Limits are currently fixed and explicit in `parse` and
-`open_container`.
+`parse` retains its default maximum of **16,384 code points**, including whitespace
+and escape syntax, and a maximum simultaneously open array/object depth of **64**.
+A scalar has depth zero. `parse_with` takes explicit limits; `default_limits()`
+returns `Limits{16384n, 64}`. Configured code-point caps must be in
+`0..4294967295`; depth caps are U32 values in the same range. A zero depth cap
+allows only scalars. Invalid code-point caps are rejected before input counting
+or work-fuel arithmetic. See [configurable limits](JSON_LIMITS.md) for exact
+errors, arithmetic bounds, and the tested resource-input envelope.
 
 An initial structural pass rejects overlong input after inspecting at most
-16,385 characters. Accepted input gets `4 * input_length + 16` parser-transition
+`max_codepoints + 1` characters (16,385 with default limits). Accepted input gets
+`4 * input_length + 16` parser-transition
 fuel. An explicit stack tracks pending containers, and individual helpers
 terminate structurally. There are no unchecked recursive calls. Fuel bounds
 state transitions; key-trie operations and string comparisons have additional
@@ -135,4 +145,8 @@ arguments that the formalized kernel does not accept. Both module and fixture
 verdict attempts report this mismatch. No kernel validation is claimed.
 
 The latest reproducible summary, source hash, exact case counts, commands, and
-kernel limitation are saved in `evidence/json-tests.json`.
+kernel limitation are saved in `evidence/json-tests.json`. The configured-limit
+suite is `python3 tools/test_json_limits.py`, with results in
+`evidence/json-limits.json`. It preserves every default-corpus output/error byte,
+tests native generated ASTs and large/deep inputs against the independent
+oracle, and reads the largest selected JSON resources from the pinned 26.3 JAR.

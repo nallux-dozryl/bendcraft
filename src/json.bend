@@ -12,6 +12,12 @@ type Value is Data:
 type Member is Data:
   JMember{key: String, value: Value}
 
+type Limits is Data:
+  Limits{max_codepoints: Nat, max_depth: U32}
+
+def default_limits() -> Limits:
+  Limits{16384n, 64}
+
 type Frame is Data:
   ArrayFrame{values: List<&2, Value>}
   ObjectFrame{members: List<&2, Member>, key: String, seen: Map<&2, Unit>}
@@ -81,10 +87,10 @@ def within(fuel: Nat, text: String) -> Bool:
     case 0n SCon{h, t}: False{}
     case 1n+f SCon{h, t}: within(f, t)
 
-def open_container(+c: U32, text: String, +offset: U32, +depth: U32, +frames: List<&2, Frame>) -> Step:
+def open_container(+c: U32, text: String, +offset: U32, +depth: U32, +frames: List<&2, Frame>, max_depth: U32) -> Step:
   mode = choose(Mode, ArrayWant{Nil{}, True{}}, ObjectWant{Nil{}, MTip{}, True{}}, U32.is_eq(c, 91))
   choose(Step, advance(text, offset, U32.add(depth, 1), frames, mode),
-    error(offset, "nesting limit exceeded"), U32.is_lt(depth, 64))
+    error(offset, "nesting limit exceeded"), U32.is_lt(depth, max_depth))
 
 def initial_number(c: U32) -> U32:
   match c:
@@ -92,14 +98,14 @@ def initial_number(c: U32) -> U32:
     case 48: 1
     case _: 2
 
-def value_char(+c: U32, +text: String, +offset: U32, +depth: U32, +frames: List<&2, Frame>) -> Step:
+def value_char(+c: U32, +text: String, +offset: U32, +depth: U32, +frames: List<&2, Frame>, max_depth: U32) -> Step:
   match c:
     case 32: advance(text, offset, depth, frames, NeedValue{})
     case 9: advance(text, offset, depth, frames, NeedValue{})
     case 10: advance(text, offset, depth, frames, NeedValue{})
     case 13: advance(text, offset, depth, frames, NeedValue{})
-    case 91: open_container(c, text, offset, depth, frames)
-    case 123: open_container(c, text, offset, depth, frames)
+    case 91: open_container(c, text, offset, depth, frames, max_depth)
+    case 123: open_container(c, text, offset, depth, frames, max_depth)
     case 34: advance(text, offset, depth, frames, StringRead{SNil{}, Plain{}, StringTarget{}})
     case 110: advance(text, offset, depth, frames, WordRead{"ull", JNull{}})
     case 116: advance(text, offset, depth, frames, WordRead{"rue", JBool{True{}}})
@@ -271,7 +277,7 @@ def produced(frames: List<&2, Frame>, text: String, offset: U32, depth: U32, val
     case ObjectFrame{members, key, seen} <> rest:
       stay(text, offset, depth, rest, ObjectAfter{JMember{key, value} <> members, seen})
 
-def step_mode(mode: Mode, +text: String, +offset: U32, +depth: U32, +frames: List<&2, Frame>) -> Step:
+def step_mode(mode: Mode, +text: String, +offset: U32, +depth: U32, +frames: List<&2, Frame>, max_depth: U32) -> Step:
   match mode:
     case Produced{value}: produced(frames, text, offset, depth, value)
     case WordRead{remaining, value}:
@@ -290,7 +296,7 @@ def step_mode(mode: Mode, +text: String, +offset: U32, +depth: U32, +frames: Lis
     case NeedValue{}:
       match text:
         case SNil{}: error(offset, "expected JSON value")
-        case SCon{h, t}: value_char(Char.to_u32(h), t, offset, depth, frames)
+        case SCon{h, t}: value_char(Char.to_u32(h), t, offset, depth, frames, max_depth)
     case ArrayWant{values, allow_end}:
       match text:
         case SNil{}: error(offset, "unclosed array")
@@ -320,26 +326,50 @@ def step_mode(mode: Mode, +text: String, +offset: U32, +depth: U32, +frames: Lis
         case SNil{}: number_finish(state, reversed, SNil{}, offset, depth, frames)
         case SCon{+h, t}: number_char(number_next(state, Char.to_u32(h)), state, Char.to_u32(h), t, offset, depth, frames, reversed)
 
-def step(state: State) -> Step:
+def step_with(state: State, max_depth: U32) -> Step:
   match state:
-    case State{text, offset, depth, frames, mode}: step_mode(mode, text, offset, depth, frames)
+    case State{text, offset, depth, frames, mode}: step_mode(mode, text, offset, depth, frames, max_depth)
 
-def run(fuel: Nat, result: Step) -> Result<&2, &2, String, Value>:
+def step(state: State) -> Step:
+  step_with(state, 64)
+
+def run_with(fuel: Nat, result: Step, +max_depth: U32) -> Result<&2, &2, String, Value>:
   match fuel result:
     case _ Finished{value}: Done{value}
     case _ Rejected{message}: Fail{message}
     case 0n Continue{state}: Fail{"JSON work limit exceeded"}
-    case 1n+f Continue{state}: run(f, step(state))
+    case 1n+f Continue{state}: run_with(f, step_with(state, max_depth), max_depth)
 
-def parse_checked(+text: String, valid: Bool) -> Result<&2, &2, String, Value>:
+def run(fuel: Nat, result: Step) -> Result<&2, &2, String, Value>:
+  run_with(fuel, result, 64)
+
+def parse_size_checked(+text: String, max_codepoints: Nat, max_depth: U32, valid: Bool) -> Result<&2, &2, String, Value>:
   match valid:
-    case False{}: Fail{"JSON input exceeds 16384 code points"}
+    case False{}: Fail{"JSON input exceeds " ++ Nat.show(max_codepoints) ++ " code points"}
     case True{}:
       fuel = Nat.add(16n, Nat.mul(4n, String.length(text)))
-      run(fuel, Continue{State{text, 0, 0, Nil{}, NeedValue{}}})
+      run_with(fuel, Continue{State{text, 0, 0, Nil{}, NeedValue{}}}, max_depth)
 
-def parse(+text: String) -> Result<&2, &2, String, Value>:
-  parse_checked(text, within(16384n, text))
+def parse_bounded(+text: String, +max_codepoints: Nat, max_depth: U32) -> Result<&2, &2, String, Value>:
+  parse_size_checked(text, max_codepoints, max_depth, within(max_codepoints, text))
+
+# Offset is U32. This tighter bound also keeps 4*length+16 below native Nat48.
+# Match before counting/fuel construction: choose evaluates both arguments.
+def parse_limits_checked(text: String, max_codepoints: Nat, max_depth: U32, supported: Bool) -> Result<&2, &2, String, Value>:
+  match supported:
+    case False{}: Fail{"JSON max_codepoints exceeds supported limit 4294967295"}
+    case True{}: parse_bounded(text, max_codepoints, max_depth)
+
+def parse_with(text: String, limits: Limits) -> Result<&2, &2, String, Value>:
+  match limits:
+    case Limits{+max_codepoints, max_depth}:
+      parse_limits_checked(text, max_codepoints, max_depth, Nat.is_le(max_codepoints, 4294967295n))
+
+def parse_checked(text: String, valid: Bool) -> Result<&2, &2, String, Value>:
+  parse_size_checked(text, 16384n, 64, valid)
+
+def parse(text: String) -> Result<&2, &2, String, Value>:
+  parse_with(text, default_limits())
 
 # Serialization is structural and unbounded; valid AST construction is a caller contract.
 def hex_char(+n: U32) -> Char:
