@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "scope": "The same three laws from tests/archive.bend, isolated from the IO test harness; no full-harness kernel validation claim",
+  "source_sha256": {
+    "src/archive.bend": "c0f7b34a22726d220f6b867730b7d080d57d82c84d619c35721b9b8d18fa5d6e",
+    "tests/archive.bend": "6e2ad0958dd5399580335bb143eaa3d537cd9be6a7e4ca1ed6c905b320801b05",
+    "src/compression.bend": "255cdff06a33050c7b0a48fdea75c1842ebe2dab0439cfe4f03d126d4edc20aa",
+    "src/framing.bend": "307f95049df03d92687b7bd0eafb2cd566e660926510bb88163f9bc825fccdb5"
+  },
+  "laws": {
+    "eocd": {
+      "command": "/Users/chuah/.bend/bin/bend build/archive-reference/eocd-proof.bend --verdict",
+      "source": "import Base\nimport ../../src/archive.bend as A\nimport ../../src/compression.bend as C\n\ndef empty_zip() -> List<&2, U32>:\n  [80, 75, 5, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\n\nlaw empty_end:\n  {A.end_record(22, empty_zip(), A.default_limits()) == Done{A.End{22, 0, 0, 0, 0, 0, 0, 0}} : Result<&2, &2, A.Error, A.End>}\n\ndef empty_end():\n  {==}\n\n",
+      "source_sha256": "cca03abe798a7d11c0c4a38a331e6130e180f745af05d6d87a29bfcd81d622b0",
+      "exit_code": 0,
+      "output": "ALL PROOFS CHECK"
+    },
+    "crc": {
+      "command": "/Users/chuah/.bend/bin/bend build/archive-reference/crc-proof.bend --verdict",
+      "source": "import Base\nimport ../../src/archive.bend as A\nimport ../../src/compression.bend as C\n\nlaw crc_fixture:\n  {C.crc32([49, 50, 51, 52, 53, 54, 55, 56, 57]) == 3421780262 : U32}\n\ndef crc_fixture():\n  {==}\n\n",
+      "source_sha256": "74484f60bb193a88b2fd5f8fb3278b2a0b99db05d9635a7a48b70f23647c21ae",
+      "exit_code": 0,
+      "output": "ALL PROOFS CHECK"
+    },
+    "general": {
+      "command": "/Users/chuah/.bend/bin/bend build/archive-reference/general-proof.bend --verdict",
+      "source": "import Base\nimport ../../src/archive.bend as A\nimport ../../src/compression.bend as C\n\nlaw empty_equality:\n  for bytes: List<&2, U32>\n  {A.bytes_equal([], bytes) == List.is_empty(&2, U32, bytes) : Bool}\n\ndef empty_equality(bytes):\n  match bytes:\n    case Nil{}: {==}\n    case head <> tail: {==}\n\n",
+      "source_sha256": "af60cb6c1cca7a5d603d4f211c926038ce3d5c50d85de7994d3db30b7662429f",
+      "exit_code": 0,
+      "output": "ALL PROOFS CHECK"
+    }
+  }
+}

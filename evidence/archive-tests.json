@@ -1,0 +1,129 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "command": "python3 tools/test_archive.py --skip-build",
+  "native_cases": 340,
+  "generated_archives": 100,
+  "java_valid_archives": 127,
+  "java_runtime": "openjdk version \"25.0.1\" 2025-10-21 LTS\nOpenJDK Runtime Environment Microsoft-12574220 (build 25.0.1+8-LTS)\nOpenJDK 64-Bit Server VM Microsoft-12574220 (build 25.0.1+8-LTS, mixed mode)",
+  "java_observations": {
+    "duplicate-last-wins": {
+      "count": 2,
+      "lookup": {
+        "name": "a",
+        "bytes": 4,
+        "sha256": "3547cb112ac4489af2310c0626cdba6f3097a2ad5a3b42ddd3b59c76c7a079a3"
+      }
+    },
+    "directory-fallback": {
+      "count": 1,
+      "lookup": {
+        "name": "dir/",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "unicode-path-extra-java-ignored": {
+      "count": 1,
+      "lookup": {
+        "name": "a",
+        "bytes": 16,
+        "sha256": "3dc73864877ed98988a8210d3ffee063093acf5465f4a14d83e6e069554833ef"
+      }
+    },
+    "nul-name": {
+      "count": 1,
+      "lookup": {
+        "name": "a\u0000b",
+        "bytes": 3,
+        "sha256": "99e6242759016035192f8efe5f53878a355026b61b0da04e0b56942148936eb2"
+      }
+    }
+  },
+  "pinned_jar": {
+    "path": "/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar",
+    "bytes": 41483720,
+    "sha1": "e877b6a07acd633fb3bb475002175cec036e7b87",
+    "sha256": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d",
+    "entries": 34227,
+    "all_central_entries_match_java_and_python": true
+  },
+  "entry_reads": [
+    {
+      "name": "version.json",
+      "bytes": 422,
+      "sha256": "70444a856374443fbd57e4b23e9acfdd50309b25906ced3e3cf658abf25dd3ae"
+    },
+    {
+      "name": "assets/minecraft/lang/en_us.json",
+      "bytes": 546577,
+      "sha256": "b0dff75d40225a2e1351e45422ad7d7d62cfbb98314ada51d3d24f90a234696b"
+    },
+    {
+      "name": "pack.png",
+      "bytes": 11851,
+      "sha256": "6c0d6fbf45be19a6da061f5b00dec87b37d5ea4619680a9a20864eb188d81768"
+    },
+    {
+      "name": "data/minecraft/tags/block/mineable/axe.json",
+      "bytes": 1661,
+      "sha256": "14cad4e01465720095785e2d83807ca9b5eff6a1e24a76d50d17eabbee327ee9"
+    },
+    {
+      "name": "version.json",
+      "bytes": 422,
+      "sha256": "70444a856374443fbd57e4b23e9acfdd50309b25906ced3e3cf658abf25dd3ae"
+    }
+  ],
+  "missing_entry_preserves_handle": true,
+  "duplicate_enumerated_payloads": [
+    "first",
+    "last"
+  ],
+  "checker": {
+    "src/archive.bend": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.",
+    "tests/archive.bend": "ALL PROOFS CHECK\nUse --verdict for mathematical validity."
+  },
+  "kernel_verdicts": {
+    "src/archive.bend": {
+      "status": "completed",
+      "exit_code": 0,
+      "output": "ALL PROOFS CHECK"
+    },
+    "tests/archive.bend": {
+      "status": "timed-out",
+      "timeout_seconds": 120,
+      "exit_code": null,
+      "output": ""
+    }
+  },
+  "finite_laws": 2,
+  "general_laws": [
+    "empty byte list equality agrees with list emptiness"
+  ],
+  "source_sha256": {
+    "src/archive.bend": "c0f7b34a22726d220f6b867730b7d080d57d82c84d619c35721b9b8d18fa5d6e",
+    "tests/archive.bend": "6e2ad0958dd5399580335bb143eaa3d537cd9be6a7e4ca1ed6c905b320801b05",
+    "tools/test_archive.py": "08426270132f26d350073c32e755c2f33a07b93f25ea8cbd03d38f5e43f39233",
+    "src/compression.bend": "255cdff06a33050c7b0a48fdea75c1842ebe2dab0439cfe4f03d126d4edc20aa",
+    "src/framing.bend": "307f95049df03d92687b7bd0eafb2cd566e660926510bb88163f9bc825fccdb5",
+    "docs/ARCHIVE.md": "e17b6566baeb0be4d3bf9c695963a360c26e5b0c2eb8629ef2d2f40091dee81a"
+  },
+  "native_binary_sha256": "734a4a8b694ff7a1d6974eff728edc41bfdf3831734aadd9f9ca0df99841a4a1",
+  "elapsed_seconds": 133.367,
+  "limits": "Classic single-disk stored/deflate ZIP only. Index validates central/minimum spans; each requested entry validates actual local span/descriptor/output/CRC. No filesystem extraction, pack stack or resource semantic processing.",
+  "build_command": "/Users/chuah/.bend/bin/bend tests/archive.bend -o build/archive-tests",
+  "build_reused": true,
+  "verification_scope": "native and independent Java/Python comparisons; kernel outcomes recorded separately",
+  "compiler": "bend 2.0.35",
+  "commands": [
+    "python3 tools/test_archive.py --skip-build",
+    "/Users/chuah/.bend/bin/bend tests/archive.bend -o build/archive-tests",
+    "/Users/chuah/.bend/bin/bend src/archive.bend --check-only",
+    "/Users/chuah/.bend/bin/bend tests/archive.bend --check-only",
+    "/Users/chuah/.bend/bin/bend src/archive.bend --verdict",
+    "/Users/chuah/.bend/bin/bend tests/archive.bend --verdict (120-second limit)",
+    "/Users/chuah/Library/Application Support/minecraft/runtime/java-runtime-epsilon/mac-os-arm64/java-runtime-epsilon/jre.bundle/Contents/Home/bin/java build/archive-reference/ArchiveProbe.java build/archive-reference/java-input.tsv build/archive-reference/java-output.tsv"
+  ],
+  "metadata_note": "Runner command/build metadata clarified after the passing run; tested Bend sources and binary are unchanged."
+}

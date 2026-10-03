@@ -1,0 +1,288 @@
+{
+  "status": "passed",
+  "recorded_at_utc": "2026-10-03T15:57:40.748512+00:00",
+  "command": "python3 tools/test_compression.py",
+  "cases": 853,
+  "successes": 398,
+  "rejections_without_output": 455,
+  "fixture_manifest_sha256": "0805d285ff0533e15b574c33feb887f2f0f69203c703aab6da572801f31e7970",
+  "categories": [
+    "stored/fixed/dynamic Huffman; all length/distance codes and extra bits",
+    "overlapping and wrapped32768 history; references across blocks",
+    "single-symbol/empty-distance trees; code-length repeats across alphabets",
+    "seeded random streams and450 mutation oracle cases",
+    "every-byte truncation; malformed trees/codes; complements/end/length checks",
+    "zlib Adler/headers/dictionary/window validation",
+    "gzip optional fields/headerCRC/dataCRC/ISIZE/concatenation/member isolation",
+    "input/output limits and1MiB expansion bombs; failures publish no output",
+    "actual installed26.3 ZIP entries, PNG IDAT zlib data and gzip structure NBT",
+    "pure stored-block raw/zlib/gzip writers;65535 boundaries; Python and Bend roundtrips; encoded limits"
+  ],
+  "oracle_versions": {
+    "python_zlib": "1.2.12",
+    "runtime_zlib": "1.2.12"
+  },
+  "reference_jar_sha256": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d",
+  "reference_assets": [
+    {
+      "entry": "assets/minecraft/textures/block/oak_log.png",
+      "compressed_size": 191,
+      "output_size": 191,
+      "compressed_sha256": "b76f734418bb73b8b84c7d10c2acfa82861c6bf2352cb484e1ad7a724da88395",
+      "output_sha256": "61735859c9c9ea82601191a77c6f256d93619cbaf7cad998a3ed5762877a34e6"
+    },
+    {
+      "entry": "assets/minecraft/textures/block/stone.png",
+      "compressed_size": 150,
+      "output_size": 151,
+      "compressed_sha256": "dd182d45fec36b7b97b12f2def788294e65fafa00a3c0cc1de94839b006f94c2",
+      "output_sha256": "b5e10adc72442bfb257ce7ba0b9bbe36475a0c8cdfec89b80dc9517203ff3e9f"
+    },
+    {
+      "entry": "assets/minecraft/lang/en_us.json",
+      "compressed_size": 109310,
+      "output_size": 546577,
+      "compressed_sha256": "b34a96a2a67989650e9b4aca127a02aec9f69b131e0ab2f62d68d48c61ae4881",
+      "output_sha256": "b0dff75d40225a2e1351e45422ad7d7d62cfbb98314ada51d3d24f90a234696b"
+    },
+    {
+      "entry": "data/minecraft/structure/abandoned_camp/camp/bamboo_jungle/campsite_bamboo_jungle_1.nbt",
+      "compressed_size": 1419,
+      "output_size": 1414,
+      "compressed_sha256": "3c4fa3b7c88fc71f4928467f8a8fd1fd6ad2d2c7a983e004759fb7319a7c4ec5",
+      "output_sha256": "c9da9b5507ce966281d16d6c2e4efa2435406b491be32ed425d4a40b26b4ffc8"
+    },
+    {
+      "entry": "data/minecraft/structure/abandoned_camp/camp/bamboo_jungle/campsite_bamboo_jungle_2.nbt",
+      "compressed_size": 1424,
+      "output_size": 1419,
+      "compressed_sha256": "b98d0567abede269b990b2e89abbb40d3cb6f80b5b878f0bf945b32dd4a47bff",
+      "output_sha256": "0e779c45c72cf77f36f7c681ed169358979cfe1aaa5a20202ea039b078f70394"
+    }
+  ],
+  "source_sha256": {
+    "src/compression.bend": "255cdff06a33050c7b0a48fdea75c1842ebe2dab0439cfe4f03d126d4edc20aa",
+    "tests/compression.bend": "754da91a94b9b94218c836eb12e2c70e996b8247a132c1103310ae57dba7d44f",
+    "tools/test_compression.py": "8cffdaa4789cd1527a36e8303536a789068bbd83d782b9ac2aa06cd16a8527f3"
+  },
+  "compiler_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+  "binary_sha256": "8de89506e92ba7be485d2c879991511287893026bef939633c415c2f5b83a1e6",
+  "kernel_verdict": {
+    "returncode": 0,
+    "stdout": "ALL PROOFS CHECK\n",
+    "stderr": ""
+  },
+  "intentional_strictness_or_rfc_oracle_differences": [
+    "RFC1951 HDIST=32 with unused reserved distance symbols is accepted; Python zlib rejects counts above30.",
+    "Declared zlib window bound is enforced, including CINFO=0; default Python zlib may accept farther distances."
+  ],
+  "benchmark": {
+    "workloads": [
+      {
+        "name": "repetitive",
+        "mode": "zlib",
+        "compressed_bytes": 827,
+        "output_bytes": 104552,
+        "iterations": 101,
+        "trials": 5,
+        "input_sha256": "cd3fa4312ed8ecb8a1e822322bcd2b3ff93c6af7828af5b2cf7701a37dd17a39",
+        "output_sha256": "96c8e1e4227f0d8a2e72b1298eb352794afb91ae90f89191922ebaff050235c7",
+        "native": [
+          {
+            "ok": true,
+            "digest": 251118562,
+            "read_ms": 0,
+            "steady_ms": 732,
+            "end_to_end_ms": 736.0160006210208
+          },
+          {
+            "ok": true,
+            "digest": 251118562,
+            "read_ms": 0,
+            "steady_ms": 737,
+            "end_to_end_ms": 742.9559165611863
+          },
+          {
+            "ok": true,
+            "digest": 251118562,
+            "read_ms": 0,
+            "steady_ms": 731,
+            "end_to_end_ms": 733.9368741959333
+          },
+          {
+            "ok": true,
+            "digest": 251118562,
+            "read_ms": 0,
+            "steady_ms": 727,
+            "end_to_end_ms": 730.3302502259612
+          },
+          {
+            "ok": true,
+            "digest": 251118562,
+            "read_ms": 0,
+            "steady_ms": 729,
+            "end_to_end_ms": 732.7630426734686
+          }
+        ],
+        "c_zlib": [
+          {
+            "ok": true,
+            "digest": 251118562,
+            "read_ms": 0.175999,
+            "steady_ms": 25.812,
+            "zlib": "1.2.12",
+            "end_to_end_ms": 454.73137497901917
+          },
+          {
+            "ok": true,
+            "digest": 251118562,
+            "read_ms": 0.025,
+            "steady_ms": 12.26,
+            "zlib": "1.2.12",
+            "end_to_end_ms": 15.488667413592339
+          },
+          {
+            "ok": true,
+            "digest": 251118562,
+            "read_ms": 0.02,
+            "steady_ms": 12.212,
+            "zlib": "1.2.12",
+            "end_to_end_ms": 15.25441650301218
+          },
+          {
+            "ok": true,
+            "digest": 251118562,
+            "read_ms": 0.02,
+            "steady_ms": 12.191,
+            "zlib": "1.2.12",
+            "end_to_end_ms": 15.20687434822321
+          },
+          {
+            "ok": true,
+            "digest": 251118562,
+            "read_ms": 0.023,
+            "steady_ms": 12.154,
+            "zlib": "1.2.12",
+            "end_to_end_ms": 15.301291830837727
+          }
+        ],
+        "native_steady_output_MB_per_second": 14.445625170998632,
+        "c_zlib_steady_output_MB_per_second": 864.7029151654111,
+        "native_to_c_steady_elapsed_ratio": 59.859154929577464
+      },
+      {
+        "name": "entropy",
+        "mode": "zlib",
+        "compressed_bytes": 32784,
+        "output_bytes": 32768,
+        "iterations": 101,
+        "trials": 5,
+        "input_sha256": "04dd9d45ca748ae37ad3e719eb3b897fc005a3d0c0e4f4d5ba9cdfde10f0f58a",
+        "output_sha256": "a94f0df2707628c2962c26df5a96e043c3720246e527035201a75691c74c03c4",
+        "native": [
+          {
+            "ok": true,
+            "digest": 3496717957,
+            "read_ms": 0,
+            "steady_ms": 1310,
+            "end_to_end_ms": 1313.6929161846638
+          },
+          {
+            "ok": true,
+            "digest": 3496717957,
+            "read_ms": 0,
+            "steady_ms": 1274,
+            "end_to_end_ms": 1277.398250065744
+          },
+          {
+            "ok": true,
+            "digest": 3496717957,
+            "read_ms": 0,
+            "steady_ms": 1267,
+            "end_to_end_ms": 1270.4497501254082
+          },
+          {
+            "ok": true,
+            "digest": 3496717957,
+            "read_ms": 0,
+            "steady_ms": 1276,
+            "end_to_end_ms": 1279.4602913782
+          },
+          {
+            "ok": true,
+            "digest": 3496717957,
+            "read_ms": 0,
+            "steady_ms": 1269,
+            "end_to_end_ms": 1272.6466245949268
+          }
+        ],
+        "c_zlib": [
+          {
+            "ok": true,
+            "digest": 3496717957,
+            "read_ms": 0.03,
+            "steady_ms": 3.882,
+            "zlib": "1.2.12",
+            "end_to_end_ms": 7.579667493700981
+          },
+          {
+            "ok": true,
+            "digest": 3496717957,
+            "read_ms": 0.024999,
+            "steady_ms": 3.553,
+            "zlib": "1.2.12",
+            "end_to_end_ms": 6.892249919474125
+          },
+          {
+            "ok": true,
+            "digest": 3496717957,
+            "read_ms": 0.026001,
+            "steady_ms": 3.552,
+            "zlib": "1.2.12",
+            "end_to_end_ms": 6.455209106206894
+          },
+          {
+            "ok": true,
+            "digest": 3496717957,
+            "read_ms": 0.027,
+            "steady_ms": 3.611,
+            "zlib": "1.2.12",
+            "end_to_end_ms": 6.591875106096268
+          },
+          {
+            "ok": true,
+            "digest": 3496717957,
+            "read_ms": 0.026,
+            "steady_ms": 3.576,
+            "zlib": "1.2.12",
+            "end_to_end_ms": 6.454582326114178
+          }
+        ],
+        "native_steady_output_MB_per_second": 2.5977770800627944,
+        "c_zlib_steady_output_MB_per_second": 925.4944071588367,
+        "native_to_c_steady_elapsed_ratio": 356.26398210290824
+      }
+    ],
+    "c_driver_sha256": "ee41e7bbc0bfbcac9df510db275f014c3963687d94075feab14d53f7653b6a3f",
+    "c_driver_compile": [
+      "clang",
+      "-O2",
+      "zlib_benchmark.c",
+      "-lz",
+      "-o",
+      "zlib-benchmark"
+    ],
+    "scope": "Same file read once; repeated fresh zlib stream/output lifetimes; bounded complete wrapper decoding; Adler32+CRC32 metadata and full-output FNV scan prevent discarded output. C uses z_stream.adler from its wrapper check. Bend CPU1/GPUoff. Read, steady work and subprocess wall times are separate. Bend IO.now resolution1ms; C monotonic nanosecond clock. C temporary driver is solely an independent benchmark, never a Bend decoder dependency. No game-speed inference."
+  },
+  "limits": [
+    "Preset dictionaries unsupported and rejected; no streaming decode API.",
+    "Finite fixture equalities and termination/type checking do not prove universal RFC correctness.",
+    "No pack/NBT/gameplay parity follows from byte decompression; wrapper metadata is validated but not exposed."
+  ],
+  "official_sources": [
+    "https://www.rfc-editor.org/rfc/rfc1951",
+    "https://www.rfc-editor.org/rfc/rfc1950",
+    "https://www.rfc-editor.org/rfc/rfc1952"
+  ],
+  "elapsed_seconds": 31.721
+}
