@@ -1,0 +1,220 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "scope": "strict JSON decimal token -> direct RN-even F32, no Java textual-coercion grammar claim",
+  "grammar": "-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?",
+  "budgets": {
+    "codepoints": 4096,
+    "mantissa_digits": 1024,
+    "exponent_scan_saturation": 100000,
+    "maximum_rounding_comparisons": 31,
+    "integer_capacity_bound_bits": 4096
+  },
+  "seed": 322603,
+  "random_cases_requested": 10000,
+  "accepted_cases": 20323,
+  "native_exact_bit_comparisons": 20323,
+  "java25_exact_bit_comparisons": 20323,
+  "c_strtof_exact_bit_comparisons": 20323,
+  "fixture_kinds": {
+    "supplied_model": 7,
+    "exact_f32_roundtrip": 2552,
+    "all_exponent_midpoint_neighbors": 7656,
+    "random_decimal": 10000,
+    "long_mantissa": 64,
+    "huge_exponent": 16,
+    "zero_huge_exponent": 8,
+    "budget_boundary": 4,
+    "f64_double_rounding_trap": 16
+  },
+  "invalid_cases": 39,
+  "error_counts": {
+    "InvalidDecimal": 35,
+    "DigitLimit": 2,
+    "InputLimit": 2
+  },
+  "exact_rational_rounding_interval_checks": 20309,
+  "decimal_exponent_bound_checks": 14,
+  "interval_outcomes": {
+    "rounded": 15006,
+    "zero": 91,
+    "midpoint_tie": 2550,
+    "overflow_decimal_exponent_bound": 7,
+    "half_minimum_tie": 2,
+    "exact": 2579,
+    "overflow_tie": 2,
+    "overflow": 79,
+    "underflow_decimal_exponent_bound": 7
+  },
+  "native_wall_seconds_including_startup_argument_and_output_io": 1.8308813329786062,
+  "kernel_verdicts": {
+    "src/big_uint.bend": "ALL PROOFS CHECK",
+    "src/float_parse.bend": "ALL PROOFS CHECK",
+    "tests/float_parse.bend": "ALL PROOFS CHECK"
+  },
+  "verification_scope": "independent type/termination checks plus finite grammar/zero laws and independent native/exact fixtures; no universal decimal-rounding theorem",
+  "fixture_sha256": "708f46bdf8252b2c3f847d728e4cdedde44eb8aec8455f2c00d04bdffdaf99d3",
+  "invalid_fixture_sha256": "3799b99a3a0a50ec6ad15c45e294eba30b57e05f9e832546a947e6539fc58f06",
+  "source_sha256": {
+    "src/big_uint.bend": "cf5fcd7b18064369a9e370ea69863e0dc0953b7ffa05e5b2fbaafdda92e9c23d",
+    "src/float_parse.bend": "920804eddb39effe099183b3d009733309be80d8a93c55b3b01649e721aa382e",
+    "tests/float_parse.bend": "84740568ff2068db2108371c6b6f23a1cd1cd212d54cda1aa207d565c76586b8",
+    "tools/test_float_parse.py": "37186325ffcd3540574ac16cfff90ef33faad62aa5cd6807c8c414b9caeaef0b"
+  },
+  "reference_sha256": {
+    "c": "734108add9059c56ccda9d3de917561f2b5a4f10f712249a94e3f365dc2a4c0d",
+    "java": "6e3408a6b3448b2f11eee3799d32ac2afc04c5587141bc11f50c7e61d88bebc7"
+  },
+  "compiler": "bend 2.0.35",
+  "compiler_file": {
+    "file": "bend",
+    "bytes": 63885392,
+    "sha1": "ddce6e432357be618d905b19c0f79abe3d28c388",
+    "sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e"
+  },
+  "java_runtime": {
+    "file": "java",
+    "bytes": 84720,
+    "sha1": "5af4a90be54ddeec03db3700e6989594c9438952",
+    "sha256": "e0879c0df70d880d66904064d1b388b08aeee0958a047f37601435b28db849a3"
+  },
+  "java_version": "openjdk version \"25.0.1\" 2025-10-21 LTS\nOpenJDK Runtime Environment Microsoft-12574220 (build 25.0.1+8-LTS)\nOpenJDK 64-Bit Server VM Microsoft-12574220 (build 25.0.1+8-LTS, mixed mode)",
+  "native_binary": {
+    "file": "float_parse_test",
+    "bytes": 1163568,
+    "sha1": "d0fc73e10a38759044efbc1306a699f78d0fcab7",
+    "sha256": "7eb3f65e844df4308fed788701ea4c5b2ab6df55fe7d2aab890974f6b257a11d"
+  },
+  "reference_binary": {
+    "file": "float_parse_reference",
+    "bytes": 33768,
+    "sha1": "61fa9ccbac3c92075461f37cf28d4215bcb76a1d",
+    "sha256": "d6d10e83ac9141cb529836ff8817541c46066a4925342628fc0c7bee40afb31a"
+  },
+  "emitted_c": {
+    "sha256": "77a5ab2c4b0f8e22c729596cd4a9bf0091e979e864c8dc4ee4d75792245feaaa",
+    "scalar_inline_helpers": 23,
+    "scalar_helpers_use_host_float_arithmetic": false
+  },
+  "platform": {
+    "system": "Darwin",
+    "release": "25.4.0",
+    "machine": "arm64"
+  },
+  "build_wall_seconds": {
+    "0": 0.40580012556165457,
+    "1": 0.38996649999171495,
+    "2": 0.9759824993088841,
+    "3": 2.6222165832296014,
+    "4": 1.5922910841181874,
+    "5": 0.049814832396805286,
+    "6": 0.5198187502101064
+  },
+  "model_reference": {
+    "file": "reference/model_semantics.json",
+    "sha256": "3cbe8aa7780f14c1b37159a885710b04680e3b6c4ffa4975b4d8297015f11e7e",
+    "checks": [
+      {
+        "case_id": "raw_json_94",
+        "lexeme": "0.1",
+        "observed_f32_bits": "3dcccccd"
+      },
+      {
+        "case_id": "raw_json_94",
+        "lexeme": "-0.0",
+        "observed_f32_bits": "80000000"
+      },
+      {
+        "case_id": "raw_json_94",
+        "lexeme": "0.10000000149011612",
+        "observed_f32_bits": "3dcccccd"
+      },
+      {
+        "case_id": "raw_json_95",
+        "lexeme": "1e-45",
+        "observed_f32_bits": "00000001"
+      },
+      {
+        "case_id": "raw_json_95",
+        "lexeme": "1.000000059604644775390625",
+        "observed_f32_bits": "3f800000"
+      },
+      {
+        "case_id": "raw_json_95",
+        "lexeme": "1.0000000596046449",
+        "observed_f32_bits": "3f800001"
+      },
+      {
+        "case_id": "raw_json_95",
+        "lexeme": "1e40",
+        "observed_f32_bits": "7f800000"
+      }
+    ],
+    "scope": "observed scalar lexemes only; not model-field policy or gameplay parity"
+  },
+  "commands": [
+    [
+      "/Users/chuah/.bend/bin/bend",
+      "src/big_uint.bend",
+      "--verdict"
+    ],
+    [
+      "/Users/chuah/.bend/bin/bend",
+      "src/float_parse.bend",
+      "--verdict"
+    ],
+    [
+      "/Users/chuah/.bend/bin/bend",
+      "tests/float_parse.bend",
+      "--verdict"
+    ],
+    [
+      "/Users/chuah/.bend/bin/bend",
+      "tests/float_parse.bend",
+      "-o",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/float_parse_test"
+    ],
+    [
+      "/Users/chuah/.bend/bin/bend",
+      "tests/float_parse.bend",
+      "-o",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/float_parse_test.c"
+    ],
+    [
+      "clang",
+      "-O3",
+      "-fno-fast-math",
+      "-ffp-contract=off",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/float_parse_reference.c",
+      "-o",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/float_parse_reference"
+    ],
+    [
+      "/Users/chuah/Library/Application Support/minecraft/runtime/java-runtime-epsilon/mac-os-arm64/java-runtime-epsilon/jre.bundle/Contents/Home/bin/javac",
+      "-d",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/DecimalF32Reference.java"
+    ],
+    [
+      "/Users/chuah/Library/Application Support/minecraft/runtime/java-runtime-epsilon/mac-os-arm64/java-runtime-epsilon/jre.bundle/Contents/Home/bin/java",
+      "-cp",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build",
+      "DecimalF32Reference"
+    ],
+    [
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/float_parse_reference"
+    ]
+  ],
+  "reproduce": [
+    "python3",
+    "tools/test_float_parse.py",
+    "--seed",
+    "322603",
+    "--random",
+    "10000"
+  ],
+  "official_sources": [
+    "https://www.rfc-editor.org/rfc/rfc8259#section-6",
+    "https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/Float.html#valueOf(java.lang.String)"
+  ]
+}
