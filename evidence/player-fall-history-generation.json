@@ -1,0 +1,195 @@
+{
+  "documentation": {
+    "bytes": 12078,
+    "file": "PLAYER_FALL_HISTORY.md",
+    "sha1": "a939cdd6c2aa551d0bee94095607647d6a0c2c92",
+    "sha256": "f111c0f7ca2cffee48bc645a9a344952e4ca87e65eba7036c9567433906b9e8e"
+  },
+  "independent_java": {
+    "actual_damaging_callback_failures": 6,
+    "actual_f32_overflow_diagnostics": 2,
+    "case_count": 228,
+    "fixtures_sha256": "2427e5b4157d78ed8cf8fea39f17de6910c411234193493c1919eda83a7a9d31",
+    "fresh_repeat_equal": true,
+    "observations_sha256": "9dac8084945dd50ee863190d275345f7df2cee5c22e75d375cf1a62a32c67c76",
+    "official_class_count": 4401,
+    "official_class_tree_sha256": "4c811884610f105cbfee95a93b3a236861ec6702955eab448908d0be180b74e0",
+    "paired_step_observations": 478,
+    "six_integrity_mutations_rejected": true
+  },
+  "kernel": {
+    "full_harness": {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_fall_history.bend",
+        "--verdict"
+      ],
+      "exit_code": 0,
+      "seconds": 11.958553,
+      "status": "passed",
+      "stderr": "",
+      "stdout": "ALL PROOFS CHECK\n"
+    },
+    "full_production_source": {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_fall_history.bend",
+        "--verdict"
+      ],
+      "exit_code": 0,
+      "seconds": 0.454272,
+      "status": "passed",
+      "stderr": "",
+      "stdout": "ALL PROOFS CHECK\n"
+    },
+    "helper_law_count": 12,
+    "projection_or_retry": false
+  },
+  "limits": "Field projection only. No damaging callbacks, reset-ray hits, water/flight/climb/effect/unsupported-world/nonlocal lifecycle or body/world mutation. No runtime consumer changed. No foreground launch.",
+  "native_comparisons": {
+    "cases_each_run": 298,
+    "native_runs": 2,
+    "observations_sha256": "ff16e5266e3cee66bb39a0a78416d1a6bd2b5e2ba64d6690614d04228ec4bd3e",
+    "seconds": [
+      0.799131,
+      0.078863
+    ],
+    "unchanged_prepared_cases": true
+  },
+  "native_generation": {
+    "actual_installed_bend_command": [
+      "/Users/chuah/.bend/bin/bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_fall_history.bend",
+      "-o",
+      "<unique temporary native path>"
+    ],
+    "all_dependency_and_binary_hashes_rechecked": true,
+    "build_helper": {
+      "bytes": 33298,
+      "file": "build_native.py",
+      "sha1": "d66f63f05fec4e4c2bc23a823e4a4b2a79a2ee49",
+      "sha256": "3418c78cddc092aec55c7447a818735569b5b279d3bc4b05e3c0077624387c18"
+    },
+    "cache_key": "dbc74c57fb0cfd4dbb85975bc685e8a65cfc00f65b1929d5ada4835d22e64a1c",
+    "cache_manifest": {
+      "bytes": 541368,
+      "file": "manifest.json",
+      "path": "build/native-cache/entries/dbc74c57fb0cfd4dbb85975bc685e8a65cfc00f65b1929d5ada4835d22e64a1c/manifest.json",
+      "sha1": "8379efe9118969c70e917c07011c58598139dad1",
+      "sha256": "c5cb3b61eb23510dc2baea378089d91c48a993f6530687a44fd69b58edf07516"
+    },
+    "compiler_route": "Installed Bend CLI native route; no alternate compiler/backend",
+    "dependencies_sha256": "d7f8593a6d74c38d11456f07305d5cf3b2e3adf07ab6eebe39730c51a0f91473",
+    "dependency_count": 1629,
+    "full_build_receipt": {
+      "bytes": 623712,
+      "file": "player-fall-history-build.json",
+      "path": "build/player-fall-history-build.json",
+      "sha1": "bfce5703f07807e8e825e5013c56f53111bd8396",
+      "sha256": "010bd5e719b961f951e44f7b7d5e3ed359106d7c5b0b1b801921e2590b9c6a14"
+    },
+    "retained_binary": {
+      "bytes": 1163096,
+      "file": "program",
+      "path": "build/native-cache/artifacts/581b5018df04dad8775753da91efbe27fa395091806b03c283c5243409c44de0/program",
+      "sha1": "71801995a3efa9689eaf678df05c917a56eee41b",
+      "sha256": "581b5018df04dad8775753da91efbe27fa395091806b03c283c5243409c44de0"
+    },
+    "retained_c": {
+      "bytes": 291070,
+      "file": "generated.c",
+      "path": "build/native-cache/sources/18403a5db68526bca84e1fd61026a4a16ec53fb244ca1130948e3635a7ae0dce/generated.c",
+      "sha1": "f718052a105a7c65bc8925e0ba69157c75a23298",
+      "sha256": "2cfc83817cab5e17c52fa9fb082d58e0bcca957bc3c6b94d991506446f0504ad"
+    },
+    "selected_native_flags": [
+      "-std=c11",
+      "-O3",
+      "<emitted.c>",
+      "-lpthread",
+      "-lm",
+      "-o",
+      "<native>"
+    ]
+  },
+  "pin": "26.3",
+  "pins": {
+    "harness": {
+      "bytes": 8844,
+      "file": "player_fall_history.bend",
+      "sha1": "4df8746338c9accc07ab95442b26eaf46078bd8b",
+      "sha256": "627be53c5657fa6ce1eaa87ae83ccbfc122ce8b087e30f7212289c5f23ed2590"
+    },
+    "probe": {
+      "bytes": 21063,
+      "file": "reference_player_fall_history_probe.py",
+      "sha1": "5c45f6cda8b05b55f06ef1f122581e3f2974d709",
+      "sha256": "c35e70d970e9cd787fc023743716ca73e1c26ea9fdf4b01ac403896e79fdce69"
+    },
+    "reference": {
+      "bytes": 1558776,
+      "file": "player_fall_history.json",
+      "sha1": "ac7e5f3697c42c8a4b7db1b986a032ff2e0a057d",
+      "sha256": "831c2f369cb4b433f62885ab25594db673468f0f80702f25834e786e5ebed320"
+    },
+    "runner": {
+      "bytes": 14993,
+      "file": "test_player_fall_history.py",
+      "sha1": "ca8544fd288bc84d8103c4e8ed32f8c9fcc4bffb",
+      "sha256": "f05bfc26a903e6ac82fd2576e1f0fb34e3dfde561babe3db60db62753fb1ea32"
+    },
+    "source": {
+      "bytes": 7052,
+      "file": "player_fall_history.bend",
+      "sha1": "79c6a2340d27dfdadcdfc91f7f0abb0616a24e42",
+      "sha256": "b181c43948cc01e66b05e0edf9dbc0338e1ebdcfecbf86a525731a07aad26db3"
+    }
+  },
+  "receipts": {
+    "integrity": {
+      "bytes": 1037,
+      "file": "player-fall-history-reference-integrity.json",
+      "path": "evidence/player-fall-history-reference-integrity.json",
+      "sha1": "06effa1f560af18cbafd8c306b9cf6fd65c16ad3",
+      "sha256": "8a7d9f0560b88b47ca97f9c223e7d5b606c3d8a4ca9fe58fb65ef25be15a9c0f"
+    },
+    "java_extract": {
+      "bytes": 75975,
+      "file": "player-fall-history-reference-extract.json",
+      "path": "evidence/player-fall-history-reference-extract.json",
+      "sha1": "a63a7f98c226e6429e59f3929b9e02d7ca7a3789",
+      "sha256": "30ba87dd9f48c27950e98b3e142991f27ec73eaa17760df4365f2a902b307796"
+    },
+    "java_repeat": {
+      "bytes": 75778,
+      "file": "player-fall-history-reference-rerun.json",
+      "path": "evidence/player-fall-history-reference-rerun.json",
+      "sha1": "022db0f1b39e4ad269006be4ca9c80ac139d4349",
+      "sha256": "0c92369e6b6eb30bbd19202f01fefda5820db71126ea590a0101d8e63865869d"
+    },
+    "kernel": {
+      "bytes": 1439,
+      "file": "player-fall-history-kernel.json",
+      "path": "evidence/player-fall-history-kernel.json",
+      "sha1": "0a86320aba6a1e53234b32e5dc27d554866c136a",
+      "sha256": "74e693039b04b2a7a22c5997dcf43a183909f0837adb4a46313be75d93e359ac"
+    },
+    "native": {
+      "bytes": 27110,
+      "file": "player-fall-history-native.json",
+      "path": "evidence/player-fall-history-native.json",
+      "sha1": "8d165fd40f656df10aa0f63e278e307de50347d1",
+      "sha256": "12f5799f775eaad461055a1c5adbdb39ceccd9e3490eda663f3ae214a2547857"
+    },
+    "prepared": {
+      "bytes": 4292,
+      "file": "player-fall-history-prepared.json",
+      "path": "evidence/player-fall-history-prepared.json",
+      "sha1": "44539c7e2804f98decddfa641b7f2e903c86724e",
+      "sha256": "02b6f08503c55e73813dc52eb54df748770ed332305a7708ea1d705b4c6b8728"
+    }
+  },
+  "schema": "player-fall-history-final-generation-audit-v1",
+  "scope": "Post-execution artifact/provenance audit only; no new Java/native/kernel execution",
+  "status": "passed"
+}

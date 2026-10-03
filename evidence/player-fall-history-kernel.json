@@ -1,0 +1,48 @@
+{
+  "attempts": [
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_fall_history.bend",
+        "--verdict"
+      ],
+      "exit_code": 0,
+      "seconds": 0.454272,
+      "status": "passed",
+      "stderr": "",
+      "stdout": "ALL PROOFS CHECK\n"
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_fall_history.bend",
+        "--verdict"
+      ],
+      "exit_code": 0,
+      "seconds": 11.958553,
+      "status": "passed",
+      "stderr": "",
+      "stdout": "ALL PROOFS CHECK\n"
+    }
+  ],
+  "compiler": {
+    "bytes": 63885392,
+    "file": "bend",
+    "sha1": "ddce6e432357be618d905b19c0f79abe3d28c388",
+    "sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e"
+  },
+  "harness": {
+    "bytes": 8844,
+    "file": "player_fall_history.bend",
+    "sha1": "4df8746338c9accc07ab95442b26eaf46078bd8b",
+    "sha256": "627be53c5657fa6ce1eaa87ae83ccbfc122ce8b087e30f7212289c5f23ed2590"
+  },
+  "scope": "Full imported production source plus twelve stated helper laws; not universal Minecraft lifecycle parity",
+  "source": {
+    "bytes": 7052,
+    "file": "player_fall_history.bend",
+    "sha1": "79c6a2340d27dfdadcdfc91f7f0abb0616a24e42",
+    "sha256": "b181c43948cc01e66b05e0edf9dbc0338e1ebdcfecbf86a525731a07aad26db3"
+  },
+  "status": "passed"
+}

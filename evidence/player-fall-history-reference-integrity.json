@@ -1,0 +1,43 @@
+{
+  "failure_injections": [
+    {
+      "injection": "client",
+      "reason": "Pinned runtime/library mismatch",
+      "rejected": true
+    },
+    {
+      "injection": "runtime",
+      "reason": "Pinned runtime/library mismatch",
+      "rejected": true
+    },
+    {
+      "injection": "library",
+      "reason": "Pinned runtime/library mismatch",
+      "rejected": true
+    },
+    {
+      "injection": "class",
+      "reason": "Pinned class/method mismatch",
+      "rejected": true
+    },
+    {
+      "injection": "source",
+      "reason": "Launcher mismatch",
+      "rejected": true
+    },
+    {
+      "injection": "observation",
+      "reason": "Fixture digest mismatch",
+      "rejected": true
+    }
+  ],
+  "fixture_count": 228,
+  "reference": {
+    "bytes": 1558776,
+    "file": "player_fall_history.json",
+    "sha1": "ac7e5f3697c42c8a4b7db1b986a032ff2e0a057d",
+    "sha256": "831c2f369cb4b433f62885ab25594db673468f0f80702f25834e786e5ebed320"
+  },
+  "scope": "Stored reference integrity; no fresh Java run",
+  "status": "passed"
+}

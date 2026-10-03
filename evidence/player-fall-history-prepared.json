@@ -1,0 +1,130 @@
+{
+  "actual_fixture_count": 228,
+  "actual_step_count": 239,
+  "case_categories": {
+    "actual_chained_owned_history": 1,
+    "actual_clamp": 61,
+    "actual_direct_check": 87,
+    "actual_move": 70,
+    "actual_no_physics_early_bypass": 1,
+    "actual_reset": 11,
+    "clip_observation_admission": 8,
+    "negative_length_square_retention": 1,
+    "nonfinite_field_retention": 16,
+    "nonfinite_history_clamp_retention": 4,
+    "nonfinite_request_owner_recovery": 8,
+    "nonfinite_reset_retention": 4,
+    "owned_recovery_after_excluded_context": 8,
+    "policy_excludes_actual_damaging_callback_failure": 6,
+    "policy_excludes_actual_f32_overflow": 2,
+    "unsupported_mode_owner_recovery": 5,
+    "unsupported_mode_retention": 5
+  },
+  "expected_cases_sha256": "c63ca2b81c2d6327f94be17258da0ac37667716bae09e0ac7f19037b80836b57",
+  "harness": {
+    "bytes": 8844,
+    "file": "player_fall_history.bend",
+    "sha1": "4df8746338c9accc07ab95442b26eaf46078bd8b",
+    "sha256": "627be53c5657fa6ce1eaa87ae83ccbfc122ce8b087e30f7212289c5f23ed2590"
+  },
+  "limits": "No heavy attempt has been made by --prepare. No body/world mutation, damaging callbacks, reset-ray hits, water/flight/climbing/effect lifecycle, or full tick parity claim.",
+  "native_case_count": 298,
+  "ordinary": [
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_fall_history.bend",
+        "--check-only"
+      ],
+      "exit_code": 0,
+      "seconds": 0.360284,
+      "status": "passed",
+      "stderr": "",
+      "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_fall_history.bend",
+        "--check-only"
+      ],
+      "exit_code": 0,
+      "seconds": 0.684237,
+      "status": "passed",
+      "stderr": "",
+      "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+    }
+  ],
+  "probe": {
+    "bytes": 21063,
+    "file": "reference_player_fall_history_probe.py",
+    "sha1": "5c45f6cda8b05b55f06ef1f122581e3f2974d709",
+    "sha256": "c35e70d970e9cd787fc023743716ca73e1c26ea9fdf4b01ac403896e79fdce69"
+  },
+  "queued_commands": [
+    "PYTHONDONTWRITEBYTECODE=1 python3 tools/test_player_fall_history.py",
+    "PYTHONDONTWRITEBYTECODE=1 python3 tools/test_player_fall_history.py --kernel"
+  ],
+  "reference": {
+    "bytes": 1558776,
+    "file": "player_fall_history.json",
+    "sha1": "ac7e5f3697c42c8a4b7db1b986a032ff2e0a057d",
+    "sha256": "831c2f369cb4b433f62885ab25594db673468f0f80702f25834e786e5ebed320"
+  },
+  "reference_integrity": {
+    "failure_injections": [
+      {
+        "injection": "client",
+        "reason": "Pinned runtime/library mismatch",
+        "rejected": true
+      },
+      {
+        "injection": "runtime",
+        "reason": "Pinned runtime/library mismatch",
+        "rejected": true
+      },
+      {
+        "injection": "library",
+        "reason": "Pinned runtime/library mismatch",
+        "rejected": true
+      },
+      {
+        "injection": "class",
+        "reason": "Pinned class/method mismatch",
+        "rejected": true
+      },
+      {
+        "injection": "source",
+        "reason": "Launcher mismatch",
+        "rejected": true
+      },
+      {
+        "injection": "observation",
+        "reason": "Fixture digest mismatch",
+        "rejected": true
+      }
+    ],
+    "fixture_count": 228,
+    "reference": {
+      "bytes": 1558776,
+      "file": "player_fall_history.json",
+      "sha1": "ac7e5f3697c42c8a4b7db1b986a032ff2e0a057d",
+      "sha256": "831c2f369cb4b433f62885ab25594db673468f0f80702f25834e786e5ebed320"
+    },
+    "scope": "Stored reference integrity; no fresh Java run",
+    "status": "passed"
+  },
+  "runner": {
+    "bytes": 14993,
+    "file": "test_player_fall_history.py",
+    "sha1": "ca8544fd288bc84d8103c4e8ed32f8c9fcc4bffb",
+    "sha256": "f05bfc26a903e6ac82fd2576e1f0fb34e3dfde561babe3db60db62753fb1ea32"
+  },
+  "source": {
+    "bytes": 7052,
+    "file": "player_fall_history.bend",
+    "sha1": "79c6a2340d27dfdadcdfc91f7f0abb0616a24e42",
+    "sha256": "b181c43948cc01e66b05e0edf9dbc0338e1ebdcfecbf86a525731a07aad26db3"
+  },
+  "status": "prepared_not_native_or_kernel_verified"
+}

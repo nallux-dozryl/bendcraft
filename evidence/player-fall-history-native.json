@@ -1,0 +1,606 @@
+{
+  "actual_fixture_count": 228,
+  "actual_step_count": 239,
+  "build": {
+    "artifact": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native-cache/artifacts/581b5018df04dad8775753da91efbe27fa395091806b03c283c5243409c44de0/program",
+    "binary_bytes": 1163096,
+    "binary_sha256": "581b5018df04dad8775753da91efbe27fa395091806b03c283c5243409c44de0",
+    "cache_hit": false,
+    "cache_key": "dbc74c57fb0cfd4dbb85975bc685e8a65cfc00f65b1929d5ada4835d22e64a1c",
+    "compiler": {
+      "driver_probe": "Apple clang version 17.0.0 (clang-1700.0.13.5)\nTarget: arm64-apple-darwin25.4.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin\n \"/Library/Developer/CommandLineTools/usr/bin/clang\" \"-cc1\" \"-triple\" \"arm64-apple-macosx15.5.0\" \"-Wundef-prefix=TARGET_OS_\" \"-Wdeprecated-objc-isa-usage\" \"-Werror=deprecated-objc-isa-usage\" \"-Werror=implicit-function-declaration\" \"-emit-obj\" \"-dumpdir\" \"/dev/null-\" \"-disable-free\" \"-clear-ast-before-backend\" \"-disable-llvm-verifier\" \"-discard-value-names\" \"-main-file-name\" \"null\" \"-mrelocation-model\" \"pic\" \"-pic-level\" \"2\" \"-mframe-pointer=non-leaf\" \"-mllvm\" \"-extra-vectorizer-passes\" \"-fno-strict-return\" \"-ffp-contract=on\" \"-fno-rounding-math\" \"-funwind-tables=1\" \"-fobjc-msgsend-selector-stubs\" \"-target-sdk-version=15.5\" \"-fvisibility-inlines-hidden-static-local-var\" \"-fdefine-target-os-macros\" \"-fno-assume-unique-vtables\" \"-fno-modulemap-allow-subdirectory-search\" \"-target-cpu\" \"apple-m1\" \"-target-feature\" \"+zcm\" \"-target-feature\" \"+zcz\" \"-target-feature\" \"+v8.5a\" \"-target-feature\" \"+aes\" \"-target-feature\" \"+altnzcv\" \"-target-feature\" \"+ccdp\" \"-target-feature\" \"+complxnum\" \"-target-feature\" \"+crc\" \"-target-feature\" \"+dotprod\" \"-target-feature\" \"+fp-armv8\" \"-target-feature\" \"+fp16fml\" \"-target-feature\" \"+fptoint\" \"-target-feature\" \"+fullfp16\" \"-target-feature\" \"+jsconv\" \"-target-feature\" \"+lse\" \"-target-feature\" \"+neon\" \"-target-feature\" \"+pauth\" \"-target-feature\" \"+perfmon\" \"-target-feature\" \"+predres\" \"-target-feature\" \"+ras\" \"-target-feature\" \"+rcpc\" \"-target-feature\" \"+rdm\" \"-target-feature\" \"+sb\" \"-target-feature\" \"+sha2\" \"-target-feature\" \"+sha3\" \"-target-feature\" \"+specrestrict\" \"-target-feature\" \"+ssbs\" \"-target-abi\" \"darwinpcs\" \"-debugger-tuning=lldb\" \"-fdebug-compilation-dir=/Users/chuah/Documents/ChatGPT/bendex/minecraft\" \"-target-linker-version\" \"1167.5\" \"-fcoverage-compilation-dir=/Users/chuah/Documents/ChatGPT/bendex/minecraft\" \"-resource-dir\" \"/Library/Developer/CommandLineTools/usr/lib/clang/17\" \"-isysroot\" \"/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk\" \"-I/usr/local/include\" \"-internal-isystem\" \"/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include\" \"-internal-isystem\" \"/Library/Developer/CommandLineTools/usr/lib/clang/17/include\" \"-internal-externc-isystem\" \"/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include\" \"-internal-externc-isystem\" \"/Library/Developer/CommandLineTools/usr/include\" \"-O3\" \"-Wno-reorder-init-list\" \"-Wno-implicit-int-float-conversion\" \"-Wno-c99-designator\" \"-Wno-final-dtor-non-final-class\" \"-Wno-extra-semi-stmt\" \"-Wno-misleading-indentation\" \"-Wno-quoted-include-in-framework-header\" \"-Wno-implicit-fallthrough\" \"-Wno-enum-enum-conversion\" \"-Wno-enum-float-conversion\" \"-Wno-elaborated-enum-base\" \"-Wno-reserved-identifier\" \"-Wno-gnu-folding-constant\" \"-std=c11\" \"-ferror-limit\" \"19\" \"-stack-protector\" \"1\" \"-fstack-check\" \"-mdarwin-stkchk-strong-link\" \"-fblocks\" \"-fencode-extended-block-signature\" \"-fregister-global-dtors-with-atexit\" \"-fgnuc-version=4.2.1\" \"-fskip-odr-check-in-gmf\" \"-fmax-type-align=16\" \"-fcommon\" \"-vectorize-loops\" \"-vectorize-slp\" \"-clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation\" \"-fno-odr-hash-protocols\" \"-clang-vendor-feature=+enableAggressiveVLAFolding\" \"-clang-vendor-feature=+revert09abecef7bbf\" \"-clang-vendor-feature=+thisNoAlignAttr\" \"-clang-vendor-feature=+thisNoNullAttr\" \"-clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError\" \"-D__GCC_HAVE_DWARF2_CFI_ASM=1\" \"-o\" \"<temporary.o>\" \"-x\" \"c\" \"/dev/null\"\n \"/Library/Developer/CommandLineTools/usr/bin/ld\" \"-demangle\" \"-lto_library\" \"/Library/Developer/CommandLineTools/usr/lib/libLTO.dylib\" \"-dynamic\" \"-arch\" \"arm64\" \"-platform_version\" \"macos\" \"15.5.0\" \"15.5\" \"-syslibroot\" \"/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk\" \"-O3\" \"-mllvm\" \"-enable-linkonceodr-outlining\" \"-o\" \"/dev/null\" \"-L/usr/local/lib\" \"<temporary.o>\" \"-lpthread\" \"-lm\" \"-lSystem\" \"/Library/Developer/CommandLineTools/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a\"\n",
+      "flags": [
+        "-std=c11",
+        "-O3",
+        "<emitted.c>",
+        "-lpthread",
+        "-lm",
+        "-o",
+        "<native>"
+      ],
+      "path": "/usr/bin/clang",
+      "resource_dir": "/Library/Developer/CommandLineTools/usr/lib/clang/17",
+      "sysroots": [
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk"
+      ],
+      "version": "Apple clang version 17.0.0 (clang-1700.0.13.5)\nTarget: arm64-apple-darwin25.4.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin\n"
+    },
+    "dependencies_sha256": "d7f8593a6d74c38d11456f07305d5cf3b2e3adf07ab6eebe39730c51a0f91473",
+    "dependency_count": 1629,
+    "emitted_c_sha256": "2cfc83817cab5e17c52fa9fb082d58e0bcca957bc3c6b94d991506446f0504ad",
+    "full_receipt": {
+      "bytes": 623712,
+      "file": "player-fall-history-build.json",
+      "path": "build/player-fall-history-build.json",
+      "sha1": "bfce5703f07807e8e825e5013c56f53111bd8396",
+      "sha256": "010bd5e719b961f951e44f7b7d5e3ed359106d7c5b0b1b801921e2590b9c6a14"
+    },
+    "identity": {
+      "bend_version": "bend 2.0.35",
+      "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+      "entry": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_fall_history.bend",
+      "environment_sha256": "8d09864ee74cacb10754638029de3c3bce9e17134e9bb90c03c66f4008aa8ea2",
+      "machine": "arm64",
+      "os_build": "25E253",
+      "platform": "macOS-26.4.1-arm64-arm-64bit-Mach-O",
+      "schema": 1,
+      "system": "Darwin",
+      "uname": [
+        "Darwin",
+        "Chuahs-MacBook-Pro.local",
+        "25.4.0",
+        "Darwin Kernel Version 25.4.0: Thu Mar 19 19:31:56 PDT 2026; root:xnu-12377.101.15~1/RELEASE_ARM64_T6030",
+        "arm64",
+        "arm"
+      ]
+    },
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-fall-history-tests",
+    "project_dependencies": [
+      {
+        "bytes": 33288,
+        "kind": "bend",
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/../src/f64.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/f64.bend",
+        "sha256": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7"
+      },
+      {
+        "bytes": 7052,
+        "kind": "bend",
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/../src/player_fall_history.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_fall_history.bend",
+        "sha256": "b181c43948cc01e66b05e0edf9dbc0338e1ebdcfecbf86a525731a07aad26db3"
+      },
+      {
+        "bytes": 8844,
+        "kind": "bend",
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_fall_history.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_fall_history.bend",
+        "sha256": "627be53c5657fa6ce1eaa87ae83ccbfc122ce8b087e30f7212289c5f23ed2590"
+      },
+      {
+        "bytes": 33298,
+        "kind": "cache-policy",
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/build_native.py",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/build_native.py",
+        "sha256": "3418c78cddc092aec55c7447a818735569b5b279d3bc4b05e3c0077624387c18"
+      }
+    ],
+    "timings": {
+      "emission_seconds": 0.8864511670544744,
+      "native_seconds": 2.247182499617338,
+      "total_seconds": 9.428722250275314
+    }
+  },
+  "case_categories": {
+    "actual_chained_owned_history": 1,
+    "actual_clamp": 61,
+    "actual_direct_check": 87,
+    "actual_move": 70,
+    "actual_no_physics_early_bypass": 1,
+    "actual_reset": 11,
+    "clip_observation_admission": 8,
+    "negative_length_square_retention": 1,
+    "nonfinite_field_retention": 16,
+    "nonfinite_history_clamp_retention": 4,
+    "nonfinite_request_owner_recovery": 8,
+    "nonfinite_reset_retention": 4,
+    "owned_recovery_after_excluded_context": 8,
+    "policy_excludes_actual_damaging_callback_failure": 6,
+    "policy_excludes_actual_f32_overflow": 2,
+    "unsupported_mode_owner_recovery": 5,
+    "unsupported_mode_retention": 5
+  },
+  "expected_cases_sha256": "c63ca2b81c2d6327f94be17258da0ac37667716bae09e0ac7f19037b80836b57",
+  "harness": {
+    "bytes": 8844,
+    "file": "player_fall_history.bend",
+    "sha1": "4df8746338c9accc07ab95442b26eaf46078bd8b",
+    "sha256": "627be53c5657fa6ce1eaa87ae83ccbfc122ce8b087e30f7212289c5f23ed2590"
+  },
+  "limits": "No damage/health/callback implementation or body mutation. Actual large damaging landing fails at missing gameRenderer service; source deliberately rejects before publishing history. Actual float-overflow diagnostics are excluded with original-state return. Reset hits and water/flight/passenger/climb/effect/unsupported world/nonlocal authority remain explicit unsupported contexts. Movement consumes authoritative resolved/gate/onGround/clip inputs; it does not derive these from support or simulate collision.",
+  "native": [
+    {
+      "case_count": 298,
+      "observations_sha256": "ff16e5266e3cee66bb39a0a78416d1a6bd2b5e2ba64d6690614d04228ec4bd3e",
+      "runs": [
+        {
+          "arguments_sha256": "9167978fea2335f335c952a4637b39c1e6261d9da55fceec44cd2426cef2ed0d",
+          "case_count": 24,
+          "case_start": 0,
+          "command_prefix": [
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native-cache/artifacts/581b5018df04dad8775753da91efbe27fa395091806b03c283c5243409c44de0/program",
+            "--gpu",
+            "off",
+            "--threads",
+            "1",
+            "--"
+          ],
+          "seconds": 0.732815
+        },
+        {
+          "arguments_sha256": "8b8ca17ae16936e9a05db2ba582c0049b1c09932ed6fb99b050d5183c276487a",
+          "case_count": 24,
+          "case_start": 24,
+          "command_prefix": [
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native-cache/artifacts/581b5018df04dad8775753da91efbe27fa395091806b03c283c5243409c44de0/program",
+            "--gpu",
+            "off",
+            "--threads",
+            "1",
+            "--"
+          ],
+          "seconds": 0.006523
+        },
+        {
+          "arguments_sha256": "74a07f16821a65f305333fe2377c3dc77535402cdc0ef4103cc64ed6358eee4e",
+          "case_count": 24,
+          "case_start": 48,
+          "command_prefix": [
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native-cache/artifacts/581b5018df04dad8775753da91efbe27fa395091806b03c283c5243409c44de0/program",
+            "--gpu",
+            "off",
+            "--threads",
+            "1",
+            "--"
+          ],
+          "seconds": 0.005946
+        },
+        {
+          "arguments_sha256": "3dcb8bc5dce4881fb2c4053c7eb040e404d8655be5241326f34a42c6576cca5c",
+          "case_count": 24,
+          "case_start": 72,
+          "command_prefix": [
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native-cache/artifacts/581b5018df04dad8775753da91efbe27fa395091806b03c283c5243409c44de0/program",
+            "--gpu",
+            "off",
+            "--threads",
+            "1",
+            "--"
+          ],
+          "seconds": 0.00408
+        },
+        {
+          "arguments_sha256": "96611d964b157646d0a454f6d89e1b2f90ea6c12cdb7e7d8fce41b240e36e933",
+          "case_count": 24,
+          "case_start": 96,
+          "command_prefix": [
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native-cache/artifacts/581b5018df04dad8775753da91efbe27fa395091806b03c283c5243409c44de0/program",
+            "--gpu",
+            "off",
+            "--threads",
+            "1",
+            "--"
+          ],
+          "seconds": 0.003541
+        },
+        {
+          "arguments_sha256": "94d7033abc76870bb05948df49577233b12653f1705b6894c9acf86ad64228e8",
+          "case_count": 24,
+          "case_start": 120,
+          "command_prefix": [
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native-cache/artifacts/581b5018df04dad8775753da91efbe27fa395091806b03c283c5243409c44de0/program",
+            "--gpu",
+            "off",
+            "--threads",
+            "1",
+            "--"
+          ],
+          "seconds": 0.003611
+        },
+        {
+          "arguments_sha256": "75950d746a6077584b7af2fef3d733320c95a555d7a8f7a17e1db041ea1afc1e",
+          "case_count": 24,
+          "case_start": 144,
+          "command_prefix": [
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native-cache/artifacts/581b5018df04dad8775753da91efbe27fa395091806b03c283c5243409c44de0/program",
+            "--gpu",
+            "off",
+            "--threads",
+            "1",
+            "--"
+          ],
+          "seconds": 0.004586
+        },
+        {
+          "arguments_sha256": "bc261fc77783aa7ae2b256fce3f00f516ee7128face0e54915bb21be2b399149",
+          "case_count": 24,
+          "case_start": 168,
+          "command_prefix": [
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native-cache/artifacts/581b5018df04dad8775753da91efbe27fa395091806b03c283c5243409c44de0/program",
+            "--gpu",
+            "off",
+            "--threads",
+            "1",
+            "--"
+          ],
+          "seconds": 0.00732
+        },
+        {
+          "arguments_sha256": "04002fa771f0f1620320e6cd02dff7c5939e081f9a8103a2e5ccd43ae37c40d8",
+          "case_count": 24,
+          "case_start": 192,
+          "command_prefix": [
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native-cache/artifacts/581b5018df04dad8775753da91efbe27fa395091806b03c283c5243409c44de0/program",
+            "--gpu",
+            "off",
+            "--threads",
+            "1",
+            "--"
+          ],
+          "seconds": 0.005522
+        },
+        {
+          "arguments_sha256": "29ee7f93e3b39fdfffbe62391c996e2d68d71664543e00b0d4da5c19f07211c6",
+          "case_count": 24,
+          "case_start": 216,
+          "command_prefix": [
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native-cache/artifacts/581b5018df04dad8775753da91efbe27fa395091806b03c283c5243409c44de0/program",
+            "--gpu",
+            "off",
+            "--threads",
+            "1",
+            "--"
+          ],
+          "seconds": 0.006416
+        },
+        {
+          "arguments_sha256": "6bb91a95a5d5ad3a36557f9c7af461c7d73cae8cd81c09d77a3ab449498f6926",
+          "case_count": 24,
+          "case_start": 240,
+          "command_prefix": [
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native-cache/artifacts/581b5018df04dad8775753da91efbe27fa395091806b03c283c5243409c44de0/program",
+            "--gpu",
+            "off",
+            "--threads",
+            "1",
+            "--"
+          ],
+          "seconds": 0.005264
+        },
+        {
+          "arguments_sha256": "9602900b173eb88bf7e326c6e2a66f60b909b3ca89588f1f1bdc9c6a84b544e1",
+          "case_count": 24,
+          "case_start": 264,
+          "command_prefix": [
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native-cache/artifacts/581b5018df04dad8775753da91efbe27fa395091806b03c283c5243409c44de0/program",
+            "--gpu",
+            "off",
+            "--threads",
+            "1",
+            "--"
+          ],
+          "seconds": 0.005805
+        },
+        {
+          "arguments_sha256": "a3841661ccd921d54815ed54a182609588049e20bf82c7b67af0c5d32e6147e5",
+          "case_count": 10,
+          "case_start": 288,
+          "command_prefix": [
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native-cache/artifacts/581b5018df04dad8775753da91efbe27fa395091806b03c283c5243409c44de0/program",
+            "--gpu",
+            "off",
+            "--threads",
+            "1",
+            "--"
+          ],
+          "seconds": 0.007702
+        }
+      ],
+      "seconds": 0.799131,
+      "status": "passed"
+    },
+    {
+      "case_count": 298,
+      "observations_sha256": "ff16e5266e3cee66bb39a0a78416d1a6bd2b5e2ba64d6690614d04228ec4bd3e",
+      "runs": [
+        {
+          "arguments_sha256": "9167978fea2335f335c952a4637b39c1e6261d9da55fceec44cd2426cef2ed0d",
+          "case_count": 24,
+          "case_start": 0,
+          "command_prefix": [
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native-cache/artifacts/581b5018df04dad8775753da91efbe27fa395091806b03c283c5243409c44de0/program",
+            "--gpu",
+            "off",
+            "--threads",
+            "1",
+            "--"
+          ],
+          "seconds": 0.005982
+        },
+        {
+          "arguments_sha256": "8b8ca17ae16936e9a05db2ba582c0049b1c09932ed6fb99b050d5183c276487a",
+          "case_count": 24,
+          "case_start": 24,
+          "command_prefix": [
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native-cache/artifacts/581b5018df04dad8775753da91efbe27fa395091806b03c283c5243409c44de0/program",
+            "--gpu",
+            "off",
+            "--threads",
+            "1",
+            "--"
+          ],
+          "seconds": 0.005293
+        },
+        {
+          "arguments_sha256": "74a07f16821a65f305333fe2377c3dc77535402cdc0ef4103cc64ed6358eee4e",
+          "case_count": 24,
+          "case_start": 48,
+          "command_prefix": [
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native-cache/artifacts/581b5018df04dad8775753da91efbe27fa395091806b03c283c5243409c44de0/program",
+            "--gpu",
+            "off",
+            "--threads",
+            "1",
+            "--"
+          ],
+          "seconds": 0.006955
+        },
+        {
+          "arguments_sha256": "3dcb8bc5dce4881fb2c4053c7eb040e404d8655be5241326f34a42c6576cca5c",
+          "case_count": 24,
+          "case_start": 72,
+          "command_prefix": [
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native-cache/artifacts/581b5018df04dad8775753da91efbe27fa395091806b03c283c5243409c44de0/program",
+            "--gpu",
+            "off",
+            "--threads",
+            "1",
+            "--"
+          ],
+          "seconds": 0.006253
+        },
+        {
+          "arguments_sha256": "96611d964b157646d0a454f6d89e1b2f90ea6c12cdb7e7d8fce41b240e36e933",
+          "case_count": 24,
+          "case_start": 96,
+          "command_prefix": [
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native-cache/artifacts/581b5018df04dad8775753da91efbe27fa395091806b03c283c5243409c44de0/program",
+            "--gpu",
+            "off",
+            "--threads",
+            "1",
+            "--"
+          ],
+          "seconds": 0.006988
+        },
+        {
+          "arguments_sha256": "94d7033abc76870bb05948df49577233b12653f1705b6894c9acf86ad64228e8",
+          "case_count": 24,
+          "case_start": 120,
+          "command_prefix": [
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native-cache/artifacts/581b5018df04dad8775753da91efbe27fa395091806b03c283c5243409c44de0/program",
+            "--gpu",
+            "off",
+            "--threads",
+            "1",
+            "--"
+          ],
+          "seconds": 0.005748
+        },
+        {
+          "arguments_sha256": "75950d746a6077584b7af2fef3d733320c95a555d7a8f7a17e1db041ea1afc1e",
+          "case_count": 24,
+          "case_start": 144,
+          "command_prefix": [
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native-cache/artifacts/581b5018df04dad8775753da91efbe27fa395091806b03c283c5243409c44de0/program",
+            "--gpu",
+            "off",
+            "--threads",
+            "1",
+            "--"
+          ],
+          "seconds": 0.005746
+        },
+        {
+          "arguments_sha256": "bc261fc77783aa7ae2b256fce3f00f516ee7128face0e54915bb21be2b399149",
+          "case_count": 24,
+          "case_start": 168,
+          "command_prefix": [
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native-cache/artifacts/581b5018df04dad8775753da91efbe27fa395091806b03c283c5243409c44de0/program",
+            "--gpu",
+            "off",
+            "--threads",
+            "1",
+            "--"
+          ],
+          "seconds": 0.005859
+        },
+        {
+          "arguments_sha256": "04002fa771f0f1620320e6cd02dff7c5939e081f9a8103a2e5ccd43ae37c40d8",
+          "case_count": 24,
+          "case_start": 192,
+          "command_prefix": [
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native-cache/artifacts/581b5018df04dad8775753da91efbe27fa395091806b03c283c5243409c44de0/program",
+            "--gpu",
+            "off",
+            "--threads",
+            "1",
+            "--"
+          ],
+          "seconds": 0.006995
+        },
+        {
+          "arguments_sha256": "29ee7f93e3b39fdfffbe62391c996e2d68d71664543e00b0d4da5c19f07211c6",
+          "case_count": 24,
+          "case_start": 216,
+          "command_prefix": [
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native-cache/artifacts/581b5018df04dad8775753da91efbe27fa395091806b03c283c5243409c44de0/program",
+            "--gpu",
+            "off",
+            "--threads",
+            "1",
+            "--"
+          ],
+          "seconds": 0.005956
+        },
+        {
+          "arguments_sha256": "6bb91a95a5d5ad3a36557f9c7af461c7d73cae8cd81c09d77a3ab449498f6926",
+          "case_count": 24,
+          "case_start": 240,
+          "command_prefix": [
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native-cache/artifacts/581b5018df04dad8775753da91efbe27fa395091806b03c283c5243409c44de0/program",
+            "--gpu",
+            "off",
+            "--threads",
+            "1",
+            "--"
+          ],
+          "seconds": 0.006049
+        },
+        {
+          "arguments_sha256": "9602900b173eb88bf7e326c6e2a66f60b909b3ca89588f1f1bdc9c6a84b544e1",
+          "case_count": 24,
+          "case_start": 264,
+          "command_prefix": [
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native-cache/artifacts/581b5018df04dad8775753da91efbe27fa395091806b03c283c5243409c44de0/program",
+            "--gpu",
+            "off",
+            "--threads",
+            "1",
+            "--"
+          ],
+          "seconds": 0.006641
+        },
+        {
+          "arguments_sha256": "a3841661ccd921d54815ed54a182609588049e20bf82c7b67af0c5d32e6147e5",
+          "case_count": 10,
+          "case_start": 288,
+          "command_prefix": [
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native-cache/artifacts/581b5018df04dad8775753da91efbe27fa395091806b03c283c5243409c44de0/program",
+            "--gpu",
+            "off",
+            "--threads",
+            "1",
+            "--"
+          ],
+          "seconds": 0.004398
+        }
+      ],
+      "seconds": 0.078863,
+      "status": "passed"
+    }
+  ],
+  "ordinary_checks": [
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_fall_history.bend",
+        "--check-only"
+      ],
+      "exit_code": 0,
+      "seconds": 0.303775,
+      "status": "passed",
+      "stderr": "",
+      "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_fall_history.bend",
+        "--check-only"
+      ],
+      "exit_code": 0,
+      "seconds": 0.461762,
+      "status": "passed",
+      "stderr": "",
+      "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+    }
+  ],
+  "pin": "26.3",
+  "probe": {
+    "bytes": 21063,
+    "file": "reference_player_fall_history_probe.py",
+    "sha1": "5c45f6cda8b05b55f06ef1f122581e3f2974d709",
+    "sha256": "c35e70d970e9cd787fc023743716ca73e1c26ea9fdf4b01ac403896e79fdce69"
+  },
+  "reference": {
+    "bytes": 1558776,
+    "file": "player_fall_history.json",
+    "sha1": "ac7e5f3697c42c8a4b7db1b986a032ff2e0a057d",
+    "sha256": "831c2f369cb4b433f62885ab25594db673468f0f80702f25834e786e5ebed320"
+  },
+  "reference_integrity": {
+    "failure_injections": [
+      {
+        "injection": "client",
+        "reason": "Pinned runtime/library mismatch",
+        "rejected": true
+      },
+      {
+        "injection": "runtime",
+        "reason": "Pinned runtime/library mismatch",
+        "rejected": true
+      },
+      {
+        "injection": "library",
+        "reason": "Pinned runtime/library mismatch",
+        "rejected": true
+      },
+      {
+        "injection": "class",
+        "reason": "Pinned class/method mismatch",
+        "rejected": true
+      },
+      {
+        "injection": "source",
+        "reason": "Launcher mismatch",
+        "rejected": true
+      },
+      {
+        "injection": "observation",
+        "reason": "Fixture digest mismatch",
+        "rejected": true
+      }
+    ],
+    "fixture_count": 228,
+    "reference": {
+      "bytes": 1558776,
+      "file": "player_fall_history.json",
+      "sha1": "ac7e5f3697c42c8a4b7db1b986a032ff2e0a057d",
+      "sha256": "831c2f369cb4b433f62885ab25594db673468f0f80702f25834e786e5ebed320"
+    },
+    "scope": "Stored reference integrity; no fresh Java run",
+    "status": "passed"
+  },
+  "reproduce": [
+    "PYTHONDONTWRITEBYTECODE=1 python3 tools/reference_player_fall_history_probe.py --extract",
+    "PYTHONDONTWRITEBYTECODE=1 python3 tools/reference_player_fall_history_probe.py --rerun",
+    "PYTHONDONTWRITEBYTECODE=1 python3 tools/test_player_fall_history.py",
+    "PYTHONDONTWRITEBYTECODE=1 python3 tools/test_player_fall_history.py --kernel"
+  ],
+  "runner": {
+    "bytes": 14993,
+    "file": "test_player_fall_history.py",
+    "sha1": "ca8544fd288bc84d8103c4e8ed32f8c9fcc4bffb",
+    "sha256": "f05bfc26a903e6ac82fd2576e1f0fb34e3dfde561babe3db60db62753fb1ea32"
+  },
+  "schema": "player-fall-history-native-summary-v1",
+  "scope": "Owned fall-distance field only. Actual normal-constructor movement/checkFallDamage/reset/accumulation-clamp observations, narrow no-damage/clip-miss admission and atomic policy errors.",
+  "source": {
+    "bytes": 7052,
+    "file": "player_fall_history.bend",
+    "sha1": "79c6a2340d27dfdadcdfc91f7f0abb0616a24e42",
+    "sha256": "b181c43948cc01e66b05e0edf9dbc0338e1ebdcfecbf86a525731a07aad26db3"
+  },
+  "status": "passed_neutral_history_projection"
+}
