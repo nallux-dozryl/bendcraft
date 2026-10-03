@@ -1,0 +1,850 @@
+{
+  "boundary": "Real official ZIP/JSON/PNG parsing and Bend baking, explicit zero-transform three-material fixture selection. Controlled normalized textures, white tint/light, cardinal shade, current CPU RGB arithmetic. Java geometry fixture + Pillow pixel inputs + independent CPU ray oracle; not production atlas/GPU/final vanilla frame. No Window launch.",
+  "build_seconds": 1249.5079501252621,
+  "canonical_report_sha256": "6298aa5ec6dab6301aecc2d8a908b38bea05be9f796181d3f14c40de0b598409",
+  "client_sha256": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d",
+  "command": "python3 tools/test_resource_frame.py --skip-kernel --reuse-build",
+  "configs": 18,
+  "kernel": {
+    "reason": "explicit --skip-kernel",
+    "status": "not-run"
+  },
+  "native_artifacts": {
+    "audit": {
+      "binary_bytes": 3742184,
+      "binary_sha256": "00b741966ef112931a756c80ef56926b2df786f0c3b8d340417b0c55a893a153",
+      "build_seconds": 439.1307527916506,
+      "entry": "build/resource-frame/audit-entry.bend",
+      "prepared_manifest_sha256": "dbf6b3e930e10fd062acd348201249e93160eacdbaadda1f548325e3ba8d2996",
+      "runner_sha256": "e21d6b4ca41cff1c730f1c6413e3b6bc3fa9b1a6e7b0867cc6b30fe7fe58a16e",
+      "sources": {
+        "build/resource-frame/audit-entry.bend": "e4627eb74b1dc7cf05773337cf6ceed829c663cf7bbf589a5618193789ed8e8c",
+        "build/resource-frame/draw-entry.bend": "31e304a4476c2318210f1f6a58e471328e9d4e504650cae80bfedf853fae9131",
+        "build/resource-frame/geometry-entry.bend": "d24a6f4a631190fa4af91a26bbcb8978c76498466adb90ca0c0ea02ab0e5a4e4",
+        "pinned_compiler_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+        "src/archive.bend": "c0f7b34a22726d220f6b867730b7d080d57d82c84d619c35721b9b8d18fa5d6e",
+        "src/big_uint.bend": "fbe5965ee16ee3d6864def33fbc6e5e4b1b9bc7da4735d99311c1a23c65e2444",
+        "src/block_bake.bend": "3611116e0ba63915d6013463c1640f83b6b80cb08e802f93be5f7eaa4d600595",
+        "src/block_model.bend": "08108bae9b89c6768de56bdddea158f3604b36c7de4ee0408815e2c7f48b97a1",
+        "src/block_resources.bend": "34fd345b8239dde6d097e6051839a28fef475f0f6d3d147c8dc1b4adb9512fb0",
+        "src/client_render.bend": "bb8f6057a02bfcb0583025f9e75fe41abc6804eb554c6d971df5c81618932947",
+        "src/compression.bend": "255cdff06a33050c7b0a48fdea75c1842ebe2dab0439cfe4f03d126d4edc20aa",
+        "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+        "src/float_parse.bend": "fe22007f0805f3c955fcaada88c1da76a3cceda74f0ff3840ae47af49a02c683",
+        "src/framing.bend": "307f95049df03d92687b7bd0eafb2cd566e660926510bb88163f9bc825fccdb5",
+        "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+        "src/mesh_render.bend": "90cc444e01b6a97f814a20a22a09b67e322b1eec4afc879e1d5b9b7f57f3b16c",
+        "src/png.bend": "8c24c14a250cf6dbdf0c2804e4b28bfebd7ef62ed5d9ee97a1d07094d4745f22",
+        "src/resource_frame.bend": "39c820e76998f7f718a7adcc1a25f1d3ebb454dbdd89b33712ab5f777c894baa",
+        "src/resource_json.bend": "271f9ace6304fdd42ced039ab2e7f95459eed1f20f011115f399b619f2bc6ffb",
+        "src/world_mesh.bend": "55ae3a8d0efcd1e69ac59c3db49b4a0db1359d3e655c93ca11ba04a36a72cc45",
+        "tests/resource_frame.bend": "fd9e63b4dd2c097b1d2bfd1fb59ffd077618e8a4d7211aae6266c98ef14b89df"
+      }
+    },
+    "draw": {
+      "binary_bytes": 3669656,
+      "binary_sha256": "258c2cc2da88961cf6419f9c8a810cbcbc82902a1d6a93fae9903910b0c5dae1",
+      "build_seconds": 519.3343726666644,
+      "entry": "build/resource-frame/draw-entry.bend",
+      "sources": {
+        "build/resource-frame/audit-entry.bend": "e4627eb74b1dc7cf05773337cf6ceed829c663cf7bbf589a5618193789ed8e8c",
+        "build/resource-frame/draw-entry.bend": "31e304a4476c2318210f1f6a58e471328e9d4e504650cae80bfedf853fae9131",
+        "build/resource-frame/geometry-entry.bend": "d24a6f4a631190fa4af91a26bbcb8978c76498466adb90ca0c0ea02ab0e5a4e4",
+        "pinned_compiler_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+        "src/archive.bend": "c0f7b34a22726d220f6b867730b7d080d57d82c84d619c35721b9b8d18fa5d6e",
+        "src/big_uint.bend": "fbe5965ee16ee3d6864def33fbc6e5e4b1b9bc7da4735d99311c1a23c65e2444",
+        "src/block_bake.bend": "3611116e0ba63915d6013463c1640f83b6b80cb08e802f93be5f7eaa4d600595",
+        "src/block_model.bend": "08108bae9b89c6768de56bdddea158f3604b36c7de4ee0408815e2c7f48b97a1",
+        "src/block_resources.bend": "34fd345b8239dde6d097e6051839a28fef475f0f6d3d147c8dc1b4adb9512fb0",
+        "src/client_render.bend": "bb8f6057a02bfcb0583025f9e75fe41abc6804eb554c6d971df5c81618932947",
+        "src/compression.bend": "255cdff06a33050c7b0a48fdea75c1842ebe2dab0439cfe4f03d126d4edc20aa",
+        "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+        "src/float_parse.bend": "fe22007f0805f3c955fcaada88c1da76a3cceda74f0ff3840ae47af49a02c683",
+        "src/framing.bend": "307f95049df03d92687b7bd0eafb2cd566e660926510bb88163f9bc825fccdb5",
+        "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+        "src/mesh_render.bend": "90cc444e01b6a97f814a20a22a09b67e322b1eec4afc879e1d5b9b7f57f3b16c",
+        "src/png.bend": "8c24c14a250cf6dbdf0c2804e4b28bfebd7ef62ed5d9ee97a1d07094d4745f22",
+        "src/resource_frame.bend": "39c820e76998f7f718a7adcc1a25f1d3ebb454dbdd89b33712ab5f777c894baa",
+        "src/resource_json.bend": "271f9ace6304fdd42ced039ab2e7f95459eed1f20f011115f399b619f2bc6ffb",
+        "src/world_mesh.bend": "55ae3a8d0efcd1e69ac59c3db49b4a0db1359d3e655c93ca11ba04a36a72cc45",
+        "tests/resource_frame.bend": "fd9e63b4dd2c097b1d2bfd1fb59ffd077618e8a4d7211aae6266c98ef14b89df"
+      }
+    },
+    "geometry": {
+      "binary_bytes": 3776328,
+      "binary_sha256": "7188132a8370caec8a2aa8aad8d652918c277da11df03016a8c3379e3d65cfd4",
+      "build_seconds": 291.0428246669471,
+      "entry": "build/resource-frame/geometry-entry.bend",
+      "prepared_manifest_sha256": "dbf6b3e930e10fd062acd348201249e93160eacdbaadda1f548325e3ba8d2996",
+      "runner_sha256": "e21d6b4ca41cff1c730f1c6413e3b6bc3fa9b1a6e7b0867cc6b30fe7fe58a16e",
+      "sources": {
+        "build/resource-frame/audit-entry.bend": "e4627eb74b1dc7cf05773337cf6ceed829c663cf7bbf589a5618193789ed8e8c",
+        "build/resource-frame/draw-entry.bend": "31e304a4476c2318210f1f6a58e471328e9d4e504650cae80bfedf853fae9131",
+        "build/resource-frame/geometry-entry.bend": "d24a6f4a631190fa4af91a26bbcb8978c76498466adb90ca0c0ea02ab0e5a4e4",
+        "pinned_compiler_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+        "src/archive.bend": "c0f7b34a22726d220f6b867730b7d080d57d82c84d619c35721b9b8d18fa5d6e",
+        "src/big_uint.bend": "fbe5965ee16ee3d6864def33fbc6e5e4b1b9bc7da4735d99311c1a23c65e2444",
+        "src/block_bake.bend": "3611116e0ba63915d6013463c1640f83b6b80cb08e802f93be5f7eaa4d600595",
+        "src/block_model.bend": "08108bae9b89c6768de56bdddea158f3604b36c7de4ee0408815e2c7f48b97a1",
+        "src/block_resources.bend": "34fd345b8239dde6d097e6051839a28fef475f0f6d3d147c8dc1b4adb9512fb0",
+        "src/client_render.bend": "bb8f6057a02bfcb0583025f9e75fe41abc6804eb554c6d971df5c81618932947",
+        "src/compression.bend": "255cdff06a33050c7b0a48fdea75c1842ebe2dab0439cfe4f03d126d4edc20aa",
+        "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+        "src/float_parse.bend": "fe22007f0805f3c955fcaada88c1da76a3cceda74f0ff3840ae47af49a02c683",
+        "src/framing.bend": "307f95049df03d92687b7bd0eafb2cd566e660926510bb88163f9bc825fccdb5",
+        "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+        "src/mesh_render.bend": "90cc444e01b6a97f814a20a22a09b67e322b1eec4afc879e1d5b9b7f57f3b16c",
+        "src/png.bend": "8c24c14a250cf6dbdf0c2804e4b28bfebd7ef62ed5d9ee97a1d07094d4745f22",
+        "src/resource_frame.bend": "39c820e76998f7f718a7adcc1a25f1d3ebb454dbdd89b33712ab5f777c894baa",
+        "src/resource_json.bend": "271f9ace6304fdd42ced039ab2e7f95459eed1f20f011115f399b619f2bc6ffb",
+        "src/world_mesh.bend": "55ae3a8d0efcd1e69ac59c3db49b4a0db1359d3e655c93ca11ba04a36a72cc45",
+        "tests/resource_frame.bend": "fd9e63b4dd2c097b1d2bfd1fb59ffd077618e8a4d7211aae6266c98ef14b89df"
+      }
+    }
+  },
+  "native_run_seconds": [
+    10.30135858245194,
+    8.749489041045308
+  ],
+  "native_source_fingerprint": {
+    "build/resource-frame/audit-entry.bend": "e4627eb74b1dc7cf05773337cf6ceed829c663cf7bbf589a5618193789ed8e8c",
+    "build/resource-frame/draw-entry.bend": "31e304a4476c2318210f1f6a58e471328e9d4e504650cae80bfedf853fae9131",
+    "build/resource-frame/geometry-entry.bend": "d24a6f4a631190fa4af91a26bbcb8978c76498466adb90ca0c0ea02ab0e5a4e4",
+    "pinned_compiler_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+    "src/archive.bend": "c0f7b34a22726d220f6b867730b7d080d57d82c84d619c35721b9b8d18fa5d6e",
+    "src/big_uint.bend": "fbe5965ee16ee3d6864def33fbc6e5e4b1b9bc7da4735d99311c1a23c65e2444",
+    "src/block_bake.bend": "3611116e0ba63915d6013463c1640f83b6b80cb08e802f93be5f7eaa4d600595",
+    "src/block_model.bend": "08108bae9b89c6768de56bdddea158f3604b36c7de4ee0408815e2c7f48b97a1",
+    "src/block_resources.bend": "34fd345b8239dde6d097e6051839a28fef475f0f6d3d147c8dc1b4adb9512fb0",
+    "src/client_render.bend": "bb8f6057a02bfcb0583025f9e75fe41abc6804eb554c6d971df5c81618932947",
+    "src/compression.bend": "255cdff06a33050c7b0a48fdea75c1842ebe2dab0439cfe4f03d126d4edc20aa",
+    "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "src/float_parse.bend": "fe22007f0805f3c955fcaada88c1da76a3cceda74f0ff3840ae47af49a02c683",
+    "src/framing.bend": "307f95049df03d92687b7bd0eafb2cd566e660926510bb88163f9bc825fccdb5",
+    "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+    "src/mesh_render.bend": "90cc444e01b6a97f814a20a22a09b67e322b1eec4afc879e1d5b9b7f57f3b16c",
+    "src/png.bend": "8c24c14a250cf6dbdf0c2804e4b28bfebd7ef62ed5d9ee97a1d07094d4745f22",
+    "src/resource_frame.bend": "39c820e76998f7f718a7adcc1a25f1d3ebb454dbdd89b33712ab5f777c894baa",
+    "src/resource_json.bend": "271f9ace6304fdd42ced039ab2e7f95459eed1f20f011115f399b619f2bc6ffb",
+    "src/world_mesh.bend": "55ae3a8d0efcd1e69ac59c3db49b4a0db1359d3e655c93ca11ba04a36a72cc45",
+    "tests/resource_frame.bend": "fd9e63b4dd2c097b1d2bfd1fb59ffd077618e8a4d7211aae6266c98ef14b89df"
+  },
+  "ordinary": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.",
+  "passes": [
+    [
+      {
+        "actual_java_baked_quads": 18,
+        "draw_rejections": 10,
+        "frames": [
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "base",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "edited",
+            "rgb_sha256": "fe671a4ff3900692627d1c4c64941ed913be0320147a2fb1e0beaffa2af3f00a",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "tick_only",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "moved",
+            "rgb_sha256": "94e76ce1e4a897e82aba01d8998365fa6cd16378450e8521ffabb84f3d7104e3",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "look",
+            "rgb_sha256": "f4b040c39c9f959c3c789617d4262b93c2cd7d71f0849493810c3fc4ed1da830",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 7,
+            "height": 48,
+            "id": "large64",
+            "rgb_sha256": "fdf3b1ad93cbe864fa2b3fbdaa5579d805796112b53084064131ee1d0d4573ea",
+            "width": 64
+          },
+          {
+            "draw_readback_crc_ms": 27,
+            "height": 96,
+            "id": "large128",
+            "rgb_sha256": "a17dac434eb27d402a1fcf06f1ea403af2e1d2b8d8fd95c07e7259845bc16ee2",
+            "width": 128
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "far_positive",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 3,
+            "height": 24,
+            "id": "far_negative",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "far_mixed",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 1,
+            "height": 24,
+            "id": "empty",
+            "rgb_sha256": "fc1401b4e1717368d877d3a3f5cf18df31b36125e9e27308c68b39abf07b4d92",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "unknown_state_recovery",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 3,
+            "height": 24,
+            "id": "air_state_recovery",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 3,
+            "height": 24,
+            "id": "absolute_camera_recovery",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "nan_camera_recovery",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "low_dimensions_recovery",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 3,
+            "height": 24,
+            "id": "high_dimensions_recovery",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "nan_origin_recovery",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "translated_bound_recovery",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "quad_budget_recovery",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "texture_validation_recovery",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          }
+        ],
+        "id": "official",
+        "rendered_pixels": 29952,
+        "texels": 768,
+        "translated_quads": 4686
+      },
+      {
+        "actual_java_baked_quads": 18,
+        "draw_rejections": 0,
+        "frames": [
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "remapped",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "remapped_edited",
+            "rgb_sha256": "fe671a4ff3900692627d1c4c64941ed913be0320147a2fb1e0beaffa2af3f00a",
+            "width": 32
+          }
+        ],
+        "id": "remapped",
+        "rendered_pixels": 1536,
+        "texels": 768,
+        "translated_quads": 474
+      },
+      {
+        "actual_java_baked_quads": 18,
+        "draw_rejections": 0,
+        "frames": [
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "remapped_extremes",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 3,
+            "height": 24,
+            "id": "remapped_extremes_edited",
+            "rgb_sha256": "fe671a4ff3900692627d1c4c64941ed913be0320147a2fb1e0beaffa2af3f00a",
+            "width": 32
+          }
+        ],
+        "id": "remapped_extremes",
+        "rendered_pixels": 1536,
+        "texels": 768,
+        "translated_quads": 474
+      },
+      {
+        "actual_java_baked_quads": 18,
+        "draw_rejections": 0,
+        "frames": [
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "subset",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          }
+        ],
+        "id": "subset",
+        "rendered_pixels": 768,
+        "texels": 768,
+        "translated_quads": 234
+      },
+      {
+        "id": "missing_model",
+        "load_rejection": "Resource:MissingResource:minecraft:block/stone:exact ZIP entry was not found"
+      },
+      {
+        "id": "missing_texture",
+        "load_rejection": "Resource:MissingResource:minecraft:block/dirt:exact ZIP entry was not found"
+      },
+      {
+        "id": "malformed_model",
+        "load_rejection": "Resource:JSON:minecraft:block/stone:expected object member name at offset 1"
+      },
+      {
+        "id": "parent_cycle",
+        "load_rejection": "Resource:ParentCycle:minecraft:block/stone:recursive parent chain"
+      },
+      {
+        "id": "frozen_metadata",
+        "load_rejection": "Resource:UnsupportedMetadata:minecraft:block/stone:unsupported sprite metadata key: texture"
+      },
+      {
+        "id": "png_crc",
+        "load_rejection": "Resource:PNG:CRC:minecraft:block/stone:PNG decode rejected resource"
+      },
+      {
+        "id": "unsupported_bake",
+        "load_rejection": "Bake:Unsupported:ElementEuler"
+      },
+      {
+        "id": "missing_archive",
+        "load_rejection": "Resource:ArchiveOpen:archive:FileIO at byte 0: host error 2: No such file or directory"
+      },
+      {
+        "id": "duplicate_palette_01",
+        "load_rejection": "Palette:DuplicateState"
+      },
+      {
+        "id": "duplicate_palette_02",
+        "load_rejection": "Palette:DuplicateState"
+      },
+      {
+        "id": "duplicate_palette_03",
+        "load_rejection": "Palette:DuplicateState"
+      },
+      {
+        "id": "duplicate_palette_12",
+        "load_rejection": "Palette:DuplicateState"
+      },
+      {
+        "id": "duplicate_palette_13",
+        "load_rejection": "Palette:DuplicateState"
+      },
+      {
+        "id": "duplicate_palette_23",
+        "load_rejection": "Palette:DuplicateState"
+      }
+    ],
+    [
+      {
+        "actual_java_baked_quads": 18,
+        "draw_rejections": 10,
+        "frames": [
+          {
+            "draw_readback_crc_ms": 3,
+            "height": 24,
+            "id": "base",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "edited",
+            "rgb_sha256": "fe671a4ff3900692627d1c4c64941ed913be0320147a2fb1e0beaffa2af3f00a",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "tick_only",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "moved",
+            "rgb_sha256": "94e76ce1e4a897e82aba01d8998365fa6cd16378450e8521ffabb84f3d7104e3",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "look",
+            "rgb_sha256": "f4b040c39c9f959c3c789617d4262b93c2cd7d71f0849493810c3fc4ed1da830",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 8,
+            "height": 48,
+            "id": "large64",
+            "rgb_sha256": "fdf3b1ad93cbe864fa2b3fbdaa5579d805796112b53084064131ee1d0d4573ea",
+            "width": 64
+          },
+          {
+            "draw_readback_crc_ms": 27,
+            "height": 96,
+            "id": "large128",
+            "rgb_sha256": "a17dac434eb27d402a1fcf06f1ea403af2e1d2b8d8fd95c07e7259845bc16ee2",
+            "width": 128
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "far_positive",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 3,
+            "height": 24,
+            "id": "far_negative",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "far_mixed",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 1,
+            "height": 24,
+            "id": "empty",
+            "rgb_sha256": "fc1401b4e1717368d877d3a3f5cf18df31b36125e9e27308c68b39abf07b4d92",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "unknown_state_recovery",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "air_state_recovery",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 3,
+            "height": 24,
+            "id": "absolute_camera_recovery",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "nan_camera_recovery",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 3,
+            "height": 24,
+            "id": "low_dimensions_recovery",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "high_dimensions_recovery",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "nan_origin_recovery",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 3,
+            "height": 24,
+            "id": "translated_bound_recovery",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "quad_budget_recovery",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "texture_validation_recovery",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          }
+        ],
+        "id": "official",
+        "rendered_pixels": 29952,
+        "texels": 768,
+        "translated_quads": 4686
+      },
+      {
+        "actual_java_baked_quads": 18,
+        "draw_rejections": 0,
+        "frames": [
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "remapped",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "remapped_edited",
+            "rgb_sha256": "fe671a4ff3900692627d1c4c64941ed913be0320147a2fb1e0beaffa2af3f00a",
+            "width": 32
+          }
+        ],
+        "id": "remapped",
+        "rendered_pixels": 1536,
+        "texels": 768,
+        "translated_quads": 474
+      },
+      {
+        "actual_java_baked_quads": 18,
+        "draw_rejections": 0,
+        "frames": [
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "remapped_extremes",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "remapped_extremes_edited",
+            "rgb_sha256": "fe671a4ff3900692627d1c4c64941ed913be0320147a2fb1e0beaffa2af3f00a",
+            "width": 32
+          }
+        ],
+        "id": "remapped_extremes",
+        "rendered_pixels": 1536,
+        "texels": 768,
+        "translated_quads": 474
+      },
+      {
+        "actual_java_baked_quads": 18,
+        "draw_rejections": 0,
+        "frames": [
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "subset",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          }
+        ],
+        "id": "subset",
+        "rendered_pixels": 768,
+        "texels": 768,
+        "translated_quads": 234
+      },
+      {
+        "id": "missing_model",
+        "load_rejection": "Resource:MissingResource:minecraft:block/stone:exact ZIP entry was not found"
+      },
+      {
+        "id": "missing_texture",
+        "load_rejection": "Resource:MissingResource:minecraft:block/dirt:exact ZIP entry was not found"
+      },
+      {
+        "id": "malformed_model",
+        "load_rejection": "Resource:JSON:minecraft:block/stone:expected object member name at offset 1"
+      },
+      {
+        "id": "parent_cycle",
+        "load_rejection": "Resource:ParentCycle:minecraft:block/stone:recursive parent chain"
+      },
+      {
+        "id": "frozen_metadata",
+        "load_rejection": "Resource:UnsupportedMetadata:minecraft:block/stone:unsupported sprite metadata key: texture"
+      },
+      {
+        "id": "png_crc",
+        "load_rejection": "Resource:PNG:CRC:minecraft:block/stone:PNG decode rejected resource"
+      },
+      {
+        "id": "unsupported_bake",
+        "load_rejection": "Bake:Unsupported:ElementEuler"
+      },
+      {
+        "id": "missing_archive",
+        "load_rejection": "Resource:ArchiveOpen:archive:FileIO at byte 0: host error 2: No such file or directory"
+      },
+      {
+        "id": "duplicate_palette_01",
+        "load_rejection": "Palette:DuplicateState"
+      },
+      {
+        "id": "duplicate_palette_02",
+        "load_rejection": "Palette:DuplicateState"
+      },
+      {
+        "id": "duplicate_palette_03",
+        "load_rejection": "Palette:DuplicateState"
+      },
+      {
+        "id": "duplicate_palette_12",
+        "load_rejection": "Palette:DuplicateState"
+      },
+      {
+        "id": "duplicate_palette_13",
+        "load_rejection": "Palette:DuplicateState"
+      },
+      {
+        "id": "duplicate_palette_23",
+        "load_rejection": "Palette:DuplicateState"
+      }
+    ]
+  ],
+  "pillow": "12.3.0",
+  "prepared_input_generation": {
+    "archives": {
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-frame/absent.zip": {
+        "absent": true
+      },
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-frame/frozen_metadata.zip": {
+        "bytes": 2959,
+        "selected_contents": {
+          "assets/minecraft/models/block/block.json": "212df16c5aa3e6aef3f4d3e080532d28a86cf9b2071618e4ca587ee9ef3c6d09",
+          "assets/minecraft/models/block/cube.json": "3e4aacd02e816aeba38f83076596e18ded4cf49c01e17c62d1fce79850ffb84e",
+          "assets/minecraft/models/block/cube_all.json": "be3205d629ffb9e03834c3d1d083f8a2c62e9f9ae80820755129408634e9144a",
+          "assets/minecraft/models/block/dirt.json": "c7a496ef02d69788d589fac7d2d2465e36eeb8a187cb8b23612310f3945c4868",
+          "assets/minecraft/models/block/oak_planks.json": "79b1146adb4eff1b405c0a18384e3290fa171edc1347f64fef50df3df4df939d",
+          "assets/minecraft/models/block/stone.json": "c0734082e7f1e2f44809737b2fbe1136fc7304bde7232e45fbe921884a4a327e",
+          "assets/minecraft/textures/block/dirt.png": "67197d5371efc3ca1638217c38349665dbd5a977b47bfb20075c858dff87d510",
+          "assets/minecraft/textures/block/oak_planks.png": "65665943ef9c8bcf63fc67d2083ed0c50243f724106d0e4bb1abea5d921b16d3",
+          "assets/minecraft/textures/block/stone.png": "b5e10adc72442bfb257ce7ba0b9bbe36475a0c8cdfec89b80dc9517203ff3e9f",
+          "assets/minecraft/textures/block/stone.png.mcmeta": "e9f05c2e8f9b6940cf59e1a1fe0349449fb70339ef0a08a012a70ba37cf5392f"
+        },
+        "sha256": "4a2dcbbb3334c05444b1e55805cb8d405af911ea71a5638d572d22a317eb2fc5"
+      },
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-frame/malformed_model.zip": {
+        "bytes": 2680,
+        "selected_contents": {
+          "assets/minecraft/models/block/block.json": "212df16c5aa3e6aef3f4d3e080532d28a86cf9b2071618e4ca587ee9ef3c6d09",
+          "assets/minecraft/models/block/cube.json": "3e4aacd02e816aeba38f83076596e18ded4cf49c01e17c62d1fce79850ffb84e",
+          "assets/minecraft/models/block/cube_all.json": "be3205d629ffb9e03834c3d1d083f8a2c62e9f9ae80820755129408634e9144a",
+          "assets/minecraft/models/block/dirt.json": "c7a496ef02d69788d589fac7d2d2465e36eeb8a187cb8b23612310f3945c4868",
+          "assets/minecraft/models/block/oak_planks.json": "79b1146adb4eff1b405c0a18384e3290fa171edc1347f64fef50df3df4df939d",
+          "assets/minecraft/models/block/stone.json": "578aa9d10ab9fa1cb438fe80d3ff19b67c49275766380e0c99e63a7f38dee5cb",
+          "assets/minecraft/textures/block/dirt.png": "67197d5371efc3ca1638217c38349665dbd5a977b47bfb20075c858dff87d510",
+          "assets/minecraft/textures/block/oak_planks.png": "65665943ef9c8bcf63fc67d2083ed0c50243f724106d0e4bb1abea5d921b16d3",
+          "assets/minecraft/textures/block/stone.png": "b5e10adc72442bfb257ce7ba0b9bbe36475a0c8cdfec89b80dc9517203ff3e9f"
+        },
+        "sha256": "907652f7576cb00932d6a4098752b8dca1fa7c24b77fc82b0ebd1a4d12a6e7c0"
+      },
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-frame/missing_model.zip": {
+        "bytes": 2517,
+        "selected_contents": {
+          "assets/minecraft/models/block/block.json": "212df16c5aa3e6aef3f4d3e080532d28a86cf9b2071618e4ca587ee9ef3c6d09",
+          "assets/minecraft/models/block/cube.json": "3e4aacd02e816aeba38f83076596e18ded4cf49c01e17c62d1fce79850ffb84e",
+          "assets/minecraft/models/block/cube_all.json": "be3205d629ffb9e03834c3d1d083f8a2c62e9f9ae80820755129408634e9144a",
+          "assets/minecraft/models/block/dirt.json": "c7a496ef02d69788d589fac7d2d2465e36eeb8a187cb8b23612310f3945c4868",
+          "assets/minecraft/models/block/oak_planks.json": "79b1146adb4eff1b405c0a18384e3290fa171edc1347f64fef50df3df4df939d",
+          "assets/minecraft/textures/block/dirt.png": "67197d5371efc3ca1638217c38349665dbd5a977b47bfb20075c858dff87d510",
+          "assets/minecraft/textures/block/oak_planks.png": "65665943ef9c8bcf63fc67d2083ed0c50243f724106d0e4bb1abea5d921b16d3",
+          "assets/minecraft/textures/block/stone.png": "b5e10adc72442bfb257ce7ba0b9bbe36475a0c8cdfec89b80dc9517203ff3e9f"
+        },
+        "sha256": "4521c82c1d7e62251ab7d320a68b6e1e20d7ccb5057263e5dd8a70aebe3d69ce"
+      },
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-frame/missing_texture.zip": {
+        "bytes": 2395,
+        "selected_contents": {
+          "assets/minecraft/models/block/block.json": "212df16c5aa3e6aef3f4d3e080532d28a86cf9b2071618e4ca587ee9ef3c6d09",
+          "assets/minecraft/models/block/cube.json": "3e4aacd02e816aeba38f83076596e18ded4cf49c01e17c62d1fce79850ffb84e",
+          "assets/minecraft/models/block/cube_all.json": "be3205d629ffb9e03834c3d1d083f8a2c62e9f9ae80820755129408634e9144a",
+          "assets/minecraft/models/block/dirt.json": "c7a496ef02d69788d589fac7d2d2465e36eeb8a187cb8b23612310f3945c4868",
+          "assets/minecraft/models/block/oak_planks.json": "79b1146adb4eff1b405c0a18384e3290fa171edc1347f64fef50df3df4df939d",
+          "assets/minecraft/models/block/stone.json": "c0734082e7f1e2f44809737b2fbe1136fc7304bde7232e45fbe921884a4a327e",
+          "assets/minecraft/textures/block/oak_planks.png": "65665943ef9c8bcf63fc67d2083ed0c50243f724106d0e4bb1abea5d921b16d3",
+          "assets/minecraft/textures/block/stone.png": "b5e10adc72442bfb257ce7ba0b9bbe36475a0c8cdfec89b80dc9517203ff3e9f"
+        },
+        "sha256": "9a6f87b4a923a2ffbbd6bb75e283456784cb9f0855f80d194612d654f48675ee"
+      },
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-frame/official-subset.zip": {
+        "bytes": 2747,
+        "selected_contents": {
+          "assets/minecraft/models/block/block.json": "212df16c5aa3e6aef3f4d3e080532d28a86cf9b2071618e4ca587ee9ef3c6d09",
+          "assets/minecraft/models/block/cube.json": "3e4aacd02e816aeba38f83076596e18ded4cf49c01e17c62d1fce79850ffb84e",
+          "assets/minecraft/models/block/cube_all.json": "be3205d629ffb9e03834c3d1d083f8a2c62e9f9ae80820755129408634e9144a",
+          "assets/minecraft/models/block/dirt.json": "c7a496ef02d69788d589fac7d2d2465e36eeb8a187cb8b23612310f3945c4868",
+          "assets/minecraft/models/block/oak_planks.json": "79b1146adb4eff1b405c0a18384e3290fa171edc1347f64fef50df3df4df939d",
+          "assets/minecraft/models/block/stone.json": "c0734082e7f1e2f44809737b2fbe1136fc7304bde7232e45fbe921884a4a327e",
+          "assets/minecraft/textures/block/dirt.png": "67197d5371efc3ca1638217c38349665dbd5a977b47bfb20075c858dff87d510",
+          "assets/minecraft/textures/block/oak_planks.png": "65665943ef9c8bcf63fc67d2083ed0c50243f724106d0e4bb1abea5d921b16d3",
+          "assets/minecraft/textures/block/stone.png": "b5e10adc72442bfb257ce7ba0b9bbe36475a0c8cdfec89b80dc9517203ff3e9f"
+        },
+        "sha256": "159e96b22228f8f1d4c53a6c7b3e854c150a6a26d5c01ddf4432a9fd79fa5ed0"
+      },
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-frame/parent_cycle.zip": {
+        "bytes": 2709,
+        "selected_contents": {
+          "assets/minecraft/models/block/block.json": "212df16c5aa3e6aef3f4d3e080532d28a86cf9b2071618e4ca587ee9ef3c6d09",
+          "assets/minecraft/models/block/cube.json": "3e4aacd02e816aeba38f83076596e18ded4cf49c01e17c62d1fce79850ffb84e",
+          "assets/minecraft/models/block/cube_all.json": "be3205d629ffb9e03834c3d1d083f8a2c62e9f9ae80820755129408634e9144a",
+          "assets/minecraft/models/block/dirt.json": "c7a496ef02d69788d589fac7d2d2465e36eeb8a187cb8b23612310f3945c4868",
+          "assets/minecraft/models/block/oak_planks.json": "79b1146adb4eff1b405c0a18384e3290fa171edc1347f64fef50df3df4df939d",
+          "assets/minecraft/models/block/stone.json": "7756cf8282d48f4e17306efb9e6139366458687064bf7b11ab9fe400b80468e2",
+          "assets/minecraft/textures/block/dirt.png": "67197d5371efc3ca1638217c38349665dbd5a977b47bfb20075c858dff87d510",
+          "assets/minecraft/textures/block/oak_planks.png": "65665943ef9c8bcf63fc67d2083ed0c50243f724106d0e4bb1abea5d921b16d3",
+          "assets/minecraft/textures/block/stone.png": "b5e10adc72442bfb257ce7ba0b9bbe36475a0c8cdfec89b80dc9517203ff3e9f"
+        },
+        "sha256": "53f00555cf117129c6bdc5fec44f3f8a0135225703820cb49f3ba7ebf265f41f"
+      },
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-frame/png_crc.zip": {
+        "bytes": 2747,
+        "selected_contents": {
+          "assets/minecraft/models/block/block.json": "212df16c5aa3e6aef3f4d3e080532d28a86cf9b2071618e4ca587ee9ef3c6d09",
+          "assets/minecraft/models/block/cube.json": "3e4aacd02e816aeba38f83076596e18ded4cf49c01e17c62d1fce79850ffb84e",
+          "assets/minecraft/models/block/cube_all.json": "be3205d629ffb9e03834c3d1d083f8a2c62e9f9ae80820755129408634e9144a",
+          "assets/minecraft/models/block/dirt.json": "c7a496ef02d69788d589fac7d2d2465e36eeb8a187cb8b23612310f3945c4868",
+          "assets/minecraft/models/block/oak_planks.json": "79b1146adb4eff1b405c0a18384e3290fa171edc1347f64fef50df3df4df939d",
+          "assets/minecraft/models/block/stone.json": "c0734082e7f1e2f44809737b2fbe1136fc7304bde7232e45fbe921884a4a327e",
+          "assets/minecraft/textures/block/dirt.png": "67197d5371efc3ca1638217c38349665dbd5a977b47bfb20075c858dff87d510",
+          "assets/minecraft/textures/block/oak_planks.png": "65665943ef9c8bcf63fc67d2083ed0c50243f724106d0e4bb1abea5d921b16d3",
+          "assets/minecraft/textures/block/stone.png": "6f66c794d9fbda50659875fb58f7df056760ac565ea4b0dd230e7d5e4a714371"
+        },
+        "sha256": "5dc26dab9e04574da7aaf4016bc78353aa8777452bf034c21aee66ff43f32ece"
+      },
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-frame/unsupported_bake.zip": {
+        "bytes": 2859,
+        "selected_contents": {
+          "assets/minecraft/models/block/block.json": "212df16c5aa3e6aef3f4d3e080532d28a86cf9b2071618e4ca587ee9ef3c6d09",
+          "assets/minecraft/models/block/cube.json": "3e4aacd02e816aeba38f83076596e18ded4cf49c01e17c62d1fce79850ffb84e",
+          "assets/minecraft/models/block/cube_all.json": "be3205d629ffb9e03834c3d1d083f8a2c62e9f9ae80820755129408634e9144a",
+          "assets/minecraft/models/block/dirt.json": "c7a496ef02d69788d589fac7d2d2465e36eeb8a187cb8b23612310f3945c4868",
+          "assets/minecraft/models/block/oak_planks.json": "79b1146adb4eff1b405c0a18384e3290fa171edc1347f64fef50df3df4df939d",
+          "assets/minecraft/models/block/stone.json": "f3736ea494133406a74e6662c6a4ac070c373fded9b966025400a5b4a55f3d10",
+          "assets/minecraft/textures/block/dirt.png": "67197d5371efc3ca1638217c38349665dbd5a977b47bfb20075c858dff87d510",
+          "assets/minecraft/textures/block/oak_planks.png": "65665943ef9c8bcf63fc67d2083ed0c50243f724106d0e4bb1abea5d921b16d3",
+          "assets/minecraft/textures/block/stone.png": "b5e10adc72442bfb257ce7ba0b9bbe36475a0c8cdfec89b80dc9517203ff3e9f"
+        },
+        "sha256": "86c75145a5cf8240b10d301e14a7308d0b771cc8f292461c14ec0c73dccb7caf"
+      },
+      "/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar": {
+        "bytes": 41483720,
+        "selected_contents": {
+          "assets/minecraft/models/block/block.json": "212df16c5aa3e6aef3f4d3e080532d28a86cf9b2071618e4ca587ee9ef3c6d09",
+          "assets/minecraft/models/block/cube.json": "3e4aacd02e816aeba38f83076596e18ded4cf49c01e17c62d1fce79850ffb84e",
+          "assets/minecraft/models/block/cube_all.json": "be3205d629ffb9e03834c3d1d083f8a2c62e9f9ae80820755129408634e9144a",
+          "assets/minecraft/models/block/dirt.json": "c7a496ef02d69788d589fac7d2d2465e36eeb8a187cb8b23612310f3945c4868",
+          "assets/minecraft/models/block/oak_planks.json": "79b1146adb4eff1b405c0a18384e3290fa171edc1347f64fef50df3df4df939d",
+          "assets/minecraft/models/block/stone.json": "c0734082e7f1e2f44809737b2fbe1136fc7304bde7232e45fbe921884a4a327e",
+          "assets/minecraft/textures/block/dirt.png": "67197d5371efc3ca1638217c38349665dbd5a977b47bfb20075c858dff87d510",
+          "assets/minecraft/textures/block/oak_planks.png": "65665943ef9c8bcf63fc67d2083ed0c50243f724106d0e4bb1abea5d921b16d3",
+          "assets/minecraft/textures/block/stone.png": "b5e10adc72442bfb257ce7ba0b9bbe36475a0c8cdfec89b80dc9517203ff3e9f"
+        },
+        "sha256": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d"
+      }
+    },
+    "canonical_cases_sha256": "46fca7c87da2662a3c69802622a4343129d109e49b295ca23ab1a091045f5599",
+    "case_file_sha256": "5971ab1c7e3e0662d884a9754b47b83d2298b63d3d129aa3b72f7b0c6fd72cf8",
+    "expected_labels_sha256": "845f5976d1cc68bca2c180aba612417e89ba9cedc398c03b130ff114ca09f161",
+    "semantic_inputs_sha256": "9a491e52e5a59ba543c84a1fd5a5f81d68032b6d8099d8795fc1f68e3d4424a7"
+  },
+  "prepared_manifest_sha256": "dbf6b3e930e10fd062acd348201249e93160eacdbaadda1f548325e3ba8d2996",
+  "reference_sha256": "3cbe8aa7780f14c1b37159a885710b04680e3b6c4ffa4975b4d8297015f11e7e",
+  "source_sha256": {
+    "src/resource_frame.bend": "39c820e76998f7f718a7adcc1a25f1d3ebb454dbdd89b33712ab5f777c894baa",
+    "tests/resource_frame.bend": "fd9e63b4dd2c097b1d2bfd1fb59ffd077618e8a4d7211aae6266c98ef14b89df",
+    "tools/test_resource_frame.py": "e21d6b4ca41cff1c730f1c6413e3b6bc3fa9b1a6e7b0867cc6b30fe7fe58a16e"
+  },
+  "status": "passed_bounded_domain",
+  "two_native_runs_equal": true
+}

@@ -44,7 +44,7 @@ declared interfaces; integration evidence determines subsequent work.
 | --- | --- | --- |
 | Lead | `player_runtime.bend`, `player_session.bend`, `player_storage.bend`, `player_scene.bend`, `player_client.bend`, `client_presenter.bend` and window input | Verified plain Player runtime and saved-session TCP/MCP/restart composition; one W body plus metadata, Tables, support and complete Controller. Continuous entry passes 22 bounded launches with exact API/save/restart checks; visible presentation and physical focused input remain required |
 | World bridge | Completed PW/SW; new `local_tick_world.bend` | Verified owned support/context reads; LocalPlayer prepare override before checked travel/finish |
-| Client/render | Completed BR/texture metadata; new `resource_frame.bend` | Real ZIP/model/bake/world-mesh/frame composition and retained Assets; metadata consumer integration remains separate |
+| Client/render | Completed BR/texture metadata and `resource_frame.bend`; new `sprite_stitch.bend` | Resource/frame draw, audit and geometry pass twice on three frozen artifacts; actual four-argument Java atlas stitcher and metadata consumer integration remain separate |
 | Player motion | Completed support, LocalPlayer input, collision hooks and `local_collision_world.bend` | Exact minor arithmetic and edge hooks pass native/kernel; actual Core read/yield composition passes native with explicit entity/border admission. Fall history and lifecycle consumers remain open; full world-composition kernel is unresolved |
 | Model interpretation | Completed `blockstate_model.bend`; presenter integration test | Exact selector/multipart/ordered state semantics; 28 hidden actor/window/failure cleanup executions pass; actual visible focused input remains required |
 | Model bake | Completed Bake/Choice/Record/Session verification | Exact quads, RNG consumption and atomic raw degree save composition pass; complete player lifecycle persistence remains open |
@@ -85,7 +85,9 @@ ResourceFrame drawing, asset audit and geometry. Their former combined attempts
 reached 600-second bounds without artifacts. WorldVisibility now passes through
 its retained exact-C O0 sampler and separately built O3 geometry; this mixed
 optimization result establishes behavior, not release performance. ResourceFrame
-drawing passes and its audit build succeeded; remaining comparisons are queued.
+drawing, audit and geometry now pass the complete retained-artifact suite twice,
+including all independent pixels and owner-recovery checks. Audit C/actual native
+invocation were missed and remain unobserved; no provenance-filling re-emission ran.
 The LocalPlayer world harness hit the installed compiler's 247-word continuation
 limit, including its split motion entry. Read-only diagnostics identified both
 finish injection and motion reporting captures. Harness-only boxing and a small

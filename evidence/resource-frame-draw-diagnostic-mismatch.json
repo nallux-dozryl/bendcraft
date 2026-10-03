@@ -1,0 +1,621 @@
+{
+  "canonical_draw_report_sha256": "e86fac5ef6cfefe60226d034116768d0d02c30392247ce8d5eaf633f6878c828",
+  "client_sha256": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d",
+  "completed_utc": "2026-10-03T22:24:09.229050+00:00",
+  "configs": 18,
+  "fixture_mismatches": [
+    {
+      "actual": "WorldMesh:BlockOrigin:0",
+      "expected": "WorldMesh:BlockOrigin:1",
+      "id": "nan_origin",
+      "pass": 0
+    },
+    {
+      "actual": "WorldMesh:BlockOrigin:0",
+      "expected": "WorldMesh:BlockOrigin:1",
+      "id": "nan_origin",
+      "pass": 1
+    }
+  ],
+  "native_artifact": {
+    "binary_bytes": 3669656,
+    "binary_sha256": "258c2cc2da88961cf6419f9c8a810cbcbc82902a1d6a93fae9903910b0c5dae1",
+    "build_seconds": 519.3343726666644,
+    "entry": "build/resource-frame/draw-entry.bend",
+    "sources": {
+      "build/resource-frame/audit-entry.bend": "e4627eb74b1dc7cf05773337cf6ceed829c663cf7bbf589a5618193789ed8e8c",
+      "build/resource-frame/draw-entry.bend": "31e304a4476c2318210f1f6a58e471328e9d4e504650cae80bfedf853fae9131",
+      "build/resource-frame/geometry-entry.bend": "d24a6f4a631190fa4af91a26bbcb8978c76498466adb90ca0c0ea02ab0e5a4e4",
+      "pinned_compiler_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+      "src/archive.bend": "c0f7b34a22726d220f6b867730b7d080d57d82c84d619c35721b9b8d18fa5d6e",
+      "src/big_uint.bend": "fbe5965ee16ee3d6864def33fbc6e5e4b1b9bc7da4735d99311c1a23c65e2444",
+      "src/block_bake.bend": "3611116e0ba63915d6013463c1640f83b6b80cb08e802f93be5f7eaa4d600595",
+      "src/block_model.bend": "08108bae9b89c6768de56bdddea158f3604b36c7de4ee0408815e2c7f48b97a1",
+      "src/block_resources.bend": "34fd345b8239dde6d097e6051839a28fef475f0f6d3d147c8dc1b4adb9512fb0",
+      "src/client_render.bend": "bb8f6057a02bfcb0583025f9e75fe41abc6804eb554c6d971df5c81618932947",
+      "src/compression.bend": "255cdff06a33050c7b0a48fdea75c1842ebe2dab0439cfe4f03d126d4edc20aa",
+      "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+      "src/float_parse.bend": "fe22007f0805f3c955fcaada88c1da76a3cceda74f0ff3840ae47af49a02c683",
+      "src/framing.bend": "307f95049df03d92687b7bd0eafb2cd566e660926510bb88163f9bc825fccdb5",
+      "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+      "src/mesh_render.bend": "90cc444e01b6a97f814a20a22a09b67e322b1eec4afc879e1d5b9b7f57f3b16c",
+      "src/png.bend": "8c24c14a250cf6dbdf0c2804e4b28bfebd7ef62ed5d9ee97a1d07094d4745f22",
+      "src/resource_frame.bend": "39c820e76998f7f718a7adcc1a25f1d3ebb454dbdd89b33712ab5f777c894baa",
+      "src/resource_json.bend": "271f9ace6304fdd42ced039ab2e7f95459eed1f20f011115f399b619f2bc6ffb",
+      "src/world_mesh.bend": "55ae3a8d0efcd1e69ac59c3db49b4a0db1359d3e655c93ca11ba04a36a72cc45",
+      "tests/resource_frame.bend": "fd9e63b4dd2c097b1d2bfd1fb59ffd077618e8a4d7211aae6266c98ef14b89df"
+    }
+  },
+  "native_run_seconds": [
+    3.9384472081437707,
+    3.922769583761692
+  ],
+  "native_source_fingerprint": {
+    "build/resource-frame/audit-entry.bend": "e4627eb74b1dc7cf05773337cf6ceed829c663cf7bbf589a5618193789ed8e8c",
+    "build/resource-frame/draw-entry.bend": "31e304a4476c2318210f1f6a58e471328e9d4e504650cae80bfedf853fae9131",
+    "build/resource-frame/geometry-entry.bend": "d24a6f4a631190fa4af91a26bbcb8978c76498466adb90ca0c0ea02ab0e5a4e4",
+    "pinned_compiler_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+    "src/archive.bend": "c0f7b34a22726d220f6b867730b7d080d57d82c84d619c35721b9b8d18fa5d6e",
+    "src/big_uint.bend": "fbe5965ee16ee3d6864def33fbc6e5e4b1b9bc7da4735d99311c1a23c65e2444",
+    "src/block_bake.bend": "3611116e0ba63915d6013463c1640f83b6b80cb08e802f93be5f7eaa4d600595",
+    "src/block_model.bend": "08108bae9b89c6768de56bdddea158f3604b36c7de4ee0408815e2c7f48b97a1",
+    "src/block_resources.bend": "34fd345b8239dde6d097e6051839a28fef475f0f6d3d147c8dc1b4adb9512fb0",
+    "src/client_render.bend": "bb8f6057a02bfcb0583025f9e75fe41abc6804eb554c6d971df5c81618932947",
+    "src/compression.bend": "255cdff06a33050c7b0a48fdea75c1842ebe2dab0439cfe4f03d126d4edc20aa",
+    "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "src/float_parse.bend": "fe22007f0805f3c955fcaada88c1da76a3cceda74f0ff3840ae47af49a02c683",
+    "src/framing.bend": "307f95049df03d92687b7bd0eafb2cd566e660926510bb88163f9bc825fccdb5",
+    "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+    "src/mesh_render.bend": "90cc444e01b6a97f814a20a22a09b67e322b1eec4afc879e1d5b9b7f57f3b16c",
+    "src/png.bend": "8c24c14a250cf6dbdf0c2804e4b28bfebd7ef62ed5d9ee97a1d07094d4745f22",
+    "src/resource_frame.bend": "39c820e76998f7f718a7adcc1a25f1d3ebb454dbdd89b33712ab5f777c894baa",
+    "src/resource_json.bend": "271f9ace6304fdd42ced039ab2e7f95459eed1f20f011115f399b619f2bc6ffb",
+    "src/world_mesh.bend": "55ae3a8d0efcd1e69ac59c3db49b4a0db1359d3e655c93ca11ba04a36a72cc45",
+    "tests/resource_frame.bend": "fd9e63b4dd2c097b1d2bfd1fb59ffd077618e8a4d7211aae6266c98ef14b89df"
+  },
+  "not_yet_verified": "Separate native asset texel/baked-quad and translated-quad diagnostic readbacks; full combined suite remains queued. No vanilla atlas/GPU/world-light/frame equivalence.",
+  "orchestration_path": "build/resource-frame/verify-draw-phase.py",
+  "orchestration_sha256": "7754c6b113b5a11cc85fc724dde9efe65e7b5a864fe814986b6377be456f79ef",
+  "passes": [
+    [
+      {
+        "draw_rejections": 10,
+        "frames": [
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "base",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 4,
+            "height": 24,
+            "id": "edited",
+            "rgb_sha256": "fe671a4ff3900692627d1c4c64941ed913be0320147a2fb1e0beaffa2af3f00a",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "tick_only",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "moved",
+            "rgb_sha256": "94e76ce1e4a897e82aba01d8998365fa6cd16378450e8521ffabb84f3d7104e3",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 3,
+            "height": 24,
+            "id": "look",
+            "rgb_sha256": "f4b040c39c9f959c3c789617d4262b93c2cd7d71f0849493810c3fc4ed1da830",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 7,
+            "height": 48,
+            "id": "large64",
+            "rgb_sha256": "fdf3b1ad93cbe864fa2b3fbdaa5579d805796112b53084064131ee1d0d4573ea",
+            "width": 64
+          },
+          {
+            "draw_readback_crc_ms": 27,
+            "height": 96,
+            "id": "large128",
+            "rgb_sha256": "a17dac434eb27d402a1fcf06f1ea403af2e1d2b8d8fd95c07e7259845bc16ee2",
+            "width": 128
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "far_positive",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "far_negative",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "far_mixed",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 0,
+            "height": 24,
+            "id": "empty",
+            "rgb_sha256": "fc1401b4e1717368d877d3a3f5cf18df31b36125e9e27308c68b39abf07b4d92",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "unknown_state_recovery",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "air_state_recovery",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 3,
+            "height": 24,
+            "id": "absolute_camera_recovery",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "nan_camera_recovery",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "low_dimensions_recovery",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "high_dimensions_recovery",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "nan_origin_recovery",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 3,
+            "height": 24,
+            "id": "translated_bound_recovery",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "quad_budget_recovery",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "texture_validation_recovery",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          }
+        ],
+        "id": "official",
+        "rendered_pixels": 29952
+      },
+      {
+        "draw_rejections": 0,
+        "frames": [
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "remapped",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 3,
+            "height": 24,
+            "id": "remapped_edited",
+            "rgb_sha256": "fe671a4ff3900692627d1c4c64941ed913be0320147a2fb1e0beaffa2af3f00a",
+            "width": 32
+          }
+        ],
+        "id": "remapped",
+        "rendered_pixels": 1536
+      },
+      {
+        "draw_rejections": 0,
+        "frames": [
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "remapped_extremes",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "remapped_extremes_edited",
+            "rgb_sha256": "fe671a4ff3900692627d1c4c64941ed913be0320147a2fb1e0beaffa2af3f00a",
+            "width": 32
+          }
+        ],
+        "id": "remapped_extremes",
+        "rendered_pixels": 1536
+      },
+      {
+        "draw_rejections": 0,
+        "frames": [
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "subset",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          }
+        ],
+        "id": "subset",
+        "rendered_pixels": 768
+      },
+      {
+        "id": "missing_model",
+        "load_rejection": "Resource:MissingResource:minecraft:block/stone:exact ZIP entry was not found"
+      },
+      {
+        "id": "missing_texture",
+        "load_rejection": "Resource:MissingResource:minecraft:block/dirt:exact ZIP entry was not found"
+      },
+      {
+        "id": "malformed_model",
+        "load_rejection": "Resource:JSON:minecraft:block/stone:expected object member name at offset 1"
+      },
+      {
+        "id": "parent_cycle",
+        "load_rejection": "Resource:ParentCycle:minecraft:block/stone:recursive parent chain"
+      },
+      {
+        "id": "frozen_metadata",
+        "load_rejection": "Resource:UnsupportedMetadata:minecraft:block/stone:unsupported sprite metadata key: texture"
+      },
+      {
+        "id": "png_crc",
+        "load_rejection": "Resource:PNG:CRC:minecraft:block/stone:PNG decode rejected resource"
+      },
+      {
+        "id": "unsupported_bake",
+        "load_rejection": "Bake:Unsupported:ElementEuler"
+      },
+      {
+        "id": "missing_archive",
+        "load_rejection": "Resource:ArchiveOpen:archive:FileIO at byte 0: host error 2: No such file or directory"
+      },
+      {
+        "id": "duplicate_palette_01",
+        "load_rejection": "Palette:DuplicateState"
+      },
+      {
+        "id": "duplicate_palette_02",
+        "load_rejection": "Palette:DuplicateState"
+      },
+      {
+        "id": "duplicate_palette_03",
+        "load_rejection": "Palette:DuplicateState"
+      },
+      {
+        "id": "duplicate_palette_12",
+        "load_rejection": "Palette:DuplicateState"
+      },
+      {
+        "id": "duplicate_palette_13",
+        "load_rejection": "Palette:DuplicateState"
+      },
+      {
+        "id": "duplicate_palette_23",
+        "load_rejection": "Palette:DuplicateState"
+      }
+    ],
+    [
+      {
+        "draw_rejections": 10,
+        "frames": [
+          {
+            "draw_readback_crc_ms": 3,
+            "height": 24,
+            "id": "base",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "edited",
+            "rgb_sha256": "fe671a4ff3900692627d1c4c64941ed913be0320147a2fb1e0beaffa2af3f00a",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 3,
+            "height": 24,
+            "id": "tick_only",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "moved",
+            "rgb_sha256": "94e76ce1e4a897e82aba01d8998365fa6cd16378450e8521ffabb84f3d7104e3",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 3,
+            "height": 24,
+            "id": "look",
+            "rgb_sha256": "f4b040c39c9f959c3c789617d4262b93c2cd7d71f0849493810c3fc4ed1da830",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 7,
+            "height": 48,
+            "id": "large64",
+            "rgb_sha256": "fdf3b1ad93cbe864fa2b3fbdaa5579d805796112b53084064131ee1d0d4573ea",
+            "width": 64
+          },
+          {
+            "draw_readback_crc_ms": 27,
+            "height": 96,
+            "id": "large128",
+            "rgb_sha256": "a17dac434eb27d402a1fcf06f1ea403af2e1d2b8d8fd95c07e7259845bc16ee2",
+            "width": 128
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "far_positive",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "far_negative",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 3,
+            "height": 24,
+            "id": "far_mixed",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 0,
+            "height": 24,
+            "id": "empty",
+            "rgb_sha256": "fc1401b4e1717368d877d3a3f5cf18df31b36125e9e27308c68b39abf07b4d92",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 3,
+            "height": 24,
+            "id": "unknown_state_recovery",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "air_state_recovery",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 3,
+            "height": 24,
+            "id": "absolute_camera_recovery",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "nan_camera_recovery",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "low_dimensions_recovery",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "high_dimensions_recovery",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "nan_origin_recovery",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "translated_bound_recovery",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "quad_budget_recovery",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 3,
+            "height": 24,
+            "id": "texture_validation_recovery",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          }
+        ],
+        "id": "official",
+        "rendered_pixels": 29952
+      },
+      {
+        "draw_rejections": 0,
+        "frames": [
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "remapped",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "remapped_edited",
+            "rgb_sha256": "fe671a4ff3900692627d1c4c64941ed913be0320147a2fb1e0beaffa2af3f00a",
+            "width": 32
+          }
+        ],
+        "id": "remapped",
+        "rendered_pixels": 1536
+      },
+      {
+        "draw_rejections": 0,
+        "frames": [
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "remapped_extremes",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          },
+          {
+            "draw_readback_crc_ms": 2,
+            "height": 24,
+            "id": "remapped_extremes_edited",
+            "rgb_sha256": "fe671a4ff3900692627d1c4c64941ed913be0320147a2fb1e0beaffa2af3f00a",
+            "width": 32
+          }
+        ],
+        "id": "remapped_extremes",
+        "rendered_pixels": 1536
+      },
+      {
+        "draw_rejections": 0,
+        "frames": [
+          {
+            "draw_readback_crc_ms": 3,
+            "height": 24,
+            "id": "subset",
+            "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+            "width": 32
+          }
+        ],
+        "id": "subset",
+        "rendered_pixels": 768
+      },
+      {
+        "id": "missing_model",
+        "load_rejection": "Resource:MissingResource:minecraft:block/stone:exact ZIP entry was not found"
+      },
+      {
+        "id": "missing_texture",
+        "load_rejection": "Resource:MissingResource:minecraft:block/dirt:exact ZIP entry was not found"
+      },
+      {
+        "id": "malformed_model",
+        "load_rejection": "Resource:JSON:minecraft:block/stone:expected object member name at offset 1"
+      },
+      {
+        "id": "parent_cycle",
+        "load_rejection": "Resource:ParentCycle:minecraft:block/stone:recursive parent chain"
+      },
+      {
+        "id": "frozen_metadata",
+        "load_rejection": "Resource:UnsupportedMetadata:minecraft:block/stone:unsupported sprite metadata key: texture"
+      },
+      {
+        "id": "png_crc",
+        "load_rejection": "Resource:PNG:CRC:minecraft:block/stone:PNG decode rejected resource"
+      },
+      {
+        "id": "unsupported_bake",
+        "load_rejection": "Bake:Unsupported:ElementEuler"
+      },
+      {
+        "id": "missing_archive",
+        "load_rejection": "Resource:ArchiveOpen:archive:FileIO at byte 0: host error 2: No such file or directory"
+      },
+      {
+        "id": "duplicate_palette_01",
+        "load_rejection": "Palette:DuplicateState"
+      },
+      {
+        "id": "duplicate_palette_02",
+        "load_rejection": "Palette:DuplicateState"
+      },
+      {
+        "id": "duplicate_palette_03",
+        "load_rejection": "Palette:DuplicateState"
+      },
+      {
+        "id": "duplicate_palette_12",
+        "load_rejection": "Palette:DuplicateState"
+      },
+      {
+        "id": "duplicate_palette_13",
+        "load_rejection": "Palette:DuplicateState"
+      },
+      {
+        "id": "duplicate_palette_23",
+        "load_rejection": "Palette:DuplicateState"
+      }
+    ]
+  ],
+  "reference_sha256": "3cbe8aa7780f14c1b37159a885710b04680e3b6c4ffa4975b4d8297015f11e7e",
+  "status": "failed-fixture-expectation",
+  "two_native_runs_equal": true,
+  "verified": "Actual Bend official ZIP\u2192model resolve\u2192bake\u2192world mesh\u2192BVH execution; snapshot words, all produced RGB pixels and RGBA CRCs against independent actual Java geometry/Pillow inputs; 14 loader and 10 same-owner draw rejection/recoveries. No Window."
+}
