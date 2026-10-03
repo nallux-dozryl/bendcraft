@@ -1,0 +1,1316 @@
+{
+  "algorithm": "spatial hierarchy",
+  "assets_recovered_after_errors": true,
+  "boundaries": [
+    "Java model baking supplies test inputs only; no Bend baker/runtime model load integration claimed",
+    "CPU binary32 triangle rays, integer color and alpha composition are defined here; Java raster/sRGB/lightmap/AO/frame equivalence unmeasured",
+    "Tint/light are explicit fixture inputs, not biome/world measurements",
+    "Coordinates are supplied in one finite frame; authoritative world-to-camera subtraction remains integration responsibility"
+  ],
+  "confidence": "high for supplied baked geometry and this explicit CPU algorithm",
+  "date": "2026-10-04",
+  "fixture_sha256": "660416ceff182a9a0231babd0e38ca36546433d4c4c1cc9033eb466292a79bfe",
+  "geometry": {
+    "actual_java_quads": 844,
+    "actual_java_variants": 110,
+    "alternative_plane_oracle_max_absolute_error": 3.5762788286319847e-08,
+    "ray_cases": 4220
+  },
+  "invalid_scene_cases": [
+    {
+      "code": "Vertex",
+      "name": "nan-vertex"
+    },
+    {
+      "code": "Vertex",
+      "name": "inf-uv"
+    },
+    {
+      "code": "Vertex",
+      "name": "position-bound"
+    },
+    {
+      "code": "Material",
+      "name": "texture-slot"
+    },
+    {
+      "code": "Material",
+      "name": "invalid-cutout"
+    },
+    {
+      "code": "Material",
+      "name": "invalid-light"
+    },
+    {
+      "code": "Material",
+      "name": "negative-shade"
+    },
+    {
+      "code": "Camera",
+      "name": "nan-camera"
+    },
+    {
+      "code": "Settings",
+      "name": "bad-settings"
+    },
+    {
+      "code": "Dimensions",
+      "name": "bad-size"
+    },
+    {
+      "code": "Limits",
+      "name": "too-many-layers"
+    },
+    {
+      "code": "Limits",
+      "name": "too-many-quads"
+    },
+    {
+      "code": "Vertex",
+      "name": "uv-bound"
+    },
+    {
+      "code": "Material",
+      "name": "nan-shade"
+    }
+  ],
+  "jar_sha256": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d",
+  "material_policy": {
+    "coplanar_cutout_order": "lower supplied order than opaque base; explicit fixture policy, not measured Java draw ordering",
+    "cutout_threshold": 128,
+    "grass_tint_argb": "ff78b44a",
+    "light_argb": "ffffffff"
+  },
+  "no_window_opened": true,
+  "pixels": {
+    "analytical_center_rgb": {
+      "alpha-cutout": [
+        255,
+        255,
+        0
+      ],
+      "alpha-opaque": [
+        0,
+        0,
+        255
+      ],
+      "alpha-translucent": [
+        127,
+        127,
+        128
+      ],
+      "duplicate-order": [
+        164,
+        91,
+        87
+      ],
+      "tie-solid-a": [
+        0,
+        255,
+        0
+      ],
+      "tie-solid-b": [
+        0,
+        255,
+        0
+      ],
+      "tie-trans-a": [
+        132,
+        123,
+        87
+      ],
+      "tie-trans-b": [
+        132,
+        123,
+        87
+      ],
+      "tint-light": [
+        72,
+        86,
+        0
+      ],
+      "two-layers": [
+        164,
+        91,
+        87
+      ]
+    },
+    "cases": [
+      {
+        "height": 24,
+        "name": "model-0",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "ea5e4148676a1488a6b83949197ebc6400983077c86a844f62a61aa5da3eea62",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-1",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "af615cda60e474b4e05e2f21e6a6476c1fdb8d0238a4c817975a0081e2a2a7ab",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-2",
+        "quads": 6,
+        "render_ms": 2,
+        "rgb_sha256": "95234ae2ac5c94cb3f2ef9d657aba99bc780ab275e93e1f759c7475f7b71ee5b",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-3",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "f7d12a6641b07a266d90fd94a867f109d8343c61b7dd29cd2b1e23f6dc57c3f3",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-4",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "0fb5f34a42b073b370326c4bf7f03d5285b81ec4979ad50b234832d613c3e4fa",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-5",
+        "quads": 10,
+        "render_ms": 1,
+        "rgb_sha256": "61122d185dfbf3efc44dc0e7f08da8d3e78d7ea65e3a5f1497490d26456c5ebf",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-6",
+        "quads": 10,
+        "render_ms": 0,
+        "rgb_sha256": "fb2cc0f2207f82973ec2f58973a71c950cc34aa67b29a5a7591ae2e719fc4256",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-7",
+        "quads": 10,
+        "render_ms": 0,
+        "rgb_sha256": "b287cbefce8d7809056fbd2371a374247ca28fb5598c640815ce9fe4a71add9b",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-8",
+        "quads": 10,
+        "render_ms": 1,
+        "rgb_sha256": "80fb192299f2bf2a6d64d19d7de880b355a4e002e015fffee5705b2b19ec20e1",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-9",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "36d01a738228d633e56662271d85345e963d6bdf50ba6c1465116ae03cb02381",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-10",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "b31f63955fd42ea0f017bf622d9add4d8e99824f4883a75a326fa807d8a3c08d",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-11",
+        "quads": 10,
+        "render_ms": 1,
+        "rgb_sha256": "9671f600fd0145af8f6ef8d8f7c9577abe8c4e9292650713bcd8fe245da9dd84",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-12",
+        "quads": 10,
+        "render_ms": 0,
+        "rgb_sha256": "1c04a7ab29c7924addd5f6cbcdc7a1fae4bb26a145263cd78d3253f633590806",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-13",
+        "quads": 10,
+        "render_ms": 0,
+        "rgb_sha256": "607629358c82e6b31e3d79b816e3f458622cf0195ba32779509747e020828372",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-14",
+        "quads": 10,
+        "render_ms": 1,
+        "rgb_sha256": "9671f600fd0145af8f6ef8d8f7c9577abe8c4e9292650713bcd8fe245da9dd84",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-15",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "33aabc19e3cab841947f01ad2362a2566af9fefab02ade914e08627d02faeb56",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-16",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "d5c9e8e9bbe3f3e0d75d2f84e4cfa641bb4b74451307f5b198b58c54cde4432b",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-17",
+        "quads": 6,
+        "render_ms": 2,
+        "rgb_sha256": "741a25e5d00fbb9d3292793d15ae47d2c8a705d59ff5c81e451f973918120ca6",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-18",
+        "quads": 11,
+        "render_ms": 0,
+        "rgb_sha256": "73d9a1057dae14d7bb03f6c3b5f16272bd664898350ba3bca9404842aca9ca3e",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-19",
+        "quads": 11,
+        "render_ms": 0,
+        "rgb_sha256": "33aabc19e3cab841947f01ad2362a2566af9fefab02ade914e08627d02faeb56",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-20",
+        "quads": 11,
+        "render_ms": 0,
+        "rgb_sha256": "81ad4a2376aae026394d7c45b40195ed1aa3bdd55639d4f6112ef27e74882552",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-21",
+        "quads": 11,
+        "render_ms": 1,
+        "rgb_sha256": "0bf231278f4707656ecb5fe81a6c83b4ff9c1039f0ad1484e11df7f0b1a280dc",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-22",
+        "quads": 11,
+        "render_ms": 0,
+        "rgb_sha256": "3b9c1369d6d433ae5ba89585ddee6121f52e666426711d10270590ccb9f9714e",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-23",
+        "quads": 11,
+        "render_ms": 0,
+        "rgb_sha256": "33aabc19e3cab841947f01ad2362a2566af9fefab02ade914e08627d02faeb56",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-24",
+        "quads": 11,
+        "render_ms": 1,
+        "rgb_sha256": "442bb4d31df5c7429d077e0d500ecb15e175f02347325ca6e0bb2b971eb879d9",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-25",
+        "quads": 11,
+        "render_ms": 0,
+        "rgb_sha256": "6ec29b75005dc5e3a6841b432b4071cd0f1710427d60496171a136a485e92061",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-26",
+        "quads": 15,
+        "render_ms": 0,
+        "rgb_sha256": "34439e28c2fc11f34f80ef63259a9a6c6e2481e16b1b2c3d55f1ea40e9284a4e",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-27",
+        "quads": 15,
+        "render_ms": 1,
+        "rgb_sha256": "33aabc19e3cab841947f01ad2362a2566af9fefab02ade914e08627d02faeb56",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-28",
+        "quads": 15,
+        "render_ms": 0,
+        "rgb_sha256": "e16e33dd146982088fe12091fbed0728a8e6ec6cb25597ecf7ddacba0733f31e",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-29",
+        "quads": 15,
+        "render_ms": 1,
+        "rgb_sha256": "33aabc19e3cab841947f01ad2362a2566af9fefab02ade914e08627d02faeb56",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-30",
+        "quads": 15,
+        "render_ms": 1,
+        "rgb_sha256": "33aabc19e3cab841947f01ad2362a2566af9fefab02ade914e08627d02faeb56",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-31",
+        "quads": 15,
+        "render_ms": 0,
+        "rgb_sha256": "33aabc19e3cab841947f01ad2362a2566af9fefab02ade914e08627d02faeb56",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-32",
+        "quads": 15,
+        "render_ms": 0,
+        "rgb_sha256": "fa7459af4a4507e083e1f988daa66a2ca17247c55c6cd369f76c57b473cd450a",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-33",
+        "quads": 15,
+        "render_ms": 1,
+        "rgb_sha256": "68f6ffdd2a82178b04b0da34730986596cd8711952b766f7642c49bd557ad1b7",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-34",
+        "quads": 11,
+        "render_ms": 0,
+        "rgb_sha256": "c6197ccb70d63ce42ed22e05dcd15e6a5da7a3b7a4b4c22f7f7e68e570ab5b00",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-35",
+        "quads": 11,
+        "render_ms": 1,
+        "rgb_sha256": "73d9a1057dae14d7bb03f6c3b5f16272bd664898350ba3bca9404842aca9ca3e",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-36",
+        "quads": 11,
+        "render_ms": 0,
+        "rgb_sha256": "9154f03097ad5a34ab3259176f1c426721914e86934a9365e447b637e67f3fb1",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-37",
+        "quads": 11,
+        "render_ms": 0,
+        "rgb_sha256": "0bf231278f4707656ecb5fe81a6c83b4ff9c1039f0ad1484e11df7f0b1a280dc",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-38",
+        "quads": 11,
+        "render_ms": 1,
+        "rgb_sha256": "3b9c1369d6d433ae5ba89585ddee6121f52e666426711d10270590ccb9f9714e",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-39",
+        "quads": 11,
+        "render_ms": 0,
+        "rgb_sha256": "6ec29b75005dc5e3a6841b432b4071cd0f1710427d60496171a136a485e92061",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-40",
+        "quads": 11,
+        "render_ms": 0,
+        "rgb_sha256": "2b437c0a7f5aa1c2f05cb92efc4e4528ffcbc41fa0ebc32ad517cc482edb2d40",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-41",
+        "quads": 11,
+        "render_ms": 0,
+        "rgb_sha256": "33cc0aa89997b0cb5591ddae23395332596261936228bc2ebe5a5c7b53e78cea",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-42",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "7f4166830b5a789c5e70a6bdee619392e18fd54001722bb010be04b98f244521",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-43",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "4ce3bba34638296f33323d5166253eaa652f91083d362f98d6fa0699fe559abc",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-44",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "347474920e533028a9263a298729db2e357a16a5df6df91aff3c014a9fdcc072",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-45",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "5bde6b58df06ad7083b291ebbba020e7844ad1080df7cb361cfaf0d1facbc2d3",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-46",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "453466fcc89a7545ad6a9aa37573edfac979a7cab2a313a54a3ca78eea1b42f3",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-47",
+        "quads": 6,
+        "render_ms": 2,
+        "rgb_sha256": "06f202609843260cf0ec577996c9a0401e4fabb174b6e680bddafa46ba78ae54",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-48",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "147391b50588a04b515b7d3588cb42bb7b0b9f22d434de4d48bb3ce287ca8407",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-49",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "6460f5809984f5165a582095642f66e8669a97c03031d234a5a01fa1b20615ed",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-50",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "06f202609843260cf0ec577996c9a0401e4fabb174b6e680bddafa46ba78ae54",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-51",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "7f4166830b5a789c5e70a6bdee619392e18fd54001722bb010be04b98f244521",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-52",
+        "quads": 6,
+        "render_ms": 2,
+        "rgb_sha256": "5eca831e0c9026ef2032857be8b3f05acbe9dd1939ee83915ea163d2504dc1c6",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-53",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "8e677f622df30988e974b534e4fbac4119310fab30528003dacc940a574f54c5",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-54",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "453466fcc89a7545ad6a9aa37573edfac979a7cab2a313a54a3ca78eea1b42f3",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-55",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "4ce3bba34638296f33323d5166253eaa652f91083d362f98d6fa0699fe559abc",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-56",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "8e677f622df30988e974b534e4fbac4119310fab30528003dacc940a574f54c5",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-57",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "5eca831e0c9026ef2032857be8b3f05acbe9dd1939ee83915ea163d2504dc1c6",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-58",
+        "quads": 6,
+        "render_ms": 2,
+        "rgb_sha256": "7f4166830b5a789c5e70a6bdee619392e18fd54001722bb010be04b98f244521",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-59",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "7f4166830b5a789c5e70a6bdee619392e18fd54001722bb010be04b98f244521",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-60",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "7f4166830b5a789c5e70a6bdee619392e18fd54001722bb010be04b98f244521",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-61",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "7f4166830b5a789c5e70a6bdee619392e18fd54001722bb010be04b98f244521",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-62",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "7f4166830b5a789c5e70a6bdee619392e18fd54001722bb010be04b98f244521",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-63",
+        "quads": 6,
+        "render_ms": 2,
+        "rgb_sha256": "7f4166830b5a789c5e70a6bdee619392e18fd54001722bb010be04b98f244521",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-64",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "7f4166830b5a789c5e70a6bdee619392e18fd54001722bb010be04b98f244521",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-65",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "7f4166830b5a789c5e70a6bdee619392e18fd54001722bb010be04b98f244521",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-66",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "7f4166830b5a789c5e70a6bdee619392e18fd54001722bb010be04b98f244521",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-67",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "7f4166830b5a789c5e70a6bdee619392e18fd54001722bb010be04b98f244521",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-68",
+        "quads": 6,
+        "render_ms": 2,
+        "rgb_sha256": "7f4166830b5a789c5e70a6bdee619392e18fd54001722bb010be04b98f244521",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-69",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "7f4166830b5a789c5e70a6bdee619392e18fd54001722bb010be04b98f244521",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-70",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "7f4166830b5a789c5e70a6bdee619392e18fd54001722bb010be04b98f244521",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-71",
+        "quads": 6,
+        "render_ms": 2,
+        "rgb_sha256": "7f4166830b5a789c5e70a6bdee619392e18fd54001722bb010be04b98f244521",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-72",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "7f4166830b5a789c5e70a6bdee619392e18fd54001722bb010be04b98f244521",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-73",
+        "quads": 6,
+        "render_ms": 2,
+        "rgb_sha256": "7f4166830b5a789c5e70a6bdee619392e18fd54001722bb010be04b98f244521",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-74",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "4ce3bba34638296f33323d5166253eaa652f91083d362f98d6fa0699fe559abc",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-75",
+        "quads": 6,
+        "render_ms": 2,
+        "rgb_sha256": "7f4166830b5a789c5e70a6bdee619392e18fd54001722bb010be04b98f244521",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-76",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "98cffa7826c86aaebe9eaafed255d38ef5abc652b35b47c639c34e4c68de8027",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-77",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "a8ea2934dc6ef874771edf193dbcd46a08d964b917046bc1e1aa9e270b363e27",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-78",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "42220a74ba1c84ddfd4336afbf4efba65942a2c709c9c4066c1a3598a39eb404",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-79",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "00baf2439006c94410fd2d893da0baaacfc9cd4ce801a7afd55b0cdee31ef045",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-80",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "bd9daafab787c14d5cda7525f6cabaf4068af7b1ad9318d81587ce4c030cb35d",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-81",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "6cc37d180280328d003e0398b014590cf0a29b53e2ce05e2ec76bbaddbc71db2",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-82",
+        "quads": 6,
+        "render_ms": 2,
+        "rgb_sha256": "e065b00f4ccd072859071960073b77b6302d328e26eee6f00e90b8c6cf57e815",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-83",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "c3e733d171724252b258e2571b7b804881ee242e1603671766695ad4de7dcac3",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-84",
+        "quads": 6,
+        "render_ms": 2,
+        "rgb_sha256": "6cc37d180280328d003e0398b014590cf0a29b53e2ce05e2ec76bbaddbc71db2",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-85",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "98cffa7826c86aaebe9eaafed255d38ef5abc652b35b47c639c34e4c68de8027",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-86",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "d2b0484698b32e75075745530ebc174717646eec8f62bf4015b9d11d24f0fae2",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-87",
+        "quads": 6,
+        "render_ms": 2,
+        "rgb_sha256": "34db989dcb567b49a2a2b3e6258c865022f4c0bb2190710e2911c107a4bd4dba",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-88",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "bd9daafab787c14d5cda7525f6cabaf4068af7b1ad9318d81587ce4c030cb35d",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-89",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "a8ea2934dc6ef874771edf193dbcd46a08d964b917046bc1e1aa9e270b363e27",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-90",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "34db989dcb567b49a2a2b3e6258c865022f4c0bb2190710e2911c107a4bd4dba",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-91",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "d2b0484698b32e75075745530ebc174717646eec8f62bf4015b9d11d24f0fae2",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-92",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "98cffa7826c86aaebe9eaafed255d38ef5abc652b35b47c639c34e4c68de8027",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-93",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "98cffa7826c86aaebe9eaafed255d38ef5abc652b35b47c639c34e4c68de8027",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-94",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "a8ea2934dc6ef874771edf193dbcd46a08d964b917046bc1e1aa9e270b363e27",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-95",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "a8ea2934dc6ef874771edf193dbcd46a08d964b917046bc1e1aa9e270b363e27",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-96",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "98cffa7826c86aaebe9eaafed255d38ef5abc652b35b47c639c34e4c68de8027",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-97",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "98cffa7826c86aaebe9eaafed255d38ef5abc652b35b47c639c34e4c68de8027",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-98",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "a8ea2934dc6ef874771edf193dbcd46a08d964b917046bc1e1aa9e270b363e27",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-99",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "a8ea2934dc6ef874771edf193dbcd46a08d964b917046bc1e1aa9e270b363e27",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-100",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "98cffa7826c86aaebe9eaafed255d38ef5abc652b35b47c639c34e4c68de8027",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-101",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "98cffa7826c86aaebe9eaafed255d38ef5abc652b35b47c639c34e4c68de8027",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-102",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "6cc37d180280328d003e0398b014590cf0a29b53e2ce05e2ec76bbaddbc71db2",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-103",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "6cc37d180280328d003e0398b014590cf0a29b53e2ce05e2ec76bbaddbc71db2",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-104",
+        "quads": 6,
+        "render_ms": 2,
+        "rgb_sha256": "98cffa7826c86aaebe9eaafed255d38ef5abc652b35b47c639c34e4c68de8027",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-105",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "98cffa7826c86aaebe9eaafed255d38ef5abc652b35b47c639c34e4c68de8027",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-106",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "6cc37d180280328d003e0398b014590cf0a29b53e2ce05e2ec76bbaddbc71db2",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-107",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "6cc37d180280328d003e0398b014590cf0a29b53e2ce05e2ec76bbaddbc71db2",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-108",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "a8ea2934dc6ef874771edf193dbcd46a08d964b917046bc1e1aa9e270b363e27",
+        "width": 24
+      },
+      {
+        "height": 24,
+        "name": "model-109",
+        "quads": 6,
+        "render_ms": 1,
+        "rgb_sha256": "98cffa7826c86aaebe9eaafed255d38ef5abc652b35b47c639c34e4c68de8027",
+        "width": 24
+      },
+      {
+        "height": 32,
+        "name": "alpha-opaque",
+        "quads": 1,
+        "render_ms": 0,
+        "rgb_sha256": "ca7f7301ff4717c9a33b86e899abb0f5372b5b776bcf2f8845438e0d1ed1f615",
+        "width": 32
+      },
+      {
+        "height": 32,
+        "name": "alpha-cutout",
+        "quads": 2,
+        "render_ms": 0,
+        "rgb_sha256": "c85a79ade94fdbc49a84edfe630b586e0c495a0bbf76b360287e4ce5dee5bb51",
+        "width": 32
+      },
+      {
+        "height": 32,
+        "name": "alpha-translucent",
+        "quads": 2,
+        "render_ms": 1,
+        "rgb_sha256": "efc9229c78866def45a9a37e7ddba3d7b5e06fcbb021883db45c7e3592df4dbb",
+        "width": 32
+      },
+      {
+        "height": 32,
+        "name": "wrap-repeat",
+        "quads": 1,
+        "render_ms": 0,
+        "rgb_sha256": "e3fd7eb3126967e1b6ad07aad527c5371fa6c4b55662d0fe7ffef104b464fcca",
+        "width": 32
+      },
+      {
+        "height": 32,
+        "name": "wrap-clamp",
+        "quads": 1,
+        "render_ms": 0,
+        "rgb_sha256": "ca7f7301ff4717c9a33b86e899abb0f5372b5b776bcf2f8845438e0d1ed1f615",
+        "width": 32
+      },
+      {
+        "height": 32,
+        "name": "tint-light",
+        "quads": 1,
+        "render_ms": 0,
+        "rgb_sha256": "358cdb2040120672b81777ecff20fe8c99b22d1b36d022c2829d127bda693760",
+        "width": 32
+      },
+      {
+        "height": 32,
+        "name": "tie-trans-a",
+        "quads": 2,
+        "render_ms": 1,
+        "rgb_sha256": "da5321b08cfbfb0fc6bedc3646305be2be4ebade059ed82e4646a630eaceb951",
+        "width": 32
+      },
+      {
+        "height": 32,
+        "name": "tie-trans-b",
+        "quads": 2,
+        "render_ms": 1,
+        "rgb_sha256": "da5321b08cfbfb0fc6bedc3646305be2be4ebade059ed82e4646a630eaceb951",
+        "width": 32
+      },
+      {
+        "height": 32,
+        "name": "tie-solid-a",
+        "quads": 2,
+        "render_ms": 1,
+        "rgb_sha256": "992fddf468d349113ef244fce9adafb1d862bd6218fc09cda1e0484821bec68c",
+        "width": 32
+      },
+      {
+        "height": 32,
+        "name": "tie-solid-b",
+        "quads": 2,
+        "render_ms": 1,
+        "rgb_sha256": "992fddf468d349113ef244fce9adafb1d862bd6218fc09cda1e0484821bec68c",
+        "width": 32
+      },
+      {
+        "height": 32,
+        "name": "occluded-trans",
+        "quads": 2,
+        "render_ms": 1,
+        "rgb_sha256": "49d9baeead5bdb3cd381fb274b8f1384202a77d6a9d62160840579e6c60f5378",
+        "width": 32
+      },
+      {
+        "height": 32,
+        "name": "two-layers",
+        "quads": 2,
+        "render_ms": 1,
+        "rgb_sha256": "87d83de9f79ffb80f6e9ad43fbb383551180adc9ba7de263ea71e5ccab64ebaf",
+        "width": 32
+      },
+      {
+        "height": 32,
+        "name": "near-clip",
+        "quads": 1,
+        "render_ms": 1,
+        "rgb_sha256": "dbf745c3d1c9c31b68d2b52e3bce0cb7da6fd8c1a9200af383bd8d3496186d38",
+        "width": 32
+      },
+      {
+        "height": 32,
+        "name": "far-clip",
+        "quads": 1,
+        "render_ms": 1,
+        "rgb_sha256": "dbf745c3d1c9c31b68d2b52e3bce0cb7da6fd8c1a9200af383bd8d3496186d38",
+        "width": 32
+      },
+      {
+        "height": 32,
+        "name": "back-cull",
+        "quads": 1,
+        "render_ms": 1,
+        "rgb_sha256": "dbf745c3d1c9c31b68d2b52e3bce0cb7da6fd8c1a9200af383bd8d3496186d38",
+        "width": 32
+      },
+      {
+        "height": 32,
+        "name": "no-cull",
+        "quads": 1,
+        "render_ms": 1,
+        "rgb_sha256": "49d9baeead5bdb3cd381fb274b8f1384202a77d6a9d62160840579e6c60f5378",
+        "width": 32
+      },
+      {
+        "height": 32,
+        "name": "degenerate",
+        "quads": 1,
+        "render_ms": 0,
+        "rgb_sha256": "dbf745c3d1c9c31b68d2b52e3bce0cb7da6fd8c1a9200af383bd8d3496186d38",
+        "width": 32
+      },
+      {
+        "height": 32,
+        "name": "duplicate-order",
+        "quads": 2,
+        "render_ms": 1,
+        "rgb_sha256": "a529bc722d7359348da3c96cdb62b392f68da26ebdef67ca43a4f1657a625346",
+        "width": 32
+      },
+      {
+        "height": 17,
+        "name": "rectangular",
+        "quads": 2,
+        "render_ms": 1,
+        "rgb_sha256": "e3064d2a36aeda6d77dcc7f9c86bbbdf82e818c712d9deaa981b1006e4cc03a5",
+        "width": 31
+      },
+      {
+        "height": 7,
+        "name": "minimal-rectangular",
+        "quads": 1,
+        "render_ms": 0,
+        "rgb_sha256": "3c0028077f5e77dbf9885d8c142bae90c4dae11f8abfd44790921782af0f28ed",
+        "width": 4
+      },
+      {
+        "height": 64,
+        "name": "practical-64-0",
+        "quads": 280,
+        "render_ms": 8,
+        "rgb_sha256": "4af2bbf7f6bc2b4f0f1982f5e61ceeabfaf2bcdcbd4859ce8cf5eb417cf01538",
+        "width": 64
+      },
+      {
+        "height": 64,
+        "name": "practical-64-1",
+        "quads": 280,
+        "render_ms": 8,
+        "rgb_sha256": "4af2bbf7f6bc2b4f0f1982f5e61ceeabfaf2bcdcbd4859ce8cf5eb417cf01538",
+        "width": 64
+      },
+      {
+        "height": 64,
+        "name": "practical-64-2",
+        "quads": 280,
+        "render_ms": 9,
+        "rgb_sha256": "4af2bbf7f6bc2b4f0f1982f5e61ceeabfaf2bcdcbd4859ce8cf5eb417cf01538",
+        "width": 64
+      },
+      {
+        "height": 64,
+        "name": "practical-64-3",
+        "quads": 280,
+        "render_ms": 9,
+        "rgb_sha256": "4af2bbf7f6bc2b4f0f1982f5e61ceeabfaf2bcdcbd4859ce8cf5eb417cf01538",
+        "width": 64
+      },
+      {
+        "height": 128,
+        "name": "practical-128-0",
+        "quads": 280,
+        "render_ms": 35,
+        "rgb_sha256": "106adef7a40ef37131dd8bba5c6bf03fe6cef310a88e1887bd9c8e8ed4670fbb",
+        "width": 128
+      },
+      {
+        "height": 128,
+        "name": "practical-128-1",
+        "quads": 280,
+        "render_ms": 34,
+        "rgb_sha256": "106adef7a40ef37131dd8bba5c6bf03fe6cef310a88e1887bd9c8e8ed4670fbb",
+        "width": 128
+      },
+      {
+        "height": 128,
+        "name": "practical-128-2",
+        "quads": 280,
+        "render_ms": 34,
+        "rgb_sha256": "106adef7a40ef37131dd8bba5c6bf03fe6cef310a88e1887bd9c8e8ed4670fbb",
+        "width": 128
+      },
+      {
+        "height": 128,
+        "name": "practical-128-3",
+        "quads": 280,
+        "render_ms": 33,
+        "rgb_sha256": "106adef7a40ef37131dd8bba5c6bf03fe6cef310a88e1887bd9c8e8ed4670fbb",
+        "width": 128
+      },
+      {
+        "height": 64,
+        "name": "empty-64-0",
+        "quads": 0,
+        "render_ms": 2,
+        "rgb_sha256": "a050fdee15daa957bc6487fdd858281329a0f52958cba05234df36e3d817ce36",
+        "width": 64
+      },
+      {
+        "height": 64,
+        "name": "empty-64-1",
+        "quads": 0,
+        "render_ms": 2,
+        "rgb_sha256": "a050fdee15daa957bc6487fdd858281329a0f52958cba05234df36e3d817ce36",
+        "width": 64
+      },
+      {
+        "height": 64,
+        "name": "empty-64-2",
+        "quads": 0,
+        "render_ms": 2,
+        "rgb_sha256": "a050fdee15daa957bc6487fdd858281329a0f52958cba05234df36e3d817ce36",
+        "width": 64
+      },
+      {
+        "height": 128,
+        "name": "empty-128-0",
+        "quads": 0,
+        "render_ms": 8,
+        "rgb_sha256": "aede0993ed917bf89df8105a6e060358d03ed5ecac2720087f0a06077fcdef44",
+        "width": 128
+      },
+      {
+        "height": 128,
+        "name": "empty-128-1",
+        "quads": 0,
+        "render_ms": 8,
+        "rgb_sha256": "aede0993ed917bf89df8105a6e060358d03ed5ecac2720087f0a06077fcdef44",
+        "width": 128
+      },
+      {
+        "height": 128,
+        "name": "empty-128-2",
+        "quads": 0,
+        "render_ms": 8,
+        "rgb_sha256": "aede0993ed917bf89df8105a6e060358d03ed5ecac2720087f0a06077fcdef44",
+        "width": 128
+      },
+      {
+        "height": 8,
+        "name": "recovery",
+        "quads": 1,
+        "render_ms": 0,
+        "rgb_sha256": "379e7525da9bf8b210598d41d04a1e498433ff5b4d2fb85971885b9f73da0f14",
+        "width": 8
+      }
+    ],
+    "exact_rgb_pixels": 225771
+  },
+  "raw_bit_fixture_sha256": "62ed52e717df7b7c4796d68859e5fadb8ebe5ac328daf52f1e517ce6dc6c362a",
+  "source_sha256": {
+    "reference/model_semantics.json": "3cbe8aa7780f14c1b37159a885710b04680e3b6c4ffa4975b4d8297015f11e7e",
+    "src/client_render.bend": "bb8f6057a02bfcb0583025f9e75fe41abc6804eb554c6d971df5c81618932947",
+    "src/mesh_render.bend": "90cc444e01b6a97f814a20a22a09b67e322b1eec4afc879e1d5b9b7f57f3b16c",
+    "src/png.bend": "8c24c14a250cf6dbdf0c2804e4b28bfebd7ef62ed5d9ee97a1d07094d4745f22",
+    "tests/mesh_render.bend": "5934a81761dc2977be2cff331aed2baa9ab774fb30c9f622bba890784530bd3e",
+    "tools/test_mesh_render.py": "0645bcd9fa2e6f1407587c4b14efcaadf81a00f1f3d1b6ffb42c11cd42fbcb06"
+  },
+  "status": "pass",
+  "timings": {
+    "build_seconds": 14.486058874987066,
+    "native_seconds": 1.8458953751251101
+  }
+}
