@@ -1,0 +1,46 @@
+{
+  "cases_per_run": 3626,
+  "failure_injection": [
+    {
+      "case": "wrong_signed_count_bits",
+      "reason": "Item observation checksum mismatch",
+      "rejected": true,
+      "resealed_observation_checksum": false
+    },
+    {
+      "case": "wrong_signed_count_bits",
+      "reason": "Item raw signed count encoding mismatch",
+      "rejected": true,
+      "resealed_observation_checksum": true
+    },
+    {
+      "case": "wrong_default_stack_limit",
+      "reason": "Item fixture differs from independent Java/official report observations",
+      "rejected": true,
+      "resealed_observation_checksum": true
+    },
+    {
+      "case": "wrong_component_type_with_resealed_value",
+      "reason": "Item component type/value identity mismatch",
+      "rejected": true,
+      "resealed_observation_checksum": true
+    }
+  ],
+  "independent_java_runs": 2,
+  "items_per_run": 1658,
+  "organized_observations_reproduced_exactly": true,
+  "reference": {
+    "bytes": 5278837,
+    "file": "item_stacks.json",
+    "sha1": "3682f93d0e0400c5ed6b9c4ae37b3568a27f3b6b",
+    "sha256": "1fefc97dfba596d6034ffab92ce6fed21cf0f0cd1e7bd72b21b110691ea2e6c9"
+  },
+  "scope": "Reference generation/integrity; no Bend comparison",
+  "status": "passed",
+  "table": {
+    "bytes": 556426,
+    "file": "reference_item_metadata.tsv",
+    "sha1": "97d08321c5439b9d6e333a77c4fb1db6c906cb9d",
+    "sha256": "1cf2669ac760fed886b33d19b12e4782d5011c68c629d22328147d8a9a9bfa22"
+  }
+}

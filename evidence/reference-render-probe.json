@@ -1,0 +1,80 @@
+{
+  "commands": [
+    "python3 tools/reference_render_probe.py",
+    "python3 tools/reference_render_probe.py --verify-existing",
+    "python3 tools/reference_render_probe.py --selftest"
+  ],
+  "reference": {
+    "bytes": 5398473,
+    "file": "render_assets.json",
+    "sha1": "cd3a7c211fb9dcf25e0ac81c55fcc070e1fe0fed",
+    "sha256": "ed2363e0197b2c7144cec24c4166af91fe7a33247abc50cb165c76c6a799e953"
+  },
+  "scope": "Two independent PNG decoders and JSON dependencies, no game launch or model bake",
+  "status": "passed",
+  "summary": {
+    "animated_metadata_files": 63,
+    "chunk_occurrence_counts": {
+      "IDAT": 3965,
+      "IEND": 3965,
+      "IHDR": 3965,
+      "PLTE": 2696,
+      "tRNS": 2102
+    },
+    "decode_status_counts": {
+      "two_decoders_match": 3965
+    },
+    "format_counts": {
+      "depth=1,color=0,interlace=0": 6,
+      "depth=1,color=3,interlace=0": 15,
+      "depth=2,color=0,interlace=0": 5,
+      "depth=2,color=3,interlace=0": 116,
+      "depth=4,color=0,interlace=0": 1,
+      "depth=4,color=3,interlace=0": 737,
+      "depth=8,color=0,interlace=0": 176,
+      "depth=8,color=2,interlace=0": 133,
+      "depth=8,color=3,interlace=0": 1828,
+      "depth=8,color=4,interlace=0": 401,
+      "depth=8,color=6,interlace=0": 547
+    },
+    "max_height": 1024,
+    "max_width": 1024,
+    "png_count": 3965,
+    "rgba_bytes": 37709164,
+    "scanline_filter_counts": {
+      "0": 107179,
+      "1": 3687,
+      "2": 7013,
+      "3": 1438,
+      "4": 5417
+    },
+    "texture_group_counts": {
+      "block": 1300,
+      "colormap": 3,
+      "effect": 1,
+      "entity": 743,
+      "environment": 14,
+      "font": 5,
+      "gui": 563,
+      "item": 831,
+      "map": 42,
+      "misc": 13,
+      "mob_effect": 40,
+      "other": 1,
+      "painting": 52,
+      "palettes": 17,
+      "particle": 300,
+      "trims": 40
+    },
+    "transparency_chunk_files": 2102
+  },
+  "validation": {
+    "fresh_resource_comparison": false,
+    "png_count": 3965,
+    "selected_blockstates": 5,
+    "selected_model_sources": 13,
+    "selected_texture_dependencies": 8,
+    "two_decoder_matches": 3965,
+    "unsupported_or_errors": []
+  }
+}

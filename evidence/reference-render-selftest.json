@@ -1,0 +1,45 @@
+{
+  "byte_exact_reference_reproduced": true,
+  "failure_injection": [
+    {
+      "case": "wrong_decoded_pixel_hash",
+      "reason": "Render reference checksum mismatch",
+      "rejected": true,
+      "resealed_observation_checksum": false
+    },
+    {
+      "case": "wrong_decoded_pixel_hash",
+      "reason": "Render reference differs from fresh pinned resources/pixel observations",
+      "rejected": true,
+      "resealed_observation_checksum": true
+    },
+    {
+      "case": "wrong_glass_sprite_definition",
+      "reason": "Render reference differs from fresh pinned resources/pixel observations",
+      "rejected": true,
+      "resealed_observation_checksum": true
+    },
+    {
+      "case": "corrupt_compressed_stone_data",
+      "reason": "PNG chunk CRC mismatch",
+      "rejected": true,
+      "resealed_chunk_crc": false
+    },
+    {
+      "case": "corrupt_compressed_stone_data",
+      "reason": "Error -3 while decompressing data: incorrect data check",
+      "rejected": true,
+      "resealed_chunk_crc": true
+    }
+  ],
+  "independent_observation_runs": 2,
+  "pngs_per_run": 3965,
+  "reference": {
+    "bytes": 5398473,
+    "file": "render_assets.json",
+    "sha1": "cd3a7c211fb9dcf25e0ac81c55fcc070e1fe0fed",
+    "sha256": "ed2363e0197b2c7144cec24c4166af91fe7a33247abc50cb165c76c6a799e953"
+  },
+  "scope": "Reference resource/pixel integrity, no Bend or Java render comparison",
+  "status": "passed"
+}
