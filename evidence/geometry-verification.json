@@ -1,0 +1,567 @@
+{
+  "binary_sha256": "79ac2164576ecc64f0f21d1f8a8a6cd40d507a3998baaeffc1a8c63bdae69ab8",
+  "builds": [
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/geometry.bend",
+        "-o",
+        "build/geometry-tests.c"
+      ],
+      "exit_code": 0,
+      "seconds": 0.674044,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/geometry.bend",
+        "-o",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/geometry-tests"
+      ],
+      "exit_code": 0,
+      "seconds": 2.001086,
+      "stderr": "",
+      "stdout": ""
+    }
+  ],
+  "checks": [
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/geometry.bend",
+        "--check-only"
+      ],
+      "exit_code": 0,
+      "seconds": 0.20903,
+      "stderr": "",
+      "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/geometry.bend",
+        "--verdict"
+      ],
+      "exit_code": 0,
+      "seconds": 0.310913,
+      "stderr": "",
+      "stdout": "ALL PROOFS CHECK\n"
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/geometry.bend",
+        "--check-only"
+      ],
+      "exit_code": 0,
+      "seconds": 0.305973,
+      "stderr": "",
+      "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/geometry.bend",
+        "--verdict"
+      ],
+      "exit_code": 0,
+      "seconds": 0.756458,
+      "stderr": "",
+      "stdout": "ALL PROOFS CHECK\n"
+    }
+  ],
+  "compiler": "bend 2.0.35",
+  "confidence": "high for recorded finite fixtures; no exhaustive IEEE geometry theorem",
+  "emitted_c_bytes": 1015104,
+  "emitted_c_inspection": {
+    "host_float_scalar_helpers": 0,
+    "note": "Shared runtime contains F32 IO and command-line heap parsing; inspected scalar geometry/numeric/test helpers have no host float type or primitive.",
+    "scalar_inline_helpers": 118,
+    "u32_scalar_helper_operations": 98
+  },
+  "emitted_c_sha256": "25ada3f80994fabc602e1a4caa5e3b2b32cf1b17e84413940117e82585d3f635",
+  "excluded_out_of_substrate_operations": {
+    "java_f64_compare": 49,
+    "raw_array_find_index": 24,
+    "shape_collide": 48,
+    "shape_construct": 16
+  },
+  "explicit_validation_cases": 65,
+  "fixture_path": "reference/geometry.json",
+  "fixture_provenance": {
+    "cases_sha256": "55ac21d2134ccdb83c83768798b1bc430ba0dc62177007d7e93975189f1c344a",
+    "class_sha256": {
+      "net.minecraft.core.AxisCycle": "702154d8f855bc2f8ba1fd22013971a81e0d0afb6b9c407c99dea2052d1bd8f3",
+      "net.minecraft.core.Direction$Axis": "cb055e81648dd01eb1dec138e9ab60c0c1d915bac4783a158a499a8c9f7629ff",
+      "net.minecraft.util.Mth": "38d9b35bc973da00a3d550173370c62c88ed62f2890b17d760e65173469e272d",
+      "net.minecraft.world.phys.AABB": "c3597024b2fa129fe34eb2db0ad473ec8ba408393bb2873aa5f43492d455d5fa",
+      "net.minecraft.world.phys.shapes.ArrayVoxelShape": "bdd411498ed442bf7030eee2e9b974c1445d773423801bf926ed1a52ce02e02d",
+      "net.minecraft.world.phys.shapes.BitSetDiscreteVoxelShape": "a843b3596c50885020d02a7111bc16293272bb515c5805f0fef895f793c7fea7",
+      "net.minecraft.world.phys.shapes.CubeVoxelShape": "bfaab249f0f2ab6ae9b3eed27b647c954a567a02303584f671bc3cad8e78b1ff",
+      "net.minecraft.world.phys.shapes.DiscreteVoxelShape": "c46d88a2a5720bd85765d342a1c1419c99aa3b7ee10ebb3d873eb724785bf1cd",
+      "net.minecraft.world.phys.shapes.Shapes": "23add505fd7570b30c9f723734471f71cbd02a84998ad002cf27f87c6b0ddb66",
+      "net.minecraft.world.phys.shapes.VoxelShape": "c442be4671feb17de9adf9b88962baea0e0048af293faaf3677985cc50e35062"
+    },
+    "pin": "26.3",
+    "probe_java_source_sha256": "d6157d0af36340244d5f74574c76ae037c97ff24627454351466176544cb4e70",
+    "random_input_seed": 2637775023,
+    "runtime_version": [
+      "openjdk version \"25.0.1\" 2025-10-21 LTS",
+      "OpenJDK Runtime Environment Microsoft-12574220 (build 25.0.1+8-LTS)",
+      "OpenJDK 64-Bit Server VM Microsoft-12574220 (build 25.0.1+8-LTS, mixed mode)"
+    ],
+    "server_bundle_sha256": "d052f14d7a173734fba553711e5b570162e2f2a313267ee31a21b975a679be64",
+    "server_class_jar_sha256": "a362163eec5d1612d520772bc16e5b39c09e3b234fdc045f56bf544284ee8ae6",
+    "source_method_count": 74
+  },
+  "fixture_sha256": "9767a79013ce2d045270c8632ab5b72ece033daf4a7564dca7879ef907bfbb19",
+  "implementation_laws": [
+    "empty_clip_preserves_payload",
+    "empty_collider_preserves_payload",
+    "nonempty_iterable_tiny_returns_positive_zero",
+    "tiny_clip_returns_positive_zero",
+    "disjoint_transverse_preserves_delta",
+    "signed_zero_constructor",
+    "checked_nonfinite_first_coordinate"
+  ],
+  "java_operation_counts": {
+    "aabb_construct": 316,
+    "aabb_contains": 361,
+    "aabb_deflate": 354,
+    "aabb_deflate_scalar": 354,
+    "aabb_inflate": 354,
+    "aabb_inflate_scalar": 354,
+    "aabb_intersects": 348,
+    "aabb_move": 354,
+    "raw_array_box_collide": 846,
+    "raw_array_boxes_collide": 744
+  },
+  "java_oracle_cases": 4385,
+  "java_tags": {
+    "boundary": 54,
+    "disjoint_obstacle": 42,
+    "epsilon_gap": 78,
+    "epsilon_gate": 126,
+    "epsilon_transverse_overlap": 30,
+    "finite_inputs": 3600,
+    "iterable_epsilon_gate": 126,
+    "nonfinite_semantics": 14,
+    "occupied_degenerate_cell": 12,
+    "ordered_multi_shape": 18,
+    "raw_substrate": 1590,
+    "seeded_random": 3600,
+    "signed_zero_or_degenerate_or_extreme": 9,
+    "strict_overlap": 48,
+    "targeted": 785,
+    "zero_origin_exact_gap": 78
+  },
+  "kernel_pass": true,
+  "malformed_protocol_cases": [
+    {
+      "exit_code": 2,
+      "query": "broken",
+      "stderr": "invalid geometry protocol\n"
+    },
+    {
+      "exit_code": 2,
+      "query": "axis-error|clip|0|0|0|0|0|0|1072693248|0|1072693248|0|1072693248|0|W|1072693248|0",
+      "stderr": "invalid geometry axis\n"
+    },
+    {
+      "exit_code": 2,
+      "query": "short-box|constructor|0|0",
+      "stderr": "invalid geometry box protocol\n"
+    },
+    {
+      "exit_code": 2,
+      "query": "short-collider|clip|0|0|0|0|0|0|1072693248|0|1072693248|0|1072693248|0|X|1072693248|0|box",
+      "stderr": "invalid geometry collider protocol\n"
+    }
+  ],
+  "minecraft_version": "26.3",
+  "native_commands": [
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "java-oracle",
+      "offset": 0,
+      "seconds": 0.295265
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "java-oracle",
+      "offset": 100,
+      "seconds": 0.004904
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "java-oracle",
+      "offset": 200,
+      "seconds": 0.005698
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "java-oracle",
+      "offset": 300,
+      "seconds": 0.006302
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "java-oracle",
+      "offset": 400,
+      "seconds": 0.005731
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "java-oracle",
+      "offset": 500,
+      "seconds": 0.005471
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "java-oracle",
+      "offset": 600,
+      "seconds": 0.004384
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "java-oracle",
+      "offset": 700,
+      "seconds": 0.004857
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "java-oracle",
+      "offset": 800,
+      "seconds": 0.005048
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "java-oracle",
+      "offset": 900,
+      "seconds": 0.004291
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "java-oracle",
+      "offset": 1000,
+      "seconds": 0.004504
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "java-oracle",
+      "offset": 1100,
+      "seconds": 0.004708
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "java-oracle",
+      "offset": 1200,
+      "seconds": 0.003765
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "java-oracle",
+      "offset": 1300,
+      "seconds": 0.003556
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "java-oracle",
+      "offset": 1400,
+      "seconds": 0.003455
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "java-oracle",
+      "offset": 1500,
+      "seconds": 0.003115
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "java-oracle",
+      "offset": 1600,
+      "seconds": 0.003871
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "java-oracle",
+      "offset": 1700,
+      "seconds": 0.003941
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "java-oracle",
+      "offset": 1800,
+      "seconds": 0.003568
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "java-oracle",
+      "offset": 1900,
+      "seconds": 0.003213
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "java-oracle",
+      "offset": 2000,
+      "seconds": 0.002787
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "java-oracle",
+      "offset": 2100,
+      "seconds": 0.002913
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "java-oracle",
+      "offset": 2200,
+      "seconds": 0.002524
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "java-oracle",
+      "offset": 2300,
+      "seconds": 0.003233
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "java-oracle",
+      "offset": 2400,
+      "seconds": 0.003185
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "java-oracle",
+      "offset": 2500,
+      "seconds": 0.003591
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "java-oracle",
+      "offset": 2600,
+      "seconds": 0.00334
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "java-oracle",
+      "offset": 2700,
+      "seconds": 0.003451
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "java-oracle",
+      "offset": 2800,
+      "seconds": 0.002815
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "java-oracle",
+      "offset": 2900,
+      "seconds": 0.002833
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "java-oracle",
+      "offset": 3000,
+      "seconds": 0.002553
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "java-oracle",
+      "offset": 3100,
+      "seconds": 0.002439
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "java-oracle",
+      "offset": 3200,
+      "seconds": 0.002676
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "java-oracle",
+      "offset": 3300,
+      "seconds": 0.002567
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "java-oracle",
+      "offset": 3400,
+      "seconds": 0.002533
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "java-oracle",
+      "offset": 3500,
+      "seconds": 0.002626
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "java-oracle",
+      "offset": 3600,
+      "seconds": 0.0026
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "java-oracle",
+      "offset": 3700,
+      "seconds": 0.002885
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "java-oracle",
+      "offset": 3800,
+      "seconds": 0.003388
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "java-oracle",
+      "offset": 3900,
+      "seconds": 0.00345
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "java-oracle",
+      "offset": 4000,
+      "seconds": 0.0027
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "java-oracle",
+      "offset": 4100,
+      "seconds": 0.002663
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "java-oracle",
+      "offset": 4200,
+      "seconds": 0.002521
+    },
+    {
+      "count": 85,
+      "exit_code": 0,
+      "lane": "java-oracle",
+      "offset": 4300,
+      "seconds": 0.002619
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "public-box-list",
+      "offset": 0,
+      "seconds": 0.003005
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "public-box-list",
+      "offset": 100,
+      "seconds": 0.002847
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "public-box-list",
+      "offset": 200,
+      "seconds": 0.002712
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "public-box-list",
+      "offset": 300,
+      "seconds": 0.002694
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "public-box-list",
+      "offset": 400,
+      "seconds": 0.002801
+    },
+    {
+      "count": 100,
+      "exit_code": 0,
+      "lane": "public-box-list",
+      "offset": 500,
+      "seconds": 0.003196
+    },
+    {
+      "count": 96,
+      "exit_code": 0,
+      "lane": "public-box-list",
+      "offset": 600,
+      "seconds": 0.002861
+    },
+    {
+      "count": 65,
+      "exit_code": 0,
+      "lane": "explicit-validation-policy",
+      "offset": 0,
+      "seconds": 0.002329
+    }
+  ],
+  "not_implemented": [
+    "Shapes.box snapping",
+    "voxel shape union/merger",
+    "multi-cell VoxelShape collision",
+    "full player motion"
+  ],
+  "public_box_list_oracle_cases": 696,
+  "schema_version": 1,
+  "scope": "AABB and ordered occupied single-cell box collision substrate",
+  "source_sha256": {
+    "docs/GEOMETRY.md": "57f4f162d9eb66e555e7314d3b316e83c40a721e863a74b4b25292a58f1c873b",
+    "src/f64.bend": "bf300e34a67df69cb244745660ed14ec6bc3f0b88f451c66ac9408b057f03077",
+    "src/geometry.bend": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f",
+    "tests/geometry.bend": "e717745eeea72e0a2d8b41158010c8c54c1d44f12f7fdc17dc57805014922c23",
+    "tools/test_geometry.py": "a2a45a49ac7751b6186d3259ed9b5ece4e7d9c69237741abfccd6239f160721f"
+  },
+  "status": "native-oracle-pass"
+}
