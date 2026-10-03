@@ -1,0 +1,23 @@
+{
+  "inherited_dependency_gap": "Existing Game/JSON TypeScript/formal-kernel translation mismatch",
+  "laws": [
+    "retained_failure_preserves_prior_support",
+    "body_mismatch_preserves_owned_world_and_view"
+  ],
+  "ordinary_check": "passed",
+  "schema_version": 1,
+  "source_sha256": "a2e42fb06cab36408e7631e8ff3b9e61793696d4b049592d3ce137f69fa3b381",
+  "verdict": {
+    "command": [
+      "/Users/chuah/.bend/bin/bend",
+      "src/support_world.bend",
+      "--verdict"
+    ],
+    "exit_code": 1,
+    "seconds": null,
+    "stderr": "SOME PROOFS FAIL\nSorry - this is a mismatch between the TypeScript implementation, and the formalized BendTT kernel. Your proofs may or may not be correct, and we cannot validate them yet. This will be addressed in a future update. Meanwhile, feel free to open an issue to report this bug.\n",
+    "stdout": "",
+    "timing_note": "Tool execution yielded; no end-to-end wall-clock duration was retained."
+  },
+  "whole_module_kernel_verified": false
+}
