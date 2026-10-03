@@ -9,7 +9,10 @@ fixture is a verification instrument; none satisfies a gameplay completion gate.
    and logical keyboard sampling, support/cache reads, owned Player ticking and
    actual MouseHandler projection are checked. Next: LocalPlayer override and
    owned motion composition → authoritative 20 Hz
-   held-input controls and typed player saves. The discrete debug controller is
+   held-input controls and typed player saves. The plain Player runtime now passes
+   73 actual Java comparisons with per-tick queued edits, packet/physics rollback
+   and raw record restoration; the LocalPlayer override remains separately queued.
+   The discrete debug controller is
    an integration instrument, not vanilla walking.
 2. Registry identity → leased save-owning server → durable publication → actual
    restart/queued-action/MCP tests and the same save-owning state in a client are
@@ -36,17 +39,17 @@ declared interfaces; integration evidence determines subsequent work.
 
 | Owner | Exclusive working files or subsystem | Stable integration interface |
 | --- | --- | --- |
-| Lead | `player_runtime.bend`, `client_presenter.bend`, window input and new actor/save integration | One W body plus metadata, Tables, support and complete Controller; atomic packets and Core step before player physics; player bundle integration next |
+| Lead | `player_runtime.bend`, `player_session.bend`, `player_storage.bend`, `client_presenter.bend`, window input and new actor/save integration | Verified plain Player runtime; one W body plus metadata, Tables, support and complete Controller. Player bundle transfer/dispatcher ordinary checks pass; native save/API/restart composition queued |
 | World bridge | Completed PW/SW; new `local_tick_world.bend` | Verified owned support/context reads; LocalPlayer prepare override before checked travel/finish |
 | Client/render | Completed BR/texture metadata; new `resource_frame.bend` | Real ZIP/model/bake/world-mesh/frame composition and retained Assets; metadata consumer integration remains separate |
 | Player motion | Completed `support.bend` and `local_input.bend` | Exact ordered sprint/input/crouch/bob phases; whole tick rotation and contextual movement hooks remain open |
-| Model interpretation | Completed `blockstate_model.bend`; presenter integration test | Exact selector/multipart/ordered state semantics; hidden actor/window/failure cleanup tests next |
+| Model interpretation | Completed `blockstate_model.bend`; presenter integration test | Exact selector/multipart/ordered state semantics; 28 hidden actor/window/failure cleanup executions pass; actual visible focused input remains required |
 | Model bake | Completed Bake/Choice/Record verification | Exact quads, RNG consumption and raw degree save projection; atomic save verification queued |
 | World mesh | Completed `world_mesh.bend`; new `world_visibility.bend` | Exact relative quads; actual four-palette neighbor-face visibility and owned halo reads next |
 | Player codec/input | Completed Codec/Look/Mouse; new `player_controls.bend` | Whole frame accumulation → one Entity turn, atomic rejection, capture/release transitions |
 | Float parsing | Completed, stable source | Separate strict RFC and Java-string binary32 parsers |
 | Persistence | Completed core and extension foundations, stable sources | Effectful sole-engine/lease State; closed owned codec and catalog |
-| Build reuse | Cache complete; new runtime integration tests; full Pclient cache queued | Final shared tick/input/restore evidence; cached full-client test remains queued |
+| Build reuse | Cache complete; runtime integration tests complete; full Pclient cache queued | Shared plain Player tick/input/restore native evidence passes; whole-runtime kernel export timed out; cached full-client test remains queued |
 
 Owners integrate through these interfaces; they do not concurrently modify
 another owner's source. Changes to an interface are announced before dependent
@@ -73,6 +76,14 @@ inconclusive. Blockstate/resource compiler samples later showed about 13.0/
 11.6 GiB footprints; bounded attempts and harness-only narrowing are recorded
 separately from ordinary machine contention. Keep production behavior and
 independent fixture expectations fixed during these diagnostics.
+
+Current narrower builds separate WorldVisibility sampling and geometry, and
+ResourceFrame drawing, asset audit and geometry. Their former combined attempts
+reached 600-second bounds without artifacts; no behavioral conclusion follows.
+The LocalPlayer world harness hit the installed compiler's 247-word continuation
+limit. Read-only named diagnostics locate its test finish-injection continuation;
+harness-only boxing and small checked outcomes preserve production code and Java
+expectations. Each installed retry remains bounded and independently recorded.
 
 ## Measured build work
 

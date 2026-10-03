@@ -44,12 +44,15 @@ remains open.
 | Neutral Player travel | Exact input acceleration, collision-before-gravity and friction/drag ordering. 1,205 untouched actual Player.travel observations, 58 rejections/recovery and five kernel laws pass. Caller supplies supporting-aware samples and current attributes; fluids, flight, effects, hazards and other modes remain open. |
 | World travel composition | One owned world and sine table; checked preparation, actual world collision movement, then finishing once. 31 actual Player.travel cases, 31 supplemental Entity.move observations, 62 ordered collider lists and 18 rollback cases pass. Four ordinary laws; aggregate kernel validity remains unverified. |
 | Neutral Player aiStep | Velocity cleanup, input decay, counters, grounded jump and sprint impulse, travel and final stored fields. 2,752 actual calls in 511 sequences plus 60 direct jump-helper observations pass exact native comparisons; 61 rejection/recovery cases and six kernel laws pass. Supporting cache, full LocalPlayer/ServerPlayer, equipment and other gameplay state remain open. |
+| LocalPlayer neutral input | Actual keyboard/vector, input modification, crouch/sprint decisions, ordered setters and bob/cache phases pass native comparisons. 130 control/pre-travel projections, 130 carried cache ticks and 32 rejection recoveries pass; full imported source/harness kernel pass. Physics body outcomes in those chains come from Java; owned motion integration is separate. |
 | Logical held buttons | Every seven-button KeyboardInput combination matches actual Java tick output, jump injection and clearing. 9,728 logical press/release cases cover shared bindings, repeats and chains; five kernel laws pass. Actual OS input, LocalPlayer slowdown/pose/sprint rules and shared continuous motion are not yet verified. |
 | Supporting-block state | Exact ordered full-cube support selection, cache/fallback history, floor semantics and friction/jump sampling positions. 529 isolated and 529 chained updates, 1,277 query/selection comparisons, 6,215 positions and 553 factors pass; four laws/full import kernel pass. Ten actual Player.move observations confirm support updates after skipped position application. Contextual shapes remain open. |
 | Owned player tick | One authoritative W body with raw-equality admission, checked aiStep/travel and complete metadata/view rollback. 52 actual aiStep calls, 104 ordered collider lists and 14 same-owner rejection/recovery cases pass. Core clock is untouched by this operation; runtime scheduling is separate. Four ordinary laws; imported kernel gap remains explicit. |
 | Owned support sampling | Actual Core reads and ordered support updates preserve view/cache/clocks and dynamic palette IDs. 52 actual aiStep calls, 32 support histories and 51 queries pass, including ten rejections and nine same-owner recoveries. Seven moves skipped position application while still updating support. Full imported kernel retains the compiler mismatch. |
 | Entity look fields | Current/previous F32 yaw/pitch in degrees match 3,606 actual Entity.turn steps and 384 carried turns, with explicit finite-state admission and rejection recovery. Eight laws/full import kernel pass. This is the scaled Entity boundary; whole tick rotation reset/wrap and OS controls remain separate. |
 | MouseHandler projection | Exact F64 event accumulation and promoted-float sensitivity constants match actual private receiver observations. 7,164 native cases, carried multi-move frames and rejection/recovery pass; nine source/harness laws pass kernel. Default sensitivity scale is raw 3ff000001800000c, slightly above one. Smooth camera, scoping and actual focused OS input remain open. |
+| Atomic controller packets | Ordered captured key/relative Look events compose into one F64 accumulation/Mouse finish/Entity turn. 1,141 requests/1,727 reports, 126 recovery followups and 54 malformed cases pass; eight laws/full source+harness kernel pass. Typed total release is independent of invalid options; physical focused OS input remains unverified. |
+| Shared player runtime | Core edits precede each held-input plain Player aiStep; the sole body, support, metadata and controller remain authoritative. Seventy-three actual Java player/support comparisons, 17 native launches and 244 harness operations pass, including bulk/per-tick ordering, pause/query/render retention, packet rollback, three physics rejection/recovery phases and raw record restoration. Whole-runtime kernel export timed out at 600.083 s without a verdict. LocalPlayer and full tick phases remain separate. |
 | Neutral player codec | Strict bounded custom NBT preserves body, aiStep fields, support and view raw bits. 920 exact encodes, 997 exact decodes and 1,308 rejection/recovery cases pass; seven production/harness laws pass kernel. Atomic player-bundle integration and vanilla player.dat remain open. |
 | Motion/look save record | Bounded custom NBT pairs the neutral snapshot with all four raw degree fields and checks exact RN32 degree-to-radian agreement. 5,734 cases pass twice, with 3,529 rejection/recovery pairs and twelve rejected build-receipt corruptions. Full imported source kernel passes two structural laws. Atomic runtime bundle integration remains unverified. |
 | Owned client bridge | One Engine serves checked collision queries, view changes and success-only revision/region/palette snapshot caching. 124 actual Java collider lists and 87 untouched Entity.move comparisons plus 14 integration groups pass. The palette is air/stone/dirt/oak planks; missing sections and unsupported states reject explicitly. |
@@ -69,6 +72,7 @@ remains open.
 | Native build reuse | Content-keyed compiler/source/effect/runtime/toolchain closure with checked executable/C bytes and corruption recovery. 34 cache checks pass, including four concurrent processes sharing one build. Every required test still executes; transformed window/GPU builds are excluded. |
 | Block reference | Every state sampled for shape/physical metadata, with exact numeric bits and explicit context-dependency flags; 963 deduplicated shapes. Extraction is not implemented collision/behavior. |
 | Automated native launch | Strict project-local generated-window transform; CPU/Metal hidden probes preserve foreground app with no observed activation/Spaces changes. This is OS-boundary evidence, not rendered-game fidelity. |
+| Shared native presenter | Twenty-eight hidden native runs across fourteen scenarios verify real Window/actor/TCP integration, complete packet traces, paused tick retention through timer pulses, zero-frame budgets and cleanup failures. Foreground/Spaces remain unchanged. Initial human capture timing and physical focused transitions remain unverified; this does not satisfy visible acceptance. |
 | Window focus/capture query | A narrow affine macOS observation reads actual key/application/capture state and returns the same Base Window. Three real hidden runs verify failed capture, frame/close and unchanged foreground/Spaces. Visible focus-loss with held input and presenter integration remain unverified. |
 
 The server owns both world and dynamic registry and admits actions through the
@@ -76,13 +80,17 @@ shared dispatcher. The current critical path is owned supporting-aware world
 context, shared 20 Hz held-input player ticking, typed player save composition,
 and actual Bend resource/selection/quad production into client frames.
 Precise camera-relative snapshots and the save-owning client instrument are
-checked. The new player runtime and its atomic frame-packet input/restore boundaries pass
-ordinary ownership checks; actual native integration remains unverified.
+checked. The shared player runtime and its atomic frame-packet input/restore boundaries
+pass ordinary ownership checks and the bounded native Java-reference integration;
+the whole-runtime independent kernel remains unverified after a bounded export timeout.
+The new save-shell/bundle transfer and stepping dispatcher also pass ordinary
+checks; their native persistence/API composition is pending.
 The LocalPlayer input override is separately checked against actual receivers;
 its owned movement integration is in progress and must avoid a second 0.98 decay. The typed presenter now also
 passes ownership/type checking up to its explicit native/unsafe boundaries;
 native focus/capture observations pass hidden boundary checks, while presenter
-failure cleanup and real focused input remain unverified. The presenter batches
+failure cleanup now passes the bounded hidden integration suite; real focused
+input remains unverified. The presenter batches
 all OS frame events into one actor operation, including capture/focus release.
 Vanilla gameplay,
 worldgen, all content/UI, complete player/mod persistence and the full
