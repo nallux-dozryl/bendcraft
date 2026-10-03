@@ -1,0 +1,1296 @@
+{
+  "actual_java_ai_step_histories": 28,
+  "actual_java_ai_step_ticks": 140,
+  "binary": {
+    "bytes": 1373632,
+    "file": "local-input-tests",
+    "sha1": "056f9b98b119b9bc5f31c7c14262ea1630f5d364",
+    "sha256": "d6df3f3c9b42a23f524d8402e230ea241e3156d5020cfb05ac17ceced56264d4"
+  },
+  "builds": [
+    {
+      "binary": {
+        "bytes": 1373632,
+        "file": "local-input-tests",
+        "sha1": "056f9b98b119b9bc5f31c7c14262ea1630f5d364",
+        "sha256": "d6df3f3c9b42a23f524d8402e230ea241e3156d5020cfb05ac17ceced56264d4"
+      },
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/local_input.bend",
+        "-o",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-input-tests"
+      ],
+      "compiler": {
+        "bytes": 63885392,
+        "file": "bend",
+        "sha1": "ddce6e432357be618d905b19c0f79abe3d28c388",
+        "sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e"
+      },
+      "exit_code": 0,
+      "memory_sample_scope": "Process-group RSS/virtual sizes sampled every 5 seconds only while unexpectedly slow; RSS is not physical footprint or a game benchmark",
+      "memory_samples": [
+        {
+          "processes": [
+            {
+              "elapsed": "00:05",
+              "pid": 49531,
+              "rss_kib": 428672,
+              "virtual_kib": 449147536
+            },
+            {
+              "elapsed": "00:02",
+              "pid": 49580,
+              "rss_kib": 14080,
+              "virtual_kib": 442022240
+            },
+            {
+              "elapsed": "00:02",
+              "pid": 49581,
+              "rss_kib": 185072,
+              "virtual_kib": 442251920
+            }
+          ],
+          "seconds": 5.034967
+        }
+      ],
+      "pid": 49531,
+      "seconds": 5.447114,
+      "source_hashes_unchanged": true,
+      "source_sha256": {
+        "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+        "src/geometry.bend": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f",
+        "src/local_input.bend": "5e3555fdb06258a76478a32d32332455ad186ec956607ce981e198a3c28ca02e",
+        "src/locomotion.bend": "ccf8aa12636ba1fce5575606383bf75c02a8ac79ba952645b89aea2eef6cd459",
+        "src/movement.bend": "0e94fea7cc941a23d2ed7bbd2ccaf0117e6af363eb91f2db2e34428f9dd9e67f",
+        "src/player_input.bend": "d3938f96416691739eb54f2b0f77377c6ba7c74ac63ffa8335840152feb355d5",
+        "src/player_tick.bend": "d583f3014011313097779b69ee0fd8d77bd3ed0e1e7895b629903eb64da9699f",
+        "src/travel.bend": "717e969e3989a7a8e443b18f69c171bdc11a14130828233ce85e6cd914e1f8f1",
+        "tests/local_input.bend": "e3fd82fdddf877eb26c95f6f7b34f9f9166a406cd8deaa07f3c7040fe43cae3e"
+      },
+      "status": "passed",
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false,
+      "timeout_seconds": 600,
+      "version_probe": {
+        "command": [
+          "/Users/chuah/.bend/bin/bend",
+          "version"
+        ],
+        "exit_code": 0,
+        "seconds": 0.019395,
+        "stderr": "",
+        "stdout": "bend 2.0.35\n"
+      }
+    }
+  ],
+  "chain_scope": "Native LI key/vector/timer/crouch/bob and final sprint cache feeds next control phase; next authoritative Body/PT metadata comes from direct Java observations. No native full physical tick trajectory claim.",
+  "chained_native_controller_cache_ticks": 130,
+  "chained_native_controller_histories": 26,
+  "checks": [
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/local_input.bend",
+        "--verdict"
+      ],
+      "compiler": {
+        "bytes": 63885392,
+        "file": "bend",
+        "sha1": "ddce6e432357be618d905b19c0f79abe3d28c388",
+        "sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e"
+      },
+      "exit_code": 0,
+      "memory_sample_scope": "Process-group RSS/virtual sizes sampled every 5 seconds only while unexpectedly slow; RSS is not physical footprint or a game benchmark",
+      "memory_samples": [],
+      "pid": 50390,
+      "seconds": 4.893707,
+      "source_hashes_unchanged": true,
+      "source_sha256": {
+        "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+        "src/geometry.bend": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f",
+        "src/local_input.bend": "5e3555fdb06258a76478a32d32332455ad186ec956607ce981e198a3c28ca02e",
+        "src/locomotion.bend": "ccf8aa12636ba1fce5575606383bf75c02a8ac79ba952645b89aea2eef6cd459",
+        "src/movement.bend": "0e94fea7cc941a23d2ed7bbd2ccaf0117e6af363eb91f2db2e34428f9dd9e67f",
+        "src/player_input.bend": "d3938f96416691739eb54f2b0f77377c6ba7c74ac63ffa8335840152feb355d5",
+        "src/player_tick.bend": "d583f3014011313097779b69ee0fd8d77bd3ed0e1e7895b629903eb64da9699f",
+        "src/travel.bend": "717e969e3989a7a8e443b18f69c171bdc11a14130828233ce85e6cd914e1f8f1",
+        "tests/local_input.bend": "e3fd82fdddf877eb26c95f6f7b34f9f9166a406cd8deaa07f3c7040fe43cae3e"
+      },
+      "status": "passed",
+      "stderr": "",
+      "stdout": "ALL PROOFS CHECK\n",
+      "timed_out": false,
+      "timeout_seconds": 60,
+      "version_probe": {
+        "command": [
+          "/Users/chuah/.bend/bin/bend",
+          "version"
+        ],
+        "exit_code": 0,
+        "seconds": 0.018977,
+        "stderr": "",
+        "stdout": "bend 2.0.35\n"
+      }
+    }
+  ],
+  "checks_reused_with_exact_source_hashes": true,
+  "confidence": "high for recorded bounded direct actual phases",
+  "counts": {
+    "apply": 211,
+    "bob": 224,
+    "controls": 130,
+    "keyboard": 128,
+    "modify": 112,
+    "predicates": 112,
+    "prepare": 130,
+    "vectors": 2048
+  },
+  "explicit_rejection_cases": 32,
+  "extra_jump_label_scope": "Native project-only jump_attempted/jumped booleans are not equated to nonexistent vanilla fields; raw actual pre-travel state/vector and observed branch calls are retained.",
+  "fixture": {
+    "bytes": 7671305,
+    "file": "local_input.json",
+    "sha1": "fc95188e5341d406fabdeb4b45693890ec739853",
+    "sha256": "1b75b5db33e516c417c27033cb9cf12b3d6d1b66ba03e366416dac1d3da98d8d"
+  },
+  "fixture_provenance": {
+    "counts": {
+      "ai_step": 28,
+      "ai_step_ticks": 140,
+      "keyboard": 128,
+      "receivers": 112,
+      "vectors": 2048
+    },
+    "failure_injections": [
+      {
+        "injection": "client",
+        "reason": "Installed client/metadata/runtime/libraries changed",
+        "rejected": true
+      },
+      {
+        "injection": "runtime",
+        "reason": "Installed client/metadata/runtime/libraries changed",
+        "rejected": true
+      },
+      {
+        "injection": "library",
+        "reason": "Installed client/metadata/runtime/libraries changed",
+        "rejected": true
+      },
+      {
+        "injection": "class",
+        "reason": "Actual classes/method fingerprints changed",
+        "rejected": true
+      },
+      {
+        "injection": "source",
+        "reason": "Launcher source changed",
+        "rejected": true
+      },
+      {
+        "injection": "observation",
+        "reason": "Stored observations changed",
+        "rejected": true
+      }
+    ],
+    "reference": {
+      "bytes": 7671305,
+      "file": "local_input.json",
+      "sha1": "fc95188e5341d406fabdeb4b45693890ec739853",
+      "sha256": "1b75b5db33e516c417c27033cb9cf12b3d6d1b66ba03e366416dac1d3da98d8d"
+    },
+    "scope": "Integrity/provenance only; no new Java execution",
+    "status": "passed"
+  },
+  "kernel_pass": true,
+  "laws": [
+    "rejected_preparation_retains_tables",
+    "rejected_controls_do_not_sample_held_buttons",
+    "input_replacement_preserves_vertical_input",
+    "repeated_sprint_setters_remain_ordered"
+  ],
+  "malformed_protocol": [
+    {
+      "exit_code": 2,
+      "stderr": "invalid local input protocol\n"
+    },
+    {
+      "exit_code": 2,
+      "stderr": "invalid local input protocol\n"
+    },
+    {
+      "exit_code": 2,
+      "stderr": "invalid local input protocol\n"
+    },
+    {
+      "exit_code": 2,
+      "stderr": "invalid local input protocol\n"
+    },
+    {
+      "exit_code": 2,
+      "stderr": "invalid local input field groups\n"
+    }
+  ],
+  "nan_comparison_scope": "Exact raw finite/infinite/signed-zero values; static helper NaNs compare NaN class because payload sign propagation is not a portability promise.",
+  "native_batches": [
+    {
+      "requests": 60,
+      "seconds": 0.013678
+    },
+    {
+      "requests": 60,
+      "seconds": 0.013081
+    },
+    {
+      "requests": 8,
+      "seconds": 0.016262
+    },
+    {
+      "requests": 60,
+      "seconds": 0.024844
+    },
+    {
+      "requests": 60,
+      "seconds": 0.01331
+    },
+    {
+      "requests": 60,
+      "seconds": 0.01297
+    },
+    {
+      "requests": 60,
+      "seconds": 0.012926
+    },
+    {
+      "requests": 60,
+      "seconds": 0.012878
+    },
+    {
+      "requests": 60,
+      "seconds": 0.012845
+    },
+    {
+      "requests": 60,
+      "seconds": 0.012783
+    },
+    {
+      "requests": 60,
+      "seconds": 0.01237
+    },
+    {
+      "requests": 60,
+      "seconds": 0.013306
+    },
+    {
+      "requests": 60,
+      "seconds": 0.013176
+    },
+    {
+      "requests": 60,
+      "seconds": 0.012762
+    },
+    {
+      "requests": 60,
+      "seconds": 0.012825
+    },
+    {
+      "requests": 60,
+      "seconds": 0.012901
+    },
+    {
+      "requests": 60,
+      "seconds": 0.012509
+    },
+    {
+      "requests": 60,
+      "seconds": 0.01266
+    },
+    {
+      "requests": 60,
+      "seconds": 0.01253
+    },
+    {
+      "requests": 60,
+      "seconds": 0.012731
+    },
+    {
+      "requests": 60,
+      "seconds": 0.012712
+    },
+    {
+      "requests": 60,
+      "seconds": 0.012632
+    },
+    {
+      "requests": 60,
+      "seconds": 0.012845
+    },
+    {
+      "requests": 60,
+      "seconds": 0.01249
+    },
+    {
+      "requests": 60,
+      "seconds": 0.012383
+    },
+    {
+      "requests": 60,
+      "seconds": 0.012607
+    },
+    {
+      "requests": 60,
+      "seconds": 0.012539
+    },
+    {
+      "requests": 60,
+      "seconds": 0.012712
+    },
+    {
+      "requests": 60,
+      "seconds": 0.012753
+    },
+    {
+      "requests": 60,
+      "seconds": 0.012335
+    },
+    {
+      "requests": 60,
+      "seconds": 0.012475
+    },
+    {
+      "requests": 60,
+      "seconds": 0.0129
+    },
+    {
+      "requests": 60,
+      "seconds": 0.012899
+    },
+    {
+      "requests": 60,
+      "seconds": 0.012787
+    },
+    {
+      "requests": 60,
+      "seconds": 0.013261
+    },
+    {
+      "requests": 60,
+      "seconds": 0.012648
+    },
+    {
+      "requests": 60,
+      "seconds": 0.013407
+    },
+    {
+      "requests": 8,
+      "seconds": 0.012639
+    },
+    {
+      "requests": 60,
+      "seconds": 0.013126
+    },
+    {
+      "requests": 52,
+      "seconds": 0.013338
+    },
+    {
+      "requests": 60,
+      "seconds": 0.012639
+    },
+    {
+      "requests": 60,
+      "seconds": 0.012468
+    },
+    {
+      "requests": 60,
+      "seconds": 0.013068
+    },
+    {
+      "requests": 44,
+      "seconds": 0.016046
+    },
+    {
+      "requests": 60,
+      "seconds": 0.016267
+    },
+    {
+      "requests": 52,
+      "seconds": 0.013689
+    },
+    {
+      "requests": 60,
+      "seconds": 0.015348
+    },
+    {
+      "requests": 60,
+      "seconds": 0.016025
+    },
+    {
+      "requests": 60,
+      "seconds": 0.01567
+    },
+    {
+      "requests": 31,
+      "seconds": 0.014863
+    },
+    {
+      "requests": 60,
+      "seconds": 0.0137
+    },
+    {
+      "requests": 60,
+      "seconds": 0.013687
+    },
+    {
+      "requests": 10,
+      "seconds": 0.01342
+    },
+    {
+      "requests": 60,
+      "seconds": 0.016128
+    },
+    {
+      "requests": 60,
+      "seconds": 0.017086
+    },
+    {
+      "requests": 10,
+      "seconds": 0.014138
+    },
+    {
+      "requests": 32,
+      "seconds": 0.014894
+    },
+    {
+      "requests": 2,
+      "seconds": 0.014214
+    },
+    {
+      "requests": 2,
+      "seconds": 0.016503
+    },
+    {
+      "requests": 2,
+      "seconds": 0.014225
+    },
+    {
+      "requests": 2,
+      "seconds": 0.014311
+    },
+    {
+      "requests": 2,
+      "seconds": 0.01539
+    },
+    {
+      "requests": 2,
+      "seconds": 0.013414
+    },
+    {
+      "requests": 2,
+      "seconds": 0.013952
+    },
+    {
+      "requests": 2,
+      "seconds": 0.016394
+    },
+    {
+      "requests": 2,
+      "seconds": 0.016576
+    },
+    {
+      "requests": 2,
+      "seconds": 0.015833
+    },
+    {
+      "requests": 2,
+      "seconds": 0.014717
+    },
+    {
+      "requests": 2,
+      "seconds": 0.020996
+    },
+    {
+      "requests": 2,
+      "seconds": 0.01534
+    },
+    {
+      "requests": 2,
+      "seconds": 0.01548
+    },
+    {
+      "requests": 2,
+      "seconds": 0.015891
+    },
+    {
+      "requests": 2,
+      "seconds": 0.013471
+    },
+    {
+      "requests": 2,
+      "seconds": 0.012823
+    },
+    {
+      "requests": 2,
+      "seconds": 0.012705
+    },
+    {
+      "requests": 2,
+      "seconds": 0.012565
+    },
+    {
+      "requests": 2,
+      "seconds": 0.012654
+    },
+    {
+      "requests": 2,
+      "seconds": 0.012826
+    },
+    {
+      "requests": 2,
+      "seconds": 0.012219
+    },
+    {
+      "requests": 2,
+      "seconds": 0.012914
+    },
+    {
+      "requests": 2,
+      "seconds": 0.012624
+    },
+    {
+      "requests": 2,
+      "seconds": 0.012873
+    },
+    {
+      "requests": 2,
+      "seconds": 0.012559
+    },
+    {
+      "requests": 2,
+      "seconds": 0.012485
+    },
+    {
+      "requests": 2,
+      "seconds": 0.012541
+    },
+    {
+      "requests": 2,
+      "seconds": 0.012733
+    },
+    {
+      "requests": 2,
+      "seconds": 0.01342
+    },
+    {
+      "requests": 2,
+      "seconds": 0.012676
+    },
+    {
+      "requests": 2,
+      "seconds": 0.012672
+    },
+    {
+      "case": "ai:held_forward",
+      "chained_controller_tick": 0,
+      "seconds": 0.024947
+    },
+    {
+      "case": "ai:held_forward",
+      "chained_controller_tick": 1,
+      "seconds": 0.02478
+    },
+    {
+      "case": "ai:held_forward",
+      "chained_controller_tick": 2,
+      "seconds": 0.024617
+    },
+    {
+      "case": "ai:held_forward",
+      "chained_controller_tick": 3,
+      "seconds": 0.024981999999999997
+    },
+    {
+      "case": "ai:held_forward",
+      "chained_controller_tick": 4,
+      "seconds": 0.025218
+    },
+    {
+      "case": "ai:held_diagonal",
+      "chained_controller_tick": 0,
+      "seconds": 0.024621999999999998
+    },
+    {
+      "case": "ai:held_diagonal",
+      "chained_controller_tick": 1,
+      "seconds": 0.024839
+    },
+    {
+      "case": "ai:held_diagonal",
+      "chained_controller_tick": 2,
+      "seconds": 0.024820000000000002
+    },
+    {
+      "case": "ai:held_diagonal",
+      "chained_controller_tick": 3,
+      "seconds": 0.024807
+    },
+    {
+      "case": "ai:held_diagonal",
+      "chained_controller_tick": 4,
+      "seconds": 0.025053
+    },
+    {
+      "case": "ai:held_sprint",
+      "chained_controller_tick": 0,
+      "seconds": 0.024734
+    },
+    {
+      "case": "ai:held_sprint",
+      "chained_controller_tick": 1,
+      "seconds": 0.025228
+    },
+    {
+      "case": "ai:held_sprint",
+      "chained_controller_tick": 2,
+      "seconds": 0.024736
+    },
+    {
+      "case": "ai:held_sprint",
+      "chained_controller_tick": 3,
+      "seconds": 0.02511
+    },
+    {
+      "case": "ai:held_sprint",
+      "chained_controller_tick": 4,
+      "seconds": 0.024785
+    },
+    {
+      "case": "ai:double_tap",
+      "chained_controller_tick": 0,
+      "seconds": 0.024678
+    },
+    {
+      "case": "ai:double_tap",
+      "chained_controller_tick": 1,
+      "seconds": 0.025075
+    },
+    {
+      "case": "ai:double_tap",
+      "chained_controller_tick": 2,
+      "seconds": 0.02486
+    },
+    {
+      "case": "ai:double_tap",
+      "chained_controller_tick": 3,
+      "seconds": 0.025119000000000002
+    },
+    {
+      "case": "ai:double_tap",
+      "chained_controller_tick": 4,
+      "seconds": 0.024596
+    },
+    {
+      "case": "ai:double_tap_and_sprint",
+      "chained_controller_tick": 0,
+      "seconds": 0.025252
+    },
+    {
+      "case": "ai:double_tap_and_sprint",
+      "chained_controller_tick": 1,
+      "seconds": 0.025377
+    },
+    {
+      "case": "ai:double_tap_and_sprint",
+      "chained_controller_tick": 2,
+      "seconds": 0.025026
+    },
+    {
+      "case": "ai:double_tap_and_sprint",
+      "chained_controller_tick": 3,
+      "seconds": 0.025786999999999997
+    },
+    {
+      "case": "ai:double_tap_and_sprint",
+      "chained_controller_tick": 4,
+      "seconds": 0.02538
+    },
+    {
+      "case": "ai:double_start_then_major_stop",
+      "chained_controller_tick": 0,
+      "seconds": 0.025106999999999997
+    },
+    {
+      "case": "ai:double_start_then_major_stop",
+      "chained_controller_tick": 1,
+      "seconds": 0.025398999999999998
+    },
+    {
+      "case": "ai:double_start_then_major_stop",
+      "chained_controller_tick": 2,
+      "seconds": 0.026203999999999998
+    },
+    {
+      "case": "ai:double_start_then_major_stop",
+      "chained_controller_tick": 3,
+      "seconds": 0.025991
+    },
+    {
+      "case": "ai:double_start_then_major_stop",
+      "chained_controller_tick": 4,
+      "seconds": 0.025638
+    },
+    {
+      "case": "ai:minor_allows_sprint",
+      "chained_controller_tick": 0,
+      "seconds": 0.025425
+    },
+    {
+      "case": "ai:minor_allows_sprint",
+      "chained_controller_tick": 1,
+      "seconds": 0.025147000000000003
+    },
+    {
+      "case": "ai:minor_allows_sprint",
+      "chained_controller_tick": 2,
+      "seconds": 0.025341
+    },
+    {
+      "case": "ai:minor_allows_sprint",
+      "chained_controller_tick": 3,
+      "seconds": 0.024562
+    },
+    {
+      "case": "ai:minor_allows_sprint",
+      "chained_controller_tick": 4,
+      "seconds": 0.025778000000000002
+    },
+    {
+      "case": "ai:major_stops_sprint",
+      "chained_controller_tick": 0,
+      "seconds": 0.024818
+    },
+    {
+      "case": "ai:major_stops_sprint",
+      "chained_controller_tick": 1,
+      "seconds": 0.0258
+    },
+    {
+      "case": "ai:major_stops_sprint",
+      "chained_controller_tick": 2,
+      "seconds": 0.025429
+    },
+    {
+      "case": "ai:major_stops_sprint",
+      "chained_controller_tick": 3,
+      "seconds": 0.025051999999999998
+    },
+    {
+      "case": "ai:major_stops_sprint",
+      "chained_controller_tick": 4,
+      "seconds": 0.024623
+    },
+    {
+      "case": "ai:old_shift_latency",
+      "chained_controller_tick": 0,
+      "seconds": 0.025115
+    },
+    {
+      "case": "ai:old_shift_latency",
+      "chained_controller_tick": 1,
+      "seconds": 0.024901
+    },
+    {
+      "case": "ai:old_shift_latency",
+      "chained_controller_tick": 2,
+      "seconds": 0.025064000000000003
+    },
+    {
+      "case": "ai:old_shift_latency",
+      "chained_controller_tick": 3,
+      "seconds": 0.025469
+    },
+    {
+      "case": "ai:old_shift_latency",
+      "chained_controller_tick": 4,
+      "seconds": 0.024991
+    },
+    {
+      "case": "ai:new_shift_latency",
+      "chained_controller_tick": 0,
+      "seconds": 0.024898
+    },
+    {
+      "case": "ai:new_shift_latency",
+      "chained_controller_tick": 1,
+      "seconds": 0.025223000000000002
+    },
+    {
+      "case": "ai:new_shift_latency",
+      "chained_controller_tick": 2,
+      "seconds": 0.024902
+    },
+    {
+      "case": "ai:new_shift_latency",
+      "chained_controller_tick": 3,
+      "seconds": 0.025325
+    },
+    {
+      "case": "ai:new_shift_latency",
+      "chained_controller_tick": 4,
+      "seconds": 0.025097
+    },
+    {
+      "case": "ai:old_shift_clears_window",
+      "chained_controller_tick": 0,
+      "seconds": 0.025147
+    },
+    {
+      "case": "ai:old_shift_clears_window",
+      "chained_controller_tick": 1,
+      "seconds": 0.024828
+    },
+    {
+      "case": "ai:old_shift_clears_window",
+      "chained_controller_tick": 2,
+      "seconds": 0.024667
+    },
+    {
+      "case": "ai:old_shift_clears_window",
+      "chained_controller_tick": 3,
+      "seconds": 0.024828
+    },
+    {
+      "case": "ai:old_shift_clears_window",
+      "chained_controller_tick": 4,
+      "seconds": 0.025206
+    },
+    {
+      "case": "ai:new_backward_clears_window",
+      "chained_controller_tick": 0,
+      "seconds": 0.024972
+    },
+    {
+      "case": "ai:new_backward_clears_window",
+      "chained_controller_tick": 1,
+      "seconds": 0.026033
+    },
+    {
+      "case": "ai:new_backward_clears_window",
+      "chained_controller_tick": 2,
+      "seconds": 0.02453
+    },
+    {
+      "case": "ai:new_backward_clears_window",
+      "chained_controller_tick": 3,
+      "seconds": 0.025007
+    },
+    {
+      "case": "ai:new_backward_clears_window",
+      "chained_controller_tick": 4,
+      "seconds": 0.02463
+    },
+    {
+      "case": "ai:opposing_all",
+      "chained_controller_tick": 0,
+      "seconds": 0.024845
+    },
+    {
+      "case": "ai:opposing_all",
+      "chained_controller_tick": 1,
+      "seconds": 0.025078999999999997
+    },
+    {
+      "case": "ai:opposing_all",
+      "chained_controller_tick": 2,
+      "seconds": 0.025053
+    },
+    {
+      "case": "ai:opposing_all",
+      "chained_controller_tick": 3,
+      "seconds": 0.025523
+    },
+    {
+      "case": "ai:opposing_all",
+      "chained_controller_tick": 4,
+      "seconds": 0.024841000000000002
+    },
+    {
+      "case": "ai:food_six",
+      "chained_controller_tick": 0,
+      "seconds": 0.025199
+    },
+    {
+      "case": "ai:food_six",
+      "chained_controller_tick": 1,
+      "seconds": 0.025605000000000003
+    },
+    {
+      "case": "ai:food_six",
+      "chained_controller_tick": 2,
+      "seconds": 0.02583
+    },
+    {
+      "case": "ai:food_six",
+      "chained_controller_tick": 3,
+      "seconds": 0.025578
+    },
+    {
+      "case": "ai:food_six",
+      "chained_controller_tick": 4,
+      "seconds": 0.025591000000000003
+    },
+    {
+      "case": "ai:food_seven",
+      "chained_controller_tick": 0,
+      "seconds": 0.0258
+    },
+    {
+      "case": "ai:food_seven",
+      "chained_controller_tick": 1,
+      "seconds": 0.025544999999999998
+    },
+    {
+      "case": "ai:food_seven",
+      "chained_controller_tick": 2,
+      "seconds": 0.025479
+    },
+    {
+      "case": "ai:food_seven",
+      "chained_controller_tick": 3,
+      "seconds": 0.024789
+    },
+    {
+      "case": "ai:food_seven",
+      "chained_controller_tick": 4,
+      "seconds": 0.025894
+    },
+    {
+      "case": "ai:negative_timer",
+      "chained_controller_tick": 0,
+      "seconds": 0.025041
+    },
+    {
+      "case": "ai:negative_timer",
+      "chained_controller_tick": 1,
+      "seconds": 0.024764
+    },
+    {
+      "case": "ai:negative_timer",
+      "chained_controller_tick": 2,
+      "seconds": 0.024596
+    },
+    {
+      "case": "ai:negative_timer",
+      "chained_controller_tick": 3,
+      "seconds": 0.025495
+    },
+    {
+      "case": "ai:negative_timer",
+      "chained_controller_tick": 4,
+      "seconds": 0.024968999999999998
+    },
+    {
+      "case": "ai:maximum_timer",
+      "chained_controller_tick": 0,
+      "seconds": 0.025064
+    },
+    {
+      "case": "ai:maximum_timer",
+      "chained_controller_tick": 1,
+      "seconds": 0.02565
+    },
+    {
+      "case": "ai:maximum_timer",
+      "chained_controller_tick": 2,
+      "seconds": 0.025372
+    },
+    {
+      "case": "ai:maximum_timer",
+      "chained_controller_tick": 3,
+      "seconds": 0.024652
+    },
+    {
+      "case": "ai:maximum_timer",
+      "chained_controller_tick": 4,
+      "seconds": 0.025431000000000002
+    },
+    {
+      "case": "ai:jump_held",
+      "chained_controller_tick": 0,
+      "seconds": 0.025085999999999997
+    },
+    {
+      "case": "ai:jump_held",
+      "chained_controller_tick": 1,
+      "seconds": 0.024987000000000002
+    },
+    {
+      "case": "ai:jump_held",
+      "chained_controller_tick": 2,
+      "seconds": 0.02472
+    },
+    {
+      "case": "ai:jump_held",
+      "chained_controller_tick": 3,
+      "seconds": 0.025
+    },
+    {
+      "case": "ai:jump_held",
+      "chained_controller_tick": 4,
+      "seconds": 0.025626
+    },
+    {
+      "case": "ai:jump_sprint",
+      "chained_controller_tick": 0,
+      "seconds": 0.025432
+    },
+    {
+      "case": "ai:jump_sprint",
+      "chained_controller_tick": 1,
+      "seconds": 0.025729000000000002
+    },
+    {
+      "case": "ai:jump_sprint",
+      "chained_controller_tick": 2,
+      "seconds": 0.025575
+    },
+    {
+      "case": "ai:jump_sprint",
+      "chained_controller_tick": 3,
+      "seconds": 0.025143
+    },
+    {
+      "case": "ai:jump_sprint",
+      "chained_controller_tick": 4,
+      "seconds": 0.025486
+    },
+    {
+      "case": "ai:jump_delay",
+      "chained_controller_tick": 0,
+      "seconds": 0.025014
+    },
+    {
+      "case": "ai:jump_delay",
+      "chained_controller_tick": 1,
+      "seconds": 0.024851
+    },
+    {
+      "case": "ai:jump_delay",
+      "chained_controller_tick": 2,
+      "seconds": 0.02515
+    },
+    {
+      "case": "ai:jump_delay",
+      "chained_controller_tick": 3,
+      "seconds": 0.025375
+    },
+    {
+      "case": "ai:jump_delay",
+      "chained_controller_tick": 4,
+      "seconds": 0.02486
+    },
+    {
+      "case": "ai:zero_move_yya",
+      "chained_controller_tick": 0,
+      "seconds": 0.024922
+    },
+    {
+      "case": "ai:zero_move_yya",
+      "chained_controller_tick": 1,
+      "seconds": 0.024589
+    },
+    {
+      "case": "ai:zero_move_yya",
+      "chained_controller_tick": 2,
+      "seconds": 0.024402
+    },
+    {
+      "case": "ai:zero_move_yya",
+      "chained_controller_tick": 3,
+      "seconds": 0.025092
+    },
+    {
+      "case": "ai:zero_move_yya",
+      "chained_controller_tick": 4,
+      "seconds": 0.024605000000000002
+    },
+    {
+      "case": "ai:ceiling_pose_fit",
+      "chained_controller_tick": 0,
+      "seconds": 0.024877999999999997
+    },
+    {
+      "case": "ai:ceiling_pose_fit",
+      "chained_controller_tick": 1,
+      "seconds": 0.024318
+    },
+    {
+      "case": "ai:ceiling_pose_fit",
+      "chained_controller_tick": 2,
+      "seconds": 0.025381
+    },
+    {
+      "case": "ai:ceiling_pose_fit",
+      "chained_controller_tick": 3,
+      "seconds": 0.025111
+    },
+    {
+      "case": "ai:ceiling_pose_fit",
+      "chained_controller_tick": 4,
+      "seconds": 0.024759
+    },
+    {
+      "case": "ai:food_collision_changes",
+      "chained_controller_tick": 0,
+      "seconds": 0.025014
+    },
+    {
+      "case": "ai:food_collision_changes",
+      "chained_controller_tick": 1,
+      "seconds": 0.025006
+    },
+    {
+      "case": "ai:food_collision_changes",
+      "chained_controller_tick": 2,
+      "seconds": 0.024573
+    },
+    {
+      "case": "ai:food_collision_changes",
+      "chained_controller_tick": 3,
+      "seconds": 0.024687
+    },
+    {
+      "case": "ai:food_collision_changes",
+      "chained_controller_tick": 4,
+      "seconds": 0.024828
+    },
+    {
+      "case": "ai:independent_old_move",
+      "chained_controller_tick": 0,
+      "seconds": 0.024681
+    },
+    {
+      "case": "ai:independent_old_move",
+      "chained_controller_tick": 1,
+      "seconds": 0.024516000000000003
+    },
+    {
+      "case": "ai:independent_old_move",
+      "chained_controller_tick": 2,
+      "seconds": 0.024885
+    },
+    {
+      "case": "ai:independent_old_move",
+      "chained_controller_tick": 3,
+      "seconds": 0.024835
+    },
+    {
+      "case": "ai:independent_old_move",
+      "chained_controller_tick": 4,
+      "seconds": 0.024602
+    },
+    {
+      "case": "ai:window_zero",
+      "chained_controller_tick": 0,
+      "seconds": 0.025075
+    },
+    {
+      "case": "ai:window_zero",
+      "chained_controller_tick": 1,
+      "seconds": 0.024842
+    },
+    {
+      "case": "ai:window_zero",
+      "chained_controller_tick": 2,
+      "seconds": 0.024901
+    },
+    {
+      "case": "ai:window_zero",
+      "chained_controller_tick": 3,
+      "seconds": 0.024777
+    },
+    {
+      "case": "ai:window_zero",
+      "chained_controller_tick": 4,
+      "seconds": 0.025081
+    },
+    {
+      "case": "ai:window_two",
+      "chained_controller_tick": 0,
+      "seconds": 0.024704
+    },
+    {
+      "case": "ai:window_two",
+      "chained_controller_tick": 1,
+      "seconds": 0.024863
+    },
+    {
+      "case": "ai:window_two",
+      "chained_controller_tick": 2,
+      "seconds": 0.024841000000000002
+    },
+    {
+      "case": "ai:window_two",
+      "chained_controller_tick": 3,
+      "seconds": 0.024863
+    },
+    {
+      "case": "ai:window_two",
+      "chained_controller_tick": 4,
+      "seconds": 0.024832
+    }
+  ],
+  "native_validation_seconds": 4.624846,
+  "observations_sha256": "5250f3a809b70b05218179b60c8c86cc2777c256cc2277a6337968be7effcb83",
+  "owner_retention_followups": 32,
+  "pin": "26.3",
+  "scope": {
+    "body": "Cached speed field and resolved Player.getSpeed are separate; width/height use actual cached dimension getters, pose dimensions recorded separately.",
+    "constructor": "Normal LocalPlayer, AbstractClientPlayer, Player, LivingEntity, Entity, ClientLevel and Options constructors; official bytes untouched. No Minecraft production constructor, UI, window or unsafe receiver allocation.",
+    "control_boundary": "Snapshot is inside actual jumpableVehicle after super returns, before inherited AbstractClientPlayer.aiStep. Admitted null-vehicle branch subsequently only resets jumpRidingScale before super; no gameplay control substitution.",
+    "external_context": [
+      "Minecraft: identity getInstance/getCameraEntity/player/connection; options from real Options; isRunning false; getSoundManager null unused in admitted aiStep; gameMode null, unsupported flight branch.",
+      "Gui.screen null; Tutorial.onInput records a sink call; ClientPacketListener deterministic profile, real PlayerInfo/Scoreboard/ClientClockManager/registry/features, outgoing send sink, hasClientLoaded true.",
+      "Real ClientLevel constructor: finite stone floor x,z -2..2 at y=0, all other blocks air except explicitly labelled real oak top-slab ceiling cases; external getBlockState/getFluidState/getChunkForCollisions return actual states/this.",
+      "Actual pinned overworld DimensionType copied unchanged except empty environment timelines; actual biome/damage registries cloned into real immutable registries, tags bound empty for this no-environment-effects context.",
+      "Actual Options load reads the intentionally nonexistent /dev/null/reference-local-input-fixture/options.txt path; no installed user options are read or modified.",
+      "AutoJump enabled field false; no portal, item use, rider/vehicle, swimming/fluid, fall flight, world effects, mayfly/flying aiStep or whole-client lifecycle admission."
+    ],
+    "external_service_types": [
+      "net.minecraft.client.Minecraft",
+      "net.minecraft.client.gui.Gui",
+      "net.minecraft.client.multiplayer.ClientPacketListener",
+      "net.minecraft.client.tutorial.Tutorial"
+    ],
+    "jump_labels": "jump_calls records actual Java calls, power/factor outputs and before/after jump state; project jump_attempted/jumped booleans are not vanilla fields and are not oracle observations.",
+    "nonfinite": "Direct static/Vec2 helper observations include nonfinite results with this pinned Java raw bits. NaN payload equality is a platform observation, not a general portability claim; aiStep inputs remain finite.",
+    "observers_call_super": [
+      "applyInput",
+      "jumpableVehicle",
+      "setSprinting",
+      "travel",
+      "jumpFromGround",
+      "getJumpPower",
+      "getBlockJumpFactor"
+    ],
+    "preparation": "Actual LocalPlayer.modifyInput performs .98 decay once. after_input and pre_travel project untouched inherited LivingEntity.aiStep cleanup/counters/jump using post-control body. No synthesized expected algorithm.",
+    "scope": "High confidence for recorded actual neutral input/control and preparation phases. Full Minecraft lifecycle, all LocalPlayer branches, networking, rendering, block-effects/world-travel breadth and full client parity are not established.",
+    "sprint_updates": "Only actual setSprinting calls observed before this control boundary; fixture initialization calls cleared. List order and duplicate calls preserved."
+  },
+  "sources_sha256": {
+    "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "src/geometry.bend": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f",
+    "src/local_input.bend": "5e3555fdb06258a76478a32d32332455ad186ec956607ce981e198a3c28ca02e",
+    "src/locomotion.bend": "ccf8aa12636ba1fce5575606383bf75c02a8ac79ba952645b89aea2eef6cd459",
+    "src/movement.bend": "0e94fea7cc941a23d2ed7bbd2ccaf0117e6af363eb91f2db2e34428f9dd9e67f",
+    "src/player_input.bend": "d3938f96416691739eb54f2b0f77377c6ba7c74ac63ffa8335840152feb355d5",
+    "src/player_tick.bend": "d583f3014011313097779b69ee0fd8d77bd3ed0e1e7895b629903eb64da9699f",
+    "src/travel.bend": "717e969e3989a7a8e443b18f69c171bdc11a14130828233ce85e6cd914e1f8f1",
+    "tests/local_input.bend": "e3fd82fdddf877eb26c95f6f7b34f9f9166a406cd8deaa07f3c7040fe43cae3e"
+  },
+  "static_helper_normalize_scope": "Generic actual Vec2.normalized observations are retained as reference only; native normalization coverage is the complete 128 KeyboardInput masks through existing frozen PI specialization.",
+  "status": "passed",
+  "tool_sha256": "a0228ed1cdd177566a75f75e485a4ebbfc962bf0a4cd76fe44a6d5e6bac07a52"
+}

@@ -1,0 +1,76 @@
+{
+  "binary": {
+    "bytes": 1373632,
+    "file": "local-input-tests",
+    "sha1": "056f9b98b119b9bc5f31c7c14262ea1630f5d364",
+    "sha256": "d6df3f3c9b42a23f524d8402e230ea241e3156d5020cfb05ac17ceced56264d4"
+  },
+  "command": [
+    "/Users/chuah/.bend/bin/bend",
+    "tests/local_input.bend",
+    "-o",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-input-tests"
+  ],
+  "compiler": {
+    "bytes": 63885392,
+    "file": "bend",
+    "sha1": "ddce6e432357be618d905b19c0f79abe3d28c388",
+    "sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e"
+  },
+  "exit_code": 0,
+  "memory_sample_scope": "Process-group RSS/virtual sizes sampled every 5 seconds only while unexpectedly slow; RSS is not physical footprint or a game benchmark",
+  "memory_samples": [
+    {
+      "processes": [
+        {
+          "elapsed": "00:05",
+          "pid": 49531,
+          "rss_kib": 428672,
+          "virtual_kib": 449147536
+        },
+        {
+          "elapsed": "00:02",
+          "pid": 49580,
+          "rss_kib": 14080,
+          "virtual_kib": 442022240
+        },
+        {
+          "elapsed": "00:02",
+          "pid": 49581,
+          "rss_kib": 185072,
+          "virtual_kib": 442251920
+        }
+      ],
+      "seconds": 5.034967
+    }
+  ],
+  "pid": 49531,
+  "seconds": 5.447114,
+  "source_hashes_unchanged": true,
+  "source_sha256": {
+    "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "src/geometry.bend": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f",
+    "src/local_input.bend": "5e3555fdb06258a76478a32d32332455ad186ec956607ce981e198a3c28ca02e",
+    "src/locomotion.bend": "ccf8aa12636ba1fce5575606383bf75c02a8ac79ba952645b89aea2eef6cd459",
+    "src/movement.bend": "0e94fea7cc941a23d2ed7bbd2ccaf0117e6af363eb91f2db2e34428f9dd9e67f",
+    "src/player_input.bend": "d3938f96416691739eb54f2b0f77377c6ba7c74ac63ffa8335840152feb355d5",
+    "src/player_tick.bend": "d583f3014011313097779b69ee0fd8d77bd3ed0e1e7895b629903eb64da9699f",
+    "src/travel.bend": "717e969e3989a7a8e443b18f69c171bdc11a14130828233ce85e6cd914e1f8f1",
+    "tests/local_input.bend": "e3fd82fdddf877eb26c95f6f7b34f9f9166a406cd8deaa07f3c7040fe43cae3e"
+  },
+  "status": "passed",
+  "stderr": "",
+  "stdout": "",
+  "timed_out": false,
+  "timeout_seconds": 600,
+  "version_probe": {
+    "command": [
+      "/Users/chuah/.bend/bin/bend",
+      "version"
+    ],
+    "exit_code": 0,
+    "seconds": 0.019395,
+    "stderr": "",
+    "stdout": "bend 2.0.35\n"
+  }
+}

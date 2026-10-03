@@ -1,0 +1,49 @@
+{
+  "counts": {
+    "ai_step": 28,
+    "ai_step_ticks": 140,
+    "keyboard": 128,
+    "receivers": 112,
+    "vectors": 2048
+  },
+  "failure_injections": [
+    {
+      "injection": "client",
+      "reason": "Installed client/metadata/runtime/libraries changed",
+      "rejected": true
+    },
+    {
+      "injection": "runtime",
+      "reason": "Installed client/metadata/runtime/libraries changed",
+      "rejected": true
+    },
+    {
+      "injection": "library",
+      "reason": "Installed client/metadata/runtime/libraries changed",
+      "rejected": true
+    },
+    {
+      "injection": "class",
+      "reason": "Actual classes/method fingerprints changed",
+      "rejected": true
+    },
+    {
+      "injection": "source",
+      "reason": "Launcher source changed",
+      "rejected": true
+    },
+    {
+      "injection": "observation",
+      "reason": "Stored observations changed",
+      "rejected": true
+    }
+  ],
+  "reference": {
+    "bytes": 7671305,
+    "file": "local_input.json",
+    "sha1": "fc95188e5341d406fabdeb4b45693890ec739853",
+    "sha256": "1b75b5db33e516c417c27033cb9cf12b3d6d1b66ba03e366416dac1d3da98d8d"
+  },
+  "scope": "Integrity/provenance only; no new Java execution",
+  "status": "passed"
+}
