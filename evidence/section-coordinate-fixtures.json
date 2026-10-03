@@ -1,0 +1,238 @@
+{
+  "schema_version": 1,
+  "source": "independent Python integer arithmetic, not Java-reference data",
+  "generator": "encoded_world = w & 0xffffffff; signed_section = w // 16; encoded_section = signed_section & 0xffffffff; local = w % 16",
+  "fixtures": [
+    {
+      "signed_world": -2147483648,
+      "encoded_world": 2147483648,
+      "signed_section": -134217728,
+      "encoded_section": 4160749568,
+      "local": 0
+    },
+    {
+      "signed_world": -2147483647,
+      "encoded_world": 2147483649,
+      "signed_section": -134217728,
+      "encoded_section": 4160749568,
+      "local": 1
+    },
+    {
+      "signed_world": -1000001,
+      "encoded_world": 4293967295,
+      "signed_section": -62501,
+      "encoded_section": 4294904795,
+      "local": 15
+    },
+    {
+      "signed_world": -65537,
+      "encoded_world": 4294901759,
+      "signed_section": -4097,
+      "encoded_section": 4294963199,
+      "local": 15
+    },
+    {
+      "signed_world": -4097,
+      "encoded_world": 4294963199,
+      "signed_section": -257,
+      "encoded_section": 4294967039,
+      "local": 15
+    },
+    {
+      "signed_world": -257,
+      "encoded_world": 4294967039,
+      "signed_section": -17,
+      "encoded_section": 4294967279,
+      "local": 15
+    },
+    {
+      "signed_world": -256,
+      "encoded_world": 4294967040,
+      "signed_section": -16,
+      "encoded_section": 4294967280,
+      "local": 0
+    },
+    {
+      "signed_world": -255,
+      "encoded_world": 4294967041,
+      "signed_section": -16,
+      "encoded_section": 4294967280,
+      "local": 1
+    },
+    {
+      "signed_world": -33,
+      "encoded_world": 4294967263,
+      "signed_section": -3,
+      "encoded_section": 4294967293,
+      "local": 15
+    },
+    {
+      "signed_world": -32,
+      "encoded_world": 4294967264,
+      "signed_section": -2,
+      "encoded_section": 4294967294,
+      "local": 0
+    },
+    {
+      "signed_world": -31,
+      "encoded_world": 4294967265,
+      "signed_section": -2,
+      "encoded_section": 4294967294,
+      "local": 1
+    },
+    {
+      "signed_world": -17,
+      "encoded_world": 4294967279,
+      "signed_section": -2,
+      "encoded_section": 4294967294,
+      "local": 15
+    },
+    {
+      "signed_world": -16,
+      "encoded_world": 4294967280,
+      "signed_section": -1,
+      "encoded_section": 4294967295,
+      "local": 0
+    },
+    {
+      "signed_world": -15,
+      "encoded_world": 4294967281,
+      "signed_section": -1,
+      "encoded_section": 4294967295,
+      "local": 1
+    },
+    {
+      "signed_world": -1,
+      "encoded_world": 4294967295,
+      "signed_section": -1,
+      "encoded_section": 4294967295,
+      "local": 15
+    },
+    {
+      "signed_world": 0,
+      "encoded_world": 0,
+      "signed_section": 0,
+      "encoded_section": 0,
+      "local": 0
+    },
+    {
+      "signed_world": 1,
+      "encoded_world": 1,
+      "signed_section": 0,
+      "encoded_section": 0,
+      "local": 1
+    },
+    {
+      "signed_world": 15,
+      "encoded_world": 15,
+      "signed_section": 0,
+      "encoded_section": 0,
+      "local": 15
+    },
+    {
+      "signed_world": 16,
+      "encoded_world": 16,
+      "signed_section": 1,
+      "encoded_section": 1,
+      "local": 0
+    },
+    {
+      "signed_world": 17,
+      "encoded_world": 17,
+      "signed_section": 1,
+      "encoded_section": 1,
+      "local": 1
+    },
+    {
+      "signed_world": 31,
+      "encoded_world": 31,
+      "signed_section": 1,
+      "encoded_section": 1,
+      "local": 15
+    },
+    {
+      "signed_world": 32,
+      "encoded_world": 32,
+      "signed_section": 2,
+      "encoded_section": 2,
+      "local": 0
+    },
+    {
+      "signed_world": 33,
+      "encoded_world": 33,
+      "signed_section": 2,
+      "encoded_section": 2,
+      "local": 1
+    },
+    {
+      "signed_world": 255,
+      "encoded_world": 255,
+      "signed_section": 15,
+      "encoded_section": 15,
+      "local": 15
+    },
+    {
+      "signed_world": 256,
+      "encoded_world": 256,
+      "signed_section": 16,
+      "encoded_section": 16,
+      "local": 0
+    },
+    {
+      "signed_world": 257,
+      "encoded_world": 257,
+      "signed_section": 16,
+      "encoded_section": 16,
+      "local": 1
+    },
+    {
+      "signed_world": 4095,
+      "encoded_world": 4095,
+      "signed_section": 255,
+      "encoded_section": 255,
+      "local": 15
+    },
+    {
+      "signed_world": 4096,
+      "encoded_world": 4096,
+      "signed_section": 256,
+      "encoded_section": 256,
+      "local": 0
+    },
+    {
+      "signed_world": 65535,
+      "encoded_world": 65535,
+      "signed_section": 4095,
+      "encoded_section": 4095,
+      "local": 15
+    },
+    {
+      "signed_world": 65536,
+      "encoded_world": 65536,
+      "signed_section": 4096,
+      "encoded_section": 4096,
+      "local": 0
+    },
+    {
+      "signed_world": 1000001,
+      "encoded_world": 1000001,
+      "signed_section": 62500,
+      "encoded_section": 62500,
+      "local": 1
+    },
+    {
+      "signed_world": 2147483646,
+      "encoded_world": 2147483646,
+      "signed_section": 134217727,
+      "encoded_section": 134217727,
+      "local": 14
+    },
+    {
+      "signed_world": 2147483647,
+      "encoded_world": 2147483647,
+      "signed_section": 134217727,
+      "encoded_section": 134217727,
+      "local": 15
+    }
+  ]
+}

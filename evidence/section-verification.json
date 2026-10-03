@@ -1,0 +1,168 @@
+{
+  "schema_version": 1,
+  "component": "pure affine U32 section storage",
+  "recorded_utc": "2026-10-03T14:10:08.746591+00:00",
+  "compiler": "Bend 2.0.35",
+  "working_directory": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+  "source_sha256": {
+    "src/section.bend": "02b5c15c57b173c7eb8b4c55a1433c10c192926e91af5e3e69050b4404044aa5",
+    "src/section_laws.bend": "123b48ef506250c3a0ec5f0ac3374fe4723a8f92e4676b172353468badbb9941",
+    "src/section_proof.bend": "95d746cca5855330aba94201d2b6cecc6ed6073abf7c2bc124925cb909f1fcda",
+    "tests/section.bend": "4fe342f710ba15036fa48095d8afc05adad2b26f96803f520560b273b08444da",
+    "docs/STORAGE.md": "bbadc80691a75c87ab16db4a6c1d392d826fa923632ce10335e4bff8790c2920"
+  },
+  "law_count": 17,
+  "proof_scope": "17 implementation laws; rejection preserves arbitrary owners; scalar-universal constructor read-after-write/isolation at0/4095 and clone isolation at0; concrete layout and signed boundary computations. No universal arbitrary-section read-after-write theorem or Java parity claim.",
+  "runs": [
+    {
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "version"
+      ],
+      "exit_code": 0,
+      "stdout": "bend 2.0.35",
+      "stderr": "",
+      "elapsed_seconds": 0.0829
+    },
+    {
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/section_proof.bend",
+        "--check-only"
+      ],
+      "exit_code": 0,
+      "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.",
+      "stderr": "",
+      "elapsed_seconds": 0.1733
+    },
+    {
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/section_proof.bend",
+        "--verdict"
+      ],
+      "exit_code": 0,
+      "stdout": "ALL PROOFS CHECK",
+      "stderr": "",
+      "elapsed_seconds": 0.6548
+    },
+    {
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/section.bend",
+        "--check-only"
+      ],
+      "exit_code": 0,
+      "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.",
+      "stderr": "",
+      "elapsed_seconds": 0.0772
+    },
+    {
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/section.bend",
+        "--verdict"
+      ],
+      "exit_code": 0,
+      "stdout": "ALL PROOFS CHECK",
+      "stderr": "",
+      "elapsed_seconds": 0.2398
+    },
+    {
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/section.bend"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"suite\":\"section\",\"failures\":0,\"local_coordinates\":4096,\"world_fixtures\":33,\"initial_cells\":4096,\"written_cells\":4096,\"read_after_write_cells\":4096,\"neighbor_isolation_checks\":4096,\"verified_cells\":4096,\"snapshot_cells\":4096}",
+      "stderr": "",
+      "elapsed_seconds": 0.0998
+    },
+    {
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/section.bend",
+        "-o",
+        "/tmp/minecraft-section-tests.c"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "",
+      "elapsed_seconds": 0.1447
+    },
+    {
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/section.bend",
+        "-o",
+        "/tmp/minecraft-section-tests"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "",
+      "elapsed_seconds": 0.4959
+    },
+    {
+      "argv": [
+        "/tmp/minecraft-section-tests",
+        "--gpu",
+        "off"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"suite\":\"section\",\"failures\":0,\"local_coordinates\":4096,\"world_fixtures\":33,\"initial_cells\":4096,\"written_cells\":4096,\"read_after_write_cells\":4096,\"neighbor_isolation_checks\":4096,\"verified_cells\":4096,\"snapshot_cells\":4096}",
+      "stderr": "",
+      "elapsed_seconds": 0.2008
+    }
+  ],
+  "suite_summary": {
+    "suite": "section",
+    "failures": 0,
+    "local_coordinates": 4096,
+    "world_fixtures": 33,
+    "initial_cells": 4096,
+    "written_cells": 4096,
+    "read_after_write_cells": 4096,
+    "neighbor_isolation_checks": 4096,
+    "verified_cells": 4096,
+    "snapshot_cells": 4096
+  },
+  "additional_execution_checks": {
+    "invalid_indices": 7,
+    "invalid_local_triples": 10,
+    "clone_isolation_directions": 2,
+    "compose_failure_cases": 6,
+    "invalid_index_local_cases": 2,
+    "signed_fixture_source_matches_json": true
+  },
+  "generated_c": {
+    "path": "/tmp/minecraft-section-tests.c",
+    "sha256": "220f18111bcc92a4b8891e4bc1cd008ad480cb802b2b3686b9e01a89267ebf28",
+    "array_access_routines": [
+      {
+        "name": "spin_5",
+        "line": 1294,
+        "direct_array_reads": 1,
+        "direct_array_writes": 0,
+        "term_keep": 0,
+        "ctr_take": 0,
+        "rfc_seal": 0
+      },
+      {
+        "name": "spin_12",
+        "line": 1531,
+        "direct_array_reads": 1,
+        "direct_array_writes": 1,
+        "term_keep": 0,
+        "ctr_take": 0,
+        "rfc_seal": 0
+      }
+    ],
+    "observation": "U32 buffer read/write follows checked gates; Base blk_at masks internally. Public rejects prevent invalid indices reaching it. clone uses blk_copy; snapshot repeatedly reads and allocates list cells, retaining the same owner."
+  },
+  "limitations": [
+    "Section raw constructor/implementation helpers are module-visible; callers must use Section.new and checked public access to preserve the4096-slot invariant.",
+    "No Minecraft26.3 Java behavioral fixtures or parity claim.",
+    "Native execution used CPU with --gpu off; no GPU or performance claim."
+  ],
+  "resolved_codegen_gap": "Direct calls to Base Array.get.go/swap.go emitted an open Array element type error; using supported Array.get/Array.set compiled. No toolchain edit."
+}

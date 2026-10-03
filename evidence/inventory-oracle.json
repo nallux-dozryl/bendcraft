@@ -1,0 +1,99 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "implementation": "pure typed Bend owned inventory kernel",
+  "compiler": "bend 2.0.35",
+  "commands": [
+    [
+      "/Users/chuah/.bend/bin/bend",
+      "src/inventory_proof.bend",
+      "--verdict"
+    ],
+    [
+      "/Users/chuah/.bend/bin/bend",
+      "tests/inventory.bend",
+      "-o",
+      "build/inventory_test"
+    ],
+    [
+      "python3",
+      "tools/test_inventory.py",
+      "--seed",
+      "2630103",
+      "--fuzz",
+      "5000",
+      "--verdict"
+    ]
+  ],
+  "proof_checker_output": "ALL PROOFS CHECK",
+  "kernel_verdict_requested": true,
+  "checked_law_count": 16,
+  "native_binary_sha256": "7e043bb56a8db49d52648dacbab462e469be24a013285cddf5dc5536ada25199",
+  "native_backend": "CPU; --gpu off --threads 1",
+  "case_count": 13671,
+  "deterministic_fuzz_cases": 5000,
+  "seed": 2630103,
+  "fixture_sha256": "01e38128c2f238ad15dd1436cc41b9fd853e98412140391267377a76e19ffff7",
+  "outcomes": {
+    "load:moved": 293,
+    "merge:moved": 169,
+    "merge:rejected": 4071,
+    "new:moved": 20,
+    "new:rejected": 29,
+    "read:moved": 39,
+    "read:rejected": 147,
+    "split:moved": 416,
+    "split:rejected": 3786,
+    "transfer:moved": 598,
+    "transfer:rejected": 4103
+  },
+  "rejection_reasons": {
+    "bad_metadata": 167,
+    "bounds": 4922,
+    "different_item": 1922,
+    "full": 174,
+    "invalid_stack": 1919,
+    "merge_needs_stack": 751,
+    "no_source": 107,
+    "same_slot": 429,
+    "split_needs_empty": 1745
+  },
+  "unsupported_array_construction_probes": [
+    {
+      "shape": 1,
+      "exit_code": 1,
+      "stderr": "bend: runtime fail-stop",
+      "result": "rejected during native Array construction"
+    },
+    {
+      "shape": 2,
+      "exit_code": 1,
+      "stderr": "bend: runtime fail-stop",
+      "result": "rejected during native Array construction"
+    }
+  ],
+  "maximum_observed_moved_count": 128,
+  "native_oracle_wall_seconds": 0.514659,
+  "properties": [
+    "exact full state matches independent Python integer oracle",
+    "per-item counts conserved for all transfer/split/merge fixtures",
+    "all rejected transfers preserve every backing slot",
+    "moved counts respect requests and injected stack limits",
+    "logical and physical bounds cannot invoke wrapping access",
+    "uneven Array trees are rejected by native construction before transfer",
+    "immutable item ID and components determine compatibility",
+    "constructor, load validation, read bounds, and zero-transfer identity"
+  ],
+  "limits": [
+    "Foundation arithmetic and slot eligibility; no Minecraft container/creative/crafting parity claim",
+    "Conservation proof covers the actual Nat count kernel; U32 conversions and array commits are tested",
+    "Timing includes native process startup and serialization; not a Minecraft performance comparison"
+  ],
+  "source_sha256": {
+    "src/inventory.bend": "9d2be7fb88afa1dc6386ab9e8b046b15d2a2a73b7e14566e5bfad3e6dd1f2702",
+    "src/inventory_laws.bend": "ede9c3229fa9979d913c36daa2ca14d3a22b55e9a8268e91fdae5d8ac337a0ab",
+    "src/inventory_proof.bend": "c03b0b15e2db232f3353f97a7c3039c22afd746052b1b13e0b4eac4ff034892d",
+    "tests/inventory.bend": "572a2a90b8260fb72bb2686bb8f2b627dab0aa49e272b5b1f695f5031d959f94",
+    "tools/test_inventory.py": "6a93f873e26ee11e683eeb1eec6547428c49bf5a94ea5f0993ab96bd7f4aa824"
+  }
+}
