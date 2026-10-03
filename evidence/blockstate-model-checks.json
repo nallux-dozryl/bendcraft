@@ -1,0 +1,112 @@
+{
+  "schema": 1,
+  "status": "native_pass_and_complete_production_projection_kernel_pass",
+  "independent_kernel": "all production ResourceJson/Blockstate definitions plus exact JSON AST/Limits and eight finite laws pass via recorded namespace projection; full imports mismatch",
+  "native_parity": "560 bounded requests pass; no universal game correspondence claim",
+  "compiler_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+  "source_hashes": {
+    "src/blockstate_model.bend": "d084876d32e232c3869be84bc07535b491274695bd91529c5fae159b290cdc57",
+    "src/resource_json.bend": "271f9ace6304fdd42ced039ab2e7f95459eed1f20f011115f399b619f2bc6ffb",
+    "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+    "tests/blockstate_model.bend": "6f27599ce39ac98c1f91fc0934a264089c70ffa56a8116ad473dde401831dcbd"
+  },
+  "checks": [
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/blockstate_model.bend",
+        "--check-only"
+      ],
+      "exit_code": 0,
+      "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/blockstate_model.bend",
+        "--check-only"
+      ],
+      "exit_code": 0,
+      "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "build/blockstate-model-kernel.bend",
+        "--check-only"
+      ],
+      "exit_code": 0,
+      "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.",
+      "stderr": ""
+    }
+  ],
+  "note": "Final commands and hashes copied from the reproducible native runner; projection uses complete production definitions. Full imports remain unvalidated.",
+  "commands": [
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/blockstate_model.bend",
+        "--check-only"
+      ],
+      "exit_code": 0,
+      "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n",
+      "stderr": "",
+      "elapsed_seconds": 5.075
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/blockstate_model.bend",
+        "--check-only"
+      ],
+      "exit_code": 0,
+      "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n",
+      "stderr": "",
+      "elapsed_seconds": 4.41
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/blockstate_model.bend",
+        "--verdict"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "SOME PROOFS FAIL\nSorry - this is a mismatch between the TypeScript implementation, and the formalized BendTT kernel. Your proofs may or may not be correct, and we cannot validate them yet. This will be addressed in a future update. Meanwhile, feel free to open an issue to report this bug.\n",
+      "elapsed_seconds": 17.436
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/blockstate_model.bend",
+        "--verdict"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "SOME PROOFS FAIL\nSorry - this is a mismatch between the TypeScript implementation, and the formalized BendTT kernel. Your proofs may or may not be correct, and we cannot validate them yet. This will be addressed in a future update. Meanwhile, feel free to open an issue to report this bug.\n",
+      "elapsed_seconds": 17.793
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/blockstate-model-kernel.bend",
+        "--verdict"
+      ],
+      "exit_code": 0,
+      "stdout": "ALL PROOFS CHECK\n",
+      "stderr": "",
+      "elapsed_seconds": 22.786
+    }
+  ],
+  "kernel_projection": {
+    "projection_sha256": "5a57bf10d1453599b1c37e0ff2f17611ec7edcb86214c34cf00d52824598fccf",
+    "ast_declarations_sha256": "19308473106c0e63119b2b7cf2d5abd48493d9f053aab0f006074d7c33ceff97",
+    "production_resource_sha256": "271f9ace6304fdd42ced039ab2e7f95459eed1f20f011115f399b619f2bc6ffb",
+    "production_blockstate_sha256": "d084876d32e232c3869be84bc07535b491274695bd91529c5fae159b290cdc57",
+    "finite_law_prefix_sha256": "2d02f64448c03178e560687258846b3e43830e55f02c1428b54c4e0eaabc2130",
+    "transformation": "Retain all ResourceJson and Blockstate production types/functions and eight finite law helpers verbatim modulo import deletion and capture-avoiding lexical namespace alpha-renaming. Retain exact J.Value/Member/Limits declarations; exclude unreachable J parser/serializer and native IO harness. No implementation body, runtime limit, or condition is replaced or omitted."
+  },
+  "binary_sha256": "a606e3bac01ffeb04fd44e0dd90ac8499f591eb5388569132d6c380732370094"
+}

@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "attempts": [
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/blockstate_model.bend",
+        "-o",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/blockstate-model-tests"
+      ],
+      "status": "timeout",
+      "timeout_seconds": 600,
+      "elapsed_seconds": 600.908,
+      "stdout": "",
+      "stderr": "",
+      "source_hashes": {
+        "src/blockstate_model.bend": "d084876d32e232c3869be84bc07535b491274695bd91529c5fae159b290cdc57",
+        "tests/blockstate_model.bend": "b743a28099c2de9515bbb507628047966da5b3d80d461845589993db758d0965",
+        "src/resource_json.bend": "271f9ace6304fdd42ced039ab2e7f95459eed1f20f011115f399b619f2bc6ffb",
+        "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0"
+      },
+      "compiler_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+      "pid": 30570,
+      "sample_sha256": "1b3ae509a43655341ed4a3552f361e98878fe70480c304acd7eb6dd577a6fe64",
+      "root_sample_report": "Physical footprint and peak 13.0 GiB; RSS approximately 2 GiB. Native continuation/code generation investigation; no native parity result from this attempt."
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/blockstate_model.bend",
+        "-o",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/blockstate-model-tests"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "",
+      "elapsed_seconds": 204.938,
+      "source_hashes": {
+        "src/blockstate_model.bend": "d084876d32e232c3869be84bc07535b491274695bd91529c5fae159b290cdc57",
+        "src/resource_json.bend": "271f9ace6304fdd42ced039ab2e7f95459eed1f20f011115f399b619f2bc6ffb",
+        "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+        "tests/blockstate_model.bend": "6f27599ce39ac98c1f91fc0934a264089c70ffa56a8116ad473dde401831dcbd"
+      },
+      "compiler_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e"
+    }
+  ]
+}

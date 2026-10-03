@@ -1,0 +1,5030 @@
+{
+  "schema": 1,
+  "scope": "Direct pinned production Java blockstate codec/predicate/ordered-dispatch observations, without Bend native parity claim. Installed official resource texts remain outside this summary.",
+  "oracle": {
+    "command": [
+      "/Users/chuah/Library/Application Support/minecraft/runtime/java-runtime-epsilon/mac-os-arm64/java-runtime-epsilon/jre.bundle/Contents/Home/bin/java",
+      "--enable-native-access=ALL-UNNAMED",
+      "-cp",
+      "/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/at/yawk/lz4/lz4-java/1.10.1/lz4-java-1.10.1.jar:/Users/chuah/Library/Application Support/minecraft/libraries/ca/weblite/java-objc-bridge/1.1/java-objc-bridge-1.1.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/azure/azure-json/1.4.0/azure-json-1.4.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/github/oshi/oshi-core/6.9.0/oshi-core-6.9.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/google/code/gson/gson/2.14.0/gson-2.14.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/google/guava/failureaccess/1.0.3/failureaccess-1.0.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/google/guava/guava/33.6.0-jre/guava-33.6.0-jre.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/ibm/icu/icu4j/78.3/icu4j-78.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/microsoft/azure/msal4j/1.24.1/msal4j-1.24.1.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/authlib/10.0.77/authlib-10.0.77.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/blocklist/1.0.10/blocklist-1.0.10.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/brigadier/1.3.11/brigadier-1.3.11.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/datafixerupper/10.0.21/datafixerupper-10.0.21.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/jtracy/1.14.38/jtracy-1.14.38.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/jtracy/1.14.38/jtracy-1.14.38-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/jtracy/1.14.38/jtracy-1.14.38-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/logging/1.7.12/logging-1.7.12.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/patchy/2.2.10/patchy-2.2.10.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/text2speech/1.19.12/text2speech-1.19.12.jar:/Users/chuah/Library/Application Support/minecraft/libraries/commons-codec/commons-codec/1.22.0/commons-codec-1.22.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/commons-io/commons-io/2.20.0/commons-io-2.20.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-buffer/4.2.16.Final/netty-buffer-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-codec-base/4.2.16.Final/netty-codec-base-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-codec-compression/4.2.16.Final/netty-codec-compression-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-codec-http/4.2.16.Final/netty-codec-http-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-common/4.2.16.Final/netty-common-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-handler/4.2.16.Final/netty-handler-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-resolver/4.2.16.Final/netty-resolver-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-transport-classes-epoll/4.2.16.Final/netty-transport-classes-epoll-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-transport-classes-kqueue/4.2.16.Final/netty-transport-classes-kqueue-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-transport-native-kqueue/4.2.16.Final/netty-transport-native-kqueue-4.2.16.Final-osx-aarch_64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-transport-native-kqueue/4.2.16.Final/netty-transport-native-kqueue-4.2.16.Final-osx-x86_64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-transport-native-unix-common/4.2.16.Final/netty-transport-native-unix-common-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-transport/4.2.16.Final/netty-transport-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/it/unimi/dsi/fastutil/8.5.18/fastutil-8.5.18.jar:/Users/chuah/Library/Application Support/minecraft/libraries/net/java/dev/jna/jna-platform/5.17.0/jna-platform-5.17.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/net/java/dev/jna/jna/5.17.0/jna-5.17.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/apache/commons/commons-compress/1.28.0/commons-compress-1.28.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/apache/commons/commons-lang3/3.20.0/commons-lang3-3.20.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/apache/logging/log4j/log4j-api/2.26.0/log4j-api-2.26.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/apache/logging/log4j/log4j-core/2.26.0/log4j-core-2.26.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/apache/logging/log4j/log4j-slf4j2-impl/2.26.0/log4j-slf4j2-impl-2.26.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/jcraft/jorbis/0.0.17/jorbis-0.0.17.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/joml/joml/1.10.9/joml-1.10.9.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-freetype/3.4.3/lwjgl-freetype-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-freetype/3.4.3/lwjgl-freetype-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-freetype/3.4.3/lwjgl-freetype-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-jemalloc/3.4.3/lwjgl-jemalloc-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-jemalloc/3.4.3/lwjgl-jemalloc-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-jemalloc/3.4.3/lwjgl-jemalloc-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-openal/3.4.3/lwjgl-openal-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-openal/3.4.3/lwjgl-openal-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-openal/3.4.3/lwjgl-openal-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-opengl/3.4.3/lwjgl-opengl-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-opengl/3.4.3/lwjgl-opengl-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-opengl/3.4.3/lwjgl-opengl-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-sdl/3.4.3/lwjgl-sdl-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-sdl/3.4.3/lwjgl-sdl-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-sdl/3.4.3/lwjgl-sdl-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-shaderc/3.4.3/lwjgl-shaderc-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-shaderc/3.4.3/lwjgl-shaderc-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-shaderc/3.4.3/lwjgl-shaderc-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-spvc/3.4.3/lwjgl-spvc-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-spvc/3.4.3/lwjgl-spvc-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-spvc/3.4.3/lwjgl-spvc-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-stb/3.4.3/lwjgl-stb-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-stb/3.4.3/lwjgl-stb-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-stb/3.4.3/lwjgl-stb-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-vma/3.4.3/lwjgl-vma-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-vma/3.4.3/lwjgl-vma-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-vma/3.4.3/lwjgl-vma-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-vulkan/3.4.3/lwjgl-vulkan-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-vulkan/3.4.3/lwjgl-vulkan-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-vulkan/3.4.3/lwjgl-vulkan-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl/3.4.3/lwjgl-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl/3.4.3/lwjgl-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl/3.4.3/lwjgl-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/slf4j/slf4j-api/2.0.17/slf4j-api-2.0.17.jar",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/blockstate-model-oracle/ReferenceModelProbe.java",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/blockstate-model-oracle/inputs.json",
+      "/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/blockstate-model-oracle/observations.json"
+    ],
+    "harness_sha256": "78707257a4a2941f757ff3bbb307496172ad4cc2dfbe772308e4d467975d3dc8",
+    "base_harness_sha256": "d0ea602ed3acdaac2f03448445535354ee60129697866aa6d0914ff0eefdc4f6",
+    "input_sha256": "322005310f1f32414f7b1b4a7a41e71510d67b184d44270eec928acc740535d9",
+    "observation_sha256": "6ae7b30a69e615847ff108a03a29ef93a6e6743cf047faf848233d1db7329552",
+    "client": {
+      "file": "26.3.jar",
+      "bytes": 41483720,
+      "sha1": "e877b6a07acd633fb3bb475002175cec036e7b87",
+      "sha256": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d"
+    },
+    "java": {
+      "file": "java",
+      "bytes": 84720,
+      "sha1": "5af4a90be54ddeec03db3700e6989594c9438952",
+      "sha256": "e0879c0df70d880d66904064d1b388b08aeee0958a047f37601435b28db849a3"
+    },
+    "java_version": "openjdk version \"25.0.1\" 2025-10-21 LTS\nOpenJDK Runtime Environment Microsoft-12574220 (build 25.0.1+8-LTS)\nOpenJDK 64-Bit Server VM Microsoft-12574220 (build 25.0.1+8-LTS, mixed mode)",
+    "library_provenance_sha256": "37f9cbf5acba5f15fd6dcda9d08e938d1a6ec70360122a1d1d9127f2d0ae5635",
+    "elapsed_seconds": 4.583
+  },
+  "runner_sha256": "1e49cb798b52bb6f988c913d6d53b1e6b3a97171a882e5f544f3e8c2763fb8b1",
+  "reference_sha256": "3cbe8aa7780f14c1b37159a885710b04680e3b6c4ffa4975b4d8297015f11e7e",
+  "counts": {
+    "selector_cases": 404,
+    "condition_cases": 56,
+    "dispatcher_cases": 80
+  },
+  "official_blocks": 8,
+  "official_states": 124,
+  "BMP_digit_zero_characters": [
+    48,
+    1632,
+    1776,
+    1984,
+    2406,
+    2534,
+    2662,
+    2790,
+    2918,
+    3046,
+    3174,
+    3302,
+    3430,
+    3558,
+    3664,
+    3792,
+    3872,
+    4160,
+    4240,
+    6112,
+    6160,
+    6470,
+    6608,
+    6784,
+    6800,
+    6992,
+    7088,
+    7232,
+    7248,
+    42528,
+    43216,
+    43264,
+    43472,
+    43504,
+    43600,
+    44016,
+    65296
+  ],
+  "weighted_ticket_cases": [
+    {
+      "id": "nonuniform_1_3",
+      "model": {
+        "class": "net.minecraft.client.renderer.block.dispatch.WeightedVariants$Unbaked",
+        "entries": [
+          {
+            "class": "net.minecraft.util.random.Weighted",
+            "value": {
+              "class": "net.minecraft.client.renderer.block.dispatch.SingleVariant$Unbaked",
+              "variant": {
+                "class": "net.minecraft.client.renderer.block.dispatch.Variant",
+                "modelLocation": "minecraft:block/stone",
+                "modelState": {
+                  "class": "net.minecraft.client.renderer.block.dispatch.Variant$SimpleModelState",
+                  "x": "R0",
+                  "y": "R0",
+                  "z": "R0",
+                  "uvLock": false
+                }
+              }
+            },
+            "weight": 1
+          },
+          {
+            "class": "net.minecraft.util.random.Weighted",
+            "value": {
+              "class": "net.minecraft.client.renderer.block.dispatch.SingleVariant$Unbaked",
+              "variant": {
+                "class": "net.minecraft.client.renderer.block.dispatch.Variant",
+                "modelLocation": "minecraft:block/stone",
+                "modelState": {
+                  "class": "net.minecraft.client.renderer.block.dispatch.Variant$SimpleModelState",
+                  "x": "R0",
+                  "y": "R90",
+                  "z": "R0",
+                  "uvLock": false
+                }
+              }
+            },
+            "weight": 3
+          }
+        ]
+      },
+      "selected": [
+        {
+          "ticket": 0,
+          "calls": [
+            4
+          ],
+          "selected": {
+            "class": "net.minecraft.client.renderer.block.dispatch.SingleVariant$Unbaked",
+            "variant": {
+              "class": "net.minecraft.client.renderer.block.dispatch.Variant",
+              "modelLocation": "minecraft:block/stone",
+              "modelState": {
+                "class": "net.minecraft.client.renderer.block.dispatch.Variant$SimpleModelState",
+                "x": "R0",
+                "y": "R0",
+                "z": "R0",
+                "uvLock": false
+              }
+            }
+          }
+        },
+        {
+          "ticket": 1,
+          "calls": [
+            4
+          ],
+          "selected": {
+            "class": "net.minecraft.client.renderer.block.dispatch.SingleVariant$Unbaked",
+            "variant": {
+              "class": "net.minecraft.client.renderer.block.dispatch.Variant",
+              "modelLocation": "minecraft:block/stone",
+              "modelState": {
+                "class": "net.minecraft.client.renderer.block.dispatch.Variant$SimpleModelState",
+                "x": "R0",
+                "y": "R90",
+                "z": "R0",
+                "uvLock": false
+              }
+            }
+          }
+        },
+        {
+          "ticket": 2,
+          "calls": [
+            4
+          ],
+          "selected": {
+            "class": "net.minecraft.client.renderer.block.dispatch.SingleVariant$Unbaked",
+            "variant": {
+              "class": "net.minecraft.client.renderer.block.dispatch.Variant",
+              "modelLocation": "minecraft:block/stone",
+              "modelState": {
+                "class": "net.minecraft.client.renderer.block.dispatch.Variant$SimpleModelState",
+                "x": "R0",
+                "y": "R90",
+                "z": "R0",
+                "uvLock": false
+              }
+            }
+          }
+        },
+        {
+          "ticket": 3,
+          "calls": [
+            4
+          ],
+          "selected": {
+            "class": "net.minecraft.client.renderer.block.dispatch.SingleVariant$Unbaked",
+            "variant": {
+              "class": "net.minecraft.client.renderer.block.dispatch.Variant",
+              "modelLocation": "minecraft:block/stone",
+              "modelState": {
+                "class": "net.minecraft.client.renderer.block.dispatch.Variant$SimpleModelState",
+                "x": "R0",
+                "y": "R90",
+                "z": "R0",
+                "uvLock": false
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "nonuniform_2_1_4",
+      "model": {
+        "class": "net.minecraft.client.renderer.block.dispatch.WeightedVariants$Unbaked",
+        "entries": [
+          {
+            "class": "net.minecraft.util.random.Weighted",
+            "value": {
+              "class": "net.minecraft.client.renderer.block.dispatch.SingleVariant$Unbaked",
+              "variant": {
+                "class": "net.minecraft.client.renderer.block.dispatch.Variant",
+                "modelLocation": "minecraft:block/stone",
+                "modelState": {
+                  "class": "net.minecraft.client.renderer.block.dispatch.Variant$SimpleModelState",
+                  "x": "R0",
+                  "y": "R0",
+                  "z": "R0",
+                  "uvLock": false
+                }
+              }
+            },
+            "weight": 2
+          },
+          {
+            "class": "net.minecraft.util.random.Weighted",
+            "value": {
+              "class": "net.minecraft.client.renderer.block.dispatch.SingleVariant$Unbaked",
+              "variant": {
+                "class": "net.minecraft.client.renderer.block.dispatch.Variant",
+                "modelLocation": "minecraft:block/stone",
+                "modelState": {
+                  "class": "net.minecraft.client.renderer.block.dispatch.Variant$SimpleModelState",
+                  "x": "R0",
+                  "y": "R90",
+                  "z": "R0",
+                  "uvLock": false
+                }
+              }
+            },
+            "weight": 1
+          },
+          {
+            "class": "net.minecraft.util.random.Weighted",
+            "value": {
+              "class": "net.minecraft.client.renderer.block.dispatch.SingleVariant$Unbaked",
+              "variant": {
+                "class": "net.minecraft.client.renderer.block.dispatch.Variant",
+                "modelLocation": "minecraft:block/stone",
+                "modelState": {
+                  "class": "net.minecraft.client.renderer.block.dispatch.Variant$SimpleModelState",
+                  "x": "R0",
+                  "y": "R180",
+                  "z": "R0",
+                  "uvLock": false
+                }
+              }
+            },
+            "weight": 4
+          }
+        ]
+      },
+      "selected": [
+        {
+          "ticket": 0,
+          "calls": [
+            7
+          ],
+          "selected": {
+            "class": "net.minecraft.client.renderer.block.dispatch.SingleVariant$Unbaked",
+            "variant": {
+              "class": "net.minecraft.client.renderer.block.dispatch.Variant",
+              "modelLocation": "minecraft:block/stone",
+              "modelState": {
+                "class": "net.minecraft.client.renderer.block.dispatch.Variant$SimpleModelState",
+                "x": "R0",
+                "y": "R0",
+                "z": "R0",
+                "uvLock": false
+              }
+            }
+          }
+        },
+        {
+          "ticket": 1,
+          "calls": [
+            7
+          ],
+          "selected": {
+            "class": "net.minecraft.client.renderer.block.dispatch.SingleVariant$Unbaked",
+            "variant": {
+              "class": "net.minecraft.client.renderer.block.dispatch.Variant",
+              "modelLocation": "minecraft:block/stone",
+              "modelState": {
+                "class": "net.minecraft.client.renderer.block.dispatch.Variant$SimpleModelState",
+                "x": "R0",
+                "y": "R0",
+                "z": "R0",
+                "uvLock": false
+              }
+            }
+          }
+        },
+        {
+          "ticket": 2,
+          "calls": [
+            7
+          ],
+          "selected": {
+            "class": "net.minecraft.client.renderer.block.dispatch.SingleVariant$Unbaked",
+            "variant": {
+              "class": "net.minecraft.client.renderer.block.dispatch.Variant",
+              "modelLocation": "minecraft:block/stone",
+              "modelState": {
+                "class": "net.minecraft.client.renderer.block.dispatch.Variant$SimpleModelState",
+                "x": "R0",
+                "y": "R90",
+                "z": "R0",
+                "uvLock": false
+              }
+            }
+          }
+        },
+        {
+          "ticket": 3,
+          "calls": [
+            7
+          ],
+          "selected": {
+            "class": "net.minecraft.client.renderer.block.dispatch.SingleVariant$Unbaked",
+            "variant": {
+              "class": "net.minecraft.client.renderer.block.dispatch.Variant",
+              "modelLocation": "minecraft:block/stone",
+              "modelState": {
+                "class": "net.minecraft.client.renderer.block.dispatch.Variant$SimpleModelState",
+                "x": "R0",
+                "y": "R180",
+                "z": "R0",
+                "uvLock": false
+              }
+            }
+          }
+        },
+        {
+          "ticket": 4,
+          "calls": [
+            7
+          ],
+          "selected": {
+            "class": "net.minecraft.client.renderer.block.dispatch.SingleVariant$Unbaked",
+            "variant": {
+              "class": "net.minecraft.client.renderer.block.dispatch.Variant",
+              "modelLocation": "minecraft:block/stone",
+              "modelState": {
+                "class": "net.minecraft.client.renderer.block.dispatch.Variant$SimpleModelState",
+                "x": "R0",
+                "y": "R180",
+                "z": "R0",
+                "uvLock": false
+              }
+            }
+          }
+        },
+        {
+          "ticket": 5,
+          "calls": [
+            7
+          ],
+          "selected": {
+            "class": "net.minecraft.client.renderer.block.dispatch.SingleVariant$Unbaked",
+            "variant": {
+              "class": "net.minecraft.client.renderer.block.dispatch.Variant",
+              "modelLocation": "minecraft:block/stone",
+              "modelState": {
+                "class": "net.minecraft.client.renderer.block.dispatch.Variant$SimpleModelState",
+                "x": "R0",
+                "y": "R180",
+                "z": "R0",
+                "uvLock": false
+              }
+            }
+          }
+        },
+        {
+          "ticket": 6,
+          "calls": [
+            7
+          ],
+          "selected": {
+            "class": "net.minecraft.client.renderer.block.dispatch.SingleVariant$Unbaked",
+            "variant": {
+              "class": "net.minecraft.client.renderer.block.dispatch.Variant",
+              "modelLocation": "minecraft:block/stone",
+              "modelState": {
+                "class": "net.minecraft.client.renderer.block.dispatch.Variant$SimpleModelState",
+                "x": "R0",
+                "y": "R180",
+                "z": "R0",
+                "uvLock": false
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "unit_weights",
+      "model": {
+        "class": "net.minecraft.client.renderer.block.dispatch.WeightedVariants$Unbaked",
+        "entries": [
+          {
+            "class": "net.minecraft.util.random.Weighted",
+            "value": {
+              "class": "net.minecraft.client.renderer.block.dispatch.SingleVariant$Unbaked",
+              "variant": {
+                "class": "net.minecraft.client.renderer.block.dispatch.Variant",
+                "modelLocation": "minecraft:block/stone",
+                "modelState": {
+                  "class": "net.minecraft.client.renderer.block.dispatch.Variant$SimpleModelState",
+                  "x": "R0",
+                  "y": "R0",
+                  "z": "R0",
+                  "uvLock": false
+                }
+              }
+            },
+            "weight": 1
+          },
+          {
+            "class": "net.minecraft.util.random.Weighted",
+            "value": {
+              "class": "net.minecraft.client.renderer.block.dispatch.SingleVariant$Unbaked",
+              "variant": {
+                "class": "net.minecraft.client.renderer.block.dispatch.Variant",
+                "modelLocation": "minecraft:block/stone",
+                "modelState": {
+                  "class": "net.minecraft.client.renderer.block.dispatch.Variant$SimpleModelState",
+                  "x": "R0",
+                  "y": "R90",
+                  "z": "R0",
+                  "uvLock": false
+                }
+              }
+            },
+            "weight": 1
+          }
+        ]
+      },
+      "selected": [
+        {
+          "ticket": 0,
+          "calls": [
+            2
+          ],
+          "selected": {
+            "class": "net.minecraft.client.renderer.block.dispatch.SingleVariant$Unbaked",
+            "variant": {
+              "class": "net.minecraft.client.renderer.block.dispatch.Variant",
+              "modelLocation": "minecraft:block/stone",
+              "modelState": {
+                "class": "net.minecraft.client.renderer.block.dispatch.Variant$SimpleModelState",
+                "x": "R0",
+                "y": "R0",
+                "z": "R0",
+                "uvLock": false
+              }
+            }
+          }
+        },
+        {
+          "ticket": 1,
+          "calls": [
+            2
+          ],
+          "selected": {
+            "class": "net.minecraft.client.renderer.block.dispatch.SingleVariant$Unbaked",
+            "variant": {
+              "class": "net.minecraft.client.renderer.block.dispatch.Variant",
+              "modelLocation": "minecraft:block/stone",
+              "modelState": {
+                "class": "net.minecraft.client.renderer.block.dispatch.Variant$SimpleModelState",
+                "x": "R0",
+                "y": "R90",
+                "z": "R0",
+                "uvLock": false
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "equal_weights_3",
+      "model": {
+        "class": "net.minecraft.client.renderer.block.dispatch.WeightedVariants$Unbaked",
+        "entries": [
+          {
+            "class": "net.minecraft.util.random.Weighted",
+            "value": {
+              "class": "net.minecraft.client.renderer.block.dispatch.SingleVariant$Unbaked",
+              "variant": {
+                "class": "net.minecraft.client.renderer.block.dispatch.Variant",
+                "modelLocation": "minecraft:block/stone",
+                "modelState": {
+                  "class": "net.minecraft.client.renderer.block.dispatch.Variant$SimpleModelState",
+                  "x": "R0",
+                  "y": "R0",
+                  "z": "R0",
+                  "uvLock": false
+                }
+              }
+            },
+            "weight": 3
+          },
+          {
+            "class": "net.minecraft.util.random.Weighted",
+            "value": {
+              "class": "net.minecraft.client.renderer.block.dispatch.SingleVariant$Unbaked",
+              "variant": {
+                "class": "net.minecraft.client.renderer.block.dispatch.Variant",
+                "modelLocation": "minecraft:block/stone",
+                "modelState": {
+                  "class": "net.minecraft.client.renderer.block.dispatch.Variant$SimpleModelState",
+                  "x": "R0",
+                  "y": "R90",
+                  "z": "R0",
+                  "uvLock": false
+                }
+              }
+            },
+            "weight": 3
+          }
+        ]
+      },
+      "selected": [
+        {
+          "ticket": 0,
+          "calls": [
+            6
+          ],
+          "selected": {
+            "class": "net.minecraft.client.renderer.block.dispatch.SingleVariant$Unbaked",
+            "variant": {
+              "class": "net.minecraft.client.renderer.block.dispatch.Variant",
+              "modelLocation": "minecraft:block/stone",
+              "modelState": {
+                "class": "net.minecraft.client.renderer.block.dispatch.Variant$SimpleModelState",
+                "x": "R0",
+                "y": "R0",
+                "z": "R0",
+                "uvLock": false
+              }
+            }
+          }
+        },
+        {
+          "ticket": 1,
+          "calls": [
+            6
+          ],
+          "selected": {
+            "class": "net.minecraft.client.renderer.block.dispatch.SingleVariant$Unbaked",
+            "variant": {
+              "class": "net.minecraft.client.renderer.block.dispatch.Variant",
+              "modelLocation": "minecraft:block/stone",
+              "modelState": {
+                "class": "net.minecraft.client.renderer.block.dispatch.Variant$SimpleModelState",
+                "x": "R0",
+                "y": "R0",
+                "z": "R0",
+                "uvLock": false
+              }
+            }
+          }
+        },
+        {
+          "ticket": 2,
+          "calls": [
+            6
+          ],
+          "selected": {
+            "class": "net.minecraft.client.renderer.block.dispatch.SingleVariant$Unbaked",
+            "variant": {
+              "class": "net.minecraft.client.renderer.block.dispatch.Variant",
+              "modelLocation": "minecraft:block/stone",
+              "modelState": {
+                "class": "net.minecraft.client.renderer.block.dispatch.Variant$SimpleModelState",
+                "x": "R0",
+                "y": "R0",
+                "z": "R0",
+                "uvLock": false
+              }
+            }
+          }
+        },
+        {
+          "ticket": 3,
+          "calls": [
+            6
+          ],
+          "selected": {
+            "class": "net.minecraft.client.renderer.block.dispatch.SingleVariant$Unbaked",
+            "variant": {
+              "class": "net.minecraft.client.renderer.block.dispatch.Variant",
+              "modelLocation": "minecraft:block/stone",
+              "modelState": {
+                "class": "net.minecraft.client.renderer.block.dispatch.Variant$SimpleModelState",
+                "x": "R0",
+                "y": "R90",
+                "z": "R0",
+                "uvLock": false
+              }
+            }
+          }
+        },
+        {
+          "ticket": 4,
+          "calls": [
+            6
+          ],
+          "selected": {
+            "class": "net.minecraft.client.renderer.block.dispatch.SingleVariant$Unbaked",
+            "variant": {
+              "class": "net.minecraft.client.renderer.block.dispatch.Variant",
+              "modelLocation": "minecraft:block/stone",
+              "modelState": {
+                "class": "net.minecraft.client.renderer.block.dispatch.Variant$SimpleModelState",
+                "x": "R0",
+                "y": "R90",
+                "z": "R0",
+                "uvLock": false
+              }
+            }
+          }
+        },
+        {
+          "ticket": 5,
+          "calls": [
+            6
+          ],
+          "selected": {
+            "class": "net.minecraft.client.renderer.block.dispatch.SingleVariant$Unbaked",
+            "variant": {
+              "class": "net.minecraft.client.renderer.block.dispatch.Variant",
+              "modelLocation": "minecraft:block/stone",
+              "modelState": {
+                "class": "net.minecraft.client.renderer.block.dispatch.Variant$SimpleModelState",
+                "x": "R0",
+                "y": "R90",
+                "z": "R0",
+                "uvLock": false
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "singleton_weight_3",
+      "model": {
+        "class": "net.minecraft.client.renderer.block.dispatch.WeightedVariants$Unbaked",
+        "entries": [
+          {
+            "class": "net.minecraft.util.random.Weighted",
+            "value": {
+              "class": "net.minecraft.client.renderer.block.dispatch.SingleVariant$Unbaked",
+              "variant": {
+                "class": "net.minecraft.client.renderer.block.dispatch.Variant",
+                "modelLocation": "minecraft:block/stone",
+                "modelState": {
+                  "class": "net.minecraft.client.renderer.block.dispatch.Variant$SimpleModelState",
+                  "x": "R0",
+                  "y": "R0",
+                  "z": "R0",
+                  "uvLock": false
+                }
+              }
+            },
+            "weight": 3
+          }
+        ]
+      },
+      "selected": [
+        {
+          "ticket": 0,
+          "calls": [
+            3
+          ],
+          "selected": {
+            "class": "net.minecraft.client.renderer.block.dispatch.SingleVariant$Unbaked",
+            "variant": {
+              "class": "net.minecraft.client.renderer.block.dispatch.Variant",
+              "modelLocation": "minecraft:block/stone",
+              "modelState": {
+                "class": "net.minecraft.client.renderer.block.dispatch.Variant$SimpleModelState",
+                "x": "R0",
+                "y": "R0",
+                "z": "R0",
+                "uvLock": false
+              }
+            }
+          }
+        },
+        {
+          "ticket": 1,
+          "calls": [
+            3
+          ],
+          "selected": {
+            "class": "net.minecraft.client.renderer.block.dispatch.SingleVariant$Unbaked",
+            "variant": {
+              "class": "net.minecraft.client.renderer.block.dispatch.Variant",
+              "modelLocation": "minecraft:block/stone",
+              "modelState": {
+                "class": "net.minecraft.client.renderer.block.dispatch.Variant$SimpleModelState",
+                "x": "R0",
+                "y": "R0",
+                "z": "R0",
+                "uvLock": false
+              }
+            }
+          }
+        },
+        {
+          "ticket": 2,
+          "calls": [
+            3
+          ],
+          "selected": {
+            "class": "net.minecraft.client.renderer.block.dispatch.SingleVariant$Unbaked",
+            "variant": {
+              "class": "net.minecraft.client.renderer.block.dispatch.Variant",
+              "modelLocation": "minecraft:block/stone",
+              "modelState": {
+                "class": "net.minecraft.client.renderer.block.dispatch.Variant$SimpleModelState",
+                "x": "R0",
+                "y": "R0",
+                "z": "R0",
+                "uvLock": false
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "single_ignored_weight",
+      "model": {
+        "class": "net.minecraft.client.renderer.block.dispatch.SingleVariant$Unbaked",
+        "variant": {
+          "class": "net.minecraft.client.renderer.block.dispatch.Variant",
+          "modelLocation": "minecraft:block/stone",
+          "modelState": {
+            "class": "net.minecraft.client.renderer.block.dispatch.Variant$SimpleModelState",
+            "x": "R0",
+            "y": "R0",
+            "z": "R0",
+            "uvLock": false
+          }
+        }
+      },
+      "selected": [
+        {
+          "ticket": 0,
+          "calls": [],
+          "selected": {
+            "class": "net.minecraft.client.renderer.block.dispatch.SingleVariant$Unbaked",
+            "variant": {
+              "class": "net.minecraft.client.renderer.block.dispatch.Variant",
+              "modelLocation": "minecraft:block/stone",
+              "modelState": {
+                "class": "net.minecraft.client.renderer.block.dispatch.Variant$SimpleModelState",
+                "x": "R0",
+                "y": "R0",
+                "z": "R0",
+                "uvLock": false
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "id": "variant_selector_0",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "e533b4d43e02ac1d7374bf5c2d7ec7e03d6d90f4397fb45aa82c2b1b4ef590e6"
+    },
+    {
+      "id": "variant_selector_1",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "2952fbfde320d3bf86bd313af782829d5422259335789646b128d9fca42918bf"
+    },
+    {
+      "id": "variant_selector_2",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "fc728d0f2d1f07ad0de59c8225e83708299491dda72b8aa0839762c45fa50905",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: 'north|south' for blockstate property: 'facing' [north, south, west, east]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "variant_selector_3",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "554f8d4a6f9bc0119784de5dfe46c26085f4b449945815ebff2efad50544288e"
+    },
+    {
+      "id": "variant_selector_4",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "75735d247d75852f894bfd6e13dfa49e6d7cf9c9e71f1cc78c42710fb5887b8f"
+    },
+    {
+      "id": "variant_selector_5",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "1592deb07b9fbea530f4ed28aa38db31866a92a4546dad1034d299b428aaa675",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown blockstate property: 'unknown'"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "variant_selector_6",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "0c80ed59e1f4690d3a6d18c03efd4c1c1347de5dc81de49f5ea23aad02e12d7a",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: 'bad' for blockstate property: 'facing' [north, south, west, east]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "variant_selector_7",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "ca3f462e622bf8213753411ff27e052dd176ebd34a6dba87d68fa50405ff6f71",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown blockstate property: 'facing'"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "variant_selector_8",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "da1b747dbee87f92498e6961c382b93f66a18b57059737e31bf13a2cf144ddef",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '' for blockstate property: 'facing' [north, south, west, east]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "variant_selector_9",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "f982bd1a0a42fc24d308e7b5935fd62b4cf143509eea1cad776109385c7c37fc"
+    },
+    {
+      "id": "variant_selector_10",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "a295889b07e25837698fb2a99af59ccafe8a77a8d5433f6afb5101c9de38aca1",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown blockstate property: ' facing'"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "variant_selector_11",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "b25a036977fe56c0e034f0e38b2dcc898c00ba1a9af3974fb152bbe147098bb3",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: 'north=bad' for blockstate property: 'facing' [north, south, west, east]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_12",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "502f52c039ee1b0e74b672569e965e3512f0f7104dd4636a0754937a2a71808f"
+    },
+    {
+      "id": "edge_selector_13",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "ea57324f81c528383a4ad6182dd2c79a14ba9c7d091ac687bfdf160b334a2a4e"
+    },
+    {
+      "id": "edge_selector_14",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "53758d0a3117a2380c91e3d02a4ae8f903aca2dc14e356ca1fdee82938f356ed"
+    },
+    {
+      "id": "edge_selector_15",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "1deccd47e326b2928d88cc0703379dd07d812fdf2ef561a528b0e7e83a776241"
+    },
+    {
+      "id": "edge_selector_16",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "ae1315583ff8cb701419bdc4e902d1854e7689005c796cde1380ce04997b1e88"
+    },
+    {
+      "id": "edge_selector_17",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "0543114cab3f195b681d8e474ae8713c1e2d9ef6d77bdbd447fffc0e46438a77",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: 'bad' for blockstate property: 'facing' [north, south, west, east]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_18",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "6ab81ff9401aed3825ac0ef1791ccbfe1f8f6d137fa0c23c5e4be946c184d06a",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: 'bad' for blockstate property: 'facing' [north, south, west, east]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_19",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "b85eb490409f12cb2d6a28b691f486c7624fd89d3e0b9fb12158425f8529e43f",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown blockstate property: 'half'"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_20",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "36a593d419c964a1d9453de2f55d1a671e3d8528be2c53f7cf379e9d2a3185cf",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '' for blockstate property: 'half' [top, bottom]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_21",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "22cae2f00a5df30aca61408b7c0e40031bf24c46aeb01289ea25556d0024df16",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: 'top=bad' for blockstate property: 'half' [top, bottom]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_22",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "0fdd7a611094a71a8560a329a036e7ab2ad615239bce2618325798bbf3e74e27",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: 'NORTH' for blockstate property: 'facing' [north, south, west, east]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_23",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "7161a48bcfb211ab20a7961299d13c262fc5dfd082b2cad06e53e651726e182b",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: 'north ' for blockstate property: 'facing' [north, south, west, east]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_24",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "3be87c17ea547428c1a90acecc957257a06420c50b096f0111fa25cac7f3fce5"
+    },
+    {
+      "id": "edge_selector_25",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "546db3ab3affa754335a1434d2dda9764a06715c1843ac308920374cd040b376"
+    },
+    {
+      "id": "edge_selector_26",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "d3d41180123725796da45f32ba3912ab9dc08c41addcbcba1262e507cfb97404"
+    },
+    {
+      "id": "edge_selector_27",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "84746fdea7b7c270ad7c1527420313b43578a675837caba6691b9545b1de54ee"
+    },
+    {
+      "id": "edge_selector_28",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "2549e63683616c5a90e95c00b046642a6d9265cd224c357da546f1826c4725fa"
+    },
+    {
+      "id": "edge_selector_29",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "31d96fbb98be9cc0489c05dd847278ae9eacc0a21a4e393eed1853920b1d7049"
+    },
+    {
+      "id": "edge_selector_30",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "aa5d700bc130c5038cc29cc819284a18caf199dba140b153e4b561d90d9793f2",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '2147483648' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_31",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "8c7d786827c3b38796e98b9b7fbec337942feda7f0c7df82e5aa519997af3190",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '1.0' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_32",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "ddb54acd0b7c270f280d040785921d89c212bf5bccc1fd2c1287cb5c28692cad",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: ' 1' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_33",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "2e04ef7b992efb4d094e122c74d7868fa4760cf5434d201dc6df624627b7d228",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '8' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_34",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "231b175c2b2c0d080df3c9eb5229785e539b239d28f69cb92c12c5f5499495bb"
+    },
+    {
+      "id": "edge_selector_35",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "a5573678e189cd6d7b15bf0af6063593521310cede2a9d06b503b0f630ba4905"
+    },
+    {
+      "id": "edge_selector_36",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "0f25d953ee9a9c63fa9e901556113239b40dfe96347994d953f444999d69f450"
+    },
+    {
+      "id": "edge_selector_37",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "5d0125a9844b8d27c2f5e1d10ff5cadbe5e2b99332a520491d43bed6ffb80e7c"
+    },
+    {
+      "id": "edge_selector_38",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "da68035fe9abe116d732d474bdabeb5bdfa916dab05fd36645ab0f18e6aa353a"
+    },
+    {
+      "id": "edge_selector_39",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "d4f2109778d3d1ef64ecbcc350de48fbafe553095c4bd051fcc90156a893548d"
+    },
+    {
+      "id": "edge_selector_40",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "f7c7b661a61978597b95a5cc8317dedd95ab3d5640169d2f7fbd4c977276387f"
+    },
+    {
+      "id": "edge_selector_41",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "4be4cf7d2208bd4a5a989f7541c7bbb8b1f4cb2fa112d26e96f08509db4f16a8"
+    },
+    {
+      "id": "edge_selector_42",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "b04678faf8a85642dbb993305006dfeb611647bbbffb22449b9562a719a4a80d",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '8' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_43",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "feccfd900cfd89938cf7b6a752d947c19151c62c45a3882a8efd7147a46bb80d",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '9' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_44",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "5b474a3018156f8fc8aca4110e1e7a1626f9530a64eb0a05d1bf793480304b3a"
+    },
+    {
+      "id": "edge_selector_45",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "2f4dfc06654acc8f877c067eb938d3bd3298f0e9f193478dc5a19506cd4629f3"
+    },
+    {
+      "id": "edge_selector_46",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "5a892a8842f990f78de988f937215bafde927e47fa63e070d1725d803f91f301"
+    },
+    {
+      "id": "edge_selector_47",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "cbbdb22180d4dbcfd136f1a132950b5b1470d1d6fcf6f4677f818b6be1fcc16f"
+    },
+    {
+      "id": "edge_selector_48",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "43baab7bcabe995908aee87a276cdc12437bfd6694ac20c2afa15265dc3ed11c"
+    },
+    {
+      "id": "edge_selector_49",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "e65a46a423848456476a11e58157ddb3a211096f97bd829724001158e785a54c"
+    },
+    {
+      "id": "edge_selector_50",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "3a0512defa351dab03a17c3578290180fd0461008f8bd465315c1ca1e62b1921"
+    },
+    {
+      "id": "edge_selector_51",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "d8dc06147f477f44b7cbbbb649de2d3b1f7f193f260adec1a807139e52939377"
+    },
+    {
+      "id": "edge_selector_52",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "98bdb8dbb006c98e0c54224a980bd097efd13bc97b73b421f600ef5d831db2c0",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u0668' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_53",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "9f4a1b4750d65cb9b12538198933df26840444704789949aaacf85a156dc897c",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u0669' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_54",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "32a05262d7faaa7bde5afebc8c74f9f58d085a393084d21b16c1f0a017faed5e"
+    },
+    {
+      "id": "edge_selector_55",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "f8974867981fcf70de8f804fffcf9505985fe6da7f86f95786f226bc31ac97f0"
+    },
+    {
+      "id": "edge_selector_56",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "01154177015a4c2b93f5b4260dd2f7f98e775fdefa7e514db7297833b6cf680a"
+    },
+    {
+      "id": "edge_selector_57",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "965ac27d4bc3b1a3f477a4709e2871855cd85d86a24cafe2506fe3d874b2605b"
+    },
+    {
+      "id": "edge_selector_58",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "fa1a0ae711eaa11af4efb5760ae8dad84cd9089c6845baa9b39bdfb7afb12b8a"
+    },
+    {
+      "id": "edge_selector_59",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "73ee85fcd239fc91ae9cdae2c5fb4adfe493ea8a7257ecc10d6a5a4b392ba0ad"
+    },
+    {
+      "id": "edge_selector_60",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "567b8f073248d30a81d5c9ca9ec8510ef06e73727f00a78d46c4de8badb12c5b"
+    },
+    {
+      "id": "edge_selector_61",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "73b7120dd1e8a1b3349ae5ae6def914de7a0d2295ce805f4a7add7edf46ab39b"
+    },
+    {
+      "id": "edge_selector_62",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "1b284930eba7c413546d3139d84a0f243388307edb4c38754f6e98a0bd73da6d",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u06f8' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_63",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "8106511b6f6753d596ef7ebb99933b5577975a534fbfa07db9662b84e6f143c1",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u06f9' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_64",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "90e03781074c688cd76db0d9c178fb36544c062cce554c73465d6711666652f7"
+    },
+    {
+      "id": "edge_selector_65",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "6cf7727c1124d282b762cc838fdc192044a3d375835354fb6e697a0b1bcd9d02"
+    },
+    {
+      "id": "edge_selector_66",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "2f700a115abb883f6bd1a74fd5185ae9d38c9af1d7168aa94b6adffba660e6f2"
+    },
+    {
+      "id": "edge_selector_67",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "cacd8418c7060112e9a96063759dc788d061b591878c9927eaabd0b2a506e319"
+    },
+    {
+      "id": "edge_selector_68",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "b43f507f756c9ee514305e0426a63702dcf4ea601de0b66ce0ce6d691b05a97f"
+    },
+    {
+      "id": "edge_selector_69",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "b97a7c83320a981cde52a0a34a427e0007adfc7ce6469a2c4888741a1934365f"
+    },
+    {
+      "id": "edge_selector_70",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "6a98cfc25364a7bf43de762168337c43e0dc9089c13b2f1c1a461c8cbe0619ea"
+    },
+    {
+      "id": "edge_selector_71",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "21fb694bd58f1e2706ff6a062d43bec8d6f6b34c3934eba8ba46f71f69a25681"
+    },
+    {
+      "id": "edge_selector_72",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "ddf43c7f6d3d9588cf96c5e77668d8679856463de0e20437ca090304914b767d",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u07c8' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_73",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "509d62da5c1aae9fdfbdf9d1b151211b6aee5e2f3f4242067ec7602f1955f3ff",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u07c9' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_74",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "50130cb8be0581db82bbdd23010b0aa9b5e608fb07eb3c6ef35abcc6ac6f27e8"
+    },
+    {
+      "id": "edge_selector_75",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "fec5cf336a684acca4fc3aa2a0576913f624459344611d28d621bfbf2f0be901"
+    },
+    {
+      "id": "edge_selector_76",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "903a3ce3a6f8a13c49c347ef3bb54c533b01404623b4a813c1b6b195c505d238"
+    },
+    {
+      "id": "edge_selector_77",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "cd844d0f2e445f11e870dc06f710e263829521052a6c5070cd8e0c997e4bf88f"
+    },
+    {
+      "id": "edge_selector_78",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "3f54800c2e65ed332638b0a89f2e9408e289e1d65966ba1653e9cc1fea040d25"
+    },
+    {
+      "id": "edge_selector_79",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "1babc362a8602b1fc3fb32caead48d71c667c1999035dc7dcb48f1e0a05c08d3"
+    },
+    {
+      "id": "edge_selector_80",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "54b05f2ccb5f28093762902f6939c0d8412566fc7ae1275d01b545d93a483562"
+    },
+    {
+      "id": "edge_selector_81",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "c10d8f5ad54a1343b0dd30dff9995f0dcd9ab32700922339c85895a342ee2f9d"
+    },
+    {
+      "id": "edge_selector_82",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "d906482d9d469e22712688e7f70876703ae527c22af93d8e7ed1592e70111dc0",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u096e' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_83",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "8d6a9c2a862400294b6583b369e9244efc1ef508823b9419b992785d089b77c9",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u096f' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_84",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "eca40352c5522e2cb41577d0157894305b59e6c8fc37d9b2f51324bed8c120b7"
+    },
+    {
+      "id": "edge_selector_85",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "bea647e298db1c28602aa61a13465c5cae6ea3d535ad7d2291788b7b43f53372"
+    },
+    {
+      "id": "edge_selector_86",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "141a2cf6425ff74b1f22d9009937fc61da0a04d16ae097a2a47596dbe79a5650"
+    },
+    {
+      "id": "edge_selector_87",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "aa79995410cc8801dc78089b852c9af09685f2b893d2089b8e6925a1c32a2d06"
+    },
+    {
+      "id": "edge_selector_88",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "1c512db8f3bbcfe02381bc5723fc2e0503e3a3f6bc139c72dd6be09d31675801"
+    },
+    {
+      "id": "edge_selector_89",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "063b02d191623aeaa60cf35bc6a65d720b76a8470753f113a3fbde31657ab3b1"
+    },
+    {
+      "id": "edge_selector_90",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "84fc7901da3d97127e56ffc00af9e47d1555b84130ed5e04429c34f4630d36d3"
+    },
+    {
+      "id": "edge_selector_91",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "912de357f098bfa4e2e8974d08700c2118bbdf38b818d9f76a06119412744ba6"
+    },
+    {
+      "id": "edge_selector_92",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "a135824fe44fef49c54e2094827e2e7a2bd6ad89cb67a99449b10e4f47f0dea3",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u09ee' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_93",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "a710c42e7d58cbf0fbb55270e859560063cbd46ada83933f154d87234a7c7bf3",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u09ef' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_94",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "5bc8cb89a3ac34bebbc7f523b7ec979565f918e63f2399b947dc3daee5bec132"
+    },
+    {
+      "id": "edge_selector_95",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "046e0c51c35b81d28d94aad049ff3329096f9e3b4985bac95933097ea09ff30f"
+    },
+    {
+      "id": "edge_selector_96",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "16196ee11fc9459c9f2ca9aad112fd99d5c217aa38609f55d6faf61ff0571cc3"
+    },
+    {
+      "id": "edge_selector_97",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "63c6a64e8a7f983c8649d714fbbb3fc8bf4dfc46222dbf5c4619917ea3b73b81"
+    },
+    {
+      "id": "edge_selector_98",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "67beed6e3f0ff06eff147f4537647cbc0935485b88e1fa1cbdca246c4b98b246"
+    },
+    {
+      "id": "edge_selector_99",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "59209213837955791f75c6aea5eb4ae64e266d36ac72778e1337a7fe63ce3b7c"
+    },
+    {
+      "id": "edge_selector_100",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "880fb334b2b46208ce52b04abdbef5fae2c9698415c6a43d9824dfaf1145b5c6"
+    },
+    {
+      "id": "edge_selector_101",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "2cdc54a91626cac9f3eda13206a59d22cccb4e1c0d5dd00159bd39c93bd770ea"
+    },
+    {
+      "id": "edge_selector_102",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "134b55e380f05b6a6f15b9759ba2f1726b76b61db47d3cf24f69f1affae5327a",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u0a6e' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_103",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "22750879b66adf8d94acba7e9c1e7e34f4aa3f44fcbf4074ab2bb7b8d4266a89",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u0a6f' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_104",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "6316b3318575297289542ff7705deebd233e889bea61896b4eee05bf2f828f43"
+    },
+    {
+      "id": "edge_selector_105",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "de74b9247456b64d06959650db5eb4e8fae808583cd7ff75850c4bac087ff504"
+    },
+    {
+      "id": "edge_selector_106",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "66fb3c8ec2ccc29342d2f8ffda52cac530a232069d9b9f70d03c298da49c6b59"
+    },
+    {
+      "id": "edge_selector_107",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "af790dcf1ab8097198cb09da05270e32caf93f6630946fbf0222098d385850de"
+    },
+    {
+      "id": "edge_selector_108",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "6871e1dd4ecc05d2dae2c9bbae30712cea4b779e25c1b973d91f81de116961f6"
+    },
+    {
+      "id": "edge_selector_109",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "34f600a4b633fe31812c2de0cacaf88ef1be5a12cb3259a02b377c1f60f522f3"
+    },
+    {
+      "id": "edge_selector_110",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "a885d8c351ae580c51f79d32233a3e36b86b1e3bef7c3d465e6d3203b87e1ae9"
+    },
+    {
+      "id": "edge_selector_111",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "efb0ea7b1d7a490975ffa9ede241736e5d438b96cee3b919affa1821d429d7fc"
+    },
+    {
+      "id": "edge_selector_112",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "cdb27cb52b9e66e3d295b750df76a6fff04211bafe51c23af4a7e80d02e525d6",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u0aee' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_113",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "9dfc44f31f7634242ca9aea4a26e47d67601b83c0247a4338df75fe94f1ec919",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u0aef' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_114",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "17c176c97e978871cead297b7d6869ec87dd0337285dff3686e46033c6ddc1e1"
+    },
+    {
+      "id": "edge_selector_115",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "10366a1d1a5b9950b021d201b8cf531f1251e12199d2b30625664146bdd9d5ae"
+    },
+    {
+      "id": "edge_selector_116",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "d9c1938797191b50c27d779918223c9307e203c4452d150701916b8fea2cefa8"
+    },
+    {
+      "id": "edge_selector_117",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "f7cc8aee5f20c38b64b64b5799c75e7a66c5b44d56abb16506b01c1abe51a5f2"
+    },
+    {
+      "id": "edge_selector_118",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "c6dab3216fe4a40c7f6aeb7a80f20f089e761c1fbeb3ceb6d03fe9565a103d49"
+    },
+    {
+      "id": "edge_selector_119",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "d9db753f558a4ec7f83abbd1c9aed2b593674cea6db65efcc7430c37a3dd9e4f"
+    },
+    {
+      "id": "edge_selector_120",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "9c7b42178b65f50b80090c4cafa7d6e31de153acdfbb2ca893188dc43e98684d"
+    },
+    {
+      "id": "edge_selector_121",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "1a6b35028de137ecb3c7e4d83ea8daa9c99a46cf5a7460d0543a7b69f9022dff"
+    },
+    {
+      "id": "edge_selector_122",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "1c0bd7d095c155617c3d0d0575d8c4281ea135cd990bc12d3d3054262995f915",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u0b6e' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_123",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "41a5ec08fcef01e5cbe3daac7b44e15a86663a2387e7d811d601f688c665d9b5",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u0b6f' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_124",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "faa05ad65f78355120fce266eb445c3b3a38fd1532799a1c6a2ab635235609b8"
+    },
+    {
+      "id": "edge_selector_125",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "9f7da5abeba740cc0fc05b298f1ea60c14ef8910f2469cd68beb564ee867fbe1"
+    },
+    {
+      "id": "edge_selector_126",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "1390d4a9e44de908913b2dbeeec2e62ee40470075dd3c548e8ea6561a1861452"
+    },
+    {
+      "id": "edge_selector_127",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "d78c97e07504b51eb31cac9ce369e237217dfb3624cf4e473f348c309f6b9c22"
+    },
+    {
+      "id": "edge_selector_128",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "8deb3d5e7b9de68141e647884869a8cbacf2e4f0da0fcbc4677347f1c9561e40"
+    },
+    {
+      "id": "edge_selector_129",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "8e3d82ee371417ccaa877c996a3fc8975ff935fc34daa0eb90554c0daea77166"
+    },
+    {
+      "id": "edge_selector_130",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "01dd8f0dd08f164c32b773d54d0356495b064ad017726657685b156cae41acac"
+    },
+    {
+      "id": "edge_selector_131",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "d7da6d5c502a16a2278f708707e03bf2c4123564e6bb954fa1f8f2f41ab2f461"
+    },
+    {
+      "id": "edge_selector_132",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "1d278b65a95d464256cc81f325748c707f0ffe4c4faec358790d21df6ccac8b1",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u0bee' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_133",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "db6f49c8c811861a49f85e0cfeebaf5311fbed04037f93611c8e028866dd3e50",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u0bef' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_134",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "0e81e9b3db7e313575c0bd3078cab1acef5b659d0dbf555150ea9af8deda073a"
+    },
+    {
+      "id": "edge_selector_135",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "7ebd6d3267bfbb1cb19c95e28bc6817d0f3a1538b5a2c3937beecab3570fe132"
+    },
+    {
+      "id": "edge_selector_136",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "d65c20973edc72f27457e1571add08773a521775d5d64dfaa242d3a480070f86"
+    },
+    {
+      "id": "edge_selector_137",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "518918d41be665d05d5bb426d226a3cae5f4425661037f4d77d50e0004aee77e"
+    },
+    {
+      "id": "edge_selector_138",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "c84da0507d9faa506b3aebe1f5234e32cfdae1daf5d0a09ba62ac3cb45869281"
+    },
+    {
+      "id": "edge_selector_139",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "923420a15f3fa06642bc404ce67f137ed9c5afd623d37d0dacfbd5b09cb7334d"
+    },
+    {
+      "id": "edge_selector_140",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "4addf72d4f6ce8d275ff7d1b75f5e830c5855f88326f9455d9be0f337a430f4e"
+    },
+    {
+      "id": "edge_selector_141",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "11ad434896466eab8896e6be83d39db87cdf9014eb03a7ad8442cc23eab7f42c"
+    },
+    {
+      "id": "edge_selector_142",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "7de8882512b33ad379bba775da25482901ca8225351b394640f97887277c7ec3",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u0c6e' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_143",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "79c6520d0652205cd06c84ff721f7310971af9501808d06e88b3418c6561ea16",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u0c6f' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_144",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "3a5b0b062180e88c8fba957918cec43c36e295e64859c13b4bccd9e94e4339bf"
+    },
+    {
+      "id": "edge_selector_145",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "2106f25e5c695960e2558e58f8ebb8cb3fc35dcf3830ca46f3ff7b1a770b347e"
+    },
+    {
+      "id": "edge_selector_146",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "b7b49b76d02eea9dd8264adce5e2678b8c6dd3396161846b83be1b913f19818c"
+    },
+    {
+      "id": "edge_selector_147",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "6eb0d6cb369440e9f767e3342af9e78564dab1727bad2f25152f19d7ca7b3ac2"
+    },
+    {
+      "id": "edge_selector_148",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "d9c28dc2766406f8a134b11980e0e59afb232d5281ba45dab375680dd81802cf"
+    },
+    {
+      "id": "edge_selector_149",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "932fa71f6a7ed116122e9b1f20831acc950f566686dbedf9dfc216ea122b05c0"
+    },
+    {
+      "id": "edge_selector_150",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "5e46a3449193ed50d5728ecabfd300b0b69179865d431d663ea5ffd0de5b958a"
+    },
+    {
+      "id": "edge_selector_151",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "b29b12d3896ee32da5256b3a6e2131a5efd9a1698a582b96739da99cd76f0b63"
+    },
+    {
+      "id": "edge_selector_152",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "a236908be0283930d7b44ceb4a23297dd21bbd2b8c508e222560ca7a4d63f5a0",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u0cee' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_153",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "4d82975d14dc611605c12aaa67ffcf8c74082d4dddd15d488e3c174a43e971fa",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u0cef' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_154",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "0f5d866a4e6e47f9837b2a29b70f1d7e025378ad4292e4ea5eadca69f79046c4"
+    },
+    {
+      "id": "edge_selector_155",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "1cc0b8bd468a3a51b2fa5494d15aa16c304038940e321a809991a49e2d885209"
+    },
+    {
+      "id": "edge_selector_156",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "2e32af1536cd3ea58eb0d38e330ef44ee2312a5432660e779643d1091d947221"
+    },
+    {
+      "id": "edge_selector_157",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "09ce3bb7c5f3ed34f0ec30ec1786e85b1294a4684ef5e56efdc962f7311ecda6"
+    },
+    {
+      "id": "edge_selector_158",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "f76ff9cba38e0324f0e7e90a5c9b92fc017f1f359946af7fdd378c9088af155c"
+    },
+    {
+      "id": "edge_selector_159",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "c4f0d3c2fc4fd9c89311ab51d32123b7d14fb8393dc5f8543d3da5e5d7f44901"
+    },
+    {
+      "id": "edge_selector_160",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "4679585898452c6652ba196e9076abfc79ff82a12e05e0a9ef3a58e1c943ac59"
+    },
+    {
+      "id": "edge_selector_161",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "8f5f76c1d788d923f07124dcb0b9fcaeff6270e9536911e3498a4fa229e6c337"
+    },
+    {
+      "id": "edge_selector_162",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "7bf42876780fe5720d709a31aac42449bf93745ee698294bc46536c47a45a524",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u0d6e' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_163",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "5e6c69ea5317aab1ce6d0ec9f7c4fb65e8d5d734ae49843b9d64cb1ab00e3633",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u0d6f' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_164",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "0f07f33a4a3d9ebb323693acc3b01b372e2f849e3b5c279cc51ff27a9a580a07"
+    },
+    {
+      "id": "edge_selector_165",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "83429eb73760d7380ee1e9619085dab55c62842c01652618f9cd57823a08d21f"
+    },
+    {
+      "id": "edge_selector_166",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "59e19334ff0350bfb7296a831aa99dc915bdfbcd42c2dd9a72110bb7f3368df1"
+    },
+    {
+      "id": "edge_selector_167",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "584d25a8589b580fdb963d470979fa275ed61df11761d3e88f4f8d162e9384db"
+    },
+    {
+      "id": "edge_selector_168",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "cbb78916ef1587b6dae2cf0adfa02b64bd03b3f3a28e30154865895c7c908b4e"
+    },
+    {
+      "id": "edge_selector_169",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "fc07ec09c60395f6800ea5f0dbb054b3690707fb7854c674cef0ee659118a621"
+    },
+    {
+      "id": "edge_selector_170",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "759f3248b8df2ecd1affb56544e78c7038174434b8bf8c69fbac1968319ccf20"
+    },
+    {
+      "id": "edge_selector_171",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "46850f32795fb57c8e98339f6c3307f5db14a4c4de50d0eceb47a600ed7b30c3"
+    },
+    {
+      "id": "edge_selector_172",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "10ea69d036376a36bcdc5fee7ef6be44286d75ba6000639581f2b689f5c9c130",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u0dee' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_173",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "dc155fd1c7f74959a97f5eb2dfda250b74020f93dc623a9d6bf92186edb5e9c2",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u0def' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_174",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "fe6daeef5d480998b991a70409e0baa585d3364ccdfd7db320d9655b10063e26"
+    },
+    {
+      "id": "edge_selector_175",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "e74bd1ea5d6a8825ff045348c67fd37ab31cf8f6b583ef8656078a85ba991a52"
+    },
+    {
+      "id": "edge_selector_176",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "c4d659079f22177226a62830fe7ad59d2fd0c6100820c04400c7bb87ba8e4e08"
+    },
+    {
+      "id": "edge_selector_177",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "22ab072f5fe85643ef8fa70076864f429672e27131e8002a41eddcf128c1235c"
+    },
+    {
+      "id": "edge_selector_178",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "d8f7bab5ae984a7b02a22f438de726459bd4622e90c901a95b2a231a0d371091"
+    },
+    {
+      "id": "edge_selector_179",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "5736d6f211a10e563db4219bf9a159a24fa08dbeee2704b548d87886c93fb4cc"
+    },
+    {
+      "id": "edge_selector_180",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "3c8cf2339bec3cd2ae5ac1b835d7c763773bdcb66d3262c4c781b55835928d81"
+    },
+    {
+      "id": "edge_selector_181",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "b59e231dca0b151e3683063cb04e0e04489d77ea30203fe5074e56b2dc81bafd"
+    },
+    {
+      "id": "edge_selector_182",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "89e6343ccd216c3723d2ce6c8a2bbfbb1701b63d20c13982af13927964de790b",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u0e58' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_183",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "33ad16a1fd5e084ff076139faf2d2b961800cffec55110d26eb08c0e74e9a08c",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u0e59' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_184",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "7d3716f4e50fca1339a8f164cce6ed4ef92dcfe4d488f1224e225e90275d5625"
+    },
+    {
+      "id": "edge_selector_185",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "91a3b995be3959b08735b69014a7f73cae7b6e1fa388805549c22c1c1d26efb5"
+    },
+    {
+      "id": "edge_selector_186",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "5ed33159e0fa0cdf27a7b3bbc8cec78aedf13072a47b1adc74234a73c6602622"
+    },
+    {
+      "id": "edge_selector_187",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "361612e0d2b34538498864456826291c6c617ad8366bb562ee2f451e7f07f22c"
+    },
+    {
+      "id": "edge_selector_188",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "24c7cdd9121d726d46a11ad94f83cd311f0d9e72846b6989b3c299cf0f495397"
+    },
+    {
+      "id": "edge_selector_189",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "b4259eb56544fff046eebd90a2456cce73f800aa8c284dc868f5ac11492eb2d7"
+    },
+    {
+      "id": "edge_selector_190",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "14cf5f83e3e009728b2cc2dd322409fb26f2d81aa85744ac796304e067482c5e"
+    },
+    {
+      "id": "edge_selector_191",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "926ceb6bb7d924c65e5886209a2c2784591749f57c4ec87131c5557a07aed45d"
+    },
+    {
+      "id": "edge_selector_192",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "557b3a34b43447ebfef4f9e38897fc04510353f95f9120772b19093bcea3e253",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u0ed8' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_193",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "7a8c4887b23974a3b44de53ff55b7d8d5b6a60f5643c6c98484fc7cadfc6d1e4",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u0ed9' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_194",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "9bd02b52b0635212331dd8680207c3aa17fb1505a494fb61b9ef7c39482a4ab3"
+    },
+    {
+      "id": "edge_selector_195",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "ba2feabe34fc5a6581c0139f154113e49fde5adba3187b93bd8bcbda6af9e622"
+    },
+    {
+      "id": "edge_selector_196",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "6ef25b72943aea0873b28eadcd27422a526833436105b15430f4f6c755da8910"
+    },
+    {
+      "id": "edge_selector_197",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "c86a80d7ce9eb76708e462b08a008aa8b7dc7a6ff0285641e469ff9ddfd63ed4"
+    },
+    {
+      "id": "edge_selector_198",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "c280cdf0c6a9e0017fb3fd533cfeedf7c0416b99302dad8fb9c6924d8711e35d"
+    },
+    {
+      "id": "edge_selector_199",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "afee35d57c1b69e346dcf15aea04deb665d987ccd0f242274eb0a4ca6f0b4add"
+    },
+    {
+      "id": "edge_selector_200",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "2a69d94c1414e565fe40d6b9459683ae3bf603410436d4f1e69e2fc6647b838c"
+    },
+    {
+      "id": "edge_selector_201",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "be7dfefe901d01509af4b35608b103471deae97bc907acd2c088d0e18ed390c3"
+    },
+    {
+      "id": "edge_selector_202",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "41ed9cb908cc207dfc8e236d1625811f0237d45af1d95ad08446d1df51a66f36",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u0f28' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_203",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "02471bfdc1709a98cf75c71b8dfbf3d752ae0eaa95da90b7ccbb946b19559edc",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u0f29' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_204",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "23ffd151f27fd76a846fb9d8825df12111bffa1812081a352351de125192aa94"
+    },
+    {
+      "id": "edge_selector_205",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "a66cd99178abb5888a2fac6afba7aac1ab03f738ea6dbd56c241f3530350756f"
+    },
+    {
+      "id": "edge_selector_206",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "28271c56e77d717d633dcd70724d28a37c732fd7adcafd002c899188a0302dac"
+    },
+    {
+      "id": "edge_selector_207",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "8c7c1ba293474b0fe25c8d45e3edd8dee9e9875d86d56540ba43479ee893f642"
+    },
+    {
+      "id": "edge_selector_208",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "6c6246f81301108ee55be247cdb98f753a5bcdca3844338e15e7975f78b836a0"
+    },
+    {
+      "id": "edge_selector_209",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "f3eab58b1573f50b8c8658a3cafe58fbf38bc661ae75c1035b4d5c660aed3cea"
+    },
+    {
+      "id": "edge_selector_210",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "da5f1b4a9cedce57c3b9990f21aa5930b83314356145ba5d5a0d086d7a6ad71f"
+    },
+    {
+      "id": "edge_selector_211",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "51cbe2edbf716a54de2016c6f4a2c346eee23b95da9e5e743280fd107beea7eb"
+    },
+    {
+      "id": "edge_selector_212",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "2719a62c664c456b7dc9068f90cfc0c7057d934de2ba56c36fa2523ffb162333",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u1048' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_213",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "85f801bac1b801c5ba4f458aafe0c8761f651ec13dd87bc4b4332c85e30365c8",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u1049' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_214",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "3f820fb3b94c32561507c8e664dd62303b9df824531ea954c65b054da141d2cc"
+    },
+    {
+      "id": "edge_selector_215",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "038fb5ad98296503859eaac9ab59aa622d3f79b961a5ab1da5fbae557d457995"
+    },
+    {
+      "id": "edge_selector_216",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "07e9663639d5f0d81f32e8e787af267844cb6e2626047ed44d07f301061b721d"
+    },
+    {
+      "id": "edge_selector_217",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "af4e96b44e9e4efdcb2d10e9462224354c7b647dc4a6a075830aea5ef9e3b3c1"
+    },
+    {
+      "id": "edge_selector_218",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "c8d06722f3dddbd079554cdce74ca5aaa2748633f677f31f9e5f903d4c17e94b"
+    },
+    {
+      "id": "edge_selector_219",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "a8390650cf323d648ea8ce498a8fc338958affadfb41e5d8e3e77aeed815aaf2"
+    },
+    {
+      "id": "edge_selector_220",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "e47fa0e1a5a99c4808dde6cc00ceac617887a075f75525236289817c573fe4a8"
+    },
+    {
+      "id": "edge_selector_221",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "9bc7a91345e054f7afc11845008ab392c07669c9bec247c6b0fe529ca85f599d"
+    },
+    {
+      "id": "edge_selector_222",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "c1cbe3ee56e4a4d06489506cfac7960fae3a225c6c2aaed5c33d12962a7af438",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u1098' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_223",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "21722c73adc0a46d04c72826436abdd46f794395fbdc5b55171041bf8e7da52e",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u1099' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_224",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "84d83e04c5cc21e4b717c6f64d9c2cb4c9441f9c44b7f5a6ac8458972d505faf"
+    },
+    {
+      "id": "edge_selector_225",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "7786273854bc3aeecaf1cef814350127d96cdccbc3c6e8e3a8ffb51faffb24e4"
+    },
+    {
+      "id": "edge_selector_226",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "776aa5acb757fe828fe14b4fed6d966dafa5c7d58a9c41fef0581a5b8830bbac"
+    },
+    {
+      "id": "edge_selector_227",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "7964ebebd6318301ee58abc199db7bd73346d9f06d4b1c0f370b7d755a88e873"
+    },
+    {
+      "id": "edge_selector_228",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "51f0ef6a783013d9105a734da044a75684411ba7cbcb4cfc8f1888cc04c328a8"
+    },
+    {
+      "id": "edge_selector_229",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "13b457034a62818aa266d90faae101c4f032a22f462d1d3f9545b6c1e392541a"
+    },
+    {
+      "id": "edge_selector_230",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "fde3678645f259ecc23ad0207869714506e545eef634c82121d93ab446718a9e"
+    },
+    {
+      "id": "edge_selector_231",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "ae746b6968fd3232f2bdeda58ef90382d6c0245437297b877e8c9d543a74d7d9"
+    },
+    {
+      "id": "edge_selector_232",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "098d7aebd3cc679151a6acf48fc3468544668fb5ac964d4db458a068d9e9f68f",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u17e8' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_233",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "962ab6f7cc458471ff90805ae34e37d2253242c88ef9a521826f6cab15d6f301",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u17e9' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_234",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "8691fdd14ebdee344a1ccbf7b1ddb832cda020ff14a7f7feb5a39112e9b242bc"
+    },
+    {
+      "id": "edge_selector_235",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "d4ab4f29eb9cb455389ade7f2335b36a4b507606763f846f9bae61af7fecec75"
+    },
+    {
+      "id": "edge_selector_236",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "73f4f591979b91f9570e95ff46172b03f3cc86b0b4adb8c032623ad4106b019f"
+    },
+    {
+      "id": "edge_selector_237",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "8c4253596bddc005fd855bb52c0d76747d09ceffaaa57078070018de3efc28c8"
+    },
+    {
+      "id": "edge_selector_238",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "5c586dc2a4afce856ab3cfc345c25a312ecdd48b4988e5650530d70deb6e5b77"
+    },
+    {
+      "id": "edge_selector_239",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "79d0e4ec9bc2d6c6e29b902b9820cabd9ffddf28937e6a8784258b60e8d1e4d0"
+    },
+    {
+      "id": "edge_selector_240",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "f6f0359bed6074062e9b725423a7527f2d8ae19729d13153d2b89ee841de250e"
+    },
+    {
+      "id": "edge_selector_241",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "2c606b451a8887d4ed4ff88a3bb0998ef9fac277beba829826330e9247e56117"
+    },
+    {
+      "id": "edge_selector_242",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "063ae5c418656c3b755a8fb9bfa9f3c80d8234b7108512b22b0241da062d3375",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u1818' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_243",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "21bd5e03eeca67d3a8dc0b9b21c180e3ecbf25a924d0b6ff768f1c41276b0b4c",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u1819' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_244",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "957dba0ba2f982f64c534fdfa4a0c426a9f463299b6c2a4dda4d76b4c282c1c6"
+    },
+    {
+      "id": "edge_selector_245",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "da049c99a24018da256467041d1158f342ef1048070d40c7d802fc29349ef4a1"
+    },
+    {
+      "id": "edge_selector_246",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "46334a9204b3ecba6c11edd976b0beffee72d1859e4512dfbb207faca4f0bd7e"
+    },
+    {
+      "id": "edge_selector_247",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "32f6996b0db72f2783ebbe138e650977892dd7aba55cbfea224b3301e1666f34"
+    },
+    {
+      "id": "edge_selector_248",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "790975c91f14bd85c2504a86321a4e78601f750f7332474663f1fbceda81f511"
+    },
+    {
+      "id": "edge_selector_249",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "ac29955cd6bd7d9645abf46557b20a263b2f538f2aaf42af08d56a46a9ac41cd"
+    },
+    {
+      "id": "edge_selector_250",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "0fb73a33231e5a313b434565026a93eabc74d90ca343d560ac85d1a44f255df1"
+    },
+    {
+      "id": "edge_selector_251",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "1bc4af1527ffa8aaedd4a3891c80b655a883dd87b8562c5e290f0c3e3f8782dd"
+    },
+    {
+      "id": "edge_selector_252",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "3ed4de05ae2905b4a115480e7ce0d4fa3419b43287900c9fd2a208f35c721254",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u194e' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_253",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "448353dde50e2c626c26bf9d83bf570b422c4b0b8c609cd193e123b7df187107",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u194f' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_254",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "e7dde94a7f66362019d2751f1edf088015ba8da508219c6dfed820e023373c85"
+    },
+    {
+      "id": "edge_selector_255",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "619dc7da33a99aa2bc2da959b03e8771d26ef5a41c5d26656b2bb0c2d92d91a0"
+    },
+    {
+      "id": "edge_selector_256",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "9d2dd83b2974238dc6bcc6753f62d6ed4cc29a85c3704e152b2336ab6e52085c"
+    },
+    {
+      "id": "edge_selector_257",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "72bafdf8a87c9fbce41ae962e0f5cad4dac30d1b798294ab45510828f10ccf69"
+    },
+    {
+      "id": "edge_selector_258",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "779df86f4ac5e2a8c7e1ffa8899afa1a5960e51d0a2b57e675545324d0a3571b"
+    },
+    {
+      "id": "edge_selector_259",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "fe4eef803f6101a3bd960e2776b6e65a8d5c39994b4f703777f7f1422aa358ed"
+    },
+    {
+      "id": "edge_selector_260",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "5392d62e2328d9a05870642bd3c011389a24d5456f29894f7eca140fa4be71bb"
+    },
+    {
+      "id": "edge_selector_261",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "7cdc738fa33f25d7de844ae32b608edbbdbcb683b09e4f0105a51d5d0c61d031"
+    },
+    {
+      "id": "edge_selector_262",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "d12a46062f26037dd55a4c950bb5402a1b59bb551f9bea8afba812f959f7fd1a",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u19d8' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_263",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "c22975a805040636b2f131659ac1f33feeba7b960cb7d4c831329ab2794ffdc0",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u19d9' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_264",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "25c6b41f77841df570eacc86b8334b28f96f90fde2b8b6c2cab5daf9cede3575"
+    },
+    {
+      "id": "edge_selector_265",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "45ed28ef6bd2a507dcaf4514f701d0c1810161d8b4a55eeb4eb29883b80e5f17"
+    },
+    {
+      "id": "edge_selector_266",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "75ec232db0278d0ff92703afa918ef552868e2113eb688781fc5cde2becd6b1f"
+    },
+    {
+      "id": "edge_selector_267",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "cdd6327cb0adaa9946bec262e85377d27e27bb080a27d9b55faa3a514217226c"
+    },
+    {
+      "id": "edge_selector_268",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "f801d543a2f87de82e7646ef32db6614d81c107993f4bf086c04eb4ccea2e138"
+    },
+    {
+      "id": "edge_selector_269",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "85dc82959cd037cf568b9c53968c2e9dbf2cb9a51f5b90be93a81db94dd9295b"
+    },
+    {
+      "id": "edge_selector_270",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "d7e0500d84f2b1d23349915468d3cf866d1cfde003537a698dd9d8f5f83e97e6"
+    },
+    {
+      "id": "edge_selector_271",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "eaeb7dcb50b707a2e5452bbcabb7d14dc9461b45ccc766e4b45d2db95bb95f52"
+    },
+    {
+      "id": "edge_selector_272",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "260966e6d9018c8be0f42a141a08b149d9523e5ed6290e5afe38e9b39c0411c7",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u1a88' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_273",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "f487a44154a6810cf75cc07bfc2e93e89b149757540f65d756edb7ecd3d16ddb",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u1a89' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_274",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "ba8bc2041e9c1d4c63bee4012ae9707cbffd0cdb14f5e42e7e5408b719275ce4"
+    },
+    {
+      "id": "edge_selector_275",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "1df82a01efab572b933f344dce6af44d9e8ecd717d1861e4c876f0c2d2f10d4a"
+    },
+    {
+      "id": "edge_selector_276",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "a0408aad8e562ffad2625d1b42b9ee65f407e2cabe7121f1209d3e3079b9cfce"
+    },
+    {
+      "id": "edge_selector_277",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "104d951c1ac4c0731273256cb64d91abc6dff4e116bd94d38a48237bb13d9a3c"
+    },
+    {
+      "id": "edge_selector_278",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "986a3b35ba59c461e425c8c9ad0360f3baf3bba256ae7fc443101907ed634ceb"
+    },
+    {
+      "id": "edge_selector_279",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "8926518152ce988852af142301c23986080579ea213075cbd4aea56b4056dce1"
+    },
+    {
+      "id": "edge_selector_280",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "2faa1ba14be7196114954cbd3e5f80b0ecafbb2fd7e59aca91b436d8807b4957"
+    },
+    {
+      "id": "edge_selector_281",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "87e17b0da95591612fd3dbf1d050eb9e8bd821037f833c88e0e73ca11b846fe7"
+    },
+    {
+      "id": "edge_selector_282",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "3b5ed3c7c74ffb3bae3ebb6b0cd8206c66fa8eb829cf9248b34d372ad80a1645",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u1a98' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_283",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "68a86cbbb46c7697cd18005a468a37f78ce7b5000ed412b520f3ddc313f62e43",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u1a99' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_284",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "4fac572cfe6f44155423dd4ab5705d2c2987b0695163079a0851c9d559bafbbb"
+    },
+    {
+      "id": "edge_selector_285",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "ccdb170388dc78ef04abe44cb59e0024a07c2bd2b5f1dece3d8076c1fc9a4ee7"
+    },
+    {
+      "id": "edge_selector_286",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "1bfcc7bf19136bc4c3767cd991950bbef058899fe5372d7863634a9ff51ef64d"
+    },
+    {
+      "id": "edge_selector_287",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "657181ab41a8b6d934a0f78686db3b3210e035c6140f13184081e7307d3d6669"
+    },
+    {
+      "id": "edge_selector_288",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "b6a57ca6cd91cfdb1ab87fc6c511fe46b9944337edf2040afaf6e0a86fdc0c3b"
+    },
+    {
+      "id": "edge_selector_289",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "423a441061d3ddaf4bb654a7aa663ba1c6a7bd1bf53a36fd4d7413a8bf245d90"
+    },
+    {
+      "id": "edge_selector_290",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "b353a2c28f85b51ee198612132a38565ea1bbceec7b39d03100e37822766111f"
+    },
+    {
+      "id": "edge_selector_291",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "8c87667b907eca9373febafbd158c5282b7289918bf5750fced2130b14e75f65"
+    },
+    {
+      "id": "edge_selector_292",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "2913dc6a0b35076572a1a3569a5e1c22a0eb1760512371f4584c3f8bb7ea2acf",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u1b58' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_293",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "f714aaafa20701362e94b4523ad42c346d385eca8cc88efb6c566b87086d76db",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u1b59' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_294",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "ec7caeee288e71152020b1b2c996d5be8a276439de680cde30c8bbcc1eb40612"
+    },
+    {
+      "id": "edge_selector_295",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "a4bb48c4e23a4e32ad3e2f21dc3c92d2e0d01cf3ad00edbd164f78eda457fccf"
+    },
+    {
+      "id": "edge_selector_296",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "ef982e578c574d78fd3508bd20f0c51319b81762a0ed45246c464254057746a1"
+    },
+    {
+      "id": "edge_selector_297",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "779d18a98754ea67a2299be9ba515e1261594ec6d471b8a02686219f86f4499b"
+    },
+    {
+      "id": "edge_selector_298",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "00d1f50fe0ccbe3f1d96cd06bc56298b33b2ac8f08a0b77fc45e955e28db6c0b"
+    },
+    {
+      "id": "edge_selector_299",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "2f62559cdcaae3e0162b8e725c2f7eb468292e454a3932c19a7eb47ae9a59ca3"
+    },
+    {
+      "id": "edge_selector_300",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "6e8977fc21a388c7b8237a1e760d3226d767098a3bae10407e3f35b899fd6f0c"
+    },
+    {
+      "id": "edge_selector_301",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "8c64535b6ddacf87291984cc9260b9b0334c322953b37f1ec3b226dd06620a55"
+    },
+    {
+      "id": "edge_selector_302",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "87b708a7e2d1867f2f0caddf401198bece9f35f91dc4c16453284f5b13c1c06f",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u1bb8' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_303",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "ecfd497102603e46b0822708f878558806e9b039a81a4a37edf55a7cff592233",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u1bb9' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_304",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "d6774fdab85a65c15587e55360a7000e8bd6887c5edb16316815313caae86fb3"
+    },
+    {
+      "id": "edge_selector_305",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "8dce2282adffdda982ab1ea5c05885f7944bbf1a625f1155aa85a83aa70c3987"
+    },
+    {
+      "id": "edge_selector_306",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "c2d0dabb5dd012d26ccdd47193ab680adb8ed3c06896f0a621b0fd85add3663e"
+    },
+    {
+      "id": "edge_selector_307",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "d2a6cf75f95aabdd5dec06602791fb5a1e10f39f05de66f6fedfe70ad52b13bd"
+    },
+    {
+      "id": "edge_selector_308",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "d494466b79f40c586796887609f8a4e56f0fea42d7efeb14667ea99b372d8802"
+    },
+    {
+      "id": "edge_selector_309",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "106467125125587413b212bbcaa8ef33786bb9b97f2bd058ca3b02e3cf885ddc"
+    },
+    {
+      "id": "edge_selector_310",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "7264a85163cfd85b6267ea17fd35e5fedf1dc5f6411f50293b5e9926b0494c93"
+    },
+    {
+      "id": "edge_selector_311",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "eb6b0aef5bd975310a703f7aa329a53ff0ca84b097e80ab2a974a8b19b514e6d"
+    },
+    {
+      "id": "edge_selector_312",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "4ddd62642ed6e995e2c15f0dd2f503902434b00f0b5d7a9ff38319a4cba5a0fa",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u1c48' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_313",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "e2f5efcc78e4c9cdac154e3f08b3d31ead21c8a98549eb69e3952cd0422bdf0d",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u1c49' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_314",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "f88320164911b9c234a86709b4b34d99b1acd2d6cce4ceaa0a53c5b3fc23926a"
+    },
+    {
+      "id": "edge_selector_315",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "64e08fb826d2eb28b105d9f1eab839975b70ef7f1a99073d9704c978648071b0"
+    },
+    {
+      "id": "edge_selector_316",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "d081a9c4f8279e531c477bf0b4fcae20acab0388b23c05007d1eb15d1f73b807"
+    },
+    {
+      "id": "edge_selector_317",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "99d333282db13bd586d883b483b966d2a08a6a7ed80081c264aa3fd8281daaea"
+    },
+    {
+      "id": "edge_selector_318",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "c9ac2051347ee026063b832b47abaa16a1cd75ef51cc1e3da34e6bfcff4214d9"
+    },
+    {
+      "id": "edge_selector_319",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "4736677b9e268fe8d18366993ecbc03dce7d6ea6e0cf2c19caba0845eb3b7f24"
+    },
+    {
+      "id": "edge_selector_320",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "8a23e822711f9a87873c57f25896e6d7350e41e77ef1ee84d9d819a10249e175"
+    },
+    {
+      "id": "edge_selector_321",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "c440e2b2e6d8e1b00a7d3cfe36d89dbfef672d674e86be7ba1e1616d7ad2a5eb"
+    },
+    {
+      "id": "edge_selector_322",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "2dcf03792b6d46c5a30dd368c16e2f05b7f2d5930e55300428d6646dcdfc4f09",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u1c58' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_323",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "316f434d7d55b4d9d0f80e154bf1358a44baa18903a1705584659989a58ea703",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\u1c59' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_324",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "884afb45f0f07e86918bf8e4f3094e31efdf31b6171ccbc12e96c99f05de6bb4"
+    },
+    {
+      "id": "edge_selector_325",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "f1698e74db449a272a37e4a43e2fd1349fbd72f003788876db3776915cd629f4"
+    },
+    {
+      "id": "edge_selector_326",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "fe352971b21a2247a217d5f9a8d7645891b57c8deca62b0b894ed888afcb3e38"
+    },
+    {
+      "id": "edge_selector_327",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "3b4cb0db20ff7d768f21aa4afe5ca2680f449c5f49d3c26bcf8fd1932859e345"
+    },
+    {
+      "id": "edge_selector_328",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "afd9c17c0bc379b769b3619f18dac96f91aa9d72e133d6a8112f984890e9c015"
+    },
+    {
+      "id": "edge_selector_329",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "8cfbf10359b0e85a251b0fafefa220b3200e6cc03ea2726524ca7112c95fd51e"
+    },
+    {
+      "id": "edge_selector_330",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "0ef6809d69f1742b4f1aa21fe9d927773ae5515a494b992603fc6c9da0bf677a"
+    },
+    {
+      "id": "edge_selector_331",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "d1bba69ba945a1d3d268f93827b848714dd9e5469c945e5d679bd22e4c32bf92"
+    },
+    {
+      "id": "edge_selector_332",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "6fb0c6ac3c16fa5063cbd8c9fa969816674a088cc823525da595741499a3daf9",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\ua628' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_333",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "86539073652955fdbb8f42bdb98a4e207229e6c44a30944235f7135ead31e4b0",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\ua629' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_334",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "8096091d6cf92f9dd67e383c6f3d0c299a286fa2ddfed29e39111c3b516f9c98"
+    },
+    {
+      "id": "edge_selector_335",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "fbeba5eef9b24a96d371d8da33d3d2658dc1607cf3e11974e658f1a6639773b5"
+    },
+    {
+      "id": "edge_selector_336",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "4362be767c4739a8e74af6230debc4f61173cffa0d5d22911cad395bb67ed647"
+    },
+    {
+      "id": "edge_selector_337",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "5733c238f03ead5e1746dd8ec2c9f867f64cedaa93a79a10aa7336a926474c6b"
+    },
+    {
+      "id": "edge_selector_338",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "3f2a4491bae754d72302780a8d179c1b52186b857b55a431709719d6fae2ce6d"
+    },
+    {
+      "id": "edge_selector_339",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "eceba6e2d6a010bec25c53e7d30b50279483631b2b560200a4421f6d94155ce8"
+    },
+    {
+      "id": "edge_selector_340",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "7e91a83af39a1f4bef929a2b3a75d9fda205fe0a426d5bf9e75a7bca5983cc02"
+    },
+    {
+      "id": "edge_selector_341",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "d13f0c33751199dddb8edd073e34fd817a86c578e033c14fe4e40bd6680406c6"
+    },
+    {
+      "id": "edge_selector_342",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "9cf500f6db76e8c4e457a2033d5dcc62b394663d70a2d2800a363d973daf2282",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\ua8d8' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_343",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "482d278d0283ffce2aa950811d9d0d5006badc2d95d3d59d622c9df6555201d5",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\ua8d9' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_344",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "96fd9d90894537269003ad11d9f78e72f9f73ea5646e395ebac3755761951719"
+    },
+    {
+      "id": "edge_selector_345",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "6d69397d1c656dc2cb41c31c86cff02758538a2b7eef6891bce20b061e9eae9c"
+    },
+    {
+      "id": "edge_selector_346",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "e0494ab24043aebf634f84e059506845e71db5c9e23a5466e80db7b62a8bd481"
+    },
+    {
+      "id": "edge_selector_347",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "28cdf3b1094954c26dd58aca4bdd338135fbeda85133afb8ae4f95dd8c1d7368"
+    },
+    {
+      "id": "edge_selector_348",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "49f542d32be657a16226cd426de4856e3ecfd9fe3981ce3a39b4d5599ef4fa98"
+    },
+    {
+      "id": "edge_selector_349",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "6c14b4002a7901bdd2703195b83f2e9623d263c49f39db7bf88030625b2af257"
+    },
+    {
+      "id": "edge_selector_350",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "1e3a73a9d3d3dff90397b49c498219083fe66ac174d0ca6a16e2e505d1eb3b4e"
+    },
+    {
+      "id": "edge_selector_351",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "712010e2f28c134510596b1eeac0876a7d5a638f98472f48bfdfd138e8beb3da"
+    },
+    {
+      "id": "edge_selector_352",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "7b3bf34abb8d16271dae11eec1075e7a7fd27a8bac747edff773e789de4d0a46",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\ua908' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_353",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "c22c7100558c5eb3805831defc0e79f4272fcc42e4808dfb6ad34dabfea6af8c",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\ua909' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_354",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "a5f4319c2901f39ce3b4d7a8374b324961c5d412191bd4b7d513fd385ee99a34"
+    },
+    {
+      "id": "edge_selector_355",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "7b64d3cc1a6e89b0c402466f53b5e69d383182f602e2d8d73655bf046c1fe42c"
+    },
+    {
+      "id": "edge_selector_356",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "8f48b2ce6b6fc595dd9d82203b3d5bd7dbaa1979622cd4314f76f0dd24ec7270"
+    },
+    {
+      "id": "edge_selector_357",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "ac59ff43dead8a9e119dd04f6b754c760cb72831194ce862ea952b2fadd7df4a"
+    },
+    {
+      "id": "edge_selector_358",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "c032cafeacb7ccb1b4b26c910027ce97dafa94117032eac6b136745a4b644f0b"
+    },
+    {
+      "id": "edge_selector_359",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "51668db1c54eafc00599b224b3bcf53339dc5d4ed403309bdcd5fd640c529dab"
+    },
+    {
+      "id": "edge_selector_360",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "1e6f69978a6a26f01671f8d1415b15ff3585343b5f08e97192014280e179a4af"
+    },
+    {
+      "id": "edge_selector_361",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "3d5101462f6cdabc4db7e77c406d849a7ceb4c92811f238921fe92b6574e59e9"
+    },
+    {
+      "id": "edge_selector_362",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "7417679931fdd70c069c2b3cf1b70fbb13feb2eaaf4bf8b30389e6a172873ea6",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\ua9d8' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_363",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "83349660490b8c94f33c7b8eac4822393e4cff259eb2b5ba32df78d5b5b2952f",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\ua9d9' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_364",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "a8d5dafd9b46b3e0bbac5fd3f430c2f326a621e40ad63a7d9ad6d8adb390b7f8"
+    },
+    {
+      "id": "edge_selector_365",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "ca73529bd82502ea79cf0ad0b7b30e084e006efe1a9183b0ad6cf27983547bae"
+    },
+    {
+      "id": "edge_selector_366",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "2a5f5e0c73ac0919afae0ec9e2bf404c707e1e2f626c63df31eaf1b70e61e821"
+    },
+    {
+      "id": "edge_selector_367",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "e2c7017e94847969e615b297bb25f60f8501cddbe70dbb4db95f2b1609ccb5e1"
+    },
+    {
+      "id": "edge_selector_368",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "3ce7b2d8ae0a172b93a690d74096a79844fa34b62b4abc6b70bd7ecd242d8b73"
+    },
+    {
+      "id": "edge_selector_369",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "4ec3d5fe196ebc155d5b98347c7cd84ac1680e1ddbaea52509f36c9f22a4c3a0"
+    },
+    {
+      "id": "edge_selector_370",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "d8da3f1dff0b9b5243c1b2b8f69f0fc96b8d6a2ba0f5f1a1c6d5daa2bd436494"
+    },
+    {
+      "id": "edge_selector_371",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "56368e7e677296a6725c780382b61624ccd47278cbea8cf619b33be4cc4076a4"
+    },
+    {
+      "id": "edge_selector_372",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "0d9270a3504cee9821477d3fced32e7c5691b1799c0481aee103049f7bea449b",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\ua9f8' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_373",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "76b323da6d72eacde0b2a50ca6c4b984c7cb531aa93dcf0507dc04ae87eabffd",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\ua9f9' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_374",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "c35aba4126628d06921212728193bb6ee4eac77e59dac2b8b6cdf692af03cb14"
+    },
+    {
+      "id": "edge_selector_375",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "c2e1f1241a9138870d9ffdbfaa8ca8b0bc8aeb80a95f271833e2fdb27b1b50ee"
+    },
+    {
+      "id": "edge_selector_376",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "2bc989546cd8c74c183acbf51e0ccfbb0dd8f1e60997642b69bb849fabd45d98"
+    },
+    {
+      "id": "edge_selector_377",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "66b2274732faf7a4be0d3bdc3dab88cea269ac1b9635ffbffadef2c42c2bcfde"
+    },
+    {
+      "id": "edge_selector_378",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "cbf05d57179c16da568eedcab0d54b28cc316132443e2634e3847e486c0be95c"
+    },
+    {
+      "id": "edge_selector_379",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "ae57e60f2212f85ea0a355002d5bdd6fe34b606f19be6fb7597b939fae6c8a5f"
+    },
+    {
+      "id": "edge_selector_380",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "eb16c2d4ab1c602f296738c73d90a22e02eafb3ff81eeaacd4ad55dcdf60ae83"
+    },
+    {
+      "id": "edge_selector_381",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "9e6b8f61ebd87f58708ad9b2cc9dca8e8bb53b100284238706cfc2a65c7ca1b8"
+    },
+    {
+      "id": "edge_selector_382",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "d18499ddc9377b845e2db4bf38056f100757c6934b3963af63c3173a79a9789e",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\uaa58' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_383",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "5037a7cebfb4ae49150db532694d27a2eecff420cc65118e77aa2462eeda301c",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\uaa59' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_384",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "19557268c35d3911f10b55d6714229e3ba22d3a6de51c72a7b1604bf093d5ca3"
+    },
+    {
+      "id": "edge_selector_385",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "59f84d2744a30db2adb2c1086e96c83d94e43d42dad1b590bfae46f7b1a03ae8"
+    },
+    {
+      "id": "edge_selector_386",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "808295a723b7dd9a42d2040954bfb381af374ae8d346b8f035d9c51a930dfa91"
+    },
+    {
+      "id": "edge_selector_387",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "a27af8857ffa0eb5f0903cb0f3447a70d9f169b08a5cfb8da8870f2f7a9f473d"
+    },
+    {
+      "id": "edge_selector_388",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "0163d4bc7666262b1f3f9ec399003d39ffd8d591538c8d01e49e4de165845684"
+    },
+    {
+      "id": "edge_selector_389",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "bd07f006d806000c9c579638ff83f6bda6f3043464ee378fe1858f8690f31f86"
+    },
+    {
+      "id": "edge_selector_390",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "4cec06c745e47601083d253b9ac2eac739769494e5001272132966bbb53068a0"
+    },
+    {
+      "id": "edge_selector_391",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "86d0a6266f61417d1734e8f9dc02f0337140d2dbd8e8d477e4b4acd5abfc4ab6"
+    },
+    {
+      "id": "edge_selector_392",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "b8b63c19f6c2bd4befb1ea236776da2d7ea99f416c9dc39c300df49825ca4e62",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\uabf8' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_393",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "259fb050c90e0cdf49a99f8d1dc722eddf0d69035b8b8be0f4e80337ee38c556",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\uabf9' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_394",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "c6cc04acafe2e3b15eac64375def425b7dec47b38c5a650cc11ba0c12f921526"
+    },
+    {
+      "id": "edge_selector_395",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "c32bf74e979c4c715d172d6828ab00089e44026896a91cd8f6d153febdd2eff8"
+    },
+    {
+      "id": "edge_selector_396",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "6d8ba0d28b19c3bbb9e79487810a623863a7a06ac4dfe27ae0ef082352062c3d"
+    },
+    {
+      "id": "edge_selector_397",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "ca99529471b3ecbc50522d067fe9be6403793961b1e482740e60b81bef1d5319"
+    },
+    {
+      "id": "edge_selector_398",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "fe92ca4641c636a8aa04fd2982f96c8512b45947bd5e5289a97410edb4e20423"
+    },
+    {
+      "id": "edge_selector_399",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "09187d27062653b6a965dc1582ab620db7a1d8bd50ce0d9e76c407b9fe46039d"
+    },
+    {
+      "id": "edge_selector_400",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "f7c814b3fe2998d76eeb8190404582ea373fd273ce7f8b004744efdff3e9d145"
+    },
+    {
+      "id": "edge_selector_401",
+      "kind": "selector_cases",
+      "status": "ok",
+      "input_sha256": "06f3020b0aca33feccf0d5e175ff4a0d605d88eaa94b441c54a10fcd38b5e054"
+    },
+    {
+      "id": "edge_selector_402",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "f00bdbec1ca7f1ad9347f072b2e5fbecc04ac64d135334635ada5d1aeb3d7ce0",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\uff18' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_selector_403",
+      "kind": "selector_cases",
+      "status": "error",
+      "input_sha256": "342423697971981f0fca7f17aa7a26c31de32a827d19a9103ace81654c5e59e1",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value: '\uff19' for blockstate property: 'age' [0, 1, 2, 3, 4, 5, 6, 7]"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "condition_0",
+      "kind": "condition_cases",
+      "status": "error",
+      "input_sha256": "50bb563a55cfa7d1627349c059118f35b1736991a80a23726faded952c28e6e0",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Failed to parse either. First: Invalid map size for combiner condition, expected exactly one element; Second: Map must have contents"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "condition_1",
+      "kind": "condition_cases",
+      "status": "ok",
+      "input_sha256": "00ebda43ea0dffc3a3010486045914ef1fae4bdc2de14c0d067c27ebe3cf96d7"
+    },
+    {
+      "id": "condition_2",
+      "kind": "condition_cases",
+      "status": "ok",
+      "input_sha256": "94ec2564da9334839b8f248ff77d2ab57bb8a13686aa496de136f4859d8b278d"
+    },
+    {
+      "id": "condition_3",
+      "kind": "condition_cases",
+      "status": "ok",
+      "input_sha256": "ea104b28569f8a454abbe16e5d02ba18814524e7a33409d48bf17caf27cc1779"
+    },
+    {
+      "id": "condition_4",
+      "kind": "condition_cases",
+      "status": "ok",
+      "input_sha256": "aa60e768623fc09537ec7bbb3c36298d882d723d5ff04fd0d92f45493735b9af"
+    },
+    {
+      "id": "condition_5",
+      "kind": "condition_cases",
+      "status": "ok",
+      "input_sha256": "4efb15ba77e1fbead9240c892938a3d94de2553d3f97b9a764e304eadbe10357"
+    },
+    {
+      "id": "condition_6",
+      "kind": "condition_cases",
+      "status": "error",
+      "input_sha256": "255ed76b46918ae5963bf9ea8d3e15e2c5d9f4f1bd3a6036b807ff7b5fd2d725",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalArgumentException",
+        "message": "Empty term"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "condition_7",
+      "kind": "condition_cases",
+      "status": "error",
+      "input_sha256": "04d78864c6fd8a5e88ba132cef3daaea5e9ef4798d6363c59455f580883ced0c",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalArgumentException",
+        "message": "Unknown property 'missing' on 'Block{minecraft:oak_fence}'"
+      },
+      "condition_decoded_before_failure": true
+    },
+    {
+      "id": "condition_8",
+      "kind": "condition_cases",
+      "status": "error",
+      "input_sha256": "a84421ef5288a784daf1bdb730eb65f894cf0362bafc4f996c44e23bd005d0af",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value 'bad' for property 'BooleanProperty{name=north, clazz=class java.lang.Boolean, values=[true, false]}' on 'Block{minecraft:oak_fence}' in 'bad'"
+      },
+      "condition_decoded_before_failure": true
+    },
+    {
+      "id": "condition_9",
+      "kind": "condition_cases",
+      "status": "ok",
+      "input_sha256": "ad51e7aafc4b6ced94aec4c5bdbcecca51ddbd5cd68e1abc53b85a41b98bc053"
+    },
+    {
+      "id": "condition_10",
+      "kind": "condition_cases",
+      "status": "ok",
+      "input_sha256": "fd4c0d035c1c92ef1797035e0f8bfe4fb8e4d2b3ecff0d4e8b324bf81d0936f3"
+    },
+    {
+      "id": "condition_11",
+      "kind": "condition_cases",
+      "status": "ok",
+      "input_sha256": "43855697c981477d0be7d7bbfb4eb18ff0e73b1b313bf700ae54ddb7201730af"
+    },
+    {
+      "id": "condition_12",
+      "kind": "condition_cases",
+      "status": "ok",
+      "input_sha256": "0f2743903a522dbd0c850de7c272778d8b2a5fb041ce5d400fbf26411c440402"
+    },
+    {
+      "id": "condition_13",
+      "kind": "condition_cases",
+      "status": "error",
+      "input_sha256": "42c21b7f45c48cd5cc75441588bd374f50fd3c6ebbd3b3e4a94c11d275fe6d54",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Not a json array: \"true\"; Unknown element name:east missed input: {\"east\":\"true\"}"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "condition_14",
+      "kind": "condition_cases",
+      "status": "error",
+      "input_sha256": "dadcfd7e2915378680444816fd60435d5bb993e240b6555287a844935e304d59",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Failed to parse either. First: Not a json array: {\"north\":\"true\"}; Unknown element name:NOT missed input: {\"NOT\":{\"north\":\"true\"}}; Invalid map size for combiner condition, expected exactly one element; Second: Failed to parse either. First: Not a string: {\"north\":\"true\"}; Second: Failed to parse either. First: Not a number: {\"north\":\"true\"}; Second: Not a boolean: {\"north\":\"true\"} missed input: {\"NOT\":{\"north\":\"true\"}}; Map must have contents"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "condition_15",
+      "kind": "condition_cases",
+      "status": "error",
+      "input_sha256": "53fc56553d6dc0e96257e99876e42b1b1c83ef7869fc63ef430bb2c4a1eaf0a3",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Failed to parse either. First: Failed to parse either. First: Not a JSON object: \"true\"; Second: Not a JSON object: \"true\"; Unknown element name:north missed input: {\"north\":[\"true\"]}; Invalid map size for combiner condition, expected exactly one element; Second: Failed to parse either. First: Not a string: [\"true\"]; Second: Failed to parse either. First: Not a number: [\"true\"]; Second: Not a boolean: [\"true\"] missed input: {\"north\":[\"true\"]}; Map must have contents"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "condition_16",
+      "kind": "condition_cases",
+      "status": "error",
+      "input_sha256": "668d07c0ab8dc28956634b6923707557a5123af9e2ecfecf4298ca2c56e74dc8",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Failed to parse either. First: Not a JSON object: null; Second: Not a JSON object: null"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_condition_17",
+      "kind": "condition_cases",
+      "status": "error",
+      "input_sha256": "31879aed1bc2b42473e7160b4c24eb5f1943e0017a6749b9b4a34492fc34da02",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalArgumentException",
+        "message": "Empty term"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_condition_18",
+      "kind": "condition_cases",
+      "status": "error",
+      "input_sha256": "f07fef3e9678603e474cd952d134c49b350bcfc211d05e0497bb2db7afaefd38",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalArgumentException",
+        "message": "Empty term"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_condition_19",
+      "kind": "condition_cases",
+      "status": "error",
+      "input_sha256": "21147d914b75aab592c9c9e0bef101c923de4bad439b902b487f96fcbe9b5628",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalArgumentException",
+        "message": "Empty term"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_condition_20",
+      "kind": "condition_cases",
+      "status": "error",
+      "input_sha256": "b828b6aac1b6a3cd40e0984000210d8b5a3b36c308f6eb59471cc1a97a57a990",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalArgumentException",
+        "message": "Empty term"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_condition_21",
+      "kind": "condition_cases",
+      "status": "error",
+      "input_sha256": "83c180d5a4a85932c76d41a48d14de34aa91d8b6874f93c19aea3a87abdf5a38",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value '!true' for property 'BooleanProperty{name=north, clazz=class java.lang.Boolean, values=[true, false]}' on 'Block{minecraft:oak_fence}' in '!!true'"
+      },
+      "condition_decoded_before_failure": true
+    },
+    {
+      "id": "edge_condition_22",
+      "kind": "condition_cases",
+      "status": "error",
+      "input_sha256": "1180a0244fa54c715bf55af75bca85054700c611cb6f4e5739fd9df8bdb0e9a1",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value ' true' for property 'BooleanProperty{name=north, clazz=class java.lang.Boolean, values=[true, false]}' on 'Block{minecraft:oak_fence}' in ' true'"
+      },
+      "condition_decoded_before_failure": true
+    },
+    {
+      "id": "edge_condition_23",
+      "kind": "condition_cases",
+      "status": "error",
+      "input_sha256": "25a45819ddc44c83a5375bec9fd447548199633d19324e9dd8f810697d14d358",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value 'TRUE' for property 'BooleanProperty{name=north, clazz=class java.lang.Boolean, values=[true, false]}' on 'Block{minecraft:oak_fence}' in 'TRUE'"
+      },
+      "condition_decoded_before_failure": true
+    },
+    {
+      "id": "edge_condition_24",
+      "kind": "condition_cases",
+      "status": "error",
+      "input_sha256": "06a1f5ba0ed70ae00771b50ca3c0853506d9515a339fab437b51ebdde3f3c500",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value '1' for property 'BooleanProperty{name=north, clazz=class java.lang.Boolean, values=[true, false]}' on 'Block{minecraft:oak_fence}' in '1'"
+      },
+      "condition_decoded_before_failure": true
+    },
+    {
+      "id": "edge_condition_25",
+      "kind": "condition_cases",
+      "status": "error",
+      "input_sha256": "cb5c692a96e687795bffeee7d4be988b6a6b8e36d3c875de0fc4b476de739ab2",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value '1' for property 'BooleanProperty{name=north, clazz=class java.lang.Boolean, values=[true, false]}' on 'Block{minecraft:oak_fence}' in '1'"
+      },
+      "condition_decoded_before_failure": true
+    },
+    {
+      "id": "edge_condition_26",
+      "kind": "condition_cases",
+      "status": "error",
+      "input_sha256": "e930d46b0d3316f26f38d01e15fb4ac4bd1224171b5e0c9bedec48088f4191c9",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value '1' for property 'BooleanProperty{name=north, clazz=class java.lang.Boolean, values=[true, false]}' on 'Block{minecraft:oak_fence}' in '1'"
+      },
+      "condition_decoded_before_failure": true
+    },
+    {
+      "id": "edge_condition_27",
+      "kind": "condition_cases",
+      "status": "error",
+      "input_sha256": "6f74e7eb77f0cf8fa7343927d3b3fc321d4688b5afa257c90a055887fb119a17",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value '0' for property 'BooleanProperty{name=north, clazz=class java.lang.Boolean, values=[true, false]}' on 'Block{minecraft:oak_fence}' in '0'"
+      },
+      "condition_decoded_before_failure": true
+    },
+    {
+      "id": "edge_condition_28",
+      "kind": "condition_cases",
+      "status": "ok",
+      "input_sha256": "010d518069dcca7c7abd0bffe3d753d658feaf4668004dfde768917854eb8f51"
+    },
+    {
+      "id": "edge_condition_29",
+      "kind": "condition_cases",
+      "status": "ok",
+      "input_sha256": "42050a0036344c193c49c4ab092b0373e1b1dc2c1a3060cfc11ed0a8b0847a5a"
+    },
+    {
+      "id": "edge_condition_30",
+      "kind": "condition_cases",
+      "status": "error",
+      "input_sha256": "0aa2a22cf7dc3ca17f357875452e566431bef74c51ed92cce66e12e837b34ee0",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value 'bad' for property 'BooleanProperty{name=north, clazz=class java.lang.Boolean, values=[true, false]}' on 'Block{minecraft:oak_fence}' in 'true|false|bad'"
+      },
+      "condition_decoded_before_failure": true
+    },
+    {
+      "id": "edge_condition_31",
+      "kind": "condition_cases",
+      "status": "error",
+      "input_sha256": "ee1a4c37ab9c0123877303921159342eaa50fc46914ff0bf3baf3c8f09148c1b",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value 'bad' for property 'BooleanProperty{name=north, clazz=class java.lang.Boolean, values=[true, false]}' on 'Block{minecraft:oak_fence}' in '!true|!false|bad'"
+      },
+      "condition_decoded_before_failure": true
+    },
+    {
+      "id": "edge_condition_32",
+      "kind": "condition_cases",
+      "status": "error",
+      "input_sha256": "42219f0adf9d8ee542fcad7a12bcff148f61e9bee9ee018c13a760f836620ab3",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value 'bad' for property 'BooleanProperty{name=north, clazz=class java.lang.Boolean, values=[true, false]}' on 'Block{minecraft:oak_fence}' in 'false|bad'"
+      },
+      "condition_decoded_before_failure": true
+    },
+    {
+      "id": "edge_condition_33",
+      "kind": "condition_cases",
+      "status": "error",
+      "input_sha256": "4a88b8c4a864001e96f96578be50375f3fefae5612c967360c7af9b3cc9c4f1e",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value 'bad' for property 'BooleanProperty{name=north, clazz=class java.lang.Boolean, values=[true, false]}' on 'Block{minecraft:oak_fence}' in 'bad|true|false'"
+      },
+      "condition_decoded_before_failure": true
+    },
+    {
+      "id": "edge_condition_34",
+      "kind": "condition_cases",
+      "status": "ok",
+      "input_sha256": "b69156bdff8ca5ddc4487e46d5ee47efd82f78144850cd9b78668c06d2bebf87"
+    },
+    {
+      "id": "edge_condition_35",
+      "kind": "condition_cases",
+      "status": "ok",
+      "input_sha256": "085ec7b5ac2283ea0fa9cbd6ef4e937423b5270a1846d46941bfe4476dae3a97"
+    },
+    {
+      "id": "edge_condition_36",
+      "kind": "condition_cases",
+      "status": "ok",
+      "input_sha256": "bbca3b1f0606b795e4dc776dab7ce9be4dfb4dd429072069c2bbd61bdce6a0b6"
+    },
+    {
+      "id": "edge_condition_37",
+      "kind": "condition_cases",
+      "status": "ok",
+      "input_sha256": "4a6bc5bcea150ccd54b130ebe537b59fb71345460fd1313f291e24e117d12c58"
+    },
+    {
+      "id": "edge_condition_38",
+      "kind": "condition_cases",
+      "status": "ok",
+      "input_sha256": "52daa813477bd910228c694392feae228b1cc849f6e5cdc4d0f490861ac28058"
+    },
+    {
+      "id": "edge_condition_39",
+      "kind": "condition_cases",
+      "status": "ok",
+      "input_sha256": "8dc61ca11dc373211e3550a53f0abb93b5d14e80f25f7d51d22c8a942a52c4fb"
+    },
+    {
+      "id": "edge_condition_40",
+      "kind": "condition_cases",
+      "status": "ok",
+      "input_sha256": "17adda95ff5f50cee28754ed9880dc8026f1e45c8c6c4e913ce700eae598b85c"
+    },
+    {
+      "id": "edge_condition_41",
+      "kind": "condition_cases",
+      "status": "ok",
+      "input_sha256": "69bb8c62ea1801fda839e23120403de09728930089df93410b73a15a5f4b50df"
+    },
+    {
+      "id": "edge_condition_42",
+      "kind": "condition_cases",
+      "status": "ok",
+      "input_sha256": "b2753eb623a3726430a01b91d0fc402b7ad753f4281909e2afe1567c2605a39e"
+    },
+    {
+      "id": "edge_condition_43",
+      "kind": "condition_cases",
+      "status": "ok",
+      "input_sha256": "43fc3a62c614b467f21ec8f378f2e5934fcb893a021fbd75fce266850d5a002c"
+    },
+    {
+      "id": "edge_condition_44",
+      "kind": "condition_cases",
+      "status": "error",
+      "input_sha256": "1893dc37634d7fd4950ac78048e2af6347853da2ce9920140af18770434b42d1",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.RuntimeException",
+        "message": "Unknown value '8' for property 'IntegerProperty{name=age, clazz=class java.lang.Integer, values=[0, 1, 2, 3, 4, 5, 6, 7]}' on 'Block{minecraft:wheat}' in '8'"
+      },
+      "condition_decoded_before_failure": true
+    },
+    {
+      "id": "edge_condition_45",
+      "kind": "condition_cases",
+      "status": "error",
+      "input_sha256": "00cc574dd0518e81ea652b488ad8800e1f6e0a2ff74cea56f034949d9440eb05",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Failed to parse either. First: Invalid map size for combiner condition, expected exactly one element; Second: Failed to parse either. First: Not a string: []; Second: Failed to parse either. First: Not a number: []; Second: Not a boolean: []; Failed to parse either. First: Not a string: []; Second: Failed to parse either. First: Not a number: []; Second: Not a boolean: [] missed input: {\"AND\":[],\"OR\":[]}; Map must have contents"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_condition_46",
+      "kind": "condition_cases",
+      "status": "error",
+      "input_sha256": "3b9c6211d4503531ee5bf7bea3e63935831a92ead7334ba71f241334deb650e6",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalArgumentException",
+        "message": "Unknown property 'OR' on 'Block{minecraft:oak_fence}'"
+      },
+      "condition_decoded_before_failure": true
+    },
+    {
+      "id": "edge_condition_47",
+      "kind": "condition_cases",
+      "status": "error",
+      "input_sha256": "28ae5edc3d1a7566680542a3d23841bc3ed217788f18c3cb5dded5c2f35827d6",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalArgumentException",
+        "message": "Unknown property 'AND' on 'Block{minecraft:oak_fence}'"
+      },
+      "condition_decoded_before_failure": true
+    },
+    {
+      "id": "edge_condition_48",
+      "kind": "condition_cases",
+      "status": "ok",
+      "input_sha256": "b9a43d8882e1897d99f4f31696831c6747bd55a6eb17558cfe6057c3e4ed7cbf"
+    },
+    {
+      "id": "edge_condition_49",
+      "kind": "condition_cases",
+      "status": "error",
+      "input_sha256": "492bc1d4ee9428797a08a150e28ce153fc0f4f9eb19b469af6c9ff2148668c2d",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Failed to parse either. First: Unknown element name:or missed input: {\"or\":[{\"north\":\"true\"}]}; Invalid map size for combiner condition, expected exactly one element; Second: Failed to parse either. First: Not a string: [{\"north\":\"true\"}]; Second: Failed to parse either. First: Not a number: [{\"north\":\"true\"}]; Second: Not a boolean: [{\"north\":\"true\"}] missed input: {\"or\":[{\"north\":\"true\"}]}; Map must have contents"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_condition_50",
+      "kind": "condition_cases",
+      "status": "ok",
+      "input_sha256": "af6b7cd35d589d2ba5ae78c55f36dae2f2c9a7ba54badeb577e47b58f619f0e2"
+    },
+    {
+      "id": "edge_condition_51",
+      "kind": "condition_cases",
+      "status": "error",
+      "input_sha256": "b7e79f9e43e9981b587a4b2677783f1cf6d23256a7c48cc0d8b527fca8d0b6b8",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalArgumentException",
+        "message": "Unknown property 'missing' on 'Block{minecraft:oak_fence}'"
+      },
+      "condition_decoded_before_failure": true
+    },
+    {
+      "id": "edge_condition_52",
+      "kind": "condition_cases",
+      "status": "error",
+      "input_sha256": "b8322ab7cc3ee803ba181c6507b744438dfc6659c8d217f17c72db3168348aa0",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Failed to parse either. First: Not a json array: null missed input: {\"OR\":null}; Invalid map size for combiner condition, expected exactly one element; Second: Failed to parse either. First: Not a string: null; Second: Failed to parse either. First: Not a number: null; Second: Not a boolean: null missed input: {\"OR\":null}; Map must have contents"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_condition_53",
+      "kind": "condition_cases",
+      "status": "error",
+      "input_sha256": "0e939a02b134bbe11d5eb1e3fde839b6a41e55d43cf1bb841485d97031674062",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Failed to parse either. First: Not a json array: {} missed input: {\"OR\":{}}; Invalid map size for combiner condition, expected exactly one element; Second: Failed to parse either. First: Not a string: {}; Second: Failed to parse either. First: Not a number: {}; Second: Not a boolean: {} missed input: {\"OR\":{}}; Map must have contents"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_condition_54",
+      "kind": "condition_cases",
+      "status": "error",
+      "input_sha256": "18d2b4fe2fc2bee720fde5d932089bf37b7834547eed6c525f18ca445d2be48a",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Failed to parse either. First: Not a json array: null; Unknown element name:north missed input: {\"north\":null}; Invalid map size for combiner condition, expected exactly one element; Second: Failed to parse either. First: Not a string: null; Second: Failed to parse either. First: Not a number: null; Second: Not a boolean: null missed input: {\"north\":null}; Map must have contents"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_condition_55",
+      "kind": "condition_cases",
+      "status": "error",
+      "input_sha256": "9dfce1a410868f42bd51b825de87df9a2b155475609a55bc05d15660cbd97153",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Failed to parse either. First: Invalid map size for combiner condition, expected exactly one element; Second: Map must have contents missed input: {\"OR\":[{},{\"north\":\"true\"}]}"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "dispatcher_0",
+      "kind": "dispatcher_cases",
+      "status": "error",
+      "input_sha256": "d50b8113e48384a25733b171c4984646bd005ea7081d1fc6c5084fcde884e580",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Neither 'variants' nor 'multipart' found"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "dispatcher_1",
+      "kind": "dispatcher_cases",
+      "status": "error",
+      "input_sha256": "34f47ff327cd311d16b8304e1492a2722926bc6de88839d415c96a7745f1813e",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Neither 'variants' nor 'multipart' found"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "dispatcher_2",
+      "kind": "dispatcher_cases",
+      "status": "ok",
+      "input_sha256": "51fb8f6b1cf79f2076631b07108b7451123cbf450ea15ad0856b17a2b00286fa"
+    },
+    {
+      "id": "dispatcher_3",
+      "kind": "dispatcher_cases",
+      "status": "ok",
+      "input_sha256": "9f8cddbad8e6d8d1b2158387677e4d22369890004c469c10636bf5a096811f24"
+    },
+    {
+      "id": "dispatcher_4",
+      "kind": "dispatcher_cases",
+      "status": "error",
+      "input_sha256": "10d63f9e7f811b935070210d0d8ad97c1c197a537c72873acbd97064eec7c4e3",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Invalid rotation 45 found, only 0/90/180/270 allowed missed input: {\"\":{\"model\":\"minecraft:block/stone\",\"x\":45}}"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "dispatcher_5",
+      "kind": "dispatcher_cases",
+      "status": "ok",
+      "input_sha256": "a784d2e59abcc3e88511dbffd2c1c69ca760373f17e7390327cc5f1767fdd139"
+    },
+    {
+      "id": "dispatcher_6",
+      "kind": "dispatcher_cases",
+      "status": "ok",
+      "input_sha256": "72e3a4240b5f2bb94d6d4b1be5d1ca3bd9cc41f5271efe0335e023421d319c65"
+    },
+    {
+      "id": "dispatcher_7",
+      "kind": "dispatcher_cases",
+      "status": "error",
+      "input_sha256": "c7f6c4a238c1c92911cd35e456b3832ab99bfcaea5ba3e49c09cd4184249166a",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Not a boolean: \"true\" missed input: {\"\":{\"model\":\"minecraft:block/stone\",\"uvlock\":\"true\"}}"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "dispatcher_8",
+      "kind": "dispatcher_cases",
+      "status": "ok",
+      "input_sha256": "69b447231f5edc62a082b87e394d02373753afbb00199738edd49b1ec42d9293"
+    },
+    {
+      "id": "dispatcher_9",
+      "kind": "dispatcher_cases",
+      "status": "ok",
+      "input_sha256": "6fd0518c7d5a6f4221a525938ead623ba2295687a9759285033525065a83c9a1"
+    },
+    {
+      "id": "dispatcher_10",
+      "kind": "dispatcher_cases",
+      "status": "ok",
+      "input_sha256": "25eed71cb3d09165407ff2c5da419b423d9fd16be998e565d1cd01541f77bb7d"
+    },
+    {
+      "id": "dispatcher_11",
+      "kind": "dispatcher_cases",
+      "status": "ok",
+      "input_sha256": "cae44465308effab13e281f9d231d91bd160f5e662a8f44b59574c20137dfef2"
+    },
+    {
+      "id": "dispatcher_12",
+      "kind": "dispatcher_cases",
+      "status": "error",
+      "input_sha256": "30ce910321f6741931dd32227e461d1b8a12d22172678caaffc3b1aae540c879",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Failed to parse either. First: List must have contents; Second: Not a JSON object: [] missed input: {\"\":[]}; Map must have contents; Neither 'variants' nor 'multipart' found"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "dispatcher_13",
+      "kind": "dispatcher_cases",
+      "status": "ok",
+      "input_sha256": "9a51b0a5cbdce7acb2e674f4c2e1d5389466e5c89fa33f3dbaf08ceb2da1a0d1"
+    },
+    {
+      "id": "dispatcher_14",
+      "kind": "dispatcher_cases",
+      "status": "error",
+      "input_sha256": "d2f8f18b047b940fdce251b2dc175cd39d734a3ff536c78381adbe8fd0106310",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "List must have contents; Neither 'variants' nor 'multipart' found"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "dispatcher_15",
+      "kind": "dispatcher_cases",
+      "status": "ok",
+      "input_sha256": "500caa508647c261543feb06f5a5165aa21cebf213aeefa56519899efa242e19"
+    },
+    {
+      "id": "dispatcher_16",
+      "kind": "dispatcher_cases",
+      "status": "ok",
+      "input_sha256": "31bcabc8f9715607f14707af5b321d95524703bfccdee0277a2b452dc84da046"
+    },
+    {
+      "id": "dispatcher_17",
+      "kind": "dispatcher_cases",
+      "status": "ok",
+      "input_sha256": "8f103ae276cc0797ce7cf723195e89bb284766ee882cefcb789e08f6a3a9ac4e"
+    },
+    {
+      "id": "dispatcher_18",
+      "kind": "dispatcher_cases",
+      "status": "ok",
+      "input_sha256": "9ba00be029d3b048c5f0ee9a96c9d457ae5d9ae0a54c24fa2b2f1c762e726c5d"
+    },
+    {
+      "id": "dispatcher_19",
+      "kind": "dispatcher_cases",
+      "status": "error",
+      "input_sha256": "2d350af954ff207bd743aa1acdee23a616a132fc04cc017c82748ceeaf7f62a4",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Failed to parse either. First: Not a json array: {\"model\":\"bad namespace:path\"}; Second: Not a valid resource location: bad namespace:path Non [a-z0-9_.-] character in namespace of identifier: bad namespace:path missed input: {\"\":{\"model\":\"bad namespace:path\"}}; Map must have contents; Neither 'variants' nor 'multipart' found"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "weighted_edges_(0, 3)",
+      "kind": "dispatcher_cases",
+      "status": "error",
+      "input_sha256": "c5c2732b1c9d035f6086387a47092f5376b4e203456a0fbf7b55fea8a4327a0e",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Value must be positive: 0 missed input: {\"\":[{\"model\":\"minecraft:block/stone\",\"weight\":0},{\"model\":\"minecraft:block/stone\",\"weight\":3,\"y\":90}]}"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "weighted_edges_(-1, 3)",
+      "kind": "dispatcher_cases",
+      "status": "error",
+      "input_sha256": "e24a8c6a16114fa35205068ceeafe28786bdb98f298a91508b942a254276e61c",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Value must be positive: -1 missed input: {\"\":[{\"model\":\"minecraft:block/stone\",\"weight\":-1},{\"model\":\"minecraft:block/stone\",\"weight\":3,\"y\":90}]}"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "weighted_edges_(0, 0)",
+      "kind": "dispatcher_cases",
+      "status": "error",
+      "input_sha256": "3e543e5df9cfe993f8012318999dd0c78cbb28a9c5588cdd8fc40e048294da83",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Value must be positive: 0; Value must be positive: 0 missed input: {\"\":[{\"model\":\"minecraft:block/stone\",\"weight\":0},{\"model\":\"minecraft:block/stone\",\"weight\":0,\"y\":90}]}"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "weighted_edges_(2147483647, 1)",
+      "kind": "dispatcher_cases",
+      "status": "error",
+      "input_sha256": "60682ef18b6049b5b0fd3f60d63fc60434d546af2c9b7b0f2284aff25a57c3bc",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalArgumentException",
+        "message": "Sum of weights must be <= 2147483647"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "weighted_edges_(2147483647, 2147483647)",
+      "kind": "dispatcher_cases",
+      "status": "error",
+      "input_sha256": "cabcb6cfce00ad157c38a4be12aa16a83896f90361235febfb1d4e26a52dabfc",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalArgumentException",
+        "message": "Sum of weights must be <= 2147483647"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_dispatcher_25",
+      "kind": "dispatcher_cases",
+      "status": "error",
+      "input_sha256": "061b86beff1bf3d3cf897252a7820f44e30ae852a9177de2b9b4b32dbfe40f07",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Failed to parse either. First: Not a json array: {\"model\":true}; Second: Not a string: true missed input: {\"\":{\"model\":true}}; Map must have contents; Neither 'variants' nor 'multipart' found"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_dispatcher_26",
+      "kind": "dispatcher_cases",
+      "status": "error",
+      "input_sha256": "ec138bddcf678a705743e56d6513bcece88fdd33836018a44768509a530b30a0",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Failed to parse either. First: Not a json array: {\"model\":1}; Second: Not a string: 1 missed input: {\"\":{\"model\":1}}; Map must have contents; Neither 'variants' nor 'multipart' found"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_dispatcher_27",
+      "kind": "dispatcher_cases",
+      "status": "error",
+      "input_sha256": "10f11f6e4cb2fe8a08e017e938cfa753365806cb60b12e6074248a123c9127e5",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Failed to parse either. First: Not a json array: {\"model\":null}; Second: No key model in MapLike[{\"model\":null}] missed input: {\"\":{\"model\":null}}; Map must have contents; Neither 'variants' nor 'multipart' found"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_dispatcher_28",
+      "kind": "dispatcher_cases",
+      "status": "error",
+      "input_sha256": "88711b5d091e02c34c795f59de8a4cfbdb925fa2c324f4df60d23bce535a3c6f",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Failed to parse either. First: Not a json array: {\"model\":[]}; Second: Not a string: [] missed input: {\"\":{\"model\":[]}}; Map must have contents; Neither 'variants' nor 'multipart' found"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_dispatcher_29",
+      "kind": "dispatcher_cases",
+      "status": "error",
+      "input_sha256": "9d85dc1d1247cb71a1b8398129b29f5079274d77e3f5669670ddc87989371b08",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Failed to parse either. First: Not a json array: {\"model\":{}}; Second: Not a string: {} missed input: {\"\":{\"model\":{}}}; Map must have contents; Neither 'variants' nor 'multipart' found"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_dispatcher_30",
+      "kind": "dispatcher_cases",
+      "status": "ok",
+      "input_sha256": "ccffab2172116b4f34b01bb30c7fca19453b17b5ef94be4f1f31bede39c57d2f"
+    },
+    {
+      "id": "edge_dispatcher_31",
+      "kind": "dispatcher_cases",
+      "status": "error",
+      "input_sha256": "91e4133587e8d61ec35d2d3dcfb159c8ee8dc650a4a565aecb38ec406f570212",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Failed to parse either. First: Not a json array: {\"model\":\"Minecraft:block/stone\"}; Second: Not a valid resource location: Minecraft:block/stone Non [a-z0-9_.-] character in namespace of identifier: Minecraft:block/stone missed input: {\"\":{\"model\":\"Minecraft:block/stone\"}}; Map must have contents; Neither 'variants' nor 'multipart' found"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_dispatcher_32",
+      "kind": "dispatcher_cases",
+      "status": "ok",
+      "input_sha256": "afaad818dc167d2312a7b4fc7c5083eae75b3e557899a7045bc530691c5ff2a1"
+    },
+    {
+      "id": "edge_dispatcher_33",
+      "kind": "dispatcher_cases",
+      "status": "ok",
+      "input_sha256": "ad009e06d494fcbd46519426f9ecde424047d23908d32a6c00338c18968503e3"
+    },
+    {
+      "id": "edge_dispatcher_34",
+      "kind": "dispatcher_cases",
+      "status": "ok",
+      "input_sha256": "8c80d77304c5c0451c43d89c7996d028212172f6e2097e13d3d2f2ca650a4922"
+    },
+    {
+      "id": "edge_dispatcher_35",
+      "kind": "dispatcher_cases",
+      "status": "ok",
+      "input_sha256": "70ee6de0f8fc54970fd2ed4ee69febce7cbde3b0b0006ef6dce895a0cd9cbdfd"
+    },
+    {
+      "id": "edge_dispatcher_36",
+      "kind": "dispatcher_cases",
+      "status": "error",
+      "input_sha256": "aa2dadc9399e00b68c48a2c6083ea07f43a07ed03b5bbdef1c5d18d88a06d1b9",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Invalid rotation -2147483648 found, only 0/90/180/270 allowed missed input: {\"\":{\"model\":\"minecraft:block/stone\",\"x\":2147483648}}"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_dispatcher_37",
+      "kind": "dispatcher_cases",
+      "status": "error",
+      "input_sha256": "5803858fd72f88e5c412cf58c82b26063e4818aa96766a5346830aac8cdd0c0d",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Not a number: \"90\" missed input: {\"\":{\"model\":\"minecraft:block/stone\",\"x\":\"90\"}}"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_dispatcher_38",
+      "kind": "dispatcher_cases",
+      "status": "error",
+      "input_sha256": "a2458b2c78d3c12c42cd1399feb0b470a6464d097d524b88140844417691e38c",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Not a number: true missed input: {\"\":{\"model\":\"minecraft:block/stone\",\"x\":true}}"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_dispatcher_39",
+      "kind": "dispatcher_cases",
+      "status": "ok",
+      "input_sha256": "8d9f972611c511f2983969557f278080405dcd81d0dc94844027f0fc2255e738"
+    },
+    {
+      "id": "edge_dispatcher_40",
+      "kind": "dispatcher_cases",
+      "status": "ok",
+      "input_sha256": "d96a194b78e1352138c7375699c77f890c072a7544f1758d0486851d0a075b43"
+    },
+    {
+      "id": "edge_dispatcher_41",
+      "kind": "dispatcher_cases",
+      "status": "ok",
+      "input_sha256": "698f6c759e63271c346875c1ef2d87274ba53a1b3ccc051996c4fb9c1f1cb5a6"
+    },
+    {
+      "id": "edge_dispatcher_42",
+      "kind": "dispatcher_cases",
+      "status": "error",
+      "input_sha256": "4369d0e5fbc358c6a70c8357bf56008e4b32d823b4382b8c59c1fd3aa8187307",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Not a boolean: 1 missed input: {\"\":{\"model\":\"minecraft:block/stone\",\"uvlock\":1}}"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_dispatcher_43",
+      "kind": "dispatcher_cases",
+      "status": "error",
+      "input_sha256": "4d7794be3d22c96bb23407791d476984e53a1e19951dadd5304c0155ee540332",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Not a boolean: 0 missed input: {\"\":{\"model\":\"minecraft:block/stone\",\"uvlock\":0}}"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_dispatcher_44",
+      "kind": "dispatcher_cases",
+      "status": "error",
+      "input_sha256": "c7a0294d14f04114e242d931eaf46c79fdb58bc96cd76da6ade156fc42c21910",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Not a boolean: \"true\" missed input: {\"\":{\"model\":\"minecraft:block/stone\",\"uvlock\":\"true\"}}"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_dispatcher_45",
+      "kind": "dispatcher_cases",
+      "status": "ok",
+      "input_sha256": "89ed62235994b0b1a74d48d76383d06999082b672d7d4128ace48920700b95d8"
+    },
+    {
+      "id": "edge_dispatcher_46",
+      "kind": "dispatcher_cases",
+      "status": "error",
+      "input_sha256": "ded29a64d6fde0096a7a759657497ce2544dfe2db4db07cf67f34e6928df532f",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Neither 'variants' nor 'multipart' found"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_dispatcher_47",
+      "kind": "dispatcher_cases",
+      "status": "ok",
+      "input_sha256": "f23a8c7f750b2e36f86e8a34ee2dec777c666768d7016a95ef9ae62cd61146aa"
+    },
+    {
+      "id": "edge_dispatcher_48",
+      "kind": "dispatcher_cases",
+      "status": "error",
+      "input_sha256": "5cea6524a7f950bca4cdbe96720f8caf542ac17db71069d3bb26f700da284ccf",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Map must have contents; Neither 'variants' nor 'multipart' found"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_dispatcher_49",
+      "kind": "dispatcher_cases",
+      "status": "error",
+      "input_sha256": "23920e3fd49c562347ecb9037b2ec74b84527cee7167b1297f55dbb719b8e3e1",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Not a json array: {}"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_dispatcher_50",
+      "kind": "dispatcher_cases",
+      "status": "error",
+      "input_sha256": "e8b59a0fcd9e03dbea9602c5b53e5d22185c0cc3c8c74ac66b6b76ac45eceae2",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Not a JSON object: []; Neither 'variants' nor 'multipart' found"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_dispatcher_51",
+      "kind": "dispatcher_cases",
+      "status": "error",
+      "input_sha256": "3b6dc044491713136978f8321464433531ad25f3de139875956faf59ce0700b0",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "List must have contents"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_dispatcher_52",
+      "kind": "dispatcher_cases",
+      "status": "error",
+      "input_sha256": "5f1c6bf13773897bac8673ea539e2918bbcff41f381a48e91325d663e2a48bc2",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Not a JSON object: 0; Neither 'variants' nor 'multipart' found"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_dispatcher_53",
+      "kind": "dispatcher_cases",
+      "status": "error",
+      "input_sha256": "8c2ca41c63660abd532ff25de54bc8f578144cf7b4c3d2b0ed7131193e91b113",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Not a json array: 0"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_dispatcher_54",
+      "kind": "dispatcher_cases",
+      "status": "error",
+      "input_sha256": "6c1073e3476f82d9849f83a78213e894430b8483dd12dc0d75d10a292c324fe7",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Not a JSON object: true; Neither 'variants' nor 'multipart' found"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_dispatcher_55",
+      "kind": "dispatcher_cases",
+      "status": "error",
+      "input_sha256": "c401e142fa9f7495c29ed232e101c09f792f49850ea9ef89d6d458b555d17f56",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Not a json array: true"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_dispatcher_56",
+      "kind": "dispatcher_cases",
+      "status": "error",
+      "input_sha256": "80ec5bf6e3983bfa904e5ed29776838ed4bee4ed0eed713a1df1f9e3911111c6",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Not a JSON object: \"x\"; Neither 'variants' nor 'multipart' found"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_dispatcher_57",
+      "kind": "dispatcher_cases",
+      "status": "error",
+      "input_sha256": "6b1d34c6168538a61010459580bcd07e3ae8c74b06d8568beaddc1dad679b5c0",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Not a json array: \"x\""
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_dispatcher_58",
+      "kind": "dispatcher_cases",
+      "status": "error",
+      "input_sha256": "6373e2450cf1a4974a4972b6d1229f8bb7e14889c81318745cafe772b3e07852",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Value must be positive: 0 missed input: {\"\":[{\"model\":\"minecraft:block/stone\",\"weight\":0}]}"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_dispatcher_59",
+      "kind": "dispatcher_cases",
+      "status": "error",
+      "input_sha256": "4e46564371de88dab95139acc84976347592d14e4c18df27c6d0ca0eb519a381",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Value must be positive: -1 missed input: {\"\":[{\"model\":\"minecraft:block/stone\",\"weight\":-1}]}"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_dispatcher_60",
+      "kind": "dispatcher_cases",
+      "status": "ok",
+      "input_sha256": "1a9997f4b8f784213497c7d016756064fa7f396b18b52b1cfb72bcc118fd3bad"
+    },
+    {
+      "id": "edge_dispatcher_61",
+      "kind": "dispatcher_cases",
+      "status": "ok",
+      "input_sha256": "ba7f2fac49d93d598d897bfa6ea68ecb7399a00ee4bd4d8ccf299d976d364109"
+    },
+    {
+      "id": "edge_dispatcher_62",
+      "kind": "dispatcher_cases",
+      "status": "ok",
+      "input_sha256": "6ec8dbc7cfff619c431d7ea6f4cf79a86f3e78e0889e313a13882576f78dc9f8"
+    },
+    {
+      "id": "edge_dispatcher_63",
+      "kind": "dispatcher_cases",
+      "status": "ok",
+      "input_sha256": "05f71e99ceaa34310205fbdd5f56a92bd2ebeb101759c4a31ec5f083b9f28b59"
+    },
+    {
+      "id": "edge_dispatcher_64",
+      "kind": "dispatcher_cases",
+      "status": "error",
+      "input_sha256": "da0531a02ec03dc2974637885346f5e9221bbe408e57d8744c13431dabbfd40a",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Value must be positive: -2147483648 missed input: {\"\":[{\"model\":\"minecraft:block/stone\",\"weight\":2147483648}]}"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_dispatcher_65",
+      "kind": "dispatcher_cases",
+      "status": "error",
+      "input_sha256": "090459c93a5ca31b7096b06ed14fc83af00bef75cc93fb2ceee7a2c10febb755",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Not a number: \"2\" missed input: {\"\":[{\"model\":\"minecraft:block/stone\",\"weight\":\"2\"}]}"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_dispatcher_66",
+      "kind": "dispatcher_cases",
+      "status": "error",
+      "input_sha256": "3150c23a30e95dacda7b2c645f9dd3842dca17500d71ceea02c46c7dbe5abeff",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalStateException",
+        "message": "Not a number: true missed input: {\"\":[{\"model\":\"minecraft:block/stone\",\"weight\":true}]}"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_dispatcher_67",
+      "kind": "dispatcher_cases",
+      "status": "ok",
+      "input_sha256": "75db00b1a4097298551ea6f0497361425c57321c42955acba807e9660d3ea886"
+    },
+    {
+      "id": "edge_dispatcher_68",
+      "kind": "dispatcher_cases",
+      "status": "ok",
+      "input_sha256": "1299f6f69a1c9f15962428f69e31391aa387c8b0660e3bab4d3375b46e7ffd92"
+    },
+    {
+      "id": "edge_dispatcher_69",
+      "kind": "dispatcher_cases",
+      "status": "ok",
+      "input_sha256": "1ed62b9dcd470389dd44d06503ca8eeaa7d60ee37ec4f7a4131fa3a90d0ea5d4"
+    },
+    {
+      "id": "edge_dispatcher_70",
+      "kind": "dispatcher_cases",
+      "status": "error",
+      "input_sha256": "06ba6cd7eb6f28856356c94629c4d7ca03edff561e63dc59370f51981c309a21",
+      "error": {
+        "status": "error",
+        "error_class": "java.lang.IllegalArgumentException",
+        "message": "Unknown property 'missing' on 'Block{minecraft:oak_fence}'"
+      },
+      "condition_decoded_before_failure": false
+    },
+    {
+      "id": "edge_dispatcher_71",
+      "kind": "dispatcher_cases",
+      "status": "ok",
+      "input_sha256": "c05248e5740cef66188cf8c6a87fe83302169d7aa775872ba57e1819ff68476c"
+    },
+    {
+      "id": "edge_dispatcher_72",
+      "kind": "dispatcher_cases",
+      "status": "ok",
+      "input_sha256": "716918d73c74b0fb69b7e3df5773da71c6b375c32a0e1f7e63fdeacbd8b46929"
+    },
+    {
+      "id": "edge_dispatcher_73",
+      "kind": "dispatcher_cases",
+      "status": "ok",
+      "input_sha256": "f65ddeab27e0a9401a469b2bb602092afeedeb39461c1757832b7e7eab7294ef"
+    },
+    {
+      "id": "edge_dispatcher_74",
+      "kind": "dispatcher_cases",
+      "status": "ok",
+      "input_sha256": "2f8241df985a27ac81c33a07a45d9b365569bb5f6c9e1b7a66e25a15ed8aa3e9"
+    },
+    {
+      "id": "edge_dispatcher_75",
+      "kind": "dispatcher_cases",
+      "status": "ok",
+      "input_sha256": "8b4201a6f9a97c4d25daf137f0e2a6c448490c788dd5d7552e9e661bb5984424"
+    },
+    {
+      "id": "edge_dispatcher_76",
+      "kind": "dispatcher_cases",
+      "status": "ok",
+      "input_sha256": "0bce55b612633ecc85f72e34bf87bd03132525c17fb523916e46f22619b57d54"
+    },
+    {
+      "id": "edge_dispatcher_77",
+      "kind": "dispatcher_cases",
+      "status": "ok",
+      "input_sha256": "880922369f941d35daefdf68102d4e2717512c1835665edb2cf598de8faad2ec"
+    },
+    {
+      "id": "edge_dispatcher_78",
+      "kind": "dispatcher_cases",
+      "status": "ok",
+      "input_sha256": "693938754236aaee687d36658c42e0333dc70524cf268157e2ea7d7cc65dd5a5"
+    },
+    {
+      "id": "edge_dispatcher_79",
+      "kind": "dispatcher_cases",
+      "status": "ok",
+      "input_sha256": "7a2db3f543a98ca31bdfd1b0f07efa2e47d345fe857d2c60b2840b76af5a10a7"
+    }
+  ]
+}
