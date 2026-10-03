@@ -1,0 +1,42 @@
+{
+  "bend_behavioral_parity_established": false,
+  "class": "net.minecraft.world.TickRateManager",
+  "comparison_passed": true,
+  "expected": {
+    "clamped_nanoseconds_per_tick": 1000000000,
+    "clamped_tickrate": 1.0,
+    "default_milliseconds_per_tick": 50.0,
+    "default_nanoseconds_per_tick": 50000000,
+    "default_tickrate": 20.0,
+    "exhausted_runs_normally": false,
+    "frozen_runs_normally": false,
+    "resumed_runs_normally": true,
+    "seven_nanoseconds_per_tick": 142857142,
+    "step1_remaining": 1,
+    "step1_runs_normally": true,
+    "step2_remaining": 0,
+    "step2_runs_normally": true
+  },
+  "kind": "java_reference_behavior_observation",
+  "limits": "TickRateManager defaults/rate clamp/frozen stepping only. No entity exceptions, server scheduling, integration or Bend comparison.",
+  "observed": {
+    "clamped_nanoseconds_per_tick": 1000000000,
+    "clamped_tickrate": 1.0,
+    "default_milliseconds_per_tick": 50.0,
+    "default_nanoseconds_per_tick": 50000000,
+    "default_tickrate": 20.0,
+    "exhausted_runs_normally": false,
+    "frozen_runs_normally": false,
+    "resumed_runs_normally": true,
+    "seven_nanoseconds_per_tick": 142857142,
+    "step1_remaining": 1,
+    "step1_runs_normally": true,
+    "step2_remaining": 0,
+    "step2_runs_normally": true
+  },
+  "pin": "26.3",
+  "probe_source_sha256": "d4fb8a907e2072c868a1ad344949cf7463e4a557c2082f40601e1767e7c97a08",
+  "process_exit_code": 0,
+  "reference_server_sha256": "a362163eec5d1612d520772bc16e5b39c09e3b234fdc045f56bf544284ee8ae6",
+  "reproduce": "python3 tools/reference_tick_probe.py"
+}

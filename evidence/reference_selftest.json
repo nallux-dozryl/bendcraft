@@ -1,0 +1,27 @@
+{
+  "all_output_bytes_reproduced": true,
+  "behavioral_parity_established": false,
+  "commands_repeated": [
+    "reference_inventory.py",
+    "reference_verify.py",
+    "reference_tick_probe.py",
+    "reference_structures.py",
+    "reference_coverage.py"
+  ],
+  "corruption_checks": [
+    {
+      "expected_rejection": "table_hash_mismatch",
+      "mutation": "air first_state_id changed from 0 to 1",
+      "rejected": true
+    },
+    {
+      "expected_rejection": "state_reconstruction_mismatch",
+      "mutation": "same incorrect air state ID with checksum updated",
+      "rejected": true
+    }
+  ],
+  "kind": "extraction_tool_failure_and_reproducibility_checks",
+  "pin": "26.3",
+  "snapshot_tree_sha256": "7694eec3cd161584c2a2961adaf4268f35db5192f9d026eb693e061623ec5f7f",
+  "tracked_reference_outputs_compared": 14
+}

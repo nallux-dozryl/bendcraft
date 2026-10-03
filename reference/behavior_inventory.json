@@ -1,0 +1,2062 @@
+{
+  "curated_map_is_exhaustive_specification": false,
+  "obligation_groups": [
+    {
+      "id": "ticks",
+      "required_behavior": "Tick cadence, freeze/step/sprint, ordering and integrated pause",
+      "selected_method_signatures": {
+        "net.minecraft.server.MinecraftServer": [
+          "protected void runServer();",
+          "protected void tickServer(java.util.function.BooleanSupplier);",
+          "protected void tickChildren(java.util.function.BooleanSupplier);",
+          "protected void tickConnection();",
+          "public net.minecraft.server.ServerTickRateManager tickRateManager();",
+          "private static java.lang.String lambda$tickChildren$1(net.minecraft.server.level.ServerLevel);",
+          "private static void lambda$tickChildren$0(net.minecraft.server.level.ServerPlayer);"
+        ],
+        "net.minecraft.server.ServerTickRateManager": [
+          "public void setFrozen(boolean);",
+          "public void setTickRate(float);"
+        ],
+        "net.minecraft.world.TickRateManager": [
+          "public void setTickRate(float);",
+          "public float tickrate();",
+          "public void setFrozenTicksToRun(int);",
+          "public void setFrozen(boolean);",
+          "public void tick();"
+        ]
+      },
+      "semantics_status": "requires_bytecode_or_reference_analysis_and_independent_fixtures",
+      "source_classes": [
+        "net.minecraft.server.MinecraftServer",
+        "net.minecraft.world.TickRateManager",
+        "net.minecraft.server.ServerTickRateManager"
+      ],
+      "source_signatures_verified": true
+    },
+    {
+      "id": "chunk_lifecycle",
+      "required_behavior": "Chunk loading, tickets, activity levels, asynchronous work and unloading",
+      "selected_method_signatures": {
+        "net.minecraft.server.level.ChunkMap": [
+          "private void setChunkUnsaved(net.minecraft.world.level.ChunkPos);",
+          "protected java.util.function.IntSupplier getChunkQueueLevel(long);",
+          "public java.lang.String getChunkDebugData(net.minecraft.world.level.ChunkPos);",
+          "java.util.concurrent.CompletableFuture<net.minecraft.server.level.ChunkResult<java.util.List<net.minecraft.world.level.chunk.ChunkAccess>>> getChunkRangeFuture(net.minecraft.server.level.ChunkHolder, int, java.util.function.IntFunction<net.minecraft.world.level.chunk.status.ChunkStatus>);",
+          "public void close() throws java.io.IOException;",
+          "protected void saveAllChunks(boolean);",
+          "protected void tick(java.util.function.BooleanSupplier);",
+          "private void saveChunksEagerly(java.util.function.BooleanSupplier);",
+          "private boolean saveChunkIfNeeded(net.minecraft.server.level.ChunkHolder, long);",
+          "private boolean save(net.minecraft.world.level.chunk.ChunkAccess);",
+          "public net.minecraft.world.level.chunk.LevelChunk getChunkToSend(long);",
+          "public static net.minecraft.nbt.CompoundTag getChunkDataFixContextTag(net.minecraft.resources.ResourceKey<net.minecraft.world.level.Level>, java.util.Optional<net.minecraft.resources.Identifier>);"
+        ],
+        "net.minecraft.server.level.ServerChunkCache": [
+          "public net.minecraft.world.level.chunk.ChunkAccess getChunk(int, int, net.minecraft.world.level.chunk.status.ChunkStatus, boolean);",
+          "public net.minecraft.world.level.chunk.LevelChunk getChunkNow(int, int);",
+          "public java.util.concurrent.CompletableFuture<net.minecraft.server.level.ChunkResult<net.minecraft.world.level.chunk.ChunkAccess>> getChunkFuture(int, int, net.minecraft.world.level.chunk.status.ChunkStatus, boolean);",
+          "private java.util.concurrent.CompletableFuture<net.minecraft.server.level.ChunkResult<net.minecraft.world.level.chunk.ChunkAccess>> getChunkFutureMainThread(int, int, net.minecraft.world.level.chunk.status.ChunkStatus, boolean);",
+          "public net.minecraft.world.level.chunk.LightChunk getChunkForLighting(int, int);",
+          "public void save(boolean);",
+          "public void close() throws java.io.IOException;",
+          "public void tick(java.util.function.BooleanSupplier, boolean);",
+          "private void tickChunks();",
+          "private void tickChunks(net.minecraft.util.profiling.ProfilerFiller);",
+          "private void tickSpawningChunk(net.minecraft.world.level.chunk.LevelChunk, java.util.List<net.minecraft.world.entity.MobCategory>, net.minecraft.world.level.NaturalSpawner$SpawnState);",
+          "public java.lang.String getChunkDebugData(net.minecraft.world.level.ChunkPos);"
+        ]
+      },
+      "semantics_status": "requires_bytecode_or_reference_analysis_and_independent_fixtures",
+      "source_classes": [
+        "net.minecraft.server.level.ServerChunkCache",
+        "net.minecraft.server.level.ChunkMap"
+      ],
+      "source_signatures_verified": true
+    },
+    {
+      "id": "randomness",
+      "required_behavior": "Exact random algorithms, seeds, stream consumption and deterministic replay",
+      "selected_method_signatures": {
+        "net.minecraft.util.RandomSource": [
+          "public abstract net.minecraft.util.RandomSource fork();",
+          "public abstract net.minecraft.world.level.levelgen.PositionalRandomFactory forkPositional();",
+          "public abstract void setSeed(long);",
+          "public abstract int nextInt();",
+          "public abstract int nextInt(int);",
+          "public default int nextIntBetweenInclusive(int, int);",
+          "public abstract long nextLong();",
+          "public abstract boolean nextBoolean();",
+          "public abstract float nextFloat();",
+          "public abstract double nextDouble();",
+          "public abstract double nextGaussian();",
+          "public default int nextInt(int, int);"
+        ],
+        "net.minecraft.world.level.levelgen.LegacyRandomSource": [
+          "public net.minecraft.util.RandomSource fork();",
+          "public net.minecraft.world.level.levelgen.PositionalRandomFactory forkPositional();",
+          "public void setSeed(long);",
+          "public int next(int);",
+          "public double nextGaussian();"
+        ],
+        "net.minecraft.world.level.levelgen.XoroshiroRandomSource": [
+          "public net.minecraft.util.RandomSource fork();",
+          "public net.minecraft.world.level.levelgen.PositionalRandomFactory forkPositional();",
+          "public void setSeed(long);",
+          "public int nextInt();",
+          "public int nextInt(int);",
+          "public long nextLong();",
+          "public boolean nextBoolean();",
+          "public float nextFloat();",
+          "public double nextDouble();",
+          "public double nextGaussian();",
+          "private long nextBits(int);"
+        ]
+      },
+      "semantics_status": "requires_bytecode_or_reference_analysis_and_independent_fixtures",
+      "source_classes": [
+        "net.minecraft.util.RandomSource",
+        "net.minecraft.world.level.levelgen.LegacyRandomSource",
+        "net.minecraft.world.level.levelgen.XoroshiroRandomSource"
+      ],
+      "source_signatures_verified": true
+    },
+    {
+      "id": "terrain",
+      "required_behavior": "Noise, density, climate sampling, aquifers, terrain blending and surface generation",
+      "selected_method_signatures": {
+        "net.minecraft.world.level.levelgen.NoiseBasedChunkGenerator": [
+          "public int getBaseHeight(int, int, net.minecraft.world.level.levelgen.Heightmap$Types, net.minecraft.world.level.LevelHeightAccessor, net.minecraft.world.level.levelgen.RandomState);",
+          "public net.minecraft.world.level.NoiseColumn getBaseColumn(int, int, net.minecraft.world.level.LevelHeightAccessor, net.minecraft.world.level.levelgen.RandomState);",
+          "private void buildSurface(net.minecraft.world.level.chunk.ChunkAccess, net.minecraft.world.level.levelgen.NoiseChunk, net.minecraft.world.level.levelgen.RandomState, net.minecraft.world.level.biome.BiomeManager, java.util.Set<net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome>>, net.minecraft.world.level.levelgen.material.rule.MaterialRule);"
+        ]
+      },
+      "semantics_status": "requires_bytecode_or_reference_analysis_and_independent_fixtures",
+      "source_classes": [
+        "net.minecraft.world.level.levelgen.NoiseBasedChunkGenerator"
+      ],
+      "source_signatures_verified": true
+    },
+    {
+      "id": "biomes",
+      "required_behavior": "Biome selection, environmental attributes, spawn rules, features and colors",
+      "selected_method_signatures": {
+        "net.minecraft.world.level.biome.Biome": [
+          "public net.minecraft.world.level.biome.Biome$Precipitation getPrecipitationAt(net.minecraft.core.BlockPos, int);",
+          "private float getHeightAdjustedTemperature(net.minecraft.core.BlockPos, int);",
+          "private float getTemperature(net.minecraft.core.BlockPos, int);",
+          "public net.minecraft.world.level.biome.BiomeGenerationSettings getGenerationSettings();",
+          "public int getGrassColor(double, double);",
+          "private int getBaseGrassColor();",
+          "private int getGrassColorFromTexture();",
+          "public int getFoliageColor();",
+          "private int getFoliageColorFromTexture();",
+          "public int getDryFoliageColor();",
+          "private int getDryFoliageColorFromTexture();",
+          "public float getBaseTemperature();"
+        ],
+        "net.minecraft.world.level.biome.MultiNoiseBiomeSource": [
+          "public static net.minecraft.world.level.biome.MultiNoiseBiomeSource createFromList(net.minecraft.world.level.biome.Climate$ParameterList<net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome>>);",
+          "public static net.minecraft.world.level.biome.MultiNoiseBiomeSource createFromPreset(net.minecraft.core.Holder<net.minecraft.world.level.biome.MultiNoiseBiomeSourceParameterList>);",
+          "protected java.util.stream.Stream<net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome>> collectPossibleBiomes();",
+          "public net.minecraft.world.level.biome.BiomeResolver createResolver(net.minecraft.world.level.biome.Climate$Sampler);",
+          "public net.minecraft.world.level.biome.BiomeResolver createResolverForChunk(net.minecraft.world.level.biome.Climate$Sampler, int, int, int, int, int, int);",
+          "public net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome> getNoiseBiome(net.minecraft.world.level.biome.Climate$TargetPoint);",
+          "private net.minecraft.core.Holder lambda$createResolverForChunk$0(net.minecraft.world.level.levelgen.densityfunction.DensityVolume, int, int, int, net.minecraft.world.level.levelgen.densityfunction.DensityBuffer, net.minecraft.world.level.levelgen.densityfunction.DensityBuffer, net.minecraft.world.level.levelgen.densityfunction.DensityBuffer, net.minecraft.world.level.levelgen.densityfunction.DensityBuffer, net.minecraft.world.level.levelgen.densityfunction.DensityBuffer, net.minecraft.world.level.levelgen.densityfunction.DensityBuffer, int, int, int);",
+          "private net.minecraft.core.Holder lambda$createResolver$0(net.minecraft.world.level.biome.Climate$Sampler, int, int, int);"
+        ]
+      },
+      "semantics_status": "requires_bytecode_or_reference_analysis_and_independent_fixtures",
+      "source_classes": [
+        "net.minecraft.world.level.biome.Biome",
+        "net.minecraft.world.level.biome.MultiNoiseBiomeSource"
+      ],
+      "source_signatures_verified": true
+    },
+    {
+      "id": "structures",
+      "required_behavior": "Structure placement, locating, template palettes, jigsaw expansion and processors",
+      "selected_method_signatures": {
+        "net.minecraft.world.level.levelgen.structure.Structure": [
+          "public net.minecraft.world.level.levelgen.structure.StructureStart generate(net.minecraft.core.Holder<net.minecraft.world.level.levelgen.structure.Structure>, net.minecraft.resources.ResourceKey<net.minecraft.world.level.Level>, net.minecraft.core.RegistryAccess, net.minecraft.world.level.chunk.ChunkGenerator, net.minecraft.world.level.biome.BiomeSource, net.minecraft.world.level.biome.Climate$Sampler, net.minecraft.world.level.levelgen.RandomState, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager, long, net.minecraft.world.level.ChunkPos, int, net.minecraft.world.level.LevelHeightAccessor, java.util.function.Predicate<net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome>>);",
+          "protected abstract java.util.Optional<net.minecraft.world.level.levelgen.structure.Structure$GenerationStub> findGenerationPoint(net.minecraft.world.level.levelgen.structure.Structure$GenerationContext);",
+          "public java.util.Optional<net.minecraft.world.level.levelgen.structure.Structure$GenerationStub> findValidGenerationPoint(net.minecraft.world.level.levelgen.structure.Structure$GenerationContext);"
+        ],
+        "net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate": [
+          "public boolean placeInWorld(net.minecraft.world.level.ServerLevelAccessor, net.minecraft.core.BlockPos, net.minecraft.core.BlockPos, net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings, net.minecraft.util.RandomSource, int);",
+          "private void placeEntities(net.minecraft.world.level.ServerLevelAccessor, net.minecraft.core.BlockPos, net.minecraft.world.level.block.Mirror, net.minecraft.world.level.block.Rotation, net.minecraft.core.BlockPos, net.minecraft.world.level.levelgen.structure.BoundingBox, boolean, net.minecraft.util.ProblemReporter);",
+          "public void load(net.minecraft.core.HolderGetter<net.minecraft.world.level.block.Block>, net.minecraft.nbt.CompoundTag);",
+          "private void loadPalette(net.minecraft.core.HolderGetter<net.minecraft.world.level.block.Block>, net.minecraft.nbt.ListTag, net.minecraft.nbt.ListTag);",
+          "private static void lambda$loadPalette$0(net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$SimplePalette, java.util.List, java.util.List, java.util.List, net.minecraft.nbt.CompoundTag);",
+          "private void lambda$load$0(net.minecraft.nbt.CompoundTag);",
+          "private void lambda$load$1(net.minecraft.world.phys.Vec3, net.minecraft.core.BlockPos, net.minecraft.nbt.CompoundTag);",
+          "private static void lambda$placeEntities$0(net.minecraft.world.level.block.Rotation, net.minecraft.world.level.block.Mirror, net.minecraft.world.phys.Vec3, boolean, net.minecraft.world.level.ServerLevelAccessor, net.minecraft.world.entity.Entity);"
+        ]
+      },
+      "semantics_status": "requires_bytecode_or_reference_analysis_and_independent_fixtures",
+      "source_classes": [
+        "net.minecraft.world.level.levelgen.structure.Structure",
+        "net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate"
+      ],
+      "source_signatures_verified": true
+    },
+    {
+      "id": "dimensions_portals",
+      "required_behavior": "Dimension transitions, portal construction/search, scaling and respawn",
+      "selected_method_signatures": {
+        "net.minecraft.world.level.block.Portal": [
+          "public default int getPortalTransitionTime(net.minecraft.server.level.ServerLevel, net.minecraft.world.entity.Entity);",
+          "public abstract net.minecraft.world.level.portal.TeleportTransition getPortalDestination(net.minecraft.server.level.ServerLevel, net.minecraft.world.entity.Entity, net.minecraft.core.BlockPos);",
+          "public default net.minecraft.world.level.block.Portal$Transition getLocalTransition();"
+        ],
+        "net.minecraft.world.level.portal.PortalForcer": [
+          "public java.util.Optional<net.minecraft.core.BlockPos> findClosestPortalPosition(net.minecraft.core.BlockPos, boolean, net.minecraft.world.level.border.WorldBorder);",
+          "public java.util.Optional<net.minecraft.util.BlockUtil$FoundRectangle> createPortal(net.minecraft.core.BlockPos, net.minecraft.core.Direction$Axis);",
+          "private static double lambda$findClosestPortalPosition$2(net.minecraft.core.BlockPos, net.minecraft.core.BlockPos);",
+          "private boolean lambda$findClosestPortalPosition$1(net.minecraft.core.BlockPos);",
+          "private static boolean lambda$findClosestPortalPosition$0(net.minecraft.core.Holder);"
+        ],
+        "net.minecraft.world.level.portal.TeleportTransition": [
+          "public static net.minecraft.world.level.portal.TeleportTransition createDefault(net.minecraft.server.level.ServerPlayer, net.minecraft.world.level.portal.TeleportTransition$PostTeleportTransition);",
+          "private static net.minecraft.world.phys.Vec3 findAdjustedSharedSpawnPos(net.minecraft.server.level.ServerLevel, net.minecraft.world.entity.Entity);"
+        ]
+      },
+      "semantics_status": "requires_bytecode_or_reference_analysis_and_independent_fixtures",
+      "source_classes": [
+        "net.minecraft.world.level.block.Portal",
+        "net.minecraft.world.level.portal.TeleportTransition",
+        "net.minecraft.world.level.portal.PortalForcer"
+      ],
+      "source_signatures_verified": true
+    },
+    {
+      "id": "block_interaction",
+      "required_behavior": "Placement, support, breaking, tools, shapes, interaction and drops",
+      "selected_method_signatures": {
+        "net.minecraft.world.level.block.Block": [
+          "public void destroy(net.minecraft.world.level.LevelAccessor, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState);",
+          "protected java.util.function.Function<net.minecraft.world.level.block.state.BlockState, net.minecraft.world.phys.shapes.VoxelShape> getShapeForEachState(java.util.function.Function<net.minecraft.world.level.block.state.BlockState, net.minecraft.world.phys.shapes.VoxelShape>);",
+          "protected java.util.function.Function<net.minecraft.world.level.block.state.BlockState, net.minecraft.world.phys.shapes.VoxelShape> getShapeForEachState(java.util.function.Function<net.minecraft.world.level.block.state.BlockState, net.minecraft.world.phys.shapes.VoxelShape>, net.minecraft.world.level.block.state.properties.Property<?>...);",
+          "private static net.minecraft.world.phys.shapes.VoxelShape lambda$getShapeForEachState$4(java.util.Map, com.google.common.collect.ImmutableMap, net.minecraft.world.level.block.state.BlockState);",
+          "private static boolean lambda$getShapeForEachState$2(java.util.Map, net.minecraft.world.level.block.state.BlockState);",
+          "private static boolean lambda$getShapeForEachState$3(net.minecraft.world.level.block.state.BlockState, java.util.Map$Entry);",
+          "private static java.lang.Object lambda$getShapeForEachState$1(net.minecraft.world.level.block.state.properties.Property);",
+          "private static net.minecraft.world.level.block.state.properties.Property lambda$getShapeForEachState$0(net.minecraft.world.level.block.state.properties.Property);"
+        ],
+        "net.minecraft.world.level.block.state.BlockBehaviour": [
+          "protected net.minecraft.world.level.block.state.BlockState updateShape(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.LevelReader, net.minecraft.world.level.ScheduledTickAccess, net.minecraft.core.BlockPos, net.minecraft.core.Direction, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState, net.minecraft.util.RandomSource);",
+          "protected net.minecraft.world.InteractionResult useWithoutItem(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.Level, net.minecraft.core.BlockPos, net.minecraft.world.entity.player.Player, net.minecraft.world.phys.BlockHitResult);",
+          "protected net.minecraft.world.InteractionResult useItemOn(net.minecraft.world.item.ItemStack, net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.Level, net.minecraft.core.BlockPos, net.minecraft.world.entity.player.Player, net.minecraft.world.InteractionHand, net.minecraft.world.phys.BlockHitResult);",
+          "protected boolean useShapeForLightOcclusion(net.minecraft.world.level.block.state.BlockState);",
+          "protected net.minecraft.world.phys.shapes.VoxelShape getShape(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.BlockGetter, net.minecraft.core.BlockPos, net.minecraft.world.phys.shapes.CollisionContext);",
+          "protected net.minecraft.world.phys.shapes.VoxelShape getCollisionShape(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.BlockGetter, net.minecraft.core.BlockPos, net.minecraft.world.phys.shapes.CollisionContext);",
+          "protected float getDestroyProgress(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.entity.player.Player, net.minecraft.world.level.BlockGetter, net.minecraft.core.BlockPos);"
+        ]
+      },
+      "semantics_status": "requires_bytecode_or_reference_analysis_and_independent_fixtures",
+      "source_classes": [
+        "net.minecraft.world.level.block.state.BlockBehaviour",
+        "net.minecraft.world.level.block.Block"
+      ],
+      "source_signatures_verified": true
+    },
+    {
+      "id": "block_updates",
+      "required_behavior": "Neighbor updates, scheduled/random ticks and update-order quirks",
+      "selected_method_signatures": {
+        "net.minecraft.world.level.redstone.NeighborUpdater": [
+          "public abstract void neighborChanged(net.minecraft.core.BlockPos, net.minecraft.world.level.block.Block, net.minecraft.world.level.redstone.Orientation);",
+          "public abstract void neighborChanged(net.minecraft.world.level.block.state.BlockState, net.minecraft.core.BlockPos, net.minecraft.world.level.block.Block, net.minecraft.world.level.redstone.Orientation, boolean);",
+          "public default void updateNeighborsAtExceptFromFacing(net.minecraft.core.BlockPos, net.minecraft.world.level.block.Block, net.minecraft.core.Direction, net.minecraft.world.level.redstone.Orientation);"
+        ],
+        "net.minecraft.world.ticks.LevelTicks": [
+          "public net.minecraft.world.ticks.LevelTicks(java.util.function.LongPredicate);",
+          "public void addContainer(net.minecraft.world.level.ChunkPos, net.minecraft.world.ticks.LevelChunkTicks<T>);",
+          "public void schedule(net.minecraft.world.ticks.ScheduledTick<T>);",
+          "public void tick(long, int, java.util.function.BiConsumer<net.minecraft.core.BlockPos, T>);",
+          "private void rescheduleLeftoverContainers();",
+          "private void updateContainerScheduling(net.minecraft.world.ticks.ScheduledTick<T>);",
+          "private void drainFromCurrentContainer(java.util.Queue<net.minecraft.world.ticks.LevelChunkTicks<T>>, net.minecraft.world.ticks.LevelChunkTicks<T>, long, int);",
+          "private void scheduleForThisTick(net.minecraft.world.ticks.ScheduledTick<T>);",
+          "private void forContainersInArea(net.minecraft.world.level.levelgen.structure.BoundingBox, net.minecraft.world.ticks.LevelTicks$PosAndContainerConsumer<T>);",
+          "public void copyAreaFrom(net.minecraft.world.ticks.LevelTicks<T>, net.minecraft.world.level.levelgen.structure.BoundingBox, net.minecraft.core.Vec3i);",
+          "private void lambda$copyAreaFrom$2(net.minecraft.core.Vec3i, long, long, net.minecraft.world.ticks.ScheduledTick);",
+          "private static void lambda$copyAreaFrom$1(java.util.function.Predicate, java.util.List, long, net.minecraft.world.ticks.LevelChunkTicks);"
+        ]
+      },
+      "semantics_status": "requires_bytecode_or_reference_analysis_and_independent_fixtures",
+      "source_classes": [
+        "net.minecraft.world.level.redstone.NeighborUpdater",
+        "net.minecraft.world.ticks.LevelTicks"
+      ],
+      "source_signatures_verified": true
+    },
+    {
+      "id": "redstone",
+      "required_behavior": "Power propagation, quasi-connectivity, component timing and experimental rules",
+      "selected_method_signatures": {
+        "net.minecraft.world.level.block.piston.PistonBaseBlock": [
+          "protected net.minecraft.world.phys.shapes.VoxelShape getShape(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.BlockGetter, net.minecraft.core.BlockPos, net.minecraft.world.phys.shapes.CollisionContext);",
+          "protected void neighborChanged(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.Level, net.minecraft.core.BlockPos, net.minecraft.world.level.block.Block, net.minecraft.world.level.redstone.Orientation, boolean);",
+          "public net.minecraft.world.level.block.state.BlockState getStateForPlacement(net.minecraft.world.item.context.BlockPlaceContext);",
+          "private void checkIfExtend(net.minecraft.world.level.Level, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState);",
+          "private boolean getNeighborSignal(net.minecraft.world.level.SignalGetter, net.minecraft.core.BlockPos, net.minecraft.core.Direction);",
+          "protected boolean triggerEvent(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.Level, net.minecraft.core.BlockPos, int, int);"
+        ],
+        "net.minecraft.world.level.redstone.ExperimentalRedstoneWireEvaluator": [
+          "public void updatePowerStrength(net.minecraft.world.level.Level, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.redstone.Orientation, boolean);",
+          "private static net.minecraft.world.level.redstone.Orientation getInitialOrientation(net.minecraft.world.level.Level, net.minecraft.world.level.redstone.Orientation);",
+          "protected int getWireSignal(net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState);"
+        ],
+        "net.minecraft.world.level.redstone.RedstoneWireEvaluator": [
+          "public abstract void updatePowerStrength(net.minecraft.world.level.Level, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.redstone.Orientation, boolean);",
+          "protected int getBlockSignal(net.minecraft.world.level.Level, net.minecraft.core.BlockPos);",
+          "protected int getWireSignal(net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState);",
+          "protected int getIncomingWireSignal(net.minecraft.world.level.Level, net.minecraft.core.BlockPos);"
+        ]
+      },
+      "semantics_status": "requires_bytecode_or_reference_analysis_and_independent_fixtures",
+      "source_classes": [
+        "net.minecraft.world.level.redstone.RedstoneWireEvaluator",
+        "net.minecraft.world.level.redstone.ExperimentalRedstoneWireEvaluator",
+        "net.minecraft.world.level.block.piston.PistonBaseBlock"
+      ],
+      "source_signatures_verified": true
+    },
+    {
+      "id": "fluids",
+      "required_behavior": "Fluid levels, flow, source formation, interactions, waterlogging and scheduled ticks",
+      "selected_method_signatures": {
+        "net.minecraft.world.level.material.FlowingFluid": [
+          "public net.minecraft.world.phys.Vec3 getFlow(net.minecraft.world.level.BlockGetter, net.minecraft.core.BlockPos, net.minecraft.world.level.material.FluidState);",
+          "protected void spread(net.minecraft.server.level.ServerLevel, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.material.FluidState);",
+          "private void spreadToSides(net.minecraft.server.level.ServerLevel, net.minecraft.core.BlockPos, net.minecraft.world.level.material.FluidState, net.minecraft.world.level.block.state.BlockState);",
+          "protected net.minecraft.world.level.material.FluidState getNewLiquid(net.minecraft.server.level.ServerLevel, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState);",
+          "public abstract net.minecraft.world.level.material.Fluid getFlowing();",
+          "public net.minecraft.world.level.material.FluidState getFlowing(int, boolean);",
+          "public abstract net.minecraft.world.level.material.Fluid getSource();",
+          "public net.minecraft.world.level.material.FluidState getSource(boolean);",
+          "protected void spreadTo(net.minecraft.world.level.LevelAccessor, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState, net.minecraft.core.Direction, net.minecraft.world.level.material.FluidState);",
+          "protected int getSlopeDistance(net.minecraft.world.level.LevelReader, net.minecraft.core.BlockPos, int, net.minecraft.core.Direction, net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.material.FlowingFluid$SpreadContext);",
+          "protected abstract int getSlopeFindDistance(net.minecraft.world.level.LevelReader);",
+          "protected java.util.Map<net.minecraft.core.Direction, net.minecraft.world.level.material.FluidState> getSpread(net.minecraft.server.level.ServerLevel, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState);"
+        ],
+        "net.minecraft.world.level.material.FluidState": [
+          "public net.minecraft.world.level.material.Fluid getType();",
+          "public float getHeight(net.minecraft.world.level.BlockGetter, net.minecraft.core.BlockPos);",
+          "public float getHeightForCamera(net.minecraft.world.level.BlockGetter, net.minecraft.core.BlockPos);",
+          "public float getOwnHeight();",
+          "public int getAmount();",
+          "public void tick(net.minecraft.server.level.ServerLevel, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState);",
+          "public net.minecraft.world.phys.Vec3 getFlow(net.minecraft.world.level.BlockGetter, net.minecraft.core.BlockPos);",
+          "public net.minecraft.core.particles.ParticleOptions getDripParticle();",
+          "public float getExplosionResistance();",
+          "public net.minecraft.world.phys.shapes.VoxelShape getShape(net.minecraft.world.level.BlockGetter, net.minecraft.core.BlockPos);",
+          "public net.minecraft.world.phys.AABB getAABB(net.minecraft.world.level.BlockGetter, net.minecraft.core.BlockPos);"
+        ]
+      },
+      "semantics_status": "requires_bytecode_or_reference_analysis_and_independent_fixtures",
+      "source_classes": [
+        "net.minecraft.world.level.material.FlowingFluid",
+        "net.minecraft.world.level.material.FluidState"
+      ],
+      "source_signatures_verified": true
+    },
+    {
+      "id": "block_entities",
+      "required_behavior": "Block-entity persistence, ticking, containers, machinery and specialized behavior",
+      "selected_method_signatures": {
+        "net.minecraft.world.level.block.entity.BaseContainerBlockEntity": [
+          "protected void loadAdditional(net.minecraft.world.level.storage.ValueInput);",
+          "protected void saveAdditional(net.minecraft.world.level.storage.ValueOutput);",
+          "public net.minecraft.network.chat.Component getName();",
+          "public net.minecraft.network.chat.Component getDisplayName();",
+          "public net.minecraft.network.chat.Component getCustomName();",
+          "protected abstract net.minecraft.network.chat.Component getDefaultName();",
+          "protected abstract net.minecraft.core.NonNullList<net.minecraft.world.item.ItemStack> getItems();",
+          "protected abstract void setItems(net.minecraft.core.NonNullList<net.minecraft.world.item.ItemStack>);",
+          "public net.minecraft.world.item.ItemStack getItem(int);",
+          "public void setItem(int, net.minecraft.world.item.ItemStack);",
+          "protected net.minecraft.world.level.storage.loot.LootContext getLootContext(net.minecraft.server.level.ServerLevel);"
+        ],
+        "net.minecraft.world.level.block.entity.BlockEntity": [
+          "public static net.minecraft.core.BlockPos getPosFromTag(net.minecraft.world.level.ChunkPos, net.minecraft.nbt.CompoundTag);",
+          "public net.minecraft.world.level.Level getLevel();",
+          "public void setLevel(net.minecraft.world.level.Level);",
+          "protected void loadAdditional(net.minecraft.world.level.storage.ValueInput);",
+          "public final void loadWithComponents(net.minecraft.world.level.storage.ValueInput);",
+          "public final void loadCustomOnly(net.minecraft.world.level.storage.ValueInput);",
+          "protected void saveAdditional(net.minecraft.world.level.storage.ValueOutput);",
+          "public final net.minecraft.nbt.CompoundTag saveWithFullMetadata(net.minecraft.core.HolderLookup$Provider);",
+          "public void saveWithFullMetadata(net.minecraft.world.level.storage.ValueOutput);",
+          "public void saveWithId(net.minecraft.world.level.storage.ValueOutput);",
+          "public final net.minecraft.nbt.CompoundTag saveWithoutMetadata(net.minecraft.core.HolderLookup$Provider);",
+          "public void saveWithoutMetadata(net.minecraft.world.level.storage.ValueOutput);"
+        ]
+      },
+      "semantics_status": "requires_bytecode_or_reference_analysis_and_independent_fixtures",
+      "source_classes": [
+        "net.minecraft.world.level.block.entity.BlockEntity",
+        "net.minecraft.world.level.block.entity.BaseContainerBlockEntity"
+      ],
+      "source_signatures_verified": true
+    },
+    {
+      "id": "item_use",
+      "required_behavior": "Components, item use, consumption, cooldowns, durability and damage",
+      "selected_method_signatures": {
+        "net.minecraft.world.item.Item": [
+          "public static int getId(net.minecraft.world.item.Item);",
+          "public int getDefaultMaxStackSize();",
+          "public net.minecraft.world.InteractionResult useOn(net.minecraft.world.item.context.UseOnContext);",
+          "public float getDestroySpeed(net.minecraft.world.item.ItemStack, net.minecraft.world.level.block.state.BlockState);",
+          "public net.minecraft.world.InteractionResult use(net.minecraft.world.level.Level, net.minecraft.world.entity.player.Player, net.minecraft.world.InteractionHand);",
+          "public net.minecraft.world.item.ItemStack finishUsingItem(net.minecraft.world.item.ItemStack, net.minecraft.world.level.Level, net.minecraft.world.entity.LivingEntity);",
+          "public int getBarWidth(net.minecraft.world.item.ItemStack);",
+          "public int getBarColor(net.minecraft.world.item.ItemStack);",
+          "public float getAttackDamageBonus(net.minecraft.world.entity.Entity, float, net.minecraft.world.damagesource.DamageSource);",
+          "public net.minecraft.world.damagesource.DamageSource getItemDamageSource(net.minecraft.world.entity.LivingEntity);",
+          "public void hurtEnemy(net.minecraft.world.item.ItemStack, net.minecraft.world.entity.LivingEntity, net.minecraft.world.entity.LivingEntity);",
+          "public final net.minecraft.world.item.ItemStackTemplate getCraftingRemainder();"
+        ],
+        "net.minecraft.world.item.ItemStack": [
+          "public java.util.Optional<net.minecraft.world.inventory.tooltip.TooltipComponent> getTooltipImage();",
+          "public net.minecraft.core.component.DataComponentMap getComponents();",
+          "public net.minecraft.core.component.DataComponentMap getPrototype();",
+          "public net.minecraft.core.component.DataComponentPatch getComponentsPatch();",
+          "public net.minecraft.world.item.Item getItem();",
+          "public net.minecraft.world.InteractionResult useOn(net.minecraft.world.item.context.UseOnContext);",
+          "public float getDestroySpeed(net.minecraft.world.level.block.state.BlockState);",
+          "public net.minecraft.world.InteractionResult use(net.minecraft.world.level.Level, net.minecraft.world.entity.player.Player, net.minecraft.world.InteractionHand);",
+          "public net.minecraft.world.item.ItemStack finishUsingItem(net.minecraft.world.level.Level, net.minecraft.world.entity.LivingEntity);",
+          "public int getDamageValue();",
+          "public int getMaxDamage();",
+          "public void hurtAndBreak(int, net.minecraft.server.level.ServerLevel, net.minecraft.server.level.ServerPlayer, java.util.function.Consumer<net.minecraft.world.item.ItemStack>);"
+        ]
+      },
+      "semantics_status": "requires_bytecode_or_reference_analysis_and_independent_fixtures",
+      "source_classes": [
+        "net.minecraft.world.item.Item",
+        "net.minecraft.world.item.ItemStack"
+      ],
+      "source_signatures_verified": true
+    },
+    {
+      "id": "inventories_menus",
+      "required_behavior": "Stack merging, click modes, drag rules, transactions, synchronization and every menu",
+      "selected_method_signatures": {
+        "net.minecraft.world.entity.player.Inventory": [
+          "public void addAndPickItem(net.minecraft.world.item.ItemStack);",
+          "private int addResource(net.minecraft.world.item.ItemStack);",
+          "private int addResource(int, net.minecraft.world.item.ItemStack);",
+          "public boolean add(net.minecraft.world.item.ItemStack);",
+          "public boolean add(int, net.minecraft.world.item.ItemStack);",
+          "public net.minecraft.world.item.ItemStack removeItem(int, int);",
+          "public void removeItem(net.minecraft.world.item.ItemStack);",
+          "public net.minecraft.world.item.ItemStack removeItemNoUpdate(int);",
+          "public net.minecraft.world.item.ItemStack removeFromSelected(boolean);",
+          "private static java.lang.String lambda$add$0(net.minecraft.world.item.ItemStack) throws java.lang.Exception;"
+        ],
+        "net.minecraft.world.inventory.AbstractContainerMenu": [
+          "protected void addInventoryHotbarSlots(net.minecraft.world.Container, int, int);",
+          "protected void addInventoryExtendedSlots(net.minecraft.world.Container, int, int);",
+          "protected void addStandardInventorySlots(net.minecraft.world.Container, int, int);",
+          "protected net.minecraft.world.inventory.Slot addSlot(net.minecraft.world.inventory.Slot);",
+          "protected net.minecraft.world.inventory.DataSlot addDataSlot(net.minecraft.world.inventory.DataSlot);",
+          "protected void addDataSlots(net.minecraft.world.inventory.ContainerData);",
+          "public void addSlotListener(net.minecraft.world.inventory.ContainerListener);",
+          "public void removeSlotListener(net.minecraft.world.inventory.ContainerListener);",
+          "public void broadcastChanges();",
+          "public void broadcastFullState();",
+          "public abstract net.minecraft.world.item.ItemStack quickMoveStack(net.minecraft.world.entity.player.Player, int);",
+          "public void clicked(int, int, net.minecraft.world.inventory.ContainerInput, net.minecraft.world.entity.player.Player);"
+        ]
+      },
+      "semantics_status": "requires_bytecode_or_reference_analysis_and_independent_fixtures",
+      "source_classes": [
+        "net.minecraft.world.inventory.AbstractContainerMenu",
+        "net.minecraft.world.entity.player.Inventory"
+      ],
+      "source_signatures_verified": true
+    },
+    {
+      "id": "recipes",
+      "required_behavior": "Recipe codecs, matching, ingredients, results, special recipes and recipe-book rules",
+      "selected_method_signatures": {
+        "net.minecraft.world.item.crafting.Recipe": [
+          "public abstract boolean matches(T, net.minecraft.world.level.Level);",
+          "public abstract net.minecraft.world.item.ItemStack assemble(T);",
+          "public abstract net.minecraft.world.item.crafting.RecipeSerializer<? extends net.minecraft.world.item.crafting.Recipe<T>> getSerializer();",
+          "public abstract net.minecraft.world.item.crafting.RecipeType<? extends net.minecraft.world.item.crafting.Recipe<T>> getType();"
+        ],
+        "net.minecraft.world.item.crafting.RecipeManager": [
+          "public <I extends net.minecraft.world.item.crafting.RecipeInput, T extends net.minecraft.world.item.crafting.Recipe<I>> java.util.Optional<net.minecraft.world.item.crafting.RecipeHolder<T>> getRecipeFor(net.minecraft.world.item.crafting.RecipeType<T>, I, net.minecraft.world.level.Level, net.minecraft.resources.ResourceKey<net.minecraft.world.item.crafting.Recipe<?>>);",
+          "public <I extends net.minecraft.world.item.crafting.RecipeInput, T extends net.minecraft.world.item.crafting.Recipe<I>> java.util.Optional<net.minecraft.world.item.crafting.RecipeHolder<T>> getRecipeFor(net.minecraft.world.item.crafting.RecipeType<T>, I, net.minecraft.world.level.Level, net.minecraft.world.item.crafting.RecipeHolder<T>);",
+          "public <I extends net.minecraft.world.item.crafting.RecipeInput, T extends net.minecraft.world.item.crafting.Recipe<I>> java.util.Optional<net.minecraft.world.item.crafting.RecipeHolder<T>> getRecipeFor(net.minecraft.world.item.crafting.RecipeType<T>, I, net.minecraft.world.level.Level);",
+          "public java.util.Map<net.minecraft.resources.ResourceKey<net.minecraft.world.item.crafting.RecipePropertySet>, net.minecraft.world.item.crafting.RecipePropertySet> getSynchronizedItemProperties();",
+          "public net.minecraft.world.item.crafting.SelectableRecipe$SingleInputSet<net.minecraft.world.item.crafting.StonecutterRecipe> getSynchronizedStonecutterRecipes();",
+          "public java.util.Collection<net.minecraft.world.item.crafting.RecipeHolder<?>> getRecipes();",
+          "public java.util.Collection<net.minecraft.world.item.crafting.RecipeHolder<?>> getLearnableRecipes();",
+          "public net.minecraft.world.item.crafting.RecipeManager$ServerDisplayInfo getRecipeFromDisplay(net.minecraft.world.item.crafting.display.RecipeDisplayId);"
+        ]
+      },
+      "semantics_status": "requires_bytecode_or_reference_analysis_and_independent_fixtures",
+      "source_classes": [
+        "net.minecraft.world.item.crafting.RecipeManager",
+        "net.minecraft.world.item.crafting.Recipe"
+      ],
+      "source_signatures_verified": true
+    },
+    {
+      "id": "loot",
+      "required_behavior": "Loot contexts, randomness, conditions, functions, references and drop semantics",
+      "selected_method_signatures": {
+        "net.minecraft.world.level.storage.loot.LootContext": [
+          "public net.minecraft.util.RandomSource getRandom();",
+          "public static net.minecraft.world.level.storage.loot.LootContext$VisitedEntry<net.minecraft.world.level.storage.loot.LootTable> createVisitedEntry(net.minecraft.world.level.storage.loot.LootTable);",
+          "public static net.minecraft.world.level.storage.loot.LootContext$VisitedEntry<net.minecraft.world.level.storage.loot.predicates.LootItemCondition> createVisitedEntry(net.minecraft.world.level.storage.loot.predicates.LootItemCondition);",
+          "public static net.minecraft.world.level.storage.loot.LootContext$VisitedEntry<net.minecraft.world.level.storage.loot.functions.LootItemFunction> createVisitedEntry(net.minecraft.world.level.storage.loot.functions.LootItemFunction);",
+          "public static net.minecraft.world.level.storage.loot.LootContext$VisitedEntry<net.minecraft.world.item.slot.SlotSource> createVisitedEntry(net.minecraft.world.item.slot.SlotSource);"
+        ],
+        "net.minecraft.world.level.storage.loot.LootTable": [
+          "public static java.util.function.Consumer<net.minecraft.world.item.ItemStack> createStackSplitter(net.minecraft.server.level.ServerLevel, java.util.function.Consumer<net.minecraft.world.item.ItemStack>);",
+          "public void getRandomItemsRaw(net.minecraft.world.level.storage.loot.LootParams, java.util.function.Consumer<net.minecraft.world.item.ItemStack>);",
+          "public void getRandomItemsRaw(net.minecraft.world.level.storage.loot.LootContext, java.util.function.Consumer<net.minecraft.world.item.ItemStack>);",
+          "public void getRandomItems(net.minecraft.world.level.storage.loot.LootParams, long, java.util.function.Consumer<net.minecraft.world.item.ItemStack>);",
+          "public void getRandomItems(net.minecraft.world.level.storage.loot.LootParams, java.util.function.Consumer<net.minecraft.world.item.ItemStack>);",
+          "public void getRandomItems(net.minecraft.world.level.storage.loot.LootContext, java.util.function.Consumer<net.minecraft.world.item.ItemStack>);",
+          "public it.unimi.dsi.fastutil.objects.ObjectArrayList<net.minecraft.world.item.ItemStack> getRandomItems(net.minecraft.world.level.storage.loot.LootParams, net.minecraft.util.RandomSource);",
+          "public it.unimi.dsi.fastutil.objects.ObjectArrayList<net.minecraft.world.item.ItemStack> getRandomItems(net.minecraft.world.level.storage.loot.LootParams, long);",
+          "public it.unimi.dsi.fastutil.objects.ObjectArrayList<net.minecraft.world.item.ItemStack> getRandomItems(net.minecraft.world.level.storage.loot.LootParams);",
+          "private it.unimi.dsi.fastutil.objects.ObjectArrayList<net.minecraft.world.item.ItemStack> getRandomItems(net.minecraft.world.level.storage.loot.LootContext);",
+          "public void validate(net.minecraft.world.level.storage.loot.ValidationContext);",
+          "public void fill(net.minecraft.world.Container, net.minecraft.world.level.storage.loot.LootParams, long);"
+        ]
+      },
+      "semantics_status": "requires_bytecode_or_reference_analysis_and_independent_fixtures",
+      "source_classes": [
+        "net.minecraft.world.level.storage.loot.LootTable",
+        "net.minecraft.world.level.storage.loot.LootContext"
+      ],
+      "source_signatures_verified": true
+    },
+    {
+      "id": "enchantments",
+      "required_behavior": "Enchantment compatibility, levels, effects, providers and equipment interactions",
+      "selected_method_signatures": {
+        "net.minecraft.world.item.enchantment.Enchantment": [
+          "public java.util.Map<net.minecraft.world.entity.EquipmentSlot, net.minecraft.world.item.ItemStack> getSlotItems(net.minecraft.world.entity.LivingEntity);",
+          "public net.minecraft.core.HolderSet<net.minecraft.world.item.Item> getSupportedItems();",
+          "public int getWeight();",
+          "public int getAnvilCost();",
+          "public int getMinLevel();",
+          "public int getMaxLevel();",
+          "public int getMinCost(int);",
+          "public int getMaxCost(int);",
+          "public static net.minecraft.network.chat.Component getFullname(net.minecraft.core.Holder<net.minecraft.world.item.enchantment.Enchantment>, int);",
+          "public boolean canEnchant(net.minecraft.world.item.ItemStack);",
+          "public <T> java.util.List<T> getEffects(net.minecraft.core.component.DataComponentType<java.util.List<T>>);",
+          "public void modifyDamageProtection(net.minecraft.server.level.ServerLevel, int, net.minecraft.world.item.ItemStack, net.minecraft.world.entity.Entity, net.minecraft.world.damagesource.DamageSource, org.apache.commons.lang3.mutable.MutableFloat);"
+        ],
+        "net.minecraft.world.item.enchantment.EnchantmentHelper": [
+          "public static int getItemEnchantmentLevel(net.minecraft.core.Holder<net.minecraft.world.item.enchantment.Enchantment>, net.minecraft.world.item.ItemInstance);",
+          "public static boolean canStoreEnchantments(net.minecraft.world.item.ItemStack);",
+          "public static net.minecraft.world.item.enchantment.ItemEnchantments getEnchantmentsForCrafting(net.minecraft.world.item.ItemStack);",
+          "private static net.minecraft.core.component.DataComponentType<net.minecraft.world.item.enchantment.ItemEnchantments> getComponentType(net.minecraft.world.item.ItemStack);",
+          "private static void runIterationOnItem(net.minecraft.world.item.ItemStack, net.minecraft.world.item.enchantment.EnchantmentHelper$EnchantmentVisitor);",
+          "private static void runIterationOnItem(net.minecraft.world.item.ItemStack, net.minecraft.world.entity.EquipmentSlot, net.minecraft.world.entity.LivingEntity, net.minecraft.world.item.enchantment.EnchantmentHelper$EnchantmentInSlotVisitor);",
+          "private static void runIterationOnEquipment(net.minecraft.world.entity.LivingEntity, net.minecraft.world.item.enchantment.EnchantmentHelper$EnchantmentInSlotVisitor);",
+          "public static float getDamageProtection(net.minecraft.server.level.ServerLevel, net.minecraft.world.entity.LivingEntity, net.minecraft.world.damagesource.DamageSource);",
+          "public static float modifyDamage(net.minecraft.server.level.ServerLevel, net.minecraft.world.item.ItemStack, net.minecraft.world.entity.Entity, net.minecraft.world.damagesource.DamageSource, float);",
+          "public static float modifyFallBasedDamage(net.minecraft.server.level.ServerLevel, net.minecraft.world.item.ItemStack, net.minecraft.world.entity.Entity, net.minecraft.world.damagesource.DamageSource, float);",
+          "public static float modifyArmorEffectiveness(net.minecraft.server.level.ServerLevel, net.minecraft.world.item.ItemStack, net.minecraft.world.entity.Entity, net.minecraft.world.damagesource.DamageSource, float);",
+          "public static float modifyKnockback(net.minecraft.server.level.ServerLevel, net.minecraft.world.item.ItemStack, net.minecraft.world.entity.Entity, net.minecraft.world.damagesource.DamageSource, float);"
+        ]
+      },
+      "semantics_status": "requires_bytecode_or_reference_analysis_and_independent_fixtures",
+      "source_classes": [
+        "net.minecraft.world.item.enchantment.EnchantmentHelper",
+        "net.minecraft.world.item.enchantment.Enchantment"
+      ],
+      "source_signatures_verified": true
+    },
+    {
+      "id": "movement_collision",
+      "required_behavior": "Movement, collision/stepping, poses, fluid forces, riding and interpolation",
+      "selected_method_signatures": {
+        "net.minecraft.world.entity.Entity": [
+          "public boolean removeTag(java.lang.String);",
+          "public void remove(net.minecraft.world.entity.Entity$RemovalReason);",
+          "public void move(net.minecraft.world.entity.MoverType, net.minecraft.world.phys.Vec3);",
+          "public void removeLatestMovementRecording();",
+          "private net.minecraft.world.phys.Vec3 collide(net.minecraft.world.phys.Vec3);",
+          "public static net.minecraft.world.phys.Vec3 collideBoundingBox(net.minecraft.world.entity.Entity, net.minecraft.world.phys.Vec3, net.minecraft.world.phys.AABB, net.minecraft.world.level.Level, java.util.List<net.minecraft.world.phys.shapes.VoxelShape>);",
+          "public static net.minecraft.world.phys.Vec3 collideBoundingBox(net.minecraft.world.phys.shapes.CollisionContext, net.minecraft.world.phys.Vec3, net.minecraft.world.phys.AABB, net.minecraft.world.level.Level, java.util.List<net.minecraft.world.phys.shapes.VoxelShape>);",
+          "private static net.minecraft.world.phys.Vec3 collideWithShapes(net.minecraft.world.phys.Vec3, net.minecraft.world.phys.AABB, java.util.List<net.minecraft.world.phys.shapes.VoxelShape>);",
+          "public boolean collidedWithFluid(net.minecraft.world.level.material.FluidState, net.minecraft.core.BlockPos, net.minecraft.world.phys.Vec3, net.minecraft.world.phys.Vec3);",
+          "public boolean collidedWithShapeMovingFrom(net.minecraft.world.phys.Vec3, net.minecraft.world.phys.Vec3, java.util.List<net.minecraft.world.phys.AABB>);",
+          "public void updateSwimming();",
+          "public void moveRelative(float, net.minecraft.world.phys.Vec3);"
+        ],
+        "net.minecraft.world.entity.LivingEntity": [
+          "protected void removeFrost();",
+          "public void remove(net.minecraft.world.entity.Entity$RemovalReason);",
+          "protected void removeEffectParticles();",
+          "public boolean removeAllEffects();",
+          "public final net.minecraft.world.effect.MobEffectInstance removeEffectNoUpdate(net.minecraft.core.Holder<net.minecraft.world.effect.MobEffect>);",
+          "public boolean removeEffect(net.minecraft.core.Holder<net.minecraft.world.effect.MobEffect>);",
+          "protected void onEffectsRemoved(java.util.Collection<net.minecraft.world.effect.MobEffectInstance>);",
+          "public void jumpFromGround();",
+          "protected void jumpInLiquid(net.minecraft.tags.TagKey<net.minecraft.world.level.material.Fluid>);",
+          "public void travel(net.minecraft.world.phys.Vec3);",
+          "protected void travelFlying(net.minecraft.world.phys.Vec3, float);",
+          "protected void travelFlying(net.minecraft.world.phys.Vec3, float, float, float);"
+        ]
+      },
+      "semantics_status": "requires_bytecode_or_reference_analysis_and_independent_fixtures",
+      "source_classes": [
+        "net.minecraft.world.entity.Entity",
+        "net.minecraft.world.entity.LivingEntity"
+      ],
+      "source_signatures_verified": true
+    },
+    {
+      "id": "mobs_ai",
+      "required_behavior": "Every entity type, goals/brains, memory, sensors, navigation and species behavior",
+      "selected_method_signatures": {
+        "net.minecraft.world.entity.Mob": [
+          "public float getPathfindingMalus(net.minecraft.world.level.pathfinder.PathType);",
+          "public void setPathfindingMalus(net.minecraft.world.level.pathfinder.PathType, float);",
+          "public net.minecraft.world.entity.ai.control.LookControl getLookControl();",
+          "public net.minecraft.world.entity.ai.control.MoveControl getMoveControl();",
+          "public net.minecraft.world.entity.ai.control.JumpControl getJumpControl();",
+          "public net.minecraft.world.entity.ai.navigation.PathNavigation getNavigation();",
+          "public net.minecraft.world.entity.LivingEntity getControllingPassenger();",
+          "public net.minecraft.world.entity.ai.sensing.Sensing getSensing();",
+          "public net.minecraft.world.entity.LivingEntity getTarget();",
+          "public net.minecraft.world.entity.LivingEntity getTargetUnchecked();",
+          "protected net.minecraft.world.entity.LivingEntity asValidTarget(net.minecraft.world.entity.LivingEntity);",
+          "protected final net.minecraft.world.entity.LivingEntity getTargetFromBrain();"
+        ],
+        "net.minecraft.world.entity.ai.Brain": [
+          "private <T> net.minecraft.world.entity.ai.memory.MemorySlot<T> getMemorySlotIfPresent(net.minecraft.world.entity.ai.memory.MemoryModuleType<T>);",
+          "private <T> net.minecraft.world.entity.ai.memory.MemorySlot<T> getMemorySlot(net.minecraft.world.entity.ai.memory.MemoryModuleType<T>);",
+          "public <U> void setMemory(net.minecraft.world.entity.ai.memory.MemoryModuleType<U>, U);",
+          "public <U> void setMemoryWithExpiry(net.minecraft.world.entity.ai.memory.MemoryModuleType<U>, U, long);",
+          "public <U> void setMemory(net.minecraft.world.entity.ai.memory.MemoryModuleType<U>, java.util.Optional<? extends U>);",
+          "private <U> void setMemoryInternal(net.minecraft.world.entity.ai.memory.MemoryMap$Value<U>);",
+          "private <U> void setMemoryInternal(net.minecraft.world.entity.ai.memory.MemoryModuleType<U>, U, long);",
+          "private <U> void setMemoryInternal(net.minecraft.world.entity.ai.memory.MemoryModuleType<U>, U);",
+          "public <U> java.util.Optional<U> getMemory(net.minecraft.world.entity.ai.memory.MemoryModuleType<U>);",
+          "public <U> java.util.Optional<U> getMemoryInternal(net.minecraft.world.entity.ai.memory.MemoryModuleType<U>);",
+          "public <U> long getTimeUntilExpiry(net.minecraft.world.entity.ai.memory.MemoryModuleType<U>);",
+          "public void setSchedule(net.minecraft.world.attribute.EnvironmentAttribute<net.minecraft.world.entity.schedule.Activity>);"
+        ],
+        "net.minecraft.world.level.pathfinder.PathFinder": [
+          "public void setCaptureDebug(java.util.function.BooleanSupplier);",
+          "public void setMaxVisitedNodes(int);",
+          "public net.minecraft.world.level.pathfinder.Path findPath(net.minecraft.world.level.PathNavigationRegion, net.minecraft.world.entity.Mob, java.util.Set<net.minecraft.core.BlockPos>, float, int, float);",
+          "private net.minecraft.world.level.pathfinder.Path findPath(net.minecraft.world.level.pathfinder.Node, java.util.Map<net.minecraft.world.level.pathfinder.Target, net.minecraft.core.BlockPos>, float, int, float);",
+          "private float getBestH(net.minecraft.world.level.pathfinder.Node, java.util.Set<net.minecraft.world.level.pathfinder.Target>);",
+          "private net.minecraft.world.level.pathfinder.Path lambda$findPath$2(java.util.Map, net.minecraft.world.level.pathfinder.Target);",
+          "private net.minecraft.world.level.pathfinder.Path lambda$findPath$1(java.util.Map, net.minecraft.world.level.pathfinder.Target);",
+          "private net.minecraft.world.level.pathfinder.Target lambda$findPath$0(net.minecraft.core.BlockPos);"
+        ]
+      },
+      "semantics_status": "requires_bytecode_or_reference_analysis_and_independent_fixtures",
+      "source_classes": [
+        "net.minecraft.world.entity.Mob",
+        "net.minecraft.world.entity.ai.Brain",
+        "net.minecraft.world.level.pathfinder.PathFinder"
+      ],
+      "source_signatures_verified": true
+    },
+    {
+      "id": "spawning",
+      "required_behavior": "Natural/structure/spawner spawning, caps, despawn, breeding and difficulty",
+      "selected_method_signatures": {
+        "net.minecraft.world.level.NaturalSpawner": [
+          "public static net.minecraft.world.level.NaturalSpawner$SpawnState createState(int, net.minecraft.server.level.ServerLevel, net.minecraft.world.level.NaturalSpawner$ChunkGetter, net.minecraft.world.level.LocalMobCapCalculator);",
+          "public static java.util.List<net.minecraft.world.entity.MobCategory> getFilteredSpawningCategories(net.minecraft.world.level.NaturalSpawner$SpawnState, boolean, boolean);",
+          "public static void spawnForChunk(net.minecraft.server.level.ServerLevel, net.minecraft.world.level.chunk.LevelChunk, net.minecraft.world.level.NaturalSpawner$SpawnState, java.util.List<net.minecraft.world.entity.MobCategory>);",
+          "public static void spawnCategoryForChunk(net.minecraft.world.entity.MobCategory, net.minecraft.server.level.ServerLevel, net.minecraft.world.level.chunk.LevelChunk, net.minecraft.world.level.NaturalSpawner$SpawnPredicate, net.minecraft.world.level.NaturalSpawner$AfterSpawnCallback);",
+          "public static void spawnCategoryForPosition(net.minecraft.world.entity.MobCategory, net.minecraft.server.level.ServerLevel, net.minecraft.core.BlockPos);",
+          "public static void spawnCategoryForPosition(net.minecraft.world.entity.MobCategory, net.minecraft.server.level.ServerLevel, net.minecraft.world.level.chunk.ChunkAccess, net.minecraft.core.BlockPos, net.minecraft.world.level.NaturalSpawner$SpawnPredicate, net.minecraft.world.level.NaturalSpawner$AfterSpawnCallback);",
+          "private static net.minecraft.world.entity.Mob getMobForSpawn(net.minecraft.server.level.ServerLevel, net.minecraft.world.entity.EntityType<?>);",
+          "private static java.util.Optional<net.minecraft.world.level.biome.MobSpawnSettings$SpawnerData> getRandomSpawnMobAt(net.minecraft.server.level.ServerLevel, net.minecraft.world.level.StructureManager, net.minecraft.world.level.chunk.ChunkGenerator, net.minecraft.world.entity.MobCategory, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos);",
+          "private static net.minecraft.core.BlockPos getRandomPosWithin(net.minecraft.world.level.Level, net.minecraft.world.level.chunk.LevelChunk);",
+          "public static void spawnMobsForChunkGeneration(net.minecraft.world.level.ServerLevelAccessor, net.minecraft.core.BlockPos, net.minecraft.world.level.ChunkPos, net.minecraft.util.RandomSource);",
+          "private static net.minecraft.core.BlockPos getTopNonCollidingPos(net.minecraft.world.level.LevelReader, net.minecraft.world.entity.EntityType<?>, int, int);",
+          "private static void lambda$spawnCategoryForPosition$1(net.minecraft.world.entity.Mob, net.minecraft.world.level.chunk.ChunkAccess);"
+        ],
+        "net.minecraft.world.level.block.entity.SpawnerBlockEntity": [
+          "public static void serverTick(net.minecraft.world.level.Level, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.block.entity.SpawnerBlockEntity);",
+          "public net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket getUpdatePacket();",
+          "public net.minecraft.nbt.CompoundTag getUpdateTag(net.minecraft.core.HolderLookup$Provider);",
+          "public net.minecraft.world.level.BaseSpawner getSpawner();",
+          "public net.minecraft.network.protocol.Packet getUpdatePacket();"
+        ]
+      },
+      "semantics_status": "requires_bytecode_or_reference_analysis_and_independent_fixtures",
+      "source_classes": [
+        "net.minecraft.world.level.NaturalSpawner",
+        "net.minecraft.world.level.block.entity.SpawnerBlockEntity"
+      ],
+      "source_signatures_verified": true
+    },
+    {
+      "id": "combat_health",
+      "required_behavior": "Damage sources, armor, attributes, effects, invulnerability, knockback and death",
+      "selected_method_signatures": {
+        "net.minecraft.world.damagesource.DamageSources": [
+          "public net.minecraft.world.damagesource.DamageSource fireball(net.minecraft.world.entity.projectile.hurtingprojectile.Fireball, net.minecraft.world.entity.Entity);",
+          "public net.minecraft.world.damagesource.DamageSource witherSkull(net.minecraft.world.entity.projectile.hurtingprojectile.WitherSkull, net.minecraft.world.entity.Entity);"
+        ],
+        "net.minecraft.world.entity.LivingEntity": [
+          "protected void removeEffectParticles();",
+          "public final boolean addEffect(net.minecraft.world.effect.MobEffectInstance);",
+          "public boolean addEffect(net.minecraft.world.effect.MobEffectInstance, net.minecraft.world.entity.Entity);",
+          "public final net.minecraft.world.effect.MobEffectInstance removeEffectNoUpdate(net.minecraft.core.Holder<net.minecraft.world.effect.MobEffect>);",
+          "public boolean removeEffect(net.minecraft.core.Holder<net.minecraft.world.effect.MobEffect>);",
+          "public boolean hurtServer(net.minecraft.server.level.ServerLevel, net.minecraft.world.damagesource.DamageSource, float);",
+          "public void die(net.minecraft.world.damagesource.DamageSource);",
+          "public void knockback(double, double, double, net.minecraft.world.damagesource.DamageSource, float, boolean);",
+          "public void knockback(double, double, double, net.minecraft.world.damagesource.DamageSource, float);",
+          "public int getArmorValue();",
+          "protected void hurtArmor(net.minecraft.world.damagesource.DamageSource, float);",
+          "protected void hurtHelmet(net.minecraft.world.damagesource.DamageSource, float);"
+        ]
+      },
+      "semantics_status": "requires_bytecode_or_reference_analysis_and_independent_fixtures",
+      "source_classes": [
+        "net.minecraft.world.damagesource.DamageSources",
+        "net.minecraft.world.entity.LivingEntity"
+      ],
+      "source_signatures_verified": true
+    },
+    {
+      "id": "players_modes",
+      "required_behavior": "Survival/creative/adventure/spectator, abilities, actions, permissions and respawn",
+      "selected_method_signatures": {
+        "net.minecraft.server.level.ServerPlayer": [
+          "public void tick();",
+          "protected void tickRegeneration();",
+          "public boolean hasDisconnected();",
+          "public void restoreFrom(net.minecraft.server.level.ServerPlayer, boolean);",
+          "public void hasChangedDimension();"
+        ],
+        "net.minecraft.world.entity.player.Abilities": [],
+        "net.minecraft.world.entity.player.Player": [
+          "public void tick();",
+          "protected void tickRegeneration();",
+          "public boolean hasCorrectToolForDrops(net.minecraft.world.level.block.state.BlockState);",
+          "public void attack(net.minecraft.world.entity.Entity);",
+          "private void attackVisualEffects(net.minecraft.world.entity.Entity, boolean, boolean, boolean, boolean, float);",
+          "public boolean hasInfiniteMaterials();",
+          "public boolean hasContainerOpen();",
+          "protected boolean hasEnoughFoodToDoExhaustiveManoeuvres();",
+          "public boolean isSpectator();",
+          "public boolean isCreative();",
+          "public boolean hasContainerOpen(net.minecraft.world.level.block.entity.ContainerOpenersCounter, net.minecraft.core.BlockPos);"
+        ]
+      },
+      "semantics_status": "requires_bytecode_or_reference_analysis_and_independent_fixtures",
+      "source_classes": [
+        "net.minecraft.world.entity.player.Player",
+        "net.minecraft.world.entity.player.Abilities",
+        "net.minecraft.server.level.ServerPlayer"
+      ],
+      "source_signatures_verified": true
+    },
+    {
+      "id": "hunger_experience",
+      "required_behavior": "Food, saturation, exhaustion, regeneration, starvation and XP thresholds",
+      "selected_method_signatures": {
+        "net.minecraft.world.entity.player.Player": [
+          "protected net.minecraft.world.entity.EntityEquipment createEquipment();",
+          "public static net.minecraft.world.entity.ai.attributes.AttributeSupplier$Builder createAttributes();",
+          "public void tick();",
+          "protected net.minecraft.world.item.ItemCooldowns createItemCooldowns();",
+          "protected void tickRegeneration();",
+          "protected net.minecraft.sounds.SoundEvent getDeathSound();",
+          "public void handleCreativeModeItemDrop(net.minecraft.world.item.ItemStack);",
+          "private net.minecraft.world.damagesource.DamageSource createAttackSource(net.minecraft.world.item.ItemStack);",
+          "public void giveExperiencePoints(int);",
+          "public void giveExperienceLevels(int);",
+          "public int getXpNeededForNextLevel();",
+          "public void causeFoodExhaustion(float);"
+        ],
+        "net.minecraft.world.food.FoodData": [
+          "public void eat(int, float);",
+          "public void eat(net.minecraft.world.food.FoodProperties);",
+          "public void tick(net.minecraft.server.level.ServerPlayer);"
+        ]
+      },
+      "semantics_status": "requires_bytecode_or_reference_analysis_and_independent_fixtures",
+      "source_classes": [
+        "net.minecraft.world.food.FoodData",
+        "net.minecraft.world.entity.player.Player"
+      ],
+      "source_signatures_verified": true
+    },
+    {
+      "id": "advancements_stats",
+      "required_behavior": "Triggers, criteria, requirements, progress, rewards, statistics and achievements UI",
+      "selected_method_signatures": {
+        "net.minecraft.advancements.Advancement": [],
+        "net.minecraft.server.PlayerAdvancements": [
+          "public void reload(net.minecraft.server.ServerAdvancementManager);",
+          "private void load(net.minecraft.server.ServerAdvancementManager);",
+          "public void save();",
+          "public boolean award(net.minecraft.advancements.AdvancementHolder, java.lang.String);",
+          "public boolean revoke(net.minecraft.advancements.AdvancementHolder, java.lang.String);",
+          "public void flushDirty(net.minecraft.server.level.ServerPlayer, boolean);",
+          "private void lambda$award$0(net.minecraft.advancements.AdvancementHolder, net.minecraft.advancements.DisplayInfo);"
+        ],
+        "net.minecraft.stats.ServerStatsCounter": [
+          "public void save();",
+          "public void setValue(net.minecraft.world.entity.player.Player, net.minecraft.stats.Stat<?>, int);"
+        ]
+      },
+      "semantics_status": "requires_bytecode_or_reference_analysis_and_independent_fixtures",
+      "source_classes": [
+        "net.minecraft.server.PlayerAdvancements",
+        "net.minecraft.advancements.Advancement",
+        "net.minecraft.stats.ServerStatsCounter"
+      ],
+      "source_signatures_verified": true
+    },
+    {
+      "id": "commands",
+      "required_behavior": "All command nodes, parsers, selectors, permissions, side effects and errors",
+      "selected_method_signatures": {
+        "net.minecraft.commands.Commands": [
+          "public void performPrefixedCommand(net.minecraft.commands.CommandSourceStack, java.lang.String);",
+          "public void performCommand(com.mojang.brigadier.ParseResults<net.minecraft.commands.CommandSourceStack>, java.lang.String);",
+          "private static net.minecraft.network.chat.Style lambda$performCommand$2(net.minecraft.network.chat.MutableComponent, net.minecraft.network.chat.Style);",
+          "private static void lambda$performCommand$1(java.lang.String, com.mojang.brigadier.context.ContextChain, net.minecraft.commands.CommandSourceStack, net.minecraft.commands.execution.ExecutionContext);",
+          "private static java.lang.String lambda$performCommand$0(java.lang.String);"
+        ],
+        "net.minecraft.commands.arguments.selector.EntitySelector": [
+          "public net.minecraft.world.entity.Entity findSingleEntity(net.minecraft.commands.CommandSourceStack) throws com.mojang.brigadier.exceptions.CommandSyntaxException;",
+          "public java.util.List<? extends net.minecraft.world.entity.Entity> findEntities(net.minecraft.commands.CommandSourceStack) throws com.mojang.brigadier.exceptions.CommandSyntaxException;",
+          "public net.minecraft.server.level.ServerPlayer findSinglePlayer(net.minecraft.commands.CommandSourceStack) throws com.mojang.brigadier.exceptions.CommandSyntaxException;",
+          "public java.util.List<net.minecraft.server.level.ServerPlayer> findPlayers(net.minecraft.commands.CommandSourceStack) throws com.mojang.brigadier.exceptions.CommandSyntaxException;"
+        ],
+        "net.minecraft.server.commands.ExecuteCommand": [
+          "public static void register(com.mojang.brigadier.CommandDispatcher<net.minecraft.commands.CommandSourceStack>, net.minecraft.commands.CommandBuildContext);",
+          "private static net.minecraft.commands.CommandSourceStack lambda$register$12(com.mojang.brigadier.context.CommandContext) throws com.mojang.brigadier.exceptions.CommandSyntaxException;",
+          "private static net.minecraft.commands.CommandSourceStack lambda$register$11(com.mojang.brigadier.context.CommandContext) throws com.mojang.brigadier.exceptions.CommandSyntaxException;",
+          "private static net.minecraft.commands.CommandSourceStack lambda$register$10(com.mojang.brigadier.context.CommandContext) throws com.mojang.brigadier.exceptions.CommandSyntaxException;",
+          "private static net.minecraft.commands.CommandSourceStack lambda$register$9(com.mojang.brigadier.context.CommandContext) throws com.mojang.brigadier.exceptions.CommandSyntaxException;",
+          "private static net.minecraft.commands.CommandSourceStack lambda$register$8(com.mojang.brigadier.context.CommandContext) throws com.mojang.brigadier.exceptions.CommandSyntaxException;",
+          "private static java.util.Collection lambda$register$7(com.mojang.brigadier.context.CommandContext) throws com.mojang.brigadier.exceptions.CommandSyntaxException;",
+          "private static java.util.Collection lambda$register$6(com.mojang.brigadier.context.CommandContext) throws com.mojang.brigadier.exceptions.CommandSyntaxException;",
+          "private static net.minecraft.commands.CommandSourceStack lambda$register$5(com.mojang.brigadier.context.CommandContext) throws com.mojang.brigadier.exceptions.CommandSyntaxException;",
+          "private static net.minecraft.commands.CommandSourceStack lambda$register$4(com.mojang.brigadier.context.CommandContext) throws com.mojang.brigadier.exceptions.CommandSyntaxException;",
+          "private static java.util.Collection lambda$register$3(com.mojang.brigadier.context.CommandContext) throws com.mojang.brigadier.exceptions.CommandSyntaxException;",
+          "private static net.minecraft.commands.CommandSourceStack lambda$register$2(com.mojang.brigadier.context.CommandContext) throws com.mojang.brigadier.exceptions.CommandSyntaxException;"
+        ]
+      },
+      "semantics_status": "requires_bytecode_or_reference_analysis_and_independent_fixtures",
+      "source_classes": [
+        "net.minecraft.commands.Commands",
+        "net.minecraft.commands.arguments.selector.EntitySelector",
+        "net.minecraft.server.commands.ExecuteCommand"
+      ],
+      "source_signatures_verified": true
+    },
+    {
+      "id": "scoreboards_teams",
+      "required_behavior": "Objectives, scores, teams, visibility, collision rules, boss bars and waypoints",
+      "selected_method_signatures": {
+        "net.minecraft.server.ServerScoreboard": [
+          "public void load(net.minecraft.world.scores.ScoreboardSaveData$Packed);",
+          "public void setDisplayObjective(net.minecraft.world.scores.DisplaySlot, net.minecraft.world.scores.Objective);",
+          "public boolean addPlayerToTeam(java.lang.String, net.minecraft.world.scores.PlayerTeam);",
+          "public void removePlayerFromTeam(java.lang.String, net.minecraft.world.scores.PlayerTeam);",
+          "protected void setDirty();",
+          "public java.util.List<net.minecraft.network.protocol.Packet<?>> getStartTrackingPackets(net.minecraft.world.scores.Objective);",
+          "public java.util.List<net.minecraft.network.protocol.Packet<?>> getStopTrackingPackets(net.minecraft.world.scores.Objective);",
+          "public int getObjectiveDisplaySlotCount(net.minecraft.world.scores.Objective);",
+          "private static void lambda$load$3(net.minecraft.server.ServerScoreboard, net.minecraft.world.scores.PlayerTeam$Packed);",
+          "private void lambda$load$2(net.minecraft.world.scores.DisplaySlot, java.lang.String);",
+          "private static void lambda$load$1(net.minecraft.server.ServerScoreboard, net.minecraft.world.scores.Scoreboard$PackedScore);",
+          "private static void lambda$load$0(net.minecraft.server.ServerScoreboard, net.minecraft.world.scores.Objective$Packed);"
+        ],
+        "net.minecraft.server.bossevents.CustomBossEvents": [
+          "public net.minecraft.server.bossevents.CustomBossEvent get(net.minecraft.resources.Identifier);",
+          "public void remove(net.minecraft.server.bossevents.CustomBossEvent);",
+          "public java.util.Collection<net.minecraft.resources.Identifier> getIds();",
+          "public java.util.Collection<net.minecraft.server.bossevents.CustomBossEvent> getEvents();"
+        ],
+        "net.minecraft.world.scores.Scoreboard": [
+          "public net.minecraft.world.scores.Objective getObjective(java.lang.String);",
+          "public net.minecraft.world.scores.Objective addObjective(java.lang.String, net.minecraft.world.scores.criteria.ObjectiveCriteria, net.minecraft.network.chat.Component, net.minecraft.world.scores.criteria.ObjectiveCriteria$RenderType, boolean, net.minecraft.network.chat.numbers.NumberFormat);",
+          "private net.minecraft.world.scores.PlayerScores getOrCreatePlayerInfo(java.lang.String);",
+          "public net.minecraft.world.scores.ScoreAccess getOrCreatePlayerScore(net.minecraft.world.scores.ScoreHolder, net.minecraft.world.scores.Objective);",
+          "public net.minecraft.world.scores.ScoreAccess getOrCreatePlayerScore(net.minecraft.world.scores.ScoreHolder, net.minecraft.world.scores.Objective, boolean);",
+          "public net.minecraft.world.scores.ReadOnlyScoreInfo getPlayerScoreInfo(net.minecraft.world.scores.ScoreHolder, net.minecraft.world.scores.Objective);",
+          "public java.util.Collection<net.minecraft.world.scores.Objective> getObjectives();",
+          "public java.util.Collection<java.lang.String> getObjectiveNames();",
+          "public java.util.Collection<net.minecraft.world.scores.ScoreHolder> getTrackedPlayers();",
+          "public void resetAllPlayerScores(net.minecraft.world.scores.ScoreHolder);",
+          "public void resetSinglePlayerScore(net.minecraft.world.scores.ScoreHolder, net.minecraft.world.scores.Objective);",
+          "public void removeObjective(net.minecraft.world.scores.Objective);"
+        ]
+      },
+      "semantics_status": "requires_bytecode_or_reference_analysis_and_independent_fixtures",
+      "source_classes": [
+        "net.minecraft.world.scores.Scoreboard",
+        "net.minecraft.server.ServerScoreboard",
+        "net.minecraft.server.bossevents.CustomBossEvents"
+      ],
+      "source_signatures_verified": true
+    },
+    {
+      "id": "time_weather",
+      "required_behavior": "World clocks, timelines, daylight, weather, sleep and environmental transitions",
+      "selected_method_signatures": {
+        "net.minecraft.server.level.ServerLevel": [
+          "public void tick(java.util.function.BooleanSupplier);",
+          "protected void tickTime();",
+          "public void tickCustomSpawners(boolean);",
+          "public void tickChunk(net.minecraft.world.level.chunk.LevelChunk, int);",
+          "public void tickThunder(net.minecraft.world.level.chunk.LevelChunk);",
+          "public void tickPrecipitation(net.minecraft.core.BlockPos);",
+          "private void advanceWeatherCycle();",
+          "private void tickFluid(net.minecraft.core.BlockPos, net.minecraft.world.level.material.Fluid);",
+          "private void tickBlock(net.minecraft.core.BlockPos, net.minecraft.world.level.block.Block);",
+          "public void tickNonPassenger(net.minecraft.world.entity.Entity);",
+          "private void tickPassenger(net.minecraft.world.entity.Entity, net.minecraft.world.entity.Entity);",
+          "public net.minecraft.world.ticks.LevelTicks<net.minecraft.world.level.block.Block> getBlockTicks();"
+        ],
+        "net.minecraft.world.clock.WorldClock": [],
+        "net.minecraft.world.timeline.Timeline": []
+      },
+      "semantics_status": "requires_bytecode_or_reference_analysis_and_independent_fixtures",
+      "source_classes": [
+        "net.minecraft.world.clock.WorldClock",
+        "net.minecraft.world.timeline.Timeline",
+        "net.minecraft.server.level.ServerLevel"
+      ],
+      "source_signatures_verified": true
+    },
+    {
+      "id": "explosions_fire",
+      "required_behavior": "Explosion ray sampling, block/entity effects, fire spread and destruction rules",
+      "selected_method_signatures": {
+        "net.minecraft.world.level.ServerExplosion": [
+          "public static float getSeenPercent(net.minecraft.world.phys.Vec3, net.minecraft.world.entity.Entity);",
+          "private java.util.List<net.minecraft.core.BlockPos> calculateExplodedPositions();",
+          "public int explode();",
+          "public java.util.Map<net.minecraft.world.entity.player.Player, net.minecraft.world.phys.Vec3> getHitPlayers();",
+          "public net.minecraft.world.entity.LivingEntity getIndirectSourceEntity();",
+          "public net.minecraft.world.entity.Entity getDirectSourceEntity();",
+          "public net.minecraft.world.damagesource.DamageSource getDamageSource();",
+          "public net.minecraft.world.level.Explosion$BlockInteraction getBlockInteraction();"
+        ],
+        "net.minecraft.world.level.block.FireBlock": [
+          "protected net.minecraft.world.phys.shapes.VoxelShape getShape(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.BlockGetter, net.minecraft.core.BlockPos, net.minecraft.world.phys.shapes.CollisionContext);",
+          "public net.minecraft.world.level.block.state.BlockState getStateForPlacement(net.minecraft.world.item.context.BlockPlaceContext);",
+          "protected net.minecraft.world.level.block.state.BlockState getStateForPlacement(net.minecraft.world.level.BlockGetter, net.minecraft.core.BlockPos);",
+          "protected void tick(net.minecraft.world.level.block.state.BlockState, net.minecraft.server.level.ServerLevel, net.minecraft.core.BlockPos, net.minecraft.util.RandomSource);",
+          "private int getBurnOdds(net.minecraft.world.level.block.state.BlockState);",
+          "private int getIgniteOdds(net.minecraft.world.level.block.state.BlockState);",
+          "private net.minecraft.world.level.block.state.BlockState getStateWithAge(net.minecraft.world.level.LevelReader, net.minecraft.core.BlockPos, int);",
+          "private int getIgniteOdds(net.minecraft.world.level.LevelReader, net.minecraft.core.BlockPos);",
+          "private static int getFireTickDelay(net.minecraft.util.RandomSource);"
+        ]
+      },
+      "semantics_status": "requires_bytecode_or_reference_analysis_and_independent_fixtures",
+      "source_classes": [
+        "net.minecraft.world.level.ServerExplosion",
+        "net.minecraft.world.level.block.FireBlock"
+      ],
+      "source_signatures_verified": true
+    },
+    {
+      "id": "light",
+      "required_behavior": "Sky/block lighting, propagation, chunk boundaries and updates",
+      "selected_method_signatures": {
+        "net.minecraft.world.level.lighting.LevelLightEngine": [
+          "public void checkBlock(net.minecraft.core.BlockPos);",
+          "public int runLightUpdates();",
+          "public void updateSectionStatus(net.minecraft.core.SectionPos, boolean);",
+          "public void propagateLightSources(net.minecraft.world.level.ChunkPos);",
+          "public net.minecraft.world.level.lighting.LayerLightEventListener getLayerListener(net.minecraft.world.level.LightLayer);",
+          "public java.lang.String getDebugData(net.minecraft.world.level.LightLayer, net.minecraft.core.SectionPos);",
+          "public net.minecraft.world.level.lighting.LayerLightSectionStorage$SectionType getDebugSectionType(net.minecraft.world.level.LightLayer, net.minecraft.core.SectionPos);",
+          "public int getRawBrightness(net.minecraft.core.BlockPos, int);",
+          "public int getLightSectionCount();",
+          "public int getMinLightSection();",
+          "public int getMaxLightSection();"
+        ],
+        "net.minecraft.world.level.lighting.LightEngine": [
+          "public static int getLightDampeningInto(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.block.state.BlockState, net.minecraft.core.Direction, int);",
+          "public static net.minecraft.world.phys.shapes.VoxelShape getOcclusionShape(net.minecraft.world.level.block.state.BlockState, net.minecraft.core.Direction);",
+          "protected net.minecraft.world.level.block.state.BlockState getState(net.minecraft.core.BlockPos);",
+          "protected int getOpacity(net.minecraft.world.level.block.state.BlockState);",
+          "protected net.minecraft.world.level.chunk.LightChunk getChunk(int, int);",
+          "public void checkBlock(net.minecraft.core.BlockPos);",
+          "public void updateSectionStatus(net.minecraft.core.SectionPos, boolean);",
+          "public int runLightUpdates();",
+          "private int propagateIncreases();",
+          "private int propagateDecreases();",
+          "public net.minecraft.world.level.chunk.DataLayer getDataLayerData(net.minecraft.core.SectionPos);",
+          "public int getLightValue(net.minecraft.core.BlockPos);"
+        ]
+      },
+      "semantics_status": "requires_bytecode_or_reference_analysis_and_independent_fixtures",
+      "source_classes": [
+        "net.minecraft.world.level.lighting.LevelLightEngine",
+        "net.minecraft.world.level.lighting.LightEngine"
+      ],
+      "source_signatures_verified": true
+    },
+    {
+      "id": "persistence",
+      "required_behavior": "NBT codecs, region/chunk/entity/player/world saves, migration and recovery",
+      "selected_method_signatures": {
+        "net.minecraft.nbt.NbtIo": [
+          "public static net.minecraft.nbt.CompoundTag readCompressed(java.nio.file.Path, net.minecraft.nbt.NbtAccounter) throws java.io.IOException;",
+          "public static net.minecraft.nbt.CompoundTag readCompressed(java.io.InputStream, net.minecraft.nbt.NbtAccounter) throws java.io.IOException;",
+          "public static void writeCompressed(net.minecraft.nbt.CompoundTag, java.nio.file.Path) throws java.io.IOException;",
+          "public static void writeCompressed(net.minecraft.nbt.CompoundTag, java.io.OutputStream) throws java.io.IOException;",
+          "public static void write(net.minecraft.nbt.CompoundTag, java.nio.file.Path) throws java.io.IOException;",
+          "public static net.minecraft.nbt.CompoundTag read(java.nio.file.Path) throws java.io.IOException;",
+          "public static net.minecraft.nbt.CompoundTag read(java.io.DataInput) throws java.io.IOException;",
+          "public static net.minecraft.nbt.CompoundTag read(java.io.DataInput, net.minecraft.nbt.NbtAccounter) throws java.io.IOException;",
+          "public static void write(net.minecraft.nbt.CompoundTag, java.io.DataOutput) throws java.io.IOException;",
+          "public static net.minecraft.nbt.Tag readAnyTag(java.io.DataInput, net.minecraft.nbt.NbtAccounter) throws java.io.IOException;",
+          "public static void writeAnyTag(net.minecraft.nbt.Tag, java.io.DataOutput) throws java.io.IOException;",
+          "public static void writeUnnamedTag(net.minecraft.nbt.Tag, java.io.DataOutput) throws java.io.IOException;"
+        ],
+        "net.minecraft.world.level.chunk.storage.RegionFile": [
+          "protected synchronized void write(net.minecraft.world.level.ChunkPos, java.nio.ByteBuffer) throws java.io.IOException;",
+          "private net.minecraft.world.level.chunk.storage.RegionFile$CommitOp writeToExternalFile(java.nio.file.Path, java.nio.ByteBuffer) throws java.io.IOException;",
+          "private void writeHeader() throws java.io.IOException;",
+          "private static void lambda$writeToExternalFile$0(java.nio.file.Path, java.nio.file.Path) throws java.io.IOException;",
+          "private void lambda$write$0(net.minecraft.world.level.ChunkPos) throws java.io.IOException;"
+        ],
+        "net.minecraft.world.level.storage.LevelStorageSource": [
+          "public static net.minecraft.world.level.WorldDataConfiguration readDataConfig(com.mojang.serialization.Dynamic<?>);",
+          "public static <T extends net.minecraft.world.level.saveddata.SavedData> com.mojang.serialization.DataResult<T> readExistingSavedData(net.minecraft.world.level.storage.LevelStorageSource$LevelStorageAccess, net.minecraft.core.HolderLookup$Provider, net.minecraft.world.level.saveddata.SavedDataType<T>);",
+          "public static void writeGameRules(net.minecraft.world.level.storage.WorldData, java.nio.file.Path, net.minecraft.world.level.gamerules.GameRules) throws java.io.IOException;",
+          "public static void writeWorldGenSettings(net.minecraft.core.RegistryAccess, java.nio.file.Path, net.minecraft.world.level.levelgen.WorldGenSettings) throws java.io.IOException;",
+          "private static <T> void writeSavedData(java.nio.file.Path, com.mojang.serialization.DynamicOps<net.minecraft.nbt.Tag>, net.minecraft.world.level.saveddata.SavedDataType<?>, com.mojang.serialization.Codec<T>, T) throws java.io.IOException;",
+          "private static net.minecraft.nbt.CompoundTag readLevelDataTagRaw(java.nio.file.Path) throws java.io.IOException;",
+          "private net.minecraft.world.level.storage.LevelSummary readLevelSummary(net.minecraft.world.level.storage.LevelStorageSource$LevelDirectory, boolean);",
+          "private static net.minecraft.nbt.Tag readLightweightData(java.nio.file.Path) throws java.io.IOException;",
+          "public net.minecraft.world.level.storage.LevelStorageSource$LevelStorageAccess validateAndCreateAccess(java.lang.String) throws java.io.IOException, net.minecraft.world.level.validation.ContentValidationException;",
+          "public net.minecraft.world.level.storage.LevelStorageSource$LevelStorageAccess createAccess(java.lang.String) throws java.io.IOException;"
+        ]
+      },
+      "semantics_status": "requires_bytecode_or_reference_analysis_and_independent_fixtures",
+      "source_classes": [
+        "net.minecraft.nbt.NbtIo",
+        "net.minecraft.world.level.chunk.storage.RegionFile",
+        "net.minecraft.world.level.storage.LevelStorageSource"
+      ],
+      "source_signatures_verified": true
+    },
+    {
+      "id": "protocol",
+      "required_behavior": "Packet field codecs, ordering, connection states, compression, encryption and disconnects",
+      "selected_method_signatures": {
+        "net.minecraft.network.Connection": [
+          "public <T extends net.minecraft.network.PacketListener> void setupInboundProtocol(net.minecraft.network.ProtocolInfo<T>, T);",
+          "public void setupOutboundProtocol(net.minecraft.network.ProtocolInfo<?>);",
+          "public void send(net.minecraft.network.protocol.Packet<?>);",
+          "public void send(net.minecraft.network.protocol.Packet<?>, io.netty.channel.ChannelFutureListener);",
+          "public void send(net.minecraft.network.protocol.Packet<?>, io.netty.channel.ChannelFutureListener, boolean);",
+          "private void sendPacket(net.minecraft.network.protocol.Packet<?>, io.netty.channel.ChannelFutureListener, boolean);",
+          "public void tick();",
+          "protected void tickSecond();",
+          "public void disconnect(net.minecraft.network.chat.Component);",
+          "public void disconnect(net.minecraft.network.DisconnectionDetails);",
+          "public void setupCompression(int, boolean);",
+          "public void handleDisconnection();"
+        ],
+        "net.minecraft.server.network.ServerGamePacketListenerImpl": [
+          "public void tick();",
+          "private boolean tickPlayer();",
+          "public void handlePlayerInput(net.minecraft.network.protocol.game.ServerboundPlayerInputPacket);",
+          "public void handleMoveVehicle(net.minecraft.network.protocol.game.ServerboundMoveVehiclePacket);",
+          "public void handleAcceptTeleportPacket(net.minecraft.network.protocol.game.ServerboundAcceptTeleportationPacket);",
+          "public void handleAcceptPlayerLoad(net.minecraft.network.protocol.game.ServerboundPlayerLoadedPacket);",
+          "public void handleRecipeBookSeenRecipePacket(net.minecraft.network.protocol.game.ServerboundRecipeBookSeenRecipePacket);",
+          "public void handleBundleItemSelectedPacket(net.minecraft.network.protocol.game.ServerboundSelectBundleItemPacket);",
+          "public void handleRecipeBookChangeSettingsPacket(net.minecraft.network.protocol.game.ServerboundRecipeBookChangeSettingsPacket);",
+          "public void handleSeenAdvancements(net.minecraft.network.protocol.game.ServerboundSeenAdvancementsPacket);",
+          "public void handleCustomCommandSuggestions(net.minecraft.network.protocol.game.ServerboundCommandSuggestionPacket);",
+          "public void handleSetCommandBlock(net.minecraft.network.protocol.game.ServerboundSetCommandBlockPacket);"
+        ]
+      },
+      "semantics_status": "requires_bytecode_or_reference_analysis_and_independent_fixtures",
+      "source_classes": [
+        "net.minecraft.network.Connection",
+        "net.minecraft.server.network.ServerGamePacketListenerImpl"
+      ],
+      "source_signatures_verified": true
+    },
+    {
+      "id": "multiplayer",
+      "required_behavior": "Integrated/dedicated behavior, login, permissions, synchronization and multi-client sessions",
+      "selected_method_signatures": {
+        "net.minecraft.client.server.IntegratedServer": [
+          "protected boolean initServer();",
+          "protected void tickServer(java.util.function.BooleanSupplier);",
+          "private void tickPaused();"
+        ],
+        "net.minecraft.server.dedicated.DedicatedServer": [
+          "protected boolean initServer() throws java.io.IOException;",
+          "protected void tickServer(java.util.function.BooleanSupplier);",
+          "protected void tickConnection();"
+        ],
+        "net.minecraft.server.players.PlayerList": [
+          "public void placeNewPlayer(net.minecraft.network.Connection, net.minecraft.server.level.ServerPlayer, net.minecraft.server.network.CommonListenerCookie);",
+          "public void remove(net.minecraft.server.level.ServerPlayer);",
+          "public void tick();",
+          "public void broadcastAll(net.minecraft.network.protocol.Packet<?>);",
+          "public void broadcastAll(net.minecraft.network.protocol.Packet<?>, net.minecraft.resources.ResourceKey<net.minecraft.world.level.Level>);",
+          "public void broadcastSystemToTeam(net.minecraft.world.entity.player.Player, net.minecraft.network.chat.Component);",
+          "public void broadcastSystemToAllExceptTeam(net.minecraft.world.entity.player.Player, net.minecraft.network.chat.Component);",
+          "public void broadcast(net.minecraft.world.entity.player.Player, double, double, double, double, net.minecraft.resources.ResourceKey<net.minecraft.world.level.Level>, net.minecraft.network.protocol.Packet<?>);",
+          "public void removeAll();",
+          "public void broadcastSystemMessage(net.minecraft.network.chat.Component, boolean);",
+          "public void broadcastSystemMessage(net.minecraft.network.chat.Component, java.util.function.Function<net.minecraft.server.level.ServerPlayer, net.minecraft.network.chat.Component>, boolean);",
+          "public void broadcastChatMessage(net.minecraft.network.chat.PlayerChatMessage, net.minecraft.commands.CommandSourceStack, net.minecraft.network.chat.ChatType$Bound);"
+        ]
+      },
+      "semantics_status": "requires_bytecode_or_reference_analysis_and_independent_fixtures",
+      "source_classes": [
+        "net.minecraft.server.dedicated.DedicatedServer",
+        "net.minecraft.client.server.IntegratedServer",
+        "net.minecraft.server.players.PlayerList"
+      ],
+      "source_signatures_verified": true
+    },
+    {
+      "id": "client_loop_input",
+      "required_behavior": "Client scheduling, keyboard/mouse configuration, focus, window and controls",
+      "selected_method_signatures": {
+        "net.minecraft.client.KeyboardHandler": [
+          "private boolean handleChunkDebugKeys(net.minecraft.client.input.KeyEvent);",
+          "private boolean handleDebugKeys(net.minecraft.client.input.KeyEvent);",
+          "public void keyPress(long, int, net.minecraft.client.input.KeyEvent);",
+          "public void tick();",
+          "private void lambda$keyPress$0(int);",
+          "private static net.minecraft.network.chat.Style lambda$handleDebugKeys$0(java.nio.file.Path, net.minecraft.network.chat.Style);"
+        ],
+        "net.minecraft.client.Minecraft": [
+          "public void run();",
+          "private void runTick(boolean);",
+          "public void tick();",
+          "private void handleKeybinds();",
+          "public boolean handleGlobalKeyPress(com.mojang.blaze3d.platform.InputConstants$Key, boolean);",
+          "private void lambda$handleKeybinds$0(net.minecraft.core.Holder);",
+          "private static boolean lambda$tick$0();",
+          "private static void lambda$runTick$0(java.util.concurrent.CompletableFuture);"
+        ],
+        "net.minecraft.client.MouseHandler": [
+          "public void handleAccumulatedMovement();",
+          "private void turnPlayer(double);"
+        ]
+      },
+      "semantics_status": "requires_bytecode_or_reference_analysis_and_independent_fixtures",
+      "source_classes": [
+        "net.minecraft.client.Minecraft",
+        "net.minecraft.client.KeyboardHandler",
+        "net.minecraft.client.MouseHandler"
+      ],
+      "source_signatures_verified": true
+    },
+    {
+      "id": "rendering",
+      "required_behavior": "Camera, geometry, culling, lighting, transparency, effects, entities and GUI composition",
+      "selected_method_signatures": {
+        "net.minecraft.client.renderer.GameRenderer": [
+          "public net.minecraft.client.renderer.GameRenderer(net.minecraft.client.Minecraft, net.minecraft.client.renderer.FirstPersonHandsAndItemsRenderer, net.minecraft.client.resources.model.ModelManager, net.minecraft.client.renderer.item.ItemModelResolver);",
+          "public net.minecraft.client.renderer.RenderBuffers renderBuffers();",
+          "public net.minecraft.client.renderer.feature.FeatureRenderDispatcher featureRenderDispatcher();",
+          "public net.minecraft.client.renderer.state.GameRenderState gameRenderState();",
+          "public void tick();",
+          "public void resize(int, int);",
+          "private void bobHurt(net.minecraft.client.renderer.state.level.CameraRenderState, com.mojang.blaze3d.vertex.PoseStack);",
+          "private void bobView(net.minecraft.client.renderer.state.level.CameraRenderState, com.mojang.blaze3d.vertex.PoseStack);",
+          "private void renderItemInHand(net.minecraft.client.renderer.state.level.CameraRenderState, net.minecraft.client.renderer.state.level.PlayerRenderState, com.mojang.renderpearl.api.textures.GpuTextureView);",
+          "public void extract(net.minecraft.client.DeltaTracker, boolean);",
+          "public void render();",
+          "public void renderLevel();"
+        ],
+        "net.minecraft.client.renderer.LevelRenderer": [
+          "public net.minecraft.client.renderer.LevelRenderer(net.minecraft.client.renderer.entity.EntityRenderDispatcher, net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher, net.minecraft.client.resources.model.ModelManager, net.minecraft.client.renderer.texture.TextureManager, net.minecraft.client.resources.model.sprite.AtlasManager, net.minecraft.client.renderer.ShaderManager, net.minecraft.client.renderer.GameRenderer, int, int);",
+          "public void render(com.mojang.blaze3d.resource.GraphicsResourceAllocator, boolean, net.minecraft.client.renderer.state.level.CameraRenderState, com.mojang.renderpearl.api.buffers.GpuBufferSlice, org.joml.Vector4f, boolean, boolean);",
+          "private void submitFeatures(net.minecraft.client.renderer.state.level.LevelRenderState, net.minecraft.client.renderer.SubmitNodeCollector, boolean);",
+          "private void repositionCamera(net.minecraft.client.renderer.state.level.CameraRenderState);",
+          "private void addSkyPass(com.mojang.blaze3d.framegraph.FrameGraphBuilder, net.minecraft.client.renderer.state.level.CameraRenderState, com.mojang.renderpearl.api.buffers.GpuBufferSlice);",
+          "private void addMainPass(com.mojang.blaze3d.framegraph.FrameGraphBuilder, net.minecraft.client.renderer.feature.FeatureRenderDispatcher$PreparedFrame, com.mojang.renderpearl.api.buffers.GpuBufferSlice, net.minecraft.client.renderer.chunk.ChunkSectionsToRender, boolean);",
+          "private void executeSeeThrough(net.minecraft.client.renderer.feature.FeatureRenderDispatcher$PreparedFrame, com.mojang.blaze3d.pipeline.RenderTarget);",
+          "private void executeAlwaysOnTop(net.minecraft.client.renderer.feature.FeatureRenderDispatcher$PreparedFrame, com.mojang.blaze3d.pipeline.RenderTarget, boolean);",
+          "private void executeSolid(net.minecraft.client.renderer.chunk.ChunkSectionsToRender, net.minecraft.client.renderer.feature.FeatureRenderDispatcher$PreparedFrame, com.mojang.renderpearl.api.commands.RenderPass);",
+          "private void executeOit(net.minecraft.client.renderer.chunk.ChunkSectionsToRender, net.minecraft.client.renderer.feature.FeatureRenderDispatcher$PreparedFrame);",
+          "private void executeOitWaterMask(net.minecraft.client.renderer.feature.FeatureRenderDispatcher$PreparedFrame, com.mojang.blaze3d.pipeline.RenderTarget);",
+          "private void executeClassicTransparency(net.minecraft.client.renderer.chunk.ChunkSectionsToRender, net.minecraft.client.renderer.feature.FeatureRenderDispatcher$PreparedFrame, com.mojang.renderpearl.api.commands.RenderPass);"
+        ]
+      },
+      "semantics_status": "requires_bytecode_or_reference_analysis_and_independent_fixtures",
+      "source_classes": [
+        "net.minecraft.client.renderer.GameRenderer",
+        "net.minecraft.client.renderer.LevelRenderer"
+      ],
+      "source_signatures_verified": true
+    },
+    {
+      "id": "models_assets",
+      "required_behavior": "Models, blockstates, item definitions, equipment, texture atlases and pack overrides",
+      "selected_method_signatures": {
+        "net.minecraft.client.renderer.texture.TextureManager": [
+          "public void registerAndLoad(net.minecraft.resources.Identifier, net.minecraft.client.renderer.texture.ReloadableTexture);",
+          "public void registerForNextReload(net.minecraft.resources.Identifier);",
+          "public void register(net.minecraft.resources.Identifier, net.minecraft.client.renderer.texture.AbstractTexture);",
+          "public net.minecraft.client.renderer.texture.AbstractTexture getTexture(net.minecraft.resources.Identifier);",
+          "public java.util.concurrent.CompletableFuture<java.lang.Void> reload(net.minecraft.server.packs.resources.PreparableReloadListener$SharedState, java.util.concurrent.Executor, net.minecraft.server.packs.resources.PreparableReloadListener$PreparationBarrier, java.util.concurrent.Executor);",
+          "private static void lambda$reload$2(java.util.List, java.lang.Void);",
+          "private static java.util.concurrent.CompletableFuture[] lambda$reload$1(int);",
+          "private static void lambda$reload$0(java.util.List, net.minecraft.server.packs.resources.ResourceManager, java.util.concurrent.Executor, net.minecraft.resources.Identifier, net.minecraft.client.renderer.texture.AbstractTexture);"
+        ],
+        "net.minecraft.client.resources.model.ModelManager": [
+          "public net.minecraft.client.renderer.item.ItemModel getItemModel(net.minecraft.resources.Identifier);",
+          "public net.minecraft.client.renderer.item.ClientItem$Properties getItemProperties(net.minecraft.resources.Identifier);",
+          "public net.minecraft.client.renderer.block.BlockStateModelSet getBlockStateModelSet();",
+          "public net.minecraft.client.renderer.block.BlockModelSet getBlockModelSet();",
+          "public net.minecraft.client.renderer.block.FluidStateModelSet getFluidStateModelSet();",
+          "public final java.util.concurrent.CompletableFuture<java.lang.Void> reload(net.minecraft.server.packs.resources.PreparableReloadListener$SharedState, java.util.concurrent.Executor, net.minecraft.server.packs.resources.PreparableReloadListener$PreparationBarrier, java.util.concurrent.Executor);",
+          "private void apply(net.minecraft.client.resources.model.ModelManager$ReloadState);",
+          "private java.util.concurrent.CompletionStage lambda$reload$4(java.util.concurrent.CompletableFuture, java.util.concurrent.CompletableFuture, java.util.concurrent.CompletableFuture, java.util.concurrent.CompletableFuture, java.util.concurrent.CompletableFuture, java.util.concurrent.CompletableFuture, java.util.concurrent.CompletableFuture, java.util.concurrent.CompletableFuture, java.util.concurrent.CompletableFuture, java.util.concurrent.Executor, java.lang.Void);",
+          "private static java.lang.String lambda$reload$5(net.minecraft.resources.Identifier);",
+          "private net.minecraft.client.renderer.block.LoadedBlockModels lambda$reload$3(java.util.concurrent.CompletableFuture, java.util.concurrent.CompletableFuture, java.lang.Void);",
+          "private it.unimi.dsi.fastutil.objects.Object2IntMap lambda$reload$2(net.minecraft.client.resources.model.BlockStateModelLoader$LoadedModels);",
+          "private static net.minecraft.client.resources.model.ModelManager$ResolvedModels lambda$reload$1(java.util.concurrent.CompletableFuture, java.util.concurrent.CompletableFuture, java.util.concurrent.CompletableFuture, java.lang.Void);"
+        ]
+      },
+      "semantics_status": "requires_bytecode_or_reference_analysis_and_independent_fixtures",
+      "source_classes": [
+        "net.minecraft.client.resources.model.ModelManager",
+        "net.minecraft.client.renderer.texture.TextureManager"
+      ],
+      "source_signatures_verified": true
+    },
+    {
+      "id": "particles_audio",
+      "required_behavior": "Particle types/simulation, sounds, attenuation, music, subtitles and event timing",
+      "selected_method_signatures": {
+        "net.minecraft.client.particle.ParticleEngine": [
+          "public net.minecraft.client.particle.ParticleEngine(net.minecraft.client.multiplayer.ClientLevel, net.minecraft.client.particle.ParticleResources);",
+          "public void createTrackingEmitter(net.minecraft.world.entity.Entity, net.minecraft.core.particles.ParticleOptions);",
+          "public void createTrackingEmitter(net.minecraft.world.entity.Entity, net.minecraft.core.particles.ParticleOptions, int);",
+          "public net.minecraft.client.particle.Particle createParticle(net.minecraft.core.particles.ParticleOptions, double, double, double, double, double, double);",
+          "public void tick();",
+          "private net.minecraft.client.particle.ParticleGroup<?> createParticleGroup(net.minecraft.client.particle.ParticleRenderType);",
+          "public void extract(net.minecraft.client.renderer.state.level.ParticlesRenderState, net.minecraft.client.renderer.culling.Frustum, net.minecraft.client.Camera, float);",
+          "public void setLevel(net.minecraft.client.multiplayer.ClientLevel);",
+          "private void lambda$tick$1(net.minecraft.core.particles.ParticleLimit);",
+          "private static void lambda$tick$0(net.minecraft.client.particle.ParticleRenderType, net.minecraft.client.particle.ParticleGroup);"
+        ],
+        "net.minecraft.client.sounds.MusicManager": [
+          "public void tick();",
+          "public void stopPlaying(net.minecraft.sounds.Music);",
+          "public void stopPlaying();"
+        ],
+        "net.minecraft.client.sounds.SoundManager": [
+          "public net.minecraft.client.sounds.SoundEngine$PlayResult play(net.minecraft.client.resources.sounds.SoundInstance);",
+          "public void playDelayed(net.minecraft.client.resources.sounds.SoundInstance, int);",
+          "public void stop();",
+          "public void tick(boolean);",
+          "public void stop(net.minecraft.client.resources.sounds.SoundInstance);",
+          "public void stop(net.minecraft.resources.Identifier, net.minecraft.sounds.SoundSource);"
+        ]
+      },
+      "semantics_status": "requires_bytecode_or_reference_analysis_and_independent_fixtures",
+      "source_classes": [
+        "net.minecraft.client.particle.ParticleEngine",
+        "net.minecraft.client.sounds.SoundManager",
+        "net.minecraft.client.sounds.MusicManager"
+      ],
+      "source_signatures_verified": true
+    },
+    {
+      "id": "ui_settings",
+      "required_behavior": "All screens, menus, HUD, chat, settings, accessibility and localization",
+      "selected_method_signatures": {
+        "net.minecraft.client.Options": [
+          "private static void operateOnLevelExtractor(java.util.function.Consumer<net.minecraft.client.renderer.extract.LevelExtractor>);",
+          "public net.minecraft.client.OptionInstance<java.lang.Integer> renderDistance();",
+          "public int getMenuBackgroundBlurriness();",
+          "public final float getFinalSoundSourceVolume(net.minecraft.sounds.SoundSource);",
+          "public final float getSoundSourceVolume(net.minecraft.sounds.SoundSource);",
+          "public final net.minecraft.client.OptionInstance<java.lang.Double> getSoundSourceOptionInstance(net.minecraft.sounds.SoundSource);",
+          "public net.minecraft.client.OptionInstance<java.lang.Boolean> showAutosaveIndicator();",
+          "public net.minecraft.client.OptionInstance<java.lang.Boolean> saveChatDrafts();",
+          "public float getBackgroundOpacity(float);",
+          "public int getBackgroundColor(float);",
+          "public int getBackgroundColor(int);",
+          "public void load();"
+        ],
+        "net.minecraft.client.gui.Gui": [
+          "public net.minecraft.client.gui.Gui(net.minecraft.client.Minecraft, net.minecraft.client.gui.Hud, net.minecraft.client.renderer.state.gui.GuiRenderState);",
+          "public void registerReloadListeners(net.minecraft.server.packs.resources.ReloadableResourceManager);",
+          "public void tick();",
+          "private void renderActiveTextDebug();",
+          "private void lambda$renderActiveTextDebug$0(net.minecraft.client.renderer.state.gui.GuiTextRenderState);"
+        ],
+        "net.minecraft.client.gui.screens.TitleScreen": [
+          "public void tick();",
+          "public static void registerTextures(net.minecraft.client.renderer.texture.TextureManager);",
+          "protected void init();",
+          "private int getHorizontalPosition(int, int, int);",
+          "private net.minecraft.network.chat.Component getMultiplayerDisabledReason();",
+          "private void lambda$init$6(net.minecraft.client.gui.components.Button);",
+          "private void lambda$init$5(net.minecraft.client.gui.components.Button);",
+          "private void lambda$init$4(net.minecraft.client.gui.components.Button);",
+          "private void lambda$init$3(net.minecraft.client.gui.components.Button);",
+          "private void lambda$init$2(net.minecraft.client.gui.components.Button);",
+          "private void lambda$init$0(net.minecraft.client.gui.components.Button);",
+          "private void lambda$init$1();"
+        ],
+        "net.minecraft.client.resources.language.LanguageManager": [
+          "public void onResourceManagerReload(net.minecraft.server.packs.resources.ResourceManager);",
+          "public java.lang.String getSelected();",
+          "public java.util.SortedMap<java.lang.String, net.minecraft.client.resources.language.LanguageInfo> getLanguages();",
+          "public net.minecraft.client.resources.language.LanguageInfo getLanguage(java.lang.String);"
+        ]
+      },
+      "semantics_status": "requires_bytecode_or_reference_analysis_and_independent_fixtures",
+      "source_classes": [
+        "net.minecraft.client.gui.Gui",
+        "net.minecraft.client.Options",
+        "net.minecraft.client.gui.screens.TitleScreen",
+        "net.minecraft.client.resources.language.LanguageManager"
+      ],
+      "source_signatures_verified": true
+    },
+    {
+      "id": "pack_loading",
+      "required_behavior": "Pack metadata/ranges, overlays, priority, tags, registry composition, reload and validation",
+      "selected_method_signatures": {
+        "net.minecraft.server.packs.PackResources": [
+          "public abstract net.minecraft.server.packs.resources.IoSupplier<java.io.InputStream> getResource(net.minecraft.server.packs.PackType, net.minecraft.resources.Identifier);",
+          "public abstract java.util.Set<java.lang.String> getNamespaces(net.minecraft.server.packs.PackType);"
+        ],
+        "net.minecraft.server.packs.repository.PackRepository": [
+          "public void reload();",
+          "public void setSelected(java.util.Collection<java.lang.String>);",
+          "private java.util.stream.Stream<net.minecraft.server.packs.repository.Pack> getAvailablePacks(java.util.Collection<java.lang.String>);",
+          "public java.util.Collection<java.lang.String> getAvailableIds();",
+          "public java.util.Collection<net.minecraft.server.packs.repository.Pack> getAvailablePacks();",
+          "public java.util.Collection<java.lang.String> getSelectedIds();",
+          "public net.minecraft.world.flag.FeatureFlagSet getRequestedFeatureFlags();",
+          "public java.util.Collection<net.minecraft.server.packs.repository.Pack> getSelectedPacks();",
+          "public net.minecraft.server.packs.repository.Pack getPack(java.lang.String);",
+          "public java.util.List<net.minecraft.server.packs.PackResources> openAllSelected();"
+        ],
+        "net.minecraft.server.packs.resources.ReloadableResourceManager": [
+          "public net.minecraft.server.packs.resources.ReloadableResourceManager(net.minecraft.server.packs.PackType);",
+          "public void registerReloadListener(net.minecraft.server.packs.resources.PreparableReloadListener);",
+          "public net.minecraft.server.packs.resources.ReloadInstance createReload(java.util.concurrent.Executor, java.util.concurrent.Executor, java.util.concurrent.CompletableFuture<net.minecraft.util.Unit>, java.util.List<net.minecraft.server.packs.PackResources>);",
+          "public java.util.Optional<net.minecraft.server.packs.resources.Resource> getResource(net.minecraft.resources.Identifier);",
+          "public java.util.Set<java.lang.String> getNamespaces();",
+          "public java.util.List<net.minecraft.server.packs.resources.Resource> getResourceStack(net.minecraft.resources.Identifier);",
+          "private static java.lang.Object lambda$createReload$0(java.util.List);"
+        ]
+      },
+      "semantics_status": "requires_bytecode_or_reference_analysis_and_independent_fixtures",
+      "source_classes": [
+        "net.minecraft.server.packs.PackResources",
+        "net.minecraft.server.packs.resources.ReloadableResourceManager",
+        "net.minecraft.server.packs.repository.PackRepository"
+      ],
+      "source_signatures_verified": true
+    },
+    {
+      "id": "game_tests",
+      "required_behavior": "Game-test definitions, environments, commands, assertions, ordering and reports",
+      "selected_method_signatures": {
+        "net.minecraft.gametest.framework.GameTestHelper": [
+          "public net.minecraft.gametest.framework.GameTestAssertException assertionException(net.minecraft.network.chat.Component);",
+          "public net.minecraft.gametest.framework.GameTestAssertException assertionException(java.lang.String, java.lang.Object...);",
+          "public net.minecraft.gametest.framework.GameTestAssertPosException assertionException(net.minecraft.core.BlockPos, net.minecraft.network.chat.Component);",
+          "public net.minecraft.gametest.framework.GameTestAssertPosException assertionException(net.minecraft.core.BlockPos, java.lang.String, java.lang.Object...);",
+          "public void assertBlockPresent(net.minecraft.world.level.block.Block, int, int, int);",
+          "public void assertBlockPresent(net.minecraft.world.level.block.Block, net.minecraft.core.BlockPos);",
+          "public void assertBlockPresent(net.minecraft.world.level.block.Block);",
+          "public void assertBlockNotPresent(net.minecraft.world.level.block.Block, int, int, int);",
+          "public void assertBlockNotPresent(net.minecraft.world.level.block.Block, net.minecraft.core.BlockPos);",
+          "public void assertBlockTag(net.minecraft.tags.TagKey<net.minecraft.world.level.block.Block>, net.minecraft.core.BlockPos);",
+          "public void succeedWhenBlockPresent(net.minecraft.world.level.block.Block, int, int, int);",
+          "public void succeedWhenBlockPresent(net.minecraft.world.level.block.Block, net.minecraft.core.BlockPos);"
+        ],
+        "net.minecraft.gametest.framework.GameTestServer": [
+          "protected void tickServer(java.util.function.BooleanSupplier);",
+          "private void startTests(net.minecraft.server.level.ServerLevel);",
+          "private static net.minecraft.core.BlockPos lambda$startTests$0(net.minecraft.core.BlockPos, net.minecraft.resources.ResourceKey);"
+        ]
+      },
+      "semantics_status": "requires_bytecode_or_reference_analysis_and_independent_fixtures",
+      "source_classes": [
+        "net.minecraft.gametest.framework.GameTestServer",
+        "net.minecraft.gametest.framework.GameTestHelper"
+      ],
+      "source_signatures_verified": true
+    }
+  ],
+  "pin": "26.3",
+  "source_classes": {
+    "net.minecraft.advancements.Advancement": {
+      "class_bytes": 18640,
+      "class_sha256": "0719712bd26b1a318f13522d4270fb3434651f9c15c3fcf2399eb437379847de",
+      "declared_method_signature_count": 30,
+      "jar_path": "net/minecraft/advancements/Advancement.class",
+      "method_signatures_sha256": "99504e4ad9ffacf92e1f7d2c8052c961b6212439e0842a57a4e432e7428793b4"
+    },
+    "net.minecraft.client.KeyboardHandler": {
+      "class_bytes": 34374,
+      "class_sha256": "9c35e6723b9a6bfa857a87ec400e3e5c2119ea4cb4e907eb4ec8b17ec8e55d03",
+      "declared_method_signature_count": 27,
+      "jar_path": "net/minecraft/client/KeyboardHandler.class",
+      "method_signatures_sha256": "a2561c05b007e92fff14f345fb6191f400d2b0d54a8865fc6407ebed72254513"
+    },
+    "net.minecraft.client.Minecraft": {
+      "class_bytes": 151067,
+      "class_sha256": "6620185007eb572e953c5fdad1e6e369b75b058b9dcd9a0bda9f8bc3f212c9d6",
+      "declared_method_signature_count": 237,
+      "jar_path": "net/minecraft/client/Minecraft.class",
+      "method_signatures_sha256": "d978bc53615f2febedae7176dc3dddeb513849af75ad1f61fd3e80663a1242d1"
+    },
+    "net.minecraft.client.MouseHandler": {
+      "class_bytes": 18542,
+      "class_sha256": "3151e8826e8a8819521f364ef53c8c11bb7c2158b31c1a3b99a0aa2214b20071",
+      "declared_method_signature_count": 26,
+      "jar_path": "net/minecraft/client/MouseHandler.class",
+      "method_signatures_sha256": "219d8996d1230922431b750754b77847b752121e591439fe410774808c58934c"
+    },
+    "net.minecraft.client.Options": {
+      "class_bytes": 96797,
+      "class_sha256": "4cf1c5dd3ef42b2cd9fea835cc0be18c3dfb4691ee7315cd7993ebb6a1504629",
+      "declared_method_signature_count": 263,
+      "jar_path": "net/minecraft/client/Options.class",
+      "method_signatures_sha256": "53d64997984751f45466ef9fb48624c18db8d423fde047263a0bd84422780a61"
+    },
+    "net.minecraft.client.gui.Gui": {
+      "class_bytes": 25665,
+      "class_sha256": "1dd30c3234e6e2eee2b5f72dab3711a8f2db395b793fcde519b338979291e32c",
+      "declared_method_signature_count": 33,
+      "jar_path": "net/minecraft/client/gui/Gui.class",
+      "method_signatures_sha256": "197a86388b765eded8bee967cb1c368a4cab36be9b2f29189b1bd84f236c7cca"
+    },
+    "net.minecraft.client.gui.screens.TitleScreen": {
+      "class_bytes": 20898,
+      "class_sha256": "af196294508541f54a2e4cb92efd3633770cd427e4d3193de7d50573fc2391db",
+      "declared_method_signature_count": 37,
+      "jar_path": "net/minecraft/client/gui/screens/TitleScreen.class",
+      "method_signatures_sha256": "61466a8eb3c62ee73b58cbf41c146d7e952efa7f9011f5d93c1554f4053becef"
+    },
+    "net.minecraft.client.particle.ParticleEngine": {
+      "class_bytes": 12195,
+      "class_sha256": "fcfd8ac19204229ce4516b85538bd845b2704949f5bd0adf337dc2455789172c",
+      "declared_method_signature_count": 17,
+      "jar_path": "net/minecraft/client/particle/ParticleEngine.class",
+      "method_signatures_sha256": "4e2db3fd5c006ce75041f3b7aec05ed90a1e1617512ad6349eee9e449b434da4"
+    },
+    "net.minecraft.client.renderer.GameRenderer": {
+      "class_bytes": 49293,
+      "class_sha256": "9cfd02db5c651d3fdd5838c634b21d6ac60f012f9daad453589e21655f929a24",
+      "declared_method_signature_count": 56,
+      "jar_path": "net/minecraft/client/renderer/GameRenderer.class",
+      "method_signatures_sha256": "d06afbe124ee78945adc148cd6b03bb92fa33114ed5399e95cb0532ff8b3a831"
+    },
+    "net.minecraft.client.renderer.LevelRenderer": {
+      "class_bytes": 77753,
+      "class_sha256": "4468dbf0dcd446d08701859a9f3a7043c8df78a8ce30fa4d1305d41cf33da020",
+      "declared_method_signature_count": 72,
+      "jar_path": "net/minecraft/client/renderer/LevelRenderer.class",
+      "method_signatures_sha256": "947e7923783fc106a45597ffe340ee6a207aa8d012f1b44f91a5bd9d328b1909"
+    },
+    "net.minecraft.client.renderer.texture.TextureManager": {
+      "class_bytes": 13901,
+      "class_sha256": "85812ee373b4f2d4374e3d385e5238a3c1ec31870847e4ce806fe60a38439ed5",
+      "declared_method_signature_count": 20,
+      "jar_path": "net/minecraft/client/renderer/texture/TextureManager.class",
+      "method_signatures_sha256": "0293001167cacfecb9cd10d3b4153fb10c572639f1efd219215cd9356c6f0117"
+    },
+    "net.minecraft.client.resources.language.LanguageManager": {
+      "class_bytes": 7904,
+      "class_sha256": "4fd3b9ce696b55a0a544af47eeda58e67bb75ee30e0cf2450bb4c06fd106c047",
+      "declared_method_signature_count": 8,
+      "jar_path": "net/minecraft/client/resources/language/LanguageManager.class",
+      "method_signatures_sha256": "182fe427ba551a2bbd7e0f7579b58f9b9a073c5ff3f581a5c71cc18da644df38"
+    },
+    "net.minecraft.client.resources.model.ModelManager": {
+      "class_bytes": 34997,
+      "class_sha256": "a624dbc1010c290c8053206d9fa6a32573ead289297a56ccb592ea48209e81c7",
+      "declared_method_signature_count": 30,
+      "jar_path": "net/minecraft/client/resources/model/ModelManager.class",
+      "method_signatures_sha256": "2a186c50946b256ad8abb58141414b81fb95489f0bf1ec33270f220d834dfdc0"
+    },
+    "net.minecraft.client.server.IntegratedServer": {
+      "class_bytes": 25919,
+      "class_sha256": "ccb7f86fedf41c9d364a89c1fc83ffa0f785bedf907f48ce70235c780a28376e",
+      "declared_method_signature_count": 63,
+      "jar_path": "net/minecraft/client/server/IntegratedServer.class",
+      "method_signatures_sha256": "2736a9302c2c587fe583b7c3e4834a1210a94af1f6c10105f77241dfbe842bf4"
+    },
+    "net.minecraft.client.sounds.MusicManager": {
+      "class_bytes": 6576,
+      "class_sha256": "806ebcade5f003e13678ce26fd4ab98dc898af94a39529d55afd49a63201a246",
+      "declared_method_signature_count": 11,
+      "jar_path": "net/minecraft/client/sounds/MusicManager.class",
+      "method_signatures_sha256": "a5209ebff302f9275cfb1bab78c847519b4987e08bd2de1dba34c441eb49e263"
+    },
+    "net.minecraft.client.sounds.SoundManager": {
+      "class_bytes": 14926,
+      "class_sha256": "86500f7ffd435ee362ec59fe0d73cd958e80d1b44d2140842c039e1a1e1ae875",
+      "declared_method_signature_count": 30,
+      "jar_path": "net/minecraft/client/sounds/SoundManager.class",
+      "method_signatures_sha256": "6dcfb05cba081757fcdce9ae63e8d022e2cbf3656173c3b6c66f8808539b9574"
+    },
+    "net.minecraft.commands.Commands": {
+      "class_bytes": 34770,
+      "class_sha256": "9307c70b1dce250f869dbf0c633856145718c44b078d656c2dc9c3244176a54e",
+      "declared_method_signature_count": 28,
+      "jar_path": "net/minecraft/commands/Commands.class",
+      "method_signatures_sha256": "62de1edd5a6c831ad455362ed36c130f9f097375250ddb90f13226b1e7394c3d"
+    },
+    "net.minecraft.commands.arguments.selector.EntitySelector": {
+      "class_bytes": 15800,
+      "class_sha256": "9f19addf10e4e8964696ddb3831719be6bc033a214c595f09017e3c65c7432f0",
+      "declared_method_signature_count": 21,
+      "jar_path": "net/minecraft/commands/arguments/selector/EntitySelector.class",
+      "method_signatures_sha256": "1575a2eece8914a181054235fab3e67d655548aacdf07e8bcc741a5e8c1cc2be"
+    },
+    "net.minecraft.gametest.framework.GameTestHelper": {
+      "class_bytes": 86843,
+      "class_sha256": "8f19bce3558396cd1058aea021bdbc790321ec6db2d6c3653ef8ffa5a64983dc",
+      "declared_method_signature_count": 213,
+      "jar_path": "net/minecraft/gametest/framework/GameTestHelper.class",
+      "method_signatures_sha256": "c694e2d9892bcca61140fbc500b2bbe6f87ddeb21b4860596f6f0c9941ca5b92"
+    },
+    "net.minecraft.gametest.framework.GameTestServer": {
+      "class_bytes": 30454,
+      "class_sha256": "7f7a8618fa730b2c7188bfd8a5fb5c1342026399c9a540ea6b1045086e67f793",
+      "declared_method_signature_count": 35,
+      "jar_path": "net/minecraft/gametest/framework/GameTestServer.class",
+      "method_signatures_sha256": "dd2c5693a687d269fbd1b24b2c0976fcffef520fe4e71e51a20ecdd24e280d01"
+    },
+    "net.minecraft.nbt.NbtIo": {
+      "class_bytes": 10385,
+      "class_sha256": "ec2ab9850eae5a5f4d0905a94b0c4d97c85c7fe10980cc59096a78f0fae5d396",
+      "declared_method_signature_count": 21,
+      "jar_path": "net/minecraft/nbt/NbtIo.class",
+      "method_signatures_sha256": "43ce73d435bbde5db76a28378b203d262d780b79e05c1b35760b534f721601a2"
+    },
+    "net.minecraft.network.Connection": {
+      "class_bytes": 33640,
+      "class_sha256": "37d3b157233523f45c970939b578652c200a802768e4335aa6170694bd843062",
+      "declared_method_signature_count": 68,
+      "jar_path": "net/minecraft/network/Connection.class",
+      "method_signatures_sha256": "be382627bbe279a060f494d549ed24156e0b5ef1ddb53fe6afc896b86875e060"
+    },
+    "net.minecraft.server.MinecraftServer": {
+      "class_bytes": 111584,
+      "class_sha256": "527d416a4317b9e76d8bbe260afb3af08bdbeb632b4978b47d08ee31ec954402",
+      "declared_method_signature_count": 268,
+      "jar_path": "net/minecraft/server/MinecraftServer.class",
+      "method_signatures_sha256": "ab216758c55200e50ce10debfe00b056f1bf65b90f081564f59d501c542d88b5"
+    },
+    "net.minecraft.server.PlayerAdvancements": {
+      "class_bytes": 22117,
+      "class_sha256": "15d2a4066a3c16a0d17db96a22ce5b76201ab619c6b7b964ffb9fa6f117407aa",
+      "declared_method_signature_count": 30,
+      "jar_path": "net/minecraft/server/PlayerAdvancements.class",
+      "method_signatures_sha256": "57b2c80e63ccbdd0ad34c25b45ee68025b8925412458d4527da15a715a8bfd1f"
+    },
+    "net.minecraft.server.ServerScoreboard": {
+      "class_bytes": 14933,
+      "class_sha256": "5ff5b74dcb440c49125f3077bdc1291279e2676b436d978bcf27f1941bd63aeb",
+      "declared_method_signature_count": 31,
+      "jar_path": "net/minecraft/server/ServerScoreboard.class",
+      "method_signatures_sha256": "9d7972fcf12d0da88703c7fe0d374423d2ea2757794f47f5abf8db9696530615"
+    },
+    "net.minecraft.server.ServerTickRateManager": {
+      "class_bytes": 5578,
+      "class_sha256": "655e827e3e055d9567188c9b53d7a50d8ca3a237e467b5a65e8453fedcdaa1bb",
+      "declared_method_signature_count": 15,
+      "jar_path": "net/minecraft/server/ServerTickRateManager.class",
+      "method_signatures_sha256": "32c5e9482cb4cd87e1a013c3eb445acecb64678467753300119ea595a0cc717a"
+    },
+    "net.minecraft.server.bossevents.CustomBossEvents": {
+      "class_bytes": 7194,
+      "class_sha256": "2f1c75c68772248ec0430f9ad8d7a506caf6873e16abdffbc56cab9332003bbc",
+      "declared_method_signature_count": 11,
+      "jar_path": "net/minecraft/server/bossevents/CustomBossEvents.class",
+      "method_signatures_sha256": "f9ee14a5959823745deff3cfa92f1bc302f2cec78e7c058133955037eaec33e2"
+    },
+    "net.minecraft.server.commands.ExecuteCommand": {
+      "class_bytes": 76477,
+      "class_sha256": "ea8b8e4692f170dcf5059348006765658dbdf301861795c2de0d5e4442ad66f2",
+      "declared_method_signature_count": 118,
+      "jar_path": "net/minecraft/server/commands/ExecuteCommand.class",
+      "method_signatures_sha256": "69956d9d4d7d73d56aa5d6a047b1f3488d794220c552d875cab1c36d6e5b453d"
+    },
+    "net.minecraft.server.dedicated.DedicatedServer": {
+      "class_bytes": 44494,
+      "class_sha256": "336383141a5e9b0d21ae00d37f30dd23133a44ffc0e21aca455493281e88669c",
+      "declared_method_signature_count": 117,
+      "jar_path": "net/minecraft/server/dedicated/DedicatedServer.class",
+      "method_signatures_sha256": "d07e74dedde3be16ded86a04c0823ba58f251994c183f745a450b8d08fcad274"
+    },
+    "net.minecraft.server.level.ChunkMap": {
+      "class_bytes": 81262,
+      "class_sha256": "ed08d2da74483bb7ef742a9c9142923369cd9487a2bb640872f4531bd0b66fd6",
+      "declared_method_signature_count": 129,
+      "jar_path": "net/minecraft/server/level/ChunkMap.class",
+      "method_signatures_sha256": "6eba7b2e34d325397dfd628d9795411efab5176831505d9cf8fdb4a76aa0a03b"
+    },
+    "net.minecraft.server.level.ServerChunkCache": {
+      "class_bytes": 31127,
+      "class_sha256": "3106898ef4f36b62f9e2eb1214be79268a3de7f0e04d74607c1269b2fb9fbcca",
+      "declared_method_signature_count": 64,
+      "jar_path": "net/minecraft/server/level/ServerChunkCache.class",
+      "method_signatures_sha256": "0be19afc0f7ddddf5d8808765d3d4e8d37b30d5a12ba5b6d20e7628722f41edd"
+    },
+    "net.minecraft.server.level.ServerLevel": {
+      "class_bytes": 106197,
+      "class_sha256": "bd703a5b7085fd0caad8f4ed23603197c2f2d8010176ad971d7572064397d5f8",
+      "declared_method_signature_count": 190,
+      "jar_path": "net/minecraft/server/level/ServerLevel.class",
+      "method_signatures_sha256": "cb97650962d319bc89c91b0bcf36406b0333e1a5f246355eed0dac3235eca634"
+    },
+    "net.minecraft.server.level.ServerPlayer": {
+      "class_bytes": 112647,
+      "class_sha256": "ab14a0f62bf6be68f7502ea7f11336f9ab665a4e978a562d6625520fabe592ed",
+      "declared_method_signature_count": 215,
+      "jar_path": "net/minecraft/server/level/ServerPlayer.class",
+      "method_signatures_sha256": "b7953b62d1e6c9dda9657272cd564bb9df5a078d2d35f376e11e20c06beebaa0"
+    },
+    "net.minecraft.server.network.ServerGamePacketListenerImpl": {
+      "class_bytes": 131306,
+      "class_sha256": "b963daf1a78106f08397f54c3fdefeda512a65b8f058031394c99b0e84a4ca8c",
+      "declared_method_signature_count": 146,
+      "jar_path": "net/minecraft/server/network/ServerGamePacketListenerImpl.class",
+      "method_signatures_sha256": "0759e6beef03503b72a29439d67e5d22289183ba76e7019239e6152b377dcea3"
+    },
+    "net.minecraft.server.packs.PackResources": {
+      "class_bytes": 1896,
+      "class_sha256": "d1d8a80ee82d2ff155ff658b6e981c5493bb9f449c36893f33b50b2e98f0b020",
+      "declared_method_signature_count": 5,
+      "jar_path": "net/minecraft/server/packs/PackResources.class",
+      "method_signatures_sha256": "7c297479582772f9dc3024bd8f36c2b95d2e7bb05d9da104a9e3c5d10d3a2569"
+    },
+    "net.minecraft.server.packs.repository.PackRepository": {
+      "class_bytes": 10171,
+      "class_sha256": "d19a109d13afdf85f6816e257c8069a9bde250ffdea6f3a9c31d80a7f7d06e5f",
+      "declared_method_signature_count": 20,
+      "jar_path": "net/minecraft/server/packs/repository/PackRepository.class",
+      "method_signatures_sha256": "0c807e3d0ec4c50a1537d56a08f1f9ccd2ac7f06921367ebe147e21bc7be1e48"
+    },
+    "net.minecraft.server.packs.resources.ReloadableResourceManager": {
+      "class_bytes": 6555,
+      "class_sha256": "cb4a788a85678e4b013a9ad2a5ab79b6458b9fa92dfec56e8ba7aaff6913b87e",
+      "declared_method_signature_count": 11,
+      "jar_path": "net/minecraft/server/packs/resources/ReloadableResourceManager.class",
+      "method_signatures_sha256": "093cf30dc4ab482617838a7876cbb9f0fdb53389328eb865e2ce9ed7de83c42b"
+    },
+    "net.minecraft.server.players.PlayerList": {
+      "class_bytes": 50203,
+      "class_sha256": "1146ad7e15b3ea2e31d905a0e43ccbd86b31e4e512acb06e8cf4bfb73257d2b7",
+      "declared_method_signature_count": 65,
+      "jar_path": "net/minecraft/server/players/PlayerList.class",
+      "method_signatures_sha256": "755ea4fb7d2a19f13be6c096909ae10d4f14606ccf43f9ba8bce3da2198662c4"
+    },
+    "net.minecraft.stats.ServerStatsCounter": {
+      "class_bytes": 14033,
+      "class_sha256": "7307888268627be28062db62f5dcbc8b26d13dcb6948533c21ed87eb6f01b6d8",
+      "declared_method_signature_count": 16,
+      "jar_path": "net/minecraft/stats/ServerStatsCounter.class",
+      "method_signatures_sha256": "9e6b3fe236915c7cd375a2331911d80e4620dab8461fffb4972d38c473c20067"
+    },
+    "net.minecraft.util.RandomSource": {
+      "class_bytes": 2525,
+      "class_sha256": "91dd6dc6af1de4e1b320cb0da9ac4923c92b533deccda17a784341106bf0d19e",
+      "declared_method_signature_count": 20,
+      "jar_path": "net/minecraft/util/RandomSource.class",
+      "method_signatures_sha256": "25d65e46690e073f02d41d8c3afc792eb5c7969c1117f1ce341b3db8efa2c18e"
+    },
+    "net.minecraft.world.TickRateManager": {
+      "class_bytes": 2243,
+      "class_sha256": "5480647a0d8b45b60d127a60a6f78afd334111e551dade8cafca896f22e3ce45",
+      "declared_method_signature_count": 13,
+      "jar_path": "net/minecraft/world/TickRateManager.class",
+      "method_signatures_sha256": "d97c3b0d22f361619cbaad005d4ad12b374a191a6f321af79df5753215f996c1"
+    },
+    "net.minecraft.world.clock.WorldClock": {
+      "class_bytes": 2855,
+      "class_sha256": "8aeef12360d8c23caeba0c7c2e8e408e0c9ee728a6922944dd8ae77f3537239c",
+      "declared_method_signature_count": 4,
+      "jar_path": "net/minecraft/world/clock/WorldClock.class",
+      "method_signatures_sha256": "5e1830617aaccf586f2a2ef69c657a67c4c32847a0359a4a3226b2da0b834b1d"
+    },
+    "net.minecraft.world.damagesource.DamageSources": {
+      "class_bytes": 11860,
+      "class_sha256": "2fefa0f66433ea3bbf54e9daadae0d7dbb9bd3f1b45a1149b4fa35f42a7d4f58",
+      "declared_method_signature_count": 52,
+      "jar_path": "net/minecraft/world/damagesource/DamageSources.class",
+      "method_signatures_sha256": "cdc3c8031f8c9c6508c1865314163577b7ec22cead83211f79d076228bea29c4"
+    },
+    "net.minecraft.world.entity.Entity": {
+      "class_bytes": 171990,
+      "class_sha256": "7ac5f6a929abbf4fa00f0a87ad530669f7d96c8ee2bb86a5076ab1fab352fb3c",
+      "declared_method_signature_count": 553,
+      "jar_path": "net/minecraft/world/entity/Entity.class",
+      "method_signatures_sha256": "f13edcf81465693d165450807cbce7eb1d7db354e7f74c16bd841ce192c60bb5"
+    },
+    "net.minecraft.world.entity.LivingEntity": {
+      "class_bytes": 163225,
+      "class_sha256": "6eaecd529ba26174652f3bb71e7c86262e54ac6f5e1e70944fb0e629b3b9948a",
+      "declared_method_signature_count": 408,
+      "jar_path": "net/minecraft/world/entity/LivingEntity.class",
+      "method_signatures_sha256": "3e6ac019456b7274f28073e6d2dc3ebe0d3fa1d419cbfe793c127398312c2616"
+    },
+    "net.minecraft.world.entity.Mob": {
+      "class_bytes": 72655,
+      "class_sha256": "835b6db7f1e5c2dc803f62574f600faec729c19f7dadb2d246364b2bdb45f75f",
+      "declared_method_signature_count": 162,
+      "jar_path": "net/minecraft/world/entity/Mob.class",
+      "method_signatures_sha256": "8a88a7dab9207f3d91a32861fe1818167938cb281a18b4e090b34146b10f0fc2"
+    },
+    "net.minecraft.world.entity.ai.Brain": {
+      "class_bytes": 30497,
+      "class_sha256": "902fa7d90b7a6955d7fc201b586205ceebb039635e12fe8d15f2666b5397adb2",
+      "declared_method_signature_count": 53,
+      "jar_path": "net/minecraft/world/entity/ai/Brain.class",
+      "method_signatures_sha256": "b2c596f019dd8609e4d20eef5d0e5da57b4b812fd4d82f5642f691627b45688a"
+    },
+    "net.minecraft.world.entity.player.Abilities": {
+      "class_bytes": 1909,
+      "class_sha256": "1c2cfb88861fc99120a69ef91483a9a833469b4ec61c20cca593d4b1e5e6c0bd",
+      "declared_method_signature_count": 7,
+      "jar_path": "net/minecraft/world/entity/player/Abilities.class",
+      "method_signatures_sha256": "0a4a2f03457340173a1a8d80d93fe5a3e8727776dd6fa2b3d0bb6f91711b7a5c"
+    },
+    "net.minecraft.world.entity.player.Inventory": {
+      "class_bytes": 20197,
+      "class_sha256": "de63accac4a95c52638d63b7611c6e6e985c9a800068007067893cfd49dfa8de",
+      "declared_method_signature_count": 48,
+      "jar_path": "net/minecraft/world/entity/player/Inventory.class",
+      "method_signatures_sha256": "c70a3d3bd2b7d490e0d81f3f0bda1315380dc8defa399d364ec33dc448824f3f"
+    },
+    "net.minecraft.world.entity.player.Player": {
+      "class_bytes": 84386,
+      "class_sha256": "28ad0c7756a5cbdfde6c22772f585da9177d6f9eb418ea5ff2dd85657d81dfb2",
+      "declared_method_signature_count": 226,
+      "jar_path": "net/minecraft/world/entity/player/Player.class",
+      "method_signatures_sha256": "a8eeaac44358de6f888da1775fdf4595ff1554fb7257ea247fbcc70a4ac4a38a"
+    },
+    "net.minecraft.world.food.FoodData": {
+      "class_bytes": 4960,
+      "class_sha256": "b104a9f34de311c172e286af70a9045a9f22fcd66c7d359e31abaa5a0f51fab6",
+      "declared_method_signature_count": 14,
+      "jar_path": "net/minecraft/world/food/FoodData.class",
+      "method_signatures_sha256": "e10d125fa3954b137566b6adf0728d46e1948ce6ea8e0140e59577be670655e1"
+    },
+    "net.minecraft.world.inventory.AbstractContainerMenu": {
+      "class_bytes": 35703,
+      "class_sha256": "4dcc15a5c6cb65973f18a3e330ad4416233b88b468fb2709ea431c7aebb01c02",
+      "declared_method_signature_count": 71,
+      "jar_path": "net/minecraft/world/inventory/AbstractContainerMenu.class",
+      "method_signatures_sha256": "06dd3b8f292e94a5a3980c73c21116697ab79728c28cda2eb1b5b488a79ca441"
+    },
+    "net.minecraft.world.item.Item": {
+      "class_bytes": 24811,
+      "class_sha256": "867aecf8c2f0ba85c51ca7100835b6a980dff24c176a2dd6ab3780605c24b9e6",
+      "declared_method_signature_count": 50,
+      "jar_path": "net/minecraft/world/item/Item.class",
+      "method_signatures_sha256": "5a4d60a1a5b13eeda2ffa0a80cbc6ebe117f8ab15c020b07d48456dc1b2b1318"
+    },
+    "net.minecraft.world.item.ItemStack": {
+      "class_bytes": 71747,
+      "class_sha256": "c6d650ae8248b529b5db7f0d27376ecb8cf48dfce8eb89bf3280902dcc9ece32",
+      "declared_method_signature_count": 145,
+      "jar_path": "net/minecraft/world/item/ItemStack.class",
+      "method_signatures_sha256": "ee8027fdbfce951d97a75de1b2b706afea7bb879588cc0ca9551fdc3c896dfcc"
+    },
+    "net.minecraft.world.item.crafting.Recipe": {
+      "class_bytes": 5136,
+      "class_sha256": "f72ff27072240e203d799d8c6f37fd05c0a6fecf12e2c26e2746986175ab72f6",
+      "declared_method_signature_count": 10,
+      "jar_path": "net/minecraft/world/item/crafting/Recipe.class",
+      "method_signatures_sha256": "f6e5cbeba904009abad4a7d74255bffa14a2335848571918ec6579a27b6c33f0"
+    },
+    "net.minecraft.world.item.crafting.RecipeManager": {
+      "class_bytes": 26874,
+      "class_sha256": "0517bb41603ec88d593632cc024b933187144d66dc437da978dcbcda6e10ce7d",
+      "declared_method_signature_count": 37,
+      "jar_path": "net/minecraft/world/item/crafting/RecipeManager.class",
+      "method_signatures_sha256": "bee66cca89eee72266e61c10ec1cc5430b5cd9eb93ec9877cf2bce8a42bdeb1f"
+    },
+    "net.minecraft.world.item.enchantment.Enchantment": {
+      "class_bytes": 42999,
+      "class_sha256": "de03478084d81f549a54029ed915248c9d7402ee63fb22c3eb776ed9f76dc3fe",
+      "declared_method_signature_count": 77,
+      "jar_path": "net/minecraft/world/item/enchantment/Enchantment.class",
+      "method_signatures_sha256": "577d0563e2736b7a9f1519e958d48171e4ced6e7f7d76a90ce17368b089d4196"
+    },
+    "net.minecraft.world.item.enchantment.EnchantmentHelper": {
+      "class_bytes": 58105,
+      "class_sha256": "27a92ea1ff51fb7851389a53e05d71af9610b0a16707f9f5f7b606a78dcc163e",
+      "declared_method_signature_count": 105,
+      "jar_path": "net/minecraft/world/item/enchantment/EnchantmentHelper.class",
+      "method_signatures_sha256": "1ab80f506b494ab75c6cc923eb6cdaff4f5d13a4104e083389c5f32d718c36e5"
+    },
+    "net.minecraft.world.level.NaturalSpawner": {
+      "class_bytes": 32233,
+      "class_sha256": "5d1a396b3f2d2bd50b9fd1b7d92289863db29587a1aadc08bba0cf8e550a311c",
+      "declared_method_signature_count": 24,
+      "jar_path": "net/minecraft/world/level/NaturalSpawner.class",
+      "method_signatures_sha256": "e057651e1906e0f35f92927f98b8ab64fd195ecd0e5cb5ca20f16eb2aa7d3f50"
+    },
+    "net.minecraft.world.level.ServerExplosion": {
+      "class_bytes": 18415,
+      "class_sha256": "1e1d9407b6bbd96feb093e1c425c8906c961e3ba27ac039330a7c95783b5de6d",
+      "declared_method_signature_count": 22,
+      "jar_path": "net/minecraft/world/level/ServerExplosion.class",
+      "method_signatures_sha256": "ac1314be29aba020abdedb3f15376a92e16a5b5d4ad2f0c03acef3546dad093b"
+    },
+    "net.minecraft.world.level.biome.Biome": {
+      "class_bytes": 17130,
+      "class_sha256": "68d9c99842bc8c704b94e54d31c176b3d1263420387e5c08ec6c0ff9d6c72ec0",
+      "declared_method_signature_count": 35,
+      "jar_path": "net/minecraft/world/level/biome/Biome.class",
+      "method_signatures_sha256": "cff4526c02b7ca0d2f8fe43c5fd7b4928ae6e1098612a51706e6b2ed913de95f"
+    },
+    "net.minecraft.world.level.biome.MultiNoiseBiomeSource": {
+      "class_bytes": 14350,
+      "class_sha256": "56ee84379aff9201229d2031d0d41495ccdf5dd2c0455fa165aaa0ccdd3f2e88",
+      "declared_method_signature_count": 16,
+      "jar_path": "net/minecraft/world/level/biome/MultiNoiseBiomeSource.class",
+      "method_signatures_sha256": "9e10783f14facf60fb7380464635a91140fe6f03befebae0135a30c6a447087c"
+    },
+    "net.minecraft.world.level.block.Block": {
+      "class_bytes": 51245,
+      "class_sha256": "2275d8eb742074b354c96fe31a6cf1d78e31d410a32acb18a96d84a1c9851ff5",
+      "declared_method_signature_count": 84,
+      "jar_path": "net/minecraft/world/level/block/Block.class",
+      "method_signatures_sha256": "de4f6a533f87fc7ef2a90e0e9dd719ccee36d873673a0eb08f985d58eac07bba"
+    },
+    "net.minecraft.world.level.block.FireBlock": {
+      "class_bytes": 27064,
+      "class_sha256": "4cfe4d38822634e96b16cf9ad712e8d0d0e476cdd7e831ae1387b65b59a4e8c3",
+      "declared_method_signature_count": 27,
+      "jar_path": "net/minecraft/world/level/block/FireBlock.class",
+      "method_signatures_sha256": "b2557d5b17e5b6d051e0d14f1c54bec8e242f5d6b5f46f0c9a26aefbffe9bcec"
+    },
+    "net.minecraft.world.level.block.Portal": {
+      "class_bytes": 1197,
+      "class_sha256": "a1fa8ca2e90ce902d1739e19e2789e6852f38c19665ae7bb0d703f6eb1286a75",
+      "declared_method_signature_count": 3,
+      "jar_path": "net/minecraft/world/level/block/Portal.class",
+      "method_signatures_sha256": "7264f5c2717173d7b61b0a40734dab514295102673fc2e6e5790927e20d1ebfd"
+    },
+    "net.minecraft.world.level.block.entity.BaseContainerBlockEntity": {
+      "class_bytes": 10721,
+      "class_sha256": "168a82e44ba7b928fc9486b4c7521869d5d70516a5a64d0e1a4d39d7d74e9d48",
+      "declared_method_signature_count": 25,
+      "jar_path": "net/minecraft/world/level/block/entity/BaseContainerBlockEntity.class",
+      "method_signatures_sha256": "5261be4c97ea9ebfeb454dd7a9ed0e9e67dff1f3e4ad16ed07bfee12fde0fab8"
+    },
+    "net.minecraft.world.level.block.entity.BlockEntity": {
+      "class_bytes": 20213,
+      "class_sha256": "242b5586d0fe7fb8c86e42ecd9a073f823424031b24fe27db8855c99ed32f74b",
+      "declared_method_signature_count": 50,
+      "jar_path": "net/minecraft/world/level/block/entity/BlockEntity.class",
+      "method_signatures_sha256": "990d60d47baccb48cf43708a973f440a9fd25ca0fa8db72161d2bef16908ca7a"
+    },
+    "net.minecraft.world.level.block.entity.SpawnerBlockEntity": {
+      "class_bytes": 5482,
+      "class_sha256": "d636144c2022c1918e9e35fbcbbd2404843688930468a8e5de9cc4df5eff8c71",
+      "declared_method_signature_count": 12,
+      "jar_path": "net/minecraft/world/level/block/entity/SpawnerBlockEntity.class",
+      "method_signatures_sha256": "92a91078097faf757440cba1c1b03e193b9175dc352390d785a915c4d5758308"
+    },
+    "net.minecraft.world.level.block.piston.PistonBaseBlock": {
+      "class_bytes": 21229,
+      "class_sha256": "47b87b5736027ca99add513835ddb594417ab6b8943c2fa746870af101b105d9",
+      "declared_method_signature_count": 16,
+      "jar_path": "net/minecraft/world/level/block/piston/PistonBaseBlock.class",
+      "method_signatures_sha256": "08b57dee5e50b8d5e0837f598f4291f39253f175aa7bfd05e13fb458b7a97c3e"
+    },
+    "net.minecraft.world.level.block.state.BlockBehaviour": {
+      "class_bytes": 28300,
+      "class_sha256": "c407675a1f665d14f73103c2896b7f4c109890ce409fda662d77824fd991747d",
+      "declared_method_signature_count": 64,
+      "jar_path": "net/minecraft/world/level/block/state/BlockBehaviour.class",
+      "method_signatures_sha256": "503a99fe628720025362e799d57bfa0332c11cb75560b33f6d0eb16ede402640"
+    },
+    "net.minecraft.world.level.chunk.storage.RegionFile": {
+      "class_bytes": 16196,
+      "class_sha256": "aea05164286eafda34b6b9107251a930d8184e27ccc370a3c4f03f7283f2938b",
+      "declared_method_signature_count": 30,
+      "jar_path": "net/minecraft/world/level/chunk/storage/RegionFile.class",
+      "method_signatures_sha256": "c64483b223c39039989fddcec606d383b6abfaaaa06df5c6e72475f3491349dd"
+    },
+    "net.minecraft.world.level.levelgen.LegacyRandomSource": {
+      "class_bytes": 2212,
+      "class_sha256": "a54d9c4c06cd9a6d11bf93856fbeff594903c0b70baea933b883e6c5122746a2",
+      "declared_method_signature_count": 6,
+      "jar_path": "net/minecraft/world/level/levelgen/LegacyRandomSource.class",
+      "method_signatures_sha256": "ffcebead0482f9aa28f2cec905418776d0210d8eb5a3da95bc4a344a86e07f33"
+    },
+    "net.minecraft.world.level.levelgen.NoiseBasedChunkGenerator": {
+      "class_bytes": 43583,
+      "class_sha256": "d25d8552be8b11a0481f409d4649da024a048488134cfb51c6e4664cf647a412",
+      "declared_method_signature_count": 33,
+      "jar_path": "net/minecraft/world/level/levelgen/NoiseBasedChunkGenerator.class",
+      "method_signatures_sha256": "37eb7b858fdb049f06831777c80a4370e17c5fcfab9af18d4c78aaa0a33f8a1a"
+    },
+    "net.minecraft.world.level.levelgen.XoroshiroRandomSource": {
+      "class_bytes": 5301,
+      "class_sha256": "43c6e33b55c91bd4576d2cf04ba7e5e7d2561c5918e1b3549485639d17906447",
+      "declared_method_signature_count": 18,
+      "jar_path": "net/minecraft/world/level/levelgen/XoroshiroRandomSource.class",
+      "method_signatures_sha256": "e1cbc06a00f8d091c3965e252ade340ee8b0e3f88fa4a934561a4595ded56635"
+    },
+    "net.minecraft.world.level.levelgen.structure.Structure": {
+      "class_bytes": 18651,
+      "class_sha256": "fa023ce735376b7042242948275a0869a7e22d30e5e4c5c6502b521578577188",
+      "declared_method_signature_count": 22,
+      "jar_path": "net/minecraft/world/level/levelgen/structure/Structure.class",
+      "method_signatures_sha256": "4c74c1a1517da4eb1a118ad387097290fc446dc268231e7b9b1d92e3bac69290"
+    },
+    "net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate": {
+      "class_bytes": 48892,
+      "class_sha256": "7c0b06fcbc82e3e1d4d84dfd8e2ee822ef838fa8a5a7c85b907785686c878f32",
+      "declared_method_signature_count": 46,
+      "jar_path": "net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate.class",
+      "method_signatures_sha256": "2d6e2a037282afb81774fe00575d2feb9368689a576d352e57476948a757daab"
+    },
+    "net.minecraft.world.level.lighting.LevelLightEngine": {
+      "class_bytes": 6618,
+      "class_sha256": "4c3d60552b9a224207de0e873151b9f092b6bed1e37b32d343fc04f638754aa9",
+      "declared_method_signature_count": 18,
+      "jar_path": "net/minecraft/world/level/lighting/LevelLightEngine.class",
+      "method_signatures_sha256": "db3bfe35fa67e2eef20131db2ed2aa29535be506715ec39aca96ae58974092fa"
+    },
+    "net.minecraft.world.level.lighting.LightEngine": {
+      "class_bytes": 11367,
+      "class_sha256": "192caf8d6ebedc7401344ddd75f7037d4b550e07f00d1c18f7f00f1f551bdd25",
+      "declared_method_signature_count": 28,
+      "jar_path": "net/minecraft/world/level/lighting/LightEngine.class",
+      "method_signatures_sha256": "f53ece33e1fc33cfd6a4da79baea5fbaf284bec674bc3ad3749da629b0fb20f0"
+    },
+    "net.minecraft.world.level.material.FlowingFluid": {
+      "class_bytes": 24110,
+      "class_sha256": "5dcca9741ddf5b40b5a04073ec1135e2eb405df981a595869ed44f83f9f7a36c",
+      "declared_method_signature_count": 38,
+      "jar_path": "net/minecraft/world/level/material/FlowingFluid.class",
+      "method_signatures_sha256": "fe7014b543bb77c6ba8d9c907c38e4911e58f3dbb09e07fc27ea41417e9387ad"
+    },
+    "net.minecraft.world.level.material.FluidState": {
+      "class_bytes": 10443,
+      "class_sha256": "bd057a67614d7c6c7366f58717d5db17c59bbe786f3daa524e665dac1f168d98",
+      "declared_method_signature_count": 24,
+      "jar_path": "net/minecraft/world/level/material/FluidState.class",
+      "method_signatures_sha256": "6c4c0a7a824c53bbba9c5353c4eebab15b14f1c17e05d7260a2a0cd46d0c53d4"
+    },
+    "net.minecraft.world.level.pathfinder.PathFinder": {
+      "class_bytes": 11279,
+      "class_sha256": "218423d307dd3952c9b8d64b9a5ba811c9280ec5d65163fbc40a04fe47250d67",
+      "declared_method_signature_count": 12,
+      "jar_path": "net/minecraft/world/level/pathfinder/PathFinder.class",
+      "method_signatures_sha256": "7f263869237b7034d0a61fb3926612429d29d8efc7249d20fedc8b7f3fb27588"
+    },
+    "net.minecraft.world.level.portal.PortalForcer": {
+      "class_bytes": 12103,
+      "class_sha256": "f6cd2053c41cf6a36049b8766727dc065349c146e8bb54d4dcc0dc68d8a265c3",
+      "declared_method_signature_count": 8,
+      "jar_path": "net/minecraft/world/level/portal/PortalForcer.class",
+      "method_signatures_sha256": "eee8aa19381a39f77f366b075d218654d3fa53cf9ef4c6136c41eabcc85957be"
+    },
+    "net.minecraft.world.level.portal.TeleportTransition": {
+      "class_bytes": 8943,
+      "class_sha256": "861c9a4af476e60d6f0303ecf21f2e0039f486e8f84b6345073c0aabc8abd5e3",
+      "declared_method_signature_count": 24,
+      "jar_path": "net/minecraft/world/level/portal/TeleportTransition.class",
+      "method_signatures_sha256": "9cb37156f3b596c39262d8d8a1985fd7d4a38d645ae2238c39f5acabc268016f"
+    },
+    "net.minecraft.world.level.redstone.ExperimentalRedstoneWireEvaluator": {
+      "class_bytes": 14196,
+      "class_sha256": "6d33a419d5bd34efa82419f2c97b4e2b2dcb957965cfd8c1869ef1071bedba82",
+      "declared_method_signature_count": 16,
+      "jar_path": "net/minecraft/world/level/redstone/ExperimentalRedstoneWireEvaluator.class",
+      "method_signatures_sha256": "e4f793894fa77db4eaa874433f7d38fe06f95d8e83fcc302e81f30d287935d1d"
+    },
+    "net.minecraft.world.level.redstone.NeighborUpdater": {
+      "class_bytes": 7599,
+      "class_sha256": "67d4d124c120e33ffe08fbbef87e0a03f2b696adbe2e51f1b9ff8b7e6bd17e70",
+      "declared_method_signature_count": 7,
+      "jar_path": "net/minecraft/world/level/redstone/NeighborUpdater.class",
+      "method_signatures_sha256": "bc81229e1c37a0a55008d7d1f9f81e2fae88982e1af1c6f6e467863f93dab74e"
+    },
+    "net.minecraft.world.level.redstone.RedstoneWireEvaluator": {
+      "class_bytes": 3342,
+      "class_sha256": "a5a5c605ec358b012747c76eb18f1d9a76d3555b4316dcf2cd4d233a5cf8792c",
+      "declared_method_signature_count": 5,
+      "jar_path": "net/minecraft/world/level/redstone/RedstoneWireEvaluator.class",
+      "method_signatures_sha256": "8cecf839dc29a5eb1dcd397f63a826015072f48c366c2f0e0d270b72a2331963"
+    },
+    "net.minecraft.world.level.storage.LevelStorageSource": {
+      "class_bytes": 32792,
+      "class_sha256": "37a9fde1327e65bc5c8c00e888166f2ec27bf747f3a3f33605a489ef3c72cf71",
+      "declared_method_signature_count": 37,
+      "jar_path": "net/minecraft/world/level/storage/LevelStorageSource.class",
+      "method_signatures_sha256": "2b56731d3bca3412bca4bc81383ccdd64922f6d7031021b73c21eb9400d5123a"
+    },
+    "net.minecraft.world.level.storage.loot.LootContext": {
+      "class_bytes": 6741,
+      "class_sha256": "d75b621316dcfcaa66e95adc4266ac9e1092ae321604baca92badbcefc509124",
+      "declared_method_signature_count": 15,
+      "jar_path": "net/minecraft/world/level/storage/loot/LootContext.class",
+      "method_signatures_sha256": "f479fd24f78a227bf9bec76c6b67f70a1ee508409ff4a3ed2d4b532ce8786b46"
+    },
+    "net.minecraft.world.level.storage.loot.LootTable": {
+      "class_bytes": 17915,
+      "class_sha256": "52d87526d4c6d972d8ac7f12b1e41cd91e81ec03509918bf819dd4837ea53e2c",
+      "declared_method_signature_count": 24,
+      "jar_path": "net/minecraft/world/level/storage/loot/LootTable.class",
+      "method_signatures_sha256": "c2f48953e79212c871fe67659fdcad4504ab47d933705db20e26212c8542e460"
+    },
+    "net.minecraft.world.scores.Scoreboard": {
+      "class_bytes": 23562,
+      "class_sha256": "51cc4343ce5a074dbe35b7408eb3583093fbe915d682bfe7961191e3c213fecb",
+      "declared_method_signature_count": 52,
+      "jar_path": "net/minecraft/world/scores/Scoreboard.class",
+      "method_signatures_sha256": "de3f3e493ee2541c91bd93c710785e1e478b0d75d3acffc27283a058b32275f2"
+    },
+    "net.minecraft.world.ticks.LevelTicks": {
+      "class_bytes": 19297,
+      "class_sha256": "02a10693c6fd9ed119fc36cb33047667d925470325ac285abf33d7071fbd0c3a",
+      "declared_method_signature_count": 31,
+      "jar_path": "net/minecraft/world/ticks/LevelTicks.class",
+      "method_signatures_sha256": "afee2c074e3f1d888a61c98dd74b935d03d28cb4ef02baac0fdcd82a2d770e2b"
+    },
+    "net.minecraft.world.timeline.Timeline": {
+      "class_bytes": 16632,
+      "class_sha256": "fab4f12de757a43d98ddc7dc7f114c9078c4dbc73118c0b49cc7e9a5701ad8c5",
+      "declared_method_signature_count": 21,
+      "jar_path": "net/minecraft/world/timeline/Timeline.class",
+      "method_signatures_sha256": "ed02636f37596c7aae39393a6a83056877eb0ea3cc603e2e447a02b04eb60160"
+    }
+  },
+  "source_kind": "Pinned client named compiled classes and javap declarations"
+}

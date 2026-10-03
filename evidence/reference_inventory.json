@@ -1,0 +1,108 @@
+{
+  "behavioral_parity_established": false,
+  "checks": {
+    "all_block_report_ids_match_registry": true,
+    "all_items_have_default_components": true,
+    "all_state_ids_unique_and_contiguous": true,
+    "all_states_reconstructed_from_compact_schemas": true,
+    "bundled_server_sha256": true,
+    "client_vs_generated_data": {
+      "byte_equal": 8372,
+      "client_paths_not_emitted": {
+        "mcassetsroot": 1,
+        "structure_nbt": 1511
+      },
+      "generated_files": 8372,
+      "generated_paths_absent_from_client": [],
+      "mismatches": []
+    },
+    "generator_executed": true,
+    "generator_exit_code": 0,
+    "pinned_asset_index_sha1_and_size": true,
+    "pinned_client_sha1_and_size": true,
+    "pinned_server_sha1_and_size": true
+  },
+  "command": "'/Users/chuah/Library/Application Support/minecraft/runtime/java-runtime-epsilon/mac-os-arm64/java-runtime-epsilon/jre.bundle/Contents/Home/bin/java' -DbundlerMainClass=net.minecraft.data.Main -jar /Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/26.3-server.jar --server --reports --output /Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/reports",
+  "counts": {
+    "blocks": 1286,
+    "client_resources": 11604,
+    "command_nodes": 2475,
+    "data_elements_and_tags": 9880,
+    "entities": 161,
+    "external_asset_names": 5147,
+    "items": 1658,
+    "packets": 260,
+    "rpc_methods": 89,
+    "states": 35723,
+    "static_entries": 7053,
+    "static_registries": 95
+  },
+  "generated_tables": {
+    "generated/reference_blocks.tsv": {
+      "bytes": 182136,
+      "file": "reference_blocks.tsv",
+      "rows": 1286,
+      "sha1": "3461038d5c8086185591df08e6fb96de6e523faf",
+      "sha256": "27769e75bf862d0540b2df2a6e99f6b7556a867bff6339fb08566240ee124cac"
+    },
+    "generated/reference_commands.tsv": {
+      "bytes": 330714,
+      "file": "reference_commands.tsv",
+      "rows": 2475,
+      "sha1": "385834dc49f32200c55b2be7fc6600e6dcc1f8d6",
+      "sha256": "98d57c0f3ea5a0726227a60c206ddfeffcf507321289ba4f02493115cc63cd2c"
+    },
+    "generated/reference_data.tsv": {
+      "bytes": 1914960,
+      "file": "reference_data.tsv",
+      "rows": 9880,
+      "sha1": "0c82e84910c7c7ee5bb46cadcae483f7938ab7bc",
+      "sha256": "85eb833c0d60dc155e1201844e9a4dda736e15bc671df670ce37c5525124d0c4"
+    },
+    "generated/reference_item_components.tsv": {
+      "bytes": 730488,
+      "file": "reference_item_components.tsv",
+      "rows": 1658,
+      "sha1": "2191301db202876cd011684029fcc1fcf5d0fcc0",
+      "sha256": "3c645ea05df349d8c489a072784ff91fe0f69e014e36183a90ecf49729898ecc"
+    },
+    "generated/reference_packets.tsv": {
+      "bytes": 12263,
+      "file": "reference_packets.tsv",
+      "rows": 260,
+      "sha1": "843ffec421ec61f056f2d116a935a7e8a9d9b7fb",
+      "sha256": "de2982e7b30217631973a8f3e0fe7d15d583465b391e4ecb32658e9ec452a40e"
+    },
+    "generated/reference_registries.tsv": {
+      "bytes": 373823,
+      "file": "reference_registries.tsv",
+      "rows": 7053,
+      "sha1": "337cedf6ad76551f817d6c3d57faebda0aa12ffc",
+      "sha256": "d61a62470873881789696fd419a12ed73d4fbd22b50cd450d97e137d8c526394"
+    },
+    "generated/reference_resources.tsv": {
+      "bytes": 2334805,
+      "file": "reference_resources.tsv",
+      "rows": 16751,
+      "sha1": "c420ae570e7a5a09082d8a7aac3bcca920e29ded",
+      "sha256": "b69e4c2eddeb0a576bb323879bf4c70ba983fb26f957892431e643ea4a7e34ee"
+    },
+    "generated/reference_rpc_methods.tsv": {
+      "bytes": 12017,
+      "file": "reference_rpc_methods.tsv",
+      "rows": 89,
+      "sha1": "e71c59b23a490d3143551319249138b78113dbcd",
+      "sha256": "742a0b60eb54a95ec2633c2f2116eb445a1b9d16230508ba5b73f71929b928ec"
+    }
+  },
+  "kind": "reference_inventory_only",
+  "official_reference_hashes": {
+    "asset_index_sha256": "0f026e5396e2d709b3e6d8c7b2cc2fba9e6a7f02b53b632ba051edb1cd362377",
+    "client_sha256": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d",
+    "reports_canonical_tree_sha256": "4614d7e93eb54a4235dfaed219e9066f2bf29952d1e1abc45425bf72c9176fb1",
+    "server_sha256": "d052f14d7a173734fba553711e5b570162e2f2a313267ee31a21b975a679be64"
+  },
+  "pin": "26.3",
+  "reproduce": "python3 tools/reference_inventory.py",
+  "working_directory": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache"
+}
