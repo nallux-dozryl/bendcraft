@@ -1,0 +1,904 @@
+{
+  "binary": {
+    "bytes": 1265496,
+    "file": "program",
+    "sha1": "7b8a2dbb4bad714b68a9488838ee50a7eb0aa24a",
+    "sha256": "bdefbeae3bf63660af2ce116ccb3adb9ef2e8de603250ddfe314069bddef83f1"
+  },
+  "binary_path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native-cache/artifacts/bdefbeae3bf63660af2ce116ccb3adb9ef2e8de603250ddfe314069bddef83f1/program",
+  "cases": 1141,
+  "categories": {
+    "action-capture-versus-final-frame-gates": 8,
+    "active-empty-normalizes-with-one-turn": 3,
+    "actual-entity-turn-composition": 256,
+    "actual-keyboard-sample-all-masks": 128,
+    "actual-two-move-composition": 44,
+    "atomic-failure-and-retained-owner-recovery": 76,
+    "atomic-final-look-overflow": 1,
+    "atomic-final-mouse-or-look-overflow": 4,
+    "event-error-precedence": 1,
+    "f32-widen-scale-turn-boundaries": 22,
+    "genuine-state-carrying-sequential-packets": 64,
+    "harness-supported-empty-sequence": 1,
+    "harness-supported-long-key-packet": 1,
+    "harness-supported-max-sequential-packets": 1,
+    "initial-error-precedence": 10,
+    "initial-look-validation": 16,
+    "initial-mouse-validation": 16,
+    "initial-options-validation": 8,
+    "invalid-controller-pure-release": 40,
+    "nonfinite-look-atomic-even-uncaptured": 32,
+    "ordered-release-key-look-composition": 4,
+    "other-base-events-ignored-even-payload-nonfinite": 4,
+    "pure-release-owner-preservation": 3,
+    "release-followed-by-one-zero-turn": 3,
+    "release-packet-preserves-angles": 3,
+    "seeded-mixed-action-packets": 128,
+    "shared-high-u32-key-binding": 230,
+    "signed-zero-controller-composition": 32,
+    "uncaptured-look-preserves-first-discard": 2
+  },
+  "confidence": "high for recorded neutral atomic controls composition and genuine sequential/native owner retention if passed",
+  "corpus_sha256": "7f67cdc1ff78c6297ae2fd32ab718e4ccd5b08602ff7c6d66039e96a0f2cf04f",
+  "failures": [],
+  "kernel_boundary": "No compiler, ordinary check or independent kernel invoked by this runner; source/check/kernel evidence is parent-owned",
+  "malformed_complete_protocol": [
+    {
+      "exit_code": 2,
+      "id": "non_u32_or_incomplete/",
+      "seconds": 0.002897,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "non_u32_or_incomplete/x",
+      "seconds": 0.003043,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "non_u32_or_incomplete/-1",
+      "seconds": 0.003129,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "non_u32_or_incomplete/4294967296",
+      "seconds": 0.003075,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "non_u32_or_incomplete/0|1",
+      "seconds": 0.002919,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "non_u32_or_incomplete/0|1|not-a-word",
+      "seconds": 0.002837,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "truncated_controller",
+      "seconds": 0.002734,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "invalid_mode",
+      "seconds": 0.002708,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "release_trailing_word",
+      "seconds": 0.002453,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "packet_trailing_word",
+      "seconds": 0.002809,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "button_mask_bounds",
+      "seconds": 0.002324,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "controller_bool_13",
+      "seconds": 0.002291,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "controller_bool_16",
+      "seconds": 0.002366,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "controller_bool_17",
+      "seconds": 0.002363,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "controller_bool_18",
+      "seconds": 0.002425,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "controller_bool_19",
+      "seconds": 0.002453,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "packet_bool_2_0",
+      "seconds": 0.002778,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "packet_bool_0_2",
+      "seconds": 0.002645,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "action_count_bomb_4097",
+      "seconds": 0.002599,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "action_count_bomb_65536",
+      "seconds": 0.002498,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "action_count_bomb_2147483647",
+      "seconds": 0.002211,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "action_count_bomb_4294967295",
+      "seconds": 0.002462,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "packet_count_bomb_65",
+      "seconds": 0.002462,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "packet_count_bomb_65536",
+      "seconds": 0.002248,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "packet_count_bomb_2147483647",
+      "seconds": 0.00214,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "packet_count_bomb_4294967295",
+      "seconds": 0.002423,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "truncated_action",
+      "seconds": 0.00234,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "unknown_action_tag",
+      "seconds": 0.002352,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "action_padding_0_1",
+      "seconds": 0.002302,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "action_padding_0_2",
+      "seconds": 0.002351,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "action_padding_0_3",
+      "seconds": 0.002413,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "action_padding_0_4",
+      "seconds": 0.002337,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "action_padding_0_5",
+      "seconds": 0.002364,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "action_padding_1_4",
+      "seconds": 0.002439,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "action_padding_1_5",
+      "seconds": 0.002406,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "action_padding_2_4",
+      "seconds": 0.002612,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "action_padding_2_5",
+      "seconds": 0.002444,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "action_padding_4_4",
+      "seconds": 0.002389,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "action_padding_4_5",
+      "seconds": 0.002534,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "action_padding_6_1",
+      "seconds": 0.002539,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "action_padding_6_2",
+      "seconds": 0.002628,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "action_padding_6_4",
+      "seconds": 0.002347,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "action_padding_6_5",
+      "seconds": 0.002204,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "action_bool_1_2",
+      "seconds": 0.002177,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "action_bool_1_3",
+      "seconds": 0.002414,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "action_bool_2_3",
+      "seconds": 0.00231,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "action_bool_3_4",
+      "seconds": 0.002508,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "action_bool_3_5",
+      "seconds": 0.002411,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "action_bool_4_3",
+      "seconds": 0.002314,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "action_bool_5_5",
+      "seconds": 0.00239,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "action_bool_6_3",
+      "seconds": 0.002409,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "complete_sequence_rejected_before_output/padding",
+      "seconds": 0.002529,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "complete_sequence_rejected_before_output/truncation",
+      "seconds": 0.002588,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 2,
+      "id": "complete_sequence_rejected_before_output/trailing",
+      "seconds": 0.004183,
+      "stderr_sha256": "21b73a5fa3ff484073d593de86f01740a3a66c248a977117c5ad2254e952f597",
+      "stdout_bytes": 0
+    }
+  ],
+  "native_batches": [
+    {
+      "cases": 32,
+      "first_case": "java_mouse/two_move_native_pipeline_0",
+      "last_case": "java_mouse/two_move_native_pipeline_44",
+      "reports": 32,
+      "seconds": 0.646035,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "c526cd339f1ee5ec3199a93476d81ddf0a399e8b2f265373b7837b1c305f399e"
+    },
+    {
+      "cases": 32,
+      "first_case": "java_mouse/two_move_native_pipeline_45",
+      "last_case": "java_look/signed_zero_3",
+      "reports": 32,
+      "seconds": 0.00449,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "197fecc82ca4a3a28055669c1956be3b75a77cba0574f3e692493e2adcca47c7"
+    },
+    {
+      "cases": 32,
+      "first_case": "java_look/signed_zero_4",
+      "last_case": "java_look/signed_zero_35",
+      "reports": 32,
+      "seconds": 0.003391,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "9c2a3953f6c4e7cbcc3ebdd65ee879ff4637ea35f351607e583036439b25c93e"
+    },
+    {
+      "cases": 32,
+      "first_case": "java_look/signed_zero_36",
+      "last_case": "java_look/pitch_state_00000000_600",
+      "reports": 32,
+      "seconds": 0.003519,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "537afb624251c0a7349cb0a30d84a48040318870ee319ce1ba5ae6aff3edfd33"
+    },
+    {
+      "cases": 32,
+      "first_case": "java_look/pitch_state_00000000_-600",
+      "last_case": "java_look/pitch_state_42b40000_0",
+      "reports": 32,
+      "seconds": 0.003587,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "7468256ea8dcee3f2307338ff08b49b4033e1b2fb7ac71b222a8cc274eae02b6"
+    },
+    {
+      "cases": 32,
+      "first_case": "java_look/pitch_state_42b40000_1",
+      "last_case": "java_look/finite_pitch_random_325",
+      "reports": 32,
+      "seconds": 0.003441,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "8b4940f4ab57452a60fd157be0f560f7875aa2f75c7e7882a341bf0a9b39b37d"
+    },
+    {
+      "cases": 32,
+      "first_case": "java_look/finite_random_597",
+      "last_case": "java_look/finite_random_959",
+      "reports": 32,
+      "seconds": 0.002972,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "6b6952be48335b71b3f7e08d5abe770c1f6a57d46a40a8aa8e07e78463d7cb69"
+    },
+    {
+      "cases": 32,
+      "first_case": "java_look/finite_pitch_exponent_101_8388607_0",
+      "last_case": "java_look/finite_random_1177",
+      "reports": 32,
+      "seconds": 0.003142,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "6a5cdfec71db456ff6b75db50de3402d3a4190def3ff787f30d8e814a554214f"
+    },
+    {
+      "cases": 32,
+      "first_case": "java_look/finite_random_1190",
+      "last_case": "java_look/finite_random_118",
+      "reports": 32,
+      "seconds": 0.003175,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "2fcdc7fc99b13331cef3c1655f1215f102f036c3a86eea459c5ad8c2b97084ba"
+    },
+    {
+      "cases": 32,
+      "first_case": "java_look/finite_pitch_random_111",
+      "last_case": "keyboard_mask_19",
+      "reports": 32,
+      "seconds": 0.003245,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "18a5f51dddb0eb4b4697a62eca54f768138312629f6a9697d15135e9c022927b"
+    },
+    {
+      "cases": 32,
+      "first_case": "keyboard_mask_20",
+      "last_case": "keyboard_mask_51",
+      "reports": 32,
+      "seconds": 0.003253,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "1365b47b4cef88a882b2375ad1830362dca65b72d74f72d4b9355e0ace346421"
+    },
+    {
+      "cases": 32,
+      "first_case": "keyboard_mask_52",
+      "last_case": "keyboard_mask_83",
+      "reports": 32,
+      "seconds": 0.003203,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "4ecaa985ed563ee922192083c63fd7ac17216540eefdaf64338bc1e949d041b1"
+    },
+    {
+      "cases": 32,
+      "first_case": "keyboard_mask_84",
+      "last_case": "keyboard_mask_115",
+      "reports": 32,
+      "seconds": 0.003183,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "c45c7169a983b2b63aff38868a5aa2818b516abee7d524c6c2c913ac5db4e1f0"
+    },
+    {
+      "cases": 32,
+      "first_case": "keyboard_mask_116",
+      "last_case": "key_0_0_4294967295_1",
+      "reports": 32,
+      "seconds": 0.003215,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "994570c167bd4e5cfe78845bac5c354818fb67f0431324e439c25a091d7b1f01"
+    },
+    {
+      "cases": 32,
+      "first_case": "key_0_1_2_0",
+      "last_case": "key_0_42_119_1",
+      "reports": 32,
+      "seconds": 0.003024,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "58dbef87c1bc6328fff0791a2aa290b5cca8139ccfd6242875a02dee03808570"
+    },
+    {
+      "cases": 32,
+      "first_case": "key_0_42_47163_0",
+      "last_case": "key_0_127_32_1",
+      "reports": 32,
+      "seconds": 0.003056,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "077ad0b93235ee7e46554dbe0b29f14865408704db0fc474cecfaddf08135c56"
+    },
+    {
+      "cases": 32,
+      "first_case": "key_0_127_97_0",
+      "last_case": "key_1_1_4294967295_1",
+      "reports": 32,
+      "seconds": 0.002798,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "7f9630c33f43259fb2a30a681b61fd40e876ac92764e39658087ccf3d1aa8817"
+    },
+    {
+      "cases": 32,
+      "first_case": "key_1_42_2_0",
+      "last_case": "key_2_0_47163_1",
+      "reports": 32,
+      "seconds": 0.002684,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "fefc6874ff259af12fea701a9eefb3cac2fff8ca8c568e042438e277e57d7c60"
+    },
+    {
+      "cases": 32,
+      "first_case": "key_2_0_65536_0",
+      "last_case": "key_2_42_1_1",
+      "reports": 32,
+      "seconds": 0.002686,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "5b7aeee0569e8ba58e5b42ffc36358ee72ed156b0a4b88eb6d06104fb6fb72ca"
+    },
+    {
+      "cases": 32,
+      "first_case": "key_2_42_2_0",
+      "last_case": "key_2_85_4294967295_1",
+      "reports": 32,
+      "seconds": 0.002558,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "9dd2abbfc0ed8393ec64249b29535cbbfa5d77d6ba3c1ac130b842d2f5d96f4c"
+    },
+    {
+      "cases": 32,
+      "first_case": "key_2_127_0_0",
+      "last_case": "empty_active_41200000_41a00000_41f00000_42200000",
+      "reports": 32,
+      "seconds": 0.002643,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "bb6a7276584c7b81bdd8df2f832f45b76a4c33c50fb0e7e7f25250816e6f9b06"
+    },
+    {
+      "cases": 32,
+      "first_case": "release_direct_80000000_80000000_80000000_80000000",
+      "last_case": "signed_zero_15",
+      "reports": 32,
+      "seconds": 0.002711,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "665cb88e67cbbecf04dfdacd91b9aaff102c3c8aaf92df37d4fc4cc8983b9537"
+    },
+    {
+      "cases": 32,
+      "first_case": "signed_zero_16",
+      "last_case": "invalid_mouse_release_3_fff0000000000000",
+      "reports": 32,
+      "seconds": 0.003201,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "7c63031a5d49817b5774abc8d2b199107568f3c84c9400ce0cce9b8f48652d41"
+    },
+    {
+      "cases": 32,
+      "first_case": "invalid_mouse_0_7ff8000000000123",
+      "last_case": "invalid_event_1_7f800000_1_1",
+      "reports": 32,
+      "seconds": 0.002922,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "5f9c90b6f873febd6016e1a8af849b4afccec14d29122ee135310aa1a3980a62"
+    },
+    {
+      "cases": 32,
+      "first_case": "invalid_look_0_ff800000",
+      "last_case": "invalid_event_1_7fc00123_1_1",
+      "reports": 32,
+      "seconds": 0.002573,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "d35e3b5f46792ebb1716a08c2c81d67fb6528c242788e9e077461a2a8281f866"
+    },
+    {
+      "cases": 32,
+      "first_case": "invalid_look_0_7f800001",
+      "last_case": "unsupported_release_scope",
+      "reports": 32,
+      "seconds": 0.002653,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "53a5adee3d6b8c830dc40f31df09396a536d3d3d498e8bafa5e6285f20f598c7"
+    },
+    {
+      "cases": 32,
+      "first_case": "precedence_mouse_0",
+      "last_case": "f32_boundary_3f800000_1",
+      "reports": 32,
+      "seconds": 0.002868,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "facd856a22a0f898125428d7c31600b17a91aa3ca0f6c9b1bbf5d9ea88110758"
+    },
+    {
+      "cases": 32,
+      "first_case": "f32_boundary_3f800001_0",
+      "last_case": "random_packet_25",
+      "reports": 32,
+      "seconds": 0.002916,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "0fe0790f3ba0d9857536ddc3336f5614e779ca7c45a55d6f9f25956d2a396e8f"
+    },
+    {
+      "cases": 32,
+      "first_case": "random_packet_26",
+      "last_case": "random_packet_57",
+      "reports": 32,
+      "seconds": 0.002905,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "7b3c947a44a161d8766909f6ebd847a3f1ae41d9f1d145a73b75ba5337e0d6fc"
+    },
+    {
+      "cases": 32,
+      "first_case": "random_packet_58",
+      "last_case": "random_packet_89",
+      "reports": 32,
+      "seconds": 0.002976,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "eaf9584b177efdbec0d84f3f093e686532a2354add74a312296352c7b34be09e"
+    },
+    {
+      "cases": 32,
+      "first_case": "random_packet_90",
+      "last_case": "random_packet_121",
+      "reports": 32,
+      "seconds": 0.002835,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "a4ad8536d8fa453990880aa7618aa3a6e02739ba35a419e2b29fda588f3245a0"
+    },
+    {
+      "cases": 32,
+      "first_case": "random_packet_122",
+      "last_case": "sequential_packets_25",
+      "reports": 214,
+      "seconds": 0.003318,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "6ee88048d8585055f679b7c10be5f66b0ad0eed0682b2c627edd5d6d6580cf0a"
+    },
+    {
+      "cases": 32,
+      "first_case": "sequential_packets_26",
+      "last_case": "sequential_packets_57",
+      "reports": 256,
+      "seconds": 0.003487,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "b15c1a2e62ebd1edf43ff7d524e76fa92a91e5ecc928d5de5230b3a0845bd68c"
+    },
+    {
+      "cases": 32,
+      "first_case": "sequential_packets_58",
+      "last_case": "java_look/finite_random_697/retained-recovery",
+      "reports": 159,
+      "seconds": 0.007487,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "8364223a6c08c3b25b33675ad46b3cb90ac2749d4f475d6292e32deb50f77197"
+    },
+    {
+      "cases": 32,
+      "first_case": "java_look/finite_random_111/retained-recovery",
+      "last_case": "invalid_event_0_7fc00123_1_0/retained-recovery",
+      "reports": 64,
+      "seconds": 0.003304,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "863dc4941c0d87a89fdf35cdd3cd24662fa5389438e59da605e88c3f4700e646"
+    },
+    {
+      "cases": 21,
+      "first_case": "invalid_event_0_7fc00123_1_1/retained-recovery",
+      "last_case": "f32_boundary_ff7fffff_1/retained-recovery",
+      "reports": 42,
+      "seconds": 0.003369,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "4f7032c440c523c117f0f1a6b0eea69fb15253e668377e6bc09e12779b3ab50b"
+    }
+  ],
+  "oracle_boundary": "No whole Minecraft controller/packet/OS lifecycle is claimed. Base.Look has only relative F32 deltas, so absolute mouse position is retained by the declared relative adapter. Frame-final gate/drain, release, binding updates, atomic failure and initial validation precedence are declared composition policy. Actual private Java turn does not execute handleAccumulatedMovement.",
+  "pin": "26.3",
+  "recovery_batches": [
+    {
+      "cases": 32,
+      "first_case": "java_look/huge_dx",
+      "last_case": "successful_same_process_recovery",
+      "reports": 32,
+      "seconds": 0.003305,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "0c521ec1bc5d8594c7344da73d97a2b10d3d5cdd32eecef51581ff518441b3df"
+    },
+    {
+      "cases": 32,
+      "first_case": "java_look/finite_random_1355",
+      "last_case": "successful_same_process_recovery",
+      "reports": 32,
+      "seconds": 0.002739,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "fd3c04417f69e26939cb98b757fc8fa362f167c6c22b84621d0fd3c75dd1877d"
+    },
+    {
+      "cases": 32,
+      "first_case": "java_look/finite_random_777",
+      "last_case": "successful_same_process_recovery",
+      "reports": 32,
+      "seconds": 0.002617,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "a8bd1969a9a5786e57ffa025151b87dfd3ceeab43c1a0a1f8d5c2131e94a3550"
+    },
+    {
+      "cases": 32,
+      "first_case": "invalid_mouse_2_7ff0000000000001",
+      "last_case": "successful_same_process_recovery",
+      "reports": 32,
+      "seconds": 0.003027,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "01cdd05fe202591eb067a19621d8b9a13ad0cb778d298ab5207b00eea201315c"
+    },
+    {
+      "cases": 32,
+      "first_case": "invalid_look_2_ff800000",
+      "last_case": "successful_same_process_recovery",
+      "reports": 32,
+      "seconds": 0.003657,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "3b4c639437391ba535556d7a975c157f32947579e967bcb6689df055ce4c22ba"
+    },
+    {
+      "cases": 32,
+      "first_case": "invalid_event_1_7fc00123_0_0",
+      "last_case": "successful_same_process_recovery",
+      "reports": 32,
+      "seconds": 0.002622,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "2f8ceba0737573fa96afcaf460019c1296e8ec636bfe9053ac8c95c537ec69dd"
+    },
+    {
+      "cases": 32,
+      "first_case": "invalid_event_1_7f800001_1_0",
+      "last_case": "successful_same_process_recovery",
+      "reports": 32,
+      "seconds": 0.003287,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "4c8e14f31a1ca2082070731be12cbf082e45235000e498e0d80a1e0efd804679"
+    },
+    {
+      "cases": 28,
+      "first_case": "precedence_look_0",
+      "last_case": "successful_same_process_recovery",
+      "reports": 28,
+      "seconds": 0.00332,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "c689051e384413306980c82afaf0deb36a34e35b6375a18f691ff7ab7d420f40"
+    }
+  ],
+  "reference_evidence": {
+    "bytes": 69851,
+    "file": "player-controls-reference.json",
+    "sha1": "68d44682afd53625bd5a793b30c78cc2e3ed7aca",
+    "sha256": "8b9526ec95023da826efc6140bd472bf7281f24feaf6a415f8494102bb5a48e4"
+  },
+  "reports": 1727,
+  "reproduce": "python3 tools/test_player_controls.py --skip-build",
+  "runner": {
+    "bytes": 36130,
+    "file": "test_player_controls.py",
+    "sha1": "ef979b650c552b304f9cabf47c734e55b3c91b9f",
+    "sha256": "52ba9559c424519e435c2e4bc55c13a7d0ad82b171f864d32709d3451d2da23f"
+  },
+  "same_process_failed_request_recoveries": 126,
+  "scope": "Independent expected composition from public packet contract, actual logical KeyboardInput samples, direct frozen MouseHandler relative accumulation/scaling and Entity.turn raw fields, exact Fraction IEEE RN-even operations",
+  "seconds_including_reference_preparation_and_native_io": 11.396808,
+  "source_identities": {
+    "src/client_controls.bend": "aa55b7905c339d58909e6319d2d31b972c23ea1a2a3c895ea72c2a2c72605f25",
+    "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "src/mouse_input.bend": "2157b1804cb7ad58f6b58fd167de978eb9605ddac9485241d102128d055158a9",
+    "src/player_controls.bend": "52e012a959078eb06b80fb17f17f6ca06d98c4d84ab0ca529164f82d03637d38",
+    "src/player_input.bend": "d3938f96416691739eb54f2b0f77377c6ba7c74ac63ffa8335840152feb355d5",
+    "src/player_look.bend": "35ec863e078e46f2c2502b975f3e9f259114aec7baac614c68ba6e46773260ca",
+    "tests/player_controls.bend": "9c0940e20f07b87a0a3e3c3b14fcada5f6dda3573ff9311e995c15da4e6a0d8d"
+  },
+  "status": "passed",
+  "unsupported": [
+    "smooth-camera/scoping branches",
+    "real OS key/mouse/focus/capture/window handling",
+    "GUI routing and complete mouse frame timer",
+    "gameplay movement or network integration"
+  ]
+}

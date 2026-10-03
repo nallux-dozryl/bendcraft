@@ -1,0 +1,79 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_controls.bend",
+        "--verdict"
+      ],
+      "pid": 54254,
+      "exit_code": 0,
+      "stdout": "ALL PROOFS CHECK\n",
+      "stderr": "",
+      "seconds": 0.310273,
+      "limit_seconds": 60
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_controls.bend",
+        "--verdict"
+      ],
+      "pid": 54259,
+      "exit_code": 0,
+      "stdout": "ALL PROOFS CHECK\n",
+      "stderr": "",
+      "seconds": 0.420967,
+      "limit_seconds": 60
+    }
+  ],
+  "ordinary_checks": [
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_controls.bend",
+        "--check-only"
+      ],
+      "pid": 54248,
+      "exit_code": 0,
+      "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n",
+      "stderr": "",
+      "seconds": 0.15326,
+      "limit_seconds": 60
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_controls.bend",
+        "--check-only"
+      ],
+      "pid": 54252,
+      "exit_code": 0,
+      "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n",
+      "stderr": "",
+      "seconds": 0.170143,
+      "limit_seconds": 60
+    }
+  ],
+  "sources_sha256": {
+    "src/client_controls.bend": "aa55b7905c339d58909e6319d2d31b972c23ea1a2a3c895ea72c2a2c72605f25",
+    "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "src/mouse_input.bend": "2157b1804cb7ad58f6b58fd167de978eb9605ddac9485241d102128d055158a9",
+    "src/player_controls.bend": "52e012a959078eb06b80fb17f17f6ca06d98c4d84ab0ca529164f82d03637d38",
+    "src/player_input.bend": "d3938f96416691739eb54f2b0f77377c6ba7c74ac63ffa8335840152feb355d5",
+    "src/player_look.bend": "35ec863e078e46f2c2502b975f3e9f259114aec7baac614c68ba6e46773260ca",
+    "tests/player_controls.bend": "9c0940e20f07b87a0a3e3c3b14fcada5f6dda3573ff9311e995c15da4e6a0d8d"
+  },
+  "laws": [
+    "release_clears_without_admission",
+    "release_is_idempotent",
+    "uncaptured_key_preserves_controller",
+    "release_action_is_total",
+    "failed_fold_is_sticky",
+    "failed_packet_retains_owner",
+    "inactive_turn_preserves_controller",
+    "failed_finish_never_publishes_controller"
+  ],
+  "scope": "Actual full-import independent type/termination and the eight stated release/failure/owner laws; no universal IEEE/Java/controller theorem"
+}

@@ -1,0 +1,65 @@
+{
+  "status": "passed",
+  "sources_sha256": {
+    "src/client_controls.bend": "aa55b7905c339d58909e6319d2d31b972c23ea1a2a3c895ea72c2a2c72605f25",
+    "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "src/mouse_input.bend": "2157b1804cb7ad58f6b58fd167de978eb9605ddac9485241d102128d055158a9",
+    "src/player_controls.bend": "52e012a959078eb06b80fb17f17f6ca06d98c4d84ab0ca529164f82d03637d38",
+    "src/player_input.bend": "d3938f96416691739eb54f2b0f77377c6ba7c74ac63ffa8335840152feb355d5",
+    "src/player_look.bend": "35ec863e078e46f2c2502b975f3e9f259114aec7baac614c68ba6e46773260ca",
+    "tests/player_controls.bend": "9c0940e20f07b87a0a3e3c3b14fcada5f6dda3573ff9311e995c15da4e6a0d8d"
+  },
+  "owned_files_before_audit": {
+    "src/player_controls.bend": {
+      "bytes": 7489,
+      "sha256": "52e012a959078eb06b80fb17f17f6ca06d98c4d84ab0ca529164f82d03637d38"
+    },
+    "tests/player_controls.bend": {
+      "bytes": 13717,
+      "sha256": "9c0940e20f07b87a0a3e3c3b14fcada5f6dda3573ff9311e995c15da4e6a0d8d"
+    },
+    "tools/test_player_controls.py": {
+      "bytes": 36130,
+      "sha256": "52ba9559c424519e435c2e4bc55c13a7d0ad82b171f864d32709d3451d2da23f"
+    },
+    "docs/PLAYER_CONTROLS.md": {
+      "bytes": 9520,
+      "sha256": "ef77f00745a171cd3cc69dfa8e82d28613ff57bab1eacf3fc1912ddd6578f196"
+    },
+    "evidence/player-controls-reference.json": {
+      "bytes": 69851,
+      "sha256": "8b9526ec95023da826efc6140bd472bf7281f24feaf6a415f8494102bb5a48e4"
+    },
+    "evidence/player-controls-native.json": {
+      "bytes": 32838,
+      "sha256": "165ff1d4867b4dad0aa57133745439a87d7c74905f11e7ebcfbea10365c86994"
+    },
+    "evidence/player-controls-kernel.json": {
+      "bytes": 2682,
+      "sha256": "bea5dfc0920af501902e0dd2fc4908f7323fdf6c9caf03b059737f2f331a707b"
+    },
+    "evidence/player-controls-build.json": {
+      "bytes": 626974,
+      "sha256": "895b7039ab97609ecf8d2291a52edbe11debb9c534551838a186bdd42f1217db"
+    }
+  },
+  "immutable_artifact": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native-cache/artifacts/bdefbeae3bf63660af2ce116ccb3adb9ef2e8de603250ddfe314069bddef83f1/program",
+  "immutable_binary_sha256": "bdefbeae3bf63660af2ce116ccb3adb9ef2e8de603250ddfe314069bddef83f1",
+  "verified_native_dependencies": 1633,
+  "checks": [
+    "Actual source and test import closure equal kernel/build/native recorded generations",
+    "Cache receipt resolves and hashes every recorded native dependency and digest-specific artifact",
+    "Runner digest equal reference/native receipts",
+    "Corpus digest and actual report/batch counts agree",
+    "All54 malformed requests exit2 without output",
+    "All126 failed requests have252 same-process failure/recovery reports",
+    "Actual full source/harness independent kernel outputs ALL PROOFS CHECK"
+  ],
+  "native_requests": 1141,
+  "native_packet_reports": 1727,
+  "corpus_sha256": "7f67cdc1ff78c6297ae2fd32ab718e4ccd5b08602ff7c6d66039e96a0f2cf04f",
+  "proof_scope": "Actual full-import independent type/termination and the eight stated release/failure/owner laws; no universal IEEE/Java/controller theorem",
+  "runtime_boundary": "No whole Minecraft controller/packet/OS lifecycle is claimed. Base.Look has only relative F32 deltas, so absolute mouse position is retained by the declared relative adapter. Frame-final gate/drain, release, binding updates, atomic failure and initial validation precedence are declared composition policy. Actual private Java turn does not execute handleAccumulatedMovement.",
+  "confidence": "high within stated laws and recorded neutral input-composition fixtures",
+  "no_additional_heavy_job_required": true
+}
