@@ -1,0 +1,300 @@
+{
+  "status": "passed",
+  "recorded_at_utc": "2026-10-03T14:24:16.503763+00:00",
+  "elapsed_seconds": 2.8140394994989038,
+  "platform": "macOS-26.4.1-arm64-arm-64bit-Mach-O",
+  "python": "3.14.6",
+  "compiler_version": "bend 2.0.35",
+  "compiler_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+  "native_binary_sha256": "83d34671a1af6cf92ad7934a8335f13d2587b4ab9eddd1fac4649d3892345d67",
+  "source_sha256": {
+    "src/framing.bend": "4f9e290189b23561cffe75d0274b6a29ea7552ecd1457775a5612bf98c12cba1",
+    "tests/framing.bend": "a6856a65acdce12b833796e14d2eb39b9862638d1238319995734de49d950485",
+    "tools/test_framing.py": "10a09ba72553577e062c33a844548487435ad958eb3007f1e84cd9907eb689f7"
+  },
+  "case_count": 1069,
+  "native_batch_count": 37,
+  "receive_chunk_count": 4736,
+  "failure_counts": {
+    "UTF-8": 446,
+    "input byte exceeds 255": 9,
+    "line exceeds 16384 Unicode scalar code points": 2,
+    "line exceeds 65536 bytes before LF": 3
+  },
+  "corpus_sha256": "8ad4383dfe895ebdb178213de6da9d668c7fe2703f98e9b07099570870123e40",
+  "observed_sha256": "828eff49a83119de739db84e392c0643bdf2b86683d6a868d7a62d589fd48ea4",
+  "commands": [
+    [
+      "/Users/chuah/.bend/bin/bend",
+      "src/framing.bend",
+      "--verdict"
+    ],
+    [
+      "/Users/chuah/.bend/bin/bend",
+      "tests/framing.bend",
+      "--verdict"
+    ],
+    [
+      "/Users/chuah/.bend/bin/bend",
+      "tests/framing.bend",
+      "-o",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/framing-tests"
+    ],
+    [
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/framing-tests",
+      "--threads",
+      "1",
+      "--gpu",
+      "off"
+    ],
+    [
+      "python3",
+      "tools/test_framing.py"
+    ]
+  ],
+  "checker_results": [
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/framing.bend",
+        "--verdict"
+      ],
+      "stdout": "ALL PROOFS CHECK\n",
+      "stderr": "",
+      "returncode": 0
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/framing.bend",
+        "--verdict"
+      ],
+      "stdout": "ALL PROOFS CHECK\n",
+      "stderr": "",
+      "returncode": 0
+    }
+  ],
+  "limit_cases": [
+    {
+      "name": "scalar-limit-exact",
+      "steps": [
+        {
+          "ok": true,
+          "pending_size": 0,
+          "pending_reverse_fnv1a32": 2166136261,
+          "line_scalar_counts": [
+            16384
+          ]
+        }
+      ],
+      "eof": true
+    },
+    {
+      "name": "scalar-limit-exceeded",
+      "steps": [
+        {
+          "ok": false,
+          "error": "line exceeds 16384 Unicode scalar code points"
+        }
+      ],
+      "eof": false
+    },
+    {
+      "name": "scalar-limit-split",
+      "steps": [
+        {
+          "ok": true,
+          "pending_size": 16384,
+          "pending_reverse_fnv1a32": 78503365,
+          "line_scalar_counts": []
+        },
+        {
+          "ok": true,
+          "pending_size": 0,
+          "pending_reverse_fnv1a32": 2166136261,
+          "line_scalar_counts": [
+            16384
+          ]
+        }
+      ],
+      "eof": true
+    },
+    {
+      "name": "byte-and-scalar-limits-exact",
+      "steps": [
+        {
+          "ok": true,
+          "pending_size": 65536,
+          "pending_reverse_fnv1a32": 1599053253,
+          "line_scalar_counts": []
+        },
+        {
+          "ok": true,
+          "pending_size": 0,
+          "pending_reverse_fnv1a32": 2166136261,
+          "line_scalar_counts": [
+            16384
+          ]
+        }
+      ],
+      "eof": true
+    },
+    {
+      "name": "crlf-byte-limit-exact",
+      "steps": [
+        {
+          "ok": true,
+          "pending_size": 65536,
+          "pending_reverse_fnv1a32": 2178502797,
+          "line_scalar_counts": []
+        },
+        {
+          "ok": true,
+          "pending_size": 0,
+          "pending_reverse_fnv1a32": 2166136261,
+          "line_scalar_counts": [
+            16384
+          ]
+        }
+      ],
+      "eof": true
+    },
+    {
+      "name": "crlf-byte-limit-exceeded",
+      "steps": [
+        {
+          "ok": true,
+          "pending_size": 65536,
+          "pending_reverse_fnv1a32": 1599053253,
+          "line_scalar_counts": []
+        },
+        {
+          "ok": false,
+          "error": "line exceeds 65536 bytes before LF"
+        }
+      ],
+      "eof": false
+    },
+    {
+      "name": "pending-byte-limit-exact",
+      "steps": [
+        {
+          "ok": true,
+          "pending_size": 65536,
+          "pending_reverse_fnv1a32": 3394280901,
+          "line_scalar_counts": []
+        }
+      ],
+      "eof": false
+    },
+    {
+      "name": "pending-byte-limit-split",
+      "steps": [
+        {
+          "ok": true,
+          "pending_size": 65535,
+          "pending_reverse_fnv1a32": 3586382535,
+          "line_scalar_counts": []
+        },
+        {
+          "ok": true,
+          "pending_size": 65536,
+          "pending_reverse_fnv1a32": 3394280901,
+          "line_scalar_counts": []
+        }
+      ],
+      "eof": false
+    },
+    {
+      "name": "pending-byte-limit-exceeded",
+      "steps": [
+        {
+          "ok": true,
+          "pending_size": 65536,
+          "pending_reverse_fnv1a32": 3394280901,
+          "line_scalar_counts": []
+        },
+        {
+          "ok": false,
+          "error": "line exceeds 65536 bytes before LF"
+        }
+      ],
+      "eof": false
+    },
+    {
+      "name": "pending-ascii-deferred-scalar-limit",
+      "steps": [
+        {
+          "ok": true,
+          "pending_size": 65536,
+          "pending_reverse_fnv1a32": 258055621,
+          "line_scalar_counts": []
+        }
+      ],
+      "eof": false
+    },
+    {
+      "name": "pending-ascii-completed-scalar-limit",
+      "steps": [
+        {
+          "ok": true,
+          "pending_size": 65536,
+          "pending_reverse_fnv1a32": 258055621,
+          "line_scalar_counts": []
+        },
+        {
+          "ok": false,
+          "error": "line exceeds 16384 Unicode scalar code points"
+        }
+      ],
+      "eof": false
+    },
+    {
+      "name": "byte-limit-after-earlier-record",
+      "steps": [
+        {
+          "ok": true,
+          "pending_size": 0,
+          "pending_reverse_fnv1a32": 2166136261,
+          "line_scalar_counts": [
+            8
+          ]
+        },
+        {
+          "ok": false,
+          "error": "line exceeds 65536 bytes before LF"
+        }
+      ],
+      "eof": false
+    },
+    {
+      "name": "out-of-range-precedes-byte-limit",
+      "steps": [
+        {
+          "ok": true,
+          "pending_size": 65536,
+          "pending_reverse_fnv1a32": 3394280901,
+          "line_scalar_counts": []
+        },
+        {
+          "ok": false,
+          "error": "input byte exceeds 255"
+        }
+      ],
+      "eof": false
+    }
+  ],
+  "coverage": [
+    "Every partition of scalar-boundary UTF-8 encodings plus LF; every single split of multirecord JSON bytes.",
+    "All 256 single byte values; explicit U32 values above 255; strict malformed UTF-8 classifications.",
+    "Seeded Unicode and arbitrary-byte receive splits, including empty chunks and codepoint splits.",
+    "CRLF, retained interior CR/BOM/NUL, incomplete EOF and deferred malformed partial bytes.",
+    "65536-byte and 16384-scalar exact/exceeded bounds; failed-feed batch atomicity."
+  ],
+  "boundary": [
+    "Native tests exercise pure Bend framing; Python supplies only inputs and an independent strict-decoder oracle.",
+    "The five finite checked fixtures are not a universal UTF-8 or segmentation theorem.",
+    "No TCP transport integration, Minecraft parity or foreign implementation is claimed.",
+    "Buffer invariants assume construction through new/feed, not manually forged Buffer constructors."
+  ]
+}

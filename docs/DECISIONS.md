@@ -27,3 +27,11 @@ The root repository was unborn; create codex/minecraft-26-3 and stage only owned
 ## 2026-10-03: live transport ownership
 
 One Bend actor owns the world; connection computations exchange typed requests/replies through bounded Base channels. OS-driven accept/read/timer/actor lifetimes use explicit @unsafe recursion and remain outside root laws; gameplay transitions remain pure checked Bend. Local NDJSON transport uses byte-preserving receive/framing so Unicode split across packets cannot corrupt requests. Developer access requires a configured nonempty local token; player functionality is only exposed when actual abilities/observations are implemented.
+
+## 2026-10-03: loaded registry and complete driver replacement
+
+The default server owns `Game.Engine{world,registry}` and loads validated block metadata before opening its listener. Core state bounds derive from that metadata. Registry name/property queries appear in the same actual discovery catalog used by the MCP adapter. Generalize transport over compile-time `Server.Driver<State>{step,dispatch}` so typed Bend mods can replace owned simulation state and system transitions. This boundary does not itself establish full subsystem hooks or vanilla behavior.
+
+## 2026-10-03: record processing is independent of receive grouping
+
+The byte framer reports a failed whole feed atomically. Dispatching that result directly could erase earlier valid records when a later invalid record arrived in the same TCP receive. Split byte batches at LF before feeding/dispatching each record. An actual TCP test verifies that a valid stepping request applies before a coalesced malformed UTF-8 record closes its connection.

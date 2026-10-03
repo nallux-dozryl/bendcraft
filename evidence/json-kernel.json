@@ -1,0 +1,223 @@
+{
+  "schema": 1,
+  "observed_at_utc": "2026-10-03T14:49:44.713566+00:00",
+  "status": "No verified repair found in bounded investigation; unchanged public AST and serializer behavior",
+  "confidence": {
+    "reproduced_checker_kernel_mismatch": "high",
+    "tested_native_outputs": "high",
+    "existence_of_other_constraint_satisfying_implementation": "unknown"
+  },
+  "production_source_modified": false,
+  "source_sha256": "a546726a2422382e388e3b0c9c2868034f25f5b1339c8b6b1dc167190a1b4099",
+  "fixture_source": "tests/json_kernel.bend",
+  "fixture_source_sha256": "561b22c5f745e25cc524f0d4a2dd1f145c0672d3d099de72ac5332f4d643c19e",
+  "documentation": "docs/JSON_KERNEL.md",
+  "documentation_sha256": "a12a76256e8ec38457a28457184ce0e160b78cbc506116d7a1d4b00b85cf70c5",
+  "compiler": {
+    "version": "bend 2.0.35",
+    "binary": "/Users/chuah/.bend/bin/bend",
+    "binary_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e"
+  },
+  "kernel": {
+    "binary": "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+    "binary_sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7",
+    "cached_source_sha256": "e15042434e73aab07ab05cea4b77b5619082c00a6d4924ea2d4a2cdec05facce",
+    "inspected_reference_source": "../bend/bend2/bendtt.lean",
+    "inspected_reference_source_sha256": "e15042434e73aab07ab05cea4b77b5619082c00a6d4924ea2d4a2cdec05facce"
+  },
+  "ordinary_checker_source_inspected": {
+    "path": "../bend/bend2/bend.ts",
+    "sha256": "7deae3693eb896f33c73867081b99d2c6f3ed3b57e77e55eb5f6260840dd0e63",
+    "functions": [
+      "term_descend",
+      "match_flatten"
+    ]
+  },
+  "kernel_functions_inspected": [
+    "Term.pos",
+    "Term.piece",
+    "Arg.descend",
+    "Term.called",
+    "Term.tree"
+  ],
+  "checks": {
+    "module_check": {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/json.bend",
+        "--check-only"
+      ],
+      "exit_code": 0,
+      "output": "ALL PROOFS CHECK\nUse --verdict for mathematical validity."
+    },
+    "fixture_check": {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/json_kernel.bend",
+        "--check-only"
+      ],
+      "exit_code": 0,
+      "output": "ALL PROOFS CHECK\nUse --verdict for mathematical validity."
+    },
+    "module_verdict": {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/json.bend",
+        "--verdict"
+      ],
+      "exit_code": 1,
+      "output": "SOME PROOFS FAIL\nSorry - this is a mismatch between the TypeScript implementation, and the formalized BendTT kernel. Your proofs may or may not be correct, and we cannot validate them yet. This will be addressed in a future update. Meanwhile, feel free to open an issue to report this bug."
+    },
+    "fixture_verdict": {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/json_kernel.bend",
+        "--verdict"
+      ],
+      "exit_code": 1,
+      "output": "SOME PROOFS FAIL\nSorry - this is a mismatch between the TypeScript implementation, and the formalized BendTT kernel. Your proofs may or may not be correct, and we cannot validate them yet. This will be addressed in a future update. Meanwhile, feel free to open an issue to report this bug."
+    },
+    "module_direct_kernel": {
+      "command": [
+        "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+        "build/json-kernel-module.bendtt"
+      ],
+      "exit_code": 1,
+      "output": "SOME PROOFS FAIL\nIn encode_go:\naffine live code, calls that descend"
+    },
+    "structural_probe_check": {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "build/json-kernel-structural-probe.bend",
+        "--check-only"
+      ],
+      "exit_code": 0,
+      "output": "ALL PROOFS CHECK\nUse --verdict for mathematical validity."
+    },
+    "structural_probe_verdict": {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "build/json-kernel-structural-probe.bend",
+        "--verdict"
+      ],
+      "exit_code": 1,
+      "output": "SOME PROOFS FAIL\nSorry - this is a mismatch between the TypeScript implementation, and the formalized BendTT kernel. Your proofs may or may not be correct, and we cannot validate them yet. This will be addressed in a future update. Meanwhile, feel free to open an issue to report this bug."
+    },
+    "structural_probe_direct_kernel": {
+      "command": [
+        "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+        "build/json-kernel-structural-probe.bendtt"
+      ],
+      "exit_code": 1,
+      "output": "SOME PROOFS FAIL\nIn count:\naffine live code, calls that descend"
+    },
+    "runtime_index_probe_check": {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "build/json-kernel-indexed-probe.bend",
+        "--check-only"
+      ],
+      "exit_code": 1,
+      "output": "SOME PROOFS FAIL\nError:\n- expected : a decreasing self-call (arguments are read left to right: each passed unchanged until one shrinks)\n- observed : count\nContext:\n- children : List<&2, Node>\nLocation: count\n18 |       match piece:\n19>|         case Node{children}: count(ArraySort{}, children)\n   |                              ^^^^^\n20 |     case ArraySort{}:"
+    },
+    "erased_index_probe_check": {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "build/json-kernel-erased-probe.bend",
+        "--check-only"
+      ],
+      "exit_code": 1,
+      "output": "SOME PROOFS FAIL\nError:\n- message  : a live scrutinee (a - scrutinee matches only in a dead region)\nLocation: count\n16 |   match sort:\n17>|     case ValueSort{}:\n   |          ^^^^^^^^^^^\n18 |       match piece:"
+    }
+  },
+  "minimal_reproducer": {
+    "source": "import Base\n\ntype Node is Data:\n  Node{children: List<&2, Node>}\n\ndef count(node: Node) -> Nat:\n  match node:\n    case Node{Nil{}}: 1n\n    case Node{h <> t}: Nat.add(count(h), count(Node{t}))\n",
+    "emit_command": [
+      "/Users/chuah/.bend/bin/bend",
+      "build/json-kernel-structural-probe.bend",
+      "-o",
+      "build/json-kernel-structural-probe.bendtt"
+    ]
+  },
+  "runtime_index_probe_source": "import Base\n\ntype Node is Data:\n  Node{children: List<&2, Node>}\n\ntype Sort is Data:\n  ValueSort{}\n  ArraySort{}\n\ndef Payload(sort: Sort) -> Data:\n  match sort:\n    case ValueSort{}: Node\n    case ArraySort{}: List<&2, Node>\n\ndef count(sort: Sort, piece: Payload(sort)) -> Nat:\n  match sort:\n    case ValueSort{}:\n      match piece:\n        case Node{children}: count(ArraySort{}, children)\n    case ArraySort{}:\n      match piece:\n        case Nil{}: 0n\n        case h <> t: Nat.add(count(ValueSort{}, h), count(ArraySort{}, t))\n",
+  "erased_index_probe_source": "import Base\n\ntype Node is Data:\n  Node{children: List<&2, Node>}\n\ntype Sort is Data:\n  ValueSort{}\n  ArraySort{}\n\ndef Payload(sort: Sort) -> Data:\n  match sort:\n    case ValueSort{}: Node\n    case ArraySort{}: List<&2, Node>\n\ndef count(-sort: Sort, piece: Payload(sort)) -> Nat:\n  match sort:\n    case ValueSort{}:\n      match piece:\n        case Node{children}: count(ArraySort{}, children)\n    case ArraySort{}:\n      match piece:\n        case Nil{}: 0n\n        case h <> t: Nat.add(count(ValueSort{}, h), count(ArraySort{}, t))\n",
+  "native_direct_ast_checks": [
+    {
+      "name": "mixed-order-number-escapes",
+      "codepoints": 56,
+      "utf8_bytes": 59,
+      "output_sha256": "d313646c232655cf900c75bb5cd99f3bbeeb160abb532219b9e2ef8b7c27345f",
+      "byte_for_byte_match": true
+    },
+    {
+      "name": "depth-256",
+      "codepoints": 528,
+      "utf8_bytes": 528,
+      "output_sha256": "4502cd2e5656f0e49b0575a7a637f6cc2f47fa16e596e42fb77124da0e03d094",
+      "byte_for_byte_match": true
+    },
+    {
+      "name": "array-20000",
+      "codepoints": 100001,
+      "utf8_bytes": 100001,
+      "output_sha256": "7023415dea29fdadddc311ee64c879207d604e2a768ad5c4e680eb037d4d5b9b",
+      "byte_for_byte_match": true
+    },
+    {
+      "name": "object-4000",
+      "codepoints": 74891,
+      "utf8_bytes": 74891,
+      "output_sha256": "3561210db767a3b3fa89d951b61143a92d0249c2d29eff1ff509a8318069788e",
+      "byte_for_byte_match": true
+    },
+    {
+      "name": "string-20000",
+      "codepoints": 20002,
+      "utf8_bytes": 80002,
+      "output_sha256": "6680390c2b9fc0ecfee40469555eeeea7643a485115e722cf91e725189068b61",
+      "byte_for_byte_match": true
+    }
+  ],
+  "native_direct_ast_elapsed_seconds": 0.414,
+  "native_build_command": [
+    "/Users/chuah/.bend/bin/bend",
+    "tests/json_kernel.bend",
+    "-o",
+    "build/json-kernel-tests"
+  ],
+  "native_execution_command": [
+    "build/json-kernel-tests",
+    "--threads",
+    "1"
+  ],
+  "native_expected_outputs_recipe": "Python code in docs/JSON_KERNEL.md, executed successfully against all five emitted lines",
+  "existing_corpus": {
+    "command": [
+      "python3",
+      "tools/test_json.py"
+    ],
+    "evidence": "evidence/json-tests.json",
+    "independent_cases": 536,
+    "successful_roundtrips": 299,
+    "all_cases_passed": true
+  },
+  "constraints_preserved": {
+    "public_ast": true,
+    "encode_signature": true,
+    "valid_ast_exact_output_contract": true,
+    "parser_limits": {
+      "max_codepoints": 16384,
+      "max_container_depth": 64
+    },
+    "serializer_fixed_fuel_or_truncation_added": false,
+    "unsafe_or_foreign_added": false,
+    "axioms_or_unchecked_laws_added": false,
+    "compiler_or_kernel_edited": false
+  },
+  "claim_limits": [
+    "No general JSON correctness or roundtrip theorem established",
+    "No JSON module kernel validation claimed",
+    "No impossibility theorem claimed",
+    "Direct AST tests are finite native behavioral evidence"
+  ]
+}

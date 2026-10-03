@@ -1,0 +1,83 @@
+{
+  "schema": 1,
+  "compiler": "bend 2.0.35",
+  "checker": {
+    "src/live.bend": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.",
+    "tests/live.bend": "ALL PROOFS CHECK\nUse --verdict for mathematical validity."
+  },
+  "kernel_verdicts": {
+    "src/live.bend": {
+      "exit_code": 1,
+      "output": "SOME PROOFS FAIL\nSorry - this is a mismatch between the TypeScript implementation, and the formalized BendTT kernel. Your proofs may or may not be correct, and we cannot validate them yet. This will be addressed in a future update. Meanwhile, feel free to open an issue to report this bug."
+    },
+    "tests/live.bend": {
+      "exit_code": 1,
+      "output": "SOME PROOFS FAIL\nSorry - this is a mismatch between the TypeScript implementation, and the formalized BendTT kernel. Your proofs may or may not be correct, and we cannot validate them yet. This will be addressed in a future update. Meanwhile, feel free to open an issue to report this bug."
+    }
+  },
+  "source_sha256": "cb5a2f8237a53e48d3f6751d321a023e11694721f789373984d7d77620f32e87",
+  "native_binary": "build/live-tests",
+  "native_binary_sha256": "0986c90697dc3e740c27a4c4853ec55bdf5ff885b483f5932000aad342343e04",
+  "dependency_sha256": {
+    "src/json.bend": "a546726a2422382e388e3b0c9c2868034f25f5b1339c8b6b1dc167190a1b4099",
+    "src/core.bend": "c1ee5a5390cdac0452c9c6cd3b0584a68ef68b5b0dfec867491c27e67ecadd4e",
+    "src/schedule.bend": "93aa79895fe340e27ae5fd562102d5980f0938003eb1bbde669a84010779b8c9",
+    "src/section.bend": "02b5c15c57b173c7eb8b4c55a1433c10c192926e91af5e3e69050b4404044aa5",
+    "src/section_map.bend": "ded59d7938c02fd0876d65e37f9f90ea0cfebf3ca4bd107394342f8adbf33965"
+  },
+  "scenarios": [
+    {
+      "name": "authorization-and-session-retention",
+      "requests": 12,
+      "passed": true
+    },
+    {
+      "name": "empty-configured-token",
+      "requests": 3,
+      "passed": true
+    },
+    {
+      "name": "observer-core-operation-denials",
+      "requests": 10,
+      "passed": true
+    },
+    {
+      "name": "admission-application-cancellation-and-owned-sections",
+      "requests": 31,
+      "passed": true
+    },
+    {
+      "name": "cancellation-identity-and-nonexistent-actions",
+      "requests": 8,
+      "passed": true
+    },
+    {
+      "name": "strict-envelope-and-argument-schemas",
+      "requests": 67,
+      "passed": true
+    },
+    {
+      "name": "signed-boundaries-dimensions-and-query-ownership",
+      "requests": 11,
+      "passed": true
+    },
+    {
+      "name": "real-dispatch-pending-capacity-4096",
+      "requests": 4098,
+      "passed": true
+    }
+  ],
+  "native_requests": 4240,
+  "all_scenarios_passed": true,
+  "finite_checker_fixtures": 2,
+  "elapsed_seconds": 17.947,
+  "scope": "pure dispatcher only; actual TCP/MCP transport is tested separately by the lead",
+  "commands": [
+    "python3 tools/test_live.py",
+    "/Users/chuah/.bend/bin/bend src/live.bend --check-only",
+    "/Users/chuah/.bend/bin/bend tests/live.bend --check-only",
+    "/Users/chuah/.bend/bin/bend tests/live.bend -o build/live-tests",
+    "/Users/chuah/.bend/bin/bend src/live.bend --verdict",
+    "/Users/chuah/.bend/bin/bend tests/live.bend --verdict"
+  ]
+}

@@ -1,0 +1,217 @@
+{
+  "all_execution_checks_passed": true,
+  "checks": {
+    "src/registry.bend": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.",
+    "tests/registry.bend": "ALL PROOFS CHECK\nUse --verdict for mathematical validity."
+  },
+  "command": "python3 tools/test_registry.py",
+  "compiler": "bend 2.0.35",
+  "coverage": {
+    "block_defaults": 1286,
+    "duplicate_properties": 884,
+    "forward_states": 35723,
+    "metadata_blocks": 1286,
+    "partial_defaults": 2313,
+    "reverse_states": 35723,
+    "strict_missing": 884,
+    "wrong_properties": 1286,
+    "wrong_values": 884
+  },
+  "execution": {
+    "batches": 8,
+    "native_seconds": 5.368,
+    "requests": 80293
+  },
+  "kernel": {
+    "exit_code": 1,
+    "stderr": "SOME PROOFS FAIL\nSorry - this is a mismatch between the TypeScript implementation, and the formalized BendTT kernel. Your proofs may or may not be correct, and we cannot validate them yet. This will be addressed in a future update. Meanwhile, feel free to open an issue to report this bug.",
+    "stdout": ""
+  },
+  "loader": {
+    "capacity_boundary": {
+      "batches": 1,
+      "native_seconds": 0.02776,
+      "requests": 4
+    },
+    "cases": [
+      {
+        "name": "empty",
+        "outcome": "load-error\tschema:1:empty block inventory"
+      },
+      {
+        "name": "header-only",
+        "outcome": "load-error\tschema:1:empty block inventory"
+      },
+      {
+        "name": "bad-header",
+        "outcome": "load-error\tschema:1:invalid TSV header"
+      },
+      {
+        "name": "missing-header",
+        "outcome": "load-error\tschema:1:invalid TSV header"
+      },
+      {
+        "name": "few-columns",
+        "outcome": "load-error\tschema:2:expected exactly six TSV fields"
+      },
+      {
+        "name": "extra-column",
+        "outcome": "load-error\tschema:2:expected exactly six TSV fields"
+      },
+      {
+        "name": "protocol-gap",
+        "outcome": "load-error\tschema:2:duplicate name, noncontiguous IDs, or block capacity exceeded"
+      },
+      {
+        "name": "first-state-gap",
+        "outcome": "load-error\tschema:2:duplicate name, noncontiguous IDs, or block capacity exceeded"
+      },
+      {
+        "name": "duplicate-name",
+        "outcome": "load-error\tschema:3:duplicate name, noncontiguous IDs, or block capacity exceeded"
+      },
+      {
+        "name": "interval-gap",
+        "outcome": "load-error\tschema:3:duplicate name, noncontiguous IDs, or block capacity exceeded"
+      },
+      {
+        "name": "zero-count",
+        "outcome": "load-error\tschema:2:invalid state interval/default"
+      },
+      {
+        "name": "count-product",
+        "outcome": "load-error\tschema:2:state count disagrees with property product"
+      },
+      {
+        "name": "default-outside",
+        "outcome": "load-error\tschema:2:invalid state interval/default"
+      },
+      {
+        "name": "state-overflow",
+        "outcome": "load-error\tschema:2:invalid state interval/default"
+      },
+      {
+        "name": "number-overflow",
+        "outcome": "load-error\tschema:2:invalid U32 protocol ID"
+      },
+      {
+        "name": "number-negative",
+        "outcome": "load-error\tschema:2:invalid U32 protocol ID"
+      },
+      {
+        "name": "number-leading-zero",
+        "outcome": "load-error\tschema:2:invalid U32 protocol ID"
+      },
+      {
+        "name": "bad-resource",
+        "outcome": "load-error\tschema:2:invalid resource identifier"
+      },
+      {
+        "name": "blank-middle",
+        "outcome": "load-error\tschema:3:expected exactly six TSV fields"
+      },
+      {
+        "name": "properties-0",
+        "outcome": "load-error\tschema:2:state count disagrees with property product"
+      },
+      {
+        "name": "properties-1",
+        "outcome": "load-error\tschema:2:empty property domain"
+      },
+      {
+        "name": "properties-2",
+        "outcome": "load-error\tschema:2:invalid or duplicate property value"
+      },
+      {
+        "name": "properties-3",
+        "outcome": "load-error\tschema:2:property domain must contain strings"
+      },
+      {
+        "name": "properties-4",
+        "outcome": "load-error\tschema:2:invalid or duplicate property name"
+      },
+      {
+        "name": "properties-5",
+        "outcome": "load-error\tschema:2:invalid or duplicate property name"
+      },
+      {
+        "name": "properties-6",
+        "outcome": "load-error\tschema:2:invalid or duplicate property value"
+      },
+      {
+        "name": "properties-7",
+        "outcome": "load-error\tschema:2:property must have exactly name and values"
+      },
+      {
+        "name": "properties-8",
+        "outcome": "load-error\tschema:2:invalid or duplicate property name"
+      },
+      {
+        "name": "properties-9",
+        "outcome": "load-error\tschema:2:invalid or duplicate property value"
+      },
+      {
+        "name": "properties-10",
+        "outcome": "load-error\tschema:2:invalid or duplicate property value"
+      },
+      {
+        "name": "properties-11",
+        "outcome": "load-error\tschema:2:too many properties"
+      },
+      {
+        "name": "properties-12",
+        "outcome": "load-error\tschema:2:property product overflow"
+      },
+      {
+        "name": "property-root",
+        "outcome": "load-error\tschema:2:ordered properties must be a JSON array"
+      },
+      {
+        "name": "malformed-json",
+        "outcome": "load-error\tschema:2:property JSON: unclosed array at offset 1"
+      },
+      {
+        "name": "file-byte-limit",
+        "outcome": "load-error\tschema:0:file exceeds 4194304 bytes"
+      },
+      {
+        "name": "block-capacity-4097",
+        "outcome": "load-error\tschema:4098:duplicate name, noncontiguous IDs, or block capacity exceeded"
+      },
+      {
+        "name": "duplicate-escaped-values",
+        "outcome": "load-error\tschema:2:invalid or duplicate property value"
+      },
+      {
+        "name": "duplicate-escaped-names",
+        "outcome": "load-error\tschema:2:invalid or duplicate property name"
+      }
+    ],
+    "custom_registry": {
+      "batches": 1,
+      "native_seconds": 0.00278,
+      "requests": 3
+    },
+    "no_final_newline": {
+      "batches": 1,
+      "native_seconds": 0.0024,
+      "requests": 1
+    },
+    "rejected_inputs": 38
+  },
+  "native_c_sha256": "bb1f3ef220a100b095ee5a02066cabd2f012dae2e2d3d0e793841f934bb6753c",
+  "official_blocks_canonical_sha256": "79fc25fd3d4d57ba35002ce88347e08a68c41f3c26d7edd706656bf02dce38a4",
+  "official_registries_canonical_sha256": "6f76431c05c9dd2945b2ef2f419e3e43cb0f3cedcd9beb07c24744f4e2a6bc27",
+  "pin": "26.3",
+  "schema_version": 1,
+  "scope": "Complete pinned inventory loading, metadata, state-ID/name/property conversion and validation only. No block behaviors, pack loading or mod lifecycle implemented.",
+  "source_sha256": {
+    "docs/REGISTRY.md": "9a74f7999d0ac6d6d55ecda8b6390d6b878e06260f1b62b1d2da294d395ef099",
+    "src/json.bend": "a546726a2422382e388e3b0c9c2868034f25f5b1339c8b6b1dc167190a1b4099",
+    "src/registry.bend": "1f6534ce5c96e1018aebae79ce23089aa206b922cd91f3bd23654d5afaf5e44f",
+    "tests/registry.bend": "58fb2aa2766bcff68df527a45642ddf5ba3b7881c64a684b4d64f9ce7fa69e86",
+    "tools/test_registry.py": "4c51f33e2e617e72aac8544ac0cf61a08e8fa9c9d856ba960b29ffb7bb18ecfa"
+  },
+  "source_tsv": "generated/reference_blocks.tsv",
+  "source_tsv_sha256": "27769e75bf862d0540b2df2a6e99f6b7556a867bff6339fb08566240ee124cac"
+}
