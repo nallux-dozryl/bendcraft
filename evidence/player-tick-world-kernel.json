@@ -1,0 +1,23 @@
+{
+  "inherited_dependency_gap": "Existing Game/JSON TypeScript/formal-kernel translation mismatch",
+  "laws": [
+    "body_mismatch_retains_both_owners_and_player",
+    "rejected_preparation_retains_original_player_and_view",
+    "rejected_travel_restores_original_player_and_view",
+    "rejected_finish_restores_original_player_and_view"
+  ],
+  "ordinary_check": "passed",
+  "source_sha256": "98d5fe1383351c463f3fa172ff012325864292cfa7909cf21167e6642500170b",
+  "verdict": {
+    "command": [
+      "/Users/chuah/.bend/bin/bend",
+      "src/player_tick_world.bend",
+      "--verdict"
+    ],
+    "exit_code": 1,
+    "seconds": 20.866759,
+    "stderr": "SOME PROOFS FAIL\nSorry - this is a mismatch between the TypeScript implementation, and the formalized BendTT kernel. Your proofs may or may not be correct, and we cannot validate them yet. This will be addressed in a future update. Meanwhile, feel free to open an issue to report this bug.\n",
+    "stdout": ""
+  },
+  "whole_module_kernel_verified": false
+}
