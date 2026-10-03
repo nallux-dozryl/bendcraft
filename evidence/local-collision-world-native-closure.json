@@ -1,0 +1,118 @@
+{
+  "additional_helper_runtime_pins": {
+    "bytes": 1053,
+    "path": "evidence/local-collision-world-additional-pins.json",
+    "sha256": "cbe45049a2f2ef6234309d3e33b6350257dbc2b2f562f2759f0012e9d25d5a89"
+  },
+  "all_native_dependency_lookup_targets_sizes_sha256_rechecked": true,
+  "all_source_generation_pins_rechecked": true,
+  "audit_seconds": 1.973057,
+  "bend_base_effect_dependency_count": 56,
+  "binary": {
+    "bytes": 2171128,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-collision-world-tests",
+    "sha256": "5d6dd678f84f3f9cc9540f422bcf6ddd113ef0ba87e3373a9b5df87135b84574"
+  },
+  "build_receipt": {
+    "bytes": 13538,
+    "file": "local-collision-world-build-final.json",
+    "path": "evidence/local-collision-world-build-final.json",
+    "sha1": "1c743c2695fb114bb59e245048526467346d76bd",
+    "sha256": "55061d0e4962142b6a97c66eb07d16fb74820ac391ed8a72fd29cc3d09a10500"
+  },
+  "compiler": {
+    "driver_probe": "Apple clang version 17.0.0 (clang-1700.0.13.5)\nTarget: arm64-apple-darwin25.4.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin\n \"/Library/Developer/CommandLineTools/usr/bin/clang\" \"-cc1\" \"-triple\" \"arm64-apple-macosx15.5.0\" \"-Wundef-prefix=TARGET_OS_\" \"-Wdeprecated-objc-isa-usage\" \"-Werror=deprecated-objc-isa-usage\" \"-Werror=implicit-function-declaration\" \"-emit-obj\" \"-dumpdir\" \"/dev/null-\" \"-disable-free\" \"-clear-ast-before-backend\" \"-disable-llvm-verifier\" \"-discard-value-names\" \"-main-file-name\" \"null\" \"-mrelocation-model\" \"pic\" \"-pic-level\" \"2\" \"-mframe-pointer=non-leaf\" \"-mllvm\" \"-extra-vectorizer-passes\" \"-fno-strict-return\" \"-ffp-contract=on\" \"-fno-rounding-math\" \"-funwind-tables=1\" \"-fobjc-msgsend-selector-stubs\" \"-target-sdk-version=15.5\" \"-fvisibility-inlines-hidden-static-local-var\" \"-fdefine-target-os-macros\" \"-fno-assume-unique-vtables\" \"-fno-modulemap-allow-subdirectory-search\" \"-target-cpu\" \"apple-m1\" \"-target-feature\" \"+zcm\" \"-target-feature\" \"+zcz\" \"-target-feature\" \"+v8.5a\" \"-target-feature\" \"+aes\" \"-target-feature\" \"+altnzcv\" \"-target-feature\" \"+ccdp\" \"-target-feature\" \"+complxnum\" \"-target-feature\" \"+crc\" \"-target-feature\" \"+dotprod\" \"-target-feature\" \"+fp-armv8\" \"-target-feature\" \"+fp16fml\" \"-target-feature\" \"+fptoint\" \"-target-feature\" \"+fullfp16\" \"-target-feature\" \"+jsconv\" \"-target-feature\" \"+lse\" \"-target-feature\" \"+neon\" \"-target-feature\" \"+pauth\" \"-target-feature\" \"+perfmon\" \"-target-feature\" \"+predres\" \"-target-feature\" \"+ras\" \"-target-feature\" \"+rcpc\" \"-target-feature\" \"+rdm\" \"-target-feature\" \"+sb\" \"-target-feature\" \"+sha2\" \"-target-feature\" \"+sha3\" \"-target-feature\" \"+specrestrict\" \"-target-feature\" \"+ssbs\" \"-target-abi\" \"darwinpcs\" \"-debugger-tuning=lldb\" \"-fdebug-compilation-dir=/Users/chuah/Documents/ChatGPT/bendex/minecraft\" \"-target-linker-version\" \"1167.5\" \"-fcoverage-compilation-dir=/Users/chuah/Documents/ChatGPT/bendex/minecraft\" \"-resource-dir\" \"/Library/Developer/CommandLineTools/usr/lib/clang/17\" \"-isysroot\" \"/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk\" \"-I/usr/local/include\" \"-internal-isystem\" \"/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include\" \"-internal-isystem\" \"/Library/Developer/CommandLineTools/usr/lib/clang/17/include\" \"-internal-externc-isystem\" \"/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include\" \"-internal-externc-isystem\" \"/Library/Developer/CommandLineTools/usr/include\" \"-O3\" \"-Wno-reorder-init-list\" \"-Wno-implicit-int-float-conversion\" \"-Wno-c99-designator\" \"-Wno-final-dtor-non-final-class\" \"-Wno-extra-semi-stmt\" \"-Wno-misleading-indentation\" \"-Wno-quoted-include-in-framework-header\" \"-Wno-implicit-fallthrough\" \"-Wno-enum-enum-conversion\" \"-Wno-enum-float-conversion\" \"-Wno-elaborated-enum-base\" \"-Wno-reserved-identifier\" \"-Wno-gnu-folding-constant\" \"-std=c11\" \"-ferror-limit\" \"19\" \"-stack-protector\" \"1\" \"-fstack-check\" \"-mdarwin-stkchk-strong-link\" \"-fblocks\" \"-fencode-extended-block-signature\" \"-fregister-global-dtors-with-atexit\" \"-fgnuc-version=4.2.1\" \"-fskip-odr-check-in-gmf\" \"-fmax-type-align=16\" \"-fcommon\" \"-vectorize-loops\" \"-vectorize-slp\" \"-clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation\" \"-fno-odr-hash-protocols\" \"-clang-vendor-feature=+enableAggressiveVLAFolding\" \"-clang-vendor-feature=+revert09abecef7bbf\" \"-clang-vendor-feature=+thisNoAlignAttr\" \"-clang-vendor-feature=+thisNoNullAttr\" \"-clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError\" \"-D__GCC_HAVE_DWARF2_CFI_ASM=1\" \"-o\" \"<temporary.o>\" \"-x\" \"c\" \"/dev/null\"\n \"/Library/Developer/CommandLineTools/usr/bin/ld\" \"-demangle\" \"-lto_library\" \"/Library/Developer/CommandLineTools/usr/lib/libLTO.dylib\" \"-dynamic\" \"-arch\" \"arm64\" \"-platform_version\" \"macos\" \"15.5.0\" \"15.5\" \"-syslibroot\" \"/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk\" \"-O3\" \"-mllvm\" \"-enable-linkonceodr-outlining\" \"-o\" \"/dev/null\" \"-L/usr/local/lib\" \"<temporary.o>\" \"-lpthread\" \"-lm\" \"-lSystem\" \"/Library/Developer/CommandLineTools/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a\"\n",
+    "flags": [
+      "-std=c11",
+      "-O3",
+      "<emitted.c>",
+      "-lpthread",
+      "-lm",
+      "-o",
+      "<native>"
+    ],
+    "path": "/usr/bin/clang",
+    "resource_dir": "/Library/Developer/CommandLineTools/usr/lib/clang/17",
+    "sysroots": [
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk"
+    ],
+    "version": "Apple clang version 17.0.0 (clang-1700.0.13.5)\nTarget: arm64-apple-darwin25.4.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin\n"
+  },
+  "emitted_c": {
+    "bytes": 4231455,
+    "path": "build/local-collision-world-cache/sources/7a9e32bc6bd3f468a8d9753a88c8022afc03ec5330ba91922ad60924451a741e/generated.c",
+    "sha256": "b9b16e7115a48aa3313647e1d93d746d7342b2707def926c76c357db9a05f918"
+  },
+  "emitted_c_scope": "Retained content-pinned preflight C associated with successful installed native build. The native CLI original internal temporary C bytes were not retained directly. No post-verification emission was run.",
+  "full_original": {
+    "bytes": 8022,
+    "file": "local-collision-world-native-closure.original.json",
+    "path": "build/local-collision-world/local-collision-world-native-closure.original.json",
+    "sha1": "10c28cbda16ff6ff8fc5341c69343942fb9e6e2d",
+    "sha256": "848ebe048819cfd2c520c698971eed2e80565664fa048dd6cd901e749cd849df"
+  },
+  "full_original_build_receipt": {
+    "bytes": 666040,
+    "file": "local-collision-world-build-final.original.json",
+    "path": "build/local-collision-world/local-collision-world-build-final.original.json",
+    "sha1": "1aa5b9d1e18a670fdc3d6649c5c366d2c1a29c85",
+    "sha256": "29b4280b824f616e0bdebc7f2f41a28ae616163cf4cb4012c8698ce7f9cfd311"
+  },
+  "full_original_native_build_receipt": {
+    "bytes": 630192,
+    "file": "local-collision-world-native-build.original.json",
+    "path": "build/local-collision-world/local-collision-world-native-build.original.json",
+    "sha1": "d4341c2d241a9aba70e526a4e5c7a2feadb825f7",
+    "sha256": "e60c8c0bf9197359d86826d1cffb5b752c703e018ebdc4e1fd63ae7c433cd39e"
+  },
+  "full_original_native_verification": {
+    "bytes": 114805,
+    "file": "local-collision-world-native-verification.original.json",
+    "path": "build/local-collision-world/local-collision-world-native-verification.original.json",
+    "sha1": "9586fcefc5b7f6340f8c1c25348ec4006949139a",
+    "sha256": "6f19c997229ea9267f5687d3ef2a0f826f8fa4d9a2dd63f3931da1baee594113"
+  },
+  "generation_sha256": "f2e8bbd904d85ab49478b9f0425a6e6a9ec1a0c4ab25f44d8cf8bfa8164a0398",
+  "immutable_binary_artifact": {
+    "bytes": 2171128,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-collision-world-cache/artifacts/5d6dd678f84f3f9cc9540f422bcf6ddd113ef0ba87e3373a9b5df87135b84574/program",
+    "sha256": "5d6dd678f84f3f9cc9540f422bcf6ddd113ef0ba87e3373a9b5df87135b84574"
+  },
+  "kernel_limit": "Full harness kernel attempt exited1 after20.090484s with TypeScript/BendTT mismatch; five ordinary laws independently unverified.",
+  "kernel_receipt": {
+    "bytes": 10731,
+    "path": "evidence/local-collision-world-kernel-final.json",
+    "sha256": "1171a5d3a6b9ea7a5ec11cec5b6fcde284987704795d1d73ec952c5ac58cb407"
+  },
+  "native_dependency_count": 1650,
+  "native_manifest_sha256": "d3a5a3986e95e21d39abbeb024600ded88fab9de0bebc7e530a0c43a17a2f264",
+  "native_verification": {
+    "bytes": 28470,
+    "file": "local-collision-world-native-verification.json",
+    "path": "evidence/local-collision-world-native-verification.json",
+    "sha1": "6c0c706b45aa61c379e2c7ce68c8706df5db4d11",
+    "sha256": "3eca45921607a44dba7c3efd291f6bece179e2d796ef77e9a4ac830e2edd82ea"
+  },
+  "no_kernel_or_native_rerun": true,
+  "process_groups_reaped": [
+    81716,
+    82033
+  ],
+  "report_formatting_only": "Full JSON originals preserved byte-for-byte; no source/oracle/native/helper/expected/build/kernel change or rerun.",
+  "reporting_split": {
+    "bytes": 5327,
+    "file": "local-collision-world-reporting-split.json",
+    "path": "evidence/local-collision-world-reporting-split.json",
+    "sha1": "98eaf1ad47ce5b9d7c75a3a67fa5b9905365ee76",
+    "sha256": "a8298fddfad08f1d3a7a61edeec6d787572312fbfb4fa551552a91a0c9962870"
+  },
+  "retained_cli_build_command": [
+    "/Users/chuah/.bend/bin/bend",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/local_collision_world.bend",
+    "-o",
+    "<unique temporary native path>"
+  ],
+  "schema_version": 1,
+  "six_executed_tool_pins_rechecked_except_authorized_ast_verified_reporting_split": true,
+  "status": "passed-native-closure/kernel-unverified"
+}
