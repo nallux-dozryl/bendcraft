@@ -1,0 +1,921 @@
+{
+  "schema": 1,
+  "all_cases_passed": true,
+  "checker": {
+    "src/block_model.bend": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.",
+    "tests/block_model.bend": "ALL PROOFS CHECK\nUse --verdict for mathematical validity."
+  },
+  "kernel_verdict": {
+    "src/block_model.bend": {
+      "exit_code": null,
+      "timed_out": true,
+      "timeout_seconds": 60,
+      "output": ""
+    },
+    "tests/block_model.bend": {
+      "exit_code": null,
+      "timed_out": true,
+      "timeout_seconds": 60,
+      "output": ""
+    }
+  },
+  "phase_seconds": {
+    "extra_java_oracle": 3.923,
+    "check:src/block_model.bend": 7.5,
+    "check:tests/block_model.bend": 6.404
+  },
+  "reference_sha256": "3cbe8aa7780f14c1b37159a885710b04680e3b6c4ffa4975b4d8297015f11e7e",
+  "reference_oracle_version": "java26.3-client-model-probe-v1",
+  "source_sha256": "08108bae9b89c6768de56bdddea158f3604b36c7de4ee0408815e2c7f48b97a1",
+  "float_source_sha256": "fe22007f0805f3c955fcaada88c1da76a3cceda74f0ff3840ae47af49a02c683",
+  "json_source_sha256": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+  "parsed_reference_cases": 105,
+  "official_models": 27,
+  "excluded_textual_cases": [
+    {
+      "id": "raw_json_100",
+      "reason": "duplicate/invalid textual JSON is outside the strict unique-member J.Value decoder API"
+    },
+    {
+      "id": "raw_json_101",
+      "reason": "duplicate/invalid textual JSON is outside the strict unique-member J.Value decoder API"
+    }
+  ],
+  "extra_java_cases": 52,
+  "extra_java_graphs": [
+    {
+      "id": "display-inheritance",
+      "models": 4,
+      "passed": true,
+      "native_sha256": "15554df884f11c9b20373edbd8562bfa601899a1a7179e4d5a5d1170f85fa30e"
+    },
+    {
+      "id": "cycle-descendant",
+      "models": 1,
+      "passed": true,
+      "native_sha256": "2887507d2a3fa821ea364bba573da0384332220b3db5cb9cd340b7c363bf045d"
+    }
+  ],
+  "graph_cases": [
+    {
+      "id": "inheritance",
+      "models": 4,
+      "passed": true,
+      "native_sha256": "a8413b5ca57bba2048aa39c8270e50a056515d76ac0e65acd92ad1d59956237c"
+    },
+    {
+      "id": "parent_cycle",
+      "models": 1,
+      "passed": true,
+      "native_sha256": "31a272656590396274572fb781cf94a6d293b01bd6986405fdd115e90f4167d8"
+    },
+    {
+      "id": "self_parent",
+      "models": 1,
+      "passed": true,
+      "native_sha256": "31a272656590396274572fb781cf94a6d293b01bd6986405fdd115e90f4167d8"
+    },
+    {
+      "id": "missing_parent",
+      "models": 3,
+      "passed": true,
+      "native_sha256": "0ae9d7d044355f943537073581f04cc0d4adf7f982331bbdde990c91c83b5fe4"
+    },
+    {
+      "id": "texture_alias_cycle",
+      "models": 2,
+      "passed": true,
+      "native_sha256": "a6ef1d9b0c69991afc81f6f42cb11e34105ab24379ee3d84ce6750385d8f12df"
+    },
+    {
+      "id": "texture_alias_missing",
+      "models": 2,
+      "passed": true,
+      "native_sha256": "15301b20ece799acad6bc19b80d0b8ef89fef88257ec17188ebf20e1a1c36d7e"
+    },
+    {
+      "id": "alias_child_override",
+      "models": 3,
+      "passed": true,
+      "native_sha256": "a65851af3c53275c562eabf2d80c85d02fd8041084c68af7be841704a7f28da9"
+    }
+  ],
+  "official_resolved_models": 27,
+  "transitive_source_sha256": {
+    "src/block_model.bend": "08108bae9b89c6768de56bdddea158f3604b36c7de4ee0408815e2c7f48b97a1",
+    "tests/block_model.bend": "9a6583a1c2c9c782536110f7a8e960a0c79e506727485c2282809b6cdc2a6a36",
+    "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+    "src/float_parse.bend": "fe22007f0805f3c955fcaada88c1da76a3cceda74f0ff3840ae47af49a02c683",
+    "src/big_uint.bend": "fbe5965ee16ee3d6864def33fbc6e5e4b1b9bc7da4735d99311c1a23c65e2444",
+    "tools/test_block_model.py": "ee39d0b9bec2b5d82d011cea6f8bc1ffd83d3958b9e593b0183a4e9ff4cc87ef",
+    "tools/reference_model_probe.py": "4c82153a59a0eeb58e8c5df181e13adb16424343de9f7c2957f73c662cc598b7"
+  },
+  "native_binary_sha256": "49edae5ba17df1c53b4948a2b76f7ad11020b4942e05cc6b65556135b42b0962",
+  "native_build_skipped": true,
+  "proof_scope": "Three finite ordinary-checker examples. Full independent-kernel commands are separately bounded and reported; known transitive JSON encode_go mismatch is not attributed as the cause of a timeout. No general correctness or bake theorem.",
+  "compared_fields": "all nullable/default typed model fields, geometry, face metadata, UV and vector raw F32 bits, rotation inputs/normalized origin, display F32 bits, texture slots; derived rotation matrix excluded",
+  "baking_implemented": false,
+  "cases": [
+    {
+      "id": "defaults",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "7cdc961fe4af60a3f8ce319290826b397208290e51372c9a6d14949cc7ee9ceb"
+    },
+    {
+      "id": "unknown_members",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "7cdc961fe4af60a3f8ce319290826b397208290e51372c9a6d14949cc7ee9ceb"
+    },
+    {
+      "id": "parent_2",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "7cdc961fe4af60a3f8ce319290826b397208290e51372c9a6d14949cc7ee9ceb"
+    },
+    {
+      "id": "parent_3",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "0e4cc1ad6715169986d9038b9823508de0d7411315920a0e96f5dd94d7043370"
+    },
+    {
+      "id": "parent_4",
+      "java_status": "error",
+      "passed": true,
+      "native_sha256": "5ecc859699b2278f3f1cb2b6547fd75968c3fb61d1715f8c40f2f79153e1aafa"
+    },
+    {
+      "id": "parent_5",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "2ed128c53e82eb9616b3eaa9be3297e20ea6122e0fb58d3901e7486d1c508cb0"
+    },
+    {
+      "id": "parent_6",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "2b89c1ec4bcd98a9212aa45bfac8ec4a89735c6ff45fd885fd4c7c98637c92d9"
+    },
+    {
+      "id": "parent_7",
+      "java_status": "error",
+      "passed": true,
+      "native_sha256": "5ecc859699b2278f3f1cb2b6547fd75968c3fb61d1715f8c40f2f79153e1aafa"
+    },
+    {
+      "id": "parent_8",
+      "java_status": "error",
+      "passed": true,
+      "native_sha256": "5ecc859699b2278f3f1cb2b6547fd75968c3fb61d1715f8c40f2f79153e1aafa"
+    },
+    {
+      "id": "gui_light_9",
+      "java_status": "error",
+      "passed": true,
+      "native_sha256": "f461e6f1b5226dc6feb47de5ee699cf43f283b67222caa07e4e158e88c5b9e20"
+    },
+    {
+      "id": "gui_light_10",
+      "java_status": "error",
+      "passed": true,
+      "native_sha256": "5c51b6c4c90a175d90f12c8f623b510d46f7124338809df12868d9e849a1c100"
+    },
+    {
+      "id": "gui_light_11",
+      "java_status": "error",
+      "passed": true,
+      "native_sha256": "5c51b6c4c90a175d90f12c8f623b510d46f7124338809df12868d9e849a1c100"
+    },
+    {
+      "id": "gui_light_12",
+      "java_status": "error",
+      "passed": true,
+      "native_sha256": "f461e6f1b5226dc6feb47de5ee699cf43f283b67222caa07e4e158e88c5b9e20"
+    },
+    {
+      "id": "gui_light_13",
+      "java_status": "error",
+      "passed": true,
+      "native_sha256": "f461e6f1b5226dc6feb47de5ee699cf43f283b67222caa07e4e158e88c5b9e20"
+    },
+    {
+      "id": "gui_light_14",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "f07afb22f63f2f0b291dea4e803d3198770b6ce3e897b1994497199e00008295"
+    },
+    {
+      "id": "gui_light_15",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "30fab2d1a1265a2a90016da34a3904e9f974e01b2e26cbdcc3703200fa50ab2a"
+    },
+    {
+      "id": "gui_light_16",
+      "java_status": "error",
+      "passed": true,
+      "native_sha256": "5c51b6c4c90a175d90f12c8f623b510d46f7124338809df12868d9e849a1c100"
+    },
+    {
+      "id": "ambient_17",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "c0dddf57778f31415f5e250417ee56957bc827c2159fcae231db131ee33e4f1c"
+    },
+    {
+      "id": "ambient_18",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "2251f84056328c25add2e15fbaec0d883b425353d105d49257d0c93287fe0cdb"
+    },
+    {
+      "id": "ambient_19",
+      "java_status": "error",
+      "passed": true,
+      "native_sha256": "8bbcf2ad01a9f95d360e239a342ca59a93bfdc166f14b6e047655f70501d155f"
+    },
+    {
+      "id": "ambient_20",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "2251f84056328c25add2e15fbaec0d883b425353d105d49257d0c93287fe0cdb"
+    },
+    {
+      "id": "ambient_21",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "2251f84056328c25add2e15fbaec0d883b425353d105d49257d0c93287fe0cdb"
+    },
+    {
+      "id": "ambient_22",
+      "java_status": "error",
+      "passed": true,
+      "native_sha256": "8bbcf2ad01a9f95d360e239a342ca59a93bfdc166f14b6e047655f70501d155f"
+    },
+    {
+      "id": "texture_23",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "01bb4a910f95af56134f7efd04c78a78debdc0f31cf6c6ad104f95e269fc7720"
+    },
+    {
+      "id": "texture_24",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "f9dee827dd25688c2b00e6aae7076f4f4e391339484af358bd0c5ea38257fd69"
+    },
+    {
+      "id": "texture_25",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "3a588aeac286faf9f6e127c25ae06c33d6fad05de314ff6f9fb34db807a49572"
+    },
+    {
+      "id": "texture_26",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "3a588aeac286faf9f6e127c25ae06c33d6fad05de314ff6f9fb34db807a49572"
+    },
+    {
+      "id": "texture_27",
+      "java_status": "error",
+      "passed": true,
+      "native_sha256": "9dacd65a4ed90c9d5cb90bf96013cf2122efc7fbdccf5e4ef39d286d255ac86d"
+    },
+    {
+      "id": "texture_28",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "36b367794a8c97d703bbb3fa451aa6c5aca5225c924e66bb5d93278e76895148"
+    },
+    {
+      "id": "texture_29",
+      "java_status": "error",
+      "passed": true,
+      "native_sha256": "5adddcce38bbbf55bb42cf1d8c3e101f56a8a67473ba998491f97a9312db4299"
+    },
+    {
+      "id": "texture_30",
+      "java_status": "error",
+      "passed": true,
+      "native_sha256": "caad29e815001223b0456fbce583f7902cdacf6d184a183221b39d340201eefc"
+    },
+    {
+      "id": "texture_31",
+      "java_status": "error",
+      "passed": true,
+      "native_sha256": "caad29e815001223b0456fbce583f7902cdacf6d184a183221b39d340201eefc"
+    },
+    {
+      "id": "texture_32",
+      "java_status": "error",
+      "passed": true,
+      "native_sha256": "caad29e815001223b0456fbce583f7902cdacf6d184a183221b39d340201eefc"
+    },
+    {
+      "id": "texture_33",
+      "java_status": "error",
+      "passed": true,
+      "native_sha256": "caad29e815001223b0456fbce583f7902cdacf6d184a183221b39d340201eefc"
+    },
+    {
+      "id": "default_cube",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "b8dc87b0e35299ddc37a29c7a7b16ed71730330d159b984225da18fe19d1e668"
+    },
+    {
+      "id": "explicit_empty_elements",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "d75e98f8e47b82a52d1e204c680fec490ac9e62c343b853ad0b9b95738128fad"
+    },
+    {
+      "id": "element_from_36",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "2dec99ac68a648cd409e975b66b6197c4074273939b0737ee58d9b960d263de9"
+    },
+    {
+      "id": "element_to_37",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "fe72a0b1f440ad7aea13974770674185f4ac714aca62908abe822275b5655679"
+    },
+    {
+      "id": "element_from_38",
+      "java_status": "error",
+      "passed": true,
+      "native_sha256": "0f31292d7fb71b0f3e993f4d464978d672017436ab66950583acd933a0c39662"
+    },
+    {
+      "id": "element_to_39",
+      "java_status": "error",
+      "passed": true,
+      "native_sha256": "7767a42406897f09e8144418a0f07239425dac23ccff46edb7d80b2d4ce53f2b"
+    },
+    {
+      "id": "element_from_40",
+      "java_status": "error",
+      "passed": true,
+      "native_sha256": "46f180b648a5806be82c516b6051d0f33561deea0b1a9ed2780b6c0a48db6bc2"
+    },
+    {
+      "id": "element_to_41",
+      "java_status": "error",
+      "passed": true,
+      "native_sha256": "872bcaaaa596ceaf6a8fd6a33d188ae36460361a6d8b732270fa495ac1b4d409"
+    },
+    {
+      "id": "element_faces_42",
+      "java_status": "error",
+      "passed": true,
+      "native_sha256": "cc8d24ce8ef4225c04949cb49b49524bef5d33d00e6ab25510c25886c1511f33"
+    },
+    {
+      "id": "element_faces_43",
+      "java_status": "error",
+      "passed": true,
+      "native_sha256": "9920886397265eedd75e4e7ac89152eb05bd25bc1645f91291c0c3521fcfd673"
+    },
+    {
+      "id": "element_light_emission_44",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "f10adb96a35856efc8ff34fed006df25b6ee2851efc3b41011ad533eef49f4aa"
+    },
+    {
+      "id": "element_light_emission_45",
+      "java_status": "error",
+      "passed": true,
+      "native_sha256": "5714ed0ac64d90f50d06664e46b13691d43f329dc5a54c8750799c032f59cb35"
+    },
+    {
+      "id": "element_light_emission_46",
+      "java_status": "error",
+      "passed": true,
+      "native_sha256": "5714ed0ac64d90f50d06664e46b13691d43f329dc5a54c8750799c032f59cb35"
+    },
+    {
+      "id": "element_light_emission_47",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "ebbaf447f6dc6960d56c6acbcece1cedbfaaa6150f143c52de7a4c78097d9507"
+    },
+    {
+      "id": "element_shade_48",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "b8dc87b0e35299ddc37a29c7a7b16ed71730330d159b984225da18fe19d1e668"
+    },
+    {
+      "id": "element_shade_direction_override_49",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "ff6813eae7122cfb4465e49b6d24af498a01f4881b7c30ae04994538035690a1"
+    },
+    {
+      "id": "element_shade_direction_override_50",
+      "java_status": "error",
+      "passed": true,
+      "native_sha256": "fa42da055f22870c64483e4c5a9e4eb8fea56984cdb9a1da965e040128d7d523"
+    },
+    {
+      "id": "element_shade_direction_override_51",
+      "java_status": "error",
+      "passed": true,
+      "native_sha256": "fa42da055f22870c64483e4c5a9e4eb8fea56984cdb9a1da965e040128d7d523"
+    },
+    {
+      "id": "missing_from",
+      "java_status": "error",
+      "passed": true,
+      "native_sha256": "7a984683e53362528d58767b8ca7b3c08a00e80a9efaab8ff19b18f3890b8f1a"
+    },
+    {
+      "id": "missing_to",
+      "java_status": "error",
+      "passed": true,
+      "native_sha256": "18906c3f5b5c57dd3b15e4deff3752c4ef4203c2621421763dd0a940a00e2abf"
+    },
+    {
+      "id": "missing_faces",
+      "java_status": "error",
+      "passed": true,
+      "native_sha256": "be8ad1f50074f22d3c8f371a845a99486f8b3c15cb41a2357a8ee4b76fd35e46"
+    },
+    {
+      "id": "face_rotation_55",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "b8dc87b0e35299ddc37a29c7a7b16ed71730330d159b984225da18fe19d1e668"
+    },
+    {
+      "id": "face_rotation_56",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "4f9058d730e30ec83124b5ebda6b82da8b0f719188afe029b7684bf5200c2edd"
+    },
+    {
+      "id": "face_rotation_57",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "6d4528357f754106209676daa961813124bdf50876222ee20623326416609941"
+    },
+    {
+      "id": "face_rotation_58",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "54f62bf5e3f6f9ec24fe74f98ce5658031620f537e3f20765e39bb4bb6a4340f"
+    },
+    {
+      "id": "face_rotation_59",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "b8dc87b0e35299ddc37a29c7a7b16ed71730330d159b984225da18fe19d1e668"
+    },
+    {
+      "id": "face_rotation_60",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "54f62bf5e3f6f9ec24fe74f98ce5658031620f537e3f20765e39bb4bb6a4340f"
+    },
+    {
+      "id": "face_rotation_61",
+      "java_status": "error",
+      "passed": true,
+      "native_sha256": "10776cd8a5970532ba0f6c6aadc3656c5a48a6b171f497d9784e2250ee443856"
+    },
+    {
+      "id": "face_uv_62",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "8a4d019f4f2e2b4b6b48a7c56b3ad91e64b346d2ba44c9f5753276cc92e2ced0"
+    },
+    {
+      "id": "face_uv_63",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "27c998f5c5e1ac8f5e8ac9681715588bb909fb992c8ed05e406cce5dabb94cfc"
+    },
+    {
+      "id": "face_uv_64",
+      "java_status": "error",
+      "passed": true,
+      "native_sha256": "6ae03a2cef81b1e3bc1e590ba0066e8173d2c73011b9b23973ceafdccdcab8a3"
+    },
+    {
+      "id": "face_uv_65",
+      "java_status": "error",
+      "passed": true,
+      "native_sha256": "6ae03a2cef81b1e3bc1e590ba0066e8173d2c73011b9b23973ceafdccdcab8a3"
+    },
+    {
+      "id": "face_uv_66",
+      "java_status": "error",
+      "passed": true,
+      "native_sha256": "6ae03a2cef81b1e3bc1e590ba0066e8173d2c73011b9b23973ceafdccdcab8a3"
+    },
+    {
+      "id": "face_tintindex_67",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "24689742711f768ac974f29a008340765b4217a08d06c6db3d845797cf11d986"
+    },
+    {
+      "id": "face_tintindex_68",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "b59d3a03b49f5f9fc7c1979c8d2f03724f0acce1711007a05a2eff5d21c8c20b"
+    },
+    {
+      "id": "face_cullface_69",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "4406b2b9cda42cc9204e73ccc1d31e49b437382bf28fa2b78b487e736c0e9daf"
+    },
+    {
+      "id": "face_texture_70",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "81e0b01372aa8294c203d8900fd872b587cdd59417946aa5e44919e3c47735ee"
+    },
+    {
+      "id": "face_texture_71",
+      "java_status": "error",
+      "passed": true,
+      "native_sha256": "cf7762405dae3f552f101933ec8295a4d7c56f294e507c488fc4928c3a42b4d4"
+    },
+    {
+      "id": "rotation_y_-90_False",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "2fae88b3191e731298c5347b8a3b646ed28bd553c709dc5ce661cb06a36400d9"
+    },
+    {
+      "id": "rotation_y_-90_True",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "ae98693c09a537ef18ea1fdc44750de6b5aec43a8d5c9b1c70913fc7aee7f322"
+    },
+    {
+      "id": "rotation_y_-45_False",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "4bf4e804a42cfb582c76069926f450da91fe6a29bb4873f122a2c91baa6d670a"
+    },
+    {
+      "id": "rotation_y_-45_True",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "3145107c8c20e7dbe6f9dbbca51ae10d8f46b25380831c47a24b382b6b411cc4"
+    },
+    {
+      "id": "rotation_y_-22.5_False",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "66e7349b4d71f1054336fd743ae96723f88863c15e5200f74b091bb3619e2b4a"
+    },
+    {
+      "id": "rotation_y_-22.5_True",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "07c3f17f228ac87a6416421e780f28e3ff51f02dd74afe6180bad0cb16e47f57"
+    },
+    {
+      "id": "rotation_y_0_False",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "4b6ae4f47bd0d1d2db61a2406b641e5e9cabfb0b3ab79b9ba1d3753cc4b30955"
+    },
+    {
+      "id": "rotation_y_0_True",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "d4fa6e77c6f5fe48a52e99a7090d8ba9e31a84a1e980abe8695cdbef26a121c2"
+    },
+    {
+      "id": "rotation_y_13.5_False",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "3d12f2b72005b0b90e4697e3094234d1f8762b26efa5adad1409bcb341c84f65"
+    },
+    {
+      "id": "rotation_y_13.5_True",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "78fb29a9b9c7dafd5e508b80bb338a1f432a714dd14241bb46e9f482307ce040"
+    },
+    {
+      "id": "rotation_y_22.5_False",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "4596589c8b3a5121e509511154ee6a6beca737b784b60e9dec3b343f749c6166"
+    },
+    {
+      "id": "rotation_y_22.5_True",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "a3e2292ef7fad27a043f69cf4df839c8fb73aa24989ff90ad2debba439a3792e"
+    },
+    {
+      "id": "rotation_y_45_False",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "62d91b4c2dd4a743a7815f9fec3783bc609c020d9256d258ed553355841f1ab4"
+    },
+    {
+      "id": "rotation_y_45_True",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "45cbff7366743bcf65827a5a9ac49a82611fe589b7b7ba4eb23bd505600b35ff"
+    },
+    {
+      "id": "rotation_y_90_False",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "00a9198d806facd457292bc8bb0acc9c68915337b6527eb233048964f571c15e"
+    },
+    {
+      "id": "rotation_y_90_True",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "ed7b8f50aba36a3d2278207ce8df5eaa372e452814b5f7116d012790d5677c66"
+    },
+    {
+      "id": "rotation_88",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "1444b3c36990cb4d66a29b40af3cb88e3d88e3b2726b3594f9925cb7f54a8d49"
+    },
+    {
+      "id": "rotation_89",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "3ab7204316f954a2e687495922ee098abd9333a0eb5d1bc7320cac6c6e8c805d"
+    },
+    {
+      "id": "rotation_90",
+      "java_status": "error",
+      "passed": true,
+      "native_sha256": "92a3494d2a033a14b0a1c6fd095bc3cd929dae6880110a1f36a781bbaf62170e"
+    },
+    {
+      "id": "rotation_91",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "466feb74733c655d0147217b0fcb2b2585c4a8c6d763f625954e8284f7fae9d3"
+    },
+    {
+      "id": "rotation_92",
+      "java_status": "error",
+      "passed": true,
+      "native_sha256": "80a82fd8ad845a172e7569aba96fbad853a359a2de4ec86ee0adb1385e9e7c1f"
+    },
+    {
+      "id": "rotation_93",
+      "java_status": "error",
+      "passed": true,
+      "native_sha256": "044465e5ec6a978874786e9ad7c1339da148a46888dfb59a671875e0b4114c60"
+    },
+    {
+      "id": "raw_json_94",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "88d35e3ae390e1e8e227ecb3fb24a6919268435dfefa6ed17e03cffdc6cc3136"
+    },
+    {
+      "id": "raw_json_95",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "28b853bf67897be15eda4c265ebf1b0e588ac3bbddc30fe3f5ebb77e54019dcf"
+    },
+    {
+      "id": "raw_json_96",
+      "java_status": "error",
+      "passed": true,
+      "native_sha256": "72e1d3dae3896c3472fe192e72d6d5fd2a5c4fefd795d6ab846a19c075aaaa65"
+    },
+    {
+      "id": "raw_json_97",
+      "java_status": "error",
+      "passed": true,
+      "native_sha256": "72e1d3dae3896c3472fe192e72d6d5fd2a5c4fefd795d6ab846a19c075aaaa65"
+    },
+    {
+      "id": "raw_json_98",
+      "java_status": "error",
+      "passed": true,
+      "native_sha256": "33c6b668771c4a6efdb7312c307ae259460befefc30167c4f4a2b8644d8e87a8"
+    },
+    {
+      "id": "raw_json_99",
+      "java_status": "error",
+      "passed": true,
+      "native_sha256": "33c6b668771c4a6efdb7312c307ae259460befefc30167c4f4a2b8644d8e87a8"
+    },
+    {
+      "id": "display_102",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "d2b4484f2e32c3885efe46c4322367fe2db452ec4eedead73ba79a715527d555"
+    },
+    {
+      "id": "display_103",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "a7d8bf7286de2c36d72a79e982f95e1614c03b0409600437e48943628cadbfe0"
+    },
+    {
+      "id": "display_104",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "dfe6d6cc45cea3478f283d3c69472f4516ccbb54bb5922f9f7c095bd89b6245d"
+    },
+    {
+      "id": "display_105",
+      "java_status": "error",
+      "passed": true,
+      "native_sha256": "ae018c9a9a2fb08f38b58d2b38db7d7fbe9c734ef3520ae52fec508c6fb49c7d"
+    },
+    {
+      "id": "display_106",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "d2b4484f2e32c3885efe46c4322367fe2db452ec4eedead73ba79a715527d555"
+    },
+    {
+      "id": "minecraft:block/block",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "12e9b2b4f4846f9534db745d21a7c0c0b9696ba6bfa29cbe85b401a1e360bd26"
+    },
+    {
+      "id": "minecraft:block/cube",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "ffa9275d6a316f5bb9fa4430a174bdd5615e9cdae0645d52efe54cae73b78eb4"
+    },
+    {
+      "id": "minecraft:block/cube_all",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "7235e51d4119c8b0735e81c403230142b83535af5c8cf6c2a5767da33befd366"
+    },
+    {
+      "id": "minecraft:block/cube_bottom_top",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "e8bfba1022e5f8695829ce7b49fce70c660e1f4de464ce3318850ebc37077030"
+    },
+    {
+      "id": "minecraft:block/cube_mirrored",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "0469a11087b5b7f6fb11cca38bedcd6bcbb359553cbaff8b2e1acdc35b49b899"
+    },
+    {
+      "id": "minecraft:block/cube_mirrored_all",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "682066f319e0a471d274422968144ae536fb9caa50ee1c7881e36984e5b48be3"
+    },
+    {
+      "id": "minecraft:block/dirt",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "6812cab237a609c93cf6b03f88a65e11e845c190c4177a70bb3e63710bb36877"
+    },
+    {
+      "id": "minecraft:block/fence_post",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "e4f3474e1302ddd7e70b3a1526cf8c88e70c868d92e722491f4a77ddac60c3ab"
+    },
+    {
+      "id": "minecraft:block/fence_side",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "018215f77c93d3eb44165c1b92650ecda5719baeead9e02104232f722d5a0848"
+    },
+    {
+      "id": "minecraft:block/glass",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "0669ad41fefaf7603477264af794beac4105ce1e910c8164d09568d1cb6067f1"
+    },
+    {
+      "id": "minecraft:block/grass_block",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "d732a51c8f7ddf0bdd47f0c40eff573f02ded5c04c694bf728ab1f04f36c1ab2"
+    },
+    {
+      "id": "minecraft:block/grass_block_snow",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "72e3acfdc6c627bf1411371208bfcee456184d1fff9c74a0781deb89339c6a1d"
+    },
+    {
+      "id": "minecraft:block/inner_stairs",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "de2ed5a1c637c8628e9f45016db34082869a43f90bcde1623ada3bbe001c4c8f"
+    },
+    {
+      "id": "minecraft:block/oak_fence_post",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "597041701dc4d9481623cc1b70ec3f6465e9c48ad0f4eb989e57ff3e6950d18d"
+    },
+    {
+      "id": "minecraft:block/oak_fence_side",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "e1858e99600d907a18a488f1b5e7cfe403bc280fcb25cf656b4df55264f3e7a2"
+    },
+    {
+      "id": "minecraft:block/oak_planks",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "f12a7c77a5c42c4df6f662e78765206586a0f5a7602bb9a720d6087c05981d07"
+    },
+    {
+      "id": "minecraft:block/oak_slab",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "19d03d79da69c6662bb149ffe76ef08bfa6bdafba7bfaba4554f533755146ca3"
+    },
+    {
+      "id": "minecraft:block/oak_slab_top",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "79873e85e18d0e8ae0186f8ecbabdee9c0ee708a02024f304673dbc210cf9367"
+    },
+    {
+      "id": "minecraft:block/oak_stairs",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "3032cbcb930e3de9a6b4f281d1fae7029cea2b55913ea4b25feddfaa44eac2e2"
+    },
+    {
+      "id": "minecraft:block/oak_stairs_inner",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "d5f33e8a09ede8a0b1c4fb1dc1cc7708b75b6330639d7571fc83c1faaf61495b"
+    },
+    {
+      "id": "minecraft:block/oak_stairs_outer",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "a21cd7b5b9b3897486bec06f3a7bd6ba3214ae409d27b4dd697b15147a3e66b4"
+    },
+    {
+      "id": "minecraft:block/outer_stairs",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "765734efecc47ed7ee5d3314baf28a1052aa430e2f3489145977d6cf65008215"
+    },
+    {
+      "id": "minecraft:block/slab",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "a2c55034775505e0707906036cec9a567e7404f9101887c2b9d45930bf285701"
+    },
+    {
+      "id": "minecraft:block/slab_top",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "6e5f557add9896576ad3973cfd212c21b7187e9c59346d93bb8f2ac7c5a6e94f"
+    },
+    {
+      "id": "minecraft:block/stairs",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "a431872b7de34903fb1a2b38a843e52b4d53ff38c51cff03beba7c2c473970ad"
+    },
+    {
+      "id": "minecraft:block/stone",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "4987c276067ce86ec4a7eee75fa75d064520665dfd544b81d466557275e0c904"
+    },
+    {
+      "id": "minecraft:block/stone_mirrored",
+      "java_status": "ok",
+      "passed": true,
+      "native_sha256": "f24f4131581ef4ed8dac6ea3e9907dd174f47934d056e19ff2a2b7fe31112141"
+    }
+  ],
+  "elapsed_seconds": 138.283,
+  "commands": [
+    "python3 tools/test_block_model.py",
+    "/Users/chuah/.bend/bin/bend src/block_model.bend --check-only",
+    "/Users/chuah/.bend/bin/bend tests/block_model.bend --check-only",
+    "/Users/chuah/.bend/bin/bend tests/block_model.bend -o build/block-model-tests",
+    "/Users/chuah/.bend/bin/bend src/block_model.bend --verdict",
+    "/Users/chuah/.bend/bin/bend tests/block_model.bend --verdict"
+  ]
+}

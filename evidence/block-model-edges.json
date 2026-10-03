@@ -1,0 +1,607 @@
+{
+  "schema": 1,
+  "all_cases_passed": true,
+  "oracle": {
+    "command": [
+      "/Users/chuah/Library/Application Support/minecraft/runtime/java-runtime-epsilon/mac-os-arm64/java-runtime-epsilon/jre.bundle/Contents/Home/bin/java",
+      "--enable-native-access=ALL-UNNAMED",
+      "-cp",
+      "/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/at/yawk/lz4/lz4-java/1.10.1/lz4-java-1.10.1.jar:/Users/chuah/Library/Application Support/minecraft/libraries/ca/weblite/java-objc-bridge/1.1/java-objc-bridge-1.1.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/azure/azure-json/1.4.0/azure-json-1.4.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/github/oshi/oshi-core/6.9.0/oshi-core-6.9.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/google/code/gson/gson/2.14.0/gson-2.14.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/google/guava/failureaccess/1.0.3/failureaccess-1.0.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/google/guava/guava/33.6.0-jre/guava-33.6.0-jre.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/ibm/icu/icu4j/78.3/icu4j-78.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/microsoft/azure/msal4j/1.24.1/msal4j-1.24.1.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/authlib/10.0.77/authlib-10.0.77.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/blocklist/1.0.10/blocklist-1.0.10.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/brigadier/1.3.11/brigadier-1.3.11.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/datafixerupper/10.0.21/datafixerupper-10.0.21.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/jtracy/1.14.38/jtracy-1.14.38.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/jtracy/1.14.38/jtracy-1.14.38-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/jtracy/1.14.38/jtracy-1.14.38-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/logging/1.7.12/logging-1.7.12.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/patchy/2.2.10/patchy-2.2.10.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/text2speech/1.19.12/text2speech-1.19.12.jar:/Users/chuah/Library/Application Support/minecraft/libraries/commons-codec/commons-codec/1.22.0/commons-codec-1.22.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/commons-io/commons-io/2.20.0/commons-io-2.20.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-buffer/4.2.16.Final/netty-buffer-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-codec-base/4.2.16.Final/netty-codec-base-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-codec-compression/4.2.16.Final/netty-codec-compression-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-codec-http/4.2.16.Final/netty-codec-http-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-common/4.2.16.Final/netty-common-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-handler/4.2.16.Final/netty-handler-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-resolver/4.2.16.Final/netty-resolver-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-transport-classes-epoll/4.2.16.Final/netty-transport-classes-epoll-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-transport-classes-kqueue/4.2.16.Final/netty-transport-classes-kqueue-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-transport-native-kqueue/4.2.16.Final/netty-transport-native-kqueue-4.2.16.Final-osx-aarch_64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-transport-native-kqueue/4.2.16.Final/netty-transport-native-kqueue-4.2.16.Final-osx-x86_64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-transport-native-unix-common/4.2.16.Final/netty-transport-native-unix-common-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-transport/4.2.16.Final/netty-transport-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/it/unimi/dsi/fastutil/8.5.18/fastutil-8.5.18.jar:/Users/chuah/Library/Application Support/minecraft/libraries/net/java/dev/jna/jna-platform/5.17.0/jna-platform-5.17.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/net/java/dev/jna/jna/5.17.0/jna-5.17.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/apache/commons/commons-compress/1.28.0/commons-compress-1.28.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/apache/commons/commons-lang3/3.20.0/commons-lang3-3.20.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/apache/logging/log4j/log4j-api/2.26.0/log4j-api-2.26.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/apache/logging/log4j/log4j-core/2.26.0/log4j-core-2.26.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/apache/logging/log4j/log4j-slf4j2-impl/2.26.0/log4j-slf4j2-impl-2.26.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/jcraft/jorbis/0.0.17/jorbis-0.0.17.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/joml/joml/1.10.9/joml-1.10.9.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-freetype/3.4.3/lwjgl-freetype-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-freetype/3.4.3/lwjgl-freetype-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-freetype/3.4.3/lwjgl-freetype-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-jemalloc/3.4.3/lwjgl-jemalloc-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-jemalloc/3.4.3/lwjgl-jemalloc-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-jemalloc/3.4.3/lwjgl-jemalloc-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-openal/3.4.3/lwjgl-openal-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-openal/3.4.3/lwjgl-openal-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-openal/3.4.3/lwjgl-openal-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-opengl/3.4.3/lwjgl-opengl-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-opengl/3.4.3/lwjgl-opengl-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-opengl/3.4.3/lwjgl-opengl-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-sdl/3.4.3/lwjgl-sdl-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-sdl/3.4.3/lwjgl-sdl-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-sdl/3.4.3/lwjgl-sdl-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-shaderc/3.4.3/lwjgl-shaderc-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-shaderc/3.4.3/lwjgl-shaderc-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-shaderc/3.4.3/lwjgl-shaderc-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-spvc/3.4.3/lwjgl-spvc-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-spvc/3.4.3/lwjgl-spvc-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-spvc/3.4.3/lwjgl-spvc-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-stb/3.4.3/lwjgl-stb-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-stb/3.4.3/lwjgl-stb-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-stb/3.4.3/lwjgl-stb-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-vma/3.4.3/lwjgl-vma-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-vma/3.4.3/lwjgl-vma-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-vma/3.4.3/lwjgl-vma-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-vulkan/3.4.3/lwjgl-vulkan-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-vulkan/3.4.3/lwjgl-vulkan-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-vulkan/3.4.3/lwjgl-vulkan-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl/3.4.3/lwjgl-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl/3.4.3/lwjgl-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl/3.4.3/lwjgl-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/slf4j/slf4j-api/2.0.17/slf4j-api-2.0.17.jar",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/block-model-edges/ReferenceModelProbe.java",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/block-model-edges/inputs.json",
+      "/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/block-model-edges/observations.json"
+    ],
+    "harness_sha256": "d0ea602ed3acdaac2f03448445535354ee60129697866aa6d0914ff0eefdc4f6",
+    "input_sha256": "714bfa98ff1e1f8b61ef323f79c147fc9cca5f09b8e55d77efcbed75ec5dfef1",
+    "observation_sha256": "8fd99e3bf162344d08ce186c67196202de941378a0c8da34ead037078fc7ae60",
+    "client": {
+      "file": "26.3.jar",
+      "bytes": 41483720,
+      "sha1": "e877b6a07acd633fb3bb475002175cec036e7b87",
+      "sha256": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d"
+    },
+    "java": {
+      "file": "java",
+      "bytes": 84720,
+      "sha1": "5af4a90be54ddeec03db3700e6989594c9438952",
+      "sha256": "e0879c0df70d880d66904064d1b388b08aeee0958a047f37601435b28db849a3"
+    },
+    "java_version": "openjdk version \"25.0.1\" 2025-10-21 LTS\nOpenJDK Runtime Environment Microsoft-12574220 (build 25.0.1+8-LTS)\nOpenJDK 64-Bit Server VM Microsoft-12574220 (build 25.0.1+8-LTS, mixed mode)",
+    "library_count": 80,
+    "library_provenance_sha256": "37f9cbf5acba5f15fd6dcda9d08e938d1a6ec70360122a1d1d9127f2d0ae5635"
+  },
+  "transitive_source_sha256": {
+    "src/block_model.bend": "08108bae9b89c6768de56bdddea158f3604b36c7de4ee0408815e2c7f48b97a1",
+    "tests/block_model.bend": "9a6583a1c2c9c782536110f7a8e960a0c79e506727485c2282809b6cdc2a6a36",
+    "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+    "src/float_parse.bend": "fe22007f0805f3c955fcaada88c1da76a3cceda74f0ff3840ae47af49a02c683",
+    "src/big_uint.bend": "fbe5965ee16ee3d6864def33fbc6e5e4b1b9bc7da4735d99311c1a23c65e2444",
+    "tools/test_block_model.py": "ee39d0b9bec2b5d82d011cea6f8bc1ffd83d3958b9e593b0183a4e9ff4cc87ef",
+    "tools/reference_model_probe.py": "4c82153a59a0eeb58e8c5df181e13adb16424343de9f7c2957f73c662cc598b7"
+  },
+  "cases": [
+    {
+      "id": "float-from-0",
+      "json": "{\"elements\":[{\"from\":[\"0.1\",0,0],\"to\":[16,16,16],\"faces\":{\"north\":{\"texture\":\"#all\"}}}]}",
+      "java_status": "error",
+      "java_error": {
+        "status": "error",
+        "error_class": "com.google.gson.JsonSyntaxException",
+        "message": "Expected from[0] to be a Float, was \"0.1\""
+      },
+      "passed": true,
+      "native_sha256": "72bd25d47aa776d833cc1eaf248b328da8e072c69684c35237f80bf62eabea78"
+    },
+    {
+      "id": "float-from-1",
+      "json": "{\"elements\":[{\"from\":[\"+0.1\",0,0],\"to\":[16,16,16],\"faces\":{\"north\":{\"texture\":\"#all\"}}}]}",
+      "java_status": "error",
+      "java_error": {
+        "status": "error",
+        "error_class": "com.google.gson.JsonSyntaxException",
+        "message": "Expected from[0] to be a Float, was \"+0.1\""
+      },
+      "passed": true,
+      "native_sha256": "72bd25d47aa776d833cc1eaf248b328da8e072c69684c35237f80bf62eabea78"
+    },
+    {
+      "id": "float-from-2",
+      "json": "{\"elements\":[{\"from\":[\" .5f \",0,0],\"to\":[16,16,16],\"faces\":{\"north\":{\"texture\":\"#all\"}}}]}",
+      "java_status": "error",
+      "java_error": {
+        "status": "error",
+        "error_class": "com.google.gson.JsonSyntaxException",
+        "message": "Expected from[0] to be a Float, was \" .5f \""
+      },
+      "passed": true,
+      "native_sha256": "72bd25d47aa776d833cc1eaf248b328da8e072c69684c35237f80bf62eabea78"
+    },
+    {
+      "id": "float-from-3",
+      "json": "{\"elements\":[{\"from\":[\"-0.0\",0,0],\"to\":[16,16,16],\"faces\":{\"north\":{\"texture\":\"#all\"}}}]}",
+      "java_status": "error",
+      "java_error": {
+        "status": "error",
+        "error_class": "com.google.gson.JsonSyntaxException",
+        "message": "Expected from[0] to be a Float, was \"-0.0\""
+      },
+      "passed": true,
+      "native_sha256": "72bd25d47aa776d833cc1eaf248b328da8e072c69684c35237f80bf62eabea78"
+    },
+    {
+      "id": "float-from-4",
+      "json": "{\"elements\":[{\"from\":[\"0x1p-1\",0,0],\"to\":[16,16,16],\"faces\":{\"north\":{\"texture\":\"#all\"}}}]}",
+      "java_status": "error",
+      "java_error": {
+        "status": "error",
+        "error_class": "com.google.gson.JsonSyntaxException",
+        "message": "Expected from[0] to be a Float, was \"0x1p-1\""
+      },
+      "passed": true,
+      "native_sha256": "72bd25d47aa776d833cc1eaf248b328da8e072c69684c35237f80bf62eabea78"
+    },
+    {
+      "id": "float-from-5",
+      "json": "{\"elements\":[{\"from\":[\"NaN\",0,0],\"to\":[16,16,16],\"faces\":{\"north\":{\"texture\":\"#all\"}}}]}",
+      "java_status": "error",
+      "java_error": {
+        "status": "error",
+        "error_class": "com.google.gson.JsonSyntaxException",
+        "message": "Expected from[0] to be a Float, was \"NaN\""
+      },
+      "passed": true,
+      "native_sha256": "72bd25d47aa776d833cc1eaf248b328da8e072c69684c35237f80bf62eabea78"
+    },
+    {
+      "id": "float-from-6",
+      "json": "{\"elements\":[{\"from\":[\"Infinity\",0,0],\"to\":[16,16,16],\"faces\":{\"north\":{\"texture\":\"#all\"}}}]}",
+      "java_status": "error",
+      "java_error": {
+        "status": "error",
+        "error_class": "com.google.gson.JsonSyntaxException",
+        "message": "Expected from[0] to be a Float, was \"Infinity\""
+      },
+      "passed": true,
+      "native_sha256": "72bd25d47aa776d833cc1eaf248b328da8e072c69684c35237f80bf62eabea78"
+    },
+    {
+      "id": "float-from-7",
+      "json": "{\"elements\":[{\"from\":[true,0,0],\"to\":[16,16,16],\"faces\":{\"north\":{\"texture\":\"#all\"}}}]}",
+      "java_status": "error",
+      "java_error": {
+        "status": "error",
+        "error_class": "com.google.gson.JsonSyntaxException",
+        "message": "Expected from[0] to be a Float, was a boolean (true)"
+      },
+      "passed": true,
+      "native_sha256": "72bd25d47aa776d833cc1eaf248b328da8e072c69684c35237f80bf62eabea78"
+    },
+    {
+      "id": "float-from-8",
+      "json": "{\"elements\":[{\"from\":[null,0,0],\"to\":[16,16,16],\"faces\":{\"north\":{\"texture\":\"#all\"}}}]}",
+      "java_status": "error",
+      "java_error": {
+        "status": "error",
+        "error_class": "com.google.gson.JsonSyntaxException",
+        "message": "Expected from[0] to be a Float, was null (json)"
+      },
+      "passed": true,
+      "native_sha256": "72bd25d47aa776d833cc1eaf248b328da8e072c69684c35237f80bf62eabea78"
+    },
+    {
+      "id": "float-uv-0",
+      "json": "{\"elements\":[{\"from\":[0,0,0],\"to\":[16,16,16],\"faces\":{\"north\":{\"texture\":\"#all\",\"uv\":[\"NaN\",0,16,16]}}}]}",
+      "java_status": "error",
+      "java_error": {
+        "status": "error",
+        "error_class": "com.google.gson.JsonSyntaxException",
+        "message": "Expected minU to be a Float, was \"NaN\""
+      },
+      "passed": true,
+      "native_sha256": "ec65bad98f261a36424aad5cd5d4febba480bed77f5fe0eab16407cf3d4edb90"
+    },
+    {
+      "id": "float-uv-1",
+      "json": "{\"elements\":[{\"from\":[0,0,0],\"to\":[16,16,16],\"faces\":{\"north\":{\"texture\":\"#all\",\"uv\":[\"Infinity\",0,16,16]}}}]}",
+      "java_status": "error",
+      "java_error": {
+        "status": "error",
+        "error_class": "com.google.gson.JsonSyntaxException",
+        "message": "Expected minU to be a Float, was \"Infinity\""
+      },
+      "passed": true,
+      "native_sha256": "ec65bad98f261a36424aad5cd5d4febba480bed77f5fe0eab16407cf3d4edb90"
+    },
+    {
+      "id": "float-uv-2",
+      "json": "{\"elements\":[{\"from\":[0,0,0],\"to\":[16,16,16],\"faces\":{\"north\":{\"texture\":\"#all\",\"uv\":[\"-Infinity\",0,16,16]}}}]}",
+      "java_status": "error",
+      "java_error": {
+        "status": "error",
+        "error_class": "com.google.gson.JsonSyntaxException",
+        "message": "Expected minU to be a Float, was \"-In...ty\""
+      },
+      "passed": true,
+      "native_sha256": "ec65bad98f261a36424aad5cd5d4febba480bed77f5fe0eab16407cf3d4edb90"
+    },
+    {
+      "id": "float-uv-3",
+      "json": "{\"elements\":[{\"from\":[0,0,0],\"to\":[16,16,16],\"faces\":{\"north\":{\"texture\":\"#all\",\"uv\":[\"0x1p-1\",0,16,16]}}}]}",
+      "java_status": "error",
+      "java_error": {
+        "status": "error",
+        "error_class": "com.google.gson.JsonSyntaxException",
+        "message": "Expected minU to be a Float, was \"0x1p-1\""
+      },
+      "passed": true,
+      "native_sha256": "ec65bad98f261a36424aad5cd5d4febba480bed77f5fe0eab16407cf3d4edb90"
+    },
+    {
+      "id": "float-uv-4",
+      "json": "{\"elements\":[{\"from\":[0,0,0],\"to\":[16,16,16],\"faces\":{\"north\":{\"texture\":\"#all\",\"uv\":[\" .5f \",0,16,16]}}}]}",
+      "java_status": "error",
+      "java_error": {
+        "status": "error",
+        "error_class": "com.google.gson.JsonSyntaxException",
+        "message": "Expected minU to be a Float, was \" .5f \""
+      },
+      "passed": true,
+      "native_sha256": "ec65bad98f261a36424aad5cd5d4febba480bed77f5fe0eab16407cf3d4edb90"
+    },
+    {
+      "id": "integer-light-0",
+      "json": "{\"elements\":[{\"from\":[0,0,0],\"to\":[16,16,16],\"faces\":{\"north\":{\"texture\":\"#all\"}},\"light_emission\":1.9}]}",
+      "java_status": "ok",
+      "java_error": null,
+      "passed": true,
+      "native_sha256": "0de4da0293e16a6b4606506498a06eff58eaa90daa4acc565f2e09b964c95632"
+    },
+    {
+      "id": "integer-light-1",
+      "json": "{\"elements\":[{\"from\":[0,0,0],\"to\":[16,16,16],\"faces\":{\"north\":{\"texture\":\"#all\"}},\"light_emission\":-0.9}]}",
+      "java_status": "ok",
+      "java_error": null,
+      "passed": true,
+      "native_sha256": "42a11f282dc709f1a39a9d2f5f246e1dd0a3f2e46dd3c8b6cc313bbb31cc1ee8"
+    },
+    {
+      "id": "integer-light-2",
+      "json": "{\"elements\":[{\"from\":[0,0,0],\"to\":[16,16,16],\"faces\":{\"north\":{\"texture\":\"#all\"}},\"light_emission\":4294967296}]}",
+      "java_status": "ok",
+      "java_error": null,
+      "passed": true,
+      "native_sha256": "42a11f282dc709f1a39a9d2f5f246e1dd0a3f2e46dd3c8b6cc313bbb31cc1ee8"
+    },
+    {
+      "id": "integer-light-3",
+      "json": "{\"elements\":[{\"from\":[0,0,0],\"to\":[16,16,16],\"faces\":{\"north\":{\"texture\":\"#all\"}},\"light_emission\":4294967311}]}",
+      "java_status": "ok",
+      "java_error": null,
+      "passed": true,
+      "native_sha256": "11948b192ba18a7f525cdbe20fdb0bacd4442cf21b820cc321d11f048b9208dd"
+    },
+    {
+      "id": "integer-light-4",
+      "json": "{\"elements\":[{\"from\":[0,0,0],\"to\":[16,16,16],\"faces\":{\"north\":{\"texture\":\"#all\"}},\"light_emission\":18446744073709551631}]}",
+      "java_status": "ok",
+      "java_error": null,
+      "passed": true,
+      "native_sha256": "11948b192ba18a7f525cdbe20fdb0bacd4442cf21b820cc321d11f048b9208dd"
+    },
+    {
+      "id": "integer-light-5",
+      "json": "{\"elements\":[{\"from\":[0,0,0],\"to\":[16,16,16],\"faces\":{\"north\":{\"texture\":\"#all\"}},\"light_emission\":9007199254740993}]}",
+      "java_status": "ok",
+      "java_error": null,
+      "passed": true,
+      "native_sha256": "0de4da0293e16a6b4606506498a06eff58eaa90daa4acc565f2e09b964c95632"
+    },
+    {
+      "id": "integer-light-6",
+      "json": "{\"elements\":[{\"from\":[0,0,0],\"to\":[16,16,16],\"faces\":{\"north\":{\"texture\":\"#all\"}},\"light_emission\":1e+40}]}",
+      "java_status": "ok",
+      "java_error": null,
+      "passed": true,
+      "native_sha256": "42a11f282dc709f1a39a9d2f5f246e1dd0a3f2e46dd3c8b6cc313bbb31cc1ee8"
+    },
+    {
+      "id": "integer-light-7",
+      "json": "{\"elements\":[{\"from\":[0,0,0],\"to\":[16,16,16],\"faces\":{\"north\":{\"texture\":\"#all\"}},\"light_emission\":1e-40}]}",
+      "java_status": "ok",
+      "java_error": null,
+      "passed": true,
+      "native_sha256": "42a11f282dc709f1a39a9d2f5f246e1dd0a3f2e46dd3c8b6cc313bbb31cc1ee8"
+    },
+    {
+      "id": "integer-light-8",
+      "json": "{\"elements\":[{\"from\":[0,0,0],\"to\":[16,16,16],\"faces\":{\"north\":{\"texture\":\"#all\"}},\"light_emission\":-1.9}]}",
+      "java_status": "error",
+      "java_error": {
+        "status": "error",
+        "error_class": "com.google.gson.JsonParseException",
+        "message": "Expected 'light_emission' to be an Integer between (inclusive) 0 and 15"
+      },
+      "passed": true,
+      "native_sha256": "5714ed0ac64d90f50d06664e46b13691d43f329dc5a54c8750799c032f59cb35"
+    },
+    {
+      "id": "integer-light-9",
+      "json": "{\"elements\":[{\"from\":[0,0,0],\"to\":[16,16,16],\"faces\":{\"north\":{\"texture\":\"#all\"}},\"light_emission\":\"+1\"}]}",
+      "java_status": "error",
+      "java_error": {
+        "status": "error",
+        "error_class": "com.google.gson.JsonParseException",
+        "message": "Expected 'light_emission' to be an Integer between (inclusive) 0 and 15"
+      },
+      "passed": true,
+      "native_sha256": "0c23b685ec8c8fe867c83c5b0c45e6565fa0e5a1e17298b916bccc222b6924c9"
+    },
+    {
+      "id": "integer-light-10",
+      "json": "{\"elements\":[{\"from\":[0,0,0],\"to\":[16,16,16],\"faces\":{\"north\":{\"texture\":\"#all\"}},\"light_emission\":\"0001\"}]}",
+      "java_status": "error",
+      "java_error": {
+        "status": "error",
+        "error_class": "com.google.gson.JsonParseException",
+        "message": "Expected 'light_emission' to be an Integer between (inclusive) 0 and 15"
+      },
+      "passed": true,
+      "native_sha256": "0c23b685ec8c8fe867c83c5b0c45e6565fa0e5a1e17298b916bccc222b6924c9"
+    },
+    {
+      "id": "integer-light-11",
+      "json": "{\"elements\":[{\"from\":[0,0,0],\"to\":[16,16,16],\"faces\":{\"north\":{\"texture\":\"#all\"}},\"light_emission\":\"1.9\"}]}",
+      "java_status": "error",
+      "java_error": {
+        "status": "error",
+        "error_class": "com.google.gson.JsonParseException",
+        "message": "Expected 'light_emission' to be an Integer between (inclusive) 0 and 15"
+      },
+      "passed": true,
+      "native_sha256": "0c23b685ec8c8fe867c83c5b0c45e6565fa0e5a1e17298b916bccc222b6924c9"
+    },
+    {
+      "id": "integer-light-12",
+      "json": "{\"elements\":[{\"from\":[0,0,0],\"to\":[16,16,16],\"faces\":{\"north\":{\"texture\":\"#all\"}},\"light_emission\":\"1e1\"}]}",
+      "java_status": "error",
+      "java_error": {
+        "status": "error",
+        "error_class": "com.google.gson.JsonParseException",
+        "message": "Expected 'light_emission' to be an Integer between (inclusive) 0 and 15"
+      },
+      "passed": true,
+      "native_sha256": "0c23b685ec8c8fe867c83c5b0c45e6565fa0e5a1e17298b916bccc222b6924c9"
+    },
+    {
+      "id": "integer-light-13",
+      "json": "{\"elements\":[{\"from\":[0,0,0],\"to\":[16,16,16],\"faces\":{\"north\":{\"texture\":\"#all\"}},\"light_emission\":\"2147483648\"}]}",
+      "java_status": "error",
+      "java_error": {
+        "status": "error",
+        "error_class": "com.google.gson.JsonParseException",
+        "message": "Expected 'light_emission' to be an Integer between (inclusive) 0 and 15"
+      },
+      "passed": true,
+      "native_sha256": "0c23b685ec8c8fe867c83c5b0c45e6565fa0e5a1e17298b916bccc222b6924c9"
+    },
+    {
+      "id": "integer-light-14",
+      "json": "{\"elements\":[{\"from\":[0,0,0],\"to\":[16,16,16],\"faces\":{\"north\":{\"texture\":\"#all\"}},\"light_emission\":\"-2147483648\"}]}",
+      "java_status": "error",
+      "java_error": {
+        "status": "error",
+        "error_class": "com.google.gson.JsonParseException",
+        "message": "Expected 'light_emission' to be an Integer between (inclusive) 0 and 15"
+      },
+      "passed": true,
+      "native_sha256": "0c23b685ec8c8fe867c83c5b0c45e6565fa0e5a1e17298b916bccc222b6924c9"
+    },
+    {
+      "id": "integer-light-15",
+      "json": "{\"elements\":[{\"from\":[0,0,0],\"to\":[16,16,16],\"faces\":{\"north\":{\"texture\":\"#all\"}},\"light_emission\":\"false\"}]}",
+      "java_status": "error",
+      "java_error": {
+        "status": "error",
+        "error_class": "com.google.gson.JsonParseException",
+        "message": "Expected 'light_emission' to be an Integer between (inclusive) 0 and 15"
+      },
+      "passed": true,
+      "native_sha256": "0c23b685ec8c8fe867c83c5b0c45e6565fa0e5a1e17298b916bccc222b6924c9"
+    },
+    {
+      "id": "integer-light-16",
+      "json": "{\"elements\":[{\"from\":[0,0,0],\"to\":[16,16,16],\"faces\":{\"north\":{\"texture\":\"#all\"}},\"light_emission\":\" 1 \"}]}",
+      "java_status": "error",
+      "java_error": {
+        "status": "error",
+        "error_class": "com.google.gson.JsonParseException",
+        "message": "Expected 'light_emission' to be an Integer between (inclusive) 0 and 15"
+      },
+      "passed": true,
+      "native_sha256": "0c23b685ec8c8fe867c83c5b0c45e6565fa0e5a1e17298b916bccc222b6924c9"
+    },
+    {
+      "id": "ambient-0",
+      "json": "{\"ambientocclusion\":\"TRUE\"}",
+      "java_status": "ok",
+      "java_error": null,
+      "passed": true,
+      "native_sha256": "c0dddf57778f31415f5e250417ee56957bc827c2159fcae231db131ee33e4f1c"
+    },
+    {
+      "id": "ambient-1",
+      "json": "{\"ambientocclusion\":\"TrUe\"}",
+      "java_status": "ok",
+      "java_error": null,
+      "passed": true,
+      "native_sha256": "c0dddf57778f31415f5e250417ee56957bc827c2159fcae231db131ee33e4f1c"
+    },
+    {
+      "id": "ambient-2",
+      "json": "{\"ambientocclusion\":1}",
+      "java_status": "ok",
+      "java_error": null,
+      "passed": true,
+      "native_sha256": "2251f84056328c25add2e15fbaec0d883b425353d105d49257d0c93287fe0cdb"
+    },
+    {
+      "id": "ambient-3",
+      "json": "{\"ambientocclusion\":-1}",
+      "java_status": "ok",
+      "java_error": null,
+      "passed": true,
+      "native_sha256": "2251f84056328c25add2e15fbaec0d883b425353d105d49257d0c93287fe0cdb"
+    },
+    {
+      "id": "ambient-4",
+      "json": "{\"ambientocclusion\":[]}",
+      "java_status": "error",
+      "java_error": {
+        "status": "error",
+        "error_class": "com.google.gson.JsonSyntaxException",
+        "message": "Expected ambientocclusion to be a Boolean, was an array ([])"
+      },
+      "passed": true,
+      "native_sha256": "8bbcf2ad01a9f95d360e239a342ca59a93bfdc166f14b6e047655f70501d155f"
+    },
+    {
+      "id": "ambient-5",
+      "json": "{\"ambientocclusion\":null}",
+      "java_status": "error",
+      "java_error": {
+        "status": "error",
+        "error_class": "com.google.gson.JsonSyntaxException",
+        "message": "Expected ambientocclusion to be a Boolean, was null (json)"
+      },
+      "passed": true,
+      "native_sha256": "8bbcf2ad01a9f95d360e239a342ca59a93bfdc166f14b6e047655f70501d155f"
+    },
+    {
+      "id": "parent-0",
+      "json": "{\"parent\":null}",
+      "java_status": "error",
+      "java_error": {
+        "status": "error",
+        "error_class": "com.google.gson.JsonSyntaxException",
+        "message": "Expected parent to be a string, was null (json)"
+      },
+      "passed": true,
+      "native_sha256": "4b029fb22d4017f0fba9b764d5f130db1a715c688aa24bef29b5c62ae23b8ab6"
+    },
+    {
+      "id": "parent-1",
+      "json": "{\"parent\":true}",
+      "java_status": "ok",
+      "java_error": null,
+      "passed": true,
+      "native_sha256": "ede39e613d3c3a850c5a90afd186b5fb0c5b1aead0036e514f7f40e68b44e690"
+    },
+    {
+      "id": "parent-2",
+      "json": "{\"parent\":1.5}",
+      "java_status": "ok",
+      "java_error": null,
+      "passed": true,
+      "native_sha256": "e8d3048878e44210abb0134c398ae2b3b5a81f1fc64f0a71d9c6926ef929fac4"
+    },
+    {
+      "id": "parent-3",
+      "json": "{\"parent\":[]}",
+      "java_status": "error",
+      "java_error": {
+        "status": "error",
+        "error_class": "com.google.gson.JsonSyntaxException",
+        "message": "Expected parent to be a string, was an array ([])"
+      },
+      "passed": true,
+      "native_sha256": "4b029fb22d4017f0fba9b764d5f130db1a715c688aa24bef29b5c62ae23b8ab6"
+    },
+    {
+      "id": "parent-4",
+      "json": "{\"parent\":{}}",
+      "java_status": "error",
+      "java_error": {
+        "status": "error",
+        "error_class": "com.google.gson.JsonSyntaxException",
+        "message": "Expected parent to be a string, was an object ({})"
+      },
+      "passed": true,
+      "native_sha256": "4b029fb22d4017f0fba9b764d5f130db1a715c688aa24bef29b5c62ae23b8ab6"
+    },
+    {
+      "id": "rotation-precedence-0",
+      "json": "{\"elements\":[{\"from\":[0,0,0],\"to\":[16,16,16],\"faces\":{\"north\":{\"texture\":\"#all\"}},\"rotation\":{\"origin\":[8,8,8],\"angle\":12,\"x\":0}}]}",
+      "java_status": "error",
+      "java_error": {
+        "status": "error",
+        "error_class": "com.google.gson.JsonSyntaxException",
+        "message": "Missing axis, expected to find a string"
+      },
+      "passed": true,
+      "native_sha256": "b7e35acc616058c9674fcf87af6b8767b6751d17ebf26894800c81637c4dcf65"
+    },
+    {
+      "id": "rotation-precedence-1",
+      "json": "{\"elements\":[{\"from\":[0,0,0],\"to\":[16,16,16],\"faces\":{\"north\":{\"texture\":\"#all\"}},\"rotation\":{\"origin\":[8,8,8],\"axis\":\"y\",\"x\":0}}]}",
+      "java_status": "error",
+      "java_error": {
+        "status": "error",
+        "error_class": "com.google.gson.JsonSyntaxException",
+        "message": "Missing angle, expected to find a Float"
+      },
+      "passed": true,
+      "native_sha256": "2c63e62527f0dade13830bb6021372a3b848f0d4039b6c6950e1e889e4844692"
+    },
+    {
+      "id": "rotation-precedence-2",
+      "json": "{\"elements\":[{\"from\":[0,0,0],\"to\":[16,16,16],\"faces\":{\"north\":{\"texture\":\"#all\"}},\"rotation\":{\"origin\":[8,8,8],\"axis\":\"Y\",\"angle\":12}}]}",
+      "java_status": "ok",
+      "java_error": null,
+      "passed": true,
+      "native_sha256": "9d1376e4437efa8c1458da3a4efdeddc484a4a48532116c3dfda1774730b27cd"
+    },
+    {
+      "id": "face-direction-alias",
+      "json": "{\"elements\":[{\"from\":[0,0,0],\"to\":[16,16,16],\"faces\":{\"up\":{\"texture\":\"first\"},\"UP\":{\"texture\":\"last\"}}}]}",
+      "java_status": "error",
+      "java_error": {
+        "status": "error",
+        "error_class": "com.google.gson.JsonParseException",
+        "message": "Unknown facing: UP"
+      },
+      "passed": true,
+      "native_sha256": "898680a9cec00188521ac2f2826f2eae91aae640dc9b6cdcdcfae74ad4267ea7"
+    },
+    {
+      "id": "shade-uppercase",
+      "json": "{\"elements\":[{\"from\":[0,0,0],\"to\":[16,16,16],\"faces\":{\"north\":{\"texture\":\"#all\"}},\"shade_direction_override\":\"UP\"}]}",
+      "java_status": "error",
+      "java_error": {
+        "status": "error",
+        "error_class": "com.google.gson.JsonParseException",
+        "message": "Unknown shade direction override: UP"
+      },
+      "passed": true,
+      "native_sha256": "fa42da055f22870c64483e4c5a9e4eb8fea56984cdb9a1da965e040128d7d523"
+    },
+    {
+      "id": "display-nan",
+      "json": "{\"display\":{\"gui\":{\"translation\":[\"NaN\",\"Infinity\",\"-Infinity\"],\"scale\":[\"NaN\",\"Infinity\",\"-Infinity\"]}}}",
+      "java_status": "error",
+      "java_error": {
+        "status": "error",
+        "error_class": "com.google.gson.JsonSyntaxException",
+        "message": "Expected translation[0] to be a Float, was \"NaN\""
+      },
+      "passed": true,
+      "native_sha256": "09dc97857ae5f829bf712efb72f8f10b023cf552b05a1a6f4ff41a625a2c5a2d"
+    },
+    {
+      "id": "cull-case-0",
+      "json": "{\"elements\":[{\"from\":[0,0,0],\"to\":[16,16,16],\"faces\":{\"north\":{\"texture\":\"#all\",\"cullface\":\"UP\"}}}]}",
+      "java_status": "ok",
+      "java_error": null,
+      "passed": true,
+      "native_sha256": "42a11f282dc709f1a39a9d2f5f246e1dd0a3f2e46dd3c8b6cc313bbb31cc1ee8"
+    },
+    {
+      "id": "cull-case-1",
+      "json": "{\"elements\":[{\"from\":[0,0,0],\"to\":[16,16,16],\"faces\":{\"north\":{\"texture\":\"#all\",\"cullface\":\"Up\"}}}]}",
+      "java_status": "ok",
+      "java_error": null,
+      "passed": true,
+      "native_sha256": "42a11f282dc709f1a39a9d2f5f246e1dd0a3f2e46dd3c8b6cc313bbb31cc1ee8"
+    },
+    {
+      "id": "cull-case-2",
+      "json": "{\"elements\":[{\"from\":[0,0,0],\"to\":[16,16,16],\"faces\":{\"north\":{\"texture\":\"#all\",\"cullface\":true}}}]}",
+      "java_status": "ok",
+      "java_error": null,
+      "passed": true,
+      "native_sha256": "42a11f282dc709f1a39a9d2f5f246e1dd0a3f2e46dd3c8b6cc313bbb31cc1ee8"
+    },
+    {
+      "id": "cull-case-3",
+      "json": "{\"elements\":[{\"from\":[0,0,0],\"to\":[16,16,16],\"faces\":{\"north\":{\"texture\":\"#all\",\"cullface\":1}}}]}",
+      "java_status": "ok",
+      "java_error": null,
+      "passed": true,
+      "native_sha256": "42a11f282dc709f1a39a9d2f5f246e1dd0a3f2e46dd3c8b6cc313bbb31cc1ee8"
+    }
+  ],
+  "graphs": [
+    {
+      "id": "display-inheritance",
+      "models": 4,
+      "passed": true,
+      "native_sha256": "15554df884f11c9b20373edbd8562bfa601899a1a7179e4d5a5d1170f85fa30e"
+    },
+    {
+      "id": "cycle-descendant",
+      "models": 1,
+      "passed": true,
+      "native_sha256": "2887507d2a3fa821ea364bba573da0384332220b3db5cb9cd340b7c363bf045d"
+    }
+  ]
+}
