@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "observed_at_utc": "2026-10-03T16:26:00.250240+00:00",
+  "source_sha256": "461e2bc342005831a3d16824303f79e1f4dac2dca0eaf0731d18052dbfe0bf86",
+  "fixture_sha256": "ca7c0202ce727987f4e275180f53909ca8c82412173da781c01f1b89f4b705c5",
+  "translation": "build/world-codec.bendtt",
+  "translation_sha256": "69dd68b1bb508b7635afcf3a0ea8e3dc5e76109da92e4473acea85a2c225359e",
+  "emit_command": [
+    "/Users/chuah/.bend/bin/bend",
+    "tests/world_codec.bend",
+    "-o",
+    "build/world-codec.bendtt"
+  ],
+  "kernel_command": [
+    "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+    "build/world-codec.bendtt"
+  ],
+  "kernel_exit_code": 0,
+  "kernel_output": "ALL PROOFS CHECK",
+  "kernel_binary_sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7",
+  "kernel_source_sha256": "e15042434e73aab07ab05cea4b77b5619082c00a6d4924ea2d4a2cdec05facce",
+  "finite_world_fixture_claims": {
+    "checked_native_nat_boundary": {
+      "source_claim": "{W.native_nat_text(\"281474976710655\") == True{} : Bool}",
+      "translation_declaration_sha256": "7e2461f3c9a39375af175a09b5c2f72e9dd88e0c4f527edfd722b7f22e42df28",
+      "inspected_not_placeholder": true
+    },
+    "checked_native_nat_overflow": {
+      "source_claim": "{W.nat_value(W.default_limits(), W.string_tag(\"281474976710656\")) == Fail{\"world Nat exceeds native 48-bit range\"} : Result<&2, &2, String, Nat>}",
+      "translation_declaration_sha256": "deadb03116df838ea38b3c032255665ed3ec08b26f80741bdc19f117003c1471",
+      "inspected_not_placeholder": true
+    },
+    "checked_malformed_array_shape": {
+      "source_claim": "{W.array_cells(2n, ANode{ALeaf{9}, ANode{ALeaf{8}, ALeaf{7}}}, 16) == (ANode{ALeaf{9}, ANode{ALeaf{8}, ALeaf{7}}}, Fail{\"malformed owned section Array layout\"}) : Array<U32> & Result<&2, &2, String, List<&2, U32>>}",
+      "translation_declaration_sha256": "1d266cc6a09bfd036c1c6d93a4745f24dee7c22a158edf5ed7860e5faba77ed0",
+      "inspected_not_placeholder": true
+    }
+  },
+  "imported_nbt_fixture_claims": [
+    "checked_end_fixture",
+    "checked_raw_float_fixture"
+  ],
+  "scope": "Translated definitions satisfy independent kernel typing, affinity and termination. Three finite world helper laws check the 48-bit decimal gate, overflow error, and abstract malformed-array error with exact owner return; two imported finite NBT fixture laws are also checked. No universal snapshot roundtrip, full Minecraft persistence, host-effect, crash-recovery, or native malformed-constructor behavior theorem is claimed."
+}

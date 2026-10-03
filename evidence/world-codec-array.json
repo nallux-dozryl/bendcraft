@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "kind": "native_array_constructor_boundary_before_codec",
+  "observed_at_utc": "2026-10-03T16:24:26.120976+00:00",
+  "compiler": "bend 2.0.35",
+  "source": "import Base\n\ndef report(pair: Array<U32> & U32) -> IO(Unit):\n  (array, size) = pair\n  IO.print(U32.show(size))\n\ndef main() -> IO(Unit):\n  report(Array.size(U32, ANode{[0 : U32 * 2048n], ALeaf{9}}))\n",
+  "source_sha256": "d3038bd76958d086ea041a0172cdb97c62f46be5c913037ea007820d79b6c3f0",
+  "binary_sha256": "ee6845d0bc5bac043cc99e8236ec641e41aeeec3d305df59a0e0688315978218",
+  "compiler_source_sha256": "32fb66e09f608ce9e4b173384bcfeec453db8c5bc96650e26ad861bef815a8d9",
+  "compile_command": [
+    "/Users/chuah/.bend/bin/bend",
+    "build/world-codec-array-constructor.bend",
+    "-o",
+    "build/world-codec-array-constructor"
+  ],
+  "native_command": [
+    "build/world-codec-array-constructor"
+  ],
+  "native_exit_code": 1,
+  "native_output": "bend: runtime fail-stop",
+  "compiler_function": "blk_node",
+  "compiler_check": "if (c != blk_cls(r) || c + 1 >= NCLS_ALL) { err_post(H, ERR_TAGS); return l; }",
+  "codec_invoked": false,
+  "qualification": "Abstract Array permits unequal child shapes; native flat-array constructor rejects unequal child classes before codec invocation. The codec rejects wrong-size balanced native arrays while preserving their owner. The finite checked_malformed_array_shape kernel law covers abstract unequal child shape rejection with original owner retained; it is not a native execution claim."
+}

@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "kind": "actual_native_bend_nat_text_boundary_observation",
+  "compiler": "bend 2.0.35",
+  "native_nat_max": 281474976710655,
+  "inputs": [
+    "4294967296",
+    "281474976710655",
+    "281474976710656",
+    "18446744073709551616"
+  ],
+  "observed": [
+    "4294967296",
+    "281474976710655",
+    "none",
+    "none"
+  ],
+  "all_observations_matched": true,
+  "source_sha256": "c9332c36bef90dd885a40c017101ae945bb25eadadae1eb7b22f2dbd6544fac7",
+  "binary_sha256": "4d7b34a24169e266249bfa39ad79c438c13b61729a38ea8ce1e73d7d88a02104",
+  "base_sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+  "compiler_sha256": "32fb66e09f608ce9e4b173384bcfeec453db8c5bc96650e26ad861bef815a8d9",
+  "commands": [
+    "/Users/chuah/.bend/bin/bend build/world-codec-reference/NatProbe.bend -o build/world-codec-reference/nat-probe",
+    "./build/world-codec-reference/nat-probe --threads 1"
+  ],
+  "qualification": "Observed native Base.Nat.read/Nat.show boundaries. This limits representable Core.World clocks and sequences even though the abstract datatype is Nat.",
+  "bend_probe_source": "import Base\n\ndef observed(result: Maybe<&2, Nat>) -> String:\n  match result:\n    case None{}: \"none\"\n    case Some{value}: Nat.show(value)\n\ndef main() -> IO(Unit):\n  do IO<Unit>:\n    IO.print(observed(Nat.read(\"4294967296\")))\n    IO.print(observed(Nat.read(\"281474976710655\")))\n    IO.print(observed(Nat.read(\"281474976710656\")))\n    IO.print(observed(Nat.read(\"18446744073709551616\")))\n"
+}

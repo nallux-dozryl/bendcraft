@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "kind": "native_fixture_found_and_corrected_extra_schema_constraint",
+  "case": "generated-28",
+  "bytes": 50312,
+  "input_sha256": "cff8a88593e773cc0e6f7755ba4d2f72f4892cdae31ddc81f15a45a0f97e6e7f",
+  "oracle_sha256": "6c89a554e0d1a4301ca3bf85d75706780f5f7398f4c100fd1a582bc2653a559a",
+  "expected": "accepted canonical snapshot",
+  "observed_before_fix": "error\tapplied event revisions out of order",
+  "contract": "Applied event revisions individually satisfy 0 < revision <= world revision; no inter-event revision ordering requirement.",
+  "resolution": "Parent removed the unrequested applied-revision ordering restriction. The unchanged 875-case corpus passed all 875 cases, 181 canonical roundtrips, 181 maximum-peer checks and four independently specified native construction scenarios against the final harness, including its added queued replay, owner recovery and correct-hash duplicate-bucket native regressions.",
+  "reproduction_fixture": "Generated deterministically by tools/test_world_codec.py corpus() from seed 0xC0522603; ignored build/world-codec-reference/failure-generated-28.hex contains the exact input.",
+  "failed_run_command": "python3 tools/test_world_codec.py --skip-build",
+  "failed_source_binary_hashes": "Not captured at failed-run start; no historical source/binary hash is claimed.",
+  "corrected_run_evidence": "evidence/world-codec-tests.json",
+  "corrected_source_sha256": "461e2bc342005831a3d16824303f79e1f4dac2dca0eaf0731d18052dbfe0bf86",
+  "corrected_native_binary_sha256": "a843d1d3de6e71aceed305ae9d5044e01b67d60d6379d0f2a3673ebcd260b682",
+  "corrected_harness_sha256": "ca7c0202ce727987f4e275180f53909ca8c82412173da781c01f1b89f4b705c5",
+  "final_run_elapsed_seconds": 56.854
+}

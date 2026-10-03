@@ -1,0 +1,135 @@
+{
+  "schema": 1,
+  "kind": "independent_core_world_snapshot_schema_and_native_roundtrips",
+  "pin": "26.3",
+  "compiler": "bend 2.0.35",
+  "source_sha256": "461e2bc342005831a3d16824303f79e1f4dac2dca0eaf0731d18052dbfe0bf86",
+  "harness_sha256": "ca7c0202ce727987f4e275180f53909ca8c82412173da781c01f1b89f4b705c5",
+  "native_binary_sha256": "a843d1d3de6e71aceed305ae9d5044e01b67d60d6379d0f2a3673ebcd260b682",
+  "oracle_sha256": "6c89a554e0d1a4301ca3bf85d75706780f5f7398f4c100fd1a582bc2653a559a",
+  "current_oracle_sha256": "6c89a554e0d1a4301ca3bf85d75706780f5f7398f4c100fd1a582bc2653a559a",
+  "nbt_oracle_sha256": "d81adb1a04baa13777e54abaaf1e20cbe97bc5d15c5cf2df047c4f17be2c8cdf",
+  "dependency_sha256": {
+    "src/core.bend": "c1ee5a5390cdac0452c9c6cd3b0584a68ef68b5b0dfec867491c27e67ecadd4e",
+    "src/section.bend": "02b5c15c57b173c7eb8b4c55a1433c10c192926e91af5e3e69050b4404044aa5",
+    "src/section_map.bend": "ded59d7938c02fd0876d65e37f9f90ea0cfebf3ca4bd107394342f8adbf33965",
+    "src/schedule.bend": "93aa79895fe340e27ae5fd562102d5980f0938003eb1bbde669a84010779b8c9",
+    "src/nbt.bend": "b677546b5fc02aaa38f5c09e5b798c0d35aec32b1c4b37cbd7042b9a1a5275e4"
+  },
+  "checker": {
+    "src/world_codec.bend": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.",
+    "tests/world_codec.bend": "ALL PROOFS CHECK\nUse --verdict for mathematical validity."
+  },
+  "kernel_verdict": {
+    "src/world_codec.bend": {
+      "exit_code": 0,
+      "output": "ALL PROOFS CHECK"
+    },
+    "tests/world_codec.bend": {
+      "exit_code": 0,
+      "output": "ALL PROOFS CHECK"
+    }
+  },
+  "native_builtin_regressions": "pass",
+  "independent_cases": 875,
+  "accepted_cases": 181,
+  "rejected_cases": 694,
+  "canonical_roundtrips": 181,
+  "max_peer_fixtures": 181,
+  "native_constructed_scenarios": {
+    "empty": {
+      "bytes": 199,
+      "sha256": "50dbd3f8be663f1cc7c54f1c09328461e3578cc15d98952f1cae82a3497b70c3"
+    },
+    "collision": {
+      "bytes": 33103,
+      "sha256": "e2bc9aa2b8033c82d930c72283c04f691505594a2577cdb0f9ff51a9adb171f7"
+    },
+    "signed": {
+      "bytes": 33092,
+      "sha256": "947229ab8fd2ebb55fd4b2766cc6333e2ff1861b671e1bb886f57bceb35371ae"
+    },
+    "rich": {
+      "bytes": 33670,
+      "sha256": "9133f88614f699ab0e07d83c9c820454be2a88bb5b53f56b50dcaaa9d99c751d"
+    }
+  },
+  "category_counts": {
+    "capacity-boundaries": 7,
+    "cell-domain": 8,
+    "constructed-scenario": 4,
+    "equal-stamps": 1,
+    "event-revision": 3,
+    "exact-fieldsets": 177,
+    "generated": 120,
+    "member-order-canonicalization": 21,
+    "nat-rejection": 120,
+    "native-nat-range": 16,
+    "nbt-normalization": 2,
+    "nbt-policy": 2,
+    "registry-identity": 2,
+    "scalar-strings": 5,
+    "schema": 20,
+    "section-key-rejection": 20,
+    "section-order": 2,
+    "signed-section-keys": 4,
+    "stamp-order": 2,
+    "stamp-temporality": 4,
+    "state-domain": 7,
+    "truncation": 240,
+    "typed-rejection": 86,
+    "typed-variants": 2
+  },
+  "input_tree_sha256": "f7578528d077459f44267e340b27dbaca1eb311ef3300fe1c45aa3e005125a9a",
+  "output_tree_sha256": "8368ea116fd581956ab4ef6f3fb5acc8179de1cce00c0b1dc44515bf45b72501",
+  "max_peer_output_tree_sha256": "c661bbe0e271c5e4363f4ead8b3792e447d61db77296b2ba0835238b2bd9ee0c",
+  "all_cases_passed": true,
+  "elapsed_seconds": 56.854,
+  "hash_collision": {
+    "keys": [
+      "minecraft:overworld/12009114/36153475/77999535",
+      "minecraft:overworld/21442934/118325841/132352103"
+    ],
+    "fnv_scalar32": 4257771677,
+    "search_seed": 26032026,
+    "collision_search_iteration": 167771
+  },
+  "limits": {
+    "sections": 512,
+    "raw_owned_map_nodes": 65536,
+    "native_nat_max": 281474976710655,
+    "default_nat_digits": 15,
+    "string_utf16_units": 65535,
+    "pending": 4096,
+    "events": 1024,
+    "nbt": {
+      "bytes": 16777216,
+      "depth": 512,
+      "elements": 1048576
+    }
+  },
+  "native_nat_evidence": {
+    "base": "Nat.read.fits gates against 281474976710655 before Nat.read.go",
+    "compiler": "comp.ts defines NAT_IMM ((1ull << 48) - 1); nat_chk posts ERR_NATS above it",
+    "base_sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+    "compiler_sha256": "32fb66e09f608ce9e4b173384bcfeec453db8c5bc96650e26ad861bef815a8d9"
+  },
+  "qualification": [
+    "This verifies the current Core.World snapshot schema, not vanilla Minecraft saves, migration, region files or crash recovery.",
+    "The native Nat representation cannot store values above 2^48-1; above-U32 values are verified, above-U64 inputs must be rejected.",
+    "Affine owner preservation and invalid direct constructors execute in the parent-owned native built-in regressions.",
+    "Registry identity is a caller-supplied string, not an independently computed registry digest."
+  ],
+  "commands": [
+    "python3 tools/test_world_codec.py --skip-build",
+    "/Users/chuah/.bend/bin/bend src/world_codec.bend --check-only",
+    "/Users/chuah/.bend/bin/bend tests/world_codec.bend --check-only",
+    "/Users/chuah/.bend/bin/bend tests/world_codec.bend -o build/world-codec-tests",
+    "./build/world-codec-tests --threads 1",
+    "./build/world-codec-tests --threads 1 emit rich",
+    "./build/world-codec-tests --threads 1 batch 16 fixture-registry HEX...",
+    "./build/world-codec-tests --threads 1 peer-batch 16 fixture-registry HEX...",
+    "/Users/chuah/.bend/bin/bend src/world_codec.bend --verdict",
+    "/Users/chuah/.bend/bin/bend tests/world_codec.bend --verdict"
+  ]
+}
