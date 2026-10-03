@@ -1,0 +1,696 @@
+{
+  "actual_query_count": 719,
+  "binary": {
+    "bytes": 1337432,
+    "file": "local-collision-tests",
+    "sha1": "68d40e3cfb770dc71281e094e4bf59f2c4e52f66",
+    "sha256": "e986059eb044ea6a698e0aa3026c111722f441c64101038f9d7d7530dbed234e"
+  },
+  "builds": [
+    {
+      "binary": {
+        "bytes": 1337432,
+        "file": "local-collision-tests",
+        "sha1": "68d40e3cfb770dc71281e094e4bf59f2c4e52f66",
+        "sha256": "e986059eb044ea6a698e0aa3026c111722f441c64101038f9d7d7530dbed234e"
+      },
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/local_collision.bend",
+        "-o",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-collision-tests"
+      ],
+      "compiler": {
+        "bytes": 63885392,
+        "file": "bend",
+        "sha1": "ddce6e432357be618d905b19c0f79abe3d28c388",
+        "sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e"
+      },
+      "exit_code": 0,
+      "memory_sample_scope": "Process-group RSS/virtual sizes sampled every 5 seconds only while unexpectedly slow; RSS is not physical footprint or a game benchmark",
+      "memory_samples": [],
+      "pid": 69190,
+      "seconds": 2.510009,
+      "source_hashes_unchanged": true,
+      "source_sha256": {
+        "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+        "src/geometry.bend": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f",
+        "src/local_collision.bend": "7b2b8301246f3e385a038eca81790fa7d6c4285113a069e040d968e105be5cc0",
+        "src/locomotion.bend": "ccf8aa12636ba1fce5575606383bf75c02a8ac79ba952645b89aea2eef6cd459",
+        "src/movement.bend": "0e94fea7cc941a23d2ed7bbd2ccaf0117e6af363eb91f2db2e34428f9dd9e67f",
+        "src/player_input.bend": "d3938f96416691739eb54f2b0f77377c6ba7c74ac63ffa8335840152feb355d5",
+        "tests/local_collision.bend": "8e70d5c234c11663d6c91ac5634fa0a454c477955b9c55430a91c9d4822c11bf"
+      },
+      "status": "passed",
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false,
+      "timeout_seconds": 600,
+      "version_probe": {
+        "command": [
+          "/Users/chuah/.bend/bin/bend",
+          "version"
+        ],
+        "exit_code": 0,
+        "seconds": 0.018401,
+        "stderr": "",
+        "stdout": "bend 2.0.35\n"
+      }
+    }
+  ],
+  "checks": [
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/local_collision.bend",
+        "--verdict"
+      ],
+      "compiler": {
+        "bytes": 63885392,
+        "file": "bend",
+        "sha1": "ddce6e432357be618d905b19c0f79abe3d28c388",
+        "sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e"
+      },
+      "exit_code": 0,
+      "memory_sample_scope": "Process-group RSS/virtual sizes sampled every 5 seconds only while unexpectedly slow; RSS is not physical footprint or a game benchmark",
+      "memory_samples": [],
+      "pid": 69498,
+      "seconds": 3.937278,
+      "source_hashes_unchanged": true,
+      "source_sha256": {
+        "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+        "src/geometry.bend": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f",
+        "src/local_collision.bend": "7b2b8301246f3e385a038eca81790fa7d6c4285113a069e040d968e105be5cc0",
+        "src/locomotion.bend": "ccf8aa12636ba1fce5575606383bf75c02a8ac79ba952645b89aea2eef6cd459",
+        "src/movement.bend": "0e94fea7cc941a23d2ed7bbd2ccaf0117e6af363eb91f2db2e34428f9dd9e67f",
+        "src/player_input.bend": "d3938f96416691739eb54f2b0f77377c6ba7c74ac63ffa8335840152feb355d5",
+        "tests/local_collision.bend": "8e70d5c234c11663d6c91ac5634fa0a454c477955b9c55430a91c9d4822c11bf"
+      },
+      "status": "passed",
+      "stderr": "",
+      "stdout": "ALL PROOFS CHECK\n",
+      "timed_out": false,
+      "timeout_seconds": 60,
+      "version_probe": {
+        "command": [
+          "/Users/chuah/.bend/bin/bend",
+          "version"
+        ],
+        "exit_code": 0,
+        "seconds": 0.018619,
+        "stderr": "",
+        "stdout": "bend 2.0.35\n"
+      }
+    }
+  ],
+  "checks_reused_with_exact_source_hashes": true,
+  "counts": {
+    "acos": 3072,
+    "admission": 8,
+    "backoff": 94,
+    "minor": 334
+  },
+  "explicit_rejection_cases": 25,
+  "finalization": {
+    "driver_bytes_unchanged": true,
+    "executable_bytes_unchanged": true,
+    "original_native_receipt_sha256": "681c08b3952df641d77a2493360c71e883db6ec742d096e7a67a5e2bfcf8a775",
+    "reference_bytes_unchanged": true,
+    "scope": "Seal existing successful native comparison result with completed exact-source build/kernel receipts and dependency inventory; no repeated native cases, no rebuilt executable.",
+    "source_hashes_unchanged": true
+  },
+  "fixture": {
+    "bytes": 5124791,
+    "file": "local_collision.json",
+    "sha1": "d26e3f18f5a8661f9cc0783035e8d901ffd45468",
+    "sha256": "549a49a0e1b8cfb8e9790023cabb718e1d8f8c2e9ebdd2bb6be57603a93eb1da"
+  },
+  "fixture_provenance": {
+    "counts": {
+      "acos": 3072,
+      "backoff": 99,
+      "minor": 337,
+      "no_collision_queries": 719
+    },
+    "failure_injections": [
+      {
+        "injection": "client",
+        "reason": "Pinned client/runtime/libraries changed",
+        "rejected": true
+      },
+      {
+        "injection": "runtime",
+        "reason": "Pinned client/runtime/libraries changed",
+        "rejected": true
+      },
+      {
+        "injection": "library",
+        "reason": "Pinned client/runtime/libraries changed",
+        "rejected": true
+      },
+      {
+        "injection": "source",
+        "reason": "Observer source changed",
+        "rejected": true
+      },
+      {
+        "injection": "observations",
+        "reason": "Observations changed",
+        "rejected": true
+      }
+    ],
+    "producer": {
+      "bytes": 45077,
+      "file": "reference_local_collision_probe.py",
+      "sha1": "a0414d683aa5460c646cf33d1cca7e23e6b0f3b6",
+      "sha256": "657a97c9c459ff8dc294710f306aab48a93cdfa9bb530ff72e911b43773bbd6b"
+    },
+    "reference": {
+      "bytes": 5124791,
+      "file": "local_collision.json",
+      "sha1": "d26e3f18f5a8661f9cc0783035e8d901ffd45468",
+      "sha256": "549a49a0e1b8cfb8e9790023cabb718e1d8f8c2e9ebdd2bb6be57603a93eb1da"
+    },
+    "scope": "Integrity/provenance only; no new actual helper run",
+    "status": "passed"
+  },
+  "kernel_pass": true,
+  "laws": [
+    "rejected_minor_retains_tables",
+    "skipped_edge_retains_original_movement",
+    "zero_budget_does_not_consume_observations",
+    "mismatched_query_does_not_advance",
+    "signed_zero_horizontal_movement_does_not_query"
+  ],
+  "malformed_protocol": [
+    {
+      "exit_code": 2,
+      "stderr": "invalid local collision scalar header\n"
+    },
+    {
+      "exit_code": 2,
+      "stderr": "invalid local collision acos fields\n"
+    },
+    {
+      "exit_code": 2,
+      "stderr": "invalid local collision acos fields\n"
+    },
+    {
+      "exit_code": 2,
+      "stderr": "invalid local collision scalar header\n"
+    },
+    {
+      "exit_code": 2,
+      "stderr": "invalid local collision backoff fields\n"
+    }
+  ],
+  "nan_policy": "Finite/infinite/signed-zero raw exact comparisons; NaN class only, no payload portability claim. Acos implements actual pinned fdlibm operation sequence, not a universal correctly-rounded transcendental claim.",
+  "native_backoff_query_count": 705,
+  "native_batches": [
+    {
+      "requests": 48,
+      "seconds": 0.582001
+    },
+    {
+      "requests": 48,
+      "seconds": 0.013048
+    },
+    {
+      "requests": 48,
+      "seconds": 0.013115
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012822
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012659
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012447
+    },
+    {
+      "requests": 48,
+      "seconds": 0.01221
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012149
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012093
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012236
+    },
+    {
+      "requests": 48,
+      "seconds": 0.013189
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012878
+    },
+    {
+      "requests": 48,
+      "seconds": 0.01312
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012672
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012163
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012211
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012012
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012429
+    },
+    {
+      "requests": 48,
+      "seconds": 0.011962
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012228
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012555
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012446
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012549
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012163
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012467
+    },
+    {
+      "requests": 48,
+      "seconds": 0.01233
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012224
+    },
+    {
+      "requests": 48,
+      "seconds": 0.01211
+    },
+    {
+      "requests": 48,
+      "seconds": 0.013113
+    },
+    {
+      "requests": 48,
+      "seconds": 0.01342
+    },
+    {
+      "requests": 48,
+      "seconds": 0.013121
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012952
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012794
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012883
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012872
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012878
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012929
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012681
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012688
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012781
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012795
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012872
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012957
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012622
+    },
+    {
+      "requests": 48,
+      "seconds": 0.013337
+    },
+    {
+      "requests": 48,
+      "seconds": 0.013098
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012874
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012976
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012975
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012765
+    },
+    {
+      "requests": 48,
+      "seconds": 0.013134
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012791
+    },
+    {
+      "requests": 48,
+      "seconds": 0.013102
+    },
+    {
+      "requests": 48,
+      "seconds": 0.013131
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012928
+    },
+    {
+      "requests": 48,
+      "seconds": 0.014694
+    },
+    {
+      "requests": 48,
+      "seconds": 0.023122
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012824
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012413
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012186
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012288
+    },
+    {
+      "requests": 48,
+      "seconds": 0.01226
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012068
+    },
+    {
+      "requests": 48,
+      "seconds": 0.01193
+    },
+    {
+      "requests": 48,
+      "seconds": 0.013708
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012454
+    },
+    {
+      "requests": 48,
+      "seconds": 0.013086
+    },
+    {
+      "requests": 48,
+      "seconds": 0.013058
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012934
+    },
+    {
+      "requests": 48,
+      "seconds": 0.012725
+    },
+    {
+      "requests": 46,
+      "seconds": 0.012636
+    },
+    {
+      "requests": 48,
+      "seconds": 0.013912
+    },
+    {
+      "requests": 46,
+      "seconds": 0.015627
+    },
+    {
+      "requests": 8,
+      "seconds": 0.012113
+    },
+    {
+      "requests": 25,
+      "seconds": 0.012535
+    },
+    {
+      "requests": 2,
+      "seconds": 0.011916
+    },
+    {
+      "requests": 2,
+      "seconds": 0.012033
+    },
+    {
+      "requests": 2,
+      "seconds": 0.012061
+    },
+    {
+      "requests": 2,
+      "seconds": 0.011971
+    },
+    {
+      "requests": 2,
+      "seconds": 0.011854
+    },
+    {
+      "requests": 2,
+      "seconds": 0.012014
+    },
+    {
+      "requests": 2,
+      "seconds": 0.011878
+    },
+    {
+      "requests": 2,
+      "seconds": 0.012085
+    },
+    {
+      "requests": 2,
+      "seconds": 0.011891
+    },
+    {
+      "requests": 2,
+      "seconds": 0.011823
+    },
+    {
+      "requests": 2,
+      "seconds": 0.011951
+    },
+    {
+      "requests": 2,
+      "seconds": 0.012404
+    },
+    {
+      "requests": 2,
+      "seconds": 0.012158
+    },
+    {
+      "requests": 2,
+      "seconds": 0.012138
+    },
+    {
+      "requests": 2,
+      "seconds": 0.012109
+    },
+    {
+      "requests": 2,
+      "seconds": 0.012273
+    },
+    {
+      "requests": 2,
+      "seconds": 0.011864
+    },
+    {
+      "requests": 2,
+      "seconds": 0.012007
+    },
+    {
+      "requests": 2,
+      "seconds": 0.011872
+    },
+    {
+      "requests": 2,
+      "seconds": 0.0121
+    },
+    {
+      "requests": 2,
+      "seconds": 0.011699
+    },
+    {
+      "requests": 2,
+      "seconds": 0.011874
+    },
+    {
+      "requests": 2,
+      "seconds": 0.011979
+    },
+    {
+      "requests": 2,
+      "seconds": 0.011817
+    },
+    {
+      "requests": 2,
+      "seconds": 0.011935
+    },
+    {
+      "requests": 2,
+      "seconds": 0.01227
+    },
+    {
+      "requests": 2,
+      "seconds": 0.011833
+    },
+    {
+      "requests": 2,
+      "seconds": 0.012003
+    },
+    {
+      "requests": 2,
+      "seconds": 0.012096
+    },
+    {
+      "requests": 2,
+      "seconds": 0.012154
+    },
+    {
+      "requests": 2,
+      "seconds": 0.012111
+    },
+    {
+      "requests": 2,
+      "seconds": 0.012136
+    },
+    {
+      "requests": 2,
+      "seconds": 0.012041
+    }
+  ],
+  "native_closure_receipt": {
+    "bytes": 15118,
+    "file": "local-collision-native-closure.json",
+    "sha1": "ec6f6367b6c5cdb6ea2d7e9f78a3ffa9cd0553d5",
+    "sha256": "5b1325af43c4be702125dc18926f45b84fc547cd17501ddc490741613084f50b"
+  },
+  "native_validation_seconds": 2.011975,
+  "observations_sha256": "ace2c56b4c6d5f11f0ba742039c9f4522f5cf98390b288f37d614dc65a91f15d",
+  "owner_retention_followups": 33,
+  "pin": "26.3",
+  "platform": {
+    "dynamic_library_scope": "Apple system library resolves from protected dyld shared cache; exact OS build/ABI is recorded, not a nonexistent separate libSystem disk hash.",
+    "linked_libraries": [
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1351.0.0)"
+    ],
+    "machine": "arm64",
+    "os_build": "25E253",
+    "system": "Darwin"
+  },
+  "rational_audit": {
+    "operations": {
+      "f32_multiply": 334,
+      "f64_add_sub_mul": 5294,
+      "f64_div": 296,
+      "integer_sqrt": 296
+    },
+    "receiver_numeric_cases": 324,
+    "scope": "Integer-decoded exact dyadic Fraction arithmetic and explicit RN-even packing; arbitrary-integer square-root oracle. Supplemental numeric instrumentation only, never decisive gameplay Bool/vector expectations.",
+    "status": "passed"
+  },
+  "scope": {
+    "admission": "Finite yaw/input/displacement and bounded finite horizontal backoff moves admitted; helper-only nonfinite minor inputs/vertical backoff, flight/non-SELF/PLAYER/positiveY guards and slabs are explicitly labelled outside neutral/fullcube facade admission.",
+    "decisive": "Untouched actual LocalPlayer.isHorizontalCollisionMinor and inherited Player.maybeBackOffFromEdge calls on normal-constructed receivers; no Python gameplay expected algorithm.",
+    "frozen_external_services": "Exactly the four frozen LI external types Minecraft/Gui/Tutorial/ClientPacketListener, normal gameplay/Level constructors and unchanged official jar class bytes. Existing LI source/reference hashes asserted before execution.",
+    "nan": "Acos records full pinned-runtime raw bits and nan/finite/infinite classes. NaN payload equality is a runtime observation, not a portability guarantee.",
+    "numeric_instrumentation": "Minor rotated/squared/dot/ratio/acos metrics are explicitly independent scalar instrumentation using receiver fields and actual Mth/Math. They are not production local-variable observations and never supply decisive Bool expectations.",
+    "observer_parity": "Plain actual LocalPlayer/frozen FixtureLevel outputs and before/after projected fields equal observed subclasses whose helpers/noCollision call super.",
+    "query_authority": "TraceLevel.noCollision calls super; actual CollisionGetter.noBlockCollision/noEntityCollision/noBorderCollision and actual BlockCollisions determine each result. Wrapped original iterator records only shapes actually yielded, retaining short-circuit and order; getBlockState observes real finite fixture reads.",
+    "scope": "Direct minor/edge helper parity and numeric acos only; no full Entity.move/LocalPlayer tick/world-travel/client parity claim.",
+    "support": "Initial Optional<BlockPos>/onGroundNoBlocks are explicitly seeded cache history; optional actual setOnGroundWithMovement calls produce recorded before state. Actual helper does not mutate projected body/cache fields.",
+    "world": "25 actual stone states x,z=-2..2,y=0; explicit actual air/slab writes are case input. Actual empty actor storage and real default WorldBorder; no replaced collision predicate/shape decisions."
+  },
+  "sources_sha256": {
+    "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "src/geometry.bend": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f",
+    "src/local_collision.bend": "7b2b8301246f3e385a038eca81790fa7d6c4285113a069e040d968e105be5cc0",
+    "src/locomotion.bend": "ccf8aa12636ba1fce5575606383bf75c02a8ac79ba952645b89aea2eef6cd459",
+    "src/movement.bend": "0e94fea7cc941a23d2ed7bbd2ccaf0117e6af363eb91f2db2e34428f9dd9e67f",
+    "src/player_input.bend": "d3938f96416691739eb54f2b0f77377c6ba7c74ac63ffa8335840152feb355d5",
+    "tests/local_collision.bend": "8e70d5c234c11663d6c91ac5634fa0a454c477955b9c55430a91c9d4822c11bf"
+  },
+  "status": "passed",
+  "tool_sha256": "6bb9e93b6e45a6447c1f0886eceb7804b2035042066c8aacbaa2e8a9d6e32680"
+}
