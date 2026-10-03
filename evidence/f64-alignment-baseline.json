@@ -1,0 +1,148 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "compiler": "bend 2.0.35",
+  "kernel_verdict": "ALL PROOFS CHECK",
+  "verification_scope": "type/termination validity, not an IEEE arithmetic theorem",
+  "fixture_pairs": 47956,
+  "finite_pairs": 45376,
+  "finite_add_sub_bit_comparisons": 90752,
+  "random_finite_pairs": 20000,
+  "seed": 640263,
+  "fixture_kinds": {
+    "edge": 17956,
+    "uniform_finite": 20000,
+    "halfway_neighbor": 5000,
+    "cancellation": 5000
+  },
+  "exact_fraction_rounding_cross_checks": 4000,
+  "fixture_sha256": "b59c0fe4ddf92423f460d74ba9d66bed73ef89672ac219e4437229a0707bb1f8",
+  "native_fixture_wall_seconds": 1.1972981672734022,
+  "nan_policy": "first input NaN retains sign/payload and is quieted; invalid infinities produce canonical +quiet NaN",
+  "rounding": "nearest, ties to even; gradual underflow; signed-zero arithmetic",
+  "benchmark": {
+    "backend": "native CPU; --gpu off --threads 1",
+    "repeats": 5,
+    "timing": "Bend IO.now: 1ms resolution, sequenced around evaluated loop; C CLOCK_MONOTONIC: ns; process startup separately recorded",
+    "workloads": [
+      {
+        "workload": "unit_increment",
+        "iterations": 1000000,
+        "result_bits": "412e848000000000",
+        "bend_loop_milliseconds": [
+          15,
+          15,
+          15,
+          15,
+          14
+        ],
+        "c_double_loop_nanoseconds": [
+          742000,
+          653000,
+          687000,
+          653000,
+          742000
+        ],
+        "bend_process_wall_nanoseconds": [
+          17180583,
+          17431667,
+          17262209,
+          17179917,
+          17058750
+        ],
+        "median_bend_ns_per_add": 15.0,
+        "median_c_ns_per_add": 0.687,
+        "median_soft_to_hardware_ratio": 21.83406113537118
+      },
+      {
+        "workload": "decimal_increment",
+        "iterations": 1000000,
+        "result_bits": "40f86a10000165cf",
+        "bend_loop_milliseconds": [
+          17,
+          18,
+          18,
+          17,
+          17
+        ],
+        "c_double_loop_nanoseconds": [
+          764000,
+          740000,
+          755000,
+          706000,
+          725000
+        ],
+        "bend_process_wall_nanoseconds": [
+          20227500,
+          21010458,
+          20348500,
+          19798459,
+          19291625
+        ],
+        "median_bend_ns_per_add": 17.0,
+        "median_c_ns_per_add": 0.74,
+        "median_soft_to_hardware_ratio": 22.972972972972972
+      }
+    ]
+  },
+  "emitted_c": {
+    "bytes": 257113,
+    "lines": 9830,
+    "f64_function_ids": 0,
+    "sha256": "bf140f1a64c61c7a75e919f72efc5106f2796218beea5285d064d36ea3e8bb7e"
+  },
+  "native_binary_sha256": "39b7447e5dd108e923fca636db0b6ef6b91b9cc96ae54359a38e0934320933be",
+  "reference_c_sha256": "42bc38714eedca585e5e3a751d4d0c8fd496cb0ba12e17cea430eb389e7cff51",
+  "source_sha256": {
+    "src/f64.bend": "3195615f3c6d07410f2f880a1e8ed5ffae29158f8521aa3d9ffb4a17353cc196",
+    "tests/f64.bend": "1f52e08d1c35a3a330fbf5024be23afe992dccca1e8c1bcdaadab9aaa77ded23",
+    "tools/test_f64.py": "51be012e8b94ed6baa108f5507999191d621d1524ed478f7686c0d1305c78ab1"
+  },
+  "commands": [
+    [
+      "/Users/chuah/.bend/bin/bend",
+      "src/f64.bend",
+      "--verdict"
+    ],
+    [
+      "/Users/chuah/.bend/bin/bend",
+      "tests/f64.bend",
+      "-o",
+      "build/f64_test"
+    ],
+    [
+      "/Users/chuah/.bend/bin/bend",
+      "tests/f64.bend",
+      "-o",
+      "build/f64_test.c"
+    ],
+    [
+      "clang",
+      "-O3",
+      "-fno-fast-math",
+      "-ffp-contract=off",
+      "build/f64_reference.c",
+      "-o",
+      "build/f64_reference"
+    ],
+    [
+      "python3",
+      "tools/test_f64.py",
+      "--seed",
+      "640263",
+      "--random",
+      "20000",
+      "--iterations",
+      "1000000",
+      "--repeats",
+      "5"
+    ]
+  ],
+  "unsupported": [
+    "multiply/divide/remainder/sqrt/transcendentals",
+    "decimal or integer conversion",
+    "rounding modes other than RN-even",
+    "floating exception flags",
+    "Minecraft collision/movement parity"
+  ]
+}
