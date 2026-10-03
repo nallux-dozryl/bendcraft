@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "actual_native_processes": true,
+  "checks": [
+    "native exclusivity agrees with independent Python flock; file bytes/inode unchanged",
+    "different world lock remains independently available",
+    "SIGKILL releases kernel lease; five restarts reuse the retained inode",
+    "eight simultaneous processes produce one lease and seven immediate failures",
+    "symlink, directory, FIFO, missing parent and embedded NUL fail without blocking or mutating target",
+    "unwritable parent rejects acquisition",
+    "explicit successful release permits subsequent acquisition"
+  ],
+  "concurrent_contenders": 8,
+  "winners": 1,
+  "post_crash_reacquisitions": 5,
+  "source_sha256": {
+    "src/world_lock.bend": "5b527809b0a6686a8c3ba0459b9fa3ce2c3414acdbf4fa7453a57f7bd303568e",
+    "src/native/world_lock.c": "9846064f99e81f967eedba355da4da59c9ec59be24facd8f85e52943f56df00d",
+    "src/native/world_lock.js": "db65e2b618ca18f7e1f307ecc0142f1eccbc83c3cf8c484b15016c0c90ad42cd",
+    "tests/world_lock.bend": "693263db630cd0cb9d3c35808a93447f1425769adba03c10bc2a2f63ee238e2e",
+    "tools/test_world_lock.py": "f4b6d0238217e5888d437cf8f8a820d4fb1bb27977dbaff4a07260a254daf38d"
+  },
+  "binary_sha256": "c9df33150bb199d9a945be36f21c381465154a26ef89fe0cc7dacca63dd9d219",
+  "elapsed_seconds": 1.001,
+  "command": "python3 tools/test_world_lock.py",
+  "limits": "Cooperating local processes using a stable parent and lock inode. No hostile inode replacement, filesystem/network lock failure, or durable save-content claim."
+}
