@@ -1,0 +1,1384 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "kind": "actual_native_persistence_mcp_tcp_integration",
+  "recorded_at_utc": "2026-10-03T17:08:37.822776+00:00",
+  "command": "python3 tools/test_persistence.py --skip-build",
+  "confidence": "high for the recorded fixture, process-crash, startup and OS-error observations",
+  "checks": [
+    "actual MCP discovery, developer-only save, strict empty args/no at, and idle observed peer highwater",
+    "exact independently constructed outer and inner NBT bytes persist paused clock, signed sections, applied/rejected events and future queue; actual server SIGKILL after an additional unsaved mutation recovers the last durable snapshot",
+    "new observer sessions retain no developer capability; peers resume above saved callers; future actions execute at exact original stamps after reload",
+    "actual second server on another port refuses the held world lease without readiness or listener; SIGKILL releases the OS lease and restart acquires the unchanged lock-file inode",
+    "actual OS exclusive-create collision reports SaveNotPublished, preserves complete prior bytes and unowned pending file, and retains live World for query and subsequent durable save",
+    "actual startup processes reject missing/refused/invalid configuration, malformed exact envelope, malformed inner World, truncation, trailing data, file bound and exhausted peer IDs before any listener",
+    "full official-registry same-state-count metadata substitution and corrupt registry input refuse startup",
+    "independent envelope/pending/event maxima drive first allocated peer; both compound member orders are accepted and canonicalized on actual save",
+    "finite native PublishedUnsynced response retains published=true/durable=false and OS code/message; no injected directory-sync failure claimed"
+  ],
+  "save_observations": [
+    {
+      "scenario": "empty-with-observed-idle-peer",
+      "bytes": 403,
+      "save_sha256": "54476c010531512e044648d57c5f619b1db98b072a213b28bb38be254801a8e7",
+      "world_sha256": "e2fd5426433a4475c7632dd23539bd8b2855a25cb015acdecab0b4547585a078",
+      "peer_highwater": 2,
+      "response": {
+        "status": "durable",
+        "published": true,
+        "durable": true,
+        "bytes": 403,
+        "peer_highwater": 2
+      },
+      "clock": {
+        "tick": 0,
+        "day_time": 0,
+        "paused": true,
+        "daylight": true,
+        "revision": 0
+      }
+    },
+    {
+      "scenario": "signed-sections-events-and-future-queue",
+      "bytes": 33986,
+      "save_sha256": "f3cb2db6a141796330f479924e891f6b166a3ef01b751b4da1d65be06fb2575f",
+      "world_sha256": "60ad63996e3b43f1d05386f92b86d87fc6d674d3f5fe000b734275eee7aab774",
+      "peer_highwater": 3,
+      "response": {
+        "status": "durable",
+        "published": true,
+        "durable": true,
+        "bytes": 33986,
+        "peer_highwater": 3
+      },
+      "clock": {
+        "tick": 3,
+        "day_time": 1000,
+        "paused": true,
+        "daylight": false,
+        "revision": 5
+      }
+    },
+    {
+      "scenario": "queued-actions-executed-after-restart",
+      "bytes": 33895,
+      "save_sha256": "e09d013679ab8e39e94ffb3c74f58f1af0fc4f147d2e0cdb7a93bf0f48f38b1c",
+      "world_sha256": "db58b4fe1758620112e692f01eb0d733b9d2266fa3ee5e217abae0b9259a986f",
+      "peer_highwater": 5,
+      "response": {
+        "status": "durable",
+        "published": true,
+        "durable": true,
+        "bytes": 33895,
+        "peer_highwater": 5
+      },
+      "clock": {
+        "tick": 6,
+        "day_time": 999,
+        "paused": true,
+        "daylight": true,
+        "revision": 8
+      }
+    },
+    {
+      "scenario": "owner-reused-after-exclusive-temp-collision",
+      "bytes": 33895,
+      "save_sha256": "e09d013679ab8e39e94ffb3c74f58f1af0fc4f147d2e0cdb7a93bf0f48f38b1c",
+      "world_sha256": "db58b4fe1758620112e692f01eb0d733b9d2266fa3ee5e217abae0b9259a986f",
+      "peer_highwater": 5,
+      "response": {
+        "status": "durable",
+        "published": true,
+        "durable": true,
+        "bytes": 33895,
+        "peer_highwater": 5
+      },
+      "clock": {
+        "tick": 6,
+        "day_time": 999,
+        "paused": true,
+        "daylight": true,
+        "revision": 8
+      }
+    },
+    {
+      "scenario": "envelope-dominates",
+      "bytes": 403,
+      "save_sha256": "8707417b9627b49adc889349ae321081954cb3c4945eac4c7d714b11f382a0f3",
+      "world_sha256": "71b5ca5f87ebf5abc198c262534ee393c94360ea38d52fd2d1acc3e153f40dec",
+      "peer_highwater": 101,
+      "response": {
+        "status": "durable",
+        "published": true,
+        "durable": true,
+        "bytes": 403,
+        "peer_highwater": 101
+      },
+      "clock": {
+        "tick": 0,
+        "day_time": 0,
+        "paused": true,
+        "daylight": true,
+        "revision": 0
+      }
+    },
+    {
+      "scenario": "pending-dominates",
+      "bytes": 474,
+      "save_sha256": "47f16cdf64697e0398d5d250eef8e983451f0d504bcba21fec3de46c1e6b9c13",
+      "world_sha256": "8bae3cad606c32c53e3374f144090a6f6cfc00474d5f0c1c6ef1f837fda2e27e",
+      "peer_highwater": 106,
+      "response": {
+        "status": "durable",
+        "published": true,
+        "durable": true,
+        "bytes": 474,
+        "peer_highwater": 106
+      },
+      "clock": {
+        "tick": 0,
+        "day_time": 0,
+        "paused": true,
+        "daylight": true,
+        "revision": 0
+      }
+    },
+    {
+      "scenario": "event-dominates",
+      "bytes": 464,
+      "save_sha256": "36c1681f754882560bd79b9563a4160d61781cac3bc74addc6914dc74c04ce6e",
+      "world_sha256": "633b0dbbf2b0357cf59cfcb9940bc9bf9f7b3e7bb225067a28b6fe6ebcb761c4",
+      "peer_highwater": 110,
+      "response": {
+        "status": "durable",
+        "published": true,
+        "durable": true,
+        "bytes": 464,
+        "peer_highwater": 110
+      },
+      "clock": {
+        "tick": 0,
+        "day_time": 0,
+        "paused": true,
+        "daylight": true,
+        "revision": 0
+      }
+    }
+  ],
+  "startup_rejections": [
+    {
+      "case": "concurrent-world-writer-lease",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002846,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: lease acquisition failed: 35: Resource temporarily unavailable",
+      "bytes": 33986,
+      "input_sha256": "f3cb2db6a141796330f479924e891f6b166a3ef01b751b4da1d65be06fb2575f"
+    },
+    {
+      "case": "path-unset",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002678,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "MC_WORLD_PATH must be explicitly configured"
+    },
+    {
+      "case": "path-empty",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002559,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "MC_WORLD_PATH must be nonempty"
+    },
+    {
+      "case": "missing-default-refuse",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003508,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: missing file requires MC_WORLD_MISSING=create"
+    },
+    {
+      "case": "missing-explicit-refuse",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002907,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: missing file requires MC_WORLD_MISSING=create"
+    },
+    {
+      "case": "missing-invalid-policy",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003264,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "MC_WORLD_MISSING must be create or refuse"
+    },
+    {
+      "case": "missing-empty-policy",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002854,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "MC_WORLD_MISSING must be create or refuse"
+    },
+    {
+      "case": "world-path-directory",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003328,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: world file read failed: 21: Is a directory"
+    },
+    {
+      "case": "root-name",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.005853,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: wrong save envelope root name",
+      "bytes": 402,
+      "input_sha256": "14b100a030504d0ab88fdc21fd9dab2e8f1c8431ea3b5a6f8673970f5d495120"
+    },
+    {
+      "case": "root-type",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.004621,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: expected Compound tag",
+      "bytes": 18,
+      "input_sha256": "ee900b97ebca5afac9dc3e74ece431a0f9fdf1e77132f5bed37e35d5a41afb81"
+    },
+    {
+      "case": "root-end",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002892,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: wrong save envelope root name",
+      "bytes": 1,
+      "input_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+    },
+    {
+      "case": "format-version",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003241,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: unsupported save envelope format",
+      "bytes": 403,
+      "input_sha256": "76f67cf285bed4929c4fc312cca9389f7b0ecbb3314f6db774801efb7e0f3880"
+    },
+    {
+      "case": "minecraft-version",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003081,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: save envelope Minecraft version mismatch",
+      "bytes": 403,
+      "input_sha256": "66a75b07ec2ddb6edb12bf9f060bdfb2308bfe74715a9ecf5b52d2fb98dd4ec2"
+    },
+    {
+      "case": "registry-identity",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003083,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: save envelope registry identity mismatch",
+      "bytes": 403,
+      "input_sha256": "80875c569973c93c19983269a401a6af99528bcd73a0e457785f193406b20518"
+    },
+    {
+      "case": "registry-uppercase",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003118,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: save envelope registry identity mismatch",
+      "bytes": 403,
+      "input_sha256": "81dbd538df58358a45894ef4e8725c49347ff46455af081e3bd2b40b4250da08"
+    },
+    {
+      "case": "exhausted-envelope-peer",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003526,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: persisted peer identity range exhausted",
+      "bytes": 403,
+      "input_sha256": "e9ab2910561b36a3b3cafe902cef9de80a68d97a3dd72e3237ddf170f12b7142"
+    },
+    {
+      "case": "duplicate-format",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003183,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: duplicate world schema field: format",
+      "bytes": 416,
+      "input_sha256": "9443f93f6adc65d2cd8872f2f981e2f48b16781776bbc37d194b4cb771853da0"
+    },
+    {
+      "case": "missing-format",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002984,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: missing world schema field",
+      "bytes": 390,
+      "input_sha256": "6ade400b8cdd0b7066179ff035bfd06e4d52e658727d9717732b6a5ab312d810"
+    },
+    {
+      "case": "wrong-type-format",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003107,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: expected Int tag",
+      "bytes": 400,
+      "input_sha256": "7ac7aeccf829171827b8b35ee1e5c4e7c88ebad12e01b558f496432715b24f9a"
+    },
+    {
+      "case": "duplicate-minecraft",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003029,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: duplicate world schema field: minecraft",
+      "bytes": 421,
+      "input_sha256": "e289c81378fd70e2a17ed2ed9fe72613c0fc52031bd0532afdd9e50f1309581a"
+    },
+    {
+      "case": "missing-minecraft",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003251,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: missing world schema field",
+      "bytes": 385,
+      "input_sha256": "e0c4eb248fa1b670ba2ccf951cf40611825fd9172a57eee571298baf130aa6a9"
+    },
+    {
+      "case": "wrong-type-minecraft",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003188,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: expected String tag",
+      "bytes": 398,
+      "input_sha256": "1ae090f0c50220ef4c968b8759db59da1cf0dabb4c613f593fc2a36a327e5956"
+    },
+    {
+      "case": "duplicate-registry",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003282,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: duplicate world schema field: registry",
+      "bytes": 480,
+      "input_sha256": "a2d7fa935a201cda42ad0c74dd3030f0046233019dde70bcff504ee73927605c"
+    },
+    {
+      "case": "missing-registry",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003468,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: missing world schema field",
+      "bytes": 326,
+      "input_sha256": "0afac483db361f855957c9b3c6cd13360e9efdb782ca4360982d3ea2f0f2b41d"
+    },
+    {
+      "case": "wrong-type-registry",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003165,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: expected String tag",
+      "bytes": 338,
+      "input_sha256": "f5b6430e3ba64d1c89bd72c0a33070ca0a178cee91c9dfb22ca53fd4cb284299"
+    },
+    {
+      "case": "duplicate-peer_highwater",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003153,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: duplicate world schema field: peer_highwater",
+      "bytes": 424,
+      "input_sha256": "919c860817fcf71fd995afae1dfc65120c754d10ebb1ca881609e1eaf2f80568"
+    },
+    {
+      "case": "missing-peer_highwater",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003024,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: missing world schema field",
+      "bytes": 382,
+      "input_sha256": "8c0260dd7176968b04910426e4de90114661ee95d05cd01cc1adfde62ce0262f"
+    },
+    {
+      "case": "wrong-type-peer_highwater",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003034,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: expected Int tag",
+      "bytes": 400,
+      "input_sha256": "f2322d893a737ccf79873f00ce194a2de563bd29ac1931ceb95e5ff9f3dbe2c3"
+    },
+    {
+      "case": "duplicate-world",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003187,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: duplicate world schema field: world",
+      "bytes": 662,
+      "input_sha256": "94aa394e09a76bd43d6ea1f8e96ffb17440ab2dcd0c8183c1d17ed2b1e0194b1"
+    },
+    {
+      "case": "missing-world",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002851,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: missing world schema field",
+      "bytes": 144,
+      "input_sha256": "06883f21c2d00ddd02e8ea252305b6aa94f1c04c8a69c8a76e1b60b44c57e9b0"
+    },
+    {
+      "case": "wrong-type-world",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002819,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: save world payload requires ByteArray",
+      "bytes": 153,
+      "input_sha256": "0e50f5f6505e9c5955d1afba00403ee64ec80fc43ff60af5e509d5f26e0d97dc"
+    },
+    {
+      "case": "unknown-member",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003103,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: unknown world schema field: unknown",
+      "bytes": 414,
+      "input_sha256": "e0563c66a91badf0b251cf3ba5d59e24294972c4089ad4ed852bc40b134175b6"
+    },
+    {
+      "case": "lone-surrogate-root",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003063,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: unpaired UTF-16 surrogate in world string",
+      "bytes": 395,
+      "input_sha256": "4c90b3a30a7a5795851685ade78e72034d901f11743fbabb81656935bf841757"
+    },
+    {
+      "case": "world-trailing",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003177,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: trailing NBT data at byte 247",
+      "bytes": 404,
+      "input_sha256": "750357e929be19887538b1a26799e389b2575c6424e3f8b4cc3fbf938e288838"
+    },
+    {
+      "case": "world-empty-bytearray",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002858,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated NBT at byte 0",
+      "bytes": 156,
+      "input_sha256": "f9226ae218907e02c065af49cf42974cbdce69386212b52948879f59136232db"
+    },
+    {
+      "case": "world-inner-truncation",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003209,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated NBT at byte 246",
+      "bytes": 402,
+      "input_sha256": "d9c783c8053ef55377abbf11880ed2a97d88ca73cacd0de07cfb9f1161348bc3"
+    },
+    {
+      "case": "world-byte-limit",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 14.746649,
+      "startup_deadline_seconds": 60,
+      "diagnostic": "world startup refused: negative or excessive NBT array length",
+      "bytes": 16777373,
+      "input_sha256": "4d0d559d18651e428609284a5e9ed73505193a6943ea12af788355a0094fb0e7"
+    },
+    {
+      "case": "outer-nbt-depth",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.004446,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: NBT nesting limit exceeded",
+      "bytes": 203,
+      "input_sha256": "8f063f15adf673aac241b0fe095fc995f4c4f319aac02ae594f41dab64efefd3"
+    },
+    {
+      "case": "world-root-name",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003452,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: wrong world root name",
+      "bytes": 402,
+      "input_sha256": "3f213721977aebec82a47d7217afca6a897d365dd619dfbd7bc3df4a953e9514"
+    },
+    {
+      "case": "world-count-mismatch",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003417,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: world state count mismatch",
+      "bytes": 403,
+      "input_sha256": "a3311b17e0d493074fb7448d02c12e068b7ef455ffd2ead67e776dddea3fd427"
+    },
+    {
+      "case": "world-identity-mismatch",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.00325,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: world registry identity mismatch",
+      "bytes": 403,
+      "input_sha256": "848a30e309d55c88dec9d1b4d6f797dae1d26079ea9fd7cf3067c34d4d449d2c"
+    },
+    {
+      "case": "world-malformed-nat",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003332,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: noncanonical Nat decimal",
+      "bytes": 404,
+      "input_sha256": "8f93c8f5020c63d2982300f7f2ea6668650c3720ae12ee76e77899257ae74bb4"
+    },
+    {
+      "case": "world-nat-overflow",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003204,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: world Nat exceeds native 48-bit range",
+      "bytes": 417,
+      "input_sha256": "d2b39985bfa4f56803bcb1f235bfee5949baadf1f7faabab5ac4db30ad1bb0f5"
+    },
+    {
+      "case": "world-wrong-list-declaration",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003282,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: sections require a Compound list",
+      "bytes": 403,
+      "input_sha256": "da0b56fe1a8ab763e1935e18654dbfdf99221a6197c7736d90622824b8469217"
+    },
+    {
+      "case": "world-unknown-field",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003436,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: unknown world schema field: unknown",
+      "bytes": 414,
+      "input_sha256": "137bf65d89100bcb97e09fca0c870cf0f8d17a03fb192875aecfeebb5e988b10"
+    },
+    {
+      "case": "world-duplicate-field",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003438,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: duplicate world schema field: format",
+      "bytes": 416,
+      "input_sha256": "81e91801fc858098d72a29351748e072846d2f19c0f3b30f39335de4a55ee1cf"
+    },
+    {
+      "case": "world-missing-field",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.00332,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: missing world schema field",
+      "bytes": 390,
+      "input_sha256": "3edbeab83991ed18de0b84c8bf38d7f3daad66862dea73adeea78465de2156f9"
+    },
+    {
+      "case": "world-cell-count",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.026546,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: section must contain exactly 4096 cells",
+      "bytes": 16829,
+      "input_sha256": "0dac9866a99d37e7215fc2b16884fe36d14e9d38e9cccfb21438ecafc85fb64e"
+    },
+    {
+      "case": "world-cell-state",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.027569,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: section cell state outside registry",
+      "bytes": 16833,
+      "input_sha256": "8f258540a492e0cce0ca1d8d33a70c3eb8acfda70f8a790a83e62d255a28cefd"
+    },
+    {
+      "case": "world-exhausted-pending-peer",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003416,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: persisted peer identity range exhausted",
+      "bytes": 473,
+      "input_sha256": "79eea51dcd73e8fe69da2e543999c45c9637e95e308cf6bfc68379294357e126"
+    },
+    {
+      "case": "world-exhausted-event-peer",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003278,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: persisted peer identity range exhausted",
+      "bytes": 464,
+      "input_sha256": "63841a630b1df9915d24c7357616ef08153bb8ba7a177a0aa4140e856b86cd4b"
+    },
+    {
+      "case": "truncated-0",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002628,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated NBT at byte 0",
+      "bytes": 0,
+      "input_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "case": "truncated-1",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002708,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated NBT at byte 1",
+      "bytes": 1,
+      "input_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "case": "truncated-2",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002632,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated NBT at byte 2",
+      "bytes": 2,
+      "input_sha256": "102b51b9765a56a3e899f7cf0ee38e5251f9c503b357b330a49183eb7b155604"
+    },
+    {
+      "case": "truncated-3",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002549,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated modified UTF-8 at byte 3",
+      "bytes": 3,
+      "input_sha256": "de579ad6fcb99ae95ca41b31006fb114151f383978f72345df5bc5cc3b3c60c3"
+    },
+    {
+      "case": "truncated-4",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002627,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated modified UTF-8 at byte 4",
+      "bytes": 4,
+      "input_sha256": "ef7f3daffbde63763c9e591f48a1b8f7fb68d56defd928329de17efb13cfc7f2"
+    },
+    {
+      "case": "truncated-5",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002787,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated modified UTF-8 at byte 5",
+      "bytes": 5,
+      "input_sha256": "c03df2220fdc926c23fb7d1af3bc3f3315ad6af88d47c6e7c4de2dec0c71408e"
+    },
+    {
+      "case": "truncated-6",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002691,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated modified UTF-8 at byte 6",
+      "bytes": 6,
+      "input_sha256": "8dd3ef62e1209e75e8575f6107f5220a228a8a77c752b4e27a281551a9c0dd2b"
+    },
+    {
+      "case": "truncated-7",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.00265,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated modified UTF-8 at byte 7",
+      "bytes": 7,
+      "input_sha256": "6fc8b5de55949593d3fe4bae57a7555eb89b1ad55a9a1b0057da9f1b9f9720e5"
+    },
+    {
+      "case": "truncated-8",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002658,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated modified UTF-8 at byte 8",
+      "bytes": 8,
+      "input_sha256": "656d4299e06809fd7d984ea0f3640551a83619e2084a1f0451714932dc77e599"
+    },
+    {
+      "case": "truncated-9",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002635,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated modified UTF-8 at byte 9",
+      "bytes": 9,
+      "input_sha256": "81d8d6950078c63ec0d8b85a2524c9522f4427b6027eb825c2077425dc93c852"
+    },
+    {
+      "case": "truncated-10",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002631,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated modified UTF-8 at byte 10",
+      "bytes": 10,
+      "input_sha256": "ca5ec3cc5175c59a6c75c3df47d1dcb9381a44d1f7015d83e0831b1b631a9819"
+    },
+    {
+      "case": "truncated-11",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002606,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated modified UTF-8 at byte 11",
+      "bytes": 11,
+      "input_sha256": "a07cfcc86184bd442cffe8439a5f644c61adb64bb32640a746a59dbdc9576dd1"
+    },
+    {
+      "case": "truncated-12",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002622,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated modified UTF-8 at byte 12",
+      "bytes": 12,
+      "input_sha256": "50d4ab38aa91b6c74dd2b01aacacf15dc094c9fa43d6013f1ee92bf05304301d"
+    },
+    {
+      "case": "truncated-13",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.00262,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated modified UTF-8 at byte 13",
+      "bytes": 13,
+      "input_sha256": "49662126c3e59055bd2da198b6660922fc43a06b28c7949c1953773fda15d8dc"
+    },
+    {
+      "case": "truncated-14",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002567,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated NBT at byte 14",
+      "bytes": 14,
+      "input_sha256": "4ee4661e2abcb789e4dd078dca298bfb5a78510cd287e6e75f915ec71616d618"
+    },
+    {
+      "case": "truncated-15",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002707,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated NBT at byte 15",
+      "bytes": 15,
+      "input_sha256": "92cc8a456585e8a2eb67689b1ad05507a6f7774c763eba3f7978b066fe6dad08"
+    },
+    {
+      "case": "truncated-16",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.00259,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated NBT at byte 16",
+      "bytes": 16,
+      "input_sha256": "a17dc623f52616b7d198708f3f397108fe0c412743c582464b409652db18324e"
+    },
+    {
+      "case": "truncated-17",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002538,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated modified UTF-8 at byte 17",
+      "bytes": 17,
+      "input_sha256": "4328acc50a23ca1c52781ac77d1d67243ebd627577807fcc0dfc24b12eb200db"
+    },
+    {
+      "case": "truncated-18",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002644,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated modified UTF-8 at byte 18",
+      "bytes": 18,
+      "input_sha256": "de9f48cd85396a1224d720d8df7dcafe5549c54f1325cbecc74f9a4a3c3842d3"
+    },
+    {
+      "case": "truncated-19",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002662,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated modified UTF-8 at byte 19",
+      "bytes": 19,
+      "input_sha256": "75842724c6d59f1a5f719119c7884c400d56ca36ac2d0ba50216577c99d3f081"
+    },
+    {
+      "case": "truncated-20",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002586,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated modified UTF-8 at byte 20",
+      "bytes": 20,
+      "input_sha256": "8023157192ef85b7cb6a00bd2fbe703a4d42ff53265d8c2c4a8f971d94890a7a"
+    },
+    {
+      "case": "truncated-21",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.00253,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated modified UTF-8 at byte 21",
+      "bytes": 21,
+      "input_sha256": "4fdd6f61b2bdc8e402fea2e1be27fe578cc1cf024b8327f960af6e867bdf4f08"
+    },
+    {
+      "case": "truncated-22",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002643,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated modified UTF-8 at byte 22",
+      "bytes": 22,
+      "input_sha256": "26ed4246ee293c89937ad3951e84f933812d64efbd6a61a8b1073e236cb048d8"
+    },
+    {
+      "case": "truncated-23",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002813,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated NBT at byte 23",
+      "bytes": 23,
+      "input_sha256": "f977ad7c684af42758ef105d2ccfb72004282b57a3482eddb40149ef8f57fc67"
+    },
+    {
+      "case": "truncated-24",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002922,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated NBT at byte 24",
+      "bytes": 24,
+      "input_sha256": "20c01160582ee53e01b277d6b1f0bd2e9f102fe84f44b12ec063eb4728b3f79e"
+    },
+    {
+      "case": "truncated-25",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002695,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated NBT at byte 25",
+      "bytes": 25,
+      "input_sha256": "072b3d247fbf7f47b9f93f75030a62468648b99afb4da516e977e7118cfef6b9"
+    },
+    {
+      "case": "truncated-26",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002653,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated NBT at byte 26",
+      "bytes": 26,
+      "input_sha256": "8d1c5da5c7ffc9901ee86974a8d0a0bf3b8420fcf7ca18ce880483b63576ee2e"
+    },
+    {
+      "case": "truncated-27",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.00263,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated NBT at byte 27",
+      "bytes": 27,
+      "input_sha256": "e8dc38d2aa1748a09fe1f587342ce12f48d4fc93a4e7877e099223099ba883a6"
+    },
+    {
+      "case": "truncated-28",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.0027,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated NBT at byte 28",
+      "bytes": 28,
+      "input_sha256": "5eab3770de0b5d668a7f1aaf24fadc550d7e07c1393b6be46b65e028015b9a49"
+    },
+    {
+      "case": "truncated-29",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002623,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated NBT at byte 29",
+      "bytes": 29,
+      "input_sha256": "4ba6668d0772acd30b70261dbdd3d90d7a51bb5c8547ec3e98ca62ddc26415fe"
+    },
+    {
+      "case": "truncated-30",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002586,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated modified UTF-8 at byte 30",
+      "bytes": 30,
+      "input_sha256": "c4adc15aaa9322960a4deb1b9c603451cc9f43ae4d8d5410a5216bea4a2c32c6"
+    },
+    {
+      "case": "truncated-31",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002661,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated modified UTF-8 at byte 31",
+      "bytes": 31,
+      "input_sha256": "5d37738d712bbbecd4439195d20c772c3a684c5aa5b116438d5b6dbc6c288f62"
+    },
+    {
+      "case": "truncated-201",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002783,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated NBT array at byte 201",
+      "bytes": 201,
+      "input_sha256": "41f59c778ce7ecf681c3452c31e3756a6608312a952a49b1cc5bbe9f5600864e"
+    },
+    {
+      "case": "truncated-387",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.00296,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated NBT array at byte 387",
+      "bytes": 387,
+      "input_sha256": "7ae853331cfd9947a235a83e9d6f101d3f2d497ab8587e205fe8790217325c7c"
+    },
+    {
+      "case": "truncated-388",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002915,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated NBT array at byte 388",
+      "bytes": 388,
+      "input_sha256": "3de412043853787e3db2310de74d324be186834f040b7a098283faf6ddfcb7f1"
+    },
+    {
+      "case": "truncated-389",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002799,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated NBT array at byte 389",
+      "bytes": 389,
+      "input_sha256": "cf36dae164f6ada95bb709d87fff2b3275a6b1b7579976f93717a3a92600060b"
+    },
+    {
+      "case": "truncated-390",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002796,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated NBT array at byte 390",
+      "bytes": 390,
+      "input_sha256": "53fdf1c348c7e5beab40b562c96d1966124a46e64e176f93a804967f79499e3d"
+    },
+    {
+      "case": "truncated-391",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002883,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated NBT array at byte 391",
+      "bytes": 391,
+      "input_sha256": "3cca313f646209d1d7f884815e46ed77f7fc052340688718e9c5235817d72a24"
+    },
+    {
+      "case": "truncated-392",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003023,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated NBT array at byte 392",
+      "bytes": 392,
+      "input_sha256": "07444f5bd0b57536fa9d7a6792e425ad06b83ac7964460bcb3b0aad23802406b"
+    },
+    {
+      "case": "truncated-393",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003015,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated NBT array at byte 393",
+      "bytes": 393,
+      "input_sha256": "c90e8f41818737a1c9fbdf5f60e13a2d3ada618e029c89af8219fa2a3ed4d2b2"
+    },
+    {
+      "case": "truncated-394",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002983,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated NBT array at byte 394",
+      "bytes": 394,
+      "input_sha256": "7c98e9ac7900fd936f1875536169f1edd7b3e27c4821ed458fccc62818c3beee"
+    },
+    {
+      "case": "truncated-395",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002938,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated NBT array at byte 395",
+      "bytes": 395,
+      "input_sha256": "aedb9ffbaf43086dcc4724ed3343a07901a1d94b384dea5007138fa9a3c7311e"
+    },
+    {
+      "case": "truncated-396",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002862,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated NBT array at byte 396",
+      "bytes": 396,
+      "input_sha256": "e6a0d66784774850a2dfb7ad988dcff3b1f81856911f447accb01d8cc534258a"
+    },
+    {
+      "case": "truncated-397",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002925,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated NBT array at byte 397",
+      "bytes": 397,
+      "input_sha256": "9c93fb8f59f470930535943fc940a9561ea69db30ca0e80f187c5770459e7547"
+    },
+    {
+      "case": "truncated-398",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002897,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated NBT array at byte 398",
+      "bytes": 398,
+      "input_sha256": "54e3b5b6d7d2297eebb0fe3aea78bbbe0cbb6e02f877f8ac913345b595b3696e"
+    },
+    {
+      "case": "truncated-399",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002971,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated NBT array at byte 399",
+      "bytes": 399,
+      "input_sha256": "60485637dfb4e476e8baba6ba7bb94c94f3cbb2cfdbf9780691092bc57ea13df"
+    },
+    {
+      "case": "truncated-400",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002943,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated NBT array at byte 400",
+      "bytes": 400,
+      "input_sha256": "46a0a7143fb14f98930bbc23c98e4f288fdfc5c80d4fafea6e7083833e3dab39"
+    },
+    {
+      "case": "truncated-401",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002907,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated NBT array at byte 401",
+      "bytes": 401,
+      "input_sha256": "fd6041b6f02bad5cbf9b8ba43341f2751904cb7d4a437ef0269d61ba330dfae8"
+    },
+    {
+      "case": "truncated-402",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003252,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: truncated NBT at byte 402",
+      "bytes": 402,
+      "input_sha256": "ecaee28668df4016696ce03a6c05a52262407e862acdc8f0ed1402688a35c541"
+    },
+    {
+      "case": "outer-trailing-zero",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002966,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: trailing NBT data at byte 403",
+      "bytes": 404,
+      "input_sha256": "76e45538e2af2dd9c467f0bc9168297fa7c2297a7477fc40a0863371d478ecf2"
+    },
+    {
+      "case": "outer-trailing-tag",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002971,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: trailing NBT data at byte 403",
+      "bytes": 410,
+      "input_sha256": "2ff5459331fdebb37d3574a47f3af30950b0423ec6bc236c87f374f927f3fdb6"
+    },
+    {
+      "case": "outer-file-too-large",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003502,
+      "startup_deadline_seconds": 60,
+      "diagnostic": "world startup refused: file byte limit exceeded",
+      "bytes": 16781313,
+      "input_sha256": "3f3939fc339e059c0c4472d4a65d6fda56dee2b1876bfa4b9bb005029d4f34e9"
+    },
+    {
+      "case": "official-same-count-sibling-registry",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.096327,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "world startup refused: save envelope registry identity mismatch",
+      "bytes": 403,
+      "input_sha256": "d1a29dfc79596a754a97055a2988b9fb0c73941e6d732d160ccfdf9c664b03cb"
+    },
+    {
+      "case": "corrupt-registry-input",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003273,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "block registry loading failed: schema:2:expected exactly six TSV fields",
+      "bytes": 403,
+      "input_sha256": "d1a29dfc79596a754a97055a2988b9fb0c73941e6d732d160ccfdf9c664b03cb"
+    }
+  ],
+  "startup_rejection_count": 105,
+  "malformed_nbt_fixture_count": 95,
+  "actual_server_sigkill_cases": 2,
+  "actual_save_os_failures": 1,
+  "finite_published_unsynced_result": {
+    "status": "published_unsynced",
+    "published": true,
+    "durable": false,
+    "code": 5,
+    "message": "directory sync fixture",
+    "bytes": 123,
+    "peer_highwater": 7
+  },
+  "metrics": {
+    "first_generation_peers": [
+      1,
+      2,
+      3
+    ],
+    "first_generation_save_peer": 3,
+    "world_lock_file_survives_sigkill": true,
+    "second_generation_peers": [
+      4,
+      5
+    ],
+    "third_generation_peer": 6,
+    "loaded_peer_fixtures": [
+      {
+        "case": "envelope-dominates",
+        "envelope_highwater": 100,
+        "pending_peer": null,
+        "event_peer": null,
+        "actual_first_peer": 101
+      },
+      {
+        "case": "pending-dominates",
+        "envelope_highwater": 3,
+        "pending_peer": 105,
+        "event_peer": null,
+        "actual_first_peer": 106
+      },
+      {
+        "case": "event-dominates",
+        "envelope_highwater": 7,
+        "pending_peer": null,
+        "event_peer": 109,
+        "actual_first_peer": 110
+      }
+    ],
+    "native_ready_servers": 6,
+    "native_mcp_processes": 9,
+    "stdio_requests": 65,
+    "stdio_responses": 65,
+    "stdio_notifications": 9
+  },
+  "registry": {
+    "official": {
+      "blocks": 1286,
+      "states": 35723,
+      "canonical_bytes": 167974,
+      "canonical_sha256": "4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc",
+      "source_sha256": "27769e75bf862d0540b2df2a6e99f6b7556a867bff6339fb08566240ee124cac"
+    },
+    "tiny_fixture": {
+      "blocks": 3,
+      "states": 5,
+      "canonical_bytes": 181,
+      "canonical_sha256": "b3cb0d37d98df49a0ba5d71e428a2beb75704d200372d3f9069372e3e1a71341",
+      "source_sha256": "f833ab14a6c8bfc66002c82992f5af22bc92bc556e56f73fbf5dc974e09e9d6e"
+    }
+  },
+  "fixture_corpus_sha256": "9d828ce6e7aaf008663aef6def389dffe28209ca6b83b3982840a58aba94ece2",
+  "resolved_resource_regression": {
+    "case": "world-byte-limit",
+    "input_sha256": "4d0d559d18651e428609284a5e9ed73505193a6943ea12af788355a0094fb0e7",
+    "prior_behavior": "Outer NBT allowed a 16 MiB+1 ByteArray and allocated its payload before the inner World byte policy rejected it.",
+    "prior_measured_seconds": 30.783,
+    "prior_peak_child_rss_bytes": 1612824576,
+    "prior_exit_code": 1,
+    "prior_stdout": "",
+    "prior_diagnostic": "world startup refused: NBT input byte limit exceeded",
+    "prior_provenance_limit": "The bounded old-binary probe did not capture its binary hash; final source/binary hashes below describe the corrected full run only.",
+    "resolution": "Apply the existing inner World byte cap to the outer NBT array element count, rejecting the declared oversized payload before allocation.",
+    "corrected_bounded_probe": {
+      "seconds": 15.366,
+      "exit_code": 1,
+      "stdout": "",
+      "diagnostic": "world startup refused: negative or excessive NBT array length",
+      "peak_child_rss_bytes": 807534592,
+      "source_sha256": "1561a863a74fdfc676b8ba4bbb5eddd206823f7363bf05c8a50ddffbbc30a4af",
+      "binary_sha256": "7389194e6d65eac9f62640ba5b72bcfc6dd6534001da4182c03aa23c8081ffdb",
+      "input_sha256": "4d0d559d18651e428609284a5e9ed73505193a6943ea12af788355a0094fb0e7",
+      "resource_boundary": "The bounded whole-file reader still creates the raw byte list before NBT header parsing. This is not a streaming file decoder."
+    },
+    "corrected_observation": {
+      "case": "world-byte-limit",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 14.746649,
+      "startup_deadline_seconds": 60,
+      "diagnostic": "world startup refused: negative or excessive NBT array length",
+      "bytes": 16777373,
+      "input_sha256": "4d0d559d18651e428609284a5e9ed73505193a6943ea12af788355a0094fb0e7"
+    }
+  },
+  "oracle_sha256": "c43cd057d992de30d946de7b46f358100a23ba3d7a9c688aea75ae7f2e872359",
+  "source_sha256": {
+    "persistence_server.bend": "2634cb268fe8131ae951edf96fe1ffebf7635550694e604964b0435a14fc90a4",
+    "src/persistence.bend": "1561a863a74fdfc676b8ba4bbb5eddd206823f7363bf05c8a50ddffbbc30a4af",
+    "tests/persistence.bend": "2a0cda14a3c70222cac7846d8bf552649e98cdd6d38d1517ee775995e05fe738",
+    "src/world_codec.bend": "461e2bc342005831a3d16824303f79e1f4dac2dca0eaf0731d18052dbfe0bf86",
+    "src/nbt.bend": "b677546b5fc02aaa38f5c09e5b798c0d35aec32b1c4b37cbd7042b9a1a5275e4",
+    "src/core.bend": "c1ee5a5390cdac0452c9c6cd3b0584a68ef68b5b0dfec867491c27e67ecadd4e",
+    "src/section.bend": "02b5c15c57b173c7eb8b4c55a1433c10c192926e91af5e3e69050b4404044aa5",
+    "src/section_map.bend": "ded59d7938c02fd0876d65e37f9f90ea0cfebf3ca4bd107394342f8adbf33965",
+    "src/schedule.bend": "93aa79895fe340e27ae5fd562102d5980f0938003eb1bbde669a84010779b8c9",
+    "src/game.bend": "43e3eee5d15613bb06cc608fe43657aa14d8c0fbe899d4efa580fc8335d23882",
+    "src/registry.bend": "821c53d9cfa3044be3cae2af968f55563c0be2bebc9beae55a29d77d47b140a0",
+    "src/hash.bend": "d2473695632b19e68c8d636668e4617f04d70892fb2ab6559cb24d4b33c1b978",
+    "src/server.bend": "3c9e5f681b0957b3e8c36b4ddde94a6ad5705b8b5b45cc6b2a81572446d7c2cf",
+    "src/live.bend": "cb5a2f8237a53e48d3f6751d321a023e11694721f789373984d7d77620f32e87",
+    "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+    "src/atomic_file.bend": "ef82fcddc460705f0761473bcfd8fcd896b779f89e56c4551c9ced23b13f987a",
+    "src/durability.bend": "079b5342e76be090793dc2e44f8d337eda144d75653d23eea36a7131558aed05",
+    "src/native/durability.c": "30e2bb8f9bb0299569ea56eff00063b235a6e6e480d14ed821bcfd597de3e4c0",
+    "src/native/durability.js": "2c14207e9c9ccbad57629d67517105d7853da7bd68fc794f1078ad6ca59553d8",
+    "src/world_lock.bend": "5b527809b0a6686a8c3ba0459b9fa3ce2c3414acdbf4fa7453a57f7bd303568e",
+    "src/native/world_lock.c": "9846064f99e81f967eedba355da4da59c9ec59be24facd8f85e52943f56df00d",
+    "src/native/world_lock.js": "db65e2b618ca18f7e1f307ecc0142f1eccbc83c3cf8c484b15016c0c90ad42cd",
+    "mcp.bend": "5b67990ce163cdd4ab20d0ca9b46e6b0a3708f759f2dcaee17287342e1a5f81c",
+    "src/mcp.bend": "8291445d923714ec6985e8c6b2b8f756cf09cd7e4d488814b2c6cd6552238d95",
+    "src/framing.bend": "307f95049df03d92687b7bd0eafb2cd566e660926510bb88163f9bc825fccdb5",
+    "tools/test_persistence.py": "c43cd057d992de30d946de7b46f358100a23ba3d7a9c688aea75ae7f2e872359",
+    "tools/test_mcp.py": "71eed7d510b4533eb35793cfd24227b7121456b4d27373ae10c04cc790e0de45",
+    "tools/test_nbt.py": "d81adb1a04baa13777e54abaaf1e20cbe97bc5d15c5cf2df047c4f17be2c8cdf",
+    "tools/test_world_codec.py": "6c89a554e0d1a4301ca3bf85d75706780f5f7398f4c100fd1a582bc2653a559a"
+  },
+  "binary_sha256": {
+    "server": "7389194e6d65eac9f62640ba5b72bcfc6dd6534001da4182c03aa23c8081ffdb",
+    "mcp": "4832eb9bd0cf419642cdb628f7479a541e3f690813c42e334d7f2f940f4d3f48",
+    "tests": "5c702ecbb15f8b1e9d8b712fdb160b2436b4c078af169f92289b559b34107453"
+  },
+  "compiler_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+  "commands": [
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/persistence-tests",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "exit_code": 0,
+      "stdout": "regressions\tpass",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/persistence-tests",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "outcome"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"status\":\"published_unsynced\",\"published\":true,\"durable\":false,\"code\":5,\"message\":\"directory sync fixture\",\"bytes\":123,\"peer_highwater\":7}",
+      "stderr": ""
+    }
+  ],
+  "elapsed_seconds": 16.486,
+  "limits": [
+    "Current Core.World snapshot and custom save envelope; no vanilla Minecraft save-format or gameplay parity claim.",
+    "SIGKILL occurs after acknowledged durable publication; publication-stage interruption cases are separately recorded in evidence/atomic-file.json.",
+    "No simulated power loss, automatic orphan recovery, injected directory-sync OS failure or save checksum established.",
+    "Python supplies independent fixtures and process/protocol orchestration only; actual mutation, codec, atomic publication and reload execute in native Bend.",
+    "Effectful process lifetime and OS durability adapters are outside the pure kernel proof boundary."
+  ]
+}

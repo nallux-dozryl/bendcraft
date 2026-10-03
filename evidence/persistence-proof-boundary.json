@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "status": "expected_effect_boundary_rejection",
+  "recorded_at_utc": "2026-10-03 17:08:51 UTC",
+  "confidence": "high for the exact recorded compiler diagnostics; no complete effectful proof claimed",
+  "compiler_version": "2.0.35",
+  "compiler_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+  "source_sha256": {
+    "src/persistence.bend": "1561a863a74fdfc676b8ba4bbb5eddd206823f7363bf05c8a50ddffbbc30a4af",
+    "persistence_server.bend": "2634cb268fe8131ae951edf96fe1ffebf7635550694e604964b0435a14fc90a4",
+    "tests/persistence.bend": "2a0cda14a3c70222cac7846d8bf552649e98cdd6d38d1517ee775995e05fe738",
+    "src/world_codec.bend": "461e2bc342005831a3d16824303f79e1f4dac2dca0eaf0731d18052dbfe0bf86",
+    "src/nbt.bend": "b677546b5fc02aaa38f5c09e5b798c0d35aec32b1c4b37cbd7042b9a1a5275e4",
+    "src/atomic_file.bend": "ef82fcddc460705f0761473bcfd8fcd896b779f89e56c4551c9ced23b13f987a",
+    "src/durability.bend": "079b5342e76be090793dc2e44f8d337eda144d75653d23eea36a7131558aed05",
+    "src/world_lock.bend": "5b527809b0a6686a8c3ba0459b9fa3ce2c3414acdbf4fa7453a57f7bd303568e",
+    "src/server.bend": "3c9e5f681b0957b3e8c36b4ddde94a6ad5705b8b5b45cc6b2a81572446d7c2cf"
+  },
+  "checks": [
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/persistence.bend",
+        "--check-only"
+      ],
+      "exit_code": 1,
+      "output": "SOME PROOFS FAIL\nError: 30 defs rely on unsafe or foreign code:\n- durability.Durability.create\n- durability.Durability.sync\n- durability.Durability.replace\n- durability.Durability.sync_directory\n- durability.Durability.remove\n- atomic_file.cleanup\n- atomic_file.renamed\n- atomic_file.synced\n- atomic_file.written\n- atomic_file.created\n- atomic_file.publish_valid\n- atomic_file.publish_with\n- atomic_file.publish\n- world_lock.Native.acquire\n- world_lock.Native.release\n- world_lock.acquire\n- world_lock.release\n- save_publish\n- save_envelope\n- save_world_bytes\n- save_world_result\n- save\n- local_valid\n- local\n- chosen\n- parsed\n- dispatch_inner\n- dispatch\n- load_with\n- load"
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/persistence.bend",
+        "--check-only"
+      ],
+      "exit_code": 1,
+      "output": "SOME PROOFS FAIL\nError: 30 defs rely on unsafe or foreign code:\n- ../src/durability.Durability.create\n- ../src/durability.Durability.sync\n- ../src/durability.Durability.replace\n- ../src/durability.Durability.sync_directory\n- ../src/durability.Durability.remove\n- ../src/atomic_file.cleanup\n- ../src/atomic_file.renamed\n- ../src/atomic_file.synced\n- ../src/atomic_file.written\n- ../src/atomic_file.created\n- ../src/atomic_file.publish_valid\n- ../src/atomic_file.publish_with\n- ../src/atomic_file.publish\n- ../src/world_lock.Native.acquire\n- ../src/world_lock.Native.release\n- ../src/world_lock.acquire\n- ../src/world_lock.release\n- ../src/persistence.save_publish\n- ../src/persistence.save_envelope\n- ../src/persistence.save_world_bytes\n- ../src/persistence.save_world_result\n- ../src/persistence.save\n- ../src/persistence.local_valid\n- ../src/persistence.local\n- ../src/persistence.chosen\n- ../src/persistence.parsed\n- ../src/persistence.dispatch_inner\n- ../src/persistence.dispatch\n- ../src/persistence.load_with\n- ../src/persistence.load"
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "persistence_server.bend",
+        "--check-only"
+      ],
+      "exit_code": 1,
+      "output": "SOME PROOFS FAIL\nError: 43 defs rely on unsafe or foreign code:\n- src/server.actor\n- src/server.timer\n- src/server.read_loop\n- src/server.accepted\n- src/server.accept_loop\n- src/server.start_effectful_from_peer\n- src/server.start_effectful\n- src/server.start_handle\n- src/server.run_effectful_from_peer\n- src/server.run_effectful\n- src/server.run\n- src/durability.Durability.create\n- src/durability.Durability.sync\n- src/durability.Durability.replace\n- src/durability.Durability.sync_directory\n- src/durability.Durability.remove\n- src/atomic_file.cleanup\n- src/atomic_file.renamed\n- src/atomic_file.synced\n- src/atomic_file.written\n- src/atomic_file.created\n- src/atomic_file.publish_valid\n- src/atomic_file.publish_with\n- src/atomic_file.publish\n- src/world_lock.Native.acquire\n- src/world_lock.Native.release\n- src/world_lock.acquire\n- src/world_lock.release\n- src/persistence.save_publish\n- src/persistence.save_envelope\n- src/persistence.save_world_bytes\n- src/persistence.save_world_result\n- src/persistence.save\n- src/persistence.local_valid\n- src/persistence.local\n- src/persistence.chosen\n- src/persistence.parsed\n- src/persistence.dispatch_inner\n- src/persistence.dispatch\n- src/persistence.load_with\n- src/persistence.load\n- run\n- main"
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/persistence.bend",
+        "--verdict"
+      ],
+      "exit_code": 1,
+      "output": "SOME PROOFS FAIL\nError: 30 defs rely on unsafe or foreign code:\n- durability.Durability.create\n- durability.Durability.sync\n- durability.Durability.replace\n- durability.Durability.sync_directory\n- durability.Durability.remove\n- atomic_file.cleanup\n- atomic_file.renamed\n- atomic_file.synced\n- atomic_file.written\n- atomic_file.created\n- atomic_file.publish_valid\n- atomic_file.publish_with\n- atomic_file.publish\n- world_lock.Native.acquire\n- world_lock.Native.release\n- world_lock.acquire\n- world_lock.release\n- save_publish\n- save_envelope\n- save_world_bytes\n- save_world_result\n- save\n- local_valid\n- local\n- chosen\n- parsed\n- dispatch_inner\n- dispatch\n- load_with\n- load"
+    }
+  ],
+  "wrapper_source_contains_unsafe_annotation": false,
+  "wrapper_source_contains_foreign_import": false,
+  "introduced_kernel_laws": [],
+  "independent_full_wrapper_kernel": "not reached: --verdict exits at the explicit unsafe/foreign dependency diagnostic",
+  "independent_codec_kernel": {
+    "evidence": "evidence/world-codec-kernel.json",
+    "result": "ALL PROOFS CHECK",
+    "scope": "Translated pure datatype/codec definitions satisfy typing, affinity and termination; three world helper laws and two imported NBT fixture laws are finite claims, not a universal roundtrip or persistence theorem."
+  },
+  "existing_json_kernel_boundary": {
+    "evidence": "evidence/json-kernel.json",
+    "scope": "Imported JSON serializer has the separately documented independent-kernel synthetic-constructor recursion mismatch; no JSON source change or proof claim is introduced by this wrapper."
+  },
+  "native_verification": {
+    "evidence": "evidence/persistence-integration.json",
+    "binaries": {
+      "server": "7389194e6d65eac9f62640ba5b72bcfc6dd6534001da4182c03aa23c8081ffdb",
+      "mcp": "4832eb9bd0cf419642cdb628f7479a541e3f690813c42e334d7f2f940f4d3f48",
+      "tests": "5c702ecbb15f8b1e9d8b712fdb160b2436b4c078af169f92289b559b34107453"
+    },
+    "scope": "Native compilation checks remaining source and ownership typing while accepting existing declared OS/process effect boundaries; the integration runner establishes its recorded concrete observations."
+  },
+  "limits": [
+    "No universal complete effectful correctness, save/load roundtrip, crash recovery or durability theorem.",
+    "OS publication and exclusive-world-lease adapters retain their separate source and runtime evidence boundaries.",
+    "SIGKILL-after-acknowledged-durable-publication observations do not establish physical-power-loss behavior.",
+    "Raw public affine wrappers establish ownership typing, not unforgeable OS acquisition provenance."
+  ]
+}
