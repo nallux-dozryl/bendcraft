@@ -1,0 +1,1142 @@
+{
+  "binary": {
+    "bytes": 200240,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/visible-os-input",
+    "resolved": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/visible-os-input",
+    "sha256": "475b6be4b3260758039c540177c7d18f9a13fbb1f3ffe89f0fce50303989304d"
+  },
+  "build": {
+    "command": [
+      "/Library/Developer/CommandLineTools/usr/bin/swiftc",
+      "-O",
+      "-sdk",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/visible_os_input.swift",
+      "-o",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/visible-os-input"
+    ],
+    "compiler": {
+      "bytes": 356421520,
+      "path": "/Library/Developer/CommandLineTools/usr/bin/swiftc",
+      "resolved": "/Library/Developer/CommandLineTools/usr/bin/swift-frontend",
+      "sha256": "bf77cc8826cd1a74f1a9734c5c63a182bd26b9472682b58f01e435cc064e1bc8"
+    },
+    "compiler_version": "swift-driver version: 1.120.5 Apple Swift version 6.1.2 (swiftlang-6.1.2.1.2 clang-1700.0.13.5)\nTarget: arm64-apple-macosx16.0",
+    "development_note": "Initial compile failed on ambiguous Int.init; repaired to an explicit lambda before final successful compile and every read-only execution.",
+    "exit_code": 0,
+    "pid": 84447,
+    "receipt": {
+      "bytes": 519,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/visible-os-input-build.json",
+      "resolved": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/visible-os-input-build.json",
+      "sha256": "0d3b63eb2981566822d6db4568ac82db04f05a276cfb225866d191cbce2406ec"
+    },
+    "sdk": "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+    "sdk_configuration": [
+      {
+        "bytes": 6953,
+        "path": "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/SDKSettings.json",
+        "resolved": "/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk/SDKSettings.json",
+        "sha256": "58a133735f0a55a624a1703067059f6e78925e51725ec6e1f966072e142c9c42"
+      },
+      {
+        "bytes": 4980,
+        "path": "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/SDKSettings.plist",
+        "resolved": "/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk/SDKSettings.plist",
+        "sha256": "30bf3c8ef32f46d43f68eb91a85eded3e1763edc752a6fd71633eecac4909b28"
+      }
+    ],
+    "sdk_resolved": "/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk",
+    "sdk_version": "15.5",
+    "seconds": 2.5455707497894764,
+    "source_sha256": "4850508d835a7d91286d7b47f6c7a86ace35315f4e8782b046a3f3804890ef97",
+    "stderr": "",
+    "stdout": "",
+    "timeout_seconds": 60
+  },
+  "confidence": "high for measured build/read-only branches and current access; unknown for armed delivery/cleanup runtime",
+  "continuous_client_refresh": {
+    "binary": {
+      "bytes": 5526248,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-client/client",
+      "resolved": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-client/client",
+      "sha256": "dc23c1d632273ce59b26e7a67bc79bab7cbf94497d7d49d709bf9ae1f1a455f3"
+    },
+    "boundary": [
+      "Recorded native integration is hidden; no held OS keys/focused capture/visible presentation.",
+      "client.frame is described before draw, not pixel readback.",
+      "Neutral plain Player fixture is not unrestricted LocalPlayer or full-game acceptance."
+    ],
+    "build_receipt": {
+      "bytes": 1485279,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-client/build.full.json",
+      "resolved": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-client/build.full.json",
+      "sha256": "38a2aebdb74f09ee29a09d3686ce5898ab4829e74342ddd3faba01f9b8428650"
+    },
+    "execution_receipt": {
+      "bytes": 73444,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-client/native.full.json",
+      "resolved": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-client/native.full.json",
+      "sha256": "e7f2133f98b4078120c31fc56b4d06ca9aaf3468ed8f9082ea10c26cb580d81b"
+    },
+    "immutable_artifact": {
+      "bytes": 5526248,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/platform-cache/artifacts/dc23c1d632273ce59b26e7a67bc79bab7cbf94497d7d49d709bf9ae1f1a455f3/program",
+      "resolved": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/platform-cache/artifacts/dc23c1d632273ce59b26e7a67bc79bab7cbf94497d7d49d709bf9ae1f1a455f3/program",
+      "sha256": "dc23c1d632273ce59b26e7a67bc79bab7cbf94497d7d49d709bf9ae1f1a455f3"
+    },
+    "matches_build_source_manifest": true,
+    "metrics": {
+      "catalog_operations": 18,
+      "controlled_actual_java_idle_ticks": 4,
+      "exact_saved_bundles": 3,
+      "frame_descriptions": 850,
+      "guarded_invalid_mode_refusals": 2,
+      "hidden_environment_launches": 20,
+      "initial_frames": 500,
+      "mcp_jsonrpc_requests": 48,
+      "native_entry_launches": 22,
+      "native_window_size": [
+        512,
+        512
+      ],
+      "paused_queries": 4,
+      "queued_collider_edits": 6,
+      "raw_tcp_requests": 16,
+      "restart_frames": 150,
+      "source_defined_cpu_logical_image": [
+        128,
+        128
+      ],
+      "startup_and_lease_refusals": 17,
+      "successful_hidden_launches": 5
+    },
+    "receipt": {
+      "bytes": 25747,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/player-client-native.json",
+      "resolved": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/player-client-native.json",
+      "sha256": "b2a8e22c0685c50e594e50e4eb0fee0dd0841c9e5a83d09a7e9ef7cbace42862"
+    },
+    "selected_source_sha256": {
+      "player_client.bend": "b5ba15401a3b80ac045619fe5ad38de091bf96c6e7742c51fbc84834812a71c5",
+      "src/player_scene.bend": "1887393c33a6eafc3b72e198518932c7c9465f4e6f8723d7cf5c5494a5b359ac",
+      "src/player_session.bend": "e4d515442e9446aa308dee68630ef48755565562a2441052f54d3e422416e6d2"
+    },
+    "status": "passed"
+  },
+  "documentation": {
+    "bytes": 15799,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/docs/VISIBLE_INPUT_PREFLIGHT.md",
+    "resolved": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/docs/VISIBLE_INPUT_PREFLIGHT.md",
+    "sha256": "20e52e76582cf1f3790712ed0915bb17696fda6767197069add06dfe28113138"
+  },
+  "future_examples_not_executed": {
+    "hold_command": [
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/visible-os-input",
+      "--arm",
+      "POST-TO-VERIFIED-FOREGROUND",
+      "--target-pid",
+      "<coordinated-running-client-pid>",
+      "--target-executable",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/platform-cache/artifacts/dc23c1d632273ce59b26e7a67bc79bab7cbf94497d7d49d709bf9ae1f1a455f3/program",
+      "--target-sha256",
+      "dc23c1d632273ce59b26e7a67bc79bab7cbf94497d7d49d709bf9ae1f1a455f3",
+      "--expect-input-source",
+      "com.apple.keylayout.US",
+      "--expect-layout-source",
+      "com.apple.keylayout.US",
+      "--operation",
+      "hold",
+      "--keys",
+      "w",
+      "--duration-ms",
+      "300"
+    ],
+    "launch_condition": "Requires later specific user coordination or a demonstrated isolated desktop. This preparation grants neither. Fresh helper access and immutable identity checks required.",
+    "permission_gate": "CGPreflightPostEventAccess=false in this measured invocation; no permission request API is implemented.",
+    "relative_command": [
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/visible-os-input",
+      "--arm",
+      "POST-TO-VERIFIED-FOREGROUND",
+      "--target-pid",
+      "<coordinated-running-client-pid>",
+      "--target-executable",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/platform-cache/artifacts/dc23c1d632273ce59b26e7a67bc79bab7cbf94497d7d49d709bf9ae1f1a455f3/program",
+      "--target-sha256",
+      "dc23c1d632273ce59b26e7a67bc79bab7cbf94497d7d49d709bf9ae1f1a455f3",
+      "--expect-input-source",
+      "com.apple.keylayout.US",
+      "--expect-layout-source",
+      "com.apple.keylayout.US",
+      "--operation",
+      "relative",
+      "--dx",
+      "12",
+      "--dy",
+      "-4",
+      "--moves",
+      "2",
+      "--interval-ms",
+      "60"
+    ],
+    "scenario": "Normal human launch, disposable neutral fixture; establish capture; hold across actual timer ticks; observe held-state/body response; separately observe first captured discard and subsequent raw-degree response. No manual simulation.step during the continuous-input lane."
+  },
+  "host": {
+    "sw_vers": "ProductName:\t\tmacOS\nProductVersion:\t\t26.4.1\nBuildVersion:\t\t25E253"
+  },
+  "input_contract": {
+    "arm_phrase": "POST-TO-VERIFIED-FOREGROUND",
+    "budget_boundary": "cooperative time guard; native framework latency is not a hard deadline",
+    "cleanup": {
+      "deferred_on_normal_and_handled_abort": true,
+      "destination": "original verified PID even after foreground loss; process identity is rechecked, while changed on-disk executable cannot itself suppress keyUp",
+      "focus_release_confound": "Key clearing after helper cleanup does not prove Runtime focus-triggered release.",
+      "matching_up_preallocated_before_down": true,
+      "not_guaranteed": [
+        "OS/client delivery",
+        "SIGKILL/crash",
+        "target exit/reuse",
+        "permission revocation"
+      ],
+      "runtime_executed": false,
+      "signals": [
+        "SIGINT",
+        "SIGTERM",
+        "SIGHUP"
+      ],
+      "trace_phase": "cleanup"
+    },
+    "default_mode": "--preflight",
+    "hold": {
+      "auto_repeat": false,
+      "duration_ms_max": 2000,
+      "duration_ms_min": 20,
+      "keys_max": 2,
+      "keys_min": 1,
+      "modifiers_or_caps_lock": "refuse",
+      "physical_ansi_positions": {
+        "a": 0,
+        "d": 2,
+        "escape": 53,
+        "s": 1,
+        "space": 49,
+        "w": 13
+      },
+      "preexisting_requested_key_down": "refuse",
+      "unicode_override": false
+    },
+    "operation_budget_seconds": 5,
+    "output": "single JSON after operation/cleanup; trace proves attempts, not client delivery",
+    "read_only_modes": [
+      "--preflight",
+      "--help",
+      "--plan"
+    ],
+    "relative": {
+      "Base_delta_delivery": "unverified",
+      "capture_queried": false,
+      "fields": [
+        "mouseEventDeltaX",
+        "mouseEventDeltaY"
+      ],
+      "global_position": "fixed current cursor location",
+      "integer_delta_max": 64,
+      "integer_delta_min": -64,
+      "interval_ms_max": 200,
+      "interval_ms_min": 20,
+      "moves_max": 8,
+      "moves_min": 2,
+      "type": "mouseMoved",
+      "warp": false,
+      "zero_pair": "refuse"
+    },
+    "required_target_flags": [
+      "--target-pid",
+      "--target-executable",
+      "--target-sha256",
+      "--expect-input-source",
+      "--expect-layout-source"
+    ],
+    "target_binding": [
+      "NSRunningApplication executable URL and launchDate",
+      "file inode/device/size/mtime",
+      "64 MiB-bounded SHA256 initially and before normal posts",
+      "fresh foreground/access/input+layout+modifier guard before each normal post",
+      "at most 10ms sleep between guards during holds/intervals"
+    ]
+  },
+  "manual_fallback": {
+    "executed": false,
+    "focus_loss_lane": "Keep physical movement key held across focus loss; observe Runtime clearing before human keyUp; release in other app then return/recapture. Helper cleanup cannot establish that release.",
+    "internal_packets_or_game_API_substitution": false,
+    "method": "coordinated human physical W hold/release and real pointer movement",
+    "proposed_duration_ms": 300
+  },
+  "preflight": {
+    "accessibility_trusted": false,
+    "delivery_verified": false,
+    "event_objects_created": 0,
+    "foreground_bundle_id": "com.brave.Browser",
+    "foreground_pid": 50401,
+    "helper_pid": 84620,
+    "hid_key_down": {
+      "a": false,
+      "d": false,
+      "escape": false,
+      "s": false,
+      "space": false,
+      "w": false
+    },
+    "hid_modifier_flags": 0,
+    "keyboard": {
+      "input_source": {
+        "id": "com.apple.keylayout.US",
+        "name": "U.S.",
+        "unicode_layout_bytes": 5032,
+        "unicode_layout_sha256": "464baf9b5025c0e060e45b1ceeafe45307e8be4c7a518d1bf4606edfecd98545"
+      },
+      "key_names_mean": "ANSI physical positions; layout determines characters",
+      "layout_source": {
+        "id": "com.apple.keylayout.US",
+        "name": "U.S.",
+        "unicode_layout_bytes": 5032,
+        "unicode_layout_sha256": "464baf9b5025c0e060e45b1ceeafe45307e8be4c7a518d1bf4606edfecd98545"
+      },
+      "unicode_text_override": false
+    },
+    "mode": "preflight",
+    "parent_pid": 84611,
+    "permission_requests": 0,
+    "physical_keys": {
+      "a": 0,
+      "d": 2,
+      "escape": 53,
+      "s": 1,
+      "space": 49,
+      "w": 13
+    },
+    "post_attempts": 0,
+    "post_event_access": false,
+    "schema": "visible-os-input-v1",
+    "status": "read_only_complete"
+  },
+  "primary_local_headers": [
+    {
+      "bytes": 16961,
+      "declaration_or_documentation_lines": {
+        "CGEventCreateKeyboardEvent": [
+          74,
+          75,
+          76,
+          77,
+          79
+        ],
+        "CGEventCreateMouseEvent": [
+          57,
+          218,
+          243
+        ],
+        "CGEventPostToPid": [
+          367,
+          372
+        ],
+        "CGPreflightPostEventAccess": [
+          405
+        ]
+      },
+      "path": "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CGEvent.h",
+      "resolved": "/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/CoreGraphics.framework/Versions/A/Headers/CGEvent.h",
+      "sha256": "82c0ad9eb7c2f1ccfe8483fe96f5d71493ee1f5b4a6a68458ba9c07dd728f8bb"
+    },
+    {
+      "bytes": 19140,
+      "declaration_or_documentation_lines": {
+        "kCGMouseEventDeltaX": [
+          162
+        ],
+        "kCGMouseEventDeltaY": [
+          166
+        ]
+      },
+      "path": "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CGEventTypes.h",
+      "resolved": "/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/CoreGraphics.framework/Versions/A/Headers/CGEventTypes.h",
+      "sha256": "0eb5b0aca9a77730d7c1b0449113b18419765771ae02a596708281f56f6c45b4"
+    },
+    {
+      "bytes": 10651,
+      "declaration_or_documentation_lines": {
+        "CGEventSourceFlagsState": [
+          133
+        ],
+        "CGEventSourceKeyState": [
+          126
+        ]
+      },
+      "path": "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CGEventSource.h",
+      "resolved": "/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/CoreGraphics.framework/Versions/A/Headers/CGEventSource.h",
+      "sha256": "20bf22c7d7a17679ff8ba0692be0fc01a69d5bfdbe15711c06edae70b4cc68b5"
+    },
+    {
+      "bytes": 29094,
+      "declaration_or_documentation_lines": {
+        "kVK_ANSI_A": [
+          190,
+          197
+        ],
+        "kVK_ANSI_D": [
+          199
+        ],
+        "kVK_ANSI_S": [
+          198,
+          236,
+          239
+        ],
+        "kVK_ANSI_W": [
+          209
+        ],
+        "kVK_Escape": [
+          270
+        ],
+        "kVK_Space": [
+          268
+        ]
+      },
+      "path": "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/HIToolbox.framework/Headers/Events.h",
+      "resolved": "/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/HIToolbox.framework/Versions/A/Headers/Events.h",
+      "sha256": "b80b0c6e10ea4a06494d02399424cb806cc04a2971724688cb2063e04f2149d6"
+    },
+    {
+      "bytes": 54937,
+      "declaration_or_documentation_lines": {
+        "TISCopyCurrentKeyboardInputSource": [
+          787,
+          799
+        ],
+        "TISCopyCurrentKeyboardLayoutInputSource": [
+          803,
+          819
+        ],
+        "kTISPropertyUnicodeKeyLayoutData": [
+          431,
+          451
+        ]
+      },
+      "path": "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/HIToolbox.framework/Headers/TextInputSources.h",
+      "resolved": "/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/HIToolbox.framework/Versions/A/Headers/TextInputSources.h",
+      "sha256": "e3c1a70e0cb8e21476a8f88f1e247a897a0c7d5723d43e3d63ff091d05927cd9"
+    },
+    {
+      "bytes": 40684,
+      "declaration_or_documentation_lines": {
+        "AXIsProcessTrusted": [
+          49,
+          55,
+          64,
+          69,
+          74
+        ]
+      },
+      "path": "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/HIServices.framework/Versions/A/Headers/AXUIElement.h",
+      "resolved": "/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/HIServices.framework/Versions/A/Headers/AXUIElement.h",
+      "sha256": "e4c7b5521a48ace58127ef8e696370b265a26fe935f0bf63b8fa6876d072fddd"
+    }
+  ],
+  "read_only_tests": {
+    "all_expected_statuses": true,
+    "arm_commands": 0,
+    "cases": 30,
+    "cases_summary": [
+      {
+        "armed_guard_if_checked_now": null,
+        "case": "default",
+        "command": [
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/visible-os-input"
+        ],
+        "error": null,
+        "exit_code": 0,
+        "permission_requests": 0,
+        "post_attempts": 0,
+        "status": "read_only_complete"
+      },
+      {
+        "armed_guard_if_checked_now": null,
+        "case": "preflight",
+        "command": [
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/visible-os-input",
+          "--preflight"
+        ],
+        "error": null,
+        "exit_code": 0,
+        "permission_requests": 0,
+        "post_attempts": 0,
+        "status": "read_only_complete"
+      },
+      {
+        "armed_guard_if_checked_now": null,
+        "case": "help",
+        "command": [
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/visible-os-input",
+          "--help"
+        ],
+        "error": null,
+        "exit_code": 0,
+        "permission_requests": 0,
+        "post_attempts": 0,
+        "status": null
+      },
+      {
+        "armed_guard_if_checked_now": "not_checked_no_target",
+        "case": "hold-plan",
+        "command": [
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/visible-os-input",
+          "--plan",
+          "--operation",
+          "hold",
+          "--keys",
+          "w",
+          "--duration-ms",
+          "300"
+        ],
+        "error": null,
+        "exit_code": 0,
+        "permission_requests": 0,
+        "post_attempts": 0,
+        "status": "read_only_plan_complete"
+      },
+      {
+        "armed_guard_if_checked_now": "not_checked_no_target",
+        "case": "two-key-plan",
+        "command": [
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/visible-os-input",
+          "--plan",
+          "--operation",
+          "hold",
+          "--keys",
+          "w,space",
+          "--duration-ms",
+          "300"
+        ],
+        "error": null,
+        "exit_code": 0,
+        "permission_requests": 0,
+        "post_attempts": 0,
+        "status": "read_only_plan_complete"
+      },
+      {
+        "armed_guard_if_checked_now": "not_checked_no_target",
+        "case": "relative-plan",
+        "command": [
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/visible-os-input",
+          "--plan",
+          "--operation",
+          "relative",
+          "--dx",
+          "12",
+          "--dy",
+          "-4",
+          "--moves",
+          "2",
+          "--interval-ms",
+          "60"
+        ],
+        "error": null,
+        "exit_code": 0,
+        "permission_requests": 0,
+        "post_attempts": 0,
+        "status": "read_only_plan_complete"
+      },
+      {
+        "armed_guard_if_checked_now": "not_checked_no_target",
+        "case": "min-hold-plan",
+        "command": [
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/visible-os-input",
+          "--plan",
+          "--operation",
+          "hold",
+          "--keys",
+          "escape",
+          "--duration-ms",
+          "20"
+        ],
+        "error": null,
+        "exit_code": 0,
+        "permission_requests": 0,
+        "post_attempts": 0,
+        "status": "read_only_plan_complete"
+      },
+      {
+        "armed_guard_if_checked_now": "not_checked_no_target",
+        "case": "max-hold-plan",
+        "command": [
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/visible-os-input",
+          "--plan",
+          "--operation",
+          "hold",
+          "--keys",
+          "a,d",
+          "--duration-ms",
+          "2000"
+        ],
+        "error": null,
+        "exit_code": 0,
+        "permission_requests": 0,
+        "post_attempts": 0,
+        "status": "read_only_plan_complete"
+      },
+      {
+        "armed_guard_if_checked_now": "not_checked_no_target",
+        "case": "max-relative-plan",
+        "command": [
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/visible-os-input",
+          "--plan",
+          "--operation",
+          "relative",
+          "--dx",
+          "64",
+          "--dy",
+          "-64",
+          "--moves",
+          "8",
+          "--interval-ms",
+          "200"
+        ],
+        "error": null,
+        "exit_code": 0,
+        "permission_requests": 0,
+        "post_attempts": 0,
+        "status": "read_only_plan_complete"
+      },
+      {
+        "armed_guard_if_checked_now": "target PID/executable/launch identity does not match",
+        "case": "no-target-plan",
+        "command": [
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/visible-os-input",
+          "--plan",
+          "--operation",
+          "hold",
+          "--keys",
+          "w",
+          "--duration-ms",
+          "300",
+          "--target-pid",
+          "999999",
+          "--target-executable",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-client/client",
+          "--target-sha256",
+          "dc23c1d632273ce59b26e7a67bc79bab7cbf94497d7d49d709bf9ae1f1a455f3",
+          "--expect-input-source",
+          "com.apple.keylayout.ABC",
+          "--expect-layout-source",
+          "com.apple.keylayout.ABC"
+        ],
+        "error": null,
+        "exit_code": 0,
+        "permission_requests": 0,
+        "post_attempts": 0,
+        "status": "read_only_plan_complete"
+      },
+      {
+        "armed_guard_if_checked_now": null,
+        "case": "unknown-option",
+        "command": [
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/visible-os-input",
+          "--unknown"
+        ],
+        "error": "unknown option: --unknown",
+        "exit_code": 1,
+        "permission_requests": 0,
+        "post_attempts": 0,
+        "status": "refused_before_post"
+      },
+      {
+        "armed_guard_if_checked_now": null,
+        "case": "duplicate-mode",
+        "command": [
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/visible-os-input",
+          "--preflight",
+          "--preflight"
+        ],
+        "error": "duplicate option: --preflight",
+        "exit_code": 1,
+        "permission_requests": 0,
+        "post_attempts": 0,
+        "status": "refused_before_post"
+      },
+      {
+        "armed_guard_if_checked_now": null,
+        "case": "conflicting-mode",
+        "command": [
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/visible-os-input",
+          "--preflight",
+          "--plan"
+        ],
+        "error": "select exactly one mode",
+        "exit_code": 1,
+        "permission_requests": 0,
+        "post_attempts": 0,
+        "status": "refused_before_post"
+      },
+      {
+        "armed_guard_if_checked_now": null,
+        "case": "implicit-operation",
+        "command": [
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/visible-os-input",
+          "--operation",
+          "hold",
+          "--keys",
+          "w",
+          "--duration-ms",
+          "300"
+        ],
+        "error": "preflight/help admit no operation or target options",
+        "exit_code": 1,
+        "permission_requests": 0,
+        "post_attempts": 0,
+        "status": "refused_before_post"
+      },
+      {
+        "armed_guard_if_checked_now": null,
+        "case": "preflight-operation",
+        "command": [
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/visible-os-input",
+          "--preflight",
+          "--operation",
+          "hold"
+        ],
+        "error": "preflight/help admit no operation or target options",
+        "exit_code": 1,
+        "permission_requests": 0,
+        "post_attempts": 0,
+        "status": "refused_before_post"
+      },
+      {
+        "armed_guard_if_checked_now": null,
+        "case": "missing-operation",
+        "command": [
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/visible-os-input",
+          "--plan"
+        ],
+        "error": "operation must be hold or relative",
+        "exit_code": 1,
+        "permission_requests": 0,
+        "post_attempts": 0,
+        "status": "refused_before_post"
+      },
+      {
+        "armed_guard_if_checked_now": null,
+        "case": "unknown-key",
+        "command": [
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/visible-os-input",
+          "--plan",
+          "--operation",
+          "hold",
+          "--keys",
+          "command",
+          "--duration-ms",
+          "300"
+        ],
+        "error": "hold requires 1 or 2 distinct keys from w,a,s,d,space,escape",
+        "exit_code": 1,
+        "permission_requests": 0,
+        "post_attempts": 0,
+        "status": "refused_before_post"
+      },
+      {
+        "armed_guard_if_checked_now": null,
+        "case": "duplicate-key",
+        "command": [
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/visible-os-input",
+          "--plan",
+          "--operation",
+          "hold",
+          "--keys",
+          "w,w",
+          "--duration-ms",
+          "300"
+        ],
+        "error": "hold requires 1 or 2 distinct keys from w,a,s,d,space,escape",
+        "exit_code": 1,
+        "permission_requests": 0,
+        "post_attempts": 0,
+        "status": "refused_before_post"
+      },
+      {
+        "armed_guard_if_checked_now": null,
+        "case": "empty-key",
+        "command": [
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/visible-os-input",
+          "--plan",
+          "--operation",
+          "hold",
+          "--keys",
+          "w,",
+          "--duration-ms",
+          "300"
+        ],
+        "error": "hold requires 1 or 2 distinct keys from w,a,s,d,space,escape",
+        "exit_code": 1,
+        "permission_requests": 0,
+        "post_attempts": 0,
+        "status": "refused_before_post"
+      },
+      {
+        "armed_guard_if_checked_now": null,
+        "case": "three-keys",
+        "command": [
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/visible-os-input",
+          "--plan",
+          "--operation",
+          "hold",
+          "--keys",
+          "w,a,space",
+          "--duration-ms",
+          "300"
+        ],
+        "error": "hold requires 1 or 2 distinct keys from w,a,s,d,space,escape",
+        "exit_code": 1,
+        "permission_requests": 0,
+        "post_attempts": 0,
+        "status": "refused_before_post"
+      },
+      {
+        "armed_guard_if_checked_now": null,
+        "case": "hold-too-short",
+        "command": [
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/visible-os-input",
+          "--plan",
+          "--operation",
+          "hold",
+          "--keys",
+          "w",
+          "--duration-ms",
+          "19"
+        ],
+        "error": "invalid or missing --duration-ms",
+        "exit_code": 1,
+        "permission_requests": 0,
+        "post_attempts": 0,
+        "status": "refused_before_post"
+      },
+      {
+        "armed_guard_if_checked_now": null,
+        "case": "hold-too-long",
+        "command": [
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/visible-os-input",
+          "--plan",
+          "--operation",
+          "hold",
+          "--keys",
+          "w",
+          "--duration-ms",
+          "2001"
+        ],
+        "error": "invalid or missing --duration-ms",
+        "exit_code": 1,
+        "permission_requests": 0,
+        "post_attempts": 0,
+        "status": "refused_before_post"
+      },
+      {
+        "armed_guard_if_checked_now": null,
+        "case": "wrong-operation-option",
+        "command": [
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/visible-os-input",
+          "--plan",
+          "--operation",
+          "hold",
+          "--keys",
+          "w",
+          "--duration-ms",
+          "300",
+          "--dx",
+          "1"
+        ],
+        "error": "option belongs to a different operation",
+        "exit_code": 1,
+        "permission_requests": 0,
+        "post_attempts": 0,
+        "status": "refused_before_post"
+      },
+      {
+        "armed_guard_if_checked_now": null,
+        "case": "noncanonical-number",
+        "command": [
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/visible-os-input",
+          "--plan",
+          "--operation",
+          "hold",
+          "--keys",
+          "w",
+          "--duration-ms",
+          "0300"
+        ],
+        "error": "invalid or missing --duration-ms",
+        "exit_code": 1,
+        "permission_requests": 0,
+        "post_attempts": 0,
+        "status": "refused_before_post"
+      },
+      {
+        "armed_guard_if_checked_now": null,
+        "case": "relative-zero",
+        "command": [
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/visible-os-input",
+          "--plan",
+          "--operation",
+          "relative",
+          "--dx",
+          "0",
+          "--dy",
+          "0",
+          "--moves",
+          "2",
+          "--interval-ms",
+          "60"
+        ],
+        "error": "relative delta must be nonzero",
+        "exit_code": 1,
+        "permission_requests": 0,
+        "post_attempts": 0,
+        "status": "refused_before_post"
+      },
+      {
+        "armed_guard_if_checked_now": null,
+        "case": "relative-too-far",
+        "command": [
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/visible-os-input",
+          "--plan",
+          "--operation",
+          "relative",
+          "--dx",
+          "65",
+          "--dy",
+          "0",
+          "--moves",
+          "2",
+          "--interval-ms",
+          "60"
+        ],
+        "error": "invalid or missing --dx",
+        "exit_code": 1,
+        "permission_requests": 0,
+        "post_attempts": 0,
+        "status": "refused_before_post"
+      },
+      {
+        "armed_guard_if_checked_now": null,
+        "case": "relative-too-many",
+        "command": [
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/visible-os-input",
+          "--plan",
+          "--operation",
+          "relative",
+          "--dx",
+          "1",
+          "--dy",
+          "0",
+          "--moves",
+          "9",
+          "--interval-ms",
+          "60"
+        ],
+        "error": "invalid or missing --moves",
+        "exit_code": 1,
+        "permission_requests": 0,
+        "post_attempts": 0,
+        "status": "refused_before_post"
+      },
+      {
+        "armed_guard_if_checked_now": null,
+        "case": "relative-too-fast",
+        "command": [
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/visible-os-input",
+          "--plan",
+          "--operation",
+          "relative",
+          "--dx",
+          "1",
+          "--dy",
+          "0",
+          "--moves",
+          "2",
+          "--interval-ms",
+          "19"
+        ],
+        "error": "invalid or missing --interval-ms",
+        "exit_code": 1,
+        "permission_requests": 0,
+        "post_attempts": 0,
+        "status": "refused_before_post"
+      },
+      {
+        "armed_guard_if_checked_now": null,
+        "case": "relative-single",
+        "command": [
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/visible-os-input",
+          "--plan",
+          "--operation",
+          "relative",
+          "--dx",
+          "1",
+          "--dy",
+          "0",
+          "--moves",
+          "1",
+          "--interval-ms",
+          "60"
+        ],
+        "error": "invalid or missing --moves",
+        "exit_code": 1,
+        "permission_requests": 0,
+        "post_attempts": 0,
+        "status": "refused_before_post"
+      },
+      {
+        "armed_guard_if_checked_now": null,
+        "case": "partial-target",
+        "command": [
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/visible-os-input",
+          "--plan",
+          "--operation",
+          "hold",
+          "--keys",
+          "w",
+          "--duration-ms",
+          "300",
+          "--target-pid",
+          "999999"
+        ],
+        "error": "target requires absolute executable, lowercase SHA256, input/layout IDs",
+        "exit_code": 1,
+        "permission_requests": 0,
+        "post_attempts": 0,
+        "status": "refused_before_post"
+      }
+    ],
+    "foreground_pids_in_samples": [
+      50401
+    ],
+    "generation_binary_sha256": "475b6be4b3260758039c540177c7d18f9a13fbb1f3ffe89f0fce50303989304d",
+    "generation_source_sha256": "4850508d835a7d91286d7b47f6c7a86ace35315f4e8782b046a3f3804890ef97",
+    "permission_requests_reported_total": 0,
+    "post_attempts_reported_total": 0,
+    "raw_receipt": {
+      "bytes": 36302,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/visible-os-input-read-only.json",
+      "resolved": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/visible-os-input-read-only.json",
+      "sha256": "8f90ba07b36efc6844b4f1dd72038b0e99f4080fb71e8a5301f5d080dd084e8f"
+    },
+    "stderr_empty_each": true,
+    "stdout_single_valid_json_each": true
+  },
+  "recorded_utc": "2026-10-03T23:09:58.639528+00:00",
+  "remaining_unverified": [
+    "actually controllable isolated desktop",
+    "armed target/foreground/signal behavior against a running client",
+    "permission grant or event delivery",
+    "physical key to Base mapping under actual layout",
+    "captured relative fields and first-move discard",
+    "visible presentation/movement/jump/collision",
+    "independent Runtime focus release before helper cleanup",
+    "normal close/pointer recovery/save+reload in visible lane",
+    "whole-game/UI/audio/multiplayer parity"
+  ],
+  "schema": "visible-os-input-capability-v1",
+  "scope": {
+    "app_activated": false,
+    "armed_mode_invoked": false,
+    "client_or_vm_launched": false,
+    "credential_read": false,
+    "existing_inventory_updated": false,
+    "input_posting_invoked": false,
+    "native_builds": [
+      "this dormant Swift helper only"
+    ],
+    "permission_request_invoked": false,
+    "screen_capture": false
+  },
+  "session_refresh": {
+    "final_evidence": {
+      "evidence/player-session-audit.json": {
+        "receipt": {
+          "bytes": 4344,
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/player-session-audit.json",
+          "resolved": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/player-session-audit.json",
+          "sha256": "9db8553fa1c367b271da09bb6e4fc556450860f39817b7f0b43d4b34b5e17477"
+        },
+        "status": "passed"
+      },
+      "evidence/player-session-kernel.json": {
+        "receipt": {
+          "bytes": 7515,
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/player-session-kernel.json",
+          "resolved": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/player-session-kernel.json",
+          "sha256": "d4e2f303f19018e8e6fa8b19a7caf2829cec17433c52744ab1eb06732332a180"
+        },
+        "status": "foreign-boundary-refusal"
+      },
+      "evidence/player-session-native.json": {
+        "receipt": {
+          "bytes": 148633,
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/player-session-native.json",
+          "resolved": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/player-session-native.json",
+          "sha256": "06109e47fe22d39dae8e8085cffcd3e7019c052a50dc03f3994526117622149a"
+        },
+        "status": "passed"
+      },
+      "evidence/player-session-reproduction.json": {
+        "receipt": {
+          "bytes": 976,
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/player-session-reproduction.json",
+          "resolved": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/player-session-reproduction.json",
+          "sha256": "5b422f236d590b93d24bce5189a3af3884fe29fc1d2c18d715e7de895d687a80"
+        },
+        "status": "passed"
+      }
+    },
+    "full_kernel_boundary": "foreign-boundary-refusal; no whole-client theorem",
+    "historical_preflight": "prepared-native-unverified was preparation; final native/reproduction/audit passed for their recorded custom-bundle scenarios",
+    "source": {
+      "bytes": 12295,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_session.bend",
+      "resolved": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_session.bend",
+      "sha256": "e4d515442e9446aa308dee68630ef48755565562a2441052f54d3e422416e6d2"
+    }
+  },
+  "source": {
+    "bytes": 24309,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/visible_os_input.swift",
+    "resolved": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/visible_os_input.swift",
+    "sha256": "4850508d835a7d91286d7b47f6c7a86ace35315f4e8782b046a3f3804890ef97"
+  },
+  "static_audit": {
+    "command": [
+      "nm",
+      "-u",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/visible-os-input"
+    ],
+    "forbidden_native_imports_absent": [
+      "_CGRequestPostEventAccess",
+      "_CGRequestListenEventAccess",
+      "_AXIsProcessTrustedWithOptions",
+      "_CGEventKeyboardSetUnicodeString",
+      "_CGWarpMouseCursorPosition",
+      "_CGEventPost",
+      "_CGEventTapCreate"
+    ],
+    "post_call_sites": 3,
+    "posting_native_import_present": true,
+    "proof_boundary": "Static source/import inspection and executed read-only modes. No OS event interceptor or armed runtime test.",
+    "read_only_branch_boundary": "Only explicit arm branch instantiates Instrument. Default/help/plan never create an event or instantiate it; parser refusal precedes it.",
+    "read_only_permission_imports_present": [
+      "_AXIsProcessTrusted",
+      "_CGPreflightPostEventAccess"
+    ],
+    "roles": [
+      "normal keyDown",
+      "normal mouseMoved with delta fields",
+      "deferred original-target matching keyUp"
+    ]
+  },
+  "status": "dormant-built-read-only-passed"
+}

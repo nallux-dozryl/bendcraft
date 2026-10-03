@@ -1,0 +1,253 @@
+{
+  "recorded_at_utc": "2026-10-03T22:02:38.014852+00:00",
+  "status": "read_only_preflight_complete_visible_acceptance_unverified",
+  "decision": {
+    "demonstrated_controllable_isolated_desktop": false,
+    "conclusion": "No actually controllable isolated desktop was demonstrated by the available read-only surfaces. This is not a claim that no unexposed or offline guest can ever be made usable.",
+    "confidence": "high for recorded host/inventory/source facts; unknown for unexposed guests and untested physical input"
+  },
+  "host": {
+    "os": "26.4.1",
+    "os_build": "25E253",
+    "display_probe_command": "system_profiler SPDisplaysDataType -json",
+    "display_observation": {
+      "gpu": "Apple M3 Pro",
+      "online_displays": 1,
+      "display": "Color LCD",
+      "connection": "internal",
+      "main": true,
+      "mirror": false,
+      "physical_pixels": "3456 x 2234",
+      "logical_resolution": "1728 x 1117 @ 120.00Hz"
+    },
+    "matching_running_processes": [
+      {
+        "pid": 401,
+        "executable": "windowserver"
+      },
+      {
+        "pid": 83874,
+        "executable": "skycomputeruseservice"
+      }
+    ]
+  },
+  "control_inventory": {
+    "tool": "mcp__cua_repl.js",
+    "read_only_calls": [
+      "await cua.getState();",
+      "nodeRepl.write({nativeTarget:cua.computer.target});",
+      "await cua.getState({emit:false});"
+    ],
+    "native_target": "mac",
+    "latest_app_count": 32,
+    "latest_running_app_count": 21,
+    "relevant_apps": [
+      {
+        "id": "com.openai.codex",
+        "running": true
+      },
+      {
+        "id": "com.mojang.minecraftlauncher",
+        "running": true
+      }
+    ],
+    "utm_app_in_exposed_inventory": false,
+    "browser_surfaces": [
+      {
+        "type": "iab",
+        "tabs": 0
+      },
+      {
+        "type": "mcpapps",
+        "tabs": 0
+      }
+    ],
+    "inventory_errors": [],
+    "documented_native_methods": [
+      "getAXState",
+      "getScreenshot",
+      "getAXStateAndScreenshot",
+      "click",
+      "drag",
+      "scroll",
+      "pressKey",
+      "typeText",
+      "paste"
+    ],
+    "documented_missing_for_this_assessment": [
+      "separate isolated-desktop or guest selector",
+      "separate keyDown/keyUp or held-key duration API",
+      "free relative pointer-motion API"
+    ],
+    "permission_boundary": "Inventory succeeded. AX/screenshot/physical input permissions and behavior were not tested; no permission prompt was accepted.",
+    "focus_boundary": "Only inventory/property observations were requested. No app binding, launch, screenshot, click, key, pointer or focus-changing operation was issued. Frontmost identity was not separately instrumented in this preflight."
+  },
+  "installed_virtualization": {
+    "bundle": "/Applications/UTM.app",
+    "bundle_id": "com.utmapp.UTM",
+    "version": "4.7.5",
+    "build": "118",
+    "saved_vm_entries": [
+      {
+        "name": "GroundSeg",
+        "recorded_path_exists": false,
+        "config_exists": false,
+        "saved_suspended_flag": false
+      },
+      {
+        "name": "Linux",
+        "recorded_path_exists": true,
+        "config_exists": true,
+        "saved_suspended_flag": false,
+        "config_projection": {
+          "backend": "QEMU",
+          "architecture": "x86_64",
+          "target": "q35",
+          "memory_mib": 4096,
+          "hypervisor": false,
+          "display_hardware": [
+            "virtio-gpu-pci"
+          ]
+        }
+      },
+      {
+        "name": "Ubuntu x86",
+        "recorded_path_exists": false,
+        "config_exists": false,
+        "saved_suspended_flag": false
+      },
+      {
+        "name": "macOS",
+        "recorded_path_exists": false,
+        "config_exists": false,
+        "saved_suspended_flag": false
+      }
+    ],
+    "runtime_state": "No UTM/QEMU/guest process found in the bounded process-name inventory. Saved Suspended=false is not a live-state observation.",
+    "installed_dictionary": "/Applications/UTM.app/Contents/Resources/UTM.sdef",
+    "dictionary_sha256": "b4fd52c64433658aeb3777774a06c2c1a77e2de611050928f5d55e9e626928b3",
+    "potential_commands_declared": [
+      "input scan code: raw PC AT codes, QEMU only",
+      "input keystroke: ASCII sequence, QEMU only",
+      "input mouse click: absolute position/click, QEMU only",
+      "execute: guest command API"
+    ],
+    "invocation_boundary": "UTM/utmctl/AppleScript commands were not invoked; no VM was started, relocated, configured, authenticated or inspected internally. Saved names/config fields are inventory metadata; bookmark payloads were not decoded or resolved, and guest disks/credentials were not opened.",
+    "compatibility_boundary": "The one present guest config is QEMU x86_64 Linux; no live guest OS, desktop, agent, screenshot/input route or renderer/toolchain was observed. Current window_input C reports false focus/capture outside Objective-C, so this guest is not a verified replacement for the current macOS presenter."
+  },
+  "current_entrypoints": {
+    "client.bend": "Imports legacy ClientHost with key-down displacement and Look multiplied by 0.0025; not the continuous PlayerRuntime/PlayerSession presenter path.",
+    "persistent_client.bend": "Also uses legacy ClientHost.",
+    "src/client_presenter.bend": "New generic presenter delivers ordered whole native event batches, observes focus/capture, requests human capture and emits Release on Escape/loss/close. Existing acceptance is hidden and synthetic.",
+    "src/player_runtime.bend": "Owned continuous runtime source and native behavior receipt exist; recorded status native_behavior_passed_runtime_kernel_unverified. This is not a visible OS-input result.",
+    "src/player_session.bend": "Saved session source and server/MCP build artifacts exist; recorded session acceptance remains prepared-native-unverified. No visible result follows from server binaries.",
+    "artifacts": {
+      "build/minecraft-client": {
+        "exists": true,
+        "bytes": 3332048,
+        "sha256": "0f67813ef036ae21b07c9866d2040da5b0d54d5a5e3e05ba307391980410f075"
+      },
+      "build/client-presenter-tests": {
+        "exists": true,
+        "bytes": 2043864,
+        "sha256": "1dc327159012eb24bf9aadf0223366547b9e8e4b6543901798e4a5cee9b1b66d"
+      },
+      "build/player-runtime/tests": {
+        "exists": true,
+        "bytes": 3464696,
+        "sha256": "266f64462b45c15b07b163ef3214d6e8c2db3dfd1b37215528cff0ebdfdf91b1"
+      },
+      "build/player-session/server": {
+        "exists": true,
+        "bytes": 5650936,
+        "sha256": "e5a8c39d31cf50d3123de472e0a685b67f6b850f9a06b5d8d7d7630db1c416ad"
+      },
+      "build/player-session/mcp": {
+        "exists": true,
+        "bytes": 1528312,
+        "sha256": "f0191cb9401e1ff47990ada221fb8051a94ad9942d4c857d28ef764b9e955281"
+      },
+      "build/minecraft-player-client": {
+        "exists": false,
+        "bytes": null,
+        "sha256": null
+      }
+    },
+    "minecraft_client_receipt_entry": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/client.bend",
+    "existing_presenter_evidence_status": "passed_hidden_native_presenter_integration",
+    "player_client.bend": "Appeared during preflight: source joins PlayerScene/PlayerSession/ClientPresenter, real-time actor driver and cube-instrument renderer; --verification-fixture, --unpaused, --jar, --sine and --frames are actual parsed options. No verified player-client artifact/visible record demonstrated.",
+    "src/player_scene.bend": "Source-derived physical bindings 119/115/97/100/32/65592/65595; whole Controller packet input; plain neutral Player context; renderer description explicitly cube-instrument. Physical bindings/focused behavior remain unverified.",
+    "runtime_native_evidence_status": "native_behavior_passed_runtime_kernel_unverified",
+    "continuous_client_native_record_exists": false
+  },
+  "required_before_visible_run": [
+    "Freeze and verify the new player_client.bend/PlayerScene entry joining ClientPresenter to PlayerSession/PlayerRuntime, the 50 ms Server timer, Controller input and real renderer; retain its immutable guarded-native build receipt.",
+    "Use guarded platform build/cache route and explicit BEND_MINECRAFT_LAUNCH_MODE=human for the coordinated session; hidden mode cannot receive ordinary focused input.",
+    "Record a disposable scene/session path, registry/assets/sine-table hashes, neutral attributes, view/physical bindings and options; do not use legacy minecraft-client as continuous-input evidence.",
+    "New PlayerScene source uses native Base macOS bindings 119/115/97/100/32/65592/65595; validate actual emitted physical codes/layout and avoid treating separate fixture/GLFW 340/341 bindings as macOS observations.",
+    "Establish an actual held-key and relative-mouse method: current CUA documented key taps/drag do not alone demonstrate a timed hold or captured free-motion. Use an explicitly arranged observed human-input lane or a separately authorized/demonstrated equivalent mechanism.",
+    "If using the current host desktop, coordinate the specific foreground interruption with the user when the executable/scenario is ready; otherwise first demonstrate a compatible isolated guest and its screenshot/input route."
+  ],
+  "planned_smoke": {
+    "scope": "Bounded neutral controls/scene smoke; does not establish full LocalPlayer, UI, vanilla world/save, audio, latency, multiplayer or complete parity.",
+    "launch_policy": "Conditional template: BEND_MINECRAFT_LAUNCH_MODE=human; MC_WORLD_PATH=<exclusive disposable bundle>, MC_WORLD_MISSING=create, MC_LIVE_PORT=<unused loopback port>, MC_DEV_TOKEN=<throwaway fixture token>; <verified player-client artifact> --gpu off -- --verification-fixture --unpaused --jar <pinned 26.3 jar> --sine <verified sine table>. Not executed.",
+    "scene": "Existing 39-block Overworld verification scene: floor x/z -3..2 at y 0; dirt cube(1,1,1), oak-plank column(2,1,2)/(2,2,2). Neutral standing start(.5,1,-2.5), dimensions 0.6 x 1.8, initial degree look zero, default sensitivity 0.5, inversion/smooth/scoping false; final entry must confirm/admit this exact setup.",
+    "steps": [
+      "Record actual build/window/foreground context; launch normal visible window and inspect scene presentation.",
+      "Establish actual capture; make first captured move and a subsequent move, recording the discard then real raw-degree view response.",
+      "Hold forward through multiple distinct simulation ticks, then release; check held-state clearing and lack of additional input acceleration (inertia may remain). Repeat backward/strafe and an opposing-key combination within the floor.",
+      "Align to the dirt cube, hold toward it and observe collision without penetration; perform ground jump and observe vertical motion/landing.",
+      "Press Escape to release; click to recapture and confirm first-move rearming.",
+      "Lose focus while a movement key is held, release it in the other app, return/recapture and confirm no stuck held input; record actual Native.status transitions and continued bounded simulation semantics.",
+      "Close while captured; verify pointer/focus recovery, cleanup/process exit/listener release, then reopen. With Session integration also verify view/body/support restore and ephemeral keys/mouse reset.",
+      "Compare representative frames/actions with pinned Java 26.3 using matched admitted scene/settings; retain material differences and exact limited scope."
+    ],
+    "required_record": [
+      "executable and transitive/source/build fingerprints",
+      "host/automation surface, actual foreground context and input provenance",
+      "scene coordinates/neutral attributes/settings/bindings",
+      "timestamps and actual OS event/capture/focus outcomes linked to simulation ticks/controller/body/view diagnostics",
+      "visible screenshots or presentation artifacts, close/reopen outcomes, defects and covered/uncovered scope"
+    ],
+    "clock_policy": "Core unpaused, actual 50 ms actor timer; no manual simulation.step calls during continuous OS-input evidence.",
+    "renderer_boundary": "Current PlayerScene explicitly uses cube-instrument renderer; this smoke cannot claim arbitrary baked model/lighting/UI fidelity."
+  },
+  "actions_not_performed": [
+    "foreground app or client/VM launch",
+    "OS key/mouse input or pointer movement",
+    "focus/Space changes",
+    "native/compiler builds",
+    "guest/network/permission reconfiguration",
+    "credential reads or user-thread/external messages"
+  ],
+  "sources_sha256": {
+    "docs/VISUAL_ACCEPTANCE.md": "796ca360cd514f8133e543c70b5625a47576e1f953783498607dc2e6cc15ecec",
+    "docs/PLATFORM.md": "45f00ee782978bcdf7cc809615fdbde4a6cd3a64614b399efc17e96f664aba7f",
+    "src/client_presenter.bend": "c86d607b6a68f34d20d7fe19f4c81d88314ad942422e7246ec8f3c993eb8e2e4",
+    "src/client_host.bend": "9af145e28d5a1dca2b6b4124bb6e06fc75aa905871447b65ce0997803cc3dacd",
+    "src/window_input.bend": "1f95abdc8c6e2d9f909ee81543dbbb91115e85cc2f80d68a536494ac631435ac",
+    "src/native/window_input.c": "b80a7bef8974ebcf8a2298aabfc019c878621a4fbd330794091a98082ff84428",
+    "src/player_runtime.bend": "0580f77db4a9e9d570938f6c6487867cd1ea92b0a2c24246fa0f354aa0604242",
+    "src/player_session.bend": "e4d515442e9446aa308dee68630ef48755565562a2441052f54d3e422416e6d2",
+    "client.bend": "9dfca72a2a5e2922a6d54aadcdfec02086f33087947f92f15c924ab2ad3c501b",
+    "persistent_client.bend": "7413d455b4a21e402733d14a0a8dae559ffec8de2c0aba8edef362697bed7c43",
+    "evidence/client-presenter-native.json": "2a5f653fc8034813cbdd29e2655ee11959db042f45c2eb3796ed64cc896c41b7",
+    "evidence/platform-launch.json": "fa00c41e84043f96421b7f77bb01f483c7130f99f40524d98941c614de081917",
+    "evidence/player-session-preflight.json": "2943b07811165155598f7b77d57fcfdee154a9f379bdee408247bbd2a82550cd",
+    "../bend/bend2/effs/window.c": "617611d994fb7f4c57467f8d1a7e644ba19d4fce35770613dea2711e6cafd65c",
+    "/Applications/UTM.app/Contents/Resources/UTM.sdef": "b4fd52c64433658aeb3777774a06c2c1a77e2de611050928f5d55e9e626928b3",
+    "player_client.bend": "b5ba15401a3b80ac045619fe5ad38de091bf96c6e7742c51fbc84834812a71c5",
+    "src/player_scene.bend": "1887393c33a6eafc3b72e198518932c7c9465f4e6f8723d7cf5c5494a5b359ac",
+    "evidence/player-runtime-verification.json": "f74cdf4d0471bf7636566189f5341bde1d15065c3de8b13dc4f1f22744ced737"
+  },
+  "reproduce_read_only": [
+    "sw_vers",
+    "system_profiler SPDisplaysDataType -json",
+    "ps -axo pid=,comm= (filter process executable names only)",
+    "Read UTM Info.plist, saved registry/config metadata and installed UTM.sdef without executing its commands",
+    "Use cua.getState inventory/property reads only; inspect existing repository docs/source/receipts without building or launching"
+  ],
+  "policy_source": "docs/VISUAL_ACCEPTANCE.md Session policy; AGENTS.md requires focus-preserving routine runs and coordinated/isolated visible acceptance.",
+  "source_change_boundary": "Read-only assessment captures the indicated source generations; the new player-client integration was being authored concurrently and must be frozen/rechecked before launch.",
+  "document_sha256": "d0005c9aab03c3111dafb67d2ee041659b2e09315655e3e2454dfba2ef6a5f88"
+}

@@ -47,3 +47,7 @@ The default server owns `Game.Engine{world,registry}` and loads validated block 
 ## 2026-10-03: record processing is independent of receive grouping
 
 The byte framer reports a failed whole feed atomically. Dispatching that result directly could erase earlier valid records when a later invalid record arrived in the same TCP receive. Split byte batches at LF before feeding/dispatching each record. An actual TCP test verifies that a valid stepping request applies before a coalesced malformed UTF-8 record closes its connection.
+
+## 2026-10-04: coordinated early visible input
+
+The read-only desktop inventory demonstrates no available isolated controllable desktop. The repository's visible-session policy therefore requires explicit foreground coordination for the prepared disposable-client smoke. The current lane uses human held keys/free mouse and documented CUA screenshot, Escape, click/recapture and normal-close operations. CUA's returned instructions require its API for UI interactions unless another technology is specifically requested by the user. The prepared Swift CoreGraphics posting branch and example commands remain dormant and are not authorized by this manual/CUA session; only its guarded read-only preflight may observe the verified foreground target. Preserve the original historical preflight receipt separately from the refreshed capability/launch preparation. Actual capture internals and first-move discard remain observation gaps, rather than reasons to defer every early smoke check.
