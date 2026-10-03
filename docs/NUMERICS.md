@@ -129,3 +129,31 @@ Bend's `IO.now` has 1 ms resolution; its calls bracket an already evaluated loop
 The direct alignment change reduced the initial add benchmark from approximately 15–17 ns/operation to approximately 9–11 ns/operation while preserving all bit fixtures. Current emitted C is 510,545 bytes / 16,696 lines including the runtime, test harness, effects, and numeric helpers. Its 147 scalar inline helper bodies contain 236 U32 operations and no host floating arithmetic. The compiler lowers the pure numeric implementation to scalar unsigned C; an F32/double fallback is not hiding underneath it.
 
 The measured multiplication/division gap supports considering a future narrow binary64 primitive or explicitly approved bit-payload arithmetic adapter if representative gameplay profiling shows numerical work consuming the tick budget. Such a boundary would need to preserve the exact tested rounding, subnormal, zero, infinity, and NaN policies. No acceleration boundary is implemented or approved here; simulation decisions remain in Bend.
+
+## Square root and Java long narrowing
+
+Confidence: **high** for the recorded native CPU square-root and signed64 conversion fixtures. These additions leave the existing arithmetic/narrowing source paths intact. Their current source hashes and evidence are separate from the historical arithmetic reports above.
+
+| Function/type | Contract |
+| --- | --- |
+| `sqrt(value: F64) -> F64` | Correctly rounded binary64 square root, round to nearest with ties to even. |
+| `Word64{hi: U32, lo: U32}` | Exact signed64 two's-complement payload, high word first. |
+| `to_java_long(value: F64) -> Word64` | Java narrowing cast: NaN becomes zero, finite values truncate toward zero, and out-of-range values/infinities saturate to signed64 min/max. |
+
+Square root preserves both signed zeros and positive infinity. An input NaN retains its sign/payload and gains the quiet bit. A negative nonzero finite input or negative infinity returns positive canonical quiet NaN `0x7ff8000000000000`. Java specifies the NaN result class without fixing its payload; the test compares hardware/Java NaN classes while checking the Bend policy exactly. Ordinary square-root results follow [Java 25 `Math.sqrt`](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/Math.html#sqrt(double)). Signed64 narrowing follows [JLS 25 §5.1.3](https://docs.oracle.com/javase/specs/jls/se25/html/jls-5.html#jls-5.1.3).
+
+The square-root path first normalizes the input's integer significand, including subnormals. For normalized significand `m` and unbiased exponent `e`, it forms the exact integer radicand `(m << (e mod 2)) << 58`. A restoring integer square root consumes 56 two-bit digits using a four-U32 input shift register and a two-U32 root/remainder. The final remainder becomes sticky information; the existing guard/round/sticky packer rounds once. Every positive finite binary64 input has a normal binary64 square root, so this output path needs no subnormal rounding. The shifted exponent stays nonnegative and no significand or signed64 magnitude passes through native `Nat`.
+
+Long narrowing extracts the integer magnitude with bounded word shifts. Values below one return zero; exponents at or above 63 saturate by sign. Remaining values fit a signed64 magnitude and negative results use explicit two-word subtraction from zero. For example, positive `2^63` returns `Word64{2147483647, 4294967295}` and negative `2^63` returns `Word64{2147483648, 0}`. The low word can be masked with `65535` after conversion for the pinned Minecraft 26.3 sine/cosine table index.
+
+Reproduce the targeted validation without rewriting old arithmetic evidence:
+
+```sh
+python3 tools/test_f64.py --sqrt-long-only
+```
+
+`evidence/f64-sqrt-oracle.json` records **69,940 exact native bit comparisons**: 14,322 normal exponent-edge cases, 15,000 squared-midpoint neighbors, 40,000 random raw/positive payloads, 310 signed subnormal ladder cases, 300 integer-square neighbors, and eight special cases. Independently compiled C, installed Java 25 `Math.sqrt`, and `StrictMath.sqrt` each match 59,725 non-NaN results exactly and satisfy 10,215 NaN-class checks. Expected finite values use arbitrary-size integer `isqrt` and exact squared-midpoint comparisons, rather than a Python floating square root. A further **59,722 exact rational rounding-cell checks** compare the input with both squared midpoints around the returned result; 1,153 of those results are exact squares.
+
+`evidence/f64-long-oracle.json` records **105,648 exact native/C/Java 25 signed64 payload comparisons**: 20,470 every-exponent edges, 60,000 neighborhoods of randomly selected signed64 integers, 20,000 random raw payloads, 1,152 power-of-two neighborhoods, eight special cases, and 4,018 scaled sine/cosine-angle operands. Expectations decode the binary64 value as an exact rational, truncate using integer division, and clamp independently. The C reference guards out-of-range casts before casting, so its oracle does not depend on undefined C conversion behavior. The Mth-scaled fixtures validate the cast operands; complete Java Mth expression and locomotion parity require the separate movement tests.
+
+Both the source and test harness pass the independent kernel with finite special-case laws. The targeted run also checks 540 existing arithmetic operand pairs and 256 F32 narrowing cases as a bounded regression smoke check. Emitted scalar helpers contain no host floating arithmetic, and the implementation contains no foreign/unsafe dependency or axiom. These are fixture and type/termination results, **not a universal IEEE square-root theorem**. Reported native wall time includes process startup and argument/output IO; no square-root throughput or game performance comparison is claimed.

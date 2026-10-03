@@ -701,3 +701,125 @@ def narrow_float_class(+value: F64, kind: F64Class) -> F32:
 
 def to_f32(+value: F64) -> F32:
   narrow_float_class(value, classify(value))
+
+# Signed Java long values are exposed as two's-complement words; no native Nat
+# contains a 53- or 64-bit significand/integer.
+type Word64 is Data:
+  Word64{hi: U32, lo: U32}
+
+def long_word(value: Wide) -> Word64:
+  match value:
+    case Wide{hi, lo}: Word64{hi, lo}
+
+def long_saturate(negative: Bool) -> Word64:
+  match negative:
+    case False{}: Word64{2147483647, 4294967295}
+    case True{}: Word64{2147483648, 0}
+
+def long_encode(negative: Bool, magnitude: Wide) -> Word64:
+  match negative:
+    case False{}: long_word(magnitude)
+    case True{}: long_word(wide_sub(Wide{0, 0}, magnitude))
+
+def long_shift_left(fuel: Nat, value: Wide) -> Wide:
+  match fuel:
+    case 0n: value
+    case 1n+rest: long_shift_left(rest, wide_shl(value))
+
+def long_integer(negative: Bool, +exponent: U32, significand: Wide, left: Bool) -> Word64:
+  match left:
+    case False{}: long_encode(negative, shift_right(U32.sub(1075, exponent), significand))
+    case True{}: long_encode(negative, long_shift_left(U32.to_nat(U32.sub(exponent, 1075)), significand))
+
+def long_range(+negative: Bool, +exponent: U32, significand: Wide, large: Bool) -> Word64:
+  match large:
+    case True{}: long_saturate(negative)
+    case False{}: long_integer(negative, exponent, significand, U32.is_ge(exponent, 1075))
+
+def long_parts(parts: Parts, small: Bool) -> Word64:
+  match parts small:
+    case _ True{}: Word64{0, 0}
+    case Parts{negative, +exponent, significand} False{}:
+      long_range(negative, exponent, significand, U32.is_ge(exponent, 1086))
+
+def long_finite(parts: Parts) -> Word64:
+  match parts:
+    case Parts{negative, +exponent, significand}:
+      long_parts(Parts{negative, exponent, significand}, U32.is_lt(exponent, 1023))
+
+def long_class(+value: F64, kind: F64Class) -> Word64:
+  match kind:
+    case F64NaN{}: Word64{0, 0}
+    case F64Infinity{}: long_saturate(sign(value))
+    case _: long_finite(unpack(value))
+
+# Java narrowing conversion: NaN -> 0, truncate toward zero, then saturate.
+def to_java_long(+value: F64) -> Word64:
+  long_class(value, classify(value))
+
+type SquareRoot is Data:
+  SquareRoot{root: Wide, remainder: Wide}
+
+def sqrt_digit(remainder: Wide, +root: Wide, trial: Wide, accepted: Bool) -> SquareRoot:
+  match accepted:
+    case False{}: SquareRoot{wide_shl(root), remainder}
+    case True{}: SquareRoot{wide_increment(wide_shl(root)), wide_sub(remainder, trial)}
+
+def sqrt_trial(+remainder: Wide, +root: Wide, +trial: Wide) -> SquareRoot:
+  sqrt_digit(remainder, root, trial, Bool.not(Cmp.is_lt(wide_cmp(remainder, trial))))
+
+def sqrt_pair(remainder: Wide, +root: Wide, pair: U32) -> SquareRoot:
+  sqrt_trial(wide_add(wide_shl(wide_shl(remainder)), Wide{0, pair}), root, wide_increment(wide_shl(wide_shl(root))))
+
+# Restoring integer square root consumes exactly 56 two-bit digits. Remainder
+# and trial fit 59 bits; the input shift register is 128 bits.
+def sqrt_loop(fuel: Nat, radicand: Quad, state: SquareRoot) -> SquareRoot:
+  match fuel radicand state:
+    case 0n _ _: state
+    case 1n+rest Quad{+w3, w2, w1, w0} SquareRoot{root, remainder}:
+      sqrt_loop(rest, quad_shl(quad_shl(Quad{w3, w2, w1, w0})), sqrt_pair(remainder, root, U32.shrn(w3, 30n)))
+
+def sqrt_jam(root: Wide, sticky: Bool) -> Wide:
+  match root:
+    case Wide{hi, lo}: Wide{hi, U32.or(lo, Bool.to_u32(sticky))}
+
+def sqrt_finish(exponent: U32, state: SquareRoot) -> F64:
+  match state:
+    case SquareRoot{root, remainder}:
+      round_pack(False{}, exponent, sqrt_jam(root, Bool.not(wide_is_zero(remainder))))
+
+def sqrt_radicand(significand: Wide) -> Quad:
+  match significand:
+    case Wide{hi, +lo}:
+      Quad{U32.or(U32.shln(hi, 10n), U32.shrn(lo, 22n)), U32.shln(lo, 10n), 0, 0}
+
+def sqrt_parity(exponent: U32, radicand: Quad, odd: Bool) -> F64:
+  match odd:
+    case False{}: sqrt_finish(exponent, sqrt_loop(56n, radicand, SquareRoot{Wide{0, 0}, Wide{0, 0}}))
+    case True{}: sqrt_finish(exponent, sqrt_loop(56n, quad_shl(radicand), SquareRoot{Wide{0, 0}, Wide{0, 0}}))
+
+# Normalized shifted exponent s = unbiased exponent + 3071. The output biased
+# exponent is floor((s-1025)/2); an even s denotes an odd unbiased exponent.
+# The radicand is significand << 58, with one extra shift for that odd case.
+def sqrt_parts(parts: Parts) -> F64:
+  match parts:
+    case Parts{negative, +exponent, significand}:
+      sqrt_parity(U32.shr(U32.sub(exponent, 1025)), sqrt_radicand(significand), U32.is_eq(U32.and(exponent, 1), 0))
+
+def sqrt_positive(value: F64, negative: Bool) -> F64:
+  match negative:
+    case True{}: canonical_nan()
+    case False{}: sqrt_parts(normalize_factor(unpack(value)))
+
+def sqrt_class(+value: F64, kind: F64Class) -> F64:
+  match kind:
+    case F64NaN{}: quiet_nan(value)
+    case F64Zero{}: value
+    case F64Infinity{}:
+      infinity_pair(value, value, Bool.not(sign(value)))
+    case _: sqrt_positive(value, sign(value))
+
+# RN-even binary64 sqrt. Preserve signed zero; quiet an input NaN with its
+# payload/sign; negative nonzero inputs produce the canonical positive qNaN.
+def sqrt(+value: F64) -> F64:
+  sqrt_class(value, classify(value))

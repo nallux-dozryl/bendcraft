@@ -508,6 +508,297 @@ def benchmark(binary: Path, reference: Path, iterations: int, repeats: int) -> d
             "workloads": results}
 
 
+SQRT_LONG_C = r'''
+#include <fenv.h>
+#include <float.h>
+#include <inttypes.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <string.h>
+static double from_bits(uint64_t b) { double v; memcpy(&v,&b,8); return v; }
+static uint64_t bits(double v) { uint64_t b; memcpy(&b,&v,8); return b; }
+int main(int argc,char **argv) {
+  if(argc!=2 || sizeof(double)!=8 || FLT_RADIX!=2 || DBL_MANT_DIG!=53 || fesetround(FE_TONEAREST)!=0) return 2;
+  uint64_t input;
+  while(scanf("%" SCNx64,&input)==1) {
+    volatile double v=from_bits(input);
+    if(strcmp(argv[1],"sqrt")==0) printf("%016" PRIx64 "\n",bits(sqrt(v)));
+    else {
+      /* Guard the C cast: conversion outside signed64 range is undefined in C. */
+      int64_t out=isnan(v)?0:v>=0x1p63?INT64_MAX:v<=-0x1p63?INT64_MIN:(int64_t)v;
+      printf("%016" PRIx64 "\n",(uint64_t)out);
+    }
+  }
+  return 0;
+}
+'''
+
+SQRT_LONG_JAVA = r'''
+import java.io.*;
+public class F64SqrtLongReference {
+  public static void main(String[] args) throws Exception {
+    BufferedReader input=new BufferedReader(new InputStreamReader(System.in));
+    PrintWriter output=new PrintWriter(System.out); String line;
+    while((line=input.readLine())!=null) {
+      double v=Double.longBitsToDouble(Long.parseUnsignedLong(line,16));
+      if(args[0].equals("sqrt")) output.println(Long.toUnsignedString(Double.doubleToRawLongBits(Math.sqrt(v)),16)+" "+Long.toUnsignedString(Double.doubleToRawLongBits(StrictMath.sqrt(v)),16));
+      else output.println(Long.toUnsignedString((long)v,16));
+    }
+    output.flush(); if(output.checkError()) throw new IOException("Numeric observation failed");
+  }
+}
+'''
+
+
+def exact_dyadic(bits: int) -> Fraction:
+    """Decode raw binary64 with integer arithmetic, including subnormals."""
+    exponent = (bits >> 52) & 2047
+    mantissa = bits & FRAC
+    power = -1074 if exponent == 0 else exponent-1075
+    if exponent:
+        mantissa |= 1 << 52
+    value = Fraction(mantissa << power, 1) if power >= 0 else Fraction(mantissa, 1 << -power)
+    return -value if bits & SIGN else value
+
+
+def sqrt_integer_expected(bits: int) -> int:
+    """Independent arbitrary-integer isqrt and squared midpoint rounding."""
+    kind = category(bits)
+    if kind == 4:
+        return bits | QUIET
+    if kind == 0:
+        return bits
+    if bits & SIGN:
+        return CANONICAL_NAN
+    if kind == 3:
+        return bits
+    exponent = (bits >> 52) & 2047
+    mantissa = bits & FRAC
+    if exponent:
+        mantissa |= 1 << 52
+    shift = 53-mantissa.bit_length()
+    mantissa <<= shift
+    exponent = (exponent or 1)-1023-shift
+    output_exponent = exponent // 2
+    radicand = (mantissa << (exponent & 1)) << 52
+    retained = math.isqrt(radicand)
+    relation = 4*radicand-(2*retained+1)**2
+    if relation > 0 or (relation == 0 and retained & 1):
+        retained += 1
+    if retained == 1 << 53:
+        retained >>= 1
+        output_exponent += 1
+    return ((output_exponent+1023) << 52) | (retained & FRAC)
+
+
+def sqrt_interval_check(input_bits: int, output_bits: int) -> str:
+    """Compare x with exact squares of both rounding-cell midpoints."""
+    value = exact_dyadic(input_bits)
+    lower, center, upper = (exact_dyadic(output_bits+offset) for offset in (-1, 0, 1))
+    lower_square, upper_square = ((lower+center)/2)**2, ((center+upper)/2)**2
+    if value < lower_square or value > upper_square:
+        raise AssertionError(f"sqrt outside exact midpoint interval: {input_bits:016x} -> {output_bits:016x}")
+    if value in (lower_square, upper_square) and output_bits & 1:
+        raise AssertionError("sqrt midpoint tie did not choose even significand")
+    return "exact_square" if value == center*center else "lower_half" if value < center*center else "upper_half"
+
+
+def sqrt_fixtures(seed: int, count: int) -> list[tuple[str, int]]:
+    rng = random.Random(seed ^ 0x5A7)
+    cases = [("special", bits) for bits in (0, SIGN, EXP, SIGN|EXP, EXP|1, EXP|QUIET, SIGN|EXP|1, SIGN|EXP|QUIET|FRAC)]
+    for exponent in range(1, 2047):
+        for mantissa in (0, 1, 2, (1 << 51)-1, 1 << 51, FRAC-1, FRAC):
+            cases.append(("normal_exponent_edges", (exponent << 52)|mantissa))
+    for power in range(52):
+        for delta in (-1, 0, 1):
+            bits = (1 << power)+delta
+            if bits:
+                cases.extend((("subnormal_ladder", bits), ("negative_subnormal", bits|SIGN)))
+    for bits in (float_bits(float(n*n)) for n in range(1, 101)):
+        cases.extend(("integer_square_neighbors", bits+delta) for delta in (-1, 0, 1))
+    for _ in range(count):
+        bits = rng.getrandbits(64)
+        cases.append(("uniform_raw_bits", bits))
+        cases.append(("uniform_positive_bits", bits & ~SIGN))
+    # Square the exact midpoint between adjacent output doubles. Inputs nearest
+    # that rational are deliberately hard rounding cases; no host sqrt is used.
+    for _ in range(5000):
+        output = (rng.randrange(486, 1535) << 52) | rng.getrandbits(52)
+        midpoint = (exact_dyadic(output)+exact_dyadic(output+1))/2
+        try:
+            candidate = float_bits(float(midpoint*midpoint))
+        except OverflowError:
+            continue
+        if 0 < candidate < EXP:
+            for delta in (-1, 0, 1):
+                if 0 < candidate+delta < EXP:
+                    cases.append(("squared_midpoint_neighbors", candidate+delta))
+    return cases
+
+
+def java_long_expected(bits: int) -> int:
+    kind = category(bits)
+    if kind == 4:
+        return 0
+    if kind == 3:
+        return 1 << 63 if bits & SIGN else (1 << 63)-1
+    value = exact_dyadic(bits)
+    magnitude = abs(value.numerator)//value.denominator
+    integer = -magnitude if value < 0 else magnitude
+    return min((1 << 63)-1, max(-(1 << 63), integer)) & ((1 << 64)-1)
+
+
+def long_fixtures(seed: int, count: int) -> list[tuple[str, int]]:
+    rng = random.Random(seed ^ 0x1064)
+    cases = [("special", bits) for bits in (0, SIGN, EXP, SIGN|EXP, EXP|1, EXP|QUIET|FRAC, SIGN|EXP|1, SIGN|EXP|FRAC)]
+    for exponent in range(2047):
+        for mantissa in (0, 1, (1 << 51)-1, 1 << 51, FRAC):
+            for sign in (0, SIGN):
+                cases.append(("every_exponent_edges", sign|(exponent << 52)|mantissa))
+    for power in range(64):
+        for sign in (1, -1):
+            center = float_bits(float(sign*(1 << power)))
+            for delta in range(-4, 5):
+                cases.append(("power_integer_neighbors", center+delta))
+    for _ in range(count):
+        cases.append(("uniform_raw_bits", rng.getrandbits(64)))
+        value = rng.randrange(-(1 << 63), 1 << 63)
+        center = float_bits(float(value))
+        cases.extend(("long_range_random_neighbors", center+delta) for delta in (-1, 0, 1))
+    # Exercise the actual double operands passed to the Minecraft 26.3 table
+    # index cast. Java expression integration is validated by player_motion.
+    for word in [0, 0x80000000, 0x3F800000, 0xBF800000, 0x7F800000, 0xFF800000, 0x7FC00000, 0x7F7FFFFF, 0xFF7FFFFF]+[rng.getrandbits(32) for _ in range(2000)]:
+        angle = single_value(word)
+        scaled = angle*10430.378350470453
+        cases.extend((("mth_scaled_angle", float_bits(scaled)), ("mth_scaled_cos_angle", float_bits(scaled+16384.0))))
+    return cases
+
+
+def check_sqrt_long(binary: Path, reference: Path, java_command: list[str], operation: str, seed: int, count: int) -> dict:
+    started = time.perf_counter()
+    cases = sqrt_fixtures(seed, count) if operation == "sqrt" else long_fixtures(seed, count)
+    expected_rows = [(sqrt_integer_expected if operation == "sqrt" else java_long_expected)(bits) for _, bits in cases]
+    payload = "".join(f"{bits:016x}\n" for _, bits in cases)
+    c_rows = run([str(reference), operation], stdin=payload).stdout.splitlines()
+    java_rows = run([*java_command, operation], stdin=payload).stdout.splitlines()
+    if len(c_rows) != len(cases) or len(java_rows) != len(cases):
+        raise AssertionError("sqrt/long reference row count mismatch")
+    nan_checks = 0
+    for (kind, bits), expected_bits, c, java in zip(cases, expected_rows, c_rows, java_rows, strict=True):
+        words = [int(c, 16), *(int(word, 16) for word in java.split())]
+        if operation == "sqrt" and category(expected_bits) == 4:
+            nan_checks += 1
+            if any(category(word) != 4 for word in words):
+                raise AssertionError(f"sqrt NaN-class mismatch {bits:016x}")
+        elif any(word != expected_bits for word in words):
+            raise AssertionError(f"{operation} C/Java/exact mismatch: {kind} {bits:016x}, expected {expected_bits:016x}, references {words}")
+    native_started = time.perf_counter()
+    for first in range(0, len(cases), 128):
+        arguments = [f"{operation}|{bits >> 32}|{bits & 0xFFFFFFFF}|0|0|0" for _, bits in cases[first:first+128]]
+        rows = run([str(binary), "--gpu", "off", "--threads", "1", "--", *arguments]).stdout.splitlines()
+        if len(rows) != len(arguments):
+            raise AssertionError("sqrt/long native row count mismatch")
+        for index, row in enumerate(rows, first):
+            label, hi, lo = row.split("|")
+            actual = (int(hi) << 32)|int(lo)
+            if label != operation or actual != expected_rows[index]:
+                raise AssertionError(f"Native {operation} mismatch: {cases[index]} expected {expected_rows[index]:016x} actual {actual:016x}")
+    native_elapsed = time.perf_counter()-native_started
+    intervals = Counter()
+    if operation == "sqrt":
+        for (_, bits), result in zip(cases, expected_rows, strict=True):
+            if not bits & SIGN and category(bits) in (1, 2):
+                intervals[sqrt_interval_check(bits, result)] += 1
+    outcomes = Counter("zero" if result == 0 else "min" if result == 1 << 63 else "max" if result == (1 << 63)-1 else "finite_integer" for result in expected_rows) if operation == "long" else None
+    return {"operation": operation, "cases": len(cases), "fixture_kinds": dict(sorted(Counter(kind for kind, _ in cases).items())),
+            "native_exact_bit_comparisons": len(cases), "c_exact_bit_comparisons": len(cases)-nan_checks,
+            "java_exact_bit_comparisons": len(cases)-nan_checks, "strictmath_exact_bit_comparisons": len(cases)-nan_checks if operation == "sqrt" else None,
+            "nan_class_checks_each": nan_checks, "exact_squared_midpoint_interval_checks": sum(intervals.values()),
+            "interval_outcomes": dict(intervals), "long_outcomes": dict(outcomes) if outcomes else None,
+            "fixture_sha256": hashlib.sha256("\n".join(f"{kind}|{bits:016x}" for kind, bits in cases).encode()).hexdigest(),
+            "native_wall_seconds_including_process_startup_and_io": native_elapsed, "total_wall_seconds": time.perf_counter()-started}
+
+
+def sqrt_long_regression_smoke(binary: Path, seed: int) -> dict:
+    all_cases = fixtures(seed, 256)
+    edges = [case for case in all_cases if case[0] == "edge"]
+    cases = [edges[index*len(edges)//128] for index in range(128)]
+    cases += [case for case in all_cases if case[0] == "uniform_finite"]
+    cases += [case for case in all_cases if case[0].startswith("division_")]
+    for first in range(0, len(cases), 128):
+        args = [f"regression|{a >> 32}|{a & 0xFFFFFFFF}|{b >> 32}|{b & 0xFFFFFFFF}|0" for _, a, b in cases[first:first+128]]
+        rows = run([str(binary), "--gpu", "off", "--threads", "1", "--", *args]).stdout.splitlines()
+        if len(rows) != len(args):
+            raise AssertionError("Arithmetic regression row count mismatch")
+        for (_, a, b), row in zip(cases[first:first+128], rows, strict=True):
+            if [int(word) for word in row.split("|")[1:]] != expected(a, b):
+                raise AssertionError(f"Existing arithmetic regression: {a:016x} {b:016x}")
+    casts = narrowing_fixtures(seed, 0)[:256]
+    for first in range(0, len(casts), 128):
+        args = [f"narrow|{bits >> 32}|{bits & 0xFFFFFFFF}|0|0|0" for _, bits in casts[first:first+128]]
+        rows = run([str(binary), "--gpu", "off", "--threads", "1", "--", *args]).stdout.splitlines()
+        if len(rows) != len(args):
+            raise AssertionError("Narrowing regression row count mismatch")
+        for (_, bits), row in zip(casts[first:first+128], rows, strict=True):
+            if int(row.split("|")[1]) != narrowing_expected(bits):
+                raise AssertionError(f"Existing narrowing regression: {bits:016x}")
+    return {"arithmetic_pair_cases": len(cases), "arithmetic_result_bit_comparisons": 4*len(cases),
+            "classification_order_sign_relation_negation_abs_pairs": len(cases), "narrowing_bit_comparisons": len(casts),
+            "scope": "bounded regression smoke; historical full arithmetic evidence remains separate"}
+
+
+def sqrt_long_main(options) -> None:
+    build = ROOT/"build"
+    build.mkdir(exist_ok=True)
+    binary, reference = build/"f64_sqrtlong_test", build/"f64_sqrtlong_reference"
+    c_source, java_source = build/"f64_sqrtlong_reference.c", build/"F64SqrtLongReference.java"
+    c_source.write_text(SQRT_LONG_C)
+    java_source.write_text(SQRT_LONG_JAVA)
+    commands = [[options.bend, "src/f64.bend", "--verdict"], [options.bend, "tests/f64.bend", "--verdict"],
+                [options.bend, "tests/f64.bend", "-o", str(binary)], [options.bend, "tests/f64.bend", "-o", str(binary)+".c"],
+                ["clang", "-O3", "-fno-fast-math", "-ffp-contract=off", str(c_source), "-o", str(reference)],
+                [str(JAVA.parent/"javac"), "-d", str(build), str(java_source)]]
+    timings, verdicts = {}, []
+    for index, command in enumerate(commands):
+        started = time.perf_counter()
+        result = run(command)
+        timings[str(index)] = time.perf_counter()-started
+        if index < 2:
+            if "ALL PROOFS CHECK" not in result.stdout:
+                raise AssertionError(result.stdout)
+            verdicts.append(result.stdout.strip())
+    java_command = [str(JAVA), "-cp", str(build), "F64SqrtLongReference"]
+    # The emitted implementation may use integer C operations, never hardware
+    # floating sqrt/casts as a hidden simulation dependency.
+    emitted = Path(str(binary)+".c").read_text()
+    scalar_helpers = re.findall(r'(?ms)^INLINE Term spin_\d+\([^\n]+\) \{\n.*?^\}', emitted)
+    scalar_text = "\n".join(scalar_helpers)
+    if re.search(r"\b(?:sqrt|sqrtf|sqrtl)\s*\(", emitted) or re.search(r'\bdouble\b|f32_unbox|f32_rewrap', scalar_text):
+        raise AssertionError("Emitted Bend implementation contains a host float operation")
+    regressions = sqrt_long_regression_smoke(binary, options.seed)
+    for operation in ("sqrt", "long"):
+        result = check_sqrt_long(binary, reference, java_command, operation, options.seed, options.random)
+        evidence = {"schema": 1, "result": "pass", "scope": f"targeted pure F64 {operation}; old arithmetic evidence preserved",
+                    "verification_scope": "independent kernel type/termination validity plus finite laws and native oracle fixtures; no universal IEEE theorem",
+                    "kernel_verdicts": dict(zip(("source", "tests"), verdicts, strict=True)), "build_wall_seconds": timings,
+                    "seed": options.seed, "random_cases_requested": options.random, "regression_smoke": regressions,
+                    "reproduce": ["python3", "tools/test_f64.py", "--sqrt-long-only", "--seed", str(options.seed), "--random", str(options.random)],
+                    "policy": "RN-even; preserve signed zero/+infinity; quiet input NaN preserving payload/sign; negative nonzero -> positive canonical quiet NaN" if operation == "sqrt" else "Java signed64 narrowing: NaN0, truncate toward zero, saturate; output hi/lo two's-complement words",
+                    "platform": {"system": platform.system(), "release": platform.release(), "machine": platform.machine()},
+                    "compiler": run([options.bend, "version"]).stdout.strip(), "checks": result,
+                    "compiler_file": fingerprint(Path(options.bend)), "native_binary": fingerprint(binary), "c_reference_binary": fingerprint(reference),
+                    "emitted_c": {"sha256": hashlib.sha256(emitted.encode()).hexdigest(), "scalar_inline_helpers": len(scalar_helpers), "scalar_helpers_use_host_float_arithmetic": False, "host_sqrt_call_present": False},
+                    "java_runtime": fingerprint(JAVA), "java_version": run([str(JAVA), "-version"]).stderr.strip(),
+                    "reference_source_sha256": {"c": hashlib.sha256(SQRT_LONG_C.encode()).hexdigest(), "java": hashlib.sha256(SQRT_LONG_JAVA.encode()).hexdigest()},
+                    "source_sha256": {path: hashlib.sha256((ROOT/path).read_bytes()).hexdigest() for path in ("src/f64.bend", "tests/f64.bend", "tools/test_f64.py")},
+                    "commands": commands+[[*java_command, operation], [str(reference), operation]],
+                    "official_semantics": "https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/Math.html#sqrt(double)" if operation == "sqrt" else "https://docs.oracle.com/javase/specs/jls/se25/html/jls-5.html#jls-5.1.3"}
+        destination = ROOT/f"evidence/f64-{operation}-oracle.json"
+        destination.write_text(json.dumps(evidence, indent=2)+"\n")
+        print(json.dumps({"evidence": str(destination), "checks": result}, indent=2))
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--bend", default="/Users/chuah/.bend/bin/bend")
@@ -517,10 +808,14 @@ def main() -> None:
     parser.add_argument("--repeats", type=int, default=5)
     parser.add_argument("--evidence", default="evidence/f64-oracle.json")
     parser.add_argument("--cast-only", action="store_true")
+    parser.add_argument("--sqrt-long-only", action="store_true")
     parser.add_argument("--step-samples", type=Path)
     options = parser.parse_args()
     if options.random < 10000:
         raise ValueError("At least 10,000 random finite pairs are required")
+    if options.sqrt_long_only:
+        sqrt_long_main(options)
+        return
     build = ROOT / "build"
     build.mkdir(exist_ok=True)
     binary, reference = build/"f64_test", build/"f64_reference"

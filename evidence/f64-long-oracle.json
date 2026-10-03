@@ -1,0 +1,163 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "scope": "targeted pure F64 long; old arithmetic evidence preserved",
+  "verification_scope": "independent kernel type/termination validity plus finite laws and native oracle fixtures; no universal IEEE theorem",
+  "kernel_verdicts": {
+    "source": "ALL PROOFS CHECK",
+    "tests": "ALL PROOFS CHECK"
+  },
+  "build_wall_seconds": {
+    "0": 0.21219904255121946,
+    "1": 1.3397774994373322,
+    "2": 3.022077332250774,
+    "3": 2.0522064585238695,
+    "4": 0.050932209007442,
+    "5": 0.3921512085944414
+  },
+  "seed": 640263,
+  "random_cases_requested": 20000,
+  "regression_smoke": {
+    "arithmetic_pair_cases": 540,
+    "arithmetic_result_bit_comparisons": 2160,
+    "classification_order_sign_relation_negation_abs_pairs": 540,
+    "narrowing_bit_comparisons": 256,
+    "scope": "bounded regression smoke; historical full arithmetic evidence remains separate"
+  },
+  "reproduce": [
+    "python3",
+    "tools/test_f64.py",
+    "--sqrt-long-only",
+    "--seed",
+    "640263",
+    "--random",
+    "20000"
+  ],
+  "policy": "Java signed64 narrowing: NaN0, truncate toward zero, saturate; output hi/lo two's-complement words",
+  "platform": {
+    "system": "Darwin",
+    "release": "25.4.0",
+    "machine": "arm64"
+  },
+  "compiler": "bend 2.0.35",
+  "checks": {
+    "operation": "long",
+    "cases": 105648,
+    "fixture_kinds": {
+      "every_exponent_edges": 20470,
+      "long_range_random_neighbors": 60000,
+      "mth_scaled_angle": 2009,
+      "mth_scaled_cos_angle": 2009,
+      "power_integer_neighbors": 1152,
+      "special": 8,
+      "uniform_raw_bits": 20000
+    },
+    "native_exact_bit_comparisons": 105648,
+    "c_exact_bit_comparisons": 105648,
+    "java_exact_bit_comparisons": 105648,
+    "strictmath_exact_bit_comparisons": null,
+    "nan_class_checks_each": 0,
+    "exact_squared_midpoint_interval_checks": 0,
+    "interval_outcomes": {},
+    "long_outcomes": {
+      "zero": 20990,
+      "max": 10245,
+      "min": 10110,
+      "finite_integer": 64303
+    },
+    "fixture_sha256": "9e0db1b97fd87f168abac301973add18d93d3649a65a3c88b23bf76c73492677",
+    "native_wall_seconds_including_process_startup_and_io": 2.508709540590644,
+    "total_wall_seconds": 2.8732121251523495
+  },
+  "compiler_file": {
+    "file": "bend",
+    "bytes": 63885392,
+    "sha1": "ddce6e432357be618d905b19c0f79abe3d28c388",
+    "sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e"
+  },
+  "native_binary": {
+    "file": "f64_sqrtlong_test",
+    "bytes": 1198688,
+    "sha1": "90bf7d3b391b336c384d5340ddb80ac971aade8e",
+    "sha256": "fcd67ce75d4d2179b4a51d9f15eac1965da0da1827fe9396e0aae160e4a72d17"
+  },
+  "c_reference_binary": {
+    "file": "f64_sqrtlong_reference",
+    "bytes": 33576,
+    "sha1": "9d9550b1a6d7e25fcb561f90d81874a154d3cd4c",
+    "sha256": "d357669a6347658bd36ea9fbdc2b0bc3dff9e14ccc840cc7d1ab3aa3684b2b17"
+  },
+  "emitted_c": {
+    "sha256": "e68c328c53584d4ef79e301c4790cc174fe431e2c8731e1f51187446a8587e83",
+    "scalar_inline_helpers": 169,
+    "scalar_helpers_use_host_float_arithmetic": false,
+    "host_sqrt_call_present": false
+  },
+  "java_runtime": {
+    "file": "java",
+    "bytes": 84720,
+    "sha1": "5af4a90be54ddeec03db3700e6989594c9438952",
+    "sha256": "e0879c0df70d880d66904064d1b388b08aeee0958a047f37601435b28db849a3"
+  },
+  "java_version": "openjdk version \"25.0.1\" 2025-10-21 LTS\nOpenJDK Runtime Environment Microsoft-12574220 (build 25.0.1+8-LTS)\nOpenJDK 64-Bit Server VM Microsoft-12574220 (build 25.0.1+8-LTS, mixed mode)",
+  "reference_source_sha256": {
+    "c": "42991942b44aaedc6ce76521b608a03bb3963fa83b5052374ed5a023ff1306fd",
+    "java": "40382e40c7d3c94c095244bf70fe7673c747b6a6260e116cb4aa39d47a99aa92"
+  },
+  "source_sha256": {
+    "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "tests/f64.bend": "84ed0806915490f88a549ec83868004341a69c2d54b7ceeb03b8112479cc3095",
+    "tools/test_f64.py": "b371bdff6054acb744958e6b7a1ab44525ffeb6f5bf94ff4d2f6f323435bce8d"
+  },
+  "commands": [
+    [
+      "/Users/chuah/.bend/bin/bend",
+      "src/f64.bend",
+      "--verdict"
+    ],
+    [
+      "/Users/chuah/.bend/bin/bend",
+      "tests/f64.bend",
+      "--verdict"
+    ],
+    [
+      "/Users/chuah/.bend/bin/bend",
+      "tests/f64.bend",
+      "-o",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/f64_sqrtlong_test"
+    ],
+    [
+      "/Users/chuah/.bend/bin/bend",
+      "tests/f64.bend",
+      "-o",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/f64_sqrtlong_test.c"
+    ],
+    [
+      "clang",
+      "-O3",
+      "-fno-fast-math",
+      "-ffp-contract=off",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/f64_sqrtlong_reference.c",
+      "-o",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/f64_sqrtlong_reference"
+    ],
+    [
+      "/Users/chuah/Library/Application Support/minecraft/runtime/java-runtime-epsilon/mac-os-arm64/java-runtime-epsilon/jre.bundle/Contents/Home/bin/javac",
+      "-d",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/F64SqrtLongReference.java"
+    ],
+    [
+      "/Users/chuah/Library/Application Support/minecraft/runtime/java-runtime-epsilon/mac-os-arm64/java-runtime-epsilon/jre.bundle/Contents/Home/bin/java",
+      "-cp",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build",
+      "F64SqrtLongReference",
+      "long"
+    ],
+    [
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/f64_sqrtlong_reference",
+      "long"
+    ]
+  ],
+  "official_semantics": "https://docs.oracle.com/javase/specs/jls/se25/html/jls-5.html#jls-5.1.3"
+}

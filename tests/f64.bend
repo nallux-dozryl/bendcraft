@@ -1,6 +1,20 @@
 import Base
 import ../src/f64.bend as F
 
+# Finite special-case fixtures. Native independent oracles test numeric roots;
+# these normalization laws do not establish universal IEEE correctness.
+law sqrt_special_cases:
+  {(F.sqrt(F.F64{0, 0}), F.sqrt(F.F64{2147483648, 0}), F.sqrt(F.F64{3220176896, 0})) == (F.F64{0, 0}, F.F64{2147483648, 0}, F.F64{2146959360, 0}) : F.F64 & F.F64 & F.F64}
+
+def sqrt_special_cases():
+  {==}
+
+law java_long_special_cases:
+  {(F.to_java_long(F.F64{2146959360, 1}), F.to_java_long(F.F64{1138753536, 0}), F.to_java_long(F.F64{3286237184, 0})) == (F.Word64{0, 0}, F.Word64{2147483647, 4294967295}, F.Word64{2147483648, 0}) : F.Word64 & F.Word64 & F.Word64}
+
+def java_long_special_cases():
+  {==}
+
 def number_result(value: Maybe<&2, U32>) -> U32:
   match value:
     case Some{x}: x
@@ -86,6 +100,16 @@ def conversion_report(+word: U32, +value: F.F64) -> IO(Unit):
 def narrowing_report(value: F.F64) -> IO(Unit):
   IO.print("narrow|" ++ U32.show(F32.bits(F.to_f32(value))))
 
+def long_show(value: F.Word64) -> String:
+  match value:
+    case F.Word64{hi, lo}: U32.show(hi) ++ "|" ++ U32.show(lo)
+
+def sqrt_report(value: F.F64) -> IO(Unit):
+  IO.print("sqrt|" ++ value_show(F.sqrt(value)))
+
+def long_report(value: F.F64) -> IO(Unit):
+  IO.print("long|" ++ long_show(F.to_java_long(value)))
+
 def dispatch_label(label: String, ah: U32, al: U32, bh: U32, bl: U32, extra: U32) -> IO(Unit):
   match label:
     case "bench": benchmark_report(ah, F.F64{al, bh}, F.F64{bl, extra})
@@ -93,6 +117,8 @@ def dispatch_label(label: String, ah: U32, al: U32, bh: U32, bl: U32, extra: U32
     case "benchdiv": benchmark_div_report(ah, F.F64{al, bh}, F.F64{bl, extra})
     case "convert": conversion_report(ah, F.F64{al, bh})
     case "narrow": narrowing_report(F.F64{ah, al})
+    case "sqrt": sqrt_report(F.F64{ah, al})
+    case "long": long_report(F.F64{ah, al})
     case _: report(label, F.F64{ah, al}, F.F64{bh, bl})
 
 def dispatch(fields: List<&2, String>) -> IO(Unit):
