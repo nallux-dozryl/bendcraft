@@ -9,9 +9,11 @@ from __future__ import annotations
 
 import argparse
 import base64
+from collections import Counter
 import hashlib
 import json
 import math
+from pathlib import Path
 import random
 import re
 import struct
@@ -338,6 +340,123 @@ def source_inventory():
     return result
 
 
+def canonical_sha256(value):
+    return hashlib.sha256(canonical(value)).hexdigest()
+
+
+def compact_report(destination, evidence, raw_execution=None):
+    """Store full observations locally; publish checked provenance summaries.
+
+    The in-memory evidence passed to collect() is never changed. Historical
+    records keep their original execution/provenance, not a fresh-Java claim.
+    """
+    assert evidence['observations_sha256'] == canonical_sha256(evidence['observations'])
+    full = dict(evidence)
+    if raw_execution is not None:
+        full['raw_execution'] = raw_execution
+    raw_path = ROOT/'build/local-input-reference'/f'{destination.stem}.full.json'
+    write_json(raw_path, full)
+    report = {key: value for key, value in evidence.items()
+              if key not in ('observations', 'source', 'provenance', 'substituted_external_types', 'execution')}
+    report['evidence_format'] = 'local-input-summary-v1'
+    report['storage_writer'] = fingerprint(Path(__file__))
+    report['observation_count'] = len(evidence['observations'])
+    report['observation_groups'] = dict(sorted(Counter(row['id'].split(':', 1)[0] for row in evidence['observations']).items()))
+    inventory = evidence['source']
+    report['source_inventory'] = {
+        'class_count': len(inventory),
+        'method_count': sum(len(owner['methods']) for owner in inventory.values()),
+        'canonical_sha256': canonical_sha256(inventory),
+        'class_bytes_sha256': {name: owner['class_sha256'] for name, owner in inventory.items()},
+    }
+    if 'loaded_official_classes' in evidence:
+        classes = evidence['loaded_official_classes']
+        report['loaded_official_classes'] = {name: digest for name, digest in classes.items() if name in inventory}
+        report['loaded_official_class_count'] = evidence.get('loaded_official_class_count', len(classes))
+        report['loaded_official_class_tree_sha256'] = evidence.get('loaded_official_class_tree_sha256', canonical_sha256(classes))
+    provenance = evidence['provenance']
+    report['provenance'] = {key: value for key, value in provenance.items()
+                            if key not in ('libraries', 'missing_other_platform_natives')}
+    for key in ('libraries', 'missing_other_platform_natives'):
+        report['provenance'][key+'_count'] = len(provenance[key])
+        report['provenance'][key+'_sha256'] = canonical_sha256(provenance[key])
+    report['provenance_sha256'] = canonical_sha256(provenance)
+    report['substituted_external_types'] = {
+        name: {'source_sha256': value['source_sha256']}
+        for name, value in evidence.get('substituted_external_types', {}).items()}
+    execution = dict(evidence['execution'])
+    command = list(execution['command'])
+    execution['command_sha256'] = canonical_sha256(command)
+    if '--class-path' in command:
+        index = command.index('--class-path')+1
+        execution['classpath_entry_count'] = len(command[index].split(':'))
+        execution['classpath_sha256'] = hashlib.sha256(command[index].encode()).hexdigest()
+        command[index] = '<verified pinned classpath; complete command in raw_report>'
+    execution['command'] = command
+    if execution['returncode'] == 0:
+        execution.pop('stderr_tail', None)
+        execution.pop('stdout_tail_on_failure', None)
+    report['execution'] = execution
+    report['raw_report'] = {'path': str(raw_path.relative_to(ROOT)), **fingerprint(raw_path)}
+    report['storage_scope'] = 'Summary only; full observations, original inventories/provenance and available raw execution retained in ignored raw_report. All checked fixture values remain in reference/local_input.json.'
+    write_json(destination, report)
+    verify_compact_report(destination)
+    return report
+
+
+def verify_compact_report(path):
+    report = json.loads(path.read_text())
+    assert report['evidence_format'] == 'local-input-summary-v1'
+    raw_path = ROOT/report['raw_report']['path']
+    assert fingerprint(raw_path) == {key: value for key, value in report['raw_report'].items() if key != 'path'}
+    full = json.loads(raw_path.read_text())
+    rows = full['observations']
+    assert report['observations_sha256'] == full['observations_sha256'] == canonical_sha256(rows)
+    assert report['observation_count'] == len(rows)
+    assert report['observation_groups'] == dict(sorted(Counter(row['id'].split(':', 1)[0] for row in rows).items()))
+    inventory = full['source']
+    assert report['source_inventory'] == {
+        'class_count': len(inventory), 'method_count': sum(len(owner['methods']) for owner in inventory.values()),
+        'canonical_sha256': canonical_sha256(inventory),
+        'class_bytes_sha256': {name: owner['class_sha256'] for name, owner in inventory.items()}}
+    assert report['provenance_sha256'] == canonical_sha256(full['provenance'])
+    for key in ('libraries', 'missing_other_platform_natives'):
+        assert report['provenance'][key+'_count'] == len(full['provenance'][key])
+        assert report['provenance'][key+'_sha256'] == canonical_sha256(full['provenance'][key])
+    assert report['execution']['command_sha256'] == canonical_sha256(full['execution']['command'])
+    if 'loaded_official_classes' in full:
+        original = full['loaded_official_classes']
+        assert report['loaded_official_classes'] == {name: digest for name, digest in original.items() if name in inventory}
+        assert report['loaded_official_class_count'] == full.get('loaded_official_class_count', len(original))
+        assert report['loaded_official_class_tree_sha256'] == full.get('loaded_official_class_tree_sha256', canonical_sha256(original))
+    raw = full.get('raw_execution', {})
+    if raw.get('loaded_official_classes') is not None:
+        classes = raw['loaded_official_classes']
+        assert report['loaded_official_class_count'] == len(classes)
+        assert report['loaded_official_class_tree_sha256'] == canonical_sha256(classes)
+    return {'report': fingerprint(path), 'observation_count': len(rows),
+            'observations_sha256': report['observations_sha256'], 'raw_report': report['raw_report']}
+
+
+def compact_existing_reports():
+    summaries = []
+    for path in sorted((ROOT/'evidence').glob('local-input-reference*.json')):
+        evidence = json.loads(path.read_text())
+        if evidence.get('evidence_format') == 'local-input-summary-v1':
+            verify_compact_report(path)
+            full = json.loads((ROOT/evidence['raw_report']['path']).read_text())
+            raw = full.pop('raw_execution', None)
+            compact_report(path, full, raw)
+            summaries.append(verify_compact_report(path))
+        elif 'observations' in evidence:
+            compact_report(path, evidence)
+            summaries.append(verify_compact_report(path))
+    result = {'status': 'passed', 'scope': 'Formatting/integrity only; no new Java execution or reference values changed',
+              'command': 'python3 tools/reference_local_input_probe.py --compact-existing', 'reports': summaries}
+    write_json(ROOT/'evidence/local-input-reference-storage.json', result)
+    return result
+
+
 def prototype():
     classpath, provenance = verified_client_classpath()
     command = [str(JAVA), '--source', '25', '--class-path', ':'.join(map(str, classpath)), '/dev/stdin']
@@ -371,7 +490,8 @@ def prototype():
             'local_player': 'Not constructed or simulated. Direct private static LocalPlayer methods receive actual Vec2 instances by reflection.',
         },
     }
-    write_json(ROOT / 'evidence/local-input-reference-prototype.json', evidence)
+    compact_report(ROOT / 'evidence/local-input-reference-prototype.json', evidence,
+                   {'stdout': run.stdout, 'stderr': run.stderr, 'probe_source': SOURCE})
     return {
         'status': evidence['status'],
         'observation_count': len(rows),
@@ -587,7 +707,9 @@ def receiver_prototype(mode, inputs=None, label=None):
         'constructor_boundary': 'All gameplay receivers use their normal constructors. Four exact external-service class names are defined from declared in-memory source; every official class is defined directly from unchanged installed jar bytes. No unsafe allocation, skipped constructor, gameplay replacement, UI or window is used. Observer methods call super and are compared against plain LocalPlayer receivers.',
     }
     destination = ROOT / f'evidence/local-input-reference-{label or "receiver-"+mode}.json'
-    write_json(destination,evidence)
+    compact_report(destination,evidence,{'stdout':run.stdout,'stderr':run.stderr,
+        'fixture_sources':sources,'compiled_launcher':launcher,
+        'loaded_official_classes':classes[0] if classes else None})
     summary={'status':evidence['status'],'mode':mode,'returncode':run.returncode,'observation_count':len(rows),
             'evidence':fingerprint(destination),'failure':evidence['execution']['stdout_tail_on_failure'] or run.stderr[-6500:] if run.returncode else None}
     return (summary,evidence) if mode=='corpus' else summary
@@ -749,9 +871,12 @@ def independent_rerun():
     assert evidence['loaded_official_class_count']==data['loaded_official_class_count'],'Independent actual class count differs'
     assert evidence['loaded_official_class_tree_sha256']==data['loaded_official_class_tree_sha256'],'Independent actual official class tree differs'
     evidence['independent_actual_observation_parity']=True
+    evidence['independent_actual_class_tree_parity']=True
     evidence['reference_compared']=fingerprint(OUTPUT)
     evidence['execution']['reproduce']='PYTHONDONTWRITEBYTECODE=1 python3 tools/reference_local_input_probe.py --rerun'
-    write_json(ROOT/'evidence/local-input-reference-independent.json',evidence)
+    destination=ROOT/'evidence/local-input-reference-independent.json'
+    raw=json.loads((ROOT/'build/local-input-reference'/f'{destination.stem}.full.json').read_text())['raw_execution']
+    compact_report(destination,evidence,raw)
     summary.update(independent_actual_observation_parity=True,evidence=fingerprint(ROOT/'evidence/local-input-reference-independent.json'))
     return summary
 
@@ -766,7 +891,10 @@ def main():
     parser.add_argument('--selftest',action='store_true')
     parser.add_argument('--rerun',action='store_true')
     parser.add_argument('--rotation-experiment',action='store_true')
+    parser.add_argument('--compact-existing',action='store_true',help='Compact/validate historical evidence without new Java execution')
     args = parser.parse_args()
+    if args.compact_existing:
+        print(json.dumps(compact_existing_reports(),indent=2));return
     if args.rerun:
         print(json.dumps(independent_rerun(),indent=2));return
     if args.rotation_experiment:

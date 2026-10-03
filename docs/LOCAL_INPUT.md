@@ -178,6 +178,23 @@ binary hashes in `evidence/local-input-verification.json`,
 `evidence/local-input-build-final.json` and
 `evidence/local-input-kernel-final.json`.
 
+The final storage-only refresh compacted six duplicate reference reports from
+15,410,940 bytes to 55,461 bytes. Complete original reports, raw observations,
+source and class trees remain under ignored `build/local-input-reference/`;
+tracked summaries link their paths, sizes and hashes. The reference file,
+actual Java source templates, input corpus, observation digest, frozen Bend
+files and native binary remain byte-identical. Fresh actual extraction and an
+independent rerun passed, as did all six integrity injections and existing
+native comparisons using exact prior build/kernel receipts. The refreshed
+producer SHA-256 is
+`42ad844c7ee3616286ce99bcea00c6bc0710b20888912b6e98c1b4af6072a56e`;
+the native driver SHA-256 is
+`70392b81675caa5a6207ffce3229ff1fd92f32c6278eb0b01846c53243957455`.
+`evidence/local-input-reference-storage.json` and
+`evidence/local-input-reference-compaction.json` record the preserved data and
+format change. `--compact-existing` regenerates summaries from stored complete
+reports without executing Java; it is a storage operation, not a new oracle.
+
 Reproduce the direct actual oracle with
 `python3 tools/reference_local_input_probe.py --rerun`, and its integrity and
 mutation checks with `--selftest`. Use `--extract` to regenerate the stored

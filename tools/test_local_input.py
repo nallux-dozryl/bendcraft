@@ -472,6 +472,9 @@ def main():
               'observations_sha256': data['observations_sha256'],
               'binary': fingerprint(BINARY), 'sources_sha256': source_hashes(),
               'tool_sha256': sha(Path(__file__)),
+              'reference_tool_sha256': sha(ROOT / 'tools/reference_local_input_probe.py'),
+              'reference_evidence_storage': 'Compact local-input-summary-v1 reports retain canonical observation/count/class/provenance hashes; full Java observations and manifests are ignored local build reports. Checked reference/local_input.json retains all fixture values.',
+              'command': 'python3 tools/test_local_input.py' + (' --skip-build' if args.skip_build else '') + (' --skip-checks' if args.skip_checks else '') + (' --reuse-checked' if args.reuse_checked else ''),
               'laws': re.findall(r'^law (\w+):', source, re.M),
               'scope': data['fixture_boundary'], 'confidence': data['confidence']}
     (ROOT / 'evidence/local-input-verification.json').write_text(json.dumps(record, sort_keys=True, indent=2)+'\n')

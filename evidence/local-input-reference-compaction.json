@@ -1,0 +1,149 @@
+{
+  "baseline": {
+    "bytes": 14251,
+    "file": "local-input-compaction-baseline.json",
+    "sha1": "b9534568f0556813824c7b16402733286cd486c6",
+    "sha256": "2028861142b0553d61ecfaa2e5b7e6922315be8e71070dc0def71b76c6eeae0e"
+  },
+  "baseline_path": "build/local-input-compaction-baseline.json",
+  "binary": {
+    "bytes": 1373632,
+    "file": "local-input-tests",
+    "sha1": "056f9b98b119b9bc5f31c7c14262ea1630f5d364",
+    "sha256": "d6df3f3c9b42a23f524d8402e230ea241e3156d5020cfb05ac17ceced56264d4"
+  },
+  "binary_unchanged": true,
+  "bytes_after": 55461,
+  "bytes_before": 15410940,
+  "commands": [
+    "PYTHONDONTWRITEBYTECODE=1 python3 tools/reference_local_input_probe.py --extract",
+    "PYTHONDONTWRITEBYTECODE=1 python3 tools/reference_local_input_probe.py --rerun",
+    "PYTHONDONTWRITEBYTECODE=1 python3 tools/reference_local_input_probe.py --compact-existing",
+    "PYTHONDONTWRITEBYTECODE=1 python3 tools/reference_local_input_probe.py --selftest",
+    "PYTHONDONTWRITEBYTECODE=1 python3 tools/test_local_input.py --skip-build --skip-checks --reuse-checked"
+  ],
+  "confidence": "high for formatting preservation and the frozen bounded corpus",
+  "counts": {
+    "ai_step": 28,
+    "ai_step_ticks": 140,
+    "keyboard": 128,
+    "receivers": 112,
+    "vectors": 2048
+  },
+  "formatting_checks": {
+    "all_six_compact_reports_validate_against_full_ignored_manifests": true,
+    "ignored_raw_storage_confirmed_by_git_check_ignore": true,
+    "original_java_source_constants_byte_identical": true,
+    "original_native_protocol_and_comparison_helpers_ast_identical": true
+  },
+  "frozen_bend_closure_count": 41,
+  "frozen_bend_closure_sha256": "6dec0bd6e3c63f868ade32d9157c83e766e17604957121653273c007684d7fd6",
+  "frozen_bend_closure_unchanged": true,
+  "group_sha256": {
+    "ai_step": "343a93084274337289399d49869ccd351cf042df3a6ee68d2448a426ea829ae9",
+    "keyboard": "06b6099a92b7cba57a68623afba9dc518724b820cc60c1242bbfea6266e4cec1",
+    "receivers": "894311bb47f0d5ec5c672abc8b98084c3730fe790f06ebe13202b4b27163d59a",
+    "vectors": "405bbb8eed37ae7a90627adc8537032c09e6242d2e06e1f1690ae77d89f4f48c"
+  },
+  "inputs_sha256": "80be01b225572a33177fd8ed484369ccd37708c18766285a774e6d715d5fea7e",
+  "integrity": {
+    "bytes": 1219,
+    "file": "local-input-reference-integrity.json",
+    "sha1": "6c7ef393fa1d75dd1b658f1e9335dbc1c12c7e70",
+    "sha256": "626b4476269b526a1682e66611a80c76ec245d37c66cf07054a3350b139ba4b9"
+  },
+  "integrity_mutations_rejected": 6,
+  "native_chained_cache_ticks": 130,
+  "native_counts": {
+    "apply": 211,
+    "bob": 224,
+    "controls": 130,
+    "keyboard": 128,
+    "modify": 112,
+    "predicates": 112,
+    "prepare": 130,
+    "vectors": 2048
+  },
+  "native_owner_retention_followups": 32,
+  "native_rejections": 32,
+  "native_test_driver": {
+    "bytes": 26652,
+    "file": "test_local_input.py",
+    "sha1": "00064bf27020ac214144c03ac5343d4437d4de5e",
+    "sha256": "70392b81675caa5a6207ffce3229ff1fd92f32c6278eb0b01846c53243957455"
+  },
+  "native_validation_seconds": 5.088202,
+  "native_verification": {
+    "bytes": 33880,
+    "file": "local-input-verification.json",
+    "sha1": "a1a63ca3ea81d1124fe197b1bdf38a8863a91087",
+    "sha256": "ff6f8ba319e0f854e61f8d75b04dafdda9f882c050a45d718365eebccb816839"
+  },
+  "observations_sha256": "5250f3a809b70b05218179b60c8c86cc2777c256cc2277a6337968be7effcb83",
+  "producer": {
+    "bytes": 72229,
+    "file": "reference_local_input_probe.py",
+    "sha1": "7a3300927be696f5f526623a1d503c5752ac8adb",
+    "sha256": "42ad844c7ee3616286ce99bcea00c6bc0710b20888912b6e98c1b4af6072a56e"
+  },
+  "raw_receiver_observations_sha256": "4b00601494759f92d7826802a7b5328554705afd272be394fc51e0b64d691d3d",
+  "reference": {
+    "bytes": 7671305,
+    "file": "local_input.json",
+    "sha1": "fc95188e5341d406fabdeb4b45693890ec739853",
+    "sha256": "1b75b5db33e516c417c27033cb9cf12b3d6d1b66ba03e366416dac1d3da98d8d"
+  },
+  "reference_byte_identical": true,
+  "reports": [
+    {
+      "bytes_after": 10494,
+      "bytes_before": 6607013,
+      "file": "local-input-reference-independent.json",
+      "observation_count": 2456,
+      "observations_sha256": "4b00601494759f92d7826802a7b5328554705afd272be394fc51e0b64d691d3d",
+      "original_file_sha256": "1d65bc872e29330405f302cad926f01313ac9bb069a0663a93e41faa522d5f2c"
+    },
+    {
+      "bytes_after": 5732,
+      "bytes_before": 218781,
+      "file": "local-input-reference-prototype.json",
+      "observation_count": 137,
+      "observations_sha256": "86f59ec36334d1de4ee2a86439f726392878d6a7db7139c05a8abd2147597190",
+      "original_file_sha256": "2db6265820e5e9bebf146167b5bc46af3a16549db828e8ff40004b59dbb61901"
+    },
+    {
+      "bytes_after": 9514,
+      "bytes_before": 853503,
+      "file": "local-input-reference-receiver-ai-step.json",
+      "observation_count": 13,
+      "observations_sha256": "9a5145f372dd398f8318b759d3ad9d355adaf1ac2d58af6bb2765583685e107e",
+      "original_file_sha256": "0096432d48e8875cd9dfdca4773cb2c2a721dba03e6ef6a51f1f6393e03f164b"
+    },
+    {
+      "bytes_after": 10185,
+      "bytes_before": 6606718,
+      "file": "local-input-reference-receiver-corpus.json",
+      "observation_count": 2456,
+      "observations_sha256": "4b00601494759f92d7826802a7b5328554705afd272be394fc51e0b64d691d3d",
+      "original_file_sha256": "c9b0fe37f768550111b14f706f04e0cd831a277e0ebb03dfc611d108fd094583"
+    },
+    {
+      "bytes_after": 9497,
+      "bytes_before": 809170,
+      "file": "local-input-reference-receiver-helpers.json",
+      "observation_count": 12,
+      "observations_sha256": "d3d204fc8cf2147bb215ca35e0638364896161460f4198eb54cebe0a6b7af633",
+      "original_file_sha256": "0c42de531a9501fc921d00135b78c1df73bf13b0b445a84a2e6e58df2a669876"
+    },
+    {
+      "bytes_after": 10039,
+      "bytes_before": 315755,
+      "file": "local-input-reference-receiver-rotation.json",
+      "observation_count": 8,
+      "observations_sha256": "541ad3e423c3773bef4740fee59a505f0919d511e568e8603bed88e77185ef71",
+      "original_file_sha256": "9cd462b634655cc6a8b8ce351bbfefdf289f54654e7bebc2d9453220c48f2e17"
+    }
+  ],
+  "scope": "Formatting-only evidence migration; fresh actual Java corpus and independent rerun are byte/canonical-value identical; existing immutable native artifact re-executed with kernel/build receipts reused. No new gameplay implementation, Bend emission or kernel verdict.",
+  "status": "passed_formatting_and_regeneration_integrity"
+}
