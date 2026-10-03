@@ -110,6 +110,12 @@ immutable snapshots using typed `Server.local_call`; developer TCP requests,
 clock pulses, motion verification queries and renderer snapshots serialize
 through the same actor. No second render world or cloned section store exists.
 
+The window/controller is now shared through closed typed callbacks in
+`src/client_host.bend`. The save-owning entry and exact camera-relative view are
+documented in [PERSISTENT_CLIENT.md](PERSISTENT_CLIENT.md). The normal entry's
+legacy pixels and synthetic controls were independently rerun after this
+refactor; evidence is `evidence/client-host-integration.json`.
+
 Build with the native launch adapter:
 
 ```sh

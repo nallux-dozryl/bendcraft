@@ -1,0 +1,74 @@
+{
+  "status": "passed",
+  "entry": {
+    "entry": "client.bend",
+    "frames": 100,
+    "viewport": [
+      128,
+      128
+    ],
+    "fixture_blocks": 39,
+    "initial_clock": {
+      "tick": 1,
+      "day_time": 1,
+      "paused": true,
+      "daylight": true,
+      "revision": 47,
+      "pending": 0
+    },
+    "after_tcp_edits_clock": {
+      "tick": 2,
+      "day_time": 2,
+      "paused": true,
+      "daylight": true,
+      "revision": 83,
+      "pending": 0
+    },
+    "remote_block_updates": 36,
+    "before_pixel_sha256": "70ec5fb594d04a51dd89d947ecb6a1219b621d61ed05430c26b1f012c0feb381",
+    "after_pixel_sha256": "23018433c6d232fe3506f6cb442a4774f4ba0e497946740c788b327aa329cf69",
+    "independent_pixel_comparisons": 32768,
+    "shared_actor": "actual authenticated TCP edits became exact independently expected renderer pixels and snapshot revisions",
+    "teardown": "actor stop acknowledged; process exited0; real TCP port refused after exit",
+    "build_seconds": 136.159,
+    "entry_source_sha256": "9dfca72a2a5e2922a6d54aadcdfec02086f33087947f92f15c924ab2ad3c501b"
+  },
+  "controls": {
+    "events": "explicit synthetic Bend Key(W,down)+Look(12,-7), no focused hardware-input claim",
+    "body_position_f64_bits": [
+      [
+        1071644672,
+        0
+      ],
+      [
+        1072693248,
+        0
+      ],
+      [
+        3221356544,
+        0
+      ]
+    ],
+    "camera_f32": [
+      0.5,
+      2.619999885559082,
+      -2.25,
+      0.029999999329447746,
+      0.18250000476837158
+    ],
+    "pixels_compared": 16384,
+    "pixel_sha256": "5f758295adcf4d2a10da5a962f4598264ca923249c68245e126c1a4e364fe556",
+    "build_seconds": 50.82,
+    "shared_actor": true,
+    "hidden_launch": true,
+    "exit_code": 0
+  },
+  "source_sha256": {
+    "client.bend": "9dfca72a2a5e2922a6d54aadcdfec02086f33087947f92f15c924ab2ad3c501b",
+    "src/client_host.bend": "9af145e28d5a1dca2b6b4124bb6e06fc75aa905871447b65ce0997803cc3dacd",
+    "src/client_world.bend": "05040abf35b2b9ceaf87fed5c48f8d074d211750a59ab00fa6ff08e60a9ea5d7",
+    "src/client_render.bend": "bb8f6057a02bfcb0583025f9e75fe41abc6804eb554c6d971df5c81618932947",
+    "tools/test_client_render.py": "9d4e9bb0edb52190558a23035c461dd88f32932850c91c5dc4bfd6cb06ab44bc"
+  },
+  "scope": "generic client-host refactor preserves actual shared actor, synthetic controller and independently checked legacy pixels"
+}

@@ -1,4 +1,5 @@
 import Base
+import ./src/client_host.bend as H
 import ./src/client_render.bend as R
 import ./src/client_world.bend as W
 import ./src/server.bend as S
@@ -72,154 +73,27 @@ def ready_assets(result:Result<&2,&1,A.Error,R.Assets>) -> IO(R.Assets):
     case Fail{error}: IO.die(R.Assets,1,A.error_text(error))
     case Done{assets}: IO.pure(R.Assets,assets)
 
+def camera_of(snapshot:R.Snapshot) -> R.Camera:
+  H.camera_of(snapshot)
+
 def snapshot_ready(result:Result<&2,&2,String,R.Snapshot>) -> IO(R.Snapshot):
-  match result:
-    case Fail{message}: IO.die(R.Snapshot,1,"snapshot: " ++ message)
-    case Done{snapshot}: IO.pure(R.Snapshot,snapshot)
+  H.snapshot_ready(result)
 
-def result_unit(result:Result<&2,&2,String,Unit>) -> IO(Unit):
-  match result:
-    case Fail{message}: IO.print("control rejected: " ++ message)
-    case Done{unit}: IO.pure(Unit,Unit{})
+def host_move(state:W.State,delta:M.Vec3,maximum:F32) -> W.State & Result<&2,&2,String,M.Transition>:
+  W.move(state,delta,maximum)
 
-def result_motion(result:Result<&2,&2,String,M.Transition>) -> IO(Unit):
-  match result:
-    case Fail{message}: IO.print("motion rejected: " ++ message)
-    case Done{transition}: IO.pure(Unit,Unit{})
-
-def move_delta(+yaw:F32,+forward:F32,+right:F32,vertical:F32) -> M.Vec3:
-  M.Vec3{F.from_f32(F32.mul(F32.add(F32.mul(F32.cos(yaw),right),F32.neg(F32.mul(F32.sin(yaw),forward))),0.25)),F.from_f32(F32.mul(vertical,0.25)),F.from_f32(F32.mul(F32.add(F32.mul(F32.sin(yaw),right),F32.mul(F32.cos(yaw),forward)),0.25))}
-
-def move_control(handle:S.Handle<W.State>,yaw:F32,forward:F32,right:F32,vertical:F32) -> IO(Unit):
-  delta = move_delta(yaw,forward,right,vertical)
-  do IO<Unit>:
-    result : Result<&2,&2,String,M.Transition> <- S.local_call(W.State,Result<&2,&2,String,M.Transition>,handle,state => W.move(state,delta,0.6))
-    result_motion(result)
-
-def key_control(code:U32,handle:S.Handle<W.State>,yaw:F32) -> IO(Bool):
-  match code:
-    case 27: IO.pure(Bool,False{})
-    case 119:
-      do IO<Bool>:
-        move_control(handle,yaw,1.0,0.0,0.0)
-        return True{}
-    case 115:
-      do IO<Bool>:
-        move_control(handle,yaw,F32.neg(1.0),0.0,0.0)
-        return True{}
-    case 97:
-      do IO<Bool>:
-        move_control(handle,yaw,0.0,F32.neg(1.0),0.0)
-        return True{}
-    case 100:
-      do IO<Bool>:
-        move_control(handle,yaw,0.0,1.0,0.0)
-        return True{}
-    case 113:
-      do IO<Bool>:
-        move_control(handle,yaw,0.0,0.0,F32.neg(1.0))
-        return True{}
-    case 101:
-      do IO<Bool>:
-        move_control(handle,yaw,0.0,0.0,1.0)
-        return True{}
-    case _: IO.pure(Bool,True{})
-
-def events_go(events:List<Event>,+handle:S.Handle<W.State>,+yaw:F32,+pitch:F32,keep:Bool) -> IO(Bool):
-  match events:
-    case Nil{}: IO.pure(Bool,keep)
-    case Close{} <> tail: events_go(tail,handle,yaw,pitch,False{})
-    case Key{code,True{}} <> tail:
-      do IO<Bool>:
-        next : Bool <- key_control(code,handle,yaw)
-        events_go(tail,handle,yaw,pitch,next && keep)
-    case Look{dx,dy} <> tail:
-      +next_yaw = F32.add(yaw,F32.mul(dx,0.0025))
-      +next_pitch = F32.clamp(F32.add(pitch,F32.mul(dy,0.0025)),F32.neg(1.5707963),1.5707963)
-      do IO<Bool>:
-        result : Result<&2,&2,String,Unit> <- S.local_call(W.State,Result<&2,&2,String,Unit>,handle,state => W.look(state,next_yaw,next_pitch))
-        result_unit(result)
-        events_go(tail,handle,next_yaw,next_pitch,keep)
-    case event <> tail: events_go(tail,handle,yaw,pitch,keep)
+def host_look(state:W.State,yaw:F32,pitch:F32) -> W.State & Result<&2,&2,String,Unit>:
+  W.look(state,yaw,pitch)
 
 def events_camera(events:List<Event>,handle:S.Handle<W.State>,camera:R.Camera) -> IO(Bool):
-  R.Camera{x,y,z,yaw,pitch} = camera
-  events_go(events,handle,yaw,pitch,True{})
-
-def frame_dump(dump:Maybe<&2,String>,image:Image) -> IO(Unit):
-  match dump:
-    case None{}: IO.pure(Unit,Unit{})
-    case Some{path}: R.write_ppm(path,image,128,128)
-
-def remaining(frames:Maybe<&2,Nat>) -> Maybe<&2,Nat>:
-  match frames:
-    case None{}: None{}
-    case Some{0n}: Some{0n}
-    case Some{1n+p}: Some{p}
-
-def can_continue(frames:Maybe<&2,Nat>) -> Bool:
-  match frames:
-    case Some{0n}: False{}
-    case _: True{}
-
-def closing(window:Window,handle:S.Handle<W.State>) -> IO(Unit):
-  do IO<Unit>:
-    Window.close(window)
-    S.stop(W.State,handle)
-    IO.die(Unit,0,"client closed")
-
-def camera_of(snapshot:R.Snapshot) -> R.Camera:
-  R.Snapshot{tick,revision,blocks,camera} = snapshot
-  camera
-
-def frame_summary(snapshot:R.Snapshot) -> String:
-  R.Snapshot{tick,revision,blocks,camera} = snapshot
-  "{\"event\":\"client.snapshot\",\"tick\":" ++ Nat.show(tick) ++ ",\"revision\":" ++ Nat.show(revision) ++ ",\"blocks\":" ++ Nat.show(List.length(&2,R.Block,blocks)) ++ "}"
-
-# Only OS-driven client lifetime is unsafe; world, snapshots, asset codecs
-# and rendering remain checked Bend. Events submit serialized actor queries.
-@unsafe
-def loop(window:Window,assets:R.Assets,+handle:S.Handle<W.State>,frames:Maybe<&2,Nat>,+dump:Maybe<&2,String>) -> IO(Unit):
-  do IO<Unit>:
-    result : Result<&2,&2,String,R.Snapshot> <- S.local_call(W.State,Result<&2,&2,String,R.Snapshot>,handle,state => W.snapshot(state,128,128))
-    +snapshot : R.Snapshot <- snapshot_ready(result)
-    IO.print(frame_summary(snapshot))
-    camera : R.Camera = camera_of(snapshot)
-    pair : R.Assets & Image = R.render(snapshot,assets,128,128)
-    P.paired(R.Assets,Image,IO(Unit),pair,assets => +image => (
-      do IO<Unit>:
-        frame_dump(dump,image)
-        shown : Window & Image & List<Event> <- Window.frame(window,image)
-        P.paired(Window,Image & List<Event>,IO(Unit),shown,window => pair => (
-          P.paired(Image,List<Event>,IO(Unit),pair,image => events => (
-            do IO<Unit>:
-              keep : Bool <- events_camera(events,handle,camera)
-              +next : Maybe<&2,Nat> = remaining(frames)
-              loop_next(window,assets,handle,next,dump,keep && can_continue(next))
-          ))
-        ))
-    ))
-
-@unsafe
-def loop_next(window:Window,assets:R.Assets,handle:S.Handle<W.State>,frames:Maybe<&2,Nat>,dump:Maybe<&2,String>,keep:Bool) -> IO(Unit):
-  match keep:
-    case False{}: closing(window,handle)
-    case True{}:
-      do IO<Unit>:
-        IO.sleep(8)
-        loop(window,assets,handle,frames,dump)
+  H.events_camera(~W.State,~H.Driver{W.snapshot,host_move,host_look},events,handle,camera)
 
 def interactive(result:Result<&1,&1,U32 & String,String>) -> Bool:
-  match result:
-    case Fail{error}: True{}
-    case Done{text}: Bool.not(String.eq(text,"hidden"))
+  H.interactive(result)
 
 def window_start(options:Options,assets:R.Assets,handle:S.Handle<W.State>,human:Bool) -> IO(Unit):
   Options{fixture,frames,dump,jar} = options
-  do IO<Unit>:
-    window : Window <- IO.try(Window,Window.open("Minecraft 26.3 — verification scene",512,512))
-    window : Window <- Window.grab(window,human)
-    loop(window,assets,handle,frames,dump)
+  H.window_start(~W.State,~H.Driver{W.snapshot,host_move,host_look},assets,handle,human,frames,dump,"Minecraft 26.3 — verification scene")
 
 def jar_of(options:Options) -> String:
   Options{fixture,frames,dump,jar} = options
