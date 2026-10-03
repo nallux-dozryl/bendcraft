@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Independent native Bend PNG comparisons; Pillow is an oracle, not runtime."""
 from __future__ import annotations
-import hashlib,json,os,struct,subprocess,tempfile,time,zipfile,zlib
+import datetime,hashlib,json,os,struct,subprocess,tempfile,time,zipfile,zlib
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 BEND=Path.home()/'.bend/bin/bend'
@@ -82,7 +82,7 @@ def main():
                     assert row['rgba_crc32']==zlib.crc32(rgba),name
                     verified.append({'name':name,'width':image.width,'height':image.height,'rgba_sha256':hashlib.sha256(rgba).hexdigest()})
                 checked+=1
-        evidence={'date':'2026-10-03','compiler':run([str(BEND),'version']).strip(),'jar_sha256':hashlib.sha256(JAR.read_bytes()).hexdigest(),
+        evidence={'date':datetime.datetime.now().astimezone().date().isoformat(),'compiler':run([str(BEND),'version']).strip(),'jar_sha256':hashlib.sha256(JAR.read_bytes()).hexdigest(),
           'runtime':'pure Bend PNG and DEFLATE; Base file effects only','oracle':'Pillow '+Image.__version__,
           'block_textures_compared_byte_for_byte':len(names),'synthetic_valid':len(generated),'malformed_rejected':len(malformed),
           'kernel':'ALL PROOFS CHECK','native_cases':checked,'elapsed_seconds':round(time.monotonic()-started,3),

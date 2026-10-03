@@ -1,13 +1,47 @@
 {
-  "date": "2026-10-03",
+  "entry_integration": {
+    "entry": "client.bend",
+    "frames": 100,
+    "viewport": [
+      128,
+      128
+    ],
+    "fixture_blocks": 39,
+    "initial_clock": {
+      "tick": 1,
+      "day_time": 1,
+      "paused": true,
+      "daylight": true,
+      "revision": 47,
+      "pending": 0
+    },
+    "after_tcp_edits_clock": {
+      "tick": 2,
+      "day_time": 2,
+      "paused": true,
+      "daylight": true,
+      "revision": 83,
+      "pending": 0
+    },
+    "remote_block_updates": 36,
+    "before_pixel_sha256": "70ec5fb594d04a51dd89d947ecb6a1219b621d61ed05430c26b1f012c0feb381",
+    "after_pixel_sha256": "23018433c6d232fe3506f6cb442a4774f4ba0e497946740c788b327aa329cf69",
+    "independent_pixel_comparisons": 32768,
+    "shared_actor": "actual authenticated TCP edits became exact independently expected renderer pixels and snapshot revisions",
+    "teardown": "actor stop acknowledged; process exited0; real TCP port refused after exit",
+    "build_seconds": 45.738,
+    "entry_source_sha256": "56454bd63dcbb476cfe2c7f01747f497b8aa56dfdccb4efc2e16d9719aa0eb54"
+  },
+  "date": "2026-10-04",
   "scene": "explicit finite test fixture, not a default Minecraft world",
   "asset_path": "actual pinned JAR via Bend archive+DEFLATE+PNG",
   "jar_sha256": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d",
-  "source_sha256": "17218f26951b4d6cd45ec577ad5e40bb406b6653ef53b4e1f4546086b8c1161d",
+  "source_sha256": "bb8f6057a02bfcb0583025f9e75fe41abc6804eb554c6d971df5c81618932947",
   "native_launch_policy": "tools/platform_build.py; BEND_MINECRAFT_LAUNCH_MODE=hidden",
   "image_boundary": "Bend-produced PPM tree readback proves renderer pixels; hidden Window.frame alone proves no presentation",
   "cases": [
     {
+      "backend": "cpu",
       "size": [
         64,
         64
@@ -15,23 +49,23 @@
       "block_count": 28,
       "oracle": "independent float32 Python ray/AABB/UV/pixel calculation with official Pillow-decoded texture bytes",
       "pixels_compared": 4096,
-      "build_seconds": 9.81,
+      "build_seconds": 6.59,
       "modes": {
         "off": {
-          "pixel_sha256": "21eedb6f4db450a4339b73779c38a67eaa80750b1e44b5264f2a56c575aa212f",
+          "pixel_sha256": "1dd491fb93f4f614e0cbc3aae5dde50d17cf521d7a1dbb01c0f21d4612fa11a8",
           "render_ms": 1,
           "warm_samples_ms": [
             1,
             1,
-            0,
+            1,
             0,
             1
           ],
-          "process_seconds": 2.2522,
+          "process_seconds": 1.7478,
           "window": {
             "native_macos": true,
-            "pid": 37586,
-            "frontmost_pid": 83354,
+            "pid": 53098,
+            "frontmost_pid": 50401,
             "space_change_notifications": 0,
             "visible": false,
             "key": false,
@@ -39,39 +73,79 @@
             "app_active": false,
             "activation_policy": 2,
             "on_active_space": true,
-            "window_number": 603212
-          },
-          "frame_returned": true
-        },
-        "on": {
-          "pixel_sha256": "21eedb6f4db450a4339b73779c38a67eaa80750b1e44b5264f2a56c575aa212f",
-          "render_ms": 6,
-          "warm_samples_ms": [
-            497,
-            6,
-            5,
-            5,
-            5
-          ],
-          "process_seconds": 2.5364,
-          "window": {
-            "native_macos": true,
-            "pid": 37630,
-            "frontmost_pid": 83354,
-            "space_change_notifications": 0,
-            "visible": false,
-            "key": false,
-            "main": false,
-            "app_active": false,
-            "activation_policy": 2,
-            "on_active_space": true,
-            "window_number": 603213
+            "window_number": 603239
           },
           "frame_returned": true
         }
       }
     },
     {
+      "backend": "gpu",
+      "size": [
+        64,
+        64
+      ],
+      "block_count": 28,
+      "oracle": "independent float32 Python ray/AABB/UV/pixel calculation with official Pillow-decoded texture bytes",
+      "pixels_compared": 4096,
+      "build_seconds": 8.249,
+      "modes": {
+        "off": {
+          "pixel_sha256": "1dd491fb93f4f614e0cbc3aae5dde50d17cf521d7a1dbb01c0f21d4612fa11a8",
+          "render_ms": 0,
+          "warm_samples_ms": [
+            1,
+            0,
+            0,
+            1,
+            1
+          ],
+          "process_seconds": 1.4347,
+          "window": {
+            "native_macos": true,
+            "pid": 53153,
+            "frontmost_pid": 50401,
+            "space_change_notifications": 0,
+            "visible": false,
+            "key": false,
+            "main": false,
+            "app_active": false,
+            "activation_policy": 2,
+            "on_active_space": true,
+            "window_number": 603240
+          },
+          "frame_returned": true
+        },
+        "on": {
+          "pixel_sha256": "1dd491fb93f4f614e0cbc3aae5dde50d17cf521d7a1dbb01c0f21d4612fa11a8",
+          "render_ms": 5,
+          "warm_samples_ms": [
+            233,
+            6,
+            4,
+            5,
+            5
+          ],
+          "process_seconds": 1.3442,
+          "window": {
+            "native_macos": true,
+            "pid": 53205,
+            "frontmost_pid": 50401,
+            "space_change_notifications": 0,
+            "visible": false,
+            "key": false,
+            "main": false,
+            "app_active": false,
+            "activation_policy": 2,
+            "on_active_space": true,
+            "window_number": 603241
+          },
+          "frame_returned": true
+        }
+      }
+    },
+    {
+      "backend": "gpu",
       "size": [
         128,
         128
@@ -79,23 +153,23 @@
       "block_count": 28,
       "oracle": "independent float32 Python ray/AABB/UV/pixel calculation with official Pillow-decoded texture bytes",
       "pixels_compared": 16384,
-      "build_seconds": 10.04,
+      "build_seconds": 8.054,
       "modes": {
         "off": {
-          "pixel_sha256": "162918e13b376bed7000a91193b3eb0803efa3c51c02ae7dd2b8c5445a387170",
+          "pixel_sha256": "411affdceccc1f537fb2d10467bf6eab914e833c1c4a2ea0c15338d65d2f92ba",
           "render_ms": 2,
           "warm_samples_ms": [
             3,
-            2,
             3,
             2,
-            3
+            3,
+            2
           ],
-          "process_seconds": 1.6975,
+          "process_seconds": 1.1464,
           "window": {
             "native_macos": true,
-            "pid": 37758,
-            "frontmost_pid": 83354,
+            "pid": 53240,
+            "frontmost_pid": 50401,
             "space_change_notifications": 0,
             "visible": false,
             "key": false,
@@ -103,25 +177,25 @@
             "app_active": false,
             "activation_policy": 2,
             "on_active_space": true,
-            "window_number": 603215
+            "window_number": 603242
           },
           "frame_returned": true
         },
         "on": {
-          "pixel_sha256": "162918e13b376bed7000a91193b3eb0803efa3c51c02ae7dd2b8c5445a387170",
-          "render_ms": 5,
+          "pixel_sha256": "411affdceccc1f537fb2d10467bf6eab914e833c1c4a2ea0c15338d65d2f92ba",
+          "render_ms": 4,
           "warm_samples_ms": [
-            362,
-            9,
-            7,
+            138,
+            5,
             6,
+            5,
             6
           ],
-          "process_seconds": 1.6793,
+          "process_seconds": 1.4201,
           "window": {
             "native_macos": true,
-            "pid": 37800,
-            "frontmost_pid": 83354,
+            "pid": 53250,
+            "frontmost_pid": 50401,
             "space_change_notifications": 0,
             "visible": false,
             "key": false,
@@ -129,12 +203,42 @@
             "app_active": false,
             "activation_policy": 2,
             "on_active_space": true,
-            "window_number": 603216
+            "window_number": 603243
           },
           "frame_returned": true
         }
       }
     }
   ],
-  "command": "/Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 tools/test_client_render.py"
+  "command": "/Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 tools/test_client_render.py",
+  "controls_integration": {
+    "events": "explicit synthetic Bend Key(W,down)+Look(12,-7), no focused hardware-input claim",
+    "body_position_f64_bits": [
+      [
+        1071644672,
+        0
+      ],
+      [
+        1072693248,
+        0
+      ],
+      [
+        3221356544,
+        0
+      ]
+    ],
+    "camera_f32": [
+      0.5,
+      2.619999885559082,
+      -2.25,
+      0.029999999329447746,
+      0.18250000476837158
+    ],
+    "pixels_compared": 16384,
+    "pixel_sha256": "5f758295adcf4d2a10da5a962f4598264ca923249c68245e126c1a4e364fe556",
+    "build_seconds": 30.012,
+    "shared_actor": true,
+    "hidden_launch": true,
+    "exit_code": 0
+  }
 }

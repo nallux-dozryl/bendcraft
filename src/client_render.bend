@@ -143,8 +143,12 @@ def trace(blocks: List<&2,Block>,+camera: Basis,+dir: Direction,best: Hit) -> Hi
     case block <> tail: trace(tail,camera,dir,block_hit(block,camera,dir,best))
 
 def shade(+color: U32,+face: U32) -> U32:
-  +level = P.choose(U32,255,P.choose(U32,153,P.choose(U32,204,127,U32.is_eq(face,2)),U32.is_lt(face,2)),U32.is_eq(face,3))
-  P.argb(255,U32.div(U32.mul(U32.and(U32.shrn(color,16n),255),level),255),U32.div(U32.mul(U32.and(U32.shrn(color,8n),255),level),255),U32.div(U32.mul(U32.and(color,255),level),255))
+  # 26.3 CardinalLighting.DEFAULT: down=.5, up=1, X=.6, Z=.8.
+  # Integer sample scaling is the bounded renderer's color calculation;
+  # full lightmap/color-space processing is not established here.
+  +numerator = P.choose(U32,5,P.choose(U32,1,P.choose(U32,3,4,U32.is_lt(face,2)),U32.is_eq(face,2)),U32.is_eq(face,3))
+  +denominator = P.choose(U32,2,5,U32.is_eq(face,2))
+  P.argb(255,U32.div(U32.mul(U32.and(U32.shrn(color,16n),255),numerator),denominator),U32.div(U32.mul(U32.and(U32.shrn(color,8n),255),numerator),denominator),U32.div(U32.mul(U32.and(color,255),numerator),denominator))
 
 def hit_color(hit: Hit,textures: List<&2,Texture>,sky: U32) -> U32:
   match hit:
