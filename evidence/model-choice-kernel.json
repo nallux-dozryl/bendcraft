@@ -1,0 +1,31 @@
+{
+  "command": [
+    "/Users/chuah/.bend/bin/bend",
+    "src/model_choice.bend",
+    "--verdict"
+  ],
+  "compiler": {
+    "bytes": 63885392,
+    "file": "bend",
+    "sha1": "ddce6e432357be618d905b19c0f79abe3d28c388",
+    "sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e"
+  },
+  "pid": 43481,
+  "pin": "26.3",
+  "schema": 1,
+  "scope": "Direct full-import independent kernel attempt. A failed/inconclusive inherited verdict does not invalidate measured native equality and is not reported as proof success.",
+  "status": 1,
+  "stderr": "SOME PROOFS FAIL\nSorry - this is a mismatch between the TypeScript implementation, and the formalized BendTT kernel. Your proofs may or may not be correct, and we cannot validate them yet. This will be addressed in a future update. Meanwhile, feel free to open an issue to report this bug.\n",
+  "stdout": "",
+  "timeout_seconds": 60,
+  "transitive_bend_source_sha256": {
+    "src/blockstate_model.bend": "d084876d32e232c3869be84bc07535b491274695bd91529c5fae159b290cdc57",
+    "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+    "src/model_choice.bend": "d95595cf878faa8598d96bd19200e79fff142feab1b35111348951be4a71b240",
+    "src/random.bend": "76302d587a74d2601994f6b0bc7c9000b04a65a0bbd06cc0ce643c5452eb3162",
+    "src/resource_json.bend": "271f9ace6304fdd42ced039ab2e7f95459eed1f20f011115f399b619f2bc6ffb",
+    "tests/model_choice.bend": "3e5d6f0e0848648d314d52f32a26d1b511f06a2505d218ee656d7173c69332e9"
+  },
+  "wall_seconds": 22.855400167405605
+}

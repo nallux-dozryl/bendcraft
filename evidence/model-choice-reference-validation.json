@@ -1,0 +1,56 @@
+{
+  "command": [
+    "python3",
+    "tools/test_model_choice.py",
+    "--prepare-only",
+    "--selftest"
+  ],
+  "malformed_cases": [
+    {
+      "detail": "Version/schema mismatch",
+      "id": "pin",
+      "result": "rejected"
+    },
+    {
+      "detail": "Class mismatch: net.minecraft.client.renderer.block.dispatch.SingleVariant",
+      "id": "class_hash",
+      "result": "rejected"
+    },
+    {
+      "detail": "Fixture digest mismatch",
+      "id": "fixture_hash",
+      "result": "rejected"
+    },
+    {
+      "detail": "Java harness mismatch",
+      "id": "source_hash",
+      "result": "rejected"
+    },
+    {
+      "detail": "Resource hash mismatch",
+      "id": "resource_hash",
+      "result": "rejected"
+    },
+    {
+      "detail": "Unchained method state",
+      "id": "broken_state_chain",
+      "result": "rejected"
+    },
+    {
+      "detail": "Receiver error changed RNG state",
+      "id": "receiver_error_state",
+      "result": "rejected"
+    }
+  ],
+  "pin": "26.3",
+  "result": "passed",
+  "schema": 1,
+  "scope": "Pinned metadata/class/resource/source checks; deterministic input regeneration and independent method/state consistency checks. Broken-chain fixture digest is recomputed to test validation beyond checksum.",
+  "source_sha256": {
+    "src/model_choice.bend": "d95595cf878faa8598d96bd19200e79fff142feab1b35111348951be4a71b240",
+    "tests/model_choice.bend": "3e5d6f0e0848648d314d52f32a26d1b511f06a2505d218ee656d7173c69332e9",
+    "tools/reference_model_choice_probe.py": "b7084926436121a22135b88156e20d423ed4019c70ed410e28c2e135f550f0d0",
+    "tools/test_model_choice.py": "26e3c518640700dd24d99448be0ea6f6cf2fcf49a5df0a9d4a3ce86c94f09a34"
+  },
+  "valid_cases": 484
+}
