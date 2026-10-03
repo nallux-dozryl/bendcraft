@@ -16,8 +16,9 @@ fixture is a verification instrument; none satisfies a gameplay completion gate.
    an integration instrument, not vanilla walking.
 2. Registry identity → leased save-owning server → durable publication → actual
    restart/queued-action/MCP tests and the same save-owning state in a client are
-   checked. Typed atomic extension saves also pass. Neutral player and raw-degree record codecs also pass. Next: atomic runtime
-   save composition now passes two actual TCP/MCP/save/restart runs. Next: full player/mod state,
+   checked. Typed atomic extension saves, neutral player and raw-degree record
+   codecs also pass. Atomic runtime save composition passes two actual
+   TCP/MCP/save/restart runs and the continuous client. Next: full player/mod state,
    recovery policy and vanilla-format compatibility.
 3. Official ZIP/DEFLATE/PNG decoding and bounded texture pixels are checked.
    Typed model parsing/inheritance, the actual first-value resource reader and
@@ -39,12 +40,12 @@ declared interfaces; integration evidence determines subsequent work.
 
 | Owner | Exclusive working files or subsystem | Stable integration interface |
 | --- | --- | --- |
-| Lead | `player_runtime.bend`, `player_session.bend`, `player_storage.bend`, `player_scene.bend`, `player_client.bend`, `client_presenter.bend` and window input | Verified plain Player runtime and saved-session TCP/MCP/restart composition; one W body plus metadata, Tables, support and complete Controller. Continuous native window entry ordinary checks pass up to declared effects; hidden integration queued |
+| Lead | `player_runtime.bend`, `player_session.bend`, `player_storage.bend`, `player_scene.bend`, `player_client.bend`, `client_presenter.bend` and window input | Verified plain Player runtime and saved-session TCP/MCP/restart composition; one W body plus metadata, Tables, support and complete Controller. Continuous entry passes 22 bounded launches with exact API/save/restart checks; visible presentation and physical focused input remain required |
 | World bridge | Completed PW/SW; new `local_tick_world.bend` | Verified owned support/context reads; LocalPlayer prepare override before checked travel/finish |
 | Client/render | Completed BR/texture metadata; new `resource_frame.bend` | Real ZIP/model/bake/world-mesh/frame composition and retained Assets; metadata consumer integration remains separate |
-| Player motion | Completed `support.bend` and `local_input.bend` | Exact ordered sprint/input/crouch/bob phases; whole tick rotation and contextual movement hooks remain open |
+| Player motion | Completed support, LocalPlayer input and `local_collision.bend`; new `local_collision_world.bend` | Exact minor-collision arithmetic and ordered edge-query hooks pass native/kernel; actual Core read/yield composition is in preparation |
 | Model interpretation | Completed `blockstate_model.bend`; presenter integration test | Exact selector/multipart/ordered state semantics; 28 hidden actor/window/failure cleanup executions pass; actual visible focused input remains required |
-| Model bake | Completed Bake/Choice/Record verification | Exact quads, RNG consumption and raw degree save projection; atomic save verification queued |
+| Model bake | Completed Bake/Choice/Record/Session verification | Exact quads, RNG consumption and atomic raw degree save composition pass; complete player lifecycle persistence remains open |
 | World mesh | Completed `world_mesh.bend`; new `world_visibility.bend` | Exact relative quads; actual four-palette neighbor-face visibility and owned halo reads next |
 | Player codec/input | Completed Codec/Look/Mouse; new `player_controls.bend` | Whole frame accumulation → one Entity turn, atomic rejection, capture/release transitions |
 | Float parsing | Completed, stable source | Separate strict RFC and Java-string binary32 parsers |

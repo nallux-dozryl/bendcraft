@@ -1,0 +1,738 @@
+{
+  "audit": {
+    "all_dependency_aliases_sizes_and_contents_checked_before_and_after": true,
+    "original_and_guarded_c_and_immutable_binary_checked": true,
+    "source_and_reference_resource_pins_unchanged": true
+  },
+  "boundary": [
+    "The normal finite entry executes plain Player.aiStep with the declared neutral .1d/.08d/.42d test profile; it is not LocalPlayer.",
+    "Hidden runs install no held OS keys and establish no focused capture, visible presentation, inventory/UI, audio or full-game parity.",
+    "client.frame is printed before draw. Successful bounded exit verifies the source-defined CPU frame loop, not independent pixels or drawable presentation.",
+    "The entry renders 128x128 logical images into a 512x512 native Window; it has no pixel dump/readback option.",
+    "AppKit polling and notifications observe this run; they are not a proof about every transient desktop change.",
+    "Foreign IO and runtime lifetime loops remain declared proof boundaries. No whole-client kernel theorem is claimed.",
+    "Timer cadence is an observation of this instrument, not a gameplay-performance or Minecraft-speed benchmark."
+  ],
+  "build": {
+    "artifact": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/platform-cache/artifacts/dc23c1d632273ce59b26e7a67bc79bab7cbf94497d7d49d709bf9ae1f1a455f3/program",
+    "binary_bytes": 5526248,
+    "binary_sha256": "dc23c1d632273ce59b26e7a67bc79bab7cbf94497d7d49d709bf9ae1f1a455f3",
+    "cache_hit": false,
+    "cache_key": "cc54411dd05d4dff64679237368f48fb64540916138cc7c16f45ffbf29d9eac4",
+    "compiler": {
+      "objc_driver_probe_sha256": "82e7c2490b089a969666555f338a0259deda1bada7bca31670a5c99bb0052830",
+      "objc_flags": [
+        "-x",
+        "objective-c",
+        "-fobjc-arc",
+        "-fmodules",
+        "-std=c11",
+        "-O3",
+        "<transformed.c>",
+        "-lpthread",
+        "-lm",
+        "-o",
+        "<native>"
+      ],
+      "path": "/usr/bin/clang",
+      "resource_dir": "/Library/Developer/CommandLineTools/usr/lib/clang/17",
+      "selected_tool_and_config_sha256": {
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk/SDKSettings.json": "58a133735f0a55a624a1703067059f6e78925e51725ec6e1f966072e142c9c42",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk/SDKSettings.plist": "30bf3c8ef32f46d43f68eb91a85eded3e1763edc752a6fd71633eecac4909b28",
+        "/Library/Developer/CommandLineTools/usr/bin/clang": "4c458256bcdf913774de1bb4a37768244d3b41f32ad55afb2dfec3432f46f4fe",
+        "/Library/Developer/CommandLineTools/usr/bin/ld": "648a8aac7f6f829a42305d24dddd7a3cfa48ee0bd9d4e7ec1ded5c51edea372b",
+        "/Library/Developer/CommandLineTools/usr/lib/libLTO.dylib": "bd92d8e2644cb024e5266a4227edda9bc0be9ce34f8b5602ef669ef111e2038b",
+        "/Library/Developer/CommandLineTools/usr/lib/libcodedirectory.dylib": "4092095893b44973034584bc24874c895072f556ada13378007fca4601108362",
+        "/Library/Developer/CommandLineTools/usr/lib/libswiftDemangle.dylib": "7082a40c5329ecf20bda6e2c68513b582fbb50ac8dae3aa4a554015460686bc9",
+        "/Library/Developer/CommandLineTools/usr/lib/libtapi.dylib": "b9838d82c9ab55ba8c718f11172c15c7ae5ea12b4b034bc675b2cd238c16a4ff",
+        "/Users/chuah/.bend/bin/bend": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+        "/usr/bin/clang": "12bed4523661307059b879b9b54e77a73176e9d27d27a0e40363271d8f0668ba"
+      },
+      "sysroots": [
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk"
+      ],
+      "version": "Apple clang version 17.0.0 (clang-1700.0.13.5)\nTarget: arm64-apple-darwin25.4.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin\n"
+    },
+    "dependency_count": 3678,
+    "dependency_kind_counts": {
+      "base": 1,
+      "bend": 50,
+      "bend-executable": 1,
+      "cache-policy": 1,
+      "clang-driver": 1,
+      "clang-driver-input": 3,
+      "clang-resource": 284,
+      "guarded-transform-policy": 1,
+      "native-effect": 34,
+      "objc-header": 2036,
+      "objc-linker-selected-input": 87,
+      "objc-module-map": 52,
+      "objc-pcm": 90,
+      "platform-cache-policy": 1,
+      "sdk-config": 2,
+      "sdk-link-library": 1030,
+      "toolchain-dylib-or-tool": 4
+    },
+    "dependency_manifest_sha256": "6b4460a2f244cb6f8832f476032b34dd9f181c022bf2d511b9fdae3b4ad36a3f",
+    "environment_sha256": "d48dfec910964d0369b5db8366e5bd3c5c9bd1b7f3de724f64674e095151a627",
+    "original_c_sha256": "c2cd3816316e902b73e715458f309968680383482fbb0ece1cac406be0e2730a",
+    "output_replaced": true,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-client/client",
+    "platform": {
+      "machine": "arm64",
+      "os_build": "25E253",
+      "platform": "macOS-26.4.1-arm64-arm-64bit-Mach-O",
+      "system": "Darwin"
+    },
+    "retries": 0,
+    "route": "guarded-macos-cpu-window",
+    "timings": {
+      "emission_seconds": 51.7789942920208,
+      "guarded_native_build_seconds": 58.91335762478411,
+      "total_seconds": 118.88878799974918
+    },
+    "transformed_c_sha256": "aac8d1f7f72016d28d79c018c0636f975d971ee748f30a68f2c4c9d5328e0b74"
+  },
+  "cadence": {
+    "elapsed_seconds": 0.8250127909705043,
+    "frame_descriptions": 100,
+    "not_a_performance_claim": true,
+    "observed_ticks_per_second": 20.605741130391493,
+    "samples": [
+      {
+        "clock": {
+          "day_time": 19,
+          "daylight": true,
+          "paused": false,
+          "pending": 0,
+          "revision": 53,
+          "tick": 19
+        },
+        "monotonic_seconds": 0.0
+      },
+      {
+        "clock": {
+          "day_time": 22,
+          "daylight": true,
+          "paused": false,
+          "pending": 0,
+          "revision": 53,
+          "tick": 22
+        },
+        "monotonic_seconds": 0.159378
+      },
+      {
+        "clock": {
+          "day_time": 25,
+          "daylight": true,
+          "paused": false,
+          "pending": 0,
+          "revision": 53,
+          "tick": 25
+        },
+        "monotonic_seconds": 0.303503
+      },
+      {
+        "clock": {
+          "day_time": 28,
+          "daylight": true,
+          "paused": false,
+          "pending": 0,
+          "revision": 53,
+          "tick": 28
+        },
+        "monotonic_seconds": 0.43952
+      },
+      {
+        "clock": {
+          "day_time": 30,
+          "daylight": true,
+          "paused": false,
+          "pending": 0,
+          "revision": 53,
+          "tick": 30
+        },
+        "monotonic_seconds": 0.562458
+      },
+      {
+        "clock": {
+          "day_time": 33,
+          "daylight": true,
+          "paused": false,
+          "pending": 0,
+          "revision": 53,
+          "tick": 33
+        },
+        "monotonic_seconds": 0.697207
+      },
+      {
+        "clock": {
+          "day_time": 36,
+          "daylight": true,
+          "paused": false,
+          "pending": 0,
+          "revision": 53,
+          "tick": 36
+        },
+        "monotonic_seconds": 0.825013
+      }
+    ],
+    "tick_delta": 17,
+    "unsaved_bundle_unchanged": true
+  },
+  "command": "python3 tools/test_player_client.py --native --build-report build/player-client/build.full.json",
+  "date": "2026-10-03T22:31:41.711748+00:00",
+  "desktop": {
+    "activation_notification_pid_union": [],
+    "all_before_after_and_sampled_frontmost_pids_equal_within_each_run": true,
+    "all_listener_ports_refused_after_exit": true,
+    "runs": [
+      {
+        "before_frontmost_pid": 50401,
+        "child_pid": 74884,
+        "child_status": 0,
+        "elapsed_seconds": 19.84124195575714,
+        "frame_descriptions": 500,
+        "launch_mode": "hidden",
+        "samples": 677,
+        "scenario": "first"
+      },
+      {
+        "before_frontmost_pid": 50401,
+        "child_pid": 74898,
+        "child_status": 1,
+        "elapsed_seconds": 4.990080952644348,
+        "frame_descriptions": 0,
+        "launch_mode": "hidden",
+        "samples": 171,
+        "scenario": "lease-refusal"
+      },
+      {
+        "before_frontmost_pid": 50401,
+        "child_pid": 74908,
+        "child_status": 0,
+        "elapsed_seconds": 8.603661060333252,
+        "frame_descriptions": 150,
+        "launch_mode": "hidden",
+        "samples": 295,
+        "scenario": "restart"
+      },
+      {
+        "before_frontmost_pid": 50401,
+        "child_pid": 74918,
+        "child_status": 0,
+        "elapsed_seconds": 7.797448992729187,
+        "frame_descriptions": 100,
+        "launch_mode": "hidden",
+        "samples": 267,
+        "scenario": "saved-nonzero-look"
+      },
+      {
+        "before_frontmost_pid": 50401,
+        "child_pid": 74942,
+        "child_status": 0,
+        "elapsed_seconds": 6.624765038490295,
+        "frame_descriptions": 100,
+        "launch_mode": "hidden",
+        "samples": 227,
+        "scenario": "unpaused"
+      },
+      {
+        "before_frontmost_pid": 50401,
+        "child_pid": 74959,
+        "child_status": 1,
+        "elapsed_seconds": 0.31944096088409424,
+        "frame_descriptions": 0,
+        "launch_mode": "hidden",
+        "samples": 11,
+        "scenario": "fixture-required"
+      },
+      {
+        "before_frontmost_pid": 50401,
+        "child_pid": 74961,
+        "child_status": 1,
+        "elapsed_seconds": 0.31869208812713623,
+        "frame_descriptions": 0,
+        "launch_mode": "hidden",
+        "samples": 11,
+        "scenario": "unknown-option"
+      },
+      {
+        "before_frontmost_pid": 50401,
+        "child_pid": 74963,
+        "child_status": 1,
+        "elapsed_seconds": 0.32094597816467285,
+        "frame_descriptions": 0,
+        "launch_mode": "hidden",
+        "samples": 11,
+        "scenario": "missing-frame-count"
+      },
+      {
+        "before_frontmost_pid": 50401,
+        "child_pid": 74966,
+        "child_status": 1,
+        "elapsed_seconds": 0.3205369710922241,
+        "frame_descriptions": 0,
+        "launch_mode": "hidden",
+        "samples": 11,
+        "scenario": "negative-frame-count"
+      },
+      {
+        "before_frontmost_pid": 50401,
+        "child_pid": 74968,
+        "child_status": 1,
+        "elapsed_seconds": 0.3234039545059204,
+        "frame_descriptions": 0,
+        "launch_mode": "hidden",
+        "samples": 11,
+        "scenario": "overflow-frame-count"
+      },
+      {
+        "before_frontmost_pid": 50401,
+        "child_pid": 74970,
+        "child_status": 1,
+        "elapsed_seconds": 0.3192239999771118,
+        "frame_descriptions": 0,
+        "launch_mode": "hidden",
+        "samples": 11,
+        "scenario": "fraction-frame-count"
+      },
+      {
+        "before_frontmost_pid": 50401,
+        "child_pid": 74974,
+        "child_status": 1,
+        "elapsed_seconds": 0.31915509700775146,
+        "frame_descriptions": 0,
+        "launch_mode": "hidden",
+        "samples": 11,
+        "scenario": "missing-sine"
+      },
+      {
+        "before_frontmost_pid": 50401,
+        "child_pid": 74988,
+        "child_status": 1,
+        "elapsed_seconds": 0.32816100120544434,
+        "frame_descriptions": 0,
+        "launch_mode": "hidden",
+        "samples": 11,
+        "scenario": "invalid-sine"
+      },
+      {
+        "before_frontmost_pid": 50401,
+        "child_pid": 74991,
+        "child_status": 1,
+        "elapsed_seconds": 0.3557319641113281,
+        "frame_descriptions": 0,
+        "launch_mode": "hidden",
+        "samples": 12,
+        "scenario": "missing-jar"
+      },
+      {
+        "before_frontmost_pid": 50401,
+        "child_pid": 74996,
+        "child_status": 1,
+        "elapsed_seconds": 0.35073399543762207,
+        "frame_descriptions": 0,
+        "launch_mode": "hidden",
+        "samples": 12,
+        "scenario": "invalid-jar"
+      },
+      {
+        "before_frontmost_pid": 50401,
+        "child_pid": 74999,
+        "child_status": 22,
+        "elapsed_seconds": 6.931241989135742,
+        "frame_descriptions": 0,
+        "launch_mode": "invalid",
+        "samples": 230,
+        "scenario": "invalid-mode"
+      },
+      {
+        "before_frontmost_pid": 50401,
+        "child_pid": 75018,
+        "child_status": 22,
+        "elapsed_seconds": 5.91975998878479,
+        "frame_descriptions": 0,
+        "launch_mode": "",
+        "samples": 174,
+        "scenario": "empty-mode"
+      },
+      {
+        "before_frontmost_pid": 50401,
+        "child_pid": 75025,
+        "child_status": 1,
+        "elapsed_seconds": 4.230597972869873,
+        "frame_descriptions": 0,
+        "launch_mode": "hidden",
+        "samples": 145,
+        "scenario": "missing-bundle"
+      },
+      {
+        "before_frontmost_pid": 50401,
+        "child_pid": 75041,
+        "child_status": 1,
+        "elapsed_seconds": 4.528962969779968,
+        "frame_descriptions": 0,
+        "launch_mode": "hidden",
+        "samples": 155,
+        "scenario": "missing-registry"
+      },
+      {
+        "before_frontmost_pid": 50401,
+        "child_pid": 75045,
+        "child_status": 1,
+        "elapsed_seconds": 3.938989043235779,
+        "frame_descriptions": 0,
+        "launch_mode": "hidden",
+        "samples": 135,
+        "scenario": "corrupt-bundle"
+      },
+      {
+        "before_frontmost_pid": 50401,
+        "child_pid": 75062,
+        "child_status": 1,
+        "elapsed_seconds": 4.585919976234436,
+        "frame_descriptions": 0,
+        "launch_mode": "hidden",
+        "samples": 157,
+        "scenario": "core-only-migration"
+      },
+      {
+        "before_frontmost_pid": 50401,
+        "child_pid": 75072,
+        "child_status": 0,
+        "elapsed_seconds": 4.417647004127502,
+        "frame_descriptions": 0,
+        "launch_mode": "hidden",
+        "samples": 151,
+        "scenario": "frames-zero-recovery"
+      }
+    ],
+    "space_change_notifications_total": 0
+  },
+  "execution_runner_source": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-client/executed-test_player_client.py",
+  "execution_tool_sha256": "1364ef1930cc8f47c4a8426f521ea9437a0ff07cf6a680d8f675cdb94918409b",
+  "failures": {
+    "cases": [
+      {
+        "diagnostic": "bundle startup refused: lease acquisition failed: 35: Resource temporarily unavailable",
+        "exit_code": 1,
+        "mode": "hidden",
+        "scenario": "lease-refusal"
+      },
+      {
+        "diagnostic": "A playable world loader is not implemented. This entry requires --verification-fixture.",
+        "exit_code": 1,
+        "mode": "hidden",
+        "scenario": "fixture-required"
+      },
+      {
+        "diagnostic": "unknown/incomplete option --unknown",
+        "exit_code": 1,
+        "mode": "hidden",
+        "scenario": "unknown-option"
+      },
+      {
+        "diagnostic": "unknown/incomplete option --frames",
+        "exit_code": 1,
+        "mode": "hidden",
+        "scenario": "missing-frame-count"
+      },
+      {
+        "diagnostic": "--frames requires an unsigned integer",
+        "exit_code": 1,
+        "mode": "hidden",
+        "scenario": "negative-frame-count"
+      },
+      {
+        "diagnostic": "--frames requires an unsigned integer",
+        "exit_code": 1,
+        "mode": "hidden",
+        "scenario": "overflow-frame-count"
+      },
+      {
+        "diagnostic": "--frames requires an unsigned integer",
+        "exit_code": 1,
+        "mode": "hidden",
+        "scenario": "fraction-frame-count"
+      },
+      {
+        "diagnostic": "could not load the verified sine table",
+        "exit_code": 1,
+        "mode": "hidden",
+        "scenario": "missing-sine"
+      },
+      {
+        "diagnostic": "could not load the verified sine table",
+        "exit_code": 1,
+        "mode": "hidden",
+        "scenario": "invalid-sine"
+      },
+      {
+        "diagnostic": "FileIO at byte 0: host error 2: No such file or directory",
+        "exit_code": 1,
+        "mode": "hidden",
+        "scenario": "missing-jar"
+      },
+      {
+        "diagnostic": "MissingEOCD at byte 0: no classic end record with matching comment and directory extent",
+        "exit_code": 1,
+        "mode": "hidden",
+        "scenario": "invalid-jar"
+      },
+      {
+        "diagnostic": "window open: Window.open: BEND_MINECRAFT_LAUNCH_MODE must be human or hidden",
+        "exit_code": 22,
+        "mode": "invalid",
+        "scenario": "invalid-mode"
+      },
+      {
+        "diagnostic": "window open: Window.open: BEND_MINECRAFT_LAUNCH_MODE must be human or hidden",
+        "exit_code": 22,
+        "mode": "",
+        "scenario": "empty-mode"
+      },
+      {
+        "diagnostic": "bundle startup refused: missing file requires MC_WORLD_MISSING=create",
+        "exit_code": 1,
+        "mode": "hidden",
+        "scenario": "missing-bundle"
+      },
+      {
+        "diagnostic": "block registry loading failed: read:2:No such file or directory",
+        "exit_code": 1,
+        "mode": "hidden",
+        "scenario": "missing-registry"
+      },
+      {
+        "diagnostic": "bundle startup refused: truncated modified UTF-8 at byte 20",
+        "exit_code": 1,
+        "mode": "hidden",
+        "scenario": "corrupt-bundle"
+      },
+      {
+        "diagnostic": "bundle startup refused: NBT List is not part of the bundle schema",
+        "exit_code": 1,
+        "mode": "hidden",
+        "scenario": "core-only-migration"
+      }
+    ],
+    "frames_zero_recovery_completed_without_frame": true,
+    "input_and_saved_bytes_preserved": true
+  },
+  "full_build_report": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-client/build.full.json",
+  "full_build_report_sha256": "38a2aebdb74f09ee29a09d3686ce5898ab4829e74342ddd3faba01f9b8428650",
+  "full_execution_report": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-client/native.full.json",
+  "full_execution_report_sha256": "e7f2133f98b4078120c31fc56b4d06ca9aaf3468ed8f9082ea10c26cb580d81b",
+  "integration_seconds": 85.61865258403122,
+  "mcp": {
+    "artifact": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native-cache/artifacts/f0191cb9401e1ff47990ada221fb8051a94ad9942d4c857d28ef764b9e955281/program",
+    "binary_sha256": "f0191cb9401e1ff47990ada221fb8051a94ad9942d4c857d28ef764b9e955281",
+    "cache_key": "860e9ee7c6b13e83de83333968ebb63eaabad0c469a2c928e6ae83e43f50df4f",
+    "dependency_count": 1630,
+    "dependency_manifest_sha256": "dc1b27e6a79d73849c78dd886b4c9500ac779930bf3dac38e66e591c3f7d14b9"
+  },
+  "metrics": {
+    "catalog_operations": 18,
+    "controlled_actual_java_idle_ticks": 4,
+    "exact_saved_bundles": 3,
+    "frame_descriptions": 850,
+    "guarded_invalid_mode_refusals": 2,
+    "hidden_environment_launches": 20,
+    "initial_frames": 500,
+    "mcp_jsonrpc_requests": 48,
+    "native_entry_launches": 22,
+    "native_window_size": [
+      512,
+      512
+    ],
+    "paused_queries": 4,
+    "queued_collider_edits": 6,
+    "raw_tcp_requests": 16,
+    "restart_frames": 150,
+    "source_defined_cpu_logical_image": [
+      128,
+      128
+    ],
+    "startup_and_lease_refusals": 17,
+    "successful_hidden_launches": 5
+  },
+  "observer": {
+    "binary_sha256": "43b417fdf1d516cb745377cc06e95bdb6a39fabb92d0795c73a9eee8f8e8977d",
+    "compiler_seconds": 1.423336,
+    "poll_interval_seconds": 0.02,
+    "source_sha256": "d1ad15d75bd46a7f2d55f334d3bd5bafb6948b56cfe0ce510e7c5bd82913a40d"
+  },
+  "ordinary_checks": [
+    {
+      "declared_boundary_count": 84,
+      "entry": "player_client.bend",
+      "exit_code": 1,
+      "ignored_report": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-client/player_client-ordinary.full.json",
+      "output_sha256": "f950c319914ad487705daf1b5217e5b471062ccbe61f363f7f11ff4a3cfaecc8",
+      "seconds": 4.470523
+    },
+    {
+      "declared_boundary_count": 79,
+      "entry": "src/player_scene.bend",
+      "exit_code": 1,
+      "ignored_report": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-client/player_scene-ordinary.full.json",
+      "output_sha256": "54a5e162b97c68a7cd0f1fcc7efbb92de108049e09eaa964cc1c389b97f1e8ee",
+      "seconds": 2.480789
+    }
+  ],
+  "preflight_sha256": "1200c19cbe5c8a03f56d41088f41dedc5e0582039f2533637e6b7fef8e225006",
+  "prior_runner_attempts": [
+    {
+      "diagnosis": "normal PlayerSession has 18 operations: old persistent client17 plus player.inspect; exact expected set corrected",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-client/native-catalog-count-attempt.full.json",
+      "production_source_changes": false,
+      "sha256": "f3e9ae79abbfd741b2b558ed0493faf69e604dbbfd6b918d4a4c784cbe122712",
+      "status": "test-assertion-failed"
+    },
+    {
+      "diagnosis": "constructed expected Core model does not carry decoder-only max_peer metadata; remove unnecessary assignment; save highwater is independently tracked by actual peer pings",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-client/native-max-peer-attempt.full.json",
+      "production_source_changes": false,
+      "sha256": "aaa242ef95f023ec4459fd003f2bb53bdac39cbd7b5d08469262a250910aa5a3",
+      "status": "test-orchestration-failed"
+    }
+  ],
+  "receipt_finalization": "Later runner edits only compact reporting and distinguish hidden launches from invalid-mode refusals; executed test assertions remain in the retained source.",
+  "saved_nonzero_look": {
+    "expected_projection": "independent exact rational F32 conversion oracle",
+    "frames": 100,
+    "raw_degree_f32_words": [
+      1108672512,
+      3242721280,
+      1107165184,
+      3236429824
+    ],
+    "renderer_radian_f32_words": [
+      1059483458,
+      3193923315
+    ],
+    "saves": [
+      {
+        "bundle_sha256": "eaa61341069956d9076eb953bfccb0e23067bda31b2d44d9aef321bb31369448",
+        "bytes": 135786,
+        "clock": {
+          "day_time": 5,
+          "daylight": true,
+          "paused": true,
+          "pending": 0,
+          "revision": 53,
+          "tick": 5
+        },
+        "core_sha256": "363d9f21d30f582df8ea8cdede21cb9672f7c413835bfebf3096cfe203aec12e",
+        "highwater": 5,
+        "record_sha256": "19d32ba9a41a9c7744d47979fb5fc79154733b21ca3c6a2033113cc08926abe2",
+        "response": {
+          "bytes": 135786,
+          "durable": true,
+          "peer_highwater": 5,
+          "published": true,
+          "status": "durable"
+        },
+        "scenario": "loaded-nonzero-look-preserved"
+      }
+    ],
+    "unchanged_saved_record_sha256": "19d32ba9a41a9c7744d47979fb5fc79154733b21ca3c6a2033113cc08926abe2"
+  },
+  "saves": [
+    {
+      "bundle_sha256": "ae3924d5ad23f234919c3ef8c8518addc56e30fed7274c569253903a8aa63350",
+      "bytes": 136194,
+      "clock": {
+        "day_time": 3,
+        "daylight": true,
+        "paused": true,
+        "pending": 6,
+        "revision": 47,
+        "tick": 3
+      },
+      "core_sha256": "c970156ceb01c1ecf322fb1915684ffe016a909c3bdc6a8cf4cb1f98c8644623",
+      "highwater": 3,
+      "record_sha256": "f27be39b94af5dd48a74b74fc342a6dc35151cdb27f2b0809fb1d22125b80eff",
+      "response": {
+        "bytes": 136194,
+        "durable": true,
+        "peer_highwater": 3,
+        "published": true,
+        "status": "durable"
+      },
+      "scenario": "queued-idle-save"
+    },
+    {
+      "bundle_sha256": "ac326868d8c4442c30a14db06c81e40e0470afeb76f890a753b01556616db386",
+      "bytes": 135786,
+      "clock": {
+        "day_time": 5,
+        "daylight": true,
+        "paused": true,
+        "pending": 0,
+        "revision": 53,
+        "tick": 5
+      },
+      "core_sha256": "363d9f21d30f582df8ea8cdede21cb9672f7c413835bfebf3096cfe203aec12e",
+      "highwater": 4,
+      "record_sha256": "6d014aff3f1c11f7eb5a083de009296e1597d71f10d0fe0bfe3f178a2c27f3fc",
+      "response": {
+        "bytes": 135786,
+        "durable": true,
+        "peer_highwater": 4,
+        "published": true,
+        "status": "durable"
+      },
+      "scenario": "resumed-idle-edit-save"
+    },
+    {
+      "bundle_sha256": "eaa61341069956d9076eb953bfccb0e23067bda31b2d44d9aef321bb31369448",
+      "bytes": 135786,
+      "clock": {
+        "day_time": 5,
+        "daylight": true,
+        "paused": true,
+        "pending": 0,
+        "revision": 53,
+        "tick": 5
+      },
+      "core_sha256": "363d9f21d30f582df8ea8cdede21cb9672f7c413835bfebf3096cfe203aec12e",
+      "highwater": 5,
+      "record_sha256": "19d32ba9a41a9c7744d47979fb5fc79154733b21ca3c6a2033113cc08926abe2",
+      "response": {
+        "bytes": 135786,
+        "durable": true,
+        "peer_highwater": 5,
+        "published": true,
+        "status": "durable"
+      },
+      "scenario": "loaded-nonzero-look-preserved"
+    }
+  ],
+  "snapshot": {
+    "canonical_sha256": "6d2d51eaa1132575b81efb7e38f832e92d108191888571f6c3b1ff2179732fe8",
+    "complete_source_and_helper_hashes": "pinned preflight and ignored full execution report",
+    "dependency_count": 85,
+    "kind_counts": {
+      "base": 1,
+      "bend": 50,
+      "native-effect": 34
+    },
+    "project_source_sha256": {
+      "player_client.bend": "b5ba15401a3b80ac045619fe5ad38de091bf96c6e7742c51fbc84834812a71c5",
+      "src/player_runtime.bend": "0580f77db4a9e9d570938f6c6487867cd1ea92b0a2c24246fa0f354aa0604242",
+      "src/player_scene.bend": "1887393c33a6eafc3b72e198518932c7c9465f4e6f8723d7cf5c5494a5b359ac",
+      "src/player_session.bend": "e4d515442e9446aa308dee68630ef48755565562a2441052f54d3e422416e6d2"
+    },
+    "resource_sha256": {
+      "jar": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d",
+      "registry": "27769e75bf862d0540b2df2a6e99f6b7556a867bff6339fb08566240ee124cac",
+      "sine": "cdfaec6870788e193dff3f1ddfa3ca7d3f1a897042d78365a1fe3a433be3627d"
+    },
+    "source_manifest_sha256": "033e7d820ead99f93269b5882ba3a86705e4514248a39490de26a25661c90479",
+    "transitive_python_helper_count": 32
+  },
+  "status": "passed",
+  "summary_tool_sha256": "a8e00257a39e395252ff430e9d7a9fd0b14649649432fa5b4c78b8c2c83b7bd8"
+}
