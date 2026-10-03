@@ -21,6 +21,15 @@ The vanilla tick interval is 50 ms. Explicit stepping advances integer ticks. Re
 
 Data inventory is one layer; it does not specify all behavior. Coverage rows carry implementation evidence and verification evidence separately. Pure unit laws target conservation, order, isolation, indexing and serialization. Independent tests compare pinned source/reference behavior, frames/audio, actual transports and interrupted-write recovery. Performance results are accepted only for equivalent workloads.
 
+Visible native end-to-end acceptance through computer use or equivalent real OS
+input/presentation automation is mandatory. Start a bounded smoke scenario when
+controls become stable, expand it with relevant UI/world/multiplayer features,
+and repeat representative paths from the packaged client. Preserve the user's
+focus through genuine desktop isolation or a coordinated foreground session.
+Hidden pixels and synthetic events remain separate evidence. Audio and latency
+need their own measurements. See `docs/VISUAL_ACCEPTANCE.md` for scenarios,
+recording requirements and the current unverified status.
+
 ## First integration slice
 
 Establish parsers and typed operation envelopes; section ownership; an authoritative deterministic tick/action kernel; native headless server and external request tests; root laws/proofs. This slice is foundation work and cannot satisfy vanilla gameplay parity.

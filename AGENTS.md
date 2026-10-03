@@ -17,6 +17,8 @@ The persistent goal in chat 01a101ff-32b6-7910-a9af-96488bfb0c2f is authoritativ
 - Reference inputs are the installed 26.3 jar/data and official version metadata. Do not read, copy, print or commit account credentials. Assets may be referenced from the local installation; do not check them into Git.
 - Protect valid simulation state; player API permissions derive from player abilities/observations, developer permissions are explicit. Interfaces bind loopback by default.
 - Save writes require interruption/corruption recovery evidence. Multiplayer requires external multi-client integration tests. MCP tests must use the actual transport.
+- Full client acceptance requires recorded visible native end-to-end inspection using computer use or demonstrably equivalent real OS input/presentation automation. Verify actual presentation, keyboard/mouse capture/release, continuous movement/jump/collision, relevant UI/inventory/settings, world edit/save/reload and multiplayer; compare representative pinned-vanilla scenes/modes/settings. Start bounded visible smoke checks when controls are stable, expand alongside features and recheck the packaged client. Hidden pixels and synthetic internal events remain necessary but cannot substitute for this evidence.
+- Visible sessions must preserve the user's focus constraint: use an actually available isolated controllable desktop, or coordinate unavoidable foreground testing with the user when ready. Do not start unsolicited foreground sessions or silently waive acceptance. Record build/scenario/settings, observations/artifacts/defects; a few scenes never establish whole parity. Audio and latency require their own appropriate evidence, not screenshot inference.
 - Benchmarks compare equivalent workloads/settings/quality on this machine. Do not infer a speedup from a partial game or fewer simulated features.
 
 ## Work and verification
@@ -26,6 +28,6 @@ The persistent goal in chat 01a101ff-32b6-7910-a9af-96488bfb0c2f is authoritativ
 - Use scoped local commits, no external publication. Generated assets/binaries/caches are ignored. Evidence should contain summaries and reproducible commands, not huge raw dumps.
 - Maintain docs/STATUS.md, docs/DECISIONS.md, and coverage inventory so a resumed run can continue without repeating completed work.
 - Tests must probe real failure modes and independent expected outcomes. Check Bend code, native builds, relevant CPU/GPU execution, and independent behavioral evidence where applicable.
-- Automated client launches must avoid focus changes and Spaces switching. Human launches use normal input/focus behavior.
+- Routine automated client launches must avoid focus changes and Spaces switching. Human launches use normal input/focus behavior. Required visible OS-input sessions follow the coordinated/isolated acceptance policy in docs/VISUAL_ACCEPTANCE.md.
 
 The user explicitly authorizes useful parallel subagents, all gpt-6.1-sol with xhigh reasoning, and autonomous engineering decisions within this scope. Never request routine milestone approval.

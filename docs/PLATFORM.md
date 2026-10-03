@@ -32,14 +32,18 @@ Set the mode before starting the process, and keep it fixed for that process.
 The hidden path assumes Base owns initial NSApplication setup, as it does in
 the tested native client. It is a display-session test mode, not a headless
 window replacement: Base still requires a display and a Metal device. All
-automated client execution must explicitly set `hidden`. The build command
+routine automated client execution must explicitly set `hidden`. Required visible
+acceptance sessions follow `docs/VISUAL_ACCEPTANCE.md`: use verified desktop
+isolation or coordinate an unavoidable foreground session with the user. The build command
 does not launch the client; GPU sidecar generation invokes only the pinned
 runtime's `--gpu-build` path and also sets the hidden environment.
 
-Human play retains the normal Base input/focus path. Automated tests do not
-exercise that path because doing so would intentionally take focus. The
-adapter does not provide a visible background window or test keyboard/mouse
-input. Hidden clients cannot receive normal focused input.
+Human play retains the normal Base input/focus path. Current hidden automated
+tests do not exercise that path because doing so would intentionally take focus.
+The adapter does not provide a visible background window or test keyboard/mouse
+input. Hidden clients cannot receive normal focused input. Visible native
+end-to-end input/presentation verification is a separate mandatory acceptance
+method and remains unverified; hidden launch evidence does not satisfy it.
 
 ## Transformation guard
 

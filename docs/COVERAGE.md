@@ -53,3 +53,10 @@ The 155 data-pack registry locations and observed JSON keys do not replace compl
 The project additionally requires typed Bend mods across every subsystem, live/API operations and actual MCP transport, laws/proofs of the real implementation, reproducible macOS client/server packages, and equivalent-workload performance evidence. These are separate ledger rows because vanilla data inventory cannot implement or verify them. Their authoritative acceptance conditions remain in [AGENTS.md](../AGENTS.md), [STATUS.md](STATUS.md) and the persistent user goal.
 
 Completion requires a reconciled reference inventory **and** implementation evidence **and** independent behavior verification, including non-data quirks and the additional product requirements. The current extraction completes one bounded reference task. All larger project completion gates remain open.
+
+The additional `product:visible_native_client_acceptance` row records the
+mandatory visible native end-to-end OS input/presentation method. Its
+verification remains unassessed: hidden frames and synthetic internal events do
+not satisfy it. Progressive scenarios, matched pinned-vanilla comparisons,
+package rechecks, separate audio/latency evidence and the focus-preserving
+session policy are specified in [VISUAL_ACCEPTANCE.md](VISUAL_ACCEPTANCE.md).

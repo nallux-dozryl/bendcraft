@@ -1,5 +1,17 @@
 # Decisions
 
+## 2026-10-04: visible native acceptance is explicit
+
+Record real visible native presentation/input verification using computer use
+or demonstrably equivalent OS automation. Begin a bounded smoke scenario once
+controls are stable, expand alongside features and recheck the package; retain
+all hidden pixel/oracle/proof tests. Use genuine desktop isolation or coordinate
+an unavoidable foreground session so the user's focus constraint remains
+binding. Record builds, scenes/settings, artifacts and defects without inferring
+whole parity from a few scenes. Audio and latency need separate evidence. This
+clarifies an existing fidelity requirement and does not reset priorities or
+authorize an unsolicited foreground session. See docs/VISUAL_ACCEPTANCE.md.
+
 ## 2026-10-03: pinned reference and compiler
 
 Use Java 26.3 regardless of later releases. Use Bend 2.0.35 at the verified source revision. The user supplied this pin and broad implementation authority. Reference assets stay outside tracked files.
