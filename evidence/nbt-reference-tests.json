@@ -1,0 +1,219 @@
+{
+  "schema": 1,
+  "pin": "26.3",
+  "compiler": "bend 2.0.35",
+  "platform": "macOS-26.4.1-arm64-arm-64bit-Mach-O",
+  "source_sha256": "b677546b5fc02aaa38f5c09e5b798c0d35aec32b1c4b37cbd7042b9a1a5275e4",
+  "harness_sha256": "318746ad969fc20ce676c25397ef8cab07b735ae1966689b237d09c089ddc77c",
+  "oracle_sha256": "f5e2f966d5b6c68db7e81458db42c15fcd500b5d715c1e5de080460287c87879",
+  "native_binary_sha256": "5c29bc9382e7bd8778d9c8f45126b907d0bcab793fd033923da9cbc9ea36302d",
+  "checker": {
+    "src/nbt.bend": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.",
+    "tests/nbt.bend": "ALL PROOFS CHECK\nUse --verdict for mathematical validity."
+  },
+  "kernel_verdict": {
+    "src/nbt.bend": {
+      "exit_code": 0,
+      "output": "ALL PROOFS CHECK"
+    },
+    "tests/nbt.bend": {
+      "exit_code": 0,
+      "output": "ALL PROOFS CHECK"
+    }
+  },
+  "native_binary": "build/nbt-tests",
+  "native_builtin_regressions": "pass",
+  "independent_cases": 2382,
+  "accepted_cases": 1931,
+  "rejected_cases": 451,
+  "successful_roundtrips": 1931,
+  "all_cases_passed": true,
+  "category_counts": {
+    "array-bits": 6,
+    "constructed": 2,
+    "depth-policy": 8,
+    "element-policy": 1,
+    "empty-list-header": 13,
+    "encoder-u16-overflow": 2,
+    "every-prefix-truncation": 340,
+    "every-utf16-unit": 4,
+    "generated": 300,
+    "length-policy": 18,
+    "malformed": 39,
+    "mixed-tags": 1,
+    "noncanonical-mutf": 22,
+    "official-26.3-structure": 1511,
+    "physical-boundary": 3,
+    "primitive-bits": 44,
+    "strict-policy": 51,
+    "u16-byte-boundary": 2,
+    "utf16-code-units": 10,
+    "wide": 5
+  },
+  "input_tree_sha256": "2c0d4097cbd6e292fe98f7afd4166ecee472d5f3703baa034c4435ea4cc03e3e",
+  "output_tree_sha256": "47f0664002022088f0a8883862cfd4ecd1f06ebd379b82a6d8204a01ae2c298a",
+  "elapsed_seconds": 145.65,
+  "java_reference": {
+    "exact_observation_probes": 41,
+    "valid_fixture_semantics_compared": 1931,
+    "java_serialization_transformed_fixture_counts": {
+      "depth-policy": 1,
+      "empty-list-header": 12,
+      "generated": 16,
+      "mixed-tags": 1,
+      "official-26.3-structure": 12,
+      "physical-boundary": 3,
+      "primitive-bits": 6,
+      "wide": 1
+    },
+    "probe_source_sha256": "7cda760e60eb93a9d376fe6eb6b5f0b86ebc077f5c735c081721bb4dcc0b8356",
+    "javap_sha256": "a0b8c5a4b1e932aa10e878e16d99cc7300fa511806cf99c9ecb623655d53dc56",
+    "probed_nbt_class_identity": {
+      "matching_nbt_classes": 109,
+      "nbt_class_tree_sha256": "50b6489d11a20fe46e1647cb7379305083407dacbdcb5d4e09b98d59af1847e5"
+    }
+  },
+  "official_corpus": {
+    "client_sha256": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d",
+    "available_templates": 1511,
+    "selected_templates": 1511,
+    "selection_limit": 0,
+    "decompressed_bytes": 45290384,
+    "manifest_sha256": "d5468b97dc7d98bc17d0e10fe6f5bb5e9f347aabbf3bb501adff3eb62d3cf4ff",
+    "selected_path_tree_sha256": "0e4c38a828d11fd486de9b8f872025658571d8e01a819a93f93c6b5e5ce5d25e",
+    "aggregate_tag_counts": {
+      "1": 1813,
+      "2": 917,
+      "3": 4694156,
+      "4": 226,
+      "5": 913,
+      "6": 3123,
+      "8": 107073,
+      "9": 1179226,
+      "10": 1222451,
+      "11": 767
+    },
+    "largest_templates": [
+      {
+        "path": "data/minecraft/structure/bastion/hoglin_stable/air_base.nbt",
+        "compressed_bytes": 80375,
+        "bytes": 1078387,
+        "stored_sha256": "784dd30d618243b1f7713f33a6a49b87fc677fd80c61740c94e956b81e085aa9",
+        "decoded_sha256": "2e28eafc83c37d958453de50ad9e3b76cd78ed91c1f5509ca3827e5ed846132d",
+        "canonical_sha256": "2e28eafc83c37d958453de50ad9e3b76cd78ed91c1f5509ca3827e5ed846132d",
+        "tag_counts": {
+          "3": 119756,
+          "8": 17,
+          "9": 29942,
+          "10": 29946
+        }
+      },
+      {
+        "path": "data/minecraft/structure/bastion/treasure/big_air_full.nbt",
+        "compressed_bytes": 69667,
+        "bytes": 995940,
+        "stored_sha256": "738e24246fd9ba40f21ebb751928744e414313d5dc3679646634662c2e6af342",
+        "decoded_sha256": "f38bf2f891ff95e8b840c9c5a8da585fb0a2aa02fcf5512ebcaaf3e0cd8b79bb",
+        "canonical_sha256": "f38bf2f891ff95e8b840c9c5a8da585fb0a2aa02fcf5512ebcaaf3e0cd8b79bb",
+        "tag_counts": {
+          "3": 110604,
+          "8": 15,
+          "9": 27654,
+          "10": 27656
+        }
+      },
+      {
+        "path": "data/minecraft/structure/bastion/units/air_base.nbt",
+        "compressed_bytes": 63621,
+        "bytes": 844923,
+        "stored_sha256": "960e24a56e420f40516b7a4ebd37ab1ac6c75c030709a4166ce3cbfe8e9d8d5b",
+        "decoded_sha256": "f71095f58577db7fd8eea5827093c5361f2752394b27648cde94e7c78d0ac0e3",
+        "canonical_sha256": "f71095f58577db7fd8eea5827093c5361f2752394b27648cde94e7c78d0ac0e3",
+        "tag_counts": {
+          "3": 93792,
+          "8": 23,
+          "9": 23451,
+          "10": 23456
+        }
+      },
+      {
+        "path": "data/minecraft/structure/trial_chambers/chamber/assembly.nbt",
+        "compressed_bytes": 54404,
+        "bytes": 687376,
+        "stored_sha256": "0938173d936c60ec58d8af8c065e3a66bc4a303a418bf3143846cdd6ebe04b3d",
+        "decoded_sha256": "cff908951bdd8311ca2640caefa423ada616e570ce85eb2976af8c741119ca4c",
+        "canonical_sha256": "cff908951bdd8311ca2640caefa423ada616e570ce85eb2976af8c741119ca4c",
+        "tag_counts": {
+          "3": 75034,
+          "8": 336,
+          "9": 18738,
+          "10": 18820
+        }
+      },
+      {
+        "path": "data/minecraft/structure/trial_chambers/intersection/intersection_3.nbt",
+        "compressed_bytes": 49336,
+        "bytes": 618487,
+        "stored_sha256": "0423dd510bcdac6707f982c4ef6186897b19647d11f839e4abb9367f28ff0c55",
+        "decoded_sha256": "7ef73ca2ae89fff7908e2e7e71f3dcedc0dd12bd0defdeaa4e2145755ba78758",
+        "canonical_sha256": "7ef73ca2ae89fff7908e2e7e71f3dcedc0dd12bd0defdeaa4e2145755ba78758",
+        "tag_counts": {
+          "3": 68392,
+          "8": 94,
+          "9": 17098,
+          "10": 17140
+        }
+      }
+    ],
+    "selected_paths": "All data/minecraft/structure/*.nbt entries in pinned jar",
+    "exact_physical_roundtrips": 1511
+  },
+  "policy": {
+    "input_output_bytes": 16777216,
+    "container_depth": 512,
+    "elements_per_container_or_array": 1048576,
+    "unknown_tag_ids": "reject, including empty lists",
+    "modified_utf8": "DataInput.readUTF liberal decoding; canonical UTF-16-unit encoder",
+    "root": "named root or single TAG_End; consume all bytes",
+    "compound": "preserve member order and duplicates",
+    "list": "preserve known declared wire element ID",
+    "float_double": "preserve raw IEEE bits including NaN payloads"
+  },
+  "limits": [
+    "gzip extraction executes only in reference orchestration; src/nbt.bend accepts uncompressed wire bytes.",
+    "No save migration, region files, world persistence/recovery, SNBT, list-wrapper object semantics or Java compound-map semantics are established.",
+    "Synthetic rejection fixtures cover malformed/truncated payloads and depth/element boundaries; the full 16 MiB input/output ceiling is not exhaustively exercised."
+  ],
+  "commands": [
+    "python3 tools/test_nbt.py --skip-build",
+    "/Users/chuah/.bend/bin/bend src/nbt.bend --check-only",
+    "/Users/chuah/.bend/bin/bend tests/nbt.bend --check-only",
+    "/Users/chuah/.bend/bin/bend tests/nbt.bend -o build/nbt-tests",
+    "./build/nbt-tests --threads 1",
+    "./build/nbt-tests --threads 1 batch HEX...",
+    "./build/nbt-tests --threads 1 file build/nbt-reference/native-input.hex",
+    "/Users/chuah/.bend/bin/bend src/nbt.bend --verdict",
+    "/Users/chuah/.bend/bin/bend tests/nbt.bend --verdict"
+  ],
+  "native_run_oracle_sha256": "f5e2f966d5b6c68db7e81458db42c15fcd500b5d715c1e5de080460287c87879",
+  "current_oracle_sha256": "d81adb1a04baa13777e54abaaf1e20cbe97bc5d15c5cf2df047c4f17be2c8cdf",
+  "oracle_change_after_run": "The native run executed the pre-provenance-helper runner. Added installed-client/server NBT class identity verification and captured start-of-run source hashing; synthetic fixtures, physical oracle, native invocation and assertions are unchanged. Exact executed source reconstructed from the recorded edit is preserved locally in ignored build/nbt-reference/native-run-oracle.py.",
+  "oracle_logic_unchanged_after_run": {
+    "compared_python_ast_definitions": [
+      "Value",
+      "RootTag",
+      "Case",
+      "Reader",
+      "mutf_encode",
+      "mutf_decode",
+      "encode_value",
+      "encode_root",
+      "parse",
+      "java_semantics",
+      "synthetic_corpus",
+      "official_corpus",
+      "execute"
+    ],
+    "all_definitions_equal": true
+  }
+}

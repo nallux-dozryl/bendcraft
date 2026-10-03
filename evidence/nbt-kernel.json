@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "observed_at_utc": "2026-10-03T15:31:36.782557+00:00",
+  "source_sha256": "b677546b5fc02aaa38f5c09e5b798c0d35aec32b1c4b37cbd7042b9a1a5275e4",
+  "fixture_sha256": "318746ad969fc20ce676c25397ef8cab07b735ae1966689b237d09c089ddc77c",
+  "translation": "build/nbt.bendtt",
+  "translation_sha256": "2a4a24afb2d807b9a328e85bf780294f99529b212fe7e26e1e4af73d39689b4b",
+  "emit_command": [
+    "/Users/chuah/.bend/bin/bend",
+    "tests/nbt.bend",
+    "-o",
+    "build/nbt.bendtt"
+  ],
+  "kernel_command": [
+    "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+    "build/nbt.bendtt"
+  ],
+  "kernel_exit_code": 0,
+  "kernel_output": "ALL PROOFS CHECK",
+  "kernel_binary_sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7",
+  "kernel_source_sha256": "e15042434e73aab07ab05cea4b77b5619082c00a6d4924ea2d4a2cdec05facce",
+  "inspected_fixture_declarations": {
+    "checked_end_fixture": "checked_end_fixture : {(_2e_._2f_src_2f_nbt.decode (.Con, (U32.lit0, ((.Nil, ()), ())))) == (.Done, ((._2e_._2f_src_2f_nbt.Root, ((._2e_._2f_src_2f_nbt.Text, ((.Nil, ()), ())), ((._2e_._2f_src_2f_nbt.End, ()), ()))), ())) : (Result.q22 -String -_2e_._2f_src_2f_nbt.Root)} =",
+    "checked_raw_float_fixture": "checked_raw_float_fixture : {(_2e_._2f_src_2f_nbt.encode (._2e_._2f_src_2f_nbt.Root, ((._2e_._2f_src_2f_nbt.Text, ((.Nil, ()), ())), ((._2e_._2f_src_2f_nbt.Float, (U32.lit2141266757, ())), ())))) == (.Done, ((.Con, (U32.lit5, ((.Con, (U32.lit0, ((.Con, (U32.lit0, ((.Con, (U32.lit127, ((.Con, (U32.lit161, ((.Con, (U32.lit35, ((.Con, (U32.lit69, ((.Nil, ()), ()))), ()))), ()))), ()))), ()))), ()))), ()))), ())) : (Result.q22 -String -(List.q2 -U32))} ="
+  },
+  "scope": "Translated definitions satisfy independent kernel typing, affinity and termination; only finite End/raw-float fixture equalities are stated laws. No general codec correctness, persistence or host-effect theorem."
+}

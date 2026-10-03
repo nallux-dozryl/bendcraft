@@ -1,0 +1,432 @@
+{
+  "schema": 1,
+  "pin": "26.3",
+  "kind": "actual_java_reference_observations",
+  "java_version": "openjdk version \"25.0.1\" 2025-10-21 LTS\nOpenJDK Runtime Environment Microsoft-12574220 (build 25.0.1+8-LTS)\nOpenJDK 64-Bit Server VM Microsoft-12574220 (build 25.0.1+8-LTS, mixed mode)",
+  "server_sha256": "a362163eec5d1612d520772bc16e5b39c09e3b234fdc045f56bf544284ee8ae6",
+  "client_sha256": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d",
+  "probed_nbt_class_identity": {
+    "matching_nbt_classes": 109,
+    "nbt_class_tree_sha256": "50b6489d11a20fe46e1647cb7379305083407dacbdcb5d4e09b98d59af1847e5"
+  },
+  "probe_source_sha256": "7cda760e60eb93a9d376fe6eb6b5f0b86ebc077f5c735c081721bb4dcc0b8356",
+  "javap_sha256": "a0b8c5a4b1e932aa10e878e16d99cc7300fa511806cf99c9ecb623655d53dc56",
+  "javap_classes": [
+    "net.minecraft.nbt.NbtIo",
+    "net.minecraft.nbt.StringTag$1",
+    "net.minecraft.nbt.ListTag$1",
+    "net.minecraft.nbt.CompoundTag$1",
+    "net.minecraft.nbt.ListTag",
+    "net.minecraft.nbt.NbtAccounter",
+    "net.minecraft.nbt.FloatTag",
+    "net.minecraft.nbt.DoubleTag",
+    "java.io.DataInputStream",
+    "java.io.DataOutputStream"
+  ],
+  "exact_observation_probes": 41,
+  "observations": {
+    "utf-valid-0": {
+      "status": "ok",
+      "canonical_hex": "0002c080",
+      "detail": "units=0000",
+      "remaining": 0,
+      "mode": "utf",
+      "input_bytes": 3,
+      "input_sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201"
+    },
+    "utf-valid-1": {
+      "status": "ok",
+      "canonical_hex": "0002c080",
+      "detail": "units=0000",
+      "remaining": 0,
+      "mode": "utf",
+      "input_bytes": 4,
+      "input_sha256": "3c113bcecba9f03f04926fbcfd4765025c9e86fe2aa8141bf22dae411cb96d0d"
+    },
+    "utf-valid-2": {
+      "status": "ok",
+      "canonical_hex": "000141",
+      "detail": "units=0041",
+      "remaining": 0,
+      "mode": "utf",
+      "input_bytes": 4,
+      "input_sha256": "b99eb73cd45d22f4492a75945f266909327930fa7c4dd19505cebeca985338c1"
+    },
+    "utf-valid-3": {
+      "status": "ok",
+      "canonical_hex": "0002c080",
+      "detail": "units=0000",
+      "remaining": 0,
+      "mode": "utf",
+      "input_bytes": 5,
+      "input_sha256": "d7186e76af79093c6b02a40f9d48b525ffbeda9314a78527573b425f4744774c"
+    },
+    "utf-valid-4": {
+      "status": "ok",
+      "canonical_hex": "000101",
+      "detail": "units=0001",
+      "remaining": 0,
+      "mode": "utf",
+      "input_bytes": 5,
+      "input_sha256": "e35689a5921cc7b1541fc2c9cf700c89938f2989203946927f4029af5f74b850"
+    },
+    "utf-valid-5": {
+      "status": "ok",
+      "canonical_hex": "0003eda080",
+      "detail": "units=d800",
+      "remaining": 0,
+      "mode": "utf",
+      "input_bytes": 5,
+      "input_sha256": "7250d9bc1373210eb3308313285d27da5b61c04853556c817a6577aa955e20a8"
+    },
+    "utf-valid-6": {
+      "status": "ok",
+      "canonical_hex": "0006eda0bdedb880",
+      "detail": "units=d83dde00",
+      "remaining": 0,
+      "mode": "utf",
+      "input_bytes": 8,
+      "input_sha256": "78eb7f986a4e59184f22e4c9049886dfe9468fd62e035820f6e2bfd7573de120"
+    },
+    "utf-valid-7": {
+      "status": "ok",
+      "canonical_hex": "0000",
+      "detail": "units=",
+      "remaining": 0,
+      "mode": "utf",
+      "input_bytes": 2,
+      "input_sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    "utf-valid-8": {
+      "status": "ok",
+      "canonical_hex": "000141",
+      "detail": "units=0041",
+      "remaining": 0,
+      "mode": "utf",
+      "input_bytes": 3,
+      "input_sha256": "ddfbf54dbfc27075a5529f7cc46d4d60aa64ec807649e5d8d55657c4b9efd924"
+    },
+    "utf-invalid-0": {
+      "status": "error",
+      "error_class": "java.io.UTFDataFormatException",
+      "message": "malformed input around byte 0",
+      "mode": "utf",
+      "input_bytes": 6,
+      "input_sha256": "ae3f45d835b28eded9f4438b44ff05cafe5030093eb28e1fb7b7ea0409ab4f17"
+    },
+    "utf-invalid-1": {
+      "status": "error",
+      "error_class": "java.io.UTFDataFormatException",
+      "message": "malformed input around byte 0",
+      "mode": "utf",
+      "input_bytes": 3,
+      "input_sha256": "c7c029df95ba6baa19602c9581b5b3c18112358e8f3104eaa886944b8aef6a26"
+    },
+    "utf-invalid-2": {
+      "status": "error",
+      "error_class": "java.io.UTFDataFormatException",
+      "message": "malformed input around byte 2",
+      "mode": "utf",
+      "input_bytes": 4,
+      "input_sha256": "289bffec548b2d7bee2f0a3c07ab61086ec9b86fc5295d43fc5128cdf105eb57"
+    },
+    "utf-invalid-3": {
+      "status": "error",
+      "error_class": "java.io.UTFDataFormatException",
+      "message": "malformed input: partial character at end",
+      "mode": "utf",
+      "input_bytes": 4,
+      "input_sha256": "f30fd04d9ddcc5e334ab7c793f155100a8637127fb925bdf01170a54e2014af6"
+    },
+    "utf-invalid-4": {
+      "status": "error",
+      "error_class": "java.io.UTFDataFormatException",
+      "message": "malformed input around byte 2",
+      "mode": "utf",
+      "input_bytes": 5,
+      "input_sha256": "358e3c82ee94c9d9f15dd7b9f7b6cbc5ac8bdbd831e505fd876af270a466bb3b"
+    },
+    "utf-truncated-byte-length": {
+      "status": "error",
+      "error_class": "java.io.EOFException",
+      "message": "",
+      "mode": "utf",
+      "input_bytes": 3,
+      "input_sha256": "17eb30699eba13ae8898852abb2c2dfd50bbfe0ec69ea8209c381b19b7f76fbb"
+    },
+    "utf-write-canonical-byte-overflow": {
+      "status": "error",
+      "error_class": "java.io.UTFDataFormatException",
+      "message": "encoded string (\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000...\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000) too long: 131070 bytes",
+      "mode": "utf",
+      "input_bytes": 65537,
+      "input_sha256": "a3ed4df47baa297ddfda8323448f2c3a2571d83e4df98659ea6378adfd036ad0"
+    },
+    "empty-list-0": {
+      "status": "ok",
+      "canonical_hex": "0000000000",
+      "detail": "tag=9 count=0 element=empty",
+      "remaining": 0,
+      "mode": "9",
+      "input_bytes": 5,
+      "input_sha256": "8855508aade16ec573d21e6a485dfd0a7624085c1a14b5ecdd6485de0c6839a4"
+    },
+    "empty-list-1": {
+      "status": "ok",
+      "canonical_hex": "0000000000",
+      "detail": "tag=9 count=0 element=empty",
+      "remaining": 0,
+      "mode": "9",
+      "input_bytes": 5,
+      "input_sha256": "957b88b12730e646e0f33d3618b77dfa579e8231e3c59c7104be7165611c8027"
+    },
+    "empty-list-10": {
+      "status": "ok",
+      "canonical_hex": "0000000000",
+      "detail": "tag=9 count=0 element=empty",
+      "remaining": 0,
+      "mode": "9",
+      "input_bytes": 5,
+      "input_sha256": "0e80ce166062695c598ba895934d64324477022676e6e8c30e03d2d2d17c604a"
+    },
+    "empty-list-12": {
+      "status": "ok",
+      "canonical_hex": "0000000000",
+      "detail": "tag=9 count=0 element=empty",
+      "remaining": 0,
+      "mode": "9",
+      "input_bytes": 5,
+      "input_sha256": "d3402a165bdbec9c4caad3fec017fd23e3b01541a374188cfbb52eabbe81cb15"
+    },
+    "empty-list-13": {
+      "status": "ok",
+      "canonical_hex": "0000000000",
+      "detail": "tag=9 count=0 element=empty",
+      "remaining": 0,
+      "mode": "9",
+      "input_bytes": 5,
+      "input_sha256": "3c8f1b104592e3ebb2b2602b3979a27e77f586fb4c655369fa4eccb6d545a0f8"
+    },
+    "empty-list-127": {
+      "status": "ok",
+      "canonical_hex": "0000000000",
+      "detail": "tag=9 count=0 element=empty",
+      "remaining": 0,
+      "mode": "9",
+      "input_bytes": 5,
+      "input_sha256": "56187c6516f4a862fc0b46d25abe5c284142b4eb8e85a4b1a42e33b50476f002"
+    },
+    "empty-list-128": {
+      "status": "ok",
+      "canonical_hex": "0000000000",
+      "detail": "tag=9 count=0 element=empty",
+      "remaining": 0,
+      "mode": "9",
+      "input_bytes": 5,
+      "input_sha256": "a59a1e12aeebf92cc16a3e78693369b32eddd86abeb45de07c072b8871c772e4"
+    },
+    "empty-list-255": {
+      "status": "ok",
+      "canonical_hex": "0000000000",
+      "detail": "tag=9 count=0 element=empty",
+      "remaining": 0,
+      "mode": "9",
+      "input_bytes": 5,
+      "input_sha256": "decfde4dc4bc615056ca4c3a3bb5af1fee1724eb760ea1510dae32ea0a76c02f"
+    },
+    "negative-list-0": {
+      "status": "error",
+      "error_class": "net.minecraft.nbt.NbtFormatException",
+      "message": "ListTag length cannot be negative: -1",
+      "mode": "9",
+      "input_bytes": 5,
+      "input_sha256": "4447853d37cddbb1a43a0417efa55ed6929efbd26a954eb6b94ef1216e564fa1"
+    },
+    "negative-list-1": {
+      "status": "error",
+      "error_class": "net.minecraft.nbt.NbtFormatException",
+      "message": "ListTag length cannot be negative: -1",
+      "mode": "9",
+      "input_bytes": 5,
+      "input_sha256": "8335a113cbca7db3861f7212e72fe8a3b0867b46aa079d8b7aca13624b851748"
+    },
+    "negative-list-10": {
+      "status": "error",
+      "error_class": "net.minecraft.nbt.NbtFormatException",
+      "message": "ListTag length cannot be negative: -1",
+      "mode": "9",
+      "input_bytes": 5,
+      "input_sha256": "b9858e0f8aae53134a9faeea762c51dd7410d578cfe10d16f5e4ad12afb5a715"
+    },
+    "negative-list-13": {
+      "status": "error",
+      "error_class": "net.minecraft.nbt.NbtFormatException",
+      "message": "ListTag length cannot be negative: -1",
+      "mode": "9",
+      "input_bytes": 5,
+      "input_sha256": "0952928b960359a0057ce9dec9f5f9c1bdfe3b96a0e4dfc7dac764ba609b5cbc"
+    },
+    "missing-list-type": {
+      "status": "error",
+      "error_class": "net.minecraft.nbt.NbtFormatException",
+      "message": "Missing type on ListTag",
+      "mode": "9",
+      "input_bytes": 5,
+      "input_sha256": "15f2f1a4339f5f2a313b95015cad8124d054a171ac2f31cf529dda7cfb6a38b4"
+    },
+    "duplicate-compound-name": {
+      "status": "ok",
+      "canonical_hex": "010001610200",
+      "detail": "tag=10",
+      "remaining": 0,
+      "mode": "10",
+      "input_bytes": 11,
+      "input_sha256": "6d39be5fb1f68bd31e4d3cdd24ec040a42eaa98c0d32e228bfe6d30358aa5b7f"
+    },
+    "list-wrapper-empty-name": {
+      "status": "ok",
+      "canonical_hex": "010000000107",
+      "detail": "tag=9 count=1 element=1",
+      "remaining": 0,
+      "mode": "9",
+      "input_bytes": 10,
+      "input_sha256": "bab94dca63a1f6b769b35237606b1c9bfdbcaff2eb1a8b39952f6f12ee50f5ea"
+    },
+    "unnamed-root-name-discarded": {
+      "status": "ok",
+      "canonical_hex": "01000001",
+      "detail": "tag=1",
+      "remaining": 0,
+      "mode": "unnamed",
+      "input_bytes": 5,
+      "input_sha256": "75170dfb75229b68b5737bd60995359083ee5504cb5d73487d7acc36f4b55488"
+    },
+    "unnamed-malformed-root-name-skipped": {
+      "status": "ok",
+      "canonical_hex": "01000001",
+      "detail": "tag=1",
+      "remaining": 0,
+      "mode": "unnamed",
+      "input_bytes": 5,
+      "input_sha256": "6dc71e73dd931d0c81c53b097d9af58b45a698e741098d7c46f3f2cb82b0c837"
+    },
+    "unnamed-trailing-byte-left": {
+      "status": "ok",
+      "canonical_hex": "0a000000",
+      "detail": "tag=10",
+      "remaining": 1,
+      "mode": "unnamed",
+      "input_bytes": 5,
+      "input_sha256": "27464f99d1cf98038ff9912112be4725bc6ba7ee1841abc7c9bf1d6374e29029"
+    },
+    "float-negative-zero-normalized": {
+      "status": "ok",
+      "canonical_hex": "00000000",
+      "detail": "tag=5",
+      "remaining": 0,
+      "mode": "5",
+      "input_bytes": 4,
+      "input_sha256": "50c8ba3a6170f0a2fb6736ece8a603576ef6309a35e810911599bc6211b554a9"
+    },
+    "double-negative-zero-normalized": {
+      "status": "ok",
+      "canonical_hex": "0000000000000000",
+      "detail": "tag=6",
+      "remaining": 0,
+      "mode": "6",
+      "input_bytes": 8,
+      "input_sha256": "b1b0bee5378188f5250138bcce25855f2617f9c55b20b9628e13d367c47404a9"
+    },
+    "float-raw-nan-canonicalized": {
+      "status": "ok",
+      "canonical_hex": "7fc00000",
+      "detail": "tag=5",
+      "remaining": 0,
+      "mode": "5",
+      "input_bytes": 4,
+      "input_sha256": "bf799a5bd9c3638a2e08b65f5f1af4939dc2a46ae46ab7d5f6117ac183c7a8fc"
+    },
+    "double-raw-nan-canonicalized": {
+      "status": "ok",
+      "canonical_hex": "7ff8000000000000",
+      "detail": "tag=6",
+      "remaining": 0,
+      "mode": "6",
+      "input_bytes": 8,
+      "input_sha256": "dc45a08d435d70203ebc2da33a788abdeda417146186a1645adee739f84bde73"
+    },
+    "negative-array-7": {
+      "status": "error",
+      "error_class": "java.lang.IllegalArgumentException",
+      "message": "Tried to account NBT tag with negative size: -1",
+      "mode": "7",
+      "input_bytes": 4,
+      "input_sha256": "ad95131bc0b799c0b1af477fb14fcf26a6a9f76079e48bf090acb7e8367bfd0e"
+    },
+    "negative-array-11": {
+      "status": "error",
+      "error_class": "java.lang.IllegalArgumentException",
+      "message": "Tried to account NBT tag with negative size: -4",
+      "mode": "11",
+      "input_bytes": 4,
+      "input_sha256": "ad95131bc0b799c0b1af477fb14fcf26a6a9f76079e48bf090acb7e8367bfd0e"
+    },
+    "negative-array-12": {
+      "status": "error",
+      "error_class": "java.lang.IllegalArgumentException",
+      "message": "Tried to account NBT tag with negative size: -8",
+      "mode": "12",
+      "input_bytes": 4,
+      "input_sha256": "ad95131bc0b799c0b1af477fb14fcf26a6a9f76079e48bf090acb7e8367bfd0e"
+    }
+  },
+  "fixture_category_counts": {
+    "array-bits": 6,
+    "constructed": 2,
+    "depth-policy": 8,
+    "element-policy": 1,
+    "empty-list-header": 13,
+    "encoder-u16-overflow": 2,
+    "every-prefix-truncation": 340,
+    "every-utf16-unit": 4,
+    "generated": 300,
+    "length-policy": 18,
+    "malformed": 39,
+    "mixed-tags": 1,
+    "noncanonical-mutf": 22,
+    "official-26.3-structure": 1511,
+    "physical-boundary": 3,
+    "primitive-bits": 44,
+    "strict-policy": 51,
+    "u16-byte-boundary": 2,
+    "utf16-code-units": 10,
+    "wide": 5
+  },
+  "fixture_input_tree_sha256": "2c0d4097cbd6e292fe98f7afd4166ecee472d5f3703baa034c4435ea4cc03e3e",
+  "valid_fixture_semantics_compared": 1931,
+  "java_serialization_transformed_fixture_counts": {
+    "depth-policy": 1,
+    "empty-list-header": 12,
+    "generated": 16,
+    "mixed-tags": 1,
+    "official-26.3-structure": 12,
+    "physical-boundary": 3,
+    "primitive-bits": 6,
+    "wide": 1
+  },
+  "oracle_comparison": "Root name UTF-16 units equal; decoded Java object semantics equal after observed duplicate-key replacement, list empty-name-wrapper unwrapping, empty-header erasure and IEEE NaN write canonicalization and FloatTag/DoubleTag negative-zero normalization. Bend wire bytes compared independently without these Java object transformations.",
+  "boundaries": [
+    "Physical Bend codec preserves named roots; NbtIo.readUnnamedTag discards root names and skips their bytes without validating modified UTF-8.",
+    "Physical Bend codec preserves compound order and duplicate names; CompoundTag Map.put retains the last duplicate.",
+    "Physical Bend codec preserves wire compound wrappers in lists; ListTag.addAndUnwrap unwraps a one-member compound whose name is empty.",
+    "Physical Bend codec preserves known declared empty-list element IDs 0..12 and rejects unknown IDs; Java accepts any empty-list ID and writes ID 0.",
+    "Physical Bend codec preserves all float/double wire bits; Java FloatTag/DoubleTag.valueOf normalize negative zero and DataOutputStream.writeFloat/writeDouble canonicalize NaNs.",
+    "Physical Bend codec rejects bytes following a root; NbtIo.readUnnamedTag leaves trailing input unread.",
+    "Negative list counts are rejected by actual 26.3 ListTag.readListCount; older format folklore accepting negative lengths does not describe this pin."
+  ],
+  "reproduce": "python3 tools/test_nbt.py --reference-only",
+  "commands": [
+    "python3 tools/test_nbt.py --reference-only",
+    "/Users/chuah/Library/Application Support/minecraft/runtime/java-runtime-epsilon/mac-os-arm64/java-runtime-epsilon/jre.bundle/Contents/Home/bin/javap -classpath reference/cache/versions/26.3/server-26.3.jar -c -p net.minecraft.nbt.NbtIo net.minecraft.nbt.StringTag$1 net.minecraft.nbt.ListTag$1 net.minecraft.nbt.CompoundTag$1 net.minecraft.nbt.ListTag net.minecraft.nbt.NbtAccounter net.minecraft.nbt.FloatTag net.minecraft.nbt.DoubleTag java.io.DataInputStream java.io.DataOutputStream"
+  ]
+}
