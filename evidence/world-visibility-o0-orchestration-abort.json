@@ -1,0 +1,22 @@
+{
+  "cause": "Wrapper started under system Python; importing the runner triggered its dependency-Python reexec, which launched the runner default sampler Bend build instead of returning to the wrapper. Discovered by read-only PID command inspection and immediately terminated owned Python+Bend groups. No -O0 clang command ran.",
+  "groups_terminated": [
+    67723,
+    67733
+  ],
+  "o0_binary_exists": false,
+  "observed_after_abort": [
+    "67733     1 67733       01:57      0 (bend)"
+  ],
+  "observed_before_abort": [
+    "67723 83779 67723       01:58   4432 /Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 /Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_world_visibility.py",
+    "67733 67723 67733       01:57 2366480 /Users/chuah/.bend/bin/bend /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-visibility-sampler.bend -o /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-visibility-sampler"
+  ],
+  "original_emitted_c_sha256": "ca28c3d401f8f634d3a5cf2d799dc08d56f951988ba8e410cd3029e0900eb51c",
+  "schema": 1,
+  "sources_and_expectations_edited": false,
+  "status": "aborted_orchestration_reexec_before_o0_compile",
+  "timestamp_utc": "2026-10-03T22:03:28.898310+00:00",
+  "wrapper_path": "build/world-visibility-oracle/compile-exact-sampler-O0.py",
+  "wrapper_sha256": "49f94969bac5e35b27ceb1edd778d48aa275c4286e623406b4fddeea9f9fa9fa"
+}

@@ -1,0 +1,312 @@
+{
+  "bend_executable_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+  "boundaries": [
+    "Production receives only original model JSON, decoded original texture pixels and explicit registry bindings.",
+    "Expected Java visibility masks, baked quads and pixels are never native input.",
+    "Actual Java references were independently executed and sealed before this native run; no fresh Java execution during it.",
+    "Closed air/stone/dirt/oak_planks domain, full-cube occlusion only; contextual and other block shapes are rejected.",
+    "All required halo sections are explicitly allocated air; missing Core sections are errors, never implicit air.",
+    "Every nonair block performs six ordered neighbor reads, including intentionally repeated adjacent-cell reads.",
+    "Filtering preserves quad UVs/materials/sparse original order; ungrouped cull faces are retained.",
+    "Static normalized sprites, white tint/light and directional shade; weighted blockstate visual selection is outside this run.",
+    "Prepared native PPM RGB comparisons target exact agreement with an independent NumPy oracle; no native frames or PNG previews were produced in this attempt.",
+    "Finite hidden CPU verification does not establish visible client acceptance or whole-game parity."
+  ],
+  "builds": [
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/world_visibility.bend",
+        "-o",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-visibility-tests"
+      ],
+      "exit_code": -15,
+      "pid": 52705,
+      "rss_samples": [
+        {
+          "processes": [
+            {
+              "command": "/Users/chuah/.bend/bin/bend tests/world_visibility.bend -o /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-visibility-tests",
+              "elapsed": "02:00",
+              "pid": 52705,
+              "ppid": 52696,
+              "rss_kib": 1516400
+            }
+          ],
+          "seconds": 120.037464
+        },
+        {
+          "processes": [
+            {
+              "command": "/Users/chuah/.bend/bin/bend tests/world_visibility.bend -o /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-visibility-tests",
+              "elapsed": "10:00",
+              "pid": 52705,
+              "ppid": 52696,
+              "rss_kib": 1425952
+            }
+          ],
+          "seconds": 600.019556
+        }
+      ],
+      "seconds": 600.84116,
+      "stderr": "",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "timeout": true
+    }
+  ],
+  "cleanup": {
+    "bend_pid_remaining": false,
+    "compiler_exit_code": -15,
+    "owned_process_group_remaining": [],
+    "process_group_id": 52705,
+    "python_pid_remaining": false,
+    "signal": "SIGTERM"
+  },
+  "compiler_phase_boundary": "No descendants at 120s and 600s samples, no stdout/stderr, and no target binary. Internal compiler phase was not instrumented.",
+  "confidence": "High for sealed Java reference observations and recorded compilation limit; native visibility integration remains unverified.",
+  "counters": {
+    "blocks_checked": 0,
+    "frames_checked": 0,
+    "native_invocations": 0,
+    "neighbor_reads_checked": 0,
+    "owner_recoveries_checked": 0,
+    "pixels_checked": 0,
+    "quads_checked": 0,
+    "snapshots_checked": 0
+  },
+  "failure": "{'timed_out_execution': {'command': ['/Users/chuah/.bend/bin/bend', 'tests/world_visibility.bend', '-o', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-visibility-tests'], 'pid': 52705, 'rss_samples': [{'seconds': 120.037464, 'processes': [{'pid': 52705, 'ppid': 52696, 'rss_kib': 1516400, 'elapsed': '02:00', 'command': '/Users/chuah/.bend/bin/bend tests/world_visibility.bend -o /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-visibility-tests'}]}, {'seconds': 600.019556, 'processes': [{'pid': 52705, 'ppid': 52696, 'rss_kib': 1425952, 'elapsed': '10:00', 'command': '/Users/chuah/.bend/bin/bend tests/world_visibility.bend -o /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-visibility-tests'}]}], 'timeout': True, 'seconds': 600.84116, 'exit_code': -15, 'stdout_sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'stderr': ''}}",
+  "failure_kind": "native_build_time_limit",
+  "groups": [],
+  "input_sha256_begin": {
+    "alternate_registry": "67e335d15307a6d20e68e4204569439957a09c380ffacbff7e8f97192d568458",
+    "client_jar": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d",
+    "java_bake": "3cbe8aa7780f14c1b37159a885710b04680e3b6c4ffa4975b4d8297015f11e7e",
+    "java_visibility": "c81f6e26110d2275905a6d94f30462935814e8951fdd8e6c10f9a084febacbde",
+    "official_registry": "27769e75bf862d0540b2df2a6e99f6b7556a867bff6339fb08566240ee124cac"
+  },
+  "input_sha256_end": {
+    "alternate_registry": "67e335d15307a6d20e68e4204569439957a09c380ffacbff7e8f97192d568458",
+    "client_jar": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d",
+    "java_bake": "3cbe8aa7780f14c1b37159a885710b04680e3b6c4ffa4975b4d8297015f11e7e",
+    "java_visibility": "c81f6e26110d2275905a6d94f30462935814e8951fdd8e6c10f9a084febacbde",
+    "official_registry": "27769e75bf862d0540b2df2a6e99f6b7556a867bff6339fb08566240ee124cac"
+  },
+  "inputs_unchanged_during_run": true,
+  "native_input_files_sha256": {
+    "build/world-visibility-oracle/source-model-library.json": "29f177f463c96fc2c5dc65c55bb56a0227175ebd2e0a040ce22e274314b0f947"
+  },
+  "native_inputs_unchanged_during_run": true,
+  "native_verification": "not_executed",
+  "oracle_environment": {
+    "numpy": "2.3.5",
+    "pillow": "12.3.0",
+    "python": "3.12.14"
+  },
+  "oracle_sha256": "d48d3a7f0bb8758634532ed16a13a98c653be26087058cea543d3deb774df9ba",
+  "original_combined_harness": {
+    "bytes": 33751,
+    "ignored_copy": "build/world-visibility-oracle/combined-harness-before-split.bend",
+    "ignored_copy_sha256": "62cc1355f9d0b9fcb352992529fbf95fa3ecae1d295bc42543a7c99da6128aab",
+    "path": "tests/world_visibility.bend",
+    "sha256": "62cc1355f9d0b9fcb352992529fbf95fa3ecae1d295bc42543a7c99da6128aab",
+    "source_text": "import Base\nimport ../src/world_mesh.bend as WM\nimport ../src/client_world.bend as W\nimport ../src/client_render.bend as R\nimport ../src/mesh_render.bend as M\nimport ../src/block_bake.bend as K\nimport ../src/block_model.bend as B\nimport ../src/game.bend as G\nimport ../src/f64.bend as F\nimport ../src/movement.bend as MV\nimport ../src/png.bend as P\nimport ../src/core.bend as C\nimport ../src/registry.bend as Reg\nimport ../src/schedule.bend as Q\n\nimport ../src/world_visibility.bend as V\nimport ../src/json.bend as J\ntype Owned is Type:\n  Owned{state:W.State,assets:R.Assets}\n\ndef word(value:F32) -> String:\n  U32.show(F32.bits(value))\ndef number_result(result:Maybe<&2,U32>) -> U32:\n  match result:\n    case Some{value}: value\n    case None{}: 0\ndef number(text:String) -> U32:\n  number_result(U32.read(text))\ndef count_blocks(blocks:List<&2,R.Block>) -> Nat:\n  match blocks:\n    case Nil{}: 0n\n    case block <> rest: 1n+count_blocks(rest)\ndef blocks_text(blocks:List<&2,R.Block>) -> String:\n  match blocks:\n    case Nil{}: \"\"\n    case R.Block{x,y,z,state,material} <> rest:\n      word(x) ++ \",\" ++ word(y) ++ \",\" ++ word(z) ++ \",\" ++ U32.show(state) ++ \",\" ++ U32.show(material) ++ \";\" ++ blocks_text(rest)\ndef snapshot_text(value:R.Snapshot) -> String:\n  R.Snapshot{tick,revision,+blocks,R.Camera{x,y,z,yaw,pitch}} = value\n  Nat.show(tick) ++ \"|\" ++ Nat.show(revision) ++ \"|\" ++ Nat.show(count_blocks(blocks)) ++ \"|\" ++\n    word(x) ++ \",\" ++ word(y) ++ \",\" ++ word(z) ++ \",\" ++ word(yaw) ++ \",\" ++ word(pitch) ++ \"|\" ++ blocks_text(blocks)\ndef loaded_fixture(result:W.State & Result<&2,&2,String,Unit>) -> IO(W.State):\n  (state,status) = result\n  match status:\n    case Fail{error}: IO.die(W.State,1,\"fixture failed:\" ++ error)\n    case Done{unit}: IO.pure(W.State,state)\ndef vertex_text(vertex:M.Vertex) -> String:\n  M.Vertex{M.Vec3{x,y,z},M.UV{u,v}} = vertex\n  word(x) ++ \",\" ++ word(y) ++ \",\" ++ word(z) ++ \",\" ++ word(u) ++ \",\" ++ word(v)\ndef mode_text(mode:M.Mode) -> String:\n  match mode:\n    case M.Opaque{}: \"0,0\"\n    case M.Cutout{threshold}: \"1,\" ++ U32.show(threshold)\n    case M.Translucent{}: \"2,0\"\ndef address_text(address:M.Address) -> String:\n  match address:\n    case M.Clamp{}: \"0\"\n    case M.Repeat{}: \"1\"\ndef cull_text(cull:M.Cull) -> String:\n  match cull:\n    case M.NoCull{}: \"0\"\n    case M.Back{}: \"1\"\ndef quad_text(quad:M.Quad) -> String:\n  M.Quad{a,b,c,d,M.Material{texture,tint,light,shade,mode,address},cull,order} = quad\n  vertex_text(a) ++ \",\" ++ vertex_text(b) ++ \",\" ++ vertex_text(c) ++ \",\" ++ vertex_text(d) ++ \",\" ++\n    U32.show(texture) ++ \",\" ++ U32.show(tint) ++ \",\" ++ U32.show(light) ++ \",\" ++ word(shade) ++ \",\" ++\n    mode_text(mode) ++ \",\" ++ address_text(address) ++ \",\" ++ cull_text(cull) ++ \",\" ++ U32.show(order)\ndef quads_report(quads:List<&2,M.Quad>,+id:String,+index:U32) -> IO(Unit):\n  match quads:\n    case Nil{}: IO.pure(Unit,Unit{})\n    case head <> tail:\n      do IO<Unit>:\n        IO.print(\"quad|\" ++ id ++ \"|\" ++ U32.show(index) ++ \"|\" ++ quad_text(head))\n        quads_report(tail,id,U32.inc(index))\n\ndef drawn(result:Result<&2,&2,M.Error,Image>,+id:String) -> IO(Unit):\n  match result:\n    case Fail{M.Error{code}}: IO.die(Unit,1,\"renderer failed:\" ++ code)\n    case Done{image}:\n      do IO<Unit>:\n        R.write_ppm(\"build/world-visibility-\" ++ id ++ \".ppm\",image,32,24)\n        IO.print(\"frame|\" ++ id ++ \"|32|24|build/world-visibility-\" ++ id ++ \".ppm\")\ndef render_pair(pair:R.Assets & Result<&2,&2,M.Error,Image>,id:String) -> IO(R.Assets):\n  (assets,result) = pair\n  do IO<R.Assets>:\n    drawn(result,id)\n    return assets\ndef scene_draw(draw:Bool,scene:M.Scene,assets:R.Assets,id:String) -> IO(R.Assets):\n  match draw:\n    case False{}: IO.pure(R.Assets,assets)\n    case True{}: render_pair(M.render_flat(scene,assets,32,24),id)\n\ntype Inputs is Data:\n  Inputs{library:B.Library,textures:List<&2,R.Texture>}\ntype Fixture is Data:\n  Fixture{region:W.Bounds,body:MV.Vec3,mutations:List<&2,C.Mutation>}\n\ndef visibility_text(values:List<&2,V.Visibility>) -> String:\n  match values:\n    case Nil{}: \"\"\n    case V.Visibility{W.Cell{x,y,z,boundary},state,visible} <> tail:\n      U32.show(x) ++ \",\" ++ U32.show(y) ++ \",\" ++ U32.show(z) ++ \",\" ++ U32.show(state) ++ \",\" ++ U32.show(visible) ++ \";\" ++ visibility_text(tail)\ndef scene_report(result:Result<&2,&2,V.Error,M.Scene>,assets:R.Assets,+id:String,draw:Bool) -> IO(R.Assets):\n  match result:\n    case Fail{V.Error{code,cell,state,detail}}: IO.die(R.Assets,1,\"visibility producer:\" ++ code ++ \":\" ++ detail)\n    case Done{+scene}:\n      M.Scene{camera,quads,settings} = scene\n      do IO<R.Assets>:\n        quads_report(quads,id,0)\n        scene_draw(draw,scene,assets,id)\ndef sampled(result:W.State & Result<&2,&2,V.Error,V.Sample>,assets:R.Assets,+bindings:List<&2,WM.Binding>,+id:String,draw:Bool) -> IO(Owned):\n  (state,status) = result\n  match status:\n    case Fail{V.Error{code,cell,current,detail}}: IO.die(Owned,1,\"visibility sample:\" ++ code ++ \":\" ++ detail)\n    case Done{+value}:\n      V.Sample{snapshot,raw,masks,origin,palette,reads} = value\n      do IO<Owned>:\n        IO.print(\"snapshot|\" ++ id ++ \"|\" ++ snapshot_text(snapshot))\n        IO.print(\"mask|\" ++ id ++ \"|\" ++ U32.show(reads) ++ \"|\" ++ visibility_text(masks))\n        assets : R.Assets <- scene_report(V.produce(value,bindings,3,WM.frame(32,24),WM.defaults()),assets,id,draw)\n        return Owned{state,assets}\ndef sample(owned:Owned,bindings:List<&2,WM.Binding>,id:String,draw:Bool) -> IO(Owned):\n  Owned{state,assets} = owned\n  sampled(V.sample(state,V.defaults()),assets,bindings,id,draw)\ndef raw_write_result(result:C.World & Result<&2,&2,C.Error,Unit>,registry:Reg.Registry,\n    body:MV.Body,yaw:F32,pitch:F32,palette:Maybe<&2,W.Palette>,region:W.Bounds,cache:Maybe<&2,W.SnapshotCache>) -> W.State:\n  (world,status) = result\n  W.invalidate_cache(W.State{G.Engine{world,registry},body,yaw,pitch,palette,region,cache})\ndef edit_state(state:W.State) -> W.State:\n  W.State{G.Engine{world,registry},body,yaw,pitch,+palette,region,cache} = state\n  match palette:\n    case None{}: W.State{G.Engine{world,registry},body,yaw,pitch,palette,region,cache}\n    case Some{W.Palette{air,stone,dirt,planks}}:\n      raw_write_result(C.write_block(world,C.Position{\"minecraft:overworld\",0,1,0},planks),registry,body,yaw,pitch,palette,region,cache)\ndef edit(owned:Owned) -> Owned:\n  Owned{state,assets} = owned\n  Owned{edit_state(state),assets}\ndef uncached(owned:Owned) -> Owned:\n  Owned{state,assets} = owned\n  Owned{W.invalidate_cache(state),assets}\ndef basic(owned:Owned,+bindings:List<&2,WM.Binding>) -> IO(Unit):\n  do IO<Unit>:\n    owned : Owned <- sample(owned,bindings,\"initial\",True{})\n    owned : Owned <- sample(owned,bindings,\"cached\",True{})\n    owned : Owned <- sample(edit(owned),bindings,\"raw-edit\",True{})\n    owned : Owned <- sample(uncached(owned),bindings,\"uncached\",True{})\n    return Unit{}\ndef halo_write_result(result:C.World & Result<&2,&2,C.Error,Unit>,registry:Reg.Registry,view:W.View) -> W.State:\n  (world,status) = result\n  W.attach(G.Engine{world,registry},view)\ndef halo_edit(owned:Owned) -> Owned:\n  Owned{W.State{G.Engine{world,registry},body,yaw,pitch,+palette,+region,cache},assets} = owned\n  match palette region:\n    case None{} _: Owned{W.State{G.Engine{world,registry},body,yaw,pitch,palette,region,cache},assets}\n    case Some{W.Palette{air,stone,dirt,planks}} W.Bounds{x,y,z,w,h,d}:\n      Owned{halo_write_result(C.write_block(world,W.position(V.neighbor(W.Cell{x,y,z,0},B.Down{})),air),registry,\n        W.View{body,yaw,pitch,palette,region,cache}),assets}\ndef halo_basic(owned:Owned,+bindings:List<&2,WM.Binding>) -> IO(Unit):\n  do IO<Unit>:\n    owned : Owned <- sample(owned,bindings,\"halo-initial\",True{})\n    owned : Owned <- sample(owned,bindings,\"halo-cached\",True{})\n    owned : Owned <- sample(halo_edit(owned),bindings,\"halo-edit\",True{})\n    owned : Owned <- sample(owned,bindings,\"halo-recached\",True{})\n    return Unit{}\n\ndef model_error(-A:Data,result:Result<&2,&2,B.Error,A>) -> Result<&2,&2,String,A>:\n  match result:\n    case Fail{B.Error{code,path}}: Fail{code ++ \":\" ++ path}\n    case Done{value}: Done{value}\ndef bake_error(result:Result<&2,&2,K.Error,List<&2,K.Baked>>) -> Result<&2,&2,String,List<&2,K.Baked>>:\n  match result:\n    case Done{values}: Done{values}\n    case Fail{K.Unsupported{code}}: Fail{code}\n    case Fail{K.Invalid{code}}: Fail{code}\n    case Fail{K.MissingMaterial{name}}: Fail{name}\ndef context() -> K.Context:\n  K.Context{Map.set(&2,K.Sprite,Map.set(&2,K.Sprite,Map.set(&2,K.Sprite,MTip{},\n    \"minecraft:block/dirt\",K.Sprite{0,0.0,0.0,1.0,1.0,K.Solid{},False{}}),\n    \"minecraft:block/oak_planks\",K.Sprite{1,0.0,0.0,1.0,1.0,K.Solid{},False{}}),\n    \"minecraft:block/stone\",K.Sprite{2,0.0,0.0,1.0,1.0,K.Solid{},False{}}),None{}}\ndef bake(library:B.Library,name:String) -> Result<&2,&2,String,List<&2,K.Baked>>:\n  do Result<&2,&2,String,List<&2,K.Baked>>:\n    model : B.Resolved <- model_error(B.Resolved,B.resolve(library,name))\n    bake_error(K.bake(model,K.State{0,0,0,False{}},context()))\ndef bindings(+library:B.Library,palette:Maybe<&2,W.Palette>) -> Result<&2,&2,String,List<&2,WM.Binding>>:\n  match palette:\n    case None{}: Fail{\"palette\"}\n    case Some{W.Palette{air,stone,dirt,planks}}:\n      do Result<&2,&2,String,List<&2,WM.Binding>>:\n        stone_quads : List<&2,K.Baked> <- bake(library,\"minecraft:block/stone\")\n        dirt_quads : List<&2,K.Baked> <- bake(library,\"minecraft:block/dirt\")\n        planks_quads : List<&2,K.Baked> <- bake(library,\"minecraft:block/oak_planks\")\n        Done{[WM.Binding{stone,stone_quads,WM.appearance()},WM.Binding{dirt,dirt_quads,WM.appearance()},WM.Binding{planks,planks_quads,WM.appearance()}]}\n\ndef u32_found(value:Maybe<&2,U32>) -> Result<&2,&2,B.Error,U32>:\n  match value:\n    case Some{word}: Done{word}\n    case None{}: B.fail(U32,\"FixtureU32\",\"fixture\")\ndef u32(value:J.Value) -> Result<&2,&2,B.Error,U32>:\n  u32_found(J.as_u32(value))\ndef numbers(values:List<&2,J.Value>) -> Result<&2,&2,B.Error,List<&2,U32>>:\n  match values:\n    case Nil{}: Done{[]}\n    case head <> tail:\n      do Result<&2,&2,B.Error,List<&2,U32>>:\n        value : U32 <- u32(head)\n        rest : List<&2,U32> <- numbers(tail)\n        Done{value <> rest}\ndef number_array(value:J.Value) -> Result<&2,&2,B.Error,List<&2,U32>>:\n  match value:\n    case J.JArray{values}: numbers(values)\n    case _: B.fail(List<&2,U32>,\"FixtureArray\",\"fixture\")\ndef texture(value:J.Value) -> Result<&2,&2,B.Error,R.Texture>:\n  do Result<&2,&2,B.Error,R.Texture>:\n    +obj : J.Value <- B.object(value,\"texture\")\n    width : U32 <- B.optional_int(J.member(obj,\"width\"),0,\"width\")\n    height : U32 <- B.optional_int(J.member(obj,\"height\"),0,\"height\")\n    found : J.Value <- B.required(J.member(obj,\"pixels\"),\"pixels\")\n    pixels : List<&2,U32> <- number_array(found)\n    Done{R.texture(P.Decoded{width,height,pixels})}\ndef textures(value:J.Value) -> Result<&2,&2,B.Error,List<&2,R.Texture>>:\n  match value:\n    case J.JArray{values}:\n      List.foldr(&2,J.Value,Result<&2,&2,B.Error,List<&2,R.Texture>>,v => rest =>\n        do Result<&2,&2,B.Error,List<&2,R.Texture>>:\n          t : R.Texture <- texture(v)\n          ts : List<&2,R.Texture> <- rest\n          Done{t <> ts},values,Done{[]})\n    case _: B.fail(List<&2,R.Texture>,\"TextureArray\",\"textures\")\ndef inputs(+value:J.Value) -> Result<&2,&2,B.Error,Inputs>:\n  do Result<&2,&2,B.Error,Inputs>:\n    models : J.Value <- B.required(J.member(value,\"models\"),\"models\")\n    library : B.Library <- B.decode_library(models,B.empty_model())\n    texture_values : J.Value <- B.required(J.member(value,\"textures\"),\"textures\")\n    textures : List<&2,R.Texture> <- textures(texture_values)\n    Done{Inputs{library,textures}}\n\ndef coordinate3(values:List<&2,U32>) -> Result<&2,&2,B.Error,W.Cell>:\n  match values:\n    case x <> y <> z <> Nil{}: Done{W.Cell{x,y,z,0}}\n    case _: B.fail(W.Cell,\"Coordinate3\",\"fixture\")\ndef section(value:J.Value,air:U32) -> Result<&2,&2,B.Error,C.Mutation>:\n  do Result<&2,&2,B.Error,C.Mutation>:\n    values : List<&2,U32> <- number_array(value)\n    cell : W.Cell <- coordinate3(values)\n    Done{C.SectionCreate{W.position(cell),air}}\ndef state_name(name:String,palette:W.Palette) -> Result<&2,&2,B.Error,U32>:\n  match name palette:\n    case \"minecraft:air\" W.Palette{air,stone,dirt,planks}: Done{air}\n    case \"minecraft:stone\" W.Palette{air,stone,dirt,planks}: Done{stone}\n    case \"minecraft:dirt\" W.Palette{air,stone,dirt,planks}: Done{dirt}\n    case \"minecraft:oak_planks\" W.Palette{air,stone,dirt,planks}: Done{planks}\n    case _ _: B.fail(U32,\"StateName\",\"fixture\")\ndef cell(value:J.Value,palette:W.Palette) -> Result<&2,&2,B.Error,C.Mutation>:\n  match value:\n    case J.JArray{[x,y,z,name]}:\n      do Result<&2,&2,B.Error,C.Mutation>:\n        px : U32 <- u32(x)\n        py : U32 <- u32(y)\n        pz : U32 <- u32(z)\n        text : String <- B.strict_string(name,\"state\")\n        state : U32 <- state_name(text,palette)\n        Done{C.BlockSet{C.Position{\"minecraft:overworld\",px,py,pz},state}}\n    case _: B.fail(C.Mutation,\"Cell4\",\"fixture\")\ndef mutation(sections:Bool,value:J.Value,palette:W.Palette) -> Result<&2,&2,B.Error,C.Mutation>:\n  match sections:\n    case True{}:\n      W.Palette{air,stone,dirt,planks} = palette\n      section(value,air)\n    case False{}: cell(value,palette)\ndef mutations(values:List<&2,J.Value>,+palette:W.Palette,+sections:Bool) -> Result<&2,&2,B.Error,List<&2,C.Mutation>>:\n  match values:\n    case Nil{}: Done{[]}\n    case value <> rest:\n      do Result<&2,&2,B.Error,List<&2,C.Mutation>>:\n        head : C.Mutation <- mutation(sections,value,palette)\n        tail : List<&2,C.Mutation> <- mutations(rest,palette,sections)\n        Done{head <> tail}\ndef mutation_array(value:J.Value,palette:W.Palette,sections:Bool) -> Result<&2,&2,B.Error,List<&2,C.Mutation>>:\n  match value:\n    case J.JArray{values}: mutations(values,palette,sections)\n    case _: B.fail(List<&2,C.Mutation>,\"MutationArray\",\"fixture\")\ndef bounds(values:List<&2,U32>) -> Result<&2,&2,B.Error,W.Bounds>:\n  match values:\n    case x <> y <> z <> w <> h <> d <> Nil{}: Done{W.Bounds{x,y,z,w,h,d}}\n    case _: B.fail(W.Bounds,\"Bounds6\",\"fixture\")\ndef position64(values:List<&2,U32>) -> Result<&2,&2,B.Error,MV.Vec3>:\n  match values:\n    case xh <> xl <> yh <> yl <> zh <> zl <> Nil{}: Done{MV.Vec3{F.F64{xh,xl},F.F64{yh,yl},F.F64{zh,zl}}}\n    case _: B.fail(MV.Vec3,\"Position6\",\"fixture\")\ndef fixture(+value:J.Value,+palette:W.Palette) -> Result<&2,&2,B.Error,Fixture>:\n  do Result<&2,&2,B.Error,Fixture>:\n    bounds_json : J.Value <- B.required(J.member(value,\"bounds\"),\"bounds\")\n    bounds_words : List<&2,U32> <- number_array(bounds_json)\n    region : W.Bounds <- bounds(bounds_words)\n    position_json : J.Value <- B.required(J.member(value,\"body_words\"),\"body_words\")\n    position_words : List<&2,U32> <- number_array(position_json)\n    body : MV.Vec3 <- position64(position_words)\n    sections_json : J.Value <- B.required(J.member(value,\"sections\"),\"sections\")\n    sections : List<&2,C.Mutation> <- mutation_array(sections_json,palette,True{})\n    cells_json : J.Value <- B.required(J.member(value,\"cells\"),\"cells\")\n    cells : List<&2,C.Mutation> <- mutation_array(cells_json,palette,False{})\n    Done{Fixture{region,body,List.append(&2,C.Mutation,sections,cells)}}\ndef fixture_result(result:C.World & Result<&2,&2,String,Unit>,registry:Reg.Registry,body:MV.Vec3,palette:Maybe<&2,W.Palette>,region:W.Bounds) -> W.State & Result<&2,&2,String,Unit>:\n  (world,status) = result\n  (W.State{G.Engine{world,registry},MV.Body.new(body,0.6,1.8,MV.Vec3.zero(),True{}),0.0,0.2,palette,region,None{}},status)\ndef fixture_ready(result:Result<&2,&2,B.Error,Fixture>,state:W.State) -> IO(W.State):\n  match result:\n    case Fail{B.Error{code,path}}: IO.die(W.State,1,\"fixture parse:\" ++ code ++ \":\" ++ path)\n    case Done{Fixture{region,body,mutations}}:\n      W.State{G.Engine{world,registry},old,yaw,pitch,palette,oldregion,cache} = state\n      loaded_fixture(fixture_result(W.fixture_enqueue(mutations,0n,world,Done{Unit{}}),registry,body,palette,region))\ndef custom_initialized(result:W.State & Result<&2,&2,String,Unit>,value:J.Value) -> IO(W.State):\n  (state,status) = result\n  W.State{engine,body,yaw,pitch,+palette,region,cache} = state\n  match palette:\n    case None{}: IO.die(W.State,1,\"custom palette unavailable\")\n    case Some{actual}: fixture_ready(fixture(value,actual),W.State{engine,body,yaw,pitch,palette,region,cache})\ndef initialize(value:Maybe<&2,J.Value>,engine:G.Engine) -> IO(W.State):\n  match value:\n    case None{}: loaded_fixture(W.fixture(engine))\n    case Some{obj}: custom_initialized(W.new(engine),obj)\n\n\ndef error_code(result:Result<&2,&2,V.Error,M.Scene>) -> String:\n  match result:\n    case Fail{V.Error{code,cell,state,detail}}: code\n    case Done{scene}: \"Done\"\ndef pure_report(+id:String,result:Result<&2,&2,V.Error,M.Scene>) -> IO(Unit):\n  IO.print(\"error|\" ++ id ++ \"|\" ++ error_code(result))\ndef first_raw(values:List<&2,W.RawBlock>) -> W.RawBlock:\n  match values:\n    case head <> tail: head\n    case Nil{}: W.RawBlock{V.empty_cell(),0,0}\ndef replace_mask(value:V.Sample,masks:List<&2,V.Visibility>) -> V.Sample:\n  V.Sample{snapshot,raw,old,origin,palette,reads} = value\n  V.Sample{snapshot,raw,masks,origin,palette,reads}\ndef replace_first_mask(values:List<&2,V.Visibility>,mask:V.Visibility) -> List<&2,V.Visibility>:\n  match values:\n    case Nil{}: [mask]\n    case head <> tail: mask <> tail\ndef replace_first_raw(values:List<&2,W.RawBlock>,raw:W.RawBlock) -> List<&2,W.RawBlock>:\n  match values:\n    case Nil{}: [raw]\n    case head <> tail: raw <> tail\ndef sample_palette(value:V.Sample,palette:W.Palette) -> V.Sample:\n  V.Sample{snapshot,raw,masks,origin,old,reads} = value\n  V.Sample{snapshot,raw,masks,origin,palette,reads}\ndef sample_raw(value:V.Sample,raw:List<&2,W.RawBlock>) -> V.Sample:\n  V.Sample{snapshot,old,masks,origin,palette,reads} = value\n  V.Sample{snapshot,raw,masks,origin,palette,reads}\ndef sample_reads(value:V.Sample,reads:U32) -> V.Sample:\n  V.Sample{snapshot,raw,masks,origin,palette,old} = value\n  V.Sample{snapshot,raw,masks,origin,palette,reads}\ndef sample_snapshot(value:V.Sample,snapshot:R.Snapshot) -> V.Sample:\n  V.Sample{old,raw,masks,origin,palette,reads} = value\n  V.Sample{snapshot,raw,masks,origin,palette,reads}\ndef sample_origin(value:V.Sample,origin:MV.Vec3) -> V.Sample:\n  V.Sample{snapshot,raw,masks,old,palette,reads} = value\n  V.Sample{snapshot,raw,masks,origin,palette,reads}\ndef bad_snapshot(value:R.Snapshot) -> R.Snapshot:\n  match value:\n    case R.Snapshot{tick,revision,R.Block{x,y,z,state,material} <> rest,camera}:\n      R.Snapshot{tick,revision,R.Block{F32.add(x,1.0),y,z,state,material} <> rest,camera}\n    case other: other\ndef group(value:K.Baked,cf:Maybe<&2,B.Direction>) -> K.Baked:\n  K.Baked{a,b,c,d,direction,old,sprite,texture,index,emission,override,layer,force,animated,ds,ns} = value\n  K.Baked{a,b,c,d,direction,cf,sprite,texture,index,emission,override,layer,force,animated,ds,ns}\ndef first_binding(values:List<&2,WM.Binding>) -> WM.Binding:\n  match values:\n    case head <> tail: head\n    case Nil{}: WM.Binding{0,[],WM.appearance()}\ndef first_baked(values:List<&2,K.Baked>) -> Maybe<&2,K.Baked>:\n  match values:\n    case head <> tail: Some{head}\n    case Nil{}: None{}\ndef retained_report(result:Result<&2,&2,V.Error,M.Scene>,+id:String) -> IO(Unit):\n  match result:\n    case Fail{V.Error{code,cell,state,detail}}: IO.die(Unit,1,\"retained:\" ++ code)\n    case Done{M.Scene{camera,quads,settings}}: quads_report(quads,id,0)\ndef group_cases(value:Maybe<&2,K.Baked>,+state:U32,+palette:W.Palette) -> IO(Unit):\n  match value:\n    case None{}: IO.die(Unit,1,\"no actual baked face\")\n    case Some{+baked}:\n      +raw = {W.RawBlock{V.empty_cell(),state,0} : W.RawBlock}\n      +snapshot = {R.Snapshot{1n,1n,[R.Block{0.0,0.0,0.0,state,0}],R.Camera{0.0,0.0,0.0,0.0,0.2}} : R.Snapshot}\n      +origin = {MV.Vec3{F.F64{0,0},F.F64{0,0},F.F64{0,0}} : MV.Vec3}\n      +base = {V.Sample{snapshot,[raw],[V.Visibility{V.empty_cell(),state,0}],origin,palette,6} : V.Sample}\n      +appearance = {WM.Appearance{[],4294967295,M.Repeat{},M.NoCull{},True{},128} : WM.Appearance}\n      do IO<Unit>:\n        retained_report(V.produce(base,[WM.Binding{state,[group(baked,None{})],appearance}],3,WM.frame(32,24),WM.defaults()),\"ungrouped-hidden-neighbors\")\n        retained_report(V.produce(replace_mask(base,[V.Visibility{V.empty_cell(),state,32}]),[WM.Binding{state,[group(baked,Some{B.East{}})],appearance}],3,WM.frame(32,24),WM.defaults()),\"declared-east-normal-down\")\n        retained_report(V.produce(replace_mask(base,[V.Visibility{V.empty_cell(),state,1}]),[WM.Binding{state,[group(baked,Some{B.East{}})],appearance}],3,WM.frame(32,24),WM.defaults()),\"declared-east-hidden\")\ndef pure_cases_ready(head:W.RawBlock,binding:WM.Binding,+value:V.Sample,+bindings:List<&2,WM.Binding>) -> IO(Unit):\n  match head binding value:\n    case W.RawBlock{+cell,+state,+material} WM.Binding{binding_state,+baked,appearance} V.Sample{+snapshot,+raw,+masks,origin,W.Palette{+air,+stone,+dirt,+planks},reads}:\n      +palette = {W.Palette{air,stone,dirt,planks} : W.Palette}\n      +duplicate = {W.RawBlock{cell,state,material} <> raw : List<&2,W.RawBlock>}\n      +same = {V.Visibility{cell,state,63} : V.Visibility}\n      do IO<Unit>:\n        pure_report(\"valid\",V.produce(value,bindings,3,WM.frame(32,24),WM.defaults()))\n        pure_report(\"missing-masks\",V.produce(replace_mask(value,[]),bindings,3,WM.frame(32,24),WM.defaults()))\n        pure_report(\"extra-mask\",V.produce(replace_mask(value,same <> masks),bindings,3,WM.frame(32,24),WM.defaults()))\n        pure_report(\"mask-range\",V.produce(replace_mask(value,replace_first_mask(masks,V.Visibility{cell,state,64})),bindings,3,WM.frame(32,24),WM.defaults()))\n        pure_report(\"mask-cell\",V.produce(replace_mask(value,replace_first_mask(masks,V.Visibility{V.neighbor(cell,B.East{}),state,63})),bindings,3,WM.frame(32,24),WM.defaults()))\n        pure_report(\"mask-state\",V.produce(replace_mask(value,replace_first_mask(masks,V.Visibility{cell,air,63})),bindings,3,WM.frame(32,24),WM.defaults()))\n        pure_report(\"duplicate-raw\",V.produce(sample_raw(value,duplicate),bindings,3,WM.frame(32,24),WM.defaults()))\n        pure_report(\"raw-material\",V.produce(sample_raw(value,replace_first_raw(raw,W.RawBlock{cell,state,99})),bindings,3,WM.frame(32,24),WM.defaults()))\n        pure_report(\"palette-alias\",V.produce(sample_palette(value,W.Palette{air,air,dirt,planks}),bindings,3,WM.frame(32,24),WM.defaults()))\n        pure_report(\"relative-coordinate\",V.produce(sample_snapshot(value,bad_snapshot(snapshot)),bindings,3,WM.frame(32,24),WM.defaults()))\n        pure_report(\"read-count\",V.produce(sample_reads(value,0),bindings,3,WM.frame(32,24),WM.defaults()))\n        pure_report(\"invalid-origin\",V.produce(sample_origin(value,MV.Vec3{F.F64{2146435072,0},F.F64{0,0},F.F64{0,0}}),bindings,3,WM.frame(32,24),WM.defaults()))\n        pure_report(\"missing-binding\",V.produce(value,[],3,WM.frame(32,24),WM.defaults()))\n        pure_report(\"pre-filter-budget\",V.produce(value,bindings,3,WM.frame(32,24),WM.Limits{4096,1024,108,64,256}))\n        group_cases(first_baked(baked),stone,palette)\n\ndef pure_cases(+value:V.Sample,+bindings:List<&2,WM.Binding>) -> IO(Unit):\n  V.Sample{snapshot,raw,masks,origin,palette,reads} = value\n  pure_cases_ready(first_raw(raw),first_binding(bindings),value,bindings)\n\ndef owner_read(result:C.World & Result<&2,&2,C.Error,U32>,registry:Reg.Registry,view:W.View,+id:String,+tick:Nat,+revision:Nat) -> IO(W.State):\n  (world,status) = result\n  match status:\n    case Fail{error}: IO.die(W.State,1,\"owner read failed\")\n    case Done{state}:\n      do IO<W.State>:\n        IO.print(\"owner|\" ++ id ++ \"|\" ++ Nat.show(tick) ++ \",\" ++ Nat.show(revision) ++ \",\" ++ U32.show(state))\n        return W.attach(G.Engine{world,registry},view)\ndef owner_clock(result:C.World & C.Clock,registry:Reg.Registry,view:W.View,id:String) -> IO(W.State):\n  (world,C.Clock{tick,time,paused,daylight,revision,pending}) = result\n  owner_read(C.read_block(world,C.Position{\"minecraft:overworld\",0,0,0}),registry,view,id,tick,revision)\ndef owner_probe(state:W.State,id:String) -> IO(W.State):\n  W.State{G.Engine{world,registry},body,yaw,pitch,palette,region,cache} = state\n  owner_clock(C.clock(world),registry,W.View{body,yaw,pitch,palette,region,cache},id)\ndef restore(state:W.State,view:W.View) -> W.State:\n  W.State{engine,body,yaw,pitch,palette,region,cache} = state\n  W.attach(engine,view)\ndef sample_error(result:W.State & Result<&2,&2,V.Error,V.Sample>,view:W.View,+id:String) -> IO(W.State):\n  (state,status) = result\n  match status:\n    case Done{value}: IO.die(W.State,1,\"unexpected sample success:\" ++ id)\n    case Fail{V.Error{code,cell,current,detail}}:\n      do IO<W.State>:\n        IO.print(\"error|\" ++ id ++ \"|\" ++ code)\n        owner_probe(restore(state,view),id)\ndef bad_palette(state:W.State) -> W.State:\n  W.State{engine,body,yaw,pitch,palette,region,cache} = state\n  match palette:\n    case None{}: W.State{engine,body,yaw,pitch,None{},region,cache}\n    case Some{W.Palette{air,stone,dirt,planks}}: W.State{engine,body,yaw,pitch,Some{W.Palette{stone,air,dirt,planks}},region,cache}\ndef no_palette(state:W.State) -> W.State:\n  W.State{engine,body,yaw,pitch,palette,region,cache} = state\n  W.State{engine,body,yaw,pitch,None{},region,cache}\ndef bad_region(state:W.State) -> W.State:\n  W.State{engine,body,yaw,pitch,palette,region,cache} = state\n  W.State{engine,body,yaw,pitch,palette,W.Bounds{0,0,0,0,1,1},cache}\ndef cached_cells(+head:W.RawBlock,+raw:List<&2,W.RawBlock>,duplicate:Bool) -> List<&2,W.RawBlock>:\n  W.RawBlock{cell,state,material} = head\n  W.choose(List<&2,W.RawBlock>,head <> raw,[W.RawBlock{cell,state,99}],duplicate)\ndef bad_cache(state:W.State,+duplicate:Bool) -> W.State:\n  W.State{engine,body,yaw,pitch,palette,region,cache} = state\n  match cache:\n    case None{}: W.State{engine,body,yaw,pitch,palette,region,cache}\n    case Some{W.SnapshotCache{revision,bounds,colors,+raw}}:\n      W.State{engine,body,yaw,pitch,palette,region,Some{W.SnapshotCache{revision,bounds,colors,cached_cells(first_raw(raw),raw,duplicate)}}}\ndef owned_cases(state:W.State,+view:W.View) -> IO(W.State):\n  do IO<W.State>:\n    state : W.State <- sample_error(V.sample(state,V.Limits{WM.defaults(),24577}),view,\"unsupported-neighbor-limit\")\n    state : W.State <- sample_error(V.sample(state,V.Limits{WM.Limits{4097,1024,4096,64,256},24576}),view,\"unsupported-mesh-limit\")\n    state : W.State <- sample_error(V.sample(state,V.Limits{WM.Limits{38,1024,4096,64,256},24576}),view,\"block-limit\")\n    state : W.State <- sample_error(V.sample(state,V.Limits{WM.defaults(),233}),view,\"neighbor-limit\")\n    state : W.State <- sample_error(V.sample(bad_region(state),V.defaults()),view,\"invalid-region\")\n    state : W.State <- sample_error(V.sample(no_palette(state),V.defaults()),view,\"no-palette\")\n    state : W.State <- sample_error(V.sample(bad_palette(state),V.defaults()),view,\"palette-mismatch\")\n    state : W.State <- sample_error(V.sample(bad_cache(state,True{}),V.defaults()),view,\"cached-duplicate\")\n    state : W.State <- sample_error(V.sample(bad_cache(state,False{}),V.defaults()),view,\"cached-material\")\n    return state\ndef errors_ready(state:W.State,value:V.Sample,bindings:List<&2,WM.Binding>) -> IO(Unit):\n  W.State{engine,+body,+yaw,+pitch,+palette,+region,+cache} = state\n  +view = {W.View{body,yaw,pitch,palette,region,cache} : W.View}\n  do IO<Unit>:\n    pure_cases(value,bindings)\n    state : W.State <- owned_cases(W.State{engine,body,yaw,pitch,palette,region,cache},view)\n    return Unit{}\ndef errors_sampled(result:W.State & Result<&2,&2,V.Error,V.Sample>,bindings:List<&2,WM.Binding>) -> IO(Unit):\n  (state,status) = result\n  match status:\n    case Fail{error}: IO.die(Unit,1,\"initial error sample failed\")\n    case Done{value}: errors_ready(state,value,bindings)\ndef errors(state:W.State,bindings:List<&2,WM.Binding>) -> IO(Unit):\n  errors_sampled(V.sample(state,V.defaults()),bindings)\ndef direct_sample_error(result:W.State & Result<&2,&2,V.Error,V.Sample>,+id:String) -> IO(Unit):\n  (state,status) = result\n  match status:\n    case Done{value}: IO.die(Unit,1,\"unexpected custom sample success\")\n    case Fail{V.Error{code,cell,current,detail}}:\n      do IO<Unit>:\n        IO.print(\"error|\" ++ id ++ \"|\" ++ code)\n        state : W.State <- owner_probe(state,id)\n        return Unit{}\ndef unknown_halo(state:W.State) -> W.State:\n  W.State{G.Engine{C.World{tick,time,paused,daylight,revision,+count,sections,pending,events},registry},body,yaw,pitch,+palette,region,cache} = state\n  halo_write_result(C.write_block(C.World{tick,time,paused,daylight,revision,count,sections,pending,events},\n    C.Position{\"minecraft:overworld\",0,4294967295,0},U32.sub(count,1)),registry,W.View{body,yaw,pitch,palette,W.Bounds{0,0,0,1,1,1},None{}})\ndef ready(result:Result<&2,&2,String,List<&2,WM.Binding>>,state:W.State,assets:R.Assets,args:List<&2,String>) -> IO(Unit):\n  match result:\n    case Fail{error}: IO.die(Unit,1,\"binding:\" ++ error)\n    case Done{+bindings}:\n      match args:\n        case Nil{}: basic(Owned{state,assets},bindings)\n        case \"halo-edit\" <> Nil{}: halo_basic(Owned{state,assets},bindings)\n        case \"errors\" <> Nil{}: errors(state,bindings)\n        case \"sample-error\" <> id <> Nil{}: direct_sample_error(V.sample(state,V.defaults()),id)\n        case \"unknown-halo\" <> Nil{}: direct_sample_error(V.sample(unknown_halo(state),V.defaults()),\"unknown-halo\")\n        case id <> Nil{}:\n          do IO<Unit>:\n            owned : Owned <- sample(Owned{state,assets},bindings,id,True{})\n            return Unit{}\n        case id <> draw <> Nil{}:\n          do IO<Unit>:\n            owned : Owned <- sample(Owned{state,assets},bindings,id,U32.is_eq(number(draw),1))\n            return Unit{}\n        case _: IO.die(Unit,2,\"invalid visibility arguments\")\ndef initialized(state:W.State,library:B.Library,textures:List<&2,R.Texture>,args:List<&2,String>) -> IO(Unit):\n  W.State{engine,body,yaw,pitch,+palette,region,cache} = state\n  ready(bindings(library,palette),W.State{engine,body,yaw,pitch,palette,region,cache},R.Assets{textures},args)\ndef prepared(result:Result<&2,&2,B.Error,Inputs>,+value:J.Value,args:List<&2,String>) -> IO(Unit):\n  match result:\n    case Fail{B.Error{code,path}}: IO.die(Unit,1,\"inputs:\" ++ code ++ \":\" ++ path)\n    case Done{Inputs{library,textures}}:\n      do IO<Unit>:\n        engine : G.Engine <- G.load()\n        state : W.State <- initialize(J.member(value,\"fixture\"),engine)\n        initialized(state,library,textures,args)\ndef parsed(result:Result<&2,&2,String,J.Value>,args:List<&2,String>) -> IO(Unit):\n  match result:\n    case Fail{error}: IO.die(Unit,1,\"input JSON:\" ++ error)\n    case Done{+value}: prepared(inputs(value),value,args)\ndef shared_args(args:List<String>) -> List<&2,String>:\n  match args:\n    case Nil{}: []\n    case head <> tail: head <> shared_args(tail)\n\ndef direction(index:U32) -> B.Direction:\n  match index:\n    case 0: B.Down{}\n    case 1: B.Up{}\n    case 2: B.North{}\n    case 3: B.South{}\n    case 4: B.West{}\n    case _: B.East{}\ndef bool_text(value:Bool) -> String:\n  match value:\n    case True{}: \"true\"\n    case False{}: \"false\"\ndef pair_text(result:Result<&2,&2,V.Error,Bool>) -> String:\n  match result:\n    case Fail{error}: \"Fail\"\n    case Done{value}: bool_text(value)\ndef pairs(n:Nat,+index:U32) -> IO(Unit):\n  match n:\n    case 0n: IO.pure(Unit,Unit{})\n    case 1n+rest:\n      +current = U32.div(index,24)\n      +adjacent = U32.mod(U32.div(index,6),4)\n      +d = U32.mod(index,6)\n      do IO<Unit>:\n        IO.print(\"pair|\" ++ U32.show(current) ++ \"|\" ++ U32.show(adjacent) ++ \"|\" ++ U32.show(d) ++ \"|\" ++\n          pair_text(V.should_render_face(current,adjacent,W.Palette{0,1,2,3},V.empty_cell())))\n        pairs(rest,U32.inc(index))\ntype NamedCell is Data:\n  NamedCell{id:String,cell:W.Cell}\ndef mask_cell(+index:U32,+positive:U32,+negative:U32) -> W.Cell:\n  W.Cell{W.choose(U32,negative,positive,U32.is_ne(U32.and(index,1),0)),\n    W.choose(U32,negative,positive,U32.is_ne(U32.and(index,2),0)),\n    W.choose(U32,negative,positive,U32.is_ne(U32.and(index,4),0)),0}\ndef test_positions(n:Nat,+index:U32) -> List<&2,NamedCell>:\n  match n:\n    case 0n: []\n    case 1n+rest:\n      NamedCell{\"far-\" ++ U32.show(index),mask_cell(index,30000000,4264967296)} <>\n        NamedCell{\"i32-boundary-\" ++ U32.show(index),mask_cell(index,2147483647,2147483648)} <> test_positions(rest,U32.inc(index))\ndef neighbor_report(cell:W.Cell,id:String,index:U32) -> IO(Unit):\n  W.Cell{x,y,z,boundary} = cell\n  IO.print(\"neighbor|\" ++ id ++ \"|\" ++ U32.show(index) ++ \"|\" ++ U32.show(x) ++ \",\" ++ U32.show(y) ++ \",\" ++ U32.show(z))\ndef neighbors_directions(n:Nat,+index:U32,+id:String,+cell:W.Cell) -> IO(Unit):\n  match n:\n    case 0n: IO.pure(Unit,Unit{})\n    case 1n+rest:\n      do IO<Unit>:\n        neighbor_report(V.neighbor(cell,direction(index)),id,index)\n        neighbors_directions(rest,U32.inc(index),id,cell)\ndef neighbors(values:List<&2,NamedCell>) -> IO(Unit):\n  match values:\n    case Nil{}: IO.pure(Unit,Unit{})\n    case NamedCell{id,cell} <> tail:\n      do IO<Unit>:\n        neighbors_directions(6n,0,id,cell)\n        neighbors(tail)\ndef arguments(args:List<String>) -> IO(Unit):\n  match args:\n    case program <> \"pairs\" <> Nil{}: pairs(96n,0)\n    case program <> \"neighbors\" <> Nil{}: neighbors(NamedCell{\"origin\",V.empty_cell()} <> test_positions(8n,0))\n    case program <> input <> tail: parsed(J.parse_with(input,J.Limits{1048576n,64}),shared_args(tail))\n    case _: IO.die(Unit,2,\"source input JSON required\")\ndef main() -> IO(Unit):\n  IO.bind(List<String>,Unit,IO.args(),arguments)\n"
+  },
+  "original_execution_status": "failed",
+  "partial_artifacts": {
+    "native_frame_matching_files": [],
+    "target_binary_exists": false,
+    "target_matching_files": []
+  },
+  "pin": "26.3",
+  "planned_corpus": {
+    "blocks": 353,
+    "far_coordinate_cases": 32,
+    "far_sign_combinations": 8,
+    "frames": 22,
+    "native_invocations": 42,
+    "negative_rejections": 24,
+    "neighbor_reads": 2118,
+    "neighbor_results": 102,
+    "owner_recoveries": 11,
+    "pair_results": 96,
+    "pixels": 16896,
+    "signed_neighbor_wrap_cases": 24,
+    "snapshots": 46,
+    "standalone_quads": 2,
+    "validation_outcomes": 25,
+    "world_quads": 993
+  },
+  "pre_native_orchestration_failure": {
+    "cause": "Popen capture_output argument rejected before a child was created",
+    "correction": "stdout=PIPE and stderr=PIPE",
+    "native_children_started": 0,
+    "receipt": "build/world-visibility-oracle/orchestration-failure-before-native.json",
+    "sha256": "c207f11b3ed538ef50fe2bf5432f1db1c43d7ca24d4c4b7351b9cb75089bb8c3"
+  },
+  "reference": {
+    "bake": {
+      "atlas_policy": "StaticNormalized, full-image [0,1] UVs; all Solid",
+      "cached_actual_java_cube_variants": 3,
+      "cached_actual_java_quads": 18,
+      "client_sha256": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d",
+      "java_cube_state_ids": {
+        "minecraft:dirt": 10,
+        "minecraft:oak_planks": 15,
+        "minecraft:stone": 1
+      },
+      "java_executed_in_this_run": false,
+      "reference_sha256": "3cbe8aa7780f14c1b37159a885710b04680e3b6c4ffa4975b4d8297015f11e7e",
+      "slots": {
+        "minecraft:block/dirt": 0,
+        "minecraft:block/oak_planks": 1,
+        "minecraft:block/stone": 2
+      },
+      "textures": {
+        "assets/minecraft/textures/block/dirt.png": {
+          "bytes": 197,
+          "height": 16,
+          "sha256": "67197d5371efc3ca1638217c38349665dbd5a977b47bfb20075c858dff87d510",
+          "width": 16
+        },
+        "assets/minecraft/textures/block/oak_planks.png": {
+          "bytes": 195,
+          "height": 16,
+          "sha256": "65665943ef9c8bcf63fc67d2083ed0c50243f724106d0e4bb1abea5d921b16d3",
+          "width": 16
+        },
+        "assets/minecraft/textures/block/stone.png": {
+          "bytes": 151,
+          "height": 16,
+          "sha256": "b5e10adc72442bfb257ce7ba0b9bbe36475a0c8cdfec89b80dc9517203ff3e9f",
+          "width": 16
+        }
+      }
+    },
+    "source_models": {
+      "models": [
+        "minecraft:block/block",
+        "minecraft:block/cube",
+        "minecraft:block/cube_all",
+        "minecraft:block/dirt",
+        "minecraft:block/oak_planks",
+        "minecraft:block/stone"
+      ],
+      "original_resources": {
+        "assets/minecraft/models/block/block.json": {
+          "bytes": 1136,
+          "sha256": "212df16c5aa3e6aef3f4d3e080532d28a86cf9b2071618e4ca587ee9ef3c6d09"
+        },
+        "assets/minecraft/models/block/cube.json": {
+          "bytes": 584,
+          "sha256": "3e4aacd02e816aeba38f83076596e18ded4cf49c01e17c62d1fce79850ffb84e"
+        },
+        "assets/minecraft/models/block/cube_all.json": {
+          "bytes": 227,
+          "sha256": "be3205d629ffb9e03834c3d1d083f8a2c62e9f9ae80820755129408634e9144a"
+        },
+        "assets/minecraft/models/block/dirt.json": {
+          "bytes": 97,
+          "sha256": "c7a496ef02d69788d589fac7d2d2465e36eeb8a187cb8b23612310f3945c4868"
+        },
+        "assets/minecraft/models/block/oak_planks.json": {
+          "bytes": 103,
+          "sha256": "79b1146adb4eff1b405c0a18384e3290fa171edc1347f64fef50df3df4df939d"
+        },
+        "assets/minecraft/models/block/stone.json": {
+          "bytes": 98,
+          "sha256": "c0734082e7f1e2f44809737b2fbe1136fc7304bde7232e45fbe921884a4a327e"
+        }
+      },
+      "path": "build/world-visibility-oracle/source-model-library.json",
+      "sha256": "29f177f463c96fc2c5dc65c55bb56a0227175ebd2e0a040ce22e274314b0f947"
+    },
+    "visibility_fresh_jvm_reproductions": 2,
+    "visibility_observations_sha256": "2234d01c628fd89ec655d06e297898f059d50b3aa2188d979a82d02910a59033",
+    "visibility_sha256": "c81f6e26110d2275905a6d94f30462935814e8951fdd8e6c10f9a084febacbde"
+  },
+  "runs": [],
+  "schema": 1,
+  "scope": "Prepared native verification of measured vanilla air/full-cube neighbor masks, exact camera-relative source-baked retained quads and finite CPU flat pixels; native compilation did not finish within the bound.",
+  "seconds": 600.979843,
+  "source_sha256_begin": {
+    "src/archive.bend": "c0f7b34a22726d220f6b867730b7d080d57d82c84d619c35721b9b8d18fa5d6e",
+    "src/big_uint.bend": "fbe5965ee16ee3d6864def33fbc6e5e4b1b9bc7da4735d99311c1a23c65e2444",
+    "src/block_bake.bend": "3611116e0ba63915d6013463c1640f83b6b80cb08e802f93be5f7eaa4d600595",
+    "src/block_model.bend": "08108bae9b89c6768de56bdddea158f3604b36c7de4ee0408815e2c7f48b97a1",
+    "src/client_render.bend": "bb8f6057a02bfcb0583025f9e75fe41abc6804eb554c6d971df5c81618932947",
+    "src/client_world.bend": "05040abf35b2b9ceaf87fed5c48f8d074d211750a59ab00fa6ff08e60a9ea5d7",
+    "src/compression.bend": "255cdff06a33050c7b0a48fdea75c1842ebe2dab0439cfe4f03d126d4edc20aa",
+    "src/core.bend": "c1ee5a5390cdac0452c9c6cd3b0584a68ef68b5b0dfec867491c27e67ecadd4e",
+    "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "src/float_parse.bend": "fe22007f0805f3c955fcaada88c1da76a3cceda74f0ff3840ae47af49a02c683",
+    "src/framing.bend": "307f95049df03d92687b7bd0eafb2cd566e660926510bb88163f9bc825fccdb5",
+    "src/game.bend": "43e3eee5d15613bb06cc608fe43657aa14d8c0fbe899d4efa580fc8335d23882",
+    "src/geometry.bend": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f",
+    "src/hash.bend": "d2473695632b19e68c8d636668e4617f04d70892fb2ab6559cb24d4b33c1b978",
+    "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+    "src/live.bend": "cb5a2f8237a53e48d3f6751d321a023e11694721f789373984d7d77620f32e87",
+    "src/mesh_render.bend": "90cc444e01b6a97f814a20a22a09b67e322b1eec4afc879e1d5b9b7f57f3b16c",
+    "src/movement.bend": "0e94fea7cc941a23d2ed7bbd2ccaf0117e6af363eb91f2db2e34428f9dd9e67f",
+    "src/png.bend": "8c24c14a250cf6dbdf0c2804e4b28bfebd7ef62ed5d9ee97a1d07094d4745f22",
+    "src/registry.bend": "821c53d9cfa3044be3cae2af968f55563c0be2bebc9beae55a29d77d47b140a0",
+    "src/schedule.bend": "93aa79895fe340e27ae5fd562102d5980f0938003eb1bbde669a84010779b8c9",
+    "src/section.bend": "02b5c15c57b173c7eb8b4c55a1433c10c192926e91af5e3e69050b4404044aa5",
+    "src/section_map.bend": "ded59d7938c02fd0876d65e37f9f90ea0cfebf3ca4bd107394342f8adbf33965",
+    "src/unicode.bend": "8f0cd9bbcd0e7f938af370675eca0c73a9b97b90c2789a1e77e5a29a918455bd",
+    "src/world_mesh.bend": "55ae3a8d0efcd1e69ac59c3db49b4a0db1359d3e655c93ca11ba04a36a72cc45",
+    "src/world_visibility.bend": "599e28975027958b48da9a299a968bf837fc6a244ac6750b37866c32182dbb07",
+    "tests/world_visibility.bend": "62cc1355f9d0b9fcb352992529fbf95fa3ecae1d295bc42543a7c99da6128aab",
+    "tools/reference_block_probe.py": "5456bfddf84b37aec253c958ff12b723260875485289a7afc34a88d04c023003",
+    "tools/reference_inventory.py": "e82b66508a99d9bac37c62917645e9adcac06e52ab2b65e2bc8afd5be66a8d9e",
+    "tools/reference_model_probe.py": "4c82153a59a0eeb58e8c5df181e13adb16424343de9f7c2957f73c662cc598b7",
+    "tools/reference_movement_probe.py": "e8500b4509fd12a47bd1c5c085fc04d00b8c18af4ad3d551487b323eec9d7736",
+    "tools/reference_world_visibility_probe.py": "fa15c7cc08611791420c2fc41a313acec87bfa9521d25d7b106872973c4b5cf5",
+    "tools/test_block_bake.py": "82c4fb482906cd6010de9c6af64294954b6a63d6da7083c8ab2019b1a69732e6",
+    "tools/test_client_world.py": "e64430126cbc6fd5b85a0bfcbb61de322020585a877aeb6412d3bacbc5dbdbd3",
+    "tools/test_mesh_render.py": "0645bcd9fa2e6f1407587c4b14efcaadf81a00f1f3d1b6ffb42c11cd42fbcb06",
+    "tools/test_world_mesh.py": "4ce88638290cb611bf0ff3bd99ed30cea16691cf5979d40074fe135c750ee745",
+    "tools/test_world_visibility.py": "d48d3a7f0bb8758634532ed16a13a98c653be26087058cea543d3deb774df9ba"
+  },
+  "source_sha256_end": {
+    "src/archive.bend": "c0f7b34a22726d220f6b867730b7d080d57d82c84d619c35721b9b8d18fa5d6e",
+    "src/big_uint.bend": "fbe5965ee16ee3d6864def33fbc6e5e4b1b9bc7da4735d99311c1a23c65e2444",
+    "src/block_bake.bend": "3611116e0ba63915d6013463c1640f83b6b80cb08e802f93be5f7eaa4d600595",
+    "src/block_model.bend": "08108bae9b89c6768de56bdddea158f3604b36c7de4ee0408815e2c7f48b97a1",
+    "src/client_render.bend": "bb8f6057a02bfcb0583025f9e75fe41abc6804eb554c6d971df5c81618932947",
+    "src/client_world.bend": "05040abf35b2b9ceaf87fed5c48f8d074d211750a59ab00fa6ff08e60a9ea5d7",
+    "src/compression.bend": "255cdff06a33050c7b0a48fdea75c1842ebe2dab0439cfe4f03d126d4edc20aa",
+    "src/core.bend": "c1ee5a5390cdac0452c9c6cd3b0584a68ef68b5b0dfec867491c27e67ecadd4e",
+    "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "src/float_parse.bend": "fe22007f0805f3c955fcaada88c1da76a3cceda74f0ff3840ae47af49a02c683",
+    "src/framing.bend": "307f95049df03d92687b7bd0eafb2cd566e660926510bb88163f9bc825fccdb5",
+    "src/game.bend": "43e3eee5d15613bb06cc608fe43657aa14d8c0fbe899d4efa580fc8335d23882",
+    "src/geometry.bend": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f",
+    "src/hash.bend": "d2473695632b19e68c8d636668e4617f04d70892fb2ab6559cb24d4b33c1b978",
+    "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+    "src/live.bend": "cb5a2f8237a53e48d3f6751d321a023e11694721f789373984d7d77620f32e87",
+    "src/mesh_render.bend": "90cc444e01b6a97f814a20a22a09b67e322b1eec4afc879e1d5b9b7f57f3b16c",
+    "src/movement.bend": "0e94fea7cc941a23d2ed7bbd2ccaf0117e6af363eb91f2db2e34428f9dd9e67f",
+    "src/png.bend": "8c24c14a250cf6dbdf0c2804e4b28bfebd7ef62ed5d9ee97a1d07094d4745f22",
+    "src/registry.bend": "821c53d9cfa3044be3cae2af968f55563c0be2bebc9beae55a29d77d47b140a0",
+    "src/schedule.bend": "93aa79895fe340e27ae5fd562102d5980f0938003eb1bbde669a84010779b8c9",
+    "src/section.bend": "02b5c15c57b173c7eb8b4c55a1433c10c192926e91af5e3e69050b4404044aa5",
+    "src/section_map.bend": "ded59d7938c02fd0876d65e37f9f90ea0cfebf3ca4bd107394342f8adbf33965",
+    "src/unicode.bend": "8f0cd9bbcd0e7f938af370675eca0c73a9b97b90c2789a1e77e5a29a918455bd",
+    "src/world_mesh.bend": "55ae3a8d0efcd1e69ac59c3db49b4a0db1359d3e655c93ca11ba04a36a72cc45",
+    "src/world_visibility.bend": "599e28975027958b48da9a299a968bf837fc6a244ac6750b37866c32182dbb07",
+    "tests/world_visibility.bend": "62cc1355f9d0b9fcb352992529fbf95fa3ecae1d295bc42543a7c99da6128aab",
+    "tools/reference_block_probe.py": "5456bfddf84b37aec253c958ff12b723260875485289a7afc34a88d04c023003",
+    "tools/reference_inventory.py": "e82b66508a99d9bac37c62917645e9adcac06e52ab2b65e2bc8afd5be66a8d9e",
+    "tools/reference_model_probe.py": "4c82153a59a0eeb58e8c5df181e13adb16424343de9f7c2957f73c662cc598b7",
+    "tools/reference_movement_probe.py": "e8500b4509fd12a47bd1c5c085fc04d00b8c18af4ad3d551487b323eec9d7736",
+    "tools/reference_world_visibility_probe.py": "fa15c7cc08611791420c2fc41a313acec87bfa9521d25d7b106872973c4b5cf5",
+    "tools/test_block_bake.py": "82c4fb482906cd6010de9c6af64294954b6a63d6da7083c8ab2019b1a69732e6",
+    "tools/test_client_world.py": "e64430126cbc6fd5b85a0bfcbb61de322020585a877aeb6412d3bacbc5dbdbd3",
+    "tools/test_mesh_render.py": "0645bcd9fa2e6f1407587c4b14efcaadf81a00f1f3d1b6ffb42c11cd42fbcb06",
+    "tools/test_world_mesh.py": "4ce88638290cb611bf0ff3bd99ed30cea16691cf5979d40074fe135c750ee745",
+    "tools/test_world_visibility.py": "d48d3a7f0bb8758634532ed16a13a98c653be26087058cea543d3deb774df9ba"
+  },
+  "sources_unchanged_during_run": true,
+  "status": "unverified_native_build_resource_limit",
+  "timestamp_utc": "2026-10-03T21:06:36.031941+00:00"
+}

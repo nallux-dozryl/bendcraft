@@ -1,0 +1,939 @@
+{
+  "binaries_unchanged_during_run": true,
+  "binary_sha256_begin": {},
+  "binary_sha256_end": {},
+  "boundaries": [
+    "Python serializes actual native sampler and native baker output losslessly as checked DTOs; it implements no game semantics.",
+    "Actual sampler masks/raw coordinates/eye origin and actual Bend bake geometry are native stage inputs; expected Java masks/quads/pixels are never stage inputs.",
+    "The closed four-state full-cube domain, explicit normalized sprites and finite hidden CPU scenarios do not establish whole-game or visible-client parity.",
+    "The original combined600s build-limit receipt is preserved separately with exact original harness source."
+  ],
+  "builds": [
+    {
+      "build": true,
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-visibility-sampler.bend",
+        "-o",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-visibility-sampler"
+      ],
+      "exit_code": -15,
+      "pid": 63914,
+      "rss_samples": [
+        {
+          "processes": [
+            {
+              "command": "/Users/chuah/.bend/bin/bend /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-visibility-sampler.bend -o /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-visibility-sampler",
+              "elapsed": "02:01",
+              "pid": 63914,
+              "ppid": 63895,
+              "rss_kib": 2878176
+            }
+          ],
+          "seconds": 120.057177
+        },
+        {
+          "processes": [
+            {
+              "command": "/Users/chuah/.bend/bin/bend /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-visibility-sampler.bend -o /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-visibility-sampler",
+              "elapsed": "10:00",
+              "pid": 63914,
+              "ppid": 63895,
+              "rss_kib": 23488
+            },
+            {
+              "command": "/Library/Developer/CommandLineTools/usr/bin/clang -std=c11 -O3 /var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/bend-fZqEmH/world-visibility-sampler.c -lpthread -lm -o /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-visibility-sampler",
+              "elapsed": "07:02",
+              "pid": 64980,
+              "ppid": 63914,
+              "rss_kib": 6896
+            },
+            {
+              "command": "/Library/Developer/CommandLineTools/usr/bin/clang -cc1 -triple arm64-apple-macosx15.5.0 -Wundef-prefix=TARGET_OS_ -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -Werror=implicit-function-declaration -emit-obj -dumpdir /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-visibility-sampler- -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name world-visibility-sampler.c -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -mllvm -extra-vectorizer-passes -fno-strict-return -ffp-contract=on -fno-rounding-math -funwind-tables=1 -fobjc-msgsend-selector-stubs -target-sdk-version=15.5 -fvisibility-inlines-hidden-static-local-var -fdefine-target-os-macros -fno-assume-unique-vtables -fno-modulemap-allow-subdirectory-search -target-cpu apple-m1 -target-feature +zcm -target-feature +zcz -target-feature +v8.5a -target-feature +aes -target-feature +altnzcv -target-feature +ccdp -target-feature +complxnum -target-feature +crc -target-feature +dotprod -target-feature +fp-armv8 -target-feature +fp16fml -target-feature +fptoint -target-feature +fullfp16 -target-feature +jsconv -target-feature +lse -target-feature +neon -target-feature +pauth -target-feature +perfmon -target-feature +predres -target-feature +ras -target-feature +rcpc -target-feature +rdm -target-feature +sb -target-feature +sha2 -target-feature +sha3 -target-feature +specrestrict -target-feature +ssbs -target-abi darwinpcs -debugger-tuning=lldb -fdebug-compilation-dir=/Users/chuah/Documents/ChatGPT/bendex/minecraft -target-linker-version 1167.5 -fcoverage-compilation-dir=/Users/chuah/Documents/ChatGPT/bendex/minecraft -resource-dir /Library/Developer/CommandLineTools/usr/lib/clang/17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/usr/lib/clang/17/include -internal-externc-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -internal-externc-isystem /Library/Developer/CommandLineTools/usr/include -O3 -Wno-reorder-init-list -Wno-implicit-int-float-conversion -Wno-c99-designator -Wno-final-dtor-non-final-class -Wno-extra-semi-stmt -Wno-misleading-indentation -Wno-quoted-include-in-framework-header -Wno-implicit-fallthrough -Wno-enum-enum-conversion -Wno-enum-float-conversion -Wno-elaborated-enum-base -Wno-reserved-identifier -Wno-gnu-folding-constant -std=c11 -ferror-limit 19 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fmax-type-align=16 -fcommon -vectorize-loops -vectorize-slp -clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation -fno-odr-hash-protocols -clang-vendor-feature=+enableAggressiveVLAFolding -clang-vendor-feature=+revert09abecef7bbf -clang-vendor-feature=+thisNoAlignAttr -clang-vendor-feature=+thisNoNullAttr -clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o /var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/world-visibility-sampler-3f6279.o -x c /var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/bend-fZqEmH/world-visibility-sampler.c",
+              "elapsed": "07:02",
+              "pid": 64981,
+              "ppid": 64980,
+              "rss_kib": 1455568
+            }
+          ],
+          "seconds": 600.01888
+        }
+      ],
+      "seconds": 600.301337,
+      "stderr": "",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "timeout": true
+    }
+  ],
+  "counters": {
+    "geometry_invocations_this_stage": 0,
+    "native_invocations_this_stage": 0,
+    "sampler_invocations_this_stage": 0
+  },
+  "failed_execution": {
+    "build": true,
+    "command": [
+      "/Users/chuah/.bend/bin/bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-visibility-sampler.bend",
+      "-o",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-visibility-sampler"
+    ],
+    "exit_code": -15,
+    "pid": 63914,
+    "rss_samples": [
+      {
+        "processes": [
+          {
+            "command": "/Users/chuah/.bend/bin/bend /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-visibility-sampler.bend -o /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-visibility-sampler",
+            "elapsed": "02:01",
+            "pid": 63914,
+            "ppid": 63895,
+            "rss_kib": 2878176
+          }
+        ],
+        "seconds": 120.057177
+      },
+      {
+        "processes": [
+          {
+            "command": "/Users/chuah/.bend/bin/bend /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-visibility-sampler.bend -o /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-visibility-sampler",
+            "elapsed": "10:00",
+            "pid": 63914,
+            "ppid": 63895,
+            "rss_kib": 23488
+          },
+          {
+            "command": "/Library/Developer/CommandLineTools/usr/bin/clang -std=c11 -O3 /var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/bend-fZqEmH/world-visibility-sampler.c -lpthread -lm -o /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-visibility-sampler",
+            "elapsed": "07:02",
+            "pid": 64980,
+            "ppid": 63914,
+            "rss_kib": 6896
+          },
+          {
+            "command": "/Library/Developer/CommandLineTools/usr/bin/clang -cc1 -triple arm64-apple-macosx15.5.0 -Wundef-prefix=TARGET_OS_ -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -Werror=implicit-function-declaration -emit-obj -dumpdir /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-visibility-sampler- -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name world-visibility-sampler.c -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -mllvm -extra-vectorizer-passes -fno-strict-return -ffp-contract=on -fno-rounding-math -funwind-tables=1 -fobjc-msgsend-selector-stubs -target-sdk-version=15.5 -fvisibility-inlines-hidden-static-local-var -fdefine-target-os-macros -fno-assume-unique-vtables -fno-modulemap-allow-subdirectory-search -target-cpu apple-m1 -target-feature +zcm -target-feature +zcz -target-feature +v8.5a -target-feature +aes -target-feature +altnzcv -target-feature +ccdp -target-feature +complxnum -target-feature +crc -target-feature +dotprod -target-feature +fp-armv8 -target-feature +fp16fml -target-feature +fptoint -target-feature +fullfp16 -target-feature +jsconv -target-feature +lse -target-feature +neon -target-feature +pauth -target-feature +perfmon -target-feature +predres -target-feature +ras -target-feature +rcpc -target-feature +rdm -target-feature +sb -target-feature +sha2 -target-feature +sha3 -target-feature +specrestrict -target-feature +ssbs -target-abi darwinpcs -debugger-tuning=lldb -fdebug-compilation-dir=/Users/chuah/Documents/ChatGPT/bendex/minecraft -target-linker-version 1167.5 -fcoverage-compilation-dir=/Users/chuah/Documents/ChatGPT/bendex/minecraft -resource-dir /Library/Developer/CommandLineTools/usr/lib/clang/17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/usr/lib/clang/17/include -internal-externc-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -internal-externc-isystem /Library/Developer/CommandLineTools/usr/include -O3 -Wno-reorder-init-list -Wno-implicit-int-float-conversion -Wno-c99-designator -Wno-final-dtor-non-final-class -Wno-extra-semi-stmt -Wno-misleading-indentation -Wno-quoted-include-in-framework-header -Wno-implicit-fallthrough -Wno-enum-enum-conversion -Wno-enum-float-conversion -Wno-elaborated-enum-base -Wno-reserved-identifier -Wno-gnu-folding-constant -std=c11 -ferror-limit 19 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fmax-type-align=16 -fcommon -vectorize-loops -vectorize-slp -clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation -fno-odr-hash-protocols -clang-vendor-feature=+enableAggressiveVLAFolding -clang-vendor-feature=+revert09abecef7bbf -clang-vendor-feature=+thisNoAlignAttr -clang-vendor-feature=+thisNoNullAttr -clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o /var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/world-visibility-sampler-3f6279.o -x c /var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/bend-fZqEmH/world-visibility-sampler.c",
+            "elapsed": "07:02",
+            "pid": 64981,
+            "ppid": 64980,
+            "rss_kib": 1455568
+          }
+        ],
+        "seconds": 600.01888
+      }
+    ],
+    "seconds": 600.301337,
+    "stderr": "",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "timeout": true
+  },
+  "failed_execution_stdout": {
+    "path": "build/world-visibility-oracle/failed-execution-stdout.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "failure": "{'execution': {'command': ['/Users/chuah/.bend/bin/bend', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-visibility-sampler.bend', '-o', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-visibility-sampler'], 'pid': 63914, 'rss_samples': [{'seconds': 120.057177, 'processes': [{'pid': 63914, 'ppid': 63895, 'rss_kib': 2878176, 'elapsed': '02:01', 'command': '/Users/chuah/.bend/bin/bend /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-visibility-sampler.bend -o /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-visibility-sampler'}]}, {'seconds': 600.01888, 'processes': [{'pid': 63914, 'ppid': 63895, 'rss_kib': 23488, 'elapsed': '10:00', 'command': '/Users/chuah/.bend/bin/bend /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-visibility-sampler.bend -o /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-visibility-sampler'}, {'pid': 64980, 'ppid': 63914, 'rss_kib': 6896, 'elapsed': '07:02', 'command': '/Library/Developer/CommandLineTools/usr/bin/clang -std=c11 -O3 /var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/bend-fZqEmH/world-visibility-sampler.c -lpthread -lm -o /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-visibility-sampler'}, {'pid': 64981, 'ppid': 64980, 'rss_kib': 1455568, 'elapsed': '07:02', 'command': '/Library/Developer/CommandLineTools/usr/bin/clang -cc1 -triple arm64-apple-macosx15.5.0 -Wundef-prefix=TARGET_OS_ -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -Werror=implicit-function-declaration -emit-obj -dumpdir /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-visibility-sampler- -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name world-visibility-sampler.c -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -mllvm -extra-vectorizer-passes -fno-strict-return -ffp-contract=on -fno-rounding-math -funwind-tables=1 -fobjc-msgsend-selector-stubs -target-sdk-version=15.5 -fvisibility-inlines-hidden-static-local-var -fdefine-target-os-macros -fno-assume-unique-vtables -fno-modulemap-allow-subdirectory-search -target-cpu apple-m1 -target-feature +zcm -target-feature +zcz -target-feature +v8.5a -target-feature +aes -target-feature +altnzcv -target-feature +ccdp -target-feature +complxnum -target-feature +crc -target-feature +dotprod -target-feature +fp-armv8 -target-feature +fp16fml -target-feature +fptoint -target-feature +fullfp16 -target-feature +jsconv -target-feature +lse -target-feature +neon -target-feature +pauth -target-feature +perfmon -target-feature +predres -target-feature +ras -target-feature +rcpc -target-feature +rdm -target-feature +sb -target-feature +sha2 -target-feature +sha3 -target-feature +specrestrict -target-feature +ssbs -target-abi darwinpcs -debugger-tuning=lldb -fdebug-compilation-dir=/Users/chuah/Documents/ChatGPT/bendex/minecraft -target-linker-version 1167.5 -fcoverage-compilation-dir=/Users/chuah/Documents/ChatGPT/bendex/minecraft -resource-dir /Library/Developer/CommandLineTools/usr/lib/clang/17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/usr/lib/clang/17/include -internal-externc-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -internal-externc-isystem /Library/Developer/CommandLineTools/usr/include -O3 -Wno-reorder-init-list -Wno-implicit-int-float-conversion -Wno-c99-designator -Wno-final-dtor-non-final-class -Wno-extra-semi-stmt -Wno-misleading-indentation -Wno-quoted-include-in-framework-header -Wno-implicit-fallthrough -Wno-enum-enum-conversion -Wno-enum-float-conversion -Wno-elaborated-enum-base -Wno-reserved-identifier -Wno-gnu-folding-constant -std=c11 -ferror-limit 19 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fmax-type-align=16 -fcommon -vectorize-loops -vectorize-slp -clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation -fno-odr-hash-protocols -clang-vendor-feature=+enableAggressiveVLAFolding -clang-vendor-feature=+revert09abecef7bbf -clang-vendor-feature=+thisNoAlignAttr -clang-vendor-feature=+thisNoNullAttr -clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o /var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/world-visibility-sampler-3f6279.o -x c /var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/bend-fZqEmH/world-visibility-sampler.c'}]}], 'build': True, 'timeout': True, 'seconds': 600.301337, 'exit_code': -15, 'stdout_sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'stderr': ''}, 'stdout': ''}",
+  "failure_kind": "native_build_time_limit",
+  "generated_entries": [
+    {
+      "changes": "Only the main IO.args selector; no test module imports or implementation edits",
+      "path": "build/world-visibility-sampler.bend",
+      "selector": "sampler_arguments",
+      "sha256": "ac5968266c8c1cc6f7e81522d9c722bc2ffc6ccb8e2fb7c0180e54eb1580c48e",
+      "source_harness_sha256": "26bcd8382289a06bf8b7dc0702f5949d6a345277f85999117faced379518edd5"
+    }
+  ],
+  "generated_entries_sha256_end": {
+    "build/world-visibility-sampler.bend": "ac5968266c8c1cc6f7e81522d9c722bc2ffc6ccb8e2fb7c0180e54eb1580c48e"
+  },
+  "generated_entries_unchanged_during_run": true,
+  "geometry_counters": {
+    "blocks": 0,
+    "frames": 0,
+    "hidden_faces": 0,
+    "negative_rejections": 0,
+    "neighbor_reads": 0,
+    "pixels": 0,
+    "quads": 0,
+    "snapshots": 0,
+    "standalone_group_cases": 0,
+    "standalone_quads_checked": 0,
+    "validation_outcomes": 0,
+    "visible_faces": 0
+  },
+  "groups": [],
+  "input_sha256_begin": {
+    "alternate_registry": "67e335d15307a6d20e68e4204569439957a09c380ffacbff7e8f97192d568458",
+    "bake_reference": "3cbe8aa7780f14c1b37159a885710b04680e3b6c4ffa4975b4d8297015f11e7e",
+    "client_jar": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d",
+    "models": "29f177f463c96fc2c5dc65c55bb56a0227175ebd2e0a040ce22e274314b0f947",
+    "official_registry": "27769e75bf862d0540b2df2a6e99f6b7556a867bff6339fb08566240ee124cac",
+    "visibility_reference": "c81f6e26110d2275905a6d94f30462935814e8951fdd8e6c10f9a084febacbde"
+  },
+  "input_sha256_end": {
+    "alternate_registry": "67e335d15307a6d20e68e4204569439957a09c380ffacbff7e8f97192d568458",
+    "bake_reference": "3cbe8aa7780f14c1b37159a885710b04680e3b6c4ffa4975b4d8297015f11e7e",
+    "client_jar": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d",
+    "models": "29f177f463c96fc2c5dc65c55bb56a0227175ebd2e0a040ce22e274314b0f947",
+    "official_registry": "27769e75bf862d0540b2df2a6e99f6b7556a867bff6339fb08566240ee124cac",
+    "visibility_reference": "c81f6e26110d2275905a6d94f30462935814e8951fdd8e6c10f9a084febacbde"
+  },
+  "inputs_unchanged_during_run": true,
+  "native_inputs_unchanged_during_run": true,
+  "native_outputs_unchanged_during_run": true,
+  "oracle_sha256": "0290f583cca92c341fcf35e7d1d6d08ace6bd91339a770e6e952a29294b9b1bc",
+  "pin": "26.3",
+  "post_failure_audit": {
+    "bend_executable_post_failure": {
+      "bytes": 63885392,
+      "path": "/Users/chuah/.bend/bin/bend",
+      "resolved_path": "/Users/chuah/.bend/bin/bend",
+      "sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e"
+    },
+    "cc1_command_observed_at_timeout": [
+      "/Library/Developer/CommandLineTools/usr/bin/clang",
+      "-cc1",
+      "-triple",
+      "arm64-apple-macosx15.5.0",
+      "-Wundef-prefix=TARGET_OS_",
+      "-Wdeprecated-objc-isa-usage",
+      "-Werror=deprecated-objc-isa-usage",
+      "-Werror=implicit-function-declaration",
+      "-emit-obj",
+      "-dumpdir",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-visibility-sampler-",
+      "-disable-free",
+      "-clear-ast-before-backend",
+      "-disable-llvm-verifier",
+      "-discard-value-names",
+      "-main-file-name",
+      "world-visibility-sampler.c",
+      "-mrelocation-model",
+      "pic",
+      "-pic-level",
+      "2",
+      "-mframe-pointer=non-leaf",
+      "-mllvm",
+      "-extra-vectorizer-passes",
+      "-fno-strict-return",
+      "-ffp-contract=on",
+      "-fno-rounding-math",
+      "-funwind-tables=1",
+      "-fobjc-msgsend-selector-stubs",
+      "-target-sdk-version=15.5",
+      "-fvisibility-inlines-hidden-static-local-var",
+      "-fdefine-target-os-macros",
+      "-fno-assume-unique-vtables",
+      "-fno-modulemap-allow-subdirectory-search",
+      "-target-cpu",
+      "apple-m1",
+      "-target-feature",
+      "+zcm",
+      "-target-feature",
+      "+zcz",
+      "-target-feature",
+      "+v8.5a",
+      "-target-feature",
+      "+aes",
+      "-target-feature",
+      "+altnzcv",
+      "-target-feature",
+      "+ccdp",
+      "-target-feature",
+      "+complxnum",
+      "-target-feature",
+      "+crc",
+      "-target-feature",
+      "+dotprod",
+      "-target-feature",
+      "+fp-armv8",
+      "-target-feature",
+      "+fp16fml",
+      "-target-feature",
+      "+fptoint",
+      "-target-feature",
+      "+fullfp16",
+      "-target-feature",
+      "+jsconv",
+      "-target-feature",
+      "+lse",
+      "-target-feature",
+      "+neon",
+      "-target-feature",
+      "+pauth",
+      "-target-feature",
+      "+perfmon",
+      "-target-feature",
+      "+predres",
+      "-target-feature",
+      "+ras",
+      "-target-feature",
+      "+rcpc",
+      "-target-feature",
+      "+rdm",
+      "-target-feature",
+      "+sb",
+      "-target-feature",
+      "+sha2",
+      "-target-feature",
+      "+sha3",
+      "-target-feature",
+      "+specrestrict",
+      "-target-feature",
+      "+ssbs",
+      "-target-abi",
+      "darwinpcs",
+      "-debugger-tuning=lldb",
+      "-fdebug-compilation-dir=/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+      "-target-linker-version",
+      "1167.5",
+      "-fcoverage-compilation-dir=/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+      "-resource-dir",
+      "/Library/Developer/CommandLineTools/usr/lib/clang/17",
+      "-isysroot",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "-I/usr/local/include",
+      "-internal-isystem",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include",
+      "-internal-isystem",
+      "/Library/Developer/CommandLineTools/usr/lib/clang/17/include",
+      "-internal-externc-isystem",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include",
+      "-internal-externc-isystem",
+      "/Library/Developer/CommandLineTools/usr/include",
+      "-O3",
+      "-Wno-reorder-init-list",
+      "-Wno-implicit-int-float-conversion",
+      "-Wno-c99-designator",
+      "-Wno-final-dtor-non-final-class",
+      "-Wno-extra-semi-stmt",
+      "-Wno-misleading-indentation",
+      "-Wno-quoted-include-in-framework-header",
+      "-Wno-implicit-fallthrough",
+      "-Wno-enum-enum-conversion",
+      "-Wno-enum-float-conversion",
+      "-Wno-elaborated-enum-base",
+      "-Wno-reserved-identifier",
+      "-Wno-gnu-folding-constant",
+      "-std=c11",
+      "-ferror-limit",
+      "19",
+      "-stack-protector",
+      "1",
+      "-fstack-check",
+      "-mdarwin-stkchk-strong-link",
+      "-fblocks",
+      "-fencode-extended-block-signature",
+      "-fregister-global-dtors-with-atexit",
+      "-fgnuc-version=4.2.1",
+      "-fskip-odr-check-in-gmf",
+      "-fmax-type-align=16",
+      "-fcommon",
+      "-vectorize-loops",
+      "-vectorize-slp",
+      "-clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation",
+      "-fno-odr-hash-protocols",
+      "-clang-vendor-feature=+enableAggressiveVLAFolding",
+      "-clang-vendor-feature=+revert09abecef7bbf",
+      "-clang-vendor-feature=+thisNoAlignAttr",
+      "-clang-vendor-feature=+thisNoNullAttr",
+      "-clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError",
+      "-D__GCC_HAVE_DWARF2_CFI_ASM=1",
+      "-o",
+      "/var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/world-visibility-sampler-3f6279.o",
+      "-x",
+      "c",
+      "/var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/bend-fZqEmH/world-visibility-sampler.c"
+    ],
+    "cleanup": {
+      "empty_partial_object": {
+        "bytes": 0,
+        "path": "/var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/world-visibility-sampler-3f6279.o",
+        "resolved_path": "/private/var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/world-visibility-sampler-3f6279.o",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "expected_pids": [
+        63895,
+        63914,
+        64980,
+        64981
+      ],
+      "geometry_binary_exists": false,
+      "geometry_started": false,
+      "pgid": 63914,
+      "remaining_owned_processes": [],
+      "sampler_binary_exists": false
+    },
+    "compiler_post_failure": {
+      "bytes": 264942528,
+      "path": "/Library/Developer/CommandLineTools/usr/bin/clang",
+      "resolved_path": "/Library/Developer/CommandLineTools/usr/bin/clang",
+      "sha256": "4c458256bcdf913774de1bb4a37768244d3b41f32ad55afb2dfec3432f46f4fe"
+    },
+    "compiler_version_post_failure": "Apple clang version 17.0.0 (clang-1700.0.13.5)\nTarget: arm64-apple-darwin25.4.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin\n",
+    "driver_command_observed_at_timeout": [
+      "/Library/Developer/CommandLineTools/usr/bin/clang",
+      "-std=c11",
+      "-O3",
+      "/var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/bend-fZqEmH/world-visibility-sampler.c",
+      "-lpthread",
+      "-lm",
+      "-o",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-visibility-sampler"
+    ],
+    "emitted_c_copy_exact": true,
+    "emitted_c_original": {
+      "bytes": 48489853,
+      "path": "/var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/bend-fZqEmH/world-visibility-sampler.c",
+      "resolved_path": "/private/var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/bend-fZqEmH/world-visibility-sampler.c",
+      "sha256": "ca28c3d401f8f634d3a5cf2d799dc08d56f951988ba8e410cd3029e0900eb51c"
+    },
+    "emitted_c_retained": {
+      "bytes": 48489853,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-visibility-oracle/sampler-emitted-after-time-limit.c",
+      "resolved_path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-visibility-oracle/sampler-emitted-after-time-limit.c",
+      "sha256": "ca28c3d401f8f634d3a5cf2d799dc08d56f951988ba8e410cd3029e0900eb51c"
+    },
+    "installed_base_post_failure": {
+      "bytes": 71530,
+      "path": "/Users/chuah/.bend/bend2/base.bend",
+      "resolved_path": "/Users/chuah/.bend/bend2/base.bend",
+      "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+    },
+    "local_compiler_source_boundary": "A read-only audit found runtime_c in local comp.ts; the installed executable fingerprint is authoritative. No claim is made that local source provenance alone proves the installed binary build.",
+    "local_compiler_source_read_only_post_failure": {
+      "bytes": 185829,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/comp.ts",
+      "resolved_path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/comp.ts",
+      "sha256": "32fb66e09f608ce9e4b173384bcfeec453db8c5bc96650e26ad861bef815a8d9"
+    },
+    "observed_cc1_target": "arm64-apple-macosx15.5.0",
+    "original_runner_receipt_sha256": "87391020046265939401307423f289ffc35026508d26929ef82d956f4bb6a228",
+    "proposed_lower_optimization": {
+      "command": [
+        "/Library/Developer/CommandLineTools/usr/bin/clang",
+        "-std=c11",
+        "-O0",
+        "/var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/bend-fZqEmH/world-visibility-sampler.c",
+        "-lpthread",
+        "-lm",
+        "-o",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-visibility-sampler-O0"
+      ],
+      "only_driver_argument_changes": [
+        "-O3 to -O0",
+        "output path to separate sampler-O0 binary"
+      ],
+      "rss_sample_seconds": 120,
+      "same_original_c_path_and_bytes": true,
+      "semantics_boundary": "Any future run would be separately labeled lower-optimization behavioral evidence; the installed Bend -O3 build remains unverified at its stated limit.",
+      "status": "prepared_only_no_compile_grant",
+      "timeout_seconds": 600
+    },
+    "runtime_includes": [
+      {
+        "candidate_headers_post_failure": [],
+        "include": "Foundation/Foundation.h"
+      },
+      {
+        "candidate_headers_post_failure": [],
+        "include": "Metal/Metal.h"
+      },
+      {
+        "candidate_headers_post_failure": [
+          {
+            "bytes": 4798,
+            "path": "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arpa/inet.h",
+            "resolved_path": "/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk/usr/include/arpa/inet.h",
+            "sha256": "d3cfef9fd47ee16cdd5b91f34cdd921225ac773765c674787c5c1e37e212eda0"
+          }
+        ],
+        "include": "arpa/inet.h"
+      },
+      {
+        "candidate_headers_post_failure": [],
+        "include": "cuda.h"
+      },
+      {
+        "candidate_headers_post_failure": [
+          {
+            "bytes": 1003,
+            "path": "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/errno.h",
+            "resolved_path": "/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk/usr/include/errno.h",
+            "sha256": "ff95a158e0799dcf0622e83882e64d88f1783b98a91d9b206bcba2a12f8425e6"
+          }
+        ],
+        "include": "errno.h"
+      },
+      {
+        "candidate_headers_post_failure": [
+          {
+            "bytes": 1002,
+            "path": "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/fcntl.h",
+            "resolved_path": "/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk/usr/include/fcntl.h",
+            "sha256": "289f3be20c07d8eae5589f43994cfdb5fb33b3b099a6aee67f63e00d90039a8f"
+          }
+        ],
+        "include": "fcntl.h"
+      },
+      {
+        "candidate_headers_post_failure": [
+          {
+            "bytes": 18233,
+            "path": "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach-o/dyld.h",
+            "resolved_path": "/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk/usr/include/mach-o/dyld.h",
+            "sha256": "7c8583f2b4edcfcde7da60ffe02c75974ec87f885fecc4e8d40761fe0b553a80"
+          }
+        ],
+        "include": "mach-o/dyld.h"
+      },
+      {
+        "candidate_headers_post_failure": [
+          {
+            "bytes": 34155,
+            "path": "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h",
+            "resolved_path": "/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk/usr/include/math.h",
+            "sha256": "00606d7b27eb5db0a3b93c575a7084f432d1e783cfca2eedcdc234c01cb15134"
+          }
+        ],
+        "include": "math.h"
+      },
+      {
+        "candidate_headers_post_failure": [],
+        "include": "metal_stdlib"
+      },
+      {
+        "candidate_headers_post_failure": [
+          {
+            "bytes": 31513,
+            "path": "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/netinet/in.h",
+            "resolved_path": "/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk/usr/include/netinet/in.h",
+            "sha256": "e97c1992215250067fb553af2722633a240fdeb675e7560551e872b81a90e8bd"
+          }
+        ],
+        "include": "netinet/in.h"
+      },
+      {
+        "candidate_headers_post_failure": [],
+        "include": "nvrtc.h"
+      },
+      {
+        "candidate_headers_post_failure": [
+          {
+            "bytes": 1004,
+            "path": "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/poll.h",
+            "resolved_path": "/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk/usr/include/poll.h",
+            "sha256": "dc10a7ff3e8952c80305a099fa247a572f636b5b8f9f6b82f7e6b7d999fc6af3"
+          }
+        ],
+        "include": "poll.h"
+      },
+      {
+        "candidate_headers_post_failure": [
+          {
+            "bytes": 28093,
+            "path": "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/pthread.h",
+            "resolved_path": "/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk/usr/include/pthread/pthread.h",
+            "sha256": "9d621c730d1d96b600893b0e3e4c45822a24d565e7b6b166973c41a6a2eb02e7"
+          }
+        ],
+        "include": "pthread.h"
+      },
+      {
+        "candidate_headers_post_failure": [
+          {
+            "bytes": 1410,
+            "path": "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sched.h",
+            "resolved_path": "/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk/usr/include/pthread/sched.h",
+            "sha256": "07d65b8d135be978a33579b5a333bd4576a8c6b36351ef510e0cca2aa0987020"
+          }
+        ],
+        "include": "sched.h"
+      },
+      {
+        "candidate_headers_post_failure": [
+          {
+            "bytes": 5437,
+            "path": "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/signal.h",
+            "resolved_path": "/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk/usr/include/signal.h",
+            "sha256": "3bfc3ab2ba66f5e916ea444c0e6204d165a45af0abdfe35202a4d363cf15785f"
+          }
+        ],
+        "include": "signal.h"
+      },
+      {
+        "candidate_headers_post_failure": [
+          {
+            "bytes": 8662,
+            "path": "/Library/Developer/CommandLineTools/usr/lib/clang/17/include/stdatomic.h",
+            "resolved_path": "/Library/Developer/CommandLineTools/usr/lib/clang/17/include/stdatomic.h",
+            "sha256": "728b690f127fc85faa32b9031e3a0019da92f77db92ca91b749571e45617a9ea"
+          }
+        ],
+        "include": "stdatomic.h"
+      },
+      {
+        "candidate_headers_post_failure": [
+          {
+            "bytes": 1172,
+            "path": "/Library/Developer/CommandLineTools/usr/lib/clang/17/include/stdbool.h",
+            "resolved_path": "/Library/Developer/CommandLineTools/usr/lib/clang/17/include/stdbool.h",
+            "sha256": "48655faf4ebd4ca0af26a1ee8e3e16f8dc68385c9cd550ffb3629320681305b3"
+          }
+        ],
+        "include": "stdbool.h"
+      },
+      {
+        "candidate_headers_post_failure": [
+          {
+            "bytes": 31054,
+            "path": "/Library/Developer/CommandLineTools/usr/lib/clang/17/include/stdint.h",
+            "resolved_path": "/Library/Developer/CommandLineTools/usr/lib/clang/17/include/stdint.h",
+            "sha256": "655616d8fcb2c92b38c039019685c658c2346b3dd0021aed4ea057b43f621247"
+          },
+          {
+            "bytes": 5556,
+            "path": "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdint.h",
+            "resolved_path": "/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk/usr/include/stdint.h",
+            "sha256": "9d070aad02d9f2ba1f2248d093b4194b62cf8d363778c737d1110f4736e5ed3c"
+          }
+        ],
+        "include": "stdint.h"
+      },
+      {
+        "candidate_headers_post_failure": [
+          {
+            "bytes": 3069,
+            "path": "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdio.h",
+            "resolved_path": "/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk/usr/include/stdio.h",
+            "sha256": "d2220614f42d3cb678ae0de176ba0ab3256e15fb45b3efdb5d17b8ac1f6a4b54"
+          }
+        ],
+        "include": "stdio.h"
+      },
+      {
+        "candidate_headers_post_failure": [
+          {
+            "bytes": 2980,
+            "path": "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdlib.h",
+            "resolved_path": "/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk/usr/include/stdlib.h",
+            "sha256": "7995a2df951dd1fdbd9fd4ec38900b79ef1797655ff239728fdbac56bb9bd7ff"
+          }
+        ],
+        "include": "stdlib.h"
+      },
+      {
+        "candidate_headers_post_failure": [
+          {
+            "bytes": 2975,
+            "path": "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/string.h",
+            "resolved_path": "/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk/usr/include/string.h",
+            "sha256": "4b1b9c05bfe370d423d7a6bf9e74b189bcc7f59c1cd97f23d6d94f2f3df6a4bc"
+          }
+        ],
+        "include": "string.h"
+      },
+      {
+        "candidate_headers_post_failure": [
+          {
+            "bytes": 11091,
+            "path": "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/mman.h",
+            "resolved_path": "/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk/usr/include/sys/mman.h",
+            "sha256": "16195e20f0f4b31d1afdd7ee54d5e6c470e42ffaee4b9ddbe08374a965af4073"
+          }
+        ],
+        "include": "sys/mman.h"
+      },
+      {
+        "candidate_headers_post_failure": [
+          {
+            "bytes": 5366,
+            "path": "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/select.h",
+            "resolved_path": "/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk/usr/include/sys/select.h",
+            "sha256": "cffe3e51c7c6c6ef68750cc85f7ddc1b7b4be041a4bbb47fd19914125bf1b6df"
+          }
+        ],
+        "include": "sys/select.h"
+      },
+      {
+        "candidate_headers_post_failure": [
+          {
+            "bytes": 32534,
+            "path": "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/socket.h",
+            "resolved_path": "/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk/usr/include/sys/socket.h",
+            "sha256": "3339ce661e7a5cb83147f1d9f850e64da8f486d5851293022400da987073e1d6"
+          }
+        ],
+        "include": "sys/socket.h"
+      },
+      {
+        "candidate_headers_post_failure": [
+          {
+            "bytes": 20575,
+            "path": "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/stat.h",
+            "resolved_path": "/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk/usr/include/sys/stat.h",
+            "sha256": "31c8f252b05785343ca577c007657c0fbab45a182b60fc5b73994c621dc318d4"
+          }
+        ],
+        "include": "sys/stat.h"
+      },
+      {
+        "candidate_headers_post_failure": [
+          {
+            "bytes": 3275,
+            "path": "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/time.h",
+            "resolved_path": "/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk/usr/include/time.h",
+            "sha256": "cf4912303943c5bda8404f5fd7a2a8219153353a49df2aeaddbb2dcd4b35c0bf"
+          }
+        ],
+        "include": "time.h"
+      },
+      {
+        "candidate_headers_post_failure": [
+          {
+            "bytes": 30678,
+            "path": "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/unistd.h",
+            "resolved_path": "/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk/usr/include/unistd.h",
+            "sha256": "be3d2b42ce70c5934942bed0ad31d512e9226393140ea783fca887ea35324ab1"
+          }
+        ],
+        "include": "unistd.h"
+      }
+    ],
+    "runtime_provenance_boundary": "The retained complete emitted C contains the Bend runtime and IO implementation inline. No separately generated header appears in its include directives. Header fingerprints are post-failure direct candidate headers, not a measured full preprocessor dependency graph. Conditional Metal/CUDA headers are inactive for the observed plain C invocation.",
+    "sdk_settings_post_failure": {
+      "bytes": 6953,
+      "path": "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/SDKSettings.json",
+      "resolved_path": "/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk/SDKSettings.json",
+      "sha256": "58a133735f0a55a624a1703067059f6e78925e51725ec6e1f966072e142c9c42"
+    },
+    "sdk_version": "15.5",
+    "source_files_current_equal_run_end": {
+      "src/archive.bend": true,
+      "src/big_uint.bend": true,
+      "src/block_bake.bend": true,
+      "src/block_model.bend": true,
+      "src/client_render.bend": true,
+      "src/client_world.bend": true,
+      "src/compression.bend": true,
+      "src/core.bend": true,
+      "src/f64.bend": true,
+      "src/float_parse.bend": true,
+      "src/framing.bend": true,
+      "src/game.bend": true,
+      "src/geometry.bend": true,
+      "src/hash.bend": true,
+      "src/json.bend": true,
+      "src/live.bend": true,
+      "src/mesh_render.bend": true,
+      "src/movement.bend": true,
+      "src/png.bend": true,
+      "src/registry.bend": true,
+      "src/schedule.bend": true,
+      "src/section.bend": true,
+      "src/section_map.bend": true,
+      "src/unicode.bend": true,
+      "src/world_mesh.bend": true,
+      "src/world_visibility.bend": true,
+      "tests/world_visibility.bend": true,
+      "tools/reference_block_probe.py": true,
+      "tools/reference_inventory.py": true,
+      "tools/reference_model_probe.py": true,
+      "tools/reference_movement_probe.py": true,
+      "tools/reference_world_visibility_probe.py": true,
+      "tools/test_block_bake.py": true,
+      "tools/test_client_world.py": true,
+      "tools/test_mesh_render.py": true,
+      "tools/test_world_mesh.py": true,
+      "tools/test_world_visibility.py": true
+    },
+    "timestamp_utc": "2026-10-03T21:59:56.370662+00:00"
+  },
+  "reference": {
+    "bake": {
+      "atlas_policy": "StaticNormalized, full-image [0,1] UVs; all Solid",
+      "cached_actual_java_cube_variants": 3,
+      "cached_actual_java_quads": 18,
+      "client_sha256": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d",
+      "java_cube_state_ids": {
+        "minecraft:dirt": 10,
+        "minecraft:oak_planks": 15,
+        "minecraft:stone": 1
+      },
+      "java_executed_in_this_run": false,
+      "reference_sha256": "3cbe8aa7780f14c1b37159a885710b04680e3b6c4ffa4975b4d8297015f11e7e",
+      "slots": {
+        "minecraft:block/dirt": 0,
+        "minecraft:block/oak_planks": 1,
+        "minecraft:block/stone": 2
+      },
+      "textures": {
+        "assets/minecraft/textures/block/dirt.png": {
+          "bytes": 197,
+          "height": 16,
+          "sha256": "67197d5371efc3ca1638217c38349665dbd5a977b47bfb20075c858dff87d510",
+          "width": 16
+        },
+        "assets/minecraft/textures/block/oak_planks.png": {
+          "bytes": 195,
+          "height": 16,
+          "sha256": "65665943ef9c8bcf63fc67d2083ed0c50243f724106d0e4bb1abea5d921b16d3",
+          "width": 16
+        },
+        "assets/minecraft/textures/block/stone.png": {
+          "bytes": 151,
+          "height": 16,
+          "sha256": "b5e10adc72442bfb257ce7ba0b9bbe36475a0c8cdfec89b80dc9517203ff3e9f",
+          "width": 16
+        }
+      }
+    },
+    "original_source_models": {
+      "models": [
+        "minecraft:block/block",
+        "minecraft:block/cube",
+        "minecraft:block/cube_all",
+        "minecraft:block/dirt",
+        "minecraft:block/oak_planks",
+        "minecraft:block/stone"
+      ],
+      "original_resources": {
+        "assets/minecraft/models/block/block.json": {
+          "bytes": 1136,
+          "sha256": "212df16c5aa3e6aef3f4d3e080532d28a86cf9b2071618e4ca587ee9ef3c6d09"
+        },
+        "assets/minecraft/models/block/cube.json": {
+          "bytes": 584,
+          "sha256": "3e4aacd02e816aeba38f83076596e18ded4cf49c01e17c62d1fce79850ffb84e"
+        },
+        "assets/minecraft/models/block/cube_all.json": {
+          "bytes": 227,
+          "sha256": "be3205d629ffb9e03834c3d1d083f8a2c62e9f9ae80820755129408634e9144a"
+        },
+        "assets/minecraft/models/block/dirt.json": {
+          "bytes": 97,
+          "sha256": "c7a496ef02d69788d589fac7d2d2465e36eeb8a187cb8b23612310f3945c4868"
+        },
+        "assets/minecraft/models/block/oak_planks.json": {
+          "bytes": 103,
+          "sha256": "79b1146adb4eff1b405c0a18384e3290fa171edc1347f64fef50df3df4df939d"
+        },
+        "assets/minecraft/models/block/stone.json": {
+          "bytes": 98,
+          "sha256": "c0734082e7f1e2f44809737b2fbe1136fc7304bde7232e45fbe921884a4a327e"
+        }
+      },
+      "path": "build/world-visibility-oracle/source-model-library.json",
+      "sha256": "29f177f463c96fc2c5dc65c55bb56a0227175ebd2e0a040ce22e274314b0f947"
+    },
+    "visibility_sha256": "c81f6e26110d2275905a6d94f30462935814e8951fdd8e6c10f9a084febacbde"
+  },
+  "registry_states": {
+    "alternate": {
+      "minecraft:air": 2,
+      "minecraft:dirt": 3,
+      "minecraft:oak_planks": 0,
+      "minecraft:stone": 1
+    },
+    "official": {
+      "minecraft:air": 0,
+      "minecraft:dirt": 10,
+      "minecraft:oak_planks": 15,
+      "minecraft:stone": 1
+    }
+  },
+  "runs": [],
+  "sampler_counters": {
+    "blocks": 0,
+    "negative_rejections": 0,
+    "neighbor_reads": 0,
+    "neighbor_results": 0,
+    "owner_recoveries_checked": 0,
+    "pair_results": 0,
+    "snapshots": 0,
+    "validation_outcomes": 0
+  },
+  "sampler_handoff_unchanged_during_run": true,
+  "schema": 2,
+  "scope": "Split actual Core.World visibility sampler and actual Bend-baked geometry/flat-render integration",
+  "seconds": 600.407264,
+  "selected_stage": "sampler",
+  "source_sha256_begin": {
+    "src/archive.bend": "c0f7b34a22726d220f6b867730b7d080d57d82c84d619c35721b9b8d18fa5d6e",
+    "src/big_uint.bend": "fbe5965ee16ee3d6864def33fbc6e5e4b1b9bc7da4735d99311c1a23c65e2444",
+    "src/block_bake.bend": "3611116e0ba63915d6013463c1640f83b6b80cb08e802f93be5f7eaa4d600595",
+    "src/block_model.bend": "08108bae9b89c6768de56bdddea158f3604b36c7de4ee0408815e2c7f48b97a1",
+    "src/client_render.bend": "bb8f6057a02bfcb0583025f9e75fe41abc6804eb554c6d971df5c81618932947",
+    "src/client_world.bend": "05040abf35b2b9ceaf87fed5c48f8d074d211750a59ab00fa6ff08e60a9ea5d7",
+    "src/compression.bend": "255cdff06a33050c7b0a48fdea75c1842ebe2dab0439cfe4f03d126d4edc20aa",
+    "src/core.bend": "c1ee5a5390cdac0452c9c6cd3b0584a68ef68b5b0dfec867491c27e67ecadd4e",
+    "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "src/float_parse.bend": "fe22007f0805f3c955fcaada88c1da76a3cceda74f0ff3840ae47af49a02c683",
+    "src/framing.bend": "307f95049df03d92687b7bd0eafb2cd566e660926510bb88163f9bc825fccdb5",
+    "src/game.bend": "43e3eee5d15613bb06cc608fe43657aa14d8c0fbe899d4efa580fc8335d23882",
+    "src/geometry.bend": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f",
+    "src/hash.bend": "d2473695632b19e68c8d636668e4617f04d70892fb2ab6559cb24d4b33c1b978",
+    "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+    "src/live.bend": "cb5a2f8237a53e48d3f6751d321a023e11694721f789373984d7d77620f32e87",
+    "src/mesh_render.bend": "90cc444e01b6a97f814a20a22a09b67e322b1eec4afc879e1d5b9b7f57f3b16c",
+    "src/movement.bend": "0e94fea7cc941a23d2ed7bbd2ccaf0117e6af363eb91f2db2e34428f9dd9e67f",
+    "src/png.bend": "8c24c14a250cf6dbdf0c2804e4b28bfebd7ef62ed5d9ee97a1d07094d4745f22",
+    "src/registry.bend": "821c53d9cfa3044be3cae2af968f55563c0be2bebc9beae55a29d77d47b140a0",
+    "src/schedule.bend": "93aa79895fe340e27ae5fd562102d5980f0938003eb1bbde669a84010779b8c9",
+    "src/section.bend": "02b5c15c57b173c7eb8b4c55a1433c10c192926e91af5e3e69050b4404044aa5",
+    "src/section_map.bend": "ded59d7938c02fd0876d65e37f9f90ea0cfebf3ca4bd107394342f8adbf33965",
+    "src/unicode.bend": "8f0cd9bbcd0e7f938af370675eca0c73a9b97b90c2789a1e77e5a29a918455bd",
+    "src/world_mesh.bend": "55ae3a8d0efcd1e69ac59c3db49b4a0db1359d3e655c93ca11ba04a36a72cc45",
+    "src/world_visibility.bend": "599e28975027958b48da9a299a968bf837fc6a244ac6750b37866c32182dbb07",
+    "tests/world_visibility.bend": "26bcd8382289a06bf8b7dc0702f5949d6a345277f85999117faced379518edd5",
+    "tools/reference_block_probe.py": "5456bfddf84b37aec253c958ff12b723260875485289a7afc34a88d04c023003",
+    "tools/reference_inventory.py": "e82b66508a99d9bac37c62917645e9adcac06e52ab2b65e2bc8afd5be66a8d9e",
+    "tools/reference_model_probe.py": "4c82153a59a0eeb58e8c5df181e13adb16424343de9f7c2957f73c662cc598b7",
+    "tools/reference_movement_probe.py": "e8500b4509fd12a47bd1c5c085fc04d00b8c18af4ad3d551487b323eec9d7736",
+    "tools/reference_world_visibility_probe.py": "fa15c7cc08611791420c2fc41a313acec87bfa9521d25d7b106872973c4b5cf5",
+    "tools/test_block_bake.py": "82c4fb482906cd6010de9c6af64294954b6a63d6da7083c8ab2019b1a69732e6",
+    "tools/test_client_world.py": "e64430126cbc6fd5b85a0bfcbb61de322020585a877aeb6412d3bacbc5dbdbd3",
+    "tools/test_mesh_render.py": "0645bcd9fa2e6f1407587c4b14efcaadf81a00f1f3d1b6ffb42c11cd42fbcb06",
+    "tools/test_world_mesh.py": "4ce88638290cb611bf0ff3bd99ed30cea16691cf5979d40074fe135c750ee745",
+    "tools/test_world_visibility.py": "0290f583cca92c341fcf35e7d1d6d08ace6bd91339a770e6e952a29294b9b1bc"
+  },
+  "source_sha256_end": {
+    "src/archive.bend": "c0f7b34a22726d220f6b867730b7d080d57d82c84d619c35721b9b8d18fa5d6e",
+    "src/big_uint.bend": "fbe5965ee16ee3d6864def33fbc6e5e4b1b9bc7da4735d99311c1a23c65e2444",
+    "src/block_bake.bend": "3611116e0ba63915d6013463c1640f83b6b80cb08e802f93be5f7eaa4d600595",
+    "src/block_model.bend": "08108bae9b89c6768de56bdddea158f3604b36c7de4ee0408815e2c7f48b97a1",
+    "src/client_render.bend": "bb8f6057a02bfcb0583025f9e75fe41abc6804eb554c6d971df5c81618932947",
+    "src/client_world.bend": "05040abf35b2b9ceaf87fed5c48f8d074d211750a59ab00fa6ff08e60a9ea5d7",
+    "src/compression.bend": "255cdff06a33050c7b0a48fdea75c1842ebe2dab0439cfe4f03d126d4edc20aa",
+    "src/core.bend": "c1ee5a5390cdac0452c9c6cd3b0584a68ef68b5b0dfec867491c27e67ecadd4e",
+    "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "src/float_parse.bend": "fe22007f0805f3c955fcaada88c1da76a3cceda74f0ff3840ae47af49a02c683",
+    "src/framing.bend": "307f95049df03d92687b7bd0eafb2cd566e660926510bb88163f9bc825fccdb5",
+    "src/game.bend": "43e3eee5d15613bb06cc608fe43657aa14d8c0fbe899d4efa580fc8335d23882",
+    "src/geometry.bend": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f",
+    "src/hash.bend": "d2473695632b19e68c8d636668e4617f04d70892fb2ab6559cb24d4b33c1b978",
+    "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+    "src/live.bend": "cb5a2f8237a53e48d3f6751d321a023e11694721f789373984d7d77620f32e87",
+    "src/mesh_render.bend": "90cc444e01b6a97f814a20a22a09b67e322b1eec4afc879e1d5b9b7f57f3b16c",
+    "src/movement.bend": "0e94fea7cc941a23d2ed7bbd2ccaf0117e6af363eb91f2db2e34428f9dd9e67f",
+    "src/png.bend": "8c24c14a250cf6dbdf0c2804e4b28bfebd7ef62ed5d9ee97a1d07094d4745f22",
+    "src/registry.bend": "821c53d9cfa3044be3cae2af968f55563c0be2bebc9beae55a29d77d47b140a0",
+    "src/schedule.bend": "93aa79895fe340e27ae5fd562102d5980f0938003eb1bbde669a84010779b8c9",
+    "src/section.bend": "02b5c15c57b173c7eb8b4c55a1433c10c192926e91af5e3e69050b4404044aa5",
+    "src/section_map.bend": "ded59d7938c02fd0876d65e37f9f90ea0cfebf3ca4bd107394342f8adbf33965",
+    "src/unicode.bend": "8f0cd9bbcd0e7f938af370675eca0c73a9b97b90c2789a1e77e5a29a918455bd",
+    "src/world_mesh.bend": "55ae3a8d0efcd1e69ac59c3db49b4a0db1359d3e655c93ca11ba04a36a72cc45",
+    "src/world_visibility.bend": "599e28975027958b48da9a299a968bf837fc6a244ac6750b37866c32182dbb07",
+    "tests/world_visibility.bend": "26bcd8382289a06bf8b7dc0702f5949d6a345277f85999117faced379518edd5",
+    "tools/reference_block_probe.py": "5456bfddf84b37aec253c958ff12b723260875485289a7afc34a88d04c023003",
+    "tools/reference_inventory.py": "e82b66508a99d9bac37c62917645e9adcac06e52ab2b65e2bc8afd5be66a8d9e",
+    "tools/reference_model_probe.py": "4c82153a59a0eeb58e8c5df181e13adb16424343de9f7c2957f73c662cc598b7",
+    "tools/reference_movement_probe.py": "e8500b4509fd12a47bd1c5c085fc04d00b8c18af4ad3d551487b323eec9d7736",
+    "tools/reference_world_visibility_probe.py": "fa15c7cc08611791420c2fc41a313acec87bfa9521d25d7b106872973c4b5cf5",
+    "tools/test_block_bake.py": "82c4fb482906cd6010de9c6af64294954b6a63d6da7083c8ab2019b1a69732e6",
+    "tools/test_client_world.py": "e64430126cbc6fd5b85a0bfcbb61de322020585a877aeb6412d3bacbc5dbdbd3",
+    "tools/test_mesh_render.py": "0645bcd9fa2e6f1407587c4b14efcaadf81a00f1f3d1b6ffb42c11cd42fbcb06",
+    "tools/test_world_mesh.py": "4ce88638290cb611bf0ff3bd99ed30cea16691cf5979d40074fe135c750ee745",
+    "tools/test_world_visibility.py": "0290f583cca92c341fcf35e7d1d6d08ace6bd91339a770e6e952a29294b9b1bc"
+  },
+  "sources_unchanged_during_run": true,
+  "status": "unverified_native_build_resource_limit",
+  "timestamp_utc": "2026-10-03T21:46:05.866277+00:00"
+}

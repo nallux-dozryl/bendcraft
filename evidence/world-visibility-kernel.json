@@ -1,0 +1,136 @@
+{
+  "commands": [
+    {
+      "command": "/Users/chuah/.bend/bin/bend build/world-visibility-pure.bend --check-only",
+      "exit_code": 0,
+      "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+    },
+    {
+      "command": "/Users/chuah/.bend/bin/bend build/world-visibility-pure.bend --verdict",
+      "exit_code": 0,
+      "stdout": "ALL PROOFS CHECK\n"
+    },
+    {
+      "command": "/Users/chuah/.bend/bin/bend build/world-visibility-pure.bend -o build/world-visibility-pure.bendtt",
+      "exit_code": 0,
+      "stdout": ""
+    },
+    {
+      "command": "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt build/world-visibility-pure.bendtt",
+      "exit_code": 0,
+      "stdout": "ALL PROOFS CHECK\n"
+    }
+  ],
+  "dependency_sources_sha256": {
+    "src/block_bake.bend": "3611116e0ba63915d6013463c1640f83b6b80cb08e802f93be5f7eaa4d600595",
+    "src/block_model.bend": "08108bae9b89c6768de56bdddea158f3604b36c7de4ee0408815e2c7f48b97a1",
+    "src/client_render.bend": "bb8f6057a02bfcb0583025f9e75fe41abc6804eb554c6d971df5c81618932947",
+    "src/client_world.bend": "05040abf35b2b9ceaf87fed5c48f8d074d211750a59ab00fa6ff08e60a9ea5d7",
+    "src/mesh_render.bend": "90cc444e01b6a97f814a20a22a09b67e322b1eec4afc879e1d5b9b7f57f3b16c",
+    "src/world_mesh.bend": "55ae3a8d0efcd1e69ac59c3db49b4a0db1359d3e655c93ca11ba04a36a72cc45"
+  },
+  "exact_current_projection_audit": {
+    "goal_and_witness_count": 3,
+    "isolated_source_sha256_stable": true,
+    "production_blocks_checked": 26,
+    "qualifications_renamed_only": true,
+    "selected_names": [
+      "Class",
+      "Visibility",
+      "Error",
+      "empty_cell",
+      "direction_bit",
+      "neighbor",
+      "same_cell",
+      "palette_valid",
+      "classify",
+      "visible_classes",
+      "adjacent_full_cube_hides",
+      "should_render_face",
+      "group_visible",
+      "ungrouped_face_is_retained",
+      "retain_quad",
+      "retained_quad_is_exact",
+      "has_cell",
+      "same_block",
+      "raw_material",
+      "baked_flags",
+      "binding_flags",
+      "flags",
+      "filter_quads"
+    ],
+    "source_sha256_stable": true
+  },
+  "full_harness_ordinary_check": {
+    "command": "/Users/chuah/.bend/bin/bend tests/world_visibility.bend --check-only",
+    "exit_code": 0,
+    "harness_sha256": "62cc1355f9d0b9fcb352992529fbf95fa3ecae1d295bc42543a7c99da6128aab",
+    "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+  },
+  "full_module_boundary": "Existing imported JSON encoder ordinary/kernel mismatch remains recorded separately in evidence/json-kernel.json; this evidence does not claim the aggregate gate passed.",
+  "full_module_ordinary_check": {
+    "command": "/Users/chuah/.bend/bin/bend src/world_visibility.bend --check-only",
+    "exit_code": 0,
+    "source_sha256": "599e28975027958b48da9a299a968bf837fc6a244ac6750b37866c32182dbb07",
+    "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+  },
+  "full_module_verdict_run": false,
+  "isolated_source": "build/world-visibility-pure.bend",
+  "isolated_source_sha256": "fbc8cbae8ed2bee44f8a6edfc8ec304ac973d8d38be3ef560e82f4884e105603",
+  "isolated_source_text": "import Base\n\ntype W_Palette is Data:\n  W_Palette{air: U32, stone: U32, dirt: U32, planks: U32}\n\ntype W_Cell is Data:\n  W_Cell{x: U32, y: U32, z: U32, boundary: U32}\n\ntype W_RawBlock is Data:\n  W_RawBlock{cell: W_Cell, state: U32, material: U32}\n\ndef W_choose(-T: Data, yes: T, no: T, value: Bool) -> T:\n  match value:\n    case True{}: yes\n    case False{}: no\n\ntype R_Block is Data:\n  R_Block{x: F32,y: F32,z: F32,state: U32,material: U32}\n\ntype R_Camera is Data:\n  R_Camera{x: F32,y: F32,z: F32,yaw: F32,pitch: F32}\n\ntype R_Snapshot is Data:\n  R_Snapshot{tick: Nat,revision: Nat,blocks: List<&2,R_Block>,camera: R_Camera}\n\ntype M_Vec3 is Data:\n  M_Vec3{x:F32,y:F32,z:F32}\n\ntype M_UV is Data:\n  M_UV{u:F32,v:F32}\n\ntype M_Vertex is Data:\n  M_Vertex{position:M_Vec3,uv:M_UV}\n\ntype M_Mode is Data:\n  M_Opaque{}\n  M_Cutout{threshold:U32}\n  M_Translucent{}\n\ntype M_Address is Data:\n  M_Clamp{}\n  M_Repeat{}\n\ntype M_Cull is Data:\n  M_NoCull{}\n  M_Back{}\n\ntype M_Material is Data:\n  M_Material{texture:U32,tint:U32,light:U32,shade:F32,mode:M_Mode,address:M_Address}\n\ntype M_Quad is Data:\n  M_Quad{a:M_Vertex,b:M_Vertex,c:M_Vertex,d:M_Vertex,material:M_Material,cull:M_Cull,order:U32}\n\ntype B_Direction is Data:\n  B_Down{}\n  B_Up{}\n  B_North{}\n  B_South{}\n  B_West{}\n  B_East{}\n\ntype K_Layer is Data:\n  K_Solid{}\n  K_Cutout{}\n  K_Translucent{}\n\ntype K_Baked is Data:\n  K_Baked{a:M_Vertex,b:M_Vertex,c:M_Vertex,d:M_Vertex,direction:B_Direction,\n    cullface:Maybe<&2,B_Direction>,sprite:String,texture:U32,tint_index:U32,\n    light_emission:U32,shade_override:Maybe<&2,B_Direction>,layer:K_Layer,\n    force_translucent:Bool,animated:Bool,default_shade:F32,nether_shade:F32}\n\ntype WM_Tint is Data:\n  WM_Tint{index:U32,color:U32}\n\ntype WM_Appearance is Data:\n  WM_Appearance{tints:List<&2,WM_Tint>,light:U32,address:M_Address,cull:M_Cull,\n    nether:Bool,cutout_threshold:U32}\n\ntype WM_Binding is Data:\n  WM_Binding{state:U32,baked:List<&2,K_Baked>,appearance:WM_Appearance}\n\ndef WM_lookup(bindings:List<&2,WM_Binding>,+state:U32) -> Maybe<&2,WM_Binding>:\n  match bindings:\n    case Nil{}: None{}\n    case +head <> tail:\n      WM_Binding{current,baked,appearance} = head\n      W_choose(Maybe<&2,WM_Binding>,Some{head},WM_lookup(tail,state),U32.is_eq(current,state))\n\ntype Class is Data:\n  Air{}\n  FullCube{}\n\ntype Visibility is Data:\n  Visibility{cell:W_Cell,state:U32,visible:U32}\n\ntype Error is Data:\n  Error{code:String,cell:W_Cell,state:U32,detail:String}\n\ndef empty_cell() -> W_Cell:\n  W_Cell{0,0,0,0}\n\ndef direction_bit(direction:B_Direction) -> U32:\n  match direction:\n    case B_Down{}: 1\n    case B_Up{}: 2\n    case B_North{}: 4\n    case B_South{}: 8\n    case B_West{}: 16\n    case B_East{}: 32\n\n# U32 arithmetic preserves BlockPos.relative's signed Java int wraparound.\n# boundary is region metadata, not part of a raw cell's identity.\n\ndef neighbor(cell:W_Cell,direction:B_Direction) -> W_Cell:\n  W_Cell{x,y,z,boundary} = cell\n  match direction:\n    case B_Down{}: W_Cell{x,U32.sub(y,1),z,0}\n    case B_Up{}: W_Cell{x,U32.inc(y),z,0}\n    case B_North{}: W_Cell{x,y,U32.sub(z,1),0}\n    case B_South{}: W_Cell{x,y,U32.inc(z),0}\n    case B_West{}: W_Cell{U32.sub(x,1),y,z,0}\n    case B_East{}: W_Cell{U32.inc(x),y,z,0}\n\ndef same_cell(a:W_Cell,b:W_Cell) -> Bool:\n  match a b:\n    case W_Cell{x,y,z,boundary} W_Cell{bx,by,bz,bb}:\n      U32.is_eq(x,bx) && U32.is_eq(y,by) && U32.is_eq(z,bz)\n\ndef palette_valid(palette:W_Palette) -> Bool:\n  W_Palette{+air,+stone,+dirt,+planks} = palette\n  U32.is_ne(air,stone) && U32.is_ne(air,dirt) && U32.is_ne(air,planks) &&\n    U32.is_ne(stone,dirt) && U32.is_ne(stone,planks) && U32.is_ne(dirt,planks)\n\ndef classify(+state:U32,palette:W_Palette,cell:W_Cell) -> Result<&2,&2,Error,Class>:\n  W_Palette{air,stone,dirt,planks} = palette\n  W_choose(Result<&2,&2,Error,Class>,Done{Air{}},\n    W_choose(Result<&2,&2,Error,Class>,Done{FullCube{}},\n      Fail{Error{\"UnsupportedState\",cell,state,\"unmeasured-occlusion-state\"}},\n      U32.is_eq(state,stone) || U32.is_eq(state,dirt) || U32.is_eq(state,planks)),U32.is_eq(state,air))\n\n# Adjacent Shapes.block() is the first Java short circuit; all measured\n# solid states use it. The measured air shape is Shapes.empty().\n\ndef visible_classes(current:Class,adjacent:Class) -> Bool:\n  match adjacent:\n    case FullCube{}: False{}\n    case Air{}: True{}\n\nlaw adjacent_full_cube_hides:\n  for current:Class\n  {visible_classes(current,FullCube{}) == False{} : Bool}\n\ndef adjacent_full_cube_hides(current):\n  {==}\n\ndef should_render_face(current:U32,adjacent:U32,+palette:W_Palette,+cell:W_Cell) -> Result<&2,&2,Error,Bool>:\n  do Result<&2,&2,Error,Bool>:\n    own : Class <- classify(current,palette,cell)\n    other : Class <- classify(adjacent,palette,cell)\n    Done{visible_classes(own,other)}\n\ndef group_visible(group:Maybe<&2,B_Direction>,+visible:U32) -> Bool:\n  match group:\n    case None{}: True{}\n    case Some{direction}: U32.is_ne(U32.and(visible,direction_bit(direction)),0)\n\nlaw ungrouped_face_is_retained:\n  for visible:U32\n  {group_visible(None{},visible) == True{} : Bool}\n\ndef ungrouped_face_is_retained(visible):\n  {==}\n\ndef retain_quad(visible:Bool,+quad:M_Quad,+reversed:List<&2,M_Quad>) -> List<&2,M_Quad>:\n  match visible:\n    case True{}: quad <> reversed\n    case False{}: reversed\n\nlaw retained_quad_is_exact:\n  for +quad:M_Quad\n  for +reversed:List<&2,M_Quad>\n  {retain_quad(True{},quad,reversed) == quad <> reversed : List<&2,M_Quad>}\n\ndef retained_quad_is_exact(quad,reversed):\n  {==}\n\ndef has_cell(values:List<&2,W_RawBlock>,+cell:W_Cell) -> Bool:\n  match values:\n    case Nil{}: False{}\n    case W_RawBlock{other,state,material} <> tail: same_cell(cell,other) || has_cell(tail,cell)\n\ndef same_block(a:R_Block,b:R_Block) -> Bool:\n  match a b:\n    case R_Block{x,y,z,state,material} R_Block{bx,by,bz,bs,bm}:\n      U32.is_eq(F32.bits(x),F32.bits(bx)) && U32.is_eq(F32.bits(y),F32.bits(by)) &&\n        U32.is_eq(F32.bits(z),F32.bits(bz)) && U32.is_eq(state,bs) && U32.is_eq(material,bm)\n\ndef raw_material(raw:W_RawBlock,palette:W_Palette) -> Bool:\n  W_RawBlock{cell,+state,+material} = raw\n  W_Palette{air,stone,dirt,planks} = palette\n  (U32.is_eq(state,stone) && U32.is_eq(material,0)) ||\n    (U32.is_eq(state,dirt) && U32.is_eq(material,1)) ||\n    (U32.is_eq(state,planks) && U32.is_eq(material,2))\n\ndef baked_flags(values:List<&2,K_Baked>,+visible:U32) -> List<&2,Bool>:\n  match values:\n    case Nil{}: []\n    case K_Baked{a,b,c,d,direction,cf,sprite,texture,index,emission,override,layer,force,animated,ds,ns} <> tail:\n      group_visible(cf,visible) <> baked_flags(tail,visible)\n\ndef binding_flags(binding:Maybe<&2,WM_Binding>,visible:U32) -> List<&2,Bool>:\n  match binding:\n    case None{}: []\n    case Some{WM_Binding{state,baked,appearance}}: baked_flags(baked,visible)\n\ndef flags(values:List<&2,Visibility>,+bindings:List<&2,WM_Binding>) -> List<&2,Bool>:\n  match values:\n    case Nil{}: []\n    case Visibility{cell,state,visible} <> tail:\n      List.append(&2,Bool,binding_flags(WM_lookup(bindings,state),visible),flags(tail,bindings))\n\ndef filter_quads(values:List<&2,Bool>,quads:List<&2,M_Quad>,reversed:List<&2,M_Quad>) -> Result<&2,&2,Error,List<&2,M_Quad>>:\n  match values quads:\n    case Nil{} Nil{}: Done{List.reverse(&2,M_Quad,reversed)}\n    case visible <> tail quad <> rest: filter_quads(tail,rest,retain_quad(visible,quad,reversed))\n    case _ _: Fail{Error{\"QuadAlignment\",empty_cell(),0,\"model-and-scene-count\"}}\n",
+  "kernel_sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7",
+  "kernel_source_sha256": "e15042434e73aab07ab05cea4b77b5619082c00a6d4924ea2d4a2cdec05facce",
+  "laws": [
+    "adjacent_full_cube_hides",
+    "ungrouped_face_is_retained",
+    "retained_quad_is_exact"
+  ],
+  "original_full_harness_receipt_archive": "evidence/world-visibility-combined-build.json",
+  "pin": "26.3",
+  "proof_goal_and_witnesses": {
+    "adjacent_full_cube_hides": "adjacent_full_cube_hides : \u2200x0 : Class -> {(visible_classes x0 (.FullCube, ())) == (.False, ()) : Bool} =\n  \u03bbx0 => {==}",
+    "retained_quad_is_exact": "retained_quad_is_exact : \u2200+x0 : M_Quad -> \u2200+x1 : (List.q2 -M_Quad) -> {(retain_quad (.True, ()) +x0 +x1) == (.Con, (x0, (x1, ()))) : (List.q2 -M_Quad)} =\n  \u03bb+x0 => \u03bb+x1 => {==}",
+    "ungrouped_face_is_retained": "ungrouped_face_is_retained : \u2200x0 : U32 -> {(group_visible (.None, ()) +x0) == (.True, ()) : Bool} =\n  \u03bbx0 => {==}"
+  },
+  "schema_version": 1,
+  "scope": "Exact production raw neighbor stepping, four-state classification, cull-group mask folds and retained-quad filtering; selected exact Data types and WM.lookup dependency. Module qualifications renamed only. Affine world facade, F64 raw-to-relative alignment and full imports are outside this isolated kernel check.",
+  "source": "src/world_visibility.bend",
+  "source_sha256": "599e28975027958b48da9a299a968bf837fc6a244ac6750b37866c32182dbb07",
+  "split_harness_ordinary_checks": [
+    {
+      "command": "/Users/chuah/.bend/bin/bend tests/world_visibility.bend --check-only",
+      "exit_code": 0,
+      "source_sha256": "5b1733141d4f765318346065d42385d704ba186c1ca415cc4c4d27b73ca54f70",
+      "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+    },
+    {
+      "command": "/Users/chuah/.bend/bin/bend build/world-visibility-sampler.bend --check-only",
+      "exit_code": 0,
+      "source_sha256": "3bf457cfd076cc5f2ceafac877c22ca039495c0f5f13b0f734d014471ee517a5",
+      "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+    },
+    {
+      "command": "/Users/chuah/.bend/bin/bend build/world-visibility-geometry.bend --check-only",
+      "exit_code": 0,
+      "source_sha256": "42881027cd00327d42419112f67c379db1d8195f27bf69d06a6f68ede591887c",
+      "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+    },
+    {
+      "command": "/Users/chuah/.bend/bin/bend build/world-visibility-geometry.bend --check-only",
+      "exit_code": 0,
+      "source_sha256": "1d9b4d5b690c4315279f50dc3095f44840e32612b558d1e4d48581b2d5aeceb4",
+      "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+    },
+    {
+      "command": "/Users/chuah/.bend/bin/bend build/world-visibility-sampler.bend --check-only",
+      "exit_code": 0,
+      "source_sha256": "ac5968266c8c1cc6f7e81522d9c722bc2ffc6ccb8e2fb7c0180e54eb1580c48e",
+      "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+    }
+  ],
+  "status": "passed_isolated_pure_visibility",
+  "timestamp_utc": "2026-10-03T21:04:38.723846+00:00",
+  "translation_sha256": "3b3a92d397f8f569a8140bde728045b267dbf45061c0d2eee1e03ba85888af03",
+  "whole_facade_kernel_verified": false,
+  "whole_module_kernel_verified": false
+}

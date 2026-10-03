@@ -23,9 +23,11 @@ fixture is a verification instrument; none satisfies a gameplay completion gate.
 3. Official ZIP/DEFLATE/PNG decoding and bounded texture pixels are checked.
    Typed model parsing/inheritance, the actual first-value resource reader and
    actual-quad mesh rendering are checked. Bend model bake, blockstate/RNG selection, static resource closure and world
-   quad production now pass bounded corpora. Next: whole resource-to-frame
-   pipeline and actual neighbor visibility → actual native
-   client frames → atlas, world lighting and complete presentation.
+   quad production now pass bounded corpora. Actual neighbor sampling and quad
+   filtering also pass their split native corpora. Resource-to-frame drawing
+   passes; asset audit has built, with its readbacks and geometry still pending.
+   Next: finish that pipeline and connect it to native client frames → atlas,
+   world lighting and complete presentation.
 4. Exact signed-cell snapshot caching and camera-relative F64 subtraction before
    F32 narrowing and verified far-coordinate views are checked in the shared
    persistent client. Visible OS input/presentation acceptance is mandatory and
@@ -46,7 +48,7 @@ declared interfaces; integration evidence determines subsequent work.
 | Player motion | Completed support, LocalPlayer input and `local_collision.bend`; new `local_collision_world.bend` | Exact minor-collision arithmetic and ordered edge-query hooks pass native/kernel; actual Core read/yield composition is in preparation |
 | Model interpretation | Completed `blockstate_model.bend`; presenter integration test | Exact selector/multipart/ordered state semantics; 28 hidden actor/window/failure cleanup executions pass; actual visible focused input remains required |
 | Model bake | Completed Bake/Choice/Record/Session verification | Exact quads, RNG consumption and atomic raw degree save composition pass; complete player lifecycle persistence remains open |
-| World mesh | Completed `world_mesh.bend`; new `world_visibility.bend` | Exact relative quads; actual four-palette neighbor-face visibility and owned halo reads next |
+| World mesh | Completed `world_mesh.bend` and `world_visibility.bend` | Exact relative quads, actual four-state neighbor visibility and owned halo reads pass; sampler O0 and geometry O3 are separate measured artifacts |
 | Player codec/input | Completed Codec/Look/Mouse; new `player_controls.bend` | Whole frame accumulation → one Entity turn, atomic rejection, capture/release transitions |
 | Float parsing | Completed, stable source | Separate strict RFC and Java-string binary32 parsers |
 | Persistence | Completed core and extension foundations, stable sources | Effectful sole-engine/lease State; closed owned codec and catalog |
@@ -80,11 +82,16 @@ independent fixture expectations fixed during these diagnostics.
 
 Current narrower builds separate WorldVisibility sampling and geometry, and
 ResourceFrame drawing, asset audit and geometry. Their former combined attempts
-reached 600-second bounds without artifacts; no behavioral conclusion follows.
+reached 600-second bounds without artifacts. WorldVisibility now passes through
+its retained exact-C O0 sampler and separately built O3 geometry; this mixed
+optimization result establishes behavior, not release performance. ResourceFrame
+drawing passes and its audit build succeeded; remaining comparisons are queued.
 The LocalPlayer world harness hit the installed compiler's 247-word continuation
-limit. Read-only named diagnostics locate its test finish-injection continuation;
-harness-only boxing and small checked outcomes preserve production code and Java
-expectations. Each installed retry remains bounded and independently recorded.
+limit, including its split motion entry. Read-only diagnostics identified both
+finish injection and motion reporting captures. Harness-only boxing and a small
+sprint-report header preserve production code and exact Java expectations. Each
+installed retry remains bounded and independently recorded; a diagnostic timeout
+establishes no native result.
 
 ## Measured build work
 

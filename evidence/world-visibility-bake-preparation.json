@@ -1,0 +1,102 @@
+{
+  "actual_bend_bake": {
+    "expected_java_geometry_supplied_as_native_input": false,
+    "output_file": "build/world-visibility-oracle/actual-bend-baked.json",
+    "output_sha256": "c6934498512e9db102ed4500ea7a6510ad346a4ee2df6226335c5b12dde7d509",
+    "provenance": {
+      "binary_path": "build/block-bake-tests",
+      "binary_sha256": "e76c22fba492f40febce94511346ed45d6816c8336efe01b14b8f30a94571ceb",
+      "original_compile_seconds": 566.577,
+      "receipt_sha256": "3fd635be3a8b1e2cd9a5f746189f95586a4f641f5abbb9556a874bafa5ec2bef",
+      "transitive_sources": {
+        "src/archive.bend": "c0f7b34a22726d220f6b867730b7d080d57d82c84d619c35721b9b8d18fa5d6e",
+        "src/big_uint.bend": "fbe5965ee16ee3d6864def33fbc6e5e4b1b9bc7da4735d99311c1a23c65e2444",
+        "src/block_bake.bend": "3611116e0ba63915d6013463c1640f83b6b80cb08e802f93be5f7eaa4d600595",
+        "src/block_model.bend": "08108bae9b89c6768de56bdddea158f3604b36c7de4ee0408815e2c7f48b97a1",
+        "src/client_render.bend": "bb8f6057a02bfcb0583025f9e75fe41abc6804eb554c6d971df5c81618932947",
+        "src/compression.bend": "255cdff06a33050c7b0a48fdea75c1842ebe2dab0439cfe4f03d126d4edc20aa",
+        "src/float_parse.bend": "fe22007f0805f3c955fcaada88c1da76a3cceda74f0ff3840ae47af49a02c683",
+        "src/framing.bend": "307f95049df03d92687b7bd0eafb2cd566e660926510bb88163f9bc825fccdb5",
+        "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+        "src/mesh_render.bend": "90cc444e01b6a97f814a20a22a09b67e322b1eec4afc879e1d5b9b7f57f3b16c",
+        "src/png.bend": "8c24c14a250cf6dbdf0c2804e4b28bfebd7ef62ed5d9ee97a1d07094d4745f22",
+        "tests/block_bake.bend": "56637b4e02e165fe746b72a8b9c9375ec0a54d1ad9e592668ed0018c826cca49"
+      }
+    },
+    "quads_compared": 18,
+    "run": {
+      "build": false,
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/block-bake-tests",
+        "--gpu",
+        "off",
+        "<original-source JSON argument from input_json_files>",
+        "<original-source JSON argument from input_json_files>",
+        "<original-source JSON argument from input_json_files>"
+      ],
+      "exit_code": 0,
+      "input_json_files": [
+        {
+          "path": "build/world-visibility-oracle/bake-source-0.json",
+          "sha256": "65daaac90459feb71f2e818678142866468244e8cb703a7450f262d3049e2ad5"
+        },
+        {
+          "path": "build/world-visibility-oracle/bake-source-1.json",
+          "sha256": "f6d019db1d81d20bfec7e3eac22e1e382fd0d90ff4cae943dc29373914105cef"
+        },
+        {
+          "path": "build/world-visibility-oracle/bake-source-2.json",
+          "sha256": "cf6bee888f9b6c4bdabdb0af5872f378d95a8bac70c886cdb66c4caf6506b658"
+        }
+      ],
+      "pid": 62449,
+      "rss_samples": [],
+      "seconds": 0.01486,
+      "stderr": "",
+      "stdout_sha256": "13fd67d8ff0de27c5fb2550b12e8b325848821c434274130d7c1b92bcc6a71f6"
+    }
+  },
+  "java_bake_reference_sha256": "3cbe8aa7780f14c1b37159a885710b04680e3b6c4ffa4975b4d8297015f11e7e",
+  "oracle_sha256": "0290f583cca92c341fcf35e7d1d6d08ace6bd91339a770e6e952a29294b9b1bc",
+  "original_source_models": {
+    "models": [
+      "minecraft:block/block",
+      "minecraft:block/cube",
+      "minecraft:block/cube_all",
+      "minecraft:block/dirt",
+      "minecraft:block/oak_planks",
+      "minecraft:block/stone"
+    ],
+    "original_resources": {
+      "assets/minecraft/models/block/block.json": {
+        "bytes": 1136,
+        "sha256": "212df16c5aa3e6aef3f4d3e080532d28a86cf9b2071618e4ca587ee9ef3c6d09"
+      },
+      "assets/minecraft/models/block/cube.json": {
+        "bytes": 584,
+        "sha256": "3e4aacd02e816aeba38f83076596e18ded4cf49c01e17c62d1fce79850ffb84e"
+      },
+      "assets/minecraft/models/block/cube_all.json": {
+        "bytes": 227,
+        "sha256": "be3205d629ffb9e03834c3d1d083f8a2c62e9f9ae80820755129408634e9144a"
+      },
+      "assets/minecraft/models/block/dirt.json": {
+        "bytes": 97,
+        "sha256": "c7a496ef02d69788d589fac7d2d2465e36eeb8a187cb8b23612310f3945c4868"
+      },
+      "assets/minecraft/models/block/oak_planks.json": {
+        "bytes": 103,
+        "sha256": "79b1146adb4eff1b405c0a18384e3290fa171edc1347f64fef50df3df4df939d"
+      },
+      "assets/minecraft/models/block/stone.json": {
+        "bytes": 98,
+        "sha256": "c0734082e7f1e2f44809737b2fbe1136fc7304bde7232e45fbe921884a4a327e"
+      }
+    },
+    "path": "build/world-visibility-oracle/source-model-library.json",
+    "sha256": "29f177f463c96fc2c5dc65c55bb56a0227175ebd2e0a040ce22e274314b0f947"
+  },
+  "pin": "26.3",
+  "schema": 1,
+  "status": "passed_actual_bend_bake_preparation"
+}
