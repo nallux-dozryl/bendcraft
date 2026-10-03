@@ -13,7 +13,10 @@ Target: Minecraft Java 26.3. Compiler: Bend 2.0.35. Persistent goal: active.
 
 ## Current implementation
 
-No gameplay equivalence has been established. The full scope remains open.
+Full gameplay equivalence has not been established. Direct Java observations
+now verify bounded geometry, movement, locomotion and resource semantics; those
+component contracts do not establish a playable vanilla game. The full scope
+remains open.
 
 | Foundation | Implementation and verification |
 | --- | --- |
@@ -22,10 +25,48 @@ No gameplay equivalence has been established. The full scope remains open.
 | Tick queue | Sorted tick/peer/sequence ordering, due/future partition, cancellation. Native tests and two universal queue-conservation laws pass kernel. |
 | Authoritative core | One world owner; developer admission checks; scheduled section edits/time/daylight; paused/realtime and explicit stepping; rejection events. Native integration tests pass. No terrain, physics or block behavior implied. |
 | Owned section map | Concrete Bend trie/collision buckets avoid unsupported generic array layout. Independent colliding hash fixture, replace/pop/missing-key tests pass native and kernel. |
-| JSON | Pure bounded RFC grammar, exact number lexemes, Unicode/duplicates diagnostics. 536 independent native cases and 299 roundtrips. Serializer's ordinary-checker/kernel termination mismatch remains open and is recorded; it is excluded from root proof claims. |
+| JSON | Pure bounded RFC grammar, exact number lexemes, Unicode/duplicates diagnostics. 536 independent native cases and 299 roundtrips; configurable limits pass 129 further cases and official large resources. Serializer's ordinary-checker/kernel termination mismatch remains open and is recorded; it is excluded from root proof claims. |
+| Dynamic registry | Strict bounded UTF-8 TSV loader, affine metadata owner, property resolution and reverse state decoding. 80,300 requests cover all 1,286 blocks and 35,723 states; 51 loader rejections and 42 identity inventories pass. Canonical SHA-256 identity and byte-reader projections pass independent kernel; aggregate checking retains the imported JSON mismatch. |
+| Binary64 | Pure Bend exact RN-even arithmetic, square root, binary32 narrowing and Java-long conversion. Independent rational/C/Java bit oracles pass, including 46,349 float casts, 69,940 square roots and 105,648 long conversions. Typing/termination pass BendTT; full IEEE correctness is not proved. Narrow arithmetic baselines are slower than C and establish no game speedup. |
+| Text-to-float | Exact integer-rational conversion avoids binary64 double rounding. Strict RFC numbers pass 20,323 C/Java comparisons; separate Java decimal/hex/string forms pass 38,718 actual Java bit comparisons and explicit grammar rejections. Strict baseline remains unchanged; modules/tests pass independent kernel. |
+| Live TCP | Persistent loopback actor with pure/effectful typed drivers, local owned queries and a 16-operation loaded-engine catalog. Eight external clients, 120 concurrent reads, authentication, rollback, registry queries, peer exhaustion and actor stop tests pass. Player gameplay operations remain open. |
+| MCP | Actual Bend stdio JSON-RPC adapter to persistent TCP; 16 dynamic tools, six subprocesses and 89 responses pass. It also executes the driver example's 18-tool catalog unchanged. Synchronous backend reads have no deadline. |
+| Mod metadata/driver | 503 dependency/order/side/conflict/matching/reload-metadata cases pass; actual compiled driver gate accepts seven and rejects 41 manifests. Complete typed state/realtime replacement example passes TCP/MCP tests. Runtime code loading, reload/migration and full subsystem hooks remain open. |
+| Atomic file publication | Pure Bend sequencing over five narrow POSIX durability effects. Twenty actual process kills at five stages preserve old bytes or publish complete new bytes; published-unsynced and not-published outcomes remain distinct. Journal/orphan policy and physical power-loss evidence remain open. |
+| World lease | Affine File-backed local advisory lease with checked regular-file acquisition. Eight contenders yield one winner; actual SIGKILL/reacquisition, independent flock, stable inode and invalid-path tests pass. Hostile/noncooperating writers and network-filesystem locking are outside this contract. |
+| NBT / compression / ZIP | Pure typed NBT, raw/zlib/gzip DEFLATE and classic ZIP/JAR indexing. All 1,511 official structure payloads roundtrip byte-exact; generated/adversarial and actual resource cases pass independent oracles. ZIP64, encrypted archives and dictionaries remain unsupported. |
+| Hash / Unicode | Pure SHA-256 and strict UTF-8 encode/decode. Independent digest cases and all 1,112,064 Unicode scalar values pass; malformed input and surrogate rejection are explicit. Module laws pass kernel. |
+| RNG | Pure legacy 48-bit LCG and xoroshiro128++ with exact seed/state transitions. 38,714 state observations match actual Java and rollback fixtures. Gaussian/MD5 seed paths and world-generation integration remain open. |
+| World snapshot | Versioned typed codec preserves clocks, revision, sections, pending actions and events; strict registry identity and native Nat limits guard decode. 875 fixtures include roundtrip, hash collisions, capacity, invalid snapshots and retained-owner failures. |
+| Persistence | Save-owning effectful server, strict startup envelope, durable publication and high-water peer tracking. Seven independent NBT byte comparisons, two SIGKILL/restart cycles, 105 invalid startup refusals and actual MCP save operations pass. Player/mod state, vanilla saves, recovery journal and efficient near-limit loading remain open. |
+| Geometry / movement | Exact binary64 AABB/shape clipping and step selection. 4,143 Java-backed cases include 159 untouched actual Entity.move calls on a finite Level. Signed-zero position application follows the actual entity method. Full contextual collision/physics remain open. |
+| Locomotion prerequisites | Pinned 65,536-entry sine table, exact normalization and input-vector conversion. 21,266 direct Java raw-bit observations and complete table traversals pass; eight module laws pass kernel. Full input/pose/ability semantics remain open. |
+| Neutral Player travel | Exact input acceleration, collision-before-gravity and friction/drag ordering. 1,205 untouched actual Player.travel observations, 58 rejections/recovery and five kernel laws pass. Caller supplies supporting-aware samples and current attributes; fluids, flight, effects, hazards and other modes remain open. |
+| World travel composition | One owned world and sine table; checked preparation, actual world collision movement, then finishing once. 31 actual Player.travel cases, 31 supplemental Entity.move observations, 62 ordered collider lists and 18 rollback cases pass. Four ordinary laws; aggregate kernel validity remains unverified. |
+| Neutral Player aiStep | Velocity cleanup, input decay, counters, grounded jump and sprint impulse, travel and final stored fields. 2,752 actual calls in 511 sequences plus 60 direct jump-helper observations pass exact native comparisons; 61 rejection/recovery cases and six kernel laws pass. Supporting cache, full LocalPlayer/ServerPlayer, equipment and other gameplay state remain open. |
+| Logical held buttons | Every seven-button KeyboardInput combination matches actual Java tick output, jump injection and clearing. 9,728 logical press/release cases cover shared bindings, repeats and chains; five kernel laws pass. Actual OS input, LocalPlayer slowdown/pose/sprint rules and shared continuous motion are not yet verified. |
+| Owned client bridge | One Engine serves checked collision queries, view changes and success-only revision/region/palette snapshot caching. 124 actual Java collider lists and 87 untouched Entity.move comparisons plus 14 integration groups pass. The palette is air/stone/dirt/oak planks; missing sections and unsupported states reject explicitly. |
+| Client texture/frame instrument | Pure ZIP/DEFLATE/PNG loads official textures; all 1,300 block PNGs match an independent decoder. A bounded cube renderer and hidden native client show shared TCP edits in independently checked frame pixels. Discrete controls are verification actions; vanilla models, lighting, UI and player controls remain open. |
+| Save-owning client instrument | One leased save-owning engine serves views, controls and TCP. Thirty-six edits/save/restart preserve world clock/state and reproduce the edited frame; 49,152 independent pixel comparisons pass. The view/body and full player/mod state are not yet persisted. |
+| Typed extension saves | A closed affine codec and validated operation catalog save the extension and Core in one leased atomic bundle. Ten independently exact NBT saves, 95 startup refusals, actual restart/migration/lease/owner-error and TCP/MCP cases pass. Four isolated kernel laws; complete effectful proof remains unsupported. The demonstrated Array extension is not a complete player/mod save. |
+| Item / model reference | Actual default item components and stack behavior extracted; production model parsing, inheritance, state selection and 844 CPU-baked quads recorded. Reference observations are not a typed item implementation or a production renderer. |
+| Resource JSON reader | Matches actual CuboidModel's STRICT first-value reader, including duplicate replacement, token boundaries, BOM and trailing text. 1,315 cases pass, with 525 direct Java observations and actual resource cases. Production parser projection and seven finite laws pass kernel; complete imported module validity remains unverified. |
+| Typed block models | Pure decode and parent/texture resolution preserve observed 26.3 fields and float behavior. 184 model parses, 27 official resolved models and nine graphs pass independent comparisons. Raw duplicate/malformed text is handled by the resource reader. Full module verdict timed out; no independent kernel claim. |
+| Mesh rendering | Pure bounded CPU quad renderer with BVH, explicit texture/tint/light/transparency and camera-relative inputs. 844 actual Java quads, 4,220 plane/Gram rays and 225,771 pixels per path match independent observations; flat/BVH results agree. The 280-quad 128² workload takes about 33–35 ms in recorded runs; this is not a game benchmark or complete vanilla lighting/presentation. |
+| Native build reuse | Content-keyed compiler/source/effect/runtime/toolchain closure with checked executable/C bytes and corruption recovery. 34 cache checks pass, including four concurrent processes sharing one build. Every required test still executes; transformed window/GPU builds are excluded. |
+| Block reference | Every state sampled for shape/physical metadata, with exact numeric bits and explicit context-dependency flags; 963 deduplicated shapes. Extraction is not implemented collision/behavior. |
 | Automated native launch | Strict project-local generated-window transform; CPU/Metal hidden probes preserve foreground app with no observed activation/Spaces changes. This is OS-boundary evidence, not rendered-game fidelity. |
 
-The TCP actor/server source is being integrated with the pure operation catalog and byte framer. The registry resolver, binary64 substrate and Java block-state physics fixtures are current parallel work. Live/API/MCP, vanilla client, gameplay, worldgen, persistence, deep mods and all other gates remain unfinished.
+The server owns both world and dynamic registry and admits actions through the
+shared dispatcher. The current critical path is supporting-block state and
+context resolution, shared 20 Hz held-input player ticking, typed player save
+composition, and actual Bend model bake/resource selection into client frames.
+Precise camera-relative snapshots and the save-owning client instrument are
+checked. The new player runtime currently passes ordinary ownership checks;
+its actual native integration remains unverified. Vanilla gameplay,
+worldgen, all content/UI, complete player/mod persistence and the full
+interface/modding scope remain unfinished. Current ownership and ready work
+are recorded in `docs/WORK_QUEUE.md`.
 
 ## Reproducible current checks
 
@@ -35,17 +76,56 @@ The TCP actor/server source is being integrated with the pure operation catalog 
 - `/Users/chuah/.bend/bin/bend tests/section_map.bend -o build/test-section-map && ./build/test-section-map`
 - `python3 tools/test_inventory.py --verdict`
 - `python3 tools/test_json.py`
+- `python3 tools/test_registry.py`
+- `python3 tools/test_f64.py`
+- `python3 tools/test_live.py`
+- `python3 tools/test_framing.py`
+- `python3 tools/test_server.py`
+- `python3 tools/test_mcp.py`
+- `python3 tools/test_mods.py`
+- `python3 tools/test_mod_manifest_startup.py`
+- `python3 tools/test_mod_driver.py`
+- `python3 tools/test_atomic_file.py`
+- `python3 tools/test_world_lock.py`
+- `python3 tools/test_world_codec.py`
+- `python3 tools/test_persistence.py`
+- `python3 tools/test_nbt.py`
+- `python3 tools/test_compression.py`
+- `python3 tools/test_archive.py`
+- `python3 tools/test_hash.py`
+- `python3 tools/test_unicode.py`
+- `python3 tools/test_random.py`
+- `python3 tools/test_movement.py`
+- `python3 tools/test_locomotion.py`
+- `python3 tools/test_travel.py`
+- `python3 tools/test_travel_world.py`
+- `python3 tools/test_player_tick.py`
+- `python3 tools/test_player_input.py`
+- `python3 tools/test_client_world.py`
+- `python3 tools/test_client_render.py`
+- `python3 tools/test_persistent_client.py`
+- `python3 tools/test_extended_persistence.py`
+- `python3 tools/test_resource_json.py`
+- `python3 tools/test_block_model.py`
+- `python3 tools/test_mesh_render.py`
+- `python3 tools/test_build_native.py`
 - `python3 tools/platform_test.py`
 - Reference reproduction commands and exact limits are in docs/REFERENCE.md and docs/COVERAGE.md.
 
 ## Completion gates
 
 1. Release inventory reconciled, including non-data behavior and quirks; implemented and verified fields independent.
-2. Client modes/UI, all dimensions/worldgen/content/simulation/progression/commands/settings/resource and data packs verified against pinned Java behavior.
+2. Client modes/UI, all dimensions/worldgen/content/simulation/progression/commands/settings/resource and data packs verified against pinned Java behavior, including recorded visible native end-to-end OS input/presentation acceptance as specified in docs/VISUAL_ACCEPTANCE.md.
 3. Shared integrated/dedicated simulation, robust persistence and external multiplayer sessions verified.
 4. Deep typed Bend modding exercised by content and system overhauls, migration and tooling tests.
 5. Live API and actual MCP cover every subsystem; external gameplay, editing, mod operations and repeatable assertion scenarios pass.
 6. Real implementation laws/proofs check; unsafe/foreign boundaries documented.
-7. Packaged macOS client/server, reproducible builds and docs, honest equivalent-workload benchmark evidence.
+7. Packaged macOS client/server, representative visible native package rechecks, reproducible builds and docs, honest equivalent-workload benchmark evidence. Audio and latency have separate appropriate evidence.
 
 None of these gates is currently satisfied.
+
+Visible native end-to-end acceptance is explicitly required and currently
+unverified. Start the bounded smoke scenario once the controls path is stable,
+then expand it alongside implemented UI/world/multiplayer features. Required
+visible sessions must use genuine desktop isolation or a coordinated foreground
+session; routine hidden tests continue to preserve the user's focus.
