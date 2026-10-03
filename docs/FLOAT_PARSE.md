@@ -8,13 +8,13 @@ import ./float_parse.bend as P
 P.parse_f32(text: String) -> Result<&2, &2, String, F32>
 ```
 
-The accepted grammar is exactly:
+The strict `parse_f32` grammar is exactly:
 
 ```text
 -?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?
 ```
 
-The entire string must be one token. Empty strings, surrounding whitespace, leading `+`, leading integer zeros, `.5`, `5.`, numeric suffixes, underscores, hexadecimal, Unicode digits, and textual `NaN`/`Infinity` are rejected. This is the number grammar of [RFC 8259 §6](https://www.rfc-editor.org/rfc/rfc8259#section-6). Java `Float.parseFloat` also accepts a broader textual grammar, including whitespace, hexadecimal, and special names; this module **does not expose or claim `parse_java_f32` compatibility**. Gson string coercion needs that separate grammar or an explicit caller decision. The exact rounding behavior for tokens accepted here follows [Java 25 `Float.valueOf(String)`](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/Float.html#valueOf(java.lang.String)).
+The entire string must be one token. Empty strings, surrounding whitespace, leading `+`, leading integer zeros, `.5`, `5.`, numeric suffixes, underscores, hexadecimal, Unicode digits, and textual `NaN`/`Infinity` are rejected. This is the number grammar of [RFC 8259 §6](https://www.rfc-editor.org/rfc/rfc8259#section-6). Java `Float.parseFloat` also accepts a broader textual grammar; the separately named `parse_java_f32` extension below handles it. Gson string coercion must explicitly select that API. Exact rounding follows [Java 25 `Float.valueOf(String)`](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/Float.html#valueOf(java.lang.String)).
 
 There are two fixed public budgets: **4,096 Unicode codepoints** in the input and **1,024 mantissa digits**, counting integer and fractional digits including zeros. The input bound is checked first. Parsing returns `Fail{"InputLimit"}`, `Fail{"DigitLimit"}`, or `Fail{"InvalidDecimal"}`. Exponent digits count toward the input limit and are all grammar-checked. Their accumulated magnitude saturates at 100,000, which safely decides overflow/underflow after accounting for at most 1,024 mantissa digits. Syntactically invalid trailing data still fails even after the exponent saturates. No successful partial parse is returned. `RoundingBudget` is a defensive internal error if the fixed 31-comparison search fails to converge; no tested valid input reaches it.
 
@@ -51,3 +51,26 @@ The default seed produces **20,323 valid token fixtures**, each checked bit for 
 The Python rounding oracle derives the binary exponent and rounds an exact quotient/remainder; it does not reproduce the Bend midpoint-search algorithm. Separate exact rational interval checks validate both neighboring midpoints and parity at ties. Values with enormous decimal exponents use explicit decimal magnitude bounds, recorded separately from rational interval checks. Another **39 invalid/budget fixtures** verify the exact error strings, including malformed exponents, unsupported Java grammar, embedded NUL, a forged surrogate codepoint, and both exceeded budgets.
 
 `src/big_uint.bend`, `src/float_parse.bend`, and `tests/float_parse.bend` each pass the independent kernel. The test harness includes a finite strict-grammar/signed-zero normalization law. This establishes checked types, termination, and that finite law; it is **not a universal decimal-rounding theorem**. `evidence/float-parse-native.json` records hashes, commands, Java/compiler fingerprints, fixture counts/digest, and scalar emitted-C inspection. GPU/JavaScript behavior and numeric throughput are not claimed. Native wall time includes subprocess startup and argument/output IO.
+
+## Separate Java textual grammar
+
+```bend
+P.parse_java_f32(text: String) -> Result<&2, &2, String, F32>
+```
+
+This bounded API supports Java's decimal and hexadecimal float-string forms while leaving the strict API unchanged. It trims leading/trailing codepoints `<= U+0020`, accepts an optional `+` or `-`, leading integer zeros, `.5` and `5.`, and one optional `f/F/d/D` numeric suffix. Hexadecimal forms begin `0x/0X`, contain at least one hex digit with at most one dot, and require `p/P` followed by a signed decimal integer exponent. There are no underscores or Unicode digits. Whitespace inside the token, unsupported suffixes, and incomplete mantissa/exponent forms fail. Signed `Infinity` is accepted. `NaN`, `+NaN`, and `-NaN` all return canonical **positive** `0x7fc00000`, as observed independently on the installed Java 25 runtime. Suffixes apply to numeric forms and cannot be appended to special names.
+
+The 4,096-codepoint budget applies to the original string **before trimming**. Both decimal and hexadecimal mantissas have the same 1,024-digit cap. These are explicit resource restrictions beyond Java's unbounded parser contract. Error names remain `InvalidDecimal`, `InputLimit`, `DigitLimit`, and the defensive `RoundingBudget`.
+
+Decimal forms share the original exact rational rounder. Hexadecimal digits build an exact integer coefficient, with exponent corrected by four bits per fractional hex digit. Bit length permits exact coarse overflow/underflow classification before constructing a bounded power-of-two rational. The same RN-even midpoint search then handles finite, subnormal, and overflow boundaries. A 1,024-digit hex coefficient is at most 4,096 bits; all midpoint intermediates fit **4,373 bits**, below a 4,608-bit envelope. No intermediate binary floating value is formed.
+
+Run the Java grammar suite and the strict follow-up separately:
+
+```sh
+python3 tools/test_float_parse.py --java-only
+python3 tools/test_float_parse.py
+```
+
+The Java suite records **38,718 exact native/Java 25 bit comparisons**: all 20,323 strict decimal regression tokens, 6,132 hex midpoint/below/above cases across every finite F32 exponent, 2,044 exact hex roundtrips, 10,000 random hex literals, 150 decimal syntax variants, every trim character from U+0000 through U+0020, signed special names, huge exponents, long mantissas, and budget boundaries. A test-only C oracle observes the same exact value after syntax normalization and provides **38,714 exact non-NaN comparisons** plus four NaN-class checks. Java receives the original text through a hex-encoded UTF-8 test protocol, including newline/control/NUL characters; it supplies the independent original-grammar oracle. The native parser also rejects all **43 error fixtures** with the specified message; Java independently rejects the 39 malformed-grammar cases, while the other four exercise this module's resource limits.
+
+`evidence/float-parse-java-native.json` stores the extension results. The initial strict report is preserved at commit **5535b4b** in `evidence/float-parse-native.json`. `evidence/float-parse-strict-followup.json` records the original 20,323 valid/39 rejected fixtures against the extended module, with an identical fixture digest and an identical source prefix through `parse_f32`. Default test runs write this follow-up report rather than overwrite the original baseline. The Java name/negative-zero finite law also passes the independent kernel. These results validate the recorded grammar and numeric fixtures; caller model-field policy and gameplay parity remain separate.

@@ -222,3 +222,203 @@ def parse_budget(text: String, allowed: Bool) -> Result<&2, &2, String, F32>:
 # Strict JSON number token, with no surrounding whitespace/coercion grammar.
 def parse_f32(+text: String) -> Result<&2, &2, String, F32>:
   parse_budget(text, within(4096n, text))
+
+# Separate Java Float.parseFloat textual grammar. The strict JSON API above is
+# unchanged. This path additionally accepts trim chars <=32, optional +,
+# leading integer zeros, .5/5., f/F/d/D suffixes, signed NaN/Infinity, and hex
+# significands with a mandatory p/P signed decimal exponent.
+def java_decimal_next(stage: U32, +code: U32, digits: U32) -> Result<&2, &2, String, U32>:
+  match stage:
+    case 0:
+      match code:
+        case 46: Done{4}
+        case _: digit_stage(3, code, digit(code))
+    case 4:
+      match code:
+        case 101: choose(Result<&2, &2, String, U32>, Done{6}, Fail{"InvalidDecimal"}, U32.is_ne(digits, 0))
+        case 69: choose(Result<&2, &2, String, U32>, Done{6}, Fail{"InvalidDecimal"}, U32.is_ne(digits, 0))
+        case _: digit_stage(5, code, digit(code))
+    case _: next_stage(stage, code)
+
+def java_decimal_finish(value: Decimal) -> Result<&2, &2, String, F32>:
+  match value:
+    case Decimal{+stage, negative, coefficient, +digits, significant, fraction, exp_negative, exponent}:
+      decimal_finish(Decimal{stage, negative, coefficient, digits, significant, fraction, exp_negative, exponent}, accepting(stage) || (U32.is_eq(stage, 4) && U32.is_ne(digits, 0)))
+
+def java_decimal_step(value: Decimal, +code: U32) -> Result<&2, &2, String, Decimal>:
+  match value:
+    case Decimal{+stage, negative, coefficient, +digits, significant, fraction, exp_negative, exponent}:
+      do Result<&2, &2, String, Decimal>:
+        next : U32 <- java_decimal_next(stage, code, digits)
+        update(Decimal{stage, negative, coefficient, digits, significant, fraction, exp_negative, exponent}, next, code, digit(code))
+
+def java_decimal_scan(text: String, value: Decimal) -> Result<&2, &2, String, F32>:
+  match text:
+    case SNil{}: java_decimal_finish(value)
+    case SCon{character, rest}:
+      do Result<&2, &2, String, F32>:
+        next : Decimal <- java_decimal_step(value, Char.to_u32(character))
+        java_decimal_scan(rest, next)
+
+type HexAction is Data:
+  HexAction{next: U32, kind: U32, value: U32}
+
+def hex_value(+code: U32) -> Maybe<&2, U32>:
+  choose(Maybe<&2, U32>, Some{U32.sub(code, 48)},
+    choose(Maybe<&2, U32>, Some{U32.sub(code, 55)},
+      choose(Maybe<&2, U32>, Some{U32.sub(code, 87)}, None{}, U32.is_ge(code, 97) && U32.is_le(code, 102)),
+      U32.is_ge(code, 65) && U32.is_le(code, 70)), digit(code))
+
+def hex_nibble(next: U32, value: Maybe<&2, U32>) -> Result<&2, &2, String, HexAction>:
+  match value:
+    case None{}: Fail{"InvalidDecimal"}
+    case Some{nibble}: Done{HexAction{next, 1, nibble}}
+
+def hex_exponent_char(+code: U32) -> Result<&2, &2, String, HexAction>:
+  choose(Result<&2, &2, String, HexAction>, Done{HexAction{6, 2, code}}, Fail{"InvalidDecimal"}, digit(code))
+
+def hex_p(code: U32, digits: U32) -> Result<&2, &2, String, HexAction>:
+  choose(Result<&2, &2, String, HexAction>, Done{HexAction{4, 0, code}}, Fail{"InvalidDecimal"}, U32.is_ne(digits, 0))
+
+# Hex stages: 0 first, 1 integer digits, 2 dot, 3 fraction, 4 p marker,
+# 5 exponent sign, 6 exponent digits. Action kind 0 punctuation, 1 nibble, 2 exp.
+def hex_next(stage: U32, +code: U32, digits: U32) -> Result<&2, &2, String, HexAction>:
+  match stage:
+    case 0:
+      match code:
+        case 46: Done{HexAction{2, 0, code}}
+        case _: hex_nibble(1, hex_value(code))
+    case 1:
+      match code:
+        case 46: Done{HexAction{2, 0, code}}
+        case 112: hex_p(code, digits)
+        case 80: hex_p(code, digits)
+        case _: hex_nibble(1, hex_value(code))
+    case 2:
+      match code:
+        case 112: hex_p(code, digits)
+        case 80: hex_p(code, digits)
+        case _: hex_nibble(3, hex_value(code))
+    case 3:
+      match code:
+        case 112: hex_p(code, digits)
+        case 80: hex_p(code, digits)
+        case _: hex_nibble(3, hex_value(code))
+    case 4:
+      match code:
+        case 43: Done{HexAction{5, 0, code}}
+        case 45: Done{HexAction{5, 0, code}}
+        case _: hex_exponent_char(code)
+    case _: hex_exponent_char(code)
+
+def hex_mantissa(value: Decimal, +next: U32, nibble: U32, allowed: Bool) -> Result<&2, &2, String, Decimal>:
+  match value allowed:
+    case _ False{}: Fail{"DigitLimit"}
+    case Decimal{stage, negative, coefficient, digits, significant, fraction, exp_negative, exponent} True{}:
+      Done{Decimal{next, negative, B.mul_add(coefficient, 16, nibble), U32.inc(digits), significant, U32.add(fraction, Bool.to_u32(U32.is_eq(next, 3))), exp_negative, exponent}}
+
+def hex_update(value: Decimal, action: HexAction) -> Result<&2, &2, String, Decimal>:
+  match value action:
+    case Decimal{stage, negative, coefficient, digits, significant, fraction, exp_negative, exponent} HexAction{+next, 0, +code}:
+      Done{Decimal{next, negative, coefficient, digits, significant, fraction, exp_negative || (U32.is_eq(next, 5) && U32.is_eq(code, 45)), exponent}}
+    case Decimal{stage, negative, coefficient, +digits, significant, fraction, exp_negative, exponent} HexAction{next, 1, nibble}:
+      hex_mantissa(Decimal{stage, negative, coefficient, digits, significant, fraction, exp_negative, exponent}, next, nibble, U32.is_lt(digits, 1024))
+    case _ HexAction{next, kind, code}: exponent_digit(value, next, code)
+
+def hex_step(value: Decimal, +code: U32) -> Result<&2, &2, String, Decimal>:
+  match value:
+    case Decimal{+stage, negative, coefficient, +digits, significant, fraction, exp_negative, exponent}:
+      do Result<&2, &2, String, Decimal>:
+        action : HexAction <- hex_next(stage, code, digits)
+        hex_update(Decimal{stage, negative, coefficient, digits, significant, fraction, exp_negative, exponent}, action)
+
+def hex_rational(negative: Bool, coefficient: B.BigUInt, +power: U32, positive: Bool) -> Result<&2, &2, String, F32>:
+  match positive:
+    case True{}: rounded(negative, search(31n, B.shl(coefficient, U32.sub(power, 200000)), B.one(), Bounds{0, 2139095040}))
+    case False{}: rounded(negative, search(31n, coefficient, B.shl(B.one(), U32.sub(200000, power)), Bounds{0, 2139095040}))
+
+def hex_underflow(negative: Bool, coefficient: B.BigUInt, +power: U32, underflow: Bool) -> Result<&2, &2, String, F32>:
+  match underflow:
+    case True{}: Done{signed_word(negative, 0)}
+    case False{}: hex_rational(negative, coefficient, power, U32.is_ge(power, 200000))
+
+def hex_overflow(negative: Bool, coefficient: B.BigUInt, power: U32, +adjusted: U32, overflow: Bool) -> Result<&2, &2, String, F32>:
+  match overflow:
+    case True{}: Done{signed_word(negative, 2139095040)}
+    case False{}: hex_underflow(negative, coefficient, power, U32.is_lt(adjusted, 199850))
+
+def hex_power(negative: Bool, coefficient: B.BigUInt, +bits: U32, +power: U32) -> Result<&2, &2, String, F32>:
+  +adjusted = U32.sub(U32.add(power, bits), 1)
+  hex_overflow(negative, coefficient, power, adjusted, U32.is_gt(adjusted, 200127))
+
+def hex_exponent(negative: Bool, coefficient: B.BigUInt, bits: U32, fraction: U32, exponent: U32, exp_negative: Bool) -> Result<&2, &2, String, F32>:
+  match exp_negative:
+    case True{}: hex_power(negative, coefficient, bits, U32.sub(U32.sub(200000, exponent), U32.mul(fraction, 4)))
+    case False{}: hex_power(negative, coefficient, bits, U32.sub(U32.add(200000, exponent), U32.mul(fraction, 4)))
+
+def hex_zero(negative: Bool, coefficient: B.BigUInt, bits: U32, fraction: U32, exp_negative: Bool, exponent: U32, zero: Bool) -> Result<&2, &2, String, F32>:
+  match zero:
+    case True{}: Done{signed_word(negative, 0)}
+    case False{}: hex_exponent(negative, coefficient, bits, fraction, exponent, exp_negative)
+
+def hex_bits(negative: Bool, coefficient: B.BigUInt, +bits: U32, fraction: U32, exp_negative: Bool, exponent: U32) -> Result<&2, &2, String, F32>:
+  hex_zero(negative, coefficient, bits, fraction, exp_negative, exponent, U32.is_eq(bits, 0))
+
+def hex_finish(value: Decimal, valid: Bool) -> Result<&2, &2, String, F32>:
+  match value valid:
+    case _ False{}: Fail{"InvalidDecimal"}
+    case Decimal{stage, negative, +coefficient, digits, significant, fraction, exp_negative, exponent} True{}:
+      hex_bits(negative, coefficient, B.bit_length(coefficient), fraction, exp_negative, exponent)
+
+def hex_complete(value: Decimal) -> Result<&2, &2, String, F32>:
+  match value:
+    case Decimal{+stage, negative, coefficient, digits, significant, fraction, exp_negative, exponent}:
+      hex_finish(Decimal{stage, negative, coefficient, digits, significant, fraction, exp_negative, exponent}, U32.is_eq(stage, 6))
+
+def hex_scan(text: String, value: Decimal) -> Result<&2, &2, String, F32>:
+  match text:
+    case SNil{}: hex_complete(value)
+    case SCon{character, rest}:
+      do Result<&2, &2, String, F32>:
+        next : Decimal <- hex_step(value, Char.to_u32(character))
+        hex_scan(rest, next)
+
+def java_suffix_reversed(text: String) -> String:
+  match text:
+    case SNil{}: SNil{}
+    case SCon{+character, +rest}:
+      +code = Char.to_u32(character)
+      choose(String, String.reverse(rest), String.reverse(SCon{character, rest}), U32.is_eq(code, 102) || U32.is_eq(code, 70) || U32.is_eq(code, 100) || U32.is_eq(code, 68))
+
+def java_numeric(text: String, negative: Bool) -> Result<&2, &2, String, F32>:
+  match text:
+    case SCon{Chr{48}, SCon{Chr{120}, rest}}: hex_scan(rest, Decimal{0, negative, B.zero(), 0, 0, 0, False{}, 0})
+    case SCon{Chr{48}, SCon{Chr{88}, rest}}: hex_scan(rest, Decimal{0, negative, B.zero(), 0, 0, 0, False{}, 0})
+    case _: java_decimal_scan(text, Decimal{0, negative, B.zero(), 0, 0, 0, False{}, 0})
+
+def java_unsigned(text: String, negative: Bool) -> Result<&2, &2, String, F32>:
+  match text:
+    case "NaN": Done{float_word(2143289344)}
+    case "Infinity": Done{signed_word(negative, 2139095040)}
+    case _: java_numeric(java_suffix_reversed(String.reverse(text)), negative)
+
+def java_sign(text: String) -> Result<&2, &2, String, F32>:
+  match text:
+    case SCon{Chr{43}, rest}: java_unsigned(rest, False{})
+    case SCon{Chr{45}, rest}: java_unsigned(rest, True{})
+    case _: java_unsigned(text, False{})
+
+# Java String.trim removes every char <= U+0020, including NUL at either end.
+def java_trim_left(text: String) -> String:
+  match text:
+    case SNil{}: SNil{}
+    case SCon{+character, +rest}:
+      choose(String, java_trim_left(rest), SCon{character, rest}, U32.is_le(Char.to_u32(character), 32))
+
+def java_budget(text: String, allowed: Bool) -> Result<&2, &2, String, F32>:
+  match allowed:
+    case False{}: Fail{"InputLimit"}
+    case True{}: java_sign(String.reverse(java_trim_left(String.reverse(java_trim_left(text)))))
+
+def parse_java_f32(+text: String) -> Result<&2, &2, String, F32>:
+  java_budget(text, within(4096n, text))

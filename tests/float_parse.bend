@@ -14,6 +14,12 @@ law strict_zero_and_grammar:
 def strict_zero_and_grammar():
   {==}
 
+law java_names_and_zero:
+  {(P.parse_java_f32("-NaN"), P.parse_java_f32("+NaN"), P.parse_java_f32(" -00.0F ")) == (Done{P.float_word(2143289344)}, Done{P.float_word(2143289344)}, Done{P.float_word(2147483648)}) : Result<&2, &2, String, F32> & Result<&2, &2, String, F32> & Result<&2, &2, String, F32>}
+
+def java_names_and_zero():
+  {==}
+
 def report_result(value: Result<&2, &2, String, F32>) -> IO(Unit):
   match value:
     case Done{number}: IO.print("ok|" ++ U32.show(F32.bits(number)))
@@ -22,10 +28,16 @@ def report_result(value: Result<&2, &2, String, F32>) -> IO(Unit):
 def report(text: String) -> IO(Unit):
   report_result(P.parse_f32(text))
 
+def report_java(text: String) -> IO(Unit):
+  report_result(P.parse_java_f32(text))
+
 def dispatch(text: String) -> IO(Unit):
   match text:
     case "@nul": report(SCon{Chr{49}, SCon{Chr{0}, SNil{}}})
     case "@surrogate": report(SCon{Chr{55296}, SNil{}})
+    case "@java_trim_nul": report_java(SCon{Chr{0}, SCon{Chr{49}, SCon{Chr{0}, SNil{}}}})
+    case "@java_middle_nul": report_java(SCon{Chr{49}, SCon{Chr{0}, SCon{Chr{50}, SNil{}}}})
+    case SCon{Chr{106}, SCon{Chr{124}, rest}}: report_java(rest)
     case _: report(text)
 
 def run_args(args: List<String>) -> IO(Unit):

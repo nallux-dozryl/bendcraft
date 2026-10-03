@@ -1,8 +1,9 @@
 import Base
 
 # Internal nonnegative integer, little-endian base 65536. Canonical zero is [];
-# nonzero integers have a nonzero last limb. float_parse keeps every integer
-# below 4096 bits. mul_add requires 1 <= factor <= 33554431 and carry <= factor.
+# nonzero integers have a nonzero last limb. float_parse keeps decimal integers
+# below 4096 bits and Java hex intermediates below 4608 bits. mul_add requires
+# 1 <= factor <= 33554431 and carry <= factor.
 type BigUInt is Data:
   BigUInt{limbs: List<&2, U32>}
 
@@ -74,3 +75,19 @@ def compare(left: BigUInt, right: BigUInt) -> Cmp:
   match left right:
     case BigUInt{+xs} BigUInt{+ys}:
       compare_lengths(xs, ys, Nat.cmp(List.length(&2, U32, xs), List.length(&2, U32, ys)))
+
+def last_limb(limbs: List<&2, U32>, last: U32) -> U32:
+  match limbs:
+    case Nil{}: last
+    case limb <> rest: last_limb(rest, limb)
+
+def limb_bits(fuel: Nat, +limb: U32, count: U32) -> U32:
+  match fuel:
+    case 0n: count
+    case 1n+rest: limb_bits(rest, U32.shr(limb), U32.add(count, Bool.to_u32(U32.is_ne(limb, 0))))
+
+def bit_length(value: BigUInt) -> U32:
+  match value:
+    case BigUInt{Nil{}}: 0
+    case BigUInt{+limb <> +rest}:
+      U32.add(U32.mul(U32.from_nat(List.length(&2, U32, rest)), 16), limb_bits(16n, last_limb(rest, limb), 0))

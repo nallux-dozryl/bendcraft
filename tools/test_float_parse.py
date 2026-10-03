@@ -44,11 +44,14 @@ int main(void) {
 
 REFERENCE_JAVA = r'''
 import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.util.HexFormat;
 public class DecimalF32Reference {
   public static void main(String[] args) throws Exception {
     BufferedReader input=new BufferedReader(new InputStreamReader(System.in));
     PrintWriter output=new PrintWriter(System.out); String line;
     while((line=input.readLine())!=null) {
+      if(args.length>0 && args[0].equals("encoded")) line=new String(HexFormat.of().parseHex(line),StandardCharsets.UTF_8);
       try { output.println(Integer.toUnsignedString(Float.floatToRawIntBits(Float.parseFloat(line)),16)); }
       catch(NumberFormatException bad) { output.println("error"); }
     }
@@ -227,15 +230,210 @@ def batches(cases, maximum_count: int = 128, maximum_characters: int = 48000):
         yield batch
 
 
+JAVA_DECIMAL = re.compile(r"([0-9]+(?:\.[0-9]*)?|\.[0-9]+)(?:[eE]([+-]?[0-9]+))?\Z", re.ASCII)
+JAVA_HEX = re.compile(r"0[xX]([0-9a-fA-F]+(?:\.[0-9a-fA-F]*)?|\.[0-9a-fA-F]+)[pP]([+-]?[0-9]+)\Z", re.ASCII)
+
+
+def java_expected(text: str) -> tuple[str, int | str, str | None]:
+    if len(text) > 4096:
+        return "error", "InputLimit", None
+    body = text.strip("".join(chr(code) for code in range(33)))
+    negative = body.startswith("-")
+    if body.startswith(("+", "-")):
+        body = body[1:]
+    sign = "-" if negative else ""
+    if body == "NaN":
+        return "ok", 0x7FC00000, sign+body
+    if body == "Infinity":
+        return "ok", INFINITY|(SIGN if negative else 0), sign+body
+    if body.endswith(("f", "F", "d", "D")):
+        body = body[:-1]
+    hexadecimal = JAVA_HEX.fullmatch(body)
+    if hexadecimal:
+        mantissa, exponent = hexadecimal.groups()
+        digits = mantissa.replace(".", "")
+        if len(digits) > 1024:
+            return "error", "DigitLimit", None
+        numerator = int(digits, 16)
+        fraction = len(mantissa.split(".")[1]) if "." in mantissa else 0
+        power = int(exponent)-4*fraction
+        adjusted = numerator.bit_length()-1+power
+        if not numerator:
+            word = 0
+        elif adjusted > 127:
+            word = INFINITY
+        elif adjusted < -150:
+            word = 0
+        else:
+            value = Fraction(numerator << power) if power >= 0 else Fraction(numerator, 1 << -power)
+            word = round_fraction(value)
+        return "ok", word|(SIGN if negative else 0), sign+body
+    decimal = JAVA_DECIMAL.fullmatch(body)
+    if not decimal:
+        return "error", "InvalidDecimal", None
+    mantissa, exponent = decimal.groups()
+    if len(mantissa.replace(".", "")) > 1024:
+        return "error", "DigitLimit", None
+    whole, dot, fraction = mantissa.partition(".")
+    whole = whole.lstrip("0") or "0"
+    canonical = sign+whole+("."+fraction if fraction else "")+("e"+exponent if exponent is not None else "")
+    return "ok", expected(canonical), canonical
+
+
+def hex_text(value: Fraction) -> str:
+    assert value.denominator & (value.denominator-1) == 0
+    return ("-" if value < 0 else "")+"0x"+format(abs(value.numerator), "x")+"p-"+str(value.denominator.bit_length()-1)
+
+
+def java_fixtures(seed: int, count: int) -> list[tuple[str, str]]:
+    rng = random.Random(seed ^ 0x4A415641)
+    cases = [("strict_decimal_regression", text) for _, text in fixtures(seed, count)]
+    cases += [("java_special_names", text) for text in ("NaN", "+NaN", "-NaN", "Infinity", "+Infinity", "-Infinity", "\t NaN\r\n", "+Infinity\x1f")]
+    for text in ("1", "01", "0001", ".5", "5.", "1.e1", "00.00e+2", ".0", "000", "1E-45"):
+        for sign in ("", "+", "-"):
+            for suffix in ("", "f", "F", "d", "D"):
+                cases.append(("java_decimal_grammar", " \t"+sign+text+suffix+"\r\n"))
+    for code in range(1, 33):
+        cases.append(("java_trim_characters", chr(code)+"+1f"+chr(code)))
+    cases.append(("java_trim_nul", "\0"+"1"+"\0"))
+    words = {0, 1, 2, 3, 0x7FFFFE, 0x7FFFFF, INFINITY-2, INFINITY-1}
+    for exponent in range(1, 255):
+        words.update((exponent << 23)|mantissa for mantissa in (0, 1, 0x7FFFFE, 0x7FFFFF))
+    for word in sorted(words):
+        midpoint = (exact_f32(word)+exact_f32(word+1))/2
+        epsilon = Fraction(1, 1 << (midpoint.denominator.bit_length()+80))
+        for sign in (1, -1):
+            cases.append(("hex_exact_roundtrip", hex_text(sign*exact_f32(word))))
+            cases.extend(("hex_all_exponent_midpoints", hex_text(sign*(midpoint+delta*epsilon))) for delta in (-1, 0, 1))
+    for _ in range(count):
+        size = rng.randrange(1, 129)
+        digits = rng.choice("123456789abcdef")+"".join(rng.choice("0123456789abcdef") for _ in range(size-1))
+        point = rng.randrange(size+1)
+        mantissa = digits[:point]+"."+digits[point:]
+        power = rng.randrange(-150, 128)-4*point+rng.randrange(4)
+        cases.append(("random_hex_grammar", rng.choice(("", "+", "-"))+rng.choice(("0x", "0X"))+mantissa+rng.choice(("p", "P"))+f"{power:+d}"+rng.choice(("", "f", "F", "d", "D"))))
+    for digits in (511, 512, 1023, 1024):
+        cases.extend(("hex_long_mantissa", sign+"0x"+"f"*digits+"p"+str(-4*digits+1)) for sign in ("", "-"))
+    for exponent in ("9"*20, "9"*1000):
+        for sign in ("", "-"):
+            for exp_sign in ("+", "-"):
+                cases.append(("hex_huge_exponent", sign+"0x1p"+exp_sign+exponent))
+                cases.append(("hex_zero_huge_exponent", sign+"0x0.0p"+exp_sign+exponent))
+    cases.extend(("java_budget_boundary", text) for text in ("0x1p"+"0"*4091+"1", "0x0."+"0"*1022+"1p4092", "+"+"0"*1024+"F", " "*4094+"1 "))
+    return cases
+
+
+def java_invalid() -> list[tuple[str, str]]:
+    cases = [(text, "InvalidDecimal") for text in ("", " ", "+", "-", ".", ".e1", "1..0", "1e", "1e+", "1e-", "1e1.0", "+-1", "--1", "1 2", "1_0", "1L", "nan", "NAN", "infinity", "NaNf", "InfinityF", "0x1", "0x1.", "0x.p0", "0xp0", "0x1p", "0x1p+", "0x1p1.0", "0x1p1e0", "0x1p1L", "0x1_0p0", "0x1.2.3p0", "0xG.p0", "0x1e0", "\u00a01", "1\u2000", "١", "１", "1\0"+"2")]
+    cases += [("1"+"0"*1024+"f", "DigitLimit"), ("0x"+"f"*1025+"p-4000", "DigitLimit"), ("0x1p"+"0"*4092+"1", "InputLimit"), (" "*4097, "InputLimit")]
+    return cases
+
+
+def native_java_argument(text: str) -> str:
+    if text == "\0"+"1"+"\0":
+        return "@java_trim_nul"
+    if text == "1\0"+"2":
+        return "@java_middle_nul"
+    return "j|"+text
+
+
+def java_main(options) -> None:
+    build = ROOT/"build"
+    build.mkdir(exist_ok=True)
+    binary, reference = build/"float_parse_java_test", build/"float_parse_java_reference"
+    c_source, java_source = build/"float_parse_java_reference.c", build/"DecimalF32Reference.java"
+    c_source.write_text(REFERENCE_C)
+    java_source.write_text(REFERENCE_JAVA)
+    commands = [[options.bend, path, "--verdict"] for path in ("src/big_uint.bend", "src/float_parse.bend", "tests/float_parse.bend")]
+    commands += [[options.bend, "tests/float_parse.bend", "-o", str(binary)], [options.bend, "tests/float_parse.bend", "-o", str(binary)+".c"],
+                 ["clang", "-O3", "-fno-fast-math", "-ffp-contract=off", str(c_source), "-o", str(reference)], [str(JAVA.parent/"javac"), "-d", str(build), str(java_source)]]
+    timings, verdicts = {}, {}
+    for index, command in enumerate(commands):
+        started = time.perf_counter()
+        result = run(command)
+        timings[str(index)] = time.perf_counter()-started
+        if index < 3:
+            if "ALL PROOFS CHECK" not in result.stdout:
+                raise AssertionError(result.stdout)
+            verdicts[command[1]] = result.stdout.strip()
+    cases = java_fixtures(options.seed, options.random)
+    outcomes = [java_expected(text) for _, text in cases]
+    if any(kind != "ok" for kind, _, _ in outcomes):
+        raise AssertionError("Java accepted fixture generation exceeds grammar/budget")
+    java_command = [str(JAVA), "-cp", str(build), "DecimalF32Reference", "encoded"]
+    payload = "".join(text.encode().hex()+"\n" for _, text in cases)
+    java_rows = run(java_command, payload).stdout.splitlines()
+    c_rows = run([str(reference)], "".join(normalized+"\n" for _, _, normalized in outcomes)).stdout.splitlines()
+    if len(java_rows) != len(cases) or len(c_rows) != len(cases):
+        raise AssertionError("Java textual oracle row count mismatch")
+    c_nan_checks = 0
+    for (kind, text), (_, word, normalized), java, c in zip(cases, outcomes, java_rows, c_rows, strict=True):
+        if java == "error" or int(java, 16) != word:
+            raise AssertionError(f"Java text oracle mismatch {kind} {text!r}: exact {word:08x}, Java{java}")
+        if word & 0x7FFFFFFF == 0x7FC00000:
+            c_nan_checks += 1
+            if c == "error" or (int(c, 16)&0x7F800000)!=INFINITY or not int(c, 16)&0x7FFFFF:
+                raise AssertionError("C NaN class mismatch")
+        elif c == "error" or int(c, 16) != word:
+            raise AssertionError(f"C/exact text oracle mismatch {kind} {text!r}: normalized{normalized!r}, exact{word:08x}, C{c}")
+    started = time.perf_counter()
+    for batch in batches(list(enumerate(text for _, text in cases))):
+        rows = run([str(binary), "--gpu", "off", "--threads", "1", "--", *(native_java_argument(text) for _, text in batch)]).stdout.splitlines()
+        if len(rows) != len(batch):
+            raise AssertionError("Native Java text row count mismatch")
+        for (index, text), row in zip(batch, rows, strict=True):
+            if row != f"ok|{outcomes[index][1]}":
+                raise AssertionError(f"Native Java parser mismatch {cases[index][0]} {text!r}: expected{outcomes[index][1]:08x}, observed{row}")
+    wall = time.perf_counter()-started
+    invalid = java_invalid()
+    invalid_rows = run([str(binary), "--gpu", "off", "--threads", "1", "--", *(native_java_argument(text) for text, _ in invalid)]).stdout.splitlines()
+    if len(invalid_rows) != len(invalid):
+        raise AssertionError("Java rejected row count mismatch")
+    for (text, error), row in zip(invalid, invalid_rows, strict=True):
+        if row != "error|"+error or java_expected(text)[:2] != ("error", error):
+            raise AssertionError(f"Java parser error mismatch {text!r}: expected{error}, observed{row}")
+    grammar_invalid = [text for text, error in invalid if error == "InvalidDecimal"]
+    observed_invalid = run(java_command, "".join(text.encode().hex()+"\n" for text in grammar_invalid)).stdout.splitlines()
+    if observed_invalid != ["error"]*len(grammar_invalid):
+        raise AssertionError("Java invalid textual grammar disagrees")
+    emitted = Path(str(binary)+".c").read_text()
+    helpers = re.findall(r'(?ms)^INLINE Term spin_\d+\([^\n]+\) \{\n.*?^\}', emitted)
+    if re.search(r'\bdouble\b|f32_unbox|f32_rewrap', "\n".join(helpers)):
+        raise AssertionError("Java parser scalar helpers use host floating arithmetic")
+    baseline = json.loads((ROOT/"evidence/float-parse-native.json").read_text())
+    evidence = {"schema": 1, "result": "pass", "scope": "bounded Java25 Float.parseFloat textual grammar and exact direct F32 rounding; separate strict JSON API preserved",
+                "accepted_cases": len(cases), "native_exact_bit_comparisons": len(cases), "java25_exact_bit_comparisons": len(cases), "c_normalized_exact_non_nan_comparisons": len(cases)-c_nan_checks, "c_nan_class_checks": c_nan_checks,
+                "c_scope": "same exact numeric value after pure test-oracle syntax normalization (trim/sign/suffix/leading-zero forms); Java independently observes original UTF8 text including control chars",
+                "rejected_cases": len(invalid), "java25_invalid_grammar_comparisons": len(grammar_invalid), "error_counts": dict(Counter(error for _, error in invalid)), "fixture_kinds": dict(Counter(kind for kind, _ in cases)),
+                "nan_policy": {text: f"{java_expected(text)[1]:08x}" for text in ("NaN", "+NaN", "-NaN")}, "budgets": {"original_input_codepoints": 4096, "mantissa_digits_decimal_or_hex": 1024, "hex_intermediate_bound_bits": 4373},
+                "kernel_verdicts": verdicts, "verification_scope": "independent type/termination + finite laws and recorded native exact fixtures; no universal parsing/IEEE theorem",
+                "fixture_sha256": hashlib.sha256(json.dumps(cases).encode()).hexdigest(), "invalid_fixture_sha256": hashlib.sha256(json.dumps(invalid).encode()).hexdigest(),
+                "source_sha256": {path: hashlib.sha256((ROOT/path).read_bytes()).hexdigest() for path in ("src/big_uint.bend", "src/float_parse.bend", "tests/float_parse.bend", "tools/test_float_parse.py")},
+                "compiler": run([options.bend, "version"]).stdout.strip(), "compiler_file": fingerprint(Path(options.bend)), "java_runtime": fingerprint(JAVA), "java_version": run([str(JAVA), "-version"]).stderr.strip(),
+                "reference_sha256": {"c": hashlib.sha256(REFERENCE_C.encode()).hexdigest(), "java": hashlib.sha256(REFERENCE_JAVA.encode()).hexdigest()}, "native_binary": fingerprint(binary), "reference_binary": fingerprint(reference),
+                "emitted_c": {"sha256": hashlib.sha256(emitted.encode()).hexdigest(), "scalar_inline_helpers": len(helpers), "scalar_helpers_use_host_float_arithmetic": False},
+                "native_wall_seconds_including_startup_argument_output_io": wall, "build_wall_seconds": timings, "seed": options.seed, "random_cases_requested": options.random,
+                "strict_baseline": {"commit": "5535b4b", "file": "evidence/float-parse-native.json", "sha256": hashlib.sha256((ROOT/"evidence/float-parse-native.json").read_bytes()).hexdigest(), "fixture_sha256": baseline["fixture_sha256"]},
+                "commands": commands+[java_command, [str(reference)]], "reproduce": ["python3", "tools/test_float_parse.py", "--java-only", "--seed", str(options.seed), "--random", str(options.random)],
+                "official_source": "https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/Float.html#valueOf(java.lang.String)"}
+    destination = ROOT/(options.evidence or "evidence/float-parse-java-native.json")
+    destination.write_text(json.dumps(evidence, indent=2)+"\n")
+    print(json.dumps({"evidence": str(destination), "accepted_cases": len(cases), "rejected_cases": len(invalid), "fixtures": evidence["fixture_kinds"], "nan_policy": evidence["nan_policy"], "native_wall_seconds_including_io": wall}, indent=2))
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--bend", default="/Users/chuah/.bend/bin/bend")
     parser.add_argument("--seed", type=int, default=322603)
     parser.add_argument("--random", type=int, default=10000)
-    parser.add_argument("--evidence", default="evidence/float-parse-native.json")
+    parser.add_argument("--evidence")
+    parser.add_argument("--java-only", action="store_true")
     options = parser.parse_args()
     if options.random < 1000:
         raise ValueError("At least 1000 random decimal fixtures are required")
+    if options.java_only:
+        java_main(options)
+        return
     build = ROOT/"build"
     build.mkdir(exist_ok=True)
     binary, reference = build/"float_parse_test", build/"float_parse_reference"
@@ -288,6 +486,12 @@ def main() -> None:
     if re.search(r'\bdouble\b|f32_unbox|f32_rewrap', "\n".join(helpers)):
         raise AssertionError("Parser scalar helpers unexpectedly use host floating arithmetic")
     observed_model = ROOT/"reference/model_semantics.json"
+    baseline_path = ROOT/"evidence/float-parse-native.json"
+    baseline = json.loads(baseline_path.read_text())
+    original_source_prefix = (ROOT/"src/float_parse.bend").read_text().split("\n# Separate Java Float.parseFloat", 1)[0]
+    prefix_hash = hashlib.sha256(original_source_prefix.encode()).hexdigest()
+    if prefix_hash != baseline["source_sha256"]["src/float_parse.bend"]:
+        raise AssertionError("Strict parse_f32 baseline source prefix changed")
     model_checks = []
     if observed_model.exists():
         model = json.loads(observed_model.read_text())
@@ -316,9 +520,12 @@ def main() -> None:
                 "emitted_c": {"sha256": hashlib.sha256(emitted.encode()).hexdigest(), "scalar_inline_helpers": len(helpers), "scalar_helpers_use_host_float_arithmetic": False},
                 "platform": {"system": platform.system(), "release": platform.release(), "machine": platform.machine()}, "build_wall_seconds": timings,
                 "model_reference": {"file": "reference/model_semantics.json", "sha256": hashlib.sha256(observed_model.read_bytes()).hexdigest(), "checks": model_checks, "scope": "observed scalar lexemes only; not model-field policy or gameplay parity"} if observed_model.exists() else None,
+                "strict_baseline": {"commit": "5535b4b", "file": "evidence/float-parse-native.json", "sha256": hashlib.sha256(baseline_path.read_bytes()).hexdigest(),
+                                    "original_source_prefix_sha256": prefix_hash, "original_source_prefix_identical": True,
+                                    "fixture_digest_identical": baseline["fixture_sha256"] == hashlib.sha256("\n".join(f"{kind}|{text}" for kind, text in cases).encode()).hexdigest()},
                 "commands": commands+[java_command, [str(reference)]], "reproduce": ["python3", "tools/test_float_parse.py", "--seed", str(options.seed), "--random", str(options.random)],
                 "official_sources": ["https://www.rfc-editor.org/rfc/rfc8259#section-6", "https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/Float.html#valueOf(java.lang.String)"]}
-    destination = ROOT/options.evidence
+    destination = ROOT/(options.evidence or "evidence/float-parse-strict-followup.json")
     destination.write_text(json.dumps(evidence, indent=2)+"\n")
     print(json.dumps({"evidence": str(destination), "accepted_cases": len(cases), "invalid_cases": len(invalid), "fixtures": evidence["fixture_kinds"], "intervals": dict(intervals), "native_wall_seconds_including_io": native_wall}, indent=2))
 
