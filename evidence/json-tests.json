@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "compiler": "bend 2.0.35",
+  "platform": "macOS-26.4.1-arm64-arm-64bit-Mach-O",
+  "source_sha256": "a546726a2422382e388e3b0c9c2868034f25f5b1339c8b6b1dc167190a1b4099",
+  "checker": {
+    "src/json.bend": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.",
+    "tests/json.bend": "ALL PROOFS CHECK\nUse --verdict for mathematical validity."
+  },
+  "kernel_verdict": {
+    "exit_code": 1,
+    "output": "SOME PROOFS FAIL\nSorry - this is a mismatch between the TypeScript implementation, and the formalized BendTT kernel. Your proofs may or may not be correct, and we cannot validate them yet. This will be addressed in a future update. Meanwhile, feel free to open an issue to report this bug."
+  },
+  "fixtures_kernel_verdict": {
+    "exit_code": 1,
+    "output": "SOME PROOFS FAIL\nSorry - this is a mismatch between the TypeScript implementation, and the formalized BendTT kernel. Your proofs may or may not be correct, and we cannot validate them yet. This will be addressed in a future update. Meanwhile, feel free to open an issue to report this bug."
+  },
+  "native_binary": "build/json-tests",
+  "native_builtin_regressions": "pass",
+  "independent_cases": 536,
+  "successful_roundtrips": 299,
+  "generated_valid_cases": 250,
+  "generated_invalid_cases": 100,
+  "all_cases_passed": true,
+  "elapsed_seconds": 5.592,
+  "oracle": "Python json grammar decoder with exact number-token hooks, duplicate rejection, scalar Unicode validation; outputs checked byte-for-byte",
+  "policy": {
+    "max_codepoints": 16384,
+    "max_container_depth": 64,
+    "duplicates": "reject after escape decoding",
+    "unpaired_surrogates": "reject"
+  },
+  "commands": [
+    "python3 tools/test_json.py",
+    "/Users/chuah/.bend/bin/bend src/json.bend --check-only",
+    "/Users/chuah/.bend/bin/bend tests/json.bend --check-only",
+    "/Users/chuah/.bend/bin/bend tests/json.bend -o build/json-tests",
+    "./build/json-tests --threads 1",
+    "/Users/chuah/.bend/bin/bend src/json.bend --verdict",
+    "/Users/chuah/.bend/bin/bend tests/json.bend --verdict"
+  ]
+}
