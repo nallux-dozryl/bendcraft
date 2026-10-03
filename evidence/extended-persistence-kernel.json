@@ -1,0 +1,192 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-10-03T18:47:43.772869+00:00",
+  "source_sha256": {
+    "src/extended_persistence.bend": "32b3b094e21745d057a4ac797674fe4757bb4957659b35cbea7199b9c4ee1d2a",
+    "tests/extended_persistence.bend": "fedf93587a043f9aaeab56b01804da89c2e0c49d374a7a6546f688a251c6b89a",
+    "src/persistence.bend": "1561a863a74fdfc676b8ba4bbb5eddd206823f7363bf05c8a50ddffbbc30a4af",
+    "src/world_codec.bend": "461e2bc342005831a3d16824303f79e1f4dac2dca0eaf0731d18052dbfe0bf86",
+    "src/nbt.bend": "b677546b5fc02aaa38f5c09e5b798c0d35aec32b1c4b37cbd7042b9a1a5275e4"
+  },
+  "isolation_source": "build/extended-persistence-pure.bend",
+  "isolation_sha256": "0d13aeb74a3636fbea862c807e6d50a906313834b0d46b10502274a4e7eab183",
+  "extracted_library_names": [
+    "Limits",
+    "bytearray_limit",
+    "checked_encoder_budget",
+    "checked_extension_header_limit",
+    "checked_payload",
+    "core_byte_limit",
+    "core_limits",
+    "extra_limit",
+    "file_limit",
+    "guarded_array",
+    "guarded_step",
+    "outer_limits",
+    "text_name",
+    "text_name_result"
+  ],
+  "library_declaration_sha256": [
+    {
+      "name": "Limits",
+      "sha256": "fb6d1dc91b7488ffa20f5821330b3bad7e863c2b9910edbfc164a24fea5b5e4b"
+    },
+    {
+      "name": "core_limits",
+      "sha256": "ec3050e7c25e7c3defcee6acad1c27fb4b51be0cf111b853e0d9ad643367b268"
+    },
+    {
+      "name": "extra_limit",
+      "sha256": "2460009e6c9abca9e7c75585d6dcf2357ef17eb887f4700386707f907f2c4542"
+    },
+    {
+      "name": "file_limit",
+      "sha256": "7172622ac771ecb0c8f6da4029798d863a2bccfe5ede301b07767ebcfbf8aa7e"
+    },
+    {
+      "name": "outer_limits",
+      "sha256": "c6d6d858cdd79e5617b068a31735631699eebe812ad7a4c406710fd781f726dc"
+    },
+    {
+      "name": "core_byte_limit",
+      "sha256": "aa65000b6ccd52d8bba704f59a088747f884783eb9c1f5bb8c9c59a6b77fa827"
+    },
+    {
+      "name": "text_name_result",
+      "sha256": "5d4d06490112d48888fe9d685d3c58295a7cdd2a481ed1f49e44ef364e1cd383"
+    },
+    {
+      "name": "text_name",
+      "sha256": "9c21b8d33b37aebae414ca836b3cad6b5c1c896df0916b0efef8792f9e8546ce"
+    },
+    {
+      "name": "bytearray_limit",
+      "sha256": "ace3d659e0d9c9e021b346c5575e5f1b2dafd0bf496fd6c7ab26bd1b0310b39f"
+    },
+    {
+      "name": "guarded_array",
+      "sha256": "f117780c0e303f2163b1fe8512dd363cebdf602d6701973cdb41b3f10baf7cfc"
+    },
+    {
+      "name": "guarded_step",
+      "sha256": "17fde3a1e88a643ff326ce979e26f4d533c5177f1841eebb9542313d297d3feb"
+    },
+    {
+      "name": "checked_extension_header_limit",
+      "sha256": "36ab0a9d4c07e0da5d663d6d50c49728fdf557513de8a84a333a9e6a6117255f"
+    },
+    {
+      "name": "checked_extension_header_limit",
+      "sha256": "953bba0a5c1338d50377a8225bcef2f8e21ea66af27dec801eaec157e405d8f0"
+    },
+    {
+      "name": "checked_payload",
+      "sha256": "5ca1c54a91c862713546998dd32367577fa516bfa0ed4f02e04573281f9c0757"
+    },
+    {
+      "name": "checked_encoder_budget",
+      "sha256": "6ec81d3d46dd1c47dbe8af71864aa5128f94bfb674c2f55c9cfb35d647822c45"
+    },
+    {
+      "name": "checked_encoder_budget",
+      "sha256": "5b32112d6c68f1b9abaaf32ea01a5c5c31f45729617bb650ef5d30b096b8172d"
+    }
+  ],
+  "fixture_slice": {
+    "start": "type Extra is Type:",
+    "end_before": "# Closed hooks",
+    "sha256": "9ce8f7b4e04ab86c31ced304772654e5e13dde266960ef9593f849442e1c0155"
+  },
+  "alias_shim": {
+    "original": "src/persistence.bend:nbt_byte_limit",
+    "change": "Declaration name qualified as P.nbt_byte_limit only; body copied unchanged to avoid importing unrelated OS effects.",
+    "sha256": "8133095f71bca8f3996a44b60020ba68499e4b025ba32de00876e8c25546b2ea"
+  },
+  "scope": "Verbatim production field-budget/type/guard/payload validation definitions and actual fixture Array encoder/decoder. The import-alias shim only qualifies its declaration name. Four finite laws: extension header rejection before body read, encoder budget rejection, unsupported schema refusal, malformed balanced Array encode error with exact owner return. No universal migrations, Extra hook correctness, complete bundle roundtrip, OS or JSON proof.",
+  "recorded_at_utc": "2026-10-03T18:53:12.083791+00:00",
+  "status": "isolated_pure_kernel_pass_full_effect_boundary_rejected",
+  "confidence": "high for the recorded isolated typing, affinity, termination and four finite equality claims; no complete effectful theorem",
+  "verdict_command": [
+    "/Users/chuah/.bend/bin/bend",
+    "build/extended-persistence-pure.bend",
+    "--verdict"
+  ],
+  "verdict_exit_code": 0,
+  "verdict_output": "ALL PROOFS CHECK",
+  "emit_command": [
+    "/Users/chuah/.bend/bin/bend",
+    "build/extended-persistence-pure.bend",
+    "-o",
+    "build/extended-persistence-pure.bendtt"
+  ],
+  "emit_exit_code": 0,
+  "translation": "build/extended-persistence-pure.bendtt",
+  "translation_sha256": "77d5f07c3b02bc5cf038088326e874f9d7409ae930120ed6d90180d47afd6c99",
+  "kernel_command": [
+    "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+    "build/extended-persistence-pure.bendtt"
+  ],
+  "kernel_exit_code": 0,
+  "kernel_output": "ALL PROOFS CHECK",
+  "kernel_binary_sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7",
+  "kernel_source_sha256": "e15042434e73aab07ab05cea4b77b5619082c00a6d4924ea2d4a2cdec05facce",
+  "finite_claims": {
+    "checked_extension_header_limit": {
+      "declaration_sha256": "19a2d1d3789316e4ec87a9e5f4be0b204cea75bc60a4720d1af0be4ce99fe92e",
+      "equality_goal_retained": true,
+      "proof_body": "{==}",
+      "inspected_not_placeholder": true
+    },
+    "checked_encoder_budget": {
+      "declaration_sha256": "0c0bfbbc8e67b67eef7c248aa6a221df7e7a973153112e3409a89d9f597aab52",
+      "equality_goal_retained": true,
+      "proof_body": "{==}",
+      "inspected_not_placeholder": true
+    },
+    "checked_unknown_schema": {
+      "declaration_sha256": "9d0224c74fba955bb677b03c4b7e40e86f375a7ac29c34771cd559914d530063",
+      "equality_goal_retained": true,
+      "proof_body": "{==}",
+      "inspected_not_placeholder": true
+    },
+    "checked_array_error_owner": {
+      "declaration_sha256": "d528252e6d101728de071f0423ce53dc4f90c8d8b797e6ab01eafdb6e199c166",
+      "equality_goal_retained": true,
+      "proof_body": "{==}",
+      "inspected_not_placeholder": true
+    }
+  },
+  "full_wrapper_checks": [
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/extended_persistence.bend",
+        "--check-only"
+      ],
+      "exit_code": 1,
+      "output": "SOME PROOFS FAIL\nError: 42 defs rely on unsafe or foreign code:\n- durability.Durability.create\n- durability.Durability.sync\n- durability.Durability.replace\n- durability.Durability.sync_directory\n- durability.Durability.remove\n- atomic_file.cleanup\n- atomic_file.renamed\n- atomic_file.synced\n- atomic_file.written\n- atomic_file.created\n- atomic_file.publish_valid\n- atomic_file.publish_with\n- atomic_file.publish\n- world_lock.Native.acquire\n- world_lock.Native.release\n- world_lock.acquire\n- world_lock.release\n- persistence.save_publish\n- persistence.save_envelope\n- persistence.save_world_bytes\n- persistence.save_world_result\n- persistence.save\n- persistence.local_valid\n- persistence.local\n- persistence.chosen\n- persistence.parsed\n- persistence.dispatch_inner\n- persistence.dispatch\n- persistence.load_with\n- persistence.load\n- save_encoded\n- save_result\n- save\n- custom_valid\n- custom\n- chosen\n- parsed\n- dispatch_inner\n- dispatch\n- load_setup\n- load_with\n- load"
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "extended_persistence_server.bend",
+        "--check-only"
+      ],
+      "exit_code": 1,
+      "output": "SOME PROOFS FAIL\nError: 57 defs rely on unsafe or foreign code:\n- src/server.actor\n- src/server.timer\n- src/server.read_loop\n- src/server.accepted\n- src/server.accept_loop\n- src/server.start_effectful_from_peer\n- src/server.start_effectful\n- src/server.start_handle\n- src/server.run_effectful_from_peer\n- src/server.run_effectful\n- src/server.run\n- src/durability.Durability.create\n- src/durability.Durability.sync\n- src/durability.Durability.replace\n- src/durability.Durability.sync_directory\n- src/durability.Durability.remove\n- src/atomic_file.cleanup\n- src/atomic_file.renamed\n- src/atomic_file.synced\n- src/atomic_file.written\n- src/atomic_file.created\n- src/atomic_file.publish_valid\n- src/atomic_file.publish_with\n- src/atomic_file.publish\n- src/world_lock.Native.acquire\n- src/world_lock.Native.release\n- src/world_lock.acquire\n- src/world_lock.release\n- src/persistence.save_publish\n- src/persistence.save_envelope\n- src/persistence.save_world_bytes\n- src/persistence.save_world_result\n- src/persistence.save\n- src/persistence.local_valid\n- src/persistence.local\n- src/persistence.chosen\n- src/persistence.parsed\n- src/persistence.dispatch_inner\n- src/persistence.dispatch\n- src/persistence.load_with\n- src/persistence.load\n- src/extended_persistence.save_encoded\n- src/extended_persistence.save_result\n- src/extended_persistence.save\n- src/extended_persistence.custom_valid\n- src/extended_persistence.custom\n- src/extended_persistence.chosen\n- src/extended_persistence.parsed\n- src/extended_persistence.dispatch_inner\n- src/extended_persistence.dispatch\n- src/extended_persistence.load_setup\n- src/extended_persistence.load_with\n- src/extended_persistence.load\n- run\n- configured\n- selected\n- main"
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/extended_persistence.bend",
+        "--verdict"
+      ],
+      "exit_code": 1,
+      "output": "SOME PROOFS FAIL\nError: 42 defs rely on unsafe or foreign code:\n- durability.Durability.create\n- durability.Durability.sync\n- durability.Durability.replace\n- durability.Durability.sync_directory\n- durability.Durability.remove\n- atomic_file.cleanup\n- atomic_file.renamed\n- atomic_file.synced\n- atomic_file.written\n- atomic_file.created\n- atomic_file.publish_valid\n- atomic_file.publish_with\n- atomic_file.publish\n- world_lock.Native.acquire\n- world_lock.Native.release\n- world_lock.acquire\n- world_lock.release\n- persistence.save_publish\n- persistence.save_envelope\n- persistence.save_world_bytes\n- persistence.save_world_result\n- persistence.save\n- persistence.local_valid\n- persistence.local\n- persistence.chosen\n- persistence.parsed\n- persistence.dispatch_inner\n- persistence.dispatch\n- persistence.load_with\n- persistence.load\n- save_encoded\n- save_result\n- save\n- custom_valid\n- custom\n- chosen\n- parsed\n- dispatch_inner\n- dispatch\n- load_setup\n- load_with\n- load"
+    }
+  ],
+  "wrapper_has_unsafe_annotation": false,
+  "wrapper_has_foreign_import": false,
+  "native_evidence": "evidence/extended-persistence-integration.json",
+  "isolation_generator": "import pathlib,re\nr=pathlib.Path('.')\ne=(r/'src/extended_persistence.bend').read_text()\nf=(r/'tests/extended_persistence.bend').read_text()\np=(r/'src/persistence.bend').read_text()\ndef blocks(s):\n starts=list(re.finditer(r'^(?:def|law|type) ([A-Za-z_][A-Za-z0-9_.]*)',s,re.M))\n return [(m.group(1),s[m.start():starts[i+1].start() if i+1<len(starts) else len(s)]) for i,m in enumerate(starts)]\nselected={'Limits','core_limits','extra_limit','file_limit','outer_limits','core_byte_limit','text_name_result','text_name','bytearray_limit','guarded_array','guarded_step','checked_extension_header_limit','checked_payload','checked_encoder_budget'}\nshim=next(body for name,body in blocks(p) if name=='nbt_byte_limit')\nshim=shim.replace('def nbt_byte_limit(', 'def P.nbt_byte_limit(',1)\nparts=[body for name,body in blocks(e) if name in selected]\nfixture=f[f.index('type Extra is Type:'):f.index('# Closed hooks')]\nsource='import Base\\nimport ../src/world_codec.bend as W\\nimport ../src/nbt.bend as N\\n\\n'+shim+'\\n'+''.join(parts)+'\\n'+fixture\n(r/'build/extended-persistence-pure.bend').write_text(source)\n"
+}

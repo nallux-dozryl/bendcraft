@@ -1,0 +1,1453 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "kind": "actual_native_extension_bundle_mcp_tcp_integration",
+  "recorded_at_utc": "2026-10-03T18:47:13.210490+00:00",
+  "command": "python3 tools/test_extended_persistence.py --skip-build",
+  "confidence": "high for the recorded fixture-extension save, migration, owner recovery and startup observations",
+  "checks": [
+    "actual native TCP/MCP dynamic catalog, observer Extra query, developer-only mutation/save, strict argument types/ranges/fieldsets and no-at enforcement",
+    "a deliberately blocked Extra encoder reports SaveEncodingFailed without publishing, then both Core and affine Extra owners support exact mutation and durable save after clear",
+    "real exclusive-temp create failure leaves prior complete bundle and unowned temp untouched, retains both owners, and permits the next durable save",
+    "actual SIGKILL/restart atomically restores paused Core and exact Extra cells/generation; original queued Core edits execute after restart while Extra generation remains unchanged; lease reacquires without unlink",
+    "actual schema1 cells-only migration yields generation zero and canonical schema2 save; all compound orders canonicalize; generation U32MAX rejects mutation without changing Core or Extra; valid Core bytes above the Extra byte budget remain accepted",
+    "actual malformed bundle/extension/Extra/Core, wrong namespace/schema, extension byte limit, duplicate/missing/unknown fields, truncation/trailing data and core-only input all refuse before any listener",
+    "explicit closed core-only migration initializes exactly eight zero cells/generation zero and saves a canonical bundle; seven compiled reserved/duplicate/schema/namespace/fresh/budget failures refuse before any listener"
+  ],
+  "save_observations": [
+    {
+      "scenario": "fresh-core-plus-eight-zero-cells",
+      "bytes": 563,
+      "sha256": "369cb82f1de2f5f40bf22585abb4c85efa2df578397360c8856e8b1f138df713",
+      "core_sha256": "e2fd5426433a4475c7632dd23539bd8b2855a25cb015acdecab0b4547585a078",
+      "extra_sha256": "a22beb4b7f2e0157d951a20aecc6153acfc62868fc420eea44c50b0c9f6f6413",
+      "generation": 0,
+      "cells": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "peer_highwater": 2,
+      "clock": {
+        "tick": 0,
+        "day_time": 0,
+        "paused": true,
+        "daylight": true,
+        "revision": 0,
+        "pending": 0
+      },
+      "response": {
+        "status": "durable",
+        "published": true,
+        "durable": true,
+        "bytes": 563,
+        "peer_highwater": 2
+      }
+    },
+    {
+      "scenario": "queued-core-and-raw-u32-extra",
+      "bytes": 17396,
+      "sha256": "9bad47bbde6cca151e0c15daed3a7b5d41f9658cf18a8489c2cba67e539822a1",
+      "core_sha256": "f2c6a085f6845e03b8ea70d8eaff6bd2cb4a734eea627fac4ba387afe2a464d6",
+      "extra_sha256": "38ed47173fb116a674ea8551ec17b730769f1cd09003dfcafc9e2be19ac411d0",
+      "generation": 3,
+      "cells": [
+        4294967295,
+        0,
+        0,
+        2147483648,
+        0,
+        0,
+        0,
+        7
+      ],
+      "peer_highwater": 3,
+      "clock": {
+        "tick": 2,
+        "day_time": 2,
+        "paused": true,
+        "daylight": true,
+        "revision": 2,
+        "pending": 3
+      },
+      "response": {
+        "status": "durable",
+        "published": true,
+        "durable": true,
+        "bytes": 17396,
+        "peer_highwater": 3
+      }
+    },
+    {
+      "scenario": "both-owners-reused-after-encode-failure",
+      "bytes": 17455,
+      "sha256": "d78515c6c5c48aed334fa5c8316d55c9c22b6a3da3011a5bedb7d783f5a3c536",
+      "core_sha256": "fea49b1fdcd27d3c97da295587795450f172b0fb0e62e68c2202f14ac8cd710f",
+      "extra_sha256": "b0a370529e5649b7bcc7de6cb79b486bc4a7e3311b6dc20c5e7c75ff2d4da00a",
+      "generation": 4,
+      "cells": [
+        4294967295,
+        0,
+        42,
+        2147483648,
+        0,
+        0,
+        0,
+        7
+      ],
+      "peer_highwater": 3,
+      "clock": {
+        "tick": 3,
+        "day_time": 3,
+        "paused": true,
+        "daylight": true,
+        "revision": 3,
+        "pending": 3
+      },
+      "response": {
+        "status": "durable",
+        "published": true,
+        "durable": true,
+        "bytes": 17455,
+        "peer_highwater": 3
+      }
+    },
+    {
+      "scenario": "both-owners-reused-after-os-failure",
+      "bytes": 17455,
+      "sha256": "d78515c6c5c48aed334fa5c8316d55c9c22b6a3da3011a5bedb7d783f5a3c536",
+      "core_sha256": "fea49b1fdcd27d3c97da295587795450f172b0fb0e62e68c2202f14ac8cd710f",
+      "extra_sha256": "b0a370529e5649b7bcc7de6cb79b486bc4a7e3311b6dc20c5e7c75ff2d4da00a",
+      "generation": 4,
+      "cells": [
+        4294967295,
+        0,
+        42,
+        2147483648,
+        0,
+        0,
+        0,
+        7
+      ],
+      "peer_highwater": 3,
+      "clock": {
+        "tick": 3,
+        "day_time": 3,
+        "paused": true,
+        "daylight": true,
+        "revision": 3,
+        "pending": 3
+      },
+      "response": {
+        "status": "durable",
+        "published": true,
+        "durable": true,
+        "bytes": 17455,
+        "peer_highwater": 3
+      }
+    },
+    {
+      "scenario": "restarted-core-queue-completed-extra-generation-stable",
+      "bytes": 17367,
+      "sha256": "910aecf690b292f305d6b3864a881a2938c753eef980e2ea81a5ec1dc1c21dd5",
+      "core_sha256": "a4c96903c8894bff5e2d7231af251da9609863cccd110941c07a94ed4879d2a1",
+      "extra_sha256": "b0a370529e5649b7bcc7de6cb79b486bc4a7e3311b6dc20c5e7c75ff2d4da00a",
+      "generation": 4,
+      "cells": [
+        4294967295,
+        0,
+        42,
+        2147483648,
+        0,
+        0,
+        0,
+        7
+      ],
+      "peer_highwater": 5,
+      "clock": {
+        "tick": 5,
+        "day_time": 999,
+        "paused": true,
+        "daylight": false,
+        "revision": 6,
+        "pending": 0
+      },
+      "response": {
+        "status": "durable",
+        "published": true,
+        "durable": true,
+        "bytes": 17367,
+        "peer_highwater": 5
+      }
+    },
+    {
+      "scenario": "schema1-migration-canonical-schema2",
+      "bytes": 563,
+      "sha256": "39920163ab8ba47cc386010bc9705154b47a7ebd5e0bb28d19399555c70d85c1",
+      "core_sha256": "71b5ca5f87ebf5abc198c262534ee393c94360ea38d52fd2d1acc3e153f40dec",
+      "extra_sha256": "5512b5a78b35d78f7e9d05568200b90335f917559a9047be98bac144ddc37070",
+      "generation": 0,
+      "cells": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        2147483648,
+        4294967295,
+        7
+      ],
+      "peer_highwater": 82,
+      "clock": {
+        "tick": 0,
+        "day_time": 0,
+        "paused": true,
+        "daylight": true,
+        "revision": 0,
+        "pending": 0
+      },
+      "response": {
+        "status": "durable",
+        "published": true,
+        "durable": true,
+        "bytes": 563,
+        "peer_highwater": 82
+      }
+    },
+    {
+      "scenario": "schema2-generation-max-canonical-schema2",
+      "bytes": 563,
+      "sha256": "5407136cb0cd6bf96e2b77bfbb0213602e524fe5d74961ad05cc488d4a02d283",
+      "core_sha256": "71b5ca5f87ebf5abc198c262534ee393c94360ea38d52fd2d1acc3e153f40dec",
+      "extra_sha256": "3f0baec6a4f51395152a6243921b22a12a7cbbbf135fa530753cbba24b9988c8",
+      "generation": 4294967295,
+      "cells": [
+        4294967295,
+        4294967295,
+        4294967295,
+        4294967295,
+        4294967295,
+        4294967295,
+        4294967295,
+        4294967295
+      ],
+      "peer_highwater": 92,
+      "clock": {
+        "tick": 0,
+        "day_time": 0,
+        "paused": true,
+        "daylight": true,
+        "revision": 0,
+        "pending": 0
+      },
+      "response": {
+        "status": "durable",
+        "published": true,
+        "durable": true,
+        "bytes": 563,
+        "peer_highwater": 92
+      }
+    },
+    {
+      "scenario": "all-field-orders-canonical-schema2",
+      "bytes": 563,
+      "sha256": "af31f8717675700a87102690e8cd35eacfb15c3bb5a39dba2e60909a71bbb161",
+      "core_sha256": "71b5ca5f87ebf5abc198c262534ee393c94360ea38d52fd2d1acc3e153f40dec",
+      "extra_sha256": "164c32b1a9cb4b858697d162d9344ddbf486c8b9b7522ef5e663bafbb17d712b",
+      "generation": 123,
+      "cells": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "peer_highwater": 102,
+      "clock": {
+        "tick": 0,
+        "day_time": 0,
+        "paused": true,
+        "daylight": true,
+        "revision": 0,
+        "pending": 0
+      },
+      "response": {
+        "status": "durable",
+        "published": true,
+        "durable": true,
+        "bytes": 563,
+        "peer_highwater": 102
+      }
+    },
+    {
+      "scenario": "core-larger-than-extension-budget-canonical-schema2",
+      "bytes": 82713,
+      "sha256": "c57f5ba696c9ca0b017ebb92d70b4abf4ca05f269460c2743172989e3fc12acf",
+      "core_sha256": "2a344902a007c92b3a0f3dba00f480f09267fba338eae98fef3a988bf984b0ad",
+      "extra_sha256": "0e7c913f56bc044281202bb5773595a38d2808d0531a6ee5b53f3300b0386ca6",
+      "generation": 456,
+      "cells": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "peer_highwater": 112,
+      "clock": {
+        "tick": 0,
+        "day_time": 0,
+        "paused": true,
+        "daylight": true,
+        "revision": 0,
+        "pending": 0
+      },
+      "response": {
+        "status": "durable",
+        "published": true,
+        "durable": true,
+        "bytes": 82713,
+        "peer_highwater": 112
+      }
+    },
+    {
+      "scenario": "explicit-core-only-init-canonical-bundle",
+      "bytes": 563,
+      "sha256": "dfcaf1f91686ca2db4a6e43cd48bc3b2fdbdfbdb620856e8546327ee40d1eeb0",
+      "core_sha256": "71b5ca5f87ebf5abc198c262534ee393c94360ea38d52fd2d1acc3e153f40dec",
+      "extra_sha256": "a22beb4b7f2e0157d951a20aecc6153acfc62868fc420eea44c50b0c9f6f6413",
+      "generation": 0,
+      "cells": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "peer_highwater": 122,
+      "clock": {
+        "tick": 0,
+        "day_time": 0,
+        "paused": true,
+        "daylight": true,
+        "revision": 0,
+        "pending": 0
+      },
+      "response": {
+        "status": "durable",
+        "published": true,
+        "durable": true,
+        "bytes": 563,
+        "peer_highwater": 122
+      }
+    }
+  ],
+  "startup_rejections": [
+    {
+      "case": "concurrent-extension-bundle-writer",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003482,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: lease acquisition failed: 35: Resource temporarily unavailable",
+      "bytes": 17396,
+      "input_sha256": "9bad47bbde6cca151e0c15daed3a7b5d41f9658cf18a8489c2cba67e539822a1"
+    },
+    {
+      "case": "bundle-root-name",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.004065,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: wrong bundle root name",
+      "bytes": 562,
+      "input_sha256": "98dcd77485c23d16a1583a34136e454fee257e064fb6bb84ad9f749c585a225c"
+    },
+    {
+      "case": "bundle-format",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003713,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: unsupported bundle format",
+      "bytes": 563,
+      "input_sha256": "f056930c33eb4c3238cebc81189fd109b0b00ee5e41795223af5748748a9e576"
+    },
+    {
+      "case": "bundle-minecraft",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003827,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: bundle Minecraft version mismatch",
+      "bytes": 563,
+      "input_sha256": "6ad6121c9047cb023d7481596f8df719d22b27e4a681917fb7e432e216d62483"
+    },
+    {
+      "case": "bundle-registry",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003844,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: bundle registry identity mismatch",
+      "bytes": 563,
+      "input_sha256": "6043c659b50b466d4290e60a4e0b00d25d6b3ff14a0b7b8dbaf552432de11efe"
+    },
+    {
+      "case": "bundle-exhausted-peer",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.004021,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: persisted peer identity range exhausted",
+      "bytes": 563,
+      "input_sha256": "151fd3412830cf6e8c6b743d82b22ba8cb6e52600a89c0229ee4b94d2a716ab4"
+    },
+    {
+      "case": "bundle-missing-format",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003295,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: missing world schema field",
+      "bytes": 550,
+      "input_sha256": "c6f58ca798ae40298eb6bb58a5864f2294f9bc26fa397eaaaabf07bc2583642f"
+    },
+    {
+      "case": "bundle-duplicate-format",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003426,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: duplicate world schema field: format",
+      "bytes": 576,
+      "input_sha256": "69693d58412ec98b265b76c2f5ca16bb221fa99afa3212762510eb36dda72ffa"
+    },
+    {
+      "case": "bundle-wrong-type-format",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003288,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: expected Int tag",
+      "bytes": 560,
+      "input_sha256": "522df117a03fbdeda95c353848b7e14495a3fcad18eff3495bdb770e729eb317"
+    },
+    {
+      "case": "bundle-missing-minecraft",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.00337,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: missing world schema field",
+      "bytes": 545,
+      "input_sha256": "ae5af0e41ab02f9130531f9fcc0f1624aaf618efe1139c2a3c96a482bcbe18d5"
+    },
+    {
+      "case": "bundle-duplicate-minecraft",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003422,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: duplicate world schema field: minecraft",
+      "bytes": 581,
+      "input_sha256": "05f988c502cf90273c51c996bdb665b2ee1eb1ce8e214ddc0a4c285e9365dacf"
+    },
+    {
+      "case": "bundle-wrong-type-minecraft",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003381,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: expected String tag",
+      "bytes": 558,
+      "input_sha256": "7f467459f5229379b1151386e95a3a2995a471d20bb0bd2e355adb8bb161a5ff"
+    },
+    {
+      "case": "bundle-missing-registry",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003213,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: missing world schema field",
+      "bytes": 486,
+      "input_sha256": "8bfb15fefcd453addf6773b65e13e066e973fdb799a70560eb1c6dd90ede8a6d"
+    },
+    {
+      "case": "bundle-duplicate-registry",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003399,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: duplicate world schema field: registry",
+      "bytes": 640,
+      "input_sha256": "0e7ef43ebb233d010581508f9faf5890a35465d56d2a8612b752855c04801fe2"
+    },
+    {
+      "case": "bundle-wrong-type-registry",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003418,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: expected String tag",
+      "bytes": 498,
+      "input_sha256": "7902a638d5db392753cded714a2cd6fe2c5ccba4df3995d05ebe8f607fa9b741"
+    },
+    {
+      "case": "bundle-missing-peer_highwater",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003472,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: missing world schema field",
+      "bytes": 542,
+      "input_sha256": "f5307270e74d9331255c152773424cfa4d5860071b50d015103373ff4eb369cc"
+    },
+    {
+      "case": "bundle-duplicate-peer_highwater",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003446,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: duplicate world schema field: peer_highwater",
+      "bytes": 584,
+      "input_sha256": "4c2118b4c5c2a11006fee41fa76f05730faa70f7216a5ae8f1a95a2109cacfc5"
+    },
+    {
+      "case": "bundle-wrong-type-peer_highwater",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003232,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: expected Int tag",
+      "bytes": 560,
+      "input_sha256": "bb190599e9555813929dcf7609ab2b03585da1cdc7a9f56388e8c9b5daa9c173"
+    },
+    {
+      "case": "bundle-missing-core",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003057,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: missing world schema field",
+      "bytes": 305,
+      "input_sha256": "0eddcc9f175d831cf33db6db9bd80ee4618712228875c8b2cfac8e5334cac13d"
+    },
+    {
+      "case": "bundle-duplicate-core",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003552,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: duplicate world schema field: core",
+      "bytes": 821,
+      "input_sha256": "678bad21376f62a49acc37d4b18920d5db193003bbf75742bea0c2561fc85421"
+    },
+    {
+      "case": "bundle-wrong-type-core",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003196,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: bundle payload requires ByteArray",
+      "bytes": 313,
+      "input_sha256": "59c25169f43f5ad3ee0aab2cc56b9eda71d495661a8d30a9a66a7150ebb8c98c"
+    },
+    {
+      "case": "bundle-missing-extension",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003195,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: missing world schema field",
+      "bytes": 404,
+      "input_sha256": "4b571a9531c36cd4f0636990a547310c6557088574ab5b7aeb24dd813d7b275a"
+    },
+    {
+      "case": "bundle-duplicate-extension",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003431,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: duplicate world schema field: extension",
+      "bytes": 722,
+      "input_sha256": "cdd0227c37e037e2abeaad8f97c914754deaff644dcf4d9b822ee9db0ed38c23"
+    },
+    {
+      "case": "bundle-wrong-type-extension",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003272,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: expected Compound tag",
+      "bytes": 417,
+      "input_sha256": "5c3c5801422b86f832207f2beb14ae9a1a1322a147b65c94bb0d06ba776d1ea1"
+    },
+    {
+      "case": "bundle-unknown-member",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003317,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: unknown world schema field: unknown",
+      "bytes": 574,
+      "input_sha256": "9a378107dc8f9e87a444621221f2ff83d78a99e0004e4956b5b998a34611e4c8"
+    },
+    {
+      "case": "extension-missing-namespace",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.00325,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: missing world schema field",
+      "bytes": 529,
+      "input_sha256": "15ee5674af67c72c655bc81948a49205984e4869c24cfefb02206d883eda391f"
+    },
+    {
+      "case": "extension-duplicate-namespace",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003409,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: duplicate world schema field: namespace",
+      "bytes": 597,
+      "input_sha256": "c3105be8742b97f6a6b5fd29964b9388b925f70b4d2d5103fce1f1c0a5b09a4f"
+    },
+    {
+      "case": "extension-wrong-type-namespace",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003315,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: expected String tag",
+      "bytes": 542,
+      "input_sha256": "1724b800ba633df3fb538a9d4ae1937c3efba5243ab0ce9479d51cee91ff59af"
+    },
+    {
+      "case": "extension-missing-schema",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003426,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: missing world schema field",
+      "bytes": 550,
+      "input_sha256": "00047c782d44b207f0e102c4d162f9d9507cb99923e4280ec65d63f31afb1d42"
+    },
+    {
+      "case": "extension-duplicate-schema",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003936,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: duplicate world schema field: schema",
+      "bytes": 576,
+      "input_sha256": "7cd2bf85f1dcd14a2c5b29d6e5ca1617d77d41fccb4eb0f4ac746f8b347a12ba"
+    },
+    {
+      "case": "extension-wrong-type-schema",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.00384,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: expected Int tag",
+      "bytes": 560,
+      "input_sha256": "aad8b3a245299d9a5f7e0a8dd33069b065f25c88f2b9edc96d71fdb381f34e6d"
+    },
+    {
+      "case": "extension-missing-payload",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003564,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: missing world schema field",
+      "bytes": 464,
+      "input_sha256": "df2001ce429a4a9c579859ad65e4b0ae02530d544bb37dcb09136bfa96bea5e2"
+    },
+    {
+      "case": "extension-duplicate-payload",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003561,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: duplicate world schema field: payload",
+      "bytes": 662,
+      "input_sha256": "984a72a40232add7b16e1cde0753cb21057b0dbd65e672182f14d77affae479c"
+    },
+    {
+      "case": "extension-wrong-type-payload",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003469,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: bundle payload requires ByteArray",
+      "bytes": 475,
+      "input_sha256": "86c8df0825529e5e11626027e3ebead492808d544d69d8cbbbc1aa43ed3ad2c2"
+    },
+    {
+      "case": "extension-unknown-member",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003381,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: unknown world schema field: unknown",
+      "bytes": 574,
+      "input_sha256": "050f38028f6504de228b1b9df40b2a8045bcab8ca8b4a13dee3c7621d309b111"
+    },
+    {
+      "case": "extension-namespace-other:extension",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003587,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: bundle extension namespace mismatch",
+      "bytes": 558,
+      "input_sha256": "75af838e25d89263bc2b38e3ed7f132adb8d0d25ba9312e5ebe260612e1e9543"
+    },
+    {
+      "case": "extension-namespace-empty",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003459,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: bundle extension namespace mismatch",
+      "bytes": 543,
+      "input_sha256": "ca0be8c9613aa63a3b3d1ecca2550b5316b3146dffb17561e4bfcaad53d7f471"
+    },
+    {
+      "case": "extension-namespace-Bendex:fixture-array",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003421,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: bundle extension namespace mismatch",
+      "bytes": 563,
+      "input_sha256": "f82f9d36c9389132ee134fe820ceee3b12dd46f2b49013bdd223485686eb10a8"
+    },
+    {
+      "case": "extension-schema-0",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003422,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: extension schema must be nonzero",
+      "bytes": 563,
+      "input_sha256": "691c6a27b120a7b3798eb0f6fd519e97ff24b255389d1656add8d16678d0ea1d"
+    },
+    {
+      "case": "extension-schema-3",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003664,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: unsupported fixture schema version",
+      "bytes": 563,
+      "input_sha256": "f8b3d5884d5e9413551b9227dd349a781626f2192e473b8e18cf869ff36d7133"
+    },
+    {
+      "case": "extension-schema-4294967295",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003732,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: unsupported fixture schema version",
+      "bytes": 563,
+      "input_sha256": "24c8bfbd6c0db3c233e8be9975cb2a3e98fc2b7342249dda6acd9f6b78ac41dd"
+    },
+    {
+      "case": "payload-root-name",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003787,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: wrong fixture extension root name",
+      "bytes": 556,
+      "input_sha256": "44c51120486fe523f58ebbfb15735e8d007ef14e91f486de7e01c2096f40b191"
+    },
+    {
+      "case": "payload-root-type",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003816,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: expected Compound tag",
+      "bytes": 505,
+      "input_sha256": "8209c60fe89d820d663a146a89ba2a88897b5910dc8f6722ff764882a2b010e9"
+    },
+    {
+      "case": "payload-cell-type",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003837,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: fixture cells require IntArray of exactly eight U32 values",
+      "bytes": 539,
+      "input_sha256": "5ee46c85a0d32b237c004a98fc04cb2cfb1e2b6ca37b0f401e7cff742c4496e7"
+    },
+    {
+      "case": "payload-cell-count-0",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.00385,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: fixture cells require IntArray of exactly eight U32 values",
+      "bytes": 531,
+      "input_sha256": "0f762dbf5f9b252beba54cc0db051b83fe21cfc02a19370f007b1a9f59276d5f"
+    },
+    {
+      "case": "payload-cell-count-7",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.004274,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: fixture cells require IntArray of exactly eight U32 values",
+      "bytes": 559,
+      "input_sha256": "541062525758a4e3961df92b7ab980cdaddf912a8fbd70923d2b180ef1c9e54c"
+    },
+    {
+      "case": "payload-cell-count-9",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.004006,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: negative or excessive NBT array length",
+      "bytes": 567,
+      "input_sha256": "9d98e9a7dc14fa449e7329cacc32e447460f02a6b020cc098a90134d8512619b"
+    },
+    {
+      "case": "payload-generation-type",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.0039,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: expected Int tag",
+      "bytes": 562,
+      "input_sha256": "78a6b0efe208d933eed5312dd109db28266c6861f9054e012f433461eeb7deb9"
+    },
+    {
+      "case": "payload-generation-missing",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003741,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: missing world schema field",
+      "bytes": 546,
+      "input_sha256": "7f73b4047542163e43a8f103a1398658e984a43ac88fcee943e48c8cb19aa337"
+    },
+    {
+      "case": "payload-generation-duplicate",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003932,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: duplicate world schema field: generation",
+      "bytes": 580,
+      "input_sha256": "9bb61b570951fc8e3bb027516541d2f0b44123a03a5e798ab43cf1c7a728aad6"
+    },
+    {
+      "case": "payload-unknown-member",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003871,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: unknown world schema field: unknown",
+      "bytes": 574,
+      "input_sha256": "8364f9ab9993607a03e6dfc35f84a583880a6a250e3bb12b3d650131bcea2e3b"
+    },
+    {
+      "case": "payload-cell-duplicate",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003943,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: duplicate world schema field: cells",
+      "bytes": 607,
+      "input_sha256": "69524072364e752d6d13044c71e5d8088c0803536398fce1c5a716770530de63"
+    },
+    {
+      "case": "payload-trailing",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.00379,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: trailing NBT data at byte 85",
+      "bytes": 564,
+      "input_sha256": "ad68bbccf9d42b4c33dd0a9c16b4c2bdb17b699ad05d6af01b575555d16b425f"
+    },
+    {
+      "case": "payload-truncated",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.0038,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: truncated NBT at byte 84",
+      "bytes": 562,
+      "input_sha256": "d2755fd7a4961de26aa2a66f8877b4ba0d644fdacbe8ca8d35fcb52ee6b268a2"
+    },
+    {
+      "case": "payload-empty",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003645,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: truncated NBT at byte 0",
+      "bytes": 478,
+      "input_sha256": "76af53c628d669434f9ed13a58b6ff24ff09ed8e36f44d6b63671f66fdf1f1f5"
+    },
+    {
+      "case": "payload-byte-limit",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.053616,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: negative or excessive NBT array length",
+      "bytes": 66015,
+      "input_sha256": "2bfa77ac00c2293a283286ad15970ee46880beec460b5dda706566b2312e5852"
+    },
+    {
+      "case": "schema1-with-generation",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.004291,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: unknown world schema field: generation",
+      "bytes": 563,
+      "input_sha256": "cd5fbe8c3dd4778d935d338573aec0c5a4bf74a2409d0db56842e691e5585f32"
+    },
+    {
+      "case": "schema1-cell-count-7",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.004014,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: fixture cells require IntArray of exactly eight U32 values",
+      "bytes": 542,
+      "input_sha256": "a3ddfdb2d9870d61d698dc5043234372bb403d5267ce5b163f3c2f17da568107"
+    },
+    {
+      "case": "schema1-cell-count-9",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003938,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: negative or excessive NBT array length",
+      "bytes": 550,
+      "input_sha256": "91eb8e6547c129e3ad06435913aa3c230931773fe11df09e7423fe5348cd37aa"
+    },
+    {
+      "case": "core-trailing",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003722,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: trailing NBT data at byte 247",
+      "bytes": 564,
+      "input_sha256": "6ac0faf21b1ffd8529c35793a6ed7bc4b05c5777db6e1d9a0f2e9d3201d98cfb"
+    },
+    {
+      "case": "core-empty",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003261,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: truncated NBT at byte 0",
+      "bytes": 316,
+      "input_sha256": "0c9cafd1814fd3f9056b6e1eac3352305590ba74dad141cc49c2bcd1a42ac506"
+    },
+    {
+      "case": "core-count-mismatch",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003682,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: world state count mismatch",
+      "bytes": 563,
+      "input_sha256": "0d36e9171a2f5f199829af56f127d52c50676beb7d2f2863b60e172595c0bb29"
+    },
+    {
+      "case": "core-only-save-default-deny",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003754,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: core-only snapshot requires an explicitly enabled extension migration",
+      "bytes": 403,
+      "input_sha256": "c572e1335998b51eacb3e0e4cb4a19c3a841759cfeb7b1c98aca4d8526e4c3a6"
+    },
+    {
+      "case": "bundle-truncated-0",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002769,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: truncated NBT at byte 0",
+      "bytes": 0,
+      "input_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "case": "bundle-truncated-1",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002752,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: truncated NBT at byte 1",
+      "bytes": 1,
+      "input_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "case": "bundle-truncated-2",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002714,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: truncated NBT at byte 2",
+      "bytes": 2,
+      "input_sha256": "102b51b9765a56a3e899f7cf0ee38e5251f9c503b357b330a49183eb7b155604"
+    },
+    {
+      "case": "bundle-truncated-3",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002757,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: truncated modified UTF-8 at byte 3",
+      "bytes": 3,
+      "input_sha256": "b42ed9c5e5639dad80c688155170b05878a19e915bcb8d38ffadd1bd26993255"
+    },
+    {
+      "case": "bundle-truncated-8",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002728,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: truncated modified UTF-8 at byte 8",
+      "bytes": 8,
+      "input_sha256": "6d7a6367c236d1e457dc40880cf2661424637cc82e89efc4b11ce3fd72ddf561"
+    },
+    {
+      "case": "bundle-truncated-281",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003276,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: truncated NBT array at byte 281",
+      "bytes": 281,
+      "input_sha256": "837a73c6a907f3673ff9dfd41cf7ebcec80f35c407da8bd43f990576aebb030e"
+    },
+    {
+      "case": "bundle-truncated-547",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003429,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: truncated NBT array at byte 547",
+      "bytes": 547,
+      "input_sha256": "0b7df0da6bc00af03bcd361d4d32820b0e249449ad547a7ec24d6987a92ad57d"
+    },
+    {
+      "case": "bundle-truncated-548",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003287,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: truncated NBT array at byte 548",
+      "bytes": 548,
+      "input_sha256": "4ad2ed5953a666b9baa115aa4f79892ee531acad55277c74ad2b55bfe627beb9"
+    },
+    {
+      "case": "bundle-truncated-549",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003271,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: truncated NBT array at byte 549",
+      "bytes": 549,
+      "input_sha256": "0ac9c2778bb1868f2ca683d6588eca74f7bc4628825a806de08e11e2aaf45679"
+    },
+    {
+      "case": "bundle-truncated-550",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003414,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: truncated NBT array at byte 550",
+      "bytes": 550,
+      "input_sha256": "6becf1e4ec741f036a996c27c32d6466520e19d0b0c3172843318740a410b5be"
+    },
+    {
+      "case": "bundle-truncated-551",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003473,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: truncated NBT array at byte 551",
+      "bytes": 551,
+      "input_sha256": "a9e2fbff0be639c19281b3284610008cfd2721871de1e1d5786c907b22f25a71"
+    },
+    {
+      "case": "bundle-truncated-552",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003394,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: truncated NBT array at byte 552",
+      "bytes": 552,
+      "input_sha256": "30a8a499c1e58a234ca3ada165445d65289ed299e342ed02d4e9ca213caa9fed"
+    },
+    {
+      "case": "bundle-truncated-553",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003305,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: truncated NBT array at byte 553",
+      "bytes": 553,
+      "input_sha256": "c8f202ebcebb78312281600da366d80ecce91467a87d2dad476d9f5f4d4d81c0"
+    },
+    {
+      "case": "bundle-truncated-554",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003387,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: truncated NBT array at byte 554",
+      "bytes": 554,
+      "input_sha256": "94c007b600f8e2d9a3d52fc71a1e0434c2c09d2fad6841c4b101953f635947af"
+    },
+    {
+      "case": "bundle-truncated-555",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003395,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: truncated NBT array at byte 555",
+      "bytes": 555,
+      "input_sha256": "2d13f4b567b946771bb9dc20bce76b1bfb7c70f929f8c2d82eb6f76b9e988e10"
+    },
+    {
+      "case": "bundle-truncated-556",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003466,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: truncated NBT array at byte 556",
+      "bytes": 556,
+      "input_sha256": "7186c54a2cc962b258158a11711265af3c7bd08be5cecebf7f2cae55d378b52b"
+    },
+    {
+      "case": "bundle-truncated-557",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003243,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: truncated NBT array at byte 557",
+      "bytes": 557,
+      "input_sha256": "a3d07598364e4eee93d295371d3f2f6d0c4fda77fd00b0a1d8e92894904a0860"
+    },
+    {
+      "case": "bundle-truncated-558",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003235,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: truncated NBT array at byte 558",
+      "bytes": 558,
+      "input_sha256": "03e25b959c117635ec5cda21c58d3f48945a2dfe8c22e212f79977015e7487a0"
+    },
+    {
+      "case": "bundle-truncated-559",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.00316,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: truncated NBT array at byte 559",
+      "bytes": 559,
+      "input_sha256": "e8c9de1d3281957cf16f5786e467c828b4278af7fdc7d79c2c1ef85f0821fbd8"
+    },
+    {
+      "case": "bundle-truncated-560",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003448,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: truncated NBT array at byte 560",
+      "bytes": 560,
+      "input_sha256": "a279608d8a9cf1170ad7f6d84ab677f630fdb632e8ab843bfc828d37f899e1d1"
+    },
+    {
+      "case": "bundle-truncated-561",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003581,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: truncated NBT at byte 561",
+      "bytes": 561,
+      "input_sha256": "5046bc605a3753b08c04ce5c7987774f64174c4f42951a6e5f63aa9bde8a3f5d"
+    },
+    {
+      "case": "bundle-truncated-562",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003702,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: truncated NBT at byte 562",
+      "bytes": 562,
+      "input_sha256": "628ec5213126e9e566470be182f3a2ce8379d85ee465e3cff8fcb7115f48219c"
+    },
+    {
+      "case": "bundle-trailing",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003443,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: trailing NBT data at byte 563",
+      "bytes": 564,
+      "input_sha256": "bd16c301e87e2469d61b85ea58b9e3fb6fc422483f989aa0ea33f96a0bb48f08"
+    },
+    {
+      "case": "missing-bundle-refuse",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003127,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: missing file requires MC_WORLD_MISSING=create"
+    },
+    {
+      "case": "invalid-missing-policy",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002649,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "MC_WORLD_MISSING must be create or refuse"
+    },
+    {
+      "case": "compiled-reserved",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.00323,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: invalid extension operation catalog: duplicate/reserved name or invalid schema"
+    },
+    {
+      "case": "compiled-duplicate",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002829,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: invalid extension operation catalog: duplicate/reserved name or invalid schema"
+    },
+    {
+      "case": "compiled-invalid-schema",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002891,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: invalid extension operation catalog: duplicate/reserved name or invalid schema"
+    },
+    {
+      "case": "compiled-bad-namespace",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.002982,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: invalid closed codec namespace, schema or extension budget"
+    },
+    {
+      "case": "compiled-bad-schema",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.00285,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: invalid closed codec namespace, schema or extension budget"
+    },
+    {
+      "case": "compiled-fresh-fail",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003054,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: fresh extension initialization failed: explicit fixture initialization rejection"
+    },
+    {
+      "case": "compiled-small-budget",
+      "exit_code": 1,
+      "listener_refused": true,
+      "elapsed_seconds": 0.003083,
+      "startup_deadline_seconds": 15,
+      "diagnostic": "bundle startup refused: fresh extension initialization failed: NBT input byte limit exceeded"
+    }
+  ],
+  "save_count": 10,
+  "startup_rejection_count": 95,
+  "corrupt_bundle_fixtures": 85,
+  "actual_server_sigkill_cases": 1,
+  "actual_save_os_failures": 1,
+  "actual_save_encode_failures": 1,
+  "generation_exhaustion_cases": 1,
+  "metrics": {
+    "first_generation_save_peer": 3,
+    "restarted_peers": [
+      4,
+      5
+    ],
+    "generation_after_restart": 4,
+    "lease_inode_preserved": true,
+    "migration_and_generation_fixtures": [
+      {
+        "case": "schema1-migration",
+        "input_schema": 1,
+        "input_generation": 0,
+        "restored_generation": 0,
+        "canonical_output_schema": 2,
+        "first_peer": 81,
+        "bytes": 546,
+        "input_sha256": "584ff996dde6c5094486121aedf0cedc482b1395dcb5612fcd9e1bd022c5c645"
+      },
+      {
+        "case": "schema2-generation-max",
+        "input_schema": 2,
+        "input_generation": 4294967295,
+        "restored_generation": 4294967295,
+        "canonical_output_schema": 2,
+        "first_peer": 91,
+        "bytes": 563,
+        "input_sha256": "48b0ab67630dc462430781ce5d4f9009eea6875231f4438144c720b39730805a"
+      },
+      {
+        "case": "all-field-orders",
+        "input_schema": 2,
+        "input_generation": 123,
+        "restored_generation": 123,
+        "canonical_output_schema": 2,
+        "first_peer": 101,
+        "bytes": 563,
+        "input_sha256": "2546a8324bc3c97536f72811acc2f4b7f398f7c9cf5ee03d9a6bc11c712f3100"
+      },
+      {
+        "case": "core-larger-than-extension-budget",
+        "input_schema": 2,
+        "input_generation": 456,
+        "restored_generation": 456,
+        "canonical_output_schema": 2,
+        "first_peer": 111,
+        "bytes": 82713,
+        "input_sha256": "387b607c3a68d273827033aabb7aeb95139b70d4ccea9def3a1653d089e41937"
+      }
+    ],
+    "explicit_core_init": {
+      "first_peer": 121,
+      "save_peer": 122,
+      "cells": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "generation": 0,
+      "output_format": "bendex:bundle"
+    },
+    "native_ready_servers": 7,
+    "native_mcp_processes": 15,
+    "stdio_requests": 108,
+    "stdio_responses": 108,
+    "notifications": 15
+  },
+  "registry": {
+    "official": {
+      "blocks": 1286,
+      "states": 35723,
+      "canonical_bytes": 167974,
+      "canonical_sha256": "4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc",
+      "source_sha256": "27769e75bf862d0540b2df2a6e99f6b7556a867bff6339fb08566240ee124cac"
+    },
+    "tiny": {
+      "blocks": 3,
+      "states": 5,
+      "canonical_bytes": 181,
+      "canonical_sha256": "b3cb0d37d98df49a0ba5d71e428a2beb75704d200372d3f9069372e3e1a71341",
+      "source_sha256": "f833ab14a6c8bfc66002c82992f5af22bc92bc556e56f73fbf5dc974e09e9d6e"
+    }
+  },
+  "fixture_corpus_sha256": "0d2ecdd693f5e4c4eb6cea2c21ce4677e4b57a40cc822bac62d2e5f20bf92759",
+  "source_sha256": {
+    "persistence_server.bend": "2634cb268fe8131ae951edf96fe1ffebf7635550694e604964b0435a14fc90a4",
+    "src/persistence.bend": "1561a863a74fdfc676b8ba4bbb5eddd206823f7363bf05c8a50ddffbbc30a4af",
+    "tests/persistence.bend": "2a0cda14a3c70222cac7846d8bf552649e98cdd6d38d1517ee775995e05fe738",
+    "src/world_codec.bend": "461e2bc342005831a3d16824303f79e1f4dac2dca0eaf0731d18052dbfe0bf86",
+    "src/nbt.bend": "b677546b5fc02aaa38f5c09e5b798c0d35aec32b1c4b37cbd7042b9a1a5275e4",
+    "src/core.bend": "c1ee5a5390cdac0452c9c6cd3b0584a68ef68b5b0dfec867491c27e67ecadd4e",
+    "src/section.bend": "02b5c15c57b173c7eb8b4c55a1433c10c192926e91af5e3e69050b4404044aa5",
+    "src/section_map.bend": "ded59d7938c02fd0876d65e37f9f90ea0cfebf3ca4bd107394342f8adbf33965",
+    "src/schedule.bend": "93aa79895fe340e27ae5fd562102d5980f0938003eb1bbde669a84010779b8c9",
+    "src/game.bend": "43e3eee5d15613bb06cc608fe43657aa14d8c0fbe899d4efa580fc8335d23882",
+    "src/registry.bend": "821c53d9cfa3044be3cae2af968f55563c0be2bebc9beae55a29d77d47b140a0",
+    "src/hash.bend": "d2473695632b19e68c8d636668e4617f04d70892fb2ab6559cb24d4b33c1b978",
+    "src/server.bend": "3c9e5f681b0957b3e8c36b4ddde94a6ad5705b8b5b45cc6b2a81572446d7c2cf",
+    "src/live.bend": "cb5a2f8237a53e48d3f6751d321a023e11694721f789373984d7d77620f32e87",
+    "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+    "src/atomic_file.bend": "ef82fcddc460705f0761473bcfd8fcd896b779f89e56c4551c9ced23b13f987a",
+    "src/durability.bend": "079b5342e76be090793dc2e44f8d337eda144d75653d23eea36a7131558aed05",
+    "src/native/durability.c": "30e2bb8f9bb0299569ea56eff00063b235a6e6e480d14ed821bcfd597de3e4c0",
+    "src/native/durability.js": "2c14207e9c9ccbad57629d67517105d7853da7bd68fc794f1078ad6ca59553d8",
+    "src/world_lock.bend": "5b527809b0a6686a8c3ba0459b9fa3ce2c3414acdbf4fa7453a57f7bd303568e",
+    "src/native/world_lock.c": "9846064f99e81f967eedba355da4da59c9ec59be24facd8f85e52943f56df00d",
+    "src/native/world_lock.js": "db65e2b618ca18f7e1f307ecc0142f1eccbc83c3cf8c484b15016c0c90ad42cd",
+    "mcp.bend": "5b67990ce163cdd4ab20d0ca9b46e6b0a3708f759f2dcaee17287342e1a5f81c",
+    "src/mcp.bend": "8291445d923714ec6985e8c6b2b8f756cf09cd7e4d488814b2c6cd6552238d95",
+    "src/framing.bend": "307f95049df03d92687b7bd0eafb2cd566e660926510bb88163f9bc825fccdb5",
+    "tools/test_persistence.py": "c43cd057d992de30d946de7b46f358100a23ba3d7a9c688aea75ae7f2e872359",
+    "tools/test_mcp.py": "71eed7d510b4533eb35793cfd24227b7121456b4d27373ae10c04cc790e0de45",
+    "tools/test_nbt.py": "d81adb1a04baa13777e54abaaf1e20cbe97bc5d15c5cf2df047c4f17be2c8cdf",
+    "tools/test_world_codec.py": "6c89a554e0d1a4301ca3bf85d75706780f5f7398f4c100fd1a582bc2653a559a",
+    "extended_persistence_server.bend": "51859d69f8e3dc4fe5dde8280594cf014571f63662783fa537a257877e11de2d",
+    "src/extended_persistence.bend": "32b3b094e21745d057a4ac797674fe4757bb4957659b35cbea7199b9c4ee1d2a",
+    "tests/extended_persistence.bend": "fedf93587a043f9aaeab56b01804da89c2e0c49d374a7a6546f688a251c6b89a",
+    "tools/test_extended_persistence.py": "f11adb5468ce7692a42627c63410b26bac4a8aedd8fcb4f721f9c72334f3015f"
+  },
+  "binary_sha256": {
+    "server": "071546f9199638bad5159cb4664cf1b5af74b14e9d14476175cc7484fac4543e",
+    "mcp": "4832eb9bd0cf419642cdb628f7479a541e3f690813c42e334d7f2f940f4d3f48",
+    "tests": "564604d7eb8e31bed59ef4de96ce7ea82363cad6251dc4e1eab2cdcecd779574"
+  },
+  "oracle_sha256": "f11adb5468ce7692a42627c63410b26bac4a8aedd8fcb4f721f9c72334f3015f",
+  "compiler_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+  "commands": [
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/extended-persistence-tests",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "exit_code": 0,
+      "stdout": "regressions\tpass",
+      "stderr": ""
+    }
+  ],
+  "elapsed_seconds": 2.706,
+  "limits": [
+    "Fixture extension with one affine eight-cell U32 Array and a U32 generation; no vanilla Minecraft save or arbitrary mod persistence claim.",
+    "Schema1 migration is exactly cells-only to generation zero; schema2 is current. Unsupported namespaces/schemas and default core-only input refuse startup. A separate explicit compiled core-init policy initializes eight zero cells and is verified independently.",
+    "SIGKILL follows acknowledged durable publication; no simulated power loss or injected directory-sync failure is claimed.",
+    "Actual startup/adoption, mutation, codecs and atomic publication execute in native Bend; Python supplies expected fixtures and process/protocol orchestration.",
+    "Effectful lifetimes/OS lease/durability adapters are outside the pure kernel proof boundary; this integration pass is not a universal proof."
+  ]
+}
