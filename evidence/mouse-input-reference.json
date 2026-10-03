@@ -1,0 +1,35 @@
+{
+  "status": "passed",
+  "scope": "Actual frozen Java methods and independent rational oracle",
+  "pin": "26.3",
+  "reference_sha256": "d288369c77bd0a85909f07d8bc06d4af834a303d4526b76ac49a8fd4fd90e3c0",
+  "reference_producer_sha256": "8ff8ad3fb473ae6d28de87e35f62e0a7f089f4c84702b6fd097b32c140fd334c",
+  "counts": {
+    "cases": 1408,
+    "exception_steps": 0,
+    "fixture_mutations_per_receiver": 841,
+    "logged_steps": 491,
+    "player_turn_calls_traced": 1958,
+    "production_events_per_receiver": 3810,
+    "steps_per_receiver": 4651,
+    "tutorial_calls_traced": 1958,
+    "unmodified_receiver_matches": 4651
+  },
+  "inputs_sha256": "21da5939af67bea166251d4887dfc7f52daa8c7ce611acdc5699bbb84a0b5f35",
+  "observations_sha256": "27b1e5dbc552d940a2c9e8a4bd68c6c36db31e1586c0db4b8536254ed828d64c",
+  "fresh_process_reproduction": {
+    "processes": 2,
+    "raw_observation_sha256": "86938531279054755667924098d5c052236a08b6db60e08fda0ed2c2ea436b43",
+    "result": "Both fresh executions matched frozen observations; completed by authorized probe subagent before native work",
+    "command": "python3 tools/reference_mouse_input_probe.py selftest"
+  },
+  "rational_actual_on_move": 1811,
+  "rational_actual_turn_scaling": 1950,
+  "outside_finite_move_and_turn_projections": 16,
+  "oracle_command": "python3 tools/test_mouse_input.py --oracle-only",
+  "boundary": "turnPlayer does not itself reset accumulatedDX/DY. handleAccumulatedMovement calls native Blaze3D.getTime, checks GUI/overlay/capture/focus/player state, invokes turnPlayer and resets accumulation in bytecode; not executed here. Explicit set_focus/set_grabbed/clear_accumulation events mutate fixture fields and do not represent OS capture/focus actions or observed wrapper execution.",
+  "native_and_kernel_evidence": [
+    "evidence/mouse-input-native.json",
+    "evidence/mouse-input-kernel.json"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/mouse_input.bend",
+        "--verdict"
+      ],
+      "exit_code": 0,
+      "stdout": "ALL PROOFS CHECK\n",
+      "stderr": "",
+      "seconds": 0.218609
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/mouse_input.bend",
+        "--verdict"
+      ],
+      "exit_code": 0,
+      "stdout": "ALL PROOFS CHECK\n",
+      "stderr": "",
+      "seconds": 3.580168
+    }
+  ],
+  "sources_sha256": {
+    "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "src/mouse_input.bend": "2157b1804cb7ad58f6b58fd167de978eb9605ddac9485241d102128d055158a9",
+    "tests/mouse_input.bend": "be6afeb02f9f51cdd197f937d6b999a8c49415c142cfc44cb15d9e038a3f7449"
+  },
+  "laws": [
+    "initial_first_move",
+    "invalid_window_preserves_state",
+    "first_move_discards_relative",
+    "clear_is_idempotent",
+    "default_scale_fixture",
+    "inactive_frame_has_no_turn",
+    "unsupported_relative_mode",
+    "rejected_finish_retains_owner",
+    "negative_zero_inversion"
+  ],
+  "scope": "Actual full-import independent type/termination plus stated fixture/owner laws; no universal MouseHandler/IEEE theorem"
+}
