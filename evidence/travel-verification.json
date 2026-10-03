@@ -1,0 +1,410 @@
+{
+  "actual_player_travel_cases": 1205,
+  "binary_sha256": "a819e9d91df7a04875e6b89ff54543b9b43340856472555afeb56611cde9b851",
+  "builds": [
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/travel.bend",
+        "-o",
+        "build/travel-tests.c"
+      ],
+      "exit_code": 0,
+      "seconds": 3.600583,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/travel.bend",
+        "-o",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/travel-tests"
+      ],
+      "exit_code": 0,
+      "seconds": 6.650133,
+      "stderr": "",
+      "stdout": ""
+    }
+  ],
+  "checks": [
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/travel.bend",
+        "--check-only"
+      ],
+      "exit_code": 0,
+      "seconds": 0.268815,
+      "stderr": "",
+      "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/travel.bend",
+        "--verdict"
+      ],
+      "exit_code": 0,
+      "seconds": 3.420338,
+      "stderr": "",
+      "stdout": "ALL PROOFS CHECK\n"
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/travel.bend",
+        "--check-only"
+      ],
+      "exit_code": 0,
+      "seconds": 1.515687,
+      "stderr": "",
+      "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/travel.bend",
+        "--verdict"
+      ],
+      "exit_code": 0,
+      "seconds": 17.657604,
+      "stderr": "",
+      "stdout": "ALL PROOFS CHECK\n"
+    }
+  ],
+  "confidence": "high for recorded neutral dry-air Player cases; full Player tick/server-world/fluid/hazard travel incomplete",
+  "emitted_c_bytes": 2092642,
+  "emitted_c_sha256": "a283974b66c56d99025f9bc1b7a51f355a88b292149fc2a9e24108fd556b209c",
+  "explicit_rejection_cases": 58,
+  "fixture_provenance": {
+    "cases_sha256": "cb4978c17840a8070598165d631324721737e2ac03704a3ede6d99161836b432",
+    "class_sha256": {
+      "net.minecraft.util.Mth": "38d9b35bc973da00a3d550173370c62c88ed62f2890b17d760e65173469e272d",
+      "net.minecraft.world.entity.Avatar": "b85674319614e72b1857f8e21d16121682648220452feaac41ed68d770d62f82",
+      "net.minecraft.world.entity.Entity": "7ac5f6a929abbf4fa00f0a87ad530669f7d96c8ee2bb86a5076ab1fab352fb3c",
+      "net.minecraft.world.entity.EntityFluidInteraction": "abbf1482a62341dcbd38875706b79c00efc198ef7515d09eb55fd663526320cc",
+      "net.minecraft.world.entity.LivingEntity": "6eaecd529ba26174652f3bb71e7c86262e54ac6f5e1e70944fb0e629b3b9948a",
+      "net.minecraft.world.entity.ai.attributes.AttributeInstance": "b87aa221762cea04cd071a5d2d8cae7d3fc1dcbe4de12f93f1cb820f71c34c58",
+      "net.minecraft.world.entity.ai.attributes.AttributeMap": "3dc6970ea74f81b0be5d567e1cb2caee36fbd4b8c189aaacb954aabd12a613f6",
+      "net.minecraft.world.entity.ai.attributes.Attributes": "be2df0501e26e0416d5248f64f3cda081ab12839e7091ae3321d15f6cb380678",
+      "net.minecraft.world.entity.ai.attributes.DefaultAttributes": "4db2f62bc3251695ea0ca5acf8ec43fac44762e18b9be267c4b33adb73c4a733",
+      "net.minecraft.world.entity.player.Abilities": "1c2cfb88861fc99120a69ef91483a9a833469b4ec61c20cca593d4b1e5e6c0bd",
+      "net.minecraft.world.entity.player.Player": "28ad0c7756a5cbdfde6c22772f585da9177d6f9eb418ea5ff2dd85657d81dfb2",
+      "net.minecraft.world.level.BlockCollisions": "c363348a6ede8b2f46426c4f1b9fd01d2b4b878c8b6682bf6b071a56c31948fc",
+      "net.minecraft.world.level.CollisionGetter": "417618ca200372b50ce7ce2ad1000f65373d65ad8d92546501f25c9433ad543b",
+      "net.minecraft.world.level.Level": "68abf43ce4638614ca5d8e7ae185d7e06295ac636c4d4fbc21ee7c3d5e05c4a7",
+      "net.minecraft.world.level.block.Block": "2275d8eb742074b354c96fe31a6cf1d78e31d410a32acb18a96d84a1c9851ff5",
+      "net.minecraft.world.level.chunk.ChunkAccess": "267d279e1665787cec813aff89f105406dd30c5c27dfc71c39868bd6bb566032",
+      "net.minecraft.world.level.chunk.LevelChunk": "2e2723f0bda14e4132af8a3cd0874762eb16da07dce5275229b972c078c3f63a",
+      "net.minecraft.world.level.chunk.LevelChunkSection": "6c1013fcc01e48f5368f89761eb3588a2296bc183d1b3627da524df5cfe12b63",
+      "net.minecraft.world.phys.Vec3": "6327bc64d44f34c75ec2e015d040ac31819af062688518544bdf333bcaff7597"
+    },
+    "pin": "26.3",
+    "probe_java_source_sha256": "fdcfd50105decf331c829f4e184dec3556ae877435e9a3e5103722ebd6518b5a",
+    "random_input_seed": 26310405,
+    "runtime_version": [
+      "openjdk version \"25.0.1\" 2025-10-21 LTS",
+      "OpenJDK Runtime Environment Microsoft-12574220 (build 25.0.1+8-LTS)",
+      "OpenJDK 64-Bit Server VM Microsoft-12574220 (build 25.0.1+8-LTS, mixed mode)"
+    ],
+    "server_bundle_sha256": "d052f14d7a173734fba553711e5b570162e2f2a313267ee31a21b975a679be64",
+    "server_class_jar_sha256": "a362163eec5d1612d520772bc16e5b39c09e3b234fdc045f56bf544284ee8ae6",
+    "source_method_count": 63
+  },
+  "fixture_sha256": "bdc475815d8cdd52dbf07035d5cdacfeee5c5343e13ed71b5940106b315452d0",
+  "kernel_pass": true,
+  "laws": [
+    "rejected_preparation_retains_tables",
+    "no_gravity_selects_positive_zero",
+    "airborne_friction_skips_sample",
+    "friction_discard_preserves_horizontal_velocity",
+    "failed_movement_skips_gravity_and_drag"
+  ],
+  "malformed_protocol": [
+    {
+      "exit_code": 2,
+      "stderr": "invalid travel protocol\n"
+    },
+    {
+      "exit_code": 2,
+      "stderr": "invalid travel header\n"
+    },
+    {
+      "exit_code": 2,
+      "stderr": "invalid travel fields\n"
+    }
+  ],
+  "native_batches": [
+    {
+      "cases": 100,
+      "offset": 0,
+      "operation": "travel",
+      "seconds": 0.469373
+    },
+    {
+      "cases": 100,
+      "offset": 0,
+      "operation": "prepare",
+      "seconds": 0.019051
+    },
+    {
+      "cases": 100,
+      "offset": 0,
+      "operation": "movement",
+      "seconds": 0.017954
+    },
+    {
+      "cases": 100,
+      "offset": 100,
+      "operation": "travel",
+      "seconds": 0.020346
+    },
+    {
+      "cases": 100,
+      "offset": 100,
+      "operation": "prepare",
+      "seconds": 0.01745
+    },
+    {
+      "cases": 100,
+      "offset": 100,
+      "operation": "movement",
+      "seconds": 0.022324
+    },
+    {
+      "cases": 100,
+      "offset": 200,
+      "operation": "travel",
+      "seconds": 0.023104
+    },
+    {
+      "cases": 100,
+      "offset": 200,
+      "operation": "prepare",
+      "seconds": 0.018139
+    },
+    {
+      "cases": 100,
+      "offset": 200,
+      "operation": "movement",
+      "seconds": 0.019232
+    },
+    {
+      "cases": 100,
+      "offset": 300,
+      "operation": "travel",
+      "seconds": 0.017628
+    },
+    {
+      "cases": 100,
+      "offset": 300,
+      "operation": "prepare",
+      "seconds": 0.019112
+    },
+    {
+      "cases": 100,
+      "offset": 300,
+      "operation": "movement",
+      "seconds": 0.023019
+    },
+    {
+      "cases": 100,
+      "offset": 400,
+      "operation": "travel",
+      "seconds": 0.022796
+    },
+    {
+      "cases": 100,
+      "offset": 400,
+      "operation": "prepare",
+      "seconds": 0.015642
+    },
+    {
+      "cases": 100,
+      "offset": 400,
+      "operation": "movement",
+      "seconds": 0.016162
+    },
+    {
+      "cases": 100,
+      "offset": 500,
+      "operation": "travel",
+      "seconds": 0.018782
+    },
+    {
+      "cases": 100,
+      "offset": 500,
+      "operation": "prepare",
+      "seconds": 0.015251
+    },
+    {
+      "cases": 100,
+      "offset": 500,
+      "operation": "movement",
+      "seconds": 0.015843
+    },
+    {
+      "cases": 100,
+      "offset": 600,
+      "operation": "travel",
+      "seconds": 0.018552
+    },
+    {
+      "cases": 100,
+      "offset": 600,
+      "operation": "prepare",
+      "seconds": 0.021808
+    },
+    {
+      "cases": 100,
+      "offset": 600,
+      "operation": "movement",
+      "seconds": 0.018617
+    },
+    {
+      "cases": 100,
+      "offset": 700,
+      "operation": "travel",
+      "seconds": 0.01892
+    },
+    {
+      "cases": 100,
+      "offset": 700,
+      "operation": "prepare",
+      "seconds": 0.018469
+    },
+    {
+      "cases": 100,
+      "offset": 700,
+      "operation": "movement",
+      "seconds": 0.02047
+    },
+    {
+      "cases": 100,
+      "offset": 800,
+      "operation": "travel",
+      "seconds": 0.01912
+    },
+    {
+      "cases": 100,
+      "offset": 800,
+      "operation": "prepare",
+      "seconds": 0.020901
+    },
+    {
+      "cases": 100,
+      "offset": 800,
+      "operation": "movement",
+      "seconds": 0.019215
+    },
+    {
+      "cases": 100,
+      "offset": 900,
+      "operation": "travel",
+      "seconds": 0.019581
+    },
+    {
+      "cases": 100,
+      "offset": 900,
+      "operation": "prepare",
+      "seconds": 0.021794
+    },
+    {
+      "cases": 100,
+      "offset": 900,
+      "operation": "movement",
+      "seconds": 0.016366
+    },
+    {
+      "cases": 100,
+      "offset": 1000,
+      "operation": "travel",
+      "seconds": 0.02534
+    },
+    {
+      "cases": 100,
+      "offset": 1000,
+      "operation": "prepare",
+      "seconds": 0.026993
+    },
+    {
+      "cases": 100,
+      "offset": 1000,
+      "operation": "movement",
+      "seconds": 0.028091
+    },
+    {
+      "cases": 100,
+      "offset": 1100,
+      "operation": "travel",
+      "seconds": 0.023593
+    },
+    {
+      "cases": 100,
+      "offset": 1100,
+      "operation": "prepare",
+      "seconds": 0.019449
+    },
+    {
+      "cases": 100,
+      "offset": 1100,
+      "operation": "movement",
+      "seconds": 0.020865
+    },
+    {
+      "cases": 5,
+      "offset": 1200,
+      "operation": "travel",
+      "seconds": 0.016924
+    },
+    {
+      "cases": 5,
+      "offset": 1200,
+      "operation": "prepare",
+      "seconds": 0.015421
+    },
+    {
+      "cases": 5,
+      "offset": 1200,
+      "operation": "movement",
+      "seconds": 0.016372
+    }
+  ],
+  "native_validation_seconds": 1.476676,
+  "oracle_scope": "Direct untouched actual Player.travel and inherited LivingEntity.travel/travelInAir, actual attributes and actual Entity.move in finite real Level; no composed travel oracle",
+  "pin": "26.3",
+  "pre_gravity_post_move_body_comparisons": 1205,
+  "prepared_request_comparisons": 1205,
+  "schema_version": 1,
+  "sources_sha256": {
+    "docs/TRAVEL.md": "cd1790374a96ccf03e6fd662fee39ccda1617153ba1ed639b43342c6f5e9576c",
+    "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "src/locomotion.bend": "ccf8aa12636ba1fce5575606383bf75c02a8ac79ba952645b89aea2eef6cd459",
+    "src/movement.bend": "0e94fea7cc941a23d2ed7bbd2ccaf0117e6af363eb91f2db2e34428f9dd9e67f",
+    "src/travel.bend": "717e969e3989a7a8e443b18f69c171bdc11a14130828233ce85e6cd914e1f8f1",
+    "tests/travel.bend": "b8b04c0e9b055648b8fc9e5926770d2906bb0ee7aac8064061e0338532ce6682",
+    "tools/reference_travel_probe.py": "c99dc149a18838ba8fffc7096bca77ddef000f8cc846e52b4a98cbce0a6c8239",
+    "tools/test_travel.py": "2ec4baa92ce756277f358bffba19496c10aa3885e3d08af478dafc1b523e0e0f"
+  },
+  "status": "passed",
+  "successful_owner_retention_followups": 58,
+  "table": {
+    "bytes": 262144,
+    "file": "reference_mth_sin.f32",
+    "sha1": "453d5bfac3fe5a249b1d76c6eb817dea50710c98",
+    "sha256": "cdfaec6870788e193dff3f1ddfa3ca7d3f1a897042d78365a1fe3a433be3627d"
+  },
+  "unsupported": [
+    "full Player.tick/aiStep",
+    "dynamic support/friction/attribute resolver",
+    "ServerPlayer and actual server world",
+    "liquid/swimming/flying/gliding/climbing",
+    "powder snow",
+    "mob effects",
+    "passenger controllers",
+    "nonneutral blocks/hazards",
+    "edge backoff",
+    "general bounce"
+  ]
+}
