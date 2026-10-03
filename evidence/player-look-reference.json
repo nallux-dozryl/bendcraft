@@ -1,0 +1,28 @@
+{
+  "status": "passed",
+  "scope": "Frozen direct Java observations and independent exact rational comparisons; native Bend and kernel execution queued under shared memory limit",
+  "pin": "26.3",
+  "reference_sha256": "6a4b76c1182836aaa9d1f22db9f197767d72caefdecd345a93c97d2380309dc9",
+  "reference_producer_sha256": "f118b99f861ae3d10983b57cfb10a94d22e3a06765c455858766b60a4760a9e2",
+  "counts": {
+    "actual_production_turn_calls": 7212,
+    "cases": 3246,
+    "exception_steps": 0,
+    "logged_steps": 1077,
+    "turn_calls_per_receiver": 3606,
+    "unmodified_receiver_matches": 3606,
+    "unrelated_instance_fields_unchanged_steps": 3606
+  },
+  "inputs_sha256": "39ecbce8a0a8370af0493ce0eed28a0a096e0ade409b0cc8a4b9888c8b6ca42a",
+  "observations_sha256": "5c52fb25ec6ec5fe600f23fd96544ccb577e58bdaee0cab41dedd8b44c7d8a30",
+  "fresh_process_reproduction": {
+    "processes": 2,
+    "raw_observation_sha256": "7b4fad1170162d0de6cb5968ecc48cc3ef2fb13ed22a96bb0349ba2230340017",
+    "result": "Both fresh executions matched frozen observations; completed by authorized probe subagent before native work",
+    "command": "python3 tools/reference_player_look_probe.py selftest"
+  },
+  "rational_production_comparisons": 3598,
+  "outside_finite_input_projection": 8,
+  "rational_command": "python3 tools/test_player_look.py --oracle-only",
+  "verification_boundary": "Exact observed fields and checked admission; no native pass or kernel verdict is attributed to this record"
+}

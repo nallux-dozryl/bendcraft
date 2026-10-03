@@ -1,0 +1,43 @@
+{
+  "status": "passed",
+  "commands": [
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_look.bend",
+        "--verdict"
+      ],
+      "exit_code": 0,
+      "stdout": "ALL PROOFS CHECK\n",
+      "stderr": "",
+      "seconds": 0.219026
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_look.bend",
+        "--verdict"
+      ],
+      "exit_code": 0,
+      "stdout": "ALL PROOFS CHECK\n",
+      "stderr": "",
+      "seconds": 3.713371
+    }
+  ],
+  "sources_sha256": {
+    "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "src/player_look.bend": "35ec863e078e46f2c2502b975f3e9f259114aec7baac614c68ba6e46773260ca",
+    "tests/player_look.bend": "f5b24dc2f5ef2e638d4f928114548b90416dbc0258bf6388df5355d956ec25fa"
+  },
+  "laws": [
+    "raw_bitcast_inverse",
+    "positive_zero_delta",
+    "negative_zero_delta",
+    "zero_turn_fixture",
+    "wrapped_pitch_zero_delta",
+    "rejected_turn_retains_state",
+    "finite_state_has_no_error",
+    "nonfinite_input_rejected"
+  ],
+  "proof_scope": "Independent type/termination checks of actual full imported source and the stated fixture/ownership laws; no universal IEEE or Entity equivalence theorem"
+}
