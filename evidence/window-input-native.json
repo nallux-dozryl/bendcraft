@@ -1,0 +1,149 @@
+{
+  "build": {
+    "base_window_sha256": "9cd6435eb582b65deca88afe1ddc8a4d9700f21347acbcf086fc19611cc1c4ba",
+    "binary_sha256": "a536bfb36e5b379ac9261011784e17f430f280e78ffa2f5664bb53a8237f99d8",
+    "clang": "/usr/bin/clang",
+    "compiler_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+    "compiler_version": "bend 2.0.35",
+    "entry": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/window_input.bend",
+    "generated_sha256": "5b46a82fb0266c3b1059de3ceddd507062ab51434d554b3535c4d8d62ac9aef7",
+    "gpu_bangs": false,
+    "output": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/window-input-tests",
+    "transformed_sha256": "8eec45a25ff526a2f1870440942834cc401f7b27ead310c9aa2bf6a781d3e998"
+  },
+  "build_seconds": 1.6942544169723988,
+  "command": "python3 tools/test_window_input.py",
+  "confidence": "high for recorded hidden cases",
+  "observations": [
+    {
+      "after": {
+        "frontmost_pid": 50401,
+        "native_macos": true,
+        "pid": 35588,
+        "space_change_notifications": 0
+      },
+      "before": {
+        "frontmost_pid": 50401,
+        "native_macos": true,
+        "pid": 35588,
+        "space_change_notifications": 0
+      },
+      "capture_result": "False",
+      "focus_capture": [
+        "False,False",
+        "False,False",
+        "False,False"
+      ],
+      "frame_events": 0,
+      "window": {
+        "activation_policy": 2,
+        "app_active": false,
+        "frontmost_pid": 50401,
+        "key": false,
+        "main": false,
+        "native_macos": true,
+        "on_active_space": true,
+        "pid": 35588,
+        "space_change_notifications": 0,
+        "visible": false,
+        "window_number": 604381
+      }
+    },
+    {
+      "after": {
+        "frontmost_pid": 50401,
+        "native_macos": true,
+        "pid": 35596,
+        "space_change_notifications": 0
+      },
+      "before": {
+        "frontmost_pid": 50401,
+        "native_macos": true,
+        "pid": 35596,
+        "space_change_notifications": 0
+      },
+      "capture_result": "False",
+      "focus_capture": [
+        "False,False",
+        "False,False",
+        "False,False"
+      ],
+      "frame_events": 0,
+      "window": {
+        "activation_policy": 2,
+        "app_active": false,
+        "frontmost_pid": 50401,
+        "key": false,
+        "main": false,
+        "native_macos": true,
+        "on_active_space": true,
+        "pid": 35596,
+        "space_change_notifications": 0,
+        "visible": false,
+        "window_number": 604382
+      }
+    },
+    {
+      "after": {
+        "frontmost_pid": 50401,
+        "native_macos": true,
+        "pid": 35598,
+        "space_change_notifications": 0
+      },
+      "before": {
+        "frontmost_pid": 50401,
+        "native_macos": true,
+        "pid": 35598,
+        "space_change_notifications": 0
+      },
+      "capture_result": "False",
+      "focus_capture": [
+        "False,False",
+        "False,False",
+        "False,False"
+      ],
+      "frame_events": 0,
+      "window": {
+        "activation_policy": 2,
+        "app_active": false,
+        "frontmost_pid": 50401,
+        "key": false,
+        "main": false,
+        "native_macos": true,
+        "on_active_space": true,
+        "pid": 35598,
+        "space_change_notifications": 0,
+        "visible": false,
+        "window_number": 604383
+      }
+    }
+  ],
+  "ordinary_check": {
+    "admission": "typing/affinity reaches the exact five declared native-dependent refusals",
+    "exit_code": 1,
+    "stderr": "SOME PROOFS FAIL\nError: 5 defs rely on unsafe or foreign code:\n- ../src/window_input.Native.status\n- ../src/window_input.capture\n- ../src/platform.Platform.observe\n- ../src/platform.Platform.inspect\n- main\n",
+    "stdout": "",
+    "whole_module_proof": false
+  },
+  "scope": "Same affine Base Window returned; real hidden AppKit focus/capture reads, failed capture attempt, frame and close. No focus/Spaces activation observed.",
+  "sources_sha256": {
+    "src/native/platform.c": "41444ea559841a5e409d3ce5c016768530863cb661f75dbc988e523d2bb697d4",
+    "src/native/platform.js": "70b2e4873f4e8232fb52e392a8f6733c35aaee9d021f9b63fc1742686fc296a6",
+    "src/native/window_input.c": "b80a7bef8974ebcf8a2298aabfc019c878621a4fbd330794091a98082ff84428",
+    "src/native/window_input.js": "bc6121f7e54b351746145f5d7e48c0f5d5d7dcf323d64b46f22a5740d0247f11",
+    "src/platform.bend": "ebcdaeac857d0a4d2e88af016cde88d5f730e948d0f8a453cc27c4cc9240a5a1",
+    "src/window_input.bend": "1f95abdc8c6e2d9f909ee81543dbbb91115e85cc2f80d68a536494ac631435ac",
+    "tests/window_input.bend": "01364b2eedda0dbc501b995ffeb9344eb985fcc218dd4552764917a46fbfdb8d",
+    "tools/platform_build.py": "1c9c53f77e63afa313816b8f3d1ae2ac2459273b0d0e5a26c63bbdc58c7aba8c",
+    "tools/test_window_input.py": "dceb752de35f6d538b63ecb9a251216785f9f213c73de4ed28999626ed1c1338"
+  },
+  "status": "passed_hidden_native_boundary",
+  "time_utc": "2026-10-03T20:08:46.981264+00:00",
+  "unverified": [
+    "visible focused capture",
+    "real keyboard/mouse events",
+    "focus-loss transition while held",
+    "presenter actor integration",
+    "non-macOS native windows"
+  ]
+}
