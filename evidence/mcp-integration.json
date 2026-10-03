@@ -1,0 +1,67 @@
+{
+  "status": "passed",
+  "kind": "actual_mcp_stdio_and_live_tcp_integration",
+  "recorded_at_utc": "2026-10-03T15:05:28.074432+00:00",
+  "command": "python3 tools/test_mcp.py",
+  "checks": [
+    "actual UTF-8 stdio initialization, phase enforcement, ping and silent notifications",
+    "16 tool names, descriptions and full input schemas derived from actual TCP discover; unknown/name-op validation",
+    "new registry extension operations list and execute without an MCP operation whitelist",
+    "actual create/set/step/query/cancel across persistent stdio/TCP sessions and two shared-state MCP clients",
+    "live permission/schema/domain failures returned as isError tool results with matching text/structured content",
+    "JSON-RPC parse/invalid-request/method/params errors, exact integer IDs, Unicode splits and silent notifications",
+    "LF segmentation preserves valid mutation before malformed later stdin frame; partial EOF is rejected",
+    "configured developer authentication stays on the persistent live session; rejected tokens never reach stdout/stderr",
+    "real live-server disconnect returns protocol/tool errors while MCP ping remains usable; clean stdio EOF shutdown"
+  ],
+  "current_tool_count": 16,
+  "mcp_processes": 6,
+  "stdio_responses_observed": 89,
+  "stdio_requests_sent": 61,
+  "notifications_sent": 8,
+  "source_sha256": {
+    "mcp.bend": "5b67990ce163cdd4ab20d0ca9b46e6b0a3708f759f2dcaee17287342e1a5f81c",
+    "src/mcp.bend": "8291445d923714ec6985e8c6b2b8f756cf09cd7e4d488814b2c6cd6552238d95",
+    "src/framing.bend": "307f95049df03d92687b7bd0eafb2cd566e660926510bb88163f9bc825fccdb5",
+    "tests/framing.bend": "71a533685fd3bd9e1dda72c7abc7d3509ebc245f8fc5eb343e0996da4eacadfe",
+    "src/json.bend": "a546726a2422382e388e3b0c9c2868034f25f5b1339c8b6b1dc167190a1b4099",
+    "server.bend": "60c342a34a70b51d6d1da162e57f5610ce8ab6c2d17d3ae77d37a8829bcfd00a",
+    "src/server.bend": "af936d316fb314aae0c0757f8e2ff2d31a87b4173927f1c242edd9163f5add7c",
+    "src/live.bend": "cb5a2f8237a53e48d3f6751d321a023e11694721f789373984d7d77620f32e87",
+    "src/game.bend": "43e3eee5d15613bb06cc608fe43657aa14d8c0fbe899d4efa580fc8335d23882",
+    "src/core.bend": "c1ee5a5390cdac0452c9c6cd3b0584a68ef68b5b0dfec867491c27e67ecadd4e",
+    "src/registry.bend": "1f6534ce5c96e1018aebae79ce23089aa206b922cd91f3bd23654d5afaf5e44f",
+    "tools/test_mcp.py": "d22c61e6d90cbb3023bb806aaa7b334865fce830180d64660693ec99cb4cd626"
+  },
+  "binary_sha256": {
+    "mcp": "9cb1cca6d9cbb82aaeebf00df06482b3e1778cdf0334766879a4ef4ed3d60664",
+    "live_server": "19fe761dfe22ad5329d1e24bff383c8e804689821708c1e6e937d186d1cd6da0"
+  },
+  "registry_input_sha256": "27769e75bf862d0540b2df2a6e99f6b7556a867bff6339fb08566240ee124cac",
+  "compiler_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+  "protocol_version": "2025-11-25",
+  "checker_boundary": {
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "SOME PROOFS FAIL\nError: 23 defs rely on unsafe or foreign code:\n- src/mcp.receive_next\n- src/mcp.receive\n- src/mcp.sent\n- src/mcp.send_envelope\n- src/mcp.exchange\n- src/mcp.call_known\n- src/mcp.call_catalog\n- src/mcp.call_discovered\n- src/mcp.execute\n- src/mcp.decoded_request\n- src/mcp.handle\n- src/mcp.line\n- src/mcp.record_next\n- src/mcp.records\n- src/mcp.framed_reader\n- src/mcp.segment_feed\n- src/mcp.segments\n- src/mcp.stdin_read\n- src/mcp.read_again\n- src/mcp.read_loop\n- src/mcp.authenticate\n- src/mcp.run\n- main\n"
+  },
+  "framing_verdict": {
+    "returncode": 0,
+    "stdout": "ALL PROOFS CHECK\n",
+    "stderr": ""
+  },
+  "official_sources": [
+    "https://modelcontextprotocol.io/specification/2025-11-25/basic",
+    "https://modelcontextprotocol.io/specification/2025-11-25/basic/lifecycle",
+    "https://modelcontextprotocol.io/specification/2025-11-25/basic/transports",
+    "https://modelcontextprotocol.io/specification/2025-11-25/server/tools"
+  ],
+  "limits": [
+    "Foundation live operations only; no full Minecraft behavior or vanilla multiplayer parity.",
+    "Serial synchronous MCP requests; no tasks, subscriptions, server-to-client requests or list-change notifications.",
+    "Schemas are forwarded from actual live discovery; game authorization/validation stays in live/core.",
+    "Stalled live reads use Base recv_bytes without a wall-clock deadline; process termination is the client fallback.",
+    "IO lifetime recursion is unsafe; pure framing/protocol/schema code is checked but has no universal MCP correctness proof."
+  ],
+  "elapsed_seconds": 25.101
+}
