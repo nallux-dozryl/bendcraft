@@ -6,19 +6,21 @@ fixture is a verification instrument; none satisfies a gameplay completion gate.
 ## Current critical path
 
 1. Actual Level collision/move, locomotion, neutral Player.travel, Player.aiStep
-   and logical keyboard sampling are checked. Next: actual supporting-block
-   cache/context resolution → owned Player tick bridge → authoritative 20 Hz
+   and logical keyboard sampling, support/cache reads, owned Player ticking and
+   actual MouseHandler projection are checked. Next: LocalPlayer override and
+   owned motion composition → authoritative 20 Hz
    held-input controls and typed player saves. The discrete debug controller is
    an integration instrument, not vanilla walking.
 2. Registry identity → leased save-owning server → durable publication → actual
    restart/queued-action/MCP tests and the same save-owning state in a client are
-   checked. Typed atomic extension saves also pass. Next: player metadata/body/
-   support codec and shared runtime composition, then full player/mod state,
+   checked. Typed atomic extension saves also pass. Neutral player and raw-degree record codecs also pass. Next: atomic runtime
+   save composition, then full player/mod state,
    recovery policy and vanilla-format compatibility.
 3. Official ZIP/DEFLATE/PNG decoding and bounded texture pixels are checked.
    Typed model parsing/inheritance, the actual first-value resource reader and
-   actual-quad mesh rendering are checked. Next: Bend model bake, blockstate
-   selection, resource closure loading and world quad production → actual native
+   actual-quad mesh rendering are checked. Bend model bake, blockstate/RNG selection, static resource closure and world
+   quad production now pass bounded corpora. Next: whole resource-to-frame
+   pipeline and actual neighbor visibility → actual native
    client frames → atlas, world lighting and complete presentation.
 4. Exact signed-cell snapshot caching and camera-relative F64 subtraction before
    F32 narrowing and verified far-coordinate views are checked in the shared
@@ -34,17 +36,17 @@ declared interfaces; integration evidence determines subsequent work.
 
 | Owner | Exclusive working files or subsystem | Stable integration interface |
 | --- | --- | --- |
-| Lead | `player_runtime.bend`, new client/actor/save integration and root contracts | One W body plus metadata, Tables, support and held buttons; Core step before player physics |
-| World bridge | New `player_tick_world.bend`, then `support_world.bend` | PW checked rollback and body admission; future actual owned support/context reads |
-| Client/render | New `block_resources.bend` | Bounded model/parent/texture closure, explicit static normalized sprite policy, owned Assets |
-| Player motion | New `support.bend` and direct Java oracle/tests | Cached support slab/tie/fallback history and exact movement/jump sampling positions |
-| Model interpretation | New `blockstate_model.bend` | Actual selector/multipart/weighted semantics and ordered-state instantiation |
-| Model bake | New `block_bake.bend` | Typed resolved models and explicit sprites → verified exact CPU quads |
-| World mesh | New `world_mesh.bend` | Relative snapshot plus explicit state/bake bindings → bounded mesh Scene |
-| Player codec | New `player_codec.bend` | Exact neutral player/body/support/view snapshot with strict bounded NBT |
+| Lead | `player_runtime.bend`, `client_presenter.bend`, window input and new actor/save integration | One W body plus metadata, Tables, support and complete Controller; atomic packets and Core step before player physics; player bundle integration next |
+| World bridge | Completed PW/SW; new `local_tick_world.bend` | Verified owned support/context reads; LocalPlayer prepare override before checked travel/finish |
+| Client/render | Completed BR/texture metadata; new `resource_frame.bend` | Real ZIP/model/bake/world-mesh/frame composition and retained Assets; metadata consumer integration remains separate |
+| Player motion | Completed `support.bend` and `local_input.bend` | Exact ordered sprint/input/crouch/bob phases; whole tick rotation and contextual movement hooks remain open |
+| Model interpretation | Completed `blockstate_model.bend`; presenter integration test | Exact selector/multipart/ordered state semantics; hidden actor/window/failure cleanup tests next |
+| Model bake | Completed Bake/Choice/Record verification | Exact quads, RNG consumption and raw degree save projection; atomic save verification queued |
+| World mesh | Completed `world_mesh.bend`; new `world_visibility.bend` | Exact relative quads; actual four-palette neighbor-face visibility and owned halo reads next |
+| Player codec/input | Completed Codec/Look/Mouse; new `player_controls.bend` | Whole frame accumulation → one Entity turn, atomic rejection, capture/release transitions |
 | Float parsing | Completed, stable source | Separate strict RFC and Java-string binary32 parsers |
 | Persistence | Completed core and extension foundations, stable sources | Effectful sole-engine/lease State; closed owned codec and catalog |
-| Build reuse | Ordinary cache complete; separate Window cache final handoff | `ensure_native`; opt-in `ensure_platform` CPU-only policy with unchanged transform |
+| Build reuse | Cache complete; new runtime integration tests; full Pclient cache queued | Final shared tick/input/restore evidence; cached full-client test remains queued |
 
 Owners integrate through these interfaces; they do not concurrently modify
 another owner's source. Changes to an interface are announced before dependent
@@ -58,8 +60,19 @@ Bend jobs on 2026-10-04 left about 95 MiB free RAM with substantial compressor
 and swap activity; final builds slowed to several minutes. Lower-priority
 resource/cache/verdict attempts were deliberately interrupted and remain
 unverified, with no correctness inference from cancellation. Keep lightweight
-oracle/source preparation parallel, and let an existing third priority build
-finish before admitting another. The lead coordinates build slots.
+oracle/source preparation parallel. A granted slot includes the gaps between a
+runner's sequential phases; an empty process snapshot does not grant a new
+build. The lead coordinates build slots.
+
+Compiler expansion also requires a separate diagnosis: the old support harness
+remained unfinished after more than 21 minutes with a sampled 12.0 GiB physical
+footprint. Removing other test-module imports and separating operation parsers,
+without changing gameplay source, reduced the final native build to 3.216 s and
+the full import kernel check to 7.988 s. The original attempt remains
+inconclusive. Blockstate/resource compiler samples later showed about 13.0/
+11.6 GiB footprints; bounded attempts and harness-only narrowing are recorded
+separately from ordinary machine contention. Keep production behavior and
+independent fixture expectations fixed during these diagnostics.
 
 ## Measured build work
 
