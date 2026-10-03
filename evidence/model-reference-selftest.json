@@ -1,0 +1,100 @@
+{
+  "canonical_results_equal": true,
+  "counts": {
+    "bake_errors": 0,
+    "baked_quads": 844,
+    "baked_variants": 110,
+    "condition_cases": 17,
+    "dispatcher_cases": 25,
+    "graph_cases": 7,
+    "official_blocks": 8,
+    "official_models": 27,
+    "official_states": 124,
+    "parse_cases": 107,
+    "parse_errors": 44,
+    "selector_cases": 12
+  },
+  "failure_injections": [
+    {
+      "fault": "changed_raw_uv_unsealed",
+      "reason": "Model observation checksum mismatch",
+      "status": "rejected"
+    },
+    {
+      "fault": "changed_raw_uv_resealed_vs_fresh_java",
+      "reason": "Model observations differ from fresh Java execution",
+      "status": "rejected"
+    },
+    {
+      "fault": "changed_official_model_resealed_vs_pinned_inputs",
+      "reason": "Model fixtures differ from pinned resources and generated inputs",
+      "status": "rejected"
+    },
+    {
+      "fault": "changed_lighting_resealed_vs_java",
+      "reason": "Model observations differ from fresh Java execution",
+      "status": "rejected"
+    },
+    {
+      "fault": "changed_harness_hash",
+      "reason": "Model class/declaration/harness fingerprints differ from pinned bytes",
+      "status": "rejected"
+    },
+    {
+      "fault": "changed_official_class_hash",
+      "reason": "Model class/declaration/harness fingerprints differ from pinned bytes",
+      "status": "rejected"
+    },
+    {
+      "fault": "changed_library_hash",
+      "reason": "Model provenance differs from verified artifacts",
+      "status": "rejected"
+    }
+  ],
+  "fresh_inputs_equal": true,
+  "fresh_java_equals_committed": true,
+  "fresh_java_runs": [
+    {
+      "canonical_observation_sha256": "9263a1b57b1ca285be717daa24b6b87c2a73a86efd23c3404cf46d51726cfe0f",
+      "exit_code": 0,
+      "raw_observation_sha256": "d4f33a717b7eef672ab6af112950bdcc97ead1f96ea7f56a268a8da35851cf78",
+      "stderr_log": {
+        "bytes": 1879,
+        "file": "reproduce-a-stderr.log",
+        "sha1": "e2955e8da7293cae4d3b9bcd5bccc5118f0b001d",
+        "sha256": "871884c7836041c9185b274d23140afc6a6e8de5518300c24e6d58a88b2738dd"
+      },
+      "stdout_log": {
+        "bytes": 1984,
+        "file": "reproduce-a-stdout.log",
+        "sha1": "d11fa7059fe087621c2f4ff3762c852fdf758d16",
+        "sha256": "1ca26e5257d5b148d790e9b742d1d8e22df340af8e9a038b78d326c1ab832fe8"
+      }
+    },
+    {
+      "canonical_observation_sha256": "9263a1b57b1ca285be717daa24b6b87c2a73a86efd23c3404cf46d51726cfe0f",
+      "exit_code": 0,
+      "raw_observation_sha256": "d4f33a717b7eef672ab6af112950bdcc97ead1f96ea7f56a268a8da35851cf78",
+      "stderr_log": {
+        "bytes": 1879,
+        "file": "reproduce-b-stderr.log",
+        "sha1": "e2955e8da7293cae4d3b9bcd5bccc5118f0b001d",
+        "sha256": "871884c7836041c9185b274d23140afc6a6e8de5518300c24e6d58a88b2738dd"
+      },
+      "stdout_log": {
+        "bytes": 1984,
+        "file": "reproduce-b-stdout.log",
+        "sha1": "a4a01bea77d19c25db0f3764aea470686af3e467",
+        "sha256": "9b1c6e55381491459df55ecb543e8f8ab8c8249a16aa190674c05da7fb93ea75"
+      }
+    }
+  ],
+  "output": {
+    "bytes": 4799077,
+    "file": "model_semantics.json",
+    "sha1": "300accab50fc5e00163146daa908455ce43427ea",
+    "sha256": "3cbe8aa7780f14c1b37159a885710b04680e3b6c4ffa4975b4d8297015f11e7e"
+  },
+  "pin": "26.3",
+  "status": "pass"
+}
