@@ -21,7 +21,14 @@ sections or blocks. Missing sections remain errors. Only the explicit
 - `snapshot(state,width,height)` returns
   `State & Result<&2,&2,String,ClientRender.Snapshot>`. Resolution does not
   influence the world sample. Width and height remain in the stable client
-  call interface.
+  call interface. This legacy interface preserves absolute binary32 block
+  and camera positions.
+- `relative_snapshot(state,width,height)` has the same return type. Its
+  camera position is `(0,0,0)` and its block positions are relative to the
+  current eye position; yaw and pitch retain their values. It rejects a
+  nonfinite eye position, an eye coordinate whose floor is outside signed
+  I32, or nonfinite camera angles with `invalid-relative-camera`, preserving
+  the owner and view on failure.
 - `move(state,delta,max_step)` returns
   `State & Result<&2,&2,String,Movement.Transition>`. It updates the body only
   after a successful checked transition.
@@ -34,6 +41,11 @@ sections or blocks. Missing sections remain errors. Only the explicit
 - `body(state)` returns `State & Movement.Body`, retaining the sole owned
   engine and returning immutable body data.
 - `invalidate_cache(state)` discards the internal immutable block cache.
+- `take(state)` returns `Game.Engine & View`; `attach(engine,view)` returns
+  `State`. `View is Data` contains body, yaw, pitch, palette, region, and
+  cache. The engine remains affine and moves out of and back into the state
+  once. A persistent adapter can temporarily use its sole engine for
+  authenticated dispatch without creating a second world owner.
 
 `State` contains `engine`, `body`, `yaw`, `pitch`, `palette`, `region`, and
 an optional immutable `cache`.
@@ -44,17 +56,32 @@ materials are 0 = stone, 1 = dirt, and 2 = oak planks, matching the renderer's
 official texture list. Unknown states are errors, including glass, fluids,
 and context-dependent shapes. Registry state IDs are not hardcoded.
 
-Successful samples cache their immutable block list by exact world revision,
-all six region fields, and all four palette state IDs. Every snapshot still
-reads the current tick and computes the camera from the current body and
-angles. Failed samples are never inserted. Ordinary checked `Game.dispatch`
+Successful samples cache immutable `RawBlock` values: exact signed cells
+encoded as U32, registry state IDs, and material IDs. The key contains exact
+world revision, all six region fields, and all four palette state IDs. The
+cache never stores narrowed absolute or relative positions. Every snapshot
+still reads the current tick and converts the raw cells using the current
+body and angles. Failed samples are never inserted. Ordinary checked `Game.dispatch`
 mutations advance the core revision when applied, so those edits naturally
 invalidate a cached list. Trusted compiled code can also call low-level
 `Core.write_block` or `Core.apply`, which can change blocks without changing
 revision. Such direct engine writes must call `invalidate_cache` before
 requesting a snapshot. Direct registry/palette changes require a correct
 palette and explicit invalidation; revision is not a universal change
-detector for arbitrary Bend mods.
+detector for arbitrary Bend mods. `attach` preserves the supplied cache.
+After substituting a different engine, even one with the same revision, or
+making direct writes while the engine is extracted, invalidate the cache
+after reattaching. A view's resolved palette must match the attached engine's
+registry.
+
+For relative snapshots, each signed cell integer is first converted exactly
+to binary64. The eye origin is the binary64 body position, with binary64
+addition of the declared binary32 `1.62f` eye offset on Y. Subtraction occurs
+in binary64 before the result is narrowed to binary32. Adjacent cubes retain
+distinct positions near ±30,000,000 when the scene is near the eye. Subcell
+camera motion is narrowed at the local distance's binary32 precision.
+Geometry very far from the eye still has binary32
+render limits; this API does not make arbitrary render distances exact.
 
 ## Exact bounded block queries
 
@@ -71,8 +98,9 @@ query is issued only when the vanilla stepping branch is eligible and uses
 `Movement.step_query` with the exact initial clipped displacement. Stationary
 requests whose binary64 length squared is zero bypass block enumeration.
 Movement scalars and candidate calculations stay in pure Bend binary64;
-snapshot coordinates and the eye camera narrow through verified
-`F64.to_f32` only at the render boundary.
+snapshot coordinates narrow through verified `F64.to_f32` only at the render
+boundary. The relative interface performs the eye subtraction before this
+narrowing; the legacy interface retains its previous absolute behavior.
 
 Queries reject nonfinite or reversed boxes, I32 padding overflow, and any
 side exceeding 16 cells. Missing or unsupported cells fail explicitly; there
@@ -111,18 +139,37 @@ fixture initialization, and a different valid registry order. Cached samples
 must equal independently recomputed samples after admitted edits, error
 repair, region selection, palette replacement, look, movement, and tick
 changes. A direct unrevisioned write followed by explicit invalidation must
-also agree. Two conditional implementation laws check exact block recovery
-on a matching key and rejection on a nonmatching key; the ordinary checker
-accepts them, while whole-module kernel validity remains unverified.
+also agree. Two conditional implementation laws check exact raw block
+recovery on a matching key and rejection on a nonmatching key. A third law
+checks `take` followed by `attach` reconstructs the exact owned state. The
+ordinary checker accepts them; whole-module kernel validity remains
+unverified.
 
-A separate 10,000-snapshot loop consumes all block lists to measure this
-specific cached sampling cost, with startup/registry/fixture cost subtracted
+Thirty-two separate checked stone-section fixtures cover all eight sign
+combinations near ±30,000,000 and four subcell positions. An independent
+Python oracle uses exact rational arithmetic and integer IEEE nearest-even
+rounding for binary64 eye addition/subtraction and binary32 conversion.
+Across 18 blocks per scene it checks 3,456 relative coordinates and 1,728
+legacy coordinates. The legacy adjacent-cell alias is observed, while the
+relative adjacent cells stay distinct. Cached snapshots after a camera
+change equal a fresh sample. View roundtrips preserve snapshots, invalid
+camera errors preserve ownership and allow recovery, unsupported states
+can be repaired, and direct unrevisioned writes still require invalidation.
+These precision fixtures are test-only checked section mutations; `new`
+continues to create no terrain.
+
+A separate 10,000-snapshot loop counts all legacy block-list entries to
+measure cached list traversal, with startup/registry/fixture cost subtracted
 using three process samples. The original 100-snapshot uncached measurement
 is retained in `evidence/client-world-snapshot-baseline.json`; its median
-estimate was 2.28 ms per 384-cell sample. Timing occurs on a concurrently
-loaded host and is not a Minecraft performance comparison.
+estimate was 2.28 ms per 384-cell sample. The loop does not consume block
+coordinate fields, camera fields, or tick values, and is not a measurement of
+the full snapshot conversion. Timing occurs on a concurrently loaded host
+and is not a complete frame or Minecraft performance comparison.
 
 The module passes Bend's ordinary affine/type checker. Whole-module kernel
 verification inherits the known JSON encoder checker/kernel mismatch from
 `Game`, and no kernel validity claim is made for this bridge. Native evidence
-is recorded in `evidence/client-world-verification.json`.
+is recorded in `evidence/client-world-verification.json`; exact-coordinate
+cases and their source/binary fingerprints are also recorded in
+`evidence/client-world-relative.json`.

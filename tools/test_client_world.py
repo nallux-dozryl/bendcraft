@@ -6,6 +6,7 @@ collision enumeration, movement, dispatch, and render snapshot construction.
 """
 from __future__ import annotations
 import argparse, copy, csv, hashlib, json, math, os, pathlib, random, statistics, struct, subprocess, time
+from fractions import Fraction
 from reference_inventory import ROOT, JAVA, fingerprint
 from reference_block_probe import verified_classpath
 from reference_movement_probe import SOURCE as MOVEMENT_SOURCE, DIRECT_SOURCE as DIRECT_MOVEMENT_SOURCE
@@ -150,8 +151,93 @@ def snapshot(line):
     f=line.split('|');assert f[1]=='snapshot',line
     return {'tick':int(f[2]),'revision':int(f[3]),'count':int(f[4]),'camera':list(map(int,f[5].split(','))),'blocks':[list(map(int,x.split(','))) for x in f[6].split(';') if x]}
 
+def exact_ieee(value, fraction_bits, exponent_bits):
+    """Decode finite IEEE bits without host floating arithmetic."""
+    sign=-1 if value>>(fraction_bits+exponent_bits) else 1
+    exponent=(value>>fraction_bits)&((1<<exponent_bits)-1)
+    fraction=value&((1<<fraction_bits)-1)
+    assert exponent!=(1<<exponent_bits)-1
+    bias=(1<<(exponent_bits-1))-1
+    significand=fraction+(1<<fraction_bits if exponent else 0)
+    scale=(exponent-bias if exponent else 1-bias)-fraction_bits
+    return Fraction(sign*significand*(1<<scale),1) if scale>=0 else Fraction(sign*significand,1<<-scale)
+
+def exact_round(value, fraction_bits, exponent_bits):
+    """Round an exact Fraction to IEEE using integer nearest/ties-to-even."""
+    if not value:return 0
+    negative=value<0;value=abs(value);n=value.numerator;d=value.denominator
+    exponent=n.bit_length()-d.bit_length()
+    if (Fraction(1<<exponent,1) if exponent>=0 else Fraction(1,1<<-exponent))>value:exponent-=1
+    bias=(1<<(exponent_bits-1))-1;emin=1-bias
+    scale=max(exponent,emin)-fraction_bits
+    if scale>=0:d<<=scale
+    else:n<<=-scale
+    q,r=divmod(n,d);q+=int(2*r>d or (2*r==d and q&1))
+    if exponent<emin:
+        field=1 if q==(1<<fraction_bits) else 0
+        fraction=q-(1<<fraction_bits) if field else q
+    else:
+        if q==(1<<(fraction_bits+1)):q>>=1;exponent+=1
+        field=exponent+bias;fraction=q-(1<<fraction_bits)
+        assert field<(1<<exponent_bits)-1
+    return (int(negative)<<(fraction_bits+exponent_bits))|(field<<fraction_bits)|fraction
+
+def relative_expected(c, shifted=False, absolute=False):
+    origin=[exact_ieee(int(x,16),52,11) for x in c['position']]
+    if shifted:origin=[a+b for a,b in zip(origin,[Fraction(1,4),Fraction(1,8),Fraction(-1,4)],strict=True)]
+    origin[1]=exact_ieee(exact_round(origin[1]+exact_ieee(0x3fcf5c29,23,8),52,11),52,11)
+    result=[]
+    x,y,z=c['base']
+    for dz in range(3):
+        for dy in range(2):
+            for dx in range(3):
+                cell=[x+dx,y+dy,z+dz]
+                if absolute:values=[exact_round(Fraction(v),23,8) for v in cell]
+                else:values=[exact_round(exact_ieee(exact_round(Fraction(v)-o,52,11),52,11),23,8) for v,o in zip(cell,origin,strict=True)]
+                result.append(values+[1,0])
+    return result
+
+def far_cases():
+    result=[]
+    for mask in range(8):
+        base=[-30_000_000 if mask&(1<<axis) else 30_000_000 for axis in range(3)]
+        for off in [Fraction(1,8),Fraction(3,8),Fraction(7,8),Fraction(1,2)+Fraction(1,1<<28)]:
+            fractions=[Fraction(base[0])+off,Fraction(base[1])+Fraction(1,2),Fraction(base[2])+off-Fraction(1,4)]
+            pos=[f'{exact_round(v,52,11):016x}' for v in fractions]
+            result.append({'id':f'far-{len(result)}','base':base,'position':pos})
+    return result
+
+def verify_relative_snapshots():
+    cases=far_cases();batches=[]
+    for off in range(0,len(cases),8):
+        chunk=cases[off:off+8]
+        req=['|'.join(['far',c['id'],*[str(x&0xffffffff) for x in c['base']],*[p for x in c['position'] for p in words(x)]]) for c in chunk]
+        r=run([BINARY,'--gpu','off',*req]);lines={line.split('|')[0]:line for line in r['stdout'].splitlines()};assert len(lines)==7*len(chunk)
+        batches.append({'offset':off,'cases':len(chunk),'seconds':r['seconds']})
+        for c in chunk:
+            absolute=snapshot(lines[c['id']+'-absolute']);relative=snapshot(lines[c['id']+'-relative']);roundtrip=snapshot(lines[c['id']+'-roundtrip']);shifted=snapshot(lines[c['id']+'-shifted']);uncached=snapshot(lines[c['id']+'-uncached']);restored=snapshot(lines[c['id']+'-restored'])
+            assert absolute['blocks']==relative_expected(c,absolute=True)
+            assert absolute['blocks'][0][0]==absolute['blocks'][1][0],c
+            assert relative['blocks']==relative_expected(c) and relative['blocks'][0][0]!=relative['blocks'][1][0],c
+            assert relative==roundtrip==restored and shifted==uncached
+            assert shifted['blocks']==relative_expected(c,shifted=True),c
+            assert relative['camera']==shifted['camera']==[0,0,0,0,0x3e4ccccd]
+            assert (relative['tick'],relative['revision'],relative['count'])==(1,1,18)
+            assert lines[c['id']+'-bad'].endswith('|error|invalid-relative-camera')
+    r=run([BINARY,'--gpu','off','view|view','relative-repair|repair','relative-raw|raw-relative','relative-invalid|invalid-relative'])
+    lines={line.split('|')[0]:line for line in r['stdout'].splitlines()}
+    assert snapshot(lines['view-before'])==snapshot(lines['view-attached'])
+    view=snapshot(lines['view-relative']);assert view['count']==39 and view['camera']==[0,0,0,0,0x3e4ccccd]
+    assert '|error|unsupported-block-state:' in lines['repair-bad']
+    repaired=snapshot(lines['repair-repaired']);assert repaired==snapshot(lines['repair-uncached']) and (repaired['tick'],repaired['revision'],repaired['count'])==(3,49,40)
+    raw=snapshot(lines['raw-relative-after']);assert raw==snapshot(lines['raw-relative-uncached']) and (raw['tick'],raw['revision'],raw['count'])==(1,47,40)
+    for suffix in ['infinity','high','low','angle','pitch']:assert lines['invalid-relative-'+suffix].endswith('|error|invalid-relative-camera')
+    assert snapshot(lines['invalid-relative-before'])==snapshot(lines['invalid-relative-restored'])
+    return {'status':'passed','far_coordinate_cases':len(cases),'far_blocks_per_scene':18,'native_snapshot_observations':len(cases)*6,'invalid_camera_rejections':len(cases)+5,'invalid_camera_kinds':['NaN position','infinite position','positive I32 overflow','negative I32 overflow','infinite yaw','NaN pitch'],'exact_relative_coordinate_checks':len(cases)*18*3*2,'exact_legacy_coordinate_checks':len(cases)*18*3,'view_roundtrip_cases':len(cases)+1,'relative_error_repair_groups':2,'oracle':'Exact Fraction arithmetic, integer IEEE binary64 and binary32 round-to-nearest/ties-to-even; no host float arithmetic for expected relative coordinates','legacy_adjacent_alias_observed':True,'relative_adjacent_cells_distinct':True,'shifted_cache_matches_uncached':True,'signed_axes_combinations':8,'native_batches':batches,'cases_sha256':hashlib.sha256(json.dumps(cases,sort_keys=True).encode()).hexdigest(),'confidence':'high for these observed finite scenes'}
+
 def main():
     p=argparse.ArgumentParser();p.add_argument('--skip-build',action='store_true');a=p.parse_args()
+    bridge_generation=sha(ROOT/'src/client_world.bend')
     checks=[run([BEND,source,'--check-only']) for source in ['src/client_world.bend','tests/client_world.bend']]
     builds=[]
     if not a.skip_build:builds=[run([BEND,'tests/client_world.bend','-o',BINARY])]
@@ -195,7 +281,7 @@ def main():
     assert len({tuple(b[:3]) for b in basic['blocks']})==39
     for name in ['angle-kept','region-kept','move-kept']:assert snapshot(lines[name])==basic
     assert 'invalid-camera-angles' in lines['angle-look'] and 'invalid-region-bounds' in lines['region-region'] and 'invalid-movement' in lines['move-move']
-    assert lines['empty-new'].endswith('|done') and '|error|missing-section:' in lines['empty-missing'] and '|movement|' in lines['empty-stationary'] and '|error|missing-section:' in lines['empty-nonzero']
+    assert lines['empty-new'].endswith('|done') and '|error|missing-section:' in lines['empty-missing'] and '|error|missing-section:' in lines['empty-relative-missing'] and '|movement|' in lines['empty-stationary'] and '|error|missing-section:' in lines['empty-nonzero']
     before=snapshot(lines['changed-before']);after=snapshot(lines['changed-after']);assert before==basic
     assert (after['tick'],after['revision'],after['count'])==(2,48,40) and [0,0x3f800000,0,15,2] in after['blocks']
     assert '|error|unsupported-block-state:' in lines['bad-bad'];repaired=snapshot(lines['bad-repaired']);assert (repaired['tick'],repaired['revision'],repaired['count'])==(3,49,40)
@@ -221,13 +307,22 @@ def main():
     invalid=[[math.nan,0,0,1,1,1],[2,0,0,1,1,1],[-20,0,0,20,1,1],[-2147483648.,0,0,-2147483647.,1,1],[2147483646.,0,0,2147483647.,1,1]]
     req=['|'.join(['bounds',f'invalid-{i}',*[p for v in map(bits,b) for p in words(v)]]) for i,b in enumerate(invalid)]
     rbad=run([BINARY,'--gpu','off',*req]);assert all('|error|' in line for line in rbad['stdout'].splitlines()) and len(rbad['stdout'].splitlines())==len(invalid)
+    relative_checks=verify_relative_snapshots()
     sources=['src/client_world.bend','tests/client_world.bend','tools/test_client_world.py','src/movement.bend','src/f64.bend','src/core.bend','src/game.bend','src/registry.bend','src/client_render.bend','docs/CLIENT_WORLD.md']
     noop=[];bench=[]
     for i in range(3):
         noop.append(run([BINARY,'--gpu','off',f'noop|noop-{i}'])['seconds'])
         rb=run([BINARY,'--gpu','off',f'benchmark|benchmark-{i}']);assert rb['stdout'].strip()==f'benchmark-{i}|count|390000';bench.append(rb['seconds'])
-    performance={'repetitions_per_process':10000,'processes':3,'noop_seconds':noop,'snapshot_loop_seconds':bench,'estimated_snapshot_seconds':max(0,statistics.median(bench)-statistics.median(noop))/10000,'unisolated_concurrent_host':True,'scope':'384 checked world cells,39 render blocks; startup/registry/fixture median subtracted; not a Minecraft benchmark'}
+    performance={'repetitions_per_process':10000,'processes':3,'noop_seconds':noop,'snapshot_loop_seconds':bench,'estimated_snapshot_seconds':max(0,statistics.median(bench)-statistics.median(noop))/10000,'unisolated_concurrent_host':True,'scope':'384 world cells avoided by a successful raw cache,39 legacy block-list entries counted; block coordinate fields, camera, and tick values are not consumed; startup/registry/fixture median subtracted; not full snapshot conversion, a frame, or a Minecraft benchmark'}
     evidence={'schema_version':1,'status':'passed','pin':'26.3','seed':SEED,'query_oracle_cases':len(queries),'movement_oracle_cases':len(moves),'actual_entity_move_cases':len(direct),'query_bounds_cases':len(queries),'bounds_rejections':len(invalid),'integration_groups':14,'dynamic_palette_registry':True,'checked_fixture_mutations':47,'fixture_blocks':39,'checks':checks,'builds':builds,'java_build_and_run':java,'native_batches':batches,'native_seconds':round(time.monotonic()-start,6),'snapshot_benchmark':performance,'snapshot_cache':{'key':['revision','full-region-bounds','palette'],'cached_uncached_comparison_groups':9,'raw_write_invalidation_tested':True,'baseline_evidence':'client-world-snapshot-baseline.json','baseline_estimated_snapshot_seconds':json.loads((ROOT/'evidence/client-world-snapshot-baseline.json').read_text())['snapshot_benchmark']['estimated_snapshot_seconds'],'laws':['cache_hit_returns_exact_blocks','cache_miss_rejects_cached_blocks'],'ordinary_laws_checked':True,'whole_module_kernel_verified':False},'sources_sha256':{x:sha(ROOT/x) for x in sources if (ROOT/x).exists()},'binary_sha256':sha(BINARY),'java_source_sha256':hashlib.sha256(SOURCE.encode()).hexdigest(),'movement_reference_source_sha256':hashlib.sha256((MOVEMENT_SOURCE+DIRECT_MOVEMENT_SOURCE).encode()).hexdigest(),'java_input_sha256':sha(inp),'java_output_sha256':sha(out),'pinned_java_inputs':[fingerprint(x) for x in jars],'release':release,'actual_java_block_collisions_executed':True,'actual_full_entity_move_executed':True,'confidence':{'block_query_and_order':'high','observed_bounded_transition':'high','general_full_entity_move_parity':'unknown'},'scope':['sole owned Game.Engine retained through snapshots, dispatch, and movement','air/stone/dirt/oak_planks finite static full-cube scene','actual Java BlockCollisions traversal and full-cube intersection','actual untouched Entity.move on the same finite scene and narrow generic entity context','binary64 collision and render-only binary32 narrowing'],'unsupported':['terrain generation','complete player travel and input ticks','entity collisions and world border','context-dependent or multi-cell shapes','all block models/materials','general full Entity.move runtime parity','complete Minecraft client']}
+    assert bridge_generation==sha(ROOT/'src/client_world.bend'),'client world source changed during verification'
+    evidence['relative_snapshot']=relative_checks
+    evidence['source_generation_stable']=True
+    evidence['snapshot_cache']['storage']='Exact signed U32 cells, state, and material; binary32 positions are computed for each snapshot'
+    evidence['snapshot_cache']['laws'].append('take_attach_preserves_owned_state')
+    evidence['scope'].append('eye-relative binary64 subtraction before binary32 narrowing near all signed axes at ±30,000,000')
+    relative_evidence={'schema_version':1,'status':'passed','pin':'26.3','relative_snapshot':relative_checks,'cases':far_cases(),'sources_sha256':evidence['sources_sha256'],'binary_sha256':evidence['binary_sha256'],'source_generation_stable':True,'ordinary_checker_passed':True,'whole_module_kernel_verified':False,'scope':'Finite checked full-cube scenes and owned view roundtrips; no complete client or player travel claim'}
+    (ROOT/'evidence/client-world-relative.json').write_text(json.dumps(relative_evidence,indent=2,sort_keys=True)+'\n')
     (ROOT/'evidence/client-world-verification.json').write_text(json.dumps(evidence,indent=2,sort_keys=True)+'\n')
     print(json.dumps({k:evidence[k] for k in ['status','query_oracle_cases','movement_oracle_cases','integration_groups','confidence']},indent=2))
 

@@ -19,15 +19,26 @@ type Palette is Data:
 type Bounds is Data:
   Bounds{x: U32, y: U32, z: U32, width: U32, height: U32, depth: U32}
 
+type Cell is Data:
+  Cell{x: U32, y: U32, z: U32, boundary: U32}
+
+type RawBlock is Data:
+  RawBlock{cell: Cell, state: U32, material: U32}
+
+type SnapshotMode is Data:
+  AbsoluteSnapshot{}
+  RelativeSnapshot{}
+
 type SnapshotCache is Data:
-  SnapshotCache{revision: Nat, region: Bounds, palette: Palette, blocks: List<&2, R.Block>}
+  SnapshotCache{revision: Nat, region: Bounds, palette: Palette, blocks: List<&2, RawBlock>}
+
+type View is Data:
+  View{body: M.Body, yaw: F32, pitch: F32,
+    palette: Maybe<&2, Palette>, region: Bounds, cache: Maybe<&2, SnapshotCache>}
 
 type State is Type:
   State{engine: G.Engine, body: M.Body, yaw: F32, pitch: F32,
     palette: Maybe<&2, Palette>, region: Bounds, cache: Maybe<&2, SnapshotCache>}
-
-type Cell is Data:
-  Cell{x: U32, y: U32, z: U32, boundary: U32}
 
 def choose(-T: Data, yes: T, no: T, value: Bool) -> T:
   match value:
@@ -95,6 +106,27 @@ def new_result(world: C.World, result: B.Registry & Result<&2, &2, String, Palet
 def new(engine: G.Engine) -> State & Result<&2, &2, String, Unit>:
   G.Engine{world, registry} = engine
   new_result(world, palette_air(supported_block(B.Registry.block(registry, "minecraft:air"))))
+
+def take(state: State) -> G.Engine & View:
+  State{engine, body, yaw, pitch, palette, region, cache} = state
+  (engine, View{body, yaw, pitch, palette, region, cache})
+
+def attach(engine: G.Engine, view: View) -> State:
+  View{body, yaw, pitch, palette, region, cache} = view
+  State{engine, body, yaw, pitch, palette, region, cache}
+
+law take_attach_preserves_owned_state:
+  for engine: G.Engine
+  for body: M.Body
+  for yaw: F32
+  for pitch: F32
+  for palette: Maybe<&2, Palette>
+  for region: Bounds
+  for cache: Maybe<&2, SnapshotCache>
+  {paired(G.Engine, View, State, take(State{engine, body, yaw, pitch, palette, region, cache}), engine => view => attach(engine, view)) == State{engine, body, yaw, pitch, palette, region, cache} : State}
+
+def take_attach_preserves_owned_state(engine, body, yaw, pitch, palette, region, cache):
+  {==}
 
 def step(state: State) -> State:
   State{engine, body, yaw, pitch, palette, region, cache} = state
@@ -173,51 +205,80 @@ def render_block(cell: Cell, state: U32, material: U32) -> R.Block:
   Cell{x, y, z, boundary} = cell
   R.Block{F.to_f32(F.from_i32(x)), F.to_f32(F.from_i32(y)), F.to_f32(F.from_i32(z)), state, material}
 
-def sample_material(cell: Cell, state: U32, reversed: List<&2, R.Block>, result: Result<&2, &2, String, Maybe<&2, U32>>) -> Result<&2, &2, String, List<&2, R.Block>>:
+def absolute_blocks(blocks: List<&2, RawBlock>) -> List<&2, R.Block>:
+  match blocks:
+    case Nil{}: []
+    case RawBlock{cell, state, material} <> rest: render_block(cell, state, material) <> absolute_blocks(rest)
+
+def eye_position(body: M.Body) -> M.Vec3:
+  M.Body{M.Vec3{x, y, z}, box, velocity, width, height, ground, horizontal, vertical, below} = body
+  M.Vec3{x, F.add(y, F.from_f32(1.62)), z}
+
+def relative_block(raw: RawBlock, origin: M.Vec3) -> R.Block:
+  match raw origin:
+    case RawBlock{Cell{x, y, z, boundary}, state, material} M.Vec3{ox, oy, oz}:
+      R.Block{F.to_f32(F.sub(F.from_i32(x), ox)), F.to_f32(F.sub(F.from_i32(y), oy)), F.to_f32(F.sub(F.from_i32(z), oz)), state, material}
+
+def relative_blocks(blocks: List<&2, RawBlock>, +origin: M.Vec3) -> List<&2, R.Block>:
+  match blocks:
+    case Nil{}: []
+    case raw <> rest: relative_block(raw, origin) <> relative_blocks(rest, origin)
+
+def rendered_blocks(mode: SnapshotMode, blocks: List<&2, RawBlock>, body: M.Body) -> List<&2, R.Block>:
+  match mode:
+    case AbsoluteSnapshot{}: absolute_blocks(blocks)
+    case RelativeSnapshot{}: relative_blocks(blocks, eye_position(body))
+
+def sample_material(cell: Cell, state: U32, reversed: List<&2, RawBlock>, result: Result<&2, &2, String, Maybe<&2, U32>>) -> Result<&2, &2, String, List<&2, RawBlock>>:
   match result:
     case Fail{error}: Fail{error}
     case Done{None{}}: Done{reversed}
-    case Done{Some{material}}: Done{render_block(cell, state, material) <> reversed}
+    case Done{Some{material}}: Done{RawBlock{cell, state, material} <> reversed}
 
-def sample_read(+palette: Palette, +cell: Cell, reversed: List<&2, R.Block>, result: C.World & Result<&2, &2, C.Error, U32>) -> C.World & Result<&2, &2, String, List<&2, R.Block>>:
+def sample_read(+palette: Palette, +cell: Cell, reversed: List<&2, RawBlock>, result: C.World & Result<&2, &2, C.Error, U32>) -> C.World & Result<&2, &2, String, List<&2, RawBlock>>:
   (world, status) = result
   match status:
     case Fail{error}: (world, Fail{error_text(error)})
     case Done{+state}: (world, sample_material(cell, state, reversed, material(palette, state)))
 
-def sample(n: Nat, +index: U32, +bounds: Bounds, +palette: Palette, world: C.World, result: Result<&2, &2, String, List<&2, R.Block>>) -> C.World & Result<&2, &2, String, List<&2, R.Block>>:
+def sample(n: Nat, +index: U32, +bounds: Bounds, +palette: Palette, world: C.World, result: Result<&2, &2, String, List<&2, RawBlock>>) -> C.World & Result<&2, &2, String, List<&2, RawBlock>>:
   match n result:
     case _ Fail{error}: (world, Fail{error})
-    case 0n Done{reversed}: (world, Done{List.reverse(&2, R.Block, reversed)})
+    case 0n Done{reversed}: (world, Done{List.reverse(&2, RawBlock, reversed)})
     case 1n+rest Done{reversed}:
       +point = cell(bounds, index)
-      paired(C.World, Result<&2, &2, String, List<&2, R.Block>>, C.World & Result<&2, &2, String, List<&2, R.Block>>, sample_read(palette, point, reversed, C.read_block(world, position(point))), next => status => sample(rest, U32.inc(index), bounds, palette, next, status))
+      paired(C.World, Result<&2, &2, String, List<&2, RawBlock>>, C.World & Result<&2, &2, String, List<&2, RawBlock>>, sample_read(palette, point, reversed, C.read_block(world, position(point))), next => status => sample(rest, U32.inc(index), bounds, palette, next, status))
 
 def camera(body: M.Body, yaw: F32, pitch: F32) -> R.Camera:
   M.Body{M.Vec3{x, y, z}, box, velocity, width, height, ground, horizontal, vertical, below} = body
   R.Camera{F.to_f32(x), F.to_f32(F.add(y, F.from_f32(1.62))), F.to_f32(z), yaw, pitch}
 
+def rendered_camera(mode: SnapshotMode, body: M.Body, yaw: F32, pitch: F32) -> R.Camera:
+  match mode:
+    case AbsoluteSnapshot{}: camera(body, yaw, pitch)
+    case RelativeSnapshot{}: R.Camera{0.0, 0.0, 0.0, yaw, pitch}
+
 def body_box(body: M.Body) -> A.AABB:
   M.Body{position, box, velocity, width, height, ground, horizontal, vertical, below} = body
   box
 
-def cache_value(palette: Maybe<&2, Palette>, revision: Nat, region: Bounds, blocks: List<&2, R.Block>) -> Maybe<&2, SnapshotCache>:
+def cache_value(palette: Maybe<&2, Palette>, revision: Nat, region: Bounds, blocks: List<&2, RawBlock>) -> Maybe<&2, SnapshotCache>:
   match palette:
     case None{}: None{}
     case Some{actual}: Some{SnapshotCache{revision, region, actual, blocks}}
 
-def snapshot_status(status: Result<&2, &2, String, List<&2, R.Block>>, state: State, tick: Nat, +revision: Nat, camera: R.Camera) -> State & Result<&2, &2, String, R.Snapshot>:
+def snapshot_status(status: Result<&2, &2, String, List<&2, RawBlock>>, state: State, tick: Nat, +revision: Nat, +mode: SnapshotMode) -> State & Result<&2, &2, String, R.Snapshot>:
   match status:
     case Fail{error}: (state, Fail{error})
     case Done{+blocks}:
-      State{engine, body, yaw, pitch, +palette, +region, old_cache} = state
-      (State{engine, body, yaw, pitch, palette, region, cache_value(palette, revision, region, blocks)}, Done{R.Snapshot{tick, revision, blocks, camera}})
+      State{engine, +body, +yaw, +pitch, +palette, +region, old_cache} = state
+      (State{engine, body, yaw, pitch, palette, region, cache_value(palette, revision, region, blocks)}, Done{R.Snapshot{tick, revision, rendered_blocks(mode, blocks, body), rendered_camera(mode, body, yaw, pitch)}})
 
-def snapshot_result(registry: B.Registry, +body: M.Body, +yaw: F32, +pitch: F32, palette: Maybe<&2, Palette>, region: Bounds, cache: Maybe<&2, SnapshotCache>, result: C.World & Result<&2, &2, String, List<&2, R.Block>>) -> State & Result<&2, &2, String, R.Snapshot>:
+def snapshot_result(registry: B.Registry, body: M.Body, yaw: F32, pitch: F32, palette: Maybe<&2, Palette>, region: Bounds, cache: Maybe<&2, SnapshotCache>, mode: SnapshotMode, result: C.World & Result<&2, &2, String, List<&2, RawBlock>>) -> State & Result<&2, &2, String, R.Snapshot>:
   (world, status) = result
   C.World{+tick, time, paused, daylight, +revision, count, sections, pending, events} = world
   state = {State{G.Engine{C.World{tick, time, paused, daylight, revision, count, sections, pending, events}, registry}, body, yaw, pitch, palette, region, cache} : State}
-  snapshot_status(status, state, tick, revision, camera(body, yaw, pitch))
+  snapshot_status(status, state, tick, revision, mode)
 
 def same_region(a: Bounds, b: Bounds) -> Bool:
   match a b:
@@ -230,11 +291,11 @@ def same_palette(a: Palette, b: Palette) -> Bool:
 def cache_match(revision: Nat, region: Bounds, palette: Palette, actual: Nat, bounds: Bounds, colors: Palette) -> Bool:
   Nat.is_eq(actual, revision) && same_region(bounds, region) && same_palette(colors, palette)
 
-def cached_blocks(cache: Maybe<&2, SnapshotCache>, revision: Nat, region: Bounds, palette: Palette) -> Maybe<&2, List<&2, R.Block>>:
+def cached_blocks(cache: Maybe<&2, SnapshotCache>, revision: Nat, region: Bounds, palette: Palette) -> Maybe<&2, List<&2, RawBlock>>:
   match cache:
     case None{}: None{}
     case Some{SnapshotCache{actual, bounds, colors, blocks}}:
-      choose(Maybe<&2, List<&2, R.Block>>, Some{blocks}, None{}, cache_match(revision, region, palette, actual, bounds, colors))
+      choose(Maybe<&2, List<&2, RawBlock>>, Some{blocks}, None{}, cache_match(revision, region, palette, actual, bounds, colors))
 
 law cache_hit_returns_exact_blocks:
   for +revision: Nat
@@ -243,12 +304,12 @@ law cache_hit_returns_exact_blocks:
   for +actual: Nat
   for +bounds: Bounds
   for +colors: Palette
-  for +blocks: List<&2, R.Block>
+  for +blocks: List<&2, RawBlock>
   for hit: {cache_match(revision, region, palette, actual, bounds, colors) == True{} : Bool}
-  {cached_blocks(Some{SnapshotCache{actual, bounds, colors, blocks}}, revision, region, palette) == Some{blocks} : Maybe<&2, List<&2, R.Block>>}
+  {cached_blocks(Some{SnapshotCache{actual, bounds, colors, blocks}}, revision, region, palette) == Some{blocks} : Maybe<&2, List<&2, RawBlock>>}
 
 def cache_hit_returns_exact_blocks(revision, region, palette, actual, bounds, colors, blocks, hit):
-  %Equal.sym(Bool, cache_match(revision, region, palette, actual, bounds, colors), True{}, hit) : {choose(Maybe<&2, List<&2, R.Block>>, Some{blocks}, None{}, _) == Some{blocks} : Maybe<&2, List<&2, R.Block>>}
+  %Equal.sym(Bool, cache_match(revision, region, palette, actual, bounds, colors), True{}, hit) : {choose(Maybe<&2, List<&2, RawBlock>>, Some{blocks}, None{}, _) == Some{blocks} : Maybe<&2, List<&2, RawBlock>>}
   {==}
 
 law cache_miss_rejects_cached_blocks:
@@ -258,28 +319,43 @@ law cache_miss_rejects_cached_blocks:
   for +actual: Nat
   for +bounds: Bounds
   for +colors: Palette
-  for blocks: List<&2, R.Block>
+  for blocks: List<&2, RawBlock>
   for miss: {cache_match(revision, region, palette, actual, bounds, colors) == False{} : Bool}
-  {cached_blocks(Some{SnapshotCache{actual, bounds, colors, blocks}}, revision, region, palette) == None{} : Maybe<&2, List<&2, R.Block>>}
+  {cached_blocks(Some{SnapshotCache{actual, bounds, colors, blocks}}, revision, region, palette) == None{} : Maybe<&2, List<&2, RawBlock>>}
 
 def cache_miss_rejects_cached_blocks(revision, region, palette, actual, bounds, colors, blocks, miss):
-  %Equal.sym(Bool, cache_match(revision, region, palette, actual, bounds, colors), False{}, miss) : {choose(Maybe<&2, List<&2, R.Block>>, Some{blocks}, None{}, _) == None{} : Maybe<&2, List<&2, R.Block>>}
+  %Equal.sym(Bool, cache_match(revision, region, palette, actual, bounds, colors), False{}, miss) : {choose(Maybe<&2, List<&2, RawBlock>>, Some{blocks}, None{}, _) == None{} : Maybe<&2, List<&2, RawBlock>>}
   {==}
 
-def snapshot_cached(found: Maybe<&2, List<&2, R.Block>>, world: C.World, registry: B.Registry, body: M.Body, yaw: F32, pitch: F32, +palette: Palette, +region: Bounds, cache: Maybe<&2, SnapshotCache>) -> State & Result<&2, &2, String, R.Snapshot>:
+def snapshot_cached(found: Maybe<&2, List<&2, RawBlock>>, world: C.World, registry: B.Registry, body: M.Body, yaw: F32, pitch: F32, +palette: Palette, +region: Bounds, cache: Maybe<&2, SnapshotCache>, mode: SnapshotMode) -> State & Result<&2, &2, String, R.Snapshot>:
   match found:
-    case Some{blocks}: snapshot_result(registry, body, yaw, pitch, Some{palette}, region, cache, (world, Done{blocks}))
-    case None{}: snapshot_result(registry, body, yaw, pitch, Some{palette}, region, cache, sample(U32.to_nat(volume(region)), 0, region, palette, world, Done{[]}))
+    case Some{blocks}: snapshot_result(registry, body, yaw, pitch, Some{palette}, region, cache, mode, (world, Done{blocks}))
+    case None{}: snapshot_result(registry, body, yaw, pitch, Some{palette}, region, cache, mode, sample(U32.to_nat(volume(region)), 0, region, palette, world, Done{[]}))
 
-def snapshot_clocked(result: C.World & C.Clock, registry: B.Registry, body: M.Body, yaw: F32, pitch: F32, +palette: Maybe<&2, Palette>, +region: Bounds, +cache: Maybe<&2, SnapshotCache>) -> State & Result<&2, &2, String, R.Snapshot>:
+def snapshot_clocked(result: C.World & C.Clock, registry: B.Registry, body: M.Body, yaw: F32, pitch: F32, +palette: Maybe<&2, Palette>, +region: Bounds, +cache: Maybe<&2, SnapshotCache>, mode: SnapshotMode) -> State & Result<&2, &2, String, R.Snapshot>:
   (world, C.Clock{tick, time, paused, daylight, revision, pending}) = result
   match palette:
     case None{}: (State{G.Engine{world, registry}, body, yaw, pitch, palette, region, cache}, Fail{"palette-unavailable"})
-    case Some{+actual}: snapshot_cached(cached_blocks(cache, revision, region, actual), world, registry, body, yaw, pitch, actual, region, cache)
+    case Some{+actual}: snapshot_cached(cached_blocks(cache, revision, region, actual), world, registry, body, yaw, pitch, actual, region, cache, mode)
 
 def snapshot(state: State, width: U32, height: U32) -> State & Result<&2, &2, String, R.Snapshot>:
   State{G.Engine{world, registry}, body, yaw, pitch, palette, region, cache} = state
-  snapshot_clocked(C.clock(world), registry, body, yaw, pitch, palette, region, cache)
+  snapshot_clocked(C.clock(world), registry, body, yaw, pitch, palette, region, cache, AbsoluteSnapshot{})
+
+def relative_snapshot_gate(valid: Bool, state: State) -> State & Result<&2, &2, String, R.Snapshot>:
+  match valid:
+    case False{}: (state, Fail{"invalid-relative-camera"})
+    case True{}:
+      State{G.Engine{world, registry}, body, yaw, pitch, palette, region, cache} = state
+      snapshot_clocked(C.clock(world), registry, body, yaw, pitch, palette, region, cache, RelativeSnapshot{})
+
+def finite_relative_origin(origin: M.Vec3) -> Bool:
+  M.Vec3{x, y, z} = origin
+  Result.is_done(&2, &2, F.F64ConversionError, U32, F.floor_i32(x)) && Result.is_done(&2, &2, F.F64ConversionError, U32, F.floor_i32(y)) && Result.is_done(&2, &2, F.F64ConversionError, U32, F.floor_i32(z))
+
+def relative_snapshot(state: State, width: U32, height: U32) -> State & Result<&2, &2, String, R.Snapshot>:
+  State{engine, +body, +yaw, +pitch, palette, region, cache} = state
+  relative_snapshot_gate(finite_relative_origin(eye_position(body)) && F.is_finite(F.from_f32(yaw)) && F.is_finite(F.from_f32(pitch)), State{engine, body, yaw, pitch, palette, region, cache})
 
 def full_cube(cell: Cell) -> A.AABB:
   Cell{x, y, z, boundary} = cell

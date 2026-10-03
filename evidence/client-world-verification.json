@@ -2,7 +2,7 @@
   "actual_entity_move_cases": 87,
   "actual_full_entity_move_executed": true,
   "actual_java_block_collisions_executed": true,
-  "binary_sha256": "8ebeb291ad0ddba0b03405ecce19cc8215ce1335ae536f94365e053ca0c0e7f5",
+  "binary_sha256": "890f17d24cd1b764b044fb915b8f4ed72d82cee126994f6b940e9ef5aeba2ad6",
   "bounds_rejections": 5,
   "builds": [
     {
@@ -13,7 +13,7 @@
         "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/client-world-tests"
       ],
       "exit_code": 0,
-      "seconds": 27.569892,
+      "seconds": 41.360179,
       "stderr": "",
       "stdout": ""
     }
@@ -27,7 +27,7 @@
         "--check-only"
       ],
       "exit_code": 0,
-      "seconds": 1.07232,
+      "seconds": 1.257595,
       "stderr": "",
       "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
     },
@@ -38,7 +38,7 @@
         "--check-only"
       ],
       "exit_code": 0,
-      "seconds": 1.420405,
+      "seconds": 1.543873,
       "stderr": "",
       "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
     }
@@ -60,7 +60,7 @@
         "-d"
       ],
       "exit_code": 0,
-      "seconds": 0.719669,
+      "seconds": 1.468271,
       "stderr": "Note: /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/client-world-oracle/ReferenceDirectMovementProbe.java uses or overrides a deprecated API.\nNote: Recompile with -Xlint:deprecation for details.\n",
       "stdout": ""
     },
@@ -72,13 +72,13 @@
         "ClientWorldProbe"
       ],
       "exit_code": 0,
-      "seconds": 2.324689,
+      "seconds": 5.373106,
       "stderr": "WARNING: A terminally deprecated method in sun.misc.Unsafe has been called\nWARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.joml.MemUtil$MemUtilUnsafe (file:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/joml/joml/1.10.9/joml-1.10.9.jar)\nWARNING: Please consider reporting this to the maintainers of class org.joml.MemUtil$MemUtilUnsafe\nWARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release\n",
       "stdout": ""
     }
   ],
   "java_input_sha256": "587817a91e03049cb83782c5455a2c2cb2164d0284b22b2d9710f516e044a6e6",
-  "java_output_sha256": "ac7c73cf9fba767e52b985043480923f608fa9340a5534aba591ed92fe517570",
+  "java_output_sha256": "0d2e1674f651ca2581d1f355e15b6c65db7b6d00238a8a9b825392e3055819a8",
   "java_source_sha256": "cebeb6e2dc732b3a23e4ac92cecfeff1fe04be78eb573818fa70cbf8d766d1a6",
   "movement_oracle_cases": 87,
   "movement_reference_source_sha256": "85e06ea1cf8f718d08b60731abfa8132e235905eed09ed19b12b072dab752ead",
@@ -86,75 +86,75 @@
     {
       "count": 16,
       "offset": 0,
-      "seconds": 2.106926
+      "seconds": 3.520609
     },
     {
       "count": 16,
       "offset": 16,
-      "seconds": 1.50483
+      "seconds": 3.649634
     },
     {
       "count": 16,
       "offset": 32,
-      "seconds": 1.520691
+      "seconds": 2.196351
     },
     {
       "count": 16,
       "offset": 48,
-      "seconds": 1.470729
+      "seconds": 3.391783
     },
     {
       "count": 16,
       "offset": 64,
-      "seconds": 1.542362
+      "seconds": 3.343443
     },
     {
       "count": 16,
       "offset": 80,
-      "seconds": 1.502441
+      "seconds": 1.849946
     },
     {
       "count": 16,
       "offset": 96,
-      "seconds": 1.512939
+      "seconds": 1.843688
     },
     {
       "count": 16,
       "offset": 112,
-      "seconds": 1.55839
+      "seconds": 2.081037
     },
     {
       "count": 16,
       "offset": 128,
-      "seconds": 1.514033
+      "seconds": 2.017589
     },
     {
       "count": 16,
       "offset": 144,
-      "seconds": 1.524332
+      "seconds": 2.028962
     },
     {
       "count": 16,
       "offset": 160,
-      "seconds": 1.523236
+      "seconds": 1.973261
     },
     {
       "count": 16,
       "offset": 176,
-      "seconds": 1.533458
+      "seconds": 1.94941
     },
     {
       "count": 16,
       "offset": 192,
-      "seconds": 1.487018
+      "seconds": 1.957138
     },
     {
       "count": 3,
       "offset": 208,
-      "seconds": 0.258537
+      "seconds": 0.304606
     }
   ],
-  "native_seconds": 34.807787,
+  "native_seconds": 56.616839,
   "pin": "26.3",
   "pinned_java_inputs": [
     {
@@ -400,6 +400,54 @@
   ],
   "query_bounds_cases": 124,
   "query_oracle_cases": 124,
+  "relative_snapshot": {
+    "cases_sha256": "b70e46bea6a9c1332bc9af0956efb5bfc81cf8f20df098b2c908224e988e52d0",
+    "confidence": "high for these observed finite scenes",
+    "exact_legacy_coordinate_checks": 1728,
+    "exact_relative_coordinate_checks": 3456,
+    "far_blocks_per_scene": 18,
+    "far_coordinate_cases": 32,
+    "invalid_camera_kinds": [
+      "NaN position",
+      "infinite position",
+      "positive I32 overflow",
+      "negative I32 overflow",
+      "infinite yaw",
+      "NaN pitch"
+    ],
+    "invalid_camera_rejections": 37,
+    "legacy_adjacent_alias_observed": true,
+    "native_batches": [
+      {
+        "cases": 8,
+        "offset": 0,
+        "seconds": 0.865096
+      },
+      {
+        "cases": 8,
+        "offset": 8,
+        "seconds": 0.878713
+      },
+      {
+        "cases": 8,
+        "offset": 16,
+        "seconds": 0.895224
+      },
+      {
+        "cases": 8,
+        "offset": 24,
+        "seconds": 0.912007
+      }
+    ],
+    "native_snapshot_observations": 192,
+    "oracle": "Exact Fraction arithmetic, integer IEEE binary64 and binary32 round-to-nearest/ties-to-even; no host float arithmetic for expected relative coordinates",
+    "relative_adjacent_cells_distinct": true,
+    "relative_error_repair_groups": 2,
+    "shifted_cache_matches_uncached": true,
+    "signed_axes_combinations": 8,
+    "status": "passed",
+    "view_roundtrip_cases": 33
+  },
   "release": {
     "asset_index": {
       "bytes": 597035,
@@ -549,23 +597,24 @@
     "air/stone/dirt/oak_planks finite static full-cube scene",
     "actual Java BlockCollisions traversal and full-cube intersection",
     "actual untouched Entity.move on the same finite scene and narrow generic entity context",
-    "binary64 collision and render-only binary32 narrowing"
+    "binary64 collision and render-only binary32 narrowing",
+    "eye-relative binary64 subtraction before binary32 narrowing near all signed axes at \u00b130,000,000"
   ],
   "seed": 263100347,
   "snapshot_benchmark": {
-    "estimated_snapshot_seconds": 7.439999999999988e-07,
+    "estimated_snapshot_seconds": 4.1919e-06,
     "noop_seconds": [
-      0.089689,
-      0.088431,
-      0.110284
+      0.098461,
+      0.096342,
+      0.165787
     ],
     "processes": 3,
     "repetitions_per_process": 10000,
-    "scope": "384 checked world cells,39 render blocks; startup/registry/fixture median subtracted; not a Minecraft benchmark",
+    "scope": "384 world cells avoided by a successful raw cache,39 legacy block-list entries counted; block coordinate fields, camera, and tick values are not consumed; startup/registry/fixture median subtracted; not full snapshot conversion, a frame, or a Minecraft benchmark",
     "snapshot_loop_seconds": [
-      0.090142,
-      0.098959,
-      0.097129
+      0.138061,
+      0.144968,
+      0.14038
     ],
     "unisolated_concurrent_host": true
   },
@@ -580,23 +629,26 @@
     ],
     "laws": [
       "cache_hit_returns_exact_blocks",
-      "cache_miss_rejects_cached_blocks"
+      "cache_miss_rejects_cached_blocks",
+      "take_attach_preserves_owned_state"
     ],
     "ordinary_laws_checked": true,
     "raw_write_invalidation_tested": true,
+    "storage": "Exact signed U32 cells, state, and material; binary32 positions are computed for each snapshot",
     "whole_module_kernel_verified": false
   },
+  "source_generation_stable": true,
   "sources_sha256": {
-    "docs/CLIENT_WORLD.md": "d1b97ea4206b1cb0a00362dff6e26fa6a15c34fb4d3ca43b4f1ca1721489783b",
+    "docs/CLIENT_WORLD.md": "7f7ec6ee22c46413d072c2e55c8c0e892dabaf12a72838bdb129076212e5e4f9",
     "src/client_render.bend": "bb8f6057a02bfcb0583025f9e75fe41abc6804eb554c6d971df5c81618932947",
-    "src/client_world.bend": "6f2a67354fd55c2c782c4b309cf5b3f71d2c6af30d6648ba374e3ee4ea458b30",
+    "src/client_world.bend": "05040abf35b2b9ceaf87fed5c48f8d074d211750a59ab00fa6ff08e60a9ea5d7",
     "src/core.bend": "c1ee5a5390cdac0452c9c6cd3b0584a68ef68b5b0dfec867491c27e67ecadd4e",
     "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
     "src/game.bend": "43e3eee5d15613bb06cc608fe43657aa14d8c0fbe899d4efa580fc8335d23882",
     "src/movement.bend": "0e94fea7cc941a23d2ed7bbd2ccaf0117e6af363eb91f2db2e34428f9dd9e67f",
     "src/registry.bend": "821c53d9cfa3044be3cae2af968f55563c0be2bebc9beae55a29d77d47b140a0",
-    "tests/client_world.bend": "c868ce55017eb6658af473caceba47b433ff05cdc2d9579cc2742865bbb8ee2e",
-    "tools/test_client_world.py": "d2ba0442b05c51a8f980fc8c74ba19d4b31c6292a7abc71f92c189dc2ec99fa6"
+    "tests/client_world.bend": "3f4d3620775a7559799389678b197f7c4362d0b0d10be998205979f2c85e7ad3",
+    "tools/test_client_world.py": "e64430126cbc6fd5b85a0bfcbb61de322020585a877aeb6412d3bacbc5dbdbd3"
   },
   "status": "passed",
   "unsupported": [

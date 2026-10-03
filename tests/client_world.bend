@@ -9,6 +9,7 @@ import ../src/geometry.bend as A
 import ../src/f64.bend as F
 import ../src/live.bend as L
 import ../src/json.bend as J
+import ../src/schedule.bend as Q
 
 def number_result(result: Maybe<&2, U32>) -> U32:
   match result:
@@ -110,6 +111,10 @@ def loaded_fixture(result: W.State & Result<&2, &2, String, Unit>) -> IO(W.State
 
 def replace_body(state: W.State, body: M.Body) -> W.State:
   W.State{engine, old, yaw, pitch, palette, region, cache} = state
+  W.State{engine, body, yaw, pitch, palette, region, cache}
+
+def replace_angles(state: W.State, yaw: F32, pitch: F32) -> W.State:
+  W.State{engine, body, old_yaw, old_pitch, palette, region, cache} = state
   W.State{engine, body, yaw, pitch, palette, region, cache}
 
 def query_report(id: String, result: C.World & Result<&2, &2, String, List<&2, A.Collider>>) -> IO(Unit):
@@ -223,6 +228,43 @@ def swap_palette(state: W.State) -> W.State:
     case None{}: W.State{engine, body, yaw, pitch, None{}, region, cache}
     case Some{W.Palette{air, stone, dirt, planks}}: W.State{engine, body, yaw, pitch, Some{W.Palette{air, dirt, stone, planks}}, region, cache}
 
+def view_roundtrip(result: G.Engine & W.View) -> W.State:
+  (engine, view) = result
+  W.attach(engine, view)
+
+def far_admitted(result: C.World & Result<&2, &2, C.Error, Unit>, registry: B.Registry, body: M.Body, palette: Maybe<&2, W.Palette>, region: W.Bounds) -> IO(W.State):
+  (world, status) = result
+  match status:
+    case Fail{error}: IO.die(W.State, 1, "far fixture admission:" ++ W.error_text(error))
+    case Done{unit}: IO.pure(W.State, W.State{G.Engine{C.step(world), registry}, body, 0.0, 0.2, palette, region, None{}})
+
+def far_owned(state: W.State, +x: U32, +y: U32, +z: U32, position: M.Vec3) -> IO(W.State):
+  W.State{G.Engine{world, registry}, old, yaw, pitch, +palette, region, cache} = state
+  match palette:
+    case None{}: IO.die(W.State, 1, "far fixture palette unavailable")
+    case Some{W.Palette{air, stone, dirt, planks}}:
+      far_admitted(C.admit(world, C.Developer{}, Q.Stamp{1n, 3, 0n}, C.SectionCreate{C.Position{"minecraft:overworld", x, y, z}, stone}), registry, M.Body.new(position, 0.6, 1.8, M.Vec3.zero(), True{}), palette, W.Bounds{x, y, z, 3, 2, 3})
+
+def far_sequence(+id: String, +position: M.Vec3, state: W.State) -> IO(Unit):
+  do IO<Unit>:
+    absolute : W.State <- snapshot_report(id ++ "-absolute", W.snapshot(state, 64, 48))
+    relative : W.State <- snapshot_report(id ++ "-relative", W.relative_snapshot(absolute, 64, 48))
+    roundtrip : W.State <- snapshot_report(id ++ "-roundtrip", W.relative_snapshot(view_roundtrip(W.take(relative)), 64, 48))
+    changed : W.State <- snapshot_report(id ++ "-shifted", W.relative_snapshot(replace_body(roundtrip, M.Body.new(M.Vec3.add(position, M.Vec3{F.from_f32(0.25), F.from_f32(0.125), F.from_f32(F32.neg(0.25))}), 0.6, 1.8, M.Vec3.zero(), True{})), 64, 48))
+    uncached : W.State <- snapshot_report(id ++ "-uncached", W.relative_snapshot(W.invalidate_cache(changed), 64, 48))
+    bad : W.State <- snapshot_report(id ++ "-bad", W.relative_snapshot(replace_body(uncached, M.Body.new(M.Vec3{F.F64{2146959360, 0}, M.zero(), M.zero()}, 0.6, 1.8, M.Vec3.zero(), True{})), 64, 48))
+    restored : W.State <- snapshot_report(id ++ "-restored", W.relative_snapshot(replace_body(bad, M.Body.new(position, 0.6, 1.8, M.Vec3.zero(), True{})), 64, 48))
+    release(restored)
+
+def far_fields(id: String, fields: List<&2, String>, state: W.State) -> IO(Unit):
+  match fields:
+    case x <> y <> z <> xh <> xl <> yh <> yl <> zh <> zl <> Nil{}:
+      +position = {M.Vec3{F.F64{number(xh), number(xl)}, F.F64{number(yh), number(yl)}, F.F64{number(zh), number(zl)}} : M.Vec3}
+      do IO<Unit>:
+        initialized : W.State <- far_owned(state, number(x), number(y), number(z), position)
+        far_sequence(id, position, initialized)
+    case _: IO.die(Unit, 2, "invalid far protocol")
+
 def operations(op: String, +id: String, fields: List<&2, String>, state: W.State) -> IO(Unit):
   match op:
     case "snapshot": repeated(id, state)
@@ -303,13 +345,44 @@ def operations(op: String, +id: String, fields: List<&2, String>, state: W.State
         changed : W.State <- snapshot_report(id ++ "-after", W.snapshot(swap_palette(before), 64, 48))
         checked : W.State <- snapshot_report(id ++ "-uncached", W.snapshot(W.invalidate_cache(changed), 64, 48))
         release(checked)
+    case "view":
+      do IO<Unit>:
+        before : W.State <- snapshot_report(id ++ "-before", W.snapshot(state, 64, 48))
+        attached : W.State <- snapshot_report(id ++ "-attached", W.snapshot(view_roundtrip(W.take(before)), 64, 48))
+        relative : W.State <- snapshot_report(id ++ "-relative", W.relative_snapshot(attached, 64, 48))
+        release(relative)
+    case "relative-repair":
+      do IO<Unit>:
+        before : W.State <- snapshot_report(id ++ "-before", W.relative_snapshot(state, 64, 48))
+        bad : W.State <- snapshot_report(id ++ "-bad", W.relative_snapshot(unsupported(before), 64, 48))
+        repaired : W.State <- snapshot_report(id ++ "-repaired", W.relative_snapshot(edit_palette(bad), 64, 48))
+        uncached : W.State <- snapshot_report(id ++ "-uncached", W.relative_snapshot(W.invalidate_cache(repaired), 64, 48))
+        release(uncached)
+    case "relative-raw":
+      do IO<Unit>:
+        before : W.State <- snapshot_report(id ++ "-before", W.relative_snapshot(state, 64, 48))
+        edited : W.State <- snapshot_report(id ++ "-after", W.relative_snapshot(raw_edit(before), 64, 48))
+        uncached : W.State <- snapshot_report(id ++ "-uncached", W.relative_snapshot(W.invalidate_cache(edited), 64, 48))
+        release(uncached)
+    case "relative-invalid":
+      W.State{engine, +body, +yaw, +pitch, palette, region, cache} = state
+      do IO<Unit>:
+        before : W.State <- snapshot_report(id ++ "-before", W.relative_snapshot(W.State{engine, body, yaw, pitch, palette, region, cache}, 64, 48))
+        infinity : W.State <- snapshot_report(id ++ "-infinity", W.relative_snapshot(replace_body(before, M.Body.new(M.Vec3{F.F64{2146435072, 0}, M.zero(), M.zero()}, 0.6, 1.8, M.Vec3.zero(), True{})), 64, 48))
+        high : W.State <- snapshot_report(id ++ "-high", W.relative_snapshot(replace_body(infinity, M.Body.new(M.Vec3{F.from_u32(2147483648), M.zero(), M.zero()}, 0.6, 1.8, M.Vec3.zero(), True{})), 64, 48))
+        low : W.State <- snapshot_report(id ++ "-low", W.relative_snapshot(replace_body(high, M.Body.new(M.Vec3{F.sub(F.from_i32(2147483648), F.from_u32(1)), M.zero(), M.zero()}, 0.6, 1.8, M.Vec3.zero(), True{})), 64, 48))
+        angle : W.State <- snapshot_report(id ++ "-angle", W.relative_snapshot(replace_angles(replace_body(low, body), f32(2139095040), pitch), 64, 48))
+        nan_pitch : W.State <- snapshot_report(id ++ "-pitch", W.relative_snapshot(replace_angles(angle, yaw, f32(2143289344)), 64, 48))
+        restored : W.State <- snapshot_report(id ++ "-restored", W.relative_snapshot(replace_angles(nan_pitch, yaw, pitch), 64, 48))
+        release(restored)
     case _: IO.die(Unit, 2, "invalid client-world operation")
 
 def terrain_free(+id: String, result: W.State & Result<&2, &2, String, Unit>) -> IO(Unit):
   do IO<Unit>:
     first : W.State <- unit_report(id ++ "-new", result)
     second : W.State <- snapshot_report(id ++ "-missing", W.snapshot(first, 64, 48))
-    third : W.State <- movement_report(id ++ "-stationary", W.move(second, M.Vec3.zero(), 0.6))
+    relative : W.State <- snapshot_report(id ++ "-relative-missing", W.relative_snapshot(second, 64, 48))
+    third : W.State <- movement_report(id ++ "-stationary", W.move(relative, M.Vec3.zero(), 0.6))
     fourth : W.State <- movement_report(id ++ "-nonzero", W.move(third, M.Vec3{F.from_f32(0.25), M.zero(), M.zero()}, 0.6))
     release(fourth)
 
@@ -317,6 +390,10 @@ def command(fields: List<&2, String>, engine: G.Engine) -> IO(Unit):
   match fields:
     case "bounds" <> id <> rest: bounds_fields(id, rest)
     case "new" <> id <> Nil{}: terrain_free(id, W.new(engine))
+    case "far" <> id <> rest:
+      do IO<Unit>:
+        state : W.State <- loaded_fixture(W.new(engine))
+        far_fields(id, rest, state)
     case op <> id <> rest:
       do IO<Unit>:
         state : W.State <- loaded_fixture(W.fixture(engine))
