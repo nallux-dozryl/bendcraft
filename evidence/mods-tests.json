@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "compiler": "bend 2.0.35",
+  "source_sha256": "2973cf471f31092f71fcb7590451d9fe68f48cc98a5ad7f29f39f2b1fd4166c6",
+  "json_dependency_sha256": "a546726a2422382e388e3b0c9c2868034f25f5b1339c8b6b1dc167190a1b4099",
+  "native_binary_sha256": "930255d38773f01a078523e67613c5ba4ebaeee71fff83c3a8484dac48c92f32",
+  "checker": {
+    "src/mods.bend": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.",
+    "tests/mods.bend": "ALL PROOFS CHECK\nUse --verdict for mathematical validity."
+  },
+  "kernel_verdicts": {
+    "src/mods.bend": {
+      "exit_code": 1,
+      "output": "SOME PROOFS FAIL\nSorry - this is a mismatch between the TypeScript implementation, and the formalized BendTT kernel. Your proofs may or may not be correct, and we cannot validate them yet. This will be addressed in a future update. Meanwhile, feel free to open an issue to report this bug."
+    },
+    "tests/mods.bend": {
+      "exit_code": 1,
+      "output": "SOME PROOFS FAIL\nSorry - this is a mismatch between the TypeScript implementation, and the formalized BendTT kernel. Your proofs may or may not be correct, and we cannot validate them yet. This will be addressed in a future update. Meanwhile, feel free to open an issue to report this bug."
+    }
+  },
+  "independent_cases": 503,
+  "generated_dags": 200,
+  "input_permutations": 200,
+  "all_cases_passed": true,
+  "finite_fixture_laws": 1,
+  "general_laws": [
+    "both-side provider covers every side"
+  ],
+  "fixtures": {
+    "mods/fixtures/base.json": "cfbf4b2cd33d311237b7844b72b3f8f50cc0eb8f66f9fdfdfc92679ad195bab1",
+    "mods/fixtures/biome.json": "8622524d813e7574d47d131160cd36df032b72fdd2134a8f6c99010ff57438e1",
+    "mods/fixtures/hud.json": "94ef69d89653ebe4d8ed9c95a43359f3bf275a4acb4eb0fd515adcc876242325",
+    "mods/fixtures/telemetry.json": "2f754fdd6f01f16ad89a8a689198229f1c8f38ce786a775ca8a69060a37f0029"
+  },
+  "semantics": "Own typed core-version/range/DAG/side/metadata compatibility, independent of Java mod loaders; no lifecycle execution claim",
+  "elapsed_seconds": 12.054,
+  "commands": [
+    "python3 tools/test_mods.py",
+    "/Users/chuah/.bend/bin/bend src/mods.bend --check-only",
+    "/Users/chuah/.bend/bin/bend tests/mods.bend --check-only",
+    "/Users/chuah/.bend/bin/bend tests/mods.bend -o build/mods-tests",
+    "/Users/chuah/.bend/bin/bend src/mods.bend --verdict",
+    "/Users/chuah/.bend/bin/bend tests/mods.bend --verdict"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "fixture:hud",
+  "version": "1.0.3",
+  "api_version": "1.0.0",
+  "side": "client",
+  "dependencies": [{"id": "fixture:biome", "range": {"min": {"version": "2.0.0", "inclusive": true}}}],
+  "before": [],
+  "after": ["fixture:base"],
+  "operations": ["fixture:hud.toggle"],
+  "queries": ["fixture:hud.inspect"],
+  "events": ["fixture:hud.changed"],
+  "data_version": 1,
+  "reload": "safe"
+}

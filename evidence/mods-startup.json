@@ -1,0 +1,309 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "kind": "actual_compiled_driver_manifest_startup",
+  "command": "python3 tools/test_mod_manifest_startup.py",
+  "build_command": "/Users/chuah/.bend/bin/bend mods/examples/time_overhaul.bend -o build/time-overhaul-manifest-tests",
+  "source_sha256": {
+    "mods/examples/time_overhaul.bend": "3f1631ae8743a7e6579ab4bcbf7ab091893f6722d9087542eed559455c7dc968",
+    "mods/examples/time_overhaul.json": "af87d5192d11ef37cf5da66558166ff5edc161c07ac2d936088acd6f2a5bfd80",
+    "src/mods.bend": "2973cf471f31092f71fcb7590451d9fe68f48cc98a5ad7f29f39f2b1fd4166c6",
+    "src/json.bend": "a546726a2422382e388e3b0c9c2868034f25f5b1339c8b6b1dc167190a1b4099",
+    "src/framing.bend": "307f95049df03d92687b7bd0eafb2cd566e660926510bb88163f9bc825fccdb5",
+    "src/server.bend": "af936d316fb314aae0c0757f8e2ff2d31a87b4173927f1c242edd9163f5add7c",
+    "src/game.bend": "43e3eee5d15613bb06cc608fe43657aa14d8c0fbe899d4efa580fc8335d23882",
+    "tools/test_mod_manifest_startup.py": "1f07625876953186d3f97670ab3d3d9372903ccf3382e5c8735b0a6cc1c2c0fe"
+  },
+  "binary_sha256": "f04d8af9822ce12378802c78979b1c5eb2880892b17e590e9ad7c352de696c38",
+  "checker": {
+    "exit_code": 1,
+    "output": "SOME PROOFS FAIL\nError: 7 defs rely on unsafe or foreign code:\n- ../../src/server.actor\n- ../../src/server.timer\n- ../../src/server.read_loop\n- ../../src/server.accepted\n- ../../src/server.accept_loop\n- ../../src/server.run\n- main"
+  },
+  "valid_startups": 7,
+  "invalid_startups": 41,
+  "cases": [
+    {
+      "name": "default-file",
+      "status": "ready",
+      "discovered_tools": 18
+    },
+    {
+      "name": "explicit-relative-path",
+      "status": "ready",
+      "discovered_tools": 18
+    },
+    {
+      "name": "explicit-absolute-path",
+      "status": "ready",
+      "discovered_tools": 18
+    },
+    {
+      "name": "normalized-version-triples",
+      "status": "ready",
+      "discovered_tools": 18
+    },
+    {
+      "name": "optional-empty-requirements",
+      "status": "ready",
+      "discovered_tools": 18
+    },
+    {
+      "name": "decoded-ascii-escapes",
+      "status": "ready",
+      "discovered_tools": 18
+    },
+    {
+      "name": "maximum-codepoint-file",
+      "status": "ready",
+      "discovered_tools": 18
+    },
+    {
+      "name": "compiled-identity",
+      "status": "rejected-before-ready",
+      "exit_code": 2,
+      "diagnostic": "mod manifest startup: CompiledIdentityMismatch: expected bendex:time_overhaul"
+    },
+    {
+      "name": "compiled-version",
+      "status": "rejected-before-ready",
+      "exit_code": 2,
+      "diagnostic": "mod manifest startup: CompiledVersionMismatch: expected 1.0.0"
+    },
+    {
+      "name": "compiled-api",
+      "status": "rejected-before-ready",
+      "exit_code": 2,
+      "diagnostic": "mod manifest startup: ApiVersionMismatch: bendex:time_overhaul"
+    },
+    {
+      "name": "compiled-side-client",
+      "status": "rejected-before-ready",
+      "exit_code": 2,
+      "diagnostic": "mod manifest startup: CompiledSideMismatch: expected server"
+    },
+    {
+      "name": "compiled-side-both",
+      "status": "rejected-before-ready",
+      "exit_code": 2,
+      "diagnostic": "mod manifest startup: CompiledSideMismatch: expected server"
+    },
+    {
+      "name": "missing-operation",
+      "status": "rejected-before-ready",
+      "exit_code": 2,
+      "diagnostic": "mod manifest startup: CompiledOperationsMismatch: expected mod.time_overhaul.configure"
+    },
+    {
+      "name": "unknown-operation",
+      "status": "rejected-before-ready",
+      "exit_code": 2,
+      "diagnostic": "mod manifest startup: CompiledOperationsMismatch: expected mod.time_overhaul.configure"
+    },
+    {
+      "name": "extra-operation",
+      "status": "rejected-before-ready",
+      "exit_code": 2,
+      "diagnostic": "mod manifest startup: CompiledOperationsMismatch: expected mod.time_overhaul.configure"
+    },
+    {
+      "name": "missing-query",
+      "status": "rejected-before-ready",
+      "exit_code": 2,
+      "diagnostic": "mod manifest startup: CompiledQueriesMismatch: expected mod.time_overhaul.status"
+    },
+    {
+      "name": "unknown-query",
+      "status": "rejected-before-ready",
+      "exit_code": 2,
+      "diagnostic": "mod manifest startup: CompiledQueriesMismatch: expected mod.time_overhaul.status"
+    },
+    {
+      "name": "swapped-callable-roles",
+      "status": "rejected-before-ready",
+      "exit_code": 2,
+      "diagnostic": "mod manifest startup: CompiledOperationsMismatch: expected mod.time_overhaul.configure"
+    },
+    {
+      "name": "undeclared-runtime-events",
+      "status": "rejected-before-ready",
+      "exit_code": 2,
+      "diagnostic": "mod manifest startup: CompiledEventsMismatch: this driver declares no events"
+    },
+    {
+      "name": "compiled-data-version",
+      "status": "rejected-before-ready",
+      "exit_code": 2,
+      "diagnostic": "mod manifest startup: CompiledDataVersionMismatch: expected 0"
+    },
+    {
+      "name": "unsupported-hot-reload",
+      "status": "rejected-before-ready",
+      "exit_code": 2,
+      "diagnostic": "mod manifest startup: CompiledReloadMismatch: this driver requires restart"
+    },
+    {
+      "name": "missing-dependency",
+      "status": "rejected-before-ready",
+      "exit_code": 2,
+      "diagnostic": "mod manifest startup: MissingDependency: bendex:time_overhaul requires bendex:absent"
+    },
+    {
+      "name": "self-dependency-cycle",
+      "status": "rejected-before-ready",
+      "exit_code": 2,
+      "diagnostic": "mod manifest startup: Cycle: no ready mod among bendex:time_overhaul"
+    },
+    {
+      "name": "incompatible-self-version",
+      "status": "rejected-before-ready",
+      "exit_code": 2,
+      "diagnostic": "mod manifest startup: IncompatibleDependency: bendex:time_overhaul rejects bendex:time_overhaul version 1.0.0"
+    },
+    {
+      "name": "missing-order-before",
+      "status": "rejected-before-ready",
+      "exit_code": 2,
+      "diagnostic": "mod manifest startup: MissingOrderTarget: bendex:time_overhaul references bendex:absent"
+    },
+    {
+      "name": "self-order-after-cycle",
+      "status": "rejected-before-ready",
+      "exit_code": 2,
+      "diagnostic": "mod manifest startup: Cycle: no ready mod among bendex:time_overhaul"
+    },
+    {
+      "name": "unknown-field",
+      "status": "rejected-before-ready",
+      "exit_code": 2,
+      "diagnostic": "mod manifest startup: InvalidManifest: expected object with known unique fields"
+    },
+    {
+      "name": "wrong-field-type",
+      "status": "rejected-before-ready",
+      "exit_code": 2,
+      "diagnostic": "mod manifest startup: InvalidManifest: unsigned integer required for data_version"
+    },
+    {
+      "name": "wrong-side-value",
+      "status": "rejected-before-ready",
+      "exit_code": 2,
+      "diagnostic": "mod manifest startup: InvalidManifest: side must be client/server/both"
+    },
+    {
+      "name": "missing-version",
+      "status": "rejected-before-ready",
+      "exit_code": 2,
+      "diagnostic": "mod manifest startup: InvalidManifest: version/api_version missing"
+    },
+    {
+      "name": "malformed-version",
+      "status": "rejected-before-ready",
+      "exit_code": 2,
+      "diagnostic": "mod manifest startup: InvalidManifest: unsigned integer required for version.major"
+    },
+    {
+      "name": "version-u32-overflow",
+      "status": "rejected-before-ready",
+      "exit_code": 2,
+      "diagnostic": "mod manifest startup: InvalidManifest: unsigned integer required for version.major"
+    },
+    {
+      "name": "duplicate-declaration",
+      "status": "rejected-before-ready",
+      "exit_code": 2,
+      "diagnostic": "mod manifest startup: InvalidMetadata: invalid IDs, declarations, ranges or list limits"
+    },
+    {
+      "name": "duplicate-json-member",
+      "status": "rejected-before-ready",
+      "exit_code": 2,
+      "diagnostic": "mod manifest startup: ManifestJSON: duplicate object member at offset 32"
+    },
+    {
+      "name": "trailing-json-junk",
+      "status": "rejected-before-ready",
+      "exit_code": 2,
+      "diagnostic": "mod manifest startup: ManifestJSON: trailing input at offset 258"
+    },
+    {
+      "name": "empty-file",
+      "status": "rejected-before-ready",
+      "exit_code": 2,
+      "diagnostic": "mod manifest startup: ManifestJSON: expected JSON value at offset 0"
+    },
+    {
+      "name": "json-syntax",
+      "status": "rejected-before-ready",
+      "exit_code": 2,
+      "diagnostic": "mod manifest startup: ManifestJSON: expected JSON value at offset 6"
+    },
+    {
+      "name": "overlong-utf8-ascii",
+      "status": "rejected-before-ready",
+      "exit_code": 2,
+      "diagnostic": "mod manifest startup: ManifestUTF8: invalid UTF-8 leading byte"
+    },
+    {
+      "name": "utf8-surrogate",
+      "status": "rejected-before-ready",
+      "exit_code": 2,
+      "diagnostic": "mod manifest startup: ManifestUTF8: invalid UTF-8 scalar or overlong encoding"
+    },
+    {
+      "name": "utf8-out-of-range",
+      "status": "rejected-before-ready",
+      "exit_code": 2,
+      "diagnostic": "mod manifest startup: ManifestUTF8: invalid UTF-8 scalar or overlong encoding"
+    },
+    {
+      "name": "utf8-truncated",
+      "status": "rejected-before-ready",
+      "exit_code": 2,
+      "diagnostic": "mod manifest startup: ManifestUTF8: truncated UTF-8 encoding at completed line"
+    },
+    {
+      "name": "utf8-continuation",
+      "status": "rejected-before-ready",
+      "exit_code": 2,
+      "diagnostic": "mod manifest startup: ManifestUTF8: invalid UTF-8 leading byte"
+    },
+    {
+      "name": "codepoint-limit",
+      "status": "rejected-before-ready",
+      "exit_code": 2,
+      "diagnostic": "mod manifest startup: ManifestUTF8: line exceeds 16384 Unicode scalar code points"
+    },
+    {
+      "name": "byte-limit",
+      "status": "rejected-before-ready",
+      "exit_code": 2,
+      "diagnostic": "mod manifest startup: ManifestSize: file exceeds 65536 bytes"
+    },
+    {
+      "name": "json-depth-limit",
+      "status": "rejected-before-ready",
+      "exit_code": 2,
+      "diagnostic": "mod manifest startup: ManifestJSON: nesting limit exceeded at offset 64"
+    },
+    {
+      "name": "missing-file",
+      "status": "rejected-before-ready",
+      "exit_code": 2,
+      "diagnostic": "mod manifest startup: ManifestReadError: No such file or directory"
+    },
+    {
+      "name": "directory-file",
+      "status": "rejected-before-ready",
+      "exit_code": 2,
+      "diagnostic": "mod manifest startup: ManifestReadError: Is a directory"
+    },
+    {
+      "name": "explicit-empty-path",
+      "status": "rejected-before-ready",
+      "exit_code": 2,
+      "diagnostic": "mod manifest startup: ManifestReadError: No such file or directory"
+    }
+  ],
+  "elapsed_seconds": 71.617,
+  "limits": "One compile-time linked typed driver; startup metadata validation precedes registry loading/listener startup. No runtime code loading, lifecycle hook execution, hot reload, state migration or persistence established."
+}

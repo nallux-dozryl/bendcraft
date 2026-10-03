@@ -1,0 +1,14 @@
+{
+  "id": "fixture:biome",
+  "version": [2, 0, 1],
+  "api_version": "1.0.0",
+  "side": "both",
+  "dependencies": [{"id": "fixture:base", "range": {"min": {"version": "1.0.0", "inclusive": true}, "max": {"version": [2, 0, 0], "inclusive": false}}}],
+  "before": [],
+  "after": [],
+  "operations": ["fixture:biome.configure"],
+  "queries": ["fixture:biome.inspect"],
+  "events": ["fixture:biome.changed"],
+  "data_version": 3,
+  "reload": "restart"
+}

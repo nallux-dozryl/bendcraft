@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "kind": "actual_complete_driver_replacement_tcp_and_mcp",
+  "checks": [
+    "actual extra owned state and dynamic catalog with capability checks",
+    "mod state updates while paused; explicit stepping remains exact",
+    "mod schemas reject invalid configuration without changing rate",
+    "replacement realtime transition runs four exact ticks per pulse and applies intervening actions",
+    "unchanged actual MCP adapter discovers and executes mod operations on shared state"
+  ],
+  "source_sha256": {
+    "mods/examples/time_overhaul.bend": "3f1631ae8743a7e6579ab4bcbf7ab091893f6722d9087542eed559455c7dc968",
+    "src/server.bend": "af936d316fb314aae0c0757f8e2ff2d31a87b4173927f1c242edd9163f5add7c",
+    "src/game.bend": "43e3eee5d15613bb06cc608fe43657aa14d8c0fbe899d4efa580fc8335d23882",
+    "src/live.bend": "cb5a2f8237a53e48d3f6751d321a023e11694721f789373984d7d77620f32e87",
+    "src/core.bend": "c1ee5a5390cdac0452c9c6cd3b0584a68ef68b5b0dfec867491c27e67ecadd4e",
+    "src/mcp.bend": "8291445d923714ec6985e8c6b2b8f756cf09cd7e4d488814b2c6cd6552238d95",
+    "mcp.bend": "5b67990ce163cdd4ab20d0ca9b46e6b0a3708f759f2dcaee17287342e1a5f81c",
+    "tools/test_mod_driver.py": "33cc7d22cd5ea75e661b655a5f0188e4fad36c61408ca49255beabb3ac9abce0"
+  },
+  "binaries_sha256": {
+    "time-overhaul-server": "dace598dbab5cc5917bcd27ea04f99d691a9eb1213baf43588543e02bd8341b9",
+    "minecraft-mcp": "9cb1cca6d9cbb82aaeebf00df06482b3e1778cdf0334766879a4ef4ed3d60664"
+  },
+  "realtime_ticks_over_280ms": 24,
+  "ticks_per_pulse": 4,
+  "discovered_tools": 18,
+  "elapsed_seconds": 40.298,
+  "command": "python3 tools/test_mod_driver.py",
+  "limits": "One compiled typed system replacement example. No runtime code loading, player hooks, manifest integration, persistence/reload/migrations or broad subsystem mod coverage established."
+}

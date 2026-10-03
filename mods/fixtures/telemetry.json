@@ -1,0 +1,14 @@
+{
+  "id": "fixture:telemetry",
+  "version": "0.4.0",
+  "api_version": "1.0.0",
+  "side": "server",
+  "dependencies": [{"id": "fixture:biome", "range": {"min": {"version": [2, 0, 1], "inclusive": true}, "max": {"version": "3.0.0", "inclusive": false}}}],
+  "before": [],
+  "after": [],
+  "operations": ["fixture:telemetry.reset"],
+  "queries": ["fixture:telemetry.inspect"],
+  "events": ["fixture:telemetry.sample"],
+  "data_version": 2,
+  "reload": "safe"
+}
