@@ -1,0 +1,380 @@
+{
+  "status": "pass",
+  "scope": "verified ordinary macOS CPU Bend CLI compilation cache; no gameplay change",
+  "command": "python3 tools/test_build_native.py",
+  "compiler_version": "bend 2.0.35",
+  "compiler_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+  "build_tool_sha256": "3418c78cddc092aec55c7447a818735569b5b279d3bc4b05e3c0077624387c18",
+  "test_tool_sha256": "e97e95bd9801249a2f97de7342f70f6a7f83b1fcbe7a10e4700112fb0603aab3",
+  "platform": "macOS-26.4.1-arm64-arm-64bit-Mach-O",
+  "checks": [
+    "first actual native build",
+    "same-key digest-checked reuse and equivalent execution",
+    "same inputs reuse across distinct native output paths",
+    "entry invalidation with actual native execution",
+    "direct-import invalidation with actual native execution",
+    "transitive-import invalidation with actual native execution",
+    "native-effect invalidation with actual native execution",
+    "native-header invalidation with actual native execution",
+    "installed-Base invalidation with actual native execution",
+    "installed-Base-native-effect invalidation with actual native execution",
+    "compiler deployment-target configuration invalidates and executes",
+    "actual isolated clang resource content invalidates without modifying installed tools",
+    "corrupt published executable repaired from verified cache",
+    "corrupt cached executable rejected and recompiled",
+    "manifest/executable digest mismatch rejected",
+    "corrupt retained emitted C regenerated before reuse",
+    "missing transitive dependency: unresolved Bend import /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/minecraft-native-cache-test-hgota4tf/fixture/transitive.bend; no hub fetch is cached",
+    "missing native dependency: unresolvable dependency /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/minecraft-native-cache-test-hgota4tf/fixture/effect.c: [Errno 2] No such file or directory: '/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/minecraft-native-cache-test-hgota4tf/fixture/effect.c'",
+    "missing native header: command failed (1): /usr/bin/clang -std=c11 -O3 -M -MF /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/minecraft-native-cache-test-hgota4tf/cache/.deps-t2fvav5p/headers.d -MT bend-cache-probe /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/minecraft-native-cache-test-hgota4tf/cache/sources/6069458b73d32e0767b2ad50412b4024c894007a7c8249a9b26fc236db5a51cf/generated.c",
+    "relative native include: relative native include cannot be resolved safely: /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/minecraft-native-cache-test-hgota4tf/fixture/effect.c: unresolved_relative.h",
+    "dependency overwrite: native output would overwrite a compilation dependency",
+    "non-native output extension: output extension selects a non-native Bend CLI route",
+    "compiler injection: unresolved compiler injection environment: CCC_OVERRIDE_OPTIONS",
+    "unverified Bend binary content: Bend executable differs from the verified dependency-loader digest",
+    "unresolvable compiler wrapper: C compiler wrappers/scripts have unresolvable dependencies; select actual clang",
+    "unresolved hub name without fetching: unresolvable dependency /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/minecraft-native-cache-test-hgota4tf/library/names/cache-fixture@1.0.0.0: [Errno 2] No such file or directory: '/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/minecraft-native-cache-test-hgota4tf/library'",
+    "actual locally resolved named import and package-name mapping invalidation",
+    "checked Window emission is rejected specifically by the guarded platform route",
+    "GPU/bang emitted route: GPU/bang output is outside the plain CPU native cache",
+    "four simultaneous CLI processes: exactly one native build, three verified hits, one complete output",
+    "two concurrent different keys share one output: complete published generation and separate correct immutable artifacts",
+    "input changes during actual native build: old generation discarded, retry uses new key",
+    "input changes during C emission: source generation discarded; restored inputs execute correctly",
+    "explicit force still runs the native checker/build"
+  ],
+  "actual_build_observations": [
+    {
+      "label": "first-build",
+      "cache_hit": false,
+      "cache_key": "b0ba8a8d959f205c04b6f7abea2107e2cc1610d0159b594a1837b4545fbde5df",
+      "binary_sha256": "41e6eb440085c218be2736ac19b4959303a50028b2fd0c9d818bb2716c8114f9",
+      "output": "native-A\n18\n",
+      "dependency_count": 1632,
+      "timings": {
+        "total_seconds": 4.946147000417113,
+        "emission_seconds": 0.0742629999294877,
+        "native_seconds": 0.2981905844062567
+      },
+      "retries": 0
+    },
+    {
+      "label": "reuse",
+      "cache_hit": true,
+      "cache_key": "b0ba8a8d959f205c04b6f7abea2107e2cc1610d0159b594a1837b4545fbde5df",
+      "binary_sha256": "41e6eb440085c218be2736ac19b4959303a50028b2fd0c9d818bb2716c8114f9",
+      "output": "native-A\n18\n",
+      "dependency_count": 1632,
+      "timings": {
+        "total_seconds": 1.3621738329529762,
+        "emission_seconds": 0.0,
+        "native_seconds": 0.0
+      },
+      "retries": 0
+    },
+    {
+      "label": "entry",
+      "cache_hit": false,
+      "cache_key": "a20f8cdeb570bda59ea57744dd866b810c8771e50b08f18e464f6e4564dd4a85",
+      "binary_sha256": "41e6eb440085c218be2736ac19b4959303a50028b2fd0c9d818bb2716c8114f9",
+      "output": "native-A\n18\n",
+      "dependency_count": 1632,
+      "timings": {
+        "total_seconds": 2.270745708607137,
+        "emission_seconds": 0.07364470884203911,
+        "native_seconds": 0.28617370780557394
+      },
+      "retries": 0
+    },
+    {
+      "label": "direct-import",
+      "cache_hit": false,
+      "cache_key": "ee36d92af3f38138befbebeaa6849b10e6f154ad917158221a53926be434c016",
+      "binary_sha256": "628134c656a4826f1a4eb2175ff5590f9622f36774f19cb8d3a6037da9fe8e69",
+      "output": "native-A\n19\n",
+      "dependency_count": 1632,
+      "timings": {
+        "total_seconds": 2.3361467495560646,
+        "emission_seconds": 0.0712669575586915,
+        "native_seconds": 0.2991020828485489
+      },
+      "retries": 0
+    },
+    {
+      "label": "transitive-import",
+      "cache_hit": false,
+      "cache_key": "376189219be17b3ace22d86e79bf37173bef9f39126637b4f77b1279533d95aa",
+      "binary_sha256": "06d3ed7879f99521b64bfcf4e1b29c4ff00989ba7071f51bb0e40eee8f0b3985",
+      "output": "native-A\n20\n",
+      "dependency_count": 1632,
+      "timings": {
+        "total_seconds": 2.600774457678199,
+        "emission_seconds": 0.07058425061404705,
+        "native_seconds": 0.3506192499771714
+      },
+      "retries": 0
+    },
+    {
+      "label": "native-effect",
+      "cache_hit": false,
+      "cache_key": "4fc6f811f501a08dd2b4e49f4f6eb0cab7dd2572b1089cfd5fb8c1fed21a402c",
+      "binary_sha256": "06d3ed7879f99521b64bfcf4e1b29c4ff00989ba7071f51bb0e40eee8f0b3985",
+      "output": "native-A\n20\n",
+      "dependency_count": 1632,
+      "timings": {
+        "total_seconds": 2.687583209015429,
+        "emission_seconds": 0.09467350039631128,
+        "native_seconds": 0.2990028327330947
+      },
+      "retries": 0
+    },
+    {
+      "label": "native-header",
+      "cache_hit": false,
+      "cache_key": "2bec6fdd5e08b28ed13aea262f827810a28f3dbceb55a5e84e2e547ce223f39e",
+      "binary_sha256": "f4171538ee6d3992d4b53915437fe4f23fc94a4f7c509e55445edb62ad9b26f8",
+      "output": "native-B\n20\n",
+      "dependency_count": 1632,
+      "timings": {
+        "total_seconds": 1.676981333643198,
+        "emission_seconds": 0.0,
+        "native_seconds": 0.27298750076442957
+      },
+      "retries": 0
+    },
+    {
+      "label": "installed-Base",
+      "cache_hit": false,
+      "cache_key": "e99c0426b54fee8ec7baa777409f5e3a75c49df3c01abadf55bf68bfe18cd071",
+      "binary_sha256": "f4171538ee6d3992d4b53915437fe4f23fc94a4f7c509e55445edb62ad9b26f8",
+      "output": "native-B\n20\n",
+      "dependency_count": 1632,
+      "timings": {
+        "total_seconds": 2.1806349996477365,
+        "emission_seconds": 0.0671199169009924,
+        "native_seconds": 0.2622680841013789
+      },
+      "retries": 0
+    },
+    {
+      "label": "installed-Base-native-effect",
+      "cache_hit": false,
+      "cache_key": "a5c78a37913707fc1b66357dc34f5a060d0dcdb178ad5afd6bb8334d085354c9",
+      "binary_sha256": "f4171538ee6d3992d4b53915437fe4f23fc94a4f7c509e55445edb62ad9b26f8",
+      "output": "native-B\n20\n",
+      "dependency_count": 1632,
+      "timings": {
+        "total_seconds": 2.166463917121291,
+        "emission_seconds": 0.06716337520629168,
+        "native_seconds": 0.27045120857656
+      },
+      "retries": 0
+    },
+    {
+      "label": "compiler-environment-config",
+      "cache_hit": false,
+      "cache_key": "a36b607b683f451f2f507db0a7078c0139ab075498e35cbb77ff05a7eb897224",
+      "binary_sha256": "df293be055f27349395d22add4ac9dd52a53d6f586780c79ea45428584f969cc",
+      "output": "native-B\n20\n",
+      "dependency_count": 1632,
+      "timings": {
+        "total_seconds": 2.152452625334263,
+        "emission_seconds": 0.06859083380550146,
+        "native_seconds": 0.2617547092959285
+      },
+      "retries": 0
+    },
+    {
+      "label": "configuration-restored",
+      "cache_hit": true,
+      "cache_key": "a5c78a37913707fc1b66357dc34f5a060d0dcdb178ad5afd6bb8334d085354c9",
+      "binary_sha256": "f4171538ee6d3992d4b53915437fe4f23fc94a4f7c509e55445edb62ad9b26f8",
+      "output": "native-B\n20\n",
+      "dependency_count": 1632,
+      "timings": {
+        "total_seconds": 1.2735782908275723,
+        "emission_seconds": 0.0,
+        "native_seconds": 0.0
+      },
+      "retries": 0
+    },
+    {
+      "label": "isolated-clang-resource-before",
+      "cache_hit": false,
+      "cache_key": "2c50f20df20d1369e73194083e77cbafee1b350bf021c8a39add494b0e12bd0d",
+      "binary_sha256": "f4171538ee6d3992d4b53915437fe4f23fc94a4f7c509e55445edb62ad9b26f8",
+      "output": "native-B\n20\n",
+      "dependency_count": 1594,
+      "timings": {
+        "total_seconds": 3.938867250457406,
+        "emission_seconds": 0.06805612426251173,
+        "native_seconds": 0.2833216665312648
+      },
+      "retries": 0
+    },
+    {
+      "label": "isolated-clang-resource-after",
+      "cache_hit": false,
+      "cache_key": "096fcdbaea076022b9c91b3de9ac7ac1afa612f2585b8306d9cf412671a658e6",
+      "binary_sha256": "f4171538ee6d3992d4b53915437fe4f23fc94a4f7c509e55445edb62ad9b26f8",
+      "output": "native-B\n20\n",
+      "dependency_count": 1594,
+      "timings": {
+        "total_seconds": 2.1803233744576573,
+        "emission_seconds": 0.07328895851969719,
+        "native_seconds": 0.28485808335244656
+      },
+      "retries": 0
+    },
+    {
+      "label": "toolchain-configuration-restored",
+      "cache_hit": true,
+      "cache_key": "a5c78a37913707fc1b66357dc34f5a060d0dcdb178ad5afd6bb8334d085354c9",
+      "binary_sha256": "f4171538ee6d3992d4b53915437fe4f23fc94a4f7c509e55445edb62ad9b26f8",
+      "output": "native-B\n20\n",
+      "dependency_count": 1632,
+      "timings": {
+        "total_seconds": 1.349448500201106,
+        "emission_seconds": 0.0,
+        "native_seconds": 0.0
+      },
+      "retries": 0
+    },
+    {
+      "label": "published-output-corruption",
+      "cache_hit": true,
+      "cache_key": "a5c78a37913707fc1b66357dc34f5a060d0dcdb178ad5afd6bb8334d085354c9",
+      "binary_sha256": "f4171538ee6d3992d4b53915437fe4f23fc94a4f7c509e55445edb62ad9b26f8",
+      "output": "native-B\n20\n",
+      "dependency_count": 1632,
+      "timings": {
+        "total_seconds": 1.3424738747999072,
+        "emission_seconds": 0.0,
+        "native_seconds": 0.0
+      },
+      "retries": 0
+    },
+    {
+      "label": "cached-executable-corruption",
+      "cache_hit": false,
+      "cache_key": "a5c78a37913707fc1b66357dc34f5a060d0dcdb178ad5afd6bb8334d085354c9",
+      "binary_sha256": "f4171538ee6d3992d4b53915437fe4f23fc94a4f7c509e55445edb62ad9b26f8",
+      "output": "native-B\n20\n",
+      "dependency_count": 1632,
+      "timings": {
+        "total_seconds": 1.6302347090095282,
+        "emission_seconds": 0.0,
+        "native_seconds": 0.28069645818322897
+      },
+      "retries": 0
+    },
+    {
+      "label": "manifest-digest-mismatch",
+      "cache_hit": false,
+      "cache_key": "a5c78a37913707fc1b66357dc34f5a060d0dcdb178ad5afd6bb8334d085354c9",
+      "binary_sha256": "f4171538ee6d3992d4b53915437fe4f23fc94a4f7c509e55445edb62ad9b26f8",
+      "output": "native-B\n20\n",
+      "dependency_count": 1632,
+      "timings": {
+        "total_seconds": 1.6392164584249258,
+        "emission_seconds": 0.0,
+        "native_seconds": 0.2896451251581311
+      },
+      "retries": 0
+    },
+    {
+      "label": "emitted-source-corruption",
+      "cache_hit": true,
+      "cache_key": "a5c78a37913707fc1b66357dc34f5a060d0dcdb178ad5afd6bb8334d085354c9",
+      "binary_sha256": "f4171538ee6d3992d4b53915437fe4f23fc94a4f7c509e55445edb62ad9b26f8",
+      "output": "native-B\n20\n",
+      "dependency_count": 1632,
+      "timings": {
+        "total_seconds": 2.078360041603446,
+        "emission_seconds": 0.08687012456357479,
+        "native_seconds": 0.0
+      },
+      "retries": 0
+    },
+    {
+      "label": "input-changes-during-native-build",
+      "cache_hit": false,
+      "cache_key": "13572f86821a698e4f71fec47469c870f335823a9e9454c28bcbb12baa2d5219",
+      "binary_sha256": "12557715ad2882ed3bddc4aa9d89cfce9e0f719238b5006a1695637c3dac98e5",
+      "output": "native-B\n21\n",
+      "dependency_count": 1632,
+      "timings": {
+        "total_seconds": 4.008400624617934,
+        "emission_seconds": 0.0,
+        "native_seconds": 0.28897558338940144
+      },
+      "retries": 1
+    },
+    {
+      "label": "input-changes-during-emission",
+      "cache_hit": false,
+      "cache_key": "bc7bf2eba3144636ab3052ef3263bcac5aadd6350994ba022b2d9b57c2417465",
+      "binary_sha256": "792eb252306616acc51a88385dde38cb4623288565b200aaed05b0ca6b8153a2",
+      "output": "native-B\n22\n",
+      "dependency_count": 1632,
+      "timings": {
+        "total_seconds": 3.6774536250159144,
+        "emission_seconds": 0.0678459582850337,
+        "native_seconds": 0.29425504244863987
+      },
+      "retries": 1
+    },
+    {
+      "label": "restore-before-moving-emission",
+      "cache_hit": false,
+      "cache_key": "b2a458be0d51b99782dfc5971450fc1537cb04df21c95d287c4ae4e7e2a88eb8",
+      "binary_sha256": "12557715ad2882ed3bddc4aa9d89cfce9e0f719238b5006a1695637c3dac98e5",
+      "output": "native-B\n21\n",
+      "dependency_count": 1632,
+      "timings": {
+        "total_seconds": 2.3028443343937397,
+        "emission_seconds": 0.0719941658899188,
+        "native_seconds": 0.2790205404162407
+      },
+      "retries": 0
+    },
+    {
+      "label": "force-rebuild",
+      "cache_hit": false,
+      "cache_key": "b2a458be0d51b99782dfc5971450fc1537cb04df21c95d287c4ae4e7e2a88eb8",
+      "binary_sha256": "12557715ad2882ed3bddc4aa9d89cfce9e0f719238b5006a1695637c3dac98e5",
+      "output": "native-B\n21\n",
+      "dependency_count": 1632,
+      "timings": {
+        "total_seconds": 1.887052834033966,
+        "emission_seconds": 0.0,
+        "native_seconds": 0.3257609158754349
+      },
+      "retries": 0
+    }
+  ],
+  "concurrency": {
+    "processes": 4,
+    "native_builds": 1,
+    "cache_hits": 3,
+    "same_key": true,
+    "same_binary_digest": true
+  },
+  "dependency_kinds": [
+    "base",
+    "bend",
+    "bend-executable",
+    "cache-policy",
+    "clang-driver",
+    "clang-driver-input",
+    "clang-resource",
+    "linker-selected-input",
+    "native-effect",
+    "native-header",
+    "sdk-config",
+    "sdk-link-library",
+    "toolchain-dylib-or-tool"
+  ],
+  "dependency_count": 1632,
+  "timing_seconds": 77.06762700062245
+}
