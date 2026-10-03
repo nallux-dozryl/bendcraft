@@ -4308,42 +4308,6 @@
     {
       "behavioral_reference_evidence": [],
       "behavioral_reference_status": "not_vanilla_parity_scope",
-      "id": "foundation:section_storage",
-      "implementation_evidence": [
-        "src/section.bend",
-        "tests/section.bend"
-      ],
-      "implementation_status": "implemented_foundation",
-      "kind": "implementation_foundation",
-      "reference_evidence": [],
-      "reference_inventory_status": "not_applicable",
-      "scope_limit": "Does not mark any vanilla feature category implemented or behaviorally equivalent.",
-      "verification_evidence": [
-        "evidence/section-verification.json"
-      ],
-      "verification_status": "foundation_invariants_verified"
-    },
-    {
-      "behavioral_reference_evidence": [],
-      "behavioral_reference_status": "not_vanilla_parity_scope",
-      "id": "foundation:inventory_primitives",
-      "implementation_evidence": [
-        "src/inventory.bend",
-        "tests/inventory.bend"
-      ],
-      "implementation_status": "implemented_foundation",
-      "kind": "implementation_foundation",
-      "reference_evidence": [],
-      "reference_inventory_status": "not_applicable",
-      "scope_limit": "Does not mark any vanilla feature category implemented or behaviorally equivalent.",
-      "verification_evidence": [
-        "evidence/inventory-oracle.json"
-      ],
-      "verification_status": "foundation_invariants_verified"
-    },
-    {
-      "behavioral_reference_evidence": [],
-      "behavioral_reference_status": "not_vanilla_parity_scope",
       "id": "foundation:authoritative_edit_tick_kernel",
       "implementation_evidence": [
         "src/core.bend",
@@ -4375,6 +4339,42 @@
       "scope_limit": "Does not mark any vanilla feature category implemented or behaviorally equivalent.",
       "verification_evidence": [
         "evidence/platform-launch.json"
+      ],
+      "verification_status": "foundation_invariants_verified"
+    },
+    {
+      "behavioral_reference_evidence": [],
+      "behavioral_reference_status": "not_vanilla_parity_scope",
+      "id": "foundation:inventory_primitives",
+      "implementation_evidence": [
+        "src/inventory.bend",
+        "tests/inventory.bend"
+      ],
+      "implementation_status": "implemented_foundation",
+      "kind": "implementation_foundation",
+      "reference_evidence": [],
+      "reference_inventory_status": "not_applicable",
+      "scope_limit": "Does not mark any vanilla feature category implemented or behaviorally equivalent.",
+      "verification_evidence": [
+        "evidence/inventory-oracle.json"
+      ],
+      "verification_status": "foundation_invariants_verified"
+    },
+    {
+      "behavioral_reference_evidence": [],
+      "behavioral_reference_status": "not_vanilla_parity_scope",
+      "id": "foundation:section_storage",
+      "implementation_evidence": [
+        "src/section.bend",
+        "tests/section.bend"
+      ],
+      "implementation_status": "implemented_foundation",
+      "kind": "implementation_foundation",
+      "reference_evidence": [],
+      "reference_inventory_status": "not_applicable",
+      "scope_limit": "Does not mark any vanilla feature category implemented or behaviorally equivalent.",
+      "verification_evidence": [
+        "evidence/section-verification.json"
       ],
       "verification_status": "foundation_invariants_verified"
     }

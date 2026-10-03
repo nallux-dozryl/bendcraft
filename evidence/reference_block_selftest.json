@@ -1,0 +1,30 @@
+{
+  "bend_behavioral_parity_established": false,
+  "corruption_checks": [
+    {
+      "expected_rejection": "table SHA-256 mismatch",
+      "mutation": "Replace a widened 0.6f by float64 literal 0.6",
+      "rejected": true
+    },
+    {
+      "expected_rejection": "float32-to-float64 widening mismatch",
+      "mutation": "Same wrong widening with checksum updated",
+      "rejected": true
+    },
+    {
+      "expected_rejection": "inverted block AABB",
+      "mutation": "Invert full-cube maxX with shape checksum updated",
+      "rejected": true
+    }
+  ],
+  "full_java_probe_runs": 2,
+  "kind": "block_reference_reproducibility_and_failure_checks",
+  "outputs_reproduced": {
+    "evidence/reference_block_probe.json": "93ca3ce480c9ed1d06e86bd0f7546d4ece9392f475c21d3f5b477524a07d8941",
+    "evidence/reference_block_validation.json": "794e8711c6ddbd7955f15ec747c2700d5a50465b71d3d6d8773de37ff75bb295",
+    "generated/reference_block_physics.tsv": "5524f68f61ee1fa34df98d02bd7e86f1cd1ea2b5f05df3e9365aec14b567d7d1",
+    "reference/block_physics.json": "ab28e12cae1c8ba9cec7dc67d7f49f5df7d43b6f40b2bd6a09625e80f559e35f"
+  },
+  "pin": "26.3",
+  "reproduce": "python3 tools/reference_block_probe.py --selftest"
+}

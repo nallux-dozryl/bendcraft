@@ -14,7 +14,12 @@ from reference_inventory import ROOT, write_json
 
 
 def snapshot() -> dict[str, str]:
-    paths = sorted(list((ROOT / "reference").glob("*.json")) + list((ROOT / "generated").glob("reference_*.tsv")))
+    # Supplemental probe outputs have their own verification pipeline. The
+    # base inventory self-test must not call untouched supplemental files
+    # "reproduced" merely because they survived a base extraction rerun.
+    names = ["release", "inventory", "datapack_structure", "coverage", "behavior_inventory", "structures"]
+    inventory_evidence = json.loads((ROOT / "evidence/reference_inventory.json").read_text())
+    paths = sorted([ROOT / "reference" / (name + ".json") for name in names] + [ROOT / name for name in inventory_evidence["generated_tables"]])
     return {str(path.relative_to(ROOT)): hashlib.sha256(path.read_bytes()).hexdigest() for path in paths}
 
 
