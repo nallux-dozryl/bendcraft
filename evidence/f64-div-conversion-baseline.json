@@ -1,0 +1,240 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "platform": {
+    "system": "Darwin",
+    "release": "25.4.0",
+    "machine": "arm64"
+  },
+  "compiler": "bend 2.0.35",
+  "kernel_verdict": "ALL PROOFS CHECK",
+  "verification_scope": "type/termination validity, not an IEEE arithmetic theorem",
+  "fixture_pairs": 48112,
+  "finite_pairs": 45532,
+  "finite_add_sub_mul_div_bit_comparisons": 182128,
+  "random_finite_pairs": 20000,
+  "seed": 640263,
+  "fixture_kinds": {
+    "edge": 17956,
+    "uniform_finite": 20000,
+    "halfway_neighbor": 5000,
+    "cancellation": 5000,
+    "division_subnormal_tie": 140,
+    "division_range_boundary": 16
+  },
+  "conversions": {
+    "cases": 26586,
+    "native_from_word_bit_comparisons": 79758,
+    "native_checked_i32_comparisons": 53172,
+    "c_exact_widening_comparisons": 26123,
+    "c_nan_widening_class_checks": 463,
+    "outcomes": {
+      "floor:nan": 112,
+      "floor:ok": 16291,
+      "floor:range": 10183,
+      "trunc:nan": 112,
+      "trunc:ok": 16499,
+      "trunc:range": 9975
+    },
+    "fixture_sha256": "d17706b9a6abce5f3bff3955cad808272be0f8ab80d05af28552d46c224ffb15"
+  },
+  "c_double_nan_class_checks": 4,
+  "c_double_exact_finite_input_result_comparisons": 182124,
+  "exact_fraction_rounding_cross_checks": 8156,
+  "exact_fraction_breakdown": {
+    "random_operand_pairs": 2000,
+    "random_arithmetic_checks": 8000,
+    "targeted_division_boundary_checks": 156,
+    "total": 8156
+  },
+  "fixture_sha256": "298b8bcb27ab225755d4f5973297249c7c8c6a56639094a73cef901345a2b48a",
+  "native_fixture_wall_seconds": 1.7482721246778965,
+  "nan_policy": "first input NaN retains sign/payload and is quieted; invalid infinities produce canonical +quiet NaN",
+  "rounding": "nearest, ties to even; gradual underflow; signed-zero arithmetic",
+  "benchmark": {
+    "backend": "native CPU; --gpu off --threads 1",
+    "repeats": 5,
+    "timing": "Bend IO.now: 1ms resolution, sequenced around evaluated loop; C CLOCK_MONOTONIC: ns; process startup separately recorded",
+    "workloads": [
+      {
+        "workload": "unit_increment",
+        "iterations": 1000000,
+        "result_bits": "412e848000000000",
+        "bend_loop_milliseconds": [
+          10,
+          11,
+          10,
+          10,
+          10
+        ],
+        "c_double_loop_nanoseconds": [
+          731000,
+          741000,
+          775000,
+          747000,
+          742000
+        ],
+        "bend_process_wall_nanoseconds": [
+          13741083,
+          13342167,
+          13300750,
+          15303208,
+          13194500
+        ],
+        "median_bend_ns_per_operation": 10.0,
+        "median_c_ns_per_operation": 0.742,
+        "median_soft_to_hardware_ratio": 13.477088948787062
+      },
+      {
+        "workload": "decimal_increment",
+        "iterations": 1000000,
+        "result_bits": "40f86a10000165cf",
+        "bend_loop_milliseconds": [
+          11,
+          11,
+          10,
+          11,
+          10
+        ],
+        "c_double_loop_nanoseconds": [
+          740000,
+          744000,
+          735000,
+          776000,
+          770000
+        ],
+        "bend_process_wall_nanoseconds": [
+          14271625,
+          13908000,
+          14705291,
+          16179541,
+          13869333
+        ],
+        "median_bend_ns_per_operation": 11.0,
+        "median_c_ns_per_operation": 0.744,
+        "median_soft_to_hardware_ratio": 14.78494623655914
+      },
+      {
+        "workload": "near_unity_product",
+        "iterations": 1000000,
+        "result_bits": "3ff00000000f4240",
+        "bend_loop_milliseconds": [
+          67,
+          66,
+          66,
+          66,
+          66
+        ],
+        "c_double_loop_nanoseconds": [
+          1128000,
+          1136000,
+          1111000,
+          1121000,
+          1106000
+        ],
+        "bend_process_wall_nanoseconds": [
+          70301334,
+          69382292,
+          69722000,
+          71571375,
+          69795542
+        ],
+        "median_bend_ns_per_operation": 66.0,
+        "median_c_ns_per_operation": 1.121,
+        "median_soft_to_hardware_ratio": 58.87600356824264
+      },
+      {
+        "workload": "near_unity_quotient",
+        "iterations": 1000000,
+        "result_bits": "3fefffffffe17b80",
+        "bend_loop_milliseconds": [
+          177,
+          178,
+          177,
+          177,
+          180
+        ],
+        "c_double_loop_nanoseconds": [
+          2798000,
+          2814000,
+          2785000,
+          2831000,
+          2829000
+        ],
+        "bend_process_wall_nanoseconds": [
+          181695833,
+          181825667,
+          184350458,
+          180840125,
+          184630500
+        ],
+        "median_bend_ns_per_operation": 177.0,
+        "median_c_ns_per_operation": 2.814,
+        "median_soft_to_hardware_ratio": 62.89978678038379
+      }
+    ]
+  },
+  "emitted_c": {
+    "bytes": 467465,
+    "lines": 15790,
+    "scalar_inline_helpers": 139,
+    "scalar_helper_u32_operations": 213,
+    "scalar_helpers_use_host_floating_arithmetic": false,
+    "sha256": "48668b97dbfc2160aec8e18ed8af336aaa571977e9efed7063a8adc0c8344067"
+  },
+  "native_binary_sha256": "1dbce1cc1cb5dfc4476f06457e4e38a6a9059240ad5911225921e6be0b4e3c6a",
+  "reference_c_sha256": "f8b88a8fabd28fb5c5f57c302a2329e62ed3419caae50a9bbf94f9855f14db6a",
+  "source_sha256": {
+    "src/f64.bend": "bf300e34a67df69cb244745660ed14ec6bc3f0b88f451c66ac9408b057f03077",
+    "tests/f64.bend": "96fb7cd456df5608449cbfb245db324596389bd41dc335a8386dc627fd0fa5b6",
+    "tools/test_f64.py": "321c42d040cb87af05bc96d5691f26ae9c7af00d8c35de97dd3db12ecb370f78"
+  },
+  "commands": [
+    [
+      "/Users/chuah/.bend/bin/bend",
+      "src/f64.bend",
+      "--verdict"
+    ],
+    [
+      "/Users/chuah/.bend/bin/bend",
+      "tests/f64.bend",
+      "-o",
+      "build/f64_test"
+    ],
+    [
+      "/Users/chuah/.bend/bin/bend",
+      "tests/f64.bend",
+      "-o",
+      "build/f64_test.c"
+    ],
+    [
+      "clang",
+      "-O3",
+      "-fno-fast-math",
+      "-ffp-contract=off",
+      "build/f64_reference.c",
+      "-o",
+      "build/f64_reference"
+    ],
+    [
+      "python3",
+      "tools/test_f64.py",
+      "--seed",
+      "640263",
+      "--random",
+      "20000",
+      "--iterations",
+      "1000000",
+      "--repeats",
+      "5"
+    ]
+  ],
+  "unsupported": [
+    "remainder/sqrt/transcendentals",
+    "decimal parsing/formatting",
+    "i64 input/output",
+    "rounding modes other than RN-even",
+    "floating exception flags",
+    "Minecraft collision/movement parity"
+  ]
+}

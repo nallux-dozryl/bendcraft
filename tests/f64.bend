@@ -83,12 +83,16 @@ def conversion_show(result: Result<&2, &2, F.F64ConversionError, U32>) -> String
 def conversion_report(+word: U32, +value: F.F64) -> IO(Unit):
   IO.print("convert|" ++ U32.show(word) ++ "|" ++ value_show(F.from_u32(word)) ++ "|" ++ value_show(F.from_i32(word)) ++ "|" ++ value_show(F.from_f32(float_word(word))) ++ "|" ++ conversion_show(F.trunc_i32(value)) ++ "|" ++ conversion_show(F.floor_i32(value)))
 
+def narrowing_report(value: F.F64) -> IO(Unit):
+  IO.print("narrow|" ++ U32.show(F32.bits(F.to_f32(value))))
+
 def dispatch_label(label: String, ah: U32, al: U32, bh: U32, bl: U32, extra: U32) -> IO(Unit):
   match label:
     case "bench": benchmark_report(ah, F.F64{al, bh}, F.F64{bl, extra})
     case "benchmul": benchmark_mul_report(ah, F.F64{al, bh}, F.F64{bl, extra})
     case "benchdiv": benchmark_div_report(ah, F.F64{al, bh}, F.F64{bl, extra})
     case "convert": conversion_report(ah, F.F64{al, bh})
+    case "narrow": narrowing_report(F.F64{ah, al})
     case _: report(label, F.F64{ah, al}, F.F64{bh, bl})
 
 def dispatch(fields: List<&2, String>) -> IO(Unit):

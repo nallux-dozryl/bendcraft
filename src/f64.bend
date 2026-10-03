@@ -660,3 +660,44 @@ def trunc_i32(+value: F64) -> Result<&2, &2, F64ConversionError, U32>:
 
 def floor_i32(+value: F64) -> Result<&2, &2, F64ConversionError, U32>:
   convert_i32_class(value, True{}, classify(value))
+
+# Exact narrowing. Normal/subnormal paths retain 24 significant bits plus
+# guard/round/sticky information and round only once, including underflow.
+def narrow_float_word(value: U32) -> F32:
+  match value:
+    case U32{word}: F32{word}
+
+def narrow_float_round(negative: Bool, offset: U32, extended: Wide) -> F32:
+  match extended:
+    case Wide{hi, +lo}:
+      +rounding = U32.and(lo, 7)
+      rounded = U32.add(U32.shrn(lo, 3n), Bool.to_u32(U32.is_gt(rounding, 4) || (U32.is_eq(rounding, 4) && U32.is_ne(U32.and(lo, 8), 0))))
+      narrow_float_word(U32.or(sign_mask(negative), U32.add(offset, rounded)))
+
+def narrow_float_exponent(negative: Bool, +exponent: U32, significand: Wide, normal: Bool) -> F32:
+  match normal:
+    case True{}: narrow_float_round(negative, U32.shln(U32.sub(exponent, 897), 23n), shift_jam(26, significand))
+    case False{}: narrow_float_round(negative, 0, shift_jam(U32.sub(923, exponent), significand))
+
+def narrow_float_range(negative: Bool, +exponent: U32, significand: Wide, overflow: Bool) -> F32:
+  match overflow:
+    case True{}: narrow_float_word(U32.or(sign_mask(negative), 2139095040))
+    case False{}: narrow_float_exponent(negative, exponent, significand, U32.is_ge(exponent, 897))
+
+def narrow_float_parts(parts: Parts) -> F32:
+  match parts:
+    case Parts{negative, +exponent, significand}: narrow_float_range(negative, exponent, significand, U32.is_gt(exponent, 1150))
+
+def narrow_float_nan(value: F64) -> F32:
+  match value:
+    case F64{+hi, lo}:
+      narrow_float_word(U32.or(U32.or(U32.and(hi, 2147483648), 2143289344), U32.or(U32.shln(U32.and(hi, 1048575), 3n), U32.shrn(lo, 29n))))
+
+def narrow_float_class(+value: F64, kind: F64Class) -> F32:
+  match kind:
+    case F64NaN{}: narrow_float_nan(value)
+    case F64Infinity{}: narrow_float_word(U32.or(sign_mask(sign(value)), 2139095040))
+    case _: narrow_float_parts(unpack(value))
+
+def to_f32(+value: F64) -> F32:
+  narrow_float_class(value, classify(value))

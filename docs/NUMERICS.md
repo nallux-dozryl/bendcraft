@@ -35,6 +35,7 @@ The high word contains sign bit 31, exponent bits 30–20, and the top 20 fracti
 | `from_u32(value: U32)` | `F64` | Exact conversion of an unsigned 32-bit integer. |
 | `from_i32(value: U32)` | `F64` | Exact conversion of a signed two's-complement 32-bit bit pattern. |
 | `from_f32(value: Base.F32)` | `F64` | Exact finite widening; preserves zero/infinity sign and maps NaN payload as described below. |
+| `to_f32(value: F64)` | `Base.F32` | Binary32 RN-even narrowing with gradual underflow, signed zero/infinity, and the explicit NaN payload policy below. |
 | `trunc_i32(value: F64)`, `floor_i32(value: F64)` | `Result<&2, &2, F64ConversionError, U32>` | Checked integer conversion; `Done` contains signed two's-complement result bits, and `Fail` contains a declared error. |
 
 All arithmetic arguments above are `F64`. Raw word equality is available by comparing `bits` independently of numerical equality. Both `+0` and `-0` compare `F64Equal`; any comparison with a NaN returns `F64Unordered`. In that case `is_ne` is true and the other five comparison predicates are false.
@@ -57,6 +58,8 @@ The deterministic NaN policy is:
 
 `from_f32` retains an F32 NaN's sign, shifts its complete 23-bit fraction payload left by 29 binary64 fraction bits, and sets the binary64 quiet bit. It does no F32 arithmetic. All finite F32 values, including subnormals, have an exact binary64 result.
 
+`to_f32` rounds directly to binary32 precision. It preserves signed zeros; results below the binary32 normal range retain subnormal precision, and overflow produces signed infinity. Exact halfway values round toward an even least-significant retained bit, including the midpoint between zero and the smallest subnormal. A binary64 NaN retains its sign, keeps the highest 23 fraction payload bits, and sets the F32 quiet bit. Even a payload entirely discarded by narrowing therefore remains a quiet NaN. This payload policy is explicit rather than relying on a hardware-specific NaN encoding. Java finite narrowing also uses nearest rounding. [Java Language Specification §5.1.3](https://docs.oracle.com/javase/specs/jls/se25/html/jls-5.html#jls-5.1.3)
+
 `trunc_i32` rounds toward zero and `floor_i32` rounds toward negative infinity. They validate the resulting integer against `[-2147483648, 2147483647]`. NaN returns `F64NaNConversion`; infinity or an integer outside that range returns `F64OutOfI32Range`. Thus `trunc_i32(-2147483648.9)` succeeds with `0x80000000`, whereas `floor_i32` rejects that input. Both operations accept `2147483647.9` and return `0x7fffffff`. Both signed zeros produce integer zero. This checked API reports errors; Java integer casts instead map NaN to zero and saturate out-of-range values. [Java Language Specification §5.1.3](https://docs.oracle.com/javase/specs/jls/se25/html/jls-5.html#jls-5.1.3)
 
 ## Implementation and bounded work
@@ -70,6 +73,8 @@ Multiplication normalizes subnormal factors with at most 52 structural steps. A 
 Division reuses factor normalization and computes one integer quotient bit plus 55 fractional bits in 56 structurally decreasing steps. Each step compares the two-word remainder to the divisor, conditionally subtracts, and shifts to the next bit. A nonzero final remainder becomes sticky information. The shifted exponent stays nonnegative even for the smallest/largest finite operand ratio; underflow reduction and final rounding use the shared arithmetic path. The bounded remainder fits the two-word representation. No reciprocal approximation or host arithmetic is involved.
 
 Integer inputs use exact two-word normalization. F32 widening reads the raw Base.F32 payload and adjusts the exponent/fraction layout. Checked integer outputs derive the integer magnitude and discarded-fraction predicate from binary64 bits; floor increments a negative fractional magnitude before checking the signed range.
+
+F32 narrowing reduces the unpacked significand to 24 bits plus guard/round/sticky information. The binary32 subnormal path performs the full precision reduction before its single rounding step, avoiding an intermediate rounding. Encoding the retained significand with an exponent offset also handles carry into a new binade, the smallest normal, and infinity. Finite narrowing uses bounded word shifts and no recursion, decimal serialization, or host cast.
 
 `src/f64.bend --verdict` checks type correctness and termination through BendTT. It is not an IEEE 754 arithmetic theorem. IEEE result behavior is established here by independent native fixtures, with the precise testing coverage below.
 
@@ -98,7 +103,13 @@ Of those, 45,532 pairs have two finite operands. The native Bend add/subtract/mu
 
 A separate **26,586 conversion cases** cross unsigned/signed/F32 input edges with signed integer-range edges, random payloads, and dense integer/fraction neighborhoods. They provide **79,758 exact native input-conversion comparisons** and **53,172 checked truncation/floor result comparisons** against Python. The independent C driver also checks both integer input conversions, 26,123 exact F32 widenings, 463 NaN widening classes, and every checked output conversion. Signaling/quiet NaN input payloads are checked separately against the explicit widening policy.
 
-`evidence/f64-oracle.json` records commands, source/binary/reference hashes, fixture digests, native backend, platform, exact counts, benchmark samples, and emitted-C inspection. Earlier baselines are preserved in `evidence/f64-alignment-baseline.json` and `evidence/f64-add-sub-mul-baseline.json`.
+F64-to-F32 narrowing adds **46,349 exact native bit comparisons**, including 19,674 halfway/neighbor cases across every finite F32 exponent, 6,558 exact F32 roundtrips, 20,000 random binary64 payloads, 27 requested movement-height edge neighborhoods, and **74 actual candidate deltas observed by the pinned 26.3 movement probe**. Independently compiled C and the installed Java 25 runtime each provide 46,332 exact non-NaN comparisons and 17 NaN-class checks. Another 20,000 comparisons use exact Fraction arithmetic and a binary search over adjacent F32 values; this nearest-neighbor oracle does not mirror the implementation's significand shifts. Requested height edges cover signed zeros, 0.5, promoted 0.6f, 1e-7, promoted 1e-5f, half the smallest F32 subnormal, and 2^24 neighbors. Observed deltas include adversarial values near 0.5 and promoted 0.6f.
+
+Use `python3 tools/test_f64.py --cast-only --step-samples evidence/movement-cast-samples.json` for targeted narrowing checks including the observed deltas. The optional `--step-samples PATH` accepts a JSON object containing `candidate_delta_f64_bits`, a list of raw 16-digit hexadecimal deltas. The full test checks narrowing along with the existing arithmetic/conversion regressions. The recorded full suite covers 46,275 cast cases; the subsequent targeted suite adds the 74 observed deltas on identical source hashes. Current measured build times are recorded separately in evidence; no build caching behavior was changed.
+
+`evidence/f64-oracle.json` records commands, source/binary/reference hashes, fixture digests, native backend, platform, exact counts, benchmark samples, build timings, Java narrowing oracle/runtime fingerprints, and emitted-C inspection. Earlier baselines are preserved in `evidence/f64-alignment-baseline.json`, `evidence/f64-add-sub-mul-baseline.json`, and `evidence/f64-div-conversion-baseline.json`.
+
+`evidence/f64-cast-targeted.json` records the follow-up narrowing check with the observed movement deltas and their input-file digest. The full and targeted reports have identical hashes for the Bend module, Bend test harness, and Python runner.
 
 These tests establish numeric behavior over the recorded fixtures. They are not Java gameplay fixtures, collision response tests, or a complete proof over all `2^128` operand pairs. GPU and JavaScript execution have not been separately verified.
 
@@ -108,13 +119,13 @@ On this Darwin arm64 machine, five repetitions of each one-million-operation ser
 
 | Workload | Pure Bend, ns/operation | C double, ns/operation | Bend/C ratio |
 | --- | ---: | ---: | ---: |
-| Add 1.0 repeatedly from zero | approximately 10 | 0.742 | 13.5× |
-| Add 0.1 repeatedly from 1.0 | approximately 11 | 0.744 | 14.8× |
-| Multiply repeatedly by `1.0 + 2^-52` from 1.0 | approximately 66 | 1.121 | 58.9× |
-| Divide repeatedly by `1.0 + 2^-52` from 1.0 | approximately 177 | 2.814 | 62.9× |
+| Add 1.0 repeatedly from zero | approximately 9 | 0.654 | 13.8× |
+| Add 0.1 repeatedly from 1.0 | approximately 10 | 0.675 | 14.8× |
+| Multiply repeatedly by `1.0 + 2^-52` from 1.0 | approximately 60 | 1.020 | 58.8× |
+| Divide repeatedly by `1.0 + 2^-52` from 1.0 | approximately 169 | 2.726 | 62.0× |
 
 Bend's `IO.now` has 1 ms resolution; its calls bracket an already evaluated loop via an explicit helper dependency. C uses monotonic nanosecond timing. Process startup and output are separately recorded and excluded from the arithmetic-loop ratio. Times vary with system load, and different operand distributions can change branch and normalization costs. These are arithmetic workload comparisons, not a Minecraft speed comparison or a complete tick-budget measurement.
 
-The direct alignment change reduced the initial add benchmark from approximately 15–17 ns/operation to approximately 9–11 ns/operation while preserving all bit fixtures. Current emitted C is 467,465 bytes / 15,790 lines including the runtime, test harness, effects, and numeric helpers. Its 139 scalar inline helper bodies contain 213 U32 operations and no host floating arithmetic. The compiler lowers the pure numeric implementation to scalar unsigned C; an F32/double fallback is not hiding underneath it.
+The direct alignment change reduced the initial add benchmark from approximately 15–17 ns/operation to approximately 9–11 ns/operation while preserving all bit fixtures. Current emitted C is 510,545 bytes / 16,696 lines including the runtime, test harness, effects, and numeric helpers. Its 147 scalar inline helper bodies contain 236 U32 operations and no host floating arithmetic. The compiler lowers the pure numeric implementation to scalar unsigned C; an F32/double fallback is not hiding underneath it.
 
 The measured multiplication/division gap supports considering a future narrow binary64 primitive or explicitly approved bit-payload arithmetic adapter if representative gameplay profiling shows numerical work consuming the tick budget. Such a boundary would need to preserve the exact tested rounding, subnormal, zero, infinity, and NaN policies. No acceleration boundary is implemented or approved here; simulation decisions remain in Bend.

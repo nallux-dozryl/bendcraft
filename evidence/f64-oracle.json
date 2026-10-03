@@ -38,6 +38,52 @@
     },
     "fixture_sha256": "d17706b9a6abce5f3bff3955cad808272be0f8ab80d05af28552d46c224ffb15"
   },
+  "narrowing": {
+    "cases": 46275,
+    "fixture_kinds": {
+      "f32_exact_roundtrip": 6558,
+      "f32_halfway_neighbor": 19674,
+      "special": 16,
+      "step_height_requested_neighborhood": 27,
+      "uniform_payload": 20000
+    },
+    "native_exact_bit_comparisons": 46275,
+    "c_exact_non_nan_comparisons": 46258,
+    "java_exact_non_nan_comparisons": 46258,
+    "c_and_java_nan_class_checks_each": 17,
+    "exact_fraction_nearest_neighbor_checks": 20000,
+    "nan_policy": "retain sign; highest23 payload bits; set F32 quiet bit",
+    "fixture_sha256": "d9118e7fcb5e7f3d35e0b809681feabda2497943a7c328e2f9c5c124528dfd9e",
+    "native_wall_seconds": 1.2131337085738778,
+    "total_wall_seconds": 2.5667353328317404,
+    "java_runtime": {
+      "file": "java",
+      "bytes": 84720,
+      "sha1": "5af4a90be54ddeec03db3700e6989594c9438952",
+      "sha256": "e0879c0df70d880d66904064d1b388b08aeee0958a047f37601435b28db849a3"
+    },
+    "java_source_sha256": "7f5e93851940eae7f200fb98f7f2ae3de46878ed064346e1d587250fae7c75e0",
+    "java_compile_command": [
+      "/Users/chuah/Library/Application Support/minecraft/runtime/java-runtime-epsilon/mac-os-arm64/java-runtime-epsilon/jre.bundle/Contents/Home/bin/javac",
+      "-d",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/F64NarrowingReference.java"
+    ],
+    "java_run_command": [
+      "/Users/chuah/Library/Application Support/minecraft/runtime/java-runtime-epsilon/mac-os-arm64/java-runtime-epsilon/jre.bundle/Contents/Home/bin/java",
+      "-cp",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build",
+      "F64NarrowingReference"
+    ],
+    "step_sample_file": null,
+    "step_sample_sha256": null
+  },
+  "build_wall_seconds": {
+    "kernel": 0.3140286672860384,
+    "native_bend": 2.427185374312103,
+    "emit_c": 1.6224851664155722,
+    "reference_c": 0.05623370874673128
+  },
   "c_double_nan_class_checks": 4,
   "c_double_exact_finite_input_result_comparisons": 182124,
   "exact_fraction_rounding_cross_checks": 8156,
@@ -48,7 +94,7 @@
     "total": 8156
   },
   "fixture_sha256": "298b8bcb27ab225755d4f5973297249c7c8c6a56639094a73cef901345a2b48a",
-  "native_fixture_wall_seconds": 1.7482721246778965,
+  "native_fixture_wall_seconds": 1.2097167503088713,
   "nan_policy": "first input NaN retains sign/payload and is quieted; invalid infinities produce canonical +quiet NaN",
   "rounding": "nearest, ties to even; gradual underflow; signed-zero arithmetic",
   "benchmark": {
@@ -61,133 +107,133 @@
         "iterations": 1000000,
         "result_bits": "412e848000000000",
         "bend_loop_milliseconds": [
+          9,
+          9,
           10,
-          11,
-          10,
-          10,
+          9,
           10
         ],
         "c_double_loop_nanoseconds": [
-          731000,
-          741000,
-          775000,
-          747000,
-          742000
+          654000,
+          654000,
+          693000,
+          685000,
+          653000
         ],
         "bend_process_wall_nanoseconds": [
-          13741083,
-          13342167,
-          13300750,
-          15303208,
-          13194500
+          12763375,
+          11655500,
+          12174375,
+          11628250,
+          11988833
         ],
-        "median_bend_ns_per_operation": 10.0,
-        "median_c_ns_per_operation": 0.742,
-        "median_soft_to_hardware_ratio": 13.477088948787062
+        "median_bend_ns_per_operation": 9.0,
+        "median_c_ns_per_operation": 0.654,
+        "median_soft_to_hardware_ratio": 13.761467889908257
       },
       {
         "workload": "decimal_increment",
         "iterations": 1000000,
         "result_bits": "40f86a10000165cf",
         "bend_loop_milliseconds": [
-          11,
-          11,
+          9,
           10,
-          11,
+          10,
+          9,
           10
         ],
         "c_double_loop_nanoseconds": [
-          740000,
-          744000,
-          735000,
-          776000,
-          770000
+          680000,
+          675000,
+          668000,
+          699000,
+          654000
         ],
         "bend_process_wall_nanoseconds": [
-          14271625,
-          13908000,
-          14705291,
-          16179541,
-          13869333
+          11938167,
+          12592084,
+          12664292,
+          11726250,
+          11987000
         ],
-        "median_bend_ns_per_operation": 11.0,
-        "median_c_ns_per_operation": 0.744,
-        "median_soft_to_hardware_ratio": 14.78494623655914
+        "median_bend_ns_per_operation": 10.0,
+        "median_c_ns_per_operation": 0.675,
+        "median_soft_to_hardware_ratio": 14.814814814814815
       },
       {
         "workload": "near_unity_product",
         "iterations": 1000000,
         "result_bits": "3ff00000000f4240",
         "bend_loop_milliseconds": [
-          67,
-          66,
-          66,
-          66,
-          66
+          59,
+          59,
+          60,
+          62,
+          85
         ],
         "c_double_loop_nanoseconds": [
-          1128000,
-          1136000,
-          1111000,
-          1121000,
-          1106000
+          1012000,
+          989000,
+          1083000,
+          1020000,
+          1119000
         ],
         "bend_process_wall_nanoseconds": [
-          70301334,
-          69382292,
-          69722000,
-          71571375,
-          69795542
+          61347708,
+          61577000,
+          62804000,
+          64605041,
+          89230000
         ],
-        "median_bend_ns_per_operation": 66.0,
-        "median_c_ns_per_operation": 1.121,
-        "median_soft_to_hardware_ratio": 58.87600356824264
+        "median_bend_ns_per_operation": 60.0,
+        "median_c_ns_per_operation": 1.02,
+        "median_soft_to_hardware_ratio": 58.8235294117647
       },
       {
         "workload": "near_unity_quotient",
         "iterations": 1000000,
         "result_bits": "3fefffffffe17b80",
         "bend_loop_milliseconds": [
-          177,
-          178,
-          177,
-          177,
-          180
+          176,
+          169,
+          169,
+          168,
+          167
         ],
         "c_double_loop_nanoseconds": [
-          2798000,
-          2814000,
-          2785000,
-          2831000,
-          2829000
+          2815000,
+          2697000,
+          2659000,
+          2726000,
+          2752000
         ],
         "bend_process_wall_nanoseconds": [
-          181695833,
-          181825667,
-          184350458,
-          180840125,
-          184630500
+          183751584,
+          172534041,
+          172149958,
+          170979958,
+          169422125
         ],
-        "median_bend_ns_per_operation": 177.0,
-        "median_c_ns_per_operation": 2.814,
-        "median_soft_to_hardware_ratio": 62.89978678038379
+        "median_bend_ns_per_operation": 169.0,
+        "median_c_ns_per_operation": 2.726,
+        "median_soft_to_hardware_ratio": 61.995597945708
       }
     ]
   },
   "emitted_c": {
-    "bytes": 467465,
-    "lines": 15790,
-    "scalar_inline_helpers": 139,
-    "scalar_helper_u32_operations": 213,
+    "bytes": 510545,
+    "lines": 16696,
+    "scalar_inline_helpers": 147,
+    "scalar_helper_u32_operations": 236,
     "scalar_helpers_use_host_floating_arithmetic": false,
-    "sha256": "48668b97dbfc2160aec8e18ed8af336aaa571977e9efed7063a8adc0c8344067"
+    "sha256": "5882b056e5e7b9d7c3a9602af0e299b5c219970fc2bd6e8335032d6b91214358"
   },
-  "native_binary_sha256": "1dbce1cc1cb5dfc4476f06457e4e38a6a9059240ad5911225921e6be0b4e3c6a",
-  "reference_c_sha256": "f8b88a8fabd28fb5c5f57c302a2329e62ed3419caae50a9bbf94f9855f14db6a",
+  "native_binary_sha256": "ab0a86974a216fee37a383a4f419a296a96a459f0d0686ac397c502055fcc146",
+  "reference_c_sha256": "6e2dcd2a09a78999ed5c22e26623a95f597e94c31a7ccd37ca795917afaa9dc6",
   "source_sha256": {
-    "src/f64.bend": "bf300e34a67df69cb244745660ed14ec6bc3f0b88f451c66ac9408b057f03077",
-    "tests/f64.bend": "96fb7cd456df5608449cbfb245db324596389bd41dc335a8386dc627fd0fa5b6",
-    "tools/test_f64.py": "321c42d040cb87af05bc96d5691f26ae9c7af00d8c35de97dd3db12ecb370f78"
+    "src/f64.bend": "960a68e16ac8d844bb8d1b81634a64f9ad87dc77f928e17c2a53ce683ae3898c",
+    "tests/f64.bend": "de7afa5db53292a8310d5d04162669c2d854ecc438a43efaafe3fb4cff263761",
+    "tools/test_f64.py": "1ec706730f3f6faca6e1104a247a7a5df6353acbca3df8b80eb6e84a59155a1c"
   },
   "commands": [
     [
@@ -236,5 +282,19 @@
     "rounding modes other than RN-even",
     "floating exception flags",
     "Minecraft collision/movement parity"
-  ]
+  ],
+  "cast_followup": {
+    "evidence": "evidence/f64-cast-targeted.json",
+    "evidence_sha256": "a615eaf2544b6e3ab5cdde2116e6eb2072fc6c3533b6661515efb411912f952c",
+    "same_source_and_native_binary_as_full_suite": true,
+    "native_exact_bit_comparisons": 46349,
+    "observed_movement_candidate_deltas": 74,
+    "command": [
+      "python3",
+      "tools/test_f64.py",
+      "--cast-only",
+      "--step-samples",
+      "evidence/movement-cast-samples.json"
+    ]
+  }
 }

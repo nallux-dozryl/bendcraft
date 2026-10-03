@@ -17,6 +17,8 @@ import struct
 import subprocess
 import time
 
+from reference_inventory import JAVA, fingerprint
+
 ROOT = Path(__file__).resolve().parents[1]
 SIGN = 1 << 63
 EXP = 0x7FF0000000000000
@@ -28,6 +30,7 @@ CANONICAL_NAN = EXP | QUIET
 # no gameplay/state semantics and is never linked into the Bend implementation.
 REFERENCE_C = r'''
 #include <fenv.h>
+#include <float.h>
 #include <inttypes.h>
 #include <math.h>
 #include <limits.h>
@@ -38,6 +41,7 @@ REFERENCE_C = r'''
 #include <time.h>
 static double from_bits(uint64_t bits) { double value; memcpy(&value,&bits,8); return value; }
 static uint64_t to_bits(double value) { uint64_t bits; memcpy(&bits,&value,8); return bits; }
+static uint32_t single_bits(float value) { uint32_t bits; memcpy(&bits,&value,4); return bits; }
 static uint64_t now_ns(void) { struct timespec t; clock_gettime(CLOCK_MONOTONIC,&t); return (uint64_t)t.tv_sec*1000000000+(uint64_t)t.tv_nsec; }
 static void print_conversion(double value, int use_floor) {
   if (isnan(value)) { printf("nan"); return; }
@@ -46,7 +50,7 @@ static void print_conversion(double value, int use_floor) {
   printf("ok:%" PRIu32,(uint32_t)(int32_t)integer);
 }
 int main(int argc,char **argv) {
-  if (sizeof(double)!=8 || fesetround(FE_TONEAREST)!=0) return 2;
+  if (sizeof(double)!=8 || sizeof(float)!=4 || FLT_RADIX!=2 || DBL_MANT_DIG!=53 || DBL_MAX_EXP!=1024 || FLT_MANT_DIG!=24 || FLT_MAX_EXP!=128 || fesetround(FE_TONEAREST)!=0) return 2;
   if (argc==5 && (strcmp(argv[1],"bench")==0 || strcmp(argv[1],"benchmul")==0 || strcmp(argv[1],"benchdiv")==0)) {
     uint64_t iterations=strtoull(argv[2],0,10);
     double accumulator=from_bits(strtoull(argv[3],0,16));
@@ -67,6 +71,11 @@ int main(int argc,char **argv) {
       printf("%016" PRIx64 " %016" PRIx64 " %016" PRIx64 " ",to_bits((double)word),to_bits((double)signed_word),to_bits((double)single));
       print_conversion(from_bits(bits),0); printf(" "); print_conversion(from_bits(bits),1); printf("\n");
     }
+    return 0;
+  }
+  if (argc==2 && strcmp(argv[1],"narrow")==0) {
+    uint64_t bits;
+    while(scanf("%" SCNx64,&bits)==1) { volatile double value=from_bits(bits); printf("%08" PRIx32 "\n",single_bits((float)value)); }
     return 0;
   }
   uint64_t a,b;
@@ -324,6 +333,148 @@ def check_conversions(binary: Path, reference: Path, seed: int, count: int) -> d
             "fixture_sha256": hashlib.sha256("\n".join(f"{word:08x}|{bits:016x}" for word,bits in cases).encode()).hexdigest()}
 
 
+NARROW_JAVA = r'''
+import java.io.*;
+public class F64NarrowingReference {
+  public static void main(String[] args) throws Exception {
+    BufferedReader input=new BufferedReader(new InputStreamReader(System.in));
+    PrintWriter output=new PrintWriter(System.out); String line;
+    while((line=input.readLine())!=null) {
+      double value=Double.longBitsToDouble(Long.parseUnsignedLong(line,16));
+      output.println(Integer.toUnsignedString(Float.floatToRawIntBits((float)value),16));
+    }
+    output.flush(); if(output.checkError()) throw new IOException("Cast observation failed");
+  }
+}
+'''
+
+
+def single_value(bits: int) -> float:
+    return struct.unpack(">f", bits.to_bytes(4, "big"))[0]
+
+
+def narrowing_expected(bits: int) -> int:
+    if category(bits) == 4:
+        return ((bits >> 32) & 0x80000000) | 0x7F800000 | ((bits & FRAC) >> 29) | 0x400000
+    value = bits_float(bits)
+    try:
+        return int.from_bytes(struct.pack(">f", value), "big")
+    except OverflowError:
+        return 0x7F800000 | (0x80000000 if bits & SIGN else 0)
+
+
+def narrowing_fixtures(seed: int, count: int, step_samples: Path | None = None) -> list[tuple[str, int]]:
+    edges = {0, SIGN, 1, SIGN | 1, EXP, SIGN | EXP, EXP | 1, EXP | FRAC,
+             CANONICAL_NAN, EXP | (1 << 29), EXP | (1 << 51), EXP | ((1 << 29)-1)}
+    edges |= {bits | SIGN for bits in tuple(edges)}
+    cases = [("special", bits) for bits in sorted(edges)]
+    singles = {0, 1, 2, 3, 4, 0x007FFFFE, 0x007FFFFF, 0x00800000, 0x00800001,
+               0x3F000000, 0x3F19999A, 0x3F800000, 0x4B800000, 0x7F7FFFFE, 0x7F7FFFFF}
+    # Entire exponent range, both even/odd significands, and overflow midpoint.
+    for exponent in range(1, 255):
+        singles.update((exponent << 23 | fraction) for fraction in (0, 1, 2, 0x3FFFFF, 0x7FFFFE))
+    rng = random.Random(seed ^ 0xF32CA57)
+    singles.update(rng.randrange(0x7F7FFFFF) for _ in range(2000))
+    for word in sorted(singles):
+        lower = single_value(word)
+        upper = math.ldexp(1.0, 128) if word == 0x7F7FFFFF else single_value(word+1)
+        midpoint = (lower+upper)/2  # Exact double: endpoints have <=24-bit significands.
+        for value in (math.nextafter(midpoint, 0.0), midpoint, math.nextafter(midpoint, math.inf)):
+            for negative in (False, True):
+                cases.append(("f32_halfway_neighbor", float_bits(-value if negative else value)))
+        for negative in (False, True):
+            cases.append(("f32_exact_roundtrip", float_bits(-lower if negative else lower)))
+    # Step-up candidate neighborhoods requested by the 26.3 movement owner.
+    for center in (0.0, -0.0, 0.5, single_value(0x3F19999A), 1e-7,
+                   single_value(0x3727C5AC), math.ldexp(1.0, -150),
+                   math.ldexp(1.0, 24), single_value(0x7F7FFFFF)):
+        for value in (math.nextafter(center, -math.inf), center, math.nextafter(center, math.inf)):
+            cases.append(("step_height_requested_neighborhood", float_bits(value)))
+    if step_samples is not None:
+        observed = json.loads(step_samples.read_text())
+        for raw in observed["candidate_delta_f64_bits"]:
+            cases.append(("step_height_observed_26_3", int(raw, 16)))
+    for _ in range(count):
+        cases.append(("uniform_payload", rng.getrandbits(64)))
+    return cases
+
+
+def rational_narrowing(bits: int) -> int:
+    """Independent exact nearest-neighbor search, not a significand-shift algorithm."""
+    sign = 0x80000000 if bits & SIGN else 0
+    value = Fraction(abs(bits_float(bits)))
+    if value >= Fraction(single_value(0x7F7FFFFF)) + Fraction(2)**103:
+        return sign | 0x7F800000
+    low, high = 0, 0x7F7FFFFF
+    while low < high:
+        middle = (low+high+1)//2
+        if Fraction(single_value(middle)) <= value:
+            low = middle
+        else:
+            high = middle-1
+    if low == 0x7F7FFFFF:
+        return sign | low
+    midpoint = (Fraction(single_value(low))+Fraction(single_value(low+1)))/2
+    rounded = low+1 if value > midpoint or (value == midpoint and low & 1) else low
+    return sign | rounded
+
+
+def check_narrowing(binary: Path, reference: Path, seed: int, count: int, step_samples: Path | None = None) -> dict:
+    started = time.perf_counter()
+    cases = narrowing_fixtures(seed, count, step_samples)
+    expected_rows = [narrowing_expected(bits) for _, bits in cases]
+    payloads = "".join(f"{bits:016x}\n" for _, bits in cases)
+    c_rows = run([str(reference), "narrow"], stdin=payloads).stdout.splitlines()
+    build = ROOT/"build"
+    java_source = build/"F64NarrowingReference.java"
+    java_source.write_text(NARROW_JAVA)
+    compile_command = [str(JAVA.parent/"javac"), "-d", str(build), str(java_source)]
+    run(compile_command)
+    java_command = [str(JAVA), "-cp", str(build), "F64NarrowingReference"]
+    java_rows = run(java_command, stdin=payloads).stdout.splitlines()
+    if len(c_rows) != len(cases) or len(java_rows) != len(cases):
+        raise AssertionError("Hardware narrowing oracle row count mismatch")
+    nan_checks = 0
+    for index, ((kind, bits), expected_bits, c, java) in enumerate(zip(cases, expected_rows, c_rows, java_rows, strict=True)):
+        c_bits, java_bits = int(c, 16), int(java, 16)
+        if category(bits) == 4:
+            nan_checks += 1
+            if not all((word & 0x7F800000) == 0x7F800000 and word & 0x7FFFFF for word in (c_bits, java_bits)):
+                raise AssertionError("C/Java narrowing NaN class disagreement")
+        elif c_bits != expected_bits or java_bits != expected_bits:
+            raise AssertionError(f"Python/C/Java cast disagreement: {kind} {bits:016x} expected{expected_bits:08x} C{c_bits:08x} Java{java_bits:08x}")
+    native_started = time.perf_counter()
+    for first in range(0, len(cases), 128):
+        arguments = [f"narrow|{bits >> 32}|{bits & 0xFFFFFFFF}|0|0|0" for _, bits in cases[first:first+128]]
+        observed = run([str(binary), "--gpu", "off", "--threads", "1", "--", *arguments]).stdout.splitlines()
+        if len(observed) != len(arguments):
+            raise AssertionError("Native narrowing row count mismatch")
+        for index, line in enumerate(observed, first):
+            label, actual = line.split("|")
+            if label != "narrow" or int(actual) != expected_rows[index]:
+                raise AssertionError(f"Native cast mismatch: {cases[index]} expected{expected_rows[index]:08x} actual{int(actual):08x}")
+    native_elapsed = time.perf_counter()-native_started
+    rational_checks = 0
+    for index, (kind, bits) in enumerate(cases):
+        if category(bits) >= 3:
+            continue
+        if kind == "f32_halfway_neighbor" or kind.startswith("step_height") or (kind == "uniform_payload" and rational_checks < 20000):
+            if rational_narrowing(bits) != expected_rows[index]:
+                raise AssertionError(f"Exact nearest-neighbor cast disagreement: {kind} {bits:016x}")
+            rational_checks += 1
+    return {"cases": len(cases), "fixture_kinds": dict(sorted(Counter(kind for kind, _ in cases).items())),
+            "native_exact_bit_comparisons": len(cases), "c_exact_non_nan_comparisons": len(cases)-nan_checks,
+            "java_exact_non_nan_comparisons": len(cases)-nan_checks, "c_and_java_nan_class_checks_each": nan_checks,
+            "exact_fraction_nearest_neighbor_checks": rational_checks,
+            "nan_policy": "retain sign; highest23 payload bits; set F32 quiet bit",
+            "fixture_sha256": hashlib.sha256("\n".join(f"{kind}|{bits:016x}" for kind, bits in cases).encode()).hexdigest(),
+            "native_wall_seconds": native_elapsed, "total_wall_seconds": time.perf_counter()-started,
+            "java_runtime": fingerprint(JAVA), "java_source_sha256": hashlib.sha256(NARROW_JAVA.encode()).hexdigest(),
+            "java_compile_command": compile_command, "java_run_command": java_command,
+            "step_sample_file": str(step_samples) if step_samples else None,
+            "step_sample_sha256": hashlib.sha256(step_samples.read_bytes()).hexdigest() if step_samples else None}
+
+
 def benchmark(binary: Path, reference: Path, iterations: int, repeats: int) -> dict:
     results = []
     for name, operation, initial, delta in (("unit_increment", "bench", 0, float_bits(1.0)),
@@ -365,6 +516,8 @@ def main() -> None:
     parser.add_argument("--iterations", type=int, default=1000000)
     parser.add_argument("--repeats", type=int, default=5)
     parser.add_argument("--evidence", default="evidence/f64-oracle.json")
+    parser.add_argument("--cast-only", action="store_true")
+    parser.add_argument("--step-samples", type=Path)
     options = parser.parse_args()
     if options.random < 10000:
         raise ValueError("At least 10,000 random finite pairs are required")
@@ -373,12 +526,29 @@ def main() -> None:
     binary, reference = build/"f64_test", build/"f64_reference"
     reference_source, emitted_c = build/"f64_reference.c", build/"f64_test.c"
     reference_source.write_text(REFERENCE_C)
-    checked = run([options.bend, "src/f64.bend", "--verdict"])
+    build_timings = {}
+    def timed_build(label: str, command: list[str]):
+        started = time.perf_counter()
+        result = run(command)
+        build_timings[label] = time.perf_counter()-started
+        if "SOME PROOFS FAIL" in result.stdout:
+            raise AssertionError(result.stdout)
+        return result
+    checked = timed_build("kernel", [options.bend, "src/f64.bend", "--verdict"])
     if "ALL PROOFS CHECK" not in checked.stdout:
         raise AssertionError(checked.stdout)
-    run([options.bend, "tests/f64.bend", "-o", "build/f64_test"])
-    run([options.bend, "tests/f64.bend", "-o", "build/f64_test.c"])
-    run(["clang", "-O3", "-fno-fast-math", "-ffp-contract=off", str(reference_source), "-o", str(reference)])
+    timed_build("native_bend", [options.bend, "tests/f64.bend", "-o", "build/f64_test"])
+    timed_build("emit_c", [options.bend, "tests/f64.bend", "-o", "build/f64_test.c"])
+    timed_build("reference_c", ["clang", "-O3", "-fno-fast-math", "-ffp-contract=off", str(reference_source), "-o", str(reference)])
+    narrowing = check_narrowing(binary, reference, options.seed, options.random, options.step_samples)
+    if options.cast_only:
+        destination = ROOT/("evidence/f64-cast-targeted.json" if options.evidence == "evidence/f64-oracle.json" else options.evidence)
+        evidence = {"schema": 1, "result": "pass", "scope": "F64 to F32 targeted cast validation; arithmetic regressions recorded separately",
+                    "kernel_verdict": checked.stdout.strip(), "build_wall_seconds": build_timings, "narrowing": narrowing,
+                    "source_sha256": {path: hashlib.sha256((ROOT/path).read_bytes()).hexdigest() for path in ("src/f64.bend", "tests/f64.bend", "tools/test_f64.py")}}
+        destination.write_text(json.dumps(evidence, indent=2)+"\n")
+        print(json.dumps(evidence, indent=2))
+        return
     cases = fixtures(options.seed, options.random)
     expected_rows = [expected(a, b) for _, a, b in cases]
     rational_count = rational_check(cases, expected_rows)
@@ -430,6 +600,8 @@ def main() -> None:
         "random_finite_pairs": options.random, "seed": options.seed,
         "fixture_kinds": dict(Counter(kind for kind, _, _ in cases)),
         "conversions": conversions,
+        "narrowing": narrowing,
+        "build_wall_seconds": build_timings,
         "c_double_nan_class_checks": sum(category(a) == 0 and category(b) == 0 for _, a, b in cases),
         "c_double_exact_finite_input_result_comparisons": 4*len(ordinary_indices)-sum(category(a) == 0 and category(b) == 0 for _, a, b in cases),
         "exact_fraction_rounding_cross_checks": rational_count["total"],

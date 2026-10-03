@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "scope": "F64 to F32 targeted cast validation; arithmetic regressions recorded separately",
+  "kernel_verdict": "ALL PROOFS CHECK",
+  "build_wall_seconds": {
+    "kernel": 0.21742329094558954,
+    "native_bend": 2.496927209198475,
+    "emit_c": 1.806677583605051,
+    "reference_c": 0.06544962525367737
+  },
+  "narrowing": {
+    "cases": 46349,
+    "fixture_kinds": {
+      "f32_exact_roundtrip": 6558,
+      "f32_halfway_neighbor": 19674,
+      "special": 16,
+      "step_height_observed_26_3": 74,
+      "step_height_requested_neighborhood": 27,
+      "uniform_payload": 20000
+    },
+    "native_exact_bit_comparisons": 46349,
+    "c_exact_non_nan_comparisons": 46332,
+    "java_exact_non_nan_comparisons": 46332,
+    "c_and_java_nan_class_checks_each": 17,
+    "exact_fraction_nearest_neighbor_checks": 20000,
+    "nan_policy": "retain sign; highest23 payload bits; set F32 quiet bit",
+    "fixture_sha256": "f996f9f158ba2c4f441c139b935bfcc31e50ca1d801cc3a5b3e6d086a9dc051a",
+    "native_wall_seconds": 1.4175937911495566,
+    "total_wall_seconds": 2.9078373750671744,
+    "java_runtime": {
+      "file": "java",
+      "bytes": 84720,
+      "sha1": "5af4a90be54ddeec03db3700e6989594c9438952",
+      "sha256": "e0879c0df70d880d66904064d1b388b08aeee0958a047f37601435b28db849a3"
+    },
+    "java_source_sha256": "7f5e93851940eae7f200fb98f7f2ae3de46878ed064346e1d587250fae7c75e0",
+    "java_compile_command": [
+      "/Users/chuah/Library/Application Support/minecraft/runtime/java-runtime-epsilon/mac-os-arm64/java-runtime-epsilon/jre.bundle/Contents/Home/bin/javac",
+      "-d",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/F64NarrowingReference.java"
+    ],
+    "java_run_command": [
+      "/Users/chuah/Library/Application Support/minecraft/runtime/java-runtime-epsilon/mac-os-arm64/java-runtime-epsilon/jre.bundle/Contents/Home/bin/java",
+      "-cp",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build",
+      "F64NarrowingReference"
+    ],
+    "step_sample_file": "evidence/movement-cast-samples.json",
+    "step_sample_sha256": "aee41658457da53128cb3607d1a204bf1c970be99b360ec2dc672a377ca0e83d"
+  },
+  "source_sha256": {
+    "src/f64.bend": "960a68e16ac8d844bb8d1b81634a64f9ad87dc77f928e17c2a53ce683ae3898c",
+    "tests/f64.bend": "de7afa5db53292a8310d5d04162669c2d854ecc438a43efaafe3fb4cff263761",
+    "tools/test_f64.py": "1ec706730f3f6faca6e1104a247a7a5df6353acbca3df8b80eb6e84a59155a1c"
+  }
+}
