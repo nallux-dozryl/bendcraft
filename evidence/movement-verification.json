@@ -1,0 +1,690 @@
+{
+  "actual_entity_move_cases": 159,
+  "actual_entity_query_comparisons": 348,
+  "binary_sha256": "07ed0fead97d4e20ab8ce19a5f1b2f69659bafbf79e4309c5c4b32650bff9c64",
+  "builds": [],
+  "checked_success_oracle_cases": 982,
+  "checks": [
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/movement.bend",
+        "--check-only"
+      ],
+      "exit_code": 0,
+      "seconds": 0.19988,
+      "stderr": "",
+      "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/movement.bend",
+        "--verdict"
+      ],
+      "exit_code": 0,
+      "seconds": 3.384404,
+      "stderr": "",
+      "stdout": "ALL PROOFS CHECK\n"
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/movement.bend",
+        "--check-only"
+      ],
+      "exit_code": 0,
+      "seconds": 0.491776,
+      "stderr": "",
+      "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/movement.bend",
+        "--verdict"
+      ],
+      "exit_code": 0,
+      "seconds": 3.930401,
+      "stderr": "",
+      "stdout": "ALL PROOFS CHECK\n"
+    }
+  ],
+  "confidence": "high for recorded direct game-method and neutral Entity.move cases; moderate for older composed-only cases; no complete player/world movement parity claim",
+  "emitted_c_bytes": 1170152,
+  "emitted_c_sha256": "a9fad4f533af2912c03c5cd6c509b9bd7eee5f64b9c2efadb264fbd3085fa668",
+  "explicit_validation_cases": 101,
+  "fixture_provenance": {
+    "cases_sha256": "31ccf8a7e37017effc9c9000a3b45aef8f0b999ff6cae0461da2161d914ff07e",
+    "class_sha256": {
+      "net.minecraft.core.Direction": "7c5de85525dc244f967cfcbfc8731de8bc0457fc9f7729b08a776b4995271d2e",
+      "net.minecraft.data.registries.VanillaRegistries": "eb7b6cda96d632dc6a90d927ac4923f125baf5819493c04641d305d14692bf48",
+      "net.minecraft.util.Mth": "38d9b35bc973da00a3d550173370c62c88ed62f2890b17d760e65173469e272d",
+      "net.minecraft.world.damagesource.DamageSources": "2fefa0f66433ea3bbf54e9daadae0d7dbb9bd3f1b45a1149b4fa35f42a7d4f58",
+      "net.minecraft.world.entity.Entity": "7ac5f6a929abbf4fa00f0a87ad530669f7d96c8ee2bb86a5076ab1fab352fb3c",
+      "net.minecraft.world.entity.EntityDimensions": "f51c3a3999e222010967ddef1de08c5ffd6533068c06895376836da694263447",
+      "net.minecraft.world.entity.EntityType": "7029d56455626f3991057d058dc5bc67057f14673fd2e19159edc3578193dfcb",
+      "net.minecraft.world.entity.EntityTypes": "938fd489d79b61e3267cb5d2a96db479a4ada0e8fca48dc3e4c5eec99c8ee359",
+      "net.minecraft.world.level.BlockCollisions": "c363348a6ede8b2f46426c4f1b9fd01d2b4b878c8b6682bf6b071a56c31948fc",
+      "net.minecraft.world.level.CollisionGetter": "417618ca200372b50ce7ce2ad1000f65373d65ad8d92546501f25c9433ad543b",
+      "net.minecraft.world.level.CommonLevelAccessor": "7bc4965ea11624280450b615887ebc8431363ef99741290457611a40a4f4cc9b",
+      "net.minecraft.world.level.Level": "68abf43ce4638614ca5d8e7ae185d7e06295ac636c4d4fbc21ee7c3d5e05c4a7",
+      "net.minecraft.world.level.chunk.PalettedContainerFactory": "a0f0720d7682126bdba68acf975ceb996816f99469367b677ef1054cf7571cd5",
+      "net.minecraft.world.level.dimension.DimensionType": "c432ec5c8908061270e39c4bd7180da67481f3b6cc39c418ddd72ee338eddd1a",
+      "net.minecraft.world.phys.AABB": "c3597024b2fa129fe34eb2db0ad473ec8ba408393bb2873aa5f43492d455d5fa",
+      "net.minecraft.world.phys.Vec3": "6327bc64d44f34c75ec2e015d040ac31819af062688518544bdf333bcaff7597"
+    },
+    "pin": "26.3",
+    "probe_java_source_sha256": "85e06ea1cf8f718d08b60731abfa8132e235905eed09ed19b12b072dab752ead",
+    "random_input_seed": 26310103,
+    "runtime_version": [
+      "openjdk version \"25.0.1\" 2025-10-21 LTS",
+      "OpenJDK Runtime Environment Microsoft-12574220 (build 25.0.1+8-LTS)",
+      "OpenJDK 64-Bit Server VM Microsoft-12574220 (build 25.0.1+8-LTS, mixed mode)"
+    ],
+    "server_bundle_sha256": "d052f14d7a173734fba553711e5b570162e2f2a313267ee31a21b975a679be64",
+    "server_class_jar_sha256": "a362163eec5d1612d520772bc16e5b39c09e3b234fdc045f56bf544284ee8ae6",
+    "source_method_count": 72
+  },
+  "fixture_sha256": "d81bb0ab59c572852a03b3b5a039e1e25386ec444f56964a70e2c88a4957ccbe",
+  "full_entity_move_runtime_observed": true,
+  "host_float_simulation_helpers": 0,
+  "java_case_count": 4143,
+  "kernel_pass": true,
+  "laws": [
+    "empty_colliders_preserve_requested",
+    "zero_axis_skips_colliders",
+    "no_candidates_preserves_baseline",
+    "stationary_resolve_preserves_payload",
+    "accepted_step_stops_search",
+    "checked_error_rejects_before_move",
+    "nonempty_zero_axes_produce_positive_zero",
+    "stationary_signed_zero_preserves_payload",
+    "numerically_equal_proposal_retains_current_payload"
+  ],
+  "malformed_protocol": [
+    {
+      "exit_code": 2,
+      "stderr": "invalid movement protocol\n"
+    },
+    {
+      "exit_code": 2,
+      "stderr": "invalid movement header\n"
+    },
+    {
+      "exit_code": 2,
+      "stderr": "invalid movement operation\n"
+    }
+  ],
+  "native_batches": [
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 0,
+      "seconds": 0.007148
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 50,
+      "seconds": 0.003847
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 100,
+      "seconds": 0.003656
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 150,
+      "seconds": 0.003593
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 200,
+      "seconds": 0.003291
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 250,
+      "seconds": 0.003635
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 300,
+      "seconds": 0.00422
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 350,
+      "seconds": 0.004249
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 400,
+      "seconds": 0.004267
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 450,
+      "seconds": 0.004378
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 500,
+      "seconds": 0.007361
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 550,
+      "seconds": 0.004895
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 600,
+      "seconds": 0.004427
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 650,
+      "seconds": 0.00439
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 700,
+      "seconds": 0.004257
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 750,
+      "seconds": 0.004042
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 800,
+      "seconds": 0.004053
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 850,
+      "seconds": 0.004685
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 900,
+      "seconds": 0.00478
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 950,
+      "seconds": 0.004469
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 1000,
+      "seconds": 0.004472
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 1050,
+      "seconds": 0.004229
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 1100,
+      "seconds": 0.004747
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 1150,
+      "seconds": 0.00491
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 1200,
+      "seconds": 0.004638
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 1250,
+      "seconds": 0.004597
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 1300,
+      "seconds": 0.004862
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 1350,
+      "seconds": 0.005492
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 1400,
+      "seconds": 0.005309
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 1450,
+      "seconds": 0.004733
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 1500,
+      "seconds": 0.004843
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 1550,
+      "seconds": 0.004957
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 1600,
+      "seconds": 0.004561
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 1650,
+      "seconds": 0.004895
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 1700,
+      "seconds": 0.005155
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 1750,
+      "seconds": 0.004643
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 1800,
+      "seconds": 0.004619
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 1850,
+      "seconds": 0.004544
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 1900,
+      "seconds": 0.004505
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 1950,
+      "seconds": 0.005238
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 2000,
+      "seconds": 0.004925
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 2050,
+      "seconds": 0.004918
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 2100,
+      "seconds": 0.0047
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 2150,
+      "seconds": 0.004525
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 2200,
+      "seconds": 0.005009
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 2250,
+      "seconds": 0.004984
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 2300,
+      "seconds": 0.004509
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 2350,
+      "seconds": 0.004729
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 2400,
+      "seconds": 0.004664
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 2450,
+      "seconds": 0.004942
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 2500,
+      "seconds": 0.004704
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 2550,
+      "seconds": 0.005983
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 2600,
+      "seconds": 0.004753
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 2650,
+      "seconds": 0.004792
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 2700,
+      "seconds": 0.004599
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 2750,
+      "seconds": 0.004516
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 2800,
+      "seconds": 0.004561
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 2850,
+      "seconds": 0.00448
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 2900,
+      "seconds": 0.004664
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 2950,
+      "seconds": 0.004659
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 3000,
+      "seconds": 0.004186
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 3050,
+      "seconds": 0.004801
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 3100,
+      "seconds": 0.004207
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 3150,
+      "seconds": 0.004287
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 3200,
+      "seconds": 0.005003
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 3250,
+      "seconds": 0.004356
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 3300,
+      "seconds": 0.004415
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 3350,
+      "seconds": 0.003722
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 3400,
+      "seconds": 0.004343
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 3450,
+      "seconds": 0.004794
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 3500,
+      "seconds": 0.005661
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 3550,
+      "seconds": 0.004819
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 3600,
+      "seconds": 0.005294
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 3650,
+      "seconds": 0.005153
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 3700,
+      "seconds": 0.005839
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 3750,
+      "seconds": 0.004476
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 3800,
+      "seconds": 0.004661
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 3850,
+      "seconds": 0.006067
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 3900,
+      "seconds": 0.004861
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 3950,
+      "seconds": 0.004667
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 4000,
+      "seconds": 0.005141
+    },
+    {
+      "cases": 50,
+      "exit_code": 0,
+      "offset": 4050,
+      "seconds": 0.004684
+    },
+    {
+      "cases": 43,
+      "exit_code": 0,
+      "offset": 4100,
+      "seconds": 0.004267
+    }
+  ],
+  "native_validation_seconds": 0.690363,
+  "operation_counts": {
+    "block_query": 173,
+    "collide": 823,
+    "entity_move": 159,
+    "entity_query": 173,
+    "heights": 823,
+    "make_box": 173,
+    "move": 823,
+    "resolve": 823,
+    "step_query": 173
+  },
+  "oracle_scope": "Direct actual Entity.collideWithShapes/candidate collector plus actual Entity.move and private Entity.collide in a narrow real Level using real full-cube block states and production BlockCollisions. Earlier resolve/move lanes retain a separately labelled composed instrument.",
+  "pin": "26.3",
+  "schema_version": 1,
+  "sources_sha256": {
+    "docs/MOVEMENT.md": "3974808a3227515befbc97cfb4cc371fa94284f6cf76a987c0eb78a1a080bc01",
+    "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "src/geometry.bend": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f",
+    "src/movement.bend": "0e94fea7cc941a23d2ed7bbd2ccaf0117e6af363eb91f2db2e34428f9dd9e67f",
+    "tests/movement.bend": "0143fbe3956b54fb7ac7fce10e7b80c7142472176afb144938d6dcff03712814",
+    "tools/reference_movement_probe.py": "e8500b4509fd12a47bd1c5c085fc04d00b8c18af4ad3d551487b323eec9d7736",
+    "tools/test_movement.py": "e7b26819c1b7262a7f12430cc0494239ffa470be74be79d4136f53d11f6e7a08"
+  },
+  "status": "passed",
+  "stepped_outcomes": 88,
+  "tag_counts": {
+    "actual_block_queries": 159,
+    "actual_entity_move": 159,
+    "actual_level": 159,
+    "axis_order": 144,
+    "candidate_cast": 304,
+    "candidate_order": 40,
+    "ceiling": 9,
+    "collision_flags": 264,
+    "corner": 137,
+    "empty": 56,
+    "entity_dimensions": 173,
+    "epsilon": 282,
+    "finite_inputs": 2800,
+    "floor": 65,
+    "free": 65,
+    "grounded": 324,
+    "negative_wall": 9,
+    "obstacle_order": 72,
+    "position_gate": 18,
+    "position_payload": 9,
+    "position_threshold": 264,
+    "query_bounds": 519,
+    "seeded_random": 2800,
+    "signed_zero": 361,
+    "step": 69,
+    "step_ceiling": 273,
+    "step_height": 264,
+    "step_threshold": 60,
+    "targeted": 1184,
+    "touching_wall": 18,
+    "wall": 65
+  },
+  "unsupported": [
+    "collision/world border query collection",
+    "multi-cell voxel shapes",
+    "context-dependent block shapes",
+    "locomotion inputs, acceleration and drag",
+    "attributes",
+    "pose transitions",
+    "swimming and flight",
+    "piston and edge backoff",
+    "bounce/slime/honey restitution",
+    "fall damage and movement emission"
+  ]
+}
