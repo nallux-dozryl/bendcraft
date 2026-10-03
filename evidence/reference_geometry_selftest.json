@@ -1,0 +1,33 @@
+{
+  "byte_exact_observations_reproduced": true,
+  "case_count_per_run": 4522,
+  "failure_injection": [
+    {
+      "case": "changed_exact_epsilon_expected_result",
+      "reason": "Geometry fixture checksum mismatch",
+      "rejected": true,
+      "resealed_fixture_checksum": false
+    },
+    {
+      "case": "changed_exact_epsilon_expected_result",
+      "reason": "Geometry fixture differs from independent Java oracle observation",
+      "rejected": true,
+      "resealed_fixture_checksum": true
+    },
+    {
+      "case": "changed_random_input",
+      "reason": "Geometry fixture input generation mismatch",
+      "rejected": true,
+      "resealed_fixture_checksum": true
+    }
+  ],
+  "fixture_file": {
+    "bytes": 6895690,
+    "file": "geometry.json",
+    "sha1": "2767939bf8b93c36f45fa45f9950683825d93586",
+    "sha256": "9767a79013ce2d045270c8632ab5b72ece033daf4a7564dca7879ef907bfbb19"
+  },
+  "independent_java_runs": 2,
+  "scope": "Reference oracle generation/integrity, no Bend implementation comparison",
+  "status": "passed"
+}
