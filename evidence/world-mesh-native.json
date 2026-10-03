@@ -1,0 +1,1871 @@
+{
+  "appearance_observation": {
+    "address": "Repeat",
+    "cull": "NoCull",
+    "explicit_nether_shade_selected": true,
+    "light": 4294967295,
+    "order": 0,
+    "shade_f32_hex": "3f666666",
+    "source_default_shade_f32_hex": "3f19999a",
+    "tint": 4279312947
+  },
+  "bend_executable_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+  "binary_sha256_begin": "cd01f7adae84b44f03ff86a6a2e62a93c36d469be6a559d0853ff356bb686ad9",
+  "binary_sha256_end": "cd01f7adae84b44f03ff86a6a2e62a93c36d469be6a559d0853ff356bb686ad9",
+  "binary_unchanged_during_run": true,
+  "boundaries": [
+    "Production consumes original JAR JSON/PNG and explicit bindings, never expected Java quads.",
+    "Java bake observations were previously executed and sealed; no fresh Java process in this run.",
+    "Static normalized full-image sprites, nearest sampling, explicit white tint/light and directional shade.",
+    "Bindings explicitly select unrotated cube models; weighted/multipart blockstate visual selection is outside this run.",
+    "All six faces retained; no neighbor occlusion, biome tint, AO, live lighting, animation or production atlas stitch.",
+    "Native binary PPM RGB is compared exactly; PNG previews are Python conversions of those observed pixels.",
+    "Hidden finite CPU verification does not establish visible client acceptance or whole-game parity."
+  ],
+  "builds": [
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/world_mesh.bend",
+        "-o",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-mesh-tests"
+      ],
+      "seconds": 543.066206,
+      "stderr": "",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "cache_observations": {
+    "after_blocks": 40,
+    "after_quads": 240,
+    "alternate_state_ids_same_rgb": true,
+    "before_blocks": 39,
+    "before_quads": 234,
+    "edit_changes_pixels": true,
+    "edited_and_uncached_rgb_equal": true,
+    "initial_and_cached_rgb_equal": true,
+    "pixels_changed_by_edit": 42,
+    "revision_before_and_after": 47,
+    "tick_before_and_after": 1
+  },
+  "compiler_footprint_observations": {
+    "all_recorded_own_processes_exited": true,
+    "artifacts": [
+      {
+        "path": "build/world-mesh-oracle/compiler-memory-sample.json",
+        "sha256": "ee16ace9a6b9d9fa29f39406bcf434f66332449f41a095d7b536492b66728b8c"
+      },
+      {
+        "path": "build/world-mesh-oracle/compiler-memory-samples.json",
+        "sha256": "7f8622b23db82b530f54c60e7bad35af89336b330fe04060c76f28a174c0069e"
+      }
+    ],
+    "build_completed_within_600_second_cap": true,
+    "descendant_kill_required": false,
+    "kind": "sampled RSS, not a continuous peak measurement",
+    "known_bend_pid": 35436,
+    "known_clang_pids": [
+      37772,
+      37773
+    ],
+    "largest_sampled_bend_rss_kib": 3839360,
+    "manual_ps_samples": [
+      {
+        "bend_elapsed_seconds": 5,
+        "bend_rss_kib": 3839360
+      },
+      {
+        "bend_elapsed_seconds": 107,
+        "bend_rss_kib": 645856
+      },
+      {
+        "bend_elapsed_seconds": 275,
+        "bend_rss_kib": 2668784
+      }
+    ],
+    "process_tree_samples": [
+      {
+        "observed_process_ids": [
+          35436
+        ],
+        "process_rows": [
+          "35436 35427 2243408 02:19 /Users/chuah/.bend/bin/bend tests/world_mesh.bend -o /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-mesh-tests"
+        ],
+        "requested_bend_pid": 35436,
+        "timestamp_unix": 1791058240.649823,
+        "total_rss_gib": 2.139481,
+        "total_rss_kib": 2243408
+      },
+      {
+        "observed_process_ids": [
+          35436,
+          37772,
+          37773
+        ],
+        "process_rows": [
+          "35436 35427  23744 08:53 Sun Oct  4 03:08:21 2026     /Users/chuah/.bend/bin/bend tests/world_mesh.bend -o /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-mesh-tests",
+          "37772 35436  14096 00:17 Sun Oct  4 03:16:57 2026     /Library/Developer/CommandLineTools/usr/bin/clang -std=c11 -O3 /var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/bend-0axOix/world-mesh-tests.c -lpthread -lm -o /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-mesh-tests",
+          "37773 37772 916688 00:17 Sun Oct  4 03:16:57 2026     /Library/Developer/CommandLineTools/usr/bin/clang -cc1 -triple arm64-apple-macosx15.5.0 -Wundef-prefix=TARGET_OS_ -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -Werror=implicit-function-declaration -emit-obj -dumpdir /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-mesh-tests- -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name world-mesh-tests.c -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -mllvm -extra-vectorizer-passes -fno-strict-return -ffp-contract=on -fno-rounding-math -funwind-tables=1 -fobjc-msgsend-selector-stubs -target-sdk-version=15.5 -fvisibility-inlines-hidden-static-local-var -fdefine-target-os-macros -fno-assume-unique-vtables -fno-modulemap-allow-subdirectory-search -target-cpu apple-m1 -target-feature +zcm -target-feature +zcz -target-feature +v8.5a -target-feature +aes -target-feature +altnzcv -target-feature +ccdp -target-feature +complxnum -target-feature +crc -target-feature +dotprod -target-feature +fp-armv8 -target-feature +fp16fml -target-feature +fptoint -target-feature +fullfp16 -target-feature +jsconv -target-feature +lse -target-feature +neon -target-feature +pauth -target-feature +perfmon -target-feature +predres -target-feature +ras -target-feature +rcpc -target-feature +rdm -target-feature +sb -target-feature +sha2 -target-feature +sha3 -target-feature +specrestrict -target-feature +ssbs -target-abi darwinpcs -debugger-tuning=lldb -fdebug-compilation-dir=/Users/chuah/Documents/ChatGPT/bendex/minecraft -target-linker-version 1167.5 -fcoverage-compilation-dir=/Users/chuah/Documents/ChatGPT/bendex/minecraft -resource-dir /Library/Developer/CommandLineTools/usr/lib/clang/17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/usr/lib/clang/17/include -internal-externc-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -internal-externc-isystem /Library/Developer/CommandLineTools/usr/include -O3 -Wno-reorder-init-list -Wno-implicit-int-float-conversion -Wno-c99-designator -Wno-final-dtor-non-final-class -Wno-extra-semi-stmt -Wno-misleading-indentation -Wno-quoted-include-in-framework-header -Wno-implicit-fallthrough -Wno-enum-enum-conversion -Wno-enum-float-conversion -Wno-elaborated-enum-base -Wno-reserved-identifier -Wno-gnu-folding-constant -std=c11 -ferror-limit 19 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fmax-type-align=16 -fcommon -vectorize-loops -vectorize-slp -clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation -fno-odr-hash-protocols -clang-vendor-feature=+enableAggressiveVLAFolding -clang-vendor-feature=+revert09abecef7bbf -clang-vendor-feature=+thisNoAlignAttr -clang-vendor-feature=+thisNoNullAttr -clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o /var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/world-mesh-tests-8416fe.o -x c /var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/bend-0axOix/world-mesh-tests.c"
+        ],
+        "requested_bend_pid": 35436,
+        "timestamp_unix": 1791058634.8032691,
+        "total_rss_gib": 0.910309,
+        "total_rss_kib": 954528
+      }
+    ],
+    "requested_two_minute_sample_landed_at_seconds": 139
+  },
+  "confidence": "high for the stated finite CPU scenarios and exact observed comparisons",
+  "counters": {
+    "appearance_quads_checked": 1,
+    "blocks_checked": 892,
+    "exact_material_and_order_words": 48168,
+    "exact_uv_f32_words": 42816,
+    "exact_vertex_position_f32_words": 64224,
+    "far_coordinate_cases": 32,
+    "far_sign_combinations": 8,
+    "frames": 16,
+    "native_invocations": 35,
+    "negative_rejections": 29,
+    "pixels": 12288,
+    "positive_validation_outcomes": 3,
+    "quads_checked": 5352,
+    "snapshots": 40,
+    "validation_outcomes": 32
+  },
+  "far_inputs_sha256": "72ac7a3a86f972f411868cdf694248da4da864943bbbee798799160b27f7ce78",
+  "groups": [
+    {
+      "appearance_quads_checked": 1,
+      "blocks": 0,
+      "builtin_regressions": 0,
+      "frames": [],
+      "name": "validation",
+      "negative_cases": 29,
+      "quads": 0,
+      "snapshots": 0
+    },
+    {
+      "appearance_quads_checked": 0,
+      "blocks": 158,
+      "builtin_regressions": 0,
+      "frames": [
+        {
+          "height": 24,
+          "native_ppm_sha256": "a71eda3743485a444ca44aa8aa1edf967df87be70f43cf100d34adaf6e42c6f8",
+          "pixels": 768,
+          "preview_png": "build/world-mesh-oracle/official-initial.png",
+          "preview_png_sha256": "3fdfeffc1d9c15fee171298da4bf1d1799801eb2e82cc4de4bed895271b4b724",
+          "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+          "scenario": "initial",
+          "width": 32
+        },
+        {
+          "height": 24,
+          "native_ppm_sha256": "a71eda3743485a444ca44aa8aa1edf967df87be70f43cf100d34adaf6e42c6f8",
+          "pixels": 768,
+          "preview_png": "build/world-mesh-oracle/official-cached.png",
+          "preview_png_sha256": "3fdfeffc1d9c15fee171298da4bf1d1799801eb2e82cc4de4bed895271b4b724",
+          "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+          "scenario": "cached",
+          "width": 32
+        },
+        {
+          "height": 24,
+          "native_ppm_sha256": "17e6fa173cddb9fbf5e14b5d1233eccfa1ff295e7d36b4dbbfc484f5638d3742",
+          "pixels": 768,
+          "preview_png": "build/world-mesh-oracle/official-raw-edit.png",
+          "preview_png_sha256": "c74351f1314e849b49f4597c8a04a9fbca90d633a69ed7fd4224c4766426ab4c",
+          "rgb_sha256": "dca52a707d896e75578f20241cb0a9b8bbd61a33a7bfa5899adf53210fc2d055",
+          "scenario": "raw-edit",
+          "width": 32
+        },
+        {
+          "height": 24,
+          "native_ppm_sha256": "17e6fa173cddb9fbf5e14b5d1233eccfa1ff295e7d36b4dbbfc484f5638d3742",
+          "pixels": 768,
+          "preview_png": "build/world-mesh-oracle/official-uncached.png",
+          "preview_png_sha256": "c74351f1314e849b49f4597c8a04a9fbca90d633a69ed7fd4224c4766426ab4c",
+          "rgb_sha256": "dca52a707d896e75578f20241cb0a9b8bbd61a33a7bfa5899adf53210fc2d055",
+          "scenario": "uncached",
+          "width": 32
+        }
+      ],
+      "name": "official-fixture",
+      "negative_cases": 0,
+      "quads": 948,
+      "snapshots": 4
+    },
+    {
+      "appearance_quads_checked": 0,
+      "blocks": 158,
+      "builtin_regressions": 0,
+      "frames": [
+        {
+          "height": 24,
+          "native_ppm_sha256": "a71eda3743485a444ca44aa8aa1edf967df87be70f43cf100d34adaf6e42c6f8",
+          "pixels": 768,
+          "preview_png": "build/world-mesh-oracle/alternate-initial.png",
+          "preview_png_sha256": "3fdfeffc1d9c15fee171298da4bf1d1799801eb2e82cc4de4bed895271b4b724",
+          "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+          "scenario": "initial",
+          "width": 32
+        },
+        {
+          "height": 24,
+          "native_ppm_sha256": "a71eda3743485a444ca44aa8aa1edf967df87be70f43cf100d34adaf6e42c6f8",
+          "pixels": 768,
+          "preview_png": "build/world-mesh-oracle/alternate-cached.png",
+          "preview_png_sha256": "3fdfeffc1d9c15fee171298da4bf1d1799801eb2e82cc4de4bed895271b4b724",
+          "rgb_sha256": "bd825e903b2f34d33bc334ce2d536ba29a1217e0ff4a9d357d2936fdcfd80e42",
+          "scenario": "cached",
+          "width": 32
+        },
+        {
+          "height": 24,
+          "native_ppm_sha256": "17e6fa173cddb9fbf5e14b5d1233eccfa1ff295e7d36b4dbbfc484f5638d3742",
+          "pixels": 768,
+          "preview_png": "build/world-mesh-oracle/alternate-raw-edit.png",
+          "preview_png_sha256": "c74351f1314e849b49f4597c8a04a9fbca90d633a69ed7fd4224c4766426ab4c",
+          "rgb_sha256": "dca52a707d896e75578f20241cb0a9b8bbd61a33a7bfa5899adf53210fc2d055",
+          "scenario": "raw-edit",
+          "width": 32
+        },
+        {
+          "height": 24,
+          "native_ppm_sha256": "17e6fa173cddb9fbf5e14b5d1233eccfa1ff295e7d36b4dbbfc484f5638d3742",
+          "pixels": 768,
+          "preview_png": "build/world-mesh-oracle/alternate-uncached.png",
+          "preview_png_sha256": "c74351f1314e849b49f4597c8a04a9fbca90d633a69ed7fd4224c4766426ab4c",
+          "rgb_sha256": "dca52a707d896e75578f20241cb0a9b8bbd61a33a7bfa5899adf53210fc2d055",
+          "scenario": "uncached",
+          "width": 32
+        }
+      ],
+      "name": "alternate-registry",
+      "negative_cases": 0,
+      "quads": 948,
+      "snapshots": 4
+    },
+    {
+      "appearance_quads_checked": 0,
+      "base": [
+        30000000,
+        30000000,
+        30000000
+      ],
+      "blocks": 18,
+      "body_position_f64_hex": [
+        "417c9c3802000000",
+        "417c9c3808000000",
+        "417c9c37fe000000"
+      ],
+      "builtin_regressions": 0,
+      "frames": [
+        {
+          "height": 24,
+          "native_ppm_sha256": "649b318b225e346bdf853e0fa3701765413b2838c74a14fa6f2a14fac2e3ca30",
+          "pixels": 768,
+          "preview_png": "build/world-mesh-oracle/official-far-0.png",
+          "preview_png_sha256": "d29bb0ed8a6ccf9b701d32ba0d1edc276e053c8ca4a9021e2b86670c3547052d",
+          "rgb_sha256": "901fc91d7a18d54c41b1fd233cb46fc2b6f69e26cee9ffd54682faa4f3d62336",
+          "scenario": "far-0",
+          "width": 32
+        }
+      ],
+      "name": "far-0",
+      "negative_cases": 0,
+      "quads": 108,
+      "snapshots": 1
+    },
+    {
+      "appearance_quads_checked": 0,
+      "base": [
+        30000000,
+        30000000,
+        30000000
+      ],
+      "blocks": 18,
+      "body_position_f64_hex": [
+        "417c9c3806000000",
+        "417c9c3808000000",
+        "417c9c3802000000"
+      ],
+      "builtin_regressions": 0,
+      "frames": [],
+      "name": "far-1",
+      "negative_cases": 0,
+      "quads": 108,
+      "snapshots": 1
+    },
+    {
+      "appearance_quads_checked": 0,
+      "base": [
+        30000000,
+        30000000,
+        30000000
+      ],
+      "blocks": 18,
+      "body_position_f64_hex": [
+        "417c9c380e000000",
+        "417c9c3808000000",
+        "417c9c380a000000"
+      ],
+      "builtin_regressions": 0,
+      "frames": [],
+      "name": "far-2",
+      "negative_cases": 0,
+      "quads": 108,
+      "snapshots": 1
+    },
+    {
+      "appearance_quads_checked": 0,
+      "base": [
+        30000000,
+        30000000,
+        30000000
+      ],
+      "blocks": 18,
+      "body_position_f64_hex": [
+        "417c9c3808000001",
+        "417c9c3808000000",
+        "417c9c3804000001"
+      ],
+      "builtin_regressions": 0,
+      "frames": [],
+      "name": "far-3",
+      "negative_cases": 0,
+      "quads": 108,
+      "snapshots": 1
+    },
+    {
+      "appearance_quads_checked": 0,
+      "base": [
+        -30000000,
+        30000000,
+        30000000
+      ],
+      "blocks": 18,
+      "body_position_f64_hex": [
+        "c17c9c37fe000000",
+        "417c9c3808000000",
+        "417c9c37fe000000"
+      ],
+      "builtin_regressions": 0,
+      "frames": [
+        {
+          "height": 24,
+          "native_ppm_sha256": "649b318b225e346bdf853e0fa3701765413b2838c74a14fa6f2a14fac2e3ca30",
+          "pixels": 768,
+          "preview_png": "build/world-mesh-oracle/official-far-4.png",
+          "preview_png_sha256": "d29bb0ed8a6ccf9b701d32ba0d1edc276e053c8ca4a9021e2b86670c3547052d",
+          "rgb_sha256": "901fc91d7a18d54c41b1fd233cb46fc2b6f69e26cee9ffd54682faa4f3d62336",
+          "scenario": "far-4",
+          "width": 32
+        }
+      ],
+      "name": "far-4",
+      "negative_cases": 0,
+      "quads": 108,
+      "snapshots": 1
+    },
+    {
+      "appearance_quads_checked": 0,
+      "base": [
+        -30000000,
+        30000000,
+        30000000
+      ],
+      "blocks": 18,
+      "body_position_f64_hex": [
+        "c17c9c37fa000000",
+        "417c9c3808000000",
+        "417c9c3802000000"
+      ],
+      "builtin_regressions": 0,
+      "frames": [],
+      "name": "far-5",
+      "negative_cases": 0,
+      "quads": 108,
+      "snapshots": 1
+    },
+    {
+      "appearance_quads_checked": 0,
+      "base": [
+        -30000000,
+        30000000,
+        30000000
+      ],
+      "blocks": 18,
+      "body_position_f64_hex": [
+        "c17c9c37f2000000",
+        "417c9c3808000000",
+        "417c9c380a000000"
+      ],
+      "builtin_regressions": 0,
+      "frames": [],
+      "name": "far-6",
+      "negative_cases": 0,
+      "quads": 108,
+      "snapshots": 1
+    },
+    {
+      "appearance_quads_checked": 0,
+      "base": [
+        -30000000,
+        30000000,
+        30000000
+      ],
+      "blocks": 18,
+      "body_position_f64_hex": [
+        "c17c9c37f7ffffff",
+        "417c9c3808000000",
+        "417c9c3804000001"
+      ],
+      "builtin_regressions": 0,
+      "frames": [],
+      "name": "far-7",
+      "negative_cases": 0,
+      "quads": 108,
+      "snapshots": 1
+    },
+    {
+      "appearance_quads_checked": 0,
+      "base": [
+        30000000,
+        -30000000,
+        30000000
+      ],
+      "blocks": 18,
+      "body_position_f64_hex": [
+        "417c9c3802000000",
+        "c17c9c37f8000000",
+        "417c9c37fe000000"
+      ],
+      "builtin_regressions": 0,
+      "frames": [
+        {
+          "height": 24,
+          "native_ppm_sha256": "649b318b225e346bdf853e0fa3701765413b2838c74a14fa6f2a14fac2e3ca30",
+          "pixels": 768,
+          "preview_png": "build/world-mesh-oracle/official-far-8.png",
+          "preview_png_sha256": "d29bb0ed8a6ccf9b701d32ba0d1edc276e053c8ca4a9021e2b86670c3547052d",
+          "rgb_sha256": "901fc91d7a18d54c41b1fd233cb46fc2b6f69e26cee9ffd54682faa4f3d62336",
+          "scenario": "far-8",
+          "width": 32
+        }
+      ],
+      "name": "far-8",
+      "negative_cases": 0,
+      "quads": 108,
+      "snapshots": 1
+    },
+    {
+      "appearance_quads_checked": 0,
+      "base": [
+        30000000,
+        -30000000,
+        30000000
+      ],
+      "blocks": 18,
+      "body_position_f64_hex": [
+        "417c9c3806000000",
+        "c17c9c37f8000000",
+        "417c9c3802000000"
+      ],
+      "builtin_regressions": 0,
+      "frames": [],
+      "name": "far-9",
+      "negative_cases": 0,
+      "quads": 108,
+      "snapshots": 1
+    },
+    {
+      "appearance_quads_checked": 0,
+      "base": [
+        30000000,
+        -30000000,
+        30000000
+      ],
+      "blocks": 18,
+      "body_position_f64_hex": [
+        "417c9c380e000000",
+        "c17c9c37f8000000",
+        "417c9c380a000000"
+      ],
+      "builtin_regressions": 0,
+      "frames": [],
+      "name": "far-10",
+      "negative_cases": 0,
+      "quads": 108,
+      "snapshots": 1
+    },
+    {
+      "appearance_quads_checked": 0,
+      "base": [
+        30000000,
+        -30000000,
+        30000000
+      ],
+      "blocks": 18,
+      "body_position_f64_hex": [
+        "417c9c3808000001",
+        "c17c9c37f8000000",
+        "417c9c3804000001"
+      ],
+      "builtin_regressions": 0,
+      "frames": [],
+      "name": "far-11",
+      "negative_cases": 0,
+      "quads": 108,
+      "snapshots": 1
+    },
+    {
+      "appearance_quads_checked": 0,
+      "base": [
+        -30000000,
+        -30000000,
+        30000000
+      ],
+      "blocks": 18,
+      "body_position_f64_hex": [
+        "c17c9c37fe000000",
+        "c17c9c37f8000000",
+        "417c9c37fe000000"
+      ],
+      "builtin_regressions": 0,
+      "frames": [
+        {
+          "height": 24,
+          "native_ppm_sha256": "649b318b225e346bdf853e0fa3701765413b2838c74a14fa6f2a14fac2e3ca30",
+          "pixels": 768,
+          "preview_png": "build/world-mesh-oracle/official-far-12.png",
+          "preview_png_sha256": "d29bb0ed8a6ccf9b701d32ba0d1edc276e053c8ca4a9021e2b86670c3547052d",
+          "rgb_sha256": "901fc91d7a18d54c41b1fd233cb46fc2b6f69e26cee9ffd54682faa4f3d62336",
+          "scenario": "far-12",
+          "width": 32
+        }
+      ],
+      "name": "far-12",
+      "negative_cases": 0,
+      "quads": 108,
+      "snapshots": 1
+    },
+    {
+      "appearance_quads_checked": 0,
+      "base": [
+        -30000000,
+        -30000000,
+        30000000
+      ],
+      "blocks": 18,
+      "body_position_f64_hex": [
+        "c17c9c37fa000000",
+        "c17c9c37f8000000",
+        "417c9c3802000000"
+      ],
+      "builtin_regressions": 0,
+      "frames": [],
+      "name": "far-13",
+      "negative_cases": 0,
+      "quads": 108,
+      "snapshots": 1
+    },
+    {
+      "appearance_quads_checked": 0,
+      "base": [
+        -30000000,
+        -30000000,
+        30000000
+      ],
+      "blocks": 18,
+      "body_position_f64_hex": [
+        "c17c9c37f2000000",
+        "c17c9c37f8000000",
+        "417c9c380a000000"
+      ],
+      "builtin_regressions": 0,
+      "frames": [],
+      "name": "far-14",
+      "negative_cases": 0,
+      "quads": 108,
+      "snapshots": 1
+    },
+    {
+      "appearance_quads_checked": 0,
+      "base": [
+        -30000000,
+        -30000000,
+        30000000
+      ],
+      "blocks": 18,
+      "body_position_f64_hex": [
+        "c17c9c37f7ffffff",
+        "c17c9c37f8000000",
+        "417c9c3804000001"
+      ],
+      "builtin_regressions": 0,
+      "frames": [],
+      "name": "far-15",
+      "negative_cases": 0,
+      "quads": 108,
+      "snapshots": 1
+    },
+    {
+      "appearance_quads_checked": 0,
+      "base": [
+        30000000,
+        30000000,
+        -30000000
+      ],
+      "blocks": 18,
+      "body_position_f64_hex": [
+        "417c9c3802000000",
+        "417c9c3808000000",
+        "c17c9c3802000000"
+      ],
+      "builtin_regressions": 0,
+      "frames": [
+        {
+          "height": 24,
+          "native_ppm_sha256": "649b318b225e346bdf853e0fa3701765413b2838c74a14fa6f2a14fac2e3ca30",
+          "pixels": 768,
+          "preview_png": "build/world-mesh-oracle/official-far-16.png",
+          "preview_png_sha256": "d29bb0ed8a6ccf9b701d32ba0d1edc276e053c8ca4a9021e2b86670c3547052d",
+          "rgb_sha256": "901fc91d7a18d54c41b1fd233cb46fc2b6f69e26cee9ffd54682faa4f3d62336",
+          "scenario": "far-16",
+          "width": 32
+        }
+      ],
+      "name": "far-16",
+      "negative_cases": 0,
+      "quads": 108,
+      "snapshots": 1
+    },
+    {
+      "appearance_quads_checked": 0,
+      "base": [
+        30000000,
+        30000000,
+        -30000000
+      ],
+      "blocks": 18,
+      "body_position_f64_hex": [
+        "417c9c3806000000",
+        "417c9c3808000000",
+        "c17c9c37fe000000"
+      ],
+      "builtin_regressions": 0,
+      "frames": [],
+      "name": "far-17",
+      "negative_cases": 0,
+      "quads": 108,
+      "snapshots": 1
+    },
+    {
+      "appearance_quads_checked": 0,
+      "base": [
+        30000000,
+        30000000,
+        -30000000
+      ],
+      "blocks": 18,
+      "body_position_f64_hex": [
+        "417c9c380e000000",
+        "417c9c3808000000",
+        "c17c9c37f6000000"
+      ],
+      "builtin_regressions": 0,
+      "frames": [],
+      "name": "far-18",
+      "negative_cases": 0,
+      "quads": 108,
+      "snapshots": 1
+    },
+    {
+      "appearance_quads_checked": 0,
+      "base": [
+        30000000,
+        30000000,
+        -30000000
+      ],
+      "blocks": 18,
+      "body_position_f64_hex": [
+        "417c9c3808000001",
+        "417c9c3808000000",
+        "c17c9c37fbffffff"
+      ],
+      "builtin_regressions": 0,
+      "frames": [],
+      "name": "far-19",
+      "negative_cases": 0,
+      "quads": 108,
+      "snapshots": 1
+    },
+    {
+      "appearance_quads_checked": 0,
+      "base": [
+        -30000000,
+        30000000,
+        -30000000
+      ],
+      "blocks": 18,
+      "body_position_f64_hex": [
+        "c17c9c37fe000000",
+        "417c9c3808000000",
+        "c17c9c3802000000"
+      ],
+      "builtin_regressions": 0,
+      "frames": [
+        {
+          "height": 24,
+          "native_ppm_sha256": "649b318b225e346bdf853e0fa3701765413b2838c74a14fa6f2a14fac2e3ca30",
+          "pixels": 768,
+          "preview_png": "build/world-mesh-oracle/official-far-20.png",
+          "preview_png_sha256": "d29bb0ed8a6ccf9b701d32ba0d1edc276e053c8ca4a9021e2b86670c3547052d",
+          "rgb_sha256": "901fc91d7a18d54c41b1fd233cb46fc2b6f69e26cee9ffd54682faa4f3d62336",
+          "scenario": "far-20",
+          "width": 32
+        }
+      ],
+      "name": "far-20",
+      "negative_cases": 0,
+      "quads": 108,
+      "snapshots": 1
+    },
+    {
+      "appearance_quads_checked": 0,
+      "base": [
+        -30000000,
+        30000000,
+        -30000000
+      ],
+      "blocks": 18,
+      "body_position_f64_hex": [
+        "c17c9c37fa000000",
+        "417c9c3808000000",
+        "c17c9c37fe000000"
+      ],
+      "builtin_regressions": 0,
+      "frames": [],
+      "name": "far-21",
+      "negative_cases": 0,
+      "quads": 108,
+      "snapshots": 1
+    },
+    {
+      "appearance_quads_checked": 0,
+      "base": [
+        -30000000,
+        30000000,
+        -30000000
+      ],
+      "blocks": 18,
+      "body_position_f64_hex": [
+        "c17c9c37f2000000",
+        "417c9c3808000000",
+        "c17c9c37f6000000"
+      ],
+      "builtin_regressions": 0,
+      "frames": [],
+      "name": "far-22",
+      "negative_cases": 0,
+      "quads": 108,
+      "snapshots": 1
+    },
+    {
+      "appearance_quads_checked": 0,
+      "base": [
+        -30000000,
+        30000000,
+        -30000000
+      ],
+      "blocks": 18,
+      "body_position_f64_hex": [
+        "c17c9c37f7ffffff",
+        "417c9c3808000000",
+        "c17c9c37fbffffff"
+      ],
+      "builtin_regressions": 0,
+      "frames": [],
+      "name": "far-23",
+      "negative_cases": 0,
+      "quads": 108,
+      "snapshots": 1
+    },
+    {
+      "appearance_quads_checked": 0,
+      "base": [
+        30000000,
+        -30000000,
+        -30000000
+      ],
+      "blocks": 18,
+      "body_position_f64_hex": [
+        "417c9c3802000000",
+        "c17c9c37f8000000",
+        "c17c9c3802000000"
+      ],
+      "builtin_regressions": 0,
+      "frames": [
+        {
+          "height": 24,
+          "native_ppm_sha256": "649b318b225e346bdf853e0fa3701765413b2838c74a14fa6f2a14fac2e3ca30",
+          "pixels": 768,
+          "preview_png": "build/world-mesh-oracle/official-far-24.png",
+          "preview_png_sha256": "d29bb0ed8a6ccf9b701d32ba0d1edc276e053c8ca4a9021e2b86670c3547052d",
+          "rgb_sha256": "901fc91d7a18d54c41b1fd233cb46fc2b6f69e26cee9ffd54682faa4f3d62336",
+          "scenario": "far-24",
+          "width": 32
+        }
+      ],
+      "name": "far-24",
+      "negative_cases": 0,
+      "quads": 108,
+      "snapshots": 1
+    },
+    {
+      "appearance_quads_checked": 0,
+      "base": [
+        30000000,
+        -30000000,
+        -30000000
+      ],
+      "blocks": 18,
+      "body_position_f64_hex": [
+        "417c9c3806000000",
+        "c17c9c37f8000000",
+        "c17c9c37fe000000"
+      ],
+      "builtin_regressions": 0,
+      "frames": [],
+      "name": "far-25",
+      "negative_cases": 0,
+      "quads": 108,
+      "snapshots": 1
+    },
+    {
+      "appearance_quads_checked": 0,
+      "base": [
+        30000000,
+        -30000000,
+        -30000000
+      ],
+      "blocks": 18,
+      "body_position_f64_hex": [
+        "417c9c380e000000",
+        "c17c9c37f8000000",
+        "c17c9c37f6000000"
+      ],
+      "builtin_regressions": 0,
+      "frames": [],
+      "name": "far-26",
+      "negative_cases": 0,
+      "quads": 108,
+      "snapshots": 1
+    },
+    {
+      "appearance_quads_checked": 0,
+      "base": [
+        30000000,
+        -30000000,
+        -30000000
+      ],
+      "blocks": 18,
+      "body_position_f64_hex": [
+        "417c9c3808000001",
+        "c17c9c37f8000000",
+        "c17c9c37fbffffff"
+      ],
+      "builtin_regressions": 0,
+      "frames": [],
+      "name": "far-27",
+      "negative_cases": 0,
+      "quads": 108,
+      "snapshots": 1
+    },
+    {
+      "appearance_quads_checked": 0,
+      "base": [
+        -30000000,
+        -30000000,
+        -30000000
+      ],
+      "blocks": 18,
+      "body_position_f64_hex": [
+        "c17c9c37fe000000",
+        "c17c9c37f8000000",
+        "c17c9c3802000000"
+      ],
+      "builtin_regressions": 0,
+      "frames": [
+        {
+          "height": 24,
+          "native_ppm_sha256": "649b318b225e346bdf853e0fa3701765413b2838c74a14fa6f2a14fac2e3ca30",
+          "pixels": 768,
+          "preview_png": "build/world-mesh-oracle/official-far-28.png",
+          "preview_png_sha256": "d29bb0ed8a6ccf9b701d32ba0d1edc276e053c8ca4a9021e2b86670c3547052d",
+          "rgb_sha256": "901fc91d7a18d54c41b1fd233cb46fc2b6f69e26cee9ffd54682faa4f3d62336",
+          "scenario": "far-28",
+          "width": 32
+        }
+      ],
+      "name": "far-28",
+      "negative_cases": 0,
+      "quads": 108,
+      "snapshots": 1
+    },
+    {
+      "appearance_quads_checked": 0,
+      "base": [
+        -30000000,
+        -30000000,
+        -30000000
+      ],
+      "blocks": 18,
+      "body_position_f64_hex": [
+        "c17c9c37fa000000",
+        "c17c9c37f8000000",
+        "c17c9c37fe000000"
+      ],
+      "builtin_regressions": 0,
+      "frames": [],
+      "name": "far-29",
+      "negative_cases": 0,
+      "quads": 108,
+      "snapshots": 1
+    },
+    {
+      "appearance_quads_checked": 0,
+      "base": [
+        -30000000,
+        -30000000,
+        -30000000
+      ],
+      "blocks": 18,
+      "body_position_f64_hex": [
+        "c17c9c37f2000000",
+        "c17c9c37f8000000",
+        "c17c9c37f6000000"
+      ],
+      "builtin_regressions": 0,
+      "frames": [],
+      "name": "far-30",
+      "negative_cases": 0,
+      "quads": 108,
+      "snapshots": 1
+    },
+    {
+      "appearance_quads_checked": 0,
+      "base": [
+        -30000000,
+        -30000000,
+        -30000000
+      ],
+      "blocks": 18,
+      "body_position_f64_hex": [
+        "c17c9c37f7ffffff",
+        "c17c9c37f8000000",
+        "c17c9c37fbffffff"
+      ],
+      "builtin_regressions": 0,
+      "frames": [],
+      "name": "far-31",
+      "negative_cases": 0,
+      "quads": 108,
+      "snapshots": 1
+    }
+  ],
+  "input_sha256_begin": {
+    "alternate_registry": "67e335d15307a6d20e68e4204569439957a09c380ffacbff7e8f97192d568458",
+    "client_jar": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d",
+    "java_reference": "3cbe8aa7780f14c1b37159a885710b04680e3b6c4ffa4975b4d8297015f11e7e",
+    "official_registry": "27769e75bf862d0540b2df2a6e99f6b7556a867bff6339fb08566240ee124cac"
+  },
+  "input_sha256_end": {
+    "alternate_registry": "67e335d15307a6d20e68e4204569439957a09c380ffacbff7e8f97192d568458",
+    "client_jar": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d",
+    "java_reference": "3cbe8aa7780f14c1b37159a885710b04680e3b6c4ffa4975b4d8297015f11e7e",
+    "official_registry": "27769e75bf862d0540b2df2a6e99f6b7556a867bff6339fb08566240ee124cac"
+  },
+  "inputs_unchanged_during_run": true,
+  "oracle_environment": {
+    "numpy": "2.3.5",
+    "pillow": "12.3.0",
+    "python": "3.12.14"
+  },
+  "oracle_sha256": "4ce88638290cb611bf0ff3bd99ed30cea16691cf5979d40074fe135c750ee745",
+  "pin": "26.3",
+  "reference": {
+    "atlas_policy": "StaticNormalized, full-image [0,1] UVs; all Solid",
+    "cached_actual_java_cube_variants": 3,
+    "cached_actual_java_quads": 18,
+    "client_sha256": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d",
+    "java_cube_state_ids": {
+      "minecraft:dirt": 10,
+      "minecraft:oak_planks": 15,
+      "minecraft:stone": 1
+    },
+    "java_executed_in_this_run": false,
+    "reference_sha256": "3cbe8aa7780f14c1b37159a885710b04680e3b6c4ffa4975b4d8297015f11e7e",
+    "slots": {
+      "minecraft:block/dirt": 0,
+      "minecraft:block/oak_planks": 1,
+      "minecraft:block/stone": 2
+    },
+    "textures": {
+      "assets/minecraft/textures/block/dirt.png": {
+        "bytes": 197,
+        "height": 16,
+        "sha256": "67197d5371efc3ca1638217c38349665dbd5a977b47bfb20075c858dff87d510",
+        "width": 16
+      },
+      "assets/minecraft/textures/block/oak_planks.png": {
+        "bytes": 195,
+        "height": 16,
+        "sha256": "65665943ef9c8bcf63fc67d2083ed0c50243f724106d0e4bb1abea5d921b16d3",
+        "width": 16
+      },
+      "assets/minecraft/textures/block/stone.png": {
+        "bytes": 151,
+        "height": 16,
+        "sha256": "b5e10adc72442bfb257ce7ba0b9bbe36475a0c8cdfec89b80dc9517203ff3e9f",
+        "width": 16
+      }
+    }
+  },
+  "registry_inputs": {
+    "alternate_sha256": "67e335d15307a6d20e68e4204569439957a09c380ffacbff7e8f97192d568458",
+    "alternate_states": {
+      "minecraft:air": 2,
+      "minecraft:dirt": 3,
+      "minecraft:oak_planks": 0,
+      "minecraft:stone": 1
+    },
+    "official_cube_states": {
+      "dirt": 10,
+      "oak_planks": 15,
+      "stone": 1
+    },
+    "official_sha256": "27769e75bf862d0540b2df2a6e99f6b7556a867bff6339fb08566240ee124cac"
+  },
+  "runs": [
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-mesh-tests",
+        "--gpu",
+        "off",
+        "errors"
+      ],
+      "seconds": 0.646692,
+      "stderr": "",
+      "stdout_sha256": "45bc66e95b258399da7aac227a118cd88eb40f13b9852bab2702f8d462695793"
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-mesh-tests",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 1.3261,
+      "stderr": "",
+      "stdout_sha256": "701e98c6f79efb103ac6661c6308c3736d2ee23aa85198afcc41cd81248b3a59"
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-mesh-tests",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 1.242469,
+      "stderr": "",
+      "stdout_sha256": "503e366f64c4615b0df0917bda615c2963a8e7ea57e27b23e5b7a7492f6f464d"
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-mesh-tests",
+        "--gpu",
+        "off",
+        "far",
+        "far-0",
+        "1",
+        "30000000",
+        "30000000",
+        "30000000",
+        "1098685496",
+        "33554432",
+        "1098685496",
+        "134217728",
+        "1098685495",
+        "4261412864"
+      ],
+      "seconds": 1.22986,
+      "stderr": "",
+      "stdout_sha256": "2832ca203269b2630ae9b50410593d2d23c1c86ff1b53218043cc883ddaeabb1"
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-mesh-tests",
+        "--gpu",
+        "off",
+        "far",
+        "far-1",
+        "0",
+        "30000000",
+        "30000000",
+        "30000000",
+        "1098685496",
+        "100663296",
+        "1098685496",
+        "134217728",
+        "1098685496",
+        "33554432"
+      ],
+      "seconds": 1.201682,
+      "stderr": "",
+      "stdout_sha256": "d8c687eb1c8b0ba029f7f2eaafe3dfe98a44996423dd4571d307d84ec7504311"
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-mesh-tests",
+        "--gpu",
+        "off",
+        "far",
+        "far-2",
+        "0",
+        "30000000",
+        "30000000",
+        "30000000",
+        "1098685496",
+        "234881024",
+        "1098685496",
+        "134217728",
+        "1098685496",
+        "167772160"
+      ],
+      "seconds": 1.222582,
+      "stderr": "",
+      "stdout_sha256": "3b2c7694bf59352a7da41d5d6e38693cad0ac29ee80ccd80f972a6ba480ada7c"
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-mesh-tests",
+        "--gpu",
+        "off",
+        "far",
+        "far-3",
+        "0",
+        "30000000",
+        "30000000",
+        "30000000",
+        "1098685496",
+        "134217729",
+        "1098685496",
+        "134217728",
+        "1098685496",
+        "67108865"
+      ],
+      "seconds": 1.302933,
+      "stderr": "",
+      "stdout_sha256": "fdb414a6952aa1459ba51476d6c8819c8f5c886275722e906f89ac06fa6a16a8"
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-mesh-tests",
+        "--gpu",
+        "off",
+        "far",
+        "far-4",
+        "1",
+        "4264967296",
+        "30000000",
+        "30000000",
+        "3246169143",
+        "4261412864",
+        "1098685496",
+        "134217728",
+        "1098685495",
+        "4261412864"
+      ],
+      "seconds": 1.247469,
+      "stderr": "",
+      "stdout_sha256": "c5f2fe114717beafbc6476fa77706f00463adf58d0af5bec89e8b02b479ce06c"
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-mesh-tests",
+        "--gpu",
+        "off",
+        "far",
+        "far-5",
+        "0",
+        "4264967296",
+        "30000000",
+        "30000000",
+        "3246169143",
+        "4194304000",
+        "1098685496",
+        "134217728",
+        "1098685496",
+        "33554432"
+      ],
+      "seconds": 1.212592,
+      "stderr": "",
+      "stdout_sha256": "594b91b8caf2e1a54d97ad2dc2e239e2a7d993d6e512a02d65451b8ffa8ad446"
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-mesh-tests",
+        "--gpu",
+        "off",
+        "far",
+        "far-6",
+        "0",
+        "4264967296",
+        "30000000",
+        "30000000",
+        "3246169143",
+        "4060086272",
+        "1098685496",
+        "134217728",
+        "1098685496",
+        "167772160"
+      ],
+      "seconds": 1.302598,
+      "stderr": "",
+      "stdout_sha256": "f139c3b245376040686f5c9602942caeffdee5b2df449aaf35a758ecdb0f5c6d"
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-mesh-tests",
+        "--gpu",
+        "off",
+        "far",
+        "far-7",
+        "0",
+        "4264967296",
+        "30000000",
+        "30000000",
+        "3246169143",
+        "4160749567",
+        "1098685496",
+        "134217728",
+        "1098685496",
+        "67108865"
+      ],
+      "seconds": 1.29034,
+      "stderr": "",
+      "stdout_sha256": "bca38ea9ebd3a38400f2f431cf88c915cdaddda0e3487287aa0ae9d87bcdfcec"
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-mesh-tests",
+        "--gpu",
+        "off",
+        "far",
+        "far-8",
+        "1",
+        "30000000",
+        "4264967296",
+        "30000000",
+        "1098685496",
+        "33554432",
+        "3246169143",
+        "4160749568",
+        "1098685495",
+        "4261412864"
+      ],
+      "seconds": 1.282773,
+      "stderr": "",
+      "stdout_sha256": "36c40c1b809c653dd0d9d668039589da7bc38564e6d962369d3d994072267f8d"
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-mesh-tests",
+        "--gpu",
+        "off",
+        "far",
+        "far-9",
+        "0",
+        "30000000",
+        "4264967296",
+        "30000000",
+        "1098685496",
+        "100663296",
+        "3246169143",
+        "4160749568",
+        "1098685496",
+        "33554432"
+      ],
+      "seconds": 1.345759,
+      "stderr": "",
+      "stdout_sha256": "c678a06067f4d74d5a408764005b4304d71face5588c602c747acc74e7cee475"
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-mesh-tests",
+        "--gpu",
+        "off",
+        "far",
+        "far-10",
+        "0",
+        "30000000",
+        "4264967296",
+        "30000000",
+        "1098685496",
+        "234881024",
+        "3246169143",
+        "4160749568",
+        "1098685496",
+        "167772160"
+      ],
+      "seconds": 1.200365,
+      "stderr": "",
+      "stdout_sha256": "986315f0109cdbb525367a6b9d67c930224efa5f30f50e15745b2821027a257e"
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-mesh-tests",
+        "--gpu",
+        "off",
+        "far",
+        "far-11",
+        "0",
+        "30000000",
+        "4264967296",
+        "30000000",
+        "1098685496",
+        "134217729",
+        "3246169143",
+        "4160749568",
+        "1098685496",
+        "67108865"
+      ],
+      "seconds": 1.202266,
+      "stderr": "",
+      "stdout_sha256": "293cb4655aed29183c63d189f686c100325b2860b5345d61f6c0d24d4a3f5c24"
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-mesh-tests",
+        "--gpu",
+        "off",
+        "far",
+        "far-12",
+        "1",
+        "4264967296",
+        "4264967296",
+        "30000000",
+        "3246169143",
+        "4261412864",
+        "3246169143",
+        "4160749568",
+        "1098685495",
+        "4261412864"
+      ],
+      "seconds": 1.361813,
+      "stderr": "",
+      "stdout_sha256": "98c4ed05e817eac78fff4a191e6ca309ae53676036e3e3c7737aa480d41916e5"
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-mesh-tests",
+        "--gpu",
+        "off",
+        "far",
+        "far-13",
+        "0",
+        "4264967296",
+        "4264967296",
+        "30000000",
+        "3246169143",
+        "4194304000",
+        "3246169143",
+        "4160749568",
+        "1098685496",
+        "33554432"
+      ],
+      "seconds": 1.283544,
+      "stderr": "",
+      "stdout_sha256": "9160b345d533ae4fd1d4968a6069951819a6a483e99b116e972ca5a8c00b55af"
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-mesh-tests",
+        "--gpu",
+        "off",
+        "far",
+        "far-14",
+        "0",
+        "4264967296",
+        "4264967296",
+        "30000000",
+        "3246169143",
+        "4060086272",
+        "3246169143",
+        "4160749568",
+        "1098685496",
+        "167772160"
+      ],
+      "seconds": 1.351242,
+      "stderr": "",
+      "stdout_sha256": "511dcc0e039a635fa92b7027521056dddedc536e927b863927714dcbaf33ae53"
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-mesh-tests",
+        "--gpu",
+        "off",
+        "far",
+        "far-15",
+        "0",
+        "4264967296",
+        "4264967296",
+        "30000000",
+        "3246169143",
+        "4160749567",
+        "3246169143",
+        "4160749568",
+        "1098685496",
+        "67108865"
+      ],
+      "seconds": 1.215767,
+      "stderr": "",
+      "stdout_sha256": "3ee35eb3e0cf1f998dfc2ec6e91ebfc714f26241cb1492754c6287896736628e"
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-mesh-tests",
+        "--gpu",
+        "off",
+        "far",
+        "far-16",
+        "1",
+        "30000000",
+        "30000000",
+        "4264967296",
+        "1098685496",
+        "33554432",
+        "1098685496",
+        "134217728",
+        "3246169144",
+        "33554432"
+      ],
+      "seconds": 1.360208,
+      "stderr": "",
+      "stdout_sha256": "063b0dc5440ccc4975c0e5d09f59c57967f0f03af40fcdd5838d81545fd34d0f"
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-mesh-tests",
+        "--gpu",
+        "off",
+        "far",
+        "far-17",
+        "0",
+        "30000000",
+        "30000000",
+        "4264967296",
+        "1098685496",
+        "100663296",
+        "1098685496",
+        "134217728",
+        "3246169143",
+        "4261412864"
+      ],
+      "seconds": 1.27688,
+      "stderr": "",
+      "stdout_sha256": "89b9ee88e94e7536a9045f7df39abaa43919970a97e9ff10608d728e395540cd"
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-mesh-tests",
+        "--gpu",
+        "off",
+        "far",
+        "far-18",
+        "0",
+        "30000000",
+        "30000000",
+        "4264967296",
+        "1098685496",
+        "234881024",
+        "1098685496",
+        "134217728",
+        "3246169143",
+        "4127195136"
+      ],
+      "seconds": 1.349939,
+      "stderr": "",
+      "stdout_sha256": "d804506eb9ed430cbdc01fcad5373020e42b3c09f04d0fcb0f11614f28d6ab48"
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-mesh-tests",
+        "--gpu",
+        "off",
+        "far",
+        "far-19",
+        "0",
+        "30000000",
+        "30000000",
+        "4264967296",
+        "1098685496",
+        "134217729",
+        "1098685496",
+        "134217728",
+        "3246169143",
+        "4227858431"
+      ],
+      "seconds": 1.237666,
+      "stderr": "",
+      "stdout_sha256": "032f7cdb2a26c902c4e0a2104961a411a130a234c142f0994f651c0a22cc3a1f"
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-mesh-tests",
+        "--gpu",
+        "off",
+        "far",
+        "far-20",
+        "1",
+        "4264967296",
+        "30000000",
+        "4264967296",
+        "3246169143",
+        "4261412864",
+        "1098685496",
+        "134217728",
+        "3246169144",
+        "33554432"
+      ],
+      "seconds": 1.375636,
+      "stderr": "",
+      "stdout_sha256": "493d09135fb4ba39a383fb160b372228523f32327d7b633471366f4782e18e00"
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-mesh-tests",
+        "--gpu",
+        "off",
+        "far",
+        "far-21",
+        "0",
+        "4264967296",
+        "30000000",
+        "4264967296",
+        "3246169143",
+        "4194304000",
+        "1098685496",
+        "134217728",
+        "3246169143",
+        "4261412864"
+      ],
+      "seconds": 1.344083,
+      "stderr": "",
+      "stdout_sha256": "189ba92d2f9077853e0bb5a8d58ff39166c4886eabe4ea52b47adf69c86e6282"
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-mesh-tests",
+        "--gpu",
+        "off",
+        "far",
+        "far-22",
+        "0",
+        "4264967296",
+        "30000000",
+        "4264967296",
+        "3246169143",
+        "4060086272",
+        "1098685496",
+        "134217728",
+        "3246169143",
+        "4127195136"
+      ],
+      "seconds": 1.349062,
+      "stderr": "",
+      "stdout_sha256": "754190bf102c980c2d8187b45fa88a5727caf8118a006ed2071cfbb1811a91fe"
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-mesh-tests",
+        "--gpu",
+        "off",
+        "far",
+        "far-23",
+        "0",
+        "4264967296",
+        "30000000",
+        "4264967296",
+        "3246169143",
+        "4160749567",
+        "1098685496",
+        "134217728",
+        "3246169143",
+        "4227858431"
+      ],
+      "seconds": 1.392949,
+      "stderr": "",
+      "stdout_sha256": "d1aa9bcb9c522b9179e42abe7b4486ba8acdcca66a08b8af81fb4fc90c945bc5"
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-mesh-tests",
+        "--gpu",
+        "off",
+        "far",
+        "far-24",
+        "1",
+        "30000000",
+        "4264967296",
+        "4264967296",
+        "1098685496",
+        "33554432",
+        "3246169143",
+        "4160749568",
+        "3246169144",
+        "33554432"
+      ],
+      "seconds": 1.250372,
+      "stderr": "",
+      "stdout_sha256": "c42404a9ec1a5fbd17b3cee55944053179ccb9a542a1b07eef35828e8ec2dffd"
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-mesh-tests",
+        "--gpu",
+        "off",
+        "far",
+        "far-25",
+        "0",
+        "30000000",
+        "4264967296",
+        "4264967296",
+        "1098685496",
+        "100663296",
+        "3246169143",
+        "4160749568",
+        "3246169143",
+        "4261412864"
+      ],
+      "seconds": 1.418051,
+      "stderr": "",
+      "stdout_sha256": "fd74ecc44b46f8816a1cf761caed1fbb10ca8170d01a156ac5d244d309919efd"
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-mesh-tests",
+        "--gpu",
+        "off",
+        "far",
+        "far-26",
+        "0",
+        "30000000",
+        "4264967296",
+        "4264967296",
+        "1098685496",
+        "234881024",
+        "3246169143",
+        "4160749568",
+        "3246169143",
+        "4127195136"
+      ],
+      "seconds": 1.213954,
+      "stderr": "",
+      "stdout_sha256": "e0c3258e3cdd5e95013d2344abb68f7d1568bc1cd81689d578b48d89ae34ae2d"
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-mesh-tests",
+        "--gpu",
+        "off",
+        "far",
+        "far-27",
+        "0",
+        "30000000",
+        "4264967296",
+        "4264967296",
+        "1098685496",
+        "134217729",
+        "3246169143",
+        "4160749568",
+        "3246169143",
+        "4227858431"
+      ],
+      "seconds": 1.215519,
+      "stderr": "",
+      "stdout_sha256": "cbc86d4e4f7fbcfdf20aea4332cfe4504d7db80e45ee5ced98af03bdf794da33"
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-mesh-tests",
+        "--gpu",
+        "off",
+        "far",
+        "far-28",
+        "1",
+        "4264967296",
+        "4264967296",
+        "4264967296",
+        "3246169143",
+        "4261412864",
+        "3246169143",
+        "4160749568",
+        "3246169144",
+        "33554432"
+      ],
+      "seconds": 1.314685,
+      "stderr": "",
+      "stdout_sha256": "30d9a6597de49ead9e6ce3fb962bd661251d992ad978cd5fe3ffdc3055f99fc5"
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-mesh-tests",
+        "--gpu",
+        "off",
+        "far",
+        "far-29",
+        "0",
+        "4264967296",
+        "4264967296",
+        "4264967296",
+        "3246169143",
+        "4194304000",
+        "3246169143",
+        "4160749568",
+        "3246169143",
+        "4261412864"
+      ],
+      "seconds": 1.220797,
+      "stderr": "",
+      "stdout_sha256": "1937dc8bcca1d0e11ae861d41a0e0f6f960dbb380e1cb0a8f45f9ff1e76e3e0f"
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-mesh-tests",
+        "--gpu",
+        "off",
+        "far",
+        "far-30",
+        "0",
+        "4264967296",
+        "4264967296",
+        "4264967296",
+        "3246169143",
+        "4060086272",
+        "3246169143",
+        "4160749568",
+        "3246169143",
+        "4127195136"
+      ],
+      "seconds": 1.338847,
+      "stderr": "",
+      "stdout_sha256": "319330c5317744098bb9c48f343639f14961891981fd4e0257688bd13fb19c0e"
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-mesh-tests",
+        "--gpu",
+        "off",
+        "far",
+        "far-31",
+        "0",
+        "4264967296",
+        "4264967296",
+        "4264967296",
+        "3246169143",
+        "4160749567",
+        "3246169143",
+        "4160749568",
+        "3246169143",
+        "4227858431"
+      ],
+      "seconds": 1.348839,
+      "stderr": "",
+      "stdout_sha256": "49966f2a4f6677e43a40130ddb4e8144010e643a23072a7fae8cd1d94a654c64"
+    }
+  ],
+  "schema": 1,
+  "scope": "Finite camera-relative Core.World snapshots, explicit registry state bindings, actual JAR resource loading and pure Bend cube baking/world mesh/flat pixels",
+  "seconds": 588.528457,
+  "source_sha256_begin": {
+    "src/archive.bend": "c0f7b34a22726d220f6b867730b7d080d57d82c84d619c35721b9b8d18fa5d6e",
+    "src/big_uint.bend": "fbe5965ee16ee3d6864def33fbc6e5e4b1b9bc7da4735d99311c1a23c65e2444",
+    "src/block_bake.bend": "3611116e0ba63915d6013463c1640f83b6b80cb08e802f93be5f7eaa4d600595",
+    "src/block_model.bend": "08108bae9b89c6768de56bdddea158f3604b36c7de4ee0408815e2c7f48b97a1",
+    "src/block_resources.bend": "34fd345b8239dde6d097e6051839a28fef475f0f6d3d147c8dc1b4adb9512fb0",
+    "src/client_render.bend": "bb8f6057a02bfcb0583025f9e75fe41abc6804eb554c6d971df5c81618932947",
+    "src/client_world.bend": "05040abf35b2b9ceaf87fed5c48f8d074d211750a59ab00fa6ff08e60a9ea5d7",
+    "src/compression.bend": "255cdff06a33050c7b0a48fdea75c1842ebe2dab0439cfe4f03d126d4edc20aa",
+    "src/core.bend": "c1ee5a5390cdac0452c9c6cd3b0584a68ef68b5b0dfec867491c27e67ecadd4e",
+    "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "src/float_parse.bend": "fe22007f0805f3c955fcaada88c1da76a3cceda74f0ff3840ae47af49a02c683",
+    "src/framing.bend": "307f95049df03d92687b7bd0eafb2cd566e660926510bb88163f9bc825fccdb5",
+    "src/game.bend": "43e3eee5d15613bb06cc608fe43657aa14d8c0fbe899d4efa580fc8335d23882",
+    "src/geometry.bend": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f",
+    "src/hash.bend": "d2473695632b19e68c8d636668e4617f04d70892fb2ab6559cb24d4b33c1b978",
+    "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+    "src/live.bend": "cb5a2f8237a53e48d3f6751d321a023e11694721f789373984d7d77620f32e87",
+    "src/mesh_render.bend": "90cc444e01b6a97f814a20a22a09b67e322b1eec4afc879e1d5b9b7f57f3b16c",
+    "src/movement.bend": "0e94fea7cc941a23d2ed7bbd2ccaf0117e6af363eb91f2db2e34428f9dd9e67f",
+    "src/png.bend": "8c24c14a250cf6dbdf0c2804e4b28bfebd7ef62ed5d9ee97a1d07094d4745f22",
+    "src/registry.bend": "821c53d9cfa3044be3cae2af968f55563c0be2bebc9beae55a29d77d47b140a0",
+    "src/resource_json.bend": "271f9ace6304fdd42ced039ab2e7f95459eed1f20f011115f399b619f2bc6ffb",
+    "src/schedule.bend": "93aa79895fe340e27ae5fd562102d5980f0938003eb1bbde669a84010779b8c9",
+    "src/section.bend": "02b5c15c57b173c7eb8b4c55a1433c10c192926e91af5e3e69050b4404044aa5",
+    "src/section_map.bend": "ded59d7938c02fd0876d65e37f9f90ea0cfebf3ca4bd107394342f8adbf33965",
+    "src/unicode.bend": "8f0cd9bbcd0e7f938af370675eca0c73a9b97b90c2789a1e77e5a29a918455bd",
+    "src/world_mesh.bend": "55ae3a8d0efcd1e69ac59c3db49b4a0db1359d3e655c93ca11ba04a36a72cc45",
+    "tests/world_mesh.bend": "5a0f46ddfa1b874ac78debc86cf509a46a89a5347bce457406abfc3ebdf2ead9",
+    "tools/reference_block_probe.py": "5456bfddf84b37aec253c958ff12b723260875485289a7afc34a88d04c023003",
+    "tools/reference_inventory.py": "e82b66508a99d9bac37c62917645e9adcac06e52ab2b65e2bc8afd5be66a8d9e",
+    "tools/reference_model_probe.py": "4c82153a59a0eeb58e8c5df181e13adb16424343de9f7c2957f73c662cc598b7",
+    "tools/reference_movement_probe.py": "e8500b4509fd12a47bd1c5c085fc04d00b8c18af4ad3d551487b323eec9d7736",
+    "tools/test_block_bake.py": "82c4fb482906cd6010de9c6af64294954b6a63d6da7083c8ab2019b1a69732e6",
+    "tools/test_client_world.py": "e64430126cbc6fd5b85a0bfcbb61de322020585a877aeb6412d3bacbc5dbdbd3",
+    "tools/test_mesh_render.py": "0645bcd9fa2e6f1407587c4b14efcaadf81a00f1f3d1b6ffb42c11cd42fbcb06",
+    "tools/test_world_mesh.py": "4ce88638290cb611bf0ff3bd99ed30cea16691cf5979d40074fe135c750ee745"
+  },
+  "source_sha256_end": {
+    "src/archive.bend": "c0f7b34a22726d220f6b867730b7d080d57d82c84d619c35721b9b8d18fa5d6e",
+    "src/big_uint.bend": "fbe5965ee16ee3d6864def33fbc6e5e4b1b9bc7da4735d99311c1a23c65e2444",
+    "src/block_bake.bend": "3611116e0ba63915d6013463c1640f83b6b80cb08e802f93be5f7eaa4d600595",
+    "src/block_model.bend": "08108bae9b89c6768de56bdddea158f3604b36c7de4ee0408815e2c7f48b97a1",
+    "src/block_resources.bend": "34fd345b8239dde6d097e6051839a28fef475f0f6d3d147c8dc1b4adb9512fb0",
+    "src/client_render.bend": "bb8f6057a02bfcb0583025f9e75fe41abc6804eb554c6d971df5c81618932947",
+    "src/client_world.bend": "05040abf35b2b9ceaf87fed5c48f8d074d211750a59ab00fa6ff08e60a9ea5d7",
+    "src/compression.bend": "255cdff06a33050c7b0a48fdea75c1842ebe2dab0439cfe4f03d126d4edc20aa",
+    "src/core.bend": "c1ee5a5390cdac0452c9c6cd3b0584a68ef68b5b0dfec867491c27e67ecadd4e",
+    "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "src/float_parse.bend": "fe22007f0805f3c955fcaada88c1da76a3cceda74f0ff3840ae47af49a02c683",
+    "src/framing.bend": "307f95049df03d92687b7bd0eafb2cd566e660926510bb88163f9bc825fccdb5",
+    "src/game.bend": "43e3eee5d15613bb06cc608fe43657aa14d8c0fbe899d4efa580fc8335d23882",
+    "src/geometry.bend": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f",
+    "src/hash.bend": "d2473695632b19e68c8d636668e4617f04d70892fb2ab6559cb24d4b33c1b978",
+    "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+    "src/live.bend": "cb5a2f8237a53e48d3f6751d321a023e11694721f789373984d7d77620f32e87",
+    "src/mesh_render.bend": "90cc444e01b6a97f814a20a22a09b67e322b1eec4afc879e1d5b9b7f57f3b16c",
+    "src/movement.bend": "0e94fea7cc941a23d2ed7bbd2ccaf0117e6af363eb91f2db2e34428f9dd9e67f",
+    "src/png.bend": "8c24c14a250cf6dbdf0c2804e4b28bfebd7ef62ed5d9ee97a1d07094d4745f22",
+    "src/registry.bend": "821c53d9cfa3044be3cae2af968f55563c0be2bebc9beae55a29d77d47b140a0",
+    "src/resource_json.bend": "271f9ace6304fdd42ced039ab2e7f95459eed1f20f011115f399b619f2bc6ffb",
+    "src/schedule.bend": "93aa79895fe340e27ae5fd562102d5980f0938003eb1bbde669a84010779b8c9",
+    "src/section.bend": "02b5c15c57b173c7eb8b4c55a1433c10c192926e91af5e3e69050b4404044aa5",
+    "src/section_map.bend": "ded59d7938c02fd0876d65e37f9f90ea0cfebf3ca4bd107394342f8adbf33965",
+    "src/unicode.bend": "8f0cd9bbcd0e7f938af370675eca0c73a9b97b90c2789a1e77e5a29a918455bd",
+    "src/world_mesh.bend": "55ae3a8d0efcd1e69ac59c3db49b4a0db1359d3e655c93ca11ba04a36a72cc45",
+    "tests/world_mesh.bend": "5a0f46ddfa1b874ac78debc86cf509a46a89a5347bce457406abfc3ebdf2ead9",
+    "tools/reference_block_probe.py": "5456bfddf84b37aec253c958ff12b723260875485289a7afc34a88d04c023003",
+    "tools/reference_inventory.py": "e82b66508a99d9bac37c62917645e9adcac06e52ab2b65e2bc8afd5be66a8d9e",
+    "tools/reference_model_probe.py": "4c82153a59a0eeb58e8c5df181e13adb16424343de9f7c2957f73c662cc598b7",
+    "tools/reference_movement_probe.py": "e8500b4509fd12a47bd1c5c085fc04d00b8c18af4ad3d551487b323eec9d7736",
+    "tools/test_block_bake.py": "82c4fb482906cd6010de9c6af64294954b6a63d6da7083c8ab2019b1a69732e6",
+    "tools/test_client_world.py": "e64430126cbc6fd5b85a0bfcbb61de322020585a877aeb6412d3bacbc5dbdbd3",
+    "tools/test_mesh_render.py": "0645bcd9fa2e6f1407587c4b14efcaadf81a00f1f3d1b6ffb42c11cd42fbcb06",
+    "tools/test_world_mesh.py": "4ce88638290cb611bf0ff3bd99ed30cea16691cf5979d40074fe135c750ee745"
+  },
+  "sources_unchanged_during_run": true,
+  "status": "passed",
+  "timestamp_utc": "2026-10-03T20:08:21.222633+00:00"
+}
