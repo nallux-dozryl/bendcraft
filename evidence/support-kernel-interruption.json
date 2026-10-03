@@ -1,0 +1,23 @@
+{
+  "cause": "Lead requested queue coordination after simultaneous Bend processes caused heavy swapping; terminate only this harness verdict and retain the native build.",
+  "completed_harness_ordinary_check": "ALL PROOFS CHECK",
+  "completed_production_checks": {
+    "independent_kernel": "ALL PROOFS CHECK",
+    "laws": 4,
+    "ordinary": "ALL PROOFS CHECK",
+    "source_sha256": "aca42f24e0a32bd89356ac33f6d9bbe2ab5975ce938e2d2750496c01a6137455"
+  },
+  "failure_inference": false,
+  "interrupted_command": [
+    "/Users/chuah/.bend/bin/bend",
+    "tests/support.bend",
+    "--verdict"
+  ],
+  "interrupted_elapsed_seconds": 336.774391,
+  "interrupted_exit_code": -15,
+  "native_build": "PID 20868 retained running; result pending",
+  "recorded_utc": "2026-10-03T19:23:54.435226+00:00",
+  "rerun_policy": "Await lead heavy-check slot before repeating the harness verdict.",
+  "status": "inconclusive_interrupted",
+  "termination": "SIGTERM to own PID 21683"
+}

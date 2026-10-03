@@ -1,0 +1,30 @@
+{
+  "classpath_library_count": 39,
+  "failure_injections": [
+    {
+      "field": "server_bundle_sha256",
+      "reason": "server bundle provenance",
+      "rejected": true
+    },
+    {
+      "field": "classpath_libraries",
+      "reason": "classpath library provenance",
+      "rejected": true
+    }
+  ],
+  "probe_source": {
+    "bytes": 30877,
+    "file": "reference_support_probe.py",
+    "sha1": "90b513f4221b7e81ef11340171abbd96bfdb9fd6",
+    "sha256": "eddab4b4b545cc4d7901f8e185f35c2505141db226331e3064f7926e4c69656f"
+  },
+  "reference": {
+    "bytes": 4313631,
+    "file": "support.json",
+    "sha1": "40f0bf484388130eb85b2fdb3ed71c6e0030dd7d",
+    "sha256": "718e819478ea612c6f1246520ba509d2d3890b593f7d5b020c3218020b35678e"
+  },
+  "scope": "Metadata-only in-memory corruptions invoke actual verify() provenance assertions against the freshly verified pinned classpath; no game reruns or source inventory reruns",
+  "server_bundle_sha256": "d052f14d7a173734fba553711e5b570162e2f2a313267ee31a21b975a679be64",
+  "status": "passed"
+}

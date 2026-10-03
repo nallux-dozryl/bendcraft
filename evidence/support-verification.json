@@ -1,0 +1,2266 @@
+{
+  "actual_cache_transitions": 529,
+  "actual_move_reference": {
+    "bytes": 104813,
+    "file": "support-move-gate-reference.json",
+    "sha1": "03f40fe99cc0677daabffffb079636c85ee465fd",
+    "sha256": "f5daf74620431eb4984c74de0d7c336f46343fd9aa7ed082f7873926e023a835"
+  },
+  "actual_move_support_comparisons": 10,
+  "actual_support_histories": 188,
+  "binary": {
+    "bytes": 1426592,
+    "file": "support-tests",
+    "sha1": "d94de01d3e6be436c7dd065cafc1d5538658dd34",
+    "sha256": "f0628e8e8cb2f05462aabce30d7958e74c693d741e1c70222fffa5b87973f852"
+  },
+  "builds": [
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/support.bend",
+        "-o",
+        "build/support-tests"
+      ],
+      "exit_code": 0,
+      "finished_utc": "2026-10-03T19:48:38.432627+00:00",
+      "pid": 28883,
+      "seconds": 3.216004,
+      "source_hashes_unchanged": true,
+      "source_sha256": {
+        "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+        "src/geometry.bend": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f",
+        "src/locomotion.bend": "ccf8aa12636ba1fce5575606383bf75c02a8ac79ba952645b89aea2eef6cd459",
+        "src/movement.bend": "0e94fea7cc941a23d2ed7bbd2ccaf0117e6af363eb91f2db2e34428f9dd9e67f",
+        "src/support.bend": "aca42f24e0a32bd89356ac33f6d9bbe2ab5975ce938e2d2750496c01a6137455",
+        "src/travel.bend": "717e969e3989a7a8e443b18f69c171bdc11a14130828233ce85e6cd914e1f8f1",
+        "tests/support.bend": "d2bf4ef5209eee7efdd264420eb392441e26cf95435cb4e9867a56efae16832e"
+      },
+      "started_utc": "2026-10-03T19:48:35.216648+00:00",
+      "status": "passed",
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false,
+      "timeout_seconds": 600
+    }
+  ],
+  "chained_native_cache_transitions": 529,
+  "checks": [
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/support.bend",
+        "--verdict"
+      ],
+      "exit_code": 0,
+      "finished_utc": "2026-10-03T19:51:48.947809+00:00",
+      "pid": 30565,
+      "seconds": 7.987922,
+      "source_hashes_unchanged": true,
+      "source_sha256": {
+        "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+        "src/geometry.bend": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f",
+        "src/locomotion.bend": "ccf8aa12636ba1fce5575606383bf75c02a8ac79ba952645b89aea2eef6cd459",
+        "src/movement.bend": "0e94fea7cc941a23d2ed7bbd2ccaf0117e6af363eb91f2db2e34428f9dd9e67f",
+        "src/support.bend": "aca42f24e0a32bd89356ac33f6d9bbe2ab5975ce938e2d2750496c01a6137455",
+        "src/travel.bend": "717e969e3989a7a8e443b18f69c171bdc11a14130828233ce85e6cd914e1f8f1",
+        "tests/support.bend": "d2bf4ef5209eee7efdd264420eb392441e26cf95435cb4e9867a56efae16832e"
+      },
+      "started_utc": "2026-10-03T19:51:40.959981+00:00",
+      "status": "passed",
+      "stderr": "",
+      "stdout": "ALL PROOFS CHECK\n",
+      "timed_out": false,
+      "timeout_seconds": 60
+    }
+  ],
+  "checks_reused_with_exact_source_hashes": true,
+  "compiler": {
+    "bytes": 63885392,
+    "file": "bend",
+    "pin_scope": "Installed native compiler executable fingerprint; no inference that mutable compiler-source checkout equals this binary.",
+    "project_baseline_version": "2.0.35 (AGENTS.md contract)",
+    "reported_version": "2.0.35",
+    "sha1": "ddce6e432357be618d905b19c0f79abe3d28c388",
+    "sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+    "version_probe": {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "version"
+      ],
+      "exit_code": 0,
+      "stdout": "bend 2.0.35\n"
+    }
+  },
+  "confidence": "high for recorded bounded full-cube contexts and separately recorded helper inputs; complete world/contextual shape and entity travel parity unknown",
+  "emitted_c": null,
+  "explicit_rejection_cases": 19,
+  "fixture": {
+    "bytes": 4313631,
+    "file": "support.json",
+    "sha1": "40f0bf484388130eb85b2fdb3ed71c6e0030dd7d",
+    "sha256": "718e819478ea612c6f1246520ba509d2d3890b593f7d5b020c3218020b35678e"
+  },
+  "fixture_observations_sha256": "c6a60ddba6aad5bcbcde837d2ba173c37112e8a377a5e1c820c8cea08c515fa0",
+  "fixture_provenance": {
+    "pinned_sources_runtime_and_classes_checked": true,
+    "status": "passed",
+    "validation": {
+      "actual_outputs_compared": false,
+      "actual_support_queries": 444,
+      "cache_transitions": 529,
+      "case_histories": 188,
+      "compare_helpers": 236,
+      "distance_helpers": 176,
+      "jump_factor_helpers": 24,
+      "on_pos_helpers": 396
+    }
+  },
+  "jump_factor_comparisons": 553,
+  "kernel_pass": true,
+  "laws": [
+    "airborne_clears_cached_support",
+    "null_movement_retains_previous_support",
+    "known_absent_support_skips_fallback",
+    "unit_current_jump_factor_selects_below"
+  ],
+  "malformed_protocol": [
+    {
+      "exit_code": 2,
+      "stderr": "invalid support protocol\n"
+    },
+    {
+      "exit_code": 2,
+      "stderr": "invalid support header\n"
+    },
+    {
+      "exit_code": 2,
+      "stderr": "invalid support numbers\n"
+    },
+    {
+      "exit_code": 2,
+      "stderr": "invalid support numbers\n"
+    }
+  ],
+  "native_batches": [
+    {
+      "requests": 1,
+      "seconds": 0.005573
+    },
+    {
+      "requests": 1,
+      "seconds": 0.002732
+    },
+    {
+      "requests": 1,
+      "seconds": 0.002534
+    },
+    {
+      "requests": 1,
+      "seconds": 0.002644
+    },
+    {
+      "requests": 1,
+      "seconds": 0.002508
+    },
+    {
+      "requests": 1,
+      "seconds": 0.002513
+    },
+    {
+      "requests": 1,
+      "seconds": 0.00259
+    },
+    {
+      "requests": 1,
+      "seconds": 0.002364
+    },
+    {
+      "requests": 1,
+      "seconds": 0.002696
+    },
+    {
+      "requests": 1,
+      "seconds": 0.002653
+    },
+    {
+      "requests": 1,
+      "seconds": 0.002615
+    },
+    {
+      "requests": 1,
+      "seconds": 0.002545
+    },
+    {
+      "requests": 1,
+      "seconds": 0.002271
+    },
+    {
+      "requests": 1,
+      "seconds": 0.002327
+    },
+    {
+      "requests": 1,
+      "seconds": 0.002527
+    },
+    {
+      "requests": 1,
+      "seconds": 0.002526
+    },
+    {
+      "requests": 1,
+      "seconds": 0.002453
+    },
+    {
+      "requests": 1,
+      "seconds": 0.002531
+    },
+    {
+      "requests": 1,
+      "seconds": 0.002575
+    },
+    {
+      "requests": 1,
+      "seconds": 0.002436
+    },
+    {
+      "requests": 1,
+      "seconds": 0.002701
+    },
+    {
+      "requests": 1,
+      "seconds": 0.002865
+    },
+    {
+      "requests": 1,
+      "seconds": 0.002671
+    },
+    {
+      "requests": 1,
+      "seconds": 0.002533
+    },
+    {
+      "requests": 1,
+      "seconds": 0.002624
+    },
+    {
+      "requests": 1,
+      "seconds": 0.00247
+    },
+    {
+      "requests": 1,
+      "seconds": 0.002405
+    },
+    {
+      "requests": 1,
+      "seconds": 0.002435
+    },
+    {
+      "requests": 1,
+      "seconds": 0.002406
+    },
+    {
+      "requests": 1,
+      "seconds": 0.002419
+    },
+    {
+      "requests": 1,
+      "seconds": 0.002322
+    },
+    {
+      "requests": 1,
+      "seconds": 0.002364
+    },
+    {
+      "requests": 1,
+      "seconds": 0.00236
+    },
+    {
+      "requests": 1,
+      "seconds": 0.002435
+    },
+    {
+      "requests": 1,
+      "seconds": 0.00247
+    },
+    {
+      "requests": 1,
+      "seconds": 0.002502
+    },
+    {
+      "requests": 1,
+      "seconds": 0.002423
+    },
+    {
+      "requests": 1,
+      "seconds": 0.002459
+    },
+    {
+      "requests": 1,
+      "seconds": 0.002573
+    },
+    {
+      "requests": 1,
+      "seconds": 0.002374
+    },
+    {
+      "requests": 1,
+      "seconds": 0.002309
+    },
+    {
+      "requests": 1,
+      "seconds": 0.00238
+    },
+    {
+      "requests": 1,
+      "seconds": 0.00261
+    },
+    {
+      "requests": 1,
+      "seconds": 0.002609
+    },
+    {
+      "requests": 1,
+      "seconds": 0.002766
+    },
+    {
+      "requests": 1,
+      "seconds": 0.002646
+    },
+    {
+      "requests": 1,
+      "seconds": 0.002651
+    },
+    {
+      "requests": 1,
+      "seconds": 0.002499
+    },
+    {
+      "requests": 1,
+      "seconds": 0.002839
+    },
+    {
+      "requests": 1,
+      "seconds": 0.002753
+    },
+    {
+      "requests": 4,
+      "seconds": 0.002662
+    },
+    {
+      "requests": 4,
+      "seconds": 0.002914
+    },
+    {
+      "requests": 4,
+      "seconds": 0.00262
+    },
+    {
+      "requests": 4,
+      "seconds": 0.002569
+    },
+    {
+      "requests": 4,
+      "seconds": 0.002624
+    },
+    {
+      "requests": 4,
+      "seconds": 0.002699
+    },
+    {
+      "requests": 4,
+      "seconds": 0.002632
+    },
+    {
+      "requests": 4,
+      "seconds": 0.00273
+    },
+    {
+      "requests": 4,
+      "seconds": 0.002472
+    },
+    {
+      "requests": 4,
+      "seconds": 0.002747
+    },
+    {
+      "requests": 4,
+      "seconds": 0.002548
+    },
+    {
+      "requests": 4,
+      "seconds": 0.002487
+    },
+    {
+      "requests": 4,
+      "seconds": 0.00251
+    },
+    {
+      "requests": 4,
+      "seconds": 0.002303
+    },
+    {
+      "requests": 4,
+      "seconds": 0.002395
+    },
+    {
+      "requests": 4,
+      "seconds": 0.002849
+    },
+    {
+      "requests": 4,
+      "seconds": 0.002326
+    },
+    {
+      "requests": 4,
+      "seconds": 0.002554
+    },
+    {
+      "requests": 4,
+      "seconds": 0.002903
+    },
+    {
+      "requests": 4,
+      "seconds": 0.003355
+    },
+    {
+      "requests": 4,
+      "seconds": 0.004455
+    },
+    {
+      "requests": 4,
+      "seconds": 0.002451
+    },
+    {
+      "requests": 4,
+      "seconds": 0.002532
+    },
+    {
+      "requests": 4,
+      "seconds": 0.002739
+    },
+    {
+      "requests": 4,
+      "seconds": 0.003661
+    },
+    {
+      "requests": 4,
+      "seconds": 0.004954
+    },
+    {
+      "requests": 4,
+      "seconds": 0.002979
+    },
+    {
+      "requests": 4,
+      "seconds": 0.002566
+    },
+    {
+      "requests": 4,
+      "seconds": 0.002422
+    },
+    {
+      "requests": 4,
+      "seconds": 0.002633
+    },
+    {
+      "requests": 4,
+      "seconds": 0.003634
+    },
+    {
+      "requests": 4,
+      "seconds": 0.003525
+    },
+    {
+      "requests": 4,
+      "seconds": 0.002565
+    },
+    {
+      "requests": 4,
+      "seconds": 0.003365
+    },
+    {
+      "requests": 4,
+      "seconds": 0.00305
+    },
+    {
+      "requests": 4,
+      "seconds": 0.002618
+    },
+    {
+      "requests": 4,
+      "seconds": 0.002528
+    },
+    {
+      "requests": 4,
+      "seconds": 0.002981
+    },
+    {
+      "requests": 4,
+      "seconds": 0.004367
+    },
+    {
+      "requests": 4,
+      "seconds": 0.003815
+    },
+    {
+      "requests": 1,
+      "seconds": 0.003135
+    },
+    {
+      "requests": 1,
+      "seconds": 0.00387
+    },
+    {
+      "requests": 1,
+      "seconds": 0.002962
+    },
+    {
+      "requests": 1,
+      "seconds": 0.003913
+    },
+    {
+      "requests": 2,
+      "seconds": 0.004363
+    },
+    {
+      "requests": 2,
+      "seconds": 0.004207
+    },
+    {
+      "requests": 2,
+      "seconds": 0.004812
+    },
+    {
+      "requests": 2,
+      "seconds": 0.003683
+    },
+    {
+      "requests": 2,
+      "seconds": 0.002461
+    },
+    {
+      "requests": 2,
+      "seconds": 0.002487
+    },
+    {
+      "requests": 2,
+      "seconds": 0.004576
+    },
+    {
+      "requests": 2,
+      "seconds": 0.002703
+    },
+    {
+      "requests": 2,
+      "seconds": 0.002542
+    },
+    {
+      "requests": 2,
+      "seconds": 0.005255
+    },
+    {
+      "requests": 2,
+      "seconds": 0.002516
+    },
+    {
+      "requests": 2,
+      "seconds": 0.002479
+    },
+    {
+      "requests": 2,
+      "seconds": 0.00259
+    },
+    {
+      "requests": 2,
+      "seconds": 0.002921
+    },
+    {
+      "requests": 2,
+      "seconds": 0.004221
+    },
+    {
+      "requests": 2,
+      "seconds": 0.002588
+    },
+    {
+      "requests": 2,
+      "seconds": 0.002433
+    },
+    {
+      "requests": 2,
+      "seconds": 0.002445
+    },
+    {
+      "requests": 2,
+      "seconds": 0.002457
+    },
+    {
+      "requests": 2,
+      "seconds": 0.004517
+    },
+    {
+      "requests": 8,
+      "seconds": 0.002566
+    },
+    {
+      "requests": 8,
+      "seconds": 0.002536
+    },
+    {
+      "requests": 6,
+      "seconds": 0.002409
+    },
+    {
+      "requests": 6,
+      "seconds": 0.002411
+    },
+    {
+      "requests": 4,
+      "seconds": 0.007373
+    },
+    {
+      "requests": 4,
+      "seconds": 0.002668
+    },
+    {
+      "requests": 3,
+      "seconds": 0.005631
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002673
+    },
+    {
+      "requests": 3,
+      "seconds": 0.00236
+    },
+    {
+      "requests": 3,
+      "seconds": 0.00235
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002559
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002307
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002373
+    },
+    {
+      "requests": 3,
+      "seconds": 0.008276
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002549
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002409
+    },
+    {
+      "requests": 3,
+      "seconds": 0.00264
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002517
+    },
+    {
+      "requests": 3,
+      "seconds": 0.003279
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002606
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002553
+    },
+    {
+      "requests": 3,
+      "seconds": 0.0068
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002596
+    },
+    {
+      "requests": 3,
+      "seconds": 0.00246
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002312
+    },
+    {
+      "requests": 3,
+      "seconds": 0.009076
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002532
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002544
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002568
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002531
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002357
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002554
+    },
+    {
+      "requests": 3,
+      "seconds": 0.006492
+    },
+    {
+      "requests": 3,
+      "seconds": 0.004571
+    },
+    {
+      "requests": 3,
+      "seconds": 0.00249
+    },
+    {
+      "requests": 3,
+      "seconds": 0.005111
+    },
+    {
+      "requests": 3,
+      "seconds": 0.00314
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002528
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002535
+    },
+    {
+      "requests": 3,
+      "seconds": 0.003464
+    },
+    {
+      "requests": 3,
+      "seconds": 0.0039
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002577
+    },
+    {
+      "requests": 3,
+      "seconds": 0.02843
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002858
+    },
+    {
+      "requests": 3,
+      "seconds": 0.00243
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002245
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002254
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002322
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002304
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002273
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002426
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002524
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002716
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002545
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002387
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002454
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002448
+    },
+    {
+      "requests": 3,
+      "seconds": 0.00249
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002533
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002334
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002522
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002408
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002329
+    },
+    {
+      "requests": 3,
+      "seconds": 0.007665
+    },
+    {
+      "requests": 3,
+      "seconds": 0.00269
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002431
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002514
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002299
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002389
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002256
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002665
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002489
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002564
+    },
+    {
+      "requests": 3,
+      "seconds": 0.00282
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002788
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002548
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002406
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002889
+    },
+    {
+      "requests": 3,
+      "seconds": 0.00304
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002652
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002827
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002609
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002552
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002405
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002507
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002497
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002606
+    },
+    {
+      "requests": 3,
+      "seconds": 0.00242
+    },
+    {
+      "requests": 3,
+      "seconds": 0.006944
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002716
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002673
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002736
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002496
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002707
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002694
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002857
+    },
+    {
+      "requests": 3,
+      "seconds": 0.00269
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002521
+    },
+    {
+      "requests": 3,
+      "seconds": 0.004786
+    },
+    {
+      "requests": 3,
+      "seconds": 0.00753
+    },
+    {
+      "requests": 3,
+      "seconds": 0.009866
+    },
+    {
+      "requests": 3,
+      "seconds": 0.003214
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002761
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002714
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002702
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002732
+    },
+    {
+      "requests": 3,
+      "seconds": 0.003362
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002826
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002781
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002937
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002649
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002537
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002471
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002252
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002424
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002322
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002548
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002358
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002474
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002333
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002368
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002349
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002394
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002771
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002986
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002634
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002531
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002868
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002733
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002907
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002607
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002856
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002826
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002764
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002702
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002744
+    },
+    {
+      "requests": 3,
+      "seconds": 0.003209
+    },
+    {
+      "requests": 3,
+      "seconds": 0.003036
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002912
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002957
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002917
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002729
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002746
+    },
+    {
+      "requests": 3,
+      "seconds": 0.00277
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002967
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002694
+    },
+    {
+      "requests": 3,
+      "seconds": 0.003116
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002603
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002317
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002591
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002476
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002501
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002332
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002271
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002371
+    },
+    {
+      "requests": 3,
+      "seconds": 0.00231
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002485
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002431
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002424
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002388
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002371
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002398
+    },
+    {
+      "requests": 3,
+      "seconds": 0.005177
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002472
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002557
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002442
+    },
+    {
+      "requests": 3,
+      "seconds": 0.00236
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002466
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002452
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002657
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002494
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002388
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002394
+    },
+    {
+      "requests": 3,
+      "seconds": 0.003988
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002347
+    },
+    {
+      "requests": 3,
+      "seconds": 0.0024
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002346
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002604
+    },
+    {
+      "requests": 3,
+      "seconds": 0.006849
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002561
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002321
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002283
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002326
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002452
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002492
+    },
+    {
+      "requests": 3,
+      "seconds": 0.009972
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002784
+    },
+    {
+      "requests": 3,
+      "seconds": 0.00248
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002437
+    },
+    {
+      "requests": 3,
+      "seconds": 0.00249
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002262
+    },
+    {
+      "requests": 3,
+      "seconds": 0.00254
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002252
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002303
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002439
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002328
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002496
+    },
+    {
+      "requests": 3,
+      "seconds": 0.00232
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002479
+    },
+    {
+      "requests": 3,
+      "seconds": 0.004693
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002475
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002303
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002201
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002203
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002368
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002293
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002572
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002433
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002597
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002529
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002655
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002454
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002357
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002498
+    },
+    {
+      "requests": 3,
+      "seconds": 0.00238
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002302
+    },
+    {
+      "requests": 3,
+      "seconds": 0.004689
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002595
+    },
+    {
+      "requests": 3,
+      "seconds": 0.0025
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002575
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002639
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002475
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002474
+    },
+    {
+      "requests": 3,
+      "seconds": 0.006682
+    },
+    {
+      "requests": 3,
+      "seconds": 0.006964
+    },
+    {
+      "requests": 3,
+      "seconds": 0.003035
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002356
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002179
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002285
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002396
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002392
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002605
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002369
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002387
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002389
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002315
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002275
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002441
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002657
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002305
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002384
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002415
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002285
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002389
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002537
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002301
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002514
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002374
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002518
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002473
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002521
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002333
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002466
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002419
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002298
+    },
+    {
+      "requests": 3,
+      "seconds": 0.004057
+    },
+    {
+      "requests": 3,
+      "seconds": 0.004479
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002666
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002283
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002292
+    },
+    {
+      "requests": 3,
+      "seconds": 0.0023
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002382
+    },
+    {
+      "requests": 70,
+      "seconds": 0.005526
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002931
+    },
+    {
+      "requests": 70,
+      "seconds": 0.00278
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002786
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002905
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002963
+    },
+    {
+      "requests": 70,
+      "seconds": 0.003044
+    },
+    {
+      "requests": 70,
+      "seconds": 0.006153
+    },
+    {
+      "requests": 70,
+      "seconds": 0.003153
+    },
+    {
+      "requests": 70,
+      "seconds": 0.003115
+    },
+    {
+      "requests": 70,
+      "seconds": 0.00301
+    },
+    {
+      "requests": 70,
+      "seconds": 0.003418
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002886
+    },
+    {
+      "requests": 70,
+      "seconds": 0.00278
+    },
+    {
+      "requests": 70,
+      "seconds": 0.00269
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002803
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002887
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002763
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002929
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002745
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002604
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002625
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002609
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002549
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002693
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002624
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002658
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002661
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002613
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002561
+    },
+    {
+      "requests": 70,
+      "seconds": 0.003463
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002918
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002933
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002716
+    },
+    {
+      "requests": 70,
+      "seconds": 0.003127
+    },
+    {
+      "requests": 70,
+      "seconds": 0.00239
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002488
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002347
+    },
+    {
+      "requests": 70,
+      "seconds": 0.00264
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002642
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002523
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002703
+    },
+    {
+      "requests": 70,
+      "seconds": 0.00254
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002581
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002569
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002411
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002556
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002401
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002611
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002604
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002476
+    },
+    {
+      "requests": 70,
+      "seconds": 0.00259
+    },
+    {
+      "requests": 70,
+      "seconds": 0.003849
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002673
+    },
+    {
+      "requests": 70,
+      "seconds": 0.00266
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002472
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002349
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002422
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002528
+    },
+    {
+      "requests": 70,
+      "seconds": 0.00248
+    },
+    {
+      "requests": 70,
+      "seconds": 0.00246
+    },
+    {
+      "requests": 70,
+      "seconds": 0.00246
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002653
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002486
+    },
+    {
+      "requests": 70,
+      "seconds": 0.00254
+    },
+    {
+      "requests": 70,
+      "seconds": 0.00256
+    },
+    {
+      "requests": 70,
+      "seconds": 0.00238
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002412
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002602
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002562
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002503
+    },
+    {
+      "requests": 70,
+      "seconds": 0.00275
+    },
+    {
+      "requests": 70,
+      "seconds": 0.004042
+    },
+    {
+      "requests": 70,
+      "seconds": 0.003059
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002464
+    },
+    {
+      "requests": 70,
+      "seconds": 0.00248
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002334
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002397
+    },
+    {
+      "requests": 70,
+      "seconds": 0.00227
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002398
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002435
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002412
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002577
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002431
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002588
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002413
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002523
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002529
+    },
+    {
+      "requests": 70,
+      "seconds": 0.003606
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002725
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002398
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002505
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002586
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002388
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002728
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002759
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002564
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002591
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002459
+    },
+    {
+      "requests": 70,
+      "seconds": 0.003685
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002809
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002569
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002492
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002561
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002418
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002533
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002521
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002969
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002748
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002668
+    },
+    {
+      "requests": 70,
+      "seconds": 0.003006
+    },
+    {
+      "requests": 70,
+      "seconds": 0.005973
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002694
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002601
+    },
+    {
+      "requests": 70,
+      "seconds": 0.004006
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002441
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002573
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002744
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002749
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002496
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002705
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002446
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002394
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002471
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002435
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002284
+    },
+    {
+      "requests": 70,
+      "seconds": 0.002336
+    },
+    {
+      "requests": 21,
+      "seconds": 0.005292
+    },
+    {
+      "requests": 10,
+      "seconds": 0.002548
+    },
+    {
+      "requests": 19,
+      "seconds": 0.002272
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002295
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002285
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002592
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002483
+    },
+    {
+      "requests": 3,
+      "seconds": 0.00238
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002394
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002338
+    },
+    {
+      "requests": 3,
+      "seconds": 0.004083
+    },
+    {
+      "requests": 3,
+      "seconds": 0.003821
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002263
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002476
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002292
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002325
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002315
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002281
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002337
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002357
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002302
+    },
+    {
+      "requests": 3,
+      "seconds": 0.002471
+    }
+  ],
+  "native_validation_seconds": 1.61432,
+  "pin": "26.3",
+  "prior_cache_retention_followups": 19,
+  "query_and_selection_comparisons": 1277,
+  "raw_distance_and_signed_compare_comparisons": 866,
+  "sample_position_comparisons": 6215,
+  "scope": "Untouched actual Entity supporting cache updates, actual CollisionGetter.findSupportingBlock and actual BlockCollisions in finite sparse Level; direct standalone actual numeric/position helper observations are separate and do not imply giant collision query support",
+  "sources_sha256": {
+    "docs/SUPPORT.md": "dc436109457732f106f8bde3293ca4846f8abe250689a189964a1f22c31f6ccf",
+    "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "src/geometry.bend": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f",
+    "src/movement.bend": "0e94fea7cc941a23d2ed7bbd2ccaf0117e6af363eb91f2db2e34428f9dd9e67f",
+    "src/support.bend": "aca42f24e0a32bd89356ac33f6d9bbe2ab5975ce938e2d2750496c01a6137455",
+    "src/travel.bend": "717e969e3989a7a8e443b18f69c171bdc11a14130828233ce85e6cd914e1f8f1",
+    "tests/support.bend": "d2bf4ef5209eee7efdd264420eb392441e26cf95435cb4e9867a56efae16832e",
+    "tools/reference_support_probe.py": "a468f483f53eed81767bdb20a476b5296fbdd3bbbd70b08567cc6119b3c06f17",
+    "tools/test_support.py": "437629c8159fa919e3d076428b06df9ebe98b6e149ef909be65db9633e23a800"
+  },
+  "status": "passed"
+}

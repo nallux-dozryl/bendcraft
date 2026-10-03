@@ -1,0 +1,75 @@
+{
+  "command": [
+    "/Users/chuah/.bend/bin/bend",
+    "tests/support.bend",
+    "-o",
+    "build/support-tests"
+  ],
+  "completed_result": {
+    "native_binary_created": false,
+    "termination_signal": "SIGTERM",
+    "tool_exit_code": 143
+  },
+  "correctness_failure_inference": false,
+  "elapsed_running_lower_bound_seconds": 1271,
+  "gameplay_source_change": false,
+  "inference": "Heavy compiler expansion is suspected from persistent CPU work and footprint after contention was reduced; exact compiler phase is unknown from unsymbolicated sample.",
+  "next_experiment": "Refactor only harness operation dispatch into separate parsers and remove other test module imports. Ordinary check first; native emission/rebuild awaits lead heavy-job slot.",
+  "own_pid": 20868,
+  "refactor": {
+    "estimated_explicit_max_constructor_width": {
+      "F.F64": 2,
+      "G.AABB": 6,
+      "M.Vec3": 3,
+      "SP.Candidate": 1,
+      "SP.Queries": 2,
+      "SP.State": 2,
+      "no_new_Struct": true
+    },
+    "final_import_closure_kernel": {
+      "record": "evidence/support-kernel-final.json",
+      "seconds": 7.987922,
+      "status": "passed"
+    },
+    "final_native_build": {
+      "actual_exact_emitted_layout_widths": "Not retained; installed emitter admitted this generation and native raw-bit comparisons passed.",
+      "record": "evidence/support-build-final.json",
+      "seconds": 3.216004,
+      "status": "passed"
+    },
+    "harness_sha256": "d2bf4ef5209eee7efdd264420eb392441e26cf95435cb4e9867a56efae16832e",
+    "operation_dispatch": "op-only dispatch into separate numeric-list pattern helpers",
+    "ordinary_check": "ALL PROOFS CHECK",
+    "ordinary_check_seconds": 0.416642542,
+    "production_sha256_unchanged": true,
+    "remaining_longest_numeric_pattern_words": 31,
+    "removed_imports": [
+      "tests/geometry.bend",
+      "tests/locomotion.bend"
+    ],
+    "working_compiler_source_review": {
+      "WIDE": 247,
+      "actual_emitted_widths": "pending queued emission",
+      "limit_scope": "native flat layouts/segments; inspected source only, installed binary parity not inferred",
+      "path": "../bend/bend2/comp.ts",
+      "sha256": "32fb66e09f608ce9e4b173384bcfeec453db8c5bc96650e26ad861bef815a8d9"
+    }
+  },
+  "sample_command": [
+    "sample",
+    "20868",
+    "1",
+    "-file",
+    "build/support-compiler-sample.txt"
+  ],
+  "sample_path": "build/support-compiler-sample.txt",
+  "sample_reported_peak_footprint": "12.9G",
+  "sample_reported_physical_footprint": "12.0G",
+  "sample_sha256": "dbde0358697a3bea2a29e2346fb8baf53fa050da93cb80bf514a6c342e0688ef",
+  "source_sha256": {
+    "src/support.bend": "aca42f24e0a32bd89356ac33f6d9bbe2ab5975ce938e2d2750496c01a6137455",
+    "tests/support.bend": "644108c29f6dcc51b09b03b59bbdb56397775a7edac9c666ac61008c61151042"
+  },
+  "status": "inconclusive_interrupted",
+  "termination": "SIGTERM to own PID20868 at explicit lead instruction"
+}
