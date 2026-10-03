@@ -1,0 +1,719 @@
+{
+  "attributes": {
+    "AIR_DRAG_MODIFIER": {
+      "bounds": [
+        0,
+        2048
+      ],
+      "default": 1,
+      "representation": "attribute F64 narrowed to F32"
+    },
+    "BOUNCINESS": "required for general restitution",
+    "FRICTION_MODIFIER": {
+      "bounds": [
+        0,
+        2048
+      ],
+      "default": 1,
+      "representation": "attribute F64 narrowed to F32"
+    },
+    "GRAVITY": {
+      "bounds": [
+        -1,
+        1
+      ],
+      "default": 0.08,
+      "representation": "F64"
+    },
+    "MOVEMENT_EFFICIENCY": "required for general non-unit block speed factor",
+    "MOVEMENT_SPEED": {
+      "generic_default": 0.7,
+      "player_default": 0.10000000149011612,
+      "representation": "Player reads current F64 attribute narrowed F32 every getSpeed call"
+    },
+    "STEP_HEIGHT": "explicit existing movement maximum"
+  },
+  "authority": {
+    "classes": {
+      "net.minecraft.world.entity.Avatar": {
+        "class_entry": "net/minecraft/world/entity/Avatar.class",
+        "class_sha256": "b85674319614e72b1857f8e21d16121682648220452feaac41ed68d770d62f82",
+        "methods": [
+          {
+            "bytecode_text_sha256": "f63cf12f9715571066b4f3769488c1b319b16e240b7b6f438a1d9f9cafc9be96",
+            "direct_call_references": [
+              "com/google/common/collect/ImmutableMap$Builder.build:()Lcom/google/common/collect/ImmutableMap;",
+              "com/google/common/collect/ImmutableMap$Builder.put:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/google/common/collect/ImmutableMap$Builder;",
+              "com/google/common/collect/ImmutableMap.builder:()Lcom/google/common/collect/ImmutableMap$Builder;",
+              "net/minecraft/network/syncher/SynchedEntityData.defineId:(Ljava/lang/Class;Lnet/minecraft/network/syncher/EntityDataSerializer;)Lnet/minecraft/network/syncher/EntityDataAccessor;",
+              "net/minecraft/world/entity/EntityAttachments$Builder.attach:(Lnet/minecraft/world/entity/EntityAttachment;Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/entity/EntityAttachments$Builder;",
+              "net/minecraft/world/entity/EntityAttachments.builder:()Lnet/minecraft/world/entity/EntityAttachments$Builder;",
+              "net/minecraft/world/entity/EntityDimensions.fixed:(FF)Lnet/minecraft/world/entity/EntityDimensions;",
+              "net/minecraft/world/entity/EntityDimensions.scalable:(FF)Lnet/minecraft/world/entity/EntityDimensions;",
+              "net/minecraft/world/entity/EntityDimensions.withAttachments:(Lnet/minecraft/world/entity/EntityAttachments$Builder;)Lnet/minecraft/world/entity/EntityDimensions;",
+              "net/minecraft/world/entity/EntityDimensions.withEyeHeight:(F)Lnet/minecraft/world/entity/EntityDimensions;",
+              "net/minecraft/world/phys/Vec3.\"<init>\":(DDD)V"
+            ],
+            "signature": "static {};"
+          }
+        ]
+      },
+      "net.minecraft.world.entity.Entity": {
+        "class_entry": "net/minecraft/world/entity/Entity.class",
+        "class_sha256": "7ac5f6a929abbf4fa00f0a87ad530669f7d96c8ee2bb86a5076ab1fab352fb3c",
+        "methods": [
+          {
+            "bytecode_text_sha256": "fab42b2579c2af8c493e7c07a49a807ad801f379a6eb3a0d0f81b7dfa89e2f00",
+            "direct_call_references": [
+              "baseTick:()V"
+            ],
+            "signature": "public void tick();"
+          },
+          {
+            "bytecode_text_sha256": "4b3a9f9356d653b09e0a6640a0bd1014584f7edc9fa8c6b196c11df63716ae51",
+            "direct_call_references": [],
+            "signature": "protected double getEntityBounciness();"
+          },
+          {
+            "bytecode_text_sha256": "45ae9a125273a93df7f5e33b339d97b9e26b6e37aa494a8004dfaca060be72e2",
+            "direct_call_references": [
+              "getGravity:()D"
+            ],
+            "signature": "protected double getEffectiveGravity();"
+          },
+          {
+            "bytecode_text_sha256": "ba4b638caa568637d74a22718ea7d152231f7beb0c35030f2448547cc015eb97",
+            "direct_call_references": [],
+            "signature": "protected boolean omnidirectionalAirMover();"
+          },
+          {
+            "bytecode_text_sha256": "fc9a7a71ac9f63e184c3e856803ebd48307c09248d6f010bcba8afe65d7dcc9d",
+            "direct_call_references": [
+              "getOnPos:(F)Lnet/minecraft/core/BlockPos;"
+            ],
+            "signature": "public net.minecraft.core.BlockPos getBlockPosBelowThatAffectsMyMovement();"
+          },
+          {
+            "bytecode_text_sha256": "dc2c6b11607d54574bb7d89bfabb76c44229afa9a050a6a1f29448ddc90c221c",
+            "direct_call_references": [
+              "getOnPos:(F)Lnet/minecraft/core/BlockPos;"
+            ],
+            "signature": "public net.minecraft.core.BlockPos getOnPos();"
+          },
+          {
+            "bytecode_text_sha256": "3c1487d894aa534a0515ea75fb21c8eac9bb9502cf6971b3df9dda5bbed79f81",
+            "direct_call_references": [
+              "java/util/Optional.get:()Ljava/lang/Object;",
+              "java/util/Optional.isPresent:()Z",
+              "level:()Lnet/minecraft/world/level/Level;",
+              "net/minecraft/core/BlockPos.\"<init>\":(III)V",
+              "net/minecraft/core/BlockPos.atY:(I)Lnet/minecraft/core/BlockPos;",
+              "net/minecraft/util/Mth.floor:(D)I",
+              "net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;",
+              "net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;",
+              "net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z"
+            ],
+            "signature": "protected net.minecraft.core.BlockPos getOnPos(float);"
+          },
+          {
+            "bytecode_text_sha256": "af71db499d131c6f1ed2731c953e08371220407def477f10322377c2f55c07fa",
+            "direct_call_references": [
+              "blockPosition:()Lnet/minecraft/core/BlockPos;",
+              "getBlockPosBelowThatAffectsMyMovement:()Lnet/minecraft/core/BlockPos;",
+              "level:()Lnet/minecraft/world/level/Level;",
+              "net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;",
+              "net/minecraft/world/level/block/Block.getSpeedFactor:()F",
+              "net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;",
+              "net/minecraft/world/level/block/state/BlockState.is:(Ljava/lang/Object;)Z"
+            ],
+            "signature": "protected float getBlockSpeedFactor();"
+          },
+          {
+            "bytecode_text_sha256": "50115ad4d327f75d5477f31850fbc53790987042cee02ad6ac3a902f15972960",
+            "direct_call_references": [],
+            "signature": "protected double getDefaultGravity();"
+          },
+          {
+            "bytecode_text_sha256": "89300c6d1188b5d6f82eada93f986da469d2ff6722be20231dff81703eeb42b1",
+            "direct_call_references": [
+              "getDefaultGravity:()D",
+              "isNoGravity:()Z"
+            ],
+            "signature": "public final double getGravity();"
+          },
+          {
+            "bytecode_text_sha256": "93889ebb3f44a8341ee1d21b353a64f7b2f3745b1d0125d73c9cf0933caaf365",
+            "direct_call_references": [
+              "getDeltaMovement:()Lnet/minecraft/world/phys/Vec3;",
+              "getInputVector:(Lnet/minecraft/world/phys/Vec3;FF)Lnet/minecraft/world/phys/Vec3;",
+              "getYRot:()F",
+              "net/minecraft/world/phys/Vec3.add:(Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/Vec3;",
+              "setDeltaMovement:(Lnet/minecraft/world/phys/Vec3;)V"
+            ],
+            "signature": "public void moveRelative(float, net.minecraft.world.phys.Vec3);"
+          },
+          {
+            "bytecode_text_sha256": "8fd02e4b9a2d809639f78fc29e46da14ba0459aadda40c28e6a8942f4b85eb59",
+            "direct_call_references": [
+              "net/minecraft/util/Mth.cos:(D)F",
+              "net/minecraft/util/Mth.sin:(D)F",
+              "net/minecraft/world/phys/Vec3.\"<init>\":(DDD)V",
+              "net/minecraft/world/phys/Vec3.lengthSqr:()D",
+              "net/minecraft/world/phys/Vec3.normalize:()Lnet/minecraft/world/phys/Vec3;",
+              "net/minecraft/world/phys/Vec3.scale:(D)Lnet/minecraft/world/phys/Vec3;"
+            ],
+            "signature": "protected static net.minecraft.world.phys.Vec3 getInputVector(net.minecraft.world.phys.Vec3, float, float);"
+          },
+          {
+            "bytecode_text_sha256": "5303ecd747083138687b99f86d0eb8ae4aaf5fbd26879a46844d82d37f2c3b3a",
+            "direct_call_references": [],
+            "signature": "public net.minecraft.world.entity.MoveSimulationType getMoveSimulationType();"
+          },
+          {
+            "bytecode_text_sha256": "f45c4a7caea94eebe2aefba0e7dbd4bf4f0b8439019c19ae84c8619dccbbedd7",
+            "direct_call_references": [
+              "isLocalInstanceAuthoritative:()Z"
+            ],
+            "signature": "public boolean isEffectiveAi();"
+          },
+          {
+            "bytecode_text_sha256": "23dd17125db526b08afd4fc8bea36051951bf78bba4e9673ee0e67d4f52abc0a",
+            "direct_call_references": [
+              "com/mojang/logging/LogUtils.getLogger:()Lorg/slf4j/Logger;",
+              "com/mojang/serialization/codecs/PrimitiveCodec.sizeLimitedListOf:(I)Lcom/mojang/serialization/Codec;",
+              "java/util/Set.of:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Set;",
+              "net/minecraft/network/syncher/SynchedEntityData.defineId:(Ljava/lang/Class;Lnet/minecraft/network/syncher/EntityDataSerializer;)Lnet/minecraft/network/syncher/EntityDataAccessor;",
+              "net/minecraft/world/phys/AABB.\"<init>\":(DDDDDD)V"
+            ],
+            "signature": "static {};"
+          }
+        ]
+      },
+      "net.minecraft.world.entity.LivingEntity": {
+        "class_entry": "net/minecraft/world/entity/LivingEntity.class",
+        "class_sha256": "6eaecd529ba26174652f3bb71e7c86262e54ac6f5e1e70944fb0e629b3b9948a",
+        "methods": [
+          {
+            "bytecode_text_sha256": "e6419f3bf5ac2eaa6857b0c217c6637afc89f3adef8cb6094a419c2413194cac",
+            "direct_call_references": [
+              "getAttributeValue:(Lnet/minecraft/core/Holder;)D",
+              "net/minecraft/util/Mth.lerp:(FFF)F",
+              "net/minecraft/world/entity/Entity.getBlockSpeedFactor:()F"
+            ],
+            "signature": "protected float getBlockSpeedFactor();"
+          },
+          {
+            "bytecode_text_sha256": "e7c57bc64a2314ffe93a00dfab17c29dcfb64533bcb07cf600be59be5a95550d",
+            "direct_call_references": [
+              "net/minecraft/util/Mth.clamp:(FFF)F"
+            ],
+            "signature": "private static float computeModifiedFriction(float, float);"
+          },
+          {
+            "bytecode_text_sha256": "9ffffaed8376b05f88e2d329b5fb40a584987963ca44876269f0cd354d0ab34b",
+            "direct_call_references": [],
+            "signature": "public boolean isAffectedByFluids();"
+          },
+          {
+            "bytecode_text_sha256": "32cfe61f2ccc4840748ac14fb55aebb0cabd661cc688edccc94e348179f81391",
+            "direct_call_references": [],
+            "signature": "public boolean shouldDiscardFriction();"
+          },
+          {
+            "bytecode_text_sha256": "c1ea1b6cc8f9975a87b35bdc0268dffbd95976a97ad25d185c9b39374e5d6696",
+            "direct_call_references": [
+              "getAttributeValue:(Lnet/minecraft/core/Holder;)D"
+            ],
+            "signature": "protected double getEntityBounciness();"
+          },
+          {
+            "bytecode_text_sha256": "3bda8fadd3528ff504e3571ee5340cd2a88633ff0768416a54e2cee46b7ba3e1",
+            "direct_call_references": [
+              "getAttributeValue:(Lnet/minecraft/core/Holder;)D"
+            ],
+            "signature": "protected double getDefaultGravity();"
+          },
+          {
+            "bytecode_text_sha256": "b8a2075ed1296424be535d1146b17cd5fb4db97a947b870cf587635927774924",
+            "direct_call_references": [
+              "getDeltaMovement:()Lnet/minecraft/world/phys/Vec3;",
+              "getGravity:()D",
+              "hasEffect:(Lnet/minecraft/core/Holder;)Z",
+              "java/lang/Math.min:(DD)D"
+            ],
+            "signature": "protected double getEffectiveGravity();"
+          },
+          {
+            "bytecode_text_sha256": "a67f8010e42bff4d6017024e4b40e38902d448fda932075b97d6bd5625e4aebc",
+            "direct_call_references": [
+              "blockPosition:()Lnet/minecraft/core/BlockPos;",
+              "isFallFlying:()Z",
+              "level:()Lnet/minecraft/world/level/Level;",
+              "net/minecraft/world/level/Level.getFluidState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/material/FluidState;",
+              "shouldTravelInFluid:(Lnet/minecraft/world/level/material/FluidState;)Z",
+              "travelFallFlying:(Lnet/minecraft/world/phys/Vec3;)V",
+              "travelInAir:(Lnet/minecraft/world/phys/Vec3;)V",
+              "travelInFluid:(Lnet/minecraft/world/phys/Vec3;)V"
+            ],
+            "signature": "public void travel(net.minecraft.world.phys.Vec3);"
+          },
+          {
+            "bytecode_text_sha256": "1ac61efa92e30dbdd74b76e9ff5b59279efd1b7be5db5669d563483c07398d58",
+            "direct_call_references": [
+              "canStandOnFluid:(Lnet/minecraft/world/level/material/FluidState;)Z",
+              "isAffectedByFluids:()Z",
+              "isInLiquid:()Z"
+            ],
+            "signature": "protected boolean shouldTravelInFluid(net.minecraft.world.level.material.FluidState);"
+          },
+          {
+            "bytecode_text_sha256": "01eaf0cf23f27b639be11b022500ecbf17e30e9356a049ae60a62edb4c4aa5e2",
+            "direct_call_references": [
+              "computeModifiedFriction:(FF)F",
+              "getAttributeValue:(Lnet/minecraft/core/Holder;)D",
+              "getBlockPosBelowThatAffectsMyMovement:()Lnet/minecraft/core/BlockPos;",
+              "getEffect:(Lnet/minecraft/core/Holder;)Lnet/minecraft/world/effect/MobEffectInstance;",
+              "getEffectiveGravity:()D",
+              "getY:()D",
+              "handleRelativeFrictionAndCalculateMovement:(Lnet/minecraft/world/phys/Vec3;F)Lnet/minecraft/world/phys/Vec3;",
+              "level:()Lnet/minecraft/world/level/Level;",
+              "net/minecraft/world/effect/MobEffectInstance.getAmplifier:()I",
+              "net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;",
+              "net/minecraft/world/level/Level.getMinY:()I",
+              "net/minecraft/world/level/Level.hasChunkAt:(Lnet/minecraft/core/BlockPos;)Z",
+              "net/minecraft/world/level/Level.isClientSide:()Z",
+              "net/minecraft/world/level/block/Block.getFriction:()F",
+              "net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;",
+              "omnidirectionalAirMover:()Z",
+              "onGround:()Z",
+              "setDeltaMovement:(DDD)V",
+              "shouldDiscardFriction:()Z"
+            ],
+            "signature": "private void travelInAir(net.minecraft.world.phys.Vec3);"
+          },
+          {
+            "bytecode_text_sha256": "e7ff16fe2ee4979d4732c108ff2499737112b73d528bb887c5aa5552100a9101",
+            "direct_call_references": [
+              "floatInLiquidWhileRidden:(Lnet/minecraft/tags/TagKey;)V",
+              "getDeltaMovement:()Lnet/minecraft/world/phys/Vec3;",
+              "getEffectiveGravity:()D",
+              "getY:()D",
+              "isInWater:()Z",
+              "travelInLava:(Lnet/minecraft/world/phys/Vec3;DZD)V",
+              "travelInWater:(Lnet/minecraft/world/phys/Vec3;DZD)V"
+            ],
+            "signature": "protected void travelInFluid(net.minecraft.world.phys.Vec3);"
+          },
+          {
+            "bytecode_text_sha256": "78948f33f6122a7263b66a2b936d5b4dbd1d5bbe32bbcd16203989f8aac0699a",
+            "direct_call_references": [
+              "getDeltaMovement:()Lnet/minecraft/world/phys/Vec3;",
+              "getFrictionInfluencedSpeed:(F)F",
+              "handleOnClimbable:(Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/Vec3;",
+              "move:(Lnet/minecraft/world/entity/MoverType;Lnet/minecraft/world/phys/Vec3;)V",
+              "moveRelative:(FLnet/minecraft/world/phys/Vec3;)V",
+              "net/minecraft/world/level/block/PowderSnowBlock.canEntityWalkOnPowderSnow:(Lnet/minecraft/world/entity/Entity;)Z",
+              "net/minecraft/world/phys/Vec3.\"<init>\":(DDD)V",
+              "onClimbable:()Z",
+              "setDeltaMovement:(Lnet/minecraft/world/phys/Vec3;)V"
+            ],
+            "signature": "private net.minecraft.world.phys.Vec3 handleRelativeFrictionAndCalculateMovement(net.minecraft.world.phys.Vec3, float);"
+          },
+          {
+            "bytecode_text_sha256": "f261c7648db512832593fc731dd4e823c1345fc1ad650164e95e9bfac93e5032",
+            "direct_call_references": [
+              "getInBlockState:()Lnet/minecraft/world/level/block/state/BlockState;",
+              "isSuppressingSlidingDownLadder:()Z",
+              "java/lang/Math.max:(DD)D",
+              "net/minecraft/util/Mth.clamp:(DDD)D",
+              "net/minecraft/world/level/block/state/BlockState.is:(Ljava/lang/Object;)Z",
+              "net/minecraft/world/phys/Vec3.\"<init>\":(DDD)V",
+              "onClimbable:()Z",
+              "resetFallDistance:()V"
+            ],
+            "signature": "private net.minecraft.world.phys.Vec3 handleOnClimbable(net.minecraft.world.phys.Vec3);"
+          },
+          {
+            "bytecode_text_sha256": "a18c3e306f67fd308459ca9e0a94aa53433e23afedc8abf6de0ddc4a193aabe9",
+            "direct_call_references": [
+              "getFlyingSpeed:()F",
+              "getSpeed:()F",
+              "onGround:()Z"
+            ],
+            "signature": "private float getFrictionInfluencedSpeed(float);"
+          },
+          {
+            "bytecode_text_sha256": "dd4a1b0f60a143845ea9b08e91517dfb4a9eeee1b69b3a3db7ed287966facf40",
+            "direct_call_references": [
+              "getControllingPassenger:()Lnet/minecraft/world/entity/LivingEntity;",
+              "getSpeed:()F"
+            ],
+            "signature": "protected float getFlyingSpeed();"
+          },
+          {
+            "bytecode_text_sha256": "cf734e86e9835cb73da6d48d5749cda4ed1c9f6817cfde42ed6c248f1137b110",
+            "direct_call_references": [],
+            "signature": "public float getSpeed();"
+          },
+          {
+            "bytecode_text_sha256": "12b5c011755339466bf246d53ebafa0bb8773bd181b621f415e6b680a523d909",
+            "direct_call_references": [
+              "aiStep:()V",
+              "canInteractWithLevel:()Z",
+              "checkBedExists:()Z",
+              "detectEquipmentUpdates:()V",
+              "getArrowCount:()I",
+              "getCombatTracker:()Lnet/minecraft/world/damagesource/CombatTracker;",
+              "getStingerCount:()I",
+              "getX:()D",
+              "getXRot:()F",
+              "getYRot:()F",
+              "getZ:()D",
+              "isFallFlying:()Z",
+              "isRemoved:()Z",
+              "isSleeping:()Z",
+              "level:()Lnet/minecraft/world/level/Level;",
+              "net/minecraft/util/Mth.abs:(F)F",
+              "net/minecraft/util/Mth.atan2:(DD)D",
+              "net/minecraft/util/Mth.wrapDegrees:(F)F",
+              "net/minecraft/util/profiling/Profiler.get:()Lnet/minecraft/util/profiling/ProfilerFiller;",
+              "net/minecraft/util/profiling/ProfilerFiller.pop:()V",
+              "net/minecraft/util/profiling/ProfilerFiller.push:(Ljava/lang/String;)V",
+              "net/minecraft/world/damagesource/CombatTracker.recheckStatus:()V",
+              "net/minecraft/world/entity/ElytraAnimationState.tick:()V",
+              "net/minecraft/world/entity/Entity.tick:()V",
+              "net/minecraft/world/level/Level.isClientSide:()Z",
+              "refreshDirtyAttributes:()V",
+              "setArrowCount:(I)V",
+              "setStingerCount:(I)V",
+              "setXRot:(F)V",
+              "stopSleeping:()V",
+              "tickHeadTurn:(F)V",
+              "updateSwimAmount:()V",
+              "updatingUsingItem:()V"
+            ],
+            "signature": "public void tick();"
+          },
+          {
+            "bytecode_text_sha256": "a244e19f8fd24b351fe8a538e9ffe7505e6c03395c4081327f296b3e2179d275",
+            "direct_call_references": [
+              "applyEffectsFromBlocks:()V",
+              "applyInput:()V",
+              "calculateEntityAnimation:(Z)V",
+              "canFreeze:()Z",
+              "canSimulateMovement:()Z",
+              "checkAutoSpinAttack:(Lnet/minecraft/world/phys/AABB;Lnet/minecraft/world/phys/AABB;)V",
+              "damageSources:()Lnet/minecraft/world/damagesource/DamageSources;",
+              "getBoundingBox:()Lnet/minecraft/world/phys/AABB;",
+              "getControllingPassenger:()Lnet/minecraft/world/entity/LivingEntity;",
+              "getDeltaMovement:()Lnet/minecraft/world/phys/Vec3;",
+              "getFluidHeight:(Lnet/minecraft/tags/TagKey;)D",
+              "getFluidJumpThreshold:()D",
+              "getTicksFrozen:()I",
+              "hasEffect:(Lnet/minecraft/core/Holder;)Z",
+              "hurtServer:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/damagesource/DamageSource;F)Z",
+              "is:(Ljava/lang/Object;)Z",
+              "isAffectedByFluids:()Z",
+              "isAlive:()Z",
+              "isEffectiveAi:()Z",
+              "isFallFlying:()Z",
+              "isFullyFrozen:()Z",
+              "isImmobile:()Z",
+              "isInLava:()Z",
+              "isInShallowFluid:(Lnet/minecraft/tags/TagKey;)Z",
+              "isInWater:()Z",
+              "isInWaterOrRain:()Z",
+              "isInterpolating:()Z",
+              "isLocalInstanceAuthoritative:()Z",
+              "isSensitiveToWater:()Z",
+              "java/lang/Math.abs:(D)D",
+              "java/lang/Math.max:(II)I",
+              "jumpFromGround:()V",
+              "jumpInLiquid:(Lnet/minecraft/tags/TagKey;)V",
+              "lerpHeadRotationStep:(ID)V",
+              "level:()Lnet/minecraft/world/level/Level;",
+              "net/minecraft/util/profiling/Profiler.get:()Lnet/minecraft/util/profiling/ProfilerFiller;",
+              "net/minecraft/util/profiling/ProfilerFiller.pop:()V",
+              "net/minecraft/util/profiling/ProfilerFiller.push:(Ljava/lang/String;)V",
+              "net/minecraft/world/damagesource/DamageSources.drown:()Lnet/minecraft/world/damagesource/DamageSource;",
+              "net/minecraft/world/damagesource/DamageSources.freeze:()Lnet/minecraft/world/damagesource/DamageSource;",
+              "net/minecraft/world/entity/EntityEquipment.tick:(Lnet/minecraft/world/entity/Entity;)V",
+              "net/minecraft/world/level/Level.isClientSide:()Z",
+              "net/minecraft/world/phys/Vec3.\"<init>\":(DDD)V",
+              "net/minecraft/world/phys/Vec3.horizontalDistanceSqr:()D",
+              "net/minecraft/world/phys/Vec3.scale:(D)Lnet/minecraft/world/phys/Vec3;",
+              "omnidirectionalAirMover:()Z",
+              "onGround:()Z",
+              "pushEntities:()V",
+              "removeFrost:()V",
+              "resetFallDistance:()V",
+              "serverAiStep:()V",
+              "setDeltaMovement:(DDD)V",
+              "setDeltaMovement:(Lnet/minecraft/world/phys/Vec3;)V",
+              "setTicksFrozen:(I)V",
+              "travel:(Lnet/minecraft/world/phys/Vec3;)V",
+              "travelRidden:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/phys/Vec3;)V",
+              "tryAddFrost:()V",
+              "updateFallFlying:()V"
+            ],
+            "signature": "public void aiStep();"
+          },
+          {
+            "bytecode_text_sha256": "cc56f702a26f5eafd57bd8745bc18584e354dd237a2a613c4f345264237bdce6",
+            "direct_call_references": [],
+            "signature": "protected void applyInput();"
+          },
+          {
+            "bytecode_text_sha256": "92f27cf7fb7381b9bf239073c84ff971d4a2cda3dbd7ba7f51968377850a7065",
+            "direct_call_references": [
+              "net/minecraft/world/entity/player/Player.getItemBySlot:(Lnet/minecraft/world/entity/EquipmentSlot;)Lnet/minecraft/world/item/ItemStack;",
+              "net/minecraft/world/item/ItemStack.is:(Lnet/minecraft/tags/TagKey;)Z"
+            ],
+            "signature": "private static boolean lambda$static$0(net.minecraft.world.entity.LivingEntity);"
+          },
+          {
+            "bytecode_text_sha256": "90c95d7cee54a9cfd4b6c617b50a7783d168e739ebacf607527a4108c5546734",
+            "direct_call_references": [
+              "com/mojang/logging/LogUtils.getLogger:()Lorg/slf4j/Logger;",
+              "net/minecraft/network/syncher/SynchedEntityData.defineId:(Ljava/lang/Class;Lnet/minecraft/network/syncher/EntityDataSerializer;)Lnet/minecraft/network/syncher/EntityDataAccessor;",
+              "net/minecraft/resources/Identifier.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/Identifier;",
+              "net/minecraft/world/entity/EntityDimensions.fixed:(FF)Lnet/minecraft/world/entity/EntityDimensions;",
+              "net/minecraft/world/entity/EntityDimensions.withEyeHeight:(F)Lnet/minecraft/world/entity/EntityDimensions;",
+              "net/minecraft/world/entity/ai/attributes/AttributeModifier.\"<init>\":(Lnet/minecraft/resources/Identifier;DLnet/minecraft/world/entity/ai/attributes/AttributeModifier$Operation;)V"
+            ],
+            "signature": "static {};"
+          }
+        ]
+      },
+      "net.minecraft.world.entity.ai.attributes.Attributes": {
+        "class_entry": "net/minecraft/world/entity/ai/attributes/Attributes.class",
+        "class_sha256": "be2df0501e26e0416d5248f64f3cda081ab12839e7091ae3321d15f6cb380678",
+        "methods": [
+          {
+            "bytecode_text_sha256": "b11b1675f4c6e6d2d78c11fc07c87df78f2b40e0a2ed5a4cb7390e14f3456997",
+            "direct_call_references": [
+              "net/minecraft/world/entity/ai/attributes/Attribute.setSentiment:(Lnet/minecraft/world/entity/ai/attributes/Attribute$Sentiment;)Lnet/minecraft/world/entity/ai/attributes/Attribute;",
+              "net/minecraft/world/entity/ai/attributes/RangedAttribute.\"<init>\":(Ljava/lang/String;DDD)V",
+              "net/minecraft/world/entity/ai/attributes/RangedAttribute.setSentiment:(Lnet/minecraft/world/entity/ai/attributes/Attribute$Sentiment;)Lnet/minecraft/world/entity/ai/attributes/Attribute;",
+              "net/minecraft/world/entity/ai/attributes/RangedAttribute.setSyncable:(Z)Lnet/minecraft/world/entity/ai/attributes/Attribute;",
+              "register:(Ljava/lang/String;Lnet/minecraft/world/entity/ai/attributes/Attribute;)Lnet/minecraft/core/Holder;"
+            ],
+            "signature": "static {};"
+          }
+        ]
+      },
+      "net.minecraft.world.entity.player.Player": {
+        "class_entry": "net/minecraft/world/entity/player/Player.class",
+        "class_sha256": "28ad0c7756a5cbdfde6c22772f585da9177d6f9eb418ea5ff2dd85657d81dfb2",
+        "methods": [
+          {
+            "bytecode_text_sha256": "988f9b99be7860d759b011a8a8b58dc39fa02aa71f99e709fb65fa69878d967c",
+            "direct_call_references": [
+              "net/minecraft/world/entity/LivingEntity.createLivingAttributes:()Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;",
+              "net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add:(Lnet/minecraft/core/Holder;)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;",
+              "net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add:(Lnet/minecraft/core/Holder;D)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;"
+            ],
+            "signature": "public static net.minecraft.world.entity.ai.attributes.AttributeSupplier$Builder createAttributes();"
+          },
+          {
+            "bytecode_text_sha256": "b2401f1cbb17c992c009738400feed0cbd9e7ac8cd426cc0aa730fb040f72e31",
+            "direct_call_references": [
+              "blockPosition:()Lnet/minecraft/core/BlockPos;",
+              "getInBlockState:()Lnet/minecraft/world/level/block/state/BlockState;",
+              "getMainHandItem:()Lnet/minecraft/world/item/ItemStack;",
+              "getX:()D",
+              "getY:()D",
+              "getZ:()D",
+              "isEquipped:(Lnet/minecraft/world/item/Item;)Z",
+              "isEyeInFluid:(Lnet/minecraft/tags/TagKey;)Z",
+              "isPassenger:()Z",
+              "isSleeping:()Z",
+              "isSpectator:()Z",
+              "level:()Lnet/minecraft/world/level/Level;",
+              "net/minecraft/util/Mth.clamp:(DDD)D",
+              "net/minecraft/world/attribute/BedRule.canSleep:(Lnet/minecraft/world/level/Level;)Z",
+              "net/minecraft/world/entity/Avatar.tick:()V",
+              "net/minecraft/world/item/ItemCooldowns.tick:()V",
+              "net/minecraft/world/item/ItemStack.copy:()Lnet/minecraft/world/item/ItemStack;",
+              "net/minecraft/world/item/ItemStack.isSameItem:(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemStack;)Z",
+              "net/minecraft/world/item/ItemStack.matches:(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemStack;)Z",
+              "net/minecraft/world/level/Level.isClientSide:()Z",
+              "net/minecraft/world/level/block/AbstractBedBlock.getBedRule:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/attribute/BedRule;",
+              "net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;",
+              "resetAttackStrengthTicker:()V",
+              "setOnGround:(Z)V",
+              "setPos:(DDD)V",
+              "stopSleepInBed:(ZZ)V",
+              "turtleHelmetTick:()V",
+              "updateIsUnderwater:()Z",
+              "updatePlayerPose:()V"
+            ],
+            "signature": "public void tick();"
+          },
+          {
+            "bytecode_text_sha256": "b24d855684ddb00008b9df4e45a6ca15d380fda7cb775a39333c4022a89cb7a7",
+            "direct_call_references": [
+              "com/google/common/collect/Lists.newArrayList:()Ljava/util/ArrayList;",
+              "getAttributeValue:(Lnet/minecraft/core/Holder;)D",
+              "getBoundingBox:()Lnet/minecraft/world/phys/AABB;",
+              "getHealth:()F",
+              "getVehicle:()Lnet/minecraft/world/entity/Entity;",
+              "getYRot:()F",
+              "handleShoulderEntities:()V",
+              "isPassenger:()Z",
+              "isSpectator:()Z",
+              "java/util/Iterator.hasNext:()Z",
+              "java/util/Iterator.next:()Ljava/lang/Object;",
+              "java/util/List.add:(Ljava/lang/Object;)Z",
+              "java/util/List.isEmpty:()Z",
+              "java/util/List.iterator:()Ljava/util/Iterator;",
+              "level:()Lnet/minecraft/world/level/Level;",
+              "net/minecraft/util/Util.getRandom:(Ljava/util/List;Lnet/minecraft/util/RandomSource;)Ljava/lang/Object;",
+              "net/minecraft/world/entity/Avatar.aiStep:()V",
+              "net/minecraft/world/entity/Entity.getBoundingBox:()Lnet/minecraft/world/phys/AABB;",
+              "net/minecraft/world/entity/Entity.is:(Ljava/lang/Object;)Z",
+              "net/minecraft/world/entity/Entity.isRemoved:()Z",
+              "net/minecraft/world/entity/player/Inventory.tick:()V",
+              "net/minecraft/world/level/Level.getEntities:(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/phys/AABB;)Ljava/util/List;",
+              "net/minecraft/world/phys/AABB.inflate:(DDD)Lnet/minecraft/world/phys/AABB;",
+              "net/minecraft/world/phys/AABB.minmax:(Lnet/minecraft/world/phys/AABB;)Lnet/minecraft/world/phys/AABB;",
+              "resetFallDistance:()V",
+              "setSpeed:(F)V",
+              "tickRegeneration:()V",
+              "touch:(Lnet/minecraft/world/entity/Entity;)V"
+            ],
+            "signature": "public void aiStep();"
+          },
+          {
+            "bytecode_text_sha256": "adcc062f8001e1a59c21717d38252f78dc46db8defc732689e5165a3a5beebe5",
+            "direct_call_references": [],
+            "signature": "public boolean isAffectedByFluids();"
+          },
+          {
+            "bytecode_text_sha256": "97a90c070733f0ab68a35754df8a2be604c076cd9aaff7efd17f496b6722d613",
+            "direct_call_references": [],
+            "signature": "public net.minecraft.world.entity.MoveSimulationType getMoveSimulationType();"
+          },
+          {
+            "bytecode_text_sha256": "19e9d473766730d82d777fe72155f81a1f83a7822c3ce8a5e53998046c306910",
+            "direct_call_references": [
+              "isLocalPlayer:()Z",
+              "level:()Lnet/minecraft/world/level/Level;",
+              "net/minecraft/world/level/Level.isClientSide:()Z"
+            ],
+            "signature": "public boolean isEffectiveAi();"
+          },
+          {
+            "bytecode_text_sha256": "11e359f464f40f6abeee43e69e2d6cd21399a9a3eedf2c5dca38347ddeb8f7c8",
+            "direct_call_references": [
+              "getAbilities:()Lnet/minecraft/world/entity/player/Abilities;",
+              "getDeltaMovement:()Lnet/minecraft/world/phys/Vec3;",
+              "getLookAngle:()Lnet/minecraft/world/phys/Vec3;",
+              "getX:()D",
+              "getY:()D",
+              "getZ:()D",
+              "isPassenger:()Z",
+              "isSwimming:()Z",
+              "level:()Lnet/minecraft/world/level/Level;",
+              "net/minecraft/core/BlockPos.containing:(DDD)Lnet/minecraft/core/BlockPos;",
+              "net/minecraft/world/entity/Avatar.travel:(Lnet/minecraft/world/phys/Vec3;)V",
+              "net/minecraft/world/level/Level.getFluidState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/material/FluidState;",
+              "net/minecraft/world/level/material/FluidState.isEmpty:()Z",
+              "net/minecraft/world/phys/Vec3.add:(DDD)Lnet/minecraft/world/phys/Vec3;",
+              "net/minecraft/world/phys/Vec3.with:(Lnet/minecraft/core/Direction$Axis;D)Lnet/minecraft/world/phys/Vec3;",
+              "setDeltaMovement:(Lnet/minecraft/world/phys/Vec3;)V"
+            ],
+            "signature": "public void travel(net.minecraft.world.phys.Vec3);"
+          },
+          {
+            "bytecode_text_sha256": "8377efa162b5ad106900e9b4edce9f546230ccb6e5ca7f7b322b695764027678",
+            "direct_call_references": [
+              "getAttributeValue:(Lnet/minecraft/core/Holder;)D"
+            ],
+            "signature": "public float getSpeed();"
+          },
+          {
+            "bytecode_text_sha256": "a116eb939ef1d832c126f0ee1e63b94e253713780f67569d5d6925489fc85299",
+            "direct_call_references": [
+              "isFallFlying:()Z",
+              "net/minecraft/world/entity/Avatar.getBlockSpeedFactor:()F"
+            ],
+            "signature": "protected float getBlockSpeedFactor();"
+          },
+          {
+            "bytecode_text_sha256": "c653c8f2e438250b47c7baf066aa5f4229c56509f6db99f9ef3d51a300a59a48",
+            "direct_call_references": [
+              "isPassenger:()Z",
+              "isSprinting:()Z",
+              "net/minecraft/world/entity/player/Abilities.getFlyingSpeed:()F"
+            ],
+            "signature": "protected float getFlyingSpeed();"
+          },
+          {
+            "bytecode_text_sha256": "6d2c5f3ea6ad05fa50893255b92e79c390efa53086a6051df356dd063b687654",
+            "direct_call_references": [
+              "net/minecraft/network/syncher/SynchedEntityData.defineId:(Ljava/lang/Class;Lnet/minecraft/network/syncher/EntityDataSerializer;)Lnet/minecraft/network/syncher/EntityDataAccessor;"
+            ],
+            "signature": "static {};"
+          }
+        ]
+      }
+    },
+    "server_class_jar_sha256": "a362163eec5d1612d520772bc16e5b39c09e3b234fdc045f56bf544284ee8ae6"
+  },
+  "confidence": "high for pinned bytecode contracts; no actual LivingEntity.travel or Player tick execution claim",
+  "corrected_nan_comparisons": {
+    "effective_gravity": "NaN post-move Y dcmpg/ifgt selects descending=false, skips Slow Falling minimum",
+    "generic_component_cleanup": "NaN abs(component) dcmpg/ifge skips component zeroing",
+    "jvm_rule": "dcmpg unordered=+1; dcmpl unordered=-1",
+    "player_horizontal_cleanup": "NaN horizontalDistanceSqr dcmpg/ifge skips joint X/Z zeroing"
+  },
+  "guards": [
+    "no passenger/controller",
+    "no swimming/ability flight/fall flying/liquid",
+    "no climbable/powder snow",
+    "no Levitation/Slow Falling",
+    "loaded client chunk or server authority",
+    "finite explicit attributes",
+    "unit block speed factor",
+    "suppressed bounce",
+    "explicit pose dimensions and step height"
+  ],
+  "input_tick_dependencies": [
+    "interpolation and simulation permission",
+    "player-type tiny horizontal joint cleanup vs generic per-axis cleanup",
+    "float0.98f xxa/zza decay",
+    "immobility/jumping/cooldown",
+    "canSimulateMovement and isEffectiveAi gating",
+    "post-travel block effects/freezing/pushing",
+    "Player stored speed update after inherited aiStep",
+    "spectator/passenger/fluid state",
+    "world coordinate clamp",
+    "pose update"
+  ],
+  "next_runtime_experiment": "Actual LivingEntity.travel or Player.travel in a narrowly instrumented real Level; generic Entity oracle cannot establish living travel or gravity",
+  "numerical_contracts": {
+    "airborne_player_speed": "0.02f; sprinting0.025999999f",
+    "generic_entity_default_gravity": "0.0d",
+    "gravity_position": "after Entity.move displacement and restitution",
+    "ground_acceleration": "widened friction >0.6d selects speed_f32*(0.21600002f/((f*f)*f)); otherwise speed_f32",
+    "horizontal_drag": "sampled_friction_f32 * modified_0.91f_drag; widened to F64",
+    "living_default_gravity": "current GRAVITY attribute",
+    "modified_friction": "clamp_f32(1f-(1f-b)*m,0f,1f)",
+    "vertical_drag": "ordinary modified_0.98f_drag; widened to F64"
+  },
+  "ordinary_air_order": [
+    "sample supporting-block-aware movement-below position and prior grounded friction",
+    "narrow FRICTION_MODIFIER and compute float modified friction",
+    "derive float grounded friction acceleration or airborne flying speed",
+    "add exact getInputVector to binary64 velocity",
+    "apply climbable helper and store velocity",
+    "actual Entity.move(SELF,currentVelocity)",
+    "read post-move velocity",
+    "levitation or effective gravity adjustment",
+    "discard-friction branch or float AIR_DRAG_MODIFIER multipliers widened before final binary64 drag"
+  ],
+  "pin": "26.3",
+  "schema_version": 1,
+  "status": "inspected_next_contract"
+}
