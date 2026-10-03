@@ -1,0 +1,416 @@
+{
+  "status": "passed",
+  "confidence": "high for the stated codec behavior and tested native limits",
+  "recorded_at_utc": "2026-10-03T16:03:23.874549+00:00",
+  "elapsed_seconds": 14.782390541397035,
+  "platform": "macOS-26.4.1-arm64-arm-64bit-Mach-O",
+  "python": "3.14.6",
+  "random_seed": 3235823838,
+  "compiler_version": "bend 2.0.35",
+  "compiler_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+  "native_binary_sha256": "73ef50219fb9b5b83078375c8fca17f2272588bc9d126d1574420396b8b10b45",
+  "source_sha256": {
+    "src/unicode.bend": "8f0cd9bbcd0e7f938af370675eca0c73a9b97b90c2789a1e77e5a29a918455bd",
+    "tests/unicode.bend": "a514e094d7e8cff061f8595449ad5013879546188a4adc43c45143e21abc8531",
+    "tools/test_unicode.py": "418faa8a1a1d8ab587422a071164ece98dc300b29f61195aee4c70b81ca6b159"
+  },
+  "independent_kernel_results": [
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/unicode.bend",
+        "--verdict"
+      ],
+      "stdout": "ALL PROOFS CHECK\n",
+      "stderr": "",
+      "returncode": 0
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/unicode.bend",
+        "--verdict"
+      ],
+      "stdout": "ALL PROOFS CHECK\n",
+      "stderr": "",
+      "returncode": 0
+    }
+  ],
+  "emitted_c_review": {
+    "path": "build/unicode-tests.c",
+    "sha256": "98abce25ecb3e0d9c9297d15ea3c81fc6db192a3911f6015dc6c685d716fdb31",
+    "nat48_mask_present": true,
+    "codec_state_symbols_present": true,
+    "selected_lines": [
+      {
+        "line": 208,
+        "text": "#define NAT_IMM   ((1ull << 48) - 1)"
+      },
+      {
+        "line": 331,
+        "text": "#define CID____SRC_UNICODE_ENCODER 17"
+      },
+      {
+        "line": 332,
+        "text": "#define CID____SRC_UNICODE_DECODER 18"
+      },
+      {
+        "line": 3178,
+        "text": "Term _remaining_0 = (_room_1 - 1);"
+      },
+      {
+        "line": 3220,
+        "text": "Term _remaining_0 = (_room_1 - 1);"
+      },
+      {
+        "line": 3369,
+        "text": "if (spin_2(e, _o_0, U32_BIN(_code_1, >=, 55296ull), U32_BIN(_code_1, <=, 57343ull)) == 0) {"
+      },
+      {
+        "line": 3383,
+        "text": "if (spin_2(e, _o_2, U32_BIN(_code_1, <=, 1114111ull), _v_4) == 0) {"
+      },
+      {
+        "line": 4080,
+        "text": "if (spin_2(e, _o_1, U32_BIN(_byte_1, >=, 128ull), U32_BIN(_byte_1, <=, 191ull)) == 0) {"
+      },
+      {
+        "line": 4305,
+        "text": "if (spin_18(e, _o_2, U32_BIN(_byte_0, <=, 255ull), _state_5, _state_6, _state_7, _state_8, _state_9, _byte_0) == 0) {"
+      }
+    ],
+    "budget_excerpts": [
+      {
+        "first_line": 3163,
+        "last_line": 3179,
+        "text": "        _v_5 = _reversed_1;\n      }\n    } else {\n      Term _fb_0[2];\n      u64 _sp_0 = ctr_take(e, _bytes_0, 2, _fb_0);\n      Term _f_0 = _fb_0[0];\n      Term _f_1 = _fb_0[1];\n      if (_room_1 == 0) {\n        term_sink(e, _f_1);\n        term_sink(e, _reversed_1);\n        _v_3 = 0;\n        _v_4 = term_ctr(CID_SCON, STAT_OFF + 100);\n        _v_5 = 0;\n        spare_free(e, cls_fit(2), _sp_0);\n      } else {\n        Term _remaining_0 = (_room_1 - 1);\n        u64 _nd_4 = _sp_0 >= HEAP_OFF ? _sp_0 : heap_alloc(e, cls_fit(2));"
+      },
+      {
+        "first_line": 3205,
+        "last_line": 3221,
+        "text": "  Term _v_10 = 0;\n  Term _v_11 = 0;\n  Term _room_1 = r0;\n  u32 _code_1 = r1;\n  Term _reversed_1 = r2;\n  WL_SPIN\n    if (_room_1 == 0) {\n      term_sink(e, _reversed_1);\n      _v_6 = 0;\n      _v_7 = term_ctr(CID_SCON, STAT_OFF + 206);\n      _v_8 = 0;\n      _v_9 = 0;\n      _v_10 = 0;\n      _v_11 = 0;\n    } else {\n      Term _remaining_0 = (_room_1 - 1);\n      u64 _nd_0 = heap_alloc(e, cls_fit(2));"
+      }
+    ],
+    "compiler_observation": "Public decode/encode definitions are inlined into native harness entry paths; their Data state constructors remain named.",
+    "scope": "Representation, scalar/byte guards and zero-guarded budget predecessor review, not a separate C correctness proof."
+  },
+  "small_case_count": 12125,
+  "small_native_batch_count": 61,
+  "assembled_chunk_count": 33802,
+  "exact_output_comparison_count": 3583,
+  "large_case_count": 19,
+  "all_valid_scalar_count_per_direction": 1112064,
+  "all_surrogate_count_per_direction": 2048,
+  "failure_counts": {
+    "UTF-8 byte limit exceeded": 1159,
+    "UTF-8 scalar limit exceeded": 1203,
+    "expected UTF-8 continuation byte": 687,
+    "incomplete UTF-8 sequence": 326,
+    "input byte exceeds 255": 97,
+    "invalid UTF-8 leading byte": 928,
+    "invalid UTF-8 scalar or overlong encoding": 2082,
+    "invalid Unicode scalar in String": 2060
+  },
+  "corpus_sha256": "40b8ee43bf3115409fa2b6b7f82d12139fbd5a639b63d2599eca5ca7150e44a5",
+  "observed_sha256": "d432e216204eed80c92f90d166c8df15f6487d614d0368c6d438c05ec1de293c",
+  "large_cases": [
+    {
+      "name": "exhaustive-valid-scalars",
+      "specification": "dfile|1112064|/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/unicode-fixtures/exhaustive-valid-scalars.bin",
+      "expected": {
+        "ok": true,
+        "length": 1112064,
+        "fnv1a32": 3304449477
+      },
+      "observed": {
+        "ok": true,
+        "length": 1112064,
+        "fnv1a32": 3304449477
+      },
+      "input_sha256": "e0a7693f7362e88827c15e772e55b3490bd983f90711df7f3ef36c2b1ef6847e"
+    },
+    {
+      "name": "exhaustive-encode-0-55296",
+      "specification": "erange|163712|0|55296",
+      "expected": {
+        "ok": true,
+        "length": 163712,
+        "fnv1a32": 2710778885
+      },
+      "observed": {
+        "ok": true,
+        "length": 163712,
+        "fnv1a32": 2710778885
+      },
+      "input_sha256": null
+    },
+    {
+      "name": "exhaustive-encode-57344-1114112",
+      "specification": "erange|4218880|57344|1056768",
+      "expected": {
+        "ok": true,
+        "length": 4218880,
+        "fnv1a32": 2372094149
+      },
+      "observed": {
+        "ok": true,
+        "length": 4218880,
+        "fnv1a32": 2372094149
+      },
+      "input_sha256": null
+    },
+    {
+      "name": "zip-ascii-exact",
+      "specification": "erepeat|65535|97|65535",
+      "expected": {
+        "ok": true,
+        "length": 65535,
+        "fnv1a32": 722393638
+      },
+      "observed": {
+        "ok": true,
+        "length": 65535,
+        "fnv1a32": 722393638
+      },
+      "input_sha256": null
+    },
+    {
+      "name": "zip-ascii-exceeded",
+      "specification": "erepeat|65535|97|65536",
+      "expected": {
+        "ok": false
+      },
+      "observed": {
+        "ok": false,
+        "error": "UTF-8 byte limit exceeded"
+      },
+      "input_sha256": null
+    },
+    {
+      "name": "zip-three-byte-exact",
+      "specification": "erepeat|65535|2048|21845",
+      "expected": {
+        "ok": true,
+        "length": 65535,
+        "fnv1a32": 2899904071
+      },
+      "observed": {
+        "ok": true,
+        "length": 65535,
+        "fnv1a32": 2899904071
+      },
+      "input_sha256": null
+    },
+    {
+      "name": "zip-three-byte-exceeded",
+      "specification": "erepeat|65535|2048|21846",
+      "expected": {
+        "ok": false
+      },
+      "observed": {
+        "ok": false,
+        "error": "UTF-8 byte limit exceeded"
+      },
+      "input_sha256": null
+    },
+    {
+      "name": "zip-four-byte-fit",
+      "specification": "erepeat|65535|1114111|16383",
+      "expected": {
+        "ok": true,
+        "length": 65532,
+        "fnv1a32": 983363874
+      },
+      "observed": {
+        "ok": true,
+        "length": 65532,
+        "fnv1a32": 983363874
+      },
+      "input_sha256": null
+    },
+    {
+      "name": "zip-four-byte-exceeded",
+      "specification": "erepeat|65535|1114111|16384",
+      "expected": {
+        "ok": false
+      },
+      "observed": {
+        "ok": false,
+        "error": "UTF-8 byte limit exceeded"
+      },
+      "input_sha256": null
+    },
+    {
+      "name": "registry-ascii-exact",
+      "specification": "erepeat|4194304|97|4194304",
+      "expected": {
+        "ok": true,
+        "length": 4194304,
+        "fnv1a32": 308059589
+      },
+      "observed": {
+        "ok": true,
+        "length": 4194304,
+        "fnv1a32": 308059589
+      },
+      "input_sha256": null
+    },
+    {
+      "name": "registry-ascii-exceeded",
+      "specification": "erepeat|4194304|97|4194305",
+      "expected": {
+        "ok": false
+      },
+      "observed": {
+        "ok": false,
+        "error": "UTF-8 byte limit exceeded"
+      },
+      "input_sha256": null
+    },
+    {
+      "name": "registry-four-byte-exact",
+      "specification": "erepeat|4194304|1114111|1048576",
+      "expected": {
+        "ok": true,
+        "length": 4194304,
+        "fnv1a32": 2262605253
+      },
+      "observed": {
+        "ok": true,
+        "length": 4194304,
+        "fnv1a32": 2262605253
+      },
+      "input_sha256": null
+    },
+    {
+      "name": "registry-four-byte-exceeded",
+      "specification": "erepeat|4194304|1114111|1048577",
+      "expected": {
+        "ok": false
+      },
+      "observed": {
+        "ok": false,
+        "error": "UTF-8 byte limit exceeded"
+      },
+      "input_sha256": null
+    },
+    {
+      "name": "registry-decode-ascii-exact",
+      "specification": "dfile|4194304|/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/unicode-fixtures/registry-decode-ascii-exact.bin",
+      "expected": {
+        "ok": true,
+        "length": 4194304,
+        "fnv1a32": 308059589
+      },
+      "observed": {
+        "ok": true,
+        "length": 4194304,
+        "fnv1a32": 308059589
+      },
+      "input_sha256": "299285fc41a44cdb038b9fdaf494c76ca9d0c866672b2b266c1a0c17dda60a05"
+    },
+    {
+      "name": "registry-decode-ascii-scalar-exceeded",
+      "specification": "dfile|4194304|/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/unicode-fixtures/registry-decode-ascii-scalar-exceeded.bin",
+      "expected": {
+        "ok": false
+      },
+      "observed": {
+        "ok": false,
+        "error": "UTF-8 scalar limit exceeded"
+      },
+      "input_sha256": "acd560a1e1d523c090ab93aed616d154b7b5e8206a153cced729d83f2c7dcfc3"
+    },
+    {
+      "name": "registry-decode-four-byte-exact",
+      "specification": "dfile|1048576|/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/unicode-fixtures/registry-decode-four-byte-exact.bin",
+      "expected": {
+        "ok": true,
+        "length": 1048576,
+        "fnv1a32": 1879875013
+      },
+      "observed": {
+        "ok": true,
+        "length": 1048576,
+        "fnv1a32": 1879875013
+      },
+      "input_sha256": "67632500463f9c9edd752bf02ff53e9ad1ed07eb04502d7807498420ac575e44"
+    },
+    {
+      "name": "registry-decode-four-byte-scalar-exceeded",
+      "specification": "dfile|1048576|/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/unicode-fixtures/registry-decode-four-byte-scalar-exceeded.bin",
+      "expected": {
+        "ok": false
+      },
+      "observed": {
+        "ok": false,
+        "error": "UTF-8 scalar limit exceeded"
+      },
+      "input_sha256": "6ae9f3f6edaed4d346a0824bbed685257f721de8a4f3698ce5f6f86ba2b38e95"
+    },
+    {
+      "name": "registry-malformed-tail",
+      "specification": "dfile|4194304|/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/unicode-fixtures/registry-malformed-tail.bin",
+      "expected": {
+        "ok": false
+      },
+      "observed": {
+        "ok": false,
+        "error": "incomplete UTF-8 sequence"
+      },
+      "input_sha256": "48035386a6dc145f7ebde5aba2fdaf287115e0b9edba5321573f372262bf6a75"
+    },
+    {
+      "name": "registry-surrogate-tail",
+      "specification": "dfile|4194304|/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/unicode-fixtures/registry-surrogate-tail.bin",
+      "expected": {
+        "ok": false
+      },
+      "observed": {
+        "ok": false,
+        "error": "invalid UTF-8 scalar or overlong encoding"
+      },
+      "input_sha256": "e4944671ce92e2ffc9585f3d7e0d155d26ec457135d4337498a7b9565500f104"
+    }
+  ],
+  "commands": [
+    [
+      "/Users/chuah/.bend/bin/bend",
+      "src/unicode.bend",
+      "--verdict"
+    ],
+    [
+      "/Users/chuah/.bend/bin/bend",
+      "tests/unicode.bend",
+      "--verdict"
+    ],
+    [
+      "/Users/chuah/.bend/bin/bend",
+      "tests/unicode.bend",
+      "-o",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/unicode-tests"
+    ],
+    [
+      "/Users/chuah/.bend/bin/bend",
+      "tests/unicode.bend",
+      "-o",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/unicode-tests.c"
+    ],
+    [
+      "python3",
+      "tools/test_unicode.py"
+    ]
+  ],
+  "proof_scope": [
+    "Six general empty-input/budget-transition laws and eleven finite codec regression equalities.",
+    "No universal Unicode round-trip, parser soundness or game-parity theorem is claimed.",
+    "No unsafe, foreign or axiom dependency exists in src/unicode.bend."
+  ],
+  "boundaries": [
+    "Public APIs operate on complete inputs; chunk assembly tests do not claim a streaming API.",
+    "Caller limits are native Nat values in [0, 2^48-1]; only predecessor operations consume them.",
+    "Decoder bounds scalar output count, encoder bounds byte output count; callers separately enforce input byte limits.",
+    "Large outputs use length/FNV-1a-32 comparisons, which are empirical checks with hash collision limits.",
+    "Python and standard Base File/IO only orchestrate native tests; the codec implementation is pure Bend."
+  ]
+}

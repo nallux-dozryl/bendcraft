@@ -1,0 +1,641 @@
+{
+  "binary_sha256": "449d59b71fd6106c6e9f4a980b5de196968e21e01977775ec69d080b0da24db6",
+  "bit_length_cases": 14,
+  "boundaries": [
+    "one-shot reusable-byte API",
+    "one owned 64-word schedule",
+    "byte-oriented messages only",
+    "test file transport is bounded to 4 MiB",
+    "not a universal SHA-256 theorem",
+    "not a NIST validated module"
+  ],
+  "checked_error_cases": 85,
+  "commands": [
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/hash.bend",
+        "--check-only"
+      ],
+      "exit_code": 0,
+      "seconds": 0.10525,
+      "stderr": "",
+      "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/hash.bend",
+        "--verdict"
+      ],
+      "exit_code": 0,
+      "seconds": 0.423862,
+      "stderr": "",
+      "stdout": "ALL PROOFS CHECK\n"
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/hash.bend",
+        "--check-only"
+      ],
+      "exit_code": 0,
+      "seconds": 0.158718,
+      "stderr": "",
+      "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/hash.bend",
+        "--verdict"
+      ],
+      "exit_code": 0,
+      "seconds": 0.64183,
+      "stderr": "",
+      "stdout": "ALL PROOFS CHECK\n"
+    }
+  ],
+  "compiler": "bend 2.0.35",
+  "confidence": "high for recorded SHA-256 fixtures; no cryptographic security theorem",
+  "corpus_sha256": "cd3785fad5855c26b012c21af60c96788c5fc4410aff88873d086eeb4d064331",
+  "emitted_c_array_clone_calls": 0,
+  "emitted_c_bytes": 382119,
+  "emitted_c_lines": 13206,
+  "emitted_c_scalar_helpers": 63,
+  "emitted_c_sha256": "8cd9f8364e21cfbff6fdb51ae956b343a7db15d5da873285131a2b85c8bbd500",
+  "host_float_scalar_helpers": 0,
+  "implementation_laws": [
+    "zero_budget_rejects_nonempty",
+    "oversized_native_limit_rejected",
+    "invalid_first_byte_rejected",
+    "word_output_big_endian",
+    "rotate_boundary_fixture",
+    "padding_last_one_block",
+    "padding_first_two_blocks",
+    "bit_length_low_word_carry"
+  ],
+  "large_and_replication_cases": 20,
+  "large_inputs": [
+    {
+      "bytes": 1000000,
+      "name": "million-a",
+      "sha256": "cdc76e5c9914fb9281a1c7e284d73e67f1809a48a497200e046d39ccc7112cd0"
+    },
+    {
+      "bytes": 1000000,
+      "name": "million-zero",
+      "sha256": "d29751f2649b32ff572b5e0a9f541ea660a50f94ff0beedfb0b692b924cc8025"
+    },
+    {
+      "bytes": 1000000,
+      "name": "million-ff",
+      "sha256": "bfa872a3021d48c84643f831ee5f9358bceccf3ad6a5f8b3a7a00e0b3f22bdbc"
+    },
+    {
+      "bytes": 4194304,
+      "name": "four-mib-pattern",
+      "sha256": "2b07811057df887086f06a67edc6ebf911de8b6741156e7a2eb1416a4b8b1b2e"
+    },
+    {
+      "bytes": 2097215,
+      "name": "large-random",
+      "sha256": "7aeede38b83350cfc6d80d6a017c36ed0dda53d6d64c76b27d89af3367922103"
+    },
+    {
+      "bytes": 182136,
+      "name": "registry-tsv",
+      "sha256": "27769e75bf862d0540b2df2a6e99f6b7556a867bff6339fb08566240ee124cac"
+    }
+  ],
+  "malformed_test_protocol_cases": [
+    {
+      "exit_code": 2,
+      "query": "broken",
+      "stderr": "invalid hash test protocol\n"
+    },
+    {
+      "exit_code": 2,
+      "query": "odd|hex|1|0",
+      "stderr": "odd test hex length\n"
+    },
+    {
+      "exit_code": 2,
+      "query": "invalid|hex|1|gg",
+      "stderr": "invalid test hex\n"
+    },
+    {
+      "exit_code": 2,
+      "query": "oversized-budget|hex|281474976710656|",
+      "stderr": "invalid hash size\n"
+    },
+    {
+      "exit_code": 2,
+      "query": "negative-budget|hex|-1|00",
+      "stderr": "invalid hash size\n"
+    }
+  ],
+  "native_batches": [
+    {
+      "batch": 0,
+      "count": 80,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.009495
+    },
+    {
+      "batch": 1,
+      "count": 80,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.007307
+    },
+    {
+      "batch": 2,
+      "count": 80,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.007693
+    },
+    {
+      "batch": 3,
+      "count": 80,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.006893
+    },
+    {
+      "batch": 4,
+      "count": 80,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.016982
+    },
+    {
+      "batch": 5,
+      "count": 80,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.006623
+    },
+    {
+      "batch": 6,
+      "count": 80,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.005721
+    },
+    {
+      "batch": 7,
+      "count": 80,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.004411
+    },
+    {
+      "batch": 8,
+      "count": 80,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.005588
+    },
+    {
+      "batch": 9,
+      "count": 80,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.004819
+    },
+    {
+      "batch": 10,
+      "count": 80,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.004191
+    },
+    {
+      "batch": 11,
+      "count": 80,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.004278
+    },
+    {
+      "batch": 12,
+      "count": 80,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.004451
+    },
+    {
+      "batch": 13,
+      "count": 80,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.005939
+    },
+    {
+      "batch": 14,
+      "count": 80,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.004869
+    },
+    {
+      "batch": 15,
+      "count": 80,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.00474
+    },
+    {
+      "batch": 16,
+      "count": 20,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.006827
+    },
+    {
+      "batch": 17,
+      "count": 10,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.005937
+    },
+    {
+      "batch": 18,
+      "count": 14,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.00603
+    },
+    {
+      "batch": 19,
+      "count": 16,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.006082
+    },
+    {
+      "batch": 20,
+      "count": 16,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.005998
+    },
+    {
+      "batch": 21,
+      "count": 15,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.00635
+    },
+    {
+      "batch": 22,
+      "count": 18,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.005934
+    },
+    {
+      "batch": 23,
+      "count": 14,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.005992
+    },
+    {
+      "batch": 24,
+      "count": 13,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.005897
+    },
+    {
+      "batch": 25,
+      "count": 13,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.005587
+    },
+    {
+      "batch": 26,
+      "count": 10,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.005797
+    },
+    {
+      "batch": 27,
+      "count": 11,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.005679
+    },
+    {
+      "batch": 28,
+      "count": 14,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.005724
+    },
+    {
+      "batch": 29,
+      "count": 16,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.005765
+    },
+    {
+      "batch": 30,
+      "count": 17,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.005588
+    },
+    {
+      "batch": 31,
+      "count": 11,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.005822
+    },
+    {
+      "batch": 32,
+      "count": 10,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.006149
+    },
+    {
+      "batch": 33,
+      "count": 9,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.005619
+    },
+    {
+      "batch": 34,
+      "count": 11,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.005836
+    },
+    {
+      "batch": 35,
+      "count": 13,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.00614
+    },
+    {
+      "batch": 36,
+      "count": 13,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.006277
+    },
+    {
+      "batch": 37,
+      "count": 12,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.006211
+    },
+    {
+      "batch": 38,
+      "count": 17,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.006157
+    },
+    {
+      "batch": 39,
+      "count": 10,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.005598
+    },
+    {
+      "batch": 40,
+      "count": 13,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.005747
+    },
+    {
+      "batch": 41,
+      "count": 17,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.005765
+    },
+    {
+      "batch": 42,
+      "count": 13,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.005944
+    },
+    {
+      "batch": 43,
+      "count": 14,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.005998
+    },
+    {
+      "batch": 44,
+      "count": 15,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.006017
+    },
+    {
+      "batch": 45,
+      "count": 11,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.007096
+    },
+    {
+      "batch": 46,
+      "count": 16,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.00614
+    },
+    {
+      "batch": 47,
+      "count": 10,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.006111
+    },
+    {
+      "batch": 48,
+      "count": 20,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.006085
+    },
+    {
+      "batch": 49,
+      "count": 11,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.005841
+    },
+    {
+      "batch": 50,
+      "count": 13,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.005851
+    },
+    {
+      "batch": 51,
+      "count": 15,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.005789
+    },
+    {
+      "batch": 52,
+      "count": 17,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.005553
+    },
+    {
+      "batch": 53,
+      "count": 12,
+      "exit_code": 0,
+      "lane": "independent-hash-oracles",
+      "seconds": 0.005463
+    },
+    {
+      "batch": 0,
+      "count": 80,
+      "exit_code": 0,
+      "lane": "checked-byte-and-budget-errors",
+      "seconds": 0.003575
+    },
+    {
+      "batch": 1,
+      "count": 5,
+      "exit_code": 0,
+      "lane": "checked-byte-and-budget-errors",
+      "seconds": 0.003442
+    },
+    {
+      "batch": 0,
+      "count": 14,
+      "exit_code": 0,
+      "lane": "64-bit-bit-length-fields",
+      "seconds": 0.003359
+    },
+    {
+      "batch": 0,
+      "count": 80,
+      "exit_code": 0,
+      "lane": "rotations-modulo-32",
+      "seconds": 0.003245
+    },
+    {
+      "batch": 1,
+      "count": 80,
+      "exit_code": 0,
+      "lane": "rotations-modulo-32",
+      "seconds": 0.003304
+    },
+    {
+      "batch": 2,
+      "count": 80,
+      "exit_code": 0,
+      "lane": "rotations-modulo-32",
+      "seconds": 0.003182
+    },
+    {
+      "batch": 3,
+      "count": 80,
+      "exit_code": 0,
+      "lane": "rotations-modulo-32",
+      "seconds": 0.003064
+    },
+    {
+      "batch": 4,
+      "count": 80,
+      "exit_code": 0,
+      "lane": "rotations-modulo-32",
+      "seconds": 0.003093
+    },
+    {
+      "batch": 5,
+      "count": 80,
+      "exit_code": 0,
+      "lane": "rotations-modulo-32",
+      "seconds": 0.003036
+    },
+    {
+      "batch": 6,
+      "count": 3,
+      "exit_code": 0,
+      "lane": "rotations-modulo-32",
+      "seconds": 0.003217
+    },
+    {
+      "batch": 0,
+      "count": 20,
+      "exit_code": 0,
+      "lane": "large-messages-and-replication",
+      "seconds": 0.161795
+    }
+  ],
+  "native_input_limit": 281474976710655,
+  "native_observations": 2402,
+  "oracle_providers": {
+    "hashlib_module": "_hashlib",
+    "hashlib_openssl": "OpenSSL 3.6.3 9 Jun 2026",
+    "independent_portable_python_module": "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/lib/python3.14/lib-dynload/_sha2.cpython-314-darwin.so",
+    "openssl_cli": "OpenSSL 3.6.3 9 Jun 2026 (Library: OpenSSL 3.6.3 9 Jun 2026)"
+  },
+  "owned_schedule_allocation": "if (spin_46(e, _o_5, _bytes_0, _max_bytes_0, 1, 1779033703ull, 3144134277ull, 1013904242ull, 2773480762ull, 1359893119ull, 2600822924ull, 528734635ull, 1541459225ull, blk_new(e, 0, 6ull, 0, 1, _fv_0), 0ull, 0ull, 0ull, 0ull) == 0) {",
+  "primary_sources": {
+    "nist_one_and_two_block_examples": "https://csrc.nist.gov/CSRC/media/Projects/Cryptographic-Standards-and-Guidelines/documents/examples/SHA256.pdf",
+    "standard": "https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf"
+  },
+  "public_digest_formats": {
+    "bytes": 32,
+    "hex_characters": 64
+  },
+  "random_seed": 2631804,
+  "rotation_cases": 483,
+  "schema_version": 1,
+  "small_digest_cases": 1800,
+  "small_digest_categories": {
+    "all-single-bytes": 256,
+    "empty": 1,
+    "native-max-budget": 1,
+    "nist-published": 2,
+    "padding-and-block-boundaries": 1028,
+    "seeded-random": 512
+  },
+  "source_sha256": {
+    "docs/HASH.md": "2fd069d2401191a2c8d9865890095655d26a5e9939ddb2de3947bd1528aad9f9",
+    "src/hash.bend": "d2473695632b19e68c8d636668e4617f04d70892fb2ab6559cb24d4b33c1b978",
+    "tests/hash.bend": "96aaa513761adee3d450f275e5c68a32f49d6f556ee8fafccad416b0f6061e85",
+    "tools/test_hash.py": "972ed4e575fffb18e7d7d4ff90adbfb40233a4acc1e654ff9050958c60eceb71"
+  },
+  "standard_sections": [
+    "4.1.2",
+    "4.2.2",
+    "5.1.1",
+    "5.2.1",
+    "5.3.3",
+    "6.2.2"
+  ],
+  "status": "native-and-independent-kernel-pass",
+  "successful_digest_cases": 1814,
+  "total_checked_error_cases": 91
+}
