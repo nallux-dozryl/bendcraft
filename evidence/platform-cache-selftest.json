@@ -1,0 +1,589 @@
+{
+  "status": "pass",
+  "scope": "strict cache of guarded macOS CPU Window output; hidden launches only",
+  "command": "python3 tools/test_platform_cache.py",
+  "checks": [
+    "stable Python API imports both as a tools package and script module",
+    "actual guarded CPU Window miss/hit execute hidden without focus/Space changes",
+    "hit skips Bend emission and guarded native build",
+    "independent unchanged platform_build CLI has identical original/transformed C and hidden native behavior",
+    "entry invalidation and hidden native execution",
+    "direct-import invalidation and hidden native execution",
+    "transitive-import invalidation and hidden native execution",
+    "native-effect invalidation and hidden native execution",
+    "native-header invalidation and hidden native execution",
+    "installed-Base invalidation and hidden native execution",
+    "actual compiler/deployment configuration invalidation",
+    "actual private SDK framework header/module closure invalidation",
+    "actual private SDK framework linker input invalidation",
+    "actual private clang resource content invalidation",
+    "published/cached/manifest corruption is repaired without executing mismatched bytes",
+    "corrupt retained transformed C is regenerated through the exact guard before reuse",
+    "missing transitive dependency: unresolved Bend import /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/platform-cache-test-74ifa22d/fixture/transitive.bend; no hub fetch is cached",
+    "ordinary non-Window source: unknown framework import route: []",
+    "GPU/bang route: GPU/bang/sidecar output is outside the CPU Window cache",
+    "unknown framework route: unknown framework import route: ['Unknown/Unknown.h']",
+    "dependency overwrite: native output would overwrite a build dependency",
+    "modified Window implementation guard: guarded Window transform refused source: emitted Base window implementation differs from pinned digest",
+    "actual checked GPU Window fixture: GPU/bang/sidecar output is outside the CPU Window cache",
+    "volatile native header: volatile compile-time macro in native header: /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/platform-cache-test-74ifa22d/include/cache_extra.h",
+    "new cache policy bytes invalidate via actual separate CLI",
+    "changed transform/build policy explicitly refuses unknown semantics",
+    "three simultaneous actual CLI processes: one guarded build and two verified hits",
+    "two simultaneous source keys sharing an output retain distinct correct hidden artifacts",
+    "CPU-to-GPU source change during compilation: GPU/bang/sidecar output is outside the CPU Window cache",
+    "moving CPU/GPU route never invokes GPU compilation/build or publishes an executable",
+    "input change during retained C compilation discards old generation and retries"
+  ],
+  "observations": [
+    {
+      "label": "first-miss",
+      "cache_hit": false,
+      "cache_key": "28b23f45d6169a4064f62fffa6407b008bb618fb9b1daae290032749e31b4838",
+      "binary_sha256": "de366fa66ff36747fa0b9d5b5989fa034230a5a3e21afa2c5952c07d4ec7b254",
+      "timings": {
+        "total_seconds": 9.248991457745433,
+        "emission_seconds": 0.10097170900553465,
+        "guarded_native_build_seconds": 0.4175030831247568
+      },
+      "retries": 0,
+      "hidden_execution": {
+        "child_status": 0,
+        "frontmost_unchanged": true,
+        "space_changes": 0,
+        "activated_child": false,
+        "window_visible": false,
+        "frame_returned": true,
+        "observations_sha256": "437442ade31738f72b30521f045992ebacacfadb92a59300293b7933f793916b"
+      }
+    },
+    {
+      "label": "warm-hit",
+      "cache_hit": true,
+      "cache_key": "28b23f45d6169a4064f62fffa6407b008bb618fb9b1daae290032749e31b4838",
+      "binary_sha256": "de366fa66ff36747fa0b9d5b5989fa034230a5a3e21afa2c5952c07d4ec7b254",
+      "timings": {
+        "total_seconds": 6.7684846660122275,
+        "emission_seconds": 0.0,
+        "guarded_native_build_seconds": 0.0
+      },
+      "retries": 0,
+      "hidden_execution": {
+        "child_status": 0,
+        "frontmost_unchanged": true,
+        "space_changes": 0,
+        "activated_child": false,
+        "window_visible": false,
+        "frame_returned": true,
+        "observations_sha256": "665ec453357a3601773de6964fba440f567b1a8d229f3dacd9059fa00bb9c0d0"
+      }
+    },
+    {
+      "label": "entry",
+      "cache_hit": false,
+      "cache_key": "2d7896c59dc99a73d05d27095e0c2aa30ba7026671a22063a6994d47775b53c0",
+      "binary_sha256": "de366fa66ff36747fa0b9d5b5989fa034230a5a3e21afa2c5952c07d4ec7b254",
+      "timings": {
+        "total_seconds": 8.121734959073365,
+        "emission_seconds": 0.11679387465119362,
+        "guarded_native_build_seconds": 0.3903887504711747
+      },
+      "retries": 0,
+      "hidden_execution": {
+        "child_status": 0,
+        "frontmost_unchanged": true,
+        "space_changes": 0,
+        "activated_child": false,
+        "window_visible": false,
+        "frame_returned": true,
+        "observations_sha256": "61305df2349999c4818c8ff57f98a54477c7f538f56969f5096ff8be8fb07738"
+      }
+    },
+    {
+      "label": "direct-import",
+      "cache_hit": false,
+      "cache_key": "b01a06c9bfb08dc7304509ee717a4be95d04708ca5bcea438335d77a198c2d8f",
+      "binary_sha256": "52916ad5ebfb34524414da3364b761f221545ef2280ddfb2ad15644c3efc37ee",
+      "timings": {
+        "total_seconds": 8.465925915166736,
+        "emission_seconds": 0.12551520764827728,
+        "guarded_native_build_seconds": 0.3977925833314657
+      },
+      "retries": 0,
+      "hidden_execution": {
+        "child_status": 0,
+        "frontmost_unchanged": true,
+        "space_changes": 0,
+        "activated_child": false,
+        "window_visible": false,
+        "frame_returned": true,
+        "observations_sha256": "72440b78c819aae1f8f6477c864756762780c175c4e2c7fb1714ed613e8a6d5f"
+      }
+    },
+    {
+      "label": "transitive-import",
+      "cache_hit": false,
+      "cache_key": "7b54723e04609bf0e637c694ebedf4a3f993d5b82def45496a956f9c739547ab",
+      "binary_sha256": "a8f604ba2c7177c40ac067eb4d72d1d9094e45891f7c8b7cf43603667f6982cf",
+      "timings": {
+        "total_seconds": 8.683256625197828,
+        "emission_seconds": 0.10259649995714426,
+        "guarded_native_build_seconds": 0.47524883318692446
+      },
+      "retries": 0,
+      "hidden_execution": {
+        "child_status": 0,
+        "frontmost_unchanged": true,
+        "space_changes": 0,
+        "activated_child": false,
+        "window_visible": false,
+        "frame_returned": true,
+        "observations_sha256": "0a1f02dfd376f02a87194aa53405af858f67dc00af3431ebc4a795122fa9cd53"
+      }
+    },
+    {
+      "label": "native-effect",
+      "cache_hit": false,
+      "cache_key": "d0978b0fca05641e60e306931ba7c037e984898913556f79e097963fb5aeae20",
+      "binary_sha256": "a8f604ba2c7177c40ac067eb4d72d1d9094e45891f7c8b7cf43603667f6982cf",
+      "timings": {
+        "total_seconds": 8.368355333805084,
+        "emission_seconds": 0.1003032922744751,
+        "guarded_native_build_seconds": 0.40597845893353224
+      },
+      "retries": 0,
+      "hidden_execution": {
+        "child_status": 0,
+        "frontmost_unchanged": true,
+        "space_changes": 0,
+        "activated_child": false,
+        "window_visible": false,
+        "frame_returned": true,
+        "observations_sha256": "8a7a92c7d23be6a120f4706d936e6897323a6b0fe271a67218dc6d4042cfb233"
+      }
+    },
+    {
+      "label": "native-header",
+      "cache_hit": false,
+      "cache_key": "3deb2ef897fcf230c64ff2bd1a39b93e4330cb343e345e2fb0d02d79928298d5",
+      "binary_sha256": "da84ac2b45e9c732d9a25364c6d228a1456815b288cb96d4f4f8d9dee1522456",
+      "timings": {
+        "total_seconds": 8.310647083446383,
+        "emission_seconds": 0.0,
+        "guarded_native_build_seconds": 0.39595174975693226
+      },
+      "retries": 0,
+      "hidden_execution": {
+        "child_status": 0,
+        "frontmost_unchanged": true,
+        "space_changes": 0,
+        "activated_child": false,
+        "window_visible": false,
+        "frame_returned": true,
+        "observations_sha256": "9d4833fca6e33fc968fafd767db3c9d8cb54f650224d5e1bc90caa8048df9aad"
+      }
+    },
+    {
+      "label": "installed-Base",
+      "cache_hit": false,
+      "cache_key": "e72bf987c449c507971f50314386c27d67b76fea269cbd5b457d58a32e5abf2f",
+      "binary_sha256": "da84ac2b45e9c732d9a25364c6d228a1456815b288cb96d4f4f8d9dee1522456",
+      "timings": {
+        "total_seconds": 7.838206916116178,
+        "emission_seconds": 0.1034181248396635,
+        "guarded_native_build_seconds": 0.3791974997147918
+      },
+      "retries": 0,
+      "hidden_execution": {
+        "child_status": 0,
+        "frontmost_unchanged": true,
+        "space_changes": 0,
+        "activated_child": false,
+        "window_visible": false,
+        "frame_returned": true,
+        "observations_sha256": "f1f66d1a3d5140629ad408de76d9dbe943117329bf3aa02e8c8dc2086604fc31"
+      }
+    },
+    {
+      "label": "compiler-config",
+      "cache_hit": false,
+      "cache_key": "e79da2ef96ad98a309227b79a9353af82bb524adbb965e7ce693348f87a3612e",
+      "binary_sha256": "1290e1c9a927001517d5766ff3af0e0d940ad827edfe1383267b11f0f9f2aaef",
+      "timings": {
+        "total_seconds": 7.7537710424512625,
+        "emission_seconds": 0.09291733335703611,
+        "guarded_native_build_seconds": 0.717184666544199
+      },
+      "retries": 0,
+      "hidden_execution": {
+        "child_status": 0,
+        "frontmost_unchanged": true,
+        "space_changes": 0,
+        "activated_child": false,
+        "window_visible": false,
+        "frame_returned": true,
+        "observations_sha256": "ed77923e96c28edce1d0db94bb12576c7e153d7c0d22148f227f105bfc661a22"
+      }
+    },
+    {
+      "label": "config-restored",
+      "cache_hit": true,
+      "cache_key": "e72bf987c449c507971f50314386c27d67b76fea269cbd5b457d58a32e5abf2f",
+      "binary_sha256": "da84ac2b45e9c732d9a25364c6d228a1456815b288cb96d4f4f8d9dee1522456",
+      "timings": {
+        "total_seconds": 5.665502083487809,
+        "emission_seconds": 0.0,
+        "guarded_native_build_seconds": 0.0
+      },
+      "retries": 0,
+      "hidden_execution": {
+        "child_status": 0,
+        "frontmost_unchanged": true,
+        "space_changes": 0,
+        "activated_child": false,
+        "window_visible": false,
+        "frame_returned": true,
+        "observations_sha256": "6442666a450ea95ed4cc00306cfb7b06088aad36af49bfbfac71d4a84f6aa6b1"
+      }
+    },
+    {
+      "label": "isolated-framework-before",
+      "cache_hit": false,
+      "cache_key": "7a2bf360922c2890897d14b21d4c6e87177f3f096c2b3b68c819f78927a1991e",
+      "binary_sha256": "bba47457aded678ad14cf52c5362067072f949856748b77f21f63be78f30e2ae",
+      "timings": {
+        "total_seconds": 14.302546791732311,
+        "emission_seconds": 0.10244283359497786,
+        "guarded_native_build_seconds": 0.8525493750348687
+      },
+      "retries": 0,
+      "hidden_execution": {
+        "child_status": 0,
+        "frontmost_unchanged": true,
+        "space_changes": 0,
+        "activated_child": false,
+        "window_visible": false,
+        "frame_returned": true,
+        "observations_sha256": "3e9463e15027bae8d7f3099d1e1097351d1641b9683b3d0b5b11363f5cca1760"
+      }
+    },
+    {
+      "label": "isolated-framework-header",
+      "cache_hit": false,
+      "cache_key": "3ddc97a9c8155a0307f8ff6958f805f2f2927e4357ded105def4553711fc25dd",
+      "binary_sha256": "bba47457aded678ad14cf52c5362067072f949856748b77f21f63be78f30e2ae",
+      "timings": {
+        "total_seconds": 7.940127874724567,
+        "emission_seconds": 0.0,
+        "guarded_native_build_seconds": 0.631008374504745
+      },
+      "retries": 0,
+      "hidden_execution": {
+        "child_status": 0,
+        "frontmost_unchanged": true,
+        "space_changes": 0,
+        "activated_child": false,
+        "window_visible": false,
+        "frame_returned": true,
+        "observations_sha256": "bdd6a93f031c2703a3b41f8f53b459b9eee8d4dd61d22864e8b141879ecd8f79"
+      }
+    },
+    {
+      "label": "isolated-framework-linker",
+      "cache_hit": false,
+      "cache_key": "f5d5b12ff65a11a9987ae350e0d9fc224047bf1a5d98921621d216c95b9a48d7",
+      "binary_sha256": "bba47457aded678ad14cf52c5362067072f949856748b77f21f63be78f30e2ae",
+      "timings": {
+        "total_seconds": 5.911032750271261,
+        "emission_seconds": 0.0,
+        "guarded_native_build_seconds": 0.35715283267199993
+      },
+      "retries": 0,
+      "hidden_execution": {
+        "child_status": 0,
+        "frontmost_unchanged": true,
+        "space_changes": 0,
+        "activated_child": false,
+        "window_visible": false,
+        "frame_returned": true,
+        "observations_sha256": "01aa05fe3e09a58db79b01d55be6ffbc070eb0044e61f91fdd0f27b27971d283"
+      }
+    },
+    {
+      "label": "sdk-config-restored",
+      "cache_hit": true,
+      "cache_key": "e72bf987c449c507971f50314386c27d67b76fea269cbd5b457d58a32e5abf2f",
+      "binary_sha256": "da84ac2b45e9c732d9a25364c6d228a1456815b288cb96d4f4f8d9dee1522456",
+      "timings": {
+        "total_seconds": 5.478613333776593,
+        "emission_seconds": 0.0,
+        "guarded_native_build_seconds": 0.0
+      },
+      "retries": 0,
+      "hidden_execution": {
+        "child_status": 0,
+        "frontmost_unchanged": true,
+        "space_changes": 0,
+        "activated_child": false,
+        "window_visible": false,
+        "frame_returned": true,
+        "observations_sha256": "9cc31038e2d27fc89f7ee2cd15f8e1e4283a179d6624b077426d75165fc1400d"
+      }
+    },
+    {
+      "label": "isolated-toolchain-before",
+      "cache_hit": false,
+      "cache_key": "738bce54ec9a307c9acd35a1715ef4b2ceea939d3c75bdd95fc3a809a11b579b",
+      "binary_sha256": "da84ac2b45e9c732d9a25364c6d228a1456815b288cb96d4f4f8d9dee1522456",
+      "timings": {
+        "total_seconds": 12.165385000407696,
+        "emission_seconds": 0.09534754231572151,
+        "guarded_native_build_seconds": 0.4091925825923681
+      },
+      "retries": 0,
+      "hidden_execution": {
+        "child_status": 0,
+        "frontmost_unchanged": true,
+        "space_changes": 0,
+        "activated_child": false,
+        "window_visible": false,
+        "frame_returned": true,
+        "observations_sha256": "8ca869765e64d4254b3350f9bccd527f4e78529f84ce1dfdf5dd9ac09489a4ff"
+      }
+    },
+    {
+      "label": "isolated-toolchain-after",
+      "cache_hit": false,
+      "cache_key": "b35e13953d1a65092606e704164e7e2d626af1b2f715cb074109661e7fb019c3",
+      "binary_sha256": "da84ac2b45e9c732d9a25364c6d228a1456815b288cb96d4f4f8d9dee1522456",
+      "timings": {
+        "total_seconds": 8.476262957789004,
+        "emission_seconds": 0.16024820785969496,
+        "guarded_native_build_seconds": 0.39081679191440344
+      },
+      "retries": 0,
+      "hidden_execution": {
+        "child_status": 0,
+        "frontmost_unchanged": true,
+        "space_changes": 0,
+        "activated_child": false,
+        "window_visible": false,
+        "frame_returned": true,
+        "observations_sha256": "2566876df4083f415d6ae294be83b001d367a7affb9b4708b2f689996e76f969"
+      }
+    },
+    {
+      "label": "toolchain-config-restored",
+      "cache_hit": true,
+      "cache_key": "e72bf987c449c507971f50314386c27d67b76fea269cbd5b457d58a32e5abf2f",
+      "binary_sha256": "da84ac2b45e9c732d9a25364c6d228a1456815b288cb96d4f4f8d9dee1522456",
+      "timings": {
+        "total_seconds": 7.027195875532925,
+        "emission_seconds": 0.0,
+        "guarded_native_build_seconds": 0.0
+      },
+      "retries": 0,
+      "hidden_execution": {
+        "child_status": 0,
+        "frontmost_unchanged": true,
+        "space_changes": 0,
+        "activated_child": false,
+        "window_visible": false,
+        "frame_returned": true,
+        "observations_sha256": "6e660397f8ca60bebb9a7abaf1b69082bd0d325be79c420b25bb346b9259463d"
+      }
+    },
+    {
+      "label": "output-corruption",
+      "cache_hit": true,
+      "cache_key": "e72bf987c449c507971f50314386c27d67b76fea269cbd5b457d58a32e5abf2f",
+      "binary_sha256": "da84ac2b45e9c732d9a25364c6d228a1456815b288cb96d4f4f8d9dee1522456",
+      "timings": {
+        "total_seconds": 5.581607958301902,
+        "emission_seconds": 0.0,
+        "guarded_native_build_seconds": 0.0
+      },
+      "retries": 0,
+      "hidden_execution": {
+        "child_status": 0,
+        "frontmost_unchanged": true,
+        "space_changes": 0,
+        "activated_child": false,
+        "window_visible": false,
+        "frame_returned": true,
+        "observations_sha256": "0ca40095854073f88cc237590e044d1033992c09ecef5a74d0d69c383a558d9d"
+      }
+    },
+    {
+      "label": "artifact-corruption",
+      "cache_hit": false,
+      "cache_key": "e72bf987c449c507971f50314386c27d67b76fea269cbd5b457d58a32e5abf2f",
+      "binary_sha256": "da84ac2b45e9c732d9a25364c6d228a1456815b288cb96d4f4f8d9dee1522456",
+      "timings": {
+        "total_seconds": 6.397389417514205,
+        "emission_seconds": 0.0,
+        "guarded_native_build_seconds": 0.536800917237997
+      },
+      "retries": 0,
+      "hidden_execution": {
+        "child_status": 0,
+        "frontmost_unchanged": true,
+        "space_changes": 0,
+        "activated_child": false,
+        "window_visible": false,
+        "frame_returned": true,
+        "observations_sha256": "c53d4a80eebd7f1bc6be9a4538804e497f19b0cc0b4d96ff4ea2f051906f12dd"
+      }
+    },
+    {
+      "label": "manifest-corruption",
+      "cache_hit": false,
+      "cache_key": "e72bf987c449c507971f50314386c27d67b76fea269cbd5b457d58a32e5abf2f",
+      "binary_sha256": "da84ac2b45e9c732d9a25364c6d228a1456815b288cb96d4f4f8d9dee1522456",
+      "timings": {
+        "total_seconds": 6.536082291044295,
+        "emission_seconds": 0.0,
+        "guarded_native_build_seconds": 0.3852552082389593
+      },
+      "retries": 0,
+      "hidden_execution": {
+        "child_status": 0,
+        "frontmost_unchanged": true,
+        "space_changes": 0,
+        "activated_child": false,
+        "window_visible": false,
+        "frame_returned": true,
+        "observations_sha256": "891c502713cd4260fe0854cf3b218ea18627dc7edcc3b8475280f59ac5bf1ff4"
+      }
+    },
+    {
+      "label": "transformed-source-corruption",
+      "cache_hit": true,
+      "cache_key": "e72bf987c449c507971f50314386c27d67b76fea269cbd5b457d58a32e5abf2f",
+      "binary_sha256": "da84ac2b45e9c732d9a25364c6d228a1456815b288cb96d4f4f8d9dee1522456",
+      "timings": {
+        "total_seconds": 6.133859666995704,
+        "emission_seconds": 0.09498162474483252,
+        "guarded_native_build_seconds": 0.0
+      },
+      "retries": 0,
+      "hidden_execution": {
+        "child_status": 0,
+        "frontmost_unchanged": true,
+        "space_changes": 0,
+        "activated_child": false,
+        "window_visible": false,
+        "frame_returned": true,
+        "observations_sha256": "381ab61957fb716553e984bed38b3c4ab48b87a46271e6f1f0aa15a176370ff5"
+      }
+    },
+    {
+      "label": "moving-input",
+      "cache_hit": false,
+      "cache_key": "8b413e61eef048bdad695e11d4baf455a28038b4b674bef04ea408087b6690db",
+      "binary_sha256": "c4e6a492a1ac9ae789f621eb68b05d56d2e64b62b35a1117d1828782fef6c8d9",
+      "timings": {
+        "total_seconds": 11.872894583269954,
+        "emission_seconds": 0.0,
+        "guarded_native_build_seconds": 0.3417595000937581
+      },
+      "retries": 1,
+      "hidden_execution": {
+        "child_status": 0,
+        "frontmost_unchanged": true,
+        "space_changes": 0,
+        "activated_child": false,
+        "window_visible": false,
+        "frame_returned": true,
+        "observations_sha256": "5be02a4375a0d62e0066e47d3e4adc137b9ebfa07088a954819b5be5f1a988ea"
+      }
+    }
+  ],
+  "policy_sha256": "a3f0b4bd4e8b5a31c080da67305bbb3b5937f714198a771392bb98b296c0ffde",
+  "test_sha256": "1992df5e7599cf8fbdf58161253aca6be0a24ad4524cda0e094926e4e4854f69",
+  "unchanged_platform_build_sha256": "1c9c53f77e63afa313816b8f3d1ae2ac2459273b0d0e5a26c63bbdc58c7aba8c",
+  "unchanged_build_native_sha256": "3418c78cddc092aec55c7447a818735569b5b279d3bc4b05e3c0077624387c18",
+  "unchanged_adapter_baseline": {
+    "compiler_version": "bend 2.0.35",
+    "compiler_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+    "base_window_sha256": "9cd6435eb582b65deca88afe1ddc8a4d9700f21347acbcf086fc19611cc1c4ba",
+    "generated_sha256": "8e2816fafa75d429ac72a58ce88cf66eb11b48228ca2c2e8e099f08112f7a953",
+    "transformed_sha256": "fc45e7ecfe08ad0d5d41be4d284d31537579fec26b69cb8c8f61443c15da5d2b",
+    "entry": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/platform-cache-test-74ifa22d/fixture/main.bend",
+    "output": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/platform-cache-test-74ifa22d/adapter-native",
+    "gpu_bangs": false,
+    "binary_sha256": "39ba174ab520b2b14308a8b2199b05cc3a7f10983fce2cbbf3487af2a088af7c",
+    "clang": "/usr/bin/clang",
+    "elapsed_seconds": 0.6129267085343599,
+    "hidden_execution": {
+      "child_status": 0,
+      "frontmost_unchanged": true,
+      "space_changes": 0,
+      "activated_child": false,
+      "window_visible": false,
+      "frame_returned": true,
+      "observations_sha256": "7efc863f3d47352ebaccd57ce7ed598a5b8886af8c31245f825da400c64d706d"
+    }
+  },
+  "dependency_count": 3633,
+  "dependency_kinds": [
+    "base",
+    "bend",
+    "bend-executable",
+    "cache-policy",
+    "clang-driver",
+    "clang-driver-input",
+    "clang-resource",
+    "guarded-transform-policy",
+    "native-effect",
+    "objc-header",
+    "objc-linker-selected-input",
+    "objc-module-map",
+    "objc-pcm",
+    "platform-cache-policy",
+    "sdk-config",
+    "sdk-link-library",
+    "toolchain-dylib-or-tool"
+  ],
+  "concurrency": {
+    "processes": 3,
+    "guarded_builds": 1,
+    "verified_hits": 2,
+    "hidden_execution": {
+      "child_status": 0,
+      "frontmost_unchanged": true,
+      "space_changes": 0,
+      "activated_child": false,
+      "window_visible": false,
+      "frame_returned": true,
+      "observations_sha256": "4addef3ac1ec22e010a590ec1c48770533c7857f2139fd91ecafeab7b79dea8d"
+    }
+  },
+  "different_key_concurrency": {
+    "processes": 2,
+    "distinct_keys": 2,
+    "distinct_artifacts": 2,
+    "hidden_executions": [
+      {
+        "child_status": 0,
+        "frontmost_unchanged": true,
+        "space_changes": 0,
+        "activated_child": false,
+        "window_visible": false,
+        "frame_returned": true,
+        "observations_sha256": "571e38cf2f3f933397f58e738646593ceb979c1a473727f1617bece792b83291"
+      },
+      {
+        "child_status": 0,
+        "frontmost_unchanged": true,
+        "space_changes": 0,
+        "activated_child": false,
+        "window_visible": false,
+        "frame_returned": true,
+        "observations_sha256": "79ea0a428ce51c9b058a7bafc0c1fc7c53e070fd55e9fce0abed5f5c0f415074"
+      }
+    ]
+  },
+  "actual_hidden_executions": 26,
+  "timing_seconds": 256.6875772494823
+}
