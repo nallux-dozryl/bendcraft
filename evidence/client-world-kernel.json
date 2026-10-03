@@ -1,0 +1,18 @@
+{
+  "cache_laws": [
+    "cache_hit_returns_exact_blocks",
+    "cache_miss_rejects_cached_blocks"
+  ],
+  "command": [
+    "/Users/chuah/.bend/bin/bend",
+    "src/client_world.bend",
+    "--verdict"
+  ],
+  "exit_code": 1,
+  "ordinary_check_passed": true,
+  "seconds": 12.171076582744718,
+  "source_sha256": "6f2a67354fd55c2c782c4b309cf5b3f71d2c6af30d6648ba374e3ee4ea458b30",
+  "status": "unverified-checker-kernel-mismatch",
+  "stderr": "SOME PROOFS FAIL\nSorry - this is a mismatch between the TypeScript implementation, and the formalized BendTT kernel. Your proofs may or may not be correct, and we cannot validate them yet. This will be addressed in a future update. Meanwhile, feel free to open an issue to report this bug.\n",
+  "stdout": ""
+}
