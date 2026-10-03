@@ -1,0 +1,149 @@
+{
+  "status": "passed",
+  "checks": [
+    "real exclusive create, byte write, fsync/full-sync, rename and directory sync",
+    "20 actual SIGKILL cases retain old or publish complete new bytes at each stage",
+    "exclusive stale/symlink temporary collision leaves unowned files unchanged",
+    "invalid byte values and unsafe suffix rejected without publishing or leaving owned temporary",
+    "rename/open failures preserve destination and clean only successfully created temporary"
+  ],
+  "crash_cases": [
+    {
+      "stage": "created",
+      "old_existed": false,
+      "empty_new": false,
+      "published": false
+    },
+    {
+      "stage": "created",
+      "old_existed": false,
+      "empty_new": true,
+      "published": false
+    },
+    {
+      "stage": "created",
+      "old_existed": true,
+      "empty_new": false,
+      "published": false
+    },
+    {
+      "stage": "created",
+      "old_existed": true,
+      "empty_new": true,
+      "published": false
+    },
+    {
+      "stage": "written",
+      "old_existed": false,
+      "empty_new": false,
+      "published": false
+    },
+    {
+      "stage": "written",
+      "old_existed": false,
+      "empty_new": true,
+      "published": false
+    },
+    {
+      "stage": "written",
+      "old_existed": true,
+      "empty_new": false,
+      "published": false
+    },
+    {
+      "stage": "written",
+      "old_existed": true,
+      "empty_new": true,
+      "published": false
+    },
+    {
+      "stage": "synced",
+      "old_existed": false,
+      "empty_new": false,
+      "published": false
+    },
+    {
+      "stage": "synced",
+      "old_existed": false,
+      "empty_new": true,
+      "published": false
+    },
+    {
+      "stage": "synced",
+      "old_existed": true,
+      "empty_new": false,
+      "published": false
+    },
+    {
+      "stage": "synced",
+      "old_existed": true,
+      "empty_new": true,
+      "published": false
+    },
+    {
+      "stage": "published",
+      "old_existed": false,
+      "empty_new": false,
+      "published": true
+    },
+    {
+      "stage": "published",
+      "old_existed": false,
+      "empty_new": true,
+      "published": true
+    },
+    {
+      "stage": "published",
+      "old_existed": true,
+      "empty_new": false,
+      "published": true
+    },
+    {
+      "stage": "published",
+      "old_existed": true,
+      "empty_new": true,
+      "published": true
+    },
+    {
+      "stage": "directory_synced",
+      "old_existed": false,
+      "empty_new": false,
+      "published": true
+    },
+    {
+      "stage": "directory_synced",
+      "old_existed": false,
+      "empty_new": true,
+      "published": true
+    },
+    {
+      "stage": "directory_synced",
+      "old_existed": true,
+      "empty_new": false,
+      "published": true
+    },
+    {
+      "stage": "directory_synced",
+      "old_existed": true,
+      "empty_new": true,
+      "published": true
+    }
+  ],
+  "source_sha256": {
+    "src/durability.bend": "079b5342e76be090793dc2e44f8d337eda144d75653d23eea36a7131558aed05",
+    "src/native/durability.c": "30e2bb8f9bb0299569ea56eff00063b235a6e6e480d14ed821bcfd597de3e4c0",
+    "src/native/durability.js": "2c14207e9c9ccbad57629d67517105d7853da7bd68fc794f1078ad6ca59553d8",
+    "src/atomic_file.bend": "ef82fcddc460705f0761473bcfd8fcd896b779f89e56c4551c9ced23b13f987a",
+    "tests/atomic_file.bend": "e306d74e24c295311b4af8394689158c53d52d859c7d5390370d67a81541c4e8",
+    "tools/test_atomic_file.py": "7e01952eb9cb4f394ec3479c42e57132a8473d088df7d00bc8329c122f698243"
+  },
+  "binary_sha256": "8f777e967595c98c28b34c46d7c23785127929b3496c65e1dcdf1af24a81e4dc",
+  "native_effects": 5,
+  "checker_boundary": {
+    "exit_code": 1,
+    "output": "SOME PROOFS FAIL\nError: 15 defs rely on unsafe or foreign code:\n- ../src/durability.Durability.create\n- ../src/durability.Durability.sync\n- ../src/durability.Durability.replace\n- ../src/durability.Durability.sync_directory\n- ../src/durability.Durability.remove\n- ../src/atomic_file.cleanup\n- ../src/atomic_file.renamed\n- ../src/atomic_file.synced\n- ../src/atomic_file.written\n- ../src/atomic_file.created\n- ../src/atomic_file.publish_valid\n- ../src/atomic_file.publish_with\n- ../src/atomic_file.publish\n- arguments\n- main"
+  },
+  "elapsed_seconds": 1.487,
+  "command": "python3 tools/test_atomic_file.py",
+  "limits": "File publication substrate only; no world-save schema, checksums, journal, automatic orphan recovery, concurrent world locking, simulated power loss or injected directory-sync failure established. Requires stable destination parent during publication. SIGKILL tests prove process-crash outcomes on this tested filesystem, not physical storage behavior."
+}
