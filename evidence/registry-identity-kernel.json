@@ -1,0 +1,65 @@
+{
+  "compiler": "bend 2.0.35",
+  "full_production_diagnostic": {
+    "command": [
+      "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/registry-identity.bendtt"
+    ],
+    "emit_command": [
+      "/Users/chuah/.bend/bin/bend",
+      "src/registry.bend",
+      "-o",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/registry-identity.bendtt"
+    ],
+    "emit_stdout": "",
+    "exit_code": 1,
+    "kernel_binary": "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+    "kernel_sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7",
+    "seconds": 1.11274,
+    "serialized_bytes": 7117649,
+    "serialized_sha256": "239068a24b8075edd7904bc22686b7c8ae2b05c85653dcea67a1fdfa49c5ffc2",
+    "stderr": "",
+    "stdout": "SOME PROOFS FAIL\nIn json.encode_go:\naffine live code, calls that descend"
+  },
+  "imported_source_sha256": {
+    "src/hash.bend": "d2473695632b19e68c8d636668e4617f04d70892fb2ab6559cb24d4b33c1b978",
+    "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+    "src/unicode.bend": "8f0cd9bbcd0e7f938af370675eca0c73a9b97b90c2789a1e77e5a29a918455bd"
+  },
+  "production_source_sha256": "821c53d9cfa3044be3cae2af968f55563c0be2bebc9beae55a29d77d47b140a0",
+  "projection": {
+    "check_command": [
+      "/Users/chuah/.bend/bin/bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/registry-identity-laws.bend",
+      "--check-only"
+    ],
+    "check_stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.",
+    "path": "build/registry-identity-laws.bend",
+    "sha256": "6e980ea10a9a265a236cabbf5522ba7981589c6cdb044589d7a06e35223fb182",
+    "slice_sha256": {
+      "bounded_byte_reader": "2070f8ed150e75b5e36b879ba62959f37bc2aeaac6f1632ea827a18a7dc062a0",
+      "canonical_identity_and_laws": "7d86d4f68bc79c7943e8a12b332cca8b6a184f69875b46c6756bc3727cad50e9",
+      "metadata_types": "21557c3314495fde6ff17204e10ff924345bda40b1bef50e5d17deef0c3050a5"
+    },
+    "verdict": {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "build/registry-identity-laws.bend",
+        "--verdict"
+      ],
+      "exit_code": 0,
+      "seconds": 0.58832,
+      "source": "build/registry-identity-laws.bend",
+      "stderr": "",
+      "stdout": "ALL PROOFS CHECK",
+      "timed_out": false
+    }
+  },
+  "schema_version": 1,
+  "scope": [
+    "Metadata types, bounded raw-byte reader, canonical identity implementation and three new laws are projected verbatim.",
+    "Projection passes independent kernel typing/termination and all its stated implementation laws.",
+    "Projection excludes unrelated JSON parser/resolver definitions; it does not establish a full registry-module verdict.",
+    "No compiler/kernel edits, unsafe declarations, foreign implementation, axioms or unfilled proofs."
+  ]
+}

@@ -1,6 +1,8 @@
 # Dynamic block-state metadata; no block behaviors are implemented here.
 import Base
 import ./json.bend as J
+import ./unicode.bend as Unicode
+import ./hash.bend as Hash
 
 type Property is Data:
   Property{name: String, values: List<&2, String>, count: U32, stride: U32}
@@ -243,41 +245,46 @@ def parse_valid(text: String, valid: Bool) -> Result<&2, &1, Error, Registry>:
 def Registry.parse(+text: String) -> Result<&2, &1, Error, Registry>:
   parse_valid(text, J.within(4194304n, text))
 
-# Bounded UTF-8 host read only. TSV/JSON interpretation remains pure Bend.
-def read_text.tail(text: String, read: File & Result<&1, &1, U32 & String, String>) -> IO(Result<&2, &2, Error, String>):
+# File bytes are bounded before ordinary strict UTF-8 is decoded in Bend.
+def read_text.decode(decoded: Result<&2, &2, String, String>) -> Result<&2, &2, Error, String>:
+  match decoded:
+    case Fail{message}: Fail{SchemaError{0, "UTF-8: " ++ message}}
+    case Done{text}: Done{text}
+
+def read_text.tail(bytes: List<&2, U32>, read: File & Result<&1, &1, U32 & String, List<&2, U32>>) -> IO(Result<&2, &2, Error, String>):
   (file, result) = read
   match result:
     case Fail{(code, message)}:
       do IO<Result<&2, &2, Error, String>>:
         File.close(file)
         return Fail{ReadError{code, message}}
-    case Done{SNil{}}:
+    case Done{Nil{}}:
       do IO<Result<&2, &2, Error, String>>:
         File.close(file)
-        return Done{text}
+        return read_text.decode(Unicode.decode(4194304n, bytes))
     case Done{_}:
       do IO<Result<&2, &2, Error, String>>:
         File.close(file)
         return Fail{SchemaError{0, "file exceeds 4194304 bytes"}}
 
-def read_text.read(read: File & Result<&1, &1, U32 & String, String>) -> IO(Result<&2, &2, Error, String>):
+def read_text.read(read: File & Result<&1, &1, U32 & String, List<&2, U32>>) -> IO(Result<&2, &2, Error, String>):
   (file, result) = read
   match result:
     case Fail{(code, message)}:
       do IO<Result<&2, &2, Error, String>>:
         File.close(file)
         return Fail{ReadError{code, message}}
-    case Done{text}:
+    case Done{bytes}:
       do IO<Result<&2, &2, Error, String>>:
-        next : File & Result<&1, &1, U32 & String, String> <- File.read(file, 1)
-        read_text.tail(text, next)
+        next : File & Result<&1, &1, U32 & String, List<&2, U32>> <- File.read_bytes(file, 1)
+        read_text.tail(bytes, next)
 
 def read_text.open(opened: Result<&1, &1, U32 & String, File>) -> IO(Result<&2, &2, Error, String>):
   match opened:
     case Fail{(code, message)}: IO.pure(Result<&2, &2, Error, String>, Fail{ReadError{code, message}})
     case Done{file}:
       do IO<Result<&2, &2, Error, String>>:
-        read : File & Result<&1, &1, U32 & String, String> <- File.read(file, 4194304)
+        read : File & Result<&1, &1, U32 & String, List<&2, U32>> <- File.read_bytes(file, 4194304)
         read_text.read(read)
 
 def read_text(path: String) -> IO(Result<&2, &2, Error, String>):
@@ -479,6 +486,163 @@ def Registry.decode.block(+state_id: U32, lookup: Registry & Result<&2, &2, Erro
 
 def Registry.decode(registry: Registry, +state_id: U32) -> Registry & Result<&2, &2, Error, Resolved>:
   Registry.decode.block(state_id, Registry.state_block(registry, state_id))
+
+# Canonical identity v1 hashes parsed metadata, never the source TSV layout.
+# A reverse byte accumulator gives linear assembly with an explicit 64 MiB cap.
+type Canonical is Data:
+  Canonical{room: Nat, reversed: List<&2, U32>}
+
+def canonical_limit() -> Nat:
+  67108864n
+
+def canonical_add(bytes: List<&2, U32>, buffer: Canonical) -> Result<&2, &2, String, Canonical>:
+  match bytes buffer:
+    case Nil{} _: Done{buffer}
+    case _ Canonical{0n, reversed}: Fail{"canonical identity exceeds 67108864 bytes"}
+    case byte <> rest Canonical{1n+remaining, reversed}:
+      canonical_add(rest, Canonical{remaining, byte <> reversed})
+
+def canonical_number(value: U32, current: Result<&2, &2, String, Canonical>) -> Result<&2, &2, String, Canonical>:
+  match current:
+    case Fail{error}: Fail{error}
+    case Done{buffer}: canonical_add(Hash.word_bytes(value), buffer)
+
+def canonical_string.bytes(encoded: Result<&2, &2, String, List<&2, U32>>, buffer: Canonical) -> Result<&2, &2, String, Canonical>:
+  match encoded:
+    case Fail{error}: Fail{"canonical UTF-8: " ++ error}
+    case Done{+bytes}:
+      do Result<&2, &2, String, Canonical>:
+        prefixed : Canonical <- canonical_add(Hash.word_bytes(U32.from_nat(List.length(&2, U32, bytes))), buffer)
+        canonical_add(bytes, prefixed)
+
+def canonical_string(text: String, current: Result<&2, &2, String, Canonical>) -> Result<&2, &2, String, Canonical>:
+  match current:
+    case Fail{error}: Fail{error}
+    # Parsed names/domains have at most 512/256 scalars. 4096 bytes also
+    # accommodates forged invalid-scalar rejection before any length narrowing.
+    case Done{buffer}: canonical_string.bytes(Unicode.encode(4096n, text), buffer)
+
+def canonical_property_count(values: List<&2, Property>, fuel: Nat, +count: U32) -> Result<&2, &2, String, U32>:
+  match values fuel:
+    case Nil{} _: Done{count}
+    case _ 0n: Fail{"canonical identity exceeds 64 properties"}
+    case property <> rest 1n+remaining: canonical_property_count(rest, remaining, U32.inc(count))
+
+def canonical_values(values: List<&2, String>, remaining: Nat, current: Result<&2, &2, String, Canonical>) -> Result<&2, &2, String, Canonical>:
+  match values remaining current:
+    case _ _ Fail{error}: Fail{error}
+    case Nil{} 0n _: current
+    case Nil{} _ _: Fail{"canonical property count disagrees with domain"}
+    case _ 0n _: Fail{"canonical property count disagrees with domain"}
+    case text <> rest 1n+room _: canonical_values(rest, room, canonical_string(text, current))
+
+def canonical_property.valid(property: Property, buffer: Canonical, valid: Bool) -> Result<&2, &2, String, Canonical>:
+  match property valid:
+    case _ False{}: Fail{"canonical property count must be between 1 and 256"}
+    case Property{name, values, +count, stride} True{}:
+      canonical_values(values, U32.to_nat(count), canonical_number(stride, canonical_number(count, canonical_string(name, Done{buffer}))))
+
+def canonical_property(+property: Property, current: Result<&2, &2, String, Canonical>) -> Result<&2, &2, String, Canonical>:
+  match property current:
+    case _ Fail{error}: Fail{error}
+    case Property{name, values, +count, stride} Done{buffer}:
+      canonical_property.valid(property, buffer, U32.is_ge(count, 1) && U32.is_le(count, 256))
+
+def canonical_properties(properties: List<&2, Property>, current: Result<&2, &2, String, Canonical>) -> Result<&2, &2, String, Canonical>:
+  match properties:
+    case Nil{}: current
+    case property <> rest: canonical_properties(rest, canonical_property(property, current))
+
+def canonical_block.count(block: Block, counted: Result<&2, &2, String, U32>, current: Result<&2, &2, String, Canonical>) -> Result<&2, &2, String, Canonical>:
+  match block counted:
+    case _ Fail{error}: Fail{error}
+    case Block{protocol, name, first, count, default_id, properties} Done{property_count}:
+      canonical_properties(properties,
+        canonical_number(property_count, canonical_number(default_id, canonical_number(count, canonical_number(first,
+          canonical_string(name, canonical_number(protocol, current)))))))
+
+def canonical_block(block: Block, current: Result<&2, &2, String, Canonical>) -> Result<&2, &2, String, Canonical>:
+  match block current:
+    case _ Fail{error}: Fail{error}
+    case Block{protocol, name, first, count, default_id, +properties} Done{buffer}:
+      canonical_block.count(Block{protocol, name, first, count, default_id, properties}, canonical_property_count(properties, 64n, 0), Done{buffer})
+
+def canonical_start(count: U32, states: U32) -> Result<&2, &2, String, Canonical>:
+  do Result<&2, &2, String, Canonical>:
+    magic : Canonical <- canonical_add([66, 101, 110, 100, 82, 101, 103, 105, 115, 116, 114, 121, 73, 100, 101, 110, 116, 105, 116, 121, 0], Canonical{canonical_limit(), Nil{}})
+    canonical_number(states, canonical_number(count, canonical_number(1, Done{magic})))
+
+type IdentityTraversal is Type:
+  IdentityTraversal{registry: Registry, current: Result<&2, &2, String, Canonical>}
+
+def identity_step.read(names: Map<&2, U32>, count: U32, states: U32, current: Result<&2, &2, String, Canonical>, read: Array<Block> & Block) -> IdentityTraversal:
+  (blocks, block) = read
+  IdentityTraversal{Registry{blocks, names, count, states}, canonical_block(block, current)}
+
+def identity_step(index: U32, registry: Registry, current: Result<&2, &2, String, Canonical>) -> IdentityTraversal:
+  match registry:
+    case Registry{blocks, names, count, states}:
+      identity_step.read(names, count, states, current, Array.get(Block, blocks, index))
+
+def identity_blocks(fuel: Nat, +index: U32, pending: IdentityTraversal) -> IdentityTraversal:
+  match fuel pending:
+    case _ IdentityTraversal{registry, Fail{error}}: IdentityTraversal{registry, Fail{error}}
+    case 0n _: pending
+    case 1n+remaining IdentityTraversal{registry, current}:
+      identity_blocks(remaining, U32.inc(index), identity_step(index, registry, current))
+
+def identity_finish.hash(registry: Registry, result: Result<&2, &2, String, Hash.Digest>) -> Registry & Result<&2, &2, String, String>:
+  match result:
+    case Fail{error}: (registry, Fail{error})
+    case Done{digest}: (registry, Done{Hash.Digest.hex(digest)})
+
+def identity_finish(registry: Registry, current: Result<&2, &2, String, Canonical>) -> Registry & Result<&2, &2, String, String>:
+  match current:
+    case Fail{error}: (registry, Fail{error})
+    case Done{Canonical{room, reversed}}:
+      identity_finish.hash(registry, Hash.digest(canonical_limit(), List.reverse(&2, U32, reversed)))
+
+def identity_finish.pending(pending: IdentityTraversal) -> Registry & Result<&2, &2, String, String>:
+  match pending:
+    case IdentityTraversal{registry, result}: identity_finish(registry, result)
+
+def identity_sized.valid(registry: Registry, +count: U32, states: U32, valid: Bool) -> Registry & Result<&2, &2, String, String>:
+  match valid:
+    case False{}: (registry, Fail{"canonical registry count is invalid or exceeds its array"})
+    case True{}: identity_finish.pending(identity_blocks(U32.to_nat(count), 0, IdentityTraversal{registry, canonical_start(count, states)}))
+
+def identity_sized(names: Map<&2, U32>, +count: U32, +states: U32, sized: Array<Block> & U32) -> Registry & Result<&2, &2, String, String>:
+  (blocks, capacity) = sized
+  identity_sized.valid(Registry{blocks, names, count, states}, count, states, U32.is_gt(count, 0) && U32.is_le(count, 4096) && U32.is_le(count, capacity))
+
+# Requires metadata validated by parse/load. Array bounds, UTF-8, list counts,
+# and serialization capacity remain checked, including on failure paths.
+def Registry.identity(registry: Registry) -> Registry & Result<&2, &2, String, String>:
+  match registry:
+    case Registry{blocks, names, count, states}: identity_sized(names, count, states, Array.size(Block, blocks))
+
+law identity_failure_preserves_owner:
+  for registry: Registry
+  for +message: String
+  {identity_finish(registry, Fail{message}) == (registry, Fail{message}) : Registry & Result<&2, &2, String, String>}
+
+def identity_failure_preserves_owner(registry, message):
+  {==}
+
+law canonical_zero_budget_rejected:
+  for byte: U32
+  for rest: List<&2, U32>
+  for reversed: List<&2, U32>
+  {canonical_add(byte <> rest, Canonical{0n, reversed}) == Fail{"canonical identity exceeds 67108864 bytes"} : Result<&2, &2, String, Canonical>}
+
+def canonical_zero_budget_rejected(byte, rest, reversed):
+  {==}
+
+law strict_file_utf8_rejected:
+  {read_text.decode(Unicode.decode(4194304n, [192, 128])) == Fail{SchemaError{0, "UTF-8: invalid UTF-8 leading byte"}} : Result<&2, &2, Error, String>}
+
+def strict_file_utf8_rejected():
+  {==}
 
 # Small implementation laws; execution parity is checked separately against reports.
 law exact_missing_rejected:

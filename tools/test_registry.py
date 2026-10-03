@@ -19,6 +19,7 @@ BLOCK_REPORT = ROOT / 'reference/reports/reports/blocks.json'
 REGISTRY_REPORT = ROOT / 'reference/reports/reports/registries.json'
 BINARY = ROOT / 'build/registry-tests'
 WORK = ROOT / 'build/registry-oracle'
+KERNEL = Path('/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt')
 HEADER = 'block_protocol_id\tidentifier\tfirst_state_id\tstate_count\tdefault_state_id\tordered_properties_json'
 
 
@@ -36,6 +37,61 @@ def run(argv, timeout=180):
     if process.returncode:
         raise RuntimeError(f'{argv}: exit {process.returncode}\n{process.stdout}\n{process.stderr}')
     return process.stdout, round(time.monotonic() - started, 5)
+
+
+def kernel_verdict(source, timeout=120):
+    command = [str(BEND), source, '--verdict']; started = time.monotonic()
+    try:
+        proof = subprocess.run(command, cwd=ROOT, capture_output=True, text=True, timeout=timeout)
+        return {'source': source, 'command': command, 'exit_code': proof.returncode,
+                'stdout': proof.stdout.strip(), 'stderr': proof.stderr.strip(),
+                'seconds': round(time.monotonic() - started, 5), 'timed_out': False}
+    except subprocess.TimeoutExpired as proof:
+        def text(value):
+            return (value.decode(errors='replace') if isinstance(value, bytes) else value or '').strip()
+        return {'source': source, 'command': command, 'exit_code': None,
+                'stdout': text(proof.stdout), 'stderr': text(proof.stderr),
+                'seconds': round(time.monotonic() - started, 5), 'timed_out': True,
+                'timeout_seconds': timeout}
+
+
+def identity_kernel_evidence():
+    source = (ROOT / 'src/registry.bend').read_text()
+    slices = {
+        'metadata_types': source[source.index('type Property is Data:'):source.index('def empty_block()')],
+        'bounded_byte_reader': source[source.index('# File bytes are bounded'):source.index('def Registry.load.result(')],
+        'canonical_identity_and_laws': source[source.index('# Canonical identity v1'):source.index('# Small implementation laws;')],
+    }
+    projection = ROOT / 'build/registry-identity-laws.bend'
+    projection.write_text('import Base\nimport ../src/hash.bend as Hash\nimport ../src/unicode.bend as Unicode\n\n' + ''.join(slices.values()))
+    # The implementation bodies/types/laws are copied byte-for-byte. Only
+    # unrelated TSV/JSON parsing/resolution and their imports are excluded.
+    checked, _ = run([BEND, projection, '--check-only'])
+    projected = kernel_verdict(str(projection.relative_to(ROOT)))
+    assert projected['exit_code'] == 0 and not projected['timed_out'], projected
+    serialized = ROOT / 'build/registry-identity.bendtt'
+    emitted, _ = run([BEND, 'src/registry.bend', '-o', serialized])
+    started = time.monotonic()
+    direct = subprocess.run([str(KERNEL), str(serialized)], cwd=ROOT, capture_output=True, text=True, timeout=120)
+    result = {
+        'schema_version': 1, 'compiler': run([BEND, 'version'])[0].strip(),
+        'production_source_sha256': sha(ROOT / 'src/registry.bend'),
+        'imported_source_sha256': {name: sha(ROOT / name) for name in ['src/hash.bend', 'src/unicode.bend', 'src/json.bend']},
+        'projection': {'path': str(projection.relative_to(ROOT)), 'sha256': sha(projection),
+                       'slice_sha256': {name: hashlib.sha256(value.encode()).hexdigest() for name, value in slices.items()},
+                       'check_command': [str(BEND), str(projection), '--check-only'], 'check_stdout': checked.strip(),
+                       'verdict': projected},
+        'full_production_diagnostic': {'emit_command': [str(BEND), 'src/registry.bend', '-o', str(serialized)],
+            'emit_stdout': emitted.strip(), 'serialized_bytes': serialized.stat().st_size, 'serialized_sha256': sha(serialized),
+            'kernel_binary': str(KERNEL), 'kernel_sha256': sha(KERNEL),
+            'command': [str(KERNEL), str(serialized)], 'exit_code': direct.returncode,
+            'stdout': direct.stdout.strip(), 'stderr': direct.stderr.strip(), 'seconds': round(time.monotonic() - started, 5)},
+        'scope': ['Metadata types, bounded raw-byte reader, canonical identity implementation and three new laws are projected verbatim.',
+                  'Projection passes independent kernel typing/termination and all its stated implementation laws.',
+                  'Projection excludes unrelated JSON parser/resolver definitions; it does not establish a full registry-module verdict.',
+                  'No compiler/kernel edits, unsafe declarations, foreign implementation, axioms or unfilled proofs.']}
+    (ROOT / 'evidence/registry-identity-kernel.json').write_text(json.dumps(result, indent=2, sort_keys=True) + '\n')
+    return result
 
 
 def assignments(mapping):
@@ -62,6 +118,33 @@ def metadata(name, value, protocol):
     assert len(default) == 1
     return {'protocol': protocol, 'first': states[0]['id'], 'count': len(states), 'default': default[0]['id'],
             'properties': properties, 'states': states, 'default_properties': default[0].get('properties', {})}
+
+
+def identity_bytes(records):
+    """Independent binary-format oracle over metadata, never source TSV bytes."""
+    output = bytearray(b'BendRegistryIdentity\0')
+    def word(value):
+        assert 0 <= value <= 0xffffffff
+        output.extend(value.to_bytes(4, 'big'))
+    def string(value):
+        encoded = value.encode('utf-8', errors='strict')
+        word(len(encoded)); output.extend(encoded)
+    word(1); word(len(records)); word(sum(record['count'] for record in records))
+    for record in records:
+        word(record['protocol']); string(record['name'])
+        for key in ['first', 'count', 'default']:
+            word(record[key])
+        word(len(record['properties']))
+        for prop in record['properties']:
+            string(prop['name']); word(prop['count']); word(prop['stride'])
+            assert prop['count'] == len(prop['values'])
+            for value in prop['values']:
+                string(value)
+    return bytes(output)
+
+
+def identity_hash(records):
+    return hashlib.sha256(identity_bytes(records)).hexdigest()
 
 
 def corpus(blocks, protocols):
@@ -116,6 +199,17 @@ def corpus(blocks, protocols):
         cases.append((f'bad-level:{value}', resolve('minecraft:water', {'level': value}), ('error', 'invalid-value:level=' + value)))
     # The same registry remains usable after every rejected lookup/assignment.
     cases.append(('after-errors', resolve('minecraft:oak_log', {'axis': 'y'}), ('id', 140)))
+    records = [dict(schemas[name], name=name) for name in sorted(schemas, key=protocols.get)]
+    digest = identity_hash(records)
+    cases.insert(1, ('identity-before', 'identity', ('identity', digest)))
+    cases.extend([('identity-after', 'identity', ('identity', digest)),
+                  ('identity-surrogate-error', 'identity-forged-surrogate', ('identity-error', 'canonical UTF-8: invalid Unicode scalar in String')),
+                  ('identity-after-surrogate', 'identity', ('identity', digest)),
+                  ('identity-range-error', 'identity-forged-range', ('identity-error', 'canonical UTF-8: invalid Unicode scalar in String')),
+                  ('identity-after-range', 'identity', ('identity', digest)),
+                  ('lookup-after-identity-errors', resolve('minecraft:oak_log', {'axis': 'y'}), ('id', 140))])
+    counts['canonical_identity_calls'] = 4
+    counts['identity_failure_retains_owner'] = 2
     return cases, counts
 
 
@@ -123,6 +217,7 @@ def compare(case, observed):
     name, command, expected = case
     pieces = observed.split('\t'); kind = expected[0]
     if kind == 'summary': passed = pieces == ['summary', str(expected[1]), str(expected[2])]
+    elif kind in ['identity', 'identity-error']: passed = pieces == list(expected)
     elif kind == 'id': passed = pieces == ['ok', str(expected[1])]
     elif kind == 'error': passed = pieces == ['error', expected[1]]
     elif kind == 'decode':
@@ -202,11 +297,26 @@ def loader_cases():
     escaped_names = '[{"name":"axis","values":["x"]},{"name":"\\u0061xis","values":["y"]}]'
     for name, properties in [('duplicate-escaped-values', escaped_values), ('duplicate-escaped-names', escaped_names)]:
         cases.append((name, HEADER + '\n' + base.rsplit('\t', 1)[0] + '\t' + properties + '\n'))
+    valid_prefix = (HEADER + '\n' + base + '\n').encode()
+    malformed_utf8 = [
+        ('overlong-nul', b'\xc0\x80'), ('overlong-two', b'\xc1\xbf'),
+        ('overlong-three', b'\xe0\x80\xaf'), ('overlong-four', b'\xf0\x80\x80\xaf'),
+        ('surrogate-high', b'\xed\xa0\x80'), ('surrogate-low', b'\xed\xbf\xbf'),
+        ('out-of-range', b'\xf4\x90\x80\x80'), ('invalid-leading', b'\xff'),
+        ('stray-continuation', b'\x80'), ('invalid-continuation', b'\xc2 '),
+        ('truncated-two', b'\xc2'), ('truncated-three', b'\xe2\x82'),
+        ('truncated-four', b'\xf0\x9f\x92')]
+    for name, suffix in malformed_utf8:
+        cases.append(('utf8-' + name, valid_prefix + suffix))
     observed = []
     for name, text in cases:
-        path = WORK / f'bad-{name}.tsv'; path.write_text(text)
+        path = WORK / f'bad-{name}.tsv'; path.write_bytes(text if isinstance(text, bytes) else text.encode())
         output, duration = run([BINARY, '--threads', '1', '--gpu', 'off', path])
         if not output.startswith('load-error\t'): raise AssertionError((name, output))
+        if name.startswith('utf8-') and not output.startswith('load-error\tschema:0:UTF-8: '):
+            raise AssertionError((name, 'not rejected by strict decoder before TSV parse', output))
+        if name == 'file-byte-limit' and output.strip() != 'load-error\tschema:0:file exceeds 4194304 bytes':
+            raise AssertionError((name, output))
         observed.append({'name': name, 'outcome': output.strip()})
     # A custom namespace and domain layout exercise the dynamic metadata path.
     custom = WORK / 'custom.tsv'
@@ -225,7 +335,102 @@ def loader_cases():
                                 ('capacity-last', 'decode\t4095', ('decode', 'demo:b4095', {}, [])),
                                 ('capacity-first', 'decode\t0', ('decode', 'demo:b0', {}, [])),
                                 ('capacity-name', resolve('demo:b4095', {}), ('id', 4095))], capacity)
-    return {'rejected_inputs': len(observed), 'cases': observed, 'custom_registry': custom_results, 'capacity_boundary': capacity_results, 'no_final_newline': eof_results}
+    # Exactly 4 MiB remains valid. Spread permitted JSON spaces over rows so
+    # each property JSON remains well within its independent 16,384-scalar cap.
+    capacity_lines = capacity.read_text().splitlines()
+    padding = 4_194_304 - len(capacity.read_bytes())
+    per_row, extra = divmod(padding, 4096)
+    exact_lines = [capacity_lines[0]] + [line[:-1] + ' ' * (per_row + (index < extra)) + ']'
+                   for index, line in enumerate(capacity_lines[1:])]
+    exact = WORK / 'capacity-exact-4mib.tsv'
+    exact.write_bytes(('\n'.join(exact_lines) + '\n').encode())
+    assert exact.stat().st_size == 4_194_304
+    capacity_records = [fixture_record(f'demo:b{i}', i, i, [], i) for i in range(4096)]
+    exact_results = execute([('exact-byte-limit-summary', 'summary', ('summary', 4096, 4096)),
+                             ('exact-byte-limit-identity', 'identity', ('identity', identity_hash(capacity_records)))], exact)
+    return {'rejected_inputs': len(observed), 'malformed_utf8_inputs': len(malformed_utf8), 'cases': observed,
+            'custom_registry': custom_results, 'capacity_boundary': capacity_results,
+            'exact_4mib': exact_results, 'no_final_newline': eof_results}
+
+
+def fixture_record(name, protocol=0, first=0, properties=None, default=None):
+    domains = properties or []
+    product = 1; assigned = []
+    for prop in reversed(domains):
+        assigned.insert(0, {'name': prop['name'], 'values': prop['values'], 'count': len(prop['values']), 'stride': product})
+        product *= len(prop['values'])
+    return {'protocol': protocol, 'name': name, 'first': first, 'count': product,
+            'default': first if default is None else default, 'properties': assigned}
+
+
+def fixture_tsv(records, *, ending='\n', final=True, ascii=False, reverse_members=False, spaces=False, slash_escape=False):
+    lines = [HEADER]
+    for record in records:
+        props = [({'values': prop['values'], 'name': prop['name']} if reverse_members else
+                  {'name': prop['name'], 'values': prop['values']}) for prop in record['properties']]
+        text = json.dumps(props, ensure_ascii=ascii, separators=(', ', ': ') if spaces else (',', ':'))
+        if slash_escape:
+            text = text.replace('/', '\\/')
+        lines.append('\t'.join(map(str, [record['protocol'], record['name'], record['first'], record['count'], record['default'], text])))
+    return (ending.join(lines) + (ending if final else '')).encode('utf-8')
+
+
+def identity_cases():
+    manifests = []; seen = {}; fixtures = []
+    base = fixture_record('demo:base')
+    props = [{'name': 'powered', 'values': ['true', 'false']}, {'name': 'axis', 'values': ['x', 'y', 'z']}]
+    machine = fixture_record('demo:machine', 1, 1, props, 4)
+    def add(name, records, *, same=None, different=None, **layout):
+        data = fixture_tsv(records, **layout); expected = identity_hash(records)
+        if same is not None: assert expected == seen[same]
+        if different is not None: assert expected != seen[different]
+        seen[name] = expected; fixtures.append((name, data, records, expected))
+        manifests.append({'name': name, 'file_bytes': len(data), 'raw_tsv_sha256': hashlib.sha256(data).hexdigest(),
+                          'canonical_bytes': len(identity_bytes(records)), 'identity': expected,
+                          'equal_to': same, 'different_from': different})
+    add('machine', [base, machine])
+    add('machine-crlf', [base, machine], ending='\r\n', same='machine')
+    add('machine-eof', [base, machine], final=False, same='machine')
+    add('machine-json-space-members', [base, machine], reverse_members=True, spaces=True, same='machine')
+    add('block-name', [base, dict(machine, name='demo:changed')], different='machine')
+    add('default-id', [base, dict(machine, default=5)], different='machine')
+    renamed = [{'name': 'enabled', 'values': ['true', 'false']}, props[1]]
+    add('property-name', [base, fixture_record('demo:machine', 1, 1, renamed, 4)], different='machine')
+    changed = [props[0], {'name': 'axis', 'values': ['x', 'y', 'q']}]
+    add('domain-value', [base, fixture_record('demo:machine', 1, 1, changed, 4)], different='machine')
+    reversed_values = [props[0], {'name': 'axis', 'values': ['z', 'y', 'x']}]
+    add('domain-order', [base, fixture_record('demo:machine', 1, 1, reversed_values, 4)], different='machine')
+    add('property-order', [base, fixture_record('demo:machine', 1, 1, list(reversed(props)), 4)], different='machine')
+    add('block-order', [fixture_record('demo:machine', 0, 0, props, 3), fixture_record('demo:base', 1, 6)], different='machine')
+    extra = [props[0], {'name': 'axis', 'values': ['x', 'y', 'z', 'w']}]
+    add('state-count', [base, fixture_record('demo:machine', 1, 1, extra, 4)], different='machine')
+    strings = ['é', '🙂', 'a/b', '\0', '\t', '\n', '"', '\\']
+    unicode_record = [fixture_record('demo:unicode', properties=[{'name': 'text', 'values': strings}])]
+    add('unicode-literal', unicode_record)
+    add('unicode-json-escaped', unicode_record, ascii=True, same='unicode-literal')
+    add('unicode-slash-escaped', unicode_record, slash_escape=True, same='unicode-literal')
+    add('unicode-json-members', unicode_record, reverse_members=True, spaces=True, same='unicode-literal')
+    add('prefix-ab-c', [fixture_record('demo:prefix', properties=[{'name': 'p', 'values': ['ab', 'c']}])])
+    add('prefix-a-bc', [fixture_record('demo:prefix', properties=[{'name': 'p', 'values': ['a', 'bc']}])], different='prefix-ab-c')
+    add('normalization-composed', [fixture_record('demo:normalize', properties=[{'name': 'p', 'values': ['é']}])])
+    add('normalization-decomposed', [fixture_record('demo:normalize', properties=[{'name': 'p', 'values': ['e\u0301']}])], different='normalization-composed')
+    for length in [1, 63, 64, 127, 128, 255, 256]:
+        for char, tag in [('a', 'ascii'), ('é', 'two-byte'), ('🙂', 'four-byte')]:
+            add(f'prefix-{tag}-{length}', [fixture_record('demo:length', properties=[{'name': 'p', 'values': [char * length]}])])
+    dense = [{'name': f'p{i}', 'values': [f'v{j}' for j in range(256)]} for i in range(3)]
+    add('dense-domains', [fixture_record('demo:dense', properties=dense)])
+    native = []
+    for name, data, records, expected in fixtures:
+        path = WORK / f'identity-{name}.tsv'; path.write_bytes(data)
+        queries = [(name, 'identity', ('identity', expected)),
+                   (name+'-repeat', 'identity', ('identity', expected)),
+                   (name+'-summary', 'summary', ('summary', len(records), sum(record['count'] for record in records))),
+                   (name+'-first', 'decode\t0', ('decode', records[0]['name'],
+                      {prop['name']: prop['values'][0] for prop in records[0]['properties']},
+                      [prop['name'] for prop in records[0]['properties']]))]
+        native.append(dict(name=name, **execute(queries, path)))
+    return {'format_version': 1, 'fixture_count': len(fixtures), 'fixtures': manifests, 'execution': native,
+            'canonical_magic_hex': b'BendRegistryIdentity\0'.hex(), 'canonical_limit': 67_108_864}
 
 
 def main():
@@ -245,19 +450,25 @@ def main():
         if 'ALL PROOFS CHECK' not in output: raise AssertionError(output)
     if not options.skip_build: run([BEND, 'tests/registry.bend', '-o', BINARY])
     cpath = ROOT / 'build/registry-tests.c'; run([BEND, 'tests/registry.bend', '-o', cpath])
-    cases, counts = corpus(blocks, protocols); results = execute(cases); loading = loader_cases()
-    proof = subprocess.run([str(BEND), 'src/registry.bend', '--verdict'], cwd=ROOT, capture_output=True, text=True)
+    cases, counts = corpus(blocks, protocols); results = execute(cases); loading = loader_cases(); identity = identity_cases()
+    proofs = [kernel_verdict(source) for source in ['src/registry.bend', 'tests/registry.bend']]
+    identity_proof = identity_kernel_evidence()
+    official_records = [dict(metadata(name, blocks[name], protocols[name]), name=name) for name in sorted(blocks, key=protocols.get)]
+    identity['pinned_canonical_bytes'] = len(identity_bytes(official_records))
+    identity['pinned_identity'] = identity_hash(official_records)
     evidence = {'schema_version': 1, 'pin': '26.3', 'compiler': run([BEND, 'version'])[0].strip(),
                 'command': 'python3 tools/test_registry.py', 'source_tsv': str(SOURCE.relative_to(ROOT)),
                 'source_tsv_sha256': sha(SOURCE), 'official_blocks_canonical_sha256': hashlib.sha256(canonical(blocks)).hexdigest(),
                 'official_registries_canonical_sha256': hashlib.sha256(canonical(registries)).hexdigest(),
-                'checks': checks, 'kernel': {'exit_code': proof.returncode, 'stdout': proof.stdout.strip(), 'stderr': proof.stderr.strip()},
-                'coverage': counts, 'execution': results, 'loader': loading,
-                'source_sha256': {name: sha(ROOT / name) for name in ['src/registry.bend', 'tests/registry.bend', 'src/json.bend', 'tools/test_registry.py', 'docs/REGISTRY.md']},
-                'native_c_sha256': sha(cpath), 'all_execution_checks_passed': True,
+                'checks': checks, 'kernel': proofs[0], 'kernel_checks': proofs, 'identity_kernel_evidence': identity_proof,
+                'coverage': counts, 'execution': results, 'loader': loading, 'canonical_identity': identity,
+                'source_sha256': {name: sha(ROOT / name) for name in ['src/registry.bend', 'tests/registry.bend', 'src/json.bend', 'src/hash.bend', 'src/unicode.bend', 'tools/test_registry.py', 'docs/REGISTRY.md', 'docs/REGISTRY_IDENTITY.md'] if (ROOT / name).exists()},
+                'native_binary_sha256': sha(BINARY), 'native_c_sha256': sha(cpath),
+                'native_c_bytes': cpath.stat().st_size, 'all_execution_checks_passed': True,
                 'scope': 'Complete pinned inventory loading, metadata, state-ID/name/property conversion and validation only. No block behaviors, pack loading or mod lifecycle implemented.'}
     (ROOT / 'evidence/registry-verification.json').write_text(json.dumps(evidence, indent=2, sort_keys=True) + '\n')
     print(json.dumps({'coverage': counts, 'execution': results, 'loader_rejections': loading['rejected_inputs'],
-                      'kernel_exit_code': proof.returncode, 'all_execution_checks_passed': True}, sort_keys=True))
+                      'kernel_exit_codes': [proof['exit_code'] for proof in proofs], 'identity_fixtures': identity['fixture_count'],
+                      'pinned_identity': identity['pinned_identity'], 'all_execution_checks_passed': True}, sort_keys=True))
 
 if __name__ == '__main__': main()

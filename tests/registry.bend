@@ -92,15 +92,75 @@ def command_summary(registry: R.Registry) -> R.Registry & String:
   R.Registry{blocks, names, +count, +states} = registry
   (R.Registry{blocks, names, count, states}, "summary\t" ++ U32.show(count) ++ "\t" ++ U32.show(states))
 
+def report_identity(result: R.Registry & Result<&2, &2, String, String>) -> R.Registry & String:
+  (registry, result) = result
+  match result:
+    case Fail{message}: (registry, "identity-error\t" ++ message)
+    case Done{hex}: (registry, "identity\t" ++ hex)
+
+# A forged invalid character exercises a real serialization failure. Restore
+# the original metadata through the returned owner, then allow later commands.
+def forge_block(block: R.Block, code: U32) -> R.Block:
+  match block:
+    case R.Block{protocol, name, first, count, default_id, properties}:
+      R.Block{protocol, name, first, count, default_id, [R.Property{"identity_fixture", [SCon{Chr{code}, SNil{}}], 1, 1}]}
+
+def forged_restore(original: R.Block, pending: R.Registry & Result<&2, &2, String, String>) -> R.Registry & String:
+  (registry, result) = pending
+  match registry:
+    case R.Registry{blocks, names, count, states}:
+      report_identity((R.Registry{Array.set(R.Block, blocks, 0, original), names, count, states}, result))
+
+def forged_read(code: U32, names: Map<&2, U32>, count: U32, states: U32, read: Array<R.Block> & R.Block) -> R.Registry & String:
+  (blocks, +original) = read
+  forged_restore(original, R.Registry.identity(R.Registry{Array.set(R.Block, blocks, 0, forge_block(original, code)), names, count, states}))
+
+def command_forged(registry: R.Registry, code: U32) -> R.Registry & String:
+  match registry:
+    case R.Registry{blocks, names, count, states}:
+      forged_read(code, names, count, states, Array.get(R.Block, blocks, 0))
+
+type CommandKind is Data:
+  Summary{}
+  Identity{}
+  ForgedSurrogate{}
+  ForgedRange{}
+  Metadata{}
+  Decode{}
+  Resolve{}
+  Invalid{}
+
+def command_kind(text: String) -> CommandKind:
+  match text:
+    case "summary": Summary{}
+    case "identity": Identity{}
+    case "identity-forged-surrogate": ForgedSurrogate{}
+    case "identity-forged-range": ForgedRange{}
+    case "meta": Metadata{}
+    case "decode": Decode{}
+    case "resolve": Resolve{}
+    case _: Invalid{}
+
+def command_policy(registry: R.Registry, name: String, policy: String, assignments: String) -> R.Registry & String:
+  match policy:
+    case "exact": command_resolve(registry, name, R.Exact{}, assignments_result(J.parse(assignments)))
+    case "defaults": command_resolve(registry, name, R.Defaults{}, assignments_result(J.parse(assignments)))
+    case _: (registry, "error\tinvalid-command")
+
+def command_parsed(registry: R.Registry, kind: CommandKind, fields: List<&2, String>) -> R.Registry & String:
+  match kind fields:
+    case Summary{} Nil{}: command_summary(registry)
+    case Identity{} Nil{}: report_identity(R.Registry.identity(registry))
+    case ForgedSurrogate{} Nil{}: command_forged(registry, 55296)
+    case ForgedRange{} Nil{}: command_forged(registry, 1114112)
+    case Metadata{} name <> Nil{}: report_block(R.Registry.block(registry, name))
+    case Decode{} state <> Nil{}: command_decode(registry, R.number(0, "state ID", state))
+    case Resolve{} name <> policy <> assignments <> Nil{}: command_policy(registry, name, policy, assignments)
+    case _ _: (registry, "error\tinvalid-command")
+
 def command(registry: R.Registry, fields: List<&2, String>) -> R.Registry & String:
   match fields:
-    case "summary" <> Nil{}: command_summary(registry)
-    case "meta" <> name <> Nil{}: report_block(R.Registry.block(registry, name))
-    case "decode" <> state <> Nil{}: command_decode(registry, R.number(0, "state ID", state))
-    case "resolve" <> name <> "exact" <> assignments <> Nil{}:
-      command_resolve(registry, name, R.Exact{}, assignments_result(J.parse(assignments)))
-    case "resolve" <> name <> "defaults" <> assignments <> Nil{}:
-      command_resolve(registry, name, R.Defaults{}, assignments_result(J.parse(assignments)))
+    case operation <> rest: command_parsed(registry, command_kind(operation), rest)
     case _: (registry, "error\tinvalid-command")
 
 def commands(lines: List<&2, String>, previous: R.Registry & String) -> IO(Unit):

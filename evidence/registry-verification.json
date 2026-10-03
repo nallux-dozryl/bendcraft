@@ -1,5 +1,647 @@
 {
   "all_execution_checks_passed": true,
+  "canonical_identity": {
+    "canonical_limit": 67108864,
+    "canonical_magic_hex": "42656e6452656769737472794964656e7469747900",
+    "execution": [
+      {
+        "batches": 1,
+        "name": "machine",
+        "native_seconds": 0.00372,
+        "requests": 4
+      },
+      {
+        "batches": 1,
+        "name": "machine-crlf",
+        "native_seconds": 0.00304,
+        "requests": 4
+      },
+      {
+        "batches": 1,
+        "name": "machine-eof",
+        "native_seconds": 0.00282,
+        "requests": 4
+      },
+      {
+        "batches": 1,
+        "name": "machine-json-space-members",
+        "native_seconds": 0.00282,
+        "requests": 4
+      },
+      {
+        "batches": 1,
+        "name": "block-name",
+        "native_seconds": 0.00273,
+        "requests": 4
+      },
+      {
+        "batches": 1,
+        "name": "default-id",
+        "native_seconds": 0.00281,
+        "requests": 4
+      },
+      {
+        "batches": 1,
+        "name": "property-name",
+        "native_seconds": 0.00355,
+        "requests": 4
+      },
+      {
+        "batches": 1,
+        "name": "domain-value",
+        "native_seconds": 0.0048,
+        "requests": 4
+      },
+      {
+        "batches": 1,
+        "name": "domain-order",
+        "native_seconds": 0.00288,
+        "requests": 4
+      },
+      {
+        "batches": 1,
+        "name": "property-order",
+        "native_seconds": 0.00278,
+        "requests": 4
+      },
+      {
+        "batches": 1,
+        "name": "block-order",
+        "native_seconds": 0.00329,
+        "requests": 4
+      },
+      {
+        "batches": 1,
+        "name": "state-count",
+        "native_seconds": 0.00296,
+        "requests": 4
+      },
+      {
+        "batches": 1,
+        "name": "unicode-literal",
+        "native_seconds": 0.00279,
+        "requests": 4
+      },
+      {
+        "batches": 1,
+        "name": "unicode-json-escaped",
+        "native_seconds": 0.0029,
+        "requests": 4
+      },
+      {
+        "batches": 1,
+        "name": "unicode-slash-escaped",
+        "native_seconds": 0.00272,
+        "requests": 4
+      },
+      {
+        "batches": 1,
+        "name": "unicode-json-members",
+        "native_seconds": 0.00267,
+        "requests": 4
+      },
+      {
+        "batches": 1,
+        "name": "prefix-ab-c",
+        "native_seconds": 0.00253,
+        "requests": 4
+      },
+      {
+        "batches": 1,
+        "name": "prefix-a-bc",
+        "native_seconds": 0.00255,
+        "requests": 4
+      },
+      {
+        "batches": 1,
+        "name": "normalization-composed",
+        "native_seconds": 0.00272,
+        "requests": 4
+      },
+      {
+        "batches": 1,
+        "name": "normalization-decomposed",
+        "native_seconds": 0.00267,
+        "requests": 4
+      },
+      {
+        "batches": 1,
+        "name": "prefix-ascii-1",
+        "native_seconds": 0.00263,
+        "requests": 4
+      },
+      {
+        "batches": 1,
+        "name": "prefix-two-byte-1",
+        "native_seconds": 0.00294,
+        "requests": 4
+      },
+      {
+        "batches": 1,
+        "name": "prefix-four-byte-1",
+        "native_seconds": 0.00281,
+        "requests": 4
+      },
+      {
+        "batches": 1,
+        "name": "prefix-ascii-63",
+        "native_seconds": 0.00309,
+        "requests": 4
+      },
+      {
+        "batches": 1,
+        "name": "prefix-two-byte-63",
+        "native_seconds": 0.00292,
+        "requests": 4
+      },
+      {
+        "batches": 1,
+        "name": "prefix-four-byte-63",
+        "native_seconds": 0.00291,
+        "requests": 4
+      },
+      {
+        "batches": 1,
+        "name": "prefix-ascii-64",
+        "native_seconds": 0.00274,
+        "requests": 4
+      },
+      {
+        "batches": 1,
+        "name": "prefix-two-byte-64",
+        "native_seconds": 0.00276,
+        "requests": 4
+      },
+      {
+        "batches": 1,
+        "name": "prefix-four-byte-64",
+        "native_seconds": 0.00269,
+        "requests": 4
+      },
+      {
+        "batches": 1,
+        "name": "prefix-ascii-127",
+        "native_seconds": 0.00268,
+        "requests": 4
+      },
+      {
+        "batches": 1,
+        "name": "prefix-two-byte-127",
+        "native_seconds": 0.00273,
+        "requests": 4
+      },
+      {
+        "batches": 1,
+        "name": "prefix-four-byte-127",
+        "native_seconds": 0.00281,
+        "requests": 4
+      },
+      {
+        "batches": 1,
+        "name": "prefix-ascii-128",
+        "native_seconds": 0.00301,
+        "requests": 4
+      },
+      {
+        "batches": 1,
+        "name": "prefix-two-byte-128",
+        "native_seconds": 0.0029,
+        "requests": 4
+      },
+      {
+        "batches": 1,
+        "name": "prefix-four-byte-128",
+        "native_seconds": 0.00308,
+        "requests": 4
+      },
+      {
+        "batches": 1,
+        "name": "prefix-ascii-255",
+        "native_seconds": 0.00309,
+        "requests": 4
+      },
+      {
+        "batches": 1,
+        "name": "prefix-two-byte-255",
+        "native_seconds": 0.00282,
+        "requests": 4
+      },
+      {
+        "batches": 1,
+        "name": "prefix-four-byte-255",
+        "native_seconds": 0.00291,
+        "requests": 4
+      },
+      {
+        "batches": 1,
+        "name": "prefix-ascii-256",
+        "native_seconds": 0.00279,
+        "requests": 4
+      },
+      {
+        "batches": 1,
+        "name": "prefix-two-byte-256",
+        "native_seconds": 0.00295,
+        "requests": 4
+      },
+      {
+        "batches": 1,
+        "name": "prefix-four-byte-256",
+        "native_seconds": 0.00376,
+        "requests": 4
+      },
+      {
+        "batches": 1,
+        "name": "dense-domains",
+        "native_seconds": 0.01453,
+        "requests": 4
+      }
+    ],
+    "fixture_count": 42,
+    "fixtures": [
+      {
+        "canonical_bytes": 169,
+        "different_from": null,
+        "equal_to": null,
+        "file_bytes": 225,
+        "identity": "5777cb1cc64ec959d36a0fa84cbc1832a053f142735cc19b884fafb8015279cf",
+        "name": "machine",
+        "raw_tsv_sha256": "bdf8295c79e0c08ffa848fffefd99bafe18ea8d2c801e126fe8bcb1e1a9ab196"
+      },
+      {
+        "canonical_bytes": 169,
+        "different_from": null,
+        "equal_to": "machine",
+        "file_bytes": 228,
+        "identity": "5777cb1cc64ec959d36a0fa84cbc1832a053f142735cc19b884fafb8015279cf",
+        "name": "machine-crlf",
+        "raw_tsv_sha256": "3e4a8e8c698329142ba6dd4bddce93226c9df5a5b5c9c7d1ad5a5ddbab7b8b76"
+      },
+      {
+        "canonical_bytes": 169,
+        "different_from": null,
+        "equal_to": "machine",
+        "file_bytes": 224,
+        "identity": "5777cb1cc64ec959d36a0fa84cbc1832a053f142735cc19b884fafb8015279cf",
+        "name": "machine-eof",
+        "raw_tsv_sha256": "010d14fa08c0b164a5bb92607b48fb0d6ffb25e884a981ca5996165cada6f4b7"
+      },
+      {
+        "canonical_bytes": 169,
+        "different_from": null,
+        "equal_to": "machine",
+        "file_bytes": 235,
+        "identity": "5777cb1cc64ec959d36a0fa84cbc1832a053f142735cc19b884fafb8015279cf",
+        "name": "machine-json-space-members",
+        "raw_tsv_sha256": "3471ea4f48e2bb342079a5ee3d12e725bed47dc16ebaed8b998922ba4d2d07f3"
+      },
+      {
+        "canonical_bytes": 169,
+        "different_from": "machine",
+        "equal_to": null,
+        "file_bytes": 225,
+        "identity": "0a5908a873f98853077a756bc17027294cabc68d853c32f5e6686173983075fa",
+        "name": "block-name",
+        "raw_tsv_sha256": "b8ebee289d988dce4c935fc0e724a733fca0760726eb59986cb35f28caa64e75"
+      },
+      {
+        "canonical_bytes": 169,
+        "different_from": "machine",
+        "equal_to": null,
+        "file_bytes": 225,
+        "identity": "e86e3d5b8e46b4ce637ef4e5004581321625f525966453e85dc6853a61a968d1",
+        "name": "default-id",
+        "raw_tsv_sha256": "21d0f058f179733db6e7706e297bd3471c6be5cd1e3affcf513c693167db69a5"
+      },
+      {
+        "canonical_bytes": 169,
+        "different_from": "machine",
+        "equal_to": null,
+        "file_bytes": 225,
+        "identity": "9440a291a90b9e0266c9a8570f84702f351fb0e5384729449a345eec3b1d1543",
+        "name": "property-name",
+        "raw_tsv_sha256": "5352bc78624fa9f8556a253457ef911d74f2eef0fcd730302b3c6a8c9704d507"
+      },
+      {
+        "canonical_bytes": 169,
+        "different_from": "machine",
+        "equal_to": null,
+        "file_bytes": 225,
+        "identity": "70f50b12d086736ab9d3626054baeb4106928382942cb668b13eeeb588141cb9",
+        "name": "domain-value",
+        "raw_tsv_sha256": "6f8fbfc521d16b2b5ffa8acc1dcd4baec5f7f523c35b96961b6a7c8a7b5a8c2b"
+      },
+      {
+        "canonical_bytes": 169,
+        "different_from": "machine",
+        "equal_to": null,
+        "file_bytes": 225,
+        "identity": "c2706819721bfc0d85216eea540c20f03a5c8e1e320b71def0cc1859d181a599",
+        "name": "domain-order",
+        "raw_tsv_sha256": "68ade98657574fd2fdeb4436534187b4090a48f45adf679f0eb066c656ffc013"
+      },
+      {
+        "canonical_bytes": 169,
+        "different_from": "machine",
+        "equal_to": null,
+        "file_bytes": 225,
+        "identity": "0cf0dbe292182f0d9be64e0f3532127c8400bce065551da50b5eabb0a46f36f5",
+        "name": "property-order",
+        "raw_tsv_sha256": "5cf7a960bec8aa2142ef3880ecbb585c1582ea7ce85215d1e7a9c0256b91483e"
+      },
+      {
+        "canonical_bytes": 169,
+        "different_from": "machine",
+        "equal_to": null,
+        "file_bytes": 225,
+        "identity": "5674d33bfe2d208b84f60bac7d2bd87e8be7b9b5affa4ffb160d3868d974b26e",
+        "name": "block-order",
+        "raw_tsv_sha256": "309fc393b2dc449562fdcd1d32cbc4a49ffc029d4af18a6625ab4e93bff3ef2b"
+      },
+      {
+        "canonical_bytes": 174,
+        "different_from": "machine",
+        "equal_to": null,
+        "file_bytes": 229,
+        "identity": "b3eb61c7ff00b0ff311333b2e4684d5422724f68827d52792fcdebea0f8ec83b",
+        "name": "state-count",
+        "raw_tsv_sha256": "cf266b8bc5b28625d0a4d6e4ccc693a91111076994f3ce36e5f69af9d258c49e"
+      },
+      {
+        "canonical_bytes": 131,
+        "different_from": null,
+        "equal_to": null,
+        "file_bytes": 194,
+        "identity": "e188d1f9fdf17240c629438f7a6892fd7cc75e571ce8ba0dd39c9bbf7570d1a4",
+        "name": "unicode-literal",
+        "raw_tsv_sha256": "8bb2aa190cc459faa632464feacd16e965a379cbde1cfb0f5dd0cc255d220a24"
+      },
+      {
+        "canonical_bytes": 131,
+        "different_from": null,
+        "equal_to": "unicode-literal",
+        "file_bytes": 206,
+        "identity": "e188d1f9fdf17240c629438f7a6892fd7cc75e571ce8ba0dd39c9bbf7570d1a4",
+        "name": "unicode-json-escaped",
+        "raw_tsv_sha256": "e5aa2ae679f6ca648367588c1317bc6a88be187a687df6894e5840801c41f605"
+      },
+      {
+        "canonical_bytes": 131,
+        "different_from": null,
+        "equal_to": "unicode-literal",
+        "file_bytes": 195,
+        "identity": "e188d1f9fdf17240c629438f7a6892fd7cc75e571ce8ba0dd39c9bbf7570d1a4",
+        "name": "unicode-slash-escaped",
+        "raw_tsv_sha256": "3306139625339e3d84f06ec6c54f50b9733c70425c871480053821b685758113"
+      },
+      {
+        "canonical_bytes": 131,
+        "different_from": null,
+        "equal_to": "unicode-literal",
+        "file_bytes": 204,
+        "identity": "e188d1f9fdf17240c629438f7a6892fd7cc75e571ce8ba0dd39c9bbf7570d1a4",
+        "name": "unicode-json-members",
+        "raw_tsv_sha256": "337ea10b41021aa7be7a693c876d76752932271cd34ebf41cf5ec56f6ff0bfd6"
+      },
+      {
+        "canonical_bytes": 92,
+        "different_from": null,
+        "equal_to": null,
+        "file_bytes": 152,
+        "identity": "19f6cfaa6a6421d41395f34c56e1a10d94aaea8aa3338aeba7b4a29221c0787e",
+        "name": "prefix-ab-c",
+        "raw_tsv_sha256": "b145f69d8935375852a4636334c4285c00ad9050a1bb372e79c50cf3ed058fc8"
+      },
+      {
+        "canonical_bytes": 92,
+        "different_from": "prefix-ab-c",
+        "equal_to": null,
+        "file_bytes": 152,
+        "identity": "dde1a54600952d4b60b8ce298b233a9cafa0c2ccfba275c4633f0a2745c67ddb",
+        "name": "prefix-a-bc",
+        "raw_tsv_sha256": "1e2683e93ebe5f6cca13cef55d8ceb81f2c2fe9742ed8ee870c822a0aac5bde4"
+      },
+      {
+        "canonical_bytes": 90,
+        "different_from": null,
+        "equal_to": null,
+        "file_bytes": 151,
+        "identity": "508fd146b518232ac6013e1f7afb116e150b334e84407d248dbaba97e831b7d3",
+        "name": "normalization-composed",
+        "raw_tsv_sha256": "eefe09fe876b4c0df1e7b73ee1c8e1918dacbd2f5f10e6c0f981ea8f612993b9"
+      },
+      {
+        "canonical_bytes": 91,
+        "different_from": "normalization-composed",
+        "equal_to": null,
+        "file_bytes": 152,
+        "identity": "a24549815ddf4e1b3e6410a8b63ebb341f98062879802a1337db646a01cea5a1",
+        "name": "normalization-decomposed",
+        "raw_tsv_sha256": "26b89e1171b7a6482f2d8d5f7e1f50a1731bd3a8f0b473855a2bce944de7785c"
+      },
+      {
+        "canonical_bytes": 86,
+        "different_from": null,
+        "equal_to": null,
+        "file_bytes": 147,
+        "identity": "9a40a94b83e3424218ef8b62b0058fdc6fdb70237e3d3e103a20eb07cad1f252",
+        "name": "prefix-ascii-1",
+        "raw_tsv_sha256": "5b27cb04ca1472dea11fe79eae6891fb1549155ad11638c912664e829ad5f3db"
+      },
+      {
+        "canonical_bytes": 87,
+        "different_from": null,
+        "equal_to": null,
+        "file_bytes": 148,
+        "identity": "22278140799add21b44c0905bec2023963f9a1fd6bef000f82aeb38b5358bb03",
+        "name": "prefix-two-byte-1",
+        "raw_tsv_sha256": "d5725c995149956c11594128fa91526b458d20e444aa79523fc83c573e2b59ac"
+      },
+      {
+        "canonical_bytes": 89,
+        "different_from": null,
+        "equal_to": null,
+        "file_bytes": 150,
+        "identity": "69eb9c31f66ea23669e25ae1b92638f8e2fc4f4174a3d2f7e6aac222f7cb0ef6",
+        "name": "prefix-four-byte-1",
+        "raw_tsv_sha256": "9d3662e02bf1b061237f4238ef36035c4004b3ccfceed0a467274083a5277ee5"
+      },
+      {
+        "canonical_bytes": 148,
+        "different_from": null,
+        "equal_to": null,
+        "file_bytes": 209,
+        "identity": "3bff74eb94cbfc53a50167525ce6f9a779d209338223156146e2106290582190",
+        "name": "prefix-ascii-63",
+        "raw_tsv_sha256": "09f033e3ba1ed520724de3ae33c5a42f6aa355c142b84fcd7086a5ca4fb040ca"
+      },
+      {
+        "canonical_bytes": 211,
+        "different_from": null,
+        "equal_to": null,
+        "file_bytes": 272,
+        "identity": "6cffc2f50c91a059e65fa459cdcf45a707d66a25a54b5a58c336ea645731ea77",
+        "name": "prefix-two-byte-63",
+        "raw_tsv_sha256": "3816d5dc91413489c45914fd594a2fc79d73643975c92edf7b4b15ac1d862b34"
+      },
+      {
+        "canonical_bytes": 337,
+        "different_from": null,
+        "equal_to": null,
+        "file_bytes": 398,
+        "identity": "23bf7b916ba74772e8743c64bd5a1ab5cd71067ecbf2fd7ead1c88c2efdcbaae",
+        "name": "prefix-four-byte-63",
+        "raw_tsv_sha256": "556809cd995f5dc980aeeabce669ec58dc9279388be05af342278a5d7e62d345"
+      },
+      {
+        "canonical_bytes": 149,
+        "different_from": null,
+        "equal_to": null,
+        "file_bytes": 210,
+        "identity": "3e2e8efdb044a451eb2ebed5cc6d94489b61f4de70764736aed971b447a3b3f6",
+        "name": "prefix-ascii-64",
+        "raw_tsv_sha256": "fed4bbaec6536f9d8fbe2809ef9ce6f89bbd16665fb97ee9c6dd747602c0ce9f"
+      },
+      {
+        "canonical_bytes": 213,
+        "different_from": null,
+        "equal_to": null,
+        "file_bytes": 274,
+        "identity": "185e6f5adf0a120dba679b013b90d01a488d59527b0ce81b72f69c0ec3e89983",
+        "name": "prefix-two-byte-64",
+        "raw_tsv_sha256": "c9f41dac198cabc751e3fccbb4a566131ef7f5ce4455cb85a1232b0923538a21"
+      },
+      {
+        "canonical_bytes": 341,
+        "different_from": null,
+        "equal_to": null,
+        "file_bytes": 402,
+        "identity": "31de7249a3a6656467613695f9d7e4e57bafd4f33d324666625a4e600431b888",
+        "name": "prefix-four-byte-64",
+        "raw_tsv_sha256": "984d7e0a855e61c04b4aace91210aa10d784fb8d87babfcc111f0d661cd174ec"
+      },
+      {
+        "canonical_bytes": 212,
+        "different_from": null,
+        "equal_to": null,
+        "file_bytes": 273,
+        "identity": "22d915ca1acf47c0d45e8e069fb177b4dd46a653a292a841b12eda0c2f2d974d",
+        "name": "prefix-ascii-127",
+        "raw_tsv_sha256": "86d432b6f44664af6e4dc47fdda4e67c8a0b0e40228089b1fefbfb41a8a83dfa"
+      },
+      {
+        "canonical_bytes": 339,
+        "different_from": null,
+        "equal_to": null,
+        "file_bytes": 400,
+        "identity": "c4b6ce915bfd97e056c2fb276e43b688d311fb5e50e66804fb1b97cfd1578bc7",
+        "name": "prefix-two-byte-127",
+        "raw_tsv_sha256": "1646b7ba9f68ac16a99b24eca6a02f9b29d813af09007a129104def3de504308"
+      },
+      {
+        "canonical_bytes": 593,
+        "different_from": null,
+        "equal_to": null,
+        "file_bytes": 654,
+        "identity": "cf69c2a83b4f9bda6e6b4bd5b4910d9cbbbd900e029d02ab6eddf5ff72af762e",
+        "name": "prefix-four-byte-127",
+        "raw_tsv_sha256": "26e8eb2c6f16a32cdfbd7d534c14a7c29f7d0f2c6667990c6464a4f63dc70f35"
+      },
+      {
+        "canonical_bytes": 213,
+        "different_from": null,
+        "equal_to": null,
+        "file_bytes": 274,
+        "identity": "20e660a5a1e3588886bf5da4fd418215ee191024072da71515aeb91b1ee06d59",
+        "name": "prefix-ascii-128",
+        "raw_tsv_sha256": "a31a0e4f381f9708e9789ae00374e2638c2ee661cbed84e764e8ce6fd1138c16"
+      },
+      {
+        "canonical_bytes": 341,
+        "different_from": null,
+        "equal_to": null,
+        "file_bytes": 402,
+        "identity": "b2db5ba4742f9428f68bc508f03cb7260de61ca13f7dc571b0a3c255790b0548",
+        "name": "prefix-two-byte-128",
+        "raw_tsv_sha256": "cbc3964cd1e4aaf103f2ea915d6bbb7cbea4de81c8c937fbb0a95b4f2ccc03fa"
+      },
+      {
+        "canonical_bytes": 597,
+        "different_from": null,
+        "equal_to": null,
+        "file_bytes": 658,
+        "identity": "36d1f3421f4ddad554b71d7d2a0f86709d46f4df9526bbb8ee8928799390ef5f",
+        "name": "prefix-four-byte-128",
+        "raw_tsv_sha256": "292f3145c249dfc256f141a23f478bfe5f7538d31222096673ad407ea86a1240"
+      },
+      {
+        "canonical_bytes": 340,
+        "different_from": null,
+        "equal_to": null,
+        "file_bytes": 401,
+        "identity": "7bef4189f4fc75d22050ea7085de811043420c1a7d23513e1fcaaf743fce344b",
+        "name": "prefix-ascii-255",
+        "raw_tsv_sha256": "2a13a8b03f5867f4a5bfc02d0eb3f515d379349a4a32339716eb2ad3e23881ae"
+      },
+      {
+        "canonical_bytes": 595,
+        "different_from": null,
+        "equal_to": null,
+        "file_bytes": 656,
+        "identity": "6adf8366905a8fd454e9e706b30a128c3c026196ed3c9a5b0c8e5fbcf81feebf",
+        "name": "prefix-two-byte-255",
+        "raw_tsv_sha256": "a90373bb69b9ae9b319deb465dff338f98c7853841c149ce525edc21c0b7b651"
+      },
+      {
+        "canonical_bytes": 1105,
+        "different_from": null,
+        "equal_to": null,
+        "file_bytes": 1166,
+        "identity": "bf2830afe03815d16145ee8641712d028d79da047de6be0fa3f6470534ccc64d",
+        "name": "prefix-four-byte-255",
+        "raw_tsv_sha256": "0937014fad84b6e9ba4e94b67b9857f230ea608b39ab33fa62673853a224c40e"
+      },
+      {
+        "canonical_bytes": 341,
+        "different_from": null,
+        "equal_to": null,
+        "file_bytes": 402,
+        "identity": "e00d21c02be6b56bde5f89eb696098ac1d77916f27c84cbf59708aa2539d4ddd",
+        "name": "prefix-ascii-256",
+        "raw_tsv_sha256": "b010f5db32202da2f0993780b9624f788e2f5e5ae973229f4c8a67e21b184dbd"
+      },
+      {
+        "canonical_bytes": 597,
+        "different_from": null,
+        "equal_to": null,
+        "file_bytes": 658,
+        "identity": "0525d19ab6525879177577a4389188623ce0ee3bccdcbb274a6e25d881350c86",
+        "name": "prefix-two-byte-256",
+        "raw_tsv_sha256": "0533f68eadb1f29fb1a8a3c64af0722f548e91621ca2c974ba95d10302b533ac"
+      },
+      {
+        "canonical_bytes": 1109,
+        "different_from": null,
+        "equal_to": null,
+        "file_bytes": 1170,
+        "identity": "a123900ab25b5b984a421f4a390b5638873179deefa869fdeddbb1fcc9b7d0ae",
+        "name": "prefix-four-byte-256",
+        "raw_tsv_sha256": "bc3f617abebb869f4e246ae6b8abb366314edd69f3da0688c48df32d77d74eaa"
+      },
+      {
+        "canonical_bytes": 5923,
+        "different_from": null,
+        "equal_to": null,
+        "file_bytes": 5246,
+        "identity": "cdfe503c452db42cc5fbb69c1a37155860d3bb4545096b183d99232ee05bfa13",
+        "name": "dense-domains",
+        "raw_tsv_sha256": "87be8a7dc35110e88ba418708acca23d7cef48ff1d791b67acdbb131071be9f2"
+      }
+    ],
+    "format_version": 1,
+    "pinned_canonical_bytes": 167974,
+    "pinned_identity": "4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc"
+  },
   "checks": {
     "src/registry.bend": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.",
     "tests/registry.bend": "ALL PROOFS CHECK\nUse --verdict for mathematical validity."
@@ -8,8 +650,10 @@
   "compiler": "bend 2.0.35",
   "coverage": {
     "block_defaults": 1286,
+    "canonical_identity_calls": 4,
     "duplicate_properties": 884,
     "forward_states": 35723,
+    "identity_failure_retains_owner": 2,
     "metadata_blocks": 1286,
     "partial_defaults": 2313,
     "reverse_states": 35723,
@@ -19,18 +663,120 @@
   },
   "execution": {
     "batches": 8,
-    "native_seconds": 5.368,
-    "requests": 80293
+    "native_seconds": 5.10731,
+    "requests": 80300
+  },
+  "identity_kernel_evidence": {
+    "compiler": "bend 2.0.35",
+    "full_production_diagnostic": {
+      "command": [
+        "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/registry-identity.bendtt"
+      ],
+      "emit_command": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/registry.bend",
+        "-o",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/registry-identity.bendtt"
+      ],
+      "emit_stdout": "",
+      "exit_code": 1,
+      "kernel_binary": "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+      "kernel_sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7",
+      "seconds": 1.11274,
+      "serialized_bytes": 7117649,
+      "serialized_sha256": "239068a24b8075edd7904bc22686b7c8ae2b05c85653dcea67a1fdfa49c5ffc2",
+      "stderr": "",
+      "stdout": "SOME PROOFS FAIL\nIn json.encode_go:\naffine live code, calls that descend"
+    },
+    "imported_source_sha256": {
+      "src/hash.bend": "d2473695632b19e68c8d636668e4617f04d70892fb2ab6559cb24d4b33c1b978",
+      "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+      "src/unicode.bend": "8f0cd9bbcd0e7f938af370675eca0c73a9b97b90c2789a1e77e5a29a918455bd"
+    },
+    "production_source_sha256": "821c53d9cfa3044be3cae2af968f55563c0be2bebc9beae55a29d77d47b140a0",
+    "projection": {
+      "check_command": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/registry-identity-laws.bend",
+        "--check-only"
+      ],
+      "check_stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.",
+      "path": "build/registry-identity-laws.bend",
+      "sha256": "6e980ea10a9a265a236cabbf5522ba7981589c6cdb044589d7a06e35223fb182",
+      "slice_sha256": {
+        "bounded_byte_reader": "2070f8ed150e75b5e36b879ba62959f37bc2aeaac6f1632ea827a18a7dc062a0",
+        "canonical_identity_and_laws": "7d86d4f68bc79c7943e8a12b332cca8b6a184f69875b46c6756bc3727cad50e9",
+        "metadata_types": "21557c3314495fde6ff17204e10ff924345bda40b1bef50e5d17deef0c3050a5"
+      },
+      "verdict": {
+        "command": [
+          "/Users/chuah/.bend/bin/bend",
+          "build/registry-identity-laws.bend",
+          "--verdict"
+        ],
+        "exit_code": 0,
+        "seconds": 0.58832,
+        "source": "build/registry-identity-laws.bend",
+        "stderr": "",
+        "stdout": "ALL PROOFS CHECK",
+        "timed_out": false
+      }
+    },
+    "schema_version": 1,
+    "scope": [
+      "Metadata types, bounded raw-byte reader, canonical identity implementation and three new laws are projected verbatim.",
+      "Projection passes independent kernel typing/termination and all its stated implementation laws.",
+      "Projection excludes unrelated JSON parser/resolver definitions; it does not establish a full registry-module verdict.",
+      "No compiler/kernel edits, unsafe declarations, foreign implementation, axioms or unfilled proofs."
+    ]
   },
   "kernel": {
+    "command": [
+      "/Users/chuah/.bend/bin/bend",
+      "src/registry.bend",
+      "--verdict"
+    ],
     "exit_code": 1,
+    "seconds": 3.16149,
+    "source": "src/registry.bend",
     "stderr": "SOME PROOFS FAIL\nSorry - this is a mismatch between the TypeScript implementation, and the formalized BendTT kernel. Your proofs may or may not be correct, and we cannot validate them yet. This will be addressed in a future update. Meanwhile, feel free to open an issue to report this bug.",
-    "stdout": ""
+    "stdout": "",
+    "timed_out": false
   },
+  "kernel_checks": [
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/registry.bend",
+        "--verdict"
+      ],
+      "exit_code": 1,
+      "seconds": 3.16149,
+      "source": "src/registry.bend",
+      "stderr": "SOME PROOFS FAIL\nSorry - this is a mismatch between the TypeScript implementation, and the formalized BendTT kernel. Your proofs may or may not be correct, and we cannot validate them yet. This will be addressed in a future update. Meanwhile, feel free to open an issue to report this bug.",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/registry.bend",
+        "--verdict"
+      ],
+      "exit_code": null,
+      "seconds": 120.03911,
+      "source": "tests/registry.bend",
+      "stderr": "",
+      "stdout": "",
+      "timed_out": true,
+      "timeout_seconds": 120
+    }
+  ],
   "loader": {
     "capacity_boundary": {
       "batches": 1,
-      "native_seconds": 0.02776,
+      "native_seconds": 0.05729,
       "requests": 4
     },
     "cases": [
@@ -185,21 +931,81 @@
       {
         "name": "duplicate-escaped-names",
         "outcome": "load-error\tschema:2:invalid or duplicate property name"
+      },
+      {
+        "name": "utf8-overlong-nul",
+        "outcome": "load-error\tschema:0:UTF-8: invalid UTF-8 leading byte"
+      },
+      {
+        "name": "utf8-overlong-two",
+        "outcome": "load-error\tschema:0:UTF-8: invalid UTF-8 leading byte"
+      },
+      {
+        "name": "utf8-overlong-three",
+        "outcome": "load-error\tschema:0:UTF-8: invalid UTF-8 scalar or overlong encoding"
+      },
+      {
+        "name": "utf8-overlong-four",
+        "outcome": "load-error\tschema:0:UTF-8: invalid UTF-8 scalar or overlong encoding"
+      },
+      {
+        "name": "utf8-surrogate-high",
+        "outcome": "load-error\tschema:0:UTF-8: invalid UTF-8 scalar or overlong encoding"
+      },
+      {
+        "name": "utf8-surrogate-low",
+        "outcome": "load-error\tschema:0:UTF-8: invalid UTF-8 scalar or overlong encoding"
+      },
+      {
+        "name": "utf8-out-of-range",
+        "outcome": "load-error\tschema:0:UTF-8: invalid UTF-8 scalar or overlong encoding"
+      },
+      {
+        "name": "utf8-invalid-leading",
+        "outcome": "load-error\tschema:0:UTF-8: invalid UTF-8 leading byte"
+      },
+      {
+        "name": "utf8-stray-continuation",
+        "outcome": "load-error\tschema:0:UTF-8: invalid UTF-8 leading byte"
+      },
+      {
+        "name": "utf8-invalid-continuation",
+        "outcome": "load-error\tschema:0:UTF-8: expected UTF-8 continuation byte"
+      },
+      {
+        "name": "utf8-truncated-two",
+        "outcome": "load-error\tschema:0:UTF-8: incomplete UTF-8 sequence"
+      },
+      {
+        "name": "utf8-truncated-three",
+        "outcome": "load-error\tschema:0:UTF-8: incomplete UTF-8 sequence"
+      },
+      {
+        "name": "utf8-truncated-four",
+        "outcome": "load-error\tschema:0:UTF-8: incomplete UTF-8 sequence"
       }
     ],
     "custom_registry": {
       "batches": 1,
-      "native_seconds": 0.00278,
+      "native_seconds": 0.00926,
       "requests": 3
     },
+    "exact_4mib": {
+      "batches": 1,
+      "native_seconds": 0.38507,
+      "requests": 2
+    },
+    "malformed_utf8_inputs": 13,
     "no_final_newline": {
       "batches": 1,
-      "native_seconds": 0.0024,
+      "native_seconds": 0.00707,
       "requests": 1
     },
-    "rejected_inputs": 38
+    "rejected_inputs": 51
   },
-  "native_c_sha256": "bb1f3ef220a100b095ee5a02066cabd2f012dae2e2d3d0e793841f934bb6753c",
+  "native_binary_sha256": "f551440afd8f234e25249e5c0302505895243d13ac9c86324e43655575892d72",
+  "native_c_bytes": 2177359,
+  "native_c_sha256": "f96cdbbd1c99395c6c22c7d327ff926371bbb654d39d4a79314c2a2880ecfedb",
   "official_blocks_canonical_sha256": "79fc25fd3d4d57ba35002ce88347e08a68c41f3c26d7edd706656bf02dce38a4",
   "official_registries_canonical_sha256": "6f76431c05c9dd2945b2ef2f419e3e43cb0f3cedcd9beb07c24744f4e2a6bc27",
   "pin": "26.3",
@@ -207,10 +1013,13 @@
   "scope": "Complete pinned inventory loading, metadata, state-ID/name/property conversion and validation only. No block behaviors, pack loading or mod lifecycle implemented.",
   "source_sha256": {
     "docs/REGISTRY.md": "9a74f7999d0ac6d6d55ecda8b6390d6b878e06260f1b62b1d2da294d395ef099",
-    "src/json.bend": "a546726a2422382e388e3b0c9c2868034f25f5b1339c8b6b1dc167190a1b4099",
-    "src/registry.bend": "1f6534ce5c96e1018aebae79ce23089aa206b922cd91f3bd23654d5afaf5e44f",
-    "tests/registry.bend": "58fb2aa2766bcff68df527a45642ddf5ba3b7881c64a684b4d64f9ce7fa69e86",
-    "tools/test_registry.py": "4c51f33e2e617e72aac8544ac0cf61a08e8fa9c9d856ba960b29ffb7bb18ecfa"
+    "docs/REGISTRY_IDENTITY.md": "798f54740d37e8ba1ca2768e4b5c597eefd3835306afcb0533e60c2679220f48",
+    "src/hash.bend": "d2473695632b19e68c8d636668e4617f04d70892fb2ab6559cb24d4b33c1b978",
+    "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+    "src/registry.bend": "821c53d9cfa3044be3cae2af968f55563c0be2bebc9beae55a29d77d47b140a0",
+    "src/unicode.bend": "8f0cd9bbcd0e7f938af370675eca0c73a9b97b90c2789a1e77e5a29a918455bd",
+    "tests/registry.bend": "7785465a632f8ced22a3caca0afd9cc2ce1c71f0865ddcb8a66131948afc1519",
+    "tools/test_registry.py": "9ba04ba23d96aa340782585a536bb638723f2dec37c2ff1f55092f7f0f40a092"
   },
   "source_tsv": "generated/reference_blocks.tsv",
   "source_tsv_sha256": "27769e75bf862d0540b2df2a6e99f6b7556a867bff6339fb08566240ee124cac"
