@@ -40,7 +40,7 @@ Binary32 addition and multiplication use the existing checked F64 integer-word i
 
 The frozen corpus has 3,246 fixtures, 3,606 steps per receiver, and 7,212 production turn calls. Two fresh Java 25.0.1 processes reproduced identical observations. There were no exceptions; 1,077 steps emitted setter warnings. The corpus covers double-to-float midpoints, underflow/overflow, signed zeros, clamp/remainder transitions, current/previous independent overflow, 708 pitch exponent cases, raw random finite states/deltas, and 24 chains of 16 turns. Eight nonfinite-input observations remain outside Bend admission.
 
-An independent Python Fraction oracle matches all 3,598 admitted production steps using integer/rational RN-even cast, multiply, add, exact truncating remainder, and clamp. It does not use host floating arithmetic to decide expected results. The native harness passes raw U32 words into actual Bend definitions and compares exact output bits and error policy. Chain mode carries the Bend returned state into the next call. Additional cases exercise all validation fields, first-error order, malformed harness arguments, and successful calls following rejections in the same process.
+An independent Python Fraction oracle matches all 3,598 admitted production steps using integer/rational RN-even cast, multiply, add, exact truncating remainder, and clamp. It does not use host floating arithmetic to decide expected results. The native harness passes raw U32 words into actual Bend definitions. All 3,606 production comparisons pass: 2,922 Done states, 676 NonFiniteResult failures, and 8 InvalidInput rejections. Both actual source and full harness pass the independent kernel; all eight laws pass. All 24 chains carry the Bend returned state into the next call, totaling 384 turns. Thirty-nine admission cases, their successful same-process recovery calls, and five malformed harness argument cases pass.
 
 Reproduce:
 
@@ -56,6 +56,27 @@ python3 tools/test_player_look.py
 
 The returned field projection is for the neutral no-vehicle path. It does not implement warning emission, rider `onPassengerTurned` callbacks, client interpolation/rendering, or entity constructor/level behavior. Production warnings are retained only by the Java reference; calling Bend `turn` has no logging side effect.
 
-Pinned MouseHandler has no isolated static neutral scaling helper. Its actual private `turnPlayer` path reads client options, player, tutorial, smooth filters, camera and scoping state. Only its bytecode wiring was inspected here. Default sensitivity scaling, MouseHandler behavior, GLFW capture, and full mouse/client fidelity are not claimed or implemented by this module.
+Pinned MouseHandler has no isolated static neutral scaling helper. Its actual private `turnPlayer` path reads client options, player, tutorial, smooth filters, camera and scoping state. Only its bytecode wiring was inspected here. Default sensitivity scaling, MouseHandler behavior, SDL capture, and full mouse/client fidelity are not claimed or implemented by this module.
 
 Confidence is high for the recorded pinned neutral field projection and its explicit finite-state policy; broader client/look behavior remains outside this evidence.
+
+## Additional MouseHandler bytecode analysis
+
+`evidence/player-look-mouse-bytecode.json` records a bounded analysis of actual pinned class bytes, separate from the executed Entity reference. SDL motion coordinates and relative displacements are F32, widened exactly to F64 before `MouseHandler.onMove`. Captured, focused input accumulates relative displacements with F64 addition. Wrong or zero window handles return; the first move records position and discards its delta. Uncaptured input instead accumulates double coordinate differences.
+
+Options constructor defaults before loading saved settings are sensitivity Double 0.5, both invert flags false, smooth camera false, and FIRST_PERSON camera. Neutral `turnPlayer` computes, in this F64 order:
+
+```text
+a = sensitivity * 0.6000000238418579d
+a = a + 0.20000000298023224d
+cube = (a * a) * a
+scale = cube * 8.0d
+dx = accumulatedDX * scale
+dy = accumulatedDY * scale
+```
+
+The coefficients are the exact binary64 promotions of 0.6f and 0.2f. The derived default scale is `0x3ff000001800000c` (1.0000000894069698), so replacing it by exactly 1 changes raw results. Tutorial sees these deltas before optional `dneg` inversion. The subsequent Entity method then narrows to F32 and multiplies by 0.15f.
+
+Smooth camera uses persistent filter state and elapsed time; first-person scoping uses the cube without the factor eight. `handleAccumulatedMovement` gates turning on focused/captured/non-null-player state and clears accumulations even when inactive. The inspected movement methods have no pause predicate; the per-frame call precedes the frame's pause-state update. These are bytecode findings, not an executed MouseHandler fidelity claim.
+
+A viable later no-window fixture can constructor-skip Minecraft, Options and LocalPlayer; construct real OptionInstances, MouseHandler and an inactive Tutorial; set current/past rotations, a null vehicle, and the LocalPlayer item-use flag false. The actual `Player.isScoping` then short-circuits, and invoking the private `turnPlayer` need not call a window or SDL timer. `onMove` can separately use a constructor-skipped Window whose handle/focused getters only read fields. This fixture's viability remains to be executed and validated. The existing Look source and its tests are unchanged by this analysis.

@@ -1,0 +1,103 @@
+{
+  "status": "analyzed",
+  "pin": "26.3",
+  "authority": "Actual installed pinned class bytes and javap -p -c; analysis only, not receiver execution",
+  "client_sha256": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d",
+  "classes": [
+    {
+      "class": "net.minecraft.client.Options",
+      "sha256": "4cf1c5dd3ef42b2cd9fea835cc0be18c3dfb4691ee7315cd7993ebb6a1504629"
+    },
+    {
+      "class": "net.minecraft.client.Minecraft",
+      "sha256": "6620185007eb572e953c5fdad1e6e369b75b058b9dcd9a0bda9f8bc3f212c9d6"
+    },
+    {
+      "class": "net.minecraft.client.OptionInstance",
+      "sha256": "aef6fc91c5aa418e4061b8c861ff5534d7d00ea16fa6d8da2e55d371b5abe106"
+    },
+    {
+      "class": "net.minecraft.client.CameraType",
+      "sha256": "880f4ec393bde7b92ebfec2067213a4b784893b78722a04fe1717e4e559cdab8"
+    },
+    {
+      "class": "net.minecraft.util.SmoothDouble",
+      "sha256": "8932ff87cafbc4c4d24969e886489410e0073f8c723369c346dac1d54b026b17"
+    },
+    {
+      "class": "net.minecraft.client.tutorial.Tutorial",
+      "sha256": "0c1532cd057a982c7ff8bea2f2d823cfeb8930b9bbab54b2d00014e96dbad91a"
+    },
+    {
+      "class": "net.minecraft.world.entity.player.Player",
+      "sha256": "28ad0c7756a5cbdfde6c22772f585da9177d6f9eb418ea5ff2dd85657d81dfb2"
+    },
+    {
+      "class": "net.minecraft.client.ScrollWheelHandler",
+      "sha256": "2609e62226002f403891007cd41fbf48321b25095a80094d63a86968fcce7ca7"
+    },
+    {
+      "class": "com.mojang.blaze3d.platform.Window",
+      "sha256": "bdd9296a3d6268826a71f94b306c93a5d7d92ae28887e6b6a0e7470a0096ae68"
+    },
+    {
+      "class": "com.mojang.blaze3d.Blaze3D",
+      "sha256": "77e47e8263405da9063cc5d8d6710e8691611ced7bc2ea670ae39b97846fca8d"
+    },
+    {
+      "class": "com.mojang.blaze3d.platform.SDLEventHandler",
+      "sha256": "650bd999d9e126effd587b4df7fb6530c933ca695aabaccd56f369d41ea11af9"
+    }
+  ],
+  "bytecode_dumps": [
+    {
+      "path": "reference/cache/player-look-probe/production-javap.txt",
+      "bytes": 1827382,
+      "sha256": "4790ba4634e2a0b5705d9d6e2aff8d4ab3ebc3f28ba6c12478a6ef58f0a0cd90"
+    },
+    {
+      "path": "reference/cache/player-look-probe/mouse-path-javap.txt",
+      "bytes": 1016849,
+      "sha256": "6b0ec37e10fd770a4c3746e6db77675438a7c5679c668e575d217662c0e10980"
+    },
+    {
+      "path": "reference/cache/player-look-probe/mouse-fixture-javap.txt",
+      "bytes": 341644,
+      "sha256": "5a9def433075b96a1749e9f6933578d1f58950c7a39dad806c0a8ed997ecbfa7"
+    },
+    {
+      "path": "reference/cache/player-look-probe/mouse-sdl-javap.txt",
+      "bytes": 23430,
+      "sha256": "69f1a449df86d9e372b6732a07a6fdf21cebe053fe197dc706b62a18d3b9a8cd"
+    }
+  ],
+  "default_options_before_loading_settings": {
+    "sensitivity_f64_bits": "3fe0000000000000",
+    "invert_x": false,
+    "invert_y": false,
+    "smooth_camera": false,
+    "camera_type": "FIRST_PERSON"
+  },
+  "neutral_f64_order": [
+    "a=RN64(s*0x3fe3333340000000)",
+    "a=RN64(a+0x3fc99999a0000000)",
+    "b=RN64(a*a)",
+    "b=RN64(b*a)",
+    "scale=RN64(b*8.0)",
+    "dx=RN64(accumulatedDX*scale)",
+    "dy=RN64(accumulatedDY*scale)",
+    "Tutorial.onMouse(dx,dy)",
+    "optional dneg for each invert option",
+    "LocalPlayer.turn(dx,dy), resolved to inherited Entity.turn"
+  ],
+  "default_scale_derived_f64_bits": "3ff000001800000c",
+  "derived_result_boundary": "Derived binary64 operation calculation from bytecode constants/order; not actual MouseHandler receiver observation",
+  "input_width": "SDLEventHandler obtains SDL_MouseMotionEvent.x/y/xrel/yrel as F32 then exact f2d; focused+captured onMove accumulates relative xrel/yrel with dadd",
+  "admission": "onMove wrong/zero handle returns; ignoreFirstMove records position and discards deltas; focused window accumulation; handleAccumulatedMovement invokes turnPlayer only focused+mouseGrabbed+nonnullplayer and resets both accumulations to +0 even when inactive; no pause predicate in these methods",
+  "unsupported_branches": "smoothCamera invokes persistent SmoothDouble.getNewDeltaValue(accum*scale,elapsed*scale); first-person scoping uses cube without *8 after resetting smooth filters",
+  "viable_receiver_fixture": "Constructor-skipped Minecraft/Options/LocalPlayer with actual minimal OptionInstance constructors, actual new MouseHandler, new Tutorial with null instance, LocalPlayer.startedUsingItem=false (Player.isScoping short-circuits), null Entity.vehicle, reflected four rotations. private turnPlayer avoids window/timer calls. For onMove only: constructor-skipped Window with fixed handle/focused fields, direct actual onMove; do not invoke handleAccumulatedMovement because Blaze3D.getTime calls native SDL timer. Actual measurement still required.",
+  "reproduce_commands": [
+    "javap -p -c -classpath VERIFIED_PINNED_CLASSPATH net.minecraft.client.MouseHandler net.minecraft.client.Options net.minecraft.client.Minecraft net.minecraft.client.OptionInstance net.minecraft.client.CameraType net.minecraft.util.SmoothDouble net.minecraft.client.tutorial.Tutorial net.minecraft.world.entity.player.Player com.mojang.blaze3d.platform.Window com.mojang.blaze3d.Blaze3D com.mojang.blaze3d.platform.SDLEventHandler"
+  ],
+  "confidence": "high for explicit bytecode operations/gates; fixture viability is an unexecuted inference"
+}
