@@ -1,0 +1,28 @@
+{
+  "current_sources_at_scheduling_update": {
+    "docs/BLOCK_RESOURCES.md": "3c5b8eb7f4019afa95149b9f46027111e5bed2330b3df7c6c732c21da8718fab",
+    "src/block_resources.bend": "34fd345b8239dde6d097e6051839a28fef475f0f6d3d147c8dc1b4adb9512fb0",
+    "tests/block_resources.bend": "fde6a893ccc8ac11652db2f14b11c37859c5e5f87857834d72d3f7cdc9f294fd",
+    "tools/test_block_resources.py": "48bcb43b6e96ca4c9a1870c8fd1c8c4f341b8390ce9c889db24db25626102ca7"
+  },
+  "final_status": "Native artifact produced; full63-case validation passed using frozen source. Original interrupted attempts remain unverified historical scheduling events.",
+  "interrupted_attempt_source_snapshot": "The interrupted attempts preceded final admission guards; no validated result or binary was produced, and their exact intermediate source snapshot was not retained.",
+  "kernel": {
+    "command": "/Users/chuah/.bend/bin/bend src/block_resources.bend --verdict",
+    "pid": 21399,
+    "reason": "lead-directed scheduling stop: eight Bend jobs, ~95MB free RAM, compressor/swap churn",
+    "status": "interrupted-unverified"
+  },
+  "native": {
+    "command": "/Users/chuah/.bend/bin/bend tests/block_resources.bend -o build/block-resources-tests",
+    "pid": 21483,
+    "reason": "same host resource-pressure scheduling stop",
+    "status": "interrupted-unverified"
+  },
+  "ordinary_type_check": "ALL PROOFS CHECK (final source + driver after slot and Image backing guards)",
+  "pending": "native verification queued; no heavy process running for this agent",
+  "prepared_cases": 62,
+  "schema": 1,
+  "status": "awaiting-build-slot",
+  "time_utc": "2026-10-03T19:24:17.286373+00:00"
+}

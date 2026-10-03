@@ -1,0 +1,553 @@
+{
+  "canonical_report_sha256": "1c5ea1a67bb8d0e714cfb898abecd7da56d20897c832c690b1c64d249f6929bb",
+  "cases": 63,
+  "cases_detail": [
+    {
+      "name": "official-palette",
+      "rgba_sha256": {
+        "minecraft:block/dirt": "327b802852d3662bb8bded6acd1cfbd559be990d521d2609ec1a91de6f27b4c9",
+        "minecraft:block/oak_planks": "6138b0af077708bac68849ad2ea90ae403cdd4e8976d6cfddd13ccba7ad0c783",
+        "minecraft:block/stone": "057ffefa8bfcd516c6f7828cdf33271f15a5fd429b127e8caa348d50a0787304"
+      },
+      "usage": {
+        "models": 6,
+        "pixels": 768,
+        "png": 543,
+        "sprites": 3,
+        "text": 2245
+      }
+    },
+    {
+      "name": "official-reordered-duplicate-roots",
+      "rgba_sha256": {
+        "minecraft:block/dirt": "327b802852d3662bb8bded6acd1cfbd559be990d521d2609ec1a91de6f27b4c9",
+        "minecraft:block/oak_planks": "6138b0af077708bac68849ad2ea90ae403cdd4e8976d6cfddd13ccba7ad0c783",
+        "minecraft:block/stone": "057ffefa8bfcd516c6f7828cdf33271f15a5fd429b127e8caa348d50a0787304"
+      },
+      "usage": {
+        "models": 6,
+        "pixels": 768,
+        "png": 543,
+        "sprites": 3,
+        "text": 2245
+      }
+    },
+    {
+      "name": "official-noncube-overlay",
+      "rgba_sha256": {
+        "minecraft:block/dirt": "327b802852d3662bb8bded6acd1cfbd559be990d521d2609ec1a91de6f27b4c9",
+        "minecraft:block/grass_block_side": "62c47cebea3514034a031ca1199a2ce0dfcedf4be0d3d669f0067087ffe95419",
+        "minecraft:block/grass_block_side_overlay": "acc365a4695b2b4973f49f13bc846da4a46b4e26d89c56ed6bbd9973971c096d",
+        "minecraft:block/grass_block_top": "31bb5d5d3c5516aadfd1fd5c605fa46252c0f0612091d753c0621ca6890549fd",
+        "minecraft:block/oak_planks": "6138b0af077708bac68849ad2ea90ae403cdd4e8976d6cfddd13ccba7ad0c783"
+      },
+      "usage": {
+        "models": 12,
+        "pixels": 1280,
+        "png": 1154,
+        "sprites": 5,
+        "text": 9683
+      }
+    },
+    {
+      "code": "UnsupportedMetadata",
+      "name": "official-glass-texture-metadata-rejection",
+      "resource": "minecraft:block/glass"
+    },
+    {
+      "name": "rectangular-static",
+      "rgba_sha256": {
+        "test:block/tex": "3e0a73c95fcffeb850e020efa705a723b966cbfed592a81cfcc2023340522fed"
+      },
+      "usage": {
+        "models": 1,
+        "pixels": 15,
+        "png": 133,
+        "sprites": 1,
+        "text": 37
+      }
+    },
+    {
+      "name": "explicit-cutout",
+      "rgba_sha256": {
+        "test:block/tex": "3e0a73c95fcffeb850e020efa705a723b966cbfed592a81cfcc2023340522fed"
+      },
+      "usage": {
+        "models": 1,
+        "pixels": 15,
+        "png": 133,
+        "sprites": 1,
+        "text": 37
+      }
+    },
+    {
+      "name": "explicit-translucent",
+      "rgba_sha256": {
+        "test:block/tex": "3e0a73c95fcffeb850e020efa705a723b966cbfed592a81cfcc2023340522fed"
+      },
+      "usage": {
+        "models": 1,
+        "pixels": 15,
+        "png": 133,
+        "sprites": 1,
+        "text": 37
+      }
+    },
+    {
+      "name": "normalized-layer-key",
+      "rgba_sha256": {
+        "test:block/tex": "3e0a73c95fcffeb850e020efa705a723b966cbfed592a81cfcc2023340522fed"
+      },
+      "usage": {
+        "models": 1,
+        "pixels": 15,
+        "png": 133,
+        "sprites": 1,
+        "text": 37
+      }
+    },
+    {
+      "name": "indexed-texture-build-32x64",
+      "rgba_sha256": {
+        "test:block/tex": "7c22304d97a77a68cb6413c69868a1be1ecc66e6f5c64cc67efe9d17a70c5b91"
+      },
+      "usage": {
+        "models": 1,
+        "pixels": 2048,
+        "png": 1077,
+        "sprites": 1,
+        "text": 37
+      }
+    },
+    {
+      "name": "empty-request",
+      "rgba_sha256": {},
+      "usage": {
+        "models": 0,
+        "pixels": 0,
+        "png": 0,
+        "sprites": 0,
+        "text": 0
+      }
+    },
+    {
+      "code": "MissingResource",
+      "name": "missing-root",
+      "resource": "test:block/a"
+    },
+    {
+      "code": "MissingResource",
+      "name": "missing-parent",
+      "resource": "test:block/missing"
+    },
+    {
+      "code": "MissingResource",
+      "name": "missing-png",
+      "resource": "test:block/tex"
+    },
+    {
+      "code": "MissingLayer",
+      "name": "missing-layer",
+      "resource": "test:block/tex"
+    },
+    {
+      "code": "LayerCollision",
+      "name": "normalization-layer-collision",
+      "resource": "minecraft:block/tex"
+    },
+    {
+      "code": "Model:InvalidIdentifier",
+      "name": "invalid-layer-id",
+      "resource": "UPPER:tex"
+    },
+    {
+      "code": "ParentCycle",
+      "name": "self-cycle",
+      "resource": "test:block/a"
+    },
+    {
+      "code": "ParentCycle",
+      "name": "two-model-cycle",
+      "resource": "test:block/a"
+    },
+    {
+      "code": "TextureCycle",
+      "name": "texture-alias-cycle",
+      "resource": "test:block/a"
+    },
+    {
+      "code": "MissingTexture",
+      "name": "unbound-root-slot",
+      "resource": "test:block/a"
+    },
+    {
+      "code": "ReferencedSlotBudget",
+      "name": "referenced-slot-budget",
+      "resource": "test:block/a"
+    },
+    {
+      "code": "JSON",
+      "name": "malformed-json",
+      "resource": "test:block/a"
+    },
+    {
+      "code": "Model:ExpectedObject",
+      "name": "non-model-json",
+      "resource": "test:block/a"
+    },
+    {
+      "code": "Model:InvalidIdentifier",
+      "name": "parent-id-invalid",
+      "resource": "test:block/a"
+    },
+    {
+      "code": "UTF8",
+      "name": "utf8-overlong",
+      "resource": "test:block/a"
+    },
+    {
+      "code": "UTF8",
+      "name": "utf8-surrogate",
+      "resource": "test:block/a"
+    },
+    {
+      "code": "UTF8",
+      "name": "utf8-too-high",
+      "resource": "test:block/a"
+    },
+    {
+      "code": "UTF8",
+      "name": "utf8-truncated",
+      "resource": "test:block/a"
+    },
+    {
+      "code": "UTF8",
+      "name": "utf8-continuation",
+      "resource": "test:block/a"
+    },
+    {
+      "code": "UTF8",
+      "name": "utf8-bad-continuation",
+      "resource": "test:block/a"
+    },
+    {
+      "name": "utf8-valid-scalars",
+      "rgba_sha256": {
+        "test:block/tex": "3e0a73c95fcffeb850e020efa705a723b966cbfed592a81cfcc2023340522fed"
+      },
+      "usage": {
+        "models": 1,
+        "pixels": 15,
+        "png": 133,
+        "sprites": 1,
+        "text": 57
+      }
+    },
+    {
+      "name": "hash-in-slot-key",
+      "rgba_sha256": {
+        "test:block/tex": "3e0a73c95fcffeb850e020efa705a723b966cbfed592a81cfcc2023340522fed"
+      },
+      "usage": {
+        "models": 1,
+        "pixels": 15,
+        "png": 133,
+        "sprites": 1,
+        "text": 54
+      }
+    },
+    {
+      "name": "gson-first-root-and-duplicate-last",
+      "rgba_sha256": {
+        "test:block/tex": "3e0a73c95fcffeb850e020efa705a723b966cbfed592a81cfcc2023340522fed"
+      },
+      "usage": {
+        "models": 1,
+        "pixels": 15,
+        "png": 133,
+        "sprites": 1,
+        "text": 73
+      }
+    },
+    {
+      "name": "utf8-bom",
+      "rgba_sha256": {
+        "test:block/tex": "3e0a73c95fcffeb850e020efa705a723b966cbfed592a81cfcc2023340522fed"
+      },
+      "usage": {
+        "models": 1,
+        "pixels": 15,
+        "png": 133,
+        "sprites": 1,
+        "text": 40
+      }
+    },
+    {
+      "code": "PNG:CRC",
+      "name": "png-crc",
+      "resource": "test:block/tex"
+    },
+    {
+      "code": "PNG:Signature",
+      "name": "png-signature",
+      "resource": "test:block/tex"
+    },
+    {
+      "code": "UnsupportedAnimation",
+      "name": "metadata-animation",
+      "resource": "test:block/tex"
+    },
+    {
+      "code": "UnsupportedMetadata",
+      "name": "metadata-texture",
+      "resource": "test:block/tex"
+    },
+    {
+      "code": "UnsupportedMetadata",
+      "name": "metadata-unknown",
+      "resource": "test:block/tex"
+    },
+    {
+      "code": "MetadataObject",
+      "name": "metadata-array",
+      "resource": "test:block/tex"
+    },
+    {
+      "code": "JSON",
+      "name": "metadata-malformed",
+      "resource": "test:block/tex.png.mcmeta"
+    },
+    {
+      "name": "metadata-empty",
+      "rgba_sha256": {
+        "test:block/tex": "3e0a73c95fcffeb850e020efa705a723b966cbfed592a81cfcc2023340522fed"
+      },
+      "usage": {
+        "models": 1,
+        "pixels": 15,
+        "png": 133,
+        "sprites": 1,
+        "text": 39
+      }
+    },
+    {
+      "code": "UTF8",
+      "name": "metadata-invalid-utf8",
+      "resource": "test:block/tex.png.mcmeta"
+    },
+    {
+      "name": "exact-zip-identifiers",
+      "rgba_sha256": {
+        "test:/../tex": "c387dde7b190a52dd02bb16a11825bd119027781ffd9240ed1fbd7fb2eab1d1e"
+      },
+      "usage": {
+        "models": 1,
+        "pixels": 4,
+        "png": 84,
+        "sprites": 1,
+        "text": 35
+      }
+    },
+    {
+      "name": "namespace-default",
+      "rgba_sha256": {
+        "minecraft:block/tex": "c387dde7b190a52dd02bb16a11825bd119027781ffd9240ed1fbd7fb2eab1d1e"
+      },
+      "usage": {
+        "models": 1,
+        "pixels": 4,
+        "png": 84,
+        "sprites": 1,
+        "text": 32
+      }
+    },
+    {
+      "name": "empty-path-identifier",
+      "rgba_sha256": {
+        "test:": "c387dde7b190a52dd02bb16a11825bd119027781ffd9240ed1fbd7fb2eab1d1e"
+      },
+      "usage": {
+        "models": 1,
+        "pixels": 4,
+        "png": 84,
+        "sprites": 1,
+        "text": 28
+      }
+    },
+    {
+      "code": "MissingResource",
+      "name": "no-directory-fallback",
+      "resource": "test:block/a"
+    },
+    {
+      "code": "RootBudget",
+      "name": "root-count-budget",
+      "resource": "configuration"
+    },
+    {
+      "code": "ModelBudget",
+      "name": "closure-model-budget",
+      "resource": "minecraft:block/block"
+    },
+    {
+      "code": "ParentDepth",
+      "name": "parent-depth-budget",
+      "resource": "minecraft:block/cube_all"
+    },
+    {
+      "code": "EntryBudget",
+      "name": "text-budget",
+      "resource": "test:block/a"
+    },
+    {
+      "code": "EntryBudget",
+      "name": "png-byte-budget",
+      "resource": "test:block/tex"
+    },
+    {
+      "code": "ByteBudget",
+      "name": "aggregate-byte-budget",
+      "resource": "test:block/tex"
+    },
+    {
+      "code": "SpriteBudget",
+      "name": "sprite-count-budget",
+      "resource": "test:block/tex"
+    },
+    {
+      "code": "PNG:PixelLimit",
+      "name": "pixel-budget",
+      "resource": "test:block/tex"
+    },
+    {
+      "code": "ImageBudget",
+      "name": "padded-image-budget",
+      "resource": "test:block/tex"
+    },
+    {
+      "code": "ImageBudget",
+      "name": "skinny-padded-image-budget",
+      "resource": "test:block/tex"
+    },
+    {
+      "code": "PNG:Dimensions",
+      "name": "side-budget",
+      "resource": "test:block/tex"
+    },
+    {
+      "code": "JSON",
+      "name": "json-depth-budget",
+      "resource": "test:block/a"
+    },
+    {
+      "code": "Limits",
+      "name": "unsupported-limits",
+      "resource": "configuration"
+    },
+    {
+      "name": "exact-budget-boundaries",
+      "rgba_sha256": {
+        "test:block/tex": "3e0a73c95fcffeb850e020efa705a723b966cbfed592a81cfcc2023340522fed"
+      },
+      "usage": {
+        "models": 1,
+        "pixels": 15,
+        "png": 133,
+        "sprites": 1,
+        "text": 37
+      }
+    },
+    {
+      "code": "Archive",
+      "name": "archive-entry-crc",
+      "resource": "test:block/a"
+    },
+    {
+      "code": "ArchiveOpen",
+      "name": "archive-open-error",
+      "resource": "archive"
+    }
+  ],
+  "jar_sha256": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d",
+  "model_reference_sha256": "3cbe8aa7780f14c1b37159a885710b04680e3b6c4ffa4975b4d8297015f11e7e",
+  "native_binary_sha256": "b024804ef453d28279e2531217a54cf9e254b41bf6690df26ef3406f9075859d",
+  "native_source_fingerprint": {
+    "pinned_compiler_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+    "src/archive.bend": "c0f7b34a22726d220f6b867730b7d080d57d82c84d619c35721b9b8d18fa5d6e",
+    "src/big_uint.bend": "fbe5965ee16ee3d6864def33fbc6e5e4b1b9bc7da4735d99311c1a23c65e2444",
+    "src/block_bake.bend": "3611116e0ba63915d6013463c1640f83b6b80cb08e802f93be5f7eaa4d600595",
+    "src/block_model.bend": "08108bae9b89c6768de56bdddea158f3604b36c7de4ee0408815e2c7f48b97a1",
+    "src/block_resources.bend": "34fd345b8239dde6d097e6051839a28fef475f0f6d3d147c8dc1b4adb9512fb0",
+    "src/client_render.bend": "bb8f6057a02bfcb0583025f9e75fe41abc6804eb554c6d971df5c81618932947",
+    "src/compression.bend": "255cdff06a33050c7b0a48fdea75c1842ebe2dab0439cfe4f03d126d4edc20aa",
+    "src/float_parse.bend": "fe22007f0805f3c955fcaada88c1da76a3cceda74f0ff3840ae47af49a02c683",
+    "src/framing.bend": "307f95049df03d92687b7bd0eafb2cd566e660926510bb88163f9bc825fccdb5",
+    "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+    "src/mesh_render.bend": "90cc444e01b6a97f814a20a22a09b67e322b1eec4afc879e1d5b9b7f57f3b16c",
+    "src/png.bend": "8c24c14a250cf6dbdf0c2804e4b28bfebd7ef62ed5d9ee97a1d07094d4745f22",
+    "src/resource_json.bend": "271f9ace6304fdd42ced039ab2e7f95459eed1f20f011115f399b619f2bc6ffb",
+    "tests/block_model.bend": "9a6583a1c2c9c782536110f7a8e960a0c79e506727485c2282809b6cdc2a6a36",
+    "tests/block_resources.bend": "fde6a893ccc8ac11652db2f14b11c37859c5e5f87857834d72d3f7cdc9f294fd"
+  },
+  "policy_boundary": "StaticNormalized UV0..1 per image, explicit caller layer; no animation or texture metadata, atlas stitching, resource packs or Java final-frame claim",
+  "rejections": 45,
+  "schema": 1,
+  "sources": {
+    "src/block_resources.bend": "34fd345b8239dde6d097e6051839a28fef475f0f6d3d147c8dc1b4adb9512fb0",
+    "tests/block_resources.bend": "fde6a893ccc8ac11652db2f14b11c37859c5e5f87857834d72d3f7cdc9f294fd",
+    "tools/test_block_resources.py": "254da4c5f3d582fa47805e589c5d010e51020b5c3899d026d6c7c86b7706f16b"
+  },
+  "status": "passed",
+  "successes": 18,
+  "time_utc": "2026-10-03T20:07:59.081154+00:00",
+  "two_native_runs_equal": true,
+  "validation": {
+    "archive_closed": [
+      {
+        "archive_open_at_post_load_checkpoint": false,
+        "code": null,
+        "os_observer": "/usr/sbin/lsof -a -p PID -Fn",
+        "status": "ok"
+      },
+      {
+        "archive_open_at_post_load_checkpoint": false,
+        "code": "ParentCycle",
+        "os_observer": "/usr/sbin/lsof -a -p PID -Fn",
+        "status": "error"
+      },
+      {
+        "archive_open_at_post_load_checkpoint": false,
+        "code": "JSON",
+        "os_observer": "/usr/sbin/lsof -a -p PID -Fn",
+        "status": "error"
+      },
+      {
+        "archive_open_at_post_load_checkpoint": false,
+        "code": "PNG:CRC",
+        "os_observer": "/usr/sbin/lsof -a -p PID -Fn",
+        "status": "error"
+      },
+      {
+        "archive_open_at_post_load_checkpoint": false,
+        "code": "UnsupportedAnimation",
+        "os_observer": "/usr/sbin/lsof -a -p PID -Fn",
+        "status": "error"
+      },
+      {
+        "archive_open_at_post_load_checkpoint": false,
+        "code": "Archive",
+        "os_observer": "/usr/sbin/lsof -a -p PID -Fn",
+        "status": "error"
+      }
+    ],
+    "kernel": {
+      "reason": "explicit --skip-kernel; native validation does not imply a kernel verdict",
+      "status": "not-run"
+    },
+    "launch_environment": "BEND_MINECRAFT_LAUNCH_MODE=hidden",
+    "model_oracle": "executed official 26.3 CuboidModel/ResolvedModel reference fields; float raw bits",
+    "native_build": "pinned Bend 2.0.35, window-free CPU driver",
+    "ordinary": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.",
+    "pixel_oracle": "Pillow RGBA every byte, Image tree readback"
+  }
+}
