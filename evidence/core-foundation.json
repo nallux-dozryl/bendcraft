@@ -1,0 +1,33 @@
+{
+  "kind": "foundation_native_and_kernel_checks",
+  "target": "26.3",
+  "compiler": "bend2.0.35",
+  "source_sha256": {
+    "src/schedule.bend": "93aa79895fe340e27ae5fd562102d5980f0938003eb1bbde669a84010779b8c9",
+    "src/core.bend": "c1ee5a5390cdac0452c9c6cd3b0584a68ef68b5b0dfec867491c27e67ecadd4e",
+    "src/section_map.bend": "ded59d7938c02fd0876d65e37f9f90ea0cfebf3ca4bd107394342f8adbf33965",
+    "tests/schedule.bend": "70536273988c31ec3cff6a4761c1aa2222e157b4b07342e975ba270afcf521d1",
+    "tests/core.bend": "b79c101832d8bdf6fd063fc801dc81e83e5c4bea00e5ba12126c66860bd80eb1",
+    "tests/section_map.bend": "a459e40aa6bebaf31970daec989e765177d535c2bffbbcaa3eac0423c64f469c",
+    "LAWS.bend": "b2a34123e077c6f8fda0e2a434407fda0fdd6b8620b2bb31c5ef98d1ca5d4d4f",
+    "PROOF.bend": "1e89a6a8e58dd73e3fb88300246ba268f209d06f43bf984aa569eaeee5f876a0"
+  },
+  "native_tests": {
+    "schedule": "PASS order/due/future/cancellation/conservation",
+    "core": "PASS permission/state validation/order/delay/cancel/isolation/rollback/pause/step/daylight",
+    "section_map": "PASS full-key hash collision isolation/replacement/missing/pop"
+  },
+  "independent_kernel": {
+    "PROOF.bend": "ALL PROOFS CHECK",
+    "tests/core.bend": "ALL PROOFS CHECK",
+    "tests/section_map.bend": "ALL PROOFS CHECK"
+  },
+  "laws": {
+    "schedule": 2,
+    "section": 17,
+    "inventory": 16,
+    "total": 35
+  },
+  "vanilla_behavioral_parity": false,
+  "limits": "Foundation edit/tick APIs; no block behaviors, terrain, player physics, rendering, networking, persistence or vanilla UI claims."
+}
