@@ -1,0 +1,137 @@
+{
+  "canonical_fixture_bytes": 610,
+  "canonical_fixture_sha256": "6e0dcce7fc1161ab7bb47ce7c1d70490557ddf9946f6b31279d1e8dc26d44d88",
+  "counts": {
+    "accepted": 2205,
+    "cases": 5734,
+    "categories": {
+      "baseline": 2,
+      "encode-inner/boolean-byte-domain": 28,
+      "encode-inner/box-admission": 7,
+      "encode-inner/compound-bombs": 3,
+      "encode-inner/depth-bombs": 3,
+      "encode-inner/dimension-admission": 14,
+      "encode-inner/exact-schema": 75,
+      "encode-inner/list-shape": 60,
+      "encode-inner/nonfinite-state": 84,
+      "encode-inner/pitch-admission": 5,
+      "encode-inner/preallocation-count-bombs": 20,
+      "encode-inner/root-version": 14,
+      "encode-inner/seeded-mutations": 340,
+      "encode-inner/trailing-data": 4,
+      "encode-inner/truncation": 532,
+      "independently-classified-mutations": 400,
+      "inner/boolean-byte-domain": 28,
+      "inner/box-admission": 7,
+      "inner/compound-bombs": 3,
+      "inner/depth-bombs": 3,
+      "inner/dimension-admission": 14,
+      "inner/exact-schema": 75,
+      "inner/list-shape": 60,
+      "inner/nonfinite-state": 84,
+      "inner/pitch-admission": 5,
+      "inner/preallocation-count-bombs": 20,
+      "inner/root-version": 14,
+      "inner/seeded-mutations": 340,
+      "inner/trailing-data": 4,
+      "inner/truncation": 532,
+      "look-nonfinite": 64,
+      "motion/all-flags-support-counters": 512,
+      "motion/byte-cap-boundaries": 8,
+      "motion/coordinate-extremes": 16,
+      "motion/dimension-half-rounding-extremes": 130,
+      "motion/dimensions": 6,
+      "motion/pitch-boundaries": 16,
+      "motion/seeded-raw-bit-roundtrip": 1024,
+      "motion/signed-zero-numerical-box-admission": 128,
+      "noncanonical-inner-canonical-output": 13,
+      "noncanonical-input-canonical-output": 6,
+      "outer-byte-bound": 3,
+      "outer-depth-bound": 1,
+      "outer-element-bound": 3,
+      "outer-exact-field-set": 9,
+      "outer-look-list-shape": 19,
+      "outer-preallocation-count-bomb": 8,
+      "outer-root-name": 6,
+      "outer-root-type": 4,
+      "outer-schema": 38,
+      "outer-trailing-data": 4,
+      "outer-truncation": 610,
+      "physical-mutf-admission": 1,
+      "projected-current-pitch-bound": 4,
+      "raw-degree-edges-and-unwrapped-past": 304,
+      "raw-projection-mismatch": 16,
+      "validation-order": 1
+    },
+    "errors": {
+      "LookError": 64,
+      "NbtError": 640,
+      "PlayerError": 2742,
+      "SchemaError": 56,
+      "ViewMismatch0": 11,
+      "ViewMismatch1": 16
+    },
+    "exact_motion_and_look_decodes": 1132,
+    "exact_record_encodes": 1073,
+    "rejected": 3529
+  },
+  "dependency_audit": {
+    "player-codec-native.json": {
+      "evidence_sha256": "d01d6e4365c86f35588d2c246e4c509fb8f9556e5401fd9936c04b8b1fcd33ea",
+      "unchanged_sources_sha256": {
+        "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+        "src/geometry.bend": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f",
+        "src/locomotion.bend": "ccf8aa12636ba1fce5575606383bf75c02a8ac79ba952645b89aea2eef6cd459",
+        "src/movement.bend": "0e94fea7cc941a23d2ed7bbd2ccaf0117e6af363eb91f2db2e34428f9dd9e67f",
+        "src/nbt.bend": "b677546b5fc02aaa38f5c09e5b798c0d35aec32b1c4b37cbd7042b9a1a5275e4",
+        "src/player_codec.bend": "98a5d7e8e11bb1a811c4e3b1e19dcee010e9f36eb15967810fbe95f4222a09a7",
+        "src/player_tick.bend": "d583f3014011313097779b69ee0fd8d77bd3ed0e1e7895b629903eb64da9699f",
+        "src/support.bend": "aca42f24e0a32bd89356ac33f6d9bbe2ab5975ce938e2d2750496c01a6137455",
+        "src/travel.bend": "717e969e3989a7a8e443b18f69c171bdc11a14130828233ce85e6cd914e1f8f1"
+      }
+    },
+    "player-look-native.json": {
+      "evidence_sha256": "bfe430b594b70ba17b8a05a7083a9743e4c85b59858d1ab2ff4eaca79e4edd57",
+      "unchanged_sources_sha256": {
+        "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+        "src/player_look.bend": "35ec863e078e46f2c2502b975f3e9f259114aec7baac614c68ba6e46773260ca"
+      }
+    }
+  },
+  "fixture_manifest_sha256": "228a5be52e8d1e51b6a41b002d9660e2f8b14b043c68ea49b96ec6a92e27802b",
+  "format": "custom bendex:player-record formatInt1",
+  "limits": {
+    "bytes": 8192,
+    "container_depth": 2,
+    "elements_per_container": 4096
+  },
+  "oracle_selfchecks": {
+    "factor_f32_bits": "3c8efa35",
+    "integer_F32_half_vs_hardware": 9964,
+    "rational_F32_degree_projection_vs_exact_F64_product": 10027,
+    "rational_F64_box_sum_checks": 4600,
+    "zero_sign": "Exact rationals verify numerical zero; IEEE host operations and explicit min/max determine its sign"
+  },
+  "oracle_sources_sha256": {
+    "tools/test_nbt.py": "d81adb1a04baa13777e54abaaf1e20cbe97bc5d15c5cf2df047c4f17be2c8cdf",
+    "tools/test_player_codec.py": "222bb198e3a4c0585db44967a0c6d26e345ece67fe68e5a509358f091086cbe0",
+    "tools/test_player_look.py": "8f37e0ec698f1373161164ed3d69d40b5708f1fd786aceac234fcfe8af155dad",
+    "tools/test_player_record.py": "cd84b5f1b1b36ffd248a4232929030e574f7fbd3ed1ff97897bcde2e84c5a001"
+  },
+  "schema": 1,
+  "sources_sha256": {
+    "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "src/geometry.bend": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f",
+    "src/locomotion.bend": "ccf8aa12636ba1fce5575606383bf75c02a8ac79ba952645b89aea2eef6cd459",
+    "src/movement.bend": "0e94fea7cc941a23d2ed7bbd2ccaf0117e6af363eb91f2db2e34428f9dd9e67f",
+    "src/nbt.bend": "b677546b5fc02aaa38f5c09e5b798c0d35aec32b1c4b37cbd7042b9a1a5275e4",
+    "src/player_codec.bend": "98a5d7e8e11bb1a811c4e3b1e19dcee010e9f36eb15967810fbe95f4222a09a7",
+    "src/player_look.bend": "35ec863e078e46f2c2502b975f3e9f259114aec7baac614c68ba6e46773260ca",
+    "src/player_record.bend": "1812d954991cbce193353490d5db002f26873f364c426f497f82e7b13594235b",
+    "src/player_tick.bend": "d583f3014011313097779b69ee0fd8d77bd3ed0e1e7895b629903eb64da9699f",
+    "src/support.bend": "aca42f24e0a32bd89356ac33f6d9bbe2ab5975ce938e2d2750496c01a6137455",
+    "src/travel.bend": "717e969e3989a7a8e443b18f69c171bdc11a14130828233ce85e6cd914e1f8f1",
+    "tests/player_record.bend": "8f92162630f77d88d8ec865a5fff02d7f0cac9be3da3dedee85714799172b0d8"
+  },
+  "status": "oracle-corpus-valid-native-unverified"
+}
