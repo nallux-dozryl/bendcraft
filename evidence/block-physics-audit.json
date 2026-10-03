@@ -1,0 +1,97 @@
+{
+  "build": {
+    "artifact": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native-cache/artifacts/28fa4e3b5a392f97dd390e819220ce80a76a746758a27ebc7e47bd4eb26173e0/program",
+    "binary_bytes": 1757800,
+    "binary_sha256": "28fa4e3b5a392f97dd390e819220ce80a76a746758a27ebc7e47bd4eb26173e0",
+    "cache_key": "179e0faf146e16a7f84f91e7456385d33f499b5207ed6289a78d3c795737c8f5",
+    "compiler": {
+      "flags": [
+        "-std=c11",
+        "-O3",
+        "<emitted.c>",
+        "-lpthread",
+        "-lm",
+        "-o",
+        "<native>"
+      ],
+      "path": "/usr/bin/clang",
+      "resource_dir": "/Library/Developer/CommandLineTools/usr/lib/clang/17",
+      "sysroots": [
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk"
+      ],
+      "version": "Apple clang version 17.0.0 (clang-1700.0.13.5)\nTarget: arm64-apple-darwin25.4.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin\n"
+    },
+    "compiler_driver_probe_sha256": "ebdd02590ad991c04039a59784c788cbf3ecb74a7ca1f57b32dea295eb6b00c9",
+    "dependency_count": 1633,
+    "dependency_manifest_sha256": "786158f9143e312e237c39ac776e8d0ad8edaf2dff62571d3105366beaad1b70",
+    "emitted_c_sha256": "3ae333761bdb7bcc07ae95ba82fb887fa61a6892e5837f5c718d52eba3f91d80",
+    "ignored_receipt_sha256": "f9bf833a2550d8950fb76b75f724f919f5bc6b752d9eafa6f3bdb572d80acad0",
+    "timings": {
+      "emission_seconds": 12.90079375077039,
+      "native_seconds": 12.485133667476475,
+      "total_seconds": 30.220783333294094
+    }
+  },
+  "cases_per_run": 74866,
+  "confidence": "high for the frozen measured generation; independent kernel verification unresolved",
+  "derived_table": {
+    "bytes": 815,
+    "file": "reference_block_primitives.tsv",
+    "sha1": "33771cc7fa21f65228f27d82867ef3cb5dbcc36a",
+    "sha256": "e4a4ad19274a04559ea8aa72a61db792744a54c84d50f0a4a5321aec75fc6e93"
+  },
+  "frozen_generation_retained": true,
+  "heavy_slot_released": true,
+  "kernel_limitation": "Compiler TypeScript/BendTT mismatch, exit1 in3.342031s; no independent kernel pass.",
+  "kernel_status": "failed",
+  "method": "Read-only post-run source/reference/native receipt/cache/compiler/dependency/output hash audit; no compile, Java rerun, native rerun, proof retry or source changes.",
+  "native_run_timing_definition": "seconds includes child execution plus Python assertion comparison; eager request-file reads dominate comparator overhead. Each child separately completed within its120s timeout.",
+  "native_runs": 2,
+  "native_status": "passed",
+  "output_files": [
+    {
+      "bytes": 6205014,
+      "file": "observed-0.tsv",
+      "sha1": "a0d8c54409ee3c0648fe1107930cce91112bdad7",
+      "sha256": "63e38be74a9c26df17c9377ba66a2be7386e00e17dcd562b6ba3f36cc0e51ed5"
+    },
+    {
+      "bytes": 6205014,
+      "file": "observed-1.tsv",
+      "sha1": "a0d8c54409ee3c0648fe1107930cce91112bdad7",
+      "sha256": "63e38be74a9c26df17c9377ba66a2be7386e00e17dcd562b6ba3f36cc0e51ed5"
+    }
+  ],
+  "owned_file_hashes": {
+    "docs/BLOCK_PHYSICS.md": "c1c0b3c1fa54374303dff8fd1a8b850158f35447e778ff91b737c0df4df551fc",
+    "evidence/block-physics-kernel.json": "bb7d72342d57375b977e3be2747a1670ae3fa75d0122d4e1a432d1b887fd261f",
+    "evidence/block-physics-native.json": "3b1a204a2a5fce2d99d5c6172842f7e0b80dd0151c680f34f87af03f89246aea",
+    "evidence/block-physics-preflight.json": "e87ea9e3202acfc5389a7820e8c6089ee2bd9dbade2a35f89371ef613aeb55d4",
+    "evidence/block-physics-reference.json": "f9ee3c4de7af482bce3d5f48031347b0e1eb76bb607363d03cc83b6352db4a15",
+    "reference/block_primitives.json": "8c3b93bf4f870fa8c99913c476b8266a56c2518dea6079c08b8a123d87784c7a",
+    "src/block_physics.bend": "227f3764f1d420ab8b927df027b7a2efb72f77a4434157e5aec1bdfa611c0c2c",
+    "tests/block_physics.bend": "6e7a30ad41718ba82a0ea4a65c187b8cb22dc092f463f3421ee30dbd812ce171",
+    "tools/reference_block_primitives_probe.py": "bc361958dab8834e5bc09047611e3a7b55bf3fae15eb0cf399bf543c319700d4",
+    "tools/test_block_physics.py": "5bd0288f085656400215f57e27c54edfb61f8b3808241b64990f51cfaf75552a"
+  },
+  "registry_identity": "4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc",
+  "runtime_input_expected_sha256": {
+    "expected": "63e38be74a9c26df17c9377ba66a2be7386e00e17dcd562b6ba3f36cc0e51ed5",
+    "requests": "252298c89e4b5c10a98ae866f22ccfac98dddac641566350c724f446343e67eb"
+  },
+  "scope": [
+    "Only actual pinned final-field getter friction/speed/jump values and exact widening.",
+    "No contextual collision/outline/shape/light or world movement behavior.",
+    "No current world/runtime/support integration; public raw Catalog construction outside integrity admission."
+  ],
+  "sources_sha256": {
+    "src/block_physics.bend": "227f3764f1d420ab8b927df027b7a2efb72f77a4434157e5aec1bdfa611c0c2c",
+    "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "src/hash.bend": "d2473695632b19e68c8d636668e4617f04d70892fb2ab6559cb24d4b33c1b978",
+    "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+    "src/registry.bend": "821c53d9cfa3044be3cae2af968f55563c0be2bebc9beae55a29d77d47b140a0",
+    "src/unicode.bend": "8f0cd9bbcd0e7f938af370675eca0c73a9b97b90c2789a1e77e5a29a918455bd",
+    "tests/block_physics.bend": "6e7a30ad41718ba82a0ea4a65c187b8cb22dc092f463f3421ee30dbd812ce171"
+  },
+  "status": "passed"
+}

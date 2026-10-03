@@ -1,0 +1,107 @@
+{
+  "corpus": {
+    "all_state_orders": [
+      "forward",
+      "reverse"
+    ],
+    "cases": 74866,
+    "categories": {
+      "bind-ownership": 2,
+      "catalog-corruption": 116,
+      "decode": 6,
+      "encode": 1,
+      "forged-owner": 40,
+      "identity": 4,
+      "io": 2,
+      "io-repeat": 1024,
+      "parse-context": 5,
+      "state-bound": 6,
+      "state-getter": 73656,
+      "valid-replacement": 4
+    },
+    "corrupt_catalog_fixtures": 29,
+    "corrupt_catalog_manifest_sha256": "6b4f09ec081582af8da4db136e5588fcee5d863817b5424df95c413089fed68f",
+    "expected": {
+      "bytes": 6205014,
+      "file": "expected.tsv",
+      "sha1": "a0d8c54409ee3c0648fe1107930cce91112bdad7",
+      "sha256": "63e38be74a9c26df17c9377ba66a2be7386e00e17dcd562b6ba3f36cc0e51ed5"
+    },
+    "expected_sha256": "63e38be74a9c26df17c9377ba66a2be7386e00e17dcd562b6ba3f36cc0e51ed5",
+    "independent_exact_F32_widening_pairs": 107169,
+    "repeated_failed_actual_loads": 1024,
+    "request_sha256": "252298c89e4b5c10a98ae866f22ccfac98dddac641566350c724f446343e67eb",
+    "requests": {
+      "bytes": 992711,
+      "file": "requests.tsv",
+      "sha1": "6f3bee692ac8429b314f240e3e1c5d4ed4bb41d9",
+      "sha256": "252298c89e4b5c10a98ae866f22ccfac98dddac641566350c724f446343e67eb"
+    },
+    "seeded_repeat_queries": 1024
+  },
+  "ordinary": [
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/block_physics.bend",
+        "--check-only"
+      ],
+      "exit_code": 0,
+      "pid": 89084,
+      "seconds": 0.827867,
+      "stderr": "",
+      "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/block_physics.bend",
+        "--check-only"
+      ],
+      "exit_code": 0,
+      "pid": 89090,
+      "seconds": 1.336016,
+      "stderr": "",
+      "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n",
+      "timed_out": false
+    }
+  ],
+  "reference_corruption": {
+    "count": 10,
+    "rejected": [
+      "state-count",
+      "state-id",
+      "state-owner",
+      "F32-value",
+      "F64-widen",
+      "resealed-F32-F64-pair",
+      "version",
+      "registered-override",
+      "mutable-field",
+      "protocol-id"
+    ],
+    "shared_reference_or_artifact_files_changed": false,
+    "status": "passed"
+  },
+  "reference_file_sha256": "8c3b93bf4f870fa8c99913c476b8266a56c2518dea6079c08b8a123d87784c7a",
+  "reference_probe_tool_sha256": "bc361958dab8834e5bc09047611e3a7b55bf3fae15eb0cf399bf543c319700d4",
+  "registry_identity": "4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc",
+  "runner_sha256": "5bd0288f085656400215f57e27c54edfb61f8b3808241b64990f51cfaf75552a",
+  "sources_sha256": {
+    "src/block_physics.bend": "227f3764f1d420ab8b927df027b7a2efb72f77a4434157e5aec1bdfa611c0c2c",
+    "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "src/hash.bend": "d2473695632b19e68c8d636668e4617f04d70892fb2ab6559cb24d4b33c1b978",
+    "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+    "src/registry.bend": "821c53d9cfa3044be3cae2af968f55563c0be2bebc9beae55a29d77d47b140a0",
+    "src/unicode.bend": "8f0cd9bbcd0e7f938af370675eca0c73a9b97b90c2789a1e77e5a29a918455bd",
+    "tests/block_physics.bend": "6e7a30ad41718ba82a0ea4a65c187b8cb22dc092f463f3421ee30dbd812ce171"
+  },
+  "status": "prepared-native-kernel-unverified",
+  "table": {
+    "bytes": 815,
+    "file": "reference_block_primitives.tsv",
+    "sha1": "33771cc7fa21f65228f27d82867ef3cb5dbcc36a",
+    "sha256": "e4a4ad19274a04559ea8aa72a61db792744a54c84d50f0a4a5321aec75fc6e93"
+  }
+}
