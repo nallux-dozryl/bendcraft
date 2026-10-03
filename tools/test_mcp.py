@@ -201,9 +201,15 @@ def main() -> int:
     checks: list[str] = []
     try:
         framing_verdict = build([args.bend, "tests/framing.bend", "--verdict"])
+        # Reuse only digest-verified compilation; every protocol/proof check
+        # below still runs. Explicit --skip-build retains its legacy behavior.
+        native_builds = {}
         if not args.skip_build:
-            build([args.bend, "mcp.bend", "-o", native])
-            build([args.bend, "server.bend", "-o", server_binary])
+            from build_native import ensure_native
+            for source, output in [("mcp.bend", native), ("server.bend", server_binary)]:
+                native_builds[source] = ensure_native(ROOT/source, output, bend=args.bend)
+            native = Path(native_builds["mcp.bend"]["artifact"])
+            server_binary = Path(native_builds["server.bend"]["artifact"])
         port = free_port()
         environment = os.environ.copy()
         environment.update(MC_LIVE_PORT=str(port), MC_DEV_TOKEN=TOKEN,
@@ -399,6 +405,7 @@ def main() -> int:
                         ROOT / "src/core.bend", ROOT / "src/registry.bend", Path(__file__).resolve()]
         evidence = {
             "status": "passed", "kind": "actual_mcp_stdio_and_live_tcp_integration",
+            "native_builds": native_builds,
             "recorded_at_utc": datetime.now(timezone.utc).isoformat(), "command": "python3 tools/test_mcp.py" + (" --skip-build" if args.skip_build else ""),
             "checks": checks, "current_tool_count": tool_count, "mcp_processes": len(clients),
             "stdio_responses_observed": sum(client.responses for client in clients),

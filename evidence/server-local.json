@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "actual_transport": true,
+  "checks": [
+    "TCP queued edits execute in typed local step and appear in local snapshot",
+    "typed local admission executes through TCP step with shared event ordering",
+    "same realtime timer and pause state observed by typed and remote queries",
+    "actor stop acknowledges then explicit process exit releases actual listener and socket"
+  ],
+  "state": "one affine Core.World owned by the shared actor; no world clone",
+  "source_sha256": {
+    "src/server.bend": "3c9e5f681b0957b3e8c36b4ddde94a6ad5705b8b5b45cc6b2a81572446d7c2cf",
+    "tests/server_local.bend": "efc2ce1957d5bb2ecc2189157d788b5359ab3b29cac2d06d925cbf01adcac14c",
+    "tools/test_server_local.py": "d93580a7f99d32350b70bc694f852e75dba9893ad827ddbc61f5b07d4cc20e8b"
+  },
+  "binary_sha256": "b21695242ad4ff13390e828541996b55998397e16af112cc6db98a06a33d3bce",
+  "elapsed_seconds": 9.352,
+  "command": "python3 tools/test_server_local.py",
+  "shutdown_limit": "Stop closes the state actor and timer; native process Halt releases parked accept and client sockets."
+}

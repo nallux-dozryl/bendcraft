@@ -10,16 +10,17 @@ import subprocess
 import time
 from test_server import Client, free_port, TOKEN
 from test_mcp import MCP
+from build_native import ensure_native
 
 ROOT = Path(__file__).resolve().parents[1]
 BEND = Path.home() / ".bend/bin/bend"
 
 def main():
     started = time.monotonic()
-    binary = ROOT / "build/time-overhaul-server"
-    mcp_binary = ROOT / "build/minecraft-mcp"
-    for source, output in [("mods/examples/time_overhaul.bend", binary), ("mcp.bend", mcp_binary)]:
-        subprocess.run([str(BEND), source, "-o", str(output)], cwd=ROOT, check=True)
+    native_builds = {source: ensure_native(ROOT/source, ROOT/output, bend=BEND) for source, output in
+                    [("mods/examples/time_overhaul.bend", "build/time-overhaul-server"), ("mcp.bend", "build/minecraft-mcp")]}
+    binary = Path(native_builds["mods/examples/time_overhaul.bend"]["artifact"])
+    mcp_binary = Path(native_builds["mcp.bend"]["artifact"])
     port = free_port()
     env = os.environ.copy()
     env.update(MC_DEV_TOKEN=TOKEN, MC_LIVE_PORT=str(port))
@@ -92,6 +93,7 @@ def main():
         checks.append("unchanged actual MCP adapter discovers and executes mod operations on shared state")
         files = ["mods/examples/time_overhaul.bend", "src/server.bend", "src/game.bend", "src/live.bend", "src/core.bend", "src/mcp.bend", "mcp.bend", "tools/test_mod_driver.py"]
         evidence = {"status": "passed", "kind": "actual_complete_driver_replacement_tcp_and_mcp", "checks": checks,
+                    "native_builds": native_builds,
                     "source_sha256": {name: hashlib.sha256((ROOT / name).read_bytes()).hexdigest() for name in files},
                     "binaries_sha256": {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in [binary, mcp_binary]},
                     "realtime_ticks_over_280ms": changed, "ticks_per_pulse": 4, "discovered_tools": len(names),

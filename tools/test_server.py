@@ -10,6 +10,7 @@ import select
 import socket
 import subprocess
 import time
+from build_native import ensure_native
 
 ROOT = Path(__file__).resolve().parents[1]
 BEND = Path.home() / ".bend/bin/bend"
@@ -55,8 +56,8 @@ def free_port() -> int:
 
 def main() -> None:
     start = time.perf_counter()
-    binary = ROOT / "build/minecraft-server"
-    subprocess.run([str(BEND), "server.bend", "-o", str(binary)], cwd=ROOT, check=True)
+    native_build = ensure_native(ROOT / "server.bend", ROOT / "build/minecraft-server", bend=BEND)
+    binary = Path(native_build["artifact"])
     port = free_port()
     environment = os.environ.copy()
     environment.update(MC_DEV_TOKEN=TOKEN, MC_LIVE_PORT=str(port))
@@ -246,6 +247,7 @@ def main() -> None:
         events = first.result("world.events")
         assert events["order"] == "newest-first" and len(events["events"]) == 4
         evidence = {"status": "passed", "kind": "actual_external_tcp_integration", "checks": checks,
+                    "native_build": native_build,
                     "source_sha256": {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
                                       for p in [ROOT / "server.bend", *[ROOT / f"src/{n}.bend" for n in ("server", "game", "registry", "live", "core", "schedule", "section", "section_map", "json", "framing")]]},
                     "binary_sha256": hashlib.sha256(binary.read_bytes()).hexdigest(), "compiler": "Bend 2.0.35",
