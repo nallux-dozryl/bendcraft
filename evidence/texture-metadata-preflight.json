@@ -1,0 +1,25 @@
+{
+  "command": "python3 tools/test_texture_metadata.py --prepare-only",
+  "limit_cases": 6,
+  "native_source_fingerprint": {
+    "pinned_compiler_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+    "src/big_uint.bend": "fbe5965ee16ee3d6864def33fbc6e5e4b1b9bc7da4735d99311c1a23c65e2444",
+    "src/float_parse.bend": "fe22007f0805f3c955fcaada88c1da76a3cceda74f0ff3840ae47af49a02c683",
+    "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+    "src/resource_json.bend": "271f9ace6304fdd42ced039ab2e7f95459eed1f20f011115f399b619f2bc6ffb",
+    "src/texture_metadata.bend": "6d0fe93f022cae2680ae7499ef5b0822f2f7b8d02fbbf1b1f60278aefb9f9f4c",
+    "tests/texture_metadata.bend": "1f768011bd6ebc92ce4f11d93291917198e87ab2eaab00e6d123504cd3d7daac"
+  },
+  "oracle_summary": {
+    "cases": 344,
+    "consumer_cases": 6,
+    "official_png_metadata_files": 218,
+    "status_counts": {
+      "absent": 161,
+      "error": 79,
+      "ok": 104
+    }
+  },
+  "reference_sha256": "c053e17830cc7a2777a549914d84a13013e4d03a3bc91ab2fdceb09a1c7c9247",
+  "status": "prepared-native-unverified"
+}

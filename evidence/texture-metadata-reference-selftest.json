@@ -1,0 +1,24 @@
+{
+  "command": "python3 tools/reference_texture_metadata_probe.py selftest",
+  "reference_sha256": "c053e17830cc7a2777a549914d84a13013e4d03a3bc91ab2fdceb09a1c7c9247",
+  "status": "passed",
+  "summary": {
+    "cases": 344,
+    "consumer_cases": 6,
+    "corruptions_rejected": [
+      "unsealed_bits",
+      "resealed_bits",
+      "resealed_absence",
+      "input_resource",
+      "consumer",
+      "class_provenance"
+    ],
+    "fresh_java_runs": 2,
+    "official_png_metadata_files": 218,
+    "status_counts": {
+      "absent": 161,
+      "error": 79,
+      "ok": 104
+    }
+  }
+}
