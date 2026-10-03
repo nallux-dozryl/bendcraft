@@ -1,0 +1,1007 @@
+{
+  "actual_Java_ticks": 6,
+  "corrupt_startup_cases": 110,
+  "fixture_manifest_sha256": "f0560fb36a5200f8339cd5f540b03cafdd59e5eb50f259ed23b52b6c783f3276",
+  "official_registry": {
+    "blocks": 1286,
+    "canonical_bytes": 167974,
+    "canonical_sha256": "4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc",
+    "source_sha256": "27769e75bf862d0540b2df2a6e99f6b7556a867bff6339fb08566240ee124cac",
+    "states": 35723
+  },
+  "oracle_tools_sha256": {
+    "tools/test_mcp.py": "71eed7d510b4533eb35793cfd24227b7121456b4d27373ae10c04cc790e0de45",
+    "tools/test_nbt.py": "d81adb1a04baa13777e54abaaf1e20cbe97bc5d15c5cf2df047c4f17be2c8cdf",
+    "tools/test_persistence.py": "c43cd057d992de30d946de7b46f358100a23ba3d7a9c688aea75ae7f2e872359",
+    "tools/test_player_codec.py": "222bb198e3a4c0585db44967a0c6d26e345ece67fe68e5a509358f091086cbe0",
+    "tools/test_player_record.py": "cd84b5f1b1b36ffd248a4232929030e574f7fbd3ed1ff97897bcde2e84c5a001",
+    "tools/test_support_world.py": "4280ccee2454b4a6f1f0e6c89ac9481ea04f3cefbba3140819ccd5d8e794c822",
+    "tools/test_travel_world.py": "4a349358d4b7386afec841adc2e8c3b57d90281f608274657b7f090b1a3bff13",
+    "tools/test_world_codec.py": "6c89a554e0d1a4301ca3bf85d75706780f5f7398f4c100fd1a582bc2653a559a"
+  },
+  "reference_provenance": [
+    {
+      "classpath": [
+        {
+          "bytes": 26652008,
+          "file": "server-26.3.jar",
+          "sha1": "cc3964451a3b32a0488110d5e3e6ad8d75fe6a66",
+          "sha256": "a362163eec5d1612d520772bc16e5b39c09e3b234fdc045f56bf544284ee8ae6"
+        },
+        {
+          "bytes": 910232,
+          "file": "lz4-java-1.10.1.jar",
+          "sha1": "f541d7f910fe3d76f38f799c507c48cc81b12ecb",
+          "sha256": "a58a84c4271e50df4c96ed916ccb7e48a869f8ed9cdcda1ad5d3d4c33b0214a3"
+        },
+        {
+          "bytes": 325945,
+          "file": "azure-json-1.4.0.jar",
+          "sha1": "fcc1d354dbc3e0300e5276b1bf124d0247799cd8",
+          "sha256": "c50bc998cd1a6c689f8644b51c206217bf2da09d5b949e777490a60290cc3a0d"
+        },
+        {
+          "bytes": 1022125,
+          "file": "oshi-core-6.9.0.jar",
+          "sha1": "03224870731860cfcd7744581a05b559e94291e7",
+          "sha256": "b29ba9bce041e6ea822203d5b5a692660c87551241510ebc76eedffe684844c7"
+        },
+        {
+          "bytes": 313604,
+          "file": "gson-2.14.0.jar",
+          "sha1": "efc0e34ede4e3204eaefb84a00e55e8c86634382",
+          "sha256": "2cbd119bf1961c28788310963dc80ba65f58cdeec1dd139c8bdb1240faa2c36f"
+        },
+        {
+          "bytes": 10763,
+          "file": "failureaccess-1.0.3.jar",
+          "sha1": "aeaffd00d57023a2c947393ed251f0354f0985fc",
+          "sha256": "cbfc3906b19b8f55dd7cfd6dfe0aa4532e834250d7f080bd8d211a3e246b59cb"
+        },
+        {
+          "bytes": 3064793,
+          "file": "guava-33.6.0-jre.jar",
+          "sha1": "c376b13067cc99a5774403530953f7b05a91e218",
+          "sha256": "dc573e1fca4fd5454f4a5fd3d7da2df03002876a4175bafc14a95980dd7713b3"
+        },
+        {
+          "bytes": 396486,
+          "file": "msal4j-1.24.1.jar",
+          "sha1": "c233f2d047b9755f7041adf21a858c680e4c9242",
+          "sha256": "12e62f79d1a71d176a41c168c0587f8167f0add99b78f006f39595bd7242aebe"
+        },
+        {
+          "bytes": 152645,
+          "file": "authlib-10.0.77.jar",
+          "sha1": "add8754cda96cf0cd840441632875648836f8a71",
+          "sha256": "521672866582633a412c82171d3cfa416ecaccdf05a43baf809c16f9aec07068"
+        },
+        {
+          "bytes": 80151,
+          "file": "brigadier-1.3.11.jar",
+          "sha1": "3373d1e7bf00c8b99bed1ea4efb8c47344e4a887",
+          "sha256": "9d09cf4819de83dfcd38bcb212d5f2227131791cef3abbfca3321d6fb2b9a64d"
+        },
+        {
+          "bytes": 753612,
+          "file": "datafixerupper-10.0.21.jar",
+          "sha1": "b6b2ae770c02e0c1eb90f9985b151e9085a38d0b",
+          "sha256": "3547cb1da8993fb7ebd42494d0e78997d2cfbe90c421f5efd022863e6909941e"
+        },
+        {
+          "bytes": 14292,
+          "file": "jtracy-1.14.38.jar",
+          "sha1": "cc2ad81342001b4281c305a298d7f50332354058",
+          "sha256": "721bff502a9664d689d781ab7bfed19330606c2e1ef6b8e4d59fba67e7e765da"
+        },
+        {
+          "bytes": 19540,
+          "file": "logging-1.7.12.jar",
+          "sha1": "351cea64a5233361327d8d54c44277041beed97f",
+          "sha256": "3c7ac9742fa98c773275379eb1046c048b5d2ee989152a8c69e7ba696c3f8538"
+        },
+        {
+          "bytes": 563971,
+          "file": "commons-io-2.20.0.jar",
+          "sha1": "36f3474daec2849c149e877614e7f979b2082cd2",
+          "sha256": "df90bba0fe3cb586b7f164e78fe8f8f4da3f2dd5c27fa645f888100ccc25dd72"
+        },
+        {
+          "bytes": 378032,
+          "file": "netty-buffer-4.2.16.Final.jar",
+          "sha1": "05397ef65dcb60670e0e0dba4854522873af3070",
+          "sha256": "cc36ae9fbd0b03fe755eb4eb4424ca53b59cfd297d7fd47d49e5b1059beded6c"
+        },
+        {
+          "bytes": 155355,
+          "file": "netty-codec-base-4.2.16.Final.jar",
+          "sha1": "01a01d45a9efc228c6d747525848b065e0656b5f",
+          "sha256": "feb410225938d9970de6b624a0c031d079804fa5cc5e1ec6e9298f16db5998a7"
+        },
+        {
+          "bytes": 183349,
+          "file": "netty-codec-compression-4.2.16.Final.jar",
+          "sha1": "bdbbcfcdbe217b95c14a04df4fc5d31213d5c27c",
+          "sha256": "13c8565414dd2115281303ef4ad1f7cc69bd7771d8d12c7d2fb31307dff26d11"
+        },
+        {
+          "bytes": 678387,
+          "file": "netty-codec-http-4.2.16.Final.jar",
+          "sha1": "b5e0715df90047ee5a0138c8f704f43c751009e4",
+          "sha256": "0d16f981de8d0d304a2ab1a81f0a674892089fbaa8a583100aebb4a5b00456ec"
+        },
+        {
+          "bytes": 819965,
+          "file": "netty-common-4.2.16.Final.jar",
+          "sha1": "c2bc7fa5acfa2afc777e944d84f0aa65559cc81e",
+          "sha256": "9825ee68a0dc4cd2b53e2f532502401b2211bad9b77e8b04882d9e64487283ff"
+        },
+        {
+          "bytes": 587814,
+          "file": "netty-handler-4.2.16.Final.jar",
+          "sha1": "cc82873ae4b6d14effe480740ad838de09add70d",
+          "sha256": "a259ca496da05ac1981f95cd856211f894a328056a6129e9cd70dbbd5df401f7"
+        },
+        {
+          "bytes": 32975,
+          "file": "netty-resolver-4.2.16.Final.jar",
+          "sha1": "fcea6d64273b59ab9127b68c16ae98af34642139",
+          "sha256": "c9eca6a99036485cf1d186b4a6a595b0a54c53808319ee03924270eae04c32bb"
+        },
+        {
+          "bytes": 549855,
+          "file": "netty-transport-4.2.16.Final.jar",
+          "sha1": "ae87a3bec51d503475a19fbd718bf777f2fc06c6",
+          "sha256": "cfa3f654caff906653385f4b7ddaa539d795b78f5711a622482b17d2b73484c0"
+        },
+        {
+          "bytes": 159935,
+          "file": "netty-transport-classes-epoll-4.2.16.Final.jar",
+          "sha1": "cf90c7b892e284ba9f1545dce170168369b3b9d6",
+          "sha256": "9f2b53210db9c8d24e787ed43f3896aaf30d686ed270c7afbb29ab6330c6aa23"
+        },
+        {
+          "bytes": 116819,
+          "file": "netty-transport-classes-kqueue-4.2.16.Final.jar",
+          "sha1": "0fa2bcf8c71626510f6fae173f78182117b70f7a",
+          "sha256": "6599b495f69420cb240ab0a1aa60a19a2df3bc72791729170e0993727637a689"
+        },
+        {
+          "bytes": 42393,
+          "file": "netty-transport-native-epoll-4.2.16.Final-linux-x86_64.jar",
+          "sha1": "439c24f5c27c220deb042b42e4048d606edeb78d",
+          "sha256": "2e00548e731948881d0c73ee79d2ead759254e750929406a1d595484758f0267"
+        },
+        {
+          "bytes": 43899,
+          "file": "netty-transport-native-epoll-4.2.16.Final-linux-aarch_64.jar",
+          "sha1": "eed34f3b37b4c46a0cbb49456ccc4e3bd7195e4c",
+          "sha256": "212cc7d81390e31b580a1fb91b6c8d963b43e762ed072c555e2b09ad4476e928"
+        },
+        {
+          "bytes": 26737,
+          "file": "netty-transport-native-kqueue-4.2.16.Final-osx-x86_64.jar",
+          "sha1": "dd9d41b06355a6a1815d902ee087a693aab83755",
+          "sha256": "05a09a4ab51f488f0c22f42ccce6c06935afbfac51173fae44170465aa072828"
+        },
+        {
+          "bytes": 27482,
+          "file": "netty-transport-native-kqueue-4.2.16.Final-osx-aarch_64.jar",
+          "sha1": "ddb942cad6c0e978caa2215757512b36c5ffacec",
+          "sha256": "796c503f7a80217177bd315f6448263134ee0f9042627d5fd698c760bcf99c8c"
+        },
+        {
+          "bytes": 46877,
+          "file": "netty-transport-native-unix-common-4.2.16.Final.jar",
+          "sha1": "3cf32390f1b80af890ac44aa0698c2ff58c2a4d7",
+          "sha256": "41ca8fe192083d17917be7ddcecded4da4fc1db1d1656d03d0bcb14e2f431155"
+        },
+        {
+          "bytes": 23965563,
+          "file": "fastutil-8.5.18.jar",
+          "sha1": "a6cff377eecc19c2037bf31568a6d7106b50ba1f",
+          "sha256": "9094ae67d01d0ad246f886f11ad557fc2e79c72cbf3feed83e1512a8ae90a74a"
+        },
+        {
+          "bytes": 2002589,
+          "file": "jna-5.17.0.jar",
+          "sha1": "33d12735bef894440780fce64f9758d420c7bae2",
+          "sha256": "b3a9408e7c51e08ef0e3bfcc08f443f6ec0f6191ba8cd7c18d53d2b22e5bdbc0"
+        },
+        {
+          "bytes": 1378617,
+          "file": "jna-platform-5.17.0.jar",
+          "sha1": "a4934c44d25a9d8c2ddf4203affd20330cb3426f",
+          "sha256": "b7e3d46c87bad2eb409b0e704916bcd81206168e357312dfddd0e253679cd9e0"
+        },
+        {
+          "bytes": 78146,
+          "file": "jopt-simple-5.0.4.jar",
+          "sha1": "4fdac2fbe92dfad86aa6e9301736f6b4342a3f5c",
+          "sha256": "df26cc58f235f477db07f753ba5a3ab243ebe5789d9f89ecf68dd62ea9a66c28"
+        },
+        {
+          "bytes": 713862,
+          "file": "commons-lang3-3.20.0.jar",
+          "sha1": "65897b3e5731220962e659e001904af3c3cbeba9",
+          "sha256": "69e5c9fa35da7a51a5fd2099dfe56a2d8d32cf233e2f6d770e796146440263f4"
+        },
+        {
+          "bytes": 351126,
+          "file": "log4j-api-2.26.0.jar",
+          "sha1": "ad52af0ecf054a7e3f275a2e180ee06d9c490951",
+          "sha256": "820de7bbaf430eaf2e3e5ccb92f23e2085797c5ac4d4f7fc6c8b660fbefa1dbc"
+        },
+        {
+          "bytes": 2015101,
+          "file": "log4j-core-2.26.0.jar",
+          "sha1": "d267ca60b27ddb075e0b4e75e7875859717bf85f",
+          "sha256": "406bb3132c47a5d322e5c571feb0787ca84496469f346eb51f1ef2ee45499902"
+        },
+        {
+          "bytes": 30211,
+          "file": "log4j-slf4j2-impl-2.26.0.jar",
+          "sha1": "668c0f0e813d83f00a7182533aa658ec7e7a0a0d",
+          "sha256": "cfc1bddbd39e684b698ae968291d8a3b3a55ee0ec2ef3d3ea5c2336a9e151598"
+        },
+        {
+          "bytes": 814581,
+          "file": "joml-1.10.9.jar",
+          "sha1": "438e036486bad66b189bff385dd07dea4f74a146",
+          "sha256": "feca4db853371704338621c120acc5cc32300d8af635fa42414b6213301e216b"
+        },
+        {
+          "bytes": 3819,
+          "file": "jspecify-1.0.0.jar",
+          "sha1": "7425a601c1c7ec76645a78d22b8c6a627edee507",
+          "sha256": "1fad6e6be7557781e4d33729d49ae1cdc8fdda6fe477bb0cc68ce351eafdfbab"
+        },
+        {
+          "bytes": 69908,
+          "file": "slf4j-api-2.0.17.jar",
+          "sha1": "d9e58ac9c7779ba3bf8142aff6c830617a7fe60f",
+          "sha256": "7b751d952061954d5abfed7181c1f645d336091b679891591d63329c622eb832"
+        }
+      ],
+      "compilation": {
+        "command": [
+          "/Users/chuah/Library/Application Support/minecraft/runtime/java-runtime-epsilon/mac-os-arm64/java-runtime-epsilon/jre.bundle/Contents/Home/bin/javac",
+          "-cp",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/versions/26.3/server-26.3.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/at/yawk/lz4/lz4-java/1.10.1/lz4-java-1.10.1.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/azure/azure-json/1.4.0/azure-json-1.4.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/github/oshi/oshi-core/6.9.0/oshi-core-6.9.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/google/code/gson/gson/2.14.0/gson-2.14.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/google/guava/failureaccess/1.0.3/failureaccess-1.0.3.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/google/guava/guava/33.6.0-jre/guava-33.6.0-jre.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/microsoft/azure/msal4j/1.24.1/msal4j-1.24.1.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/authlib/10.0.77/authlib-10.0.77.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/brigadier/1.3.11/brigadier-1.3.11.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/datafixerupper/10.0.21/datafixerupper-10.0.21.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/jtracy/1.14.38/jtracy-1.14.38.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/logging/1.7.12/logging-1.7.12.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/commons-io/commons-io/2.20.0/commons-io-2.20.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-buffer/4.2.16.Final/netty-buffer-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-codec-base/4.2.16.Final/netty-codec-base-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-codec-compression/4.2.16.Final/netty-codec-compression-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-codec-http/4.2.16.Final/netty-codec-http-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-common/4.2.16.Final/netty-common-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-handler/4.2.16.Final/netty-handler-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-resolver/4.2.16.Final/netty-resolver-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport/4.2.16.Final/netty-transport-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-classes-epoll/4.2.16.Final/netty-transport-classes-epoll-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-classes-kqueue/4.2.16.Final/netty-transport-classes-kqueue-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-epoll/4.2.16.Final/netty-transport-native-epoll-4.2.16.Final-linux-x86_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-epoll/4.2.16.Final/netty-transport-native-epoll-4.2.16.Final-linux-aarch_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-kqueue/4.2.16.Final/netty-transport-native-kqueue-4.2.16.Final-osx-x86_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-kqueue/4.2.16.Final/netty-transport-native-kqueue-4.2.16.Final-osx-aarch_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-unix-common/4.2.16.Final/netty-transport-native-unix-common-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/it/unimi/dsi/fastutil/8.5.18/fastutil-8.5.18.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/net/java/dev/jna/jna/5.17.0/jna-5.17.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/net/java/dev/jna/jna-platform/5.17.0/jna-platform-5.17.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/commons/commons-lang3/3.20.0/commons-lang3-3.20.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/logging/log4j/log4j-api/2.26.0/log4j-api-2.26.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/logging/log4j/log4j-core/2.26.0/log4j-core-2.26.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/logging/log4j/log4j-slf4j2-impl/2.26.0/log4j-slf4j2-impl-2.26.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/joml/joml/1.10.9/joml-1.10.9.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/slf4j/slf4j-api/2.0.17/slf4j-api-2.0.17.jar",
+          "-d",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java/ReferenceMovementProbe.java",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java/ReferenceDirectMovementProbe.java",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java/ReferenceTravelProbe.java",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java/ReferencePlayerTickProbe.java",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java/ReferenceSupportProbe.java",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java/ReferencePlayerSessionProbe.java"
+        ],
+        "exit_code": 0,
+        "pid": 60382,
+        "seconds": 1.42545,
+        "stderr": "Note: Some input files use or override a deprecated API.\nNote: Recompile with -Xlint:deprecation for details.\n",
+        "stdout": "",
+        "timed_out": false
+      },
+      "input_sha256": "da5658dcbadb748193af7e0e0398189719852908ad4ee249a8331cd3950d1ecc",
+      "output_sha256": "ca93c97b582b13ca9f1949a9186b41603db152e6e42d33c244f90be9bb6f2f94",
+      "pin": "26.3",
+      "release": {
+        "asset_index": {
+          "bytes": 597035,
+          "file": "34.json",
+          "official": {
+            "id": "34",
+            "sha1": "abfaa525f923f807df8b4e4d29c1b5e3a104adbe",
+            "size": 597035,
+            "totalSize": 483782790,
+            "url": "https://piston-meta.mojang.com/v1/packages/abfaa525f923f807df8b4e4d29c1b5e3a104adbe/34.json"
+          },
+          "sha1": "abfaa525f923f807df8b4e4d29c1b5e3a104adbe",
+          "sha256": "0f026e5396e2d709b3e6d8c7b2cc2fba9e6a7f02b53b632ba051edb1cd362377"
+        },
+        "authority": "Installed client/version metadata; official downloads named by that metadata",
+        "client": {
+          "bytes": 41483720,
+          "file": "26.3.jar",
+          "official": {
+            "sha1": "e877b6a07acd633fb3bb475002175cec036e7b87",
+            "size": 41483720,
+            "url": "https://piston-data.mojang.com/v1/objects/e877b6a07acd633fb3bb475002175cec036e7b87/client.jar"
+          },
+          "sha1": "e877b6a07acd633fb3bb475002175cec036e7b87",
+          "sha256": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d",
+          "zip_entries": 34227,
+          "zip_files": 32878
+        },
+        "internal_version": {
+          "build_time": "2026-09-15T11:20:48+00:00",
+          "id": "26.3",
+          "java_component": "java-runtime-epsilon",
+          "java_version": 25,
+          "name": "26.3",
+          "pack_version": {
+            "data_major": 121,
+            "data_minor": 0,
+            "resource_major": 97,
+            "resource_minor": 1
+          },
+          "protocol_version": 777,
+          "series_id": "main",
+          "stable": true,
+          "use_editor": false,
+          "world_version": 5023
+        },
+        "pin": "26.3",
+        "release_time": "2026-09-15T11:23:02+00:00",
+        "reports": {
+          "canonical_tree_sha256": "4614d7e93eb54a4235dfaed219e9066f2bf29952d1e1abc45425bf72c9176fb1",
+          "file_count": 1666,
+          "principal_reports": {
+            "blocks.json": {
+              "bytes": 7330564,
+              "canonical_json_sha256": "79fc25fd3d4d57ba35002ce88347e08a68c41f3c26d7edd706656bf02dce38a4"
+            },
+            "commands.json": {
+              "bytes": 583592,
+              "canonical_json_sha256": "a5c9fe51386735be44fed0be2193299f123c4ba9a4c7d5df2eb389968d3e35a4"
+            },
+            "datapack.json": {
+              "bytes": 17505,
+              "canonical_json_sha256": "0b00bd475c4d0d2d76644b7ef8d7537d2b0b3976e3c9133557e74bdc6a14d564"
+            },
+            "json-rpc-api-schema.json": {
+              "bytes": 36577,
+              "canonical_json_sha256": "124ecaa77a524b7ec9b7d7ba57b1a8de3fe16ad513371f5a53baefb6de10e394"
+            },
+            "packets.json": {
+              "bytes": 19023,
+              "canonical_json_sha256": "93b9f0b608c965cb38e06923d29298a522d2334381e75a459cd592df1cdbe106"
+            },
+            "registries.json": {
+              "bytes": 536272,
+              "canonical_json_sha256": "6f76431c05c9dd2945b2ef2f419e3e43cb0f3cedcd9beb07c24744f4e2a6bc27"
+            }
+          }
+        },
+        "runtime_version": [
+          "openjdk version \"25.0.1\" 2025-10-21 LTS",
+          "OpenJDK Runtime Environment Microsoft-12574220 (build 25.0.1+8-LTS)",
+          "OpenJDK 64-Bit Server VM Microsoft-12574220 (build 25.0.1+8-LTS, mixed mode)"
+        ],
+        "server_bundle": {
+          "bytes": 62294556,
+          "file": "26.3-server.jar",
+          "libraries": [
+            "at.yawk.lz4:lz4-java:1.10.1",
+            "com.azure:azure-json:1.4.0",
+            "com.github.oshi:oshi-core:6.9.0",
+            "com.google.code.gson:gson:2.14.0",
+            "com.google.guava:failureaccess:1.0.3",
+            "com.google.guava:guava:33.6.0-jre",
+            "com.microsoft.azure:msal4j:1.24.1",
+            "com.mojang:authlib:10.0.77",
+            "com.mojang:brigadier:1.3.11",
+            "com.mojang:datafixerupper:10.0.21",
+            "com.mojang:jtracy:1.14.38",
+            "com.mojang:logging:1.7.12",
+            "commons-io:commons-io:2.20.0",
+            "io.netty:netty-buffer:4.2.16.Final",
+            "io.netty:netty-codec-base:4.2.16.Final",
+            "io.netty:netty-codec-compression:4.2.16.Final",
+            "io.netty:netty-codec-http:4.2.16.Final",
+            "io.netty:netty-common:4.2.16.Final",
+            "io.netty:netty-handler:4.2.16.Final",
+            "io.netty:netty-resolver:4.2.16.Final",
+            "io.netty:netty-transport:4.2.16.Final",
+            "io.netty:netty-transport-classes-epoll:4.2.16.Final",
+            "io.netty:netty-transport-classes-kqueue:4.2.16.Final",
+            "io.netty:netty-transport-native-epoll:4.2.16.Final:linux-x86_64",
+            "io.netty:netty-transport-native-epoll:4.2.16.Final:linux-aarch_64",
+            "io.netty:netty-transport-native-kqueue:4.2.16.Final:osx-x86_64",
+            "io.netty:netty-transport-native-kqueue:4.2.16.Final:osx-aarch_64",
+            "io.netty:netty-transport-native-unix-common:4.2.16.Final",
+            "it.unimi.dsi:fastutil:8.5.18",
+            "net.java.dev.jna:jna:5.17.0",
+            "net.java.dev.jna:jna-platform:5.17.0",
+            "net.sf.jopt-simple:jopt-simple:5.0.4",
+            "org.apache.commons:commons-lang3:3.20.0",
+            "org.apache.logging.log4j:log4j-api:2.26.0",
+            "org.apache.logging.log4j:log4j-core:2.26.0",
+            "org.apache.logging.log4j:log4j-slf4j2-impl:2.26.0",
+            "org.joml:joml:1.10.9",
+            "org.jspecify:jspecify:1.0.0",
+            "org.slf4j:slf4j-api:2.0.17"
+          ],
+          "nested_server_sha256": "a362163eec5d1612d520772bc16e5b39c09e3b234fdc045f56bf544284ee8ae6",
+          "official": {
+            "sha1": "33680f5f2ac32864d6d7cf5e56a705fdb3e05f4c",
+            "size": 62294556,
+            "url": "https://piston-data.mojang.com/v1/objects/33680f5f2ac32864d6d7cf5e56a705fdb3e05f4c/server.jar"
+          },
+          "sha1": "33680f5f2ac32864d6d7cf5e56a705fdb3e05f4c",
+          "sha256": "d052f14d7a173734fba553711e5b570162e2f2a313267ee31a21b975a679be64"
+        },
+        "version_metadata": {
+          "bytes": 44992,
+          "file": "26.3.json",
+          "sha1": "4fe1aa1ef8da1cb95c5bad1fb98890ca56dd8ca3",
+          "sha256": "9a7b39dae3b9c8d30006b650e357aae220629b7852fa0fc7221db7a8646bd5e4"
+        }
+      },
+      "runs": [
+        {
+          "command": [
+            "/Users/chuah/Library/Application Support/minecraft/runtime/java-runtime-epsilon/mac-os-arm64/java-runtime-epsilon/jre.bundle/Contents/Home/bin/java",
+            "-cp",
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/versions/26.3/server-26.3.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/at/yawk/lz4/lz4-java/1.10.1/lz4-java-1.10.1.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/azure/azure-json/1.4.0/azure-json-1.4.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/github/oshi/oshi-core/6.9.0/oshi-core-6.9.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/google/code/gson/gson/2.14.0/gson-2.14.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/google/guava/failureaccess/1.0.3/failureaccess-1.0.3.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/google/guava/guava/33.6.0-jre/guava-33.6.0-jre.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/microsoft/azure/msal4j/1.24.1/msal4j-1.24.1.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/authlib/10.0.77/authlib-10.0.77.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/brigadier/1.3.11/brigadier-1.3.11.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/datafixerupper/10.0.21/datafixerupper-10.0.21.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/jtracy/1.14.38/jtracy-1.14.38.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/logging/1.7.12/logging-1.7.12.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/commons-io/commons-io/2.20.0/commons-io-2.20.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-buffer/4.2.16.Final/netty-buffer-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-codec-base/4.2.16.Final/netty-codec-base-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-codec-compression/4.2.16.Final/netty-codec-compression-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-codec-http/4.2.16.Final/netty-codec-http-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-common/4.2.16.Final/netty-common-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-handler/4.2.16.Final/netty-handler-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-resolver/4.2.16.Final/netty-resolver-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport/4.2.16.Final/netty-transport-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-classes-epoll/4.2.16.Final/netty-transport-classes-epoll-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-classes-kqueue/4.2.16.Final/netty-transport-classes-kqueue-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-epoll/4.2.16.Final/netty-transport-native-epoll-4.2.16.Final-linux-x86_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-epoll/4.2.16.Final/netty-transport-native-epoll-4.2.16.Final-linux-aarch_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-kqueue/4.2.16.Final/netty-transport-native-kqueue-4.2.16.Final-osx-x86_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-kqueue/4.2.16.Final/netty-transport-native-kqueue-4.2.16.Final-osx-aarch_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-unix-common/4.2.16.Final/netty-transport-native-unix-common-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/it/unimi/dsi/fastutil/8.5.18/fastutil-8.5.18.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/net/java/dev/jna/jna/5.17.0/jna-5.17.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/net/java/dev/jna/jna-platform/5.17.0/jna-platform-5.17.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/commons/commons-lang3/3.20.0/commons-lang3-3.20.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/logging/log4j/log4j-api/2.26.0/log4j-api-2.26.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/logging/log4j/log4j-core/2.26.0/log4j-core-2.26.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/logging/log4j/log4j-slf4j2-impl/2.26.0/log4j-slf4j2-impl-2.26.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/joml/joml/1.10.9/joml-1.10.9.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/slf4j/slf4j-api/2.0.17/slf4j-api-2.0.17.jar",
+            "ReferencePlayerSessionProbe",
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java/input.jsonl",
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java/output-0.jsonl"
+          ],
+          "exit_code": 0,
+          "pid": 60387,
+          "seconds": 2.886599,
+          "stderr": "WARNING: A terminally deprecated method in sun.misc.Unsafe has been called\nWARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.joml.MemUtil$MemUtilUnsafe (file:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/joml/joml/1.10.9/joml-1.10.9.jar)\nWARNING: Please consider reporting this to the maintainers of class org.joml.MemUtil$MemUtilUnsafe\nWARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release\n",
+          "stdout": "",
+          "timed_out": false
+        },
+        {
+          "command": [
+            "/Users/chuah/Library/Application Support/minecraft/runtime/java-runtime-epsilon/mac-os-arm64/java-runtime-epsilon/jre.bundle/Contents/Home/bin/java",
+            "-cp",
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/versions/26.3/server-26.3.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/at/yawk/lz4/lz4-java/1.10.1/lz4-java-1.10.1.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/azure/azure-json/1.4.0/azure-json-1.4.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/github/oshi/oshi-core/6.9.0/oshi-core-6.9.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/google/code/gson/gson/2.14.0/gson-2.14.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/google/guava/failureaccess/1.0.3/failureaccess-1.0.3.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/google/guava/guava/33.6.0-jre/guava-33.6.0-jre.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/microsoft/azure/msal4j/1.24.1/msal4j-1.24.1.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/authlib/10.0.77/authlib-10.0.77.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/brigadier/1.3.11/brigadier-1.3.11.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/datafixerupper/10.0.21/datafixerupper-10.0.21.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/jtracy/1.14.38/jtracy-1.14.38.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/logging/1.7.12/logging-1.7.12.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/commons-io/commons-io/2.20.0/commons-io-2.20.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-buffer/4.2.16.Final/netty-buffer-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-codec-base/4.2.16.Final/netty-codec-base-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-codec-compression/4.2.16.Final/netty-codec-compression-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-codec-http/4.2.16.Final/netty-codec-http-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-common/4.2.16.Final/netty-common-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-handler/4.2.16.Final/netty-handler-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-resolver/4.2.16.Final/netty-resolver-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport/4.2.16.Final/netty-transport-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-classes-epoll/4.2.16.Final/netty-transport-classes-epoll-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-classes-kqueue/4.2.16.Final/netty-transport-classes-kqueue-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-epoll/4.2.16.Final/netty-transport-native-epoll-4.2.16.Final-linux-x86_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-epoll/4.2.16.Final/netty-transport-native-epoll-4.2.16.Final-linux-aarch_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-kqueue/4.2.16.Final/netty-transport-native-kqueue-4.2.16.Final-osx-x86_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-kqueue/4.2.16.Final/netty-transport-native-kqueue-4.2.16.Final-osx-aarch_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-unix-common/4.2.16.Final/netty-transport-native-unix-common-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/it/unimi/dsi/fastutil/8.5.18/fastutil-8.5.18.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/net/java/dev/jna/jna/5.17.0/jna-5.17.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/net/java/dev/jna/jna-platform/5.17.0/jna-platform-5.17.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/commons/commons-lang3/3.20.0/commons-lang3-3.20.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/logging/log4j/log4j-api/2.26.0/log4j-api-2.26.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/logging/log4j/log4j-core/2.26.0/log4j-core-2.26.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/logging/log4j/log4j-slf4j2-impl/2.26.0/log4j-slf4j2-impl-2.26.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/joml/joml/1.10.9/joml-1.10.9.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/slf4j/slf4j-api/2.0.17/slf4j-api-2.0.17.jar",
+            "ReferencePlayerSessionProbe",
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java/input.jsonl",
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java/output-1.jsonl"
+          ],
+          "exit_code": 0,
+          "pid": 60402,
+          "seconds": 2.806643,
+          "stderr": "WARNING: A terminally deprecated method in sun.misc.Unsafe has been called\nWARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.joml.MemUtil$MemUtilUnsafe (file:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/joml/joml/1.10.9/joml-1.10.9.jar)\nWARNING: Please consider reporting this to the maintainers of class org.joml.MemUtil$MemUtilUnsafe\nWARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release\n",
+          "stdout": "",
+          "timed_out": false
+        }
+      ],
+      "runtime": {
+        "bytes": 84720,
+        "file": "java",
+        "sha1": "5af4a90be54ddeec03db3700e6989594c9438952",
+        "sha256": "e0879c0df70d880d66904064d1b388b08aeee0958a047f37601435b28db849a3"
+      },
+      "sources_sha256": {
+        "ReferenceDirectMovementProbe": "29596dda603edcf0e81d2a7a8fd69c12f5f69241476148efcccb922d11906392",
+        "ReferenceMovementProbe": "7216b65e8dc9a343f6693009efc212ca885325780a37d48be1e55ea8abc56fd6",
+        "ReferencePlayerSessionProbe": "a6ee8d69fbb59148cf92d33d225b23a60ff00307cd53ce7c9d835bb6c00d24ff",
+        "ReferencePlayerTickProbe": "ad56aeb937b93d7d5de5b718dd3c37d1287adece6f4173eb43b45c87908759a5",
+        "ReferenceSupportProbe": "28e21737595ffcf32d6d31b21f5cf32ba1cc2faa887f3e6482c0e31ac079c857",
+        "ReferenceTravelProbe": "273885dde3678abb10a6f14a62353f5be718c34a8ed1431e8d6d91d37883335e"
+      }
+    },
+    {
+      "classpath": [
+        {
+          "bytes": 26652008,
+          "file": "server-26.3.jar",
+          "sha1": "cc3964451a3b32a0488110d5e3e6ad8d75fe6a66",
+          "sha256": "a362163eec5d1612d520772bc16e5b39c09e3b234fdc045f56bf544284ee8ae6"
+        },
+        {
+          "bytes": 910232,
+          "file": "lz4-java-1.10.1.jar",
+          "sha1": "f541d7f910fe3d76f38f799c507c48cc81b12ecb",
+          "sha256": "a58a84c4271e50df4c96ed916ccb7e48a869f8ed9cdcda1ad5d3d4c33b0214a3"
+        },
+        {
+          "bytes": 325945,
+          "file": "azure-json-1.4.0.jar",
+          "sha1": "fcc1d354dbc3e0300e5276b1bf124d0247799cd8",
+          "sha256": "c50bc998cd1a6c689f8644b51c206217bf2da09d5b949e777490a60290cc3a0d"
+        },
+        {
+          "bytes": 1022125,
+          "file": "oshi-core-6.9.0.jar",
+          "sha1": "03224870731860cfcd7744581a05b559e94291e7",
+          "sha256": "b29ba9bce041e6ea822203d5b5a692660c87551241510ebc76eedffe684844c7"
+        },
+        {
+          "bytes": 313604,
+          "file": "gson-2.14.0.jar",
+          "sha1": "efc0e34ede4e3204eaefb84a00e55e8c86634382",
+          "sha256": "2cbd119bf1961c28788310963dc80ba65f58cdeec1dd139c8bdb1240faa2c36f"
+        },
+        {
+          "bytes": 10763,
+          "file": "failureaccess-1.0.3.jar",
+          "sha1": "aeaffd00d57023a2c947393ed251f0354f0985fc",
+          "sha256": "cbfc3906b19b8f55dd7cfd6dfe0aa4532e834250d7f080bd8d211a3e246b59cb"
+        },
+        {
+          "bytes": 3064793,
+          "file": "guava-33.6.0-jre.jar",
+          "sha1": "c376b13067cc99a5774403530953f7b05a91e218",
+          "sha256": "dc573e1fca4fd5454f4a5fd3d7da2df03002876a4175bafc14a95980dd7713b3"
+        },
+        {
+          "bytes": 396486,
+          "file": "msal4j-1.24.1.jar",
+          "sha1": "c233f2d047b9755f7041adf21a858c680e4c9242",
+          "sha256": "12e62f79d1a71d176a41c168c0587f8167f0add99b78f006f39595bd7242aebe"
+        },
+        {
+          "bytes": 152645,
+          "file": "authlib-10.0.77.jar",
+          "sha1": "add8754cda96cf0cd840441632875648836f8a71",
+          "sha256": "521672866582633a412c82171d3cfa416ecaccdf05a43baf809c16f9aec07068"
+        },
+        {
+          "bytes": 80151,
+          "file": "brigadier-1.3.11.jar",
+          "sha1": "3373d1e7bf00c8b99bed1ea4efb8c47344e4a887",
+          "sha256": "9d09cf4819de83dfcd38bcb212d5f2227131791cef3abbfca3321d6fb2b9a64d"
+        },
+        {
+          "bytes": 753612,
+          "file": "datafixerupper-10.0.21.jar",
+          "sha1": "b6b2ae770c02e0c1eb90f9985b151e9085a38d0b",
+          "sha256": "3547cb1da8993fb7ebd42494d0e78997d2cfbe90c421f5efd022863e6909941e"
+        },
+        {
+          "bytes": 14292,
+          "file": "jtracy-1.14.38.jar",
+          "sha1": "cc2ad81342001b4281c305a298d7f50332354058",
+          "sha256": "721bff502a9664d689d781ab7bfed19330606c2e1ef6b8e4d59fba67e7e765da"
+        },
+        {
+          "bytes": 19540,
+          "file": "logging-1.7.12.jar",
+          "sha1": "351cea64a5233361327d8d54c44277041beed97f",
+          "sha256": "3c7ac9742fa98c773275379eb1046c048b5d2ee989152a8c69e7ba696c3f8538"
+        },
+        {
+          "bytes": 563971,
+          "file": "commons-io-2.20.0.jar",
+          "sha1": "36f3474daec2849c149e877614e7f979b2082cd2",
+          "sha256": "df90bba0fe3cb586b7f164e78fe8f8f4da3f2dd5c27fa645f888100ccc25dd72"
+        },
+        {
+          "bytes": 378032,
+          "file": "netty-buffer-4.2.16.Final.jar",
+          "sha1": "05397ef65dcb60670e0e0dba4854522873af3070",
+          "sha256": "cc36ae9fbd0b03fe755eb4eb4424ca53b59cfd297d7fd47d49e5b1059beded6c"
+        },
+        {
+          "bytes": 155355,
+          "file": "netty-codec-base-4.2.16.Final.jar",
+          "sha1": "01a01d45a9efc228c6d747525848b065e0656b5f",
+          "sha256": "feb410225938d9970de6b624a0c031d079804fa5cc5e1ec6e9298f16db5998a7"
+        },
+        {
+          "bytes": 183349,
+          "file": "netty-codec-compression-4.2.16.Final.jar",
+          "sha1": "bdbbcfcdbe217b95c14a04df4fc5d31213d5c27c",
+          "sha256": "13c8565414dd2115281303ef4ad1f7cc69bd7771d8d12c7d2fb31307dff26d11"
+        },
+        {
+          "bytes": 678387,
+          "file": "netty-codec-http-4.2.16.Final.jar",
+          "sha1": "b5e0715df90047ee5a0138c8f704f43c751009e4",
+          "sha256": "0d16f981de8d0d304a2ab1a81f0a674892089fbaa8a583100aebb4a5b00456ec"
+        },
+        {
+          "bytes": 819965,
+          "file": "netty-common-4.2.16.Final.jar",
+          "sha1": "c2bc7fa5acfa2afc777e944d84f0aa65559cc81e",
+          "sha256": "9825ee68a0dc4cd2b53e2f532502401b2211bad9b77e8b04882d9e64487283ff"
+        },
+        {
+          "bytes": 587814,
+          "file": "netty-handler-4.2.16.Final.jar",
+          "sha1": "cc82873ae4b6d14effe480740ad838de09add70d",
+          "sha256": "a259ca496da05ac1981f95cd856211f894a328056a6129e9cd70dbbd5df401f7"
+        },
+        {
+          "bytes": 32975,
+          "file": "netty-resolver-4.2.16.Final.jar",
+          "sha1": "fcea6d64273b59ab9127b68c16ae98af34642139",
+          "sha256": "c9eca6a99036485cf1d186b4a6a595b0a54c53808319ee03924270eae04c32bb"
+        },
+        {
+          "bytes": 549855,
+          "file": "netty-transport-4.2.16.Final.jar",
+          "sha1": "ae87a3bec51d503475a19fbd718bf777f2fc06c6",
+          "sha256": "cfa3f654caff906653385f4b7ddaa539d795b78f5711a622482b17d2b73484c0"
+        },
+        {
+          "bytes": 159935,
+          "file": "netty-transport-classes-epoll-4.2.16.Final.jar",
+          "sha1": "cf90c7b892e284ba9f1545dce170168369b3b9d6",
+          "sha256": "9f2b53210db9c8d24e787ed43f3896aaf30d686ed270c7afbb29ab6330c6aa23"
+        },
+        {
+          "bytes": 116819,
+          "file": "netty-transport-classes-kqueue-4.2.16.Final.jar",
+          "sha1": "0fa2bcf8c71626510f6fae173f78182117b70f7a",
+          "sha256": "6599b495f69420cb240ab0a1aa60a19a2df3bc72791729170e0993727637a689"
+        },
+        {
+          "bytes": 42393,
+          "file": "netty-transport-native-epoll-4.2.16.Final-linux-x86_64.jar",
+          "sha1": "439c24f5c27c220deb042b42e4048d606edeb78d",
+          "sha256": "2e00548e731948881d0c73ee79d2ead759254e750929406a1d595484758f0267"
+        },
+        {
+          "bytes": 43899,
+          "file": "netty-transport-native-epoll-4.2.16.Final-linux-aarch_64.jar",
+          "sha1": "eed34f3b37b4c46a0cbb49456ccc4e3bd7195e4c",
+          "sha256": "212cc7d81390e31b580a1fb91b6c8d963b43e762ed072c555e2b09ad4476e928"
+        },
+        {
+          "bytes": 26737,
+          "file": "netty-transport-native-kqueue-4.2.16.Final-osx-x86_64.jar",
+          "sha1": "dd9d41b06355a6a1815d902ee087a693aab83755",
+          "sha256": "05a09a4ab51f488f0c22f42ccce6c06935afbfac51173fae44170465aa072828"
+        },
+        {
+          "bytes": 27482,
+          "file": "netty-transport-native-kqueue-4.2.16.Final-osx-aarch_64.jar",
+          "sha1": "ddb942cad6c0e978caa2215757512b36c5ffacec",
+          "sha256": "796c503f7a80217177bd315f6448263134ee0f9042627d5fd698c760bcf99c8c"
+        },
+        {
+          "bytes": 46877,
+          "file": "netty-transport-native-unix-common-4.2.16.Final.jar",
+          "sha1": "3cf32390f1b80af890ac44aa0698c2ff58c2a4d7",
+          "sha256": "41ca8fe192083d17917be7ddcecded4da4fc1db1d1656d03d0bcb14e2f431155"
+        },
+        {
+          "bytes": 23965563,
+          "file": "fastutil-8.5.18.jar",
+          "sha1": "a6cff377eecc19c2037bf31568a6d7106b50ba1f",
+          "sha256": "9094ae67d01d0ad246f886f11ad557fc2e79c72cbf3feed83e1512a8ae90a74a"
+        },
+        {
+          "bytes": 2002589,
+          "file": "jna-5.17.0.jar",
+          "sha1": "33d12735bef894440780fce64f9758d420c7bae2",
+          "sha256": "b3a9408e7c51e08ef0e3bfcc08f443f6ec0f6191ba8cd7c18d53d2b22e5bdbc0"
+        },
+        {
+          "bytes": 1378617,
+          "file": "jna-platform-5.17.0.jar",
+          "sha1": "a4934c44d25a9d8c2ddf4203affd20330cb3426f",
+          "sha256": "b7e3d46c87bad2eb409b0e704916bcd81206168e357312dfddd0e253679cd9e0"
+        },
+        {
+          "bytes": 78146,
+          "file": "jopt-simple-5.0.4.jar",
+          "sha1": "4fdac2fbe92dfad86aa6e9301736f6b4342a3f5c",
+          "sha256": "df26cc58f235f477db07f753ba5a3ab243ebe5789d9f89ecf68dd62ea9a66c28"
+        },
+        {
+          "bytes": 713862,
+          "file": "commons-lang3-3.20.0.jar",
+          "sha1": "65897b3e5731220962e659e001904af3c3cbeba9",
+          "sha256": "69e5c9fa35da7a51a5fd2099dfe56a2d8d32cf233e2f6d770e796146440263f4"
+        },
+        {
+          "bytes": 351126,
+          "file": "log4j-api-2.26.0.jar",
+          "sha1": "ad52af0ecf054a7e3f275a2e180ee06d9c490951",
+          "sha256": "820de7bbaf430eaf2e3e5ccb92f23e2085797c5ac4d4f7fc6c8b660fbefa1dbc"
+        },
+        {
+          "bytes": 2015101,
+          "file": "log4j-core-2.26.0.jar",
+          "sha1": "d267ca60b27ddb075e0b4e75e7875859717bf85f",
+          "sha256": "406bb3132c47a5d322e5c571feb0787ca84496469f346eb51f1ef2ee45499902"
+        },
+        {
+          "bytes": 30211,
+          "file": "log4j-slf4j2-impl-2.26.0.jar",
+          "sha1": "668c0f0e813d83f00a7182533aa658ec7e7a0a0d",
+          "sha256": "cfc1bddbd39e684b698ae968291d8a3b3a55ee0ec2ef3d3ea5c2336a9e151598"
+        },
+        {
+          "bytes": 814581,
+          "file": "joml-1.10.9.jar",
+          "sha1": "438e036486bad66b189bff385dd07dea4f74a146",
+          "sha256": "feca4db853371704338621c120acc5cc32300d8af635fa42414b6213301e216b"
+        },
+        {
+          "bytes": 3819,
+          "file": "jspecify-1.0.0.jar",
+          "sha1": "7425a601c1c7ec76645a78d22b8c6a627edee507",
+          "sha256": "1fad6e6be7557781e4d33729d49ae1cdc8fdda6fe477bb0cc68ce351eafdfbab"
+        },
+        {
+          "bytes": 69908,
+          "file": "slf4j-api-2.0.17.jar",
+          "sha1": "d9e58ac9c7779ba3bf8142aff6c830617a7fe60f",
+          "sha256": "7b751d952061954d5abfed7181c1f645d336091b679891591d63329c622eb832"
+        }
+      ],
+      "compilation": {
+        "command": [
+          "/Users/chuah/Library/Application Support/minecraft/runtime/java-runtime-epsilon/mac-os-arm64/java-runtime-epsilon/jre.bundle/Contents/Home/bin/javac",
+          "-cp",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/versions/26.3/server-26.3.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/at/yawk/lz4/lz4-java/1.10.1/lz4-java-1.10.1.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/azure/azure-json/1.4.0/azure-json-1.4.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/github/oshi/oshi-core/6.9.0/oshi-core-6.9.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/google/code/gson/gson/2.14.0/gson-2.14.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/google/guava/failureaccess/1.0.3/failureaccess-1.0.3.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/google/guava/guava/33.6.0-jre/guava-33.6.0-jre.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/microsoft/azure/msal4j/1.24.1/msal4j-1.24.1.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/authlib/10.0.77/authlib-10.0.77.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/brigadier/1.3.11/brigadier-1.3.11.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/datafixerupper/10.0.21/datafixerupper-10.0.21.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/jtracy/1.14.38/jtracy-1.14.38.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/logging/1.7.12/logging-1.7.12.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/commons-io/commons-io/2.20.0/commons-io-2.20.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-buffer/4.2.16.Final/netty-buffer-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-codec-base/4.2.16.Final/netty-codec-base-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-codec-compression/4.2.16.Final/netty-codec-compression-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-codec-http/4.2.16.Final/netty-codec-http-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-common/4.2.16.Final/netty-common-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-handler/4.2.16.Final/netty-handler-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-resolver/4.2.16.Final/netty-resolver-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport/4.2.16.Final/netty-transport-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-classes-epoll/4.2.16.Final/netty-transport-classes-epoll-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-classes-kqueue/4.2.16.Final/netty-transport-classes-kqueue-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-epoll/4.2.16.Final/netty-transport-native-epoll-4.2.16.Final-linux-x86_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-epoll/4.2.16.Final/netty-transport-native-epoll-4.2.16.Final-linux-aarch_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-kqueue/4.2.16.Final/netty-transport-native-kqueue-4.2.16.Final-osx-x86_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-kqueue/4.2.16.Final/netty-transport-native-kqueue-4.2.16.Final-osx-aarch_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-unix-common/4.2.16.Final/netty-transport-native-unix-common-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/it/unimi/dsi/fastutil/8.5.18/fastutil-8.5.18.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/net/java/dev/jna/jna/5.17.0/jna-5.17.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/net/java/dev/jna/jna-platform/5.17.0/jna-platform-5.17.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/commons/commons-lang3/3.20.0/commons-lang3-3.20.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/logging/log4j/log4j-api/2.26.0/log4j-api-2.26.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/logging/log4j/log4j-core/2.26.0/log4j-core-2.26.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/logging/log4j/log4j-slf4j2-impl/2.26.0/log4j-slf4j2-impl-2.26.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/joml/joml/1.10.9/joml-1.10.9.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/slf4j/slf4j-api/2.0.17/slf4j-api-2.0.17.jar",
+          "-d",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java/ReferenceMovementProbe.java",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java/ReferenceDirectMovementProbe.java",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java/ReferenceTravelProbe.java",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java/ReferencePlayerTickProbe.java",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java/ReferenceSupportProbe.java",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java/ReferencePlayerSessionProbe.java"
+        ],
+        "exit_code": 0,
+        "pid": 60407,
+        "seconds": 1.155048,
+        "stderr": "Note: Some input files use or override a deprecated API.\nNote: Recompile with -Xlint:deprecation for details.\n",
+        "stdout": "",
+        "timed_out": false
+      },
+      "input_sha256": "01c847166257ba885db480e48d0a165af0955af70649abdfccde1a47027ed184",
+      "output_sha256": "fa03e98f6c9224f5fae053aeb81227a764ae087cc01b721857641ff403fdc0d2",
+      "pin": "26.3",
+      "release": {
+        "asset_index": {
+          "bytes": 597035,
+          "file": "34.json",
+          "official": {
+            "id": "34",
+            "sha1": "abfaa525f923f807df8b4e4d29c1b5e3a104adbe",
+            "size": 597035,
+            "totalSize": 483782790,
+            "url": "https://piston-meta.mojang.com/v1/packages/abfaa525f923f807df8b4e4d29c1b5e3a104adbe/34.json"
+          },
+          "sha1": "abfaa525f923f807df8b4e4d29c1b5e3a104adbe",
+          "sha256": "0f026e5396e2d709b3e6d8c7b2cc2fba9e6a7f02b53b632ba051edb1cd362377"
+        },
+        "authority": "Installed client/version metadata; official downloads named by that metadata",
+        "client": {
+          "bytes": 41483720,
+          "file": "26.3.jar",
+          "official": {
+            "sha1": "e877b6a07acd633fb3bb475002175cec036e7b87",
+            "size": 41483720,
+            "url": "https://piston-data.mojang.com/v1/objects/e877b6a07acd633fb3bb475002175cec036e7b87/client.jar"
+          },
+          "sha1": "e877b6a07acd633fb3bb475002175cec036e7b87",
+          "sha256": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d",
+          "zip_entries": 34227,
+          "zip_files": 32878
+        },
+        "internal_version": {
+          "build_time": "2026-09-15T11:20:48+00:00",
+          "id": "26.3",
+          "java_component": "java-runtime-epsilon",
+          "java_version": 25,
+          "name": "26.3",
+          "pack_version": {
+            "data_major": 121,
+            "data_minor": 0,
+            "resource_major": 97,
+            "resource_minor": 1
+          },
+          "protocol_version": 777,
+          "series_id": "main",
+          "stable": true,
+          "use_editor": false,
+          "world_version": 5023
+        },
+        "pin": "26.3",
+        "release_time": "2026-09-15T11:23:02+00:00",
+        "reports": {
+          "canonical_tree_sha256": "4614d7e93eb54a4235dfaed219e9066f2bf29952d1e1abc45425bf72c9176fb1",
+          "file_count": 1666,
+          "principal_reports": {
+            "blocks.json": {
+              "bytes": 7330564,
+              "canonical_json_sha256": "79fc25fd3d4d57ba35002ce88347e08a68c41f3c26d7edd706656bf02dce38a4"
+            },
+            "commands.json": {
+              "bytes": 583592,
+              "canonical_json_sha256": "a5c9fe51386735be44fed0be2193299f123c4ba9a4c7d5df2eb389968d3e35a4"
+            },
+            "datapack.json": {
+              "bytes": 17505,
+              "canonical_json_sha256": "0b00bd475c4d0d2d76644b7ef8d7537d2b0b3976e3c9133557e74bdc6a14d564"
+            },
+            "json-rpc-api-schema.json": {
+              "bytes": 36577,
+              "canonical_json_sha256": "124ecaa77a524b7ec9b7d7ba57b1a8de3fe16ad513371f5a53baefb6de10e394"
+            },
+            "packets.json": {
+              "bytes": 19023,
+              "canonical_json_sha256": "93b9f0b608c965cb38e06923d29298a522d2334381e75a459cd592df1cdbe106"
+            },
+            "registries.json": {
+              "bytes": 536272,
+              "canonical_json_sha256": "6f76431c05c9dd2945b2ef2f419e3e43cb0f3cedcd9beb07c24744f4e2a6bc27"
+            }
+          }
+        },
+        "runtime_version": [
+          "openjdk version \"25.0.1\" 2025-10-21 LTS",
+          "OpenJDK Runtime Environment Microsoft-12574220 (build 25.0.1+8-LTS)",
+          "OpenJDK 64-Bit Server VM Microsoft-12574220 (build 25.0.1+8-LTS, mixed mode)"
+        ],
+        "server_bundle": {
+          "bytes": 62294556,
+          "file": "26.3-server.jar",
+          "libraries": [
+            "at.yawk.lz4:lz4-java:1.10.1",
+            "com.azure:azure-json:1.4.0",
+            "com.github.oshi:oshi-core:6.9.0",
+            "com.google.code.gson:gson:2.14.0",
+            "com.google.guava:failureaccess:1.0.3",
+            "com.google.guava:guava:33.6.0-jre",
+            "com.microsoft.azure:msal4j:1.24.1",
+            "com.mojang:authlib:10.0.77",
+            "com.mojang:brigadier:1.3.11",
+            "com.mojang:datafixerupper:10.0.21",
+            "com.mojang:jtracy:1.14.38",
+            "com.mojang:logging:1.7.12",
+            "commons-io:commons-io:2.20.0",
+            "io.netty:netty-buffer:4.2.16.Final",
+            "io.netty:netty-codec-base:4.2.16.Final",
+            "io.netty:netty-codec-compression:4.2.16.Final",
+            "io.netty:netty-codec-http:4.2.16.Final",
+            "io.netty:netty-common:4.2.16.Final",
+            "io.netty:netty-handler:4.2.16.Final",
+            "io.netty:netty-resolver:4.2.16.Final",
+            "io.netty:netty-transport:4.2.16.Final",
+            "io.netty:netty-transport-classes-epoll:4.2.16.Final",
+            "io.netty:netty-transport-classes-kqueue:4.2.16.Final",
+            "io.netty:netty-transport-native-epoll:4.2.16.Final:linux-x86_64",
+            "io.netty:netty-transport-native-epoll:4.2.16.Final:linux-aarch_64",
+            "io.netty:netty-transport-native-kqueue:4.2.16.Final:osx-x86_64",
+            "io.netty:netty-transport-native-kqueue:4.2.16.Final:osx-aarch_64",
+            "io.netty:netty-transport-native-unix-common:4.2.16.Final",
+            "it.unimi.dsi:fastutil:8.5.18",
+            "net.java.dev.jna:jna:5.17.0",
+            "net.java.dev.jna:jna-platform:5.17.0",
+            "net.sf.jopt-simple:jopt-simple:5.0.4",
+            "org.apache.commons:commons-lang3:3.20.0",
+            "org.apache.logging.log4j:log4j-api:2.26.0",
+            "org.apache.logging.log4j:log4j-core:2.26.0",
+            "org.apache.logging.log4j:log4j-slf4j2-impl:2.26.0",
+            "org.joml:joml:1.10.9",
+            "org.jspecify:jspecify:1.0.0",
+            "org.slf4j:slf4j-api:2.0.17"
+          ],
+          "nested_server_sha256": "a362163eec5d1612d520772bc16e5b39c09e3b234fdc045f56bf544284ee8ae6",
+          "official": {
+            "sha1": "33680f5f2ac32864d6d7cf5e56a705fdb3e05f4c",
+            "size": 62294556,
+            "url": "https://piston-data.mojang.com/v1/objects/33680f5f2ac32864d6d7cf5e56a705fdb3e05f4c/server.jar"
+          },
+          "sha1": "33680f5f2ac32864d6d7cf5e56a705fdb3e05f4c",
+          "sha256": "d052f14d7a173734fba553711e5b570162e2f2a313267ee31a21b975a679be64"
+        },
+        "version_metadata": {
+          "bytes": 44992,
+          "file": "26.3.json",
+          "sha1": "4fe1aa1ef8da1cb95c5bad1fb98890ca56dd8ca3",
+          "sha256": "9a7b39dae3b9c8d30006b650e357aae220629b7852fa0fc7221db7a8646bd5e4"
+        }
+      },
+      "runs": [
+        {
+          "command": [
+            "/Users/chuah/Library/Application Support/minecraft/runtime/java-runtime-epsilon/mac-os-arm64/java-runtime-epsilon/jre.bundle/Contents/Home/bin/java",
+            "-cp",
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/versions/26.3/server-26.3.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/at/yawk/lz4/lz4-java/1.10.1/lz4-java-1.10.1.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/azure/azure-json/1.4.0/azure-json-1.4.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/github/oshi/oshi-core/6.9.0/oshi-core-6.9.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/google/code/gson/gson/2.14.0/gson-2.14.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/google/guava/failureaccess/1.0.3/failureaccess-1.0.3.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/google/guava/guava/33.6.0-jre/guava-33.6.0-jre.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/microsoft/azure/msal4j/1.24.1/msal4j-1.24.1.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/authlib/10.0.77/authlib-10.0.77.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/brigadier/1.3.11/brigadier-1.3.11.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/datafixerupper/10.0.21/datafixerupper-10.0.21.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/jtracy/1.14.38/jtracy-1.14.38.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/logging/1.7.12/logging-1.7.12.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/commons-io/commons-io/2.20.0/commons-io-2.20.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-buffer/4.2.16.Final/netty-buffer-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-codec-base/4.2.16.Final/netty-codec-base-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-codec-compression/4.2.16.Final/netty-codec-compression-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-codec-http/4.2.16.Final/netty-codec-http-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-common/4.2.16.Final/netty-common-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-handler/4.2.16.Final/netty-handler-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-resolver/4.2.16.Final/netty-resolver-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport/4.2.16.Final/netty-transport-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-classes-epoll/4.2.16.Final/netty-transport-classes-epoll-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-classes-kqueue/4.2.16.Final/netty-transport-classes-kqueue-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-epoll/4.2.16.Final/netty-transport-native-epoll-4.2.16.Final-linux-x86_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-epoll/4.2.16.Final/netty-transport-native-epoll-4.2.16.Final-linux-aarch_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-kqueue/4.2.16.Final/netty-transport-native-kqueue-4.2.16.Final-osx-x86_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-kqueue/4.2.16.Final/netty-transport-native-kqueue-4.2.16.Final-osx-aarch_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-unix-common/4.2.16.Final/netty-transport-native-unix-common-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/it/unimi/dsi/fastutil/8.5.18/fastutil-8.5.18.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/net/java/dev/jna/jna/5.17.0/jna-5.17.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/net/java/dev/jna/jna-platform/5.17.0/jna-platform-5.17.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/commons/commons-lang3/3.20.0/commons-lang3-3.20.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/logging/log4j/log4j-api/2.26.0/log4j-api-2.26.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/logging/log4j/log4j-core/2.26.0/log4j-core-2.26.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/logging/log4j/log4j-slf4j2-impl/2.26.0/log4j-slf4j2-impl-2.26.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/joml/joml/1.10.9/joml-1.10.9.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/slf4j/slf4j-api/2.0.17/slf4j-api-2.0.17.jar",
+            "ReferencePlayerSessionProbe",
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java/input.jsonl",
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java/output-0.jsonl"
+          ],
+          "exit_code": 0,
+          "pid": 60419,
+          "seconds": 4.25312,
+          "stderr": "WARNING: A terminally deprecated method in sun.misc.Unsafe has been called\nWARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.joml.MemUtil$MemUtilUnsafe (file:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/joml/joml/1.10.9/joml-1.10.9.jar)\nWARNING: Please consider reporting this to the maintainers of class org.joml.MemUtil$MemUtilUnsafe\nWARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release\n",
+          "stdout": "",
+          "timed_out": false
+        },
+        {
+          "command": [
+            "/Users/chuah/Library/Application Support/minecraft/runtime/java-runtime-epsilon/mac-os-arm64/java-runtime-epsilon/jre.bundle/Contents/Home/bin/java",
+            "-cp",
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/versions/26.3/server-26.3.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/at/yawk/lz4/lz4-java/1.10.1/lz4-java-1.10.1.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/azure/azure-json/1.4.0/azure-json-1.4.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/github/oshi/oshi-core/6.9.0/oshi-core-6.9.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/google/code/gson/gson/2.14.0/gson-2.14.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/google/guava/failureaccess/1.0.3/failureaccess-1.0.3.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/google/guava/guava/33.6.0-jre/guava-33.6.0-jre.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/microsoft/azure/msal4j/1.24.1/msal4j-1.24.1.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/authlib/10.0.77/authlib-10.0.77.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/brigadier/1.3.11/brigadier-1.3.11.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/datafixerupper/10.0.21/datafixerupper-10.0.21.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/jtracy/1.14.38/jtracy-1.14.38.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/logging/1.7.12/logging-1.7.12.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/commons-io/commons-io/2.20.0/commons-io-2.20.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-buffer/4.2.16.Final/netty-buffer-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-codec-base/4.2.16.Final/netty-codec-base-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-codec-compression/4.2.16.Final/netty-codec-compression-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-codec-http/4.2.16.Final/netty-codec-http-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-common/4.2.16.Final/netty-common-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-handler/4.2.16.Final/netty-handler-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-resolver/4.2.16.Final/netty-resolver-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport/4.2.16.Final/netty-transport-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-classes-epoll/4.2.16.Final/netty-transport-classes-epoll-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-classes-kqueue/4.2.16.Final/netty-transport-classes-kqueue-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-epoll/4.2.16.Final/netty-transport-native-epoll-4.2.16.Final-linux-x86_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-epoll/4.2.16.Final/netty-transport-native-epoll-4.2.16.Final-linux-aarch_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-kqueue/4.2.16.Final/netty-transport-native-kqueue-4.2.16.Final-osx-x86_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-kqueue/4.2.16.Final/netty-transport-native-kqueue-4.2.16.Final-osx-aarch_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-unix-common/4.2.16.Final/netty-transport-native-unix-common-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/it/unimi/dsi/fastutil/8.5.18/fastutil-8.5.18.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/net/java/dev/jna/jna/5.17.0/jna-5.17.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/net/java/dev/jna/jna-platform/5.17.0/jna-platform-5.17.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/commons/commons-lang3/3.20.0/commons-lang3-3.20.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/logging/log4j/log4j-api/2.26.0/log4j-api-2.26.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/logging/log4j/log4j-core/2.26.0/log4j-core-2.26.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/logging/log4j/log4j-slf4j2-impl/2.26.0/log4j-slf4j2-impl-2.26.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/joml/joml/1.10.9/joml-1.10.9.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/slf4j/slf4j-api/2.0.17/slf4j-api-2.0.17.jar",
+            "ReferencePlayerSessionProbe",
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java/input.jsonl",
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java/output-1.jsonl"
+          ],
+          "exit_code": 0,
+          "pid": 60485,
+          "seconds": 4.730381,
+          "stderr": "WARNING: A terminally deprecated method in sun.misc.Unsafe has been called\nWARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.joml.MemUtil$MemUtilUnsafe (file:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/joml/joml/1.10.9/joml-1.10.9.jar)\nWARNING: Please consider reporting this to the maintainers of class org.joml.MemUtil$MemUtilUnsafe\nWARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release\n",
+          "stdout": "",
+          "timed_out": false
+        }
+      ],
+      "runtime": {
+        "bytes": 84720,
+        "file": "java",
+        "sha1": "5af4a90be54ddeec03db3700e6989594c9438952",
+        "sha256": "e0879c0df70d880d66904064d1b388b08aeee0958a047f37601435b28db849a3"
+      },
+      "sources_sha256": {
+        "ReferenceDirectMovementProbe": "29596dda603edcf0e81d2a7a8fd69c12f5f69241476148efcccb922d11906392",
+        "ReferenceMovementProbe": "7216b65e8dc9a343f6693009efc212ca885325780a37d48be1e55ea8abc56fd6",
+        "ReferencePlayerSessionProbe": "a6ee8d69fbb59148cf92d33d225b23a60ff00307cd53ce7c9d835bb6c00d24ff",
+        "ReferencePlayerTickProbe": "ad56aeb937b93d7d5de5b718dd3c37d1287adece6f4173eb43b45c87908759a5",
+        "ReferenceSupportProbe": "28e21737595ffcf32d6d31b21f5cf32ba1cc2faa887f3e6482c0e31ac079c857",
+        "ReferenceTravelProbe": "273885dde3678abb10a6f14a62353f5be718c34a8ed1431e8d6d91d37883335e"
+      }
+    }
+  ],
+  "reference_sha256": "9a6501f4f0ef91e74cad32177f9d110f783c3c71ffbe51d22ccaea875460c0b4",
+  "registry": {
+    "blocks": 4,
+    "canonical_bytes": 191,
+    "canonical_sha256": "79725faf726a083f538181b1e324e5a31026dcab822c86e2dbdb6a0e1b0ad493",
+    "source_sha256": "8b311f74f87891857acc923f140a5091f1876a6130dafc036076b81085bb7418",
+    "states": 4
+  },
+  "runner_sha256": "e6a634f0a3cbcd9729e76ad006fcba849a21cba938862dc0130fd2b3c68fd440",
+  "sine_table": {
+    "bytes": 262144,
+    "file": "reference_mth_sin.f32",
+    "sha1": "453d5bfac3fe5a249b1d76c6eb817dea50710c98",
+    "sha256": "cdfaec6870788e193dff3f1ddfa3ca7d3f1a897042d78365a1fe3a433be3627d"
+  },
+  "sources_sha256": {
+    "mcp.bend": "5b67990ce163cdd4ab20d0ca9b46e6b0a3708f759f2dcaee17287342e1a5f81c",
+    "src/archive.bend": "c0f7b34a22726d220f6b867730b7d080d57d82c84d619c35721b9b8d18fa5d6e",
+    "src/atomic_file.bend": "ef82fcddc460705f0761473bcfd8fcd896b779f89e56c4551c9ced23b13f987a",
+    "src/client_controls.bend": "aa55b7905c339d58909e6319d2d31b972c23ea1a2a3c895ea72c2a2c72605f25",
+    "src/client_render.bend": "bb8f6057a02bfcb0583025f9e75fe41abc6804eb554c6d971df5c81618932947",
+    "src/client_world.bend": "05040abf35b2b9ceaf87fed5c48f8d074d211750a59ab00fa6ff08e60a9ea5d7",
+    "src/compression.bend": "255cdff06a33050c7b0a48fdea75c1842ebe2dab0439cfe4f03d126d4edc20aa",
+    "src/core.bend": "c1ee5a5390cdac0452c9c6cd3b0584a68ef68b5b0dfec867491c27e67ecadd4e",
+    "src/durability.bend": "079b5342e76be090793dc2e44f8d337eda144d75653d23eea36a7131558aed05",
+    "src/extended_persistence.bend": "32b3b094e21745d057a4ac797674fe4757bb4957659b35cbea7199b9c4ee1d2a",
+    "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "src/framing.bend": "307f95049df03d92687b7bd0eafb2cd566e660926510bb88163f9bc825fccdb5",
+    "src/game.bend": "43e3eee5d15613bb06cc608fe43657aa14d8c0fbe899d4efa580fc8335d23882",
+    "src/geometry.bend": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f",
+    "src/hash.bend": "d2473695632b19e68c8d636668e4617f04d70892fb2ab6559cb24d4b33c1b978",
+    "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+    "src/live.bend": "cb5a2f8237a53e48d3f6751d321a023e11694721f789373984d7d77620f32e87",
+    "src/locomotion.bend": "ccf8aa12636ba1fce5575606383bf75c02a8ac79ba952645b89aea2eef6cd459",
+    "src/mcp.bend": "8291445d923714ec6985e8c6b2b8f756cf09cd7e4d488814b2c6cd6552238d95",
+    "src/mouse_input.bend": "2157b1804cb7ad58f6b58fd167de978eb9605ddac9485241d102128d055158a9",
+    "src/movement.bend": "0e94fea7cc941a23d2ed7bbd2ccaf0117e6af363eb91f2db2e34428f9dd9e67f",
+    "src/nbt.bend": "b677546b5fc02aaa38f5c09e5b798c0d35aec32b1c4b37cbd7042b9a1a5275e4",
+    "src/persistence.bend": "1561a863a74fdfc676b8ba4bbb5eddd206823f7363bf05c8a50ddffbbc30a4af",
+    "src/player_codec.bend": "98a5d7e8e11bb1a811c4e3b1e19dcee010e9f36eb15967810fbe95f4222a09a7",
+    "src/player_controls.bend": "52e012a959078eb06b80fb17f17f6ca06d98c4d84ab0ca529164f82d03637d38",
+    "src/player_input.bend": "d3938f96416691739eb54f2b0f77377c6ba7c74ac63ffa8335840152feb355d5",
+    "src/player_look.bend": "35ec863e078e46f2c2502b975f3e9f259114aec7baac614c68ba6e46773260ca",
+    "src/player_record.bend": "1812d954991cbce193353490d5db002f26873f364c426f497f82e7b13594235b",
+    "src/player_runtime.bend": "0580f77db4a9e9d570938f6c6487867cd1ea92b0a2c24246fa0f354aa0604242",
+    "src/player_session.bend": "e4d515442e9446aa308dee68630ef48755565562a2441052f54d3e422416e6d2",
+    "src/player_storage.bend": "0873c24a2dc4b2a0e3c573f6a11ca313aa7b807457b4447e21c3f9c053bbb445",
+    "src/player_tick.bend": "d583f3014011313097779b69ee0fd8d77bd3ed0e1e7895b629903eb64da9699f",
+    "src/player_tick_world.bend": "98d5fe1383351c463f3fa172ff012325864292cfa7909cf21167e6642500170b",
+    "src/png.bend": "8c24c14a250cf6dbdf0c2804e4b28bfebd7ef62ed5d9ee97a1d07094d4745f22",
+    "src/registry.bend": "821c53d9cfa3044be3cae2af968f55563c0be2bebc9beae55a29d77d47b140a0",
+    "src/schedule.bend": "93aa79895fe340e27ae5fd562102d5980f0938003eb1bbde669a84010779b8c9",
+    "src/section.bend": "02b5c15c57b173c7eb8b4c55a1433c10c192926e91af5e3e69050b4404044aa5",
+    "src/section_map.bend": "ded59d7938c02fd0876d65e37f9f90ea0cfebf3ca4bd107394342f8adbf33965",
+    "src/server.bend": "3c9e5f681b0957b3e8c36b4ddde94a6ad5705b8b5b45cc6b2a81572446d7c2cf",
+    "src/support.bend": "aca42f24e0a32bd89356ac33f6d9bbe2ab5975ce938e2d2750496c01a6137455",
+    "src/support_world.bend": "a2e42fb06cab36408e7631e8ff3b9e61793696d4b049592d3ce137f69fa3b381",
+    "src/travel.bend": "717e969e3989a7a8e443b18f69c171bdc11a14130828233ce85e6cd914e1f8f1",
+    "src/travel_world.bend": "a3c787699a9ae12d9301638d39a7abd3aa1cfeba160182b9c176797424aad682",
+    "src/unicode.bend": "8f0cd9bbcd0e7f938af370675eca0c73a9b97b90c2789a1e77e5a29a918455bd",
+    "src/world_codec.bend": "461e2bc342005831a3d16824303f79e1f4dac2dca0eaf0731d18052dbfe0bf86",
+    "src/world_lock.bend": "5b527809b0a6686a8c3ba0459b9fa3ce2c3414acdbf4fa7453a57f7bd303568e",
+    "tests/player_session.bend": "875f19ad80a1ac719a2ea9bf5a83df95539115580dc51835a97f9db8d1dbc5cf"
+  },
+  "status": "prepared-native-unverified"
+}

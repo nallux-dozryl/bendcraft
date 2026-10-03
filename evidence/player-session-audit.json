@@ -1,0 +1,75 @@
+{
+  "assertion_corrections_change_production_source_harness_or_physics_fixtures": false,
+  "behavior_manifest_sha256": "b49f2e1715e34eb25a2c0fd392e2ad16c9b205e21f759934d0e76106c8d1fe04",
+  "bend_executable": {
+    "bytes": 63885392,
+    "kind": "bend-executable",
+    "lookup": "/Users/chuah/.bend/bin/bend",
+    "path": "/Users/chuah/.bend/bin/bend",
+    "sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e"
+  },
+  "confidence": "high for frozen generation and recorded behavioral comparisons",
+  "dependency_manifests": [
+    {
+      "count": 1676,
+      "sha256": "c3196494198a525b1523aba4a484d4a260d6806c3f7a98912beeaf27ad8d5bdc"
+    },
+    {
+      "count": 1630,
+      "sha256": "dc1b27e6a79d73849c78dd886b4c9500ac779930bf3dac38e66e591c3f7d14b9"
+    }
+  ],
+  "final_runner_sha256": "e6a634f0a3cbcd9729e76ad006fcba849a21cba938862dc0130fd2b3c68fd440",
+  "final_source_hashes": {
+    "src/player_runtime.bend": "0580f77db4a9e9d570938f6c6487867cd1ea92b0a2c24246fa0f354aa0604242",
+    "src/player_session.bend": "e4d515442e9446aa308dee68630ef48755565562a2441052f54d3e422416e6d2",
+    "src/player_storage.bend": "0873c24a2dc4b2a0e3c573f6a11ca313aa7b807457b4447e21c3f9c053bbb445",
+    "src/support_world.bend": "a2e42fb06cab36408e7631e8ff3b9e61793696d4b049592d3ce137f69fa3b381",
+    "tests/player_session.bend": "875f19ad80a1ac719a2ea9bf5a83df95539115580dc51835a97f9db8d1dbc5cf"
+  },
+  "immutable_artifacts_and_aliases_verified_before_and_after_each_run": true,
+  "independent_full_source_kernel": "not reached: 79 inherited unsafe/foreign dependencies, recorded separate 2.775693-second refusal",
+  "local_source_count": 47,
+  "local_source_manifest_sha256": "3f9c47b27a4d48447e9e1fe13211e8c526de327c5cd6a820ebe343f22f3165d2",
+  "native_build_receipt_sha256": "d0bacd9df105936e3f35481fd7d9d2737cfbee7c07e70c35c3754663ee8cc7c8",
+  "native_executables": [
+    {
+      "artifact": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native-cache/artifacts/e5a8c39d31cf50d3123de472e0a685b67f6b850f9a06b5d8d7d7630db1c416ad/program",
+      "binary_bytes": 5650936,
+      "binary_sha256": "e5a8c39d31cf50d3123de472e0a685b67f6b850f9a06b5d8d7d7630db1c416ad",
+      "cache_key": "42b3257f771066f8b5649e6aba543ab53d209d88b625e3462d7ba294ab9b12f6",
+      "emitted_c_sha256": "68011c1c7e470147f062391610403105db511c034867d633dc1f97ddabf04b5e"
+    },
+    {
+      "artifact": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native-cache/artifacts/f0191cb9401e1ff47990ada221fb8051a94ad9942d4c857d28ef764b9e955281/program",
+      "binary_bytes": 1528312,
+      "binary_sha256": "f0191cb9401e1ff47990ada221fb8051a94ad9942d4c857d28ef764b9e955281",
+      "cache_key": "860e9ee7c6b13e83de83333968ebb63eaabad0c469a2c928e6ae83e43f50df4f",
+      "emitted_c_sha256": "51a4624b9491083ae0af3069217a94274b400196b97b169ce3a060fd1d6321f5"
+    }
+  ],
+  "owned_files": [
+    "tests/player_session.bend",
+    "tools/test_player_session.py",
+    "docs/PLAYER_SESSION.md",
+    "evidence/player-session-preflight.json",
+    "evidence/player-session-native.json",
+    "evidence/player-session-reproduction.json",
+    "evidence/player-session-kernel.json",
+    "evidence/player-session-audit.json"
+  ],
+  "passing_native_runs": 2,
+  "power_loss_measured": false,
+  "production_and_harness_changed": false,
+  "quiet_session_save_scope": "Actual closed Session/ExtendedPersistence acknowledged durable publication, exclusive-create collision failure/owner recovery, and unsaved-state SIGKILL restart.",
+  "receipt_deep_copy_corruption_rejections_per_run": 24,
+  "runner_assertion_corrections": [
+    "Expected foreign-boundary diagnostic is stderr, not stdout.",
+    "world.clock is developer-only; malformed observer steps are inspected with separate developer clock query.",
+    "Every physically valid JSON reaching dispatch consumes one sequence, including malformed envelopes.",
+    "Duplicate JSON object members are strict transport invalid_json failures without dispatch or sequence consumption."
+  ],
+  "separate_stage_hook_scope": "Actual leased AtomicFile.publish_with pauses after Created/Written/Synced/Published/DirectorySynced over independently encoded Core+Record pairs; five real SIGKILL recoveries. Hook is not installed in production Session save.",
+  "sources_oracles_sine_and_final_runner_verified": true,
+  "status": "passed"
+}

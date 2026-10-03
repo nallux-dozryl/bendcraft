@@ -17,7 +17,7 @@ fixture is a verification instrument; none satisfies a gameplay completion gate.
 2. Registry identity → leased save-owning server → durable publication → actual
    restart/queued-action/MCP tests and the same save-owning state in a client are
    checked. Typed atomic extension saves also pass. Neutral player and raw-degree record codecs also pass. Next: atomic runtime
-   save composition, then full player/mod state,
+   save composition now passes two actual TCP/MCP/save/restart runs. Next: full player/mod state,
    recovery policy and vanilla-format compatibility.
 3. Official ZIP/DEFLATE/PNG decoding and bounded texture pixels are checked.
    Typed model parsing/inheritance, the actual first-value resource reader and
@@ -39,7 +39,7 @@ declared interfaces; integration evidence determines subsequent work.
 
 | Owner | Exclusive working files or subsystem | Stable integration interface |
 | --- | --- | --- |
-| Lead | `player_runtime.bend`, `player_session.bend`, `player_storage.bend`, `client_presenter.bend`, window input and new actor/save integration | Verified plain Player runtime; one W body plus metadata, Tables, support and complete Controller. Player bundle transfer/dispatcher ordinary checks pass; native save/API/restart composition queued |
+| Lead | `player_runtime.bend`, `player_session.bend`, `player_storage.bend`, `player_scene.bend`, `player_client.bend`, `client_presenter.bend` and window input | Verified plain Player runtime and saved-session TCP/MCP/restart composition; one W body plus metadata, Tables, support and complete Controller. Continuous native window entry ordinary checks pass up to declared effects; hidden integration queued |
 | World bridge | Completed PW/SW; new `local_tick_world.bend` | Verified owned support/context reads; LocalPlayer prepare override before checked travel/finish |
 | Client/render | Completed BR/texture metadata; new `resource_frame.bend` | Real ZIP/model/bake/world-mesh/frame composition and retained Assets; metadata consumer integration remains separate |
 | Player motion | Completed `support.bend` and `local_input.bend` | Exact ordered sprint/input/crouch/bob phases; whole tick rotation and contextual movement hooks remain open |

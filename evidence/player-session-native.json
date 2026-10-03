@@ -1,0 +1,2499 @@
+{
+  "actual_Java_ticks": 6,
+  "checks": [
+    "actual MCP dynamic discovery and observer/developer boundaries",
+    "strict step schema, at prohibition, exactly-once dispatched JSON sequence including invalid envelopes; malformed physical JSON retains sequence",
+    "actual paused Core47 scene with measured Java player ticks and held physical owners",
+    "acknowledged durable Core+Record bytes then unsaved mutation SIGKILL restores previous whole bundle",
+    "restart clears keys/mouse and preserves body/support/raw degree fields/pending Core queue",
+    "queued collider edits precede each individual resumed physics tick",
+    "exclusive temporary collision preserves old save/unowned temporary and complete live owner",
+    "paused loaded finite body/support/metadata/signed-zero/raw current/past degree records roundtrip without fixture replacement",
+    "actual injected driver context rejection retains player/control owner while Core advances; ticks1 and1000 admitted",
+    "malformed closed Core+Record/schema/dimension/projection bundles refuse before listener and preserve source bytes",
+    "post-codec palette startup failure then repaired process acquires unchanged lease path",
+    "missing-save default refusal and strict create policy",
+    "separate leased Atomic.publish_with primitive lane: actual SIGKILL at all five returned stages exposes complete old/new Core+Record pair; orphan temporaries ignored on actual Session restart"
+  ],
+  "commands": [
+    "python3 tools/test_player_session.py --preflight",
+    "python3 tools/test_player_session.py --build-only",
+    "python3 tools/test_player_session.py --skip-build"
+  ],
+  "confidence": "high for recorded custom-bundle/neutral-session scenarios",
+  "corrupt_startup_cases": 110,
+  "fixture_manifest_sha256": "f0560fb36a5200f8339cd5f540b03cafdd59e5eb50f259ed23b52b6c783f3276",
+  "metrics": {
+    "MCP_requests": 99,
+    "MCP_responses": 99,
+    "native_MCP_processes": 16,
+    "native_ready_servers": 14,
+    "publication_stage_interruptions": [
+      {
+        "bundle_sha256": "0eb574065158e3a38db1d3d6420088536074bd6835ef529934fd7e9bc35c61d3",
+        "complete_bundle_bytes": 1076,
+        "exit_code": -9,
+        "lock_inode_preserved": true,
+        "observed_stages": [
+          "created"
+        ],
+        "orphan_temporary": true,
+        "published_generation": "old",
+        "restart_Core_and_Record_exact": true,
+        "stage": "created"
+      },
+      {
+        "bundle_sha256": "0eb574065158e3a38db1d3d6420088536074bd6835ef529934fd7e9bc35c61d3",
+        "complete_bundle_bytes": 1076,
+        "exit_code": -9,
+        "lock_inode_preserved": true,
+        "observed_stages": [
+          "created",
+          "written"
+        ],
+        "orphan_temporary": true,
+        "published_generation": "old",
+        "restart_Core_and_Record_exact": true,
+        "stage": "written"
+      },
+      {
+        "bundle_sha256": "0eb574065158e3a38db1d3d6420088536074bd6835ef529934fd7e9bc35c61d3",
+        "complete_bundle_bytes": 1076,
+        "exit_code": -9,
+        "lock_inode_preserved": true,
+        "observed_stages": [
+          "created",
+          "written",
+          "synced"
+        ],
+        "orphan_temporary": true,
+        "published_generation": "old",
+        "restart_Core_and_Record_exact": true,
+        "stage": "synced"
+      },
+      {
+        "bundle_sha256": "1da639a8cbcce23e941b33c6e5706d311128b2a3500364417cd9e53fa5400715",
+        "complete_bundle_bytes": 1078,
+        "exit_code": -9,
+        "lock_inode_preserved": true,
+        "observed_stages": [
+          "created",
+          "written",
+          "synced",
+          "published"
+        ],
+        "orphan_temporary": false,
+        "published_generation": "new",
+        "restart_Core_and_Record_exact": true,
+        "stage": "published"
+      },
+      {
+        "bundle_sha256": "1da639a8cbcce23e941b33c6e5706d311128b2a3500364417cd9e53fa5400715",
+        "complete_bundle_bytes": 1078,
+        "exit_code": -9,
+        "lock_inode_preserved": true,
+        "observed_stages": [
+          "created",
+          "written",
+          "synced",
+          "published",
+          "directory_synced"
+        ],
+        "orphan_temporary": false,
+        "published_generation": "new",
+        "restart_Core_and_Record_exact": true,
+        "stage": "directory_synced"
+      }
+    ],
+    "raw_tcp_requests": 83,
+    "scene_mutations": 47
+  },
+  "native_build": {
+    "builds": [
+      {
+        "artifact": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native-cache/artifacts/e5a8c39d31cf50d3123de472e0a685b67f6b850f9a06b5d8d7d7630db1c416ad/program",
+        "binary_bytes": 5650936,
+        "binary_sha256": "e5a8c39d31cf50d3123de472e0a685b67f6b850f9a06b5d8d7d7630db1c416ad",
+        "cache_key": "42b3257f771066f8b5649e6aba543ab53d209d88b625e3462d7ba294ab9b12f6",
+        "compiler": {
+          "driver_probe": "Apple clang version 17.0.0 (clang-1700.0.13.5)\nTarget: arm64-apple-darwin25.4.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin\n \"/Library/Developer/CommandLineTools/usr/bin/clang\" \"-cc1\" \"-triple\" \"arm64-apple-macosx15.5.0\" \"-Wundef-prefix=TARGET_OS_\" \"-Wdeprecated-objc-isa-usage\" \"-Werror=deprecated-objc-isa-usage\" \"-Werror=implicit-function-declaration\" \"-emit-obj\" \"-dumpdir\" \"/dev/null-\" \"-disable-free\" \"-clear-ast-before-backend\" \"-disable-llvm-verifier\" \"-discard-value-names\" \"-main-file-name\" \"null\" \"-mrelocation-model\" \"pic\" \"-pic-level\" \"2\" \"-mframe-pointer=non-leaf\" \"-mllvm\" \"-extra-vectorizer-passes\" \"-fno-strict-return\" \"-ffp-contract=on\" \"-fno-rounding-math\" \"-funwind-tables=1\" \"-fobjc-msgsend-selector-stubs\" \"-target-sdk-version=15.5\" \"-fvisibility-inlines-hidden-static-local-var\" \"-fdefine-target-os-macros\" \"-fno-assume-unique-vtables\" \"-fno-modulemap-allow-subdirectory-search\" \"-target-cpu\" \"apple-m1\" \"-target-feature\" \"+zcm\" \"-target-feature\" \"+zcz\" \"-target-feature\" \"+v8.5a\" \"-target-feature\" \"+aes\" \"-target-feature\" \"+altnzcv\" \"-target-feature\" \"+ccdp\" \"-target-feature\" \"+complxnum\" \"-target-feature\" \"+crc\" \"-target-feature\" \"+dotprod\" \"-target-feature\" \"+fp-armv8\" \"-target-feature\" \"+fp16fml\" \"-target-feature\" \"+fptoint\" \"-target-feature\" \"+fullfp16\" \"-target-feature\" \"+jsconv\" \"-target-feature\" \"+lse\" \"-target-feature\" \"+neon\" \"-target-feature\" \"+pauth\" \"-target-feature\" \"+perfmon\" \"-target-feature\" \"+predres\" \"-target-feature\" \"+ras\" \"-target-feature\" \"+rcpc\" \"-target-feature\" \"+rdm\" \"-target-feature\" \"+sb\" \"-target-feature\" \"+sha2\" \"-target-feature\" \"+sha3\" \"-target-feature\" \"+specrestrict\" \"-target-feature\" \"+ssbs\" \"-target-abi\" \"darwinpcs\" \"-debugger-tuning=lldb\" \"-fdebug-compilation-dir=/Users/chuah/Documents/ChatGPT/bendex/minecraft\" \"-target-linker-version\" \"1167.5\" \"-fcoverage-compilation-dir=/Users/chuah/Documents/ChatGPT/bendex/minecraft\" \"-resource-dir\" \"/Library/Developer/CommandLineTools/usr/lib/clang/17\" \"-isysroot\" \"/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk\" \"-I/usr/local/include\" \"-internal-isystem\" \"/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include\" \"-internal-isystem\" \"/Library/Developer/CommandLineTools/usr/lib/clang/17/include\" \"-internal-externc-isystem\" \"/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include\" \"-internal-externc-isystem\" \"/Library/Developer/CommandLineTools/usr/include\" \"-O3\" \"-Wno-reorder-init-list\" \"-Wno-implicit-int-float-conversion\" \"-Wno-c99-designator\" \"-Wno-final-dtor-non-final-class\" \"-Wno-extra-semi-stmt\" \"-Wno-misleading-indentation\" \"-Wno-quoted-include-in-framework-header\" \"-Wno-implicit-fallthrough\" \"-Wno-enum-enum-conversion\" \"-Wno-enum-float-conversion\" \"-Wno-elaborated-enum-base\" \"-Wno-reserved-identifier\" \"-Wno-gnu-folding-constant\" \"-std=c11\" \"-ferror-limit\" \"19\" \"-stack-protector\" \"1\" \"-fstack-check\" \"-mdarwin-stkchk-strong-link\" \"-fblocks\" \"-fencode-extended-block-signature\" \"-fregister-global-dtors-with-atexit\" \"-fgnuc-version=4.2.1\" \"-fskip-odr-check-in-gmf\" \"-fmax-type-align=16\" \"-fcommon\" \"-vectorize-loops\" \"-vectorize-slp\" \"-clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation\" \"-fno-odr-hash-protocols\" \"-clang-vendor-feature=+enableAggressiveVLAFolding\" \"-clang-vendor-feature=+revert09abecef7bbf\" \"-clang-vendor-feature=+thisNoAlignAttr\" \"-clang-vendor-feature=+thisNoNullAttr\" \"-clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError\" \"-D__GCC_HAVE_DWARF2_CFI_ASM=1\" \"-o\" \"<temporary.o>\" \"-x\" \"c\" \"/dev/null\"\n \"/Library/Developer/CommandLineTools/usr/bin/ld\" \"-demangle\" \"-lto_library\" \"/Library/Developer/CommandLineTools/usr/lib/libLTO.dylib\" \"-dynamic\" \"-arch\" \"arm64\" \"-platform_version\" \"macos\" \"15.5.0\" \"15.5\" \"-syslibroot\" \"/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk\" \"-O3\" \"-mllvm\" \"-enable-linkonceodr-outlining\" \"-o\" \"/dev/null\" \"-L/usr/local/lib\" \"<temporary.o>\" \"-lpthread\" \"-lm\" \"-lSystem\" \"/Library/Developer/CommandLineTools/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a\"\n",
+          "flags": [
+            "-std=c11",
+            "-O3",
+            "<emitted.c>",
+            "-lpthread",
+            "-lm",
+            "-o",
+            "<native>"
+          ],
+          "path": "/usr/bin/clang",
+          "resource_dir": "/Library/Developer/CommandLineTools/usr/lib/clang/17",
+          "sysroots": [
+            "/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk"
+          ],
+          "version": "Apple clang version 17.0.0 (clang-1700.0.13.5)\nTarget: arm64-apple-darwin25.4.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin\n"
+        },
+        "dependencies_manifest_sha256": "c3196494198a525b1523aba4a484d4a260d6806c3f7a98912beeaf27ad8d5bdc",
+        "dependency_count": 1676,
+        "emitted_c_sha256": "68011c1c7e470147f062391610403105db511c034867d633dc1f97ddabf04b5e",
+        "timings": {
+          "emission_seconds": 29.32962749991566,
+          "native_seconds": 87.47953000012785,
+          "total_seconds": 121.8371889591217
+        }
+      },
+      {
+        "artifact": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native-cache/artifacts/f0191cb9401e1ff47990ada221fb8051a94ad9942d4c857d28ef764b9e955281/program",
+        "binary_bytes": 1528312,
+        "binary_sha256": "f0191cb9401e1ff47990ada221fb8051a94ad9942d4c857d28ef764b9e955281",
+        "cache_key": "860e9ee7c6b13e83de83333968ebb63eaabad0c469a2c928e6ae83e43f50df4f",
+        "compiler": {
+          "driver_probe": "Apple clang version 17.0.0 (clang-1700.0.13.5)\nTarget: arm64-apple-darwin25.4.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin\n \"/Library/Developer/CommandLineTools/usr/bin/clang\" \"-cc1\" \"-triple\" \"arm64-apple-macosx15.5.0\" \"-Wundef-prefix=TARGET_OS_\" \"-Wdeprecated-objc-isa-usage\" \"-Werror=deprecated-objc-isa-usage\" \"-Werror=implicit-function-declaration\" \"-emit-obj\" \"-dumpdir\" \"/dev/null-\" \"-disable-free\" \"-clear-ast-before-backend\" \"-disable-llvm-verifier\" \"-discard-value-names\" \"-main-file-name\" \"null\" \"-mrelocation-model\" \"pic\" \"-pic-level\" \"2\" \"-mframe-pointer=non-leaf\" \"-mllvm\" \"-extra-vectorizer-passes\" \"-fno-strict-return\" \"-ffp-contract=on\" \"-fno-rounding-math\" \"-funwind-tables=1\" \"-fobjc-msgsend-selector-stubs\" \"-target-sdk-version=15.5\" \"-fvisibility-inlines-hidden-static-local-var\" \"-fdefine-target-os-macros\" \"-fno-assume-unique-vtables\" \"-fno-modulemap-allow-subdirectory-search\" \"-target-cpu\" \"apple-m1\" \"-target-feature\" \"+zcm\" \"-target-feature\" \"+zcz\" \"-target-feature\" \"+v8.5a\" \"-target-feature\" \"+aes\" \"-target-feature\" \"+altnzcv\" \"-target-feature\" \"+ccdp\" \"-target-feature\" \"+complxnum\" \"-target-feature\" \"+crc\" \"-target-feature\" \"+dotprod\" \"-target-feature\" \"+fp-armv8\" \"-target-feature\" \"+fp16fml\" \"-target-feature\" \"+fptoint\" \"-target-feature\" \"+fullfp16\" \"-target-feature\" \"+jsconv\" \"-target-feature\" \"+lse\" \"-target-feature\" \"+neon\" \"-target-feature\" \"+pauth\" \"-target-feature\" \"+perfmon\" \"-target-feature\" \"+predres\" \"-target-feature\" \"+ras\" \"-target-feature\" \"+rcpc\" \"-target-feature\" \"+rdm\" \"-target-feature\" \"+sb\" \"-target-feature\" \"+sha2\" \"-target-feature\" \"+sha3\" \"-target-feature\" \"+specrestrict\" \"-target-feature\" \"+ssbs\" \"-target-abi\" \"darwinpcs\" \"-debugger-tuning=lldb\" \"-fdebug-compilation-dir=/Users/chuah/Documents/ChatGPT/bendex/minecraft\" \"-target-linker-version\" \"1167.5\" \"-fcoverage-compilation-dir=/Users/chuah/Documents/ChatGPT/bendex/minecraft\" \"-resource-dir\" \"/Library/Developer/CommandLineTools/usr/lib/clang/17\" \"-isysroot\" \"/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk\" \"-I/usr/local/include\" \"-internal-isystem\" \"/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include\" \"-internal-isystem\" \"/Library/Developer/CommandLineTools/usr/lib/clang/17/include\" \"-internal-externc-isystem\" \"/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include\" \"-internal-externc-isystem\" \"/Library/Developer/CommandLineTools/usr/include\" \"-O3\" \"-Wno-reorder-init-list\" \"-Wno-implicit-int-float-conversion\" \"-Wno-c99-designator\" \"-Wno-final-dtor-non-final-class\" \"-Wno-extra-semi-stmt\" \"-Wno-misleading-indentation\" \"-Wno-quoted-include-in-framework-header\" \"-Wno-implicit-fallthrough\" \"-Wno-enum-enum-conversion\" \"-Wno-enum-float-conversion\" \"-Wno-elaborated-enum-base\" \"-Wno-reserved-identifier\" \"-Wno-gnu-folding-constant\" \"-std=c11\" \"-ferror-limit\" \"19\" \"-stack-protector\" \"1\" \"-fstack-check\" \"-mdarwin-stkchk-strong-link\" \"-fblocks\" \"-fencode-extended-block-signature\" \"-fregister-global-dtors-with-atexit\" \"-fgnuc-version=4.2.1\" \"-fskip-odr-check-in-gmf\" \"-fmax-type-align=16\" \"-fcommon\" \"-vectorize-loops\" \"-vectorize-slp\" \"-clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation\" \"-fno-odr-hash-protocols\" \"-clang-vendor-feature=+enableAggressiveVLAFolding\" \"-clang-vendor-feature=+revert09abecef7bbf\" \"-clang-vendor-feature=+thisNoAlignAttr\" \"-clang-vendor-feature=+thisNoNullAttr\" \"-clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError\" \"-D__GCC_HAVE_DWARF2_CFI_ASM=1\" \"-o\" \"<temporary.o>\" \"-x\" \"c\" \"/dev/null\"\n \"/Library/Developer/CommandLineTools/usr/bin/ld\" \"-demangle\" \"-lto_library\" \"/Library/Developer/CommandLineTools/usr/lib/libLTO.dylib\" \"-dynamic\" \"-arch\" \"arm64\" \"-platform_version\" \"macos\" \"15.5.0\" \"15.5\" \"-syslibroot\" \"/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk\" \"-O3\" \"-mllvm\" \"-enable-linkonceodr-outlining\" \"-o\" \"/dev/null\" \"-L/usr/local/lib\" \"<temporary.o>\" \"-lpthread\" \"-lm\" \"-lSystem\" \"/Library/Developer/CommandLineTools/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a\"\n",
+          "flags": [
+            "-std=c11",
+            "-O3",
+            "<emitted.c>",
+            "-lpthread",
+            "-lm",
+            "-o",
+            "<native>"
+          ],
+          "path": "/usr/bin/clang",
+          "resource_dir": "/Library/Developer/CommandLineTools/usr/lib/clang/17",
+          "sysroots": [
+            "/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk"
+          ],
+          "version": "Apple clang version 17.0.0 (clang-1700.0.13.5)\nTarget: arm64-apple-darwin25.4.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin\n"
+        },
+        "dependencies_manifest_sha256": "dc1b27e6a79d73849c78dd886b4c9500ac779930bf3dac38e66e591c3f7d14b9",
+        "dependency_count": 1630,
+        "emitted_c_sha256": "51a4624b9491083ae0af3069217a94274b400196b97b169ce3a060fd1d6321f5",
+        "timings": {
+          "emission_seconds": 3.8399745421484113,
+          "native_seconds": 5.9525518752634525,
+          "total_seconds": 11.930854583159089
+        }
+      }
+    ],
+    "ignored_receipt_path": "build/player-session/build.json",
+    "receipt_sha256": "d0bacd9df105936e3f35481fd7d9d2737cfbee7c07e70c35c3754663ee8cc7c8"
+  },
+  "official_registry": {
+    "blocks": 1286,
+    "canonical_bytes": 167974,
+    "canonical_sha256": "4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc",
+    "source_sha256": "27769e75bf862d0540b2df2a6e99f6b7556a867bff6339fb08566240ee124cac",
+    "states": 35723
+  },
+  "oracle_tools_sha256": {
+    "tools/test_mcp.py": "71eed7d510b4533eb35793cfd24227b7121456b4d27373ae10c04cc790e0de45",
+    "tools/test_nbt.py": "d81adb1a04baa13777e54abaaf1e20cbe97bc5d15c5cf2df047c4f17be2c8cdf",
+    "tools/test_persistence.py": "c43cd057d992de30d946de7b46f358100a23ba3d7a9c688aea75ae7f2e872359",
+    "tools/test_player_codec.py": "222bb198e3a4c0585db44967a0c6d26e345ece67fe68e5a509358f091086cbe0",
+    "tools/test_player_record.py": "cd84b5f1b1b36ffd248a4232929030e574f7fbd3ed1ff97897bcde2e84c5a001",
+    "tools/test_support_world.py": "4280ccee2454b4a6f1f0e6c89ac9481ea04f3cefbba3140819ccd5d8e794c822",
+    "tools/test_travel_world.py": "4a349358d4b7386afec841adc2e8c3b57d90281f608274657b7f090b1a3bff13",
+    "tools/test_world_codec.py": "6c89a554e0d1a4301ca3bf85d75706780f5f7398f4c100fd1a582bc2653a559a"
+  },
+  "ordinary_check": {
+    "command": [
+      "/Users/chuah/.bend/bin/bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_session.bend",
+      "--check-only"
+    ],
+    "exit_code": 1,
+    "pid": 68487,
+    "seconds": 2.893475,
+    "stderr": "SOME PROOFS FAIL\nError: 79 defs rely on unsafe or foreign code:\n- ../src/durability.Durability.create\n- ../src/durability.Durability.sync\n- ../src/durability.Durability.replace\n- ../src/durability.Durability.sync_directory\n- ../src/durability.Durability.remove\n- ../src/atomic_file.cleanup\n- ../src/atomic_file.renamed\n- ../src/atomic_file.synced\n- ../src/atomic_file.written\n- ../src/atomic_file.created\n- ../src/atomic_file.publish_valid\n- ../src/atomic_file.publish_with\n- ../src/atomic_file.publish\n- ../src/world_lock.Native.acquire\n- ../src/world_lock.Native.release\n- ../src/world_lock.acquire\n- ../src/world_lock.release\n- ../src/persistence.save_publish\n- ../src/persistence.save_envelope\n- ../src/persistence.save_world_bytes\n- ../src/persistence.save_world_result\n- ../src/persistence.save\n- ../src/persistence.local_valid\n- ../src/persistence.local\n- ../src/persistence.chosen\n- ../src/persistence.parsed\n- ../src/persistence.dispatch_inner\n- ../src/persistence.dispatch\n- ../src/persistence.load_with\n- ../src/persistence.load\n- ../src/extended_persistence.save_encoded\n- ../src/extended_persistence.save_result\n- ../src/extended_persistence.save\n- ../src/extended_persistence.custom_valid\n- ../src/extended_persistence.custom\n- ../src/extended_persistence.chosen\n- ../src/extended_persistence.parsed\n- ../src/extended_persistence.dispatch_inner\n- ../src/extended_persistence.dispatch\n- ../src/extended_persistence.load_setup\n- ../src/extended_persistence.load_with\n- ../src/extended_persistence.load\n- ../src/player_session.delegate_bundle\n- ../src/player_session.delegate\n- ../src/player_session.parsed\n- ../src/player_session.dispatch\n- ../src/player_session.startup_failed\n- ../src/player_session.startup_restored\n- ../src/player_session.startup_world\n- ../src/player_session.startup_base\n- ../src/player_session.new\n- ../src/server.actor\n- ../src/server.timer\n- ../src/server.read_loop\n- ../src/server.accepted\n- ../src/server.accept_loop\n- ../src/server.start_effectful_from_peer\n- ../src/server.start_effectful\n- ../src/server.start_handle\n- ../src/server.run_effectful_from_peer\n- ../src/server.run_effectful\n- ../src/server.run\n- fixture_failed\n- fixture_finished\n- fixture_result\n- fixture_gate\n- fixture_selected\n- parsed\n- dispatch\n- serve\n- served\n- initialized\n- loaded\n- table_result\n- atomic_lease\n- atomic_acquired\n- atomic\n- arguments\n- main\n",
+    "stdout": "",
+    "timed_out": false
+  },
+  "receipt_corruption_checks": [
+    {
+      "count": 12,
+      "method": "Deep-copy receipt mutations only; no shared dependency/cache/source/artifact files are modified",
+      "rejected_corruptions": [
+        "source-digest",
+        "missing-source",
+        "unexpected-source",
+        "cache-key",
+        "binary-digest",
+        "binary-size",
+        "emitted-C-digest",
+        "compiler",
+        "missing-dependency",
+        "dependency-digest",
+        "dependency-lookup",
+        "artifact-alias"
+      ],
+      "status": "passed"
+    },
+    {
+      "count": 12,
+      "method": "Deep-copy receipt mutations only; no shared dependency/cache/source/artifact files are modified",
+      "rejected_corruptions": [
+        "source-digest",
+        "missing-source",
+        "unexpected-source",
+        "cache-key",
+        "binary-digest",
+        "binary-size",
+        "emitted-C-digest",
+        "compiler",
+        "missing-dependency",
+        "dependency-digest",
+        "dependency-lookup",
+        "artifact-alias"
+      ],
+      "status": "passed"
+    }
+  ],
+  "reference_provenance": [
+    {
+      "classpath": [
+        {
+          "bytes": 26652008,
+          "file": "server-26.3.jar",
+          "sha1": "cc3964451a3b32a0488110d5e3e6ad8d75fe6a66",
+          "sha256": "a362163eec5d1612d520772bc16e5b39c09e3b234fdc045f56bf544284ee8ae6"
+        },
+        {
+          "bytes": 910232,
+          "file": "lz4-java-1.10.1.jar",
+          "sha1": "f541d7f910fe3d76f38f799c507c48cc81b12ecb",
+          "sha256": "a58a84c4271e50df4c96ed916ccb7e48a869f8ed9cdcda1ad5d3d4c33b0214a3"
+        },
+        {
+          "bytes": 325945,
+          "file": "azure-json-1.4.0.jar",
+          "sha1": "fcc1d354dbc3e0300e5276b1bf124d0247799cd8",
+          "sha256": "c50bc998cd1a6c689f8644b51c206217bf2da09d5b949e777490a60290cc3a0d"
+        },
+        {
+          "bytes": 1022125,
+          "file": "oshi-core-6.9.0.jar",
+          "sha1": "03224870731860cfcd7744581a05b559e94291e7",
+          "sha256": "b29ba9bce041e6ea822203d5b5a692660c87551241510ebc76eedffe684844c7"
+        },
+        {
+          "bytes": 313604,
+          "file": "gson-2.14.0.jar",
+          "sha1": "efc0e34ede4e3204eaefb84a00e55e8c86634382",
+          "sha256": "2cbd119bf1961c28788310963dc80ba65f58cdeec1dd139c8bdb1240faa2c36f"
+        },
+        {
+          "bytes": 10763,
+          "file": "failureaccess-1.0.3.jar",
+          "sha1": "aeaffd00d57023a2c947393ed251f0354f0985fc",
+          "sha256": "cbfc3906b19b8f55dd7cfd6dfe0aa4532e834250d7f080bd8d211a3e246b59cb"
+        },
+        {
+          "bytes": 3064793,
+          "file": "guava-33.6.0-jre.jar",
+          "sha1": "c376b13067cc99a5774403530953f7b05a91e218",
+          "sha256": "dc573e1fca4fd5454f4a5fd3d7da2df03002876a4175bafc14a95980dd7713b3"
+        },
+        {
+          "bytes": 396486,
+          "file": "msal4j-1.24.1.jar",
+          "sha1": "c233f2d047b9755f7041adf21a858c680e4c9242",
+          "sha256": "12e62f79d1a71d176a41c168c0587f8167f0add99b78f006f39595bd7242aebe"
+        },
+        {
+          "bytes": 152645,
+          "file": "authlib-10.0.77.jar",
+          "sha1": "add8754cda96cf0cd840441632875648836f8a71",
+          "sha256": "521672866582633a412c82171d3cfa416ecaccdf05a43baf809c16f9aec07068"
+        },
+        {
+          "bytes": 80151,
+          "file": "brigadier-1.3.11.jar",
+          "sha1": "3373d1e7bf00c8b99bed1ea4efb8c47344e4a887",
+          "sha256": "9d09cf4819de83dfcd38bcb212d5f2227131791cef3abbfca3321d6fb2b9a64d"
+        },
+        {
+          "bytes": 753612,
+          "file": "datafixerupper-10.0.21.jar",
+          "sha1": "b6b2ae770c02e0c1eb90f9985b151e9085a38d0b",
+          "sha256": "3547cb1da8993fb7ebd42494d0e78997d2cfbe90c421f5efd022863e6909941e"
+        },
+        {
+          "bytes": 14292,
+          "file": "jtracy-1.14.38.jar",
+          "sha1": "cc2ad81342001b4281c305a298d7f50332354058",
+          "sha256": "721bff502a9664d689d781ab7bfed19330606c2e1ef6b8e4d59fba67e7e765da"
+        },
+        {
+          "bytes": 19540,
+          "file": "logging-1.7.12.jar",
+          "sha1": "351cea64a5233361327d8d54c44277041beed97f",
+          "sha256": "3c7ac9742fa98c773275379eb1046c048b5d2ee989152a8c69e7ba696c3f8538"
+        },
+        {
+          "bytes": 563971,
+          "file": "commons-io-2.20.0.jar",
+          "sha1": "36f3474daec2849c149e877614e7f979b2082cd2",
+          "sha256": "df90bba0fe3cb586b7f164e78fe8f8f4da3f2dd5c27fa645f888100ccc25dd72"
+        },
+        {
+          "bytes": 378032,
+          "file": "netty-buffer-4.2.16.Final.jar",
+          "sha1": "05397ef65dcb60670e0e0dba4854522873af3070",
+          "sha256": "cc36ae9fbd0b03fe755eb4eb4424ca53b59cfd297d7fd47d49e5b1059beded6c"
+        },
+        {
+          "bytes": 155355,
+          "file": "netty-codec-base-4.2.16.Final.jar",
+          "sha1": "01a01d45a9efc228c6d747525848b065e0656b5f",
+          "sha256": "feb410225938d9970de6b624a0c031d079804fa5cc5e1ec6e9298f16db5998a7"
+        },
+        {
+          "bytes": 183349,
+          "file": "netty-codec-compression-4.2.16.Final.jar",
+          "sha1": "bdbbcfcdbe217b95c14a04df4fc5d31213d5c27c",
+          "sha256": "13c8565414dd2115281303ef4ad1f7cc69bd7771d8d12c7d2fb31307dff26d11"
+        },
+        {
+          "bytes": 678387,
+          "file": "netty-codec-http-4.2.16.Final.jar",
+          "sha1": "b5e0715df90047ee5a0138c8f704f43c751009e4",
+          "sha256": "0d16f981de8d0d304a2ab1a81f0a674892089fbaa8a583100aebb4a5b00456ec"
+        },
+        {
+          "bytes": 819965,
+          "file": "netty-common-4.2.16.Final.jar",
+          "sha1": "c2bc7fa5acfa2afc777e944d84f0aa65559cc81e",
+          "sha256": "9825ee68a0dc4cd2b53e2f532502401b2211bad9b77e8b04882d9e64487283ff"
+        },
+        {
+          "bytes": 587814,
+          "file": "netty-handler-4.2.16.Final.jar",
+          "sha1": "cc82873ae4b6d14effe480740ad838de09add70d",
+          "sha256": "a259ca496da05ac1981f95cd856211f894a328056a6129e9cd70dbbd5df401f7"
+        },
+        {
+          "bytes": 32975,
+          "file": "netty-resolver-4.2.16.Final.jar",
+          "sha1": "fcea6d64273b59ab9127b68c16ae98af34642139",
+          "sha256": "c9eca6a99036485cf1d186b4a6a595b0a54c53808319ee03924270eae04c32bb"
+        },
+        {
+          "bytes": 549855,
+          "file": "netty-transport-4.2.16.Final.jar",
+          "sha1": "ae87a3bec51d503475a19fbd718bf777f2fc06c6",
+          "sha256": "cfa3f654caff906653385f4b7ddaa539d795b78f5711a622482b17d2b73484c0"
+        },
+        {
+          "bytes": 159935,
+          "file": "netty-transport-classes-epoll-4.2.16.Final.jar",
+          "sha1": "cf90c7b892e284ba9f1545dce170168369b3b9d6",
+          "sha256": "9f2b53210db9c8d24e787ed43f3896aaf30d686ed270c7afbb29ab6330c6aa23"
+        },
+        {
+          "bytes": 116819,
+          "file": "netty-transport-classes-kqueue-4.2.16.Final.jar",
+          "sha1": "0fa2bcf8c71626510f6fae173f78182117b70f7a",
+          "sha256": "6599b495f69420cb240ab0a1aa60a19a2df3bc72791729170e0993727637a689"
+        },
+        {
+          "bytes": 42393,
+          "file": "netty-transport-native-epoll-4.2.16.Final-linux-x86_64.jar",
+          "sha1": "439c24f5c27c220deb042b42e4048d606edeb78d",
+          "sha256": "2e00548e731948881d0c73ee79d2ead759254e750929406a1d595484758f0267"
+        },
+        {
+          "bytes": 43899,
+          "file": "netty-transport-native-epoll-4.2.16.Final-linux-aarch_64.jar",
+          "sha1": "eed34f3b37b4c46a0cbb49456ccc4e3bd7195e4c",
+          "sha256": "212cc7d81390e31b580a1fb91b6c8d963b43e762ed072c555e2b09ad4476e928"
+        },
+        {
+          "bytes": 26737,
+          "file": "netty-transport-native-kqueue-4.2.16.Final-osx-x86_64.jar",
+          "sha1": "dd9d41b06355a6a1815d902ee087a693aab83755",
+          "sha256": "05a09a4ab51f488f0c22f42ccce6c06935afbfac51173fae44170465aa072828"
+        },
+        {
+          "bytes": 27482,
+          "file": "netty-transport-native-kqueue-4.2.16.Final-osx-aarch_64.jar",
+          "sha1": "ddb942cad6c0e978caa2215757512b36c5ffacec",
+          "sha256": "796c503f7a80217177bd315f6448263134ee0f9042627d5fd698c760bcf99c8c"
+        },
+        {
+          "bytes": 46877,
+          "file": "netty-transport-native-unix-common-4.2.16.Final.jar",
+          "sha1": "3cf32390f1b80af890ac44aa0698c2ff58c2a4d7",
+          "sha256": "41ca8fe192083d17917be7ddcecded4da4fc1db1d1656d03d0bcb14e2f431155"
+        },
+        {
+          "bytes": 23965563,
+          "file": "fastutil-8.5.18.jar",
+          "sha1": "a6cff377eecc19c2037bf31568a6d7106b50ba1f",
+          "sha256": "9094ae67d01d0ad246f886f11ad557fc2e79c72cbf3feed83e1512a8ae90a74a"
+        },
+        {
+          "bytes": 2002589,
+          "file": "jna-5.17.0.jar",
+          "sha1": "33d12735bef894440780fce64f9758d420c7bae2",
+          "sha256": "b3a9408e7c51e08ef0e3bfcc08f443f6ec0f6191ba8cd7c18d53d2b22e5bdbc0"
+        },
+        {
+          "bytes": 1378617,
+          "file": "jna-platform-5.17.0.jar",
+          "sha1": "a4934c44d25a9d8c2ddf4203affd20330cb3426f",
+          "sha256": "b7e3d46c87bad2eb409b0e704916bcd81206168e357312dfddd0e253679cd9e0"
+        },
+        {
+          "bytes": 78146,
+          "file": "jopt-simple-5.0.4.jar",
+          "sha1": "4fdac2fbe92dfad86aa6e9301736f6b4342a3f5c",
+          "sha256": "df26cc58f235f477db07f753ba5a3ab243ebe5789d9f89ecf68dd62ea9a66c28"
+        },
+        {
+          "bytes": 713862,
+          "file": "commons-lang3-3.20.0.jar",
+          "sha1": "65897b3e5731220962e659e001904af3c3cbeba9",
+          "sha256": "69e5c9fa35da7a51a5fd2099dfe56a2d8d32cf233e2f6d770e796146440263f4"
+        },
+        {
+          "bytes": 351126,
+          "file": "log4j-api-2.26.0.jar",
+          "sha1": "ad52af0ecf054a7e3f275a2e180ee06d9c490951",
+          "sha256": "820de7bbaf430eaf2e3e5ccb92f23e2085797c5ac4d4f7fc6c8b660fbefa1dbc"
+        },
+        {
+          "bytes": 2015101,
+          "file": "log4j-core-2.26.0.jar",
+          "sha1": "d267ca60b27ddb075e0b4e75e7875859717bf85f",
+          "sha256": "406bb3132c47a5d322e5c571feb0787ca84496469f346eb51f1ef2ee45499902"
+        },
+        {
+          "bytes": 30211,
+          "file": "log4j-slf4j2-impl-2.26.0.jar",
+          "sha1": "668c0f0e813d83f00a7182533aa658ec7e7a0a0d",
+          "sha256": "cfc1bddbd39e684b698ae968291d8a3b3a55ee0ec2ef3d3ea5c2336a9e151598"
+        },
+        {
+          "bytes": 814581,
+          "file": "joml-1.10.9.jar",
+          "sha1": "438e036486bad66b189bff385dd07dea4f74a146",
+          "sha256": "feca4db853371704338621c120acc5cc32300d8af635fa42414b6213301e216b"
+        },
+        {
+          "bytes": 3819,
+          "file": "jspecify-1.0.0.jar",
+          "sha1": "7425a601c1c7ec76645a78d22b8c6a627edee507",
+          "sha256": "1fad6e6be7557781e4d33729d49ae1cdc8fdda6fe477bb0cc68ce351eafdfbab"
+        },
+        {
+          "bytes": 69908,
+          "file": "slf4j-api-2.0.17.jar",
+          "sha1": "d9e58ac9c7779ba3bf8142aff6c830617a7fe60f",
+          "sha256": "7b751d952061954d5abfed7181c1f645d336091b679891591d63329c622eb832"
+        }
+      ],
+      "compilation": {
+        "command": [
+          "/Users/chuah/Library/Application Support/minecraft/runtime/java-runtime-epsilon/mac-os-arm64/java-runtime-epsilon/jre.bundle/Contents/Home/bin/javac",
+          "-cp",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/versions/26.3/server-26.3.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/at/yawk/lz4/lz4-java/1.10.1/lz4-java-1.10.1.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/azure/azure-json/1.4.0/azure-json-1.4.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/github/oshi/oshi-core/6.9.0/oshi-core-6.9.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/google/code/gson/gson/2.14.0/gson-2.14.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/google/guava/failureaccess/1.0.3/failureaccess-1.0.3.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/google/guava/guava/33.6.0-jre/guava-33.6.0-jre.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/microsoft/azure/msal4j/1.24.1/msal4j-1.24.1.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/authlib/10.0.77/authlib-10.0.77.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/brigadier/1.3.11/brigadier-1.3.11.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/datafixerupper/10.0.21/datafixerupper-10.0.21.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/jtracy/1.14.38/jtracy-1.14.38.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/logging/1.7.12/logging-1.7.12.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/commons-io/commons-io/2.20.0/commons-io-2.20.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-buffer/4.2.16.Final/netty-buffer-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-codec-base/4.2.16.Final/netty-codec-base-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-codec-compression/4.2.16.Final/netty-codec-compression-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-codec-http/4.2.16.Final/netty-codec-http-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-common/4.2.16.Final/netty-common-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-handler/4.2.16.Final/netty-handler-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-resolver/4.2.16.Final/netty-resolver-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport/4.2.16.Final/netty-transport-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-classes-epoll/4.2.16.Final/netty-transport-classes-epoll-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-classes-kqueue/4.2.16.Final/netty-transport-classes-kqueue-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-epoll/4.2.16.Final/netty-transport-native-epoll-4.2.16.Final-linux-x86_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-epoll/4.2.16.Final/netty-transport-native-epoll-4.2.16.Final-linux-aarch_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-kqueue/4.2.16.Final/netty-transport-native-kqueue-4.2.16.Final-osx-x86_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-kqueue/4.2.16.Final/netty-transport-native-kqueue-4.2.16.Final-osx-aarch_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-unix-common/4.2.16.Final/netty-transport-native-unix-common-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/it/unimi/dsi/fastutil/8.5.18/fastutil-8.5.18.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/net/java/dev/jna/jna/5.17.0/jna-5.17.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/net/java/dev/jna/jna-platform/5.17.0/jna-platform-5.17.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/commons/commons-lang3/3.20.0/commons-lang3-3.20.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/logging/log4j/log4j-api/2.26.0/log4j-api-2.26.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/logging/log4j/log4j-core/2.26.0/log4j-core-2.26.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/logging/log4j/log4j-slf4j2-impl/2.26.0/log4j-slf4j2-impl-2.26.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/joml/joml/1.10.9/joml-1.10.9.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/slf4j/slf4j-api/2.0.17/slf4j-api-2.0.17.jar",
+          "-d",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java/ReferenceMovementProbe.java",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java/ReferenceDirectMovementProbe.java",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java/ReferenceTravelProbe.java",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java/ReferencePlayerTickProbe.java",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java/ReferenceSupportProbe.java",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java/ReferencePlayerSessionProbe.java"
+        ],
+        "exit_code": 0,
+        "pid": 60382,
+        "seconds": 1.42545,
+        "stderr": "Note: Some input files use or override a deprecated API.\nNote: Recompile with -Xlint:deprecation for details.\n",
+        "stdout": "",
+        "timed_out": false
+      },
+      "input_sha256": "da5658dcbadb748193af7e0e0398189719852908ad4ee249a8331cd3950d1ecc",
+      "output_sha256": "ca93c97b582b13ca9f1949a9186b41603db152e6e42d33c244f90be9bb6f2f94",
+      "pin": "26.3",
+      "release": {
+        "asset_index": {
+          "bytes": 597035,
+          "file": "34.json",
+          "official": {
+            "id": "34",
+            "sha1": "abfaa525f923f807df8b4e4d29c1b5e3a104adbe",
+            "size": 597035,
+            "totalSize": 483782790,
+            "url": "https://piston-meta.mojang.com/v1/packages/abfaa525f923f807df8b4e4d29c1b5e3a104adbe/34.json"
+          },
+          "sha1": "abfaa525f923f807df8b4e4d29c1b5e3a104adbe",
+          "sha256": "0f026e5396e2d709b3e6d8c7b2cc2fba9e6a7f02b53b632ba051edb1cd362377"
+        },
+        "authority": "Installed client/version metadata; official downloads named by that metadata",
+        "client": {
+          "bytes": 41483720,
+          "file": "26.3.jar",
+          "official": {
+            "sha1": "e877b6a07acd633fb3bb475002175cec036e7b87",
+            "size": 41483720,
+            "url": "https://piston-data.mojang.com/v1/objects/e877b6a07acd633fb3bb475002175cec036e7b87/client.jar"
+          },
+          "sha1": "e877b6a07acd633fb3bb475002175cec036e7b87",
+          "sha256": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d",
+          "zip_entries": 34227,
+          "zip_files": 32878
+        },
+        "internal_version": {
+          "build_time": "2026-09-15T11:20:48+00:00",
+          "id": "26.3",
+          "java_component": "java-runtime-epsilon",
+          "java_version": 25,
+          "name": "26.3",
+          "pack_version": {
+            "data_major": 121,
+            "data_minor": 0,
+            "resource_major": 97,
+            "resource_minor": 1
+          },
+          "protocol_version": 777,
+          "series_id": "main",
+          "stable": true,
+          "use_editor": false,
+          "world_version": 5023
+        },
+        "pin": "26.3",
+        "release_time": "2026-09-15T11:23:02+00:00",
+        "reports": {
+          "canonical_tree_sha256": "4614d7e93eb54a4235dfaed219e9066f2bf29952d1e1abc45425bf72c9176fb1",
+          "file_count": 1666,
+          "principal_reports": {
+            "blocks.json": {
+              "bytes": 7330564,
+              "canonical_json_sha256": "79fc25fd3d4d57ba35002ce88347e08a68c41f3c26d7edd706656bf02dce38a4"
+            },
+            "commands.json": {
+              "bytes": 583592,
+              "canonical_json_sha256": "a5c9fe51386735be44fed0be2193299f123c4ba9a4c7d5df2eb389968d3e35a4"
+            },
+            "datapack.json": {
+              "bytes": 17505,
+              "canonical_json_sha256": "0b00bd475c4d0d2d76644b7ef8d7537d2b0b3976e3c9133557e74bdc6a14d564"
+            },
+            "json-rpc-api-schema.json": {
+              "bytes": 36577,
+              "canonical_json_sha256": "124ecaa77a524b7ec9b7d7ba57b1a8de3fe16ad513371f5a53baefb6de10e394"
+            },
+            "packets.json": {
+              "bytes": 19023,
+              "canonical_json_sha256": "93b9f0b608c965cb38e06923d29298a522d2334381e75a459cd592df1cdbe106"
+            },
+            "registries.json": {
+              "bytes": 536272,
+              "canonical_json_sha256": "6f76431c05c9dd2945b2ef2f419e3e43cb0f3cedcd9beb07c24744f4e2a6bc27"
+            }
+          }
+        },
+        "runtime_version": [
+          "openjdk version \"25.0.1\" 2025-10-21 LTS",
+          "OpenJDK Runtime Environment Microsoft-12574220 (build 25.0.1+8-LTS)",
+          "OpenJDK 64-Bit Server VM Microsoft-12574220 (build 25.0.1+8-LTS, mixed mode)"
+        ],
+        "server_bundle": {
+          "bytes": 62294556,
+          "file": "26.3-server.jar",
+          "libraries": [
+            "at.yawk.lz4:lz4-java:1.10.1",
+            "com.azure:azure-json:1.4.0",
+            "com.github.oshi:oshi-core:6.9.0",
+            "com.google.code.gson:gson:2.14.0",
+            "com.google.guava:failureaccess:1.0.3",
+            "com.google.guava:guava:33.6.0-jre",
+            "com.microsoft.azure:msal4j:1.24.1",
+            "com.mojang:authlib:10.0.77",
+            "com.mojang:brigadier:1.3.11",
+            "com.mojang:datafixerupper:10.0.21",
+            "com.mojang:jtracy:1.14.38",
+            "com.mojang:logging:1.7.12",
+            "commons-io:commons-io:2.20.0",
+            "io.netty:netty-buffer:4.2.16.Final",
+            "io.netty:netty-codec-base:4.2.16.Final",
+            "io.netty:netty-codec-compression:4.2.16.Final",
+            "io.netty:netty-codec-http:4.2.16.Final",
+            "io.netty:netty-common:4.2.16.Final",
+            "io.netty:netty-handler:4.2.16.Final",
+            "io.netty:netty-resolver:4.2.16.Final",
+            "io.netty:netty-transport:4.2.16.Final",
+            "io.netty:netty-transport-classes-epoll:4.2.16.Final",
+            "io.netty:netty-transport-classes-kqueue:4.2.16.Final",
+            "io.netty:netty-transport-native-epoll:4.2.16.Final:linux-x86_64",
+            "io.netty:netty-transport-native-epoll:4.2.16.Final:linux-aarch_64",
+            "io.netty:netty-transport-native-kqueue:4.2.16.Final:osx-x86_64",
+            "io.netty:netty-transport-native-kqueue:4.2.16.Final:osx-aarch_64",
+            "io.netty:netty-transport-native-unix-common:4.2.16.Final",
+            "it.unimi.dsi:fastutil:8.5.18",
+            "net.java.dev.jna:jna:5.17.0",
+            "net.java.dev.jna:jna-platform:5.17.0",
+            "net.sf.jopt-simple:jopt-simple:5.0.4",
+            "org.apache.commons:commons-lang3:3.20.0",
+            "org.apache.logging.log4j:log4j-api:2.26.0",
+            "org.apache.logging.log4j:log4j-core:2.26.0",
+            "org.apache.logging.log4j:log4j-slf4j2-impl:2.26.0",
+            "org.joml:joml:1.10.9",
+            "org.jspecify:jspecify:1.0.0",
+            "org.slf4j:slf4j-api:2.0.17"
+          ],
+          "nested_server_sha256": "a362163eec5d1612d520772bc16e5b39c09e3b234fdc045f56bf544284ee8ae6",
+          "official": {
+            "sha1": "33680f5f2ac32864d6d7cf5e56a705fdb3e05f4c",
+            "size": 62294556,
+            "url": "https://piston-data.mojang.com/v1/objects/33680f5f2ac32864d6d7cf5e56a705fdb3e05f4c/server.jar"
+          },
+          "sha1": "33680f5f2ac32864d6d7cf5e56a705fdb3e05f4c",
+          "sha256": "d052f14d7a173734fba553711e5b570162e2f2a313267ee31a21b975a679be64"
+        },
+        "version_metadata": {
+          "bytes": 44992,
+          "file": "26.3.json",
+          "sha1": "4fe1aa1ef8da1cb95c5bad1fb98890ca56dd8ca3",
+          "sha256": "9a7b39dae3b9c8d30006b650e357aae220629b7852fa0fc7221db7a8646bd5e4"
+        }
+      },
+      "runs": [
+        {
+          "command": [
+            "/Users/chuah/Library/Application Support/minecraft/runtime/java-runtime-epsilon/mac-os-arm64/java-runtime-epsilon/jre.bundle/Contents/Home/bin/java",
+            "-cp",
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/versions/26.3/server-26.3.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/at/yawk/lz4/lz4-java/1.10.1/lz4-java-1.10.1.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/azure/azure-json/1.4.0/azure-json-1.4.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/github/oshi/oshi-core/6.9.0/oshi-core-6.9.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/google/code/gson/gson/2.14.0/gson-2.14.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/google/guava/failureaccess/1.0.3/failureaccess-1.0.3.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/google/guava/guava/33.6.0-jre/guava-33.6.0-jre.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/microsoft/azure/msal4j/1.24.1/msal4j-1.24.1.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/authlib/10.0.77/authlib-10.0.77.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/brigadier/1.3.11/brigadier-1.3.11.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/datafixerupper/10.0.21/datafixerupper-10.0.21.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/jtracy/1.14.38/jtracy-1.14.38.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/logging/1.7.12/logging-1.7.12.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/commons-io/commons-io/2.20.0/commons-io-2.20.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-buffer/4.2.16.Final/netty-buffer-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-codec-base/4.2.16.Final/netty-codec-base-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-codec-compression/4.2.16.Final/netty-codec-compression-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-codec-http/4.2.16.Final/netty-codec-http-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-common/4.2.16.Final/netty-common-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-handler/4.2.16.Final/netty-handler-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-resolver/4.2.16.Final/netty-resolver-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport/4.2.16.Final/netty-transport-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-classes-epoll/4.2.16.Final/netty-transport-classes-epoll-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-classes-kqueue/4.2.16.Final/netty-transport-classes-kqueue-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-epoll/4.2.16.Final/netty-transport-native-epoll-4.2.16.Final-linux-x86_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-epoll/4.2.16.Final/netty-transport-native-epoll-4.2.16.Final-linux-aarch_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-kqueue/4.2.16.Final/netty-transport-native-kqueue-4.2.16.Final-osx-x86_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-kqueue/4.2.16.Final/netty-transport-native-kqueue-4.2.16.Final-osx-aarch_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-unix-common/4.2.16.Final/netty-transport-native-unix-common-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/it/unimi/dsi/fastutil/8.5.18/fastutil-8.5.18.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/net/java/dev/jna/jna/5.17.0/jna-5.17.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/net/java/dev/jna/jna-platform/5.17.0/jna-platform-5.17.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/commons/commons-lang3/3.20.0/commons-lang3-3.20.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/logging/log4j/log4j-api/2.26.0/log4j-api-2.26.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/logging/log4j/log4j-core/2.26.0/log4j-core-2.26.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/logging/log4j/log4j-slf4j2-impl/2.26.0/log4j-slf4j2-impl-2.26.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/joml/joml/1.10.9/joml-1.10.9.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/slf4j/slf4j-api/2.0.17/slf4j-api-2.0.17.jar",
+            "ReferencePlayerSessionProbe",
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java/input.jsonl",
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java/output-0.jsonl"
+          ],
+          "exit_code": 0,
+          "pid": 60387,
+          "seconds": 2.886599,
+          "stderr": "WARNING: A terminally deprecated method in sun.misc.Unsafe has been called\nWARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.joml.MemUtil$MemUtilUnsafe (file:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/joml/joml/1.10.9/joml-1.10.9.jar)\nWARNING: Please consider reporting this to the maintainers of class org.joml.MemUtil$MemUtilUnsafe\nWARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release\n",
+          "stdout": "",
+          "timed_out": false
+        },
+        {
+          "command": [
+            "/Users/chuah/Library/Application Support/minecraft/runtime/java-runtime-epsilon/mac-os-arm64/java-runtime-epsilon/jre.bundle/Contents/Home/bin/java",
+            "-cp",
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/versions/26.3/server-26.3.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/at/yawk/lz4/lz4-java/1.10.1/lz4-java-1.10.1.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/azure/azure-json/1.4.0/azure-json-1.4.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/github/oshi/oshi-core/6.9.0/oshi-core-6.9.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/google/code/gson/gson/2.14.0/gson-2.14.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/google/guava/failureaccess/1.0.3/failureaccess-1.0.3.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/google/guava/guava/33.6.0-jre/guava-33.6.0-jre.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/microsoft/azure/msal4j/1.24.1/msal4j-1.24.1.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/authlib/10.0.77/authlib-10.0.77.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/brigadier/1.3.11/brigadier-1.3.11.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/datafixerupper/10.0.21/datafixerupper-10.0.21.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/jtracy/1.14.38/jtracy-1.14.38.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/logging/1.7.12/logging-1.7.12.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/commons-io/commons-io/2.20.0/commons-io-2.20.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-buffer/4.2.16.Final/netty-buffer-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-codec-base/4.2.16.Final/netty-codec-base-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-codec-compression/4.2.16.Final/netty-codec-compression-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-codec-http/4.2.16.Final/netty-codec-http-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-common/4.2.16.Final/netty-common-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-handler/4.2.16.Final/netty-handler-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-resolver/4.2.16.Final/netty-resolver-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport/4.2.16.Final/netty-transport-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-classes-epoll/4.2.16.Final/netty-transport-classes-epoll-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-classes-kqueue/4.2.16.Final/netty-transport-classes-kqueue-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-epoll/4.2.16.Final/netty-transport-native-epoll-4.2.16.Final-linux-x86_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-epoll/4.2.16.Final/netty-transport-native-epoll-4.2.16.Final-linux-aarch_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-kqueue/4.2.16.Final/netty-transport-native-kqueue-4.2.16.Final-osx-x86_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-kqueue/4.2.16.Final/netty-transport-native-kqueue-4.2.16.Final-osx-aarch_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-unix-common/4.2.16.Final/netty-transport-native-unix-common-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/it/unimi/dsi/fastutil/8.5.18/fastutil-8.5.18.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/net/java/dev/jna/jna/5.17.0/jna-5.17.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/net/java/dev/jna/jna-platform/5.17.0/jna-platform-5.17.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/commons/commons-lang3/3.20.0/commons-lang3-3.20.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/logging/log4j/log4j-api/2.26.0/log4j-api-2.26.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/logging/log4j/log4j-core/2.26.0/log4j-core-2.26.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/logging/log4j/log4j-slf4j2-impl/2.26.0/log4j-slf4j2-impl-2.26.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/joml/joml/1.10.9/joml-1.10.9.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/slf4j/slf4j-api/2.0.17/slf4j-api-2.0.17.jar",
+            "ReferencePlayerSessionProbe",
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java/input.jsonl",
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java/output-1.jsonl"
+          ],
+          "exit_code": 0,
+          "pid": 60402,
+          "seconds": 2.806643,
+          "stderr": "WARNING: A terminally deprecated method in sun.misc.Unsafe has been called\nWARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.joml.MemUtil$MemUtilUnsafe (file:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/joml/joml/1.10.9/joml-1.10.9.jar)\nWARNING: Please consider reporting this to the maintainers of class org.joml.MemUtil$MemUtilUnsafe\nWARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release\n",
+          "stdout": "",
+          "timed_out": false
+        }
+      ],
+      "runtime": {
+        "bytes": 84720,
+        "file": "java",
+        "sha1": "5af4a90be54ddeec03db3700e6989594c9438952",
+        "sha256": "e0879c0df70d880d66904064d1b388b08aeee0958a047f37601435b28db849a3"
+      },
+      "sources_sha256": {
+        "ReferenceDirectMovementProbe": "29596dda603edcf0e81d2a7a8fd69c12f5f69241476148efcccb922d11906392",
+        "ReferenceMovementProbe": "7216b65e8dc9a343f6693009efc212ca885325780a37d48be1e55ea8abc56fd6",
+        "ReferencePlayerSessionProbe": "a6ee8d69fbb59148cf92d33d225b23a60ff00307cd53ce7c9d835bb6c00d24ff",
+        "ReferencePlayerTickProbe": "ad56aeb937b93d7d5de5b718dd3c37d1287adece6f4173eb43b45c87908759a5",
+        "ReferenceSupportProbe": "28e21737595ffcf32d6d31b21f5cf32ba1cc2faa887f3e6482c0e31ac079c857",
+        "ReferenceTravelProbe": "273885dde3678abb10a6f14a62353f5be718c34a8ed1431e8d6d91d37883335e"
+      }
+    },
+    {
+      "classpath": [
+        {
+          "bytes": 26652008,
+          "file": "server-26.3.jar",
+          "sha1": "cc3964451a3b32a0488110d5e3e6ad8d75fe6a66",
+          "sha256": "a362163eec5d1612d520772bc16e5b39c09e3b234fdc045f56bf544284ee8ae6"
+        },
+        {
+          "bytes": 910232,
+          "file": "lz4-java-1.10.1.jar",
+          "sha1": "f541d7f910fe3d76f38f799c507c48cc81b12ecb",
+          "sha256": "a58a84c4271e50df4c96ed916ccb7e48a869f8ed9cdcda1ad5d3d4c33b0214a3"
+        },
+        {
+          "bytes": 325945,
+          "file": "azure-json-1.4.0.jar",
+          "sha1": "fcc1d354dbc3e0300e5276b1bf124d0247799cd8",
+          "sha256": "c50bc998cd1a6c689f8644b51c206217bf2da09d5b949e777490a60290cc3a0d"
+        },
+        {
+          "bytes": 1022125,
+          "file": "oshi-core-6.9.0.jar",
+          "sha1": "03224870731860cfcd7744581a05b559e94291e7",
+          "sha256": "b29ba9bce041e6ea822203d5b5a692660c87551241510ebc76eedffe684844c7"
+        },
+        {
+          "bytes": 313604,
+          "file": "gson-2.14.0.jar",
+          "sha1": "efc0e34ede4e3204eaefb84a00e55e8c86634382",
+          "sha256": "2cbd119bf1961c28788310963dc80ba65f58cdeec1dd139c8bdb1240faa2c36f"
+        },
+        {
+          "bytes": 10763,
+          "file": "failureaccess-1.0.3.jar",
+          "sha1": "aeaffd00d57023a2c947393ed251f0354f0985fc",
+          "sha256": "cbfc3906b19b8f55dd7cfd6dfe0aa4532e834250d7f080bd8d211a3e246b59cb"
+        },
+        {
+          "bytes": 3064793,
+          "file": "guava-33.6.0-jre.jar",
+          "sha1": "c376b13067cc99a5774403530953f7b05a91e218",
+          "sha256": "dc573e1fca4fd5454f4a5fd3d7da2df03002876a4175bafc14a95980dd7713b3"
+        },
+        {
+          "bytes": 396486,
+          "file": "msal4j-1.24.1.jar",
+          "sha1": "c233f2d047b9755f7041adf21a858c680e4c9242",
+          "sha256": "12e62f79d1a71d176a41c168c0587f8167f0add99b78f006f39595bd7242aebe"
+        },
+        {
+          "bytes": 152645,
+          "file": "authlib-10.0.77.jar",
+          "sha1": "add8754cda96cf0cd840441632875648836f8a71",
+          "sha256": "521672866582633a412c82171d3cfa416ecaccdf05a43baf809c16f9aec07068"
+        },
+        {
+          "bytes": 80151,
+          "file": "brigadier-1.3.11.jar",
+          "sha1": "3373d1e7bf00c8b99bed1ea4efb8c47344e4a887",
+          "sha256": "9d09cf4819de83dfcd38bcb212d5f2227131791cef3abbfca3321d6fb2b9a64d"
+        },
+        {
+          "bytes": 753612,
+          "file": "datafixerupper-10.0.21.jar",
+          "sha1": "b6b2ae770c02e0c1eb90f9985b151e9085a38d0b",
+          "sha256": "3547cb1da8993fb7ebd42494d0e78997d2cfbe90c421f5efd022863e6909941e"
+        },
+        {
+          "bytes": 14292,
+          "file": "jtracy-1.14.38.jar",
+          "sha1": "cc2ad81342001b4281c305a298d7f50332354058",
+          "sha256": "721bff502a9664d689d781ab7bfed19330606c2e1ef6b8e4d59fba67e7e765da"
+        },
+        {
+          "bytes": 19540,
+          "file": "logging-1.7.12.jar",
+          "sha1": "351cea64a5233361327d8d54c44277041beed97f",
+          "sha256": "3c7ac9742fa98c773275379eb1046c048b5d2ee989152a8c69e7ba696c3f8538"
+        },
+        {
+          "bytes": 563971,
+          "file": "commons-io-2.20.0.jar",
+          "sha1": "36f3474daec2849c149e877614e7f979b2082cd2",
+          "sha256": "df90bba0fe3cb586b7f164e78fe8f8f4da3f2dd5c27fa645f888100ccc25dd72"
+        },
+        {
+          "bytes": 378032,
+          "file": "netty-buffer-4.2.16.Final.jar",
+          "sha1": "05397ef65dcb60670e0e0dba4854522873af3070",
+          "sha256": "cc36ae9fbd0b03fe755eb4eb4424ca53b59cfd297d7fd47d49e5b1059beded6c"
+        },
+        {
+          "bytes": 155355,
+          "file": "netty-codec-base-4.2.16.Final.jar",
+          "sha1": "01a01d45a9efc228c6d747525848b065e0656b5f",
+          "sha256": "feb410225938d9970de6b624a0c031d079804fa5cc5e1ec6e9298f16db5998a7"
+        },
+        {
+          "bytes": 183349,
+          "file": "netty-codec-compression-4.2.16.Final.jar",
+          "sha1": "bdbbcfcdbe217b95c14a04df4fc5d31213d5c27c",
+          "sha256": "13c8565414dd2115281303ef4ad1f7cc69bd7771d8d12c7d2fb31307dff26d11"
+        },
+        {
+          "bytes": 678387,
+          "file": "netty-codec-http-4.2.16.Final.jar",
+          "sha1": "b5e0715df90047ee5a0138c8f704f43c751009e4",
+          "sha256": "0d16f981de8d0d304a2ab1a81f0a674892089fbaa8a583100aebb4a5b00456ec"
+        },
+        {
+          "bytes": 819965,
+          "file": "netty-common-4.2.16.Final.jar",
+          "sha1": "c2bc7fa5acfa2afc777e944d84f0aa65559cc81e",
+          "sha256": "9825ee68a0dc4cd2b53e2f532502401b2211bad9b77e8b04882d9e64487283ff"
+        },
+        {
+          "bytes": 587814,
+          "file": "netty-handler-4.2.16.Final.jar",
+          "sha1": "cc82873ae4b6d14effe480740ad838de09add70d",
+          "sha256": "a259ca496da05ac1981f95cd856211f894a328056a6129e9cd70dbbd5df401f7"
+        },
+        {
+          "bytes": 32975,
+          "file": "netty-resolver-4.2.16.Final.jar",
+          "sha1": "fcea6d64273b59ab9127b68c16ae98af34642139",
+          "sha256": "c9eca6a99036485cf1d186b4a6a595b0a54c53808319ee03924270eae04c32bb"
+        },
+        {
+          "bytes": 549855,
+          "file": "netty-transport-4.2.16.Final.jar",
+          "sha1": "ae87a3bec51d503475a19fbd718bf777f2fc06c6",
+          "sha256": "cfa3f654caff906653385f4b7ddaa539d795b78f5711a622482b17d2b73484c0"
+        },
+        {
+          "bytes": 159935,
+          "file": "netty-transport-classes-epoll-4.2.16.Final.jar",
+          "sha1": "cf90c7b892e284ba9f1545dce170168369b3b9d6",
+          "sha256": "9f2b53210db9c8d24e787ed43f3896aaf30d686ed270c7afbb29ab6330c6aa23"
+        },
+        {
+          "bytes": 116819,
+          "file": "netty-transport-classes-kqueue-4.2.16.Final.jar",
+          "sha1": "0fa2bcf8c71626510f6fae173f78182117b70f7a",
+          "sha256": "6599b495f69420cb240ab0a1aa60a19a2df3bc72791729170e0993727637a689"
+        },
+        {
+          "bytes": 42393,
+          "file": "netty-transport-native-epoll-4.2.16.Final-linux-x86_64.jar",
+          "sha1": "439c24f5c27c220deb042b42e4048d606edeb78d",
+          "sha256": "2e00548e731948881d0c73ee79d2ead759254e750929406a1d595484758f0267"
+        },
+        {
+          "bytes": 43899,
+          "file": "netty-transport-native-epoll-4.2.16.Final-linux-aarch_64.jar",
+          "sha1": "eed34f3b37b4c46a0cbb49456ccc4e3bd7195e4c",
+          "sha256": "212cc7d81390e31b580a1fb91b6c8d963b43e762ed072c555e2b09ad4476e928"
+        },
+        {
+          "bytes": 26737,
+          "file": "netty-transport-native-kqueue-4.2.16.Final-osx-x86_64.jar",
+          "sha1": "dd9d41b06355a6a1815d902ee087a693aab83755",
+          "sha256": "05a09a4ab51f488f0c22f42ccce6c06935afbfac51173fae44170465aa072828"
+        },
+        {
+          "bytes": 27482,
+          "file": "netty-transport-native-kqueue-4.2.16.Final-osx-aarch_64.jar",
+          "sha1": "ddb942cad6c0e978caa2215757512b36c5ffacec",
+          "sha256": "796c503f7a80217177bd315f6448263134ee0f9042627d5fd698c760bcf99c8c"
+        },
+        {
+          "bytes": 46877,
+          "file": "netty-transport-native-unix-common-4.2.16.Final.jar",
+          "sha1": "3cf32390f1b80af890ac44aa0698c2ff58c2a4d7",
+          "sha256": "41ca8fe192083d17917be7ddcecded4da4fc1db1d1656d03d0bcb14e2f431155"
+        },
+        {
+          "bytes": 23965563,
+          "file": "fastutil-8.5.18.jar",
+          "sha1": "a6cff377eecc19c2037bf31568a6d7106b50ba1f",
+          "sha256": "9094ae67d01d0ad246f886f11ad557fc2e79c72cbf3feed83e1512a8ae90a74a"
+        },
+        {
+          "bytes": 2002589,
+          "file": "jna-5.17.0.jar",
+          "sha1": "33d12735bef894440780fce64f9758d420c7bae2",
+          "sha256": "b3a9408e7c51e08ef0e3bfcc08f443f6ec0f6191ba8cd7c18d53d2b22e5bdbc0"
+        },
+        {
+          "bytes": 1378617,
+          "file": "jna-platform-5.17.0.jar",
+          "sha1": "a4934c44d25a9d8c2ddf4203affd20330cb3426f",
+          "sha256": "b7e3d46c87bad2eb409b0e704916bcd81206168e357312dfddd0e253679cd9e0"
+        },
+        {
+          "bytes": 78146,
+          "file": "jopt-simple-5.0.4.jar",
+          "sha1": "4fdac2fbe92dfad86aa6e9301736f6b4342a3f5c",
+          "sha256": "df26cc58f235f477db07f753ba5a3ab243ebe5789d9f89ecf68dd62ea9a66c28"
+        },
+        {
+          "bytes": 713862,
+          "file": "commons-lang3-3.20.0.jar",
+          "sha1": "65897b3e5731220962e659e001904af3c3cbeba9",
+          "sha256": "69e5c9fa35da7a51a5fd2099dfe56a2d8d32cf233e2f6d770e796146440263f4"
+        },
+        {
+          "bytes": 351126,
+          "file": "log4j-api-2.26.0.jar",
+          "sha1": "ad52af0ecf054a7e3f275a2e180ee06d9c490951",
+          "sha256": "820de7bbaf430eaf2e3e5ccb92f23e2085797c5ac4d4f7fc6c8b660fbefa1dbc"
+        },
+        {
+          "bytes": 2015101,
+          "file": "log4j-core-2.26.0.jar",
+          "sha1": "d267ca60b27ddb075e0b4e75e7875859717bf85f",
+          "sha256": "406bb3132c47a5d322e5c571feb0787ca84496469f346eb51f1ef2ee45499902"
+        },
+        {
+          "bytes": 30211,
+          "file": "log4j-slf4j2-impl-2.26.0.jar",
+          "sha1": "668c0f0e813d83f00a7182533aa658ec7e7a0a0d",
+          "sha256": "cfc1bddbd39e684b698ae968291d8a3b3a55ee0ec2ef3d3ea5c2336a9e151598"
+        },
+        {
+          "bytes": 814581,
+          "file": "joml-1.10.9.jar",
+          "sha1": "438e036486bad66b189bff385dd07dea4f74a146",
+          "sha256": "feca4db853371704338621c120acc5cc32300d8af635fa42414b6213301e216b"
+        },
+        {
+          "bytes": 3819,
+          "file": "jspecify-1.0.0.jar",
+          "sha1": "7425a601c1c7ec76645a78d22b8c6a627edee507",
+          "sha256": "1fad6e6be7557781e4d33729d49ae1cdc8fdda6fe477bb0cc68ce351eafdfbab"
+        },
+        {
+          "bytes": 69908,
+          "file": "slf4j-api-2.0.17.jar",
+          "sha1": "d9e58ac9c7779ba3bf8142aff6c830617a7fe60f",
+          "sha256": "7b751d952061954d5abfed7181c1f645d336091b679891591d63329c622eb832"
+        }
+      ],
+      "compilation": {
+        "command": [
+          "/Users/chuah/Library/Application Support/minecraft/runtime/java-runtime-epsilon/mac-os-arm64/java-runtime-epsilon/jre.bundle/Contents/Home/bin/javac",
+          "-cp",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/versions/26.3/server-26.3.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/at/yawk/lz4/lz4-java/1.10.1/lz4-java-1.10.1.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/azure/azure-json/1.4.0/azure-json-1.4.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/github/oshi/oshi-core/6.9.0/oshi-core-6.9.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/google/code/gson/gson/2.14.0/gson-2.14.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/google/guava/failureaccess/1.0.3/failureaccess-1.0.3.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/google/guava/guava/33.6.0-jre/guava-33.6.0-jre.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/microsoft/azure/msal4j/1.24.1/msal4j-1.24.1.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/authlib/10.0.77/authlib-10.0.77.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/brigadier/1.3.11/brigadier-1.3.11.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/datafixerupper/10.0.21/datafixerupper-10.0.21.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/jtracy/1.14.38/jtracy-1.14.38.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/logging/1.7.12/logging-1.7.12.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/commons-io/commons-io/2.20.0/commons-io-2.20.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-buffer/4.2.16.Final/netty-buffer-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-codec-base/4.2.16.Final/netty-codec-base-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-codec-compression/4.2.16.Final/netty-codec-compression-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-codec-http/4.2.16.Final/netty-codec-http-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-common/4.2.16.Final/netty-common-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-handler/4.2.16.Final/netty-handler-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-resolver/4.2.16.Final/netty-resolver-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport/4.2.16.Final/netty-transport-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-classes-epoll/4.2.16.Final/netty-transport-classes-epoll-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-classes-kqueue/4.2.16.Final/netty-transport-classes-kqueue-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-epoll/4.2.16.Final/netty-transport-native-epoll-4.2.16.Final-linux-x86_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-epoll/4.2.16.Final/netty-transport-native-epoll-4.2.16.Final-linux-aarch_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-kqueue/4.2.16.Final/netty-transport-native-kqueue-4.2.16.Final-osx-x86_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-kqueue/4.2.16.Final/netty-transport-native-kqueue-4.2.16.Final-osx-aarch_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-unix-common/4.2.16.Final/netty-transport-native-unix-common-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/it/unimi/dsi/fastutil/8.5.18/fastutil-8.5.18.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/net/java/dev/jna/jna/5.17.0/jna-5.17.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/net/java/dev/jna/jna-platform/5.17.0/jna-platform-5.17.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/commons/commons-lang3/3.20.0/commons-lang3-3.20.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/logging/log4j/log4j-api/2.26.0/log4j-api-2.26.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/logging/log4j/log4j-core/2.26.0/log4j-core-2.26.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/logging/log4j/log4j-slf4j2-impl/2.26.0/log4j-slf4j2-impl-2.26.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/joml/joml/1.10.9/joml-1.10.9.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/slf4j/slf4j-api/2.0.17/slf4j-api-2.0.17.jar",
+          "-d",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java/ReferenceMovementProbe.java",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java/ReferenceDirectMovementProbe.java",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java/ReferenceTravelProbe.java",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java/ReferencePlayerTickProbe.java",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java/ReferenceSupportProbe.java",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java/ReferencePlayerSessionProbe.java"
+        ],
+        "exit_code": 0,
+        "pid": 60407,
+        "seconds": 1.155048,
+        "stderr": "Note: Some input files use or override a deprecated API.\nNote: Recompile with -Xlint:deprecation for details.\n",
+        "stdout": "",
+        "timed_out": false
+      },
+      "input_sha256": "01c847166257ba885db480e48d0a165af0955af70649abdfccde1a47027ed184",
+      "output_sha256": "fa03e98f6c9224f5fae053aeb81227a764ae087cc01b721857641ff403fdc0d2",
+      "pin": "26.3",
+      "release": {
+        "asset_index": {
+          "bytes": 597035,
+          "file": "34.json",
+          "official": {
+            "id": "34",
+            "sha1": "abfaa525f923f807df8b4e4d29c1b5e3a104adbe",
+            "size": 597035,
+            "totalSize": 483782790,
+            "url": "https://piston-meta.mojang.com/v1/packages/abfaa525f923f807df8b4e4d29c1b5e3a104adbe/34.json"
+          },
+          "sha1": "abfaa525f923f807df8b4e4d29c1b5e3a104adbe",
+          "sha256": "0f026e5396e2d709b3e6d8c7b2cc2fba9e6a7f02b53b632ba051edb1cd362377"
+        },
+        "authority": "Installed client/version metadata; official downloads named by that metadata",
+        "client": {
+          "bytes": 41483720,
+          "file": "26.3.jar",
+          "official": {
+            "sha1": "e877b6a07acd633fb3bb475002175cec036e7b87",
+            "size": 41483720,
+            "url": "https://piston-data.mojang.com/v1/objects/e877b6a07acd633fb3bb475002175cec036e7b87/client.jar"
+          },
+          "sha1": "e877b6a07acd633fb3bb475002175cec036e7b87",
+          "sha256": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d",
+          "zip_entries": 34227,
+          "zip_files": 32878
+        },
+        "internal_version": {
+          "build_time": "2026-09-15T11:20:48+00:00",
+          "id": "26.3",
+          "java_component": "java-runtime-epsilon",
+          "java_version": 25,
+          "name": "26.3",
+          "pack_version": {
+            "data_major": 121,
+            "data_minor": 0,
+            "resource_major": 97,
+            "resource_minor": 1
+          },
+          "protocol_version": 777,
+          "series_id": "main",
+          "stable": true,
+          "use_editor": false,
+          "world_version": 5023
+        },
+        "pin": "26.3",
+        "release_time": "2026-09-15T11:23:02+00:00",
+        "reports": {
+          "canonical_tree_sha256": "4614d7e93eb54a4235dfaed219e9066f2bf29952d1e1abc45425bf72c9176fb1",
+          "file_count": 1666,
+          "principal_reports": {
+            "blocks.json": {
+              "bytes": 7330564,
+              "canonical_json_sha256": "79fc25fd3d4d57ba35002ce88347e08a68c41f3c26d7edd706656bf02dce38a4"
+            },
+            "commands.json": {
+              "bytes": 583592,
+              "canonical_json_sha256": "a5c9fe51386735be44fed0be2193299f123c4ba9a4c7d5df2eb389968d3e35a4"
+            },
+            "datapack.json": {
+              "bytes": 17505,
+              "canonical_json_sha256": "0b00bd475c4d0d2d76644b7ef8d7537d2b0b3976e3c9133557e74bdc6a14d564"
+            },
+            "json-rpc-api-schema.json": {
+              "bytes": 36577,
+              "canonical_json_sha256": "124ecaa77a524b7ec9b7d7ba57b1a8de3fe16ad513371f5a53baefb6de10e394"
+            },
+            "packets.json": {
+              "bytes": 19023,
+              "canonical_json_sha256": "93b9f0b608c965cb38e06923d29298a522d2334381e75a459cd592df1cdbe106"
+            },
+            "registries.json": {
+              "bytes": 536272,
+              "canonical_json_sha256": "6f76431c05c9dd2945b2ef2f419e3e43cb0f3cedcd9beb07c24744f4e2a6bc27"
+            }
+          }
+        },
+        "runtime_version": [
+          "openjdk version \"25.0.1\" 2025-10-21 LTS",
+          "OpenJDK Runtime Environment Microsoft-12574220 (build 25.0.1+8-LTS)",
+          "OpenJDK 64-Bit Server VM Microsoft-12574220 (build 25.0.1+8-LTS, mixed mode)"
+        ],
+        "server_bundle": {
+          "bytes": 62294556,
+          "file": "26.3-server.jar",
+          "libraries": [
+            "at.yawk.lz4:lz4-java:1.10.1",
+            "com.azure:azure-json:1.4.0",
+            "com.github.oshi:oshi-core:6.9.0",
+            "com.google.code.gson:gson:2.14.0",
+            "com.google.guava:failureaccess:1.0.3",
+            "com.google.guava:guava:33.6.0-jre",
+            "com.microsoft.azure:msal4j:1.24.1",
+            "com.mojang:authlib:10.0.77",
+            "com.mojang:brigadier:1.3.11",
+            "com.mojang:datafixerupper:10.0.21",
+            "com.mojang:jtracy:1.14.38",
+            "com.mojang:logging:1.7.12",
+            "commons-io:commons-io:2.20.0",
+            "io.netty:netty-buffer:4.2.16.Final",
+            "io.netty:netty-codec-base:4.2.16.Final",
+            "io.netty:netty-codec-compression:4.2.16.Final",
+            "io.netty:netty-codec-http:4.2.16.Final",
+            "io.netty:netty-common:4.2.16.Final",
+            "io.netty:netty-handler:4.2.16.Final",
+            "io.netty:netty-resolver:4.2.16.Final",
+            "io.netty:netty-transport:4.2.16.Final",
+            "io.netty:netty-transport-classes-epoll:4.2.16.Final",
+            "io.netty:netty-transport-classes-kqueue:4.2.16.Final",
+            "io.netty:netty-transport-native-epoll:4.2.16.Final:linux-x86_64",
+            "io.netty:netty-transport-native-epoll:4.2.16.Final:linux-aarch_64",
+            "io.netty:netty-transport-native-kqueue:4.2.16.Final:osx-x86_64",
+            "io.netty:netty-transport-native-kqueue:4.2.16.Final:osx-aarch_64",
+            "io.netty:netty-transport-native-unix-common:4.2.16.Final",
+            "it.unimi.dsi:fastutil:8.5.18",
+            "net.java.dev.jna:jna:5.17.0",
+            "net.java.dev.jna:jna-platform:5.17.0",
+            "net.sf.jopt-simple:jopt-simple:5.0.4",
+            "org.apache.commons:commons-lang3:3.20.0",
+            "org.apache.logging.log4j:log4j-api:2.26.0",
+            "org.apache.logging.log4j:log4j-core:2.26.0",
+            "org.apache.logging.log4j:log4j-slf4j2-impl:2.26.0",
+            "org.joml:joml:1.10.9",
+            "org.jspecify:jspecify:1.0.0",
+            "org.slf4j:slf4j-api:2.0.17"
+          ],
+          "nested_server_sha256": "a362163eec5d1612d520772bc16e5b39c09e3b234fdc045f56bf544284ee8ae6",
+          "official": {
+            "sha1": "33680f5f2ac32864d6d7cf5e56a705fdb3e05f4c",
+            "size": 62294556,
+            "url": "https://piston-data.mojang.com/v1/objects/33680f5f2ac32864d6d7cf5e56a705fdb3e05f4c/server.jar"
+          },
+          "sha1": "33680f5f2ac32864d6d7cf5e56a705fdb3e05f4c",
+          "sha256": "d052f14d7a173734fba553711e5b570162e2f2a313267ee31a21b975a679be64"
+        },
+        "version_metadata": {
+          "bytes": 44992,
+          "file": "26.3.json",
+          "sha1": "4fe1aa1ef8da1cb95c5bad1fb98890ca56dd8ca3",
+          "sha256": "9a7b39dae3b9c8d30006b650e357aae220629b7852fa0fc7221db7a8646bd5e4"
+        }
+      },
+      "runs": [
+        {
+          "command": [
+            "/Users/chuah/Library/Application Support/minecraft/runtime/java-runtime-epsilon/mac-os-arm64/java-runtime-epsilon/jre.bundle/Contents/Home/bin/java",
+            "-cp",
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/versions/26.3/server-26.3.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/at/yawk/lz4/lz4-java/1.10.1/lz4-java-1.10.1.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/azure/azure-json/1.4.0/azure-json-1.4.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/github/oshi/oshi-core/6.9.0/oshi-core-6.9.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/google/code/gson/gson/2.14.0/gson-2.14.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/google/guava/failureaccess/1.0.3/failureaccess-1.0.3.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/google/guava/guava/33.6.0-jre/guava-33.6.0-jre.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/microsoft/azure/msal4j/1.24.1/msal4j-1.24.1.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/authlib/10.0.77/authlib-10.0.77.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/brigadier/1.3.11/brigadier-1.3.11.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/datafixerupper/10.0.21/datafixerupper-10.0.21.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/jtracy/1.14.38/jtracy-1.14.38.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/logging/1.7.12/logging-1.7.12.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/commons-io/commons-io/2.20.0/commons-io-2.20.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-buffer/4.2.16.Final/netty-buffer-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-codec-base/4.2.16.Final/netty-codec-base-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-codec-compression/4.2.16.Final/netty-codec-compression-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-codec-http/4.2.16.Final/netty-codec-http-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-common/4.2.16.Final/netty-common-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-handler/4.2.16.Final/netty-handler-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-resolver/4.2.16.Final/netty-resolver-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport/4.2.16.Final/netty-transport-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-classes-epoll/4.2.16.Final/netty-transport-classes-epoll-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-classes-kqueue/4.2.16.Final/netty-transport-classes-kqueue-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-epoll/4.2.16.Final/netty-transport-native-epoll-4.2.16.Final-linux-x86_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-epoll/4.2.16.Final/netty-transport-native-epoll-4.2.16.Final-linux-aarch_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-kqueue/4.2.16.Final/netty-transport-native-kqueue-4.2.16.Final-osx-x86_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-kqueue/4.2.16.Final/netty-transport-native-kqueue-4.2.16.Final-osx-aarch_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-unix-common/4.2.16.Final/netty-transport-native-unix-common-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/it/unimi/dsi/fastutil/8.5.18/fastutil-8.5.18.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/net/java/dev/jna/jna/5.17.0/jna-5.17.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/net/java/dev/jna/jna-platform/5.17.0/jna-platform-5.17.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/commons/commons-lang3/3.20.0/commons-lang3-3.20.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/logging/log4j/log4j-api/2.26.0/log4j-api-2.26.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/logging/log4j/log4j-core/2.26.0/log4j-core-2.26.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/logging/log4j/log4j-slf4j2-impl/2.26.0/log4j-slf4j2-impl-2.26.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/joml/joml/1.10.9/joml-1.10.9.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/slf4j/slf4j-api/2.0.17/slf4j-api-2.0.17.jar",
+            "ReferencePlayerSessionProbe",
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java/input.jsonl",
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java/output-0.jsonl"
+          ],
+          "exit_code": 0,
+          "pid": 60419,
+          "seconds": 4.25312,
+          "stderr": "WARNING: A terminally deprecated method in sun.misc.Unsafe has been called\nWARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.joml.MemUtil$MemUtilUnsafe (file:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/joml/joml/1.10.9/joml-1.10.9.jar)\nWARNING: Please consider reporting this to the maintainers of class org.joml.MemUtil$MemUtilUnsafe\nWARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release\n",
+          "stdout": "",
+          "timed_out": false
+        },
+        {
+          "command": [
+            "/Users/chuah/Library/Application Support/minecraft/runtime/java-runtime-epsilon/mac-os-arm64/java-runtime-epsilon/jre.bundle/Contents/Home/bin/java",
+            "-cp",
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/versions/26.3/server-26.3.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/at/yawk/lz4/lz4-java/1.10.1/lz4-java-1.10.1.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/azure/azure-json/1.4.0/azure-json-1.4.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/github/oshi/oshi-core/6.9.0/oshi-core-6.9.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/google/code/gson/gson/2.14.0/gson-2.14.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/google/guava/failureaccess/1.0.3/failureaccess-1.0.3.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/google/guava/guava/33.6.0-jre/guava-33.6.0-jre.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/microsoft/azure/msal4j/1.24.1/msal4j-1.24.1.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/authlib/10.0.77/authlib-10.0.77.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/brigadier/1.3.11/brigadier-1.3.11.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/datafixerupper/10.0.21/datafixerupper-10.0.21.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/jtracy/1.14.38/jtracy-1.14.38.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/logging/1.7.12/logging-1.7.12.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/commons-io/commons-io/2.20.0/commons-io-2.20.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-buffer/4.2.16.Final/netty-buffer-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-codec-base/4.2.16.Final/netty-codec-base-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-codec-compression/4.2.16.Final/netty-codec-compression-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-codec-http/4.2.16.Final/netty-codec-http-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-common/4.2.16.Final/netty-common-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-handler/4.2.16.Final/netty-handler-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-resolver/4.2.16.Final/netty-resolver-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport/4.2.16.Final/netty-transport-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-classes-epoll/4.2.16.Final/netty-transport-classes-epoll-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-classes-kqueue/4.2.16.Final/netty-transport-classes-kqueue-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-epoll/4.2.16.Final/netty-transport-native-epoll-4.2.16.Final-linux-x86_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-epoll/4.2.16.Final/netty-transport-native-epoll-4.2.16.Final-linux-aarch_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-kqueue/4.2.16.Final/netty-transport-native-kqueue-4.2.16.Final-osx-x86_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-kqueue/4.2.16.Final/netty-transport-native-kqueue-4.2.16.Final-osx-aarch_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-unix-common/4.2.16.Final/netty-transport-native-unix-common-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/it/unimi/dsi/fastutil/8.5.18/fastutil-8.5.18.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/net/java/dev/jna/jna/5.17.0/jna-5.17.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/net/java/dev/jna/jna-platform/5.17.0/jna-platform-5.17.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/commons/commons-lang3/3.20.0/commons-lang3-3.20.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/logging/log4j/log4j-api/2.26.0/log4j-api-2.26.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/logging/log4j/log4j-core/2.26.0/log4j-core-2.26.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/logging/log4j/log4j-slf4j2-impl/2.26.0/log4j-slf4j2-impl-2.26.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/joml/joml/1.10.9/joml-1.10.9.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/slf4j/slf4j-api/2.0.17/slf4j-api-2.0.17.jar",
+            "ReferencePlayerSessionProbe",
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java/input.jsonl",
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-session/java/output-1.jsonl"
+          ],
+          "exit_code": 0,
+          "pid": 60485,
+          "seconds": 4.730381,
+          "stderr": "WARNING: A terminally deprecated method in sun.misc.Unsafe has been called\nWARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.joml.MemUtil$MemUtilUnsafe (file:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/joml/joml/1.10.9/joml-1.10.9.jar)\nWARNING: Please consider reporting this to the maintainers of class org.joml.MemUtil$MemUtilUnsafe\nWARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release\n",
+          "stdout": "",
+          "timed_out": false
+        }
+      ],
+      "runtime": {
+        "bytes": 84720,
+        "file": "java",
+        "sha1": "5af4a90be54ddeec03db3700e6989594c9438952",
+        "sha256": "e0879c0df70d880d66904064d1b388b08aeee0958a047f37601435b28db849a3"
+      },
+      "sources_sha256": {
+        "ReferenceDirectMovementProbe": "29596dda603edcf0e81d2a7a8fd69c12f5f69241476148efcccb922d11906392",
+        "ReferenceMovementProbe": "7216b65e8dc9a343f6693009efc212ca885325780a37d48be1e55ea8abc56fd6",
+        "ReferencePlayerSessionProbe": "a6ee8d69fbb59148cf92d33d225b23a60ff00307cd53ce7c9d835bb6c00d24ff",
+        "ReferencePlayerTickProbe": "ad56aeb937b93d7d5de5b718dd3c37d1287adece6f4173eb43b45c87908759a5",
+        "ReferenceSupportProbe": "28e21737595ffcf32d6d31b21f5cf32ba1cc2faa887f3e6482c0e31ac079c857",
+        "ReferenceTravelProbe": "273885dde3678abb10a6f14a62353f5be718c34a8ed1431e8d6d91d37883335e"
+      }
+    }
+  ],
+  "reference_sha256": "9a6501f4f0ef91e74cad32177f9d110f783c3c71ffbe51d22ccaea875460c0b4",
+  "registry": {
+    "blocks": 4,
+    "canonical_bytes": 191,
+    "canonical_sha256": "79725faf726a083f538181b1e324e5a31026dcab822c86e2dbdb6a0e1b0ad493",
+    "source_sha256": "8b311f74f87891857acc923f140a5091f1876a6130dafc036076b81085bb7418",
+    "states": 4
+  },
+  "runner_sha256": "e6a634f0a3cbcd9729e76ad006fcba849a21cba938862dc0130fd2b3c68fd440",
+  "saves": [
+    {
+      "bundle_sha256": "f041fedce1b4de53df6a73b1992fb228109f361b9e4ad7f67db1ce29e2e7cfa4",
+      "bytes": 136194,
+      "clock": {
+        "day_time": 3,
+        "daylight": true,
+        "paused": true,
+        "pending": 6,
+        "revision": 47,
+        "tick": 3
+      },
+      "core_sha256": "652d1f126329dc727b3557c410582f2ca7cbe9b8c8df68d0df953475941960c9",
+      "highwater": 3,
+      "record_sha256": "81b19be6968de52be00ccc51c9a25ed41a387a2077b475c27aa77bdd2487aa5f",
+      "response": {
+        "bytes": 136194,
+        "durable": true,
+        "peer_highwater": 3,
+        "published": true,
+        "status": "durable"
+      },
+      "scenario": "paused-rich-Core-and-two-tick-player"
+    },
+    {
+      "bundle_sha256": "de8088665e9cf1958d2ae67bd6c293fc134cb3851cfd1ddd4f6d9e6dcf51febf",
+      "bytes": 135786,
+      "clock": {
+        "day_time": 5,
+        "daylight": true,
+        "paused": true,
+        "pending": 0,
+        "revision": 53,
+        "tick": 5
+      },
+      "core_sha256": "b93413422ee425746c8336a9e9e89e032641719033208c92719999531368ffee",
+      "highwater": 5,
+      "record_sha256": "a1a1bdad4d86dff5d0a452537484b26d493e1f212d6e761382b7762fcf46094c",
+      "response": {
+        "bytes": 135786,
+        "durable": true,
+        "peer_highwater": 5,
+        "published": true,
+        "status": "durable"
+      },
+      "scenario": "restart-controls-cleared-and-interleaved-Core-edits"
+    },
+    {
+      "bundle_sha256": "de8088665e9cf1958d2ae67bd6c293fc134cb3851cfd1ddd4f6d9e6dcf51febf",
+      "bytes": 135786,
+      "clock": {
+        "day_time": 5,
+        "daylight": true,
+        "paused": true,
+        "pending": 0,
+        "revision": 53,
+        "tick": 5
+      },
+      "core_sha256": "b93413422ee425746c8336a9e9e89e032641719033208c92719999531368ffee",
+      "highwater": 5,
+      "record_sha256": "a1a1bdad4d86dff5d0a452537484b26d493e1f212d6e761382b7762fcf46094c",
+      "response": {
+        "bytes": 135786,
+        "durable": true,
+        "peer_highwater": 5,
+        "published": true,
+        "status": "durable"
+      },
+      "scenario": "failed-publication-owner-reused"
+    },
+    {
+      "bundle_sha256": "f419d32e3d9ed2838f36cd24148e23a580087db2ac2f1959020a3c37778ec967",
+      "bytes": 1076,
+      "clock": {
+        "day_time": 0,
+        "daylight": true,
+        "paused": true,
+        "pending": 0,
+        "revision": 0,
+        "tick": 0
+      },
+      "core_sha256": "e2fd5426433a4475c7632dd23539bd8b2855a25cb015acdecab0b4547585a078",
+      "highwater": 1,
+      "record_sha256": "2d0828ae1a2e5762add9c8216e347d14b0d525ebe9516d8b89e0bafaab589a4f",
+      "response": {
+        "bytes": 1076,
+        "durable": true,
+        "peer_highwater": 1,
+        "published": true,
+        "status": "durable"
+      },
+      "scenario": "official35723-state-registry-default-create"
+    },
+    {
+      "bundle_sha256": "b10af5d07fa17959968453360d8c6fd70abaa46a28bf803833d839a96f81500d",
+      "bytes": 1076,
+      "clock": {
+        "day_time": 0,
+        "daylight": true,
+        "paused": true,
+        "pending": 0,
+        "revision": 0,
+        "tick": 0
+      },
+      "core_sha256": "d49b996705157c7c76bac3562205e37c1cea83b99be5e0d28d237c7d2e80f6a6",
+      "highwater": 1,
+      "record_sha256": "2d0828ae1a2e5762add9c8216e347d14b0d525ebe9516d8b89e0bafaab589a4f",
+      "response": {
+        "bytes": 1076,
+        "durable": true,
+        "peer_highwater": 1,
+        "published": true,
+        "status": "durable"
+      },
+      "scenario": "default-create-empty-Core-player"
+    },
+    {
+      "bundle_sha256": "e9855a32220b1c425add8ccc6ae2c35637426e68aeaa9e519fca596c3f69f1a5",
+      "bytes": 1091,
+      "clock": {
+        "day_time": 400,
+        "daylight": true,
+        "paused": true,
+        "pending": 0,
+        "revision": 0,
+        "tick": 29
+      },
+      "core_sha256": "3e5d6d02a28b0b013713ec7fbd64aa6ffedd4d9dffc7adb0f5a523e259303c86",
+      "highwater": 122,
+      "record_sha256": "014d4062557252685ebb54f19d343db9cf7b0989d3bfc83276d36824a18fbbf3",
+      "response": {
+        "bytes": 1091,
+        "durable": true,
+        "peer_highwater": 122,
+        "published": true,
+        "status": "durable"
+      },
+      "scenario": "exact-body-support-look-restoration-0"
+    },
+    {
+      "bundle_sha256": "fac4993bb3a5eaee2b3f4d65c1b2cfb1dbdf845963a817fd1ccbd0c18329d580",
+      "bytes": 1091,
+      "clock": {
+        "day_time": 400,
+        "daylight": true,
+        "paused": true,
+        "pending": 0,
+        "revision": 0,
+        "tick": 29
+      },
+      "core_sha256": "3e5d6d02a28b0b013713ec7fbd64aa6ffedd4d9dffc7adb0f5a523e259303c86",
+      "highwater": 123,
+      "record_sha256": "13284922847e76980ddfdea75082a9bf71d7bad469e99da4e2436932a3657bbc",
+      "response": {
+        "bytes": 1091,
+        "durable": true,
+        "peer_highwater": 123,
+        "published": true,
+        "status": "durable"
+      },
+      "scenario": "exact-body-support-look-restoration-1"
+    },
+    {
+      "bundle_sha256": "6d38d3a41f54c0e6845624cf144196e4adb36702a8edb7dec03476178045d4f6",
+      "bytes": 135432,
+      "clock": {
+        "day_time": 1002,
+        "daylight": true,
+        "paused": true,
+        "pending": 0,
+        "revision": 47,
+        "tick": 1002
+      },
+      "core_sha256": "5a92ac1f0af06a26b995b89283f210cbb5e712dd87997c32dad3e1c2b1e430d6",
+      "highwater": 2,
+      "record_sha256": "2d0828ae1a2e5762add9c8216e347d14b0d525ebe9516d8b89e0bafaab589a4f",
+      "response": {
+        "bytes": 135432,
+        "durable": true,
+        "peer_highwater": 2,
+        "published": true,
+        "status": "durable"
+      },
+      "scenario": "context-rejection-Core-advance-player-rollback"
+    },
+    {
+      "bundle_sha256": "60dcb8f821fcbb9fc47309800343b4d378cc437c511821c4ec1383ddf1387d2c",
+      "bytes": 1076,
+      "clock": {
+        "day_time": 0,
+        "daylight": true,
+        "paused": true,
+        "pending": 0,
+        "revision": 0,
+        "tick": 0
+      },
+      "core_sha256": "d49b996705157c7c76bac3562205e37c1cea83b99be5e0d28d237c7d2e80f6a6",
+      "highwater": 32,
+      "record_sha256": "2d0828ae1a2e5762add9c8216e347d14b0d525ebe9516d8b89e0bafaab589a4f",
+      "response": {
+        "bytes": 1076,
+        "durable": true,
+        "peer_highwater": 32,
+        "published": true,
+        "status": "durable"
+      },
+      "scenario": "stage-restart-created"
+    },
+    {
+      "bundle_sha256": "60dcb8f821fcbb9fc47309800343b4d378cc437c511821c4ec1383ddf1387d2c",
+      "bytes": 1076,
+      "clock": {
+        "day_time": 0,
+        "daylight": true,
+        "paused": true,
+        "pending": 0,
+        "revision": 0,
+        "tick": 0
+      },
+      "core_sha256": "d49b996705157c7c76bac3562205e37c1cea83b99be5e0d28d237c7d2e80f6a6",
+      "highwater": 32,
+      "record_sha256": "2d0828ae1a2e5762add9c8216e347d14b0d525ebe9516d8b89e0bafaab589a4f",
+      "response": {
+        "bytes": 1076,
+        "durable": true,
+        "peer_highwater": 32,
+        "published": true,
+        "status": "durable"
+      },
+      "scenario": "stage-restart-written"
+    },
+    {
+      "bundle_sha256": "60dcb8f821fcbb9fc47309800343b4d378cc437c511821c4ec1383ddf1387d2c",
+      "bytes": 1076,
+      "clock": {
+        "day_time": 0,
+        "daylight": true,
+        "paused": true,
+        "pending": 0,
+        "revision": 0,
+        "tick": 0
+      },
+      "core_sha256": "d49b996705157c7c76bac3562205e37c1cea83b99be5e0d28d237c7d2e80f6a6",
+      "highwater": 32,
+      "record_sha256": "2d0828ae1a2e5762add9c8216e347d14b0d525ebe9516d8b89e0bafaab589a4f",
+      "response": {
+        "bytes": 1076,
+        "durable": true,
+        "peer_highwater": 32,
+        "published": true,
+        "status": "durable"
+      },
+      "scenario": "stage-restart-synced"
+    },
+    {
+      "bundle_sha256": "c396b9075b1210d1070a7a291e924d28d9d514a66850f76f074c328c5eafdaea",
+      "bytes": 1078,
+      "clock": {
+        "day_time": 400,
+        "daylight": true,
+        "paused": true,
+        "pending": 0,
+        "revision": 0,
+        "tick": 9
+      },
+      "core_sha256": "6ee462228e98cf9daa48486cab829fd9cc7f6fb2bcd7d97ddecd0dcc3591c402",
+      "highwater": 33,
+      "record_sha256": "57ff0e02f6c3e0f37ac475738254bcdd04fc07b2e431f03d1321ca96b764013c",
+      "response": {
+        "bytes": 1078,
+        "durable": true,
+        "peer_highwater": 33,
+        "published": true,
+        "status": "durable"
+      },
+      "scenario": "stage-restart-published"
+    },
+    {
+      "bundle_sha256": "c396b9075b1210d1070a7a291e924d28d9d514a66850f76f074c328c5eafdaea",
+      "bytes": 1078,
+      "clock": {
+        "day_time": 400,
+        "daylight": true,
+        "paused": true,
+        "pending": 0,
+        "revision": 0,
+        "tick": 9
+      },
+      "core_sha256": "6ee462228e98cf9daa48486cab829fd9cc7f6fb2bcd7d97ddecd0dcc3591c402",
+      "highwater": 33,
+      "record_sha256": "57ff0e02f6c3e0f37ac475738254bcdd04fc07b2e431f03d1321ca96b764013c",
+      "response": {
+        "bytes": 1078,
+        "durable": true,
+        "peer_highwater": 33,
+        "published": true,
+        "status": "durable"
+      },
+      "scenario": "stage-restart-directory_synced"
+    }
+  ],
+  "scope": [
+    "Custom project Core+player bundle; no vanilla player.dat/world-save equivalence.",
+    "Declared plain Player neutral context, four admitted block materials; no LocalPlayer/environment/equipment/ability generalization.",
+    "Actual Session acknowledged durable publication, exclusive temporary creation failure and process SIGKILL/restart; separate leased Atomic.publish_with stage-hook lane, no modified production quiet-save hook or simulated power loss.",
+    "Read-only fixture.transient raw TCP probe is harness instrumentation absent from production discovery; no external production player mutation API claim.",
+    "No native window, OS keyboard/mouse input, visual fidelity or whole-game acceptance is established."
+  ],
+  "seconds": 5.383353,
+  "sine_table": {
+    "bytes": 262144,
+    "file": "reference_mth_sin.f32",
+    "sha1": "453d5bfac3fe5a249b1d76c6eb817dea50710c98",
+    "sha256": "cdfaec6870788e193dff3f1ddfa3ca7d3f1a897042d78365a1fe3a433be3627d"
+  },
+  "sources_sha256": {
+    "mcp.bend": "5b67990ce163cdd4ab20d0ca9b46e6b0a3708f759f2dcaee17287342e1a5f81c",
+    "src/archive.bend": "c0f7b34a22726d220f6b867730b7d080d57d82c84d619c35721b9b8d18fa5d6e",
+    "src/atomic_file.bend": "ef82fcddc460705f0761473bcfd8fcd896b779f89e56c4551c9ced23b13f987a",
+    "src/client_controls.bend": "aa55b7905c339d58909e6319d2d31b972c23ea1a2a3c895ea72c2a2c72605f25",
+    "src/client_render.bend": "bb8f6057a02bfcb0583025f9e75fe41abc6804eb554c6d971df5c81618932947",
+    "src/client_world.bend": "05040abf35b2b9ceaf87fed5c48f8d074d211750a59ab00fa6ff08e60a9ea5d7",
+    "src/compression.bend": "255cdff06a33050c7b0a48fdea75c1842ebe2dab0439cfe4f03d126d4edc20aa",
+    "src/core.bend": "c1ee5a5390cdac0452c9c6cd3b0584a68ef68b5b0dfec867491c27e67ecadd4e",
+    "src/durability.bend": "079b5342e76be090793dc2e44f8d337eda144d75653d23eea36a7131558aed05",
+    "src/extended_persistence.bend": "32b3b094e21745d057a4ac797674fe4757bb4957659b35cbea7199b9c4ee1d2a",
+    "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "src/framing.bend": "307f95049df03d92687b7bd0eafb2cd566e660926510bb88163f9bc825fccdb5",
+    "src/game.bend": "43e3eee5d15613bb06cc608fe43657aa14d8c0fbe899d4efa580fc8335d23882",
+    "src/geometry.bend": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f",
+    "src/hash.bend": "d2473695632b19e68c8d636668e4617f04d70892fb2ab6559cb24d4b33c1b978",
+    "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+    "src/live.bend": "cb5a2f8237a53e48d3f6751d321a023e11694721f789373984d7d77620f32e87",
+    "src/locomotion.bend": "ccf8aa12636ba1fce5575606383bf75c02a8ac79ba952645b89aea2eef6cd459",
+    "src/mcp.bend": "8291445d923714ec6985e8c6b2b8f756cf09cd7e4d488814b2c6cd6552238d95",
+    "src/mouse_input.bend": "2157b1804cb7ad58f6b58fd167de978eb9605ddac9485241d102128d055158a9",
+    "src/movement.bend": "0e94fea7cc941a23d2ed7bbd2ccaf0117e6af363eb91f2db2e34428f9dd9e67f",
+    "src/nbt.bend": "b677546b5fc02aaa38f5c09e5b798c0d35aec32b1c4b37cbd7042b9a1a5275e4",
+    "src/persistence.bend": "1561a863a74fdfc676b8ba4bbb5eddd206823f7363bf05c8a50ddffbbc30a4af",
+    "src/player_codec.bend": "98a5d7e8e11bb1a811c4e3b1e19dcee010e9f36eb15967810fbe95f4222a09a7",
+    "src/player_controls.bend": "52e012a959078eb06b80fb17f17f6ca06d98c4d84ab0ca529164f82d03637d38",
+    "src/player_input.bend": "d3938f96416691739eb54f2b0f77377c6ba7c74ac63ffa8335840152feb355d5",
+    "src/player_look.bend": "35ec863e078e46f2c2502b975f3e9f259114aec7baac614c68ba6e46773260ca",
+    "src/player_record.bend": "1812d954991cbce193353490d5db002f26873f364c426f497f82e7b13594235b",
+    "src/player_runtime.bend": "0580f77db4a9e9d570938f6c6487867cd1ea92b0a2c24246fa0f354aa0604242",
+    "src/player_session.bend": "e4d515442e9446aa308dee68630ef48755565562a2441052f54d3e422416e6d2",
+    "src/player_storage.bend": "0873c24a2dc4b2a0e3c573f6a11ca313aa7b807457b4447e21c3f9c053bbb445",
+    "src/player_tick.bend": "d583f3014011313097779b69ee0fd8d77bd3ed0e1e7895b629903eb64da9699f",
+    "src/player_tick_world.bend": "98d5fe1383351c463f3fa172ff012325864292cfa7909cf21167e6642500170b",
+    "src/png.bend": "8c24c14a250cf6dbdf0c2804e4b28bfebd7ef62ed5d9ee97a1d07094d4745f22",
+    "src/registry.bend": "821c53d9cfa3044be3cae2af968f55563c0be2bebc9beae55a29d77d47b140a0",
+    "src/schedule.bend": "93aa79895fe340e27ae5fd562102d5980f0938003eb1bbde669a84010779b8c9",
+    "src/section.bend": "02b5c15c57b173c7eb8b4c55a1433c10c192926e91af5e3e69050b4404044aa5",
+    "src/section_map.bend": "ded59d7938c02fd0876d65e37f9f90ea0cfebf3ca4bd107394342f8adbf33965",
+    "src/server.bend": "3c9e5f681b0957b3e8c36b4ddde94a6ad5705b8b5b45cc6b2a81572446d7c2cf",
+    "src/support.bend": "aca42f24e0a32bd89356ac33f6d9bbe2ab5975ce938e2d2750496c01a6137455",
+    "src/support_world.bend": "a2e42fb06cab36408e7631e8ff3b9e61793696d4b049592d3ce137f69fa3b381",
+    "src/travel.bend": "717e969e3989a7a8e443b18f69c171bdc11a14130828233ce85e6cd914e1f8f1",
+    "src/travel_world.bend": "a3c787699a9ae12d9301638d39a7abd3aa1cfeba160182b9c176797424aad682",
+    "src/unicode.bend": "8f0cd9bbcd0e7f938af370675eca0c73a9b97b90c2789a1e77e5a29a918455bd",
+    "src/world_codec.bend": "461e2bc342005831a3d16824303f79e1f4dac2dca0eaf0731d18052dbfe0bf86",
+    "src/world_lock.bend": "5b527809b0a6686a8c3ba0459b9fa3ce2c3414acdbf4fa7453a57f7bd303568e",
+    "tests/player_session.bend": "875f19ad80a1ac719a2ea9bf5a83df95539115580dc51835a97f9db8d1dbc5cf"
+  },
+  "startup_rejections": [
+    {
+      "case": "concurrent-lease",
+      "diagnostic": "bundle startup refused: lease acquisition failed: 35: Resource temporarily unavailable",
+      "exit_code": 1,
+      "input_sha256": "f041fedce1b4de53df6a73b1992fb228109f361b9e4ad7f67db1ce29e2e7cfa4",
+      "no_listener": true,
+      "seconds": 0.012987
+    },
+    {
+      "case": "core-only-refused",
+      "diagnostic": "bundle startup refused: Core-only saves require an explicit player initialization migration",
+      "exit_code": 1,
+      "input_sha256": "3db768eff40fd8687014aa4cdb0c98fcf57911932de4b5831330e2fdcee2e7c2",
+      "no_listener": true,
+      "seconds": 0.01398
+    },
+    {
+      "case": "outer-format",
+      "diagnostic": "bundle startup refused: unsupported bundle format",
+      "exit_code": 1,
+      "input_sha256": "5b49068aeecfb2f5066a56bc87208f9990f848e389efc635f76f0d3de30feb9c",
+      "no_listener": true,
+      "seconds": 0.013427
+    },
+    {
+      "case": "outer-minecraft",
+      "diagnostic": "bundle startup refused: bundle Minecraft version mismatch",
+      "exit_code": 1,
+      "input_sha256": "556acccda012f9e4f97e2d9074516d545f9c66403a3591b1e0c190db98ed4fdb",
+      "no_listener": true,
+      "seconds": 0.013419
+    },
+    {
+      "case": "outer-registry",
+      "diagnostic": "bundle startup refused: bundle registry identity mismatch",
+      "exit_code": 1,
+      "input_sha256": "de221507b6c21dbc5b42e39d3feba5cb5f849b991f22536a85ed9f99ca78dc32",
+      "no_listener": true,
+      "seconds": 0.013549
+    },
+    {
+      "case": "outer-peer_highwater",
+      "diagnostic": "bundle startup refused: persisted peer identity range exhausted",
+      "exit_code": 1,
+      "input_sha256": "53e38c14c42f4b468a7889d4cd59d3fb88f60d122e00dd7543099deca37804cb",
+      "no_listener": true,
+      "seconds": 0.015672
+    },
+    {
+      "case": "outer-core",
+      "diagnostic": "bundle startup refused: truncated NBT at byte 0",
+      "exit_code": 1,
+      "input_sha256": "8c1737dde651a032db50766ad05c8337ed2ccae0d702c1645683b9864c90e5a1",
+      "no_listener": true,
+      "seconds": 0.013809
+    },
+    {
+      "case": "outer-missing-format",
+      "diagnostic": "bundle startup refused: missing world schema field",
+      "exit_code": 1,
+      "input_sha256": "dfc0148d24bf7d46d71d836adb06caad46a4be7372e646a1de8aa659977d0243",
+      "no_listener": true,
+      "seconds": 0.013403
+    },
+    {
+      "case": "outer-duplicate-format",
+      "diagnostic": "bundle startup refused: duplicate world schema field: format",
+      "exit_code": 1,
+      "input_sha256": "1a14ac5811ff9e5f6ab320b51ec68cb834c86d437802a8409e96fc117ff71ec2",
+      "no_listener": true,
+      "seconds": 0.01331
+    },
+    {
+      "case": "outer-type-format",
+      "diagnostic": "bundle startup refused: expected Int tag",
+      "exit_code": 1,
+      "input_sha256": "896513f3b8aad75687358081cb601515449d4ca0783a2950ef099b12c2e992ce",
+      "no_listener": true,
+      "seconds": 0.013584
+    },
+    {
+      "case": "outer-missing-minecraft",
+      "diagnostic": "bundle startup refused: missing world schema field",
+      "exit_code": 1,
+      "input_sha256": "b641fb30a67f6bee370612a3d3de7d8eda98bd9ff6ad387d37f28f1e5a55375f",
+      "no_listener": true,
+      "seconds": 0.01367
+    },
+    {
+      "case": "outer-duplicate-minecraft",
+      "diagnostic": "bundle startup refused: duplicate world schema field: minecraft",
+      "exit_code": 1,
+      "input_sha256": "3af023e4c66567cf6d2bc0fa1d2e5b221e1e630494d4251f464fb37cd62ece8b",
+      "no_listener": true,
+      "seconds": 0.013535
+    },
+    {
+      "case": "outer-type-minecraft",
+      "diagnostic": "bundle startup refused: expected String tag",
+      "exit_code": 1,
+      "input_sha256": "355c3489f2dd31ee85f685a7fae969b1217f237063494e267a790b3addef473d",
+      "no_listener": true,
+      "seconds": 0.013435
+    },
+    {
+      "case": "outer-missing-registry",
+      "diagnostic": "bundle startup refused: missing world schema field",
+      "exit_code": 1,
+      "input_sha256": "6b73c93875aeeffe38ac6e331f45688fc4dc05a56b09f6108a218bb52460d420",
+      "no_listener": true,
+      "seconds": 0.013324
+    },
+    {
+      "case": "outer-duplicate-registry",
+      "diagnostic": "bundle startup refused: duplicate world schema field: registry",
+      "exit_code": 1,
+      "input_sha256": "740a22261fec389bcc3a34daa06a524a4f5065d098b9e84a4b72417ae0338463",
+      "no_listener": true,
+      "seconds": 0.013642
+    },
+    {
+      "case": "outer-type-registry",
+      "diagnostic": "bundle startup refused: expected String tag",
+      "exit_code": 1,
+      "input_sha256": "e572091d4279f8b270ebf12ecccfc37f1e351dffb22e89ac0de625ab3ad60c46",
+      "no_listener": true,
+      "seconds": 0.013355
+    },
+    {
+      "case": "outer-missing-peer_highwater",
+      "diagnostic": "bundle startup refused: missing world schema field",
+      "exit_code": 1,
+      "input_sha256": "4c82fdd4e76e752f2ca6a6d35e97a340516d5cec8ca8ef4a9b48a959d95158b6",
+      "no_listener": true,
+      "seconds": 0.013421
+    },
+    {
+      "case": "outer-duplicate-peer_highwater",
+      "diagnostic": "bundle startup refused: duplicate world schema field: peer_highwater",
+      "exit_code": 1,
+      "input_sha256": "969c704b485dbe5401e87cbb533adc01323c7267da00543d646a2b04e8454d05",
+      "no_listener": true,
+      "seconds": 0.013338
+    },
+    {
+      "case": "outer-type-peer_highwater",
+      "diagnostic": "bundle startup refused: expected Int tag",
+      "exit_code": 1,
+      "input_sha256": "f98e231f0b2b9b98f9b166af1dff152d149d9f9865b2eeeb24858f2f5737e020",
+      "no_listener": true,
+      "seconds": 0.01344
+    },
+    {
+      "case": "outer-missing-core",
+      "diagnostic": "bundle startup refused: missing world schema field",
+      "exit_code": 1,
+      "input_sha256": "7a144ce237541eccc3918c5160f8cbc15de3569321226896203748ccfdd5bc59",
+      "no_listener": true,
+      "seconds": 0.01348
+    },
+    {
+      "case": "outer-duplicate-core",
+      "diagnostic": "bundle startup refused: duplicate world schema field: core",
+      "exit_code": 1,
+      "input_sha256": "7a94eb228d0af6c143beb3fe42717884140b4b41427da8459d9061e927db3c84",
+      "no_listener": true,
+      "seconds": 0.013787
+    },
+    {
+      "case": "outer-type-core",
+      "diagnostic": "bundle startup refused: bundle payload requires ByteArray",
+      "exit_code": 1,
+      "input_sha256": "eda845adac83535eece20971049a5c08188f6e92c6c3077430bce80dc48c61cd",
+      "no_listener": true,
+      "seconds": 0.013432
+    },
+    {
+      "case": "outer-missing-extension",
+      "diagnostic": "bundle startup refused: missing world schema field",
+      "exit_code": 1,
+      "input_sha256": "10d6fae327229846e5d5d7999dcf1ee88c23c660637cdb248abfbe413d1a07e1",
+      "no_listener": true,
+      "seconds": 0.013075
+    },
+    {
+      "case": "outer-duplicate-extension",
+      "diagnostic": "bundle startup refused: duplicate world schema field: extension",
+      "exit_code": 1,
+      "input_sha256": "9bb3d15ac1612396696ab37eec5a7f9d6f9f2cc02bcaf4706d045d056c5c5fdc",
+      "no_listener": true,
+      "seconds": 0.014162
+    },
+    {
+      "case": "outer-type-extension",
+      "diagnostic": "bundle startup refused: expected Compound tag",
+      "exit_code": 1,
+      "input_sha256": "7c08f8b39ebd254bee02e9e560b36a99f80e19888101e85b9623e42de5652d18",
+      "no_listener": true,
+      "seconds": 0.012749
+    },
+    {
+      "case": "namespace-''",
+      "diagnostic": "bundle startup refused: bundle extension namespace mismatch",
+      "exit_code": 1,
+      "input_sha256": "07ceec6ad649bd2522a84b071f556dd0db1d9f53c71bb1075c80ba310d14819f",
+      "no_listener": true,
+      "seconds": 0.013614
+    },
+    {
+      "case": "namespace-'other:player'",
+      "diagnostic": "bundle startup refused: bundle extension namespace mismatch",
+      "exit_code": 1,
+      "input_sha256": "79f32a36c2d6ae4e26c6ccdb25bf3200a18926f40fc242871808d8678afaf2f2",
+      "no_listener": true,
+      "seconds": 0.013863
+    },
+    {
+      "case": "namespace-'Bendex:player-record'",
+      "diagnostic": "bundle startup refused: bundle extension namespace mismatch",
+      "exit_code": 1,
+      "input_sha256": "c57300b905613ae2a946a77f7e5e182e2059aa6f809daca1d28c0a8f57f3df7a",
+      "no_listener": true,
+      "seconds": 0.013849
+    },
+    {
+      "case": "extension-schema-0",
+      "diagnostic": "bundle startup refused: extension schema must be nonzero",
+      "exit_code": 1,
+      "input_sha256": "1e79ba3887d6ae20f7ad7879eeb341ef59d51fe853211993735c52c27c070c8d",
+      "no_listener": true,
+      "seconds": 0.013812
+    },
+    {
+      "case": "extension-schema-2",
+      "diagnostic": "bundle startup refused: unsupported player-record schema",
+      "exit_code": 1,
+      "input_sha256": "c055fc7554ce0c6fd9af15304085c2dcf52c41b70edf39b5933d77c56ccd3d09",
+      "no_listener": true,
+      "seconds": 0.014428
+    },
+    {
+      "case": "extension-schema-4294967295",
+      "diagnostic": "bundle startup refused: unsupported player-record schema",
+      "exit_code": 1,
+      "input_sha256": "b5fd4a9cfa8ef63e040febee6655f06d35899cc128ad639008543e30a1aaa7b0",
+      "no_listener": true,
+      "seconds": 0.014177
+    },
+    {
+      "case": "known-unsupported-dimension-minecraft:the_nether",
+      "diagnostic": "bundle startup refused: current player runtime requires minecraft:overworld",
+      "exit_code": 1,
+      "input_sha256": "a10585bac8e9bd2c00409b410d616e9e4864f7bba892db9a2d2c48809daf40ed",
+      "no_listener": true,
+      "seconds": 0.01542
+    },
+    {
+      "case": "known-unsupported-dimension-minecraft:the_end",
+      "diagnostic": "bundle startup refused: current player runtime requires minecraft:overworld",
+      "exit_code": 1,
+      "input_sha256": "bfd43715e6b28dad8618a7b759be059ef964043739b0196a2d2651bb30a4bb19",
+      "no_listener": true,
+      "seconds": 0.015371
+    },
+    {
+      "case": "record-inner-reject-decode-bad-body-0-0-7ff0000000000000",
+      "diagnostic": "bundle startup refused: invalid player motion snapshot",
+      "exit_code": 1,
+      "input_sha256": "5a553c2f278d96a030aa1dc6a00f30b12bcb951a4373f1e1b25f1f088b1f4bbf",
+      "no_listener": true,
+      "seconds": 0.015489
+    },
+    {
+      "case": "record-inner-reject-decode-negative-dimension-24-80000001",
+      "diagnostic": "bundle startup refused: invalid player motion snapshot",
+      "exit_code": 1,
+      "input_sha256": "4aa0458671b5b08100b3caf71c9aecfa5bd4427bf5d746922256cafd714216ab",
+      "no_listener": true,
+      "seconds": 0.015229
+    },
+    {
+      "case": "record-inner-reject-decode-outside-pitch-3fc90fdc",
+      "diagnostic": "bundle startup refused: invalid player motion snapshot",
+      "exit_code": 1,
+      "input_sha256": "0e95cb09e520131296338e203300e5fbc77b188074144203ceacb8a5df72d139",
+      "no_listener": true,
+      "seconds": 0.015186
+    },
+    {
+      "case": "record-inner-reject-decode-inconsistent-box-0",
+      "diagnostic": "bundle startup refused: invalid player motion snapshot",
+      "exit_code": 1,
+      "input_sha256": "5cef1db577c906af78cdc61fe0890df2337dad026d0f824c0b02e134ce78cee2",
+      "no_listener": true,
+      "seconds": 0.015325
+    },
+    {
+      "case": "record-inner-reject-root-missing-0",
+      "diagnostic": "bundle startup refused: invalid player motion snapshot",
+      "exit_code": 1,
+      "input_sha256": "df40782e518d448368645bdc50bee9b26d244988d0ea9c4e5b4b464d4ca374b8",
+      "no_listener": true,
+      "seconds": 0.015188
+    },
+    {
+      "case": "record-inner-reject-wrong-root-''",
+      "diagnostic": "bundle startup refused: invalid player motion snapshot",
+      "exit_code": 1,
+      "input_sha256": "627f2a399b925ab2c272ff726fcf4235e8b11c570e5b8cf9df8a964df397b300",
+      "no_listener": true,
+      "seconds": 0.014963
+    },
+    {
+      "case": "record-inner-reject-bad-byte--jumping-2",
+      "diagnostic": "bundle startup refused: invalid player motion snapshot",
+      "exit_code": 1,
+      "input_sha256": "0097a22bb19d84b6b774a75ea42f8270b25fd476d4279d3832ec7c3cce5fd6c5",
+      "no_listener": true,
+      "seconds": 0.015197
+    },
+    {
+      "case": "record-inner-reject-wrong-list-size-body-position-0",
+      "diagnostic": "bundle startup refused: invalid player motion snapshot",
+      "exit_code": 1,
+      "input_sha256": "be06caae297eaf7d1d6ee8300cb8fb6ac585f7153ca7389ab9224a9234d408fe",
+      "no_listener": true,
+      "seconds": 0.01492
+    },
+    {
+      "case": "record-inner-reject-truncated-0",
+      "diagnostic": "bundle startup refused: invalid player motion snapshot",
+      "exit_code": 1,
+      "input_sha256": "ed5b883cecd1fe10f5f8ded074727b2c15e5f79e43e3ae10216b40d94ff3c439",
+      "no_listener": true,
+      "seconds": 0.013565
+    },
+    {
+      "case": "record-inner-reject-trailing-00",
+      "diagnostic": "bundle startup refused: invalid player motion snapshot",
+      "exit_code": 1,
+      "input_sha256": "765baf7876fa11717b0576681d5cdac7836a847b73b3aedcaa69898afe77cfa8",
+      "no_listener": true,
+      "seconds": 0.01526
+    },
+    {
+      "case": "record-inner-reject-array-list-count-bomb-7-17",
+      "diagnostic": "bundle startup refused: invalid player motion snapshot",
+      "exit_code": 1,
+      "input_sha256": "7855c018c1a334c9b3940c02bfc88ec58b001a61a5e014ef280186c72d786497",
+      "no_listener": true,
+      "seconds": 0.013759
+    },
+    {
+      "case": "record-inner-reject-container-depth-bomb-4",
+      "diagnostic": "bundle startup refused: invalid player motion snapshot",
+      "exit_code": 1,
+      "input_sha256": "fd72c18b8bbe3c68fe8b5b5752f3327ed0760a13e16409ea14d8f1fdfba31cd5",
+      "no_listener": true,
+      "seconds": 0.015172
+    },
+    {
+      "case": "record-inner-reject-compound-count-boundary-16",
+      "diagnostic": "bundle startup refused: invalid player motion snapshot",
+      "exit_code": 1,
+      "input_sha256": "4631322eb9779b95f00625303dbf72b3560485e15f67178f2eb370400aed0bb8",
+      "no_listener": true,
+      "seconds": 0.01394
+    },
+    {
+      "case": "record-inner-reject-seeded-single-bit-mutation-0",
+      "diagnostic": "bundle startup refused: invalid player motion snapshot",
+      "exit_code": 1,
+      "input_sha256": "f55aec57a883b1aec76d1b0090214480f00aab7e3d46a53b5e04739f056b6f98",
+      "no_listener": true,
+      "seconds": 0.015139
+    },
+    {
+      "case": "record-nonfinite-0-7f800000-decode",
+      "diagnostic": "bundle startup refused: invalid raw Entity look fields",
+      "exit_code": 1,
+      "input_sha256": "018234f7078a542ef8d80e63dfe52c23cab8842cfd036cdc603e2805718f5b43",
+      "no_listener": true,
+      "seconds": 0.015193
+    },
+    {
+      "case": "record-nonfinite-0-ff800000-decode",
+      "diagnostic": "bundle startup refused: invalid raw Entity look fields",
+      "exit_code": 1,
+      "input_sha256": "abb275f13118b645cf7e8b6eb76519d9c78a1735d42cc8c52ec4fdcb318d7af9",
+      "no_listener": true,
+      "seconds": 0.016818
+    },
+    {
+      "case": "record-nonfinite-0-7fc00000-decode",
+      "diagnostic": "bundle startup refused: invalid raw Entity look fields",
+      "exit_code": 1,
+      "input_sha256": "bef027004957cf5f4c585ee996269633a89196b1c570c0ac53a889a8c38abd16",
+      "no_listener": true,
+      "seconds": 0.015335
+    },
+    {
+      "case": "record-nonfinite-0-ffc00000-decode",
+      "diagnostic": "bundle startup refused: invalid raw Entity look fields",
+      "exit_code": 1,
+      "input_sha256": "6dcbee0453bf2fb4e5d402498e9c16db399f435e17b0952d7b8803f9b5f5d202",
+      "no_listener": true,
+      "seconds": 0.015139
+    },
+    {
+      "case": "record-nonfinite-0-7f800001-decode",
+      "diagnostic": "bundle startup refused: invalid raw Entity look fields",
+      "exit_code": 1,
+      "input_sha256": "6a13340eeb80b0a0fdc53bdb4ba47d8ff9b8f48c3c40481f0ed67f1508730f2e",
+      "no_listener": true,
+      "seconds": 0.015237
+    },
+    {
+      "case": "record-nonfinite-0-ff800001-decode",
+      "diagnostic": "bundle startup refused: invalid raw Entity look fields",
+      "exit_code": 1,
+      "input_sha256": "b5efe5ec2bac8865b82ed337d3fa00540af4e3a279edd1284e41c908243a1ec1",
+      "no_listener": true,
+      "seconds": 0.015272
+    },
+    {
+      "case": "record-nonfinite-0-7fffffff-decode",
+      "diagnostic": "bundle startup refused: invalid raw Entity look fields",
+      "exit_code": 1,
+      "input_sha256": "c72ab91974936b8512b7db3999a41fb67ea7a2b965009e739edc88bdc44c0616",
+      "no_listener": true,
+      "seconds": 0.015205
+    },
+    {
+      "case": "record-nonfinite-0-ffffffff-decode",
+      "diagnostic": "bundle startup refused: invalid raw Entity look fields",
+      "exit_code": 1,
+      "input_sha256": "5aae6194f7193590a470b045520e73f5517345b0b19f70df5e908a99e7587016",
+      "no_listener": true,
+      "seconds": 0.014949
+    },
+    {
+      "case": "record-nonfinite-1-7f800000-decode",
+      "diagnostic": "bundle startup refused: invalid raw Entity look fields",
+      "exit_code": 1,
+      "input_sha256": "8a83ed69cf9e411447ecd2e81516ac90daf4a24ab57a74fe3e7eaa652244a5b5",
+      "no_listener": true,
+      "seconds": 0.015111
+    },
+    {
+      "case": "record-nonfinite-1-ff800000-decode",
+      "diagnostic": "bundle startup refused: invalid raw Entity look fields",
+      "exit_code": 1,
+      "input_sha256": "10f75f2a355bd6652937338718e23aab2619604c342fa09ced0d2668b1e9f725",
+      "no_listener": true,
+      "seconds": 0.015149
+    },
+    {
+      "case": "record-nonfinite-1-7fc00000-decode",
+      "diagnostic": "bundle startup refused: invalid raw Entity look fields",
+      "exit_code": 1,
+      "input_sha256": "28a4072037c8e487b28fdb935cfbb28d858906e5af3f5f8c78f8e86a6bec32a6",
+      "no_listener": true,
+      "seconds": 0.015383
+    },
+    {
+      "case": "record-nonfinite-1-ffc00000-decode",
+      "diagnostic": "bundle startup refused: invalid raw Entity look fields",
+      "exit_code": 1,
+      "input_sha256": "e87720e78cde74fc4a1eb6fb0dd509fb86e902ca8e510c36e797c7600f3637a7",
+      "no_listener": true,
+      "seconds": 0.015164
+    },
+    {
+      "case": "record-nonfinite-1-7f800001-decode",
+      "diagnostic": "bundle startup refused: invalid raw Entity look fields",
+      "exit_code": 1,
+      "input_sha256": "0f310b9976c668301d76072d097845553ea17fe4b79665e2ee592d60078f8b07",
+      "no_listener": true,
+      "seconds": 0.015208
+    },
+    {
+      "case": "record-nonfinite-1-ff800001-decode",
+      "diagnostic": "bundle startup refused: invalid raw Entity look fields",
+      "exit_code": 1,
+      "input_sha256": "3eb4612d3335a753c669c88bbf8d208e67db79e430d8bbb1e8638cb9e117cd3a",
+      "no_listener": true,
+      "seconds": 0.015204
+    },
+    {
+      "case": "record-nonfinite-1-7fffffff-decode",
+      "diagnostic": "bundle startup refused: invalid raw Entity look fields",
+      "exit_code": 1,
+      "input_sha256": "ee4c06bd2b953dd0b66fbdf01593fafa971792fddadddc38ee3090e18fbdda94",
+      "no_listener": true,
+      "seconds": 0.015476
+    },
+    {
+      "case": "record-nonfinite-1-ffffffff-decode",
+      "diagnostic": "bundle startup refused: invalid raw Entity look fields",
+      "exit_code": 1,
+      "input_sha256": "3bf08522cf20552c58bda553e23f33fa33f499aee55d5ffbdd734e7e9c73f382",
+      "no_listener": true,
+      "seconds": 0.015604
+    },
+    {
+      "case": "record-nonfinite-2-7f800000-decode",
+      "diagnostic": "bundle startup refused: invalid raw Entity look fields",
+      "exit_code": 1,
+      "input_sha256": "1f4f549c93db1ea9466ec5bb19a41e79c0ef1c1d1f7e8cc54a13abed43914d0d",
+      "no_listener": true,
+      "seconds": 0.015266
+    },
+    {
+      "case": "record-nonfinite-2-ff800000-decode",
+      "diagnostic": "bundle startup refused: invalid raw Entity look fields",
+      "exit_code": 1,
+      "input_sha256": "68355c525d3cee47dfe39a07f5743f44c413c65b70c57dc87da17532544b8c77",
+      "no_listener": true,
+      "seconds": 0.015081
+    },
+    {
+      "case": "record-nonfinite-2-7fc00000-decode",
+      "diagnostic": "bundle startup refused: invalid raw Entity look fields",
+      "exit_code": 1,
+      "input_sha256": "4202e25049379a553a85dd6c4818faa896cb20c4d2987ca94f58f5d9d443d5ae",
+      "no_listener": true,
+      "seconds": 0.015321
+    },
+    {
+      "case": "record-nonfinite-2-ffc00000-decode",
+      "diagnostic": "bundle startup refused: invalid raw Entity look fields",
+      "exit_code": 1,
+      "input_sha256": "a2824131734dcbc9f023797540f2ad9c7e335f3824b404756d788c1576b6a5b7",
+      "no_listener": true,
+      "seconds": 0.015432
+    },
+    {
+      "case": "record-nonfinite-2-7f800001-decode",
+      "diagnostic": "bundle startup refused: invalid raw Entity look fields",
+      "exit_code": 1,
+      "input_sha256": "9d486ba81ce768b9e59afc621eea082248cd42e5f0f8476269aecbf4b42781c0",
+      "no_listener": true,
+      "seconds": 0.01537
+    },
+    {
+      "case": "record-nonfinite-2-ff800001-decode",
+      "diagnostic": "bundle startup refused: invalid raw Entity look fields",
+      "exit_code": 1,
+      "input_sha256": "e4b58d0579d6e8f338f08d50540cfde9f8a00f0de046778f8d48029ce3465a4a",
+      "no_listener": true,
+      "seconds": 0.015406
+    },
+    {
+      "case": "record-nonfinite-2-7fffffff-decode",
+      "diagnostic": "bundle startup refused: invalid raw Entity look fields",
+      "exit_code": 1,
+      "input_sha256": "e0ee8fef1c1fb0ac98a54d8f670995ed1b93f452beaf8d98c0eec71d2166a029",
+      "no_listener": true,
+      "seconds": 0.015498
+    },
+    {
+      "case": "record-nonfinite-2-ffffffff-decode",
+      "diagnostic": "bundle startup refused: invalid raw Entity look fields",
+      "exit_code": 1,
+      "input_sha256": "6c322be774539cb5048b3c6f3aa9e461ee4c816eeab0047df30174ba23df7b46",
+      "no_listener": true,
+      "seconds": 0.015144
+    },
+    {
+      "case": "record-nonfinite-3-7f800000-decode",
+      "diagnostic": "bundle startup refused: invalid raw Entity look fields",
+      "exit_code": 1,
+      "input_sha256": "8e1a90de0ff1d001bcce036bf315749c638a4a1c7a23579db5b702525baf214f",
+      "no_listener": true,
+      "seconds": 0.015276
+    },
+    {
+      "case": "record-nonfinite-3-ff800000-decode",
+      "diagnostic": "bundle startup refused: invalid raw Entity look fields",
+      "exit_code": 1,
+      "input_sha256": "fd02db2a285063677b3d3b2345ebf08f5bf6c3dd1d4c36ba0e7f41606bb087da",
+      "no_listener": true,
+      "seconds": 0.015148
+    },
+    {
+      "case": "record-nonfinite-3-7fc00000-decode",
+      "diagnostic": "bundle startup refused: invalid raw Entity look fields",
+      "exit_code": 1,
+      "input_sha256": "67ed714a37568d3286bd1f7049ae5cd550d8543a9f98e3825d5e2edd773e0c8e",
+      "no_listener": true,
+      "seconds": 0.015068
+    },
+    {
+      "case": "record-nonfinite-3-ffc00000-decode",
+      "diagnostic": "bundle startup refused: invalid raw Entity look fields",
+      "exit_code": 1,
+      "input_sha256": "97d0c931f9fec3e8f02b62a361238274d380974129ab5f81f1d41b3c8a790b34",
+      "no_listener": true,
+      "seconds": 0.015441
+    },
+    {
+      "case": "record-nonfinite-3-7f800001-decode",
+      "diagnostic": "bundle startup refused: invalid raw Entity look fields",
+      "exit_code": 1,
+      "input_sha256": "96ad81ca742aaa2703cc190ce09b4e69445eac25913b77f6bfac497a6ab33706",
+      "no_listener": true,
+      "seconds": 0.016974
+    },
+    {
+      "case": "record-nonfinite-3-ff800001-decode",
+      "diagnostic": "bundle startup refused: invalid raw Entity look fields",
+      "exit_code": 1,
+      "input_sha256": "0ff2d210a884f57f894b272093d529698d1734224a6f2030e4c53da20fdb61dd",
+      "no_listener": true,
+      "seconds": 0.016418
+    },
+    {
+      "case": "record-nonfinite-3-7fffffff-decode",
+      "diagnostic": "bundle startup refused: invalid raw Entity look fields",
+      "exit_code": 1,
+      "input_sha256": "84b13ebf2b73d94464d65832fa1a6875b869b14f3e2eff1deb00cc810d6f8974",
+      "no_listener": true,
+      "seconds": 0.015683
+    },
+    {
+      "case": "record-nonfinite-3-ffffffff-decode",
+      "diagnostic": "bundle startup refused: invalid raw Entity look fields",
+      "exit_code": 1,
+      "input_sha256": "3fe50f79912406a6ed985793f8f0e6e7f48c4f78cd9b1422da2d3d65f99bd887",
+      "no_listener": true,
+      "seconds": 0.015391
+    },
+    {
+      "case": "record-projection-0-80000000-decode",
+      "diagnostic": "bundle startup refused: player view projection mismatch:0",
+      "exit_code": 1,
+      "input_sha256": "96abae40a2648a433b5e74d30a7fcde015dcc96ad0d99a99a82cc5866829e583",
+      "no_listener": true,
+      "seconds": 0.015518
+    },
+    {
+      "case": "record-projection-0-00000001-decode",
+      "diagnostic": "bundle startup refused: player view projection mismatch:0",
+      "exit_code": 1,
+      "input_sha256": "0de20fc9539c54b4b730c5d729a2759c422a3552884e87d6233930ee3e767b64",
+      "no_listener": true,
+      "seconds": 0.015231
+    },
+    {
+      "case": "record-projection-0-80000001-decode",
+      "diagnostic": "bundle startup refused: player view projection mismatch:0",
+      "exit_code": 1,
+      "input_sha256": "e20761d1908507e9817f54931c5d7fb93f762634bfa7d5d1118a27bb25533911",
+      "no_listener": true,
+      "seconds": 0.015301
+    },
+    {
+      "case": "record-projection-0-3dcccccd-decode",
+      "diagnostic": "bundle startup refused: player view projection mismatch:0",
+      "exit_code": 1,
+      "input_sha256": "eabb59c7cb40a99e78b13af17103ec3c077fc7f401e890b1fc1520260fe83ac9",
+      "no_listener": true,
+      "seconds": 0.015353
+    },
+    {
+      "case": "record-projection-1-80000000-decode",
+      "diagnostic": "bundle startup refused: player view projection mismatch:1",
+      "exit_code": 1,
+      "input_sha256": "8e26f568b976353a7a2cf4e8c6c6e65366bbcd3ebda0515e7c5e000687d666cf",
+      "no_listener": true,
+      "seconds": 0.0153
+    },
+    {
+      "case": "record-projection-1-00000001-decode",
+      "diagnostic": "bundle startup refused: player view projection mismatch:1",
+      "exit_code": 1,
+      "input_sha256": "1d939f0eca09686308541e39dbdb80f45fc48e83b7d7f0fb28f4d2929bff4bca",
+      "no_listener": true,
+      "seconds": 0.015195
+    },
+    {
+      "case": "record-projection-1-80000001-decode",
+      "diagnostic": "bundle startup refused: player view projection mismatch:1",
+      "exit_code": 1,
+      "input_sha256": "4d4f278a9851d17df6d178485c6146c52067d01c8ae681583e2abd2916348f4c",
+      "no_listener": true,
+      "seconds": 0.015377
+    },
+    {
+      "case": "record-projection-1-3dcccccd-decode",
+      "diagnostic": "bundle startup refused: player view projection mismatch:1",
+      "exit_code": 1,
+      "input_sha256": "7328d64de3a8da118b7e25f816795051c431ef7a5445fc1463d4b55a91522369",
+      "no_listener": true,
+      "seconds": 0.015234
+    },
+    {
+      "case": "record-projection-both-axis-priority",
+      "diagnostic": "bundle startup refused: player view projection mismatch:0",
+      "exit_code": 1,
+      "input_sha256": "d97efa033f6382c54ab6ac825653feba130e57274efbe9e30eba7ac11139f6d9",
+      "no_listener": true,
+      "seconds": 0.015356
+    },
+    {
+      "case": "record-current-pitch-invalid-42b40001",
+      "diagnostic": "bundle startup refused: invalid player motion snapshot",
+      "exit_code": 1,
+      "input_sha256": "ea7307aafd3bccb16aa1929f7ffdb5a17d4c66471971da2698dccfa1dd95531e",
+      "no_listener": true,
+      "seconds": 0.015489
+    },
+    {
+      "case": "record-truncate-0",
+      "diagnostic": "bundle startup refused: truncated NBT at byte 0",
+      "exit_code": 1,
+      "input_sha256": "b639088fd546f70b51f8876c0e788039c3ae2ccc5a88463cb56c75946c1902d0",
+      "no_listener": true,
+      "seconds": 0.014518
+    },
+    {
+      "case": "record-trailing-6e340b9c",
+      "diagnostic": "bundle startup refused: trailing NBT data at byte 610",
+      "exit_code": 1,
+      "input_sha256": "5e8cf3c3077a1e13d65273181c7454388daa22ea0c1f39575e4dcfbe99259675",
+      "no_listener": true,
+      "seconds": 0.015839
+    },
+    {
+      "case": "record-wrong-tag-format-1",
+      "diagnostic": "bundle startup refused: invalid player motion snapshot",
+      "exit_code": 1,
+      "input_sha256": "3401c4b45f7ab42a2264c7716477b9d4935cc53e00295a98b62ca20e3eef2563",
+      "no_listener": true,
+      "seconds": 0.015276
+    },
+    {
+      "case": "record-field-set-format-2",
+      "diagnostic": "bundle startup refused: invalid player motion snapshot",
+      "exit_code": 1,
+      "input_sha256": "75b28514f9b681d38493b8155dfbc71ffadbe9ed33c83db5d424fef4f1dd2eca",
+      "no_listener": true,
+      "seconds": 0.014852
+    },
+    {
+      "case": "record-root-name-''",
+      "diagnostic": "bundle startup refused: unexpected record root name",
+      "exit_code": 1,
+      "input_sha256": "4c7e03d627a4364b3ad8dbf9255a1b64c1e880bfad2f0aca561504b8dd8254e0",
+      "no_listener": true,
+      "seconds": 0.014841
+    },
+    {
+      "case": "record-root-type-0",
+      "diagnostic": "bundle startup refused: unexpected record root name",
+      "exit_code": 1,
+      "input_sha256": "dc9ef080402e996a1d7ffc88442637febdea276e24ad3df0ab1c23555d43edee",
+      "no_listener": true,
+      "seconds": 0.013389
+    },
+    {
+      "case": "record-look-size-0",
+      "diagnostic": "bundle startup refused: look must contain exactly four Float tags",
+      "exit_code": 1,
+      "input_sha256": "fee5aa803d46cf865c60252a43baf057a9e33e1e30400423d9f92b13bfd85180",
+      "no_listener": true,
+      "seconds": 0.015228
+    },
+    {
+      "case": "record-look-byte-list-elements-at-limit",
+      "diagnostic": "bundle startup refused: look must declare Float list element type",
+      "exit_code": 1,
+      "input_sha256": "d421fb3ca88391013e6e5393931a2632a66cc49f3fb94e2900e96556a5676f55",
+      "no_listener": true,
+      "seconds": 0.024773
+    },
+    {
+      "case": "record-container-depth-overflow",
+      "diagnostic": "bundle startup refused: NBT nesting limit exceeded",
+      "exit_code": 1,
+      "input_sha256": "b9b665b05e65378375fc0eaa9fe36cf9511bd598d48f17d37dec38b95bdbbabd",
+      "no_listener": true,
+      "seconds": 0.014926
+    },
+    {
+      "case": "record-count-bomb-motion-4294967295",
+      "diagnostic": "bundle startup refused: negative or excessive NBT array length",
+      "exit_code": 1,
+      "input_sha256": "f22c07c301abebe725ba32d0ae4c1a7f11cbd32388b5563b853278d0477c5241",
+      "no_listener": true,
+      "seconds": 0.013235
+    },
+    {
+      "case": "record-outer-byte-cap-8191",
+      "diagnostic": "bundle startup refused: invalid player motion snapshot",
+      "exit_code": 1,
+      "input_sha256": "c9ecc7847c62d55f14dcbf8f7414bdd195f9c56966056d87510ce3f6ebb95cf0",
+      "no_listener": true,
+      "seconds": 0.032553
+    },
+    {
+      "case": "record-seeded-mutation-0",
+      "diagnostic": "bundle startup refused: invalid player motion snapshot",
+      "exit_code": 1,
+      "input_sha256": "10926ce2ecdcd6d281e3e9a1efb142c2f8e3faedf390b9e787cc31fb8bd046eb",
+      "no_listener": true,
+      "seconds": 0.015703
+    },
+    {
+      "case": "extension-byte-limit-8192",
+      "diagnostic": "bundle startup refused: trailing NBT data at byte 1",
+      "exit_code": 1,
+      "input_sha256": "3d3a045f26781cab68682b649d5a3ff1303e6ee2f014cd44c4463888b5cfc725",
+      "no_listener": true,
+      "seconds": 0.032096
+    },
+    {
+      "case": "extension-byte-limit-8193",
+      "diagnostic": "bundle startup refused: negative or excessive NBT array length",
+      "exit_code": 1,
+      "input_sha256": "8c47ba6c58a89a85868450ac49264c76e8840c53b459d004faf0caa9fbf8b62a",
+      "no_listener": true,
+      "seconds": 0.019345
+    },
+    {
+      "case": "bundle-truncation-0",
+      "diagnostic": "bundle startup refused: truncated NBT at byte 0",
+      "exit_code": 1,
+      "input_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "no_listener": true,
+      "seconds": 0.012843
+    },
+    {
+      "case": "bundle-truncation-1",
+      "diagnostic": "bundle startup refused: truncated NBT at byte 1",
+      "exit_code": 1,
+      "input_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "no_listener": true,
+      "seconds": 0.012374
+    },
+    {
+      "case": "bundle-truncation-2",
+      "diagnostic": "bundle startup refused: truncated NBT at byte 2",
+      "exit_code": 1,
+      "input_sha256": "102b51b9765a56a3e899f7cf0ee38e5251f9c503b357b330a49183eb7b155604",
+      "no_listener": true,
+      "seconds": 0.012504
+    },
+    {
+      "case": "bundle-truncation-8",
+      "diagnostic": "bundle startup refused: truncated modified UTF-8 at byte 8",
+      "exit_code": 1,
+      "input_sha256": "6d7a6367c236d1e457dc40880cf2661424637cc82e89efc4b11ce3fd72ddf561",
+      "no_listener": true,
+      "seconds": 0.013023
+    },
+    {
+      "case": "bundle-truncation-538",
+      "diagnostic": "bundle startup refused: truncated NBT array at byte 538",
+      "exit_code": 1,
+      "input_sha256": "5ee0a660625a3b383e1797fb71e66349eefba7f521b28072cdcbf276c26781f9",
+      "no_listener": true,
+      "seconds": 0.01311
+    },
+    {
+      "case": "bundle-truncation-1074",
+      "diagnostic": "bundle startup refused: truncated NBT at byte 1074",
+      "exit_code": 1,
+      "input_sha256": "49d47685dc27a0ec1a3f962bae5ad912638e2339c119fdbafb6dc192a63a948e",
+      "no_listener": true,
+      "seconds": 0.014028
+    },
+    {
+      "case": "bundle-truncation-1075",
+      "diagnostic": "bundle startup refused: truncated NBT at byte 1075",
+      "exit_code": 1,
+      "input_sha256": "a2760994d27710e2f121f8ff2f734b41accabe92cdb00141e9e34493b813454f",
+      "no_listener": true,
+      "seconds": 0.013701
+    },
+    {
+      "case": "bundle-trailing",
+      "diagnostic": "bundle startup refused: trailing NBT data at byte 1076",
+      "exit_code": 1,
+      "input_sha256": "93bbf720f0623fd4ca02802631c6d066c24fa7f340529f59bb9b96a100dea1bb",
+      "no_listener": true,
+      "seconds": 0.013509
+    },
+    {
+      "case": "post-codec-palette-failure",
+      "diagnostic": "player session startup refused: unknown-block:minecraft:dirt",
+      "exit_code": 1,
+      "input_sha256": "f4c5b724132277bb546cdb891f52f72aab5668671938043d4af1e2a6cba0b62d",
+      "no_listener": true,
+      "seconds": 0.015849
+    },
+    {
+      "case": "missing-policy-default-refuse",
+      "diagnostic": "bundle startup refused: missing file requires MC_WORLD_MISSING=create",
+      "exit_code": 1,
+      "input_sha256": null,
+      "no_listener": true,
+      "seconds": 0.012637
+    },
+    {
+      "case": "invalid-missing-policy",
+      "diagnostic": "MC_WORLD_MISSING must be create or refuse",
+      "exit_code": 1,
+      "input_sha256": null,
+      "no_listener": true,
+      "seconds": 0.012515
+    },
+    {
+      "case": "atomic-publisher-held-lease-created",
+      "diagnostic": "bundle startup refused: lease acquisition failed: 35: Resource temporarily unavailable",
+      "exit_code": 1,
+      "input_sha256": "0eb574065158e3a38db1d3d6420088536074bd6835ef529934fd7e9bc35c61d3",
+      "no_listener": true,
+      "seconds": 0.012196
+    },
+    {
+      "case": "atomic-publisher-held-lease-written",
+      "diagnostic": "bundle startup refused: lease acquisition failed: 35: Resource temporarily unavailable",
+      "exit_code": 1,
+      "input_sha256": "0eb574065158e3a38db1d3d6420088536074bd6835ef529934fd7e9bc35c61d3",
+      "no_listener": true,
+      "seconds": 0.012737
+    },
+    {
+      "case": "atomic-publisher-held-lease-synced",
+      "diagnostic": "bundle startup refused: lease acquisition failed: 35: Resource temporarily unavailable",
+      "exit_code": 1,
+      "input_sha256": "0eb574065158e3a38db1d3d6420088536074bd6835ef529934fd7e9bc35c61d3",
+      "no_listener": true,
+      "seconds": 0.012433
+    },
+    {
+      "case": "atomic-publisher-held-lease-published",
+      "diagnostic": "bundle startup refused: lease acquisition failed: 35: Resource temporarily unavailable",
+      "exit_code": 1,
+      "input_sha256": "1da639a8cbcce23e941b33c6e5706d311128b2a3500364417cd9e53fa5400715",
+      "no_listener": true,
+      "seconds": 0.012702
+    },
+    {
+      "case": "atomic-publisher-held-lease-directory_synced",
+      "diagnostic": "bundle startup refused: lease acquisition failed: 35: Resource temporarily unavailable",
+      "exit_code": 1,
+      "input_sha256": "1da639a8cbcce23e941b33c6e5706d311128b2a3500364417cd9e53fa5400715",
+      "no_listener": true,
+      "seconds": 0.012251
+    }
+  ],
+  "status": "passed"
+}

@@ -55,6 +55,7 @@ remains open.
 | Shared player runtime | Core edits precede each held-input plain Player aiStep; the sole body, support, metadata and controller remain authoritative. Seventy-three actual Java player/support comparisons, 17 native launches and 244 harness operations pass, including bulk/per-tick ordering, pause/query/render retention, packet rollback, three physics rejection/recovery phases and raw record restoration. Whole-runtime kernel export timed out at 600.083 s without a verdict. LocalPlayer and full tick phases remain separate. |
 | Neutral player codec | Strict bounded custom NBT preserves body, aiStep fields, support and view raw bits. 920 exact encodes, 997 exact decodes and 1,308 rejection/recovery cases pass; seven production/harness laws pass kernel. Atomic player-bundle integration and vanilla player.dat remain open. |
 | Motion/look save record | Bounded custom NBT pairs the neutral snapshot with all four raw degree fields and checks exact RN32 degree-to-radian agreement. 5,734 cases pass twice, with 3,529 rejection/recovery pairs and twelve rejected build-receipt corruptions. Full imported source kernel passes two structural laws. Atomic runtime bundle integration remains unverified. |
+| Saved player session | The sole runtime plus affine lease/save shell transfers Core and the checked player record through atomic extension publication. Two native runs each pass 13 exact bundle saves, 119 startup refusals and 99 real MCP exchanges, with queued-edit/Java physics, transient retention/reset, leases and recovery. Five separate real leased primitive publication-stage SIGKILL lanes recover complete old/new pairs. Full imported kernel stops at inherited unsafe/foreign boundaries; vanilla saves and complete player state remain open. |
 | Owned client bridge | One Engine serves checked collision queries, view changes and success-only revision/region/palette snapshot caching. 124 actual Java collider lists and 87 untouched Entity.move comparisons plus 14 integration groups pass. The palette is air/stone/dirt/oak planks; missing sections and unsupported states reject explicitly. |
 | Client texture/frame instrument | Pure ZIP/DEFLATE/PNG loads official textures; all 1,300 block PNGs match an independent decoder. A bounded cube renderer and hidden native client show shared TCP edits in independently checked frame pixels. Discrete controls are verification actions; vanilla models, lighting, UI and player controls remain open. |
 | Save-owning client instrument | One leased save-owning engine serves views, controls and TCP. Thirty-six edits/save/restart preserve world clock/state and reproduce the edited frame; 49,152 independent pixel comparisons pass. The view/body and full player/mod state are not yet persisted. |
@@ -83,8 +84,9 @@ Precise camera-relative snapshots and the save-owning client instrument are
 checked. The shared player runtime and its atomic frame-packet input/restore boundaries
 pass ordinary ownership checks and the bounded native Java-reference integration;
 the whole-runtime independent kernel remains unverified after a bounded export timeout.
-The new save-shell/bundle transfer and stepping dispatcher also pass ordinary
-checks; their native persistence/API composition is pending.
+The save-shell/bundle transfer and stepping dispatcher also pass their bounded
+native persistence/API/restart composition; complete player state and vanilla
+save compatibility remain open.
 The LocalPlayer input override is separately checked against actual receivers;
 its owned movement integration is in progress and must avoid a second 0.98 decay. The typed presenter now also
 passes ownership/type checking up to its explicit native/unsafe boundaries;
