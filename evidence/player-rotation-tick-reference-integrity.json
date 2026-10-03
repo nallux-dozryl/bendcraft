@@ -1,0 +1,43 @@
+{
+  "failure_injections": [
+    {
+      "injection": "client",
+      "reason": "Pinned runtime/library provenance mismatch",
+      "rejected": true
+    },
+    {
+      "injection": "runtime",
+      "reason": "Pinned runtime/library provenance mismatch",
+      "rejected": true
+    },
+    {
+      "injection": "library",
+      "reason": "Pinned runtime/library provenance mismatch",
+      "rejected": true
+    },
+    {
+      "injection": "class",
+      "reason": "Pinned class/method provenance mismatch",
+      "rejected": true
+    },
+    {
+      "injection": "source",
+      "reason": "Receiver launcher changed",
+      "rejected": true
+    },
+    {
+      "injection": "observation",
+      "reason": "Actual fixture digest mismatch",
+      "rejected": true
+    }
+  ],
+  "fixture_count": 229,
+  "reference": {
+    "bytes": 274992,
+    "file": "player_rotation_tick.json",
+    "sha1": "0eed0f15cf9acd87de41e3316bde41687cf72dec",
+    "sha256": "f6ba57815820b5c21cf109d3b3df8c98d448fe511153f9431031adad4c65250b"
+  },
+  "scope": "Stored reference/provenance integrity; no new Java execution",
+  "status": "passed"
+}

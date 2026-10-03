@@ -1,0 +1,50 @@
+{
+  "case_count": 594,
+  "expected_cases_sha256": "3a087f97b56ef04d67e856f16460e9c416dd8804ba082085f50b3f1657c7e4af",
+  "harness": {
+    "bytes": 9055,
+    "file": "player_rotation_tick.bend",
+    "sha1": "906770f9a48397930fef49e86dc74c66b1407d8b",
+    "sha256": "437154b7ef7f0a75b8750e3faf12544bc5d9e696218aca51ca5b62ccb3ce0e2c"
+  },
+  "historical_generation": "evidence/player-rotation-tick-bounded-generation.json",
+  "kernel_evidence": {
+    "bytes": 2768,
+    "file": "player-rotation-tick-kernel.json",
+    "sha1": "aa806dc8c1c0014e35d9e87eab9150161edd11b2",
+    "sha256": "94f3dfbaadd29e42cbc8fcff65c743a681f5435f496cca2c0a21158772adc8a2"
+  },
+  "native_evidence": {
+    "bytes": 40833,
+    "file": "player-rotation-tick-native.json",
+    "sha1": "c816b95bfc7d92408ec7827d7b500951d2484c19",
+    "sha256": "3e6c2768f640ff7c48a6d00a7b9255af13cbf8fb7f8b29a33be7a0d02862b8bf"
+  },
+  "note": "The frozen prepared source/harness/probe/reference and594 cases subsequently passed native comparison twice and full imported source/harness kernel checks; no generation change during execution.",
+  "probe": {
+    "bytes": 19323,
+    "file": "reference_player_rotation_tick_probe.py",
+    "sha1": "4aa32caf68b6492a050ff92703f54ee496e53e15",
+    "sha256": "c147da5a2dfa72de2b14090092d6bb901d0d5cd986683125619843dcdd4dd563"
+  },
+  "reference": {
+    "bytes": 274992,
+    "file": "player_rotation_tick.json",
+    "sha1": "0eed0f15cf9acd87de41e3316bde41687cf72dec",
+    "sha256": "f6ba57815820b5c21cf109d3b3df8c98d448fe511153f9431031adad4c65250b"
+  },
+  "runner": {
+    "bytes": 16761,
+    "file": "test_player_rotation_tick.py",
+    "sha1": "dc60a40d66c0ef18fddd5d278bd4652641a35e30",
+    "sha256": "a687308f773f35ab172ccfe8c452bc8848c23210dd72b1acbc5d338e3f1e239e"
+  },
+  "schema": 1,
+  "source": {
+    "bytes": 5811,
+    "file": "player_rotation_tick.bend",
+    "sha1": "58c8904182b8f4cb34fb5d83e16ce4fad5e227e5",
+    "sha256": "63ae51ac3d0f579061d21a90af4cb80ac782c56b56b7c7d867c06e309d90973b"
+  },
+  "status": "prepared_then_verified_current_generation"
+}

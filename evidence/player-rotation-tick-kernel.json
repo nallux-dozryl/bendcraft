@@ -1,0 +1,78 @@
+{
+  "attempts": [
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_rotation_tick.bend",
+        "--verdict"
+      ],
+      "exit_code": 0,
+      "seconds": 0.337204,
+      "status": "passed",
+      "stderr": "",
+      "stdout": "ALL PROOFS CHECK\n"
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_rotation_tick.bend",
+        "--verdict"
+      ],
+      "exit_code": 0,
+      "seconds": 0.534599,
+      "status": "passed",
+      "stderr": "",
+      "stdout": "ALL PROOFS CHECK\n"
+    }
+  ],
+  "compiler": {
+    "bytes": 63885392,
+    "file": "bend",
+    "sha1": "ddce6e432357be618d905b19c0f79abe3d28c388",
+    "sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e"
+  },
+  "harness": {
+    "bytes": 9055,
+    "file": "player_rotation_tick.bend",
+    "sha1": "906770f9a48397930fef49e86dc74c66b1407d8b",
+    "sha256": "437154b7ef7f0a75b8750e3faf12544bc5d9e696218aca51ca5b62ccb3ce0e2c"
+  },
+  "project_bend_dependencies": [
+    {
+      "bytes": 33288,
+      "kind": "bend",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/f64.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/f64.bend",
+      "sha256": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7"
+    },
+    {
+      "bytes": 5891,
+      "kind": "bend",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/../src/player_look.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_look.bend",
+      "sha256": "35ec863e078e46f2c2502b975f3e9f259114aec7baac614c68ba6e46773260ca"
+    },
+    {
+      "bytes": 5811,
+      "kind": "bend",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/../src/player_rotation_tick.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_rotation_tick.bend",
+      "sha256": "63ae51ac3d0f579061d21a90af4cb80ac782c56b56b7c7d867c06e309d90973b"
+    },
+    {
+      "bytes": 9055,
+      "kind": "bend",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_rotation_tick.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_rotation_tick.bend",
+      "sha256": "437154b7ef7f0a75b8750e3faf12544bc5d9e696218aca51ca5b62ccb3ce0e2c"
+    }
+  ],
+  "scope": "Full imported production source and eleven stated helper laws; not universal Minecraft tick parity",
+  "source": {
+    "bytes": 5811,
+    "file": "player_rotation_tick.bend",
+    "sha1": "58c8904182b8f4cb34fb5d83e16ce4fad5e227e5",
+    "sha256": "63ae51ac3d0f579061d21a90af4cb80ac782c56b56b7c7d867c06e309d90973b"
+  },
+  "status": "passed"
+}
