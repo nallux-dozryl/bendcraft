@@ -1,0 +1,119 @@
+{
+  "authority": "Actual named official Java26.3 methods with reflected raw state after every operation; Python selects inputs only",
+  "cases_sha256": "0b19924a7ccf2dd40b768b2aff3baf938b33eb8e02d5985acc71f12d068ba65a",
+  "expectation_policy": "Java outputs/state are unchanged for supported successful operations. Invalid Java bounds map to checked InvalidBound. Fuel insufficiency and unsupported Xoroshiro string hashing use explicit Bend rollback/error extensions; original Java bounded outputs/states and unsupported hash child states are retained separately.",
+  "nested_server_sha256": "a362163eec5d1612d520772bc16e5b39c09e3b234fdc045f56bf544284ee8ae6",
+  "pin": "26.3",
+  "probe": {
+    "compile_command": [
+      "/Users/chuah/Library/Application Support/minecraft/runtime/java-runtime-epsilon/mac-os-arm64/java-runtime-epsilon/jre.bundle/Contents/Home/bin/javac",
+      "-cp",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/versions/26.3/server-26.3.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/at/yawk/lz4/lz4-java/1.10.1/lz4-java-1.10.1.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/azure/azure-json/1.4.0/azure-json-1.4.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/github/oshi/oshi-core/6.9.0/oshi-core-6.9.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/google/code/gson/gson/2.14.0/gson-2.14.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/google/guava/failureaccess/1.0.3/failureaccess-1.0.3.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/google/guava/guava/33.6.0-jre/guava-33.6.0-jre.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/microsoft/azure/msal4j/1.24.1/msal4j-1.24.1.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/authlib/10.0.77/authlib-10.0.77.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/brigadier/1.3.11/brigadier-1.3.11.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/datafixerupper/10.0.21/datafixerupper-10.0.21.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/jtracy/1.14.38/jtracy-1.14.38.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/logging/1.7.12/logging-1.7.12.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/commons-io/commons-io/2.20.0/commons-io-2.20.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-buffer/4.2.16.Final/netty-buffer-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-codec-base/4.2.16.Final/netty-codec-base-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-codec-compression/4.2.16.Final/netty-codec-compression-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-codec-http/4.2.16.Final/netty-codec-http-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-common/4.2.16.Final/netty-common-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-handler/4.2.16.Final/netty-handler-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-resolver/4.2.16.Final/netty-resolver-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport/4.2.16.Final/netty-transport-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-classes-epoll/4.2.16.Final/netty-transport-classes-epoll-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-classes-kqueue/4.2.16.Final/netty-transport-classes-kqueue-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-epoll/4.2.16.Final/netty-transport-native-epoll-4.2.16.Final-linux-x86_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-epoll/4.2.16.Final/netty-transport-native-epoll-4.2.16.Final-linux-aarch_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-kqueue/4.2.16.Final/netty-transport-native-kqueue-4.2.16.Final-osx-x86_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-kqueue/4.2.16.Final/netty-transport-native-kqueue-4.2.16.Final-osx-aarch_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-unix-common/4.2.16.Final/netty-transport-native-unix-common-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/it/unimi/dsi/fastutil/8.5.18/fastutil-8.5.18.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/net/java/dev/jna/jna/5.17.0/jna-5.17.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/net/java/dev/jna/jna-platform/5.17.0/jna-platform-5.17.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/commons/commons-lang3/3.20.0/commons-lang3-3.20.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/logging/log4j/log4j-api/2.26.0/log4j-api-2.26.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/logging/log4j/log4j-core/2.26.0/log4j-core-2.26.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/logging/log4j/log4j-slf4j2-impl/2.26.0/log4j-slf4j2-impl-2.26.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/joml/joml/1.10.9/joml-1.10.9.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/slf4j/slf4j-api/2.0.17/slf4j-api-2.0.17.jar",
+      "-d",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/random-reference/classes",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/random-reference/ReferenceRandomProbe.java"
+    ],
+    "input_sha256": "a2bd7b7553fc45c59be51b7fe3d545c0bff3b80c8eed4064f58694a51df31cb8",
+    "java_source_sha256": "7306071077f2a1d5fe67e4d9eb4033013f3e260293dd6ba4ab20953c36fb49f2",
+    "observation_sha256": "8381af24c90e919df173b95868ccfb075e6be05d36eadebdfbaed158034d0b29",
+    "run_command": [
+      "/Users/chuah/Library/Application Support/minecraft/runtime/java-runtime-epsilon/mac-os-arm64/java-runtime-epsilon/jre.bundle/Contents/Home/bin/java",
+      "-cp",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/random-reference/classes:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/versions/26.3/server-26.3.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/at/yawk/lz4/lz4-java/1.10.1/lz4-java-1.10.1.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/azure/azure-json/1.4.0/azure-json-1.4.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/github/oshi/oshi-core/6.9.0/oshi-core-6.9.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/google/code/gson/gson/2.14.0/gson-2.14.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/google/guava/failureaccess/1.0.3/failureaccess-1.0.3.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/google/guava/guava/33.6.0-jre/guava-33.6.0-jre.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/microsoft/azure/msal4j/1.24.1/msal4j-1.24.1.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/authlib/10.0.77/authlib-10.0.77.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/brigadier/1.3.11/brigadier-1.3.11.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/datafixerupper/10.0.21/datafixerupper-10.0.21.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/jtracy/1.14.38/jtracy-1.14.38.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/com/mojang/logging/1.7.12/logging-1.7.12.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/commons-io/commons-io/2.20.0/commons-io-2.20.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-buffer/4.2.16.Final/netty-buffer-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-codec-base/4.2.16.Final/netty-codec-base-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-codec-compression/4.2.16.Final/netty-codec-compression-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-codec-http/4.2.16.Final/netty-codec-http-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-common/4.2.16.Final/netty-common-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-handler/4.2.16.Final/netty-handler-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-resolver/4.2.16.Final/netty-resolver-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport/4.2.16.Final/netty-transport-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-classes-epoll/4.2.16.Final/netty-transport-classes-epoll-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-classes-kqueue/4.2.16.Final/netty-transport-classes-kqueue-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-epoll/4.2.16.Final/netty-transport-native-epoll-4.2.16.Final-linux-x86_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-epoll/4.2.16.Final/netty-transport-native-epoll-4.2.16.Final-linux-aarch_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-kqueue/4.2.16.Final/netty-transport-native-kqueue-4.2.16.Final-osx-x86_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-kqueue/4.2.16.Final/netty-transport-native-kqueue-4.2.16.Final-osx-aarch_64.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/io/netty/netty-transport-native-unix-common/4.2.16.Final/netty-transport-native-unix-common-4.2.16.Final.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/it/unimi/dsi/fastutil/8.5.18/fastutil-8.5.18.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/net/java/dev/jna/jna/5.17.0/jna-5.17.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/net/java/dev/jna/jna-platform/5.17.0/jna-platform-5.17.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/commons/commons-lang3/3.20.0/commons-lang3-3.20.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/logging/log4j/log4j-api/2.26.0/log4j-api-2.26.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/logging/log4j/log4j-core/2.26.0/log4j-core-2.26.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/apache/logging/log4j/log4j-slf4j2-impl/2.26.0/log4j-slf4j2-impl-2.26.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/joml/joml/1.10.9/joml-1.10.9.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar:/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cache/libraries/org/slf4j/slf4j-api/2.0.17/slf4j-api-2.0.17.jar",
+      "ReferenceRandomProbe",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/random-reference/input.jsonl",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/random-reference/observed.jsonl"
+    ]
+  },
+  "random_input_cases": 1000,
+  "runtime_executable": {
+    "bytes": 84720,
+    "file": "java",
+    "sha1": "5af4a90be54ddeec03db3700e6989594c9438952",
+    "sha256": "e0879c0df70d880d66904064d1b388b08aeee0958a047f37601435b28db849a3"
+  },
+  "runtime_version": [
+    "openjdk version \"25.0.1\" 2025-10-21 LTS",
+    "OpenJDK Runtime Environment Microsoft-12574220 (build 25.0.1+8-LTS)",
+    "OpenJDK 64-Bit Server VM Microsoft-12574220 (build 25.0.1+8-LTS, mixed mode)"
+  ],
+  "schema": 1,
+  "seed": 26364048,
+  "source_inventory": {
+    "classes": {
+      "net.minecraft.util.Mth": {
+        "class_entry": "net/minecraft/util/Mth.class",
+        "class_sha256": "38d9b35bc973da00a3d550173370c62c88ed62f2890b17d760e65173469e272d",
+        "javap_sha256": "de89ed523f7c3414a6c99d554926f639f243c650a66dc4d87d9e6b72a525fb84"
+      },
+      "net.minecraft.util.RandomSource": {
+        "class_entry": "net/minecraft/util/RandomSource.class",
+        "class_sha256": "91dd6dc6af1de4e1b320cb0da9ac4923c92b533deccda17a784341106bf0d19e",
+        "javap_sha256": "f992f5d77e25a543b8a11356dacc65da61995b85038c2adc3827806af2fd9c5b"
+      },
+      "net.minecraft.world.level.levelgen.BitRandomSource": {
+        "class_entry": "net/minecraft/world/level/levelgen/BitRandomSource.class",
+        "class_sha256": "b23f553e495a8e525ee5e24b8a4980224c0d2b8e34bd8115223960cee0f73de5",
+        "javap_sha256": "e4ff884537fb7a25ed79797d97f72e2d148971e882d1238f559b683c0b1de453"
+      },
+      "net.minecraft.world.level.levelgen.LegacyRandomSource": {
+        "class_entry": "net/minecraft/world/level/levelgen/LegacyRandomSource.class",
+        "class_sha256": "a54d9c4c06cd9a6d11bf93856fbeff594903c0b70baea933b883e6c5122746a2",
+        "javap_sha256": "70531bd551d624aa0d6e03095a0bc4fe7ef8392e9d905a6b0c24498127e7eac2"
+      },
+      "net.minecraft.world.level.levelgen.LegacyRandomSource$LegacyPositionalRandomFactory": {
+        "class_entry": "net/minecraft/world/level/levelgen/LegacyRandomSource$LegacyPositionalRandomFactory.class",
+        "class_sha256": "5f8ab7de6de35d895d4f321efe6a230c6a586ba7b051de4196230d11c9d1253b",
+        "javap_sha256": "400ff75b1dfbcd54eb5d013af1cb78068d6bffb7f95cdba522c3841db43d47ab"
+      },
+      "net.minecraft.world.level.levelgen.PositionalRandomFactory": {
+        "class_entry": "net/minecraft/world/level/levelgen/PositionalRandomFactory.class",
+        "class_sha256": "c39a79b5220bb0f92d07bf434d4ba9c14aa7a16468a84c716ed30e42ff3ec94e",
+        "javap_sha256": "e29d50f15dc9afd8f381e84933cb1f0c4360fba09b55ecd31af893c6ea8af3f3"
+      },
+      "net.minecraft.world.level.levelgen.RandomSupport": {
+        "class_entry": "net/minecraft/world/level/levelgen/RandomSupport.class",
+        "class_sha256": "d064629bb0324d0241768ede38bf8d1406f113c2ad3c78bacb201d4ef3794b2a",
+        "javap_sha256": "e33834fb71cc9860dc145a6f667903228b7e2ed7e9a330468699187045044017"
+      },
+      "net.minecraft.world.level.levelgen.RandomSupport$Seed128bit": {
+        "class_entry": "net/minecraft/world/level/levelgen/RandomSupport$Seed128bit.class",
+        "class_sha256": "da6d982bb241cca5610ae1d9877d0addde95eccbf218c4be2041c4805dc338b5",
+        "javap_sha256": "9de4393f233c497767e51c215f965d3bd5cd38dafc58f7ef5f52fdc0f3bb6c04"
+      },
+      "net.minecraft.world.level.levelgen.Xoroshiro128PlusPlus": {
+        "class_entry": "net/minecraft/world/level/levelgen/Xoroshiro128PlusPlus.class",
+        "class_sha256": "70d31ed88a59ea6a529e60d63a7c32db23ee1e94ae259b6a8ecf9bce78ba57a3",
+        "javap_sha256": "d57a5c4e960ef29b1258189d1ec0ee882e0df1cad9461f71ce7f4f7c108af6ff"
+      },
+      "net.minecraft.world.level.levelgen.XoroshiroRandomSource": {
+        "class_entry": "net/minecraft/world/level/levelgen/XoroshiroRandomSource.class",
+        "class_sha256": "43c6e33b55c91bd4576d2cf04ba7e5e7d2561c5918e1b3549485639d17906447",
+        "javap_sha256": "731cc2597d45635ced7429a2785e8abdc00f621d386e9ec9fcb6faadc9057db3"
+      },
+      "net.minecraft.world.level.levelgen.XoroshiroRandomSource$XoroshiroPositionalRandomFactory": {
+        "class_entry": "net/minecraft/world/level/levelgen/XoroshiroRandomSource$XoroshiroPositionalRandomFactory.class",
+        "class_sha256": "47c6c732cb74240d9f5e6e1ff772f2f4445c238ee2fd98d01dab9572db54f898",
+        "javap_sha256": "335942f8ca82ab8704cc510c086f9247abac3daf29234ee701cf4e67810a3d3b"
+      }
+    },
+    "complete_javap_sha256": "3f7fdb5d3cacefda82f11dcc1ec953683c559cd77851676912342d2ace1f8e00"
+  },
+  "summary": {
+    "bounded_draw_histogram": {
+      "0": 1459,
+      "1": 6705,
+      "2": 144,
+      "3": 40,
+      "4": 21,
+      "5": 5,
+      "6": 3,
+      "7": 1,
+      "8": 2,
+      "13": 1
+    },
+    "cases": 1596,
+    "observations": 38714,
+    "unsupported_xoroshiro_hash_observations": 24
+  }
+}

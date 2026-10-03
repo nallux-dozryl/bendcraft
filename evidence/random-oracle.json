@@ -1,0 +1,159 @@
+{
+  "bend_extension_rollback_observations": 1186,
+  "checked_errors": {
+    "fuel": 1162,
+    "invalid": 1459,
+    "unsupported": 24
+  },
+  "commands": [
+    [
+      "python3",
+      "tools/test_random.py"
+    ],
+    [
+      "/Users/chuah/.bend/bin/bend",
+      "src/random.bend",
+      "--verdict"
+    ],
+    [
+      "/Users/chuah/.bend/bin/bend",
+      "tests/random.bend",
+      "-o",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/random_test"
+    ],
+    [
+      "/Users/chuah/.bend/bin/bend",
+      "tests/random.bend",
+      "-o",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/random_test.c"
+    ]
+  ],
+  "direct_java_output_state_or_mapped_error_observations": 37528,
+  "emitted_c": {
+    "bytes": 390545,
+    "file": "random_test.c",
+    "sha1": "c7ade27bbe533dbfbfdbbaf5a601e399f72f4424",
+    "sha256": "d74abb6fece1e6a22ec2a0c0afa414700968a84f26a45e5502beb93d1a7da788"
+  },
+  "fixture_batch_size": 25,
+  "java_bounded_draw_histogram": {
+    "0": 1459,
+    "1": 6705,
+    "2": 144,
+    "3": 40,
+    "4": 21,
+    "5": 5,
+    "6": 3,
+    "7": 1,
+    "8": 2,
+    "13": 1
+  },
+  "kernel_verdict": "ALL PROOFS CHECK",
+  "native_binary_sha256": "1df12de20081c969d67c282333ebff4c18bba36efde9a0b2227f555e8436fdce",
+  "native_command_prefix": [
+    "build/random_test",
+    "--gpu",
+    "off",
+    "--threads",
+    "1"
+  ],
+  "native_observations": 38714,
+  "native_operations": 37118,
+  "native_process_invocations": 64,
+  "operation_counts": {
+    "b": 2906,
+    "c": 2598,
+    "d": 3404,
+    "f": 2943,
+    "h": 48,
+    "i": 3546,
+    "k": 2498,
+    "l": 3283,
+    "n": 8381,
+    "p": 2560,
+    "s": 2490,
+    "t": 2461
+  },
+  "pin": "26.3",
+  "proof_scope": "Typing/termination and seven actual state-boundary/advancement laws; not complete RNG/bit-arithmetic equivalence theorem",
+  "reference_cases": 1596,
+  "reference_cases_sha256": "0b19924a7ccf2dd40b768b2aff3baf938b33eb8e02d5985acc71f12d068ba65a",
+  "reference_nested_server_sha256": "a362163eec5d1612d520772bc16e5b39c09e3b234fdc045f56bf544284ee8ae6",
+  "rejection_fuel": "Each candidate consumes one fuel unit; any error returns the original source. Successful results match official Java output and exact advancement.",
+  "result": "pass",
+  "schema": 1,
+  "source_inventory": {
+    "classes": {
+      "net.minecraft.util.Mth": {
+        "class_entry": "net/minecraft/util/Mth.class",
+        "class_sha256": "38d9b35bc973da00a3d550173370c62c88ed62f2890b17d760e65173469e272d",
+        "javap_sha256": "de89ed523f7c3414a6c99d554926f639f243c650a66dc4d87d9e6b72a525fb84"
+      },
+      "net.minecraft.util.RandomSource": {
+        "class_entry": "net/minecraft/util/RandomSource.class",
+        "class_sha256": "91dd6dc6af1de4e1b320cb0da9ac4923c92b533deccda17a784341106bf0d19e",
+        "javap_sha256": "f992f5d77e25a543b8a11356dacc65da61995b85038c2adc3827806af2fd9c5b"
+      },
+      "net.minecraft.world.level.levelgen.BitRandomSource": {
+        "class_entry": "net/minecraft/world/level/levelgen/BitRandomSource.class",
+        "class_sha256": "b23f553e495a8e525ee5e24b8a4980224c0d2b8e34bd8115223960cee0f73de5",
+        "javap_sha256": "e4ff884537fb7a25ed79797d97f72e2d148971e882d1238f559b683c0b1de453"
+      },
+      "net.minecraft.world.level.levelgen.LegacyRandomSource": {
+        "class_entry": "net/minecraft/world/level/levelgen/LegacyRandomSource.class",
+        "class_sha256": "a54d9c4c06cd9a6d11bf93856fbeff594903c0b70baea933b883e6c5122746a2",
+        "javap_sha256": "70531bd551d624aa0d6e03095a0bc4fe7ef8392e9d905a6b0c24498127e7eac2"
+      },
+      "net.minecraft.world.level.levelgen.LegacyRandomSource$LegacyPositionalRandomFactory": {
+        "class_entry": "net/minecraft/world/level/levelgen/LegacyRandomSource$LegacyPositionalRandomFactory.class",
+        "class_sha256": "5f8ab7de6de35d895d4f321efe6a230c6a586ba7b051de4196230d11c9d1253b",
+        "javap_sha256": "400ff75b1dfbcd54eb5d013af1cb78068d6bffb7f95cdba522c3841db43d47ab"
+      },
+      "net.minecraft.world.level.levelgen.PositionalRandomFactory": {
+        "class_entry": "net/minecraft/world/level/levelgen/PositionalRandomFactory.class",
+        "class_sha256": "c39a79b5220bb0f92d07bf434d4ba9c14aa7a16468a84c716ed30e42ff3ec94e",
+        "javap_sha256": "e29d50f15dc9afd8f381e84933cb1f0c4360fba09b55ecd31af893c6ea8af3f3"
+      },
+      "net.minecraft.world.level.levelgen.RandomSupport": {
+        "class_entry": "net/minecraft/world/level/levelgen/RandomSupport.class",
+        "class_sha256": "d064629bb0324d0241768ede38bf8d1406f113c2ad3c78bacb201d4ef3794b2a",
+        "javap_sha256": "e33834fb71cc9860dc145a6f667903228b7e2ed7e9a330468699187045044017"
+      },
+      "net.minecraft.world.level.levelgen.RandomSupport$Seed128bit": {
+        "class_entry": "net/minecraft/world/level/levelgen/RandomSupport$Seed128bit.class",
+        "class_sha256": "da6d982bb241cca5610ae1d9877d0addde95eccbf218c4be2041c4805dc338b5",
+        "javap_sha256": "9de4393f233c497767e51c215f965d3bd5cd38dafc58f7ef5f52fdc0f3bb6c04"
+      },
+      "net.minecraft.world.level.levelgen.Xoroshiro128PlusPlus": {
+        "class_entry": "net/minecraft/world/level/levelgen/Xoroshiro128PlusPlus.class",
+        "class_sha256": "70d31ed88a59ea6a529e60d63a7c32db23ee1e94ae259b6a8ecf9bce78ba57a3",
+        "javap_sha256": "d57a5c4e960ef29b1258189d1ec0ee882e0df1cad9461f71ce7f4f7c108af6ff"
+      },
+      "net.minecraft.world.level.levelgen.XoroshiroRandomSource": {
+        "class_entry": "net/minecraft/world/level/levelgen/XoroshiroRandomSource.class",
+        "class_sha256": "43c6e33b55c91bd4576d2cf04ba7e5e7d2561c5918e1b3549485639d17906447",
+        "javap_sha256": "731cc2597d45635ced7429a2785e8abdc00f621d386e9ec9fcb6faadc9057db3"
+      },
+      "net.minecraft.world.level.levelgen.XoroshiroRandomSource$XoroshiroPositionalRandomFactory": {
+        "class_entry": "net/minecraft/world/level/levelgen/XoroshiroRandomSource$XoroshiroPositionalRandomFactory.class",
+        "class_sha256": "47c6c732cb74240d9f5e6e1ff772f2f4445c238ee2fd98d01dab9572db54f898",
+        "javap_sha256": "335942f8ca82ab8704cc510c086f9247abac3daf29234ee701cf4e67810a3d3b"
+      }
+    },
+    "complete_javap_sha256": "3f7fdb5d3cacefda82f11dcc1ec953683c559cd77851676912342d2ace1f8e00"
+  },
+  "source_sha256": {
+    "src/random.bend": "76302d587a74d2601994f6b0bc7c9000b04a65a0bbd06cc0ce643c5452eb3162",
+    "tests/random.bend": "0d54ae9060536d2c054d43ae9f738f3f5620d5b4cab694c5daa909a61af5c0b3",
+    "tools/reference_random_probe.py": "aa19f91a8ded8307aee30072b6dae3fb41ad4f40b849017a6aeddc0f1bbfbe8a",
+    "tools/test_random.py": "a971a1377d840862b23803a82f01ca61ce00d82ffbea687ae3d4d926149d33ff"
+  },
+  "unsupported": [
+    "Gaussian",
+    "Xoroshiro MD5 string hashing",
+    "nondeterministic unique/thread-local seeding",
+    "threading detector/concurrent mutation semantics",
+    "world generation parity"
+  ],
+  "wall_seconds": 0.535300999879837
+}
