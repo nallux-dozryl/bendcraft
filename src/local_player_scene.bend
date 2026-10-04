@@ -11,17 +11,37 @@ import ./game.bend as G
 import ./core.bend as C
 import ./live.bend as L
 import ./json.bend as J
+import ./superflat_world.bend as SF
+import ./local_phase_runtime.bend as X
+import ./local_move_history.bend as MH
+import ./locomotion.bend as Motion
+import ./support.bend as Support
+import ./local_move_world.bend as Move
+import ./player_fall_history.bend as Fall
 
 # One explicit supported neutral LocalPlayer profile. The runtime driver
 # resolves ground and post-sprint attributes from the authoritative owner.
 def motion_driver() -> R.Driver:
   R.driver()
 
+def followed(result:S.State & Unit) -> S.State:
+  (state,unit) = result
+  state
+
+def follow(state:S.State) -> S.State:
+  followed(S.query(Unit,state,p => R.query(Unit,p,SF.follow)))
+
 def realtime_step(state:S.State) -> S.State:
-  S.realtime_step(motion_driver(),state)
+  follow(S.realtime_step(motion_driver(),state))
+
+def dispatched(result:S.State & L.Session & J.Value) -> S.State & L.Session & J.Value:
+  (state,session,value) = result
+  (follow(state),session,value)
 
 def dispatch(state:S.State,session:L.Session,token:String,request:J.Value) -> IO(S.State & L.Session & J.Value):
-  S.dispatch(~motion_driver(),state,session,token,request)
+  do IO<S.State & L.Session & J.Value>:
+    result : S.State & L.Session & J.Value <- S.dispatch(~motion_driver(),state,session,token,request)
+    return dispatched(result)
 
 # Base macOS lowercases characters; modifier events use 65536 + hardware code.
 # Physical input verification remains separate from this source-derived mapping.
@@ -89,6 +109,50 @@ def fixture_gate(first_peer:U32,result:S.State & Bool) -> IO(S.Ready):
 def initialize(ready:S.Ready) -> IO(S.Ready):
   S.Ready{state,first_peer} = ready
   fixture_gate(first_peer,S.query(Bool,state,p => R.query(Bool,p,pristine)))
+
+def superflat_player_result(tables:Motion.Tables,support:Support.State,minor:Move.MinorState,
+    history:Fall.State,metadata:X.Metadata,motion_tail:List<&1,MH.State>,tail:List<&1,X.State>,
+    result:W.State & Result<&2,&2,String,SF.Outcome>) -> X.State & Result<&2,&2,String,Unit>:
+  (world,status) = result
+  match status:
+    case Fail{message}:
+      (X.State{MH.State{world,support,minor,history,motion_tail},tables,metadata,tail},Fail{message})
+    case Done{SF.Existing{}}:
+      R.query(Result<&2,&2,String,Unit>,
+        X.State{MH.State{world,support,minor,history,motion_tail},tables,metadata,tail},SF.configure)
+    case Done{SF.Generated{}}:
+      # Startup is pristine: initialize Body, support, fall history and both
+      # commonTick old positions together through the ordinary runtime owner.
+      (R.fresh(world,tables),Done{Unit{}})
+
+def superflat_player(player:X.State) -> X.State & Result<&2,&2,String,Unit>:
+  X.State{MH.State{world,support,minor,history,motion_tail},tables,metadata,tail} = player
+  superflat_player_result(tables,support,minor,history,metadata,motion_tail,tail,SF.initialize(world))
+
+def superflat_failed(state:S.State,message:String) -> IO(S.Ready):
+  S.State{player,shell} = state
+  S.startup_failed(shell,"superflat scene: " ++ message)
+
+def superflat_finished(first_peer:U32,result:S.State & Result<&2,&2,String,Unit>) -> IO(S.Ready):
+  (state,status) = result
+  match status:
+    case Fail{message}: superflat_failed(state,message)
+    case Done{unit}: IO.pure(S.Ready,S.Ready{S.mark_initialized(state),first_peer})
+
+def superflat_gate(first_peer:U32,result:S.State & Bool) -> IO(S.Ready):
+  (state,fresh) = result
+  match fresh:
+    case True{}: superflat_finished(first_peer,S.query(Result<&2,&2,String,Unit>,state,superflat_player))
+    case False{}:
+      superflat_finished(first_peer,S.query(Result<&2,&2,String,Unit>,state,
+        p => R.query(Result<&2,&2,String,Unit>,p,SF.configure)))
+
+# Explicit custom vanilla-flat layer settings. Freshness comes from the codec
+# initializer/decoder, never from guessing whether a loaded Core looks empty.
+# Loaded Core/player state is retained; only its transient view is configured.
+def initialize_superflat(ready:S.Ready) -> IO(S.Ready):
+  S.Ready{state,first_peer} = ready
+  superflat_gate(first_peer,S.fresh(state))
 
 def unpaused_world(result:G.Engine & W.View) -> W.State & Unit:
   (G.Engine{world,registry},view) = result

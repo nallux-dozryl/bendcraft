@@ -1,0 +1,92 @@
+{
+  "comparator_controls": {
+    "corruptions_refused": [
+      "layer-cell",
+      "section-digest",
+      "missing-outside",
+      "loaded-clock",
+      "duplicate-response"
+    ],
+    "scope": "Host comparator sensitivity only; no native execution implied.",
+    "synthetic_comparator_baseline_passed": true
+  },
+  "driver": {
+    "bytes": 14081,
+    "file": "test_superflat_world.py",
+    "sha1": "4fa00e3793771e25a1b29af437fd9e02f2c285b2",
+    "sha256": "d0d6e5a3a19d44a79bef5fd03fbd07fb993564d22502b829d61614395edad286"
+  },
+  "jobs": [
+    {
+      "args": [
+        "custom"
+      ],
+      "label": "superflat-custom"
+    },
+    {
+      "args": [
+        "classic"
+      ],
+      "label": "superflat-classic-core-only"
+    },
+    {
+      "args": [
+        "bounds|spawn|0|4294967236|0",
+        "bounds|negative-chunk|4294967280|4294967236|4294967280",
+        "bounds|low|4294967264|4294967216|4294967264",
+        "bounds|high|47|4294967263|47",
+        "bounds|top-neighbor|0|4294967259|0",
+        "bounds|min-x|2147483648|4294967236|0",
+        "bounds|min-y|0|2147483648|0",
+        "bounds|max-z|0|4294967236|2147483647",
+        "bounds|loaded-fixture|0|1|0",
+        "bounds|outside-x|48|4294967236|0",
+        "bounds|outside-low-y|0|4294967215|0",
+        "bounds-float|negative-fraction|3184315597|3262119936|3246391348"
+      ],
+      "label": "superflat-aperture"
+    },
+    {
+      "args": [
+        "follow"
+      ],
+      "label": "superflat-follow"
+    }
+  ],
+  "native_plan": "Root shared playable artifact only; no standalone build or hidden process mode.",
+  "reference": {
+    "bytes": 49812,
+    "file": "superflat_world.json",
+    "sha1": "194824bec9378ac9c2493d887e2f747268c83a5b",
+    "sha256": "7f72cad4f70f82fe733aef0e56e55932b1c33298bc854158ccbaf1b6b48952cf"
+  },
+  "registry": {
+    "bytes": 182136,
+    "file": "reference_blocks.tsv",
+    "sha1": "3461038d5c8086185591df08e6fb96de6e523faf",
+    "sha256": "27769e75bf862d0540b2df2a6e99f6b7556a867bff6339fb08566240ee124cac"
+  },
+  "shared_dispatch": "superflat-cases",
+  "sources": {
+    "src/local_player_scene.bend": {
+      "bytes": 7382,
+      "file": "local_player_scene.bend",
+      "sha1": "e0319283ea1d499b01bb0d934e6830255e1adc55",
+      "sha256": "8498ae8161d18bb5f79b4f635f0ef2d4f7a1ab1eb967e2a1bbd52cd4bcc7ce3d"
+    },
+    "src/superflat_world.bend": {
+      "bytes": 12058,
+      "file": "superflat_world.bend",
+      "sha1": "f23da65f72ca01f7de7fa439c277ebde844f919b",
+      "sha256": "c42e0877bab3a178e2cde7a9a35b033af5dc621e37038b201dcb29c72adb7183"
+    },
+    "tests/superflat_world.bend": {
+      "bytes": 14672,
+      "file": "superflat_world.bend",
+      "sha1": "9bf9d80d31a5ccc5ee0d6d68fe149aec2a33faaa",
+      "sha256": "7f278681db899e1fa2c6e26ff7173ad07f299868c8fb13dd3a3d6921a55b447a"
+    }
+  },
+  "status": "prepared-native-unverified",
+  "worst_source_quads": 3072
+}
