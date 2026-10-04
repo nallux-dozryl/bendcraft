@@ -1,0 +1,49 @@
+{
+  "all_owned_groups_reaped": true,
+  "kernel_cap_seconds": 60,
+  "kernel_receipt": {
+    "bytes": 10678,
+    "file": "player-pose-world-kernel.json",
+    "path": "evidence/player-pose-world-kernel.json",
+    "sha1": "4f4132a4b00c5368ebbc084cd2b46ef29844c66a",
+    "sha256": "9ff94805712d50a33cb31b8aa4a8720706fbdf6bf8da5c2f27632a39167a0905"
+  },
+  "kernel_returncode": 1,
+  "kernel_seconds": 22.112368,
+  "kernel_timed_out": false,
+  "mathematical_verdict": "unresolved; native all81 remains passed",
+  "named_failed_law": "not provided by this output",
+  "native_receipt": {
+    "bytes": 12652,
+    "file": "player-pose-world-native.json",
+    "path": "evidence/player-pose-world-native.json",
+    "sha1": "b9ccfbb565727a9455154a31a0017a2f9974c277",
+    "sha256": "2a543201830ef156e1d41e66c3eac641665acb8c7d01a4b0564f7a5227d20d53"
+  },
+  "no_retry_projection_source_repeat_or_code_changes": true,
+  "postcheck": {
+    "bytes": 1074,
+    "file": "kernel-postcheck.json",
+    "path": "build/player-pose-world-tests-generation2-artifacts/kernel-postcheck.json",
+    "sha1": "686c71eceecebb92430c1d63d6eea45690d00bb8",
+    "sha256": "3af57969c32fdeeeb98370f98065fe8c678bff189831f8a62b545e06dcbbe867"
+  },
+  "runner_exit_code": 1,
+  "slot_B_released": true,
+  "status": "single full-import kernel attempt failed with installed TypeScript/BendTT mismatch; mathematical verification unresolved; Slot B released",
+  "stderr": {
+    "bytes": 290,
+    "file": "kernel.stderr",
+    "path": "build/player-pose-world-tests-generation2-artifacts/kernel.stderr",
+    "sha1": "3b612e373f6a9df3afb076073d3ff007cbaf45d1",
+    "sha256": "5f663cc851aa6c0c7fc81fc2f976dabd9d6d17f64b51793918bd59a953b3a8dd"
+  },
+  "stderr_text": "SOME PROOFS FAIL\nSorry - this is a mismatch between the TypeScript implementation, and the formalized BendTT kernel. Your proofs may or may not be correct, and we cannot validate them yet. This will be addressed in a future update. Meanwhile, feel free to open an issue to report this bug.\n",
+  "stdout": {
+    "bytes": 0,
+    "file": "kernel.stdout",
+    "path": "build/player-pose-world-tests-generation2-artifacts/kernel.stdout",
+    "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "boundary": {
+    "binary64_x_ulp": "2^-22",
+    "body_box_raw_f64": [
+      "41dfffffffaccccd",
+      "3ff0000000000000",
+      "3fc9999980000000",
+      "41dfffffffd33333",
+      "4006666660000000",
+      "3fe99999a0000000"
+    ],
+    "epsilon_raw_f64": "3e7ad7f29abcaf48",
+    "feet_raw_f64": [
+      "41dfffffffc00000",
+      "3ff0000000000000",
+      "3fe0000000000000"
+    ],
+    "first_candidate": "SWIMMING",
+    "first_candidate_box_source_derived_raw_f64": [
+      "41dfffffffaccccd",
+      "3ff000001ad7f29b",
+      "3fc9999a56bf94d6",
+      "41dfffffffd33333",
+      "3ff9999985280d65",
+      "3fe999996a501acb"
+    ],
+    "floor_x_high": 2147483647,
+    "floor_x_low": 2147483646,
+    "half_ulp": "2^-23 > 1e-7",
+    "initial_pose": "STANDING",
+    "query_box_provenance": "Source-derived from recorded native Body X extents and frozen actual baseline Swimming Y/Z query; this is not a newly observed query trace. Same width produces the same X extents; +/-1e-7 is below half-ULP at both X endpoints. No world query record is returned on failure.",
+    "width_raw_f32": "3f19999a",
+    "x_axis_cells_before_margin_guard": 4
+  },
+  "completed_output_index": {
+    "bytes": 151487,
+    "file": "completed-original-output-index.json",
+    "path": "build/player-pose-world-tests-artifacts/completed-original-output-index.json",
+    "sha1": "b04fa3f0ec00b47c538ffc229d5d3973a5e31f5c",
+    "sha256": "0219606773a3855eb95e19f1a68909b95a502f85a35e447af1a63cfe4cfb7d78"
+  },
+  "final_status_document": {
+    "bytes": 10382,
+    "file": "PLAYER_POSE_WORLD.md",
+    "path": "docs/PLAYER_POSE_WORLD.md",
+    "sha1": "31978514b07be45233f8d82dd3ff360b8d13eedb",
+    "sha256": "0741bca461d4a1f8a17ff0b59a5f76c5853979b25985718b3dd97c17ca73f00c"
+  },
+  "first_failure_receipt": {
+    "bytes": 9044,
+    "file": "player-pose-world-native-first-failure.json",
+    "path": "evidence/player-pose-world-native-first-failure.json",
+    "sha1": "4dc4f1803deeaffaa88dea793023343e7b438377",
+    "sha256": "16970ab4440b5ec7b1bd24430c732bf5d3539397ffcefb44463a5e22ee578c9c"
+  },
+  "independent_source_guard_order": [
+    {
+      "line": 186,
+      "source": "src/local_collision_world.bend",
+      "statement": "query_gate first validates declared interior, then scan_checked uses W.query_bounds before any scan_loop/Core read."
+    },
+    {
+      "line": 392,
+      "source": "src/client_world.bend",
+      "statement": "query_valid_bounds floors candidate min-epsilon/max+epsilon; both positive X floors fit I32."
+    },
+    {
+      "line": 633,
+      "source": "src/f64.bend",
+      "statement": "convert_i32_sign(False) accepts magnitude <=2147483647 regardless of fraction; floor_i32 of positive2147483647.3 returns2147483647, not range refusal."
+    },
+    {
+      "line": 383,
+      "source": "src/client_world.bend",
+      "statement": "query_coordinates rejects hx==2147483647 through its valid Boolean even though w==4 is within3..16."
+    },
+    {
+      "line": 375,
+      "source": "src/client_world.bend",
+      "statement": "query_bounds_gate(False) returns Fail{collision-query-limit}; collision-query-outside-i32 belongs only to floor_result conversion refusal."
+    }
+  ],
+  "native_and_recovery_not_fully_verified": true,
+  "proposed_only_expected_literal_change": {
+    "fixture": "failure:positive-i32-margin",
+    "negative_margin_unchanged": "world:collision-query-outside-i32; negative min is below -2147483648 and its floored value is not representable.",
+    "new": "world:collision-query-limit",
+    "old": "world:collision-query-outside-i32",
+    "scope": "Project bounded-query policy taxonomy; not actual Java pose expectation, source behavior or collision geometry"
+  },
+  "resume_design": {
+    "adoption": "Separate compatibility receipt permits exactly the pinned new runner and the one positive guard expected literal. Require current source/reference/compiler/registry/artifact pins to equal original; seal old/new runner AST/source and data-literal diff plus unchanged original argument/actual-field hashes.",
+    "continue_native_only": [
+      "case73 negative-i32-margin",
+      "case74 running",
+      "case75 event-owner",
+      "case76 edit-recovery",
+      "four remapped-palette jobs77..80"
+    ],
+    "mode": "explicit --resume only after separate authorization; no native build or Java extraction",
+    "new_receipts": "Persist each new execution command/exit/duration/process-group cap/stdout/stderr and generation before assertions, including a first failure. Stop on any failure.",
+    "offline_validation": "Revalidate every completed case0..71 from its exact stdout/stderr and original prepared commands using pinned reference. For case72 validate retained raw streams against corrected policy literal and compare its already-present same-owner recovery exactly; no executable rerun. Explicitly report the missing original duration receipts rather than invent them.",
+    "old_generation": "Verify archived byte-identical old runner/preparation/handoff plus original build 33 pins, C, binary and all original raw outputs. Keep original build manifest intact.",
+    "proof": "Only after complete resumed comparison passes and later grant allows it: one unchanged full-import kernel run, capped60s; no projection/retry."
+  },
+  "source_pins": {
+    "src/client_world.bend": {
+      "bytes": 33218,
+      "file": "client_world.bend",
+      "sha1": "c1c68b7004a450fc8bd668c36189ca43e698d68c",
+      "sha256": "05040abf35b2b9ceaf87fed5c48f8d074d211750a59ab00fa6ff08e60a9ea5d7"
+    },
+    "src/f64.bend": {
+      "bytes": 33288,
+      "file": "f64.bend",
+      "sha1": "0b66e156b910de4c17abbe0d7c4fcd1b18d27d9e",
+      "sha256": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7"
+    },
+    "src/geometry.bend": {
+      "bytes": 13604,
+      "file": "geometry.bend",
+      "sha1": "dc026256dcd8a81bee7ac451a25d0ce22c1d613c",
+      "sha256": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f"
+    },
+    "src/local_collision_world.bend": {
+      "bytes": 14887,
+      "file": "local_collision_world.bend",
+      "sha1": "9b0005ebb561759a81d049adc09fd1119e1f9a4e",
+      "sha256": "4e6e46737890c1203fb66ee95859e26825b306a6db865a1869e8663a7b9a2346"
+    },
+    "src/player_pose.bend": {
+      "bytes": 18644,
+      "file": "player_pose.bend",
+      "sha1": "0f93802bb1407a770c18ed3a35790dfaa60b773a",
+      "sha256": "fee092d03f01673fad7f2c5e2329dbafabc1cc2781a275e5e2e5f47380eebea0"
+    }
+  },
+  "status": "proposal only; no expectation/runner/source modification or new native execution",
+  "unchanged_required": [
+    "all actual Java expected fields/reference/tool SOURCE",
+    "all original fixture commands/Body inputs/context/environment/fuel",
+    "PPW and every Bend source/harness",
+    "captured C/binary/native build manifest",
+    "all other defensive expected errors and recovery obligations"
+  ]
+}

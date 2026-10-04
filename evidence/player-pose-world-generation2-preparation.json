@@ -1,0 +1,390 @@
+{
+  "checks": [
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_pose_world.bend",
+        "--check-only"
+      ],
+      "returncode": 0,
+      "seconds": 3.082881,
+      "stderr": {
+        "bytes": 0,
+        "file": "src-ordinary.stderr",
+        "path": "build/player-pose-world-tests-generation2-artifacts/src-ordinary.stderr",
+        "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 58,
+        "file": "src-ordinary.stdout",
+        "path": "build/player-pose-world-tests-generation2-artifacts/src-ordinary.stdout",
+        "sha1": "7ac487c4af0e6a0b7df1ebae438bf1c0ffe5e478",
+        "sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1"
+      },
+      "timed_out": false,
+      "whole_process_group_cap": true
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_pose_world.bend",
+        "--check-only"
+      ],
+      "returncode": 0,
+      "seconds": 7.150341,
+      "stderr": {
+        "bytes": 0,
+        "file": "tests-ordinary.stderr",
+        "path": "build/player-pose-world-tests-generation2-artifacts/tests-ordinary.stderr",
+        "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 58,
+        "file": "tests-ordinary.stdout",
+        "path": "build/player-pose-world-tests-generation2-artifacts/tests-ordinary.stdout",
+        "sha1": "7ac487c4af0e6a0b7df1ebae438bf1c0ffe5e478",
+        "sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1"
+      },
+      "timed_out": false,
+      "whole_process_group_cap": true
+    }
+  ],
+  "counts": {
+    "actual_contexts": 46,
+    "admitted": 44,
+    "all_comparison_invocations": 81,
+    "dynamic_remaps": 4,
+    "failure_recoveries": 28,
+    "first_yields": 8,
+    "queries": 86,
+    "reads": 2233,
+    "running_event_edit_jobs": 3
+  },
+  "each_execution_persisted_before_any_assertion": true,
+  "first_failure_stops": true,
+  "fixtures": {
+    "bytes": 99953,
+    "file": "prepared-fixtures.json",
+    "path": "build/player-pose-world-tests-generation2-artifacts/prepared-fixtures.json",
+    "sha1": "13d83974cb497b407e83f0c9c521a3147016e84a",
+    "sha256": "04d91f49144fa6ec112f561a925925ee13f6a06d47f885b4a40f07a09a3348a4"
+  },
+  "fresh_binary_path": "build/player-pose-world-tests-generation2",
+  "fresh_build_path": "build/player-pose-world-tests-generation2-artifacts/native-build.json",
+  "original_binary_not_adopted_as_new": true,
+  "planned_caps": {
+    "each_native_comparison_seconds": 60,
+    "later_one_full_import_kernel_seconds": 60,
+    "one_installed_build_seconds": 600
+  },
+  "preflight": {
+    "added_functions": [
+      "generation2_bounded",
+      "generation2_capture",
+      "generation2_jobs",
+      "generation2_paths",
+      "generation2_preflight",
+      "kernel_generation2",
+      "native_generation2",
+      "prepare_generation2"
+    ],
+    "all81_command_arrays_and_other_expectations_unchanged": true,
+    "all_other31_compiled_pins_unchanged": true,
+    "archive_manifest": {
+      "bytes": 137419,
+      "file": "archive-manifest.json",
+      "path": "build/player-pose-world-generation2-prior/archive-manifest.json",
+      "sha1": "e1d1806edf7fe6dba973b3dfc572ffee24d04346",
+      "sha256": "040e66493f3a595fb102ecedab55f6c1ca4cf2c359f1edd5726cd1d6bc07ab6d"
+    },
+    "archived_file_count": 203,
+    "argument_sha256": "d278210d83fa0167f4296ba1e535d7a3c16aab1246d0ac615442c73e6f40d614",
+    "changed_compiled_paths": [
+      "tests/player_pose_world.bend",
+      "tools/test_player_pose_world.py"
+    ],
+    "current_harness": {
+      "bytes": 30751,
+      "file": "player_pose_world.bend",
+      "path": "tests/player_pose_world.bend",
+      "sha1": "32f50a6c7c949b07ea4e5d6c4b898439916043d0",
+      "sha256": "6bd14c9bdb6c5993393e899c2179db104f0fef1cf7ebf14914e154b8c51e60bb"
+    },
+    "current_runner": {
+      "bytes": 51692,
+      "file": "test_player_pose_world.py",
+      "path": "tools/test_player_pose_world.py",
+      "sha1": "a02a667be7c3b13ba170c47f083a8025dd75e67d",
+      "sha256": "ee898f3cffebdffb9f32bf8c6bf9cf6a39a79976eab30d6856ac96c251f9b1c0"
+    },
+    "dependency_pins": {
+      "/Users/chuah/.bend/bin/bend": {
+        "bytes": 63885392,
+        "file": "bend",
+        "sha1": "ddce6e432357be618d905b19c0f79abe3d28c388",
+        "sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e"
+      },
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv": {
+        "bytes": 182136,
+        "file": "reference_blocks.tsv",
+        "sha1": "3461038d5c8086185591df08e6fb96de6e523faf",
+        "sha256": "27769e75bf862d0540b2df2a6e99f6b7556a867bff6339fb08566240ee124cac"
+      },
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/player_pose_world.json": {
+        "bytes": 378709,
+        "file": "player_pose_world.json",
+        "sha1": "ba9675d61c967470cc0b06227341dfc01ea9e6ac",
+        "sha256": "1b2b308cc24e2498118f4df32d2ef0049c6cd7d0b93279784072a12898c5c94b"
+      },
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/archive.bend": {
+        "bytes": 36610,
+        "file": "archive.bend",
+        "sha1": "dc7b6e724989e9f8ee2363da31b6026bb3edf39a",
+        "sha256": "c0f7b34a22726d220f6b867730b7d080d57d82c84d619c35721b9b8d18fa5d6e"
+      },
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/client_render.bend": {
+        "bytes": 13894,
+        "file": "client_render.bend",
+        "sha1": "706ff3956b211a149b9ce919d17df21c3f5858e2",
+        "sha256": "bb8f6057a02bfcb0583025f9e75fe41abc6804eb554c6d971df5c81618932947"
+      },
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/client_world.bend": {
+        "bytes": 33218,
+        "file": "client_world.bend",
+        "sha1": "c1c68b7004a450fc8bd668c36189ca43e698d68c",
+        "sha256": "05040abf35b2b9ceaf87fed5c48f8d074d211750a59ab00fa6ff08e60a9ea5d7"
+      },
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/compression.bend": {
+        "bytes": 41725,
+        "file": "compression.bend",
+        "sha1": "293ba376ef2ac4e39a39bcc63fee8af7092e1f78",
+        "sha256": "255cdff06a33050c7b0a48fdea75c1842ebe2dab0439cfe4f03d126d4edc20aa"
+      },
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/core.bend": {
+        "bytes": 11690,
+        "file": "core.bend",
+        "sha1": "dc4b0ff5b336b521f7a71066fe92b521d99740da",
+        "sha256": "c1ee5a5390cdac0452c9c6cd3b0584a68ef68b5b0dfec867491c27e67ecadd4e"
+      },
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/f64.bend": {
+        "bytes": 33288,
+        "file": "f64.bend",
+        "sha1": "0b66e156b910de4c17abbe0d7c4fcd1b18d27d9e",
+        "sha256": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7"
+      },
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/framing.bend": {
+        "bytes": 6845,
+        "file": "framing.bend",
+        "sha1": "01a6f09d70d84026f15be75665d520729daee599",
+        "sha256": "307f95049df03d92687b7bd0eafb2cd566e660926510bb88163f9bc825fccdb5"
+      },
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/game.bend": {
+        "bytes": 12517,
+        "file": "game.bend",
+        "sha1": "44ac9a3a8b046c866605df3bea8c29764afbeda0",
+        "sha256": "43e3eee5d15613bb06cc608fe43657aa14d8c0fbe899d4efa580fc8335d23882"
+      },
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/geometry.bend": {
+        "bytes": 13604,
+        "file": "geometry.bend",
+        "sha1": "dc026256dcd8a81bee7ac451a25d0ce22c1d613c",
+        "sha256": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f"
+      },
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/hash.bend": {
+        "bytes": 12147,
+        "file": "hash.bend",
+        "sha1": "15ca8c69a5c99a33245e976507a38fefae082281",
+        "sha256": "d2473695632b19e68c8d636668e4617f04d70892fb2ab6559cb24d4b33c1b978"
+      },
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/json.bend": {
+        "bytes": 21362,
+        "file": "json.bend",
+        "sha1": "ff33b3dc87a80fe32355f099ae9d145d4fee7aa8",
+        "sha256": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0"
+      },
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/live.bend": {
+        "bytes": 28434,
+        "file": "live.bend",
+        "sha1": "eb8180079a6b3b25b4c8ff889553ba5b9f331c57",
+        "sha256": "cb5a2f8237a53e48d3f6751d321a023e11694721f789373984d7d77620f32e87"
+      },
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/local_collision.bend": {
+        "bytes": 21060,
+        "file": "local_collision.bend",
+        "sha1": "0bed1307339489bf569acee1313afef8ea33cd7f",
+        "sha256": "7b2b8301246f3e385a038eca81790fa7d6c4285113a069e040d968e105be5cc0"
+      },
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/local_collision_world.bend": {
+        "bytes": 14887,
+        "file": "local_collision_world.bend",
+        "sha1": "9b0005ebb561759a81d049adc09fd1119e1f9a4e",
+        "sha256": "4e6e46737890c1203fb66ee95859e26825b306a6db865a1869e8663a7b9a2346"
+      },
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/locomotion.bend": {
+        "bytes": 13662,
+        "file": "locomotion.bend",
+        "sha1": "75cec05c848b55c21926b07bfab08a29c42cc2c0",
+        "sha256": "ccf8aa12636ba1fce5575606383bf75c02a8ac79ba952645b89aea2eef6cd459"
+      },
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/movement.bend": {
+        "bytes": 22954,
+        "file": "movement.bend",
+        "sha1": "22fa1737fd57a2a66065b9471694b310e0b97d15",
+        "sha256": "0e94fea7cc941a23d2ed7bbd2ccaf0117e6af363eb91f2db2e34428f9dd9e67f"
+      },
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_input.bend": {
+        "bytes": 3922,
+        "file": "player_input.bend",
+        "sha1": "a77d0b67e992c42c63e5a8a3e78bf96a672587cd",
+        "sha256": "d3938f96416691739eb54f2b0f77377c6ba7c74ac63ffa8335840152feb355d5"
+      },
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_pose.bend": {
+        "bytes": 18644,
+        "file": "player_pose.bend",
+        "sha1": "0f93802bb1407a770c18ed3a35790dfaa60b773a",
+        "sha256": "fee092d03f01673fad7f2c5e2329dbafabc1cc2781a275e5e2e5f47380eebea0"
+      },
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_pose_world.bend": {
+        "bytes": 9896,
+        "file": "player_pose_world.bend",
+        "sha1": "fc0bb0974d4623130702a6d88f1bcd171c9ed68e",
+        "sha256": "d7f256c3e93e2f55b944e75ff8b156c9951e800611db3cd205d49629c094ce77"
+      },
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/png.bend": {
+        "bytes": 18786,
+        "file": "png.bend",
+        "sha1": "2a6fdbd4c66575d28399808889b39e6d0ed20d7e",
+        "sha256": "8c24c14a250cf6dbdf0c2804e4b28bfebd7ef62ed5d9ee97a1d07094d4745f22"
+      },
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/registry.bend": {
+        "bytes": 36821,
+        "file": "registry.bend",
+        "sha1": "af57eaf2b86ead0647d4c4411d3755eed0eb3f92",
+        "sha256": "821c53d9cfa3044be3cae2af968f55563c0be2bebc9beae55a29d77d47b140a0"
+      },
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/schedule.bend": {
+        "bytes": 3365,
+        "file": "schedule.bend",
+        "sha1": "22f1376c0b691adcaf1bb6772de557ee229815fb",
+        "sha256": "93aa79895fe340e27ae5fd562102d5980f0938003eb1bbde669a84010779b8c9"
+      },
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/section.bend": {
+        "bytes": 6520,
+        "file": "section.bend",
+        "sha1": "5f89a8db71579c6dfaefa817256287d0743c673b",
+        "sha256": "02b5c15c57b173c7eb8b4c55a1433c10c192926e91af5e3e69050b4404044aa5"
+      },
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/section_map.bend": {
+        "bytes": 3987,
+        "file": "section_map.bend",
+        "sha1": "069cbd1e6009198d3915cd1aca5e97c33c97a011",
+        "sha256": "ded59d7938c02fd0876d65e37f9f90ea0cfebf3ca4bd107394342f8adbf33965"
+      },
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/unicode.bend": {
+        "bytes": 7242,
+        "file": "unicode.bend",
+        "sha1": "6bb776336263e10bde601f7c87c4d385c68673d5",
+        "sha256": "8f0cd9bbcd0e7f938af370675eca0c73a9b97b90c2789a1e77e5a29a918455bd"
+      },
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_pose_world.bend": {
+        "bytes": 30751,
+        "file": "player_pose_world.bend",
+        "sha1": "32f50a6c7c949b07ea4e5d6c4b898439916043d0",
+        "sha256": "6bd14c9bdb6c5993393e899c2179db104f0fef1cf7ebf14914e154b8c51e60bb"
+      },
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/reference_local_input_probe.py": {
+        "bytes": 72229,
+        "file": "reference_local_input_probe.py",
+        "sha1": "7a3300927be696f5f526623a1d503c5752ac8adb",
+        "sha256": "42ad844c7ee3616286ce99bcea00c6bc0710b20888912b6e98c1b4af6072a56e"
+      },
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/reference_player_pose_probe.py": {
+        "bytes": 24016,
+        "file": "reference_player_pose_probe.py",
+        "sha1": "13d7169b79d5e43d813680bdb722a496a0fde19a",
+        "sha256": "24f1ea6e5812e028b2fbab8aa70b89b8a5997bd2a9dbbda4213c00cfa8295ca0"
+      },
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/reference_player_pose_world_probe.py": {
+        "bytes": 9242,
+        "file": "reference_player_pose_world_probe.py",
+        "sha1": "ffa44995e8eb81f2e261b6eef150b15c838996a0",
+        "sha256": "905f14c69fe09ee0b503897cad2538e9d64e6b6d5cc8e5b0be56f49c1ff404eb"
+      },
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_player_pose_world.py": {
+        "bytes": 51692,
+        "file": "test_player_pose_world.py",
+        "sha1": "a02a667be7c3b13ba170c47f083a8025dd75e67d",
+        "sha256": "ee898f3cffebdffb9f32bf8c6bf9cf6a39a79976eab30d6856ac96c251f9b1c0"
+      }
+    },
+    "dependency_sha256": "a89203ee0eb9469bbc575c96f2a3ef4ccfcd4d38ac53f34dbc87e7a34edc38e8",
+    "expected_actual_fields_sha256": "1e7cb249373126d6ead2a112519d2ea2460177b903f6549898c148089f7c05eb",
+    "expected_change": {
+      "function": "retained",
+      "new": "applied,1,8,1,1;",
+      "old": "applied,0,8,1,1;"
+    },
+    "first77_argument_sha256": "b2992794944be15454206054a5e92ba728617eb25f67ddf4d8b3b81eaa1163b5",
+    "harness_change": {
+      "function": "seed_event",
+      "new": "Q.Stamp{1n,8,1n}",
+      "old": "Q.Stamp{0n,8,1n}"
+    },
+    "imports_and_globals_unchanged": true,
+    "main_dispatch_change": "prepare/native/skip-build/kernel select separate generation2 paths; historical resume functions retained but generation checks fail closed",
+    "new_runner_ast_sha256": "91fb579e69a17a02299324bd32f0d618bd4b28249d729aa06e675d70334e7f33",
+    "old73_duration_receipts": "absent; no values fabricated",
+    "old_harness": {
+      "bytes": 30751,
+      "file": "player_pose_world.bend",
+      "path": "build/player-pose-world-generation2-prior/tests/player_pose_world.bend",
+      "sha1": "1c09065318d266cabc71b379f085119ec88fac4a",
+      "sha256": "8f62a73204faab85e1202a32bb08bdb154f9bfab1424e20b47e284daad4768e9"
+    },
+    "old_runner": {
+      "bytes": 33750,
+      "file": "test_player_pose_world.py",
+      "path": "build/player-pose-world-generation2-prior/tools/test_player_pose_world.py",
+      "sha1": "78cc36f10924da91b7ede623d9ddc996f534c80a",
+      "sha256": "48756716b5f5eb496cbc7032026319f46c9de0ed7ab9f1304dcc2b608728f51b"
+    },
+    "old_runner_ast_sha256": "f71ff350c74a5b9c6d738feef256ecd083dca667054ae6d48d3b8382cc3b6227",
+    "original_binary": {
+      "bytes": 6274440,
+      "file": "player-pose-world-tests",
+      "path": "build/player-pose-world-tests",
+      "sha1": "9399a726b8af7e028c778e886ed3720125c8fb40",
+      "sha256": "d4c84c8a9ddb5db63b68a95b8604c530adde3fcae89f30c61abc9648f8638704"
+    },
+    "original_build": {
+      "bytes": 12120,
+      "file": "native-build.json",
+      "path": "build/player-pose-world-tests-artifacts/native-build.json",
+      "sha1": "2c6cbe67a0dc38b306cbbb0e8c4dc65cbc8a31c2",
+      "sha256": "bdcd2c297ed3386a8e1af29c55b587a106132ec292ad30a6a7005030957ebdbc"
+    },
+    "original_emitted_c": [
+      {
+        "bytes": 18639578,
+        "file": "source-2.c",
+        "path": "build/player-pose-world-tests-artifacts/native-capture/source-2.c",
+        "sha1": "85a1aa36cc57cb354a72e693a9d42204440fef05",
+        "sha256": "c9327149949a58b34237ed5dced2f99ac2dfeb72a8984da2741cfd0f567122eb"
+      }
+    ],
+    "prior_attempts": "Original native stopped at job72 comparison; retained resume jobs73/74 passed, job75 setup failed; jobs76..80 were never executed",
+    "prior_dependency_sha256": "a74de44e0144f82aee08189db658dfe2cfc41236acb126ee49fe05149aaac7c3",
+    "remapped_registry": {
+      "bytes": 207,
+      "file": "remapped.tsv",
+      "path": "build/player-pose-world-tests-generation2-artifacts/remapped.tsv",
+      "sha1": "84652ef3d5ed735d68107c7feb31b10dbb231f27",
+      "sha256": "32083e6141b210995680f0012c48d459b1a5c901d06d4a1e9b259164299f5ceb"
+    },
+    "unchanged_existing_functions_except_retained_literal": true
+  },
+  "raw_ignored": true,
+  "status": "generation2 ordinary and archive/AST/data preflight pass; fresh native/kernel not run"
+}

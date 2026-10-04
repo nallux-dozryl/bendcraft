@@ -3,6 +3,36 @@
 This queue supports the full 26.3 objective. A finite scene, renderer, or save
 fixture is a verification instrument; none satisfies a gameplay completion gate.
 
+## Ready integration queue — 2026-10-04
+
+1. **Resource-backed native saved client.** Compiler diagnosis: inventory_kernel;
+   resource scene/presenter consumer: client_render; actor/session join: lead.
+   Next bounded operation is the sealed 90-second Bun graph diagnostic of the
+   real plain entry, with the boxed entry conditional on validated control
+   success. bend_json owns its short admission review. The two previous
+   600-second emission timeouts and the Node loader failure establish no compiler
+   bottleneck. The next decision follows measured load/check/native-graph phases;
+   no identical ten-minute retry. Required outcome: actual integrated executable,
+   reproducible launch, live TCP edits, resource/visibility frames and durable
+   save/reload regression, preserving the current client baseline.
+2. **Authoritative saved LocalPlayer client.** local_phase_runtime owns the
+   phase API; world_bridge owns the new runtime facade; macos_platform owns the
+   complete supported local record/storage codec; lead owns the session and
+   client entry. The concrete API blocker is deriving owned ground/attributes
+   after the actual sprint decision without duplicating input or world queries.
+   Preserve existing phase/reference generations and verify the final consumer
+   generation. Required outcome: one shared 20 Hz input/tick/save actor, ordered
+   Core/common/input/travel/rotation/pose phases, exact supported metadata across
+   save/restart, and real TCP/MCP client regression. Required reset rays still
+   reject until a checked supplier is integrated; no fabricated MISS.
+
+Finish in-flight slab/fall host repairs and freeze their useful evidence. Defer
+new standalone feature libraries, expanded reference inventories and peripheral
+receipt polish unless they unblock these two outcomes or fix a concrete defect.
+At most two heavy jobs may run; both slots are currently free and require an
+explicit grant. Foreground validation remains pending the user's coordination;
+no duplicate request or unsolicited foreground launch.
+
 ## Current critical path
 
 1. Actual Level collision/move, locomotion, neutral Player.travel, Player.aiStep
@@ -53,7 +83,7 @@ declared interfaces; integration evidence determines subsequent work.
 | Owner | Exclusive working files or subsystem | Stable integration interface |
 | --- | --- | --- |
 | Lead | `player_runtime.bend`, `player_session.bend`, `player_storage.bend`, `player_scene.bend`, `player_client.bend`, `client_presenter.bend`, resource entries/scenes and window input | Verified plain Player runtime and saved-session TCP/MCP/restart composition; one W body plus metadata, Tables, support and complete Controller. Continuous entry passes 22 bounded launches. Both original and Frame/Assets-boxed resource entries timed out without artifacts; diagnose exact compiler cost before a third build. Visible presentation and physical focused input remain required |
-| World bridge | Completed PW/SW, phase audit and conditional pose; corrected pose-world harness generation in slot B | Original native/comparator and retained-resume queue-setup failures remain preserved. Root checked all 203 archived files, the one event-stamp and one expected Applied-tick correction, unchanged production/oracle and all 81 arguments. One fresh installed build is granted at 600 seconds, followed by all 81 fresh jobs at 60 seconds each; stop on first failure. Full-import kernel requires a separate grant after native success. No current runtime consumer changes |
+| World bridge | Completed PW/SW, phase audit, conditional pose and bounded pose-world native verification | All 81 fresh jobs pass; root replayed every output, both fresh Java traces and all 4,372 class hashes per run, plus 33 runner and 58 supplemental source/effect pins. Exact 156 queries, 3,759 reads and twelve yields include recovery/remap scenarios. Original comparator and queue-setup failures remain preserved under the 203-file archive. One full-import verdict returned the installed TypeScript/BendTT mismatch; no retry/projection. No current runtime consumer changes; source/API frozen and slot released |
 | Client/render | Completed BR/texture metadata, resource frames, atlas packing, UV mapping, owned CPU mipmaps and bounded sprite animation | Sprite animation passes 494 native inputs twice, including 6,551 actual timeline samples and 772,106 Java-compared pixels per run. Root replayed both outputs, fresh Java observations and artifact provenance. One full production verdict timed out at 60 seconds without output; no retry/projection. Static unique-frame sentinel, raw partial CODEC diagnostics and unsupported direct constructors remain explicit. GPU animation construction, shader interpolation, atlas assembly and visible presentation remain required |
 | Player motion | Completed support, LocalPlayer input, collision hooks and owned collision/move/history/travel; fall-reset supplier frozen for root review | Travel passes 87 actual calls, 40 complete-owner recoveries and 18 remaps twice. Supplier reference preserves 127 actual rays, 107 admitted MISS cases and seven watchdog interruptions, including relevant length-one mixed negative-subnormal Y rays. Ordinary source/harness checks pass; 58 Bend/Base/effect and twelve tool dependencies are sealed. Native/proof grant pending. Four-state MISS and whole-visited-cell interior are conditional; hits/damage and general runtime ray staging remain unresolved |
 | Model interpretation | Completed `blockstate_model.bend`; presenter integration test | Exact selector/multipart/ordered state semantics; 28 hidden actor/window/failure cleanup executions pass; actual visible focused input remains required |
@@ -63,7 +93,7 @@ declared interfaces; integration evidence determines subsequent work.
 | Float parsing | Completed, stable source | Separate strict RFC and Java-string binary32 parsers |
 | Persistence | Completed core and extension foundations, stable sources | Effectful sole-engine/lease State; closed owned codec and catalog |
 | Build reuse | Cache complete; runtime integration tests complete; full Pclient cache queued | Shared plain Player tick/input/restore native evidence passes; whole-runtime kernel export timed out; cached full-client test remains queued |
-| Block catalog | Completed stored factors, owned world lookup and registered slab catalog; new slab-world scanner preparation | All 606 slab states and 73,039 native catalog responses pass twice; full kernel remains unverified. New reference reproduces partial voxel-shape construction/AND separately from double-slab full-cube intersection, plus ordered actual scanner reads. Keep the accepted single checked API and test its real admission/error paths separately from trusted scanner fixtures |
+| Block catalog | Completed stored factors, owned world lookup and registered slab catalog; slab-world source and host adoption in progress | Original reference/source audit verified 606 slabs plus four cube states, 2,478 shape comparisons, 1,933 scanner cases and 1,954 canonical worlds. Review caught reversed raw query normalization before its promised rejection; add raw ordered admission without changing expected values. Archive original generation and repair stale-preparation/receipt/cleanup handling before resealing. No heavy grant; partial Shapes AND and double full-cube intersection remain distinct |
 | Save reference | Completed actual player/entity serialization audit; selected Entity-fields adapter and hardened host runner frozen for review | Original 67-case audit and 511-case preparation remain preserved. Fresh selected-fields reference reproduces 203 rows twice, including both old-position triples, Motion NaN retaining the previous entire vector and observed numeric coercions. Distinct build/native/kernel modes now preserve full pre-assert receipts, stop at the first failed batch and reap descendant groups. Ready seal includes 38 Bend/Base/effect files, 155 Python/helper/runtime files and 93 reference/provenance files; no heavy jobs granted. Direct Long-to-floating conversion, full Player inventory/abilities, player.dat/datafix and normal ServerPlayer remain open |
 | Kernel diagnosis | Completed serializer localization and checked source-repair design review; production unchanged | All 93 translated definitions match retained full export; rebuilt wrappers lose proper-piece paths. The trailing-witness semantic design has six raw structural edges but no admitted checked eliminator: constructor targets, match-column order, transports and template cycles remain precise blockers. No new semantic execution or complete repair candidate; retain exact unbounded mixed serialization semantics |
 | Entity scheduler | Completed `entity_common_tick.bend` verification | 101 actual Java cases/110 operations and 279 native records pass twice; full imported source/harness kernel passes ten laws. Both old-position triples, signed countdown and wrapping count are exact. Handler internals and lifecycle services remain excluded; integrate the immutable camera snapshot once |

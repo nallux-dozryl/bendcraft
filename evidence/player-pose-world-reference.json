@@ -1,0 +1,157 @@
+{
+  "boundary": "Private frozen PP source copy differs only class/output name and active-query read metadata adding actual state ID/name/ordinal. Normal constructors, four frozen external services, unchanged official methods/classes. Actual noCollision stages, block iterator/read order and first yield decide all expected results. No Python collision algorithm.",
+  "case_projection_sha256": "1e7cb249373126d6ead2a112519d2ea2460177b903f6549898c148089f7c05eb",
+  "counts": {
+    "actual_cases": 46,
+    "first_yields": 8,
+    "ordered_reads": 2233,
+    "queries": 86,
+    "unit_scale_admitted": 44
+  },
+  "fresh_full_raw_rerun_exact": true,
+  "frozen_dependencies": {
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/player_pose.json": {
+      "bytes": 310259,
+      "file": "player_pose.json",
+      "sha1": "41ab0fb7398a213a2fdb296ebc33e715d0d9040c",
+      "sha256": "9990b80a6d23a6a6463728bcb0ca9876cc9b8e7e90e374814f34aad78e8914a3"
+    },
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/reference_local_input_probe.py": {
+      "bytes": 72229,
+      "file": "reference_local_input_probe.py",
+      "sha1": "7a3300927be696f5f526623a1d503c5752ac8adb",
+      "sha256": "42ad844c7ee3616286ce99bcea00c6bc0710b20888912b6e98c1b4af6072a56e"
+    },
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/reference_player_pose_probe.py": {
+      "bytes": 24016,
+      "file": "reference_player_pose_probe.py",
+      "sha1": "13d7169b79d5e43d813680bdb722a496a0fde19a",
+      "sha256": "24f1ea6e5812e028b2fbab8aa70b89b8a5997bd2a9dbbda4213c00cfa8295ca0"
+    },
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/reference_player_pose_world_probe.py": {
+      "bytes": 9242,
+      "file": "reference_player_pose_world_probe.py",
+      "sha1": "ffa44995e8eb81f2e261b6eef150b15c838996a0",
+      "sha256": "905f14c69fe09ee0b503897cad2538e9d64e6b6d5cc8e5b0be56f49c1ff404eb"
+    },
+    "/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar": {
+      "bytes": 41483720,
+      "file": "26.3.jar",
+      "sha1": "e877b6a07acd633fb3bb475002175cec036e7b87",
+      "sha256": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d"
+    }
+  },
+  "frozen_pose_expectations_equal": true,
+  "input_sha256": "24ac7a0d5dd26573dad992f3c4208cb818ec16cd517cc5bef925ced780dc4835",
+  "plain_observer_final_exact": true,
+  "producer": {
+    "bytes": 9242,
+    "file": "reference_player_pose_world_probe.py",
+    "sha1": "ffa44995e8eb81f2e261b6eef150b15c838996a0",
+    "sha256": "905f14c69fe09ee0b503897cad2538e9d64e6b6d5cc8e5b0be56f49c1ff404eb"
+  },
+  "reference": {
+    "bytes": 378709,
+    "file": "player_pose_world.json",
+    "sha1": "ba9675d61c967470cc0b06227341dfc01ea9e6ac",
+    "sha256": "1b2b308cc24e2498118f4df32d2ef0049c6cd7d0b93279784072a12898c5c94b"
+  },
+  "runs": [
+    {
+      "command": [
+        "/Users/chuah/Library/Application Support/minecraft/runtime/java-runtime-epsilon/mac-os-arm64/java-runtime-epsilon/jre.bundle/Contents/Home/bin/java",
+        "--source",
+        "25",
+        "--class-path",
+        "/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/at/yawk/lz4/lz4-java/1.10.1/lz4-java-1.10.1.jar:/Users/chuah/Library/Application Support/minecraft/libraries/ca/weblite/java-objc-bridge/1.1/java-objc-bridge-1.1.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/azure/azure-json/1.4.0/azure-json-1.4.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/github/oshi/oshi-core/6.9.0/oshi-core-6.9.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/google/code/gson/gson/2.14.0/gson-2.14.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/google/guava/failureaccess/1.0.3/failureaccess-1.0.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/google/guava/guava/33.6.0-jre/guava-33.6.0-jre.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/ibm/icu/icu4j/78.3/icu4j-78.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/microsoft/azure/msal4j/1.24.1/msal4j-1.24.1.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/authlib/10.0.77/authlib-10.0.77.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/blocklist/1.0.10/blocklist-1.0.10.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/brigadier/1.3.11/brigadier-1.3.11.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/datafixerupper/10.0.21/datafixerupper-10.0.21.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/jtracy/1.14.38/jtracy-1.14.38.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/jtracy/1.14.38/jtracy-1.14.38-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/jtracy/1.14.38/jtracy-1.14.38-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/logging/1.7.12/logging-1.7.12.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/patchy/2.2.10/patchy-2.2.10.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/text2speech/1.19.12/text2speech-1.19.12.jar:/Users/chuah/Library/Application Support/minecraft/libraries/commons-codec/commons-codec/1.22.0/commons-codec-1.22.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/commons-io/commons-io/2.20.0/commons-io-2.20.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-buffer/4.2.16.Final/netty-buffer-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-codec-base/4.2.16.Final/netty-codec-base-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-codec-compression/4.2.16.Final/netty-codec-compression-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-codec-http/4.2.16.Final/netty-codec-http-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-common/4.2.16.Final/netty-common-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-handler/4.2.16.Final/netty-handler-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-resolver/4.2.16.Final/netty-resolver-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-transport-classes-epoll/4.2.16.Final/netty-transport-classes-epoll-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-transport-classes-kqueue/4.2.16.Final/netty-transport-classes-kqueue-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-transport-native-kqueue/4.2.16.Final/netty-transport-native-kqueue-4.2.16.Final-osx-aarch_64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-transport-native-kqueue/4.2.16.Final/netty-transport-native-kqueue-4.2.16.Final-osx-x86_64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-transport-native-unix-common/4.2.16.Final/netty-transport-native-unix-common-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-transport/4.2.16.Final/netty-transport-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/it/unimi/dsi/fastutil/8.5.18/fastutil-8.5.18.jar:/Users/chuah/Library/Application Support/minecraft/libraries/net/java/dev/jna/jna-platform/5.17.0/jna-platform-5.17.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/net/java/dev/jna/jna/5.17.0/jna-5.17.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/apache/commons/commons-compress/1.28.0/commons-compress-1.28.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/apache/commons/commons-lang3/3.20.0/commons-lang3-3.20.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/apache/logging/log4j/log4j-api/2.26.0/log4j-api-2.26.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/apache/logging/log4j/log4j-core/2.26.0/log4j-core-2.26.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/apache/logging/log4j/log4j-slf4j2-impl/2.26.0/log4j-slf4j2-impl-2.26.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/jcraft/jorbis/0.0.17/jorbis-0.0.17.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/joml/joml/1.10.9/joml-1.10.9.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-freetype/3.4.3/lwjgl-freetype-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-freetype/3.4.3/lwjgl-freetype-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-freetype/3.4.3/lwjgl-freetype-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-jemalloc/3.4.3/lwjgl-jemalloc-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-jemalloc/3.4.3/lwjgl-jemalloc-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-jemalloc/3.4.3/lwjgl-jemalloc-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-openal/3.4.3/lwjgl-openal-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-openal/3.4.3/lwjgl-openal-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-openal/3.4.3/lwjgl-openal-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-opengl/3.4.3/lwjgl-opengl-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-opengl/3.4.3/lwjgl-opengl-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-opengl/3.4.3/lwjgl-opengl-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-sdl/3.4.3/lwjgl-sdl-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-sdl/3.4.3/lwjgl-sdl-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-sdl/3.4.3/lwjgl-sdl-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-shaderc/3.4.3/lwjgl-shaderc-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-shaderc/3.4.3/lwjgl-shaderc-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-shaderc/3.4.3/lwjgl-shaderc-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-spvc/3.4.3/lwjgl-spvc-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-spvc/3.4.3/lwjgl-spvc-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-spvc/3.4.3/lwjgl-spvc-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-stb/3.4.3/lwjgl-stb-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-stb/3.4.3/lwjgl-stb-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-stb/3.4.3/lwjgl-stb-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-vma/3.4.3/lwjgl-vma-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-vma/3.4.3/lwjgl-vma-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-vma/3.4.3/lwjgl-vma-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-vulkan/3.4.3/lwjgl-vulkan-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-vulkan/3.4.3/lwjgl-vulkan-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-vulkan/3.4.3/lwjgl-vulkan-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl/3.4.3/lwjgl-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl/3.4.3/lwjgl-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl/3.4.3/lwjgl-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/slf4j/slf4j-api/2.0.17/slf4j-api-2.0.17.jar",
+        "/dev/stdin"
+      ],
+      "critical_classes": {
+        "net.minecraft.client.multiplayer.ClientLevel": "7d69f81d39e64a679b51f745211619204073167d59b149d9de683e10eb2d97ba",
+        "net.minecraft.client.player.LocalPlayer": "d5390f22219039f78f5f59a9961685c11d3cf36f12a645866008135862b59435",
+        "net.minecraft.core.Cursor3D": "c3c474cbeb4e0d2591e378104fb2643f45e5b40897d32a027eae02e66ddb4d5a",
+        "net.minecraft.world.entity.Avatar": "b85674319614e72b1857f8e21d16121682648220452feaac41ed68d770d62f82",
+        "net.minecraft.world.entity.Entity": "7ac5f6a929abbf4fa00f0a87ad530669f7d96c8ee2bb86a5076ab1fab352fb3c",
+        "net.minecraft.world.entity.EntityDimensions": "f51c3a3999e222010967ddef1de08c5ffd6533068c06895376836da694263447",
+        "net.minecraft.world.entity.LivingEntity": "6eaecd529ba26174652f3bb71e7c86262e54ac6f5e1e70944fb0e629b3b9948a",
+        "net.minecraft.world.entity.player.Player": "28ad0c7756a5cbdfde6c22772f585da9177d6f9eb418ea5ff2dd85657d81dfb2",
+        "net.minecraft.world.level.BlockCollisions": "c363348a6ede8b2f46426c4f1b9fd01d2b4b878c8b6682bf6b071a56c31948fc",
+        "net.minecraft.world.level.CollisionGetter": "417618ca200372b50ce7ce2ad1000f65373d65ad8d92546501f25c9433ad543b"
+      },
+      "launcher_sha256": "1482ef4fb291d0ab24921bb25c6d16dc2d2713d318b5304ce51364d5d45658c2",
+      "loaded_official_class_count": 4372,
+      "loaded_official_class_tree_sha256": "c6b93240cc229e517a881dc89a03eebfa2580472672c83b6a11f54f5160a1a21",
+      "process_group_cap_seconds": 120,
+      "raw_artifact": {
+        "bytes": 1876122,
+        "file": "first-raw.json",
+        "sha1": "6ed238f811a77fea14f1da22c21643bc974f1aa2",
+        "sha256": "ca2142dfe90df1d938533f159d3a76e58b04c020f23d553b517bcc99dee8b0c5"
+      },
+      "returncode": 0,
+      "seconds": 4.362467,
+      "sources_sha256": "7b1008f5e9bf1991137d7c74466e19496179c08d07abd5cc0e6fa0e983cb1fb7",
+      "stderr": {
+        "bytes": 455,
+        "file": "first-stderr.txt",
+        "sha1": "b9607ba68792d81b80ee6e67aec408051750db6a",
+        "sha256": "e9fab062c9ed10d9c19e6cb8841f8ef1decae295e28e7def0492f8e7f0eb25b8"
+      },
+      "stdout": {
+        "bytes": 1217490,
+        "file": "first-stdout.txt",
+        "sha1": "3aac11e68fa6d3f8ff6ee38af801933f31640e05",
+        "sha256": "a6b96a71648cda1c81932d0957116472e67966479ae912d10894040c9cc685c2"
+      }
+    },
+    {
+      "command": [
+        "/Users/chuah/Library/Application Support/minecraft/runtime/java-runtime-epsilon/mac-os-arm64/java-runtime-epsilon/jre.bundle/Contents/Home/bin/java",
+        "--source",
+        "25",
+        "--class-path",
+        "/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/at/yawk/lz4/lz4-java/1.10.1/lz4-java-1.10.1.jar:/Users/chuah/Library/Application Support/minecraft/libraries/ca/weblite/java-objc-bridge/1.1/java-objc-bridge-1.1.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/azure/azure-json/1.4.0/azure-json-1.4.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/github/oshi/oshi-core/6.9.0/oshi-core-6.9.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/google/code/gson/gson/2.14.0/gson-2.14.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/google/guava/failureaccess/1.0.3/failureaccess-1.0.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/google/guava/guava/33.6.0-jre/guava-33.6.0-jre.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/ibm/icu/icu4j/78.3/icu4j-78.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/microsoft/azure/msal4j/1.24.1/msal4j-1.24.1.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/authlib/10.0.77/authlib-10.0.77.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/blocklist/1.0.10/blocklist-1.0.10.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/brigadier/1.3.11/brigadier-1.3.11.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/datafixerupper/10.0.21/datafixerupper-10.0.21.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/jtracy/1.14.38/jtracy-1.14.38.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/jtracy/1.14.38/jtracy-1.14.38-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/jtracy/1.14.38/jtracy-1.14.38-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/logging/1.7.12/logging-1.7.12.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/patchy/2.2.10/patchy-2.2.10.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/text2speech/1.19.12/text2speech-1.19.12.jar:/Users/chuah/Library/Application Support/minecraft/libraries/commons-codec/commons-codec/1.22.0/commons-codec-1.22.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/commons-io/commons-io/2.20.0/commons-io-2.20.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-buffer/4.2.16.Final/netty-buffer-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-codec-base/4.2.16.Final/netty-codec-base-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-codec-compression/4.2.16.Final/netty-codec-compression-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-codec-http/4.2.16.Final/netty-codec-http-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-common/4.2.16.Final/netty-common-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-handler/4.2.16.Final/netty-handler-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-resolver/4.2.16.Final/netty-resolver-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-transport-classes-epoll/4.2.16.Final/netty-transport-classes-epoll-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-transport-classes-kqueue/4.2.16.Final/netty-transport-classes-kqueue-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-transport-native-kqueue/4.2.16.Final/netty-transport-native-kqueue-4.2.16.Final-osx-aarch_64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-transport-native-kqueue/4.2.16.Final/netty-transport-native-kqueue-4.2.16.Final-osx-x86_64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-transport-native-unix-common/4.2.16.Final/netty-transport-native-unix-common-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-transport/4.2.16.Final/netty-transport-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/it/unimi/dsi/fastutil/8.5.18/fastutil-8.5.18.jar:/Users/chuah/Library/Application Support/minecraft/libraries/net/java/dev/jna/jna-platform/5.17.0/jna-platform-5.17.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/net/java/dev/jna/jna/5.17.0/jna-5.17.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/apache/commons/commons-compress/1.28.0/commons-compress-1.28.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/apache/commons/commons-lang3/3.20.0/commons-lang3-3.20.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/apache/logging/log4j/log4j-api/2.26.0/log4j-api-2.26.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/apache/logging/log4j/log4j-core/2.26.0/log4j-core-2.26.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/apache/logging/log4j/log4j-slf4j2-impl/2.26.0/log4j-slf4j2-impl-2.26.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/jcraft/jorbis/0.0.17/jorbis-0.0.17.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/joml/joml/1.10.9/joml-1.10.9.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-freetype/3.4.3/lwjgl-freetype-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-freetype/3.4.3/lwjgl-freetype-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-freetype/3.4.3/lwjgl-freetype-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-jemalloc/3.4.3/lwjgl-jemalloc-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-jemalloc/3.4.3/lwjgl-jemalloc-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-jemalloc/3.4.3/lwjgl-jemalloc-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-openal/3.4.3/lwjgl-openal-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-openal/3.4.3/lwjgl-openal-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-openal/3.4.3/lwjgl-openal-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-opengl/3.4.3/lwjgl-opengl-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-opengl/3.4.3/lwjgl-opengl-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-opengl/3.4.3/lwjgl-opengl-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-sdl/3.4.3/lwjgl-sdl-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-sdl/3.4.3/lwjgl-sdl-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-sdl/3.4.3/lwjgl-sdl-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-shaderc/3.4.3/lwjgl-shaderc-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-shaderc/3.4.3/lwjgl-shaderc-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-shaderc/3.4.3/lwjgl-shaderc-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-spvc/3.4.3/lwjgl-spvc-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-spvc/3.4.3/lwjgl-spvc-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-spvc/3.4.3/lwjgl-spvc-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-stb/3.4.3/lwjgl-stb-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-stb/3.4.3/lwjgl-stb-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-stb/3.4.3/lwjgl-stb-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-vma/3.4.3/lwjgl-vma-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-vma/3.4.3/lwjgl-vma-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-vma/3.4.3/lwjgl-vma-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-vulkan/3.4.3/lwjgl-vulkan-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-vulkan/3.4.3/lwjgl-vulkan-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-vulkan/3.4.3/lwjgl-vulkan-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl/3.4.3/lwjgl-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl/3.4.3/lwjgl-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl/3.4.3/lwjgl-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/slf4j/slf4j-api/2.0.17/slf4j-api-2.0.17.jar",
+        "/dev/stdin"
+      ],
+      "critical_classes": {
+        "net.minecraft.client.multiplayer.ClientLevel": "7d69f81d39e64a679b51f745211619204073167d59b149d9de683e10eb2d97ba",
+        "net.minecraft.client.player.LocalPlayer": "d5390f22219039f78f5f59a9961685c11d3cf36f12a645866008135862b59435",
+        "net.minecraft.core.Cursor3D": "c3c474cbeb4e0d2591e378104fb2643f45e5b40897d32a027eae02e66ddb4d5a",
+        "net.minecraft.world.entity.Avatar": "b85674319614e72b1857f8e21d16121682648220452feaac41ed68d770d62f82",
+        "net.minecraft.world.entity.Entity": "7ac5f6a929abbf4fa00f0a87ad530669f7d96c8ee2bb86a5076ab1fab352fb3c",
+        "net.minecraft.world.entity.EntityDimensions": "f51c3a3999e222010967ddef1de08c5ffd6533068c06895376836da694263447",
+        "net.minecraft.world.entity.LivingEntity": "6eaecd529ba26174652f3bb71e7c86262e54ac6f5e1e70944fb0e629b3b9948a",
+        "net.minecraft.world.entity.player.Player": "28ad0c7756a5cbdfde6c22772f585da9177d6f9eb418ea5ff2dd85657d81dfb2",
+        "net.minecraft.world.level.BlockCollisions": "c363348a6ede8b2f46426c4f1b9fd01d2b4b878c8b6682bf6b071a56c31948fc",
+        "net.minecraft.world.level.CollisionGetter": "417618ca200372b50ce7ce2ad1000f65373d65ad8d92546501f25c9433ad543b"
+      },
+      "launcher_sha256": "1482ef4fb291d0ab24921bb25c6d16dc2d2713d318b5304ce51364d5d45658c2",
+      "loaded_official_class_count": 4372,
+      "loaded_official_class_tree_sha256": "c6b93240cc229e517a881dc89a03eebfa2580472672c83b6a11f54f5160a1a21",
+      "process_group_cap_seconds": 120,
+      "raw_artifact": {
+        "bytes": 1876122,
+        "file": "second-raw.json",
+        "sha1": "6ed238f811a77fea14f1da22c21643bc974f1aa2",
+        "sha256": "ca2142dfe90df1d938533f159d3a76e58b04c020f23d553b517bcc99dee8b0c5"
+      },
+      "returncode": 0,
+      "seconds": 4.216593,
+      "sources_sha256": "7b1008f5e9bf1991137d7c74466e19496179c08d07abd5cc0e6fa0e983cb1fb7",
+      "stderr": {
+        "bytes": 455,
+        "file": "second-stderr.txt",
+        "sha1": "b9607ba68792d81b80ee6e67aec408051750db6a",
+        "sha256": "e9fab062c9ed10d9c19e6cb8841f8ef1decae295e28e7def0492f8e7f0eb25b8"
+      },
+      "stdout": {
+        "bytes": 1217490,
+        "file": "second-stdout.txt",
+        "sha1": "429f29578006b4b6c696196cbe91f0886b61f178",
+        "sha256": "2fbc8e359d2cbad7d57d49879e618881791b611feb80557e2a6b51b1d693a3f1"
+      }
+    }
+  ],
+  "source_sha256": "1ac7760c33cbbc77c6981bd49051a23c3b942caf7c9fb4366b681c4d6ae113b4",
+  "status": "actual Java reference passed; owned Bend bridge not executed"
+}

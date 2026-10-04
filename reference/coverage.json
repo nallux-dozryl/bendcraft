@@ -4698,6 +4698,46 @@
       ],
       "verification_status": "verified_bounded_native_cases",
       "whole_parent_parity_established": false
+    },
+    {
+      "behavioral_reference_evidence": [
+        "reference/player_pose_world.json",
+        "evidence/player-pose-world-reference.json"
+      ],
+      "behavioral_reference_status": "actual_java_bounded_cases",
+      "current_evidence_sha256": {
+        "evidence/player-pose-world-final-handoff.json": "37ea47d50a1db664b369963ee63ba987e712ac554e21f452a074f99c43a997c0",
+        "evidence/player-pose-world-kernel.json": "9ff94805712d50a33cb31b8aa4a8720706fbdf6bf8da5c2f27632a39167a0905",
+        "evidence/player-pose-world-native.json": "2a543201830ef156e1d41e66c3eac641665acb8c7d01a4b0564f7a5227d20d53",
+        "evidence/player-pose-world-root-audit.json": "0b97866d5aa17d8398efa8fc321df6973f718cce463e5bf7b219dd74aa7efde8",
+        "reference/player_pose_world.json": "1b2b308cc24e2498118f4df32d2ef0049c6cd7d0b93279784072a12898c5c94b",
+        "src/player_pose_world.bend": "d7f256c3e93e2f55b944e75ff8b156c9951e800611db3cd205d49629c094ce77",
+        "tests/player_pose_world.bend": "6bd14c9bdb6c5993393e899c2179db104f0fef1cf7ebf14914e154b8c51e60bb"
+      },
+      "id": "component:player_pose_world",
+      "implementation_evidence": [
+        "src/player_pose_world.bend",
+        "tests/player_pose_world.bend"
+      ],
+      "implementation_status": "implemented_bounded_projection",
+      "independent_kernel_status": "unverified_generic_typescript_bendtt_mismatch_no_named_failed_law",
+      "kind": "bounded_behavior_component",
+      "measured_scope": "81 fresh native invocations; 44 admitted actual contexts, two scale refusals, 28 failure/recoveries, four remaps and three running/event/edit jobs. Includes 156 query rows, 3759 ordered reads and twelve first yields.",
+      "parent_obligation": "behavior:players_modes",
+      "reference_evidence": [
+        "reference/player_pose_world.json"
+      ],
+      "reference_inventory_status": "captured_bounded_release_scope",
+      "required_behavior": "Owned world queries supply exact conditional player pose/cached-eye transitions, with full owner retention on checked errors.",
+      "scope_limit": "Adult/unscaled neutral four-state queries with caller-declared relevant empty entities/clear query interior; shell cells still read and resolve. Other shapes/actors/border detection, lifecycle, cached-eye presentation and current runtime integration remain separate. Original failures and 203-file lineage preserved; one event-stamp/Applied-tick correction only. Original C/clang arguments captured; native headers/libraries uncaptured. One full-import kernel mismatch, no retry/projection.",
+      "verification_evidence": [
+        "evidence/player-pose-world-final-handoff.json",
+        "evidence/player-pose-world-native.json",
+        "evidence/player-pose-world-root-audit.json",
+        "evidence/player-pose-world-kernel.json"
+      ],
+      "verification_status": "verified_bounded_native_cases",
+      "whole_parent_parity_established": false
     }
   ]
 }

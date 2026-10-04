@@ -1,0 +1,248 @@
+{
+  "all_33_closure_pins_unchanged": true,
+  "build": {
+    "binary": {
+      "bytes": 6274440,
+      "file": "player-pose-world-tests",
+      "path": "build/player-pose-world-tests",
+      "sha1": "9399a726b8af7e028c778e886ed3720125c8fb40",
+      "sha256": "d4c84c8a9ddb5db63b68a95b8604c530adde3fcae89f30c61abc9648f8638704"
+    },
+    "clang_commands_sha256": "b2af8f04761f72250c4624c6f2f6b84898e958e99a5f01873b0f49046bdd2ff7",
+    "emitted_c": [
+      {
+        "bytes": 18639578,
+        "file": "source-2.c",
+        "path": "build/player-pose-world-tests-artifacts/native-capture/source-2.c",
+        "sha1": "85a1aa36cc57cb354a72e693a9d42204440fef05",
+        "sha256": "c9327149949a58b34237ed5dced2f99ac2dfeb72a8984da2741cfd0f567122eb"
+      }
+    ],
+    "manifest": {
+      "bytes": 12120,
+      "file": "native-build.json",
+      "path": "build/player-pose-world-tests-artifacts/native-build.json",
+      "sha1": "2c6cbe67a0dc38b306cbbb0e8c4dc65cbc8a31c2",
+      "sha256": "bdcd2c297ed3386a8e1af29c55b587a106132ec292ad30a6a7005030957ebdbc"
+    },
+    "seconds": 254.438339
+  },
+  "completed_before_failure": {
+    "actual_contexts": 46,
+    "admitted_actual_ordered_reads": 1961,
+    "admitted_actual_queries": 82,
+    "admitted_actual_updates": 44,
+    "explicit_failure_recoveries": 26,
+    "first_yields": 8,
+    "native_invocations_including_failure": 73,
+    "scale_refusals": 2
+  },
+  "first_failure": {
+    "actual": "world:collision-query-limit",
+    "body_box_raw_f64": [
+      "41dfffffffaccccd",
+      "3ff0000000000000",
+      "3fc9999980000000",
+      "41dfffffffd33333",
+      "4006666660000000",
+      "3fe99999a0000000"
+    ],
+    "command": "update;failure:positive-i32-margin;32;2;1071644672|0|1072693248|0|1071644672|0|1070176665|2147483648|1072693248|0|1070176665|2147483648|1072273817|2684354560|1074161254|1610612736|1072273817|2684354560|2147483648|0|1069547520|0|3218079744|0|1058642330|1072064102|1|1|0|1;0|1070554153;0|1065353216|0|0;0|0|1105199103|4093640704|3226468352|0|3226468352|0|1105199104|109051904|1078984704|0|1078984704|0",
+    "expected": "world:collision-query-outside-i32",
+    "id": "failure:positive-i32-margin",
+    "index": 72,
+    "position_raw_f64": [
+      "41dfffffffc00000",
+      "3ff0000000000000",
+      "3fe0000000000000"
+    ],
+    "recovery_output_present_but_not_compared": true,
+    "rollback_assertions_completed_before_mismatch": true,
+    "stderr": {
+      "bytes": 0,
+      "file": "case-72.stderr",
+      "path": "build/player-pose-world-tests-artifacts/case-72.stderr",
+      "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 13042,
+      "file": "case-72.stdout",
+      "path": "build/player-pose-world-tests-artifacts/case-72.stdout",
+      "sha1": "c6c0c796e80629aec70877401dab723c4f41901e",
+      "sha256": "761820035c31870ff8fb2728b833c59223c8f8f59b0cda2b3512db5c2118875e"
+    }
+  },
+  "no_retry_or_source_runner_expectation_reference_change": true,
+  "not_executed": [
+    "negative-i32-margin",
+    "running",
+    "event-owner",
+    "edit-recovery",
+    "four dynamic-palette remaps",
+    "independent full-import kernel"
+  ],
+  "original_generation_archives": {
+    "build/player-pose-world-tests-artifacts/case-72.stderr": {
+      "bytes": 0,
+      "file": "case-72.stderr",
+      "path": "build/player-pose-world-tests-artifacts/first-failure-generation/build/player-pose-world-tests-artifacts/case-72.stderr",
+      "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/player-pose-world-tests-artifacts/case-72.stdout": {
+      "bytes": 13042,
+      "file": "case-72.stdout",
+      "path": "build/player-pose-world-tests-artifacts/first-failure-generation/build/player-pose-world-tests-artifacts/case-72.stdout",
+      "sha1": "c6c0c796e80629aec70877401dab723c4f41901e",
+      "sha256": "761820035c31870ff8fb2728b833c59223c8f8f59b0cda2b3512db5c2118875e"
+    },
+    "build/player-pose-world-tests-artifacts/native-build.json": {
+      "bytes": 12120,
+      "file": "native-build.json",
+      "path": "build/player-pose-world-tests-artifacts/first-failure-generation/build/player-pose-world-tests-artifacts/native-build.json",
+      "sha1": "2c6cbe67a0dc38b306cbbb0e8c4dc65cbc8a31c2",
+      "sha256": "bdcd2c297ed3386a8e1af29c55b587a106132ec292ad30a6a7005030957ebdbc"
+    },
+    "docs/PLAYER_POSE_WORLD.md": {
+      "bytes": 9736,
+      "file": "PLAYER_POSE_WORLD.md",
+      "path": "build/player-pose-world-tests-artifacts/first-failure-generation/docs/PLAYER_POSE_WORLD.md",
+      "sha1": "5e8a3373f0706dd4c723d8e528cd41252914c9d8",
+      "sha256": "27dd73a3a351bdc18c5409d38a05d68b98f4f59c1d5e2ddd7db5deab67f59eff"
+    },
+    "evidence/player-pose-world-handoff.json": {
+      "bytes": 3987,
+      "file": "player-pose-world-handoff.json",
+      "path": "build/player-pose-world-tests-artifacts/first-failure-generation/evidence/player-pose-world-handoff.json",
+      "sha1": "2472ad993b57e1c2038e39dbf8fc3ff3b7dc67fb",
+      "sha256": "c929e610ac2271e10cd39ec76d4f1966ef19fe17f828f94d2068d090c2961cba"
+    },
+    "evidence/player-pose-world-preparation.json": {
+      "bytes": 12258,
+      "file": "player-pose-world-preparation.json",
+      "path": "build/player-pose-world-tests-artifacts/first-failure-generation/evidence/player-pose-world-preparation.json",
+      "sha1": "d46045ab9a5e7ef33be2f66d29f687a3b00761e4",
+      "sha256": "3cc4d4aac171df9529302e2a61dd84c961b95e85c979759fede0a355bb287ec8"
+    },
+    "reference/player_pose_world.json": {
+      "bytes": 378709,
+      "file": "player_pose_world.json",
+      "path": "build/player-pose-world-tests-artifacts/first-failure-generation/reference/player_pose_world.json",
+      "sha1": "ba9675d61c967470cc0b06227341dfc01ea9e6ac",
+      "sha256": "1b2b308cc24e2498118f4df32d2ef0049c6cd7d0b93279784072a12898c5c94b"
+    },
+    "src/player_pose_world.bend": {
+      "bytes": 9896,
+      "file": "player_pose_world.bend",
+      "path": "build/player-pose-world-tests-artifacts/first-failure-generation/src/player_pose_world.bend",
+      "sha1": "fc0bb0974d4623130702a6d88f1bcd171c9ed68e",
+      "sha256": "d7f256c3e93e2f55b944e75ff8b156c9951e800611db3cd205d49629c094ce77"
+    },
+    "tests/player_pose_world.bend": {
+      "bytes": 30751,
+      "file": "player_pose_world.bend",
+      "path": "build/player-pose-world-tests-artifacts/first-failure-generation/tests/player_pose_world.bend",
+      "sha1": "1c09065318d266cabc71b379f085119ec88fac4a",
+      "sha256": "8f62a73204faab85e1202a32bb08bdb154f9bfab1424e20b47e284daad4768e9"
+    },
+    "tools/reference_player_pose_world_probe.py": {
+      "bytes": 9242,
+      "file": "reference_player_pose_world_probe.py",
+      "path": "build/player-pose-world-tests-artifacts/first-failure-generation/tools/reference_player_pose_world_probe.py",
+      "sha1": "ffa44995e8eb81f2e261b6eef150b15c838996a0",
+      "sha256": "905f14c69fe09ee0b503897cad2538e9d64e6b6d5cc8e5b0be56f49c1ff404eb"
+    },
+    "tools/test_player_pose_world.py": {
+      "bytes": 19465,
+      "file": "test_player_pose_world.py",
+      "path": "build/player-pose-world-tests-artifacts/first-failure-generation/tools/test_player_pose_world.py",
+      "sha1": "6810f75cfb92698d57d992d07eadb51b0b1739b9",
+      "sha256": "00ab95f7c53e802f984fb548da257f81b167e9861ac1f2db7d0245766b2e7467"
+    }
+  },
+  "process_group_audit": {
+    "all_granted_native_groups_reaped": true,
+    "listed_pids": [
+      28931,
+      28940,
+      29036,
+      29038,
+      30058,
+      30062,
+      30064,
+      30070,
+      30075,
+      30076,
+      30077,
+      30078,
+      30079,
+      30080,
+      30081,
+      30082,
+      30083,
+      30084,
+      30085,
+      30086,
+      30087,
+      30088,
+      30089,
+      30092,
+      30093,
+      30094,
+      30096,
+      30097,
+      30098,
+      30099,
+      30100,
+      30101,
+      30102,
+      30103,
+      30104,
+      30105,
+      30106,
+      30107,
+      30108,
+      30109,
+      30110,
+      30125,
+      30126,
+      30131,
+      30132,
+      30133,
+      30134,
+      30135,
+      30136,
+      30147,
+      30148,
+      30149,
+      30151,
+      30152,
+      30155,
+      30158,
+      30169,
+      30170,
+      30171,
+      30172,
+      30173,
+      30174,
+      30175,
+      30177,
+      30178,
+      30179,
+      30180,
+      30181,
+      30182,
+      30186,
+      30187,
+      30188,
+      30189,
+      30190,
+      30191,
+      30192
+    ],
+    "live": []
+  },
+  "provenance_limit": "The runner retained each stdout/stderr but did not persist per-case duration/exit receipts before its terminal assertion. Earlier cases passed sequential original assertions before the next phase; case72 passed its native return-code and rollback assertions before mismatch. No timing receipts are fabricated.",
+  "status": "installed native compiled; comparison stopped on first prepared policy-error expectation mismatch; kernel not run"
+}

@@ -1,0 +1,88 @@
+{
+  "argument_sha256": "b2992794944be15454206054a5e92ba728617eb25f67ddf4d8b3b81eaa1163b5",
+  "comparison_invocations": 81,
+  "dependencies_unchanged": [
+    "PP",
+    "LCW",
+    "W",
+    "Core",
+    "Movement",
+    "Registry",
+    "LocalMoveHistory"
+  ],
+  "dependency_count": 33,
+  "dependency_pins_sha256": "a74de44e0144f82aee08189db658dfe2cfc41236acb126ee49fe05149aaac7c3",
+  "expected_actual_fields_sha256": "1e7cb249373126d6ead2a112519d2ea2460177b903f6549898c148089f7c05eb",
+  "fresh_actual_source_sha256": "1ac7760c33cbbc77c6981bd49051a23c3b942caf7c9fb4366b681c4d6ae113b4",
+  "kernel_cap_seconds": 60,
+  "kernel_command": "PYTHONDONTWRITEBYTECODE=1 python3 tools/test_player_pose_world.py --kernel",
+  "native_command": "PYTHONDONTWRITEBYTECODE=1 python3 tools/test_player_pose_world.py --native",
+  "native_emission_cap_seconds": 600,
+  "native_process_group_kill_and_reap": true,
+  "per_comparison_cap_seconds": 60,
+  "phase_limit": "One late conditional pose update; finite four-state query admission. No tick, movement, support, eye-camera integration, dynamic WorldBorder/actors or lifecycle claim.",
+  "pins": {
+    "docs/PLAYER_POSE_WORLD.md": {
+      "bytes": 9736,
+      "file": "PLAYER_POSE_WORLD.md",
+      "sha1": "5e8a3373f0706dd4c723d8e528cd41252914c9d8",
+      "sha256": "27dd73a3a351bdc18c5409d38a05d68b98f4f59c1d5e2ddd7db5deab67f59eff"
+    },
+    "evidence/player-pose-world-preparation.json": {
+      "bytes": 12258,
+      "file": "player-pose-world-preparation.json",
+      "sha1": "d46045ab9a5e7ef33be2f66d29f687a3b00761e4",
+      "sha256": "3cc4d4aac171df9529302e2a61dd84c961b95e85c979759fede0a355bb287ec8"
+    },
+    "evidence/player-pose-world-reference.json": {
+      "bytes": 28030,
+      "file": "player-pose-world-reference.json",
+      "sha1": "0f46a18ae41e53103af6440670f308ded26d0a33",
+      "sha256": "e6fd71167572758d260c4118724d149ef03813de16db4c82ef6a5ab740ba945f"
+    },
+    "reference/player_pose_world.json": {
+      "bytes": 378709,
+      "file": "player_pose_world.json",
+      "sha1": "ba9675d61c967470cc0b06227341dfc01ea9e6ac",
+      "sha256": "1b2b308cc24e2498118f4df32d2ef0049c6cd7d0b93279784072a12898c5c94b"
+    },
+    "src/player_pose_world.bend": {
+      "bytes": 9896,
+      "file": "player_pose_world.bend",
+      "sha1": "fc0bb0974d4623130702a6d88f1bcd171c9ed68e",
+      "sha256": "d7f256c3e93e2f55b944e75ff8b156c9951e800611db3cd205d49629c094ce77"
+    },
+    "tests/player_pose_world.bend": {
+      "bytes": 30751,
+      "file": "player_pose_world.bend",
+      "sha1": "1c09065318d266cabc71b379f085119ec88fac4a",
+      "sha256": "8f62a73204faab85e1202a32bb08bdb154f9bfab1424e20b47e284daad4768e9"
+    },
+    "tools/reference_player_pose_world_probe.py": {
+      "bytes": 9242,
+      "file": "reference_player_pose_world_probe.py",
+      "sha1": "ffa44995e8eb81f2e261b6eef150b15c838996a0",
+      "sha256": "905f14c69fe09ee0b503897cad2538e9d64e6b6d5cc8e5b0be56f49c1ff404eb"
+    },
+    "tools/test_player_pose_world.py": {
+      "bytes": 19465,
+      "file": "test_player_pose_world.py",
+      "sha1": "6810f75cfb92698d57d992d07eadb51b0b1739b9",
+      "sha256": "00ab95f7c53e802f984fb548da257f81b167e9861ac1f2db7d0245766b2e7467"
+    }
+  },
+  "prepared_counts": {
+    "actual_contexts": 46,
+    "admitted": 44,
+    "extra_running_event_and_edit_jobs": 3,
+    "failure_recoveries": 28,
+    "first_yields": 8,
+    "queries": 86,
+    "reads": 2233
+  },
+  "probe_ast_sha256": "148e52783abc50c68f67c20f8395e902a1d64740ebb49ee55b220179f0ac888d",
+  "public_signature": "update_checked(W.State,PP.State,Request{context:PP.Context,environment:LCW.Environment,fuel:Nat,tail:[]})->W.State & PP.State & Result<Error,Observation{transition:PP.Transition,queries:List<QueryRecord>,tail:[]}>",
+  "raw_reference_and_build_artifacts_ignored": true,
+  "runner_ast_sha256": "04c1e1b94ad39fed8ae02f94712aa4b6d62f030dff07d2b812f23d9a6aba3512",
+  "status": "frozen ordinary preparation; fresh actual Java reference passes; native/kernel pending lead grant"
+}
