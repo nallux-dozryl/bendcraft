@@ -92,12 +92,14 @@ def fuel_source_int(+path:String,selected:Bool) -> Maybe<&2,FuelSource>:
     case False{}:
       fuel_source_selected(String.starts_with(path,"data/minecraft/context_float_provider/cooking/") && String.ends_with(path,".json"),path,1,"data/minecraft/context_float_provider/")
 
-def fuel_source(+path:String) -> Maybe<&2,FuelSource>:
-  match path:
-    case "data/minecraft/predicate/block/fast_cooking.json":
-      Some{FuelSource{path,2,"minecraft:block/fast_cooking"}}
-    case _:
+def fuel_source_predicate(+path:String,selected:Bool) -> Maybe<&2,FuelSource>:
+  match selected:
+    case True{}: Some{FuelSource{path,2,"minecraft:block/fast_cooking"}}
+    case False{}:
       fuel_source_int(path,String.starts_with(path,"data/minecraft/context_int_provider/cooking/") && String.ends_with(path,".json"))
+
+def fuel_source(+path:String) -> Maybe<&2,FuelSource>:
+  fuel_source_predicate(path,String.eq(path,"data/minecraft/predicate/block/fast_cooking.json"))
 
 def fuel_sources_cons(value:Maybe<&2,FuelSource>,tail:List<&2,FuelSource>) -> List<&2,FuelSource>:
   match value:
