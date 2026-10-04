@@ -1,0 +1,62 @@
+{
+  "status": "PASS",
+  "confidence": "high for exact captured CPU image",
+  "scope": "Original 26.3 JAR/Java baked-quads and literal HUD painter, every 128x128 RGB pixel; also exact renderer004 PPM equality. Actual fresh unpaused sample; no physical OS/drawable/general gameplay parity.",
+  "sample_tick": 10,
+  "blocks": 256,
+  "java_visible_quads": 128,
+  "RGB_pixels": 16384,
+  "RGB_bytes": 49152,
+  "actual_sha256": "003c8800a13e34cb8cd21566c822e6d1849c7c2d837ccd75fe860af924b267a2",
+  "expected_sha256": "003c8800a13e34cb8cd21566c822e6d1849c7c2d837ccd75fe860af924b267a2",
+  "source_sample": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/007/hidden-startup-001/client.stdout",
+    "bytes": 26124,
+    "sha256": "ae1b07072c6db29f924d059dc20e77fbeee501ef9cd198cadcd809eff10d18ab"
+  },
+  "renderer": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/007/renderer",
+    "bytes": 5550680,
+    "sha256": "71d7763bc576509a8d8b43205eeb4bb07f4541c283a6bfd75f1ea15a6a7b0130"
+  },
+  "image": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/007/hidden-startup-001/images/0.ppm",
+    "bytes": 49167,
+    "sha256": "813bf585a14a83a69b1801ef1af357e2e5d6009856f5d7ea22bc21b6da334471"
+  },
+  "baseline_image": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/004/hidden-startup-001/images/0.ppm",
+    "bytes": 49167,
+    "sha256": "813bf585a14a83a69b1801ef1af357e2e5d6009856f5d7ea22bc21b6da334471"
+  },
+  "references": {
+    "/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar": {
+      "path": "/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar",
+      "bytes": 41483720,
+      "sha256": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d"
+    },
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/model_semantics.json": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/model_semantics.json",
+      "bytes": 4799077,
+      "sha256": "3cbe8aa7780f14c1b37159a885710b04680e3b6c4ffa4975b4d8297015f11e7e"
+    },
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/world_visibility.json": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/world_visibility.json",
+      "bytes": 2707188,
+      "sha256": "c81f6e26110d2275905a6d94f30462935814e8951fdd8e6c10f9a084febacbde"
+    }
+  },
+  "reproduce": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/007/verify_fresh_pixels.py",
+  "comparison_tools": {
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_playable_resource_client.py": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_playable_resource_client.py",
+      "bytes": 50859,
+      "sha256": "dc6131f31baf470a7b28b6f6feeb228e3fc69c30cc178daeb835edbc20f8d9db"
+    },
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_world_resource_frame.py": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_world_resource_frame.py",
+      "bytes": 40161,
+      "sha256": "9f7fa85a82dee1255cd805335b2a69e9cd34d1d41a013846e47f4650618a55b4"
+    }
+  }
+}

@@ -313,11 +313,42 @@ def coordinate(address:Address,+value:F32) -> F32:
     case Clamp{}: F32.min(1.0,F32.max(0.0,value))
     case Repeat{}: F32.sub(value,F32.floor(value))
 
+# The ray texture reader has its own lending graph. HUD callers that consume
+# freshly constructed Image nodes do not force this reader to own textures.
+def texture_pixel_lookup(n: Nat,image: Image,+x: U32,+y: U32,+side: U32,right: Bool,bottom: Bool) -> U32:
+  # Return a scalar from each branch so the reader can borrow Image nodes.
+  match n image right bottom:
+    case _ Pix{color} _ _: color
+    case 0n Qua{tl,tr,bl,br} _ _: 0
+    case 1n+p Qua{tl,tr,bl,br} False{} False{}:
+      +half = U32.div(side,2)
+      +nx = U32.mod(x,half)
+      +ny = U32.mod(y,half)
+      texture_pixel_lookup(p,tl,nx,ny,half,U32.is_ge(nx,U32.div(half,2)),U32.is_ge(ny,U32.div(half,2)))
+    case 1n+p Qua{tl,tr,bl,br} True{} False{}:
+      +half = U32.div(side,2)
+      +nx = U32.mod(x,half)
+      +ny = U32.mod(y,half)
+      texture_pixel_lookup(p,tr,nx,ny,half,U32.is_ge(nx,U32.div(half,2)),U32.is_ge(ny,U32.div(half,2)))
+    case 1n+p Qua{tl,tr,bl,br} False{} True{}:
+      +half = U32.div(side,2)
+      +nx = U32.mod(x,half)
+      +ny = U32.mod(y,half)
+      texture_pixel_lookup(p,bl,nx,ny,half,U32.is_ge(nx,U32.div(half,2)),U32.is_ge(ny,U32.div(half,2)))
+    case 1n+p Qua{tl,tr,bl,br} True{} True{}:
+      +half = U32.div(side,2)
+      +nx = U32.mod(x,half)
+      +ny = U32.mod(y,half)
+      texture_pixel_lookup(p,br,nx,ny,half,U32.is_ge(nx,U32.div(half,2)),U32.is_ge(ny,U32.div(half,2)))
+
+def texture_pixel_at(n: Nat,image: Image,+x: U32,+y: U32,+side: U32) -> U32:
+  texture_pixel_lookup(n,image,x,y,side,U32.is_ge(x,U32.div(side,2)),U32.is_ge(y,U32.div(side,2)))
+
 def texel(texture:R.Texture,+address:Address,u:F32,v:F32) -> U32:
   R.Texture{+width,+height,+side,image} = texture
   +x = U32.min(U32.sub(width,1),F32.to_u32(F32.mul(F32.from_nat(U32.to_nat(width)),coordinate(address,u))))
   +y = U32.min(U32.sub(height,1),F32.to_u32(F32.mul(F32.from_nat(U32.to_nat(height)),coordinate(address,v))))
-  R.pixel_at(P.array_depth(13n,side,1),image,x,y,side)
+  texture_pixel_at(P.array_depth(13n,side,1),image,x,y,side)
 
 def sample(textures:List<&2,R.Texture>,index:Nat,+address:Address,+u:F32,+v:F32) -> U32:
   match textures index:
@@ -523,8 +554,13 @@ def finish_tree(tree:Spatial,image:Image) -> Image:
     case Leaf{bounds,quads}: finish_quads(quads,image)
     case Branch{bounds,left,right}: finish_tree(right,finish_tree(left,image))
 
-def prepared_frame(+tree:Spatial,+alpha:List<&2,Prepared>,textures:List<&2,R.Texture>,camera:R.Basis,settings:Settings,+depth:Nat,+tile_depth:Nat,width:U32,height:U32) -> Image:
-  finish_tree(tree,finish_quads(alpha,frame(Nat.sub(depth,tile_depth),tile_depth,tree,alpha,textures,camera,settings,0,0,U32.shln(1,depth),width,height)))
+def finish_textures(textures:List<&2,R.Texture>,image:Image) -> Image:
+  match textures:
+    case Nil{}: image
+    case head <> tail: finish_textures(tail,image)
+
+def prepared_frame(+tree:Spatial,+alpha:List<&2,Prepared>,+textures:List<&2,R.Texture>,camera:R.Basis,settings:Settings,+depth:Nat,+tile_depth:Nat,width:U32,height:U32) -> Image:
+  finish_tree(tree,finish_quads(alpha,finish_textures(textures,frame(Nat.sub(depth,tile_depth),tile_depth,tree,alpha,textures,camera,settings,0,0,U32.shln(1,depth),width,height))))
 
 def render_prepared(pair:List<&2,Prepared> & List<&2,Prepared>,camera:R.Camera,+settings:Settings,textures:List<&2,R.Texture>,+width:U32,+height:U32,accelerated:Bool) -> Image:
   (+opaque,alpha) = pair

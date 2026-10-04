@@ -3,7 +3,7 @@
 This queue supports the full 26.3 objective. A finite scene, renderer, or save
 fixture is a verification instrument; none satisfies a gameplay completion gate.
 
-## Active production outcomes — 2026-10-04
+## Active production outcomes — 2026-10-05 (Asia/Bangkok)
 
 The persistent goal is active. Pure correctness belongs in meaningful LAWS and
 PROOF over the actual production code and interfaces, with independent kernel
@@ -14,22 +14,23 @@ manual lead grants or serial review/seal/replay ceremonies; stable source/cache
 identity and bounded cleanup stay automated. Reuse unchanged passing evidence.
 Coordinate at most two heavy jobs; never repeat an equivalent timed-out build.
 
-Current disjoint implementation owners (2026-10-04 16:20 UTC):
+Current disjoint implementation owners (2026-10-04 17:30 UTC):
 
 | Active owner | Exclusive production files / namespace | Concrete deliverable and actual consumer |
 | --- | --- | --- |
-| Root | Root integration/entries/Common presenter/backend/runtime, presentation proof and root documentation | Build005 from frozen004 with only Mesh19c42543 overlay, measure exact pixels/full quality speed; atomic control-release consumer and later actual subsystem joins. Preserve003/004. |
-| Completed `reset_consumer_ultra` | Frozen MeshRender; NEW mesh_tile_render and mesh_render_reader namespaces | Borrowed BVH/quad traversal and scalar candidate eliminate shared-node consumption/Fragment allocation. All18 current laws and native15 exact fixtures pass. Tile prepass remains separate because slower. |
-| Completed parent texture owner | `src/client_render.bend`, texture_borrow namespaces | Scalar borrowed image lookup; three kernel laws and exact native texture pixels pass; integrated in004. |
-| `client_acceptance_ultra` | NEW `tools/play_minecraft.sh`, `tools/play_minecraft_close.py`,004/play-current launcher and paired evidence | Adopt verified004/actor003; correlated MenuClose then durable save, capacity refusal retains live actor and0600 reconnect environment; actual hidden native pair. |
-| `saved_inventory_ultra` | `src/player_inventory_screen.bend` and Screen laws/tests/reference | Actual hovered-slot digit/F producer with carried-empty gate and viewport-stamped hover. Stable authoritative Swap/CloseReturn remains frozen; Base ASCII event lacks full physical/rebinding seam. |
-| Parent recipe owner | crafting_recipe and crafting_recipe_components namespaces | Actual shaped/shapeless2×2/3×3 Catalog/Plan and patched stew outputs;11 ordinary kernel laws,2386 Java grids. Components remain separate storage dependency. |
-| `crafting_authority_ultra` | NEW player_crafting_authority namespace | Loaded Catalog plus I.State owner, exact grid/cache/current checks, atomic output take/consumption/remainders; root joins runtime/backend after delivery. |
-| `native_controls_current_ultra` | NEW item_component namespace | Validate initialized suspicious-stew default/effect components and typed metadata/NBT/admission; root joins existing item/save consumers. Native controls77 assertions and10 release laws are delivered. |
-| `player_motion_current_ultra` | NEW player_block_inside_stuck and motion namespaces | Actual cobweb/berry multiplier callbacks and transient impulse ownership after travel;15 kernel roots pass;142 Java cases. Root retains moving-world traversal/runtime join. |
-| `block_resource_catalog_ultra` | resource_block_catalog/load/profile namespaces and actual native harness | Generic registry-state/properties/model/bake binding;14 kernel roots and170 Java fixture dispatches. Ordinary600s native attempt failed at15.6GiB; tested private emitter snapshot preparation underway. Root still owes generic state/culling/wire join. |
-| `terrain_client_ultra` and density-noise/climate children | NEW worldgen_density*, worldgen_density_noise*, worldgen_climate* | Actual official F64 density graph, NormalNoise and19-child climate tree/warm ties. Prior seed/noise/settings/column23 kernel roots and exact Java/native data pass; full normal population refuses until real graph joins. |
-| Parent block-light owner | NEW block_light namespace | Incremental resident levels/dedup work queue and actual shape occlusion; root joins chunk lifecycle/shading separately. |
+| Root | Core/JSON/Common/backend/runtime/session/entries and root docs | Core read committed; create/write source joins ordered Update, verification active.28 hidden atomic-release presenter runs pass. Preserve004/two-worker recommendation;007 fullC/all2,073,600pixels/quiet16-frame performance pass; exact18lawcc8 recertified/adopted. Current frontend/actor pair integration in progress. Integrate real Session/Runtime consumers. |
+| Mesh/performance owner | Private mesh-render-performance namespaces, immutable candidates | Current18 mesh laws pass.006 preserves pixels but fails intended C borrowing.007 dedicated ray texture reader has15 native fixtures/two new kernel laws; full C/all2mp/native/quiet937.5vs131.5ms pair now pass; exact18lawcc8 recertified/adopted in source. |
+| Completed launcher owner | `tools/play_minecraft.sh`, close/reconnect helpers and004/actor003 acceptance | Fresh, return, capacity and INT/TERM actual hidden tests pass. Correlated MenuClose/durable save; refusal keeps live actor/0600 reconnect. Default remains004. |
+| `saved_inventory_ultra` | Screen + `remote_resource_presenter.bend`, `player_menu_input.bend`, `player_presentation_native.bend`, native physical-key seam |17 kernel/107 native/18 Java GUI cases delivered. Join actual hovered digit/F requests and native physical/rebinding profile; preserve root atomic-release hunk. |
+| Parent recipe/cooking owner | Completed crafting_recipe*; NEW cooking_recipe* | Production shaped/shapeless patched outputs delivered. New four-kind cooking Catalog/Plan/capacity completion underway; fuel/ticking/XP/UI remain future consumers. |
+| `crafting_authority_ultra` | NEW player_crafting_authority*, including actual menu adapter | Frozen63 native cases pass with17 typed takes; stable D component-default seam and full JAR loader/menu consumer active. Avoid I import cycle; root joins Session/Runtime. |
+| `native_controls_current_ultra` | item_component* + `player_item_definitions.bend`, `player_inventory_codec.bend` |560 typed/native cases delivered. Actual definition admission/fallible v3 NBT save/load join.13 roots export0 exclusions but actual JSON encoder kernel rejection retained. |
+| `client_presentation_ultra` | Private json_encoder_kernel* candidate/proofs only | Repair actual unbounded canonical JSON encoder's affine-live recursive kernel shape, preserving ordering/API; root alone edits shared JSON. |
+| `player_motion_current_ultra` | NEW player_block_inside_sweep* + actual producer after coordination | Stationary15/reader11 kernel +1,965 native responses delivered. Add actual16-step moving visitation/ordered dedup/original-movement record and berry callback inputs; root joins transient/runtime. |
+| `block_interaction_ultra` | NEW section_map_update* and actual Core refusal tests/proofs | Preserve complete trie/bucket order on duplicate create/missing/invalid write. Root source already delegates actual create/write; meaningful proof/native collision/fullWorld verification active. |
+| `block_resource_catalog_ultra` | Catalog + NEW resource_catalog_world* and `resource_frame.bend` adapters | Generic dispatch14 kernel/28 native twice delivered. Actual registry-bound per-cell frame/selection/tint/load adapters; root adds expanded actor/wire sampling. |
+| `terrain_client_ultra` and density-noise/climate children | worldgen_density*, worldgen_density_noise*, worldgen_climate* |29 density owner/cache/evaluator/loader kernel roots; native signed-zero correction. Climate12 roots/4,375 exact selections delivered; actual column/router consumer still incomplete, no invented population. |
+| Parent block-light owner | block_light* and block_light_world* | Base/world bridge delivered; saved104-section425,984-resident bootstrap passes. Measured initial zero notification overhead being repaired; root joins chunk lifecycle/shading. |
 
 Independent source, reference extraction and small checks proceed concurrently.
 Only expensive compilation/native/kernel jobs share the two heavy-job slots;

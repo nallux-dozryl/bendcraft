@@ -1,0 +1,106 @@
+{
+  "status": "PASS",
+  "confidence": "high for observed paired native workload; limited scene performance",
+  "scope": "005then00412workercomparison actualfresh104section256visibleblock1920x1080scene/output100%,480x270HUD,12CPUworkers,traceoff,oldactor010identical. No competing observed Bend/Node/compiler/Java job at each start or throughout250ms process monitoring; normalOS/backgroundapps untouched. Includes render/composition/Window.frame; noFPS/inputlatency/fullMinecraftbenchmark.",
+  "records": [
+    {
+      "label": "005-12",
+      "generation": "005",
+      "frames_ms": [
+        3506,
+        3589,
+        3477,
+        3385,
+        3451,
+        3466,
+        3414,
+        3430
+      ],
+      "median_ms": 3458.5,
+      "mean_ms": 3464.75,
+      "quiescent_before": true,
+      "inventory_sha256": "7e7eb6d0df7ee63210b24413e31eb0fe2d97f1ade34ddab2c5f17487fb91b868",
+      "report": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-performance-001/005-12/report.json",
+        "bytes": 7366,
+        "sha256": "5a1ac3efa0e4bf39d3d31b26dc3ed552fbeb1165fecdb488d635cdde14ac585b"
+      },
+      "competing_jobs_observed": []
+    },
+    {
+      "label": "004-12",
+      "generation": "004",
+      "frames_ms": [
+        1366,
+        1599,
+        1345,
+        1344,
+        1354,
+        1350,
+        1376,
+        1379
+      ],
+      "median_ms": 1360.0,
+      "mean_ms": 1389.125,
+      "quiescent_before": true,
+      "inventory_sha256": "2a62d4ae06cd6e2bdff70c5292182d2d0c9d30c11fe9636eb5e022caee5b2733",
+      "report": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-performance-001/004-12/report.json",
+        "bytes": 7363,
+        "sha256": "62dc8721b1b31e58089db261962b24ee4841b339ad28451c6156798d45857360"
+      },
+      "competing_jobs_observed": []
+    }
+  ],
+  "summary": {
+    "004": {
+      "frames": 8,
+      "median_ms": 1360.0,
+      "mean_ms": 1389.125,
+      "warm_excluding_first_of_each_run_median_ms": 1354
+    },
+    "005": {
+      "frames": 8,
+      "median_ms": 3458.5,
+      "mean_ms": 3464.75,
+      "warm_excluding_first_of_each_run_median_ms": 3451
+    }
+  },
+  "elapsed_seconds": 52.37927920836955,
+  "input_pins": {
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-performance-001/measure12.py": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-performance-001/measure12.py",
+      "bytes": 11196,
+      "sha256": "eb2dd79772e5f75a5cf9d4102dfe59f6bbc36a9e06c4a09ac07b1bc545bdbf2e"
+    },
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/004/renderer": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/004/renderer",
+      "bytes": 5550408,
+      "sha256": "0e5bac4aa6e4ff36232e4c25ed67cda6ac2e73bc45d378ae5a597c66ed7e8399"
+    },
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/005/renderer": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/005/renderer",
+      "bytes": 5550760,
+      "sha256": "7f026928664dae67f951289041205ca75d650fbace0ae30db14a2012cae9a623"
+    },
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-performance-001/play004-12.sh": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-performance-001/play004-12.sh",
+      "bytes": 4546,
+      "sha256": "cfb60125929560f2aeadbbad452f9bdef5764f9e143680927ee2d019c09071a2"
+    },
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-performance-001/play005-12.sh": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-performance-001/play005-12.sh",
+      "bytes": 4546,
+      "sha256": "36268c373f2df8e34c787e5b90126bcbb55ec851e0bd6fd91d17aa015ad4e4aa"
+    },
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-010/actor": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-010/actor",
+      "bytes": 7583960,
+      "sha256": "92e1633e0cd32cb6c50c19ffafbff542ab06a97643c8dd45a3b815d04ef745c5"
+    }
+  },
+  "unchanged_inputs": true,
+  "recommended_renderer": "004 with two CPU workers; verified lower median in the controlled pair",
+  "contention_monitor_interval_seconds": 0.25,
+  "reproduce": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-performance-001/run_pair12.py"
+}

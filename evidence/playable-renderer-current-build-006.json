@@ -1,0 +1,105 @@
+{
+  "status": "PASS",
+  "confidence": "high for immutable build and exact128 pixels/save/focus; full C falsifies intended hot-path texture borrowing",
+  "generation": "renderer006",
+  "entry": "remote_resource_client.bend",
+  "baseline": {
+    "baseline_binary": {
+      "bytes": 5550760,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/005/renderer",
+      "sha256": "7f026928664dae67f951289041205ca75d650fbace0ae30db14a2012cae9a623"
+    },
+    "baseline_map": {
+      "bytes": 24117,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/005/source/source-map.json",
+      "sha256": "420ce37a435f51fb0c201f815d24d67bf51f9371c5a65ba477b6fb70378f3b2f"
+    },
+    "candidate_mesh": {
+      "bytes": 28166,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-render-performance-001/source/src/mesh_render.bend",
+      "sha256": "5209671e17ec8f69a79ac8f855ae1225e7ca4129ef9aace4ff8fbf0beb1e5f7a"
+    },
+    "changed_project_sources": [
+      "src/mesh_render.bend"
+    ],
+    "driver": {
+      "bytes": 2239,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/006/emit.mjs",
+      "sha256": "b7a586485ef41d16b72f898485552e2fa0a978292fcf1a9718e97644fda2c27e"
+    },
+    "private_emitter": {
+      "bytes": 188216,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/006/comp_instrumented.ts",
+      "sha256": "b2c5badb120df1977200a3c1be123a77f514c8a43f060a6b4c196d4d38000843"
+    },
+    "scope": "Private candidate006: immutable005 baseline with ONLY finish_textures/postframe texture lifetime M5209671 overlay. WorkingM19c/003/004/005 untouched; fullC/native/performance acceptance pending.",
+    "source_map": {
+      "bytes": 24373,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/006/source/source-map.json",
+      "sha256": "41c03e6a3bf3041e89cc748766198ed7df82a066255772c45cd39973344dab57"
+    },
+    "working_mesh_unchanged": {
+      "bytes": 27976,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/mesh_render.bend",
+      "sha256": "19c42543263873cf53f378b38135939762d8af6f375f8a64148faa26c9dc8e24"
+    }
+  },
+  "source_map": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/006/source/source-map.json",
+    "bytes": 24373,
+    "sha256": "41c03e6a3bf3041e89cc748766198ed7df82a066255772c45cd39973344dab57"
+  },
+  "private_emitter": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/006/comp_instrumented.ts",
+    "bytes": 188216,
+    "sha256": "b2c5badb120df1977200a3c1be123a77f514c8a43f060a6b4c196d4d38000843"
+  },
+  "driver": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/006/emit.mjs",
+    "bytes": 2239,
+    "sha256": "b7a586485ef41d16b72f898485552e2fa0a978292fcf1a9718e97644fda2c27e"
+  },
+  "source_API": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/bend.ts",
+    "bytes": 137761,
+    "sha256": "7deae3693eb896f33c73867081b99d2c6f3ed3b57e77e55eb5f6260840dd0e63"
+  },
+  "original_compiler": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/comp.ts",
+    "bytes": 185829,
+    "sha256": "32fb66e09f608ce9e4b173384bcfeec453db8c5bc96650e26ad861bef815a8d9"
+  },
+  "original_compiler_unchanged": true,
+  "checked_holes": 0,
+  "checked_declarations": 3391,
+  "loaded_files": 124,
+  "emission_passes": 11,
+  "emission_seconds": 278.9055834580213,
+  "native_seconds": 59.02656624931842,
+  "C": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/006/diagnostic.c",
+    "bytes": 15148280,
+    "sha256": "bbd52595d3cca120a5cf0ac6924d747974e80ee3e2030c354e080d0f59de854c"
+  },
+  "transformed_C": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/006/renderer.c",
+    "bytes": 15148759,
+    "sha256": "d5597f00e6d7370640dfb9674685f25e70fea1eb2cd40a59cd3cc62323aa4fa5"
+  },
+  "binary": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/006/renderer",
+    "bytes": 5550760,
+    "sha256": "ee18ea425c8c6b4b15df455ce71b468af4a6226c444899c65185cdc2c8db2dda"
+  },
+  "launcher": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/006/play.sh",
+    "bytes": 4544,
+    "sha256": "bd44b8dde5a817054287fe43db2e4cfef4e7b0954d2b5d6160e008c9308d5c50"
+  },
+  "re_emission": false,
+  "processes_reaped": true,
+  "scope": "Frozen005 graph plus ONLY private mesh finish_textures lifetime candidate5209671; original compiler unchanged. Full006 C retains005hot-path texture consumption; not recommended or promoted.",
+  "reproduce": "Run retained build/playable-renderer-current/005/run_build.py using bundledPython; guardsreuse exactsuccessfulC, no repeatemission.",
+  "native_128_receipt": "evidence/playable-renderer-current-hidden-startup-006-128-validation-002.json",
+  "pixels_receipt": "evidence/playable-renderer-current-fresh-pixels-006.json"
+}

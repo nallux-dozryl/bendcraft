@@ -107,7 +107,27 @@ fixtures and18 current independent-kernel laws (8 presentation,6 tile,4 reader),
 zero exclusions. The current eight presentation statement types are unchanged;
 proofs handle the structural resource-list/tree zero branch explicitly. Receipts
 are `evidence/mesh-render-presentation-kernel-001.json` and
-`evidence/mesh-render-borrow-repair-001.json`. Renderer005 is compiling from the
-frozen004 sources plus only this MeshRender overlay; full-frame performance is
-unmeasured. The slower tile prepass remains separate. Both working launch
+`evidence/mesh-render-borrow-repair-001.json`. Renderer005 was built from the frozen004 sources plus only this MeshRender
+overlay. Quiet
+counterbalanced16-frame comparisons show004947.5ms/0051194.5ms median at two
+workers. Eight-frame12-worker medians are0041360ms/0053458.5ms. This scene
+regresses with005; keep004/two workers recommended. Actual C rejected-hit and
+padding helpers increase shared-texture reference work; causal timing remains
+for profiles and a private targeted repair. The005 full1080 trace attempt failed
+inventory query before its first frame; full-resolution image equality remains
+open. The slower tile prepass remains separate. Both working launch
 artifacts are preserved.
+
+Renderer006 preserves the exact fresh128 image and durable whole-world save,
+with no focus/Spaces changes. Its private finish_textures wrapper does not repair
+the hot-path borrowing in full generated C. The owning shared texture lookup is
+forced by HUD/menu calls using fresh Image constructors. Private007 separates
+mesh scalar texture reading from those consuming calls; its focused15 native
+fixtures and two arbitrary-image equivalence laws pass. Full007 C now passes the borrowed-reader criterion; its fresh128 image and
+actualfull1920×1080capture match all2,073,600RGBpixels of the independentJAR/Java
+world/HUD oracle. A monitored quiet16-frame comparison now gives004937.5ms and007131.5ms
+medians, with identical full scene/output quality and two workers. All18 current
+Reader/Tile/PP laws recertify the exactcc8 candidate with zero exclusions; it is
+adopted in source. Current actor/frontend paired adoption remains separate.
+004/two workers remain the
+recommended artifact; all earlier generations remain immutable.

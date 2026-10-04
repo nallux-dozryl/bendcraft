@@ -1,0 +1,160 @@
+{
+  "status": "PASS",
+  "confidence": "high for observed paired native workload; limited scene performance",
+  "scope": "Counterbalanced004A/007A/007B/004B actualfresh104section256visibleblock1920x1080scene/output100%,480x270HUD,2CPUworkers,traceoff,oldactor010identical. No competing observed Bend/Node/compiler/Java job at each start or throughout250ms process monitoring; normalOS/backgroundapps untouched. Includes render/composition/Window.frame; noFPS/inputlatency/fullMinecraftbenchmark.",
+  "records": [
+    {
+      "label": "004-a1",
+      "generation": "004",
+      "frames_ms": [
+        1032,
+        1241,
+        902,
+        928,
+        910,
+        913,
+        902,
+        939
+      ],
+      "median_ms": 920.5,
+      "mean_ms": 970.875,
+      "quiescent_before": true,
+      "inventory_sha256": "46d09d34d7e804bec6b786109d47369535d46633dcc6df7d33c04caa8fbe62fd",
+      "report": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-performance-002/004-a1/report.json",
+        "bytes": 7338,
+        "sha256": "ee4d8d114f1592abe6f56514b5659a807576efe79782a36c19293b13b08fafb0"
+      },
+      "competing_jobs_observed": []
+    },
+    {
+      "label": "007-a1",
+      "generation": "007",
+      "frames_ms": [
+        153,
+        274,
+        130,
+        130,
+        130,
+        130,
+        133,
+        133
+      ],
+      "median_ms": 131.5,
+      "mean_ms": 151.625,
+      "quiescent_before": true,
+      "inventory_sha256": "51be664c3ed67be17757dc6097eeae2777a4a8b501c4ff8d3c38fd19253d6be3",
+      "report": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-performance-002/007-a1/report.json",
+        "bytes": 7326,
+        "sha256": "f900ab1adbf7c7c4c58ede45772ca53844cc59a45afa97b21e8c4d21a874ff01"
+      },
+      "competing_jobs_observed": []
+    },
+    {
+      "label": "007-b1",
+      "generation": "007",
+      "frames_ms": [
+        154,
+        208,
+        130,
+        130,
+        131,
+        130,
+        132,
+        132
+      ],
+      "median_ms": 131.5,
+      "mean_ms": 143.375,
+      "quiescent_before": true,
+      "inventory_sha256": "e5e5bf90527074aac29c425f992301ad38b6e49efa2c4e3a12e28248fbf0badc",
+      "report": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-performance-002/007-b1/report.json",
+        "bytes": 7326,
+        "sha256": "fc01948a6d3eb57f741ce4cd557c76373c45c176f1155fe51458e4a7501b1178"
+      },
+      "competing_jobs_observed": []
+    },
+    {
+      "label": "004-b1",
+      "generation": "004",
+      "frames_ms": [
+        962,
+        1095,
+        937,
+        953,
+        937,
+        938,
+        937,
+        959
+      ],
+      "median_ms": 945.5,
+      "mean_ms": 964.75,
+      "quiescent_before": true,
+      "inventory_sha256": "d8f96b5cd55c6d777fdd10f3f63831a482007c64da7d737d79a40bec26599d6d",
+      "report": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-performance-002/004-b1/report.json",
+        "bytes": 7334,
+        "sha256": "10b31b92491394f925c07d8eac7c6154f053502e8f64d96736965484a6cf6950"
+      },
+      "competing_jobs_observed": []
+    }
+  ],
+  "summary": {
+    "004": {
+      "frames": 16,
+      "median_ms": 937.5,
+      "mean_ms": 967.8125,
+      "warm_excluding_first_of_each_run_median_ms": 937.0
+    },
+    "007": {
+      "frames": 16,
+      "median_ms": 131.5,
+      "mean_ms": 147.5,
+      "warm_excluding_first_of_each_run_median_ms": 130.5
+    }
+  },
+  "elapsed_seconds": 42.1880035828799,
+  "input_pins": {
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-performance-002/measure.py": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-performance-002/measure.py",
+      "bytes": 11180,
+      "sha256": "5c3483db633ba511816ad9951c68e738e7a23736e4c93c2768b9686387da01f1"
+    },
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/004/renderer": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/004/renderer",
+      "bytes": 5550408,
+      "sha256": "0e5bac4aa6e4ff36232e4c25ed67cda6ac2e73bc45d378ae5a597c66ed7e8399"
+    },
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/007/renderer": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/007/renderer",
+      "bytes": 5550680,
+      "sha256": "71d7763bc576509a8d8b43205eeb4bb07f4541c283a6bfd75f1ea15a6a7b0130"
+    },
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/004/play.sh": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/004/play.sh",
+      "bytes": 4544,
+      "sha256": "3bb2366424c2ca6207b17a708c7c537c5d7d84a6355889c0d26710fb6bea2b8f"
+    },
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/007/play.sh": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/007/play.sh",
+      "bytes": 4544,
+      "sha256": "5812c9e6857212b92cb077b2de6333fd7046a06a583ea4fcc49cb82e10c2f714"
+    },
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-010/actor": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-010/actor",
+      "bytes": 7583960,
+      "sha256": "92e1633e0cd32cb6c50c19ffafbff542ab06a97643c8dd45a3b815d04ef745c5"
+    }
+  },
+  "unchanged_inputs": true,
+  "recommended_renderer": "007 verified rendering candidate; default human launcher remains004/actor003 until current frontend/actor pair adoption",
+  "contention_monitor_interval_seconds": 0.25,
+  "reproduce": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-performance-002/run_pair.py",
+  "relative_median": {
+    "baseline004_ms": 937.5,
+    "candidate007_ms": 131.5,
+    "baseline_over_candidate": 7.129277566539924,
+    "reduction_percent": 85.97333333333333
+  }
+}
