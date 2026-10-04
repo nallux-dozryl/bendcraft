@@ -1,0 +1,151 @@
+{
+  "base_view_sha256": "2bffa2c58c1a062e4f1060c2561e41f88ca647826fffaf2ad6b22e79052f39fa",
+  "binary": {
+    "bytes": 79656,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native_controls_current/boundary",
+    "sha256": "59e56d23407f39c71b26e91e850ff9dab95991843284d00748dd9c3a7d77c9d4"
+  },
+  "compile": {
+    "command": [
+      "/usr/bin/clang",
+      "-x",
+      "objective-c",
+      "-fobjc-arc",
+      "-fmodules",
+      "-O1",
+      "-framework",
+      "AppKit",
+      "-framework",
+      "QuartzCore",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native_controls_current/boundary.m",
+      "-o",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native_controls_current/boundary"
+    ],
+    "exit_code": 0,
+    "seconds": 0.336345,
+    "stderr": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native_controls_current/boundary.m:577:30: warning: null passed to a callee that requires a non-null argument [-Wnonnull]\n  577 |     [view windowDidResignKey:nil];\n      |                              ^~~\n/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/MacTypes.h:96:19: note: expanded from macro 'nil'\n   96 |       #define nil __DARWIN_NULL\n      |                   ^~~~~~~~~~~~~\n/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types.h:52:23: note: expanded from macro '__DARWIN_NULL'\n   52 | #define __DARWIN_NULL NULL\n      |                       ^~~~\n/Library/Developer/CommandLineTools/usr/lib/clang/17/include/__stddef_null.h:26:14: note: expanded from macro 'NULL'\n   26 | #define NULL ((void*)0)\n      |              ^~~~~~~~~~\n/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native_controls_current/boundary.m:578:30: warning: null passed to a callee that requires a non-null argument [-Wnonnull]\n  578 |     [view windowDidResignKey:nil];\n      |                              ^~~\n/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/MacTypes.h:96:19: note: expanded from macro 'nil'\n   96 |       #define nil __DARWIN_NULL\n      |                   ^~~~~~~~~~~~~\n/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types.h:52:23: note: expanded from macro '__DARWIN_NULL'\n   52 | #define __DARWIN_NULL NULL\n      |                       ^~~~\n/Library/Developer/CommandLineTools/usr/lib/clang/17/include/__stddef_null.h:26:14: note: expanded from macro 'NULL'\n   26 | #define NULL ((void*)0)\n      |              ^~~~~~~~~~\n2 warnings generated.\n",
+    "stdout": ""
+  },
+  "confidence": "high for recorded native boundary assertions",
+  "dropped_action_mutant": {
+    "command": [
+      "/Users/chuah/.bend/bin/bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native_controls_current/mutant_proof.bend",
+      "--check-only"
+    ],
+    "exit_code": 1,
+    "seconds": 0.098154,
+    "stderr": "SOME PROOFS FAIL\nError:\n- expected : Done{controller}\n- observed : C.fold(rest, bindings, C.action(action, controller, bindings))\nContext:\n- action     : CC.Action\n- rest       : List<&2, CC.Action>\n- bindings   : PI.Bindings\n- controller : C.Controller\nLocation: ordered_action_prefix\n18 | def ordered_action_prefix(action,rest,bindings,controller):\n19>|   {==}\n   |   ^^^^\n20 | \n",
+    "stdout": ""
+  },
+  "emitted": {
+    "bytes": 25251,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native_controls_current/boundary.m",
+    "sha256": "858a87fb1835b83b9fe7ea0ccbe528bd3eece0c2f3f8052a51efdeca0936cf2d"
+  },
+  "existing_eight_control_laws": {
+    "command": [
+      "/Users/chuah/.bend/bin/bend",
+      "tests/player_controls.bend",
+      "--verdict"
+    ],
+    "exit_code": 0,
+    "seconds": 0.4049,
+    "stderr": "",
+    "stdout": "ALL PROOFS CHECK\n"
+  },
+  "native_source_boundary": {
+    "command": [
+      "/Users/chuah/.bend/bin/bend",
+      "src/player_presentation_native.bend",
+      "--check-only"
+    ],
+    "exit_code": 1,
+    "seconds": 0.347344,
+    "stderr": "SOME PROOFS FAIL\nError: 4 defs rely on unsafe or foreign code:\n- Native.configure\n- Native.measure\n- Native.milliseconds\n- measure\n",
+    "stdout": ""
+  },
+  "observations": {
+    "actual_backing_scale": 2.0,
+    "app_active": false,
+    "assertions": 77,
+    "frontmost_pid": 48643,
+    "space_changes": 0,
+    "status": "passed",
+    "window_key": false,
+    "window_visible": false
+  },
+  "pure_control_proof": {
+    "command": [
+      "/Users/chuah/.bend/bin/bend",
+      "tests/native_controls_current_proof.bend",
+      "--verdict"
+    ],
+    "exit_code": 0,
+    "seconds": 0.372759,
+    "stderr": "",
+    "stdout": "ALL PROOFS CHECK\n"
+  },
+  "reproduce": "python3 tools/native_controls_current_check.py",
+  "run": {
+    "command": [
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native_controls_current/boundary"
+    ],
+    "exit_code": 0,
+    "seconds": 0.289279,
+    "stderr": "",
+    "stdout": "{\"status\":\"passed\",\"assertions\":77,\"frontmost_pid\":48643,\"space_changes\":0,\"window_visible\":false,\"window_key\":false,\"app_active\":false,\"actual_backing_scale\":2.00}\n"
+  },
+  "scope": [
+    "actual AppKit hidden content view installation and Base buffer/layer ownership",
+    "content-point pointer/button boundary and outside rejection before Bend scaling",
+    "signed relative Look payload under direct fixture flag without OS capture",
+    "physical-key paired logical release, repeat suppression and duplicate logical-key hold",
+    "all ten native modifier masks, simultaneous sided Shift and stale focus flags",
+    "focus/application/close callback release and hidden capture refusal",
+    "drawable/content measurement and actual backing conversion after hidden resize",
+    "foreground pid, hidden/key/active state and Space-notification observations"
+  ],
+  "sources": [
+    {
+      "bytes": 23756,
+      "path": "/Users/chuah/.bend/bend2/effs/window.c",
+      "sha256": "617611d994fb7f4c57467f8d1a7e644ba19d4fce35770613dea2711e6cafd65c"
+    },
+    {
+      "bytes": 9311,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/native/player_presentation.c",
+      "sha256": "0c6aebd6a22f999851798a13980a0c04ac6bfa6d85ff6193429efff1a4a61363"
+    },
+    {
+      "bytes": 12816,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/native_controls_current.m",
+      "sha256": "e2cfd32043d19957442b1c535fdf308771e713d8b966a806c589cad1ece10bc3"
+    },
+    {
+      "bytes": 2152,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/native_controls_current_proof.bend",
+      "sha256": "c6ce67896db61e8da6ab7185c0537dba264c4d959655daff793c5d03dfa7d763"
+    },
+    {
+      "bytes": 7489,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_controls.bend",
+      "sha256": "52e012a959078eb06b80fb17f17f6ca06d98c4d84ab0ca529164f82d03637d38"
+    },
+    {
+      "bytes": 986,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_presentation_native.bend",
+      "sha256": "5c5752e40cd38ce154383d864d9f47408c3ab97a2ba68799c0a41ad1d06dd527"
+    }
+  ],
+  "status": "passed",
+  "unverified": [
+    "real OS input delivery and held-event cadence",
+    "positive cursor capture/release",
+    "visible native presentation/framebuffer",
+    "OS fullscreen transition",
+    "physical multi-screen migration",
+    "resize while rendering and matching pending-event geometry",
+    "whole-game/Java input parity"
+  ]
+}
