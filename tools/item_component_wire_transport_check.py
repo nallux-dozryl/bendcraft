@@ -1,14 +1,18 @@
 #!/usr/bin/env python3
 """Actual transport command candidate, full-owner rollback and wire admission."""
 from __future__ import annotations
-import argparse,copy,hashlib,json,subprocess,time
+import argparse,copy,hashlib,json,subprocess,sys,time
 from pathlib import Path
 import build_native,item_component_check as C,item_component_wire_check as Gate
 from test_player_look import imports
+from test_player_block_inside_stuck import run as checked_run
 from reference_inventory import ROOT,write_json,fingerprint,canonical
 
 BUILD=ROOT/'build/item_component_wire_transport';EVIDENCE=ROOT/'evidence/item_component_wire_transport.json'
 def pin(p):return {'path':str(Path(p).resolve()),**fingerprint(Path(p))}
+def artifact_pin_matches(expected,p):
+    actual=pin(p)
+    return all(expected.get(k)==actual[k] for k in ['path','sha256','bytes']) and ('file' not in expected or expected['file']==actual['file'])
 def line(v):return json.dumps(v,separators=(',',':'),ensure_ascii=True)
 def frozen_entry(work,entry=None):
     """Copy the actual imported declarations and native effects unchanged."""
@@ -119,18 +123,54 @@ def verify(case,row):
         else:assert after['context']==before['context'],case['name']
     return len(row['encoding']['text'])
 def main():
-    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--build',action='store_true');args=parser.parse_args();BUILD.mkdir(exist_ok=True)
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--build',action='store_true');parser.add_argument('--binary',type=Path);args=parser.parse_args();BUILD.mkdir(exist_ok=True)
+    assert not (args.build and args.binary),'Choose one native route'
     paths=[ROOT/'src'/x for x in ['player_inventory.bend','resource_client_wire.bend','item_component_wire_candidate.bend','remote_resource_transport.bend','remote_resource_backend.bend','player_crafting_authority.bend','player_crafting_authority_components.bend','player_crafting_session_adapter.bend','player_item_definitions.bend','item_component.bend','crafting_recipe_components.bend','json.bend']]+[ROOT/'tests/item_component_wire_transport.bend',ROOT/'tests/item_component_wire.bend',ROOT/'tests/player_crafting_backend.bend',Path(__file__),C.REFERENCE,Gate.TABLE]
-    before=[pin(p) for p in paths];receipt={'status':'running','source_pins':before};write_json(EVIDENCE,receipt)
+    before=[pin(p) for p in paths];receipt={'status':'running','working_source_pins':before};write_json(EVIDENCE,receipt)
     try:
-        binary=BUILD/'observer'
+        binary=(args.binary or BUILD/'observer').resolve()
+        compiled_pins={}
+        if args.binary:
+            artifact_path=binary.parent/'native-build.json'
+            artifact=json.loads(artifact_path.read_text())
+            assert artifact['status']=='passed' and artifact_pin_matches(artifact['binary'],binary),'Supplied native artifact/build mismatch'
+            manifest_path=Path(artifact['manifest']['path'])
+            assert artifact_pin_matches(artifact['manifest'],manifest_path),'Native build manifest changed'
+            manifest=json.loads(manifest_path.read_text());compiled_pins=manifest['files']
+            assert all(hashlib.sha256(Path(p).read_bytes()).hexdigest()==h for p,h in compiled_pins.items()),'Frozen native source/tool drift'
+            snapshots=[Path(p) for p in compiled_pins if Path(p).name=='source-snapshot.json']
+            assert len(snapshots)==1,'Exactly one actual observer source snapshot required'
+            snapshot=json.loads(snapshots[0].read_text())
+            receipt['native_artifact']={'build':pin(artifact_path),'manifest':pin(manifest_path),'snapshot':pin(snapshots[0]),'source_pins':snapshot['original_source_sha256'],'scope':manifest['scope'],
+                'working_source_differences':{p:{'compiled':h,'working':hashlib.sha256((ROOT/p).read_bytes()).hexdigest()} for p,h in snapshot['original_source_sha256'].items() if hashlib.sha256((ROOT/p).read_bytes()).hexdigest()!=h}}
+            write_json(EVIDENCE,receipt)
         if args.build:
             attempt=1
             while (BUILD/f'native-{attempt:03d}').exists():attempt+=1
             work=BUILD/f'native-{attempt:03d}';work.mkdir()
             entry,snapshot=frozen_entry(work);receipt['snapshot']=snapshot;write_json(EVIDENCE,receipt)
-            built=build_native.ensure_native(entry,binary,bend=C.BEND);write_json(work/'native-build.json',built)
-            receipt['build']={k:built[k] for k in ['path','binary_sha256','cache_key','cache_hit','timings']}
+            # The already tested Backend route compiles the exact guarded Bend C
+            # once with the original CPU flags, avoiding a second C emission.
+            prepare=ROOT/'tools/player_crafting_authority_native.py'
+            _,first=checked_run([sys.executable,prepare,entry,'--report',work/'prepared.json'],work,'prepare',600)
+            prepared=json.loads((work/'prepared.json').read_text());emitted=Path(prepared['emitted_file'])
+            assert build_native.file_digest(emitted)==prepared['emitted_c_sha256']
+            build_native.guard_route(emitted.read_text())
+            assert prepared['context']['compiler']['flags']==['-std=c11','-O3','<emitted.c>','-lpthread','-lm','-o','<native>']
+            _,compiled=checked_run([prepared['context']['compiler']['path'],'-std=c11','-O3',emitted,'-lpthread','-lm','-o',binary],work,'clang',600)
+            _,last=checked_run([sys.executable,prepare,entry,'--report',work/'prepared-after.json'],work,'prepare-after',600)
+            checked=json.loads((work/'prepared-after.json').read_text())
+            assert checked['cache_key']==prepared['cache_key'] and checked['emitted_c_sha256']==prepared['emitted_c_sha256'],'Native dependencies changed during compile'
+            built={'path':str(binary),'binary_sha256':build_native.file_digest(binary),'cache_key':prepared['cache_key'],'cached_c_route':True,'emitted_c_sha256':prepared['emitted_c_sha256'],'emitted_c':pin(emitted),'compiler':prepared['context']['compiler'],'timings':{'prepare':first['seconds'],'clang':compiled['seconds'],'verify':last['seconds']},'process_groups_reaped':all(x['group_absent'] for x in [first,compiled,last])}
+            write_json(work/'native-build.json',built);receipt['build']=built
+            # Ordinary and tested private routes share one replay identity API.
+            source_files={str(work/'source'/p):h for p,h in snapshot['original_source_sha256'].items()}
+            compiled_pins={**source_files,**{str(p.resolve()):hashlib.sha256(p.read_bytes()).hexdigest() for p in [work/'source-snapshot.json',work/'prepared.json',work/'prepared-after.json',emitted,Path(prepared['context']['compiler']['path'])]}}
+            manifest_path=work/'native-manifest.json'
+            write_json(manifest_path,{'entry':str(entry),'files':compiled_pins,'scope':'Exact unchanged full observer graph, original installed Bend emitter and CPU flags. Native compiler/header/library closure is recorded by pinned prepared/prepared-after receipts. No installation changes or cache promotion.'})
+            artifact_path=BUILD/'native-build.json'
+            write_json(artifact_path,{'status':'passed','binary':pin(binary),'manifest':pin(manifest_path),'original_build':pin(work/'native-build.json')})
+            receipt['native_artifact']={'build':pin(artifact_path),'manifest':pin(manifest_path),'snapshot':pin(work/'source-snapshot.json'),'source_pins':snapshot['original_source_sha256'],'working_source_differences':{}}
         assert binary.is_file(),'Run --build with one actual compiler slot'
         cases=corpus(json.loads(C.REFERENCE.read_text()));counts={};sizes={};constructor_refusals={}
         for index,case in enumerate(cases):
@@ -149,12 +189,20 @@ def main():
         # Same current native graph exercises all existing default wire/frame laws.
         gate=subprocess.run(['python3',str(ROOT/'tools/item_component_wire_check.py'),'--binary',str(binary)],cwd=ROOT,capture_output=True,text=True,timeout=600)
         assert gate.returncode==0,{'stdout':gate.stdout,'stderr':gate.stderr};receipt['wire_gate']=json.loads(gate.stdout.strip().splitlines()[-1])
-        assert before==[pin(p) for p in paths],'Source changed during actual prospective transport replay'
+        after=[pin(p) for p in paths]
+        if args.binary:
+            # The recorded artifact owns frozen production declarations. Later
+            # working-source integration cannot rewrite its observed semantics.
+            changes=[{'before':a,'after':b} for a,b in zip(before,after,strict=True) if a!=b]
+            assert all(Path(x['before']['path']).is_relative_to(ROOT/'src') for x in changes),'Comparison method/runtime inputs changed during native replay'
+            receipt['working_source_changes_during_replay']=changes
+        else:assert before==after,'Source changed during actual prospective transport replay'
+        assert all(hashlib.sha256(Path(p).read_bytes()).hexdigest()==h for p,h in compiled_pins.items()),'Frozen native source/tool changed during replay'
         receipt.update(status='passed',cases=len(cases),transport_cases=len(cases)-len(constructor_refusals),constructor_refusals=constructor_refusals,counts=counts,reply_bytes=sizes,native_binary=pin(binary),
-            semantics='Actual T.command_prepared -> actual command once -> complete Base.Array.clone I candidate -> actual encoder before actor publish. Overflow restores all I cells/tree/fields and recipe context, consumes one valid lease, checks exact refusal; representable malformed original snapshots yield compact Fault. Complete raw Core unchanged each completed command case. Two unequal-child Array constructors fail before Transport; they are not fallback observations.',
+            semantics='The recorded exact native source generation invokes actual T.command_prepared -> actual command once -> complete Base.Array.clone I candidate -> actual encoder before actor publish. Overflow restores all I cells/tree/fields and recipe context, consumes one valid lease, checks exact refusal; representable malformed original snapshots yield compact Fault. Complete raw Core unchanged each completed command case. Two unequal-child Array constructors fail before Transport; they are not fallback observations. Working-source pins and any differences from the compiled snapshot are recorded separately.',
             limits={'transport_bytes':65536,'parser_scalars':65536,'parser_depth':8,'AST_values':16384,'per_key_wire_cap':None},
             unverified=['socket write failure/disconnect native boundary','physical OS client acceptance','world durable publication/recovery','full semantic effect-consumption gameplay'],
-            reproduce='python3 tools/item_component_wire_transport_check.py --build')
+            reproduce='python3 tools/item_component_wire_transport_check.py --binary '+str(binary))
         write_json(EVIDENCE,receipt);print(line({'status':'passed','cases':len(cases),'counts':counts,'gate_cases':receipt['wire_gate']['cases']}))
     except BaseException as error:
         receipt.update(status='failed',error=repr(error));write_json(EVIDENCE,receipt);write_json(EVIDENCE.with_name('item_component_wire_transport_failure_'+str(time.time_ns())+'.json'),receipt);raise

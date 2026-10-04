@@ -1,5 +1,104 @@
 {
-  "status": "ordinary-passed-export-limited",
+  "artifacts": {
+    "scope.json": {
+      "bytes": 300,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item_component_wire/proof-001/scope.json",
+      "sha256": "5a3a89ca14651e62e1ebffb1c42e0b9007ac6bdbfd25680f55fadf382551e5e9"
+    },
+    "selected.bendtt": {
+      "bytes": 36668289,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item_component_wire/proof-001/selected.bendtt",
+      "sha256": "6cd9c0881c975f1bfc371e5113647a4299dc00fa5129b713273e0c174b81ae83"
+    },
+    "selection.json": {
+      "bytes": 26533,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item_component_wire/proof-001/selection.json",
+      "sha256": "ee210c7e95797ff42604daab8384b4f58dff8d3434cd3a15ae17a56ddb49823f"
+    },
+    "source-pins.json": {
+      "bytes": 25853,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item_component_wire/proof-001/source-pins.json",
+      "sha256": "1df9370b20784753a82642d52b4134ccaca8286235d3538866f66c54488ab4c1"
+    },
+    "source-snapshot.json": {
+      "bytes": 14613,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item_component_wire/proof-001/source-snapshot.json",
+      "sha256": "0fa4bd56c8de9d7d01cad562a6652285ef12633d0f202a3db591fb7169c68b97"
+    }
+  },
+  "candidate_kernel": {
+    "artifacts": {
+      "export.json": {
+        "bytes": 797,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item_component_wire/proof-candidate-001/export.json",
+        "sha256": "f0ec9240717d5c084d3abacbb1020c265d00dc7b1e74dc0962269085f4e41790"
+      },
+      "kernel.json": {
+        "bytes": 732,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item_component_wire/proof-candidate-001/kernel.json",
+        "sha256": "bdfb3cc6ffd1b2b1c99737c76334ae015f8749a7228ca0ba000c7f12b336e4f1"
+      },
+      "kernel.stdout": {
+        "bytes": 17,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item_component_wire/proof-candidate-001/kernel.stdout",
+        "sha256": "61b73cda11b6b665b9f99f2defd3d3b57f985c865225e942a5bdaa594a503e47"
+      },
+      "scope.json": {
+        "bytes": 23,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item_component_wire/proof-candidate-001/scope.json",
+        "sha256": "096eba7c600446a2f906369a6ff747804a51b9ad3153ca10d9a1d673e416b337"
+      },
+      "selected.bendtt": {
+        "bytes": 19538,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item_component_wire/proof-candidate-001/selected.bendtt",
+        "sha256": "a387f9871714cf53d6d42e5cbee9534d69f035a94c2024b5744ccff69b1a497b"
+      },
+      "selection.json": {
+        "bytes": 21376,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item_component_wire/proof-candidate-001/selection.json",
+        "sha256": "cdaf5a816dcc2a05837b222b8270562b85d6c08ea762ca0f7a7c294caa494ecc"
+      },
+      "source-pins.json": {
+        "bytes": 25853,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item_component_wire/proof-candidate-001/source-pins.json",
+        "sha256": "1df9370b20784753a82642d52b4134ccaca8286235d3538866f66c54488ab4c1"
+      }
+    },
+    "group_absent": true,
+    "kernel_seconds": 0.012355,
+    "ordinary_root_count": 16,
+    "root_count": 5,
+    "roots": [
+      "item_component_wire_candidate_laws:clone_node_rejoins_complete_backings",
+      "item_component_wire_candidate_laws:actual_array_clone_preserves_every_raw_leaf_and_tree",
+      "item_component_wire_candidate_laws:clone_producer_retains_complete_profiles_and_lengths",
+      "item_component_wire_candidate_laws:prospective_encoding_refusal_retains_complete_original_owner",
+      "item_component_wire_candidate_laws:prospective_encoding_admission_publishes_complete_candidate"
+    ],
+    "selected_scope": "five actual Array.clone backing/complete player candidate producer/refusal/admission roots",
+    "status": "passed",
+    "types_bodies_declarations_unchanged": true,
+    "zero_exclusions": true
+  },
+  "exclusions": [
+    "- item_component_wire_transport_laws.admitted_prospective_reply_publishes_exact_candidate_and_bytes: names remote_resource_transport.prospective_encoded, out of scope: a mutual recursion through Nat.show.fin, Nat.show.go that no live parameter of Nat.show.fin leads\n"
+  ],
+  "exported_root_count": 15,
+  "holes": 0,
+  "independent_kernel": {
+    "diagnostic": "SOME PROOFS FAIL\nIn json.encode_go:\naffine live code, calls that descend\n",
+    "exported_roots": 15,
+    "group_absent": true,
+    "receipt": {
+      "bytes": 722,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item_component_wire/proof-001/kernel.json",
+      "sha256": "7627333cc6d3dfb127ef5e84acbb335e832a60c5dd4caf9529c4acddc01e0eed"
+    },
+    "requested_export_roots": 16,
+    "seconds": 4.415008,
+    "status": "rejected"
+  },
+  "ordinary_root_count": 16,
   "ordinary_roots": [
     "item_component_wire_laws:refused_component_validation_is_structurally_refused",
     "item_component_wire_laws:structurally_refused_key_cannot_enter_wire",
@@ -18,44 +117,8 @@
     "item_component_wire_transport_laws:actual_actor_rollback_retains_world_shell_context_and_owner",
     "item_component_wire_transport_laws:admitted_prospective_reply_publishes_exact_candidate_and_bytes"
   ],
-  "ordinary_root_count": 16,
-  "original_event_count": 7103,
-  "original_types_bodies_and_declarations_retained": true,
   "ordinary_source_api_check_passed": true,
-  "holes": 0,
-  "requested_export_root_count": 16,
-  "exclusions": [
-    "- item_component_wire_transport_laws.admitted_prospective_reply_publishes_exact_candidate_and_bytes: names remote_resource_transport.prospective_encoded, out of scope: a mutual recursion through Nat.show.fin, Nat.show.go that no live parameter of Nat.show.fin leads\n"
-  ],
-  "exported_root_count": 15,
-  "independent_kernel": "not yet attempted; no kernel claim",
-  "artifacts": {
-    "selection.json": {
-      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item_component_wire/proof-001/selection.json",
-      "bytes": 26533,
-      "sha256": "ee210c7e95797ff42604daab8384b4f58dff8d3434cd3a15ae17a56ddb49823f"
-    },
-    "scope.json": {
-      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item_component_wire/proof-001/scope.json",
-      "bytes": 300,
-      "sha256": "5a3a89ca14651e62e1ebffb1c42e0b9007ac6bdbfd25680f55fadf382551e5e9"
-    },
-    "selected.bendtt": {
-      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item_component_wire/proof-001/selected.bendtt",
-      "bytes": 36668289,
-      "sha256": "6cd9c0881c975f1bfc371e5113647a4299dc00fa5129b713273e0c174b81ae83"
-    },
-    "source-pins.json": {
-      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item_component_wire/proof-001/source-pins.json",
-      "bytes": 25853,
-      "sha256": "1df9370b20784753a82642d52b4134ccaca8286235d3538866f66c54488ab4c1"
-    },
-    "source-snapshot.json": {
-      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item_component_wire/proof-001/source-snapshot.json",
-      "bytes": 14613,
-      "sha256": "0fa4bd56c8de9d7d01cad562a6652285ef12633d0f202a3db591fb7169c68b97"
-    }
-  },
+  "original_event_count": 7103,
   "original_source_pins": {
     "src/archive.bend": "c0f7b34a22726d220f6b867730b7d080d57d82c84d619c35721b9b8d18fa5d6e",
     "src/atomic_file.bend": "ef82fcddc460705f0761473bcfd8fcd896b779f89e56c4551c9ced23b13f987a",
@@ -198,6 +261,21 @@
     "src/world_resource_frame.bend": "d1a29a67e17200b6d77a2cea3f924940ef2ea6e8fdf77df1f4a5a7a3ef5c9bb7",
     "src/world_visibility.bend": "599e28975027958b48da9a299a968bf837fc6a244ac6750b37866c32182dbb07"
   },
+  "original_types_bodies_and_declarations_retained": true,
+  "reproduce": "node --experimental-transform-types --max-old-space-size=8192 --stack-size=4096 tools/item_component_wire_proof.mjs FRESH_DIR",
+  "requested_export_root_count": 16,
+  "rollback_export_deferred": {
+    "completed_export": false,
+    "diagnostic": "New attempt was already stopped after the defer instruction; rc-15,22.876s, group absent. No result claimed and no restart.",
+    "kernel_attempted": false,
+    "receipt": {
+      "bytes": 795,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item_component_wire/proof-rollback-001/export.json",
+      "sha256": "516bc6e2b75cf8254c13ffa77247ca4c3d482b9475a3dfefe01f89f6a38db0b9"
+    },
+    "root_count": 2,
+    "status": "explicitly-deferred-after-checkpoint-priority-message"
+  },
   "scope": "Five complete Array.clone/candidate contracts, eight semantic admission contracts, three actual Transport owner/context/lease/publication contracts. One publication export is refused because reachable Wire numeric rendering uses Nat.show mutual recursion. Full export receipt retained; no subset is represented as all16.",
-  "reproduce": "node --experimental-transform-types --max-old-space-size=8192 --stack-size=4096 tools/item_component_wire_proof.mjs FRESH_DIR"
+  "status": "five-candidate-roots-kernel-passed; full16-export/kernel-limited"
 }

@@ -70,12 +70,39 @@ and existing default/frame corpus), and `tools/item_component_wire_proof.mjs`
 scope). Source validation passed the original 7,345-event production and complete raw
 observer graph. All 16 proposed laws passed ordinary checking against an unchanged
 140-file snapshot; the full export refused one publication root because reachable
-wire numeric rendering uses unsupported `Nat.show` mutual recursion. Independent
-kernel verification and the native gate replay remain pending. The native target
+wire numeric rendering uses unsupported `Nat.show` mutual recursion. The independent
+kernel rejected the remaining 15-root export at `json.encode_go` with
+`affine live code, calls that descend`. The five actual clone/candidate laws
+passed a separate unchanged-term export and independent kernel with zero exclusions;
+this certifies five of the sixteen laws. A new two-root rollback export was
+explicitly deferred during checkpoint prioritization and has no verdict. The native target
 distinguishes 59 actual Transport cases, 614 admission/wire comparisons, and two
 unequal-child Array constructors refused by the native ABI before Transport.
+The ordinary native emitter reached its explicit 600-second bound without
+producing C; its frozen graph, process receipt and failure remain preserved.
+`tools/item_component_wire_cached_native.py` uses that exact unchanged graph
+with the private emitter already tested on actor016. It retains the original
+full checker, declaration order and holes check, and uses the original CPU
+compiler flags. This route emitted 32,006,351 C bytes in 211.769 seconds including
+source checking and process cleanup. Native compilation took 123.419 seconds.
+All 59 complete Transport comparisons and 614 component/wire comparisons completed
+successfully on that binary. Two unequal-child Array constructors separately
+produced the expected native fail-stop. The appended legacy dispatcher stops at
+its `overflow_menu()` construction of `1n + Wire.nat_max()`, beyond the native
+48-bit immediate Nat range; the complete legacy dispatcher has no PASS claim.
+The actual private-framing helper separately passed its fragmented 19,784-byte
+frame, 65,536-byte boundary, oversize/non-ASCII atomic-refusal and CRLF probes.
+Replay accepts its artifact through `tools/item_component_wire_transport_check.py
+--binary build/item_component_wire_transport/private-native-001/observer` and
+verifies its build manifest and frozen source/tool pins. Working-source differences
+are recorded separately. The direct command observer does not execute the live
+socket feed. Root integrated the resource-client framing adapter after the observed
+16,384-scalar general-framing refusal and reported full large-request actor017
+acceptance. This native observer retains its frozen older Transport generation;
+the later socket acceptance is a distinct root-owned receipt.
 The source and exact export scope are recorded in
 `evidence/item_component_wire_source.json` and
-`evidence/item_component_wire_proof.json`. These checks do
+`evidence/item_component_wire_proof.json`; the completed native scopes and retained
+aggregate failures are in `evidence/item_component_wire_native.json`. These checks do
 not establish physical OS acceptance, socket write recovery, durable world
 publication or effect-consumption gameplay.

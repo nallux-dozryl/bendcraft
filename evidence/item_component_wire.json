@@ -1,0 +1,148 @@
+{
+  "checked": 614,
+  "counts": {
+    "acquire/accepted": 34,
+    "acquire/refused": 68,
+    "pickup/accepted": 17,
+    "pickup/refused": 45,
+    "reply/accepted": 36,
+    "reply/refused": 91,
+    "request/accepted": 36,
+    "request/refused": 63,
+    "structural/accepted": 18,
+    "structural/refused": 79,
+    "wire_main/accepted": 18,
+    "wire_menu/accepted": 18,
+    "wire_menu/refused": 91
+  },
+  "error": "AssertionError({'command': ['/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item_component_wire_transport/private-native-001/observer', '--gpu', 'off', '--threads', '1', '--', 'gate', 'legacy'], 'exit_code': 1, 'seconds': 0.011987, 'stdout': '', 'stderr': 'bend: a Nat past the largest immediate 2^48-1\\n'})",
+  "existing_default_wire": {
+    "command": [
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item_component_wire_transport/private-native-001/observer",
+      "--gpu",
+      "off",
+      "--threads",
+      "1",
+      "--",
+      "gate",
+      "legacy"
+    ],
+    "exit_code": 1,
+    "seconds": 0.011987,
+    "stderr": "bend: a Nat past the largest immediate 2^48-1\n",
+    "stdout": ""
+  },
+  "parent_initialized_defaults": {
+    "error_maps": 0,
+    "maps": 1658,
+    "reference": {
+      "bytes": 1762172,
+      "file": "crafting_recipe_components.json",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/crafting_recipe_components.json",
+      "sha1": "573cda7cf13b1bec408905fb075dca0fc5ed3226",
+      "sha256": "2a677248a345741d810a1f03fc19c7c34b6ac709c06c99ac8a6433bc2d3e9e64"
+    },
+    "stew_sha256": "7f324fff5c212f399a85e4e3962f34f634fdedeeddff5f6bb3e39dbf229b5c25"
+  },
+  "source_pins": [
+    {
+      "bytes": 28759,
+      "file": "player_inventory.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_inventory.bend",
+      "sha1": "97e8ef19b9baa5945468f367b2e80c7f3a227457",
+      "sha256": "065be0bc6aa1d0cb10b9fcac77b6dcea73d4bdbab20fd2e13e264a8ea91c3340"
+    },
+    {
+      "bytes": 43641,
+      "file": "resource_client_wire.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/resource_client_wire.bend",
+      "sha1": "4b08c781eea87eef83b158d6878c6936ac326e0e",
+      "sha256": "0084c838fce62f76555208ccc9cf2b834ef5364c5f9345d0378b8cbfeefd171c"
+    },
+    {
+      "bytes": 12587,
+      "file": "item_component.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_component.bend",
+      "sha1": "3e685ca8650e5b1cbfd2803023b49f08734be67a",
+      "sha256": "85fd96ab967f3b031465ab9e0a815dd71882aec813683d73cd07dc31b991a2a7"
+    },
+    {
+      "bytes": 12607,
+      "file": "player_item_definitions.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_item_definitions.bend",
+      "sha1": "52b71807ac5228d9119b96cd2e0d42a863e2f3b3",
+      "sha256": "df5183e0c4be23b4eaf081e9a72099436e5d674402e9ac15102ecabc7a1b1d90"
+    },
+    {
+      "bytes": 2666,
+      "file": "item_component_wire_laws.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_component_wire_laws.bend",
+      "sha1": "b3d2dfa375328f8af3e6753731b3a40792c7b5da",
+      "sha256": "c9d8e7bdc2132d1d4502155a7b246bf35517bf05b301b7bd33f03ff03687ce2e"
+    },
+    {
+      "bytes": 1965,
+      "file": "item_component_wire_proof.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_component_wire_proof.bend",
+      "sha1": "8b6ccfb3c9a774a606c309189bf84b527de822bc",
+      "sha256": "4175598cb73f8cfc86a35d7099e44d8b8a97aba9a486a75ba5a9412b939e7ce6"
+    },
+    {
+      "bytes": 13197,
+      "file": "crafting_recipe_components.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe_components.bend",
+      "sha1": "090d0fd0fb4be3f67e41ceef4b7b110b5e179229",
+      "sha256": "2a35e31f26187ebbdab1c4261d54083acb68072a56a7b5869e5dfc490bc946be"
+    },
+    {
+      "bytes": 21384,
+      "file": "json.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/json.bend",
+      "sha1": "f573cd5692da17f83db6f2414ab59e7758e2c462",
+      "sha256": "a1789e3b4f5bea158ec0d95a8bcb39aa5b7c7e7355a5254d3de1d52a93c719d1"
+    },
+    {
+      "bytes": 14191,
+      "file": "item_component_wire.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/item_component_wire.bend",
+      "sha1": "67c866dae5b4137bcfd09b40200d5116b9a16c13",
+      "sha256": "131b53e4fec43ede1c646f65cf24f7c5767617d8e16138257fbbb01fc3d916f3"
+    },
+    {
+      "bytes": 41428,
+      "file": "resource_client_interaction_wire.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/resource_client_interaction_wire.bend",
+      "sha1": "15ab25373743d1425fd008c067f5fda1fe185a92",
+      "sha256": "8442be1368f02ed6b3a72f366d58323d0832844fb82e0166217adb704761e2f6"
+    },
+    {
+      "bytes": 3346,
+      "file": "resource_client_framing.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/resource_client_framing.bend",
+      "sha1": "84031571a846890bbadbd6fade08745d2d909474",
+      "sha256": "3696a244073b5521c4a5a4f7092cde3826e8450845586af2cf633864c12066b3"
+    },
+    {
+      "bytes": 13009,
+      "file": "item_component_wire_check.py",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/item_component_wire_check.py",
+      "sha1": "57854b4590572f669c78e68409db372e39d013f6",
+      "sha256": "41d5dde165d34cc6e10b00f8c22acfa835d98760cdb21fdd20c627853e3c0f1d"
+    },
+    {
+      "bytes": 107884,
+      "file": "item_component.json",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/item_component.json",
+      "sha1": "0b23b6706dcbe9848d7ee644f82cf8671600be47",
+      "sha256": "96ea75ecd223109d05162e21e9c2e1561e66eda24d488ff709021c663a292711"
+    },
+    {
+      "bytes": 556426,
+      "file": "reference_item_metadata.tsv",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_item_metadata.tsv",
+      "sha1": "97d08321c5439b9d6e333a77c4fb1db6c906cb9d",
+      "sha256": "1cf2669ac760fed886b33d19b12e4782d5011c68c629d22328147d8a9a9bfa22"
+    }
+  ],
+  "status": "failed"
+}
