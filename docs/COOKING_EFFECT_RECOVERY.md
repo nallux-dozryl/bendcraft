@@ -69,3 +69,40 @@ complete refused effect suffix. They do not establish entity physics, world
 publication, the whole live Sidecar owner, atomic filesystem publication or
 cold actor restoration. Those properties require their connected production
 consumer and existing actor/save boundary checks.
+
+The initialized entity-owner path is now `cooking_effect_consumer.deliver`.
+It delegates the actual `cooking_effect_entities.deliver`, committing each
+successfully planned item/XP effect to the sole entity owner. Its result keeps
+the exact pending suffix, typed status and unused constructor clock inputs.
+`deliver_io` accepts an explicit Nat clock-acquisition budget. Only a typed
+`EntropyNeeded` continuation reads the native monotonic clock; the next attempt
+uses the returned owner and pending suffix, so it cannot replay a committed
+prefix. Exhausting that budget returns the original failing effect with the
+complete current owner and every retained clock input. An empty drop advances
+the actual level RNG without acquiring a constructor clock.
+
+The actual Sidecar stores entity state and its clock queue together. The
+format-3 physical wrapper retains `EntityRecovery{view,clock_inputs}` in the
+same atomic transaction as Core/player, cooking bodies and pending effects.
+That storage and the whole live IO-step join require their own actor/save
+checks. New XP-orb placement still requires the actual world's collision/free
+position receiver; the focused fixture refuses that unavailable receiver
+explicitly. Dirty/comparator, nonzero block update and game-event publication,
+entity ticking/pickup and player recipe awards are separate remaining owners.
+
+`tools/test_cooking_effect_consumer.py` exposes `suite(executor,directory)`;
+the caller supplies the existing bounded native executor. The native-001 run
+passed ten observations in 0.782 seconds on binary `08006a28…`, with unchanged
+source/input/artifact pins. It compares complete raw owner and pending NBT,
+unused clocks, a real monotonic-clock input retained on one-budget atomic
+refusal, an empty-drop RNG advance and a seeded item commit from two pinned
+Java receiver rows. Its single plain-stone authority context is a test fixture;
+neutral internal constructor caches are explicit fixture policy. It does not
+establish full live-world/entity parity.
+
+The facade source and four owner/entropy contracts type-check at their declared
+effect boundaries. Three IO contracts depend on the monotonic-clock effect and
+are not independent-kernel proofs. The pure empty-delivery contract exported
+with no exclusions, but its kernel run refused the imported `json.encode_go`
+descent rule; no facade kernel PASS is claimed. The earlier six fallback
+delivery laws retain their separately recorded successful verdict.
