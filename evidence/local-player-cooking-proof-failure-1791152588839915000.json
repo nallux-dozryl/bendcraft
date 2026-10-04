@@ -1,0 +1,129 @@
+{
+  "diagnosis": {
+    "artifact": {
+      "bytes": 185511,
+      "file": "selected.bendtt",
+      "sha1": "48cf4d6255ed8351ce6a11130ef2221c984fcba2",
+      "sha256": "1c9bde841068e0e2785bbadd6c6521d36b258cabb39e12cc045fb24dd6ea0ece"
+    },
+    "kernel_executed": false,
+    "native_executed": false,
+    "ordinary_entries": [
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/local_player_cooking_proof.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/runtime_block_inside_join_proof.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/local_player_runtime.bend"
+    ],
+    "ordinary_seconds": 3.7287995839999986,
+    "original_book_checks": 1,
+    "original_root_count": 6275,
+    "phase": "Source original Book passed; safe proof export rejected three transitive declarations before kernel",
+    "scope_exclusions": [
+      "- local_player_cooking_laws.already_initialized_begin_retains_complete_cooking_owner: names local_player_cooking.begin, out of scope: a mutual recursion through Nat.show.fin, Nat.show.go that no live parameter of Nat.show.fin leads\n",
+      "- local_player_cooking_laws.paused_idle_tick_retains_complete_cooking_owner: names local_player_cooking.tick, out of scope: a mutual recursion through Nat.show.fin, Nat.show.go that no live parameter of Nat.show.fin leads\n",
+      "- local_player_cooking_laws.noncanonical_context_save_retains_complete_cooking_owner: names local_player_cooking.save_body, out of scope: a mutual recursion through Nat.show.fin, Nat.show.go that no live parameter of Nat.show.fin leads\n"
+    ],
+    "selected_new_roots": [
+      "local_player_cooking_laws:already_initialized_begin_retains_complete_cooking_owner",
+      "local_player_cooking_laws:paused_idle_tick_retains_complete_cooking_owner",
+      "local_player_cooking_laws:noncanonical_context_save_retains_complete_cooking_owner",
+      "local_player_cooking_laws:cooking_query_publishes_supplied_owner_and_retains_complete_session",
+      "local_player_cooking_laws:cooking_inventory_query_publishes_all_supplied_owners_and_retains_session"
+    ],
+    "selection": {
+      "bytes": 14048,
+      "file": "selection.json",
+      "sha1": "e23a23e4515006b3f547467a0c9856bd5f441305",
+      "sha256": "82e9d239b677d602c6034b9e1f4cfd2ebc2afa7b6fc1c255daeb68af1118f598"
+    },
+    "source_api_check_passed": true,
+    "source_pin_manifest": {
+      "bytes": 17653,
+      "file": "source-pins.json",
+      "sha1": "f99da032240215a6a46f049c624f8f859ba92c69",
+      "sha256": "9ca29b88f359f31711d8d09c5389e395f0f941efd33f8916cf9d2b1e1e7935f8"
+    },
+    "subsequent_source_hold": "Parent/root report native entry arity >247; recursive Sidecar/Shell repair pending. No equivalent retry or kernel continuation started."
+  },
+  "error": "AssertionError({'argv': ['/opt/homebrew/Cellar/node/23.5.0/bin/node', '--experimental-transform-types', '--stack-size=4096', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/local_player_cooking_proof.mjs', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-proof/1791152588839915000'], 'pid': 3233, 'exit_code': 2, 'seconds': 13.133536, 'timed_out': False, 'group_absent': True, 'cleanup_poll_count': 1, 'stdout': {'file': 'original-book-check-and-export.stdout', 'bytes': 1186, 'sha1': '2d87a22c26382ae9e730d95317ef23c5f904c012', 'sha256': 'ad5f22188bdd62adfd3d9471373eff870e1cfbf2519e4d3df0fbffdf34f70cf3'}, 'stderr': {'file': 'original-book-check-and-export.stderr', 'bytes': 176, 'sha1': '9f21f6b55c51b0c548cfa4217b8782f48beb72f2', 'sha256': '4a11a296dcb1dc2b05634d5d8096bd7dab5dd078e8d20b17456fd4094301f794'}})",
+  "folder": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-proof/1791152588839915000",
+  "receipts": [
+    {
+      "argv": [
+        "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+        "--experimental-transform-types",
+        "--stack-size=4096",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/local_player_cooking_proof.mjs",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-proof/1791152588839915000"
+      ],
+      "cleanup_poll_count": 1,
+      "exit_code": 2,
+      "group_absent": true,
+      "pid": 3233,
+      "seconds": 13.133536,
+      "stderr": {
+        "bytes": 176,
+        "file": "original-book-check-and-export.stderr",
+        "sha1": "9f21f6b55c51b0c548cfa4217b8782f48beb72f2",
+        "sha256": "4a11a296dcb1dc2b05634d5d8096bd7dab5dd078e8d20b17456fd4094301f794"
+      },
+      "stdout": {
+        "bytes": 1186,
+        "file": "original-book-check-and-export.stdout",
+        "sha1": "2d87a22c26382ae9e730d95317ef23c5f904c012",
+        "sha256": "ad5f22188bdd62adfd3d9471373eff870e1cfbf2519e4d3df0fbffdf34f70cf3"
+      },
+      "timed_out": false
+    }
+  ],
+  "runner_pins": {
+    "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt": {
+      "bytes": 3271216,
+      "file": "bendtt",
+      "sha1": "f19dfe8aec3b3911b6c9f0acae2a54f5b05ca5f0",
+      "sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7"
+    },
+    "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/bend.ts": {
+      "bytes": 137761,
+      "file": "bend.ts",
+      "sha1": "2105cb635e087b686b1bc5c4b6b139660eeb3db9",
+      "sha256": "7deae3693eb896f33c73867081b99d2c6f3ed3b57e77e55eb5f6260840dd0e63"
+    },
+    "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/safe.ts": {
+      "bytes": 63418,
+      "file": "safe.ts",
+      "sha1": "0b72424978b2acf7eb30f53d9b01b96f267dbcac",
+      "sha256": "54cb3a534ab7cc9ee313bf6383b3948ccdcac022469b3020e00745bbfe6f7e04"
+    },
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/local_player_cooking_proof.mjs": {
+      "bytes": 5161,
+      "file": "local_player_cooking_proof.mjs",
+      "sha1": "df66f33b7c2166e5cc908da587c4c0cb279b8589",
+      "sha256": "c3d67fafe1c63ca99a8d2e741bdc04a3cb9048fd587696b04e9813bd7c10c56f"
+    },
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/reference_inventory.py": {
+      "bytes": 24736,
+      "file": "reference_inventory.py",
+      "sha1": "01f1b7c1adec7f6b9cd62a9c743b1c4835d3e6f6",
+      "sha256": "e82b66508a99d9bac37c62917645e9adcac06e52ab2b65e2bc8afd5be66a8d9e"
+    },
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_local_player_cooking_proof.py": {
+      "bytes": 5466,
+      "file": "test_local_player_cooking_proof.py",
+      "sha1": "5469bbfa0bd06e9f7143d12b1cd2356e3161f669",
+      "sha256": "090289c966e38d7aeb94e4acedfafd26ec629d5f9da97bc5b8b4a8af91231630"
+    },
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_player_block_inside_stuck.py": {
+      "bytes": 36385,
+      "file": "test_player_block_inside_stuck.py",
+      "sha1": "ed2cfcfceae7642b9319f61d44d91aefdf5be701",
+      "sha256": "80f7aea249b05ecefa4df555293372293a787d87c7102b67c0a4279d8f44ac9c"
+    },
+    "/opt/homebrew/Cellar/node/23.5.0/bin/node": {
+      "bytes": 77577344,
+      "file": "node",
+      "sha1": "606616eb1de7b4974f98c95de3a88e21aaa37249",
+      "sha256": "ec307018e1e8b80d68588b01ce6e9f8f9b8f4a03412c513b0fc3ac4d0f5db799"
+    }
+  },
+  "status": "failed"
+}

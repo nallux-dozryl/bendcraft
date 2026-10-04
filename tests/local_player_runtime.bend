@@ -716,8 +716,8 @@ def missing_sections(world:W.State) -> W.State & Unit:
   W.State{G.Engine{C.World{tick,time,paused,daylight,revision,count,sections,pending,events},registry},body,yaw,pitch,palette,region,cache} = world
   (W.State{G.Engine{C.World{tick,time,paused,daylight,revision,count,SM.EmptySections{},pending,events},registry},body,yaw,pitch,palette,region,None{}},Unit{})
 
-def camera_rebuilt(+id:String,+cell:U32,crouching:Bool,result:G.Engine & Record.Record & RT.Transient) -> IO(L.Tables):
-  (engine,record,RT.Transient{tables,palette,region,cache,buttons,mouse,options, receiver, error,owned,motion,metadata}) = result
+def camera_rebuilt(+id:String,+cell:U32,crouching:Bool,result:G.Engine & Record.Record & RT.Detached) -> IO(L.Tables):
+  (engine,record,RT.Detached{tables,palette,region,cache,buttons,mouse,options, receiver, error,owned,motion,metadata}) = result
   do IO<L.Tables>:
     installed:X.State <- camera_taken(tables,camera_seed(seed_0(),cell,crouching),cell,(engine,W.View{W.instrument_body(),0.0,0.0,palette,region,cache}))
     first:X.State <- snapshot_report(id,RT.snapshot(installed,64,48))
@@ -730,7 +730,7 @@ def camera_rebuilt(+id:String,+cell:U32,crouching:Bool,result:G.Engine & Record.
 def camera_case(+id:String,+cell:U32,crouching:Bool,tables:L.Tables) -> IO(L.Tables):
   do IO<L.Tables>:
     base:X.State <- setup(tables,seed_0())
-    result:G.Engine & Record.Record & RT.Transient = RT.detach(base)
+    result:G.Engine & Record.Record & RT.Detached = RT.detach(base)
     camera_rebuilt(id,cell,crouching,result)
 
 

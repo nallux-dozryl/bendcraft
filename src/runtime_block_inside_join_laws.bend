@@ -172,8 +172,8 @@ law successful_startup_restore_resets_transient_receiver_and_preserves_affine_ow
   for state_tail: List<&1, X.State>
   for motion_tail: List<&1, MH.State>
   for +metadata_tail: List<&2, X.Metadata>
-  {RT.restored_transient(RT.Transient{tables, palette, region, cache, buttons, mouse, options, receiver, error, state_tail, motion_tail, metadata_tail}) ==
-    RT.Transient{tables, palette, region, cache, PI.empty(), MI.initial(), options, P.empty(), None{}, state_tail, motion_tail, metadata_tail} : RT.Transient}
+  {RT.restored_transient(RT.Detached{tables, palette, region, cache, buttons, mouse, options, receiver, error, state_tail, motion_tail, metadata_tail}) ==
+    RT.Detached{tables, palette, region, cache, PI.empty(), MI.initial(), options, P.empty(), None{}, state_tail, motion_tail, metadata_tail} : RT.Detached}
 
 law failed_startup_validation_retains_entire_runtime_owner_and_receiver:
   for state: X.State
