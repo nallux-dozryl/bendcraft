@@ -1,0 +1,37 @@
+# Renderer 004/005 ownership diagnosis
+
+The quiet native comparison records a regression for renderer 005 in the tested scene. At two workers, the 16-frame medians are 947.5 ms for 004 and 1194.5 ms for 005, a 26.07% increase. At twelve workers, the eight-frame medians are 1360 ms and 3458.5 ms, respectively, a 2.543-fold ratio. These are render, composition and `Window.frame` timings for the recorded 1920×1080 scene and settings. They do not establish whole-game performance. Confidence is high for this observed workload.
+
+The existing evidence is [two-worker paired runs](../evidence/playable-renderer-current-paired-performance-004-005.json) and [twelve-worker runs](../evidence/playable-renderer-current-paired-performance-004-005-12workers.json). Each run observed no competing Bend, Node, compiler or Java jobs before launch or during 250 ms monitoring. The source snapshots contain the same 55 project files; only `src/mesh_render.bend` differs. Snapshot metadata `source-map.json` also differs and is excluded from that source-file comparison. Exact C, source and evidence identities are retained in [the diagnostic receipt](../evidence/mesh_render_performance_004_005.json).
+
+## Actual generated ownership operations
+
+Full 005 C contains a concrete texture-lifetime problem. `unchanged_best` becomes `spin_74` at line 13733 of `build/playable-renderer-current/005/renderer.c`. On a nonempty texture list, this helper takes the list constructor with `ctr_take`, takes the head `Texture` constructor with another `ctr_take`, sinks the head image and list tail, and returns the scalar fragment fields. `unchanged_fragments` (`spin_47`, line 10885) performs the same texture destruction. `outside_lists` (`spin_103`, line 15551) performs that destruction in both nonempty-texture branches. Its quad read is borrowed; its texture read is owned.
+
+The full graph still keeps texture roots between frame quadrants, tile children, pixel solid/translucent passes and recursive spatial branches. Rejected spatial nodes, missed solid candidates, an empty translucent list and padded pixels reach these helpers. In 004, the corresponding rejected paths sink the whole texture root directly. The same helper names in the smaller focused fixture are insufficient evidence about ownership in the full graph: ownership and lending decisions depend on reachable callers.
+
+The pinned runtime explains a conditional cost increase. For an RFC-shared texture `Cons`, shared head `Texture` and shared image, `ctr_take(Cons)` increments the head and tail references and decrements the root; `ctr_take(Texture)` increments the image and decrements the texture root; sinking the image and tail adds two decrements. That is seven atomic read-modify-write operations on this path, compared with one shared-root decrement for 004's whole-list sink. This is a static path derivation, not a hardware-counter measurement or a net frame operation count. The eliminated tree/quad disposal and fragment work must also be included in any net claim.
+
+A 2048-square backing image has 2,120,704 pixels outside a 1920×1080 viewport. If the stated sharing conditions hold on every padded pixel, the texture-only difference adds 12,724,224 atomic operations per frame. That provides a plausible contention mechanism for the poor twelve-worker scaling. Confidence that the operations exist is high; their dominant share of the measured regression remains unknown without a controlled variant or stack profile.
+
+005 also has real generated-C improvements. Its scalar `chosen_fragment` and `chosen_hit` paths avoid boxed candidate construction and selection. Tree and quad reads use `term_peek`, with ownership disposal after frame construction. The private prototype preserves these changes.
+
+## Private source experiment
+
+`build/mesh-render-performance-001/source` contains a frozen copy of the existing fifteen-case native fixture graph. Its private mesh variant adds `finish_textures(textures,image)` and retains `+textures` in `prepared_frame` until a post-frame ownership use, alongside the existing `finish_tree` and `finish_quads` uses. The working mesh source, compiler and immutable 004/005 builds are unchanged.
+
+The experiment reuses `tools/test_mesh_tile_render.py` through the private `focused.py` wrapper, with its entry and fixture paths redirected to the copied graph. The fifteen cases contain retained Java stone/glass quad words, official local texture inputs, rejection paths, alpha ordering, clipped geometry, rectangular padding and a stone grid. Expected pixels come from the existing independent binary32/Pillow oracle. The commands are:
+
+```sh
+/Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 build/mesh-render-performance-001/focused.py prepare
+/Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 build/mesh-render-performance-001/focused.py build
+/Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 build/mesh-render-performance-001/focused.py run
+```
+
+The private build completed in 8.571 seconds, with 2.107 seconds for C emission and 3.105 seconds for native compilation. All fifteen native cases pass: 10,975 active pixels per mode exactly match the independent oracle for Tile, flat mesh and BVH mesh. Admission and released scene-quad counts also match. The owned build and run process groups were absent at completion. The [focused receipt](../evidence/mesh_render_performance_texture_lifetime_001.json) pins source, C, binary, fixture, preparation and observations.
+
+Actual focused C emits borrowed reads in `unchanged_fragments` (`spin_18`), `unchanged_best` (`spin_34`) and `outside_lists` (`spin_40`): `term_peek` appears, with no `ctr_take`, `term_keep` or `term_sink`. Twenty inspected frame/tile/pixel/trace bodies and continuations contain none of those three ownership operations. `finish_textures` itself is also borrowed in this focused graph. The caller's retained asset owner is sufficient to lend through that helper; an owning host disposal walk is not emitted here. The earlier focused M19c graph already borrowed the hot reads, so these findings do not demonstrate the full-graph change or speed improvement.
+
+The one new law `finish_textures_preserves_complete_image` quantifies over every texture list and complete `Image`, and proves identity for the actual private walker by induction. Only this new root was exported, retaining checked source types and bodies. The independent kernel reports `ALL PROOFS CHECK` with zero exclusions; the [kernel receipt](../evidence/mesh_render_performance_texture_lifetime_kernel_001.json) pins the source closure and tools. This law establishes output identity, not emitted ownership or performance.
+
+The private variant is ready for a full 006 renderer snapshot overlay. Promotion requires inspecting actual full C and performing a quiet comparison of that candidate. Neither a source annotation nor the focused fixture establishes a full-client speed improvement.

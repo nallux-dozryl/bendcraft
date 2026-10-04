@@ -1,0 +1,120 @@
+{
+  "conditional_texture_RMW_derivation": {
+    "004_whole_texture_root_sink": 1,
+    "005_per_rejected_helper": 7,
+    "conditions": "RFC-shared nonempty texture Cons, shared head Texture, shared Image; static runtime path, not measured hardware counters",
+    "net_frame_RMW_claim": false,
+    "padded_pixels_1920x1080_in_2048_square": 2120704,
+    "texture_only_additional_RMW": 6,
+    "texture_only_additional_RMW_if_conditions_hold_for_padding": 12724224
+  },
+  "confidence": {
+    "dominant_causal_share": "unknown pending stack profile or controlled lifetime variant",
+    "ownership_operations": "high for pinned full emitted C",
+    "regression": "high for recorded quiet scene and settings"
+  },
+  "full_C": {
+    "004": {
+      "bytes": 15131891,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/004/renderer.c",
+      "sha256": "20328eb9d3f9fe3f753a96f52cc0e082fee06313105e8f115501921ebe9e3d0a"
+    },
+    "005": {
+      "bytes": 15147531,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/005/renderer.c",
+      "sha256": "e954b3f69a3681a718b4886e110312bdc62ca7091a5f72237856f6068c246021"
+    }
+  },
+  "mesh_sources": {
+    "004": {
+      "bytes": 24625,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/004/source/src/mesh_render.bend",
+      "sha256": "62aff16470bb38313e0d1a732d16e4bb61fc65315ec8664df4a2a8c007de8cd6"
+    },
+    "005": {
+      "bytes": 27976,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/005/source/src/mesh_render.bend",
+      "sha256": "19c42543263873cf53f378b38135939762d8af6f375f8a64148faa26c9dc8e24"
+    }
+  },
+  "observed_frame_medians_ms": {
+    "12_workers": {
+      "004": 1360,
+      "005": 3458.5,
+      "ratio": 2.543014705882353
+    },
+    "2_workers": {
+      "004": 947.5,
+      "005": 1194.5,
+      "ratio": 1.2606860158311346
+    }
+  },
+  "ownership_helpers": [
+    {
+      "C_name": "spin_74",
+      "line": 13733,
+      "sha256": "20aea7575d53f94daa4d2d086028c19a37a3841cf2aa53910f046cc6e5b6533d",
+      "source_meaning": "unchanged_best",
+      "static_body_calls": {
+        "ctr_take": 2,
+        "heap_alloc": 0,
+        "term_keep": 0,
+        "term_peek": 0,
+        "term_sink": 2
+      }
+    },
+    {
+      "C_name": "spin_47",
+      "line": 10885,
+      "sha256": "34a2f104905347bad4c3d19c45ea39e5f5d1a844da3a4b63d5051ddbe6beaf42",
+      "source_meaning": "unchanged_fragments",
+      "static_body_calls": {
+        "ctr_take": 2,
+        "heap_alloc": 0,
+        "term_keep": 0,
+        "term_peek": 0,
+        "term_sink": 2
+      }
+    },
+    {
+      "C_name": "spin_103",
+      "line": 15551,
+      "sha256": "9f92915a324f4e29a9df434ee3fbad6eafafb2c3600ac64aa7d5dd0f23e7848b",
+      "source_meaning": "outside_lists",
+      "static_body_calls": {
+        "ctr_take": 4,
+        "heap_alloc": 0,
+        "term_keep": 0,
+        "term_peek": 2,
+        "term_sink": 4
+      }
+    }
+  ],
+  "paired_evidence": {
+    "playable-renderer-current-paired-performance-004-005-12workers.json": {
+      "bytes": 4514,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/playable-renderer-current-paired-performance-004-005-12workers.json",
+      "sha256": "25b3af2b97bae7d2a0fdbe727cf16c81b6c06262510a38a1da93ff4993ea8c93"
+    },
+    "playable-renderer-current-paired-performance-004-005.json": {
+      "bytes": 5826,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/playable-renderer-current-paired-performance-004-005.json",
+      "sha256": "7c93ceebb83f21e2426630275446bd85dc103668b2377e708792884126f3c218"
+    }
+  },
+  "private_prototype": {
+    "bytes": 28166,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-render-performance-001/source/src/mesh_render.bend",
+    "sha256": "5209671e17ec8f69a79ac8f855ae1225e7ca4129ef9aace4ff8fbf0beb1e5f7a"
+  },
+  "project_snapshot_files": {
+    "004": 55,
+    "005": 55,
+    "changed_paths": [
+      "src/mesh_render.bend"
+    ],
+    "excluded_snapshot_metadata": "source-map.json"
+  },
+  "scope": "Pinned full generated C and source ownership diagnosis of recorded renderer workload. No general speed or semantic parity claim. Working source, existing native helpers, original compiler, immutable004/005 unchanged.",
+  "status": "DIAGNOSED_STATIC_SUSPECT"
+}

@@ -1,0 +1,707 @@
+{
+  "C": {
+    "bytes": 974781,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native-cache/sources/3391008a24239b6e03225cc5632b3bd8e5e8839fa3615626b9e90ab875a0151a/generated.c",
+    "sha256": "a3b9e5cf10f1ac0f16611684bcf795966421e28dac48625a422c1c3362737bcf"
+  },
+  "binary": {
+    "bytes": 1355176,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-render-performance-001/focused/test",
+    "sha256": "96d2e4f507ba3a6aba4574610ec5e4540784ce53a5e17b916f8d3c559b9fc18d"
+  },
+  "build": {
+    "bytes": 626824,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-render-performance-001/focused/native-build.json",
+    "sha256": "74c06411bdee2e11fd85b0bf47ef92102abfc1ef1f3a215d28aef22aff43ac00"
+  },
+  "build_process": {
+    "argv": [
+      "/Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/build_native.py",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-render-performance-001/source/tests/mesh_tile_render.bend",
+      "-o",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-render-performance-001/focused/test",
+      "--report",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-render-performance-001/focused/native-build.json"
+    ],
+    "cap_seconds": 120,
+    "cleanup_error": null,
+    "exit_code": 0,
+    "group_absent": true,
+    "launch_error": null,
+    "pid": 66241,
+    "seconds": 8.570757375098765,
+    "stderr": {
+      "bytes": 0,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-render-performance-001/focused/native-build.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 614,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-render-performance-001/focused/native-build.stdout",
+      "sha256": "3ff27b48e8a5c7bbbc9437d06b8af4f6caa9d032a7703fde47b5d9fb370a7e8d"
+    },
+    "timed_out": false
+  },
+  "cases": [
+    {
+      "exact": {
+        "bvh": true,
+        "flat": true,
+        "tile": true
+      },
+      "forced_proposal_admission_exact": true,
+      "height": 17,
+      "id": 0,
+      "milliseconds_including_forced_output": {
+        "bvh": 0,
+        "flat": 0,
+        "tile": 1
+      },
+      "name": "empty",
+      "original_scene_quad_count_retained": true,
+      "quads": 0,
+      "width": 31
+    },
+    {
+      "exact": {
+        "bvh": true,
+        "flat": true,
+        "tile": true
+      },
+      "forced_proposal_admission_exact": true,
+      "height": 17,
+      "id": 1,
+      "milliseconds_including_forced_output": {
+        "bvh": 0,
+        "flat": 0,
+        "tile": 0
+      },
+      "name": "java-stone",
+      "original_scene_quad_count_retained": true,
+      "quads": 6,
+      "width": 31
+    },
+    {
+      "exact": {
+        "bvh": true,
+        "flat": true,
+        "tile": true
+      },
+      "forced_proposal_admission_exact": true,
+      "height": 17,
+      "id": 2,
+      "milliseconds_including_forced_output": {
+        "bvh": 0,
+        "flat": 0,
+        "tile": 1
+      },
+      "name": "java-glass",
+      "original_scene_quad_count_retained": true,
+      "quads": 6,
+      "width": 31
+    },
+    {
+      "exact": {
+        "bvh": true,
+        "flat": true,
+        "tile": true
+      },
+      "forced_proposal_admission_exact": true,
+      "height": 17,
+      "id": 3,
+      "milliseconds_including_forced_output": {
+        "bvh": 1,
+        "flat": 0,
+        "tile": 0
+      },
+      "name": "opaque",
+      "original_scene_quad_count_retained": true,
+      "quads": 1,
+      "width": 31
+    },
+    {
+      "exact": {
+        "bvh": true,
+        "flat": true,
+        "tile": true
+      },
+      "forced_proposal_admission_exact": true,
+      "height": 17,
+      "id": 4,
+      "milliseconds_including_forced_output": {
+        "bvh": 0,
+        "flat": 0,
+        "tile": 0
+      },
+      "name": "cutout",
+      "original_scene_quad_count_retained": true,
+      "quads": 2,
+      "width": 31
+    },
+    {
+      "exact": {
+        "bvh": true,
+        "flat": true,
+        "tile": true
+      },
+      "forced_proposal_admission_exact": true,
+      "height": 17,
+      "id": 5,
+      "milliseconds_including_forced_output": {
+        "bvh": 0,
+        "flat": 1,
+        "tile": 0
+      },
+      "name": "translucent",
+      "original_scene_quad_count_retained": true,
+      "quads": 2,
+      "width": 31
+    },
+    {
+      "exact": {
+        "bvh": true,
+        "flat": true,
+        "tile": true
+      },
+      "forced_proposal_admission_exact": true,
+      "height": 17,
+      "id": 6,
+      "milliseconds_including_forced_output": {
+        "bvh": 0,
+        "flat": 0,
+        "tile": 0
+      },
+      "name": "alpha-order",
+      "original_scene_quad_count_retained": true,
+      "quads": 2,
+      "width": 31
+    },
+    {
+      "exact": {
+        "bvh": true,
+        "flat": true,
+        "tile": true
+      },
+      "forced_proposal_admission_exact": true,
+      "height": 17,
+      "id": 7,
+      "milliseconds_including_forced_output": {
+        "bvh": 0,
+        "flat": 0,
+        "tile": 1
+      },
+      "name": "alpha-source-index",
+      "original_scene_quad_count_retained": true,
+      "quads": 2,
+      "width": 31
+    },
+    {
+      "exact": {
+        "bvh": true,
+        "flat": true,
+        "tile": true
+      },
+      "forced_proposal_admission_exact": true,
+      "height": 17,
+      "id": 8,
+      "milliseconds_including_forced_output": {
+        "bvh": 1,
+        "flat": 0,
+        "tile": 0
+      },
+      "name": "occluded-alpha",
+      "original_scene_quad_count_retained": true,
+      "quads": 2,
+      "width": 31
+    },
+    {
+      "exact": {
+        "bvh": true,
+        "flat": true,
+        "tile": true
+      },
+      "forced_proposal_admission_exact": true,
+      "height": 17,
+      "id": 9,
+      "milliseconds_including_forced_output": {
+        "bvh": 0,
+        "flat": 0,
+        "tile": 0
+      },
+      "name": "near-plane-crossing",
+      "original_scene_quad_count_retained": true,
+      "quads": 1,
+      "width": 31
+    },
+    {
+      "exact": {
+        "bvh": true,
+        "flat": true,
+        "tile": true
+      },
+      "forced_proposal_admission_exact": true,
+      "height": 17,
+      "id": 10,
+      "milliseconds_including_forced_output": {
+        "bvh": 1,
+        "flat": 0,
+        "tile": 0
+      },
+      "name": "near-rejected",
+      "original_scene_quad_count_retained": true,
+      "quads": 1,
+      "width": 31
+    },
+    {
+      "exact": {
+        "bvh": true,
+        "flat": true,
+        "tile": true
+      },
+      "forced_proposal_admission_exact": true,
+      "height": 17,
+      "id": 11,
+      "milliseconds_including_forced_output": {
+        "bvh": 0,
+        "flat": 0,
+        "tile": 0
+      },
+      "name": "far-rejected",
+      "original_scene_quad_count_retained": true,
+      "quads": 1,
+      "width": 31
+    },
+    {
+      "exact": {
+        "bvh": true,
+        "flat": true,
+        "tile": true
+      },
+      "forced_proposal_admission_exact": true,
+      "height": 17,
+      "id": 12,
+      "milliseconds_including_forced_output": {
+        "bvh": 1,
+        "flat": 0,
+        "tile": 0
+      },
+      "name": "offscreen-exact-miss",
+      "original_scene_quad_count_retained": true,
+      "quads": 1,
+      "width": 31
+    },
+    {
+      "exact": {
+        "bvh": true,
+        "flat": true,
+        "tile": true
+      },
+      "forced_proposal_admission_exact": true,
+      "height": 7,
+      "id": 13,
+      "milliseconds_including_forced_output": {
+        "bvh": 0,
+        "flat": 0,
+        "tile": 0
+      },
+      "name": "minimal-rectangular",
+      "original_scene_quad_count_retained": true,
+      "quads": 1,
+      "width": 4
+    },
+    {
+      "exact": {
+        "bvh": true,
+        "flat": true,
+        "tile": true
+      },
+      "forced_proposal_admission_exact": true,
+      "height": 64,
+      "id": 14,
+      "milliseconds_including_forced_output": {
+        "bvh": 2,
+        "flat": 23,
+        "tile": 24
+      },
+      "name": "java-stone-grid-total-cost",
+      "original_scene_quad_count_retained": true,
+      "quads": 216,
+      "width": 64
+    }
+  ],
+  "expected_active_pixels_per_mode": 10975,
+  "fixture": {
+    "bytes": 117979,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-render-performance-001/source/build/mesh-tile-render/fixture-001/fixtures.bend",
+    "sha256": "5434cc810960e4c85707e5bf32e849a8cb240d925fb9e887a8ebebff88ecdcb6"
+  },
+  "helper_bodies": [
+    {
+      "line": 2507,
+      "name": "spin_18",
+      "sha256": "e0f05e680ad89e595a03e20a341089704a73ba0dbef11c00ae7dac0c0a07b224",
+      "source_meaning": "unchanged_fragments",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "rfc_seal": 0,
+        "term_keep": 0,
+        "term_peek": 2,
+        "term_sink": 0
+      }
+    },
+    {
+      "line": 3465,
+      "name": "spin_34",
+      "sha256": "0fa34e71ee84bca3ba939944684da704dde7d93315fef1b6348cb6059aad31bf",
+      "source_meaning": "unchanged_best",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "rfc_seal": 0,
+        "term_keep": 0,
+        "term_peek": 2,
+        "term_sink": 0
+      }
+    },
+    {
+      "line": 3733,
+      "name": "spin_40",
+      "sha256": "7bd54e89cb063a669a2fa9383a46b158359f9adedfd9d2bdb9e28603b674c0b0",
+      "source_meaning": "outside_lists",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "rfc_seal": 0,
+        "term_keep": 0,
+        "term_peek": 6,
+        "term_sink": 0
+      }
+    },
+    {
+      "line": 3824,
+      "name": "spin_41",
+      "sha256": "628aab8de5e60ba2e4b12bab6423f8de1c84669464f9738e793a1fa7741ffb76",
+      "source_meaning": "outside_tree",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "rfc_seal": 0,
+        "term_keep": 0,
+        "term_peek": 3,
+        "term_sink": 0
+      }
+    },
+    {
+      "line": 4838,
+      "name": "spin_62",
+      "sha256": "5c2c8abfe715ccd53fc222372fa2b4afe826ca9e76c6222fa5eb6eddc6d8c624",
+      "source_meaning": "finish_textures",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "rfc_seal": 0,
+        "term_keep": 0,
+        "term_peek": 2,
+        "term_sink": 0
+      }
+    }
+  ],
+  "modes": [
+    "tile",
+    "flat",
+    "bvh"
+  ],
+  "native_process": {
+    "argv": [
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-render-performance-001/focused/test",
+      "--gpu",
+      "off",
+      "--threads",
+      "1"
+    ],
+    "cap_seconds": 60,
+    "cleanup_error": null,
+    "exit_code": 0,
+    "group_absent": true,
+    "launch_error": null,
+    "pid": 67171,
+    "seconds": 0.6122341249138117,
+    "stderr": {
+      "bytes": 0,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-render-performance-001/focused/native-run.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 363811,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-render-performance-001/focused/native-run.stdout",
+      "sha256": "6921857ea452406a33a9a4f364cee03221e7ab45459a1fb096962caea1450667"
+    },
+    "timed_out": false
+  },
+  "preparation": {
+    "bytes": 134323,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-render-performance-001/focused/preparation.json",
+    "sha256": "ce7d65a32b0f613e14517d5ce91099b5a79682ea3824c6fad2f99418f6d32ee6"
+  },
+  "reader_bodies": [
+    {
+      "line": 9962,
+      "name": "FID____SRC_MESH_RENDER_SPATIAL_TRACE",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "rfc_seal": 0,
+        "term_keep": 0,
+        "term_peek": 3,
+        "term_sink": 0
+      }
+    },
+    {
+      "line": 10255,
+      "name": "FID____SRC_MESH_RENDER_SPATIAL_TRACE_K37",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "rfc_seal": 0,
+        "term_keep": 0,
+        "term_peek": 0,
+        "term_sink": 0
+      }
+    },
+    {
+      "line": 10338,
+      "name": "FID____SRC_MESH_RENDER_TRANS_TRACE",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "rfc_seal": 0,
+        "term_keep": 0,
+        "term_peek": 2,
+        "term_sink": 0
+      }
+    },
+    {
+      "line": 10597,
+      "name": "FID____SRC_MESH_RENDER_TRANS_TRACE_K40",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "rfc_seal": 0,
+        "term_keep": 0,
+        "term_peek": 0,
+        "term_sink": 0
+      }
+    },
+    {
+      "line": 10927,
+      "name": "FID____SRC_MESH_RENDER_PIXEL_BEST",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "rfc_seal": 0,
+        "term_keep": 0,
+        "term_peek": 0,
+        "term_sink": 0
+      }
+    },
+    {
+      "line": 11019,
+      "name": "FID____SRC_MESH_RENDER_OPAQUE_TRACE",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "rfc_seal": 0,
+        "term_keep": 0,
+        "term_peek": 2,
+        "term_sink": 0
+      }
+    },
+    {
+      "line": 11280,
+      "name": "FID____SRC_MESH_RENDER_OPAQUE_TRACE_K52",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "rfc_seal": 0,
+        "term_keep": 0,
+        "term_peek": 0,
+        "term_sink": 0
+      }
+    },
+    {
+      "line": 11341,
+      "name": "FID____SRC_MESH_RENDER_PIXEL",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "rfc_seal": 0,
+        "term_keep": 0,
+        "term_peek": 0,
+        "term_sink": 0
+      }
+    },
+    {
+      "line": 11478,
+      "name": "FID____SRC_MESH_RENDER_PIXEL_K63",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "rfc_seal": 0,
+        "term_keep": 0,
+        "term_peek": 0,
+        "term_sink": 0
+      }
+    },
+    {
+      "line": 12182,
+      "name": "FID____SRC_MESH_RENDER_TILE",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "rfc_seal": 0,
+        "term_keep": 0,
+        "term_peek": 0,
+        "term_sink": 0
+      }
+    },
+    {
+      "line": 12392,
+      "name": "FID____SRC_MESH_RENDER_TILE_K80",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "rfc_seal": 0,
+        "term_keep": 0,
+        "term_peek": 0,
+        "term_sink": 0
+      }
+    },
+    {
+      "line": 12402,
+      "name": "FID____SRC_MESH_RENDER_TILE_K81",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "rfc_seal": 0,
+        "term_keep": 0,
+        "term_peek": 0,
+        "term_sink": 0
+      }
+    },
+    {
+      "line": 12552,
+      "name": "FID____SRC_MESH_RENDER_TILE_K82",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "rfc_seal": 0,
+        "term_keep": 0,
+        "term_peek": 0,
+        "term_sink": 0
+      }
+    },
+    {
+      "line": 12705,
+      "name": "FID____SRC_MESH_RENDER_TILE_K83",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "rfc_seal": 0,
+        "term_keep": 0,
+        "term_peek": 0,
+        "term_sink": 0
+      }
+    },
+    {
+      "line": 12811,
+      "name": "FID____SRC_MESH_RENDER_TILE_K84",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 1,
+        "rfc_seal": 4,
+        "term_keep": 0,
+        "term_peek": 0,
+        "term_sink": 0
+      }
+    },
+    {
+      "line": 14022,
+      "name": "FID____SRC_MESH_RENDER_FRAME",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "rfc_seal": 0,
+        "term_keep": 0,
+        "term_peek": 0,
+        "term_sink": 0
+      }
+    },
+    {
+      "line": 14316,
+      "name": "FID____SRC_MESH_RENDER_FRAME_K103",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "rfc_seal": 0,
+        "term_keep": 0,
+        "term_peek": 0,
+        "term_sink": 0
+      }
+    },
+    {
+      "line": 14411,
+      "name": "FID____SRC_MESH_RENDER_FRAME_K104",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "rfc_seal": 0,
+        "term_keep": 0,
+        "term_peek": 0,
+        "term_sink": 0
+      }
+    },
+    {
+      "line": 14507,
+      "name": "FID____SRC_MESH_RENDER_FRAME_K105",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "rfc_seal": 0,
+        "term_keep": 0,
+        "term_peek": 0,
+        "term_sink": 0
+      }
+    },
+    {
+      "line": 14604,
+      "name": "FID____SRC_MESH_RENDER_FRAME_K106",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "rfc_seal": 0,
+        "term_keep": 0,
+        "term_peek": 0,
+        "term_sink": 0
+      }
+    }
+  ],
+  "result": {
+    "bytes": 5394,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-render-performance-001/focused/result.json",
+    "sha256": "9cee615b70ad5d1f141f9cb6933673b57d957ff74fa7b60ab7ae326505bea4d2"
+  },
+  "scope": "Private finish_textures source variant against existing fifteen-case independent binary32/Pillow oracle with retained Java stone/glass inputs. Prior focused M19c baseline already borrowed; no full-client speed claim. finish_textures is itself borrowed in this fixture. Original compiler, working M, immutable004/005 unchanged.",
+  "source": {
+    "bytes": 28166,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-render-performance-001/source/src/mesh_render.bend",
+    "sha256": "5209671e17ec8f69a79ac8f855ae1225e7ca4129ef9aace4ff8fbf0beb1e5f7a"
+  },
+  "source_preparation": {
+    "bytes": 12093,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-render-performance-001/source-preparation.json",
+    "sha256": "6cb815d1769e6afa28dde2f54adf95023b1e705076ee06517e7011b13184fd4d"
+  },
+  "status": "PASS_FOCUSED_ONLY"
+}
