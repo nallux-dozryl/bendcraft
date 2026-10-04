@@ -7,6 +7,7 @@ import ./player_runtime.bend as PR
 import ./local_move_history.bend as MH
 import ./local_move_world.bend as LM
 import ./local_travel_history.bend as TH
+import ./fall_reset_world.bend as FR
 import ./local_input.bend as LI
 import ./player_tick.bend as P
 import ./player_pose.bend as Pose
@@ -259,6 +260,12 @@ def driver() -> Driver:
     E.Environment{E.KnownEmptyEntityCollisions{}, E.KnownClearBorderInterior{A.AABB{F.from_i32(4294967232), F.from_i32(4294967232), F.from_i32(4294967232), F.from_u32(64), F.from_u32(64), F.from_u32(64)}}},
     2n, 512n, 4096n, 3n, []}}
 
+# This bounded supplier policy is staged separately from apply_resolved. Native
+# supplier admission precedes enabling the saved LocalPlayer resume entry.
+def reset_policy() -> TH.ResetPolicy:
+  TH.ResetPolicy{A.AABB{F.from_i32(4294967232), F.from_i32(4294967232), F.from_i32(4294967232), F.from_u32(64), F.from_u32(64), F.from_u32(64)},
+    128n, FR.DefaultClientOverworldFourState{}, []}
+
 # Raw attribute values observed at untouched LocalPlayer.travel entry. The fixed
 # profile excludes equipment/effects/modifiers besides the actual sprint setter.
 def attributes(sprinting: Bool) -> T.Attributes:
@@ -288,7 +295,7 @@ def tick_result(result: X.State & Result<&2, &2, X.Error, X.Observation>) -> X.S
 
 def apply_resolved(result: X.ApplyStage & Result<&2, &2, X.Error, X.ApplyFacts>) -> X.State:
   (stage, status) = result
-  tick_result(X.resume_apply_checked(stage, status))
+  tick_result(X.resume_apply_with_reset_checked(stage, status, reset_policy()))
 
 def intent_ready(result: X.ApplyStage & X.ApplyIntent) -> X.State:
   (stage, X.ApplyIntent{sprinting, updates}) = result

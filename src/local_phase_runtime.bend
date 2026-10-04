@@ -1522,3 +1522,137 @@ law staged_precheck_refusal_retains_stage_without_calling_provider:
 def staged_precheck_refusal_retains_stage_without_calling_provider(stage,operation):
   match stage:
     case ApplyStage{state,pending}: {==}
+
+# Additive required-ray policy. The original CheckedNotRequired entry points
+# and Error constructors above remain unchanged. A closed consumer must choose
+# the declared world/tag/work policy; transport callers cannot supply it.
+def reset_stage_error(cause:TH.ResetError) -> Error:
+  match cause:
+    case TH.ResetTravelError{error}: TravelError{error}
+    case TH.ResetSupplierError{error}: ViewError{"local-phase-reset:" ++ TH.reset_error_text(TH.ResetSupplierError{error})}
+    case TH.ResetHistoryError{error}: TravelError{TH.MovementError{MH.HistoryError{error}}}
+
+def reset_stage_traveled(+work:Work,
+                         result:MH.State & L.Tables & Result<&2,&2,TH.ResetError,TH.ResetOutcome>) -> State & Result<&2,&2,Error,Observation>:
+  (motion,tables,status) = result
+  match status:
+    case Fail{cause}: rollback(motion,tables,work_frame(work),reset_stage_error(cause))
+    case Done{outcome}: player_finished(motion,tables,work,
+      P.finish_checked(work_prepared(work),work_context(work),TH.reset_outcome_transition(outcome)))
+
+def reset_stage_travel_started(engine:G.Engine,candidate:W.View,tables:L.Tables,
+                               +work:Work,policy:TH.ResetPolicy) -> State & Result<&2,&2,Error,Observation>:
+  Work{+frame,+metadata,early,updates,+prepared,+context,tail} = work
+  P.Context{travel,strength,factor,affected,mode} = context
+  reset_stage_traveled(work,TH.travel_with_reset_checked(
+    MH.State{W.attach(engine,with_body(candidate,prepared_body(prepared))),frame_support(frame),frame_minor(frame),H.State{frame_history(frame)},[]},tables,
+    TH.ResetRequest{prepared_input(prepared),travel,
+      TH.Hooks{keys(local(metadata)),processed_input(prepared),False{},LC.NeutralDry{},True{},True{},
+        M.Vec3{M.zero(),M.zero(),M.zero()},False{},False{},True{},True{},request_environment(frame_request(frame)),request_movement_fuel(frame_request(frame)),[]},policy,[]}))
+
+def reset_stage_prepared(engine:G.Engine,candidate:W.View,+frame:Frame,+decision:LI.Controls,
+                         context:P.Context,early:List<&2,PPW.QueryRecord>,policy:TH.ResetPolicy,
+                         result:L.Tables & Result<&2,&2,LI.Error,LI.PreTravel>) -> State & Result<&2,&2,Error,Observation>:
+  (tables,status) = result
+  match status:
+    case Fail{cause}: rollback_taken(tables,frame,InputError{cause},(engine,candidate))
+    case Done{LI.PreTravel{local,value}}:
+      reset_stage_travel_started(engine,candidate,tables,
+        Work{frame,with_local(frame_metadata(frame),local,decision_sprinting(decision)),early,decision_updates(decision),value,context,[]},policy)
+
+def reset_stage_setter_gate(equal:Bool,engine:G.Engine,candidate:W.View,tables:L.Tables,
+                            +frame:Frame,+decision:LI.Controls,early:List<&2,PPW.QueryRecord>,
+                            +context:LI.ApplyContext,policy:TH.ResetPolicy) -> State & Result<&2,&2,Error,Observation>:
+  match equal:
+    case False{}: rollback_taken(tables,frame,SprintSetterMismatch{},(engine,candidate))
+    case True{}:
+      LI.ApplyContext{tick,sneak,pitch} = context
+      reset_stage_prepared(engine,candidate,frame,decision,tick,early,policy,
+        LI.prepare_checked(tables,decision,PR.compose(view_body(frame_view(frame)),player(frame_metadata(frame))),context))
+
+def reset_stage_apply(engine:G.Engine,candidate:W.View,tables:L.Tables,+pending:ApplyPending,
+                      +facts:ApplyFacts,policy:TH.ResetPolicy) -> State & Result<&2,&2,Error,Observation>:
+  +anchor = pending_frame(pending)
+  +frame = pre_full_frame(anchor,facts)
+  +decision = pending_decision(pending)
+  +final = decision_sprinting(decision)
+  reset_stage_setter_gate(LI.same_bool(final,apply_sprinting(facts)) &&
+    LI.same_bool(final,replay_setters(decision_updates(decision),sprinting(pre_frame_metadata(anchor)))),
+    engine,candidate,tables,frame,decision,pending_early(pending),
+    apply_context(facts,PR.look(controls(pre_frame_metadata(anchor)))),policy)
+
+def reset_stage_resume_taken(tables:L.Tables,pending:ApplyPending,facts:ApplyFacts,
+                             policy:TH.ResetPolicy,result:G.Engine & W.View) -> State & Result<&2,&2,Error,Observation>:
+  (engine,candidate) = result
+  reset_stage_apply(engine,candidate,tables,pending,facts,policy)
+
+def reset_stage_resume_ready(state:State,pending:ApplyPending,facts:ApplyFacts,
+                             policy:TH.ResetPolicy) -> State & Result<&2,&2,Error,Observation>:
+  State{MH.State{world,support,minor,history,owned},tables,metadata,tail} = state
+  reset_stage_resume_taken(tables,pending,facts,policy,W.take(world))
+
+def reset_stage_resume_status(state:State,pending:ApplyPending,
+                              status:Result<&2,&2,Error,ApplyFacts>,policy:TH.ResetPolicy) -> State & Result<&2,&2,Error,Observation>:
+  match status:
+    case Fail{cause}: stage_rollback(state,pending,cause)
+    case Done{facts}: reset_stage_resume_ready(state,pending,facts,policy)
+
+def reset_stage_resume_protocol(error:Maybe<&2,Error>,state:State,pending:ApplyPending,
+                                status:Result<&2,&2,Error,ApplyFacts>,policy:TH.ResetPolicy) -> State & Result<&2,&2,Error,Observation>:
+  match error:
+    case Some{cause}: stage_rollback(state,pending,cause)
+    case None{}: reset_stage_resume_status(state,pending,status,policy)
+
+def reset_stage_resume_inspected(status:Result<&2,&2,Error,ApplyFacts>,policy:TH.ResetPolicy,
+                                 result:ApplyStage & Bool) -> State & Result<&2,&2,Error,Observation>:
+  (ApplyStage{state,+pending},equal) = result
+  match equal:
+    case False{}: (state,Fail{ViewError{"apply-provider-authority-drift"}})
+    case True{}: reset_stage_resume_protocol(pending_error(pending),state,pending,status,policy)
+
+def reset_stage_resume_structured(error:Maybe<&2,Error>,state:State,+pending:ApplyPending,
+                                  status:Result<&2,&2,Error,ApplyFacts>,policy:TH.ResetPolicy) -> State & Result<&2,&2,Error,Observation>:
+  match error:
+    case Some{cause}: (state,Fail{cause})
+    case None{}: reset_stage_resume_inspected(status,policy,stage_inspect(ApplyStage{state,pending}))
+
+def reset_stage_resume_shaped(+pending:ApplyPending,status:Result<&2,&2,Error,ApplyFacts>,
+                              policy:TH.ResetPolicy,result:State & Maybe<&2,Error>) -> State & Result<&2,&2,Error,Observation>:
+  (state,error) = result
+  match error:
+    case Some{cause}: (state,Fail{cause})
+    case None{}: reset_stage_resume_structured(pending_structure(pending),state,pending,status,policy)
+
+# Preparation/provider admission is exactly the existing staged path. Only the
+# admitted travel dispatcher differs: LM forms its immutable candidate, the
+# real required ray runs before history completion/commit, H updates once, and
+# travel finish precedes unchanged player finish/rotation/late pose. This is a
+# fixed neutral read-only ordering equivalence; observable callbacks are outside
+# admission. Every admitted failure rolls back PreFrame.
+def resume_apply_with_reset_checked(stage:ApplyStage,status:Result<&2,&2,Error,ApplyFacts>,
+                                    policy:TH.ResetPolicy) -> State & Result<&2,&2,Error,Observation>:
+  ApplyStage{state,pending} = stage
+  reset_stage_resume_shaped(pending,status,policy,stage_shape(state))
+
+law reset_resume_structural_refusal_retains_exact_owner:
+  for state:State
+  for pending:ApplyPending
+  for status:Result<&2,&2,Error,ApplyFacts>
+  for policy:TH.ResetPolicy
+  for +cause:Error
+  {reset_stage_resume_shaped(pending,status,policy,(state,Some{cause})) ==
+    (state,Fail{cause}) : State & Result<&2,&2,Error,Observation>}
+
+def reset_resume_structural_refusal_retains_exact_owner(state,pending,status,policy,cause):
+  {==}
+
+law reset_provider_failure_uses_complete_pre_frame_anchor:
+  for state:State
+  for pending:ApplyPending
+  for policy:TH.ResetPolicy
+  for cause:Error
+  {reset_stage_resume_status(state,pending,Fail{cause},policy) ==
+    stage_rollback(state,pending,cause) : State & Result<&2,&2,Error,Observation>}
+
+def reset_provider_failure_uses_complete_pre_frame_anchor(state,pending,policy,cause):
+  {==}
