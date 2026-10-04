@@ -10,10 +10,11 @@ import ./framing.bend as F
 type Driver<-State: Type> is Type:
   Driver{step: State -> State, dispatch: State -> L.Session -> String -> J.Value -> State & L.Session & J.Value}
 
-# Effectful dispatch retains the state owner while persistence/other OS work
-# completes. The pure Driver API is preserved through the adapter below.
+# Effectful operations retain the state owner while persistence/other OS work
+# completes. Existing pure steps use the same serialized actor routing.
 type EffectfulDriver<-State: Type> is Type:
   EffectfulDriver{step: State -> State, dispatch: State -> L.Session -> String -> J.Value -> IO(State & L.Session & J.Value)}
+  EffectfulStepDriver{step: State -> IO(State), dispatch: State -> L.Session -> String -> J.Value -> IO(State & L.Session & J.Value)}
 
 def pure_step(-State: Type, driver: Driver<State>, world: State) -> State:
   Driver{step, dispatch} = driver
@@ -49,28 +50,37 @@ def actor_reply(-State: Type, reply: Chan(Answer), result: State & L.Session & J
     sent : Bool <- Chan.send(Answer, reply, Answer{session, value})
     rest(world)
 
-def actor_message(-State: Type, +mail: Chan(Message<State>), driver: EffectfulDriver<State>, +token: String, world: State, message: Maybe<&1, Message<State>>, rest: State -> IO(Unit)) -> IO(Unit):
-  match driver message:
-    case EffectfulDriver{step, dispatch} None{}:
+def actor_message_io(-State: Type, +mail: Chan(Message<State>), step: State -> IO(State), dispatch: State -> L.Session -> String -> J.Value -> IO(State & L.Session & J.Value), +token: String, world: State, message: Maybe<&1, Message<State>>, rest: State -> IO(Unit)) -> IO(Unit):
+  match message:
+    case None{}:
       IO.pure(Unit, Unit{})
-    case EffectfulDriver{step, dispatch} Some{Pulse{}}:
-      rest(step(world))
-    case EffectfulDriver{step, dispatch} Some{Request{session, value, reply}}:
+    case Some{Pulse{}}:
+      do IO<Unit>:
+        next : State <- step(world)
+        rest(next)
+    case Some{Request{session, value, reply}}:
       do IO<Unit>:
         result : State & L.Session & J.Value <- dispatch(world, session, token, value)
         actor_reply(State, reply, result, rest)
-    case EffectfulDriver{step, dispatch} Some{Local{operation}}:
+    case Some{Local{operation}}:
       do IO<Unit>:
         next : State <- operation(world)
         rest(next)
-    case EffectfulDriver{step, dispatch} Some{Stop{reply}}:
+    case Some{Stop{reply}}:
       do IO<Unit>:
         Chan.close(Message<State>, mail)
         sent : Bool <- Chan.send(Unit, reply, Unit{})
         return Unit{}
 
-# Only the OS-driven lifetime is unsafe. State transitions live in checked
-# pure modules. One actor is the sole owner of the authoritative world.
+def actor_message(-State: Type, +mail: Chan(Message<State>), driver: EffectfulDriver<State>, +token: String, world: State, message: Maybe<&1, Message<State>>, rest: State -> IO(Unit)) -> IO(Unit):
+  match driver:
+    case EffectfulDriver{step, dispatch}:
+      actor_message_io(State,mail,w => IO.pure(State,step(w)),dispatch,token,world,message,rest)
+    case EffectfulStepDriver{step, dispatch}:
+      actor_message_io(State,mail,step,dispatch,token,world,message,rest)
+
+# Only the OS-driven lifetime is unsafe. One actor retains the authoritative
+# state across each pure or effectful step and every serialized request.
 @unsafe
 def actor(~State: Type, ~driver: EffectfulDriver<State>, +mail: Chan(Message<State>), +token: String, world: State) -> IO(Unit):
   do IO<Unit>:

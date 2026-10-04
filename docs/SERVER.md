@@ -37,6 +37,18 @@ shutdown. A parked accept operation is currently released by explicit process
 exit in the finite client. Peer allocation admits U32 maximum once, closes the
 listener afterwards and preserves existing connections, rather than wrapping.
 
+The same driver type also admits `EffectfulStepDriver{step,dispatch}`, whose
+`step` returns `IO(State)`. Both constructors use the same serialized mailbox
+routing. A pulse awaits the complete effectful transition before the next
+request or local snapshot can access the state. This supplies an explicit
+boundary for actual cooking constructor clocks without reading IO inside a
+pure transition or duplicating the world. Existing pure-step constructors
+remain source-compatible. The actual default-JavaScript
+`tests/server_effectful_step.bend` check observes two sleeping effectful pulses
+before its following local snapshot; see
+`evidence/server-effectful-step-001.json`. Native clock delivery and the whole
+native actor require their separate consumers.
+
 `tools/test_server_local.py` and `tools/test_server_peer.py` record actual local
 query/TCP ordering and peer-exhaustion behavior. These checks are separate from
 the eight-client integration corpus below.

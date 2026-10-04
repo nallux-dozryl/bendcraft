@@ -26,10 +26,22 @@ zero holes and no declaration selection. Read-only original layout inspection
 shows the cooking sidecar reduced from 23 words to one box, the Session from
 72 to 50 words, and one cooking-return continuation from 237 to 215 declared
 parameters. This does not identify the failed generated capture or guarantee
-the native argument guard will pass. The immutable019 producer is running;
-the failed018 generation is retained. See
+the native argument guard will pass. The immutable019 producer then passed
+that guard and emitted 51,846,098 bytes of C in 287.252 seconds, at
+4,143,398,912 bytes peak sampled RSS. Clang completed in 240.042 seconds,
+producing a 12,151,256-byte executable. The failed018 generation is retained. See
 `evidence/local-player-cooking-source-019.json` and
-`evidence/local-player-cooking-layout-019.json`.
+`evidence/local-player-cooking-layout-019.json`, plus
+`evidence/playable-client-actor004-build-019.json`.
+
+The actual frozen019 cooking consumer passes in 99.897 seconds: five complete
+atomic saves compare exactly, two actual SIGKILL/cold restores pass, and a
+remove/recreate clears old keyed physical Details. Its ordered pending
+beef/coal/empty Drops survive save and cold restoration; subsequent delivery
+refusals retain the unchanged Core/player. The consumer preserves earlier
+fixture and expected-error failures. This establishes durable recovery for
+the safe019 facade, while real item/XP publication remains the next joined
+source generation. See `evidence/playable-client-cooking-native-011.json`.
 
 Cooking storage now has a strict format 2 recovery queue inside the same
 atomic Core/player/body save. Twelve actual Bend JavaScript guards pass;
