@@ -1,0 +1,128 @@
+{
+  "Java_or_native_run": false,
+  "adoption_gate": "Only original int_scan/scan_number areas after private generated-C/native verification; no broader decoder/style edits",
+  "all_other_original_source_files_byte_identical": true,
+  "baseline_inputs": {
+    "bytes": 11176,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-numeric-continuations-001/candidate-001/baseline-inputs.json",
+    "sha256": "7d387f045a49d9ada20da5dd4c2ad7646a8dd56dfdfe8d29a407fd307af288d0"
+  },
+  "candidate_inputs": {
+    "bytes": 11660,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-numeric-continuations-001/candidate-001/candidate-inputs.json",
+    "sha256": "b143e26b03f7ecb0719b6d9090235095209fa2f366281fb95ef9bc99f3fb57e0"
+  },
+  "changes": [
+    {
+      "candidate": {
+        "bytes": 41987,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-numeric-continuations-001/candidate-001/source/src/block_model.bend",
+        "sha256": "40e89cd6fb2335526cf5f48d7fc6c92c669fa0123fbfc7652f676d39f552c9a7"
+      },
+      "original": {
+        "bytes": 41918,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-numeric-continuations-001/candidate-001/baseline/source/src/block_model.bend",
+        "sha256": "08108bae9b89c6768de56bdddea158f3604b36c7de4ee0408815e2c7f48b97a1"
+      },
+      "path": "src/block_model.bend"
+    },
+    {
+      "candidate": {
+        "bytes": 46230,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-numeric-continuations-001/candidate-001/source/src/blockstate_model.bend",
+        "sha256": "2ba9e4e6ceaaa5a7734cae0c46c4c4512e41218b94defe05aea2573089bbfd8d"
+      },
+      "original": {
+        "bytes": 46107,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-numeric-continuations-001/candidate-001/baseline/source/src/blockstate_model.bend",
+        "sha256": "d084876d32e232c3869be84bc07535b491274695bd91529c5fae159b290cdc57"
+      },
+      "path": "src/blockstate_model.bend"
+    }
+  ],
+  "compiler_or_export_run": false,
+  "confidence": {
+    "performance_effect": "unknown",
+    "reviewed_guard_substitution": "high",
+    "toolchain_acceptance": "unverified",
+    "whole_parser_equivalence": "not established"
+  },
+  "copied_source_map_describes_baseline_not_candidate": true,
+  "diff": {
+    "bytes": 3658,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-numeric-continuations-001/candidate-001/candidate.diff",
+    "sha256": "6c7d962ec262c2c6fb3c11409ccca7210773f9b51e964c208b6b4438f03266e3"
+  },
+  "directory": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-numeric-continuations-001/candidate-001",
+  "documentation": {
+    "bytes": 4063,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/docs/generic_resource_world_sample_numeric_continuations.md",
+    "sha256": "3e90b3c286b5da9b8a3eb4d30d182896de4e6164b70ef5baff74edeb1bc8c6c8"
+  },
+  "guard_scope": "Arbitrary scalar next/Bool and affine continuation; exact original choice+Result.bind, wrapped update, and actual scanner continuation specialization. No whole-parser equivalence or performance claim.",
+  "host_validation": {
+    "C_body_or_native_verdict": "pending",
+    "Python_AST": "passed",
+    "Python_compile_without_execution": "passed",
+    "exact_reverse_production_diff": "passed",
+    "generic002_source_and_api_before_after_hashes": "identical",
+    "guard_proof_bodies": "prepared_only",
+    "independent_kernel_verdict": "pending",
+    "wrapped_update_occurrences_per_new_branch": 1
+  },
+  "independent_source_review": {
+    "confidence": "high",
+    "product_processes_started": 0,
+    "proof_dependency_graph": "acyclic source review; no axioms/placeholders/unsafe declarations",
+    "scope": "Two helpers and exponent-branch replacements only; unchanged wrapped arithmetic, threshold, scanner captures and exact refusal payloads; arbitrary affine continuation laws and their wrapped/actual-scanner specializations.",
+    "source_checker_or_kernel_acceptance": "unverified",
+    "status": "passed_source_review_only",
+    "whole_parser_equivalence": "not asserted; recursive law compares candidate scanner continuation on both sides"
+  },
+  "kernel_run": false,
+  "law_count": 6,
+  "laws": {
+    "bytes": 3896,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-numeric-continuations-001/candidate-001/source/src/generic_resource_world_sample_numeric_continuations_laws.bend",
+    "sha256": "8f4c5cfd2ec182886825833c46396c0a8a689976b2860c960fe72a5d45144603"
+  },
+  "native_harnesses": [
+    {
+      "bytes": 11298,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-numeric-continuations-001/candidate-001/source/tests/block_model.bend",
+      "sha256": "9a6583a1c2c9c782536110f7a8e960a0c79e506727485c2282809b6cdc2a6a36"
+    },
+    {
+      "bytes": 19967,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-numeric-continuations-001/candidate-001/source/tests/blockstate_model.bend",
+      "sha256": "6f27599ce39ac98c1f91fc0934a264089c70ffa56a8116ad473dde401831dcbd"
+    }
+  ],
+  "original_directory": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/002/private",
+  "original_numeric_corpus": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-numeric-original-corpus-001",
+  "original_numeric_corpus_owner": "root; separate ignored corpus directory, no extraction by this lane",
+  "original_source_and_api_unchanged": true,
+  "preparation_receipt": {
+    "bytes": 4795,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-numeric-continuations-001/candidate-001/preparation.json",
+    "sha256": "282f41cc14d0c283e9da827a2e6b51edde60b6c4f0418471c6088d0a340a2ba9"
+  },
+  "product_processes_started": 0,
+  "proof": {
+    "bytes": 1598,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-numeric-continuations-001/candidate-001/source/src/generic_resource_world_sample_numeric_continuations_proof.bend",
+    "sha256": "49fe7a0268256a25116b239f70ce6ca7a5fd30021dfa35a9b347d2b1d57db4e9"
+  },
+  "retained_host_preparation_failure": {
+    "bytes": 584,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-numeric-continuations-001/preparation-failure-001.json",
+    "sha256": "6595f988b3d65ecc591584650e5ee5253d9acc045a48a190f16b0f86a829af5c"
+  },
+  "source_checker_run": false,
+  "status": "private_source_ready_verification_pending",
+  "tool": {
+    "bytes": 14242,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/generic_resource_world_sample_numeric_continuations.py",
+    "sha256": "ea26bdf97f1a843638f29e549ff87b48bda1343e57cdf5265aad160f520095ab"
+  }
+}
