@@ -1,0 +1,56 @@
+{
+  "kernel_executions": 0,
+  "law_names": [
+    "resource_palette_fields",
+    "mismatched_palette_rejects"
+  ],
+  "ordinary_check": {
+    "command": "/Users/chuah/.bend/bin/bend build/world-resource-frame-palette-pure.bend --check-only",
+    "exit_code": 0,
+    "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+  },
+  "planned_per_command_cap_seconds": 60,
+  "projection": "build/world-resource-frame-palette-pure.bend",
+  "projection_sha256": "5ada3807246658bec50368783503867599e90584610a6ff6ed1acc5addc13c6b",
+  "projection_source_text": "import Base\n\ntype W_Palette is Data:\n  W_Palette{air: U32, stone: U32, dirt: U32, planks: U32}\n\ntype RF_Palette is Data:\n  RF_Palette{air:U32,stone:U32,dirt:U32,planks:U32}\n\ndef V_palette_valid(palette:W_Palette) -> Bool:\n  W_Palette{+air,+stone,+dirt,+planks} = palette\n  U32.is_ne(air,stone) && U32.is_ne(air,dirt) && U32.is_ne(air,planks) &&\n    U32.is_ne(stone,dirt) && U32.is_ne(stone,planks) && U32.is_ne(dirt,planks)\n\ndef RF_palette_valid(value:RF_Palette) -> Bool:\n  RF_Palette{+air,+stone,+dirt,+planks} = value\n  U32.is_ne(air,stone) && U32.is_ne(air,dirt) && U32.is_ne(air,planks) &&\n    U32.is_ne(stone,dirt) && U32.is_ne(stone,planks) && U32.is_ne(dirt,planks)\n\ndef resource_palette(value:W_Palette) -> RF_Palette:\n  W_Palette{air,stone,dirt,planks} = value\n  RF_Palette{air,stone,dirt,planks}\n\nlaw resource_palette_fields:\n  for +air:U32\n  for +stone:U32\n  for +dirt:U32\n  for +planks:U32\n  {resource_palette(W_Palette{air,stone,dirt,planks}) == RF_Palette{air,stone,dirt,planks} : RF_Palette}\n\ndef resource_palette_fields(air,stone,dirt,planks):\n  {==}\n\ndef palette_match(world:W_Palette,resources:RF_Palette) -> Bool:\n  match world resources:\n    case W_Palette{+air,+stone,+dirt,+planks} RF_Palette{+ra,+rs,+rd,+rp}:\n      V_palette_valid(W_Palette{air,stone,dirt,planks}) &&\n        RF_palette_valid(RF_Palette{ra,rs,rd,rp}) &&\n        U32.is_eq(air,ra) && U32.is_eq(stone,rs) && U32.is_eq(dirt,rd) && U32.is_eq(planks,rp)\n\ndef palette_guard(valid:Bool) -> Result<&2,&2,String,Unit>:\n  match valid:\n    case False{}: Fail{\"Palette:Mismatch\"}\n    case True{}: Done{Unit{}}\n\nlaw mismatched_palette_rejects:\n  {palette_guard(False{}) == Fail{\"Palette:Mismatch\"} : Result<&2,&2,String,Unit>}\n\ndef mismatched_palette_rejects():\n  {==}\n\n# Preserve the complete V.Error raw cell words, state and detail in diagnostics.\n# These unsigned XYZ words retain signed BlockPos identity without F32 rounding.\n",
+  "schema_version": 1,
+  "scope": "Exact palette Data types, exact distinct/equality validation and false-guard rejection; module qualifications renamed only. No scene producer, world sampler, asset owner or renderer proof.",
+  "selected_dependency_sources_sha256": {
+    "src/client_world.bend": "05040abf35b2b9ceaf87fed5c48f8d074d211750a59ab00fa6ff08e60a9ea5d7",
+    "src/resource_frame.bend": "39c820e76998f7f718a7adcc1a25f1d3ebb454dbdd89b33712ab5f777c894baa",
+    "src/world_visibility.bend": "599e28975027958b48da9a299a968bf837fc6a244ac6750b37866c32182dbb07"
+  },
+  "selected_source_blocks": [
+    {
+      "kind": "def",
+      "name": "resource_palette"
+    },
+    {
+      "kind": "law",
+      "name": "resource_palette_fields"
+    },
+    {
+      "kind": "def",
+      "name": "resource_palette_fields"
+    },
+    {
+      "kind": "def",
+      "name": "palette_match"
+    },
+    {
+      "kind": "def",
+      "name": "palette_guard"
+    },
+    {
+      "kind": "law",
+      "name": "mismatched_palette_rejects"
+    },
+    {
+      "kind": "def",
+      "name": "mismatched_palette_rejects"
+    }
+  ],
+  "source": "src/world_resource_frame.bend",
+  "source_sha256": "865a4b4687a71e5a75487b6e8ccd1cc4f9e4947a582f5a927deb7e2e42f0e3c3",
+  "status": "prepared_not_kernel_executed"
+}

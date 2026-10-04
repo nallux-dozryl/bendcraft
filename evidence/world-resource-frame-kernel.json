@@ -1,0 +1,52 @@
+{
+  "commands": [
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-resource-frame-palette-pure.bend",
+        "-o",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-resource-frame/palette-pure.bendtt"
+      ],
+      "exit_code": 0,
+      "name": "export",
+      "pid": 96181,
+      "seconds_since_start": 0.12730266712605953,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/world-resource-frame/palette-pure.bendtt"
+      ],
+      "exit_code": 0,
+      "name": "independent-kernel",
+      "pid": 96182,
+      "seconds_since_start": 0.13982916716486216,
+      "stderr": "",
+      "stdout": "ALL PROOFS CHECK\n"
+    }
+  ],
+  "kernel": "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+  "kernel_sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7",
+  "law_names": [
+    "resource_palette_fields",
+    "mismatched_palette_rejects"
+  ],
+  "retries": 0,
+  "schema_version": 1,
+  "scope": "Exact production palette projection and two actual laws only; module qualifications renamed. No affine owner/world/effect/mesh renderer proof.",
+  "seconds": 0.14010425005108118,
+  "source": "build/world-resource-frame-palette-pure.bend",
+  "source_sha256_after": "5ada3807246658bec50368783503867599e90584610a6ff6ed1acc5addc13c6b",
+  "source_sha256_before": "5ada3807246658bec50368783503867599e90584610a6ff6ed1acc5addc13c6b",
+  "status": "passed_isolated_palette_projection",
+  "timeout_total_seconds": 60,
+  "timestamp_utc": "2026-10-03T23:48:44.302768+00:00",
+  "translation": {
+    "bytes": 20507,
+    "path": "build/world-resource-frame/palette-pure.bendtt",
+    "sha256": "47fe2f1926921d46b8aa4e105afb7bb208b09382b629e6b23534acb9f50627eb"
+  },
+  "whole_facade_kernel_verified": false
+}

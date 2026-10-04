@@ -1,0 +1,33 @@
+{
+  "checks": [
+    {
+      "command": "/Users/chuah/.bend/bin/bend src/world_resource_frame.bend --check-only",
+      "exit_code": 0,
+      "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n",
+      "tool_session_id": 14978
+    },
+    {
+      "command": "/Users/chuah/.bend/bin/bend tests/world_resource_frame.bend --check-only",
+      "exit_code": 0,
+      "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n",
+      "tool_session_id": 1717
+    },
+    {
+      "command": "/Users/chuah/.bend/bin/bend build/world-resource-frame-palette-pure.bend --check-only",
+      "exit_code": 0,
+      "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+    }
+  ],
+  "files_sha256": {
+    "build/world-resource-frame-palette-pure.bend": "5ada3807246658bec50368783503867599e90584610a6ff6ed1acc5addc13c6b",
+    "src/world_resource_frame.bend": "865a4b4687a71e5a75487b6e8ccd1cc4f9e4947a582f5a927deb7e2e42f0e3c3",
+    "tests/world_resource_frame.bend": "58c89a45e1c2791f85fa57be9e84153b0bbf845f76d5702487a39fd394a3be46"
+  },
+  "kernel_executions": 0,
+  "native_builds": 0,
+  "native_loads": 0,
+  "schema_version": 1,
+  "scope": "Ordinary source and standalone production-module-only harness, plus exact palette projection. Native resource load/bake/visibility/render/owner checks are prepared, not executed; aggregate mathematical validity not claimed.",
+  "status": "passed_ordinary_preparation",
+  "timestamp_utc": "2026-10-03T23:23:13.693067+00:00"
+}

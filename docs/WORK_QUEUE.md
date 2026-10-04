@@ -24,9 +24,10 @@ fixture is a verification instrument; none satisfies a gameplay completion gate.
    Typed model parsing/inheritance, the actual first-value resource reader and
    actual-quad mesh rendering are checked. Bend model bake, blockstate/RNG selection, static resource closure and world
    quad production now pass bounded corpora. Actual neighbor sampling and quad
-   filtering also pass their split native corpora. Resource-to-frame drawing
-   passes; asset audit has built, with its readbacks and geometry still pending.
-   Next: finish that pipeline and connect it to native client frames → atlas,
+   filtering also pass their split native corpora. Resource-to-frame drawing,
+   asset audit and geometry pass twice on their retained artifacts. Same-process
+   neighbor-culled resource frames also pass exact geometry/pixel/owner checks.
+   Next: connect that pipeline to native client frames → atlas,
    world lighting and complete presentation.
 4. Exact signed-cell snapshot caching and camera-relative F64 subtraction before
    F32 narrowing and verified far-coordinate views are checked in the shared
