@@ -1,0 +1,54 @@
+{
+  "actual_backoff_phase": [
+    1,
+    60
+  ],
+  "additional_noCollision_owner_phase": "recordMovement [119,149]",
+  "additional_noCollision_phase": [
+    120,
+    148
+  ],
+  "additional_noCollision_reads": 26,
+  "additional_noCollision_yields": 1,
+  "binary": {
+    "bytes": 2943192,
+    "path": "build/local-move-world-tests",
+    "sha256": "f52976b6a0e2affff62a7c70d2376db7801e2f5a75d1b979b23030157ec9189d"
+  },
+  "body_support_minor_gate_pre_restitution_compared_before_failure": true,
+  "build_receipt": {
+    "bytes": 18847,
+    "path": "evidence/local-move-world-build.json",
+    "sha256": "7418f4aa19c3b869d5fd13cf54023584b4af2230d540ed1cf0662c0235f765f8"
+  },
+  "executed_runner": {
+    "bytes": 22128,
+    "path": "build/local-move-world-verification/executed-runner.py",
+    "sha256": "9225b0e1f6c050151b5ad93bd42451f7b6109b6f62ee4c36dabdaf8d33d05974"
+  },
+  "failure_assertion": "backoff query count",
+  "failure_case": "player_mover:0",
+  "harness": {
+    "bytes": 35074,
+    "path": "tests/local_move_world.bend",
+    "sha256": "b72c6e1f80da2ced70c47780a5a3b849eafe8bae8f2d7e65875216762f43e65b"
+  },
+  "kernel_status": "not-run",
+  "native_build_status": "passed",
+  "native_semantic_verdict": "partial-not-complete",
+  "previous_complete_cases": 59,
+  "previous_complete_moves": 73,
+  "proposed_comparison_repair": "Filter actual noCollision query records by untouched super-calling maybeBackOffFromEdge entry/exit phase. Preserve excluded recordMovement query as outside movement/emission projection. No gameplay source, helper, oracle or native build changes.",
+  "reference": {
+    "bytes": 3384342,
+    "path": "reference/local_move_world.json",
+    "sha256": "94afc9b4b47138115207d1d6e5936c9498cea49008f6c86e52d4b1932178a820"
+  },
+  "slot_released": true,
+  "source": {
+    "bytes": 17815,
+    "path": "src/local_move_world.bend",
+    "sha256": "3823c3e6d4ebd0ab8743792aad3bf0cacae7a081a5791bd23d888037bd569f81"
+  },
+  "status": "comparison-scope-failure"
+}

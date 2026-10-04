@@ -1,0 +1,415 @@
+{
+  "binary": {
+    "bytes": 2943192,
+    "file": "local-move-world-tests",
+    "path": "build/local-move-world-tests",
+    "sha1": "bdd86b61dabbd0fbfb9a27dc3580058e64b06a4c",
+    "sha256": "f52976b6a0e2affff62a7c70d2376db7801e2f5a75d1b979b23030157ec9189d"
+  },
+  "cap_seconds": 600,
+  "command": [
+    "/opt/homebrew/opt/python@3.14/bin/python3.14",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/build_native.py",
+    "tests/local_move_world.bend",
+    "-o",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-move-world-tests",
+    "--cache-dir",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-move-world-cache",
+    "--report",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-move-world-verification/native-build-full.json"
+  ],
+  "compiler": {
+    "bytes": 63885392,
+    "file": "bend",
+    "sha1": "ddce6e432357be618d905b19c0f79abe3d28c388",
+    "sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e"
+  },
+  "exit_code": 0,
+  "generation": {
+    "/Users/chuah/.bend/bend2/base.bend": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+    "/Users/chuah/.bend/bend2/effs/args.c": "2635223ad1d401b07e1834b9341e3f0be254796f6de1d9a0e800ca59fb3000b4",
+    "/Users/chuah/.bend/bend2/effs/audio.c": "5b77ca51a275e0113cfb6fada35211f767c792a549d3b23375bde853d28d9478",
+    "/Users/chuah/.bend/bend2/effs/chan.c": "cf026f9d428e83870d046a973ac434ce0a2471f5b93748bb264af84a239eacd3",
+    "/Users/chuah/.bend/bend2/effs/file_close.c": "08fdd18ef43dff0bc6f7e064eb7ccf7a49f4140c238450f1b5f49ee1a2739dd5",
+    "/Users/chuah/.bend/bend2/effs/file_open.c": "361322488ad1508478c8a8fc4c0d35434924cd6fe92c02fd0c12b28b37b16726",
+    "/Users/chuah/.bend/bend2/effs/file_read.c": "f6b78f6c6060257a91e341fcc38ba6560d5023ded78e3096fa5bfdc50da9538f",
+    "/Users/chuah/.bend/bend2/effs/file_size.c": "f9d0f2aba9f3e89131b8b4d6d69ab2f33a99b645f403174e60e26238cfee33f1",
+    "/Users/chuah/.bend/bend2/effs/file_write.c": "a4d891e392ae0d913a73359fd80a30a64629eb893bf974c08eedb79b5fb9e2db",
+    "/Users/chuah/.bend/bend2/effs/get_env.c": "3c05cb6453d858df9f24d5734defb51afce55da23f5799025782fe8e3191634f",
+    "/Users/chuah/.bend/bend2/effs/listener_close.c": "f3b023a763f62d85c861b9f6e0a717ba05992fe0b9d08bb827722ebaad291310",
+    "/Users/chuah/.bend/bend2/effs/now.c": "268e869a5b5dd667aeb61ee7ef07f832238fb17f93015fe708528e95987c3ec3",
+    "/Users/chuah/.bend/bend2/effs/print.c": "28552d3b56aee6f6cdb66326aaa49ad0df35e4476e08c548c908efcbfafbd3e7",
+    "/Users/chuah/.bend/bend2/effs/print_err.c": "1ae1025f57d14ccc5a593319f9ea82bff061a05b4c468ab1bd0b939d4b98e2c4",
+    "/Users/chuah/.bend/bend2/effs/process_run.c": "bf22b58053df01a4a3ac5edacf1593ae6fc0a3c2a2f238de682703a1826a01e8",
+    "/Users/chuah/.bend/bend2/effs/random_u32.c": "bb1e6b2d690590858e4cdbd78ba9b10d349eb3fc7dde0c3265e23af7991623fe",
+    "/Users/chuah/.bend/bend2/effs/sleep.c": "eb9d441b0ec6b11cbc775dd6f85da0aefdf8d9cdcb7f45f316d4f12c7aa1fdbc",
+    "/Users/chuah/.bend/bend2/effs/socket_close.c": "742b164fecf63abf8b39fe8d2dd027cec4aa5a9cd31184e7d9d7825c91d5d65c",
+    "/Users/chuah/.bend/bend2/effs/spawn.c": "6d140b2b73b200c4bbd3004528734e7517e87d3f7ed40b901a06bfcbf2449abc",
+    "/Users/chuah/.bend/bend2/effs/tcp_accept.c": "c72b9f83e2fb8f48b8bf28dc9a3ae95c3c9cee7725a6915797199949d560511c",
+    "/Users/chuah/.bend/bend2/effs/tcp_connect.c": "ec6d1900f4c7ca88890c7e689bd8317e807665eed0c84418bd7e6505addac8e7",
+    "/Users/chuah/.bend/bend2/effs/tcp_listen.c": "e126135c5a7cf46e4b4a57060a83ef1983340502f958c65e5c9faf27787abd8a",
+    "/Users/chuah/.bend/bend2/effs/tcp_poll.c": "1e651ea609d61e1fef86cd07aaca13fa81b04a2159b3a3ef85e788e381c21560",
+    "/Users/chuah/.bend/bend2/effs/tcp_recv.c": "18f669d4cac74e862559f39ecb277592d6b0f06da50000e32751b6505e1a7a43",
+    "/Users/chuah/.bend/bend2/effs/tcp_send.c": "571d9790ce5c32b2cae08d69ae83ffa0d2c13e2e149f524d14237a79a2f86410",
+    "/Users/chuah/.bend/bend2/effs/thread_count.c": "ff5605b52535484adc10cb800c376ed77ededbddc9adea7064294e2cc0670d49",
+    "/Users/chuah/.bend/bend2/effs/udp_bind.c": "abffc463de08b76c0a1ca1235af56b463711d91e7f6720a976b414443096da8b",
+    "/Users/chuah/.bend/bend2/effs/udp_poll.c": "b6b6c6eb0ee4fce361e15df09b6579d30634ceab95d530f1e9e401c06155511b",
+    "/Users/chuah/.bend/bend2/effs/udp_recv_from.c": "32cab1742c2e5017af56fc97c20db5b38490d05eb4eab39e137ea20cdccf1aa2",
+    "/Users/chuah/.bend/bend2/effs/udp_send_to.c": "f00dd855ec7120706bd26a4bab6cc44ebd438584b73d479db3e00ec21b95eb2d",
+    "/Users/chuah/.bend/bend2/effs/window.c": "617611d994fb7f4c57467f8d1a7e644ba19d4fce35770613dea2711e6cafd65c",
+    "/Users/chuah/.bend/bend2/effs/write.c": "3e1dc13b5edbbed0c344df665d68e82c8b9d4b5972166ff2411ec039f76cf943",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/archive.bend": "c0f7b34a22726d220f6b867730b7d080d57d82c84d619c35721b9b8d18fa5d6e",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/client_render.bend": "bb8f6057a02bfcb0583025f9e75fe41abc6804eb554c6d971df5c81618932947",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/client_world.bend": "05040abf35b2b9ceaf87fed5c48f8d074d211750a59ab00fa6ff08e60a9ea5d7",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/compression.bend": "255cdff06a33050c7b0a48fdea75c1842ebe2dab0439cfe4f03d126d4edc20aa",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/core.bend": "c1ee5a5390cdac0452c9c6cd3b0584a68ef68b5b0dfec867491c27e67ecadd4e",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/framing.bend": "307f95049df03d92687b7bd0eafb2cd566e660926510bb88163f9bc825fccdb5",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/game.bend": "43e3eee5d15613bb06cc608fe43657aa14d8c0fbe899d4efa580fc8335d23882",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/geometry.bend": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/hash.bend": "d2473695632b19e68c8d636668e4617f04d70892fb2ab6559cb24d4b33c1b978",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/live.bend": "cb5a2f8237a53e48d3f6751d321a023e11694721f789373984d7d77620f32e87",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/local_collision.bend": "7b2b8301246f3e385a038eca81790fa7d6c4285113a069e040d968e105be5cc0",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/local_collision_world.bend": "4e6e46737890c1203fb66ee95859e26825b306a6db865a1869e8663a7b9a2346",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/local_move_world.bend": "3823c3e6d4ebd0ab8743792aad3bf0cacae7a081a5791bd23d888037bd569f81",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/locomotion.bend": "ccf8aa12636ba1fce5575606383bf75c02a8ac79ba952645b89aea2eef6cd459",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/movement.bend": "0e94fea7cc941a23d2ed7bbd2ccaf0117e6af363eb91f2db2e34428f9dd9e67f",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_input.bend": "d3938f96416691739eb54f2b0f77377c6ba7c74ac63ffa8335840152feb355d5",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_tick.bend": "d583f3014011313097779b69ee0fd8d77bd3ed0e1e7895b629903eb64da9699f",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_tick_world.bend": "98d5fe1383351c463f3fa172ff012325864292cfa7909cf21167e6642500170b",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/png.bend": "8c24c14a250cf6dbdf0c2804e4b28bfebd7ef62ed5d9ee97a1d07094d4745f22",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/registry.bend": "821c53d9cfa3044be3cae2af968f55563c0be2bebc9beae55a29d77d47b140a0",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/schedule.bend": "93aa79895fe340e27ae5fd562102d5980f0938003eb1bbde669a84010779b8c9",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/section.bend": "02b5c15c57b173c7eb8b4c55a1433c10c192926e91af5e3e69050b4404044aa5",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/section_map.bend": "ded59d7938c02fd0876d65e37f9f90ea0cfebf3ca4bd107394342f8adbf33965",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/support.bend": "aca42f24e0a32bd89356ac33f6d9bbe2ab5975ce938e2d2750496c01a6137455",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/support_world.bend": "a2e42fb06cab36408e7631e8ff3b9e61793696d4b049592d3ce137f69fa3b381",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/travel.bend": "717e969e3989a7a8e443b18f69c171bdc11a14130828233ce85e6cd914e1f8f1",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/travel_world.bend": "a3c787699a9ae12d9301638d39a7abd3aa1cfeba160182b9c176797424aad682",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/unicode.bend": "8f0cd9bbcd0e7f938af370675eca0c73a9b97b90c2789a1e77e5a29a918455bd",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/local_move_world.bend": "b72c6e1f80da2ced70c47780a5a3b849eafe8bae8f2d7e65875216762f43e65b"
+  },
+  "generation_unchanged": true,
+  "kind": "build",
+  "memory_samples": [
+    {
+      "processes": [
+        {
+          "elapsed": "00:05",
+          "pid": 98263,
+          "rss_kib": 19824,
+          "virtual_kib": 442210208
+        },
+        {
+          "elapsed": "00:04",
+          "pid": 98314,
+          "rss_kib": 1766832,
+          "virtual_kib": 449147536
+        }
+      ],
+      "seconds": 5.047242
+    },
+    {
+      "processes": [
+        {
+          "elapsed": "00:10",
+          "pid": 98263,
+          "rss_kib": 19840,
+          "virtual_kib": 442210208
+        },
+        {
+          "elapsed": "00:09",
+          "pid": 98314,
+          "rss_kib": 2859360,
+          "virtual_kib": 450196240
+        }
+      ],
+      "seconds": 10.070067
+    },
+    {
+      "processes": [
+        {
+          "elapsed": "00:15",
+          "pid": 98263,
+          "rss_kib": 51104,
+          "virtual_kib": 442238928
+        },
+        {
+          "elapsed": "00:00",
+          "pid": 98402,
+          "rss_kib": 75904,
+          "virtual_kib": 448099376
+        }
+      ],
+      "seconds": 15.093695
+    },
+    {
+      "processes": [
+        {
+          "elapsed": "00:20",
+          "pid": 98263,
+          "rss_kib": 51088,
+          "virtual_kib": 442238928
+        },
+        {
+          "elapsed": "00:05",
+          "pid": 98402,
+          "rss_kib": 2146880,
+          "virtual_kib": 450196784
+        }
+      ],
+      "seconds": 20.122067
+    },
+    {
+      "processes": [
+        {
+          "elapsed": "00:25",
+          "pid": 98263,
+          "rss_kib": 11264,
+          "virtual_kib": 442238928
+        },
+        {
+          "elapsed": "00:10",
+          "pid": 98402,
+          "rss_kib": 3275856,
+          "virtual_kib": 451245488
+        }
+      ],
+      "seconds": 25.15031
+    },
+    {
+      "processes": [
+        {
+          "elapsed": "00:30",
+          "pid": 98263,
+          "rss_kib": 11248,
+          "virtual_kib": 442238928
+        },
+        {
+          "elapsed": "00:15",
+          "pid": 98402,
+          "rss_kib": 1507616,
+          "virtual_kib": 451244928
+        },
+        {
+          "elapsed": "00:02",
+          "pid": 98490,
+          "rss_kib": 14080,
+          "virtual_kib": 442022000
+        },
+        {
+          "elapsed": "00:02",
+          "pid": 98491,
+          "rss_kib": 829568,
+          "virtual_kib": 442842320
+        }
+      ],
+      "seconds": 30.173116
+    },
+    {
+      "processes": [
+        {
+          "elapsed": "00:35",
+          "pid": 98263,
+          "rss_kib": 11248,
+          "virtual_kib": 442238928
+        },
+        {
+          "elapsed": "00:20",
+          "pid": 98402,
+          "rss_kib": 1422960,
+          "virtual_kib": 451244928
+        },
+        {
+          "elapsed": "00:07",
+          "pid": 98490,
+          "rss_kib": 14080,
+          "virtual_kib": 442022000
+        },
+        {
+          "elapsed": "00:07",
+          "pid": 98491,
+          "rss_kib": 987888,
+          "virtual_kib": 443022112
+        }
+      ],
+      "seconds": 35.195557
+    },
+    {
+      "processes": [
+        {
+          "elapsed": "00:40",
+          "pid": 98263,
+          "rss_kib": 11248,
+          "virtual_kib": 442238928
+        },
+        {
+          "elapsed": "00:25",
+          "pid": 98402,
+          "rss_kib": 1103312,
+          "virtual_kib": 451239888
+        },
+        {
+          "elapsed": "00:12",
+          "pid": 98490,
+          "rss_kib": 14080,
+          "virtual_kib": 442022000
+        },
+        {
+          "elapsed": "00:12",
+          "pid": 98491,
+          "rss_kib": 882112,
+          "virtual_kib": 443263072
+        }
+      ],
+      "seconds": 40.218978
+    }
+  ],
+  "memory_scope": "5-second process-group RSS/virtual sampling; no physical-footprint or gameplay performance claim",
+  "native_build": {
+    "artifact": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-move-world-cache/artifacts/f52976b6a0e2affff62a7c70d2376db7801e2f5a75d1b979b23030157ec9189d/program",
+    "associated_preflight_c_sha256": "53ce009480486b1ffb0c0968c0c6191e2014fa496be90d95ab63064bc524fcb5",
+    "c_scope": "build_native content-keyed preflight C; installed CLI native-internal temporary C is not retained or asserted byte-identical",
+    "cache_hit": false,
+    "cache_key": "e9c92052d66f1091909abf949998673076316660126fb3011c859493f404b467",
+    "compiler": {
+      "flags": [
+        "-std=c11",
+        "-O3",
+        "<emitted.c>",
+        "-lpthread",
+        "-lm",
+        "-o",
+        "<native>"
+      ],
+      "path": "/usr/bin/clang",
+      "resource_dir": "/Library/Developer/CommandLineTools/usr/lib/clang/17",
+      "sysroots": [
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk"
+      ],
+      "version": "Apple clang version 17.0.0 (clang-1700.0.13.5)\nTarget: arm64-apple-darwin25.4.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin\n"
+    },
+    "dependencies": {
+      "canonical_sha256": "d37d406a0cfe5bfa7c1533ad2f7ce4eff8d729ece79928b6bec0e4278e900794",
+      "count": 1657
+    },
+    "full_receipt": {
+      "bytes": 632374,
+      "file": "native-build-full.json",
+      "path": "build/local-move-world-verification/native-build-full.json",
+      "sha1": "e06f7d32a5ac4a71d4e7123e7bb134d8e4344407",
+      "sha256": "3c5db15f76e1b28a9f443aaf38d927be3de66f3bfcf8e368f45dbcdaad51c09c"
+    },
+    "identity": {
+      "bend_version": "bend 2.0.35",
+      "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+      "entry": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/local_move_world.bend",
+      "environment_sha256": "532063d8b53cd2bded834b4262532b501569ed865de2e39c417cb7e1362648aa",
+      "machine": "arm64",
+      "os_build": "25E253",
+      "platform": "macOS-26.4.1-arm64-arm-64bit-Mach-O",
+      "schema": 1,
+      "system": "Darwin",
+      "uname": [
+        "Darwin",
+        "Chuahs-MacBook-Pro.local",
+        "25.4.0",
+        "Darwin Kernel Version 25.4.0: Thu Mar 19 19:31:56 PDT 2026; root:xnu-12377.101.15~1/RELEASE_ARM64_T6030",
+        "arm64",
+        "arm"
+      ]
+    },
+    "timings": {
+      "emission_seconds": 12.371107292361557,
+      "native_seconds": 27.616474417038262,
+      "total_seconds": 43.90949370805174
+    }
+  },
+  "pid": 98263,
+  "reference": {
+    "bytes": 3384342,
+    "file": "local_move_world.json",
+    "path": "reference/local_move_world.json",
+    "sha1": "5bf5db17399bc7aa915fba3c11a2cfb159e8d2d5",
+    "sha256": "94afc9b4b47138115207d1d6e5936c9498cea49008f6c86e52d4b1932178a820"
+  },
+  "reference_unchanged": true,
+  "seconds": 43.9851,
+  "status": "passed",
+  "stderr": {
+    "bytes": 0,
+    "file": "build.stderr",
+    "path": "build/local-move-world-verification/build.stderr",
+    "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stdout": {
+    "bytes": 607,
+    "file": "build.stdout",
+    "path": "build/local-move-world-verification/build.stdout",
+    "sha1": "0641d095598bd55960875fa7c390fa320be0fca9",
+    "sha256": "f6da9bee2704994fb31e75cd522a895630104b1d227e725293c97d466b2abb8d"
+  },
+  "table": {
+    "bytes": 262144,
+    "file": "reference_mth_sin.f32",
+    "path": "generated/reference_mth_sin.f32",
+    "sha1": "453d5bfac3fe5a249b1d76c6eb817dea50710c98",
+    "sha256": "cdfaec6870788e193dff3f1ddfa3ca7d3f1a897042d78365a1fe3a433be3627d"
+  },
+  "table_unchanged": true,
+  "timed_out": false,
+  "tools": {
+    "tools/build_native.py": {
+      "bytes": 33298,
+      "file": "build_native.py",
+      "path": "tools/build_native.py",
+      "sha1": "d66f63f05fec4e4c2bc23a823e4a4b2a79a2ee49",
+      "sha256": "3418c78cddc092aec55c7447a818735569b5b279d3bc4b05e3c0077624387c18"
+    },
+    "tools/reference_inventory.py": {
+      "bytes": 24736,
+      "file": "reference_inventory.py",
+      "path": "tools/reference_inventory.py",
+      "sha1": "01f1b7c1adec7f6b9cd62a9c743b1c4835d3e6f6",
+      "sha256": "e82b66508a99d9bac37c62917645e9adcac06e52ab2b65e2bc8afd5be66a8d9e"
+    },
+    "tools/reference_local_collision_probe.py": {
+      "bytes": 45077,
+      "file": "reference_local_collision_probe.py",
+      "path": "tools/reference_local_collision_probe.py",
+      "sha1": "a0414d683aa5460c646cf33d1cca7e23e6b0f3b6",
+      "sha256": "657a97c9c459ff8dc294710f306aab48a93cdfa9bb530ff72e911b43773bbd6b"
+    },
+    "tools/reference_local_collision_world_probe.py": {
+      "bytes": 20586,
+      "file": "reference_local_collision_world_probe.py",
+      "path": "tools/reference_local_collision_world_probe.py",
+      "sha1": "ec5c5dcc77691e8f0f10cd109cd74dcd47f696f3",
+      "sha256": "52dee95f922a2a1e0e419e5e5fb09d6acec9feb23535b470b371b2a6305b2643"
+    },
+    "tools/reference_local_input_probe.py": {
+      "bytes": 72229,
+      "file": "reference_local_input_probe.py",
+      "path": "tools/reference_local_input_probe.py",
+      "sha1": "7a3300927be696f5f526623a1d503c5752ac8adb",
+      "sha256": "42ad844c7ee3616286ce99bcea00c6bc0710b20888912b6e98c1b4af6072a56e"
+    },
+    "tools/reference_local_move_world_probe.py": {
+      "bytes": 35928,
+      "file": "reference_local_move_world_probe.py",
+      "path": "tools/reference_local_move_world_probe.py",
+      "sha1": "f8b4b43286233db02b0236c0ae1bfe95df1f9e38",
+      "sha256": "de5f495e51a178aec022e721062df287250081ddfcac997a9273b930516da494"
+    },
+    "tools/test_local_move_world.py": {
+      "bytes": 22128,
+      "file": "test_local_move_world.py",
+      "path": "tools/test_local_move_world.py",
+      "sha1": "b2bf347ae4a941df7221a224184838953f3c3a49",
+      "sha256": "9225b0e1f6c050151b5ad93bd42451f7b6109b6f62ee4c36dabdaf8d33d05974"
+    }
+  },
+  "tools_unchanged": true
+}

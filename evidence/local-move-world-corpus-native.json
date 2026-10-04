@@ -1,0 +1,70 @@
+{
+  "admitted_moves": 74,
+  "backoff_queries": 187,
+  "backoff_reads": 4523,
+  "binary": {
+    "bytes": 2943192,
+    "file": "local-move-world-tests",
+    "path": "build/local-move-world-tests",
+    "sha1": "bdd86b61dabbd0fbfb9a27dc3580058e64b06a4c",
+    "sha256": "f52976b6a0e2affff62a7c70d2376db7801e2f5a75d1b979b23030157ec9189d"
+  },
+  "collision_queries": 102,
+  "collision_shape_yields": 247,
+  "combined_policy_remap_status": "incomplete",
+  "excluded_recordMovement_queries": [
+    {
+      "entry_sequence": 120,
+      "exit_sequence": 148,
+      "id": "player_mover:0",
+      "method": "noCollision",
+      "query_index": 5,
+      "reads": 26,
+      "scope": "recordMovement outside current movement/emission projection",
+      "yielded_shapes": 1
+    }
+  ],
+  "harness": {
+    "bytes": 35074,
+    "file": "local_move_world.bend",
+    "path": "tests/local_move_world.bend",
+    "sha1": "0308fb9e6b9139403752246673dcd016c632f514",
+    "sha256": "b72c6e1f80da2ced70c47780a5a3b849eafe8bae8f2d7e65875216762f43e65b"
+  },
+  "kernel_status": "not-run",
+  "measured_guards": 1,
+  "minor_calls": 22,
+  "position_gate_skips": 7,
+  "raw_report": {
+    "bytes": 64368,
+    "file": "actual-corpus-replayed-raw-audit.json",
+    "path": "build/local-move-world-verification/actual-corpus-replayed-raw-audit.json",
+    "sha1": "bb7e9ccfef31655c3a5744182ba5fed8acff79c9",
+    "sha256": "0e5ec231769069fb5649616452837d3edd72829ab767a596fa6439a903978912"
+  },
+  "raw_report_canonical_sha256": "544c72e7c3c79dd070fbafa79177522b52c52516b0212f7daaa0ca339bd45235",
+  "reference": {
+    "bytes": 3384342,
+    "file": "local_move_world.json",
+    "path": "reference/local_move_world.json",
+    "sha1": "5bf5db17399bc7aa915fba3c11a2cfb159e8d2d5",
+    "sha256": "94afc9b4b47138115207d1d6e5936c9498cea49008f6c86e52d4b1932178a820"
+  },
+  "runner": {
+    "bytes": 23675,
+    "file": "test_local_move_world.py",
+    "path": "tools/test_local_move_world.py",
+    "sha1": "5b95258abcf6073987a245da2d0c6068caa927d4",
+    "sha256": "acd239901642351538dfbd5d5db52aa98c8166c4e910b3984bd26409a13dc025"
+  },
+  "scope": "Read-only audit of already executed unchanged native corpus stdout; no native/Java/build rerun",
+  "source": {
+    "bytes": 17815,
+    "file": "local_move_world.bend",
+    "path": "src/local_move_world.bend",
+    "sha1": "675b523cbecd35a992ab555e85977a5590937f06",
+    "sha256": "3823c3e6d4ebd0ab8743792aad3bf0cacae7a081a5791bd23d888037bd569f81"
+  },
+  "status": "passed",
+  "support_queries": 63
+}
