@@ -1,0 +1,334 @@
+{
+  "binary": {
+    "bytes": 3585080,
+    "path": "build/local-travel-history-tests",
+    "sha256": "f09bfb97a9ad236bed47c9ebb05a73c82b8049399cfd614a883d652e7c01a288"
+  },
+  "confidence": {
+    "full_travel_or_tick": "not-claimed",
+    "independent_kernel": "unverified",
+    "measured_neutral_behavior": "high"
+  },
+  "documentation": {
+    "final": {
+      "bytes": 14632,
+      "path": "docs/LOCAL_TRAVEL_HISTORY.md",
+      "sha256": "636f255988708d4917c7582365edf2bdf75abd07f42ff23510d1a8f8aaf69e03"
+    },
+    "preflight_receipt_unchanged": {
+      "bytes": 5289,
+      "path": "evidence/local-travel-history-preflight.json",
+      "sha256": "91eb9286a621f2260aac3770efb3294a1798fee1f6836fef46ee4e746267f946"
+    },
+    "preflight_snapshot": {
+      "bytes": 11566,
+      "path": "build/local-travel-history-verification/preflight-LOCAL_TRAVEL_HISTORY.md",
+      "sha256": "125cce34c0319d4495bfae20fbf63bf6a23b4430fb5223ec9b167e82ea09b682"
+    },
+    "preparation_receipt_unchanged": {
+      "bytes": 44894,
+      "path": "evidence/local-travel-history-preparation.json",
+      "sha256": "76d8f178e40e9e6f742818a85e26f1fd6fb6fcf715c379cc933d99994e101ca5"
+    },
+    "prior_document_recovery": "Reporting-only update inverted; exact historical SHA256 and size match unchanged frozen preflight.",
+    "status": "Historical pending receipts remain unchanged; final status is separate."
+  },
+  "executed_command": "PYTHONDONTWRITEBYTECODE=1 python3 tools/test_local_travel_history.py --skip-ordinary",
+  "executed_runner": {
+    "bytes": 24512,
+    "path": "tools/test_local_travel_history.py",
+    "sha256": "73af0a203888476f5a2e86409cdce96a3548ea1a27cb5d5810d5fae2ca1120cd"
+  },
+  "generation": {
+    "all_native_dependency_paths_sizes_hashes_rechecked": true,
+    "all_source_tool_reference_table_pins_unchanged": true,
+    "bend_base_effect_count": 66,
+    "canonical_digest": "889a8546ba857aea8a2c87c2426c937b73fdea3469b893a804aa7d670a9bf8b1",
+    "tool_count": 12
+  },
+  "harness": {
+    "bytes": 48398,
+    "path": "tests/local_travel_history.bend",
+    "sha256": "0042b3f3016db7eddb2b81ffec1b087afe83977d825110c78789d8cf5e0daa27"
+  },
+  "native_build": {
+    "build_seconds": 83.157422,
+    "cache_entry_binary": {
+      "bytes": 3585080,
+      "path": "build/local-travel-history-cache/entries/0216eb6e34e9c06c9e7f3426fe7fb5ba9644079b48443e98578df1442b3fe2a9/program",
+      "sha256": "f09bfb97a9ad236bed47c9ebb05a73c82b8049399cfd614a883d652e7c01a288"
+    },
+    "cache_entry_manifest": {
+      "bytes": 549472,
+      "path": "build/local-travel-history-cache/entries/0216eb6e34e9c06c9e7f3426fe7fb5ba9644079b48443e98578df1442b3fe2a9/manifest.json",
+      "sha256": "d6716433b48a8628d545a215e3eae037e82376eb8cb0c5a10b3052f0178f5239"
+    },
+    "cache_hit": false,
+    "canonical_dependency_digest": "0f24d66488688be432baee4691940bee026ceed23e36b27ac8f098800626f9eb",
+    "dependencies_rechecked": true,
+    "dependency_count": 1660,
+    "full_original": {
+      "bytes": 633381,
+      "path": "build/local-travel-history-verification/native-build-full.json",
+      "sha256": "ab517d01d36ac3653913689b758d85d404315ccebede87469b5f88a105beb0b0"
+    },
+    "immutable_artifact": {
+      "bytes": 3585080,
+      "path": "build/local-travel-history-cache/artifacts/f09bfb97a9ad236bed47c9ebb05a73c82b8049399cfd614a883d652e7c01a288/program",
+      "sha256": "f09bfb97a9ad236bed47c9ebb05a73c82b8049399cfd614a883d652e7c01a288"
+    },
+    "native_internal_c": "Installed CLI temporary C removed; no retained byte identity claim.",
+    "phase_receipt": {
+      "bytes": 23938,
+      "path": "evidence/local-travel-history-build.json",
+      "sha256": "af1a9aba21f8949b7f3074497c38725c6a55e3ca118083ff661a5da92bbb545d"
+    },
+    "recipe_scope": "Exact installed Bend invocation is recorded in entry manifest with unique temporary output placeholder; compiler flags are pinned recipe metadata, not a retained internal clang invocation.",
+    "retained_preflight_c": {
+      "bytes": 9953113,
+      "path": "build/local-travel-history-cache/sources/77588f7e2c9a1dae4e7731a7599762243d05d757e3537d2617515e0197363ca1/generated.c",
+      "sha256": "5d00763ccea62f1dff3110b65ff96be1e73501fa067e3f876f9af10fba796671"
+    },
+    "retries": 0
+  },
+  "native_verdict": {
+    "exact_stdout_stderr_pins_checked": 432,
+    "full_raw_output_audit": {
+      "bytes": 85504,
+      "path": "build/local-travel-history-verification/final-audit-raw.json",
+      "sha256": "4b6b24811ec2d753554e2d83008198576ae45c1ef6c5f9e8cf15944f23fc566b"
+    },
+    "native_processes": 214,
+    "no_rerun": true,
+    "receipt": {
+      "bytes": 22176,
+      "path": "evidence/local-travel-history-native.json",
+      "sha256": "f365499996ff5e1bffe02532b8541859d56051478a7f3ca380225907dfdb032b"
+    },
+    "runs": [
+      {
+        "actual_miss_calls": 5,
+        "admitted_travel_calls": 87,
+        "excluded": [
+          {
+            "actual_returned": true,
+            "category": "Observed suppressed_bounce=false",
+            "error": "movement:move:local-move-context:6",
+            "id": "unshift_guard:0"
+          },
+          {
+            "actual_returned": true,
+            "category": "Observed suppressed_bounce=false",
+            "error": "movement:move:local-move-context:6",
+            "id": "crouch_without_shift_guard:0"
+          },
+          {
+            "actual_returned": false,
+            "category": "Actual callback failed: java.lang.NoSuchFieldError: Class net.minecraft.client.Minecraft does not have member field 'net.minecraft.client.renderer.GameRenderer gameRenderer'",
+            "error": "movement:history:landing",
+            "id": "damaging_landing_guard:0"
+          }
+        ],
+        "native_processes": 107,
+        "policy_recoveries": 40,
+        "raw": {
+          "bytes": 200281,
+          "file": "run0-full.json",
+          "path": "build/local-travel-history-verification/run0-full.json",
+          "sha1": "2eeb30232e83bcc57e707d6919d5c0d00ff86ca4",
+          "sha256": "69353cad455b23e286aec4336c230ad967355ea5e0725f57e53b21551927982b"
+        },
+        "remapped_calls": 18,
+        "result_sha256": "60a6b917b3dd3b039fe29dad9155e3e016b45d8cc85ed9491c4855cd2c832cb4",
+        "seconds": 13.350514,
+        "skipped_position_calls": 6
+      },
+      {
+        "actual_miss_calls": 5,
+        "admitted_travel_calls": 87,
+        "excluded": [
+          {
+            "actual_returned": true,
+            "category": "Observed suppressed_bounce=false",
+            "error": "movement:move:local-move-context:6",
+            "id": "unshift_guard:0"
+          },
+          {
+            "actual_returned": true,
+            "category": "Observed suppressed_bounce=false",
+            "error": "movement:move:local-move-context:6",
+            "id": "crouch_without_shift_guard:0"
+          },
+          {
+            "actual_returned": false,
+            "category": "Actual callback failed: java.lang.NoSuchFieldError: Class net.minecraft.client.Minecraft does not have member field 'net.minecraft.client.renderer.GameRenderer gameRenderer'",
+            "error": "movement:history:landing",
+            "id": "damaging_landing_guard:0"
+          }
+        ],
+        "native_processes": 107,
+        "policy_recoveries": 40,
+        "raw": {
+          "bytes": 200278,
+          "file": "run1-full.json",
+          "path": "build/local-travel-history-verification/run1-full.json",
+          "sha1": "2c502d0dd66adc24fc72f428641db6b6715d1aa4",
+          "sha256": "e874a251081b2d42329240f9cc8ec9ebdedb4323b7c4520b0273e3cc9dc8c643"
+        },
+        "remapped_calls": 18,
+        "result_sha256": "60a6b917b3dd3b039fe29dad9155e3e016b45d8cc85ed9491c4855cd2c832cb4",
+        "seconds": 12.472857,
+        "skipped_position_calls": 6
+      }
+    ],
+    "same_result_digest": "60a6b917b3dd3b039fe29dad9155e3e016b45d8cc85ed9491c4855cd2c832cb4"
+  },
+  "owned_files": {
+    "docs/LOCAL_TRAVEL_HISTORY.md": {
+      "bytes": 14632,
+      "path": "docs/LOCAL_TRAVEL_HISTORY.md",
+      "sha256": "636f255988708d4917c7582365edf2bdf75abd07f42ff23510d1a8f8aaf69e03"
+    },
+    "evidence/local-travel-history-build.json": {
+      "bytes": 23938,
+      "path": "evidence/local-travel-history-build.json",
+      "sha256": "af1a9aba21f8949b7f3074497c38725c6a55e3ca118083ff661a5da92bbb545d"
+    },
+    "evidence/local-travel-history-kernel.json": {
+      "bytes": 15161,
+      "path": "evidence/local-travel-history-kernel.json",
+      "sha256": "187e3126ebc759d883efcc60304524cbeb00d53b9e388970d53c9cc208147dbd"
+    },
+    "evidence/local-travel-history-native.json": {
+      "bytes": 22176,
+      "path": "evidence/local-travel-history-native.json",
+      "sha256": "f365499996ff5e1bffe02532b8541859d56051478a7f3ca380225907dfdb032b"
+    },
+    "evidence/local-travel-history-ordinary-harness.json": {
+      "bytes": 14377,
+      "path": "evidence/local-travel-history-ordinary-harness.json",
+      "sha256": "f3b18696c5e0bf4cc8dca75a5f7ea63c349c2bbab4f65143cf36a5eb1a828e30"
+    },
+    "evidence/local-travel-history-ordinary-source.json": {
+      "bytes": 14370,
+      "path": "evidence/local-travel-history-ordinary-source.json",
+      "sha256": "dc263b193c2580cb0130c8502f9fcd2da852554318212183f85a8af9cc623565"
+    },
+    "evidence/local-travel-history-preflight.json": {
+      "bytes": 5289,
+      "path": "evidence/local-travel-history-preflight.json",
+      "sha256": "91eb9286a621f2260aac3770efb3294a1798fee1f6836fef46ee4e746267f946"
+    },
+    "evidence/local-travel-history-preparation.json": {
+      "bytes": 44894,
+      "path": "evidence/local-travel-history-preparation.json",
+      "sha256": "76d8f178e40e9e6f742818a85e26f1fd6fb6fcf715c379cc933d99994e101ca5"
+    },
+    "evidence/local-travel-history-reference-actual.json": {
+      "bytes": 22361,
+      "path": "evidence/local-travel-history-reference-actual.json",
+      "sha256": "c619f32f03770d7e4f6fc6513d7946238da1b23acad58a9ee048d41abdcf7204"
+    },
+    "evidence/local-travel-history-reference-debug.json": {
+      "bytes": 22344,
+      "path": "evidence/local-travel-history-reference-debug.json",
+      "sha256": "6c1b219ae5dc8efb56cdcc0ae2c3ec57aaddd39335a07bb0eb7d0df2c886c7cb"
+    },
+    "evidence/local-travel-history-reference-independent.json": {
+      "bytes": 22614,
+      "path": "evidence/local-travel-history-reference-independent.json",
+      "sha256": "e32b4f89d9af677225cef056826c535a9a98470fa4814ba52f0deff0a76176c7"
+    },
+    "evidence/local-travel-history-reference-integrity.json": {
+      "bytes": 1034,
+      "path": "evidence/local-travel-history-reference-integrity.json",
+      "sha256": "f9124c21ff9bc99563d74b080129c2e33564b1c9fda1cc149296bea9398a5ff8"
+    },
+    "evidence/local-travel-history-reference-setup-failure.json": {
+      "bytes": 1695,
+      "path": "evidence/local-travel-history-reference-setup-failure.json",
+      "sha256": "e66a5fa1416ab16cd9d79cecee9908c20b62d13a6164d82989ddcc906512f44b"
+    },
+    "evidence/local-travel-history-reference-storage.json": {
+      "bytes": 6695,
+      "path": "evidence/local-travel-history-reference-storage.json",
+      "sha256": "99d793dea76b1c99ec693d102dc8a512dd2f5fce65d0a84d3f25e4516ab20311"
+    },
+    "reference/local_travel_history.json": {
+      "bytes": 9156736,
+      "path": "reference/local_travel_history.json",
+      "sha256": "07646e7fef0e55f3fd89421d1862b0e6dc5fdde3a0a84800b70b857a66609dbf"
+    },
+    "src/local_travel_history.bend": {
+      "bytes": 14135,
+      "path": "src/local_travel_history.bend",
+      "sha256": "32016fde52830ef6b8ca21cee4c6170c2596943c89c81cd6589190c678a1f00c"
+    },
+    "tests/local_travel_history.bend": {
+      "bytes": 48398,
+      "path": "tests/local_travel_history.bend",
+      "sha256": "0042b3f3016db7eddb2b81ffec1b087afe83977d825110c78789d8cf5e0daa27"
+    },
+    "tools/reference_local_travel_history_probe.py": {
+      "bytes": 45459,
+      "path": "tools/reference_local_travel_history_probe.py",
+      "sha256": "1edea13e62a5d99d780f50020ba890a082f3d5bc6a1b36595b8428c28b522723"
+    },
+    "tools/test_local_travel_history.py": {
+      "bytes": 24512,
+      "path": "tools/test_local_travel_history.py",
+      "sha256": "73af0a203888476f5a2e86409cdce96a3548ea1a27cb5d5810d5fae2ca1120cd"
+    }
+  },
+  "proof": {
+    "attempts": 1,
+    "diagnostic": "SOME PROOFS FAIL\nSorry - this is a mismatch between the TypeScript implementation, and the formalized BendTT kernel. Your proofs may or may not be correct, and we cannot validate them yet. This will be addressed in a future update. Meanwhile, feel free to open an issue to report this bug.",
+    "exit_code": 1,
+    "independent_status": "unverified",
+    "named_law_failure": "not-inferred",
+    "native_receipt_written_before_proof": true,
+    "ordinary_checks": "source and full harness passed before the granted build",
+    "receipt": {
+      "bytes": 15161,
+      "path": "evidence/local-travel-history-kernel.json",
+      "sha256": "187e3126ebc759d883efcc60304524cbeb00d53b9e388970d53c9cc208147dbd"
+    },
+    "seconds": 23.77998,
+    "source_laws": 5,
+    "timed_out": false
+  },
+  "raw_storage": {
+    "full_comparison_bytes": 400559,
+    "full_original_build_bytes": 633381,
+    "ignored_paths_verified": [
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-travel-history-verification/native-build-full.json",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-travel-history-verification/run0-full.json",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-travel-history-verification/run1-full.json",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-travel-history-verification/preflight-LOCAL_TRAVEL_HISTORY.md",
+      "build/local-travel-history-cache/sources/77588f7e2c9a1dae4e7731a7599762243d05d757e3537d2617515e0197363ca1/generated.c"
+    ],
+    "tracked_evidence": "Compact receipts; original complete manifest and raw outputs remain ignored with exact hash/size links."
+  },
+  "reference": {
+    "bytes": 9156736,
+    "path": "reference/local_travel_history.json",
+    "sha256": "07646e7fef0e55f3fd89421d1862b0e6dc5fdde3a0a84800b70b857a66609dbf"
+  },
+  "resources": {
+    "build_group": 20197,
+    "build_peak_sampled_group_rss_kib": 3294368,
+    "groups_reaped": true,
+    "memory_scope": "Sum of 5-second sampled process RSS; not physical footprint.",
+    "no_live_native_process": true,
+    "proof_group": 21016,
+    "proof_peak_sampled_group_rss_kib": 1768176,
+    "slot": "A explicitly released"
+  },
+  "scope": "Bounded neutral LocalPlayer travel field projection. Actual rays supplied; ground/attributes/keys/current axes conditional observations. No extra .98, no existing source or consumer changes; unsupported hazards/callbacks reject.",
+  "source": {
+    "bytes": 14135,
+    "path": "src/local_travel_history.bend",
+    "sha256": "32016fde52830ef6b8ca21cee4c6170c2596943c89c81cd6589190c678a1f00c"
+  },
+  "status": "native-passed-independent-proof-unverified"
+}

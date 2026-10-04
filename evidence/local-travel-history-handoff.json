@@ -1,0 +1,200 @@
+{
+  "api": "travel_checked(MH.State, L.Tables, Request) -> MH.State & L.Tables & Result<&2,&2,Error,Outcome>",
+  "binary": {
+    "bytes": 3585080,
+    "path": "build/local-travel-history-tests",
+    "sha256": "f09bfb97a9ad236bed47c9ebb05a73c82b8049399cfd614a883d652e7c01a288"
+  },
+  "c_scope": "Retained associated preflight C only; installed internal temporary C was removed and is not asserted identical.",
+  "closure": {
+    "all_pins_rechecked": true,
+    "bend_base_effect_count": 66,
+    "full_manifest_canonical_digest": "0f24d66488688be432baee4691940bee026ceed23e36b27ac8f098800626f9eb",
+    "native_dependency_count": 1660,
+    "tools_count": 12
+  },
+  "conditional_observations": [
+    "current keys distinct from crouch caches",
+    "current xxa/zza distinct from passed travel Vec3",
+    "actual ground/friction/supporting position",
+    "current resolved attributes after sprint updates",
+    "degree yaw distinct from camera radians",
+    "actual clip Miss or NotRequired",
+    "known-empty entities and known-clear finite border interior",
+    "explicit neutral hook admission and query fuel"
+  ],
+  "derived_bindings": {
+    "body": "owned W.View",
+    "fall_distance": "owned H.History raw F64",
+    "grounded": "owned Body flag",
+    "maximum": "T.Context maximum F32",
+    "minor_yaw": "T.Context degree yaw F32",
+    "mover": "actual dry travel uses Self"
+  },
+  "document": {
+    "bytes": 14632,
+    "path": "docs/LOCAL_TRAVEL_HISTORY.md",
+    "sha256": "636f255988708d4917c7582365edf2bdf75abd07f42ff23510d1a8f8aaf69e03"
+  },
+  "executed_runner": {
+    "bytes": 24512,
+    "path": "tools/test_local_travel_history.py",
+    "sha256": "73af0a203888476f5a2e86409cdce96a3548ea1a27cb5d5810d5fae2ca1120cd"
+  },
+  "final_verification": {
+    "bytes": 14930,
+    "path": "evidence/local-travel-history-final-verification.json",
+    "sha256": "2fe8aa2fa0b5bb8c0bcbb39f0829ad2318a122772e08d1614aa58adb426be0ae"
+  },
+  "harness": {
+    "bytes": 48398,
+    "path": "tests/local_travel_history.bend",
+    "sha256": "0042b3f3016db7eddb2b81ffec1b087afe83977d825110c78789d8cf5e0daa27"
+  },
+  "historical_receipts": "Original preflight/preparation pending status is preserved. Reporting-only final documentation status update has an exact-hash recovered preflight document under ignored build storage.",
+  "owned_files": {
+    "docs/LOCAL_TRAVEL_HISTORY.md": {
+      "bytes": 14632,
+      "path": "docs/LOCAL_TRAVEL_HISTORY.md",
+      "sha256": "636f255988708d4917c7582365edf2bdf75abd07f42ff23510d1a8f8aaf69e03"
+    },
+    "evidence/local-travel-history-build.json": {
+      "bytes": 23938,
+      "path": "evidence/local-travel-history-build.json",
+      "sha256": "af1a9aba21f8949b7f3074497c38725c6a55e3ca118083ff661a5da92bbb545d"
+    },
+    "evidence/local-travel-history-final-verification.json": {
+      "bytes": 14930,
+      "path": "evidence/local-travel-history-final-verification.json",
+      "sha256": "2fe8aa2fa0b5bb8c0bcbb39f0829ad2318a122772e08d1614aa58adb426be0ae"
+    },
+    "evidence/local-travel-history-kernel.json": {
+      "bytes": 15161,
+      "path": "evidence/local-travel-history-kernel.json",
+      "sha256": "187e3126ebc759d883efcc60304524cbeb00d53b9e388970d53c9cc208147dbd"
+    },
+    "evidence/local-travel-history-native.json": {
+      "bytes": 22176,
+      "path": "evidence/local-travel-history-native.json",
+      "sha256": "f365499996ff5e1bffe02532b8541859d56051478a7f3ca380225907dfdb032b"
+    },
+    "evidence/local-travel-history-ordinary-harness.json": {
+      "bytes": 14377,
+      "path": "evidence/local-travel-history-ordinary-harness.json",
+      "sha256": "f3b18696c5e0bf4cc8dca75a5f7ea63c349c2bbab4f65143cf36a5eb1a828e30"
+    },
+    "evidence/local-travel-history-ordinary-source.json": {
+      "bytes": 14370,
+      "path": "evidence/local-travel-history-ordinary-source.json",
+      "sha256": "dc263b193c2580cb0130c8502f9fcd2da852554318212183f85a8af9cc623565"
+    },
+    "evidence/local-travel-history-preflight.json": {
+      "bytes": 5289,
+      "path": "evidence/local-travel-history-preflight.json",
+      "sha256": "91eb9286a621f2260aac3770efb3294a1798fee1f6836fef46ee4e746267f946"
+    },
+    "evidence/local-travel-history-preparation.json": {
+      "bytes": 44894,
+      "path": "evidence/local-travel-history-preparation.json",
+      "sha256": "76d8f178e40e9e6f742818a85e26f1fd6fb6fcf715c379cc933d99994e101ca5"
+    },
+    "evidence/local-travel-history-reference-actual.json": {
+      "bytes": 22361,
+      "path": "evidence/local-travel-history-reference-actual.json",
+      "sha256": "c619f32f03770d7e4f6fc6513d7946238da1b23acad58a9ee048d41abdcf7204"
+    },
+    "evidence/local-travel-history-reference-debug.json": {
+      "bytes": 22344,
+      "path": "evidence/local-travel-history-reference-debug.json",
+      "sha256": "6c1b219ae5dc8efb56cdcc0ae2c3ec57aaddd39335a07bb0eb7d0df2c886c7cb"
+    },
+    "evidence/local-travel-history-reference-independent.json": {
+      "bytes": 22614,
+      "path": "evidence/local-travel-history-reference-independent.json",
+      "sha256": "e32b4f89d9af677225cef056826c535a9a98470fa4814ba52f0deff0a76176c7"
+    },
+    "evidence/local-travel-history-reference-integrity.json": {
+      "bytes": 1034,
+      "path": "evidence/local-travel-history-reference-integrity.json",
+      "sha256": "f9124c21ff9bc99563d74b080129c2e33564b1c9fda1cc149296bea9398a5ff8"
+    },
+    "evidence/local-travel-history-reference-setup-failure.json": {
+      "bytes": 1695,
+      "path": "evidence/local-travel-history-reference-setup-failure.json",
+      "sha256": "e66a5fa1416ab16cd9d79cecee9908c20b62d13a6164d82989ddcc906512f44b"
+    },
+    "evidence/local-travel-history-reference-storage.json": {
+      "bytes": 6695,
+      "path": "evidence/local-travel-history-reference-storage.json",
+      "sha256": "99d793dea76b1c99ec693d102dc8a512dd2f5fce65d0a84d3f25e4516ab20311"
+    },
+    "reference/local_travel_history.json": {
+      "bytes": 9156736,
+      "path": "reference/local_travel_history.json",
+      "sha256": "07646e7fef0e55f3fd89421d1862b0e6dc5fdde3a0a84800b70b857a66609dbf"
+    },
+    "src/local_travel_history.bend": {
+      "bytes": 14135,
+      "path": "src/local_travel_history.bend",
+      "sha256": "32016fde52830ef6b8ca21cee4c6170c2596943c89c81cd6589190c678a1f00c"
+    },
+    "tests/local_travel_history.bend": {
+      "bytes": 48398,
+      "path": "tests/local_travel_history.bend",
+      "sha256": "0042b3f3016db7eddb2b81ffec1b087afe83977d825110c78789d8cf5e0daa27"
+    },
+    "tools/reference_local_travel_history_probe.py": {
+      "bytes": 45459,
+      "path": "tools/reference_local_travel_history_probe.py",
+      "sha256": "1edea13e62a5d99d780f50020ba890a082f3d5bc6a1b36595b8428c28b522723"
+    },
+    "tools/test_local_travel_history.py": {
+      "bytes": 24512,
+      "path": "tools/test_local_travel_history.py",
+      "sha256": "73af0a203888476f5a2e86409cdce96a3548ea1a27cb5d5810d5fae2ca1120cd"
+    }
+  },
+  "owner_contract": "One MH.State owns W/Core/View/SP/minor/H; external Tables returned. Request contains no independent authoritative Body/history. All errors restore prior full View/SP/minor/H while retaining the same Core/Tables owners. Nonempty owned/request/Hooks tails reject retaining child owners.",
+  "phases": [
+    "T.prepare_checked from authoritative Body and conditional current observations",
+    "install accelerated velocity exactly once",
+    "MH.move_checked: edge backoff, collision/application/flags, support/minor with prepared original velocity, observed no-damage history, restitution",
+    "T.finish_checked: gravity then drag",
+    "commit one final authoritative Body"
+  ],
+  "reference": {
+    "bytes": 9156736,
+    "path": "reference/local_travel_history.json",
+    "sha256": "07646e7fef0e55f3fd89421d1862b0e6dc5fdde3a0a84800b70b857a66609dbf"
+  },
+  "resource_release": {
+    "build_pgid": 20197,
+    "extra_builds_or_verdicts": 0,
+    "groups_reaped": true,
+    "kernel_pgid": 21016,
+    "native_calls_returned": true,
+    "released": true,
+    "slot": "A"
+  },
+  "scope": "Bounded neutral actual LocalPlayer.travel field projection; no full tick or runtime/consumer integration. Unsupported contexts/callbacks reject; no extra input decay, no inferred clip or ground/attribute provenance.",
+  "source": {
+    "bytes": 14135,
+    "path": "src/local_travel_history.bend",
+    "sha256": "32016fde52830ef6b8ca21cee4c6170c2596943c89c81cd6589190c678a1f00c"
+  },
+  "status": "frozen-native-passed-kernel-unverified",
+  "validation": {
+    "actual_miss_per_run": 5,
+    "admitted_actual_calls_per_run": 87,
+    "kernel": "One full unchanged imported harness verdict exited 1 after 23.779980 s with generic TypeScript/BendTT implementation mismatch. Five ordinary laws independently unverified; no named-law failure inferred.",
+    "measured_exclusions_per_run": 3,
+    "native_build_seconds": 83.157422,
+    "native_processes": 214,
+    "ordinary_source_harness": "passed",
+    "owner_recoveries_per_run": 40,
+    "remapped_calls_per_run": 18,
+    "runs": 2,
+    "same_result_digest": "60a6b917b3dd3b039fe29dad9155e3e016b45d8cc85ed9491c4855cd2c832cb4",
+    "skipped_application_branches_per_run": 6
+  }
+}
