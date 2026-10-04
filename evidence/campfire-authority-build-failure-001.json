@@ -1,0 +1,54 @@
+{
+  "error": "AssertionError(({'kind': 'emit', 'command': ['/Users/chuah/.bend/bin/bend', 'tests/campfire_authority.bend', '-o', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/campfire-authority-native/receiver.c'], 'exit': -15, 'seconds': 13.4664, 'sampled_process_tree_peak_rss_bytes': 2160787456, 'bounded_stop': 'RSS bound', 'stdout_sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'stderr_sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'}, '', ''))",
+  "checks": [
+    {
+      "kind": "ordinary",
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/campfire_authority.bend",
+        "--check-only"
+      ],
+      "exit": 0,
+      "seconds": 4.6431,
+      "sampled_process_tree_peak_rss_bytes": 1938161664,
+      "bounded_stop": null,
+      "stdout_sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "proof-export",
+      "command": [
+        "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+        "--experimental-transform-types",
+        "--stack-size=4096",
+        "--max-old-space-size=1536",
+        "tools/campfire_authority_proof.mjs",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/campfire-authority-native"
+      ],
+      "exit": 0,
+      "seconds": 1.4261,
+      "sampled_process_tree_peak_rss_bytes": 279314432,
+      "bounded_stop": null,
+      "stdout_sha256": "0006f77f6ec1824278666ddf95cd7762e0688065b2f370b7bcac7b05dd34a002",
+      "stderr_sha256": "c1364466d479026c623ba8da8d3c56f50b6b212f02b2e3ae8b50ab050833fbac"
+    },
+    {
+      "kind": "independent-kernel",
+      "command": [
+        "/usr/bin/env",
+        "LEAN_STACK_SIZE=4194304",
+        "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/campfire-authority-native/selected.bendtt"
+      ],
+      "exit": 0,
+      "seconds": 0.2226,
+      "sampled_process_tree_peak_rss_bytes": 196608,
+      "bounded_stop": null,
+      "stdout_sha256": "61b73cda11b6b665b9f99f2defd3d3b57f985c865225e942a5bdaa594a503e47",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "status": "stopped_at_measured_bound",
+  "scope": "Actual production campfire loader/receiver native C emission stopped before output under 2 GiB process-tree RSS bound. Read-only source trace identifies shared crafting_recipe_decoder.decode_kind long String pattern expansion (+390578176 bytes during one check); repaired dispatch coordinated with file owner. No equivalent retry or dependency/toolchain edit by campfire owner.",
+  "source_trace_sha256": "46dee4bb3d41bb100a9ec9363e0d1dcb4f53dfc1a4a2bf0ca3891a7b1fcec702"
+}

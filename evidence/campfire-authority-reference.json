@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "pin": "26.3",
+  "command": "python3 tools/reference_campfire_authority.py",
+  "cases": 16,
+  "observations": 64,
+  "xp_entities_observed": 0,
+  "input_sha256": "dc8a61bbd4def1a6e7fb7c939b1cce72662b6a4c95ffd470c25d8d1e3a990116",
+  "output_sha256": "272a8ef3c6de4233b1293d372124f279b76423750fcd88952f45ec0b2484470d",
+  "seconds": 3.9572,
+  "scope": "Actual unmodified CampfireBlockEntity placeFood/cookTick/cooldownTick/preRemoveSideEffects/clearContent and real RecipeManager/CachedCheck/template/component codecs. Reference-only Unsafe allocates the ServerLevel I/O fixture; it overrides world notifications/features/RNG/item-entity admission, not campfire/recipe/timer algorithms. Actual ItemEntity constructors/dropItemStack run. Snapshots load diagnostic arrays reflectively; persistence storage codec is not claimed by those loads. No Python runtime cooking and no unchanged recipe-corpus replay."
+}

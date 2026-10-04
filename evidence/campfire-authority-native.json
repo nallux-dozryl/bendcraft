@@ -1,0 +1,273 @@
+{
+  "status": "passed",
+  "command": "python3 tools/test_campfire_authority.py",
+  "source_sha256": {
+    "src/campfire_authority_proof.bend": "0a5a34793987a4a15ff7afd155ae1acaa89b3ba72d1ec61545647e69aa38df50",
+    "src/campfire_authority_laws.bend": "9902bf39a035409e9b398aff66a1f4208331719f0772291460682f73e43952df",
+    "src/campfire_authority_loader.bend": "5f8bb28eef82822d3884c9f4e2c768943c256421de61a3112ef75a4d57af51e0",
+    "src/campfire_authority.bend": "78a59482edfd9f1ed0455524b99fda220dbe697bfcc72fe1a7b71a343396ab21",
+    "src/campfire_authority_items.bend": "cc8e33b0636309348135ec32aabb8f6cfceb23a24863fd064fc30bf730ba79c2",
+    "tests/campfire_authority.bend": "545ff85505474b83c5e5417e8f66211ee99e98118c1408b6116f24a7b272d037",
+    "tests/campfire_authority_guards.bend": "6685eafa405dfc2255573f897e467b4b9236e9f29755bea951ace768868b0d07",
+    "tools/campfire_authority_proof.mjs": "85012b5734318741020c9968bf9d8797edcfebdac71acab2539a52c68636f442",
+    "tools/reference_campfire_authority.py": "1c4faa826020addcb998de2968ecedfec4c7942aaeebae16a4ad8931d2e9e327",
+    "tools/test_campfire_authority.py": "12ee77b2097728c15aefcf055874819ebec0e86fac05362b223805a80eddfed6",
+    "reference/campfire_authority.json": "1590054d436a969d04865eb1458265d7bf414fd22cf5c29cf42d48712700f6c7",
+    "src/cooking_recipe.bend": "085bfe968f3e7169e5c7bacf633029ebd9e4fc8c8ecb79ad81f63a193110f795",
+    "src/cooking_recipe_decoder.bend": "ca334faae18c0a25664d4d3170f29aa26e33fa4a0b9da0bcc08348c79e51ae28",
+    "src/crafting_recipe_components.bend": "2a35e31f26187ebbdab1c4261d54083acb68072a56a7b5869e5dfc490bc946be",
+    "src/inventory.bend": "9d2be7fb88afa1dc6386ab9e8b046b15d2a2a73b7e14566e5bfad3e6dd1f2702"
+  },
+  "checks": [
+    {
+      "kind": "ordinary",
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/campfire_authority.bend",
+        "--check-only"
+      ],
+      "exit": 0,
+      "seconds": 1.3634,
+      "sampled_process_tree_peak_rss_bytes": 615825408,
+      "bounded_stop": null,
+      "stdout_sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "proof-export",
+      "command": [
+        "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+        "--experimental-transform-types",
+        "--stack-size=4096",
+        "--max-old-space-size=1536",
+        "tools/campfire_authority_proof.mjs",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/campfire-authority-native"
+      ],
+      "exit": 0,
+      "seconds": 1.1211,
+      "sampled_process_tree_peak_rss_bytes": 241516544,
+      "bounded_stop": null,
+      "stdout_sha256": "c8b09c97c030b98afe85d8183efebfbab128c9fcdae0810153c43d9886977a44",
+      "stderr_sha256": "f1c14442fe7039c8629ed8f8debdfddbae318e38bdc75879e7bf82c322c27353"
+    },
+    {
+      "kind": "independent-kernel",
+      "command": [
+        "/usr/bin/env",
+        "LEAN_STACK_SIZE=4194304",
+        "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/campfire-authority-native/selected.bendtt"
+      ],
+      "exit": 0,
+      "seconds": 0.2192,
+      "sampled_process_tree_peak_rss_bytes": 196608,
+      "bounded_stop": null,
+      "stdout_sha256": "61b73cda11b6b665b9f99f2defd3d3b57f985c865225e942a5bdaa594a503e47",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "emit",
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/campfire_authority.bend",
+        "-o",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/campfire-authority-native/receiver.c"
+      ],
+      "exit": 0,
+      "seconds": 10.6875,
+      "sampled_process_tree_peak_rss_bytes": 1729773568,
+      "bounded_stop": null,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "clang",
+      "command": [
+        "/usr/bin/clang",
+        "-std=c11",
+        "-O3",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/campfire-authority-native/receiver.c",
+        "-lpthread",
+        "-lm",
+        "-o",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/campfire-authority-native/receiver"
+      ],
+      "exit": 0,
+      "seconds": 8.7225,
+      "sampled_process_tree_peak_rss_bytes": 536854528,
+      "bounded_stop": null,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "native": {
+    "kind": "native",
+    "command": [
+      "/usr/bin/time",
+      "-l",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/campfire-authority-native/receiver",
+      "--gpu",
+      "off",
+      "--threads",
+      "1",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/campfire-authority-native/input.json"
+    ],
+    "exit": 0,
+    "seconds": 17.727,
+    "sampled_process_tree_peak_rss_bytes": 45121536,
+    "bounded_stop": null,
+    "stdout_sha256": "54941e4d01b2f61d376994afd6721d067e28f0666c22d232a6e665a7b5ee115d",
+    "stderr_sha256": "299ae9039cd10cf2cd0799e3641857dab22c103512864d02ffe0929aed276205",
+    "peak_rss_bytes": 43909120
+  },
+  "cases": 16,
+  "actual_java_observations_compared": 64,
+  "guard_cases": [
+    {
+      "id": "noncanonical_air_stack",
+      "ok": true
+    },
+    {
+      "id": "zero_count",
+      "ok": true
+    },
+    {
+      "id": "count_over_initialized_limit",
+      "ok": true
+    },
+    {
+      "id": "forged_component_identity",
+      "ok": true
+    },
+    {
+      "id": "modified_identity_without_patch",
+      "ok": true
+    },
+    {
+      "id": "patch_without_initialized_defaults",
+      "ok": true
+    },
+    {
+      "id": "unsupported_component_patch",
+      "ok": true
+    },
+    {
+      "id": "unknown_item",
+      "ok": true
+    },
+    {
+      "id": "unsupported_campfire_recipe",
+      "ok": true
+    },
+    {
+      "id": "late_slot_missing_feature_rolls_back_prior_drop_and_cache",
+      "ok": true
+    },
+    {
+      "id": "invalid_record_retains_whole_owner",
+      "ok": true
+    },
+    {
+      "id": "typed_snapshot_clear_restore_preserves_complete_cells_and_resets_cache",
+      "ok": true
+    }
+  ],
+  "initialized_item_definitions": 1658,
+  "kernel_laws": 14,
+  "ordinary_laws": 15,
+  "scope_exclusions": [],
+  "term_pins": [
+    {
+      "name": "campfire_authority_laws:refused_tick_preserves_whole_owner",
+      "type_sha256": "0c3d790820791a3f2fa432aaaf11d19ec99b0bc7c13894be825e550c249bcb17",
+      "checked_proof_sha256": "dee19f54b7d8ba7c7d8389ed87cdda40be8179dd9af5d27cfe31ae9d9d2d2b94",
+      "source_body_sha256": "fd10aecf6f3b4b01e223f9d4e4bd1fdfe027c59f311af9644c4a49a609d517a5"
+    },
+    {
+      "name": "campfire_authority_laws:refused_placement_preserves_owner_and_held_item",
+      "type_sha256": "1325cc34a122bbe822de7bf70f52bc4f1c4822fb4c4a6511257e1b72161d8f3c",
+      "checked_proof_sha256": "dfa9e6512275a2db348f42a6adc581c2fdc66132d35cb214d2b56bedc5e4a373",
+      "source_body_sha256": "15de01dbe4e46df3f0311899b9dcba80f148b70c3156ca929c6827d69ff8d34c"
+    },
+    {
+      "name": "campfire_authority_laws:absent_recipe_preserves_owner_and_held_item",
+      "type_sha256": "5d2676bede095cf74980c9edeae26b10b628bff8361fb098f64f8e32e22964c4",
+      "checked_proof_sha256": "8e5897f1343910dbb96b073648f850f31ed4885733a9ceab529cd9cc72dfea33",
+      "source_body_sha256": "a8ea5dc642c92aa43fc5e71893a444884f16d903945ca101327247e0176443ac"
+    },
+    {
+      "name": "campfire_authority_laws:creative_placement_preserves_complete_held_input",
+      "type_sha256": "edc2552e61132324021fd7ed8b15b13fba335cfda3ab14d9a3a0ae9c0508553f",
+      "checked_proof_sha256": "7ef1f63d2d82cf0696f6f7ea1906df9c587c5e345c279ec18b59f7eddae9ca58",
+      "source_body_sha256": "42efe45e9631e1f5e82a55694755a8743583109d8f2e946aec51d99b00c93146"
+    },
+    {
+      "name": "campfire_authority_laws:placed_cell_contains_exactly_one_complete_key",
+      "type_sha256": "c8b9bc040578da9c586903c7bb98d6cfaba7542e713d7d5c8c0eea9817a58a5c",
+      "checked_proof_sha256": "d94dfe224def6de9e41cd5fe5e4320943093e9ba65fb471bc332549d38782131",
+      "source_body_sha256": "4343af2c3662fd5091f33e9beea8e61e548326b6ba7758051ed2c17652558d6e"
+    },
+    {
+      "name": "campfire_authority_laws:disabled_result_preserves_slot_for_retry",
+      "type_sha256": "548173eb731c1c6887477e5711509e2771f773ec6977e002b8b4211fb656fc33",
+      "checked_proof_sha256": "8d8c70547b11d653e87dea0f0ffd5e93488ab23dc2738bfd175668f184d1324f",
+      "source_body_sha256": "489c1b707ccead5652247f86e995e243e6c8fe21ed5e7dbfb96694104738d3cb"
+    },
+    {
+      "name": "campfire_authority_laws:enabled_drop_clears_input_but_preserves_timer_words",
+      "type_sha256": "a4ec5087863b5fbd169105155bc8751ea1ad4d309ebc8d53a7c028a6c4a7dcf3",
+      "checked_proof_sha256": "a95bd5081a108ae30f626c9e5be3347b0082cd88847d74c232a743939740480e",
+      "source_body_sha256": "489c1b707ccead5652247f86e995e243e6c8fe21ed5e7dbfb96694104738d3cb"
+    },
+    {
+      "name": "campfire_authority_laws:missing_recipe_drops_complete_original_stack",
+      "type_sha256": "7f6c90fee917dd0529f6753a1a6bd7218bbe91e3f3bdced7cb6b722788fb354c",
+      "checked_proof_sha256": "bf03365dfb15e2899a461d232bbb35371a0142749acdc63cf80e41e5ee3187b0",
+      "source_body_sha256": "6e9b2f0b375c2496db2bea340e5a81d7c3ae05ec0c22ed4a592eab92442cfa39"
+    },
+    {
+      "name": "campfire_authority_laws:nonpositive_cooldown_does_not_change_timer_word",
+      "type_sha256": "1c4ecd67e25125fd2dc891547e9444f0e791062fe21a473a49b042ff43e82ac6",
+      "checked_proof_sha256": "8f207bd0777f1c6081667c15833b54aa08f0ecaf5f674fd5e2405b10e1311bef",
+      "source_body_sha256": "bef58ff5b3b1230446dab676409686371721c2ae4212dd3aec1a6f4820054337"
+    },
+    {
+      "name": "campfire_authority_laws:snapshot_retains_complete_actual_owner",
+      "type_sha256": "6252365463910924f3291d9db48808ac048f2f2d4b97338503b33891de95b897",
+      "checked_proof_sha256": "88b91dae2016e742f5e62f33b4c79b7ff46bc6838830f1445fa48a58f7684c57",
+      "source_body_sha256": "bc1dd0b26f5ab28b525f1ffa7cfed7ebe2980b9c6c97fe6979b023fea17bea51"
+    },
+    {
+      "name": "campfire_authority_laws:refused_load_preserves_complete_actual_owner",
+      "type_sha256": "8259d37e5822d7d78d64a85798f02d5409bdf38ef94a07f7e20975ed3b91c2cf",
+      "checked_proof_sha256": "f60a5524ff07800e36aef17b7ba45e88cfbcc7f3c2065fc0ac36bde004becf0c",
+      "source_body_sha256": "e912ecbbd2ff6e2b680eacfac21bc5caebc3d231a2556963f7fca3dd855c6c2a"
+    },
+    {
+      "name": "campfire_authority_laws:removal_after_clear_cannot_emit_duplicate_items",
+      "type_sha256": "b8a69d12bcdb8b77c1148534051eebb6a778bc8a8f664729305f367926c7e434",
+      "checked_proof_sha256": "7975de01599d54f8ce20e67ed9bd4a14c9ceae0cc80beb55d813f40a758ec290",
+      "source_body_sha256": "cd5cffd42b3bb488f2c694d2ac027463ee7a812c8a1fc9c2bccbb5fa9a55b0b9"
+    },
+    {
+      "name": "campfire_authority_laws:ticker_replacement_resets_ephemeral_recipe_cache",
+      "type_sha256": "ce6db46742387b614f4026ca7353ed8625b85adc216bf13923b02bc61d745bbf",
+      "checked_proof_sha256": "c6c4e8f3d4ba11ebc73e455b63a0ca09087db71f1424bcd1d57aefcabed91e53",
+      "source_body_sha256": "9625a96c0491b0444510cd24006389f095d665d74ed8cd5a4bbf34c722636221"
+    },
+    {
+      "name": "campfire_authority_laws:first_empty_slot_has_lowest_placement_priority",
+      "type_sha256": "bc8bfa8399e77c788d40193e3a17b4a827b791af796f6c03503e58b82951299b",
+      "checked_proof_sha256": "e8504861161ee56860d4cebd388ac594da6152aa459e25e22dbf33bf89108916",
+      "source_body_sha256": "8a6b66607a9ee8b245e6ade4a01a266bf4b4f4a3c37875575abd327884479f63"
+    }
+  ],
+  "kernel_sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7",
+  "selected_artifact_sha256": "59a89e846e7f25bb79cd849981e24a9c6c8c94f3657f6bbeb074775a1db3c87d",
+  "native_emitted_c_sha256": "a6b476748bda678a830d9be9ff5fd25827b5f15b385c383446d63f65ef3a2b11",
+  "boundary": "Actual production affine Bend four-slot owner and loaded recipe/component/feature admission. Full effective components, cached recipe order, timers, dirty/update/change counts and aggregate ordered complete drop quantities compared to actual retained Java receiver. Actual Java drop fragmentation/positions/velocity/RNG belong to the actor world-drop adapter; no native entity spawning, NBT codec or Core integration claimed. No unchanged recipe-corpus or Java propagation replay.",
+  "shared_decoder_repair_commit": "817231a",
+  "shared_decoder_sha256": "739037cf939bcef5a8008c34216b717ed60574c66690f627d11dc949e8542397",
+  "compiler_baseline": "installed Bend2.0.35; sourceAPI independent checked-root exporter; pinned BendTT kernel e15042434e73aab0",
+  "ordinary_full_verdict_limitation": "Installed broad --verdict machine-stack overflow; 15 actual laws sourceAPI ordinarily check, 14 unchanged actual roots independently check. Actual cook_cell signed-overflow root omitted only for transitive json.encode_go affine descent; exact Java/native overflow behavior compared."
+}
