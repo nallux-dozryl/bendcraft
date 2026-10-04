@@ -1,16 +1,16 @@
 #!/bin/bash
 set -euo pipefail
 root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-actor="$root/build/compiler-producer-diagnostic-012/actor"
-renderer="$root/build/playable-renderer-current/007/renderer"
+actor="$root/build/compiler-producer-diagnostic-017/actor"
+renderer="$root/build/playable-renderer-current/008/renderer"
 python='/Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3'
 cd "$root"
 if [ ! -x "$actor" ] || [ ! -x "$renderer" ] || [ ! -x "$python" ]; then
-  echo "Current actor012, renderer007 and bundled Python are required." >&2; exit 1
+  echo "Current actor017, renderer008 and bundled Python are required." >&2; exit 1
 fi
 "$python" - "$actor" "$renderer" <<'CHECK'
 import hashlib,sys
-for path,expected in zip(sys.argv[1:],['3c773cc1a70bf614724b880bed403e4dba6b2b8800515ae8b1cb040573055c38','71d7763bc576509a8d8b43205eeb4bb07f4541c283a6bfd75f1ea15a6a7b0130']):
+for path,expected in zip(sys.argv[1:],['66bbe97279f8ee268d891ad762d5da40337e1c318d09160e415823e25d4d8bd5','3134689e2905e3b3a3ca3790f854996f9da49d8ca33b19677890cc4b10c91d04']):
     if hashlib.sha256(open(path,'rb').read()).hexdigest()!=expected:
         sys.exit('Current playable binary changed: '+path)
 CHECK
@@ -35,7 +35,7 @@ export MC_RENDER_TOKEN="${MC_RENDER_TOKEN:-$(/usr/bin/uuidgen)}"
 export MC_RENDER_EPOCH="${MC_RENDER_EPOCH:-$(/usr/bin/uuidgen | /usr/bin/tr -d '-')}"
 export MC_DEV_TOKEN="${MC_DEV_TOKEN:-$(/usr/bin/uuidgen)}"
 export BEND_MINECRAFT_LAUNCH_MODE="${BEND_MINECRAFT_LAUNCH_MODE:-human}"
-logs=$(/usr/bin/mktemp -d "$root/build/playable-renderer-current/007/current-launch.XXXXXX")
+logs=$(/usr/bin/mktemp -d "$root/build/playable-renderer-current/008/current-launch.XXXXXX")
 if [ -z "$reconnect" ]; then
   "$actor" --gpu off --threads 2 -- --game-mode creative --sine "$root/generated/reference_mth_sin.f32" >"$logs/actor.stdout" 2>"$logs/actor.stderr" &
   actor_pid=$!
@@ -65,7 +65,7 @@ trap 'on_signal 130' INT
 trap 'on_signal 143' TERM
 ready=false
 if [ -n "$reconnect" ]; then ready=true; fi
-for ((i=0;i<200;i++)); do
+for ((i=0;i<1500;i++)); do
   if [ "$ready" = true ]; then break; fi
   if /usr/bin/grep -q 'renderer.ready' "$logs/actor.stdout"; then ready=true; break; fi
   if ! kill -0 "$actor_pid" 2>/dev/null; then cat "$logs/actor.stderr"; exit 1; fi
