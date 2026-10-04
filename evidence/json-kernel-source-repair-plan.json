@@ -1,0 +1,422 @@
+{
+  "schema": 1,
+  "observed_utc": "2026-10-04T02:08:42.284279+00:00",
+  "status": "source_design_unresolved; no full candidate ready; no execution requested",
+  "confidence": {
+    "cited_rule_text_and_pins": "high",
+    "restricted_three_visitor_declaration_order_contradiction": "high",
+    "complete_satisfying_implementation_exists": "unknown",
+    "all_source_programs_impossible": "not claimed"
+  },
+  "source_and_diagnosis_unchanged": true,
+  "new_semantic_executions": [],
+  "new_Bend_check_export_verdict_kernel_native_executions": 0,
+  "production_or_compiler_edits": false,
+  "complete_semantic_fold": {
+    "signatures": {
+      "V": "Value -> String",
+      "A": "List<&2,Value> -> Bool -> String",
+      "O": "List<&2,Member> -> Bool -> String",
+      "encode": "Value -> String"
+    },
+    "call_graph": {
+      "encode": [
+        "V"
+      ],
+      "V": [
+        "quote",
+        "A",
+        "O"
+      ],
+      "A": [
+        "V",
+        "A"
+      ],
+      "O": [
+        "quote",
+        "V",
+        "O"
+      ]
+    },
+    "structural_edges": [
+      {
+        "caller_case": "V/JArray(xs)",
+        "callee": "A",
+        "argument": "xs",
+        "column": 0,
+        "piece_path": [
+          false,
+          true
+        ]
+      },
+      {
+        "caller_case": "V/JObject(ms)",
+        "callee": "O",
+        "argument": "ms",
+        "column": 0,
+        "piece_path": [
+          false,
+          true
+        ]
+      },
+      {
+        "caller_case": "A/Cons(h,t)",
+        "callee": "V",
+        "argument": "h",
+        "column": 0,
+        "piece_path": [
+          false,
+          true
+        ]
+      },
+      {
+        "caller_case": "A/Cons(h,t)",
+        "callee": "A",
+        "argument": "t",
+        "column": 0,
+        "piece_path": [
+          false,
+          true,
+          true
+        ]
+      },
+      {
+        "caller_case": "O/Cons(JMember(k,v),t)",
+        "callee": "V",
+        "argument": "v",
+        "column": 0,
+        "piece_path": [
+          false,
+          true,
+          true,
+          false,
+          true
+        ]
+      },
+      {
+        "caller_case": "O/Cons(JMember(k,v),t)",
+        "callee": "O",
+        "argument": "t",
+        "column": 0,
+        "piece_path": [
+          false,
+          true,
+          true
+        ]
+      }
+    ],
+    "path_scope": "Static paths in exact constructor pair encoding; no new checked translation or kernel claim",
+    "unsatisfied_gate": "V needs A/O filled earlier; A/O need V filled earlier. These strict orders contradict for this scheme."
+  },
+  "inspected_interfaces": {
+    "runtime_callbacks": "Affine Function Type; repeated +f requires Data and is not supplied",
+    "closed_template_folds": "Base List.foldl/foldr/map; visitor callback must be closed and filled at actual specialization",
+    "template_cycle": "def_inst rejects already-instantiating unfilled other instance; direct self-instance is a different rule",
+    "group_translation": "Base forward-law group mechanism; user filled-live wall still applies, and straight list visitors have no unchanged leading callback parameter",
+    "indexed_selector": "Known runtime/erased failures not repeated; no new checked live eliminator established",
+    "private_tree_or_measure": "Construction from arbitrary mixed public AST remains unresolved",
+    "work_stack": "New child work is not a direct tail; decreasing witness unresolved"
+  },
+  "rules": [
+    {
+      "path": "../bend/guide/guide.md",
+      "lines": [
+        83,
+        107,
+        113,
+        123,
+        219,
+        272
+      ]
+    },
+    {
+      "path": "../bend/bend2/bend.ts",
+      "symbols": [
+        "term_descend",
+        "term_infer Ref",
+        "term_check_kind",
+        "def_check",
+        "def_inst",
+        "book_valid"
+      ]
+    },
+    {
+      "path": "../bend/bend2/safe.ts",
+      "symbols": [
+        "regroup",
+        "group_new",
+        "group_call"
+      ]
+    },
+    {
+      "path": "../bend/bend2/bendtt.lean",
+      "symbols": [
+        "Term.pos",
+        "Term.piece",
+        "Arg.descend",
+        "Term.called",
+        "Term.tree"
+      ]
+    }
+  ],
+  "not_proposed": [
+    "old array-only partial probe",
+    "runtime indexed first-selector retry",
+    "erased-selector retry",
+    "unfilled-law helper retry",
+    "deferred closed-template callback retry without cycle solution",
+    "unsafe or foreign visitor",
+    "fixed serializer fuel or silent truncation",
+    "public AST migration",
+    "compiler/runtime edits"
+  ],
+  "full_candidate_review_requirements": [
+    "Complete unchanged-public-AST function bodies and exact encode signature",
+    "Every recursive call same-column proper-piece/unchanged prefix accounted for",
+    "Concrete declaration and specialization order with no unfilled cycle",
+    "Actual closed template arguments and affine callback use justified",
+    "All mixed array/object valid-AST outputs, ordering, escaping and number lexemes preserved without artificial cap"
+  ],
+  "conditional_verification_obligations_only_after_full_candidate_review": [
+    "Bounded ordinary/source translation and exact pinned direct kernel",
+    "Complete scratch JSON module kernel gate, finite fixtures reported separately",
+    "Existing native536cases/299roundtrips and direct large/deep/mixed valid AST exact outputs before coordinated production edit",
+    "Parser source/policy/caps preserved; any serializer suffix digest change deliberately coordinated"
+  ],
+  "pins": [
+    {
+      "path": "src/json.bend",
+      "bytes": 21362,
+      "sha256": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0"
+    },
+    {
+      "path": "tests/json.bend",
+      "bytes": 4075,
+      "sha256": "82a506d495a70da4759e91a2c712a32c6e7db970e38642102edf5bca2168817f"
+    },
+    {
+      "path": "tests/json_kernel.bend",
+      "bytes": 1475,
+      "sha256": "561b22c5f745e25cc524f0d4a2dd1f145c0672d3d099de72ac5332f4d643c19e"
+    },
+    {
+      "path": "tests/json_limits.bend",
+      "bytes": 5279,
+      "sha256": "1681c4d5448a8782288dcc424e64bee1ed17c2c09fa717c4c553d3bf3e108582"
+    },
+    {
+      "path": "tools/test_json.py",
+      "bytes": 13556,
+      "sha256": "8ca99298e2225142c2b608cb8bf12b38b34284c7800f32c2931cfd45efdcf3cc"
+    },
+    {
+      "path": "tools/test_json_limits.py",
+      "bytes": 17435,
+      "sha256": "9a8f3be6e2ec125d1a634b008ef24a2a9747310f432ef9037d4c8b982e56207a"
+    },
+    {
+      "path": "docs/JSON_KERNEL_DIAGNOSIS.md",
+      "bytes": 11658,
+      "sha256": "b2c879ebd82b8ad3b7a647720ad3ef3f7bc8f57977fbdda1f4b157c548cef21e"
+    },
+    {
+      "path": "evidence/json-kernel-diagnosis-sealed.json",
+      "bytes": 2439,
+      "sha256": "b05fac0e38ddf94c1d70a65702ec33722f38d4c172a785070e92ed7208983659"
+    },
+    {
+      "path": "evidence/json-kernel.json",
+      "bytes": 9656,
+      "sha256": "fb1cf7f9f082eea8631dd8ca6795daad03498b1c02b745c9a7ceba5b0e4b3f24"
+    },
+    {
+      "path": "../bend/guide/guide.md",
+      "bytes": 28359,
+      "sha256": "9001a4ac112e92dc0c069c8b9d5812e114c2557427d9f962cddeef1ef6c292b6"
+    },
+    {
+      "path": "../bend/bend2/bend.ts",
+      "bytes": 137761,
+      "sha256": "7deae3693eb896f33c73867081b99d2c6f3ed3b57e77e55eb5f6260840dd0e63"
+    },
+    {
+      "path": "../bend/bend2/safe.ts",
+      "bytes": 63418,
+      "sha256": "54cb3a534ab7cc9ee313bf6383b3948ccdcac022469b3020e00745bbfe6f7e04"
+    },
+    {
+      "path": "../bend/bend2/base.bend",
+      "bytes": 71530,
+      "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+    },
+    {
+      "path": "../bend/bend2/bendtt.lean",
+      "bytes": 165581,
+      "sha256": "e15042434e73aab07ab05cea4b77b5619082c00a6d4924ea2d4a2cdec05facce"
+    },
+    {
+      "path": "../bend/tests/check/template_inst_cycle.bend",
+      "bytes": 889,
+      "sha256": "72686977e97f49ce2df45f23f1dd90843ee1507975076f7d62ab59bf540bd6a5"
+    },
+    {
+      "path": "../bend/tests/check/partial_self_call.bend",
+      "bytes": 443,
+      "sha256": "8b9d63566fee0263f628881dab4ced229b43912ac61459cd9050cc656b62c8a8"
+    },
+    {
+      "path": "../bend/tests/check/partial_self_call_stuck.bend",
+      "bytes": 668,
+      "sha256": "eeb05da3dad033d53792e270fb9bd441d25fb4c3d7a556262678136ad7a71e83"
+    },
+    {
+      "path": "../bend/tests/parse/gadt_result_annotation_000.bend",
+      "bytes": 430,
+      "sha256": "a64f82ac12a01c94f84b8f71e084e230f4737fcbb60ff1e6a36af3e43e805e99"
+    },
+    {
+      "path": "../bend/tests/parse/gadt_result_annotation_001.bend",
+      "bytes": 454,
+      "sha256": "3dfdfaefb5aa9469e3cba39322c031b32b65c7584cde9084ab8804e86a27a501"
+    },
+    {
+      "path": "build/json-kernel-source-repair/design.txt",
+      "bytes": 1925,
+      "sha256": "d8c010a43a18f5b02e154498cb0f91173eaaa9bfd508043c8ec8633558630aa4"
+    },
+    {
+      "path": "docs/JSON_KERNEL_SOURCE_REPAIR.md",
+      "bytes": 21856,
+      "sha256": "f8f63e28a09d3e129faccb5d77a51f1d1103f5422266b4da50803de8df3727b3"
+    },
+    {
+      "path": "../bend/bend2/comp.ts",
+      "bytes": 185829,
+      "sha256": "32fb66e09f608ce9e4b173384bcfeec453db8c5bc96650e26ad861bef815a8d9"
+    },
+    {
+      "path": "../bend/tests/parse/ctor_indexed_target.bend",
+      "bytes": 475,
+      "sha256": "78703f22e6906ece6ecef0a374fc9dc6b7e92c5e41c0c163bc9dd3198cb1cc57"
+    },
+    {
+      "path": "../bend/tests/proof/gadt_refutation.bend",
+      "bytes": 1420,
+      "sha256": "20da207b78d3af36b766194ee6b4f0b7b140b67df974bbf6062f464a3f321f4f"
+    },
+    {
+      "path": "../bend/tests/proof/context_rewrite_value.bend",
+      "bytes": 605,
+      "sha256": "658eaf6b4867629c74fcca3c5031413cbf066bde2ff8cfad1ac8a09b290154a6"
+    },
+    {
+      "path": "../bend/tests/check/equality_is_data.bend",
+      "bytes": 539,
+      "sha256": "a7ab45c8574fc7e0787cc0f923e6a7ecaf7221774f70b4420fee8479288238e0"
+    },
+    {
+      "path": "build/json-kernel-source-repair/trailing_witness_design.txt",
+      "bytes": 10899,
+      "sha256": "6104835356137aa5f8c8d6647c37cd40b9ab2f82ae8f54bdd0cb6473355fa720"
+    }
+  ],
+  "initial_review_preserved_separately": [
+    {
+      "path": "build/json-kernel-source-repair/initial/JSON_KERNEL_SOURCE_REPAIR.md",
+      "bytes": 10999,
+      "sha256": "7c262441edbed214d4c0eaf8a9b6eb7d63d692cdefc53e9e8d8e152ec68055a9"
+    },
+    {
+      "path": "build/json-kernel-source-repair/initial/json-kernel-source-repair-plan.json",
+      "bytes": 8972,
+      "sha256": "fe1becad569e8e87dd6b9be225976a39c79d38f5b3e379886f8404dfff313223"
+    },
+    {
+      "path": "build/json-kernel-source-repair/initial/design.txt",
+      "bytes": 1925,
+      "sha256": "d8c010a43a18f5b02e154498cb0f91173eaaa9bfd508043c8ec8633558630aa4"
+    }
+  ],
+  "additional_trailing_witness_review": {
+    "status": "source_design_unresolved; direct indexed witness unsupported; no full candidate ready; no execution requested",
+    "method": "Static inspection only; checked-in fixture expected outputs inspected, not executed",
+    "confidence": {
+      "source_rules": "high",
+      "satisfying_more_elaborate_eliminator_exists": "unknown",
+      "all_source_programs_impossible": "not claimed"
+    },
+    "proposed_runtime_signature": "visit(-A:Data,payload:A,kind:VisitKind<A>,continuation:Bool)->String",
+    "proposed_template_signature": "visit(~A:Data,payload:A,kind:VisitKind<A>,continuation:Bool)->String",
+    "full_semantic_body_and_callgraph": "docs/JSON_KERNEL_SOURCE_REPAIR.md additional review; duplicate nonexecutable note build/json-kernel-source-repair/trailing_witness_design.txt",
+    "runtime_columns": {
+      "0": "erased A, skipped",
+      "1": "live original raw payload, required proper piece",
+      "2": "live kind, unconstrained after payload descent",
+      "3": "live Boolean, unconstrained after payload descent"
+    },
+    "all_six_piece_paths": "same paths as complete_semantic_fold.structural_edges, but column 1 for the indexed generic signature; static only",
+    "direct_gadt_gate": {
+      "source": "bend.ts parse_book:2533 and book_valid:3836-3845",
+      "result": "Every constructor must return its family applied to its own unchanged parameter variables; no constructor-specific result targets"
+    },
+    "parametric_witness_gate": {
+      "source": "bend.ts Mat:3632-3648",
+      "result": "Nullary rows each inhabit VisitKind<A> at every A; matching a row does not refine earlier A or payload context"
+    },
+    "late_payload_match_gate": {
+      "source": "bend.ts match_flatten:2644-2649,2711-2713",
+      "result": "Earlier payload binder closes when moving to later kind; cannot match payload after that constructor column"
+    },
+    "ford_equation_emulation": {
+      "proposed_fields": [
+        "{Value == A : Data}",
+        "{List<&2,Value> == A : Data}",
+        "{List<&2,Member> == A : Data}"
+      ],
+      "declaration_newly_checked": false,
+      "evidence_support": "Existing gadt_refutation/context_rewrite_value fixtures inspected; goal-only transport does not implicitly rewrite context or preserve payload pieces"
+    },
+    "simple_payload_cast_gate": {
+      "source": "bendtt.lean Term.pos:1169-1184",
+      "result": "Computed rewrite/helper result has no proper-piece path; native erasure does not establish kernel descent"
+    },
+    "simple_transported_handler_gate": {
+      "expression_shape": "(%eq : _ -> String; concrete_handler)(payload)",
+      "ordinary_source": "bend.ts Rwt:3696-3698; Lam:3505-3506; Mat:3645-3646",
+      "ordinary_result": "Fresh handler input is not original unmatched payload column after original binders consumed; lhs stays unchanged",
+      "export_source": "safe.ts rwt_term:1339-1357",
+      "kernel_source": "bendtt.lean Term.takes:248-253,Term.live:1231-1247,Term.tree:1269-1274",
+      "kernel_result": "Emitted Rwt head does not take applied variable tags; live-handler lambda tags are none and matches do not split pieces",
+      "new_ordinary_or_kernel_result": false
+    },
+    "runtime_erased_generic": {
+      "single_definition_and_no_type_instance_cycle": true,
+      "layout_failure_observed": false,
+      "native_scope": "lay_of boxed fallback and lay_el open Array restriction inspected; no Array proposed; correctness of any future complete body remains unverified",
+      "remaining_obligation": "One checked eliminator preserving original live payload-column tags through witness-directed inspection"
+    },
+    "template_gate": {
+      "generic_body": "def_check substitutes opaque A before generic check; concrete specializations do not bypass it",
+      "source": "bend.ts def_check:3718-3729;def_inst:3758-3765",
+      "cycle": [
+        "Value instance V initially null -> List<Value> instance A -> still-null V from different instance",
+        "Value instance V initially null -> List<Member> instance O -> still-null V from different instance"
+      ],
+      "same_type_tail_self_call": "Different case; could be allowed current-instance descent if body existed",
+      "no_callbacks_needed_for_cycle": true,
+      "new_execution": false
+    },
+    "existing_failed_attempts_not_repeated": true,
+    "no_new_Bend_executions": true,
+    "no_production_test_compiler_or_runtime_edits": true,
+    "next_execution_proposed": null
+  },
+  "static_integrity_verification": {
+    "current_pins_verified": 27,
+    "initial_preserved_pins_verified": 3,
+    "initial_report_is_exact_unchanged_prefix_of_updated_report": true,
+    "all_20_initial_nonreport_pins_unchanged": true,
+    "newly_inspected_comp_ts_matches_bend_source_baseline": "79df8d9c40722ee9507a1e253f283b51025f9d6c",
+    "verification_scope": "Python byte comparison/hash assertions and read-only git show; zero Bend/translation/kernel/native invocations"
+  }
+}
