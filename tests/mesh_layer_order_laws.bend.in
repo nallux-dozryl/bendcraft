@@ -1,0 +1,108 @@
+import Base
+import ./world_mesh.bend as WM
+import ../../src/mesh_render.bend as M
+import ../../src/block_bake.bend as K
+
+# These statements import the actual prepared WM candidate and production M.
+# The 4096 bound is WM's admitted frame quad cap, not an unbounded U32 claim.
+law bounded_layer_keys_separate:
+  for +cutout:U32
+  for +solid:U32
+  for small_cutout:{U32.is_lt(cutout,4096) == True{} : Bool}
+  for small_solid:{U32.is_lt(solid,4096) == True{} : Bool}
+  {U32.is_lt(WM.layer_order(K.Cutout{},cutout),WM.layer_order(K.Solid{},solid)) == True{} : Bool}
+
+law bounded_coplanar_cutout_retains_its_complete_fragment:
+  for +distance:F32
+  for +other:F32
+  for +cutout:U32
+  for +solid:U32
+  for +source:U32
+  for +other_source:U32
+  for +color:U32
+  for +other_color:U32
+  for small_cutout:{U32.is_lt(cutout,4096) == True{} : Bool}
+  for small_solid:{U32.is_lt(solid,4096) == True{} : Bool}
+  for equal_depth:{F32.is_eq(distance,other) == True{} : Bool}
+  for not_nearer:{F32.is_lt(distance,other) == False{} : Bool}
+  {M.chosen_fragment(M.before(M.Fragment{distance,WM.layer_order(K.Cutout{},cutout),source,color},
+      M.Fragment{other,WM.layer_order(K.Solid{},solid),other_source,other_color}),
+      M.Fragment{distance,WM.layer_order(K.Cutout{},cutout),source,color},
+      M.Fragment{other,WM.layer_order(K.Solid{},solid),other_source,other_color}) ==
+    M.Fragment{distance,WM.layer_order(K.Cutout{},cutout),source,color} : M.Fragment}
+
+law strictly_nearer_fragment_overrides_every_layer_key:
+  for +layer:K.Layer
+  for +other_layer:K.Layer
+  for +count:U32
+  for +other_count:U32
+  for +distance:F32
+  for +other:F32
+  for +source:U32
+  for +other_source:U32
+  for +color:U32
+  for +other_color:U32
+  for nearer:{F32.is_lt(distance,other) == True{} : Bool}
+  {M.chosen_fragment(M.before(M.Fragment{distance,WM.layer_order(layer,count),source,color},
+      M.Fragment{other,WM.layer_order(other_layer,other_count),other_source,other_color}),
+      M.Fragment{distance,WM.layer_order(layer,count),source,color},
+      M.Fragment{other,WM.layer_order(other_layer,other_count),other_source,other_color}) ==
+    M.Fragment{distance,WM.layer_order(layer,count),source,color} : M.Fragment}
+
+law strictly_farther_fragment_preserves_the_complete_prior_best:
+  for +layer:K.Layer
+  for +other_layer:K.Layer
+  for +count:U32
+  for +other_count:U32
+  for +distance:F32
+  for +other:F32
+  for +source:U32
+  for +other_source:U32
+  for +color:U32
+  for +other_color:U32
+  for not_nearer:{F32.is_lt(distance,other) == False{} : Bool}
+  for different_depth:{F32.is_eq(distance,other) == False{} : Bool}
+  {M.chosen_fragment(M.before(M.Fragment{distance,WM.layer_order(layer,count),source,color},
+      M.Fragment{other,WM.layer_order(other_layer,other_count),other_source,other_color}),
+      M.Fragment{distance,WM.layer_order(layer,count),source,color},
+      M.Fragment{other,WM.layer_order(other_layer,other_count),other_source,other_color}) ==
+    M.Fragment{other,WM.layer_order(other_layer,other_count),other_source,other_color} : M.Fragment}
+
+law within_layer_generated_key_preference_is_retained:
+  for +layer:K.Layer
+  for +count:U32
+  for +other_count:U32
+  for +distance:F32
+  for +other:F32
+  for +source:U32
+  for +other_source:U32
+  for +color:U32
+  for +other_color:U32
+  for equal_depth:{F32.is_eq(distance,other) == True{} : Bool}
+  for not_nearer:{F32.is_lt(distance,other) == False{} : Bool}
+  for small_count:{U32.is_lt(count,4096) == True{} : Bool}
+  for small_other:{U32.is_lt(other_count,4096) == True{} : Bool}
+  for ordered:{U32.is_lt(count,other_count) == True{} : Bool}
+  {M.chosen_fragment(M.before(M.Fragment{distance,WM.layer_order(layer,count),source,color},
+      M.Fragment{other,WM.layer_order(layer,other_count),other_source,other_color}),
+      M.Fragment{distance,WM.layer_order(layer,count),source,color},
+      M.Fragment{other,WM.layer_order(layer,other_count),other_source,other_color}) ==
+    M.Fragment{distance,WM.layer_order(layer,count),source,color} : M.Fragment}
+
+law equal_generated_keys_preserve_source_index_preference:
+  for +layer:K.Layer
+  for +count:U32
+  for +distance:F32
+  for +other:F32
+  for +source:U32
+  for +other_source:U32
+  for +color:U32
+  for +other_color:U32
+  for equal_depth:{F32.is_eq(distance,other) == True{} : Bool}
+  for not_nearer:{F32.is_lt(distance,other) == False{} : Bool}
+  for ordered:{U32.is_lt(source,other_source) == True{} : Bool}
+  {M.chosen_fragment(M.before(M.Fragment{distance,WM.layer_order(layer,count),source,color},
+      M.Fragment{other,WM.layer_order(layer,count),other_source,other_color}),
+      M.Fragment{distance,WM.layer_order(layer,count),source,color},
+      M.Fragment{other,WM.layer_order(layer,count),other_source,other_color}) ==
+    M.Fragment{distance,WM.layer_order(layer,count),source,color} : M.Fragment}

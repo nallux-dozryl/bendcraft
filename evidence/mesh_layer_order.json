@@ -76,7 +76,7 @@
     "synthetic_cases": 11
   },
   "pin": "26.3",
-  "preparer_sha256": "af2607b4e94f7360d58db47cc819a7f0f10ca940bf7dad93ae8ac3866d6272c6",
+  "preparer_sha256": "fd4cb6b56e1c6db6d5c33092265307b9d77e64c938ecb7a1492047d73933c60b",
   "prior_attempts": [
     {
       "directory": "build/mesh-layer-order-001",
@@ -143,10 +143,99 @@
         "tests/mesh_layer_order.bend": "a886d802ed834ea3c5d4e6de4380d85a78e6684d228f84e198ca537cc547e52d"
       },
       "status": "source_check_failed_join_signature"
+    },
+    {
+      "directory": "build/mesh-layer-order-003",
+      "proof": null,
+      "source_checks": [
+        {
+          "command": [
+            "/Users/chuah/.bend/bin/bend",
+            "build/mesh-layer-order-003/candidate.bend",
+            "--check-only"
+          ],
+          "exit_code": 0,
+          "kind": "ordinary typing/source validation; no mathematical theorem claim",
+          "result": "ALL PROOFS CHECK"
+        },
+        {
+          "command": [
+            "/Users/chuah/.bend/bin/bend",
+            "tests/mesh_layer_order.bend",
+            "--check-only"
+          ],
+          "exit_code": 0,
+          "kind": "ordinary typing/source validation; no mathematical theorem claim",
+          "result": "ALL PROOFS CHECK"
+        }
+      ],
+      "sources": {
+        "reference/mesh_layer_order.json": "8150c2d8de61103a099afe118581e282a5617b4e431357f488169379b891c617",
+        "reference/model_semantics.json": "3cbe8aa7780f14c1b37159a885710b04680e3b6c4ffa4975b4d8297015f11e7e",
+        "src/block_bake.bend": "3611116e0ba63915d6013463c1640f83b6b80cb08e802f93be5f7eaa4d600595",
+        "src/client_render.bend": "735b643d733bd190d7ad3b6c2462773f6d8aa713eb156750dc9865ac7842b5f6",
+        "src/mesh_render.bend": "cc8c7d3cf4badf3ec76a6dfd32939ec1d4c9d856fc181fa36a45cfe268df7424",
+        "src/world_mesh.bend": "97df63c4f20c855350f254873ed05b7112015781e212f5d0b7837bd7e32c4e22",
+        "tests/mesh_layer_order.bend": "b2be8f374c2d566bb2bb816d7c5afd36d3404394c32c4a69e3b9e2044cee14a4"
+      },
+      "status": "source_checked_native_pending"
+    },
+    {
+      "directory": "build/mesh-layer-order-004",
+      "proof": {
+        "actual_composition": "private complete WM layer_order + unchanged production M.before/chosen_fragment + Base.Word/U32 arithmetic",
+        "count": 6,
+        "independent_kernel": "not_run",
+        "ordinary_source_check": "pass",
+        "roots": [
+          "bounded_layer_keys_separate",
+          "bounded_coplanar_cutout_retains_its_complete_fragment",
+          "strictly_nearer_fragment_overrides_every_layer_key",
+          "strictly_farther_fragment_preserves_the_complete_prior_best",
+          "within_layer_generated_key_preference_is_retained",
+          "equal_generated_keys_preserve_source_index_preference"
+        ]
+      },
+      "source_checks": [
+        {
+          "command": [
+            "/Users/chuah/.bend/bin/bend",
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-layer-order-004/mesh_layer_order_proof.bend",
+            "--check-only"
+          ],
+          "exit_code": 0,
+          "kind": "ordinary typing/source validation only; independent kernel not run",
+          "result": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.",
+          "seconds": 8.676480624824762,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1"
+        }
+      ],
+      "sources": {
+        "reference/mesh_layer_order.json": "8150c2d8de61103a099afe118581e282a5617b4e431357f488169379b891c617",
+        "reference/model_semantics.json": "3cbe8aa7780f14c1b37159a885710b04680e3b6c4ffa4975b4d8297015f11e7e",
+        "src/block_bake.bend": "3611116e0ba63915d6013463c1640f83b6b80cb08e802f93be5f7eaa4d600595",
+        "src/client_render.bend": "735b643d733bd190d7ad3b6c2462773f6d8aa713eb156750dc9865ac7842b5f6",
+        "src/mesh_render.bend": "cc8c7d3cf4badf3ec76a6dfd32939ec1d4c9d856fc181fa36a45cfe268df7424",
+        "src/world_mesh.bend": "97df63c4f20c855350f254873ed05b7112015781e212f5d0b7837bd7e32c4e22",
+        "tests/mesh_layer_order.bend": "b2be8f374c2d566bb2bb816d7c5afd36d3404394c32c4a69e3b9e2044cee14a4",
+        "tests/mesh_layer_order_arithmetic.bend.in": "aa3eb8c8d5756fe426d5448c19c312d0178132940a04380c3ad1a78f72d6167c",
+        "tests/mesh_layer_order_laws.bend.in": "d4c7b5fe6a35b8e26536fe86e8fd4151ad1058a880ef47c7242e1ff50f8b8b98",
+        "tests/mesh_layer_order_proof.bend.in": "987f669b7ee96843880e813eab3327da977d03bebff228c6edf4f7e5ea07f302"
+      },
+      "status": "source_checked_native_and_kernel_pending"
     }
   ],
   "private_candidate": {
-    "directory": "build/mesh-layer-order-003",
+    "directory": "build/mesh-layer-order-005",
+    "law_roots": [
+      "bounded_layer_keys_separate",
+      "bounded_coplanar_cutout_retains_its_complete_fragment",
+      "strictly_nearer_fragment_overrides_every_layer_key",
+      "strictly_farther_fragment_preserves_the_complete_prior_best",
+      "within_layer_generated_key_preference_is_retained",
+      "equal_generated_keys_preserve_source_index_preference"
+    ],
     "native_runs": 0,
     "outputs": {
       "baseline.bend": {
@@ -156,6 +245,18 @@
       "candidate.bend": {
         "bytes": 3764,
         "sha256": "3d36e1d4a90562bb63955fa1c24aa50efe2b4785c606cf5a885ac78377ceddcd"
+      },
+      "mesh_layer_order_arithmetic.bend": {
+        "bytes": 17231,
+        "sha256": "db73454f507f537a221a552c2af4dc0837c7d668b4fb9df6f47d5113da9a31a3"
+      },
+      "mesh_layer_order_laws.bend": {
+        "bytes": 4820,
+        "sha256": "105220ef8037308b230658f671cde711e0957b65475d8c2318623eb096a110ed"
+      },
+      "mesh_layer_order_proof.bend": {
+        "bytes": 9358,
+        "sha256": "3b5e933ea359b0bb6116384dcab36319cb4a90737de1de1abcb16e4961efe94e"
       },
       "world_mesh.baseline.bend": {
         "bytes": 12207,
@@ -177,9 +278,34 @@
       "src/client_render.bend": "735b643d733bd190d7ad3b6c2462773f6d8aa713eb156750dc9865ac7842b5f6",
       "src/mesh_render.bend": "cc8c7d3cf4badf3ec76a6dfd32939ec1d4c9d856fc181fa36a45cfe268df7424",
       "src/world_mesh.bend": "97df63c4f20c855350f254873ed05b7112015781e212f5d0b7837bd7e32c4e22",
-      "tests/mesh_layer_order.bend": "b2be8f374c2d566bb2bb816d7c5afd36d3404394c32c4a69e3b9e2044cee14a4"
+      "tests/mesh_layer_order.bend": "b2be8f374c2d566bb2bb816d7c5afd36d3404394c32c4a69e3b9e2044cee14a4",
+      "tests/mesh_layer_order_arithmetic.bend.in": "db73454f507f537a221a552c2af4dc0837c7d668b4fb9df6f47d5113da9a31a3",
+      "tests/mesh_layer_order_laws.bend.in": "105220ef8037308b230658f671cde711e0957b65475d8c2318623eb096a110ed",
+      "tests/mesh_layer_order_proof.bend.in": "3b5e933ea359b0bb6116384dcab36319cb4a90737de1de1abcb16e4961efe94e"
     },
     "status": "source_prepared"
+  },
+  "proof": {
+    "actual_composition": "private complete WM layer_order + unchanged production M.before/chosen_fragment + Base.Word/U32 arithmetic",
+    "arithmetic_commits": [
+      "dd0fb42fbfa9da81d12ce03773b1a0d8d587407a",
+      "2df8f5f18a6a03d44fa01d5e85f558ed95c9dd6c"
+    ],
+    "arithmetic_template_sha256": "db73454f507f537a221a552c2af4dc0837c7d668b4fb9df6f47d5113da9a31a3",
+    "count": 6,
+    "exporter_sha256": "bcbd60e725da828cdc60ee08ab43fdd10ebf92ac5e114c1932dab3ab5eb9ca99",
+    "independent_kernel": "not_run",
+    "ordinary_source_check": "pass",
+    "ordinary_source_check_seconds": 27.06311820819974,
+    "roots": [
+      "bounded_layer_keys_separate",
+      "bounded_coplanar_cutout_retains_its_complete_fragment",
+      "strictly_nearer_fragment_overrides_every_layer_key",
+      "strictly_farther_fragment_preserves_the_complete_prior_best",
+      "within_layer_generated_key_preference_is_retained",
+      "equal_generated_keys_preserve_source_index_preference"
+    ],
+    "scope": "Bounded order keys and complete Fragment selector composition over actual private WM and unchanged production M; no GPU, texture coverage, pixel, world, depth quantization, or Java frame parity claim"
   },
   "reference_sha256": "8150c2d8de61103a099afe118581e282a5617b4e431357f488169379b891c617",
   "schema": 1,
@@ -187,24 +313,17 @@
     {
       "command": [
         "/Users/chuah/.bend/bin/bend",
-        "build/mesh-layer-order-003/candidate.bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-layer-order-005/mesh_layer_order_proof.bend",
         "--check-only"
       ],
       "exit_code": 0,
-      "kind": "ordinary typing/source validation; no mathematical theorem claim",
-      "result": "ALL PROOFS CHECK"
-    },
-    {
-      "command": [
-        "/Users/chuah/.bend/bin/bend",
-        "tests/mesh_layer_order.bend",
-        "--check-only"
-      ],
-      "exit_code": 0,
-      "kind": "ordinary typing/source validation; no mathematical theorem claim",
-      "result": "ALL PROOFS CHECK"
+      "kind": "ordinary typing/source validation; independent kernel not yet run",
+      "result": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.",
+      "seconds": 27.06311820819974,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1"
     }
   ],
   "source_pins_unchanged_after_checks": true,
-  "status": "source_checked_native_pending"
+  "status": "source_checked_native_and_kernel_pending"
 }

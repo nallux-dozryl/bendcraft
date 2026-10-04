@@ -9,10 +9,10 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-WORK = ROOT / "build/mesh-layer-order-001"
 EVIDENCE = ROOT / "evidence/mesh_layer_order.json"
 REFERENCE = ROOT / "reference/mesh_layer_order.json"
 
@@ -29,7 +29,7 @@ def replace_once(text: str, before: str, after: str) -> str:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--directory", type=Path, default=Path("build/mesh-layer-order-001"))
+    parser.add_argument("--directory", type=Path, default=Path("build/mesh-layer-order-005"))
     args = parser.parse_args()
     work = (ROOT / args.directory).resolve()
     if work.parent != ROOT / "build" or not work.name.startswith("mesh-layer-order-"):
@@ -57,17 +57,24 @@ def main() -> None:
     baseline = observer.replace("import ../src/", "import ../../src/")
     variant = replace_once(baseline,
         "import ../../src/world_mesh.bend as WM", "import ./world_mesh.bend as WM")
+    templates = {f"mesh_layer_order_{kind}.bend":
+                 (ROOT / f"tests/mesh_layer_order_{kind}.bend.in").read_text()
+                 for kind in ("arithmetic", "laws", "proof")}
+    law_roots = re.findall(r"^law ([a-z0-9_]+):", templates["mesh_layer_order_laws.bend"], re.MULTILINE)
     inputs = {name: digest((ROOT / name).read_bytes()) for name in
         ("src/world_mesh.bend", "src/mesh_render.bend", "src/block_bake.bend", "src/client_render.bend",
-         "tests/mesh_layer_order.bend", "reference/model_semantics.json", "reference/mesh_layer_order.json")}
+         "tests/mesh_layer_order.bend", "tests/mesh_layer_order_arithmetic.bend.in",
+         "tests/mesh_layer_order_laws.bend.in", "tests/mesh_layer_order_proof.bend.in",
+         "reference/model_semantics.json", "reference/mesh_layer_order.json")}
     generated = {"world_mesh.baseline.bend": source,
                  "world_mesh.bend": candidate,
                  "baseline.bend": baseline,
-                 "candidate.bend": variant}
+                 "candidate.bend": variant, **templates}
     manifest = {"schema": 1, "status": "source_prepared", "sources": inputs,
                 "outputs": {name: {"bytes": len(text.encode()), "sha256": digest(text.encode())}
                             for name, text in generated.items()},
                 "production_mutations": [], "native_runs": 0, "source_checks": 0,
+                "law_roots": law_roots,
                 "recipe": "Exact source-span changes to a private WM module; production M/K/R stay imported unchanged."}
     work.mkdir(parents=True, exist_ok=True)
     prior = work / "manifest.json"
@@ -84,6 +91,9 @@ def main() -> None:
                 "preparer_sha256": digest(Path(__file__).read_bytes()),
                 "private_candidate": {"directory": str(work.relative_to(ROOT)), **manifest},
                 "observations": {"synthetic_cases": 11, "runs": 0, "compiled": False},
+                "proof": {"roots": law_roots, "count": len(law_roots),
+                          "ordinary_source_check": "pending", "independent_kernel": "not_run",
+                          "actual_composition": "private complete WM layer_order + unchanged production M.before/chosen_fragment + Base.Word/U32 arithmetic"},
                 "expected_pixels": {"solid-before-covered-cutout": {"baseline": 4294901760, "candidate": 4278255360},
                     "cutout-before-solid": {"baseline": 4278255360, "candidate": 4278255360},
                     "discarded-cutout": {"baseline": 4294901760, "candidate": 4294901760},
@@ -102,9 +112,11 @@ def main() -> None:
         if older.get("private_candidate", {}).get("directory") != str(work.relative_to(ROOT)):
             evidence["prior_attempts"].append({"directory": older.get("private_candidate", {}).get("directory", "build/mesh-layer-order-001"),
                 "status": older.get("status"), "sources": older.get("private_candidate", {}).get("sources", {}),
-                "source_checks": older.get("source_checks", [])})
+                "source_checks": older.get("source_checks", []), "proof": older.get("proof")})
         elif older.get("observations", {}).get("runs", 0):
             raise ValueError("Do not overwrite executed evidence with source preparation")
+        if "grass_overlay_alpha" in older:
+            evidence["grass_overlay_alpha"] = older["grass_overlay_alpha"]
     EVIDENCE.write_text(json.dumps(evidence, sort_keys=True, indent=2) + "\n")
     print(json.dumps({"status": evidence["status"], "source_checks": 0, "native_runs": 0,
                       "manifest": str(prior.relative_to(ROOT))}, sort_keys=True))

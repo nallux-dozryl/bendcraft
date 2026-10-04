@@ -1,0 +1,142 @@
+import Base
+import ./mesh_layer_order_laws.bend as L
+import ./mesh_layer_order_arithmetic.bend as A
+import ./world_mesh.bend as WM
+import ../../src/mesh_render.bend as M
+import ../../src/block_bake.bend as K
+
+def before_nearer(+candidate:M.Fragment,+best:M.Fragment,
+    nearer:{F32.is_lt(M.distance(candidate),M.distance(best)) == True{} : Bool}) ->
+    {M.before(candidate,best) == True{} : Bool}:
+  match candidate best:
+    case M.Fragment{distance,order,index,color} M.Fragment{other,other_order,other_index,other_color}:
+      %Equal.sym(Bool,F32.is_lt(distance,other),True{},nearer) :
+        {_ || (F32.is_eq(distance,other) && (U32.is_lt(order,other_order) ||
+          (U32.is_eq(order,other_order) && U32.is_lt(index,other_index)))) == True{} : Bool}
+      {==}
+
+def before_farther(+candidate:M.Fragment,+best:M.Fragment,
+    not_nearer:{F32.is_lt(M.distance(candidate),M.distance(best)) == False{} : Bool},
+    different:{F32.is_eq(M.distance(candidate),M.distance(best)) == False{} : Bool}) ->
+    {M.before(candidate,best) == False{} : Bool}:
+  match candidate best:
+    case M.Fragment{distance,order,index,color} M.Fragment{other,other_order,other_index,other_color}:
+      %Equal.sym(Bool,F32.is_lt(distance,other),False{},not_nearer) :
+        {_ || (F32.is_eq(distance,other) && (U32.is_lt(order,other_order) ||
+          (U32.is_eq(order,other_order) && U32.is_lt(index,other_index)))) == False{} : Bool}
+      %Equal.sym(Bool,F32.is_eq(distance,other),False{},different) :
+        {_ && (U32.is_lt(order,other_order) ||
+          (U32.is_eq(order,other_order) && U32.is_lt(index,other_index))) == False{} : Bool}
+      {==}
+
+def before_ranked(+distance:F32,+other:F32,+order:U32,+other_order:U32,+index:U32,+other_index:U32,+color:U32,+other_color:U32,
+    equal:{F32.is_eq(distance,other) == True{} : Bool},
+    not_nearer:{F32.is_lt(distance,other) == False{} : Bool},
+    ordered:{U32.is_lt(order,other_order) == True{} : Bool}) ->
+    {M.before(M.Fragment{distance,order,index,color},M.Fragment{other,other_order,other_index,other_color}) == True{} : Bool}:
+  %Equal.sym(Bool,F32.is_lt(distance,other),False{},not_nearer) :
+    {_ || (F32.is_eq(distance,other) && (U32.is_lt(order,other_order) ||
+      (U32.is_eq(order,other_order) && U32.is_lt(index,other_index)))) == True{} : Bool}
+  %Equal.sym(Bool,F32.is_eq(distance,other),True{},equal) :
+    {_ && (U32.is_lt(order,other_order) ||
+      (U32.is_eq(order,other_order) && U32.is_lt(index,other_index))) == True{} : Bool}
+  %Equal.sym(Bool,U32.is_lt(order,other_order),True{},ordered) :
+    {_ || (U32.is_eq(order,other_order) && U32.is_lt(index,other_index)) == True{} : Bool}
+  {==}
+
+def preferred(+candidate:M.Fragment,+best:M.Fragment,comparison:{M.before(candidate,best) == True{} : Bool}) ->
+    {M.chosen_fragment(M.before(candidate,best),candidate,best) == candidate : M.Fragment}:
+  match candidate best:
+    case M.Fragment{distance,order,index,color} M.Fragment{other,other_order,other_index,other_color}:
+      %Equal.sym(Bool,M.before(M.Fragment{distance,order,index,color},M.Fragment{other,other_order,other_index,other_color}),True{},comparison) :
+        {M.chosen_fragment(_,M.Fragment{distance,order,index,color},M.Fragment{other,other_order,other_index,other_color}) ==
+          M.Fragment{distance,order,index,color} : M.Fragment}
+      {==}
+
+def rejected(+candidate:M.Fragment,+best:M.Fragment,comparison:{M.before(candidate,best) == False{} : Bool}) ->
+    {M.chosen_fragment(M.before(candidate,best),candidate,best) == best : M.Fragment}:
+  match candidate best:
+    case M.Fragment{distance,order,index,color} M.Fragment{other,other_order,other_index,other_color}:
+      %Equal.sym(Bool,M.before(M.Fragment{distance,order,index,color},M.Fragment{other,other_order,other_index,other_color}),False{},comparison) :
+        {M.chosen_fragment(_,M.Fragment{distance,order,index,color},M.Fragment{other,other_order,other_index,other_color}) ==
+          M.Fragment{other,other_order,other_index,other_color} : M.Fragment}
+      {==}
+
+def word_head_self(+head:Bool) -> {Word.cmp.fin(head,head,EQ{}) == EQ{} : Cmp}:
+  match head:
+    case False{}: {==}
+    case True{}: {==}
+
+def word_self(n:Nat,+bits:Word(n)) -> {Word.cmp(n,bits,bits) == EQ{} : Cmp}:
+  match n bits:
+    case 0n WNil{}: {==}
+    case 1n+p WCon{+head,+tail}:
+      %Equal.sym(Cmp,Word.cmp(p,tail,tail),EQ{},word_self(p,tail)) :
+        {Word.cmp.fin(head,head,_) == EQ{} : Cmp}
+      word_head_self(head)
+
+def key_self_lt(+value:U32) -> {U32.is_lt(value,value) == False{} : Bool}:
+  match value:
+    case U32{+bits}:
+      %Equal.sym(Cmp,Word.cmp(32n,bits,bits),EQ{},word_self(32n,bits)) :
+        {Cmp.is_lt(_) == False{} : Bool}
+      {==}
+
+def key_self_eq(+value:U32) -> {U32.is_eq(value,value) == True{} : Bool}:
+  match value:
+    case U32{+bits}:
+      %Equal.sym(Cmp,Word.cmp(32n,bits,bits),EQ{},word_self(32n,bits)) :
+        {Cmp.is_eq(_) == True{} : Bool}
+      {==}
+
+def before_source(+distance:F32,+other:F32,+order:U32,+index:U32,+other_index:U32,+color:U32,+other_color:U32,
+    equal:{F32.is_eq(distance,other) == True{} : Bool},
+    not_nearer:{F32.is_lt(distance,other) == False{} : Bool},
+    ordered:{U32.is_lt(index,other_index) == True{} : Bool}) ->
+    {M.before(M.Fragment{distance,order,index,color},M.Fragment{other,order,other_index,other_color}) == True{} : Bool}:
+  %Equal.sym(Bool,F32.is_lt(distance,other),False{},not_nearer) :
+    {_ || (F32.is_eq(distance,other) && (U32.is_lt(order,order) ||
+      (U32.is_eq(order,order) && U32.is_lt(index,other_index)))) == True{} : Bool}
+  %Equal.sym(Bool,F32.is_eq(distance,other),True{},equal) :
+    {_ && (U32.is_lt(order,order) || (U32.is_eq(order,order) && U32.is_lt(index,other_index))) == True{} : Bool}
+  %Equal.sym(Bool,U32.is_lt(order,order),False{},key_self_lt(order)) :
+    {_ || (U32.is_eq(order,order) && U32.is_lt(index,other_index)) == True{} : Bool}
+  %Equal.sym(Bool,U32.is_eq(order,order),True{},key_self_eq(order)) :
+    {_ && U32.is_lt(index,other_index) == True{} : Bool}
+  ordered
+
+def within_layer_order(+layer:K.Layer,+count:U32,+other_count:U32,
+    small_count:{U32.is_lt(count,4096) == True{} : Bool},
+    small_other:{U32.is_lt(other_count,4096) == True{} : Bool},
+    ordered:{U32.is_lt(count,other_count) == True{} : Bool}) ->
+    {U32.is_lt(WM.layer_order(layer,count),WM.layer_order(layer,other_count)) == True{} : Bool}:
+  match layer:
+    case K.Cutout{}: ordered
+    case K.Solid{}: A.shifted_less(count,other_count,small_count,small_other,ordered)
+    case K.Translucent{}: A.shifted_less(count,other_count,small_count,small_other,ordered)
+
+def L.bounded_layer_keys_separate(cutout,solid,small_cutout,small_solid):
+  A.separated(cutout,solid,small_cutout,small_solid)
+
+def L.bounded_coplanar_cutout_retains_its_complete_fragment(distance,other,cutout,solid,source,other_source,color,other_color,small_cutout,small_solid,equal_depth,not_nearer):
+  preferred(M.Fragment{distance,WM.layer_order(K.Cutout{},cutout),source,color},
+    M.Fragment{other,WM.layer_order(K.Solid{},solid),other_source,other_color},
+    before_ranked(distance,other,WM.layer_order(K.Cutout{},cutout),WM.layer_order(K.Solid{},solid),source,other_source,color,other_color,
+      equal_depth,not_nearer,L.bounded_layer_keys_separate(cutout,solid,small_cutout,small_solid)))
+
+def L.strictly_nearer_fragment_overrides_every_layer_key(layer,other_layer,count,other_count,distance,other,source,other_source,color,other_color,nearer):
+  preferred(M.Fragment{distance,WM.layer_order(layer,count),source,color},M.Fragment{other,WM.layer_order(other_layer,other_count),other_source,other_color},
+    before_nearer(M.Fragment{distance,WM.layer_order(layer,count),source,color},M.Fragment{other,WM.layer_order(other_layer,other_count),other_source,other_color},nearer))
+
+def L.strictly_farther_fragment_preserves_the_complete_prior_best(layer,other_layer,count,other_count,distance,other,source,other_source,color,other_color,not_nearer,different_depth):
+  rejected(M.Fragment{distance,WM.layer_order(layer,count),source,color},M.Fragment{other,WM.layer_order(other_layer,other_count),other_source,other_color},
+    before_farther(M.Fragment{distance,WM.layer_order(layer,count),source,color},M.Fragment{other,WM.layer_order(other_layer,other_count),other_source,other_color},not_nearer,different_depth))
+
+def L.within_layer_generated_key_preference_is_retained(layer,count,other_count,distance,other,source,other_source,color,other_color,equal_depth,not_nearer,small_count,small_other,ordered):
+  preferred(M.Fragment{distance,WM.layer_order(layer,count),source,color},M.Fragment{other,WM.layer_order(layer,other_count),other_source,other_color},
+    before_ranked(distance,other,WM.layer_order(layer,count),WM.layer_order(layer,other_count),source,other_source,color,other_color,equal_depth,not_nearer,
+      within_layer_order(layer,count,other_count,small_count,small_other,ordered)))
+
+def L.equal_generated_keys_preserve_source_index_preference(layer,count,distance,other,source,other_source,color,other_color,equal_depth,not_nearer,ordered):
+  preferred(M.Fragment{distance,WM.layer_order(layer,count),source,color},M.Fragment{other,WM.layer_order(layer,count),other_source,other_color},
+    before_source(distance,other,WM.layer_order(layer,count),source,other_source,color,other_color,equal_depth,not_nearer,ordered))
