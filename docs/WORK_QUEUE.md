@@ -93,7 +93,8 @@ fixture is a verification instrument; none satisfies a gameplay completion gate.
    ready0ba082ff/payload7024be27;6,110pins/111imports), with 21 inert controls
    covering durable codec registration, permission errors, later-PID cleanup,
    binding restoration and early failure receipt preservation. Its independent
-   admission is pending. Preserve existing
+   admission passes77e7d715. One build-only attempt is granted on slot B with a
+   600-second child bound; no native artifact execution grant yet. Preserve existing
    phase/reference generations and verify the final consumer generation.
    Required outcome: one shared 20 Hz input/tick/save actor, ordered
    Core/common/input/travel/rotation/pose phases, exact supported metadata across
@@ -103,8 +104,8 @@ fixture is a verification instrument; none satisfies a gameplay completion gate.
 Finish in-flight slab/fall host repairs and freeze their useful evidence. Defer
 new standalone feature libraries, expanded reference inventories and peripheral
 receipt polish unless they unblock these two outcomes or fix a concrete defect.
-At most two heavy jobs may run; both slots are free while the corrected phase
-fixture's sealed R2 composite producer awaits independent admission. Foreground
+At most two heavy jobs may run; slot B owns the corrected phase fixture's one
+600-second composite build-only attempt and slot A remains free. Foreground
 validation remains pending the user's coordination;
 no duplicate request or unsolicited foreground launch.
 

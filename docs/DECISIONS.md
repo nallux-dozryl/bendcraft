@@ -76,6 +76,15 @@ binding. Unknown or erroneous cleanup rejects the lane. The frozen scenarios,
 parsers, corpus and comparisons remain exact; preserve the codec's 120-second
 run bound and two/five-second termination waits.
 
+The separate R2 wrapper passes independent admission77e7d715 with all 6,110
+file pins, 111 imports and 21 inert controls. Root syntax-tree comparison also
+confirms nineteen original units remain exact, only four orchestration units
+changed and the original comparisons remain unchanged. Grant one build-only
+attempt on slot B with a 600-second child cap and no input-drift retry. Artifact
+audit and a separate native-suite grant follow success; no old native milestone
+substitutes for the complete new generation. Cleanup retains its separate
+five-second per-group budgets and does not establish an overall wall-time cap.
+
 ## 2026-10-04: preserve producers during verifier repairs
 
 An orchestration correction does not become the original native producer.

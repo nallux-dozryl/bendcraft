@@ -104,7 +104,10 @@ pins, the same 111 imports and 21 inert controls. Its codec supervisor durably
 registers launches and retains raw/process/cleanup errors; the parent sweep
 checks every registered PID and rejects unknown cleanup. Overall success is
 published only after that sweep. The lead checked the exact syntax-tree delta;
-independent R2 admission is pending and both heavy slots remain free.
+independent R2 admission passes (77e7d715, high confidence). One build-only
+attempt is granted on slot B with a 600-second child bound; slot A remains free.
+Resulting artifact execution is not yet granted. Cleanup has separate per-group
+five-second bounds, rather than an overall suite duration claim.
 The lead rehashed all 1,693 native dependencies and the binary/receipt/manifest;
 actual Clang-used C equals the cached emitted C. Historical preparation docs
 remain frozen; current results are in the retained host3 partial evidence.
