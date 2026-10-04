@@ -1,4 +1,7 @@
 import Base
+import ./player_block_inside_stuck.bend as Inside
+import ./runtime_block_inside.bend as RBI
+import ./player_block_inside_sweep_world.bend as BIW
 import ./local_move_history.bend as MH
 import ./local_move_world.bend as LM
 import ./local_travel_history.bend as TH
@@ -34,7 +37,7 @@ import ./mouse_input.bend as MI
 type Metadata is Data:
   Metadata{local: LI.State, player: PR.Metadata, sprinting: Bool,
     pose: Pose.State, controls: PC.Controller, entity: ECT.Metadata,
-    last_error: Maybe<&2, String>, tail: List<&2, Metadata>}
+    receiver: Inside.Receiver, last_error: Maybe<&2, String>, tail: List<&2, Metadata>}
 
 type State is Type:
   State{motion: MH.State, tables: L.Tables, metadata: Metadata,
@@ -88,6 +91,7 @@ type Error is Data:
   SprintSetterMismatch{}
   TravelError{cause: TH.Error}
   FinishError{cause: P.Error}
+  BlockInsideError{cause: RBI.Error}
   RotationError{cause: Rotation.Error}
   PoseWorldError{cause: PPW.Error}
   ViewError{reason: String}
@@ -132,48 +136,56 @@ def frame_history(frame: Frame) -> H.History:
   history
 
 def local(metadata: Metadata) -> LI.State:
-  Metadata{local, player, sprinting, pose, controls, entity, error, tail} = metadata
+  Metadata{local, player, sprinting, pose, controls, entity, receiver, error, tail} = metadata
   local
 
 def player(metadata: Metadata) -> PR.Metadata:
-  Metadata{local, player, sprinting, pose, controls, entity, error, tail} = metadata
+  Metadata{local, player, sprinting, pose, controls, entity, receiver, error, tail} = metadata
   player
 
 def sprinting(metadata: Metadata) -> Bool:
-  Metadata{local, player, sprinting, pose, controls, entity, error, tail} = metadata
+  Metadata{local, player, sprinting, pose, controls, entity, receiver, error, tail} = metadata
   sprinting
 
 def pose(metadata: Metadata) -> Pose.State:
-  Metadata{local, player, sprinting, pose, controls, entity, error, tail} = metadata
+  Metadata{local, player, sprinting, pose, controls, entity, receiver, error, tail} = metadata
   pose
 
 def controls(metadata: Metadata) -> PC.Controller:
-  Metadata{local, player, sprinting, pose, controls, entity, error, tail} = metadata
+  Metadata{local, player, sprinting, pose, controls, entity, receiver, error, tail} = metadata
   controls
 
 def entity(metadata: Metadata) -> ECT.Metadata:
-  Metadata{local, player, sprinting, pose, controls, entity, error, tail} = metadata
+  Metadata{local, player, sprinting, pose, controls, entity, receiver, error, tail} = metadata
   entity
 
+def receiver(metadata: Metadata) -> Inside.Receiver:
+  Metadata{local, player, sprinting, pose, controls, entity, receiver, error, tail} = metadata
+  receiver
+
+def with_receiver(metadata: Metadata, value: Inside.Receiver) -> Metadata:
+  Metadata{local, player, sprinting, pose, controls, entity, previous, error, tail} = metadata
+  Metadata{local, player, sprinting, pose, controls, entity, value, error, tail}
+
 def with_controls(metadata: Metadata, controls: PC.Controller) -> Metadata:
-  Metadata{local, player, sprinting, pose, old, entity, error, tail} = metadata
-  Metadata{local, player, sprinting, pose, controls, entity, error, tail}
+  Metadata{local, player, sprinting, pose, old, entity, receiver, error, tail} = metadata
+  Metadata{local, player, sprinting, pose, controls, entity, receiver, error, tail}
 
 def with_entity(metadata: Metadata, entity: ECT.Metadata) -> Metadata:
-  Metadata{local, player, sprinting, pose, controls, old, error, tail} = metadata
-  Metadata{local, player, sprinting, pose, controls, entity, error, tail}
+  Metadata{local, player, sprinting, pose, controls, old, receiver, error, tail} = metadata
+  Metadata{local, player, sprinting, pose, controls, entity, receiver, error, tail}
 
 def with_local(metadata: Metadata, local: LI.State, sprinting: Bool) -> Metadata:
-  Metadata{old, player, previous_sprint, pose, controls, entity, error, tail} = metadata
-  Metadata{local, player, sprinting, pose, controls, entity, error, tail}
+  Metadata{old, player, previous_sprint, pose, controls, entity, receiver, error, tail} = metadata
+  Metadata{local, player, sprinting, pose, controls, entity, receiver, error, tail}
 
 def with_player(metadata: Metadata, player: PR.Metadata) -> Metadata:
-  Metadata{local, old, sprinting, pose, controls, entity, error, tail} = metadata
-  Metadata{local, player, sprinting, pose, controls, entity, error, tail}
+  Metadata{local, old, sprinting, pose, controls, entity, receiver, error, tail} = metadata
+  Metadata{local, player, sprinting, pose, controls, entity, receiver, error, tail}
 
 def with_pose(metadata: Metadata, pose: Pose.State) -> Metadata:
-  Metadata{local, player, sprinting, old, controls, entity, error, tail} = metadata
-  Metadata{local, player, sprinting, pose, controls, entity, error, tail}
+  Metadata{local, player, sprinting, old, controls, entity, receiver, error, tail} = metadata
+  Metadata{local, player, sprinting, pose, controls, entity, receiver, error, tail}
 
 def with_look(controls: PC.Controller, look: PL.State) -> PC.Controller:
   PC.Controller{buttons, old, mouse, options} = controls
@@ -275,6 +287,10 @@ def request_pose_fuel(request: Request) -> Nat:
 def entity_count(metadata: ECT.Metadata) -> U32:
   ECT.Metadata{o, old, invulnerable, count} = metadata
   count
+
+def entity_old_position(metadata: ECT.Metadata) -> M.Vec3:
+  ECT.Metadata{interpolation, old, invulnerable, count} = metadata
+  old
 
 def lifecycle_error(lifecycle: Lifecycle) -> Maybe<&2, Error>:
   match lifecycle:
@@ -441,6 +457,43 @@ def player_finished(motion: MH.State, tables: L.Tables, +work: Work,
       rotation_finished(install_finished_body(motion,player,work_context(work)), tables, next, work,
         Rotation.normalize(request_rotation_fuel(frame_request(work_frame(work))), Rotation.State{PR.look(controls(next)), entity_count(entity(next))}))
 
+# This closed client currently has no effect/impulse creator or mounted receiver.
+# Flying and old position are actual held observations; the remaining flags are
+# its explicit ClientLevel, alive/unremoved, normal-physics profile admission.
+def block_inside_hooks(+metadata: Metadata, context: P.Context,
+                       +request: Request) -> RBI.Hooks:
+  P.Context{travel, strength, factor, affected, mode} = context
+  RBI.Hooks{Inside.Player{P.mode_flying(mode), False{}}, Inside.ClientLevel{},
+    entity_old_position(entity(metadata)), "minecraft:overworld", False{}, False{}, True{},
+    request_movement_fuel(request), request_movement_fuel(request), []}
+
+def finished_player(transition: P.Transition) -> P.State:
+  P.Transition{player, movement, attempted, jumped} = transition
+  player
+
+def with_work_receiver(work: Work, receiver: Inside.Receiver) -> Work:
+  Work{frame, metadata, early, updates, prepared, context, tail} = work
+  Work{frame, with_receiver(metadata, receiver), early, updates, prepared, context, tail}
+
+def block_inside_finished(tables: L.Tables, +work: Work, transition: P.Transition,
+                         result: MH.State & Inside.Receiver & Result<&2, &2, RBI.Error, BIW.Observation>) -> State & Result<&2, &2, Error, Observation>:
+  (motion, receiver, status) = result
+  match status:
+    case Fail{cause}: rollback(motion, tables, work_frame(work), BlockInsideError{cause})
+    case Done{observation}: player_finished(motion, tables, with_work_receiver(work, receiver), Done{transition})
+
+# Evaluate the outer finish once and install its flying Body before callbacks.
+# Candidate metadata receives the returned receiver; Frame keeps rollback data.
+def travel_outer_finished(+work: Work, motion: MH.State, tables: L.Tables,
+                          outcome: TH.Outcome,
+                          result: Result<&2, &2, P.Error, P.Transition>) -> State & Result<&2, &2, Error, Observation>:
+  match result:
+    case Fail{cause}: rollback(motion, tables, work_frame(work), FinishError{cause})
+    case Done{+transition}:
+      block_inside_finished(tables, work, transition,
+        RBI.after_successful_travel(install_finished_body(motion, finished_player(transition), work_context(work)),
+          receiver(work_metadata(work)), block_inside_hooks(work_metadata(work), work_context(work), frame_request(work_frame(work))), outcome))
+
 # In the neutral path TH already owns this same body. Flight's outer Player
 # override must be committed into that sole owner before rotation/late pose.
 
@@ -448,7 +501,7 @@ def traveled(+work: Work, result: MH.State & L.Tables & Result<&2, &2, TH.Error,
   (motion, tables, status) = result
   match status:
     case Fail{cause}: rollback(motion, tables, work_frame(work), TravelError{cause})
-    case Done{outcome}: player_finished(motion, tables, work, P.finish_checked(work_prepared(work), work_context(work), TH.outcome_transition(outcome)))
+    case Done{+outcome}: travel_outer_finished(work, motion, tables, outcome, P.finish_checked(work_prepared(work), work_context(work), TH.outcome_transition(outcome)))
 
 def travel_started(engine: G.Engine, tables: L.Tables, +work: Work) -> State & Result<&2, &2, Error, Observation>:
   Work{+frame, +metadata, early, updates, +prepared, +context, tail} = work
@@ -457,7 +510,7 @@ def travel_started(engine: G.Engine, tables: L.Tables, +work: Work) -> State & R
     MH.State{W.attach(engine, with_body(frame_view(frame), prepared_body(prepared))), frame_support(frame), frame_minor(frame), H.State{frame_history(frame)}, []}, tables,
     TH.Request{prepared_input(prepared), travel,
       TH.Hooks{keys(local(metadata)), processed_input(prepared), False{}, LC.NeutralDry{}, True{}, True{},
-        M.Vec3{M.zero(), M.zero(), M.zero()}, False{}, False{}, True{}, True{}, request_environment(frame_request(frame)), request_movement_fuel(frame_request(frame)), []}, H.NotRequired{}, []}))
+        Inside.multiplier(receiver(metadata)), False{}, False{}, True{}, True{}, request_environment(frame_request(frame)), request_movement_fuel(frame_request(frame)), []}, H.NotRequired{}, []}))
 
 def prepared(engine: G.Engine, +frame: Frame, +decision: LI.Controls,
              context: P.Context, early: List<&2, PPW.QueryRecord>,
@@ -645,8 +698,8 @@ def canonical_pose(state: State, request: Request, scheduled: Bool, pose: Pose.S
 def canonical_metadata(motion: MH.State, tables: L.Tables, metadata: Metadata,
                        request: Request, scheduled: Bool) -> State & Result<&2, &2, Error, Observation>:
   match metadata:
-    case Metadata{local, player, sprinting, +pose, controls, entity, error, Nil{}}:
-      canonical_pose(State{motion, tables, Metadata{local, player, sprinting, pose, controls, entity, error, []}, []}, request, scheduled, pose)
+    case Metadata{local, player, sprinting, +pose, controls, entity, receiver, error, Nil{}}:
+      canonical_pose(State{motion, tables, Metadata{local, player, sprinting, pose, controls, entity, receiver, error, []}, []}, request, scheduled, pose)
     case _: (State{motion, tables, metadata, []}, Fail{NonCanonicalState{2}})
 
 def canonical_motion(state: State, request: Request, scheduled: Bool) -> State & Result<&2, &2, Error, Observation>:
@@ -1085,8 +1138,8 @@ def pre_canonical_pose(state:State,request:PrepareRequest,scheduled:Bool,pose:Po
 def pre_canonical_metadata(motion:MH.State,tables:L.Tables,metadata:Metadata,
                           request:PrepareRequest,scheduled:Bool) -> PrepareResult:
   match metadata:
-    case Metadata{local,player,sprinting,+pose,controls,entity,error,Nil{}}:
-      pre_canonical_pose(State{motion,tables,Metadata{local,player,sprinting,pose,controls,entity,error,[]},[]},request,scheduled,pose)
+    case Metadata{local,player,sprinting,+pose,controls,entity, receiver, error,Nil{}}:
+      pre_canonical_pose(State{motion,tables,Metadata{local,player,sprinting,pose,controls,entity, receiver, error,[]},[]},request,scheduled,pose)
     case _: Rejected{State{motion,tables,metadata,[]},NonCanonicalState{2}}
 
 def pre_canonical_motion(state:State,request:PrepareRequest,scheduled:Bool) -> PrepareResult:
@@ -1149,8 +1202,8 @@ def stage_shape_pose(state:State,pose:Pose.State) -> State & Maybe<&2,Error>:
 
 def stage_shape_metadata(motion:MH.State,tables:L.Tables,metadata:Metadata) -> State & Maybe<&2,Error>:
   match metadata:
-    case Metadata{local,player,sprinting,+pose,controls,entity,error,Nil{}}:
-      stage_shape_pose(State{motion,tables,Metadata{local,player,sprinting,pose,controls,entity,error,[]},[]},pose)
+    case Metadata{local,player,sprinting,+pose,controls,entity, receiver, error,Nil{}}:
+      stage_shape_pose(State{motion,tables,Metadata{local,player,sprinting,pose,controls,entity, receiver, error,[]},[]},pose)
     case _: (State{motion,tables,metadata,[]},Some{NonCanonicalState{2}})
 
 def stage_shape(state:State) -> State & Maybe<&2,Error>:
@@ -1173,7 +1226,7 @@ def pre_protocol_pose(pose:Pose.State) -> Maybe<&2,Error>:
 
 def pre_protocol_metadata(metadata:Metadata) -> Maybe<&2,Error>:
   match metadata:
-    case Metadata{local,player,sprinting,pose,controls,entity,error,Nil{}}: pre_protocol_pose(pose)
+    case Metadata{local,player,sprinting,pose,controls,entity, receiver, error,Nil{}}: pre_protocol_pose(pose)
     case _: Some{NonCanonicalState{2}}
 
 def pre_protocol_frame(frame:PreFrame) -> Maybe<&2,Error>:
@@ -1290,11 +1343,11 @@ def same_stage_diagnostic(a:Maybe<&2,String>,b:Maybe<&2,String>) -> Bool:
 
 def same_stage_metadata(a:Metadata,b:Metadata) -> Bool:
   match a b:
-    case Metadata{local,player,sprint,pose,controls,entity,error,Nil{}}
-         Metadata{ol,op,os,opo,oc,oe,oerr,Nil{}}:
+    case Metadata{local,player,sprint,pose,controls,entity, receiver, error,Nil{}}
+         Metadata{ol,op,os,opo,oc,oe,other_receiver, oerr,Nil{}}:
       same_stage_local(local,ol) && same_stage_player(player,op) && LI.same_bool(sprint,os) &&
         same_stage_pose(pose,opo) && same_stage_controller(controls,oc) &&
-        same_stage_entity(entity,oe) && same_stage_diagnostic(error,oerr)
+        same_stage_entity(entity,oe) && RBI.same_receiver(receiver,other_receiver) && same_stage_diagnostic(error,oerr)
     case _ _: False{}
 
 def same_stage_block(a:Maybe<&2,T.BlockPos>,b:Maybe<&2,T.BlockPos>) -> Bool:
@@ -1437,7 +1490,7 @@ def stage_travel_started(engine:G.Engine,candidate:W.View,tables:L.Tables,+work:
     MH.State{W.attach(engine,with_body(candidate,prepared_body(prepared))),frame_support(frame),frame_minor(frame),H.State{frame_history(frame)},[]},tables,
     TH.Request{prepared_input(prepared),travel,
       TH.Hooks{keys(local(metadata)),processed_input(prepared),False{},LC.NeutralDry{},True{},True{},
-        M.Vec3{M.zero(),M.zero(),M.zero()},False{},False{},True{},True{},request_environment(frame_request(frame)),request_movement_fuel(frame_request(frame)),[]},H.NotRequired{},[]}))
+        Inside.multiplier(receiver(metadata)),False{},False{},True{},True{},request_environment(frame_request(frame)),request_movement_fuel(frame_request(frame)),[]},H.NotRequired{},[]}))
 
 def stage_prepared(engine:G.Engine,candidate:W.View,+frame:Frame,+decision:LI.Controls,
                    context:P.Context,early:List<&2,PPW.QueryRecord>,
@@ -1560,7 +1613,7 @@ def reset_stage_traveled(+work:Work,
   (motion,tables,status) = result
   match status:
     case Fail{cause}: rollback(motion,tables,work_frame(work),reset_stage_error(cause))
-    case Done{outcome}: player_finished(motion,tables,work,
+    case Done{+outcome}: travel_outer_finished(work,motion,tables,TH.reset_outcome_travel(outcome),
       P.finish_checked(work_prepared(work),work_context(work),TH.reset_outcome_transition(outcome)))
 
 def ability_history_gate(history:H.History,flying:Bool) -> H.History:
@@ -1593,7 +1646,7 @@ def reset_stage_travel_started(engine:G.Engine,candidate:W.View,tables:L.Tables,
     MH.State{W.attach(engine,with_body(candidate,prepared_body(prepared))),frame_support(frame),frame_minor(frame),H.State{ability_history(frame_history(frame),mode)},[]},tables,
     TH.ResetRequest{prepared_input(prepared),travel,
       TH.Hooks{keys(local(metadata)),processed_input(prepared),P.mode_flying(mode),LC.NeutralDry{},True{},True{},
-        M.Vec3{M.zero(),M.zero(),M.zero()},False{},False{},True{},True{},request_environment(frame_request(frame)),request_movement_fuel(frame_request(frame)),[]},policy,[]}))
+        Inside.multiplier(receiver(metadata)),False{},False{},True{},True{},request_environment(frame_request(frame)),request_movement_fuel(frame_request(frame)),[]},policy,[]}))
 
 
 

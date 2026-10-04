@@ -1,0 +1,231 @@
+{
+  "all_original_declaration_maps_retained": true,
+  "artifact": {
+    "bytes": 4166305,
+    "file": "selected.bendtt",
+    "sha1": "5f66151b0ab99e7c25f2a4ac9b12cefa4b9cfcae",
+    "sha256": "a8cce01a1e88f5cfaf10f95e162ee8e5ac60624c5677f5b562c3e45a0e605916"
+  },
+  "checked_types_and_bodies_unchanged": true,
+  "compiler_api": [
+    {
+      "bytes": 137761,
+      "file": "bend.ts",
+      "sha1": "2105cb635e087b686b1bc5c4b6b139660eeb3db9",
+      "sha256": "7deae3693eb896f33c73867081b99d2c6f3ed3b57e77e55eb5f6260840dd0e63"
+    },
+    {
+      "bytes": 63418,
+      "file": "safe.ts",
+      "sha1": "0b72424978b2acf7eb30f53d9b01b96f267dbcac",
+      "sha256": "54cb3a534ab7cc9ee313bf6383b3948ccdcac022469b3020e00745bbfe6f7e04"
+    }
+  ],
+  "export_script": {
+    "bytes": 3841,
+    "file": "runtime_block_inside_join_proof.mjs",
+    "sha1": "86640ffe58feb2dcffc273e9f1dac9a6193b702a",
+    "sha256": "88fb10c4977ce5baba5de42d50e056c8beb6f52c6ad7d8c6e17daee389178641"
+  },
+  "folder": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/runtime-block-inside-join-proof/1791142771395833000",
+  "kernel": {
+    "bytes": 3271216,
+    "file": "bendtt",
+    "sha1": "f19dfe8aec3b3911b6c9f0acae2a54f5b05ca5f0",
+    "sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7"
+  },
+  "laws": 13,
+  "node": {
+    "bytes": 77577344,
+    "file": "node",
+    "sha1": "606616eb1de7b4974f98c95de3a88e21aaa37249",
+    "sha256": "ec307018e1e8b80d68588b01ce6e9f8f9b8f4a03412c513b0fc3ac4d0f5db799"
+  },
+  "receipts": [
+    {
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/runtime_block_inside_join_proof.bend",
+        "--check-only"
+      ],
+      "exit_code": 0,
+      "group_absent": true,
+      "pid": 32754,
+      "seconds": 11.258379,
+      "stderr": {
+        "bytes": 0,
+        "file": "ordinary.stderr",
+        "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 58,
+        "file": "ordinary.stdout",
+        "sha1": "7ac487c4af0e6a0b7df1ebae438bf1c0ffe5e478",
+        "sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1"
+      },
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+        "--experimental-transform-types",
+        "--stack-size=4096",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/runtime_block_inside_join_proof.mjs",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/runtime-block-inside-join-proof/1791142771395833000"
+      ],
+      "exit_code": 0,
+      "group_absent": true,
+      "pid": 32827,
+      "seconds": 35.799442,
+      "stderr": {
+        "bytes": 177,
+        "file": "export.stderr",
+        "sha1": "27f0f6347bd9cb00e694b1f7315ecfc92617e6b5",
+        "sha256": "1de8e27be118318cd70ba5a18bfe066bedea9916a0a4d434d5bfcbf6dd3c077f"
+      },
+      "stdout": {
+        "bytes": 1271,
+        "file": "export.stdout",
+        "sha1": "665d4e236c5da003de6a821075c041b0a056c3a5",
+        "sha256": "e4bed16fd9fe215247898953eecf4cef1de007a14447fb3e9d4b29a146c770dc"
+      },
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/env",
+        "LEAN_STACK_SIZE=4194304",
+        "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/runtime-block-inside-join-proof/1791142771395833000/selected.bendtt"
+      ],
+      "exit_code": 0,
+      "group_absent": true,
+      "pid": 32966,
+      "seconds": 0.712505,
+      "stderr": {
+        "bytes": 0,
+        "file": "independent-kernel.stderr",
+        "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 17,
+        "file": "independent-kernel.stdout",
+        "sha1": "ba8ec8289ea6f6e6fec687b636c07f05c26d0a8b",
+        "sha256": "61b73cda11b6b665b9f99f2defd3d3b57f985c865225e942a5bdaa594a503e47"
+      },
+      "timed_out": false
+    }
+  ],
+  "roots": [
+    "runtime_block_inside_join_laws:receiver_update_preserves_every_other_metadata_field",
+    "runtime_block_inside_join_laws:work_receiver_update_retains_original_complete_rollback_frame",
+    "runtime_block_inside_join_laws:callbacks_use_actual_old_position_and_precommit_selected_flying",
+    "runtime_block_inside_join_laws:callback_refusal_restores_complete_pretravel_anchor",
+    "runtime_block_inside_join_laws:outer_finish_refusal_restores_anchor_before_any_callback",
+    "runtime_block_inside_join_laws:actual_outer_finish_refusal_rolls_back_public_travel",
+    "runtime_block_inside_join_laws:actual_post_finish_callback_refusal_rolls_back_public_join",
+    "runtime_block_inside_join_laws:player_metadata_update_preserves_receiver",
+    "runtime_block_inside_join_laws:control_metadata_update_preserves_receiver",
+    "runtime_block_inside_join_laws:pose_metadata_update_preserves_receiver",
+    "runtime_block_inside_join_laws:successful_startup_restore_resets_transient_receiver_and_preserves_affine_owners",
+    "runtime_block_inside_join_laws:failed_startup_validation_retains_entire_runtime_owner_and_receiver",
+    "local_player_runtime:bundle_detour_preserves_every_owner_and_field"
+  ],
+  "scope": "Actual X Metadata/Work receiver updates and preservation through player/control/pose setters; actual selected flying mode and old-position callback inputs; outer finish and callback refusal restore full canonical pre-travel anchor, including receiver, under named actual service premises; startup success clears unsaved receiver while preserving affine owners and failed validation retains runtime; changed actual RT bundle detour law with arbitrary complete runtime owner. OS effects, whole native tick execution, general shapes/fluids and nonzero impulse persistence are outside these laws.",
+  "scope_exclusions": [],
+  "selection": {
+    "bytes": 12682,
+    "file": "selection.json",
+    "sha1": "0b07aed15bfce37eb347aaf41bb03663223820dd",
+    "sha256": "d003c8552c620299cc91e2f099903165658ef7bf9976889ccaafd6ed54cc223d"
+  },
+  "source_pins": {
+    "bytes": 10830,
+    "file": "source-pins.json",
+    "sha1": "123fad7a62a39c44d73b3e22efe729f5f86e20bb",
+    "sha256": "099c41c6c8d4dd36b9b3189eb1d3624e3c104142faf1d1ce9100998822eef9fc"
+  },
+  "status": "passed",
+  "term_pins": [
+    {
+      "checked_proof_sha256": "c30995e3cded8e18e6941b836350139aaa8ff9735b1f946fc9f03c23ca3f700b",
+      "name": "runtime_block_inside_join_laws:receiver_update_preserves_every_other_metadata_field",
+      "source_body_sha256": "57f3613c35ff11d3672bba0f87daeb7eb7176c34231877293cfa9126a0068d4c",
+      "type_sha256": "dc2f3b0200e8dd79ec7a855b5b69f91fa4a83142145480b4c3ca257d453106df"
+    },
+    {
+      "checked_proof_sha256": "b950c2ad02450a8fe3d17bc9f55f9b2d5194704c32d696116bcd92d54e66e167",
+      "name": "runtime_block_inside_join_laws:work_receiver_update_retains_original_complete_rollback_frame",
+      "source_body_sha256": "1e10a6648a5f047409b247c770d02d176d318433f296404f438d89b0f56fe332",
+      "type_sha256": "18502352f6c7f71850c0c8cbc9c77c132fb9b6c406be98d618c383d7a42253f5"
+    },
+    {
+      "checked_proof_sha256": "3f24fa3aa0343f383e4dcd2ac6fb06e5f2cc392b0154dc2a41e61d47fcfa9d9b",
+      "name": "runtime_block_inside_join_laws:callbacks_use_actual_old_position_and_precommit_selected_flying",
+      "source_body_sha256": "76c61542b60f08b27a0ad355fe0abf1b7db1c5e2ff117a3a1769b75bbaaa05f7",
+      "type_sha256": "58cf6bf859558ae8f5b1969b2734a07998b02c7cd8639f14f5f20eb0ef643bc5"
+    },
+    {
+      "checked_proof_sha256": "2a74d294743ce758e43be97363e9c9e93e6de565078fa9a8147c46300462e120",
+      "name": "runtime_block_inside_join_laws:callback_refusal_restores_complete_pretravel_anchor",
+      "source_body_sha256": "f50461d9533a62c6d994f119958c28cc90e8eff8916c0f4a40d622481aa0a363",
+      "type_sha256": "2721eff2bdd83377a2cc44276f00150fbbe4f9cd625761ef51b763ba83de1713"
+    },
+    {
+      "checked_proof_sha256": "a769488fc3d586b09561003d01dea80c14cf1e5ed207d7f08481c937833abc88",
+      "name": "runtime_block_inside_join_laws:outer_finish_refusal_restores_anchor_before_any_callback",
+      "source_body_sha256": "ba21545aed1cbb8c1a1f00d215403d692c34af5e2a6eaf370e92ed91c609d325",
+      "type_sha256": "195c0cafae8897930180ac3ad5d4dd53ca0ee1bcbcbe6ee87bcfdc6ed02125e2"
+    },
+    {
+      "checked_proof_sha256": "3d32f51bd0601bab6b479985c2fe3012f7b0e00e4bde881267028f003ada048b",
+      "name": "runtime_block_inside_join_laws:actual_outer_finish_refusal_rolls_back_public_travel",
+      "source_body_sha256": "34ef7caff6f63238ae88054e0238f02d77fef9811a12ecfb0ffffd1b3aa8c9ac",
+      "type_sha256": "7627565dca77ebb6ea5cfb3d1fe68426ed5e87e1d0d89e2d60e601897b57717a"
+    },
+    {
+      "checked_proof_sha256": "b08018176a6e106e7f5e93aec8765ffc4759bd6f052124a9aa60f0f5b8f4ed77",
+      "name": "runtime_block_inside_join_laws:actual_post_finish_callback_refusal_rolls_back_public_join",
+      "source_body_sha256": "fcb48111ff2de096b1dcf18868aa7bfc693f8cb9d8f83461b89bba13bad0a19b",
+      "type_sha256": "f0fb9af9d336bd143b733fa0880826963b0a6c69b3f3e078db57e7ce84593208"
+    },
+    {
+      "checked_proof_sha256": "e4e7dbeeecd6ba32434c59bdf078258f1b04b8db5481c42a670c224e3f0ad330",
+      "name": "runtime_block_inside_join_laws:player_metadata_update_preserves_receiver",
+      "source_body_sha256": "4902290da34987d4fe844a1bfe88233e23fb64cca892a1e069147cecb7706148",
+      "type_sha256": "0517d85314bbaf75f8c57b2f6eec3e375b1ec12429cf1757b7ac9c67260b43d2"
+    },
+    {
+      "checked_proof_sha256": "6d727714bce6288fc940093457252cd9303f6b767344fae57af0504c6bfcadef",
+      "name": "runtime_block_inside_join_laws:control_metadata_update_preserves_receiver",
+      "source_body_sha256": "de79a2d8f6f5f3fad8fca61de2940b47cbfd75aaa74b8248c229ddb52c8fafed",
+      "type_sha256": "98102a5f2aed4ac2a93e9fb776497f4cc0d7cf0c7ea6ebb3daaef3ffa189d727"
+    },
+    {
+      "checked_proof_sha256": "703b0bcc45228fec800b085624816f6e96595c5e3d4ba9c2bae7b7c7a021b313",
+      "name": "runtime_block_inside_join_laws:pose_metadata_update_preserves_receiver",
+      "source_body_sha256": "2b2f5441ef9922c751076b24e49e9c616eb73ff2e33a27dd7e8e4f6fe1187954",
+      "type_sha256": "3f76e50fd7db9fb6b708b5afc6a39a6c70957949a6cb61f328045e2d44220c20"
+    },
+    {
+      "checked_proof_sha256": "699d0344952e3c62b355089018989577920729dfd008e888211936c5772d8dd8",
+      "name": "runtime_block_inside_join_laws:successful_startup_restore_resets_transient_receiver_and_preserves_affine_owners",
+      "source_body_sha256": "0c80403c642ebd0073739a0a926ab36fc6ee4640ede99cb55a0f6bac2e4a7522",
+      "type_sha256": "00b7ddf535e4cf8c7c6327efce29c9e8a2aa4b31293216a534b0aca1b3f11240"
+    },
+    {
+      "checked_proof_sha256": "439dae1565d3bac9fc781acfdf29a928dd534772e75c43ea91ce28b9d585b8a7",
+      "name": "runtime_block_inside_join_laws:failed_startup_validation_retains_entire_runtime_owner_and_receiver",
+      "source_body_sha256": "ffb4f2c2b852f28c330323286e55f4692d5fc28b18cf27a8f6f236007b241658",
+      "type_sha256": "67bdacfb36acddd68a0e97cafc4f87c744e04703c0aa0230c17026e46cf5f191"
+    },
+    {
+      "checked_proof_sha256": "6aa90fd881478346f14e83f555bf6d7c54f63f6ed818cf5ed1ed4a26b463b85d",
+      "name": "local_player_runtime:bundle_detour_preserves_every_owner_and_field",
+      "source_body_sha256": "a956e4e5becd05772db3d7fdd306b7e0a792d4d2d274354a5a36e97417f3f2fc",
+      "type_sha256": "af583619c7d51851a6c6bd34ae8b90ca25802177e9d4fe304c954eb1d43864b4"
+    }
+  ]
+}

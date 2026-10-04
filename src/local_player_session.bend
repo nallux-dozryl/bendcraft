@@ -1,4 +1,5 @@
 import Base
+import ./player_block_inside_stuck.bend as Inside
 import ./local_player_runtime.bend as R
 import ./local_phase_runtime.bend as X
 import ./local_move_history.bend as MH
@@ -358,13 +359,13 @@ def reserve_local_player(state:State) -> State & Result<&2,&2,String,C.Capabilit
   State{player,Shell{identity,path,+highwater,limits,lease,maximum,catalog,inventory,fresh,generation}} = state
   reserved_local_peer(State{player,Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation}},P.next_peer(highwater))
 
-def block_action_executed(shell:Shell,record:PR.Record,palette:Maybe<&2,W.Palette>,region:W.Bounds,cache:Maybe<&2,W.SnapshotCache>,buttons:PI.Buttons,mouse:MI.State,options:MI.Options,error:Maybe<&2,String>,state_tail:List<&1,X.State>,motion_tail:List<&1,MH.State>,metadata_tail:List<&2,X.Metadata>,result:G.Engine & T.Tables & BI.Outcome) -> State & BI.Outcome:
+def block_action_executed(shell:Shell,record:PR.Record,palette:Maybe<&2,W.Palette>,region:W.Bounds,cache:Maybe<&2,W.SnapshotCache>,buttons:PI.Buttons,mouse:MI.State,options:MI.Options,receiver:Inside.Receiver,error:Maybe<&2,String>,state_tail:List<&1,X.State>,motion_tail:List<&1,MH.State>,metadata_tail:List<&2,X.Metadata>,result:G.Engine & T.Tables & BI.Outcome) -> State & BI.Outcome:
   (engine,tables,outcome) = result
-  (State{R.attach(engine,record,R.Transient{tables,palette,region,cache,buttons,mouse,options,error,state_tail,motion_tail,metadata_tail}),shell},outcome)
+  (State{R.attach(engine,record,R.Transient{tables,palette,region,cache,buttons,mouse,options, receiver, error,state_tail,motion_tail,metadata_tail}),shell},outcome)
 
 def block_action_detached(shell:Shell,abilities:I.Abilities,held:Inv.Slot,cap:C.Capability,sequence:Nat,button:U32,result:G.Engine & PR.Record & R.Transient) -> State & BI.Outcome:
-  (engine,+record,R.Transient{tables,palette,region,cache,buttons,mouse,options,error,state_tail,motion_tail,metadata_tail}) = result
-  block_action_executed(shell,record,palette,region,cache,buttons,mouse,options,error,state_tail,motion_tail,metadata_tail,BI.execute(engine,record,tables,abilities,held,cap,sequence,button))
+  (engine,+record,R.Transient{tables,palette,region,cache,buttons,mouse,options, receiver, error,state_tail,motion_tail,metadata_tail}) = result
+  block_action_executed(shell,record,palette,region,cache,buttons,mouse,options,receiver,error,state_tail,motion_tail,metadata_tail,BI.execute(engine,record,tables,abilities,held,cap,sequence,button))
 
 def block_action_record(abilities:I.Abilities,held:Inv.Slot,cap:C.Capability,sequence:Nat,button:U32,shell:Shell,result:X.State & Result<&2,&2,String,PR.Record>) -> State & BI.Outcome:
   (player,status) = result
@@ -528,5 +529,5 @@ def bundle_transfer_preserves_all_local_runtime_and_save_fields(state):
   match state:
     case State{X.State{MH.State{W.State{engine,body,yaw,pitch,palette,region,cache},support,minor,H.State{history},motion_tail},tables,
       X.Metadata{local,Plain.Metadata{input,jumping,delay,trigger,sync,speed,head},sprinting,pose,
-        CT.Controller{buttons,look,mouse,options},entity,error,metadata_tail},state_tail},
+        CT.Controller{buttons,look,mouse,options},entity, receiver, error,metadata_tail},state_tail},
       Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation}}: {==}

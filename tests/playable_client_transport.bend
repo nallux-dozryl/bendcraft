@@ -1,7 +1,6 @@
+# Transport-only projection of immutable local_player_session.bend.
+# Fixture, atomic, owner, startup and actual Session operation bodies are exact.
 import Base
-import ./local_player_record.bend as RecordTest
-import ./local_phase_runtime.bend as PhaseTest
-import ./local_player_runtime.bend as FacadeTest
 import ../src/local_player_session.bend as S
 import ../src/local_player_storage.bend as PS
 import ../src/local_player_record.bend as PR
@@ -499,28 +498,14 @@ def table_result(mode:String,result:Result<&2,&1,L.Error,L.Tables>) -> IO(Unit):
     case Fail{cause}: IO.die(Unit,2,"verified session sine table load failed")
     case Done{tables}: loaded(mode,tables)
 
-def facade_table_returned(tables:L.Tables) -> IO(Unit):
-  IO.print("local-session-stage-guards|complete|true")
-
-def facade_table_loaded(result:Result<&2,&1,L.Error,L.Tables>) -> IO(Unit):
-  match result:
-    case Fail{cause}: IO.die(Unit,2,"facade stage guard table")
-    case Done{tables}: IO.bind(L.Tables,Unit,FacadeTest.stage_guards(tables),facade_table_returned)
-
-def facade_cases(table:String) -> IO(Unit):
-  IO.bind(Result<&2,&1,L.Error,L.Tables>,Unit,L.Tables.load(table),facade_table_loaded)
-
 def arguments(args:List<String>) -> IO(Unit):
   match args:
-    case exe <> "record-cases" <> rest: RecordTest.batch(rest)
-    case exe <> "phase-cases" <> table <> Nil{}: PhaseTest.arguments([exe,table])
-    case exe <> "facade-cases" <> table <> Nil{}: facade_cases(table)
     case exe <> "atomic" <> path <> suffix <> payload <> Nil{}: atomic(path,suffix,payload)
     case exe <> table <> mode <> Nil{}:
       do IO<Unit>:
         result:Result<&2,&1,L.Error,L.Tables> <- L.Tables.load(table)
         table_result(mode,result)
-    case _: IO.die(Unit,2,"expected table/mode, record-cases triples, or atomic path suffix payload")
+    case _: IO.die(Unit,2,"expected table/mode or atomic path suffix payload")
 
 def main() -> IO(Unit):
   IO.bind(List<String>,Unit,IO.args(),arguments)

@@ -32,9 +32,9 @@ def empty_keys() -> PI.Buttons:
   PI.Buttons{False{},False{},False{},False{},False{},False{},False{}}
 
 def air_seed_from(seed:Old.Seed) -> Old.Seed:
-  Old.Seed{body,X.Metadata{local,player,sprint,pose,PC.Controller{buttons,look,mouse,options},entity,error,tail},support,minor,history,owned} = seed
+  Old.Seed{body,X.Metadata{local,player,sprint,pose,PC.Controller{buttons,look,mouse,options},entity, receiver, error,tail},support,minor,history,owned} = seed
   Old.Seed{air_body(),X.Metadata{local,player,False{},pose,
-    PC.Controller{empty_keys(),PL.State{Pose.float_bits(0),Pose.float_bits(0),Pose.float_bits(0),Pose.float_bits(0)},mouse,options},entity,Some{"retained-reset-anchor"},[]},
+    PC.Controller{empty_keys(),PL.State{Pose.float_bits(0),Pose.float_bits(0),Pose.float_bits(0),Pose.float_bits(0)},mouse,options},entity, receiver, Some{"retained-reset-anchor"},[]},
     SP.State{None{},False{}},LM.MinorState{False{}},H.History{F.F64{1070805811,858993459}},[]}
 
 def air_seed() -> Old.Seed:

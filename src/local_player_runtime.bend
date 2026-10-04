@@ -1,4 +1,6 @@
 import Base
+import ./runtime_block_inside.bend as RBI
+import ./player_block_inside_stuck.bend as Inside
 import ./local_phase_runtime.bend as X
 import ./local_player_record.bend as Record
 import ./player_record.bend as Saved
@@ -41,7 +43,7 @@ import ./local_player_ability_selection.bend as AS
 type Transient is Type:
   Transient{tables: L.Tables, palette: Maybe<&2, W.Palette>, region: W.Bounds,
     cache: Maybe<&2, W.SnapshotCache>, buttons: PI.Buttons, mouse: MI.State,
-    options: MI.Options, error: Maybe<&2, String>, state_tail: List<&1, X.State>,
+    options: MI.Options, receiver: Inside.Receiver, error: Maybe<&2, String>, state_tail: List<&1, X.State>,
     motion_tail: List<&1, MH.State>, metadata_tail: List<&2, X.Metadata>}
 
 # Closed neutral client policy. Numerical ApplyFacts are not transport inputs.
@@ -56,10 +58,10 @@ def detached_view(tables: L.Tables, support: SP.State, minor: LM.MinorState,
                   history: H.History, metadata: X.Metadata,
                   state_tail: List<&1, X.State>, motion_tail: List<&1, MH.State>,
                   result: G.Engine & W.View) -> G.Engine & Record.Record & Transient:
-  X.Metadata{local, player, sprinting, pose, PC.Controller{buttons, look, mouse, options}, entity, error, metadata_tail} = metadata
+  X.Metadata{local, player, sprinting, pose, PC.Controller{buttons, look, mouse, options}, entity, receiver, error, metadata_tail} = metadata
   (engine, W.View{body, yaw, pitch, palette, region, cache}) = result
   (engine, Record.Record{Saved.Record{Codec.Snapshot{PR.compose(body, player), support, yaw, pitch, "minecraft:overworld"}, look}, local, sprinting, pose, minor, history, entity},
-    Transient{tables, palette, region, cache, buttons, mouse, options, error, state_tail, motion_tail, metadata_tail})
+    Transient{tables, palette, region, cache, buttons, mouse, options, receiver, error, state_tail, motion_tail, metadata_tail})
 
 def detach(state: X.State) -> G.Engine & Record.Record & Transient:
   X.State{MH.State{world, support, minor, H.State{history}, motion_tail}, tables, metadata, state_tail} = state
@@ -67,9 +69,9 @@ def detach(state: X.State) -> G.Engine & Record.Record & Transient:
 
 def attach(engine: G.Engine, record: Record.Record, transient: Transient) -> X.State:
   Record.Record{Saved.Record{Codec.Snapshot{+player, support, yaw, pitch, dimension}, look}, local, sprinting, pose, minor, history, entity} = record
-  Transient{tables, palette, region, cache, buttons, mouse, options, error, state_tail, motion_tail, metadata_tail} = transient
+  Transient{tables, palette, region, cache, buttons, mouse, options, receiver, error, state_tail, motion_tail, metadata_tail} = transient
   X.State{MH.State{W.State{engine, PR.player_body(player), yaw, pitch, palette, region, cache}, support, minor, H.State{history}, motion_tail}, tables,
-    X.Metadata{local, PR.metadata(player), sprinting, pose, PC.Controller{buttons, look, mouse, options}, entity, error, metadata_tail}, state_tail}
+    X.Metadata{local, PR.metadata(player), sprinting, pose, PC.Controller{buttons, look, mouse, options}, entity, receiver, error, metadata_tail}, state_tail}
 
 def reattach(result: G.Engine & Record.Record & Transient) -> X.State:
   (engine, record, transient) = result
@@ -86,9 +88,9 @@ def record(state: X.State) -> X.State & Record.Record:
 def canonical(state: X.State) -> X.State & Bool:
   match state:
     case X.State{MH.State{world, support, minor, history, Nil{}}, tables,
-      X.Metadata{local, player, sprinting, pose, controls, entity, error, Nil{}}, Nil{}}:
+      X.Metadata{local, player, sprinting, pose, controls, entity, receiver, error, Nil{}}, Nil{}}:
       (X.State{MH.State{world, support, minor, history, []}, tables,
-        X.Metadata{local, player, sprinting, pose, controls, entity, error, []}, []}, True{})
+        X.Metadata{local, player, sprinting, pose, controls, entity, receiver, error, []}, []}, True{})
     case other: (other, False{})
 
 def string_result(-E: Data, -A: Data, format: E -> String, result: Result<&2, &2, E, A>) -> Result<&2, &2, String, A>:
@@ -113,8 +115,8 @@ def record_checked(state: X.State) -> X.State & Result<&2, &2, String, Record.Re
   record_canonical(canonical(state))
 
 def restored_transient(transient: Transient) -> Transient:
-  Transient{tables, palette, region, cache, buttons, mouse, options, error, owned, motion, metadata} = transient
-  Transient{tables, palette, region, cache, PI.empty(), MI.initial(), options, None{}, owned, motion, metadata}
+  Transient{tables, palette, region, cache, buttons, mouse, options, receiver, error, owned, motion, metadata} = transient
+  Transient{tables, palette, region, cache, PI.empty(), MI.initial(), options, Inside.empty(), None{}, owned, motion, metadata}
 
 def restore_detached(value: Record.Record, result: G.Engine & Record.Record & Transient) -> X.State & Result<&2, &2, String, Unit>:
   (engine, old_record, transient) = result
@@ -145,7 +147,7 @@ def fresh_taken(tables: L.Tables, result: G.Engine & W.View) -> X.State:
   X.State{MH.State{W.State{engine, body, 0.0, 0.0, palette, region, cache}, SP.State{None{}, False{}}, LM.MinorState{False{}}, H.State{H.History{F.from_u32(0)}}, []}, tables,
     X.Metadata{LI.initial(), PR.Metadata{P.Input{0.0, 0.0, 0.0}, False{}, 0, 0, False{}, 0.0, 0.0}, False{},
       Pose.State{Pose.Standing{}, L.float_bits(1070554153), []}, PC.Controller{PI.empty(), PL.State{0.0, 0.0, 0.0, 0.0}, MI.initial(), MI.default_options()},
-      ECT.Metadata{position, position, 0, 0}, None{}, []}, []}
+      ECT.Metadata{position, position, 0, 0}, Inside.empty(), None{}, []}, []}
 
 # No terrain or owner duplication; caller supplies the existing standing Body.
 def fresh(world: W.State, tables: L.Tables) -> X.State:
@@ -245,6 +247,7 @@ def error_text(error: X.Error) -> String:
     case X.SprintSetterMismatch{}: "local-sprint-setter-mismatch"
     case X.TravelError{cause}: travel_error_text(cause)
     case X.FinishError{cause}: "local-player-finish"
+    case X.BlockInsideError{cause}: "local-player-block-inside:" ++ RBI.error_text(cause)
     case X.RotationError{cause}: "local-player-rotation"
     case X.PoseWorldError{cause}: pose_world_error_text(cause)
     case X.ViewError{reason}: reason
@@ -286,8 +289,8 @@ def apply_provider(sprinting: Bool, world: W.State, support: SP.State) -> W.Stat
   apply_sample(sprinting, SW.sample_checked(world, support))
 
 def with_error(state: X.State, error: Maybe<&2, String>) -> X.State:
-  X.State{motion, tables, X.Metadata{local, player, sprinting, pose, controls, entity, old, tail}, owned} = state
-  X.State{motion, tables, X.Metadata{local, player, sprinting, pose, controls, entity, error, tail}, owned}
+  X.State{motion, tables, X.Metadata{local, player, sprinting, pose, controls, entity, receiver, old, tail}, owned} = state
+  X.State{motion, tables, X.Metadata{local, player, sprinting, pose, controls, entity, receiver, error, tail}, owned}
 
 def tick_result(result: X.State & Result<&2, &2, X.Error, X.Observation>) -> X.State:
   (state, status) = result
@@ -356,7 +359,7 @@ def selection_edge(flying:Bool,trigger:U32,ground:Bool,jump:Bool,sneak:Bool,edge
 def selection_metadata(status:I.Status,metadata:X.Metadata,decision:LI.Controls,view:W.View) -> AbilitySelection:
   I.Status{invulnerable,+mayfly,+flying,walk,fly} = status
   X.Metadata{LI.State{PI.Buttons{of,ob,ol,or,+old_jump,oh,os},om,st,oc,bx,by,ox,oy},
-    PR.Metadata{input,jumping,delay,+trigger,sync,speed,head},current_sprint,pose,controls,entity,error,tail} = metadata
+    PR.Metadata{input,jumping,delay,+trigger,sync,speed,head},current_sprint,pose,controls,entity, receiver, error,tail} = metadata
   LI.Controls{LI.State{PI.Buttons{nf,nb,nl,nr,+jump,+sneak,ns},nm,nt,nc,nx,ny,nox,noy},sprinting,updates} = decision
   W.View{M.Body{position,box,velocity,width,height,+ground,horizontal,vertical,below},yaw,pitch,palette,region,cache} = view
   selection_result(AS.select(mayfly,flying,trigger,ground,old_jump,jump,sneak))
@@ -547,7 +550,7 @@ def bundle_detour_preserves_every_owner_and_field(state):
   match state:
     case X.State{MH.State{W.State{engine,body,yaw,pitch,palette,region,cache},support,minor,H.State{history},motion_tail},tables,
       X.Metadata{local,PR.Metadata{input,jumping,delay,trigger,sync,speed,head},sprinting,pose,
-        PC.Controller{buttons,look,mouse,options},entity,error,metadata_tail},state_tail}: {==}
+        PC.Controller{buttons,look,mouse,options},entity, receiver, error,metadata_tail},state_tail}: {==}
 
 law stopped_schedule_preserves_every_owner_and_field:
   for state: X.State

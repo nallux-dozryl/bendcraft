@@ -224,8 +224,8 @@ def follow(state:S.State) -> S.State:
   follow_settings(S.generation(state))
 
 def player_step_error(player:X.State) -> X.State & Maybe<&2,String>:
-  X.State{motion,tables,X.Metadata{local,record,sprint,pose,controls,entity,+error,metadata_tail},tail} = player
-  (X.State{motion,tables,X.Metadata{local,record,sprint,pose,controls,entity,error,metadata_tail},tail},error)
+  X.State{motion,tables,X.Metadata{local,record,sprint,pose,controls,entity, receiver, +error,metadata_tail},tail} = player
+  (X.State{motion,tables,X.Metadata{local,record,sprint,pose,controls,entity, receiver, error,metadata_tail},tail},error)
 
 
 def realtime_ensured(result:S.State & Result<&2,&2,String,Unit>) -> S.State:
