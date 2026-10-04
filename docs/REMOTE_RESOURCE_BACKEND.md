@@ -35,8 +35,11 @@ Nat48 terminal number 281474976710655 is refused before increment, and a termina
 counter refuses a further Hello; neither counter wraps.
 
 Each Frame command runs the entire Pose-eye/relative-camera/raw-cell/palette/
-visibility sample in one actor operation. It performs no simulation step or
-physical input sample. Input applies one ordered whole packet through the actual
+visibility sample in one actor operation. It admits the shared frame dimensions
+before calling the actual Scene.ensure demand route, then samples the returned
+world. Demand failure forwards the actual returned saved owner and diagnostic;
+WGUnspecified keeps the existing fixture route. Frame sampling performs no
+simulation step or physical input sample. Input applies one ordered whole packet through the actual
 LocalPlayer scene. Release clears physical controls and advances the private
 sequence. These calls do not consume public peer/session sequence numbers.
 
@@ -53,6 +56,38 @@ protocol faults retain the existing close/cleanup behavior. See
 shape/item domain and Java reference evidence. The combined playable entry's
 startup owns saved-player peer reservation; original frozen fixture acceptance
 must remain explicitly distinguished from that additive startup path.
+
+The same lease now carries typed main-inventory Transfer/Acquire and complete
+MenuInspect/Open/Close/Click operations. Mutations require the actor's retained
+Player peer to be greater than zero; the private request cannot replace it.
+Transfer/Acquire independently check the main 0..35 domain. MenuClick delegates
+the actual InventoryMenu slot numbering and slot rules to the saved inventory
+owner. Ordinary movement remains available without maybuild; acquisition uses
+the owner's instabuild gate. Each admitted operation or gameplay refusal
+returns MenuReply with its actual complete persisted/equipment/craft/carried/
+result/status/revision snapshot and advances the private sequence. Lease faults
+retain Fault and socket cleanup. Unsupported recipe, equipment or click
+semantics remain explicit owner refusals/dependencies, never client-owned state.
+The current Transport check includes these actual Backend/frame routes and
+completed in 14.207 seconds with exactly 104 declared foreign/unsafe-dependent
+definitions and no syntax, type, quantity or law error. Earlier imported
+runtime/terrain errors and their substantive repairs are retained in
+[the source and proof evidence](../evidence/player-inventory-menu-wire-source-checks.json).
+Native menu/frame behavior remains part of the combined acceptance artifact.
+Five exact inline production contracts independently pass the pinned kernel
+in 0.375 seconds: complete-owner preservation for stale disconnect, rejected
+menu admission, an actual inadmissible lease/sequence premise, rejected action
+owner and an actual absent retained Player premise. They quantify the actual
+Backend.State or saved S.State, including every affine world/array and inventory
+owner; no copied state or replacement model is used. The read-only selective
+export checks the original whole book and retains all declaration tables and
+unchanged checked theorem terms. Its one excluded failed-Hello contract depends
+on Nat.show.fin/Nat.show.go mutual recursion outside the exporter's live-parameter
+scope. That sixth contract remains unverified by the independent kernel.
+Successful menus, demand correctness and FFI behavior require their separate
+contracts or boundary evidence. The independent 16 CoreEdit/BI permission and
+commit contracts are recorded separately in
+[PLAYER_BLOCK_INTERACTION.md](PLAYER_BLOCK_INTERACTION.md).
 
 Admitted calls refresh a lease of 100 actor Pulse callbacks. The timer schedules
 50 ms deadlines, including paused callbacks. Expiry releases physical controls

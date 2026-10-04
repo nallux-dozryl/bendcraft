@@ -1,0 +1,434 @@
+{
+  "status": "final-wire-fixture-source-pass; current-frame-backend-transport-source-clean104-declared-boundaries; five-of-six-exact-backend-law-roots-kernel-pass",
+  "schema": {
+    "version": 1,
+    "command_tags": {
+      "Transfer": 6,
+      "Acquire": 7,
+      "MenuInspect": 8,
+      "MenuOpen": 9,
+      "MenuClose": 10,
+      "MenuClick": 11,
+      "Select": 12
+    },
+    "reply_tag": 6,
+    "menu_reply": [
+      "version",
+      "tag",
+      "epoch",
+      "sequence",
+      "accepted",
+      "message",
+      "snapshot"
+    ],
+    "snapshot": [
+      "main36",
+      "equipment7",
+      "status5",
+      "craft4",
+      "carried",
+      "resultMaybe",
+      "opened",
+      "revisionNat48"
+    ],
+    "old_commands_and_reply_shapes": "unchanged",
+    "main_slot_validation": "structural full catalog domain, count1..99; actual registry and item limits checked by authority/presenter",
+    "transfer_acquire_domain": "main0..35",
+    "select_domain": "hotbar0..8"
+  },
+  "authority": "Backend retains actual reserved valid Player peer for mutations; wire supplies no peer or ability. Lease/epoch/exactsequence precede operation. Ordinary inventory movement does not require maybuild; acquisition uses actual instabuild. Each admitted menu operation/refusal returns current full server snapshot; accepted is success, not changed. Observer may inspect, cannot mutate selected state/items/menu. Existing Hotbar still returns Ack; additive Select returns MenuReply.",
+  "generation": "Actual shared dimension admission precedes Scene.ensure before frame samples. Block action demand runs only after actual retained Player peer and instabuild/maybuild/button admission. Generation failures forward the real returned saved owner and explicit failure; WGUnspecified preserves old fixture behavior.",
+  "prepared_finite_tests": "Independent expected JSON and complete decoded-field comparison for all new typed commands/click variants, full persisted/status/equipment/craft/carried/result/opened/revision snapshot, correlation, malformed cardinalities/components/counts and overflow; exact signed zero/NaN ability-word roundtrip. These assertions are ordinarily checked; this file does not claim native execution.",
+  "checks": [
+    {
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/resource_client_interaction_wire.bend",
+        "--check-only"
+      ],
+      "elapsed_seconds": 6.1777641251683235,
+      "exit_code": 1,
+      "timed_out": false,
+      "process_group": 60874,
+      "process_group_absent_at_audit": true,
+      "source_closure_unchanged": true,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "3ac62381f244ba2808914ee165f35d4f3a7bd49f1a045302e9469fa6a2598c1b",
+      "status": "own-forward-definition-order-error",
+      "receipt": "build/player-block-interaction-proofs/menu-wire-ordinary-1791113650366434000/receipt.json",
+      "receipt_sha256": "b921c3f1d30d8f54ff60fa4dc56b34ac0e503326715a3a701dfea69673fae5e1",
+      "source_closure_before_count": 34,
+      "source_closure_before_sha256": "e319c617e430da007a554441ae26b65c9137c0315ab74bcd826130a520002bdd",
+      "source_closure_after_count": 34,
+      "source_closure_after_sha256": "e319c617e430da007a554441ae26b65c9137c0315ab74bcd826130a520002bdd"
+    },
+    {
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/resource_client_interaction_wire.bend",
+        "--check-only"
+      ],
+      "elapsed_seconds": 10.076642332598567,
+      "exit_code": 0,
+      "timed_out": false,
+      "process_group": 60995,
+      "process_group_absent_at_audit": true,
+      "source_closure_unchanged": true,
+      "stdout_sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "all-proofs-check",
+      "receipt": "build/player-block-interaction-proofs/menu-wire-ordinary-1791113708307829000/receipt.json",
+      "receipt_sha256": "b1da9eb91d3cb78d2739a157b7b407d41abd69bcb0da0e77d3bc9cc9226d3291",
+      "source_closure_before_count": 34,
+      "source_closure_before_sha256": "28ae26d08b8abbce8805f758fd6e2767491ec667f93ac9051fd04f35d507ec95",
+      "source_closure_after_count": 34,
+      "source_closure_after_sha256": "28ae26d08b8abbce8805f758fd6e2767491ec667f93ac9051fd04f35d507ec95"
+    },
+    {
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/remote_resource_backend.bend",
+        "--check-only"
+      ],
+      "elapsed_seconds": 5.956729374825954,
+      "exit_code": 1,
+      "timed_out": false,
+      "process_group": 61154,
+      "process_group_absent_at_audit": true,
+      "source_closure_unchanged": true,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "eef30da4cb9812822e4d2c822d4ea9195701a49fb9fa0f8355be71654bb43895",
+      "status": "imported-current-Scene-Pair-inference-error",
+      "receipt": "build/player-block-interaction-proofs/menu-backend-ordinary-1791113760123993000/receipt.json",
+      "receipt_sha256": "241d00051582f37acdffd76bd9370896965cfc5dbfd68465976780f77ab67096",
+      "source_closure_before_count": 89,
+      "source_closure_before_sha256": "7ee59325bfe61ce7620caf35111537ebf474c589fbffbcff30d0749a672da759",
+      "source_closure_after_count": 89,
+      "source_closure_after_sha256": "7ee59325bfe61ce7620caf35111537ebf474c589fbffbcff30d0749a672da759"
+    },
+    {
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/remote_resource_transport.bend",
+        "--check-only"
+      ],
+      "elapsed_seconds": 6.451389458030462,
+      "exit_code": 1,
+      "timed_out": false,
+      "process_group": 61901,
+      "process_group_absent_at_audit": true,
+      "source_closure_unchanged": true,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "eef30da4cb9812822e4d2c822d4ea9195701a49fb9fa0f8355be71654bb43895",
+      "status": "imported-current-Scene-Pair-inference-error",
+      "receipt": "build/player-block-interaction-proofs/menu-transport-ordinary-1791114008836583000/receipt.json",
+      "receipt_sha256": "7d2e1222e3082f01469b2906587fe2bd3c4a5b48b3e3f12cec8ec191b484367d",
+      "source_closure_before_count": 91,
+      "source_closure_before_sha256": "06f798078c0bfa5202bc93994aa7f35baaf10e96a891950d8fb83c9a7483ffdc",
+      "source_closure_after_count": 91,
+      "source_closure_after_sha256": "06f798078c0bfa5202bc93994aa7f35baaf10e96a891950d8fb83c9a7483ffdc"
+    },
+    {
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/remote_resource_backend.bend",
+        "--check-only"
+      ],
+      "elapsed_seconds": 16.587343292310834,
+      "exit_code": 1,
+      "timed_out": false,
+      "process_group": 63353,
+      "process_group_absent_at_audit": true,
+      "source_closure_unchanged": true,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "3ae38b591a8c6130a05b02bdb8431ccae8f33c8362bf06dc0e8028631677affc",
+      "status": "declared-boundaries-only",
+      "receipt": "build/player-block-interaction-proofs/menu-backend-repaired-ordinary-1791114421421962000/receipt.json",
+      "receipt_sha256": "d6317da97bcecf71debbc91f99d56786faa492205f6ac32ace84fd17b817a6fa",
+      "declared_boundaries": 97,
+      "source_closure_before_count": 89,
+      "source_closure_before_sha256": "f958106bd90c553156a0f548fdb9156910f9ad1e8195a62bb6536c8445d46058",
+      "source_closure_after_count": 89,
+      "source_closure_after_sha256": "f958106bd90c553156a0f548fdb9156910f9ad1e8195a62bb6536c8445d46058"
+    },
+    {
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/remote_resource_transport.bend",
+        "--check-only"
+      ],
+      "elapsed_seconds": 17.598354124464095,
+      "exit_code": 1,
+      "timed_out": false,
+      "process_group": 64431,
+      "process_group_absent_at_audit": true,
+      "source_closure_unchanged": true,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "7f95ad4b69be01b47819c69eb128a50e80f07cda3c3ad467e3b46606602fda03",
+      "status": "declared-boundaries-only",
+      "declared_boundaries": 103,
+      "receipt": "build/player-block-interaction-proofs/menu-transport-repaired-ordinary-1791114826680309000/receipt.json",
+      "receipt_sha256": "768a3591c0625bf0df4b7f1300153d4c6b265a140e8a823a5df72b58b89dc80f",
+      "source_closure_before_count": 91,
+      "source_closure_before_sha256": "8f071361e9dbdcc2ae4f4cdc2e8f79bc85c7720140b3a9e7fc9adf8b03019174",
+      "source_closure_after_count": 91,
+      "source_closure_after_sha256": "8f071361e9dbdcc2ae4f4cdc2e8f79bc85c7720140b3a9e7fc9adf8b03019174"
+    },
+    {
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/resource_client_interaction_wire.bend",
+        "--check-only"
+      ],
+      "elapsed_seconds": 11.40055524930358,
+      "exit_code": 0,
+      "timed_out": false,
+      "process_group": 71598,
+      "process_group_absent_at_audit": true,
+      "source_closure_unchanged": true,
+      "stdout_sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "pure-wire-fixture-ordinary-pass",
+      "receipt": "build/player-block-interaction-proofs/menu-wire-final-ordinary-1791116472545449000/receipt.json",
+      "receipt_sha256": "7e6eb4e46867197d6cbdc8575bcf28da4dc029f815cbb82465cbaeef949dc691",
+      "source_closure_before_count": 34,
+      "source_closure_before_sha256": "cf73b4a649d81ab89212392814563418d2f36c0e05b3fa365cada3a6c697e269",
+      "source_closure_after_count": 34,
+      "source_closure_after_sha256": "cf73b4a649d81ab89212392814563418d2f36c0e05b3fa365cada3a6c697e269"
+    },
+    {
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/remote_resource_transport.bend",
+        "--check-only"
+      ],
+      "elapsed_seconds": 0.40064316615462303,
+      "exit_code": 1,
+      "timed_out": false,
+      "process_group": 71632,
+      "process_group_absent_at_audit": true,
+      "source_closure_unchanged": true,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "74ab5f22e4f8d850926af4413a3d259779244faaccb8dd30d6c84bdd52800fbd",
+      "status": "imported-player-tick-negative-literal-parse-error",
+      "receipt": "build/player-block-interaction-proofs/menu-transport-frame-final-ordinary-1791116490401279000/receipt.json",
+      "receipt_sha256": "fb7849db385f95e56c95d3c8fb97a58560038c0a10ae2183d0b7f6ffa8c38a11",
+      "source_closure_before_count": 92,
+      "source_closure_before_sha256": "4e15bd51530db96109da9347e007f3755512ecc1199cccff4b6cc64ccfb74431",
+      "source_closure_after_count": 92,
+      "source_closure_after_sha256": "4e15bd51530db96109da9347e007f3755512ecc1199cccff4b6cc64ccfb74431",
+      "diagnostic_attribution": "Raw compiler location omitted the module name. Matching Vec3 branch belongs to src/player_tick.bend; its later source repair uses L.float_bits(3212836864). Receipt source closure is unchanged for the failed attempt."
+    },
+    {
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/remote_resource_transport.bend",
+        "--check-only"
+      ],
+      "elapsed_seconds": 2.9025527918711305,
+      "exit_code": 1,
+      "timed_out": false,
+      "process_group": 74461,
+      "process_group_absent_at_audit": true,
+      "source_closure_unchanged": true,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "258036d008a141520626fa4e119aa4c2d1d2b53a5caafb95c04d5817c85c0af2",
+      "status": "imported-local-player-runtime-helper-call-parse-error",
+      "diagnostic_attribution": "src/local_player_runtime.bend new advance_status_return(~driver,...) call: expected term, observed ~. The source has a comptime driver binder; no blanket claim that ~ syntax is invalid is made.",
+      "receipt": "build/player-block-interaction-proofs/menu-transport-frame-repaired-ordinary-1791116832235299000/receipt.json",
+      "receipt_sha256": "c372793f2f6cd65533cd9c4858c0451c8883b8282949bebffb2c854e25158ec7",
+      "source_closure_before_count": 92,
+      "source_closure_before_sha256": "17e6e44c035b83b223adc8de1006a38232ca0921d6b38a1002e1773789eaa0a0",
+      "source_closure_after_count": 92,
+      "source_closure_after_sha256": "17e6e44c035b83b223adc8de1006a38232ca0921d6b38a1002e1773789eaa0a0"
+    },
+    {
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/remote_resource_transport.bend",
+        "--check-only"
+      ],
+      "elapsed_seconds": 4.593104041181505,
+      "exit_code": 1,
+      "timed_out": false,
+      "process_group": 76722,
+      "process_group_absent_at_audit": true,
+      "source_closure_unchanged": true,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "0ed3acaa284f1ee1b00f9a354ac7d4fa2d23e064a73f2afd66e17bf2d575a719",
+      "status": "imported-superflat-player-dimension-guard-binder-order-error",
+      "diagnostic_attribution": "src/superflat_player.bend initialize_supported matches later supported binder before destructuring earlier player. Terrain owner repaired it by a typed initialize_fresh player helper.",
+      "receipt": "build/player-block-interaction-proofs/menu-transport-runtime-repaired-ordinary-1791117332197676000/receipt.json",
+      "receipt_sha256": "d8cd61f1b95d26fee47df903d6edd970e74606603adc861c9cea58f9ef980397",
+      "source_closure_before_count": 92,
+      "source_closure_before_sha256": "d096cdd865ea4e742292da9fb0e643737d2a9ef5deac7d108f46737a956a055b",
+      "source_closure_after_count": 92,
+      "source_closure_after_sha256": "d096cdd865ea4e742292da9fb0e643737d2a9ef5deac7d108f46737a956a055b"
+    },
+    {
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/remote_resource_transport.bend",
+        "--check-only"
+      ],
+      "elapsed_seconds": 14.20712895784527,
+      "exit_code": 1,
+      "timed_out": false,
+      "process_group": 78614,
+      "process_group_absent_at_audit": true,
+      "source_closure_unchanged": true,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "0f791b16657eb0e0fdec25c400dbc37bb095137503c9a89b8438a37aadd5dbd5",
+      "status": "declared-boundaries-only",
+      "declared_boundaries": 104,
+      "receipt": "build/player-block-interaction-proofs/menu-transport-terrain-repaired-ordinary-1791117960108373000/receipt.json",
+      "receipt_sha256": "308c1fea2d7cd75c1b5c338c88ff8ba39eb8515dc3491f155caf945590c22d4f",
+      "source_closure_before_count": 92,
+      "source_closure_before_sha256": "d42d111737828d598a85e5d179f4f388de5ae0f78eb4b2d921c2295d3d518381",
+      "source_closure_after_count": 92,
+      "source_closure_after_sha256": "d42d111737828d598a85e5d179f4f388de5ae0f78eb4b2d921c2295d3d518381"
+    }
+  ],
+  "current_pins": {
+    "src/resource_client_wire.bend": "3ac3d62234b0b1e8078ed849927efcd8eb082cb51831f3c13c1e80a3312cb2a5",
+    "src/remote_resource_backend.bend": "262194dff1440b0833ed300c34d3f8ec4605d13dac5565f36c53d43bcebb64f2",
+    "src/remote_resource_transport.bend": "bd11afe37802fe295fd437f47efb303b2df907d9b8e841cca506ea4404b43d77",
+    "tests/resource_client_interaction_wire.bend": "8442be1368f02ed6b3a72f366d58323d0832844fb82e0166217adb704761e2f6"
+  },
+  "native_menu_execution": false,
+  "scope": "Current source checks of actual wire/service/frame consumers; declared104 foreign boundaries are not mathematical or native passes. Five exact inline Backend contracts independently certified; sixth Hello law remains unsupported by Nat.show mutual-recursion exporter scope. All16 separate BI/CoreEdit contracts remain independently certified in player-block-interaction-proofs.json. Native menu/backend/frame integration is not claimed here.",
+  "confidence": "high for captured current source results and exact five included kernel contracts; native service/menu/frame behavior remains pending",
+  "source_receipts": "Each referenced receipt retains the complete imported source closure before/after, process-group cleanup audit, exact argv, and raw-output hashes. The tracked summary records closure cardinality/digests and stability rather than duplicating the entire graph.",
+  "service_proofs": {
+    "target": "src/remote_resource_backend.bend",
+    "attempted_roots": [
+      "rejected_hello_preserves_complete_actor",
+      "stale_disconnect_preserves_complete_actor",
+      "rejected_menu_mutation_preserves_complete_actor",
+      "inadmissible_menu_call_preserves_complete_actor",
+      "rejected_action_owner_preserves_saved_session",
+      "unauthorized_action_preserves_saved_session"
+    ],
+    "independently_certified_roots": [
+      "stale_disconnect_preserves_complete_actor",
+      "rejected_menu_mutation_preserves_complete_actor",
+      "inadmissible_menu_call_preserves_complete_actor",
+      "rejected_action_owner_preserves_saved_session",
+      "unauthorized_action_preserves_saved_session"
+    ],
+    "excluded_roots": [
+      "rejected_hello_preserves_complete_actor"
+    ],
+    "exclusions": [
+      "- rejected_hello_preserves_complete_actor: names hello_checked, out of scope: a mutual recursion through Nat.show.fin, Nat.show.go that no live parameter of Nat.show.fin leads\n"
+    ],
+    "scope": "Complete actual Backend.State and S.State owners, including affine world/arrays, lease, inventory and all saved/session fields. Quantified failed lease/sequence and absent retained Player authority; no copied state, synthetic model, axioms or unsafe proof. Successful operations, rendering, FFI and general Hello success are outside these statements.",
+    "selection": "Only book.order restricted to exact six actual roots after checking the original whole book; all original tlds/ctrs/tmps retained and original type, source-body and checked-proof terms unchanged. Exporter propagates exclusions transitively; five included roots have no excluded dependency. Exact exported IR is checked without pruning, declaration modification or replacing the excluded Hello proof.",
+    "original_root_count": 5713,
+    "term_pins": [
+      {
+        "name": "rejected_hello_preserves_complete_actor",
+        "type_sha256": "146874b3ad21ed9f27719dcf3bfbcac95994423cf557e3b5e99102f95f0a1924",
+        "checked_proof_sha256": "3f9678cf8752301e0868ea67922126dbb018f9f521d3004490c3c920920b33a0",
+        "source_body_sha256": "7d97f2f5ad58afcabb89d2cedd3ad58d8633362e769c6bf752079f317dde49d9"
+      },
+      {
+        "name": "stale_disconnect_preserves_complete_actor",
+        "type_sha256": "5cf8b61cd0c560d5404a0ad457f1742e40f57461b4b8cbd483de8440d7626354",
+        "checked_proof_sha256": "562b0272ec489ea8643aeef80bd28ea3e3116e3e8c0d4e227db43148f47765cb",
+        "source_body_sha256": "7d97f2f5ad58afcabb89d2cedd3ad58d8633362e769c6bf752079f317dde49d9"
+      },
+      {
+        "name": "rejected_menu_mutation_preserves_complete_actor",
+        "type_sha256": "c028d84f0a3e7a340d5b1b9902a5bbee304cfc278000038a8b015a52860a13ce",
+        "checked_proof_sha256": "6f1ebdf1cb123610e82fb76d80e29e5788bdf54daf3f703a76bbafa3cb488c2e",
+        "source_body_sha256": "226689ef40fe1336803ae30d266ca45530c6507d9404bcb5868105e8721935b5"
+      },
+      {
+        "name": "inadmissible_menu_call_preserves_complete_actor",
+        "type_sha256": "c3f4e3c1eb5583c64a9b37bfbae593d62275bd2377034288a3769e020cabc831",
+        "checked_proof_sha256": "4975e5736ac75d313292b525ec493ba1d9e98c70c059c7bc1491994b38388946",
+        "source_body_sha256": "74c9696045d1d9034ac4c64f8675c31340ffa78c20703d34504c07237e2406b0"
+      },
+      {
+        "name": "rejected_action_owner_preserves_saved_session",
+        "type_sha256": "ce4b916e1264421ec147548a6a00b665cfe3245146a2918545183f1f6aab7fa0",
+        "checked_proof_sha256": "797ec378135a7d8135c1e7e1ded8e8fe2d9edc9db101f7114c72c6d62b30b679",
+        "source_body_sha256": "44c60299dec7ae53d8fd79f09db2102eeff8e28e5acf4313528aa191ffba485b"
+      },
+      {
+        "name": "unauthorized_action_preserves_saved_session",
+        "type_sha256": "c0bd93be21300959a99d031fb01b1593dd8c3ff21bc8836f91b79c572a3f640a",
+        "checked_proof_sha256": "9d71db435d9a231874c51eda3dcb3bcc9f71ba0c6c7276d40f2dafa32899748f",
+        "source_body_sha256": "fd4e8d01ac9b62e3a45585d7109bf0513652d5b669ac35e9d0e18956a2559233"
+      }
+    ],
+    "checked_types_and_bodies_unchanged": true,
+    "all_original_tlds_ctrs_tmps_retained": true,
+    "ordinary_source_api_check_passed": true,
+    "source_closure_count": 95,
+    "source_closure_sha256": "9568b39258ed23a7e11244acc0fe855337469bd15c10974372a51e9835dc8ebe",
+    "source_closure_unchanged_at_export": true,
+    "source_closure_unchanged_at_kernel": true,
+    "export": {
+      "elapsed_seconds": 11.836206750012934,
+      "exit_code": 2,
+      "timed_out": false,
+      "process_group": 78854,
+      "process_group_absent_at_audit": true,
+      "stdout_sha256": "6a0a87d243f36c28f06be07b30898a1706e3b7be02d88d390e2fe3d002beee93",
+      "stderr_sha256": "55b8151c35a0900e2a2ead315cabe928d8b84ea6532acdeb22abfd4340275485"
+    },
+    "export_command": "node --stack-size=4096 --max-old-space-size=4096 --experimental-transform-types --input-type=module --eval <exact executed-inline-source.mjs>",
+    "kernel": {
+      "argv": [
+        "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-interaction-proofs/service-selective-1791115951722055000/selected.bendtt"
+      ],
+      "elapsed_seconds": 0.3749584583565593,
+      "exit_code": 0,
+      "timed_out": false,
+      "process_group": 79687,
+      "process_group_absent_at_audit": true,
+      "stdout_sha256": "61b73cda11b6b665b9f99f2defd3d3b57f985c865225e942a5bdaa594a503e47",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "translated_sha256": "e8080ea3ff6130d0c8c0ce08105fb7d3bc5ee813b2e84891fe1c2cc57cc2ce5d",
+    "translated_bytes": 2336818,
+    "kernel_sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7",
+    "translated_unchanged": true,
+    "kernel_unchanged": true,
+    "compiler_api_pins": {
+      "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/base.bend": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+      "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/bend.ts": "7deae3693eb896f33c73867081b99d2c6f3ed3b57e77e55eb5f6260840dd0e63",
+      "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/safe.ts": "54cb3a534ab7cc9ee313bf6383b3948ccdcac022469b3020e00745bbfe6f7e04"
+    },
+    "raw_receipts": {
+      "build/player-block-interaction-proofs/service-selective-1791115951722055000/receipt.json": "7f18d52e7d304d8bbf3b397850202d8a68b4931fac38ab3b1313636d99ef6a2a",
+      "build/player-block-interaction-proofs/service-selective-1791115951722055000/selection.json": "c179ca275b6e21c5fc928b6385ddfdfd3b6ecc972a9bc221349dde7050c6d6e3",
+      "build/player-block-interaction-proofs/service-selective-1791115951722055000/scope.json": "c87a98c2c2fe87fcc69f6713f1843fd8a96567a2675c107a63f99bcaff013b2f",
+      "build/player-block-interaction-proofs/service-selective-1791115951722055000/retained-root-scope.json": "824a6f43c8a7c1e5afa9e674a3e52d94f83ac77420fcf74fc7d6f2d05cedc69e",
+      "build/player-block-interaction-proofs/service-selective-1791115951722055000/executed-inline-source.mjs": "0c1fc32cca5a6001ce79c61e6ae09e66308845648f72a8bdad4921756d5e87a9",
+      "build/player-block-interaction-proofs/service-selective-1791115951722055000/export.stdout": "6a0a87d243f36c28f06be07b30898a1706e3b7be02d88d390e2fe3d002beee93",
+      "build/player-block-interaction-proofs/service-selective-1791115951722055000/export.stderr": "55b8151c35a0900e2a2ead315cabe928d8b84ea6532acdeb22abfd4340275485",
+      "build/player-block-interaction-proofs/service-selective-1791115951722055000/kernel.stdout": "61b73cda11b6b665b9f99f2defd3d3b57f985c865225e942a5bdaa594a503e47",
+      "build/player-block-interaction-proofs/service-selective-1791115951722055000/kernel.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/player-block-interaction-proofs/service-selective-1791115951722055000/kernel.receipt.json": "cbfc71acca2bac96c6fb7742a5c243ce57ae01a939dae310b8bc173fe15397bc"
+    },
+    "backend_sha256": "262194dff1440b0833ed300c34d3f8ec4605d13dac5565f36c53d43bcebb64f2",
+    "read_only_export_script": "import * as B from \"file:///Users/chuah/Documents/ChatGPT/bendex/bend/bend2/bend.ts\";\nimport * as Safe from \"file:///Users/chuah/Documents/ChatGPT/bendex/bend/bend2/safe.ts\";\nimport * as fs from \"node:fs\";\nimport * as crypto from \"node:crypto\";\nconst entry=\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/remote_resource_backend.bend\";\nconst dir=\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-interaction-proofs/service-selective-1791115951722055000\";\nconst roots=[\"rejected_hello_preserves_complete_actor\", \"stale_disconnect_preserves_complete_actor\", \"rejected_menu_mutation_preserves_complete_actor\", \"inadmissible_menu_call_preserves_complete_actor\", \"rejected_action_owner_preserves_saved_session\", \"unauthorized_action_preserves_saved_session\"];\nconst sha=x=>crypto.createHash(\"sha256\").update(x).digest(\"hex\");\nconst book=B.book_nil(),seen=new Map();\nconst phase=name=>console.log(JSON.stringify({phase:name,memory:process.memoryUsage()}));\nphase(\"before-book-load\");\nawait B.book_load(book,entry,\"\",seen);\nphase(\"after-book-load\");\nphase(\"before-book-valid\");\nB.book_valid(book);\nphase(\"after-book-valid\");\nif(book.hols!==0)throw Error(\"Open proof holes\");\nconst originalOrder=[...book.order],originalTlds=book.tlds,originalCtrs=book.ctrs,originalTmps=book.tmps;\nconst originals=Object.entries(book.tlds).map(([k,t])=>[k,t,t.T,t.$===\"Def\"?t.v:null,t.$===\"Def\"?t.e:null]);\nconst termPins=roots.map(k=>{const t=book.tlds[k];if(t?.$!==\"Def\"||!t.e||!t.v||t.u||t.i)throw Error(\"Missing checked pure proof \"+k);return {name:k,type_sha256:sha(B.term_key(B.term_lower(t.T))),checked_proof_sha256:sha(B.term_key(t.e)),source_body_sha256:sha(B.term_key(B.term_lower(t.v)))};});\nbook.order=originalOrder.filter((k,i)=>roots.includes(k)&&originalOrder.lastIndexOf(k)===i);\nif(book.order.length!==6||book.tlds!==originalTlds||book.ctrs!==originalCtrs||book.tmps!==originalTmps)throw Error(\"Selection changed declaration ownership\");\nfor(const [k,t,T,v,e] of originals)if(book.tlds[k]!==t||t.T!==T||(t.$===\"Def\"&&(t.v!==v||t.e!==e)))throw Error(\"Selection altered term \"+k);\nconst manifest={entry,roots,original_root_count:originalOrder.length,selected_root_count:book.order.length,checked_types_and_bodies_unchanged:true,all_original_tlds_ctrs_tmps_retained:true,term_pins:termPins,source_files:[...seen.keys()],ordinary_source_api_check_passed:true};\nfs.writeFileSync(dir+\"/selection.json\",JSON.stringify(manifest,null,2)+\"\\n\");\nconsole.log(JSON.stringify({phase:\"checked-root-selection\",roots,original_root_count:originalOrder.length}));\nconst exclusions=Safe.safe_emit(book,dir+\"/selected.bendtt\");\nfs.writeFileSync(dir+\"/scope.json\",JSON.stringify({exclusions},null,2)+\"\\n\");\nconsole.log(JSON.stringify({phase:\"export-complete\",bytes:fs.statSync(dir+\"/selected.bendtt\").size,exclusions}));\nif(exclusions.length)process.exitCode=2;\n",
+    "reproduction": "Create the script's export directory, run this exact read_only_export_script using the recorded Node argv, then require the retained-root exclusion audit before invoking the pinned kernel on the emitted selected.bendtt. Source/API/IR/kernel pins qualify the captured generation; a future source change requires a new check. The ordinary wire and transport checks are the exact --check-only argv in checks."
+  },
+  "checked_dependency_pins": {
+    "src/local_player_session.bend": "b449dfc37a4c61cf67ba426abd9a8b9f77eb5082316836372e9b42470988eaca",
+    "src/local_player_scene.bend": "483e9dc5ab8017fdae6dbfb46da81a10e776dde6e8243d59df72b07f3fe78c41",
+    "src/local_player_runtime.bend": "b216c9bb28b47218767f0f8c75065e49b0a073ab723df949d51a4a5dbd44cdf2",
+    "src/player_inventory.bend": "c006db7b6a6dbdccbc1400120091518b37751d73745af374977d3a8f7c290e65",
+    "src/player_inventory_codec.bend": "6b05c03de506ef290f8ec0ddcc758b8bc7760304c5dae5d71530452a23950104",
+    "src/superflat_player.bend": "74cd49e7d3cf6fec67d7b2bc2808decc7a153be0b257ba7a83f9e6396562bee2",
+    "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+    "src/player_tick.bend": "07a35c96b0887bc7c600340835ec29bfdea98cdbfb283af67826f93ec57dba9d",
+    "src/player_block_interaction.bend": "736dc12b48a4689bc105014e09a5b636bfd03bbb2dabdb150a916b54fe8292fd",
+    "src/player_core_edit.bend": "ced4c368ae781a1543fff9bebfe661ba99efe01a71fd1bb95e188bf62f1dc449"
+  }
+}

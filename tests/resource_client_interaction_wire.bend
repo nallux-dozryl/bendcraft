@@ -73,6 +73,24 @@ def packet_same(expected:CC.Packet,actual:CC.Packet) -> Bool:
   CC.Packet{other,ofocused,ocaptured} = actual
   actions_same(actions,other) && bool_same(focused,ofocused) && bool_same(captured,ocaptured)
 
+def mode_same(expected:Inv.TransferMode,actual:Inv.TransferMode) -> Bool:
+  match expected actual:
+    case Inv.TransferAny{} Inv.TransferAny{}: True{}
+    case Inv.TransferSplit{} Inv.TransferSplit{}: True{}
+    case Inv.TransferMerge{} Inv.TransferMerge{}: True{}
+    case _ _: False{}
+
+def click_same(expected:I.Click,actual:I.Click) -> Bool:
+  match expected actual:
+    case I.Pickup{button} I.Pickup{other}: U32.is_eq(button,other)
+    case I.QuickMove{} I.QuickMove{}: True{}
+    case I.Swap{hotbar} I.Swap{other}: U32.is_eq(hotbar,other)
+    case I.Clone{} I.Clone{}: True{}
+    case I.Throw{all} I.Throw{other}: bool_same(all,other)
+    case I.QuickCraft{phase,button} I.QuickCraft{other,which}: U32.is_eq(phase,other) && U32.is_eq(button,which)
+    case I.PickupAll{} I.PickupAll{}: True{}
+    case _ _: False{}
+
 def command_same(expected:Wire.Command,actual:Wire.Command) -> Bool:
   match expected actual:
     case Wire.Frame{width,height} Wire.Frame{ow,oh}: U32.is_eq(width,ow) && U32.is_eq(height,oh)
@@ -81,6 +99,15 @@ def command_same(expected:Wire.Command,actual:Wire.Command) -> Bool:
     case Wire.Action{button} Wire.Action{other}: U32.is_eq(button,other)
     case Wire.Hotbar{index} Wire.Hotbar{other}: U32.is_eq(index,other)
     case Wire.Inventory{} Wire.Inventory{}: True{}
+    case Wire.Transfer{source,destination,count,mode} Wire.Transfer{other,target,amount,kind}:
+      U32.is_eq(source,other) && U32.is_eq(destination,target) && U32.is_eq(count,amount) && mode_same(mode,kind)
+    case Wire.Acquire{index,Inv.ItemKey{id,components},count} Wire.Acquire{other,Inv.ItemKey{name,payload},amount}:
+      U32.is_eq(index,other) && String.eq(id,name) && String.eq(components,payload) && U32.is_eq(count,amount)
+    case Wire.MenuInspect{} Wire.MenuInspect{}: True{}
+    case Wire.MenuOpen{} Wire.MenuOpen{}: True{}
+    case Wire.MenuClose{} Wire.MenuClose{}: True{}
+    case Wire.MenuClick{index,click} Wire.MenuClick{other,value}: U32.is_eq(index,other) && click_same(click,value)
+    case Wire.Select{index} Wire.Select{other}: U32.is_eq(index,other)
     case _ _: False{}
 
 def request_same(expected:Wire.Request,result:Result<&2,&2,String,Wire.Request>) -> Bool:
@@ -107,6 +134,25 @@ def snapshot_same(expected:I.Snapshot,actual:I.Snapshot) -> Bool:
   I.Snapshot{selected,slots,I.Abilities{instabuild,maybuild}} = expected
   I.Snapshot{other,items,I.Abilities{creative,build}} = actual
   U32.is_eq(selected,other) && slots_same(slots,items) && bool_same(instabuild,creative) && bool_same(maybuild,build)
+
+def result_same(expected:Maybe<&2,Inv.Slot>,actual:Maybe<&2,Inv.Slot>) -> Bool:
+  match expected actual:
+    case None{} None{}: True{}
+    case Some{slot} Some{other}: slot_same(slot,other)
+    case _ _: False{}
+
+def status_same(expected:I.Status,actual:I.Status) -> Bool:
+  I.Status{invulnerable,mayfly,flying,walking_speed,flying_speed} = expected
+  I.Status{immune,flight,airborne,walk,fly} = actual
+  bool_same(invulnerable,immune) && bool_same(mayfly,flight) && bool_same(flying,airborne) &&
+    U32.is_eq(walking_speed,walk) && U32.is_eq(flying_speed,fly)
+
+def menu_same(expected:I.MenuSnapshot,actual:I.MenuSnapshot) -> Bool:
+  I.MenuSnapshot{I.Persisted{main,equipment,status},craft,carried,result,opened,revision} = expected
+  I.MenuSnapshot{I.Persisted{other,gear,abilities},temporary,cursor,output,open,rev} = actual
+  snapshot_same(main,other) && slots_same(equipment,gear) && status_same(status,abilities) &&
+    slots_same(craft,temporary) && slot_same(carried,cursor) && result_same(result,output) &&
+    bool_same(opened,open) && Nat.is_eq(revision,rev)
 
 def frame_fixture() -> V.Sample:
   V.Sample{R.Snapshot{17n,19n,[],R.Camera{0.0,0.0,0.0,0.0,0.0}},[],[],
@@ -137,6 +183,8 @@ def reply_same(expected:Wire.Reply,result:Result<&2,&2,String,Wire.Reply>) -> Bo
       String.eq(epoch,other) && Nat.is_eq(sequence,number) && snapshot_same(snapshot,value)
     case Wire.ActionReply{epoch,sequence,changed,message} Done{Wire.ActionReply{other,number,value,diagnostic}}:
       String.eq(epoch,other) && Nat.is_eq(sequence,number) && bool_same(changed,value) && String.eq(message,diagnostic)
+    case Wire.MenuReply{epoch,sequence,accepted,message,snapshot} Done{Wire.MenuReply{other,number,value,diagnostic,body}}:
+      String.eq(epoch,other) && Nat.is_eq(sequence,number) && bool_same(accepted,value) && String.eq(message,diagnostic) && menu_same(snapshot,body)
     case _ _: False{}
 
 def request_probe(+id:String,+expected:Wire.Request,+json:String) -> IO(Unit):
@@ -229,8 +277,11 @@ def inventory_fixture() -> I.Snapshot:
     Inv.InvStack{Inv.ItemKey{"minecraft:dirt",""},1} <> Inv.InvStack{Inv.ItemKey{"minecraft:oak_planks",""},32} <> empty_slots(32n),
     I.Abilities{True{},False{}}}
 
+def inventory_fixture_body() -> String:
+  "[8,true,false,[[1,\"minecraft:stone\",\"\",64],[0],[1,\"minecraft:dirt\",\"\",1],[1,\"minecraft:oak_planks\",\"\",32]," ++ empty_slot_body(32n) ++ "]]"
+
 def inventory_fixture_json() -> String:
-  "[1,4,\"wire-epoch\",23,[8,true,false,[[1,\"minecraft:stone\",\"\",64],[0],[1,\"minecraft:dirt\",\"\",1],[1,\"minecraft:oak_planks\",\"\",32]," ++ empty_slot_body(32n) ++ "]]]"
+  "[1,4,\"wire-epoch\",23," ++ inventory_fixture_body() ++ "]"
 
 def empty_inventory_json(selected:String,count:Nat) -> String:
   "[1,4,\"wire-epoch\",23,[" ++ selected ++ ",false,true,[" ++ empty_slot_body(count) ++ "]]]"
@@ -261,18 +312,114 @@ def inventory_replies() -> IO(Unit):
     invalid_inventory_probe("inventory 35 slots",I.Snapshot{0,empty_slots(35n),I.Abilities{False{},True{}}},empty_inventory_json("0",35n))
     invalid_inventory_probe("inventory 37 slots",I.Snapshot{0,empty_slots(37n),I.Abilities{False{},True{}}},empty_inventory_json("0",37n))
     invalid_inventory_probe("inventory selected 9",I.Snapshot{9,empty_slots(36n),I.Abilities{False{},True{}}},empty_inventory_json("9",36n))
-    invalid_inventory_probe("unsupported item",I.Snapshot{0,Inv.InvStack{Inv.ItemKey{"minecraft:bedrock",""},1} <> empty_slots(35n),I.Abilities{False{},True{}}},
+    reply_probe("full registry main item",Wire.InventoryReply{"wire-epoch",23n,I.Snapshot{0,Inv.InvStack{Inv.ItemKey{"minecraft:bedrock",""},1} <> empty_slots(35n),I.Abilities{False{},True{}}}},
       stack_inventory_json("[1,\"minecraft:bedrock\",\"\",1]"))
+    invalid_inventory_probe("invalid identifier",I.Snapshot{0,Inv.InvStack{Inv.ItemKey{"Minecraft:Stone",""},1} <> empty_slots(35n),I.Abilities{False{},True{}}},
+      stack_inventory_json("[1,\"Minecraft:Stone\",\"\",1]"))
     invalid_inventory_probe("modified components",I.Snapshot{0,Inv.InvStack{Inv.ItemKey{"minecraft:stone","{}"},1} <> empty_slots(35n),I.Abilities{False{},True{}}},
       stack_inventory_json("[1,\"minecraft:stone\",\"{}\",1]"))
     invalid_inventory_probe("stack count 0",I.Snapshot{0,Inv.InvStack{Inv.ItemKey{"minecraft:stone",""},0} <> empty_slots(35n),I.Abilities{False{},True{}}},
       stack_inventory_json("[1,\"minecraft:stone\",\"\",0]"))
-    invalid_inventory_probe("stack count 65",I.Snapshot{0,Inv.InvStack{Inv.ItemKey{"minecraft:stone",""},65} <> empty_slots(35n),I.Abilities{False{},True{}}},
-      stack_inventory_json("[1,\"minecraft:stone\",\"\",65]"))
+    reply_probe("structural count 99 boundary",Wire.InventoryReply{"wire-epoch",23n,I.Snapshot{0,Inv.InvStack{Inv.ItemKey{"minecraft:stone",""},99} <> empty_slots(35n),I.Abilities{False{},True{}}}},
+      stack_inventory_json("[1,\"minecraft:stone\",\"\",99]"))
+    invalid_inventory_probe("structural count 100",I.Snapshot{0,Inv.InvStack{Inv.ItemKey{"minecraft:stone",""},100} <> empty_slots(35n),I.Abilities{False{},True{}}},
+      stack_inventory_json("[1,\"minecraft:stone\",\"\",100]"))
     reply_refused("empty slot extra field",stack_inventory_json("[0,0]"))
     reply_refused("stack slot extra field",stack_inventory_json("[1,\"minecraft:stone\",\"\",1,0]"))
     reply_refused("snapshot extra field","[1,4,\"wire-epoch\",23,[0,false,true,[" ++ empty_slot_body(36n) ++ "],0]]")
     reply_refused("inventory reply extra field","[1,4,\"wire-epoch\",23,[0,false,true,[" ++ empty_slot_body(36n) ++ "]],0]")
+
+def menu_requests() -> IO(Unit):
+  do IO<Unit>:
+    request_probe("transfer any",Wire.Call{"wire-epoch",7n,Wire.Transfer{0,35,64,Inv.TransferAny{}}},"[1,1,\"wire-epoch\",7,[6,0,35,64,0]]")
+    request_probe("transfer split",Wire.Call{"wire-epoch",7n,Wire.Transfer{35,0,1,Inv.TransferSplit{}}},"[1,1,\"wire-epoch\",7,[6,35,0,1,1]]")
+    request_probe("transfer merge",Wire.Call{"wire-epoch",7n,Wire.Transfer{1,2,4294967295,Inv.TransferMerge{}}},"[1,1,\"wire-epoch\",7,[6,1,2,4294967295,2]]")
+    request_probe("acquire all-item identifier",Wire.Call{"wire-epoch",7n,Wire.Acquire{35,Inv.ItemKey{"minecraft:diamond_sword",""},1}},"[1,1,\"wire-epoch\",7,[7,35,[\"minecraft:diamond_sword\",\"\"],1]]")
+    request_probe("acquire clear",Wire.Call{"wire-epoch",7n,Wire.Acquire{0,Inv.ItemKey{"minecraft:stone",""},0}},"[1,1,\"wire-epoch\",7,[7,0,[\"minecraft:stone\",\"\"],0]]")
+    request_probe("menu inspect",Wire.Call{"wire-epoch",7n,Wire.MenuInspect{}},"[1,1,\"wire-epoch\",7,[8]]")
+    request_probe("menu open",Wire.Call{"wire-epoch",7n,Wire.MenuOpen{}},"[1,1,\"wire-epoch\",7,[9]]")
+    request_probe("menu close",Wire.Call{"wire-epoch",7n,Wire.MenuClose{}},"[1,1,\"wire-epoch\",7,[10]]")
+    request_probe("menu select",Wire.Call{"wire-epoch",7n,Wire.Select{8}},"[1,1,\"wire-epoch\",7,[12,8]]")
+    request_probe("menu pickup primary",Wire.Call{"wire-epoch",7n,Wire.MenuClick{45,I.Pickup{0}}},"[1,1,\"wire-epoch\",7,[11,45,[0,0]]]")
+    request_probe("menu pickup secondary",Wire.Call{"wire-epoch",7n,Wire.MenuClick{9,I.Pickup{1}}},"[1,1,\"wire-epoch\",7,[11,9,[0,1]]]")
+    request_probe("menu quick move",Wire.Call{"wire-epoch",7n,Wire.MenuClick{8,I.QuickMove{}}},"[1,1,\"wire-epoch\",7,[11,8,[1]]]")
+    request_probe("menu swap",Wire.Call{"wire-epoch",7n,Wire.MenuClick{36,I.Swap{8}}},"[1,1,\"wire-epoch\",7,[11,36,[2,8]]]")
+    request_probe("menu clone",Wire.Call{"wire-epoch",7n,Wire.MenuClick{10,I.Clone{}}},"[1,1,\"wire-epoch\",7,[11,10,[3]]]")
+    request_probe("menu throw one",Wire.Call{"wire-epoch",7n,Wire.MenuClick{4294967295,I.Throw{False{}}}},"[1,1,\"wire-epoch\",7,[11,4294967295,[4,false]]]")
+    request_probe("menu throw all",Wire.Call{"wire-epoch",7n,Wire.MenuClick{10,I.Throw{True{}}}},"[1,1,\"wire-epoch\",7,[11,10,[4,true]]]")
+    request_probe("menu quick craft",Wire.Call{"wire-epoch",7n,Wire.MenuClick{11,I.QuickCraft{2,1}}},"[1,1,\"wire-epoch\",7,[11,11,[5,2,1]]]")
+    request_probe("menu pickup all",Wire.Call{"wire-epoch",7n,Wire.MenuClick{12,I.PickupAll{}}},"[1,1,\"wire-epoch\",7,[11,12,[6]]]")
+    require(encoded_rejected(Wire.encode_request(Wire.Call{"wire-epoch",7n,Wire.Transfer{36,0,1,Inv.TransferAny{}}})),"encode transfer source 36")
+    require(encoded_rejected(Wire.encode_request(Wire.Call{"wire-epoch",7n,Wire.Acquire{36,Inv.ItemKey{"minecraft:stone",""},1}})),"encode acquire slot 36")
+    require(encoded_rejected(Wire.encode_request(Wire.Call{"wire-epoch",7n,Wire.MenuClick{0,I.Pickup{2}}})),"encode pickup button 2")
+    request_refused("transfer source 36","[1,1,\"wire-epoch\",7,[6,36,0,1,0]]")
+    request_refused("transfer destination 36","[1,1,\"wire-epoch\",7,[6,0,36,1,0]]")
+    request_refused("transfer invalid mode","[1,1,\"wire-epoch\",7,[6,0,1,1,3]]")
+    request_refused("transfer extra field","[1,1,\"wire-epoch\",7,[6,0,1,1,0,0]]")
+    request_refused("acquire count 100","[1,1,\"wire-epoch\",7,[7,0,[\"minecraft:stone\",\"\"],100]]")
+    request_refused("acquire invalid components","[1,1,\"wire-epoch\",7,[7,0,[\"minecraft:stone\",\"{}\"],1]]")
+    request_refused("acquire key extra field","[1,1,\"wire-epoch\",7,[7,0,[\"minecraft:stone\",\"\",0],1]]")
+    request_refused("menu inspect extra field","[1,1,\"wire-epoch\",7,[8,0]]")
+    request_refused("menu close extra field","[1,1,\"wire-epoch\",7,[10,0]]")
+    request_refused("menu invalid click tag","[1,1,\"wire-epoch\",7,[11,0,[7]]]")
+    request_refused("menu pickup button 2","[1,1,\"wire-epoch\",7,[11,0,[0,2]]]")
+    request_refused("menu click extra field","[1,1,\"wire-epoch\",7,[11,0,[1],0]]")
+    request_refused("menu quick craft missing button","[1,1,\"wire-epoch\",7,[11,0,[5,2]]]")
+    request_refused("menu select index 9","[1,1,\"wire-epoch\",7,[12,9]]")
+    request_refused("menu select extra field","[1,1,\"wire-epoch\",7,[12,0,0]]")
+
+# This is a codec fixture, including a present result. It does not assert that
+# production recipe derivation currently supplies that result.
+def menu_fixture() -> I.MenuSnapshot:
+  I.MenuSnapshot{I.Persisted{inventory_fixture(),
+    Inv.InvStack{Inv.ItemKey{"minecraft:diamond_boots",""},1} <> Inv.InvStack{Inv.ItemKey{"minecraft:elytra",""},1} <> empty_slots(5n),
+    I.Status{True{},False{},True{},1036831949,1028443341}},
+    [Inv.InvStack{Inv.ItemKey{"minecraft:diamond",""},64},Inv.InvEmpty{},Inv.InvStack{Inv.ItemKey{"minecraft:stone",""},2},Inv.InvEmpty{}],
+    Inv.InvStack{Inv.ItemKey{"minecraft:bedrock",""},1},Some{Inv.InvStack{Inv.ItemKey{"minecraft:oak_planks",""},2}},True{},9007n}
+
+def menu_fixture_body() -> String:
+  "[" ++ inventory_fixture_body() ++ ",[[1,\"minecraft:diamond_boots\",\"\",1],[1,\"minecraft:elytra\",\"\",1]," ++ empty_slot_body(5n) ++
+    "],[true,false,true,1036831949,1028443341],[[1,\"minecraft:diamond\",\"\",64],[0],[1,\"minecraft:stone\",\"\",2],[0]]," ++
+    "[1,\"minecraft:bedrock\",\"\",1],[1,[1,\"minecraft:oak_planks\",\"\",2]],true,9007]"
+
+def empty_menu() -> I.MenuSnapshot:
+  I.MenuSnapshot{I.Persisted{I.Snapshot{0,empty_slots(36n),I.Abilities{False{},True{}}},empty_slots(7n),I.Status{False{},True{},False{},1036831949,1028443341}},
+    empty_slots(4n),Inv.InvEmpty{},None{},False{},0n}
+
+def overflow_menu() -> I.MenuSnapshot:
+  I.MenuSnapshot{I.Persisted{I.Snapshot{0,empty_slots(36n),I.Abilities{False{},True{}}},empty_slots(7n),I.Status{False{},True{},False{},1036831949,1028443341}},
+    empty_slots(4n),Inv.InvEmpty{},None{},False{},1n+Wire.nat_max()}
+
+def raw_speed_menu() -> I.MenuSnapshot:
+  I.MenuSnapshot{I.Persisted{I.Snapshot{0,empty_slots(36n),I.Abilities{False{},True{}}},empty_slots(7n),I.Status{False{},True{},False{},2147483648,2143289345}},
+    empty_slots(4n),Inv.InvEmpty{},None{},False{},0n}
+
+def empty_menu_body(equipment:Nat,craft:Nat,result:String,status:String) -> String:
+  "[[0,false,true,[" ++ empty_slot_body(36n) ++ "]],[" ++ empty_slot_body(equipment) ++ "]," ++ status ++ ",[" ++ empty_slot_body(craft) ++ "],[0]," ++ result ++ ",false,0]"
+
+def menu_json(accepted:String,message:String,body:String) -> String:
+  "[1,6,\"wire-epoch\",23," ++ accepted ++ ",\"" ++ message ++ "\"," ++ body ++ "]"
+
+def menu_replies() -> IO(Unit):
+  +status = {"[false,true,false,1036831949,1028443341]" : String}
+  +menu = {Wire.MenuReply{"wire-epoch",23n,False{},"refused",menu_fixture()} : Wire.Reply}
+  do IO<Unit>:
+    reply_probe("menu complete fields",menu,menu_json("false","refused",menu_fixture_body()))
+    reply_probe("menu result unavailable",Wire.MenuReply{"wire-epoch",23n,True{},"",empty_menu()},menu_json("true","",empty_menu_body(7n,4n,"[0]",status)))
+    require(Wire.correlation("wire-epoch",23n,menu),"menu correlation accepted")
+    require(Bool.not(Wire.correlation("other",23n,menu)),"menu stale epoch refused")
+    require(Bool.not(Wire.correlation("wire-epoch",24n,menu)),"menu stale sequence refused")
+    reply_refused("menu equipment 6",menu_json("true","",empty_menu_body(6n,4n,"[0]",status)))
+    reply_refused("menu equipment 8",menu_json("true","",empty_menu_body(8n,4n,"[0]",status)))
+    reply_refused("menu craft 3",menu_json("true","",empty_menu_body(7n,3n,"[0]",status)))
+    reply_refused("menu invalid result",menu_json("true","",empty_menu_body(7n,4n,"[2]",status)))
+    reply_refused("menu invalid result stack",menu_json("true","",empty_menu_body(7n,4n,"[1,[1,\"minecraft:stone\",\"{}\",1]]",status)))
+    reply_probe("menu exact signed zero and NaN ability words",Wire.MenuReply{"wire-epoch",23n,True{},"",raw_speed_menu()},
+      menu_json("true","",empty_menu_body(7n,4n,"[0]","[false,true,false,2147483648,2143289345]")))
+    reply_refused("menu nonboolean status",menu_json("0","",empty_menu_body(7n,4n,"[0]",status)))
+    require(encoded_rejected(Wire.encode_reply(Wire.MenuReply{"wire-epoch",0n,True{},"",empty_menu()})),"menu zero sequence encode refused")
+    require(encoded_rejected(Wire.encode_reply(Wire.MenuReply{"",23n,True{},"",empty_menu()})),"menu empty epoch encode refused")
+    require(encoded_rejected(Wire.encode_reply(Wire.MenuReply{"wire-epoch",23n,True{},"",overflow_menu()})),"menu revision overflow encode refused")
 
 def unicode_message() -> String:
   "placed § 😀\n\"\\done"
@@ -476,6 +623,8 @@ def run() -> IO(Unit):
     new_requests()
     old_replies()
     inventory_replies()
+    menu_requests()
+    menu_replies()
     action_replies()
     correlation_cases()
     frame_budget_cases()

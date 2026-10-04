@@ -78,6 +78,15 @@ consumer's full-cube geometry domain; multibox/partial-shape observations must
 not be counted as implemented. Visible physical-input acceptance remains a
 separate recorded client requirement.
 
+The retained numeric/reference consumer now passed a native C replay of all
+604 admitted Java observations: 133 nearest directions, 70 view vectors, 200
+unit-cube VoxelShape clips, 200 unit-cube AABB clips and one creative reach
+observation. Raw F64 words, face, inside flag and block position matched exactly;
+the 30 unsupported shape cases remain excluded. This native artifact is a mapped
+pre-expansion reference consumer, not the current backend action/menu graph.
+Its sealed source, binary, comparison and cleanup records are in
+[`evidence/playable-client-reference-native-001.json`](../evidence/playable-client-reference-native-001.json).
+
 The persistent production proof target `src/player_core_edit_proof.bend` proves
 all 11 contracts in `src/player_core_edit_laws.bend` against the actual CoreEdit,
 Core, Schedule and SectionMap modules. Its ordinary check passed in 0.130 seconds

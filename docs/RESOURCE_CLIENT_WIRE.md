@@ -4,7 +4,8 @@
 LocalPlayer Session backend and remote resource renderer. It owns no actor,
 world, resource assets, socket, timer or authentication state. Its action command
 requests the backend's reserved player interaction; it accepts no block position,
-state ID, player peer, ability, inventory mutation or developer capability.
+state ID, player peer, ability or developer capability. Typed inventory intents
+refer to server-owned slots and pass through the actual saved inventory rules.
 
 Public API:
 
@@ -18,11 +19,15 @@ Public API:
 
 Types are `Hello{capability}` or `Call{epoch,sequence,command}`;
 `Command` is `Frame{width,height}`, `Input{packet:CC.Packet}`, `Release{}`,
-`Action{button}`, `Hotbar{index}` or `Inventory{}`.
+`Action{button}`, `Hotbar{index}`, `Inventory{}`,
+`Transfer{source,destination,count,mode}`, `Acquire{index,key,count}`,
+`MenuInspect{}`, `MenuOpen{}`, `MenuClose{}`, `MenuClick{index,click}` or
+`Select{index}`.
 Replies are `HelloAck{epoch,sequence}`, `FrameReply{epoch,sequence,sample:V.Sample}`,
 `Ack{epoch,sequence}`, `Fault{epoch,sequence,message}`,
 `InventoryReply{epoch,sequence,snapshot:I.Snapshot}` or
-`ActionReply{epoch,sequence,changed,message}`.
+`ActionReply{epoch,sequence,changed,message}` or
+`MenuReply{epoch,sequence,accepted,message,snapshot:I.MenuSnapshot}`.
 
 The backend owns token authentication, a fresh boot nonce plus monotonic lease
 counter as epoch, the one active renderer lease and strict expected-sequence
@@ -51,20 +56,54 @@ raw U32 word, F64 is `[hi,lo]`.
 | Action command | `[3,button]`, button 0 breaks, 1 places |
 | Hotbar command | `[4,index]`, index 0 through 8 |
 | Inventory command | `[5]` |
+| Transfer command | `[6,source,destination,count,mode]`, mode 0 Any, 1 Split, 2 Merge |
+| Acquire command | `[7,index,[itemIdentifier,components],count]` |
+| MenuInspect command | `[8]` |
+| MenuOpen command | `[9]` |
+| MenuClose command | `[10]` |
+| MenuClick command | `[11,index,click]` |
+| Select command | `[12,index]`, index 0 through 8, returns MenuReply |
 | HelloAck | `[1,0,epoch,0]` |
 | FrameReply | `[1,1,epoch,sequence,sample]` |
 | Ack | `[1,2,epoch,sequence]` |
 | Fault | `[1,3,epoch,sequence,message]` |
 | InventoryReply | `[1,4,epoch,sequence,inventory]` |
 | ActionReply | `[1,5,epoch,sequence,changed,message]` |
+| MenuReply | `[1,6,epoch,sequence,accepted,message,menu]` |
 
 The additive commands keep version 1 and every original tag/shape unchanged.
 An inventory is `[selected,instabuild,maybuild,slots]`. It contains exactly 36
 ordered main-inventory slots, with hotbar slots first. A slot is `[0]` for empty
-or `[1,itemIdentifier,components,count]` for a stack. The current consumer admits
-unmodified stone, dirt and oak planks only: the component string is empty and
-count is 1 through 64. Selection is 0 through 8. Abilities are exact Booleans
-owned by the backend; the client cannot set them through this wire.
+or `[1,itemIdentifier,components,count]` for a stack. The wire admits structurally
+valid identifiers from the full catalog domain, an empty component string and
+counts 1 through 99. Actual item admission and stack limits are checked against
+the pinned catalog by the inventory owner and presenter. Selection is 0 through
+8. Abilities are exact Booleans owned by the backend; the client cannot set them
+through this wire. Transfer and Acquire use main indices 0 through 35; Acquire
+also permits count zero for the authoritative clearing operation.
+
+The menu is `[main,equipment,status,craft,carried,result,opened,revision]`.
+Equipment contains exactly seven saved slots and craft exactly four transient
+slots. Status is `[invulnerable,mayfly,flying,walkingSpeedBits,flyingSpeedBits]`;
+speed words preserve all raw binary32 bits, including signed zero and NaN
+payloads, without an unobserved normalization. The carried slot is owned by
+the backend. Result is `[0]` when recipe derivation is unavailable or
+`[1,slot]` for a supplied result. Revision admits zero through Nat48 maximum.
+MenuClick uses the actual InventoryMenu slot numbering. Click shapes are
+`[0,button]` for Pickup (button 0 or 1), `[1]` QuickMove, `[2,hotbar]` Swap,
+`[3]` Clone, `[4,all]` Throw, `[5,phase,button]` QuickCraft and `[6]` PickupAll.
+The codec represents these typed intents; the production inventory operation
+explicitly refuses semantics whose actual vanilla consumer is still missing.
+
+MenuReply includes the current complete authoritative snapshot for successful
+operations and gameplay refusals. `accepted` reports operation success; it does
+not assert a mutation. Admitted gameplay refusals consume a sequence and retain
+the lease. The renderer must correlate the reply and use its supplied snapshot
+before clearing a pending operation. Mutation routes require the backend's
+retained valid Player capability. Ordinary inventory movement does not require
+maybuild; acquisition is checked against the actual instabuild ability.
+Select returns this same complete snapshot for a menu selection. The existing
+Hotbar command and its Ack remain available for captured digit input.
 
 Hotbar uses the existing Ack. An admitted Action uses ActionReply even for a
 miss or a gameplay refusal (`changed=false` with a diagnostic); these outcomes
@@ -108,7 +147,7 @@ depth 8, and an independent 16384 JSON values including containers. The parser
 character limit is 65536: a valid initial 256-cell frame is 16826 characters and
 cannot fit the former conflated 16384-character limit. Existing diagnostic,
 capability, epoch, input-action and inventory schema bounds remain separate.
-Canonical ASCII means the character bound also limits byte length. Frame size is 4..1024 in
+Canonical ASCII means the character bound also limits byte length. Frame size follows the shared presentation policy, currently 4..4096 in
 both axes; samples contain at most 4096 raw cells and 24576 neighbor reads.
 `mesh_limits()` supplies the existing actual defaults: 4096 blocks, 1024
 bindings, 4096 quads, 64 translucent quads and 256 tints, each below 16384.
@@ -133,8 +172,12 @@ boundary. This is not a native malformed-byte observation.
 
 The additive finite checks in `tests/resource_client_interaction_wire.bend`
 cover original and new serialization, all hotbar selections, ordered inventory
-roundtrips, malformed slot counts/items/components/stacks, extra fields,
-correlation and escaped Unicode. Their current execution status is recorded by
-the combined playable-client acceptance artifact; prepared assertions alone
-do not establish a native pass. No standalone native build accompanies this
-module.
+roundtrips, complete menu fields and typed clicks, malformed cardinalities,
+items/components/stacks, correlation, escaped Unicode and exact raw ability
+speed words. The current fixture passed `--check-only` in 11.400555 seconds
+with its complete imported source closure unchanged and its process group
+absent after completion. [The source evidence](../evidence/player-inventory-menu-wire-source-checks.json)
+preserves the exact command, source pins and failed attempts. This source check
+does not execute the finite assertions. Native execution belongs to the
+combined playable-client acceptance artifact; no standalone native build
+accompanies this module.

@@ -44,6 +44,13 @@ def action_answer(+epoch:String,sequence:Nat,result:B.State & Result<&2,&2,Strin
     case Fail{message}: (state,Answer{W.Fault{epoch,sequence,message},"",False{}})
     case Done{BI.Outcome{changed,message}}: (state,Answer{W.ActionReply{epoch,sequence,changed,message},epoch,True{}})
 
+def menu_answer(+epoch:String,sequence:Nat,result:B.State & Result<&2,&2,String,B.MenuOutcome>) -> B.State & Answer:
+  (state,status) = result
+  match status:
+    case Fail{message}: (state,Answer{W.Fault{epoch,sequence,message},"",False{}})
+    case Done{B.MenuOutcome{accepted,message,snapshot}}:
+      (state,Answer{W.MenuReply{epoch,sequence,accepted,message,snapshot},epoch,True{}})
+
 def command(state:B.State,+epoch:String,+sequence:Nat,value:W.Command) -> B.State & Answer:
   match value:
     case W.Frame{width,height}: frame_answer(epoch,sequence,B.frame(state,epoch,sequence,width,height))
@@ -52,6 +59,13 @@ def command(state:B.State,+epoch:String,+sequence:Nat,value:W.Command) -> B.Stat
     case W.Action{button}: action_answer(epoch,sequence,B.action(state,epoch,sequence,button))
     case W.Hotbar{index}: unit_answer(epoch,sequence,B.hotbar(state,epoch,sequence,index))
     case W.Inventory{}: inventory_answer(epoch,sequence,B.inventory(state,epoch,sequence))
+    case W.Transfer{source,destination,count,mode}: menu_answer(epoch,sequence,B.transfer(state,epoch,sequence,source,destination,count,mode))
+    case W.Acquire{index,key,count}: menu_answer(epoch,sequence,B.acquire(state,epoch,sequence,index,key,count))
+    case W.MenuInspect{}: menu_answer(epoch,sequence,B.menu_inspect(state,epoch,sequence))
+    case W.MenuOpen{}: menu_answer(epoch,sequence,B.menu_open(state,epoch,sequence))
+    case W.MenuClose{}: menu_answer(epoch,sequence,B.menu_close(state,epoch,sequence))
+    case W.MenuClick{index,click}: menu_answer(epoch,sequence,B.menu_click(state,epoch,sequence,index,click))
+    case W.Select{index}: menu_answer(epoch,sequence,B.select(state,epoch,sequence,index))
 
 def close_link(+handle:S.Handle<B.State>,link:Link) -> IO(Maybe<&1,Link>):
   Link{socket,buffer,epoch,deadline} = link

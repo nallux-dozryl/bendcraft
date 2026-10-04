@@ -19,6 +19,13 @@ type Command is Data:
   Action{button:U32}
   Hotbar{index:U32}
   Inventory{}
+  Transfer{source:U32,destination:U32,count:U32,mode:Inv.TransferMode}
+  Acquire{index:U32,key:Inv.ItemKey,count:U32}
+  MenuInspect{}
+  MenuOpen{}
+  MenuClose{}
+  MenuClick{index:U32,click:I.Click}
+  Select{index:U32}
 type Request is Data:
   Hello{capability:String}
   Call{epoch:String,sequence:Nat,command:Command}
@@ -29,6 +36,7 @@ type Reply is Data:
   Fault{epoch:String,sequence:Nat,message:String}
   InventoryReply{epoch:String,sequence:Nat,snapshot:I.Snapshot}
   ActionReply{epoch:String,sequence:Nat,changed:Bool,message:String}
+  MenuReply{epoch:String,sequence:Nat,accepted:Bool,message:String,snapshot:I.MenuSnapshot}
 type Row is Data:
   Row{raw:W.RawBlock,block:R.Block,visibility:V.Visibility}
 type Rows is Data:
@@ -324,6 +332,55 @@ def packet(value:J.Value) -> Result<&2,&2,String,CC.Packet>:
         Done{CC.Packet{a,f,c}}
     case _: Fail{"wire:packet-cardinality"}
 
+def transfer_mode(value:J.Value) -> Result<&2,&2,String,Inv.TransferMode>:
+  match value:
+    case J.JNumber{"0"}: Done{Inv.TransferAny{}}
+    case J.JNumber{"1"}: Done{Inv.TransferSplit{}}
+    case J.JNumber{"2"}: Done{Inv.TransferMerge{}}
+    case _: Fail{"wire:transfer-mode"}
+
+def click_valid(value:I.Click) -> Bool:
+  match value:
+    case I.Pickup{button}: U32.is_lt(button,2)
+    case _: True{}
+
+def menu_click(value:J.Value) -> Result<&2,&2,String,I.Click>:
+  match value:
+    case J.JArray{[J.JNumber{"0"},button]}:
+      do Result<&2,&2,String,I.Click>:
+        +b:U32 <- uint(button)
+        guard(U32.is_lt(b,2),"wire:pickup-button")
+        Done{I.Pickup{b}}
+    case J.JArray{[J.JNumber{"1"}]}: Done{I.QuickMove{}}
+    case J.JArray{[J.JNumber{"2"},hotbar]}:
+      do Result<&2,&2,String,I.Click>:
+        index:U32 <- uint(hotbar)
+        Done{I.Swap{index}}
+    case J.JArray{[J.JNumber{"3"}]}: Done{I.Clone{}}
+    case J.JArray{[J.JNumber{"4"},all]}:
+      do Result<&2,&2,String,I.Click>:
+        value:Bool <- boolean(all)
+        Done{I.Throw{value}}
+    case J.JArray{[J.JNumber{"5"},phase,button]}:
+      do Result<&2,&2,String,I.Click>:
+        p:U32 <- uint(phase)
+        b:U32 <- uint(button)
+        Done{I.QuickCraft{p,b}}
+    case J.JArray{[J.JNumber{"6"}]}: Done{I.PickupAll{}}
+    case _: Fail{"wire:menu-click-tag-or-cardinality"}
+
+def acquire_valid(index:U32,key:Inv.ItemKey,count:U32) -> Bool:
+  U32.is_lt(index,36) && I.structural_slot(Inv.InvStack{key,1}) && U32.is_le(count,99)
+
+def item_key(value:J.Value) -> Result<&2,&2,String,Inv.ItemKey>:
+  match value:
+    case J.JArray{[name,components]}:
+      do Result<&2,&2,String,Inv.ItemKey>:
+        id:String <- text(name)
+        patch:String <- text(components)
+        Done{Inv.ItemKey{id,patch}}
+    case _: Fail{"wire:item-key-cardinality"}
+
 def command_valid(command:Command) -> Bool:
   match command:
     case Frame{width,height}: WM.frame_valid(WM.frame(width,height))
@@ -332,6 +389,13 @@ def command_valid(command:Command) -> Bool:
     case Action{button}: U32.is_le(button,1)
     case Hotbar{index}: U32.is_lt(index,9)
     case Inventory{}: True{}
+    case Transfer{source,destination,count,mode}: U32.is_lt(source,36) && U32.is_lt(destination,36)
+    case Acquire{index,key,count}: acquire_valid(index,key,count)
+    case MenuInspect{}: True{}
+    case MenuOpen{}: True{}
+    case MenuClose{}: True{}
+    case MenuClick{index,click}: click_valid(click)
+    case Select{index}: U32.is_lt(index,9)
 
 def command(value:J.Value) -> Result<&2,&2,String,Command>:
   match value:
@@ -357,6 +421,34 @@ def command(value:J.Value) -> Result<&2,&2,String,Command>:
         guard(U32.is_lt(value,9),"wire:hotbar-index")
         Done{Hotbar{value}}
     case J.JArray{[J.JNumber{"5"}]}: Done{Inventory{}}
+    case J.JArray{[J.JNumber{"6"},source,destination,count,mode]}:
+      do Result<&2,&2,String,Command>:
+        +a:U32 <- uint(source)
+        +b:U32 <- uint(destination)
+        c:U32 <- uint(count)
+        m:Inv.TransferMode <- transfer_mode(mode)
+        guard(U32.is_lt(a,36) && U32.is_lt(b,36),"wire:transfer-main-slot")
+        Done{Transfer{a,b,c,m}}
+    case J.JArray{[J.JNumber{"7"},index,key,count]}:
+      do Result<&2,&2,String,Command>:
+        +i:U32 <- uint(index)
+        +k:Inv.ItemKey <- item_key(key)
+        +c:U32 <- uint(count)
+        guard(acquire_valid(i,k,c),"wire:acquire-shape")
+        Done{Acquire{i,k,c}}
+    case J.JArray{[J.JNumber{"8"}]}: Done{MenuInspect{}}
+    case J.JArray{[J.JNumber{"9"}]}: Done{MenuOpen{}}
+    case J.JArray{[J.JNumber{"10"}]}: Done{MenuClose{}}
+    case J.JArray{[J.JNumber{"11"},index,click]}:
+      do Result<&2,&2,String,Command>:
+        i:U32 <- uint(index)
+        value:I.Click <- menu_click(click)
+        Done{MenuClick{i,value}}
+    case J.JArray{[J.JNumber{"12"},index]}:
+      do Result<&2,&2,String,Command>:
+        +i:U32 <- uint(index)
+        guard(U32.is_lt(i,9),"wire:select-hotbar-index")
+        Done{Select{i}}
     case _: Fail{"wire:command-tag-or-cardinality"}
 
 def request_value(value:J.Value) -> Result<&2,&2,String,Request>:
@@ -404,6 +496,10 @@ def inventory_array(value:J.Value) -> Result<&2,&2,String,List<&2,Inv.Slot>>:
     case J.JArray{slots}: inventory_slots(36n,slots)
     case _: Fail{"wire:expected-inventory-slots-array"}
 
+def main_snapshot_valid(snapshot:I.Snapshot) -> Bool:
+  I.Snapshot{selected,slots,abilities} = snapshot
+  U32.is_lt(selected,9) && I.structural_slots(36n,slots)
+
 def inventory_snapshot(value:J.Value) -> Result<&2,&2,String,I.Snapshot>:
   match value:
     case J.JArray{[selected,instabuild,maybuild,slots]}:
@@ -413,9 +509,59 @@ def inventory_snapshot(value:J.Value) -> Result<&2,&2,String,I.Snapshot>:
         +build:Bool <- boolean(maybuild)
         +items:List<&2,Inv.Slot> <- inventory_array(slots)
         +snapshot:I.Snapshot = I.Snapshot{index,items,I.Abilities{creative,build}}
-        guard(I.snapshot_valid(snapshot),"wire:inventory-snapshot")
+        guard(main_snapshot_valid(snapshot),"wire:inventory-snapshot")
         Done{snapshot}
     case _: Fail{"wire:inventory-snapshot-cardinality"}
+
+def counted_slots(left:Nat,value:J.Value) -> Result<&2,&2,String,List<&2,Inv.Slot>>:
+  match value:
+    case J.JArray{slots}: inventory_slots(left,slots)
+    case _: Fail{"wire:expected-menu-slots-array"}
+
+def menu_status(value:J.Value) -> Result<&2,&2,String,I.Status>:
+  match value:
+    case J.JArray{[invulnerable,mayfly,flying,walking_speed,flying_speed]}:
+      do Result<&2,&2,String,I.Status>:
+        a:Bool <- boolean(invulnerable)
+        b:Bool <- boolean(mayfly)
+        c:Bool <- boolean(flying)
+        walk:U32 <- uint(walking_speed)
+        fly:U32 <- uint(flying_speed)
+        Done{I.Status{a,b,c,walk,fly}}
+    case _: Fail{"wire:menu-status-cardinality"}
+
+def menu_result(value:J.Value) -> Result<&2,&2,String,Maybe<&2,Inv.Slot>>:
+  match value:
+    case J.JArray{[J.JNumber{"0"}]}: Done{None{}}
+    case J.JArray{[J.JNumber{"1"},slot]}:
+      do Result<&2,&2,String,Maybe<&2,Inv.Slot>>:
+        item:Inv.Slot <- inventory_slot(slot)
+        Done{Some{item}}
+    case _: Fail{"wire:menu-result-tag-or-cardinality"}
+
+def menu_revision_valid(snapshot:I.MenuSnapshot) -> Bool:
+  I.MenuSnapshot{saved,craft,carried,result,opened,revision} = snapshot
+  Nat.is_le(revision,nat_max())
+
+def menu_snapshot_valid(+snapshot:I.MenuSnapshot) -> Bool:
+  I.menu_snapshot_valid(snapshot) && menu_revision_valid(snapshot)
+
+def menu_snapshot(value:J.Value) -> Result<&2,&2,String,I.MenuSnapshot>:
+  match value:
+    case J.JArray{[main,equipment,status,craft,carried,result,opened,revision]}:
+      do Result<&2,&2,String,I.MenuSnapshot>:
+        saved:I.Snapshot <- inventory_snapshot(main)
+        equipped:List<&2,Inv.Slot> <- counted_slots(7n,equipment)
+        abilities:I.Status <- menu_status(status)
+        temporary:List<&2,Inv.Slot> <- counted_slots(4n,craft)
+        cursor:Inv.Slot <- inventory_slot(carried)
+        output:Maybe<&2,Inv.Slot> <- menu_result(result)
+        open:Bool <- boolean(opened)
+        rev:Nat <- natural(revision)
+        +snapshot:I.MenuSnapshot = I.MenuSnapshot{I.Persisted{saved,equipped,abilities},temporary,cursor,output,open,rev}
+        guard(menu_snapshot_valid(snapshot),"wire:menu-snapshot")
+        Done{snapshot}
+    case _: Fail{"wire:menu-snapshot-cardinality"}
 
 def reply_value(value:J.Value) -> Result<&2,&2,String,Reply>:
   match value:
@@ -460,6 +606,15 @@ def reply_value(value:J.Value) -> Result<&2,&2,String,Reply>:
         +m:String <- text(message)
         guard(epoch_valid(e) && sequence_valid(s) && diagnostic_valid(m),"wire:interaction-correlation-or-message")
         Done{ActionReply{e,s,value,m}}
+    case J.JArray{[J.JNumber{"1"},J.JNumber{"6"},epoch,sequence,accepted,message,body]}:
+      do Result<&2,&2,String,Reply>:
+        +e:String <- text(epoch)
+        +s:Nat <- natural(sequence)
+        value:Bool <- boolean(accepted)
+        +m:String <- text(message)
+        snapshot:I.MenuSnapshot <- menu_snapshot(body)
+        guard(epoch_valid(e) && sequence_valid(s) && diagnostic_valid(m),"wire:menu-correlation-or-message")
+        Done{MenuReply{e,s,value,m,snapshot}}
     case _: Fail{"wire:reply-version-tag-or-cardinality"}
 
 def decode_request(input:String) -> Result<&2,&2,String,Request>:
@@ -531,6 +686,22 @@ def packet_value(value:CC.Packet) -> J.Value:
   CC.Packet{actions,focused,captured} = value
   J.JArray{[b(focused),b(captured),J.JArray{action_values(actions)}]}
 
+def transfer_mode_value(mode:Inv.TransferMode) -> J.Value:
+  match mode:
+    case Inv.TransferAny{}: u(0)
+    case Inv.TransferSplit{}: u(1)
+    case Inv.TransferMerge{}: u(2)
+
+def click_value(click:I.Click) -> J.Value:
+  match click:
+    case I.Pickup{button}: J.JArray{[u(0),u(button)]}
+    case I.QuickMove{}: J.JArray{[u(1)]}
+    case I.Swap{hotbar}: J.JArray{[u(2),u(hotbar)]}
+    case I.Clone{}: J.JArray{[u(3)]}
+    case I.Throw{all}: J.JArray{[u(4),b(all)]}
+    case I.QuickCraft{phase,button}: J.JArray{[u(5),u(phase),u(button)]}
+    case I.PickupAll{}: J.JArray{[u(6)]}
+
 def command_value(value:Command) -> J.Value:
   match value:
     case Frame{width,height}: J.JArray{[u(0),u(width),u(height)]}
@@ -539,6 +710,13 @@ def command_value(value:Command) -> J.Value:
     case Action{button}: J.JArray{[u(3),u(button)]}
     case Hotbar{index}: J.JArray{[u(4),u(index)]}
     case Inventory{}: J.JArray{[u(5)]}
+    case Transfer{source,destination,count,mode}: J.JArray{[u(6),u(source),u(destination),u(count),transfer_mode_value(mode)]}
+    case Acquire{index,Inv.ItemKey{name,components},count}: J.JArray{[u(7),u(index),J.JArray{[s(name),s(components)]},u(count)]}
+    case MenuInspect{}: J.JArray{[u(8)]}
+    case MenuOpen{}: J.JArray{[u(9)]}
+    case MenuClose{}: J.JArray{[u(10)]}
+    case MenuClick{index,click}: J.JArray{[u(11),u(index),click_value(click)]}
+    case Select{index}: J.JArray{[u(12),u(index)]}
 
 def request_valid(request:Request) -> Bool:
   match request:
@@ -556,8 +734,9 @@ def reply_valid(reply:Reply) -> Bool:
     case FrameReply{epoch,sequence,sample}: epoch_valid(epoch) && sequence_valid(sequence) && sample_valid(sample)
     case Ack{epoch,sequence}: epoch_valid(epoch) && sequence_valid(sequence)
     case Fault{epoch,sequence,message}: fault_valid(epoch,sequence,message)
-    case InventoryReply{epoch,sequence,snapshot}: epoch_valid(epoch) && sequence_valid(sequence) && I.snapshot_valid(snapshot)
+    case InventoryReply{epoch,sequence,snapshot}: epoch_valid(epoch) && sequence_valid(sequence) && main_snapshot_valid(snapshot)
     case ActionReply{epoch,sequence,changed,message}: epoch_valid(epoch) && sequence_valid(sequence) && diagnostic_valid(message)
+    case MenuReply{epoch,sequence,accepted,message,snapshot}: epoch_valid(epoch) && sequence_valid(sequence) && diagnostic_valid(message) && menu_snapshot_valid(snapshot)
 
 def inventory_slot_value(value:Inv.Slot) -> J.Value:
   match value:
@@ -573,6 +752,20 @@ def inventory_snapshot_value(value:I.Snapshot) -> J.Value:
   I.Snapshot{selected,slots,I.Abilities{instabuild,maybuild}} = value
   J.JArray{[u(selected),b(instabuild),b(maybuild),J.JArray{inventory_slot_values(slots)}]}
 
+def menu_result_value(result:Maybe<&2,Inv.Slot>) -> J.Value:
+  match result:
+    case None{}: J.JArray{[u(0)]}
+    case Some{slot}: J.JArray{[u(1),inventory_slot_value(slot)]}
+
+def menu_status_value(status:I.Status) -> J.Value:
+  I.Status{invulnerable,mayfly,flying,walk,fly} = status
+  J.JArray{[b(invulnerable),b(mayfly),b(flying),u(walk),u(fly)]}
+
+def menu_snapshot_value(snapshot:I.MenuSnapshot) -> J.Value:
+  I.MenuSnapshot{I.Persisted{main,equipment,status},craft,carried,result,opened,revision} = snapshot
+  J.JArray{[inventory_snapshot_value(main),J.JArray{inventory_slot_values(equipment)},menu_status_value(status),
+    J.JArray{inventory_slot_values(craft)},inventory_slot_value(carried),menu_result_value(result),b(opened),n(revision)]}
+
 def reply_json(reply:Reply) -> Result<&2,&2,String,J.Value>:
   match reply:
     case HelloAck{epoch,sequence}: Done{J.JArray{[u(1),u(0),s(epoch),n(sequence)]}}
@@ -584,6 +777,7 @@ def reply_json(reply:Reply) -> Result<&2,&2,String,J.Value>:
     case Fault{epoch,sequence,message}: Done{J.JArray{[u(1),u(3),s(epoch),n(sequence),s(message)]}}
     case InventoryReply{epoch,sequence,snapshot}: Done{J.JArray{[u(1),u(4),s(epoch),n(sequence),inventory_snapshot_value(snapshot)]}}
     case ActionReply{epoch,sequence,changed,message}: Done{J.JArray{[u(1),u(5),s(epoch),n(sequence),b(changed),s(message)]}}
+    case MenuReply{epoch,sequence,accepted,message,snapshot}: Done{J.JArray{[u(1),u(6),s(epoch),n(sequence),b(accepted),s(message),menu_snapshot_value(snapshot)]}}
 
 def hex4(+word:U32) -> String:
   Char.show(J.hex_char(U32.and(U32.shrn(word,12n),15))) ++
@@ -654,6 +848,7 @@ def correlation(+epoch:String,+sequence:Nat,reply:Reply) -> Bool:
     case Fault{other,number,message}: String.eq(epoch,other) && Nat.is_eq(sequence,number)
     case InventoryReply{other,number,snapshot}: String.eq(epoch,other) && Nat.is_eq(sequence,number)
     case ActionReply{other,number,changed,message}: String.eq(epoch,other) && Nat.is_eq(sequence,number)
+    case MenuReply{other,number,accepted,message,snapshot}: String.eq(epoch,other) && Nat.is_eq(sequence,number)
 
 law raw_look_preserves_signed_zero_and_nan_payload:
   {event(J.JArray{[u(3),u(2147483648),u(2143289345)]}) ==

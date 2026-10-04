@@ -10,6 +10,9 @@ import ./json.bend as J
 import ./core.bend as C
 import ./player_inventory.bend as I
 import ./player_block_interaction.bend as BI
+import ./player_core_edit.bend as Edit
+import ./inventory.bend as Inv
+import ./world_mesh.bend as WM
 
 # The public save session and private renderer lease live in one actor.
 # Resources and the native window belong to the remote renderer process.
@@ -18,6 +21,8 @@ type Lease is Data:
 
 type State is Type:
   State{saved:S.State,lease:Lease,counter:Nat,nonce:String,capability:String,owner:C.Capability}
+type MenuOutcome is Data:
+  MenuOutcome{accepted:Bool,message:String,snapshot:I.MenuSnapshot}
 
 def idle() -> Lease:
   Lease{"",1n,0,False{}}
@@ -111,11 +116,25 @@ def frame_result(lease:Lease,counter:Nat,nonce:String,capability:String,owner:C.
   (saved,status) = result
   (State{saved,renewed(lease),counter,nonce,capability,owner},status)
 
+def frame_ensured(width:U32,height:U32,result:S.State & Result<&2,&2,String,Unit>) -> S.State & Result<&2,&2,String,V.Sample>:
+  (saved,status) = result
+  match status:
+    case Fail{message}: (saved,Fail{message})
+    case Done{unit}: World.snapshot(saved,width,height)
+
+def frame_supported(saved:S.State,width:U32,height:U32,dimensions:Bool) -> S.State & Result<&2,&2,String,V.Sample>:
+  match dimensions:
+    case False{}: World.snapshot(saved,width,height)
+    case True{}: frame_ensured(width,height,Scene.ensure(saved))
+
+def frame_sample(saved:S.State,+width:U32,+height:U32) -> S.State & Result<&2,&2,String,V.Sample>:
+  frame_supported(saved,width,height,WM.frame_valid(WM.frame(width,height)))
+
 def frame_checked(state:State,width:U32,height:U32,valid:Bool) -> State & Result<&2,&2,String,V.Sample>:
   match state valid:
     case _ False{}: (state,Fail{"RendererLeaseOrSequence"})
     case State{saved,lease,counter,nonce,capability,owner} True{}:
-      frame_result(lease,counter,nonce,capability,owner,World.snapshot(saved,width,height))
+      frame_result(lease,counter,nonce,capability,owner,frame_sample(saved,width,height))
 
 def frame(state:State,epoch:String,sequence:Nat,width:U32,height:U32) -> State & Result<&2,&2,String,V.Sample>:
   State{saved,+lease,counter,nonce,capability,owner} = state
@@ -149,11 +168,16 @@ def inventory(state:State,epoch:String,sequence:Nat) -> State & Result<&2,&2,Str
   State{saved,+lease,counter,nonce,capability,owner} = state
   inventory_checked(State{saved,lease,counter,nonce,capability,owner},admitted(lease,epoch,sequence))
 
+def hotbar_owner_checked(saved:S.State,index:U32,player:Bool) -> S.State & Result<&2,&2,String,Unit>:
+  match player:
+    case False{}: (saved,Fail{"inventory:player-permission"})
+    case True{}: S.inventory_select(saved,index)
+
 def hotbar_checked(state:State,index:U32,valid:Bool) -> State & Result<&2,&2,String,Unit>:
   match state valid:
     case _ False{}: (state,Fail{"RendererLeaseOrSequence"})
-    case State{saved,lease,counter,nonce,capability,owner} True{}:
-      input_result(lease,counter,nonce,capability,owner,S.inventory_select(saved,index))
+    case State{saved,lease,counter,nonce,capability,+owner} True{}:
+      input_result(lease,counter,nonce,capability,owner,hotbar_owner_checked(saved,index,Maybe.is_some(&2,U32,Edit.player_peer(owner))))
 
 def hotbar(state:State,epoch:String,sequence:Nat,index:U32) -> State & Result<&2,&2,String,Unit>:
   State{saved,+lease,counter,nonce,capability,owner} = state
@@ -163,17 +187,115 @@ def action_result(lease:Lease,counter:Nat,nonce:String,capability:String,owner:C
   (saved,status) = result
   (State{saved,renewed(lease),counter,nonce,capability,owner},Done{status})
 
+def action_ensured(owner:C.Capability,sequence:Nat,button:U32,result:S.State & Result<&2,&2,String,Unit>) -> S.State & BI.Outcome:
+  (saved,status) = result
+  match status:
+    case Fail{message}: (saved,BI.Outcome{False{},message})
+    case Done{unit}: S.block_action(saved,owner,sequence,button)
+
+def action_supported(saved:S.State,owner:C.Capability,sequence:Nat,button:U32,ready:Bool) -> S.State & BI.Outcome:
+  match ready:
+    case False{}: S.block_action(saved,owner,sequence,button)
+    case True{}: action_ensured(owner,sequence,button,Scene.ensure(saved))
+
+def action_abilities(owner:C.Capability,sequence:Nat,+button:U32,result:S.State & I.Abilities) -> S.State & BI.Outcome:
+  (saved,I.Abilities{instabuild,maybuild}) = result
+  action_supported(saved,owner,sequence,button,instabuild && maybuild && U32.is_le(button,1))
+
+def action_owner_checked(saved:S.State,owner:C.Capability,sequence:Nat,button:U32,player:Bool) -> S.State & BI.Outcome:
+  match player:
+    case False{}: (saved,BI.Outcome{False{},"interaction:permission-denied"})
+    case True{}: action_abilities(owner,sequence,button,S.inventory_abilities(saved))
+
+def action_requested(saved:S.State,+owner:C.Capability,sequence:Nat,button:U32) -> S.State & BI.Outcome:
+  action_owner_checked(saved,owner,sequence,button,Maybe.is_some(&2,U32,Edit.player_peer(owner)))
+
 # The private request supplies only a button. The actor retains its reserved
 # saved-player capability; observers and developer API sessions cannot forge it.
 def action_checked(state:State,sequence:Nat,button:U32,valid:Bool) -> State & Result<&2,&2,String,BI.Outcome>:
   match state valid:
     case _ False{}: (state,Fail{"RendererLeaseOrSequence"})
     case State{saved,lease,counter,nonce,capability,+owner} True{}:
-      action_result(lease,counter,nonce,capability,owner,S.block_action(saved,owner,sequence,button))
+      action_result(lease,counter,nonce,capability,owner,action_requested(saved,owner,sequence,button))
 
 def action(state:State,epoch:String,+sequence:Nat,button:U32) -> State & Result<&2,&2,String,BI.Outcome>:
   State{saved,+lease,counter,nonce,capability,owner} = state
   action_checked(State{saved,lease,counter,nonce,capability,owner},sequence,button,admitted(lease,epoch,sequence))
+
+# Every admitted menu operation reports the actual server-owned inventory.
+# A gameplay refusal consumes the private sequence and keeps the lease usable.
+def menu_observed(lease:Lease,counter:Nat,nonce:String,capability:String,owner:C.Capability,accepted:Bool,message:String,result:S.State & I.MenuSnapshot) -> State & Result<&2,&2,String,MenuOutcome>:
+  (saved,snapshot) = result
+  (State{saved,renewed(lease),counter,nonce,capability,owner},Done{MenuOutcome{accepted,message,snapshot}})
+
+def menu_status(lease:Lease,counter:Nat,nonce:String,capability:String,owner:C.Capability,result:S.State & Result<&2,&2,String,Unit>) -> State & Result<&2,&2,String,MenuOutcome>:
+  (saved,status) = result
+  match status:
+    case Fail{message}: menu_observed(lease,counter,nonce,capability,owner,False{},message,S.menu_inspect(saved))
+    case Done{unit}: menu_observed(lease,counter,nonce,capability,owner,True{},"",S.menu_inspect(saved))
+
+def menu_player_checked(state:State,operation:S.State -> S.State & Result<&2,&2,String,Unit>,player:Bool) -> State & Result<&2,&2,String,MenuOutcome>:
+  match state player:
+    case State{saved,lease,counter,nonce,capability,owner} False{}:
+      menu_observed(lease,counter,nonce,capability,owner,False{},"inventory:player-permission",S.menu_inspect(saved))
+    case State{saved,lease,counter,nonce,capability,owner} True{}:
+      menu_status(lease,counter,nonce,capability,owner,operation(saved))
+
+def menu_mutation_checked(state:State,operation:S.State -> S.State & Result<&2,&2,String,Unit>,valid:Bool) -> State & Result<&2,&2,String,MenuOutcome>:
+  match state valid:
+    case _ False{}: (state,Fail{"RendererLeaseOrSequence"})
+    case State{saved,lease,counter,nonce,capability,+owner} True{}:
+      menu_player_checked(State{saved,lease,counter,nonce,capability,owner},operation,Maybe.is_some(&2,U32,Edit.player_peer(owner)))
+
+# Ordinary inventory movement does not require maybuild. Acquisition is gated
+# by the actual inventory's instabuild ability inside S.inventory_acquire.
+def menu_mutation(state:State,epoch:String,sequence:Nat,operation:S.State -> S.State & Result<&2,&2,String,Unit>) -> State & Result<&2,&2,String,MenuOutcome>:
+  State{saved,+lease,counter,nonce,capability,owner} = state
+  menu_mutation_checked(State{saved,lease,counter,nonce,capability,owner},operation,admitted(lease,epoch,sequence))
+
+def menu_inspect_checked(state:State,valid:Bool) -> State & Result<&2,&2,String,MenuOutcome>:
+  match state valid:
+    case _ False{}: (state,Fail{"RendererLeaseOrSequence"})
+    case State{saved,lease,counter,nonce,capability,owner} True{}:
+      menu_observed(lease,counter,nonce,capability,owner,True{},"",S.menu_inspect(saved))
+
+def menu_inspect(state:State,epoch:String,sequence:Nat) -> State & Result<&2,&2,String,MenuOutcome>:
+  State{saved,+lease,counter,nonce,capability,owner} = state
+  menu_inspect_checked(State{saved,lease,counter,nonce,capability,owner},admitted(lease,epoch,sequence))
+
+def transfer_status(result:S.State & Inv.TransferStatus) -> S.State & Result<&2,&2,String,Unit>:
+  (saved,status) = result
+  match status:
+    case Inv.InvMoved{count}: (saved,Done{Unit{}})
+    case Inv.InvRejected{reason}: (saved,Fail{Inv.error_name(reason)})
+
+def transfer_checked(saved:S.State,source:U32,destination:U32,count:U32,mode:Inv.TransferMode,bounds:Bool) -> S.State & Result<&2,&2,String,Unit>:
+  match bounds:
+    case False{}: (saved,Fail{"inventory:main-slot"})
+    case True{}: transfer_status(S.inventory_transfer(saved,source,destination,count,mode))
+
+def transfer(state:State,epoch:String,sequence:Nat,+source:U32,+destination:U32,count:U32,mode:Inv.TransferMode) -> State & Result<&2,&2,String,MenuOutcome>:
+  menu_mutation(state,epoch,sequence,saved => transfer_checked(saved,source,destination,count,mode,U32.is_lt(source,36) && U32.is_lt(destination,36)))
+
+def acquire_checked(saved:S.State,index:U32,key:Inv.ItemKey,count:U32,bounds:Bool) -> S.State & Result<&2,&2,String,Unit>:
+  match bounds:
+    case False{}: (saved,Fail{"inventory:main-slot"})
+    case True{}: S.inventory_acquire(saved,index,key,count)
+
+def acquire(state:State,epoch:String,sequence:Nat,+index:U32,key:Inv.ItemKey,count:U32) -> State & Result<&2,&2,String,MenuOutcome>:
+  menu_mutation(state,epoch,sequence,saved => acquire_checked(saved,index,key,count,U32.is_lt(index,36)))
+
+def menu_open(state:State,epoch:String,sequence:Nat) -> State & Result<&2,&2,String,MenuOutcome>:
+  menu_mutation(state,epoch,sequence,S.menu_open)
+
+def select(state:State,epoch:String,sequence:Nat,index:U32) -> State & Result<&2,&2,String,MenuOutcome>:
+  menu_mutation(state,epoch,sequence,saved => S.inventory_select(saved,index))
+
+def menu_close(state:State,epoch:String,sequence:Nat) -> State & Result<&2,&2,String,MenuOutcome>:
+  menu_mutation(state,epoch,sequence,S.menu_close)
+
+def menu_click(state:State,epoch:String,sequence:Nat,index:U32,click:I.Click) -> State & Result<&2,&2,String,MenuOutcome>:
+  menu_mutation(state,epoch,sequence,saved => S.menu_click(saved,index,click))
 
 def release_checked(state:State,valid:Bool) -> State & Result<&2,&2,String,Unit>:
   match state valid:
@@ -214,3 +336,56 @@ law stale_disconnect_preserves_complete_actor:
 def stale_disconnect_preserves_complete_actor(state):
   match state:
     case State{saved,lease,counter,nonce,capability,owner}: {==}
+
+law rejected_menu_mutation_preserves_complete_actor:
+  for state:State
+  for operation:S.State -> S.State & Result<&2,&2,String,Unit>
+  {menu_mutation_checked(state,operation,False{}) == (state,Fail{"RendererLeaseOrSequence"}) : State & Result<&2,&2,String,MenuOutcome>}
+def rejected_menu_mutation_preserves_complete_actor(state,operation):
+  match state:
+    case State{saved,lease,counter,nonce,capability,owner}: {==}
+
+law inadmissible_menu_call_preserves_complete_actor:
+  for saved:S.State
+  for +lease:Lease
+  for counter:Nat
+  for nonce:String
+  for capability:String
+  for owner:C.Capability
+  for +epoch:String
+  for +sequence:Nat
+  for operation:S.State -> S.State & Result<&2,&2,String,Unit>
+  for denied:{admitted(lease,epoch,sequence) == False{} : Bool}
+  {menu_mutation(State{saved,lease,counter,nonce,capability,owner},epoch,sequence,operation) ==
+    (State{saved,lease,counter,nonce,capability,owner},Fail{"RendererLeaseOrSequence"}) : State & Result<&2,&2,String,MenuOutcome>}
+def inadmissible_menu_call_preserves_complete_actor(saved,lease,counter,nonce,capability,owner,epoch,sequence,operation,denied):
+  %Equal.sym(Bool,admitted(lease,epoch,sequence),False{},denied) :
+    {menu_mutation_checked(State{saved,lease,counter,nonce,capability,owner},operation,_) ==
+      (State{saved,lease,counter,nonce,capability,owner},Fail{"RendererLeaseOrSequence"}) : State & Result<&2,&2,String,MenuOutcome>}
+  {==}
+
+# This gate precedes inventory reads and demand generation, so a denied
+# retained player cannot change any owner in the actual saved session.
+law rejected_action_owner_preserves_saved_session:
+  for saved:S.State
+  for owner:C.Capability
+  for sequence:Nat
+  for button:U32
+  {action_owner_checked(saved,owner,sequence,button,False{}) ==
+    (saved,BI.Outcome{False{},"interaction:permission-denied"}) : S.State & BI.Outcome}
+def rejected_action_owner_preserves_saved_session(saved,owner,sequence,button):
+  {==}
+
+law unauthorized_action_preserves_saved_session:
+  for saved:S.State
+  for +owner:C.Capability
+  for sequence:Nat
+  for button:U32
+  for denied:{Edit.player_peer(owner) == None{} : Maybe<&2,U32>}
+  {action_requested(saved,owner,sequence,button) ==
+    (saved,BI.Outcome{False{},"interaction:permission-denied"}) : S.State & BI.Outcome}
+def unauthorized_action_preserves_saved_session(saved,owner,sequence,button,denied):
+  %Equal.sym(Maybe<&2,U32>,Edit.player_peer(owner),None{},denied) :
+    {action_owner_checked(saved,owner,sequence,button,Maybe.is_some(&2,U32,_)) ==
+      (saved,BI.Outcome{False{},"interaction:permission-denied"}) : S.State & BI.Outcome}
+  {==}
