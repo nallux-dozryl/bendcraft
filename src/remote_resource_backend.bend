@@ -1,7 +1,7 @@
 import Base
 import ./local_player_session.bend as S
 import ./local_player_scene.bend as Scene
-import ./local_resource_world.bend as World
+import ./local_resource_world_sample.bend as World
 import ./world_visibility.bend as V
 import ./client_controls.bend as CC
 import ./player_controls.bend as PC

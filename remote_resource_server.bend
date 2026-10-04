@@ -8,6 +8,11 @@ import ./src/local_player_storage.bend as Storage
 import ./src/local_player_record.bend as Record
 import ./src/player_inventory_codec.bend as InventoryStorage
 import ./src/player_item_definitions.bend as ItemDefinitions
+import ./src/item_component.bend as ItemComponents
+import ./src/player_crafting_authority_load.bend as CraftingLoad
+import ./src/player_crafting_authority_startup.bend as CraftingStartup
+import ./src/player_crafting_session_adapter.bend as CraftingSession
+import ./src/player_crafting_authority_components.bend as CraftingComponents
 import ./src/world_generation_settings.bend as Generation
 import ./src/nbt.bend as NBT
 import ./src/core.bend as Core
@@ -159,26 +164,79 @@ def fixture_loaded(+options:CLI.Options,config:Config,tables:Motion.Tables) -> I
     initialized : Session.Ready <- Scene.initialize(ready)
     started(options,config,Scene.run_requested(initialized,CLI.running(options)))
 
-def profile_loaded(codec:Persistence.Codec<InventoryStorage.Saved>,+options:CLI.Options,config:Config,tables:Motion.Tables,settings:Generation.Settings) -> IO(Unit):
+def crafting_reserved(control:Bool,+config:Config,context:CraftingSession.Context,
+    result:Session.State & Result<&2,&2,String,Core.Capability>) -> IO(Unit):
+  Config{port,capability,nonce} = config
+  (state,status) = result
+  match status:
+    case Fail{message}: IO.die(Unit,1,"local player owner: " ++ message)
+    case Done{Core.Player{+peer}}:
+      serving(control,config,Backend.new_reserved_with_crafting(state,nonce,capability,Core.Player{peer},context),U32.inc(peer))
+    case Done{other}: IO.die(Unit,1,"local player owner was not allocated")
+
+def crafting_started(+options:CLI.Options,config:Config,context:CraftingSession.Context,ready:Session.Ready) -> IO(Unit):
+  CLI.Options{fixture,profile,creative,run,control,sine} = options
+  Session.Ready{state,first_peer} = ready
+  crafting_reserved(control,config,context,Session.reserve_local_player(state))
+
+def profile_loaded(codec:Persistence.Codec<InventoryStorage.Saved>,+options:CLI.Options,config:Config,tables:Motion.Tables,settings:Generation.Settings,context:CraftingSession.Context) -> IO(Unit):
   do IO<Unit>:
     stored : Persistence.Ready<InventoryStorage.Saved> <- Persistence.load_codec(~InventoryStorage.Saved,~Session.inventory_operations(),codec,InventoryStorage.limits())
     ready : Session.Ready <- Session.new_inventory(stored,tables)
     initialized : Session.Ready <- Scene.initialize_generated(ready,settings)
-    started(options,config,Scene.run_requested(initialized,CLI.running(options)))
+    crafting_started(options,config,context,Scene.run_requested(initialized,CLI.running(options)))
 
-def profile_definitions(+options:CLI.Options,config:Config,tables:Motion.Tables,definitions:ItemDefinitions.Catalog) -> IO(Unit):
+def profile_definitions(+options:CLI.Options,config:Config,tables:Motion.Tables,+definitions:ItemDefinitions.Catalog,context:CraftingSession.Context) -> IO(Unit):
   CLI.Options{fixture,profile,creative,run,control,sine} = options
   +settings = Generation.stone_dirt(NBT.Word64{0,0})
-  profile_loaded(InventoryStorage.codec_with(definitions,creative,settings),options,config,tables,settings)
+  profile_loaded(InventoryStorage.codec_with(definitions,creative,settings),options,config,tables,settings,context)
+
+def crafting_mode_defaults(value:Maybe<&2,ItemComponents.Defaults>) -> IO(CraftingComponents.Mode):
+  match value:
+    case None{}: IO.die(CraftingComponents.Mode,1,"initialized suspicious stew component defaults are unavailable")
+    case Some{defaults}: IO.pure(CraftingComponents.Mode,CraftingComponents.TypedStew{defaults})
+
+def crafting_mode(definitions:ItemDefinitions.Catalog) -> IO(CraftingComponents.Mode):
+  crafting_mode_defaults(ItemDefinitions.component_defaults(definitions,"minecraft:suspicious_stew"))
+
+def crafting_service(+options:CLI.Options,config:Config,tables:Motion.Tables,
+    result:Result<&2,&2,String,CraftingLoad.Service>) -> IO(Unit):
+  match result:
+    case Fail{message}: IO.die(Unit,1,"crafting startup: " ++ message)
+    case Done{CraftingLoad.Service{+definitions,recipes}}:
+      do IO<Unit>:
+        mode:CraftingComponents.Mode <- crafting_mode(definitions)
+        profile_definitions(options,config,tables,definitions,CraftingSession.new_with_components(recipes,mode))
+
+def default_game_jar(result:Result<&1,&1,U32 & String,String>) -> IO(String):
+  match result:
+    case Fail{cause}: IO.die(String,1,"HOME is required when MC_GAME_JAR is unset")
+    case Done{home}: IO.pure(String,home ++ "/Library/Application Support/minecraft/versions/26.3/26.3.jar")
+
+def game_jar_selected(result:Result<&1,&1,U32 & String,String>) -> IO(String):
+  match result:
+    case Done{path}: IO.pure(String,path)
+    case Fail{cause}:
+      do IO<String>:
+        home:Result<&1,&1,U32 & String,String> <- IO.get_env("HOME")
+        default_game_jar(home)
+
+# Registry facts are checked against their extracted digest. Recipe JSON is
+# read from the installed 26.3 JAR; its directory order never sets precedence.
+def crafting_world(options:CLI.Options,config:Config,tables:Motion.Tables) -> IO(Unit):
+  do IO<Unit>:
+    selected:Result<&1,&1,U32 & String,String> <- IO.get_env("MC_GAME_JAR")
+    jar:String <- game_jar_selected(selected)
+    service:Result<&2,&2,String,CraftingLoad.Service> <- CraftingStartup.service(jar,
+      "generated/reference_item_metadata.tsv","generated/reference_crafting_authority_metadata.json",CraftingLoad.defaults())
+    crafting_service(options,config,tables,service)
 
 def selected_world(+options:CLI.Options,config:Config,tables:Motion.Tables) -> IO(Unit):
   CLI.Options{fixture,profile,creative,run,control,sine} = options
   match fixture:
     case True{}: fixture_loaded(options,config,tables)
     case False{}:
-      do IO<Unit>:
-        definitions : ItemDefinitions.Catalog <- InventoryStorage.load_definitions("generated/reference_item_metadata.tsv")
-        profile_definitions(options,config,tables,definitions)
+      crafting_world(options,config,tables)
 
 def loaded(+options:CLI.Options,config:Config) -> IO(Unit):
   CLI.Options{fixture,profile,creative,run,control,sine} = options

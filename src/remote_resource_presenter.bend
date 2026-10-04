@@ -171,6 +171,8 @@ def correlated_reply(+epoch:String,+sequence:Nat,socket:Socket,buffer:Framing.Bu
       correlation_gate(String.eq(epoch,"") && Nat.is_eq(sequence,0n) && Nat.is_eq(zero,0n),socket,buffer,assigned,1n,reply)
     case Wire.FrameReply{actual,seq,sample} True{}:
       correlation_gate(String.eq(epoch,actual) && Nat.is_eq(sequence,seq),socket,buffer,current,next,reply)
+    case Wire.CatalogFrameReply{actual,seq,sample} True{}:
+      correlation_gate(String.eq(epoch,actual) && Nat.is_eq(sequence,seq),socket,buffer,current,next,reply)
     case Wire.Ack{actual,seq} True{}:
       correlation_gate(String.eq(epoch,actual) && Nat.is_eq(sequence,seq),socket,buffer,current,next,reply)
     case Wire.InventoryReply{actual,seq,inventory} True{}:

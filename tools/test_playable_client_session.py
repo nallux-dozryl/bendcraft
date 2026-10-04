@@ -27,7 +27,6 @@ import time
 
 import test_fall_reset_world_continuation_r2 as Host
 import test_local_player_session as Session
-import test_local_player_session_continuation_r2 as OldConsumer
 
 S = Session
 
@@ -230,6 +229,13 @@ def host_controls(directory):
     cases.append({'case': 'Session-routing-exception-restored', 'passed': True})
     return {'status': 'passed', 'cases': cases, 'compiler_executions': 0,
             'native_executions': 0, 'Java_executions': 0, 'UI_executions': 0}
+
+
+def old_sweep_directory(*args):
+    # The historical continuation validates its own frozen fixture on import.
+    # Current production snapshots/classes do not execute that legacy fixture.
+    import test_local_player_session_continuation_r2 as old_consumer
+    return old_consumer.sweep_directory(*args)
 
 
 def prepare():
@@ -1397,6 +1403,9 @@ def child_lane(name, directory):
 def native():
     if ROLE == 'block-reference':
         return native_reference_lane()
+    # Keep the historical cleanup module's admission before any historical
+    # child starts; current actor helpers may import this module independently.
+    importlib.import_module('test_local_player_session_continuation_r2')
     value, receipt, _ = verify_build()
     directory = WORK / 'native-attempt'
     Host.unused(directory, NATIVE_RESULT)
@@ -1411,7 +1420,7 @@ def native():
                           {'argv': argv, 'cap_seconds': 120,
                            'ready_seal': value['seal_sha256']})
                 _, process = execute(argv, name)
-                cleaned = OldConsumer.sweep_directory(directory, name + '-descendant-cleanup')
+                cleaned = old_sweep_directory(directory, name + '-descendant-cleanup')
                 require(cleaned['status'] == 'PASS', 'Managed child groups not absent: ' + name)
                 result = json.loads((directory / name / 'acceptance.json').read_bytes())
                 require(result['status'] == 'passed', 'Boundary lane failed: ' + name)
@@ -1430,7 +1439,7 @@ def native():
         print(json.dumps(summary), flush=True)
     except BaseException as cause:
         # Sweep journals even when a child refuses before its own cleanup receipt.
-        cleaned = OldConsumer.sweep_directory(directory, 'failure-descendant-cleanup')
+        cleaned = old_sweep_directory(directory, 'failure-descendant-cleanup')
         Host.failure(directory / 'first-failure.json', cause,
                      completed_lanes=len(lanes), cleanup=cleaned,
                      last_execution=LAST_EXECUTION)

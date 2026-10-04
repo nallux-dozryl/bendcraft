@@ -1,0 +1,123 @@
+{
+  "status": "FAILED_BUILD",
+  "generation": "actor004/producer015",
+  "ordinary_source_check": "PASS; complete original book_valid,7123 declarations,zero holes,order preserved",
+  "producer_seconds": 283.319827250205,
+  "returncode": -15,
+  "termination_reason": "producer_stall",
+  "complete_C": false,
+  "native_binary_created": false,
+  "group_absent": true,
+  "sampled_peak_RSS_bytes": 3249799168,
+  "limits": {
+    "heap_mib": 8192,
+    "producer_stall_seconds": 90,
+    "sampled_rss_bytes": 8589934592,
+    "total_seconds": 600
+  },
+  "pass_observations": [
+    {
+      "time_ms": 81514.590583,
+      "memory": {
+        "rss": 1322582016,
+        "heapTotal": 6897188864,
+        "heapUsed": 6484071112,
+        "external": 15070709,
+        "arrayBuffers": 24819
+      },
+      "phase": "pass_begin",
+      "pass": 1,
+      "own": 0,
+      "hot": 0,
+      "stat": 0
+    },
+    {
+      "time_ms": 125349.649083,
+      "memory": {
+        "rss": 1003913216,
+        "heapTotal": 7336394752,
+        "heapUsed": 7140809328,
+        "external": 15069477,
+        "arrayBuffers": 24819
+      },
+      "phase": "pass_end",
+      "pass": 1,
+      "own": 4997,
+      "hot": 1538,
+      "stat": 36
+    },
+    {
+      "time_ms": 125350.176125,
+      "memory": {
+        "rss": 1004077056,
+        "heapTotal": 7336394752,
+        "heapUsed": 7140817336,
+        "external": 15069477,
+        "arrayBuffers": 24819
+      },
+      "phase": "pass_begin",
+      "pass": 2,
+      "own": 4997,
+      "hot": 1538,
+      "stat": 36
+    },
+    {
+      "time_ms": 192484.448875,
+      "memory": {
+        "rss": 1129512960,
+        "heapTotal": 7672217600,
+        "heapUsed": 7452287896,
+        "external": 15068412,
+        "arrayBuffers": 24819
+      },
+      "phase": "pass_end",
+      "pass": 2,
+      "own": 5245,
+      "hot": 1679,
+      "stat": 36
+    },
+    {
+      "time_ms": 192497.609125,
+      "memory": {
+        "rss": 1131298816,
+        "heapTotal": 7672217600,
+        "heapUsed": 7452295040,
+        "external": 15068412,
+        "arrayBuffers": 24819
+      },
+      "phase": "pass_begin",
+      "pass": 3,
+      "own": 5245,
+      "hot": 1679,
+      "stat": 36
+    }
+  ],
+  "source_before_after_equal": true,
+  "interpretation": "The supervisor terminated after90seconds without emitted diagnostic rows during pass3. Per-function emitter hooks were filtered out. This is an inactivity watchdog cutoff, not evidence of an infinite loop, compiler error, memory failure or exhausted600second total deadline.",
+  "next_change": "Actual actor sampler/client import separation plus narrow-tested private TELES WeakMap cache and per-function progress. Next generation retains overall600second and8GiB bounds,removes silence-only termination. Original compiler and failed generation stay unchanged.",
+  "raw_receipt": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-015/receipt.json",
+    "bytes": 7604,
+    "sha256": "ef5b6c3b97ed04e6369b67500e4d7035a062c7a7f274b098b48d6b64f337c77d"
+  },
+  "raw_producer": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-015/producer.jsonl",
+    "bytes": 1837,
+    "sha256": "1a655228aa815f02fb0263b80e36373bd1ccbbba1d17bb60e6bdc53908adeb8b"
+  },
+  "source_evidence": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/playable-client-actor004-source-015.json",
+    "bytes": 38745,
+    "sha256": "09732f19a72476711f58ff7a9691389c51300b58382408533720a91dfece22e4"
+  },
+  "source_map": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-015/source/source-map.json",
+    "bytes": 163508,
+    "sha256": "e67c355303aa75ed59e53bfb2bcf4cac1f49450f05b382d7cc84566adf18868c"
+  },
+  "runtime_inputs": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-015/runtime-inputs.json",
+    "bytes": 617,
+    "sha256": "547f375f8a30d548c42ab14bbcfeafdd4c88407be7f62b11dd052d1b6e1901b2"
+  }
+}
