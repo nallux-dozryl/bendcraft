@@ -417,7 +417,7 @@ def launch_lane(binary, actor_binary, directory, data, rgb, helpers, *, refusal=
         relayed, relay_pin = relay.finish()
         pairs = correlated(relayed, data, pairs=1 if refusal else 2)
         if refusal:
-            message = 'render: StateNotLoaded: catalog: ' + str(data['palette']['minecraft:glass'])
+            message = 'render: StateNotLoaded:catalog:' + str(data['palette']['minecraft:glass'])
             require(renderer.err.read_text().strip() == message and not list(renderer.images.iterdir()),
                     'Actual glass StateNotLoaded refusal or absence of presented pixels differs')
             result = {'status': 'expected_StateNotLoaded_refusal', 'message': message}
