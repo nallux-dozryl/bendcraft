@@ -1,0 +1,1514 @@
+{
+  "confidence": "high for these recorded bounded actual cases; server receiver/filesystem/datafix/content paths unexecuted",
+  "default_top_level_tag_types": {
+    "AbsorptionAmount": 5,
+    "Air": 2,
+    "Brain": 10,
+    "DataVersion": 3,
+    "DeathTime": 2,
+    "EnderItems": 9,
+    "FallFlying": 1,
+    "Fire": 2,
+    "Health": 5,
+    "HurtTime": 2,
+    "Inventory": 9,
+    "Invulnerable": 1,
+    "Motion": 9,
+    "OnGround": 1,
+    "PortalCooldown": 3,
+    "Pos": 9,
+    "Rotation": 9,
+    "Score": 3,
+    "SelectedItemSlot": 3,
+    "SleepTimer": 2,
+    "UUID": 11,
+    "XpLevel": 3,
+    "XpP": 5,
+    "XpSeed": 3,
+    "XpTotal": 3,
+    "abilities": 10,
+    "attributes": 9,
+    "current_impulse_context_reset_grace_time": 3,
+    "fall_distance": 6,
+    "foodExhaustionLevel": 5,
+    "foodLevel": 3,
+    "foodSaturationLevel": 5,
+    "foodTickTimer": 3
+  },
+  "full_typed_tags_and_wire": "reference/player_save.json observations[kind=save].wire; complete load trees/bytes in pinned build/player-save raw artifacts",
+  "needs_sync_assigned_true": true,
+  "producer": {
+    "bytes": 39805,
+    "path": "tools/reference_player_save_probe.py",
+    "sha256": "a17da3cd7dc3510e7e4fdf0f905882358ff2bfbd00f906ab23ca1784289d8def"
+  },
+  "reference": {
+    "bytes": 1291127,
+    "path": "reference/player_save.json",
+    "sha256": "762a02a965cea86390ad0582bebc187eccd4b847a9f9db5552d9311c73d3dbc2"
+  },
+  "reused_receiver_box_rebuilt": true,
+  "reused_receiver_collision_flags": [
+    true,
+    true,
+    true,
+    true
+  ],
+  "reused_receiver_exactly_retained_fields": {
+    "bob_f32_bits": [
+      "3f800000",
+      "c0000000",
+      "40400000",
+      "c0800000"
+    ],
+    "cached_eye_height_f32_bits": "3fa28f5c",
+    "crouching": true,
+    "height_f32_bits": "3fc00000",
+    "input_f32_bits": [
+      "3f333333",
+      "be99999a",
+      "3e4ccccd"
+    ],
+    "jump_delay": -1,
+    "jump_trigger": -2147483648,
+    "jumping": true,
+    "key_presses": [
+      true,
+      false,
+      true,
+      false,
+      false,
+      true,
+      false
+    ],
+    "minor_horizontal_collision": true,
+    "move_vector_f32_bits": [
+      "3f4ccccd",
+      "bf19999a"
+    ],
+    "on_ground_no_blocks": true,
+    "pose": "CROUCHING",
+    "sprint_trigger_time": 17,
+    "stored_speed_f32_bits": "3e99999a",
+    "support": [
+      -2,
+      0,
+      5
+    ],
+    "tick_count_u32": 123,
+    "width_f32_bits": "3f19999a"
+  },
+  "roundtrips": {
+    "default": {
+      "changed_top_level_tags": {
+        "attributes": {
+          "after": {
+            "items": [
+              {
+                "entries": {
+                  "base": {
+                    "bits": "3fb99999a0000000",
+                    "type": 6
+                  },
+                  "id": {
+                    "type": 8,
+                    "value": "minecraft:movement_speed"
+                  }
+                },
+                "type": 10
+              }
+            ],
+            "type": 9
+          },
+          "before": {
+            "items": [],
+            "type": 9
+          }
+        }
+      },
+      "exact_wire_equal": false,
+      "official_load_ok": true,
+      "stable_top_level_keys": [
+        "AbsorptionAmount",
+        "Air",
+        "Brain",
+        "DataVersion",
+        "DeathTime",
+        "EnderItems",
+        "FallFlying",
+        "Fire",
+        "Health",
+        "HurtTime",
+        "Inventory",
+        "Invulnerable",
+        "Motion",
+        "OnGround",
+        "PortalCooldown",
+        "Pos",
+        "Rotation",
+        "Score",
+        "SelectedItemSlot",
+        "SleepTimer",
+        "UUID",
+        "XpLevel",
+        "XpP",
+        "XpSeed",
+        "XpTotal",
+        "abilities",
+        "current_impulse_context_reset_grace_time",
+        "fall_distance",
+        "foodExhaustionLevel",
+        "foodLevel",
+        "foodSaturationLevel",
+        "foodTickTimer"
+      ]
+    },
+    "fall-flying-active": {
+      "actual_error": "java.lang.NullPointerException",
+      "official_load_ok": false
+    },
+    "nondefault": {
+      "changed_top_level_tags": {
+        "Rotation": {
+          "after": {
+            "items": [
+              {
+                "bits": "43adc000",
+                "type": 5
+              },
+              {
+                "bits": "c2b40000",
+                "type": 5
+              }
+            ],
+            "type": 9
+          },
+          "before": {
+            "items": [
+              {
+                "bits": "4430e000",
+                "type": 5
+              },
+              {
+                "bits": "c2b40000",
+                "type": 5
+              }
+            ],
+            "type": 9
+          }
+        },
+        "attributes": {
+          "after": {
+            "items": [
+              {
+                "entries": {
+                  "base": {
+                    "bits": "3fb99999a0000000",
+                    "type": 6
+                  },
+                  "id": {
+                    "type": 8,
+                    "value": "minecraft:movement_speed"
+                  }
+                },
+                "type": 10
+              }
+            ],
+            "type": 9
+          },
+          "before": {
+            "items": [],
+            "type": 9
+          }
+        }
+      },
+      "exact_wire_equal": false,
+      "official_load_ok": true,
+      "stable_top_level_keys": [
+        "AbsorptionAmount",
+        "Air",
+        "Brain",
+        "DataVersion",
+        "DeathTime",
+        "EnderItems",
+        "FallFlying",
+        "Fire",
+        "Health",
+        "HurtTime",
+        "Inventory",
+        "Invulnerable",
+        "Motion",
+        "OnGround",
+        "PortalCooldown",
+        "Pos",
+        "Score",
+        "SelectedItemSlot",
+        "SleepTimer",
+        "UUID",
+        "XpLevel",
+        "XpP",
+        "XpSeed",
+        "XpTotal",
+        "abilities",
+        "current_explosion_impact_pos",
+        "current_impulse_context_reset_grace_time",
+        "fall_distance",
+        "foodExhaustionLevel",
+        "foodLevel",
+        "foodSaturationLevel",
+        "foodTickTimer"
+      ]
+    },
+    "runtime-crouching": {
+      "changed_top_level_tags": {
+        "Rotation": {
+          "after": {
+            "items": [
+              {
+                "bits": "43adc000",
+                "type": 5
+              },
+              {
+                "bits": "c2b40000",
+                "type": 5
+              }
+            ],
+            "type": 9
+          },
+          "before": {
+            "items": [
+              {
+                "bits": "4430e000",
+                "type": 5
+              },
+              {
+                "bits": "c2b40000",
+                "type": 5
+              }
+            ],
+            "type": 9
+          }
+        },
+        "attributes": {
+          "after": {
+            "items": [
+              {
+                "entries": {
+                  "base": {
+                    "bits": "3fb99999a0000000",
+                    "type": 6
+                  },
+                  "id": {
+                    "type": 8,
+                    "value": "minecraft:movement_speed"
+                  }
+                },
+                "type": 10
+              }
+            ],
+            "type": 9
+          },
+          "before": {
+            "items": [],
+            "type": 9
+          }
+        }
+      },
+      "exact_wire_equal": false,
+      "official_load_ok": true,
+      "stable_top_level_keys": [
+        "AbsorptionAmount",
+        "Air",
+        "Brain",
+        "DataVersion",
+        "DeathTime",
+        "EnderItems",
+        "FallFlying",
+        "Fire",
+        "Health",
+        "HurtTime",
+        "Inventory",
+        "Invulnerable",
+        "Motion",
+        "OnGround",
+        "PortalCooldown",
+        "Pos",
+        "Score",
+        "SelectedItemSlot",
+        "SleepTimer",
+        "UUID",
+        "XpLevel",
+        "XpP",
+        "XpSeed",
+        "XpTotal",
+        "abilities",
+        "current_explosion_impact_pos",
+        "current_impulse_context_reset_grace_time",
+        "fall_distance",
+        "foodExhaustionLevel",
+        "foodLevel",
+        "foodSaturationLevel",
+        "foodTickTimer"
+      ]
+    },
+    "runtime-swimming": {
+      "changed_top_level_tags": {
+        "Rotation": {
+          "after": {
+            "items": [
+              {
+                "bits": "43adc000",
+                "type": 5
+              },
+              {
+                "bits": "c2b40000",
+                "type": 5
+              }
+            ],
+            "type": 9
+          },
+          "before": {
+            "items": [
+              {
+                "bits": "4430e000",
+                "type": 5
+              },
+              {
+                "bits": "c2b40000",
+                "type": 5
+              }
+            ],
+            "type": 9
+          }
+        },
+        "attributes": {
+          "after": {
+            "items": [
+              {
+                "entries": {
+                  "base": {
+                    "bits": "3fb99999a0000000",
+                    "type": 6
+                  },
+                  "id": {
+                    "type": 8,
+                    "value": "minecraft:movement_speed"
+                  }
+                },
+                "type": 10
+              }
+            ],
+            "type": 9
+          },
+          "before": {
+            "items": [],
+            "type": 9
+          }
+        }
+      },
+      "exact_wire_equal": false,
+      "official_load_ok": true,
+      "stable_top_level_keys": [
+        "AbsorptionAmount",
+        "Air",
+        "Brain",
+        "DataVersion",
+        "DeathTime",
+        "EnderItems",
+        "FallFlying",
+        "Fire",
+        "Health",
+        "HurtTime",
+        "Inventory",
+        "Invulnerable",
+        "Motion",
+        "OnGround",
+        "PortalCooldown",
+        "Pos",
+        "Score",
+        "SelectedItemSlot",
+        "SleepTimer",
+        "UUID",
+        "XpLevel",
+        "XpP",
+        "XpSeed",
+        "XpTotal",
+        "abilities",
+        "current_explosion_impact_pos",
+        "current_impulse_context_reset_grace_time",
+        "fall_distance",
+        "foodExhaustionLevel",
+        "foodLevel",
+        "foodSaturationLevel",
+        "foodTickTimer"
+      ]
+    },
+    "scale-attribute": {
+      "changed_top_level_tags": {
+        "Rotation": {
+          "after": {
+            "items": [
+              {
+                "bits": "43adc000",
+                "type": 5
+              },
+              {
+                "bits": "c2b40000",
+                "type": 5
+              }
+            ],
+            "type": 9
+          },
+          "before": {
+            "items": [
+              {
+                "bits": "4430e000",
+                "type": 5
+              },
+              {
+                "bits": "c2b40000",
+                "type": 5
+              }
+            ],
+            "type": 9
+          }
+        },
+        "attributes": {
+          "after": {
+            "items": [
+              {
+                "entries": {
+                  "base": {
+                    "bits": "3fb99999a0000000",
+                    "type": 6
+                  },
+                  "id": {
+                    "type": 8,
+                    "value": "minecraft:movement_speed"
+                  }
+                },
+                "type": 10
+              }
+            ],
+            "type": 9
+          },
+          "before": {
+            "items": [
+              {
+                "entries": {
+                  "base": {
+                    "bits": "3ff8000000000000",
+                    "type": 6
+                  },
+                  "id": {
+                    "type": 8,
+                    "value": "minecraft:scale"
+                  }
+                },
+                "type": 10
+              }
+            ],
+            "type": 9
+          }
+        }
+      },
+      "exact_wire_equal": false,
+      "official_load_ok": true,
+      "stable_top_level_keys": [
+        "AbsorptionAmount",
+        "Air",
+        "Brain",
+        "DataVersion",
+        "DeathTime",
+        "EnderItems",
+        "FallFlying",
+        "Fire",
+        "Health",
+        "HurtTime",
+        "Inventory",
+        "Invulnerable",
+        "Motion",
+        "OnGround",
+        "PortalCooldown",
+        "Pos",
+        "Score",
+        "SelectedItemSlot",
+        "SleepTimer",
+        "UUID",
+        "XpLevel",
+        "XpP",
+        "XpSeed",
+        "XpTotal",
+        "abilities",
+        "current_explosion_impact_pos",
+        "current_impulse_context_reset_grace_time",
+        "fall_distance",
+        "foodExhaustionLevel",
+        "foodLevel",
+        "foodSaturationLevel",
+        "foodTickTimer"
+      ]
+    },
+    "short-wrap": {
+      "changed_top_level_tags": {
+        "Rotation": {
+          "after": {
+            "items": [
+              {
+                "bits": "43adc000",
+                "type": 5
+              },
+              {
+                "bits": "c2b40000",
+                "type": 5
+              }
+            ],
+            "type": 9
+          },
+          "before": {
+            "items": [
+              {
+                "bits": "4430e000",
+                "type": 5
+              },
+              {
+                "bits": "c2b40000",
+                "type": 5
+              }
+            ],
+            "type": 9
+          }
+        },
+        "attributes": {
+          "after": {
+            "items": [
+              {
+                "entries": {
+                  "base": {
+                    "bits": "3fb99999a0000000",
+                    "type": 6
+                  },
+                  "id": {
+                    "type": 8,
+                    "value": "minecraft:movement_speed"
+                  }
+                },
+                "type": 10
+              }
+            ],
+            "type": 9
+          },
+          "before": {
+            "items": [],
+            "type": 9
+          }
+        }
+      },
+      "exact_wire_equal": false,
+      "official_load_ok": true,
+      "stable_top_level_keys": [
+        "AbsorptionAmount",
+        "Air",
+        "Brain",
+        "DataVersion",
+        "DeathTime",
+        "EnderItems",
+        "FallFlying",
+        "Fire",
+        "Health",
+        "HurtTime",
+        "Inventory",
+        "Invulnerable",
+        "Motion",
+        "OnGround",
+        "PortalCooldown",
+        "Pos",
+        "Score",
+        "SelectedItemSlot",
+        "SleepTimer",
+        "UUID",
+        "XpLevel",
+        "XpP",
+        "XpSeed",
+        "XpTotal",
+        "abilities",
+        "current_explosion_impact_pos",
+        "current_impulse_context_reset_grace_time",
+        "fall_distance",
+        "foodExhaustionLevel",
+        "foodLevel",
+        "foodSaturationLevel",
+        "foodTickTimer"
+      ]
+    },
+    "signed-zero": {
+      "changed_top_level_tags": {
+        "attributes": {
+          "after": {
+            "items": [
+              {
+                "entries": {
+                  "base": {
+                    "bits": "3fb99999a0000000",
+                    "type": 6
+                  },
+                  "id": {
+                    "type": 8,
+                    "value": "minecraft:movement_speed"
+                  }
+                },
+                "type": 10
+              }
+            ],
+            "type": 9
+          },
+          "before": {
+            "items": [],
+            "type": 9
+          }
+        }
+      },
+      "exact_wire_equal": false,
+      "official_load_ok": true,
+      "stable_top_level_keys": [
+        "AbsorptionAmount",
+        "Air",
+        "Brain",
+        "DataVersion",
+        "DeathTime",
+        "EnderItems",
+        "FallFlying",
+        "Fire",
+        "Health",
+        "HurtTime",
+        "Inventory",
+        "Invulnerable",
+        "Motion",
+        "OnGround",
+        "PortalCooldown",
+        "Pos",
+        "Rotation",
+        "Score",
+        "SelectedItemSlot",
+        "SleepTimer",
+        "UUID",
+        "XpLevel",
+        "XpP",
+        "XpSeed",
+        "XpTotal",
+        "abilities",
+        "current_impulse_context_reset_grace_time",
+        "fall_distance",
+        "foodExhaustionLevel",
+        "foodLevel",
+        "foodSaturationLevel",
+        "foodTickTimer"
+      ]
+    },
+    "sleeping-position": {
+      "changed_top_level_tags": {
+        "Rotation": {
+          "after": {
+            "items": [
+              {
+                "bits": "43adc000",
+                "type": 5
+              },
+              {
+                "bits": "c2b40000",
+                "type": 5
+              }
+            ],
+            "type": 9
+          },
+          "before": {
+            "items": [
+              {
+                "bits": "4430e000",
+                "type": 5
+              },
+              {
+                "bits": "c2b40000",
+                "type": 5
+              }
+            ],
+            "type": 9
+          }
+        },
+        "attributes": {
+          "after": {
+            "items": [
+              {
+                "entries": {
+                  "base": {
+                    "bits": "3fb99999a0000000",
+                    "type": 6
+                  },
+                  "id": {
+                    "type": 8,
+                    "value": "minecraft:movement_speed"
+                  }
+                },
+                "type": 10
+              }
+            ],
+            "type": 9
+          },
+          "before": {
+            "items": [],
+            "type": 9
+          }
+        }
+      },
+      "exact_wire_equal": false,
+      "official_load_ok": true,
+      "stable_top_level_keys": [
+        "AbsorptionAmount",
+        "Air",
+        "Brain",
+        "DataVersion",
+        "DeathTime",
+        "EnderItems",
+        "FallFlying",
+        "Fire",
+        "Health",
+        "HurtTime",
+        "Inventory",
+        "Invulnerable",
+        "Motion",
+        "OnGround",
+        "PortalCooldown",
+        "Pos",
+        "Score",
+        "SelectedItemSlot",
+        "SleepTimer",
+        "UUID",
+        "XpLevel",
+        "XpP",
+        "XpSeed",
+        "XpTotal",
+        "abilities",
+        "current_explosion_impact_pos",
+        "current_impulse_context_reset_grace_time",
+        "fall_distance",
+        "foodExhaustionLevel",
+        "foodLevel",
+        "foodSaturationLevel",
+        "foodTickTimer",
+        "sleeping_pos"
+      ]
+    }
+  },
+  "runtime_variant_save_equalities": {
+    "runtime-crouching": {
+      "same_complete_typed_tree": true,
+      "same_exact_wire": true
+    },
+    "runtime-swimming": {
+      "same_complete_typed_tree": true,
+      "same_exact_wire": true
+    }
+  },
+  "saved_wire_sizes": {
+    "default": 729,
+    "fall-flying-active": 789,
+    "nondefault": 789,
+    "runtime-crouching": 789,
+    "runtime-swimming": 789,
+    "scale-attribute": 827,
+    "short-wrap": 789,
+    "signed-zero": 729,
+    "sleeping-position": 820
+  },
+  "schema": "pinned-player-save-field-summary-v1",
+  "scope": "Measured normal LocalPlayer tags/cache/load projections; no implementation or full vanilla player persistence.",
+  "selected_actual_loads": {
+    "dimension-other": {
+      "after": {
+        "body_flags": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "fall_distance_f64_bits": "4022400000000000",
+        "health_f32_bits": "418c0000",
+        "height_f32_bits": "3fc00000",
+        "needs_sync": true,
+        "on_ground_no_blocks": true,
+        "pose": "CROUCHING",
+        "position": [
+          "0000000000000000",
+          "4024800000000000",
+          "c031800000000000"
+        ],
+        "rotation_f32_bits": [
+          "43adc000",
+          "c2b40000",
+          "4430e000",
+          "c2b40000"
+        ],
+        "sleeping_position": null,
+        "support": [
+          -2,
+          0,
+          5
+        ],
+        "velocity": [
+          "3fc0000000000000",
+          "bfd0000000000000",
+          "0000000000000000"
+        ]
+      },
+      "error": null,
+      "ok": true,
+      "problems": []
+    },
+    "fall-type:6": {
+      "after": {
+        "body_flags": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "fall_distance_f64_bits": "7ff8000000000000",
+        "health_f32_bits": "418c0000",
+        "height_f32_bits": "3fc00000",
+        "needs_sync": true,
+        "on_ground_no_blocks": true,
+        "pose": "CROUCHING",
+        "position": [
+          "0000000000000000",
+          "4024800000000000",
+          "c031800000000000"
+        ],
+        "rotation_f32_bits": [
+          "43adc000",
+          "c2b40000",
+          "4430e000",
+          "c2b40000"
+        ],
+        "sleeping_position": null,
+        "support": [
+          -2,
+          0,
+          5
+        ],
+        "velocity": [
+          "3fc0000000000000",
+          "bfd0000000000000",
+          "0000000000000000"
+        ]
+      },
+      "error": null,
+      "ok": true,
+      "problems": []
+    },
+    "historical-FallDistance": {
+      "after": {
+        "body_flags": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "fall_distance_f64_bits": "0000000000000000",
+        "health_f32_bits": "418c0000",
+        "height_f32_bits": "3fc00000",
+        "needs_sync": true,
+        "on_ground_no_blocks": true,
+        "pose": "CROUCHING",
+        "position": [
+          "0000000000000000",
+          "4024800000000000",
+          "c031800000000000"
+        ],
+        "rotation_f32_bits": [
+          "43adc000",
+          "c2b40000",
+          "4430e000",
+          "c2b40000"
+        ],
+        "sleeping_position": null,
+        "support": [
+          -2,
+          0,
+          5
+        ],
+        "velocity": [
+          "3fc0000000000000",
+          "bfd0000000000000",
+          "0000000000000000"
+        ]
+      },
+      "error": null,
+      "ok": true,
+      "problems": []
+    },
+    "missing:sleeping_pos": {
+      "after": {
+        "body_flags": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "fall_distance_f64_bits": "4022400000000000",
+        "health_f32_bits": "418c0000",
+        "height_f32_bits": "3e4ccccd",
+        "needs_sync": true,
+        "on_ground_no_blocks": true,
+        "pose": "SLEEPING",
+        "position": [
+          "0000000000000000",
+          "4024800000000000",
+          "c031800000000000"
+        ],
+        "rotation_f32_bits": [
+          "43adc000",
+          "c2b40000",
+          "4430e000",
+          "c2b40000"
+        ],
+        "sleeping_position": null,
+        "support": [
+          -2,
+          0,
+          5
+        ],
+        "velocity": [
+          "3fc0000000000000",
+          "bfd0000000000000",
+          "0000000000000000"
+        ]
+      },
+      "error": null,
+      "ok": true,
+      "problems": []
+    },
+    "motion-above-ten": {
+      "after": {
+        "body_flags": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "fall_distance_f64_bits": "4022400000000000",
+        "health_f32_bits": "418c0000",
+        "height_f32_bits": "3fc00000",
+        "needs_sync": true,
+        "on_ground_no_blocks": true,
+        "pose": "CROUCHING",
+        "position": [
+          "0000000000000000",
+          "4024800000000000",
+          "c031800000000000"
+        ],
+        "rotation_f32_bits": [
+          "43adc000",
+          "c2b40000",
+          "4430e000",
+          "c2b40000"
+        ],
+        "sleeping_position": null,
+        "support": [
+          -2,
+          0,
+          5
+        ],
+        "velocity": [
+          "0000000000000000",
+          "0000000000000000",
+          "3ff0000000000000"
+        ]
+      },
+      "error": null,
+      "ok": true,
+      "problems": []
+    },
+    "motion-long-list": {
+      "after": {
+        "body_flags": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "fall_distance_f64_bits": "4022400000000000",
+        "health_f32_bits": "418c0000",
+        "height_f32_bits": "3fc00000",
+        "needs_sync": true,
+        "on_ground_no_blocks": true,
+        "pose": "CROUCHING",
+        "position": [
+          "0000000000000000",
+          "4024800000000000",
+          "c031800000000000"
+        ],
+        "rotation_f32_bits": [
+          "43adc000",
+          "c2b40000",
+          "4430e000",
+          "c2b40000"
+        ],
+        "sleeping_position": null,
+        "support": [
+          -2,
+          0,
+          5
+        ],
+        "velocity": [
+          "3ff0000000000000",
+          "4000000000000000",
+          "4008000000000000"
+        ]
+      },
+      "error": null,
+      "ok": true,
+      "problems": [
+        {
+          "path": "",
+          "problem": "DecodeFromFieldFailedProblem[name=Motion, tag=[1.0d,2.0d,3.0d,4.0d], error=DataResult.Error['Input is not a list of 3 elements': (1.0, 2.0, 3.0)]]"
+        }
+      ]
+    },
+    "motion-nonfinite": {
+      "after": {
+        "body_flags": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "fall_distance_f64_bits": "4022400000000000",
+        "health_f32_bits": "418c0000",
+        "height_f32_bits": "3fc00000",
+        "needs_sync": true,
+        "on_ground_no_blocks": true,
+        "pose": "CROUCHING",
+        "position": [
+          "0000000000000000",
+          "4024800000000000",
+          "c031800000000000"
+        ],
+        "rotation_f32_bits": [
+          "43adc000",
+          "c2b40000",
+          "4430e000",
+          "c2b40000"
+        ],
+        "sleeping_position": null,
+        "support": [
+          -2,
+          0,
+          5
+        ],
+        "velocity": [
+          "4000000000000000",
+          "c000000000000000",
+          "8000000000000000"
+        ]
+      },
+      "error": null,
+      "ok": true,
+      "problems": []
+    },
+    "motion-ten": {
+      "after": {
+        "body_flags": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "fall_distance_f64_bits": "4022400000000000",
+        "health_f32_bits": "418c0000",
+        "height_f32_bits": "3fc00000",
+        "needs_sync": true,
+        "on_ground_no_blocks": true,
+        "pose": "CROUCHING",
+        "position": [
+          "0000000000000000",
+          "4024800000000000",
+          "c031800000000000"
+        ],
+        "rotation_f32_bits": [
+          "43adc000",
+          "c2b40000",
+          "4430e000",
+          "c2b40000"
+        ],
+        "sleeping_position": null,
+        "support": [
+          -2,
+          0,
+          5
+        ],
+        "velocity": [
+          "4024000000000000",
+          "c024000000000000",
+          "0000000000000000"
+        ]
+      },
+      "error": null,
+      "ok": true,
+      "problems": []
+    },
+    "position-infinity": {
+      "after": {
+        "body_flags": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "fall_distance_f64_bits": "4022400000000000",
+        "health_f32_bits": "418c0000",
+        "height_f32_bits": "3fc00000",
+        "needs_sync": true,
+        "on_ground_no_blocks": true,
+        "pose": "CROUCHING",
+        "position": [
+          "417c9c5800000000",
+          "c17312d000000000",
+          "3ff0000000000000"
+        ],
+        "rotation_f32_bits": [
+          "43adc000",
+          "c2b40000",
+          "4430e000",
+          "c2b40000"
+        ],
+        "sleeping_position": null,
+        "support": [
+          -2,
+          0,
+          5
+        ],
+        "velocity": [
+          "3fc0000000000000",
+          "bfd0000000000000",
+          "0000000000000000"
+        ]
+      },
+      "error": null,
+      "ok": true,
+      "problems": []
+    },
+    "position-limits": {
+      "after": {
+        "body_flags": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "fall_distance_f64_bits": "4022400000000000",
+        "health_f32_bits": "418c0000",
+        "height_f32_bits": "3fc00000",
+        "needs_sync": true,
+        "on_ground_no_blocks": true,
+        "pose": "CROUCHING",
+        "position": [
+          "417c9c5800000000",
+          "c17312d000000000",
+          "c17c9c5800000000"
+        ],
+        "rotation_f32_bits": [
+          "43adc000",
+          "c2b40000",
+          "4430e000",
+          "c2b40000"
+        ],
+        "sleeping_position": null,
+        "support": [
+          -2,
+          0,
+          5
+        ],
+        "velocity": [
+          "3fc0000000000000",
+          "bfd0000000000000",
+          "0000000000000000"
+        ]
+      },
+      "error": null,
+      "ok": true,
+      "problems": []
+    },
+    "position-nan-partial": {
+      "after": {
+        "body_flags": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "fall_distance_f64_bits": "4022400000000000",
+        "health_f32_bits": "41480000",
+        "height_f32_bits": "3fc00000",
+        "needs_sync": true,
+        "on_ground_no_blocks": true,
+        "pose": "CROUCHING",
+        "position": [
+          "7ff8000000000000",
+          "4000000000000000",
+          "4008000000000000"
+        ],
+        "rotation_f32_bits": [
+          "4430e000",
+          "c2b40000",
+          "4430e000",
+          "c2b40000"
+        ],
+        "sleeping_position": null,
+        "support": [
+          -2,
+          0,
+          5
+        ],
+        "velocity": [
+          "3fc0000000000000",
+          "bfd0000000000000",
+          "0000000000000000"
+        ]
+      },
+      "error": {
+        "chain": [
+          {
+            "class": "net.minecraft.ReportedException",
+            "message": "Loading entity NBT"
+          },
+          {
+            "class": "java.lang.IllegalStateException",
+            "message": "Entity has invalid position"
+          }
+        ],
+        "root_class": "java.lang.IllegalStateException",
+        "root_message": "Entity has invalid position",
+        "stack": [
+          "net.minecraft.world.entity.Entity.load(Entity.java:2440)",
+          "net.minecraft.fixture.PlayerSaveReceiverFixture.run(PlayerSaveReceiverFixture.java:158)",
+          "java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)",
+          "java.base/java.lang.reflect.Method.invoke(Method.java:565)",
+          "LocalInputReceiverLauncher.main(stdin:37)",
+          "java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)",
+          "java.base/java.lang.reflect.Method.invoke(Method.java:565)",
+          "jdk.compiler/com.sun.tools.javac.launcher.SourceLauncher.execute(SourceLauncher.java:258)",
+          "jdk.compiler/com.sun.tools.javac.launcher.SourceLauncher.run(SourceLauncher.java:138)",
+          "jdk.compiler/com.sun.tools.javac.launcher.SourceLauncher.main(SourceLauncher.java:76)"
+        ]
+      },
+      "ok": false,
+      "problems": []
+    },
+    "rotation-nonfinite": {
+      "after": {
+        "body_flags": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "fall_distance_f64_bits": "4022400000000000",
+        "health_f32_bits": "418c0000",
+        "height_f32_bits": "3fc00000",
+        "needs_sync": true,
+        "on_ground_no_blocks": true,
+        "pose": "CROUCHING",
+        "position": [
+          "0000000000000000",
+          "4024800000000000",
+          "c031800000000000"
+        ],
+        "rotation_f32_bits": [
+          "c28e8000",
+          "41580000",
+          "c28e8000",
+          "41580000"
+        ],
+        "sleeping_position": null,
+        "support": [
+          -2,
+          0,
+          5
+        ],
+        "velocity": [
+          "3fc0000000000000",
+          "bfd0000000000000",
+          "0000000000000000"
+        ]
+      },
+      "error": null,
+      "ok": true,
+      "problems": []
+    },
+    "sleeping-pos-int-array": {
+      "after": {
+        "body_flags": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "fall_distance_f64_bits": "4022400000000000",
+        "health_f32_bits": "418c0000",
+        "height_f32_bits": "3e4ccccd",
+        "needs_sync": true,
+        "on_ground_no_blocks": true,
+        "pose": "SLEEPING",
+        "position": [
+          "0000000000000000",
+          "4024800000000000",
+          "c031800000000000"
+        ],
+        "rotation_f32_bits": [
+          "43adc000",
+          "c2b40000",
+          "4430e000",
+          "c2b40000"
+        ],
+        "sleeping_position": [
+          2,
+          4,
+          6
+        ],
+        "support": [
+          -2,
+          0,
+          5
+        ],
+        "velocity": [
+          "3fc0000000000000",
+          "bfd0000000000000",
+          "0000000000000000"
+        ]
+      },
+      "error": null,
+      "ok": true,
+      "problems": []
+    },
+    "sleeping-pos-short-array": {
+      "after": {
+        "body_flags": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "fall_distance_f64_bits": "4022400000000000",
+        "health_f32_bits": "418c0000",
+        "height_f32_bits": "3e4ccccd",
+        "needs_sync": true,
+        "on_ground_no_blocks": true,
+        "pose": "SLEEPING",
+        "position": [
+          "0000000000000000",
+          "4024800000000000",
+          "c031800000000000"
+        ],
+        "rotation_f32_bits": [
+          "43adc000",
+          "c2b40000",
+          "4430e000",
+          "c2b40000"
+        ],
+        "sleeping_position": null,
+        "support": [
+          -2,
+          0,
+          5
+        ],
+        "velocity": [
+          "3fc0000000000000",
+          "bfd0000000000000",
+          "0000000000000000"
+        ]
+      },
+      "error": null,
+      "ok": true,
+      "problems": [
+        {
+          "path": "",
+          "problem": "DecodeFromFieldFailedProblem[name=sleeping_pos, tag=[I;2,4], error=DataResult.Error['Input is not a list of 3 ints']]"
+        }
+      ]
+    }
+  },
+  "signed_zero_saved_tags": {
+    "Motion": {
+      "items": [
+        {
+          "bits": "0000000000000000",
+          "type": 6
+        },
+        {
+          "bits": "0000000000000000",
+          "type": 6
+        },
+        {
+          "bits": "0000000000000000",
+          "type": 6
+        }
+      ],
+      "type": 9
+    },
+    "Pos": {
+      "items": [
+        {
+          "bits": "0000000000000000",
+          "type": 6
+        },
+        {
+          "bits": "3ff0000000000000",
+          "type": 6
+        },
+        {
+          "bits": "0000000000000000",
+          "type": 6
+        }
+      ],
+      "type": 9
+    },
+    "Rotation": {
+      "items": [
+        {
+          "bits": "00000000",
+          "type": 5
+        },
+        {
+          "bits": "00000000",
+          "type": 5
+        }
+      ],
+      "type": 9
+    },
+    "fall_distance": {
+      "bits": "0000000000000000",
+      "type": 6
+    }
+  },
+  "signed_zero_source": {
+    "fall_distance_f64_bits": "8000000000000000",
+    "position": [
+      "8000000000000000",
+      "3ff0000000000000",
+      "8000000000000000"
+    ],
+    "rotation_f32_bits": [
+      "80000000",
+      "80000000",
+      "80000000",
+      "80000000"
+    ],
+    "velocity": [
+      "8000000000000000",
+      "8000000000000000",
+      "8000000000000000"
+    ]
+  },
+  "static_only_server_extras": true,
+  "static_shared_server_classes": 17
+}

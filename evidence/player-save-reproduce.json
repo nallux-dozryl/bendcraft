@@ -1,0 +1,771 @@
+{
+  "confidence": "high for recorded bounded normal receiver cases",
+  "execution": {
+    "command": [
+      "/Users/chuah/Library/Application Support/minecraft/runtime/java-runtime-epsilon/mac-os-arm64/java-runtime-epsilon/jre.bundle/Contents/Home/bin/java",
+      "-Xmx512m",
+      "--source",
+      "25",
+      "--class-path",
+      "/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/at/yawk/lz4/lz4-java/1.10.1/lz4-java-1.10.1.jar:/Users/chuah/Library/Application Support/minecraft/libraries/ca/weblite/java-objc-bridge/1.1/java-objc-bridge-1.1.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/azure/azure-json/1.4.0/azure-json-1.4.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/github/oshi/oshi-core/6.9.0/oshi-core-6.9.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/google/code/gson/gson/2.14.0/gson-2.14.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/google/guava/failureaccess/1.0.3/failureaccess-1.0.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/google/guava/guava/33.6.0-jre/guava-33.6.0-jre.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/ibm/icu/icu4j/78.3/icu4j-78.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/microsoft/azure/msal4j/1.24.1/msal4j-1.24.1.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/authlib/10.0.77/authlib-10.0.77.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/blocklist/1.0.10/blocklist-1.0.10.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/brigadier/1.3.11/brigadier-1.3.11.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/datafixerupper/10.0.21/datafixerupper-10.0.21.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/jtracy/1.14.38/jtracy-1.14.38.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/jtracy/1.14.38/jtracy-1.14.38-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/jtracy/1.14.38/jtracy-1.14.38-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/logging/1.7.12/logging-1.7.12.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/patchy/2.2.10/patchy-2.2.10.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/text2speech/1.19.12/text2speech-1.19.12.jar:/Users/chuah/Library/Application Support/minecraft/libraries/commons-codec/commons-codec/1.22.0/commons-codec-1.22.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/commons-io/commons-io/2.20.0/commons-io-2.20.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-buffer/4.2.16.Final/netty-buffer-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-codec-base/4.2.16.Final/netty-codec-base-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-codec-compression/4.2.16.Final/netty-codec-compression-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-codec-http/4.2.16.Final/netty-codec-http-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-common/4.2.16.Final/netty-common-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-handler/4.2.16.Final/netty-handler-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-resolver/4.2.16.Final/netty-resolver-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-transport-classes-epoll/4.2.16.Final/netty-transport-classes-epoll-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-transport-classes-kqueue/4.2.16.Final/netty-transport-classes-kqueue-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-transport-native-kqueue/4.2.16.Final/netty-transport-native-kqueue-4.2.16.Final-osx-aarch_64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-transport-native-kqueue/4.2.16.Final/netty-transport-native-kqueue-4.2.16.Final-osx-x86_64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-transport-native-unix-common/4.2.16.Final/netty-transport-native-unix-common-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-transport/4.2.16.Final/netty-transport-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/it/unimi/dsi/fastutil/8.5.18/fastutil-8.5.18.jar:/Users/chuah/Library/Application Support/minecraft/libraries/net/java/dev/jna/jna-platform/5.17.0/jna-platform-5.17.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/net/java/dev/jna/jna/5.17.0/jna-5.17.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/apache/commons/commons-compress/1.28.0/commons-compress-1.28.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/apache/commons/commons-lang3/3.20.0/commons-lang3-3.20.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/apache/logging/log4j/log4j-api/2.26.0/log4j-api-2.26.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/apache/logging/log4j/log4j-core/2.26.0/log4j-core-2.26.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/apache/logging/log4j/log4j-slf4j2-impl/2.26.0/log4j-slf4j2-impl-2.26.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/jcraft/jorbis/0.0.17/jorbis-0.0.17.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/joml/joml/1.10.9/joml-1.10.9.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-freetype/3.4.3/lwjgl-freetype-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-freetype/3.4.3/lwjgl-freetype-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-freetype/3.4.3/lwjgl-freetype-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-jemalloc/3.4.3/lwjgl-jemalloc-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-jemalloc/3.4.3/lwjgl-jemalloc-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-jemalloc/3.4.3/lwjgl-jemalloc-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-openal/3.4.3/lwjgl-openal-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-openal/3.4.3/lwjgl-openal-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-openal/3.4.3/lwjgl-openal-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-opengl/3.4.3/lwjgl-opengl-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-opengl/3.4.3/lwjgl-opengl-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-opengl/3.4.3/lwjgl-opengl-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-sdl/3.4.3/lwjgl-sdl-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-sdl/3.4.3/lwjgl-sdl-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-sdl/3.4.3/lwjgl-sdl-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-shaderc/3.4.3/lwjgl-shaderc-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-shaderc/3.4.3/lwjgl-shaderc-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-shaderc/3.4.3/lwjgl-shaderc-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-spvc/3.4.3/lwjgl-spvc-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-spvc/3.4.3/lwjgl-spvc-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-spvc/3.4.3/lwjgl-spvc-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-stb/3.4.3/lwjgl-stb-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-stb/3.4.3/lwjgl-stb-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-stb/3.4.3/lwjgl-stb-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-vma/3.4.3/lwjgl-vma-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-vma/3.4.3/lwjgl-vma-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-vma/3.4.3/lwjgl-vma-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-vulkan/3.4.3/lwjgl-vulkan-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-vulkan/3.4.3/lwjgl-vulkan-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-vulkan/3.4.3/lwjgl-vulkan-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl/3.4.3/lwjgl-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl/3.4.3/lwjgl-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl/3.4.3/lwjgl-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/slf4j/slf4j-api/2.0.17/slf4j-api-2.0.17.jar",
+      "/dev/stdin"
+    ],
+    "pid": 17541,
+    "returncode": 0,
+    "seconds": 7.323916,
+    "stderr_sha256": "9f59a7e7abaf6fe9628f48fdd42716fd0e40620eecbb9a6f491576a809b33269",
+    "stdout_sha256": "9143cf539f01ea2e58666e358be628701e1ef0d75a1a391014ba947677fa3647"
+  },
+  "full_observations_semantic_sha256": "885d179b1bda4742e1808685deffbefb8acc3716b74f753d0e5ed7f1c10648b8",
+  "load_cases": 58,
+  "loaded_official_classes": 4451,
+  "mode": "reproduce",
+  "observations_sha256": "9e7b0b9911fd0ee93ee96bc6e93c0a997043994a6b711e8d1d9f1f8a50a5a0f0",
+  "official_load_errors": [
+    {
+      "error": "java.lang.NullPointerException",
+      "id": "roundtrip-fresh:fall-flying-active"
+    },
+    {
+      "error": "java.lang.IllegalStateException",
+      "id": "position-nan-partial"
+    },
+    {
+      "error": "java.lang.NullPointerException",
+      "id": "fall-flying-load-service-gap"
+    }
+  ],
+  "official_load_successes": 55,
+  "producer": {
+    "bytes": 39805,
+    "file": "reference_player_save_probe.py",
+    "path": "tools/reference_player_save_probe.py",
+    "sha1": "7fa2b43519298280fac67a2e782ca44687c24807",
+    "sha256": "a17da3cd7dc3510e7e4fdf0f905882358ff2bfbd00f906ab23ca1784289d8def"
+  },
+  "raw": {
+    "bytes": 4637500,
+    "file": "reproduce.full.json",
+    "path": "build/player-save/reproduce.full.json",
+    "sha1": "5be4fb0f3b40b3d8f83dc7942dc8391bc8bd44fe",
+    "sha256": "6e12b0281f12e8f471f0b09ec53edd2a647f2b709a4d10b1ddbc0f2147926a21"
+  },
+  "reference": {
+    "bytes": 1291127,
+    "file": "player_save.json",
+    "path": "reference/player_save.json",
+    "sha1": "6338fcc6375544a9f2083536e8aab0cec2143eab",
+    "sha256": "762a02a965cea86390ad0582bebc187eccd4b847a9f9db5552d9311c73d3dbc2"
+  },
+  "reproduction_normalization": "Only TagType object identity suffixes in ProblemReporter diagnostic strings are replaced with <process-identity>. Exact raw diagnostics retained in each full artifact; all tags/bytes/raw words/states/errors are compared unchanged.",
+  "roundtrips": {
+    "default": {
+      "changed_top_level_tags": {
+        "attributes": {
+          "after": {
+            "items": [
+              {
+                "entries": {
+                  "base": {
+                    "bits": "3fb99999a0000000",
+                    "type": 6
+                  },
+                  "id": {
+                    "type": 8,
+                    "value": "minecraft:movement_speed"
+                  }
+                },
+                "type": 10
+              }
+            ],
+            "type": 9
+          },
+          "before": {
+            "items": [],
+            "type": 9
+          }
+        }
+      },
+      "exact_wire_equal": false,
+      "official_load_ok": true,
+      "stable_top_level_keys": [
+        "AbsorptionAmount",
+        "Air",
+        "Brain",
+        "DataVersion",
+        "DeathTime",
+        "EnderItems",
+        "FallFlying",
+        "Fire",
+        "Health",
+        "HurtTime",
+        "Inventory",
+        "Invulnerable",
+        "Motion",
+        "OnGround",
+        "PortalCooldown",
+        "Pos",
+        "Rotation",
+        "Score",
+        "SelectedItemSlot",
+        "SleepTimer",
+        "UUID",
+        "XpLevel",
+        "XpP",
+        "XpSeed",
+        "XpTotal",
+        "abilities",
+        "current_impulse_context_reset_grace_time",
+        "fall_distance",
+        "foodExhaustionLevel",
+        "foodLevel",
+        "foodSaturationLevel",
+        "foodTickTimer"
+      ]
+    },
+    "fall-flying-active": {
+      "actual_error": "java.lang.NullPointerException",
+      "official_load_ok": false
+    },
+    "nondefault": {
+      "changed_top_level_tags": {
+        "Rotation": {
+          "after": {
+            "items": [
+              {
+                "bits": "43adc000",
+                "type": 5
+              },
+              {
+                "bits": "c2b40000",
+                "type": 5
+              }
+            ],
+            "type": 9
+          },
+          "before": {
+            "items": [
+              {
+                "bits": "4430e000",
+                "type": 5
+              },
+              {
+                "bits": "c2b40000",
+                "type": 5
+              }
+            ],
+            "type": 9
+          }
+        },
+        "attributes": {
+          "after": {
+            "items": [
+              {
+                "entries": {
+                  "base": {
+                    "bits": "3fb99999a0000000",
+                    "type": 6
+                  },
+                  "id": {
+                    "type": 8,
+                    "value": "minecraft:movement_speed"
+                  }
+                },
+                "type": 10
+              }
+            ],
+            "type": 9
+          },
+          "before": {
+            "items": [],
+            "type": 9
+          }
+        }
+      },
+      "exact_wire_equal": false,
+      "official_load_ok": true,
+      "stable_top_level_keys": [
+        "AbsorptionAmount",
+        "Air",
+        "Brain",
+        "DataVersion",
+        "DeathTime",
+        "EnderItems",
+        "FallFlying",
+        "Fire",
+        "Health",
+        "HurtTime",
+        "Inventory",
+        "Invulnerable",
+        "Motion",
+        "OnGround",
+        "PortalCooldown",
+        "Pos",
+        "Score",
+        "SelectedItemSlot",
+        "SleepTimer",
+        "UUID",
+        "XpLevel",
+        "XpP",
+        "XpSeed",
+        "XpTotal",
+        "abilities",
+        "current_explosion_impact_pos",
+        "current_impulse_context_reset_grace_time",
+        "fall_distance",
+        "foodExhaustionLevel",
+        "foodLevel",
+        "foodSaturationLevel",
+        "foodTickTimer"
+      ]
+    },
+    "runtime-crouching": {
+      "changed_top_level_tags": {
+        "Rotation": {
+          "after": {
+            "items": [
+              {
+                "bits": "43adc000",
+                "type": 5
+              },
+              {
+                "bits": "c2b40000",
+                "type": 5
+              }
+            ],
+            "type": 9
+          },
+          "before": {
+            "items": [
+              {
+                "bits": "4430e000",
+                "type": 5
+              },
+              {
+                "bits": "c2b40000",
+                "type": 5
+              }
+            ],
+            "type": 9
+          }
+        },
+        "attributes": {
+          "after": {
+            "items": [
+              {
+                "entries": {
+                  "base": {
+                    "bits": "3fb99999a0000000",
+                    "type": 6
+                  },
+                  "id": {
+                    "type": 8,
+                    "value": "minecraft:movement_speed"
+                  }
+                },
+                "type": 10
+              }
+            ],
+            "type": 9
+          },
+          "before": {
+            "items": [],
+            "type": 9
+          }
+        }
+      },
+      "exact_wire_equal": false,
+      "official_load_ok": true,
+      "stable_top_level_keys": [
+        "AbsorptionAmount",
+        "Air",
+        "Brain",
+        "DataVersion",
+        "DeathTime",
+        "EnderItems",
+        "FallFlying",
+        "Fire",
+        "Health",
+        "HurtTime",
+        "Inventory",
+        "Invulnerable",
+        "Motion",
+        "OnGround",
+        "PortalCooldown",
+        "Pos",
+        "Score",
+        "SelectedItemSlot",
+        "SleepTimer",
+        "UUID",
+        "XpLevel",
+        "XpP",
+        "XpSeed",
+        "XpTotal",
+        "abilities",
+        "current_explosion_impact_pos",
+        "current_impulse_context_reset_grace_time",
+        "fall_distance",
+        "foodExhaustionLevel",
+        "foodLevel",
+        "foodSaturationLevel",
+        "foodTickTimer"
+      ]
+    },
+    "runtime-swimming": {
+      "changed_top_level_tags": {
+        "Rotation": {
+          "after": {
+            "items": [
+              {
+                "bits": "43adc000",
+                "type": 5
+              },
+              {
+                "bits": "c2b40000",
+                "type": 5
+              }
+            ],
+            "type": 9
+          },
+          "before": {
+            "items": [
+              {
+                "bits": "4430e000",
+                "type": 5
+              },
+              {
+                "bits": "c2b40000",
+                "type": 5
+              }
+            ],
+            "type": 9
+          }
+        },
+        "attributes": {
+          "after": {
+            "items": [
+              {
+                "entries": {
+                  "base": {
+                    "bits": "3fb99999a0000000",
+                    "type": 6
+                  },
+                  "id": {
+                    "type": 8,
+                    "value": "minecraft:movement_speed"
+                  }
+                },
+                "type": 10
+              }
+            ],
+            "type": 9
+          },
+          "before": {
+            "items": [],
+            "type": 9
+          }
+        }
+      },
+      "exact_wire_equal": false,
+      "official_load_ok": true,
+      "stable_top_level_keys": [
+        "AbsorptionAmount",
+        "Air",
+        "Brain",
+        "DataVersion",
+        "DeathTime",
+        "EnderItems",
+        "FallFlying",
+        "Fire",
+        "Health",
+        "HurtTime",
+        "Inventory",
+        "Invulnerable",
+        "Motion",
+        "OnGround",
+        "PortalCooldown",
+        "Pos",
+        "Score",
+        "SelectedItemSlot",
+        "SleepTimer",
+        "UUID",
+        "XpLevel",
+        "XpP",
+        "XpSeed",
+        "XpTotal",
+        "abilities",
+        "current_explosion_impact_pos",
+        "current_impulse_context_reset_grace_time",
+        "fall_distance",
+        "foodExhaustionLevel",
+        "foodLevel",
+        "foodSaturationLevel",
+        "foodTickTimer"
+      ]
+    },
+    "scale-attribute": {
+      "changed_top_level_tags": {
+        "Rotation": {
+          "after": {
+            "items": [
+              {
+                "bits": "43adc000",
+                "type": 5
+              },
+              {
+                "bits": "c2b40000",
+                "type": 5
+              }
+            ],
+            "type": 9
+          },
+          "before": {
+            "items": [
+              {
+                "bits": "4430e000",
+                "type": 5
+              },
+              {
+                "bits": "c2b40000",
+                "type": 5
+              }
+            ],
+            "type": 9
+          }
+        },
+        "attributes": {
+          "after": {
+            "items": [
+              {
+                "entries": {
+                  "base": {
+                    "bits": "3fb99999a0000000",
+                    "type": 6
+                  },
+                  "id": {
+                    "type": 8,
+                    "value": "minecraft:movement_speed"
+                  }
+                },
+                "type": 10
+              }
+            ],
+            "type": 9
+          },
+          "before": {
+            "items": [
+              {
+                "entries": {
+                  "base": {
+                    "bits": "3ff8000000000000",
+                    "type": 6
+                  },
+                  "id": {
+                    "type": 8,
+                    "value": "minecraft:scale"
+                  }
+                },
+                "type": 10
+              }
+            ],
+            "type": 9
+          }
+        }
+      },
+      "exact_wire_equal": false,
+      "official_load_ok": true,
+      "stable_top_level_keys": [
+        "AbsorptionAmount",
+        "Air",
+        "Brain",
+        "DataVersion",
+        "DeathTime",
+        "EnderItems",
+        "FallFlying",
+        "Fire",
+        "Health",
+        "HurtTime",
+        "Inventory",
+        "Invulnerable",
+        "Motion",
+        "OnGround",
+        "PortalCooldown",
+        "Pos",
+        "Score",
+        "SelectedItemSlot",
+        "SleepTimer",
+        "UUID",
+        "XpLevel",
+        "XpP",
+        "XpSeed",
+        "XpTotal",
+        "abilities",
+        "current_explosion_impact_pos",
+        "current_impulse_context_reset_grace_time",
+        "fall_distance",
+        "foodExhaustionLevel",
+        "foodLevel",
+        "foodSaturationLevel",
+        "foodTickTimer"
+      ]
+    },
+    "short-wrap": {
+      "changed_top_level_tags": {
+        "Rotation": {
+          "after": {
+            "items": [
+              {
+                "bits": "43adc000",
+                "type": 5
+              },
+              {
+                "bits": "c2b40000",
+                "type": 5
+              }
+            ],
+            "type": 9
+          },
+          "before": {
+            "items": [
+              {
+                "bits": "4430e000",
+                "type": 5
+              },
+              {
+                "bits": "c2b40000",
+                "type": 5
+              }
+            ],
+            "type": 9
+          }
+        },
+        "attributes": {
+          "after": {
+            "items": [
+              {
+                "entries": {
+                  "base": {
+                    "bits": "3fb99999a0000000",
+                    "type": 6
+                  },
+                  "id": {
+                    "type": 8,
+                    "value": "minecraft:movement_speed"
+                  }
+                },
+                "type": 10
+              }
+            ],
+            "type": 9
+          },
+          "before": {
+            "items": [],
+            "type": 9
+          }
+        }
+      },
+      "exact_wire_equal": false,
+      "official_load_ok": true,
+      "stable_top_level_keys": [
+        "AbsorptionAmount",
+        "Air",
+        "Brain",
+        "DataVersion",
+        "DeathTime",
+        "EnderItems",
+        "FallFlying",
+        "Fire",
+        "Health",
+        "HurtTime",
+        "Inventory",
+        "Invulnerable",
+        "Motion",
+        "OnGround",
+        "PortalCooldown",
+        "Pos",
+        "Score",
+        "SelectedItemSlot",
+        "SleepTimer",
+        "UUID",
+        "XpLevel",
+        "XpP",
+        "XpSeed",
+        "XpTotal",
+        "abilities",
+        "current_explosion_impact_pos",
+        "current_impulse_context_reset_grace_time",
+        "fall_distance",
+        "foodExhaustionLevel",
+        "foodLevel",
+        "foodSaturationLevel",
+        "foodTickTimer"
+      ]
+    },
+    "signed-zero": {
+      "changed_top_level_tags": {
+        "attributes": {
+          "after": {
+            "items": [
+              {
+                "entries": {
+                  "base": {
+                    "bits": "3fb99999a0000000",
+                    "type": 6
+                  },
+                  "id": {
+                    "type": 8,
+                    "value": "minecraft:movement_speed"
+                  }
+                },
+                "type": 10
+              }
+            ],
+            "type": 9
+          },
+          "before": {
+            "items": [],
+            "type": 9
+          }
+        }
+      },
+      "exact_wire_equal": false,
+      "official_load_ok": true,
+      "stable_top_level_keys": [
+        "AbsorptionAmount",
+        "Air",
+        "Brain",
+        "DataVersion",
+        "DeathTime",
+        "EnderItems",
+        "FallFlying",
+        "Fire",
+        "Health",
+        "HurtTime",
+        "Inventory",
+        "Invulnerable",
+        "Motion",
+        "OnGround",
+        "PortalCooldown",
+        "Pos",
+        "Rotation",
+        "Score",
+        "SelectedItemSlot",
+        "SleepTimer",
+        "UUID",
+        "XpLevel",
+        "XpP",
+        "XpSeed",
+        "XpTotal",
+        "abilities",
+        "current_impulse_context_reset_grace_time",
+        "fall_distance",
+        "foodExhaustionLevel",
+        "foodLevel",
+        "foodSaturationLevel",
+        "foodTickTimer"
+      ]
+    },
+    "sleeping-position": {
+      "changed_top_level_tags": {
+        "Rotation": {
+          "after": {
+            "items": [
+              {
+                "bits": "43adc000",
+                "type": 5
+              },
+              {
+                "bits": "c2b40000",
+                "type": 5
+              }
+            ],
+            "type": 9
+          },
+          "before": {
+            "items": [
+              {
+                "bits": "4430e000",
+                "type": 5
+              },
+              {
+                "bits": "c2b40000",
+                "type": 5
+              }
+            ],
+            "type": 9
+          }
+        },
+        "attributes": {
+          "after": {
+            "items": [
+              {
+                "entries": {
+                  "base": {
+                    "bits": "3fb99999a0000000",
+                    "type": 6
+                  },
+                  "id": {
+                    "type": 8,
+                    "value": "minecraft:movement_speed"
+                  }
+                },
+                "type": 10
+              }
+            ],
+            "type": 9
+          },
+          "before": {
+            "items": [],
+            "type": 9
+          }
+        }
+      },
+      "exact_wire_equal": false,
+      "official_load_ok": true,
+      "stable_top_level_keys": [
+        "AbsorptionAmount",
+        "Air",
+        "Brain",
+        "DataVersion",
+        "DeathTime",
+        "EnderItems",
+        "FallFlying",
+        "Fire",
+        "Health",
+        "HurtTime",
+        "Inventory",
+        "Invulnerable",
+        "Motion",
+        "OnGround",
+        "PortalCooldown",
+        "Pos",
+        "Score",
+        "SelectedItemSlot",
+        "SleepTimer",
+        "UUID",
+        "XpLevel",
+        "XpP",
+        "XpSeed",
+        "XpTotal",
+        "abilities",
+        "current_explosion_impact_pos",
+        "current_impulse_context_reset_grace_time",
+        "fall_distance",
+        "foodExhaustionLevel",
+        "foodLevel",
+        "foodSaturationLevel",
+        "foodTickTimer",
+        "sleeping_pos"
+      ]
+    }
+  },
+  "save_cases": 9,
+  "save_configuration_service_gaps": [
+    {
+      "error": "java.lang.NullPointerException",
+      "id": "fall-flying-active"
+    }
+  ],
+  "scope": "Actual normal LocalPlayer Entity/LivingEntity/Player save/load and official TagValue/NbtIo. ServerPlayer additions are bytecode-only.",
+  "status": "passed"
+}

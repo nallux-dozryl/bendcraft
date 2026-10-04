@@ -1,0 +1,73 @@
+{
+  "artifacts": {
+    "docs/PLAYER_SAVE_REFERENCE.md": {
+      "bytes": 14840,
+      "path": "docs/PLAYER_SAVE_REFERENCE.md",
+      "sha256": "5558778037de5dc5b32f016eacbdcc92d89fcdebd4a019cc3ec5159586643d1a"
+    },
+    "evidence/player-save-extract.json": {
+      "bytes": 28469,
+      "path": "evidence/player-save-extract.json",
+      "sha256": "fbb60df6dfa81c18776a3f9f46f9282304ad83f3d322cc840ddeee7a1f9d10cd"
+    },
+    "evidence/player-save-fields.json": {
+      "bytes": 35148,
+      "path": "evidence/player-save-fields.json",
+      "sha256": "7e9945da8b3ec446eca7b6ecbf014811a685fed8330049abfec2a4a363d6db08"
+    },
+    "evidence/player-save-reproduce.json": {
+      "bytes": 28475,
+      "path": "evidence/player-save-reproduce.json",
+      "sha256": "827f787f4fc9696e65cf52d025075b00b536cec28a36a17788b6e37820032d7f"
+    },
+    "reference/player_save.json": {
+      "bytes": 1291127,
+      "path": "reference/player_save.json",
+      "sha256": "762a02a965cea86390ad0582bebc187eccd4b847a9f9db5552d9311c73d3dbc2"
+    },
+    "tools/reference_player_save_probe.py": {
+      "bytes": 39805,
+      "path": "tools/reference_player_save_probe.py",
+      "sha256": "a17da3cd7dc3510e7e4fdf0f905882358ff2bfbd00f906ab23ca1784289d8def"
+    }
+  },
+  "assertions": [
+    "Current producer matches both successful runs",
+    "Reference and full raw artifacts rehash exactly",
+    "Every recorded read-only consumer/fixture dependency still matches",
+    "Every complete selected javap text matches its reference pin",
+    "All 17 inspected shared client/server classfiles are byte-identical",
+    "Full and compact observation semantic hashes match fresh processes",
+    "All 18 listed reused-receiver cache fields and three major collision flags retain exact observed values",
+    "CROUCHING/SWIMMING variants have complete tag and byte equality with standing nondefault",
+    "Official save canonicalizes tested negative-zero fields before NbtIo output",
+    "Every successful fresh roundtrip exposes exact changed attributes tags",
+    "Sleeping location presence/absence/malformed input and partial load errors retained"
+  ],
+  "boundary": {
+    "no_existing_gameplay_source_edit": true,
+    "no_full_vanilla_save_compatibility_claim": true,
+    "no_native_or_bend_build": true,
+    "no_normal_ServerPlayer_receiver": true,
+    "no_player_dat_access_or_write": true,
+    "no_window_focus_or_os_input": true
+  },
+  "final_run_seconds": [
+    7.866996,
+    7.323916
+  ],
+  "fresh_processes": 2,
+  "full_observations_semantic_sha256": "885d179b1bda4742e1808685deffbefb8acc3716b74f753d0e5ed7f1c10648b8",
+  "loaded_name_digest_map_sha256": "9ab37575803f3ae4b0e96f27bdd6a721f09a35c93edeff85e7388d45b58e9e5c",
+  "loaded_official_classes_per_process": 4451,
+  "observations_sha256": "9e7b0b9911fd0ee93ee96bc6e93c0a997043994a6b711e8d1d9f1f8a50a5a0f0",
+  "projection_script": {
+    "bytes": 7332,
+    "path": "build/player-save/final_audit.py",
+    "sha256": "9911066429805294497049fec7d4f06b78bfe484cab8d79a77767152117293db"
+  },
+  "reproduction_normalization": "Only TagType object identity suffixes in ProblemReporter diagnostic strings are replaced with <process-identity>. Exact raw diagnostics retained in each full artifact; all tags/bytes/raw words/states/errors are compared unchanged.",
+  "schema": "pinned-player-save-generation-audit-v1",
+  "status": "passed",
+  "total_final_case_executions": 134
+}
