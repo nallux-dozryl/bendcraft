@@ -43,6 +43,15 @@ def request(reference,scenario,budget,dimension='minecraft:overworld'):
                 args += [p['state'],p['emission'],p['dampening'],'publish']
     return list(map(str,args))
 
+def resource_summary(check,args,output):
+    return {'kind':check['kind'],'exit':check['exit'],'seconds':check['seconds'],
+            'fixture':'six_directions','budget':1,'peak_rss_bytes':check['peak_rss_bytes'],
+            'arguments_sha256':hashlib.sha256(json.dumps(args).encode()).hexdigest(),
+            'output_sha256':hashlib.sha256(output.encode()).hexdigest(),
+            'reproduce':'python3 tools/test_block_light.py',
+            'raw_log':'build/block-light-native/native-resource.json',
+            'boundary':'Bounded CPU native receiver RSS; not world-scale memory or long-session leak evidence.'}
+
 def main():
     WORK.mkdir(parents=True,exist_ok=True)
     reference=json.loads(REFERENCE.read_text())
@@ -122,7 +131,7 @@ def main():
               'budget_variants':[1,7,64],'native_phase_comparisons':len(rows),
               'native_sample_comparisons':sum(r['samples'] for r in rows),
               'native_unknown_samples':sum(r['unknown'] for r in rows),
-              'native_owner_guards':guard_check,'native_resource':resource_check,
+              'native_owner_guards':guard_check,'native_resource':resource_summary(resource_check,args,output),
               'observations':rows,
               'boundary':'Actual Bend State/publish/unload/advance/sample, CPU native; no Python propagation. Exact Java-observed shape callback inputs for selected arbitrary registry states. Settled fields compared; transient ordering and queue work counts differ. Eight implementation laws independently checked; no universal convergence or whole-world/sky-light/shading claim. No foreign lighting or GUI.'}
     (ROOT/'evidence/block-light-native.json').write_text(json.dumps(evidence,indent=2)+'\n')
