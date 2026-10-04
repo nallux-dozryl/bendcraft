@@ -91,12 +91,22 @@ validator/read/write results. It does not prove section-array contents or
 pre-read representation identity after a refused Core operation.
 
 Five separate BI contracts use the actual Engine and Tables owners for denied
-player authority and disabled building. Full BI kernel certification remains
-open. Direct checking of an unchanged production BI translation identifies
+player authority and disabled building. All five passed ordinary checking in
+6.307 seconds, then independent kernel checking in 0.197 seconds. The read-only
+compiler exporter selected the exact five checked production theorem roots
+while retaining all original declarations and unchanged type/body/proof terms;
+their emitted production dependency closure has zero exclusions. Together with
+CoreEdit, all 16 stated interaction contracts are independently certified.
+
+A full unrestricted BI/import-graph verdict is not claimed. Historical direct
+checking of an unchanged production BI translation identifies
 `json.encode_go` with the exact diagnostic `affine live code, calls that descend`;
-this is reproducible without the new proof terms. Root's conservative exact
-dependency-closure experiment subsequently exposed an unresolved `F32.neg`
-kernel definition. Neither failure establishes a failed CoreEdit proof, and
-neither is hidden by an axiom or unsafe proof. The exact checks, source pins,
-failed attempts and remaining proof scope are retained in
+this is reproducible without the new proof terms. Root's separate retained
+execute-function dependency experiment exposed an unresolved `F32.neg` kernel
+definition. Those historical diagnostics do not fail the subsequently certified
+five theorem closures. No axiom, unsafe proof, disconnected model or weakened
+theorem replaces the production claims. General geometry, arbitrary section
+array rollback and interaction semantics outside this consumer remain separate
+proof obligations. Exact checks, source and term pins, failed attempts and
+remaining scope are retained in
 [`evidence/player-block-interaction-proofs.json`](../evidence/player-block-interaction-proofs.json).
