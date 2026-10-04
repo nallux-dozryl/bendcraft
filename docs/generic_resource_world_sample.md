@@ -4,9 +4,11 @@ The new runnable entry is `remote_resource_catalog_client.bend`. It connects to
 the existing private renderer transport, requests a catalog frame, loads the
 official registry and the checked block-resource profile, and retains the sole
 `CW.Assets` owner through native presentation. The legacy remote client entry
-remains available. The generic entry has passed source validation. Its first
-frozen native emission terminated at the producer's progress guard before C was
-produced; the real consumer build and end-to-end run remain pending.
+remains available. The generic entry has passed source validation. Frozen native
+generations 001 and 002 produced no completed C: the first reached the old
+progress guard, and the second reached the fixed 600-second total deadline while
+compiler work was still advancing. The real consumer build and end-to-end run
+remain pending.
 
 ## Actual producer and consumer
 
@@ -125,19 +127,46 @@ that the compiler had stopped doing work. A corrected private producer with
 actual function progress and measured memory retention is separate work; no
 equivalent retry or original compiler edit was performed.
 
-Fresh client generation 002 is prepared from current production sources with
+Fresh client generation 002 used current production sources with
 the separately verified private telescope-cache/progress correction and the
 existing native platform transform. Nine upstream regression graphs produced
 exactly equal C and native expected outputs; the tenth retained its expected
-compiler refusal. The correction's full generic-client behavior remains
-unmeasured until emission and the real actor/window run finish. Preparation
-starts no compiler or native process and retains generation 001 unchanged.
+compiler refusal. Its actual full-client emission reached the fixed total
+deadline after 600.805701 seconds during ownership pass 5. The process group was
+reaped; no completed C, clang run, native executable or window resulted. Sampled
+peak RSS was 3,950,903,296 bytes, below the 8 GiB cap. All frozen input bytes
+remained stable. The 34,913 genuine work records show functions and counters
+advancing; completed pass ownership/hot counts were 2265/449, 2487/688,
+2555/702 and 2592/704. The measured remaining blocker is repeated work during
+ownership convergence. This result does not prove a stall or a memory-cap
+failure. Both failed generations remain intact; a subsequent attempt requires
+a substantive correction. See
+`evidence/generic_resource_world_sample_client_native_002.json`.
+
+The independent generic runtime helper admits the actual Actor016 artifact,
+matches its unchanged Wire/GS DTOs and verifies saved degrees project to the
+same camera radians. Its backend/renderer inputs explicitly pin the official
+registry and installed JAR. The inherited 20-second actor startup bound has
+been replaced in this new helper by fixed 120-second readiness and 180-second
+lifetime bounds using the existing actual process owner. These are adapter
+preparations, not an executed generic client test. The complete 128-pixel
+Java-geometry/current-CPU oracle, exact 512-cell sample, typed save/cold reload
+and unloaded-glass refusal await a successful client build.
 
 The profile is an explicit coverage instrument, not the normal product's
 content boundary. The registry-backed demand-loader plan is recorded in
 `docs/generic_resource_world_sample_demand_plan.md`, including complete
 generation replacement, a single transport owner during cold loading and the
 pinned face-UV material-classification requirement.
+The new `Demand.initial` and `Demand.collect` source APIs retain the actual
+affine registry and committed family inventory, derive missing families through
+`Registry.decode`, coalesce observed states/families and produce complete
+replacement requests. Startup represents the absence of a catalog explicitly.
+Renderer modes and materials require explicit admission; no guessed vanilla
+classifier is supplied. These new APIs and their 16 proposed branch/prefix laws
+are prepared but remain unchecked and unintegrated. They do not remove the
+current runnable entry's static profile yet. See
+`docs/generic_resource_world_sample_demand.md`.
 
 Generic model faces are currently retained rather than applying the legacy
 three-full-cube neighbor classifier. Biome tint production, full light sampling,

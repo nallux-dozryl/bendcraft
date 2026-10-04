@@ -10,10 +10,28 @@
     "build": "python3 tools/generic_resource_world_sample_client_native.py --generation 2 --memory-producer --build",
     "prepare": "python3 tools/generic_resource_world_sample_client_native.py --generation 2 --memory-producer"
   },
+  "emission": {
+    "bytes": 563,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/002/private-emission.receipt.json",
+    "sha256": "f143348a5eb84fa4b5002f22d18f5b82337625561fd37b225e85ca0e98af0250"
+  },
+  "emission_failure": {
+    "complete_C": false,
+    "group_absent": true,
+    "returncode": -15,
+    "sampled_peak_rss_bytes": 3950903296,
+    "seconds": 600.8057009587064,
+    "termination_reason": "total_deadline"
+  },
   "entry": {
     "bytes": 6434,
     "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/remote_resource_catalog_client.bend",
     "sha256": "cbd5a8051ca2257e8918f4fc55c1729161656d7604d714ca7c07ec7f20764956"
+  },
+  "failure": {
+    "bytes": 821,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/002/emission-failure-001.json",
+    "sha256": "865527ef351ffb9490fc6497e0c829575fba338183ce1e80212170c220c5d807"
   },
   "manifest": {
     "bytes": 53933,
@@ -58,7 +76,14 @@
     }
   },
   "native_consumer_run": false,
+  "next_attempt": "Requires a substantive compiler/emission or production architecture correction; no equivalent unchanged retry.",
   "original_compiler_untouched": true,
+  "original_generation_001_preserved": true,
+  "producer": {
+    "bytes": 31133484,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/002/private/receipt.json",
+    "sha256": "f676fc8f497d4c3d932724686ecad76dc3445b9e3c9969fd7f32c5447c0ef4e0"
+  },
   "production_sources": {
     "/Users/chuah/.bend/bend2/base.bend": {
       "bytes": 71530,
@@ -631,12 +656,113 @@
       "sha256": "599e28975027958b48da9a299a968bf837fc6a244ac6750b37866c32182dbb07"
     }
   },
+  "progress": {
+    "actual_rows": 34913,
+    "interpretation": "Actual counters and completed functions advanced across ownership passes; terminated by fixed total deadline, not memory or silence cutoff.",
+    "last": {
+      "active": {
+        "name": "src/blockstate_model:scan_number",
+        "pass": 5
+      },
+      "counters": {
+        "emit_body": 358056,
+        "emit_expr": 1215537,
+        "emit_fold": 247090,
+        "tele_unbind": 14264742,
+        "term_spine": 10158798,
+        "term_uses": 33321954,
+        "ty_wnf": 16245622
+      },
+      "phase": "emit_open_done",
+      "time_ms": 594633.305375
+    },
+    "pass_boundaries": [
+      {
+        "hot": 0,
+        "own": 0,
+        "pass": 1,
+        "phase": "pass_begin",
+        "stat": 0,
+        "time_ms": 61690.584916
+      },
+      {
+        "hot": 449,
+        "own": 2265,
+        "pass": 1,
+        "phase": "pass_end",
+        "stat": 36,
+        "time_ms": 158572.26475
+      },
+      {
+        "hot": 449,
+        "own": 2265,
+        "pass": 2,
+        "phase": "pass_begin",
+        "stat": 36,
+        "time_ms": 158572.519
+      },
+      {
+        "hot": 688,
+        "own": 2487,
+        "pass": 2,
+        "phase": "pass_end",
+        "stat": 36,
+        "time_ms": 310932.686916
+      },
+      {
+        "hot": 688,
+        "own": 2487,
+        "pass": 3,
+        "phase": "pass_begin",
+        "stat": 36,
+        "time_ms": 310933.00225
+      },
+      {
+        "hot": 702,
+        "own": 2555,
+        "pass": 3,
+        "phase": "pass_end",
+        "stat": 36,
+        "time_ms": 482802.588125
+      },
+      {
+        "hot": 702,
+        "own": 2555,
+        "pass": 4,
+        "phase": "pass_begin",
+        "stat": 36,
+        "time_ms": 482803.010125
+      },
+      {
+        "hot": 704,
+        "own": 2592,
+        "pass": 4,
+        "phase": "pass_end",
+        "stat": 36,
+        "time_ms": 552897.234583
+      },
+      {
+        "hot": 704,
+        "own": 2592,
+        "pass": 5,
+        "phase": "pass_begin",
+        "stat": 36,
+        "time_ms": 552897.4475
+      }
+    ]
+  },
+  "retained_preparation_failure": {
+    "bytes": 561,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/002/preparation-failure-001.json",
+    "sha256": "710d6c1f2746d5be854ceac6422cf52852bec622be583fe1b4d58a33a80ae9fa"
+  },
   "scope": "Actual standalone remote_resource_catalog_client production graph, including correlated catalog frames, CW.Assets, WRF.draw_catalog, hardware-key/menu consumer and native Window loop. Compilation alone does not establish a native transport, presentation or pixel result. The static resource profile remains an explicit coverage instrument; registry-backed demand loading and named renderer/material requirements remain separate consumer work.",
+  "source_before_after_equal": true,
   "source_map": {
     "bytes": 36532,
     "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/002/private/source-map.json",
     "sha256": "c3f7552878b515610497d9cf3c97f7c05c403769829d405dc646147c2921e4e7"
   },
-  "status": "frozen_native_pending",
+  "status": "native_emission_failed",
   "window_opened": false
 }

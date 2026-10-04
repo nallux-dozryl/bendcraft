@@ -62,6 +62,33 @@ def commands(memory):
     return {'prepare':base, 'build':base+' --build'}
 
 
+def record_failure(error):
+    value = {'status':'failed', 'scope':SCOPE, 'type':type(error).__name__,
+             'message':str(error),
+             'retained_receipts':[Remote.pin(path) for path in sorted(WORK.glob('*.receipt.json'))]}
+    # The latest alias is convenient, but every distinct attempt stays intact.
+    records = sorted(WORK.glob('failure-attempt-*.json'))
+    latest = WORK/'failure.json'
+    if latest.exists() and not any(path.read_bytes() == latest.read_bytes() for path in records):
+        retained = WORK/f'failure-attempt-{len(records)+1:03d}.json'
+        retained.write_bytes(latest.read_bytes())
+        records.append(retained)
+    write(WORK/f'failure-attempt-{len(records)+1:03d}.json', value)
+    write(latest, value)
+    producer = Catalog.PRIVATE/'receipt.json'
+    if producer.exists() and EVIDENCE.exists():
+        receipt = json.loads(producer.read_text())
+        if receipt['returncode'] != 0 or receipt['termination_reason'] is not None:
+            public = json.loads(EVIDENCE.read_text())
+            public.update(status='native_emission_failed', native_consumer_run=False,
+                window_opened=False, producer=Remote.pin(producer),
+                emission_failure={key:receipt.get(key) for key in (
+                    'seconds','returncode','termination_reason','sampled_peak_rss_bytes',
+                    'group_absent','complete_C')},
+                failure=Remote.pin(latest))
+            write(EVIDENCE, public)
+
+
 def memory_producer(manifest):
     """Relocate the separately verified cache/progress correction, byte checked."""
     assert WORK.name != '001', 'Preserve the failed original generation'
@@ -139,7 +166,9 @@ def build(memory=False):
     assert not receipt_path.exists(), 'Preserve the existing attempt; use a substantive fresh generation'
     _, emission = Catalog.run([sys.executable, Catalog.PRIVATE/'run.py'], 'private-emission', 620)
     receipt = json.loads(receipt_path.read_text())
-    assert receipt['returncode'] == 0 and receipt['termination_reason'] is None
+    assert receipt['returncode'] == 0 and receipt['termination_reason'] is None, (
+        f"Private producer {receipt['termination_reason']}: returncode {receipt['returncode']}; "
+        f"complete_C {receipt['complete_C']}")
     assert receipt['group_absent'] and receipt['complete_C']
     assert receipt['source_before'] == receipt['source_after'] == manifest['files']
     loaded = json.loads((Catalog.PRIVATE/'loaded-source-pins.json').read_text())
@@ -189,6 +218,5 @@ if __name__ == '__main__':
             print(json.dumps({'status':'frozen_native_pending', 'entry':manifest['entry'],
                               'source_map':Remote.pin(Catalog.PRIVATE/'source-map.json')}))
     except BaseException as error:
-        write(WORK/'failure.json', {'status':'failed', 'scope':SCOPE, 'type':type(error).__name__,
-              'message':str(error), 'retained_receipts':[Remote.pin(path) for path in sorted(WORK.glob('*.receipt.json'))]})
+        record_failure(error)
         raise
