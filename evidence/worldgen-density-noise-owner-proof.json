@@ -1,0 +1,504 @@
+{
+  "all_original_declaration_maps_retained": true,
+  "central_reference_participant": {
+    "bytes": 26678,
+    "case_count": 88,
+    "case_kinds": {
+      "fuel_refusal": 2,
+      "invalid_config": 14,
+      "normal": 68,
+      "unsupported_biome": 4
+    },
+    "coordinates_per_case": 8,
+    "installed_resource_pins": [
+      {
+        "bytes": 170,
+        "member": "data/minecraft/worldgen/noise/temperature.json",
+        "sha256": "9b1d5a87d575abf2891882ec3e1544b964cd15fedc84ad14d2abbd3b48ee2e4b"
+      },
+      {
+        "bytes": 169,
+        "member": "data/minecraft/worldgen/noise/vegetation.json",
+        "sha256": "ff4c10776eb2822f9f66dec4e9878a1bc797aca711480bf8430f851ff9af77dc"
+      },
+      {
+        "bytes": 196,
+        "member": "data/minecraft/worldgen/noise/continentalness.json",
+        "sha256": "b7ce5ac29a2c7a7cfbfaa1e1eeca9ba8f4a52139e59318850fa2407242c69ba8"
+      },
+      {
+        "bytes": 159,
+        "member": "data/minecraft/worldgen/noise/erosion.json",
+        "sha256": "af8a7a0f16ff3e568ad646df9cbc28e04a31b16dad4f162705c0f7c747da6983"
+      },
+      {
+        "bytes": 169,
+        "member": "data/minecraft/worldgen/noise/ridge.json",
+        "sha256": "e05d077746b27d662a8c981807819df3e3bb1f1779d2245dd911c8193e03bbf8"
+      },
+      {
+        "bytes": 151,
+        "member": "data/minecraft/worldgen/noise/offset.json",
+        "sha256": "45f51565587e2dc055271648037c0ec3466815e82f0d762e0198c16285fc8ae7"
+      },
+      {
+        "bytes": 84,
+        "member": "data/minecraft/worldgen/noise/nether/temperature.json",
+        "sha256": "5a67fbc28b5c2578b4ca5f6abdd115c715ea2ef1be3e1a7a8eb1a0de4c3a8f7c"
+      },
+      {
+        "bytes": 84,
+        "member": "data/minecraft/worldgen/noise/nether/vegetation.json",
+        "sha256": "5a67fbc28b5c2578b4ca5f6abdd115c715ea2ef1be3e1a7a8eb1a0de4c3a8f7c"
+      }
+    ],
+    "interface": [
+      "input_cases()",
+      "JAVA_IMPORTS",
+      "JAVA_HELPERS",
+      "densityNoiseObserve(JsonArray)",
+      "validate_observations(batch, observed)",
+      "fixture(case, mode=None)",
+      "parse_native(stdout)",
+      "check_native(case, observed, stdout, mode=None)"
+    ],
+    "java_status": "Parent single central JVM observation plus exactly four changed/new supplemental cases completed; actual raw words are retained in reference/worldgen_density.json",
+    "native_comparison_status": "pending coordinated comparison against the refreshed signed-zero native artifact",
+    "path": "tools/reference_worldgen_density_noise.py",
+    "sha256": "774f4159da85bc45f923cfb1e7d7be865e2dcce9c844497d95a2328f292fe596",
+    "source_validation": "Python syntax, exact 13-field fixtures and four malformed wire controls passed; these controls establish no numerical expectation"
+  },
+  "checked_term_export": {
+    "bytes": 1196304,
+    "path": "build/superflat-world/reference/density-noise-owner-signed-zero-1791134918118085000-inputs/selected.bendtt",
+    "sha256": "6814f771b30dd74ace21b93735ef2f53eb94c3cf891adf22ede7dd39f5b8613c"
+  },
+  "checked_types_proofs_and_source_bodies_unchanged": true,
+  "class_pins": [
+    {
+      "bytes": 16311,
+      "class": "net/minecraft/world/level/levelgen/synth/NormalNoise",
+      "sha256": "1794945852c92f16f5847a96f8747b394bc778a454bff5b139f41c7a347a11f3"
+    },
+    {
+      "bytes": 8116,
+      "class": "net/minecraft/world/level/levelgen/synth/NormalNoise$Parameters",
+      "sha256": "c05887fd0577c0a4a5d4352ae08b0b2ecbc5ab90cab6c59a52b2b4c1d1d906e0"
+    },
+    {
+      "bytes": 2413,
+      "class": "net/minecraft/world/level/levelgen/synth/NormalNoise$OctaveInfo",
+      "sha256": "7b2bd148de419a7baaab5c3148acf114d81d90aaf54e796a6877d59132efe4e8"
+    },
+    {
+      "bytes": 5257,
+      "class": "net/minecraft/world/level/levelgen/synth/NormalNoise$Normalization",
+      "sha256": "ea463371f9a686f7b4a90ac65cc685cd42268bbcde38adf94b178ef284a2b8e8"
+    },
+    {
+      "bytes": 3692,
+      "class": "net/minecraft/world/level/levelgen/synth/NormalNoise$Builder",
+      "sha256": "dbc96afeeeb05bad54778264537e56197d1650d6772c317451c606005c3c434a"
+    },
+    {
+      "bytes": 1883,
+      "class": "net/minecraft/world/level/levelgen/synth/NoiseStack$Perlin",
+      "sha256": "d7a88f1acf3398097b412857d4762de5e3dcef3a58e94b86d07377027735e6f5"
+    },
+    {
+      "bytes": 3495,
+      "class": "net/minecraft/world/level/levelgen/RandomState$1",
+      "sha256": "0fc95c113abf76be4e7576e8f6d04e6c899e992e6b01df087ba3f04663ecae18"
+    }
+  ],
+  "current_source_generation_refresh": {
+    "api_process": "build/superflat-world/reference/density-noise-owner-signed-zero-1791134918118085000-api/process.json",
+    "api_seconds": 0.7427989160642028,
+    "artifact_bytes": 1196304,
+    "artifact_sha256": "6814f771b30dd74ace21b93735ef2f53eb94c3cf891adf22ede7dd39f5b8613c",
+    "inputs": "build/superflat-world/reference/density-noise-owner-signed-zero-1791134918118085000-inputs",
+    "kernel_process": "build/superflat-world/reference/density-noise-owner-signed-zero-1791134918118085000-kernel/process.json",
+    "kernel_seconds": 0.19984704162925482,
+    "previous_artifacts_preserved": true,
+    "prior_five_checked_T_v_e_unchanged": true,
+    "roots": 6,
+    "scope": {
+      "observed_mismatch": "build/superflat-world/reference/density-java-actual-001.json",
+      "old_sources_and_proofs_retained": true,
+      "previous_inputs": "build/superflat-world/reference/density-noise-owner-current-closure-1791132887961335000-inputs",
+      "production_change": "reject IEEE negative-zero modifiers to match the observed official codec",
+      "roots": [
+        "worldgen_density_noise_laws:every_read_retains_complete_noise",
+        "worldgen_density_noise_laws:invalid_config_preserves_constructor_source",
+        "worldgen_density_noise_laws:any_constructor_failure_rolls_back_complete_source",
+        "worldgen_density_noise_laws:unsupported_biome_initializer_is_refused",
+        "worldgen_density_noise_laws:invalid_named_config_is_refused",
+        "worldgen_density_noise_laws:negative_zero_modifier_is_refused"
+      ],
+      "scope": "Five unchanged actual owner/rollback roots plus the actual negative-zero modifier boundary law"
+    }
+  },
+  "exact_source_snapshots": "build/superflat-world/reference/density-noise-owner-signed-zero-1791134918118085000-inputs/source-snapshots.json",
+  "exclusions": [],
+  "implementation": "Pinned NormalNoise.Parameters buildOctaves, normalization factor/range, two sequential positional forks, octave_<signed index> named Perlin constructors, interleaved first/second actual NoiseStack.Perlin layers and float scalar accumulation. Reuses immutable WS factories and real PN/BL stack producers; producer files outside the density_noise prefix are unchanged.",
+  "independent_kernel": {
+    "binary": "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+    "binary_sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7",
+    "child_LEAN_STACK_SIZE_KB": 4194304,
+    "process": "build/superflat-world/reference/density-noise-owner-signed-zero-1791134918118085000-kernel/process.json",
+    "verdict": {
+      "argv": [
+        "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/density-noise-owner-signed-zero-1791134918118085000-inputs/selected.bendtt"
+      ],
+      "cap_seconds": 60,
+      "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+      "exit_code": 0,
+      "group_absent": true,
+      "leader_reaped": true,
+      "pgid": 77092,
+      "pid": 77092,
+      "retry": false,
+      "seconds": 0.19984704162925482,
+      "status": "passed",
+      "stderr": {
+        "bytes": 0,
+        "file": "stderr",
+        "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 17,
+        "file": "stdout",
+        "sha1": "ba8ec8289ea6f6e6fec687b636c07f05c26d0a8b",
+        "sha256": "61b73cda11b6b665b9f99f2defd3d3b57f985c865225e942a5bdaa594a503e47"
+      },
+      "timed_out": false
+    }
+  },
+  "independent_numeric_evidence": {
+    "bytes": 15886,
+    "comparisons": {
+      "constructors": 68,
+      "permutation_words": 180224,
+      "public_api_scalar_bits": 544,
+      "refusals": 20,
+      "scalars": 544
+    },
+    "file": "worldgen-density-native.json",
+    "native_source_generation": {
+      "all_sources_current": true,
+      "changed_sources": [],
+      "emitted_c": {
+        "bytes": 1213511,
+        "file": "generated.c",
+        "sha1": "7f8ded70f379f64cba87f835dd883529f8db886c",
+        "sha256": "aee11c58bb3468b5ba1456c2c015d626381f35fb3a7dae203cccf4a6e7f3ce6b"
+      },
+      "manifest": {
+        "bytes": 542978,
+        "file": "manifest.json",
+        "sha1": "40fc44d09235e6d1762346ec4bc21cb1c98970b7",
+        "sha256": "f9a625c720927b81bee00bae847a3cde1557bf39c5283a4629bfdb9446fd38f3"
+      }
+    },
+    "path": "evidence/worldgen-density-native.json",
+    "scope": "Finite actual Java constructor/getter and explicit refusal observations; not a universal numerical proof or full normal-world population.",
+    "sha1": "3f7d36e130df43c80e70cc906519c684c6d9a524",
+    "sha256": "76f14cbfa606f605c60c2e73090b79aa453cef839182b533e840aec7e48d0a3c"
+  },
+  "independent_numeric_status": "Actual central Java observations and refreshed-native comparison passed the stated88 cases.",
+  "java_compensated_sum_source": {
+    "installed_source_zip": "/opt/homebrew/Cellar/openjdk/25.0.2/libexec/openjdk.jdk/Contents/Home/lib/src.zip",
+    "members": [
+      {
+        "bytes": 25061,
+        "member": "java.base/java/util/stream/DoublePipeline.java",
+        "sha256": "b2712fc83b352d95a89083b302d8134369332a7ab2571b0de683fefc846dc173"
+      },
+      {
+        "bytes": 95423,
+        "member": "java.base/java/util/stream/Collectors.java",
+        "sha256": "72b8996a818ad9f29113160db1fde9ffffb869455bbf1b9922333f65635651dd"
+      }
+    ],
+    "note": "OpenJDK25.0.2 source establishes the sequential compensated DoubleStream.sum operation. Current reference runtime bytecode pin/observation is coordinated in the parent batch."
+  },
+  "javap_sources": [
+    "build/superflat-world/reference/normal-noise-producer-signatures-1791122788896352000/stdout",
+    "build/superflat-world/reference/normal-noise-scalar-biome-signatures-1791124325527151000/stdout",
+    "build/superflat-world/reference/density-noise-helper-signatures/stdout"
+  ],
+  "kernel_admitted_laws": [
+    "worldgen_density_noise_laws:every_read_retains_complete_noise",
+    "worldgen_density_noise_laws:invalid_config_preserves_constructor_source",
+    "worldgen_density_noise_laws:any_constructor_failure_rolls_back_complete_source",
+    "worldgen_density_noise_laws:unsupported_biome_initializer_is_refused",
+    "worldgen_density_noise_laws:invalid_named_config_is_refused",
+    "worldgen_density_noise_laws:negative_zero_modifier_is_refused"
+  ],
+  "numeric_parity_claimed_by_owner_proofs": false,
+  "observation_harness": "tests/worldgen_density_noise.bend",
+  "observation_harness_check": {
+    "pins": "build/superflat-world/reference/density-noise-harness-ordinary-1791132538295528000/source-pins.json",
+    "process": "build/superflat-world/reference/density-noise-harness-ordinary-1791132538295528000-process/process.json",
+    "source_bytes": 7192,
+    "source_pin_count": 10,
+    "source_pins_verified_before_after": "build/superflat-world/reference/density-noise-harness-ordinary-1791132538295528000/source-pin-verdict.json",
+    "source_sha256": "7d1ef85216f3ffb089e11748e3ad93b635a6aff40d5d45f615b7375e45268bd6",
+    "verdict": {
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/worldgen_density_noise.bend",
+        "--check-only"
+      ],
+      "cap_seconds": 30,
+      "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+      "exit_code": 0,
+      "group_absent": true,
+      "leader_reaped": true,
+      "pgid": 59835,
+      "pid": 59835,
+      "retry": false,
+      "seconds": 0.39105891715735197,
+      "status": "passed",
+      "stderr": {
+        "bytes": 0,
+        "file": "stderr",
+        "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 58,
+        "file": "stdout",
+        "sha1": "7ac487c4af0e6a0b7df1ebae438bf1c0ffe5e478",
+        "sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1"
+      },
+      "timed_out": false
+    }
+  },
+  "observation_harness_native_build": {
+    "binary": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/density-noise-signed-zero-native-1791134865770926000-inputs/worldgen-density-noise",
+    "binary_sha256": "f11490c8f0c9350c76f46bfba428b4b09ab9a36eae000c3814784e2820366bb7",
+    "cache_hit": false,
+    "cap_seconds": 600,
+    "command": [
+      "/opt/homebrew/opt/python@3.14/bin/python3.14",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/build_native.py",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/worldgen_density_noise.bend",
+      "-o",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/density-noise-signed-zero-native-1791134865770926000-inputs/worldgen-density-noise",
+      "--force",
+      "--report",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/density-noise-signed-zero-native-1791134865770926000-inputs/native-build.json"
+    ],
+    "group_absent": true,
+    "inputs": "build/superflat-world/reference/density-noise-signed-zero-native-1791134865770926000-inputs",
+    "leader_reaped": true,
+    "process": "build/superflat-world/reference/density-noise-signed-zero-native-1791134865770926000-process/process.json",
+    "process_seconds": 9.380603583529592,
+    "report": "build/superflat-world/reference/density-noise-signed-zero-native-1791134865770926000-inputs/native-build.json",
+    "retries": 0,
+    "status": "passed",
+    "substantive_change": "negative-zero modifiers are refused before source advancement",
+    "target_program_run_chained": false,
+    "timings": {
+      "emission_seconds": 1.2178738750517368,
+      "native_seconds": 3.1622816249728203,
+      "total_seconds": 9.257630582898855
+    }
+  },
+  "observation_harness_status": "Ordinary source check and signed-zero native rebuild passed; separate pinned-Java raw-word comparison passed.",
+  "observed_admission_discrepancy": {
+    "affected_cases": [
+      "zero-modifiers/1/xoroshiro",
+      "zero-modifiers/1/legacy"
+    ],
+    "finding": "The actual codec rejects a negative-zero modifier below its positive-zero lower bound. Its rejected list element also produced partial decoded size2/count3; original input had three elements.",
+    "new_boundary_cases": [
+      "modifier-negative-zero/1/xoroshiro",
+      "modifier-negative-zero/1/legacy"
+    ],
+    "old_inputs_receipts_and_passed_artifacts_preserved": true,
+    "production_fix": "Explicit signed-zero refusal before finite-range validation and random draws",
+    "raw_original_batch": "build/superflat-world/reference/density-java-actual-001.json",
+    "regression_contract": "worldgen_density_noise_laws:negative_zero_modifier_is_refused"
+  },
+  "previous_five_root_certification": {
+    "api_process": "build/superflat-world/reference/density-noise-owner-current-closure-1791132887961335000-api/process.json",
+    "artifact": {
+      "bytes": 1195845,
+      "path": "build/superflat-world/reference/density-noise-owner-current-closure-1791132887961335000-inputs/selected.bendtt",
+      "sha256": "16bba51c7df3815b7ff3d9abe55cf31f90a4e8f30972b310c76429db3b749242"
+    },
+    "kernel_process": "build/superflat-world/reference/density-noise-owner-current-closure-1791132887961335000-kernel/process.json",
+    "selection": "build/superflat-world/reference/density-noise-owner-current-closure-1791132887961335000-inputs/selection.json",
+    "source_pin_count": 22,
+    "source_snapshots": "build/superflat-world/reference/density-noise-owner-current-closure-1791132887961335000-inputs/source-snapshots.json"
+  },
+  "previous_native_artifact": {
+    "binary": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/density-noise-harness-native-1791132685132859000-inputs/worldgen-density-noise",
+    "binary_sha256": "c12daa4b724948ddc03f6a17298e7be5eaae018d9bc7896cc4e9dc1e9723beee",
+    "cache_hit": false,
+    "cap_seconds": 600,
+    "command": [
+      "/opt/homebrew/opt/python@3.14/bin/python3.14",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/build_native.py",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/worldgen_density_noise.bend",
+      "-o",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/density-noise-harness-native-1791132685132859000-inputs/worldgen-density-noise",
+      "--force",
+      "--report",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/density-noise-harness-native-1791132685132859000-inputs/native-build.json"
+    ],
+    "group_absent": true,
+    "inputs": "build/superflat-world/reference/density-noise-harness-native-1791132685132859000-inputs",
+    "leader_reaped": true,
+    "process": "build/superflat-world/reference/density-noise-harness-native-1791132685132859000-process/process.json",
+    "process_seconds": 7.0038682501763105,
+    "report": "build/superflat-world/reference/density-noise-harness-native-1791132685132859000-inputs/native-build.json",
+    "retries": 0,
+    "status": "passed",
+    "target_program_run_chained": false,
+    "timings": {
+      "emission_seconds": 1.2471557492390275,
+      "native_seconds": 2.682302124798298,
+      "total_seconds": 6.937416833825409
+    }
+  },
+  "prior_certification": {
+    "checked_term_export": {
+      "bytes": 1195845,
+      "path": "build/superflat-world/reference/density-noise-owner-1791131511359540000-inputs/selected.bendtt",
+      "sha256": "16bba51c7df3815b7ff3d9abe55cf31f90a4e8f30972b310c76429db3b749242"
+    },
+    "exact_source_snapshots": "build/superflat-world/reference/density-noise-owner-1791131511359540000-inputs/source-snapshots.json",
+    "independent_kernel": {
+      "binary": "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+      "binary_sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7",
+      "child_LEAN_STACK_SIZE_KB": 4194304,
+      "process": "build/superflat-world/reference/density-noise-owner-kernel-1791131529472880000/process.json",
+      "verdict": {
+        "argv": [
+          "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/density-noise-owner-1791131511359540000-inputs/selected.bendtt"
+        ],
+        "cap_seconds": 60,
+        "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+        "exit_code": 0,
+        "group_absent": true,
+        "leader_reaped": true,
+        "pgid": 54415,
+        "pid": 54415,
+        "retry": false,
+        "seconds": 0.21678670775145292,
+        "status": "passed",
+        "stderr": {
+          "bytes": 0,
+          "file": "stderr",
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout": {
+          "bytes": 17,
+          "file": "stdout",
+          "sha1": "ba8ec8289ea6f6e6fec687b636c07f05c26d0a8b",
+          "sha256": "61b73cda11b6b665b9f99f2defd3d3b57f985c865225e942a5bdaa594a503e47"
+        },
+        "timed_out": false
+      }
+    },
+    "selection": "build/superflat-world/reference/density-noise-owner-1791131511359540000-inputs/selection.json",
+    "source_api_export": {
+      "executed_script": "build/superflat-world/reference/density-noise-owner-1791131511359540000-inputs/executed-inline-source.mjs",
+      "process": "build/superflat-world/reference/density-noise-owner-api-1791131511402735000/process.json",
+      "verdict": {
+        "argv": [
+          "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=4096",
+          "--experimental-transform-types",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/density-noise-owner-1791131511359540000-inputs/executed-inline-source.mjs"
+        ],
+        "cap_seconds": 60,
+        "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+        "exit_code": 0,
+        "group_absent": true,
+        "leader_reaped": true,
+        "pgid": 54351,
+        "pid": 54351,
+        "retry": false,
+        "seconds": 0.7938020834699273,
+        "status": "passed",
+        "stderr": {
+          "bytes": 177,
+          "file": "stderr",
+          "sha1": "d3c2be5ec2768db3917cab2bf7af6649943b86f4",
+          "sha256": "97035ea9c152d75e1154040c02ef36f9241ba11aa80aa52afe7c83d3216f8690"
+        },
+        "stdout": {
+          "bytes": 615,
+          "file": "stdout",
+          "sha1": "cec51f5cdb0e0866faafc265dfcca441f43abcf0",
+          "sha256": "967bd71e536aca640f0f91ffce7d75ad5eb6dfd1feb0c7b2900aa6b13fa9c5c6"
+        },
+        "timed_out": false
+      }
+    },
+    "source_pin_count": 21,
+    "source_pins_verified_before_after_kernel": "build/superflat-world/reference/density-noise-owner-kernel-1791131529472880000/source-pin-verdict.json"
+  },
+  "producer_ordinary_check_before_formatter_change": {
+    "note": "Current producer generation is independently source/API checked with its actual five-root proof closure; this earlier ordinary receipt is kept with its specific pre-formatter source generation.",
+    "pins": "build/superflat-world/reference/density-noise-ordinary-1791130792005515000/source-pins.json",
+    "process": "build/superflat-world/reference/density-noise-ordinary-process-1791130792043418000/process.json"
+  },
+  "proof_architecture": "Getter composes independently admitted actual stack-owned returned-pair witness. Constructor witness carries the real initialized result and a conditional rollback proof for every failure message, without duplicating affine proof evidence or arrays. Final projection transports the failure premise and returned source together in one equality rewrite.",
+  "schema_version": 1,
+  "scope": "Six actual NormalNoise contracts: complete getter Noise owner retention, malformed Config source retention, every constructor failure complete Source rollback, unsupported legacy Nether biome refusal, invalid named parameter refusal, and any modifier tail/count/budget with leading IEEE negative zero is refused according to the actual boxed-Double codec boundary.",
+  "selection": "build/superflat-world/reference/density-noise-owner-signed-zero-1791134918118085000-inputs/selection.json",
+  "source_api_export": {
+    "executed_script": "build/superflat-world/reference/density-noise-owner-signed-zero-1791134918118085000-inputs/executed-inline-source.mjs",
+    "process": "build/superflat-world/reference/density-noise-owner-signed-zero-1791134918118085000-api/process.json",
+    "verdict": {
+      "argv": [
+        "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "--experimental-transform-types",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/density-noise-owner-signed-zero-1791134918118085000-inputs/executed-inline-source.mjs"
+      ],
+      "cap_seconds": 60,
+      "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+      "exit_code": 0,
+      "group_absent": true,
+      "leader_reaped": true,
+      "pgid": 77077,
+      "pid": 77077,
+      "retry": false,
+      "seconds": 0.7427989160642028,
+      "status": "passed",
+      "stderr": {
+        "bytes": 177,
+        "file": "stderr",
+        "sha1": "de35de7ee6e245b2e5027d33fd5649ba0f11eb2a",
+        "sha256": "8b86ab55fa91a576ab81c0dff6b2f33529674c1311840e534742cb3a84870838"
+      },
+      "stdout": {
+        "bytes": 679,
+        "file": "stdout",
+        "sha1": "2614b97cfe957a6127b5d84dcaed8d45c155b993",
+        "sha256": "0305e6922e5d05f15d51745c9290143c60f37121c22b17138df1aafc4f1ee7c7"
+      },
+      "timed_out": false
+    }
+  },
+  "source_pin_count": 22,
+  "source_pins_verified_before_after_kernel": "build/superflat-world/reference/density-noise-owner-signed-zero-1791134918118085000-inputs/source-pin-verdict.json",
+  "status": "kernel_certified",
+  "unsupported_production_paths": [
+    "minecraft:nether/temperature and minecraft:nether/vegetation actual LegacyFbmInitializer routes",
+    "full final-density/biome/aquifer/material/structure population"
+  ],
+  "version": "26.3"
+}
