@@ -1,0 +1,147 @@
+{
+  "binary_sha256": "9244dc22fce800e2c96ea45ac62f695bddba78710b95ca1f7152c638ec6d7c7c",
+  "build": {
+    "command": [
+      "/Users/chuah/.bend/bin/bend",
+      "build/local-tick-world-finish.bend",
+      "-o",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-tick-world-finish-tests"
+    ],
+    "exit_code": 0,
+    "seconds": 194.262487,
+    "stderr": "",
+    "stdout": ""
+  },
+  "command": [
+    "/Users/chuah/.bend/bin/bend",
+    "build/local-tick-world-finish.bend",
+    "-o",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-tick-world-finish-tests"
+  ],
+  "compiler": {
+    "bytes": 63885392,
+    "file": "bend",
+    "sha1": "ddce6e432357be618d905b19c0f79abe3d28c388",
+    "sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e"
+  },
+  "compiler_pid": 84722,
+  "emitted_c": [
+    {
+      "bytes": 8134695,
+      "original_path": "/var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/bend-8VmGGg/local-tick-world-finish-tests.c",
+      "preserved_path": "build/local-tick-world-finish-emitted-0.c",
+      "sha256": "b03ead7ebd2bcd9347af0dd46cbbef2218b9609595f36749f4a1975726ea6c83"
+    },
+    {
+      "bytes": 8134695,
+      "original_path": "/var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/bend-8VmGGg/local-tick-world-finish-tests.c",
+      "preserved_path": "build/local-tick-world-finish-emitted-1.c",
+      "sha256": "b03ead7ebd2bcd9347af0dd46cbbef2218b9609595f36749f4a1975726ea6c83"
+    }
+  ],
+  "entry": {
+    "body_sha256": "146584704ac26d1467fc762afe70aaa1b0217230365a4ed215126c98ad7cef1a",
+    "path": "build/local-tick-world-finish.bend",
+    "replacement_scope": "only run_phase dispatch and a named main argument adapter",
+    "sha256": "583ae24b96d22b005ea8121dbe3755a62043e726e1dfb3ee8567e0af52b638d9",
+    "template_sha256": "c5787fe8cf7c0182518ca6309fd9c3c5207e9f690d3f04e6c3cacacf523794ac"
+  },
+  "java_extract_run": false,
+  "process_group_cap": true,
+  "process_group_id": 84722,
+  "process_group_timed_out": false,
+  "processes": [
+    {
+      "command": "/Users/chuah/.bend/bin/bend build/local-tick-world-finish.bend -o /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-tick-world-finish-tests",
+      "elapsed": "00:01",
+      "pgid": 84722,
+      "pid": 84722,
+      "ppid": 84712,
+      "rss_kib": 67328
+    },
+    {
+      "command": "/Library/Developer/CommandLineTools/usr/bin/clang -std=c11 -O3 /var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/bend-8VmGGg/local-tick-world-finish-tests.c -lpthread -lm -o /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-tick-world-finish-tests",
+      "elapsed": "00:02",
+      "pgid": 84722,
+      "pid": 85800,
+      "ppid": 84722,
+      "rss_kib": 14080
+    },
+    {
+      "command": "/Library/Developer/CommandLineTools/usr/bin/clang -cc1 -triple arm64-apple-macosx15.5.0 -Wundef-prefix=TARGET_OS_ -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -Werror=implicit-function-declaration -emit-obj -dumpdir /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-tick-world-finish-tests- -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name local-tick-world-finish-tests.c -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -mllvm -extra-vectorizer-passes -fno-strict-return -ffp-contract=on -fno-rounding-math -funwind-tables=1 -fobjc-msgsend-selector-stubs -target-sdk-version=15.5 -fvisibility-inlines-hidden-static-local-var -fdefine-target-os-macros -fno-assume-unique-vtables -fno-modulemap-allow-subdirectory-search -target-cpu apple-m1 -target-feature +zcm -target-feature +zcz -target-feature +v8.5a -target-feature +aes -target-feature +altnzcv -target-feature +ccdp -target-feature +complxnum -target-feature +crc -target-feature +dotprod -target-feature +fp-armv8 -target-feature +fp16fml -target-feature +fptoint -target-feature +fullfp16 -target-feature +jsconv -target-feature +lse -target-feature +neon -target-feature +pauth -target-feature +perfmon -target-feature +predres -target-feature +ras -target-feature +rcpc -target-feature +rdm -target-feature +sb -target-feature +sha2 -target-feature +sha3 -target-feature +specrestrict -target-feature +ssbs -target-abi darwinpcs -debugger-tuning=lldb -fdebug-compilation-dir=/Users/chuah/Documents/ChatGPT/bendex/minecraft -target-linker-version 1167.5 -fcoverage-compilation-dir=/Users/chuah/Documents/ChatGPT/bendex/minecraft -resource-dir /Library/Developer/CommandLineTools/usr/lib/clang/17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/usr/lib/clang/17/include -internal-externc-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -internal-externc-isystem /Library/Developer/CommandLineTools/usr/include -O3 -Wno-reorder-init-list -Wno-implicit-int-float-conversion -Wno-c99-designator -Wno-final-dtor-non-final-class -Wno-extra-semi-stmt -Wno-misleading-indentation -Wno-quoted-include-in-framework-header -Wno-implicit-fallthrough -Wno-enum-enum-conversion -Wno-enum-float-conversion -Wno-elaborated-enum-base -Wno-reserved-identifier -Wno-gnu-folding-constant -std=c11 -ferror-limit 19 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fmax-type-align=16 -fcommon -vectorize-loops -vectorize-slp -clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation -fno-odr-hash-protocols -clang-vendor-feature=+enableAggressiveVLAFolding -clang-vendor-feature=+revert09abecef7bbf -clang-vendor-feature=+thisNoAlignAttr -clang-vendor-feature=+thisNoNullAttr -clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o /var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/local-tick-world-finish-tests-0027ba.o -x c /var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/bend-8VmGGg/local-tick-world-finish-tests.c",
+      "elapsed": "00:02",
+      "pgid": 84722,
+      "pid": 85801,
+      "ppid": 85800,
+      "rss_kib": 318288
+    }
+  ],
+  "production_sha256": "baa67724b6b5d5e98d3fdba3d733e753d64e4b6c5109e2263cadd003ee721a2c",
+  "reference_sha256": "d86edd49b96395d22a65c8a0dd35ee324a70b65a2dd54b0ba704fbd2a2f2c2b1",
+  "runner_sha256": "e92863dd606e6e4b1cebb6772b93b5ec5717929e7589a32b1118b413249bc92d",
+  "schema_version": 1,
+  "sources_after_sha256": {
+    "src/archive.bend": "c0f7b34a22726d220f6b867730b7d080d57d82c84d619c35721b9b8d18fa5d6e",
+    "src/client_render.bend": "bb8f6057a02bfcb0583025f9e75fe41abc6804eb554c6d971df5c81618932947",
+    "src/client_world.bend": "05040abf35b2b9ceaf87fed5c48f8d074d211750a59ab00fa6ff08e60a9ea5d7",
+    "src/compression.bend": "255cdff06a33050c7b0a48fdea75c1842ebe2dab0439cfe4f03d126d4edc20aa",
+    "src/core.bend": "c1ee5a5390cdac0452c9c6cd3b0584a68ef68b5b0dfec867491c27e67ecadd4e",
+    "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "src/framing.bend": "307f95049df03d92687b7bd0eafb2cd566e660926510bb88163f9bc825fccdb5",
+    "src/game.bend": "43e3eee5d15613bb06cc608fe43657aa14d8c0fbe899d4efa580fc8335d23882",
+    "src/geometry.bend": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f",
+    "src/hash.bend": "d2473695632b19e68c8d636668e4617f04d70892fb2ab6559cb24d4b33c1b978",
+    "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+    "src/live.bend": "cb5a2f8237a53e48d3f6751d321a023e11694721f789373984d7d77620f32e87",
+    "src/local_input.bend": "5e3555fdb06258a76478a32d32332455ad186ec956607ce981e198a3c28ca02e",
+    "src/local_tick_world.bend": "baa67724b6b5d5e98d3fdba3d733e753d64e4b6c5109e2263cadd003ee721a2c",
+    "src/locomotion.bend": "ccf8aa12636ba1fce5575606383bf75c02a8ac79ba952645b89aea2eef6cd459",
+    "src/movement.bend": "0e94fea7cc941a23d2ed7bbd2ccaf0117e6af363eb91f2db2e34428f9dd9e67f",
+    "src/player_input.bend": "d3938f96416691739eb54f2b0f77377c6ba7c74ac63ffa8335840152feb355d5",
+    "src/player_tick.bend": "d583f3014011313097779b69ee0fd8d77bd3ed0e1e7895b629903eb64da9699f",
+    "src/player_tick_world.bend": "98d5fe1383351c463f3fa172ff012325864292cfa7909cf21167e6642500170b",
+    "src/png.bend": "8c24c14a250cf6dbdf0c2804e4b28bfebd7ef62ed5d9ee97a1d07094d4745f22",
+    "src/registry.bend": "821c53d9cfa3044be3cae2af968f55563c0be2bebc9beae55a29d77d47b140a0",
+    "src/schedule.bend": "93aa79895fe340e27ae5fd562102d5980f0938003eb1bbde669a84010779b8c9",
+    "src/section.bend": "02b5c15c57b173c7eb8b4c55a1433c10c192926e91af5e3e69050b4404044aa5",
+    "src/section_map.bend": "ded59d7938c02fd0876d65e37f9f90ea0cfebf3ca4bd107394342f8adbf33965",
+    "src/travel.bend": "717e969e3989a7a8e443b18f69c171bdc11a14130828233ce85e6cd914e1f8f1",
+    "src/travel_world.bend": "a3c787699a9ae12d9301638d39a7abd3aa1cfeba160182b9c176797424aad682",
+    "src/unicode.bend": "8f0cd9bbcd0e7f938af370675eca0c73a9b97b90c2789a1e77e5a29a918455bd",
+    "tests/local_tick_world.bend": "c5787fe8cf7c0182518ca6309fd9c3c5207e9f690d3f04e6c3cacacf523794ac"
+  },
+  "sources_sha256": {
+    "src/archive.bend": "c0f7b34a22726d220f6b867730b7d080d57d82c84d619c35721b9b8d18fa5d6e",
+    "src/client_render.bend": "bb8f6057a02bfcb0583025f9e75fe41abc6804eb554c6d971df5c81618932947",
+    "src/client_world.bend": "05040abf35b2b9ceaf87fed5c48f8d074d211750a59ab00fa6ff08e60a9ea5d7",
+    "src/compression.bend": "255cdff06a33050c7b0a48fdea75c1842ebe2dab0439cfe4f03d126d4edc20aa",
+    "src/core.bend": "c1ee5a5390cdac0452c9c6cd3b0584a68ef68b5b0dfec867491c27e67ecadd4e",
+    "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "src/framing.bend": "307f95049df03d92687b7bd0eafb2cd566e660926510bb88163f9bc825fccdb5",
+    "src/game.bend": "43e3eee5d15613bb06cc608fe43657aa14d8c0fbe899d4efa580fc8335d23882",
+    "src/geometry.bend": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f",
+    "src/hash.bend": "d2473695632b19e68c8d636668e4617f04d70892fb2ab6559cb24d4b33c1b978",
+    "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+    "src/live.bend": "cb5a2f8237a53e48d3f6751d321a023e11694721f789373984d7d77620f32e87",
+    "src/local_input.bend": "5e3555fdb06258a76478a32d32332455ad186ec956607ce981e198a3c28ca02e",
+    "src/local_tick_world.bend": "baa67724b6b5d5e98d3fdba3d733e753d64e4b6c5109e2263cadd003ee721a2c",
+    "src/locomotion.bend": "ccf8aa12636ba1fce5575606383bf75c02a8ac79ba952645b89aea2eef6cd459",
+    "src/movement.bend": "0e94fea7cc941a23d2ed7bbd2ccaf0117e6af363eb91f2db2e34428f9dd9e67f",
+    "src/player_input.bend": "d3938f96416691739eb54f2b0f77377c6ba7c74ac63ffa8335840152feb355d5",
+    "src/player_tick.bend": "d583f3014011313097779b69ee0fd8d77bd3ed0e1e7895b629903eb64da9699f",
+    "src/player_tick_world.bend": "98d5fe1383351c463f3fa172ff012325864292cfa7909cf21167e6642500170b",
+    "src/png.bend": "8c24c14a250cf6dbdf0c2804e4b28bfebd7ef62ed5d9ee97a1d07094d4745f22",
+    "src/registry.bend": "821c53d9cfa3044be3cae2af968f55563c0be2bebc9beae55a29d77d47b140a0",
+    "src/schedule.bend": "93aa79895fe340e27ae5fd562102d5980f0938003eb1bbde669a84010779b8c9",
+    "src/section.bend": "02b5c15c57b173c7eb8b4c55a1433c10c192926e91af5e3e69050b4404044aa5",
+    "src/section_map.bend": "ded59d7938c02fd0876d65e37f9f90ea0cfebf3ca4bd107394342f8adbf33965",
+    "src/travel.bend": "717e969e3989a7a8e443b18f69c171bdc11a14130828233ce85e6cd914e1f8f1",
+    "src/travel_world.bend": "a3c787699a9ae12d9301638d39a7abd3aa1cfeba160182b9c176797424aad682",
+    "src/unicode.bend": "8f0cd9bbcd0e7f938af370675eca0c73a9b97b90c2789a1e77e5a29a918455bd",
+    "tests/local_tick_world.bend": "c5787fe8cf7c0182518ca6309fd9c3c5207e9f690d3f04e6c3cacacf523794ac"
+  },
+  "sources_unchanged": true,
+  "status": "compiled; native comparison pending",
+  "timeout_seconds": 600,
+  "wrapper_pid": 84712
+}

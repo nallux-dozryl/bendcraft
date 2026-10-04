@@ -1,0 +1,562 @@
+{
+  "actual_java_templates_unchanged": true,
+  "actual_local_ai_step_calls": 51,
+  "aggregation": "Existing separately passed lanes; no Java/native builds or repeated corpus execution during aggregation",
+  "authoritative_world_body_before_after_compared": true,
+  "base_checked_fixture_mutations": 66,
+  "binary_sha256": {
+    "finish": "9244dc22fce800e2c96ea45ac62f695bddba78710b95ca1f7152c638ec6d7c7c",
+    "motion": "7700947363c2b8222b8b6d2c9984475f99b19eb2c2338874c05d2242ab2a5888"
+  },
+  "builds": [
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "build/local-tick-world-motion.bend",
+        "-o",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-tick-world-motion-tests"
+      ],
+      "exit_code": 0,
+      "seconds": 191.890137,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "build/local-tick-world-finish.bend",
+        "-o",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-tick-world-finish-tests"
+      ],
+      "exit_code": 0,
+      "seconds": 194.262487,
+      "stderr": "",
+      "stdout": ""
+    }
+  ],
+  "caller_support_context": "fresh actual supporting-aware ground/friction/jump observations, not fabricated support",
+  "canonical_reference_equality": {
+    "path": "evidence/local-tick-world-reference-equality.json",
+    "sha256": "c1b4e28cfeaf9371cf9a6886f0366bb65614cb19fa0c45ed859b479e20fd6d34"
+  },
+  "carried_native_ticks": 40,
+  "checked_finish_motion_recovery_calls": 1,
+  "checks": [
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/local_tick_world.bend",
+        "--check-only"
+      ],
+      "exit_code": 0,
+      "seconds": 3.468068,
+      "stderr": "",
+      "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/local_tick_world.bend",
+        "--check-only"
+      ],
+      "exit_code": 0,
+      "seconds": 26.68303,
+      "stderr": "",
+      "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/local_tick_world.bend",
+        "--check-only"
+      ],
+      "exit_code": 0,
+      "seconds": 1.411449,
+      "stderr": "",
+      "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/local_tick_world.bend",
+        "--check-only"
+      ],
+      "exit_code": 0,
+      "seconds": 7.004901,
+      "stderr": "",
+      "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+    }
+  ],
+  "clock_view_cache_unchanged": true,
+  "collider_comparison": "entire independently encoded exact row, including all raw words, record order, semicolons and empty groups",
+  "compiler": {
+    "bytes": 63885392,
+    "file": "bend",
+    "sha1": "ddce6e432357be618d905b19c0f79abe3d28c388",
+    "sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e"
+  },
+  "compiler_version": {
+    "command": [
+      "/Users/chuah/.bend/bin/bend",
+      "version"
+    ],
+    "exit_code": 0,
+    "seconds": 0.031483,
+    "stderr": "",
+    "stdout": "bend 2.0.35\n"
+  },
+  "confidence": "high within explicit neutral LocalPlayer input/aiStep motion projection; commonTick, rotations, pose update, push-out, lifecycle and complete tick remain outside the facade",
+  "dynamic_registry_remap": true,
+  "entry_binary_sha256": {
+    "finish": "9244dc22fce800e2c96ea45ac62f695bddba78710b95ca1f7152c638ec6d7c7c",
+    "motion": "7700947363c2b8222b8b6d2c9984475f99b19eb2c2338874c05d2242ab2a5888"
+  },
+  "final_files_sha256": {
+    "docs/LOCAL_TICK_WORLD.md": "2f930f6ad2177b79967ea51b88d746b1514c60438cac6a6a37c75e1a44d1297d",
+    "src/local_tick_world.bend": "baa67724b6b5d5e98d3fdba3d733e753d64e4b6c5109e2263cadd003ee721a2c",
+    "tests/local_tick_world.bend": "c5787fe8cf7c0182518ca6309fd9c3c5207e9f690d3f04e6c3cacacf523794ac",
+    "tools/test_local_tick_world.py": "72c4dafb92b7b8e3137993a75465456fc12f2a52219b0174b14607ee697ba9d7"
+  },
+  "fixture_floor_blocks": 25,
+  "generated_entries": {
+    "finish": {
+      "body_sha256": "146584704ac26d1467fc762afe70aaa1b0217230365a4ed215126c98ad7cef1a",
+      "path": "build/local-tick-world-finish.bend",
+      "replacement_scope": "only run_phase dispatch and a named main argument adapter",
+      "sha256": "583ae24b96d22b005ea8121dbe3755a62043e726e1dfb3ee8567e0af52b638d9",
+      "template_sha256": "c5787fe8cf7c0182518ca6309fd9c3c5207e9f690d3f04e6c3cacacf523794ac"
+    },
+    "motion": {
+      "body_sha256": "c3c5fca19017b62a224634b41ce38a1e1d4d4a5095167bc31debd978be0da431",
+      "path": "build/local-tick-world-motion.bend",
+      "replacement_scope": "only run_phase dispatch and a named main argument adapter",
+      "sha256": "950b91f344da5b65561ca49d956d6db8f1ddfd769dcd9ada78be68284c8c0e47",
+      "template_sha256": "c5787fe8cf7c0182518ca6309fd9c3c5207e9f690d3f04e6c3cacacf523794ac"
+    }
+  },
+  "installed_native_emission_capture": {
+    "clang_commands_count": 2,
+    "clang_commands_sha256": "67a5af6495a2800a5c9e3934b0069b1a20269447f0c1892693594b7ba7887d97",
+    "emitted_c": [
+      {
+        "bytes": 10651539,
+        "original_path": "/var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/bend-Ac5oLO/local-tick-world-motion-tests.c",
+        "preserved_path": "build/local-tick-world-motion-generation2-emitted-0.c",
+        "sha256": "7628a9e47da6623167639ef55ff153b710744778480b4de61769bc2d2c7a289c"
+      },
+      {
+        "bytes": 10651539,
+        "original_path": "/var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/bend-Ac5oLO/local-tick-world-motion-tests.c",
+        "preserved_path": "build/local-tick-world-motion-generation2-emitted-1.c",
+        "sha256": "7628a9e47da6623167639ef55ff153b710744778480b4de61769bc2d2c7a289c"
+      }
+    ],
+    "path": "evidence/local-tick-world-motion-generation2-process-cap.json",
+    "raw_artifact": {
+      "bytes": 3385537,
+      "json_pointer": "/installed_native_emission_capture/clang_commands",
+      "path": "build/local-tick-world-receipts/local-tick-world-verification.json",
+      "sha256": "54f72ac82f40dc21e0b56556c099c74ba0a8c6beb957039977c5fc7a78721c28"
+    },
+    "sha256": "4423b63e0087f0b588d744fb72b313871fdb4b53d582bfdde062f9f31139d5f9"
+  },
+  "installed_native_emission_captures": [
+    {
+      "clang_commands_count": 2,
+      "clang_commands_sha256": "67a5af6495a2800a5c9e3934b0069b1a20269447f0c1892693594b7ba7887d97",
+      "emitted_c": [
+        {
+          "bytes": 10651539,
+          "original_path": "/var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/bend-Ac5oLO/local-tick-world-motion-tests.c",
+          "preserved_path": "build/local-tick-world-motion-generation2-emitted-0.c",
+          "sha256": "7628a9e47da6623167639ef55ff153b710744778480b4de61769bc2d2c7a289c"
+        },
+        {
+          "bytes": 10651539,
+          "original_path": "/var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/bend-Ac5oLO/local-tick-world-motion-tests.c",
+          "preserved_path": "build/local-tick-world-motion-generation2-emitted-1.c",
+          "sha256": "7628a9e47da6623167639ef55ff153b710744778480b4de61769bc2d2c7a289c"
+        }
+      ],
+      "path": "evidence/local-tick-world-motion-generation2-process-cap.json",
+      "raw_artifact": {
+        "bytes": 3385537,
+        "json_pointer": "/installed_native_emission_captures/0/clang_commands",
+        "path": "build/local-tick-world-receipts/local-tick-world-verification.json",
+        "sha256": "54f72ac82f40dc21e0b56556c099c74ba0a8c6beb957039977c5fc7a78721c28"
+      },
+      "sha256": "4423b63e0087f0b588d744fb72b313871fdb4b53d582bfdde062f9f31139d5f9"
+    },
+    {
+      "clang_commands_count": 2,
+      "clang_commands_sha256": "844bf26b74101c79599ee0814f6405a3363ed43639ad595aedbca207b30a81d9",
+      "emitted_c": [
+        {
+          "bytes": 8134695,
+          "original_path": "/var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/bend-8VmGGg/local-tick-world-finish-tests.c",
+          "preserved_path": "build/local-tick-world-finish-emitted-0.c",
+          "sha256": "b03ead7ebd2bcd9347af0dd46cbbef2218b9609595f36749f4a1975726ea6c83"
+        },
+        {
+          "bytes": 8134695,
+          "original_path": "/var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/bend-8VmGGg/local-tick-world-finish-tests.c",
+          "preserved_path": "build/local-tick-world-finish-emitted-1.c",
+          "sha256": "b03ead7ebd2bcd9347af0dd46cbbef2218b9609595f36749f4a1975726ea6c83"
+        }
+      ],
+      "path": "evidence/local-tick-world-finish-process-cap.json",
+      "raw_artifact": {
+        "bytes": 3385537,
+        "json_pointer": "/installed_native_emission_captures/1/clang_commands",
+        "path": "build/local-tick-world-receipts/local-tick-world-verification.json",
+        "sha256": "54f72ac82f40dc21e0b56556c099c74ba0a8c6beb957039977c5fc7a78721c28"
+      },
+      "sha256": "d77f5d2257e98b67015ac3a42a53cd9ae6292d13167649b608df8be6f106b400"
+    }
+  ],
+  "java_reference_reused": true,
+  "kernel_verdict": {
+    "command": [
+      "/Users/chuah/.bend/bin/bend",
+      "src/local_tick_world.bend",
+      "--verdict"
+    ],
+    "path": "evidence/local-tick-world-kernel.json",
+    "reason": "Installed TypeScript/BendTT implementation mismatch; mathematical verification unresolved",
+    "seconds": 17.226029,
+    "sha256": "c1f003b13612d17672d8a3b2dd7cfab4c619da659a97d3a81984e73701ab7d87",
+    "status": "failed; unresolved"
+  },
+  "lane_verification_artifacts": {
+    "finish": {
+      "path": "evidence/local-tick-world-finish-verification.json",
+      "sha256": "6eb199a9ec0b278e24f582ceec33ee9863ce454b9c066bdcb96bd798a9d15003"
+    },
+    "motion": {
+      "path": "evidence/local-tick-world-motion-verification.json",
+      "sha256": "afbb795c24ad7a98cf83d4903a66ca78812313b15fb8010f753292999ce4c3e8"
+    }
+  },
+  "matching_generation_verified": true,
+  "native_build_reused": true,
+  "native_build_timeout_seconds": 600,
+  "native_sequence_execution_seconds": 1.722353,
+  "native_sequences": [
+    {
+      "application_gate_rejections": 0,
+      "id": "ai:held_forward",
+      "native_step_outcomes": 0,
+      "ordered_sprint_setters": 0,
+      "precollision_sneak_queries": 0,
+      "seconds": 0.172782,
+      "ticks": 5
+    },
+    {
+      "application_gate_rejections": 0,
+      "id": "ai:held_diagonal",
+      "native_step_outcomes": 0,
+      "ordered_sprint_setters": 0,
+      "precollision_sneak_queries": 0,
+      "seconds": 0.145237,
+      "ticks": 5
+    },
+    {
+      "application_gate_rejections": 0,
+      "id": "ai:double_tap_and_sprint",
+      "native_step_outcomes": 0,
+      "ordered_sprint_setters": 2,
+      "precollision_sneak_queries": 0,
+      "seconds": 0.15036,
+      "ticks": 5
+    },
+    {
+      "application_gate_rejections": 0,
+      "id": "ai:double_start_then_major_stop",
+      "native_step_outcomes": 0,
+      "ordered_sprint_setters": 4,
+      "precollision_sneak_queries": 0,
+      "seconds": 0.147379,
+      "ticks": 5
+    },
+    {
+      "application_gate_rejections": 0,
+      "id": "ai:new_shift_latency",
+      "native_step_outcomes": 0,
+      "ordered_sprint_setters": 0,
+      "precollision_sneak_queries": 7,
+      "seconds": 0.159163,
+      "ticks": 5
+    },
+    {
+      "application_gate_rejections": 0,
+      "id": "ai:jump_held",
+      "native_step_outcomes": 0,
+      "ordered_sprint_setters": 0,
+      "precollision_sneak_queries": 0,
+      "seconds": 0.163836,
+      "ticks": 5
+    },
+    {
+      "application_gate_rejections": 0,
+      "id": "ai:jump_sprint",
+      "native_step_outcomes": 0,
+      "ordered_sprint_setters": 1,
+      "precollision_sneak_queries": 0,
+      "seconds": 0.160946,
+      "ticks": 5
+    },
+    {
+      "application_gate_rejections": 5,
+      "id": "ai:zero_move_yya",
+      "native_step_outcomes": 0,
+      "ordered_sprint_setters": 0,
+      "precollision_sneak_queries": 0,
+      "seconds": 0.149625,
+      "ticks": 5
+    },
+    {
+      "application_gate_rejections": 0,
+      "id": "ai:food_collision_changes",
+      "native_step_outcomes": 0,
+      "ordered_sprint_setters": 3,
+      "precollision_sneak_queries": 0,
+      "seconds": 0.150792,
+      "ticks": 5
+    },
+    {
+      "application_gate_rejections": 0,
+      "id": "ai:world-step",
+      "native_step_outcomes": 1,
+      "ordered_sprint_setters": 0,
+      "precollision_sneak_queries": 0,
+      "seconds": 0.158381,
+      "ticks": 3
+    },
+    {
+      "application_gate_rejections": 3,
+      "id": "ai:world-blocked",
+      "native_step_outcomes": 0,
+      "ordered_sprint_setters": 0,
+      "precollision_sneak_queries": 0,
+      "seconds": 0.163852,
+      "ticks": 3
+    }
+  ],
+  "native_step_outcomes": 1,
+  "ordered_collision_lists_compared": 102,
+  "ordered_sprint_setters_compared": 10,
+  "ordinary_laws": [
+    "body_mismatch_retains_owners_and_complete_prior_states",
+    "inconsistent_sprint_context_retains_complete_prior",
+    "rejected_preparation_retains_complete_prior",
+    "rejected_travel_restores_complete_prior",
+    "rejected_finish_restores_complete_prior"
+  ],
+  "pin": "26.3",
+  "precollision_sneak_queries_observed": 7,
+  "precollision_sneak_scope": "Measured actual noCollision probes recorded separately; these admitted interior fixtures preserve the incoming request, demonstrated by exact collision query boxes and movement state parity. General sneak-edge correction is outside this facade.",
+  "producer_sources_after_sha256": {
+    "tools/reference_local_input_probe.py": "42ad844c7ee3616286ce99bcea00c6bc0710b20888912b6e98c1b4af6072a56e",
+    "tools/test_client_world.py": "e64430126cbc6fd5b85a0bfcbb61de322020585a877aeb6412d3bacbc5dbdbd3",
+    "tools/test_geometry.py": "a2a45a49ac7751b6186d3259ed9b5ece4e7d9c69237741abfccd6239f160721f",
+    "tools/test_local_input.py": "70392b81675caa5a6207ffce3229ff1fd92f32c6278eb0b01846c53243957455",
+    "tools/test_local_tick_world.py": "e92863dd606e6e4b1cebb6772b93b5ec5717929e7589a32b1118b413249bc92d",
+    "tools/test_travel.py": "2ec4baa92ce756277f358bffba19496c10aa3885e3d08af478dafc1b523e0e0f",
+    "tools/test_travel_world.py": "4a349358d4b7386afec841adc2e8c3b57d90281f608274657b7f090b1a3bff13"
+  },
+  "producer_sources_before_sha256": {
+    "tools/reference_local_input_probe.py": "42ad844c7ee3616286ce99bcea00c6bc0710b20888912b6e98c1b4af6072a56e",
+    "tools/test_client_world.py": "e64430126cbc6fd5b85a0bfcbb61de322020585a877aeb6412d3bacbc5dbdbd3",
+    "tools/test_geometry.py": "a2a45a49ac7751b6186d3259ed9b5ece4e7d9c69237741abfccd6239f160721f",
+    "tools/test_local_input.py": "70392b81675caa5a6207ffce3229ff1fd92f32c6278eb0b01846c53243957455",
+    "tools/test_local_tick_world.py": "e92863dd606e6e4b1cebb6772b93b5ec5717929e7589a32b1118b413249bc92d",
+    "tools/test_travel.py": "2ec4baa92ce756277f358bffba19496c10aa3885e3d08af478dafc1b523e0e0f",
+    "tools/test_travel_world.py": "4a349358d4b7386afec841adc2e8c3b57d90281f608274657b7f090b1a3bff13"
+  },
+  "provenance": {
+    "actual_calls": 51,
+    "base_templates_sha256": {
+      "net.minecraft.client.Minecraft": "c5b0273eaad86b460eef291eb08a99faa8ddb17b137bb813c95f804388986c7b",
+      "net.minecraft.client.gui.Gui": "530742a3f5f1cfc041ed53ad6ecc5028c2fec4cd649b747abe52e6433e903d9c",
+      "net.minecraft.client.multiplayer.ClientPacketListener": "ae1f0d16b26cfdc4df13a51057b831920dc585225fe703757bfe8d6432c854cd",
+      "net.minecraft.client.tutorial.Tutorial": "e2edc28f63509a2bfd3f4d7eacfc26ba92410a176c683a971e67bb87e9cd4e0c",
+      "net.minecraft.fixture.LocalInputReceiverFixture": "c8433c9f406575b068b2ba6b6521bd33775802a65cea454d06c01857261031d5"
+    },
+    "case_histories": 11,
+    "cases_sha256": "fcafc50364f0263577e71a8c2510376c0427ba58345f2fe03e1d23f03581b3c2",
+    "classpath_sha256": "e726e02962d0375f210b29c59b447af38ba8194446577aa2aaaa363f4087e88b",
+    "client_jar": {
+      "bytes": 41483720,
+      "file": "26.3.jar",
+      "sha1": "e877b6a07acd633fb3bb475002175cec036e7b87",
+      "sha256": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d"
+    },
+    "command_sha256": "74fedf2162ca1696a86a4ebe70201f2f2768a0ae71f758341be2b9731df1c698",
+    "derived_fixture_sources_sha256": {
+      "net.minecraft.client.Minecraft": "c5b0273eaad86b460eef291eb08a99faa8ddb17b137bb813c95f804388986c7b",
+      "net.minecraft.client.gui.Gui": "530742a3f5f1cfc041ed53ad6ecc5028c2fec4cd649b747abe52e6433e903d9c",
+      "net.minecraft.client.multiplayer.ClientPacketListener": "ae1f0d16b26cfdc4df13a51057b831920dc585225fe703757bfe8d6432c854cd",
+      "net.minecraft.client.tutorial.Tutorial": "e2edc28f63509a2bfd3f4d7eacfc26ba92410a176c683a971e67bb87e9cd4e0c",
+      "net.minecraft.fixture.LocalInputReceiverFixture": "0cb091c67e97a1e4014eb0f8141481e3c66966cc119135d8c442306d9a377d86"
+    },
+    "execution": {
+      "returncode": 0,
+      "seconds": 5.43854,
+      "stderr_sha256": "e9fab062c9ed10d9c19e6cb8841f8ef1decae295e28e7def0492f8e7f0eb25b8",
+      "stdout_sha256": "b15a0f69c9210ab9548ba313667d84b2861343d11f3ea0d2aa580ea72fc89835"
+    },
+    "inputs_sha256": "94410e8e53027944f7b30ab5881b39ddaa123baaf72d8f67145f50e67aa238df",
+    "java_runtime": {
+      "bytes": 84720,
+      "file": "java",
+      "sha1": "5af4a90be54ddeec03db3700e6989594c9438952",
+      "sha256": "e0879c0df70d880d66904064d1b388b08aeee0958a047f37601435b28db849a3"
+    },
+    "launcher_sha256": "b4899f59890b040cfce0dd930865a7b61ce3422cd481eb1339aafb2574ba751d",
+    "loaded_official_class_count": 4398,
+    "loaded_official_class_tree_sha256": "7f888023a39d4c56ed195128d2ff4373626fd04c04949c13a81f777d2c53a5bf",
+    "pin": "26.3",
+    "raw_artifact": {
+      "bytes": 3385537,
+      "json_pointer": "/provenance",
+      "path": "build/local-tick-world-receipts/local-tick-world-verification.json",
+      "sha256": "54f72ac82f40dc21e0b56556c099c74ba0a8c6beb957039977c5fc7a78721c28"
+    },
+    "schema_version": 1,
+    "scope": "Fresh normal-constructed actual LocalPlayer.aiStep and ClientLevel; unchanged official bytes, four explicit external service fixtures, super-calling observers and plain/observed final-state parity; 25-stone floor plus explicit full-cube collision fixtures; no commonTick/pose/full tick claim",
+    "source_reference_artifact": {
+      "bytes": 3184281,
+      "path": "reference/local_tick_world.json",
+      "sha256": "d86edd49b96395d22a65c8a0dd35ee324a70b65a2dd54b0ba704fbd2a2f2c2b1"
+    },
+    "status": "passed"
+  },
+  "raw_artifact": {
+    "bytes": 3385537,
+    "path": "build/local-tick-world-receipts/local-tick-world-verification.json",
+    "sha256": "54f72ac82f40dc21e0b56556c099c74ba0a8c6beb957039977c5fc7a78721c28"
+  },
+  "reference_artifact": {
+    "bytes": 3184281,
+    "path": "reference/local_tick_world.json",
+    "sha256": "d86edd49b96395d22a65c8a0dd35ee324a70b65a2dd54b0ba704fbd2a2f2c2b1"
+  },
+  "reference_location_compatibility": {
+    "comparison_observations_changed": false,
+    "comparison_runner_sha256": "e92863dd606e6e4b1cebb6772b93b5ec5717929e7589a32b1118b413249bc92d",
+    "current_runner_executed": false,
+    "current_runner_sha256": "72c4dafb92b7b8e3137993a75465456fc12f2a52219b0174b14607ee697ba9d7",
+    "native_build_generation_changed": false,
+    "receipt": "evidence/local-tick-world-reference-relocation.json",
+    "sha256": "5ad8c94745baea16653e9ae8c42d3d483d23e01498a10380cda98ef56834f2e4"
+  },
+  "rejections": [
+    {
+      "continued_same_owners": true,
+      "error": "prepare|sprint",
+      "id": "reject-sprint-mismatch:1"
+    },
+    {
+      "continued_same_owners": true,
+      "error": "prepare|attribute",
+      "id": "reject-invalid-sneak:1"
+    },
+    {
+      "continued_same_owners": true,
+      "error": "prepare|pitch",
+      "id": "reject-invalid-pitch:1"
+    },
+    {
+      "continued_same_owners": true,
+      "error": "prepare|player",
+      "id": "reject-invalid-jump:1"
+    },
+    {
+      "continued_same_owners": true,
+      "error": "body-mismatch",
+      "id": "reject-mismatch:1"
+    },
+    {
+      "checked_fixture_repair_outside_facade": true,
+      "continued_same_owners": true,
+      "error": "travel|world|missing-section:",
+      "id": "reject-missing:0"
+    },
+    {
+      "checked_fixture_repair_outside_facade": true,
+      "continued_same_owners": true,
+      "error": "travel|world|unsupported-block-state:",
+      "id": "reject-unsupported:0"
+    },
+    {
+      "continued_same_owners": true,
+      "entry": "separate checked-finish rollback and actual motion recovery",
+      "error": "finish",
+      "id": "reject-finish-injection:1",
+      "initial_prior": "fresh actual Java before-state at the rejected frame",
+      "recovery_actual_ai_step_index": 1
+    }
+  ],
+  "runner_framing_compatibility": {
+    "new_runner_sha256": "e92863dd606e6e4b1cebb6772b93b5ec5717929e7589a32b1118b413249bc92d",
+    "old_runner_sha256": "1a374be8e6921aa5196f128226e70ecc361707f37b96550eb4ecbdb2b760952c",
+    "path": "evidence/local-tick-world-runner-framing.json",
+    "sha256": "0dfff8bf1bf8729f68e1d0f4b02412b96f2c9881393612f41d1fb864b07db26f"
+  },
+  "same_owner_recovery_cases": 8,
+  "schema_version": 1,
+  "separate_finish_lane": true,
+  "separate_verdicts": {
+    "checked_finish_native_comparison": "passed; one rejection/rollback and actual same-owner LW tick recovery",
+    "installed_native_compilation": "both passed",
+    "motion_native_comparison": "passed; 51 primary actual calls and seven rejection/recovery paths",
+    "read_only_named_diagnostic": "timed out; remains unverified",
+    "whole_module_kernel": "unresolved; one installed TypeScript/BendTT mismatch, no retries"
+  },
+  "source_generation_frozen": true,
+  "sources_sha256": {
+    "src/archive.bend": "c0f7b34a22726d220f6b867730b7d080d57d82c84d619c35721b9b8d18fa5d6e",
+    "src/client_render.bend": "bb8f6057a02bfcb0583025f9e75fe41abc6804eb554c6d971df5c81618932947",
+    "src/client_world.bend": "05040abf35b2b9ceaf87fed5c48f8d074d211750a59ab00fa6ff08e60a9ea5d7",
+    "src/compression.bend": "255cdff06a33050c7b0a48fdea75c1842ebe2dab0439cfe4f03d126d4edc20aa",
+    "src/core.bend": "c1ee5a5390cdac0452c9c6cd3b0584a68ef68b5b0dfec867491c27e67ecadd4e",
+    "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "src/framing.bend": "307f95049df03d92687b7bd0eafb2cd566e660926510bb88163f9bc825fccdb5",
+    "src/game.bend": "43e3eee5d15613bb06cc608fe43657aa14d8c0fbe899d4efa580fc8335d23882",
+    "src/geometry.bend": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f",
+    "src/hash.bend": "d2473695632b19e68c8d636668e4617f04d70892fb2ab6559cb24d4b33c1b978",
+    "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+    "src/live.bend": "cb5a2f8237a53e48d3f6751d321a023e11694721f789373984d7d77620f32e87",
+    "src/local_input.bend": "5e3555fdb06258a76478a32d32332455ad186ec956607ce981e198a3c28ca02e",
+    "src/local_tick_world.bend": "baa67724b6b5d5e98d3fdba3d733e753d64e4b6c5109e2263cadd003ee721a2c",
+    "src/locomotion.bend": "ccf8aa12636ba1fce5575606383bf75c02a8ac79ba952645b89aea2eef6cd459",
+    "src/movement.bend": "0e94fea7cc941a23d2ed7bbd2ccaf0117e6af363eb91f2db2e34428f9dd9e67f",
+    "src/player_input.bend": "d3938f96416691739eb54f2b0f77377c6ba7c74ac63ffa8335840152feb355d5",
+    "src/player_tick.bend": "d583f3014011313097779b69ee0fd8d77bd3ed0e1e7895b629903eb64da9699f",
+    "src/player_tick_world.bend": "98d5fe1383351c463f3fa172ff012325864292cfa7909cf21167e6642500170b",
+    "src/png.bend": "8c24c14a250cf6dbdf0c2804e4b28bfebd7ef62ed5d9ee97a1d07094d4745f22",
+    "src/registry.bend": "821c53d9cfa3044be3cae2af968f55563c0be2bebc9beae55a29d77d47b140a0",
+    "src/schedule.bend": "93aa79895fe340e27ae5fd562102d5980f0938003eb1bbde669a84010779b8c9",
+    "src/section.bend": "02b5c15c57b173c7eb8b4c55a1433c10c192926e91af5e3e69050b4404044aa5",
+    "src/section_map.bend": "ded59d7938c02fd0876d65e37f9f90ea0cfebf3ca4bd107394342f8adbf33965",
+    "src/travel.bend": "717e969e3989a7a8e443b18f69c171bdc11a14130828233ce85e6cd914e1f8f1",
+    "src/travel_world.bend": "a3c787699a9ae12d9301638d39a7abd3aa1cfeba160182b9c176797424aad682",
+    "src/unicode.bend": "8f0cd9bbcd0e7f938af370675eca0c73a9b97b90c2789a1e77e5a29a918455bd",
+    "tests/local_tick_world.bend": "c5787fe8cf7c0182518ca6309fd9c3c5207e9f690d3f04e6c3cacacf523794ac",
+    "tools/reference_local_input_probe.py": "42ad844c7ee3616286ce99bcea00c6bc0710b20888912b6e98c1b4af6072a56e",
+    "tools/test_local_tick_world.py": "e92863dd606e6e4b1cebb6772b93b5ec5717929e7589a32b1118b413249bc92d"
+  },
+  "status": "passed",
+  "successful_moves_without_position_application": 8,
+  "table": {
+    "bytes": 262144,
+    "file": "reference_mth_sin.f32",
+    "sha1": "453d5bfac3fe5a249b1d76c6eb817dea50710c98",
+    "sha256": "cdfaec6870788e193dff3f1ddfa3ca7d3f1a897042d78365a1fe3a433be3627d"
+  },
+  "verified_entries": [
+    "motion",
+    "finish"
+  ],
+  "whole_module_kernel_verified": false
+}

@@ -1,0 +1,60 @@
+{
+  "actual_ai_step_calls": 51,
+  "base_templates_sha256": {
+    "net.minecraft.client.Minecraft": "c5b0273eaad86b460eef291eb08a99faa8ddb17b137bb813c95f804388986c7b",
+    "net.minecraft.client.gui.Gui": "530742a3f5f1cfc041ed53ad6ecc5028c2fec4cd649b747abe52e6433e903d9c",
+    "net.minecraft.client.multiplayer.ClientPacketListener": "ae1f0d16b26cfdc4df13a51057b831920dc585225fe703757bfe8d6432c854cd",
+    "net.minecraft.client.tutorial.Tutorial": "e2edc28f63509a2bfd3f4d7eacfc26ba92410a176c683a971e67bb87e9cd4e0c",
+    "net.minecraft.fixture.LocalInputReceiverFixture": "c8433c9f406575b068b2ba6b6521bd33775802a65cea454d06c01857261031d5"
+  },
+  "canonical_corpus": {
+    "bytes": 3184281,
+    "path": "reference/local_tick_world.json",
+    "sha256": "d86edd49b96395d22a65c8a0dd35ee324a70b65a2dd54b0ba704fbd2a2f2c2b1"
+  },
+  "cases_sha256": "fcafc50364f0263577e71a8c2510376c0427ba58345f2fe03e1d23f03581b3c2",
+  "classpath_sha256": "e726e02962d0375f210b29c59b447af38ba8194446577aa2aaaa363f4087e88b",
+  "client_jar": {
+    "bytes": 41483720,
+    "file": "26.3.jar",
+    "sha1": "e877b6a07acd633fb3bb475002175cec036e7b87",
+    "sha256": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d"
+  },
+  "compaction_scope": "Full byte-identical original is ignored raw evidence; exactly one complete canonical corpus is checked in reference/. No Java/native execution and no observation change.",
+  "corpus_identical_to_current": true,
+  "derived_fixture_sources_sha256": {
+    "net.minecraft.client.Minecraft": "c5b0273eaad86b460eef291eb08a99faa8ddb17b137bb813c95f804388986c7b",
+    "net.minecraft.client.gui.Gui": "530742a3f5f1cfc041ed53ad6ecc5028c2fec4cd649b747abe52e6433e903d9c",
+    "net.minecraft.client.multiplayer.ClientPacketListener": "ae1f0d16b26cfdc4df13a51057b831920dc585225fe703757bfe8d6432c854cd",
+    "net.minecraft.client.tutorial.Tutorial": "e2edc28f63509a2bfd3f4d7eacfc26ba92410a176c683a971e67bb87e9cd4e0c",
+    "net.minecraft.fixture.LocalInputReceiverFixture": "0cb091c67e97a1e4014eb0f8141481e3c66966cc119135d8c442306d9a377d86"
+  },
+  "equality_receipt": "evidence/local-tick-world-reference-equality.json",
+  "execution": {
+    "returncode": 0,
+    "seconds": 5.43854,
+    "stderr_sha256": "e9fab062c9ed10d9c19e6cb8841f8ef1decae295e28e7def0492f8e7f0eb25b8",
+    "stdout_sha256": "b15a0f69c9210ab9548ba313667d84b2861343d11f3ea0d2aa580ea72fc89835"
+  },
+  "execution_command_sha256": "74fedf2162ca1696a86a4ebe70201f2f2768a0ae71f758341be2b9731df1c698",
+  "histories": 11,
+  "inputs_sha256": "94410e8e53027944f7b30ab5881b39ddaa123baaf72d8f67145f50e67aa238df",
+  "java_runtime": {
+    "bytes": 84720,
+    "file": "java",
+    "sha1": "5af4a90be54ddeec03db3700e6989594c9438952",
+    "sha256": "e0879c0df70d880d66904064d1b388b08aeee0958a047f37601435b28db849a3"
+  },
+  "launcher_sha256": "b4899f59890b040cfce0dd930865a7b61ce3422cd481eb1339aafb2574ba751d",
+  "loaded_official_class_count": 4398,
+  "loaded_official_class_tree_sha256": "7f888023a39d4c56ed195128d2ff4373626fd04c04949c13a81f777d2c53a5bf",
+  "pin": "26.3",
+  "raw_artifact": {
+    "bytes": 3184281,
+    "path": "build/local-tick-world-receipts/local-tick-world-reference.json",
+    "sha256": "d86edd49b96395d22a65c8a0dd35ee324a70b65a2dd54b0ba704fbd2a2f2c2b1"
+  },
+  "schema_version": 1,
+  "scope": "Fresh normal-constructed actual LocalPlayer.aiStep and ClientLevel; unchanged official bytes, four explicit external service fixtures, super-calling observers and plain/observed final-state parity; 25-stone floor plus explicit full-cube collision fixtures; no commonTick/pose/full tick claim",
+  "status": "passed"
+}

@@ -43,7 +43,7 @@ declared interfaces; integration evidence determines subsequent work.
 | Owner | Exclusive working files or subsystem | Stable integration interface |
 | --- | --- | --- |
 | Lead | `player_runtime.bend`, `player_session.bend`, `player_storage.bend`, `player_scene.bend`, `player_client.bend`, `client_presenter.bend` and window input | Verified plain Player runtime and saved-session TCP/MCP/restart composition; one W body plus metadata, Tables, support and complete Controller. Continuous entry passes 22 bounded launches with exact API/save/restart checks; visible presentation and physical focused input remain required |
-| World bridge | Completed PW/SW; new `local_tick_world.bend` | Verified owned support/context reads; LocalPlayer prepare override before checked travel/finish |
+| World bridge | Completed PW/SW and `local_tick_world.bend`; new tick phase audit | LocalPlayer prepare override before checked travel/finish passes retained motion/finish lanes; full tick ordering, pose/dimensions and cached eye observations are being derived |
 | Client/render | Completed BR/texture metadata and `resource_frame.bend`; new `sprite_stitch.bend` | Resource/frame draw, audit and geometry pass twice on three frozen artifacts; actual four-argument Java atlas stitcher and metadata consumer integration remain separate |
 | Player motion | Completed support, LocalPlayer input, collision hooks and `local_collision_world.bend` | Exact minor arithmetic and edge hooks pass native/kernel; actual Core read/yield composition passes native with explicit entity/border admission. Fall history and lifecycle consumers remain open; full world-composition kernel is unresolved |
 | Model interpretation | Completed `blockstate_model.bend`; presenter integration test | Exact selector/multipart/ordered state semantics; 28 hidden actor/window/failure cleanup executions pass; actual visible focused input remains required |
@@ -94,6 +94,12 @@ finish injection and motion reporting captures. Harness-only boxing and a small
 sprint-report header preserve production code and exact Java expectations. Each
 installed retry remains bounded and independently recorded; a diagnostic timeout
 establishes no native result.
+
+The revised LocalPlayer motion and finish entries now pass their retained native
+comparison lanes. The single full-source kernel attempt returned the existing
+checker mismatch. A small sprint-report capture solved the installed arity limit
+without changing production or Java expectations; reference path relocation and
+receipt compaction preserve the measured generation explicitly.
 
 ## Measured build work
 

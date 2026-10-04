@@ -1,0 +1,188 @@
+{
+  "build_timeout_seconds": 600,
+  "command": [
+    "/opt/homebrew/opt/python@3.14/bin/python3.14",
+    "-u",
+    "tools/test_local_tick_world.py",
+    "--entry",
+    "motion"
+  ],
+  "diagnostic_timeout_receipt": {
+    "path": "evidence/local-tick-world-motion-report-arity-diagnostic.json",
+    "sha256": "6416c7ba6ab84ebffbc1a81524cff5496036a42fa05eccba4048c0b772c2154b",
+    "verdict": "timed out; unverified, not success"
+  },
+  "emitted_c": [
+    {
+      "bytes": 10651539,
+      "original_path": "/var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/bend-Ac5oLO/local-tick-world-motion-tests.c",
+      "preserved_path": "build/local-tick-world-motion-generation2-emitted-0.c",
+      "sha256": "7628a9e47da6623167639ef55ff153b710744778480b4de61769bc2d2c7a289c"
+    },
+    {
+      "bytes": 10651539,
+      "original_path": "/var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/bend-Ac5oLO/local-tick-world-motion-tests.c",
+      "preserved_path": "build/local-tick-world-motion-generation2-emitted-1.c",
+      "sha256": "7628a9e47da6623167639ef55ff153b710744778480b4de61769bc2d2c7a289c"
+    }
+  ],
+  "entry": "motion",
+  "exit_code": 1,
+  "finish_entry_run": false,
+  "generation_receipt_sha256": "fd6624769eea7cb6c0052f2b44c854eb261c064fa0c1fbb842c37e5be2fe2a3b",
+  "native_build_phase": {
+    "entry": "motion",
+    "phase": "native-build",
+    "pid": 79687,
+    "timeout_seconds": 600
+  },
+  "native_build_phase_completed": true,
+  "native_build_process_seconds_observed": 191.962746,
+  "native_build_started_after_seconds": 14.245544,
+  "original_archives": {
+    "evidence/local-tick-world-motion-build-attempt.json": {
+      "preserved_as": "evidence/local-tick-world-motion-build-attempt-original.json",
+      "sha256": "685b9a65f421d41500779f48522f89fb5b4c5144f5c4dea4a141d78cedba71c1"
+    },
+    "evidence/local-tick-world-reference.json": {
+      "preserved_as": "evidence/local-tick-world-reference-original-motion.json",
+      "sha256": "b037e48c5f4c13fa31966723cbda953a0fe099bc54e4c8a225c5681235dfb677"
+    }
+  },
+  "output_log": {
+    "path": "build/local-tick-world-motion-generation2-output.log",
+    "sha256": "4bceb485eadad34ab7706c6ddd292b770cb5004e66a525863dd4fa740f1f97ad"
+  },
+  "pins": {
+    "motion_entry": "950b91f344da5b65561ca49d956d6db8f1ddfd769dcd9ada78be68284c8c0e47",
+    "production": "baa67724b6b5d5e98d3fdba3d733e753d64e4b6c5109e2263cadd003ee721a2c",
+    "template": "c5787fe8cf7c0182518ca6309fd9c3c5207e9f690d3f04e6c3cacacf523794ac",
+    "tool": "1a374be8e6921aa5196f128226e70ecc361707f37b96550eb4ecbdb2b760952c"
+  },
+  "process_group_cap": true,
+  "process_group_id": 79687,
+  "process_group_timed_out": false,
+  "processes": [
+    {
+      "command": "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -u tools/test_local_tick_world.py --entry motion",
+      "elapsed": "00:00",
+      "pgid": 79687,
+      "pid": 79687,
+      "ppid": 79678,
+      "rss_kib": 4400
+    },
+    {
+      "command": "/Users/chuah/Library/Application Support/minecraft/runtime/java-runtime-epsilon/mac-os-arm64/java-runtime-epsilon/jre.bundle/Contents/Home/bin/java --source 25 --class-path /Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/at/yawk/lz4/lz4-java/1.10.1/lz4-java-1.10.1.jar:/Users/chuah/Library/Application Support/minecraft/libraries/ca/weblite/java-objc-bridge/1.1/java-objc-bridge-1.1.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/azure/azure-json/1.4.0/azure-json-1.4.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/github/oshi/oshi-core/6.9.0/oshi-core-6.9.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/google/code/gson/gson/2.14.0/gson-2.14.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/google/guava/failureaccess/1.0.3/failureaccess-1.0.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/google/guava/guava/33.6.0-jre/guava-33.6.0-jre.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/ibm/icu/icu4j/78.3/icu4j-78.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/microsoft/azure/msal4j/1.24.1/msal4j-1.24.1.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/authlib/10.0.77/authlib-10.0.77.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/blocklist/1.0.10/blocklist-1.0.10.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/brigadier/1.3.11/brigadier-1.3.11.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/datafixerupper/10.0.21/datafixerupper-10.0.21.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/jtracy/1.14.38/jtracy-1.14.38.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/jtracy/1.14.38/jtracy-1.14.38-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/jtracy/1.14.38/jtracy-1.14.38-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/logging/1.7.12/logging-1.7.12.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/patchy/2.2.10/patchy-2.2.10.jar:/Users/chuah/Library/Application Support/minecraft/libraries/com/mojang/text2speech/1.19.12/text2speech-1.19.12.jar:/Users/chuah/Library/Application Support/minecraft/libraries/commons-codec/commons-codec/1.22.0/commons-codec-1.22.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/commons-io/commons-io/2.20.0/commons-io-2.20.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-buffer/4.2.16.Final/netty-buffer-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-codec-base/4.2.16.Final/netty-codec-base-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-codec-compression/4.2.16.Final/netty-codec-compression-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-codec-http/4.2.16.Final/netty-codec-http-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-common/4.2.16.Final/netty-common-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-handler/4.2.16.Final/netty-handler-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-resolver/4.2.16.Final/netty-resolver-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-transport-classes-epoll/4.2.16.Final/netty-transport-classes-epoll-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-transport-classes-kqueue/4.2.16.Final/netty-transport-classes-kqueue-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-transport-native-kqueue/4.2.16.Final/netty-transport-native-kqueue-4.2.16.Final-osx-aarch_64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-transport-native-kqueue/4.2.16.Final/netty-transport-native-kqueue-4.2.16.Final-osx-x86_64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-transport-native-unix-common/4.2.16.Final/netty-transport-native-unix-common-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/io/netty/netty-transport/4.2.16.Final/netty-transport-4.2.16.Final.jar:/Users/chuah/Library/Application Support/minecraft/libraries/it/unimi/dsi/fastutil/8.5.18/fastutil-8.5.18.jar:/Users/chuah/Library/Application Support/minecraft/libraries/net/java/dev/jna/jna-platform/5.17.0/jna-platform-5.17.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/net/java/dev/jna/jna/5.17.0/jna-5.17.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/apache/commons/commons-compress/1.28.0/commons-compress-1.28.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/apache/commons/commons-lang3/3.20.0/commons-lang3-3.20.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/apache/logging/log4j/log4j-api/2.26.0/log4j-api-2.26.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/apache/logging/log4j/log4j-core/2.26.0/log4j-core-2.26.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/apache/logging/log4j/log4j-slf4j2-impl/2.26.0/log4j-slf4j2-impl-2.26.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/jcraft/jorbis/0.0.17/jorbis-0.0.17.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/joml/joml/1.10.9/joml-1.10.9.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-freetype/3.4.3/lwjgl-freetype-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-freetype/3.4.3/lwjgl-freetype-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-freetype/3.4.3/lwjgl-freetype-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-jemalloc/3.4.3/lwjgl-jemalloc-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-jemalloc/3.4.3/lwjgl-jemalloc-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-jemalloc/3.4.3/lwjgl-jemalloc-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-openal/3.4.3/lwjgl-openal-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-openal/3.4.3/lwjgl-openal-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-openal/3.4.3/lwjgl-openal-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-opengl/3.4.3/lwjgl-opengl-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-opengl/3.4.3/lwjgl-opengl-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-opengl/3.4.3/lwjgl-opengl-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-sdl/3.4.3/lwjgl-sdl-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-sdl/3.4.3/lwjgl-sdl-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-sdl/3.4.3/lwjgl-sdl-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-shaderc/3.4.3/lwjgl-shaderc-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-shaderc/3.4.3/lwjgl-shaderc-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-shaderc/3.4.3/lwjgl-shaderc-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-spvc/3.4.3/lwjgl-spvc-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-spvc/3.4.3/lwjgl-spvc-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-spvc/3.4.3/lwjgl-spvc-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-stb/3.4.3/lwjgl-stb-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-stb/3.4.3/lwjgl-stb-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-stb/3.4.3/lwjgl-stb-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-vma/3.4.3/lwjgl-vma-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-vma/3.4.3/lwjgl-vma-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-vma/3.4.3/lwjgl-vma-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-vulkan/3.4.3/lwjgl-vulkan-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-vulkan/3.4.3/lwjgl-vulkan-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl-vulkan/3.4.3/lwjgl-vulkan-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl/3.4.3/lwjgl-3.4.3.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl/3.4.3/lwjgl-3.4.3-natives-macos.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/lwjgl/lwjgl/3.4.3/lwjgl-3.4.3-natives-macos-arm64.jar:/Users/chuah/Library/Application Support/minecraft/libraries/org/slf4j/slf4j-api/2.0.17/slf4j-api-2.0.17.jar /dev/stdin",
+      "elapsed": "00:02",
+      "pgid": 79687,
+      "pid": 79690,
+      "ppid": 79687,
+      "rss_kib": 381056
+    },
+    {
+      "command": "/Users/chuah/.bend/bin/bend src/local_tick_world.bend --check-only",
+      "elapsed": "00:00",
+      "pgid": 79687,
+      "pid": 79709,
+      "ppid": 79687,
+      "rss_kib": 259504
+    },
+    {
+      "command": "/Users/chuah/.bend/bin/bend tests/local_tick_world.bend --check-only",
+      "elapsed": "00:01",
+      "pgid": 79687,
+      "pid": 79714,
+      "ppid": 79687,
+      "rss_kib": 658144
+    },
+    {
+      "command": "/Users/chuah/.bend/bin/bend build/local-tick-world-motion.bend -o /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-tick-world-motion-tests",
+      "elapsed": "00:01",
+      "pgid": 79687,
+      "pid": 79747,
+      "ppid": 79687,
+      "rss_kib": 256608
+    },
+    {
+      "command": "/Library/Developer/CommandLineTools/usr/bin/clang -std=c11 -O3 /var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/bend-Ac5oLO/local-tick-world-motion-tests.c -lpthread -lm -o /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-tick-world-motion-tests",
+      "elapsed": "00:00",
+      "pgid": 79687,
+      "pid": 80584,
+      "ppid": 79747,
+      "rss_kib": 16336
+    },
+    {
+      "command": "/Library/Developer/CommandLineTools/usr/bin/clang -cc1 -triple arm64-apple-macosx15.5.0 -Wundef-prefix=TARGET_OS_ -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -Werror=implicit-function-declaration -emit-obj -dumpdir /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-tick-world-motion-tests- -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name local-tick-world-motion-tests.c -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -mllvm -extra-vectorizer-passes -fno-strict-return -ffp-contract=on -fno-rounding-math -funwind-tables=1 -fobjc-msgsend-selector-stubs -target-sdk-version=15.5 -fvisibility-inlines-hidden-static-local-var -fdefine-target-os-macros -fno-assume-unique-vtables -fno-modulemap-allow-subdirectory-search -target-cpu apple-m1 -target-feature +zcm -target-feature +zcz -target-feature +v8.5a -target-feature +aes -target-feature +altnzcv -target-feature +ccdp -target-feature +complxnum -target-feature +crc -target-feature +dotprod -target-feature +fp-armv8 -target-feature +fp16fml -target-feature +fptoint -target-feature +fullfp16 -target-feature +jsconv -target-feature +lse -target-feature +neon -target-feature +pauth -target-feature +perfmon -target-feature +predres -target-feature +ras -target-feature +rcpc -target-feature +rdm -target-feature +sb -target-feature +sha2 -target-feature +sha3 -target-feature +specrestrict -target-feature +ssbs -target-abi darwinpcs -debugger-tuning=lldb -fdebug-compilation-dir=/Users/chuah/Documents/ChatGPT/bendex/minecraft -target-linker-version 1167.5 -fcoverage-compilation-dir=/Users/chuah/Documents/ChatGPT/bendex/minecraft -resource-dir /Library/Developer/CommandLineTools/usr/lib/clang/17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/usr/lib/clang/17/include -internal-externc-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -internal-externc-isystem /Library/Developer/CommandLineTools/usr/include -O3 -Wno-reorder-init-list -Wno-implicit-int-float-conversion -Wno-c99-designator -Wno-final-dtor-non-final-class -Wno-extra-semi-stmt -Wno-misleading-indentation -Wno-quoted-include-in-framework-header -Wno-implicit-fallthrough -Wno-enum-enum-conversion -Wno-enum-float-conversion -Wno-elaborated-enum-base -Wno-reserved-identifier -Wno-gnu-folding-constant -std=c11 -ferror-limit 19 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fmax-type-align=16 -fcommon -vectorize-loops -vectorize-slp -clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation -fno-odr-hash-protocols -clang-vendor-feature=+enableAggressiveVLAFolding -clang-vendor-feature=+revert09abecef7bbf -clang-vendor-feature=+thisNoAlignAttr -clang-vendor-feature=+thisNoNullAttr -clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o /var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/local-tick-world-motion-tests-c3133e.o -x c /var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/bend-Ac5oLO/local-tick-world-motion-tests.c",
+      "elapsed": "00:00",
+      "pgid": 79687,
+      "pid": 80585,
+      "ppid": 80584,
+      "rss_kib": 127664
+    }
+  ],
+  "producer_pid": 79687,
+  "seconds": 207.063368,
+  "sources_after_sha256": {
+    "src/archive.bend": "c0f7b34a22726d220f6b867730b7d080d57d82c84d619c35721b9b8d18fa5d6e",
+    "src/client_render.bend": "bb8f6057a02bfcb0583025f9e75fe41abc6804eb554c6d971df5c81618932947",
+    "src/client_world.bend": "05040abf35b2b9ceaf87fed5c48f8d074d211750a59ab00fa6ff08e60a9ea5d7",
+    "src/compression.bend": "255cdff06a33050c7b0a48fdea75c1842ebe2dab0439cfe4f03d126d4edc20aa",
+    "src/core.bend": "c1ee5a5390cdac0452c9c6cd3b0584a68ef68b5b0dfec867491c27e67ecadd4e",
+    "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "src/framing.bend": "307f95049df03d92687b7bd0eafb2cd566e660926510bb88163f9bc825fccdb5",
+    "src/game.bend": "43e3eee5d15613bb06cc608fe43657aa14d8c0fbe899d4efa580fc8335d23882",
+    "src/geometry.bend": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f",
+    "src/hash.bend": "d2473695632b19e68c8d636668e4617f04d70892fb2ab6559cb24d4b33c1b978",
+    "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+    "src/live.bend": "cb5a2f8237a53e48d3f6751d321a023e11694721f789373984d7d77620f32e87",
+    "src/local_input.bend": "5e3555fdb06258a76478a32d32332455ad186ec956607ce981e198a3c28ca02e",
+    "src/local_tick_world.bend": "baa67724b6b5d5e98d3fdba3d733e753d64e4b6c5109e2263cadd003ee721a2c",
+    "src/locomotion.bend": "ccf8aa12636ba1fce5575606383bf75c02a8ac79ba952645b89aea2eef6cd459",
+    "src/movement.bend": "0e94fea7cc941a23d2ed7bbd2ccaf0117e6af363eb91f2db2e34428f9dd9e67f",
+    "src/player_input.bend": "d3938f96416691739eb54f2b0f77377c6ba7c74ac63ffa8335840152feb355d5",
+    "src/player_tick.bend": "d583f3014011313097779b69ee0fd8d77bd3ed0e1e7895b629903eb64da9699f",
+    "src/player_tick_world.bend": "98d5fe1383351c463f3fa172ff012325864292cfa7909cf21167e6642500170b",
+    "src/png.bend": "8c24c14a250cf6dbdf0c2804e4b28bfebd7ef62ed5d9ee97a1d07094d4745f22",
+    "src/registry.bend": "821c53d9cfa3044be3cae2af968f55563c0be2bebc9beae55a29d77d47b140a0",
+    "src/schedule.bend": "93aa79895fe340e27ae5fd562102d5980f0938003eb1bbde669a84010779b8c9",
+    "src/section.bend": "02b5c15c57b173c7eb8b4c55a1433c10c192926e91af5e3e69050b4404044aa5",
+    "src/section_map.bend": "ded59d7938c02fd0876d65e37f9f90ea0cfebf3ca4bd107394342f8adbf33965",
+    "src/travel.bend": "717e969e3989a7a8e443b18f69c171bdc11a14130828233ce85e6cd914e1f8f1",
+    "src/travel_world.bend": "a3c787699a9ae12d9301638d39a7abd3aa1cfeba160182b9c176797424aad682",
+    "src/unicode.bend": "8f0cd9bbcd0e7f938af370675eca0c73a9b97b90c2789a1e77e5a29a918455bd",
+    "tests/local_tick_world.bend": "c5787fe8cf7c0182518ca6309fd9c3c5207e9f690d3f04e6c3cacacf523794ac"
+  },
+  "sources_sha256": {
+    "src/archive.bend": "c0f7b34a22726d220f6b867730b7d080d57d82c84d619c35721b9b8d18fa5d6e",
+    "src/client_render.bend": "bb8f6057a02bfcb0583025f9e75fe41abc6804eb554c6d971df5c81618932947",
+    "src/client_world.bend": "05040abf35b2b9ceaf87fed5c48f8d074d211750a59ab00fa6ff08e60a9ea5d7",
+    "src/compression.bend": "255cdff06a33050c7b0a48fdea75c1842ebe2dab0439cfe4f03d126d4edc20aa",
+    "src/core.bend": "c1ee5a5390cdac0452c9c6cd3b0584a68ef68b5b0dfec867491c27e67ecadd4e",
+    "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "src/framing.bend": "307f95049df03d92687b7bd0eafb2cd566e660926510bb88163f9bc825fccdb5",
+    "src/game.bend": "43e3eee5d15613bb06cc608fe43657aa14d8c0fbe899d4efa580fc8335d23882",
+    "src/geometry.bend": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f",
+    "src/hash.bend": "d2473695632b19e68c8d636668e4617f04d70892fb2ab6559cb24d4b33c1b978",
+    "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+    "src/live.bend": "cb5a2f8237a53e48d3f6751d321a023e11694721f789373984d7d77620f32e87",
+    "src/local_input.bend": "5e3555fdb06258a76478a32d32332455ad186ec956607ce981e198a3c28ca02e",
+    "src/local_tick_world.bend": "baa67724b6b5d5e98d3fdba3d733e753d64e4b6c5109e2263cadd003ee721a2c",
+    "src/locomotion.bend": "ccf8aa12636ba1fce5575606383bf75c02a8ac79ba952645b89aea2eef6cd459",
+    "src/movement.bend": "0e94fea7cc941a23d2ed7bbd2ccaf0117e6af363eb91f2db2e34428f9dd9e67f",
+    "src/player_input.bend": "d3938f96416691739eb54f2b0f77377c6ba7c74ac63ffa8335840152feb355d5",
+    "src/player_tick.bend": "d583f3014011313097779b69ee0fd8d77bd3ed0e1e7895b629903eb64da9699f",
+    "src/player_tick_world.bend": "98d5fe1383351c463f3fa172ff012325864292cfa7909cf21167e6642500170b",
+    "src/png.bend": "8c24c14a250cf6dbdf0c2804e4b28bfebd7ef62ed5d9ee97a1d07094d4745f22",
+    "src/registry.bend": "821c53d9cfa3044be3cae2af968f55563c0be2bebc9beae55a29d77d47b140a0",
+    "src/schedule.bend": "93aa79895fe340e27ae5fd562102d5980f0938003eb1bbde669a84010779b8c9",
+    "src/section.bend": "02b5c15c57b173c7eb8b4c55a1433c10c192926e91af5e3e69050b4404044aa5",
+    "src/section_map.bend": "ded59d7938c02fd0876d65e37f9f90ea0cfebf3ca4bd107394342f8adbf33965",
+    "src/travel.bend": "717e969e3989a7a8e443b18f69c171bdc11a14130828233ce85e6cd914e1f8f1",
+    "src/travel_world.bend": "a3c787699a9ae12d9301638d39a7abd3aa1cfeba160182b9c176797424aad682",
+    "src/unicode.bend": "8f0cd9bbcd0e7f938af370675eca0c73a9b97b90c2789a1e77e5a29a918455bd",
+    "tests/local_tick_world.bend": "c5787fe8cf7c0182518ca6309fd9c3c5207e9f690d3f04e6c3cacacf523794ac"
+  },
+  "sources_unchanged": true,
+  "status": "producer failed",
+  "wrapper_pid": 79678
+}

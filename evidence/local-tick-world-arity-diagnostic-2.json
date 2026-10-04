@@ -1,0 +1,31 @@
+{
+  "candidate_diagnosis_only": true,
+  "command": [
+    "/opt/homebrew/bin/node",
+    "--experimental-strip-types",
+    "build/player-tick-world-debug.ts",
+    "tests/local_tick_world.bend"
+  ],
+  "exit_code": 1,
+  "installed_compiler_baseline": "2.0.35; two original installed native attempts retain authoritative arity error receipts",
+  "seconds": 7.935039,
+  "sources_after_sha256": {
+    "../bend/bend2/bend.ts": "7deae3693eb896f33c73867081b99d2c6f3ed3b57e77e55eb5f6260840dd0e63",
+    "../bend/bend2/comp.ts": "32fb66e09f608ce9e4b173384bcfeec453db8c5bc96650e26ad861bef815a8d9",
+    "build/player-tick-world-debug-comp.ts": "cfb3e71ab78cf59ecc436086a1f88cb50945569115aac3385603c4ef9ae47452",
+    "build/player-tick-world-debug.ts": "ba0b464fcd46149a5d802c673f5ffb5b482a97b9bd5d650c7bd6e4d019b724fa",
+    "src/local_tick_world.bend": "baa67724b6b5d5e98d3fdba3d733e753d64e4b6c5109e2263cadd003ee721a2c",
+    "tests/local_tick_world.bend": "640593807f57505b74dee94e4189cfd7e6c79c35fe78ab6058212969c22c4a4e"
+  },
+  "sources_before_sha256": {
+    "../bend/bend2/bend.ts": "7deae3693eb896f33c73867081b99d2c6f3ed3b57e77e55eb5f6260840dd0e63",
+    "../bend/bend2/comp.ts": "32fb66e09f608ce9e4b173384bcfeec453db8c5bc96650e26ad861bef815a8d9",
+    "build/player-tick-world-debug-comp.ts": "cfb3e71ab78cf59ecc436086a1f88cb50945569115aac3385603c4ef9ae47452",
+    "build/player-tick-world-debug.ts": "ba0b464fcd46149a5d802c673f5ffb5b482a97b9bd5d650c7bd6e4d019b724fa",
+    "src/local_tick_world.bend": "baa67724b6b5d5e98d3fdba3d733e753d64e4b6c5109e2263cadd003ee721a2c",
+    "tests/local_tick_world.bend": "640593807f57505b74dee94e4189cfd7e6c79c35fe78ab6058212969c22c4a4e"
+  },
+  "stderr": "(node:63713) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\nError: EARLY arity 252 at finish_injected$k1166",
+  "stdout": "",
+  "timed_out": false
+}

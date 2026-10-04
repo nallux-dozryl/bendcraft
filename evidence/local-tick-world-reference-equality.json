@@ -1,0 +1,890 @@
+{
+  "after": {
+    "path": "evidence/local-tick-world-reference.json",
+    "sha256": "d86edd49b96395d22a65c8a0dd35ee324a70b65a2dd54b0ba704fbd2a2f2c2b1"
+  },
+  "all_non_execution_provenance_equal": {
+    "base_templates_sha256": true,
+    "cases": true,
+    "cases_sha256": true,
+    "classpath": true,
+    "client_jar": true,
+    "derived_fixture_sources_sha256": true,
+    "inputs_sha256": true,
+    "java_runtime": true,
+    "launcher_sha256": true,
+    "loaded_official_class_tree_sha256": true,
+    "loaded_official_classes": true,
+    "pin": true,
+    "schema_version": true,
+    "scope": true,
+    "status": true
+  },
+  "before": {
+    "path": "evidence/local-tick-world-reference-original-motion.json",
+    "sha256": "b037e48c5f4c13fa31966723cbda953a0fe099bc54e4c8a225c5681235dfb677"
+  },
+  "canonical_cases_equal": true,
+  "canonical_cases_sha256": "fcafc50364f0263577e71a8c2510376c0427ba58345f2fe03e1d23f03581b3c2",
+  "canonical_inputs": {
+    "ai_step": [
+      {
+        "id": "ai:held_forward",
+        "initial": {
+          "blindness": false,
+          "bob_f32_bits": [
+            "40000000",
+            "c0400000",
+            "40800000",
+            "c0a00000"
+          ],
+          "ceiling": false,
+          "crouching": false,
+          "flying": false,
+          "food": 20,
+          "grounded": true,
+          "head_yaw_f32_bits": "41e80000",
+          "horizontal_collision": false,
+          "input_f32_bits": [
+            "00000000",
+            "00000000",
+            "00000000"
+          ],
+          "jump_delay": 0,
+          "jump_trigger": 0,
+          "jumping": false,
+          "mayfly": false,
+          "minor_horizontal_collision": false,
+          "needs_sync": false,
+          "pose": "STANDING",
+          "previous_mask": 0,
+          "previous_move_f32_bits": [
+            "00000000",
+            "00000000"
+          ],
+          "rotation_f32_bits": [
+            "41880000",
+            "c1300000",
+            "41400000",
+            "c1100000"
+          ],
+          "sneaking_speed": "3fd3333333333333",
+          "sprint_trigger_time": 0,
+          "sprint_window": 7,
+          "sprinting": false,
+          "stored_speed_f32_bits": "3dfbe76d",
+          "velocity": [
+            "0000000000000000",
+            "0000000000000000",
+            "0000000000000000"
+          ]
+        },
+        "scope": "neutral bounded actual aiStep; authoritative control and post-control preparation projections",
+        "steps": [
+          {
+            "held_mask": 1
+          },
+          {
+            "held_mask": 1
+          },
+          {
+            "held_mask": 1
+          },
+          {
+            "held_mask": 1
+          },
+          {
+            "held_mask": 1
+          }
+        ]
+      },
+      {
+        "id": "ai:held_diagonal",
+        "initial": {
+          "blindness": false,
+          "bob_f32_bits": [
+            "40000000",
+            "c0400000",
+            "40800000",
+            "c0a00000"
+          ],
+          "ceiling": false,
+          "crouching": false,
+          "flying": false,
+          "food": 20,
+          "grounded": true,
+          "head_yaw_f32_bits": "41e80000",
+          "horizontal_collision": false,
+          "input_f32_bits": [
+            "00000000",
+            "00000000",
+            "00000000"
+          ],
+          "jump_delay": 0,
+          "jump_trigger": 0,
+          "jumping": false,
+          "mayfly": false,
+          "minor_horizontal_collision": false,
+          "needs_sync": false,
+          "pose": "STANDING",
+          "previous_mask": 0,
+          "previous_move_f32_bits": [
+            "00000000",
+            "00000000"
+          ],
+          "rotation_f32_bits": [
+            "41880000",
+            "c1300000",
+            "41400000",
+            "c1100000"
+          ],
+          "sneaking_speed": "3fd3333333333333",
+          "sprint_trigger_time": 0,
+          "sprint_window": 7,
+          "sprinting": false,
+          "stored_speed_f32_bits": "3dfbe76d",
+          "velocity": [
+            "0000000000000000",
+            "0000000000000000",
+            "0000000000000000"
+          ]
+        },
+        "scope": "neutral bounded actual aiStep; authoritative control and post-control preparation projections",
+        "steps": [
+          {
+            "held_mask": 5
+          },
+          {
+            "held_mask": 5
+          },
+          {
+            "held_mask": 5
+          },
+          {
+            "held_mask": 5
+          },
+          {
+            "held_mask": 5
+          }
+        ]
+      },
+      {
+        "id": "ai:double_tap_and_sprint",
+        "initial": {
+          "blindness": false,
+          "bob_f32_bits": [
+            "40000000",
+            "c0400000",
+            "40800000",
+            "c0a00000"
+          ],
+          "ceiling": false,
+          "crouching": false,
+          "flying": false,
+          "food": 20,
+          "grounded": true,
+          "head_yaw_f32_bits": "41e80000",
+          "horizontal_collision": false,
+          "input_f32_bits": [
+            "00000000",
+            "00000000",
+            "00000000"
+          ],
+          "jump_delay": 0,
+          "jump_trigger": 0,
+          "jumping": false,
+          "mayfly": false,
+          "minor_horizontal_collision": false,
+          "needs_sync": false,
+          "pose": "STANDING",
+          "previous_mask": 0,
+          "previous_move_f32_bits": [
+            "00000000",
+            "00000000"
+          ],
+          "rotation_f32_bits": [
+            "41880000",
+            "c1300000",
+            "41400000",
+            "c1100000"
+          ],
+          "sneaking_speed": "3fd3333333333333",
+          "sprint_trigger_time": 3,
+          "sprint_window": 7,
+          "sprinting": false,
+          "stored_speed_f32_bits": "3dfbe76d",
+          "velocity": [
+            "0000000000000000",
+            "0000000000000000",
+            "0000000000000000"
+          ]
+        },
+        "scope": "neutral bounded actual aiStep; authoritative control and post-control preparation projections",
+        "steps": [
+          {
+            "held_mask": 65
+          },
+          {
+            "held_mask": 65
+          },
+          {
+            "held_mask": 65
+          },
+          {
+            "held_mask": 65
+          },
+          {
+            "held_mask": 65
+          }
+        ]
+      },
+      {
+        "id": "ai:double_start_then_major_stop",
+        "initial": {
+          "blindness": false,
+          "bob_f32_bits": [
+            "40000000",
+            "c0400000",
+            "40800000",
+            "c0a00000"
+          ],
+          "ceiling": false,
+          "crouching": false,
+          "flying": false,
+          "food": 20,
+          "grounded": true,
+          "head_yaw_f32_bits": "41e80000",
+          "horizontal_collision": true,
+          "input_f32_bits": [
+            "00000000",
+            "00000000",
+            "00000000"
+          ],
+          "jump_delay": 0,
+          "jump_trigger": 0,
+          "jumping": false,
+          "mayfly": false,
+          "minor_horizontal_collision": false,
+          "needs_sync": false,
+          "pose": "STANDING",
+          "previous_mask": 0,
+          "previous_move_f32_bits": [
+            "00000000",
+            "00000000"
+          ],
+          "rotation_f32_bits": [
+            "41880000",
+            "c1300000",
+            "41400000",
+            "c1100000"
+          ],
+          "sneaking_speed": "3fd3333333333333",
+          "sprint_trigger_time": 3,
+          "sprint_window": 7,
+          "sprinting": false,
+          "stored_speed_f32_bits": "3dfbe76d",
+          "velocity": [
+            "0000000000000000",
+            "0000000000000000",
+            "0000000000000000"
+          ]
+        },
+        "scope": "neutral bounded actual aiStep; authoritative control and post-control preparation projections",
+        "steps": [
+          {
+            "held_mask": 65
+          },
+          {
+            "held_mask": 65
+          },
+          {
+            "held_mask": 65
+          },
+          {
+            "held_mask": 65
+          },
+          {
+            "held_mask": 65
+          }
+        ]
+      },
+      {
+        "id": "ai:new_shift_latency",
+        "initial": {
+          "blindness": false,
+          "bob_f32_bits": [
+            "40000000",
+            "c0400000",
+            "40800000",
+            "c0a00000"
+          ],
+          "ceiling": false,
+          "crouching": false,
+          "flying": false,
+          "food": 20,
+          "grounded": true,
+          "head_yaw_f32_bits": "41e80000",
+          "horizontal_collision": false,
+          "input_f32_bits": [
+            "00000000",
+            "00000000",
+            "00000000"
+          ],
+          "jump_delay": 0,
+          "jump_trigger": 0,
+          "jumping": false,
+          "mayfly": false,
+          "minor_horizontal_collision": false,
+          "needs_sync": false,
+          "pose": "STANDING",
+          "previous_mask": 0,
+          "previous_move_f32_bits": [
+            "00000000",
+            "00000000"
+          ],
+          "rotation_f32_bits": [
+            "41880000",
+            "c1300000",
+            "41400000",
+            "c1100000"
+          ],
+          "sneaking_speed": "3fd3333333333333",
+          "sprint_trigger_time": 0,
+          "sprint_window": 7,
+          "sprinting": false,
+          "stored_speed_f32_bits": "3dfbe76d",
+          "velocity": [
+            "0000000000000000",
+            "0000000000000000",
+            "0000000000000000"
+          ]
+        },
+        "scope": "neutral bounded actual aiStep; authoritative control and post-control preparation projections",
+        "steps": [
+          {
+            "held_mask": 33
+          },
+          {
+            "held_mask": 33
+          },
+          {
+            "held_mask": 1
+          },
+          {
+            "held_mask": 1
+          },
+          {
+            "held_mask": 1
+          }
+        ]
+      },
+      {
+        "id": "ai:jump_held",
+        "initial": {
+          "blindness": false,
+          "bob_f32_bits": [
+            "40000000",
+            "c0400000",
+            "40800000",
+            "c0a00000"
+          ],
+          "ceiling": false,
+          "crouching": false,
+          "flying": false,
+          "food": 20,
+          "grounded": true,
+          "head_yaw_f32_bits": "41e80000",
+          "horizontal_collision": false,
+          "input_f32_bits": [
+            "00000000",
+            "00000000",
+            "00000000"
+          ],
+          "jump_delay": 0,
+          "jump_trigger": 0,
+          "jumping": false,
+          "mayfly": false,
+          "minor_horizontal_collision": false,
+          "needs_sync": false,
+          "pose": "STANDING",
+          "previous_mask": 0,
+          "previous_move_f32_bits": [
+            "00000000",
+            "00000000"
+          ],
+          "rotation_f32_bits": [
+            "41880000",
+            "c1300000",
+            "41400000",
+            "c1100000"
+          ],
+          "sneaking_speed": "3fd3333333333333",
+          "sprint_trigger_time": 0,
+          "sprint_window": 7,
+          "sprinting": false,
+          "stored_speed_f32_bits": "3dfbe76d",
+          "velocity": [
+            "0000000000000000",
+            "0000000000000000",
+            "0000000000000000"
+          ]
+        },
+        "scope": "neutral bounded actual aiStep; authoritative control and post-control preparation projections",
+        "steps": [
+          {
+            "held_mask": 17
+          },
+          {
+            "held_mask": 17
+          },
+          {
+            "held_mask": 17
+          },
+          {
+            "held_mask": 17
+          },
+          {
+            "held_mask": 17
+          }
+        ]
+      },
+      {
+        "id": "ai:jump_sprint",
+        "initial": {
+          "blindness": false,
+          "bob_f32_bits": [
+            "40000000",
+            "c0400000",
+            "40800000",
+            "c0a00000"
+          ],
+          "ceiling": false,
+          "crouching": false,
+          "flying": false,
+          "food": 20,
+          "grounded": true,
+          "head_yaw_f32_bits": "41e80000",
+          "horizontal_collision": false,
+          "input_f32_bits": [
+            "00000000",
+            "00000000",
+            "00000000"
+          ],
+          "jump_delay": 0,
+          "jump_trigger": 0,
+          "jumping": false,
+          "mayfly": false,
+          "minor_horizontal_collision": false,
+          "needs_sync": false,
+          "pose": "STANDING",
+          "previous_mask": 0,
+          "previous_move_f32_bits": [
+            "00000000",
+            "00000000"
+          ],
+          "rotation_f32_bits": [
+            "41880000",
+            "c1300000",
+            "41400000",
+            "c1100000"
+          ],
+          "sneaking_speed": "3fd3333333333333",
+          "sprint_trigger_time": 0,
+          "sprint_window": 7,
+          "sprinting": false,
+          "stored_speed_f32_bits": "3dfbe76d",
+          "velocity": [
+            "0000000000000000",
+            "0000000000000000",
+            "0000000000000000"
+          ]
+        },
+        "scope": "neutral bounded actual aiStep; authoritative control and post-control preparation projections",
+        "steps": [
+          {
+            "held_mask": 81
+          },
+          {
+            "held_mask": 81
+          },
+          {
+            "held_mask": 81
+          },
+          {
+            "held_mask": 81
+          },
+          {
+            "held_mask": 81
+          }
+        ]
+      },
+      {
+        "id": "ai:zero_move_yya",
+        "initial": {
+          "blindness": false,
+          "bob_f32_bits": [
+            "40000000",
+            "c0400000",
+            "40800000",
+            "c0a00000"
+          ],
+          "ceiling": false,
+          "crouching": false,
+          "flying": false,
+          "food": 20,
+          "grounded": true,
+          "head_yaw_f32_bits": "41e80000",
+          "horizontal_collision": false,
+          "input_f32_bits": [
+            "3e99999a",
+            "bf000000",
+            "3e99999a"
+          ],
+          "jump_delay": -1,
+          "jump_trigger": 0,
+          "jumping": false,
+          "mayfly": false,
+          "minor_horizontal_collision": false,
+          "needs_sync": false,
+          "pose": "STANDING",
+          "previous_mask": 0,
+          "previous_move_f32_bits": [
+            "00000000",
+            "00000000"
+          ],
+          "rotation_f32_bits": [
+            "41880000",
+            "c1300000",
+            "41400000",
+            "c1100000"
+          ],
+          "sneaking_speed": "3fd3333333333333",
+          "sprint_trigger_time": 0,
+          "sprint_window": 7,
+          "sprinting": false,
+          "stored_speed_f32_bits": "3dfbe76d",
+          "velocity": [
+            "0000000000000000",
+            "0000000000000000",
+            "0000000000000000"
+          ]
+        },
+        "scope": "neutral bounded actual aiStep; authoritative control and post-control preparation projections",
+        "steps": [
+          {
+            "held_mask": 0
+          },
+          {
+            "held_mask": 0
+          },
+          {
+            "held_mask": 0
+          },
+          {
+            "held_mask": 0
+          },
+          {
+            "held_mask": 0
+          }
+        ]
+      },
+      {
+        "id": "ai:food_collision_changes",
+        "initial": {
+          "blindness": false,
+          "bob_f32_bits": [
+            "40000000",
+            "c0400000",
+            "40800000",
+            "c0a00000"
+          ],
+          "ceiling": false,
+          "crouching": false,
+          "flying": false,
+          "food": 20,
+          "grounded": true,
+          "head_yaw_f32_bits": "41e80000",
+          "horizontal_collision": false,
+          "input_f32_bits": [
+            "00000000",
+            "00000000",
+            "00000000"
+          ],
+          "jump_delay": 0,
+          "jump_trigger": 0,
+          "jumping": false,
+          "mayfly": false,
+          "minor_horizontal_collision": false,
+          "needs_sync": false,
+          "pose": "STANDING",
+          "previous_mask": 0,
+          "previous_move_f32_bits": [
+            "00000000",
+            "00000000"
+          ],
+          "rotation_f32_bits": [
+            "41880000",
+            "c1300000",
+            "41400000",
+            "c1100000"
+          ],
+          "sneaking_speed": "3fd3333333333333",
+          "sprint_trigger_time": 0,
+          "sprint_window": 7,
+          "sprinting": true,
+          "stored_speed_f32_bits": "3dfbe76d",
+          "velocity": [
+            "0000000000000000",
+            "0000000000000000",
+            "0000000000000000"
+          ]
+        },
+        "scope": "neutral bounded actual aiStep; authoritative control and post-control preparation projections",
+        "steps": [
+          {
+            "food": 7,
+            "held_mask": 65,
+            "horizontal_collision": false,
+            "minor_horizontal_collision": false
+          },
+          {
+            "food": 6,
+            "held_mask": 65,
+            "horizontal_collision": false,
+            "minor_horizontal_collision": false
+          },
+          {
+            "food": 7,
+            "held_mask": 65,
+            "horizontal_collision": false,
+            "minor_horizontal_collision": false
+          },
+          {
+            "food": 7,
+            "held_mask": 65,
+            "horizontal_collision": true,
+            "minor_horizontal_collision": true
+          },
+          {
+            "food": 7,
+            "held_mask": 65,
+            "horizontal_collision": true,
+            "minor_horizontal_collision": false
+          }
+        ]
+      },
+      {
+        "id": "ai:world-step",
+        "initial": {
+          "blindness": false,
+          "bob_f32_bits": [
+            "40000000",
+            "c0400000",
+            "40800000",
+            "c0a00000"
+          ],
+          "ceiling": false,
+          "crouching": false,
+          "flying": false,
+          "food": 20,
+          "grounded": true,
+          "head_yaw_f32_bits": "41e80000",
+          "horizontal_collision": false,
+          "input_f32_bits": [
+            "00000000",
+            "00000000",
+            "00000000"
+          ],
+          "jump_delay": 0,
+          "jump_trigger": 0,
+          "jumping": false,
+          "mayfly": false,
+          "minor_horizontal_collision": false,
+          "needs_sync": false,
+          "pose": "STANDING",
+          "position": [
+            "3fe0000000000000",
+            "3ff0000000000000",
+            "3fe0000000000000"
+          ],
+          "previous_mask": 0,
+          "previous_move_f32_bits": [
+            "00000000",
+            "00000000"
+          ],
+          "rotation_f32_bits": [
+            "c2b40000",
+            "c1300000",
+            "c2b40000",
+            "c1100000"
+          ],
+          "sneaking_speed": "3fd3333333333333",
+          "sprint_trigger_time": 0,
+          "sprint_window": 7,
+          "sprinting": false,
+          "step_height": "3ff0000000000000",
+          "stored_speed_f32_bits": "3dfbe76d",
+          "velocity": [
+            "3fe999999999999a",
+            "bfb999999999999a",
+            "0000000000000000"
+          ],
+          "world_blocks": [
+            {
+              "identifier": "minecraft:stone",
+              "position": [
+                1,
+                1,
+                0
+              ]
+            }
+          ]
+        },
+        "scope": "neutral bounded actual aiStep; authoritative control and post-control preparation projections",
+        "steps": [
+          {
+            "held_mask": 0
+          },
+          {
+            "held_mask": 0
+          },
+          {
+            "held_mask": 0
+          }
+        ]
+      },
+      {
+        "id": "ai:world-blocked",
+        "initial": {
+          "blindness": false,
+          "bob_f32_bits": [
+            "40000000",
+            "c0400000",
+            "40800000",
+            "c0a00000"
+          ],
+          "ceiling": false,
+          "crouching": false,
+          "flying": false,
+          "food": 20,
+          "grounded": true,
+          "head_yaw_f32_bits": "41e80000",
+          "horizontal_collision": false,
+          "input_f32_bits": [
+            "00000000",
+            "00000000",
+            "00000000"
+          ],
+          "jump_delay": 0,
+          "jump_trigger": 0,
+          "jumping": false,
+          "mayfly": false,
+          "minor_horizontal_collision": false,
+          "needs_sync": false,
+          "pose": "STANDING",
+          "position": [
+            "3fe6666660000000",
+            "3ff0000000000000",
+            "3fe0000000000000"
+          ],
+          "previous_mask": 0,
+          "previous_move_f32_bits": [
+            "00000000",
+            "00000000"
+          ],
+          "rotation_f32_bits": [
+            "c2b40000",
+            "c1300000",
+            "c2b40000",
+            "c1100000"
+          ],
+          "sneaking_speed": "3fd3333333333333",
+          "sprint_trigger_time": 0,
+          "sprint_window": 7,
+          "sprinting": false,
+          "step_height": "0000000000000000",
+          "stored_speed_f32_bits": "3dfbe76d",
+          "velocity": [
+            "3fe999999999999a",
+            "0000000000000000",
+            "0000000000000000"
+          ],
+          "world_blocks": [
+            {
+              "identifier": "minecraft:stone",
+              "position": [
+                1,
+                1,
+                0
+              ]
+            }
+          ]
+        },
+        "scope": "neutral bounded actual aiStep; authoritative control and post-control preparation projections",
+        "steps": [
+          {
+            "held_mask": 0
+          },
+          {
+            "held_mask": 0
+          },
+          {
+            "held_mask": 0
+          }
+        ]
+      }
+    ],
+    "keyboard": [],
+    "receivers": [],
+    "vectors": []
+  },
+  "canonical_inputs_sha256": "94410e8e53027944f7b30ab5881b39ddaa123baaf72d8f67145f50e67aa238df",
+  "changed_execution_fields": [
+    "seconds",
+    "stdout_sha256"
+  ],
+  "classpath_command_delta": {
+    "added": [],
+    "order_changed": false,
+    "removed": []
+  },
+  "execution_after": {
+    "returncode": 0,
+    "seconds": 5.43854,
+    "stderr_sha256": "e9fab062c9ed10d9c19e6cb8841f8ef1decae295e28e7def0492f8e7f0eb25b8",
+    "stdout_sha256": "b15a0f69c9210ab9548ba313667d84b2861343d11f3ea0d2aa580ea72fc89835"
+  },
+  "execution_before": {
+    "returncode": 0,
+    "seconds": 4.381345,
+    "stderr_sha256": "e9fab062c9ed10d9c19e6cb8841f8ef1decae295e28e7def0492f8e7f0eb25b8",
+    "stdout_sha256": "c1d4125ef0e6f4081fa8463f340a0ffb2a1d03333e1673c2cb5b11226a3d3ecf"
+  },
+  "explanation": "A separate fresh extraction was run at the revised installed-motion attempt. Execution-only receipt fields changed; all actual observation records, canonical inputs, derived Java fixture sources, loaded official class hashes, runtime/JAR/classpath provenance and launcher are identical.",
+  "only_changed_top_level_keys": [
+    "execution"
+  ],
+  "raw_stdout_difference": "The two execution stdout digests differ. The original raw streams were not retained, so the exact differing bytes are unavailable; no byte-ordering cause is asserted. Complete retained canonical cases, input digests and every non-execution provenance field are independently equal.",
+  "reference_location_relocation": {
+    "canonical_corpus": {
+      "bytes": 3184281,
+      "path": "reference/local_tick_world.json",
+      "sha256": "d86edd49b96395d22a65c8a0dd35ee324a70b65a2dd54b0ba704fbd2a2f2c2b1"
+    },
+    "comparison_facts_unchanged": true,
+    "raw_originals": {
+      "evidence/local-tick-world-reference-original-motion.json": {
+        "bytes": 3184282,
+        "path": "build/local-tick-world-receipts/local-tick-world-reference-original-motion.json",
+        "sha256": "b037e48c5f4c13fa31966723cbda953a0fe099bc54e4c8a225c5681235dfb677"
+      },
+      "evidence/local-tick-world-reference.json": {
+        "bytes": 3184281,
+        "path": "build/local-tick-world-receipts/local-tick-world-reference.json",
+        "sha256": "d86edd49b96395d22a65c8a0dd35ee324a70b65a2dd54b0ba704fbd2a2f2c2b1"
+      }
+    }
+  },
+  "schema_version": 1,
+  "status": "canonical observation and input equality sealed"
+}
