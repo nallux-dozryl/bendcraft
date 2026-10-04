@@ -1,0 +1,127 @@
+{
+  "scope": "Original full Entry book_valid refused changed source; no native/proof verdict",
+  "attempts": [
+    {
+      "directory": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking/source/1791150528257040000",
+      "status": "source_refused",
+      "failure": {
+        "error": "AssertionError({'argv': ['/opt/homebrew/bin/node', '--expose-gc', '--max-old-space-size=8192', '--stack-size=4096', '--experimental-transform-types', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/local_player_cooking_source.mjs', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking/source/1791150528257040000'], 'pid': 90230, 'exit_code': 1, 'seconds': 22.284493, 'timed_out': False, 'group_absent': True, 'stdout': {'file': 'original-source.stdout', 'bytes': 0, 'sha1': 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'}, 'stderr': {'file': 'original-source.stderr', 'bytes': 590, 'sha1': 'bc695c58ec0850cae239672fdbd991f230896cc8', 'sha256': 'ee91ad4ef7d3a62ce0b6b3ebe691d9528646acdfbe4cfeff047222ef3ac2874a'}})",
+        "status": "failed"
+      },
+      "compiler_diagnostic": "(node:90230) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\nError:\n- expected : a filled definition (an unfilled law is a dead claim: live code cannot use it)\n- observed : stage_shape\nContext:\n- state   : State\n- request : PrepareRequest\nLocation: pre_after_world_request\n1215 |     case Some{cause}: Rejected{state,cause}\n1216>|     case None{}: pre_after_world_shaped(request,stage_shape(state))\n     |                                                 ^^^^^^^^^^^\n1217 | \n"
+    },
+    {
+      "directory": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking/source/1791150662004787000",
+      "status": "source_refused",
+      "failure": {
+        "error": "AssertionError({'argv': ['/opt/homebrew/bin/node', '--expose-gc', '--max-old-space-size=8192', '--stack-size=4096', '--experimental-transform-types', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/local_player_cooking_source.mjs', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking/source/1791150662004787000'], 'pid': 90884, 'exit_code': 1, 'seconds': 20.72546, 'timed_out': False, 'group_absent': True, 'stdout': {'file': 'original-source.stdout', 'bytes': 0, 'sha1': 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'}, 'stderr': {'file': 'original-source.stderr', 'bytes': 461, 'sha1': '05c43a0bfbd77f833f98c25c923afc0bd312207d', 'sha256': 'd28c32312a1c921ab60995cc837a9ba879e152724e2ffd5ed13b8ecddfeb7375'}})",
+        "status": "failed"
+      },
+      "compiler_diagnostic": "(node:90884) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\nError:\n- expected : position\n- observed : position (consumed more than once)\nLocation: cooking_body_saved\n162 | \n163>| def cooking_body_saved(position:C.Position,\n    |                        ^^^^^^^^\n164 |     next:State -> State & Result<&2,&2,String,List<&2,CookingStorage.Body>>,\n"
+    },
+    {
+      "directory": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking/source/1791150703543525000",
+      "status": "source_refused",
+      "failure": {
+        "error": "AssertionError({'argv': ['/opt/homebrew/bin/node', '--expose-gc', '--max-old-space-size=8192', '--stack-size=4096', '--experimental-transform-types', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/local_player_cooking_source.mjs', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking/source/1791150703543525000'], 'pid': 91074, 'exit_code': 1, 'seconds': 23.189389, 'timed_out': False, 'group_absent': True, 'stdout': {'file': 'original-source.stdout', 'bytes': 0, 'sha1': 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'}, 'stderr': {'file': 'original-source.stderr', 'bytes': 990, 'sha1': '08c90d8a615e9480ebb55b1d0b51cc1ba69ce3a4', 'sha256': 'f842eca645b4e9332f23740e3f7aa3c7c67605c857acbc808bd2edeb8d05fdf6'}})",
+        "status": "failed"
+      },
+      "compiler_diagnostic": "(node:91074) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\nError:\n- expected : a template applied to closed ~ arguments (definitions is a variable here, not comptime: pass it at run time)\n- observed : E.dispatch\nContext:\n- definitions : D.Catalog\n- bodies      : List<&2, CookingStorage.Body>\n- session     : L.Session\n- token       : String\n- request     : J.Value\n- base        : P.State\n- saved       : IC.Saved\n- maximum     : U32\n- catalog     : List<&2, E.Operation>\n- transient   : R.Transient\nLocation: cooking_delegate_bundle\n608 |     result : E.State<CookingStorage.Saved> & L.Session & J.Value <-\n609>|       E.dispatch(~CookingStorage.Saved,~CookingStorage.codec_with(definitions,False{},WG.legacy()),\n    |       ^^^^^^^^^^\n610 |         ~cooking_inventory_operations(),E.State{base,CookingStorage.Saved{saved,bodies},maximum,catalog},session,token,request)\n"
+    },
+    {
+      "directory": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking/source/1791151078803292000",
+      "status": "source_refused",
+      "failure": {
+        "error": "AssertionError({'argv': ['/opt/homebrew/bin/node', '--expose-gc', '--max-old-space-size=8192', '--stack-size=4096', '--experimental-transform-types', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/local_player_cooking_source.mjs', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking/source/1791151078803292000'], 'pid': 92219, 'exit_code': 1, 'seconds': 6.90908, 'timed_out': False, 'group_absent': True, 'stdout': {'file': 'original-source.stdout', 'bytes': 0, 'sha1': 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'}, 'stderr': {'file': 'original-source.stderr', 'bytes': 583, 'sha1': '8c6ceeb0cebbd56179a4f4c168d3cd1db0a812b6', 'sha256': '1e3f30b7975921270101af85478bab6b43ceb8abb0c41ece2e63b42356efec51'}})",
+        "status": "failed"
+      },
+      "compiler_diagnostic": "(node:92219) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\nError:\n- expected : a plain binder (only leading binders take ~)\n- observed : '~'\nLocation:\n523 | \n524>| def chosen(~Extra: Type, codec: Codec<Extra>, ~operations: Operations<Extra>, own: Bool, envelope: L.Envelope, state: State<Extra>, session: L.Session, token: String, request: J.Value) -> IO(State<Extra> & L.Session & J.Value):\n    |                                               ^\n525 |   match own:\n"
+    },
+    {
+      "directory": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking/source/1791151184481317000",
+      "status": "source_refused",
+      "failure": {
+        "error": "AssertionError({'argv': ['/opt/homebrew/bin/node', '--expose-gc', '--max-old-space-size=8192', '--stack-size=4096', '--experimental-transform-types', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/local_player_cooking_source.mjs', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking/source/1791151184481317000'], 'pid': 92527, 'exit_code': -6, 'seconds': 113.025218, 'timed_out': False, 'group_absent': True, 'stdout': {'file': 'original-source.stdout', 'bytes': 0, 'sha1': 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'}, 'stderr': {'file': 'original-source.stderr', 'bytes': 7453, 'sha1': '656cda95f7447c1b8565bf15c543cbe5d788cef8', 'sha256': 'a8ddf0b322f1596f6385da64ed870ee11a454e1ba922c89392a11017b42c09db'}})",
+        "status": "failed"
+      },
+      "compiler_diagnostic": "(node:92527) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n\n<--- Last few GCs --->\n\n[92527:0x8eb40c000]   108367 ms: Mark-Compact 8187.1 (8198.5) -> 8183.9 (8199.5) MB, pooled: 0 MB, 5682.75 / 0.00 ms  (average mu = 0.047, current mu = 0.001) allocation failure; scavenge might not succeed\n[92527:0x8eb40c000]   112774 ms: Mark-Compact 8187.9 (8199.5) -> 8184.8 (8200.3) MB, pooled: 0 MB, 4403.50 / 0.00 ms  (average mu = 0.028, current mu = 0.001) allocation failure; scavenge might not succeed\n\n\n<--- JS stacktrace --->\n\nFATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory\n----- Native stack trace -----\n\n 1: 0x100a88a20 node::OOMErrorHandler(char const*, v8::OOMDetails const&) [/opt/homebrew/Cellar/node/23.5.0/bin/node]\n 2: 0x100c33aec v8::Utils::ReportOOMFailure(v8::internal::Isolate*, char const*, v8::OOMDetails const&) [/opt/homebrew/Cellar/node/23.5.0/bin/node]\n 3: 0x100c33aa0 v8::internal::V8::FatalProcessOutOfMemory(v8::internal::Isolate*, char const*, v8::OOMDetails const&) [/opt/homebrew/Cellar/node/23.5.0/bin/node]\n 4: 0x100df15c0 v8::internal::Heap::CallGCPrologueCallbacks(v8::GCType, v8::GCCallbackFlags, v8::internal::GCTracer::Scope::ScopeId) [/opt/homebrew/Cellar/node/23.5.0/bin/node]\n 5: 0x100df32c4 v8::internal::Heap::DevToolsTraceEventScope::~DevToolsTraceEventScope() [/opt/homebrew/Cellar/node/23.5.0/bin/node]\n 6: 0x100df1c88 v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags)::$_1::operator()() const [/opt/homebrew/Cellar/node/23.5.0/bin/node]\n 7: 0x100df1938 void heap::base::Stack::SetMarkerAndCallbackImpl<v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags)::$_1>(heap::base::Stack*, void*, void const*) [/opt/homebrew/Cellar/node/23.5.0/bin"
+    },
+    {
+      "directory": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking/source/1791151413749217000",
+      "status": "source_refused",
+      "failure": {
+        "error": "AssertionError({'argv': ['/opt/homebrew/bin/node', '--expose-gc', '--max-old-space-size=8192', '--stack-size=4096', '--experimental-transform-types', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/local_player_cooking_source.mjs', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking/source/1791151413749217000', '--diagnose'], 'pid': 93155, 'exit_code': -9, 'seconds': 40.500376, 'timed_out': True, 'group_absent': True, 'stdout': {'file': 'original-source.stdout', 'bytes': 0, 'sha1': 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'}, 'stderr': {'file': 'original-source.stderr', 'bytes': 177, 'sha1': '3dcb9f11d5b31a4b80e3acf97a923ac640a42ed0', 'sha256': 'b7d42a7362aa6ed9e75134c319f210384bd34d52717ed99a50add99976c9098b'}})",
+        "status": "failed"
+      },
+      "compiler_diagnostic": "(node:93155) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+      "last_progress": [
+        {
+          "index": 7705,
+          "name": "Providers",
+          "ms": 7053.287208000002,
+          "heap": 5126376456
+        },
+        {
+          "index": 7706,
+          "name": "Terrain",
+          "ms": 7053.3082920000015,
+          "heap": 5126391824
+        },
+        {
+          "index": 7707,
+          "name": "startup_bytes",
+          "ms": 7053.3395420000015,
+          "heap": 5126401200
+        },
+        {
+          "index": 7708,
+          "name": "startup_read",
+          "ms": 7053.367417000001,
+          "heap": 5126449248
+        },
+        {
+          "index": 7709,
+          "name": "startup_features",
+          "ms": 7053.403042000002,
+          "heap": 5126538008
+        },
+        {
+          "index": 7710,
+          "name": "fuel_source_selected",
+          "ms": 7053.439333000002,
+          "heap": 5126613976
+        },
+        {
+          "index": 7711,
+          "name": "fuel_source_int",
+          "ms": 7053.474042000002,
+          "heap": 5126669416
+        },
+        {
+          "index": 7712,
+          "name": "fuel_source",
+          "ms": 7053.503292000001,
+          "heap": 5126709880
+        }
+      ]
+    },
+    {
+      "directory": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking/source/1791151683115641000",
+      "status": "source_refused",
+      "failure": {
+        "error": "AssertionError({'argv': ['/opt/homebrew/bin/node', '--expose-gc', '--max-old-space-size=8192', '--stack-size=4096', '--experimental-transform-types', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/local_player_cooking_source.mjs', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking/source/1791151683115641000'], 'pid': 95527, 'exit_code': 1, 'seconds': 16.671169, 'timed_out': False, 'group_absent': True, 'stdout': {'file': 'original-source.stdout', 'bytes': 0, 'sha1': 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'}, 'stderr': {'file': 'original-source.stderr', 'bytes': 661, 'sha1': '754dcb6aecaeb2365e3dc76ad3f839916cf582bb', 'sha256': 'eb21053b78f0074cf8520f6654f04fac33e8db70990283acff229a86b4fcdddb'}})",
+        "status": "failed"
+      },
+      "compiler_diagnostic": "(node:95527) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\nError:\n- expected : a filled definition (an unfilled law is a dead claim: live code cannot use it)\n- observed : terrain_enabled\nContext:\n- rest     : List<&2, String>\n- entries  : Map<&2, Bool>\n- position : Core.Position\nLocation: terrain_enabled_origin\n218 |     case Fail{error}: Fail{\"invalid loaded terrain section key\"}\n219>|     case Done{position}: terrain_enabled(rest,Map.set(&2,Bool,entries,Light.key(position),True{}))\n    |                          ^^^^^^^^^^^^^^^\n220 | \n"
+    },
+    {
+      "directory": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking/source/1791151822787031000",
+      "status": "source_refused",
+      "failure": {
+        "error": "AssertionError({'argv': ['/opt/homebrew/bin/node', '--expose-gc', '--max-old-space-size=8192', '--stack-size=4096', '--experimental-transform-types', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/local_player_cooking_source.mjs', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking/source/1791151822787031000'], 'pid': 96639, 'exit_code': 1, 'seconds': 16.907912, 'timed_out': False, 'group_absent': True, 'stdout': {'file': 'original-source.stdout', 'bytes': 0, 'sha1': 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'}, 'stderr': {'file': 'original-source.stderr', 'bytes': 1398, 'sha1': '4d1e8e9f2b86a83cdd9e0ba9ffbe5f895a318b9a', 'sha256': 'dccc566dd94b9b4d96467924b110a41d115c62644ce69c067b75d63f10dc2262'}})",
+        "status": "failed"
+      },
+      "compiler_diagnostic": "(node:96639) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\nError:\n- expected : an annotated term (cannot infer)\n- observed : Session.State{player, Session.Shell{identity, path, highwater, limits, lease, maximum, catalog, inventory, fresh, generation, cooking}}\nContext:\n- catalogs   : Catalogs\n- first_peer : U32\n- bodies     : List<&2, CookingStorage.Body>\n- count      : U32\n- enabled    : Map<&2, Bool>\n- budget     : Nat\n- player     : src/local_phase_runtime.State\n- identity   : String\n- path       : String\n- highwater  : U32\n- limits     : src/persistence.Limits\n- lease      : src/world_lock.Lease\n- maximum    : U32\n- catalog    : List<&2, Persistence.Operation>\n- inventory  : src/player_inventory.State\n- fresh      : Bool\n- generation : Generation.Settings\n- cooking    : Cooking.Sidecar\nLocation: cooking_actual\n303 |   Session.State{player,Session.Shell{+identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation,cooking}} = state\n304>|   state = Session.State{player,Session.Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation,cooking}}\n    |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n305 |   do IO<Session.Ready>:\n"
+    }
+  ]
+}

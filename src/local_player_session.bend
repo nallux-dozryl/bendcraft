@@ -1,4 +1,9 @@
 import Base
+import ./local_player_cooking.bend as Cooking
+import ./cooking_block_entity_codec.bend as CookingCodec
+import ./cooking_world_store.bend as CookingStore
+import ./nbt.bend as Nbt
+import ./local_player_cooking_storage.bend as CookingStorage
 import ./player_block_inside_stuck.bend as Inside
 import ./local_player_runtime.bend as R
 import ./local_phase_runtime.bend as X
@@ -34,27 +39,27 @@ import ./player_item_definitions.bend as D
 # existing atomic extension transaction. Renderer/API reads never tick it.
 type Shell is Type:
   Shell{identity:String,path:String,highwater:U32,limits:P.Limits,lease:WL.Lease,
-    maximum:U32,catalog:List<&2,E.Operation>,inventory:I.State,fresh:Bool,generation:WG.Settings}
+    maximum:U32,catalog:List<&2,E.Operation>,inventory:I.State,fresh:Bool,generation:WG.Settings,cooking:Cooking.Sidecar}
 type State is Type:
   State{player:X.State,shell:Shell}
 
 # Startup provenance is transient. An empty loaded Core is still a loaded
 # world; only the codec's fresh initializer authorizes terrain initialization.
 def fresh(state:State) -> State & Bool:
-  State{player,Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,+initial,generation}} = state
-  (State{player,Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,initial,generation}},initial)
+  State{player,Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,+initial,generation,cooking}} = state
+  (State{player,Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,initial,generation,cooking}},initial)
 
 def mark_initialized(state:State) -> State:
-  State{player,Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,initial,generation}} = state
-  State{player,Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,False{},generation}}
+  State{player,Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,initial,generation,cooking}} = state
+  State{player,Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,False{},generation,cooking}}
 
 def generation(state:State) -> State & WG.Settings:
-  State{player,Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,+settings}} = state
-  (State{player,Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,settings}},settings)
+  State{player,Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,+settings,cooking}} = state
+  (State{player,Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,settings,cooking}},settings)
 
 def generation_assign(state:State,settings:WG.Settings) -> State:
-  State{player,Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,old}} = state
-  State{player,Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,settings}}
+  State{player,Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,old,cooking}} = state
+  State{player,Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,settings,cooking}}
 
 def generation_validated(state:State,result:Result<&2,&2,String,WG.Settings>) -> State & Result<&2,&2,String,Unit>:
   match result:
@@ -64,10 +69,10 @@ def generation_validated(state:State,result:Result<&2,&2,String,WG.Settings>) ->
 def set_generation(state:State,settings:WG.Settings) -> State & Result<&2,&2,String,Unit>:
   generation_validated(state,WG.validate(settings))
 
-def to_bundle_split(shell:Shell,result:G.Engine & PR.Record & R.Transient) -> E.State<IC.Saved> & R.Transient:
-  Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation} = shell
+def to_bundle_split(shell:Shell,result:G.Engine & PR.Record & R.Detached) -> E.State<IC.Saved> & R.Transient:
+  Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation,cooking} = shell
   (engine,record,transient) = result
-  (E.State{P.State{engine,identity,path,highwater,limits,lease},IC.Saved{record,inventory,fresh,generation},maximum,catalog},transient)
+  (E.State{P.State{engine,identity,path,highwater,limits,lease},IC.Saved{record,inventory,fresh,generation},maximum,catalog},R.Transient{transient,cooking})
 
 def to_bundle(state:State) -> E.State<IC.Saved> & R.Transient:
   State{player,shell} = state
@@ -75,7 +80,115 @@ def to_bundle(state:State) -> E.State<IC.Saved> & R.Transient:
 
 def from_bundle(stored:E.State<IC.Saved>,transient:R.Transient) -> State:
   E.State{P.State{engine,identity,path,highwater,limits,lease},IC.Saved{record,inventory,fresh,generation},maximum,catalog} = stored
-  State{R.attach(engine,record,transient),Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation}}
+  R.Transient{player,cooking} = transient
+  State{R.attach(engine,record,player),Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation,cooking}}
+
+# This pure detour transfers the sole Core owner to cooking. The saved header,
+# player record, array owners and all unsaved fields remain in their existing
+# bundle carriers; no physical encoding or second world is constructed.
+def cooking_returned(-A:Data,registry:B.Registry,identity:String,path:String,highwater:U32,
+    limits:P.Limits,lease:WL.Lease,saved:IC.Saved,maximum:U32,catalog:List<&2,E.Operation>,
+    player:R.Detached,result:C.World & Cooking.Sidecar & Result<&2,&2,String,A>) -> State & Result<&2,&2,String,A>:
+  (world,cooking,status) = result
+  (from_bundle(E.State{P.State{G.Engine{world,registry},identity,path,highwater,limits,lease},saved,maximum,catalog},
+    R.Transient{player,cooking}),status)
+
+def cooking_detached(-A:Data,operation:C.World -> Cooking.Sidecar -> C.World & Cooking.Sidecar & Result<&2,&2,String,A>,
+    result:E.State<IC.Saved> & R.Transient) -> State & Result<&2,&2,String,A>:
+  (E.State{P.State{G.Engine{world,registry},identity,path,highwater,limits,lease},saved,maximum,catalog},
+    R.Transient{player,cooking}) = result
+  cooking_returned(A,registry,identity,path,highwater,limits,lease,saved,maximum,catalog,player,operation(world,cooking))
+
+def cooking_query(-A:Data,state:State,operation:C.World -> Cooking.Sidecar -> C.World & Cooking.Sidecar & Result<&2,&2,String,A>) -> State & Result<&2,&2,String,A>:
+  cooking_detached(A,operation,to_bundle(state))
+
+def cooking_begin(state:State,context:Cooking.Context) -> State & Result<&2,&2,String,Unit>:
+  cooking_query(Unit,state,world => sidecar => Cooking.begin(world,sidecar,context))
+
+def cooking_resume_loading(state:State,budget:Nat) -> State & Result<&2,&2,String,Bool>:
+  cooking_query(Bool,state,world => sidecar => Cooking.resume_loading(world,sidecar,budget))
+
+def cooking_load_body(state:State,position:C.Position,limits:Nbt.Limits,bytes:List<&2,U32>,cap:C.Capability) -> State & Result<&2,&2,String,CookingCodec.Details>:
+  cooking_query(CookingCodec.Details,state,world => sidecar => Cooking.load_body(world,sidecar,position,limits,bytes,cap))
+
+def cooking_save_body(state:State,position:C.Position,limits:Nbt.Limits,cap:C.Capability) -> State & Result<&2,&2,String,List<&2,U32>>:
+  cooking_query(List<&2,U32>,state,world => sidecar => Cooking.save_body(world,sidecar,position,limits,cap))
+
+def cooking_effects_returned(player:X.State,identity:String,path:String,highwater:U32,limits:P.Limits,lease:WL.Lease,
+    maximum:U32,catalog:List<&2,E.Operation>,inventory:I.State,fresh:Bool,generation:WG.Settings,
+    result:Cooking.Sidecar & List<&2,CookingStore.Effect>) -> State & List<&2,CookingStore.Effect>:
+  (cooking,effects) = result
+  (State{player,Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation,cooking}},effects)
+
+def cooking_take_effects(state:State) -> State & List<&2,CookingStore.Effect>:
+  State{player,Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation,cooking}} = state
+  cooking_effects_returned(player,identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation,
+    Cooking.take_effects(cooking))
+
+def cooking_sidecar_returned(-A:Data,player:X.State,identity:String,path:String,highwater:U32,limits:P.Limits,lease:WL.Lease,
+    maximum:U32,catalog:List<&2,E.Operation>,inventory:I.State,fresh:Bool,generation:WG.Settings,
+    result:Cooking.Sidecar & A) -> State & A:
+  (cooking,value) = result
+  (State{player,Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation,cooking}},value)
+
+def cooking_sidecar_query(-A:Data,state:State,operation:Cooking.Sidecar -> Cooking.Sidecar & A) -> State & A:
+  State{player,Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation,cooking}} = state
+  cooking_sidecar_returned(A,player,identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation,
+    operation(cooking))
+
+def cooking_positions(state:State) -> State & List<&2,C.Position>:
+  cooking_sidecar_query(List<&2,C.Position>,state,Cooking.positions)
+
+def cooking_details_at(state:State,position:C.Position) -> State & Maybe<&2,CookingCodec.Details>:
+  cooking_sidecar_query(Maybe<&2,CookingCodec.Details>,state,sidecar => Cooking.details_at(sidecar,position))
+
+def cooking_bodies_cons(position:C.Position,bytes:List<&2,U32>,result:State & Result<&2,&2,String,List<&2,CookingStorage.Body>>) -> State & Result<&2,&2,String,List<&2,CookingStorage.Body>>:
+  (state,status) = result
+  (state,Result.map(&2,&2,String,List<&2,CookingStorage.Body>,List<&2,CookingStorage.Body>,
+    rest => CookingStorage.Body{position,bytes} <> rest,status))
+
+def cooking_body_merged(+position:C.Position,state:State,
+    next:State -> State & Result<&2,&2,String,List<&2,CookingStorage.Body>>,
+    result:Result<&2,&2,String,List<&2,U32>>) -> State & Result<&2,&2,String,List<&2,CookingStorage.Body>>:
+  match result:
+    case Fail{message}: (state,Fail{message})
+    case Done{bytes}: cooking_bodies_cons(position,bytes,next(state))
+
+def cooking_body_details(position:C.Position,bytes:List<&2,U32>,
+    next:State -> State & Result<&2,&2,String,List<&2,CookingStorage.Body>>,
+    result:State & Maybe<&2,CookingCodec.Details>) -> State & Result<&2,&2,String,List<&2,CookingStorage.Body>>:
+  (state,details) = result
+  cooking_body_merged(position,state,next,CookingStorage.with_details(CookingStorage.nbt_limits(),bytes,details))
+
+def cooking_body_saved(+position:C.Position,
+    next:State -> State & Result<&2,&2,String,List<&2,CookingStorage.Body>>,
+    result:State & Result<&2,&2,String,List<&2,U32>>) -> State & Result<&2,&2,String,List<&2,CookingStorage.Body>>:
+  (state,status) = result
+  match status:
+    case Fail{message}: (state,Fail{message})
+    case Done{bytes}: cooking_body_details(position,bytes,next,cooking_details_at(state,position))
+
+def cooking_collect(positions:List<&2,C.Position>,state:State) -> State & Result<&2,&2,String,List<&2,CookingStorage.Body>>:
+  match positions:
+    case Nil{}: (state,Done{[]})
+    case +position <> rest:
+      cooking_body_saved(position,state => cooking_collect(rest,state),
+        cooking_save_body(state,position,CookingStorage.nbt_limits(),C.Developer{}))
+
+def cooking_collect_positions(result:State & List<&2,C.Position>) -> State & Result<&2,&2,String,List<&2,CookingStorage.Body>>:
+  (state,positions) = result
+  cooking_collect(positions,state)
+
+def cooking_collect_ready(result:State & Result<&2,&2,String,Unit>) -> State & Result<&2,&2,String,List<&2,CookingStorage.Body>>:
+  (state,status) = result
+  match status:
+    case Fail{message}: (state,Fail{message})
+    case Done{unit}: cooking_collect_positions(cooking_positions(state))
+
+# Collect complete known bodies plus their retained physical extras before the
+# single existing durable transaction. Queries do not perform this collection.
+def cooking_bodies(state:State) -> State & Result<&2,&2,String,List<&2,CookingStorage.Body>>:
+  cooking_collect_ready(cooking_sidecar_query(Result<&2,&2,String,Unit>,state,Cooking.persistence_ready))
 
 def queried(-A:Type,shell:Shell,result:X.State & A) -> State & A:
   (player,value) = result
@@ -95,21 +208,20 @@ def release(state:State) -> State:
   State{player,shell} = state
   State{R.release(player),shell}
 
-def realtime_step(driver:R.Driver,state:State) -> State:
-  State{player,shell} = state
-  State{R.realtime_step(driver,player),shell}
+def cooking_error_returned(result:State & Unit) -> State:
+  (state,unit) = result
+  state
 
-def advance(~driver:R.Driver,state:State,ticks:U32) -> State:
-  State{player,shell} = state
-  State{R.advance(~driver,U32.to_nat(ticks),player),shell}
+def cooking_error(state:State,message:String) -> State:
+  cooking_error_returned(query(Unit,state,player => (R.with_error(player,Some{message}),Unit{})))
 
-def inventory_queried(-A:Type,player:X.State,identity:String,path:String,highwater:U32,limits:P.Limits,lease:WL.Lease,maximum:U32,catalog:List<&2,E.Operation>,fresh:Bool,generation:WG.Settings,result:I.State & A) -> State & A:
+def inventory_queried(-A:Type,player:X.State,identity:String,path:String,highwater:U32,limits:P.Limits,lease:WL.Lease,maximum:U32,catalog:List<&2,E.Operation>,fresh:Bool,generation:WG.Settings,cooking:Cooking.Sidecar,result:I.State & A) -> State & A:
   (inventory,value) = result
-  (State{player,Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation}},value)
+  (State{player,Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation,cooking}},value)
 
 def inventory_query(-A:Type,state:State,operation:I.State -> I.State & A) -> State & A:
-  State{player,Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation}} = state
-  inventory_queried(A,player,identity,path,highwater,limits,lease,maximum,catalog,fresh,generation,operation(inventory))
+  State{player,Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation,cooking}} = state
+  inventory_queried(A,player,identity,path,highwater,limits,lease,maximum,catalog,fresh,generation,cooking,operation(inventory))
 
 def inventory_inspect(state:State) -> State & I.Snapshot:
   inventory_query(I.Snapshot,state,I.inspect)
@@ -140,17 +252,61 @@ def set_inventory_status(state:State,status:I.Status) -> State:
   inventory_status_updated(inventory_query(Unit,state,i => (I.set_status(i,status),Unit{})))
 
 def status_runtime_updated(shell:Shell,result:X.State & I.Status) -> State:
-  Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation} = shell
+  Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation,cooking} = shell
   (player,status) = result
-  State{player,Shell{identity,path,highwater,limits,lease,maximum,catalog,I.set_status(inventory,status),fresh,generation}}
+  State{player,Shell{identity,path,highwater,limits,lease,maximum,catalog,I.set_status(inventory,status),fresh,generation,cooking}}
 
-def status_inventory_read(operation:I.Status -> X.State -> X.State & I.Status,player:X.State,identity:String,path:String,highwater:U32,limits:P.Limits,lease:WL.Lease,maximum:U32,catalog:List<&2,E.Operation>,fresh:Bool,generation:WG.Settings,result:I.State & I.Status) -> State:
+def status_inventory_read(operation:I.Status -> X.State -> X.State & I.Status,player:X.State,identity:String,path:String,highwater:U32,limits:P.Limits,lease:WL.Lease,maximum:U32,catalog:List<&2,E.Operation>,fresh:Bool,generation:WG.Settings,cooking:Cooking.Sidecar,result:I.State & I.Status) -> State:
   (inventory,status) = result
-  status_runtime_updated(Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation},operation(status,player))
+  status_runtime_updated(Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation,cooking},operation(status,player))
 
 def run_with_status(state:State,operation:I.Status -> X.State -> X.State & I.Status) -> State:
-  State{player,Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation}} = state
-  status_inventory_read(operation,player,identity,path,highwater,limits,lease,maximum,catalog,fresh,generation,I.status(inventory))
+  State{player,Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation,cooking}} = state
+  status_inventory_read(operation,player,identity,path,highwater,limits,lease,maximum,catalog,fresh,generation,cooking,I.status(inventory))
+
+def cooking_tick_completed(driver:R.Driver,result:State & Result<&2,&2,String,Bool>) -> State:
+  (state,status) = result
+  match status:
+    case Fail{message}: cooking_error(state,message)
+    case Done{False{}}: state
+    case Done{True{}}: run_with_status(state,status => player => R.status_after_world_tick(driver,status,player))
+
+def cooking_tick_shaped(driver:R.Driver,scheduled:Bool,result:State & Maybe<&2,X.Error>) -> State:
+  (state,error) = result
+  match error:
+    case Some{cause}: cooking_error(state,R.error_text(cause))
+    case None{}:
+      cooking_tick_completed(driver,cooking_query(Bool,state,world => sidecar => Cooking.tick(world,sidecar,scheduled)))
+
+# A failed cooking finish owns an already started Core tick. A later success
+# completes common/player processing once even if Core's tick did not change.
+def cooking_step(driver:R.Driver,state:State,scheduled:Bool) -> State:
+  cooking_tick_shaped(driver,scheduled,query(Maybe<&2,X.Error>,state,X.stage_shape))
+
+def realtime_step(driver:R.Driver,state:State) -> State:
+  cooking_step(driver,state,False{})
+
+def step(driver:R.Driver,state:State) -> State:
+  cooking_step(driver,state,True{})
+
+def advance_runtime_error(player:X.State) -> X.State & Maybe<&2,String>:
+  X.State{motion,tables,X.Metadata{local,record,sprint,pose,controls,entity,receiver,+error,metadata_tail},tail} = player
+  (X.State{motion,tables,X.Metadata{local,record,sprint,pose,controls,entity,receiver,error,metadata_tail},tail},error)
+
+def advance_completed(next:State -> State,result:State & Maybe<&2,String>) -> State:
+  (state,error) = result
+  match error:
+    case Some{message}: state
+    case None{}: next(state)
+
+def advance_go(+driver:R.Driver,ticks:Nat,state:State) -> State:
+  match ticks:
+    case 0n: state
+    case 1n+rest: advance_completed(state => advance_go(driver,rest,state),
+      query(Maybe<&2,String>,step(driver,state),advance_runtime_error))
+
+def advance(~driver:R.Driver,state:State,ticks:U32) -> State:
+  advance_go(driver,U32.to_nat(ticks),state)
 
 def inventory_definitions(state:State) -> State & D.Catalog:
   inventory_query(D.Catalog,state,I.definitions)
@@ -344,8 +500,8 @@ def failure(state:State,session:L.Session,id:String,fault:L.Fault) -> State & L.
   response(state,session,L.obj([J.JMember{"id",L.text(id)},J.JMember{"ok",L.boolean(False{})},J.JMember{"error",L.fault_value(fault)}]))
 
 def observed(state:State,+peer:U32) -> State:
-  State{player,Shell{identity,path,+highwater,limits,lease,maximum,catalog,inventory,fresh,generation}} = state
-  State{player,Shell{identity,path,U32.max(highwater,peer),limits,lease,maximum,catalog,inventory,fresh,generation}}
+  State{player,Shell{identity,path,+highwater,limits,lease,maximum,catalog,inventory,fresh,generation,cooking}} = state
+  State{player,Shell{identity,path,U32.max(highwater,peer),limits,lease,maximum,catalog,inventory,fresh,generation,cooking}}
 
 def reserved_local_peer(state:State,result:Result<&2,&2,String,U32>) -> State & Result<&2,&2,String,C.Capability>:
   match result:
@@ -356,15 +512,15 @@ def reserved_local_peer(state:State,result:Result<&2,&2,String,U32>) -> State & 
 # The renderer's Player identity belongs to the durable peer allocator. Reserve
 # it before opening public listeners; no peer zero or fabricated identity is used.
 def reserve_local_player(state:State) -> State & Result<&2,&2,String,C.Capability>:
-  State{player,Shell{identity,path,+highwater,limits,lease,maximum,catalog,inventory,fresh,generation}} = state
-  reserved_local_peer(State{player,Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation}},P.next_peer(highwater))
+  State{player,Shell{identity,path,+highwater,limits,lease,maximum,catalog,inventory,fresh,generation,cooking}} = state
+  reserved_local_peer(State{player,Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation,cooking}},P.next_peer(highwater))
 
 def block_action_executed(shell:Shell,record:PR.Record,palette:Maybe<&2,W.Palette>,region:W.Bounds,cache:Maybe<&2,W.SnapshotCache>,buttons:PI.Buttons,mouse:MI.State,options:MI.Options,receiver:Inside.Receiver,error:Maybe<&2,String>,state_tail:List<&1,X.State>,motion_tail:List<&1,MH.State>,metadata_tail:List<&2,X.Metadata>,result:G.Engine & T.Tables & BI.Outcome) -> State & BI.Outcome:
   (engine,tables,outcome) = result
-  (State{R.attach(engine,record,R.Transient{tables,palette,region,cache,buttons,mouse,options, receiver, error,state_tail,motion_tail,metadata_tail}),shell},outcome)
+  (State{R.attach(engine,record,R.Detached{tables,palette,region,cache,buttons,mouse,options, receiver, error,state_tail,motion_tail,metadata_tail}),shell},outcome)
 
-def block_action_detached(shell:Shell,abilities:I.Abilities,held:Inv.Slot,cap:C.Capability,sequence:Nat,button:U32,result:G.Engine & PR.Record & R.Transient) -> State & BI.Outcome:
-  (engine,+record,R.Transient{tables,palette,region,cache,buttons,mouse,options, receiver, error,state_tail,motion_tail,metadata_tail}) = result
+def block_action_detached(shell:Shell,abilities:I.Abilities,held:Inv.Slot,cap:C.Capability,sequence:Nat,button:U32,result:G.Engine & PR.Record & R.Detached) -> State & BI.Outcome:
+  (engine,+record,R.Detached{tables,palette,region,cache,buttons,mouse,options, receiver, error,state_tail,motion_tail,metadata_tail}) = result
   block_action_executed(shell,record,palette,region,cache,buttons,mouse,options,receiver,error,state_tail,motion_tail,metadata_tail,BI.execute(engine,record,tables,abilities,held,cap,sequence,button))
 
 def block_action_record(abilities:I.Abilities,held:Inv.Slot,cap:C.Capability,sequence:Nat,button:U32,shell:Shell,result:X.State & Result<&2,&2,String,PR.Record>) -> State & BI.Outcome:
@@ -373,13 +529,13 @@ def block_action_record(abilities:I.Abilities,held:Inv.Slot,cap:C.Capability,seq
     case Fail{message}: (State{player,shell},BI.Outcome{False{},message})
     case Done{record}: block_action_detached(shell,abilities,held,cap,sequence,button,R.detach(player))
 
-def block_action_abilities(player:X.State,held:Inv.Slot,cap:C.Capability,sequence:Nat,button:U32,identity:String,path:String,highwater:U32,limits:P.Limits,lease:WL.Lease,maximum:U32,catalog:List<&2,E.Operation>,fresh:Bool,generation:WG.Settings,result:I.State & I.Abilities) -> State & BI.Outcome:
+def block_action_abilities(player:X.State,held:Inv.Slot,cap:C.Capability,sequence:Nat,button:U32,identity:String,path:String,highwater:U32,limits:P.Limits,lease:WL.Lease,maximum:U32,catalog:List<&2,E.Operation>,fresh:Bool,generation:WG.Settings,cooking:Cooking.Sidecar,result:I.State & I.Abilities) -> State & BI.Outcome:
   (inventory,abilities) = result
-  block_action_record(abilities,held,cap,sequence,button,Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation},R.record_checked(player))
+  block_action_record(abilities,held,cap,sequence,button,Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation,cooking},R.record_checked(player))
 
 def block_action_selected(cap:C.Capability,sequence:Nat,button:U32,result:State & Inv.Slot) -> State & BI.Outcome:
-  (State{player,Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation}},held) = result
-  block_action_abilities(player,held,cap,sequence,button,identity,path,highwater,limits,lease,maximum,catalog,fresh,generation,I.abilities(inventory))
+  (State{player,Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation,cooking}},held) = result
+  block_action_abilities(player,held,cap,sequence,button,identity,path,highwater,limits,lease,maximum,catalog,fresh,generation,cooking,I.abilities(inventory))
 
 def block_action(state:State,cap:C.Capability,sequence:Nat,button:U32) -> State & BI.Outcome:
   block_action_selected(cap,sequence,button,inventory_selected(state))
@@ -426,11 +582,60 @@ def record_refused(state:State,session:L.Session,id:String,code:String,message:S
   L.Session{+peer,sequence,capability} = session
   failure(observed(state,peer),L.Session{peer,1n+sequence,capability},id,L.bad(code,message))
 
+def from_cooking_bundle(stored:E.State<CookingStorage.Saved>,transient:R.Transient) -> State:
+  E.State{base,CookingStorage.Saved{saved,bodies},maximum,catalog} = stored
+  from_bundle(E.State{base,saved,maximum,catalog},transient)
+
+def cooking_inventory_answer(bodies:List<&2,CookingStorage.Body>,result:G.Engine & IC.Saved & Result<&2,&2,L.Fault,J.Value>) -> G.Engine & CookingStorage.Saved & Result<&2,&2,L.Fault,J.Value>:
+  (engine,saved,status) = result
+  (engine,CookingStorage.Saved{saved,bodies},status)
+
+def cooking_inventory_dispatch(engine:G.Engine,saved:CookingStorage.Saved,session:L.Session,envelope:L.Envelope) -> G.Engine & CookingStorage.Saved & Result<&2,&2,L.Fault,J.Value>:
+  CookingStorage.Saved{player,bodies} = saved
+  cooking_inventory_answer(bodies,inventory_operation_dispatch(engine,player,session,envelope))
+
+def cooking_inventory_operations() -> E.Operations<CookingStorage.Saved>:
+  E.Operations{inventory_catalog,cooking_inventory_dispatch}
+
+def cooking_dispatched(transient:R.Transient,result:E.State<CookingStorage.Saved> & L.Session & J.Value) -> State & L.Session & J.Value:
+  (stored,session,value) = result
+  (from_cooking_bundle(stored,transient),session,value)
+
+def cooking_delegate_bundle(definitions:D.Catalog,bodies:List<&2,CookingStorage.Body>,session:L.Session,token:String,request:J.Value,
+    result:E.State<IC.Saved> & R.Transient) -> IO(State & L.Session & J.Value):
+  (E.State{base,saved,maximum,catalog},transient) = result
+  do IO<State & L.Session & J.Value>:
+    result : E.State<CookingStorage.Saved> & L.Session & J.Value <-
+      E.dispatch_codec(~CookingStorage.Saved,~cooking_inventory_operations(),
+        CookingStorage.codec_with(definitions,False{},WG.legacy()),
+        E.State{base,CookingStorage.Saved{saved,bodies},maximum,catalog},session,token,request)
+    return cooking_dispatched(transient,result)
+
+def cooking_save_definitions(bodies:List<&2,CookingStorage.Body>,session:L.Session,token:String,request:J.Value,
+    result:State & D.Catalog) -> IO(State & L.Session & J.Value):
+  (state,definitions) = result
+  cooking_delegate_bundle(definitions,bodies,session,token,request,to_bundle(state))
+
+def cooking_save_collected(session:L.Session,token:String,request:J.Value,id:String,
+    result:State & Result<&2,&2,String,List<&2,CookingStorage.Body>>) -> IO(State & L.Session & J.Value):
+  (state,status) = result
+  match status:
+    case Fail{message}: IO.pure(State & L.Session & J.Value,record_refused(state,session,id,"SaveEncodingFailed",message))
+    case Done{bodies}: cooking_save_definitions(bodies,session,token,request,inventory_definitions(state))
+
+def cooking_save(state:State,session:L.Session,token:String,request:J.Value,id:String) -> IO(State & L.Session & J.Value):
+  cooking_save_collected(session,token,request,id,cooking_bodies(state))
+
+def record_dispatch(state:State,session:L.Session,token:String,request:J.Value,id:String,code:String) -> IO(State & L.Session & J.Value):
+  match code:
+    case "SaveEncodingFailed": cooking_save(state,session,token,request,id)
+    case _: delegate(state,session,token,request)
+
 def record_runtime_checked(shell:Shell,session:L.Session,token:String,request:J.Value,id:String,code:String,result:X.State & Result<&2,&2,String,PR.Record>) -> IO(State & L.Session & J.Value):
   (player,status) = result
   match status:
     case Fail{message}: IO.pure(State & L.Session & J.Value,record_refused(State{player,shell},session,id,code,message))
-    case Done{record}: delegate(State{player,shell},session,token,request)
+    case Done{record}: record_dispatch(State{player,shell},session,token,request,id,code)
 
 def record_admitted(state:State,session:L.Session,token:String,request:J.Value,id:String,code:String) -> IO(State & L.Session & J.Value):
   State{player,shell} = state
@@ -475,7 +680,7 @@ def startup_closed(message:String,result:Result<&1,&1,U32 & String,Unit>) -> IO(
     case Done{unit}: IO.die(Ready,1,"player session startup refused: " ++ message)
 
 def startup_failed(shell:Shell,message:String) -> IO(Ready):
-  Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation} = shell
+  Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation,cooking} = shell
   do IO<Ready>:
     result : Result<&1,&1,U32 & String,Unit> <- WL.release(lease)
     startup_closed(message,result)
@@ -494,7 +699,7 @@ def startup_world(shell:Shell,first_peer:U32,tables:T.Tables,record:PR.Record,re
 
 def startup_base(base:P.State,record:PR.Record,maximum:U32,catalog:List<&2,E.Operation>,first_peer:U32,tables:T.Tables) -> IO(Ready):
   P.State{engine,identity,path,highwater,limits,lease} = base
-  startup_world(Shell{identity,path,highwater,limits,lease,maximum,catalog,I.new(),False{},WG.legacy()},first_peer,tables,record,W.new(engine))
+  startup_world(Shell{identity,path,highwater,limits,lease,maximum,catalog,I.new(),False{},WG.legacy(),Cooking.empty()},first_peer,tables,record,W.new(engine))
 
 # Caller loads the closed PS codec/operations before adoption. The supplied
 # Tables are the pinned owned sine lookup. Palette failure closes the save lease.
@@ -510,11 +715,19 @@ def startup_inventory_validated(shell:Shell,first_peer:U32,tables:T.Tables,engin
 def startup_inventory_base(base:P.State,saved:IC.Saved,maximum:U32,catalog:List<&2,E.Operation>,first_peer:U32,tables:T.Tables) -> IO(Ready):
   P.State{engine,identity,path,highwater,limits,lease} = base
   IC.Saved{record,inventory,fresh,generation} = saved
-  startup_inventory_validated(Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation},first_peer,tables,engine,PR.validate(record))
+  startup_inventory_validated(Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation,Cooking.empty()},first_peer,tables,engine,PR.validate(record))
 
 def new_inventory(ready:E.Ready<IC.Saved>,tables:T.Tables) -> IO(Ready):
   E.Ready{E.State{base,saved,maximum,catalog},first_peer} = ready
   startup_inventory_base(base,saved,maximum,catalog,first_peer,tables)
+
+# Pending body bytes remain with Entry until its real context/bootstrap and
+# discovery succeed. No transient fallback or second durable save is created.
+def new_cooking_inventory(ready:E.Ready<CookingStorage.Saved>,tables:T.Tables) -> IO(Ready & List<&2,CookingStorage.Body>):
+  E.Ready{E.State{base,CookingStorage.Saved{saved,bodies},maximum,catalog},first_peer} = ready
+  do IO<Ready & List<&2,CookingStorage.Body>>:
+    ready : Ready <- startup_inventory_base(base,saved,maximum,catalog,first_peer,tables)
+    return (ready,bodies)
 
 def returned_bundle(result:E.State<IC.Saved> & R.Transient) -> State:
   (stored,transient) = result
@@ -530,4 +743,4 @@ def bundle_transfer_preserves_all_local_runtime_and_save_fields(state):
     case State{X.State{MH.State{W.State{engine,body,yaw,pitch,palette,region,cache},support,minor,H.State{history},motion_tail},tables,
       X.Metadata{local,Plain.Metadata{input,jumping,delay,trigger,sync,speed,head},sprinting,pose,
         CT.Controller{buttons,look,mouse,options},entity, receiver, error,metadata_tail},state_tail},
-      Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation}}: {==}
+      Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation,cooking}}: {==}

@@ -1219,6 +1219,35 @@ def pre_protocol_request(request:PrepareRequest) -> Maybe<&2,Error>:
     case PrepareRequest{lifecycle,common,control,environment,cf,mf,rf,pf,Nil{}}: None{}
     case _: Some{NonCanonicalRequest{}}
 
+# The owning Scene has already completed the sole joined world/cooking tick.
+# This continuation advances common/player processing exactly once and never
+# calls Core.step. Pending cooking retries enter only after successful finish.
+def pre_after_world_extracted(tables:L.Tables,support:SP.State,minor:LM.MinorState,
+                             history:H.State,+metadata:Metadata,+request:PrepareRequest,
+                             result:G.Engine & W.View) -> PrepareResult:
+  (engine,+view) = result
+  pre_common_finished(tables,support,minor,history,metadata,request,engine,view,
+    ECT.common_tick(ECT.State{entity(metadata),[]},ECT.Request{body_position(view_body(view)),
+      PR.look(controls(metadata)),pre_request_common(request),[]}))
+
+def pre_after_world_ready(state:State,request:PrepareRequest) -> PrepareResult:
+  State{MH.State{world,support,minor,history,tail},tables,metadata,owned} = state
+  pre_after_world_extracted(tables,support,minor,history,metadata,request,W.take(world))
+
+def pre_after_world_shaped(request:PrepareRequest,result:State & Maybe<&2,Error>) -> PrepareResult:
+  (state,error) = result
+  match error:
+    case Some{cause}: Rejected{state,cause}
+    case None{}: pre_after_world_ready(state,request)
+
+def pre_after_world_request(state:State,request:PrepareRequest,error:Maybe<&2,Error>) -> PrepareResult:
+  match error:
+    case Some{cause}: Rejected{state,cause}
+    case None{}: pre_after_world_shaped(request,stage_shape(state))
+
+def prepare_after_world_tick(state:State,+request:PrepareRequest) -> PrepareResult:
+  pre_after_world_request(state,request,pre_protocol_request(request))
+
 def pre_protocol_pose(pose:Pose.State) -> Maybe<&2,Error>:
   match pose:
     case Pose.State{value,eye,Nil{}}: None{}

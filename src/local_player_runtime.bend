@@ -1,4 +1,5 @@
 import Base
+import ./local_player_cooking.bend as Cooking
 import ./runtime_block_inside.bend as RBI
 import ./player_block_inside_stuck.bend as Inside
 import ./local_phase_runtime.bend as X
@@ -40,11 +41,16 @@ import ./local_player_ability_selection.bend as AS
 
 # X.State is the only runtime owner; this facade introduces no Body/Engine state.
 # A bundle detour carries every unsaved field and every forged owned/Data tail.
-type Transient is Type:
-  Transient{tables: L.Tables, palette: Maybe<&2, W.Palette>, region: W.Bounds,
+type Detached is Type:
+  Detached{tables: L.Tables, palette: Maybe<&2, W.Palette>, region: W.Bounds,
     cache: Maybe<&2, W.SnapshotCache>, buttons: PI.Buttons, mouse: MI.State,
     options: MI.Options, receiver: Inside.Receiver, error: Maybe<&2, String>, state_tail: List<&1, X.State>,
     motion_tail: List<&1, MH.State>, metadata_tail: List<&2, X.Metadata>}
+
+# A Session bundle detour also owns the cooking sidecar. Player attach accepts
+# only Detached, so it cannot accidentally erase affine block-entity owners.
+type Transient is Type:
+  Transient{player:Detached,cooking:Cooking.Sidecar}
 
 # Closed neutral client policy. Numerical ApplyFacts are not transport inputs.
 type Driver is Data:
@@ -57,27 +63,27 @@ type RenderFrame is Data:
 def detached_view(tables: L.Tables, support: SP.State, minor: LM.MinorState,
                   history: H.History, metadata: X.Metadata,
                   state_tail: List<&1, X.State>, motion_tail: List<&1, MH.State>,
-                  result: G.Engine & W.View) -> G.Engine & Record.Record & Transient:
+                  result: G.Engine & W.View) -> G.Engine & Record.Record & Detached:
   X.Metadata{local, player, sprinting, pose, PC.Controller{buttons, look, mouse, options}, entity, receiver, error, metadata_tail} = metadata
   (engine, W.View{body, yaw, pitch, palette, region, cache}) = result
   (engine, Record.Record{Saved.Record{Codec.Snapshot{PR.compose(body, player), support, yaw, pitch, "minecraft:overworld"}, look}, local, sprinting, pose, minor, history, entity},
-    Transient{tables, palette, region, cache, buttons, mouse, options, receiver, error, state_tail, motion_tail, metadata_tail})
+    Detached{tables, palette, region, cache, buttons, mouse, options, receiver, error, state_tail, motion_tail, metadata_tail})
 
-def detach(state: X.State) -> G.Engine & Record.Record & Transient:
+def detach(state: X.State) -> G.Engine & Record.Record & Detached:
   X.State{MH.State{world, support, minor, H.State{history}, motion_tail}, tables, metadata, state_tail} = state
   detached_view(tables, support, minor, history, metadata, state_tail, motion_tail, W.take(world))
 
-def attach(engine: G.Engine, record: Record.Record, transient: Transient) -> X.State:
+def attach(engine: G.Engine, record: Record.Record, transient: Detached) -> X.State:
   Record.Record{Saved.Record{Codec.Snapshot{+player, support, yaw, pitch, dimension}, look}, local, sprinting, pose, minor, history, entity} = record
-  Transient{tables, palette, region, cache, buttons, mouse, options, receiver, error, state_tail, motion_tail, metadata_tail} = transient
+  Detached{tables, palette, region, cache, buttons, mouse, options, receiver, error, state_tail, motion_tail, metadata_tail} = transient
   X.State{MH.State{W.State{engine, PR.player_body(player), yaw, pitch, palette, region, cache}, support, minor, H.State{history}, motion_tail}, tables,
     X.Metadata{local, PR.metadata(player), sprinting, pose, PC.Controller{buttons, look, mouse, options}, entity, receiver, error, metadata_tail}, state_tail}
 
-def reattach(result: G.Engine & Record.Record & Transient) -> X.State:
+def reattach(result: G.Engine & Record.Record & Detached) -> X.State:
   (engine, record, transient) = result
   attach(engine, record, transient)
 
-def recorded(result: G.Engine & Record.Record & Transient) -> X.State & Record.Record:
+def recorded(result: G.Engine & Record.Record & Detached) -> X.State & Record.Record:
   (engine, +record, transient) = result
   (attach(engine, record, transient), record)
 
@@ -114,11 +120,11 @@ def record_canonical(result: X.State & Bool) -> X.State & Result<&2, &2, String,
 def record_checked(state: X.State) -> X.State & Result<&2, &2, String, Record.Record>:
   record_canonical(canonical(state))
 
-def restored_transient(transient: Transient) -> Transient:
-  Transient{tables, palette, region, cache, buttons, mouse, options, receiver, error, owned, motion, metadata} = transient
-  Transient{tables, palette, region, cache, PI.empty(), MI.initial(), options, Inside.empty(), None{}, owned, motion, metadata}
+def restored_transient(transient: Detached) -> Detached:
+  Detached{tables, palette, region, cache, buttons, mouse, options, receiver, error, owned, motion, metadata} = transient
+  Detached{tables, palette, region, cache, PI.empty(), MI.initial(), options, Inside.empty(), None{}, owned, motion, metadata}
 
-def restore_detached(value: Record.Record, result: G.Engine & Record.Record & Transient) -> X.State & Result<&2, &2, String, Unit>:
+def restore_detached(value: Record.Record, result: G.Engine & Record.Record & Detached) -> X.State & Result<&2, &2, String, Unit>:
   (engine, old_record, transient) = result
   (attach(engine, value, restored_transient(transient)), Done{Unit{}})
 
@@ -460,6 +466,11 @@ def step_status(driver:Driver,+status:I.Status,state:X.State) -> X.State & I.Sta
 
 def realtime_status(driver:Driver,+status:I.Status,state:X.State) -> X.State & I.Status:
   status_prepared(status,X.prepare_realtime_checked(state,status_request(driver,status)))
+
+# World/cooking completion precedes this continuation. It must not use either
+# old scheduled entry point, both of which advance Core themselves.
+def status_after_world_tick(driver:Driver,+status:I.Status,state:X.State) -> X.State & I.Status:
+  status_prepared(status,X.prepare_after_world_tick(state,status_request(driver,status)))
 
 def advance_status_return(operation:I.Status -> X.State -> X.State & I.Status,
                           result:X.State & I.Status) -> X.State & I.Status:

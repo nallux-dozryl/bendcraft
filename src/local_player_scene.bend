@@ -232,13 +232,13 @@ def realtime_ensured(result:S.State & Result<&2,&2,String,Unit>) -> S.State:
   (state,status) = result
   match status:
     case Fail{message}: terrain_error(state,message)
-    case Done{unit}: follow(S.run_with_status(state,status => player => R.realtime_status(motion_driver(),status,player)))
+    case Done{unit}: follow(S.realtime_step(motion_driver(),state))
 
 def realtime_step(state:S.State) -> S.State:
   realtime_ensured(ensure(state))
 
 def scheduled_step(state:S.State) -> S.State:
-  S.run_with_status(state,status => player => R.step_status(motion_driver(),status,player))
+  S.step(motion_driver(),state)
 
 def advance_checked(next:S.State -> S.State,result:S.State & Maybe<&2,String>) -> S.State:
   (state,error) = result
