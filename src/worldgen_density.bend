@@ -4,25 +4,16 @@ import ./worldgen_density_state.bend as S
 import ./worldgen_density_compile.bend as C
 import ./worldgen_perlin_noise.bend as P
 import ./f64.bend as F
+import ./worldgen_density_math.bend as M
+import ./worldgen_density_interval.bend as I
+import ./worldgen_density_spline.bend as SP
+import ./worldgen_density_spline_eval.bend as SE
+import ./worldgen_density_minmax.bend as MM
+import ./worldgen_density_coordinates.bend as Coordinates
 
-def float_bits(bits:U32) -> F32:
-  match bits:
-    case U32{word}: F32{word}
-
-def clamp(+value:F32,+low:F32,+high:F32) -> F32:
-  Bool.pick(F32,F32.is_lt(value,low),low,Bool.pick(F32,F32.is_gt(value,high),high,value))
-
-def unary(operation:A.Unary,+value:F32) -> F32:
-  match operation:
-    case A.Abs{}: float_bits(U32.and(F32.bits(value),2147483647))
-    case A.Square{}: F32.mul(value,value)
-    case A.Cube{}: F32.mul(F32.mul(value,value),value)
-    case A.HalfNegative{}: Bool.pick(F32,F32.is_gt(value,0.0),value,F32.mul(value,0.5))
-    case A.QuarterNegative{}: Bool.pick(F32,F32.is_gt(value,0.0),value,F32.mul(value,0.25))
-    case A.Squeeze{}:
-      +limited = clamp(value,F32.neg(1.0),1.0)
-      F32.sub(F32.div(limited,2.0),F32.div(F32.mul(F32.mul(limited,limited),limited),24.0))
-    case A.Negate{}: float_bits(U32.xor(F32.bits(value),2147483648))
+def float_bits(bits:U32) -> F32: M.float_bits(bits)
+def clamp(value:F32,low:F32,high:F32) -> F32: M.clamp(value,low,high)
+def unary(operation:A.Unary,value:F32) -> F32: M.unary(operation,value)
 
 def binary(operation:A.Binary,left:F32,right:F32,right_constant:Bool) -> Result<&2,&2,String,F32>:
   match operation right_constant:
@@ -169,16 +160,13 @@ def shift(state:S.State,key:String,point:S.Point,is_a:Bool) -> S.State & Result<
     case S.Point{x,y,z} False{}:
       shifted_value(noise(state,S.NormalKey{key},F.mul(F.from_i32(z),F.F64{1070596096,0}),F.mul(F.from_i32(x),F.F64{1070596096,0}),P.zero()))
 
-def shifted_noise(state:S.State,key:String,+xz:F.F64,y_scale:F.F64,point:S.Point,sx:F32,sy:F32,sz:F32,mode:A.NoiseMode) -> S.State & Result<&2,&2,String,F32>:
-  match point mode:
-    case S.Point{x,y,z} A.Plain{}:
-      noise(state,S.NormalKey{key},F.mul(F.from_i32(x),xz),F.mul(F.from_i32(y),y_scale),F.mul(F.from_i32(z),xz))
-    case S.Point{x,y,z} A.ShiftedXZ{}:
-      noise(state,S.NormalKey{key},F.add(F.mul(F.from_i32(x),xz),F.from_f32(sx)),
-        F.mul(F.from_i32(y),y_scale),F.add(F.mul(F.from_i32(z),xz),F.from_f32(sz)))
-    case S.Point{x,y,z} A.ShiftedXYZ{}:
-      noise(state,S.NormalKey{key},F.add(F.mul(F.from_i32(x),xz),F.from_f32(sx)),
-        F.add(F.mul(F.from_i32(y),y_scale),F.from_f32(sy)),F.add(F.mul(F.from_i32(z),xz),F.from_f32(sz)))
+def coordinate_noise(state:S.State,key:String,value:Coordinates.Coordinates) -> S.State & Result<&2,&2,String,F32>:
+  match value:
+    case Coordinates.Coordinates{x,y,z}: noise(state,S.NormalKey{key},x,y,z)
+
+def shifted_noise(state:S.State,key:String,xz:F.F64,y_scale:F.F64,point:S.Point,sx:F32,sy:F32,sz:F32,mode:A.NoiseMode) -> S.State & Result<&2,&2,String,F32>:
+  match point:
+    case S.Point{x,y,z}: coordinate_noise(state,key,Coordinates.shifted(x,y,z,xz,y_scale,sx,sy,sz,mode))
 
 def operation(operation:A.Operation,state:S.State,+point:S.Point,
     read_one:S.State -> U32 -> S.State & Result<&2,&2,String,F32>,
@@ -208,6 +196,11 @@ def operation(operation:A.Operation,state:S.State,+point:S.Point,
           continued(read_three(state)(sz),state => z_shift => shifted_noise(state,key,xz,y,point,x_shift,y_shift,z_shift,mode))))
     case A.OpShiftA{key}: shift(state,key,point,True{})
     case A.OpShiftB{key}: shift(state,key,point,False{})
+    case A.OpMinMax{kind,left,right,mode}: MM.step(S.State,kind,left,right,mode,state,read_one,read_two)
+    case A.OpBlendAlpha{}: (state,Done{1.0})
+    case A.OpBlendOffset{}: (state,Done{0.0})
+    case A.OpBlendDensity{input}: read_one(state)(input)
+    case A.OpSpline{tree}: (state,Fail{"density spline requires the structural evaluator work route"})
 
 def indexed(state:S.State,index:U32,point:S.Point,found:Maybe<&2,A.Operation>,
     read_one:S.State -> U32 -> S.State & Result<&2,&2,String,F32>,
@@ -225,18 +218,49 @@ def cached(state:S.State,index:U32,point:S.Point,node:Maybe<&2,A.Operation>,hit:
     case Some{value}: (state,Done{value})
     case None{}: indexed(state,index,point,node,read_one,read_two,read_three)
 
-# The finite depth fuel is structural and every compiled child precedes its
-# parent. Repeated nodes share one value at this exact block coordinate.
-def run(+depth:Nat,state:S.State,+index:U32,+point:S.Point) -> S.State & Result<&2,&2,String,F32>:
-  match depth state:
-    case 0n _: (state,Fail{"density evaluation exceeds caller depth budget"})
-    case 1n+left S.State{+program,pool,S.Cache{cached_point,+values}}:
-      P.paired(A.Program,List<&2,A.Node>,S.State & Result<&2,&2,String,F32>,
-        (program,case_nodes(program)),program => nodes =>
-          cached(S.State{program,pool,S.Cache{cached_point,values}},index,point,located(nodes,index),value_lookup(values,index),
-            state => child => run(left,state,child,point),
-            state => child => run(left,state,child,point),
-            state => child => run(left,state,child,point)))
+type Work is Data:
+  NodeWork{index:U32}
+  SplineWork{tree:SP.Tree<U32>}
+
+def work_indexed(state:S.State,index:U32,point:S.Point,+found:Maybe<&2,A.Operation>,
+    read_one:S.State -> U32 -> S.State & Result<&2,&2,String,F32>,
+    read_two:S.State -> U32 -> S.State & Result<&2,&2,String,F32>,
+    read_three:S.State -> U32 -> S.State & Result<&2,&2,String,F32>,
+    read_spline:SP.Tree<U32> -> S.State -> S.State & Result<&2,&2,String,F32>) -> S.State & Result<&2,&2,String,F32>:
+  match found:
+    case Some{A.OpSpline{tree}}: remembered(index,read_spline(tree)(state))
+    case _: indexed(state,index,point,found,read_one,read_two,read_three)
+
+def work_cached(state:S.State,index:U32,point:S.Point,node:Maybe<&2,A.Operation>,hit:Maybe<&2,F32>,
+    read_one:S.State -> U32 -> S.State & Result<&2,&2,String,F32>,
+    read_two:S.State -> U32 -> S.State & Result<&2,&2,String,F32>,
+    read_three:S.State -> U32 -> S.State & Result<&2,&2,String,F32>,
+    read_spline:SP.Tree<U32> -> S.State -> S.State & Result<&2,&2,String,F32>) -> S.State & Result<&2,&2,String,F32>:
+  match hit:
+    case Some{value}: (state,Done{value})
+    case None{}: work_indexed(state,index,point,node,read_one,read_two,read_three,read_spline)
+
+# Density nodes and nested spline trees share one structural recursion. Only
+# selected spline children are visited; the same node cache and seeded pool
+# cross every branch. Coordinate evaluation remains an actual DAG read.
+def work(+depth:Nat,state:S.State,task:Work,+point:S.Point) -> S.State & Result<&2,&2,String,F32>:
+  match depth state task:
+    case 0n _ _: (state,Fail{"density evaluation exceeds caller depth budget"})
+    case 1n+ +left S.State{+program,pool,S.Cache{cached_point,+values}} NodeWork{+index}:
+      work_cached(S.State{program,pool,S.Cache{cached_point,values}},index,point,located(case_nodes(program),index),value_lookup(values,index),
+        state => child => work(left,state,NodeWork{child},point),
+        state => child => work(left,state,NodeWork{child},point),
+        state => child => work(left,state,NodeWork{child},point),
+        tree => state => work(left,state,SplineWork{tree},point))
+    case 1n+ +left _ SplineWork{tree}:
+      SE.step(S.State,tree,state,
+        state => child => work(left,state,NodeWork{child},point),
+        tree => state => work(left,state,SplineWork{tree},point),
+        tree => state => work(left,state,SplineWork{tree},point),
+        tree => state => work(left,state,SplineWork{tree},point))
+
+def run(depth:Nat,state:S.State,index:U32,point:S.Point) -> S.State & Result<&2,&2,String,F32>:
+  work(depth,state,NodeWork{index},point)
 
 def transaction(original:S.Cache,result:S.State & Result<&2,&2,String,F32>) -> S.State & Result<&2,&2,String,F32>:
   match result:

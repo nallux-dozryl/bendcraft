@@ -43,11 +43,17 @@ of −1,000,000 through 1,000,000. Noncanonical integer coercions and explicit
 gradient tiling modes are currently refused. These are stated loader/resource
 limits, not Minecraft world bounds.
 
-`divide`, `min` and `max` refuse until their compiled interval and constant
-specializations join. Every other unimplemented density function is an explicit
-unsupported node. In particular, final density still requires spline,
-interpolation/context, interval selection, slice, surface search, blending,
-structure beardification and remaining operators. Missing noise resources,
+Compiled `min` and `max` now use the actual interval-based disjoint selection,
+literal-constant and inclusive right-bound short circuits. Loaded spline trees
+and their compiled ranges also join the actual finite DAG. The explicit
+`initialize_unblended` route admits the release's no-blending scalar defaults:
+alpha samples one, offset samples zero, and blend-density samples its input.
+The ordinary initializer still refuses a required blending context. `divide`
+remains an explicit unsupported operator. Every other unimplemented density
+function is an explicit unsupported node. The shipped final-density closure
+still requires interpolation, interval selection and structure beardification;
+normal population additionally requires material, aquifer, surface and feature
+stages. Missing noise resources,
 cycles and exhausted budgets are errors; none become an air cell or zero
 density.
 
@@ -57,12 +63,16 @@ permit manually assembled values; the evaluator does not certify a forged
 Program as a valid compiled DAG. An absent node or exhausted evaluation depth
 returns an explicit error and preserves the original cache.
 
-The actual runtime join will compile the eight retained router expressions
-from `worldgen_noise_settings.Router`, share their seeded sampler owners, feed
-the six real climate outputs into `worldgen_climate.resolve_values`, and pass
-final density through aquifer/material/surface/structure/feature producers
-before complete chunk sections can be published. The generated Overworld
-biome-preset loader remains a separate dependency of the climate resolver.
+The actual `worldgen_density_router` consumer compiles the retained router
+expressions from `worldgen_noise_settings.Router` into one Program and shares
+their seeded sampler owners and cache. Its six climate outputs feed the actual
+loaded nearest-point search through `worldgen_biome_resolver`; its selected
+final root feeds the existing density-column consumer. The shipped final root
+still refuses its unsupported functions. Final density must pass through
+aquifer/material/surface/structure/feature producers before complete chunk
+sections can be published. See [router and biome contracts](WORLDGEN_DENSITY_ROUTER.md),
+[spline contracts](WORLDGEN_DENSITY_SPLINE.md), and
+[compiled interval and numerical boundaries](WORLDGEN_DENSITY_INTERVALS.md).
 Chunk publication must preserve already resident sections/edits and saved
 generation identity through the existing demand facade. No normal-population
 switch is justified before these joins are implemented and verified.
@@ -110,7 +120,7 @@ expected its spline diagnostic; `blend_alpha` is encountered first. The final
 fixture selects the actual loaded inner spline node directly. The failed
 attempt remains retained, and no Java numeric observation changed.
 
-The 34 laws in `worldgen_density_laws.bend`, proved by
+At the previous density checkpoint, the 34 laws in `worldgen_density_laws.bend`, proved by
 `worldgen_density_proof.bend`, independently establish arbitrary evaluator and
 column complete Program/ordered-pool retention, scalar and whole-column cache
 rollback, cache-hit and invalid-request behavior, registry refusal and actual
@@ -119,4 +129,13 @@ roots with zero exclusions in 14.28 seconds for source checking/export and
 2.25 seconds in the independent kernel. Six separate NormalNoise producer
 contracts are recorded in `evidence/worldgen-density-noise-owner-proof.json`.
 Neither these structural contracts nor finite raw-word observations establish
-all density operators or complete normal-world generation.
+all density operators or complete normal-world generation. On the extended
+spline runtime, the exact full 34-root export passes ordinary checking, but
+the independent kernel rejects the actual spline JSON-size helper's wrapper
+tail descent. This is recorded in
+`evidence/worldgen-density-proof-size-descent-limitation.json`; it is an open
+compiler/admission obligation. The current exact 19-root evaluator/column
+ownership scope independently passes the kernel, with all declaration maps and
+checked types/bodies retained unchanged, in
+`evidence/worldgen-density-runtime-proof.json`. No unchanged checkpoint proof
+or finite numerical receipt is relabeled as a full current-generation verdict.

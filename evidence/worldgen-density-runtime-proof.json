@@ -1,0 +1,645 @@
+{
+  "all_original_declaration_maps_retained": true,
+  "checked_term_export": {
+    "bytes": 3272601,
+    "file": "selected.bendtt",
+    "path": "build/superflat-world/reference/worldgen-density-runtime-proof-1791140521528696000/selected.bendtt",
+    "sha1": "30811c55a8534218a51b079a23b086100416fe62",
+    "sha256": "1d770a24bb40239cb71a8a453b9a11f4c3d9f623167c91fe9583f94bd2991f34"
+  },
+  "checked_types_and_bodies_unchanged": true,
+  "compiler_api": {
+    "bytes": 137761,
+    "file": "bend.ts",
+    "sha1": "2105cb635e087b686b1bc5c4b6b139660eeb3db9",
+    "sha256": "7deae3693eb896f33c73867081b99d2c6f3ed3b57e77e55eb5f6260840dd0e63"
+  },
+  "exclusions": [],
+  "executed_script": {
+    "bytes": 4222,
+    "file": "executed-inline-source.mjs",
+    "sha1": "d402d1793aea58174eaf5fdc1627a8b420005a59",
+    "sha256": "a3cfd3cdc7ba75999d4f01ec4caf5b439329ba7d900ee4dc4c7b000cab3309e7"
+  },
+  "helper": {
+    "bytes": 8866,
+    "file": "test_worldgen_density_proof.py",
+    "sha1": "f8323ecfa8cd559acd400c31018d82e064ea8bbf",
+    "sha256": "1be055f86611ad67a21e92b698c38253a6efd96d5b23fc511a89eb8336d6ce7a"
+  },
+  "independent_kernel": {
+    "bytes": 3271216,
+    "file": "bendtt",
+    "sha1": "f19dfe8aec3b3911b6c9f0acae2a54f5b05ca5f0",
+    "sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7"
+  },
+  "kernel": {
+    "argv": [
+      "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/worldgen-density-runtime-proof-1791140521528696000/selected.bendtt"
+    ],
+    "cap_seconds": 60,
+    "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+    "exit_code": 0,
+    "group_absent": true,
+    "leader_reaped": true,
+    "pgid": 18063,
+    "pid": 18063,
+    "retry": false,
+    "seconds": 0.6050192089751363,
+    "status": "passed",
+    "stderr": {
+      "bytes": 0,
+      "file": "stderr",
+      "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 17,
+      "file": "stdout",
+      "sha1": "ba8ec8289ea6f6e6fec687b636c07f05c26d0a8b",
+      "sha256": "61b73cda11b6b665b9f99f2defd3d3b57f985c865225e942a5bdaa594a503e47"
+    },
+    "timed_out": false
+  },
+  "kernel_admitted_laws": [
+    "worldgen_density_laws:zero_depth_run_retains_complete_state",
+    "worldgen_density_laws:zero_depth_evaluation_retains_complete_original_state",
+    "worldgen_density_laws:refused_evaluation_restores_complete_original_cache",
+    "worldgen_density_laws:every_producer_read_retains_complete_noise_owner",
+    "worldgen_density_laws:every_pool_lookup_retains_complete_ordered_pool",
+    "worldgen_density_laws:actual_density_noise_read_retains_complete_state",
+    "worldgen_density_laws:cache_hit_retains_complete_state_without_child_reads",
+    "worldgen_density_laws:missing_node_retains_complete_state_and_diagnostic",
+    "worldgen_density_laws:refused_node_value_does_not_modify_cache_or_pool",
+    "worldgen_density_laws:stored_node_value_preserves_complete_owner_and_prior_values",
+    "worldgen_density_laws:changed_sample_point_discards_previous_node_values",
+    "worldgen_density_laws:missing_normal_noise_definition_cannot_create_fallback_producer",
+    "worldgen_density_laws:every_bounded_run_retains_complete_program_and_ordered_pool",
+    "worldgen_density_laws:every_evaluation_retains_complete_program_and_ordered_pool",
+    "worldgen_density_laws:every_density_column_loop_retains_complete_program_and_ordered_pool",
+    "worldgen_density_laws:every_density_column_request_retains_complete_program_and_ordered_pool",
+    "worldgen_density_laws:refused_density_column_restores_complete_original_cache",
+    "worldgen_density_laws:invalid_density_column_request_retains_complete_original_state",
+    "worldgen_density_laws:zero_count_column_retains_state_and_original_value_order"
+  ],
+  "kernel_verdict": "ALL PROOFS CHECK",
+  "ordinary_checked_laws": [
+    "worldgen_density_laws:zero_depth_run_retains_complete_state",
+    "worldgen_density_laws:zero_depth_evaluation_retains_complete_original_state",
+    "worldgen_density_laws:refused_evaluation_restores_complete_original_cache",
+    "worldgen_density_laws:every_producer_read_retains_complete_noise_owner",
+    "worldgen_density_laws:every_pool_lookup_retains_complete_ordered_pool",
+    "worldgen_density_laws:actual_density_noise_read_retains_complete_state",
+    "worldgen_density_laws:cache_hit_retains_complete_state_without_child_reads",
+    "worldgen_density_laws:missing_node_retains_complete_state_and_diagnostic",
+    "worldgen_density_laws:refused_node_value_does_not_modify_cache_or_pool",
+    "worldgen_density_laws:stored_node_value_preserves_complete_owner_and_prior_values",
+    "worldgen_density_laws:changed_sample_point_discards_previous_node_values",
+    "worldgen_density_laws:compiled_program_retains_complete_loaded_inputs_and_node_order",
+    "worldgen_density_laws:invalid_loaded_registry_refuses_before_density_lowering",
+    "worldgen_density_laws:exhausted_reference_depth_refuses_unread_expression",
+    "worldgen_density_laws:memo_hit_retains_complete_build_without_loading_registry",
+    "worldgen_density_laws:cycle_refusal_precedes_loaded_reference_lowering",
+    "worldgen_density_laws:absent_loaded_reference_has_precise_diagnostic",
+    "worldgen_density_laws:missing_normal_noise_definition_cannot_create_fallback_producer",
+    "worldgen_density_laws:every_bounded_run_retains_complete_program_and_ordered_pool",
+    "worldgen_density_laws:every_evaluation_retains_complete_program_and_ordered_pool",
+    "worldgen_density_laws:loaded_compile_failure_is_not_replaced_by_a_program",
+    "worldgen_density_laws:loaded_initialization_failure_is_not_replaced_by_a_state",
+    "worldgen_density_laws:loaded_compilation_uses_the_actual_registry_compiler",
+    "worldgen_density_laws:loaded_initialization_uses_the_actual_seeded_pool_factory",
+    "worldgen_density_laws:loaded_json_binding_conversion_preserves_actual_lookup",
+    "worldgen_density_laws:actual_reference_memo_hit_retains_build_and_avoids_missing_registry",
+    "worldgen_density_laws:named_reference_retains_lowered_nodes_and_exact_memo_identity",
+    "worldgen_density_laws:compiled_failure_retains_precise_diagnostic",
+    "worldgen_density_laws:initialized_pool_retains_complete_program_and_original_factory_order",
+    "worldgen_density_laws:every_density_column_loop_retains_complete_program_and_ordered_pool",
+    "worldgen_density_laws:every_density_column_request_retains_complete_program_and_ordered_pool",
+    "worldgen_density_laws:refused_density_column_restores_complete_original_cache",
+    "worldgen_density_laws:invalid_density_column_request_retains_complete_original_state",
+    "worldgen_density_laws:zero_count_column_retains_state_and_original_value_order"
+  ],
+  "ordinary_source_api": {
+    "argv": [
+      "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+      "--stack-size=4096",
+      "--max-old-space-size=4096",
+      "--experimental-transform-types",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/worldgen-density-runtime-proof-1791140521528696000/executed-inline-source.mjs"
+    ],
+    "cap_seconds": 60,
+    "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+    "exit_code": 0,
+    "group_absent": true,
+    "leader_reaped": true,
+    "pgid": 17574,
+    "pid": 17574,
+    "retry": false,
+    "seconds": 25.035965499468148,
+    "status": "passed",
+    "stderr": {
+      "bytes": 177,
+      "file": "stderr",
+      "sha1": "7f7e6dfe92ec018d151b865241a7b4aa7ab185f3",
+      "sha256": "eba33254eed6845f6e82a0e6a9addb3ee96206e10eeb07fced3d000468225d53"
+    },
+    "stdout": {
+      "bytes": 53,
+      "file": "stdout",
+      "sha1": "d220332d60add977ad00f6d47bc979645e4138c0",
+      "sha256": "91af2f55b68c54b688f653feed90b28a8bd624743b22bc99a5d1b48660e8c1aa"
+    },
+    "timed_out": false
+  },
+  "pin": "26.3",
+  "safe_exporter": {
+    "bytes": 63418,
+    "file": "safe.ts",
+    "sha1": "0b72424978b2acf7eb30f53d9b01b96f267dbcac",
+    "sha256": "54cb3a534ab7cc9ee313bf6383b3948ccdcac022469b3020e00745bbfe6f7e04"
+  },
+  "schema": 1,
+  "scope": "Actual production runtime contracts only: all evaluator operation branches, structural caller-depth induction across density nodes and nested splines, complete program and ordered producer/pool retention, cache behavior, precise refusals, rollback, and actual Column consumption. All 34 density laws pass ordinary source checking; the 15 compiler obligations are explicitly outside this 19-root independent-kernel selection because their production size traversal reconstructs wrappers that the kernel cannot recognize as a descent. No checked type, proof body, declaration map, or runtime implementation is replaced.",
+  "selection": "build/superflat-world/reference/worldgen-density-runtime-proof-1791140521528696000/selection.json",
+  "selection_mode": "runtime-owned",
+  "skipped_compiler_obligations": [
+    "worldgen_density_laws:compiled_program_retains_complete_loaded_inputs_and_node_order",
+    "worldgen_density_laws:invalid_loaded_registry_refuses_before_density_lowering",
+    "worldgen_density_laws:exhausted_reference_depth_refuses_unread_expression",
+    "worldgen_density_laws:memo_hit_retains_complete_build_without_loading_registry",
+    "worldgen_density_laws:cycle_refusal_precedes_loaded_reference_lowering",
+    "worldgen_density_laws:absent_loaded_reference_has_precise_diagnostic",
+    "worldgen_density_laws:loaded_compile_failure_is_not_replaced_by_a_program",
+    "worldgen_density_laws:loaded_initialization_failure_is_not_replaced_by_a_state",
+    "worldgen_density_laws:loaded_compilation_uses_the_actual_registry_compiler",
+    "worldgen_density_laws:loaded_initialization_uses_the_actual_seeded_pool_factory",
+    "worldgen_density_laws:loaded_json_binding_conversion_preserves_actual_lookup",
+    "worldgen_density_laws:actual_reference_memo_hit_retains_build_and_avoids_missing_registry",
+    "worldgen_density_laws:named_reference_retains_lowered_nodes_and_exact_memo_identity",
+    "worldgen_density_laws:compiled_failure_retains_precise_diagnostic",
+    "worldgen_density_laws:initialized_pool_retains_complete_program_and_original_factory_order"
+  ],
+  "source_pins": [
+    {
+      "bytes": 80357,
+      "file": "worldgen_density_proof.bend",
+      "path": "src/worldgen_density_proof.bend",
+      "sha1": "239dc4eaa82040c620db1b144020bbbb624ced55",
+      "sha256": "ed3764c03f592813ea8b2d767375b50b7287a4dda2e90496ffffa65abfe023b8"
+    },
+    {
+      "bytes": 71530,
+      "file": "base.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/base.bend",
+      "sha1": "4eae52ac49983eaa07e29eea2524344c6897447f",
+      "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+    },
+    {
+      "bytes": 13170,
+      "file": "worldgen_density_laws.bend",
+      "path": "src/worldgen_density_laws.bend",
+      "sha1": "53c754365b6b24ff38debbe1049866ef9b77ed00",
+      "sha256": "feb8bbd6a47bc191be563225da8ac05101e4f683044c9184448c5f02dbc4c3bf"
+    },
+    {
+      "bytes": 2880,
+      "file": "worldgen_density_ast.bend",
+      "path": "src/worldgen_density_ast.bend",
+      "sha1": "5c0afca33d3f316c39b9c90df375326ee7d3d001",
+      "sha256": "f20ce8a864fcf22a694511f5bb222107064568c9ed5e69d4d4b98794dd12ad5c"
+    },
+    {
+      "bytes": 21384,
+      "file": "json.bend",
+      "path": "src/json.bend",
+      "sha1": "f573cd5692da17f83db6f2414ab59e7758e2c462",
+      "sha256": "a1789e3b4f5bea158ec0d95a8bcb39aa5b7c7e7355a5254d3de1d52a93c719d1"
+    },
+    {
+      "bytes": 573,
+      "file": "u32_decimal.bend",
+      "path": "src/u32_decimal.bend",
+      "sha1": "c4ce37abb511555629215b8795e78bd2627e1a32",
+      "sha256": "d0b4b33f10b9e9801c4e99b83803afba5031ea40013a9263f9090bed8543d25c"
+    },
+    {
+      "bytes": 33288,
+      "file": "f64.bend",
+      "path": "src/f64.bend",
+      "sha1": "0b66e156b910de4c17abbe0d7c4fcd1b18d27d9e",
+      "sha256": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7"
+    },
+    {
+      "bytes": 9676,
+      "file": "worldgen_blended_noise.bend",
+      "path": "src/worldgen_blended_noise.bend",
+      "sha1": "b76e35533c325f89a37b0248a31717fd60e840c4",
+      "sha256": "b3b01809fbec7ed31fca9ca6b54974857b808603b350bb6219117642b774211f"
+    },
+    {
+      "bytes": 18049,
+      "file": "random.bend",
+      "path": "src/random.bend",
+      "sha1": "e22c97eb3cfde4b6ac524b6d215c858f0eada596",
+      "sha256": "76302d587a74d2601994f6b0bc7c9000b04a65a0bbd06cc0ce643c5452eb3162"
+    },
+    {
+      "bytes": 12999,
+      "file": "worldgen_perlin_noise.bend",
+      "path": "src/worldgen_perlin_noise.bend",
+      "sha1": "2ae00bd90be9dd035ced54186bac30e739e33eaa",
+      "sha256": "055b6455e494e6ce8b5a91eb996cc584d00e7409651bc1f5ce13569488252627"
+    },
+    {
+      "bytes": 5444,
+      "file": "worldgen_overworld.bend",
+      "path": "src/worldgen_overworld.bend",
+      "sha1": "8dcdc34a0a8a78044ded66d53382e93d5621fe12",
+      "sha256": "405ec8fa04270e04b8d733a7d487a3c90802edb329d9b074e17d46d9894f6dbd"
+    },
+    {
+      "bytes": 5947,
+      "file": "world_generation_settings.bend",
+      "path": "src/world_generation_settings.bend",
+      "sha1": "81b2ff8fc40955ebd68f4c53a2e22a0ba96c0983",
+      "sha256": "cb5cc9ee81c266dd2d5543ecf83c6f99c08542739cad6e59d8e5d9166d6560c7"
+    },
+    {
+      "bytes": 26178,
+      "file": "nbt.bend",
+      "path": "src/nbt.bend",
+      "sha1": "806fcdbb3f3ff1434f1a61d96a9247287b501f97",
+      "sha256": "b677546b5fc02aaa38f5c09e5b798c0d35aec32b1c4b37cbd7042b9a1a5275e4"
+    },
+    {
+      "bytes": 13300,
+      "file": "core.bend",
+      "path": "src/core.bend",
+      "sha1": "8fafa0dcde82a32f90d1eff6a0af1552b1a8db14",
+      "sha256": "9636bb1dfdde3fe36e650ab8e8d4b62dad2a49b419a27454794e5923cb570b05"
+    },
+    {
+      "bytes": 3365,
+      "file": "schedule.bend",
+      "path": "src/schedule.bend",
+      "sha1": "22f1376c0b691adcaf1bb6772de557ee229815fb",
+      "sha256": "93aa79895fe340e27ae5fd562102d5980f0938003eb1bbde669a84010779b8c9"
+    },
+    {
+      "bytes": 6520,
+      "file": "section.bend",
+      "path": "src/section.bend",
+      "sha1": "5f89a8db71579c6dfaefa817256287d0743c673b",
+      "sha256": "02b5c15c57b173c7eb8b4c55a1433c10c192926e91af5e3e69050b4404044aa5"
+    },
+    {
+      "bytes": 3987,
+      "file": "section_map.bend",
+      "path": "src/section_map.bend",
+      "sha1": "069cbd1e6009198d3915cd1aca5e97c33c97a011",
+      "sha256": "ded59d7938c02fd0876d65e37f9f90ea0cfebf3ca4bd107394342f8adbf33965"
+    },
+    {
+      "bytes": 3379,
+      "file": "section_map_read.bend",
+      "path": "src/section_map_read.bend",
+      "sha1": "2825e28f9ca57a3ed0f3c547abc5ad7ce1330ec3",
+      "sha256": "7a6a0d6fe8b8736ab64adb34b896074da709f91f2ae5bd205a7301c868690fc1"
+    },
+    {
+      "bytes": 7101,
+      "file": "section_map_update.bend",
+      "path": "src/section_map_update.bend",
+      "sha1": "18ac6be78a3028b824136ade233209e36d966b21",
+      "sha256": "93a1cb016ac86eaaea2773ab8b75b95e93f1976348b3c2c500fc0de0cc9831be"
+    },
+    {
+      "bytes": 3162,
+      "file": "worldgen_noise_settings.bend",
+      "path": "src/worldgen_noise_settings.bend",
+      "sha1": "40108da4879ff3e321d1bc6c23e8963da745741b",
+      "sha256": "0528b4f2f1fc1ec62e624bfe1250157d6f1ade455f595c2a910bbc01f62db95e"
+    },
+    {
+      "bytes": 3668,
+      "file": "worldgen_seed.bend",
+      "path": "src/worldgen_seed.bend",
+      "sha1": "ed3ddc07e8c09613fc8f0dfd405a6204c0f870d4",
+      "sha256": "ef969c2dcba507fb7b786e6e1b6957fe610145c0eb1a1eeea7ab6be942f0f110"
+    },
+    {
+      "bytes": 7792,
+      "file": "worldgen_md5.bend",
+      "path": "src/worldgen_md5.bend",
+      "sha1": "8c2d4e08d9fdd5ac0f690594499142ddfb55b17c",
+      "sha256": "302a57f3e40def50a2693d504aead2c7158c511a0255832444e43487a6232f78"
+    },
+    {
+      "bytes": 3684,
+      "file": "worldgen_biome.bend",
+      "path": "src/worldgen_biome.bend",
+      "sha1": "288645a72c1081b6cfd4d97927fde1e6384c90be",
+      "sha256": "594d88a954759b7479b3f51beaf3dea33ebc3d6c2c158116aa306d8fd431976a"
+    },
+    {
+      "bytes": 3968,
+      "file": "worldgen_density_spline.bend",
+      "path": "src/worldgen_density_spline.bend",
+      "sha1": "091529669d4000bc1314c45c4ad8d4af1a585155",
+      "sha256": "1459b6ea28a3d5befd926861978884c857ac61bbcf249a90cbd32b28d7556039"
+    },
+    {
+      "bytes": 21010,
+      "file": "worldgen_density_compile.bend",
+      "path": "src/worldgen_density_compile.bend",
+      "sha1": "4c3048df46cf75b6e0d0be3263cd2b2f9169d3e2",
+      "sha256": "593f907f7c5291ae585b8494891f2027abaacf75278201df246c2d3ea464332a"
+    },
+    {
+      "bytes": 11498,
+      "file": "worldgen_density_codec.bend",
+      "path": "src/worldgen_density_codec.bend",
+      "sha1": "fb22e307861a9e5baff3b0ff64c172e6c2ab07dd",
+      "sha256": "a194fabc717e57e3cdf12092d4cf8d15ca341a68793ec5fdeaab3f23def7b3be"
+    },
+    {
+      "bytes": 9212,
+      "file": "worldgen_density_number.bend",
+      "path": "src/worldgen_density_number.bend",
+      "sha1": "62ba2db43a2e14aebcb1332edddf7bbbdfa1fb55",
+      "sha256": "06cc4b4e2fb64f5b767c8659fa7dd3d88fc6ff3997e5c52f2e45c2683fd3b7dc"
+    },
+    {
+      "bytes": 4835,
+      "file": "worldgen_noise_settings_codec.bend",
+      "path": "src/worldgen_noise_settings_codec.bend",
+      "sha1": "103eb5fb0fc4a08947316d7cae222713dcba8ef4",
+      "sha256": "018571e6e3c3f989a922f1b2dcfc55b6c8a97bd9da75511f65eb3ffa7e2dacba"
+    },
+    {
+      "bytes": 15342,
+      "file": "worldgen_density_noise.bend",
+      "path": "src/worldgen_density_noise.bend",
+      "sha1": "2f5ab508a81d7e6773afc6cc4067ad01f89ed14e",
+      "sha256": "8ba6da6ba379322dd853721e99cb6cc5ef6eb49d02fd471fa5739acdc0c53f1f"
+    },
+    {
+      "bytes": 6221,
+      "file": "worldgen_density_spline_codec.bend",
+      "path": "src/worldgen_density_spline_codec.bend",
+      "sha1": "130f8e54b51508e63286a37fc487289b5eece38c",
+      "sha256": "8c1b9cf2aa7ff731dac584219548e7a25772c38cce291d83674558189c7a193c"
+    },
+    {
+      "bytes": 6908,
+      "file": "worldgen_density_ranges.bend",
+      "path": "src/worldgen_density_ranges.bend",
+      "sha1": "4bb91ee162a11a83c88a79b1fd1fa205352016ae",
+      "sha256": "d80b584c187a8a2d74bf82b0eda59bdd0ee0534a0c3c7d7ead1628a3bebebd66"
+    },
+    {
+      "bytes": 10627,
+      "file": "worldgen_density_interval.bend",
+      "path": "src/worldgen_density_interval.bend",
+      "sha1": "a63f454c5e4a77d2dc627b12d1b216196ac34166",
+      "sha256": "eec459dd3768f1e727846582f51c568c7d9e2d3a346a915f0c312080c5bbc81a"
+    },
+    {
+      "bytes": 912,
+      "file": "worldgen_density_math.bend",
+      "path": "src/worldgen_density_math.bend",
+      "sha1": "b5b20ee4023bcb4eeb7669d0f7ce4ff1314adb81",
+      "sha256": "24cfdabe5c8cd2a1b5d5a73e358497d420c04cd60c5f438f0c877a47e28de660"
+    },
+    {
+      "bytes": 7309,
+      "file": "worldgen_density_spline_range.bend",
+      "path": "src/worldgen_density_spline_range.bend",
+      "sha1": "92b87565b5bcd67c6d1312fbf788f05a895d7a27",
+      "sha256": "35e2251a0906aa32bc62c55f06641d30be2569af19e31093eea39ba281d612e7"
+    },
+    {
+      "bytes": 3910,
+      "file": "worldgen_density_minmax.bend",
+      "path": "src/worldgen_density_minmax.bend",
+      "sha1": "514d406f53eb0bb5f016d9c71ac23a81bc0950e5",
+      "sha256": "9dfdc7f0c7290260d64306fc83d57db9d35c1f5be75bf28e35138bbbb786abef"
+    },
+    {
+      "bytes": 2787,
+      "file": "worldgen_density_spline_compile.bend",
+      "path": "src/worldgen_density_spline_compile.bend",
+      "sha1": "ad73685ba4473f1f16bffa1c30b82c00af9a4611",
+      "sha256": "f9460426e4d9700c1a1a724ab2043062c25efd15b9b9cc9dcf4d0a1a3eb366e1"
+    },
+    {
+      "bytes": 7195,
+      "file": "worldgen_density_state.bend",
+      "path": "src/worldgen_density_state.bend",
+      "sha1": "08e2efb7605c251581aba031de052bda4550cddf",
+      "sha256": "45ad8381c12e9772c02d85617a0f7bb9925f3e5f7689487cbf0192d67a2fd247"
+    },
+    {
+      "bytes": 14793,
+      "file": "worldgen_density.bend",
+      "path": "src/worldgen_density.bend",
+      "sha1": "53126a64c190b9bf6e844ef366ee3571aa93e5ca",
+      "sha256": "4037dcdd268871798ede9028b3d06b74962b9f347e5a0ff4d3557e7a4d51a455"
+    },
+    {
+      "bytes": 3943,
+      "file": "worldgen_density_spline_eval.bend",
+      "path": "src/worldgen_density_spline_eval.bend",
+      "sha1": "2186386cd8357064cbacacf352c5ad30417ef125",
+      "sha256": "8a0d005fc3ce3bc5440f883ca4e8dc21eb59bff429d06e401369640036c4e442"
+    },
+    {
+      "bytes": 987,
+      "file": "worldgen_density_coordinates.bend",
+      "path": "src/worldgen_density_coordinates.bend",
+      "sha1": "98ea766fcaddfb29ab5d0d3c5e2286831a02f7e7",
+      "sha256": "c19820fc54d4f55e3601debfc66549479c0bb8be0409d0de74664b338e190a38"
+    },
+    {
+      "bytes": 2772,
+      "file": "worldgen_density_loader.bend",
+      "path": "src/worldgen_density_loader.bend",
+      "sha1": "7a0a6d2b2c4686634de093b82c95fce4f06d28ea",
+      "sha256": "1c7857c7c0917249865a828db7b7dcb6938164571647cb54f81ed27333074315"
+    },
+    {
+      "bytes": 2365,
+      "file": "worldgen_density_column.bend",
+      "path": "src/worldgen_density_column.bend",
+      "sha1": "4ba9c628c57b5a81f1760d5ad46b0e0db3dac821",
+      "sha256": "19678795aa7650837991fc54dea4a0345e6da1266ad35156cfb8d61870797515"
+    },
+    {
+      "bytes": 8593,
+      "file": "worldgen_density_noise_proof.bend",
+      "path": "src/worldgen_density_noise_proof.bend",
+      "sha1": "4d38dbfb7f88ea19022ae50be04752b6206bbb47",
+      "sha256": "bf57bb8d5a7beba83fe1570c840dee9649e2128f85aca1635ff04e42f87af7b2"
+    },
+    {
+      "bytes": 2596,
+      "file": "worldgen_density_noise_laws.bend",
+      "path": "src/worldgen_density_noise_laws.bend",
+      "sha1": "0113c11f91eb867b2ee174d563b2cfd5372b35ad",
+      "sha256": "45284052df5159ab0c0b620e52853ae0d6a45ac71c6d3b09e566cda28bc6dc48"
+    },
+    {
+      "bytes": 2693,
+      "file": "worldgen_noise_laws.bend",
+      "path": "src/worldgen_noise_laws.bend",
+      "sha1": "f57c87b68906e88ffd4acc804df93449196819e5",
+      "sha256": "73e11f7066d539a0c0ee2538683865261ebc13a85884c3c85dff4a6653c276f8"
+    },
+    {
+      "bytes": 158086,
+      "file": "worldgen_noise_proof.bend",
+      "path": "src/worldgen_noise_proof.bend",
+      "sha1": "6c5866b8053d26a4bc59f94670c3e878cfc43710",
+      "sha256": "f8d549285e96e94c28844173c372070dae880d0cfc4dfc84f883f856e91cd26d"
+    },
+    {
+      "bytes": 18804,
+      "file": "superflat_section_shape_proof.bend",
+      "path": "src/superflat_section_shape_proof.bend",
+      "sha1": "45cb865c891f9e4d7eeb7f95a3beab21d6ed70d1",
+      "sha256": "896d4b44db5c5296c897dd190fbbfcc9c945ae3cc6de8ad883e5b92ffda4ce53"
+    },
+    {
+      "bytes": 2536,
+      "file": "superflat_section_shape_laws.bend",
+      "path": "src/superflat_section_shape_laws.bend",
+      "sha1": "f19fd1074a8c2a89b442119f67b3f15c43446010",
+      "sha256": "d031a3f718a7ea4da725b7730b02578b0c050fd9ab35915375e6c54a8703b721"
+    },
+    {
+      "bytes": 13744,
+      "file": "superflat_population.bend",
+      "path": "src/superflat_population.bend",
+      "sha1": "6eca4faa90cced10bcdeddd393dfba9690e18f4b",
+      "sha256": "6a34c8478dab0bd06688ef0b9869ee07d65fb3f8b671bf5f8d4c66894ee639d2"
+    }
+  ],
+  "status": "kernel_certified",
+  "term_pins": [
+    {
+      "checked_proof_sha256": "94d4cdc36565a49370a22593098193883107a6b7c72d67e3eada01bbff54f254",
+      "name": "worldgen_density_laws:zero_depth_run_retains_complete_state",
+      "source_body_sha256": "26c68324603caafe0bc3b339fd6ecde59546a130bbd1e22ba588d52b344d3d8a",
+      "type_sha256": "329eb53dbff817bd6bcde35057728b0c4e7e16f37a0e857fb0344a78bfadbcb2"
+    },
+    {
+      "checked_proof_sha256": "bbc12dd73d93295ec047ce00bc116a3d9885c4a5eaf62ab7e829836ad0d64141",
+      "name": "worldgen_density_laws:zero_depth_evaluation_retains_complete_original_state",
+      "source_body_sha256": "26c68324603caafe0bc3b339fd6ecde59546a130bbd1e22ba588d52b344d3d8a",
+      "type_sha256": "9c2a7d185383956fe680df491b14a992ffe1049618f55ce5ced6be7941cdd1bc"
+    },
+    {
+      "checked_proof_sha256": "a4cb45bd1ed9967809a2bb491c5208c04155890adaa92d680adce6bc61e02025",
+      "name": "worldgen_density_laws:refused_evaluation_restores_complete_original_cache",
+      "source_body_sha256": "22c841056cbedc598342a38f1d41c3c8a4b18fcf1ae415cad6f7ee0293e99e56",
+      "type_sha256": "069bd208358f6e9195aca6f863ab8a4e1cc85a2eba6bde8b8f4ab037fa0e6d12"
+    },
+    {
+      "checked_proof_sha256": "e6162cf45451baca915cccb01bca58ab676621bdb3b46270f496b6fec5105592",
+      "name": "worldgen_density_laws:every_producer_read_retains_complete_noise_owner",
+      "source_body_sha256": "9fd823efe1673c9e85e108e0720971d4ccbe94eba47e04b9c836db319f690324",
+      "type_sha256": "7db95baecd54c100e412c09cd7977706f807fa28207cb4a5670dd95df5b3c489"
+    },
+    {
+      "checked_proof_sha256": "3919c62a8b2d094beb1e38a7370545e847aeafadefea0c0807d6a0e7e606d004",
+      "name": "worldgen_density_laws:every_pool_lookup_retains_complete_ordered_pool",
+      "source_body_sha256": "5361d7638d4d1350e5081cd7e65a363d6dbc7fcb54036df487e422b0bba90de5",
+      "type_sha256": "4c5568cee1b190d678f3aa7ec36166776f52854f9a59171d7f6de1caefe83c69"
+    },
+    {
+      "checked_proof_sha256": "bcb852799a6619a7e680dc01c7a17956c252874a6263c89b76d60256b29d09b5",
+      "name": "worldgen_density_laws:actual_density_noise_read_retains_complete_state",
+      "source_body_sha256": "020ec65da79f7d8c590593434b6c3a3c67c0efe49aa5a5712834b807496b7fb7",
+      "type_sha256": "9c6c621342b297e0b7ff420366cdca6c64b2478a27c8e6456e8adc41ab5df215"
+    },
+    {
+      "checked_proof_sha256": "471d1b7718c6e403c6988a484a76fcd01ba87216b6d643cc773e53a60b751623",
+      "name": "worldgen_density_laws:cache_hit_retains_complete_state_without_child_reads",
+      "source_body_sha256": "d11657c8b360a1e5303dbead02a6f7f521034f9b5a6240920789fdcb5c8f45ba",
+      "type_sha256": "1d7dc4bdc0501e32e8ecdfd9f235ed4605899bdc3d55217c5218a21e2a41edaa"
+    },
+    {
+      "checked_proof_sha256": "6ab6e5871105befc2ef669c49d39caa4bb6d8a049f9de833e1e29b9f178cf969",
+      "name": "worldgen_density_laws:missing_node_retains_complete_state_and_diagnostic",
+      "source_body_sha256": "d292d16212bd9853228498eb73809e84cff4daf481dcffda4465ba698e35f22b",
+      "type_sha256": "332267cc85c20a03ce630ded96e5a0331a339890ba3a61c6eb339b8c2c1deac0"
+    },
+    {
+      "checked_proof_sha256": "03d090f3a770fcdb6884743a7e72f273a964005cb072b9bd848a1ff9de94a369",
+      "name": "worldgen_density_laws:refused_node_value_does_not_modify_cache_or_pool",
+      "source_body_sha256": "05d52301b26372761a30a7402ff3c01b6e6003690ded0b3296fecfe077025dbd",
+      "type_sha256": "6ab561c74ca8679f5fe049ef5e00a89967a843d1ea0270c570d0259ed6037f59"
+    },
+    {
+      "checked_proof_sha256": "b2cd15485fe2fe28ed19fb6a5b2ed3434c169f8cf23237d132c87c175763d317",
+      "name": "worldgen_density_laws:stored_node_value_preserves_complete_owner_and_prior_values",
+      "source_body_sha256": "fef24609af1e92196f1cac32be43e7d836f37caa5e83a930979e4640aec9a144",
+      "type_sha256": "18b4bffead063fd21159734f360fd028a4775ba27eafcc5bb0b24023be44f4dc"
+    },
+    {
+      "checked_proof_sha256": "15c2630d8bac8cc0357e6a287d79d232f74006e64256ba2a55fd569e66a9b976",
+      "name": "worldgen_density_laws:changed_sample_point_discards_previous_node_values",
+      "source_body_sha256": "de849c2f7f1bad8c6108516c66b0c5f83582be7ba06d0e065a5369625b785119",
+      "type_sha256": "827dbbf49106492f001c895fcdd530dfaa9fd030ad0e5fed5c579dc21bfa22f3"
+    },
+    {
+      "checked_proof_sha256": "5e1827d6cc15e2a1d57e4240c96ea0db14b56af0a42490c89ac49b90cc3776aa",
+      "name": "worldgen_density_laws:missing_normal_noise_definition_cannot_create_fallback_producer",
+      "source_body_sha256": "a4bc9cdddb6000d62df679dbe9115883521628ac47fe75e012055c2c3b1c2651",
+      "type_sha256": "8b3e2d9b4bc5ee8fd951e460ea6808d9e2c8d6c72dd7ce6fb282fdef662f5972"
+    },
+    {
+      "checked_proof_sha256": "6cdb966388cee0e4a14159fe4af8a2fb6a08ed899d705a5b07363021b158c5a8",
+      "name": "worldgen_density_laws:every_bounded_run_retains_complete_program_and_ordered_pool",
+      "source_body_sha256": "365a8b471d5e37c79fd635acc754a932236d82b199f98871104737bac5a02ad5",
+      "type_sha256": "7b611c84f20e0a64b266d7338038c006ef5c012c08575bae00ca2a44bf25911d"
+    },
+    {
+      "checked_proof_sha256": "9292d8bf2b78e1d67b8a2b3dbde218b96553261ab3fe750400f0fde7a3b0b087",
+      "name": "worldgen_density_laws:every_evaluation_retains_complete_program_and_ordered_pool",
+      "source_body_sha256": "d157ca1ccdbabddf5db6338f3613dad8feafffee6c32efeb31f82f1a72a06b63",
+      "type_sha256": "7ec4364c8dd08a85db9aff696d22dc12fd054d97318595780f0997dfb7cdfafc"
+    },
+    {
+      "checked_proof_sha256": "99d8f531b28b476bafb393df5d503e21e5d7f742156994e76941d6454d7ecf2b",
+      "name": "worldgen_density_laws:every_density_column_loop_retains_complete_program_and_ordered_pool",
+      "source_body_sha256": "4e4d8dc6daebae16798bd79ffc76e95e2ac5c6f2861921e4b8780e08dd736eae",
+      "type_sha256": "bee7f3ecce0192f56f1ee44a1745b3822a7464e49c859a90c19879da44f70de9"
+    },
+    {
+      "checked_proof_sha256": "7e8b328a3735c4ed86ff0db1a5b8b10c796e56c47ccab3f6adc085e68f55e28c",
+      "name": "worldgen_density_laws:every_density_column_request_retains_complete_program_and_ordered_pool",
+      "source_body_sha256": "50362e436b4cdfc08f5acde12f9b6c6a441eec0b990a424014c56e978faf76bc",
+      "type_sha256": "a7cccfaf95e08e563245e80124fd9ad6314645fefbbb108fb5687b25811b6891"
+    },
+    {
+      "checked_proof_sha256": "ac445aaf3f9f2b52f09e14a879035c0bb882f6a300d3b337bdf0ab3c66df14f8",
+      "name": "worldgen_density_laws:refused_density_column_restores_complete_original_cache",
+      "source_body_sha256": "5cad624022a7c41c2add67e23787f07d7bbebe95357280ad47e76106feed5489",
+      "type_sha256": "414f03ab75c3208a64d18eb80d05e7f083867488d97dea710889eed943825e4b"
+    },
+    {
+      "checked_proof_sha256": "8aa3be6d6729b9264ed4cc3814ad2e6b676a330ad87d78d5e53e1046fdc949fd",
+      "name": "worldgen_density_laws:invalid_density_column_request_retains_complete_original_state",
+      "source_body_sha256": "a1332b4a03e4850d4840321277eea28f2f9237feb621d2295649828ae6e832e6",
+      "type_sha256": "be155e977940fcabaec990f876e7b7e76ba7bea9b0d1bb61ed66700fbcd83377"
+    },
+    {
+      "checked_proof_sha256": "9a610da71a3971b3e8d1c6af7dff439c7eedfdb73256d66060f276477ec1909c",
+      "name": "worldgen_density_laws:zero_count_column_retains_state_and_original_value_order",
+      "source_body_sha256": "c010c9113781ee718ae004df397202f567c0b4a9328dcdef00dcf05069cf687c",
+      "type_sha256": "20ef4c9a0e662abd85389e89402797a41d857082679f63b8cabce516eb338520"
+    }
+  ]
+}

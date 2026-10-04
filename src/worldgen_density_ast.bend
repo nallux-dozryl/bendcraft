@@ -3,6 +3,7 @@ import ./json.bend as J
 import ./f64.bend as F
 import ./worldgen_blended_noise.bend as BL
 import ./worldgen_overworld.bend as O
+import ./worldgen_density_spline.bend as Spline
 
 type Axis is Data:
   X{}
@@ -31,6 +32,13 @@ type NoiseMode is Data:
   ShiftedXZ{}
   ShiftedXYZ{}
 
+type MinMaxMode is Data:
+  ReadLeft{}
+  ReadRight{}
+  ConstantLeft{value:F32}
+  ConstantRight{value:F32}
+  BoundedRight{bound:F32}
+
 # Loaded forms retain the original child JSON until registry resolution. A
 # function outside the admitted interpreter is represented explicitly.
 type Form is Data:
@@ -43,10 +51,14 @@ type Form is Data:
   Lerp{alpha:J.Value,first:J.Value,second:J.Value}
   RangeChoice{input:J.Value,minimum:F32,maximum:F32,inside:J.Value,outside:J.Value}
   Cache{input:J.Value}
+  Spline{tree:Spline.Tree<J.Value>}
   BaseNoise{config:BL.Config}
   Noise{key:String,xz_scale:F.F64,y_scale:F.F64,shift_x:J.Value,shift_y:J.Value,shift_z:J.Value}
   ShiftA{key:String}
   ShiftB{key:String}
+  BlendAlpha{}
+  BlendOffset{}
+  BlendDensity{input:J.Value}
   Unsupported{kind:String,original:J.Value}
 
 type Binding is Data:
@@ -67,10 +79,15 @@ type Operation is Data:
   OpLerp{alpha:U32,first:U32,second:U32}
   OpRangeChoice{input:U32,minimum:F32,maximum:F32,inside:U32,outside:U32}
   OpCache{input:U32}
+  OpSpline{tree:Spline.Tree<U32>}
   OpBaseNoise{config:BL.Config}
   OpNoise{key:String,xz_scale:F.F64,y_scale:F.F64,shift_x:U32,shift_y:U32,shift_z:U32,mode:NoiseMode}
   OpShiftA{key:String}
   OpShiftB{key:String}
+  OpMinMax{operation:Binary,left:U32,right:U32,mode:MinMaxMode}
+  OpBlendAlpha{}
+  OpBlendOffset{}
+  OpBlendDensity{input:U32}
 
 type Node is Data:
   Node{index:U32,original:J.Value,operation:Operation}

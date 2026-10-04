@@ -42,3 +42,14 @@ def initialize_compiled(fuel:Nat,result:Result<&2,&2,String,A.Program>) -> Resul
 
 def initialize(plan:O.Plan,loaded:J.Value,expression:J.Value,limits:C.Limits,sampler_fuel:Nat) -> Result<&2,&1,String,S.State>:
   initialize_compiled(sampler_fuel,compile(plan,loaded,expression,limits))
+
+def compile_registry_unblended(plan:O.Plan,expression:J.Value,limits:C.Limits,result:Result<&2,&2,String,A.Registry>) -> Result<&2,&2,String,A.Program>:
+  match result:
+    case Fail{message}: Fail{message}
+    case Done{loaded}: C.compile_unblended(plan,loaded,expression,limits)
+
+def compile_unblended(plan:O.Plan,loaded:J.Value,expression:J.Value,limits:C.Limits) -> Result<&2,&2,String,A.Program>:
+  compile_registry_unblended(plan,expression,limits,registry(loaded))
+
+def initialize_unblended(plan:O.Plan,loaded:J.Value,expression:J.Value,limits:C.Limits,sampler_fuel:Nat) -> Result<&2,&1,String,S.State>:
+  initialize_compiled(sampler_fuel,compile_unblended(plan,loaded,expression,limits))

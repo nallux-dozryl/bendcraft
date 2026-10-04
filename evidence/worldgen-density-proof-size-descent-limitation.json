@@ -1,0 +1,131 @@
+{
+  "all_original_declaration_maps_retained": true,
+  "artifact": {
+    "bytes": 14490897,
+    "file": "selected.bendtt",
+    "path": "build/superflat-world/reference/worldgen-density-proof-1791139694323953000/selected.bendtt",
+    "sha1": "1964ec3d54425b23eca613c28ed9e661dac24b6c",
+    "sha256": "31b6893bfa4fb32ff35a2af0b4fbd907649684fa186725b9c79a888d60cf524c"
+  },
+  "checked_types_and_bodies_unchanged": true,
+  "executed_script": {
+    "bytes": 5431,
+    "file": "executed-inline-source.mjs",
+    "path": "build/superflat-world/reference/worldgen-density-proof-1791139694323953000/executed-inline-source.mjs",
+    "sha1": "e173e8a4fef45248d475860f417d55b3805444e4",
+    "sha256": "3f97bbdc5e3faa7ae7d949afa2842ca73d515e6dbbac0174415036d3d6a263e1"
+  },
+  "first_rejected_definition": "worldgen_density_spline_range.size",
+  "kernel": {
+    "argv": [
+      "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/worldgen-density-proof-1791139694323953000/selected.bendtt"
+    ],
+    "cap_seconds": 60,
+    "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+    "exit_code": 1,
+    "group_absent": true,
+    "leader_reaped": true,
+    "pgid": 12061,
+    "pid": 12061,
+    "retry": false,
+    "seconds": 1.742061666212976,
+    "status": "failed",
+    "stderr": {
+      "bytes": 0,
+      "file": "stderr",
+      "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 93,
+      "file": "stdout",
+      "sha1": "6a3618d37154bd2a4ccb8640883ac559d429651f",
+      "sha256": "45dccd67de84dd6cd7b08a8d697a335fe0a5cb74125d10d88bd858716ef2e95d"
+    },
+    "timed_out": false
+  },
+  "kernel_verdict": "SOME PROOFS FAIL\nIn worldgen_density_spline_range.size:\naffine live code, calls that descend",
+  "limitation": "The exact production size traversal reconstructs Multi(coordinate, point-list tail). The ordinary checker recognizes the smaller list traversal; the independent kernel requires genuine rebuilt constructor pieces and does not recognize this reconstructed wrapper as a descent. The JSON decoder size has analogous array/object-tail reconstruction. The attempted closed-template List.foldr alternative was refused as a live call to the still-unfilled outer definition; exact original implementations were restored.",
+  "ordinary_checked_laws": [
+    "worldgen_density_laws:zero_depth_run_retains_complete_state",
+    "worldgen_density_laws:zero_depth_evaluation_retains_complete_original_state",
+    "worldgen_density_laws:refused_evaluation_restores_complete_original_cache",
+    "worldgen_density_laws:every_producer_read_retains_complete_noise_owner",
+    "worldgen_density_laws:every_pool_lookup_retains_complete_ordered_pool",
+    "worldgen_density_laws:actual_density_noise_read_retains_complete_state",
+    "worldgen_density_laws:cache_hit_retains_complete_state_without_child_reads",
+    "worldgen_density_laws:missing_node_retains_complete_state_and_diagnostic",
+    "worldgen_density_laws:refused_node_value_does_not_modify_cache_or_pool",
+    "worldgen_density_laws:stored_node_value_preserves_complete_owner_and_prior_values",
+    "worldgen_density_laws:changed_sample_point_discards_previous_node_values",
+    "worldgen_density_laws:compiled_program_retains_complete_loaded_inputs_and_node_order",
+    "worldgen_density_laws:invalid_loaded_registry_refuses_before_density_lowering",
+    "worldgen_density_laws:exhausted_reference_depth_refuses_unread_expression",
+    "worldgen_density_laws:memo_hit_retains_complete_build_without_loading_registry",
+    "worldgen_density_laws:cycle_refusal_precedes_loaded_reference_lowering",
+    "worldgen_density_laws:absent_loaded_reference_has_precise_diagnostic",
+    "worldgen_density_laws:missing_normal_noise_definition_cannot_create_fallback_producer",
+    "worldgen_density_laws:every_bounded_run_retains_complete_program_and_ordered_pool",
+    "worldgen_density_laws:every_evaluation_retains_complete_program_and_ordered_pool",
+    "worldgen_density_laws:loaded_compile_failure_is_not_replaced_by_a_program",
+    "worldgen_density_laws:loaded_initialization_failure_is_not_replaced_by_a_state",
+    "worldgen_density_laws:loaded_compilation_uses_the_actual_registry_compiler",
+    "worldgen_density_laws:loaded_initialization_uses_the_actual_seeded_pool_factory",
+    "worldgen_density_laws:loaded_json_binding_conversion_preserves_actual_lookup",
+    "worldgen_density_laws:actual_reference_memo_hit_retains_build_and_avoids_missing_registry",
+    "worldgen_density_laws:named_reference_retains_lowered_nodes_and_exact_memo_identity",
+    "worldgen_density_laws:compiled_failure_retains_precise_diagnostic",
+    "worldgen_density_laws:initialized_pool_retains_complete_program_and_original_factory_order",
+    "worldgen_density_laws:every_density_column_loop_retains_complete_program_and_ordered_pool",
+    "worldgen_density_laws:every_density_column_request_retains_complete_program_and_ordered_pool",
+    "worldgen_density_laws:refused_density_column_restores_complete_original_cache",
+    "worldgen_density_laws:invalid_density_column_request_retains_complete_original_state",
+    "worldgen_density_laws:zero_count_column_retains_state_and_original_value_order"
+  ],
+  "ordinary_source_api": {
+    "argv": [
+      "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+      "--stack-size=4096",
+      "--max-old-space-size=4096",
+      "--experimental-transform-types",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/worldgen-density-proof-1791139694323953000/executed-inline-source.mjs"
+    ],
+    "cap_seconds": 60,
+    "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+    "exit_code": 0,
+    "group_absent": true,
+    "leader_reaped": true,
+    "pgid": 11948,
+    "pid": 11948,
+    "retry": false,
+    "seconds": 24.25115133356303,
+    "status": "passed",
+    "stderr": {
+      "bytes": 177,
+      "file": "stderr",
+      "sha1": "7cdd22a2c0800a0b41a7ac40944fe2b60b9fc58b",
+      "sha256": "fe237e6566b5327f659765c487ef4ebe8565f39c78b94253cf1718e3c22f96f1"
+    },
+    "stdout": {
+      "bytes": 54,
+      "file": "stdout",
+      "sha1": "f0ba674c639b935608b0f7267f3e9f9c7104943d",
+      "sha256": "1c4fdb231222eecd5a52d31059da3968ef556b2ee82abaa75529f2a06722e810"
+    },
+    "timed_out": false
+  },
+  "pin": "26.3",
+  "resolution": "Retain exact unbounded point traversal and production semantics. Independently admit the 19 actual runtime ownership/cache/Column laws through the explicit --runtime-owned root selection. The 15 compiler obligations remain ordinary-checked only; no type, body, declaration map, proof term, or exported runtime declaration is replaced.",
+  "safe_export_exclusions": [],
+  "schema": 1,
+  "scope": "This rejected full34 attempt cannot establish full independent-kernel certification. Runtime and spline-layer certifications have separate evidence and precise root lists.",
+  "selection": {
+    "bytes": 31714,
+    "file": "selection.json",
+    "path": "build/superflat-world/reference/worldgen-density-proof-1791139694323953000/selection.json",
+    "sha1": "27f5ef2fbe1bce9747ffd54148ddc38daecfcf0a",
+    "sha256": "44abb4a55c5a46e93ef8f6c85cc8fccb3fa7a9eed99ae700db9e7e59f298c547"
+  },
+  "status": "ordinary_checked_kernel_rejected"
+}

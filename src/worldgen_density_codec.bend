@@ -8,6 +8,8 @@ import ./worldgen_blended_noise.bend as BL
 import ./world_generation_settings.bend as WG
 import ./json.bend as J
 import ./f64.bend as F
+import ./worldgen_density_spline_codec.bend as Spline
+import ./worldgen_density_spline.bend as SP
 
 def identifier_checked(text:String,valid:Bool) -> Result<&2,&2,String,String>:
   match valid:
@@ -122,6 +124,11 @@ def cache(root:J.Value) -> Result<&2,&2,String,A.Form>:
     input:J.Value <- NC.field(root,"input")
     return A.Cache{input}
 
+def blend_density(root:J.Value) -> Result<&2,&2,String,A.Form>:
+  do Result<&2,&2,String,A.Form>:
+    input:J.Value <- NC.field(root,"input")
+    return A.BlendDensity{input}
+
 def base_checked(config:BL.Config,valid:Bool) -> Result<&2,&2,String,A.Form>:
   match valid:
     case True{}: Done{A.BaseNoise{config}}
@@ -170,6 +177,11 @@ def constant(root:J.Value) -> Result<&2,&2,String,A.Form>:
     number:F32 <- float(value)
     return A.Constant{number}
 
+def spline_result(result:Result<&2,&2,String,SP.Tree<J.Value>>) -> Result<&2,&2,String,A.Form>:
+  match result:
+    case Fail{message}: Fail{message}
+    case Done{tree}: Done{A.Spline{tree}}
+
 def object(kind:String,root:J.Value) -> Result<&2,&2,String,A.Form>:
   match kind:
     case "minecraft:constant": constant(root)
@@ -191,10 +203,14 @@ def object(kind:String,root:J.Value) -> Result<&2,&2,String,A.Form>:
     case "minecraft:lerp": lerp(root)
     case "minecraft:range_choice": range_choice(root)
     case "minecraft:cache": cache(root)
+    case "minecraft:spline": spline_result(Spline.density(256n,root))
     case "minecraft:old_blended_noise": base(root)
     case "minecraft:noise": noise(root)
     case "minecraft:shift_a": shift(root,True{})
     case "minecraft:shift_b": shift(root,False{})
+    case "minecraft:blend_alpha": Done{A.BlendAlpha{}}
+    case "minecraft:blend_offset": Done{A.BlendOffset{}}
+    case "minecraft:blend_density": blend_density(root)
     case _: Done{A.Unsupported{kind,root}}
 
 def read(value:J.Value) -> Result<&2,&2,String,A.Form>:

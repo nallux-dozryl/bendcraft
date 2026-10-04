@@ -62,13 +62,26 @@ def checked_build(pointer,retained_core=None):
     if not report_path.is_absolute():report_path=ROOT/report_path
     report=json.loads(report_path.read_text());binary=Path(current['binary'])
     if fingerprint(binary)['sha256']!=report['binary_sha256']:raise RuntimeError('Native binary changed')
-    manifest_path=ROOT/'build/native-cache/entries'/report['cache_key']/'manifest.json'
-    manifest=json.loads(manifest_path.read_text())
-    if (manifest['binary_sha256']!=report['binary_sha256'] or
-        manifest['key_data']['dependencies']!=report['dependencies'] or
-        manifest['emitted_c_sha256']!=report['emitted_c_sha256']):
-        raise RuntimeError('Native artifact manifest changed')
-    emitted=ROOT/'build/native-cache/sources'/manifest['key_data']['prekey']/'generated.c'
+    private=current.get('private_build')
+    if private is not None:
+        # A reviewed private producer is a separate boundary; never present its
+        # output as an installed-compiler content-cache entry.
+        if fingerprint(report_path)!=private['report_pin']:raise RuntimeError('Private native report changed')
+        for row in report['private_build']['retained_inputs']:
+            expected={k:row[k] for k in ('file','bytes','sha1','sha256')}
+            if fingerprint(Path(row['path']))!=expected:raise RuntimeError('Private native input/receipt changed: '+row['path'])
+        manifest_path=Path(report['private_build']['manifest_path'])
+        emitted=Path(report['private_build']['emitted_c_path'])
+        if report['private_build']['product_cache_promoted'] or report['cache_key'] is not None:
+            raise RuntimeError('Private producer was mislabeled as installed-cache output')
+    else:
+        manifest_path=ROOT/'build/native-cache/entries'/report['cache_key']/'manifest.json'
+        manifest=json.loads(manifest_path.read_text())
+        if (manifest['binary_sha256']!=report['binary_sha256'] or
+            manifest['key_data']['dependencies']!=report['dependencies'] or
+            manifest['emitted_c_sha256']!=report['emitted_c_sha256']):
+            raise RuntimeError('Native artifact manifest changed')
+        emitted=ROOT/'build/native-cache/sources'/manifest['key_data']['prekey']/'generated.c'
     if fingerprint(emitted)['sha256']!=report['emitted_c_sha256']:raise RuntimeError('Emitted C changed')
     drift=[]
     for dependency in report['dependencies']:
@@ -78,6 +91,18 @@ def checked_build(pointer,retained_core=None):
                 raise RuntimeError('Native build input changed: '+dependency['lookup'])
             drift.append({'path':dependency['lookup'],'built_sha256':dependency['sha256'],
                 'current':fingerprint(Path(dependency['lookup'])),'retained_source':fingerprint(retained_core)})
+    frozen=current.get('frozen_sources')
+    if frozen is not None:
+        mapping_path=Path(frozen['mapping'])
+        if fingerprint(mapping_path)!=frozen['mapping_pin']:raise RuntimeError('Frozen source map changed')
+        mapping=json.loads(mapping_path.read_text());origin_drift=[]
+        for row in mapping:
+            snapshot=Path(row['snapshot']);expected={k:row[k] for k in ('file','bytes','sha1','sha256')}
+            if fingerprint(snapshot)!=expected:raise RuntimeError('Frozen compiler input changed: '+row['snapshot'])
+            original=Path(row['original']);actual=fingerprint(original)
+            if actual!=expected:origin_drift.append({'path':row['original'],'built_sha256':row['sha256'],'current':actual,'retained_source':row['snapshot']})
+        drift.extend(origin_drift)
+        report['frozen_source_generation']={'mapping':fingerprint(mapping_path),'mapping_path':str(mapping_path),'original_inputs_unchanged':not origin_drift,'original_input_drift':origin_drift}
     report['comparison_source_generation']={'all_sources_current':not drift,'changed_sources':drift,
         'manifest':fingerprint(manifest_path),'emitted_c':fingerprint(emitted)}
     return current,report,binary

@@ -4,6 +4,9 @@ import ./worldgen_density_ast.bend as A
 import ./worldgen_density_compile.bend as C
 import ./worldgen_density_state.bend as S
 import ./worldgen_density.bend as D
+import ./worldgen_density_spline.bend as SP
+import ./worldgen_density_spline_eval.bend as SE
+import ./worldgen_density_minmax.bend as MM
 import ./worldgen_density_noise.bend as DN
 import ./worldgen_density_noise_proof.bend as DNProof
 import ./worldgen_density_noise_laws.bend as DNLaws
@@ -689,6 +692,141 @@ def choice_first(-original:Laws.Owner,-before:S.State & Result<&2,&2,String,F32>
   match result:
     case Tuple{actual,evidence}: choice_first_pair(original,before,low,high,inside,outside,read_inside,read_outside,actual,evidence,inside_owned,outside_owned)
 
+# These witnesses compose actual MinMax callbacks and spline layer callbacks.
+# They retain the complete program and ordered pool, while permitting cache
+# changes and arbitrary returned values or diagnostics.
+def minmax_combined_owned(kind:A.Binary,first:F32,result:S.State & Result<&2,&2,String,F32>) ->
+    EvalWitness(Laws.returned_owner(result),MM.combined(S.State,kind,first,result)):
+  match result:
+    case Tuple{state,Fail{message}}: ((state,Fail{message}),({==},{==}))
+    case Tuple{state,Done{value}}: ((state,MM.combine(kind,first,value)),({==},{==}))
+
+def minmax_constant_owned(kind:A.Binary,constant:F32,result:S.State & Result<&2,&2,String,F32>) ->
+    EvalWitness(Laws.returned_owner(result),MM.constant_combined(S.State,kind,constant,result)):
+  match result:
+    case Tuple{state,Fail{message}}: ((state,Fail{message}),({==},{==}))
+    case Tuple{state,Done{value}}: ((state,MM.combine(kind,value,constant)),({==},{==}))
+
+def minmax_second_owned(+kind:A.Binary,state:S.State,+first:F32,+right:U32,skip:Bool,
+    -read:S.State -> U32 -> S.State & Result<&2,&2,String,F32>,read_owned:ReadWitness(read)) ->
+    EvalWitness(Laws.owner(state),MM.second(S.State,kind,state,first,right,skip,read)):
+  match skip:
+    case True{}: ((state,Done{first}),({==},{==}))
+    case False{}:
+      mapped(Laws.owner(state),read(state)(right),result => MM.combined(S.State,kind,first,result),
+        read_owned(state)(right),result => minmax_combined_owned(kind,first,result))
+
+def minmax_first_owned(+kind:A.Binary,+right:U32,+bound:F32,result:S.State & Result<&2,&2,String,F32>,
+    -read:S.State -> U32 -> S.State & Result<&2,&2,String,F32>,read_owned:ReadWitness(read)) ->
+    EvalWitness(Laws.returned_owner(result),MM.first(S.State,kind,right,bound,result,read)):
+  match result:
+    case Tuple{state,Fail{message}}: ((state,Fail{message}),({==},{==}))
+    case Tuple{state,Done{+value}}:
+      minmax_second_owned(kind,state,value,right,MM.skip(kind,value,bound),read,read_owned)
+
+def minmax_owned(+kind:A.Binary,+left:U32,+right:U32,mode:A.MinMaxMode,state:S.State,
+    -read_left:S.State -> U32 -> S.State & Result<&2,&2,String,F32>,
+    -read_right:S.State -> U32 -> S.State & Result<&2,&2,String,F32>,
+    left_owned:ReadWitness(read_left),right_owned:ReadWitness(read_right)) ->
+    EvalWitness(Laws.owner(state),MM.step(S.State,kind,left,right,mode,state,read_left,read_right)):
+  match mode:
+    case A.ReadLeft{}: left_owned(state)(left)
+    case A.ReadRight{}: right_owned(state)(right)
+    case A.ConstantLeft{+value}:
+      mapped(Laws.owner(state),read_right(state)(right),result => MM.constant_combined(S.State,kind,value,result),
+        right_owned(state)(right),result => minmax_constant_owned(kind,value,result))
+    case A.ConstantRight{+value}:
+      mapped(Laws.owner(state),read_left(state)(left),result => MM.constant_combined(S.State,kind,value,result),
+        left_owned(state)(left),result => minmax_constant_owned(kind,value,result))
+    case A.BoundedRight{+bound}:
+      mapped(Laws.owner(state),read_left(state)(left),result => MM.first(S.State,kind,right,bound,result,read_right),
+        left_owned(state)(left),result => minmax_first_owned(kind,right,bound,result,read_right,right_owned))
+
+def SplineReadWitness(-reader:SP.Tree<U32> -> S.State -> S.State & Result<&2,&2,String,F32>) -> Type:
+  @tree:SP.Tree<U32> -> @state:S.State -> EvalWitness(Laws.owner(state),reader(tree)(state))
+
+def spline_extended_owned(x:F32,location:F32,derivative:F32,result:S.State & Result<&2,&2,String,F32>) ->
+    EvalWitness(Laws.returned_owner(result),SE.extended(S.State,x,location,derivative,result)):
+  match result:
+    case Tuple{state,Fail{message}}: ((state,Fail{message}),({==},{==}))
+    case Tuple{state,Done{value}}: ((state,Done{SP.extend(x,location,value,derivative)}),({==},{==}))
+
+def spline_interpolated_owned(x:F32,l0:F32,l1:F32,v0:F32,d0:F32,d1:F32,result:S.State & Result<&2,&2,String,F32>) ->
+    EvalWitness(Laws.returned_owner(result),SE.interpolated(S.State,x,l0,l1,v0,d0,d1,result)):
+  match result:
+    case Tuple{state,Fail{message}}: ((state,Fail{message}),({==},{==}))
+    case Tuple{state,Done{v1}}: ((state,Done{SP.hermite(x,l0,l1,v0,v1,d0,d1)}),({==},{==}))
+
+def spline_endpoint_owned(state:S.State,+x:F32,point:Maybe<&2,SP.Point<U32>>,
+    -read:SP.Tree<U32> -> S.State -> S.State & Result<&2,&2,String,F32>,read_owned:SplineReadWitness(read)) ->
+    EvalWitness(Laws.owner(state),SE.endpoint(S.State,state,x,point,read)):
+  match point:
+    case None{}: ((state,Fail{"density spline selected point is absent"}),({==},{==}))
+    case Some{SP.Point{+location,+value,+derivative}}:
+      mapped(Laws.owner(state),read(value)(state),result => SE.extended(S.State,x,location,derivative,result),
+        read_owned(value)(state),result => spline_extended_owned(x,location,derivative,result))
+
+def spline_left_owned(+x:F32,+l0:F32,+l1:F32,+v1:SP.Tree<U32>,+d0:F32,+d1:F32,
+    result:S.State & Result<&2,&2,String,F32>,
+    -read:SP.Tree<U32> -> S.State -> S.State & Result<&2,&2,String,F32>,read_owned:SplineReadWitness(read)) ->
+    EvalWitness(Laws.returned_owner(result),SE.segment_left(S.State,x,l0,l1,v1,d0,d1,result,read)):
+  match result:
+    case Tuple{state,Fail{message}}: ((state,Fail{message}),({==},{==}))
+    case Tuple{state,Done{+v0}}:
+      mapped(Laws.owner(state),read(v1)(state),next => SE.interpolated(S.State,x,l0,l1,v0,d0,d1,next),
+        read_owned(v1)(state),next => spline_interpolated_owned(x,l0,l1,v0,d0,d1,next))
+
+def spline_segment_owned(state:S.State,+x:F32,left:Maybe<&2,SP.Point<U32>>,right:Maybe<&2,SP.Point<U32>>,
+    -read_left:SP.Tree<U32> -> S.State -> S.State & Result<&2,&2,String,F32>,
+    -read_right:SP.Tree<U32> -> S.State -> S.State & Result<&2,&2,String,F32>,
+    left_owned:SplineReadWitness(read_left),right_owned:SplineReadWitness(read_right)) ->
+    EvalWitness(Laws.owner(state),SE.segment(S.State,state,x,left,right,read_left,read_right)):
+  match left right:
+    case Some{SP.Point{+l0,+v0,+d0}} Some{SP.Point{+l1,+v1,+d1}}:
+      mapped(Laws.owner(state),read_left(v0)(state),result => SE.segment_left(S.State,x,l0,l1,v1,d0,d1,result,read_right),
+        left_owned(v0)(state),result => spline_left_owned(x,l0,l1,v1,d0,d1,result,read_right,right_owned))
+    case None{} None{}: ((state,Fail{"density spline selected point is absent"}),({==},{==}))
+    case None{} Some{point}: ((state,Fail{"density spline selected point is absent"}),({==},{==}))
+    case Some{point} None{}: ((state,Fail{"density spline selected point is absent"}),({==},{==}))
+
+def spline_selection_owned(state:S.State,+x:F32,+points:List<&2,SP.Point<U32>>,selected:Result<&2,&2,String,SP.Selection>,
+    -read_one:SP.Tree<U32> -> S.State -> S.State & Result<&2,&2,String,F32>,
+    -read_left:SP.Tree<U32> -> S.State -> S.State & Result<&2,&2,String,F32>,
+    -read_right:SP.Tree<U32> -> S.State -> S.State & Result<&2,&2,String,F32>,
+    one_owned:SplineReadWitness(read_one),left_owned:SplineReadWitness(read_left),right_owned:SplineReadWitness(read_right)) ->
+    EvalWitness(Laws.owner(state),SE.selection(S.State,state,x,points,selected,read_one,read_left,read_right)):
+  match selected:
+    case Fail{message}: ((state,Fail{message}),({==},{==}))
+    case Done{SP.Endpoint{index}}:
+      spline_endpoint_owned(state,x,SP.point_at(U32,points,index),read_one,one_owned)
+    case Done{SP.Segment{left,right}}:
+      spline_segment_owned(state,x,SP.point_at(U32,points,left),SP.point_at(U32,points,right),read_left,read_right,left_owned,right_owned)
+
+def spline_coordinate_owned(+points:List<&2,SP.Point<U32>>,result:S.State & Result<&2,&2,String,F32>,
+    -read_one:SP.Tree<U32> -> S.State -> S.State & Result<&2,&2,String,F32>,
+    -read_left:SP.Tree<U32> -> S.State -> S.State & Result<&2,&2,String,F32>,
+    -read_right:SP.Tree<U32> -> S.State -> S.State & Result<&2,&2,String,F32>,
+    one_owned:SplineReadWitness(read_one),left_owned:SplineReadWitness(read_left),right_owned:SplineReadWitness(read_right)) ->
+    EvalWitness(Laws.returned_owner(result),SE.coordinate(S.State,points,result,read_one,read_left,read_right)):
+  match result:
+    case Tuple{state,Fail{message}}: ((state,Fail{message}),({==},{==}))
+    case Tuple{state,Done{+x}}:
+      spline_selection_owned(state,x,points,SP.select(U32,points,x),read_one,read_left,read_right,one_owned,left_owned,right_owned)
+
+def spline_step_owned(tree:SP.Tree<U32>,state:S.State,
+    -read_coordinate:S.State -> U32 -> S.State & Result<&2,&2,String,F32>,
+    -read_one:SP.Tree<U32> -> S.State -> S.State & Result<&2,&2,String,F32>,
+    -read_left:SP.Tree<U32> -> S.State -> S.State & Result<&2,&2,String,F32>,
+    -read_right:SP.Tree<U32> -> S.State -> S.State & Result<&2,&2,String,F32>,
+    coordinate_owned:ReadWitness(read_coordinate),one_owned:SplineReadWitness(read_one),
+    left_owned:SplineReadWitness(read_left),right_owned:SplineReadWitness(read_right)) ->
+    EvalWitness(Laws.owner(state),SE.step(S.State,tree,state,read_coordinate,read_one,read_left,read_right)):
+  match tree:
+    case SP.Constant{value}: ((state,Done{value}),({==},{==}))
+    case SP.Multi{+index,+points}:
+      mapped(Laws.owner(state),read_coordinate(state)(index),result => SE.coordinate(S.State,points,result,read_one,read_left,read_right),
+        coordinate_owned(state)(index),result => spline_coordinate_owned(points,result,read_one,read_left,read_right,one_owned,left_owned,right_owned))
+
 def operation_owned(operation:A.Operation,state:S.State,+point:S.Point,
     -read_one:S.State -> U32 -> S.State & Result<&2,&2,String,F32>,
     -read_two:S.State -> U32 -> S.State & Result<&2,&2,String,F32>,
@@ -730,6 +868,11 @@ def operation_owned(operation:A.Operation,state:S.State,+point:S.Point,
                 three_owned(state)(sz),state => z_shift => shifted_noise_owned(state,key,xz,y,point,x_shift,y_shift,z_shift,mode))))
     case A.OpShiftA{key}: shift_owned(state,key,point,True{})
     case A.OpShiftB{key}: shift_owned(state,key,point,False{})
+    case A.OpMinMax{kind,left,right,mode}: minmax_owned(kind,left,right,mode,state,read_one,read_two,one_owned,two_owned)
+    case A.OpBlendAlpha{}: ((state,Done{1.0}),({==},{==}))
+    case A.OpBlendOffset{}: ((state,Done{0.0}),({==},{==}))
+    case A.OpBlendDensity{input}: one_owned(state)(input)
+    case A.OpSpline{tree}: ((state,Fail{"density spline requires the structural evaluator work route"}),({==},{==}))
 
 def indexed_owned(state:S.State,+index:U32,+point:S.Point,found:Maybe<&2,A.Operation>,
     -read_one:S.State -> U32 -> S.State & Result<&2,&2,String,F32>,
@@ -754,22 +897,80 @@ def cached_owned(state:S.State,index:U32,point:S.Point,node:Maybe<&2,A.Operation
     case Some{value}: ((state,Done{value}),({==},{==}))
     case None{}: indexed_owned(state,index,point,node,read_one,read_two,read_three,one_owned,two_owned,three_owned)
 
-# The only induction measure is the actual caller's depth. Each recursive
-# witness names D.run itself, for arbitrary complete states and child indices.
-def run_owned(+depth:Nat,state:S.State,+index:U32,+point:S.Point) ->
-    EvalWitness(Laws.owner(state),D.run(depth,state,index,point)):
-  match depth state:
-    case 0n S.State{program,pool,cache}:
-      ((S.State{program,pool,cache},Fail{"density evaluation exceeds caller depth budget"}),({==},{==}))
-    case 1n+ +left S.State{+program,pool,S.Cache{cached_point,+values}}:
-      cached_owned(S.State{program,pool,S.Cache{cached_point,values}},index,point,
+def work_indexed_owned(state:S.State,+index:U32,+point:S.Point,+found:Maybe<&2,A.Operation>,
+    -read_one:S.State -> U32 -> S.State & Result<&2,&2,String,F32>,
+    -read_two:S.State -> U32 -> S.State & Result<&2,&2,String,F32>,
+    -read_three:S.State -> U32 -> S.State & Result<&2,&2,String,F32>,
+    -read_spline:SP.Tree<U32> -> S.State -> S.State & Result<&2,&2,String,F32>,
+    one_owned:ReadWitness(read_one),two_owned:ReadWitness(read_two),three_owned:ReadWitness(read_three),
+    spline_owned:SplineReadWitness(read_spline)) ->
+    EvalWitness(Laws.owner(state),D.work_indexed(state,index,point,found,read_one,read_two,read_three,read_spline)):
+  match found:
+    case Some{A.OpSpline{+tree}}:
+      mapped(Laws.owner(state),read_spline(tree)(state),result => D.remembered(index,result),
+        spline_owned(tree)(state),result => remembered_owned(index,result))
+    case None{}: indexed_owned(state,index,point,None{},read_one,read_two,read_three,one_owned,two_owned,three_owned)
+    case Some{A.OpConstant{value}}: indexed_owned(state,index,point,Some{A.OpConstant{value}},read_one,read_two,read_three,one_owned,two_owned,three_owned)
+    case Some{A.OpUnary{kind,input}}: indexed_owned(state,index,point,Some{A.OpUnary{kind,input}},read_one,read_two,read_three,one_owned,two_owned,three_owned)
+    case Some{A.OpBinary{kind,left,right,lc,rc}}: indexed_owned(state,index,point,Some{A.OpBinary{kind,left,right,lc,rc}},read_one,read_two,read_three,one_owned,two_owned,three_owned)
+    case Some{A.OpGradient{axis,from,to,fv,tv}}: indexed_owned(state,index,point,Some{A.OpGradient{axis,from,to,fv,tv}},read_one,read_two,read_three,one_owned,two_owned,three_owned)
+    case Some{A.OpClamp{input,low,high}}: indexed_owned(state,index,point,Some{A.OpClamp{input,low,high}},read_one,read_two,read_three,one_owned,two_owned,three_owned)
+    case Some{A.OpLerp{alpha,first,second}}: indexed_owned(state,index,point,Some{A.OpLerp{alpha,first,second}},read_one,read_two,read_three,one_owned,two_owned,three_owned)
+    case Some{A.OpRangeChoice{input,low,high,inside,outside}}: indexed_owned(state,index,point,Some{A.OpRangeChoice{input,low,high,inside,outside}},read_one,read_two,read_three,one_owned,two_owned,three_owned)
+    case Some{A.OpCache{input}}: indexed_owned(state,index,point,Some{A.OpCache{input}},read_one,read_two,read_three,one_owned,two_owned,three_owned)
+    case Some{A.OpBaseNoise{config}}: indexed_owned(state,index,point,Some{A.OpBaseNoise{config}},read_one,read_two,read_three,one_owned,two_owned,three_owned)
+    case Some{A.OpNoise{key,xz,y,sx,sy,sz,mode}}: indexed_owned(state,index,point,Some{A.OpNoise{key,xz,y,sx,sy,sz,mode}},read_one,read_two,read_three,one_owned,two_owned,three_owned)
+    case Some{A.OpShiftA{key}}: indexed_owned(state,index,point,Some{A.OpShiftA{key}},read_one,read_two,read_three,one_owned,two_owned,three_owned)
+    case Some{A.OpShiftB{key}}: indexed_owned(state,index,point,Some{A.OpShiftB{key}},read_one,read_two,read_three,one_owned,two_owned,three_owned)
+    case Some{A.OpMinMax{kind,left,right,mode}}: indexed_owned(state,index,point,Some{A.OpMinMax{kind,left,right,mode}},read_one,read_two,read_three,one_owned,two_owned,three_owned)
+    case Some{A.OpBlendAlpha{}}: indexed_owned(state,index,point,Some{A.OpBlendAlpha{}},read_one,read_two,read_three,one_owned,two_owned,three_owned)
+    case Some{A.OpBlendOffset{}}: indexed_owned(state,index,point,Some{A.OpBlendOffset{}},read_one,read_two,read_three,one_owned,two_owned,three_owned)
+    case Some{A.OpBlendDensity{input}}: indexed_owned(state,index,point,Some{A.OpBlendDensity{input}},read_one,read_two,read_three,one_owned,two_owned,three_owned)
+
+def work_cached_owned(state:S.State,index:U32,point:S.Point,node:Maybe<&2,A.Operation>,hit:Maybe<&2,F32>,
+    -read_one:S.State -> U32 -> S.State & Result<&2,&2,String,F32>,
+    -read_two:S.State -> U32 -> S.State & Result<&2,&2,String,F32>,
+    -read_three:S.State -> U32 -> S.State & Result<&2,&2,String,F32>,
+    -read_spline:SP.Tree<U32> -> S.State -> S.State & Result<&2,&2,String,F32>,
+    one_owned:ReadWitness(read_one),two_owned:ReadWitness(read_two),three_owned:ReadWitness(read_three),
+    spline_owned:SplineReadWitness(read_spline)) ->
+    EvalWitness(Laws.owner(state),D.work_cached(state,index,point,node,hit,read_one,read_two,read_three,read_spline)):
+  match hit:
+    case Some{value}: ((state,Done{value}),({==},{==}))
+    case None{}: work_indexed_owned(state,index,point,node,read_one,read_two,read_three,read_spline,one_owned,two_owned,three_owned,spline_owned)
+
+# The only induction measure is the actual caller's depth. Recursive witnesses
+# name D.work itself for arbitrary complete states, node indices and spline
+# trees. Each callback receives the same complete affine state interface.
+def work_owned(+depth:Nat,state:S.State,task:D.Work,+point:S.Point) ->
+    EvalWitness(Laws.owner(state),D.work(depth,state,task,point)):
+  match depth state task:
+    case 0n _ _: ((state,Fail{"density evaluation exceeds caller depth budget"}),({==},{==}))
+    case 1n+ +left S.State{+program,pool,S.Cache{cached_point,+values}} D.NodeWork{+index}:
+      work_cached_owned(S.State{program,pool,S.Cache{cached_point,values}},index,point,
         D.located(D.case_nodes(program),index),D.value_lookup(values,index),
-        state => child => D.run(left,state,child,point),
-        state => child => D.run(left,state,child,point),
-        state => child => D.run(left,state,child,point),
-        state => child => run_owned(left,state,child,point),
-        state => child => run_owned(left,state,child,point),
-        state => child => run_owned(left,state,child,point))
+        state => child => D.work(left,state,D.NodeWork{child},point),
+        state => child => D.work(left,state,D.NodeWork{child},point),
+        state => child => D.work(left,state,D.NodeWork{child},point),
+        tree => state => D.work(left,state,D.SplineWork{tree},point),
+        state => child => work_owned(left,state,D.NodeWork{child},point),
+        state => child => work_owned(left,state,D.NodeWork{child},point),
+        state => child => work_owned(left,state,D.NodeWork{child},point),
+        tree => state => work_owned(left,state,D.SplineWork{tree},point))
+    case 1n+ +left _ D.SplineWork{tree}:
+      spline_step_owned(tree,state,
+        state => child => D.work(left,state,D.NodeWork{child},point),
+        tree => state => D.work(left,state,D.SplineWork{tree},point),
+        tree => state => D.work(left,state,D.SplineWork{tree},point),
+        tree => state => D.work(left,state,D.SplineWork{tree},point),
+        state => child => work_owned(left,state,D.NodeWork{child},point),
+        tree => state => work_owned(left,state,D.SplineWork{tree},point),
+        tree => state => work_owned(left,state,D.SplineWork{tree},point),
+        tree => state => work_owned(left,state,D.SplineWork{tree},point))
+
+def run_owned(depth:Nat,state:S.State,index:U32,point:S.Point) ->
+    EvalWitness(Laws.owner(state),D.run(depth,state,index,point)):
+  work_owned(depth,state,D.NodeWork{index},point)
 
 def evaluate_owned(depth:Nat,state:S.State,index:U32,+point:S.Point) ->
     EvalWitness(Laws.owner(state),D.evaluate(depth,state,index,point)):

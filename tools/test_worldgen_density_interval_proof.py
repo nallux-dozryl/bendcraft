@@ -26,17 +26,13 @@ def closure(path,seen=None):
     return seen
 
 def check(runtime_owned=False):
-    entry=ROOT/'src/worldgen_density_proof.bend';laws=ROOT/'src/worldgen_density_laws.bend'
-    names=re.findall(r'^law\s+([A-Za-z0-9_]+):',laws.read_text(),re.M)
-    runtime_names=names[:11]+['missing_normal_noise_definition_cannot_create_fallback_producer',
-      'every_bounded_run_retains_complete_program_and_ordered_pool',
-      'every_evaluation_retains_complete_program_and_ordered_pool']+names[-5:]
-    if len(runtime_names)!=19 or len(set(runtime_names))!=19:raise RuntimeError('Runtime root selection changed')
-    selected=runtime_names if runtime_owned else names
-    roots=['worldgen_density_laws:'+name for name in selected]
-    skipped=['worldgen_density_laws:'+name for name in names if name not in selected]
-    prefix='worldgen-density-runtime-proof-' if runtime_owned else 'worldgen-density-proof-'
-    token=str(time.time_ns());directory=WORK/(prefix+token);directory.mkdir();snapshots=directory/'source-snapshots';snapshots.mkdir()
+    entry=ROOT/'src/worldgen_density_interval_proof.bend';laws=ROOT/'src/worldgen_density_interval_laws.bend'
+    roots=['worldgen_density_interval_laws:'+s for s in re.findall(r'^law\s+([A-Za-z0-9_]+):',laws.read_text(),re.M)]
+    pending=[]
+    if runtime_owned:
+        pending=['worldgen_density_interval_laws:empty_range_analysis_retains_complete_existing_table']
+        roots=[root for root in roots if root not in pending]
+    token=str(time.time_ns());directory=WORK/('worldgen-density-interval-proof-'+token);directory.mkdir();snapshots=directory/'source-snapshots';snapshots.mkdir()
     source_pins=closure(entry)
     for i,(path,pin) in enumerate(source_pins.items()):shutil.copyfile(path,snapshots/(str(i)+'-'+path.name))
     write_json(directory/'pre-load-pins.json',[{'path':str(p),**pin} for p,pin in source_pins.items()])
@@ -70,13 +66,13 @@ if(exclusions.length)process.exitCode=2;
 '''
     for key,value in [('BEND_URL',BEND.as_uri()),('SAFE_URL',SAFE.as_uri()),('ENTRY',str(entry)),('DIRECTORY',str(directory)),('ROOTS',roots)]:script=script.replace(key,json.dumps(value))
     executed=directory/'executed-inline-source.mjs';executed.write_text(script)
-    stdout,api=run(prefix+'api-'+token,[NODE,'--stack-size=4096','--max-old-space-size=4096','--experimental-transform-types',executed],60)
+    stdout,api=run('worldgen-density-interval-proof-api-'+token,[NODE,'--stack-size=4096','--max-old-space-size=4096','--experimental-transform-types',executed],60)
     scope=json.loads((directory/'scope.json').read_text())
     if scope['exclusions']:raise RuntimeError('Exact density proof export excluded roots: '+repr(scope['exclusions']))
     for p,pin in source_pins.items():
         if fingerprint(p)!=pin:raise RuntimeError('Density source changed before kernel')
     artifact=directory/'selected.bendtt';artifact_pin=fingerprint(artifact)
-    output,kernel=run(prefix+'kernel-'+token,[KERNEL,artifact],60)
+    output,kernel=run('worldgen-density-interval-proof-kernel-'+token,[KERNEL,artifact],60)
     if output.strip()!='ALL PROOFS CHECK':raise RuntimeError('Independent density admission failed: '+output[:4000])
     for p,pin in source_pins.items():
         if fingerprint(p)!=pin:raise RuntimeError('Density source changed after kernel')
@@ -84,20 +80,15 @@ if(exclusions.length)process.exitCode=2;
     selection=json.loads((directory/'selection.json').read_text())
     result={'schema':1,'pin':'26.3','status':'kernel_certified','kernel_admitted_laws':roots,'exclusions':[],
       'checked_types_and_bodies_unchanged':True,'all_original_declaration_maps_retained':True,
-      'ordinary_checked_laws':['worldgen_density_laws:'+name for name in names],
-      'selection_mode':'runtime-owned' if runtime_owned else 'all-laws','skipped_compiler_obligations':skipped,
       'source_pins':[{'path':str(p.relative_to(ROOT)) if p.is_relative_to(ROOT) else str(p),**pin} for p,pin in source_pins.items()],
       'term_pins':selection['term_pins'],'checked_term_export':{'path':str(artifact.relative_to(ROOT)),**artifact_pin},
       'selection':str((directory/'selection.json').relative_to(ROOT)),
       'executed_script':fingerprint(executed),'helper':fingerprint(Path(__file__).resolve()),
       'compiler_api':fingerprint(BEND),'safe_exporter':fingerprint(SAFE),'independent_kernel':fingerprint(KERNEL),
       'ordinary_source_api':api,'kernel':kernel,'kernel_verdict':output.strip(),
-      'scope':('Actual production runtime contracts only: all evaluator operation branches, structural caller-depth induction across density nodes and nested splines, complete program and ordered producer/pool retention, cache behavior, precise refusals, rollback, and actual Column consumption. All 34 density laws pass ordinary source checking; the 15 compiler obligations are explicitly outside this 19-root independent-kernel selection because their production size traversal reconstructs wrappers that the kernel cannot recognize as a descent. No checked type, proof body, declaration map, or runtime implementation is replaced.' if runtime_owned else 'Actual production complete producer/pool owner retention, refused-evaluation cache rollback, cache-hit and missing-node behavior, compile metadata and ordering, registry memo/cycle/missing/budget diagnostics, and direct runtime composition. Does not prove numeric parity, graph well-formedness, successful complete normal population, or nearest-biome correctness; independent Java/native evidence covers its stated numerical cases.')}
-    write_json(ROOT/('evidence/worldgen-density-runtime-proof.json' if runtime_owned else 'evidence/worldgen-density-proof.json'),result)
+      'pending_kernel_roots':pending,
+      'scope':'Actual interval NaI propagation and missing analysis refusals, plus real MinMax selected-branch/short-circuit/failure cancellation over arbitrary complete owners and callbacks. Complete empty Range.analyze retention is separately pending when the runtime-owned selection is used. No IEEE arithmetic theorem, complete normal generation, or successful full-router claim.'}
+    write_json(ROOT/('evidence/worldgen-density-interval-runtime-proof.json' if runtime_owned else 'evidence/worldgen-density-interval-proof.json'),result)
     return {'status':'kernel_certified','laws':len(roots),'bytes':artifact_pin['bytes'],'api_seconds':api['seconds'],'kernel_seconds':kernel['seconds']}
 if __name__=='__main__':
-    parser=argparse.ArgumentParser(description=__doc__)
-    mode=parser.add_mutually_exclusive_group(required=True)
-    mode.add_argument('--check',action='store_true')
-    mode.add_argument('--runtime-owned',action='store_true',help='Select the 19 actual runtime ownership/cache/Column laws; retain explicit skipped compiler obligations')
-    args=parser.parse_args();print(json.dumps(check(args.runtime_owned),sort_keys=True))
+    parser=argparse.ArgumentParser(description=__doc__);mode=parser.add_mutually_exclusive_group(required=True);mode.add_argument('--check',action='store_true');mode.add_argument('--runtime-owned',action='store_true');args=parser.parse_args();print(json.dumps(check(args.runtime_owned),sort_keys=True))
