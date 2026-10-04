@@ -1,0 +1,43 @@
+{
+  "actual_case_count": 101,
+  "failure_injections": [
+    {
+      "injection": "client",
+      "reason": "Pinned client/runtime/library provenance mismatch",
+      "rejected": true
+    },
+    {
+      "injection": "runtime",
+      "reason": "Pinned client/runtime/library provenance mismatch",
+      "rejected": true
+    },
+    {
+      "injection": "library",
+      "reason": "Pinned client/runtime/library provenance mismatch",
+      "rejected": true
+    },
+    {
+      "injection": "class",
+      "reason": "Pinned class/disassembly provenance mismatch",
+      "rejected": true
+    },
+    {
+      "injection": "source",
+      "reason": "Launcher source changed",
+      "rejected": true
+    },
+    {
+      "injection": "observation",
+      "reason": "Actual fixture digest mismatch",
+      "rejected": true
+    }
+  ],
+  "reference": {
+    "bytes": 1348118,
+    "file": "entity_common_tick.json",
+    "sha1": "a8907c1e956675f49b0a8c8da5da0435921e36d5",
+    "sha256": "d49c9054f0ae9f7e4ac15baf068ae00809e331c88bf7465e80d9f160c000f578"
+  },
+  "scope": "Stored reference integrity; no new target receiver execution",
+  "status": "passed"
+}

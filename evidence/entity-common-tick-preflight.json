@@ -1,0 +1,80 @@
+{
+  "actual_cases_per_run": 101,
+  "actual_operations_per_run": 110,
+  "commands": [
+    "PYTHONDONTWRITEBYTECODE=1 python3 tools/reference_entity_common_tick_probe.py --extract",
+    "PYTHONDONTWRITEBYTECODE=1 python3 tools/reference_entity_common_tick_probe.py --rerun",
+    "PYTHONDONTWRITEBYTECODE=1 python3 tools/test_entity_common_tick.py --prepare"
+  ],
+  "fresh_java_runs": 2,
+  "frozen_api": "Metadata position_o/position_old/invulnerable_time/tick_count; affine boxed State; immutable Request position/PL.look/context; set_old_pos_and_rot/common_tick -> State & Result<Error,Snapshot>.",
+  "harness_sha256": "d8798e0609ffe242cc2aa9b361efa0c441cdd18e550b8159aa33580bf8d2b675",
+  "integrity_mutations_rejected": 6,
+  "kernel_status": "not-attempted-no-slot-yet",
+  "loaded_official_class_count": 4350,
+  "native_cases_planned": 279,
+  "native_status": "not-attempted-no-slot-yet",
+  "owned_files": {
+    "docs/ENTITY_COMMON_TICK.md": {
+      "bytes": 14559,
+      "sha256": "b7eab4e13618159bb1ea6c0e91af2b9750621063e8c8c6fd1a46c92508b804a5"
+    },
+    "evidence/entity-common-tick-ordinary-harness.json": {
+      "bytes": 14445,
+      "sha256": "93e572f97809e4263a973800fdccd9473aab3e2cf9bf301f2f5ba5bcd55ed162"
+    },
+    "evidence/entity-common-tick-ordinary-source.json": {
+      "bytes": 14437,
+      "sha256": "38b3451601e772914f5f4b1844b0dfd94d4c3783e7f026ae57226815b7c07d49"
+    },
+    "evidence/entity-common-tick-prepared.json": {
+      "bytes": 48539,
+      "sha256": "cdbdb208462efc3af93090327d325a8b78b254dc36930c9c9c1cfc3e8b9f02e8"
+    },
+    "evidence/entity-common-tick-reference-extract.json": {
+      "bytes": 39925,
+      "sha256": "7cb435cb553d9c58e5b3a45d2c277e96ea526f179d4466448cdac05d36a763cf"
+    },
+    "evidence/entity-common-tick-reference-feasibility.json": {
+      "bytes": 39709,
+      "sha256": "5060f5711574ecb5f871c8e0ae327734b03a994ecfc8ba602c85a64e3d9df139"
+    },
+    "evidence/entity-common-tick-reference-integrity.json": {
+      "bytes": 1138,
+      "sha256": "45b89e01a6b02fbfd3107570d2bea2a4b5f171a9acf8e30ddfc2e8e0128eabe8"
+    },
+    "evidence/entity-common-tick-reference-rerun.json": {
+      "bytes": 39728,
+      "sha256": "8f2ab8fcaf4967d8ae7eb916e8c7b8c79b891c723d2d8b44cf7af92e76019907"
+    },
+    "reference/entity_common_tick.json": {
+      "bytes": 1348118,
+      "sha256": "d49c9054f0ae9f7e4ac15baf068ae00809e331c88bf7465e80d9f160c000f578"
+    },
+    "src/entity_common_tick.bend": {
+      "bytes": 7632,
+      "sha256": "b8d5416c18423543d90eb3fa74cd9291c7786036f2708fe45c9534c4f2b41f4e"
+    },
+    "tests/entity_common_tick.bend": {
+      "bytes": 13770,
+      "sha256": "d8798e0609ffe242cc2aa9b361efa0c441cdd18e550b8159aa33580bf8d2b675"
+    },
+    "tools/reference_entity_common_tick_probe.py": {
+      "bytes": 20677,
+      "sha256": "13a4aa0fec04a645e510a38cee4fecb08f864ec9a806e5adb2d8dc618058eb66"
+    },
+    "tools/test_entity_common_tick.py": {
+      "bytes": 21969,
+      "sha256": "bbc6ee464ddb42506101ace971426cfee5d324dca3e99fcfa0806092e2c9b8e7"
+    }
+  },
+  "paired_receivers_per_run": 202,
+  "prepared_manifest": "evidence/entity-common-tick-prepared.json",
+  "queued": [
+    "PYTHONDONTWRITEBYTECODE=1 python3 tools/test_entity_common_tick.py --native --skip-ordinary",
+    "PYTHONDONTWRITEBYTECODE=1 python3 tools/test_entity_common_tick.py --kernel --skip-ordinary"
+  ],
+  "scope": "Neutral scheduler metadata and immutable old-position/camera snapshots; no runtime integration or handler internal claim.",
+  "source_sha256": "b8d5416c18423543d90eb3fa74cd9291c7786036f2708fe45c9534c4f2b41f4e",
+  "status": "sealed-ordinary-and-reference-preflight-native-kernel-pending"
+}

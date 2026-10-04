@@ -1,0 +1,146 @@
+{
+  "actual_java": {
+    "cases_per_run": 101,
+    "current_body_and_position_retained": true,
+    "fresh_runs": 2,
+    "loaded_official_class_count": 4350,
+    "operations_per_run": 110,
+    "paired_result_parity": true,
+    "plain_super_rows_per_run": 202,
+    "real_normal_handler": "inactive SteppedInterpolationHandler"
+  },
+  "api": "State owns Metadata(position_o,position_old,invulnerable_time,tick_count); Request supplies immutable Body-derived position/PL look/conditional context; setter/common_tick -> State & Result<Error,Snapshot>.",
+  "commands": [
+    "PYTHONDONTWRITEBYTECODE=1 python3 tools/reference_entity_common_tick_probe.py --extract",
+    "PYTHONDONTWRITEBYTECODE=1 python3 tools/reference_entity_common_tick_probe.py --rerun",
+    "PYTHONDONTWRITEBYTECODE=1 python3 tools/test_entity_common_tick.py --prepare",
+    "PYTHONDONTWRITEBYTECODE=1 python3 tools/test_entity_common_tick.py --native --skip-ordinary",
+    "PYTHONDONTWRITEBYTECODE=1 python3 tools/test_entity_common_tick.py --kernel --skip-ordinary",
+    "PYTHONDONTWRITEBYTECODE=1 python3 build/entity-common-tick-verification/final_audit.py"
+  ],
+  "confidence": "high for the measured conditional neutral projection; full lifecycle remains outside this scope",
+  "final_retained_outputs_checked": 558,
+  "frozen_harness_sha256": "d8798e0609ffe242cc2aa9b361efa0c441cdd18e550b8159aa33580bf8d2b675",
+  "frozen_source_sha256": "b8d5416c18423543d90eb3fa74cd9291c7786036f2708fe45c9534c4f2b41f4e",
+  "heavy_slot": "A explicitly released",
+  "integrity_mutations_rejected": 6,
+  "kernel": {
+    "harness": {
+      "pid": 33456,
+      "seconds": 3.82031,
+      "status": "passed"
+    },
+    "scope": "Full imported production source and harness, including exactly five own source and five own harness laws; no source projection or retry.",
+    "source": {
+      "pid": 33421,
+      "seconds": 3.716601,
+      "status": "passed"
+    }
+  },
+  "limits": "Canonical empty State/Request tails; all finite F64/F32 fields; nonfinite/unsupported context failure retains entire original owner. No handler reset internals/active interpolation/non-client/lifecycle/Entity.tick/LocalPlayer.tick/runtime consumer integration; raw numeric-position seed cases are metadata-only, not Body reachability.",
+  "native": {
+    "binary_sha256": "3f392bd94dd15a494cd3a7d03648b4b0e1ed56092d9e2b61e315ec41de0b8e90",
+    "build_seconds": 3.741447,
+    "cache_hit": false,
+    "cases_per_run": 279,
+    "native_compiler_seconds": 1.0793111668899655,
+    "native_dependency_count": 1632,
+    "result_sha256": "63f2fd5d77ad290c136544d1ba3b703ed7ef73329622a21ea61d51c71d90be56",
+    "run_seconds": [
+      0.605876,
+      0.100599
+    ],
+    "runs": 2,
+    "single_installed_build_pid": 32967
+  },
+  "owned_files": {
+    "docs/ENTITY_COMMON_TICK.md": {
+      "bytes": 17597,
+      "sha256": "9d9df1425caae8599f3c3cc6589d629b08adc4fd9b576ad07d9e0b4b51ef6e55"
+    },
+    "evidence/entity-common-tick-build.json": {
+      "bytes": 19768,
+      "sha256": "ee38be1f577e478e656c318fa58b5ab222e269aacb686cbb27af1bf4025a5d61"
+    },
+    "evidence/entity-common-tick-final-verification.json": {
+      "bytes": 3433,
+      "sha256": "f45c1776f5cdf37bc9fc4376e935c9c4dadbce6d0deafcbd3798f3529d34e375"
+    },
+    "evidence/entity-common-tick-kernel-harness.json": {
+      "bytes": 14431,
+      "sha256": "1d4ceaf298182f3216ba2bc4fdd4543a05672e154d1b4a1cd64d476d2833be6d"
+    },
+    "evidence/entity-common-tick-kernel-source.json": {
+      "bytes": 14425,
+      "sha256": "4a0c4dcfcf70058e067d4f365f844067cea1c0291942aa1392bcd890eeb8ff0e"
+    },
+    "evidence/entity-common-tick-kernel.json": {
+      "bytes": 45391,
+      "sha256": "91a17303e9c85e20c48df4dd1b2a432e91a2df424fe6a29a4710414ff17e0c3f"
+    },
+    "evidence/entity-common-tick-native.json": {
+      "bytes": 21853,
+      "sha256": "f5b56f98f56e1c2a1b1afb7930a048224a7bb56786f43c6ee56976004b793c7f"
+    },
+    "evidence/entity-common-tick-ordinary-harness.json": {
+      "bytes": 14445,
+      "sha256": "93e572f97809e4263a973800fdccd9473aab3e2cf9bf301f2f5ba5bcd55ed162"
+    },
+    "evidence/entity-common-tick-ordinary-source.json": {
+      "bytes": 14437,
+      "sha256": "38b3451601e772914f5f4b1844b0dfd94d4c3783e7f026ae57226815b7c07d49"
+    },
+    "evidence/entity-common-tick-preflight.json": {
+      "bytes": 3650,
+      "sha256": "50c7fcfd0bbe28bfb6331daa276535410ecb798c570c908d7ca604086083b772"
+    },
+    "evidence/entity-common-tick-prepared.json": {
+      "bytes": 48539,
+      "sha256": "cdbdb208462efc3af93090327d325a8b78b254dc36930c9c9c1cfc3e8b9f02e8"
+    },
+    "evidence/entity-common-tick-reference-extract.json": {
+      "bytes": 39925,
+      "sha256": "7cb435cb553d9c58e5b3a45d2c277e96ea526f179d4466448cdac05d36a763cf"
+    },
+    "evidence/entity-common-tick-reference-feasibility.json": {
+      "bytes": 39709,
+      "sha256": "5060f5711574ecb5f871c8e0ae327734b03a994ecfc8ba602c85a64e3d9df139"
+    },
+    "evidence/entity-common-tick-reference-integrity.json": {
+      "bytes": 1138,
+      "sha256": "45b89e01a6b02fbfd3107570d2bea2a4b5f171a9acf8e30ddfc2e8e0128eabe8"
+    },
+    "evidence/entity-common-tick-reference-rerun.json": {
+      "bytes": 39728,
+      "sha256": "8f2ab8fcaf4967d8ae7eb916e8c7b8c79b891c723d2d8b44cf7af92e76019907"
+    },
+    "reference/entity_common_tick.json": {
+      "bytes": 1348118,
+      "sha256": "d49c9054f0ae9f7e4ac15baf068ae00809e331c88bf7465e80d9f160c000f578"
+    },
+    "src/entity_common_tick.bend": {
+      "bytes": 7632,
+      "sha256": "b8d5416c18423543d90eb3fa74cd9291c7786036f2708fe45c9534c4f2b41f4e"
+    },
+    "tests/entity_common_tick.bend": {
+      "bytes": 13770,
+      "sha256": "d8798e0609ffe242cc2aa9b361efa0c441cdd18e550b8159aa33580bf8d2b675"
+    },
+    "tools/reference_entity_common_tick_probe.py": {
+      "bytes": 20677,
+      "sha256": "13a4aa0fec04a645e510a38cee4fecb08f864ec9a806e5adb2d8dc618058eb66"
+    },
+    "tools/test_entity_common_tick.py": {
+      "bytes": 21969,
+      "sha256": "bbc6ee464ddb42506101ace971426cfee5d324dca3e99fcfa0806092e2c9b8e7"
+    }
+  },
+  "pin": "26.3",
+  "preflight_source_effect_inputs": 38,
+  "reporting_only_updates": [
+    "docs/ENTITY_COMMON_TICK.md",
+    "evidence/entity-common-tick-final-verification.json",
+    "evidence/entity-common-tick-handoff.json"
+  ],
+  "status": "passed-frozen-neutral-scheduler-projection"
+}

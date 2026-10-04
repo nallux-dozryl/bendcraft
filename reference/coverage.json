@@ -4586,6 +4586,7 @@
       "current_evidence_sha256": {
         "evidence/resource-player-boxed-client-native.json": "b906b49decebc6329d5cd3fdbddf9b9b70342a25c4fd9947cca5deed9dafdb28",
         "evidence/resource-player-boxed-client-preflight.json": "31cc4733b4f3105ea587fad4f01d16e5e1870b2928e92c3a9d860ef5555900b8",
+        "evidence/resource-player-client-diagnosis-next.json": "d66ef014332ab7bbcf8dea2b1423560dfb091e77c8bc292ba193ec27659c9531",
         "evidence/resource-player-client-native.json": "03cefbe6ca85d1b66417c5926913da91c9e48b932072fe7c138d83da69b00c31",
         "evidence/resource-player-client-preflight.json": "e9f4d37c479ecfc7d8256d6d4992ff2bc56a0589c8d8b48a184a4d9d4baf19b1",
         "resource_player_boxed_client.bend": "567d02e32e32549ee61ad590c588d7e5d74bb8c175e968f0ed7a5a68cecd5cc8",
@@ -4609,12 +4610,50 @@
       ],
       "reference_inventory_status": "captured_bounded_release_scope",
       "required_behavior": "Saved plain Player client joined to actual resource/visibility renderer.",
-      "scope_limit": "Each600scapped generation produced no C/executable; no clientintegration,pixels,presentation or performance claim.",
+      "scope_limit": "Each 600-second capped build produced no C/executable. A graph-only Node control failed during loading; no graph/check counters reached. Compiler bottleneck unknown; no client integration, pixels, presentation or performance claim.",
       "verification_evidence": [
         "evidence/resource-player-client-native.json",
-        "evidence/resource-player-boxed-client-native.json"
+        "evidence/resource-player-boxed-client-native.json",
+        "evidence/resource-player-client-diagnosis-next.json"
       ],
       "verification_status": "two_build_timeouts_no_native_result",
+      "whole_parent_parity_established": false
+    },
+    {
+      "behavioral_reference_evidence": [
+        "reference/entity_common_tick.json"
+      ],
+      "behavioral_reference_status": "actual_java_bounded_cases",
+      "current_evidence_sha256": {
+        "evidence/entity-common-tick-handoff.json": "e63a36d75ea17bac14295a0b03adc907c0ea2ed522ba2369966611933e0414f4",
+        "evidence/entity-common-tick-kernel.json": "91a17303e9c85e20c48df4dd1b2a432e91a2df424fe6a29a4710414ff17e0c3f",
+        "evidence/entity-common-tick-native.json": "f5b56f98f56e1c2a1b1afb7930a048224a7bb56786f43c6ee56976004b793c7f",
+        "reference/entity_common_tick.json": "d49c9054f0ae9f7e4ac15baf068ae00809e331c88bf7465e80d9f160c000f578",
+        "src/entity_common_tick.bend": "b8d5416c18423543d90eb3fa74cd9291c7786036f2708fe45c9534c4f2b41f4e",
+        "tests/entity_common_tick.bend": "d8798e0609ffe242cc2aa9b361efa0c441cdd18e550b8159aa33580bf8d2b675"
+      },
+      "id": "component:entity_common_tick",
+      "implementation_evidence": [
+        "src/entity_common_tick.bend",
+        "tests/entity_common_tick.bend"
+      ],
+      "implementation_status": "implemented_bounded_projection",
+      "independent_kernel_status": "passed_ten_stated_source_and_harness_laws",
+      "kind": "bounded_behavior_component",
+      "measured_scope": "101 actual cases with 110 operations across two fresh paired Java receivers; 279 native records twice, including 58 owner recoveries and 104 nonfinite refusals.",
+      "parent_obligation": "behavior:players_modes",
+      "reference_evidence": [
+        "reference/entity_common_tick.json"
+      ],
+      "reference_inventory_status": "captured_bounded_release_scope",
+      "required_behavior": "Neutral client Entity.commonTick metadata and exact setOldPosAndRot snapshots.",
+      "scope_limit": "Conditional neutral client and inactive real handler. Handler internals, active interpolation, lifecycle services and runtime consumption are separate. Internal temporary C/clang were not captured.",
+      "verification_evidence": [
+        "evidence/entity-common-tick-handoff.json",
+        "evidence/entity-common-tick-native.json",
+        "evidence/entity-common-tick-kernel.json"
+      ],
+      "verification_status": "verified_bounded_native_cases",
       "whole_parent_parity_established": false
     }
   ]
