@@ -5,7 +5,9 @@ for a new save and retains the saved settings for a loaded save. The current
 configured client profile is `bendex:stone-dirt-superflat`: stone 1, dirt 2, stone 1,
 at Overworld minY=-64, height 384. It is an explicitly chosen custom profile.
 `WG.normal` retains the installed normal Overworld noise-settings and multi-noise
-preset identifiers; its terrain pipeline is unavailable and is refused explicitly.
+preset identifiers. The normal generator now has a seed-bound, Java-compared
+base-density column consumer; complete normal chunk generation remains unavailable
+and is refused explicitly by the saved-world population path.
 
 This contract replaces the fixed 5×5 terrain instrument as the regular startup
 path. A demand is a rectangular set of complete chunk columns, not a world bound.

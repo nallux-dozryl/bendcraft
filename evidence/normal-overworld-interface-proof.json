@@ -1,0 +1,301 @@
+{
+  "count": 13,
+  "entry": "src/worldgen_overworld_proof.bend",
+  "export": {
+    "all_original_declaration_maps_retained": true,
+    "artifact": {
+      "bytes": 1417276,
+      "file": "selected.bendtt",
+      "sha1": "21f97b59a5df4dc604333e44e6f695b36d8ffcb5",
+      "sha256": "7dcced2cc3522834c47355e5b2dda7bec0442e6b40ab61926481000b5321661a"
+    },
+    "checked_types_source_and_checked_bodies_unchanged": true,
+    "process": {
+      "argv": [
+        "/opt/homebrew/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "--experimental-transform-types",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/normal-overworld-api-1791127196174964000-inputs/executed-inline-source.mjs"
+      ],
+      "cap_seconds": 60,
+      "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+      "exit_code": 0,
+      "group_absent": true,
+      "leader_reaped": true,
+      "pgid": 23342,
+      "pid": 23342,
+      "retry": false,
+      "seconds": 0.9264108324423432,
+      "status": "passed",
+      "stderr": {
+        "bytes": 177,
+        "file": "stderr",
+        "sha1": "203da897d1938d7d544bda7054780aa9f96ef025",
+        "sha256": "76dcb1d1417a097b52e13fafbd7b88556faa193840b79154c69e54644ff7e40e"
+      },
+      "stdout": {
+        "bytes": 1162,
+        "file": "stdout",
+        "sha1": "18e906b5d168f2e7571aa8a0f9d3fcba9fc71e28",
+        "sha256": "a7b1e69bc776bf496cafacee7588d2858f8730ad4d3e5f91f2667adf02c1416d"
+      },
+      "timed_out": false
+    },
+    "raw_directory": "build/superflat-world/reference/normal-overworld-api-1791127196174964000-inputs",
+    "script": {
+      "bytes": 4698,
+      "file": "executed-inline-source.mjs",
+      "sha1": "67840718fd86cf4efb5bbbdbdf0171d260501f73",
+      "sha256": "273ddf1b0bed127bc73bbacb79296271540b0c4421617bc2a8f2c295a7d9a8c9"
+    },
+    "zero_exclusions": true
+  },
+  "kernel": {
+    "executable": {
+      "bytes": 3271216,
+      "file": "bendtt",
+      "sha1": "f19dfe8aec3b3911b6c9f0acae2a54f5b05ca5f0",
+      "sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7"
+    },
+    "process": {
+      "argv": [
+        "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/normal-overworld-api-1791127196174964000-inputs/selected.bendtt"
+      ],
+      "cap_seconds": 60,
+      "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+      "exit_code": 0,
+      "group_absent": true,
+      "leader_reaped": true,
+      "pgid": 23345,
+      "pid": 23345,
+      "retry": false,
+      "seconds": 0.2336564166471362,
+      "status": "passed",
+      "stderr": {
+        "bytes": 0,
+        "file": "stderr",
+        "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 17,
+        "file": "stdout",
+        "sha1": "ba8ec8289ea6f6e6fec687b636c07f05c26d0a8b",
+        "sha256": "61b73cda11b6b665b9f99f2defd3d3b57f985c865225e942a5bdaa594a503e47"
+      },
+      "timed_out": false
+    }
+  },
+  "omitted_theorem_roots": [],
+  "pending": null,
+  "pin": "26.3",
+  "retained_failure": {
+    "cause": "Three requested definitions reached general JSON offset/error formatting and Nat.show.fin/go mutual recursion; zero-kernel claim for that failed export.",
+    "directory": "build/superflat-world/reference/normal-overworld-checked-export-1791127048169017000",
+    "repair": "JNumber lexeme validation reuses actual json.number_next/accepting directly with its bounded input. It does not invoke irrelevant general-parser error formatting."
+  },
+  "roots": [
+    "worldgen_overworld_laws:validated_definition_retains_complete_metadata",
+    "worldgen_overworld_laws:actual_legacy_terrain_uses_all_seed_bits",
+    "worldgen_overworld_laws:empty_name_budget_refuses_nonempty_name",
+    "worldgen_overworld_laws:absent_aquifers_remain_absent",
+    "worldgen_overworld_laws:malformed_aquifers_are_refused",
+    "worldgen_overworld_laws:omitted_debug_functions_use_actual_empty_default",
+    "worldgen_overworld_laws:admitted_plan_retains_saved_generation_and_loaded_definition",
+    "worldgen_overworld_laws:invalid_plan_is_refused_before_compilation",
+    "worldgen_overworld_laws:refused_column_retains_complete_sampler",
+    "worldgen_overworld_laws:climate_router_uses_the_actual_six_axes",
+    "worldgen_overworld_laws:quart_to_block_preserves_java_word_arithmetic",
+    "worldgen_overworld_laws:fixed_biome_request_does_not_need_climate",
+    "worldgen_overworld_laws:multi_noise_request_cannot_silently_choose_a_biome"
+  ],
+  "schema": 2,
+  "scope": "Actual complete normal-plan metadata retention, actual legacy-terrain seed binding, resource-name admission, optional settings defaults/refusals, complete refused-column owner retention and actual biome/climate interface boundaries. The all-column owner composition is admitted in a separate recorded scope; no numerical equivalence or normal chunk-generation theorem.",
+  "separate_column_owner_scope": "evidence/worldgen-overworld-column-owner-proof.json",
+  "source_identity_stable": true,
+  "source_pins": [
+    {
+      "bytes": 4223,
+      "path": "src/worldgen_overworld_proof.bend",
+      "sha256": "aa8862cbd7a02170c1b741ec8658b9eaa58e2fb736e39f3d3a22e9725da144a3"
+    },
+    {
+      "bytes": 71530,
+      "path": "../bend/bend2/base.bend",
+      "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+    },
+    {
+      "bytes": 4310,
+      "path": "src/worldgen_overworld_laws.bend",
+      "sha256": "3aa5070fc0982d8ee72798d2c0371003be6062bf0528ca6084a681a0a1133278"
+    },
+    {
+      "bytes": 5444,
+      "path": "src/worldgen_overworld.bend",
+      "sha256": "405ec8fa04270e04b8d733a7d487a3c90802edb329d9b074e17d46d9894f6dbd"
+    },
+    {
+      "bytes": 5947,
+      "path": "src/world_generation_settings.bend",
+      "sha256": "cb5cc9ee81c266dd2d5543ecf83c6f99c08542739cad6e59d8e5d9166d6560c7"
+    },
+    {
+      "bytes": 26178,
+      "path": "src/nbt.bend",
+      "sha256": "b677546b5fc02aaa38f5c09e5b798c0d35aec32b1c4b37cbd7042b9a1a5275e4"
+    },
+    {
+      "bytes": 11690,
+      "path": "src/core.bend",
+      "sha256": "c1ee5a5390cdac0452c9c6cd3b0584a68ef68b5b0dfec867491c27e67ecadd4e"
+    },
+    {
+      "bytes": 3365,
+      "path": "src/schedule.bend",
+      "sha256": "93aa79895fe340e27ae5fd562102d5980f0938003eb1bbde669a84010779b8c9"
+    },
+    {
+      "bytes": 6520,
+      "path": "src/section.bend",
+      "sha256": "02b5c15c57b173c7eb8b4c55a1433c10c192926e91af5e3e69050b4404044aa5"
+    },
+    {
+      "bytes": 3987,
+      "path": "src/section_map.bend",
+      "sha256": "ded59d7938c02fd0876d65e37f9f90ea0cfebf3ca4bd107394342f8adbf33965"
+    },
+    {
+      "bytes": 3162,
+      "path": "src/worldgen_noise_settings.bend",
+      "sha256": "0528b4f2f1fc1ec62e624bfe1250157d6f1ade455f595c2a910bbc01f62db95e"
+    },
+    {
+      "bytes": 21362,
+      "path": "src/json.bend",
+      "sha256": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0"
+    },
+    {
+      "bytes": 3668,
+      "path": "src/worldgen_seed.bend",
+      "sha256": "ef969c2dcba507fb7b786e6e1b6957fe610145c0eb1a1eeea7ab6be942f0f110"
+    },
+    {
+      "bytes": 18049,
+      "path": "src/random.bend",
+      "sha256": "76302d587a74d2601994f6b0bc7c9000b04a65a0bbd06cc0ce643c5452eb3162"
+    },
+    {
+      "bytes": 33288,
+      "path": "src/f64.bend",
+      "sha256": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7"
+    },
+    {
+      "bytes": 7792,
+      "path": "src/worldgen_md5.bend",
+      "sha256": "302a57f3e40def50a2693d504aead2c7158c511a0255832444e43487a6232f78"
+    },
+    {
+      "bytes": 9676,
+      "path": "src/worldgen_blended_noise.bend",
+      "sha256": "b3b01809fbec7ed31fca9ca6b54974857b808603b350bb6219117642b774211f"
+    },
+    {
+      "bytes": 12999,
+      "path": "src/worldgen_perlin_noise.bend",
+      "sha256": "055b6455e494e6ce8b5a91eb996cc584d00e7409651bc1f5ce13569488252627"
+    },
+    {
+      "bytes": 3684,
+      "path": "src/worldgen_biome.bend",
+      "sha256": "594d88a954759b7479b3f51beaf3dea33ebc3d6c2c158116aa306d8fd431976a"
+    },
+    {
+      "bytes": 4835,
+      "path": "src/worldgen_noise_settings_codec.bend",
+      "sha256": "018571e6e3c3f989a922f1b2dcfc55b6c8a97bd9da75511f65eb3ffa7e2dacba"
+    }
+  ],
+  "status": "independently-admitted",
+  "term_pins": [
+    {
+      "checked_proof_sha256": "36330522d46224e98152ddaace7b6c6458bd4c7663ae9af9f221032ff2cfacc8",
+      "name": "worldgen_overworld_laws:validated_definition_retains_complete_metadata",
+      "source_body_sha256": "9b9f1415a0df2656e583da0915f723048f7c35a1bbd592d16a5e2cc292086f4e",
+      "type_sha256": "19c740b1820a31b081526d7d7bda13c38ab2d5953f208d78216cb2ef8580e355"
+    },
+    {
+      "checked_proof_sha256": "350a39a4b1022005ebd8383780f03688e308469976bd510baefdbb0601890280",
+      "name": "worldgen_overworld_laws:actual_legacy_terrain_uses_all_seed_bits",
+      "source_body_sha256": "49c06dfda1791426fe4c79b09a7838281eee4d0bfc0367f5359a7d0b934f5d37",
+      "type_sha256": "e837b5addedc061fb8d114f2e68f822b85db6aa0b4ded925852c45ab1500c480"
+    },
+    {
+      "checked_proof_sha256": "54800519b2643745bfc19e08a5ad9616df0d2494994d677ae53e9375803403ec",
+      "name": "worldgen_overworld_laws:empty_name_budget_refuses_nonempty_name",
+      "source_body_sha256": "d396c64fd712a8689bce78ee20f6557e61f8550bf42605cde2659fa23f47551c",
+      "type_sha256": "72f91549eb06f9cd45c0ab5bf6f6f3714618b3b552af147c2fba691dc2c9f70d"
+    },
+    {
+      "checked_proof_sha256": "f4a33ffffe3c0e8d7c0b08d08aa02b65eeee11f6ddcd56d275ccbc3587a614bb",
+      "name": "worldgen_overworld_laws:absent_aquifers_remain_absent",
+      "source_body_sha256": "b189a979eb922749b8bbb320e472afb8312d85712fa632b01284a659aee558d4",
+      "type_sha256": "66e67922d70329a5707d652711a6c5086db86bbc6e79b1aba93ef853c42876e8"
+    },
+    {
+      "checked_proof_sha256": "bd0cc52114c1131f235d9a34cfef2b7d38c9fcd819f332354495c90d8fdd47ac",
+      "name": "worldgen_overworld_laws:malformed_aquifers_are_refused",
+      "source_body_sha256": "b189a979eb922749b8bbb320e472afb8312d85712fa632b01284a659aee558d4",
+      "type_sha256": "a4a6eb1e0aa849512f478d4f895c7601c77f168f94e14ad36346573e7aba8f8e"
+    },
+    {
+      "checked_proof_sha256": "d2f5a1da22b03475cbb737d9751404ad483a8dd34190a3af11f76db72b27828a",
+      "name": "worldgen_overworld_laws:omitted_debug_functions_use_actual_empty_default",
+      "source_body_sha256": "b189a979eb922749b8bbb320e472afb8312d85712fa632b01284a659aee558d4",
+      "type_sha256": "6751e2ac1aa2f6f84faac7dd357e27605cbccc32abe1e5365dc3cd027e3a576a"
+    },
+    {
+      "checked_proof_sha256": "981f11836bc01a88646c1136c58197866d0f1c15e52ceaffaf47bf43ae70ce44",
+      "name": "worldgen_overworld_laws:admitted_plan_retains_saved_generation_and_loaded_definition",
+      "source_body_sha256": "79a770a06d5babe1b52f5c76b02f73585e7a136e967a2abb79172e1946a92827",
+      "type_sha256": "347d0c1b74e51e12e6978ab8a8dcdef1adab3011a56f2588635f6d5b275eb18e"
+    },
+    {
+      "checked_proof_sha256": "3592781e4f8688f9c44c88481e01f742f42eae0cde69b299b99578057b20c351",
+      "name": "worldgen_overworld_laws:invalid_plan_is_refused_before_compilation",
+      "source_body_sha256": "d19beac659642dcd50a45c1058fd2739393f244b7d233f1b79fa6be6d80076be",
+      "type_sha256": "4d8ecfbc4326fba458f0f9d6684e7089aa1e3c8721beef87bef655a01450ac62"
+    },
+    {
+      "checked_proof_sha256": "33b334a852591a1b643d1a828291c268ea9f5f57a41825c8b094862eb286e3eb",
+      "name": "worldgen_overworld_laws:refused_column_retains_complete_sampler",
+      "source_body_sha256": "a621cbbdf5c8bb4371d775894a978b0b9902bdc4ea5b6cdb32051745ad56bb76",
+      "type_sha256": "2edfd6c2502a786518dd25090f59b75e703352850d3e001b239d20836462e36e"
+    },
+    {
+      "checked_proof_sha256": "c7707ce74763de9b5bb1d582f043edfb6c6e8da1f16871f78a315de250f09142",
+      "name": "worldgen_overworld_laws:climate_router_uses_the_actual_six_axes",
+      "source_body_sha256": "4691d5bacd251da72b2549351a23080855e65d5ab91f68e5a71eae4f95ec87de",
+      "type_sha256": "a2079fe8b84d6f34fe9bc82572845eab5f3c2072efc4b37f2ce444d77c79e9ae"
+    },
+    {
+      "checked_proof_sha256": "cf2e80f6dc615d4d64132d14f2fd714c209b6325caa53f1f0588f15ec19baf98",
+      "name": "worldgen_overworld_laws:quart_to_block_preserves_java_word_arithmetic",
+      "source_body_sha256": "84c7c6c2e54197a741d253f7476e2b8feb88024a8f2923114626d74713c560f8",
+      "type_sha256": "98345aa004119a35d01c59fe0302079fa3a965f220771817e5e4a2d27bc387f2"
+    },
+    {
+      "checked_proof_sha256": "0fb515713fc9e8731e449c77ae81c60b7cb333e54590204d0d3e1292fb34c9eb",
+      "name": "worldgen_overworld_laws:fixed_biome_request_does_not_need_climate",
+      "source_body_sha256": "97b21951dd0772124d361f489a0351ddd8c86edf077d853ba99462b84018161b",
+      "type_sha256": "9d7f23e1de93d52cf3577c6d80b406a9cbe50b8ba664f82b8339c0dfe760a6ea"
+    },
+    {
+      "checked_proof_sha256": "48465ea2df86a9367953ddcf558c99b5f459f4e5b345c2714cd00bb2e0edb46e",
+      "name": "worldgen_overworld_laws:multi_noise_request_cannot_silently_choose_a_biome",
+      "source_body_sha256": "7254adac220b21343e6bbc2f280f0321f4710f464dac1274e8fbba29295c10fd",
+      "type_sha256": "1ce4b5ae73d300d5851a7f6a8018b55fdb0e4c10c781c0db459600fab65615b2"
+    }
+  ]
+}

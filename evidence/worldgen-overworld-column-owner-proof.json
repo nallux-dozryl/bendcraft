@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "status": "kernel_certified",
+  "version": "26.3",
+  "kernel_admitted_laws": [
+    "worldgen_overworld_column_laws:every_column_read_retains_complete_sampler"
+  ],
+  "exclusions": [],
+  "scope": "For every actual owned Overworld sampler, ColumnRequest and U32 budget, O.sample_column returns the exact complete sampler. The sampler includes its whole retained Plan and all BlendedNoise permutation arrays. This covers admitted real loop sampling and refused requests; it does not establish density numerical parity, output length, coordinate admissibility, final terrain generation, biome selection or material population.",
+  "proof_architecture": "Structurally smaller Nat induction on the actual O.sample_loop carries existential actual returned pairs plus producer equality and exact owner equality. Each sample composes NoiseProof.blended_owned through actual BL.sample_block. A specifically typed induction hypothesis accepts the actual next Blended owner and float value; no erased generic producer callback is used. The proof then lifts the returned pair through O.sampled, both O.column_admitted branches and the actual request_valid gate.",
+  "source": {
+    "path": "src/worldgen_overworld_column_proof.bend",
+    "bytes": 8555,
+    "sha256": "9781ed9382e818762a49db46ec0ccc7403e57ece00d78a9aeab0f4d7b3613460"
+  },
+  "joined_already_admitted_scopes": {
+    "metadata_and_admission_13": "src/worldgen_overworld_proof.bend",
+    "noise_owner_and_admission_9": "src/worldgen_noise_proof.bend",
+    "note": "The complete joined source checks; this artifact selects exactly the additional whole-column law. Prior independent scope artifacts retain their distinct verdicts."
+  },
+  "checked_term_export": {
+    "path": "build/superflat-world/reference/normal-overworld-column-publication-1791128894788324000-inputs/selected.bendtt",
+    "bytes": 731957,
+    "sha256": "9bfba571674523dc9cf5d70062ac97a9fa123576ee301dc92be1d15ef83ef58b"
+  },
+  "selection": "build/superflat-world/reference/normal-overworld-column-publication-1791128894788324000-inputs/selection.json",
+  "exact_source_snapshots": "build/superflat-world/reference/normal-overworld-column-publication-1791128894788324000-inputs/source-snapshots.json",
+  "source_pin_count": 27,
+  "source_pins_verified_before_after_kernel": "build/superflat-world/reference/normal-overworld-column-publication-kernel-1791128929944106000/source-pin-verdict.json",
+  "checked_types_proofs_and_source_bodies_unchanged": true,
+  "all_original_declaration_maps_retained": true,
+  "ordinary_source_api_export": {
+    "method": "Unmodified compiler book_load/book_valid, then exact checked-root safe_emit. Node stack4096 and heap4096 use the previously diagnosed source-stack route.",
+    "process": "build/superflat-world/reference/normal-overworld-column-publication-api-1791128894826839000/process.json",
+    "executed_script": "build/superflat-world/reference/normal-overworld-column-publication-1791128894788324000-inputs/executed-inline-source.mjs",
+    "verdict": {
+      "argv": [
+        "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "--experimental-transform-types",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/normal-overworld-column-publication-1791128894788324000-inputs/executed-inline-source.mjs"
+      ],
+      "cap_seconds": 60,
+      "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+      "exit_code": 0,
+      "group_absent": true,
+      "leader_reaped": true,
+      "pgid": 36261,
+      "pid": 36261,
+      "retry": false,
+      "seconds": 0.944819625467062,
+      "status": "passed",
+      "stderr": {
+        "bytes": 177,
+        "file": "stderr",
+        "sha1": "5d8299d83ef6f8da4efd5a23df87e8f279299440",
+        "sha256": "892d69a3c7d4216b30b652d42f4b12da9083d575c710aeaed074f1ac7b542fba"
+      },
+      "stdout": {
+        "bytes": 338,
+        "file": "stdout",
+        "sha1": "c648d60a7a12f0b3e68260589d5e4610c978280d",
+        "sha256": "d0b663baa99a87cc8457df0626d0b6b52826aae4ddff205a2782cb93a2b94502"
+      },
+      "timed_out": false
+    }
+  },
+  "independent_kernel": {
+    "process": "build/superflat-world/reference/normal-overworld-column-publication-kernel-1791128929944106000/process.json",
+    "verdict": {
+      "argv": [
+        "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/normal-overworld-column-publication-1791128894788324000-inputs/selected.bendtt"
+      ],
+      "cap_seconds": 60,
+      "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+      "exit_code": 0,
+      "group_absent": true,
+      "leader_reaped": true,
+      "pgid": 36755,
+      "pid": 36755,
+      "retry": false,
+      "seconds": 0.11383824981749058,
+      "status": "passed",
+      "stderr": {
+        "bytes": 0,
+        "file": "stderr",
+        "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 17,
+        "file": "stdout",
+        "sha1": "ba8ec8289ea6f6e6fec687b636c07f05c26d0a8b",
+        "sha256": "61b73cda11b6b665b9f99f2defd3d3b57f985c865225e942a5bdaa594a503e47"
+      },
+      "timed_out": false
+    },
+    "binary": "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+    "binary_sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7",
+    "child_LEAN_STACK_SIZE_KB": 4194304
+  },
+  "preserved_source_diagnostic_attempts": [
+    "build/superflat-world/reference/normal-overworld-column-owner-api-1791128599308167000/process.json",
+    "build/superflat-world/reference/normal-overworld-column-owner-api-1791128683866141000/process.json"
+  ],
+  "production_implementation_unchanged": true,
+  "numeric_parity_claimed_by_owner_proof": false,
+  "independent_numeric_evidence": "evidence/normal-overworld-noise-native.json",
+  "previous_passed_publication_evidence": "build/superflat-world/reference/normal-overworld-column-owner-1791128726595798000-inputs/public-evidence-before-laws-publication.json",
+  "publication_change": "Completed contract published in worldgen_overworld_column_laws with its actual owner-retention description and matching ColumnLaws proof namespace. This refresh changes no runtime, metadata13 or noise9 source.",
+  "laws_source": {
+    "path": "src/worldgen_overworld_column_laws.bend",
+    "sha256": "297b631b6c29b5db532e4983ca9e1021063a970deb62a2ef1e8ddba6c4ea1286",
+    "bytes": 451
+  }
+}

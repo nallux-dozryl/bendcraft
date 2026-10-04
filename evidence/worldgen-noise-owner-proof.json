@@ -1,0 +1,111 @@
+{
+  "status": "kernel_certified",
+  "version": "26.3",
+  "numeric_parity_claimed_by_owner_proofs": false,
+  "kernel_admitted_laws": [
+    "worldgen_noise_laws:array_get_returns_exact_owner",
+    "worldgen_noise_laws:permute_returns_exact_owner",
+    "worldgen_noise_laws:corner_hashes_returns_exact_owner",
+    "worldgen_noise_laws:perlin_get_returns_exact_owner",
+    "worldgen_noise_laws:stack_get_returns_exact_owner",
+    "worldgen_noise_laws:blended_get_returns_exact_owner",
+    "worldgen_noise_laws:invalid_config_preserves_source",
+    "worldgen_noise_laws:exhausted_perlin_constructor_preserves_source",
+    "worldgen_noise_laws:exhausted_blended_constructor_preserves_source"
+  ],
+  "source_checked_candidate_count": 9,
+  "pending_laws": [],
+  "pending_reason": null,
+  "checked_term_export": {
+    "path": "build/superflat-world/reference/normal-noise-owner-read-bridge-1791127825371466000-inputs/selected.bendtt",
+    "bytes": 772766,
+    "sha256": "084bf4a6378a410607dbb51bdc9af5f44db03062bd0c2e0eac31470da939356a"
+  },
+  "selection": "build/superflat-world/reference/normal-noise-owner-read-bridge-1791127825371466000-inputs/selection.json",
+  "exact_source_snapshots": "build/superflat-world/reference/normal-noise-owner-read-bridge-1791127825371466000-inputs/source-snapshots.json",
+  "checked_types_proofs_and_source_bodies_unchanged": true,
+  "all_original_declaration_maps_retained": true,
+  "exclusions": [],
+  "ordinary_cli_limit": "Original CLI check hit the default machine-stack limit; complete source/API check passes with Node stack4096 and heap4096.",
+  "source_api_export": {
+    "process": "build/superflat-world/reference/normal-noise-owner-read-bridge-api-1791127825448539000/process.json",
+    "executed_script": "build/superflat-world/reference/normal-noise-owner-read-bridge-1791127825371466000-inputs/executed-inline-source.mjs",
+    "verdict": {
+      "argv": [
+        "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "--experimental-transform-types",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/normal-noise-owner-read-bridge-1791127825371466000-inputs/executed-inline-source.mjs"
+      ],
+      "cap_seconds": 60,
+      "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+      "exit_code": 0,
+      "group_absent": true,
+      "leader_reaped": true,
+      "pgid": 28985,
+      "pid": 28985,
+      "retry": false,
+      "seconds": 0.7601446248590946,
+      "status": "passed",
+      "stderr": {
+        "bytes": 177,
+        "file": "stderr",
+        "sha1": "86b1ead41885dd28e4d8f91bee9b971ab8979388",
+        "sha256": "88ef8cda170eec0c8593338c4b00e9432d4b70c98f86aec5e0e8e5898ae7ba09"
+      },
+      "stdout": {
+        "bytes": 770,
+        "file": "stdout",
+        "sha1": "2391142eacb9dc4c83b282c2dcb76a86f671b1b0",
+        "sha256": "78a12ab600d7a126380d02739fca2808dfe13898a4cc0fdd4a82e840848d0039"
+      },
+      "timed_out": false
+    }
+  },
+  "independent_kernel": {
+    "process": "build/superflat-world/reference/normal-noise-owner-read-bridge-kernel-1791128016591886000/process.json",
+    "verdict": {
+      "argv": [
+        "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/normal-noise-owner-read-bridge-1791127825371466000-inputs/selected.bendtt"
+      ],
+      "cap_seconds": 60,
+      "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+      "exit_code": 0,
+      "group_absent": true,
+      "leader_reaped": true,
+      "pgid": 30100,
+      "pid": 30100,
+      "retry": false,
+      "seconds": 0.28980099968612194,
+      "status": "passed",
+      "stderr": {
+        "bytes": 0,
+        "file": "stderr",
+        "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 17,
+        "file": "stdout",
+        "sha1": "ba8ec8289ea6f6e6fec687b636c07f05c26d0a8b",
+        "sha256": "61b73cda11b6b665b9f99f2defd3d3b57f985c865225e942a5bdaa594a503e47"
+      },
+      "timed_out": false
+    },
+    "binary": "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+    "binary_sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7",
+    "child_LEAN_STACK_SIZE_KB": 4194304
+  },
+  "preserved_failed_kernel_attempts": [
+    "build/superflat-world/reference/normal-noise-owner-kernel-1791126458842744000/process.json",
+    "build/superflat-world/reference/normal-noise-owner-result-kernel-1791127118641337000/process.json"
+  ],
+  "independent_numeric_evidence": "evidence/normal-overworld-noise-native.json",
+  "scope": "Nine actual sampler ownership/admission contracts. Exact full Array/Noise/Stack/Blended returned owners, invalid configuration no-draw source retention, and zero-fuel constructor rollback. Numeric operation parity is independently tested and is not implied by these owner proofs.",
+  "proof_architecture": "Actual returned-pair existential equality/owner witnesses preserve affine arrays through each of fourteen real corner reads; actual Perlin getters, Blended stack recursion and short-circuit limit branches compose those witnesses. The repaired proof avoids the generic erased callback eta/quantity comparison without changing production code or law statements.",
+  "source_pins_verified_before_after_kernel": "build/superflat-world/reference/normal-noise-owner-read-bridge-kernel-1791128016591886000/source-pin-verdict.json",
+  "historical_independent_five_root_evidence": "build/superflat-world/reference/normal-noise-owner-independent5-1791127439499697000-inputs/public-evidence-at-five-roots.json",
+  "historical_limitation_repaired": "Source checked generic erased callback proof failed independent kernel conversion because a duplicated Data lambda quantity differed from its affine eta wrapper. Failed source/export/kernel identities remain archived. Direct actual-read returned-pair witnesses now admit all nine unchanged laws."
+}
