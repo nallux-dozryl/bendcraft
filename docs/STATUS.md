@@ -25,6 +25,12 @@ failed attempt remains retained. Focus and Spaces stayed unchanged throughout
 these hidden launches. Physical input, visible drawable acceptance, Retina
 resize/fullscreen behavior and full game performance remain open.
 
+Renderer004 is now compiling the checked bounds/span/16×16 tile repairs, scalar
+texture borrowing and 70-assertion hidden native control repair. Its image parity
+and frame performance remain pending; working003 is preserved. Independent
+backend, inventory Swap, stuck movement, terrain, recipe and resource-catalog
+owners continue implementation concurrently (see WORK_QUEUE.md).
+
 The local launcher is `build/playable-renderer-current/003/play.sh`. Normal exit
 requests the actual Bend authority's durable save before stopping the actor;
 save refusal retains the actor and private reconnect environment. The launcher
@@ -35,7 +41,7 @@ New automatic inventory-return logic passes twelve independent-kernel laws and
 The 65-law root aggregation and separate current production targets are indexed
 in [PRODUCTION_PROOFS.md](PRODUCTION_PROOFS.md). Current independent-kernel results
 include five complete menu-adapter authority laws, nine Screen/controller laws,
-seven presentation allocation/event laws, nine presentation focus/projection laws,
+eight presentation allocation/event/padding laws, nine presentation focus/projection laws,
 three saved ability/reset composition laws and 49 generation/topology roots.
 Each scope and its remaining obligations stay explicit. The first three broad
 600-second build failures, original 15.7 GiB compiler footprint, intermediate heap
