@@ -1,0 +1,126 @@
+{
+  "admitted_actor": {
+    "bytes": 9712104,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-016/actor",
+    "sha256": "ab4c16dfd01c73826f4dd7727e3f520d820b76f966302c5838ddeba0b4abfcef"
+  },
+  "current_client_blocker": {
+    "complete_C": false,
+    "elapsed_seconds": 600.8057009587064,
+    "failure": {
+      "bytes": 821,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/002/emission-failure-001.json",
+      "sha256": "865527ef351ffb9490fc6497e0c829575fba338183ce1e80212170c220c5d807"
+    },
+    "group_absent": true,
+    "limit_seconds": 600,
+    "native_binary_present": false,
+    "producer_receipt": {
+      "bytes": 31133484,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/002/private/receipt.json",
+      "sha256": "f676fc8f497d4c3d932724686ecad76dc3445b9e3c9969fd7f32c5447c0ef4e0"
+    },
+    "returncode": -15,
+    "termination_reason": "total_deadline"
+  },
+  "existing_actual_activity_basis": {
+    "actor": {
+      "bytes": 9712104,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-016/actor",
+      "sha256": "ab4c16dfd01c73826f4dd7727e3f520d820b76f966302c5838ddeba0b4abfcef"
+    },
+    "full_owner_launch_seconds": 39.9132167911157,
+    "observer_seconds": 39.09346807003021,
+    "receipt": {
+      "bytes": 5285,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/playable-renderer-current-hidden-startup-008-128-validation-002-128-startup-002.json",
+      "sha256": "7f65ba52b7d12711da02d28d965b0522dc0e0dbf17a6bd267bf76b62bac2e818"
+    },
+    "renderer": {
+      "bytes": 5905192,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/008/renderer",
+      "sha256": "3134689e2905e3b3a3ca3790f854996f9da49d8ca33b19677890cc4b10c91d04"
+    },
+    "scope": "Other owner lane: same Actor016 with renderer008, hidden real 128x128 frame, durable save and successful cleanup. Full launch duration is a readiness upper bound; it is not the generic join or isolated startup timing.",
+    "separate_monotonic_readiness_timer": false,
+    "status": "PASS"
+  },
+  "existing_owner_sources": [
+    {
+      "bytes": 10488,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_playable_client_actor004.py",
+      "sha256": "3a1dca7205873869088d7094c4f457656c54d9fc9cb14f90f07c0de9742ceebd"
+    },
+    {
+      "bytes": 88609,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_playable_client_session.py",
+      "sha256": "eee2450338f2c3fa973d341d0d6a8faa845972daa21df5a9d0f8ecfa8e782998"
+    },
+    {
+      "bytes": 92935,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_local_player_session.py",
+      "sha256": "ffa2d9d7105b2fd1eb0b1e3bbace195f3dceed75bdbe80e8814349df3545b2c1"
+    },
+    {
+      "bytes": 77636,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_remote_resource_client.py",
+      "sha256": "a99f4e77e241a430d9208ba9b00e9194b22f05267d9b2e3c0d38a4c9ba3beca6"
+    },
+    {
+      "bytes": 50859,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_playable_resource_client.py",
+      "sha256": "dc6131f31baf470a7b28b6f6feeb228e3fc69c30cc178daeb835edbc20f8d9db"
+    }
+  ],
+  "fake_heartbeat": false,
+  "host_scope": "Only owned runtime wrapper changed; existing constructor, socket client, private owner, stop/reap and cleanup helpers remain intact. Actual Popen return is journaled with full argv in R; S retains a separate owner journal. Cleanup restores the original shared Popen; cleanup exceptions remain notes on the primary registration failure and are retained in first-failure.json.",
+  "inert_validation": {
+    "Python_AST": "passed",
+    "Python_compile_without_execution": "passed",
+    "actual_product_processes_started": 0,
+    "checks": [
+      "actual_Popen_return_registered_before_readiness",
+      "JAR_and_scoped_owner_bindings_restored",
+      "single_constructor_failure_no_retry",
+      "readiness_receipt_failure_finishes_owner",
+      "journal_failure_cleans_actual_Popen_return",
+      "persistent_journal_refusal_does_not_intercept_cleanup_ps",
+      "cleanup_failure_notes_preserve_primary_registration_error"
+    ],
+    "pixel_oracle_recomputed": false,
+    "scope": "Mocked constructor/Popen/registration/receipt failures and scoped restoration only; no real ready events, transport, deadline timing or native generic pixels claimed",
+    "status": "PASS",
+    "unchanged_seven_corruption_checks_repeated": false
+  },
+  "limits": {
+    "lifetime_cap_seconds": 180,
+    "owner": "Boundary.A.PlayableBackend",
+    "owner_receipts": [
+      "attempt.json",
+      "launched.json",
+      "stdout",
+      "stderr",
+      "process.json"
+    ],
+    "post_failure_deadline_extension": false,
+    "readiness_activity": "Existing owner accepts real server.ready and renderer.ready; per-launch observed elapsed/deadline receipt written only after that return",
+    "readiness_receipt": "<lane>/backend-*/generic-backend-ready.json",
+    "set_before_launch": true,
+    "startup_cap_seconds": 120
+  },
+  "native_consumer_run": false,
+  "new_native_or_compiler_processes_started": 0,
+  "replaced_adapter": {
+    "lifetime_seconds": 120,
+    "owner": "Pair.Backend",
+    "startup_seconds": 20
+  },
+  "same_actor_binary": true,
+  "scope": "Java baked bits plus current CPU nearest/clamp, white light/tint and explicit GS seed tickets; grouped Java quads omit source traversal order, audited at all winning equal-depth hits. No Java positionRandom, AO/lightmap/atlas/GPU or vanilla frame claim.",
+  "source": {
+    "bytes": 33361,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/generic_resource_world_sample_client_runtime.py",
+    "sha256": "1aae1ad242a8e787de6ae5bda7e64f8704e754c81c992642bb9fb4baf3794125"
+  },
+  "status": "fixed_backend_limits_source_ready_native_pending"
+}

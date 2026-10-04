@@ -44,6 +44,27 @@
       "sha256": "956354e13ffb7def659ab3507c02c8f8ee4de04dae820934511d11901e0ee97f"
     }
   },
+  "backend_limits": {
+    "lifetime_cap_seconds": 180,
+    "owner": "Boundary.A.PlayableBackend",
+    "owner_receipts": [
+      "attempt.json",
+      "launched.json",
+      "stdout",
+      "stderr",
+      "process.json"
+    ],
+    "post_failure_deadline_extension": false,
+    "readiness_activity": "Existing owner accepts real server.ready and renderer.ready; per-launch observed elapsed/deadline receipt written only after that return",
+    "readiness_receipt": "<lane>/backend-*/generic-backend-ready.json",
+    "set_before_launch": true,
+    "startup_cap_seconds": 120
+  },
+  "backend_limits_validation": {
+    "bytes": 6034,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/generic_resource_world_sample_client_runtime.backend_limits.json",
+    "sha256": "b3c2599651a775b86694d6ea414c35ddf19e65de98359f08ad809aee2583e688"
+  },
   "camera": {
     "camera_XYZ": [
       0,
@@ -71,13 +92,33 @@
   },
   "client": {
     "binary_present": false,
-    "failure_scope": "Existing KeyError owned_files preparation record remains preserved; root corrected host preparation to candidate_files. No successful standalone native receipt exists at this check.",
+    "current_emission_failure": {
+      "complete_C": false,
+      "elapsed_seconds": 600.8057009587064,
+      "failure": {
+        "bytes": 821,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/002/emission-failure-001.json",
+        "sha256": "865527ef351ffb9490fc6497e0c829575fba338183ce1e80212170c220c5d807"
+      },
+      "group_absent": true,
+      "limit_seconds": 600,
+      "native_binary_present": false,
+      "producer_receipt": {
+        "bytes": 31133484,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/002/private/receipt.json",
+        "sha256": "f676fc8f497d4c3d932724686ecad76dc3445b9e3c9969fd7f32c5447c0ef4e0"
+      },
+      "returncode": -15,
+      "termination_reason": "total_deadline"
+    },
+    "failure_scope": "Host KeyError corrected to candidate_files; recovered exact historical record preserved separately. Standalone002 then hit its genuine 600-second total producer deadline: complete_C=false, returncode=-15, groups absent, no native binary or build receipt.",
+    "historical_failure_recovery": "Recovered original record of 561 bytes is byte-identical to the previously admitted SHA256; retained at preparation-failure-001.json after generic catch replaced failure.json.",
     "native_build_receipt": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/002/build.json",
     "native_build_receipt_present": false,
     "requested_binary": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/002/renderer",
     "retained_pre_emission_host_failure": {
       "bytes": 561,
-      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/002/failure.json",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/002/preparation-failure-001.json",
       "sha256": "710d6c1f2746d5be854ceac6422cf52852bec622be583fe1b4d58a33a80ae9fa"
     }
   },
@@ -137,33 +178,44 @@
     "actual_Popen_calls": 0,
     "ambient_actor_JAR_override": "pinned and caller environment restored",
     "ambient_renderer_registry_override": "pinned while private port environment retained",
+    "fixed_startup_and_lifetime_kwargs": "120 / 180 passed",
+    "owned_backend_lifecycle_checks": [
+      "actual_Popen_return_registered_before_readiness",
+      "JAR_and_scoped_owner_bindings_restored",
+      "single_constructor_failure_no_retry",
+      "readiness_receipt_failure_finishes_owner",
+      "journal_failure_cleans_actual_Popen_return",
+      "persistent_journal_refusal_does_not_intercept_cleanup_ps",
+      "cleanup_failure_notes_preserve_primary_registration_error"
+    ],
     "pixel_oracle_recomputed": false,
     "unchanged_seven_corruption_checks_repeated": false
   },
   "launch_command": "python3 tools/generic_resource_world_sample_client_runtime.py --native --client build/generic-resource-world-sample-client-native/002/renderer --generation 1",
   "native_consumer_run": false,
   "native_launch_prerequisites": [
-    "Successful standalone002 renderer plus matching build.json and immutable mapped inputs",
+    "Successful standalone generic renderer plus matching build.json and immutable mapped inputs at chosen --client path; current002 hit its genuine 600-second producer deadline before complete C and has no native artifact",
     "Retained current Actor016 Boundary.artifact admission and pinned official registry/JAR/runtime facts",
     "Existing retained desktop observer admission",
     "Fresh build/generic-resource-world-sample-client-runtime/001 directory",
-    "Root-coordinated available actor and renderer native runtime slots"
+    "Root-coordinated available actor and renderer native runtime slots",
+    "Fixed Actor owner startup 120 s / total 180 s before launch; actual owner must observe paired readiness before renderer start"
   ],
   "new_native_or_compiler_processes_started": 0,
   "prepared_oracle": {
-    "bytes": 4749,
+    "bytes": 5602,
     "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/generic_resource_world_sample_client_runtime.json",
-    "sha256": "e61687d57196effb925bc06453ebd2512705f07151f4fe46f2688a089cceeb9d"
+    "sha256": "52f5c593c2c0fffece8b1e479b53770c091c9a71bdb362bcc132449ed5676dc8"
   },
   "scope": "Java baked bits plus current CPU nearest/clamp, white light/tint and explicit GS seed tickets; grouped Java quads omit source traversal order, audited at all winning equal-depth hits. No Java positionRandom, AO/lightmap/atlas/GPU or vanilla frame claim.",
   "source": {
-    "bytes": 30978,
+    "bytes": 33361,
     "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/generic_resource_world_sample_client_runtime.py",
-    "sha256": "11f07485ec7cc8907934712e3da33cb888db7213a5cabc9d96ab2cbaa4812668"
+    "sha256": "1aae1ad242a8e787de6ae5bda7e64f8704e754c81c992642bb9fb4baf3794125"
   },
-  "status": "actor016_admitted_standalone_client_build_pending",
+  "status": "actor016_admitted_standalone_client_emission_failed_native_pending",
   "unresolved_runtime_constraints": [
     "Renderer lease lasts 100 pulses at 50 ms each, including paused worlds; initial synchronous resource load/render has no startup renewal",
-    "Existing private response deadline 5 s, observer child 60 s and backend 120 s remain actual bounded runtime constraints"
+    "Existing private response deadline 5 s and observer child 60 s remain bounded; backend now uses explicit startup 120 s / total 180 s set before each launch"
   ]
 }

@@ -11,6 +11,27 @@
     "Exact typed Core/Local/status/equipment/WG acknowledged save and cold reload",
     "Separate real glass StateNotLoaded:catalog:<id> refusal"
   ],
+  "backend_limits": {
+    "lifetime_cap_seconds": 180,
+    "owner": "Boundary.A.PlayableBackend",
+    "owner_receipts": [
+      "attempt.json",
+      "launched.json",
+      "stdout",
+      "stderr",
+      "process.json"
+    ],
+    "post_failure_deadline_extension": false,
+    "readiness_activity": "Existing owner accepts real server.ready and renderer.ready; per-launch observed elapsed/deadline receipt written only after that return",
+    "readiness_receipt": "<lane>/backend-*/generic-backend-ready.json",
+    "set_before_launch": true,
+    "startup_cap_seconds": 120
+  },
+  "backend_limits_validation": {
+    "bytes": 6034,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/generic_resource_world_sample_client_runtime.backend_limits.json",
+    "sha256": "b3c2599651a775b86694d6ea414c35ddf19e65de98359f08ad809aee2583e688"
+  },
   "commands": {
     "native_when_artifacts_are_ready": "python3 tools/generic_resource_world_sample_client_runtime.py --native --client build/generic-resource-world-sample-client-native/002/renderer --generation 1",
     "prepare": "python3 tools/generic_resource_world_sample_client_runtime.py"
@@ -88,9 +109,9 @@
   },
   "scope": "Java baked bits plus current CPU nearest/clamp, white light/tint and explicit GS seed tickets; grouped Java quads omit source traversal order, audited at all winning equal-depth hits. No Java positionRandom, AO/lightmap/atlas/GPU or vanilla frame claim.",
   "source": {
-    "bytes": 30978,
+    "bytes": 33361,
     "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/generic_resource_world_sample_client_runtime.py",
-    "sha256": "11f07485ec7cc8907934712e3da33cb888db7213a5cabc9d96ab2cbaa4812668"
+    "sha256": "1aae1ad242a8e787de6ae5bda7e64f8704e754c81c992642bb9fb4baf3794125"
   },
   "status": "source_ready_native_pending"
 }

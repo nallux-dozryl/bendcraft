@@ -17,6 +17,7 @@ import math
 import os
 import struct
 import sys
+import time
 import zipfile
 from pathlib import Path
 from unittest import mock
@@ -40,6 +41,8 @@ MODEL_REFERENCE = ROOT/'reference/model_semantics.json'
 JAR = Boundary.JAR
 REGISTRY = S.P.OFFICIAL
 WIDTH = HEIGHT = 128
+BACKEND_STARTUP_SECONDS = 120
+BACKEND_LIFETIME_SECONDS = 180
 require, pin, digest, canonical = R.require, R.pin, R.digest, R.canonical
 
 
@@ -238,6 +241,10 @@ def prepare():
                          'scope': 'Java baked bits plus current CPU nearest/clamp, white light/tint and explicit GS seed tickets; grouped Java quads omit source traversal order, audited at all winning equal-depth hits. No Java positionRandom, AO/lightmap/atlas/GPU or vanilla frame claim.'},
               'helpers': Pair.observer(),
               'pending_artifacts': {'client': str(CLIENT), 'actor': str(Boundary.A.ACTOR)},
+              'backend_limits': {'startup_seconds': BACKEND_STARTUP_SECONDS,
+                                 'lifetime_seconds': BACKEND_LIFETIME_SECONDS,
+                                 'owner': 'Boundary.A.PlayableBackend',
+                                 'post_failure_deadline_extension': False},
               'no_process_launched': True}
     return data, rgb, report
 
@@ -403,10 +410,48 @@ def sweep_owned(directory):
 
 
 def backend(binary, label, path):
-    # Pair pins MC_BLOCK_REGISTRY. Pin the original recipe JAR here as well;
-    # inherited host overrides must not change this independently authored lane.
-    with mock.patch.dict(os.environ, {'MC_GAME_JAR': str(JAR)}):
-        return Pair.Backend(binary, label, path)
+    """Reuse the parameterized Actor owner with fixed, pre-launch budgets."""
+    directory = Pair.WORK/label
+    expected = pin(binary)
+    bridge, _ = Boundary.P.retained_bridge()
+    original = Boundary.P.subprocess.Popen
+    def identity():
+        require(pin(binary) == expected, 'Admitted actor changed before launch')
+    def launch(*args, **kwargs):
+        process = original(*args, **kwargs)
+        try:
+            R.register(process, label)
+        except BaseException as primary:
+            try:
+                # R.cleanup invokes ps through the same subprocess module.
+                with mock.patch.object(Boundary.P.subprocess, 'Popen', original):
+                    R.cleanup(process)
+            except BaseException as secondary:
+                primary.add_note('Backend registration cleanup: ' + type(secondary).__name__
+                                 + ': ' + str(secondary))
+            raise
+        return process
+    # The Actor owner keeps its own journal and stop/reap path. Register the
+    # actual Popen with R as well, whose supervisor journal includes full argv.
+    with mock.patch.dict(os.environ, {'MC_GAME_JAR': str(JAR)}), Host.bindings(S, {
+            'ROOT': ROOT, 'SERVER': binary, 'activation': identity,
+            'OWNED_GROUPS': directory/'owned-groups.jsonl'}), \
+            mock.patch.object(Boundary.P.subprocess, 'Popen', launch):
+        actor = Boundary.A.PlayableBackend(directory, binary, path, bridge,
+            startup_seconds=BACKEND_STARTUP_SECONDS, lifetime_seconds=BACKEND_LIFETIME_SECONDS)
+    try:
+        exclusive(directory/'generic-backend-ready.json', {
+            'startup_cap_seconds': BACKEND_STARTUP_SECONDS,
+            'lifetime_cap_seconds': BACKEND_LIFETIME_SECONDS,
+            'started_monotonic': actor.started, 'deadline_monotonic': actor.deadline,
+            'observed_ready_after_seconds': time.monotonic() - actor.started,
+            'pid': actor.process.pid, 'argv': actor.argv,
+            'activity': 'Actual server.ready and renderer.ready observed by existing Actor owner',
+            'post_failure_deadline_extension': False})
+    except BaseException:
+        R.finish_backend(actor)
+        raise
+    return actor
 
 
 def launch_lane(binary, actor_binary, directory, data, rgb, helpers, *, refusal=False):
@@ -516,7 +561,8 @@ def native(binary, generation):
             return result
         except BaseException as error:
             exclusive(directory/'first-failure.json', {'status': 'failed',
-                'type': type(error).__name__, 'message': str(error), 'native_consumer_run': True})
+                'type': type(error).__name__, 'message': str(error),
+                'notes': getattr(error, '__notes__', []), 'native_consumer_run': True})
             raise
         finally:
             sweep_owned(directory)
