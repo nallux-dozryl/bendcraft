@@ -30,11 +30,11 @@ MEMORY_BASIS = ROOT/'build/actor-compiler-memory-001'
 MEMORY_EVIDENCE = ROOT/'evidence/actor-compiler-memory-001.json'
 SCOPE = ('Actual standalone remote_resource_catalog_client production graph, '
          'including correlated catalog frames, CW.Assets, WRF.draw_catalog, '
-         'hardware-key/menu consumer and native Window loop. Compilation alone '
+         'hardware-key/menu consumer, retained Registry demand owner and native Window loop. Compilation alone '
          'does not establish a native transport, presentation or pixel result. '
-         'The static resource profile remains an explicit coverage instrument; '
-         'registry-backed demand loading and named renderer/material requirements '
-         'remain separate consumer work.')
+         'The initial static profile is extended by actual sampled missing-family '
+         'resource loads; sprite layers, animation, tint and special-renderer '
+         'requirements remain explicit admission boundaries.')
 
 
 def configure(number):

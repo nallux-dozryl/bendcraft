@@ -1,9 +1,9 @@
 The demand planner is a pure client API over the real loaded Registry owner, the
 committed family-request inventory, a catalog, and an observed `GS.Sample`.
-Its source and 16 proposed laws are prepared. The first ordinary source-load
-attempt found a parameter-match ordering error, now repaired; source checking
-has not yet passed, and independent-kernel/native checks have not run.
-Further proof work is held for the coordinated consumer-fix capacity window.
+Its production API now passes the complete runnable generic-client source check
+in 14.740 seconds. The 16 proposed planner laws remain separately unverified;
+this source result is not an independent-kernel result. Earlier parameter-match,
+annotation and caller ownership failures are retained in their own receipts.
 The proposed laws cover named admission/refusal and already-seen branches, the
 actual startup decode call, and finalizer preservation of the supplied request
 prefix and materials under the catalog request-budget premise; they do not
@@ -69,6 +69,11 @@ loading only `additions` and replacing assets would discard prior families, and
 catalog maps cannot be merged independently of their texture slots. Keep the
 old assets/catalog and committed inventory until the candidate load and actual
 sample/frame admission succeed, then publish the coherent replacement and its
-full request inventory. No commit or installation helper is included here,
-because a host-declared successful plan is insufficient to establish that
-candidate admission. Entry/client integration is a separate coordinated change.
+full request inventory. The planner itself performs no installation effects.
+The actual runnable client now uses the
+[resource session worker](generic_resource_world_sample_resources.md), retaining
+the Registry, complete request ledger and assets. It loads a replacement only
+after a genuine missing-state observation, and admits the candidate through the
+actual frame and scene APIs before publication. Refusal retains the prior
+assets/ledger and the returned Registry owner. Changed native acceptance is
+tracked separately from source checking.

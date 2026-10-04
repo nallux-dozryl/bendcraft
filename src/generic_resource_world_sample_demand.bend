@@ -197,7 +197,7 @@ def prepared(value:Result<&2,&2,C.Error,Commitment>,owner:Owner,sample:GS.Sample
     case Done{Commitment{names,count}}:
       Owner{registry,+identity,+committed} = owner
       GS.Sample{sample_identity,tick,revision,origin,camera,cells} = sample
-      +context = Context{identity,committed,names,admission,limits,catalog,[]}
+      +context : Context = Context{identity,committed,names,admission,limits,catalog,[]}
       finished(collect_cells(cells,Owner{registry,identity,committed},context,Done{Work{MTip{},MTip{},[],count}}),context)
 def registry_guarded(value:Result<&2,&2,C.Error,Unit>,owner:Owner,+sample:GS.Sample,+catalog:Maybe<&2,C.Catalog>,+admission:Admission,+limits:Limits) -> Owner & Result<&2,&2,C.Error,Plan>:
   match value:
