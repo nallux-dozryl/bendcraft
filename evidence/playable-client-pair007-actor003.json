@@ -1,0 +1,214 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "adoption": "Public human launcher now selects verified renderer007 with immutable actor003/producer012; five changed-pair candidate cases passed before mutation, then actual public fresh-world run passed.",
+  "confidence": "high for observed hidden startup/close/save/refusal/signal boundaries; physical input and foreground/drawable/full-game acceptance remain separate",
+  "actor": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-012/actor",
+    "bytes": 7637128,
+    "sha256": "3c773cc1a70bf614724b880bed403e4dba6b2b8800515ae8b1cb040573055c38"
+  },
+  "renderer": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/007/renderer",
+    "bytes": 5550680,
+    "sha256": "71d7763bc576509a8d8b43205eeb4bb07f4541c283a6bfd75f1ea15a6a7b0130"
+  },
+  "launcher": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/play_minecraft.sh",
+    "bytes": 5020,
+    "sha256": "750f2dd4ffceb0ca0855657bccfb0892d191d5b0f954bd2a2d74ff3c5ec27345"
+  },
+  "private007_safe_launcher": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/007/play-current.sh",
+    "bytes": 5026,
+    "sha256": "b866e56f978e41945631c57bdee359bc2e94e7fb14662d012959745022980ab3"
+  },
+  "close_helper": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/play_minecraft_close.py",
+    "bytes": 3981,
+    "sha256": "814b5929018f8e29f2a943be76ddcf76781732b879d74d5e22279264257fa3c3"
+  },
+  "test_tool": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_playable_client_pair.py",
+    "bytes": 18030,
+    "sha256": "2dbc411ccbe753f9d9f469b1297c9d450a67459dc3336f5babb3db9b8664d39d"
+  },
+  "previous_launcher": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/007/current-pair-adoption-001/previous-play_minecraft.sh",
+    "bytes": 5020,
+    "sha256": "c1355c41db5711d47dc08631a674474bba210a76aaa8698e5f50fc512ef4754a"
+  },
+  "previous_close_helper": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/007/current-pair-adoption-001/previous-play_minecraft_close.py",
+    "bytes": 3981,
+    "sha256": "814b5929018f8e29f2a943be76ddcf76781732b879d74d5e22279264257fa3c3"
+  },
+  "launcher_changes_only": [
+    "renderer004 path to renderer007",
+    "matching required-artifact diagnostic",
+    "exact renderer binary SHA",
+    "new007 log directory"
+  ],
+  "private_and_public_body_identical_except_root_resolution": true,
+  "close_helper_bytes_unchanged": true,
+  "behavior_preserved": [
+    "Correlated MenuClose full authority snapshot before durable save",
+    "Returned crafting/carried items before acknowledged save",
+    "Full capacity refusal retains actor and does not claim or publish save",
+    "Owner-only0600 reconnect file and PID/executable identity check",
+    "SIGINT130/SIGTERM143 request close/save before exit"
+  ],
+  "checks": [
+    {
+      "case": "fresh",
+      "route": "candidate",
+      "receipt": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/playable-client-pair007-actor003-fresh-001.json",
+        "bytes": 6627,
+        "sha256": "b2a6c341a84c076d8f7ee0f185b8181b3cf268ce92560faa0254405a9d98f893"
+      },
+      "seconds": 6.216777624562383,
+      "frame_render_present_milliseconds": [
+        170,
+        168
+      ],
+      "focus_and_Spaces_unchanged": true,
+      "complete_cleanup": true,
+      "save_acknowledged": true,
+      "capacity_refusal_retains_actor_and_old_saved_bytes": false
+    },
+    {
+      "case": "return",
+      "route": "candidate",
+      "receipt": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/playable-client-pair007-actor003-return-001.json",
+        "bytes": 7716,
+        "sha256": "0c05dd555b3438018d4f6f64e0489e1d48981567abd08ba81464c8aab47a6f38"
+      },
+      "seconds": 4.73742441739887,
+      "frame_render_present_milliseconds": [
+        99
+      ],
+      "focus_and_Spaces_unchanged": true,
+      "complete_cleanup": true,
+      "save_acknowledged": true,
+      "capacity_refusal_retains_actor_and_old_saved_bytes": false
+    },
+    {
+      "case": "capacity",
+      "route": "candidate",
+      "receipt": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/playable-client-pair007-actor003-capacity-001.json",
+        "bytes": 7994,
+        "sha256": "74058b730079c2a8badcd7b9417052ddb31084737324aba6ab0e6cb8c70972e9"
+      },
+      "seconds": 2.7242116248235106,
+      "frame_render_present_milliseconds": [
+        49
+      ],
+      "focus_and_Spaces_unchanged": true,
+      "complete_cleanup": true,
+      "save_acknowledged": false,
+      "capacity_refusal_retains_actor_and_old_saved_bytes": true
+    },
+    {
+      "case": "interrupt",
+      "route": "candidate",
+      "receipt": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/playable-client-pair007-actor003-interrupt-001.json",
+        "bytes": 7836,
+        "sha256": "fff98389fbd19e1da639edcbc85e3503932d43351dc72447adb1d952b4d9eddb"
+      },
+      "seconds": 5.783137290738523,
+      "frame_render_present_milliseconds": [],
+      "focus_and_Spaces_unchanged": true,
+      "complete_cleanup": true,
+      "save_acknowledged": true,
+      "capacity_refusal_retains_actor_and_old_saved_bytes": false
+    },
+    {
+      "case": "terminate",
+      "route": "candidate",
+      "receipt": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/playable-client-pair007-actor003-terminate-001.json",
+        "bytes": 8183,
+        "sha256": "17f7fe2ab451388b98478b13cd40116ec1af31275d8c0623b1b2bdaed10339c1"
+      },
+      "seconds": 5.591710709035397,
+      "frame_render_present_milliseconds": [
+        215
+      ],
+      "focus_and_Spaces_unchanged": true,
+      "complete_cleanup": true,
+      "save_acknowledged": true,
+      "capacity_refusal_retains_actor_and_old_saved_bytes": false
+    },
+    {
+      "case": "fresh",
+      "route": "public",
+      "receipt": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/playable-client-pair007-actor003-fresh-002.json",
+        "bytes": 6541,
+        "sha256": "894f5c4aa94a7f1a549c412f897627a7937fbc38c1b182347df9436419909457"
+      },
+      "seconds": 11.497933332808316,
+      "frame_render_present_milliseconds": [
+        620,
+        424
+      ],
+      "focus_and_Spaces_unchanged": true,
+      "complete_cleanup": true,
+      "save_acknowledged": true,
+      "capacity_refusal_retains_actor_and_old_saved_bytes": false
+    }
+  ],
+  "foreground_launches": 0,
+  "all_observed_focus_and_Spaces_unchanged": true,
+  "all_process_groups_reaped_or_explicit_capacity_retention_then_test_cleanup": true,
+  "unchanged_renderer_evidence_reused": [
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/playable-renderer-current-build-007.json",
+      "bytes": 5250,
+      "sha256": "8dc130b366380d2c0e4a3983676e3ba8b56dcb88e417646d13701d6d02160e0a"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/playable-renderer-current-full-pixels-007.json",
+      "bytes": 3068,
+      "sha256": "66c569283f9c0ae82413f066af2602c7817ed553e2e15060cca1c00ec2343184"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/playable-renderer-current-fresh-pixels-007.json",
+      "bytes": 3257,
+      "sha256": "6b3580badcb943f71fcc8547683cbc84e572de4f52f7c9ecde85769a82b8eadd"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/playable-renderer-current-paired-performance-004-007.json",
+      "bytes": 6068,
+      "sha256": "b6e0c390b7bedc269beec6b3b8e8354d8b6ec3a978cf68ff8b281e4d7ea805c3"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/mesh_render_performance_reader_007_recert.json",
+      "bytes": 19096,
+      "sha256": "18ad142aacbe6782bb1b03e888663719fb11283f85020e1846e62f0b2e7bc13c"
+    }
+  ],
+  "prior_quiet_performance": {
+    "baseline004_ms": 937.5,
+    "candidate007_ms": 131.5,
+    "baseline_over_candidate": 7.129277566539924,
+    "reduction_percent": 85.97333333333333
+  },
+  "prior_quiet_performance_scope": "Counterbalanced004A/007A/007B/004B actualfresh104section256visibleblock1920x1080scene/output100%,480x270HUD,2CPUworkers,traceoff,oldactor010identical. No competing observed Bend/Node/compiler/Java job at each start or throughout250ms process monitoring; normalOS/backgroundapps untouched. Includes render/composition/Window.frame; noFPS/inputlatency/fullMinecraftbenchmark.",
+  "current_acceptance_timings_are_not_dedicated_benchmarks": true,
+  "not_rerun": [
+    "Unchanged broad actor physics and actor003 full network/save corpus",
+    "Unchanged renderer007 all-RGB pixel oracle",
+    "Independent18-law Mcc8 recertification"
+  ],
+  "human_launch": "./tools/play_minecraft.sh",
+  "hidden_reproduction": "BEND_MINECRAFT_LAUNCH_MODE=hidden python tools/test_playable_client_pair.py fresh; other case names: return,capacity,interrupt,terminate; --candidate selects retained new007 safe helper",
+  "root_docs_owned_by_parent": true,
+  "actor013_dependency": false,
+  "physical_keys_claim": false,
+  "full_goal_completion_claim": false
+}

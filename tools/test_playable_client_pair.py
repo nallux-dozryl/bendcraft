@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Actual renderer004/actor003 launch and close/save boundary checks."""
+"""Actual renderer007/actor003 launch and close/save boundary checks."""
 import argparse, copy, csv, json, os, re, shlex, shutil, signal, socket, stat, subprocess, sys, threading, time
 from pathlib import Path
 import test_playable_client_actor as A
@@ -12,8 +12,9 @@ S=P.S
 ROOT=Path(__file__).resolve().parents[1]
 LAUNCH=ROOT/'tools/play_minecraft.sh'
 CLOSE=ROOT/'tools/play_minecraft_close.py'
-RENDERER=ROOT/'build/playable-renderer-current/004/renderer'
-WORK=ROOT/'build/playable-renderer-current/004'
+RENDERER=ROOT/'build/playable-renderer-current/007/renderer'
+WORK=ROOT/'build/playable-renderer-current/007'
+CANDIDATE_LAUNCH=WORK/'play-current.sh'
 
 
 def full_authority(full, craft, carried, opened, revision):
@@ -102,11 +103,11 @@ def close_fixture(directory, case):
     return backend,path,record,expected,after,connection,initial
 
 
-def signal_after_frame(stdout,connection,number,stop,result):
+def signal_after_frame(stdout,connection,number,stop,result,launch):
     """Signal the actual launcher after its first real presented frame."""
     try:
         deadline=time.monotonic()+50
-        marker=str(LAUNCH)+' --reconnect '+str(connection)
+        marker=str(launch)+' --reconnect '+str(connection)
         while time.monotonic()<deadline and not stop.wait(.01):
             if not stdout.exists() or b'"event":"client.frame"' not in stdout.read_bytes():continue
             rows=subprocess.check_output(['/bin/ps','-axo','pid=,args='],text=True).splitlines()
@@ -119,19 +120,20 @@ def signal_after_frame(stdout,connection,number,stop,result):
     except BaseException as cause:result['error']=type(cause).__name__+': '+str(cause)
 
 
-def run(case):
+def run(case, *, candidate=False):
+    launch=CANDIDATE_LAUNCH if candidate else LAUNCH
     number=1
     while (WORK/('pair-actor003-'+case+'-'+str(number).zfill(3))).exists():number+=1
     directory=WORK/('pair-actor003-'+case+'-'+str(number).zfill(3));directory.mkdir()
     shutil.copyfile(__file__,directory/'frozen-test_playable_client_pair.py')
-    evidence=ROOT/('evidence/playable-client-pair004-actor003-'+case+'-'+str(number).zfill(3)+'.json')
-    expected={A.ACTOR:'3c773cc1a70bf614724b880bed403e4dba6b2b8800515ae8b1cb040573055c38',RENDERER:'0e5bac4aa6e4ff36232e4c25ed67cda6ac2e73bc45d378ae5a597c66ed7e8399'}
+    evidence=ROOT/('evidence/playable-client-pair007-actor003-'+case+'-'+str(number).zfill(3)+'.json')
+    expected={A.ACTOR:'3c773cc1a70bf614724b880bed403e4dba6b2b8800515ae8b1cb040573055c38',RENDERER:'71d7763bc576509a8d8b43205eeb4bb07f4541c283a6bfd75f1ea15a6a7b0130'}
     for path,value in expected.items():S.require(R.pin(path)['sha256']==value,'Current pair binary changed')
     observer=Pair.observer()['observer']['artifact']
-    inputs={str(path):R.pin(path) for path in [A.ACTOR,RENDERER,LAUNCH,CLOSE,Path(__file__),S.P.OFFICIAL,R.PC.JAR,ROOT/'generated/reference_item_metadata.tsv',Path(observer)]}
+    inputs={str(path):R.pin(path) for path in [A.ACTOR,RENDERER,launch,CLOSE,Path(__file__),S.P.OFFICIAL,R.PC.JAR,ROOT/'generated/reference_item_metadata.tsv',Path(observer)]}
     os.environ['BEND_MINECRAFT_LAUNCH_MODE']='hidden';os.environ.pop('BEND_MINECRAFT_FRAME_DIR',None)
     backend=None;signal_thread=None;signal_stop=threading.Event();signal_result={};signal_number={'interrupt':signal.SIGINT,'terminate':signal.SIGTERM}.get(case)
-    report={'status':'FAIL','case':case,'inputs':inputs,'foreground_launches':0,'scope':'Actualrenderer004/actor003 fresh or reconnect launcher, MenuClose and durable save. Physical keyboard/mouse and whole game parity are not asserted.'}
+    report={'status':'FAIL','case':case,'launcher_route':'candidate' if candidate else 'public','inputs':inputs,'foreground_launches':0,'scope':'Actualrenderer007/actor003 fresh or reconnect launcher, MenuClose and durable save. Physical keyboard/mouse and whole game parity are not asserted.'}
     try:
         if case=='fresh':
             path=directory/'world.nbt';S.require(not path.exists(),'Fresh file existed')
@@ -149,8 +151,8 @@ def run(case):
             if signal_number is not None:arguments=arguments[:2]+arguments[4:]
         stdout,stderr=directory/'client.stdout',directory/'client.stderr'
         if signal_number is not None:
-            signal_thread=threading.Thread(target=signal_after_frame,args=(stdout,connection,signal_number,signal_stop,signal_result),daemon=True);signal_thread.start()
-        with A.H.bindings(R,{'WORK':directory}):process=R.bounded([observer,LAUNCH,stdout,stderr,*arguments],90,'observed-launch')
+            signal_thread=threading.Thread(target=signal_after_frame,args=(stdout,connection,signal_number,signal_stop,signal_result,launch),daemon=True);signal_thread.start()
+        with A.H.bindings(R,{'WORK':directory}):process=R.bounded([observer,launch,stdout,stderr,*arguments],90,'observed-launch')
         signal_stop.set()
         if signal_thread is not None:
             signal_thread.join(1);S.require(signal_result.get('signal')==signal_number and 'error' not in signal_result,'Actual launcher signal: '+str(signal_result));report['signal']=signal_result
@@ -205,4 +207,4 @@ def run(case):
 
 
 if __name__=='__main__':
-    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('case',choices=['fresh','return','capacity','interrupt','terminate']);run(parser.parse_args().case)
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('case',choices=['fresh','return','capacity','interrupt','terminate']);parser.add_argument('--candidate',action='store_true',help='Test the new007 launcher before public adoption');args=parser.parse_args();run(args.case,candidate=args.candidate)

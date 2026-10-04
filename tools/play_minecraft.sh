@@ -2,15 +2,15 @@
 set -euo pipefail
 root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 actor="$root/build/compiler-producer-diagnostic-012/actor"
-renderer="$root/build/playable-renderer-current/004/renderer"
+renderer="$root/build/playable-renderer-current/007/renderer"
 python='/Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3'
 cd "$root"
 if [ ! -x "$actor" ] || [ ! -x "$renderer" ] || [ ! -x "$python" ]; then
-  echo "Current actor012, renderer004 and bundled Python are required." >&2; exit 1
+  echo "Current actor012, renderer007 and bundled Python are required." >&2; exit 1
 fi
 "$python" - "$actor" "$renderer" <<'CHECK'
 import hashlib,sys
-for path,expected in zip(sys.argv[1:],['3c773cc1a70bf614724b880bed403e4dba6b2b8800515ae8b1cb040573055c38','0e5bac4aa6e4ff36232e4c25ed67cda6ac2e73bc45d378ae5a597c66ed7e8399']):
+for path,expected in zip(sys.argv[1:],['3c773cc1a70bf614724b880bed403e4dba6b2b8800515ae8b1cb040573055c38','71d7763bc576509a8d8b43205eeb4bb07f4541c283a6bfd75f1ea15a6a7b0130']):
     if hashlib.sha256(open(path,'rb').read()).hexdigest()!=expected:
         sys.exit('Current playable binary changed: '+path)
 CHECK
@@ -35,7 +35,7 @@ export MC_RENDER_TOKEN="${MC_RENDER_TOKEN:-$(/usr/bin/uuidgen)}"
 export MC_RENDER_EPOCH="${MC_RENDER_EPOCH:-$(/usr/bin/uuidgen | /usr/bin/tr -d '-')}"
 export MC_DEV_TOKEN="${MC_DEV_TOKEN:-$(/usr/bin/uuidgen)}"
 export BEND_MINECRAFT_LAUNCH_MODE="${BEND_MINECRAFT_LAUNCH_MODE:-human}"
-logs=$(/usr/bin/mktemp -d "$root/build/playable-renderer-current/004/current-launch.XXXXXX")
+logs=$(/usr/bin/mktemp -d "$root/build/playable-renderer-current/007/current-launch.XXXXXX")
 if [ -z "$reconnect" ]; then
   "$actor" --gpu off --threads 2 -- --game-mode creative --sine "$root/generated/reference_mth_sin.f32" >"$logs/actor.stdout" 2>"$logs/actor.stderr" &
   actor_pid=$!
