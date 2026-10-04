@@ -13,7 +13,7 @@ import test_remote_resource_client as R
 import test_local_player_session as S
 import test_fall_reset_world_continuation_r2 as H
 ROOT=Path(__file__).resolve().parents[1]
-WORK=ROOT/'build/compiler-producer-diagnostic-018'
+WORK=ROOT/'build/compiler-producer-diagnostic-019'
 SOURCE=WORK/'source'
 ACTOR=WORK/'actor'
 OLD=ROOT/'build/compiler-producer-diagnostic-012'
@@ -134,7 +134,7 @@ def build():
             with (WORK/name).open('x') as output:output.write(text)
         inputs={**original,**{str(path):pin(path)['sha256'] for path in [WORK/name for name in ('comp_instrumented.ts','run.py','diagnose.mjs')]+[PRIVATE/name for name in PRIVATE_PINS]+[SOURCE/'remote_resource_server.bend',SOURCE/'source-map.json',WORK/'runtime-inputs.json']+[Path(row['mapped']['path']) for row in runtime['files']]}}
         limits={'heap_mib':8192,'total_seconds':600,'silence_only_termination':False,'sampled_rss_bytes':8589934592}
-        R.write(WORK/'manifest.json',{'scope':'Actor004/producer018 joins the sole live cooking owner, original-JAR cooking/fuel startup, authenticated light/cooking discovery and physical bodies in the atomic world save. Includes the native-verified numeric continuation fix. Retains private65536-byte framing, crafting, prospective menu publication, generic samples and moving receiver. Tested private WeakMap/per-function producer; original checker/compiler unchanged. Native cooking consumer is separate; no cache promotion or compiler-wide certification.','files':inputs,'limits':limits,'entry':str(SOURCE/'remote_resource_server.bend')},True)
+        R.write(WORK/'manifest.json',{'scope':'Actor004/producer019 boxes the sole live cooking owner and joins strict pending-effect recovery to original-JAR cooking/fuel startup, authenticated light/cooking discovery and physical bodies in the atomic world save. This changed source addresses the retained018 native argument-limit failure; successful source typing and layout reduction do not establish native completion. Includes the native-verified numeric continuation fix. Retains private65536-byte framing, crafting, prospective menu publication, generic samples and moving receiver. Tested private WeakMap/per-function producer; original checker/compiler unchanged. Native cooking consumer is separate; no cache promotion or compiler-wide certification.','files':inputs,'limits':limits,'entry':str(SOURCE/'remote_resource_server.bend')},True)
         with H.bindings(R,{'WORK':WORK}):
             emitted=R.bounded([sys.executable,str(WORK/'run.py')],605,'emission-process')
             R.process_ok(emitted)
@@ -156,8 +156,8 @@ def build():
         R.process_ok(compiled)
         R.require(Path(compiled['stderr']['path']).read_bytes()==b'' and pin(c)==cpin and pin('/usr/bin/clang')==clangpin,'Unexpected native compiler diagnostic or input drift')
     R.require(pin(ACTOR)['sha256']!=pin(OLD/'actor')['sha256'],'New actor reused old binary')
-    done={'status':'PASS','generation':'immutable-actor004/producer018','binary':pin(ACTOR),'source_map':pin(SOURCE/'source-map.json'),'runtime_inputs':pin(WORK/'runtime-inputs.json'),'entry':pin(SOURCE/'remote_resource_server.bend'),'C':cpin,'producer':pin(WORK/'receipt.json'),'source_API':pin(ROOT.parent/'bend/bend2/bend.ts'),'private_compiler':pin(WORK/'comp_instrumented.ts'),'original_compiler':pin(ROOT.parent/'bend/bend2/comp.ts'),'loaded_source_pins':pin(WORK/'loaded-source-pins.json'),'final_source_pins':pin(WORK/'final-source-pins.json'),'emission_seconds':receipt['seconds'],'sampled_peak_RSS_bytes':receipt['sampled_peak_rss_bytes'],'clang':{'command':command,'SDKROOT':sdk,'seconds':compiled['seconds'],'process':pin(WORK/'native-build-process/result.full.json')},'retries':0,'product_cache_promoted':False,'behavior':'pending actual native cooking/socket/save/reload consumer'}
-    R.write(result,done,True);R.write(ROOT/'evidence/playable-client-actor004-build-018.json',done,True)
+    done={'status':'PASS','generation':'immutable-actor004/producer019','binary':pin(ACTOR),'source_map':pin(SOURCE/'source-map.json'),'runtime_inputs':pin(WORK/'runtime-inputs.json'),'entry':pin(SOURCE/'remote_resource_server.bend'),'C':cpin,'producer':pin(WORK/'receipt.json'),'source_API':pin(ROOT.parent/'bend/bend2/bend.ts'),'private_compiler':pin(WORK/'comp_instrumented.ts'),'original_compiler':pin(ROOT.parent/'bend/bend2/comp.ts'),'loaded_source_pins':pin(WORK/'loaded-source-pins.json'),'final_source_pins':pin(WORK/'final-source-pins.json'),'emission_seconds':receipt['seconds'],'sampled_peak_RSS_bytes':receipt['sampled_peak_rss_bytes'],'clang':{'command':command,'SDKROOT':sdk,'seconds':compiled['seconds'],'process':pin(WORK/'native-build-process/result.full.json')},'retries':0,'product_cache_promoted':False,'behavior':'pending actual native cooking/socket/save/reload consumer'}
+    R.write(result,done,True);R.write(ROOT/'evidence/playable-client-actor004-build-019.json',done,True)
     print(json.dumps({'status':done['status'],'binary':done['binary'],'emission_seconds':done['emission_seconds'],'clang_seconds':compiled['seconds']}),flush=True)
 
 
@@ -167,7 +167,7 @@ def main():
     args=parser.parse_args()
     if args.snapshot_only:
         mapping=snapshot()
-        print(json.dumps({'status':'frozen-production-source','generation':'immutable-actor004/producer018',
+        print(json.dumps({'status':'frozen-production-source','generation':'immutable-actor004/producer019',
             'source_map':pin(SOURCE/'source-map.json'),'runtime_inputs':pin(WORK/'runtime-inputs.json'),
             'project_files':len(mapping['files'])}),flush=True)
     else:build()

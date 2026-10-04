@@ -7,6 +7,8 @@ import ./player_item_definitions.bend as D
 import ./world_generation_settings.bend as WG
 import ./extended_persistence.bend as E
 import ./cooking_block_entity_codec.bend as CB
+import ./cooking_world_store.bend as Store
+import ./cooking_effect_recovery.bend as Effects
 
 # The inventory ABI and existing empty-cooking payload remain intact. Cooking
 # bodies travel inside the same Core/extension atomic publication, never in a
@@ -14,7 +16,7 @@ import ./cooking_block_entity_codec.bend as CB
 type Body is Data:
   Body{position:C.Position,bytes:List<&2,U32>}
 type Saved is Type:
-  Saved{player:I.Saved,bodies:List<&2,Body>}
+  Saved{player:I.Saved,bodies:List<&2,Body>,pending:List<&2,Store.Effect>}
 
 def nbt_limits() -> N.Limits:
   N.default_limits()
@@ -64,14 +66,29 @@ def payload(+bodies:List<&2,Body>,player:List<&2,U32>) -> Result<&2,&2,String,Li
         I.require(unique_bodies(bodies),"duplicate cooking body position")
         N.encode_with(nbt_limits(),root(player,bodies))
 
-def encoded(+bodies:List<&2,Body>,result:I.Saved & Result<&2,&2,String,List<&2,U32>>) -> Saved & Result<&2,&2,String,List<&2,U32>>:
+def recovery_root(player:List<&2,U32>,bodies:List<&2,Body>,effects:List<&2,U32>) -> N.Root:
+  N.Root{P.text("bendex:local-player-cooking-record"),N.Compound{[
+    P.member("format",N.Int{2}),P.member("player",N.ByteArray{player}),
+    P.member("bodies",N.ListTag{10,body_values(bodies)}),
+    P.member("effects",N.ByteArray{effects})]}}
+
+def payload_pending(+bodies:List<&2,Body>,pending:List<&2,Store.Effect>,player:List<&2,U32>) -> Result<&2,&2,String,List<&2,U32>>:
+  match pending:
+    case Nil{}: payload(bodies,player)
+    case head <> rest:
+      do Result<&2,&2,String,List<&2,U32>>:
+        I.require(unique_bodies(bodies),"duplicate cooking body position")
+        effects : List<&2,U32> <- Effects.encode(nbt_limits(),head <> rest)
+        N.encode_with(nbt_limits(),recovery_root(player,bodies,effects))
+
+def encoded(+bodies:List<&2,Body>,+pending:List<&2,Store.Effect>,result:I.Saved & Result<&2,&2,String,List<&2,U32>>) -> Saved & Result<&2,&2,String,List<&2,U32>>:
   (player,status) = result
-  (Saved{player,bodies},Result.bind(&2,&2,String,List<&2,U32>,List<&2,U32>,status,
-    bytes => payload(bodies,bytes)))
+  (Saved{player,bodies,pending},Result.bind(&2,&2,String,List<&2,U32>,List<&2,U32>,status,
+    bytes => payload_pending(bodies,pending,bytes)))
 
 def encode(saved:Saved) -> Saved & Result<&2,&2,String,List<&2,U32>>:
-  Saved{player,bodies} = saved
-  encoded(bodies,I.encode(player))
+  Saved{player,bodies,pending} = saved
+  encoded(bodies,pending,I.encode(player))
 
 def body_decoded(value:N.Value) -> Result<&2,&2,String,Body>:
   do Result<&2,&2,String,Body>:
@@ -102,27 +119,52 @@ def bodies_value(value:N.Value) -> Result<&2,&2,String,List<&2,Body>>:
     case N.ListTag{10,values}: body_list(values)
     case _: Fail{"cooking bodies require Compound list"}
 
-def wrap(bodies:List<&2,Body>,result:Result<&2,&1,String,I.Saved>) -> Result<&2,&1,String,Saved>:
+def wrap(bodies:List<&2,Body>,pending:List<&2,Store.Effect>,result:Result<&2,&1,String,I.Saved>) -> Result<&2,&1,String,Saved>:
   match result:
     case Fail{message}: Fail{message}
-    case Done{player}: Done{Saved{player,bodies}}
+    case Done{player}: Done{Saved{player,bodies,pending}}
 
 type Projection is Data:
-  Projection{player:List<&2,U32>,bodies:List<&2,Body>}
+  Projection{player:List<&2,U32>,bodies:List<&2,Body>,pending:List<&2,Store.Effect>}
 
-def projection(value:N.Value) -> Result<&2,&2,String,Projection>:
+def projection_legacy(value:N.Value) -> Result<&2,&2,String,Projection>:
   do Result<&2,&2,String,Projection>:
     +fields : List<&2,P.Field> <- I.schema(List<&2,P.Field>,P.fields(value,["format","player","bodies"]))
     format : U32 <- I.schema(U32,P.int_value(P.field(fields,"format"),"format"))
     I.require(U32.is_eq(format,1),"unsupported cooking payload format")
     player : List<&2,U32> <- I.byte_array(P.field(fields,"player"))
     bodies : List<&2,Body> <- bodies_value(P.field(fields,"bodies"))
-    return Projection{player,bodies}
+    return Projection{player,bodies,[]}
+
+def projection_recovery(value:N.Value) -> Result<&2,&2,String,Projection>:
+  do Result<&2,&2,String,Projection>:
+    +fields : List<&2,P.Field> <- I.schema(List<&2,P.Field>,P.fields(value,["format","player","bodies","effects"]))
+    format : U32 <- I.schema(U32,P.int_value(P.field(fields,"format"),"format"))
+    I.require(U32.is_eq(format,2),"unsupported cooking recovery payload format")
+    player : List<&2,U32> <- I.byte_array(P.field(fields,"player"))
+    bodies : List<&2,Body> <- bodies_value(P.field(fields,"bodies"))
+    bytes : List<&2,U32> <- I.byte_array(P.field(fields,"effects"))
+    +pending : List<&2,Store.Effect> <- Effects.decode(nbt_limits(),bytes)
+    I.require(Bool.not(List.is_empty(&2,Store.Effect,pending)),"empty cooking recovery payload")
+    return Projection{player,bodies,pending}
+
+def projection_shape(value:N.Value,legacy:Bool) -> Result<&2,&2,String,Projection>:
+  match legacy:
+    case True{}: projection_legacy(value)
+    case False{}: projection_recovery(value)
+
+# Each selected schema still requires exactly its fields and its version.
+# This avoids accepting optional, duplicate or unknown wrapper members.
+def projection(value:N.Value) -> Result<&2,&2,String,Projection>:
+  match value:
+    case N.Compound{+members}:
+      projection_shape(N.Compound{members},Nat.is_eq(List.length(&2,N.Member,members),3n))
+    case _: Fail{"cooking payload requires Compound"}
 
 def projected(definitions:D.Catalog,result:Result<&2,&2,String,Projection>) -> Result<&2,&1,String,Saved>:
   match result:
     case Fail{message}: Fail{message}
-    case Done{Projection{player,bodies}}: wrap(bodies,I.decode_with(definitions,1,player))
+    case Done{Projection{player,bodies,pending}}: wrap(bodies,pending,I.decode_with(definitions,1,player))
 
 def cooking_root(definitions:D.Catalog,root:N.Root) -> Result<&2,&1,String,Saved>:
   N.Root{name,value} = root
@@ -132,7 +174,7 @@ def named(+definitions:D.Catalog,+root:N.Root,result:Result<&2,&2,String,String>
   match result:
     case Fail{message}: Fail{message}
     case Done{"bendex:local-player-cooking-record"}: cooking_root(definitions,root)
-    case Done{other}: wrap([],I.decoded_with(definitions,Done{root}))
+    case Done{other}: wrap([],[],I.decoded_with(definitions,Done{root}))
 
 def parsed(definitions:D.Catalog,result:Result<&2,&2,String,N.Root>) -> Result<&2,&1,String,Saved>:
   match result:
@@ -147,7 +189,7 @@ def decode_with(definitions:D.Catalog,schema:U32,bytes:List<&2,U32>) -> Result<&
     case _: Fail{"unsupported local-player-record schema"}
 
 def initial_with(definitions:D.Catalog,creative:Bool,generation:WG.Settings,unit:Unit) -> Result<&2,&1,String,Saved>:
-  wrap([],I.initial_with(definitions,creative,generation,unit))
+  wrap([],[],I.initial_with(definitions,creative,generation,unit))
 
 def refuse_core_only(unit:Unit) -> Result<&2,&1,String,Saved>:
   Fail{"Core-only or plain-Player saves require explicit LocalPlayer migration"}

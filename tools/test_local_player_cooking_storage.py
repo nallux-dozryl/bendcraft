@@ -20,6 +20,9 @@ EXPECTED = [
     'physical root UTF16 duplicate extras types and raw bits retained',
     'malformed known body refuses extras merge',
     'noncompound known body refuses extras merge',
+    'pending effects retain order coordinates and player payload in format2',
+    'empty recovery payload refuses noncanonical format2',
+    'recovery effects require complete ByteArray',
 ]
 
 

@@ -3,6 +3,43 @@
 Target: Minecraft Java 26.3. Compiler: Bend 2.0.35. The full goal remains active
 and incomplete; the current build is a limited integrated client.
 
+The separate generic003 resource client passes two hidden native frames with
+all 32,768 pixels equal to the pinned Java geometry/current CPU/HUD oracle,
+complete socket samples, a full durable save and cold restoration. It retains
+the explicit missing-state refusal for glass. This bounded asset profile is
+not the public launcher; actual registry retention and demand loading are
+being joined to its client lifecycle. See
+`evidence/generic_resource_world_sample_client_runtime_001.json`.
+
+Actor018's frozen cooking startup/tick/body-save graph passes the complete
+original checker with 7,710 declarations and zero holes. Its native producer
+naturally rejects the flattened argument limit after 280.193 seconds and
+nine ownership passes, at 3,976,593,408 bytes peak sampled RSS. No C or binary
+was created; all owned groups were reaped. This was not a timeout or memory
+kill. The next source generation boxes the complete cooking sidecar through
+an explicitly retained affine recursive tail. See
+`evidence/playable-client-actor004-build-failure-018.json` and
+`evidence/playable-client-actor004-source-018.json`.
+
+The changed019 graph passes the full original checker with 7,786 declarations,
+zero holes and no declaration selection. Read-only original layout inspection
+shows the cooking sidecar reduced from 23 words to one box, the Session from
+72 to 50 words, and one cooking-return continuation from 237 to 215 declared
+parameters. This does not identify the failed generated capture or guarantee
+the native argument guard will pass. The immutable019 producer is running;
+the failed018 generation is retained. See
+`evidence/local-player-cooking-source-019.json` and
+`evidence/local-player-cooking-layout-019.json`.
+
+Cooking storage now has a strict format 2 recovery queue inside the same
+atomic Core/player/body save. Twelve actual Bend JavaScript guards pass;
+empty queues preserve the earlier format 1 and empty-inventory bytes exactly.
+The current safe effect facade retains unavailable deliveries. Real owned
+item/XP spawning and RNG consumption are being implemented and joined; this
+recovery encoding does not establish effect delivery. Native cooking actor
+and interrupted-save acceptance remain pending. The public launcher remains
+the verified017/008 pair below.
+
 Actor004's immutable producer016 builds original-JAR crafting startup,
 retained crafting context, prospective menu-reply publication, generic sampling
 and the moving runtime receiver. Its actual renderer008 hidden pair passes in
