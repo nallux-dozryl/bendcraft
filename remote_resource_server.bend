@@ -213,15 +213,16 @@ def startup_catalogs(jar:String,+metadata:JSON.Value,+definitions:ItemDefinition
 
 # Enumerate the actual owner and return its exact section trie. Enabled light
 # keys encode block origins, while Core keys encode section coordinates.
-def terrain_enabled_origin(rest:List<&2,String>,entries:Map<&2,Bool>,status:Result<&2,&2,LightWorld.Error,Core.Position>) -> Result<&2,&2,String,Map<&2,Bool>>:
+def terrain_enabled_origin(entries:Map<&2,Bool>,status:Result<&2,&2,LightWorld.Error,Core.Position>,
+    next:Map<&2,Bool> -> Result<&2,&2,String,Map<&2,Bool>>) -> Result<&2,&2,String,Map<&2,Bool>>:
   match status:
     case Fail{error}: Fail{"invalid loaded terrain section key"}
-    case Done{position}: terrain_enabled(rest,Map.set(&2,Bool,entries,Light.key(position),True{}))
+    case Done{position}: next(Map.set(&2,Bool,entries,Light.key(position),True{}))
 
 def terrain_enabled(values:List<&2,String>,entries:Map<&2,Bool>) -> Result<&2,&2,String,Map<&2,Bool>>:
   match values:
     case Nil{}: Done{entries}
-    case key <> rest: terrain_enabled_origin(rest,entries,LightWorld.key_origin(key))
+    case key <> rest: terrain_enabled_origin(entries,LightWorld.key_origin(key),entries => terrain_enabled(rest,entries))
 
 def terrain_metadata(count:U32,+keys:List<&2,String>) -> Result<&2,&2,String,Terrain>:
   do Result<&2,&2,String,Terrain>:
@@ -247,17 +248,19 @@ def cooking_failed(state:Session.State,message:String) -> IO(Session.Ready):
   Session.State{player,shell} = state
   Session.startup_failed(shell,"cooking startup: " ++ message)
 
-def cooking_bodies_next(rest:List<&2,CookingStorage.Body>,result:Session.State & Result<&2,&2,String,CookingCodec.Details>) -> Session.State & Result<&2,&2,String,Unit>:
+def cooking_bodies_next(result:Session.State & Result<&2,&2,String,CookingCodec.Details>,
+    next:Session.State -> Session.State & Result<&2,&2,String,Unit>) -> Session.State & Result<&2,&2,String,Unit>:
   (state,status) = result
   match status:
     case Fail{message}: (state,Fail{message})
-    case Done{details}: cooking_bodies(rest,state)
+    case Done{details}: next(state)
 
 def cooking_bodies(values:List<&2,CookingStorage.Body>,state:Session.State) -> Session.State & Result<&2,&2,String,Unit>:
   match values:
     case Nil{}: (state,Done{Unit{}})
     case CookingStorage.Body{position,bytes} <> rest:
-      cooking_bodies_next(rest,Session.cooking_load_body(state,position,CookingStorage.nbt_limits(),bytes,Core.Developer{}))
+      cooking_bodies_next(Session.cooking_load_body(state,position,CookingStorage.nbt_limits(),bytes,Core.Developer{}),
+        state => cooking_bodies(rest,state))
 
 def cooking_bodies_ready(first_peer:U32,result:Session.State & Result<&2,&2,String,Unit>) -> IO(Session.Ready):
   (state,status) = result
@@ -298,7 +301,7 @@ def cooking_bindings(+identity:String,count:U32,status:Result<&2,&2,String,List<
 def cooking_actual(catalogs:Catalogs,first_peer:U32,bodies:List<&2,CookingStorage.Body>,terrain:Terrain,state:Session.State) -> IO(Session.Ready):
   Terrain{+count,enabled,budget} = terrain
   Session.State{player,Session.Shell{+identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation,cooking}} = state
-  state = Session.State{player,Session.Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation,cooking}}
+  state : Session.State = Session.State{player,Session.Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation,cooking}}
   do IO<Session.Ready>:
     light:Result<&2,&2,LightLoad.Error,LightRegistry.Catalog> <- LightLoad.load(identity,count,1048576n,"reference/block_light_registry.tsv")
     bytes:Result<&2,&2,String,List<&2,U32>> <- startup_read("reference/cooking_world_bindings.tsv",65536n)
