@@ -1,0 +1,109 @@
+{
+  "status": "passed",
+  "command": "python3 tools/test_cooking_effect_geometry.py",
+  "checks": [
+    {
+      "kind": "emit",
+      "command": [
+        "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+        "--experimental-transform-types",
+        "--stack-size=4096",
+        "--max-old-space-size=1536",
+        "tools/cooking_effect_geometry_emit.mjs",
+        "tests/cooking_effect_geometry.bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-geometry-native/receiver.c"
+      ],
+      "exit": 0,
+      "seconds": 4.7471,
+      "sampled_process_tree_peak_rss_bytes": 675512320,
+      "bounded_stop": null,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "fcf0ed95dc3898f879e0ea9a6f6f0172f51460698d6a6aea4ed7c681330de554"
+    },
+    {
+      "kind": "clang",
+      "command": [
+        "/usr/bin/clang",
+        "-std=c11",
+        "-O2",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-geometry-native/receiver.c",
+        "-lpthread",
+        "-lm",
+        "-o",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-geometry-native/receiver"
+      ],
+      "exit": 0,
+      "seconds": 4.0921,
+      "sampled_process_tree_peak_rss_bytes": 441942016,
+      "bounded_stop": null,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "native",
+      "command": [
+        "/usr/bin/time",
+        "-l",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-geometry-native/receiver",
+        "--gpu",
+        "off",
+        "--threads",
+        "1",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-geometry-native/input.json"
+      ],
+      "exit": 0,
+      "seconds": 0.7122,
+      "sampled_process_tree_peak_rss_bytes": 1245184,
+      "bounded_stop": null,
+      "stdout_sha256": "24325754a850d33e1e398819e1bd99ee8e2c63c586aefaa77e06229e11a7c008",
+      "stderr_sha256": "1ddc00d43d8d8e319bb2f68cc432783ced80737fa465aee7d61b5c8d87c733da",
+      "peak_rss_bytes": 2752512
+    }
+  ],
+  "source_sha256": {
+    "src/cooking_effect_geometry.bend": "4c5ced891db8b8cdc3dd5801e77af51d3b77f9de18acc3e778342a1fa972063a",
+    "src/cooking_effect_geometry_laws.bend": "7c223a332f837b998d5e5811b4f28b5be64cf588bc5b56d047ad47f4a4e67c58",
+    "src/cooking_effect_geometry_proof.bend": "5f1566d03a04791bf9e81e661fc243b85c7602d658eeb42b00980656bbb559b9",
+    "src/cooking_effect_geometry_world.bend": "0894ac28a412db64127fce730ad7f5de64ce75688bfa55870ecceb79a0d8ac60",
+    "src/cooking_effect_geometry_voxel.bend": "9c3b4ff3083722cf6be4675305a84fcc4bf3aac3d3a8537cb2307414e092469d",
+    "tests/cooking_effect_geometry.bend": "61bfc1f014658650555bb2c8df196f5f6ac5e784ad45052efa25f0b1bb979419",
+    "tools/cooking_effect_geometry_proof.mjs": "4272646caf1f870d1577e6d9bf5f129722ecbe1590010b7eada63269a1172a76",
+    "tools/test_cooking_effect_geometry_proof.py": "d99cc8a3c746513a63aa4dba75d1f47fb4f5259a867d87159ff2e0bcd5c2424a",
+    "tools/reference_cooking_effect_geometry.py": "2ccf48ce8a1b6dbf40210b856cf55a6ba186e7bff9ff35f7a3ea6bdb687c424a",
+    "tools/cooking_effect_geometry_emit.mjs": "54596bcf4947281a275380e6a5add828b38400bd44dc800a7a299c7a250b3a2e",
+    "tools/test_cooking_effect_geometry.py": "af37d94f9c9dcc3a2a120a11b9a91039fb905d7c95dae434005793cc83cfcbb0",
+    "reference/cooking_effect_geometry.json": "0b8f64dc410ed04a02db4e5c42ffbf5982b6070cf60d82d4892f45fb07049e90"
+  },
+  "actual_java_cases": 18,
+  "names": [
+    "clear",
+    "enclosed",
+    "west",
+    "east",
+    "below",
+    "above",
+    "north",
+    "south",
+    "three-axis-tie",
+    "two-axis-tie",
+    "bottom-surface",
+    "top-edge",
+    "double-west",
+    "multiple-union",
+    "negative-translated",
+    "epsilon-below",
+    "epsilon-above",
+    "entity-only"
+  ],
+  "bitwise_observations": [
+    "body",
+    "outer",
+    "clear",
+    "free",
+    "position",
+    "ordered-search-boxes",
+    "ordered-union-boxes",
+    "ordered-available-boxes"
+  ],
+  "scope": "Actual production pure placement provider; actual initialized block collision shapes and coordinate grids from pinned Java. Core capture wrapper/source+ownership laws checked separately. Border-outside reference case explains refused admission and is not claimed as supported native placement."
+}

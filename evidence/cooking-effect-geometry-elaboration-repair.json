@@ -1,0 +1,62 @@
+{
+  "status": "repaired",
+  "scope": "Owned source elaboration, no compiler edits",
+  "native_first_bounded_failure": {
+    "exit": -6,
+    "seconds": 7.4194,
+    "sampled_process_tree_peak_rss_bytes": 1762492416,
+    "node_heap_megabytes": 1536
+  },
+  "proof_first_bounded_failure": {
+    "exit": -6,
+    "seconds": 8.6255,
+    "sampled_process_tree_peak_rss_bytes": 1759870976,
+    "node_heap_megabytes": 1536
+  },
+  "diagnostic": {
+    "node_heap_megabytes": 768,
+    "exit": 134,
+    "last_successful_declaration": "cooking_effect_geometry_voxel:closest",
+    "next_original_declaration": "volume_fit",
+    "retained_logs": {
+      "build/cooking-effect-geometry-native/diagnose.stdout": "dde55f4ed1d15278d4cd6904f3bad225542ce0b4fde47b7cf87defbd0c43d5b0",
+      "build/cooking-effect-geometry-native/diagnose.stderr": "d01c7b6d6ddfbe7cfba0eb8f7fca9f0212bae2a60f51300d2a4fa6081b7c1033"
+    }
+  },
+  "repair": "Three overlapping literal U32-zero tuple patterns replaced by U32.is_eq predicates plus one Bool dispatch. Zero-axis admission and overflow-safe budget division remain unchanged. The source trace locates failure before volume_fit declaration completion; exact inner compiler function is not identified by native OOM stack.",
+  "changed_native_emission": {
+    "kind": "emit",
+    "command": [
+      "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+      "--experimental-transform-types",
+      "--stack-size=4096",
+      "--max-old-space-size=1536",
+      "tools/cooking_effect_geometry_emit.mjs",
+      "tests/cooking_effect_geometry.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-geometry-native/receiver.c"
+    ],
+    "exit": 0,
+    "seconds": 4.7471,
+    "sampled_process_tree_peak_rss_bytes": 675512320,
+    "bounded_stop": null,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "fcf0ed95dc3898f879e0ea9a6f6f0172f51460698d6a6aea4ed7c681330de554"
+  },
+  "changed_kernel_export": {
+    "kind": "export",
+    "command": [
+      "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+      "--experimental-transform-types",
+      "--stack-size=4096",
+      "--max-old-space-size=1536",
+      "tools/cooking_effect_geometry_proof.mjs",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft"
+    ],
+    "exit": 0,
+    "seconds": 2.0315,
+    "sampled_process_tree_peak_rss_bytes": 549044224,
+    "bounded_stop": null,
+    "stdout_sha256": "703866baab61ddb58318eed73af6e898fb970eb11a31f68458f2ac01f01764da",
+    "stderr_sha256": "2c01b0f9cf1811c846bb4229f5d5f606deda6b5615e5c6282beaed39bf25804f"
+  }
+}
