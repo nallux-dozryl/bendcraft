@@ -1,0 +1,104 @@
+{
+  "apply_check": {
+    "command": [
+      "git",
+      "apply",
+      "--check",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/docs/native_controls_current_release_join.patch"
+    ],
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  "boundary": "Proposal only. Actual consumer source not edited by this lane. No runtime/transport or W.look-failure ownership validation.",
+  "checks": [
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native_controls_current_release/join/src/client_presenter.bend",
+        "--check-only"
+      ],
+      "exit_code": 1,
+      "seconds": 0.9618957908824086,
+      "stderr": "SOME PROOFS FAIL\nError: 22 defs rely on unsafe or foreign code:\n- ../../../../src/server.actor\n- ../../../../src/server.timer\n- ../../../../src/server.read_loop\n- ../../../../src/server.accepted\n- ../../../../src/server.accept_loop\n- ../../../../src/server.start_effectful_from_peer\n- ../../../../src/server.start_effectful\n- ../../../../src/server.start_handle\n- ../../../../src/server.run_effectful_from_peer\n- ../../../../src/server.run_effectful\n- ../../../../src/server.run\n- ../../../../src/window_input.Native.status\n- ../../../../src/window_input.capture\n- events\n- packet_events\n- packet_initial\n- packet_inspected\n- frame_input\n- loop\n- started\n- opened\n- open\n",
+      "stdout": ""
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native_controls_current_release/join/tests/client_presenter.bend",
+        "--check-only"
+      ],
+      "exit_code": 1,
+      "seconds": 0.9549037078395486,
+      "stderr": "SOME PROOFS FAIL\nError: 38 defs rely on unsafe or foreign code:\n- ../../../../src/server.actor\n- ../../../../src/server.timer\n- ../../../../src/server.read_loop\n- ../../../../src/server.accepted\n- ../../../../src/server.accept_loop\n- ../../../../src/server.start_effectful_from_peer\n- ../../../../src/server.start_effectful\n- ../../../../src/server.start_handle\n- ../../../../src/server.run_effectful_from_peer\n- ../../../../src/server.run_effectful\n- ../../../../src/server.run\n- ../../../../src/window_input.Native.status\n- ../../../../src/window_input.capture\n- ../src/client_presenter.events\n- ../src/client_presenter.packet_events\n- ../src/client_presenter.packet_initial\n- ../src/client_presenter.packet_inspected\n- ../src/client_presenter.frame_input\n- ../src/client_presenter.loop\n- ../src/client_presenter.started\n- ../src/client_presenter.opened\n- ../src/client_presenter.open\n- ../../../../src/platform.Platform.observe\n- ../../../../src/platform.Platform.inspect\n- close\n- renderer\n- inspected\n- sequence_result\n- sequence_frame\n- with_inspected\n- with_window\n- actual_opened\n- launch_actual\n- launch\n- run\n- parsed_mode\n- arguments\n- main\n",
+      "stdout": ""
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native_controls_current_release/join/src/remote_resource_backend.bend",
+        "--check-only"
+      ],
+      "seconds": 55.255516458302736,
+      "stderr": null,
+      "stdout": null,
+      "timed_out": true
+    }
+  ],
+  "patch": {
+    "bytes": 9184,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/docs/native_controls_current_release_join.patch",
+    "sha256": "68c4c41ab0ffe400ac961364db93e0d94746982d8bfb5658d700b5467fc59c78"
+  },
+  "patch_sha256": "68c4c41ab0ffe400ac961364db93e0d94746982d8bfb5658d700b5467fc59c78",
+  "proposed_copy_source_identities": [
+    {
+      "bytes": 13946,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native_controls_current_release/join/src/client_presenter.bend",
+      "sha256": "aa51e218c00b33446e76e31d339c072ec77afb4f256761d32ad39f7775f6e2e8"
+    },
+    {
+      "bytes": 16262,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native_controls_current_release/join/src/local_player_scene.bend",
+      "sha256": "be0dfe4b76b9dd5a87c7ecad64b4ba60546d734b28c373d6634007b7e77778d9"
+    },
+    {
+      "bytes": 6774,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native_controls_current_release/join/src/player_scene.bend",
+      "sha256": "70d2c2f268892ef0ac28d07df88d8e7538d7ae93666199dac11a7412880fb346"
+    },
+    {
+      "bytes": 22949,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native_controls_current_release/join/src/remote_resource_backend.bend",
+      "sha256": "e450f2ab53d7e599c935467fa2663c8bd6e5495b89b4a7b6ce0a994b483c2bf2"
+    },
+    {
+      "bytes": 46489,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native_controls_current_release/join/src/remote_resource_presenter.bend",
+      "sha256": "636deccaa06f0edcbf7518a8e80606a6e772f92cd29a07b814944a389c7f7b53"
+    },
+    {
+      "bytes": 4031,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native_controls_current_release/join/src/resource_player_boxed_scene.bend",
+      "sha256": "a61cf984ac9939d2dee664b99d6ab803f15382519f8a697bc35689ac8cc3958f"
+    },
+    {
+      "bytes": 4493,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native_controls_current_release/join/src/resource_player_scene.bend",
+      "sha256": "9ee61b153b9687bff9795b5ceba770b797e44a43647d40ec0d56269d2ae9f034"
+    },
+    {
+      "bytes": 12860,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native_controls_current_release/join/tests/client_presenter.bend",
+      "sha256": "f86354bd9823a5089b8dd48ec06641a8d46fdd60c9778bf07c1c56759e1fd724"
+    }
+  ],
+  "review": "Independent read-only review found no semantic/order/affine defect in current one-operation join; earlier two-operation proposal was rejected",
+  "status": "proposal_checked_with_backend_timeout",
+  "unverified": [
+    "actual integrated backend typing/build",
+    "full runtime/session/world ownership on input refusal",
+    "physical OS capture/focus/input"
+  ]
+}

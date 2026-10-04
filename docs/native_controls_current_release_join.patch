@@ -1,0 +1,204 @@
+--- a/src/client_presenter.bend
++++ b/src/client_presenter.bend
+@@ -3,6 +3,7 @@
+ import ./png.bend as P
+ import ./window_input.bend as WI
+ import ./client_controls.bend as CC
++import ./player_controls.bend as PC
+ 
+ # A physical frame becomes one actor operation, including capture transitions.
+ # This prevents timer pulses from observing half an OS event batch and permits
+@@ -10,6 +11,7 @@
+ type Driver<-State:Type,-Frame:Data> is Type:
+   Driver{snapshot:State -> U32 -> U32 -> State & Result<&2,&2,String,Frame>,
+     input:State -> CC.Packet -> State & Result<&2,&2,String,Unit>,
++    release:State -> State,
+     capture_allowed:Frame -> Bool}
+ 
+ type Renderer<-Frame:Data,-Assets:Type> is Type:
+@@ -17,15 +19,35 @@
+     describe:Frame -> String,close:Assets -> IO(Unit)}
+ 
+ def snapshot(-State:Type,-Frame:Data,driver:Driver<State,Frame>,state:State,width:U32,height:U32) -> State & Result<&2,&2,String,Frame>:
+-  Driver{query,input,allowed} = driver
++  Driver{query,input,release,allowed} = driver
+   query(state,width,height)
+ 
+ def input(-State:Type,-Frame:Data,driver:Driver<State,Frame>,state:State,packet:CC.Packet) -> State & Result<&2,&2,String,Unit>:
+-  Driver{query,input,allowed} = driver
++  Driver{query,input,release,allowed} = driver
+   input(state,packet)
+ 
++# Pre-release and admitted input remain inside the same actor operation. The
++# driver input receives an already released owner, so its ordinary rejection
++# preserves that owner while a valid packet retains its complete action order.
++def input_releasing(-State:Type,operation:State -> CC.Packet -> State & Result<&2,&2,String,Unit>,release:State -> State,state:State,packet:CC.Packet,needed:Bool) -> State & Result<&2,&2,String,Unit>:
++  match needed:
++    case False{}: operation(state,packet)
++    case True{}: operation(release(state),packet)
++
++def release_requested(packet:CC.Packet) -> Bool:
++  CC.Packet{actions,focused,captured} = packet
++  PC.release_requested(actions)
++
++def input_released(-State:Type,-Frame:Data,driver:Driver<State,Frame>,state:State,+packet:CC.Packet) -> State & Result<&2,&2,String,Unit>:
++  Driver{query,input,release,allowed} = driver
++  input_releasing(State,input,release,state,packet,release_requested(packet))
++
++def release(-State:Type,-Frame:Data,driver:Driver<State,Frame>,state:State) -> State:
++  Driver{query,input,release,allowed} = driver
++  release(state)
++
+ def capture_allowed(-State:Type,-Frame:Data,driver:Driver<State,Frame>,frame:Frame) -> Bool:
+-  Driver{query,input,allowed} = driver
++  Driver{query,input,release,allowed} = driver
+   allowed(frame)
+ 
+ def draw(-Frame:Data,-Assets:Type,renderer:Renderer<Frame,Assets>,frame:Frame,assets:Assets,width:U32,height:U32) -> Assets & Result<&2,&2,String,Image>:
+@@ -47,11 +69,13 @@
+ 
+ def local_input(~State:Type,~Frame:Data,~driver:Driver<State,Frame>,handle:S.Handle<State>,packet:CC.Packet) -> IO(Unit):
+   do IO<Unit>:
+-    result : Result<&2,&2,String,Unit> <- S.local_call(State,Result<&2,&2,String,Unit>,handle,state => input(State,Frame,driver,state,packet))
++    result : Result<&2,&2,String,Unit> <- S.local_call(State,Result<&2,&2,String,Unit>,handle,state => input_released(State,Frame,driver,state,packet))
+     input_result(result)
+ 
+ def local_release(~State:Type,~Frame:Data,~driver:Driver<State,Frame>,handle:S.Handle<State>) -> IO(Unit):
+-  local_input(~State,~Frame,~driver,handle,CC.release())
++  do IO<Unit>:
++    unit : Unit <- S.local_call(State,Unit,handle,state => (release(State,Frame,driver,state),Unit{}))
++    return unit
+ 
+ def lost_actions(actions:List<&2,CC.Action>,lost:Bool) -> List<&2,CC.Action>:
+   match lost:
+--- a/src/player_scene.bend
++++ b/src/player_scene.bend
+@@ -64,7 +64,7 @@
+   True{}
+ 
+ def presenter_driver() -> CP.Driver<S.State,CR.Snapshot>:
+-  CP.Driver{S.snapshot,input,capture_allowed}
++  CP.Driver{S.snapshot,input,S.release,capture_allowed}
+ 
+ def rendered(result:CR.Assets & Image) -> CR.Assets & Result<&2,&2,String,Image>:
+   (assets,image) = result
+--- a/src/local_player_scene.bend
++++ b/src/local_player_scene.bend
+@@ -42,7 +42,7 @@
+   True{}
+ 
+ def presenter_driver() -> CP.Driver<S.State,CR.Snapshot>:
+-  CP.Driver{S.snapshot,input,capture_allowed}
++  CP.Driver{S.snapshot,input,S.release,capture_allowed}
+ 
+ def rendered(result:CR.Assets & Image) -> CR.Assets & Result<&2,&2,String,Image>:
+   (assets,image) = result
+--- a/src/resource_player_scene.bend
++++ b/src/resource_player_scene.bend
+@@ -49,7 +49,7 @@
+   True{}
+ 
+ def presenter_driver() -> CP.Driver<S.State,V.Sample>:
+-  CP.Driver{snapshot,input,capture_allowed}
++  CP.Driver{snapshot,input,S.release,capture_allowed}
+ 
+ def describe(frame:V.Sample) -> String:
+   V.Sample{CR.Snapshot{tick,revision,blocks,CR.Camera{x,y,z,yaw,pitch}},raw,masks,origin,palette,reads} = frame
+--- a/src/resource_player_boxed_scene.bend
++++ b/src/resource_player_boxed_scene.bend
+@@ -51,7 +51,7 @@
+     case _: False{}
+ 
+ def presenter_driver() -> CP.Driver<S.State, Frame>:
+-  CP.Driver{snapshot, Plain.input, canonical}
++  CP.Driver{snapshot, Plain.input, S.release, canonical}
+ 
+ def describe(frame: Frame) -> String:
+   Frame{sample, tail} = frame
+--- a/src/remote_resource_backend.bend
++++ b/src/remote_resource_backend.bend
+@@ -4,6 +4,7 @@
+ import ./local_resource_world.bend as World
+ import ./world_visibility.bend as V
+ import ./client_controls.bend as CC
++import ./player_controls.bend as PC
+ import ./server.bend as Server
+ import ./live.bend as L
+ import ./json.bend as J
+@@ -144,11 +145,22 @@
+   (saved,status) = result
+   (State{saved,renewed(lease),counter,nonce,capability,owner},status)
+ 
++# The renderer lease is admitted before this is called. Release and the rest
++# of one physical input packet execute in the existing single actor operation.
++def input_releasing(saved:S.State,packet:CC.Packet,needed:Bool) -> S.State & Result<&2,&2,String,Unit>:
++  match needed:
++    case False{}: Scene.input(saved,packet)
++    case True{}: Scene.input(S.release(saved),packet)
++
++def input_released(saved:S.State,+packet:CC.Packet) -> S.State & Result<&2,&2,String,Unit>:
++  CC.Packet{+actions,focused,captured} = packet
++  input_releasing(saved,CC.Packet{actions,focused,captured},PC.release_requested(actions))
++
+ def input_checked(state:State,packet:CC.Packet,valid:Bool) -> State & Result<&2,&2,String,Unit>:
+   match state valid:
+     case _ False{}: (state,Fail{"RendererLeaseOrSequence"})
+     case State{saved,lease,counter,nonce,capability,owner} True{}:
+-      input_result(lease,counter,nonce,capability,owner,Scene.input(saved,packet))
++      input_result(lease,counter,nonce,capability,owner,input_released(saved,packet))
+ 
+ def input(state:State,epoch:String,sequence:Nat,packet:CC.Packet) -> State & Result<&2,&2,String,Unit>:
+   State{saved,+lease,counter,nonce,capability,owner} = state
+--- a/src/remote_resource_presenter.bend
++++ b/src/remote_resource_presenter.bend
+@@ -521,7 +521,7 @@
+     case Nil{}: IO.pure(MenuResult,MenuResult{window,link,state,keep,Done{Unit{}}})
+     case Screen.ReleaseControls{} <> rest:
+       do IO<MenuResult>:
+-        result : Link & Result<&2,&2,String,Wire.Reply> <- call(link,Wire.Input{Controls.release()})
++        result : Link & Result<&2,&2,String,Wire.Reply> <- call(link,Wire.Release{})
+         menu_release(window,state,rest,human,keep,result,tail => w => l => s => h => k => send_menu_intents(tail,w,l,s,h,k))
+     case Screen.Capture{enabled} <> rest:
+       do IO<MenuResult>:
+--- a/tests/client_presenter.bend
++++ b/tests/client_presenter.bend
+@@ -72,6 +72,14 @@
+   packet_result(updated,U32.is_eq(mode,3))
+ 
+ 
++# The fixture records a dedicated state release independently of packet
++# admission, preserving the world and non-control actor fields.
++def release(state:State) -> State:
++  State{world,counts,audit,mode} = state
++  Counts{snapshots,packets,releases,pulses} = counts
++  Audit{previous,old_focus,old_capture} = audit
++  State{world,Counts{snapshots,packets,U32.add(releases,1),pulses},Audit{previous ++ "R|",False{},False{}},mode}
++
+ def policy(frame:Frame) -> Bool:
+   Frame{tick,ordinal,width,height,allowed,fail_draw} = frame
+   allowed
+@@ -153,7 +161,7 @@
+     marker_written(result)
+ 
+ def driver() -> CP.Driver<State,Frame>:
+-  CP.Driver{snapshot,packet,policy}
++  CP.Driver{snapshot,packet,release,policy}
+ 
+ def renderer() -> CP.Renderer<Frame,Assets>:
+   CP.Renderer{frame => assets => width => height => draw(frame,assets,width,height),describe,close}
+--- a/tools/test_client_presenter.py
++++ b/tools/test_client_presenter.py
+@@ -147,6 +147,13 @@
+         snapshots, draws, packets, frames = 0, 0, 1, 0
+     elif mode in (11, 13):
+         snapshots, draws, packets, frames = 1, 1, 2, 1
++    # Standalone cleanup uses the direct release callback, not a packet. A
++    # packet containing Release invokes that callback inside its actor operation
++    # before the original actions, making the operation visible to this fixture.
++    packets -= 1
++    if mode in (5, 7):
++        releases += 1
++        text = "R|" + text
+     return dict(mode=mode, snapshots=snapshots, draws=draws, packets=packets,
+                 releases=releases, trace=text, frames=frames, exit_code=exit_code, error=error)
+ 

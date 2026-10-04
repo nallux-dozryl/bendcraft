@@ -40,6 +40,28 @@ def release(controller:Controller) -> Controller:
   match controller:
     case Controller{_,look,mouse,options}: Controller{PI.empty(),look,MI.ignore_next_move(MI.clear(mouse)),options}
 
+# Capture loss is a separate unconditional state operation, not an admitted
+# input packet. Only an explicit Release signal is consumed; key/Look payloads
+# cannot restore controls or roll this operation back. The ordinary apply/fold
+# below retain their atomic validation and rollback contract.
+def release_requested(actions:List<&2,CC.Action>) -> Bool:
+  match actions:
+    case Nil{}: False{}
+    case CC.Release{} <> rest: True{}
+    case other <> rest: release_requested(rest)
+
+def release_selected(requested:Bool,controller:Controller) -> Controller:
+  match requested:
+    case False{}: controller
+    case True{}: release(controller)
+
+def release_packet(controller:Controller,packet:CC.Packet) -> Controller:
+  CC.Packet{actions,focused,captured} = packet
+  release_selected(release_requested(actions),controller)
+
+def capture_release(controller:Controller) -> Controller:
+  release_packet(controller,CC.release())
+
 def install_mouse(controller:Controller,result:Result<&2,&2,MI.Error,MI.State>) -> Result<&2,&2,Error,Controller>:
   match controller result:
     case _ Fail{cause}: Fail{MouseFailure{cause}}

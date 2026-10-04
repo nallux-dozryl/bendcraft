@@ -1,0 +1,634 @@
+{
+  "atomic_binary": {
+    "bytes": 1265496,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native_controls_current_release/atomic",
+    "sha256": "bdefbeae3bf63660af2ce116ccb3adb9ef2e8de603250ddfe314069bddef83f1"
+  },
+  "builds": [
+    {
+      "binary_sha256": "1e06c4c15e4add9644b970bf63dafb6725698410100a2aeb166f1492c80df295",
+      "cache_hit": true,
+      "cache_key": "dfa44f5ac7dcc2a35a91618e819f5a82e5a1cf3e248bbce58d642343c84ca142",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native_controls_current_release/release",
+      "timings": {
+        "emission_seconds": 0.0,
+        "native_seconds": 0.0,
+        "total_seconds": 9.311357874423265
+      }
+    },
+    {
+      "binary_sha256": "bdefbeae3bf63660af2ce116ccb3adb9ef2e8de603250ddfe314069bddef83f1",
+      "cache_hit": true,
+      "cache_key": "fab77795f9b73887111e061f0f71c413729d8bdd51d8882393c6760e4765b5c9",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native_controls_current_release/atomic",
+      "timings": {
+        "emission_seconds": 0.0,
+        "native_seconds": 0.0,
+        "total_seconds": 5.920336499810219
+      }
+    }
+  ],
+  "confidence": "high for stated controller contracts and native raw-word checks",
+  "consumer_boundary": "Presenter/runtime joins are root-owned and not established by these controller-only receipts; fixture failure reports echo their supplied prior controller",
+  "existing_atomic_corpus": {
+    "batches": [
+      {
+        "cases": 32,
+        "first_case": "java_mouse/two_move_native_pipeline_0",
+        "last_case": "java_mouse/two_move_native_pipeline_44",
+        "reports": 32,
+        "seconds": 0.005601,
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "c526cd339f1ee5ec3199a93476d81ddf0a399e8b2f265373b7837b1c305f399e"
+      },
+      {
+        "cases": 32,
+        "first_case": "java_mouse/two_move_native_pipeline_45",
+        "last_case": "java_look/signed_zero_3",
+        "reports": 32,
+        "seconds": 0.005802,
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "197fecc82ca4a3a28055669c1956be3b75a77cba0574f3e692493e2adcca47c7"
+      },
+      {
+        "cases": 32,
+        "first_case": "java_look/signed_zero_4",
+        "last_case": "java_look/signed_zero_35",
+        "reports": 32,
+        "seconds": 0.004188,
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "9c2a3953f6c4e7cbcc3ebdd65ee879ff4637ea35f351607e583036439b25c93e"
+      },
+      {
+        "cases": 32,
+        "first_case": "java_look/signed_zero_36",
+        "last_case": "java_look/pitch_state_00000000_600",
+        "reports": 32,
+        "seconds": 0.004985,
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "537afb624251c0a7349cb0a30d84a48040318870ee319ce1ba5ae6aff3edfd33"
+      },
+      {
+        "cases": 32,
+        "first_case": "java_look/pitch_state_00000000_-600",
+        "last_case": "java_look/pitch_state_42b40000_0",
+        "reports": 32,
+        "seconds": 0.005494,
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "7468256ea8dcee3f2307338ff08b49b4033e1b2fb7ac71b222a8cc274eae02b6"
+      },
+      {
+        "cases": 32,
+        "first_case": "java_look/pitch_state_42b40000_1",
+        "last_case": "java_look/finite_pitch_random_325",
+        "reports": 32,
+        "seconds": 0.004435,
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "8b4940f4ab57452a60fd157be0f560f7875aa2f75c7e7882a341bf0a9b39b37d"
+      },
+      {
+        "cases": 32,
+        "first_case": "java_look/finite_random_597",
+        "last_case": "java_look/finite_random_959",
+        "reports": 32,
+        "seconds": 0.004647,
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "6b6952be48335b71b3f7e08d5abe770c1f6a57d46a40a8aa8e07e78463d7cb69"
+      },
+      {
+        "cases": 32,
+        "first_case": "java_look/finite_pitch_exponent_101_8388607_0",
+        "last_case": "java_look/finite_random_1177",
+        "reports": 32,
+        "seconds": 0.007041,
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "6a5cdfec71db456ff6b75db50de3402d3a4190def3ff787f30d8e814a554214f"
+      },
+      {
+        "cases": 32,
+        "first_case": "java_look/finite_random_1190",
+        "last_case": "java_look/finite_random_118",
+        "reports": 32,
+        "seconds": 0.007634,
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "2fcdc7fc99b13331cef3c1655f1215f102f036c3a86eea459c5ad8c2b97084ba"
+      },
+      {
+        "cases": 32,
+        "first_case": "java_look/finite_pitch_random_111",
+        "last_case": "keyboard_mask_19",
+        "reports": 32,
+        "seconds": 0.004034,
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "18a5f51dddb0eb4b4697a62eca54f768138312629f6a9697d15135e9c022927b"
+      },
+      {
+        "cases": 32,
+        "first_case": "keyboard_mask_20",
+        "last_case": "keyboard_mask_51",
+        "reports": 32,
+        "seconds": 0.004283,
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "1365b47b4cef88a882b2375ad1830362dca65b72d74f72d4b9355e0ace346421"
+      },
+      {
+        "cases": 32,
+        "first_case": "keyboard_mask_52",
+        "last_case": "keyboard_mask_83",
+        "reports": 32,
+        "seconds": 0.004246,
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "4ecaa985ed563ee922192083c63fd7ac17216540eefdaf64338bc1e949d041b1"
+      },
+      {
+        "cases": 32,
+        "first_case": "keyboard_mask_84",
+        "last_case": "keyboard_mask_115",
+        "reports": 32,
+        "seconds": 0.005091,
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "c45c7169a983b2b63aff38868a5aa2818b516abee7d524c6c2c913ac5db4e1f0"
+      },
+      {
+        "cases": 32,
+        "first_case": "keyboard_mask_116",
+        "last_case": "key_0_0_4294967295_1",
+        "reports": 32,
+        "seconds": 0.034065,
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "994570c167bd4e5cfe78845bac5c354818fb67f0431324e439c25a091d7b1f01"
+      },
+      {
+        "cases": 32,
+        "first_case": "key_0_1_2_0",
+        "last_case": "key_0_42_119_1",
+        "reports": 32,
+        "seconds": 0.021956,
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "58dbef87c1bc6328fff0791a2aa290b5cca8139ccfd6242875a02dee03808570"
+      },
+      {
+        "cases": 32,
+        "first_case": "key_0_42_47163_0",
+        "last_case": "key_0_127_32_1",
+        "reports": 32,
+        "seconds": 0.003823,
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "077ad0b93235ee7e46554dbe0b29f14865408704db0fc474cecfaddf08135c56"
+      },
+      {
+        "cases": 32,
+        "first_case": "key_0_127_97_0",
+        "last_case": "key_1_1_4294967295_1",
+        "reports": 32,
+        "seconds": 0.00437,
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "7f9630c33f43259fb2a30a681b61fd40e876ac92764e39658087ccf3d1aa8817"
+      },
+      {
+        "cases": 32,
+        "first_case": "key_1_42_2_0",
+        "last_case": "key_2_0_47163_1",
+        "reports": 32,
+        "seconds": 0.003714,
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "fefc6874ff259af12fea701a9eefb3cac2fff8ca8c568e042438e277e57d7c60"
+      },
+      {
+        "cases": 32,
+        "first_case": "key_2_0_65536_0",
+        "last_case": "key_2_42_1_1",
+        "reports": 32,
+        "seconds": 0.004292,
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "5b7aeee0569e8ba58e5b42ffc36358ee72ed156b0a4b88eb6d06104fb6fb72ca"
+      },
+      {
+        "cases": 32,
+        "first_case": "key_2_42_2_0",
+        "last_case": "key_2_85_4294967295_1",
+        "reports": 32,
+        "seconds": 0.007286,
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "9dd2abbfc0ed8393ec64249b29535cbbfa5d77d6ba3c1ac130b842d2f5d96f4c"
+      },
+      {
+        "cases": 32,
+        "first_case": "key_2_127_0_0",
+        "last_case": "empty_active_41200000_41a00000_41f00000_42200000",
+        "reports": 32,
+        "seconds": 0.00499,
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "bb6a7276584c7b81bdd8df2f832f45b76a4c33c50fb0e7e7f25250816e6f9b06"
+      },
+      {
+        "cases": 32,
+        "first_case": "release_direct_80000000_80000000_80000000_80000000",
+        "last_case": "signed_zero_15",
+        "reports": 32,
+        "seconds": 0.003952,
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "665cb88e67cbbecf04dfdacd91b9aaff102c3c8aaf92df37d4fc4cc8983b9537"
+      },
+      {
+        "cases": 32,
+        "first_case": "signed_zero_16",
+        "last_case": "invalid_mouse_release_3_fff0000000000000",
+        "reports": 32,
+        "seconds": 0.004031,
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "7c63031a5d49817b5774abc8d2b199107568f3c84c9400ce0cce9b8f48652d41"
+      },
+      {
+        "cases": 32,
+        "first_case": "invalid_mouse_0_7ff8000000000123",
+        "last_case": "invalid_event_1_7f800000_1_1",
+        "reports": 32,
+        "seconds": 0.004274,
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "5f9c90b6f873febd6016e1a8af849b4afccec14d29122ee135310aa1a3980a62"
+      },
+      {
+        "cases": 32,
+        "first_case": "invalid_look_0_ff800000",
+        "last_case": "invalid_event_1_7fc00123_1_1",
+        "reports": 32,
+        "seconds": 0.003784,
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "d35e3b5f46792ebb1716a08c2c81d67fb6528c242788e9e077461a2a8281f866"
+      },
+      {
+        "cases": 32,
+        "first_case": "invalid_look_0_7f800001",
+        "last_case": "unsupported_release_scope",
+        "reports": 32,
+        "seconds": 0.034713,
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "53a5adee3d6b8c830dc40f31df09396a536d3d3d498e8bafa5e6285f20f598c7"
+      },
+      {
+        "cases": 32,
+        "first_case": "precedence_mouse_0",
+        "last_case": "f32_boundary_3f800000_1",
+        "reports": 32,
+        "seconds": 0.031637,
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "facd856a22a0f898125428d7c31600b17a91aa3ca0f6c9b1bbf5d9ea88110758"
+      },
+      {
+        "cases": 32,
+        "first_case": "f32_boundary_3f800001_0",
+        "last_case": "random_packet_25",
+        "reports": 32,
+        "seconds": 0.020986,
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "0fe0790f3ba0d9857536ddc3336f5614e779ca7c45a55d6f9f25956d2a396e8f"
+      },
+      {
+        "cases": 32,
+        "first_case": "random_packet_26",
+        "last_case": "random_packet_57",
+        "reports": 32,
+        "seconds": 0.033744,
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "7b3c947a44a161d8766909f6ebd847a3f1ae41d9f1d145a73b75ba5337e0d6fc"
+      },
+      {
+        "cases": 32,
+        "first_case": "random_packet_58",
+        "last_case": "random_packet_89",
+        "reports": 32,
+        "seconds": 0.018916,
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "eaf9584b177efdbec0d84f3f093e686532a2354add74a312296352c7b34be09e"
+      },
+      {
+        "cases": 32,
+        "first_case": "random_packet_90",
+        "last_case": "random_packet_121",
+        "reports": 32,
+        "seconds": 0.032293,
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "a4ad8536d8fa453990880aa7618aa3a6e02739ba35a419e2b29fda588f3245a0"
+      },
+      {
+        "cases": 32,
+        "first_case": "random_packet_122",
+        "last_case": "sequential_packets_25",
+        "reports": 214,
+        "seconds": 0.008764,
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "6ee88048d8585055f679b7c10be5f66b0ad0eed0682b2c627edd5d6d6580cf0a"
+      },
+      {
+        "cases": 32,
+        "first_case": "sequential_packets_26",
+        "last_case": "sequential_packets_57",
+        "reports": 256,
+        "seconds": 0.005832,
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "b15c1a2e62ebd1edf43ff7d524e76fa92a91e5ecc928d5de5230b3a0845bd68c"
+      },
+      {
+        "cases": 32,
+        "first_case": "sequential_packets_58",
+        "last_case": "java_look/finite_random_697/retained-recovery",
+        "reports": 159,
+        "seconds": 0.013087,
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "8364223a6c08c3b25b33675ad46b3cb90ac2749d4f475d6292e32deb50f77197"
+      },
+      {
+        "cases": 32,
+        "first_case": "java_look/finite_random_111/retained-recovery",
+        "last_case": "invalid_event_0_7fc00123_1_0/retained-recovery",
+        "reports": 64,
+        "seconds": 0.00989,
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "863dc4941c0d87a89fdf35cdd3cd24662fa5389438e59da605e88c3f4700e646"
+      },
+      {
+        "cases": 21,
+        "first_case": "invalid_event_0_7fc00123_1_1/retained-recovery",
+        "last_case": "f32_boundary_ff7fffff_1/retained-recovery",
+        "reports": 42,
+        "seconds": 0.007524,
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "4f7032c440c523c117f0f1a6b0eea69fb15253e668377e6bc09e12779b3ab50b"
+      }
+    ],
+    "cases": 1141,
+    "corpus": {
+      "bytes": 901287,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-controls-reference-cache/corpus.json",
+      "sha256": "7f67cdc1ff78c6297ae2fd32ab718e4ccd5b08602ff7c6d66039e96a0f2cf04f"
+    },
+    "failures": [],
+    "malformed_protocol_cases": 54,
+    "reference": {
+      "bytes": 69851,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/player-controls-reference.json",
+      "sha256": "8b9526ec95023da826efc6140bd472bf7281f24feaf6a415f8494102bb5a48e4"
+    },
+    "reports": 1727
+  },
+  "existing_eight_laws": {
+    "command": [
+      "/Users/chuah/.bend/bin/bend",
+      "tests/player_controls.bend",
+      "--verdict"
+    ],
+    "exit_code": 0,
+    "seconds": 0.787332,
+    "stderr": "",
+    "stdout": "ALL PROOFS CHECK\n"
+  },
+  "existing_four_successful_fold_laws": {
+    "command": [
+      "/Users/chuah/.bend/bin/bend",
+      "tests/native_controls_current_proof.bend",
+      "--verdict"
+    ],
+    "exit_code": 0,
+    "seconds": 0.549052,
+    "stderr": "",
+    "stdout": "ALL PROOFS CHECK\n"
+  },
+  "export": {
+    "command": [
+      "/Users/chuah/.bend/bin/bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/native_controls_current_release_proof.bend",
+      "-o",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native_controls_current_release/proof.bendtt"
+    ],
+    "exit_code": 0,
+    "seconds": 0.352747,
+    "stderr": "",
+    "stdout": ""
+  },
+  "kernel": {
+    "command": [
+      "/Users/chuah/.bend/bin/bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/native_controls_current_release_proof.bend",
+      "--verdict"
+    ],
+    "exit_code": 0,
+    "seconds": 0.653178,
+    "stderr": "",
+    "stdout": "ALL PROOFS CHECK\n"
+  },
+  "kernel_ir": {
+    "bytes": 443003,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native_controls_current_release/proof.bendtt",
+    "sha256": "ab4de38d3f3b6f6423a0f1e5bc98886dda736a07aca39e660dd2ac243e144b84"
+  },
+  "kernel_rejects_ignored_release": {
+    "command": [
+      "/Users/chuah/.bend/bin/bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native_controls_current_release/mutant/native_controls_current_release_proof.bend",
+      "--verdict"
+    ],
+    "exit_code": 1,
+    "seconds": 0.155694,
+    "stderr": "SOME PROOFS FAIL\nError:\n- expected : controller\n- observed : C.release(controller)\nContext:\n- controller : C.Controller\nLocation: Laws.canonical_release_consumes_existing_packet\n10 | def Laws.canonical_release_consumes_existing_packet(controller):\n11>|   {==}\n   |   ^^^^\n12 | \n",
+    "stdout": ""
+  },
+  "kernel_roots": 10,
+  "ordinary": {
+    "command": [
+      "/Users/chuah/.bend/bin/bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/native_controls_current_release.bend",
+      "--check-only"
+    ],
+    "exit_code": 0,
+    "seconds": 0.276169,
+    "stderr": "",
+    "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+  },
+  "release_binary": {
+    "bytes": 1284328,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native_controls_current_release/release",
+    "sha256": "1e06c4c15e4add9644b970bf63dafb6725698410100a2aeb166f1492c80df295"
+  },
+  "release_cases": {
+    "batches": [
+      {
+        "cases": 64,
+        "seconds": 0.036072,
+        "stdout_sha256": "09f46032aa5c3e9e9d296a9a1fda350c5c782bfde991a2283c1838fa7926e4c1"
+      },
+      {
+        "cases": 64,
+        "seconds": 0.04205,
+        "stdout_sha256": "c3a1da2e24979cc6bbbf916b31e8648c21a46a6042e3172ac367386065edc952"
+      },
+      {
+        "cases": 64,
+        "seconds": 0.006799,
+        "stdout_sha256": "f77728627a4567f0cda2c13e464fd9e1ba6d7e629c1b46bb8be91fe8e6ee9dfb"
+      },
+      {
+        "cases": 64,
+        "seconds": 0.047481,
+        "stdout_sha256": "82d384bdc6319e79f42a7bd096aa7f7a99c9ff037ea30c74a89be633f2843c16"
+      },
+      {
+        "cases": 64,
+        "seconds": 0.030494,
+        "stdout_sha256": "260932b35da6b933f028b74bd2f2585ad1defd306f92e6f8829d85a0faf6d243"
+      },
+      {
+        "cases": 64,
+        "seconds": 0.01927,
+        "stdout_sha256": "0a06c4c87f36df63ba70e190d8e577d5a9b2028432e50f13dfb3746cd99cf9d6"
+      },
+      {
+        "cases": 64,
+        "seconds": 0.008249,
+        "stdout_sha256": "5c5fae16d8180619502fe394ed062ab22fd80ff1dbe6b002e67b14088760b4c2"
+      },
+      {
+        "cases": 64,
+        "seconds": 0.022634,
+        "stdout_sha256": "79d583896f1fbfc96bfbe43dc2f40b7b2aaafdc3751da2913bbf023b798326f6"
+      },
+      {
+        "cases": 64,
+        "seconds": 0.02254,
+        "stdout_sha256": "a64dca3efd46034838d4a7b3b498323b7aa6758211d025791c24a264a9ac0fcb"
+      },
+      {
+        "cases": 64,
+        "seconds": 0.031469,
+        "stdout_sha256": "1738118a65a2ebbf19aa429d93c09d61be1bb440845fd9085405309ef0b5fa31"
+      },
+      {
+        "cases": 64,
+        "seconds": 0.025503,
+        "stdout_sha256": "ee5f2aab29568ff5f1d957571861be17ec71f458270424812d60622fa00737d4"
+      },
+      {
+        "cases": 64,
+        "seconds": 0.043032,
+        "stdout_sha256": "1a49609e2b7a003ef48862fd1221fca2e470b40d4e204c4cb5e01c4b74331e3a"
+      },
+      {
+        "cases": 64,
+        "seconds": 0.030319,
+        "stdout_sha256": "23e85b6b781c73c324d5ba2ba26cffd9af7ac375e61a81090042200a15340bf6"
+      },
+      {
+        "cases": 64,
+        "seconds": 0.025975,
+        "stdout_sha256": "512643561088ec6d12f7cea108a7ef0edfe7c72075d934c9fabe38a19bd44715"
+      },
+      {
+        "cases": 64,
+        "seconds": 0.009898,
+        "stdout_sha256": "53f71ac32f7c03ded6af7b9db767ab0537c2fa2ddb250bdb34c875101742dab7"
+      },
+      {
+        "cases": 64,
+        "seconds": 0.008017,
+        "stdout_sha256": "81c79c8569a3ae2aa9dea4fb289f04c4052fa7cd69327faa640e106db7613cfe"
+      },
+      {
+        "cases": 64,
+        "seconds": 0.007259,
+        "stdout_sha256": "014d38b82dffb38bdbc21a4f19f6c732d5223662b3ceddfcb9a5a956d786dc7c"
+      },
+      {
+        "cases": 64,
+        "seconds": 0.010702,
+        "stdout_sha256": "09e9fbf3701d0798a0d9a79bc60d5e14f31a47225e03c497aa71fad7732ab07f"
+      },
+      {
+        "cases": 64,
+        "seconds": 0.032798,
+        "stdout_sha256": "4870d82210aff82152b18f2321214eced3ed1e8e38583dd0a1d0d584515de365"
+      },
+      {
+        "cases": 64,
+        "seconds": 0.024292,
+        "stdout_sha256": "d22b02c59d06d20881710844d43e6e4bf5098476e79b7d2b4e7658107c0fcd62"
+      }
+    ],
+    "cases": 1280,
+    "valid_controller_malformed_packet_refusals_after_release": 256
+  },
+  "reproduce": "python3 tools/native_controls_current_release_check.py --build",
+  "source_identities": [
+    {
+      "bytes": 8413,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_controls.bend",
+      "sha256": "69e06c1f5900d816e15c88fa093dbc5ab47a0fc2fb5d784a6cbb38fcc4c14d90"
+    },
+    {
+      "bytes": 463,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/client_controls.bend",
+      "sha256": "aa55b7905c339d58909e6319d2d31b972c23ea1a2a3c895ea72c2a2c72605f25"
+    },
+    {
+      "bytes": 3479,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/native_controls_current_release_laws.bend",
+      "sha256": "b4a0a8c102cc0aaae45e6562a2aef934dbfb4f55869a5b220ecbd5dce6ec993f"
+    },
+    {
+      "bytes": 2819,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/native_controls_current_release_proof.bend",
+      "sha256": "898aba1290aaa4c5712dcb44d0c43724955e1677d239b25a9dc438fa4800a7b6"
+    },
+    {
+      "bytes": 2388,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/native_controls_current_release.bend",
+      "sha256": "10c62fedf0e0d7fab67079aaeb07b26fbdaae946def97ad49af9b36cd88a0cc0"
+    },
+    {
+      "bytes": 10587,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/native_controls_current_release_check.py",
+      "sha256": "1a544cbf93b994fa00bafc9d28f40d135d70c8c04524a2bfd698d92e142cfeaa"
+    }
+  ],
+  "status": "passed",
+  "unverified": [
+    "physical OS capture/focus/input",
+    "visible fullscreen/presentation",
+    "new presenter consumer integration"
+  ]
+}
