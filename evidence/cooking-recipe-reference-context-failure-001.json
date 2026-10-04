@@ -1,0 +1,55 @@
+{
+  "diagnosis": "Builtin-only RegistryOps cannot serialize dynamic damage_type references in initialized netherite_scrap defaults. Codec/assembly itself succeeded before probe serialization threw; initial accepted=false catch was overly broad. New cooking probe uses full VanillaRegistries lookup, records serialization failures separately, and extracts only cooking-relevant defaults.",
+  "failures": [
+    {
+      "accepted": false,
+      "class": "net.minecraft.world.item.crafting.SmeltingRecipe",
+      "cooking_time": 200,
+      "error": "No value present",
+      "exception": "java.util.NoSuchElementException",
+      "experience_bits": 1073741824,
+      "id": "minecraft:netherite_scrap"
+    },
+    {
+      "accepted": false,
+      "class": "net.minecraft.world.item.crafting.BlastingRecipe",
+      "cooking_time": 200,
+      "error": "No value present",
+      "exception": "java.util.NoSuchElementException",
+      "experience_bits": 1073741824,
+      "id": "minecraft:netherite_scrap_from_blasting"
+    }
+  ],
+  "native_build": {
+    "command": [
+      "/Users/chuah/.bend/bin/bend",
+      "tests/cooking_recipe.bend",
+      "-o",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-recipe-tests"
+    ],
+    "seconds": 29.955406,
+    "status": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  "native_sources": {
+    "src/cooking_recipe.bend": "0802c2642d11192600065aed40891369c7bc25e26f28c8a778702592bee9926c",
+    "src/cooking_recipe_decoder.bend": "85ac98ae703b61cc5991fc35c325e1c8995cc84065dd2976ce879cc7cdb354af",
+    "src/cooking_recipe_laws.bend": "afc40f56f68242ca0afa5f148bcfc1dbeac6bd51c190dfc5eabce92220c70c17",
+    "src/cooking_recipe_number.bend": "58747e48effd4a362d719da77d5a791bdda74839bc9d963cc2d145fe1c1cc0c8",
+    "src/cooking_recipe_proof.bend": "9baaf514e852779b2cb2cb1109fdbe686ef83fdfdb5b07ebaacb067e5a4c9485",
+    "src/crafting_recipe.bend": "3c5f3fc7b3e0be9be7d553da2a107dc1245fe13f17afac0efdf84bc41c15ffe2",
+    "src/crafting_recipe_component_registry.bend": "911786032b2c22759208edaf7112ae403b2a03663d9237c3e036c2b5ba4ece2a",
+    "src/crafting_recipe_components.bend": "2a35e31f26187ebbdab1c4261d54083acb68072a56a7b5869e5dfc490bc946be",
+    "src/crafting_recipe_decoder.bend": "c9cd224262b326a06d0ca8ff99e7ff04aa9fe4a77af40101cd0aedc8e0642b71",
+    "src/inventory.bend": "9d2be7fb88afa1dc6386ab9e8b046b15d2a2a73b7e14566e5bfad3e6dd1f2702",
+    "src/json.bend": "a1789e3b4f5bea158ec0d95a8bcb39aa5b7c7e7355a5254d3de1d52a93c719d1",
+    "src/u32_decimal.bend": "d0b4b33f10b9e9801c4e99b83803afba5031ea40013a9263f9090bed8543d25c",
+    "tests/cooking_recipe.bend": "6267207364a3833f7c0c589f9e8abadac0859a09939cd222c0d649498033966f",
+    "tools/cooking_recipe_proof.mjs": "992557ad9cd47c3f36f7c4da1e426e02477e68491deb1d6d6e17c030d8bab61f"
+  },
+  "pin": "26.3",
+  "reference_source_sha256": "55075ba9605fb4d8629adb2c550f0f53e8fd1b65e0f6514aeb186dae37817121",
+  "shared_prior_default_map_errors": 101,
+  "status": "reference serialization failed after successful native build"
+}

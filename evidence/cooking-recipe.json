@@ -1,0 +1,133 @@
+{
+  "binary": {
+    "bytes": 1945640,
+    "file": "cooking-recipe-tests",
+    "sha1": "4f0a64c0a9e0a607ab584f988dfcf4ca4212c77f",
+    "sha256": "63bb26ace655d22b6d352e25b4ad596dcb60cb3e9ee5d0fa6aa3a5814b7aaf17"
+  },
+  "build": {
+    "command": [
+      "/Users/chuah/.bend/bin/bend",
+      "tests/cooking_recipe.bend",
+      "-o",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-recipe-tests"
+    ],
+    "seconds": 23.271089,
+    "status": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  "counts": {
+    "accepted_completions": 13,
+    "completion_refusals": 15,
+    "decoded_accepted": 139,
+    "decoded_rejected": 9,
+    "explicitly_unsupported": 4,
+    "ingredient_matches": 834,
+    "input_authority_refusals": 6,
+    "registry_selection_queries": 19,
+    "timing_receivers": 50,
+    "xp_arithmetic_receivers": 324
+  },
+  "installed_recipes": {
+    "minecraft:blasting": 25,
+    "minecraft:campfire_cooking": 9,
+    "minecraft:smelting": 73,
+    "minecraft:smoking": 9
+  },
+  "limitations": [
+    "Fuel resolution, timer progression, slot arrays/atomic application, RecipeManager caching, recipesUsed persistence, XP orb spawning, campfire block ticking/drop integration and UI are consumer work.",
+    "Ingredient membership and output component identity reuse the committed shared crafting contracts. Metadata in fixtures is explicitly derived from trusted decoded templates, not generic inventory wire input.",
+    "Duration numeric coercions outside signed integer lexemes and unsupported component setters are retained as Unsupported.",
+    "XP tests invoke actual Mth arithmetic; world createExperience bytecode grounds the ticket threshold, but the whole receiver is not invoked. NaN payload/sign is recorded and compared semantically as NaN.",
+    "Finite native fixtures establish observed parity, separately from seventeen structural kernel laws."
+  ],
+  "native": [
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-recipe-tests",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-recipe-reference/native-input.json"
+      ],
+      "output_sha256": "b9f2fbf230489a07e43e3afb411f9da1b510c0e46e4ebfd24131d98a7517eba7",
+      "seconds": 11.7093,
+      "status": 0,
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-recipe-tests",
+        "--threads",
+        "4",
+        "--gpu",
+        "off",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-recipe-reference/native-input.json"
+      ],
+      "output_sha256": "b9f2fbf230489a07e43e3afb411f9da1b510c0e46e4ebfd24131d98a7517eba7",
+      "seconds": 12.198182,
+      "status": 0,
+      "stderr": ""
+    }
+  ],
+  "ordinary_check": {
+    "command": [
+      "/Users/chuah/.bend/bin/bend",
+      "tests/cooking_recipe.bend",
+      "--check-only"
+    ],
+    "seconds": 5.046004,
+    "status": 0,
+    "stderr": "",
+    "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+  },
+  "pin": "26.3",
+  "reference": {
+    "bytes": 784253,
+    "file": "cooking_recipe.json",
+    "sha1": "df246bc174140765ea640e97eaf45d91f8f8da94",
+    "sha256": "a713cc5a68a3e4702005856d1bd9770344289cbc450fc74d84832dc7aa053517"
+  },
+  "reference_reproducibility_repair": {
+    "all_recipe_match_selection_transition_time_xp_default_observations_unchanged": true,
+    "current_reference_source_sha256": "717f63e96495efd1f4c24088985a7eecc9920f75921fe01d694552cb222c701c",
+    "initialized_full_lookup_maps": 177,
+    "item_definition_rows": 1658,
+    "materialized_catalog_and_native_request_unchanged": true,
+    "native_outputs_recompared_to_new_reference": true,
+    "native_request_sha256": "d1fe13044bd0248f4c3b5dd18f1079f0a559e17357d6356bfabcb16430e5e5ff",
+    "old_reference_source_sha256": "2b2e56815124f7747fbf56a148f77794f60e16ac1eb279a52ba558ca29bad227",
+    "scope": "Removed ignored broad crafting-cache dependency; independently extracted item metadata and javap evidence. Native request and semantic oracle arrays did not change, so no unchanged native rebuild/oracle replay was performed."
+  },
+  "reference_tool": {
+    "bytes": 23911,
+    "file": "reference_cooking_recipe_probe.py",
+    "sha1": "f1c170f86ec2ca91b89a1ba68edea0667ab0bf47",
+    "sha256": "62ec255c34b2b93955b6d486ff47380f17901362777b6b8e136570e5e77a5d62"
+  },
+  "sources": {
+    "src/cooking_recipe.bend": "085bfe968f3e7169e5c7bacf633029ebd9e4fc8c8ecb79ad81f63a193110f795",
+    "src/cooking_recipe_decoder.bend": "ca334faae18c0a25664d4d3170f29aa26e33fa4a0b9da0bcc08348c79e51ae28",
+    "src/cooking_recipe_laws.bend": "bb44aa1a7a7cbdd4378e89dd5baec11f9b6d2e8749bd51b5d43761ad480fe9d1",
+    "src/cooking_recipe_number.bend": "c3b8b18a323f9c95602c55d0063c2ae49796979ed6d7a4506b00a4091db1921a",
+    "src/cooking_recipe_proof.bend": "cb914f3eac9a38b992560d0971057d739ab191e4d80dc86f162ab9e7519c0faa",
+    "src/crafting_recipe.bend": "3c5f3fc7b3e0be9be7d553da2a107dc1245fe13f17afac0efdf84bc41c15ffe2",
+    "src/crafting_recipe_component_registry.bend": "911786032b2c22759208edaf7112ae403b2a03663d9237c3e036c2b5ba4ece2a",
+    "src/crafting_recipe_components.bend": "2a35e31f26187ebbdab1c4261d54083acb68072a56a7b5869e5dfc490bc946be",
+    "src/crafting_recipe_decoder.bend": "c9cd224262b326a06d0ca8ff99e7ff04aa9fe4a77af40101cd0aedc8e0642b71",
+    "src/inventory.bend": "9d2be7fb88afa1dc6386ab9e8b046b15d2a2a73b7e14566e5bfad3e6dd1f2702",
+    "src/json.bend": "a1789e3b4f5bea158ec0d95a8bcb39aa5b7c7e7355a5254d3de1d52a93c719d1",
+    "src/u32_decimal.bend": "d0b4b33f10b9e9801c4e99b83803afba5031ea40013a9263f9090bed8543d25c",
+    "tests/cooking_recipe.bend": "b4ec2e26c23b79ab846eeffa657c6697b236c598bd26bfd29fcc2ae0f07efecc",
+    "tools/cooking_recipe_proof.mjs": "992557ad9cd47c3f36f7c4da1e426e02477e68491deb1d6d6e17c030d8bab61f"
+  },
+  "status": "passed",
+  "test_tool": {
+    "bytes": 9351,
+    "file": "test_cooking_recipe.py",
+    "sha1": "dba67498494e4693a09ff7193e651a09330d21b1",
+    "sha256": "d28250a233986602822e8bfdfd9b5dd079db5f6aa825a231527c475dbbf4cbbf"
+  }
+}

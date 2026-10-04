@@ -1,0 +1,194 @@
+{
+  "artifact": {
+    "bytes": 107491,
+    "file": "selected.bendtt",
+    "sha1": "1dd34d9e0d99dddc79e4222ba55c00af2682715e",
+    "sha256": "af9e5d5fe5f11018e727010cac769ff6bfff30c39173b2f0917aa50389d4d57b"
+  },
+  "compiler_api": [
+    {
+      "bytes": 137761,
+      "file": "bend.ts",
+      "sha1": "2105cb635e087b686b1bc5c4b6b139660eeb3db9",
+      "sha256": "7deae3693eb896f33c73867081b99d2c6f3ed3b57e77e55eb5f6260840dd0e63"
+    },
+    {
+      "bytes": 63418,
+      "file": "safe.ts",
+      "sha1": "0b72424978b2acf7eb30f53d9b01b96f267dbcac",
+      "sha256": "54cb3a534ab7cc9ee313bf6383b3948ccdcac022469b3020e00745bbfe6f7e04"
+    }
+  ],
+  "export": {
+    "command": [
+      "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+      "--experimental-transform-types",
+      "--max-old-space-size=2048",
+      "--stack-size=4096",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/cooking_recipe_proof.mjs",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft"
+    ],
+    "seconds": 0.469064,
+    "status": 0,
+    "stderr": "(node:85922) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+    "stdout": "ALL ORDINARY SOURCE CHECKS PASS\nCHECKED ROOT EXPORT PASS\n"
+  },
+  "kernel": {
+    "command": [
+      "/usr/bin/env",
+      "LEAN_STACK_SIZE=4194304",
+      "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-recipe-reference/proof/selected.bendtt"
+    ],
+    "seconds": 0.02858,
+    "status": 0,
+    "stderr": "",
+    "stdout": "ALL PROOFS CHECK\n"
+  },
+  "kernel_binary": {
+    "bytes": 3271216,
+    "file": "bendtt",
+    "sha1": "f19dfe8aec3b3911b6c9f0acae2a54f5b05ca5f0",
+    "sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7"
+  },
+  "scope": "Seventeen production structural/authority/consumption/snapshot laws. No theorem of IEEE arithmetic, JSON codec equivalence, block ticking or world XP behavior.",
+  "selection": {
+    "all_original_declaration_maps_retained": true,
+    "checked_types_and_bodies_unchanged": true,
+    "exclusions": [],
+    "ordinary_only_reason": "No ordinary-only laws omitted from this selected cooking proof graph.",
+    "ordinary_only_roots": [],
+    "roots": [
+      "cooking_recipe_laws:unsupported_cannot_match",
+      "cooking_recipe_laws:unsupported_cannot_assemble",
+      "cooking_recipe_laws:empty_input_cannot_match_cooking",
+      "cooking_recipe_laws:established_match_retains_registry_order",
+      "cooking_recipe_laws:invalid_input_cannot_publish_plan",
+      "cooking_recipe_laws:empty_destination_ignores_container_limit",
+      "cooking_recipe_laws:different_keys_cannot_merge_output",
+      "cooking_recipe_laws:nonempty_destination_cannot_accept_empty_result",
+      "cooking_recipe_laws:one_completion_spends_one_input_unit",
+      "cooking_recipe_laws:empty_input_cannot_underflow",
+      "cooking_recipe_laws:last_input_is_cleared",
+      "cooking_recipe_laws:empty_output_copies_complete_result",
+      "cooking_recipe_laws:failed_completion_cannot_publish_mutation",
+      "cooking_recipe_laws:absent_catalog_cannot_authorize_manufactured_plan",
+      "cooking_recipe_laws:empty_fuel_is_preserved_at_completion",
+      "cooking_recipe_laws:empty_input_cannot_fill_bucket",
+      "cooking_recipe_laws:burn_retains_commit_snapshot"
+    ],
+    "source_pins": {
+      "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/base.bend": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_recipe.bend": "085bfe968f3e7169e5c7bacf633029ebd9e4fc8c8ecb79ad81f63a193110f795",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_recipe_laws.bend": "bb44aa1a7a7cbdd4378e89dd5baec11f9b6d2e8749bd51b5d43761ad480fe9d1",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_recipe_proof.bend": "cb914f3eac9a38b992560d0971057d739ab191e4d80dc86f162ab9e7519c0faa",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe.bend": "3c5f3fc7b3e0be9be7d553da2a107dc1245fe13f17afac0efdf84bc41c15ffe2",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/inventory.bend": "9d2be7fb88afa1dc6386ab9e8b046b15d2a2a73b7e14566e5bfad3e6dd1f2702"
+    },
+    "termPins": [
+      {
+        "checked_proof_sha256": "20cbda5b59c44e2dfc8768398895f1d4fd1984e59b160ed65e66fd5b3486bb8a",
+        "name": "cooking_recipe_laws:unsupported_cannot_match",
+        "source_body_sha256": "671f4b708a41b4c56db31dc0044bc2bdf29b00154745d1841b48cdee15f7f307",
+        "type_sha256": "3da895060f6d9e73520e9adf5893fe819d9d0dd4567545e533e978cc1c926c53"
+      },
+      {
+        "checked_proof_sha256": "67d38ec01969c59015bdf93e242d1ed246cdf102556a3fb760a318453c5558d3",
+        "name": "cooking_recipe_laws:unsupported_cannot_assemble",
+        "source_body_sha256": "910f6e84824f3d516478e86f579f6eda40adec65a826fe8670d7db79d137ec61",
+        "type_sha256": "f7836df8357672de68f4b6a608f55b4ca362f30a008cbe45eb09d36ce194c98e"
+      },
+      {
+        "checked_proof_sha256": "f783ee9f089bb19904baddeffa19b1af91a5a304793eb9801a727c309724bd9b",
+        "name": "cooking_recipe_laws:empty_input_cannot_match_cooking",
+        "source_body_sha256": "5ea0717403d0a20efb6aaa9f7d6e48cb2b172fe2225672ac91386d836f1d7d4c",
+        "type_sha256": "c5f373ad52b7abac8f1d4dd11100decdb673c264f752e2152a42694bdff81e55"
+      },
+      {
+        "checked_proof_sha256": "31be0d44beeef8a8fc8556122650d89ff959abd872fd98ad33708c0cd346ceaa",
+        "name": "cooking_recipe_laws:established_match_retains_registry_order",
+        "source_body_sha256": "9c30c60a2a4d2fa017cf36fa0347c702f99acfe34d94f92b3fc79453014a9718",
+        "type_sha256": "e4ccacc7075c28734d32c380de74b71ee18f353d4993700bae29f7d03a8e462d"
+      },
+      {
+        "checked_proof_sha256": "25c0d285d11fa9914291d43093620175ceaae9a162cd4c827ef3cd039844a632",
+        "name": "cooking_recipe_laws:invalid_input_cannot_publish_plan",
+        "source_body_sha256": "deda10caf78662e51984a819401970fa6a30e18eec43e0f8aafa619d3d538ea4",
+        "type_sha256": "45c59dacc1a04301ca04ed399bced2cdc3d5e571ed7b05312f782a71936dc841"
+      },
+      {
+        "checked_proof_sha256": "416cf71816b4a76c5f188fc6a90864e0f226e46aa6104fd24bf2297dacbd7164",
+        "name": "cooking_recipe_laws:empty_destination_ignores_container_limit",
+        "source_body_sha256": "8b0d1f306dd954c78c2bfd3ca48d029b9f81caf9b2b8e3111af4560623468919",
+        "type_sha256": "2cf74ff4428d95d583cc9232c92d2c79d8169b7ae2cd003101641c890f167783"
+      },
+      {
+        "checked_proof_sha256": "ee3dcdcf7e0285ad9880e1d7665a6cd8acd96fe81ea646813bc30c443d6fa868",
+        "name": "cooking_recipe_laws:different_keys_cannot_merge_output",
+        "source_body_sha256": "bab1e4692c0b1b00b6ceb972777836505637a0e87fcd3683dfccdbfd589e99e0",
+        "type_sha256": "7a8f687bd5eb4358b543fd4fa8c18b2db0caeefa86c959718e2fa1c466e48b97"
+      },
+      {
+        "checked_proof_sha256": "cffead935eb841bb93336a09aefdc8d3c2999d9085102439f5e446fd5d030890",
+        "name": "cooking_recipe_laws:nonempty_destination_cannot_accept_empty_result",
+        "source_body_sha256": "7427f052eb5cb696113370a5f78f5be0a245a11a5808f8e865377e4d366c5f50",
+        "type_sha256": "c54a1c469c971a6b5e403e6c5bfbc3fb5c8531a337d76c87779a81a2f94af94d"
+      },
+      {
+        "checked_proof_sha256": "0ea3bf41e6892812b5fc27a2ceed4a83aeed2963eb2916af02d93044c3dae92d",
+        "name": "cooking_recipe_laws:one_completion_spends_one_input_unit",
+        "source_body_sha256": "604e57b000b29269c144fca4444b8e51c48583bc389fb851f9fabe7ea5e447cd",
+        "type_sha256": "67794c6af6309138e0837b3a8d3f2fcd2c7680396130315acc2cde59b41dc156"
+      },
+      {
+        "checked_proof_sha256": "849fcd2373b8471a360cc62304200bdbe9443490f3fa7e657225622cfb60f706",
+        "name": "cooking_recipe_laws:empty_input_cannot_underflow",
+        "source_body_sha256": "b189a979eb922749b8bbb320e472afb8312d85712fa632b01284a659aee558d4",
+        "type_sha256": "9f7d1af3a79224001cca60c7cbbc74d280c1b41e7cdd0585d85cd6d5c41cd311"
+      },
+      {
+        "checked_proof_sha256": "bdf1d06f57bd43ea1fd75263f88fc6fcde80c526930852789665b9a070e12cbb",
+        "name": "cooking_recipe_laws:last_input_is_cleared",
+        "source_body_sha256": "8017e56c0c25d96988592d4ce0c6b071adff185d991419fb1f6f10c36cb8f863",
+        "type_sha256": "111c1637ee3baad97bb4348e9b7581dafc697c109f92e078f7250ced4a0339ee"
+      },
+      {
+        "checked_proof_sha256": "83e30bd22e032779bafb3138d2671a6020b8f4c3c8d7681b96f472d10dd09a95",
+        "name": "cooking_recipe_laws:empty_output_copies_complete_result",
+        "source_body_sha256": "5345ad87c809d99472137695f85e537943dc8d78309508ae3b8945361c3aa739",
+        "type_sha256": "a22b6dc6c661b0565b9aa84e13644506a279bcd6c930388dd101159a5b3d4752"
+      },
+      {
+        "checked_proof_sha256": "df1a518ba2dc903e5111e4ba4c86ac322e3356f897600c99f75fbfcd64ce01a7",
+        "name": "cooking_recipe_laws:failed_completion_cannot_publish_mutation",
+        "source_body_sha256": "738adb5daa1068d189add84c4ccf0f8bd82d3083376221f45eaec287378b33bf",
+        "type_sha256": "5bb16c1773d5b89d47c2b0ecc61a9297a802a429835e2a1fd7039498488f0952"
+      },
+      {
+        "checked_proof_sha256": "3ab0c09beacad400d5b352100c193d6644add3a3804a0dd2e094418b0c06d543",
+        "name": "cooking_recipe_laws:absent_catalog_cannot_authorize_manufactured_plan",
+        "source_body_sha256": "c11171c7a3f46534c92fba85a1630f307386affc4a69d4e37680d9c529984073",
+        "type_sha256": "a5cab405004b51051a336b28957b10eb9bdf80ed7fe05c76b546d93d7cc93e84"
+      },
+      {
+        "checked_proof_sha256": "bd30e30edb5f9959a610991ff7c5a8c634d2a1f7b1c7f2ed16b46f6390b0583d",
+        "name": "cooking_recipe_laws:empty_fuel_is_preserved_at_completion",
+        "source_body_sha256": "74e10f71495e7d103edd8a143e27a9941f0f6491c3c27bff6ca1bdfa9ad79638",
+        "type_sha256": "fa84d5c51ebb43a357c6ebafb8139412507fe6ee5f42289c57c17a2345d5fa92"
+      },
+      {
+        "checked_proof_sha256": "47c0cb42fdab737b31cb799ba4afc50e79200db67e94873c7e428403e433bb3d",
+        "name": "cooking_recipe_laws:empty_input_cannot_fill_bucket",
+        "source_body_sha256": "74e10f71495e7d103edd8a143e27a9941f0f6491c3c27bff6ca1bdfa9ad79638",
+        "type_sha256": "bdb04777246e7a9a15a6693e8cd7f0862bfb0f61d22bec26a895fae71de8f493"
+      },
+      {
+        "checked_proof_sha256": "055e0804604cf17b258f2b9fa7dd7e2c1110c7b1ff2b912fdc985b187713d7b0",
+        "name": "cooking_recipe_laws:burn_retains_commit_snapshot",
+        "source_body_sha256": "4e55ad50c0db6650ae31ea2f3e003b661b674a57e58f378949c2f2b33ff36971",
+        "type_sha256": "2889975bf95fa09084827f334de8db8ec9d36ba8ce2e81abfd12e6c91baeb7e2"
+      }
+    ]
+  },
+  "status": "passed"
+}
