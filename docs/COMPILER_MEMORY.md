@@ -43,7 +43,30 @@ and reduces the complete queue to 3351 entries. The earlier observed firstvisit
 prefix matches exactly. It finishes dependency analysis and reaches emission
 pass five before the 45-second deadline. Ownership marks grow 3253→3383→3431→3441
 across the first four passes, while hot marks stabilize at 1310 after pass two.
-No complete C artifact was emitted before this deadline.
+No complete C artifact was emitted before this initial deadline. A later continuous
+run of the reviewed queue/zero-available-arity candidate converges after six
+complete passes and emits 27,171,263 bytes of C in 66.152 seconds. Sampled peak RSS
+is 3,793,879,040 bytes (3.53 GiB), within the 4 GiB Node heap setting. All 158 loaded
+application/foreign source pins and original compiler pins are unchanged. No
+checkpoint, supplied fact sets or worklist algorithm is used. The candidate
+produces byte-identical complete C to the unchanged compiler on the 467-declaration
+profile8 control; this small control is not broad compiler certification.
+
+The current 002 production actor adds saved status/abilities, complete menu wire,
+version 3 inventory and generation data, and demand population. Its first 4 GiB
+sourceAPI attempt checks all 5788 declarations and finishes six emission passes,
+then actually exhausts the heap during pass seven. No stall or deadline kills it.
+The same frozen 166-file application/foreign graph and compiler candidate at 6 GiB
+converge after seven passes and emit 38,021,404 bytes of C in 159.196 seconds, with
+3,928,670,208 bytes sampled peak RSS (3.66 GiB). A collection after ordinary
+checking frees only about 16 MB: the 2.733 GB postcheck heap is mostly retained
+state, not an established disposable cache. This capacity adjustment changes no
+compiler algorithm. The current 002 native build succeeds with the ordinary CPU recipe: 7,583,960
+bytes, O3 compile 89.13 seconds, with 3,277,373,440 bytes maximum RSS reported by
+macOS time. The earlier actor008 separately passes four real receiver scenarios,
+eight actual-Java steps and eight complete durable-bundle comparisons. Current
+menu/TCP/v3-save/coldreload checks remain required. Its frozen runtime predates the
+subsequent selector-module extraction in the working tree.
 
 ## Scope and remaining work
 
@@ -59,7 +82,10 @@ heap measurements and sampled RSS/physical footprint differ. Do not infer a
 backend limit or speedup from the isolated parser or private instrumentation.
 
 Confidence is high in both demonstrated contributors. Attribution of the entire
-original 15.7 GiB peak remains open until a complete controlled backend build
-succeeds. Minecraft runtime memory, frame times and client performance remain
-unmeasured by these experiments. Preserve all failed inputs and continue from
+original 15.7 GiB physical peak remains open: the successful sourceAPI run uses
+a different runtime plus explicit private mitigations. Complete C is now
+available as native executables for both the earlier actor and frozen integrated
+actor002. The compatible windowed renderer and current actor boundary checks
+remain required before offering a playable pair. Minecraft runtime memory, frame
+times and client performance remain unmeasured by these experiments. Preserve all failed inputs and continue from
 the named producer/pass state with bounded jobs; no equivalent 10-minute retry.
