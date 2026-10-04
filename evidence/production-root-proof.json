@@ -1,30 +1,32 @@
 {
-  "scope": "Current root aggregation: 35 foundation laws + 11 actual player CoreEdit laws. Other production targets and native boundaries remain separate.",
-  "attempts": [
+  "scope": "65 actual root laws:35foundation+11CoreEdit+19 applicationCLI; source-only runtime boundaries elsewhere excluded. Complete emitted BendTT independently checked by pinned kernel. Prior46root receipt retained under build/production-root-proof and Git c6bd256.",
+  "source_before": {
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/LAWS.bend": "9511cb53f0526d440dd68142eb784433a5d62a0448f144e0b788dcd14cdee100",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/PROOF.bend": "7805ec616d4b9ce2820c6cbf36f90dcc53cedaa4e821b39a647b5b4bdce0bdff",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/resource_server_options.bend": "2228e3eac9ffa85b1c183c797274c67bf262d4dbbab6337421d4dade338933af",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/resource_server_options_laws.bend": "1e80b192a627f1c7d32df3f154a3c08af79e0a16a4f1d4209745b49c289ce74e",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/resource_server_options_proof.bend": "23b7fb7388422731ca06ef94b8fa8971db7a35bdf1d83a330186c415bef49386",
+    "/Users/chuah/.bend/bin/bend": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+    "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7"
+  },
+  "source_after": {
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/LAWS.bend": "9511cb53f0526d440dd68142eb784433a5d62a0448f144e0b788dcd14cdee100",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/PROOF.bend": "7805ec616d4b9ce2820c6cbf36f90dcc53cedaa4e821b39a647b5b4bdce0bdff",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/resource_server_options.bend": "2228e3eac9ffa85b1c183c797274c67bf262d4dbbab6337421d4dade338933af",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/resource_server_options_laws.bend": "1e80b192a627f1c7d32df3f154a3c08af79e0a16a4f1d4209745b49c289ce74e",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/resource_server_options_proof.bend": "23b7fb7388422731ca06ef94b8fa8971db7a35bdf1d83a330186c415bef49386",
+    "/Users/chuah/.bend/bin/bend": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+    "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7"
+  },
+  "phases": [
     {
       "command": [
         "/Users/chuah/.bend/bin/bend",
         "PROOF.bend",
         "--check-only"
       ],
-      "seconds": 0.26065262500196695,
+      "seconds": 0.19636920746415854,
       "returncode": 0,
-      "timed_out": false,
-      "pid": 56030,
-      "group_absent": true,
-      "source_before": {
-        "LAWS.bend": "9b67ed6589a86ad680a156f4a00aea331db0d53658e8b7c7d005237ea9253002",
-        "PROOF.bend": "a01a3c7c507f4ff70386714b6db8c60447ac699723cda449989d6a886c17c5be",
-        "src/player_core_edit_laws.bend": "6d85e46ad5504956636255bcef45141948ba3f63d74b9a88923c8e70396e736e",
-        "src/player_core_edit_proof.bend": "e4daface3c3298b66adc36b219cb6d957f7271076427c356e3da886b1ed8d6ea"
-      },
-      "source_after": {
-        "LAWS.bend": "9b67ed6589a86ad680a156f4a00aea331db0d53658e8b7c7d005237ea9253002",
-        "PROOF.bend": "a01a3c7c507f4ff70386714b6db8c60447ac699723cda449989d6a886c17c5be",
-        "src/player_core_edit_laws.bend": "6d85e46ad5504956636255bcef45141948ba3f63d74b9a88923c8e70396e736e",
-        "src/player_core_edit_proof.bend": "e4daface3c3298b66adc36b219cb6d957f7271076427c356e3da886b1ed8d6ea"
-      },
-      "source_unchanged": true,
       "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n",
       "stderr": ""
     },
@@ -32,28 +34,36 @@
       "command": [
         "/Users/chuah/.bend/bin/bend",
         "PROOF.bend",
-        "--verdict"
+        "-o",
+        "build/production-root-proof-002/root.bendtt"
       ],
-      "seconds": 0.7745608342811465,
+      "seconds": 0.26133454218506813,
       "returncode": 0,
-      "timed_out": false,
-      "pid": 56031,
-      "group_absent": true,
-      "source_before": {
-        "LAWS.bend": "9b67ed6589a86ad680a156f4a00aea331db0d53658e8b7c7d005237ea9253002",
-        "PROOF.bend": "a01a3c7c507f4ff70386714b6db8c60447ac699723cda449989d6a886c17c5be",
-        "src/player_core_edit_laws.bend": "6d85e46ad5504956636255bcef45141948ba3f63d74b9a88923c8e70396e736e",
-        "src/player_core_edit_proof.bend": "e4daface3c3298b66adc36b219cb6d957f7271076427c356e3da886b1ed8d6ea"
-      },
-      "source_after": {
-        "LAWS.bend": "9b67ed6589a86ad680a156f4a00aea331db0d53658e8b7c7d005237ea9253002",
-        "PROOF.bend": "a01a3c7c507f4ff70386714b6db8c60447ac699723cda449989d6a886c17c5be",
-        "src/player_core_edit_laws.bend": "6d85e46ad5504956636255bcef45141948ba3f63d74b9a88923c8e70396e736e",
-        "src/player_core_edit_proof.bend": "e4daface3c3298b66adc36b219cb6d957f7271076427c356e3da886b1ed8d6ea"
-      },
-      "source_unchanged": true,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+        "build/production-root-proof-002/root.bendtt"
+      ],
+      "seconds": 0.5660165408626199,
+      "returncode": 0,
+      "stdout": "ALL PROOFS CHECK\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+        "build/compiler-parser-proof-001/proof.bendtt"
+      ],
+      "seconds": 0.042731291614472866,
+      "returncode": 0,
       "stdout": "ALL PROOFS CHECK\n",
       "stderr": ""
     }
-  ]
+  ],
+  "ir_sha256": "2bcb9e7d806e1ad392dd77b8481f2e77af9f57a17aa51788bd0d91a42790bf64",
+  "ir_bytes": 510792,
+  "law_count": 65
 }

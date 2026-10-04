@@ -17,54 +17,20 @@ import ./src/server.bend as Server
 import ./src/json.bend as JSON
 import ./src/framing.bend as Framing
 
-type Options is Data:
-  Options{fixture:Bool,profile:String,creative:Bool,run:Maybe<&2,Bool>,control:Bool,sine:String}
+import ./src/resource_server_options.bend as CLI
+
 type Config is Data:
   Config{port:U32,capability:String,nonce:String}
 
-def defaults() -> Options:
-  Options{False{},"bendex:stone-dirt-superflat",True{},None{},False{},"generated/reference_mth_sin.f32"}
-
-def running(options:Options) -> Bool:
-  Options{fixture,profile,creative,run,control,sine} = options
-  match run:
-    case Some{enabled}: enabled
-    case None{}: Bool.not(fixture)
-
-def parse(args:List<String>,options:Options) -> Result<&2,&2,String,Options>:
-  match args options:
-    case Nil{} _: Done{options}
-    case "--verification-fixture" <> rest Options{fixture,profile,creative,run,control,sine}:
-      parse(rest,Options{True{},profile,creative,run,control,sine})
-    case "--world-profile" <> value <> rest Options{fixture,profile,creative,run,control,sine}:
-      parse(rest,Options{fixture,value,creative,run,control,sine})
-    case "--game-mode" <> "creative" <> rest Options{fixture,profile,creative,run,control,sine}:
-      parse(rest,Options{fixture,profile,True{},run,control,sine})
-    case "--game-mode" <> "survival" <> rest Options{fixture,profile,creative,run,control,sine}:
-      parse(rest,Options{fixture,profile,False{},run,control,sine})
-    case "--unpaused" <> rest Options{fixture,profile,creative,run,control,sine}:
-      parse(rest,Options{fixture,profile,creative,Some{True{}},control,sine})
-    case "--paused" <> rest Options{fixture,profile,creative,run,control,sine}:
-      parse(rest,Options{fixture,profile,creative,Some{False{}},control,sine})
-    case "--stdin-control" <> rest Options{fixture,profile,creative,run,control,sine}:
-      parse(rest,Options{fixture,profile,creative,run,True{},sine})
-    case "--sine" <> value <> rest Options{fixture,profile,creative,run,control,sine}:
-      parse(rest,Options{fixture,profile,creative,run,control,value})
-    case value <> rest _: Fail{"unknown/incomplete option " ++ value}
-
-def checked_options(result:Result<&2,&2,String,Options>) -> IO(Options):
+def checked_options(result:Result<&2,&2,String,CLI.Options>) -> IO(CLI.Options):
   match result:
-    case Fail{message}: IO.die(Options,1,message)
-    case Done{Options{False{},"bendex:stone-dirt-superflat",creative,run,control,sine}}:
-      IO.pure(Options,Options{False{},"bendex:stone-dirt-superflat",creative,run,control,sine})
-    case Done{Options{False{},profile,creative,run,control,sine}}:
-      IO.die(Options,1,"unsupported world profile " ++ profile)
-    case Done{options}: IO.pure(Options,options)
+    case Fail{message}: IO.die(CLI.Options,1,message)
+    case Done{options}: IO.pure(CLI.Options,options)
 
-def parse_cli(args:List<String>) -> IO(Options):
+def parse_cli(args:List<String>) -> IO(CLI.Options):
   match args:
-    case name <> rest: checked_options(parse(rest,defaults()))
-    case Nil{}: IO.die(Options,1,"missing argv")
+    case name <> rest: checked_options(CLI.validate(CLI.parse(rest,CLI.defaults())))
+    case Nil{}: IO.die(CLI.Options,1,"missing argv")
 
 def port_range(port:U32,valid:Bool) -> IO(U32):
   match valid:
@@ -182,31 +148,31 @@ def started_mode(fixture:Bool,control:Bool,+config:Config,ready:Session.Ready) -
       Session.Ready{state,first_peer} = ready
       reserved(control,config,Session.reserve_local_player(state))
 
-def started(options:Options,config:Config,ready:Session.Ready) -> IO(Unit):
-  Options{fixture,profile,creative,run,control,sine} = options
+def started(options:CLI.Options,config:Config,ready:Session.Ready) -> IO(Unit):
+  CLI.Options{fixture,profile,creative,run,control,sine} = options
   started_mode(fixture,control,config,ready)
 
-def fixture_loaded(+options:Options,config:Config,tables:Motion.Tables) -> IO(Unit):
+def fixture_loaded(+options:CLI.Options,config:Config,tables:Motion.Tables) -> IO(Unit):
   do IO<Unit>:
     stored : Persistence.Ready<Record.Record> <- Persistence.load_with(~Record.Record,~Storage.codec(),~Session.operations(),Storage.limits())
     ready : Session.Ready <- Session.new(stored,tables)
     initialized : Session.Ready <- Scene.initialize(ready)
-    started(options,config,Scene.run_requested(initialized,running(options)))
+    started(options,config,Scene.run_requested(initialized,CLI.running(options)))
 
-def profile_loaded(codec:Persistence.Codec<InventoryStorage.Saved>,+options:Options,config:Config,tables:Motion.Tables,settings:Generation.Settings) -> IO(Unit):
+def profile_loaded(codec:Persistence.Codec<InventoryStorage.Saved>,+options:CLI.Options,config:Config,tables:Motion.Tables,settings:Generation.Settings) -> IO(Unit):
   do IO<Unit>:
     stored : Persistence.Ready<InventoryStorage.Saved> <- Persistence.load_codec(~InventoryStorage.Saved,~Session.inventory_operations(),codec,InventoryStorage.limits())
     ready : Session.Ready <- Session.new_inventory(stored,tables)
     initialized : Session.Ready <- Scene.initialize_generated(ready,settings)
-    started(options,config,Scene.run_requested(initialized,running(options)))
+    started(options,config,Scene.run_requested(initialized,CLI.running(options)))
 
-def profile_definitions(+options:Options,config:Config,tables:Motion.Tables,definitions:ItemDefinitions.Catalog) -> IO(Unit):
-  Options{fixture,profile,creative,run,control,sine} = options
+def profile_definitions(+options:CLI.Options,config:Config,tables:Motion.Tables,definitions:ItemDefinitions.Catalog) -> IO(Unit):
+  CLI.Options{fixture,profile,creative,run,control,sine} = options
   +settings = Generation.stone_dirt(NBT.Word64{0,0})
   profile_loaded(InventoryStorage.codec_with(definitions,creative,settings),options,config,tables,settings)
 
-def selected_world(+options:Options,config:Config,tables:Motion.Tables) -> IO(Unit):
-  Options{fixture,profile,creative,run,control,sine} = options
+def selected_world(+options:CLI.Options,config:Config,tables:Motion.Tables) -> IO(Unit):
+  CLI.Options{fixture,profile,creative,run,control,sine} = options
   match fixture:
     case True{}: fixture_loaded(options,config,tables)
     case False{}:
@@ -214,8 +180,8 @@ def selected_world(+options:Options,config:Config,tables:Motion.Tables) -> IO(Un
         definitions : ItemDefinitions.Catalog <- InventoryStorage.load_definitions("generated/reference_item_metadata.tsv")
         profile_definitions(options,config,tables,definitions)
 
-def loaded(+options:Options,config:Config) -> IO(Unit):
-  Options{fixture,profile,creative,run,control,sine} = options
+def loaded(+options:CLI.Options,config:Config) -> IO(Unit):
+  CLI.Options{fixture,profile,creative,run,control,sine} = options
   do IO<Unit>:
     loaded_tables : Result<&2,&1,Motion.Error,Motion.Tables> <- Motion.Tables.load(sine)
     tables : Motion.Tables <- checked_tables(loaded_tables)
@@ -223,7 +189,7 @@ def loaded(+options:Options,config:Config) -> IO(Unit):
 
 def arguments(args:List<String>) -> IO(Unit):
   do IO<Unit>:
-    options : Options <- parse_cli(args)
+    options : CLI.Options <- parse_cli(args)
     config : Config <- configured()
     loaded(options,config)
 

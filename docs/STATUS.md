@@ -364,3 +364,15 @@ unverified. Start the bounded smoke scenario once the controls path is stable,
 then expand it alongside implemented UI/world/multiplayer features. Required
 visible sessions must use genuine desktop isolation or a coordinated foreground
 session; routine hidden tests continue to preserve the user's focus.
+
+### Application parser/compiler memory correction —2026-10-04
+
+Actual applicationCLI now uses the pure equality-classified options module, with
+19 independently certified implementation laws and111 native grammar/order/error
+observations. Root65-law aggregation independently passes. Isolated C emission
+is0.232seconds/83.125MiB sampledRSS; full retained backend with only this fix
+still crosses the2GiB cutoff. Private sourceAPI enqueue dedup reduces observed
+1.44million queue entries to3351 with firstvisit order preserved and reaches
+Cpass5 before45seconds, without a complete artifact. Original compiler unchanged;
+this does not measure Minecraft runtime memory or complete backend build parity.
+See `docs/COMPILER_MEMORY.md` and `evidence/compiler-memory-diagnosis.json`.

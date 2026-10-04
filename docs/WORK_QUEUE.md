@@ -355,3 +355,15 @@ cancellation; no full-client cache speed claim is established.
   behavior or physical power-loss durability.
 - CPU/Metal pixel equality on a small finite scene does not establish vanilla
   models, lighting, UI, gameplay, world generation, or game-scale performance.
+
+### Application parser/compiler memory correction —2026-10-04
+
+Actual applicationCLI now uses the pure equality-classified options module, with
+19 independently certified implementation laws and111 native grammar/order/error
+observations. Root65-law aggregation independently passes. Isolated C emission
+is0.232seconds/83.125MiB sampledRSS; full retained backend with only this fix
+still crosses the2GiB cutoff. Private sourceAPI enqueue dedup reduces observed
+1.44million queue entries to3351 with firstvisit order preserved and reaches
+Cpass5 before45seconds, without a complete artifact. Original compiler unchanged;
+this does not measure Minecraft runtime memory or complete backend build parity.
+See `docs/COMPILER_MEMORY.md` and `evidence/compiler-memory-diagnosis.json`.

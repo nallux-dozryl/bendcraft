@@ -1,0 +1,3144 @@
+{
+  "scope": "Diagnosis of compiler memory before game runtime. Actual appCLI semantic fix is production; private sourceAPI compiler enqueue mitigation remains diagnostic only. Original bend/bend2/bend.ts and comp.ts unchanged. No complete current production C/native artifact or game runtime/performance claim.",
+  "confidence": {
+    "long_literal_pattern_compile_overhead": "high; installedCLI isolated A/B and length discriminator",
+    "duplicate_dependency_enqueue": "high in exact pinned sourceAPI compiler; queue1,437,228→3351 with original firstvisit prefix preserved",
+    "all_original_15_7GiB_physical_peak_explained": "unknown; multiple contributors shown, no completed installedCLI backend after fixes",
+    "game_runtime_memory": "unknown from these compile probes"
+  },
+  "summary": {
+    "original_failed_backend_peak": "15.7GiB physical footprint peak in retained macOS compiler sample; not game memory",
+    "original_profile_literal_characters": 27,
+    "installed_validator_original_sampled_peak_rss_mib": 1785.921875,
+    "installed_validator_equality_sampled_peak_rss_mib": 81.390625,
+    "production_equality_parser": {
+      "seconds": 0.23238050006330013,
+      "peak_sampled_rss_bytes": 87162880,
+      "c_bytes": 156181,
+      "c_sha256": "8749301e58bc7d413ae0877b3ed41883c161733dfc3a28fa70e87881714a2869"
+    },
+    "native_parser_cases": 111,
+    "production_options_kernel_laws": 19,
+    "root_kernel_laws": 65,
+    "source_api_queue_before_observed": 1437228,
+    "source_api_queue_after_complete": 3351,
+    "private_mitigation_deadline_seconds": 45,
+    "private_mitigation_outcome": "full dependency analysis complete; emission pass5 reached; deadline terminated cleanly, no completeC",
+    "source_api_current_baseline_heap_after_ordinary_bytes": 2506293072
+  },
+  "production_sources": {
+    "remote_resource_server.bend": "3e0c84239247e09b376396409169db4abae634a9c06038056b1b75f8acd947a6",
+    "src/resource_server_options.bend": "2228e3eac9ffa85b1c183c797274c67bf262d4dbbab6337421d4dade338933af",
+    "src/resource_server_options_laws.bend": "1e80b192a627f1c7d32df3f154a3c08af79e0a16a4f1d4209745b49c289ce74e",
+    "src/resource_server_options_proof.bend": "23b7fb7388422731ca06ef94b8fa8971db7a35bdf1d83a330186c415bef49386",
+    "LAWS.bend": "9511cb53f0526d440dd68142eb784433a5d62a0448f144e0b788dcd14cdee100",
+    "PROOF.bend": "7805ec616d4b9ce2820c6cbf36f90dcc53cedaa4e821b39a647b5b4bdce0bdff"
+  },
+  "proof_ir": {
+    "path": "build/compiler-parser-proof-001/proof.bendtt",
+    "bytes": 93574,
+    "sha256": "2eaace916c8791f046a7270caa62017f2917d0be5caee13b7b60ecf32e7131b7",
+    "kernel_sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7"
+  },
+  "receipts": {
+    "build/compiler-memory-parent-minimal/summary.json": {
+      "sha256": "4dfc058b78a56be509d293f5b88fef84cbb8513dbf5702af2eb834e47f09d2f8",
+      "receipt": {
+        "scope": "Installed Bend CLI C-emission diagnostic. No gameplay, no renderer, no original toolchain or production changes. RSS sampled each ~0.1sec; not physical footprint and not exact peak. 2GiB RSS/30sec cutoffs. Vocabulary-shortening probes are causal diagnostics, not behavior-preserving fixes. Equality validator is intended semantically equivalent but full production behavior/proof/integration verification remains with owner.",
+        "rows": [
+          {
+            "variant": "original",
+            "seconds": 3.4556297082453966,
+            "sampled_peak_rss_mib": 1785.921875,
+            "c_bytes": 657026,
+            "stop_reason": null,
+            "group_absent": true
+          },
+          {
+            "variant": "equality-fixed",
+            "seconds": 0.3679927084594965,
+            "sampled_peak_rss_mib": 81.390625,
+            "c_bytes": 99863,
+            "stop_reason": null,
+            "group_absent": true
+          },
+          {
+            "variant": "parser-equality",
+            "seconds": 3.5634235413745046,
+            "sampled_peak_rss_mib": 2057.609375,
+            "c_bytes": null,
+            "stop_reason": "2GiB RSS limit",
+            "group_absent": true
+          },
+          {
+            "variant": "parser-short-literals",
+            "seconds": 0.43962087482213974,
+            "sampled_peak_rss_mib": 169.75,
+            "c_bytes": 153456,
+            "stop_reason": null,
+            "group_absent": true
+          },
+          {
+            "variant": "profile-1",
+            "seconds": 0.22828445862978697,
+            "sampled_peak_rss_mib": 96.578125,
+            "c_bytes": 94981,
+            "stop_reason": null,
+            "group_absent": true
+          },
+          {
+            "variant": "profile-8",
+            "seconds": 0.5553959580138326,
+            "sampled_peak_rss_mib": 300.015625,
+            "c_bytes": 160431,
+            "stop_reason": null,
+            "group_absent": true
+          },
+          {
+            "variant": "profile-16",
+            "seconds": 1.460986042395234,
+            "sampled_peak_rss_mib": 713.65625,
+            "c_bytes": 302021,
+            "stop_reason": null,
+            "group_absent": true
+          }
+        ]
+      }
+    },
+    "build/compiler-producer-diagnostic-003/receipt.json": {
+      "sha256": "e297492d58076a2c78c1ebeed83b35b6b9415aa298e1076d646e73f0b11bfc41",
+      "receipt": {
+        "command": [
+          "/opt/homebrew/bin/node",
+          "--max-old-space-size=2048",
+          "--stack-size=4096",
+          "--experimental-transform-types",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-003/diagnose.mjs"
+        ],
+        "seconds": 9.300621415488422,
+        "returncode": -6,
+        "timed_out": false,
+        "pid": 66847,
+        "group_absent": true,
+        "source_before": {
+          "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/comp.ts": "32fb66e09f608ce9e4b173384bcfeec453db8c5bc96650e26ad861bef815a8d9",
+          "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/bend.ts": "7deae3693eb896f33c73867081b99d2c6f3ed3b57e77e55eb5f6260840dd0e63",
+          "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/base.bend": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-client-live-source/remote_resource_server.bend": "a26e9ad484a53678bf1651016cb898d8e347651716233e9ac8472f54c188b162",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-003/comp_instrumented.ts": "3881da667c54f7206fd207ef571584d742d6b8d4be3541e10127d01ac60da669",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-003/diagnose.mjs": "066e05e4c99b77747a332f1fb343ae2547f49c4f69a1228c45af0f80c07c63df"
+        },
+        "source_after": {
+          "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/comp.ts": "32fb66e09f608ce9e4b173384bcfeec453db8c5bc96650e26ad861bef815a8d9",
+          "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/bend.ts": "7deae3693eb896f33c73867081b99d2c6f3ed3b57e77e55eb5f6260840dd0e63",
+          "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/base.bend": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-client-live-source/remote_resource_server.bend": "a26e9ad484a53678bf1651016cb898d8e347651716233e9ac8472f54c188b162",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-003/comp_instrumented.ts": "3881da667c54f7206fd207ef571584d742d6b8d4be3541e10127d01ac60da669",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-003/diagnose.mjs": "066e05e4c99b77747a332f1fb343ae2547f49c4f69a1228c45af0f80c07c63df"
+        },
+        "scope": "Bounded producer/fixpoint instrumentation of read-only source API; diagnostic only, not installed CLI/native artifact/proof evidence. Original compiler files are unchanged.",
+        "node_heap_cap_mib": 2048,
+        "last_producer_rows": [],
+        "producer_row_count": 0,
+        "stdout": "{\"phase\":\"load_start\"}\n{\"phase\":\"load_complete\",\"declarations\":5225}\n",
+        "stderr_tail": "98 v8::internal::(anonymous namespace)::Invoke(v8::internal::Isolate*, v8::internal::(anonymous namespace)::InvokeParams const&) [/opt/homebrew/Cellar/node/23.5.0/bin/node]\n92: 0x104e26a68 v8::internal::(anonymous namespace)::InvokeWithTryCatch(v8::internal::Isolate*, v8::internal::(anonymous namespace)::InvokeParams const&) [/opt/homebrew/Cellar/node/23.5.0/bin/node]\n93: 0x104e4bb54 v8::internal::MicrotaskQueue::RunMicrotasks(v8::internal::Isolate*) [/opt/homebrew/Cellar/node/23.5.0/bin/node]\n94: 0x104e4b8e4 v8::internal::MicrotaskQueue::PerformCheckpointInternal(v8::Isolate*) [/opt/homebrew/Cellar/node/23.5.0/bin/node]\n95: 0x104a695e4 node::InternalCallbackScope::Close() [/opt/homebrew/Cellar/node/23.5.0/bin/node]\n96: 0x104a69444 node::InternalCallbackScope::~InternalCallbackScope() [/opt/homebrew/Cellar/node/23.5.0/bin/node]\n97: 0x104b5f558 node::fs::FileHandle::CloseReq::Resolve() [/opt/homebrew/Cellar/node/23.5.0/bin/node]\n98: 0x104b5ff7c node::fs::FileHandle::ClosePromise()::$_0::__invoke(uv_fs_s*) [/opt/homebrew/Cellar/node/23.5.0/bin/node]\n99: 0x104b4f378 node::MakeLibuvRequestCallback<uv_fs_s, void (*)(uv_fs_s*)>::Wrapper(uv_fs_s*) [/opt/homebrew/Cellar/node/23.5.0/bin/node]\n100: 0x1092f2d70 uv__work_done [/opt/homebrew/Cellar/libuv/1.51.0/lib/libuv.1.0.0.dylib]\n101: 0x1092f658c uv__async_io [/opt/homebrew/Cellar/libuv/1.51.0/lib/libuv.1.0.0.dylib]\n102: 0x109304e28 uv__io_poll [/opt/homebrew/Cellar/libuv/1.51.0/lib/libuv.1.0.0.dylib]\n103: 0x1092f6a00 uv_run [/opt/homebrew/Cellar/libuv/1.51.0/lib/libuv.1.0.0.dylib]\n104: 0x104a6a488 node::SpinEventLoopInternal(node::Environment*) [/opt/homebrew/Cellar/node/23.5.0/bin/node]\n105: 0x104ba35b4 node::NodeMainInstance::Run(node::ExitCode*, node::Environment*) [/opt/homebrew/Cellar/node/23.5.0/bin/node]\n106: 0x104ba3308 node::NodeMainInstance::Run() [/opt/homebrew/Cellar/node/23.5.0/bin/node]\n107: 0x104b18aa0 node::Start(int, char**) [/opt/homebrew/Cellar/node/23.5.0/bin/node]\n108: 0x188b13da4 start [/usr/lib/dyld]\n"
+      }
+    },
+    "build/compiler-producer-diagnostic-004/receipt.json": {
+      "sha256": "814e371b490bb207811cc77d7761b28ff19a03f5c8b234aac8ac5374ab17bdee",
+      "receipt": {
+        "command": [
+          "/opt/homebrew/bin/node",
+          "--max-old-space-size=4096",
+          "--stack-size=4096",
+          "--experimental-transform-types",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-004/diagnose.mjs"
+        ],
+        "seconds": 35.1611044164747,
+        "returncode": -6,
+        "timed_out": false,
+        "pid": 67075,
+        "group_absent": true,
+        "source_before": {
+          "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/comp.ts": "32fb66e09f608ce9e4b173384bcfeec453db8c5bc96650e26ad861bef815a8d9",
+          "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/bend.ts": "7deae3693eb896f33c73867081b99d2c6f3ed3b57e77e55eb5f6260840dd0e63",
+          "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/base.bend": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-client-live-source/remote_resource_server.bend": "a26e9ad484a53678bf1651016cb898d8e347651716233e9ac8472f54c188b162",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-004/comp_instrumented.ts": "18f1cbae0cacce63cc1edf79d7d5d1a66c776cd8d5abec78faaf1aa3fe780dd4",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-004/diagnose.mjs": "2537edcde42a727cf0602029a3600555e3ef447366c04374ef9fc28909e200fa"
+        },
+        "source_after": {
+          "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/comp.ts": "32fb66e09f608ce9e4b173384bcfeec453db8c5bc96650e26ad861bef815a8d9",
+          "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/bend.ts": "7deae3693eb896f33c73867081b99d2c6f3ed3b57e77e55eb5f6260840dd0e63",
+          "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/base.bend": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-client-live-source/remote_resource_server.bend": "a26e9ad484a53678bf1651016cb898d8e347651716233e9ac8472f54c188b162",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-004/comp_instrumented.ts": "18f1cbae0cacce63cc1edf79d7d5d1a66c776cd8d5abec78faaf1aa3fe780dd4",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-004/diagnose.mjs": "2537edcde42a727cf0602029a3600555e3ef447366c04374ef9fc28909e200fa"
+        },
+        "scope": "Bounded producer/fixpoint instrumentation of read-only source API; diagnostic only, not installed CLI/native artifact/proof evidence. Original compiler files are unchanged.",
+        "node_heap_cap_mib": 4096,
+        "last_producer_rows": [
+          {
+            "time_ms": 18320.421375,
+            "phase": "type_adts_end",
+            "name": "Config",
+            "queue": 182
+          },
+          {
+            "time_ms": 18320.439333,
+            "phase": "queue_begin",
+            "name": "IO.OP",
+            "queue": 182,
+            "seen": 16
+          },
+          {
+            "time_ms": 18320.464333,
+            "phase": "queue_begin",
+            "name": "IO.OP",
+            "queue": 182,
+            "seen": 16
+          },
+          {
+            "time_ms": 18320.497042,
+            "phase": "queue_begin",
+            "name": "Config",
+            "queue": 182,
+            "seen": 16
+          },
+          {
+            "time_ms": 18320.524458,
+            "phase": "queue_begin",
+            "name": "Unit",
+            "queue": 182,
+            "seen": 16
+          },
+          {
+            "time_ms": 18320.55,
+            "phase": "queue_begin",
+            "name": "IO.OP",
+            "queue": 182,
+            "seen": 16
+          },
+          {
+            "time_ms": 18320.567625,
+            "phase": "queue_begin",
+            "name": "IO.OP",
+            "queue": 182,
+            "seen": 16
+          },
+          {
+            "time_ms": 18320.583792,
+            "phase": "queue_begin",
+            "name": "Unit",
+            "queue": 182,
+            "seen": 16
+          },
+          {
+            "time_ms": 18320.600833,
+            "phase": "queue_begin",
+            "name": "IO.OP",
+            "queue": 182,
+            "seen": 16
+          },
+          {
+            "time_ms": 18320.626875,
+            "phase": "queue_begin",
+            "name": "IO.OP",
+            "queue": 182,
+            "seen": 16
+          },
+          {
+            "time_ms": 18320.646208,
+            "phase": "queue_begin",
+            "name": "Options",
+            "queue": 182,
+            "seen": 16
+          },
+          {
+            "time_ms": 18320.663458,
+            "phase": "queue_begin",
+            "name": "Config",
+            "queue": 182,
+            "seen": 16
+          },
+          {
+            "time_ms": 18320.681125,
+            "phase": "queue_begin",
+            "name": "Unit",
+            "queue": 182,
+            "seen": 16
+          },
+          {
+            "time_ms": 18320.6995,
+            "phase": "queue_begin",
+            "name": "IO.OP",
+            "queue": 182,
+            "seen": 16
+          },
+          {
+            "time_ms": 18320.7475,
+            "phase": "queue_begin",
+            "name": "IO.OP",
+            "queue": 182,
+            "seen": 16
+          },
+          {
+            "time_ms": 18320.769375,
+            "phase": "queue_begin",
+            "name": "Options",
+            "queue": 182,
+            "seen": 16
+          },
+          {
+            "time_ms": 18320.787208,
+            "phase": "queue_begin",
+            "name": "Config",
+            "queue": 182,
+            "seen": 16
+          },
+          {
+            "time_ms": 18320.804875,
+            "phase": "queue_begin",
+            "name": "IO.bind",
+            "queue": 182,
+            "seen": 16
+          },
+          {
+            "time_ms": 18320.822583,
+            "phase": "queue_begin",
+            "name": "parse_cli",
+            "queue": 182,
+            "seen": 16
+          },
+          {
+            "time_ms": 18320.842583,
+            "phase": "type_adts_begin",
+            "name": "parse_cli",
+            "kind": "Def"
+          },
+          {
+            "time_ms": 18320.880458,
+            "phase": "type_adts_end",
+            "name": "parse_cli",
+            "queue": 187
+          },
+          {
+            "time_ms": 18320.898917,
+            "phase": "fun_of_begin",
+            "name": "parse_cli"
+          },
+          {
+            "time_ms": 18320.917125,
+            "phase": "fun_of_end",
+            "name": "parse_cli"
+          },
+          {
+            "time_ms": 18321.211583,
+            "phase": "fun_miss_begin",
+            "name": "checked_options"
+          },
+          {
+            "time_ms": 18321.23225,
+            "phase": "fun_tele_done",
+            "name": "checked_options"
+          },
+          {
+            "time_ms": 18324.52225,
+            "phase": "fun_higher_done",
+            "name": "checked_options"
+          },
+          {
+            "time_ms": 21092.264708,
+            "phase": "fun_raise_done",
+            "name": "checked_options"
+          },
+          {
+            "time_ms": 21092.857333,
+            "phase": "fun_lays_done",
+            "name": "checked_options"
+          },
+          {
+            "time_ms": 21093.109625,
+            "phase": "fun_ret_done",
+            "name": "checked_options"
+          },
+          {
+            "time_ms": 21093.439083,
+            "phase": "fun_miss_begin",
+            "name": "parse"
+          },
+          {
+            "time_ms": 21093.638458,
+            "phase": "fun_tele_done",
+            "name": "parse"
+          },
+          {
+            "time_ms": 21107.823833,
+            "phase": "fun_higher_done",
+            "name": "parse"
+          }
+        ],
+        "producer_row_count": 267,
+        "stdout": "{\"phase\":\"load_start\"}\n{\"phase\":\"load_complete\",\"declarations\":5225}\n{\"phase\":\"ordinary_complete\",\"declarations\":5304}\n",
+        "stderr_tail": " \n145: 0x10e8b81d8 \n146: 0x10e8b81d8 \n147: 0x10e8b81d8 \n148: 0x10e8b81d8 \n149: 0x10e8b81d8 \n150: 0x10e8b81d8 \n151: 0x10e8b81d8 \n152: 0x10e8b81d8 \n153: 0x10e8b81d8 \n154: 0x10e8b81d8 \n155: 0x10e8b81d8 \n156: 0x10e8b81d8 \n157: 0x10e8b81d8 \n158: 0x10e8b81d8 \n159: 0x10e8b81d8 \n160: 0x10e8b81d8 \n161: 0x10e8b81d8 \n162: 0x10e8b81d8 \n163: 0x10e8b81d8 \n164: 0x10e8b81d8 \n165: 0x10e8b81d8 \n166: 0x10e8b81d8 \n167: 0x10e8b81d8 \n168: 0x10e8b81d8 \n169: 0x10e8b81d8 \n170: 0x10e8b81d8 \n171: 0x10e8b81d8 \n172: 0x10e8b81d8 \n173: 0x10e8b81d8 \n174: 0x10e8b81d8 \n175: 0x10e8b81d8 \n176: 0x10e8b81d8 \n177: 0x10e8b81d8 \n178: 0x10e8b81d8 \n179: 0x10e8b81d8 \n180: 0x10e8b81d8 \n181: 0x10e8b81d8 \n182: 0x10e8b81d8 \n183: 0x10e8b81d8 \n184: 0x10e8b81d8 \n185: 0x10e8b81d8 \n186: 0x10e8b81d8 \n187: 0x10e8b81d8 \n188: 0x10e8b81d8 \n189: 0x10e8b81d8 \n190: 0x10e8b81d8 \n191: 0x10e8b81d8 \n192: 0x10e8b81d8 \n193: 0x10e8b81d8 \n194: 0x10e8b81d8 \n195: 0x10e8b81d8 \n196: 0x10e8b81d8 \n197: 0x10e8b81d8 \n198: 0x10e8b81d8 \n199: 0x10e8b81d8 \n200: 0x10e8b81d8 \n201: 0x10e8b81d8 \n202: 0x10e8b81d8 \n203: 0x10e8b81d8 \n204: 0x10e8b81d8 \n205: 0x10e8b81d8 \n206: 0x10e8b81d8 \n207: 0x10e8b81d8 \n208: 0x10e8b81d8 \n209: 0x10e8b81d8 \n210: 0x10e8b81d8 \n211: 0x10e8b81d8 \n212: 0x10e8b81d8 \n213: 0x10e8b81d8 \n214: 0x10e8b81d8 \n215: 0x10e8b81d8 \n216: 0x10e8b81d8 \n217: 0x10e8b81d8 \n218: 0x10e8b81d8 \n219: 0x10e8b81d8 \n220: 0x10e8b81d8 \n221: 0x10e8b81d8 \n222: 0x10e8b81d8 \n223: 0x10e8b81d8 \n224: 0x10e8b81d8 \n225: 0x10e8b81d8 \n226: 0x10e8b81d8 \n227: 0x10e8b81d8 \n228: 0x10e8b81d8 \n229: 0x10e8b81d8 \n230: 0x10e8b81d8 \n231: 0x10e8b81d8 \n232: 0x10e8b81d8 \n233: 0x10e8b81d8 \n234: 0x10e8b81d8 \n235: 0x10e8b81d8 \n236: 0x10e8b81d8 \n237: 0x10e8b81d8 \n238: 0x10e8b81d8 \n239: 0x10e8b81d8 \n240: 0x10e8b81d8 \n241: 0x10e8b81d8 \n242: 0x10e8b81d8 \n243: 0x10e8b81d8 \n244: 0x10e8b81d8 \n245: 0x10e8b81d8 \n246: 0x10e8b81d8 \n247: 0x10e8b81d8 \n248: 0x10e8b81d8 \n249: 0x10e8b81d8 \n250: 0x10e8b81d8 \n251: 0x10e8b81d8 \n252: 0x10e8b81d8 \n253: 0x10e8b81d8 \n254: 0x10e8b81d8 \n255: 0x10e8b81d8 \n",
+        "producer_log_sha256": "955e4b4c554a1ac5661a86da29b1163d08757d8ab47a03e9c2571604362097b7",
+        "receipt_correction": "Producer instrumentation writes producer.jsonl; initial capture parser erroneously read stderr. Original stdout/stderr and all failed input pins retained."
+      }
+    },
+    "build/compiler-producer-diagnostic-005/receipt.json": {
+      "sha256": "bbb795932c593b3ed422ea01f4eb300cf069de7e7f1ae76ffd92eb34ddc37125",
+      "receipt": {
+        "command": [
+          "/opt/homebrew/bin/node",
+          "--max-old-space-size=4096",
+          "--stack-size=4096",
+          "--experimental-transform-types",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-005/diagnose.mjs"
+        ],
+        "seconds": 50.22772870771587,
+        "returncode": -15,
+        "timed_out": true,
+        "pid": 71076,
+        "group_absent": true,
+        "source_before": {
+          "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/comp.ts": "32fb66e09f608ce9e4b173384bcfeec453db8c5bc96650e26ad861bef815a8d9",
+          "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/bend.ts": "7deae3693eb896f33c73867081b99d2c6f3ed3b57e77e55eb5f6260840dd0e63",
+          "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/base.bend": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-005/comp_instrumented.ts": "6186461d0f29534999a03aa0dbda776b836b737e35bcbd0ba862e6c14f85a0f1",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-005/diagnose.mjs": "8ab401fcc52aba3e269f2d80c9d59be39855461a924c3efc9cfcc5bf38a40ca3",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-full-parser-fix-001/remote_resource_server.bend": "e631ae8e6a981ca1f85b344dad77a4953761a0eae3694468caeb6112e3cbbf0d",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-full-parser-fix-001/resource_server_options.bend": "2228e3eac9ffa85b1c183c797274c67bf262d4dbbab6337421d4dade338933af"
+        },
+        "source_after": {
+          "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/comp.ts": "32fb66e09f608ce9e4b173384bcfeec453db8c5bc96650e26ad861bef815a8d9",
+          "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/bend.ts": "7deae3693eb896f33c73867081b99d2c6f3ed3b57e77e55eb5f6260840dd0e63",
+          "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/base.bend": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-005/comp_instrumented.ts": "6186461d0f29534999a03aa0dbda776b836b737e35bcbd0ba862e6c14f85a0f1",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-005/diagnose.mjs": "8ab401fcc52aba3e269f2d80c9d59be39855461a924c3efc9cfcc5bf38a40ca3",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-full-parser-fix-001/remote_resource_server.bend": "e631ae8e6a981ca1f85b344dad77a4953761a0eae3694468caeb6112e3cbbf0d",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-full-parser-fix-001/resource_server_options.bend": "2228e3eac9ffa85b1c183c797274c67bf262d4dbbab6337421d4dade338933af"
+        },
+        "scope": "Source-API diagnostic after exact appCLI fix on retained original failed graph. Originals unchanged. Private compiler instrumentation only; not installedCLI/current product proof/runtime.",
+        "node_heap_cap_mib": 4096,
+        "last_producer_rows": [
+          {
+            "time_ms": 44948.172625,
+            "memory": {
+              "rss": 654491648,
+              "heapTotal": 3326689280,
+              "heapUsed": 3287738200,
+              "external": 14889671,
+              "arrayBuffers": 10483
+            },
+            "phase": "queue_begin",
+            "name": "../playable-client-live-source/src/core:World",
+            "queue": 1437228,
+            "seen": 2148
+          },
+          {
+            "time_ms": 44948.190667,
+            "memory": {
+              "rss": 654491648,
+              "heapTotal": 3326689280,
+              "heapUsed": 3287739376,
+              "external": 14889671,
+              "arrayBuffers": 10483
+            },
+            "phase": "queue_begin",
+            "name": "Sigma",
+            "queue": 1437228,
+            "seen": 2148
+          },
+          {
+            "time_ms": 44948.208709,
+            "memory": {
+              "rss": 654491648,
+              "heapTotal": 3326689280,
+              "heapUsed": 3287740472,
+              "external": 14889671,
+              "arrayBuffers": 10483
+            },
+            "phase": "queue_begin",
+            "name": "../playable-client-live-source/src/live:Session",
+            "queue": 1437228,
+            "seen": 2148
+          },
+          {
+            "time_ms": 44948.2265,
+            "memory": {
+              "rss": 654491648,
+              "heapTotal": 3326689280,
+              "heapUsed": 3287741648,
+              "external": 14889671,
+              "arrayBuffers": 10483
+            },
+            "phase": "queue_begin",
+            "name": "../playable-client-live-source/src/json:Value",
+            "queue": 1437228,
+            "seen": 2148
+          },
+          {
+            "time_ms": 44948.244834,
+            "memory": {
+              "rss": 654491648,
+              "heapTotal": 3326689280,
+              "heapUsed": 3287742816,
+              "external": 14889671,
+              "arrayBuffers": 10483
+            },
+            "phase": "queue_begin",
+            "name": "Bool",
+            "queue": 1437228,
+            "seen": 2148
+          },
+          {
+            "time_ms": 44948.266125,
+            "memory": {
+              "rss": 654491648,
+              "heapTotal": 3326689280,
+              "heapUsed": 3287743912,
+              "external": 14889671,
+              "arrayBuffers": 10483
+            },
+            "phase": "queue_begin",
+            "name": "Word.Con",
+            "queue": 1437228,
+            "seen": 2148
+          },
+          {
+            "time_ms": 44948.284834,
+            "memory": {
+              "rss": 654491648,
+              "heapTotal": 3326689280,
+              "heapUsed": 3287745080,
+              "external": 14889671,
+              "arrayBuffers": 10483
+            },
+            "phase": "queue_begin",
+            "name": "String",
+            "queue": 1437228,
+            "seen": 2148
+          },
+          {
+            "time_ms": 44948.302792,
+            "memory": {
+              "rss": 654491648,
+              "heapTotal": 3326689280,
+              "heapUsed": 3287746176,
+              "external": 14889671,
+              "arrayBuffers": 10483
+            },
+            "phase": "queue_begin",
+            "name": "../playable-client-live-source/src/core:World",
+            "queue": 1437228,
+            "seen": 2148
+          },
+          {
+            "time_ms": 44948.320834,
+            "memory": {
+              "rss": 654491648,
+              "heapTotal": 3326689280,
+              "heapUsed": 3287747352,
+              "external": 14889671,
+              "arrayBuffers": 10483
+            },
+            "phase": "queue_begin",
+            "name": "../playable-client-live-source/src/live:Session",
+            "queue": 1437228,
+            "seen": 2148
+          },
+          {
+            "time_ms": 44948.33925,
+            "memory": {
+              "rss": 654491648,
+              "heapTotal": 3326689280,
+              "heapUsed": 3287748528,
+              "external": 14889671,
+              "arrayBuffers": 10483
+            },
+            "phase": "queue_begin",
+            "name": "String",
+            "queue": 1437228,
+            "seen": 2148
+          },
+          {
+            "time_ms": 44948.358834,
+            "memory": {
+              "rss": 654491648,
+              "heapTotal": 3326689280,
+              "heapUsed": 3287749624,
+              "external": 14889671,
+              "arrayBuffers": 10483
+            },
+            "phase": "queue_begin",
+            "name": "String",
+            "queue": 1437228,
+            "seen": 2148
+          },
+          {
+            "time_ms": 44948.378792,
+            "memory": {
+              "rss": 654491648,
+              "heapTotal": 3326689280,
+              "heapUsed": 3287750720,
+              "external": 14889671,
+              "arrayBuffers": 10483
+            },
+            "phase": "queue_begin",
+            "name": "String",
+            "queue": 1437228,
+            "seen": 2148
+          },
+          {
+            "time_ms": 44948.397542,
+            "memory": {
+              "rss": 654491648,
+              "heapTotal": 3326689280,
+              "heapUsed": 3287751816,
+              "external": 14889671,
+              "arrayBuffers": 10483
+            },
+            "phase": "queue_begin",
+            "name": "Sigma",
+            "queue": 1437228,
+            "seen": 2148
+          },
+          {
+            "time_ms": 44948.416292,
+            "memory": {
+              "rss": 654491648,
+              "heapTotal": 3326689280,
+              "heapUsed": 3287752912,
+              "external": 14889671,
+              "arrayBuffers": 10483
+            },
+            "phase": "queue_begin",
+            "name": "../playable-client-live-source/src/core:World",
+            "queue": 1437228,
+            "seen": 2148
+          },
+          {
+            "time_ms": 44948.434959,
+            "memory": {
+              "rss": 654491648,
+              "heapTotal": 3326689280,
+              "heapUsed": 3287754088,
+              "external": 14889671,
+              "arrayBuffers": 10483
+            },
+            "phase": "queue_begin",
+            "name": "Sigma",
+            "queue": 1437228,
+            "seen": 2148
+          },
+          {
+            "time_ms": 44948.454667,
+            "memory": {
+              "rss": 654491648,
+              "heapTotal": 3326689280,
+              "heapUsed": 3287755184,
+              "external": 14889671,
+              "arrayBuffers": 10483
+            },
+            "phase": "queue_begin",
+            "name": "../playable-client-live-source/src/live:Session",
+            "queue": 1437228,
+            "seen": 2148
+          },
+          {
+            "time_ms": 44948.474084,
+            "memory": {
+              "rss": 654491648,
+              "heapTotal": 3326689280,
+              "heapUsed": 3287756360,
+              "external": 14889671,
+              "arrayBuffers": 10483
+            },
+            "phase": "queue_begin",
+            "name": "../playable-client-live-source/src/json:Value",
+            "queue": 1437228,
+            "seen": 2148
+          },
+          {
+            "time_ms": 44948.492959,
+            "memory": {
+              "rss": 654491648,
+              "heapTotal": 3326689280,
+              "heapUsed": 3287757536,
+              "external": 14889671,
+              "arrayBuffers": 10483
+            },
+            "phase": "queue_begin",
+            "name": "Word.Con",
+            "queue": 1437228,
+            "seen": 2148
+          },
+          {
+            "time_ms": 44948.511417,
+            "memory": {
+              "rss": 654491648,
+              "heapTotal": 3326689280,
+              "heapUsed": 3287758632,
+              "external": 14889671,
+              "arrayBuffers": 10483
+            },
+            "phase": "queue_begin",
+            "name": "String",
+            "queue": 1437228,
+            "seen": 2148
+          },
+          {
+            "time_ms": 44948.530084,
+            "memory": {
+              "rss": 654491648,
+              "heapTotal": 3326689280,
+              "heapUsed": 3287759728,
+              "external": 14889671,
+              "arrayBuffers": 10483
+            },
+            "phase": "queue_begin",
+            "name": "../playable-client-live-source/src/core:World",
+            "queue": 1437228,
+            "seen": 2148
+          }
+        ],
+        "producer_row_count": 1377140,
+        "stdout": "{\"memory\":{\"rss\":124370944,\"heapTotal\":17448960,\"heapUsed\":13299872,\"external\":15254817,\"arrayBuffers\":435683},\"phase\":\"load_start\"}\n{\"memory\":{\"rss\":1067581440,\"heapTotal\":952680448,\"heapUsed\":920651696,\"external\":14829657,\"arrayBuffers\":10483},\"phase\":\"load_complete\",\"declarations\":5241}\n{\"memory\":{\"rss\":1461387264,\"heapTotal\":2526265344,\"heapUsed\":2500864424,\"external\":14829657,\"arrayBuffers\":10483},\"phase\":\"ordinary_complete\",\"declarations\":5320}\n",
+        "stderr_tail": "(node:71076) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+      }
+    },
+    "build/compiler-producer-diagnostic-006/receipt.json": {
+      "sha256": "b7d33a04cc9819fedb920730ad160c512835d19a8a5395c2095c74addb866408",
+      "receipt": {
+        "command": [
+          "/opt/homebrew/bin/node",
+          "--max-old-space-size=4096",
+          "--stack-size=4096",
+          "--experimental-transform-types",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-006/diagnose.mjs"
+        ],
+        "seconds": 47.82283704262227,
+        "returncode": -15,
+        "timed_out": true,
+        "pid": 74554,
+        "group_absent": true,
+        "source_before": {
+          "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/comp.ts": "32fb66e09f608ce9e4b173384bcfeec453db8c5bc96650e26ad861bef815a8d9",
+          "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/bend.ts": "7deae3693eb896f33c73867081b99d2c6f3ed3b57e77e55eb5f6260840dd0e63",
+          "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/base.bend": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-006/comp_instrumented.ts": "af0fae77410fe74ff88ac5432e2b032035508d60e6c1d72e20046729dd88cc6e",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-006/diagnose.mjs": "ae8bb95c4f40e5cabc43e7506a868bb2bdc4342ce58852be4122d334b5c302f0",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-full-parser-fix-001/remote_resource_server.bend": "e631ae8e6a981ca1f85b344dad77a4953761a0eae3694468caeb6112e3cbbf0d",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-full-parser-fix-001/resource_server_options.bend": "2228e3eac9ffa85b1c183c797274c67bf262d4dbbab6337421d4dade338933af"
+        },
+        "source_after": {
+          "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/comp.ts": "32fb66e09f608ce9e4b173384bcfeec453db8c5bc96650e26ad861bef815a8d9",
+          "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/bend.ts": "7deae3693eb896f33c73867081b99d2c6f3ed3b57e77e55eb5f6260840dd0e63",
+          "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/base.bend": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-006/comp_instrumented.ts": "af0fae77410fe74ff88ac5432e2b032035508d60e6c1d72e20046729dd88cc6e",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-006/diagnose.mjs": "ae8bb95c4f40e5cabc43e7506a868bb2bdc4342ce58852be4122d334b5c302f0",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-full-parser-fix-001/remote_resource_server.bend": "e631ae8e6a981ca1f85b344dad77a4953761a0eae3694468caeb6112e3cbbf0d",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-full-parser-fix-001/resource_server_options.bend": "2228e3eac9ffa85b1c183c797274c67bf262d4dbbab6337421d4dade338933af"
+        },
+        "scope": "Private sourceAPI compiler mitigation: deduplicate dependency enqueue only, preserving firstdistinctFIFOorder. No term traversal/site/tailcall changes; original Bend.ts/comp.ts and fixedretainedgraph unchanged. Diagnostic only, not installedcurrent product.",
+        "node_heap_cap_mib": 4096,
+        "last_producer_rows": [
+          {
+            "time_ms": 44943.034916,
+            "memory": {
+              "rss": 3354443776,
+              "heapTotal": 3664969728,
+              "heapUsed": 3073236808,
+              "external": 14887374,
+              "arrayBuffers": 10483
+            },
+            "phase": "emit_begin",
+            "pass": 5,
+            "name": "../playable-client-live-source/src/core:clock"
+          },
+          {
+            "time_ms": 44943.070291,
+            "memory": {
+              "rss": 3354542080,
+              "heapTotal": 3664969728,
+              "heapUsed": 3073243728,
+              "external": 14887374,
+              "arrayBuffers": 10483
+            },
+            "phase": "emit_open_done",
+            "pass": 5,
+            "name": "../playable-client-live-source/src/core:clock"
+          },
+          {
+            "time_ms": 44950.024166,
+            "memory": {
+              "rss": 3365158912,
+              "heapTotal": 3664969728,
+              "heapUsed": 3067639480,
+              "external": 14887374,
+              "arrayBuffers": 10483
+            },
+            "phase": "emit_end",
+            "pass": 5,
+            "name": "../playable-client-live-source/src/core:clock",
+            "elapsed_ms": 6.960500000001048
+          },
+          {
+            "time_ms": 44950.177625,
+            "memory": {
+              "rss": 3365322752,
+              "heapTotal": 3664969728,
+              "heapUsed": 3067640728,
+              "external": 14887374,
+              "arrayBuffers": 10483
+            },
+            "phase": "emit_begin",
+            "pass": 5,
+            "name": "../playable-client-live-source/src/local_phase_runtime:pre_realtime_clocked"
+          },
+          {
+            "time_ms": 44950.279291,
+            "memory": {
+              "rss": 3365453824,
+              "heapTotal": 3664969728,
+              "heapUsed": 3067674512,
+              "external": 14887374,
+              "arrayBuffers": 10483
+            },
+            "phase": "emit_open_done",
+            "pass": 5,
+            "name": "../playable-client-live-source/src/local_phase_runtime:pre_realtime_clocked"
+          },
+          {
+            "time_ms": 44950.629458,
+            "memory": {
+              "rss": 3366158336,
+              "heapTotal": 3664969728,
+              "heapUsed": 3068061936,
+              "external": 14887374,
+              "arrayBuffers": 10483
+            },
+            "phase": "emit_end",
+            "pass": 5,
+            "name": "../playable-client-live-source/src/local_phase_runtime:pre_realtime_clocked",
+            "elapsed_ms": 0.40362499999901047
+          },
+          {
+            "time_ms": 44950.660125,
+            "memory": {
+              "rss": 3366223872,
+              "heapTotal": 3664969728,
+              "heapUsed": 3068063248,
+              "external": 14887374,
+              "arrayBuffers": 10483
+            },
+            "phase": "emit_begin",
+            "pass": 5,
+            "name": "../playable-client-live-source/src/local_phase_runtime:decision_updates"
+          },
+          {
+            "time_ms": 44950.699625,
+            "memory": {
+              "rss": 3366289408,
+              "heapTotal": 3664969728,
+              "heapUsed": 3068072200,
+              "external": 14887374,
+              "arrayBuffers": 10483
+            },
+            "phase": "emit_open_done",
+            "pass": 5,
+            "name": "../playable-client-live-source/src/local_phase_runtime:decision_updates"
+          },
+          {
+            "time_ms": 44950.760708,
+            "memory": {
+              "rss": 3366420480,
+              "heapTotal": 3664969728,
+              "heapUsed": 3068099184,
+              "external": 14887374,
+              "arrayBuffers": 10483
+            },
+            "phase": "emit_end",
+            "pass": 5,
+            "name": "../playable-client-live-source/src/local_phase_runtime:decision_updates",
+            "elapsed_ms": 0.0701660000049742
+          },
+          {
+            "time_ms": 44950.787083,
+            "memory": {
+              "rss": 3366453248,
+              "heapTotal": 3664969728,
+              "heapUsed": 3068100480,
+              "external": 14887374,
+              "arrayBuffers": 10483
+            },
+            "phase": "emit_begin",
+            "pass": 5,
+            "name": "../playable-client-live-source/src/local_phase_runtime:decision_sprinting"
+          },
+          {
+            "time_ms": 44950.828416,
+            "memory": {
+              "rss": 3366535168,
+              "heapTotal": 3664969728,
+              "heapUsed": 3068109496,
+              "external": 14887374,
+              "arrayBuffers": 10483
+            },
+            "phase": "emit_open_done",
+            "pass": 5,
+            "name": "../playable-client-live-source/src/local_phase_runtime:decision_sprinting"
+          },
+          {
+            "time_ms": 44950.90475,
+            "memory": {
+              "rss": 3366699008,
+              "heapTotal": 3664969728,
+              "heapUsed": 3068135888,
+              "external": 14887374,
+              "arrayBuffers": 10483
+            },
+            "phase": "emit_end",
+            "pass": 5,
+            "name": "../playable-client-live-source/src/local_phase_runtime:decision_sprinting",
+            "elapsed_ms": 0.0827080000017304
+          },
+          {
+            "time_ms": 44950.941083,
+            "memory": {
+              "rss": 3366731776,
+              "heapTotal": 3664969728,
+              "heapUsed": 3068137192,
+              "external": 14887374,
+              "arrayBuffers": 10483
+            },
+            "phase": "emit_begin",
+            "pass": 5,
+            "name": "../playable-client-live-source/src/local_phase_runtime:pending_decision"
+          },
+          {
+            "time_ms": 44950.97575,
+            "memory": {
+              "rss": 3366764544,
+              "heapTotal": 3664969728,
+              "heapUsed": 3068142680,
+              "external": 14887374,
+              "arrayBuffers": 10483
+            },
+            "phase": "emit_open_done",
+            "pass": 5,
+            "name": "../playable-client-live-source/src/local_phase_runtime:pending_decision"
+          },
+          {
+            "time_ms": 44951.238416,
+            "memory": {
+              "rss": 3367206912,
+              "heapTotal": 3664969728,
+              "heapUsed": 3068278672,
+              "external": 14887374,
+              "arrayBuffers": 10483
+            },
+            "phase": "emit_end",
+            "pass": 5,
+            "name": "../playable-client-live-source/src/local_phase_runtime:pending_decision",
+            "elapsed_ms": 0.26970799999980954
+          },
+          {
+            "time_ms": 44951.266708,
+            "memory": {
+              "rss": 3367223296,
+              "heapTotal": 3664969728,
+              "heapUsed": 3068279976,
+              "external": 14887374,
+              "arrayBuffers": 10483
+            },
+            "phase": "emit_begin",
+            "pass": 5,
+            "name": "../playable-client-live-source/src/local_player_runtime:apply_provider"
+          },
+          {
+            "time_ms": 44951.311083,
+            "memory": {
+              "rss": 3367239680,
+              "heapTotal": 3664969728,
+              "heapUsed": 3068303520,
+              "external": 14887374,
+              "arrayBuffers": 10483
+            },
+            "phase": "emit_open_done",
+            "pass": 5,
+            "name": "../playable-client-live-source/src/local_player_runtime:apply_provider"
+          },
+          {
+            "time_ms": 44951.816208,
+            "memory": {
+              "rss": 3367059456,
+              "heapTotal": 3664969728,
+              "heapUsed": 3068879000,
+              "external": 14887374,
+              "arrayBuffers": 10483
+            },
+            "phase": "emit_end",
+            "pass": 5,
+            "name": "../playable-client-live-source/src/local_player_runtime:apply_provider",
+            "elapsed_ms": 0.5218329999988782
+          },
+          {
+            "time_ms": 44951.849333,
+            "memory": {
+              "rss": 3367141376,
+              "heapTotal": 3664969728,
+              "heapUsed": 3068880344,
+              "external": 14887374,
+              "arrayBuffers": 10483
+            },
+            "phase": "emit_begin",
+            "pass": 5,
+            "name": "../playable-client-live-source/src/local_phase_runtime:stage_query"
+          },
+          {
+            "time_ms": 44951.90525,
+            "memory": {
+              "rss": 3367075840,
+              "heapTotal": 3664969728,
+              "heapUsed": 3068887304,
+              "external": 14887374,
+              "arrayBuffers": 10483
+            },
+            "phase": "emit_open_done",
+            "pass": 5,
+            "name": "../playable-client-live-source/src/local_phase_runtime:stage_query"
+          }
+        ],
+        "producer_row_count": 78023,
+        "maximum_queue_length": 3351,
+        "processed_distinct_definitions": 3351,
+        "original_processed_prefix_count": 2148,
+        "firstvisit_prefix_unchanged": true,
+        "stdout": "{\"memory\":{\"rss\":123617280,\"heapTotal\":17448960,\"heapUsed\":13300304,\"external\":15255522,\"arrayBuffers\":436388},\"phase\":\"load_start\"}\n{\"memory\":{\"rss\":1066778624,\"heapTotal\":952156160,\"heapUsed\":919386064,\"external\":14829657,\"arrayBuffers\":10483},\"phase\":\"load_complete\",\"declarations\":5241}\n{\"memory\":{\"rss\":1985953792,\"heapTotal\":2526003200,\"heapUsed\":2506293072,\"external\":14829657,\"arrayBuffers\":10483},\"phase\":\"ordinary_complete\",\"declarations\":5320}\n",
+        "stderr_tail": "(node:74554) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+        "c_bytes": null,
+        "c_sha256": null
+      }
+    },
+    "build/compiler-parser-candidate-001/emit.receipt.json": {
+      "sha256": "7691ea7e02f2e6089d31030f3c43f88609a0cd916250e082bf294c4904e707b7",
+      "receipt": {
+        "command": [
+          "/Users/chuah/.bend/bin/bend",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-parser-candidate-001/candidate.bend",
+          "-o",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-parser-candidate-001/candidate.c"
+        ],
+        "seconds": 0.23238050006330013,
+        "returncode": 0,
+        "stop_reason": null,
+        "peak_sampled_rss_bytes": 87162880,
+        "group_absent": true,
+        "source_before": {
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-parser-candidate-001/candidate.bend": "cfc3abb4f2376d544a696d3a21d209132bb334321e4549791aa0ba499e1de1f7",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/resource_server_options.bend": "2228e3eac9ffa85b1c183c797274c67bf262d4dbbab6337421d4dade338933af",
+          "/Users/chuah/.bend/bin/bend": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e"
+        },
+        "source_after": {
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-parser-candidate-001/candidate.bend": "cfc3abb4f2376d544a696d3a21d209132bb334321e4549791aa0ba499e1de1f7",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/resource_server_options.bend": "2228e3eac9ffa85b1c183c797274c67bf262d4dbbab6337421d4dade338933af",
+          "/Users/chuah/.bend/bin/bend": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e"
+        },
+        "c_bytes": 156181,
+        "c_sha256": "8749301e58bc7d413ae0877b3ed41883c161733dfc3a28fa70e87881714a2869",
+        "stdout": "",
+        "stderr": "",
+        "scope": "Actual production equality classifier/options parser isolated with Base only. Installed Bend2.0.35 C emission, not fullbackend/nativeMinecraft."
+      }
+    },
+    "build/compiler-parser-candidate-001/semantic.receipt.json": {
+      "sha256": "bcef5970e5096bfdf276ff602f6b0f61f7f748bb742ecc405695adc2edaf1b30",
+      "receipt": {
+        "scope": "Native behavior against independently transcribed original application CLI grammar/defaults/profile policy. Finite edge/order observations complement production laws; no universal equivalence theorem claimed.",
+        "seconds": 0.27489620819687843,
+        "cases": 111,
+        "passed": 111,
+        "binary_sha256": "946907935b648bd0ac7b8c9d6579ad5b29cf64babb99caf057c39d9e7418ec00",
+        "source_sha256": "cfc3abb4f2376d544a696d3a21d209132bb334321e4549791aa0ba499e1de1f7",
+        "rows": [
+          {
+            "args": [],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--verification-fixture"
+            ],
+            "expected": [
+              0,
+              "True|bendex:stone-dirt-superflat|True|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "True|bendex:stone-dirt-superflat|True|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--unpaused"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--paused"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--stdin-control"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|True|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|True|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--game-mode",
+              "creative"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--game-mode",
+              "survival"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|False|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|False|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--world-profile",
+              "bendex:stone-dirt-superflat"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--sine",
+              "custom.f32"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|custom.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|custom.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--world-profile",
+              "unsupported"
+            ],
+            "expected": [
+              1,
+              "",
+              "unsupported world profile unsupported\n"
+            ],
+            "actual": [
+              1,
+              "",
+              "unsupported world profile unsupported\n"
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--verification-fixture",
+              "--verification-fixture"
+            ],
+            "expected": [
+              0,
+              "True|bendex:stone-dirt-superflat|True|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "True|bendex:stone-dirt-superflat|True|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--verification-fixture",
+              "--unpaused"
+            ],
+            "expected": [
+              0,
+              "True|bendex:stone-dirt-superflat|True|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "True|bendex:stone-dirt-superflat|True|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--verification-fixture",
+              "--paused"
+            ],
+            "expected": [
+              0,
+              "True|bendex:stone-dirt-superflat|True|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "True|bendex:stone-dirt-superflat|True|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--verification-fixture",
+              "--stdin-control"
+            ],
+            "expected": [
+              0,
+              "True|bendex:stone-dirt-superflat|True|False|True|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "True|bendex:stone-dirt-superflat|True|False|True|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--verification-fixture",
+              "--game-mode",
+              "creative"
+            ],
+            "expected": [
+              0,
+              "True|bendex:stone-dirt-superflat|True|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "True|bendex:stone-dirt-superflat|True|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--verification-fixture",
+              "--game-mode",
+              "survival"
+            ],
+            "expected": [
+              0,
+              "True|bendex:stone-dirt-superflat|False|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "True|bendex:stone-dirt-superflat|False|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--verification-fixture",
+              "--world-profile",
+              "bendex:stone-dirt-superflat"
+            ],
+            "expected": [
+              0,
+              "True|bendex:stone-dirt-superflat|True|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "True|bendex:stone-dirt-superflat|True|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--verification-fixture",
+              "--sine",
+              "custom.f32"
+            ],
+            "expected": [
+              0,
+              "True|bendex:stone-dirt-superflat|True|False|False|custom.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "True|bendex:stone-dirt-superflat|True|False|False|custom.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--verification-fixture",
+              "--world-profile",
+              "unsupported"
+            ],
+            "expected": [
+              0,
+              "True|unsupported|True|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "True|unsupported|True|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--unpaused",
+              "--verification-fixture"
+            ],
+            "expected": [
+              0,
+              "True|bendex:stone-dirt-superflat|True|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "True|bendex:stone-dirt-superflat|True|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--unpaused",
+              "--unpaused"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--unpaused",
+              "--paused"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--unpaused",
+              "--stdin-control"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|True|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|True|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--unpaused",
+              "--game-mode",
+              "creative"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--unpaused",
+              "--game-mode",
+              "survival"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|False|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|False|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--unpaused",
+              "--world-profile",
+              "bendex:stone-dirt-superflat"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--unpaused",
+              "--sine",
+              "custom.f32"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|custom.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|custom.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--unpaused",
+              "--world-profile",
+              "unsupported"
+            ],
+            "expected": [
+              1,
+              "",
+              "unsupported world profile unsupported\n"
+            ],
+            "actual": [
+              1,
+              "",
+              "unsupported world profile unsupported\n"
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--paused",
+              "--verification-fixture"
+            ],
+            "expected": [
+              0,
+              "True|bendex:stone-dirt-superflat|True|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "True|bendex:stone-dirt-superflat|True|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--paused",
+              "--unpaused"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--paused",
+              "--paused"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--paused",
+              "--stdin-control"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|False|True|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|False|True|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--paused",
+              "--game-mode",
+              "creative"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--paused",
+              "--game-mode",
+              "survival"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|False|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|False|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--paused",
+              "--world-profile",
+              "bendex:stone-dirt-superflat"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--paused",
+              "--sine",
+              "custom.f32"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|False|False|custom.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|False|False|custom.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--paused",
+              "--world-profile",
+              "unsupported"
+            ],
+            "expected": [
+              1,
+              "",
+              "unsupported world profile unsupported\n"
+            ],
+            "actual": [
+              1,
+              "",
+              "unsupported world profile unsupported\n"
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--stdin-control",
+              "--verification-fixture"
+            ],
+            "expected": [
+              0,
+              "True|bendex:stone-dirt-superflat|True|False|True|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "True|bendex:stone-dirt-superflat|True|False|True|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--stdin-control",
+              "--unpaused"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|True|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|True|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--stdin-control",
+              "--paused"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|False|True|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|False|True|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--stdin-control",
+              "--stdin-control"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|True|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|True|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--stdin-control",
+              "--game-mode",
+              "creative"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|True|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|True|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--stdin-control",
+              "--game-mode",
+              "survival"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|False|True|True|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|False|True|True|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--stdin-control",
+              "--world-profile",
+              "bendex:stone-dirt-superflat"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|True|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|True|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--stdin-control",
+              "--sine",
+              "custom.f32"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|True|custom.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|True|custom.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--stdin-control",
+              "--world-profile",
+              "unsupported"
+            ],
+            "expected": [
+              1,
+              "",
+              "unsupported world profile unsupported\n"
+            ],
+            "actual": [
+              1,
+              "",
+              "unsupported world profile unsupported\n"
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--game-mode",
+              "creative",
+              "--verification-fixture"
+            ],
+            "expected": [
+              0,
+              "True|bendex:stone-dirt-superflat|True|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "True|bendex:stone-dirt-superflat|True|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--game-mode",
+              "creative",
+              "--unpaused"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--game-mode",
+              "creative",
+              "--paused"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--game-mode",
+              "creative",
+              "--stdin-control"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|True|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|True|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--game-mode",
+              "creative",
+              "--game-mode",
+              "creative"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--game-mode",
+              "creative",
+              "--game-mode",
+              "survival"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|False|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|False|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--game-mode",
+              "creative",
+              "--world-profile",
+              "bendex:stone-dirt-superflat"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--game-mode",
+              "creative",
+              "--sine",
+              "custom.f32"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|custom.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|custom.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--game-mode",
+              "creative",
+              "--world-profile",
+              "unsupported"
+            ],
+            "expected": [
+              1,
+              "",
+              "unsupported world profile unsupported\n"
+            ],
+            "actual": [
+              1,
+              "",
+              "unsupported world profile unsupported\n"
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--game-mode",
+              "survival",
+              "--verification-fixture"
+            ],
+            "expected": [
+              0,
+              "True|bendex:stone-dirt-superflat|False|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "True|bendex:stone-dirt-superflat|False|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--game-mode",
+              "survival",
+              "--unpaused"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|False|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|False|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--game-mode",
+              "survival",
+              "--paused"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|False|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|False|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--game-mode",
+              "survival",
+              "--stdin-control"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|False|True|True|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|False|True|True|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--game-mode",
+              "survival",
+              "--game-mode",
+              "creative"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--game-mode",
+              "survival",
+              "--game-mode",
+              "survival"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|False|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|False|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--game-mode",
+              "survival",
+              "--world-profile",
+              "bendex:stone-dirt-superflat"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|False|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|False|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--game-mode",
+              "survival",
+              "--sine",
+              "custom.f32"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|False|True|False|custom.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|False|True|False|custom.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--game-mode",
+              "survival",
+              "--world-profile",
+              "unsupported"
+            ],
+            "expected": [
+              1,
+              "",
+              "unsupported world profile unsupported\n"
+            ],
+            "actual": [
+              1,
+              "",
+              "unsupported world profile unsupported\n"
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--world-profile",
+              "bendex:stone-dirt-superflat",
+              "--verification-fixture"
+            ],
+            "expected": [
+              0,
+              "True|bendex:stone-dirt-superflat|True|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "True|bendex:stone-dirt-superflat|True|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--world-profile",
+              "bendex:stone-dirt-superflat",
+              "--unpaused"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--world-profile",
+              "bendex:stone-dirt-superflat",
+              "--paused"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--world-profile",
+              "bendex:stone-dirt-superflat",
+              "--stdin-control"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|True|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|True|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--world-profile",
+              "bendex:stone-dirt-superflat",
+              "--game-mode",
+              "creative"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--world-profile",
+              "bendex:stone-dirt-superflat",
+              "--game-mode",
+              "survival"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|False|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|False|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--world-profile",
+              "bendex:stone-dirt-superflat",
+              "--world-profile",
+              "bendex:stone-dirt-superflat"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--world-profile",
+              "bendex:stone-dirt-superflat",
+              "--sine",
+              "custom.f32"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|custom.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|custom.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--world-profile",
+              "bendex:stone-dirt-superflat",
+              "--world-profile",
+              "unsupported"
+            ],
+            "expected": [
+              1,
+              "",
+              "unsupported world profile unsupported\n"
+            ],
+            "actual": [
+              1,
+              "",
+              "unsupported world profile unsupported\n"
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--sine",
+              "custom.f32",
+              "--verification-fixture"
+            ],
+            "expected": [
+              0,
+              "True|bendex:stone-dirt-superflat|True|False|False|custom.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "True|bendex:stone-dirt-superflat|True|False|False|custom.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--sine",
+              "custom.f32",
+              "--unpaused"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|custom.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|custom.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--sine",
+              "custom.f32",
+              "--paused"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|False|False|custom.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|False|False|custom.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--sine",
+              "custom.f32",
+              "--stdin-control"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|True|custom.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|True|custom.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--sine",
+              "custom.f32",
+              "--game-mode",
+              "creative"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|custom.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|custom.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--sine",
+              "custom.f32",
+              "--game-mode",
+              "survival"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|False|True|False|custom.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|False|True|False|custom.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--sine",
+              "custom.f32",
+              "--world-profile",
+              "bendex:stone-dirt-superflat"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|custom.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|custom.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--sine",
+              "custom.f32",
+              "--sine",
+              "custom.f32"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|custom.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|custom.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--sine",
+              "custom.f32",
+              "--world-profile",
+              "unsupported"
+            ],
+            "expected": [
+              1,
+              "",
+              "unsupported world profile unsupported\n"
+            ],
+            "actual": [
+              1,
+              "",
+              "unsupported world profile unsupported\n"
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--world-profile",
+              "unsupported",
+              "--verification-fixture"
+            ],
+            "expected": [
+              0,
+              "True|unsupported|True|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "True|unsupported|True|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--world-profile",
+              "unsupported",
+              "--unpaused"
+            ],
+            "expected": [
+              1,
+              "",
+              "unsupported world profile unsupported\n"
+            ],
+            "actual": [
+              1,
+              "",
+              "unsupported world profile unsupported\n"
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--world-profile",
+              "unsupported",
+              "--paused"
+            ],
+            "expected": [
+              1,
+              "",
+              "unsupported world profile unsupported\n"
+            ],
+            "actual": [
+              1,
+              "",
+              "unsupported world profile unsupported\n"
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--world-profile",
+              "unsupported",
+              "--stdin-control"
+            ],
+            "expected": [
+              1,
+              "",
+              "unsupported world profile unsupported\n"
+            ],
+            "actual": [
+              1,
+              "",
+              "unsupported world profile unsupported\n"
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--world-profile",
+              "unsupported",
+              "--game-mode",
+              "creative"
+            ],
+            "expected": [
+              1,
+              "",
+              "unsupported world profile unsupported\n"
+            ],
+            "actual": [
+              1,
+              "",
+              "unsupported world profile unsupported\n"
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--world-profile",
+              "unsupported",
+              "--game-mode",
+              "survival"
+            ],
+            "expected": [
+              1,
+              "",
+              "unsupported world profile unsupported\n"
+            ],
+            "actual": [
+              1,
+              "",
+              "unsupported world profile unsupported\n"
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--world-profile",
+              "unsupported",
+              "--world-profile",
+              "bendex:stone-dirt-superflat"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--world-profile",
+              "unsupported",
+              "--sine",
+              "custom.f32"
+            ],
+            "expected": [
+              1,
+              "",
+              "unsupported world profile unsupported\n"
+            ],
+            "actual": [
+              1,
+              "",
+              "unsupported world profile unsupported\n"
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--world-profile",
+              "unsupported",
+              "--world-profile",
+              "unsupported"
+            ],
+            "expected": [
+              1,
+              "",
+              "unsupported world profile unsupported\n"
+            ],
+            "actual": [
+              1,
+              "",
+              "unsupported world profile unsupported\n"
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--world-profile"
+            ],
+            "expected": [
+              1,
+              "",
+              "unknown/incomplete option --world-profile\n"
+            ],
+            "actual": [
+              1,
+              "",
+              "unknown/incomplete option --world-profile\n"
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--sine"
+            ],
+            "expected": [
+              1,
+              "",
+              "unknown/incomplete option --sine\n"
+            ],
+            "actual": [
+              1,
+              "",
+              "unknown/incomplete option --sine\n"
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--game-mode"
+            ],
+            "expected": [
+              1,
+              "",
+              "unknown/incomplete option --game-mode\n"
+            ],
+            "actual": [
+              1,
+              "",
+              "unknown/incomplete option --game-mode\n"
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--game-mode",
+              "bad"
+            ],
+            "expected": [
+              1,
+              "",
+              "unknown/incomplete option --game-mode\n"
+            ],
+            "actual": [
+              1,
+              "",
+              "unknown/incomplete option --game-mode\n"
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--game-mode",
+              "Creative"
+            ],
+            "expected": [
+              1,
+              "",
+              "unknown/incomplete option --game-mode\n"
+            ],
+            "actual": [
+              1,
+              "",
+              "unknown/incomplete option --game-mode\n"
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "creative"
+            ],
+            "expected": [
+              1,
+              "",
+              "unknown/incomplete option creative\n"
+            ],
+            "actual": [
+              1,
+              "",
+              "unknown/incomplete option creative\n"
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "survival"
+            ],
+            "expected": [
+              1,
+              "",
+              "unknown/incomplete option survival\n"
+            ],
+            "actual": [
+              1,
+              "",
+              "unknown/incomplete option survival\n"
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--paused=x"
+            ],
+            "expected": [
+              1,
+              "",
+              "unknown/incomplete option --paused=x\n"
+            ],
+            "actual": [
+              1,
+              "",
+              "unknown/incomplete option --paused=x\n"
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--paused-more"
+            ],
+            "expected": [
+              1,
+              "",
+              "unknown/incomplete option --paused-more\n"
+            ],
+            "actual": [
+              1,
+              "",
+              "unknown/incomplete option --paused-more\n"
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--PAUSED"
+            ],
+            "expected": [
+              1,
+              "",
+              "unknown/incomplete option --PAUSED\n"
+            ],
+            "actual": [
+              1,
+              "",
+              "unknown/incomplete option --PAUSED\n"
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              ""
+            ],
+            "expected": [
+              1,
+              "",
+              "unknown/incomplete option \n"
+            ],
+            "actual": [
+              1,
+              "",
+              "unknown/incomplete option \n"
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--sine",
+              "--paused"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|--paused\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|--paused\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--verification-fixture",
+              "--world-profile",
+              "té|世界"
+            ],
+            "expected": [
+              0,
+              "True|té|世界|True|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "True|té|世界|True|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--sine",
+              "té|世界"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|té|世界\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|té|世界\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--verification-fixture",
+              "--world-profile",
+              ""
+            ],
+            "expected": [
+              0,
+              "True||True|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "True||True|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--game-mode",
+              "bad",
+              "--verification-fixture"
+            ],
+            "expected": [
+              1,
+              "",
+              "unknown/incomplete option --game-mode\n"
+            ],
+            "actual": [
+              1,
+              "",
+              "unknown/incomplete option --game-mode\n"
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--sine",
+              "custom",
+              "unknown"
+            ],
+            "expected": [
+              1,
+              "",
+              "unknown/incomplete option unknown\n"
+            ],
+            "actual": [
+              1,
+              "",
+              "unknown/incomplete option unknown\n"
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--world-profile",
+              "unsupported",
+              "--verification-fixture"
+            ],
+            "expected": [
+              0,
+              "True|unsupported|True|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "True|unsupported|True|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--paused",
+              "--unpaused",
+              "--paused"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|False|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          },
+          {
+            "args": [
+              "--game-mode",
+              "creative",
+              "--game-mode",
+              "survival",
+              "--game-mode",
+              "creative"
+            ],
+            "expected": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "actual": [
+              0,
+              "False|bendex:stone-dirt-superflat|True|True|False|generated/reference_mth_sin.f32\n\n",
+              ""
+            ],
+            "pass": true
+          }
+        ]
+      }
+    },
+    "build/compiler-full-parser-fix-001/emit.receipt.json": {
+      "sha256": "e6c79a2d2e60d6ef9168e0aa14e4fb0655b77f3f19a3a3e0ddf37708640fd225",
+      "receipt": {
+        "command": [
+          "/Users/chuah/.bend/bin/bend",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-full-parser-fix-001/remote_resource_server.bend",
+          "-o",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-full-parser-fix-001/diagnostic.c"
+        ],
+        "seconds": 2.521078166551888,
+        "returncode": -9,
+        "stop_reason": "2GiB sampledRSS cutoff",
+        "peak_sampled_rss_bytes": 2151661568,
+        "group_absent": true,
+        "source_before": {
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-full-parser-fix-001/remote_resource_server.bend": "e631ae8e6a981ca1f85b344dad77a4953761a0eae3694468caeb6112e3cbbf0d",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-full-parser-fix-001/resource_server_options.bend": "2228e3eac9ffa85b1c183c797274c67bf262d4dbbab6337421d4dade338933af",
+          "/Users/chuah/.bend/bin/bend": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e"
+        },
+        "source_after": {
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-full-parser-fix-001/remote_resource_server.bend": "e631ae8e6a981ca1f85b344dad77a4953761a0eae3694468caeb6112e3cbbf0d",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-full-parser-fix-001/resource_server_options.bend": "2228e3eac9ffa85b1c183c797274c67bf262d4dbbab6337421d4dade338933af",
+          "/Users/chuah/.bend/bin/bend": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e"
+        },
+        "c_bytes": null,
+        "c_sha256": null,
+        "stdout": "",
+        "stderr": "",
+        "scope": "Causal A/B of original retained failed backend graph with ONLY application CLI/options change; original snapshot immutable. Diagnostic C only, not current product build."
+      }
+    },
+    "build/production-root-proof-002/receipt.json": {
+      "sha256": "3a45febeef38a1d2bd19b523616f8c613bdbc00d0880a36d3a467ec63ae79b58",
+      "receipt": {
+        "scope": "65 actual root laws:35foundation+11CoreEdit+19 applicationCLI; source-only runtime boundaries elsewhere excluded. Complete emitted BendTT independently checked by pinned kernel. Prior46root receipt retained under build/production-root-proof and Git c6bd256.",
+        "source_before": {
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/LAWS.bend": "9511cb53f0526d440dd68142eb784433a5d62a0448f144e0b788dcd14cdee100",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/PROOF.bend": "7805ec616d4b9ce2820c6cbf36f90dcc53cedaa4e821b39a647b5b4bdce0bdff",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/resource_server_options.bend": "2228e3eac9ffa85b1c183c797274c67bf262d4dbbab6337421d4dade338933af",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/resource_server_options_laws.bend": "1e80b192a627f1c7d32df3f154a3c08af79e0a16a4f1d4209745b49c289ce74e",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/resource_server_options_proof.bend": "23b7fb7388422731ca06ef94b8fa8971db7a35bdf1d83a330186c415bef49386",
+          "/Users/chuah/.bend/bin/bend": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+          "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7"
+        },
+        "source_after": {
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/LAWS.bend": "9511cb53f0526d440dd68142eb784433a5d62a0448f144e0b788dcd14cdee100",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/PROOF.bend": "7805ec616d4b9ce2820c6cbf36f90dcc53cedaa4e821b39a647b5b4bdce0bdff",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/resource_server_options.bend": "2228e3eac9ffa85b1c183c797274c67bf262d4dbbab6337421d4dade338933af",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/resource_server_options_laws.bend": "1e80b192a627f1c7d32df3f154a3c08af79e0a16a4f1d4209745b49c289ce74e",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/resource_server_options_proof.bend": "23b7fb7388422731ca06ef94b8fa8971db7a35bdf1d83a330186c415bef49386",
+          "/Users/chuah/.bend/bin/bend": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+          "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7"
+        },
+        "phases": [
+          {
+            "command": [
+              "/Users/chuah/.bend/bin/bend",
+              "PROOF.bend",
+              "--check-only"
+            ],
+            "seconds": 0.19636920746415854,
+            "returncode": 0,
+            "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n",
+            "stderr": ""
+          },
+          {
+            "command": [
+              "/Users/chuah/.bend/bin/bend",
+              "PROOF.bend",
+              "-o",
+              "build/production-root-proof-002/root.bendtt"
+            ],
+            "seconds": 0.26133454218506813,
+            "returncode": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          {
+            "command": [
+              "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+              "build/production-root-proof-002/root.bendtt"
+            ],
+            "seconds": 0.5660165408626199,
+            "returncode": 0,
+            "stdout": "ALL PROOFS CHECK\n",
+            "stderr": ""
+          },
+          {
+            "command": [
+              "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+              "build/compiler-parser-proof-001/proof.bendtt"
+            ],
+            "seconds": 0.042731291614472866,
+            "returncode": 0,
+            "stdout": "ALL PROOFS CHECK\n",
+            "stderr": ""
+          }
+        ],
+        "ir_sha256": "2bcb9e7d806e1ad392dd77b8481f2e77af9f57a17aa51788bd0d91a42790bf64",
+        "ir_bytes": 510792,
+        "law_count": 65
+      }
+    }
+  },
+  "next": "Continue from named producer/fixpoint state; resource-bound any new currentgraph attempt. Private compiler mitigation requires output/behavior validation before installation or product cache use."
+}
