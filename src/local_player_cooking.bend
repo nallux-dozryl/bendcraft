@@ -13,6 +13,7 @@ import ./cooking_block_entity_codec.bend as CB
 import ./nbt.bend as N
 import ./player_core_edit.bend as Edit
 import ./player_inventory.bend as I
+import ./cooking_effect_delivery.bend as Delivery
 
 # Catalogs must come from the authenticated registry loaders and the same
 # initialized recipe/item/fuel reload. The tail is an explicit canonical gate.
@@ -34,7 +35,7 @@ type Sidecar is Type:
   Initialized{context:Context,light:L.State,light_loading:Maybe<&2,BW.Cursor>,
     entities:List<&1,Store.Entry>,phase:CW.Phase,keys:List<&2,String>,
     effects:List<&2,Store.Effect>,details:List<&2,BodyDetails>,
-    incarnations:Map<&2,Nat>,acknowledged_resets:Nat}
+    incarnations:Map<&2,Nat>,acknowledged_resets:Nat,tail:List<&1,Sidecar>}
 
 def empty() -> Sidecar:
   Uninitialized{}
@@ -67,6 +68,13 @@ def context_counts(count:U32,context:Context) -> Bool:
       Bool.not(String.is_empty(identity)) && String.eq(identity,other) &&
         U32.is_gt(states,0) && U32.is_eq(states,count) && U32.is_eq(states,cooking_states)
     case _: False{}
+
+def registry_count(context:Context) -> U32:
+  Context{LR.Catalog{identity,count,shapes,states,rows},sections,cooking,tail} = context
+  count
+
+def context_ready(+context:Context) -> Bool:
+  context_counts(registry_count(context),context)
 
 def checked_world(world:C.World,context:Context) -> C.World & Bool:
   C.World{tick,time,paused,daylight,revision,+count,sections,pending,events} = world
@@ -154,29 +162,31 @@ def lifecycle_completed(lifecycle:Lifecycle) -> Lifecycle:
   Lifecycle{details,incarnations,0n}
 
 def installed(context:Context,light:L.State,loading:Maybe<&2,BW.Cursor>,entries:List<&1,Store.Entry>,
-    phase:CW.Phase,keys:List<&2,String>,effects:List<&2,Store.Effect>,lifecycle:Lifecycle) -> Sidecar:
+    phase:CW.Phase,keys:List<&2,String>,effects:List<&2,Store.Effect>,lifecycle:Lifecycle,owned_tail:List<&1,Sidecar>) -> Sidecar:
   Lifecycle{details,incarnations,acknowledged_resets} = lifecycle
-  Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets}
+  Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,owned_tail}
 
-def split_result(~A:Data,context:Context,effects:List<&2,Store.Effect>,lifecycle:Lifecycle,
+def split_result(~A:Data,context:Context,effects:List<&2,Store.Effect>,lifecycle:Lifecycle,owned_tail:List<&1,Sidecar>,
     result:CW.State & Result<&2,&2,CW.Error,A>) -> C.World & Sidecar & Result<&2,&2,String,A>:
   match result:
     case (CW.State{BW.State{world,light,loading},entries,+phase,keys},Fail{error}):
-      (world,installed(context,light,loading,entries,phase,keys,effects,lifecycle),Fail{error_text(error)})
+      (world,installed(context,light,loading,entries,phase,keys,effects,lifecycle,owned_tail),Fail{error_text(error)})
     case (CW.State{BW.State{world,light,loading},entries,+phase,keys},Done{value}):
-      (world,installed(context,light,loading,entries,phase,keys,effects,lifecycle_phase(phase,lifecycle)),Done{value})
+      (world,installed(context,light,loading,entries,phase,keys,effects,lifecycle_phase(phase,lifecycle),owned_tail),Done{value})
 
 def operation_checked(~A:Data,+context:Context,light:L.State,loading:Maybe<&2,BW.Cursor>,
     entries:List<&1,Store.Entry>,phase:CW.Phase,keys:List<&2,String>,effects:List<&2,Store.Effect>,
-    details:List<&2,BodyDetails>,incarnations:Map<&2,Nat>,acknowledged_resets:Nat,
+    details:List<&2,BodyDetails>,incarnations:Map<&2,Nat>,acknowledged_resets:Nat,owned_tail:List<&1,Sidecar>,
     operation:CW.Context -> CW.State -> CW.State & Result<&2,&2,CW.Error,A>,
     result:C.World & Bool) -> C.World & Sidecar & Result<&2,&2,String,A>:
-  match result:
-    case (world,False{}):
-      (world,Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets},Fail{"local-cooking:invalid-context"})
-    case (world,True{}):
-      split_result(~A,context,effects,Lifecycle{details,incarnations,acknowledged_resets},
+  match owned_tail result:
+    case owned_tail (world,False{}):
+      (world,Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,owned_tail},Fail{"local-cooking:invalid-context"})
+    case Nil{} (world,True{}):
+      split_result(~A,context,effects,Lifecycle{details,incarnations,acknowledged_resets},[],
         operation(cooking_context(context),CW.State{BW.State{world,light,loading},entries,phase,keys}))
+    case child <> rest (world,True{}):
+      (world,Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,child <> rest},Fail{"local-cooking:noncanonical-sidecar-tail"})
 
 # Generic same-owner seam for subsequent slot/edit consumers. Returned effects
 # remain the operation's result; only tick appends its released effects here.
@@ -185,26 +195,28 @@ def with_owner(~A:Data,world:C.World,sidecar:Sidecar,
     C.World & Sidecar & Result<&2,&2,String,A>:
   match sidecar:
     case Uninitialized{}: (world,Uninitialized{},Fail{"local-cooking:uninitialized"})
-    case Initialized{+context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets}:
-      operation_checked(~A,context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,operation,checked_world(world,context))
+    case Initialized{+context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,owned_tail}:
+      operation_checked(~A,context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,owned_tail,operation,checked_world(world,context))
 
-def inventory_returned(-A:Data,context:Context,effects:List<&2,Store.Effect>,lifecycle:Lifecycle,
+def inventory_returned(-A:Data,context:Context,effects:List<&2,Store.Effect>,lifecycle:Lifecycle,owned_tail:List<&1,Sidecar>,
     result:CW.State & I.State & Result<&2,&2,String,A>) ->
     C.World & Sidecar & I.State & Result<&2,&2,String,A>:
   match result:
     case (CW.State{BW.State{world,light,loading},entries,phase,keys},inventory,Fail{message}):
-      (world,installed(context,light,loading,entries,phase,keys,effects,lifecycle),inventory,Fail{message})
+      (world,installed(context,light,loading,entries,phase,keys,effects,lifecycle,owned_tail),inventory,Fail{message})
     case (CW.State{BW.State{world,light,loading},entries,+phase,keys},inventory,Done{value}):
-      (world,installed(context,light,loading,entries,phase,keys,effects,lifecycle_phase(phase,lifecycle)),inventory,Done{value})
+      (world,installed(context,light,loading,entries,phase,keys,effects,lifecycle_phase(phase,lifecycle),owned_tail),inventory,Done{value})
 
 def inventory_started(-A:Data,world:C.World,sidecar:Sidecar,inventory:I.State,
     operation:CW.Context -> CW.State -> I.State -> CW.State & I.State & Result<&2,&2,String,A>) ->
     C.World & Sidecar & I.State & Result<&2,&2,String,A>:
   match sidecar:
     case Uninitialized{}: (world,Uninitialized{},inventory,Fail{"local-cooking:uninitialized"})
-    case Initialized{+context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets}:
-      inventory_returned(A,context,effects,Lifecycle{details,incarnations,acknowledged_resets},
+    case Initialized{+context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,Nil{}}:
+      inventory_returned(A,context,effects,Lifecycle{details,incarnations,acknowledged_resets},[],
         operation(cooking_context(context),CW.State{BW.State{world,light,loading},entries,phase,keys},inventory))
+    case Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,child <> rest}:
+      (world,Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,child <> rest},inventory,Fail{"local-cooking:noncanonical-sidecar-tail"})
 
 def inventory_checked(-A:Data,sidecar:Sidecar,inventory:I.State,
     operation:CW.Context -> CW.State -> I.State -> CW.State & I.State & Result<&2,&2,String,A>,
@@ -220,14 +232,14 @@ def with_inventory_owner(-A:Data,world:C.World,sidecar:Sidecar,inventory:I.State
     C.World & Sidecar & I.State & Result<&2,&2,String,A>:
   match sidecar:
     case Uninitialized{}: (world,Uninitialized{},inventory,Fail{"local-cooking:uninitialized"})
-    case Initialized{+context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets}:
-      inventory_checked(A,Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets},
+    case Initialized{+context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,owned_tail}:
+      inventory_checked(A,Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,owned_tail},
         inventory,operation,checked_world(world,context))
 
 def begin_checked(+context:Context,result:C.World & Bool) -> C.World & Sidecar & Result<&2,&2,String,Unit>:
   match result:
     case (world,False{}): (world,Uninitialized{},Fail{"local-cooking:invalid-context"})
-    case (world,True{}): split_result(~Unit,context,[],Lifecycle{[],Map.new(&2,Nat),0n},(CW.begin(BW.begin(world)),Done{Unit{}}))
+    case (world,True{}): split_result(~Unit,context,[],Lifecycle{[],Map.new(&2,Nat),0n},[],(CW.begin(BW.begin(world)),Done{Unit{}}))
 
 def begin(world:C.World,sidecar:Sidecar,+context:Context) -> C.World & Sidecar & Result<&2,&2,String,Unit>:
   match sidecar:
@@ -237,29 +249,29 @@ def begin(world:C.World,sidecar:Sidecar,+context:Context) -> C.World & Sidecar &
 def loading_status(world:C.World,sidecar:Sidecar) -> C.World & Sidecar & Result<&2,&2,String,Bool>:
   match sidecar:
     case Uninitialized{}: (world,Uninitialized{},Fail{"local-cooking:uninitialized"})
-    case Initialized{context,light,+loading,entries,phase,+keys,effects,details,incarnations,acknowledged_resets}:
-      (world,Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets},
+    case Initialized{context,light,+loading,entries,phase,+keys,effects,details,incarnations,acknowledged_resets,owned_tail}:
+      (world,Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,owned_tail},
         Done{Maybe.is_none(&2,BW.Cursor,loading) && List.is_empty(&2,String,keys)})
 
 def loading_light_result(context:Context,entries:List<&1,Store.Entry>,phase:CW.Phase,
-    keys:List<&2,String>,effects:List<&2,Store.Effect>,details:List<&2,BodyDetails>,incarnations:Map<&2,Nat>,acknowledged_resets:Nat,
+    keys:List<&2,String>,effects:List<&2,Store.Effect>,details:List<&2,BodyDetails>,incarnations:Map<&2,Nat>,acknowledged_resets:Nat,owned_tail:List<&1,Sidecar>,
     result:BW.State & Result<&2,&2,BW.Error,Unit>) -> C.World & Sidecar & Result<&2,&2,String,Unit>:
   match result:
     case (BW.State{world,light,loading},Fail{error}):
-      (world,Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets},Fail{"local-cooking:" ++ light_error(error)})
+      (world,Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,owned_tail},Fail{"local-cooking:" ++ light_error(error)})
     case (BW.State{world,light,loading},Done{unit}):
-      (world,Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets},Done{unit})
+      (world,Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,owned_tail},Done{unit})
 
 def loading_round(world:C.World,sidecar:Sidecar) -> C.World & Sidecar & Result<&2,&2,String,Unit>:
   match sidecar:
     case Uninitialized{}: (world,Uninitialized{},Fail{"local-cooking:uninitialized"})
-    case Initialized{+context,light,Some{cursor},entries,phase,keys,effects,details,incarnations,acknowledged_resets}:
-      loading_light_result(context,entries,phase,keys,effects,details,incarnations,acknowledged_resets,
+    case Initialized{+context,light,Some{cursor},entries,phase,keys,effects,details,incarnations,acknowledged_resets,owned_tail}:
+      loading_light_result(context,entries,phase,keys,effects,details,incarnations,acknowledged_resets,owned_tail,
         BW.load_resume(~Context,~properties,~enabled,context,1n,BW.State{world,light,Some{cursor}}))
-    case Initialized{context,light,None{},entries,phase,Nil{},effects,details,incarnations,acknowledged_resets}:
-      (world,Initialized{context,light,None{},entries,phase,[],effects,details,incarnations,acknowledged_resets},Done{Unit{}})
-    case Initialized{+context,light,None{},entries,phase,key <> rest,effects,details,incarnations,acknowledged_resets}:
-      split_result(~Unit,context,effects,Lifecycle{details,incarnations,acknowledged_resets},
+    case Initialized{context,light,None{},entries,phase,Nil{},effects,details,incarnations,acknowledged_resets,owned_tail}:
+      (world,Initialized{context,light,None{},entries,phase,[],effects,details,incarnations,acknowledged_resets,owned_tail},Done{Unit{}})
+    case Initialized{+context,light,None{},entries,phase,key <> rest,effects,details,incarnations,acknowledged_resets,owned_tail}:
+      split_result(~Unit,context,effects,Lifecycle{details,incarnations,acknowledged_resets},owned_tail,
         CW.load_next(cooking_context(context),CW.State{BW.State{world,light,None{}},entries,phase,key <> rest}))
 
 def loading_continue(done:Bool,world:C.World,sidecar:Sidecar,
@@ -291,12 +303,21 @@ def loading_go(budget:Nat,world:C.World,sidecar:Sidecar) -> C.World & Sidecar & 
     case 1n+rest:
       loading_return(loading_round(world,sidecar),world => sidecar => loading_go(rest,world,sidecar))
 
+def loading_canonical(budget:Nat,world:C.World,sidecar:Sidecar) -> C.World & Sidecar & Result<&2,&2,String,Bool>:
+  match budget sidecar:
+    case 0n sidecar: loading_status(world,sidecar)
+    case _ Uninitialized{}: (world,Uninitialized{},Fail{"local-cooking:uninitialized"})
+    case 1n+remaining Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,Nil{}}:
+      loading_go(1n+remaining,world,Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,[]})
+    case _ Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,child <> rest}:
+      (world,Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,child <> rest},Fail{"local-cooking:noncanonical-sidecar-tail"})
+
 def loading_phase(world:C.World,sidecar:Sidecar,budget:Nat) -> C.World & Sidecar & Result<&2,&2,String,Bool>:
   match sidecar:
     case Uninitialized{}: (world,Uninitialized{},Fail{"local-cooking:uninitialized"})
-    case Initialized{context,light,loading,entries,CW.Cooking{tick,effects},keys,released,details,incarnations,acknowledged_resets}:
-      (world,Initialized{context,light,loading,entries,CW.Cooking{tick,effects},keys,released,details,incarnations,acknowledged_resets},Fail{"local-cooking:pending-tick"})
-    case installed: loading_go(budget,world,installed)
+    case Initialized{context,light,loading,entries,CW.Cooking{tick,effects},keys,released,details,incarnations,acknowledged_resets,owned_tail}:
+      (world,Initialized{context,light,loading,entries,CW.Cooking{tick,effects},keys,released,details,incarnations,acknowledged_resets,owned_tail},Fail{"local-cooking:pending-tick"})
+    case installed: loading_canonical(budget,world,installed)
 
 def loading_checked(sidecar:Sidecar,budget:Nat,result:C.World & Bool) -> C.World & Sidecar & Result<&2,&2,String,Bool>:
   match result:
@@ -306,21 +327,23 @@ def loading_checked(sidecar:Sidecar,budget:Nat,result:C.World & Bool) -> C.World
 def resume_loading(world:C.World,sidecar:Sidecar,budget:Nat) -> C.World & Sidecar & Result<&2,&2,String,Bool>:
   match sidecar:
     case Uninitialized{}: (world,Uninitialized{},Fail{"local-cooking:uninitialized"})
-    case Initialized{+context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets}:
-      loading_checked(Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets},budget,checked_world(world,context))
+    case Initialized{+context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,owned_tail}:
+      loading_checked(Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,owned_tail},budget,checked_world(world,context))
 
 def light_advanced(context:Context,entries:List<&1,Store.Entry>,phase:CW.Phase,keys:List<&2,String>,
-    effects:List<&2,Store.Effect>,details:List<&2,BodyDetails>,incarnations:Map<&2,Nat>,acknowledged_resets:Nat,result:BW.State & BW.Progress) ->
+    effects:List<&2,Store.Effect>,details:List<&2,BodyDetails>,incarnations:Map<&2,Nat>,acknowledged_resets:Nat,owned_tail:List<&1,Sidecar>,result:BW.State & BW.Progress) ->
     C.World & Sidecar & Result<&2,&2,String,BW.Progress>:
   (BW.State{world,light,loading},progress) = result
-  (world,Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets},Done{progress})
+  (world,Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,owned_tail},Done{progress})
 
 def light_running(world:C.World,sidecar:Sidecar,budget:Nat) -> C.World & Sidecar & Result<&2,&2,String,BW.Progress>:
   match sidecar:
     case Uninitialized{}: (world,Uninitialized{},Fail{"local-cooking:uninitialized"})
-    case Initialized{+context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets}:
-      light_advanced(context,entries,phase,keys,effects,details,incarnations,acknowledged_resets,
+    case Initialized{+context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,Nil{}}:
+      light_advanced(context,entries,phase,keys,effects,details,incarnations,acknowledged_resets,[],
         BW.advance(~Context,~occludes,context,budget,BW.State{world,light,loading}))
+    case Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,child <> rest}:
+      (world,Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,child <> rest},Fail{"local-cooking:noncanonical-sidecar-tail"})
 
 def light_checked(sidecar:Sidecar,budget:Nat,result:C.World & Bool) -> C.World & Sidecar & Result<&2,&2,String,BW.Progress>:
   match result:
@@ -333,46 +356,58 @@ def light_checked(sidecar:Sidecar,budget:Nat,result:C.World & Bool) -> C.World &
 def advance_light(world:C.World,sidecar:Sidecar,budget:Nat) -> C.World & Sidecar & Result<&2,&2,String,BW.Progress>:
   match sidecar:
     case Uninitialized{}: (world,Uninitialized{},Fail{"local-cooking:uninitialized"})
-    case Initialized{+context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets}:
-      light_checked(Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets},budget,checked_world(world,context))
+    case Initialized{+context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,owned_tail}:
+      light_checked(Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,owned_tail},budget,checked_world(world,context))
 
-def completed(context:Context,effects:List<&2,Store.Effect>,lifecycle:Lifecycle,
+def completed(context:Context,effects:List<&2,Store.Effect>,lifecycle:Lifecycle,owned_tail:List<&1,Sidecar>,
     result:CW.State & Result<&2,&2,CW.Error,List<&2,Store.Effect>>) -> C.World & Sidecar & Result<&2,&2,String,Bool>:
   match result:
     case (CW.State{BW.State{world,light,loading},entries,+phase,keys},Fail{error}):
-      (world,installed(context,light,loading,entries,phase,keys,effects,lifecycle_phase(phase,lifecycle)),Fail{error_text(error)})
+      (world,installed(context,light,loading,entries,phase,keys,effects,lifecycle_phase(phase,lifecycle),owned_tail),Fail{error_text(error)})
     case (CW.State{BW.State{world,light,loading},entries,phase,keys},Done{+more}):
       (world,installed(context,light,loading,entries,phase,keys,List.append(&2,Store.Effect,effects,more),
-        lifecycle_completed(lifecycle_effects(lifecycle,more))),Done{True{}})
+        lifecycle_completed(lifecycle_effects(lifecycle,more)),owned_tail),Done{True{}})
 
 def tick_selected(active:Bool,world:C.World,+context:Context,light:L.State,loading:Maybe<&2,BW.Cursor>,
     entries:List<&1,Store.Entry>,keys:List<&2,String>,effects:List<&2,Store.Effect>,details:List<&2,BodyDetails>,
-    incarnations:Map<&2,Nat>,acknowledged_resets:Nat) ->
+    incarnations:Map<&2,Nat>,acknowledged_resets:Nat,owned_tail:List<&1,Sidecar>) ->
     C.World & Sidecar & Result<&2,&2,String,Bool>:
-  match active:
-    case False{}:
-      (world,Initialized{context,light,loading,entries,CW.Idle{},keys,effects,details,incarnations,acknowledged_resets},Done{False{}})
-    case True{}:
-      completed(context,effects,Lifecycle{details,incarnations,acknowledged_resets},Actor.started(~Context,~properties,~enabled,context,cooking_context(context),
+  match active owned_tail:
+    case False{} owned_tail:
+      (world,Initialized{context,light,loading,entries,CW.Idle{},keys,effects,details,incarnations,acknowledged_resets,owned_tail},Done{False{}})
+    case True{} Nil{}:
+      completed(context,effects,Lifecycle{details,incarnations,acknowledged_resets},[],Actor.started(~Context,~properties,~enabled,context,cooking_context(context),
         CW.start_tick(~Context,~properties,~enabled,context,cooking_context(context),
           CW.State{BW.State{world,light,loading},entries,CW.Idle{},keys})))
+    case True{} child <> rest:
+      (world,Initialized{context,light,loading,entries,CW.Idle{},keys,effects,details,incarnations,acknowledged_resets,child <> rest},Fail{"local-cooking:noncanonical-sidecar-tail"})
 
 def tick_idle(world:C.World,scheduled:Bool,context:Context,light:L.State,loading:Maybe<&2,BW.Cursor>,
     entries:List<&1,Store.Entry>,keys:List<&2,String>,effects:List<&2,Store.Effect>,details:List<&2,BodyDetails>,
-    incarnations:Map<&2,Nat>,acknowledged_resets:Nat) ->
+    incarnations:Map<&2,Nat>,acknowledged_resets:Nat,owned_tail:List<&1,Sidecar>) ->
     C.World & Sidecar & Result<&2,&2,String,Bool>:
   C.World{tick,time,+paused,daylight,revision,count,sections,pending,events} = world
   tick_selected(scheduled || Bool.not(paused),C.World{tick,time,paused,daylight,revision,count,sections,pending,events},
-    context,light,loading,entries,keys,effects,details,incarnations,acknowledged_resets)
+    context,light,loading,entries,keys,effects,details,incarnations,acknowledged_resets,owned_tail)
+
+def resume_tick(world:C.World,+context:Context,light:L.State,loading:Maybe<&2,BW.Cursor>,entries:List<&1,Store.Entry>,
+    phase:CW.Phase,keys:List<&2,String>,effects:List<&2,Store.Effect>,lifecycle:Lifecycle,owned_tail:List<&1,Sidecar>) ->
+    C.World & Sidecar & Result<&2,&2,String,Bool>:
+  match owned_tail:
+    case Nil{}:
+      completed(context,effects,lifecycle,[],Tick.finish_tick(~Context,~properties,~enabled,context,cooking_context(context),
+        CW.State{BW.State{world,light,loading},entries,phase,keys}))
+    case child <> rest:
+      (world,installed(context,light,loading,entries,phase,keys,effects,lifecycle,child <> rest),Fail{"local-cooking:noncanonical-sidecar-tail"})
 
 def tick_ready(world:C.World,sidecar:Sidecar,scheduled:Bool) -> C.World & Sidecar & Result<&2,&2,String,Bool>:
   match sidecar:
     case Uninitialized{}: (world,Uninitialized{},Fail{"local-cooking:uninitialized"})
-    case Initialized{+context,light,loading,entries,CW.Cooking{tick,effects},keys,released,details,incarnations,acknowledged_resets}:
-      completed(context,released,Lifecycle{details,incarnations,acknowledged_resets},Tick.finish_tick(~Context,~properties,~enabled,context,cooking_context(context),
-        CW.State{BW.State{world,light,loading},entries,CW.Cooking{tick,effects},keys}))
-    case Initialized{context,light,loading,entries,CW.Idle{},keys,effects,details,incarnations,acknowledged_resets}:
-      tick_idle(world,scheduled,context,light,loading,entries,keys,effects,details,incarnations,acknowledged_resets)
+    case Initialized{+context,light,loading,entries,CW.Cooking{tick,effects},keys,released,details,incarnations,acknowledged_resets,owned_tail}:
+      resume_tick(world,context,light,loading,entries,CW.Cooking{tick,effects},keys,released,
+        Lifecycle{details,incarnations,acknowledged_resets},owned_tail)
+    case Initialized{context,light,loading,entries,CW.Idle{},keys,effects,details,incarnations,acknowledged_resets,owned_tail}:
+      tick_idle(world,scheduled,context,light,loading,entries,keys,effects,details,incarnations,acknowledged_resets,owned_tail)
 
 def tick_checked(sidecar:Sidecar,scheduled:Bool,result:C.World & Bool) -> C.World & Sidecar & Result<&2,&2,String,Bool>:
   match result:
@@ -385,50 +420,106 @@ def tick_checked(sidecar:Sidecar,scheduled:Bool,result:C.World & Bool) -> C.Worl
 def tick(world:C.World,sidecar:Sidecar,scheduled:Bool) -> C.World & Sidecar & Result<&2,&2,String,Bool>:
   match sidecar:
     case Uninitialized{}: (world,Uninitialized{},Fail{"local-cooking:uninitialized"})
-    case Initialized{+context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets}:
-      tick_checked(Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets},scheduled,checked_world(world,context))
+    case Initialized{+context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,owned_tail}:
+      tick_checked(Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,owned_tail},scheduled,checked_world(world,context))
 
 def take_effects(sidecar:Sidecar) -> Sidecar & List<&2,Store.Effect>:
   match sidecar:
     case Uninitialized{}: (Uninitialized{},[])
-    case Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets}:
-      (Initialized{context,light,loading,entries,phase,keys,[],details,incarnations,acknowledged_resets},effects)
+    case Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,owned_tail}:
+      (Initialized{context,light,loading,entries,phase,keys,[],details,incarnations,acknowledged_resets,owned_tail},effects)
+
+def pending_snapshot(sidecar:Sidecar) -> Sidecar & List<&2,Store.Effect>:
+  match sidecar:
+    case Uninitialized{}: (Uninitialized{},[])
+    case Initialized{context,light,loading,entries,phase,keys,+effects,details,incarnations,acknowledged_resets,owned_tail}:
+      (Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,owned_tail},effects)
+
+def restore_empty(effects:List<&2,Store.Effect>) -> Sidecar & Result<&2,&2,String,Unit>:
+  match effects:
+    case Nil{}: (Uninitialized{},Done{Unit{}})
+    case effect <> rest: (Uninitialized{},Fail{"local-cooking:uninitialized-pending-effects"})
+
+def restore_ready(sidecar:Sidecar,effects:List<&2,Store.Effect>) -> Sidecar & Result<&2,&2,String,Unit>:
+  match sidecar:
+    case Uninitialized{}: restore_empty(effects)
+    case Initialized{context,light,loading,entries,phase,keys,previous,details,incarnations,acknowledged_resets,child <> rest}:
+      (Initialized{context,light,loading,entries,phase,keys,previous,details,incarnations,acknowledged_resets,child <> rest},Fail{"local-cooking:noncanonical-sidecar-tail"})
+    case Initialized{context,light,loading,entries,CW.Cooking{tick,pending},keys,previous,details,incarnations,acknowledged_resets,Nil{}}:
+      (Initialized{context,light,loading,entries,CW.Cooking{tick,pending},keys,previous,details,incarnations,acknowledged_resets,[]},Fail{"local-cooking:pending-tick"})
+    case Initialized{context,light,Some{cursor},entries,CW.Idle{},keys,previous,details,incarnations,acknowledged_resets,Nil{}}:
+      (Initialized{context,light,Some{cursor},entries,CW.Idle{},keys,previous,details,incarnations,acknowledged_resets,[]},Fail{"local-cooking:light-loading"})
+    case Initialized{context,light,None{},entries,CW.Idle{},key <> rest,previous,details,incarnations,acknowledged_resets,Nil{}}:
+      (Initialized{context,light,None{},entries,CW.Idle{},key <> rest,previous,details,incarnations,acknowledged_resets,[]},Fail{"local-cooking:section-discovery"})
+    case Initialized{context,light,None{},entries,CW.Idle{},Nil{},head <> rest,details,incarnations,acknowledged_resets,Nil{}}:
+      (Initialized{context,light,None{},entries,CW.Idle{},[],head <> rest,details,incarnations,acknowledged_resets,[]},Fail{"local-cooking:pending-queue-not-empty"})
+    case Initialized{context,light,None{},entries,CW.Idle{},Nil{},Nil{},details,incarnations,acknowledged_resets,Nil{}}:
+      (Initialized{context,light,None{},entries,CW.Idle{},[],effects,details,incarnations,acknowledged_resets,[]},Done{Unit{}})
+
+def restore_checked(ready:Bool,sidecar:Sidecar,effects:List<&2,Store.Effect>) -> Sidecar & Result<&2,&2,String,Unit>:
+  match ready:
+    case False{}: (sidecar,Fail{"local-cooking:invalid-context"})
+    case True{}: restore_ready(sidecar,effects)
+
+# Incoming effects are immutable Data. The caller retains its saved payload
+# on refusal; this seam never partially publishes or merges a rejected queue.
+def restore_pending(sidecar:Sidecar,+effects:List<&2,Store.Effect>) -> Sidecar & Result<&2,&2,String,Unit>:
+  match sidecar:
+    case Uninitialized{}: restore_empty(effects)
+    case Initialized{+context,light,loading,entries,phase,keys,previous,details,incarnations,acknowledged_resets,owned_tail}:
+      restore_checked(context_ready(context),
+        Initialized{context,light,loading,entries,phase,keys,previous,details,incarnations,acknowledged_resets,owned_tail},effects)
+
+def pending_delivered(context:Context,light:L.State,loading:Maybe<&2,BW.Cursor>,entries:List<&1,Store.Entry>,phase:CW.Phase,
+    keys:List<&2,String>,details:List<&2,BodyDetails>,incarnations:Map<&2,Nat>,acknowledged_resets:Nat,owned_tail:List<&1,Sidecar>,
+    result:Delivery.Outcome) -> Sidecar & Result<&2,&2,String,Unit>:
+  Delivery.Outcome{pending,status} = result
+  (Initialized{context,light,loading,entries,phase,keys,pending,details,incarnations,acknowledged_resets,owned_tail},status)
+
+def deliver_pending(sidecar:Sidecar) -> Sidecar & Result<&2,&2,String,Unit>:
+  match sidecar:
+    case Uninitialized{}: (Uninitialized{},Done{Unit{}})
+    case Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,owned_tail}:
+      pending_delivered(context,light,loading,entries,phase,keys,details,incarnations,acknowledged_resets,owned_tail,Delivery.deliver(effects))
 
 # The legacy player bundle cannot encode a cooking owner or pending intents.
 # This admission is temporary until the actor's physical body framing is used.
 def save_admission(sidecar:Sidecar) -> Sidecar & Result<&2,&2,String,Unit>:
   match sidecar:
     case Uninitialized{}: (Uninitialized{},Done{Unit{}})
-    case Initialized{context,light,loading,entries,CW.Cooking{tick,effects},keys,released,details,incarnations,acknowledged_resets}:
-      (Initialized{context,light,loading,entries,CW.Cooking{tick,effects},keys,released,details,incarnations,acknowledged_resets},Fail{"local-cooking:save-pending-tick"})
-    case Initialized{context,light,Some{cursor},entries,CW.Idle{},keys,effects,details,incarnations,acknowledged_resets}:
-      (Initialized{context,light,Some{cursor},entries,CW.Idle{},keys,effects,details,incarnations,acknowledged_resets},Fail{"local-cooking:save-light-loading"})
-    case Initialized{context,light,None{},entries,CW.Idle{},key <> rest,effects,details,incarnations,acknowledged_resets}:
-      (Initialized{context,light,None{},entries,CW.Idle{},key <> rest,effects,details,incarnations,acknowledged_resets},Fail{"local-cooking:save-section-discovery"})
-    case Initialized{context,light,None{},entry <> rest,CW.Idle{},Nil{},effects,details,incarnations,acknowledged_resets}:
-      (Initialized{context,light,None{},entry <> rest,CW.Idle{},[],effects,details,incarnations,acknowledged_resets},Fail{"local-cooking:save-physical-bodies-required"})
-    case Initialized{context,light,None{},Nil{},CW.Idle{},Nil{},effects,detail <> rest,incarnations,acknowledged_resets}:
-      (Initialized{context,light,None{},[],CW.Idle{},[],effects,detail <> rest,incarnations,acknowledged_resets},Fail{"local-cooking:save-body-details-required"})
-    case Initialized{context,light,None{},Nil{},CW.Idle{},Nil{},effect <> rest,Nil{},incarnations,acknowledged_resets}:
-      (Initialized{context,light,None{},[],CW.Idle{},[],effect <> rest,[],incarnations,acknowledged_resets},Fail{"local-cooking:save-undelivered-effects"})
-    case Initialized{context,light,None{},Nil{},CW.Idle{},Nil{},Nil{},Nil{},incarnations,acknowledged_resets}:
-      (Initialized{context,light,None{},[],CW.Idle{},[],[],[],incarnations,acknowledged_resets},Done{Unit{}})
+    case Initialized{context,light,loading,entries,CW.Cooking{tick,effects},keys,released,details,incarnations,acknowledged_resets,owned_tail}:
+      (Initialized{context,light,loading,entries,CW.Cooking{tick,effects},keys,released,details,incarnations,acknowledged_resets,owned_tail},Fail{"local-cooking:save-pending-tick"})
+    case Initialized{context,light,Some{cursor},entries,CW.Idle{},keys,effects,details,incarnations,acknowledged_resets,owned_tail}:
+      (Initialized{context,light,Some{cursor},entries,CW.Idle{},keys,effects,details,incarnations,acknowledged_resets,owned_tail},Fail{"local-cooking:save-light-loading"})
+    case Initialized{context,light,None{},entries,CW.Idle{},key <> rest,effects,details,incarnations,acknowledged_resets,owned_tail}:
+      (Initialized{context,light,None{},entries,CW.Idle{},key <> rest,effects,details,incarnations,acknowledged_resets,owned_tail},Fail{"local-cooking:save-section-discovery"})
+    case Initialized{context,light,None{},entry <> rest,CW.Idle{},Nil{},effects,details,incarnations,acknowledged_resets,owned_tail}:
+      (Initialized{context,light,None{},entry <> rest,CW.Idle{},[],effects,details,incarnations,acknowledged_resets,owned_tail},Fail{"local-cooking:save-physical-bodies-required"})
+    case Initialized{context,light,None{},Nil{},CW.Idle{},Nil{},effects,detail <> rest,incarnations,acknowledged_resets,owned_tail}:
+      (Initialized{context,light,None{},[],CW.Idle{},[],effects,detail <> rest,incarnations,acknowledged_resets,owned_tail},Fail{"local-cooking:save-body-details-required"})
+    case Initialized{context,light,None{},Nil{},CW.Idle{},Nil{},effect <> rest,Nil{},incarnations,acknowledged_resets,owned_tail}:
+      (Initialized{context,light,None{},[],CW.Idle{},[],effect <> rest,[],incarnations,acknowledged_resets,owned_tail},Fail{"local-cooking:save-undelivered-effects"})
+    case Initialized{context,light,None{},Nil{},CW.Idle{},Nil{},Nil{},Nil{},incarnations,acknowledged_resets,Nil{}}:
+      (Initialized{context,light,None{},[],CW.Idle{},[],[],[],incarnations,acknowledged_resets,[]},Done{Unit{}})
+    case Initialized{context,light,None{},Nil{},CW.Idle{},Nil{},Nil{},Nil{},incarnations,acknowledged_resets,child <> rest}:
+      (Initialized{context,light,None{},[],CW.Idle{},[],[],[],incarnations,acknowledged_resets,child <> rest},Fail{"local-cooking:noncanonical-sidecar-tail"})
 
 # Complete physical framing may retain known bodies and their base/extras.
-# Pending work and unreleased intents still cannot be silently omitted.
+# Released intents are now captured in the actor's same atomic physical frame.
+# A recursive child owner cannot be projected into that single actor frame.
 def persistence_ready(sidecar:Sidecar) -> Sidecar & Result<&2,&2,String,Unit>:
   match sidecar:
     case Uninitialized{}: (Uninitialized{},Done{Unit{}})
-    case Initialized{context,light,loading,entries,CW.Cooking{tick,effects},keys,released,details,incarnations,acknowledged_resets}:
-      (Initialized{context,light,loading,entries,CW.Cooking{tick,effects},keys,released,details,incarnations,acknowledged_resets},Fail{"local-cooking:save-pending-tick"})
-    case Initialized{context,light,Some{cursor},entries,CW.Idle{},keys,effects,details,incarnations,acknowledged_resets}:
-      (Initialized{context,light,Some{cursor},entries,CW.Idle{},keys,effects,details,incarnations,acknowledged_resets},Fail{"local-cooking:save-light-loading"})
-    case Initialized{context,light,None{},entries,CW.Idle{},key <> rest,effects,details,incarnations,acknowledged_resets}:
-      (Initialized{context,light,None{},entries,CW.Idle{},key <> rest,effects,details,incarnations,acknowledged_resets},Fail{"local-cooking:save-section-discovery"})
-    case Initialized{context,light,None{},entries,CW.Idle{},Nil{},effect <> rest,details,incarnations,acknowledged_resets}:
-      (Initialized{context,light,None{},entries,CW.Idle{},[],effect <> rest,details,incarnations,acknowledged_resets},Fail{"local-cooking:save-undelivered-effects"})
-    case Initialized{context,light,None{},entries,CW.Idle{},Nil{},Nil{},details,incarnations,acknowledged_resets}:
-      (Initialized{context,light,None{},entries,CW.Idle{},[],[],details,incarnations,acknowledged_resets},Done{Unit{}})
+    case Initialized{context,light,loading,entries,CW.Cooking{tick,effects},keys,released,details,incarnations,acknowledged_resets,owned_tail}:
+      (Initialized{context,light,loading,entries,CW.Cooking{tick,effects},keys,released,details,incarnations,acknowledged_resets,owned_tail},Fail{"local-cooking:save-pending-tick"})
+    case Initialized{context,light,Some{cursor},entries,CW.Idle{},keys,effects,details,incarnations,acknowledged_resets,owned_tail}:
+      (Initialized{context,light,Some{cursor},entries,CW.Idle{},keys,effects,details,incarnations,acknowledged_resets,owned_tail},Fail{"local-cooking:save-light-loading"})
+    case Initialized{context,light,None{},entries,CW.Idle{},key <> rest,effects,details,incarnations,acknowledged_resets,owned_tail}:
+      (Initialized{context,light,None{},entries,CW.Idle{},key <> rest,effects,details,incarnations,acknowledged_resets,owned_tail},Fail{"local-cooking:save-section-discovery"})
+    case Initialized{context,light,None{},entries,CW.Idle{},Nil{},effects,details,incarnations,acknowledged_resets,Nil{}}:
+      (Initialized{context,light,None{},entries,CW.Idle{},[],effects,details,incarnations,acknowledged_resets,[]},Done{Unit{}})
+    case Initialized{context,light,None{},entries,CW.Idle{},Nil{},effects,details,incarnations,acknowledged_resets,child <> rest}:
+      (Initialized{context,light,None{},entries,CW.Idle{},[],effects,details,incarnations,acknowledged_resets,child <> rest},Fail{"local-cooking:noncanonical-sidecar-tail"})
 
 def positions_cons(head:Store.Entry,result:List<&1,Store.Entry> & List<&2,C.Position>) ->
     List<&1,Store.Entry> & List<&2,C.Position>:
@@ -442,28 +533,28 @@ def entry_positions(entries:List<&1,Store.Entry>) -> List<&1,Store.Entry> & List
     case head <> rest: positions_cons(head,entry_positions(rest))
 
 def positions_done(context:Context,light:L.State,loading:Maybe<&2,BW.Cursor>,phase:CW.Phase,
-    keys:List<&2,String>,effects:List<&2,Store.Effect>,details:List<&2,BodyDetails>,incarnations:Map<&2,Nat>,acknowledged_resets:Nat,
+    keys:List<&2,String>,effects:List<&2,Store.Effect>,details:List<&2,BodyDetails>,incarnations:Map<&2,Nat>,acknowledged_resets:Nat,owned_tail:List<&1,Sidecar>,
     result:List<&1,Store.Entry> & List<&2,C.Position>) -> Sidecar & List<&2,C.Position>:
   (entries,values) = result
-  (Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets},values)
+  (Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,owned_tail},values)
 
 def positions(sidecar:Sidecar) -> Sidecar & List<&2,C.Position>:
   match sidecar:
     case Uninitialized{}: (Uninitialized{},[])
-    case Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets}:
-      positions_done(context,light,loading,phase,keys,effects,details,incarnations,acknowledged_resets,entry_positions(entries))
+    case Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,owned_tail}:
+      positions_done(context,light,loading,phase,keys,effects,details,incarnations,acknowledged_resets,owned_tail,entry_positions(entries))
 
 def incarnation_found(context:Context,light:L.State,loading:Maybe<&2,BW.Cursor>,entries:List<&1,Store.Entry>,
-    phase:CW.Phase,keys:List<&2,String>,effects:List<&2,Store.Effect>,details:List<&2,BodyDetails>,acknowledged_resets:Nat,
+    phase:CW.Phase,keys:List<&2,String>,effects:List<&2,Store.Effect>,details:List<&2,BodyDetails>,acknowledged_resets:Nat,owned_tail:List<&1,Sidecar>,
     result:Map<&2,Nat> & Nat) -> Sidecar & Nat:
   (incarnations,value) = result
-  (Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets},value)
+  (Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,owned_tail},value)
 
 def incarnation(sidecar:Sidecar,position:C.Position) -> Sidecar & Nat:
   match sidecar:
     case Uninitialized{}: (Uninitialized{},0n)
-    case Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets}:
-      incarnation_found(context,light,loading,entries,phase,keys,effects,details,acknowledged_resets,
+    case Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,owned_tail}:
+      incarnation_found(context,light,loading,entries,phase,keys,effects,details,acknowledged_resets,owned_tail,
         Map.get(Nat,0n,incarnations,Bindings.key(position)))
 
 def details_replace(values:List<&2,BodyDetails>,+position:C.Position,+details:CB.Details) -> List<&2,BodyDetails>:
@@ -483,8 +574,8 @@ def details_found(values:List<&2,BodyDetails>,+position:C.Position) -> Maybe<&2,
 def body_details(sidecar:Sidecar,position:C.Position) -> Sidecar & Maybe<&2,CB.Details>:
   match sidecar:
     case Uninitialized{}: (Uninitialized{},None{})
-    case Initialized{context,light,loading,entries,phase,keys,effects,+details,incarnations,acknowledged_resets}:
-      (Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets},details_found(details,position))
+    case Initialized{context,light,loading,entries,phase,keys,effects,+details,incarnations,acknowledged_resets,owned_tail}:
+      (Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,owned_tail},details_found(details,position))
 
 def details_at(sidecar:Sidecar,position:C.Position) -> Sidecar & Maybe<&2,CB.Details>:
   body_details(sidecar,position)
@@ -493,8 +584,8 @@ def loaded_ready(world:C.World,position:C.Position,+details:CB.Details,sidecar:S
     C.World & Sidecar & Result<&2,&2,String,CB.Details>:
   match sidecar:
     case Uninitialized{}: (world,Uninitialized{},Fail{"local-cooking:uninitialized"})
-    case Initialized{context,light,loading,entries,phase,keys,effects,previous,incarnations,acknowledged_resets}:
-      (world,Initialized{context,light,loading,entries,phase,keys,effects,details_replace(previous,position,details),incarnations,acknowledged_resets},Done{details})
+    case Initialized{context,light,loading,entries,phase,keys,effects,previous,incarnations,acknowledged_resets,owned_tail}:
+      (world,Initialized{context,light,loading,entries,phase,keys,effects,details_replace(previous,position,details),incarnations,acknowledged_resets,owned_tail},Done{details})
 
 def loaded_result(position:C.Position,result:C.World & Sidecar & Result<&2,&2,String,CB.Details>) ->
     C.World & Sidecar & Result<&2,&2,String,CB.Details>:
