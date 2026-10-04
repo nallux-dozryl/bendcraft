@@ -193,8 +193,8 @@ def apply_framed(receiver: P.Receiver, +request: R.Hooks, +outcome: TH.Outcome,
   R.framed(receiver,state,frame,request,ST.travel_record(outcome))
 
 def apply(motion: MH.State, +receiver: P.Receiver, +input: Input, context: O.Context) -> MH.State & P.Receiver & Result<&2,&2,R.Error,W.Observation>:
-  +request = hooks(input,context)
   Input{body,prepared,old,original,displacement,changed,framed,malformed,traversal,reads,tail} = input
+  +request = hooks(input,context)
   +outcome = carrier(input)
   match framed:
     case False{}: R.after_successful_travel(motion,receiver,request,outcome)
@@ -239,11 +239,15 @@ def checkpointed(id: String, +context: O.Context, retained: Bool, +receiver: P.R
   Input{body,prepared,old,original,displacement,changed,+framed,malformed,traversal,reads,tail} = input
   applied(id,context,retained,previous,framed,apply(motion,receiver,input,context))
 
+def joined_wrapped(id: String, context: O.Context, retained: Bool, +input: Input,
+                   result: MH.State & P.Receiver) -> IO(O.State):
+  (motion,+receiver) = result
+  checkpointed(id,context,retained,receiver,input,snapshot(motion,receiver))
+
 def joined(id: String, state: O.State, +input: Input) -> IO(O.State):
   O.State{active,+context,checkpoint,retained,tail} = state
   Input{+body,prepared,old,original,displacement,changed,framed,malformed,traversal,reads,input_tail} = input
-  (motion,+receiver) = wrap_motion(body,active)
-  checkpointed(id,context,retained,receiver,input,snapshot(motion,receiver))
+  joined_wrapped(id,context,retained,input,wrap_motion(body,active))
 
 def body_fields(fields: List<&2,String>) -> Maybe<&2,BodyRead>:
   match fields:
