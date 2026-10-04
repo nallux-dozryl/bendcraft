@@ -1,0 +1,245 @@
+{
+  "all_original_declaration_maps_retained": true,
+  "artifact": {
+    "bytes": 3565356,
+    "file": "selected.bendtt",
+    "sha1": "9e82dbadd770f08008eeedc32127e06b4673badd",
+    "sha256": "c8e87f32cec3f16dd0835646dedfbcc81184cda07127c4ccfbc1ca7f45058bc8"
+  },
+  "checked_types_and_bodies_unchanged": true,
+  "compiler_api": [
+    {
+      "bytes": 137761,
+      "file": "bend.ts",
+      "sha1": "2105cb635e087b686b1bc5c4b6b139660eeb3db9",
+      "sha256": "7deae3693eb896f33c73867081b99d2c6f3ed3b57e77e55eb5f6260840dd0e63"
+    },
+    {
+      "bytes": 63418,
+      "file": "safe.ts",
+      "sha1": "0b72424978b2acf7eb30f53d9b01b96f267dbcac",
+      "sha256": "54cb3a534ab7cc9ee313bf6383b3948ccdcac022469b3020e00745bbfe6f7e04"
+    }
+  ],
+  "export_script": {
+    "bytes": 4033,
+    "file": "player_block_inside_stuck_proof.mjs",
+    "sha1": "58fe7cd849df86a986e4e28f016a67c28180dd6e",
+    "sha256": "4f16a5153ddbe11efecf17acb64fdcd09e42873a6463adc16726b0bdeb025f5b"
+  },
+  "folder": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-stuck-proof/1791130491144497000",
+  "kernel": {
+    "bytes": 3271216,
+    "file": "bendtt",
+    "sha1": "f19dfe8aec3b3911b6c9f0acae2a54f5b05ca5f0",
+    "sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7"
+  },
+  "laws": 15,
+  "node": {
+    "bytes": 77577344,
+    "file": "node",
+    "sha1": "606616eb1de7b4974f98c95de3a88e21aaa37249",
+    "sha256": "ec307018e1e8b80d68588b01ce6e9f8f9b8f4a03412c513b0fc3ac4d0f5db799"
+  },
+  "receipts": [
+    {
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_block_inside_stuck_proof.bend",
+        "--check-only"
+      ],
+      "exit_code": 0,
+      "group_absent": true,
+      "pid": 46616,
+      "seconds": 16.948895,
+      "stderr": {
+        "bytes": 0,
+        "file": "ordinary.stderr",
+        "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 58,
+        "file": "ordinary.stdout",
+        "sha1": "7ac487c4af0e6a0b7df1ebae438bf1c0ffe5e478",
+        "sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1"
+      },
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+        "--experimental-transform-types",
+        "--stack-size=4096",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/player_block_inside_stuck_proof.mjs",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-stuck-proof/1791130491144497000"
+      ],
+      "exit_code": 0,
+      "group_absent": true,
+      "pid": 46779,
+      "seconds": 37.117464,
+      "stderr": {
+        "bytes": 177,
+        "file": "export.stderr",
+        "sha1": "c8f650f4a2ab3546b90f1059e71230fcecc1be42",
+        "sha256": "2030eb02e9a2f17fa202d6a5a6846e0b9e0eebb05d2b2845d0aae5f40134e130"
+      },
+      "stdout": {
+        "bytes": 1461,
+        "file": "export.stdout",
+        "sha1": "40f322cc47ff1bdbb087ee78b0d46a1e99e24afb",
+        "sha256": "63990f36ca1c7b5cc3582100e801bb840f74b3267b413b220ff568e89eb51212"
+      },
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/env",
+        "LEAN_STACK_SIZE=4194304",
+        "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-stuck-proof/1791130491144497000/selected.bendtt"
+      ],
+      "exit_code": 0,
+      "group_absent": true,
+      "pid": 47142,
+      "seconds": 0.844079,
+      "stderr": {
+        "bytes": 0,
+        "file": "independent-kernel.stderr",
+        "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 17,
+        "file": "independent-kernel.stdout",
+        "sha1": "ba8ec8289ea6f6e6fec687b636c07f05c26d0a8b",
+        "sha256": "61b73cda11b6b665b9f99f2defd3d3b57f985c865225e942a5bdaa594a503e47"
+      },
+      "timed_out": false
+    }
+  ],
+  "roots": [
+    "player_block_inside_stuck_laws:entity_web_replaces_multiplier_and_resets_fall_only",
+    "player_block_inside_stuck_laws:flying_player_keeps_multiplier_and_history_but_clears_ready_impulse",
+    "player_block_inside_stuck_laws:nonzero_impulse_grace_retains_exact_position",
+    "player_block_inside_stuck_laws:excluded_living_berry_cannot_set_stuck_or_require_damage",
+    "player_block_inside_stuck_laws:eligible_berry_overwrites_previous_web_multiplier",
+    "player_block_inside_stuck_laws:refused_damage_cannot_commit_a_stuck_setter",
+    "player_block_inside_stuck_laws:callback_failure_discards_speculation_and_retains_complete_owner",
+    "player_block_inside_stuck_laws:exhausted_query_retains_arbitrary_complete_owner",
+    "player_block_inside_stuck_laws:unresolved_intersection_retains_owner_and_discards_candidate",
+    "player_block_inside_stuck_laws:failed_world_read_retains_world_registry_receiver_history_and_tail",
+    "player_block_inside_stuck_laws:successful_commit_preserves_all_affine_environment_owners",
+    "player_block_inside_stuck_laws:consumed_multiplier_clears_only_multiplier",
+    "player_block_inside_stuck_laws:inactive_success_preserves_raw_multiplier_and_impulse",
+    "player_block_inside_stuck_laws:rejected_stationary_join_retains_full_actual_motion_owner",
+    "player_block_inside_stuck_laws:refused_decoded_callback_retains_owner_after_earlier_callbacks"
+  ],
+  "scope": "Actual block callbacks, arbitrary complete Core/Registry/receiver/history owner retention, speculative callback rejection, transient consumption and actual MH join retention. IEEE constants and shape/traversal specifications independently observed against pinned Java.",
+  "scope_exclusions": [],
+  "selection": {
+    "bytes": 10583,
+    "file": "selection.json",
+    "sha1": "12685c6cb42f4007f363d8636257efd995e6d811",
+    "sha256": "e30a9daa32c20f15db049cc1a251252f244c5b40feb2fef5c8a8ddddaaa1899f"
+  },
+  "source_pins": {
+    "bytes": 5279,
+    "file": "source-pins.json",
+    "sha1": "4ccb337a2e2220f9c567b50cd39480e5ac55add6",
+    "sha256": "dd1469ff7cb90469eefec8310cb82fe9d4431105f7be64446211f9c096619752"
+  },
+  "status": "passed",
+  "term_pins": [
+    {
+      "checked_proof_sha256": "43c968dc991eed98ad540f98dae47ab746a9e9d9a17af3ac8b9b2f207d674c55",
+      "name": "player_block_inside_stuck_laws:entity_web_replaces_multiplier_and_resets_fall_only",
+      "source_body_sha256": "fbc1fcd9e1758aadbd6b263e3983aa6b3024c2d1d46d87db0c0b71b5277be345",
+      "type_sha256": "680f5bbe6454862035280f08a048dafee87e7fa883eaebc37db06124bd3fe234"
+    },
+    {
+      "checked_proof_sha256": "723a91bbdf38c68d7db4abe0ff23fd7e7f453f22f2346970a8ea59496e28e3ed",
+      "name": "player_block_inside_stuck_laws:flying_player_keeps_multiplier_and_history_but_clears_ready_impulse",
+      "source_body_sha256": "483b6a4f0f9172e0db35ebc736b5e3924a36a54dd08cda4e16727fbeafcc6550",
+      "type_sha256": "5cd8f100c38f7a9a0ef7fc00922632bea75d884f0caf9ab43eb71fefe6001a1c"
+    },
+    {
+      "checked_proof_sha256": "1d706665471e42c975274430e3c44a0bdb7e8197ee2d569e6684a13484f299e5",
+      "name": "player_block_inside_stuck_laws:nonzero_impulse_grace_retains_exact_position",
+      "source_body_sha256": "96b12efc1a1454fa074ededa39a0b8b1c0ba86bec72c85a0582a9495fbbb3edd",
+      "type_sha256": "c493cd06de8649ec5f11a989240f25da10d9f44f1699a9a23e6a28de4419d2c1"
+    },
+    {
+      "checked_proof_sha256": "8184ed163db3ca06f231d708e0d2fd1d930baf3586e532f7dcea4fe3855b8b27",
+      "name": "player_block_inside_stuck_laws:excluded_living_berry_cannot_set_stuck_or_require_damage",
+      "source_body_sha256": "b6d7ef9cff2ddad9ee89d7329d00b887cd7e1ce491be6967c8dc30aef0e27a8d",
+      "type_sha256": "75cc50f6c42e610d64abc444fa5ab84f9ef8bc0a32af35ae11154e94db3afcf5"
+    },
+    {
+      "checked_proof_sha256": "a5380cfa467fe1394bf0faab74bd96b7032ff222550167db90a66e081ed6a6cc",
+      "name": "player_block_inside_stuck_laws:eligible_berry_overwrites_previous_web_multiplier",
+      "source_body_sha256": "709b8153dcac8a6ecf68ee38debaafa3e7fc9ab8e601463d8196b507c785b6d3",
+      "type_sha256": "039a7c5635d0e4ce50a4fe49d147d350696373aa2aebbf7c30a74c4f7d2c4de6"
+    },
+    {
+      "checked_proof_sha256": "e90a21caed423f4a696d7f827d3dc86e30b6789b53a1139808a211f3b454248a",
+      "name": "player_block_inside_stuck_laws:refused_damage_cannot_commit_a_stuck_setter",
+      "source_body_sha256": "a84ff61ac358c3740cd946deb1309bd2cfe0604d3f26255394444b08bb816230",
+      "type_sha256": "c5a1eaa613a56d28aa5b80e7d4e61f89e0a847c1017f21d681c917542acb5a2b"
+    },
+    {
+      "checked_proof_sha256": "0622444696d3243c60a3b354a3e67c420e3835bddb2dc6aaca5e47da0753bc68",
+      "name": "player_block_inside_stuck_laws:callback_failure_discards_speculation_and_retains_complete_owner",
+      "source_body_sha256": "4b1d42937d33084dbd6d451ee9ec44d9eb705a9dce135f3e1f2a9d812138385c",
+      "type_sha256": "31ba6b0eb51a677f7b71d4d5f2b3873826d6c533eca3f896deafd2e256eab3f4"
+    },
+    {
+      "checked_proof_sha256": "e6ed424fc204d9bf2f53d19ebd2444124d281878981d2ea7b2a11eec7708e823",
+      "name": "player_block_inside_stuck_laws:exhausted_query_retains_arbitrary_complete_owner",
+      "source_body_sha256": "2603513c31fb64a3031ef51cf8ce7a73bb8c23846154dcdf097aa4bdc1c0ac0c",
+      "type_sha256": "b30fb25a83db54c10cac28fe986dd884b0ba4357b1cd40801aa4944ba2cd6e51"
+    },
+    {
+      "checked_proof_sha256": "31515e91e113aa9d40428327da39fb54ef532c3a2538f52b0beb111725bad8ca",
+      "name": "player_block_inside_stuck_laws:unresolved_intersection_retains_owner_and_discards_candidate",
+      "source_body_sha256": "14f84ea88e27d4d814ecbac1e0143760ef64587f01a5ad86173ad986ef07e552",
+      "type_sha256": "ca7750f12eb7005c29e035c264532513dd816dc963adb6c48df45be9b43ca63a"
+    },
+    {
+      "checked_proof_sha256": "2a9320a9fea3cc46dfd09fdcfaed91bca28246bb60ac872b8af5546929b91d6b",
+      "name": "player_block_inside_stuck_laws:failed_world_read_retains_world_registry_receiver_history_and_tail",
+      "source_body_sha256": "f36c5997abbbe65b2394e8eec6592f136e5126021f81afbf795d132deaec8c6b",
+      "type_sha256": "2fa863692da4126c5d6976ee7c54ab95d8a7af59abd58945246260b8047c6cd3"
+    },
+    {
+      "checked_proof_sha256": "d157403d6b34a22686610f804bdb40ad556e6d11d5cca42bf248e13824048c96",
+      "name": "player_block_inside_stuck_laws:successful_commit_preserves_all_affine_environment_owners",
+      "source_body_sha256": "8f33329c2eeeccdd5d45583026a0d9efda3b04ddd0498e5e59ddc2cb98da10f4",
+      "type_sha256": "77bed7d5281f2f74a2e85b4f6481db9764a6031b74eb1a9a1cb426c1329e77de"
+    },
+    {
+      "checked_proof_sha256": "78700b8abb736b1f6d4b6c770dd18028930a8a07de51b62f6c730f0abcc5ace1",
+      "name": "player_block_inside_stuck_laws:consumed_multiplier_clears_only_multiplier",
+      "source_body_sha256": "26f8e3982ed9309d332c250d9560478d7164a18980f0ed5367eb234c43183816",
+      "type_sha256": "05e5ba3f9f7fe2dbf8e4344f2d9102a05452d4d4a3e4effb8299ac4a5f646b0b"
+    },
+    {
+      "checked_proof_sha256": "d8523a33eaf644ef57e57d4fb837541d8c0eceef48a2cc8c97ebf9979a5ef460",
+      "name": "player_block_inside_stuck_laws:inactive_success_preserves_raw_multiplier_and_impulse",
+      "source_body_sha256": "402ef50e2f862fa95d61e65f372ecd30ae4991eb836c3a65bd79fe72a4e4a284",
+      "type_sha256": "3cc4c912e2b907f8b5737252df0ba6e1c73d865421c2133c39c2991849e0d590"
+    },
+    {
+      "checked_proof_sha256": "6b59d2bd5dd9988c5c8d4710a9663d6d75e6a409288c965e9cc92079dda588ce",
+      "name": "player_block_inside_stuck_laws:rejected_stationary_join_retains_full_actual_motion_owner",
+      "source_body_sha256": "8a7aebf4838b62f9e658ccba4c0b272f4e7a52a3601e2210a2981f68be84a840",
+      "type_sha256": "3fe6974bc18a15b83846b25cd7385acb96f971c2070c07ffb508c09a8a854288"
+    },
+    {
+      "checked_proof_sha256": "1447f12c088de833ff1cf8aad89fda25b52d85821ae7a73210c003330f029939",
+      "name": "player_block_inside_stuck_laws:refused_decoded_callback_retains_owner_after_earlier_callbacks",
+      "source_body_sha256": "12df284caa0be3f62ce34415d9cd2955f1c684a6e5f61b1d6e35579f5c083f54",
+      "type_sha256": "7701c9cf7ffe4eaa7a840fab637513ad7426afb3913297bd9136ff8dbda25efc"
+    }
+  ]
+}
