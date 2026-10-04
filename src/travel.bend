@@ -193,6 +193,22 @@ def prepare_checked(tables: L.Tables, +body: M.Body, +input: M.Vec3, +context: C
   error = first_error(context_error(context), first_error(movement_error(M.Body.invalid(body)), input_error(M.Vec3.invalid_field(input))))
   prepare_checked_gate(tables, body, input, context, error)
 
+def with_stuck(prepared: Prepared, value: M.StuckPreparation) -> Prepared:
+  Prepared{body, requested, friction, acceleration, maximum, gravity, drag, discard} = prepared
+  M.StuckPreparation{next, corrected, multiplier, applied} = value
+  Prepared{next, corrected, friction, acceleration, maximum, gravity, drag, discard}
+
+def stuck_prepared(prepared: Prepared, result: Result<&2, &2, M.Error, M.StuckPreparation>) -> Result<&2, &2, Error, Prepared>:
+  match result:
+    case Fail{cause}: Fail{MovementError{cause}}
+    case Done{value}: Done{with_stuck(prepared, value)}
+
+# The relative input impulse is already in Prepared.requested. Entity.move
+# consumes a stuck multiplier only after that impulse, before edge/collision.
+def stuck_checked(+prepared: Prepared, multiplier: M.Vec3) -> Result<&2, &2, Error, Prepared>:
+  Prepared{body, requested, friction, acceleration, maximum, gravity, drag, discard} = prepared
+  stuck_prepared(prepared, M.stuck_checked(body, requested, multiplier))
+
 def drag_gate(vector: M.Vec3, gravity: F.F64, +friction: F32, drag_modifier: F.F64, discard: Bool) -> M.Vec3:
   match vector discard:
     case M.Vec3{x, y, z} True{}: M.Vec3{x, F.sub(y, gravity), z}

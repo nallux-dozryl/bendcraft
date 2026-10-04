@@ -18,6 +18,12 @@ type Resolution is Data:
 type Transition is Data:
   Transition{body: Body, displacement: Vec3, stepped: Bool, position_changed: Bool}
 
+# Entity.move's consumed stuck-speed phase, before edge backoff and collision.
+# The multiplier is an explicit current receiver observation. It is not inferred
+# from blocks, and the returned multiplier must replace that receiver field.
+type StuckPreparation is Data:
+  StuckPreparation{body: Body, requested: Vec3, multiplier: Vec3, applied: Bool}
+
 type Error is Data:
   InvalidBody{component: U32, field: U32}
   InvalidDimensions{field: U32}
@@ -397,6 +403,50 @@ def move_checked(+body: Body, +requested: Vec3, +maximum: F32, +initial: List<&2
   +m = F.from_f32(maximum)
   invalid = first_error(Body.invalid(body), first_error(request_error(Vec3.invalid_field(requested)), first_error(maximum_error(F.is_finite(m) && F.is_ge(m, zero())), first_error(colliders_error(initial, 0, 0), colliders_error(step, 1, 0)))))
   move_checked_gate(body, requested, maximum, initial, step, invalid)
+
+def stuck_threshold() -> F.F64:
+  F.F64{1048238066, 2596056904}
+
+def Vec3.multiply(a: Vec3, b: Vec3) -> Vec3:
+  match a b:
+    case Vec3{ax, ay, az} Vec3{bx, by, bz}:
+      Vec3{F.mul(ax, bx), F.mul(ay, by), F.mul(az, bz)}
+
+def stuck_gate(body: Body, requested: Vec3, multiplier: Vec3, active: Bool) -> StuckPreparation:
+  match body active:
+    case body False{}: StuckPreparation{body, requested, multiplier, False{}}
+    case Body{position, box, velocity, width, height, ground, horizontal, vertical, below} True{}:
+      StuckPreparation{Body{position, box, Vec3.zero(), width, height, ground, horizontal, vertical, below},
+        Vec3.multiply(requested, multiplier), Vec3.zero(), True{}}
+
+# SELF/PLAYER movers multiply their request. Piston/noPhysics have different
+# earlier branches and are deliberately outside this entry's contract.
+def stuck(+body: Body, +requested: Vec3, +multiplier: Vec3) -> StuckPreparation:
+  stuck_gate(body, requested, multiplier, F.is_gt(Vec3.length_squared(multiplier), stuck_threshold()))
+
+def stuck_invalid(value: StuckPreparation) -> Maybe<&2, Error>:
+  StuckPreparation{body, requested, multiplier, applied} = value
+  first_error(Body.invalid(body), result_error_field(3, Vec3.invalid_field(requested), None{}))
+
+def stuck_result(value: StuckPreparation, invalid: Maybe<&2, Error>) -> Result<&2, &2, Error, StuckPreparation>:
+  match invalid:
+    case Some{cause}: Fail{cause}
+    case None{}: Done{value}
+
+def stuck_checked_gate(body: Body, requested: Vec3, multiplier: Vec3,
+                      invalid: Maybe<&2, Error>) -> Result<&2, &2, Error, StuckPreparation>:
+  match invalid:
+    case Some{cause}: Fail{cause}
+    case None{}:
+      +value = stuck(body, requested, multiplier)
+      stuck_result(value, stuck_invalid(value))
+
+# InvalidBody component 3 names the observed multiplier. Finite multiplication
+# overflow names NonFiniteResult component 3, the scaled displacement request.
+def stuck_checked(+body: Body, +requested: Vec3, +multiplier: Vec3) -> Result<&2, &2, Error, StuckPreparation>:
+  stuck_checked_gate(body, requested, multiplier,
+    first_error(Body.invalid(body), first_error(request_error(Vec3.invalid_field(requested)),
+      body_error_field(3, Vec3.invalid_field(multiplier), None{}))))
 
 law empty_colliders_preserve_requested:
   for +requested: Vec3

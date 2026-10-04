@@ -102,10 +102,23 @@ def hooks_fuel(hooks: Hooks) -> Nat:
   Hooks{keys, input, flying, mode, can_simulate, local_authoritative, stuck, removed, auto, speed, restitution, environment, fuel, tail} = hooks
   fuel
 
+def hooks_stuck(hooks: Hooks) -> M.Vec3:
+  Hooks{keys, input, flying, mode, can_simulate, local_authoritative, stuck, removed, auto, speed, restitution, environment, fuel, tail} = hooks
+  stuck
+
+# LM is entered after Entity.move's stuck phase. Retain the original Hooks in
+# Frame for complete rollback; only the downstream admission sees it resolved.
+def resolved_hooks(hooks: Hooks) -> Hooks:
+  Hooks{keys, input, flying, mode, can_simulate, local_authoritative, stuck, removed, auto, speed, restitution, environment, fuel, tail} = hooks
+  Hooks{keys, input, flying, mode, can_simulate, local_authoritative, M.Vec3.zero(), removed, auto, speed, restitution, environment, fuel, tail}
+
 def movement_context(+context: T.Context, history: H.History, hooks: Hooks) -> LM.Context:
   Hooks{keys, PI.Vector{xxa, zza}, flying, mode, simulate, authority, stuck, removed, auto, speed, restitution, environment, fuel, tail} = hooks
   LM.Context{LC.EdgeContext{context_maximum(context), MH.history_distance(history), flying, keys, LC.Self{}, mode},
     LC.MinorInput{context_yaw(context), xxa, zza}, simulate, authority, stuck, removed, auto, speed, restitution}
+
+def resolved_movement_context(context: T.Context, history: H.History, hooks: Hooks) -> LM.Context:
+  movement_context(context, history, resolved_hooks(hooks))
 
 def preparation_value(prepared: Preparation) -> T.Prepared:
   Preparation{value, tail} = prepared
@@ -121,7 +134,7 @@ def prepared_request(prepared: T.Prepared) -> M.Vec3:
 
 def move_request(+frame: Frame, +prepared: T.Prepared) -> MH.Request:
   MH.Request{LM.Request{prepared_body(prepared), prepared_request(prepared),
-    movement_context(request_context(frame_request(frame)), frame_history(frame), request_hooks(frame_request(frame))),
+    resolved_movement_context(request_context(frame_request(frame)), frame_history(frame), request_hooks(frame_request(frame))),
     hooks_environment(request_hooks(frame_request(frame))), hooks_fuel(request_hooks(frame_request(frame))), []},
     request_clip(frame_request(frame)), []}
 
@@ -197,11 +210,18 @@ def prepared(engine: G.Engine, +frame: Frame,
         MH.State{W.attach(engine, with_body(frame_view(frame), prepared_body(value))), frame_support(frame), frame_minor(frame), H.State{frame_history(frame)}, []},
         tables, move_request(frame, value)))
 
+def stuck_prepared(engine: G.Engine, +frame: Frame,
+                   result: L.Tables & Result<&2, &2, T.Error, T.Prepared>) -> MH.State & L.Tables & Result<&2, &2, Error, Outcome>:
+  (tables, status) = result
+  match status:
+    case Fail{cause}: prepared(engine, frame, (tables, Fail{cause}))
+    case Done{value}: prepared(engine, frame, (tables, T.stuck_checked(value, hooks_stuck(request_hooks(frame_request(frame))))))
+
 def extracted(tables: L.Tables, support: SP.State, minor: LM.MinorState,
               history: H.History, +request: Request,
               result: G.Engine & W.View) -> MH.State & L.Tables & Result<&2, &2, Error, Outcome>:
   (engine, +view) = result
-  prepared(engine, Frame{view, support, minor, history, request, []},
+  stuck_prepared(engine, Frame{view, support, minor, history, request, []},
     T.prepare_checked(tables, view_body(view), request_input(request), request_context(request)))
 
 def canonical_state(state: MH.State, tables: L.Tables, request: Request) -> MH.State & L.Tables & Result<&2, &2, Error, Outcome>:
@@ -445,7 +465,7 @@ def reset_is_required(history: H.History, transition: M.Transition) -> Bool:
 
 def reset_move_request(+frame: Frame, +prepared: T.Prepared) -> LM.Request:
   LM.Request{prepared_body(prepared), prepared_request(prepared),
-    movement_context(request_context(frame_request(frame)), frame_history(frame), request_hooks(frame_request(frame))),
+    resolved_movement_context(request_context(frame_request(frame)), frame_history(frame), request_hooks(frame_request(frame))),
     hooks_environment(request_hooks(frame_request(frame))), hooks_fuel(request_hooks(frame_request(frame))), []}
 
 def reset_rollback_taken(tables: L.Tables, +frame: Frame, cause: ResetError,
@@ -538,12 +558,19 @@ def reset_prepared(engine: G.Engine, +frame: Frame, policy: ResetPolicy,
         LM.move_checked(W.attach(engine, with_body(frame_view(frame), prepared_body(value))), tables,
           frame_support(frame), frame_minor(frame), reset_move_request(frame, value)))
 
+def reset_stuck_prepared(engine: G.Engine, +frame: Frame, policy: ResetPolicy,
+                         result: L.Tables & Result<&2, &2, T.Error, T.Prepared>) -> MH.State & L.Tables & Result<&2, &2, ResetError, ResetOutcome>:
+  (tables, status) = result
+  match status:
+    case Fail{cause}: reset_prepared(engine, frame, policy, (tables, Fail{cause}))
+    case Done{value}: reset_prepared(engine, frame, policy, (tables, T.stuck_checked(value, hooks_stuck(request_hooks(frame_request(frame))))))
+
 def reset_initial_history(engine: G.Engine, tables: L.Tables, +frame: Frame,
                           policy: ResetPolicy, error: Maybe<&2, H.Error>) -> MH.State & L.Tables & Result<&2, &2, ResetError, ResetOutcome>:
   match error:
     case Some{cause}: reset_rollback_taken(tables, frame, ResetHistoryError{cause}, (engine, frame_view(frame)))
     case None{}:
-      reset_prepared(engine, frame, policy,
+      reset_stuck_prepared(engine, frame, policy,
         T.prepare_checked(tables, view_body(frame_view(frame)), request_input(frame_request(frame)), request_context(frame_request(frame))))
 
 def reset_extracted(tables: L.Tables, support: SP.State, minor: LM.MinorState,
@@ -698,13 +725,20 @@ def ability_reset_prepared(history_mode:H.Mode,engine: G.Engine, +frame: Frame, 
         LM.move_checked(W.attach(engine, with_body(frame_view(frame), prepared_body(value))), tables,
           frame_support(frame), frame_minor(frame), reset_move_request(frame, value)))
 
+def ability_reset_stuck_prepared(history_mode: H.Mode, engine: G.Engine, +frame: Frame, policy: ResetPolicy,
+                                 result: L.Tables & Result<&2, &2, T.Error, T.Prepared>) -> MH.State & L.Tables & Result<&2, &2, ResetError, ResetOutcome>:
+  (tables, status) = result
+  match status:
+    case Fail{cause}: ability_reset_prepared(history_mode, engine, frame, policy, (tables, Fail{cause}))
+    case Done{value}: ability_reset_prepared(history_mode, engine, frame, policy, (tables, T.stuck_checked(value, hooks_stuck(request_hooks(frame_request(frame))))))
+
 
 def ability_reset_initial_history(history_mode:H.Mode,engine: G.Engine, tables: L.Tables, +frame: Frame,
                           policy: ResetPolicy, error: Maybe<&2, H.Error>) -> MH.State & L.Tables & Result<&2, &2, ResetError, ResetOutcome>:
   match error:
     case Some{cause}: reset_rollback_taken(tables, frame, ResetHistoryError{cause}, (engine, frame_view(frame)))
     case None{}:
-      ability_reset_prepared(history_mode,engine, frame, policy,
+      ability_reset_stuck_prepared(history_mode,engine, frame, policy,
         T.prepare_checked(tables, view_body(frame_view(frame)), request_input(frame_request(frame)), request_context(frame_request(frame))))
 
 
@@ -746,4 +780,3 @@ def ability_travel_with_reset_checked(history_mode:H.Mode,state: MH.State, table
   match request:
     case ResetRequest{input, context, hooks, policy, Nil{}}: ability_reset_hooks_gate(history_mode,state, tables, input, context, hooks, policy)
     case _: (state, tables, Fail{ResetTravelError{NonCanonicalRequest{0}}})
-

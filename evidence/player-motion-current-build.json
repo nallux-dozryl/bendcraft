@@ -1,0 +1,126 @@
+{
+  "binary": {
+    "bytes": 1576552,
+    "file": "player-motion-current-tests",
+    "sha1": "a7b2a171eb194b71735f66e16eaf0bdeb48ac762",
+    "sha256": "13d265edbc1b7deaa085d4fce4e6b98da62c57c4a5022dd12ced11bf5e631a3b"
+  },
+  "build_report": {
+    "artifact": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native-cache/artifacts/13d265edbc1b7deaa085d4fce4e6b98da62c57c4a5022dd12ced11bf5e631a3b/program",
+    "binary_bytes": 1576552,
+    "binary_sha256": "13d265edbc1b7deaa085d4fce4e6b98da62c57c4a5022dd12ced11bf5e631a3b",
+    "cache_hit": false,
+    "cache_key": "d3b30a05f9de007faa325bef2472c28a38c78e8a7d0f33557d0c102f223a64e2",
+    "dependencies_sha256": "ccf7bad6f106dd20bfd942f53534a6c0e78e75b4d934635aa7ca8f5846a574d2",
+    "dependency_count": 1632,
+    "emitted_c_sha256": "07166bc392152ba106967461764311faab2323da5bc852f9369481d8ebf2d574",
+    "full_report": {
+      "bytes": 624651,
+      "file": "native-build.json",
+      "sha1": "6d2c76ce1928f28e5756cdb6c30fdba04adb2fb0",
+      "sha256": "0ea987e8a3af78ecc1fb4e505ee62612413ff951016713bc90182890dca9fb6f"
+    },
+    "identity": {
+      "bend_version": "bend 2.0.35",
+      "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+      "entry": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_motion_current.bend",
+      "environment_sha256": "3c1590fbedc852616768fc95a5cfd6baa42b567d3f6874d21bf26c08eefb7602",
+      "machine": "arm64",
+      "os_build": "25E253",
+      "platform": "macOS-26.4.1-arm64-arm-64bit-Mach-O",
+      "schema": 1,
+      "system": "Darwin",
+      "uname": [
+        "Darwin",
+        "Chuahs-MacBook-Pro.local",
+        "25.4.0",
+        "Darwin Kernel Version 25.4.0: Thu Mar 19 19:31:56 PDT 2026; root:xnu-12377.101.15~1/RELEASE_ARM64_T6030",
+        "arm64",
+        "arm"
+      ]
+    },
+    "retries": 0,
+    "timings": {
+      "emission_seconds": 3.210455833002925,
+      "native_seconds": 4.966758042573929,
+      "total_seconds": 13.382777917198837
+    }
+  },
+  "folder": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-motion-current/1791127310510455000",
+  "receipts": [
+    {
+      "argv": [
+        "python3",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/build_native.py",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_motion_current.bend",
+        "-o",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-motion-current-tests",
+        "--report",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-motion-current/1791127310510455000/native-build.json"
+      ],
+      "exit_code": 0,
+      "group_absent": true,
+      "pid": 24022,
+      "seconds": 13.458055,
+      "stderr": {
+        "bytes": 0,
+        "file": "build.stderr",
+        "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 601,
+        "file": "build.stdout",
+        "sha1": "8f21de895aa6005db80684b1e97eb61ff7fa5ceb",
+        "sha256": "07bc61e541d5290ac24a5bea54cca7c02f855f12686e19f2ac24f3b7b991859f"
+      },
+      "timed_out": false
+    }
+  ],
+  "reporting_note": "Full unchanged builder report retained in build; tracked receipt compacted without rebuilding.",
+  "sources": {
+    "src/local_travel_history.bend": {
+      "bytes": 41693,
+      "file": "local_travel_history.bend",
+      "sha1": "7f58cc3d7e46ee45e8112279e4c1894cad1e8072",
+      "sha256": "9d990242926cb9388f02314cd2790f087c2f22cda15bb88a7e25d4f6b3dbaee8"
+    },
+    "src/movement.bend": {
+      "bytes": 25567,
+      "file": "movement.bend",
+      "sha1": "801e42fda48410515eaab64611f8d4dea269ff6d",
+      "sha256": "31f5a4c47903506c0f388f688eaeaf78a36a0d266efde52bc57ea8cc89627b45"
+    },
+    "src/player_motion_current_laws.bend": {
+      "bytes": 4569,
+      "file": "player_motion_current_laws.bend",
+      "sha1": "2a67bffb906953e7a67fecd4b1f4e06073722e0a",
+      "sha256": "7633d8c4fd4e0f6f5d1ce092f8153f2322c0004552e06cadefb24639467c849f"
+    },
+    "src/player_motion_current_proof.bend": {
+      "bytes": 1939,
+      "file": "player_motion_current_proof.bend",
+      "sha1": "ccc0b6e403f18929f15965dcdd1b985f6fd78e17",
+      "sha256": "1702b382c7fc40cd1ba3189a912d2225a40b2577ea9d2da65d6da8b5b1152ac1"
+    },
+    "src/travel.bend": {
+      "bytes": 13789,
+      "file": "travel.bend",
+      "sha1": "2aac6a34b5602b96c5e969ee11f1d62c2fd7768f",
+      "sha256": "f04bc69579d1b1a5fa048f1e07976e646c1c2f2e817e334ee632397fbe99b589"
+    },
+    "tests/player_motion_current.bend": {
+      "bytes": 13162,
+      "file": "player_motion_current.bend",
+      "sha1": "23dacd54cbeb547eeb7b4d5309c27af423a8f458",
+      "sha256": "132b6575674640125ef592d7a9e4fd620e82d17b921d2300b6bfff78f61cd6fd"
+    },
+    "tools/test_player_motion_current.py": {
+      "bytes": 9785,
+      "file": "test_player_motion_current.py",
+      "sha1": "90667f26df5907a98e5357a479c390eb3cadf3ed",
+      "sha256": "7dfad7206ee2e81f05b8d0c3d0b4168d17856c30da7525d0c15492519c158ab1"
+    }
+  },
+  "status": "build-passed"
+}

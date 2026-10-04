@@ -1,0 +1,196 @@
+{
+  "all_original_declaration_maps_retained": true,
+  "artifact": {
+    "bytes": 811601,
+    "file": "selected.bendtt",
+    "sha1": "ee9bd01df21f4ba07f37ff4edf8e2bace4e401ee",
+    "sha256": "bd0a21f23ea6d4d98e542383d7f1b7915f0145a568dd9c3da1d1a6f99fb4d1c5"
+  },
+  "checked_types_and_bodies_unchanged": true,
+  "compiler_api": [
+    {
+      "bytes": 137761,
+      "file": "bend.ts",
+      "sha1": "2105cb635e087b686b1bc5c4b6b139660eeb3db9",
+      "sha256": "7deae3693eb896f33c73867081b99d2c6f3ed3b57e77e55eb5f6260840dd0e63"
+    },
+    {
+      "bytes": 63418,
+      "file": "safe.ts",
+      "sha1": "0b72424978b2acf7eb30f53d9b01b96f267dbcac",
+      "sha256": "54cb3a534ab7cc9ee313bf6383b3948ccdcac022469b3020e00745bbfe6f7e04"
+    }
+  ],
+  "export_script": {
+    "bytes": 3319,
+    "file": "player_motion_current_proof.mjs",
+    "sha1": "3be14ef54bc39f376eb9655bbeffefdb5271c0a9",
+    "sha256": "aa064655827e2b8b714525fef351ae1a9763b30ceabd9c26de07c51205f4f5c2"
+  },
+  "folder": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-motion-current-proof/1791127601945557000",
+  "kernel": {
+    "bytes": 3271216,
+    "file": "bendtt",
+    "sha1": "f19dfe8aec3b3911b6c9f0acae2a54f5b05ca5f0",
+    "sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7"
+  },
+  "laws": 8,
+  "node": {
+    "bytes": 77577344,
+    "file": "node",
+    "sha1": "606616eb1de7b4974f98c95de3a88e21aaa37249",
+    "sha256": "ec307018e1e8b80d68588b01ce6e9f8f9b8f4a03412c513b0fc3ac4d0f5db799"
+  },
+  "receipts": [
+    {
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_motion_current_proof.bend",
+        "--check-only"
+      ],
+      "exit_code": 0,
+      "group_absent": true,
+      "pid": 27219,
+      "seconds": 1.33578,
+      "stderr": {
+        "bytes": 0,
+        "file": "ordinary.stderr",
+        "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 58,
+        "file": "ordinary.stdout",
+        "sha1": "7ac487c4af0e6a0b7df1ebae438bf1c0ffe5e478",
+        "sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1"
+      },
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+        "--experimental-transform-types",
+        "--stack-size=4096",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/player_motion_current_proof.mjs",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-motion-current-proof/1791127601945557000"
+      ],
+      "exit_code": 0,
+      "group_absent": true,
+      "pid": 27245,
+      "seconds": 1.403478,
+      "stderr": {
+        "bytes": 177,
+        "file": "export.stderr",
+        "sha1": "766dbb9f9624a64148f9274c27ef4ed33b53c708",
+        "sha256": "c679b8883d1d500641630bda52288fb010b5d9195be20daa3cdd39bdcd578b5b"
+      },
+      "stdout": {
+        "bytes": 758,
+        "file": "export.stdout",
+        "sha1": "eb5610d42a075acedfc1e658d24d8408a19c5f05",
+        "sha256": "6512b64790b03f12f8435c81e5a6cb6dcf98495daf78f1d942ef0cc063beb0fb"
+      },
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/env",
+        "LEAN_STACK_SIZE=4194304",
+        "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-motion-current-proof/1791127601945557000/selected.bendtt"
+      ],
+      "exit_code": 0,
+      "group_absent": true,
+      "pid": 27253,
+      "seconds": 0.133848,
+      "stderr": {
+        "bytes": 0,
+        "file": "independent-kernel.stderr",
+        "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 17,
+        "file": "independent-kernel.stdout",
+        "sha1": "ba8ec8289ea6f6e6fec687b636c07f05c26d0a8b",
+        "sha256": "61b73cda11b6b665b9f99f2defd3d3b57f985c865225e942a5bdaa594a503e47"
+      },
+      "timed_out": false
+    }
+  ],
+  "roots": [
+    "player_motion_current_laws:inactive_multiplier_preserves_every_raw_field",
+    "player_motion_current_laws:active_multiplier_scales_request_and_clears_velocity",
+    "player_motion_current_laws:refused_multiplier_has_no_candidate",
+    "player_motion_current_laws:corrected_preparation_preserves_travel_factors",
+    "player_motion_current_laws:resolved_hook_preserves_all_other_receiver_observations",
+    "player_motion_current_laws:acceleration_failure_retains_complete_motion_owner",
+    "player_motion_current_laws:refused_scaled_request_retains_complete_ability_motion_owner",
+    "player_motion_current_laws:checked_stuck_failure_cannot_reach_collision"
+  ],
+  "scope": "Actual M/T stuck phase, travel-factor preservation and complete TH ability-owner rollback. IEEE primitives and live receiver provenance remain separately observed.",
+  "scope_exclusions": [],
+  "selection": {
+    "bytes": 6940,
+    "file": "selection.json",
+    "sha1": "a883e8bbb2d6ea1a77882f5e0aef040fcd0dff0c",
+    "sha256": "f02a995617969829ea063980ad243c9a902f4fe1333f81a6850dbd1853bf5c13"
+  },
+  "source_pins": {
+    "bytes": 5250,
+    "file": "source-pins.json",
+    "sha1": "c2308a1297f17e3bc5e78466de9168c0c8af5993",
+    "sha256": "9778fcd78b3c5e824e0acaee3bbaf118003aad6b7b34cb42c4307f19acb22545"
+  },
+  "status": "passed",
+  "term_pins": [
+    {
+      "checked_proof_sha256": "1bff69b86a994079d78568e51c1b4c8a23d44a719437633592d96e15e62fc418",
+      "name": "player_motion_current_laws:inactive_multiplier_preserves_every_raw_field",
+      "source_body_sha256": "8aadda29c7668a333ec9da51ce25bab1d17a7761f6b8fe01e801fa7572afb046",
+      "type_sha256": "91be6ecb887e55d8166e4a88013f284dbb4aaaa5a2e1066cc53eacda8ad02be4"
+    },
+    {
+      "checked_proof_sha256": "7a4c4a90957005be7b5f27fba0f95ee13caa2f407088fd6cac10688bd217a0ac",
+      "name": "player_motion_current_laws:active_multiplier_scales_request_and_clears_velocity",
+      "source_body_sha256": "aafa201cd19a5ad40ac5edbb13075bf0c0c49b11f6b2321dd0399339f8917869",
+      "type_sha256": "496d1eea33011514c7ebcf1bb0a9520522e3eb5b2a2b5b33199b78f66ddb7114"
+    },
+    {
+      "checked_proof_sha256": "12701563e99c508a76000cca9c72fb480236df0ccebcb940955ea8fb27f20778",
+      "name": "player_motion_current_laws:refused_multiplier_has_no_candidate",
+      "source_body_sha256": "9f3123ca3c2e3fdb09a435c9b04d9ada41806d0d24b53e51b1e6ef8029733be9",
+      "type_sha256": "f8c5946a155c495e38cc9305bbf101269d1573ef88384c22b221c5b177848d19"
+    },
+    {
+      "checked_proof_sha256": "e92a3b1b2ee4c4dd7337abc1533c9377001a435301bacd17f89c528f06897d29",
+      "name": "player_motion_current_laws:corrected_preparation_preserves_travel_factors",
+      "source_body_sha256": "f410e6328becec53db70c1be498d7b57d7b34ec36817bf4f0ce589655e8e9564",
+      "type_sha256": "ddabbb93dc321f30a749a7d7e97d056e8a1faac301ab7b35fd3e04ebea38ed18"
+    },
+    {
+      "checked_proof_sha256": "de547c1c7c67629b2f829877fee133074afafb5a5c524c70a6b5bd4624e9d8f0",
+      "name": "player_motion_current_laws:resolved_hook_preserves_all_other_receiver_observations",
+      "source_body_sha256": "124c568733ea27b07b06d341621ea44acf6c7c4277186bbb6fb61fe1bc741365",
+      "type_sha256": "07ade0a719a6637cc7e53967399e3e4ed7fb165fc433f86b30dbd8105228b6b9"
+    },
+    {
+      "checked_proof_sha256": "237a11f03a45e4e2fa7b70764884f43127899ce70b3955de6ef945b1114c8781",
+      "name": "player_motion_current_laws:acceleration_failure_retains_complete_motion_owner",
+      "source_body_sha256": "a6c23cf6acc4fac4bc0ab44670bc1cd64cabb43400e041f2f7220690a151bb2e",
+      "type_sha256": "14ba78dfd9639b97c78ad4a99e809868385d812851f51748c699621cc64d1991"
+    },
+    {
+      "checked_proof_sha256": "a8ad1acd162b9fb4ebe5f43a9e19d0ca0ec367c619f3320d6f19315a40d1dfc2",
+      "name": "player_motion_current_laws:refused_scaled_request_retains_complete_ability_motion_owner",
+      "source_body_sha256": "ff8eb690fbf74d84c5c9fbec93ae3b80bc00e1df7bffbe7c0a824b0ed7b94977",
+      "type_sha256": "c928f5bcd020aafc6709ed509b13115d452cd57273551553d3474a6db4d6a8c0"
+    },
+    {
+      "checked_proof_sha256": "8fe3be4ae74929fedd3efed8f5ec377f78d0b96823d90e28446fcef13ade5a0a",
+      "name": "player_motion_current_laws:checked_stuck_failure_cannot_reach_collision",
+      "source_body_sha256": "04b434a2585443d425a3052d5e7c00be8601c61cfa383fb8a83be1bde2436409",
+      "type_sha256": "2d4989cf49d9d3c09f5c857100002ef1d25a60c25b41a96a84ff9dcdb24becfd"
+    }
+  ]
+}
