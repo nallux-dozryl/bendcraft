@@ -25,9 +25,24 @@
   "kernel": "one full production-source attempt timed out; no output, no proof success, no retry",
   "native_header_library_closure": "uncaptured",
   "native_runs": 2,
-  "no_native_java_kernel_reexecution": true,
+  "no_native_gameplay_receiver_or_kernel_reexecution": true,
   "official_classes": 13,
   "png_resources": 63,
+  "reporting_correction": {
+    "bytes": 1247,
+    "change": "Replace overly broad no-Java-reexecution wording with exact version-only helper boundary.",
+    "original_receipt": "build/sprite-animation/root-audit-original.json",
+    "sha256": "514ebb21e622e84ca880f6e0c3e24ce07fade17a6553480f74cd27d6c9f4aa4d"
+  },
   "shader_resources": 4,
-  "status": "passed_bounded_native_evidence_audit"
+  "status": "passed_bounded_native_evidence_audit",
+  "version_only_java_invocation": {
+    "command": [
+      "/Users/chuah/Library/Application Support/minecraft/runtime/java-runtime-epsilon/mac-os-arm64/java-runtime-epsilon/jre.bundle/Contents/Home/bin/java",
+      "-version"
+    ],
+    "retained_version_text": "openjdk version \"25.0.1\" 2025-10-21 LTS\nOpenJDK Runtime Environment Microsoft-12574220 (build 25.0.1+8-LTS)\nOpenJDK 64-Bit Server VM Microsoft-12574220 (build 25.0.1+8-LTS, mixed mode)",
+    "scope": "Version metadata read only; no Java gameplay receiver execution",
+    "via": "reference_sprite_animation_probe.validate -> reference_model_probe.verified_client_classpath"
+  }
 }
