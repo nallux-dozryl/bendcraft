@@ -17,21 +17,21 @@
       "sha1": "b55b8f55d869ee6954442a6ec49955fa3f907b7e",
       "sha256": "43eab0936ea97c66b9e7562c78fa4dc0578742017311011646dd0f12539eda78"
     },
-    "seconds": 0.939575
+    "seconds": 0.980846
   },
   "generator": {
-    "bytes": 34327,
+    "bytes": 35543,
     "file": "reference_player_block_inside_sweep_probe.py",
-    "sha1": "6a7dd7d5326a24962660fb4697c31827d4682ea6",
-    "sha256": "d8a9b7a0cad31ee13a5426e981238e3c53c2e5c078e97c74cde8bf29fb0123bd"
+    "sha1": "aec144db39f895b17b0e09d875e52eb7517b10a6",
+    "sha256": "278a59e3ae61c6f136a8360a20ccf10bc18bd2ce5bc7322bedc88075670bf37c"
   },
   "independent_java_runs": 2,
   "pin": "26.3",
   "reference": {
-    "bytes": 8986026,
+    "bytes": 9305072,
     "file": "player_block_inside_sweep.json",
-    "sha1": "edb9f7d7d27e9048930020cf4b442df4e24f8d22",
-    "sha256": "b2737341886c9813bb8b24e50a93f0da835722144b503101960f210a82546169"
+    "sha1": "9f6017a77181d3e6f56017b8c4ba885ab8c9264c",
+    "sha256": "a81f496ef04ce6fd30ed4a4d1ed35f69fb8e90e34233acb45c44911e76aa05b9"
   },
   "reference_corruptions_rejected": [
     "checksum",
@@ -54,10 +54,10 @@
         "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-sweep/reference/independent-1-observed.jsonl"
       ],
       "input": {
-        "bytes": 747028,
+        "bytes": 759496,
         "file": "independent-1-input.jsonl",
-        "sha1": "f606b5ec6aba1fc510df34827e4194ef7416a5cb",
-        "sha256": "709fe76c6ddf81f9d7771b854c565ecb1b66ed38d2b3b7ad6d5acc388ef0d4db"
+        "sha1": "7700d0d10678d0fd1f1e2f0d91a6128aad98c609",
+        "sha256": "10793ab0ae4f096c301450345fde107eeaf8aed9c9a8ae4337ae48a3b9754e88"
       },
       "log": {
         "bytes": 466,
@@ -66,12 +66,12 @@
         "sha256": "dc23f039b55c166cfa412f3e9f5270b7df07f4c93596e2537d1f1afaeb01ce0d"
       },
       "observations": {
-        "bytes": 2715269,
+        "bytes": 2838169,
         "file": "independent-1-observed.jsonl",
-        "sha1": "79cec4102497dceae478be69e251fe59675304b0",
-        "sha256": "8038393ffc00b6562e2ab90a7357aae31656588ac03a4398201e82d526c738e8"
+        "sha1": "558f330ca3d7a27ada5b34c023126dad3bae0b8d",
+        "sha256": "267eae1733c9e9b1a793b00f45e23dfdc8f03b9f2052ee048d8adff9a45bf1df"
       },
-      "seconds": 2.85486
+      "seconds": 2.849116
     },
     {
       "command": [
@@ -84,10 +84,10 @@
         "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-sweep/reference/independent-2-observed.jsonl"
       ],
       "input": {
-        "bytes": 747028,
+        "bytes": 759496,
         "file": "independent-2-input.jsonl",
-        "sha1": "f606b5ec6aba1fc510df34827e4194ef7416a5cb",
-        "sha256": "709fe76c6ddf81f9d7771b854c565ecb1b66ed38d2b3b7ad6d5acc388ef0d4db"
+        "sha1": "7700d0d10678d0fd1f1e2f0d91a6128aad98c609",
+        "sha256": "10793ab0ae4f096c301450345fde107eeaf8aed9c9a8ae4337ae48a3b9754e88"
       },
       "log": {
         "bytes": 466,
@@ -96,28 +96,28 @@
         "sha256": "dc23f039b55c166cfa412f3e9f5270b7df07f4c93596e2537d1f1afaeb01ce0d"
       },
       "observations": {
-        "bytes": 2715269,
+        "bytes": 2838169,
         "file": "independent-2-observed.jsonl",
-        "sha1": "18298f9affbad6d824446bdd77a08772fc400bdd",
-        "sha256": "70b72f50248634f28b7f95c931b60f3c4428801b577b9cfe9f3d957df2c75c2d"
+        "sha1": "5a9dbc39d6aeb094c59360c76b1f3efda2e64eca",
+        "sha256": "8b6694589ce585c01019ce270c7c6a9859056aa42075f9ac9a49abafefe79c06"
       },
-      "seconds": 2.885623
+      "seconds": 2.843631
     }
   ],
   "schema_version": 1,
   "status": "passed",
   "validation": {
-    "actual_callbacks": 942,
-    "actual_dispatch_reads": 1472,
+    "actual_callbacks": 962,
+    "actual_dispatch_reads": 1616,
     "actual_walk_visits": 959,
-    "case_count": 129,
+    "case_count": 135,
     "operations": {
       "geometry": 6,
-      "sweep": 95,
+      "sweep": 109,
       "walk": 59
     },
     "oracle_compared": true,
-    "step_count": 160,
+    "step_count": 174,
     "stopped_walks": 4
   }
 }

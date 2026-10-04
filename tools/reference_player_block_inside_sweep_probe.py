@@ -71,7 +71,7 @@ SOURCE = SOURCE.replace('callbacks.add(state(s));super.onInsideBlock(s);', 'call
 assert SOURCE.count('m.put("state",state(s));m.put("argument"') == 2
 SOURCE = SOURCE.replace('m.put("state",state(s));m.put("argument"', 'm.put("state",state(s));m.put("position",callbackPosition(this));m.put("collector_step",collectorStep(this));m.put("argument"')
 SOURCE = replace_once(SOURCE, 'value!=Blocks.COBWEB&&value!=Blocks.SWEET_BERRY_BUSH&&value!=Blocks.AIR&&value!=Blocks.STONE',
-                     'value!=Blocks.COBWEB&&value!=Blocks.SWEET_BERRY_BUSH&&value!=Blocks.AIR&&value!=Blocks.STONE&&value!=Blocks.DIRT')
+                     'value!=Blocks.COBWEB&&value!=Blocks.SWEET_BERRY_BUSH&&value!=Blocks.AIR&&value!=Blocks.CAVE_AIR&&value!=Blocks.VOID_AIR&&value!=Blocks.STONE&&value!=Blocks.DIRT')
 SOURCE = replace_once(SOURCE, '  e.setPos(vec(in.getAsJsonArray("position")));e.setOnGround(false);',
                      '  level.receiver=e;e.setPos(vec(in.getAsJsonArray("position")));e.setOldPosAndRot(vec(in.getAsJsonArray("old_position")),0f,0f);e.setOnGround(false);if(!in.getAsJsonArray("current_box").isEmpty())e.setBoundingBox(ReferenceMovementProbe.box(in.getAsJsonArray("current_box")));')
 SOURCE = replace_once(SOURCE, '  if(e instanceof Player p)p.getAbilities().flying=in.get("flying").getAsBoolean();',
@@ -99,7 +99,7 @@ SOURCE = SOURCE[:start] + r'''
     else if(route.equals("stored")){ArrayDeque<Object> queue=(ArrayDeque<Object>)QUEUED.get(e);queue.addAll(movements);m.put("queued_before",movementRecords(queue));APPLY_STORED.invoke(e);m.put("queued_after",movementRecords(queue));m.put("final_movements",movementRecords(FINAL_MOVEMENTS.get(e)));}
     else throw new IllegalArgumentException("Unknown original dispatch route");
     m.put("entity_visited_after",visited(e).size());m.put("collector_step_after",collectorStep(e));
-    m.put("entity_inside_shapes",level.insideReads.stream().filter(r->!((Map<?,?>)r.get("state")).get("identifier").equals("minecraft:air")).map(r->{List<?> p=(List<?>)r.get("position");BlockPos pos=new BlockPos((int)p.get(0),(int)p.get(1),(int)p.get(2));return Map.of("position",r.get("position"),"shape",insideShape(level.blocks.get(pos),level,pos,e));}).toList());
+    m.put("entity_inside_shapes",level.insideReads.stream().filter(r->{List<?> p=(List<?>)r.get("position");BlockState value=level.blocks.get(new BlockPos((int)p.get(0),(int)p.get(1),(int)p.get(2)));return value!=null&&!value.isAir();}).map(r->{List<?> p=(List<?>)r.get("position");BlockPos pos=new BlockPos((int)p.get(0),(int)p.get(1),(int)p.get(2));return Map.of("position",r.get("position"),"shape",insideShape(level.blocks.get(pos),level,pos,e));}).toList());
    }else if(operation.equals("geometry")){geometryCalls++;
     JsonObject request=step.getAsJsonObject("movement");Vec3 from=vec(request.getAsJsonArray("from")),to=vec(request.getAsJsonArray("to"));List<AABB> targets=new ArrayList<>();for(JsonElement target:step.getAsJsonArray("targets"))targets.add(ReferenceMovementProbe.box(target.getAsJsonArray()));
     m.put("movement",movement(request));m.put("start_box",ReferenceMovementProbe.boxBits(makeBox(e,from)));m.put("collided",e.collidedWithShapeMovingFrom(from,to,targets));
@@ -253,6 +253,17 @@ def generate_inputs():
                                       ([0.,0.,0.],[2.,0.,0.],[1.,1.8,0.,2.,2.,1.]),
                                       ([0.,0.,0.],[2.,0.,0.],[1.,1.8000001,0.,2.,2.,1.])]):
         add('geometry-'+str(index),[{'operation':'geometry','movement':movement(a,b),'targets':[vec(target)]}],['actual_aabb_collided_along_vector','original_clip'])
+    # Appended admission cases preserve every previously committed case ID.
+    for air_name,other_air in [('cave_air','void_air'),('void_air','cave_air')]:
+        a=[.5,1.,.5];b=[2.75,1.,.5]
+        world=[block(air_name,(0,y,0)) for y in [1,2]]+[block(other_air,(1,y,0)) for y in [1,2]]+[block('cobweb',(2,1,0)),block('sweet_berry_bush',(2,2,0),3)]
+        chain=[movement(a,b),movement(b,a),movement(a,b)]
+        add('mixed-air-'+air_name,[sweep(chain,world),sweep(chain,world),sweep([movement(b,a)],world,'public')],['actual_is_air','mixed_air_states','repeated_dispatch','dispatch_wide_air_not_deduped'],position=vec(b))
+        low=[.5,1.,.5];high=[.5,4097.,.5]
+        aliases=[block(air_name,(0,1,0)),block('cobweb',(0,4097,0))]
+        for reverse in [False,True]:
+            pair=[movement(low,low),movement(high,high)];pair.reverse() if reverse else None
+            add('air-alias-'+air_name+'-'+str(reverse),[sweep(pair,aliases),sweep(pair,aliases)],['actual_is_air','packed_long_alias','air_bypasses_entity_dedup','repeated_dispatch'],position=vec(high))
     return cases
 
 
