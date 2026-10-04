@@ -22,6 +22,7 @@ law tile_backing_allocation:
 
 law frame_backing_allocation:
   for +n:Nat
+  for +tile_depth:Nat
   for +tree:M.Spatial
   for +quads:List<&2,M.Prepared>
   for +textures:List<&2,R.Texture>
@@ -32,7 +33,7 @@ law frame_backing_allocation:
   for +side:U32
   for +width:U32
   for +height:U32
-  {P.image_leaves(M.frame(n,tree,quads,textures,camera,settings,x,y,side,width,height)) == P.leaves(Nat.add(n,2n)) : Nat}
+  {P.image_leaves(M.frame(n,tile_depth,tree,quads,textures,camera,settings,x,y,side,width,height)) == P.leaves(Nat.add(n,tile_depth)) : Nat}
 
 law frame_dimension_interface:
   for +width:U32
@@ -64,3 +65,17 @@ law outside_pointer_rejected:
   for +target:U32
   for outside:{U32.is_lt(pixel,source) == False{} : Bool}
   {P.pointer_coordinate(pixel,source,target) == target : U32}
+
+# The production admission branch returns padding before constructing a ray.
+law invisible_pixel_zero:
+  for +tree:M.Spatial
+  for +quads:List<&2,M.Prepared>
+  for +textures:List<&2,R.Texture>
+  for +camera:R.Basis
+  for +settings:M.Settings
+  for +x:U32
+  for +y:U32
+  for +width:U32
+  for +height:U32
+  for outside:{(U32.is_lt(x,width) && U32.is_lt(y,height)) == False{} : Bool}
+  {M.pixel(tree,quads,textures,camera,settings,x,y,width,height) == 0 : U32}

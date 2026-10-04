@@ -221,10 +221,21 @@ def max_abs(value:Vec3) -> F32:
   Vec3{x,y,z} = value
   F32.max(F32.abs(x),F32.max(F32.abs(y),F32.abs(z)))
 
+# Structural branches avoid allocating rejected Span values and dividing by zero.
+def parallel_span(inside:Bool) -> Span:
+  match inside:
+    case True{}: Span{F32.neg(100000000000000000000.0),100000000000000000000.0}
+    case False{}: Span{100000000000000000000.0,F32.neg(100000000000000000000.0)}
+
 def expanded_span(+origin:F32,+direction:F32,+low:F32,+high:F32,+padding:F32,parallel:Bool) -> Span:
-  +lo = F32.sub(low,padding)
-  +hi = F32.add(high,padding)
-  P.choose(Span,P.choose(Span,Span{F32.neg(100000000000000000000.0),100000000000000000000.0},Span{100000000000000000000.0,F32.neg(100000000000000000000.0)},F32.is_ge(origin,lo) && F32.is_le(origin,hi)),Span{F32.min(F32.div(F32.sub(lo,origin),direction),F32.div(F32.sub(hi,origin),direction)),F32.max(F32.div(F32.sub(lo,origin),direction),F32.div(F32.sub(hi,origin),direction))},parallel)
+  match parallel:
+    case True{}: parallel_span(F32.is_ge(origin,F32.sub(low,padding)) && F32.is_le(origin,F32.add(high,padding)))
+    case False{}:
+      +lo = F32.sub(low,padding)
+      +hi = F32.add(high,padding)
+      +a = F32.div(F32.sub(lo,origin),direction)
+      +b = F32.div(F32.sub(hi,origin),direction)
+      Span{F32.min(a,b),F32.max(a,b)}
 
 def box_span(origin:F32,+direction:F32,low:F32,high:F32,padding:F32) -> Span:
   expanded_span(origin,direction,low,high,padding,F32.is_eq(direction,0.0))
@@ -427,8 +438,13 @@ def pixel_direction(tree:Spatial,+quads:List<&2,Prepared>,+textures:List<&2,R.Te
   +best = spatial_trace(tree,origin,dir,settings,textures,Fragment{F32.add(far,1.0),4294967295,4294967295,background},True{})
   pixel_best(best,quads,textures,origin,dir,settings)
 
+def pixel_inside(inside:Bool,tree:Spatial,quads:List<&2,Prepared>,textures:List<&2,R.Texture>,+camera:R.Basis,settings:Settings,x:U32,y:U32,width:U32,height:U32) -> U32:
+  match inside:
+    case False{}: 0
+    case True{}: pixel_direction(tree,quads,textures,camera,settings,R.direction(camera,x,y,width,height))
+
 def pixel(+tree:Spatial,+quads:List<&2,Prepared>,+textures:List<&2,R.Texture>,+camera:R.Basis,+settings:Settings,+x:U32,+y:U32,+width:U32,+height:U32) -> U32:
-  P.choose(U32,pixel_direction(tree,quads,textures,camera,settings,R.direction(camera,x,y,width,height)),0,U32.is_lt(x,width) && U32.is_lt(y,height))
+  pixel_inside(U32.is_lt(x,width) && U32.is_lt(y,height),tree,quads,textures,camera,settings,x,y,width,height)
 
 def tile(+n:Nat,+tree:Spatial,+quads:List<&2,Prepared>,+textures:List<&2,R.Texture>,+camera:R.Basis,+settings:Settings,+x:U32,+y:U32,+side:U32,+width:U32,+height:U32) -> Image:
   match n:
@@ -437,19 +453,20 @@ def tile(+n:Nat,+tree:Spatial,+quads:List<&2,Prepared>,+textures:List<&2,R.Textu
       +half = U32.div(side,2)
       Qua{tile(p,tree,quads,textures,camera,settings,x,y,half,width,height),tile(p,tree,quads,textures,camera,settings,U32.add(x,half),y,half,width,height),tile(p,tree,quads,textures,camera,settings,x,U32.add(y,half),half,width,height),tile(p,tree,quads,textures,camera,settings,U32.add(x,half),U32.add(y,half),half,width,height)}
 
-def frame(+n:Nat,+tree:Spatial,+quads:List<&2,Prepared>,+textures:List<&2,R.Texture>,+camera:R.Basis,+settings:Settings,+x:U32,+y:U32,+side:U32,+width:U32,+height:U32) -> Image:
+def frame(+n:Nat,+tile_depth:Nat,+tree:Spatial,+quads:List<&2,Prepared>,+textures:List<&2,R.Texture>,+camera:R.Basis,+settings:Settings,+x:U32,+y:U32,+side:U32,+width:U32,+height:U32) -> Image:
   match n:
-    case 0n: tile(2n,tree,quads,textures,camera,settings,x,y,side,width,height)
+    case 0n: tile(tile_depth,tree,quads,textures,camera,settings,x,y,side,width,height)
     case 1n+p:
       +half = U32.div(side,2)
-      a b c d = frame(p,tree,quads,textures,camera,settings,x,y,half,width,height) frame(p,tree,quads,textures,camera,settings,U32.add(x,half),y,half,width,height)
-        frame(p,tree,quads,textures,camera,settings,x,U32.add(y,half),half,width,height) frame(p,tree,quads,textures,camera,settings,U32.add(x,half),U32.add(y,half),half,width,height)
+      a b c d = frame(p,tile_depth,tree,quads,textures,camera,settings,x,y,half,width,height) frame(p,tile_depth,tree,quads,textures,camera,settings,U32.add(x,half),y,half,width,height)
+        frame(p,tile_depth,tree,quads,textures,camera,settings,x,U32.add(y,half),half,width,height) frame(p,tile_depth,tree,quads,textures,camera,settings,U32.add(x,half),U32.add(y,half),half,width,height)
       Qua{a,b,c,d}
 
 def render_prepared(pair:List<&2,Prepared> & List<&2,Prepared>,camera:R.Camera,+settings:Settings,+textures:List<&2,R.Texture>,+width:U32,+height:U32,accelerated:Bool) -> Image:
   (+opaque,alpha) = pair
   +depth = Presentation.depth(width,height)
-  frame(Nat.sub(depth,2n),P.choose(Spatial,spatial(10n,opaque,leaf_ready(opaque)),Flat{opaque},accelerated),alpha,textures,basis(camera,settings),settings,0,0,U32.shln(1,depth),width,height)
+  +tile_depth = Nat.min(depth,4n)
+  frame(Nat.sub(depth,tile_depth),tile_depth,P.choose(Spatial,spatial(10n,opaque,leaf_ready(opaque)),Flat{opaque},accelerated),alpha,textures,basis(camera,settings),settings,0,0,U32.shln(1,depth),width,height)
 
 def render_valid(error:String,scene:Scene,+textures:List<&2,R.Texture>,+width:U32,+height:U32,accelerated:Bool) -> Result<&2,&2,Error,Image>:
   match error:

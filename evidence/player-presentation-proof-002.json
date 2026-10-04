@@ -1,0 +1,91 @@
+{
+  "status": "PASS",
+  "scope": "Eight actual production presentation roots; parameterized tile-depth backing allocation plus invisible pixel zero. No full render or performance claim.",
+  "confidence": "high within stated pure contracts",
+  "root_count": 8,
+  "exclusions": [],
+  "source_api_export_seconds": 4.638070540502667,
+  "kernel_seconds": 0.16682904120534658,
+  "artifact_bytes": 134784,
+  "artifact_sha256": "57d2615fe126eddda6ee262946ac7008fb5ebf16eab5d9a5eb8b70a165ec3660",
+  "checked_terms_unchanged_during_selection": true,
+  "source_pins": {
+    "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/base.bend": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/archive.bend": "c0f7b34a22726d220f6b867730b7d080d57d82c84d619c35721b9b8d18fa5d6e",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/big_uint.bend": "fbe5965ee16ee3d6864def33fbc6e5e4b1b9bc7da4735d99311c1a23c65e2444",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/block_bake.bend": "3611116e0ba63915d6013463c1640f83b6b80cb08e802f93be5f7eaa4d600595",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/block_model.bend": "08108bae9b89c6768de56bdddea158f3604b36c7de4ee0408815e2c7f48b97a1",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/client_render.bend": "735b643d733bd190d7ad3b6c2462773f6d8aa713eb156750dc9865ac7842b5f6",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/compression.bend": "255cdff06a33050c7b0a48fdea75c1842ebe2dab0439cfe4f03d126d4edc20aa",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/float_parse.bend": "fe22007f0805f3c955fcaada88c1da76a3cceda74f0ff3840ae47af49a02c683",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/framing.bend": "307f95049df03d92687b7bd0eafb2cd566e660926510bb88163f9bc825fccdb5",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/mesh_render.bend": "62aff16470bb38313e0d1a732d16e4bb61fc65315ec8664df4a2a8c007de8cd6",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_presentation.bend": "795422051d936dbc70de658b6e6600cf6d7eeb9f759d842b2d4f40e00eee5137",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_presentation_laws.bend": "9cd594dbed90f5a24240a195da800483f703d6179ad09fcaae8bc5a81689ec36",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_presentation_proof.bend": "3dd138529b17caf8abb298eb14edbfd6ab1ce83f673db5f7f347549a11145aa1",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/png.bend": "8c24c14a250cf6dbdf0c2804e4b28bfebd7ef62ed5d9ee97a1d07094d4745f22",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/world_mesh.bend": "97df63c4f20c855350f254873ed05b7112015781e212f5d0b7837bd7e32c4e22"
+  },
+  "kernel": {
+    "path": "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+    "sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7",
+    "exit_code": 0,
+    "owned_group_absent": true
+  },
+  "reproduce": [
+    "/opt/homebrew/bin/node --experimental-transform-types build/player-presentation-proof/selective-export-002/executed-inline-source.mjs",
+    "LEAN_STACK_SIZE_KB=4194304 /Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt build/player-presentation-proof/selective-export-002/selected.bendtt"
+  ],
+  "retained_local_receipts": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-presentation-proof/selective-export-002",
+  "root_terms": [
+    {
+      "name": "player_presentation_laws:tile_backing_allocation",
+      "type_sha256": "c80cbc251a66037f58ff352b6d5a5cb2602da9a6161f8784fddc7792f60ffc40",
+      "checked_proof_sha256": "f5a40d308814e3cfa8d8b46123e6c0c0a284b6d1cb8dd80f8011f2cec9aba570",
+      "source_body_sha256": "cc5dd400d00934173f60948b47a69a2ab6bc345a3ce9c3d2f0175b76700725ca"
+    },
+    {
+      "name": "player_presentation_laws:frame_backing_allocation",
+      "type_sha256": "5ddb467a87ce6ee7b2d7c1e6699730ef4a1620340eaa9c7c1552ef92090362b6",
+      "checked_proof_sha256": "c65f71b7f1424f0e1184bbfb688e911b3d64165a6a47b47f4b5db8dbfe51adc6",
+      "source_body_sha256": "86eba87d8e7b54c7944c9a883742f4fadae887603bc7108a8f70be5c0403581c"
+    },
+    {
+      "name": "player_presentation_laws:frame_dimension_interface",
+      "type_sha256": "19fc329669a754bfd4864a3174082b29410a33cb80302e6f5b6d259969ab449d",
+      "checked_proof_sha256": "1ce9314e9ef05d27d95aa33d28b1670839176266455b5d8b3ee5ccfac55a64e5",
+      "source_body_sha256": "2ba58576e86cbb86de0e9b131d7b4c336e6a9dee46c32dec046058210997a070"
+    },
+    {
+      "name": "player_presentation_laws:look_delta_preserved",
+      "type_sha256": "b2c8a5e04f80da5b69525be36622c131226b6e53194d64dce95b1cc3990fafd2",
+      "checked_proof_sha256": "f56b1ffa936e43ea37dd405cd63665ad986487fbc74a1d16c87459e85553f4b3",
+      "source_body_sha256": "703ea307079c929dd25df478fc6dafc2ab33cb2a90382399a231103a1f182fb6"
+    },
+    {
+      "name": "player_presentation_laws:key_code_preserved",
+      "type_sha256": "c29667f184ca81e71a4a0e4035137406ac4ac834cc71cad3606df52685bc6a45",
+      "checked_proof_sha256": "063214ebe0973c44dbd104f8312725fdf4b9c319a60d2138b6159cbfa3e15cbb",
+      "source_body_sha256": "7d09b18339a886b0cc5e215b93f6ef6bd09b01c97a76ef0c7be04bf561a121b8"
+    },
+    {
+      "name": "player_presentation_laws:event_order_preserved",
+      "type_sha256": "4bd5de1fd99da4fbf1a601da49b2f9006cea086b5940190064b270283ab48b1b",
+      "checked_proof_sha256": "3cf8af4f03f914174a2e5c8fed85ed524cdafba9359e0730946a3c523898cb4a",
+      "source_body_sha256": "abe0a0ea9691aab3da1c55d90e01096eed6bdc6f1d466ce56e87843a20dffd2e"
+    },
+    {
+      "name": "player_presentation_laws:outside_pointer_rejected",
+      "type_sha256": "7e9faec62c0d3a2c8eec047354e419cd1407e45941c5fe7b82c1cea941e82c93",
+      "checked_proof_sha256": "eef799bc07d4416f84af0ce87926ba369237468922bc6d8c3457f2673365bc72",
+      "source_body_sha256": "7906f4b470d6f86f484a2c38ccdc12e0e8bf4ff88aba065bdb84e0def61bad5d"
+    },
+    {
+      "name": "player_presentation_laws:invisible_pixel_zero",
+      "type_sha256": "c540c791462880a8847e9bbc371d465bc08e69059e7ec7c9574616dac51930d4",
+      "checked_proof_sha256": "a652cdc1a4f29fec0038ac20f9bc6f55ffa9d9f1f4c45894390b82fefc6b4014",
+      "source_body_sha256": "336981d1fe85770377e56a34ac06fe4fcfe1b273eafe311145a53a111a925469"
+    }
+  ]
+}

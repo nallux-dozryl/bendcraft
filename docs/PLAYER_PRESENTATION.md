@@ -93,3 +93,11 @@ in 3.827/3.909-second render/composition/Window.frame envelopes. Recording the
 high-resolution CPU image exposes a subsequent private-input failure; keep that
 failed attempt separate. These observations do not establish physical OS input,
 drawable framebuffer equality, Retina resizing/fullscreen or sustained FPS.
+
+The next renderer uses structural pixel bounds before ray construction, matched
+parallel/nonparallel slab spans without rejected boxed allocations, and 16×16
+sequential tiles below the parallel fork tree. The actual allocation theorem now
+quantifies tile depth; full image backing shape is preserved. Eight actual roots
+pass the independent kernel (`evidence/player-presentation-proof-002.json`).
+Renderer004 native pixel equality and frame times remain pending; renderer003
+remains the working launch artifact.

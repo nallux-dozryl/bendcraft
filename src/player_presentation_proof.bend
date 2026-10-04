@@ -33,20 +33,20 @@ def L.tile_backing_allocation(n,tree,quads,textures,camera,settings,x,y,side,wid
         L.tile_backing_allocation(rest,tree,quads,textures,camera,settings,x,U32.add(y,half),half,width,height),
         L.tile_backing_allocation(rest,tree,quads,textures,camera,settings,U32.add(x,half),U32.add(y,half),half,width,height))
 
-def L.frame_backing_allocation(n,tree,quads,textures,camera,settings,x,y,side,width,height):
+def L.frame_backing_allocation(n,tile_depth,tree,quads,textures,camera,settings,x,y,side,width,height):
   match n:
-    case 0n: L.tile_backing_allocation(2n,tree,quads,textures,camera,settings,x,y,side,width,height)
+    case 0n: L.tile_backing_allocation(tile_depth,tree,quads,textures,camera,settings,x,y,side,width,height)
     case 1n+rest:
       +half = U32.div(side,2)
       four_equal(
-        P.image_leaves(M.frame(rest,tree,quads,textures,camera,settings,x,y,half,width,height)),
-        P.image_leaves(M.frame(rest,tree,quads,textures,camera,settings,U32.add(x,half),y,half,width,height)),
-        P.image_leaves(M.frame(rest,tree,quads,textures,camera,settings,x,U32.add(y,half),half,width,height)),
-        P.image_leaves(M.frame(rest,tree,quads,textures,camera,settings,U32.add(x,half),U32.add(y,half),half,width,height)),P.leaves(Nat.add(rest,2n)),
-        L.frame_backing_allocation(rest,tree,quads,textures,camera,settings,x,y,half,width,height),
-        L.frame_backing_allocation(rest,tree,quads,textures,camera,settings,U32.add(x,half),y,half,width,height),
-        L.frame_backing_allocation(rest,tree,quads,textures,camera,settings,x,U32.add(y,half),half,width,height),
-        L.frame_backing_allocation(rest,tree,quads,textures,camera,settings,U32.add(x,half),U32.add(y,half),half,width,height))
+        P.image_leaves(M.frame(rest,tile_depth,tree,quads,textures,camera,settings,x,y,half,width,height)),
+        P.image_leaves(M.frame(rest,tile_depth,tree,quads,textures,camera,settings,U32.add(x,half),y,half,width,height)),
+        P.image_leaves(M.frame(rest,tile_depth,tree,quads,textures,camera,settings,x,U32.add(y,half),half,width,height)),
+        P.image_leaves(M.frame(rest,tile_depth,tree,quads,textures,camera,settings,U32.add(x,half),U32.add(y,half),half,width,height)),P.leaves(Nat.add(rest,tile_depth)),
+        L.frame_backing_allocation(rest,tile_depth,tree,quads,textures,camera,settings,x,y,half,width,height),
+        L.frame_backing_allocation(rest,tile_depth,tree,quads,textures,camera,settings,U32.add(x,half),y,half,width,height),
+        L.frame_backing_allocation(rest,tile_depth,tree,quads,textures,camera,settings,x,U32.add(y,half),half,width,height),
+        L.frame_backing_allocation(rest,tile_depth,tree,quads,textures,camera,settings,U32.add(x,half),U32.add(y,half),half,width,height))
 
 def L.frame_dimension_interface(width,height,settings): {==}
 def L.look_delta_preserved(dx,dy,plan): {==}
@@ -56,3 +56,7 @@ def L.event_order_preserved(head,tail,plan): {==}
 def L.outside_pointer_rejected(pixel,source,target,outside):
   Equal.cong(Bool,U32,inside => P.pointer_coordinate_checked(pixel,source,target,inside),
     U32.is_lt(pixel,source),False{},outside)
+
+def L.invisible_pixel_zero(tree,quads,textures,camera,settings,x,y,width,height,outside):
+  Equal.cong(Bool,U32,inside => M.pixel_inside(inside,tree,quads,textures,camera,settings,x,y,width,height),
+    U32.is_lt(x,width) && U32.is_lt(y,height),False{},outside)
