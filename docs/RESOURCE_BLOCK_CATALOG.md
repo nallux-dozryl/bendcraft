@@ -49,6 +49,13 @@ each compiled root, including alternatives that the current ticket does not
 select. Its blockstate archive closes before `BR.load` opens the model/texture
 archive; every failure path closes the archive owner.
 
+`G.Property` retains domain strings and strides, but does not retain the Java
+property class. `C.schema` infers an integer property when every domain value
+passes the existing blockstate integer parser. Canonical assignments remain
+exact; custom numeric-named enum domains need property-kind metadata to
+reproduce Java's different lexical acceptance rules. This inference does not
+establish arbitrary custom Java property-class parity.
+
 `C.bind` selects the exact root for the requested state. Single variants need no
 ticket. Weighted variants require an explicit bounded ticket; each weighted
 selected multipart part requires a ticket indexed by its original part number.
@@ -115,6 +122,13 @@ C.defaults())`, then `CP.preview_bindings(catalog,appearance)`. Retain
 the existing world/engine. Resource-frame draw failure continues to return the
 same texture owner; the catalog's Data metadata can be borrowed across frames.
 
+The remote renderer currently receives a visibility sample and palette, rather
+than a registry owner. It therefore needs its own actual pinned registry load
+and an identity comparison with the backend before using this API. The local
+player scene can pass and reattach the registry already held by its engine.
+Forward `catalog.loaded_catalog` to existing consumers that still expect
+`BR.Catalog`; the retained `C.Catalog` adds state dispatch metadata.
+
 The current `ClientWorld.material` admits only its historical air/stone/dirt/
 planks palette, and `WorldVisibility` derives cube-neighbor masks from that
 palette. Root consumer integration must generalize those admissions and
@@ -139,6 +153,7 @@ python3 tools/resource_block_catalog_reference.py
 python3 tools/resource_block_catalog_reference.py --verify
 /Users/chuah/.bend/bin/bend src/resource_block_catalog_proof.bend --check-only
 /Users/chuah/.bend/bin/bend src/resource_block_catalog_profile.bend --check-only
+python3 tools/resource_block_catalog_test.py --build-private
 ```
 
 All production sources and the fourteen contracts pass ordinary checking.
@@ -156,19 +171,28 @@ the actual loader and binder. They cover all 130 profile entries including air,
 and multipart resources, missing dependencies, exact resource budgets, precise
 diagnostics, returned registry readback, per-quad sprite/layer/tint metadata,
 image pixel readback and an independent ZIP/PNG resource usage oracle. The
-harness passes ordinary source checking; preparation does not establish native
-behavior.
+harness passes ordinary source checking and native execution.
 
 The first ordinary native compilation timed out after 600 seconds before
 creating C or a binary. Its process group was reaped; the diagnostic sample
 recorded a 15.6 GiB peak physical footprint on the 18 GiB machine. The failed
 attempt remains in `evidence/resource-block-catalog-tests.json`. A distinct
-private emitter route, already exercised by the playable renderer, is being
-prepared against an immutable source snapshot. It changes emitter queue
-traversal and available-arity handling without changing the installed compiler
-or production sources. No native case has passed at this checkpoint.
+private emitter route, already exercised by the playable renderer, passed
+against an immutable source snapshot containing 66 pinned files. It changes
+emitter queue traversal and available-arity handling without changing the
+installed compiler or production sources. Emission reached a six-pass fixpoint in 243.595 seconds
+and produced 16,562,986 bytes of C; plain CPU compilation passed in 36.84
+seconds. Peak sampled emitter RSS was 5.55 GiB under a 6 GiB Node heap cap;
+RSS is a different measure from the failed attempt's physical footprint.
 
-Native execution and root live-client integration remain pending. Lighting,
-biome tint, fluid/block-entity geometry, atlas/mipmap sampling, position
-randomness and actual visible client acceptance retain their own production
-obligations.
+Two complete native runs passed with equal outputs, including equality under
+reordered requests. Each run checked 28 cases, 17 load refusals, 331 successful
+queries, 34 query refusals and 4,310 quads. The eight native invocations yielded
+56 case observations. The catalog emitter, compiler and native process groups
+were reaped after execution. These checks establish the listed selection,
+metadata, pixel and budget behaviors. Geometry-coordinate and final frame
+parity remain separate checks.
+
+Root live-client integration remains pending. Lighting, biome tint,
+fluid/block-entity geometry, atlas/mipmap sampling, position randomness and
+actual visible client acceptance retain their own production obligations.

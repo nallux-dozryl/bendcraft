@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "time_utc": "2026-10-04T15:49:36.674344+00:00",
-  "status": "source-and-kernel-passed-native-pending",
+  "status": "source-and-kernel-passed-native-passed",
   "ordinary_commands": [
     "/Users/chuah/.bend/bin/bend src/resource_block_catalog_proof.bend --check-only",
     "/Users/chuah/.bend/bin/bend src/resource_block_catalog_profile.bend --check-only"
@@ -16,9 +16,19 @@
     "src/resource_block_catalog_profile.bend": "e6a15d8ac12d01f040ae6bca321cbe8f6401830744cfc8b4d5b768529e99bacf",
     "src/resource_block_catalog_proof.bend": "a3fea8909d6fd50b6f47e5b7a5c76d9b8f0404b890ce51788dc5bf5573d304d5",
     "tools/resource_block_catalog_proof.mjs": "9c963940a7f7408e3cfaeb212bc4b866c3ba6e9eaaae2b62dc0e3fbb2e0e11a2",
-    "docs/RESOURCE_BLOCK_CATALOG.md": "aa0276b0df27f949ed72115c0ef8ee8aac8d60cb56b48aa634959b0a991766e1"
+    "docs/RESOURCE_BLOCK_CATALOG.md": "5c9f95a925b013d47ae9d6a9e23f7928eceba1dcef83a4aa5d5c002f8e568b1a"
   },
-  "native_status": "actual 28-case harness passes source checking; ordinary native build timed out after 600s before artifact, group reaped, zero native cases executed; distinct tested private emitter snapshot being prepared",
+  "native_status": "tested private producer passed emission243.595s and CPU clang36.84s against66 pinned files; two native runs passed28cases each, whole outputs/reordered requests equal;331successfulqueries34queryrefusals17loadrefusals4310quads per run; original600s timeout retained; all owned groups reaped",
   "root_consumer_status": "integration API available; historical ClientWorld/WorldVisibility three-state admission remains in root-owned consumer files",
-  "native_test_evidence": "evidence/resource-block-catalog-tests.json"
+  "native_test_evidence": "evidence/resource-block-catalog-tests.json",
+  "native_scope_exclusions": [
+    "geometry coordinates and UV coordinates",
+    "caller lighting and biome tint appearance",
+    "position RNG",
+    "fluid and block entity rendering",
+    "world culling and visibility",
+    "atlas and mipmap sampling",
+    "final native presentation frames"
+  ],
+  "native_update_utc": "2026-10-04T16:34:10.474784+00:00"
 }
