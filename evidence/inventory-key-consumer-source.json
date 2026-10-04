@@ -1,0 +1,70 @@
+{
+  "status": "source-clean",
+  "checks": [
+    {
+      "label": "presenter",
+      "scope": "own source clean,81 declared unsafe/foreign dependencies",
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/remote_resource_presenter.bend",
+        "--check-only"
+      ],
+      "pid": 91326,
+      "returncode": 1,
+      "seconds": 32.82612466625869,
+      "timed_out": false,
+      "source_sha256": "323e56f41a303ff0bd5d0cd6526cc11b0d61ad77b78990d3eb8017cd09184104",
+      "source_unchanged": true,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "5c313cc2d60f2ef400ae2f9ef6f52e8caa5c9ffad16fa995f0f4cf5febb4bf06",
+      "receipt": {
+        "path": "build/player-inventory-screen/key-consumer-ordinary-007/receipt.json",
+        "sha256": "5d06a4317f3440d453462411818841299593b740e6211187e3f11f7740e3c506"
+      }
+    },
+    {
+      "label": "proof",
+      "scope": "all seven laws source check passed",
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/inventory_key_consumer_proof.bend",
+        "--check-only"
+      ],
+      "pid": 92389,
+      "returncode": 0,
+      "seconds": 14.459057291969657,
+      "timed_out": false,
+      "source_sha256": "baf5c99bef3a9ac1c342f82994b946e4d6fb115b0cb9c827e1d5561396bd7b53",
+      "source_unchanged": true,
+      "stdout_sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "receipt": {
+        "path": "build/player-inventory-screen/key-consumer-proof-ordinary-002/receipt.json",
+        "sha256": "66c8ebfbbd745032d671118f3c1fa8ee7b9878ded6d93b25130a9c75535718ff"
+      }
+    },
+    {
+      "label": "fixture",
+      "scope": "ordinary source check passed",
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/inventory_key_consumer.bend",
+        "--check-only"
+      ],
+      "pid": 96258,
+      "returncode": 0,
+      "seconds": 16.364245291799307,
+      "timed_out": false,
+      "source_sha256": "c688794a4eafe3fab7af89bf5d344b5e5d535d7b27e9457c4cd8d81821e78a12",
+      "source_unchanged": true,
+      "stdout_sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "receipt": {
+        "path": "build/player-inventory-screen/key-consumer-test-ordinary-004/receipt.json",
+        "sha256": "cfbfa89a4a7a97d8d169b44b4e8e2e943b5362ff1a5829d839bf881b53eb6b2e"
+      }
+    }
+  ],
+  "scope": "own source pins; independent kernel and captured native manifests supply separate imported closure pins",
+  "source_failures_preserved": "build/player-inventory-screen/key-consumer-*; no failed attempt overwritten"
+}

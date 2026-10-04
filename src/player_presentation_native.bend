@@ -14,6 +14,10 @@ def Native.milliseconds() -> IO(U32):
   import "./native/player_presentation.c"
   import "./native/player_presentation.js"
 
+def Native.inventory_keys(window:Window) -> IO(Window & Bool):
+  import "./native/player_presentation.c"
+  import "./native/player_presentation.js"
+
 def measured(result:Window & U32 & U32 & U32 & U32) -> Window & P.Geometry:
   (window,width,height,point_width,point_height) = result
   (window,P.Geometry{width,height,point_width,point_height})

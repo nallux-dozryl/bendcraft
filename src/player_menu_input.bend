@@ -5,6 +5,7 @@ import ./player_item_definitions.bend as D
 import ./player_presentation.bend as P
 import ./resource_client_wire.bend as W
 import ./player_hud.bend as H
+import ./inventory_key_consumer.bend as Keys
 
 # No authority snapshot exists until the authenticated MenuReply arrives.
 # This state owns only immutable observations and the screen controller.
@@ -68,6 +69,52 @@ def synchronized(pending:List<Event>,viewport:Screen.Viewport,focused:Bool,captu
 
 def packet(state:State,pending:List<Event>,viewport:Screen.Viewport,+focused:Bool,+captured:Bool) -> Batch:
   synchronized(pending,viewport,focused,captured,synchronize(state,focused,captured))
+
+def key_event_mapped(mapped:Maybe<&2,Event>,events:List<&2,Event>,intents:List<&2,Screen.Intent>,state:State,
+    viewport:Screen.Viewport,focused:Bool,captured:Bool) -> Batch:
+  match mapped:
+    case None{}: Batch{state,intents,events}
+    case Some{input}: event(input,events,intents,state,viewport,focused,captured)
+
+def key_event(profile:Keys.Profile,input:Event,events:List<&2,Event>,intents:List<&2,Screen.Intent>,+state:State,
+    viewport:Screen.Viewport,focused:Bool,captured:Bool) -> Batch:
+  State{controller,snapshot,catalog} = state
+  key_event_mapped(Keys.event(profile,controller,input),events,intents,state,viewport,focused,captured)
+
+def finished(batch:Batch) -> Batch:
+  Batch{state,intents,reversed} = batch
+  Batch{state,intents,List.reverse(&2,Event,reversed)}
+
+def key_events_go(left:Nat,pending:List<&2,Event>,+profile:Keys.Profile,+viewport:Screen.Viewport,+focused:Bool,+captured:Bool,batch:Batch) -> Batch:
+  match left pending batch:
+    case 0n _ batch: finished(batch)
+    case _ Nil{} batch: finished(batch)
+    case 1n+n +head <> tail Batch{State{+controller,+snapshot,+catalog},intents,reversed}:
+      key_events_go(n,Keys.following(profile,controller,head,tail),profile,viewport,focused,captured,
+        key_event(profile,head,reversed,intents,State{controller,snapshot,catalog},viewport,focused,captured))
+
+def shared_events(pending:List<Event>) -> List<&2,Event>:
+  match pending:
+    case Nil{}: []
+    case head <> tail: head <> shared_events(tail)
+
+def key_events_shared(+pending:List<&2,Event>,profile:Keys.Profile,viewport:Screen.Viewport,focused:Bool,captured:Bool,batch:Batch) -> Batch:
+  key_events_go(List.length(&2,Event,pending),pending,profile,viewport,focused,captured,batch)
+
+def key_events(pending:List<Event>,profile:Keys.Profile,viewport:Screen.Viewport,focused:Bool,captured:Bool,batch:Batch) -> Batch:
+  key_events_shared(shared_events(pending),profile,viewport,focused,captured,batch)
+
+def key_synchronized(profile:Keys.Profile,pending:List<Event>,viewport:Screen.Viewport,focused:Bool,captured:Bool,
+    result:State & List<&2,Screen.Intent>) -> Batch:
+  (state,intents) = result
+  key_events(pending,profile,viewport,focused,captured,Batch{state,intents,[]})
+
+# The real presenter opts in only after the native adapter reports this channel.
+# Legacy callers retain their original Event contract and State constructor.
+def packet_keys(physical:Bool,profile:Keys.Profile,state:State,pending:List<Event>,viewport:Screen.Viewport,+focused:Bool,+captured:Bool) -> Batch:
+  match physical:
+    case False{}: packet(state,pending,viewport,focused,captured)
+    case True{}: key_synchronized(profile,pending,viewport,focused,captured,synchronize(state,focused,captured))
 
 def game_events(pending:List<&2,Event>) -> List<Event>:
   match pending:

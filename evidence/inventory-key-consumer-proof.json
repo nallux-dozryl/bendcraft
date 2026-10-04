@@ -1,0 +1,129 @@
+{
+  "status": "independent-kernel-blocked",
+  "entry": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/inventory_key_consumer_proof.bend",
+  "roots": [
+    "inventory_key_consumer_laws:physical_packet_retains_complete_received_authority",
+    "inventory_key_consumer_laws:unavailable_native_channel_keeps_actual_legacy_packet",
+    "inventory_key_consumer_laws:default_physical_profile_is_valid",
+    "inventory_key_consumer_laws:physical_offhand_consumes_paired_character_and_retains_full_owner",
+    "inventory_key_consumer_laws:rebound_offhand_requests_actual_full_owner_swap",
+    "inventory_key_consumer_laws:physical_world_digit_keeps_single_semantic_event_and_full_owner",
+    "inventory_key_consumer_laws:searching_retains_actual_character_instead_of_physical_shortcut"
+  ],
+  "root_count": 7,
+  "checked_source": {
+    "status": "passed",
+    "seconds": 19.14641858357936,
+    "holes": 0,
+    "exclusions": [],
+    "checked_types_and_bodies_unchanged": true,
+    "all_original_tlds_ctrs_tmps_retained": true,
+    "term_pins": [
+      {
+        "name": "inventory_key_consumer_laws:physical_packet_retains_complete_received_authority",
+        "type_sha256": "df1d9ae1ae6eb0c121835a4f59114e56902a80c7c515fd2a666b03c3f7e1d3fa",
+        "checked_proof_sha256": "eba48a3e48a49cdd9b7cfe4a1ce3150a1888d2af21cf9d2cb6a05f0de6837918",
+        "source_body_sha256": "cc5d5886f43e92e5d6178fe6e7cde9698a8d756e742d8f8d8012ee91c7081764"
+      },
+      {
+        "name": "inventory_key_consumer_laws:unavailable_native_channel_keeps_actual_legacy_packet",
+        "type_sha256": "03feef2f7630e07026dbe24cd423ce6f4683210a59f410bf63910e8a7c76bd0e",
+        "checked_proof_sha256": "183e2b288d12156e83817c2feb2dab47f370eb5ab8488cd2ff462720097673d4",
+        "source_body_sha256": "4ec22c5214ed4399486a82cc290dc7c02d0e83416b7964a79e076acdc755a533"
+      },
+      {
+        "name": "inventory_key_consumer_laws:default_physical_profile_is_valid",
+        "type_sha256": "d06f8a5900b6dcea57ecf4812f6c062c86952df4ff02bde133d57aec632fc841",
+        "checked_proof_sha256": "918454ea5f30399be1db434948ef6f61e3fb6970bd68d5365ed918fc2346ebd5",
+        "source_body_sha256": "b189a979eb922749b8bbb320e472afb8312d85712fa632b01284a659aee558d4"
+      },
+      {
+        "name": "inventory_key_consumer_laws:physical_offhand_consumes_paired_character_and_retains_full_owner",
+        "type_sha256": "127968e45fc39c6121e72f569768b875517108c39123cbf652c80f89b5e8a207",
+        "checked_proof_sha256": "f31ac8f12d19e8651842f79466cbcb632384a5ac636af2141da0dacdc4446cfe",
+        "source_body_sha256": "e8545319a8926330d7822fcd20f7801acc697302836b3e51daaee25345f44e00"
+      },
+      {
+        "name": "inventory_key_consumer_laws:rebound_offhand_requests_actual_full_owner_swap",
+        "type_sha256": "2cc34bbb8a2e527db7b709874047e01102de3234e92ad4ed42a79ae0e4c7837e",
+        "checked_proof_sha256": "a82cf427fd1d315e3c0c77c496aa4e7c5bdd034de96bf78270a4f9a4b8030bb4",
+        "source_body_sha256": "896c26f9b265891b88625a579de75b50212f1eb51509f2ef396c07fc96712fb7"
+      },
+      {
+        "name": "inventory_key_consumer_laws:physical_world_digit_keeps_single_semantic_event_and_full_owner",
+        "type_sha256": "9b6a54c40a8e30b344d70abd18b56e93f212199d7fb14078b9f94ec6c581fc39",
+        "checked_proof_sha256": "089035a538f5fbed3ae8bbf950709d8f6c0dcd3e077b44581d78a2d691a3136b",
+        "source_body_sha256": "3a635820f38159b0e7137d92e89d046f2d92a2b47cd7abb88d6038c2eb239565"
+      },
+      {
+        "name": "inventory_key_consumer_laws:searching_retains_actual_character_instead_of_physical_shortcut",
+        "type_sha256": "be5b4af9a1e1a2f35b7f3387d6a3fa378dcb19a599d3150222a7fd3edd1bc6f6",
+        "checked_proof_sha256": "a611fd8496396b399a7cf5dc912eb5b279486055714feb0f83f57817b3dff9f2",
+        "source_body_sha256": "a6b0a9585d1feb371dd3f9c8b451fe8d8772a7191303eae8e2faca8dbbc1d0af"
+      }
+    ]
+  },
+  "independent_kernel": {
+    "status": "failed",
+    "seconds": 4.31765987444669,
+    "argv": [
+      "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/inventory-key-consumer/proof-001/selected.bendtt"
+    ],
+    "diagnostic": "SOME PROOFS FAIL\nIn json.encode_go:\naffine live code, calls that descend\n",
+    "foreign_or_unsafe_axioms_added": false,
+    "weakened_owner_or_validity_contract": false
+  },
+  "dependency": "I.menu_snapshot_valid -> I.structural_stack -> item_component.slot_metadata -> production json.encode_go; root owns JSON repair",
+  "emitted": {
+    "bytes": 38002936,
+    "sha256": "20210ea91878cfe1699d9210285caaaeaa531a9784dd79457fe35ca0eed04701"
+  },
+  "compiler_pins": {
+    "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/bend.ts": "7deae3693eb896f33c73867081b99d2c6f3ed3b57e77e55eb5f6260840dd0e63",
+    "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/safe.ts": "54cb3a534ab7cc9ee313bf6383b3948ccdcac022469b3020e00745bbfe6f7e04",
+    "/opt/homebrew/Cellar/node/23.5.0/bin/node": "ec307018e1e8b80d68588b01ce6e9f8f9b8f4a03412c513b0fc3ac4d0f5db799"
+  },
+  "source_closure": {
+    "count": 62,
+    "manifest": {
+      "path": "build/inventory-key-consumer/proof-001/source-pins.json",
+      "sha256": "c0baa552db46b2d0f97454cc4232dee97560081aff307b5b008cc97aff6a555d"
+    },
+    "unchanged": true,
+    "relevant_pins": {
+      "src/inventory_key_consumer.bend": "a669ccf2e6ebef4e6fef88fb49cd6433274d58260b4acef3a1d3ce1bb04b081e",
+      "src/inventory_key_consumer_laws.bend": "776a6b546c6cc2dc33a7485d3190d0f35ed0ee4b7e3b1d92e428e5c85b3d949b",
+      "src/inventory_key_consumer_proof.bend": "baf5c99bef3a9ac1c342f82994b946e4d6fb115b0cb9c827e1d5561396bd7b53",
+      "src/player_menu_input.bend": "aa1af9e7b083e81b6433cd3ff5f04a6ff88f0927a7b86b15a58e0aafe744dcef",
+      "src/player_inventory.bend": "065be0bc6aa1d0cb10b9fcac77b6dcea73d4bdbab20fd2e13e264a8ea91c3340",
+      "src/player_inventory_screen.bend": "4671500d1e13b35e610e4747b520008ac3deb5b718162115124e520793a3a9ad",
+      "src/player_item_definitions.bend": "df5183e0c4be23b4eaf081e9a72099436e5d674402e9ac15102ecabc7a1b1d90",
+      "src/json.bend": "a1789e3b4f5bea158ec0d95a8bcb39aa5b7c7e7355a5254d3de1d52a93c719d1"
+    }
+  },
+  "raw_receipts": [
+    {
+      "path": "build/inventory-key-consumer/proof-001/processes/export/execution.json",
+      "sha256": "dfd671aed3e262dd42951434f77496ea08faa7fa51d255e39cca7dedc56c4258"
+    },
+    {
+      "path": "build/inventory-key-consumer/proof-001/processes/kernel/execution.json",
+      "sha256": "0aba6f26520908d0f335e8bfa2732891b35ee7923288ae2dbc16d8e6667c1794"
+    },
+    {
+      "path": "build/inventory-key-consumer/proof-001/scope.json",
+      "sha256": "096eba7c600446a2f906369a6ff747804a51b9ad3153ca10d9a1d673e416b337"
+    },
+    {
+      "path": "build/inventory-key-consumer/proof-001/selection.json",
+      "sha256": "432eb2881e6480a329f68da5bbce353184989714d96d35e3f3a427fb11b26df0"
+    },
+    {
+      "path": "build/inventory-key-consumer/proof-001/final-cleanup.json",
+      "sha256": "3668a0a8b9af150b715e12ae4373ea50843b56f75100f5425b7c87b22245c229"
+    }
+  ],
+  "aggregation": "Do not import these seven laws into root proof aggregate until current independent kernel passes.",
+  "reproduce": "python3 tools/test_inventory_key_consumer.py --mode proof --work build/inventory-key-consumer/proof-new"
+}

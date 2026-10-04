@@ -10,3 +10,7 @@ function mc_presentation_milliseconds() {
   return Math.floor(performance.now()) >>> 0;
 }
 io_eff(CID(Native.milliseconds), mc_presentation_milliseconds);
+function mc_presentation_inventory_keys(window) {
+  return io_tup(window, {$: CID(False)});
+}
+io_eff(CID(Native.inventory_keys), mc_presentation_inventory_keys);

@@ -23,6 +23,7 @@ import ./player_inventory_screen.bend as Screen
 import ./player_menu_input.bend as MenuInput
 import ./player_item_definitions.bend as ItemDefinitions
 import ./player_item_catalog.bend as ItemCatalog
+import ./inventory_key_consumer.bend as Keys
 
 # This process owns textures, one private connection and one Window. The only
 # world authority is the peer's saved LocalPlayer actor; no driver/actor handle
@@ -35,18 +36,18 @@ type Receive is Type:
   Received{link:Link,value:Result<&2,&2,String,Wire.Reply>}
 type Config is Data:
   Config{human:Bool,frames:Maybe<&2,Nat>,width:U32,height:U32,
-    trace:Maybe<&2,String>,serial:Nat,plan:Presentation.Plan,started:U32,menu:MenuInput.State}
+    trace:Maybe<&2,String>,serial:Nat,plan:Presentation.Plan,started:U32,menu:MenuInput.State,keys:Keys.Profile,physical_keys:Bool}
 
 type MenuResult is Type:
   MenuResult{window:Window,link:Link,state:MenuInput.State,keep:Bool,status:Result<&2,&2,String,Unit>}
 
 def menu_state(config:Config) -> MenuInput.State:
-  Config{human,frames,width,height,trace,serial,plan,started,menu} = config
+  Config{human,frames,width,height,trace,serial,plan,started,menu,keys,physical_keys} = config
   menu
 
 def with_menu(config:Config,menu:MenuInput.State) -> Config:
-  Config{human,frames,width,height,trace,serial,plan,started,previous} = config
-  Config{human,frames,width,height,trace,serial,plan,started,menu}
+  Config{human,frames,width,height,trace,serial,plan,started,previous,keys,physical_keys} = config
+  Config{human,frames,width,height,trace,serial,plan,started,menu,keys,physical_keys}
 def presentation_width(human:Bool,logical:U32) -> U32:
   HUD.presentation_width(human,logical)
 
@@ -289,7 +290,7 @@ def trace_write(path:String,+image:Image,+width:U32,+height:U32) -> IO(Result<&2
     trace_opened(image,width,height,opened)
 
 def trace(image:Image,config:Config) -> IO(Result<&2,&2,String,Unit>):
-  Config{human,frames,width,height,mode,serial,+plan,started,menu} = config
+  Config{human,frames,width,height,mode,serial,+plan,started,menu,keys,physical_keys} = config
   match mode:
     case None{}: IO.pure(Result<&2,&2,String,Unit>,Done{Unit{}})
     case Some{directory}: trace_write(directory ++ "/" ++ Nat.show(serial) ++ ".ppm",image,
@@ -335,7 +336,7 @@ def sample_description(sample:Visibility.Sample,serial:Nat,mode:Maybe<&2,String>
 
 def frame_description(+sample:Visibility.Sample,config:Config) -> IO(Unit):
   Visibility.Sample{Pixels.Snapshot{tick,revision,+blocks,Pixels.Camera{x,y,z,yaw,pitch}},raw,masks,origin,palette,reads} = sample
-  Config{human,frames,+width,+height,mode,serial,+plan,started,menu} = config
+  Config{human,frames,+width,+height,mode,serial,+plan,started,menu,keys,physical_keys} = config
   do IO<Unit>:
     IO.print("{\"event\":\"client.frame\",\"renderer\":\"remote-local-resource-instrument\",\"tick\":" ++ Nat.show(tick) ++
       ",\"revision\":" ++ Nat.show(revision) ++ ",\"blocks\":" ++ Nat.show(List.length(&2,Pixels.Block,blocks)) ++
@@ -349,7 +350,7 @@ def frame_description(+sample:Visibility.Sample,config:Config) -> IO(Unit):
     sample_description(sample,serial,mode)
 
 def image_description(+image:Image,config:Config) -> IO(Unit):
-  Config{human,frames,width,height,mode,serial,+plan,started,menu} = config
+  Config{human,frames,width,height,mode,serial,+plan,started,menu,keys,physical_keys} = config
   match mode:
     case None{}: IO.pure(Unit,Unit{})
     case Some{directory}:
@@ -365,8 +366,8 @@ def closing(window:Window,assets:RF.Assets,link:Link,code:U32,message:String) ->
     IO.die(Unit,code,message)
 
 def advance(config:Config) -> Config:
-  Config{human,frames,width,height,trace,serial,+plan,started,menu} = config
-  Config{human,Common.remaining(frames),width,height,trace,1n+serial,plan,started,menu}
+  Config{human,frames,width,height,trace,serial,+plan,started,menu,keys,physical_keys} = config
+  Config{human,Common.remaining(frames),width,height,trace,1n+serial,plan,started,menu,keys,physical_keys}
 
 def scheduled(window:Window,assets:RF.Assets,link:Link,config:Config,captured:Bool,keep:Bool,
     resume:Window -> RF.Assets -> Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
@@ -379,7 +380,7 @@ def scheduled(window:Window,assets:RF.Assets,link:Link,config:Config,captured:Bo
 
 def packet_advance(window:Window,assets:RF.Assets,link:Link,+next:Config,captured:Bool,keep:Bool,
     resume:Window -> RF.Assets -> Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
-  Config{human,frames,width,height,trace,serial,+plan,started,menu} = next
+  Config{human,frames,width,height,trace,serial,+plan,started,menu,keys,physical_keys} = next
   scheduled(window,assets,link,next,captured,keep && Common.continuing(frames),resume)
 
 def describe_command(command:Wire.Command,status:Result<&2,&2,String,Wire.Reply>) -> IO(Unit):
@@ -521,7 +522,7 @@ def send_menu_intents(intents:List<&2,Screen.Intent>,window:Window,link:Link,sta
     case Nil{}: IO.pure(MenuResult,MenuResult{window,link,state,keep,Done{Unit{}}})
     case Screen.ReleaseControls{} <> rest:
       do IO<MenuResult>:
-        result : Link & Result<&2,&2,String,Wire.Reply> <- call(link,Wire.Input{Controls.release()})
+        result : Link & Result<&2,&2,String,Wire.Reply> <- call(link,Wire.Release{})
         menu_release(window,state,rest,human,keep,result,tail => w => l => s => h => k => send_menu_intents(tail,w,l,s,h,k))
     case Screen.Capture{enabled} <> rest:
       do IO<MenuResult>:
@@ -535,7 +536,7 @@ def send_menu_intents(intents:List<&2,Screen.Intent>,window:Window,link:Link,sta
 
 def menu_events_sent(assets:RF.Assets,+config:Config,pending:List<Event>,old:Bool,result:MenuResult,
     resume:Window -> RF.Assets -> Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
-  Config{+human,frames,width,height,trace,serial,plan,started,previous} = config
+  Config{+human,frames,width,height,trace,serial,plan,started,previous,keys,physical_keys} = config
   match result:
     case MenuResult{window,link,state,False{},Done{unit}}: closing(window,assets,link,0,"client closed")
     case MenuResult{window,link,+state,True{},Done{unit}}:
@@ -546,7 +547,7 @@ def menu_events_sent(assets:RF.Assets,+config:Config,pending:List<Event>,old:Boo
 
 def menu_intercepted(assets:RF.Assets,link:Link,+config:Config,old:Bool,window:Window,
     batch:MenuInput.Batch,resume:Window -> RF.Assets -> Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
-  Config{human,frames,width,height,trace,serial,plan,started,menu} = config
+  Config{human,frames,width,height,trace,serial,plan,started,menu,keys,physical_keys} = config
   MenuInput.Batch{state,intents,events} = batch
   do IO<Unit>:
     sent : MenuResult <- send_menu_intents(intents,window,link,state,human,True{})
@@ -554,14 +555,14 @@ def menu_intercepted(assets:RF.Assets,link:Link,+config:Config,old:Bool,window:W
 
 def menu_intercept(assets:RF.Assets,link:Link,+config:Config,pending:List<Event>,old:Bool,
     result:Window & Bool & Bool,resume:Window -> RF.Assets -> Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
-  Config{human,frames,width,height,trace,serial,+plan,started,menu} = config
+  Config{human,frames,width,height,trace,serial,+plan,started,menu,keys,physical_keys} = config
   (window,focused,captured) = result
-  menu_intercepted(assets,link,config,old,window,MenuInput.packet(menu,pending,
+  menu_intercepted(assets,link,config,old,window,MenuInput.packet_keys(physical_keys,keys,menu,pending,
     MenuInput.viewport(Presentation.hud_viewport(plan)),focused,captured),resume)
 
 def input_presented(window:Window,assets:RF.Assets,link:Link,+config:Config,captured:Bool,+image:Image,pending:List<Event>,
     resume:Window -> RF.Assets -> Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
-  Config{+human,frames,width,height,trace,serial,+plan,started,menu} = config
+  Config{+human,frames,width,height,trace,serial,+plan,started,menu,keys,physical_keys} = config
   do IO<Unit>:
     image_description(image,config)
     window : Window <- Common.window_policy(window,human)
@@ -576,7 +577,7 @@ def traced(window:Window,assets:RF.Assets,link:Link,config:Config,captured:Bool,
 
 def presented(assets:RF.Assets,link:Link,+config:Config,captured:Bool,result:Window & Image & List<Event>,
     resume:Window -> RF.Assets -> Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
-  Config{human,frames,width,height,mode,serial,plan,started,menu} = config
+  Config{human,frames,width,height,mode,serial,plan,started,menu,keys,physical_keys} = config
   (window,+image,pending) = result
   do IO<Unit>:
     now : U32 <- NativePresentation.Native.milliseconds()
@@ -586,7 +587,7 @@ def presented(assets:RF.Assets,link:Link,+config:Config,captured:Bool,result:Win
 
 def drawn(window:Window,link:Link,+config:Config,captured:Bool,view:HUD.View,screen:Maybe<&2,Screen.View>,result:RF.Assets & Result<&2,&2,String,Image>,
     resume:Window -> RF.Assets -> Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
-  Config{human,frames,width,height,trace,serial,+plan,started,menu} = config
+  Config{human,frames,width,height,trace,serial,+plan,started,menu,keys,physical_keys} = config
   (assets,status) = result
   match status:
     case Fail{message}: closing(window,assets,link,1,"render: " ++ message)
@@ -619,15 +620,15 @@ def menu_views(assets:RF.Assets,+menu:MenuInput.State) -> RF.Assets & Result<&2,
 def inventory_timed(window:Window,assets:RF.Assets,link:Link,+config:Config,captured:Bool,+sample:Visibility.Sample,
     view:HUD.View,screen:Maybe<&2,Screen.View>,begin:U32,
     resume:Window -> RF.Assets -> Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
-  Config{human,frames,width,height,trace,serial,plan,started,menu} = config
-  +timed : Config = Config{human,frames,width,height,trace,serial,plan,begin,menu}
+  Config{human,frames,width,height,trace,serial,plan,started,menu,keys,physical_keys} = config
+  +timed : Config = Config{human,frames,width,height,trace,serial,plan,begin,menu,keys,physical_keys}
   do IO<Unit>:
     frame_description(sample,timed)
     drawn(window,link,timed,captured,view,screen,WRF.draw(sample,assets,width,height),resume)
 
 def inventory_draw(window:Window,link:Link,+config:Config,captured:Bool,+sample:Visibility.Sample,
     prepared:RF.Assets & Result<&2,&1,String,HUD.View & Maybe<&2,Screen.View>>,resume:Window -> RF.Assets -> Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
-  Config{human,frames,width,height,trace,serial,+plan,started,menu} = config
+  Config{human,frames,width,height,trace,serial,+plan,started,menu,keys,physical_keys} = config
   (assets,status) = prepared
   match status:
     case Fail{message}: closing(window,assets,link,1,message)
@@ -664,19 +665,19 @@ def query_planned(window:Window,assets:RF.Assets,link:Link,+config:Config,captur
     resume:Window -> RF.Assets -> Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
   match config valid:
     case _ False{}: closing(window,assets,link,1,"drawable dimensions exceed the configured presentation allocation policy")
-    case Config{human,frames,width,height,trace,serial,plan,started,menu} True{}:
+    case Config{human,frames,width,height,trace,serial,plan,started,menu,keys,physical_keys} True{}:
       do IO<Unit>:
         reply : Link & Result<&2,&2,String,Wire.Reply> <- call(link,Wire.Frame{width,height})
         sampled(window,assets,config,captured,reply,resume)
 
 def planned(assets:RF.Assets,link:Link,+config:Config,captured:Bool,
     result:Window & Presentation.Geometry,resume:Window -> RF.Assets -> Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
-  Config{+human,frames,width,height,trace,serial,Presentation.Plan{+settings,viewport,sw,sh,pw,ph},started,menu} = config
+  Config{+human,frames,width,height,trace,serial,Presentation.Plan{+settings,viewport,sw,sh,pw,ph},started,menu,keys,physical_keys} = config
   (actual,+geometry) = result
   +next_plan = Presentation.plan(settings,geometry,human)
   +next_width = Presentation.scene_width(next_plan)
   +next_height = Presentation.scene_height(next_plan)
-  +next : Config = Config{human,frames,next_width,next_height,trace,serial,next_plan,started,menu}
+  +next : Config = Config{human,frames,next_width,next_height,trace,serial,next_plan,started,menu,keys,physical_keys}
   query_planned(actual,assets,link,next,captured,
     Presentation.geometry_valid(geometry) &&
       Presentation.dimensions(Presentation.output_width(next_plan),Presentation.output_height(next_plan)),resume)
@@ -688,7 +689,7 @@ def loop(window:Window,assets:RF.Assets,link:Link,+config:Config,captured:Bool) 
     planned(assets,link,config,captured,actual,w => a => l => c => capture => loop(w,a,l,c,capture))
 
 def starting(window:Window,assets:RF.Assets,link:Link,+config:Config,captured:Bool,sample:Visibility.Sample) -> IO(Unit):
-  Config{human,frames,width,height,trace,serial,+plan,started,menu} = config
+  Config{human,frames,width,height,trace,serial,+plan,started,menu,keys,physical_keys} = config
   match frames:
     case Some{0n}: closing(window,assets,link,0,"client closed")
     case _: snapshot_ready(window,assets,link,config,captured,sample,w => a => l => c => capture => loop(w,a,l,c,capture))
@@ -700,22 +701,29 @@ def captured(assets:RF.Assets,link:Link,config:Config,sample:Visibility.Sample,r
 def capture_configured(window:Window,assets:RF.Assets,link:Link,+config:Config,sample:Visibility.Sample,valid:Bool) -> IO(Unit):
   match config valid:
     case _ False{}: closing(window,assets,link,1,"drawable/content dimensions exceed the configured presentation allocation policy")
-    case Config{+human,frames,width,height,trace,serial,plan,started,menu} True{}:
+    case Config{+human,frames,width,height,trace,serial,plan,started,menu,keys,physical_keys} True{}:
       do IO<Unit>:
         actual : Window & Bool <- Input.capture(window,human)
         captured(assets,link,config,sample,actual)
 
 def configured_window(assets:RF.Assets,link:Link,+config:Config,sample:Visibility.Sample,
     actual:Window & Presentation.Geometry) -> IO(Unit):
-  Config{+human,frames,width,height,trace,serial,Presentation.Plan{+settings,viewport,sw,sh,pw,ph},started,menu} = config
+  Config{+human,frames,width,height,trace,serial,Presentation.Plan{+settings,viewport,sw,sh,pw,ph},started,menu,keys,physical_keys} = config
   (window,+geometry) = actual
   +plan = Presentation.plan(settings,geometry,human)
-  +next : Config = Config{human,frames,Presentation.scene_width(plan),Presentation.scene_height(plan),trace,serial,plan,started,menu}
+  +next : Config = Config{human,frames,Presentation.scene_width(plan),Presentation.scene_height(plan),trace,serial,plan,started,menu,keys,physical_keys}
   capture_configured(window,assets,link,next,sample,Presentation.geometry_valid(geometry) &&
     Presentation.dimensions(Presentation.output_width(plan),Presentation.output_height(plan)))
 
+def keys_enabled(assets:RF.Assets,link:Link,config:Config,sample:Visibility.Sample,result:Window & Bool) -> IO(Unit):
+  Config{human,frames,width,height,trace,serial,plan,started,menu,keys,previous} = config
+  (window,enabled) = result
+  do IO<Unit>:
+    actual : Window & Presentation.Geometry <- NativePresentation.measure(window)
+    configured_window(assets,link,Config{human,frames,width,height,trace,serial,plan,started,menu,keys,enabled},sample,actual)
+
 def opened(assets:RF.Assets,link:Link,+config:Config,sample:Visibility.Sample,result:Result<&1,&1,U32 & String,Window>) -> IO(Unit):
-  Config{+human,frames,width,height,trace,serial,Presentation.Plan{Presentation.Settings{+ow,+oh,percent,scale,+native,+fullscreen},viewport,sw,sh,pw,ph},started,menu} = config
+  Config{+human,frames,width,height,trace,serial,Presentation.Plan{Presentation.Settings{+ow,+oh,percent,scale,+native,+fullscreen},viewport,sw,sh,pw,ph},started,menu,keys,physical_keys} = config
   match result:
     case Fail{(code,message)}:
       do IO<Unit>:
@@ -725,10 +733,10 @@ def opened(assets:RF.Assets,link:Link,+config:Config,sample:Visibility.Sample,re
     case Done{window}:
       do IO<Unit>:
         configured : Window <- NativePresentation.Native.configure(window,ow,oh,native,fullscreen,human)
-        actual : Window & Presentation.Geometry <- NativePresentation.measure(configured)
-        configured_window(assets,link,config,sample,actual)
+        keyed : Window & Bool <- NativePresentation.Native.inventory_keys(configured)
+        keys_enabled(assets,link,config,sample,keyed)
 
-def open_catalogued(assets:RF.Assets,link:Link,sample:Visibility.Sample,+human:Bool,frames:Maybe<&2,Nat>,+settings:Presentation.Settings,catalog:ItemDefinitions.Catalog) -> IO(Unit):
+def open_catalogued_valid(assets:RF.Assets,link:Link,sample:Visibility.Sample,+human:Bool,frames:Maybe<&2,Nat>,+settings:Presentation.Settings,catalog:ItemDefinitions.Catalog,keys:Keys.Profile) -> IO(Unit):
   Presentation.Settings{+ow,+oh,percent,scale,native,fullscreen} = settings
   +plan = Presentation.plan(settings,Presentation.Geometry{ow,oh,ow,oh},human)
   do IO<Unit>:
@@ -736,7 +744,25 @@ def open_catalogued(assets:RF.Assets,link:Link,sample:Visibility.Sample,+human:B
     window : Result<&1,&1,U32 & String,Window> <- Window.open("Minecraft 26.3 — remote LocalPlayer resource client",
       PNG.choose(U32,960,PNG.choose(U32,512,ow,U32.is_eq(ow,128) && U32.is_eq(oh,128)),human),
       PNG.choose(U32,540,PNG.choose(U32,512,oh,U32.is_eq(ow,128) && U32.is_eq(oh,128)),human))
-    opened(assets,link,Config{human,frames,Presentation.scene_width(plan),Presentation.scene_height(plan),trace_mode(mode),0n,plan,0,MenuInput.new(catalog)},sample,window)
+    opened(assets,link,Config{human,frames,Presentation.scene_width(plan),Presentation.scene_height(plan),trace_mode(mode),0n,plan,0,MenuInput.new(catalog),keys,False{}},sample,window)
+
+def open_catalogued_checked(assets:RF.Assets,link:Link,sample:Visibility.Sample,human:Bool,frames:Maybe<&2,Nat>,settings:Presentation.Settings,catalog:ItemDefinitions.Catalog,
+    result:Result<&2,&2,String,Keys.Profile>) -> IO(Unit):
+  match result:
+    case Fail{message}:
+      do IO<Unit>:
+        RF.close_assets(assets)
+        release_close(link)
+        IO.die(Unit,1,message)
+    case Done{keys}: open_catalogued_valid(assets,link,sample,human,frames,settings,catalog,keys)
+
+# Profiles are fixed for the lifetime of this window. Rebinding a held input
+# requires a release/reset transition before opening a new profile.
+def open_catalogued_bindings(assets:RF.Assets,link:Link,sample:Visibility.Sample,human:Bool,frames:Maybe<&2,Nat>,settings:Presentation.Settings,catalog:ItemDefinitions.Catalog,keys:Keys.Profile) -> IO(Unit):
+  open_catalogued_checked(assets,link,sample,human,frames,settings,catalog,Keys.validate(keys))
+
+def open_catalogued(assets:RF.Assets,link:Link,sample:Visibility.Sample,human:Bool,frames:Maybe<&2,Nat>,settings:Presentation.Settings,catalog:ItemDefinitions.Catalog) -> IO(Unit):
+  open_catalogued_bindings(assets,link,sample,human,frames,settings,catalog,Keys.defaults())
 
 def catalog_loaded(assets:RF.Assets,link:Link,sample:Visibility.Sample,human:Bool,frames:Maybe<&2,Nat>,settings:Presentation.Settings,
     result:Result<&2,&2,String,ItemDefinitions.Catalog>) -> IO(Unit):
@@ -748,10 +774,23 @@ def catalog_loaded(assets:RF.Assets,link:Link,sample:Visibility.Sample,human:Boo
         IO.die(Unit,1,message)
     case Done{catalog}: open_catalogued(assets,link,sample,human,frames,settings,catalog)
 
-def open_item_table(assets:RF.Assets,link:Link,sample:Visibility.Sample,human:Bool,frames:Maybe<&2,Nat>,settings:Presentation.Settings,path:String) -> IO(Unit):
+def catalog_loaded_bindings(assets:RF.Assets,link:Link,sample:Visibility.Sample,human:Bool,frames:Maybe<&2,Nat>,settings:Presentation.Settings,keys:Keys.Profile,
+    result:Result<&2,&2,String,ItemDefinitions.Catalog>) -> IO(Unit):
+  match result:
+    case Fail{message}:
+      do IO<Unit>:
+        RF.close_assets(assets)
+        release_close(link)
+        IO.die(Unit,1,message)
+    case Done{catalog}: open_catalogued_bindings(assets,link,sample,human,frames,settings,catalog,keys)
+
+def open_item_table_bindings(assets:RF.Assets,link:Link,sample:Visibility.Sample,human:Bool,frames:Maybe<&2,Nat>,settings:Presentation.Settings,path:String,keys:Keys.Profile) -> IO(Unit):
   do IO<Unit>:
     catalog : Result<&2,&2,String,ItemDefinitions.Catalog> <- ItemCatalog.load(path)
-    catalog_loaded(assets,link,sample,human,frames,settings,catalog)
+    catalog_loaded_bindings(assets,link,sample,human,frames,settings,keys,catalog)
+
+def open_item_table(assets:RF.Assets,link:Link,sample:Visibility.Sample,human:Bool,frames:Maybe<&2,Nat>,settings:Presentation.Settings,path:String) -> IO(Unit):
+  open_item_table_bindings(assets,link,sample,human,frames,settings,path,Keys.defaults())
 
 def open_settings(assets:RF.Assets,link:Link,sample:Visibility.Sample,human:Bool,frames:Maybe<&2,Nat>,settings:Presentation.Settings) -> IO(Unit):
   open_item_table(assets,link,sample,human,frames,settings,"generated/reference_item_metadata.tsv")

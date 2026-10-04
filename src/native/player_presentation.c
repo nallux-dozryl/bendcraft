@@ -40,11 +40,14 @@ static void mc_presentation_sync(NSWindow* win) {
 // Base supplies the event buffer, delegate methods and cursor ownership. This
 // subclass repairs only the project input boundary; Base and its guarded launch
 // transform remain unchanged. Physical key identity pairs a down with its up;
-// the public Event still carries the existing logical character/modifier code.
+// opt-in consumers also receive a tagged hardware identity before the logical
+// character. The tag records whether that character was actually queued.
 @interface MCPlayerPresentationView : BendView {
   NSMutableDictionary<NSNumber*, NSNumber*>* heldKeys;
+  BOOL inventoryPhysicalKeys;
 }
 - (void)releaseKeys;
+- (void)enableInventoryPhysicalKeys;
 @end
 
 @implementation MCPlayerPresentationView
@@ -86,10 +89,15 @@ static void mc_presentation_sync(NSWindow* win) {
     NSNumber* logical = @(code);
     BOOL alreadyHeld = [self hasLogicalKey:logical];
     heldKeys[identity] = logical;
+    if (inventoryPhysicalKeys)
+      [self push:CID(Key) a:UINT32_C(2147483648) + (!alreadyHeld ? 65536 : 0) + physical b:YES c:0 d:0];
     if (!alreadyHeld) [self push:CID(Key) a:code b:YES c:0 d:0];
   } else if (prior != nil) {
     [heldKeys removeObjectForKey:identity];
-    if (![self hasLogicalKey:prior])
+    BOOL lastLogical = ![self hasLogicalKey:prior];
+    if (inventoryPhysicalKeys)
+      [self push:CID(Key) a:UINT32_C(2147483648) + (lastLogical ? 65536 : 0) + physical b:NO c:0 d:0];
+    if (lastLogical)
       [self push:CID(Key) a:prior.unsignedIntValue b:NO c:0 d:0];
   }
 }
@@ -124,10 +132,23 @@ static void mc_presentation_sync(NSWindow* win) {
 - (void)releaseKeys {
   NSArray<NSNumber*>* logical = [[NSSet setWithArray:heldKeys.allValues].allObjects
     sortedArrayUsingSelector:@selector(compare:)];
+  if (inventoryPhysicalKeys) {
+    NSArray<NSNumber*>* physical = [heldKeys.allKeys sortedArrayUsingSelector:@selector(compare:)];
+    for (NSNumber* code in physical)
+      [self push:CID(Key) a:UINT32_C(2147483648) + code.unsignedShortValue b:NO c:0 d:0];
+  }
   [heldKeys removeAllObjects];
   for (NSNumber* code in logical)
     [self push:CID(Key) a:code.unsignedIntValue b:NO c:0 d:0];
   flags = 0;
+}
+
+- (void)enableInventoryPhysicalKeys {
+  if (inventoryPhysicalKeys) return;
+  // Reconcile the old channel before changing its release contract. The live
+  // presenter enables this before first capture; legacy consumers never opt in.
+  [self releaseKeys];
+  inventoryPhysicalKeys = YES;
 }
 
 - (void)setGrab:(BOOL)on {
@@ -185,6 +206,27 @@ static Term mc_presentation_milliseconds_run(Env e, Term* f, IoWork* w) {
 }
 static void __attribute__((constructor)) mc_presentation_milliseconds_use(void) {
   io_eff(CID(Native.milliseconds), mc_presentation_milliseconds_run, 0);
+}
+#endif
+
+#ifdef CID(Native.inventory_keys)
+static Term mc_presentation_inventory_keys_run(Env e, Term* f, IoWork* w) {
+  bool enabled = false;
+#ifdef __OBJC__
+#ifdef CID(Native.configure)
+#ifdef CID(Window.open)
+  NSWindow* win = (__bridge NSWindow*)(void*)io_hand_v(f[0]);
+  if ([win.contentView isKindOfClass:MCPlayerPresentationView.class]) {
+    [(MCPlayerPresentationView*)win.contentView enableInventoryPhysicalKeys];
+    enabled = true;
+  }
+#endif
+#endif
+#endif
+  return io_tup(e, f[0], term_pak(enabled ? CID(True) : CID(False), 0));
+}
+static void __attribute__((constructor)) mc_presentation_inventory_keys_use(void) {
+  io_eff(CID(Native.inventory_keys), mc_presentation_inventory_keys_run, 0);
 }
 #endif
 
