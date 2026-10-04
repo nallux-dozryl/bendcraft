@@ -133,12 +133,15 @@ def child_snapshots(values: List<&1,MH.State>) -> List<&1,MH.State> & String:
         P.paired(List<&1,MH.State>,String,List<&1,MH.State> & String,child_snapshots(rest),rest => text =>
           (child <> rest,owner_text(observation) ++ "\nchild\n" ++ text)))
 
+def snapshot_extracted(text: String, result: P.State & PM.Frame) -> MH.State & Owner:
+  (state,frame) = result
+  restore_snapshot(frame,text,O.snapshot(state))
+
 def snapshot_children(world: CW.State, support: SP.State, minor: LM.MinorState,
                       history: H.State, receiver: P.Receiver,
                       result: List<&1,MH.State> & String) -> MH.State & Owner:
   (children,text) = result
-  (state,frame) = PM.extract(MH.State{world,support,minor,history,children},receiver)
-  restore_snapshot(frame,text,O.snapshot(state))
+  snapshot_extracted(text,PM.extract(MH.State{world,support,minor,history,children},receiver))
 
 def snapshot(motion: MH.State, receiver: P.Receiver) -> MH.State & Owner:
   MH.State{world,support,minor,history,children} = motion
@@ -202,14 +205,9 @@ def emit_trace(id: String, trace: Bool, reads: List<&2,W.Read>, callbacks: List<
     case False{}: IO.pure(Unit,Unit{})
     case True{}: IO.print(id ++ "\ttraces\t" ++ Sweep.reads_text(reads) ++ "\t" ++ Sweep.callbacks_text(callbacks))
 
-def returned(+id: String, info: Return, result: MH.State & Owner) -> IO(O.State):
+def returned_extracted(+id: String, info: Return, valid: Bool, result: P.State & PM.Frame) -> IO(O.State):
   Return{context,retained,previous,receiver,+status,trace,info_tail} = info
-  (motion,+next) = result
-  +failed = match status:
-    case Fail{cause}: True{}
-    case Done{observation}: False{}
-  +valid = same_owner(previous,next,failed)
-  (active,frame) = PM.extract(motion,receiver)
+  (active,frame) = result
   P.State{world,registry,+held,H.State{+history},tail} = active
   do IO<O.State>:
     match status:
@@ -221,6 +219,14 @@ def returned(+id: String, info: Return, result: MH.State & Owner) -> IO(O.State)
           IO.print(id ++ "\tauthority\t" ++ O.flag(R.same_receiver(held,observed) && String.eq(O.receiver_text(held,history),O.receiver_text(observed,fall))))
     IO.print(id ++ "\towners\t" ++ O.flag(valid))
     return O.State{P.State{world,registry,held,H.State{history},tail},context,None{},retained && valid,[]}
+
+def returned(id: String, +info: Return, result: MH.State & Owner) -> IO(O.State):
+  Return{context,retained,previous,+receiver,+status,trace,info_tail} = info
+  (motion,next) = result
+  +failed = match status:
+    case Fail{cause}: True{}
+    case Done{observation}: False{}
+  returned_extracted(id,info,same_owner(previous,next,failed),PM.extract(motion,receiver))
 
 def applied(id: String, context: O.Context, retained: Bool, previous: Owner, trace: Bool,
             result: MH.State & P.Receiver & Result<&2,&2,R.Error,W.Observation>) -> IO(O.State):
