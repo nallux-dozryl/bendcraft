@@ -117,6 +117,18 @@ save acknowledgment remains a separate public operation. This changed structure
 does not establish native compilation, presentation, response latency or gameplay
 parity until the actual paired entry passes its integration suite.
 
+Both entries subsequently built on their single bounded attempts: backend in
+236.320s and guarded renderer in462.359s, without retries. The lead rehashed
+all1,710backend/3,663renderer dependencies and both artifacts. The first paired
+run passed three standing returned-image frames, exact atomic sample and full
+LocalRecord/Core save, then failed at an empty-stderr stop assertion. The source
+and retained emittedC explicitly print the exact25-byte success marker and exit0;
+independent decision d544c6d1 classifies a host expectation defect with high
+confidence. Preserve that generation and both executables. Admit only exact
+success-marker acceptance plus fresh host provenance/output routing, retaining
+all exit/error/group/listener, comparison and120s bounds. No production source,
+oracle, pixel input or native build change is authorized by that decision.
+
 ## 2026-10-04: visible native acceptance is explicit
 
 Record real visible native presentation/input verification using computer use

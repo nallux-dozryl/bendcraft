@@ -32,8 +32,22 @@ cleanup cannot clear a newer connection. The wire, world sampler and renderer
 pass ordinary checks; the new backend entry has exactly 97 declared native
 boundaries and no other error. Review added post-poll/pre-admission time checks,
 assigned-epoch cleanup for failed Hello replies, and terminal stop revocation.
-No split native
-build or window execution has occurred. Earlier
+Exact paired source/host admission passes. The one backend build succeeded in
+236.320 seconds without a retry, retaining a 5,521,368-byte executable
+(SHA9a779e6f…) and its source/native dependency receipts. The separate guarded
+renderer build succeeded in 462.359 seconds without a retry, retaining
+executable7a5e7632. The lead independently rehashed all 1,710 backend and 3,663
+renderer dependencies and both artifacts. The first paired run passed the
+standing view: three hidden returned-image frames (49,152 RGB pixels), the
+complete LocalRecord/Core clock and exact saved bundle. The lead independently
+recomputed those pixels and bytes. It then stopped after 6.005 seconds because
+the host required empty backend stderr, although the source and compiled halt
+path intentionally print the exact success marker and exit 0. Independent
+review classifies this as a host expectation defect with high confidence. All
+owned groups are absent and both listeners closed. Preserve the failed
+generation; only exact success-marker acceptance and fresh host output routing
+are being prepared. The other five views and remaining joined runtime lanes
+have not run. Both slots are free. Earlier
 resource-entry timeouts, the empty host-loader diagnostics and unsymbolized
 sample do not identify a compiler bottleneck.
 

@@ -4589,8 +4589,16 @@
       "behavioral_reference_status": "actual_java_bounded_cases",
       "current_evidence_sha256": {
         "evidence/remote-resource-backend-ready.json": "fffc7f2332d7bdbff7749c05536da6411550a15acaced5dad2842f81c40276d8",
+        "evidence/remote-resource-backend-root-audit.json": "5ece8138ebd08a3143055bb6ad064b83cf9ca12e07d987eadd8aafe4dab48afc",
+        "evidence/remote-resource-client-backend-build.json": "3abb762f5a4ef1d4ea40903a4115438d03e3ff564490252d11e4c7bb5c7116f2",
+        "evidence/remote-resource-client-build.json": "f22ad690abc8a1f66f8e7a1c5189d519c74a13796c532cb906e5b0eb856e3f8d",
+        "evidence/remote-resource-client-first-failure-decision.json": "d544c6d1cb2a413b0c3164ace6587b73531623c145988d0a1bc59e30ea34c9a9",
         "evidence/remote-resource-client-host-guards.json": "4cad9bb859230e1f36b40e9c62ab933b357ae1807278f381eb6ca44ed18d26c2",
+        "evidence/remote-resource-client-lifecycle.json": "542236820845970736356e673edbf270ffe7295870ce7151cac5767db7fde8d6",
+        "evidence/remote-resource-client-native.json": "648ecabc9c94143e8e45e974ca0630acf50e86d73c6710c87021c7dea07243f7",
         "evidence/remote-resource-client-preflight.json": "6a67a483633d9c930034b5201f5372fd0c28dd68551df806c87ded068c259e3a",
+        "evidence/remote-resource-first-view-root-audit.json": "6e50514e983ad4019e266d2e5ea44127223f0afc3c180864915584c3bea57027",
+        "evidence/remote-resource-renderer-root-audit.json": "ae1aa1bcf7191d6d9ddc6e65a44902d146b1c1bf63fb1c6d1b67c1d359ffdb91",
         "evidence/resource-player-boxed-client-native.json": "b906b49decebc6329d5cd3fdbddf9b9b70342a25c4fd9947cca5deed9dafdb28",
         "evidence/resource-player-boxed-client-preflight.json": "31cc4733b4f3105ea587fad4f01d16e5e1870b2928e92c3a9d860ef5555900b8",
         "evidence/resource-player-client-diagnosis-next.json": "d66ef014332ab7bbcf8dea2b1423560dfb091e77c8bc292ba193ec27659c9531",
@@ -4628,7 +4636,7 @@
         "remote_resource_client.bend",
         "src/remote_resource_presenter.bend"
       ],
-      "implementation_status": "split_prepared_native_unverified",
+      "implementation_status": "split_native_artifacts_built_bounded_integration",
       "kind": "bounded_behavior_component",
       "parent_obligation": "behavior:rendering",
       "reference_evidence": [
@@ -4639,7 +4647,7 @@
       ],
       "reference_inventory_status": "captured_bounded_release_scope",
       "required_behavior": "Saved actual LocalPlayer actor joined to resource/visibility renderer and native Window.",
-      "scope_limit": "Original, boxed and monomorphic presented attempts produced no executable; the last supervisor lost child streams/return code during cleanup PermissionError. The changed two-process Bend consumer is sealed: one actual LocalPlayer actor supplies immutable Pose-eye/cell/visibility samples, and the renderer owns assets/window. Ordinary checks expose97backend/60entry/51presenter native boundaries only. Six explicit finite Local views preserve actual Java record bytes with separately disclosed world relocations and independent comparison-only pixels. No split native compilation, paired pixels/save/reload, visible OS input, latency or performance result yet.",
+      "scope_limit": "Original, boxed and monomorphic presented attempts produced no executable; the last supervisor lost child streams/return code during cleanup PermissionError. The changed two-process Bend consumer built the actual LocalPlayer backend once in236.320s and guarded resource renderer once in462.359s with no retries; root rehashed1710backend/3663renderer dependencies and artifacts. Its first paired run passed three hidden standing returned-image frames (49152RGBpixels), atomic sample, full LocalRecord/Core clock and exact saved bundle, independently replayed by the lead. At6.005s the host empty-stderr assertion rejected the exact intended stop0 success marker; source/emittedC review classifies a host expectation defect. All owned groups/listeners closed. Remaining five views, actual receiver, private protocol, live edits, reload and cadence lanes are unreached; narrow host adoption is pending. OS input/drawable readback, full resources/gameplay, latency and performance remain unverified.",
       "verification_evidence": [
         "evidence/resource-player-client-native.json",
         "evidence/resource-player-boxed-client-native.json",
@@ -4647,9 +4655,17 @@
         "evidence/resource-player-presented-client-result.json",
         "evidence/remote-resource-backend-ready.json",
         "evidence/remote-resource-client-preflight.json",
-        "evidence/remote-resource-client-host-guards.json"
+        "evidence/remote-resource-client-host-guards.json",
+        "evidence/remote-resource-client-backend-build.json",
+        "evidence/remote-resource-backend-root-audit.json",
+        "evidence/remote-resource-client-build.json",
+        "evidence/remote-resource-renderer-root-audit.json",
+        "evidence/remote-resource-client-native.json",
+        "evidence/remote-resource-client-lifecycle.json",
+        "evidence/remote-resource-client-first-failure-decision.json",
+        "evidence/remote-resource-first-view-root-audit.json"
       ],
-      "verification_status": "three_monolithic_build_failures_split_source_and_host_checks_pass",
+      "verification_status": "both_builds_and_first_standing_view_pass_host_stop_expectation_failure",
       "whole_parent_parity_established": false
     },
     {

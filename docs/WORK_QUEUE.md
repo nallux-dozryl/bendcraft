@@ -23,8 +23,22 @@ fixture is a verification instrument; none satisfies a gameplay completion gate.
    checks, including97backend/60entry/51presenter declared native boundaries.
    The paired generation is sealed (ready3465023b, payload7ee6a82e), with six
    meaningful actual-Local-record pixel views, full actor/render source closures
-   and bounded no-retry build supervisors. Source admission passes; final host
-   admission precedes one 600-second build per entry. No retry of the
+   and bounded no-retry build supervisors. Exact source/host admission passes
+   (fd239754). The one backend build passed in 236.320 seconds without a retry,
+   retaining executable9a779e6f and standard receipt56752916. Its process group
+   was reaped and slot A released. The separate renderer build also passed,
+   in 462.359 seconds without a retry (artifact7a5e7632/reportafd0d9ae); its
+   process group was reaped. The lead rehashed all1,710backend/3,663renderer
+   dependencies and both artifacts. The first paired native run passed three
+   standing frames/49,152RGBpixels, exact LocalRecord/Core clock/fullsave, then
+   stopped at the empty-stderr host stop assertion (6.005s). Source/compiled
+   code intentionally print exact success marker and exit0; independent
+   decision d544c6d1 classifies a host expectation defect. The lead recomputed
+   all three pixels/sample/fullbundle (6e50514e). All owned groups/listeners
+   closed. Preserve the failed generation and both binaries; prepare only exact
+   stop-marker acceptance with a new host seal/output directory. Remaining
+   five views/actual receiver/protocol/liveedit/reload/cadence lanes are unrun.
+   No retry of the
    same monolithic source generation.
    Required outcome: actual integrated executable,
    reproducible launch, live TCP edits, resource/visibility frames and durable
@@ -67,8 +81,8 @@ fixture is a verification instrument; none satisfies a gameplay completion gate.
 Finish in-flight slab/fall host repairs and freeze their useful evidence. Defer
 new standalone feature libraries, expanded reference inventories and peripheral
 receipt polish unless they unblock these two outcomes or fix a concrete defect.
-At most two heavy jobs may run; both slots are currently free after the retained
-LocalPlayer build and retained partial native runs. Foreground
+At most two heavy jobs may run; both slots are free while the resource paired
+host stop-oracle adoption is prepared and reviewed. Foreground
 validation remains pending the user's coordination;
 no duplicate request or unsolicited foreground launch.
 

@@ -23,8 +23,11 @@ actual vanilla serialization evidence, the resource-client build attempts and
 Entity common-tick metadata, CPU sprite animation, owned pose-world queries and
 the saved LocalPlayer actor. Its primary native integration and1,510codec cases
 pass; the interrupted shared phase harness remains explicit. The resource row
-now records the third failed monolithic attempt and the prepared Bend actor/
-renderer split; its actual native pair is unverified.
+now records the third failed monolithic attempt and successful Bend actor/
+renderer builds. Three actual hidden standing frames, atomic sample and full
+saved bundle pass and were independently replayed; the first paired suite then
+stopped at a host expectation rejecting the intended stop0 stderr marker. The
+remaining paired lanes are unrun and a narrow host adoption is pending.
 Each pins its current sources and receipts, states its measured domain and
 keeps independent kernel status separate. Parent obligations remain unchanged:
 a bounded projection or reproduced reference does not complete its broader
