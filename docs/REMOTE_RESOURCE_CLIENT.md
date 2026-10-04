@@ -1,5 +1,26 @@
 # Remote LocalPlayer resource client
 
+The 2026-10-04 generation adds a saved nine-slot hotbar, stack counts,
+crosshair, correlated inventory queries and reserved-player break/place actions.
+Its sealed human path uses a 320×180 logical image projected in Bend to the
+960×540 native drawable; hidden verification retains 128×128. These are
+prototype dimensions, not a measured hardware ceiling. The user has requested
+configurable high-resolution output, internal render scale and HUD sizing for
+the next revision. Enlarging the current image does not add rendered detail.
+The pure HUD and its focused source harness check successfully; the presenter
+and client entry report only their 55 and 65 declared native-dependent
+definitions. New native pixel and visible-input acceptance remain pending.
+The results below describe the separately retained earlier generation.
+
+The production backend now accepts the explicit bounded
+`bendex:stone-dirt-superflat` profile without the verification flag. Fresh
+creative or survival inventory and terrain are initialized through the saved
+session; loaded records retain their saved abilities and inventory. The
+production default runs the actual actor timer. `--paused` supports bounded
+inspection, while `--verification-fixture` preserves the earlier paused
+fixture/catalog/save contract. This custom terrain and three-item inventory
+do not establish general Minecraft world or item support.
+
 This is a changed integration consumer, prepared after three monolithic resource-client emissions failed to produce a native artifact within their bounds. The compiler bottleneck remains unknown. Separating the saved actor from the renderer removes their concrete owner/callback join; native compilation and runtime benefit are not yet measured.
 
 `remote_resource_client.bend` connects to the private loopback endpoint of the actual saved LocalPlayer backend. The backend owns the only world, complete supported LocalPlayer record, persistence lease, public 18-operation TCP/MCP catalog and 50 ms timer. It returns one immutable `WorldVisibility.Sample` from one actor operation. The renderer owns one socket, actual `ResourceFrame.Assets` and a native Window. It does not step physics, load/save a world, or hold an actor handle.

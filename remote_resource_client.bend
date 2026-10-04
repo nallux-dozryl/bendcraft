@@ -48,6 +48,12 @@ def failed(link:Presenter.Link,message:String) -> IO(Unit):
     Presenter.release_close(link)
     IO.die(Unit,1,message)
 
+def open_mode(options:Options,link:Presenter.Link,sample:Visibility.Sample,assets:RF.Assets,interactive:Bool) -> IO(Unit):
+  Options{frames,jar} = options
+  match interactive:
+    case True{}: Presenter.open(assets,link,sample,True{},frames,320,180)
+    case False{}: Presenter.open(assets,link,sample,False{},frames,128,128)
+
 def assets_ready(options:Options,link:Presenter.Link,sample:Visibility.Sample,result:Result<&2,&1,String,RF.Assets>) -> IO(Unit):
   Options{frames,jar} = options
   match result:
@@ -55,7 +61,7 @@ def assets_ready(options:Options,link:Presenter.Link,sample:Visibility.Sample,re
     case Done{assets}:
       do IO<Unit>:
         mode : Result<&1,&1,U32 & String,String> <- IO.get_env("BEND_MINECRAFT_LAUNCH_MODE")
-        Presenter.open(assets,link,sample,human(mode),frames,128,128)
+        open_mode(Options{frames,jar},link,sample,assets,human(mode))
 
 def load_frame(+options:Options,link:Presenter.Link,+sample:Visibility.Sample) -> IO(Unit):
   Options{frames,jar} = options

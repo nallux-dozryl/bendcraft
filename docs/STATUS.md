@@ -7,10 +7,29 @@ app rejected in-place settings changes for v2 subagents. Two heavy execution
 slots remain the limit. Saved inventory, block interaction, custom bounded
 superflat terrain and HUD are being joined to the existing saved resource
 client alongside the checked fall-reset join. Prior passing/failing generations
-remain preserved. The goal tool still reports paused; engineering resumption is
-authorized, but no unsupported status mutation has been made.
+remain preserved. The user resumed the persistent goal; `get_goal` confirms active status.
+No unsupported status mutation was made.
 
 Target: Minecraft Java 26.3. Compiler: Bend 2.0.35. Full goal remains incomplete.
+
+The 2026-10-04 playable generation is sealed at
+`8a15c21f206473c5d29480ad72f7c361ded377c7f2947d79f7fd533590a80b7e`
+(135 Bend import-graph rows, 221 admitted files). Inventory, superflat,
+block interaction, wire and HUD components have their scoped source checks;
+the production backend and renderer entries reach only declared native
+dependencies. The combined checker reached its 60-second cap without
+diagnostics, so whole-entry checking is incomplete. Root file admission passed,
+and the one fresh native build failed at 600.108 seconds before emitting C.
+Its failed/unknown cleanup receipt is retained; a later root `ps` observation
+found no owned-group processes, and the owner is recording the final state.
+No executable or native behavior resulted. The next route must materially reduce
+the compiler work rather than repeat the same broad graph. New gameplay,
+save/reload and protocol behavior are still awaiting a working changed artifact. The earlier accepted artifacts and their immutable evidence
+remain separate. A new paired renderer consumer and inventory screen are being
+prepared without changing the failed generation. The user requires finished
+presentation contracts and proof-led pure correctness. Routine manual
+admission/review/grant ladders are removed; automated source/cache identity and
+bounded cleanup remain. No foreground launch is authorized by this preparation.
 
 ## Established
 

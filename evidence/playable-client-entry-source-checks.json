@@ -1,0 +1,52 @@
+{
+  "status": "source-clean-with-declared-foreign-boundaries",
+  "entry": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/remote_resource_server.bend",
+    "bytes": 11040,
+    "sha256": "a26e9ad484a53678bf1651016cb898d8e347651716233e9ac8472f54c188b162"
+  },
+  "latest_attempt": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-client-entry-ordinary-r3/summary.json",
+    "bytes": 16492,
+    "sha256": "41a66ac97d1e3bed4748e6b7a2d803961c42d148843f6703d1b5c7f7ae1e5042"
+  },
+  "attempts": [
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-client-entry-ordinary-r1/summary.json",
+      "bytes": 6529,
+      "sha256": "8061978d285efb581d32f6850b9737ea09dcf1e2dbf45c45da8fb0ca467f4b58"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-client-entry-ordinary-r2/summary.json",
+      "bytes": 6884,
+      "sha256": "ebc26383ac2d49971c4ce32ac71f29328b7debb760bd8b48b2fddac073bd1ab1"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-client-entry-ordinary-r3/summary.json",
+      "bytes": 16492,
+      "sha256": "41a66ac97d1e3bed4748e6b7a2d803961c42d148843f6703d1b5c7f7ae1e5042"
+    }
+  ],
+  "declared_unsafe_or_foreign_dependent_definitions": 110,
+  "latest_seconds": 24.566002124920487,
+  "cleanup": {
+    "deadline_monotonic": 5681552.44513075,
+    "errors": [],
+    "had_lingering_after_leader_exit": false,
+    "leader_reaped": true,
+    "rows": [
+      {
+        "after_absent": true,
+        "before_absent": true,
+        "errors": [],
+        "pgid": 38571
+      }
+    ],
+    "scope": "Observed managed groups only. Unobserved descendants that escape/reparent between snapshots are not authenticated.",
+    "seconds": 0.016545291058719158,
+    "status": "passed",
+    "unknown_groups": [],
+    "verified": true
+  },
+  "scope": "Source checking only; not native behavior or full proof acceptance. Earlier binder-order failures remain in immutable captures."
+}

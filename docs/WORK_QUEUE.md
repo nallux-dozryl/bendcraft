@@ -3,7 +3,64 @@
 This queue supports the full 26.3 objective. A finite scene, renderer, or save
 fixture is a verification instrument; none satisfies a gameplay completion gate.
 
-## Ready integration queue — 2026-10-04
+## Active production outcomes — 2026-10-04
+
+The persistent goal is active. Pure correctness belongs in meaningful LAWS and
+PROOF over the actual production code and interfaces, with independent kernel
+verdicts where supported. Pinned Java observations validate the specification.
+Native, OS, transport, save-recovery and performance checks address named gaps
+outside those proofs. Routine implementation/check/build/test steps do not need
+manual lead grants or serial review/seal/replay ceremonies; stable source/cache
+identity and bounded cleanup stay automated. Reuse unchanged passing evidence.
+Coordinate at most two heavy jobs; never repeat an equivalent timed-out build.
+
+1. **Usable authoritative saved client.** Integration owner: root and
+   `client_acceptance_ultra`; production consumers: `remote_resource_server.bend`
+   and `remote_resource_client.bend`. Join the real 20 Hz player/world actor,
+   resources, input, inventory, block interaction, TCP/MCP and durable saves.
+   Acceptance: real input reaches the same saved authority, actions obey abilities,
+   reset travel preserves ownership, full supported world/player/inventory state
+   survives acknowledged save, interruption and cold restart. Component proof
+   ownership: reset consumer, inventory and block-interaction lanes; root joins
+   LAWS/PROOF and resolves interfaces. Existing finite terrain and three-item
+   support expose missing general blockstate/resource/shape/item definitions;
+   they are not the finished product contract. The broad combined build timed
+   out before emitting C at 600.108 seconds. Preserve that failure, verify current
+   process cleanup, then identify a substantive modular/cached compiler route;
+   do not repeat the same graph. Reuse the accepted unchanged historical corpora.
+2. **Production-quality native presentation and controls.** Owner:
+   `client_presentation_ultra`; consumer: `remote_resource_client.bend`. Implement
+   configurable window/output resolution, internal render scale and HUD sizing,
+   correct resize/fullscreen where the native boundary permits, and consistent
+   physical/logical input coordinates. Target actual 1080p rendering and the
+   display-native resolution when supported. Deterministic 128×128 fixtures stay
+   tests; enlarging 320×180 adds no visual detail. Prove dimension, allocation,
+   crop and coordinate contracts against production functions. Measure real
+   scene frame times, responsiveness and memory at meaningful settings; select
+   defaults from measurements and expose supported higher settings. Native pixel
+   and coordinated/isolated real OS-input acceptance cover the remaining display
+   and control boundary; no unsolicited foreground capture.
+3. **Complete player-facing inventory interactions.** Owner:
+   `saved_inventory_ultra`, with block/wire and presentation integration owners;
+   consumers: the same remote resource client/server and saved session. Implement
+   the pinned player/menu topology, item definitions, open/close/capture behavior,
+   slot interactions and creative acquisition with authoritative replies and
+   persistent abilities. Reuse existing inventory transfer laws and add meaningful
+   authority, full-state retention/conservation and controller/interface proofs.
+   The current 36-slot/three-item codec and missing menu/item semantics are
+   concrete dependencies to extend, not a reason to design a throwaway menu.
+   Acceptance: a player acquires and arranges supported items through the native
+   interface, sees exact acknowledged counts/selection, builds with them, and
+   retains the same inventory on reload; then extend the validated definition
+   domain to the full release without substituting an easier clone.
+
+Prior results remain in [LOCAL_PLAYER_SESSION_NATIVE_RESULTS.md](LOCAL_PLAYER_SESSION_NATIVE_RESULTS.md),
+[FALL_RESET_WORLD_R2_NATIVE_RESULTS.md](FALL_RESET_WORLD_R2_NATIVE_RESULTS.md),
+[REMOTE_RESOURCE_CLIENT.md](REMOTE_RESOURCE_CLIENT.md), and the immutable evidence
+and build trees. The chronology below is retained history, not the active queue
+or a list of current approvals/blockers.
+
+## Retained integration history — 2026-10-04
 
 1. **Resource-backed native saved client.** Compiler diagnosis: inventory_kernel;
    resource scene/presenter consumer: client_render; actor/session join: lead.
