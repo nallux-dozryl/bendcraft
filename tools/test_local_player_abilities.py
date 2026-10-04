@@ -30,18 +30,22 @@ def prepare(reference,directory,supplement=None):
             travel=next(c for c in calls if c['method']=='travel_entry')
             takeoff=any(c['method']=='jumpFromGround' for c in calls[:apply])
             keys=control['key_presses']
-            ability=[int(control['mayfly']),int(control['flying']),int(control['flying_speed_f32_bits'],16),control['jump_trigger'],int(takeoff),int(keys[4]),int(keys[5])]
+            before=step['before']
+            profile=[int(before['mayfly']),int(before['flying_speed_f32_bits'],16)]
+            selector=[int(before['mayfly']),int(before['flying']),before['jump_trigger'],int(before['body_flags'][0]),int(before['key_presses'][4]),int(keys[4]),int(keys[5])]
+            selection={'flying':control['flying'],'trigger':control['jump_trigger'],'takeoff':takeoff,'jump':keys[4],'sneak':keys[5]}
             ident=case['id']+':'+str(index)
             packet=';'.join([ident,
               '|'.join(str(w&0xffffffff) for w in Old.local_words(Old.project_local(control),control['sprinting'])),
               '|'.join(str(w&0xffffffff) for w in Old.player_words(Old.project_player(step['before']))),
               '|'.join(str(w&0xffffffff) for w in Old.apply_words(control,step['context'])),
-              '|'.join(str(w&0xffffffff) for w in ability)])
-            pairs.append({'id':ident,'packet':packet,'expected':{'local':Old.project_local(travel['state']),'player':Old.project_player(travel['state']),'travel_input':travel['input']}})
+              '|'.join(str(w&0xffffffff) for w in profile),
+              '|'.join(str(w&0xffffffff) for w in selector)])
+            pairs.append({'id':ident,'packet':packet,'selector_input':selector,'expected':{'selection':selection,'local':Old.project_local(travel['state']),'player':Old.project_player(travel['state']),'travel_input':travel['input']}})
     assert len(pairs)==data['counts']['ticks_per_receiver']
     directory.mkdir(parents=True,exist_ok=True)
     value={'schema':1,'reference':S.pin(reference),'supplement':S.pin(supplement) if supplement is not None else None,'source_generation':generation(),'entry':S.pin(ENTRY),'table':S.pin(TABLE),'pairs':pairs,
-      'scope':'Actual LocalPlayer post-control to inherited pre-travel preparation: complete Body and Player metadata, sampled local input/bob, supplied real takeoff/toggle result. Numerical selector/full world travel/OS/native actor excluded.'}
+      'scope':'Actual shared production flight selector from real Java before/control fields, feeding its own returned flying/trigger/takeoff/jump/sneak into LI/P inherited pre-travel preparation: complete Body and Player metadata, sampled local input/bob and selection. Full world travel/OS/native actor excluded.'}
     S.exclusive_json(directory/'preparation.json',value)
     return value
 
@@ -58,10 +62,14 @@ def run(directory):
     process,out,err=S.bounded(argv,30,directory,'native-run')
     results=[]
     if process['exit_code']==0:
-        lines=out.decode().splitlines();assert len(lines)==len(prep['pairs'])
-        for pair,line in zip(prep['pairs'],lines):
+        lines=out.decode().splitlines();assert len(lines)==2*len(prep['pairs'])
+        for pair,selection_line,line in zip(prep['pairs'],lines[::2],lines[1::2]):
+            selection_id,kind,*words=selection_line.split('|')
+            assert kind=='selection' and len(words)==5
+            selected=dict(zip(['flying','trigger','takeoff','jump','sneak'],[bool(int(words[0])),int(words[1]),*[bool(int(w)) for w in words[2:]]]))
             ident,actual=Old.parse(line)
-            passed=ident==pair['id'] and all(actual.get(k)==v for k,v in pair['expected'].items())
+            actual['selection']=selected
+            passed=selection_id==ident==pair['id'] and all(actual.get(k)==v for k,v in pair['expected'].items())
             results.append({'id':pair['id'],'passed':passed,'expected':pair['expected'],'actual':actual})
     ok=process['exit_code']==0 and process['group_absent'] and not process['timed_out'] and len(results)==len(prep['pairs']) and all(x['passed'] for x in results)
     S.exclusive_json(directory/'result.json',{'schema':1,'status':'PASS' if ok else 'FAIL','process':process,'preparation':prep,'results':results,'binary':S.pin(directory/'tests'),'unchanged':prep['source_generation']==generation()})

@@ -43,8 +43,8 @@ REFUSALS = [
 OWNER_FIELDS = ('body', 'support', 'minor', 'history', 'metadata', 'clock', 'queue',
                 'sections', 'view', 'state-tail', 'motion-tail', 'table-sample')
 OLD_FACADE = 'fd932047be8c476e812d15618a5b0b9a8c71bea62aef5cb69bed707703b77ec7'
-ABILITIES_PROOF = ROOT / 'evidence/local-player-abilities-proof-001.json'
-ABILITIES_PROOF_SHA = '9217624e78cd0073eb40c8b04be25a70ee2b96748bf246af4e15ef5ac7611f92'
+ABILITIES_PROOF = ROOT / 'evidence/local-player-abilities-proof-002.json'
+ABILITIES_PROOF_SHA = 'e0cc86cd7cb813260281b4b728013fe3ce2613bfe89fa94090f2fc7cc54bf729'
 OLD_RESUME = b'tick_result(X.resume_apply_checked(stage, status))'
 RESET_RESUME = b'tick_result(X.resume_apply_with_reset_checked(stage, status, reset_policy()))'
 RESET_IMPORT = b'import ./fall_reset_world.bend as FR\n'

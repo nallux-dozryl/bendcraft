@@ -73,11 +73,13 @@ movement contract. Numerical parity and native actor execution require their
 actual retained receipts; source acceptance alone does not establish them.
 
 The three actual ownership laws passed ordinary checking and the independent
-BendTT kernel in `evidence/local-player-abilities-proof-001.json`. The read-only
+BendTT kernel in `evidence/local-player-abilities-proof-002.json`. The read-only
 selective export retained all original declaration tables and compiled proof
 terms, selected only the three roots, and produced 1,266,298 bytes with zero
-exclusions. Export took 5.7766 seconds and the cached kernel took 0.1936 seconds;
+exclusions. Export took 8.4748 seconds and the cached kernel took 0.2394 seconds;
 source, API, IR and kernel pins remained unchanged and process groups were reaped.
+The original three statement, source-body and compiled-proof hashes and the
+selected IR bytes remain exactly equal to the previous numbered receipt.
 The actual Java receivers passed complete plain/observer parity in the retained
 reference runs recorded by `evidence/local-player-abilities-reference-001.json`.
 The first run's case named `ground-flight-takeoff` began flying and therefore
@@ -86,19 +88,30 @@ is preserved. A second, one-case run began grounded and not flying with a live
 jump trigger, and observed flight turning on with the actual ground takeoff.
 The numerical suite uses this corrected capture for that case.
 
-The separate numerical LI/P harness passed ordinary checking, compiled in
-7.0786 seconds, and passed all 13 selected actual-Java tick comparisons in
-0.6257 seconds. `evidence/local-player-abilities-native-001.json` retains the
-exact complete Body and Player metadata, local input/bob and travel-input word
-comparisons, the 1,322,952-byte binary pin, source generation, compiler identity,
-argv, raw capture pins and process cleanup. Its binary SHA-256 is
-`43fa66554d0f668bdcd07549ff6c3a984e38070395be791426e64aa87a0da886`.
+The actual jump-edge selector now lives in the Base-only production module
+`src/local_player_ability_selection.bend`. `R.selection_metadata` delegates to
+its `select` entry, and the original runtime selection type and timer/edge
+interfaces remain available through thin adapters. The focused native consumer
+invokes this same selector on real Java before-state and newly sampled controls.
+It compares all five returned flying/timer/takeoff/jump/sneak fields with the
+actual post-control observation, then uses its own returned choice for LI/P
+preparation. Python reads snapshots and observer calls for comparison; it does
+not calculate the expected selector result.
 
-This numerical target starts at the actual post-control observation and ends
-at inherited pre-travel preparation. It supplies the observed toggle and
-takeoff choice, so it does not independently certify the runtime selector.
+The extended numerical harness passed ordinary checking, compiled in
+7.7718 seconds, and passed all 13 selected actual-Java tick comparisons in
+0.6082 seconds. `evidence/local-player-abilities-native-002.json` retains the
+exact complete Body and Player metadata, local input/bob and travel-input word
+comparisons, all five native selection fields, the 1,323,912-byte binary pin,
+source generation, compiler identity,
+argv, raw capture pins and process cleanup. Its binary SHA-256 is
+`e91cf7b50c3cb8a31a3481eb94734b4ded8a27f11d320d0f96be66191d6c26cb`.
+
+This numerical target starts with actual before-state selector inputs and
+ends at inherited pre-travel preparation. The existing post-control LI.Controls
+and numerical support/attribute facts remain supplied from the receiver.
 Whole travel/collision/history, the outer post-travel Y override, the two
 inherited attempted/jumped bookkeeping flags, and the current saved actor's
 native execution remain outside these 13 numerical comparisons. Confidence is
-high for the stated conditional ownership laws and exact preparation cases;
+high for the stated conditional ownership laws and exact selector/preparation cases;
 complete flight/world numerical parity remains unverified.

@@ -34,6 +34,7 @@ import ./game.bend as G
 import ./core.bend as C
 import ./registry.bend as B
 import ./player_inventory.bend as I
+import ./local_player_ability_selection.bend as AS
 
 # X.State is the only runtime owner; this facade introduces no Body/Engine state.
 # A bundle detour carries every unsaved field and every forged owned/Data tail.
@@ -339,16 +340,16 @@ def status_request(driver:Driver,status:I.Status) -> X.PrepareRequest:
   I.Status{invulnerable,mayfly,flying,walk,fly} = status
   X.PrepareRequest{life,common,X.ControlFacts{food,LI.Abilities{mayfly,flying},mobility,window,mode},environment,cf,mf,rf,pf,tail}
 
-def selection_timer(+flying:Bool,trigger:U32,ground:Bool,jump:Bool,sneak:Bool,empty:Bool) -> AbilitySelection:
-  match empty:
-    case True{}: AbilitySelection{flying,7,False{},jump,sneak}
-    case False{}: AbilitySelection{Bool.not(flying),0,Bool.not(flying) && ground,jump,sneak}
+def selection_result(selection:AS.Selection) -> AbilitySelection:
+  AS.Selection{flying,trigger,takeoff,jump,sneak} = selection
+  AbilitySelection{flying,trigger,takeoff,jump,sneak}
+
+def selection_timer(flying:Bool,trigger:U32,ground:Bool,jump:Bool,sneak:Bool,empty:Bool) -> AbilitySelection:
+  selection_result(AS.timer(flying,trigger,ground,jump,sneak,empty))
 
 
-def selection_edge(flying:Bool,+trigger:U32,ground:Bool,jump:Bool,sneak:Bool,edge:Bool) -> AbilitySelection:
-  match edge:
-    case False{}: AbilitySelection{flying,trigger,False{},jump,sneak}
-    case True{}: selection_timer(flying,trigger,ground,jump,sneak,U32.is_eq(trigger,0))
+def selection_edge(flying:Bool,trigger:U32,ground:Bool,jump:Bool,sneak:Bool,edge:Bool) -> AbilitySelection:
+  selection_result(AS.edge(flying,trigger,ground,jump,sneak,edge))
 
 
 
@@ -358,7 +359,7 @@ def selection_metadata(status:I.Status,metadata:X.Metadata,decision:LI.Controls,
     PR.Metadata{input,jumping,delay,+trigger,sync,speed,head},current_sprint,pose,controls,entity,error,tail} = metadata
   LI.Controls{LI.State{PI.Buttons{nf,nb,nl,nr,+jump,+sneak,ns},nm,nt,nc,nx,ny,nox,noy},sprinting,updates} = decision
   W.View{M.Body{position,box,velocity,width,height,+ground,horizontal,vertical,below},yaw,pitch,palette,region,cache} = view
-  selection_edge(flying,trigger,ground,jump,sneak,mayfly && Bool.not(old_jump) && jump)
+  selection_result(AS.select(mayfly,flying,trigger,ground,old_jump,jump,sneak))
 
 
 
