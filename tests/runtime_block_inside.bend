@@ -212,18 +212,22 @@ def emit_trace(id: String, trace: Bool, reads: List<&2,W.Read>, callbacks: List<
     case False{}: IO.pure(Unit,Unit{})
     case True{}: IO.print(id ++ "\ttraces\t" ++ Sweep.reads_text(reads) ++ "\t" ++ Sweep.callbacks_text(callbacks))
 
-def returned_extracted(+id: String, info: Return, valid: Bool, result: P.State & PM.Frame) -> IO(O.State):
+def emit_status(+id: String, status: Result<&2,&2,R.Error,W.Observation>,
+                +held: P.Receiver, +history: H.History, trace: Bool) -> IO(Unit):
+  match status:
+    case Fail{cause}: IO.print(id ++ "\terror\t" ++ R.error_text(cause) ++ "\t" ++ O.receiver_text(held,history))
+    case Done{W.Observation{P.Observation{+observed,fall,reset,effect_reads},reads,callbacks}}:
+      do IO<Unit>:
+        emit_trace(id,trace,reads,callbacks)
+        IO.print(id ++ "\tok\t" ++ O.receiver_text(held,history) ++ "\t" ++ O.flag(reset))
+        IO.print(id ++ "\tauthority\t" ++ O.flag(R.same_receiver(held,observed) && String.eq(O.receiver_text(held,history),O.receiver_text(observed,fall))))
+
+def returned_extracted(+id: String, info: Return, +valid: Bool, result: P.State & PM.Frame) -> IO(O.State):
   Return{context,retained,previous,receiver,+status,trace,info_tail} = info
   (active,frame) = result
   P.State{world,registry,+held,H.State{+history},tail} = active
   do IO<O.State>:
-    match status:
-      case Fail{cause}: IO.print(id ++ "\terror\t" ++ R.error_text(cause) ++ "\t" ++ O.receiver_text(held,history))
-      case Done{W.Observation{P.Observation{+observed,fall,reset,effect_reads},reads,callbacks}}:
-        do IO<Unit>:
-          emit_trace(id,trace,reads,callbacks)
-          IO.print(id ++ "\tok\t" ++ O.receiver_text(held,history) ++ "\t" ++ O.flag(reset))
-          IO.print(id ++ "\tauthority\t" ++ O.flag(R.same_receiver(held,observed) && String.eq(O.receiver_text(held,history),O.receiver_text(observed,fall))))
+    emit_status(id,status,held,history,trace)
     IO.print(id ++ "\towners\t" ++ O.flag(valid))
     return O.State{P.State{world,registry,held,H.State{history},tail},context,None{},retained && valid,[]}
 
@@ -382,12 +386,13 @@ def registry_loaded(world: String, requests: String, +count: U32, +identity: Str
         bytes: List<&2,U32> <- O.raw_file(world)
         initial(registry,requests,count,identity,WC.decode(bytes,count,identity))
 
+def main_args(args: List<String>) -> IO(Unit):
+  match args:
+    case registry <> world <> requests <> count <> identity <> Nil{}:
+      do IO<Unit>:
+        parsed: Result<&2,&1,B.Error,B.Registry> <- B.load(registry)
+        registry_loaded(world,requests,O.number(count),identity,parsed)
+    case _: IO.die(Unit,2,"runtime adapter test arguments")
+
 def main() -> IO(Unit):
-  do IO<Unit>:
-    args: List<String> <- IO.get_args()
-    match args:
-      case registry <> world <> requests <> count <> identity <> Nil{}:
-        do IO<Unit>:
-          parsed: Result<&2,&1,B.Error,B.Registry> <- B.load(registry)
-          registry_loaded(world,requests,O.number(count),identity,parsed)
-      case _: IO.die(Unit,2,"runtime adapter test arguments")
+  IO.bind(List<String>,Unit,IO.get_args(),main_args)
