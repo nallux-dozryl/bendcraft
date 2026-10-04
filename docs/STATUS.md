@@ -19,27 +19,31 @@ A valid 35,620-byte component request exposed the private server's inherited
 adapter and removes duplicate initialized-catalog validation during crafting
 startup. Its complete original checker accepts 6,647 declarations; C emission
 takes 284.018 seconds and native compilation 119.246 seconds. Original compiler
-files remain unchanged. The exact 017 large-request consumer passes 30 complete correlated replies in
-97.704 seconds. The 35,620-byte request succeeds; aggregate reply overflow
+files remain unchanged. The exact 017 large-request consumer passes 30 complete
+correlated replies in 97.704 seconds. The 35,620-byte request succeeds; aggregate reply overflow
 retains the whole inventory and crafting context, witnessed by two cached
 result takes without a refresh. Three exact full saves and SIGKILL/cold
-recovery pass. Current startup helpers allow 150
-seconds for the full crafting startup, based on the observed 20-second cutoff
-failure and subsequent healthy run. Public 007/003 remains the verified launch
-pair until the changed 017/008 consumer passes.
+recovery pass. Current startup helpers allow 150 seconds for the full crafting
+startup, based on the observed 20-second cutoff failure and subsequent healthy
+run. The public 017/008 launcher passes its changed-pair consumer in 31.939
+seconds, including an unchanged oracle image, a full durable save and clean
+shutdown with unchanged focus and Spaces.
 See `evidence/playable-client-actor004-build-017.json`,
 `evidence/playable-client-actor004-source-017.json`,
 `evidence/playable-client-actor004-boundary-001.json`, and
 `evidence/runtime-block-inside-actor-motion-002.json`.
 
-The recommended launch is `tools/play_minecraft.sh`: verified renderer007 with
-actor003, two CPU workers, 1920×1080 output and 100% scene resolution. Actual hidden
-checks pass fresh startup, carried/crafting return, full-capacity refusal and
-INT/TERM shutdown, followed by an actual run of the updated public command.
-The six acceptance receipts are indexed in `evidence/playable-client-pair007-actor003.json`.
-MenuClose precedes correlated public durable save; refusal
-retains the live actor and a0600 reconnect environment. The launcher does not yet
-establish physical input, visible drawable, audio or complete gameplay acceptance.
+The recommended launch is `tools/play_minecraft.sh`: verified renderer008 with
+actor017, two CPU workers, 1920×1080 output and 100% scene resolution. The exact
+binary hash guard pins both successful artifacts. The launcher retains its
+close/save/refusal/reconnect and signal handling, allows 150 seconds of healthy
+startup, and passed an actual fresh hidden run. See
+`evidence/playable-017-008-launcher-adoption.json`. The previous six007/003
+checks remain historical evidence for that generation. Physical input,
+visible drawable, audio and complete gameplay acceptance remain open.
+
+Historical renderer and actor observations follow; immutable artifacts and
+failed attempts remain available. They do not describe the current launcher.
 
 Renderer004's fresh128×128 CPU image matches every16,384 pixel of the independent
 26.3 Java/JAR quad/HUD oracle and renderer003. A monitored quiet counterbalanced
