@@ -1,0 +1,190 @@
+{
+  "all_original_declaration_maps_retained": true,
+  "artifact": {
+    "bytes": 205186,
+    "file": "selected.bendtt",
+    "sha1": "9aab582831ad6ad28f7f09bab72e9bd6f289a15f",
+    "sha256": "1e0d50c255411fe7767962ead3aafc66a07f7fead0cc32382c2603770775d6cd"
+  },
+  "checked_types_and_bodies_unchanged": true,
+  "compiler_api": [
+    {
+      "bytes": 137761,
+      "file": "bend.ts",
+      "sha1": "2105cb635e087b686b1bc5c4b6b139660eeb3db9",
+      "sha256": "7deae3693eb896f33c73867081b99d2c6f3ed3b57e77e55eb5f6260840dd0e63"
+    },
+    {
+      "bytes": 63418,
+      "file": "safe.ts",
+      "sha1": "0b72424978b2acf7eb30f53d9b01b96f267dbcac",
+      "sha256": "54cb3a534ab7cc9ee313bf6383b3948ccdcac022469b3020e00745bbfe6f7e04"
+    }
+  ],
+  "export_script": {
+    "bytes": 3595,
+    "file": "export.mjs",
+    "sha1": "bffad165cdd245f1230b6437d2deb281a3308de8",
+    "sha256": "7360a10ce71e0d6066faa4255fa437df65fa50e9e700242cefd6678563d0c344"
+  },
+  "kernel": {
+    "bytes": 3271216,
+    "file": "bendtt",
+    "sha1": "f19dfe8aec3b3911b6c9f0acae2a54f5b05ca5f0",
+    "sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7"
+  },
+  "kernel_laws": 13,
+  "limitation": "Installed CLI full-import --verdict stack-overflows. All14actual laws/source are ordinarily checked. Thirteen unchanged checked theorem roots pass independent kernel with zero selected-root exclusions; the named full-validator law remains ordinary-only because of Nat.show.fin/go exporter limitation.",
+  "node": {
+    "bytes": 77577344,
+    "file": "node",
+    "sha1": "606616eb1de7b4974f98c95de3a88e21aaa37249",
+    "sha256": "ec307018e1e8b80d68588b01ce6e9f8f9b8f4a03412c513b0fc3ac4d0f5db799"
+  },
+  "ordinary_laws": 14,
+  "ordinary_only_reason": "Full stew validator reaches the existing Nat.show.fin/go mutual-recursion exporter limitation; all source laws are ordinarily checked before export selection.",
+  "ordinary_only_roots": [
+    "crafting_recipe_components_laws:non_stew_identity_cannot_use_closed_stew_authority"
+  ],
+  "ordinary_source_api_check_passed": true,
+  "receipts": [
+    {
+      "command": [
+        "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+        "--experimental-transform-types",
+        "--max-old-space-size=2048",
+        "--stack-size=4096",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/crafting-recipe-components/proof/export.mjs"
+      ],
+      "seconds": 1.212915,
+      "status": 0,
+      "stderr": "(node:61397) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+      "stdout": "ALL ORDINARY SOURCE CHECKS PASS\nCHECKED ROOT EXPORT PASS\n"
+    },
+    {
+      "command": [
+        "/usr/bin/env",
+        "LEAN_STACK_SIZE=4194304",
+        "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/crafting-recipe-components/proof/selected.bendtt"
+      ],
+      "seconds": 0.049109,
+      "status": 0,
+      "stderr": "",
+      "stdout": "ALL PROOFS CHECK\n"
+    }
+  ],
+  "roots": [
+    "crafting_recipe_components_laws:empty_patch_preserves_complete_default_map",
+    "crafting_recipe_components_laws:removal_retains_unrelated_member_and_complete_tail",
+    "crafting_recipe_components_laws:removal_discards_selected_member_only",
+    "crafting_recipe_components_laws:omitted_duration_uses_actual_codec_default",
+    "crafting_recipe_components_laws:explicit_default_duration_has_one_canonical_identity",
+    "crafting_recipe_components_laws:unresolved_patch_cannot_supply_effective_limit",
+    "crafting_recipe_components_laws:strictly_invalid_components_cannot_supply_effective_limit",
+    "crafting_recipe_components_laws:absent_effective_limit_cannot_manufacture_metadata",
+    "crafting_recipe_components_laws:effective_metadata_retains_exact_component_identity",
+    "crafting_recipe_components_laws:absent_output_metadata_refuses_all_counts",
+    "crafting_recipe_components_laws:invalid_stew_profile_refuses_complete_inventory_key",
+    "crafting_recipe_components_laws:absent_input_authority_cannot_manufacture_metadata",
+    "crafting_recipe_components_laws:absent_input_metadata_refuses_all_counts"
+  ],
+  "selected_root_exclusions": [],
+  "selection": {
+    "bytes": 7927,
+    "file": "selection.json",
+    "sha1": "4f6e94dbdad636a69848296a842b62f112beaf8e",
+    "sha256": "88e064943f4dded6c3d2677919f95a5e75dcc9c1ada53c27a8d0c00f6f917733"
+  },
+  "source_pins": {
+    "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/base.bend": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe.bend": "3c5f3fc7b3e0be9be7d553da2a107dc1245fe13f17afac0efdf84bc41c15ffe2",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe_component_registry.bend": "911786032b2c22759208edaf7112ae403b2a03663d9237c3e036c2b5ba4ece2a",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe_components.bend": "7434293211b455196b4210b57f8f710faef9453de4f22ed9a03175c786e2e8d2",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe_components_laws.bend": "599a56482909bf2a740c4a8a19f0394029ebfd01e85af9a1d460daac3722cd07",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe_components_proof.bend": "afed86443d54df5ef8d9e73296621066c6f2b8efa4124acf9161882b75bf20c3",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/inventory.bend": "9d2be7fb88afa1dc6386ab9e8b046b15d2a2a73b7e14566e5bfad3e6dd1f2702",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0"
+  },
+  "status": "passed",
+  "term_pins": [
+    {
+      "checked_proof_sha256": "8d4738532c7afe9178fbc0e6c4efce057c2c25dae5225b20966e170d0efdb805",
+      "name": "crafting_recipe_components_laws:empty_patch_preserves_complete_default_map",
+      "source_body_sha256": "8e4cca2957364783ca14b802daf69dcc8616c390f3f1bbcd9eee5a3503322b2b",
+      "type_sha256": "374227696ab3b26a05c138b8fa9bba90d13fb0928201bb6657d16d7757278884"
+    },
+    {
+      "checked_proof_sha256": "a7e4cb8783cd50900f78a446187c4ed22d3f4a11381e7176d1014745515c43b8",
+      "name": "crafting_recipe_components_laws:removal_retains_unrelated_member_and_complete_tail",
+      "source_body_sha256": "ac8a4256005f854f3d3cf8014eb0346faef44a2b8ed1f8802e4eff04cb6d204c",
+      "type_sha256": "469e1be23a9b6821081c9c5054fcdbfb8af78ff2983d5a7efb4d4918d0da0daf"
+    },
+    {
+      "checked_proof_sha256": "e5087c94b02a62a2e8723dfa881c27170598345352171bb2f3ca88232ca3d810",
+      "name": "crafting_recipe_components_laws:removal_discards_selected_member_only",
+      "source_body_sha256": "ac8a4256005f854f3d3cf8014eb0346faef44a2b8ed1f8802e4eff04cb6d204c",
+      "type_sha256": "7cbf61eab5a27161de8291237032eafd074eeaa4f9395418eca77460ba1c9de8"
+    },
+    {
+      "checked_proof_sha256": "ead7a53618720095e2d1d27478af27a5d065b00d3634f7ebbd2956cf4cddc4ca",
+      "name": "crafting_recipe_components_laws:omitted_duration_uses_actual_codec_default",
+      "source_body_sha256": "b189a979eb922749b8bbb320e472afb8312d85712fa632b01284a659aee558d4",
+      "type_sha256": "925e1646e50c3f09f7ce758eb6c9c6e8649d88871038ff05affb2dea339afa41"
+    },
+    {
+      "checked_proof_sha256": "187b475b18dbe0bf069f3f337f214c01ad37f75e6db3005d441910dd8cf84289",
+      "name": "crafting_recipe_components_laws:explicit_default_duration_has_one_canonical_identity",
+      "source_body_sha256": "2ffdacbe235781951011fe6328c16bc6c5808311f39ff704f3ed14a4311f84c1",
+      "type_sha256": "560090b3e869e9f7e93fe41cd530793bbe945b51a5bab63f0b15257c539f5e63"
+    },
+    {
+      "checked_proof_sha256": "39456529728a2586e07219ef52f17af3b9633e88da09ab86f6632bf9ca61f89b",
+      "name": "crafting_recipe_components_laws:unresolved_patch_cannot_supply_effective_limit",
+      "source_body_sha256": "826a9dd6eedd43c4bb44290084ee5829ebf3584ac604d1f46416a392708f7cd1",
+      "type_sha256": "0c30aee03c50acd19c5e6c93beb413fc321ebadc5d10acc2d5e132f3803c49d0"
+    },
+    {
+      "checked_proof_sha256": "360389115910945454b241f613933933c226e1762dd0f47f4d1450611db16777",
+      "name": "crafting_recipe_components_laws:strictly_invalid_components_cannot_supply_effective_limit",
+      "source_body_sha256": "6a8d1f15d950a0bb8bf72b98525f6379451c2f6964284cc5a635f1cd8f001409",
+      "type_sha256": "9ae5df8478daf29d9be6ea345163589a89cb10ba68197c019bb8f0ea0e54d279"
+    },
+    {
+      "checked_proof_sha256": "b3e3a0d5afca69a3eecdc4b3881591b1b7132e5b40c03fe5fbdd7f44c093357f",
+      "name": "crafting_recipe_components_laws:absent_effective_limit_cannot_manufacture_metadata",
+      "source_body_sha256": "8017e56c0c25d96988592d4ce0c6b071adff185d991419fb1f6f10c36cb8f863",
+      "type_sha256": "17cfc13b73c08594a8364349afbd2bfe5417a58b6ad22cc0e3fe8c286598f590"
+    },
+    {
+      "checked_proof_sha256": "4af14aebc6c71c4abc5733cf03d98ff0c6e66071d68d940f77718d457a8ce2e8",
+      "name": "crafting_recipe_components_laws:effective_metadata_retains_exact_component_identity",
+      "source_body_sha256": "c99527d5cc819b8cd92c26e0a1b2896acfbf00cb1be46048473f2af6e3f41b58",
+      "type_sha256": "24a7426967f1d9671bca33657d1fcf832386bf897d3d512766e6daa9326481b2"
+    },
+    {
+      "checked_proof_sha256": "be857c76fd1b7f5aa994ad9ef36197a890e2771881fe45f938071e27f266ae8a",
+      "name": "crafting_recipe_components_laws:absent_output_metadata_refuses_all_counts",
+      "source_body_sha256": "8feb8f627533e584bf6e5a0ae1f2dd11d6c35db37710a0d5701d269a51149037",
+      "type_sha256": "6a68541f15a5c28e0eaad22294c8cbc08fb9faae44a561f26efef9b71bd0f4af"
+    },
+    {
+      "checked_proof_sha256": "60880b39391a78db257f9a6bbc3042fdc0c0e38d97270c3f23a7580ded0b2e8d",
+      "name": "crafting_recipe_components_laws:invalid_stew_profile_refuses_complete_inventory_key",
+      "source_body_sha256": "e33118133581313f77c29a34ad0485e341db909d5add42c76ef5bb6f71c2ab34",
+      "type_sha256": "6c78dcb67bc024e2c68c6d18243d091d91cdc6bb062be6d102e6b45369852998"
+    },
+    {
+      "checked_proof_sha256": "c023f5d19e36a0bf42dca15aa87fcea048a641451450ea5fd8333eb369779ff1",
+      "name": "crafting_recipe_components_laws:absent_input_authority_cannot_manufacture_metadata",
+      "source_body_sha256": "8017e56c0c25d96988592d4ce0c6b071adff185d991419fb1f6f10c36cb8f863",
+      "type_sha256": "9a9ec82ca5429519d5059274dd8dfa382bdfbe923f32d4db2eed96e734c03e9f"
+    },
+    {
+      "checked_proof_sha256": "2e99b74a1a8b0265d60d625fd64822c4036cdb8a965e454d2213ad2b1450e7b3",
+      "name": "crafting_recipe_components_laws:absent_input_metadata_refuses_all_counts",
+      "source_body_sha256": "8feb8f627533e584bf6e5a0ae1f2dd11d6c35db37710a0d5701d269a51149037",
+      "type_sha256": "c39d568aa65b9f957c1c38b990227588ed3499ef3fe0b302e8d48cb936165654"
+    }
+  ]
+}

@@ -2,6 +2,7 @@ import Base
 import ./json.bend as J
 import ./inventory.bend as Inv
 import ./crafting_recipe.bend as R
+import ./crafting_recipe_components.bend as Components
 
 # Decoder for the installed 26.3 ordinary crafting schema. Resource IO and pack
 # precedence remain the caller's job. The exact JSON parser lives in Bend.
@@ -119,8 +120,8 @@ def result(+value:J.Value) -> Result<&2,&2,String,Inv.Slot>:
     +amount : U32 <- count(J.member(value,"count"))
     guard(identifier(id) && Bool.not(String.eq(id,"minecraft:air")),"invalid crafting result identifier")
     guard(U32.is_ge(amount,1) && U32.is_le(amount,99),"crafting result count must be1..99")
-    guard(Bool.not(Maybe.is_some(&2,J.Value,J.member(value,"components"))),"patched crafting result requires component semantics")
-    return Inv.InvStack{Inv.ItemKey{id,""},amount}
+    patch : String <- Components.patch_text(J.member(value,"components"))
+    return Inv.InvStack{Inv.ItemKey{id,patch},amount}
 
 def key_symbol(value:String) -> Result<&2,&2,String,U32>:
   match value:
@@ -247,18 +248,15 @@ def ordinary_output(kind:String,id:String,value:J.Value,output:Inv.Slot) -> Resu
     case "minecraft:crafting_shapeless": shapeless(id,value,output)
     case _: Fail{"unsupported ordinary recipe subclass"}
 
-def ordinary_plain(plain:Bool,kind:String,id:String,+value:J.Value,raw_result:J.Value) -> Result<&2,&2,String,R.Recipe>:
-  match plain:
-    case False{}: Done{R.Unsupported{id,kind ++ "/patched_result"}}
-    case True{}:
-      do Result<&2,&2,String,R.Recipe>:
-        output : Inv.Slot <- result(raw_result)
-        ordinary_output(kind,id,value,output)
+def ordinary_result(decoded:Result<&2,&2,String,Inv.Slot>,kind:String,id:String,value:J.Value) -> Result<&2,&2,String,R.Recipe>:
+  match decoded:
+    case Fail{+message}: R.choose(Result<&2,&2,String,R.Recipe>,Done{R.Unsupported{id,kind ++ "/unsupported_component_codec"}},Fail{message},String.eq(message,"component codec outside supported domain"))
+    case Done{output}: ordinary_output(kind,id,value,output)
 
 def ordinary(kind:String,id:String,+value:J.Value) -> Result<&2,&2,String,R.Recipe>:
   do Result<&2,&2,String,R.Recipe>:
     +raw_result : J.Value <- require(J.member(value,"result"),"result")
-    ordinary_plain(Bool.not(Maybe.is_some(&2,J.Value,J.member(raw_result,"components"))),kind,id,value,raw_result)
+    ordinary_result(result(raw_result),kind,id,value)
 
 def decode_kind(kind:String,id:String,+value:J.Value) -> Result<&2,&2,String,R.Recipe>:
   match kind:
@@ -358,11 +356,18 @@ def ingredients_known(values:List<&2,R.Ingredient>,+tags:List<&2,R.Tag>,+items:L
     case R.Empty{} <> rest: ingredients_known(rest,tags,items)
     case R.AnyOf{selectors} <> rest: selectors_known(selectors,tags,items) && ingredients_known(rest,tags,items)
 
+def resolved_components(fields:List<&2,String>) -> Bool:
+  match fields:
+    case marker <> Nil{}: String.is_empty(marker)
+    case marker <> payload <> Nil{}: String.eq(marker,"BendCraftInvalidComponents1")
+    case marker <> limit <> payload <> Nil{}: String.eq(marker,"BendCraftComponents1")
+    case _: False{}
+
 def output_known(output:Inv.Slot,items:List<&2,R.ItemDefinition>) -> Bool:
   match output:
     case Inv.InvEmpty{}: False{}
     case Inv.InvStack{Inv.ItemKey{id,components},+count}:
-      String.is_empty(components) && U32.is_ge(count,1) && U32.is_le(count,99) && Maybe.is_some(&2,R.ItemDefinition,R.item_definition(items,id))
+      resolved_components(String.split(components,'\t')) && U32.is_ge(count,1) && U32.is_le(count,99) && Maybe.is_some(&2,R.ItemDefinition,R.item_definition(items,id))
 
 def recipe_known(recipe:R.Recipe,+tags:List<&2,R.Tag>,+items:List<&2,R.ItemDefinition>) -> Bool:
   match recipe:
@@ -381,17 +386,73 @@ def recipe_exists(recipes:List<&2,R.Recipe>,+id:String) -> Bool:
     case Nil{}: False{}
     case recipe <> rest: String.eq(recipe_id(recipe),id) || recipe_exists(rest,id)
 
-def recipe_rows(values:List<&2,J.Value>,+tags:List<&2,R.Tag>,+items:List<&2,R.ItemDefinition>,+previous:List<&2,R.Recipe>) -> Result<&2,&2,String,List<&2,R.Recipe>>:
+def defaults_row(value:Maybe<&2,J.Value>,id:String,previous:List<&2,Components.Default>) -> List<&2,Components.Default>:
+  match value:
+    case None{}: previous
+    case Some{components}: Components.Default{id,components} <> previous
+
+def defaults_rows(values:List<&2,J.Value>,previous:List<&2,Components.Default>) -> Result<&2,&2,String,List<&2,Components.Default>>:
+  match values:
+    case Nil{}: Done{previous}
+    case +value <> rest:
+      do Result<&2,&2,String,List<&2,Components.Default>>:
+        id : String <- text_field(value,"id")
+        defaults_rows(rest,defaults_row(J.member(value,"components"),id,previous))
+
+def resolved_patch(defaults:Maybe<&2,J.Value>,patch:String,key:String,count:U32) -> Result<&2,&2,String,Inv.Slot>:
+  match defaults:
+    case None{}: Fail{"recipe output requires initialized component defaults"}
+    case Some{base}:
+      do Result<&2,&2,String,Inv.Slot>:
+        value : J.Value <- J.parse_bounded(patch,65536n,32)
+        identity : String <- Components.resolve(base,value)
+        return Inv.InvStack{Inv.ItemKey{key,identity},count}
+
+def resolve_output_fields(fields:List<&2,String>,defaults:List<&2,Components.Default>,+id:String,count:U32) -> Result<&2,&2,String,Inv.Slot>:
+  match fields:
+    case marker <> Nil{}:
+      do Result<&2,&2,String,Inv.Slot>:
+        guard(String.is_empty(marker),"unknown crafting output component envelope")
+        return Inv.InvStack{Inv.ItemKey{id,""},count}
+    case marker <> patch <> Nil{}:
+      do Result<&2,&2,String,Inv.Slot>:
+        guard(String.eq(marker,"BendCraftPatch1"),"unknown crafting output component envelope")
+        resolved_patch(Components.default_for(defaults,id),patch,id,count)
+    case _: Fail{"unknown crafting output component envelope"}
+
+def resolve_output(output:Inv.Slot,defaults:List<&2,Components.Default>) -> Result<&2,&2,String,Inv.Slot>:
+  match output:
+    case Inv.InvEmpty{}: Done{Inv.InvEmpty{}}
+    case Inv.InvStack{Inv.ItemKey{id,components},count}: resolve_output_fields(String.split(components,'\t'),defaults,id,count)
+
+def shaped_resolved(result:Result<&2,&2,String,Inv.Slot>,id:String,width:U32,height:U32,cells:List<&2,R.Ingredient>) -> Result<&2,&2,String,R.Recipe>:
+  match result:
+    case Done{output}: Done{R.Shaped{id,width,height,cells,output}}
+    case Fail{+message}: R.choose(Result<&2,&2,String,R.Recipe>,Done{R.Unsupported{id,"minecraft:crafting_shaped/patched_result"}},Fail{message},String.eq(message,"recipe output requires initialized component defaults"))
+
+def shapeless_resolved(result:Result<&2,&2,String,Inv.Slot>,id:String,ingredients:List<&2,R.Ingredient>) -> Result<&2,&2,String,R.Recipe>:
+  match result:
+    case Done{output}: Done{R.Shapeless{id,ingredients,output}}
+    case Fail{+message}: R.choose(Result<&2,&2,String,R.Recipe>,Done{R.Unsupported{id,"minecraft:crafting_shapeless/patched_result"}},Fail{message},String.eq(message,"recipe output requires initialized component defaults"))
+
+def resolve_recipe(recipe:R.Recipe,defaults:List<&2,Components.Default>) -> Result<&2,&2,String,R.Recipe>:
+  match recipe:
+    case R.Shaped{id,width,height,cells,output}: shaped_resolved(resolve_output(output,defaults),id,width,height,cells)
+    case R.Shapeless{id,ingredients,output}: shapeless_resolved(resolve_output(output,defaults),id,ingredients)
+    case R.Unsupported{id,kind}: Done{R.Unsupported{id,kind}}
+
+def recipe_rows(values:List<&2,J.Value>,+tags:List<&2,R.Tag>,+items:List<&2,R.ItemDefinition>,+defaults:List<&2,Components.Default>,+previous:List<&2,R.Recipe>) -> Result<&2,&2,String,List<&2,R.Recipe>>:
   match values:
     case Nil{}: Done{List.reverse(&2,R.Recipe,previous)}
     case +value <> rest:
       do Result<&2,&2,String,List<&2,R.Recipe>>:
         +id : String <- text_field(value,"id")
         source : J.Value <- field(value,"source")
-        +recipe : R.Recipe <- decode(id,source)
+        decoded : R.Recipe <- decode(id,source)
+        +recipe : R.Recipe <- resolve_recipe(decoded,defaults)
         guard(Bool.not(recipe_exists(previous,id)),"duplicate crafting catalog recipe")
         guard(recipe_known(recipe,tags,items),"crafting recipe contains an unknown item/tag or invalid output count")
-        recipe_rows(rest,tags,items,recipe <> previous)
+        recipe_rows(rest,tags,items,defaults,recipe <> previous)
 
 # Interchange: {items:[{id,limit,remainder}], tags:[{id,items:[id]}],
 # recipes:[{id,source:<26.3 recipe JSON>}]} in the authoritative registry order.
@@ -399,15 +460,16 @@ def recipe_rows(values:List<&2,J.Value>,+tags:List<&2,R.Tag>,+items:List<&2,R.It
 def catalog(+value:J.Value) -> Result<&2,&2,String,R.Catalog>:
   do Result<&2,&2,String,R.Catalog>:
     raw_items : J.Value <- field(value,"items")
-    item_values : List<&2,J.Value> <- array(raw_items)
+    +item_values : List<&2,J.Value> <- array(raw_items)
     +items : List<&2,R.ItemDefinition> <- item_rows(item_values,[])
+    defaults : List<&2,Components.Default> <- defaults_rows(item_values,[])
     guard(remainders_known(items,items),"crafting catalog contains an unknown or invalid remainder")
     raw_tags : J.Value <- field(value,"tags")
     tag_values : List<&2,J.Value> <- array(raw_tags)
     +tags : List<&2,R.Tag> <- tag_rows(tag_values,items,[])
     raw_recipes : J.Value <- field(value,"recipes")
     recipe_values : List<&2,J.Value> <- array(raw_recipes)
-    recipes : List<&2,R.Recipe> <- recipe_rows(recipe_values,tags,items,[])
+    recipes : List<&2,R.Recipe> <- recipe_rows(recipe_values,tags,items,defaults,[])
     return R.Catalog{recipes,tags,items}
 
 def parse_catalog_with(text:String,max_codepoints:Nat,max_depth:U32) -> Result<&2,&2,String,R.Catalog>:

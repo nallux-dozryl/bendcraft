@@ -4,7 +4,7 @@ import ./inventory.bend as Inv
 # Ordinary crafting is pure. The menu owns stacks; this module returns a plan.
 # Selectors retain tag identity and explicit alternatives rather than guessing
 # ingredient membership from item names. Components are the inventory owner's
-# default-only domain; patched result/input components are rejected by the codec.
+# default domain, or exact metadata admitted by the component inventory owner.
 type Selector is Data:
   Item{id:String}
   TagRef{id:String}
@@ -103,6 +103,37 @@ def dimensions(+width:U32,+height:U32) -> Bool:
 def grid_valid(items:List<&2,ItemDefinition>,grid:Grid) -> Bool:
   Grid{+width,+height,+slots} = grid
   dimensions(width,height) && Nat.is_eq(List.length(&2,Inv.Slot,slots),U32.to_nat(U32.mul(width,height))) && slots_valid(slots,items)
+
+def input_metadata(values:List<&2,Inv.ItemMetadata>,+key:Inv.ItemKey) -> Maybe<&2,Inv.ItemMetadata>:
+  match values:
+    case Nil{}: None{}
+    case +head <> rest:
+      Inv.ItemMetadata{other,limit} = head
+      choose(Maybe<&2,Inv.ItemMetadata>,Some{head},input_metadata(rest,key),Inv.key_equal(other,key))
+
+def input_metadata_admits(metadata:Maybe<&2,Inv.ItemMetadata>,+count:U32) -> Bool:
+  match metadata:
+    case None{}: False{}
+    case Some{Inv.ItemMetadata{key,+limit}}:
+      U32.is_ge(limit,1) && U32.is_le(limit,99) && U32.is_gt(count,0) && U32.is_le(count,limit)
+
+def modified_slot_valid(+items:List<&2,ItemDefinition>,metadata:List<&2,Inv.ItemMetadata>,slot:Inv.Slot) -> Bool:
+  match slot:
+    case Inv.InvEmpty{}: False{}
+    case Inv.InvStack{+key,count}:
+      Inv.ItemKey{+id,components} = key
+      Bool.not(String.is_empty(components)) && Bool.not(String.eq(id,"minecraft:air")) &&
+        Maybe.is_some(&2,ItemDefinition,item_definition(items,id)) && input_metadata_admits(input_metadata(metadata,key),count)
+
+def slots_valid_with_metadata(slots:List<&2,Inv.Slot>,+items:List<&2,ItemDefinition>,+metadata:List<&2,Inv.ItemMetadata>) -> Bool:
+  match slots:
+    case Nil{}: True{}
+    case +head <> rest:
+      (slot_valid(items,head) || modified_slot_valid(items,metadata,head)) && slots_valid_with_metadata(rest,items,metadata)
+
+def grid_valid_with_metadata(items:List<&2,ItemDefinition>,grid:Grid,metadata:List<&2,Inv.ItemMetadata>) -> Bool:
+  Grid{+width,+height,+slots} = grid
+  dimensions(width,height) && Nat.is_eq(List.length(&2,Inv.Slot,slots),U32.to_nat(U32.mul(width,height))) && slots_valid_with_metadata(slots,items,metadata)
 
 def cell_at(index:Nat,cells:List<&2,Ingredient>) -> Ingredient:
   match index cells:
@@ -210,8 +241,58 @@ def create_output_checked(valid:Bool,output:Inv.Slot) -> Inv.Slot:
 
 # ItemStackTemplate.create validates its declared template before returning a
 # stack. A codec-admitted1..99 count can still exceed the default item limit.
+def component_limit_read(limit:Maybe<&2,U32>,payload:String) -> Maybe<&2,U32>:
+  match limit:
+    case None{}: None{}
+    case Some{+value}: choose(Maybe<&2,U32>,Some{value},None{},U32.is_ge(value,1) && U32.is_le(value,99) && Bool.not(String.is_empty(payload)))
+
+def component_limit_marker(valid:Bool,limit:String,payload:String) -> Maybe<&2,U32>:
+  match valid:
+    case False{}: None{}
+    case True{}: component_limit_read(U32.read(limit),payload)
+
+def component_limit_fields(fields:List<&2,String>) -> Maybe<&2,U32>:
+  match fields:
+    case marker <> limit <> payload <> Nil{}: component_limit_marker(String.eq(marker,"BendCraftComponents1"),limit,payload)
+    case _: None{}
+
+# Only the trusted recipe decoder produces this effective-map identity. Raw
+# patches, invalid strict component combinations and unknown envelopes cannot
+# become output metadata. The inventory foundation still compares opaque keys.
+def component_limit(components:String) -> Maybe<&2,U32>:
+  component_limit_fields(String.split(components,'\t'))
+
+def output_component_metadata(limit:Maybe<&2,U32>,key:Inv.ItemKey) -> Maybe<&2,Inv.ItemMetadata>:
+  match limit:
+    case None{}: None{}
+    case Some{value}: Some{Inv.ItemMetadata{key,value}}
+
+def output_definition(definition:Maybe<&2,ItemDefinition>,+key:Inv.ItemKey) -> Maybe<&2,Inv.ItemMetadata>:
+  match definition:
+    case None{}: None{}
+    case Some{ItemDefinition{id,limit,remainder}}:
+      Inv.ItemKey{item,+components} = key
+      choose(Maybe<&2,Inv.ItemMetadata>,Some{Inv.ItemMetadata{key,limit}},output_component_metadata(component_limit(components),key),String.is_empty(components))
+
+def output_metadata(catalog:Catalog,+key:Inv.ItemKey) -> Maybe<&2,Inv.ItemMetadata>:
+  Catalog{recipes,tags,items} = catalog
+  Inv.ItemKey{id,components} = key
+  output_definition(item_definition(items,id),key)
+
+def output_slot_valid(metadata:Maybe<&2,Inv.ItemMetadata>,+count:U32) -> Bool:
+  match metadata:
+    case None{}: False{}
+    case Some{Inv.ItemMetadata{key,+limit}}: U32.is_gt(count,0) && U32.is_le(count,limit)
+
+def assembled_slot_valid(items:List<&2,ItemDefinition>,slot:Inv.Slot) -> Bool:
+  match slot:
+    case Inv.InvEmpty{}: True{}
+    case Inv.InvStack{+key,count}:
+      Inv.ItemKey{+id,components} = key
+      Bool.not(String.eq(id,"minecraft:air")) && output_slot_valid(output_definition(item_definition(items,id),key),count)
+
 def create_output(+output:Inv.Slot,items:List<&2,ItemDefinition>) -> Inv.Slot:
-  create_output_checked(slot_valid(items,output),output)
+  create_output_checked(assembled_slot_valid(items,output),output)
 
 def plan(recipe:Recipe,+items:List<&2,ItemDefinition>,grid:Grid) -> Maybe<&2,Plan>:
   match recipe:
@@ -247,6 +328,12 @@ def find_checked(valid:Bool,catalog:Catalog,grid:Grid) -> Result<&2,&2,String,Ma
 def find(+catalog:Catalog,+grid:Grid) -> Result<&2,&2,String,Maybe<&2,Plan>>:
   Catalog{recipes,tags,items} = catalog
   find_checked(grid_valid(items,grid),catalog,grid)
+
+# Metadata is caller authority derived from a component-specific validator.
+# This path never interprets a component envelope as input admission by itself.
+def find_with_metadata(+catalog:Catalog,+grid:Grid,metadata:List<&2,Inv.ItemMetadata>) -> Result<&2,&2,String,Maybe<&2,Plan>>:
+  Catalog{recipes,tags,items} = catalog
+  find_checked(grid_valid_with_metadata(items,grid,metadata),catalog,grid)
 
 def output(value:Plan) -> Inv.Slot:
   Plan{id,output,before,consumption} = value

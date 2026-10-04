@@ -1,0 +1,189 @@
+{
+  "binary": {
+    "bytes": 1997744,
+    "file": "crafting-recipe-component-tests",
+    "sha1": "131b1eeba723cb66ef257543f28ec5eaf8305205",
+    "sha256": "c8194d2b347c617d2f75ee4b771dcb45dcc0dd2d8c43aec516edce3069c3fb53"
+  },
+  "build": {
+    "command": [
+      "/Users/chuah/.bend/bin/bend",
+      "tests/crafting_recipe_components.bend",
+      "-o",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/crafting-recipe-component-tests"
+    ],
+    "seconds": 32.96801,
+    "status": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  "checks": [],
+  "confidence": "high for the stated component codec domain",
+  "follow_up_input_receipt": {
+    "bytes": 15425,
+    "file": "crafting-recipe-inputs.json",
+    "sha1": "4c7945d80d3468bf5c63f4e0fbf66d5a6bdb193a",
+    "sha256": "28f10bfc18af54793f05b868c69cec4049364dfcc87cab218596e21c1e16d02b"
+  },
+  "implemented_persistent_removal_types": 119,
+  "jar_patched_ordinary_outputs": 17,
+  "java_cases": 170,
+  "java_registered_removal_cases": 122,
+  "kernel_laws": [
+    "empty_patch_preserves_complete_default_map",
+    "removal_retains_unrelated_member_and_complete_tail",
+    "removal_discards_selected_member_only",
+    "omitted_duration_uses_actual_codec_default",
+    "explicit_default_duration_has_one_canonical_identity",
+    "unresolved_patch_cannot_supply_effective_limit",
+    "strictly_invalid_components_cannot_supply_effective_limit",
+    "absent_effective_limit_cannot_manufacture_metadata",
+    "effective_metadata_retains_exact_component_identity",
+    "absent_output_metadata_refuses_all_counts",
+    "invalid_stew_profile_refuses_complete_inventory_key"
+  ],
+  "limitations": [
+    "Initialized default maps are trusted canonical DataComponentMap codec output; arbitrary unvalidated defaults are outside this boundary.",
+    "Value codecs are suspicious_stew_effects, max_stack_size, max_damage, damage, repair_cost, unbreakable, enchantment_glint_override; other set component types remain Unsupported.",
+    "Numeric coercions outside signed integer JSON lexemes and duplicate normalized patch keys are outside the supported domain.",
+    "The resolved component envelope is internal trusted identity data, not a public admission or save format.",
+    "Other-owner player metadata/admission/save still reject nonempty components and must adopt the helper before these outputs can be moved or saved.",
+    "All 840 nonordinary recipe subclasses remain Unsupported.",
+    "No general mutation, game behavior or equality theorem for every registered component type."
+  ],
+  "native": [
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/crafting-recipe-component-tests",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/crafting-recipe-components/native-input.json"
+      ],
+      "comparisons": 1228,
+      "decoder_cases": 170,
+      "forged_profile_refusals": 8,
+      "nondefault_outputs": 50,
+      "output_sha256": "915bd15fa215d8496f9e3ffb81d7f965e95400e997aa7da27407ddff1d98ee84",
+      "outputs": 163,
+      "seconds": 1.30947,
+      "status": 0,
+      "stderr": "",
+      "strict_empty_outputs": 2
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/crafting-recipe-component-tests",
+        "--threads",
+        "4",
+        "--gpu",
+        "off",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/crafting-recipe-components/native-input.json"
+      ],
+      "comparisons": 1228,
+      "decoder_cases": 170,
+      "forged_profile_refusals": 8,
+      "nondefault_outputs": 50,
+      "output_sha256": "915bd15fa215d8496f9e3ffb81d7f965e95400e997aa7da27407ddff1d98ee84",
+      "outputs": 163,
+      "seconds": 0.801607,
+      "status": 0,
+      "stderr": "",
+      "strict_empty_outputs": 2
+    }
+  ],
+  "numeric_coercion_cases_explicitly_unsupported": [
+    "bendcraft:duration_fractional"
+  ],
+  "pin": "26.3",
+  "proof_receipt": {
+    "bytes": 10852,
+    "file": "crafting-recipe-components-proof.json",
+    "sha1": "c3f022d74d7205b829ec2fb37c2e440dc9cad5da",
+    "sha256": "6c4acdf2ca6b77868fbc58e5028e2fbd76b811186da7c03995545af293ae625f"
+  },
+  "reference": {
+    "bytes": 1655211,
+    "file": "crafting_recipe_components.json",
+    "sha1": "f64692fbfe0e91ae9b0aaf265fa1a306f8394e68",
+    "sha256": "1033428cffe42416d364d14f9bdbd39adb6dab7d303e1327bd8f84646dbe6226"
+  },
+  "reference_tool": {
+    "bytes": 10517,
+    "file": "reference_crafting_recipe_components_probe.py",
+    "sha1": "0d8d34705c1f584e2cf679ca1bc160f521713ef3",
+    "sha256": "1d2782eeb667439d56ab9a09804524f286eca6a9a79d00591b8820f7ca3ca25e"
+  },
+  "schema_version": 1,
+  "source_generation": "Component output domain before the later additive find_with_metadata API; current input extension does not change the recorded decoder/component codec/assembly functions.",
+  "sources": {
+    "src/crafting_recipe.bend": {
+      "bytes": 15016,
+      "file": "crafting_recipe.bend",
+      "sha1": "c9cdf801db8921da24972747a4e46615dac2da7a",
+      "sha256": "6fde2f0e0703d1ce6b814ead64c2045f301b5cd6a818e2553ba4b19fff31f774"
+    },
+    "src/crafting_recipe_component_registry.bend": {
+      "bytes": 5705,
+      "file": "crafting_recipe_component_registry.bend",
+      "sha1": "36fd966d899cd375b44dd3c255f173a827275f47",
+      "sha256": "911786032b2c22759208edaf7112ae403b2a03663d9237c3e036c2b5ba4ece2a"
+    },
+    "src/crafting_recipe_components.bend": {
+      "bytes": 13144,
+      "file": "crafting_recipe_components.bend",
+      "sha1": "4d2268ddb9bc68008d27af5151262d7516522a3c",
+      "sha256": "7434293211b455196b4210b57f8f710faef9453de4f22ed9a03175c786e2e8d2"
+    },
+    "src/crafting_recipe_components_laws.bend": {
+      "bytes": 1914,
+      "file": "crafting_recipe_components_laws.bend",
+      "sha1": "98560a13da3748d9dd7d3c05ad851c4e56a2e7c0",
+      "sha256": "e4e79869320e0833c6c9e4988b0d626e319aa987c9eb76b46b1be68ad8cc6a76"
+    },
+    "src/crafting_recipe_components_proof.bend": {
+      "bytes": 815,
+      "file": "crafting_recipe_components_proof.bend",
+      "sha1": "0170fd8f86d84dad683beaf1493fdb971040bdbc",
+      "sha256": "5609387bb3096f51dc517de3b0eeb327195d1424d89346ab83b84a3eeb8ba95c"
+    },
+    "src/crafting_recipe_decoder.bend": {
+      "bytes": 24265,
+      "file": "crafting_recipe_decoder.bend",
+      "sha1": "61bf3b7d46f467abd5f460af355b59e051dedd14",
+      "sha256": "c9cd224262b326a06d0ca8ff99e7ff04aa9fe4a77af40101cd0aedc8e0642b71"
+    },
+    "src/inventory.bend": {
+      "bytes": 13558,
+      "file": "inventory.bend",
+      "sha1": "83c7b005e6e9f7336a1d06a49a4a39931302500a",
+      "sha256": "9d2be7fb88afa1dc6386ab9e8b046b15d2a2a73b7e14566e5bfad3e6dd1f2702"
+    },
+    "src/json.bend": {
+      "bytes": 21362,
+      "file": "json.bend",
+      "sha1": "ff33b3dc87a80fe32355f099ae9d145d4fee7aa8",
+      "sha256": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0"
+    },
+    "tests/crafting_recipe.bend": {
+      "bytes": 8455,
+      "file": "crafting_recipe.bend",
+      "sha1": "6d4b7c6c142f3d481e9ccb02ac273c25f7cc9a62",
+      "sha256": "308ad7875acc0538126e8e84803babbff6df62b8ab408436c88a210d84474b9f"
+    },
+    "tests/crafting_recipe_components.bend": {
+      "bytes": 7464,
+      "file": "crafting_recipe_components.bend",
+      "sha1": "0b91064fdca0c1554d7f6a004c4a6ad177cedd95",
+      "sha256": "7ce93349f0eedc466482128ad93a4f10ea3016b2399946319e7379a4056b47c1"
+    }
+  },
+  "status": "passed",
+  "test_tool": {
+    "bytes": 13460,
+    "file": "test_crafting_recipe_components.py",
+    "sha1": "bb9cec9415c633bee950f99bcb86d21e02641811",
+    "sha256": "d02134596a422d463365ceb2fe8897e5fa8aba2cec9138d70c28614cd60d7463"
+  }
+}

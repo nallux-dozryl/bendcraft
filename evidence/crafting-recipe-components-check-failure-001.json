@@ -1,0 +1,26 @@
+{
+  "command": [
+    "/Users/chuah/.bend/bin/bend",
+    "src/crafting_recipe_decoder.bend",
+    "--check-only"
+  ],
+  "current_proof_scope": {
+    "kernel_laws": 13,
+    "ordinary_laws": 14,
+    "ordinary_only": [
+      "crafting_recipe_components_laws:non_stew_identity_cannot_use_closed_stew_authority"
+    ],
+    "reason": "Full stew validator reaches the existing Nat.show.fin/go mutual-recursion exporter limitation; all source laws are ordinarily checked before export selection."
+  },
+  "diagnosis": "Per-declaration parse trace ended at ordinary_output; next ordinary_result nested Fail{long literal} body elaboration/substitution caused blowup. A subsequent memory-bounded trace ended at Registry.component ordinary checking.",
+  "full_import_verdict_limitation": "Installed CLI --verdict still stack-overflows on full component/JSON graph; checked API theorem-root export passes,203470bytes,zero exclusions.",
+  "next_step": "Read-only per-declaration checker diagnosis under a memory/time bound, then a substantive source simplification.",
+  "observed_elapsed_seconds": 274,
+  "pid": 45294,
+  "reason": "Recursive checker expansion exceeded the bounded narrow-check budget; own process terminated. No native correctness claim from this attempt.",
+  "repair": "Dynamic Fail{message}+String.eq and envelope marker binders remove deep nested literal patterns. Registry membership uses versioned lists rather than122/40literal pattern matrices.",
+  "retained_sample": "build/crafting-recipe-components/decoder-check-sample.txt",
+  "sample_physical_footprint_gib": 19.6,
+  "status": "repaired",
+  "verification": "Actual decoder and focused harness source checks pass; eleven new component laws independently pass kernel through unchanged checked-root export."
+}
