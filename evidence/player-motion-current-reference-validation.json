@@ -1,0 +1,28 @@
+{
+  "generator": {
+    "bytes": 21450,
+    "file": "reference_player_motion_current_probe.py",
+    "sha1": "cd7b147ea50e2ad20d78d38f1ed09221d73a6efe",
+    "sha256": "93405ab6ed6c635030d6db1e273450474357f5cbac00672a3047ee3603b5c7fc"
+  },
+  "independent_observations_checked": 2,
+  "official_source_runtime_libraries_checked": true,
+  "pin": "26.3",
+  "reference": {
+    "bytes": 1194108,
+    "file": "player_motion_current.json",
+    "sha1": "9139796cd4990fbf255377914f9e7c1fcea56520",
+    "sha256": "fc0cfd70f1392b4f8f5cce70aeaa6176863e03732e4017e91b9ccfc834c11332"
+  },
+  "reproduce": "PYTHONDONTWRITEBYTECODE=1 python3 tools/reference_player_motion_current_probe.py --verify-existing",
+  "schema_version": 1,
+  "status": "passed",
+  "validation": {
+    "active_cases": 77,
+    "actual_player_travel_cases": 105,
+    "case_count": 105,
+    "exact_threshold_cases": 6,
+    "inactive_cases": 28,
+    "oracle_compared": true
+  }
+}
