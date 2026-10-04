@@ -275,6 +275,14 @@ def acknowledge(client, path, facts, world, record, full, highwater, expected_bo
     return actual, receipt
 
 
+def unavailable_drop_step(raw):
+    answer = raw.call('simulation.step', {'ticks': 1}, fault='PlayerStepUnavailable')
+    S.require(answer['error'] == {'code': 'PlayerStepUnavailable',
+        'message': 'cooking-effects:item-entity-and-level-rng-owner-required'},
+        'Exact missing real item-entity/level-RNG delivery owner response')
+    return answer
+
+
 def scenario(directory, binary, bridge, generation):
     directory.mkdir(exist_ok=False)
     facts = independent_expectations()
@@ -282,6 +290,7 @@ def scenario(directory, binary, bridge, generation):
     path = directory / 'cooking.nbt'
     path.write_bytes(initial)
     saves = []
+    refusals = []
     actor = A.PlayableBackend(directory / 'loaded-startup', binary, path, bridge)
     try:
         raw, ping = actor.tcp(True)
@@ -333,7 +342,7 @@ def scenario(directory, binary, bridge, generation):
         tick = world['tick'] + 1
         for state in (facts['palette']['minecraft:air'], facts['unlit']):
             S.queue_set(raw, world, POSITION, state, tick)
-        raw.call('simulation.step', {'ticks': 1})
+        refusals.append(unavailable_drop_step(raw))
         S.BASE.apply_tick(world)
         S.require(raw.call('world.clock') == S.P.clock(world) and
                   raw.call('world.block.get', dict(zip(('dimension', 'x', 'y', 'z'), POSITION)))
@@ -343,7 +352,8 @@ def scenario(directory, binary, bridge, generation):
         reset_acknowledged, receipt = acknowledge(raw, path, facts, world, record, full,
             ping['peer'], fresh_body(), removal_pending(), directory, 'owner-reset-atomic-recovery')
         saves.append(receipt)
-        S.require(raw.call('simulation.step', {'ticks': 1}) == S.P.clock(world) and
+        refusals.append(unavailable_drop_step(raw))
+        S.require(raw.call('world.clock') == S.P.clock(world) and
                   path.read_bytes() == reset_acknowledged,
                   'Undelivered Drop queue blocks next Core tick without loss')
         S.inspect(raw, record)
@@ -360,7 +370,8 @@ def scenario(directory, binary, bridge, generation):
                   path.read_bytes() == reset_acknowledged,
                   'Second SIGKILL/cold restore preserves reset Core/body/ordered Drop queue')
         S.inspect(raw, record)
-        S.require(raw.call('simulation.step', {'ticks': 1}) == S.P.clock(world),
+        refusals.append(unavailable_drop_step(raw))
+        S.require(raw.call('world.clock') == S.P.clock(world),
                   'Restored unsupported Drop queue blocks the next Core tick')
         S.inspect(raw, record)
         _, receipt = acknowledge(raw, path, facts, world, record, full, ping['peer'],
@@ -378,6 +389,7 @@ def scenario(directory, binary, bridge, generation):
         'first_tick_physical_furnace_progression_observed': True, 'reset_tick_calls': 1,
         'progression_acknowledged_tick': 1, 'final_acknowledged_tick': world['tick'],
         'blocked_next_tick_requests': 2,
+        'exact_missing_owner_refusals': refusals,
         'atomic_saves': saves, 'actual_SIGKILL_cold_restores': 2,
         'OwnerReset_Core_remove_recreate_observed': True,
         'OwnerReset_saved_keyed_Details_clear_observed': True,

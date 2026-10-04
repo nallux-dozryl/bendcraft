@@ -1,0 +1,117 @@
+{
+  "actor_generation": 19,
+  "binary": {
+    "bytes": 12151256,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-019/actor",
+    "sha256": "641089cd1a7e1fd48467df39a4a74068e5d71c507964d5ada3dd03ff038516fd"
+  },
+  "cleanup": {
+    "bytes": 537,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-client-cooking/009/cleanup.json",
+    "sha256": "d6d482f0f232ec9ed9ad33c033b231e0ec3328316c39e78e85f8eec506df39d5"
+  },
+  "inputs": {
+    "bytes": 3827,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-client-cooking/009/inputs.json",
+    "sha256": "a99fa23f1d58411a1da398fd452c39319d3b8016dedbec606b00cd8c060284f9"
+  },
+  "process": {
+    "bytes": 1045,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-client-cooking/009/execution/result.full.json",
+    "sha256": "5f9d397f5b400652c9ce965941571c81bd837eb88b78d131c098bf5d7808fd4c"
+  },
+  "runtime_error": {
+    "bytes": 1402,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-client-cooking/009/execution/stderr",
+    "sha256": "2ca01ec6de4fa6830ddf9578204685fe401436246136122200085da1c6d4578b"
+  },
+  "scope": "Three actual full atomic byte comparisons and one SIGKILL/cold restore passed. No post-reset Details clearing, pending save or pending cold restoration is established by this failed attempt.",
+  "status": "FAIL_AFTER_THREE_ATOMIC_SAVES_AND_ONE_SIGKILL_RESTORE",
+  "successful_atomic_saves": [
+    {
+      "body_sha256": "e3a1bf28adfe6e1a172dbce21011694e3718a527804ef8ba80a49df36e1bf91b",
+      "bytes": 18731,
+      "exact_physical_body_bytes_equal": true,
+      "expected_sha256": "c69500d2f806d3422b321ff7d5b202fb881e181026a4bbaf3e69fb87dce0ca64",
+      "full_atomic_bytes_equal": true,
+      "label": "loaded-physical-startup",
+      "pending_ordered_drop_slots": [],
+      "pending_sha256": null,
+      "reply": {
+        "bytes": 18731,
+        "durable": true,
+        "peer_highwater": 43,
+        "published": true,
+        "status": "durable"
+      },
+      "sha256": "c69500d2f806d3422b321ff7d5b202fb881e181026a4bbaf3e69fb87dce0ca64"
+    },
+    {
+      "body_sha256": "d453a138e981dbcbd477c2e5770b84f14a77e359958437ce975fdb1348376af1",
+      "bytes": 18731,
+      "exact_physical_body_bytes_equal": true,
+      "expected_sha256": "78399fc493313b64c672815e30148ceda2e2a2ab581c872b4774d886a48b52b7",
+      "full_atomic_bytes_equal": true,
+      "label": "effect-free-furnace-tick",
+      "pending_ordered_drop_slots": [],
+      "pending_sha256": null,
+      "reply": {
+        "bytes": 18731,
+        "durable": true,
+        "peer_highwater": 43,
+        "published": true,
+        "status": "durable"
+      },
+      "sha256": "78399fc493313b64c672815e30148ceda2e2a2ab581c872b4774d886a48b52b7"
+    },
+    {
+      "body_sha256": "d453a138e981dbcbd477c2e5770b84f14a77e359958437ce975fdb1348376af1",
+      "bytes": 18731,
+      "exact_physical_body_bytes_equal": true,
+      "expected_sha256": "6bda882ad126aa8d4dcff9f97b23227d3d433473be31e4bc7d82df71ef685f39",
+      "full_atomic_bytes_equal": true,
+      "label": "cold-physical-restore",
+      "pending_ordered_drop_slots": [],
+      "pending_sha256": null,
+      "reply": {
+        "bytes": 18731,
+        "durable": true,
+        "peer_highwater": 45,
+        "published": true,
+        "status": "durable"
+      },
+      "sha256": "6bda882ad126aa8d4dcff9f97b23227d3d433473be31e4bc7d82df71ef685f39"
+    }
+  ],
+  "actual_SIGKILL_cold_restores": 1,
+  "actor_processes": [
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-client-cooking/009/actors/loaded-startup/process.json",
+      "bytes": 862,
+      "sha256": "27b67da6b239f476ce0cb223f091cecbad8797c7819eec766839e56ebc115081"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-client-cooking/009/actors/cold-restore/process.json",
+      "bytes": 860,
+      "sha256": "1c31cf6a227cbcac2933631c097a3643ced39057fb0fbe1ae076f52775d2e841"
+    }
+  ],
+  "failed_response": {
+    "id": "raw-7",
+    "ok": false,
+    "error": {
+      "code": "PlayerStepUnavailable",
+      "message": "cooking-effects:item-entity-and-level-rng-owner-required"
+    }
+  },
+  "response_log": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-client-cooking/009/actors/cold-restore/tcp-0.responses",
+    "bytes": 3658,
+    "sha256": "8d5b1b055c9dce81f7cc23cf4c85649f0a6360009eea3471e82e84660f8a041f"
+  },
+  "diagnosis": "The runner expected a successful remove/recreate step. Frozen019 completes Core/player work once, retains the unsupported Drop queue, and returns the exact missing-owner PlayerStepUnavailable fault through Scene. This attempt stopped before observing or saving the returned reset state.",
+  "planned_runner_correction": "Require the exact actual missing-owner error for reset and blocked subsequent steps, then independently inspect clock/player/body and compare all atomic save bytes. No production mutation, effects drain or error suppression.",
+  "post_reset_state_observed": false,
+  "post_reset_durable_save_observed": false,
+  "pending_effects_cold_restore_observed": false
+}

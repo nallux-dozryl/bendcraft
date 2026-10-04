@@ -5,13 +5,15 @@ immutable actor artifact. Current preparation targets Actor004/producer019 with
 `--actor-generation 19`. The selection binds the existing actor helper's `WORK`,
 `SOURCE` and `ACTOR` together; it never falls back to another generation. It never
 builds an actor, compiles a checker, or launches a foreground client. File-only
-preparation passed; native behavior is pending a successful actual019 executable
-and the existing lane-capacity coordination.
+preparation passed. The actual019 native artifact is available with binary SHA256
+`641089cd1a7e1fd48467df39a4a74068e5d71c507964d5ada3dd03ff038516fd`.
+The corrected native sequence remains pending lane capacity after the two
+retained attempts described below.
 
 The retained producer018 prepared receipt records file-only preparation only.
 Its actual producer later failed native arity greater than247, with no emitted C.
 The new source generation boxes the cooking sidecar and adds atomic pending-intent
-recovery. This consumer has not established a native verdict for either generation.
+recovery. This consumer has not established its complete narrow native verdict.
 
 Use the bundled Python runtime required by the existing actor helpers:
 
@@ -23,8 +25,7 @@ The native consumer uses the same command with `--native`. It reuses
 `test_playable_client_actor004_boundary.artifact`, `PlayableBackend`, the actual
 TCP/MCP clients, `R.bounded`, owned-group journals and descendant cleanup. It
 requires the successful selected build and pins its binary, source map,
-runtime facts, installed26.3 JAR and independent references. No native run has
-been performed by this preparation.
+runtime facts, installed26.3 JAR and independent references.
 
 The fixture contains one real loaded Core section, a standing player and one
 north-facing lit furnace. It uses the existing `W.Unspecified` legacy generation
@@ -36,6 +37,16 @@ footprint stays inside the loaded section. Actual native attempt007 used y1 and
 passed startup plus the first complete furnace save, then its second step refused
 the unloaded lower neighboring section. That failure is retained independently;
 the corrected fixture changes loaded coordinates only.
+Actual attempt009 used the corrected floor and passed three complete atomic
+saves: startup, one effect-free furnace tick, and a real SIGKILL/cold restore of
+the acknowledged Core/player/body/Details snapshot. The remove/recreate step
+then returned the exact missing-owner `PlayerStepUnavailable` fault. The runner
+had incorrectly expected a successful result and stopped without post-reset
+inspection or saving. The retained failure makes no reset/recovery claim.
+The expected fault now follows the actual Session/Scene contract: the reset
+tick completes Core/player work once before delivery reports its unavailable
+owner; later attempts fail before another Core tick. State and durable bytes
+are checked separately from the fault response.
 Its bootstrap budget is the actual section-derived 4100 units. The saved furnace
 contains beef2, coal2, progress40/total200,
 remaining burn10/total10 and speed1. The body uses the physical receiver's tag
@@ -61,12 +72,14 @@ The prepared native sequence is:
    group, cold-start another actual actor and verify the last acknowledged
    Core/player/body/Details snapshot. A further complete save must retain it.
 4. Schedule removal and recreation of the same furnace through real
-   `world.block.set`, then one `simulation.step`. Observe both accepted Core
+   `world.block.set`, then one `simulation.step`. Require the exact missing-owner
+   fault, then observe both accepted Core
    edits and the resulting unlit furnace. Acknowledge a complete atomic save
    containing its fresh empty physical body and the ordered pending Drop intents.
    The fresh body must have an empty root name, four zero timers, speed1, empty
    Items with element type0, empty RecipesUsed, and no prior unknown/base fields.
-5. Request another step; the unsupported pending queue must leave Core and player
+5. Request another step; require the same exact fault and verify that the
+   unsupported pending queue leaves Core and player
    unchanged. SIGKILL, cold-start a third actor from the acknowledged reset save,
    retry that blocked step, and acknowledge another complete save with the exact
    restored ordered queue and fresh body.
