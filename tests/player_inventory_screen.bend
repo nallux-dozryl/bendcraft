@@ -38,6 +38,7 @@ def acquisition_state() -> S.State:
 
 def hit_value(hit:S.Hit) -> J.Value:
   match hit:
+    case S.AtViewport{width,height,nw,nh,target}: hit_value(target)
     case S.Outside{}: L.text("outside")
     case S.Slot{index}: L.obj([J.JMember{"slot",L.uint(index)}])
     case S.Palette{index}: L.obj([J.JMember{"palette",L.uint(index)}])
@@ -60,6 +61,7 @@ def intent_value(intent:S.Intent) -> J.Value:
     case S.MenuOpen{}: L.text("open")
     case S.MenuClose{}: L.text("close")
     case S.MenuClick{slot,I.Pickup{button}}: L.obj([J.JMember{"pickup",J.JArray{[L.uint(slot),L.uint(button)]}}])
+    case S.MenuClick{slot,I.Swap{button}}: L.obj([J.JMember{"swap",J.JArray{[L.uint(slot),L.uint(button)]}}])
     case S.MenuClick{slot,click}: L.obj([J.JMember{"menu-click",L.uint(slot)}])
     case S.Quit{}: L.text("quit")
 
@@ -68,11 +70,40 @@ def intent_values(values:List<&2,S.Intent>) -> List<&2,J.Value>:
     case Nil{}: []
     case value <> rest: intent_value(value) <> intent_values(rest)
 
+def source_value(value:Maybe<&2,U32>) -> J.Value:
+  match value:
+    case None{}: J.JNull{}
+    case Some{index}: L.uint(index)
+
+def offer_value(value:Maybe<&2,D.Definition>) -> J.Value:
+  match value:
+    case None{}: J.JNull{}
+    case Some{D.Definition{number,id,description,limit,set,hash,enabled}}:
+      J.JArray{[L.uint(number),L.text(id),L.text(description),L.uint(limit),L.uint(set),L.text(hash),L.boolean(enabled)]}
+
+def notice_value(value:S.Notice) -> J.Value:
+  match value:
+    case S.Ready{}: L.text("ready")
+    case S.Waiting{}: L.text("waiting")
+    case S.Rejected{}: L.text("rejected")
+    case S.Invalid{}: L.text("invalid")
+    case S.TooSmall{}: L.text("too-small")
+    case S.Unavailable{}: L.text("unavailable")
+    case S.ChooseTarget{}: L.text("choose-target")
+    case S.ChooseSlot{}: L.text("choose-slot")
+
+def hover_viewport(hit:S.Hit) -> J.Value:
+  match hit:
+    case S.AtViewport{width,height,nw,nh,target}: J.JArray{[L.uint(width),L.uint(height),L.uint(nw),L.uint(nh)]}
+    case _: J.JNull{}
+
 def state_value(state:S.State) -> J.Value:
-  S.State{open,keys,buttons,captured,focused,source,offer,pending,tab,row,query,message,hover} = state
+  S.State{open,keys,buttons,captured,focused,source,offer,pending,tab,row,query,message,+hover} = state
   L.obj([J.JMember{"open",L.boolean(open)},J.JMember{"keys",L.uint(keys)},J.JMember{"buttons",L.uint(buttons)},
     J.JMember{"captured",L.boolean(captured)},J.JMember{"focused",L.boolean(focused)},J.JMember{"pending",L.uint(pending)},
-    J.JMember{"tab",L.uint(tab)},J.JMember{"row",L.uint(row)},J.JMember{"query",L.text(query)},J.JMember{"hover",hit_value(hover)}])
+    J.JMember{"tab",L.uint(tab)},J.JMember{"row",L.uint(row)},J.JMember{"query",L.text(query)},J.JMember{"hover",hit_value(hover)},
+    J.JMember{"source",source_value(source)},J.JMember{"offer",offer_value(offer)},J.JMember{"notice",notice_value(message)},
+    J.JMember{"hover_viewport",hover_viewport(hover)}])
 
 def report(label:String,decision:S.Decision) -> IO(Unit):
   S.Decision{S.Frame{state,snapshot,catalog},intents,consumed} = decision
@@ -80,6 +111,79 @@ def report(label:String,decision:S.Decision) -> IO(Unit):
     J.JMember{"authority",Wire.menu_snapshot_value(snapshot)},J.JMember{"intents",J.JArray{intent_values(intents)}},J.JMember{"consumed",L.boolean(consumed)}])))
 
 def frame(state:S.State,opened:Bool) -> S.Frame: S.Frame{state,fixture(opened),D.legacy()}
+
+def with_carried(snapshot:I.MenuSnapshot,carried:Inv.Slot) -> I.MenuSnapshot:
+  I.MenuSnapshot{saved,craft,old,result,opened,revision} = snapshot
+  I.MenuSnapshot{saved,craft,carried,result,opened,revision}
+
+def key_frame(state:S.State,opened:Bool,carried:Inv.Slot) -> S.Frame:
+  S.Frame{state,with_carried(fixture(opened),carried),D.legacy()}
+
+# Actual Move establishes hover; keyboard cases never manufacture a Slot hit.
+def moved(frame:S.Frame,+viewport:S.Viewport,x:U32,y:U32) -> S.Frame:
+  S.decision_frame(S.step_frame(frame,viewport,Move{x,y},True{},False{}))
+
+def keyed(frame:S.Frame,+viewport:S.Viewport,code:U32,down:Bool) -> S.Decision:
+  S.step_frame(frame,viewport,Key{code,down},True{},False{})
+
+def gui_key(label:String,x:U32,y:U32,code:U32,carried:Inv.Slot) -> IO(Unit):
+  +viewport = {S.Viewport{320,180,960,540} : S.Viewport}
+  report(label,keyed(moved(key_frame(main_state(True{},0,0),True{},carried),viewport,x,y),viewport,code,True{}))
+
+def swap_hovered() -> S.Frame:
+  moved(key_frame(main_state(True{},0,0),True{},Inv.InvEmpty{}),S.Viewport{320,180,960,540},315,291)
+
+def swap_sent() -> S.Frame:
+  S.decision_frame(keyed(swap_hovered(),S.Viewport{320,180,960,540},70,True{}))
+
+def swap_acked() -> S.Frame:
+  S.decision_frame(S.acknowledge(swap_sent(),with_carried(fixture(True{}),Inv.InvEmpty{}),True{}))
+
+def swap_released() -> S.Frame:
+  S.decision_frame(keyed(swap_acked(),S.Viewport{320,180,960,540},70,False{}))
+
+def swap_captured() -> S.Frame:
+  S.decision_frame(S.step_frame(swap_hovered(),S.Viewport{320,180,960,540},Look{0.0,0.0},True{},True{}))
+
+def swap_cases() -> IO(Unit):
+  +viewport = {S.Viewport{320,180,960,540} : S.Viewport}
+  +resized = {S.Viewport{320,180,1920,1080} : S.Viewport}
+  +scaled = {S.Viewport{640,360,960,540} : S.Viewport}
+  do IO<Unit>:
+    gui_key("digit-0",315,291,49,Inv.InvEmpty{})
+    gui_key("digit-1",315,291,50,Inv.InvEmpty{})
+    gui_key("digit-2",315,291,51,Inv.InvEmpty{})
+    gui_key("digit-3",315,291,52,Inv.InvEmpty{})
+    gui_key("digit-4",315,291,53,Inv.InvEmpty{})
+    gui_key("digit-5",315,291,54,Inv.InvEmpty{})
+    gui_key("digit-6",315,291,55,Inv.InvEmpty{})
+    gui_key("digit-7",315,291,56,Inv.InvEmpty{})
+    gui_key("digit-8",315,291,57,Inv.InvEmpty{})
+    gui_key("offhand",315,291,70,Inv.InvEmpty{})
+    gui_key("digit-no-hover",960,540,49,Inv.InvEmpty{})
+    gui_key("offhand-no-hover",960,540,70,Inv.InvEmpty{})
+    gui_key("digit-carried",315,291,49,stack("minecraft:dirt",3))
+    gui_key("offhand-carried",315,291,70,stack("minecraft:dirt",3))
+    gui_key("digit-shift",315,291,49,Inv.InvEmpty{})
+    gui_key("offhand-control",315,291,70,Inv.InvEmpty{})
+    gui_key("digit-result",651,177,49,Inv.InvEmpty{})
+    gui_key("offhand-self",459,225,70,Inv.InvEmpty{})
+    gui_key("offhand-lowercase",315,291,102,Inv.InvEmpty{})
+    report("pending-blocks-key",keyed(swap_sent(),viewport,57,True{}))
+    report("held-after-reply",keyed(swap_acked(),viewport,70,True{}))
+    report("release-rearm",keyed(swap_released(),viewport,70,True{}))
+    report("resize-clears-hover",keyed(swap_hovered(),resized,70,True{}))
+    report("scale-clears-hover",keyed(swap_hovered(),scaled,49,True{}))
+    report("capture-clears-hover",keyed(swap_captured(),viewport,70,True{}))
+    report("resized-new-move",keyed(moved(swap_hovered(),resized,630,582),resized,70,True{}))
+    report("world-digit",keyed(key_frame(main_state(False{},0,0),False{},Inv.InvEmpty{}),viewport,57,True{}))
+    report("world-offhand",keyed(key_frame(main_state(False{},0,0),False{},Inv.InvEmpty{}),viewport,70,True{}))
+    report("world-retained-search",keyed(key_frame(main_state(False{},0,3),False{},Inv.InvEmpty{}),viewport,57,True{}))
+    report("search-digit",keyed(key_frame(main_state(True{},0,3),True{},Inv.InvEmpty{}),viewport,57,True{}))
+    report("search-offhand-carried",keyed(key_frame(main_state(True{},0,3),True{},stack("minecraft:dirt",3)),viewport,70,True{}))
+    report("tab-clears-hover",keyed(S.decision_frame(S.step_frame(swap_hovered(),viewport,Mouse{450,30,0,True{}},True{},False{})),viewport,70,True{}))
+    report("focus-clears-hover",S.step_frame(swap_hovered(),viewport,Key{70,True{}},False{},False{}))
+    report("late-refused-focus",S.acknowledge(S.decision_frame(S.step_frame(swap_sent(),viewport,Look{0.0,0.0},False{},False{})),with_carried(fixture(True{}),Inv.InvEmpty{}),False{}))
 
 def cases() -> IO(Unit):
   +viewport = {S.Viewport{320,180,960,540} : S.Viewport}
@@ -162,6 +266,7 @@ def arguments(args:List<String>) -> IO(Unit):
   match args:
     case ["cases"]: cases()
     case ["hits"]: hits(hit_points(),0)
+    case ["swap-keys"]: swap_cases()
     case ["definitions",path]: definitions(path)
     case _: IO.die(Unit,2,"inventory-screen requires cases, hits or definitions PATH")
 

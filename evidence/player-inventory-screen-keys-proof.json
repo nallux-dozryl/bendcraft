@@ -1,0 +1,140 @@
+{
+  "status": "independent-kernel-pass",
+  "law_count": 17,
+  "new_complete_step_laws": 8,
+  "previous_laws_retained": 9,
+  "root_names": [
+    "player_inventory_screen_laws:event_retains_full_authority",
+    "player_inventory_screen_laws:reply_installs_full_authority",
+    "player_inventory_screen_laws:focus_loss_composes_without_changing_pending_or_authority",
+    "player_inventory_screen_laws:unadmitted_observation_retains_entire_controller",
+    "player_inventory_screen_laws:refused_close_retains_owned_inventory",
+    "player_inventory_screen_laws:menu_open_close_changes_only_open_flag",
+    "player_inventory_screen_laws:inventory_authority_refusal_retains_every_owned_slot",
+    "player_inventory_screen_laws:invalid_transfer_retains_every_owned_slot",
+    "player_inventory_screen_laws:production_transfer_count_conservation",
+    "player_inventory_screen_laws:full_offhand_key_requests_hovered_swap",
+    "player_inventory_screen_laws:full_number_key_requests_hovered_swap",
+    "player_inventory_screen_laws:carried_item_blocks_shortcut_and_retains_full_frame",
+    "player_inventory_screen_laws:resized_viewport_refuses_stale_hover_and_retains_full_frame",
+    "player_inventory_screen_laws:completed_swap_then_held_key_retains_received_authority",
+    "player_inventory_screen_laws:closed_menu_digit_passes_world_and_retains_full_frame",
+    "player_inventory_screen_laws:captured_pointer_releases_controls_and_retains_full_frame",
+    "player_inventory_screen_laws:pending_swap_refuses_second_request_and_retains_full_frame"
+  ],
+  "source_closure": {
+    "count": 45,
+    "sha256": "a276c7302ef2d4d3f672cb729513c236d7f151802d3123b08d997001b370ce57",
+    "pinned_before_load_and_unchanged": true
+  },
+  "source_api": {
+    "ordinary_passed": true,
+    "zero_holes": true,
+    "all_original_tlds_ctrs_tmps_retained": true,
+    "checked_types_and_bodies_unchanged": true,
+    "original_root_count": 3281,
+    "exclusions": []
+  },
+  "compiler_implementation_pins": [
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/bend.ts",
+      "sha256": "7deae3693eb896f33c73867081b99d2c6f3ed3b57e77e55eb5f6260840dd0e63"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/safe.ts",
+      "sha256": "54cb3a534ab7cc9ee313bf6383b3948ccdcac022469b3020e00745bbfe6f7e04"
+    }
+  ],
+  "selection": {
+    "path": "build/player-inventory-screen/gui-selective-export-001/selection.json",
+    "sha256": "4f4aa4ca74f298b6da236ad248bcb544683d93ed335bc6f600b6afb20d7e16f0",
+    "bytes": 17989
+  },
+  "script": {
+    "path": "build/player-inventory-screen/gui-selective-export-001/executed-inline-source.mjs",
+    "sha256": "3c6f99f76c96af9beefc365d0a91cb7abcbaaeb134090170bf778029898ef47c",
+    "bytes": 5415
+  },
+  "emitted": {
+    "path": "build/player-inventory-screen/gui-selective-export-001/selected.bendtt",
+    "sha256": "ea1d9b041ae32f9ec04be408fc7389703e896713352c10d3479c2dc459522f87",
+    "bytes": 1706491
+  },
+  "export": {
+    "argv": [
+      "/opt/homebrew/bin/node",
+      "--stack-size=4096",
+      "--max-old-space-size=4096",
+      "--experimental-transform-types",
+      "--input-type=module",
+      "--eval"
+    ],
+    "script_path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-inventory-screen/gui-selective-export-001/executed-inline-source.mjs",
+    "script_sha256": "3c6f99f76c96af9beefc365d0a91cb7abcbaaeb134090170bf778029898ef47c",
+    "mode": "export",
+    "pid": 59396,
+    "process_group_absent": true,
+    "returncode": 0,
+    "seconds": 11.610252083279192,
+    "timed_out": false,
+    "stdout_sha256": "beed5f1f56457bfa7db13fb222eaf82b17062e2b278d75ab4134c74de8339675",
+    "stderr_sha256": "5597c2ba1ea7b2c01d63b3538aab6e4f57e40ce949dbe5955100dbe42fd242f1",
+    "emitted_sha256": "ea1d9b041ae32f9ec04be408fc7389703e896713352c10d3479c2dc459522f87",
+    "emitted_bytes": 1706491
+  },
+  "kernel": {
+    "argv": [
+      "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-inventory-screen/gui-selective-export-001/selected.bendtt"
+    ],
+    "script_path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-inventory-screen/gui-selective-export-001/executed-inline-source.mjs",
+    "script_sha256": "3c6f99f76c96af9beefc365d0a91cb7abcbaaeb134090170bf778029898ef47c",
+    "mode": "kernel",
+    "pid": 59722,
+    "process_group_absent": true,
+    "returncode": 0,
+    "seconds": 0.4946077084168792,
+    "timed_out": false,
+    "stdout_sha256": "61b73cda11b6b665b9f99f2defd3d3b57f985c865225e942a5bdaa594a503e47",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "emitted_sha256": "ea1d9b041ae32f9ec04be408fc7389703e896713352c10d3479c2dc459522f87",
+    "emitted_bytes": 1706491
+  },
+  "kernel_binary": {
+    "path": "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+    "sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7",
+    "bytes": 3271216
+  },
+  "raw": [
+    {
+      "path": "build/player-inventory-screen/gui-selective-export-001/export.receipt.json",
+      "sha256": "b6c140a97fe3da3b1727a42c080940dd5667de1a6e910f6ae57bc59be5e81327",
+      "bytes": 855
+    },
+    {
+      "path": "build/player-inventory-screen/gui-selective-export-001/export.stdout",
+      "sha256": "beed5f1f56457bfa7db13fb222eaf82b17062e2b278d75ab4134c74de8339675",
+      "bytes": 1596
+    },
+    {
+      "path": "build/player-inventory-screen/gui-selective-export-001/export.stderr",
+      "sha256": "5597c2ba1ea7b2c01d63b3538aab6e4f57e40ce949dbe5955100dbe42fd242f1",
+      "bytes": 177
+    },
+    {
+      "path": "build/player-inventory-screen/gui-selective-export-001/kernel.receipt.json",
+      "sha256": "1277e2c493ada573a5d189e74d27f45863b175628fdb242789e19c6576d9e92f",
+      "bytes": 871
+    },
+    {
+      "path": "build/player-inventory-screen/gui-selective-export-001/kernel.stdout",
+      "sha256": "61b73cda11b6b665b9f99f2defd3d3b57f985c865225e942a5bdaa594a503e47",
+      "bytes": 17
+    },
+    {
+      "path": "build/player-inventory-screen/gui-selective-export-001/kernel.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  ]
+}

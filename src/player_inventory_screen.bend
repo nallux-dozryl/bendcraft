@@ -16,6 +16,7 @@ type Hit is Data:
   Previous{}
   Next{}
   Search{}
+  AtViewport{width:U32,height:U32,native_width:U32,native_height:U32,target:Hit}
 
 type Notice is Data:
   Ready{}
@@ -214,7 +215,8 @@ def focus_lost(state:State) -> Update:
 
 def synchronize_focused(state:State,+captured:Bool) -> Update:
   State{+open,keys,buttons,+previous,oldfocus,source,offer,pending,tab,row,query,message,hover} = state
-  Update{State{open,keys,buttons,captured,True{},source,offer,pending,tab,row,query,message,hover},
+  Update{State{open,keys,buttons,captured,True{},source,offer,pending,tab,row,query,message,
+      P.choose(Hit,Outside{},hover,captured || previous)},
     P.choose(List<&2,Intent>,[ReleaseControls{},Capture{False{}}],
       P.choose(List<&2,Intent>,[ReleaseControls{}],[],Bool.not(open) && previous && Bool.not(captured)),open && captured),open}
 
@@ -233,18 +235,24 @@ def observed_checked(admitted:Bool,state:State,snapshot:I.MenuSnapshot) -> State
     case False{}: state
     case True{}: observed_open(state,snapshot)
 
-def observed(+state:State,+snapshot:I.MenuSnapshot) -> State:
+def observed_valid(valid:Bool,+state:State,snapshot:I.MenuSnapshot) -> State:
   State{open,keys,buttons,captured,focused,source,offer,pending,tab,row,query,message,hover} = state
-  observed_checked(focused && U32.is_zero(pending) && I.menu_snapshot_valid(snapshot),state,snapshot)
+  observed_checked(focused && U32.is_zero(pending) && valid,state,snapshot)
+
+def observed(+state:State,+snapshot:I.MenuSnapshot) -> State:
+  observed_valid(I.menu_snapshot_valid(snapshot),state,snapshot)
 
 def observation_focused(state:State) -> State:
   State{open,keys,buttons,captured,focused,source,offer,pending,tab,row,query,message,hover} = state
   State{open,keys,buttons,captured,True{},source,offer,pending,tab,row,query,message,hover}
 
-def authority_synchronized(focused:Bool,state:State,snapshot:I.MenuSnapshot,captured:Bool) -> Update:
+def authority_synchronized_valid(valid:Bool,focused:Bool,state:State,snapshot:I.MenuSnapshot,captured:Bool) -> Update:
   match focused:
     case False{}: focus_lost(state)
-    case True{}: synchronize(observed(observation_focused(state),snapshot),True{},captured)
+    case True{}: synchronize(observed_valid(valid,observation_focused(state),snapshot),True{},captured)
+
+def authority_synchronized(focused:Bool,state:State,+snapshot:I.MenuSnapshot,captured:Bool) -> Update:
+  authority_synchronized_valid(I.menu_snapshot_valid(snapshot),focused,state,snapshot,captured)
 
 def synchronize_authority(state:State,snapshot:I.MenuSnapshot,focused:Bool,captured:Bool) -> Update:
   authority_synchronized(focused,state,snapshot,captured)
@@ -266,6 +274,8 @@ def key_bit(code:U32) -> U32:
     case 69: 512
     case 101: 512
     case 27: 1024
+    case 70: 2048
+    case 102: 2048
     case _: 0
 
 def toggle_state(state:State) -> Update:
@@ -289,13 +299,39 @@ def toggle_admitted(state:State,viewport:Viewport,idle:Bool) -> Update:
     case False{}: Update{state,[],True{}}
     case True{}: toggle_viewport(state,viewport)
 
+# Hover comes only from actual Move/Mouse coordinates. The keyboard does not
+# fabricate a pointer position or turn a creative palette offer into ownership.
+def unwrapped_hit(target:Hit) -> Hit:
+  match target:
+    case AtViewport{width,height,nw,nh,value}: unwrapped_hit(value)
+    case _: target
+
+def swap_hover(target:Hit,state:State,button:U32) -> Update:
+  match target:
+    case Slot{slot}: pending_intent(state,MenuClick{slot,I.Swap{button}})
+    case _: Update{state,[],True{}}
+
+def swap_key_admitted(allowed:Bool,+state:State,button:U32) -> Update:
+  match allowed:
+    case False{}: Update{state,[],is_open(state)}
+    case True{}:
+      State{open,keys,buttons,captured,focused,source,offer,pending,tab,row,query,message,+target} = state
+      swap_hover(unwrapped_hit(target),State{open,keys,buttons,captured,focused,source,offer,pending,tab,row,query,message,target},button)
+
+def swap_key(state:State,button:U32) -> Update:
+  State{+open,keys,buttons,+captured,+focused,source,offer,+pending,tab,row,query,message,hover} = state
+  swap_key_admitted(open && focused && U32.is_zero(pending) && Bool.not(captured),
+    State{open,keys,buttons,captured,focused,source,offer,pending,tab,row,query,message,hover},button)
+
 def key_command_values(+code:U32,+state:State,viewport:Viewport,+open:Bool,+pending:U32,captured:Bool) -> Update:
   match code:
     case 69: toggle_admitted(state,viewport,U32.is_zero(pending))
     case 101: toggle_admitted(state,viewport,U32.is_zero(pending))
     case 27: P.choose(Update,toggle_admitted(state,viewport,U32.is_zero(pending)),Update{state,[],False{}},open)
-    case _: P.choose(Update,pending_intent(state,Select{U32.sub(code,49)}),Update{state,[],open},
-      open && U32.is_zero(pending) && Bool.not(captured) && U32.is_ge(code,49) && U32.is_le(code,57))
+    case 70: swap_key(state,40)
+    case 102: swap_key(state,40)
+    case _: P.choose(Update,swap_key(state,U32.sub(code,49)),Update{state,[],open},
+      U32.is_ge(code,49) && U32.is_le(code,57))
 
 def key_command(state:State,viewport:Viewport,code:U32) -> Update:
   State{+open,keys,buttons,+captured,focused,source,offer,+pending,tab,row,query,message,hover} = state
@@ -303,7 +339,7 @@ def key_command(state:State,viewport:Viewport,code:U32) -> Update:
 
 def search(state:State,text:String) -> State:
   State{open,keys,buttons,captured,focused,source,offer,pending,tab,row,query,message,hover} = state
-  State{open,keys,buttons,captured,focused,None{},None{},pending,tab,0,text,message,hover}
+  State{open,keys,buttons,captured,focused,None{},None{},pending,tab,0,text,message,Outside{}}
 
 def drop_last(text:String) -> String:
   match text:
@@ -314,7 +350,7 @@ def drop_last(text:String) -> String:
 def search_append(state:State,+code:U32) -> Update:
   State{open,keys,buttons,captured,focused,source,offer,pending,tab,row,query,message,hover} = state
   Update{State{open,keys,buttons,captured,focused,None{},None{},pending,tab,0,
-    query ++ SCon{Chr{P.choose(U32,U32.add(code,32),code,U32.is_ge(code,65) && U32.is_le(code,90))},SNil{}},message,hover},[],True{}}
+    query ++ SCon{Chr{P.choose(U32,U32.add(code,32),code,U32.is_ge(code,65) && U32.is_le(code,90))},SNil{}},message,Outside{}},[],True{}}
 
 def search_character(state:State,code:U32,allowed:Bool) -> Update:
   match allowed:
@@ -324,8 +360,8 @@ def search_character(state:State,code:U32,allowed:Bool) -> Update:
 def search_key(+state:State,+code:U32) -> Update:
   State{open,keys,buttons,captured,focused,source,offer,pending,tab,row,+query,message,hover} = state
   match code:
-    case 27: Update{State{open,keys,buttons,captured,focused,source,offer,pending,1,row,query,message,hover},[],True{}}
-    case 13: Update{State{open,keys,buttons,captured,focused,source,offer,pending,1,row,query,message,hover},[],True{}}
+    case 27: Update{State{open,keys,buttons,captured,focused,source,offer,pending,1,row,query,message,Outside{}},[],True{}}
+    case 13: Update{State{open,keys,buttons,captured,focused,source,offer,pending,1,row,query,message,Outside{}},[],True{}}
     case 8: Update{search(state,drop_last(query)),[],True{}}
     case _: search_character(state,code,Nat.is_lt(String.length(query),64n) &&
       ((U32.is_ge(code,65) && U32.is_le(code,90)) || (U32.is_ge(code,97) && U32.is_le(code,122)) ||
@@ -337,9 +373,9 @@ def key_normal(state:State,viewport:Viewport,+code:U32,searching:Bool) -> Update
     case False{}: key_command(state,viewport,code)
 
 def key_press(state:State,viewport:Viewport,+code:U32) -> Update:
-  State{+open,keys,buttons,captured,focused,source,offer,+pending,+tab,row,query,message,hover} = state
+  State{+open,keys,buttons,+captured,focused,source,offer,+pending,+tab,row,query,message,hover} = state
   +next = {State{open,keys,buttons,captured,focused,source,offer,pending,tab,row,query,message,hover} : State}
-  key_normal(next,viewport,code,U32.is_eq(tab,3))
+  key_normal(next,viewport,code,open && U32.is_zero(pending) && Bool.not(captured) && U32.is_eq(tab,3))
 
 def key_edge(edge:Bool,+state:State,viewport:Viewport,+code:U32) -> Update:
   match edge:
@@ -352,13 +388,58 @@ def key_event(state:State,viewport:Viewport,+code:U32,+down:Bool) -> Update:
   key_edge(down && U32.is_zero(U32.and(keys,bit)),
     State{open,latch(keys,bit,down),buttons,captured,focused,source,offer,pending,tab,row,query,message,hover},viewport,code)
 
+# Actual26.3 AbstractContainerScreen.checkHotbarKeyPressed requires an empty
+# authoritative carried stack; its mutation receiver has a broader contract.
+def carried_is_empty(snapshot:I.MenuSnapshot) -> Bool:
+  I.MenuSnapshot{saved,craft,carried,result,opened,revision} = snapshot
+  match carried:
+    case Inv.InvEmpty{}: True{}
+    case _: False{}
+
+def swap_code(+code:U32) -> Bool:
+  (U32.is_ge(code,49) && U32.is_le(code,57)) || U32.is_eq(code,70) || U32.is_eq(code,102)
+
+def searching(state:State) -> Bool:
+  State{open,keys,buttons,captured,focused,source,offer,pending,tab,row,query,message,hover} = state
+  open && focused && Bool.not(captured) && U32.is_zero(pending) && U32.is_eq(tab,3)
+
+def key_carried_checked(allowed:Bool,+state:State,viewport:Viewport,+code:U32,down:Bool) -> Update:
+  match allowed:
+    case True{}: key_event(state,viewport,code,down)
+    case False{}:
+      State{+open,keys,buttons,captured,focused,source,offer,pending,tab,row,query,message,hover} = state
+      Update{State{open,latch(keys,key_bit(code),down),buttons,captured,focused,source,offer,pending,tab,row,query,message,hover},[],open}
+
+def key_carried_event(+state:State,snapshot:I.MenuSnapshot,viewport:Viewport,+code:U32,down:Bool) -> Update:
+  key_carried_checked(Bool.not(is_open(state)) || Bool.not(swap_code(code)) || searching(state) || carried_is_empty(snapshot),state,viewport,code,down)
+
 def hover(state:State,target:Hit) -> State:
   State{open,keys,buttons,captured,focused,source,offer,pending,tab,row,query,message,old} = state
   State{open,keys,buttons,captured,focused,source,offer,pending,tab,row,query,message,target}
 
+def hover_in(state:State,viewport:Viewport,target:Hit) -> State:
+  Viewport{width,height,nw,nh} = viewport
+  hover(state,AtViewport{width,height,nw,nh,target})
+
+def hover_current(viewport:Viewport,target:Hit) -> Bool:
+  Viewport{width,height,nw,nh} = viewport
+  match target:
+    case AtViewport{oldwidth,oldheight,oldnw,oldnh,value}:
+      U32.is_eq(width,oldwidth) && U32.is_eq(height,oldheight) && U32.is_eq(nw,oldnw) && U32.is_eq(nh,oldnh)
+    case _: True{}
+
+def hover_geometry_checked(current:Bool,state:State) -> State:
+  match current:
+    case False{}: hover(state,Outside{})
+    case True{}: state
+
+def hover_geometry(+state:State,viewport:Viewport) -> State:
+  State{open,keys,buttons,captured,focused,source,offer,pending,tab,row,query,message,target} = state
+  hover_geometry_checked(hover_current(viewport,target),state)
+
 def tab_change(state:State,index:U32) -> Update:
   State{open,keys,buttons,captured,focused,source,offer,pending,tab,row,query,message,hover} = state
-  Update{State{open,keys,buttons,captured,focused,None{},None{},pending,index,0,"",Ready{},hover},[],True{}}
+  Update{State{open,keys,buttons,captured,focused,None{},None{},pending,index,0,"",Ready{},Outside{}},[],True{}}
 
 def offered(state:State,item:D.Definition) -> Update:
   State{open,keys,buttons,captured,focused,source,offer,pending,tab,row,query,message,hover} = state
@@ -395,11 +476,11 @@ def max_row(catalog:D.Catalog,query:String) -> U32:
 
 def scroll_to(state:State,row:U32) -> Update:
   State{open,keys,buttons,captured,focused,source,offer,pending,tab,previous,query,message,old} = state
-  Update{State{open,keys,buttons,captured,focused,None{},None{},pending,tab,row,query,message,old},[],True{}}
+  Update{State{open,keys,buttons,captured,focused,None{},None{},pending,tab,row,query,message,Outside{}},[],True{}}
 
 def search_focus(state:State) -> Update:
   State{open,keys,buttons,captured,focused,source,offer,pending,tab,row,query,message,old} = state
-  Update{State{open,keys,buttons,captured,focused,None{},None{},pending,3,row,query,message,old},[],True{}}
+  Update{State{open,keys,buttons,captured,focused,None{},None{},pending,3,row,query,message,Outside{}},[],True{}}
 
 def offered_slot(state:State,+snapshot:I.MenuSnapshot,index:U32,+button:U32,found:Maybe<&2,U32>,offer:Maybe<&2,D.Definition>,source:Maybe<&2,U32>,direct:Bool) -> Update:
   match found offer direct:
@@ -411,6 +492,7 @@ def offered_slot(state:State,+snapshot:I.MenuSnapshot,index:U32,+button:U32,foun
 
 def click_target(target:Hit,+state:State,+snapshot:I.MenuSnapshot,+catalog:D.Catalog,+button:U32,source:Maybe<&2,U32>,offer:Maybe<&2,D.Definition>,tab:U32,+row:U32,query:String) -> Update:
   match target:
+    case AtViewport{width,height,nw,nh,value}: click_target(value,state,snapshot,catalog,button,source,offer,tab,row,query)
     case Outside{}: Update{state,[],True{}}
     case Tab{index}: tab_change(state,index)
     case Palette{index}: offer_selected(state,item_at(palette(catalog,state),U32.to_nat(index)),creative(snapshot))
@@ -423,13 +505,13 @@ def click(state:State,snapshot:I.MenuSnapshot,catalog:D.Catalog,target:Hit,butto
   State{open,keys,buttons,captured,focused,+source,+offer,pending,+tab,+row,+query,message,old} = state
   click_target(target,State{open,keys,buttons,captured,focused,source,offer,pending,tab,row,query,message,old},snapshot,catalog,button,source,offer,tab,row,query)
 
-def mouse_admitted(allowed:Bool,+state:State,snapshot:I.MenuSnapshot,catalog:D.Catalog,viewport:Viewport,+x:U32,+y:U32,button:U32) -> Update:
+def mouse_admitted(allowed:Bool,+state:State,snapshot:I.MenuSnapshot,catalog:D.Catalog,+viewport:Viewport,+x:U32,+y:U32,button:U32) -> Update:
   match allowed:
     case False{}: Update{state,[],is_open(state)}
     case True{}:
       State{open,keys,buttons,captured,focused,source,offer,pending,+tab,row,query,message,old} = state
       +target = hit(viewport,tab,x,y)
-      click(State{open,keys,buttons,captured,focused,source,offer,pending,tab,row,query,message,target},snapshot,catalog,target,button)
+      click(hover_in(State{open,keys,buttons,captured,focused,source,offer,pending,tab,row,query,message,old},viewport,target),snapshot,catalog,target,button)
 
 def mouse_event(state:State,snapshot:I.MenuSnapshot,catalog:D.Catalog,viewport:Viewport,x:U32,y:U32,+button:U32,+down:Bool) -> Update:
   State{+open,keys,+buttons,+captured,focused,source,offer,+pending,tab,row,query,message,hover} = state
@@ -437,11 +519,11 @@ def mouse_event(state:State,snapshot:I.MenuSnapshot,catalog:D.Catalog,viewport:V
   mouse_admitted(open && down && U32.is_lt(button,2) && U32.is_zero(pending) && Bool.not(captured) && U32.is_zero(U32.and(buttons,bit)),
     State{open,keys,latch(buttons,bit,down),captured,focused,source,offer,pending,tab,row,query,message,hover},snapshot,catalog,viewport,x,y,button)
 
-def valid_event(event:Event,+state:State,snapshot:I.MenuSnapshot,catalog:D.Catalog,viewport:Viewport,+open:Bool,captured:Bool,tab:U32) -> Update:
+def valid_event(event:Event,+state:State,snapshot:I.MenuSnapshot,catalog:D.Catalog,+viewport:Viewport,+open:Bool,captured:Bool,tab:U32) -> Update:
   match event:
-    case Key{code,down}: key_event(state,viewport,code,down)
+    case Key{code,down}: key_carried_event(hover_geometry(state,viewport),snapshot,viewport,code,down)
     case Mouse{x,y,button,down}: mouse_event(state,snapshot,catalog,viewport,x,y,button,down)
-    case Move{x,y}: Update{P.choose(State,hover(state,hit(viewport,tab,x,y)),state,open && Bool.not(captured)),[],open}
+    case Move{x,y}: Update{P.choose(State,hover_in(state,viewport,hit(viewport,tab,x,y)),state,open && Bool.not(captured)),[],open}
     case Close{}: Update{state,[ReleaseControls{},Capture{False{}},Quit{}],True{}}
     case _: Update{state,[],open}
 
@@ -462,10 +544,19 @@ def event_observed(+snapshot:I.MenuSnapshot,+catalog:D.Catalog,viewport:Viewport
   Update{state,intents,consumed} = result
   event_combined(intents,event_checked(I.menu_snapshot_valid(snapshot),state,snapshot,catalog,viewport,event))
 
-def step(state:State,+snapshot:I.MenuSnapshot,catalog:D.Catalog,viewport:Viewport,event:Event,focused:Bool,captured:Bool) -> Update:
+def step_observed(valid:Bool,+snapshot:I.MenuSnapshot,+catalog:D.Catalog,viewport:Viewport,event:Event,result:Update) -> Update:
+  Update{state,intents,consumed} = result
+  event_combined(intents,event_checked(valid,state,snapshot,catalog,viewport,event))
+
+# One actual invariant decision drives observation and event admission. This
+# exposes the production gate to proofs without a separate controller model.
+def step_checked(+valid:Bool,state:State,+snapshot:I.MenuSnapshot,+catalog:D.Catalog,+viewport:Viewport,+event:Event,focused:Bool,captured:Bool) -> Update:
   match focused:
     case False{}: focus_lost(state)
-    case True{}: event_observed(snapshot,catalog,viewport,event,synchronize_authority(state,snapshot,True{},captured))
+    case True{}: step_observed(valid,snapshot,catalog,viewport,event,authority_synchronized_valid(valid,True{},state,snapshot,captured))
+
+def step(state:State,+snapshot:I.MenuSnapshot,catalog:D.Catalog,viewport:Viewport,event:Event,focused:Bool,captured:Bool) -> Update:
+  step_checked(I.menu_snapshot_valid(snapshot),state,snapshot,catalog,viewport,event,focused,captured)
 
 def controller(result:Update) -> State:
   Update{state,intents,consumed} = result
@@ -637,6 +728,8 @@ def ref_matches(reference:Maybe<&2,U32>,index:Maybe<&2,U32>) -> Bool:
 
 def hit_same(a:Hit,b:Hit) -> Bool:
   match a b:
+    case AtViewport{width,height,nw,nh,target} _: hit_same(target,b)
+    case _ AtViewport{width,height,nw,nh,target}: hit_same(a,target)
     case Slot{x} Slot{y}: U32.is_eq(x,y)
     case Palette{x} Palette{y}: U32.is_eq(x,y)
     case Tab{x} Tab{y}: U32.is_eq(x,y)
@@ -734,6 +827,7 @@ def panel_content(+view:View,+state:State,+value:Layout,+x:U32,+y:U32,target:Hit
   State{open,keys,buttons,captured,focused,source,offer,pending,+tab,row,query,message,hover} = state
   Layout{width,height,+left,+top,+size,pw,ph,visible} = value
   match target:
+    case AtViewport{width,height,nw,nh,target}: panel_content(view,state,value,x,y,target)
     case Slot{+index}: slot_paint_position(view,state,index,x,y,size,slot_position(value,index))
     case Palette{index}: palette_paint(view,state,value,x,y,index)
     case Tab{+index}:
@@ -803,7 +897,7 @@ def draw_active(active:Bool,image:Image,view:View,state:State,+viewport:Viewport
 
 def draw_native(image:Image,view:View,+state:State,+viewport:Viewport) -> Image:
   Viewport{width,height,nw,nh} = viewport
-  draw_active(is_open(state) && viewport_valid(viewport) && visible(layout(width,height)),image,view,state,viewport)
+  draw_active(is_open(state) && viewport_valid(viewport) && visible(layout(width,height)),image,view,hover_geometry(state,viewport),viewport)
 
 def authority(frame:Frame) -> I.MenuSnapshot & D.Catalog:
   Frame{controller,snapshot,catalog} = frame

@@ -1,0 +1,415 @@
+{
+  "status": "focused-native-pass",
+  "cases": 107,
+  "comparison": {
+    "baseline": {
+      "controller_cases": 27,
+      "slot_cases": 46,
+      "processes": [
+        {
+          "receipt": {
+            "path": "build/player-inventory-screen-keys-native-002/processes/inventory-screen-controller/execution.json",
+            "file": "execution.json",
+            "bytes": 1996,
+            "sha1": "316b47b46248c83d86a2848a8a355e06232be3e9",
+            "sha256": "fe7d8a0bc51e5134eb0e4708bd97127c00f550134d7968b3b1ebdd60c880a08b"
+          },
+          "binary_sha256": "9e6e59a5a90070b41eddb567a2f90cb1826f9cea27d75f62de2924b355e87f8b",
+          "seconds": 0.6780379582196474
+        },
+        {
+          "receipt": {
+            "path": "build/player-inventory-screen-keys-native-002/processes/inventory-screen-topology/execution.json",
+            "file": "execution.json",
+            "bytes": 1991,
+            "sha1": "63e4e3a2f05af7a6701e39354beaa936583fde89",
+            "sha256": "4ed90d98e3e575b6dd13d30c34b0fec1eefac179b872a99af03ddf0b4050f14c"
+          },
+          "binary_sha256": "9e6e59a5a90070b41eddb567a2f90cb1826f9cea27d75f62de2924b355e87f8b",
+          "seconds": 0.03518250025808811
+        }
+      ]
+    },
+    "swap": {
+      "java_request_cases": 18,
+      "literal_lifecycle_cases": 16,
+      "full_authority_and_controller_cases": 34,
+      "processes": [
+        {
+          "receipt": {
+            "path": "build/player-inventory-screen-keys-native-002/processes/inventory-screen-swap-keys/execution.json",
+            "file": "execution.json",
+            "bytes": 2002,
+            "sha1": "733745ea6c70ae77bb38094f61d76370240939b2",
+            "sha256": "c52630981df086cfbc001ee92d19e44f0068d581c77a078e58107281bfa56f4e"
+          },
+          "binary_sha256": "9e6e59a5a90070b41eddb567a2f90cb1826f9cea27d75f62de2924b355e87f8b",
+          "seconds": 0.037621124647557735
+        }
+      ],
+      "reference_sha256": "7090091b54fd60e572614ee200904787dfdc5e9cf05f94e8c2b25b5f895a6cb1",
+      "boundary": "CPU Base.Event request producer; physical input/layout/rebinding is not represented"
+    }
+  },
+  "boundary": "Compiled CPU Move/Mouse/Key -> production Screen complete Frame -> typed intents. No foreground OS input, renderer launch, server transport or full frontend build.",
+  "retries": 0,
+  "cache_hit": false,
+  "source_pins": {
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_inventory.bend": "5cbd1565eff2218c3096db82a36af2a8ed1bee695969c67f02290efde786eed4",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_inventory_return.bend": "53f4d0cea442ebcc6abfc306f520101a01cca8e46a139ebb89930fd94a5ac3ab",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_inventory_click_swap.bend": "2284a56e93d10299419701acc9cba2aec4427acf7ed4a9196fb56ec75f831048",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/inventory.bend": "9d2be7fb88afa1dc6386ab9e8b046b15d2a2a73b7e14566e5bfad3e6dd1f2702",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_item_definitions.bend": "6a7a57f62a2df6a3f43883824c167877f16e67a1a2a95e8b2f9a3e31e60c49a9",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_item_catalog.bend": "1337d82cc70e28b5aab552dc178401549602b6461e1ffe95d29f1eb09bed55a3",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_item_table.bend": "92ffa8bcf3b2a66e876a9485e2efc986817d8aa292c4232bc24908c65e1ebe05",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_inventory_screen.bend": "4671500d1e13b35e610e4747b520008ac3deb5b718162115124e520793a3a9ad",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_inventory_screen.bend": "65634ecbef5a901cd06b7df74046c81b05b4b039bf8382d317e1172113a1b6c7",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_player_inventory_screen.py": "5acc487c15434d418c031f7af33ebebad759b8b105b95ab437736b043a1d8ada",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_player_inventory.py": "0b200f610216d79d16542808cedacd5e0bf7c0655ef82e3fbf5176be22b0235b",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_inventory_close.bend": "1701e15d346ab2a4a7a4ec67c93442e8cb03fafee400edc641e363cf5d32fca0",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/build_native.py": "3418c78cddc092aec55c7447a818735569b5b279d3bc4b05e3c0077624387c18",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_fall_reset_world_continuation_r2.py": "c2580703b97e4f698153e6dbbd3d9d48ae1c50f3d6b3fbc5e727d0bc39cdfa14",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_item_metadata.tsv": "1cf2669ac760fed886b33d19b12e4782d5011c68c629d22328147d8a9a9bfa22",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/player_inventory_click_gui.json": "7090091b54fd60e572614ee200904787dfdc5e9cf05f94e8c2b25b5f895a6cb1",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_inventory_screen_proof.bend": "c3a5d40108973914784c55a2e647eefd42450e55f081f31987650a21e2c05453",
+    "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/base.bend": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/png.bend": "8c24c14a250cf6dbdf0c2804e4b28bfebd7ef62ed5d9ee97a1d07094d4745f22",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/compression.bend": "255cdff06a33050c7b0a48fdea75c1842ebe2dab0439cfe4f03d126d4edc20aa",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/nbt.bend": "b677546b5fc02aaa38f5c09e5b798c0d35aec32b1c4b37cbd7042b9a1a5275e4",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_hud.bend": "c5dab8c6d6c9be587d199aad4dc5dc393bdccc5a341d36f0bbec011d5216c1f0",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/client_render.bend": "735b643d733bd190d7ad3b6c2462773f6d8aa713eb156750dc9865ac7842b5f6",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/archive.bend": "c0f7b34a22726d220f6b867730b7d080d57d82c84d619c35721b9b8d18fa5d6e",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/framing.bend": "307f95049df03d92687b7bd0eafb2cd566e660926510bb88163f9bc825fccdb5",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/mesh_render.bend": "19c42543263873cf53f378b38135939762d8af6f375f8a64148faa26c9dc8e24",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_presentation.bend": "795422051d936dbc70de658b6e6600cf6d7eeb9f759d842b2d4f40e00eee5137",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/block_resources.bend": "34fd345b8239dde6d097e6051839a28fef475f0f6d3d147c8dc1b4adb9512fb0",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/resource_json.bend": "271f9ace6304fdd42ced039ab2e7f95459eed1f20f011115f399b619f2bc6ffb",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/block_model.bend": "08108bae9b89c6768de56bdddea158f3604b36c7de4ee0408815e2c7f48b97a1",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/float_parse.bend": "fe22007f0805f3c955fcaada88c1da76a3cceda74f0ff3840ae47af49a02c683",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/big_uint.bend": "fbe5965ee16ee3d6864def33fbc6e5e4b1b9bc7da4735d99311c1a23c65e2444",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/block_bake.bend": "3611116e0ba63915d6013463c1640f83b6b80cb08e802f93be5f7eaa4d600595",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/client_controls.bend": "aa55b7905c339d58909e6319d2d31b972c23ea1a2a3c895ea72c2a2c72605f25",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/resource_client_wire.bend": "3ac3d62234b0b1e8078ed849927efcd8eb082cb51831f3c13c1e80a3312cb2a5",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/client_world.bend": "05040abf35b2b9ceaf87fed5c48f8d074d211750a59ab00fa6ff08e60a9ea5d7",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/game.bend": "43e3eee5d15613bb06cc608fe43657aa14d8c0fbe899d4efa580fc8335d23882",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/core.bend": "48d63c4a50b4387d55304eed449d0ea1f4749fbd8e393ca56673006f0919a5a7",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/schedule.bend": "93aa79895fe340e27ae5fd562102d5980f0938003eb1bbde669a84010779b8c9",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/section.bend": "02b5c15c57b173c7eb8b4c55a1433c10c192926e91af5e3e69050b4404044aa5",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/section_map.bend": "ded59d7938c02fd0876d65e37f9f90ea0cfebf3ca4bd107394342f8adbf33965",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/section_map_read.bend": "7a6a0d6fe8b8736ab64adb34b896074da709f91f2ae5bd205a7301c868690fc1",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/live.bend": "cb5a2f8237a53e48d3f6751d321a023e11694721f789373984d7d77620f32e87",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/registry.bend": "821c53d9cfa3044be3cae2af968f55563c0be2bebc9beae55a29d77d47b140a0",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/unicode.bend": "8f0cd9bbcd0e7f938af370675eca0c73a9b97b90c2789a1e77e5a29a918455bd",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/hash.bend": "d2473695632b19e68c8d636668e4617f04d70892fb2ab6559cb24d4b33c1b978",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/geometry.bend": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/movement.bend": "31f5a4c47903506c0f388f688eaeaf78a36a0d266efde52bc57ea8cc89627b45",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/world_visibility.bend": "599e28975027958b48da9a299a968bf837fc6a244ac6750b37866c32182dbb07",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/world_mesh.bend": "97df63c4f20c855350f254873ed05b7112015781e212f5d0b7837bd7e32c4e22",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_inventory_screen_laws.bend": "48145b3d3f924fd3d85b183a3345b30335c8896f733010a6c24cef9b2337a01d",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/inventory_laws.bend": "ede9c3229fa9979d913c36daa2ca14d3a22b55e9a8268e91fdae5d8ac337a0ab",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/inventory_proof.bend": "c03b0b15e2db232f3353f97a7c3039c22afd746052b1b13e0b4eac4ff034892d"
+  },
+  "sources_unchanged": true,
+  "binary": {
+    "artifact": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-inventory-screen-keys-native-002/native-cache/artifacts/9e6e59a5a90070b41eddb567a2f90cb1826f9cea27d75f62de2924b355e87f8b/program",
+    "sha256": "9e6e59a5a90070b41eddb567a2f90cb1826f9cea27d75f62de2924b355e87f8b",
+    "bytes": 1671768
+  },
+  "timings": {
+    "total_seconds": 51.53878100030124,
+    "emission_seconds": 26.848823124542832,
+    "native_seconds": 20.487223125062883
+  },
+  "native_total_seconds": 0.7508415831252933,
+  "build_report": {
+    "path": "build/player-inventory-screen-keys-native-002/native-build.json",
+    "sha256": "7ff4eafda7c4e23c0f3a6c08aa78820f4464b6a847635380800028f70e95f82b",
+    "bytes": 636372
+  },
+  "full_receipt": {
+    "path": "build/player-inventory-screen-keys-native-002/receipt.json",
+    "sha256": "243c674c39cf04ea34a5a49d62662462f4893e68daf5dbdb0dc4858f10f1b64c",
+    "bytes": 11238
+  },
+  "supervisor": {
+    "path": "build/player-inventory-screen-keys-native-002/executed-supervisor.py",
+    "sha256": "e3fe7f53b6a11c3fa40af86cdd16d3b5b1977e4789c73c6996271ded99534093",
+    "bytes": 2884
+  },
+  "build_child": {
+    "path": "build/player-inventory-screen-keys-native-002/executed-build-child.py",
+    "sha256": "929c5edc81ec9884d33a2ea5ea29201b27f214099779f5dd94c8cd12b55af48e",
+    "bytes": 680
+  },
+  "processes": [
+    {
+      "label": "build",
+      "seconds": 51.650527499616146,
+      "pid": 62937,
+      "pgid": 62937,
+      "status": "passed",
+      "cleanup": {
+        "deadline_monotonic": 5706532.269889208,
+        "errors": [],
+        "had_lingering_after_leader_exit": false,
+        "leader_reaped": true,
+        "rows": [
+          {
+            "after_absent": true,
+            "before_absent": true,
+            "errors": [],
+            "pgid": 62937
+          }
+        ],
+        "scope": "Observed managed groups only. Unobserved descendants that escape/reparent between snapshots are not authenticated.",
+        "seconds": 0.019770833663642406,
+        "status": "passed",
+        "unknown_groups": [],
+        "verified": true
+      },
+      "raw_execution": {
+        "path": "build/player-inventory-screen-keys-native-002/processes/build/execution.json",
+        "sha256": "959444510456114d517f5751e5c6c198e693fdffaa07b0cad6f57f3e12997947",
+        "bytes": 27616
+      },
+      "stdout": {
+        "bytes": 477,
+        "file": "stdout",
+        "path": "build/player-inventory-screen-keys-native-002/processes/build/stdout",
+        "sha1": "98dc8a373e78cdbc4c4dabe8542cde50adef9d28",
+        "sha256": "a9ca3fed70d2c86a2961489f087f03cbc3dde6c5594749ff21366872a1c4c3c1"
+      },
+      "stderr": {
+        "bytes": 0,
+        "file": "stderr",
+        "path": "build/player-inventory-screen-keys-native-002/processes/build/stderr",
+        "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "inventory-screen-controller",
+      "seconds": 0.6780379582196474,
+      "pid": 63317,
+      "pgid": 63317,
+      "status": "passed",
+      "cleanup": {
+        "deadline_monotonic": 5706532.943795,
+        "errors": [],
+        "had_lingering_after_leader_exit": false,
+        "leader_reaped": true,
+        "rows": [
+          {
+            "after_absent": true,
+            "before_absent": true,
+            "errors": [],
+            "pgid": 63317
+          }
+        ],
+        "scope": "Observed managed groups only. Unobserved descendants that escape/reparent between snapshots are not authenticated.",
+        "seconds": 0.028440291061997414,
+        "status": "passed",
+        "unknown_groups": [],
+        "verified": true
+      },
+      "raw_execution": {
+        "path": "build/player-inventory-screen-keys-native-002/processes/inventory-screen-controller/execution.json",
+        "sha256": "fe7d8a0bc51e5134eb0e4708bd97127c00f550134d7968b3b1ebdd60c880a08b",
+        "bytes": 1996
+      },
+      "stdout": {
+        "bytes": 21852,
+        "file": "stdout",
+        "path": "build/player-inventory-screen-keys-native-002/processes/inventory-screen-controller/stdout",
+        "sha1": "dfecf2bdef065e89c31adf9623be0e76e7cb2ecf",
+        "sha256": "997b57bec29e61597d70e02e76ed7bba61a0fabc6808a85b41c65dc5bd7b7bee"
+      },
+      "stderr": {
+        "bytes": 0,
+        "file": "stderr",
+        "path": "build/player-inventory-screen-keys-native-002/processes/inventory-screen-controller/stderr",
+        "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "inventory-screen-swap-keys",
+      "seconds": 0.037621124647557735,
+      "pid": 63350,
+      "pgid": 63350,
+      "status": "passed",
+      "cleanup": {
+        "deadline_monotonic": 5706533.027520416,
+        "errors": [],
+        "had_lingering_after_leader_exit": false,
+        "leader_reaped": true,
+        "rows": [
+          {
+            "after_absent": true,
+            "before_absent": true,
+            "errors": [],
+            "pgid": 63350
+          }
+        ],
+        "scope": "Observed managed groups only. Unobserved descendants that escape/reparent between snapshots are not authenticated.",
+        "seconds": 0.023274917155504227,
+        "status": "passed",
+        "unknown_groups": [],
+        "verified": true
+      },
+      "raw_execution": {
+        "path": "build/player-inventory-screen-keys-native-002/processes/inventory-screen-swap-keys/execution.json",
+        "sha256": "c52630981df086cfbc001ee92d19e44f0068d581c77a078e58107281bfa56f4e",
+        "bytes": 2002
+      },
+      "stdout": {
+        "bytes": 26549,
+        "file": "stdout",
+        "path": "build/player-inventory-screen-keys-native-002/processes/inventory-screen-swap-keys/stdout",
+        "sha1": "ddc7f31faa6b4be3dbef26acd31f926b016cd864",
+        "sha256": "7736fc3af252a9ddbb381af9f69d6e6350f29618e9d75e615e1db6d1bc8b7a79"
+      },
+      "stderr": {
+        "bytes": 0,
+        "file": "stderr",
+        "path": "build/player-inventory-screen-keys-native-002/processes/inventory-screen-swap-keys/stderr",
+        "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "inventory-screen-topology",
+      "seconds": 0.03518250025808811,
+      "pid": 63348,
+      "pgid": 63348,
+      "status": "passed",
+      "cleanup": {
+        "deadline_monotonic": 5706532.985040291,
+        "errors": [],
+        "had_lingering_after_leader_exit": false,
+        "leader_reaped": true,
+        "rows": [
+          {
+            "after_absent": true,
+            "before_absent": true,
+            "errors": [],
+            "pgid": 63348
+          }
+        ],
+        "scope": "Observed managed groups only. Unobserved descendants that escape/reparent between snapshots are not authenticated.",
+        "seconds": 0.02507812436670065,
+        "status": "passed",
+        "unknown_groups": [],
+        "verified": true
+      },
+      "raw_execution": {
+        "path": "build/player-inventory-screen-keys-native-002/processes/inventory-screen-topology/execution.json",
+        "sha256": "4ed90d98e3e575b6dd13d30c34b0fec1eefac179b872a99af03ddf0b4050f14c",
+        "bytes": 1991
+      },
+      "stdout": {
+        "bytes": 1360,
+        "file": "stdout",
+        "path": "build/player-inventory-screen-keys-native-002/processes/inventory-screen-topology/stdout",
+        "sha1": "81279983df37427a05c5475d3332224565d4885d",
+        "sha256": "acb093e06e66cdb716372d1c9a3e701fddb12c5452a0e5e8cdbe2b9e04c0854c"
+      },
+      "stderr": {
+        "bytes": 0,
+        "file": "stderr",
+        "path": "build/player-inventory-screen-keys-native-002/processes/inventory-screen-topology/stderr",
+        "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "cleanup": {
+    "deadline_monotonic": 5706533.05634725,
+    "errors": [],
+    "rows": [
+      {
+        "after_absent": true,
+        "before_absent": true,
+        "errors": [],
+        "pgid": 62937
+      },
+      {
+        "after_absent": true,
+        "before_absent": true,
+        "errors": [],
+        "pgid": 63317
+      },
+      {
+        "after_absent": true,
+        "before_absent": true,
+        "errors": [],
+        "pgid": 63348
+      },
+      {
+        "after_absent": true,
+        "before_absent": true,
+        "errors": [],
+        "pgid": 63350
+      }
+    ],
+    "scope": "Observed managed groups only. Unobserved descendants that escape/reparent between snapshots are not authenticated.",
+    "status": "passed",
+    "unknown_groups": []
+  },
+  "cleanup_receipt": {
+    "path": "build/player-inventory-screen-keys-native-002/final-cleanup.json",
+    "sha256": "bf14e9a8a69f2e04883d6ce2b0ee328c331564877d7cdaaa58585d1fd7d49345",
+    "bytes": 692
+  },
+  "owned_journal": {
+    "path": "build/player-inventory-screen-keys-native-002/owned-groups.jsonl",
+    "sha256": "468f08906e270fe87ed74b7f0e998d73004ace1460625e159803202b0048b7e6",
+    "bytes": 1175
+  },
+  "failed_previous_generation": {
+    "raw_execution": {
+      "path": "build/player-inventory-screen-keys-native-001/processes/build/execution.json",
+      "sha256": "b8db93b374005617248c9815efa3afbf3cfe0660535d22d6b8fd356a673bff5e",
+      "bytes": 20130
+    },
+    "stderr": {
+      "path": "build/player-inventory-screen-keys-native-001/processes/build/stderr",
+      "sha256": "706d8371c193a01782371060610b1891e0eb7c675df30ceca5ed5154ed044b9c",
+      "bytes": 1672
+    },
+    "status": "failed",
+    "seconds": 38.813815833069384,
+    "cleanup": {
+      "deadline_monotonic": 5706224.991147625,
+      "errors": [],
+      "had_lingering_after_leader_exit": false,
+      "leader_reaped": true,
+      "rows": [
+        {
+          "after_absent": true,
+          "before_absent": true,
+          "errors": [],
+          "pgid": 60525
+        }
+      ],
+      "scope": "Observed managed groups only. Unobserved descendants that escape/reparent between snapshots are not authenticated.",
+      "seconds": 0.02642225008457899,
+      "status": "passed",
+      "unknown_groups": [],
+      "verified": true
+    },
+    "diagnosis": "Compiler arity over247 in shared full-frame test captures. Test-only closed fixture functions changed; production unchanged; new generation passed.",
+    "supervisor": {
+      "path": "build/player-inventory-screen-keys-native-001/executed-supervisor.py",
+      "sha256": "e24abc8b64056bb569c2926f4cf2597c3deaa317f48f4eef79508dc5ed8419d6",
+      "bytes": 2884
+    },
+    "build_child": {
+      "path": "build/player-inventory-screen-keys-native-001/executed-build-child.py",
+      "sha256": "53528dd98e4aae8bf02e66c086a25fe6a4aec319fb67d7f960326c11c5d57a15",
+      "bytes": 680
+    }
+  }
+}

@@ -45,7 +45,7 @@ def focused_suite(executor):
         'pending-close': (True, [], True, 3),
         'close': (True, ['release', {'capture': False}, 'close'], True, 2),
         'focus': (True, ['release', {'capture': False}], False, 3),
-        'select': (True, [{'select': 8}], True, 3),
+        'select': (True, [], True, 0),
         'pickup': (True, [{'pickup': [36, 0]}], True, 3),
         'right': (True, [{'pickup': [36, 1]}], True, 3),
         'outside': (True, [], True, 0),
@@ -108,3 +108,71 @@ def definitions_suite(executor, path=None):
         require(actual == expected, f"definition {expected['number']}: complete default identity and limit")
     return {'registry_rows': len(parsed), 'metadata_cases': len(parsed), 'processes': [pin],
             'table_sha256': TABLE_SHA256}
+
+
+def swap_suite(executor, reference=None):
+    """Observed Java request producer plus literal controller lifecycle cases.
+
+    Native Base.Key currently carries ASCII only. The Java physical default
+    and modifier observations are recorded, not claimed as OS/layout parity.
+    """
+    reference = Path(reference or ROOT / 'reference/player_inventory_click_gui.json')
+    observed_java = json.loads(reference.read_text())
+    java = {row['id']: row for row in observed_java['observations']}
+    require(len(java) == 18, 'bounded actual InventoryScreen producer corpus')
+    stdout, pin = executor('inventory-screen-swap-keys', ['swap-keys'])
+    observed = {row['label']: row for row in rows(stdout)}
+    require(len(observed) == 34, 'complete swap/capture/coordinate case count')
+
+    def controller(**changes):
+        value = {'open': True, 'keys': 0, 'buttons': 0, 'captured': False,
+                 'focused': True, 'pending': 0, 'tab': 0, 'row': 0,
+                 'query': '', 'hover': {'slot': 10}, 'source': None,
+                 'offer': None, 'notice': 'ready', 'hover_viewport': [320, 180, 960, 540]}
+        value.update(changes)
+        return value
+
+    def check(label, expected_controller, intents, carried=None, opened=True, consumed=True):
+        row = observed.pop(label)
+        expected_authority = authority(opened)
+        expected_authority[4] = [0] if carried is None else carried
+        require(row['authority'] == expected_authority, f'{label}: all authoritative fields retained')
+        require(row['controller'] == expected_controller, f'{label}: entire controller lifecycle')
+        require(row['intents'] == intents, f'{label}: exact typed request')
+        require(row['consumed'] is consumed, f'{label}: world input isolation')
+
+    for label, source in java.items():
+        require(source['ok'] and source['before'] == source['after'], f'{label}: recording boundary retained Java owner')
+        require(source['event_input'] == source['input']['key'], f'{label}: physical Java key observed')
+        require(source['hotbar_value'] == 30 and source['offhand_value'] == 9, '26.3 pinned physical defaults')
+        calls = source['calls']
+        require(all(call['action'] == 'SWAP' for call in calls), f'{label}: actual Java action')
+        intents = [{'swap': [call['slot'], call['button']]} for call in calls]
+        code = source['input']['native_ascii']
+        mask = 2048 if code == 70 else 1 << (code - 49)
+        slot = source['input']['hover']
+        hover = 'outside' if slot < 0 else {'slot': slot}
+        carried = stack('minecraft:dirt', 3) if source['input']['carried'] else None
+        check(label, controller(keys=mask, hover=hover, pending=3 if intents else 0,
+                                notice='waiting' if intents else 'ready'), intents, carried)
+
+    check('offhand-lowercase', controller(keys=2048, pending=3, notice='waiting'), [{'swap': [10, 40]}])
+    check('pending-blocks-key', controller(keys=2304, pending=3, notice='waiting'), [])
+    check('held-after-reply', controller(keys=2048), [])
+    check('release-rearm', controller(keys=2048, pending=3, notice='waiting'), [{'swap': [10, 40]}])
+    check('resize-clears-hover', controller(keys=2048, hover='outside', hover_viewport=None), [])
+    check('scale-clears-hover', controller(keys=1, hover='outside', hover_viewport=None), [])
+    check('capture-clears-hover', controller(keys=2048, hover='outside', hover_viewport=None), [])
+    check('resized-new-move', controller(keys=2048, pending=3, notice='waiting', hover_viewport=[320, 180, 1920, 1080]), [{'swap': [10, 40]}])
+    for label, mask, tab in [('world-digit', 256, 0), ('world-offhand', 2048, 0), ('world-retained-search', 256, 3)]:
+        check(label, controller(open=False, keys=mask, tab=tab, hover='outside', hover_viewport=None), [], opened=False, consumed=False)
+    check('search-digit', controller(keys=256, tab=3, query='9', hover='outside', hover_viewport=None), [])
+    check('search-offhand-carried', controller(keys=2048, tab=3, query='f', hover='outside', hover_viewport=None), [], stack('minecraft:dirt', 3))
+    check('tab-clears-hover', controller(keys=2048, buttons=1, tab=1, hover='outside', hover_viewport=None), [])
+    check('focus-clears-hover', controller(open=False, focused=False, hover='outside', hover_viewport=None), ['release', {'capture': False}])
+    check('late-refused-focus', controller(open=False, focused=False, notice='rejected', hover='outside', hover_viewport=None), [])
+    require(not observed, 'all lifecycle fixtures compared')
+    return {'java_request_cases': len(java), 'literal_lifecycle_cases': 16,
+            'full_authority_and_controller_cases': 34, 'processes': [pin],
+            'reference_sha256': hashlib.sha256(reference.read_bytes()).hexdigest(),
+            'boundary': 'CPU Base.Event request producer; physical input/layout/rebinding is not represented'}
