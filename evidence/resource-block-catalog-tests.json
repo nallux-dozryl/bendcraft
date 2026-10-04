@@ -1,296 +1,232 @@
 {
   "cases": [
     {
-      "expected_load_error": null,
-      "expected_query_errors": {
-        "146": "MissingRandomTicket",
-        "147": "Blockstate:TicketOutOfRange",
-        "148": "Blockstate:TicketOutOfRange",
-        "150": "MissingRandomTicket",
-        "151": "Blockstate:TicketOutOfRange",
-        "152": "Blockstate:TicketOutOfRange",
-        "154": "MissingRandomTicket",
-        "155": "Blockstate:TicketOutOfRange",
-        "156": "Blockstate:TicketOutOfRange",
-        "158": "MissingRandomTicket",
-        "159": "Blockstate:TicketOutOfRange",
-        "160": "Blockstate:TicketOutOfRange",
-        "164": "StateNotLoaded"
-      },
-      "expected_usage": {
-        "models": 33,
-        "pixels": 3072,
-        "png": 2543,
-        "sprites": 12,
-        "text": 16321
-      },
+      "checked_quads": 2098,
       "name": "official-all-states-and-weighted-boundaries",
-      "queries": 165
+      "query_rejections": 13,
+      "query_successes": 152,
+      "status": "passed",
+      "texture_argb_sha256": {
+        "minecraft:block/bricks": "4b87d5b079dd3023e70a8a49048bf4f5c14b11982dd973e0ba745b1e77937e54",
+        "minecraft:block/cobblestone": "ec177a538a7a9f8ab6a354e81852a79c147de27c723ef0697d33a440a228e43c",
+        "minecraft:block/dirt": "7b6a950426340c15e3f8df683106a14c7aa0a99712f0f2a20df057564e00ded1",
+        "minecraft:block/grass_block_side": "a9abe02692bed5c99419f10ca59d1d5d1290a85f78ddc6abfb59e02b8608d7e6",
+        "minecraft:block/grass_block_side_overlay": "49ccb3b28b72f4da70133eafac4b520160520ed154111ec601c38c7a491eb76c",
+        "minecraft:block/grass_block_snow": "86170b09a46f3394473a1e3a405979662d10fa4d87b7981c2952594ecebe11d2",
+        "minecraft:block/grass_block_top": "270e505e3da9fbdfee9f6d5a598ca96ee794e75d1139976a617ffd67f6ad343a",
+        "minecraft:block/oak_log": "bacc90416ce9306e602e8d34cf74b39d23c96c892b4d492661e74c08cb22a8ea",
+        "minecraft:block/oak_log_top": "a43baee59aa860bbe8956e6405f6e48460604df06034923b10fbd2c03036738a",
+        "minecraft:block/oak_planks": "130bbc9e6dec0b1b0259ba23ef60fb29b52091c3feb2f76e749e8ac16d3b58b1",
+        "minecraft:block/sand": "51292485e15c7e321fbbf110e0419615f53613d38034de52c0a48bf4900a31e7",
+        "minecraft:block/stone": "89d9c969fb2b05fbb15e21f4d4ab085b7227693d5eedb168fbe6234f4aacae6e"
+      }
     },
     {
-      "expected_load_error": null,
-      "expected_query_errors": {
-        "146": "MissingRandomTicket",
-        "147": "Blockstate:TicketOutOfRange",
-        "148": "Blockstate:TicketOutOfRange",
-        "150": "MissingRandomTicket",
-        "151": "Blockstate:TicketOutOfRange",
-        "152": "Blockstate:TicketOutOfRange",
-        "154": "MissingRandomTicket",
-        "155": "Blockstate:TicketOutOfRange",
-        "156": "Blockstate:TicketOutOfRange",
-        "158": "MissingRandomTicket",
-        "159": "Blockstate:TicketOutOfRange",
-        "160": "Blockstate:TicketOutOfRange",
-        "164": "StateNotLoaded"
-      },
-      "expected_usage": {
-        "models": 33,
-        "pixels": 3072,
-        "png": 2543,
-        "sprites": 12,
-        "text": 16321
-      },
+      "checked_quads": 2098,
       "name": "official-reordered-requests",
-      "queries": 165
+      "query_rejections": 13,
+      "query_successes": 152,
+      "status": "passed",
+      "texture_argb_sha256": {
+        "minecraft:block/bricks": "4b87d5b079dd3023e70a8a49048bf4f5c14b11982dd973e0ba745b1e77937e54",
+        "minecraft:block/cobblestone": "ec177a538a7a9f8ab6a354e81852a79c147de27c723ef0697d33a440a228e43c",
+        "minecraft:block/dirt": "7b6a950426340c15e3f8df683106a14c7aa0a99712f0f2a20df057564e00ded1",
+        "minecraft:block/grass_block_side": "a9abe02692bed5c99419f10ca59d1d5d1290a85f78ddc6abfb59e02b8608d7e6",
+        "minecraft:block/grass_block_side_overlay": "49ccb3b28b72f4da70133eafac4b520160520ed154111ec601c38c7a491eb76c",
+        "minecraft:block/grass_block_snow": "86170b09a46f3394473a1e3a405979662d10fa4d87b7981c2952594ecebe11d2",
+        "minecraft:block/grass_block_top": "270e505e3da9fbdfee9f6d5a598ca96ee794e75d1139976a617ffd67f6ad343a",
+        "minecraft:block/oak_log": "bacc90416ce9306e602e8d34cf74b39d23c96c892b4d492661e74c08cb22a8ea",
+        "minecraft:block/oak_log_top": "a43baee59aa860bbe8956e6405f6e48460604df06034923b10fbd2c03036738a",
+        "minecraft:block/oak_planks": "130bbc9e6dec0b1b0259ba23ef60fb29b52091c3feb2f76e749e8ac16d3b58b1",
+        "minecraft:block/sand": "51292485e15c7e321fbbf110e0419615f53613d38034de52c0a48bf4900a31e7",
+        "minecraft:block/stone": "89d9c969fb2b05fbb15e21f4d4ab085b7227693d5eedb168fbe6234f4aacae6e"
+      }
     },
     {
-      "expected_load_error": null,
-      "expected_query_errors": {},
-      "expected_usage": {
-        "models": 33,
-        "pixels": 3072,
-        "png": 2543,
-        "sprites": 12,
-        "text": 16321
-      },
+      "checked_quads": 6,
       "name": "official-exact-catalog-budgets",
-      "queries": 2
+      "query_rejections": 0,
+      "query_successes": 2,
+      "status": "passed",
+      "texture_argb_sha256": {
+        "minecraft:block/bricks": "4b87d5b079dd3023e70a8a49048bf4f5c14b11982dd973e0ba745b1e77937e54",
+        "minecraft:block/cobblestone": "ec177a538a7a9f8ab6a354e81852a79c147de27c723ef0697d33a440a228e43c",
+        "minecraft:block/dirt": "7b6a950426340c15e3f8df683106a14c7aa0a99712f0f2a20df057564e00ded1",
+        "minecraft:block/grass_block_side": "a9abe02692bed5c99419f10ca59d1d5d1290a85f78ddc6abfb59e02b8608d7e6",
+        "minecraft:block/grass_block_side_overlay": "49ccb3b28b72f4da70133eafac4b520160520ed154111ec601c38c7a491eb76c",
+        "minecraft:block/grass_block_snow": "86170b09a46f3394473a1e3a405979662d10fa4d87b7981c2952594ecebe11d2",
+        "minecraft:block/grass_block_top": "270e505e3da9fbdfee9f6d5a598ca96ee794e75d1139976a617ffd67f6ad343a",
+        "minecraft:block/oak_log": "bacc90416ce9306e602e8d34cf74b39d23c96c892b4d492661e74c08cb22a8ea",
+        "minecraft:block/oak_log_top": "a43baee59aa860bbe8956e6405f6e48460604df06034923b10fbd2c03036738a",
+        "minecraft:block/oak_planks": "130bbc9e6dec0b1b0259ba23ef60fb29b52091c3feb2f76e749e8ac16d3b58b1",
+        "minecraft:block/sand": "51292485e15c7e321fbbf110e0419615f53613d38034de52c0a48bf4900a31e7",
+        "minecraft:block/stone": "89d9c969fb2b05fbb15e21f4d4ab085b7227693d5eedb168fbe6234f4aacae6e"
+      }
     },
     {
-      "expected_load_error": "BlockBudget",
-      "expected_query_errors": {},
-      "expected_usage": null,
+      "code": "BlockBudget",
       "name": "request-budget",
-      "queries": 0
+      "status": "rejected"
     },
     {
-      "expected_load_error": "StateBudget",
-      "expected_query_errors": {},
-      "expected_usage": null,
+      "code": "StateBudget",
       "name": "state-budget",
-      "queries": 0
+      "status": "rejected"
     },
     {
-      "expected_load_error": "BlockstateByteBudget",
-      "expected_query_errors": {},
-      "expected_usage": null,
+      "code": "BlockstateByteBudget",
       "name": "blockstate-text-budget",
-      "queries": 0
+      "status": "rejected"
     },
     {
-      "expected_load_error": "Limits",
-      "expected_query_errors": {},
-      "expected_usage": null,
+      "code": "Limits",
       "name": "invalid-catalog-limits",
-      "queries": 0
+      "status": "rejected"
     },
     {
-      "expected_load_error": "Resource:RootBudget",
-      "expected_query_errors": {},
-      "expected_usage": null,
+      "code": "Resource:RootBudget",
       "name": "resource-root-budget",
-      "queries": 0
+      "status": "rejected"
     },
     {
-      "expected_load_error": "Resource:ModelBudget",
-      "expected_query_errors": {},
-      "expected_usage": null,
+      "code": "Resource:ModelBudget",
       "name": "resource-model-closure-budget",
-      "queries": 0
+      "status": "rejected"
     },
     {
-      "expected_load_error": "Resource:SpriteBudget",
-      "expected_query_errors": {},
-      "expected_usage": null,
+      "code": "Resource:SpriteBudget",
       "name": "resource-sprite-budget",
-      "queries": 0
+      "status": "rejected"
     },
     {
-      "expected_load_error": "DuplicateBlock",
-      "expected_query_errors": {},
-      "expected_usage": null,
+      "code": "DuplicateBlock",
       "name": "duplicate-block",
-      "queries": 0
+      "status": "rejected"
     },
     {
-      "expected_load_error": "Registry",
-      "expected_query_errors": {},
-      "expected_usage": null,
+      "code": "Registry",
       "name": "missing-block",
-      "queries": 0
+      "status": "rejected"
     },
     {
-      "expected_load_error": "UnsupportedRenderer",
-      "expected_query_errors": {},
-      "expected_usage": null,
+      "code": "UnsupportedRenderer",
       "name": "unsupported-water",
-      "queries": 0
+      "status": "rejected"
     },
     {
-      "expected_load_error": "UnsupportedRenderer",
-      "expected_query_errors": {},
-      "expected_usage": null,
+      "code": "UnsupportedRenderer",
       "name": "unsupported-chest",
-      "queries": 0
+      "status": "rejected"
     },
     {
-      "expected_load_error": "Resource:UnsupportedMetadata",
-      "expected_query_errors": {},
-      "expected_usage": null,
+      "code": "Resource:UnsupportedMetadata",
       "name": "official-glass-metadata",
-      "queries": 0
+      "status": "rejected"
     },
     {
-      "expected_load_error": "Resource:UnsupportedAnimation",
-      "expected_query_errors": {},
-      "expected_usage": null,
+      "code": "Resource:UnsupportedAnimation",
       "name": "unclassified-water-animation-rejection",
-      "queries": 0
+      "status": "rejected"
     },
     {
-      "expected_load_error": null,
-      "expected_query_errors": {},
-      "expected_usage": null,
+      "checked_quads": 0,
       "name": "pure-generic-variant",
-      "queries": 3
+      "query_rejections": 0,
+      "query_successes": 3,
+      "status": "passed",
+      "texture_argb_sha256": {}
     },
     {
-      "expected_load_error": null,
-      "expected_query_errors": {},
-      "expected_usage": {
-        "models": 2,
-        "pixels": 1,
-        "png": 68,
-        "sprites": 1,
-        "text": 714
-      },
+      "checked_quads": 18,
       "name": "io-generic-variant",
-      "queries": 3
+      "query_rejections": 0,
+      "query_successes": 3,
+      "status": "passed",
+      "texture_argb_sha256": {
+        "test:block/tex": "ad95131bc0b799c0b1af477fb14fcf26a6a9f76079e48bf090acb7e8367bfd0e"
+      }
     },
     {
-      "expected_load_error": null,
-      "expected_query_errors": {
-        "6": "MissingRandomTicket",
-        "7": "MissingRandomTicket",
-        "8": "Blockstate:TicketOutOfRange"
-      },
-      "expected_usage": null,
+      "checked_quads": 0,
       "name": "pure-generic-multipart",
-      "queries": 11
+      "query_rejections": 3,
+      "query_successes": 8,
+      "status": "passed",
+      "texture_argb_sha256": {}
     },
     {
-      "expected_load_error": null,
-      "expected_query_errors": {
-        "6": "MissingRandomTicket",
-        "7": "MissingRandomTicket",
-        "8": "Blockstate:TicketOutOfRange"
-      },
-      "expected_usage": {
-        "models": 3,
-        "pixels": 1,
-        "png": 68,
-        "sprites": 1,
-        "text": 1071
-      },
+      "checked_quads": 84,
       "name": "io-generic-multipart",
-      "queries": 11
+      "query_rejections": 3,
+      "query_successes": 8,
+      "status": "passed",
+      "texture_argb_sha256": {
+        "test:block/tex": "ad95131bc0b799c0b1af477fb14fcf26a6a9f76079e48bf090acb7e8367bfd0e"
+      }
     },
     {
-      "expected_load_error": null,
-      "expected_query_errors": {
-        "0": "StateIdentityMismatch"
-      },
-      "expected_usage": null,
+      "checked_quads": 0,
       "name": "pure-forged-state-identity",
-      "queries": 1
+      "query_rejections": 1,
+      "query_successes": 0,
+      "status": "passed",
+      "texture_argb_sha256": {}
     },
     {
-      "expected_load_error": "MissingBlockstate",
-      "expected_query_errors": {},
-      "expected_usage": null,
+      "code": "MissingBlockstate",
       "name": "missing-blockstate",
-      "queries": 0
+      "status": "rejected"
     },
     {
-      "expected_load_error": "MissingStateModel",
-      "expected_query_errors": {},
-      "expected_usage": null,
+      "code": "MissingStateModel",
       "name": "partial-state-model",
-      "queries": 0
+      "status": "rejected"
     },
     {
-      "expected_load_error": "BlockstateDiagnostic:SelectorUnknownProperty",
-      "expected_query_errors": {},
-      "expected_usage": null,
+      "code": "BlockstateDiagnostic:SelectorUnknownProperty",
       "name": "unknown-selector-property",
-      "queries": 0
+      "status": "rejected"
     },
     {
-      "expected_load_error": "Resource:MissingResource",
-      "expected_query_errors": {},
-      "expected_usage": null,
+      "code": "Resource:MissingResource",
       "name": "missing-unselected-variant-model",
-      "queries": 0
+      "status": "rejected"
     },
     {
-      "expected_load_error": null,
-      "expected_query_errors": {
-        "0": "EmptyModelGeometry"
-      },
-      "expected_usage": {
-        "models": 2,
-        "pixels": 1,
-        "png": 68,
-        "sprites": 1,
-        "text": 399
-      },
+      "checked_quads": 6,
       "name": "particle-only-model-bind-rejection",
-      "queries": 2
+      "query_rejections": 1,
+      "query_successes": 1,
+      "status": "passed",
+      "texture_argb_sha256": {
+        "test:block/tex": "ad95131bc0b799c0b1af477fb14fcf26a6a9f76079e48bf090acb7e8367bfd0e"
+      }
     },
     {
-      "expected_load_error": null,
-      "expected_query_errors": {},
-      "expected_usage": {
-        "models": 0,
-        "pixels": 0,
-        "png": 0,
-        "sprites": 0,
-        "text": 0
-      },
+      "checked_quads": 0,
       "name": "custom-invisible-needs-no-blockstate",
-      "queries": 2
+      "query_rejections": 0,
+      "query_successes": 2,
+      "status": "passed",
+      "texture_argb_sha256": {}
     },
     {
-      "expected_load_error": null,
-      "expected_query_errors": {},
-      "expected_usage": {
-        "models": 0,
-        "pixels": 0,
-        "png": 0,
-        "sprites": 0,
-        "text": 0
-      },
+      "checked_quads": 0,
       "name": "empty-request-zero-catalog-budgets",
-      "queries": 0
+      "query_rejections": 0,
+      "query_successes": 0,
+      "status": "passed",
+      "texture_argb_sha256": {}
     }
   ],
   "commands": {
     "native": "python3 tools/resource_block_catalog_test.py --build-native",
-    "prepare": "python3 tools/resource_block_catalog_test.py"
+    "prepare": "python3 tools/resource_block_catalog_test.py",
+    "private_native": "python3 tools/resource_block_catalog_test.py --build-private",
+    "private_prepare": "python3 tools/resource_block_catalog_test.py --prepare-private"
   },
-  "confidence": "high for independent fixture preparation and source checking; native behavior unverified",
-  "driver_sha256": "4d2eda48e67b2f00535cce5b35fc833d39f34217c3f7e75b7ac5ad3f7ffe60fb",
+  "confidence": "high for executed native metadata/geometry checks within stated scope",
+  "driver_sha256": "c73498305c3b4b7cb348facab9e51a3818bf1401b37d33349100a5a4ffe0525c",
   "jar_sha256": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d",
   "native_attempts": [
     {
@@ -322,6 +258,296 @@
       "timeout_seconds": 600
     }
   ],
+  "native_binary_sha256": "0b14ac46e1fdef4ea35c4b44a1483a3a22b1d4715b5489c1ba58f7f78d5ac440",
+  "native_build": {
+    "C": {
+      "bytes": 16562986,
+      "sha256": "5fb91ed56ca091993e5f08e5bd3b0a44afe2e12707ad1a09bdf3d87f126c607b"
+    },
+    "basis": {
+      "bounded_runner_sha256": "5fa5422e8ab211a66f242cada835ee196b133d4489ea6ce9d0e8a6bbe539bbde",
+      "emission_receipt_sha256": "b83d2f5944a7167155d167bcf7a5d4e6d1c95b79c955d790a26a46f7c5cb8c18",
+      "original_compiler_sha256": "32fb66e09f608ce9e4b173384bcfeec453db8c5bc96650e26ad861bef815a8d9",
+      "private_compiler_sha256": "832b94d488828e7befc63cadc81b1932d7e5cd782f1679363111ea79e951543e",
+      "source_api_sha256": "7deae3693eb896f33c73867081b99d2c6f3ed3b57e77e55eb5f6260840dd0e63"
+    },
+    "clang": {
+      "command": [
+        "/usr/bin/env",
+        "SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+        "/usr/bin/clang",
+        "-std=c11",
+        "-O3",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/private-001/diagnostic.c",
+        "-lpthread",
+        "-lm",
+        "-o",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/native"
+      ],
+      "exit_code": 0,
+      "leader_reaped": true,
+      "pid": 53359,
+      "process_group": 53359,
+      "seconds": 36.84,
+      "status": "passed",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tag": "native-private-clang",
+      "timeout_seconds": 300,
+      "timeout_signals": []
+    },
+    "emission": {
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/private-001/run.py"
+      ],
+      "exit_code": 0,
+      "leader_reaped": true,
+      "pid": 51119,
+      "process_group": 51119,
+      "seconds": 243.755,
+      "status": "passed",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "a1d1d8b3736911f0b79782a78c2a6c9f0288dd3edc8cf63072c2913320601f1f",
+      "tag": "native-private-emission",
+      "timeout_seconds": 620,
+      "timeout_signals": []
+    },
+    "loaded_source_pins_sha256": "305303a792135f531896aaf88d0d68151eb2013105f5c40a1b12f898d95e98c8",
+    "manifest_sha256": "19dc26dd7353935ba0d112adeb0cd9ba92c0da6f26cf2af5e580deef4a0c0b14",
+    "producer_receipt_sha256": "5fc0bfa1c2ba60623f52709a67001eaae6a2dbfad83e82a957ad5bf1558b4c7d",
+    "product_cache_promoted": false,
+    "route": "measured-private-source-api-producer",
+    "sampled_peak_rss_bytes": 5960482816,
+    "source_map_sha256": "26a62aba3e78b08a0aa676c8e2024e27ab82e557f10e38d63ce95f6615aaf7ca"
+  },
+  "native_reports_sha256": "e16313a6f032fc0219de0fcb8fdc74a259556f2b5cf9d12d5663bdf1d2ef3f24",
+  "native_runs": [
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/native",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "{\"jar\":\"/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar\",\"queries\":[{\"first\":true,\"state\":0},{\"first\":true,\"state\":1},{\"first\":true,\"state\":8},{\"first\":true,\"state\":9},{\"first\":true,\"state\":10},{\"first\":true,\"state\":14},{\"first\":true,\"state\":15},{\"first\":true,\"state\":121},{\"first\":true,\"state\":139},{\"first\":true,\"state\":140},{\"first\":true,\"state\":141},{\"first\":true,\"state\":3832},{\"first\":true,\"state\":5463},{\"first\":true,\"state\":5464},{\"first\":true,\"state\":5465},{\"first\":true,\"state\":5466},{\"first\":true,\"state\":5467},{\"first\":true,\"state\":5468},{\"first\":true,\"state\":5469},{\"first\":true,\"state\":5470},{\"first\":true,\"state\":5471},{\"first\":true,\"state\":5472},{\"first\":true,\"state\":5473},{\"first\":true,\"state\":5474},{\"first\":true,\"state\":5475},{\"first\":true,\"state\":5476},{\"first\":true,\"state\":5477},{\"first\":true,\"state\":5478},{\"first\":true,\"state\":5479},{\"first\":true,\"state\":5480},{\"first\":true,\"state\":5481},{\"first\":true,\"state\":5482},{\"first\":true,\"state\":5483},{\"first\":true,\"state\":5484},{\"first\":true,\"state\":5485},{\"first\":true,\"state\":5486},{\"first\":true,\"state\":5487},{\"first\":true,\"state\":5488},{\"first\":true,\"state\":5489},{\"first\":true,\"state\":5490},{\"first\":true,\"state\":5491},{\"first\":true,\"state\":5492},{\"first\":true,\"state\":5493},{\"first\":true,\"state\":5494},{\"first\":true,\"state\":5495},{\"first\":true,\"state\":5496},{\"first\":true,\"state\":5497},{\"first\":true,\"state\":5498},{\"first\":true,\"state\":5499},{\"first\":true,\"state\":5500},{\"first\":true,\"state\":5501},{\"first\":true,\"state\":5502},{\"first\":true,\"state\":5503},{\"first\":true,\"state\":5504},{\"first\":true,\"state\":5505},{\"first\":true,\"state\":5506},{\"first\":true,\"state\":5507},{\"first\":true,\"state\":5508},{\"first\":true,\"state\":5509},{\"first\":true,\"state\":5510},{\"first\":true,\"state\":5511},{\"first\":true,\"state\":5512},{\"first\":true,\"state\":5513},{\"first\":true,\"state\":5514},{\"first\":true,\"state\":5515},{\"first\":true,\"state\":5516},{\"first\":true,\"state\":5517},{\"first\":true,\"state\":5518},{\"first\":true,\"state\":5519},{\"first\":true,\"state\":5520},{\"first\":true,\"state\":5521},{\"first\":true,\"state\":5522},{\"first\":true,\"state\":5523},{\"first\":true,\"state\":5524},{\"first\":true,\"state\":5525},{\"first\":true,\"state\":5526},{\"first\":true,\"state\":5527},{\"first\":true,\"state\":5528},{\"first\":true,\"state\":5529},{\"first\":true,\"state\":5530},{\"first\":true,\"state\":5531},{\"first\":true,\"state\":5532},{\"first\":true,\"state\":5533},{\"first\":true,\"state\":5534},{\"first\":true,\"state\":5535},{\"first\":true,\"state\":5536},{\"first\":true,\"state\":5537},{\"first\":true,\"state\":5538},{\"first\":true,\"state\":5539},{\"first\":true,\"state\":5540},{\"first\":true,\"state\":5541},{\"first\":true,\"state\":5542},{\"first\":true,\"state\":8635},{\"first\":true,\"state\":8636},{\"first\":true,\"state\":8637},{\"first\":true,\"state\":8638},{\"first\":true,\"state\":8639},{\"first\":true,\"state\":8640},{\"first\":true,\"state\":8641},{\"first\":true,\"state\":8642},{\"first\":true,\"state\":8643},{\"first\":true,\"state\":8644},{\"first\":true,\"state\":8645},{\"first\":true,\"state\":8646},{\"first\":true,\"state\":8647},{\"first\":true,\"state\":8648},{\"first\":true,\"state\":8649},{\"first\":true,\"state\":8650},{\"first\":true,\"state\":8651},{\"first\":true,\"state\":8652},{\"first\":true,\"state\":8653},{\"first\":true,\"state\":8654},{\"first\":true,\"state\":8655},{\"first\":true,\"state\":8656},{\"first\":true,\"state\":8657},{\"first\":true,\"state\":8658},{\"first\":true,\"state\":8659},{\"first\":true,\"state\":8660},{\"first\":true,\"state\":8661},{\"first\":true,\"state\":8662},{\"first\":true,\"state\":8663},{\"first\":true,\"state\":8664},{\"first\":true,\"state\":8665},{\"first\":true,\"state\":8666},{\"first\":true,\"state\":15177},{\"first\":true,\"state\":15178},{\"first\":true,\"state\":15179},{\"first\":true,\"state\":15180},{\"first\":true,\"state\":15181},{\"first\":true,\"state\":15182},{\"state\":1,\"ticket\":0},{\"state\":1,\"ticket\":1},{\"state\":1,\"ticket\":2},{\"state\":1,\"ticket\":3},{\"state\":10,\"ticket\":0},{\"state\":10,\"ticket\":1},{\"state\":10,\"ticket\":2},{\"state\":10,\"ticket\":3},{\"state\":9,\"ticket\":0},{\"state\":9,\"ticket\":1},{\"state\":9,\"ticket\":2},{\"state\":9,\"ticket\":3},{\"state\":121,\"ticket\":0},{\"state\":121,\"ticket\":1},{\"state\":121,\"ticket\":2},{\"state\":121,\"ticket\":3},{\"state\":1},{\"state\":1,\"ticket\":4},{\"state\":1,\"ticket\":4294967295},{\"state\":1,\"ticket\":0},{\"state\":9},{\"state\":9,\"ticket\":4},{\"state\":9,\"ticket\":4294967295},{\"state\":9,\"ticket\":0},{\"state\":10},{\"state\":10,\"ticket\":4},{\"state\":10,\"ticket\":4294967295},{\"state\":10,\"ticket\":0},{\"state\":121},{\"state\":121,\"ticket\":4},{\"state\":121,\"ticket\":4294967295},{\"state\":121,\"ticket\":0},{\"state\":15},{\"state\":15,\"ticket\":4294967295},{\"first\":true,\"state\":35722}],\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\"}",
+        "{\"jar\":\"/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar\",\"queries\":[{\"first\":true,\"state\":0},{\"first\":true,\"state\":1},{\"first\":true,\"state\":8},{\"first\":true,\"state\":9},{\"first\":true,\"state\":10},{\"first\":true,\"state\":14},{\"first\":true,\"state\":15},{\"first\":true,\"state\":121},{\"first\":true,\"state\":139},{\"first\":true,\"state\":140},{\"first\":true,\"state\":141},{\"first\":true,\"state\":3832},{\"first\":true,\"state\":5463},{\"first\":true,\"state\":5464},{\"first\":true,\"state\":5465},{\"first\":true,\"state\":5466},{\"first\":true,\"state\":5467},{\"first\":true,\"state\":5468},{\"first\":true,\"state\":5469},{\"first\":true,\"state\":5470},{\"first\":true,\"state\":5471},{\"first\":true,\"state\":5472},{\"first\":true,\"state\":5473},{\"first\":true,\"state\":5474},{\"first\":true,\"state\":5475},{\"first\":true,\"state\":5476},{\"first\":true,\"state\":5477},{\"first\":true,\"state\":5478},{\"first\":true,\"state\":5479},{\"first\":true,\"state\":5480},{\"first\":true,\"state\":5481},{\"first\":true,\"state\":5482},{\"first\":true,\"state\":5483},{\"first\":true,\"state\":5484},{\"first\":true,\"state\":5485},{\"first\":true,\"state\":5486},{\"first\":true,\"state\":5487},{\"first\":true,\"state\":5488},{\"first\":true,\"state\":5489},{\"first\":true,\"state\":5490},{\"first\":true,\"state\":5491},{\"first\":true,\"state\":5492},{\"first\":true,\"state\":5493},{\"first\":true,\"state\":5494},{\"first\":true,\"state\":5495},{\"first\":true,\"state\":5496},{\"first\":true,\"state\":5497},{\"first\":true,\"state\":5498},{\"first\":true,\"state\":5499},{\"first\":true,\"state\":5500},{\"first\":true,\"state\":5501},{\"first\":true,\"state\":5502},{\"first\":true,\"state\":5503},{\"first\":true,\"state\":5504},{\"first\":true,\"state\":5505},{\"first\":true,\"state\":5506},{\"first\":true,\"state\":5507},{\"first\":true,\"state\":5508},{\"first\":true,\"state\":5509},{\"first\":true,\"state\":5510},{\"first\":true,\"state\":5511},{\"first\":true,\"state\":5512},{\"first\":true,\"state\":5513},{\"first\":true,\"state\":5514},{\"first\":true,\"state\":5515},{\"first\":true,\"state\":5516},{\"first\":true,\"state\":5517},{\"first\":true,\"state\":5518},{\"first\":true,\"state\":5519},{\"first\":true,\"state\":5520},{\"first\":true,\"state\":5521},{\"first\":true,\"state\":5522},{\"first\":true,\"state\":5523},{\"first\":true,\"state\":5524},{\"first\":true,\"state\":5525},{\"first\":true,\"state\":5526},{\"first\":true,\"state\":5527},{\"first\":true,\"state\":5528},{\"first\":true,\"state\":5529},{\"first\":true,\"state\":5530},{\"first\":true,\"state\":5531},{\"first\":true,\"state\":5532},{\"first\":true,\"state\":5533},{\"first\":true,\"state\":5534},{\"first\":true,\"state\":5535},{\"first\":true,\"state\":5536},{\"first\":true,\"state\":5537},{\"first\":true,\"state\":5538},{\"first\":true,\"state\":5539},{\"first\":true,\"state\":5540},{\"first\":true,\"state\":5541},{\"first\":true,\"state\":5542},{\"first\":true,\"state\":8635},{\"first\":true,\"state\":8636},{\"first\":true,\"state\":8637},{\"first\":true,\"state\":8638},{\"first\":true,\"state\":8639},{\"first\":true,\"state\":8640},{\"first\":true,\"state\":8641},{\"first\":true,\"state\":8642},{\"first\":true,\"state\":8643},{\"first\":true,\"state\":8644},{\"first\":true,\"state\":8645},{\"first\":true,\"state\":8646},{\"first\":true,\"state\":8647},{\"first\":true,\"state\":8648},{\"first\":true,\"state\":8649},{\"first\":true,\"state\":8650},{\"first\":true,\"state\":8651},{\"first\":true,\"state\":8652},{\"first\":true,\"state\":8653},{\"first\":true,\"state\":8654},{\"first\":true,\"state\":8655},{\"first\":true,\"state\":8656},{\"first\":true,\"state\":8657},{\"first\":true,\"state\":8658},{\"first\":true,\"state\":8659},{\"first\":true,\"state\":8660},{\"first\":true,\"state\":8661},{\"first\":true,\"state\":8662},{\"first\":true,\"state\":8663},{\"first\":true,\"state\":8664},{\"first\":true,\"state\":8665},{\"first\":true,\"state\":8666},{\"first\":true,\"state\":15177},{\"first\":true,\"state\":15178},{\"first\":true,\"state\":15179},{\"first\":true,\"state\":15180},{\"first\":true,\"state\":15181},{\"first\":true,\"state\":15182},{\"state\":1,\"ticket\":0},{\"state\":1,\"ticket\":1},{\"state\":1,\"ticket\":2},{\"state\":1,\"ticket\":3},{\"state\":10,\"ticket\":0},{\"state\":10,\"ticket\":1},{\"state\":10,\"ticket\":2},{\"state\":10,\"ticket\":3},{\"state\":9,\"ticket\":0},{\"state\":9,\"ticket\":1},{\"state\":9,\"ticket\":2},{\"state\":9,\"ticket\":3},{\"state\":121,\"ticket\":0},{\"state\":121,\"ticket\":1},{\"state\":121,\"ticket\":2},{\"state\":121,\"ticket\":3},{\"state\":1},{\"state\":1,\"ticket\":4},{\"state\":1,\"ticket\":4294967295},{\"state\":1,\"ticket\":0},{\"state\":9},{\"state\":9,\"ticket\":4},{\"state\":9,\"ticket\":4294967295},{\"state\":9,\"ticket\":0},{\"state\":10},{\"state\":10,\"ticket\":4},{\"state\":10,\"ticket\":4294967295},{\"state\":10,\"ticket\":0},{\"state\":121},{\"state\":121,\"ticket\":4},{\"state\":121,\"ticket\":4294967295},{\"state\":121,\"ticket\":0},{\"state\":15},{\"state\":15,\"ticket\":4294967295},{\"first\":true,\"state\":35722}],\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"requests\":[{\"mode\":\"model\",\"name\":\"minecraft:bricks\"},{\"mode\":\"model\",\"name\":\"minecraft:sand\"},{\"mode\":\"model\",\"name\":\"minecraft:cobblestone\"},{\"mode\":\"model\",\"name\":\"minecraft:oak_fence\"},{\"mode\":\"model\",\"name\":\"minecraft:oak_stairs\"},{\"mode\":\"model\",\"name\":\"minecraft:oak_slab\"},{\"mode\":\"model\",\"name\":\"minecraft:oak_log\"},{\"mode\":\"model\",\"name\":\"minecraft:grass_block\"},{\"mode\":\"model\",\"name\":\"minecraft:oak_planks\"},{\"mode\":\"model\",\"name\":\"minecraft:dirt\"},{\"mode\":\"model\",\"name\":\"minecraft:stone\"},{\"mode\":\"invisible\",\"name\":\"minecraft:air\"}]}",
+        "{\"jar\":\"/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar\",\"max_blocks\":12,\"max_state_text\":8739,\"max_states\":130,\"queries\":[{\"first\":true,\"state\":8666},{\"state\":0}],\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\"}",
+        "{\"jar\":\"/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar\",\"max_blocks\":11,\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\"}",
+        "{\"jar\":\"/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar\",\"max_states\":129,\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\"}",
+        "{\"jar\":\"/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar\",\"max_state_text\":8738,\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\"}",
+        "{\"jar\":\"/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar\",\"max_states\":65536,\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\"}",
+        "{\"jar\":\"/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar\",\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"resources\":{\"models\":0}}"
+      ],
+      "exit_code": 0,
+      "leader_reaped": true,
+      "pid": 53530,
+      "process_group": 53530,
+      "seconds": 12.764,
+      "status": "passed",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "30ac750b375110672c3bc72ae3ca9bf1b7087454965ac0fcb3d82145ae1c0c5a",
+      "tag": "native-1-0",
+      "timeout_seconds": 180,
+      "timeout_signals": []
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/native",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "{\"jar\":\"/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar\",\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"resources\":{\"models\":19}}",
+        "{\"jar\":\"/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar\",\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"resources\":{\"sprites\":0}}",
+        "{\"jar\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/does-not-exist.zip\",\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"requests\":[{\"name\":\"minecraft:stone\"},{\"name\":\"minecraft:stone\"}]}",
+        "{\"jar\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/does-not-exist.zip\",\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"requests\":[{\"name\":\"test:missing\"}]}",
+        "{\"jar\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/does-not-exist.zip\",\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"requests\":[{\"name\":\"minecraft:water\"}]}",
+        "{\"jar\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/does-not-exist.zip\",\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"requests\":[{\"name\":\"minecraft:chest\"}]}",
+        "{\"jar\":\"/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar\",\"layers\":{\"minecraft:block/glass\":\"translucent\"},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"requests\":[{\"mode\":\"model\",\"name\":\"minecraft:glass\"}]}",
+        "{\"jar\":\"/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar\",\"layers\":{\"minecraft:block/water_still\":\"translucent\"},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"requests\":[{\"mode\":\"model\",\"name\":\"minecraft:water\"}],\"resources\":{\"side\":1024}}"
+      ],
+      "exit_code": 0,
+      "leader_reaped": true,
+      "pid": 53556,
+      "process_group": 53556,
+      "seconds": 10.966,
+      "status": "passed",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "9022158f1b8b649a4c9e04c1a22fa4141dd5b487bdbee2076c38c87ee6c7ebbb",
+      "tag": "native-1-8",
+      "timeout_seconds": 180,
+      "timeout_signals": []
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/native",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "{\"jar\":\"/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar\",\"kind\":\"variant\",\"mode\":\"pure\",\"queries\":[{\"state\":0},{\"first\":true,\"state\":1},{\"state\":1,\"ticket\":4294967295}],\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\"}",
+        "{\"jar\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/custom-variant.zip\",\"layers\":{\"test:block/tex\":\"solid\"},\"queries\":[{\"state\":0},{\"first\":true,\"state\":1},{\"state\":1,\"ticket\":4294967295}],\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/custom-registry.tsv\",\"requests\":[{\"mode\":\"model\",\"name\":\"test:signal\"}]}",
+        "{\"jar\":\"/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar\",\"kind\":\"multipart\",\"mode\":\"pure\",\"queries\":[{\"state\":0},{\"first\":true,\"state\":1},{\"parts\":{\"1\":0},\"state\":1},{\"parts\":{\"1\":1},\"state\":1},{\"parts\":{\"1\":2},\"state\":1},{\"parts\":{\"1\":3},\"state\":1},{\"state\":1},{\"parts\":{\"0\":0},\"state\":1},{\"parts\":{\"1\":4},\"state\":1},{\"parts\":{\"1\":4294967295},\"state\":0},{\"parts\":{\"1\":3},\"state\":1}],\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\"}",
+        "{\"jar\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/custom-multipart.zip\",\"layers\":{\"test:block/tex\":\"solid\"},\"queries\":[{\"state\":0},{\"first\":true,\"state\":1},{\"parts\":{\"1\":0},\"state\":1},{\"parts\":{\"1\":1},\"state\":1},{\"parts\":{\"1\":2},\"state\":1},{\"parts\":{\"1\":3},\"state\":1},{\"state\":1},{\"parts\":{\"0\":0},\"state\":1},{\"parts\":{\"1\":4},\"state\":1},{\"parts\":{\"1\":4294967295},\"state\":0},{\"parts\":{\"1\":3},\"state\":1}],\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/custom-registry.tsv\",\"requests\":[{\"mode\":\"model\",\"name\":\"test:signal\"}]}",
+        "{\"jar\":\"/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar\",\"kind\":\"forged\",\"mode\":\"pure\",\"queries\":[{\"state\":0}],\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\"}",
+        "{\"jar\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/missing-blockstate.zip\",\"layers\":{\"test:block/tex\":\"solid\"},\"queries\":[],\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/custom-registry.tsv\",\"requests\":[{\"mode\":\"model\",\"name\":\"test:signal\"}]}",
+        "{\"jar\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/partial-state-model.zip\",\"layers\":{\"test:block/tex\":\"solid\"},\"queries\":[],\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/custom-registry.tsv\",\"requests\":[{\"mode\":\"model\",\"name\":\"test:signal\"}]}",
+        "{\"jar\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/unknown-selector-property.zip\",\"layers\":{\"test:block/tex\":\"solid\"},\"queries\":[],\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/custom-registry.tsv\",\"requests\":[{\"mode\":\"model\",\"name\":\"test:signal\"}]}"
+      ],
+      "exit_code": 0,
+      "leader_reaped": true,
+      "pid": 53591,
+      "process_group": 53591,
+      "seconds": 0.022,
+      "status": "passed",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "d316ff30ebeea401b433946cb6d6918125754293366c383dbb102228fb37fe67",
+      "tag": "native-1-16",
+      "timeout_seconds": 180,
+      "timeout_signals": []
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/native",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "{\"jar\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/missing-unselected-variant-model.zip\",\"layers\":{\"test:block/tex\":\"solid\"},\"queries\":[],\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/custom-registry.tsv\",\"requests\":[{\"mode\":\"model\",\"name\":\"test:signal\"}]}",
+        "{\"jar\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/particle-only-model-bind-rejection.zip\",\"layers\":{\"test:block/tex\":\"solid\"},\"queries\":[{\"state\":0},{\"state\":1}],\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/custom-registry.tsv\",\"requests\":[{\"mode\":\"model\",\"name\":\"test:signal\"}]}",
+        "{\"jar\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/empty.zip\",\"layers\":{},\"max_blocks\":1,\"max_state_text\":0,\"max_states\":2,\"queries\":[{\"state\":0},{\"state\":1}],\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/custom-registry.tsv\",\"requests\":[{\"mode\":\"invisible\",\"name\":\"test:signal\"}]}",
+        "{\"jar\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/empty.zip\",\"layers\":{},\"max_blocks\":0,\"max_state_text\":0,\"max_states\":0,\"queries\":[],\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"requests\":[]}"
+      ],
+      "exit_code": 0,
+      "leader_reaped": true,
+      "pid": 53594,
+      "process_group": 53594,
+      "seconds": 0.114,
+      "status": "passed",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "1921802817f8faba51a8ddd88085374212f505504a06af841cc87e900c1ea8f0",
+      "tag": "native-1-24",
+      "timeout_seconds": 180,
+      "timeout_signals": []
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/native",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "{\"jar\":\"/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar\",\"queries\":[{\"first\":true,\"state\":0},{\"first\":true,\"state\":1},{\"first\":true,\"state\":8},{\"first\":true,\"state\":9},{\"first\":true,\"state\":10},{\"first\":true,\"state\":14},{\"first\":true,\"state\":15},{\"first\":true,\"state\":121},{\"first\":true,\"state\":139},{\"first\":true,\"state\":140},{\"first\":true,\"state\":141},{\"first\":true,\"state\":3832},{\"first\":true,\"state\":5463},{\"first\":true,\"state\":5464},{\"first\":true,\"state\":5465},{\"first\":true,\"state\":5466},{\"first\":true,\"state\":5467},{\"first\":true,\"state\":5468},{\"first\":true,\"state\":5469},{\"first\":true,\"state\":5470},{\"first\":true,\"state\":5471},{\"first\":true,\"state\":5472},{\"first\":true,\"state\":5473},{\"first\":true,\"state\":5474},{\"first\":true,\"state\":5475},{\"first\":true,\"state\":5476},{\"first\":true,\"state\":5477},{\"first\":true,\"state\":5478},{\"first\":true,\"state\":5479},{\"first\":true,\"state\":5480},{\"first\":true,\"state\":5481},{\"first\":true,\"state\":5482},{\"first\":true,\"state\":5483},{\"first\":true,\"state\":5484},{\"first\":true,\"state\":5485},{\"first\":true,\"state\":5486},{\"first\":true,\"state\":5487},{\"first\":true,\"state\":5488},{\"first\":true,\"state\":5489},{\"first\":true,\"state\":5490},{\"first\":true,\"state\":5491},{\"first\":true,\"state\":5492},{\"first\":true,\"state\":5493},{\"first\":true,\"state\":5494},{\"first\":true,\"state\":5495},{\"first\":true,\"state\":5496},{\"first\":true,\"state\":5497},{\"first\":true,\"state\":5498},{\"first\":true,\"state\":5499},{\"first\":true,\"state\":5500},{\"first\":true,\"state\":5501},{\"first\":true,\"state\":5502},{\"first\":true,\"state\":5503},{\"first\":true,\"state\":5504},{\"first\":true,\"state\":5505},{\"first\":true,\"state\":5506},{\"first\":true,\"state\":5507},{\"first\":true,\"state\":5508},{\"first\":true,\"state\":5509},{\"first\":true,\"state\":5510},{\"first\":true,\"state\":5511},{\"first\":true,\"state\":5512},{\"first\":true,\"state\":5513},{\"first\":true,\"state\":5514},{\"first\":true,\"state\":5515},{\"first\":true,\"state\":5516},{\"first\":true,\"state\":5517},{\"first\":true,\"state\":5518},{\"first\":true,\"state\":5519},{\"first\":true,\"state\":5520},{\"first\":true,\"state\":5521},{\"first\":true,\"state\":5522},{\"first\":true,\"state\":5523},{\"first\":true,\"state\":5524},{\"first\":true,\"state\":5525},{\"first\":true,\"state\":5526},{\"first\":true,\"state\":5527},{\"first\":true,\"state\":5528},{\"first\":true,\"state\":5529},{\"first\":true,\"state\":5530},{\"first\":true,\"state\":5531},{\"first\":true,\"state\":5532},{\"first\":true,\"state\":5533},{\"first\":true,\"state\":5534},{\"first\":true,\"state\":5535},{\"first\":true,\"state\":5536},{\"first\":true,\"state\":5537},{\"first\":true,\"state\":5538},{\"first\":true,\"state\":5539},{\"first\":true,\"state\":5540},{\"first\":true,\"state\":5541},{\"first\":true,\"state\":5542},{\"first\":true,\"state\":8635},{\"first\":true,\"state\":8636},{\"first\":true,\"state\":8637},{\"first\":true,\"state\":8638},{\"first\":true,\"state\":8639},{\"first\":true,\"state\":8640},{\"first\":true,\"state\":8641},{\"first\":true,\"state\":8642},{\"first\":true,\"state\":8643},{\"first\":true,\"state\":8644},{\"first\":true,\"state\":8645},{\"first\":true,\"state\":8646},{\"first\":true,\"state\":8647},{\"first\":true,\"state\":8648},{\"first\":true,\"state\":8649},{\"first\":true,\"state\":8650},{\"first\":true,\"state\":8651},{\"first\":true,\"state\":8652},{\"first\":true,\"state\":8653},{\"first\":true,\"state\":8654},{\"first\":true,\"state\":8655},{\"first\":true,\"state\":8656},{\"first\":true,\"state\":8657},{\"first\":true,\"state\":8658},{\"first\":true,\"state\":8659},{\"first\":true,\"state\":8660},{\"first\":true,\"state\":8661},{\"first\":true,\"state\":8662},{\"first\":true,\"state\":8663},{\"first\":true,\"state\":8664},{\"first\":true,\"state\":8665},{\"first\":true,\"state\":8666},{\"first\":true,\"state\":15177},{\"first\":true,\"state\":15178},{\"first\":true,\"state\":15179},{\"first\":true,\"state\":15180},{\"first\":true,\"state\":15181},{\"first\":true,\"state\":15182},{\"state\":1,\"ticket\":0},{\"state\":1,\"ticket\":1},{\"state\":1,\"ticket\":2},{\"state\":1,\"ticket\":3},{\"state\":10,\"ticket\":0},{\"state\":10,\"ticket\":1},{\"state\":10,\"ticket\":2},{\"state\":10,\"ticket\":3},{\"state\":9,\"ticket\":0},{\"state\":9,\"ticket\":1},{\"state\":9,\"ticket\":2},{\"state\":9,\"ticket\":3},{\"state\":121,\"ticket\":0},{\"state\":121,\"ticket\":1},{\"state\":121,\"ticket\":2},{\"state\":121,\"ticket\":3},{\"state\":1},{\"state\":1,\"ticket\":4},{\"state\":1,\"ticket\":4294967295},{\"state\":1,\"ticket\":0},{\"state\":9},{\"state\":9,\"ticket\":4},{\"state\":9,\"ticket\":4294967295},{\"state\":9,\"ticket\":0},{\"state\":10},{\"state\":10,\"ticket\":4},{\"state\":10,\"ticket\":4294967295},{\"state\":10,\"ticket\":0},{\"state\":121},{\"state\":121,\"ticket\":4},{\"state\":121,\"ticket\":4294967295},{\"state\":121,\"ticket\":0},{\"state\":15},{\"state\":15,\"ticket\":4294967295},{\"first\":true,\"state\":35722}],\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\"}",
+        "{\"jar\":\"/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar\",\"queries\":[{\"first\":true,\"state\":0},{\"first\":true,\"state\":1},{\"first\":true,\"state\":8},{\"first\":true,\"state\":9},{\"first\":true,\"state\":10},{\"first\":true,\"state\":14},{\"first\":true,\"state\":15},{\"first\":true,\"state\":121},{\"first\":true,\"state\":139},{\"first\":true,\"state\":140},{\"first\":true,\"state\":141},{\"first\":true,\"state\":3832},{\"first\":true,\"state\":5463},{\"first\":true,\"state\":5464},{\"first\":true,\"state\":5465},{\"first\":true,\"state\":5466},{\"first\":true,\"state\":5467},{\"first\":true,\"state\":5468},{\"first\":true,\"state\":5469},{\"first\":true,\"state\":5470},{\"first\":true,\"state\":5471},{\"first\":true,\"state\":5472},{\"first\":true,\"state\":5473},{\"first\":true,\"state\":5474},{\"first\":true,\"state\":5475},{\"first\":true,\"state\":5476},{\"first\":true,\"state\":5477},{\"first\":true,\"state\":5478},{\"first\":true,\"state\":5479},{\"first\":true,\"state\":5480},{\"first\":true,\"state\":5481},{\"first\":true,\"state\":5482},{\"first\":true,\"state\":5483},{\"first\":true,\"state\":5484},{\"first\":true,\"state\":5485},{\"first\":true,\"state\":5486},{\"first\":true,\"state\":5487},{\"first\":true,\"state\":5488},{\"first\":true,\"state\":5489},{\"first\":true,\"state\":5490},{\"first\":true,\"state\":5491},{\"first\":true,\"state\":5492},{\"first\":true,\"state\":5493},{\"first\":true,\"state\":5494},{\"first\":true,\"state\":5495},{\"first\":true,\"state\":5496},{\"first\":true,\"state\":5497},{\"first\":true,\"state\":5498},{\"first\":true,\"state\":5499},{\"first\":true,\"state\":5500},{\"first\":true,\"state\":5501},{\"first\":true,\"state\":5502},{\"first\":true,\"state\":5503},{\"first\":true,\"state\":5504},{\"first\":true,\"state\":5505},{\"first\":true,\"state\":5506},{\"first\":true,\"state\":5507},{\"first\":true,\"state\":5508},{\"first\":true,\"state\":5509},{\"first\":true,\"state\":5510},{\"first\":true,\"state\":5511},{\"first\":true,\"state\":5512},{\"first\":true,\"state\":5513},{\"first\":true,\"state\":5514},{\"first\":true,\"state\":5515},{\"first\":true,\"state\":5516},{\"first\":true,\"state\":5517},{\"first\":true,\"state\":5518},{\"first\":true,\"state\":5519},{\"first\":true,\"state\":5520},{\"first\":true,\"state\":5521},{\"first\":true,\"state\":5522},{\"first\":true,\"state\":5523},{\"first\":true,\"state\":5524},{\"first\":true,\"state\":5525},{\"first\":true,\"state\":5526},{\"first\":true,\"state\":5527},{\"first\":true,\"state\":5528},{\"first\":true,\"state\":5529},{\"first\":true,\"state\":5530},{\"first\":true,\"state\":5531},{\"first\":true,\"state\":5532},{\"first\":true,\"state\":5533},{\"first\":true,\"state\":5534},{\"first\":true,\"state\":5535},{\"first\":true,\"state\":5536},{\"first\":true,\"state\":5537},{\"first\":true,\"state\":5538},{\"first\":true,\"state\":5539},{\"first\":true,\"state\":5540},{\"first\":true,\"state\":5541},{\"first\":true,\"state\":5542},{\"first\":true,\"state\":8635},{\"first\":true,\"state\":8636},{\"first\":true,\"state\":8637},{\"first\":true,\"state\":8638},{\"first\":true,\"state\":8639},{\"first\":true,\"state\":8640},{\"first\":true,\"state\":8641},{\"first\":true,\"state\":8642},{\"first\":true,\"state\":8643},{\"first\":true,\"state\":8644},{\"first\":true,\"state\":8645},{\"first\":true,\"state\":8646},{\"first\":true,\"state\":8647},{\"first\":true,\"state\":8648},{\"first\":true,\"state\":8649},{\"first\":true,\"state\":8650},{\"first\":true,\"state\":8651},{\"first\":true,\"state\":8652},{\"first\":true,\"state\":8653},{\"first\":true,\"state\":8654},{\"first\":true,\"state\":8655},{\"first\":true,\"state\":8656},{\"first\":true,\"state\":8657},{\"first\":true,\"state\":8658},{\"first\":true,\"state\":8659},{\"first\":true,\"state\":8660},{\"first\":true,\"state\":8661},{\"first\":true,\"state\":8662},{\"first\":true,\"state\":8663},{\"first\":true,\"state\":8664},{\"first\":true,\"state\":8665},{\"first\":true,\"state\":8666},{\"first\":true,\"state\":15177},{\"first\":true,\"state\":15178},{\"first\":true,\"state\":15179},{\"first\":true,\"state\":15180},{\"first\":true,\"state\":15181},{\"first\":true,\"state\":15182},{\"state\":1,\"ticket\":0},{\"state\":1,\"ticket\":1},{\"state\":1,\"ticket\":2},{\"state\":1,\"ticket\":3},{\"state\":10,\"ticket\":0},{\"state\":10,\"ticket\":1},{\"state\":10,\"ticket\":2},{\"state\":10,\"ticket\":3},{\"state\":9,\"ticket\":0},{\"state\":9,\"ticket\":1},{\"state\":9,\"ticket\":2},{\"state\":9,\"ticket\":3},{\"state\":121,\"ticket\":0},{\"state\":121,\"ticket\":1},{\"state\":121,\"ticket\":2},{\"state\":121,\"ticket\":3},{\"state\":1},{\"state\":1,\"ticket\":4},{\"state\":1,\"ticket\":4294967295},{\"state\":1,\"ticket\":0},{\"state\":9},{\"state\":9,\"ticket\":4},{\"state\":9,\"ticket\":4294967295},{\"state\":9,\"ticket\":0},{\"state\":10},{\"state\":10,\"ticket\":4},{\"state\":10,\"ticket\":4294967295},{\"state\":10,\"ticket\":0},{\"state\":121},{\"state\":121,\"ticket\":4},{\"state\":121,\"ticket\":4294967295},{\"state\":121,\"ticket\":0},{\"state\":15},{\"state\":15,\"ticket\":4294967295},{\"first\":true,\"state\":35722}],\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"requests\":[{\"mode\":\"model\",\"name\":\"minecraft:bricks\"},{\"mode\":\"model\",\"name\":\"minecraft:sand\"},{\"mode\":\"model\",\"name\":\"minecraft:cobblestone\"},{\"mode\":\"model\",\"name\":\"minecraft:oak_fence\"},{\"mode\":\"model\",\"name\":\"minecraft:oak_stairs\"},{\"mode\":\"model\",\"name\":\"minecraft:oak_slab\"},{\"mode\":\"model\",\"name\":\"minecraft:oak_log\"},{\"mode\":\"model\",\"name\":\"minecraft:grass_block\"},{\"mode\":\"model\",\"name\":\"minecraft:oak_planks\"},{\"mode\":\"model\",\"name\":\"minecraft:dirt\"},{\"mode\":\"model\",\"name\":\"minecraft:stone\"},{\"mode\":\"invisible\",\"name\":\"minecraft:air\"}]}",
+        "{\"jar\":\"/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar\",\"max_blocks\":12,\"max_state_text\":8739,\"max_states\":130,\"queries\":[{\"first\":true,\"state\":8666},{\"state\":0}],\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\"}",
+        "{\"jar\":\"/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar\",\"max_blocks\":11,\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\"}",
+        "{\"jar\":\"/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar\",\"max_states\":129,\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\"}",
+        "{\"jar\":\"/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar\",\"max_state_text\":8738,\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\"}",
+        "{\"jar\":\"/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar\",\"max_states\":65536,\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\"}",
+        "{\"jar\":\"/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar\",\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"resources\":{\"models\":0}}"
+      ],
+      "exit_code": 0,
+      "leader_reaped": true,
+      "pid": 53595,
+      "process_group": 53595,
+      "seconds": 14.026,
+      "status": "passed",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "30ac750b375110672c3bc72ae3ca9bf1b7087454965ac0fcb3d82145ae1c0c5a",
+      "tag": "native-2-0",
+      "timeout_seconds": 180,
+      "timeout_signals": []
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/native",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "{\"jar\":\"/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar\",\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"resources\":{\"models\":19}}",
+        "{\"jar\":\"/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar\",\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"resources\":{\"sprites\":0}}",
+        "{\"jar\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/does-not-exist.zip\",\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"requests\":[{\"name\":\"minecraft:stone\"},{\"name\":\"minecraft:stone\"}]}",
+        "{\"jar\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/does-not-exist.zip\",\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"requests\":[{\"name\":\"test:missing\"}]}",
+        "{\"jar\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/does-not-exist.zip\",\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"requests\":[{\"name\":\"minecraft:water\"}]}",
+        "{\"jar\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/does-not-exist.zip\",\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"requests\":[{\"name\":\"minecraft:chest\"}]}",
+        "{\"jar\":\"/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar\",\"layers\":{\"minecraft:block/glass\":\"translucent\"},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"requests\":[{\"mode\":\"model\",\"name\":\"minecraft:glass\"}]}",
+        "{\"jar\":\"/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar\",\"layers\":{\"minecraft:block/water_still\":\"translucent\"},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"requests\":[{\"mode\":\"model\",\"name\":\"minecraft:water\"}],\"resources\":{\"side\":1024}}"
+      ],
+      "exit_code": 0,
+      "leader_reaped": true,
+      "pid": 53676,
+      "process_group": 53676,
+      "seconds": 10.012,
+      "status": "passed",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "9022158f1b8b649a4c9e04c1a22fa4141dd5b487bdbee2076c38c87ee6c7ebbb",
+      "tag": "native-2-8",
+      "timeout_seconds": 180,
+      "timeout_signals": []
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/native",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "{\"jar\":\"/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar\",\"kind\":\"variant\",\"mode\":\"pure\",\"queries\":[{\"state\":0},{\"first\":true,\"state\":1},{\"state\":1,\"ticket\":4294967295}],\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\"}",
+        "{\"jar\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/custom-variant.zip\",\"layers\":{\"test:block/tex\":\"solid\"},\"queries\":[{\"state\":0},{\"first\":true,\"state\":1},{\"state\":1,\"ticket\":4294967295}],\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/custom-registry.tsv\",\"requests\":[{\"mode\":\"model\",\"name\":\"test:signal\"}]}",
+        "{\"jar\":\"/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar\",\"kind\":\"multipart\",\"mode\":\"pure\",\"queries\":[{\"state\":0},{\"first\":true,\"state\":1},{\"parts\":{\"1\":0},\"state\":1},{\"parts\":{\"1\":1},\"state\":1},{\"parts\":{\"1\":2},\"state\":1},{\"parts\":{\"1\":3},\"state\":1},{\"state\":1},{\"parts\":{\"0\":0},\"state\":1},{\"parts\":{\"1\":4},\"state\":1},{\"parts\":{\"1\":4294967295},\"state\":0},{\"parts\":{\"1\":3},\"state\":1}],\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\"}",
+        "{\"jar\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/custom-multipart.zip\",\"layers\":{\"test:block/tex\":\"solid\"},\"queries\":[{\"state\":0},{\"first\":true,\"state\":1},{\"parts\":{\"1\":0},\"state\":1},{\"parts\":{\"1\":1},\"state\":1},{\"parts\":{\"1\":2},\"state\":1},{\"parts\":{\"1\":3},\"state\":1},{\"state\":1},{\"parts\":{\"0\":0},\"state\":1},{\"parts\":{\"1\":4},\"state\":1},{\"parts\":{\"1\":4294967295},\"state\":0},{\"parts\":{\"1\":3},\"state\":1}],\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/custom-registry.tsv\",\"requests\":[{\"mode\":\"model\",\"name\":\"test:signal\"}]}",
+        "{\"jar\":\"/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar\",\"kind\":\"forged\",\"mode\":\"pure\",\"queries\":[{\"state\":0}],\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\"}",
+        "{\"jar\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/missing-blockstate.zip\",\"layers\":{\"test:block/tex\":\"solid\"},\"queries\":[],\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/custom-registry.tsv\",\"requests\":[{\"mode\":\"model\",\"name\":\"test:signal\"}]}",
+        "{\"jar\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/partial-state-model.zip\",\"layers\":{\"test:block/tex\":\"solid\"},\"queries\":[],\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/custom-registry.tsv\",\"requests\":[{\"mode\":\"model\",\"name\":\"test:signal\"}]}",
+        "{\"jar\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/unknown-selector-property.zip\",\"layers\":{\"test:block/tex\":\"solid\"},\"queries\":[],\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/custom-registry.tsv\",\"requests\":[{\"mode\":\"model\",\"name\":\"test:signal\"}]}"
+      ],
+      "exit_code": 0,
+      "leader_reaped": true,
+      "pid": 53745,
+      "process_group": 53745,
+      "seconds": 0.02,
+      "status": "passed",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "d316ff30ebeea401b433946cb6d6918125754293366c383dbb102228fb37fe67",
+      "tag": "native-2-16",
+      "timeout_seconds": 180,
+      "timeout_signals": []
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/native",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "{\"jar\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/missing-unselected-variant-model.zip\",\"layers\":{\"test:block/tex\":\"solid\"},\"queries\":[],\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/custom-registry.tsv\",\"requests\":[{\"mode\":\"model\",\"name\":\"test:signal\"}]}",
+        "{\"jar\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/particle-only-model-bind-rejection.zip\",\"layers\":{\"test:block/tex\":\"solid\"},\"queries\":[{\"state\":0},{\"state\":1}],\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/custom-registry.tsv\",\"requests\":[{\"mode\":\"model\",\"name\":\"test:signal\"}]}",
+        "{\"jar\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/empty.zip\",\"layers\":{},\"max_blocks\":1,\"max_state_text\":0,\"max_states\":2,\"queries\":[{\"state\":0},{\"state\":1}],\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/custom-registry.tsv\",\"requests\":[{\"mode\":\"invisible\",\"name\":\"test:signal\"}]}",
+        "{\"jar\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/empty.zip\",\"layers\":{},\"max_blocks\":0,\"max_state_text\":0,\"max_states\":0,\"queries\":[],\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"requests\":[]}"
+      ],
+      "exit_code": 0,
+      "leader_reaped": true,
+      "pid": 53748,
+      "process_group": 53748,
+      "seconds": 0.107,
+      "status": "passed",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "1921802817f8faba51a8ddd88085374212f505504a06af841cc87e900c1ea8f0",
+      "tag": "native-2-24",
+      "timeout_seconds": 180,
+      "timeout_signals": []
+    }
+  ],
+  "native_scope_limits": [
+    "Geometry coordinates and fresh floating-point bake parity",
+    "Caller-supplied appearance propagation",
+    "Atlas packing",
+    "World culling and neighborhood visibility",
+    "World tint application",
+    "Final rendered frames and presentation performance"
+  ],
   "preparation": {
     "cases": 28,
     "fixture_manifest_sha256": "5b784f7f018da8856526f5c8fc34cad5ef0eb64a254aed4895cbba5bb7280f12",
@@ -329,6 +555,26 @@
     "native_invocations": 0,
     "official_queries": 165,
     "official_states_including_air": 130
+  },
+  "private_preparation": {
+    "basis": {
+      "bounded_runner_sha256": "5fa5422e8ab211a66f242cada835ee196b133d4489ea6ce9d0e8a6bbe539bbde",
+      "emission_receipt_sha256": "b83d2f5944a7167155d167bcf7a5d4e6d1c95b79c955d790a26a46f7c5cb8c18",
+      "original_compiler_sha256": "32fb66e09f608ce9e4b173384bcfeec453db8c5bc96650e26ad861bef815a8d9",
+      "private_compiler_sha256": "832b94d488828e7befc63cadc81b1932d7e5cd782f1679363111ea79e951543e",
+      "source_api_sha256": "7deae3693eb896f33c73867081b99d2c6f3ed3b57e77e55eb5f6260840dd0e63"
+    },
+    "entry": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-block-catalog-tests/private-001/source/tests/resource_block_catalog.bend",
+    "limits": {
+      "heap_mib": 6144,
+      "producer_stall_seconds": 90,
+      "sampled_rss_bytes": 8589934592,
+      "total_seconds": 600
+    },
+    "manifest_sha256": "19dc26dd7353935ba0d112adeb0cd9ba92c0da6f26cf2af5e580deef4a0c0b14",
+    "project_and_foreign_bytes_unchanged": true,
+    "source_map_sha256": "26a62aba3e78b08a0aa676c8e2024e27ab82e557f10e38d63ce95f6615aaf7ca",
+    "status": "frozen"
   },
   "reference_sha256": "5d1f233bf9b818fbc61a252d7c30ac5e30f7d02eb77bcf3d0fbeaf8ca504e3ea",
   "runner_cleanup_check": {
@@ -358,7 +604,8 @@
     "Prepared native checks cover all 129 official static block state components plus air, and all four alternatives of each weighted official root.",
     "Prepared cases cover arbitrary test: namespace variant/multipart planning and real IO loading, explicit ticket and budget boundaries, and state-0 decode from the returned registry after load success/failure.",
     "Prepared oracle compares per-quad texture slot, sprite, layer, tint and count metadata to independent Java-derived summaries, Image pixel readback to Pillow PNG decoding, and Usage to ZIP model closure plus PNG dimensions.",
-    "Coordinates, caller-supplied appearance, atlas, world tint and final presentation remain separate checks."
+    "Coordinates, caller-supplied appearance, atlas, world tint and final presentation remain separate checks.",
+    "The preparation counters record the stage before building; completed native execution counts are in validation."
   ],
   "source_check": {
     "command": [
@@ -378,6 +625,7 @@
     "timeout_seconds": 90,
     "timeout_signals": []
   },
+  "source_check_reused_for_identical_bytes": true,
   "sources": {
     "/Users/chuah/.bend/bend2/base.bend": {
       "bytes": 71530,
@@ -660,5 +908,28 @@
       "sha256": "e6cd85732e8d35e322dcb0cd277523a303b658544871d7b3a5c4cac7f834df89"
     }
   },
-  "status": "source_checked_native_timeout"
+  "status": "passed",
+  "validation": {
+    "catalog_processes_absent_after_completion": true,
+    "checked_quads": 4310,
+    "counts_per_run": {
+      "case_observations": 28,
+      "load_refusals": 17,
+      "observed_quads": 4310,
+      "query_observations": 365
+    },
+    "load_refusals_across_runs": 34,
+    "load_rejections": 17,
+    "native_case_observations": 56,
+    "native_process_invocations": 8,
+    "observed_quads_across_runs": 8620,
+    "oracle_checked_quads_in_first_run": 4310,
+    "query_observations_across_runs": 730,
+    "query_refusals_across_runs": 68,
+    "query_rejections": 34,
+    "query_successes": 331,
+    "reordered_requests_equal": true,
+    "successful_query_observations_across_runs": 662,
+    "two_native_runs_equal": true
+  }
 }

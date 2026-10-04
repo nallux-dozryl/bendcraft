@@ -19,6 +19,7 @@ import pathlib
 import signal
 import struct
 import subprocess
+import sys
 import time
 import zipfile
 import zlib
@@ -35,6 +36,9 @@ REFERENCE_EVIDENCE = ROOT / "evidence/resource-block-catalog-reference.json"
 EVIDENCE = ROOT / "evidence/resource-block-catalog-tests.json"
 WORK = ROOT / "build/resource-block-catalog-tests"
 BINARY = WORK / "native"
+PRIVATE = WORK / "private-001"
+PRIVATE_BASIS = ROOT / "build/playable-renderer-current/004"
+PRODUCER_BASIS = ROOT / "build/compiler-producer-diagnostic-012"
 JAR = pathlib.Path.home() / "Library/Application Support/minecraft/versions/26.3/26.3.jar"
 REGISTRY = ROOT / "generated/reference_blocks.tsv"
 ENV = {**os.environ, "BEND_MINECRAFT_LAUNCH_MODE": "hidden"}
@@ -464,11 +468,106 @@ def native(corpus, iteration):
     return reports, receipts
 
 
+def prepare_private(before):
+    """Relocate the measured queue/zero-guard producer; retain exact source bytes."""
+    manifest_path = PRIVATE / "manifest.json"
+    if manifest_path.is_file():
+        manifest = json.loads(manifest_path.read_text())
+        assert manifest["production_sources"] == before, "Private source generation differs"
+        assert all(sha(path) == expected for path, expected in manifest["files"].items()), "Private generation changed"
+        return manifest
+    assert not PRIVATE.exists(), "Unrecorded private generation; preserve rather than overwrite"
+    basis = json.loads((PRIVATE_BASIS / "emission-receipt.json").read_text())
+    assert basis["exit_code"] == 0 and not basis["timed_out"] and basis["cleanup"]["live_group_absent"]
+    private_compiler = PRIVATE_BASIS / "comp_instrumented.ts"
+    api = ROOT.parent / "bend/bend2/bend.ts"
+    foreign_root = (BEND.resolve().parent.parent / "bend2").resolve()
+    original_compiler = api.with_name("comp.ts")
+    known = json.loads((PRODUCER_BASIS / "receipt.json").read_text())["source_before"]
+    assert sha(api) == known[str(api)] and sha(original_compiler) == known[str(original_compiler)]
+    assert sha(PRODUCER_BASIS / "comp_instrumented.ts") == known[str(PRODUCER_BASIS / "comp_instrumented.ts")]
+    # The two measured private producers differ only in their output directory.
+    assert private_compiler.read_text().replace(str(PRIVATE_BASIS), str(PRODUCER_BASIS)) == (PRODUCER_BASIS / "comp_instrumented.ts").read_text()
+    PRIVATE.mkdir(parents=True)
+    files, mapping = {}, []
+    def frozen(original, target, expected):
+        raw = original.read_bytes()
+        assert hashlib.sha256(raw).hexdigest() == expected, (original, "source changed before freezing")
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(raw)
+        target.chmod(0o444)
+        files[str(target)] = expected
+        mapping.append({"original": str(original), "mapped": str(target), "sha256": expected, "bytes": len(raw)})
+    seen = set()
+    for lookup, pin in before.items():
+        original = pathlib.Path(lookup).resolve()
+        if original in seen or pin["kind"] == "compiler":
+            continue
+        seen.add(original)
+        if original.is_relative_to(ROOT):
+            target = PRIVATE / "source" / original.relative_to(ROOT)
+        else:
+            assert original.is_relative_to(foreign_root), (original, "unexpected foreign dependency")
+            relative = original.relative_to(foreign_root)
+            assert sha(api.parent / relative) == pin["sha256"], (original, "installed/source-API foreign bytes differ")
+            target = PRIVATE / "source-api" / relative
+        frozen(original, target, pin["sha256"])
+    frozen(api, PRIVATE / "source-api/bend.ts", sha(api))
+    # Path relocation changes only module/log destinations in the existing
+    # private compiler. The queue and available-arity guard remain untouched.
+    compiler_text = private_compiler.read_text().replace(str(PRIVATE_BASIS), str(PRIVATE)).replace(api.as_uri(), (PRIVATE / "source-api/bend.ts").as_uri())
+    (PRIVATE / "comp_instrumented.ts").write_text(compiler_text)
+    emitter_text = (PRIVATE_BASIS / "emit.mjs").read_text().replace(str(PRIVATE_BASIS), str(PRIVATE)).replace(api.as_uri(), (PRIVATE / "source-api/bend.ts").as_uri())
+    emitter_text = emitter_text.replace(str(PRIVATE / "source/remote_resource_client.bend"), str(PRIVATE / "source/tests/resource_block_catalog.bend"))
+    (PRIVATE / "diagnose.mjs").write_text(emitter_text)
+    (PRIVATE / "run.py").write_bytes((PRODUCER_BASIS / "run.py").read_bytes())
+    source_map = PRIVATE / "source-map.json"
+    source_map.write_bytes(canonical({"schema": 1, "files": mapping}) + b"\n")
+    for path in (PRIVATE / "comp_instrumented.ts", PRIVATE / "diagnose.mjs", PRIVATE / "run.py", source_map,
+                 api, original_compiler, private_compiler, PRIVATE_BASIS / "emit.mjs", PRODUCER_BASIS / "run.py", pathlib.Path(basis["argv"][0])):
+        files[str(path)] = sha(path)
+    assert sources() == before, "Production bytes changed during freezing"
+    manifest = {"schema": 1, "scope": "Exact catalog observer graph and foreign source bytes; existing measured private queue/zero-arity producer relocated only. Original compiler untouched; no product-cache promotion.",
+                "production_sources": before, "files": files, "entry": str(PRIVATE / "source/tests/resource_block_catalog.bend"),
+                "limits": {"heap_mib": 6144, "total_seconds": 600, "producer_stall_seconds": 90, "sampled_rss_bytes": 8589934592},
+                "basis": {"emission_receipt_sha256": sha(PRIVATE_BASIS / "emission-receipt.json"), "private_compiler_sha256": sha(private_compiler),
+                          "source_api_sha256": sha(api), "original_compiler_sha256": sha(original_compiler), "bounded_runner_sha256": sha(PRODUCER_BASIS / "run.py")}}
+    manifest_path.write_text(json.dumps(manifest, sort_keys=True, indent=2) + "\n")
+    return manifest
+
+
+def build_private(before):
+    manifest = prepare_private(before)
+    assert not (PRIVATE / "receipt.json").exists(), "Private attempt already recorded; no equivalent retry"
+    result, envelope = run([sys.executable, PRIVATE / "run.py"], "native-private-emission", 620)
+    receipt = json.loads((PRIVATE / "receipt.json").read_text())
+    assert receipt["returncode"] == 0 and receipt["termination_reason"] is None and receipt["group_absent"] and receipt["complete_C"], receipt
+    assert receipt["source_before"] == receipt["source_after"] == manifest["files"]
+    loaded = json.loads((PRIVATE / "loaded-source-pins.json").read_text())
+    assert loaded == json.loads((PRIVATE / "final-source-pins.json").read_text())
+    assert all(sha(path) == expected for path, expected in loaded.items())
+    generated = PRIVATE / "diagnostic.c"
+    assert sha(generated) == receipt["C"]["sha256"] and generated.stat().st_size == receipt["C"]["bytes"]
+    build_native.guard_route(generated.read_text())
+    sdk = subprocess.check_output(["/usr/bin/xcrun", "--show-sdk-path"], text=True).strip()
+    command = ["/usr/bin/env", "SDKROOT=" + sdk, "/usr/bin/clang", "-std=c11", "-O3", generated, "-lpthread", "-lm", "-o", BINARY]
+    clang_before = sha("/usr/bin/clang")
+    compiled, native_receipt = run(command, "native-private-clang", 300)
+    assert compiled.stderr == "" and sha("/usr/bin/clang") == clang_before and sources() == before
+    return {"route": "measured-private-source-api-producer", "emission": envelope, "producer_receipt_sha256": sha(PRIVATE / "receipt.json"),
+            "manifest_sha256": sha(PRIVATE / "manifest.json"), "source_map_sha256": sha(PRIVATE / "source-map.json"),
+            "loaded_source_pins_sha256": sha(PRIVATE / "loaded-source-pins.json"), "C": receipt["C"],
+            "sampled_peak_rss_bytes": receipt["sampled_peak_rss_bytes"], "clang": native_receipt,
+            "basis": manifest["basis"], "product_cache_promoted": False}
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument("--build-native", action="store_true", help="build/run after coordinating a heavy-job slot")
     mode.add_argument("--reuse-native", action="store_true", help="run only a binary with an exact source stamp")
+    mode.add_argument("--prepare-private", action="store_true", help="freeze the existing measured private producer without emission")
+    mode.add_argument("--build-private", action="store_true", help="emit with the existing measured private producer after slot coordination")
     parser.add_argument("--build-timeout", type=int, default=600)
     args = parser.parse_args()
     WORK.mkdir(parents=True, exist_ok=True)
@@ -479,14 +578,21 @@ def main():
     (WORK / "cases.json").write_bytes(canonical(corpus) + b"\n")
     before = sources()
     assert before[str(BEND)]["sha256"] == build_native.PINNED_BEND_SHA256
-    check, check_receipt = run([BEND, ENTRY, "--check-only"], "source-check", 90)
-    assert "ALL PROOFS CHECK" in check.stdout, check.stdout
+    check_reused = bool((args.prepare_private or args.build_private) and previous.get("sources") == before
+                        and previous.get("source_check", {}).get("exit_code") == 0)
+    if check_reused:
+        check_receipt = previous["source_check"]
+    else:
+        check, check_receipt = run([BEND, ENTRY, "--check-only"], "source-check", 90)
+        assert "ALL PROOFS CHECK" in check.stdout, check.stdout
     assert sources() == before, "Production source changed during source checking"
     status = "source_checked_native_timeout" if native_attempts and native_attempts[-1]["status"] == "timed_out" else "source_checked_native_pending"
     evidence = {"schema": 1, "status": status, "confidence": "high for independent fixture preparation and source checking; native behavior unverified",
-                "commands": {"prepare": "python3 tools/resource_block_catalog_test.py", "native": "python3 tools/resource_block_catalog_test.py --build-native"},
+                "commands": {"prepare": "python3 tools/resource_block_catalog_test.py", "native": "python3 tools/resource_block_catalog_test.py --build-native",
+                             "private_prepare": "python3 tools/resource_block_catalog_test.py --prepare-private", "private_native": "python3 tools/resource_block_catalog_test.py --build-private"},
                 "sources": before, "driver_sha256": sha(__file__), "reference_sha256": sha(REFERENCE), "jar_sha256": sha(JAR),
-                "source_check": check_receipt, "preparation": {"cases": len(corpus), "official_states_including_air": len(states),
+                "source_check": check_receipt, "source_check_reused_for_identical_bytes": check_reused,
+                "preparation": {"cases": len(corpus), "official_states_including_air": len(states),
                     "official_queries": len(corpus[0]["config"]["queries"]), "fixture_manifest_sha256": sha(WORK / "cases.json"),
                     "native_invocations": 0, "native_checked_quads": 0},
                 "native_attempts": native_attempts,
@@ -497,13 +603,31 @@ def main():
                           "Prepared cases cover arbitrary test: namespace variant/multipart planning and real IO loading, explicit ticket and budget boundaries, and state-0 decode from the returned registry after load success/failure.",
                           "Prepared oracle compares per-quad texture slot, sprite, layer, tint and count metadata to independent Java-derived summaries, Image pixel readback to Pillow PNG decoding, and Usage to ZIP model closure plus PNG dimensions.",
                           "Coordinates, caller-supplied appearance, atlas, world tint and final presentation remain separate checks."]}
+    if "runner_cleanup_check" in previous:
+        evidence["runner_cleanup_check"] = previous["runner_cleanup_check"]
+    if args.prepare_private or args.build_private:
+        manifest = prepare_private(before)
+        evidence["private_preparation"] = {"status": "frozen", "manifest_sha256": sha(PRIVATE / "manifest.json"),
+            "source_map_sha256": sha(PRIVATE / "source-map.json"), "basis": manifest["basis"], "entry": manifest["entry"],
+            "limits": manifest["limits"], "project_and_foreign_bytes_unchanged": True}
     EVIDENCE.write_text(json.dumps(evidence, sort_keys=True, indent=2) + "\n")
-    if not (args.build_native or args.reuse_native):
+    if not (args.build_native or args.reuse_native or args.build_private):
         print(json.dumps({"status": evidence["status"], **evidence["preparation"]}, sort_keys=True))
         return
     stamp = WORK / "native-build.json"
-    if args.build_native:
-        built, build_receipt = run([BEND, ENTRY, "-o", BINARY], "native-build", args.build_timeout)
+    if args.build_native or args.build_private:
+        if args.build_private:
+            try:
+                build_receipt = build_private(before)
+            except (AssertionError, ProcessFailure):
+                failed = json.loads(EVIDENCE.read_text())
+                failed["status"] = "source_checked_native_private_failed"
+                if (PRIVATE / "receipt.json").is_file():
+                    failed["private_producer_failure"] = json.loads((PRIVATE / "receipt.json").read_text())
+                EVIDENCE.write_text(json.dumps(failed, sort_keys=True, indent=2) + "\n")
+                raise
+        else:
+            built, build_receipt = run([BEND, ENTRY, "-o", BINARY], "native-build", args.build_timeout)
         assert BINARY.is_file() and sources() == before, "Native build source changed or binary missing"
         stamp.write_text(json.dumps({"sources": before, "binary_sha256": sha(BINARY), "receipt": build_receipt}, sort_keys=True, indent=2) + "\n")
     else:
