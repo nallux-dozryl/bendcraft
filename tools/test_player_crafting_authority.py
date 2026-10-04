@@ -106,8 +106,9 @@ type Case is Data:
   cases.append('Case{'+q(label)+',recipe_0(),R.Grid{2,2,'+seq(slot(s) for s in first['craft'])+'},'+seq(slot(s) for s in base['all_backing_slots'])+',7,I.Abilities{False{},True{}},'+raw_status+',23n,True{},'+('2' if operation==11 else '0')+','+str(operation)+'}')
   raw_ability={**base['abilities'],'walking_speed':0x7fc01234,'flying_speed':0x80000000}
   runtime.append(runtime_case(label,first['source'],'fixture:case_0',{'width':2,'height':2,'slots':first['craft']},base['all_backing_slots'],raw_ability,2 if operation==11 else 0,operation))
- # Geometry refusals exercise public malformed owner constructors. The guard
- # must preserve the complete malformed owner rather than pad or alias slots.
+ # Source-model geometry fixtures include arbitrary public Array trees. The
+ # ordinary CPU runtime represents only equal-class Array nodes, so operations
+ # 32/35 are constructor-boundary checks rather than authority observations.
  for operation,label in [(30,'player-logical-47'),(31,'player-backing-32'),(32,'player-unbalanced-backing')]:
   wanted=copy.deepcopy(base);wanted.update(id=label,message='invalid crafting inventory owner geometry')
   if operation==30:wanted['logical_length']=47
@@ -168,13 +169,41 @@ type Case is Data:
   wanted['bench_logical_length']=None if wanted['bench_backing_slots'] is None else (8 if wanted['id']=='bench-logical-8' else 9)
  source+='\ndef cases() -> List<&2,Case>:\n  '+seq(cases)+'\n'
  CACHE.mkdir(parents=True,exist_ok=True);(CACHE/'legacy-literal-cases.bend').write_text(source)
- CACHE.mkdir(parents=True,exist_ok=True);write_json(CACHE/'expected.json',expected);write_json(CACHE/'cases.json',{'cases':runtime});assert len(runtime)==len(expected)==69
- return expected
+ assert len(runtime)==len(expected)==69
+ CACHE.mkdir(parents=True,exist_ok=True)
+ write_json(CACHE/'source-model-expected.json',expected)
+ write_json(CACHE/'source-model-cases.json',{'cases':runtime})
+ constructors=[case for case in runtime if case['operation'] in (32,35)]
+ paired=[(case,wanted) for case,wanted in zip(runtime,expected,strict=True) if case['operation'] not in (32,35)]
+ native_cases=[case for case,_ in paired];native_expected=[wanted for _,wanted in paired]
+ assert len(native_cases)==len(native_expected)==67 and len(constructors)==2
+ write_json(CACHE/'expected.json',native_expected)
+ write_json(CACHE/'cases.json',{'cases':native_cases})
+ write_json(CACHE/'constructor-cases.json',{'cases':constructors})
+ return native_expected
 
-def run(args,timeout):
- start=time.monotonic();r=subprocess.run(list(map(str,args)),cwd=ROOT,capture_output=True,text=True,timeout=timeout);receipt={'command':list(map(str,args)),'seconds':time.monotonic()-start,'returncode':r.returncode,'stdout':r.stdout[-6000:],'stderr':r.stderr[-6000:]}
- if r.returncode:raise AssertionError(receipt)
+def run(args,timeout,expected_returncode=0):
+ start=time.monotonic();r=subprocess.run(list(map(str,args)),cwd=ROOT,capture_output=True,text=True,timeout=timeout)
+ logs=CACHE/'runs';logs.mkdir(parents=True,exist_ok=True);stem=logs/str(time.time_ns())
+ stdout=stem.with_suffix('.stdout');stderr=stem.with_suffix('.stderr');stdout.write_text(r.stdout);stderr.write_text(r.stderr)
+ receipt={'command':list(map(str,args)),'seconds':time.monotonic()-start,'returncode':r.returncode,'stdout':r.stdout[-6000:],'stderr':r.stderr[-6000:],'stdout_file':str(stdout),'stderr_file':str(stderr)}
+ if r.returncode!=expected_returncode:raise AssertionError(receipt)
  return r,receipt
+
+def constructor_boundaries(command,timeout,prefix_rows=()):
+ path=CACHE/'cases.json';retained=path.read_bytes();checks=[]
+ constructors=json.loads((CACHE/'constructor-cases.json').read_text())['cases']
+ try:
+  for case in constructors:
+   write_json(path,{'cases':[case]})
+   actual,receipt=run(command,timeout,expected_returncode=1)
+   assert actual.stderr=='bend: runtime fail-stop\n',(case['id'],actual.stderr)
+   rows=[json.loads(line) for line in actual.stdout.splitlines() if line.strip()]
+   assert rows==list(prefix_rows),(case['id'],len(rows),len(prefix_rows))
+   receipt.pop('stdout');receipt.update(id=case['id'],output_sha256=hashlib.sha256(actual.stdout.encode()).hexdigest(),observed_authority_cases=0,constructor='Array.ANode',child_physical_classes=[0,6 if case['operation']==32 else 4])
+   checks.append(receipt)
+ finally:path.write_bytes(retained)
+ return checks
 
 def build(entry_relative='tests/player_crafting_authority.bend',binary=BINARY,cache=CACHE,resume_snapshot=None):
  # Freeze the actual source graph once. The verified modular native cache
@@ -202,11 +231,20 @@ def build(entry_relative='tests/player_crafting_authority.bend',binary=BINARY,ca
  write_json(work/'source-pins.json',{'original':manifest,'compiled':compiled_manifest})
  Owned.WORK=work
  cache_report=work/'native-cache.json'
- receipt=Owned.bounded([sys.executable,ROOT/'tools/build_native.py',entry,'-o',binary,'--report',cache_report],600,'modular-compiler');Owned.process_ok(receipt)
- native=json.loads(cache_report.read_text());assert native['binary_sha256']==fingerprint(binary)['sha256']
+ prepare_command=[sys.executable,ROOT/'tools/player_crafting_authority_native.py',entry,'--report',cache_report]
+ emitted=Owned.bounded(prepare_command,600,'c-emission');Owned.process_ok(emitted)
+ native=json.loads(cache_report.read_text());temporary=work/'program'
+ command=[native['context']['compiler']['path']]+[native['emitted_file'] if arg=='<emitted.c>' else str(temporary) if arg=='<native>' else arg for arg in native['context']['compiler']['flags']]
+ linked=Owned.bounded(command,600,'native-compile');Owned.process_ok(linked)
+ checked_report=work/'native-cache-after.json'
+ checked=Owned.bounded([sys.executable,ROOT/'tools/player_crafting_authority_native.py',entry,'--report',checked_report],60,'closure-check');Owned.process_ok(checked)
+ after_native=json.loads(checked_report.read_text())
+ assert native['cache_key']==after_native['cache_key'] and native['key_data']==after_native['key_data'],'native source/compiler/header/library closure changed'
  after=B.Snapshot();B.source_graph(entry,base,os.environ,after)
  assert compiled_manifest==after.manifest(),'frozen compiler graph changed'
- report={'result':receipt,'binary':fingerprint(binary),'sources':manifest,'compiled_sources':compiled_manifest,'compiler':fingerprint(Path('/Users/chuah/.bend/bin/bend')),'snapshot_directory':str(frozen),'native_cache':{k:native[k] for k in ('cache_key','cache_hit','binary_sha256','timings','compiler','identity')},'native_cache_report':fingerprint(cache_report)}
+ binary.parent.mkdir(parents=True,exist_ok=True);os.replace(temporary,binary)
+ receipt={'seconds':sum(r['seconds'] for r in (emitted,linked,checked)),'exit_code':0,'stages':{'emission':emitted,'native_compile':linked,'closure':checked}}
+ report={'result':receipt,'binary':fingerprint(binary),'sources':manifest,'compiled_sources':compiled_manifest,'compiler':fingerprint(Path('/Users/chuah/.bend/bin/bend')),'snapshot_directory':str(frozen),'native_cache':{'cache_key':native['cache_key'],'c_emission_cache_hit':native['emitted_seconds']==0,'emitted_c_sha256':native['emitted_c_sha256'],'compiler':native['context']['compiler'],'environment_sha256':native['context']['environment_sha256']},'native_cache_report':fingerprint(cache_report),'route':'actual Bend C emission + installed CLI ordinary CPU compiler flags; immutable input/header/library closure revalidated before publication'}
  write_json(work/'success.json',report);write_json(cache/'build.json',report)
  return report
 
@@ -222,7 +260,8 @@ def main():
    for got,wanted in zip(observed,expected,strict=True):assert got==wanted,(got['id'],got,wanted)
    pin.pop('stdout');pin['output_sha256']=hashlib.sha256(r.stdout.encode()).hexdigest();checks.append(pin)
   assert checks[0]['output_sha256']==checks[1]['output_sha256']
+  constructors=constructor_boundaries([BINARY,'--threads','1','--gpu','off','generated/reference_item_metadata.tsv',CACHE/'cases.json'],60)
   build_record=json.loads((CACHE/'build.json').read_text());assert build_record['binary']['sha256']==fingerprint(BINARY)['sha256']
-  write_json(ROOT/'evidence/player-crafting-authority-native.json',{'status':'passed','pin':'26.3','cases':len(expected),'native':checks,'build':build_record,'binary':fingerprint(BINARY),'reference':fingerprint(P.OUTPUT),'component_assembly_reference':fingerprint(ROOT/'reference/crafting_recipe_components.json'),'item_definitions':fingerprint(ROOT/'generated/reference_item_metadata.tsv'),'atomic_disposition_refusals':4,'exact_java_item_state_cases':29,'additional_admission_refusals':13,'malformed_owner_refusals':6,'isolated_typed_component_takes':17,'boundaries':['Client prediction result synchronization is not a server RecipeManager lifecycle.','Remainder world drop/creative discard is explicitly refused atomically.','Seventeen isolated typed component takes compare to actual Java assembled components, not a whole component-bearing Java menu/save lifecycle.','DefaultOnly refuses all nonempty component identities; the real inventory, codec and persistence consumer join must precede live TypedStew enablement.']})
+  write_json(ROOT/'evidence/player-crafting-authority-native.json',{'status':'passed','pin':'26.3','cases':len(expected),'source_model_cases':69,'native_constructor_rejection_count':2,'native':checks,'native_constructor_rejections':constructors,'build':build_record,'binary':fingerprint(BINARY),'reference':fingerprint(P.OUTPUT),'component_assembly_reference':fingerprint(ROOT/'reference/crafting_recipe_components.json'),'item_definitions':fingerprint(ROOT/'generated/reference_item_metadata.tsv'),'atomic_disposition_refusals':4,'exact_java_item_state_cases':29,'additional_admission_refusals':13,'malformed_owner_refusals':4,'isolated_typed_component_takes':17,'boundaries':['Client prediction result synchronization is not a server RecipeManager lifecycle.','Remainder world drop/creative discard is explicitly refused atomically.','Seventeen isolated typed component takes compare to actual Java assembled components, not a whole component-bearing Java menu/save lifecycle.','The two unbalanced source Array fixtures fail the native equal-child-class constructor guard before any authority observation; they are not authority refusal cases.','DefaultOnly refuses all nonempty component identities; the real inventory, codec and persistence consumer join must precede live TypedStew enablement.']})
   print(json.dumps({'status':'passed','cases':len(expected),'native':checks}))
 if __name__=='__main__':main()

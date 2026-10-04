@@ -1,0 +1,34 @@
+{
+  "binary": {
+    "bytes": 5836536,
+    "file": "loader",
+    "sha1": "5f00a15a8f743cdf8414eb3c01e1cfb226284afb",
+    "sha256": "cae859a6428a6a60f5ee543ef2aeb0f1a337c96d0b5185a6fdafebc3af1d0296"
+  },
+  "build_record": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build.json",
+  "build_seconds": 605.8901512073353,
+  "build_stage_seconds": {
+    "closure": 2.950127915479243,
+    "emission": 449.8780044168234,
+    "native_compile": 153.06201887503266
+  },
+  "compiler_completed": true,
+  "diagnostic": "The runtime constructed player-unbalanced-backing with unequal physical child classes 0 and 6. The native Array.ANode guard rejected this owner before a case observation. This is not an atomic authority refusal.",
+  "emitted_c_sha256": "e4b46cb822436c4ac3394bb787e167ec6e253a68f497a7511577f331778f5ca1",
+  "native_constructor": {
+    "authority_refusal_observed": false,
+    "emitted_line": 6373,
+    "failure": "ERR_TAGS",
+    "guard": "c != blk_cls(r) || c+1 >= NCLS_ALL",
+    "name": "blk_node"
+  },
+  "native_returncode": 1,
+  "native_seconds": 58.866974,
+  "next_replay": {
+    "representable_authority_cases": 67,
+    "same_binary_required": true,
+    "separate_constructor_boundaries": 2
+  },
+  "status": "native-failure-unrepresentable-array-constructor",
+  "stderr": "bend: runtime fail-stop\n"
+}

@@ -10,13 +10,13 @@ inventory, screen, session, persistence or wire module is changed by this lane.
 `A.new_with_components` takes an explicit component capability; `TypedStew`
 admits only the closed initialized suspicious-stew profile. `A.inspect` observes
 all player menu fields beside the complete active `R.Grid` and cached plan.
-Player inputs are exactly raw cells43..46 in a2x2 grid. `A.TableGrid` retains
-an independent16-cell array with9 logical3x3 inputs; its remaining7 backing
+Player inputs are exactly raw cells 43..46 in a 2×2 grid. `A.TableGrid` retains
+an independent 16-cell array with 9 logical 3×3 inputs; its remaining 7 backing
 cells are retained. These constructors do not establish a world crafting-table
 interaction or crafting-table UI consumer.
 
 `A.refresh(state)` first validates exact logical lengths and the complete
-balanced backing tree:48 of64 player cells and9 of16 bench cells. Public
+balanced backing tree:48 of 64 player cells and 9 of 16 bench cells. Public
 malformed constructors cannot cause padded snapshots, wrapped writes or hidden
 output commits. The shape walk retains every original array node and slot.
 It then runs the actual ordinary matcher against the complete active
@@ -25,7 +25,7 @@ arrays and custom menu revision unchanged. A decoder/matcher refusal retains
 the entire original authority. Empty strict assembly produces a cached plan
 with no derived or takeable item.
 
-`A.take(state, button)` admits only an open menu and pickup button0 or1. It
+`A.take(state, button)` admits only an open menu and pickup button 0 or 1. It
 requires a cached plan, compares its complete before-grid geometry, item keys,
 component identities and counts using `R.current`, then independently repeats
 `R.find` and checks the entire selected plan. A stale grid, changed recipe
@@ -37,8 +37,8 @@ menu revision/open flag, derived output and cached plan.
 
 Both left and right pickup take the complete assembled output. The menu's
 right-click half-count request alone would give the wrong answer:
-`ResultContainer.removeItem` removes the entire output. The actual33-case
-InventoryMenu/CraftingMenu receiver confirms4 sticks and4 bowls for both
+`ResultContainer.removeItem` removes the entire output. The actual 33-case
+InventoryMenu/CraftingMenu receiver confirms 4 sticks and 4 bowls for both
 buttons. A matching existing carried stack must have space for the complete
 output; different keys or partial room leave the Java receiver unchanged.
 The adapter reports an explicit refusal for that unchanged receiver domain.
@@ -60,8 +60,8 @@ The transaction compares complete per-key transformation ledgers:
 Queries include every key appearing in the complete before/after player and
 active grid or in any consumed/produced stack. Ordinary crafting changes item
 identities, so unchanged per-item counts would be the wrong conservation law.
-A successful commit writes the player logical48 cells through the existing
-complete64-cell write path and, for a bench, the9 logical cells of its separate
+A successful commit writes the player logical 48 cells through the existing
+complete 64-cell write path and, for a bench, the 9 logical cells of its separate
 16-cell array. It retains all unrelated backing cells, selection, definitions,
 raw saved abilities and open flag, increments the custom revision, and
 invalidates the old derived result and plan. The consumer should immediately
@@ -72,7 +72,7 @@ item or a drop request.
 The component seam validates the shared
 `BendCraftComponents1<TAB>effective_limit<TAB>canonical_effective_map_JSON`
 identity through `D.component_defaults` and `C.metadata`. The exact definition
-must be enabled, have limit1 and the observed initialized-default SHA; the
+must be enabled, have limit 1 and the observed initialized-default SHA; the
 complete effective map and ordered typed effect list are validated. Ingredient
 matching receives only those exact validated keys through `R.find_with_metadata`.
 `DefaultOnly` refuses every modified key, including apparently well-formed
@@ -81,28 +81,33 @@ save consumer join. The isolated capability tests do not establish that join.
 
 `player_crafting_authority_load.bend` is the actual service loader. Its
 `service(jar, ordered_ids, item_table, metadata, limits)` loads the real player
-definition table, checks all1658 item IDs/limits and structurally complete default maps, validates
-the exact17-field initialized stew defaults, reads original named JAR entries using
+definition table, checks all 1658 item IDs/limits and structurally complete default maps, validates
+the exact 17-field initialized stew defaults, reads original named JAR entries using
 the owned Bend ZIP reader, and invokes the actual recipe decoder. Requests reject
 duplicates, missing entries and byte/depth budgets. Every open archive is returned
 through the close path on entry failure. Caller order establishes recipe
 precedence. Nested-tag resolution and initialized default maps remain explicit
 loader inputs, with their recorded source. The complete local production input
-is `build/crafting-recipe-components/production-catalog.json`, containing2042
-recipes,1658 initialized item rows and236 resolved tags. The similarly named
+is `build/crafting-recipe-components/production-catalog.json`, containing 2042
+recipes,1658 initialized item rows and 236 resolved tags. The similarly named
 diagnostic catalog is not a production input. Original recipes stay in the JAR;
 the service request carries metadata and identifiers rather than copied recipes.
 
+The initialized air component map has `max_stack_size=64`, while the player
+definition uses the empty-slot limit 1. The loader admits this explicit pinned
+air exception; all other initialized maximum-stack values must equal their
+player definitions.
+
 The repaired actual extraction uses full VanillaRegistries RegistryOps for
-initialized/effective component encoding. It produces1658 complete default maps
-with zero codec errors. The previous builtin-only extraction contained100 ERROR
-objects;111 encodings changed in total. The17 patched recipe observations remain
+initialized/effective component encoding. It produces 1658 complete default maps
+with zero codec errors. The previous builtin-only extraction contained 100 ERROR
+objects;111 encodings changed in total. The 17 patched recipe observations remain
 identical. Initialized BuiltIn item/tag lookup remains the recipe codec context,
 because construction world lookup cannot dereference loaded item tags.
 
 The loader rejects error-shaped or incomplete defaults, missing player definition
 rows, stack-limit contradictions and forged initialized stew defaults. Its
-structural checks require13 common pinned keys and registered persistent member
+structural checks require 13 common pinned keys and registered persistent member
 names. They do not implement every component value codec. Default JSON can vary
 with registry lookup context, so other serialized map digests are not treated as
 equal to the older player table by assumption. Explicit catalog interchange
@@ -112,7 +117,7 @@ take authority from this loader.
 
 `player_crafting_authority_menu.bend` is the named session/actor request producer.
 It owns `A.State` through ordinary opens, player closes and nonresult clicks;
-slot0 Pickup routes through `A.take`, then refreshes the complete derived result
+slot 0 Pickup routes through `A.take`, then refreshes the complete derived result
 and plan. Its reply contains a correlated `I.MenuSnapshot`, the observed taken
 stack and whether cache refresh succeeded. A derived-cache failure after an
 admitted mutation is observable and does not retrospectively label the committed
@@ -125,10 +130,10 @@ return/drop disposition refuse with the complete frame retained.
 `tools/reference_player_crafting_authority_probe.py` uses the normal pinned
 LocalPlayer fixture and untouched official InventoryMenu, CraftingMenu,
 ResultSlot, ResultContainer, ItemStack and ordinary recipe receivers. It
-observes33 cases: both buttons, complete/partial/full carried capacity,
-incompatible carried keys, offsets and mixed planks, last inputs, strict99
+observes 33 cases: both buttons, complete/partial/full carried capacity,
+incompatible carried keys, offsets and mixed planks, last inputs, strict 99
 output rejection, honey-bottle remainders with all inventory disposition
-branches,3 bucket remainders and3x3 bowl recipes. The client prediction fixture
+branches,3 bucket remainders and 3×3 bowl recipes. The client prediction fixture
 manually installs the actual assembled output because it has no server recipe
 synchronization. Its ResultSlot remainder fallback is the actual ClientLevel
 branch. RecipeManager selection is separately covered by the recipe lane;
@@ -139,17 +144,31 @@ Committed references contain source identities and observations.
 
 The first fixture attempt exposed missing initialized item tags and an external
 tutorial notification method. It is retained in ignored raw evidence. The
-corrected fixture installs the actual resolved236 item-tag observations and
+corrected fixture installs the actual resolved 236 item-tag observations and
 adds only the external tutorial notification method; it changes no official
 menu, recipe, inventory or item receiver.
 
-The earlier native authority corpus passed63 complete-array/profile comparisons on one
-and four CPU threads with identical output. It includes the33 actual Java menu
-observations,12 stale/forged/admission refusals,17 isolated typed stew takes
-compared against Java's actual assembled component maps, and a DefaultOnly
-refusal. All64 player backing cells and all16 bench backing cells are compared,
-along with full cache consumption entries, selected slot, raw ability bits and
-menu revisions. The four missing-disposition branches refuse atomically.
+The strengthened frozen native corpus passes 67 complete-owner comparisons on
+one and four CPU threads with identical output. It includes the 33 actual Java
+menu observations,13 additional stale/forged/component/admission refusals,
+four representable malformed-owner refusals and 17 typed stew takes compared
+against Java's actual assembled component maps. All 64 player backing cells
+and all 16 bench backing cells are compared, along with logical lengths, full
+cache consumption entries, selected slot, raw ability bits, menu revisions,
+and exact ordered item definitions, recipe catalog and component capability.
+Of the 33 Java observations,29 match exact owned item states and four Java
+world-drop/discard branches are replaced by atomic missing-disposition refusals.
+The two unrepresentable Array constructors are checked separately.
+
+The same binary loads all 2042 original JAR recipe entries against 1658 complete
+initialized default maps and 236 resolved tags:1202 ordinary declarations,
+including 17 patched stew outputs, and 840 unsupported recipe declarations. Six
+actual menu producer transitions also match. Explicit service and pinned
+startup runs on one/four CPU threads produce identical output SHA-256
+`de5d2a05dfe4747f128292d6e7e9dbdca8c9c2dd1afb1bb102398898a55792c2`.
+All 12 loader/default/artifact admission refusals pass, including the original
+100 erroneous default maps, forged stew defaults, changed pinned facts and a
+valid artifact prefix with bytes beyond its configured bound.
 
 Nineteen actual production laws in `player_crafting_authority_laws.bend` and its
 paired proof are ordinarily checked and exported with zero exclusions. They
@@ -207,28 +226,45 @@ wire integration.
 
 `player_crafting_authority_startup.service(jar,item_table,facts_path,limits)` is
 the named nonfixture startup loader. It verifies the exact SHA-256 of
-`generated/reference_crafting_authority_metadata.json`, which contains1658
-observed item/default/remainder rows,236 resolved tags and2042 ordered recipe
+`generated/reference_crafting_authority_metadata.json`, which contains 1658
+observed item/default/remainder rows,236 resolved tags and 2042 ordered recipe
 IDs. It contains no recipe source. Startup then runs the actual JAR service and
 returns its validated player definitions and recipe catalog. Modified or
 truncated registry facts cannot silently become initialized defaults.
 
-The combined69-fixture literal build exceeded its600-second bound and was
+The combined 69-fixture literal build exceeded its 600-second bound and was
 cleaned up without a native verdict. Its failed snapshot and receipt are
 preserved. The repaired test corpus is parsed by Bend from runtime JSON, using
 the actual recipe decoder; this avoids compiling a large corpus of literals.
-The runtime corpus compiled successfully, then its native replay exposed a
-fail-stop while observing an unbalanced refused owner. The production observer
-now walks the physical Array tree and retains it exactly; its source check and
-structural kernel law pass. The fresh combined replay also checks bench logical
-length and exact ordered catalog/component-mode retention. Its native verdict
-is pending.
+The source model has 69 fixtures. Two unequal-child Array trees cannot be
+represented by the ordinary CPU runtime: its `blk_node` constructor requires
+equal child physical classes and posts `ERR_TAGS` otherwise. Their observed
+exit is 1 with `bend: runtime fail-stop`. They are separate native constructor
+boundaries, not authority refusal observations. The earlier attribution to the
+refusal observer was incorrect and is corrected in failure 002. The safe physical
+tree observer remains useful for representable wrong logical lengths and short
+backing arrays; its actual structural kernel law passes.
 
-The subsequent strengthened combined direct build reached600 seconds while
+The subsequent strengthened combined direct build reached 600 seconds while
 several other checker jobs were active. Its exact frozen source and cleaned-up
-process receipt are preserved in failure003; no new native cases ran. The test
-builder now uses the existing verified modular native cache, retaining exact C
-emission separately from native linking and validating the compiler/library
-closure. `--frozen-source` resumes a preserved graph only when every compiled
-input still has the recorded identity. This route has no fresh authority native
-verdict yet.
+process receipt are preserved in failure 003; no new native cases ran. The test
+builder now uses the existing verified modular native cache to prepare exact
+Bend C emission, then invokes the installed CLI's ordinary CPU compiler flags
+directly. It retains emission separately from linking and validates the complete
+source/compiler/header/library closure before publishing the binary.
+`--frozen-source` resumes a preserved graph only when every compiled input still
+has the recorded identity. The strengthened frozen graph built successfully:
+449.878 seconds for emission, 153.062 for native compilation and 2.950 for closure
+verification. The total 605.890 seconds comprises separately bounded stages.
+The same binary passes 67 representable authority fixtures with complete
+physical backing and ordered catalog/component-capability assertions. The two
+constructor checks reproduce exit 1 with the exact fail-stop diagnostic and no
+authority observation. Evidence is in `player-crafting-authority-native.json`
+and `player-crafting-authority-load.json`; earlier failures remain preserved.
+
+The separate authenticated Backend consumer receipt is documented in
+`PLAYER_CRAFTING_BACKEND.md`: 15 native cases compare all raw Core fields and all 64
+physical inventory cells, including two takes, stale plans, lease/observer
+refusals, the absent-context route, close, and an accepted committed take with a
+failed cache refresh. That receipt uses its explicitly frozen Core/Runtime
+generation and does not establish TCP or full startup execution.

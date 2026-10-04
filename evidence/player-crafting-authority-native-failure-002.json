@@ -1048,9 +1048,22 @@
     ]
   },
   "compiler_completed": true,
-  "diagnostic": "bend: runtime fail-stop while refusal reporter indexed an unbalanced public Array owner",
+  "diagnostic": "bend: runtime fail-stop at native blk_node equal-child-class guard while constructing an unbalanced Array; no authority observation for that fixture was produced",
+  "native_representation_boundary": {
+    "authority_refusal_observed": false,
+    "constructor": "Array.ANode",
+    "exit_code": 1,
+    "failure": "ERR_TAGS",
+    "guard": "c != blk_cls(r) || c+1 >= NCLS_ALL",
+    "stderr": "bend: runtime fail-stop\n"
+  },
   "native_returncode": 1,
   "native_seconds": 32.72847266681492,
-  "repair": "A.inspect now uses an owner-preserving structural snapshot walk on malformed geometry. Valid balanced owners retain the existing I.menu_inspect fast path. All API fields unchanged.",
-  "status": "native-failure-malformed-owner-observation"
+  "original_incorrect_classification": {
+    "diagnostic": "bend: runtime fail-stop while refusal reporter indexed an unbalanced public Array owner",
+    "repair": "A.inspect now uses an owner-preserving structural snapshot walk on malformed geometry. Valid balanced owners retain the existing I.menu_inspect fast path. All API fields unchanged.",
+    "status": "native-failure-malformed-owner-observation"
+  },
+  "repair": "Source-safe malformed geometry snapshots remain implemented and proved, but do not admit unequal-child native Array nodes. Replay now separates two constructor boundaries from 67 representable authority cases.",
+  "status": "native-failure-unrepresentable-array-constructor"
 }

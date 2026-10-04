@@ -3,48 +3,89 @@
     {
       "id": "duplicate-request",
       "returncode": 2,
-      "seconds": 12.985208875499666,
+      "seconds": 19.602298124693334,
       "stderr": "duplicate recipe resource request"
     },
     {
       "id": "missing-resource",
       "returncode": 2,
-      "seconds": 13.901053874753416,
+      "seconds": 20.216686374507844,
       "stderr": "missing recipe resource: minecraft:absent_recipe_resource"
     },
     {
       "id": "invalid-resource-id",
       "returncode": 2,
-      "seconds": 11.440457249991596,
+      "seconds": 21.970085041597486,
       "stderr": "invalid recipe resource identifier"
     },
     {
       "id": "conflicting-item-limit",
       "returncode": 2,
-      "seconds": 11.16635562479496,
-      "stderr": "crafting item metadata disagrees with initialized player definitions"
+      "seconds": 3.835432625375688,
+      "stderr": "initialized component stack limit disagrees with item definition"
     },
     {
       "id": "unknown-tag-member",
       "returncode": 2,
-      "seconds": 3.008086457848549,
+      "seconds": 5.378118500113487,
       "stderr": "tag contains an unknown item"
+    },
+    {
+      "id": "error-shaped-defaults",
+      "returncode": 2,
+      "seconds": 2.460087542422116,
+      "stderr": "incomplete or invalid initialized component map"
+    },
+    {
+      "id": "missing-default-component",
+      "returncode": 2,
+      "seconds": 2.493196291849017,
+      "stderr": "incomplete or invalid initialized component map"
+    },
+    {
+      "id": "missing-item-definition",
+      "returncode": 2,
+      "seconds": 17.5378724578768,
+      "stderr": "crafting item metadata disagrees with initialized player definitions"
+    },
+    {
+      "id": "forged-stew-defaults",
+      "returncode": 2,
+      "seconds": 3.7551344176754355,
+      "stderr": "invalid initialized suspicious stew defaults: invalid initialized default numeric lexeme or profile depth"
+    },
+    {
+      "id": "original-bad-registry-defaults",
+      "returncode": 2,
+      "seconds": 2.5564177073538303,
+      "stderr": "incomplete or invalid initialized component map"
+    },
+    {
+      "id": "changed-pinned-runtime-facts",
+      "returncode": 2,
+      "stderr": "pinned crafting registry facts digest mismatch"
+    },
+    {
+      "id": "artifact-valid-prefix-with-trailing-bytes",
+      "returncode": 2,
+      "stderr": "crafting catalog exceeds byte budget"
     }
   ],
+  "authority_cases": 67,
   "boundaries": [
-    "This baseline used 100 error-shaped default maps and does not certify initialized default-map completeness. Current loader now rejects that input; repaired RegistryOps extraction and fresh replay are required.",
-    "Bend owns ZIP entry reads, schema admission and catalog decoding.",
+    "Bend owns ZIP entry reads, schema admission and catalog decoding. Initialized maps require all 13 common pinned keys and registered persistent member names; this structural check does not implement unrelated component value codecs.",
     "Supplied source order is caller authority; this path does not infer registry precedence from ZIP directory order.",
     "Nested tag resolution and initialized default maps are explicit observed metadata inputs; this loader does not implement resource-pack override/tag resolution.",
     "Ordinary declarations and the closed component-profile seam are tested; unrelated item component codecs and special recipe semantics remain unsupported.",
+    "The two unbalanced source Array fixtures are native constructor rejections, not authority refusal observations.",
     "The actual menu producer is tested with service-loaded recipes; session/backend/entry/wire adoption is a separate root integration."
   ],
   "build": {
     "binary": {
-      "bytes": 2940008,
+      "bytes": 5836536,
       "file": "loader",
-      "sha1": "7b38fa922755422b29a6e0a8e5c68f2f11d62bb0",
-      "sha256": "fa52139654cdc13bebc7493d26e54cfb15bcfc857149fae1c600a304642e6fa8"
+      "sha1": "5f00a15a8f743cdf8414eb3c01e1cfb226284afb",
+      "sha256": "cae859a6428a6a60f5ee543ef2aeb0f1a337c96d0b5185a6fdafebc3af1d0296"
     },
     "compiled_sources": [
       {
@@ -274,268 +315,282 @@
       {
         "bytes": 36610,
         "kind": "bend",
-        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/archive.bend",
-        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/archive.bend",
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/archive.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/archive.bend",
         "sha256": "c0f7b34a22726d220f6b867730b7d080d57d82c84d619c35721b9b8d18fa5d6e"
       },
       {
         "bytes": 41725,
         "kind": "bend",
-        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/compression.bend",
-        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/compression.bend",
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/compression.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/compression.bend",
         "sha256": "255cdff06a33050c7b0a48fdea75c1842ebe2dab0439cfe4f03d126d4edc20aa"
       },
       {
         "bytes": 17073,
         "kind": "bend",
-        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/crafting_recipe.bend",
-        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/crafting_recipe.bend",
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/crafting_recipe.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/crafting_recipe.bend",
         "sha256": "3c5f3fc7b3e0be9be7d553da2a107dc1245fe13f17afac0efdf84bc41c15ffe2"
       },
       {
         "bytes": 5705,
         "kind": "bend",
-        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/crafting_recipe_component_registry.bend",
-        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/crafting_recipe_component_registry.bend",
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/crafting_recipe_component_registry.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/crafting_recipe_component_registry.bend",
         "sha256": "911786032b2c22759208edaf7112ae403b2a03663d9237c3e036c2b5ba4ece2a"
       },
       {
         "bytes": 13197,
         "kind": "bend",
-        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/crafting_recipe_components.bend",
-        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/crafting_recipe_components.bend",
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/crafting_recipe_components.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/crafting_recipe_components.bend",
         "sha256": "2a35e31f26187ebbdab1c4261d54083acb68072a56a7b5869e5dfc490bc946be"
       },
       {
         "bytes": 24265,
         "kind": "bend",
-        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/crafting_recipe_decoder.bend",
-        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/crafting_recipe_decoder.bend",
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/crafting_recipe_decoder.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/crafting_recipe_decoder.bend",
         "sha256": "c9cd224262b326a06d0ca8ff99e7ff04aa9fe4a77af40101cd0aedc8e0642b71"
       },
       {
         "bytes": 33288,
         "kind": "bend",
-        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/f64.bend",
-        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/f64.bend",
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/f64.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/f64.bend",
         "sha256": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7"
       },
       {
         "bytes": 6845,
         "kind": "bend",
-        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/framing.bend",
-        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/framing.bend",
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/framing.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/framing.bend",
         "sha256": "307f95049df03d92687b7bd0eafb2cd566e660926510bb88163f9bc825fccdb5"
       },
       {
         "bytes": 13604,
         "kind": "bend",
-        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/geometry.bend",
-        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/geometry.bend",
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/geometry.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/geometry.bend",
         "sha256": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f"
       },
       {
         "bytes": 12147,
         "kind": "bend",
-        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/hash.bend",
-        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/hash.bend",
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/hash.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/hash.bend",
         "sha256": "d2473695632b19e68c8d636668e4617f04d70892fb2ab6559cb24d4b33c1b978"
       },
       {
         "bytes": 12587,
         "kind": "bend",
-        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/item_component.bend",
-        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/item_component.bend",
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/item_component.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/item_component.bend",
         "sha256": "85fd96ab967f3b031465ab9e0a815dd71882aec813683d73cd07dc31b991a2a7"
       },
       {
         "bytes": 11465,
         "kind": "bend",
-        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/item_component_effects.bend",
-        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/item_component_effects.bend",
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/item_component_effects.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/item_component_effects.bend",
         "sha256": "717a46a1603866be6f3f1458721cb2281a135b36f27a652da9432756b168ae35"
       },
       {
         "bytes": 21384,
         "kind": "bend",
-        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/json.bend",
-        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/json.bend",
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/json.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/json.bend",
         "sha256": "a1789e3b4f5bea158ec0d95a8bcb39aa5b7c7e7355a5254d3de1d52a93c719d1"
       },
       {
         "bytes": 13662,
         "kind": "bend",
-        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/locomotion.bend",
-        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/locomotion.bend",
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/locomotion.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/locomotion.bend",
         "sha256": "ccf8aa12636ba1fce5575606383bf75c02a8ac79ba952645b89aea2eef6cd459"
       },
       {
         "bytes": 25567,
         "kind": "bend",
-        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/movement.bend",
-        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/movement.bend",
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/movement.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/movement.bend",
         "sha256": "31f5a4c47903506c0f388f688eaeaf78a36a0d266efde52bc57ea8cc89627b45"
       },
       {
         "bytes": 26178,
         "kind": "bend",
-        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/nbt.bend",
-        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/nbt.bend",
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/nbt.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/nbt.bend",
         "sha256": "b677546b5fc02aaa38f5c09e5b798c0d35aec32b1c4b37cbd7042b9a1a5275e4"
       },
       {
         "bytes": 16028,
         "kind": "bend",
-        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/player_codec.bend",
-        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/player_codec.bend",
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/player_codec.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/player_codec.bend",
         "sha256": "98a5d7e8e11bb1a811c4e3b1e19dcee010e9f36eb15967810fbe95f4222a09a7"
       },
       {
         "bytes": 11507,
         "kind": "bend",
-        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/player_crafting_authority_plan.bend",
-        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/player_crafting_authority_plan.bend",
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/player_crafting_authority_plan.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/player_crafting_authority_plan.bend",
         "sha256": "763936af81278a57c8045e7ea7f655b26f90b1a174f6aca7a36cf05edde88c65"
       },
       {
         "bytes": 7532,
         "kind": "bend",
-        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/player_inventory_click_swap.bend",
-        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/player_inventory_click_swap.bend",
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/player_inventory_click_swap.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/player_inventory_click_swap.bend",
         "sha256": "2284a56e93d10299419701acc9cba2aec4427acf7ed4a9196fb56ec75f831048"
       },
       {
         "bytes": 7643,
         "kind": "bend",
-        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/player_inventory_return.bend",
-        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/player_inventory_return.bend",
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/player_inventory_return.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/player_inventory_return.bend",
         "sha256": "53f4d0cea442ebcc6abfc306f520101a01cca8e46a139ebb89930fd94a5ac3ab"
       },
       {
         "bytes": 1379,
         "kind": "bend",
-        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/player_item_catalog.bend",
-        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/player_item_catalog.bend",
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/player_item_catalog.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/player_item_catalog.bend",
         "sha256": "1337d82cc70e28b5aab552dc178401549602b6461e1ffe95d29f1eb09bed55a3"
       },
       {
         "bytes": 739,
         "kind": "bend",
-        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/player_item_table.bend",
-        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/player_item_table.bend",
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/player_item_table.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/player_item_table.bend",
         "sha256": "92ffa8bcf3b2a66e876a9485e2efc986817d8aa292c4232bc24908c65e1ebe05"
       },
       {
         "bytes": 19820,
         "kind": "bend",
-        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/player_tick.bend",
-        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/player_tick.bend",
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/player_tick.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/player_tick.bend",
         "sha256": "07a35c96b0887bc7c600340835ec29bfdea98cdbfb283af67826f93ec57dba9d"
       },
       {
         "bytes": 18786,
         "kind": "bend",
-        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/png.bend",
-        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/png.bend",
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/png.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/png.bend",
         "sha256": "8c24c14a250cf6dbdf0c2804e4b28bfebd7ef62ed5d9ee97a1d07094d4745f22"
       },
       {
         "bytes": 15543,
         "kind": "bend",
-        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/support.bend",
-        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/support.bend",
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/support.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/support.bend",
         "sha256": "aca42f24e0a32bd89356ac33f6d9bbe2ab5975ce938e2d2750496c01a6137455"
       },
       {
         "bytes": 13789,
         "kind": "bend",
-        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/travel.bend",
-        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/travel.bend",
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/travel.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/travel.bend",
         "sha256": "f04bc69579d1b1a5fa048f1e07976e646c1c2f2e817e334ee632397fbe99b589"
       },
       {
         "bytes": 573,
         "kind": "bend",
-        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/u32_decimal.bend",
-        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/u32_decimal.bend",
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/u32_decimal.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/u32_decimal.bend",
         "sha256": "d0b4b33f10b9e9801c4e99b83803afba5031ea40013a9263f9090bed8543d25c"
       },
       {
         "bytes": 7242,
         "kind": "bend",
-        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/unicode.bend",
-        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/unicode.bend",
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/unicode.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/unicode.bend",
         "sha256": "8f0cd9bbcd0e7f938af370675eca0c73a9b97b90c2789a1e77e5a29a918455bd"
       },
       {
         "bytes": 13558,
         "kind": "bend",
-        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/tests/../src/inventory.bend",
-        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/inventory.bend",
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/tests/../src/inventory.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/inventory.bend",
         "sha256": "9d2be7fb88afa1dc6386ab9e8b046b15d2a2a73b7e14566e5bfad3e6dd1f2702"
       },
       {
-        "bytes": 9442,
+        "bytes": 14804,
         "kind": "bend",
-        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/tests/../src/player_crafting_authority.bend",
-        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/player_crafting_authority.bend",
-        "sha256": "46970a3213f58e88f5b341bd71f6b870438969fc31332322bcb5d16cd34bb7f1"
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/tests/../src/player_crafting_authority.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/player_crafting_authority.bend",
+        "sha256": "3032b09376879239438415654d151917fb9ff5f989900200aba6552d9eb8ac35"
       },
       {
         "bytes": 2785,
         "kind": "bend",
-        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/tests/../src/player_crafting_authority_components.bend",
-        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/player_crafting_authority_components.bend",
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/tests/../src/player_crafting_authority_components.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/player_crafting_authority_components.bend",
         "sha256": "4389a4b976e75b5a96fb8261b789396e176acb3678f7f1379687393c0d16108d"
       },
       {
-        "bytes": 12000,
+        "bytes": 16112,
         "kind": "bend",
-        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/tests/../src/player_crafting_authority_load.bend",
-        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/player_crafting_authority_load.bend",
-        "sha256": "3f0794cc3a9cf88e5f9dede619c8aa073805a2ee678a5a6d8afef9807bb663f4"
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/tests/../src/player_crafting_authority_load.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/player_crafting_authority_load.bend",
+        "sha256": "f7dddeef69f5c3ef09d1b2fa5b50b07faec901dbc6d77bb9b050d66f3db4d1d8"
       },
       {
-        "bytes": 4237,
+        "bytes": 6066,
         "kind": "bend",
-        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/tests/../src/player_crafting_authority_menu.bend",
-        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/player_crafting_authority_menu.bend",
-        "sha256": "97f4826a6ea8be0610212ac4c48dfaf74f6ed9787d885385accd052defe0c3b4"
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/tests/../src/player_crafting_authority_menu.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/player_crafting_authority_menu.bend",
+        "sha256": "ab9158d4d08946065d1bb0fbe6a0053254081b8e8ad564a379a569796cda352e"
       },
       {
-        "bytes": 28145,
+        "bytes": 3366,
         "kind": "bend",
-        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/tests/../src/player_inventory.bend",
-        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/player_inventory.bend",
-        "sha256": "5cbd1565eff2218c3096db82a36af2a8ed1bee695969c67f02290efde786eed4"
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/tests/../src/player_crafting_authority_startup.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/player_crafting_authority_startup.bend",
+        "sha256": "a6d3f057a4d39b5664d7ba27fd70659e2b1658ccdafcb5b822669ae3acd3c028"
+      },
+      {
+        "bytes": 28759,
+        "kind": "bend",
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/tests/../src/player_inventory.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/player_inventory.bend",
+        "sha256": "065be0bc6aa1d0cb10b9fcac77b6dcea73d4bdbab20fd2e13e264a8ea91c3340"
       },
       {
         "bytes": 12607,
         "kind": "bend",
-        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/tests/../src/player_item_definitions.bend",
-        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/src/player_item_definitions.bend",
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/tests/../src/player_item_definitions.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/src/player_item_definitions.bend",
         "sha256": "df5183e0c4be23b4eaf081e9a72099436e5d674402e9ac15102ecabc7a1b1d90"
       },
       {
-        "bytes": 9121,
+        "bytes": 12156,
         "kind": "bend",
-        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/tests/player_crafting_authority.bend",
-        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/tests/player_crafting_authority.bend",
-        "sha256": "597ca04cfba1d7111bf19d5ef352f6837edc40337e708c8f4d249282facc189e"
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/tests/player_crafting_authority.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/tests/player_crafting_authority.bend",
+        "sha256": "840e10665ae45d42cf65175114f197a454a981916a15d59e3c0aead14ff01a17"
       },
       {
-        "bytes": 177262,
+        "bytes": 4140,
         "kind": "bend",
-        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/tests/player_crafting_authority_cases.bend",
-        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/tests/player_crafting_authority_cases.bend",
-        "sha256": "0dfc6e9579da52ad2c0946f4c278c07463f8785d4484e7c036321f0398533c17"
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/tests/player_crafting_authority_fixtures.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/tests/player_crafting_authority_fixtures.bend",
+        "sha256": "db546b2df86ad762e883bea292432561ee96e872b03effdcd144cc0297726678"
       },
       {
-        "bytes": 8421,
+        "bytes": 9445,
         "kind": "bend",
-        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/tests/player_crafting_authority_load.bend",
-        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/tests/player_crafting_authority_load.bend",
-        "sha256": "abb4bdc05df236c1442e2a9a5ddfddba9a3ab336f6e13b20d69d51fd3296b3cb"
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/tests/player_crafting_authority_load.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/tests/player_crafting_authority_load.bend",
+        "sha256": "02c41322f0aec449962ebce45677bbf333b21bc164d55efbf005276c8d899621"
+      },
+      {
+        "bytes": 6221,
+        "kind": "bend",
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/tests/player_crafting_authority_observer.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/tests/player_crafting_authority_observer.bend",
+        "sha256": "01b8041dffe654a50a689606775685479e8044ba33695de73c1e1978f2a39672"
       }
     ],
     "compiler": {
@@ -544,42 +599,155 @@
       "sha1": "ddce6e432357be618d905b19c0f79abe3d28c388",
       "sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e"
     },
-    "result": {
-      "argv": [
-        "/Users/chuah/.bend/bin/bend",
-        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source/tests/player_crafting_authority_load.bend",
-        "-o",
-        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/loader"
-      ],
-      "attempts": 1,
-      "cap_seconds": 600,
-      "cleanup": {
-        "after": [],
-        "before": [],
-        "errors": [],
-        "leader_reaped": true,
-        "live_group_absent": true,
-        "seconds": 0.12757450062781572
+    "native_cache": {
+      "c_emission_cache_hit": false,
+      "cache_key": "e297bf3d535c4744e5eca4daa4a1b6cd8439866ab9054599483ba41d2de4c011",
+      "compiler": {
+        "driver_probe": "Apple clang version 17.0.0 (clang-1700.0.13.5)\nTarget: arm64-apple-darwin25.4.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin\n \"/Library/Developer/CommandLineTools/usr/bin/clang\" \"-cc1\" \"-triple\" \"arm64-apple-macosx15.5.0\" \"-Wundef-prefix=TARGET_OS_\" \"-Wdeprecated-objc-isa-usage\" \"-Werror=deprecated-objc-isa-usage\" \"-Werror=implicit-function-declaration\" \"-emit-obj\" \"-dumpdir\" \"/dev/null-\" \"-disable-free\" \"-clear-ast-before-backend\" \"-disable-llvm-verifier\" \"-discard-value-names\" \"-main-file-name\" \"null\" \"-mrelocation-model\" \"pic\" \"-pic-level\" \"2\" \"-mframe-pointer=non-leaf\" \"-mllvm\" \"-extra-vectorizer-passes\" \"-fno-strict-return\" \"-ffp-contract=on\" \"-fno-rounding-math\" \"-funwind-tables=1\" \"-fobjc-msgsend-selector-stubs\" \"-target-sdk-version=15.5\" \"-fvisibility-inlines-hidden-static-local-var\" \"-fdefine-target-os-macros\" \"-fno-assume-unique-vtables\" \"-fno-modulemap-allow-subdirectory-search\" \"-target-cpu\" \"apple-m1\" \"-target-feature\" \"+zcm\" \"-target-feature\" \"+zcz\" \"-target-feature\" \"+v8.5a\" \"-target-feature\" \"+aes\" \"-target-feature\" \"+altnzcv\" \"-target-feature\" \"+ccdp\" \"-target-feature\" \"+complxnum\" \"-target-feature\" \"+crc\" \"-target-feature\" \"+dotprod\" \"-target-feature\" \"+fp-armv8\" \"-target-feature\" \"+fp16fml\" \"-target-feature\" \"+fptoint\" \"-target-feature\" \"+fullfp16\" \"-target-feature\" \"+jsconv\" \"-target-feature\" \"+lse\" \"-target-feature\" \"+neon\" \"-target-feature\" \"+pauth\" \"-target-feature\" \"+perfmon\" \"-target-feature\" \"+predres\" \"-target-feature\" \"+ras\" \"-target-feature\" \"+rcpc\" \"-target-feature\" \"+rdm\" \"-target-feature\" \"+sb\" \"-target-feature\" \"+sha2\" \"-target-feature\" \"+sha3\" \"-target-feature\" \"+specrestrict\" \"-target-feature\" \"+ssbs\" \"-target-abi\" \"darwinpcs\" \"-debugger-tuning=lldb\" \"-fdebug-compilation-dir=/Users/chuah/Documents/ChatGPT/bendex/minecraft\" \"-target-linker-version\" \"1167.5\" \"-fcoverage-compilation-dir=/Users/chuah/Documents/ChatGPT/bendex/minecraft\" \"-resource-dir\" \"/Library/Developer/CommandLineTools/usr/lib/clang/17\" \"-isysroot\" \"/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk\" \"-I/usr/local/include\" \"-internal-isystem\" \"/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include\" \"-internal-isystem\" \"/Library/Developer/CommandLineTools/usr/lib/clang/17/include\" \"-internal-externc-isystem\" \"/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include\" \"-internal-externc-isystem\" \"/Library/Developer/CommandLineTools/usr/include\" \"-O3\" \"-Wno-reorder-init-list\" \"-Wno-implicit-int-float-conversion\" \"-Wno-c99-designator\" \"-Wno-final-dtor-non-final-class\" \"-Wno-extra-semi-stmt\" \"-Wno-misleading-indentation\" \"-Wno-quoted-include-in-framework-header\" \"-Wno-implicit-fallthrough\" \"-Wno-enum-enum-conversion\" \"-Wno-enum-float-conversion\" \"-Wno-elaborated-enum-base\" \"-Wno-reserved-identifier\" \"-Wno-gnu-folding-constant\" \"-std=c11\" \"-ferror-limit\" \"19\" \"-stack-protector\" \"1\" \"-fstack-check\" \"-mdarwin-stkchk-strong-link\" \"-fblocks\" \"-fencode-extended-block-signature\" \"-fregister-global-dtors-with-atexit\" \"-fgnuc-version=4.2.1\" \"-fskip-odr-check-in-gmf\" \"-fmax-type-align=16\" \"-fcommon\" \"-vectorize-loops\" \"-vectorize-slp\" \"-clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation\" \"-fno-odr-hash-protocols\" \"-clang-vendor-feature=+enableAggressiveVLAFolding\" \"-clang-vendor-feature=+revert09abecef7bbf\" \"-clang-vendor-feature=+thisNoAlignAttr\" \"-clang-vendor-feature=+thisNoNullAttr\" \"-clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError\" \"-D__GCC_HAVE_DWARF2_CFI_ASM=1\" \"-o\" \"<temporary.o>\" \"-x\" \"c\" \"/dev/null\"\n \"/Library/Developer/CommandLineTools/usr/bin/ld\" \"-demangle\" \"-lto_library\" \"/Library/Developer/CommandLineTools/usr/lib/libLTO.dylib\" \"-dynamic\" \"-arch\" \"arm64\" \"-platform_version\" \"macos\" \"15.5.0\" \"15.5\" \"-syslibroot\" \"/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk\" \"-O3\" \"-mllvm\" \"-enable-linkonceodr-outlining\" \"-o\" \"/dev/null\" \"-L/usr/local/lib\" \"<temporary.o>\" \"-lpthread\" \"-lm\" \"-lSystem\" \"/Library/Developer/CommandLineTools/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a\"\n",
+        "flags": [
+          "-std=c11",
+          "-O3",
+          "<emitted.c>",
+          "-lpthread",
+          "-lm",
+          "-o",
+          "<native>"
+        ],
+        "path": "/usr/bin/clang",
+        "resource_dir": "/Library/Developer/CommandLineTools/usr/lib/clang/17",
+        "sysroots": [
+          "/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk"
+        ],
+        "version": "Apple clang version 17.0.0 (clang-1700.0.13.5)\nTarget: arm64-apple-darwin25.4.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin\n"
       },
-      "deadline_monotonic": 5710059.062693166,
-      "error": null,
-      "exit_code": 0,
-      "pid": 82558,
-      "seconds": 128.36393800005317,
-      "started_monotonic": 5709459.062693166,
-      "stderr": {
-        "bytes": 0,
-        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/compiler/stderr",
-        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-      },
-      "stdout": {
-        "bytes": 0,
-        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/compiler/stdout",
-        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-      },
-      "timed_out": false
+      "emitted_c_sha256": "e4b46cb822436c4ac3394bb787e167ec6e253a68f497a7511577f331778f5ca1",
+      "environment_sha256": "07e4cf364bfe3f62782c5df418d12c12a6a1697cc0cf008094f5af820c68aaa2"
     },
-    "snapshot_directory": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791135913995459000/source",
+    "native_cache_report": {
+      "bytes": 1250995,
+      "file": "native-cache.json",
+      "sha1": "ae6088e50593c5376bb36682a692f76d16ef2251",
+      "sha256": "2a92e8b7f3e109190ef6729f5c37cf1689e232a19a2cfeb95c6226f44f00a88c"
+    },
+    "result": {
+      "exit_code": 0,
+      "seconds": 605.8901512073353,
+      "stages": {
+        "closure": {
+          "argv": [
+            "/Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/player_crafting_authority_native.py",
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/tests/player_crafting_authority_load.bend",
+            "--report",
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791143011863172000/native-cache-after.json"
+          ],
+          "attempts": 1,
+          "cap_seconds": 60,
+          "cleanup": {
+            "after": [],
+            "before": [],
+            "errors": [],
+            "leader_reaped": true,
+            "live_group_absent": true,
+            "seconds": 0.14244620874524117
+          },
+          "deadline_monotonic": 5717219.80592275,
+          "error": null,
+          "exit_code": 0,
+          "pid": 39158,
+          "seconds": 2.950127915479243,
+          "started_monotonic": 5717159.80592275,
+          "stderr": {
+            "bytes": 0,
+            "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791143011863172000/closure-check/stderr",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 194,
+            "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791143011863172000/closure-check/stdout",
+            "sha256": "91bbcba67cf48cc0dda6232b906338c34453aee68259219a1c713d39bb903e12"
+          },
+          "timed_out": false
+        },
+        "emission": {
+          "argv": [
+            "/Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/player_crafting_authority_native.py",
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/tests/player_crafting_authority_load.bend",
+            "--report",
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791143011863172000/native-cache.json"
+          ],
+          "attempts": 1,
+          "cap_seconds": 600,
+          "cleanup": {
+            "after": [],
+            "before": [],
+            "errors": [],
+            "leader_reaped": true,
+            "live_group_absent": true,
+            "seconds": 0.13980862498283386
+          },
+          "deadline_monotonic": 5717156.836839916,
+          "error": null,
+          "exit_code": 0,
+          "pid": 34573,
+          "seconds": 449.8780044168234,
+          "started_monotonic": 5716556.836839916,
+          "stderr": {
+            "bytes": 0,
+            "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791143011863172000/c-emission/stderr",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 208,
+            "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791143011863172000/c-emission/stdout",
+            "sha256": "e795ecebc950728cfc4a00fdb6cdc3cda25db8b0d10e6be1cd793f378d08ba9a"
+          },
+          "timed_out": false
+        },
+        "native_compile": {
+          "argv": [
+            "/usr/bin/clang",
+            "-std=c11",
+            "-O3",
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native-cache/sources/36a00fa8418dcb45df4f3ef93cf5d12d5ce6e2ddbbfbe13568931975eeb45559/generated.c",
+            "-lpthread",
+            "-lm",
+            "-o",
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791143011863172000/program"
+          ],
+          "attempts": 1,
+          "cap_seconds": 600,
+          "cleanup": {
+            "after": [],
+            "before": [],
+            "errors": [],
+            "leader_reaped": true,
+            "live_group_absent": true,
+            "seconds": 0.10352083295583725
+          },
+          "deadline_monotonic": 5717606.738089708,
+          "error": null,
+          "exit_code": 0,
+          "pid": 38043,
+          "seconds": 153.06201887503266,
+          "started_monotonic": 5717006.738089708,
+          "stderr": {
+            "bytes": 0,
+            "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791143011863172000/native-compile/stderr",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 0,
+            "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791143011863172000/native-compile/stdout",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "timed_out": false
+        }
+      }
+    },
+    "route": "actual Bend C emission + installed CLI ordinary CPU compiler flags; immutable input/header/library closure revalidated before publication",
+    "snapshot_directory": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source",
     "sources": [
       {
         "bytes": 71530,
@@ -1009,11 +1177,11 @@
         "sha256": "9d2be7fb88afa1dc6386ab9e8b046b15d2a2a73b7e14566e5bfad3e6dd1f2702"
       },
       {
-        "bytes": 9442,
+        "bytes": 14804,
         "kind": "bend",
         "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/../src/player_crafting_authority.bend",
         "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_crafting_authority.bend",
-        "sha256": "46970a3213f58e88f5b341bd71f6b870438969fc31332322bcb5d16cd34bb7f1"
+        "sha256": "3032b09376879239438415654d151917fb9ff5f989900200aba6552d9eb8ac35"
       },
       {
         "bytes": 2785,
@@ -1023,25 +1191,32 @@
         "sha256": "4389a4b976e75b5a96fb8261b789396e176acb3678f7f1379687393c0d16108d"
       },
       {
-        "bytes": 12000,
+        "bytes": 16112,
         "kind": "bend",
         "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/../src/player_crafting_authority_load.bend",
         "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_crafting_authority_load.bend",
-        "sha256": "3f0794cc3a9cf88e5f9dede619c8aa073805a2ee678a5a6d8afef9807bb663f4"
+        "sha256": "f7dddeef69f5c3ef09d1b2fa5b50b07faec901dbc6d77bb9b050d66f3db4d1d8"
       },
       {
-        "bytes": 4237,
+        "bytes": 6066,
         "kind": "bend",
         "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/../src/player_crafting_authority_menu.bend",
         "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_crafting_authority_menu.bend",
-        "sha256": "97f4826a6ea8be0610212ac4c48dfaf74f6ed9787d885385accd052defe0c3b4"
+        "sha256": "ab9158d4d08946065d1bb0fbe6a0053254081b8e8ad564a379a569796cda352e"
       },
       {
-        "bytes": 28145,
+        "bytes": 3366,
+        "kind": "bend",
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/../src/player_crafting_authority_startup.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_crafting_authority_startup.bend",
+        "sha256": "a6d3f057a4d39b5664d7ba27fd70659e2b1658ccdafcb5b822669ae3acd3c028"
+      },
+      {
+        "bytes": 28759,
         "kind": "bend",
         "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/../src/player_inventory.bend",
         "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_inventory.bend",
-        "sha256": "5cbd1565eff2218c3096db82a36af2a8ed1bee695969c67f02290efde786eed4"
+        "sha256": "065be0bc6aa1d0cb10b9fcac77b6dcea73d4bdbab20fd2e13e264a8ea91c3340"
       },
       {
         "bytes": 12607,
@@ -1051,35 +1226,43 @@
         "sha256": "df5183e0c4be23b4eaf081e9a72099436e5d674402e9ac15102ecabc7a1b1d90"
       },
       {
-        "bytes": 9121,
+        "bytes": 12156,
         "kind": "bend",
         "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_crafting_authority.bend",
         "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_crafting_authority.bend",
-        "sha256": "597ca04cfba1d7111bf19d5ef352f6837edc40337e708c8f4d249282facc189e"
+        "sha256": "840e10665ae45d42cf65175114f197a454a981916a15d59e3c0aead14ff01a17"
       },
       {
-        "bytes": 177262,
+        "bytes": 4140,
         "kind": "bend",
-        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_crafting_authority_cases.bend",
-        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_crafting_authority_cases.bend",
-        "sha256": "0dfc6e9579da52ad2c0946f4c278c07463f8785d4484e7c036321f0398533c17"
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_crafting_authority_fixtures.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_crafting_authority_fixtures.bend",
+        "sha256": "db546b2df86ad762e883bea292432561ee96e872b03effdcd144cc0297726678"
       },
       {
-        "bytes": 8421,
+        "bytes": 9445,
         "kind": "bend",
         "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_crafting_authority_load.bend",
         "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_crafting_authority_load.bend",
-        "sha256": "abb4bdc05df236c1442e2a9a5ddfddba9a3ab336f6e13b20d69d51fd3296b3cb"
+        "sha256": "02c41322f0aec449962ebce45677bbf333b21bc164d55efbf005276c8d899621"
+      },
+      {
+        "bytes": 6221,
+        "kind": "bend",
+        "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_crafting_authority_observer.bend",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_crafting_authority_observer.bend",
+        "sha256": "01b8041dffe654a50a689606775685479e8044ba33695de73c1e1978f2a39672"
       }
     ]
   },
   "component_reference": {
-    "bytes": 1655211,
+    "bytes": 1762172,
     "file": "crafting_recipe_components.json",
-    "sha1": "f64692fbfe0e91ae9b0aaf265fa1a306f8394e68",
-    "sha256": "1033428cffe42416d364d14f9bdbd39adb6dab7d303e1327bd8f84646dbe6226"
+    "sha1": "573cda7cf13b1bec408905fb075dca0fc5ed3226",
+    "sha256": "2a677248a345741d810a1f03fc19c7c34b6ac709c06c99ac8a6433bc2d3e9e64"
   },
-  "invalid_initialized_default_maps": 100,
+  "default_codec_errors": 0,
+  "initialized_default_maps": 1658,
   "item_definitions": 1658,
   "item_table": {
     "bytes": 556426,
@@ -1106,10 +1289,12 @@
         "generated/reference_item_metadata.tsv",
         "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/request.json"
       ],
-      "output_sha256": "03d2a5db25cabd7619e9c07b378077c1cbcf9674ac91061a3960c2da21201ca4",
+      "output_sha256": "de5d2a05dfe4747f128292d6e7e9dbdca8c9c2dd1afb1bb102398898a55792c2",
       "returncode": 0,
-      "seconds": 29.59421925060451,
-      "stderr": ""
+      "seconds": 33.962907208129764,
+      "stderr": "",
+      "stderr_file": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-tests/runs/1791144941500486000.stderr",
+      "stdout_file": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-tests/runs/1791144941500486000.stdout"
     },
     {
       "command": [
@@ -1122,23 +1307,137 @@
         "generated/reference_item_metadata.tsv",
         "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/request.json"
       ],
-      "output_sha256": "03d2a5db25cabd7619e9c07b378077c1cbcf9674ac91061a3960c2da21201ca4",
+      "output_sha256": "de5d2a05dfe4747f128292d6e7e9dbdca8c9c2dd1afb1bb102398898a55792c2",
       "returncode": 0,
-      "seconds": 29.79598879162222,
-      "stderr": ""
+      "seconds": 46.343395583331585,
+      "stderr": "",
+      "stderr_file": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-tests/runs/1791144987852847000.stderr",
+      "stdout_file": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-tests/runs/1791144987852847000.stdout"
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/loader",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "--facts",
+        "/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar",
+        "generated/reference_item_metadata.tsv",
+        "generated/reference_crafting_authority_metadata.json"
+      ],
+      "output_sha256": "de5d2a05dfe4747f128292d6e7e9dbdca8c9c2dd1afb1bb102398898a55792c2",
+      "pinned_startup_facts": true,
+      "returncode": 0,
+      "seconds": 55.53524962440133,
+      "stderr": "",
+      "stderr_file": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-tests/runs/1791145043405162000.stderr",
+      "stdout_file": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-tests/runs/1791145043405162000.stdout"
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/loader",
+        "--threads",
+        "4",
+        "--gpu",
+        "off",
+        "--facts",
+        "/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar",
+        "generated/reference_item_metadata.tsv",
+        "generated/reference_crafting_authority_metadata.json"
+      ],
+      "output_sha256": "de5d2a05dfe4747f128292d6e7e9dbdca8c9c2dd1afb1bb102398898a55792c2",
+      "pinned_startup_facts": true,
+      "returncode": 0,
+      "seconds": 51.780814374797046,
+      "stderr": "",
+      "stderr_file": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-tests/runs/1791145095188720000.stderr",
+      "stdout_file": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-tests/runs/1791145095188720000.stdout"
+    }
+  ],
+  "native_constructor_rejection_count": 2,
+  "native_constructor_rejections": [
+    {
+      "child_physical_classes": [
+        0,
+        6
+      ],
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/loader",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar",
+        "generated/reference_item_metadata.tsv",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/request.json"
+      ],
+      "constructor": "Array.ANode",
+      "id": "player-unbalanced-backing",
+      "observed_authority_cases": 0,
+      "output_sha256": "03d2a5db25cabd7619e9c07b378077c1cbcf9674ac91061a3960c2da21201ca4",
+      "returncode": 1,
+      "seconds": 47.117190750315785,
+      "stderr": "bend: runtime fail-stop\n",
+      "stderr_file": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-tests/runs/1791145142319149000.stderr",
+      "stdout_file": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-tests/runs/1791145142319149000.stdout"
+    },
+    {
+      "child_physical_classes": [
+        0,
+        4
+      ],
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/loader",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar",
+        "generated/reference_item_metadata.tsv",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/request.json"
+      ],
+      "constructor": "Array.ANode",
+      "id": "bench-unbalanced-backing",
+      "observed_authority_cases": 0,
+      "output_sha256": "03d2a5db25cabd7619e9c07b378077c1cbcf9674ac91061a3960c2da21201ca4",
+      "returncode": 1,
+      "seconds": 60.34833204187453,
+      "stderr": "bend: runtime fail-stop\n",
+      "stderr_file": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-tests/runs/1791145202686859000.stderr",
+      "stdout_file": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-tests/runs/1791145202686859000.stdout"
     }
   ],
   "ordinary": 1202,
   "patched_outputs": 17,
   "pin": "26.3",
   "production_metadata": {
-    "bytes": 2373796,
+    "bytes": 2480598,
     "file": "production-catalog.json",
-    "sha1": "8e7d530e69a10422969bcba103ddfb9910fcbd7d",
-    "sha256": "d4f82c6c923a637a6f34b1e00995c6e2bbaf79a2fe7c5b22d1ac2637db0a3d15"
+    "sha1": "ddd28bd16ad5670b06c7146027e0fce474e5cd7d",
+    "sha256": "6025b2cffec4d2f1d8e1ac74338566af6dfbe43c87d5cc6961bfa5c61b40a223"
   },
   "recipe_entries": 2042,
   "resolved_tags": 236,
-  "status": "mechanics-passed-invalid-default-metadata-not-certified",
+  "runtime_constructor_fixtures": {
+    "bytes": 31624,
+    "file": "constructor-cases.json",
+    "sha1": "56ab64151a8c2dec33e7ba2774da1df6d59789a7",
+    "sha256": "ca2d219cfcd3d13c1d702f0436848555a97fbaf727dda380a9f096d1a353877e"
+  },
+  "runtime_facts": {
+    "bytes": 1684693,
+    "file": "reference_crafting_authority_metadata.json",
+    "sha1": "12bb7066ee0255dbb5b29c030adf82e1cafdd6b6",
+    "sha256": "9105c1fa3a9eefbab94d21626e1d5be1ad69c9765e19b608e257e458b9e853d1"
+  },
+  "runtime_fixtures": {
+    "bytes": 942001,
+    "file": "cases.json",
+    "sha1": "3cfed920d3d6655b1f644058862960f5476a4463",
+    "sha256": "c973fc63db291a51bc7729ef15cf320b4cddbd39e79db5889c78187628cca3ce"
+  },
+  "source_model_cases": 69,
+  "status": "passed",
   "unsupported": 840
 }
