@@ -1,0 +1,375 @@
+{
+  "Python_only_tests": {
+    "compiler_source_or_Bun_invocations": 0,
+    "final_generation": {
+      "all_group_observations_absent_after_cleanup": true,
+      "decisive_parent_exits_child_retains_pipes": {
+        "elapsed_seconds": 2.5021713338792324,
+        "exit_code": 0,
+        "failure_reason": "process-group-timeout",
+        "group_exists_after_cleanup": false,
+        "name": "leader-exits-child-holds-pipes",
+        "pid": 48441,
+        "process_group": 48441,
+        "signals": [
+          {
+            "at_seconds": 0.5006514582782984,
+            "leader_exit_code": 0,
+            "outcome": "sent",
+            "phase": "watchdog-term",
+            "signal": "SIGTERM"
+          },
+          {
+            "at_seconds": 2.501075541600585,
+            "leader_exit_code": 0,
+            "outcome": "sent",
+            "phase": "watchdog-kill",
+            "signal": "SIGKILL"
+          },
+          {
+            "at_seconds": 2.501752416603267,
+            "leader_exit_code": 0,
+            "outcome": "already-gone",
+            "phase": "final-cleanup",
+            "signal": "SIGKILL"
+          }
+        ]
+      },
+      "full_summary": {
+        "bytes": 4604,
+        "path": "build/resource-player-client-diagnosis-bun-watchdog/python-watchdog-probe.full.json",
+        "sha256": "cd4a7a1cb2a5727f3db2171811e426ea3fc8fb6db154ad682c409373dba7123b"
+      },
+      "injected_cleanup_exception": "artificial Python-only error after real signal; final attempt receipt matched returned result",
+      "one_additional_forked_child": true,
+      "other_process_cases": [
+        {
+          "elapsed_seconds": 2.553255124948919,
+          "exit_code": -9,
+          "failure_reason": "process-group-timeout",
+          "group_exists_after_cleanup": false,
+          "name": "leader-closes-pipes-but-lives"
+        },
+        {
+          "elapsed_seconds": 2.0482634576037526,
+          "exit_code": -9,
+          "failure_reason": "diagnostic-output-cap",
+          "group_exists_after_cleanup": false,
+          "name": "eight-MiB-output-cap"
+        },
+        {
+          "elapsed_seconds": 0.001522500067949295,
+          "exit_code": null,
+          "failure_reason": "host-watchdog-error",
+          "group_exists_after_cleanup": null,
+          "name": "spawn-error-receipt"
+        },
+        {
+          "elapsed_seconds": 0.020665625110268593,
+          "exit_code": 0,
+          "failure_reason": "host-signal-final-cleanup-error",
+          "group_exists_after_cleanup": false,
+          "name": "injected-cleanup-error-receipt"
+        }
+      ],
+      "phase_cases": [
+        {
+          "accepted": true,
+          "name": "synthetic-valid-plain"
+        },
+        {
+          "accepted": true,
+          "name": "synthetic-valid-boxed"
+        },
+        {
+          "accepted": false,
+          "name": "missing-load.end"
+        },
+        {
+          "accepted": false,
+          "name": "missing-check.end"
+        },
+        {
+          "accepted": false,
+          "name": "missing-native.file_book.end"
+        },
+        {
+          "accepted": false,
+          "name": "missing-graph.complete"
+        },
+        {
+          "accepted": false,
+          "name": "missing-post.audit.pass"
+        },
+        {
+          "accepted": false,
+          "name": "wrong-entry"
+        },
+        {
+          "accepted": false,
+          "name": "wrong-manifest-argv"
+        },
+        {
+          "accepted": false,
+          "name": "wrong-native-roots"
+        },
+        {
+          "accepted": false,
+          "name": "checker-holes"
+        },
+        {
+          "accepted": false,
+          "name": "counter-mismatch"
+        },
+        {
+          "accepted": false,
+          "name": "nonempty-stderr"
+        },
+        {
+          "accepted": false,
+          "name": "duplicate-final-phase"
+        },
+        {
+          "accepted": false,
+          "name": "phase-order"
+        }
+      ],
+      "probe_source": {
+        "bytes": 7151,
+        "path": "build/resource-player-client-diagnosis-bun-watchdog/test_host_watchdog.py",
+        "sha256": "c9e4ff86297c55cc74db883c1f1b37c991cc4fbbd6fcb99fc5e3c85398af2f20"
+      },
+      "process_fixtures": 5,
+      "status": "pass",
+      "stderr": {
+        "bytes": 0,
+        "path": "build/resource-player-client-diagnosis-bun-watchdog/host-test.stderr.full.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 3320,
+        "path": "build/resource-player-client-diagnosis-bun-watchdog/host-test.stdout.full.jsonl",
+        "sha256": "67db8d8e3046c6118fe9fdd7f08c06694510a1f90028a79719b07ddf301093db"
+      },
+      "successful_fixture_Popen_calls": 4,
+      "synthetic_protocol_fixtures": 15
+    },
+    "graph_results_claimed": false,
+    "initial_host_generation": {
+      "change_before_final_tests": "limit early-error/final cleanup wait and observation to the advertised 0.5s budget",
+      "process_fixtures": 5,
+      "retained": true,
+      "source_and_receipts_archived": "build/resource-player-client-diagnosis-bun-watchdog/lineage/host-first",
+      "status": "pass",
+      "summary": {
+        "bytes": 4606,
+        "path": "build/resource-player-client-diagnosis-bun-watchdog/lineage/host-first/python-watchdog-probe.full.json",
+        "sha256": "569771c5c67a0427d1ccfa3ff2a81127e18ccf0503e6afb4582609639a77b52f"
+      },
+      "synthetic_protocol_fixtures": 15
+    }
+  },
+  "adoption_scope": {
+    "AST_scope": {
+      "Bun_TS_import_or_execution_during_AST_audit": false,
+      "ambient_paths_change": "WORK renamed SOURCE, preserving the same original source/config lookup paths",
+      "changed_host_functions": [
+        "write",
+        "signal_group",
+        "plan",
+        "verify",
+        "run",
+        "main"
+      ],
+      "compiler_probe_patch_changed": false,
+      "new_host_functions": [
+        "group_exists",
+        "supervise",
+        "unique_object",
+        "validate_phases"
+      ],
+      "new_host_wrapper_sha256": "7e0ac980d50ac94a488f3e2db042342604f6580251b2acc85771b760b9c615b0",
+      "old_Bun_wrapper_unchanged_sha256": "f93fe3ea1302f8b68c9a4fab151a51194eeb5fdbfd30affaabe3a06c3026b54e",
+      "root_entry_scene_changes": 0,
+      "source_TS_files_changed": 0,
+      "source_config_runtime_argv_equal": true,
+      "unchanged_AST_functions": [
+        "digest",
+        "environment"
+      ],
+      "watchdog_contract": "Owned PG SIGKILL and final cleanup have no leader-poll gate; pipe/read/wait have monotonic deadlines; cleanup budget<=0.5s; initial exclusive attempt receipt and atomic final replacement; eight unique ordered phase records required before boxed"
+    },
+    "AST_scope_receipt": {
+      "bytes": 1084,
+      "path": "build/resource-player-client-diagnosis-bun-watchdog/host-AST-scope.full.json",
+      "sha256": "b6d295e9fff976b08d522ed84a2b4fd6e57794c8b860786c99c9ee0109e82bb4"
+    },
+    "compiler_TS_probe_patch_source_entry_scene_config_manifest_runtime_changes": 0,
+    "host_diff": {
+      "bytes": 19353,
+      "path": "build/resource-player-client-diagnosis-bun-watchdog/host-adoption.patch",
+      "sha256": "ca51811bcc61044bf5f2566f8f54643b27e0a106868ba0fe1bbcb73ffd2a7e53"
+    },
+    "original_startup_environment_policy_unchanged": true,
+    "runtime_argv_equal_to_sealed_Bun_plan": true,
+    "wrapper": {
+      "bytes": 14890,
+      "path": "build/resource-player-client-diagnosis-bun-watchdog/run_graph_probe.py",
+      "sha256": "7e0ac980d50ac94a488f3e2db042342604f6580251b2acc85771b760b9c615b0"
+    }
+  },
+  "confidence": {
+    "Python_watchdog_behavior_in_tested_cases": "high",
+    "actual_Bun_source_loading_and_graph_outcome": "unknown",
+    "host_phase_validator_in_synthetic_cases": "high",
+    "installed_compiler_bottleneck": "unknown",
+    "prior_Bun_and_Node_preservation": "high"
+  },
+  "date": "2026-10-04",
+  "documentation": {
+    "bytes": 7080,
+    "path": "docs/resource-player-client-diagnosis-bun-watchdog.md",
+    "sha256": "793c344d3f40882690651a75ee0916213294819d8207f3890108d68410a432dd"
+  },
+  "execution_this_adoption": {
+    "Bun_TS_source_loads": 0,
+    "Bun_version_invocations": 0,
+    "UI_actions": 0,
+    "client_launches": 0,
+    "compiler_graph_runs": 0,
+    "emissions": 0,
+    "input_posts": 0,
+    "kernel_runs": 0,
+    "native_builds": 0,
+    "permission_requests": 0,
+    "screenshots": 0
+  },
+  "frozen_preflight": {
+    "default_audit_only_exit_pass": true,
+    "default_plan": {
+      "bytes": 1665,
+      "path": "build/resource-player-client-diagnosis-bun-watchdog/default-plan.full.json",
+      "sha256": "8356b9dcadb9a138d626c299270709c91d1a9a03649f5db694e9b5aa32fd9702"
+    },
+    "graph_authorized": false,
+    "new_pin_count": 28,
+    "pins": {
+      "bytes": 6264,
+      "path": "build/resource-player-client-diagnosis-bun-watchdog/probe-pins.full.json",
+      "sha256": "cb7206d4aad2501d90fc29ca16bd04cc32aa6854a56aabdbbddeee4d87a94618"
+    },
+    "post_audit": {
+      "bytes": 583,
+      "path": "build/resource-player-client-diagnosis-bun-watchdog/post-host-preparation-audit.full.json",
+      "sha256": "13c76829abff90342a9c3fc6dcc5190d008389e9b69cb94e1497581253423f38"
+    },
+    "proposed_command": "PYTHONDONTWRITEBYTECODE=1 python3 build/resource-player-client-diagnosis-bun-watchdog/run_graph_probe.py --root-bun-watchdog-graph-slot-granted",
+    "sequence": "plain control first; every process/watchdog/pin/protocol failure stops before boxed",
+    "source_retries_or_extra_variants": false
+  },
+  "interpretation": "Host-only correction verified with actual Python process groups and synthetic output protocol cases; neither a Bun control result nor a compiler bottleneck attribution.",
+  "lineage": {
+    "Node_diagnosis": {
+      "bytes": 16782,
+      "path": "evidence/resource-player-client-diagnosis-next.json",
+      "sha256": "d66ef014332ab7bbcf8dea2b1423560dfb091e77c8bc292ba193ec27659c9531"
+    },
+    "Node_generation_files_unchanged": 31,
+    "archive_pins": {
+      "bytes": 6035,
+      "path": "build/resource-player-client-diagnosis-bun-watchdog/lineage-pins.full.json",
+      "sha256": "5fd50a5d02ac93e463728a213aef0e1c4db0562410a64dd7f4dff9b9101322bd"
+    },
+    "archive_receipt": {
+      "bytes": 11698,
+      "path": "build/resource-player-client-diagnosis-bun-watchdog/lineage.full.json",
+      "sha256": "ee2b6464deab16730a3d7e79d7c322b6176accd95d00c1e8672c544e88e0dfa1"
+    },
+    "archive_root": "build/resource-player-client-diagnosis-bun-watchdog/lineage/sealed-bun",
+    "archived_before_adoption": true,
+    "byte_identical_regular_files": 27,
+    "installed_Base_symlink_preserved": true,
+    "original_Bun_file_hashes_unchanged": true,
+    "original_Bun_pins": {
+      "bytes": 5043,
+      "path": "build/resource-player-client-diagnosis-bun-watchdog/prior-bun-original-pins.full.json",
+      "sha256": "b736fba2847038c6eb12252744db5886801173bbdbc18ca12da553112de07e7d"
+    },
+    "previous_documentation": {
+      "bytes": 9492,
+      "path": "docs/resource-player-client-diagnosis-bun.md",
+      "sha256": "b40076c61d21c685219e1d9ba818ea19720ed010909e2596183d576136cd932f"
+    },
+    "previous_preparation_receipt": {
+      "bytes": 14937,
+      "path": "evidence/resource-player-client-diagnosis-bun-preparation.json",
+      "sha256": "af26decd1ae81a26d51f5039b154622a89766bc8bb370984c801716551aca52d"
+    },
+    "previous_wrapper": {
+      "bytes": 6757,
+      "path": "build/resource-player-client-diagnosis-bun/run_graph_probe.py",
+      "sha256": "f93fe3ea1302f8b68c9a4fab151a51194eeb5fdbfd30affaabe3a06c3026b54e"
+    }
+  },
+  "protocol_gate": {
+    "Bend_file_counts": {
+      "boxed": 65,
+      "plain": 51
+    },
+    "additional_start_phases": [
+      "load.start",
+      "check.start",
+      "native.file_book.start"
+    ],
+    "eight_unique_records_in_order": true,
+    "entry_and_Base_from_load_start_match": true,
+    "gate_before_starting_boxed": true,
+    "integer_zero_checker_holes": true,
+    "manifest_validation": "sealed argv path + hash + loader count; unchanged source harness verifies exact membership and dependency hashes",
+    "matching_positive_traversal_counters": true,
+    "phase_contract": {
+      "bytes": 1417,
+      "path": "build/resource-player-client-diagnosis-bun-watchdog/phase-contract.full.json",
+      "sha256": "c8e309ef6e0b30c9dd1ce8c2fc057c09aa45bc28dbb6d7680a87407fee3bb7b3"
+    },
+    "required_five_completion_phases": [
+      "load.end",
+      "check.end",
+      "native.file_book.end",
+      "graph.complete",
+      "post.audit.pass"
+    ],
+    "requires_empty_stderr": true,
+    "requires_exit_zero_no_watchdog_cleanup_pin_error": true,
+    "root_basis": "pinned comp.ts RUNTIME_ADTS + compile_book/show_main IO branch; both sealed entry main declarations are IO(Unit), so descriptor families are empty",
+    "roots": [
+      "main",
+      "Sigma",
+      "String",
+      "Word.Con",
+      "IO.OP",
+      "Result",
+      "Maybe",
+      "Bool",
+      "Unit"
+    ],
+    "strict_UTF8_JSON_and_duplicate_member_rejection": true
+  },
+  "status": "prepared-host-only-adoption-no-graph-grant",
+  "watchdog": {
+    "SIGKILL_and_final_cleanup_independent_of_leader_poll": true,
+    "SIGTERM_grace_seconds": 2,
+    "absolute_pipe_and_wait_boundary_seconds": 93,
+    "attempt_receipt_exclusive_and_durable_before_launch": true,
+    "combined_output_cap_bytes": 8388608,
+    "early_error_cleanup_budget_seconds": 0.5,
+    "existing_attempt_receipt_refuses_retry": true,
+    "final_cleanup_wait_observation_budget_seconds": 0.5,
+    "final_receipt_atomic_on_watchdog_or_cleanup_error": true,
+    "group_soft_cap_seconds": 90,
+    "no_unbounded_wait": true,
+    "pipe_drain_budget_after_hard_kill_seconds": 0.5,
+    "pipe_reads_nonblocking": true,
+    "scope_of_absolute_boundary": "pipe/select/read/wait/cleanup observation; filesystem receipt operations separate"
+  }
+}

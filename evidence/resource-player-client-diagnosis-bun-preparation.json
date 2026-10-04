@@ -1,0 +1,408 @@
+{
+  "compiler": {
+    "bytes": 63885392,
+    "path": "/Users/chuah/.bend/bin/bend",
+    "sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e"
+  },
+  "confidence": {
+    "Bun_source_loading_compatibility": "unknown",
+    "archived_git_source_patch_helper_identity": "high",
+    "exact_runtime_bytes_binding": "high",
+    "graph_outcome": "unknown",
+    "installed_native_bottleneck": "unknown"
+  },
+  "date": "2026-10-04",
+  "discovery": {
+    "PATH_bun": null,
+    "bounded_roots_inspected": 6,
+    "installed_check": {
+      "bytes": 47,
+      "path": "/Users/chuah/.bend/check.json",
+      "sha256": "8cfdbbf2525764aac709096d752adb9f755c22323a3d7cb09356a6da98ce9100",
+      "version": "2.0.35"
+    },
+    "known_standalone_paths_inspected": 9,
+    "known_standalone_paths_present": 0,
+    "no_install_or_download": true,
+    "other_compiled_runtime": [
+      {
+        "bytes": 84751024,
+        "compatibility": "different embedded Bun version; artifact RPC executable not selected",
+        "embedded_markers": [
+          {
+            "marker": "Bun v1.3.0 (b0a6feca) macOS Silicon",
+            "offset": 55416057
+          },
+          {
+            "marker": "Bun v1.3.0 (macOS arm64)",
+            "offset": 56582701
+          },
+          {
+            "marker": "BUN_BE_BUN",
+            "offset": 55353939
+          }
+        ],
+        "file": "/Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/artifact_tool_v2/bin/artifact_tool_rpc_daemon-bun: Mach-O 64-bit executable arm64",
+        "invoked": false,
+        "path": "/Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/artifact_tool_v2/bin/artifact_tool_rpc_daemon-bun",
+        "sha256": "1a198a935dbfaea98daf1c4a14efcb80c79c4374cbc2e2c150da253d9a24d8cc"
+      }
+    ],
+    "raw_receipt": {
+      "bytes": 3051,
+      "path": "build/resource-player-client-diagnosis-bun/runtime-discovery.full.json",
+      "sha256": "07ff825cc7aab03c5c7dabbc8a939ecfcfffed8f10354473b4c1c6296215a829"
+    },
+    "workspace_dependency_bundle": "26.909.11814"
+  },
+  "documentation": {
+    "bytes": 9492,
+    "path": "docs/resource-player-client-diagnosis-bun.md",
+    "sha256": "b40076c61d21c685219e1d9ba818ea19720ed010909e2596183d576136cd932f"
+  },
+  "interpretation": "Runtime binding is established; loader/control/graph validity require a separate root grant. Previous Node control failure and two native timeouts do not establish the dominant installed phase.",
+  "preparation": {
+    "Bun_source_module_loads": 0,
+    "audit": {
+      "bytes": 2148,
+      "path": "build/resource-player-client-diagnosis-bun/preparation-audit.full.json",
+      "sha256": "4f6a3e38bc4286a48c984bb71ce7ed8c4e0871edaf6992ab3618122d2f0842ab"
+    },
+    "client_launches": 0,
+    "default_Python_plan_and_hash_audit_pass": true,
+    "emissions": 0,
+    "foreground_changes": 0,
+    "graph_runs": 0,
+    "input_posts": 0,
+    "kernel_runs": 0,
+    "native_builds": 0,
+    "permission_requests": 0,
+    "post_audit": {
+      "bytes": 581,
+      "path": "build/resource-player-client-diagnosis-bun/post-preparation-audit.full.json",
+      "sha256": "360b627da94feb982b1e2d5769a1951dd67a3352f8f679464e2de14764560574"
+    },
+    "python_AST_pass": true,
+    "recorded_version_only_invocations": 3,
+    "screenshots": 0,
+    "ui_actions": 0
+  },
+  "preserved_Node_generation": {
+    "before_manifest": {
+      "bytes": 5914,
+      "path": "build/resource-player-client-diagnosis-bun/node-generation-before.full.json",
+      "sha256": "ebb5edab32bdc4652b31dacf411fd393810d274e599924849f45fc3c0e2ff8e9"
+    },
+    "control": {
+      "boxed_started": false,
+      "elapsed_seconds": 1.1614674162119627,
+      "exit_code": 1,
+      "failure": "RangeError: Maximum call stack size exceeded at term_higher during book_load",
+      "phases_reached": [
+        "load.start"
+      ],
+      "receipt": {
+        "bytes": 1456,
+        "path": "build/resource-player-client-diagnosis-next/plain-graph-result.full.json",
+        "sha256": "e6aa3f5d1272d24a507c38e112e6442a6ba632eb222a6354424ff72e42f0fb4e"
+      },
+      "stderr": {
+        "bytes": 1805,
+        "path": "build/resource-player-client-diagnosis-next/plain-graph-stderr.full.jsonl",
+        "sha256": "b8d3edb99953c54487e26a1ee1be5709f3f256d67def37f5a74dcf68a29dfb8f"
+      },
+      "stdout": {
+        "bytes": 172,
+        "path": "build/resource-player-client-diagnosis-next/plain-graph-stdout.full.jsonl",
+        "sha256": "1ae78ce86153d13568754b6f5877e0a2709b4676a131209f632c557a2ea65b42"
+      }
+    },
+    "documentation": {
+      "bytes": 16390,
+      "path": "docs/resource-player-client-diagnosis-next.md",
+      "sha256": "a4704c324a35d50d831ff4c4c397c1d7abb94cbbdc94f90fd59f9afc0c69d226"
+    },
+    "evidence": {
+      "bytes": 16782,
+      "path": "evidence/resource-player-client-diagnosis-next.json",
+      "sha256": "d66ef014332ab7bbcf8dea2b1423560dfb091e77c8bc292ba193ec27659c9531"
+    },
+    "files_verified_unchanged": 31,
+    "original_pin_count": 20
+  },
+  "proposed_experiment": {
+    "cap_seconds_per_processgroup": 90,
+    "combined_output_cap_bytes_per_processgroup": 8388608,
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 build/resource-player-client-diagnosis-bun/run_graph_probe.py --root-bun-graph-slot-granted",
+    "compile_book_emit_body_effect_sources_C_Clang_kernel_client_called": false,
+    "default_plan_receipt": {
+      "bytes": 1708,
+      "path": "build/resource-player-client-diagnosis-bun/default-plan.full.json",
+      "sha256": "c18349709f1c5e7b57ea0c3bd45a5b5519f541a28deea103e1c5f4b0d9b9753e"
+    },
+    "execution_authorized": false,
+    "existing_attempt_receipt_overwrite_or_retry": false,
+    "harness": {
+      "bytes": 2404,
+      "path": "build/resource-player-client-diagnosis-bun/source-79df/probe.ts",
+      "sha256": "cea7fb3f9f947ad896f339f67b4f5b6173f8917f225ec37c6b9a4fbfa47c0557"
+    },
+    "native_roots_and_source_algorithm_patch_unchanged": true,
+    "ordered_variants": [
+      "accepted-plain-control",
+      "boxed-resource-client"
+    ],
+    "pin_count": 31,
+    "pin_manifest": {
+      "bytes": 5630,
+      "path": "build/resource-player-client-diagnosis-bun/probe-pins.full.json",
+      "sha256": "33d9a4749fd95f19d55b7dc46d96ab4a23a843b9683355b1b5780356dfef22c5"
+    },
+    "plan": [
+      {
+        "argv": [
+          "/Users/chuah/.bend/bin/bend",
+          "--config",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-player-client-diagnosis-bun/probe.bunfig.toml",
+          "--no-env-file",
+          "--no-install",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-player-client-diagnosis-bun/source-79df/probe.ts",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/player_client.bend",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-player-client-diagnosis-bun/plain-manifest.full.json"
+        ],
+        "forced_environment": {
+          "BUN_BE_BUN": "1"
+        },
+        "name": "plain",
+        "output_cap_bytes": 8388608,
+        "process_group_timeout_seconds": 90
+      },
+      {
+        "argv": [
+          "/Users/chuah/.bend/bin/bend",
+          "--config",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-player-client-diagnosis-bun/probe.bunfig.toml",
+          "--no-env-file",
+          "--no-install",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-player-client-diagnosis-bun/source-79df/probe.ts",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/resource_player_boxed_client.bend",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-player-client-diagnosis-bun/boxed-manifest.full.json"
+        ],
+        "forced_environment": {
+          "BUN_BE_BUN": "1"
+        },
+        "name": "boxed",
+        "output_cap_bytes": 8388608,
+        "process_group_timeout_seconds": 90
+      }
+    ],
+    "required_control_phases": [
+      "load.end",
+      "check.end",
+      "native.file_book.end",
+      "graph.complete",
+      "post.audit.pass"
+    ],
+    "runtime_wrapper_diff": {
+      "bytes": 5960,
+      "path": "build/resource-player-client-diagnosis-bun/runtime-wrapper.patch",
+      "sha256": "51a4bbcebdfa2be63417b1994309b410c09dc06f9ca6093aacf84193c6256379"
+    },
+    "runtime_wrapper_diff_lines": 115,
+    "scope": "source diagnostic under exact embedded Bun runtime; no installed compiler CLI phase timing/speedup inference",
+    "stop_on_first_failure": true,
+    "subprocess_cap_loop_byte_identical_to_Node_wrapper": true,
+    "wrapper": {
+      "bytes": 6757,
+      "path": "build/resource-player-client-diagnosis-bun/run_graph_probe.py",
+      "sha256": "f93fe3ea1302f8b68c9a4fab151a51194eeb5fdbfd30affaabe3a06c3026b54e"
+    }
+  },
+  "runtime_binding": {
+    "Bun_revision": "34cbb9a40",
+    "Bun_version": "1.4.0",
+    "compiler_hash_unchanged": true,
+    "embedded_markers": {
+      "BUN_BE_BUN": [
+        60959706
+      ],
+      "Bun v1.4.0 (34cbb9a40) macOS Silicon": [
+        59168592
+      ],
+      "Bun v1.4.0 (macOS arm64)": [
+        58088320
+      ]
+    },
+    "selection": "exact same pinned installed Bend executable with BUN_BE_BUN=1",
+    "version_commands": [
+      {
+        "argv": [
+          "/Users/chuah/.bend/bin/bend",
+          "version"
+        ],
+        "exit_code": 0,
+        "forced_environment": {},
+        "stderr": "",
+        "stdout": "bend 2.0.35\n"
+      },
+      {
+        "argv": [
+          "/Users/chuah/.bend/bin/bend",
+          "--version"
+        ],
+        "exit_code": 0,
+        "forced_environment": {
+          "BUN_BE_BUN": "1"
+        },
+        "stderr": "",
+        "stdout": "1.4.0\n"
+      },
+      {
+        "argv": [
+          "/Users/chuah/.bend/bin/bend",
+          "--revision"
+        ],
+        "exit_code": 0,
+        "forced_environment": {
+          "BUN_BE_BUN": "1"
+        },
+        "stderr": "",
+        "stdout": "1.4.0+34cbb9a40\n"
+      }
+    ],
+    "version_receipt": {
+      "bytes": 2792,
+      "path": "build/resource-player-client-diagnosis-bun/runtime-versions.full.json",
+      "sha256": "f2dc6a7c51032f4aef3acf481e0a0a3c11256db15d30444e1c16339dcff357db"
+    }
+  },
+  "source_provenance": {
+    "archive_receipt": {
+      "bytes": 7608,
+      "path": "build/resource-player-client-diagnosis-bun/archive.full.json",
+      "sha256": "00b36169f6efeab285716194fac32a85f2ac24a239956091f84d7bb43d2abb24"
+    },
+    "archived_byte_identical_file_count": 12,
+    "called_body_helper_comparison": {
+      "behavioral_change_identified": false,
+      "count": 193,
+      "explicit_bundler_differences": 9,
+      "formal_compiler_equivalence_claim": false,
+      "mismatch_bodies": {
+        "bytes": 2593673,
+        "path": "build/resource-player-client-diagnosis-bun/helper-mismatches.full.json",
+        "sha256": "9870c3f479104e8046f8b1db5928dc51542bec18c871d3dd27ec772704b3abf7"
+      },
+      "normalized_AST_equal": 184,
+      "report": {
+        "bytes": 105765,
+        "path": "build/resource-player-client-diagnosis-bun/helper-comparison.full.json",
+        "sha256": "da307c60a1052859759afd7fd4c8037bc3376daca236865fdd11acd68e82d59a"
+      }
+    },
+    "compiler_source_hashes": {
+      "bend.ts": "7deae3693eb896f33c73867081b99d2c6f3ed3b57e77e55eb5f6260840dd0e63",
+      "comp-probe.ts": "7e3d59ff4e67347d2e2775278f86ec588a8f5e31e6d7915f8cb86af43ceb029a",
+      "comp.ts": "32fb66e09f608ce9e4b173384bcfeec453db8c5bc96650e26ad861bef815a8d9",
+      "main.ts": "d1a3e026f5014f8daec3614df8e39cf261e3fbc47769eb0916fd891bc18703c9",
+      "probe.ts": "cea7fb3f9f947ad896f339f67b4f5b6173f8917f225ec37c6b9a4fbfa47c0557"
+    },
+    "git_commit": "79df8d9c40722ee9507a1e253f283b51025f9d6c",
+    "hub_import_rows": 0,
+    "import_shape_receipt": {
+      "bytes": 145841,
+      "path": "build/resource-player-client-diagnosis-bun/import-shapes.full.json",
+      "sha256": "a6c1410584f1873a76dca6e24d9e5c35f484c4a0ccd4c77ca4bb87d6b7bfaf0f"
+    },
+    "import_shapes": [
+      {
+        "manifest": "plain-manifest.full.json",
+        "path_kinds": {
+          "Base": 50,
+          "relative": 321
+        }
+      },
+      {
+        "manifest": "boxed-manifest.full.json",
+        "path_kinds": {
+          "Base": 64,
+          "relative": 399
+        }
+      }
+    ],
+    "installed_Base": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-player-client-diagnosis-bun/source-79df/base.bend",
+      "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+      "target": "/Users/chuah/.bend/bend2/base.bend"
+    },
+    "main_ts_archived_not_imported": true,
+    "patch": {
+      "bytes": 3684,
+      "path": "build/resource-player-client-diagnosis-bun/probe.patch",
+      "sha256": "5f4b83238399fc69c6bb0649a90e8c5e55f2a6d08a871e7f0718363702170687"
+    },
+    "source_manifest_counts": {
+      "boxed": 99,
+      "plain": 85
+    },
+    "source_manifests": [
+      {
+        "bytes": 8604,
+        "path": "build/resource-player-client-diagnosis-bun/plain-manifest.full.json",
+        "sha256": "a3ad1d6ae3aa1406298a5be7854cbd4071ca72abdb6d3f90fe8cbadea5cfa4d1"
+      },
+      {
+        "bytes": 9977,
+        "path": "build/resource-player-client-diagnosis-bun/boxed-manifest.full.json",
+        "sha256": "0a2fb87e67bda6b7af7dc53f0607f1d09568f1317e1652f50bb0373e8800f64c"
+      }
+    ]
+  },
+  "startup_policy": {
+    "HOME_modified": false,
+    "ambient_paths_checked": 132,
+    "ambient_paths_present": 0,
+    "ambient_receipt": {
+      "bytes": 9201,
+      "path": "build/resource-player-client-diagnosis-bun/ambient-config.full.json",
+      "sha256": "dcfdd896490d347e356b579bf51b978c8b17618508ac0f6a02e8eed9a6551335"
+    },
+    "argv_flags": [
+      "--config",
+      "--no-env-file",
+      "--no-install"
+    ],
+    "config": {
+      "bytes": 53,
+      "path": "build/resource-player-client-diagnosis-bun/probe.bunfig.toml",
+      "sha256": "78e3135499cf0bc11cd9fd69571048502ab9d4227b4435fa73ef58239ef698d4"
+    },
+    "config_values": {
+      "env": false,
+      "install.auto": "disable",
+      "preload": []
+    },
+    "documented_policy_intent_actual_source_loading_unverified": true,
+    "dotenv_contents_read": false,
+    "embedded_flag_strings_present": true,
+    "environment_values_published": false,
+    "forced_environment": {
+      "BUN_BE_BUN": "1"
+    },
+    "primary_documentation": [
+      "https://bun.com/docs/runtime/code-generation-from-strings",
+      "https://bun.com/docs/runtime",
+      "https://bun.com/docs/runtime/environment-variables",
+      "https://bun.com/docs/runtime/bunfig"
+    ],
+    "removed_environment_prefixes": [
+      "BUN_",
+      "NODE_"
+    ],
+    "removed_names_observed": [
+      "NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S"
+    ],
+    "stack_size_flags_or_environment_changes": false
+  },
+  "status": "prepared-only-not-executed-root-review-required"
+}

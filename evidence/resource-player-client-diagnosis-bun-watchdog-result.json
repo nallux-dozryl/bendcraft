@@ -1,0 +1,125 @@
+{
+  "admission": {
+    "bytes": 2368,
+    "path": "build/review-resource-client-watchdog/admission.json",
+    "sha256": "7a2d8a704ac4365463653711a434c0e32729241fba940c6762fa1d05738f1a2e"
+  },
+  "attempt": {
+    "exit_code": 0,
+    "failure_reason": "graph-protocol-failure",
+    "full_receipt": {
+      "bytes": 2305,
+      "path": "build/resource-player-client-diagnosis-bun-watchdog/plain-graph-result.full.json",
+      "sha256": "3dd0f76c43d6997c55ecf99c68da74c0dfb5178e866c8f3d0ba5416c676e7d91"
+    },
+    "group_exists_after_cleanup": false,
+    "host_supervision_seconds": 0.010486667044460773,
+    "leader_reaped": true,
+    "outputs": {
+      "stderr": {
+        "bytes": 0,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-player-client-diagnosis-bun-watchdog/plain-graph-stderr.full.jsonl",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 0,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-player-client-diagnosis-bun-watchdog/plain-graph-stdout.full.jsonl",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "phase_validation": {
+      "error": "phase missing/duplicated: load.start",
+      "status": "invalid"
+    },
+    "pid": 54823,
+    "process_group": 54823,
+    "signals": [
+      {
+        "at_seconds": 0.01034849975258112,
+        "leader_exit_code": 0,
+        "outcome": "already-gone",
+        "phase": "final-cleanup",
+        "signal": "SIGKILL"
+      }
+    ],
+    "timing_scope": "receipt/process/cleanup interval, not source/check/backend phase timing"
+  },
+  "command": "PYTHONDONTWRITEBYTECODE=1 python3 build/resource-player-client-diagnosis-bun-watchdog/run_graph_probe.py --root-bun-watchdog-graph-slot-granted",
+  "confidence": {
+    "control_refusal_and_cleanup": "high",
+    "installed_compiler_bottleneck": "unknown",
+    "source_pin_preservation": "high"
+  },
+  "consumer_decision": {
+    "acceptance": "actual installed native/guarded platform-cache executable, hidden TCP/edit/save/reload/timer and same CPU Image readback suite",
+    "baseline_original_and_boxed_retained": true,
+    "compile_benefit": "unmeasured",
+    "compiler_edit_supported": false,
+    "next_candidate": "separately approved monomorphic resource presenter with named continuations, same renderer/Scene/actor/input/save behavior",
+    "no_identical_600_second_retry": true
+  },
+  "date": "2026-10-04",
+  "documentation": {
+    "bytes": 3044,
+    "path": "docs/resource-player-client-diagnosis-bun-watchdog-result.md",
+    "sha256": "4ba7c4381503bc58a056489b3c2425a58d6a7b5d12708125f40e6fbc0cc90d73"
+  },
+  "execution": {
+    "Bun_control_processes": 1,
+    "C_emissions": 0,
+    "Clang_builds": 0,
+    "Heavy_Slot_A_explicitly_released": true,
+    "UI_actions": 0,
+    "boxed_processes": 0,
+    "client_launches": 0,
+    "kernel_runs": 0,
+    "permission_requests": 0,
+    "retries": 0,
+    "root_release_acknowledged": true,
+    "source_patches": 0
+  },
+  "grant": "root Heavy Slot A; one sealed invocation, plain first, boxed conditional",
+  "phase_observation": {
+    "load_check_native_graph_timings": null,
+    "probe_started_established": false,
+    "reason_for_empty_runtime_route": "unknown",
+    "records": 0,
+    "source_modules_loaded": "unknown",
+    "templates_graph_layout_counts": null
+  },
+  "preservation": {
+    "UI_actions": 0,
+    "all_original_Node_Bun_watchdog_pins_unchanged": true,
+    "all_source_native_Base_hashes_and_canonical_paths_unchanged": true,
+    "attempt_receipt_sha256": "3dd0f76c43d6997c55ecf99c68da74c0dfb5178e866c8f3d0ba5416c676e7d91",
+    "boxed_started": false,
+    "client_launches": 0,
+    "compiler_graph_completions": 0,
+    "emissions": 0,
+    "group": 54823,
+    "group_absent": true,
+    "historical_preflights_edited": false,
+    "kernel_runs": 0,
+    "leader_reaped": true,
+    "native_builds": 0,
+    "permission_requests": 0,
+    "pid": 54823,
+    "post_audit": {
+      "bytes": 626,
+      "path": "build/resource-player-client-diagnosis-bun-watchdog/post-attempt-audit.full.json",
+      "sha256": "ebc7d9fcff288c4194005b1dbd28a0e10f0c9d353695b62a6947cb1d3701e5c9"
+    },
+    "sealed_preflight": {
+      "bytes": 13878,
+      "path": "evidence/resource-player-client-diagnosis-bun-watchdog-preflight.json",
+      "sha256": "d34740883c45e7f6bf160b8532c1e2f852d7b995c06c1498869db2bc1eb52da8"
+    },
+    "source_closure_counts": [
+      85,
+      99
+    ],
+    "source_phase_records": 0,
+    "status": "post-run-pins-and-cleanup-pass"
+  },
+  "status": "plain-control-invalid-empty-output-boxed-not-started"
+}
