@@ -1,0 +1,97 @@
+{
+  "schema": 1,
+  "status": "native-producer-pins-and-completed-primary-suite-audit-pass",
+  "confidence": "high for reported pins and exact completed counts; full phase corpus unverified",
+  "native_dependencies": 1693,
+  "hashed_dependency_bytes": 769262917,
+  "pins": [
+    {
+      "bytes": 13519272,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-session/local-player-session-native",
+      "sha256": "1958e777c0d7ddf96ef9f984484f221acb5a3f6f728e03a1643e9eb6b68fd95d"
+    },
+    {
+      "bytes": 42087413,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native-cache/sources/e1cbd8c41a381a40530738846edde19d942a995293d1bcb18c00382ae42befad/generated.c",
+      "sha256": "51f4e181f1f57af8a1c2ee0a05a0ee7a3c86083123199f85e70e3b5cb7d0f7ef"
+    },
+    {
+      "bytes": 566921,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-session/native-build.json",
+      "sha256": "edb3318feec34078b0c5b7e9dd9c12593e2757de79faa43cfffa21126b857ef6"
+    },
+    {
+      "bytes": 517351,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-session/consumer-manifest.json",
+      "sha256": "a81c85285b4b5b800b6e138b8bfa10de15dabebfe78622012a917729f06dd551"
+    }
+  ],
+  "actual_clang_used_C": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-session/build-attempt/actual-used.c",
+    "bytes": 42087413,
+    "sha256": "51f4e181f1f57af8a1c2ee0a05a0ee7a3c86083123199f85e70e3b5cb7d0f7ef"
+  },
+  "actual_C_equals_cached_emitted_C": true,
+  "build_retries": 0,
+  "build_timings": {
+    "emission_seconds": 132.10890066530555,
+    "native_seconds": 419.43210129253566,
+    "total_seconds": 557.2058313321322
+  },
+  "partial_result": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/local-player-session-host3-partial.json",
+    "bytes": 13121,
+    "sha256": "a1826d02e2f28fce5a5f77f16c32313190862a43958cd1d2fba72c7ada058d6a"
+  },
+  "primary_summary": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-session/host-adoption-3/native-attempt/integration-0/summary.json",
+    "bytes": 70876,
+    "sha256": "adc80a0e7d2ed992e514684933574b48d590ace14ba06a920de2f922f06e399e"
+  },
+  "primary_counts": {
+    "checks": 26,
+    "exact_bundles": 37,
+    "rejections": 50
+  },
+  "completed_checks": [
+    "scheduled_shift",
+    "scheduled_shift",
+    "scheduled_shift",
+    "scheduled_shift",
+    "scheduled_sprint_jump",
+    "scheduled_jump",
+    "scheduled_jump",
+    "scheduled_zero",
+    "due-equivalent-fullcube",
+    "due-unsupported-control-fit",
+    "durable-shift-continuation",
+    "rich-paused-restore",
+    "rich-paused-restore",
+    "rich-paused-restore",
+    "rich-paused-restore",
+    "TCP-MCP-protocol",
+    "state-owners",
+    "motion-owners",
+    "metadata-owners",
+    "pose-owners",
+    "closed-local-startup",
+    "separate-Atomic-stage-created",
+    "separate-Atomic-stage-written",
+    "separate-Atomic-stage-synced",
+    "separate-Atomic-stage-published",
+    "separate-Atomic-stage-directory_synced"
+  ],
+  "execution": {
+    "native_build": false,
+    "native_artifact": false,
+    "Java": false,
+    "kernel": false
+  },
+  "limits": [
+    "This audit hashes retained native producer inputs and completed primary suite receipt; it does not independently rerun the native game.",
+    "Frozen codec1510 comparison remains the separately retained consumer evidence.",
+    "Shared phase corpus stopped at tick-zero harness admission; no full phase/facade/second primary suite result.",
+    "Full gameplay and visible client acceptance remain open."
+  ],
+  "elapsed_seconds": 0.48317008279263973
+}

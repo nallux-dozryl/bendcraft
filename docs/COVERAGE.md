@@ -17,14 +17,18 @@ Initial implementation and verification statuses are `not_assessed`, rather than
 
 `python3 tools/reference_coverage.py` refreshes inventory fields while preserving the implementation/verification statuses and evidence, behavioral-reference evidence, and additional rows already present in the ledger. Use evidence that describes exactly what passed. A registry loader accepting 1,286 identifiers proves neither their corresponding block behaviors nor rendering, persistence, commands or multiplayer semantics.
 
-The ledger now also records nine explicit bounded component/reference rows for
+The ledger now also records ten explicit bounded component/reference rows for
 owned local travel/history, conditional pose, CPU mipmaps, the slab catalog,
 actual vanilla serialization evidence, the resource-client build attempts and
-Entity common-tick metadata, CPU sprite animation and owned pose-world queries.
+Entity common-tick metadata, CPU sprite animation, owned pose-world queries and
+the saved LocalPlayer actor. Its primary native integration and1,510codec cases
+pass; the interrupted shared phase harness remains explicit. The resource row
+now records the third failed monolithic attempt and the prepared Bend actor/
+renderer split; its actual native pair is unverified.
 Each pins its current sources and receipts, states its measured domain and
 keeps independent kernel status separate. Parent obligations remain unchanged:
 a bounded projection or reproduced reference does not complete its broader
-movement, player, asset, rendering or persistence group. The ledger has 252 rows;
+movement, player, asset, rendering or persistence group. The ledger has 253 rows;
 these work groupings still provide no meaningful whole-game completion percentage.
 
 ## Established reference evidence

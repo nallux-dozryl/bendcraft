@@ -1,0 +1,36 @@
+{
+  "actor_contract": "call snapshot once inside one local_call; Sample includes bound palette and exact Pose origin",
+  "api": {
+    "palette": "S.State -> S.State & Result<String,RF.Palette>",
+    "snapshot": "S.State,U32,U32 -> S.State & Result<String,V.Sample>"
+  },
+  "consumer": "actual LocalPlayer Session, upcoming split resource client",
+  "declared_import_failures": 56,
+  "native_kernel_java_ui": "not-run",
+  "ordinary_adapter_diagnostics": 0,
+  "ordinary_receipt": {
+    "bytes": 64912,
+    "path": "build/local-resource-world/ordinary-generation-1/receipt.json",
+    "sha256": "d29c538015fefdd97fcabe12ef4df4d3e6602a229a5c82ec83f366a7bff6a851"
+  },
+  "owned_files": [
+    {
+      "bytes": 9456,
+      "path": "src/local_resource_world.bend",
+      "sha256": "cfae6cb8ff40214933bda75c24c1e0a6c4cad37a1b4b53aa537d13ad4b0f5d2f"
+    },
+    {
+      "bytes": 3364,
+      "path": "docs/LOCAL_RESOURCE_WORLD.md",
+      "sha256": "3bef31319cd51a0d2b07c09d5cfd6ccbb5338f15b84f436177ce1fd672082b03"
+    },
+    {
+      "bytes": 2967,
+      "path": "evidence/local-resource-world-preparation.json",
+      "sha256": "4583a70afc85a5d83bcf75b2ee2a35c3595a2e4e38e1eb158507f9f8e54a2729"
+    }
+  ],
+  "source_graph_count": 103,
+  "source_graph_sha256": "d61a153c7d833b4419f181586222857f33e308859e0ffbec309c7c66f8d06a91",
+  "status": "ordinary-declarations-accepted-with-inherited-unsafe-imports"
+}

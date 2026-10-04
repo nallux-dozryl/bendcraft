@@ -1,0 +1,49 @@
+{
+  "accepted": 498,
+  "bend_imports": 83,
+  "cases": 755,
+  "commands": [
+    "python3 tools/test_local_player_record.py prepare",
+    "python3 tools/test_local_player_record.py audit",
+    "python3 tools/test_local_player_record.py ordinary",
+    "python3 tools/test_local_player_record.py build",
+    "python3 tools/test_local_player_record.py native",
+    "python3 tools/test_local_player_record.py kernel"
+  ],
+  "corpus_sha256": "4c8f6725db5d4bfd5ab3c2103c7191a5484e06a9cfd8a1ca6b67855fd007719a",
+  "full_seal": {
+    "bytes": 554298,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-record/generation-1/prepared.json",
+    "realpath": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-record/generation-1/prepared.json",
+    "sha256": "14442c45e5eaffb36e8be6413866e3573481724cbcbff6027de359d7fd95bdc9"
+  },
+  "harness": {
+    "bytes": 3724,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/local_player_record.bend",
+    "realpath": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/local_player_record.bend",
+    "sha256": "ec215a4a3489b8d5b107049a69105f224a348bb4703480ffa8f51fad7699d3a8"
+  },
+  "kernel_status": "not executed",
+  "native_status": "not executed",
+  "python_imports": 151,
+  "recovery": 257,
+  "rejected": 257,
+  "runner": {
+    "bytes": 23990,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_local_player_record.py",
+    "realpath": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_local_player_record.py",
+    "sha256": "d7367862f74161fe6e8660d08e065a513b9e72bb9f67d74505d18c34a7ab9816"
+  },
+  "source": {
+    "bytes": 11971,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/local_player_record.bend",
+    "realpath": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/local_player_record.bend",
+    "sha256": "38d96549001eeba7e1d65f8557cc60b802663450f3ca383db2db8557e4b367d7"
+  },
+  "storage": {
+    "bytes": 2814,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/local_player_storage.bend",
+    "realpath": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/local_player_storage.bend",
+    "sha256": "00ca9bcc6d57526b30879e37b8537e6c6638673e640e32a6bcf0a98ac7bbb8d8"
+  }
+}

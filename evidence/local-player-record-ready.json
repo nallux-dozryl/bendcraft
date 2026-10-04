@@ -1,0 +1,84 @@
+{
+  "byte_cap": 16384,
+  "consolidated_native": "PENDING real Session binary execution by reference_inventory",
+  "consumer_hook": "RecordTest.batch(rest:List<String>)->IO(Unit), record-cases MODE INPUT OUTPUT triples",
+  "consumer_manifest": "schema1; files mapping absolute path->{sha256,bytes}; seal_sha256 SHA256 canonical JSON excluding seal_sha256; includes binary/verifier/oracle plus full closure",
+  "executions_planned": 1510,
+  "files": [
+    {
+      "bytes": 11971,
+      "path": "src/local_player_record.bend",
+      "sha256": "38d96549001eeba7e1d65f8557cc60b802663450f3ca383db2db8557e4b367d7"
+    },
+    {
+      "bytes": 2814,
+      "path": "src/local_player_storage.bend",
+      "sha256": "00ca9bcc6d57526b30879e37b8537e6c6638673e640e32a6bcf0a98ac7bbb8d8"
+    },
+    {
+      "bytes": 3724,
+      "path": "tests/local_player_record.bend",
+      "sha256": "ec215a4a3489b8d5b107049a69105f224a348bb4703480ffa8f51fad7699d3a8"
+    },
+    {
+      "bytes": 23990,
+      "path": "tools/test_local_player_record.py",
+      "sha256": "d7367862f74161fe6e8660d08e065a513b9e72bb9f67d74505d18c34a7ab9816"
+    },
+    {
+      "bytes": 9389,
+      "path": "tools/test_local_player_record_consumer.py",
+      "sha256": "ffc83f4f1913d4982bc3a9f87dae4f58e72dbe5cbccc517a3545f60ad6ec33f8"
+    },
+    {
+      "bytes": 8430,
+      "path": "docs/LOCAL_PLAYER_RECORD.md",
+      "sha256": "f69fa55e15ab6e3b1dda178a43c9df7a12fbf4efc7c41a4a7485136880e936f9"
+    },
+    {
+      "bytes": 2245,
+      "path": "evidence/local-player-record-prepared.json",
+      "sha256": "1a4d8ac08d074b744c19cfe8eff1bbb9a1842bcf859fe7d9d413937eb434d296"
+    },
+    {
+      "bytes": 2023,
+      "path": "evidence/local-player-record-ordinary.json",
+      "sha256": "fb2c7b57d7f3e027613571616f02ac811a512d32659236ba8260f1238df1d972"
+    },
+    {
+      "bytes": 512,
+      "path": "evidence/local-player-record-read-only-audit.json",
+      "sha256": "6c4c8dbdf28a788828b91be7a28f507a109ac2bbdb4939aa87797b0d3a09f11e"
+    },
+    {
+      "bytes": 1577,
+      "path": "evidence/local-player-record-host-guards.json",
+      "sha256": "725e24e86acbf5dec9cc9eb7614c44a4354bfc688a3fa924f7b8685921621680"
+    },
+    {
+      "bytes": 2301,
+      "path": "evidence/local-player-record-consumer-host-guards.json",
+      "sha256": "4dbbb847082f3f47d36ae2a3119cb10f4893833cb1d511602b328d3f8f2f73c0"
+    }
+  ],
+  "frozen_seal": {
+    "bytes": 554298,
+    "path": "build/local-player-record/generation-1/prepared.json",
+    "sha256": "14442c45e5eaffb36e8be6413866e3573481724cbcbff6027de359d7fd95bdc9"
+  },
+  "independent_cases": 755,
+  "ordinary": {
+    "pure_harness": "PASS",
+    "record": "PASS",
+    "storage": "Expected existing42 foreign/unsafe E lease/durability/persistence definitions; no type error"
+  },
+  "ownership_boundary": "Record Data has one immutable Body projection. Physicalbuttons/mouse/options/diagnostic and all other ownership tails remain Transient; durable Pose.tail mustempty. No implicitmigration. No filesystem effect added.",
+  "record_api": "Record Data{motion:PlayerRecord.Record,local:LI.State,sprinting:Bool,pose:Pose.State,minor:LM.MinorState,history:H.History,entity:ECT.Metadata}; validate/encode/decode Result<Data Error,A>; error_text",
+  "schema": 1,
+  "scope": "Custom admitted neutral LocalPlayer continuation fields; not vanilla player.dat/fullplayerpersistence/visibleacceptance. ActualTCP/MCP/bundlecorruption/restart proof owned separateSessionconsumer.",
+  "standalone_kernel": "NOT EXECUTED; deferred until product integration",
+  "standalone_native": "NOT EXECUTED; expressly deferred by lead",
+  "status": "PREPARED_FOR_CONSOLIDATED_CONSUMER",
+  "storage_namespace": "bendex:local-player-record",
+  "verifier_api": "verify_existing_binary(binary,prefix,expected_binary_sha256,manifest_path,receipt_dir,*,runs=2)"
+}

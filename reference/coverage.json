@@ -4583,18 +4583,33 @@
     },
     {
       "behavioral_reference_evidence": [
-        "evidence/resource-player-client-preflight.json"
+        "evidence/resource-player-client-preflight.json",
+        "evidence/remote-resource-client-preflight.json"
       ],
       "behavioral_reference_status": "actual_java_bounded_cases",
       "current_evidence_sha256": {
+        "evidence/remote-resource-backend-ready.json": "fffc7f2332d7bdbff7749c05536da6411550a15acaced5dad2842f81c40276d8",
+        "evidence/remote-resource-client-host-guards.json": "4cad9bb859230e1f36b40e9c62ab933b357ae1807278f381eb6ca44ed18d26c2",
+        "evidence/remote-resource-client-preflight.json": "6a67a483633d9c930034b5201f5372fd0c28dd68551df806c87ded068c259e3a",
         "evidence/resource-player-boxed-client-native.json": "b906b49decebc6329d5cd3fdbddf9b9b70342a25c4fd9947cca5deed9dafdb28",
         "evidence/resource-player-boxed-client-preflight.json": "31cc4733b4f3105ea587fad4f01d16e5e1870b2928e92c3a9d860ef5555900b8",
         "evidence/resource-player-client-diagnosis-next.json": "d66ef014332ab7bbcf8dea2b1423560dfb091e77c8bc292ba193ec27659c9531",
         "evidence/resource-player-client-native.json": "03cefbe6ca85d1b66417c5926913da91c9e48b932072fe7c138d83da69b00c31",
         "evidence/resource-player-client-preflight.json": "e9f4d37c479ecfc7d8256d6d4992ff2bc56a0589c8d8b48a184a4d9d4baf19b1",
+        "evidence/resource-player-presented-client-preflight.json": "3f651ac47b64fa302a98d88ecc2208b33f848b664898e56a99024f0581354fc9",
+        "evidence/resource-player-presented-client-result.json": "f54835dfa370e0b640974f54a31e3849a4a66a10dbc22ca8821e75c44fee58ef",
+        "remote_resource_client.bend": "524ea83ab7b04e248f073fdecbdd30cd524c49af84f4143e2db295a60cf19a79",
+        "remote_resource_server.bend": "b5cfb21144b487c6d3d88e3629243b7e4db60bd6c5e0cea39ac452929289347b",
         "resource_player_boxed_client.bend": "567d02e32e32549ee61ad590c588d7e5d74bb8c175e968f0ed7a5a68cecd5cc8",
         "resource_player_client.bend": "b0811c595678d3624ff3e25441ad3d18f71a7d02ce42401e259b7a9aab16be73",
+        "resource_player_presented_client.bend": "724ec97fae5052b2a079fb1e712ac870cdb280b72fa50af4ef512cb3c6d36248",
+        "src/local_resource_world.bend": "cfae6cb8ff40214933bda75c24c1e0a6c4cad37a1b4b53aa537d13ad4b0f5d2f",
+        "src/remote_resource_backend.bend": "9024a8ec6b2ebcd88a34bdcc837651138e7ea1e8196aedb780d65a6cca3c33c2",
+        "src/remote_resource_presenter.bend": "770e7b0f694347f3e9844cb1e87f0585735ec817dc5b378aa205bed234dd5fb7",
+        "src/remote_resource_transport.bend": "fce6e0084ab9ff9796eeb7349613ed3b937509f9a5a2cf99bfa7bf4276305aee",
+        "src/resource_client_wire.bend": "e81e24cebdc9719b30d818c48476386a9220884f2287568fdd3cf1292797924a",
         "src/resource_player_boxed_scene.bend": "c1d943f7a9fc52367ce4270ebefc86787bc3ac55c4bbfecd251b9ba6f21696c2",
+        "src/resource_player_presenter.bend": "d0792889f3dd35bdc9aea1b8effb7120b2b639658d1d518aaec1b213e8a1ad54",
         "src/resource_player_scene.bend": "978558e7a741f0c019095849a57e0d098557c19582a5963f2da24f67a0260ccf"
       },
       "id": "component:resource_player_client",
@@ -4602,24 +4617,39 @@
         "resource_player_client.bend",
         "src/resource_player_scene.bend",
         "resource_player_boxed_client.bend",
-        "src/resource_player_boxed_scene.bend"
+        "src/resource_player_boxed_scene.bend",
+        "resource_player_presented_client.bend",
+        "src/resource_player_presenter.bend",
+        "remote_resource_server.bend",
+        "src/remote_resource_backend.bend",
+        "src/remote_resource_transport.bend",
+        "src/local_resource_world.bend",
+        "src/resource_client_wire.bend",
+        "remote_resource_client.bend",
+        "src/remote_resource_presenter.bend"
       ],
-      "implementation_status": "prepared_native_unverified",
+      "implementation_status": "split_prepared_native_unverified",
       "kind": "bounded_behavior_component",
       "parent_obligation": "behavior:rendering",
       "reference_evidence": [
         "evidence/resource-player-client-preflight.json",
-        "evidence/resource-player-boxed-client-preflight.json"
+        "evidence/resource-player-boxed-client-preflight.json",
+        "evidence/resource-player-presented-client-preflight.json",
+        "evidence/remote-resource-client-preflight.json"
       ],
       "reference_inventory_status": "captured_bounded_release_scope",
-      "required_behavior": "Saved plain Player client joined to actual resource/visibility renderer.",
-      "scope_limit": "Each 600-second capped build produced no C/executable. A graph-only Node control failed during loading; no graph/check counters reached. Compiler bottleneck unknown; no client integration, pixels, presentation or performance claim.",
+      "required_behavior": "Saved actual LocalPlayer actor joined to resource/visibility renderer and native Window.",
+      "scope_limit": "Original, boxed and monomorphic presented attempts produced no executable; the last supervisor lost child streams/return code during cleanup PermissionError. The changed two-process Bend consumer is sealed: one actual LocalPlayer actor supplies immutable Pose-eye/cell/visibility samples, and the renderer owns assets/window. Ordinary checks expose97backend/60entry/51presenter native boundaries only. Six explicit finite Local views preserve actual Java record bytes with separately disclosed world relocations and independent comparison-only pixels. No split native compilation, paired pixels/save/reload, visible OS input, latency or performance result yet.",
       "verification_evidence": [
         "evidence/resource-player-client-native.json",
         "evidence/resource-player-boxed-client-native.json",
-        "evidence/resource-player-client-diagnosis-next.json"
+        "evidence/resource-player-client-diagnosis-next.json",
+        "evidence/resource-player-presented-client-result.json",
+        "evidence/remote-resource-backend-ready.json",
+        "evidence/remote-resource-client-preflight.json",
+        "evidence/remote-resource-client-host-guards.json"
       ],
-      "verification_status": "two_build_timeouts_no_native_result",
+      "verification_status": "three_monolithic_build_failures_split_source_and_host_checks_pass",
       "whole_parent_parity_established": false
     },
     {
@@ -4737,6 +4767,58 @@
         "evidence/player-pose-world-kernel.json"
       ],
       "verification_status": "verified_bounded_native_cases",
+      "whole_parent_parity_established": false
+    },
+    {
+      "behavioral_reference_evidence": [
+        "reference/local_phase_runtime.json",
+        "evidence/local-player-record-prepared.json"
+      ],
+      "behavioral_reference_status": "actual_java_bounded_cases",
+      "current_evidence_sha256": {
+        "evidence/local-player-record-prepared.json": "1a4d8ac08d074b744c19cfe8eff1bbb9a1842bcf859fe7d9d413937eb434d296",
+        "evidence/local-player-session-build.json": "cf5c2b399f375456cb98732d2e8fa39513672b12e982351271b51a2cefcbfe4f",
+        "evidence/local-player-session-host3-partial.json": "a1826d02e2f28fce5a5f77f16c32313190862a43958cd1d2fba72c7ada058d6a",
+        "evidence/local-player-session-phase-prefix-limit.json": "5d3c993e9dd15f475027c33aa0241b188c5e30d160cf8d029f909bdd931a8cce",
+        "evidence/local-player-session-root-audit.json": "f6967e4b0e74c228c41ce8f6019969a2248a3a7e3b8b214236836646a24e07c4",
+        "local_player_client.bend": "a0da23ddfc9becdbd95de280a60bd0a4689f2e6d950ac6ccef8512cea40822cb",
+        "reference/local_phase_runtime.json": "6126038d6a5e3058e58dd0be100548cbeafce7b0f7cbede2075d9e2129ccdff7",
+        "src/local_phase_runtime.bend": "8daf7e2f2fdc32d07f9250c4815883568ffd6d020bbbc8c5f94e18d198c481f3",
+        "src/local_player_record.bend": "38d96549001eeba7e1d65f8557cc60b802663450f3ca383db2db8557e4b367d7",
+        "src/local_player_runtime.bend": "fd932047be8c476e812d15618a5b0b9a8c71bea62aef5cb69bed707703b77ec7",
+        "src/local_player_scene.bend": "aa28a61b3766d7990448cbc3138be1cccf357f2a3a633bee95e36fc948acead1",
+        "src/local_player_session.bend": "dbfcf1307dd42e419297d67a41566742c2934df721b3439227502e2448d51a49",
+        "src/local_player_storage.bend": "00ca9bcc6d57526b30879e37b8537e6c6638673e640e32a6bcf0a98ac7bbb8d8",
+        "tests/local_player_session.bend": "2081023f80df39c92ebbe11a2b19083b73bfe234cc193866521b1a13a0f198d6"
+      },
+      "id": "component:local_player_saved_actor",
+      "implementation_evidence": [
+        "src/local_phase_runtime.bend",
+        "src/local_player_runtime.bend",
+        "src/local_player_record.bend",
+        "src/local_player_storage.bend",
+        "src/local_player_session.bend",
+        "src/local_player_scene.bend",
+        "local_player_client.bend",
+        "tests/local_player_session.bend"
+      ],
+      "implementation_status": "implemented_bounded_integration",
+      "kind": "bounded_behavior_component",
+      "parent_obligation": "behavior:client_loop_input",
+      "reference_evidence": [
+        "reference/local_phase_runtime.json",
+        "evidence/local-player-record-prepared.json"
+      ],
+      "reference_inventory_status": "captured_bounded_release_scope",
+      "required_behavior": "One actual held-input LocalPlayer actor orders Core/common/local/travel/rotation/pose and owns complete supported atomic record/save/restart.",
+      "scope_limit": "Same retained native executable built once558.354s and passed first primary26checks/37exact bundles/50rejections including44corruptstartups and5separateAtomic stage kills/restarts; frozen755recordcases passed twice1510. Synthetic fixture input is not OS input. Shared phase corpus stopped before due-crawl because frozen harness admits tick0 against fresh tick0; its incomplete prefix is not validated by the unchanged comparator. Facade/second primary suite remain unrun. Neutral four-state/default-attribute profile, no required fall-reset rays/full lifecycle/player.dat/full-game parity or visible acceptance. Preparation docs are immutable historical pre-run artifacts; current results are in root status/evidence.",
+      "verification_evidence": [
+        "evidence/local-player-session-build.json",
+        "evidence/local-player-session-host3-partial.json",
+        "evidence/local-player-session-root-audit.json",
+        "evidence/local-player-session-phase-prefix-limit.json"
+      ],
+      "verification_status": "primary_native_suite_and_codec_pass_phase_harness_interrupted",
       "whole_parent_parity_established": false
     }
   ]

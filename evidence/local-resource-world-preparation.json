@@ -1,0 +1,90 @@
+{
+  "algorithms_reused": [
+    "R.eye",
+    "R.snapshot",
+    "V.raw_alignment",
+    "V.collect_blocks",
+    "F.resource_palette",
+    "F.visibility_error"
+  ],
+  "api": {
+    "palette": "S.State -> S.State & Result<String,RF.Palette>",
+    "snapshot": "S.State,U32,U32 -> S.State & Result<String,V.Sample>"
+  },
+  "atomic_actor_contract": "one local_call of the complete snapshot, no clock or input sampling",
+  "commands": [
+    [
+      "/Users/chuah/.bend/bin/bend",
+      "src/local_resource_world.bend",
+      "--check-only"
+    ]
+  ],
+  "failure_cache_policy": "preserve prior cache until successful raw snapshot; retain successful raw cache if later neighbor scan fails",
+  "java_reference": "not-run",
+  "kernel": "not-run",
+  "limits": {
+    "frame_axis_max": 1024,
+    "frame_axis_min": 4,
+    "mesh": {
+      "bindings": 1024,
+      "blocks": 4096,
+      "quads": 4096,
+      "tints": 256,
+      "translucent": 64
+    },
+    "neighbor_reads": 24576,
+    "raw_blocks": 4096
+  },
+  "low_level_mutation_contract": "explicit W.invalidate_cache required for direct Core/Registry mutations bypassing revision",
+  "native": "not-run",
+  "ordinary": {
+    "cap_seconds": 60,
+    "duration_seconds": 8.477600750513375,
+    "exit_code": 1,
+    "group_reaped": true,
+    "receipt": {
+      "bytes": 64912,
+      "path": "build/local-resource-world/ordinary-generation-1/receipt.json",
+      "sha256": "d29c538015fefdd97fcabe12ef4df4d3e6602a229a5c82ec83f366a7bff6a851"
+    },
+    "source_graph_count": 103,
+    "source_graph_sha256": "d61a153c7d833b4419f181586222857f33e308859e0ffbec309c7c66f8d06a91",
+    "stderr": {
+      "bytes": 1729,
+      "path": "build/local-resource-world/ordinary-generation-1/stderr",
+      "sha256": "6721f2ffe375f09c183231de79cbce2c80835d930682fdd790bc9ad6bf743960"
+    },
+    "stdout": {
+      "bytes": 0,
+      "path": "build/local-resource-world/ordinary-generation-1/stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "unchanged": true,
+    "unsafe_foreign_count": 56
+  },
+  "origin": "exact authoritative cached Pose.eye F64; subtraction before F32 narrowing",
+  "pins": {
+    "compiler": {
+      "bytes": 63885392,
+      "path": "/Users/chuah/.bend/bin/bend",
+      "sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e"
+    },
+    "docs": {
+      "bytes": 3364,
+      "path": "docs/LOCAL_RESOURCE_WORLD.md",
+      "sha256": "3bef31319cd51a0d2b07c09d5cfd6ccbb5338f15b84f436177ce1fd672082b03"
+    },
+    "source": {
+      "bytes": 9456,
+      "path": "src/local_resource_world.bend",
+      "sha256": "cfae6cb8ff40214933bda75c24c1e0a6c4cad37a1b4b53aa537d13ad4b0f5d2f"
+    },
+    "source_graph_helper": {
+      "bytes": 33298,
+      "path": "tools/build_native.py",
+      "sha256": "3418c78cddc092aec55c7447a818735569b5b279d3bc4b05e3c0077624387c18"
+    }
+  },
+  "pixel_ui": "not-run",
+  "status": "ordinary-declarations-accepted-with-inherited-unsafe-imports"
+}

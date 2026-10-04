@@ -1,0 +1,593 @@
+import Base
+import ./json.bend as J
+import ./client_controls.bend as CC
+import ./client_world.bend as W
+import ./client_render.bend as R
+import ./world_visibility.bend as V
+import ./world_mesh.bend as WM
+import ./movement.bend as M
+import ./f64.bend as F
+
+# Pure, monomorphic renderer wire DTOs. Authentication, matching lease cleanup,
+# strict expected-sequence transition and expiry belong to the backend actor.
+type Command is Data:
+  Frame{width:U32,height:U32}
+  Input{packet:CC.Packet}
+  Release{}
+type Request is Data:
+  Hello{capability:String}
+  Call{epoch:String,sequence:Nat,command:Command}
+type Reply is Data:
+  HelloAck{epoch:String,sequence:Nat}
+  FrameReply{epoch:String,sequence:Nat,sample:V.Sample}
+  Ack{epoch:String,sequence:Nat}
+  Fault{epoch:String,sequence:Nat,message:String}
+type Row is Data:
+  Row{raw:W.RawBlock,block:R.Block,visibility:V.Visibility}
+type Rows is Data:
+  Rows{raw:List<&2,W.RawBlock>,blocks:List<&2,R.Block>,masks:List<&2,V.Visibility>}
+
+def version() -> U32: 1
+
+def transport_bytes() -> U32: 65536
+
+def parser_scalars() -> Nat: 16384n
+
+def parser_depth() -> U32: 8
+
+def sample_blocks() -> U32: 4096
+
+def mesh_limits() -> WM.Limits: WM.defaults()
+
+def nat_max() -> Nat: Nat.add(Nat.mul(U32.to_nat(65535),Nat.add(U32.to_nat(4294967295),1n)),U32.to_nat(4294967295))
+
+# Nat48 max = 65536 * 2^32 - 1. Compute without overflowing the native lane.
+def sequence_valid(+sequence:Nat) -> Bool:
+  Nat.is_gt(sequence,0n) && Nat.is_le(sequence,nat_max())
+
+def guard(valid:Bool,message:String) -> Result<&2,&2,String,Unit>:
+  match valid:
+    case False{}: Fail{message}
+    case True{}: Done{Unit{}}
+
+def printable_ascii(text:String) -> Bool:
+  match text:
+    case SNil{}: True{}
+    case SCon{Chr{+c},tail}: U32.is_ge(c,33) && U32.is_le(c,126) && printable_ascii(tail)
+
+def nonempty_ascii_admitted(+text:String,valid:Bool) -> Bool:
+  match valid:
+    case False{}: False{}
+    case True{}: Nat.is_gt(String.length(text),0n) && printable_ascii(text)
+
+def nonempty_ascii(+text:String,maximum:Nat) -> Bool:
+  nonempty_ascii_admitted(text,J.within(maximum,text))
+
+def epoch_valid(epoch:String) -> Bool:
+  nonempty_ascii(epoch,64n)
+
+def ascii(text:String) -> Bool:
+  match text:
+    case SNil{}: True{}
+    case SCon{c,tail}: U32.is_lt(Char.to_u32(c),128) && ascii(tail)
+
+def scalar_text(text:String) -> Bool:
+  match text:
+    case SNil{}: True{}
+    case SCon{c,tail}: J.scalar(Char.to_u32(c)) && scalar_text(tail)
+
+def diagnostic_valid(+message:String) -> Bool:
+  J.within(2048n,message) && scalar_text(message)
+
+# Count containers as well as scalar values, so all admitted ASTs also satisfy
+# the scalar budget. Fuel precedes the rebuilt traversal stack for termination.
+def values_fit(fuel:Nat,values:List<&2,J.Value>) -> Bool:
+  match fuel values:
+    case _ Nil{}: True{}
+    case 0n head <> tail: False{}
+    case 1n+rest J.JArray{children} <> tail: values_fit(rest,List.append(&2,J.Value,children,tail))
+    case 1n+rest J.JObject{members} <> tail: False{}
+    case 1n+rest head <> tail: values_fit(rest,tail)
+
+def parse_admitted(+text:String,valid:Bool) -> Result<&2,&2,String,J.Value>:
+  match valid:
+    case False{}: Fail{"wire:ASCII-or-transport-parser-budget"}
+    case True{}: J.parse_with(text,J.Limits{16384n,8})
+
+def parse(+text:String) -> Result<&2,&2,String,J.Value>:
+  parse_admitted(text,J.within(16384n,text) && J.within(65536n,text) && ascii(text))
+
+def float_bits(value:U32) -> F32:
+  U32{word} = value
+  F32{word}
+
+def uint_optional(value:Maybe<&2,U32>) -> Result<&2,&2,String,U32>:
+  match value:
+    case Some{word}: Done{word}
+    case None{}: Fail{"wire:U32"}
+
+def uint(value:J.Value) -> Result<&2,&2,String,U32>:
+  match value:
+    case J.JNumber{+raw}:
+      do Result<&2,&2,String,U32>:
+        guard(J.within(10n,raw),"wire:U32-lexeme-budget")
+        uint_optional(J.u32_lexeme(raw))
+    case _: Fail{"wire:expected-U32"}
+
+def natural_read(+raw:String,result:Maybe<&2,Nat>) -> Result<&2,&2,String,Nat>:
+  match result:
+    case None{}: Fail{"wire:Nat48"}
+    case Some{+value}:
+      do Result<&2,&2,String,Nat>:
+        guard(String.eq(raw,Nat.show(value)),"wire:noncanonical-Nat48")
+        Done{value}
+
+def natural(value:J.Value) -> Result<&2,&2,String,Nat>:
+  match value:
+    case J.JNumber{+raw}: natural_read(raw,Nat.read(raw))
+    case _: Fail{"wire:expected-Nat48"}
+
+def boolean(value:J.Value) -> Result<&2,&2,String,Bool>:
+  match value:
+    case J.JBool{value}: Done{value}
+    case _: Fail{"wire:expected-Bool"}
+
+def text(value:J.Value) -> Result<&2,&2,String,String>:
+  match value:
+    case J.JString{value}: Done{value}
+    case _: Fail{"wire:expected-String"}
+
+def floats3(value:J.Value) -> Result<&2,&2,String,R.Camera>:
+  match value:
+    case J.JArray{[x,y,z,yaw,pitch]}:
+      do Result<&2,&2,String,R.Camera>:
+        +xx:U32 <- uint(x)
+        +yy:U32 <- uint(y)
+        +zz:U32 <- uint(z)
+        +ya:U32 <- uint(yaw)
+        +pi:U32 <- uint(pitch)
+        Done{R.Camera{float_bits(xx),float_bits(yy),float_bits(zz),float_bits(ya),float_bits(pi)}}
+    case _: Fail{"wire:camera-cardinality"}
+
+def origin(value:J.Value) -> Result<&2,&2,String,M.Vec3>:
+  match value:
+    case J.JArray{[xh,xl,yh,yl,zh,zl]}:
+      do Result<&2,&2,String,M.Vec3>:
+        +a:U32 <- uint(xh)
+        +b:U32 <- uint(xl)
+        +c:U32 <- uint(yh)
+        +d:U32 <- uint(yl)
+        +e:U32 <- uint(zh)
+        +f:U32 <- uint(zl)
+        Done{M.Vec3{F.F64{a,b},F.F64{c,d},F.F64{e,f}}}
+    case _: Fail{"wire:origin-cardinality"}
+
+def palette(value:J.Value) -> Result<&2,&2,String,W.Palette>:
+  match value:
+    case J.JArray{[a,b,c,d]}:
+      do Result<&2,&2,String,W.Palette>:
+        +air:U32 <- uint(a)
+        +stone:U32 <- uint(b)
+        +dirt:U32 <- uint(c)
+        +planks:U32 <- uint(d)
+        Done{W.Palette{air,stone,dirt,planks}}
+    case _: Fail{"wire:palette-cardinality"}
+
+def row(value:J.Value) -> Result<&2,&2,String,Row>:
+  match value:
+    case J.JArray{[x,y,z,boundary,state,material,visible,bx,by,bz]}:
+      do Result<&2,&2,String,Row>:
+        +xx:U32 <- uint(x)
+        +yy:U32 <- uint(y)
+        +zz:U32 <- uint(z)
+        +bound:U32 <- uint(boundary)
+        +st:U32 <- uint(state)
+        +mat:U32 <- uint(material)
+        +mask:U32 <- uint(visible)
+        +rx:U32 <- uint(bx)
+        +ry:U32 <- uint(by)
+        +rz:U32 <- uint(bz)
+        Done{Row{W.RawBlock{W.Cell{xx,yy,zz,bound},st,mat},
+          R.Block{float_bits(rx),float_bits(ry),float_bits(rz),st,mat},
+          V.Visibility{W.Cell{xx,yy,zz,bound},st,mask}}}
+    case _: Fail{"wire:cell-cardinality"}
+
+def row_cons(own:Row,remaining:Rows) -> Rows:
+  Row{raw,block,mask} = own
+  Rows{other,blocks,masks} = remaining
+  Rows{raw <> other,block <> blocks,mask <> masks}
+
+def rows(values:List<&2,J.Value>,fuel:Nat) -> Result<&2,&2,String,Rows>:
+  match values fuel:
+    case Nil{} _: Done{Rows{[],[],[]}}
+    case head <> tail 0n: Fail{"wire:sample-budget"}
+    case head <> tail 1n+rest:
+      do Result<&2,&2,String,Rows>:
+        +own:Row <- row(head)
+        +remaining:Rows <- rows(tail,rest)
+        Done{row_cons(own,remaining)}
+
+def row_array(value:J.Value) -> Result<&2,&2,String,Rows>:
+  match value:
+    case J.JArray{values}: rows(values,4096n)
+    case _: Fail{"wire:expected-cells-array"}
+
+def mask_boundaries(raw:List<&2,W.RawBlock>,masks:List<&2,V.Visibility>) -> Bool:
+  match raw masks:
+    case Nil{} Nil{}: True{}
+    case W.RawBlock{W.Cell{x,y,z,boundary},state,material} <> tail
+         V.Visibility{W.Cell{vx,vy,vz,other},vs,visible} <> remaining:
+      U32.is_eq(boundary,other) && mask_boundaries(tail,remaining)
+    case _ _: False{}
+
+def sample_valid(+sample:V.Sample) -> Bool:
+  V.Sample{R.Snapshot{tick,revision,blocks,+camera},raw,masks,origin,palette,reads} = sample
+  Nat.is_le(tick,nat_max()) && Nat.is_le(revision,nat_max()) &&
+    U32.is_le(reads,24576) && WM.relative_camera(camera) && mask_boundaries(raw,masks) && V.sample_valid(sample,4096)
+
+def checked_sample(+sample:V.Sample) -> Result<&2,&2,String,V.Sample>:
+  do Result<&2,&2,String,V.Sample>:
+    guard(sample_valid(sample),"wire:sample-alignment-palette-camera-budget")
+    Done{sample}
+
+def sample_rows(tick:Nat,revision:Nat,origin:M.Vec3,camera:R.Camera,palette:W.Palette,reads:U32,rows:Rows) -> Result<&2,&2,String,V.Sample>:
+  Rows{raw,blocks,masks} = rows
+  checked_sample(V.Sample{R.Snapshot{tick,revision,blocks,camera},raw,masks,origin,palette,reads})
+
+def sample(value:J.Value) -> Result<&2,&2,String,V.Sample>:
+  match value:
+    case J.JArray{[tick,revision,eye,camera,colors,reads,cells]}:
+      do Result<&2,&2,String,V.Sample>:
+        +t:Nat <- natural(tick)
+        +r:Nat <- natural(revision)
+        +o:M.Vec3 <- origin(eye)
+        +c:R.Camera <- floats3(camera)
+        +p:W.Palette <- palette(colors)
+        +n:U32 <- uint(reads)
+        +decoded:Rows <- row_array(cells)
+        sample_rows(t,r,o,c,p,n,decoded)
+    case _: Fail{"wire:sample-cardinality"}
+
+def event(value:J.Value) -> Result<&2,&2,String,Event>:
+  match value:
+    case J.JArray{[J.JNumber{"0"},code,down]}:
+      do Result<&2,&2,String,Event>:
+        +c:U32 <- uint(code)
+        +d:Bool <- boolean(down)
+        Done{Key{c,d}}
+    case J.JArray{[J.JNumber{"1"},x,y,button,down]}:
+      do Result<&2,&2,String,Event>:
+        +a:U32 <- uint(x)
+        +b:U32 <- uint(y)
+        +c:U32 <- uint(button)
+        +d:Bool <- boolean(down)
+        Done{Mouse{a,b,c,d}}
+    case J.JArray{[J.JNumber{"2"},x,y]}:
+      do Result<&2,&2,String,Event>:
+        +a:U32 <- uint(x)
+        +b:U32 <- uint(y)
+        Done{Move{a,b}}
+    case J.JArray{[J.JNumber{"3"},x,y]}:
+      do Result<&2,&2,String,Event>:
+        +a:U32 <- uint(x)
+        +b:U32 <- uint(y)
+        Done{Look{float_bits(a),float_bits(b)}}
+    case J.JArray{[J.JNumber{"4"},x,y,dx,dy]}:
+      do Result<&2,&2,String,Event>:
+        +a:U32 <- uint(x)
+        +b:U32 <- uint(y)
+        +c:U32 <- uint(dx)
+        +d:U32 <- uint(dy)
+        Done{Scroll{a,b,float_bits(c),float_bits(d)}}
+    case J.JArray{[J.JNumber{"5"}]}: Done{Close{}}
+    case _: Fail{"wire:event-tag-or-cardinality"}
+
+def action(value:J.Value) -> Result<&2,&2,String,CC.Action>:
+  match value:
+    case J.JArray{[J.JNumber{"0"}]}: Done{CC.Release{}}
+    case J.JArray{[J.JNumber{"1"},captured,raw]}:
+      do Result<&2,&2,String,CC.Action>:
+        +c:Bool <- boolean(captured)
+        +e:Event <- event(raw)
+        Done{CC.PlatformEvent{e,c}}
+    case _: Fail{"wire:action-tag-or-cardinality"}
+
+def actions(values:List<&2,J.Value>,fuel:Nat) -> Result<&2,&2,String,List<&2,CC.Action>>:
+  match values fuel:
+    case Nil{} _: Done{[]}
+    case head <> tail 0n: Fail{"wire:input-action-budget"}
+    case head <> tail 1n+rest:
+      do Result<&2,&2,String,List<&2,CC.Action>>:
+        +own:CC.Action <- action(head)
+        +remaining:List<&2,CC.Action> <- actions(tail,rest)
+        Done{own <> remaining}
+
+def action_array(value:J.Value) -> Result<&2,&2,String,List<&2,CC.Action>>:
+  match value:
+    case J.JArray{values}: actions(values,1024n)
+    case _: Fail{"wire:expected-actions-array"}
+
+def packet(value:J.Value) -> Result<&2,&2,String,CC.Packet>:
+  match value:
+    case J.JArray{[focused,captured,values]}:
+      do Result<&2,&2,String,CC.Packet>:
+        +f:Bool <- boolean(focused)
+        +c:Bool <- boolean(captured)
+        +a:List<&2,CC.Action> <- action_array(values)
+        Done{CC.Packet{a,f,c}}
+    case _: Fail{"wire:packet-cardinality"}
+
+def command_valid(command:Command) -> Bool:
+  match command:
+    case Frame{width,height}: WM.frame_valid(WM.frame(width,height))
+    case Input{CC.Packet{actions,focused,captured}}: WM.fits(CC.Action,actions,1024)
+    case Release{}: True{}
+
+def command(value:J.Value) -> Result<&2,&2,String,Command>:
+  match value:
+    case J.JArray{[J.JNumber{"0"},width,height]}:
+      do Result<&2,&2,String,Command>:
+        +w:U32 <- uint(width)
+        +h:U32 <- uint(height)
+        guard(WM.frame_valid(WM.frame(w,h)),"wire:frame-dimensions")
+        Done{Frame{w,h}}
+    case J.JArray{[J.JNumber{"1"},value]}:
+      do Result<&2,&2,String,Command>:
+        +p:CC.Packet <- packet(value)
+        Done{Input{p}}
+    case J.JArray{[J.JNumber{"2"}]}: Done{Release{}}
+    case _: Fail{"wire:command-tag-or-cardinality"}
+
+def request_value(value:J.Value) -> Result<&2,&2,String,Request>:
+  match value:
+    case J.JArray{[J.JNumber{"1"},J.JNumber{"0"},capability]}:
+      do Result<&2,&2,String,Request>:
+        +cap:String <- text(capability)
+        guard(nonempty_ascii(cap,256n),"wire:capability-shape")
+        Done{Hello{cap}}
+    case J.JArray{[J.JNumber{"1"},J.JNumber{"1"},epoch,sequence,body]}:
+      do Result<&2,&2,String,Request>:
+        +e:String <- text(epoch)
+        +s:Nat <- natural(sequence)
+        +c:Command <- command(body)
+        guard(epoch_valid(e) && sequence_valid(s),"wire:epoch-sequence")
+        Done{Call{e,s,c}}
+    case _: Fail{"wire:request-version-tag-or-cardinality"}
+
+def fault_valid(+epoch:String,+sequence:Nat,message:String) -> Bool:
+  ((String.eq(epoch,"") && Nat.is_eq(sequence,0n)) || (epoch_valid(epoch) && sequence_valid(sequence))) && diagnostic_valid(message)
+
+def reply_value(value:J.Value) -> Result<&2,&2,String,Reply>:
+  match value:
+    case J.JArray{[J.JNumber{"1"},J.JNumber{"0"},epoch,sequence]}:
+      do Result<&2,&2,String,Reply>:
+        +e:String <- text(epoch)
+        +s:Nat <- natural(sequence)
+        guard(epoch_valid(e) && Nat.is_eq(s,0n),"wire:hello-correlation")
+        Done{HelloAck{e,s}}
+    case J.JArray{[J.JNumber{"1"},J.JNumber{"1"},epoch,sequence,body]}:
+      do Result<&2,&2,String,Reply>:
+        +e:String <- text(epoch)
+        +s:Nat <- natural(sequence)
+        +v:V.Sample <- sample(body)
+        guard(epoch_valid(e) && sequence_valid(s),"wire:frame-correlation")
+        Done{FrameReply{e,s,v}}
+    case J.JArray{[J.JNumber{"1"},J.JNumber{"2"},epoch,sequence]}:
+      do Result<&2,&2,String,Reply>:
+        +e:String <- text(epoch)
+        +s:Nat <- natural(sequence)
+        guard(epoch_valid(e) && sequence_valid(s),"wire:ack-correlation")
+        Done{Ack{e,s}}
+    case J.JArray{[J.JNumber{"1"},J.JNumber{"3"},epoch,sequence,message]}:
+      do Result<&2,&2,String,Reply>:
+        +e:String <- text(epoch)
+        +s:Nat <- natural(sequence)
+        +m:String <- text(message)
+        guard(fault_valid(e,s,m),"wire:fault-correlation-or-message")
+        Done{Fault{e,s,m}}
+    case _: Fail{"wire:reply-version-tag-or-cardinality"}
+
+def decode_request(input:String) -> Result<&2,&2,String,Request>:
+  do Result<&2,&2,String,Request>:
+    +value:J.Value <- parse(input)
+    guard(values_fit(16384n,[value]),"wire:value-budget")
+    request_value(value)
+
+def decode_reply(input:String) -> Result<&2,&2,String,Reply>:
+  do Result<&2,&2,String,Reply>:
+    +value:J.Value <- parse(input)
+    guard(values_fit(16384n,[value]),"wire:value-budget")
+    reply_value(value)
+
+# All numeric fields encode exact integers. F32/F64 values are raw words.
+def u(value:U32) -> J.Value: J.JNumber{U32.show(value)}
+def n(value:Nat) -> J.Value: J.JNumber{Nat.show(value)}
+def b(value:Bool) -> J.Value: J.JBool{value}
+def s(value:String) -> J.Value: J.JString{value}
+
+def origin_value(value:M.Vec3) -> J.Value:
+  M.Vec3{F.F64{xh,xl},F.F64{yh,yl},F.F64{zh,zl}} = value
+  J.JArray{[u(xh),u(xl),u(yh),u(yl),u(zh),u(zl)]}
+
+def camera_value(value:R.Camera) -> J.Value:
+  R.Camera{x,y,z,yaw,pitch} = value
+  J.JArray{[u(F32.bits(x)),u(F32.bits(y)),u(F32.bits(z)),u(F32.bits(yaw)),u(F32.bits(pitch))]}
+
+def palette_value(value:W.Palette) -> J.Value:
+  W.Palette{air,stone,dirt,planks} = value
+  J.JArray{[u(air),u(stone),u(dirt),u(planks)]}
+
+def encode_rows(raw:List<&2,W.RawBlock>,blocks:List<&2,R.Block>,masks:List<&2,V.Visibility>) -> Result<&2,&2,String,List<&2,J.Value>>:
+  match raw blocks masks:
+    case Nil{} Nil{} Nil{}: Done{[]}
+    case W.RawBlock{W.Cell{x,y,z,boundary},state,material} <> tail
+         R.Block{bx,by,bz,bs,bm} <> rest V.Visibility{cell,ms,visible} <> remaining:
+      do Result<&2,&2,String,List<&2,J.Value>>:
+        remaining:List<&2,J.Value> <- encode_rows(tail,rest,remaining)
+        Done{J.JArray{[u(x),u(y),u(z),u(boundary),u(state),u(material),u(visible),u(F32.bits(bx)),u(F32.bits(by)),u(F32.bits(bz))]} <> remaining}
+    case _ _ _: Fail{"wire:encode-cell-alignment"}
+
+def sample_value(value:V.Sample) -> Result<&2,&2,String,J.Value>:
+  V.Sample{R.Snapshot{tick,revision,blocks,camera},raw,masks,origin,palette,reads} = value
+  do Result<&2,&2,String,J.Value>:
+    cells:List<&2,J.Value> <- encode_rows(raw,blocks,masks)
+    Done{J.JArray{[n(tick),n(revision),origin_value(origin),camera_value(camera),palette_value(palette),u(reads),J.JArray{cells}]}}
+
+def event_value(value:Event) -> J.Value:
+  match value:
+    case Key{code,down}: J.JArray{[u(0),u(code),b(down)]}
+    case Mouse{x,y,button,down}: J.JArray{[u(1),u(x),u(y),u(button),b(down)]}
+    case Move{x,y}: J.JArray{[u(2),u(x),u(y)]}
+    case Look{dx,dy}: J.JArray{[u(3),u(F32.bits(dx)),u(F32.bits(dy))]}
+    case Scroll{x,y,dx,dy}: J.JArray{[u(4),u(x),u(y),u(F32.bits(dx)),u(F32.bits(dy))]}
+    case Close{}: J.JArray{[u(5)]}
+
+def action_value(value:CC.Action) -> J.Value:
+  match value:
+    case CC.Release{}: J.JArray{[u(0)]}
+    case CC.PlatformEvent{event,captured}: J.JArray{[u(1),b(captured),event_value(event)]}
+
+def action_values(values:List<&2,CC.Action>) -> List<&2,J.Value>:
+  match values:
+    case Nil{}: []
+    case head <> tail: action_value(head) <> action_values(tail)
+
+def packet_value(value:CC.Packet) -> J.Value:
+  CC.Packet{actions,focused,captured} = value
+  J.JArray{[b(focused),b(captured),J.JArray{action_values(actions)}]}
+
+def command_value(value:Command) -> J.Value:
+  match value:
+    case Frame{width,height}: J.JArray{[u(0),u(width),u(height)]}
+    case Input{packet}: J.JArray{[u(1),packet_value(packet)]}
+    case Release{}: J.JArray{[u(2)]}
+
+def request_valid(request:Request) -> Bool:
+  match request:
+    case Hello{capability}: nonempty_ascii(capability,256n)
+    case Call{epoch,sequence,command}: epoch_valid(epoch) && sequence_valid(sequence) && command_valid(command)
+
+def request_json(request:Request) -> J.Value:
+  match request:
+    case Hello{capability}: J.JArray{[u(1),u(0),s(capability)]}
+    case Call{epoch,sequence,command}: J.JArray{[u(1),u(1),s(epoch),n(sequence),command_value(command)]}
+
+def reply_valid(reply:Reply) -> Bool:
+  match reply:
+    case HelloAck{epoch,sequence}: epoch_valid(epoch) && Nat.is_eq(sequence,0n)
+    case FrameReply{epoch,sequence,sample}: epoch_valid(epoch) && sequence_valid(sequence) && sample_valid(sample)
+    case Ack{epoch,sequence}: epoch_valid(epoch) && sequence_valid(sequence)
+    case Fault{epoch,sequence,message}: fault_valid(epoch,sequence,message)
+
+def reply_json(reply:Reply) -> Result<&2,&2,String,J.Value>:
+  match reply:
+    case HelloAck{epoch,sequence}: Done{J.JArray{[u(1),u(0),s(epoch),n(sequence)]}}
+    case FrameReply{epoch,sequence,sample}:
+      do Result<&2,&2,String,J.Value>:
+        value:J.Value <- sample_value(sample)
+        Done{J.JArray{[u(1),u(1),s(epoch),n(sequence),value]}}
+    case Ack{epoch,sequence}: Done{J.JArray{[u(1),u(2),s(epoch),n(sequence)]}}
+    case Fault{epoch,sequence,message}: Done{J.JArray{[u(1),u(3),s(epoch),n(sequence),s(message)]}}
+
+def hex4(+word:U32) -> String:
+  Char.show(J.hex_char(U32.and(U32.shrn(word,12n),15))) ++
+    Char.show(J.hex_char(U32.and(U32.shrn(word,8n),15))) ++
+    Char.show(J.hex_char(U32.and(U32.shrn(word,4n),15))) ++ Char.show(J.hex_char(U32.and(word,15)))
+
+def escape_scalar_checked(+code:U32,small:Bool) -> String:
+  match small:
+    case True{}: J.escape_char(code)
+    case False{}:
+      J.choose(String,"\\u" ++ hex4(code),"\\u" ++ hex4(U32.add(55296,U32.div(U32.sub(code,65536),1024))) ++
+        "\\u" ++ hex4(U32.add(56320,U32.mod(U32.sub(code,65536),1024))),U32.is_le(code,65535))
+
+def escape_scalar(+code:U32) -> String:
+  escape_scalar_checked(code,U32.is_lt(code,128))
+
+def quote_ascii(text:String) -> String:
+  match text:
+    case SNil{}: "\""
+    case SCon{c,tail}: escape_scalar(Char.to_u32(c)) ++ quote_ascii(tail)
+
+# DTO output has no objects. This encoder emits only ASCII strings/numbers.
+def json_ascii(value:J.Value,continuation:Bool) -> String:
+  match value:
+    case J.JString{text}: "\"" ++ quote_ascii(text)
+    case J.JArray{Nil{}}: J.choose(String,"]","[]",continuation)
+    case J.JArray{head <> tail}:
+      J.choose(String,",","[",continuation) ++ json_ascii(head,False{}) ++ json_ascii(J.JArray{tail},True{})
+    case J.JObject{members}: "invalid-wire-object"
+    case _: J.encode(value)
+
+def encoded_text(+output:String) -> Result<&2,&2,String,String>:
+  do Result<&2,&2,String,String>:
+    guard(J.within(16384n,output) && J.within(65536n,output) && ascii(output),"wire:encoded-transport-parser-budget")
+    Done{output}
+
+def encode_value(+value:J.Value) -> Result<&2,&2,String,String>:
+  do Result<&2,&2,String,String>:
+    guard(values_fit(16384n,[value]),"wire:encoded-value-budget")
+    encoded_text(json_ascii(value,False{}))
+
+def request_encode(valid:Bool,request:Request) -> Result<&2,&2,String,String>:
+  match valid:
+    case False{}: Fail{"wire:invalid-request"}
+    case True{}: encode_value(request_json(request))
+
+def reply_encode(valid:Bool,reply:Reply) -> Result<&2,&2,String,String>:
+  match valid:
+    case False{}: Fail{"wire:invalid-reply"}
+    case True{}:
+      do Result<&2,&2,String,String>:
+        value:J.Value <- reply_json(reply)
+        encode_value(value)
+
+def encode_request(+request:Request) -> Result<&2,&2,String,String>:
+  request_encode(request_valid(request),request)
+
+def encode_reply(+reply:Reply) -> Result<&2,&2,String,String>:
+  reply_encode(reply_valid(reply),reply)
+
+# These checks match an actor-owned/client-owned expectation; they do not
+# authorize a lease or advance its expected sequence on their own.
+def correlation(+epoch:String,+sequence:Nat,reply:Reply) -> Bool:
+  match reply:
+    case HelloAck{other,number}: String.eq(epoch,other) && Nat.is_eq(sequence,number)
+    case FrameReply{other,number,sample}: String.eq(epoch,other) && Nat.is_eq(sequence,number)
+    case Ack{other,number}: String.eq(epoch,other) && Nat.is_eq(sequence,number)
+    case Fault{other,number,message}: String.eq(epoch,other) && Nat.is_eq(sequence,number)
+
+law raw_look_preserves_signed_zero_and_nan_payload:
+  {event(J.JArray{[u(3),u(2147483648),u(2143289345)]}) ==
+    Done{Look{float_bits(2147483648),float_bits(2143289345)}} : Result<&2,&2,String,Event>}
+
+def raw_look_preserves_signed_zero_and_nan_payload():
+  {==}
+
+law version_mismatch_refuses_request:
+  {request_value(J.JArray{[u(2),u(0),s("token")]}) ==
+    Fail{"wire:request-version-tag-or-cardinality"} : Result<&2,&2,String,Request>}
+
+def version_mismatch_refuses_request():
+  {==}
+
+law extra_release_fields_are_refused:
+  {command(J.JArray{[u(2),u(0)]}) == Fail{"wire:command-tag-or-cardinality"} : Result<&2,&2,String,Command>}
+
+def extra_release_fields_are_refused():
+  {==}
+
+law sequence_above_native_word_is_refused:
+  {natural(J.JNumber{"281474976710656"}) == Fail{"wire:Nat48"} : Result<&2,&2,String,Nat>}
+
+def sequence_above_native_word_is_refused():
+  {==}
+
+law packet_roundtrip_keeps_order_capture_and_raw_words:
+  {packet(packet_value(CC.Packet{[CC.Release{},CC.PlatformEvent{Key{87,True{}},True{}},
+      CC.PlatformEvent{Move{4294967295,2147483648},False{}}],True{},False{}})) ==
+    Done{CC.Packet{[CC.Release{},CC.PlatformEvent{Key{87,True{}},True{}},
+      CC.PlatformEvent{Move{4294967295,2147483648},False{}}],True{},False{}}} : Result<&2,&2,String,CC.Packet>}
+
+def packet_roundtrip_keeps_order_capture_and_raw_words():
+  {==}

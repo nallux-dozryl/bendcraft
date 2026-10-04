@@ -1,0 +1,136 @@
+{
+  "build_bound_seconds": 600,
+  "files": {
+    "build/resource-player-presented-client/host-cleanup-guards.full.json": "995b3678f43aaa28284f56450e3f1999a8f1ba9f1af432fbb1d82feb9134c20a",
+    "build/resource-player-presented-client/host-laws.full.json": "2e564cb5f0d7562b89eb2f5515d341ef8ce6105e94f7ce6466ad394644c93696",
+    "build/resource-player-presented-client/pixel-expectations.full.json": "765fa3986822eac61fe6e69ad0a1f5f5f5d95407bcd1758f39e32090d33a12a8",
+    "build/resource-player-presented-client/reference.full.json": "0234d364ca92670e9135d89dc7e84d61ba61313d08cc6b6a81a7b24f821464e3",
+    "build/resource-player-presented-client/seal.full.json": "3ed26488a6cb05fedbcc4e3e07537514d1801e6c110605b818e1556305e442d0",
+    "docs/RESOURCE_PLAYER_PRESENTED_CLIENT.md": "e804b6ba83a651ff2733ae6db9a0ef631451768817eaf224bba45bf776b3968d",
+    "evidence/resource-player-presented-client-preflight.json": "3f651ac47b64fa302a98d88ecc2208b33f848b664898e56a99024f0581354fc9",
+    "resource_player_presented_client.bend": "724ec97fae5052b2a079fb1e712ac870cdb280b72fa50af4ef512cb3c6d36248",
+    "src/resource_player_presenter.bend": "d0792889f3dd35bdc9aea1b8effb7120b2b639658d1d518aaec1b213e8a1ad54",
+    "tools/test_resource_player_presented_client.py": "d11bcbcf19310f47a0448042ed9c825156df75e2f0984156a1699c6c74a7b52d"
+  },
+  "host_cleanup_adoption": {
+    "archive_manifest": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-player-presented-client/pre-host-cleanup-generation/manifest.json",
+    "archive_manifest_sha256": "fce7cb16df47a16dbabe44d5abb48098c03abda029debb2fdd5db2834dcaf761",
+    "archived_originals": {
+      "build/resource-player-presented-client/seal.full.json": {
+        "archive": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-player-presented-client/pre-host-cleanup-generation/build/resource-player-presented-client/seal.full.json",
+        "archive_sha256": "10712f7da023bee54d8353ca337d65484f5c7ceeca2cb39b7587c484ada3d09c",
+        "sha256": "10712f7da023bee54d8353ca337d65484f5c7ceeca2cb39b7587c484ada3d09c"
+      },
+      "docs/RESOURCE_PLAYER_PRESENTED_CLIENT.md": {
+        "archive": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-player-presented-client/pre-host-cleanup-generation/docs/RESOURCE_PLAYER_PRESENTED_CLIENT.md",
+        "archive_sha256": "e804b6ba83a651ff2733ae6db9a0ef631451768817eaf224bba45bf776b3968d",
+        "sha256": "e804b6ba83a651ff2733ae6db9a0ef631451768817eaf224bba45bf776b3968d"
+      },
+      "evidence/resource-player-presented-client-preflight.json": {
+        "archive": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-player-presented-client/pre-host-cleanup-generation/evidence/resource-player-presented-client-preflight.json",
+        "archive_sha256": "ab2595a2e2c4cf64802a407257ca31d2a3922bc99df906c6448f240a61bc9f1a",
+        "sha256": "ab2595a2e2c4cf64802a407257ca31d2a3922bc99df906c6448f240a61bc9f1a"
+      },
+      "evidence/resource-player-presented-client-ready.json": {
+        "archive": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-player-presented-client/pre-host-cleanup-generation/evidence/resource-player-presented-client-ready.json",
+        "archive_sha256": "cb056f3a105e595430eeb05d453555cc6355e1af26b3f3840a8044fd77be6702",
+        "sha256": "cb056f3a105e595430eeb05d453555cc6355e1af26b3f3840a8044fd77be6702"
+      },
+      "tools/test_resource_player_presented_client.py": {
+        "archive": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-player-presented-client/pre-host-cleanup-generation/tools/test_resource_player_presented_client.py",
+        "archive_sha256": "910186feee00e882054783ca98a744bcfbbeff93aee8c4b54884f0efde7d52bb",
+        "sha256": "910186feee00e882054783ca98a744bcfbbeff93aee8c4b54884f0efde7d52bb"
+      }
+    },
+    "date": "2026-10-04T03:58:30.085472+00:00",
+    "host_guards": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-player-presented-client/host-cleanup-guards.full.json",
+    "host_guards_sha256": "995b3678f43aaa28284f56450e3f1999a8f1ba9f1af432fbb1d82feb9134c20a",
+    "native_compiler_java_ui_executions": 0,
+    "new_runner_sha256": "d11bcbcf19310f47a0448042ed9c825156df75e2f0984156a1699c6c74a7b52d",
+    "new_seal_sha256": "3ed26488a6cb05fedbcc4e3e07537514d1801e6c110605b818e1556305e442d0",
+    "old_runner_sha256": "910186feee00e882054783ca98a744bcfbbeff93aee8c4b54884f0efde7d52bb",
+    "old_seal_sha256": "10712f7da023bee54d8353ca337d65484f5c7ceeca2cb39b7587c484ada3d09c",
+    "ordinary_checks_reexecuted": 0,
+    "semantic_delta": "Only main exception cleanup sweep now executes inside borrowed(); no production/reference/input/pixel/comparator/build-control changes.",
+    "source_reference_expected_data_and_runtime_unchanged": true,
+    "status": "adopted-host-only-cleanup"
+  },
+  "host_only_checks": 13,
+  "host_only_cleanup_guards": 2,
+  "installed_compiler": {
+    "path": "/Users/chuah/.bend/bin/bend",
+    "sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e"
+  },
+  "native_each_observer_bound_seconds": 60,
+  "no_c_native_java_window_or_kernel_started": true,
+  "old_generations_preserved": {
+    "build/resource-player-boxed-client/build-attempt.full.json": "b41d6403285c1ea8bc9e651b350164c350fbfe8d95111ebcef749504347d502a",
+    "build/resource-player-boxed-client/seal.full.json": "93295a2de6631ee4ceff8658968d6b6ddfd003c8382c9fcfd2f2c106fab08590",
+    "build/resource-player-client/build-attempt.full.json": "0f970675a0adfd510f0c6eec1f4c76371a4db2c21ad81bf4db71b6dcf75ae92a",
+    "build/resource-player-client/seal.full.json": "32f2817fdbd5d7f28c5a76875ab629217c0b453b9d396754906def260e37f610",
+    "evidence/resource-player-boxed-client-native.json": "b906b49decebc6329d5cd3fdbddf9b9b70342a25c4fd9947cca5deed9dafdb28",
+    "evidence/resource-player-boxed-client-preflight.json": "31cc4733b4f3105ea587fad4f01d16e5e1870b2928e92c3a9d860ef5555900b8",
+    "evidence/resource-player-client-native.json": "03cefbe6ca85d1b66417c5926913da91c9e48b932072fe7c138d83da69b00c31",
+    "evidence/resource-player-client-preflight.json": "e9f4d37c479ecfc7d8256d6d4992ff2bc56a0589c8d8b48a184a4d9d4baf19b1",
+    "resource_player_boxed_client.bend": "567d02e32e32549ee61ad590c588d7e5d74bb8c175e968f0ed7a5a68cecd5cc8",
+    "resource_player_client.bend": "b0811c595678d3624ff3e25441ad3d18f71a7d02ce42401e259b7a9aab16be73",
+    "src/resource_player_boxed_scene.bend": "c1d943f7a9fc52367ce4270ebefc86787bc3ac55c4bbfecd251b9ba6f21696c2",
+    "src/resource_player_scene.bend": "978558e7a741f0c019095849a57e0d098557c19582a5963f2da24f67a0260ccf",
+    "tools/test_resource_player_boxed_client.py": "c145890778e8f9441334d662c41689bc0fdb6cb83bc0e3ac8e920c631cbf02f7",
+    "tools/test_resource_player_client.py": "4334f125510101f1f329c0cdeb38619608f4280d00ee1e156b7480380f7d0d15"
+  },
+  "ordinary": [
+    {
+      "declared_boundary_count": 103,
+      "entry": "resource_player_presented_client.bend",
+      "entry_sha256": "724ec97fae5052b2a079fb1e712ac870cdb280b72fa50af4ef512cb3c6d36248",
+      "exit_code": 1,
+      "full_report": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-player-presented-client/resource_player_presented_client-ordinary.full.json",
+      "full_report_sha256": "9019f54a4f7e1ce43757241c8f82dcbc3bfe6eeed846637b08a09728288720dc",
+      "output_sha256": "11be832e93a92591efe5a69847e7134f3ab0ce93ab99c962f60b767eb25cf36f",
+      "seconds": 18.481845
+    },
+    {
+      "declared_boundary_count": 90,
+      "entry": "src/resource_player_presenter.bend",
+      "entry_sha256": "d0792889f3dd35bdc9aea1b8effb7120b2b639658d1d518aaec1b213e8a1ad54",
+      "exit_code": 1,
+      "full_report": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-player-presented-client/resource_player_presenter-ordinary.full.json",
+      "full_report_sha256": "5677946cfd8c42029f3b46dc3766d3c5a5180a2d2831f1aeb9717bbc232518fd",
+      "output_sha256": "af827ae98126e570d19d5b4803a7f66de061ceac79690d6a88b87753ae3298c6",
+      "seconds": 7.746202
+    }
+  ],
+  "pixel_oracle_runtime": {
+    "/Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12": "ac60cfe0268614638d0ffa35f3b0284fc7b3a11482723793455e17eeb278509e",
+    "/Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/PIL/Image.py": "04af3f2db7ffdd61e829fa7aa8f5481d394a0a4129a8fd8aa5b13908928fcd6d",
+    "/Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/PIL/_imaging.cpython-312-darwin.so": "ee754300d3bda6413b80ddabe3a7ed7b419e1b0468bf2830e2b19fe68f14be42",
+    "/Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/__init__.py": "93924ac4b793328947dfd9eb9355e54eccdfd26a92c8dd52188aed2e52c7eb38",
+    "/Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/_core/_multiarray_umath.cpython-312-darwin.so": "96ce8cda1e4f1a3107e5c945b68bcd970c3de09019fc19beda4cc0319609de09"
+  },
+  "requested_build_command": [
+    "/Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "tools/test_resource_player_presented_client.py",
+    "--build-only",
+    "--lead-slot-granted"
+  ],
+  "requested_retained_suite_command": [
+    "/Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "tools/test_resource_player_presented_client.py",
+    "--native",
+    "--lead-slot-granted",
+    "--build-report",
+    "build/resource-player-presented-client/build.full.json"
+  ],
+  "scope": "Changed concrete integrated resource/actor/Window consumer; compile benefit unknown. Original failed generations remain unchanged. Native/CPU pixels/visible presentation require actual later execution.",
+  "source_dependency_count": 100,
+  "source_kind_counts": {
+    "base": 1,
+    "bend": 65,
+    "native-effect": 34
+  },
+  "source_manifest_sha256": "4429aad7937c13b2e0d0d618fff8f20abb9b0158473d0a67c9233689eed28087",
+  "status": "prepared-native-unverified",
+  "views": 6,
+  "visible_launches": 0
+}

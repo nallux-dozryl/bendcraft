@@ -1,0 +1,41 @@
+{
+  "docs": {
+    "bytes": 5698,
+    "path": "docs/RESOURCE_CLIENT_WIRE.md",
+    "sha256": "64f74008f92c54ca9b2ee79c46babba30f9ba71c0a46a75efa9cd85a1de73509"
+  },
+  "execution_scope": "Source checking and small host-independent schema checks only; no native emission, kernel, Java extraction or socket exercise.",
+  "frozen_phase_pins": {
+    "reference/local_phase_runtime.json": "6126038d6a5e3058e58dd0be100548cbeafce7b0f7cbede2075d9e2129ccdff7",
+    "src/local_phase_runtime.bend": "8daf7e2f2fdc32d07f9250c4815883568ffd6d020bbbc8c5f94e18d198c481f3",
+    "tests/local_phase_runtime.bend": "73015803d85a2008866661d06bf9c5c971ae79de91193ff3055cf6b94e206e8c",
+    "tools/test_local_phase_runtime.py": "4c2105a6f6283394bbd794e8db7ef9fd667ab35b85f5968b4dbe21c133bbb69d"
+  },
+  "host_checks": {
+    "explicit_encoder_shape_refusal": true,
+    "frozen_phase_artifacts_retained": true,
+    "native48_formula_equal": true,
+    "placeholder_or_unsafe_absent": true
+  },
+  "ordinary_command": [
+    "/Users/chuah/.bend/bin/bend",
+    "src/resource_client_wire.bend",
+    "--check-only"
+  ],
+  "ordinary_exit_code": 0,
+  "ordinary_stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n",
+  "removed_check": {
+    "case": "maximalNat48_decode_schema_law",
+    "claim": "runtime maximum formula unchanged; no native maximal-value result claimed",
+    "exit_code": 143,
+    "reason": "ordinary normalizer exceeded small-check lane; stopped/reaped owned group71989",
+    "source_case_removed": true
+  },
+  "schema_laws": 5,
+  "source": {
+    "bytes": 23626,
+    "path": "src/resource_client_wire.bend",
+    "sha256": "e81e24cebdc9719b30d818c48476386a9220884f2287568fdd3cf1292797924a"
+  },
+  "status": "ordinary-checked-native-integration-pending"
+}

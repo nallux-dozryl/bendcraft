@@ -1,0 +1,53 @@
+{
+  "helper": {
+    "bytes": 9389,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_local_player_record_consumer.py",
+    "sha256": "ffc83f4f1913d4982bc3a9f87dae4f58e72dbe5cbccc517a3545f60ad6ec33f8"
+  },
+  "results": [
+    {
+      "case": "invalid-consumer-seal-refused",
+      "message": "invalid consumer manifest seal"
+    },
+    {
+      "attempt_streams": 0,
+      "case": "missing-helper-refused-before-launch",
+      "message": "consumer manifest lacks codec verifier/oracle: /Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_local_player_record_consumer.py",
+      "summary": {
+        "bytes": 861,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-record/consumer-host-guards/missing-helper-attempt/summary.json",
+        "sha256": "04a4b0be0b3e35cf80090763e072d58803c54488d648f7b8f06968f002464749"
+      }
+    },
+    {
+      "case": "existing-consumer-receipts-refused-unchanged",
+      "message": "existing verification receipts: /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-record/consumer-host-guards/missing-helper-attempt"
+    },
+    {
+      "case": "launch-failure-retains-pending-and-process-receipts",
+      "process": {
+        "argv": [
+          "/definitely/nonexistent/bendex-helper"
+        ],
+        "exit_code": null,
+        "launch_error": "FileNotFoundError: [Errno 2] No such file or directory: '/definitely/nonexistent/bendex-helper'",
+        "pid": null,
+        "seconds": 0.0021180836483836174,
+        "stderr": {
+          "bytes": 0,
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-record/consumer-host-guards/launch-failure.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout": {
+          "bytes": 0,
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-record/consumer-host-guards/launch-failure.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "timed_out": false,
+        "timeout_seconds": 1
+      }
+    }
+  ],
+  "scope": "read-only seal/refusal and host launch-failure guard tests only; no game/native-build/kernel/Java/client execution",
+  "status": "PASS"
+}

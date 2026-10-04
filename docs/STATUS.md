@@ -18,6 +18,58 @@ now verify bounded geometry, movement, locomotion and resource semantics; those
 component contracts do not establish a playable vanilla game. The full scope
 remains open.
 
+Integration work is now concentrated on two concrete consumers. The new
+resource-presented client joins the existing save actor, ZIP/model/PNG resource
+pipeline, neighbor visibility and native Window; its monomorphic presenter and
+entry pass ordinary checking through their declared native boundaries. Its
+single installed build ended after 600.170778 seconds without C or an executable;
+a supervisor cleanup PermissionError prevented the raw child receipt. The
+wrapper failure and passive observations are preserved, all owned processes are
+absent, and no client ran. A new split joins a real Bend LocalPlayer actor to a
+separate Bend resource/window consumer through an authenticated private wire.
+Frame sampling remains one actor operation; input leases expire and stale socket
+cleanup cannot clear a newer connection. The wire, world sampler and renderer
+pass ordinary checks; the new backend entry has exactly 97 declared native
+boundaries and no other error. Review added post-poll/pre-admission time checks,
+assigned-epoch cleanup for failed Hello replies, and terminal stop revocation.
+No split native
+build or window execution has occurred. Earlier
+resource-entry timeouts, the empty host-loader diagnostics and unsymbolized
+sample do not identify a compiler bottleneck.
+
+The new LocalPlayer session and client join actual held-input sampling, staged
+post-sprint world facts, ordered Core/common/travel/rotation/pose phases and the
+complete supported local record in the existing leased atomic save transaction.
+The facade and codec pass ordinary checks; the full client reports only its 89
+declared unsafe/foreign boundaries, with no type or law errors. Static review
+checks complete ownership across dispatch and rollback, and admission before
+provider callbacks. The sealed composite executable built once in 558.354
+seconds, producing a retained 13,519,272-byte binary. Initial native runs stopped at
+host-fixture failures: the first restored a stone where the independent Java
+fixture had air; the corrected same-binary run passed that recovery, eight actual
+outcomes, due edits, four rich records, three continuation steps and real TCP/MCP
+protocol/save recovery. It then stopped because a real paused timer diagnosed a
+deliberately malformed owner. Only that exact diagnostic changed; an explicit
+bounded diagnostic prime then passed all four complete-owner comparisons. The
+third same-binary run passed 44 corruption refusals, repaired-lease/fresh startup
+and the first atomic-stage kill/restart: 33 exact durable bundles and 22 checks
+completed. It stopped at the written-stage host marker wait. An independent
+inert pipe control reproduces a BufferedReader/select hazard; actual dead-process
+buffered bytes were not retained. The admitted raw-fd reader retained the same
+20-second bound and all comparisons, and the complete first primary suite passed:
+26 checks, 37 exact bundles and 50 refusals, including all five stage kills/restarts.
+The frozen 755-case codec passed twice (1,510 executions). The shared phase corpus
+then stopped because its frozen fixture schedules tick 0 against a fresh tick-0
+Core, which requires a future tick. Its incomplete prefix is unvalidated by the
+unchanged comparator; facade and second primary suite did not run. Correcting
+that harness requires a new executable and is queued after the resource client.
+The lead rehashed all 1,693 native dependencies and the binary/receipt/manifest;
+actual Clang-used C equals the cached emitted C. Historical preparation docs
+remain frozen; current results are in the retained host3 partial evidence.
+Visible OS controls remain unverified. The fixed neutral
+four-state profile excludes required reset rays, general attributes, fluids,
+flight and full player lifecycle services.
+
 | Foundation | Implementation and verification |
 | --- | --- |
 | Section storage | Owned 16³ arrays, checked indexing, signed coordinate conversion, clone/snapshot. All 4,096 coordinates/cells and 33 independent signed fixtures tested; 17 laws pass independent kernel. |

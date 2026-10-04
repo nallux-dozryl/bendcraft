@@ -1,0 +1,120 @@
+{
+  "changed_files": [
+    "tools/test_local_phase_runtime.py",
+    "docs/LOCAL_PHASE_RUNTIME.md"
+  ],
+  "docs": {
+    "bytes": 17160,
+    "file": "LOCAL_PHASE_RUNTIME.md",
+    "path": "docs/LOCAL_PHASE_RUNTIME.md",
+    "sha1": "1de4853d7f02dd66adeae51c816af865b1bc7759",
+    "sha256": "4e4266f17a9edb259b05b9eed318049d0b2ba99829c8796b09cf9f338d9dcb2f"
+  },
+  "execution": "Host Python subprocess fixtures and read-only sealed preparation verification only. No Bend, Java, native gameplay binary, or kernel execution.",
+  "host_checks": {
+    "count": 13,
+    "fixture": {
+      "bytes": 9253,
+      "file": "host_checks.py",
+      "path": "build/local-phase-runtime/host-adoption/host_checks.py",
+      "sha1": "3205a883e04bbca8ac05713baf9ad93caf788323",
+      "sha256": "b37a4a02c35e07d334cb5fc9e19c95fa9622d3930d2a9432d6a90c1936eb01b5"
+    },
+    "receipt": {
+      "bytes": 2191,
+      "file": "host-checks.json",
+      "path": "build/local-phase-runtime/host-adoption/host-checks.json",
+      "sha1": "6073f6a1feeb0b8be82cf95abd11e5da3de8714c",
+      "sha256": "00224fb0cb8d494765fbf02178b4e47c9b30b35182fe1ba65f7ed177b6055565"
+    },
+    "status": "passed"
+  },
+  "host_generation": 2,
+  "lineage": {
+    "bytes": 30533,
+    "file": "manifest.json",
+    "path": "build/local-phase-runtime/lineage/ready-generation-1/manifest.json",
+    "sha1": "0879f7f869b3ccc1145c2abf8e724d043855ddf0",
+    "sha256": "c49cc88a70dd5cac91affe11a1114dfa1aa2eb8c9ccabd28054494bc03334bf8"
+  },
+  "prior_host_seal": {
+    "bytes": 4044,
+    "file": "seal-before-host-checks.json",
+    "path": "build/local-phase-runtime/host-adoption/seal-before-host-checks.json",
+    "sha1": "f80482008b2ba0d0c00294850a7b7b0a4bb04b28",
+    "sha256": "4dae018ed9fc59f0002e4723007f64fd8819146dfe5ae1a3d1d4fe2d151d0231"
+  },
+  "ready_generation_sha256": "aba739dba0cf69dc1dc6d7dcf4674024ad8670ce512ec71f3e6cff11f2bdc5f6",
+  "ready_preparation": {
+    "bytes": 45651,
+    "file": "local-phase-runtime-preparation.json",
+    "path": "evidence/local-phase-runtime-preparation.json",
+    "sha1": "28a9317c9d77b0575bfc51ace333ef3b6a9423b1",
+    "sha256": "e88ec198cb25a5510c11699b5be305cc86debba212194f9e58421fb46cb333d9"
+  },
+  "review": {
+    "bytes": 12236,
+    "file": "SOURCE_REVIEW.md",
+    "path": "build/review-local-phase-runtime/SOURCE_REVIEW.md",
+    "sha1": "330a2096b26299cca253da0106f986b7d34433b0",
+    "sha256": "2761d8cef3749eff3674df053da00012bc0faea4eafc9ba77542704083067333"
+  },
+  "scope_gaps_retained": [
+    "required-ray comparison accepts generic TravelError",
+    "due-crawl lacks exact edited-cell/event stamp comparison",
+    "query reporting demonstrates owner-threading rather than snapshot success"
+  ],
+  "status": "host-adopted-native-kernel-pending",
+  "tools": {
+    "tools/build_native.py": {
+      "bytes": 33298,
+      "file": "build_native.py",
+      "path": "tools/build_native.py",
+      "sha1": "d66f63f05fec4e4c2bc23a823e4a4b2a79a2ee49",
+      "sha256": "3418c78cddc092aec55c7447a818735569b5b279d3bc4b05e3c0077624387c18"
+    },
+    "tools/reference_inventory.py": {
+      "bytes": 24736,
+      "file": "reference_inventory.py",
+      "path": "tools/reference_inventory.py",
+      "sha1": "01f1b7c1adec7f6b9cd62a9c743b1c4835d3e6f6",
+      "sha256": "e82b66508a99d9bac37c62917645e9adcac06e52ab2b65e2bc8afd5be66a8d9e"
+    },
+    "tools/reference_local_input_probe.py": {
+      "bytes": 72229,
+      "file": "reference_local_input_probe.py",
+      "path": "tools/reference_local_input_probe.py",
+      "sha1": "7a3300927be696f5f526623a1d503c5752ac8adb",
+      "sha256": "42ad844c7ee3616286ce99bcea00c6bc0710b20888912b6e98c1b4af6072a56e"
+    },
+    "tools/reference_local_phase_runtime_probe.py": {
+      "bytes": 12009,
+      "file": "reference_local_phase_runtime_probe.py",
+      "path": "tools/reference_local_phase_runtime_probe.py",
+      "sha1": "8477bf95b64fcc725aaa4917149706af06bfd345",
+      "sha256": "d959c79f1055a1b4a8a4f9fdf7ccdf7ca74bcbf9e97292c8c9727c50660ecb55"
+    },
+    "tools/reference_model_probe.py": {
+      "bytes": 39529,
+      "file": "reference_model_probe.py",
+      "path": "tools/reference_model_probe.py",
+      "sha1": "15a76f30c65a5fb141d4c68349bd44e03d807e9a",
+      "sha256": "4c82153a59a0eeb58e8c5df181e13adb16424343de9f7c2957f73c662cc598b7"
+    },
+    "tools/reference_player_tick_phases_probe.py": {
+      "bytes": 36757,
+      "file": "reference_player_tick_phases_probe.py",
+      "path": "tools/reference_player_tick_phases_probe.py",
+      "sha1": "6ac0d0ac3016f22436c4d48cee49f8c476c1fbad",
+      "sha256": "2f778c81a3b2931068d9ce7cebf5b4bd0516dbe47b4897a2b2e9d6f7148f1070"
+    },
+    "tools/test_local_phase_runtime.py": {
+      "bytes": 28959,
+      "file": "test_local_phase_runtime.py",
+      "path": "tools/test_local_phase_runtime.py",
+      "sha1": "4f1993db99dff26d63b24296a4d9b25043546e92",
+      "sha256": "d49677ee647c3e72e47df91441937484eac6768d91e9e0faaed52c02117e6c1f"
+    }
+  },
+  "unchanged": "All 80 Bend/Base/effect closure entries, source/harness/oracle/producers, and ready receipts remain sealed."
+}

@@ -1,0 +1,286 @@
+{
+  "authoritative_build_owner": {
+    "automatic_retry": false,
+    "build_report_or_executable_present": false,
+    "child_stderr": "not retained; contents unknown",
+    "child_stdout": "not retained; contents unknown",
+    "compiler_exit_code": null,
+    "compiler_termination_status": "unknown due host cleanup PermissionError",
+    "emitted_C_size_or_function_count": null,
+    "failure_receipt": {
+      "bytes": 2349,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/resource-player-presented-client-native.json",
+      "sha256": "6e88c5cfb878dddeff303f7c0a7f56fd11c9a07020b42c446b60779a5ed68366"
+    },
+    "native_Clang_duration": null,
+    "phase": {
+      "error": "[Errno 1] Operation not permitted",
+      "error_type": "PermissionError",
+      "phase": "guarded-installed-build",
+      "seconds": 600.170777708292,
+      "started_monotonic": 5660005.324977333,
+      "status": "failed"
+    },
+    "phase_receipt": {
+      "bytes": 239,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-player-presented-client/execution-phases.full.json",
+      "sha256": "8351ec9ce123c100a88600c73882158b113f1deba66f916eece3a8321947f479"
+    },
+    "raw_child_receipt_present": false,
+    "slot_A_released_by_owner": true,
+    "wrapper_exit_code": 1,
+    "wrapper_reaped": true,
+    "wrapper_stderr": {
+      "bytes": 89,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-player-presented-client/build-only.stderr",
+      "sha256": "b26ba2065ee8462ce35f68deb4fc5333d6884ef3d48d92a4e469819fc57d0994"
+    },
+    "wrapper_stdout": {
+      "bytes": 687,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-player-presented-client/build-only.stdout",
+      "sha256": "dd372402fa1e4aa8610a65c7aab66eaa00e994504246f31b2a53918a1a97fd34"
+    },
+    "wrapper_tool_session": 39095
+  },
+  "cleanup": {
+    "audit": {
+      "bytes": 982,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-player-presenter-build-observer/attempt-1/post-observation-audit.full.json",
+      "sha256": "a61757d1df2c801a3f8fadcf4aa0c2d106954e85496c1dd9c1b130e719969d4b"
+    },
+    "controller_emitter_sampler_pids_absent": true,
+    "observer_session_exited_and_reaped": true,
+    "sample_group_absent": true
+  },
+  "confidence": {
+    "internal_compiler_attribution": "unknown",
+    "monomorphic_layout_sufficient_under_600_seconds": false,
+    "observed_before_C_and_native_Clang": "high",
+    "retained_Bun_driver_start": "unestablished",
+    "split_compile_benefit": "unknown"
+  },
+  "doc": {
+    "bytes": 7017,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/docs/resource-player-client-presenter-build-result.md",
+    "sha256": "368cdcf7b7bccb9f9928c8a008cdd01c7a5a9b6499b001848ebdad43804cfd86"
+  },
+  "next_decision": {
+    "compile_benefit_unmeasured": true,
+    "compiler_patch_justified": false,
+    "consumer_split": "Coordinate client_render real Bend Session actor versus resource render/Window process",
+    "identical_retry": false,
+    "no_fresh_build_grant_inferred": true,
+    "protocol_obligations": [
+      "One authoritative 50ms Session actor, save lease, external TCP/MCP and unchanged 18 public operations",
+      "One atomic frame sample transaction containing tick/revision/body/look/world visibility/palette",
+      "Ordered real Window input/release admitted by actor; render/query cannot advance clock",
+      "Bounded identity/packet/error validation and peer failure cleanup preserve buttons/lease/saves",
+      "Simulation, rendering and private serialization remain Bend; independent actual Java/pixel/save expectations retained"
+    ],
+    "source_facts": [
+      "load_assets retains whole Session.Ready across Render.load",
+      "Presenter retains Session actor handle through draw/input continuations"
+    ]
+  },
+  "no_extra_execution": {
+    "Java": 0,
+    "UI": 0,
+    "compiler_emissions": 0,
+    "input": 0,
+    "kernel": 0,
+    "native_clients": 0,
+    "samples_after_first": 0
+  },
+  "observer": {
+    "actual_controller": {
+      "argv": [
+        "/Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/platform_cache.py",
+        "build",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/resource_player_presented_client.bend",
+        "-o",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-player-presented-client/client",
+        "--report",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-player-presented-client/build.full.json"
+      ],
+      "path": "/Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "pid": 64165
+    },
+    "actual_native_Clang_observed": false,
+    "checked_C_files_observed": [],
+    "compiler_pin_unchanged": true,
+    "entry_pin_unchanged": true,
+    "errors": [],
+    "finished_since_build_start_seconds": 600.0063872076571,
+    "first_since_build_start_seconds": 44.2359817083925,
+    "installed_emitter": {
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/resource_player_presented_client.bend",
+        "-o",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/platform-cache/sources/.source-dpqi_743/original.c"
+      ],
+      "first_seen_monotonic": 5660049.561187916,
+      "kind": "installed-bend-c-cli",
+      "last_elapsed_seconds_quantized": 597,
+      "last_seen_monotonic": 5660603.656018208,
+      "max_rss_kib_observed": 3012704,
+      "output": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/platform-cache/sources/.source-dpqi_743/original.c",
+      "path": "/Users/chuah/.bend/bin/bend"
+    },
+    "last_since_build_start_seconds": 598.3308119997382,
+    "observations": 110,
+    "observer_reaped": true,
+    "raw_journal": {
+      "bytes": 81110,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-player-presenter-build-observer/attempt-1/result.full.json",
+      "sha256": "79d67aa4512e23fd29d216390b7ab1d18882619b9394a16210f2e2d88f71b7a8"
+    },
+    "request": {
+      "bytes": 825,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-player-presenter-build-observer/request.full.json",
+      "sha256": "025fb17932141af7660deadc0477b292db9bb75103de31345077d486efc22006"
+    },
+    "script": {
+      "bytes": 19673,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-player-presenter-build-observer/observe.py",
+      "sha256": "64029d8b200cb271da667667b49a31660fdda533bf631d892c884a69af9c2db6"
+    },
+    "status": "observer-complete",
+    "stop_reason": "original-build-deadline-reached",
+    "tool_exit_code": 0,
+    "tool_session": 82639
+  },
+  "preserved_historical_generation_policy": "No historical Node/Bun/watchdog/preflight/result or consumer source modified.",
+  "retained_Bun_read_only_examination": {
+    "actual_argv": [
+      "/Users/chuah/.bend/bin/bend",
+      "--config",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-player-client-diagnosis-bun/probe.bunfig.toml",
+      "--no-env-file",
+      "--no-install",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-player-client-diagnosis-bun/source-79df/probe.ts",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/player_client.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-player-client-diagnosis-bun/plain-manifest.full.json"
+    ],
+    "argv_matches_sealed_plain_plan": true,
+    "compiler_source": {
+      "bytes": 188457,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-player-client-diagnosis-bun/source-79df/comp-probe.ts",
+      "sha256": "7e3d59ff4e67347d2e2775278f86ec588a8f5e31e6d7915f8cb86af43ceb029a"
+    },
+    "config": {
+      "bytes": 53,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-player-client-diagnosis-bun/probe.bunfig.toml",
+      "sha256": "78e3135499cf0bc11cd9fd69571048502ab9d4227b4435fa73ef58239ef698d4"
+    },
+    "control_receipt": {
+      "bytes": 2305,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-player-client-diagnosis-bun-watchdog/plain-graph-result.full.json",
+      "sha256": "3dd0f76c43d6997c55ecf99c68da74c0dfb5178e866c8f3d0ba5416c676e7d91"
+    },
+    "default_plan": {
+      "bytes": 1708,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-player-client-diagnosis-bun/default-plan.full.json",
+      "sha256": "c18349709f1c5e7b57ea0c3bd45a5b5519f541a28deea103e1c5f4b0d9b9753e"
+    },
+    "driver": {
+      "bytes": 2404,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-player-client-diagnosis-bun/source-79df/probe.ts",
+      "sha256": "cea7fb3f9f947ad896f339f67b4f5b6173f8917f225ec37c6b9a4fbfa47c0557"
+    },
+    "driver_has_conditional_main_guard": false,
+    "elapsed_seconds": 0.010486667044460773,
+    "exact_empty_control_cause": "unknown; no demonstrated path/main-guard explanation",
+    "exit_code": 0,
+    "first_load_marker": "unconditional synchronous fs.writeSync after static imports and manifest checks; before book_load await",
+    "fresh_runtime_or_source_launches": 0,
+    "imports_Bend_CLI_main": false,
+    "next_diagnostic_proposal": "Separate bounded zero-compiler-import source sentinel must prove actual source URL/argv/runtime entry before any graph control; then dynamic compiler imports after an entry marker. Not executed or authorized.",
+    "parser_source": {
+      "bytes": 137761,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-player-client-diagnosis-bun/source-79df/bend.ts",
+      "sha256": "7deae3693eb896f33c73867081b99d2c6f3ed3b57e77e55eb5f6260840dd0e63"
+    },
+    "runtime_version_observations": {
+      "bytes": 2792,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-player-client-diagnosis-bun/runtime-versions.full.json",
+      "sha256": "f2dc6a7c51032f4aef3acf481e0a0a3c11256db15d30444e1c16339dcff357db"
+    },
+    "source_entry_execution_established": false,
+    "stderr_bytes": 0,
+    "stdout_bytes": 0
+  },
+  "sample": {
+    "count": 1,
+    "elapsed_seconds": 2.1338550001382828,
+    "emitter_pid": 64209,
+    "errors": [],
+    "exit_code": 0,
+    "group_exists_after_cleanup": false,
+    "leader_reaped": true,
+    "peak_physical_footprint_text": "11.5G",
+    "physical_footprint_text": "11.4G",
+    "pipe_output_cap_bytes": 8388608,
+    "raw_receipt": {
+      "bytes": 1617,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-player-presenter-build-observer/attempt-1/installed-emitter-sample-graph-result.full.json",
+      "sha256": "83bbf98565fbbe91dd5f4718d560eb28d6f84931082766c1ddd1a5a620144bfd"
+    },
+    "remaining_build_seconds": 535.5082282498479,
+    "requested_seconds": 1,
+    "sampler_pid_and_group": 64409,
+    "source_phase_attribution": "unknown: important Bend and unknown/JIT frames unsymbolized",
+    "stack": {
+      "bytes": 9102018,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-player-presenter-build-observer/attempt-1/emitter-64209.full.txt",
+      "sha256": "496a9b59b38cb539a2a3e3fbbcb336e94b1b6dd6a83ab465c40749017df34026"
+    },
+    "stack_file_cap_applies": false,
+    "supervisor_max_seconds": 12
+  },
+  "source_and_admission": {
+    "dependency_count": 100,
+    "entry": {
+      "bytes": 3501,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/resource_player_presented_client.bend",
+      "sha256": "724ec97fae5052b2a079fb1e712ac870cdb280b72fa50af4ef512cb3c6d36248"
+    },
+    "installed_compiler": {
+      "path": "/Users/chuah/.bend/bin/bend",
+      "sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e"
+    },
+    "kind_counts": {
+      "base": 1,
+      "bend": 65,
+      "native-effect": 34
+    },
+    "manifest_sha256": "4429aad7937c13b2e0d0d618fff8f20abb9b0158473d0a67c9233689eed28087",
+    "preflight": {
+      "bytes": 27729,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/resource-player-presented-client-preflight.json",
+      "sha256": "3f651ac47b64fa302a98d88ecc2208b33f848b664898e56a99024f0581354fc9"
+    },
+    "presenter": {
+      "bytes": 11731,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/resource_player_presenter.bend",
+      "sha256": "d0792889f3dd35bdc9aea1b8effb7120b2b639658d1d518aaec1b213e8a1ad54"
+    },
+    "ready": {
+      "bytes": 10149,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/resource-player-presented-client-ready.json",
+      "sha256": "5a41a04879e7efbe802f59ff0d36bc83bb9ccf39998505d0508b02935ba70ac8"
+    },
+    "runner": {
+      "bytes": 57271,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_resource_player_presented_client.py",
+      "sha256": "d11bcbcf19310f47a0448042ed9c825156df75e2f0984156a1699c6c74a7b52d"
+    },
+    "seal": {
+      "bytes": 40767,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-player-presented-client/seal.full.json",
+      "sha256": "3ed26488a6cb05fedbcc4e3e07537514d1801e6c110605b818e1556305e442d0"
+    }
+  },
+  "status": "installed_consumer_failed_without_artifact_observer_complete"
+}

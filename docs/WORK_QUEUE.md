@@ -7,21 +7,59 @@ fixture is a verification instrument; none satisfies a gameplay completion gate.
 
 1. **Resource-backed native saved client.** Compiler diagnosis: inventory_kernel;
    resource scene/presenter consumer: client_render; actor/session join: lead.
-   Next bounded operation is the sealed 90-second Bun graph diagnostic of the
-   real plain entry, with the boxed entry conditional on validated control
-   success. bend_json owns its short admission review. The two previous
-   600-second emission timeouts and the Node loader failure establish no compiler
-   bottleneck. The next decision follows measured load/check/native-graph phases;
-   no identical ten-minute retry. Required outcome: actual integrated executable,
+   The sealed Bun graph diagnostic exited in 0.010487 seconds without executing
+   the loader; its empty output failed the protocol and the boxed run was skipped.
+   The compiler bottleneck remains unknown. The new monomorphic presented entry
+   passes ordinary checking with its explicit native boundaries. Its sealed
+   build-only runner and narrow outer-cleanup ownership fix passed admission.
+   Its single installed build ended at 600.170778 seconds without C or an
+   executable. A supervisor PermissionError prevented preservation of the child
+   streams/return code; those are unavailable. All owned processes are absent.
+   The passive observer saw only the installed emitter, with no native Clang;
+   the unsymbolized sample provides no compiler-phase cause. Preserve this
+   failed generation. The changed integration now uses the actual saved
+   LocalPlayer actor and a separate Bend resource/window renderer. The strict
+   private wire, complete Pose-eye world sample and renderer pass ordinary
+   checks, including97backend/60entry/51presenter declared native boundaries.
+   The paired generation is sealed (ready3465023b, payload7ee6a82e), with six
+   meaningful actual-Local-record pixel views, full actor/render source closures
+   and bounded no-retry build supervisors. Source admission passes; final host
+   admission precedes one 600-second build per entry. No retry of the
+   same monolithic source generation.
+   Required outcome: actual integrated executable,
    reproducible launch, live TCP edits, resource/visibility frames and durable
    save/reload regression, preserving the current client baseline.
 2. **Authoritative saved LocalPlayer client.** local_phase_runtime owns the
    phase API; world_bridge owns the new runtime facade; macos_platform owns the
    complete supported local record/storage codec; lead owns the session and
-   client entry. The concrete API blocker is deriving owned ground/attributes
-   after the actual sprint decision without duplicating input or world queries.
-   Preserve existing phase/reference generations and verify the final consumer
-   generation. Required outcome: one shared 20 Hz input/tick/save actor, ordered
+   client entry. The staged API now makes the control decision once, then threads
+   the same owned world through the fixed-profile facts provider before travel.
+   The facade and complete local codec pass ordinary checks. The full client
+   entry has no type/law errors and exactly 89 declared unsafe/foreign boundaries;
+   its test executable is sealed around actual TCP/MCP input, ticking,
+   full-record save/restart and malformed-owner recovery. The frozen 755-case
+   codec corpus will run twice through that same executable. The sealed composite
+   includes unchanged phase cases and three observable pre-callback guards;
+   producer admission passed all 2,633 pins and 111 imports. The executable
+   built once in 558.354 seconds (SHA1958e777…). Its corrected same-binary run
+   passed eight actual outcomes, real TCP/MCP protocol/save recovery and thirty
+   exact bundles before a malformed-owner timer diagnostic changed the full
+   comparison baseline. Independent source/trace review supports explicitly
+   verifying that diagnostic transition before keeping all strict preservation
+   checks. That prime passed all four complete-owner modes. The next run passed
+   44 corrupted startups, recovery/fresh startup and created-stage atomic
+   kill/restart (33 exact saves, 22 checks), then stopped at the written-stage
+   host wait. A reproduced buffered-reader/fd-readiness hazard supports a raw-fd
+   stage reader repair; the actual missing buffered bytes remain unavailable.
+   That narrow adoption passed the complete first primary suite (26checks,
+   37exact saves, 50refusals including all five interruption/restarts), and the
+   frozen codec passed twice (1,510executions). The phase harness then stopped on
+   its tick0 admission against a fresh tick0 Core; no incomplete-prefix comparison
+   is accepted. Correcting the fixture requires a new executable, queued after
+   the actual resource pair. Facade and second primary suite remain unrun. No
+   current harness/source/helper edits. Preserve existing
+   phase/reference generations and verify the final consumer generation.
+   Required outcome: one shared 20 Hz input/tick/save actor, ordered
    Core/common/input/travel/rotation/pose phases, exact supported metadata across
    save/restart, and real TCP/MCP client regression. Required reset rays still
    reject until a checked supplier is integrated; no fabricated MISS.
@@ -29,8 +67,9 @@ fixture is a verification instrument; none satisfies a gameplay completion gate.
 Finish in-flight slab/fall host repairs and freeze their useful evidence. Defer
 new standalone feature libraries, expanded reference inventories and peripheral
 receipt polish unless they unblock these two outcomes or fix a concrete defect.
-At most two heavy jobs may run; both slots are currently free and require an
-explicit grant. Foreground validation remains pending the user's coordination;
+At most two heavy jobs may run; both slots are currently free after the retained
+LocalPlayer build and retained partial native runs. Foreground
+validation remains pending the user's coordination;
 no duplicate request or unsolicited foreground launch.
 
 ## Current critical path
@@ -44,7 +83,8 @@ no duplicate request or unsolicited foreground launch.
    and raw record restoration. The owned LocalPlayer input/travel/finish lanes
    pass separately. Fresh full-tick phase evidence fixes scheduler, input-cache,
    support/minor/fall, late pose/dimensions and cached eye ordering; the composed
-   local runtime still needs those authorities and lifecycle consumers.
+   local runtime is now wired into the session/client; native transport and
+   lifecycle regression remains pending.
    Owned local move/fall history now passes two native comparisons with full
    failure rollback. Loaded-world travel and conditional pose/dimension replay
    are being prepared around those frozen authorities.
@@ -65,7 +105,12 @@ no duplicate request or unsolicited foreground launch.
    neighbor-culled resource frames also pass exact geometry/pixel/owner checks.
    The first resource-client build timed out during C emission without an
    artifact; its prepared integration scenarios remain unexecuted. Diagnose that
-   frozen generation before changing the frame representation or building again.
+   frozen generation remains preserved. Its host loader diagnostics failed to
+   execute source. The changed monomorphic presenter also failed its one bounded
+   build. The next changed-source consumer separates the actual saved LocalPlayer
+   actor from the Bend resource/window process, with a strict immutable sample
+   protocol. Both entries pass ordinary source checking; freeze and admit the
+   paired host generation before bounded native builds and pixel/save regression.
    Next: connect that pipeline to native client frames → atlas,
    world lighting and complete presentation.
 4. Exact signed-cell snapshot caching and camera-relative F64 subtraction before

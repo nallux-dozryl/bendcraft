@@ -1,5 +1,60 @@
 # Decisions
 
+## 2026-10-04: make integration the immediate execution path
+
+Concentrate the next heavy jobs on the resource-presented saved client and the
+authoritative LocalPlayer session. Preserve the working plain Player client.
+The local facade uses one staged control decision, derives fixed-profile ground
+and movement facts from the same owned world, then resumes the existing travel
+and finish phases. The session transfers the sole engine and complete supported
+record through the existing atomic extension transaction, carrying all transient
+ownership tails separately and checking malformed runtime state after existing
+schema/capability gates. Physical buttons/mouse and diagnostics reset at startup;
+sampled local keys, pose, histories and common metadata are durable.
+
+Run the frozen codec and phase cases through the same session test executable
+where practical. Require actual TCP/MCP input/tick/save/restart and independent
+resource-frame comparisons before recording native integration as verified.
+Defer further standalone features and reference inventories unless they remove
+a concrete integration blocker. Public typed Driver values remain a trusted
+internal composition interface; the actual Scene binds one neutral profile and
+the transport exposes no caller-supplied movement facts.
+
+The LocalPlayer composite built successfully without retry in 558.354 seconds.
+Preserve that exact native producer while repairing host baselines. The first
+stopped run recovered the wrong finite-scene block (stone instead of the Java
+fixture's air); a narrow host correction made that recovery pass. The second
+stopped run compared a malformed owner across an asynchronous paused timer
+diagnostic. Source and raw trace review locate the only changed field at the
+root diagnostic: none becomes local-player-tail:0 for State/Motion tails before
+the pause gate. Explicitly verify this bounded, monotonic, whole-projection
+transition, then retain all original full-owner/transient/durable comparisons.
+Metadata/Pose paused owners must retain no diagnostic. Never remove diagnostic
+fields, accept arbitrary errors, or use simulation.step to prime a different
+scheduled rejection. Preserve both stopped generations and their raw outputs.
+
+The admitted diagnostic prime passed all four owner modes and the same executable
+then passed 44 startup corruption refusals and created-stage publication kill/
+restart. Written-stage waiting stopped at 20 seconds. The pending payload is
+byte-exact complete, while retained stdout contains only the earlier marker;
+the dead process's Python buffer was not preserved. A same-process pipe control
+reproduces `readline` prefetch hiding a later marker from `select(fd)`, and raw-fd
+`communicate` drain can lose that buffered marker. Preserve this qualified cause
+and correct only the host waiter/capture with explicit raw bytes and one fixed
+20-second deadline. All stage, SIGKILL, lease, old/new bytes, orphan and restart
+assertions remain exact; no production failure or full-suite pass is inferred.
+
+The admitted raw-fd waiter completed all five interruption/restart stages. The
+first primary Session suite passes 26 checks, 37 exact bundles and 50 refusals;
+the unchanged755-case codec passes twice. Shared phase execution then stops at
+a frozen harness setup error: it admits stamp tick0 against fresh Core tick0,
+which requires a future tick. No runtime due-crawl result or partial-prefix pass
+is fabricated. A fixture correction to tick1 preserves the expected due edit
+but needs a new executable. Hold that producer and its reusable helpers intact
+while building/exercising the actual resource pair; queue the fixture correction
+and complete component replay afterward. Immutable preparation docs retain
+their original pre-run wording; current native status is recorded separately.
+
 ## 2026-10-04: preserve producers during verifier repairs
 
 An orchestration correction does not become the original native producer.
@@ -32,6 +87,35 @@ emission using a provenance-pinned, capped read-only source-copy diagnostic.
 Source-copy Node observations cannot be attributed to the installed compiler's
 JavaScript engine or reported as a build speedup. A further native client build
 requires evidence that justifies its changed generation.
+
+The subsequent sealed Bun diagnostic exited without running the instrumented
+loader and was rejected; the conditional boxed diagnostic was skipped. It
+provides no compiler-phase attribution. A new monomorphic presenter with named
+continuations around the same resource/visibility pipeline now passes ordinary
+checking. Admit one changed-source installed build, with a passive observer of
+actual C-emission and Clang processes, then stop at the first failure. This is a
+bounded experiment on the callback layout, not a claimed compiler fix.
+
+That experiment ended after 600.170778 seconds without C or an executable.
+The supervisor raised PermissionError during cleanup before retaining child
+streams/return code; only its full wrapper/phase failure and passive observations
+are available. Owned processes were subsequently observed absent. Preserve the
+generation, report the missing receipt explicitly, and do not re-emit it.
+Evaluate a transport-separated Bend resource/presentation consumer around the
+same sole saved actor, or repair the diagnostic launch protocol before measuring
+source phases. Python remains orchestration and supplies no game renderer.
+
+Proceed with the real Bend actor/resource-process split. The backend wraps the
+actual LocalPlayer save session, public API and 50 ms timer. A private authenticated
+connection receives one immutable Pose-eye sample per actor operation and submits
+ordered input/release packets. An actor-owned epoch, next sequence and 100-pulse
+lease prevent stale sockets from releasing newer controls and release held input
+when a renderer stalls. The renderer owns loaded resource assets, the connection
+and native Window, using the existing geometry/image pipeline. No renderer read
+adds ticks. Explicit stdin stop releases controls and exits the owning process;
+save acknowledgment remains a separate public operation. This changed structure
+does not establish native compilation, presentation, response latency or gameplay
+parity until the actual paired entry passes its integration suite.
 
 ## 2026-10-04: visible native acceptance is explicit
 

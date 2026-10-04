@@ -1,0 +1,43 @@
+{
+  "results": [
+    {
+      "error": "missing/changed fixture: /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-record/generation-1/host-guards/0000.nbt",
+      "name": "corrupted-input-read-only-refusal",
+      "unchanged": true
+    },
+    {
+      "error": "existing attempt artifacts: prior-attempt",
+      "name": "prior-attempt-refused-before-launch",
+      "no_stream_created": true,
+      "unchanged": true
+    },
+    {
+      "name": "bounded-process-group-timeout",
+      "pids": [
+        58954,
+        58955
+      ],
+      "receipt": {
+        "argv": [
+          "/opt/homebrew/opt/python@3.14/bin/python3.14",
+          "-c",
+          "import subprocess,sys,time,os; child=subprocess.Popen([sys.executable,\"-c\",\"import time;time.sleep(30)\"]); print(os.getpid(),child.pid,flush=True);time.sleep(30)"
+        ],
+        "exit_code": -15,
+        "pid": 58954,
+        "seconds": 0.3135047499090433,
+        "stderr": "build/local-player-record/generation-1/host-guards/watchdog.stderr",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout": "build/local-player-record/generation-1/host-guards/watchdog.stdout",
+        "stdout_sha256": "2be35e6f2a1603a528f9c70e94944962065846e3cbfc121fe4c68d47f8de2c42",
+        "timed_out": true,
+        "timeout_seconds": 0.3
+      },
+      "remaining": [],
+      "stderr": "",
+      "stdout": "58954 58955\n",
+      "timed_out": true
+    }
+  ],
+  "scope": "Host orchestration guards only; no Bend/native/compiler/kernel/Java/foreground execution"
+}

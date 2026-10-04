@@ -1,0 +1,63 @@
+{
+  "artifacts": {
+    "C_bytes_or_native_flags": "not produced/observed; preliminary driver probe is not an actual native invocation",
+    "actual_native_clang_phase_observed": false,
+    "build_attempt_receipt_exists": false,
+    "completed_guarded_build_receipt_exists": false,
+    "observer_saw_original_or_transformed_C": false,
+    "requested_native_executable_exists": false
+  },
+  "automatic_retries": 0,
+  "available_raw": {
+    "build-only.stderr": "b26ba2065ee8462ce35f68deb4fc5333d6884ef3d48d92a4e469819fc57d0994",
+    "build-only.stdout": "dd372402fa1e4aa8610a65c7aab66eaa00e994504246f31b2a53918a1a97fd34",
+    "execution-phases.full.json": "8351ec9ce123c100a88600c73882158b113f1deba66f916eece3a8321947f479"
+  },
+  "child_stdout_stderr": "unavailable because bounded_group raised before returning/capturing its result; not asserted empty",
+  "date": "2026-10-04T04:14:46.571555+00:00",
+  "exact_exception_callsite": "unobserved; caught without traceback",
+  "first_attempt_preserved": {
+    "path": "evidence/resource-player-presented-client-native.json",
+    "sha256": "6e88c5cfb878dddeff303f7c0a7f56fd11c9a07020b42c446b60779a5ed68366"
+  },
+  "generation": {
+    "preflight_sha256": "3f651ac47b64fa302a98d88ecc2208b33f848b664898e56a99024f0581354fc9",
+    "production_reference_expected_pixels_unchanged": true,
+    "read_only_frozen_audit_after_attempt": "passed",
+    "ready_sha256": "5a41a04879e7efbe802f59ff0d36bc83bb9ccf39998505d0508b02935ba70ac8",
+    "runner_sha256": "d11bcbcf19310f47a0448042ed9c825156df75e2f0984156a1699c6c74a7b52d",
+    "seal_sha256": "3ed26488a6cb05fedbcc4e3e07537514d1801e6c110605b818e1556305e442d0",
+    "source_dependency_count": 100
+  },
+  "group_cleanup": {
+    "explicit_slot_A_released": true,
+    "group": 64165,
+    "installed_emitter_pid": 64209,
+    "members": [],
+    "scan_monotonic": 5660831.452752041,
+    "wrapper_exit_code": 1,
+    "wrapper_reaped": true,
+    "wrapper_tool_session": 39095
+  },
+  "group_cleanup_receipt": {
+    "path": "build/resource-player-presented-client/post-build-group.full.json",
+    "sha256": "f009b561644ec7beec26be120e1b61946a3f443017b6aa298b45a96f55ebe50a"
+  },
+  "interpretation": "The changed integrated consumer remains unbuilt. No speedup, compiler cause, game/source mismatch or new CPU pixel/presentation result is established.",
+  "kernel_verdicts": 0,
+  "native_clients_or_windows": 0,
+  "new_emissions": 1,
+  "new_java_executions": 0,
+  "new_native_artifacts": 0,
+  "next_action": "lead decision; no identical retry or automatic source/compiler/oracle repair",
+  "observed_deadline": 5660605.325206208,
+  "observer_raw": {
+    "path": "build/resource-player-presenter-build-observer/attempt-1/result.full.json",
+    "separate_owner": "inventory_kernel; compact sealed result follows separately",
+    "sha256": "79d67aa4512e23fd29d216390b7ab1d18882619b9394a16210f2e2d88f71b7a8"
+  },
+  "phase_seconds": 600.170777708292,
+  "status": "failed-build-at-bound-cleanup-receipt-gap",
+  "supervisor_error": "[Errno 1] Operation not permitted",
+  "supervisor_error_type": "PermissionError"
+}
