@@ -77,6 +77,22 @@ Chunk publication must preserve already resident sections/edits and saved
 generation identity through the existing demand facade. No normal-population
 switch is justified before these joins are implemented and verified.
 
+The current common native consumer now passes the pinned Java comparisons for
+compiled intervals and MinMax paths, recursive splines, shared router outputs,
+the six-axis climate/loaded-biome join and actual density columns. Its interval
+suite compares 150 raw binary64 coordinate values at the actual noise boundary,
+288 density floats, 48 range bounds and 96 shipped sloped-cheese column values.
+The spline suite compares 289 floats and 36 ranges. The router suite compares
+720 eight-root floats, 168 climate floats and 168 quantized longs, 28 biome
+selections and 18 Column values. These use exact words, not tolerances. The
+reviewed private CPU emitter built one immutable 49-file Bend/Base closure;
+its 117 loaded/referenced native and foreign files also remain pinned. All
+original inputs matched at comparison time. The separate suite receipts and
+compiler boundary are linked from the interval, spline and router documents.
+These are numerical observations of the supported production consumers;
+interpolation, contextual density functions and complete normal population
+remain open.
+
 Verification commands:
 
 ```sh
