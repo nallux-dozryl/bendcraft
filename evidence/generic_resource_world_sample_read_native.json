@@ -1,4 +1,14 @@
 {
+  "aggregate_validation": {
+    "complete_core_equal_checks": 74,
+    "direct_wire_refusals": 6,
+    "full_wire_refusals": 12,
+    "native_invocations": 18,
+    "observations": 74,
+    "observed_cells": 8446,
+    "sampler_refusals": 36,
+    "sampler_successes": 38
+  },
   "checked_source": true,
   "driver": {
     "bytes": 21173,
@@ -10,7 +20,500 @@
     "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/generic_resource_world_sample_read.bend",
     "sha256": "e23c4de6b204545351b9187f7dbd865f35d1dfe629a921c31c052c1296c871e9"
   },
-  "native_executed": false,
+  "native_binary_sha256": "d1529112e0a05ea66a303953d591191b283acdabc48035160863907647d6899e",
+  "native_build": {
+    "C": {
+      "bytes": 8236488,
+      "sha256": "4d3e3396d322f5875cce1381c837825f864c8a519e7d8f9b87a15e7b7f185725"
+    },
+    "basis": {
+      "bounded_runner_sha256": "5fa5422e8ab211a66f242cada835ee196b133d4489ea6ce9d0e8a6bbe539bbde",
+      "emission_receipt_sha256": "b83d2f5944a7167155d167bcf7a5d4e6d1c95b79c955d790a26a46f7c5cb8c18",
+      "original_compiler_sha256": "32fb66e09f608ce9e4b173384bcfeec453db8c5bc96650e26ad861bef815a8d9",
+      "private_compiler_sha256": "832b94d488828e7befc63cadc81b1932d7e5cd782f1679363111ea79e951543e",
+      "source_api_sha256": "7deae3693eb896f33c73867081b99d2c6f3ed3b57e77e55eb5f6260840dd0e63"
+    },
+    "clang": {
+      "command": [
+        "/usr/bin/env",
+        "SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+        "/usr/bin/clang",
+        "-std=c11",
+        "-O3",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-read-tests/generation-002/private-001/diagnostic.c",
+        "-lpthread",
+        "-lm",
+        "-o",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-read-tests/generation-002/native"
+      ],
+      "exit_code": 0,
+      "leader_reaped": true,
+      "pid": 42510,
+      "process_group": 42510,
+      "seconds": 10.748,
+      "status": "passed",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tag": "native-private-clang",
+      "timeout_seconds": 300,
+      "timeout_signals": []
+    },
+    "emission": {
+      "command": [
+        "/Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-read-tests/generation-002/private-001/run.py"
+      ],
+      "exit_code": 0,
+      "leader_reaped": true,
+      "pid": 41471,
+      "process_group": 41471,
+      "seconds": 67.653,
+      "status": "passed",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "fc5963502450f0bfc68f196aa4a0e65d192094d612b03fe412d666f22211f701",
+      "tag": "native-private-emission",
+      "timeout_seconds": 620,
+      "timeout_signals": []
+    },
+    "loaded_source_pins_sha256": "931e04390853c710c5e98c059a3d01996df7d45569fc003301c34056fae98883",
+    "manifest_sha256": "c98b13eb9dcd640805cc716fa5dbf0de926397a58ea25d617e7c0f9220364d65",
+    "producer_receipt_sha256": "a1d6e95b55d3eab771ff080cad12ea22e2197774c7c2624e964c778a6b0a1d55",
+    "product_cache_promoted": false,
+    "route": "measured-private-source-api-producer",
+    "sampled_peak_rss_bytes": 4747493376,
+    "source_map_sha256": "2dc794facdc90b2669cc614ca0fd0b5d0641b3efebcd29eeb197e42d99dac86f"
+  },
+  "native_executed": true,
+  "native_runs": [
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-read-tests/generation-002/native",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"signed-raw-air-slab-stairs-unknown\",\"observations\":[{\"name\":\"signed-first\"},{\"name\":\"signed-repeated\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":2,\"height\":2,\"width\":2,\"x\":4294967295,\"y\":0,\"z\":4294967295},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[{\"state\":0,\"x\":4294967295,\"y\":0,\"z\":4294967295},{\"state\":0,\"x\":0,\"y\":0,\"z\":4294967295},{\"state\":0,\"x\":4294967295,\"y\":0,\"z\":0},{\"state\":0,\"x\":0,\"y\":0,\"z\":0}],\"writes\":[{\"state\":15178,\"x\":4294967295,\"y\":0,\"z\":4294967295},{\"state\":5532,\"x\":0,\"y\":0,\"z\":4294967295},{\"state\":0,\"x\":4294967295,\"y\":1,\"z\":4294967295},{\"state\":1,\"x\":0,\"y\":1,\"z\":4294967295},{\"state\":4294967295,\"x\":4294967295,\"y\":0,\"z\":0},{\"state\":0,\"x\":0,\"y\":0,\"z\":0},{\"state\":15178,\"x\":4294967295,\"y\":1,\"z\":0},{\"state\":5532,\"x\":0,\"y\":1,\"z\":0}],\"yaw\":1056964608}",
+        "{\"cache\":\"bad\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"aliased-palette-invalid-cache-ignored\",\"observations\":[{\"name\":\"aliased-palette-invalid-cache-ignored\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"aliases\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":2,\"height\":2,\"width\":2,\"x\":4294967295,\"y\":0,\"z\":4294967295},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[{\"state\":0,\"x\":4294967295,\"y\":0,\"z\":4294967295},{\"state\":0,\"x\":0,\"y\":0,\"z\":4294967295},{\"state\":0,\"x\":4294967295,\"y\":0,\"z\":0},{\"state\":0,\"x\":0,\"y\":0,\"z\":0}],\"writes\":[{\"state\":15178,\"x\":4294967295,\"y\":0,\"z\":4294967295},{\"state\":5532,\"x\":0,\"y\":0,\"z\":4294967295},{\"state\":0,\"x\":4294967295,\"y\":1,\"z\":4294967295},{\"state\":1,\"x\":0,\"y\":1,\"z\":4294967295},{\"state\":4294967295,\"x\":4294967295,\"y\":0,\"z\":0},{\"state\":0,\"x\":0,\"y\":0,\"z\":0},{\"state\":15178,\"x\":4294967295,\"y\":1,\"z\":0},{\"state\":5532,\"x\":0,\"y\":1,\"z\":0}],\"yaw\":1056964608}",
+        "{\"cache\":\"bad\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"absent-palette-invalid-cache-ignored\",\"observations\":[{\"name\":\"absent-palette-invalid-cache-ignored\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":2,\"height\":2,\"width\":2,\"x\":4294967295,\"y\":0,\"z\":4294967295},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[{\"state\":0,\"x\":4294967295,\"y\":0,\"z\":4294967295},{\"state\":0,\"x\":0,\"y\":0,\"z\":4294967295},{\"state\":0,\"x\":4294967295,\"y\":0,\"z\":0},{\"state\":0,\"x\":0,\"y\":0,\"z\":0}],\"writes\":[{\"state\":15178,\"x\":4294967295,\"y\":0,\"z\":4294967295},{\"state\":5532,\"x\":0,\"y\":0,\"z\":4294967295},{\"state\":0,\"x\":4294967295,\"y\":1,\"z\":4294967295},{\"state\":1,\"x\":0,\"y\":1,\"z\":4294967295},{\"state\":4294967295,\"x\":4294967295,\"y\":0,\"z\":0},{\"state\":0,\"x\":0,\"y\":0,\"z\":0},{\"state\":15178,\"x\":4294967295,\"y\":1,\"z\":0},{\"state\":5532,\"x\":0,\"y\":1,\"z\":0}],\"yaw\":1056964608}",
+        "{\"cache\":\"stale\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"matching-stale-cache-and-raw-change\",\"observations\":[{\"name\":\"stale-first\"},{\"name\":\"stale-after-change\",\"writes\":[{\"state\":5532,\"x\":4294967295,\"y\":0,\"z\":4294967295}]},{\"name\":\"stale-repeated\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"normal\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":2,\"height\":2,\"width\":2,\"x\":4294967295,\"y\":0,\"z\":4294967295},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[{\"state\":0,\"x\":4294967295,\"y\":0,\"z\":4294967295},{\"state\":0,\"x\":0,\"y\":0,\"z\":4294967295},{\"state\":0,\"x\":4294967295,\"y\":0,\"z\":0},{\"state\":0,\"x\":0,\"y\":0,\"z\":0}],\"writes\":[{\"state\":15178,\"x\":4294967295,\"y\":0,\"z\":4294967295},{\"state\":5532,\"x\":0,\"y\":0,\"z\":4294967295},{\"state\":0,\"x\":4294967295,\"y\":1,\"z\":4294967295},{\"state\":1,\"x\":0,\"y\":1,\"z\":4294967295},{\"state\":4294967295,\"x\":4294967295,\"y\":0,\"z\":0},{\"state\":0,\"x\":0,\"y\":0,\"z\":0},{\"state\":15178,\"x\":4294967295,\"y\":1,\"z\":0},{\"state\":5532,\"x\":0,\"y\":1,\"z\":0}],\"yaw\":1056964608}"
+      ],
+      "exit_code": 0,
+      "leader_reaped": true,
+      "pid": 42582,
+      "process_group": 42582,
+      "seconds": 1.351,
+      "status": "passed",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "5f6304df562936243a02b6941571a083692de793a77e8dab53c45b2d31b0ade8",
+      "tag": "native-1-000",
+      "timeout_seconds": 180,
+      "timeout_signals": []
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-read-tests/generation-002/native",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"default-state-cell-appearance-precedence\",\"observations\":[{\"name\":\"default-state-cell-appearance-precedence\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"cells\":[{\"appearance\":[[[0,4288181844]],4294967295,1,0,false,255],\"x\":4294967295,\"y\":0,\"z\":4294967295},{\"appearance\":[[[0,4289449216]],4294967295,0,0,false,128],\"x\":0,\"y\":1,\"z\":4294967295}],\"default\":[[[0,4278256131]],4279312947,1,1,true,7],\"seed\":4294967295,\"states\":[{\"appearance\":[[[0,4288721088]],4282668390,0,0,false,64],\"state\":15178}]},\"region\":{\"depth\":2,\"height\":2,\"width\":2,\"x\":4294967295,\"y\":0,\"z\":4294967295},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[{\"state\":0,\"x\":4294967295,\"y\":0,\"z\":4294967295},{\"state\":0,\"x\":0,\"y\":0,\"z\":4294967295},{\"state\":0,\"x\":4294967295,\"y\":0,\"z\":0},{\"state\":0,\"x\":0,\"y\":0,\"z\":0}],\"writes\":[{\"state\":15178,\"x\":4294967295,\"y\":0,\"z\":4294967295},{\"state\":5532,\"x\":0,\"y\":0,\"z\":4294967295},{\"state\":0,\"x\":4294967295,\"y\":1,\"z\":4294967295},{\"state\":1,\"x\":0,\"y\":1,\"z\":4294967295},{\"state\":4294967295,\"x\":4294967295,\"y\":0,\"z\":0},{\"state\":0,\"x\":0,\"y\":0,\"z\":0},{\"state\":15178,\"x\":4294967295,\"y\":1,\"z\":0},{\"state\":5532,\"x\":0,\"y\":1,\"z\":0}],\"yaw\":1056964608}",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"first-missing-section\",\"observations\":[{\"name\":\"first-missing-section\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":2,\"height\":2,\"width\":2,\"x\":4294967295,\"y\":0,\"z\":4294967295},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[],\"writes\":[],\"yaw\":1056964608}",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"late-missing-section\",\"observations\":[{\"name\":\"late-missing-section\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":2,\"height\":2,\"width\":2,\"x\":4294967295,\"y\":0,\"z\":4294967295},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[{\"state\":0,\"x\":4294967295,\"y\":0,\"z\":4294967295}],\"writes\":[{\"state\":15178,\"x\":4294967295,\"y\":0,\"z\":4294967295}],\"yaw\":1056964608}",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"all-air-still-read\",\"observations\":[{\"name\":\"all-air-still-read\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":2,\"height\":2,\"width\":2,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[{\"state\":0,\"x\":0,\"y\":0,\"z\":0}],\"writes\":[],\"yaw\":1056964608}"
+      ],
+      "exit_code": 0,
+      "leader_reaped": true,
+      "pid": 42613,
+      "process_group": 42613,
+      "seconds": 0.45,
+      "status": "passed",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "dca304d9bbe218e4fce766a83af50db8e00552314387cfc91ec1e679540b4fce",
+      "tag": "native-1-004",
+      "timeout_seconds": 180,
+      "timeout_signals": []
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-read-tests/generation-002/native",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "{\"cache\":\"none\",\"identity\":\"test:registry-vx\",\"name\":\"nonempty-custom-registry-token-retained\",\"observations\":[{\"name\":\"nonempty-custom-registry-token-retained\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":1,\"height\":1,\"width\":1,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[{\"state\":0,\"x\":0,\"y\":0,\"z\":0}],\"writes\":[],\"yaw\":1056964608}",
+        "{\"cache\":\"none\",\"identity\":\"\",\"name\":\"empty-registry-token\",\"observations\":[{\"name\":\"empty-registry-token\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":1,\"height\":1,\"width\":1,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[],\"writes\":[],\"yaw\":1056964608}",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"zero-width-before-missing\",\"observations\":[{\"name\":\"zero-width-before-missing\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":1,\"height\":1,\"width\":0,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[],\"writes\":[],\"yaw\":1056964608}",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"axis-above-sixteen\",\"observations\":[{\"name\":\"axis-above-sixteen\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":1,\"height\":1,\"width\":17,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[],\"writes\":[],\"yaw\":1056964608}"
+      ],
+      "exit_code": 0,
+      "leader_reaped": true,
+      "pid": 42614,
+      "process_group": 42614,
+      "seconds": 0.449,
+      "status": "passed",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "6fbdebdeb4bff3780cf9646fef1a843b8c24dc7f1c4e6c3b3abd55a1fbc6622a",
+      "tag": "native-1-008",
+      "timeout_seconds": 180,
+      "timeout_signals": []
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-read-tests/generation-002/native",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"signed-positive-axis-overflow\",\"observations\":[{\"name\":\"signed-positive-axis-overflow\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":1,\"height\":1,\"width\":2,\"x\":2147483647,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[],\"writes\":[],\"yaw\":1056964608}",
+        "{\"cache\":\"none\",\"identity\":\"\",\"name\":\"region-before-origin-camera-identity\",\"observations\":[{\"name\":\"region-before-origin-camera-identity\"}],\"origin\":[2146435072,0,0,0,0,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":1,\"height\":1,\"width\":0,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[],\"writes\":[],\"yaw\":2139095040}",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"infinite-origin-before-camera\",\"observations\":[{\"name\":\"infinite-origin-before-camera\"}],\"origin\":[2146435072,0,0,0,0,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":1,\"height\":1,\"width\":1,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[],\"writes\":[],\"yaw\":2139095040}",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"nan-origin\",\"observations\":[{\"name\":\"nan-origin\"}],\"origin\":[2146959360,0,0,0,0,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":1,\"height\":1,\"width\":1,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[],\"writes\":[],\"yaw\":1056964608}"
+      ],
+      "exit_code": 0,
+      "leader_reaped": true,
+      "pid": 42625,
+      "process_group": 42625,
+      "seconds": 0.448,
+      "status": "passed",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "f5d40fedbead6956191e90f3fb2caf1e2a1efbe5623f354d801259b388eaf188",
+      "tag": "native-1-012",
+      "timeout_seconds": 180,
+      "timeout_signals": []
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-read-tests/generation-002/native",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"origin-at-positive-outside\",\"observations\":[{\"name\":\"origin-at-positive-outside\"}],\"origin\":[1105199104,0,0,0,0,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":1,\"height\":1,\"width\":1,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[],\"writes\":[],\"yaw\":1056964608}",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"origin-below-negative-outside\",\"observations\":[{\"name\":\"origin-below-negative-outside\"}],\"origin\":[3252682752,2097152,0,0,0,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":1,\"height\":1,\"width\":1,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[],\"writes\":[],\"yaw\":1056964608}",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"yaw-infinity\",\"observations\":[{\"name\":\"yaw-infinity\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":1,\"height\":1,\"width\":1,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[],\"writes\":[],\"yaw\":2139095040}",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"pitch-nan\",\"observations\":[{\"name\":\"pitch-nan\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":2143289344,\"policy\":{\"seed\":0},\"region\":{\"depth\":1,\"height\":1,\"width\":1,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[],\"writes\":[],\"yaw\":1056964608}"
+      ],
+      "exit_code": 0,
+      "leader_reaped": true,
+      "pid": 42646,
+      "process_group": 42646,
+      "seconds": 0.443,
+      "status": "passed",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "b1a9ac0b2ccb2772d1e03c2bb144c12245765e87e3a1c330d078fde46d451675",
+      "tag": "native-1-016",
+      "timeout_seconds": 180,
+      "timeout_signals": []
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-read-tests/generation-002/native",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"finite-yaw-too-large\",\"observations\":[{\"name\":\"finite-yaw-too-large\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":1,\"height\":1,\"width\":1,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[],\"writes\":[],\"yaw\":1199571072}",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"finite-camera-limit-inclusive\",\"observations\":[{\"name\":\"finite-camera-limit-inclusive\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3347054592,\"policy\":{\"seed\":0},\"region\":{\"depth\":1,\"height\":1,\"width\":1,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[{\"state\":0,\"x\":0,\"y\":0,\"z\":0}],\"writes\":[],\"yaw\":1199570944}",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"fractional-origin-near-positive-limit\",\"observations\":[{\"name\":\"fractional-origin-near-positive-limit\"}],\"origin\":[1105199103,4293918720,0,0,0,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":1,\"height\":1,\"width\":1,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[{\"state\":0,\"x\":0,\"y\":0,\"z\":0}],\"writes\":[],\"yaw\":1056964608}",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"signed-minimum-cell\",\"observations\":[{\"name\":\"signed-minimum-cell\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":1,\"height\":1,\"width\":1,\"x\":2147483648,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[{\"state\":15178,\"x\":2147483648,\"y\":0,\"z\":0}],\"writes\":[],\"yaw\":1056964608}"
+      ],
+      "exit_code": 0,
+      "leader_reaped": true,
+      "pid": 42647,
+      "process_group": 42647,
+      "seconds": 0.449,
+      "status": "passed",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "2f2d01d19b6f3c71e6d725900e867e5617d095247ec544936ea3aad5a0fa90d3",
+      "tag": "native-1-020",
+      "timeout_seconds": 180,
+      "timeout_signals": []
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-read-tests/generation-002/native",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"invalid-appearance-after-valid-reads\",\"observations\":[{\"name\":\"invalid-appearance-after-valid-reads\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"default\":[[],4294967295,0,0,false,256]},\"region\":{\"depth\":1,\"height\":1,\"width\":1,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[{\"state\":0,\"x\":0,\"y\":0,\"z\":0}],\"writes\":[],\"yaw\":1056964608}",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"duplicate-tint-index-after-valid-reads\",\"observations\":[{\"name\":\"duplicate-tint-index-after-valid-reads\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"default\":[[[0,1],[0,2]],4294967295,0,0,false,128]},\"region\":{\"depth\":1,\"height\":1,\"width\":1,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[{\"state\":0,\"x\":0,\"y\":0,\"z\":0}],\"writes\":[],\"yaw\":1056964608}",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"invalid-light-after-valid-reads\",\"observations\":[{\"name\":\"invalid-light-after-valid-reads\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"default\":[[],1122867,0,0,false,128]},\"region\":{\"depth\":1,\"height\":1,\"width\":1,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[{\"state\":0,\"x\":0,\"y\":0,\"z\":0}],\"writes\":[],\"yaw\":1056964608}",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"missing-section-before-invalid-appearance\",\"observations\":[{\"name\":\"missing-section-before-invalid-appearance\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"default\":[[],4294967295,0,0,false,256]},\"region\":{\"depth\":1,\"height\":1,\"width\":1,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[],\"writes\":[],\"yaw\":1056964608}"
+      ],
+      "exit_code": 0,
+      "leader_reaped": true,
+      "pid": 42648,
+      "process_group": 42648,
+      "seconds": 0.448,
+      "status": "passed",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "6f61d0a28a2802aa62e7af9ab570bc9c655c589591ab1d8cff7022f9416af878",
+      "tag": "native-1-024",
+      "timeout_seconds": 180,
+      "timeout_signals": []
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-read-tests/generation-002/native",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "{\"cache\":\"none\",\"identity\":\"test:\u03bb\",\"name\":\"sampler-token-accepted-wire-ascii-refused\",\"observations\":[{\"name\":\"sampler-token-accepted-wire-ascii-refused\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":1,\"height\":1,\"width\":1,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[{\"state\":0,\"x\":0,\"y\":0,\"z\":0}],\"writes\":[],\"yaw\":1056964608}",
+        "{\"cache\":\"none\",\"identity\":\"test registry\",\"name\":\"sampler-token-accepted-wire-space-refused\",\"observations\":[{\"name\":\"sampler-token-accepted-wire-space-refused\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":1,\"height\":1,\"width\":1,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[{\"state\":0,\"x\":0,\"y\":0,\"z\":0}],\"writes\":[],\"yaw\":1056964608}",
+        "{\"cache\":\"none\",\"identity\":\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\"name\":\"sampler-token-accepted-wire-length-refused\",\"observations\":[{\"name\":\"sampler-token-accepted-wire-length-refused\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":1,\"height\":1,\"width\":1,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[{\"state\":0,\"x\":0,\"y\":0,\"z\":0}],\"writes\":[],\"yaw\":1056964608}",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"maximum4096-direct-codec-full-wire-value-budget\",\"observations\":[{\"name\":\"maximum4096-direct-codec-full-wire-value-budget\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":305419896},\"region\":{\"depth\":16,\"height\":16,\"width\":16,\"x\":4294967280,\"y\":4294967280,\"z\":4294967280},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[{\"state\":0,\"x\":4294967280,\"y\":4294967280,\"z\":4294967280}],\"writes\":[],\"yaw\":1056964608}"
+      ],
+      "exit_code": 0,
+      "leader_reaped": true,
+      "pid": 42649,
+      "process_group": 42649,
+      "seconds": 0.63,
+      "status": "passed",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "ebce4f5750f7ae3df290bda374f5ce18bf3412fcd201471c7b436cc1264d3c3a",
+      "tag": "native-1-028",
+      "timeout_seconds": 180,
+      "timeout_signals": []
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-read-tests/generation-002/native",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"valid-tints-full-wire-text-budget\",\"observations\":[{\"name\":\"valid-tints-full-wire-text-budget\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"default\":[[[0,4279383126],[1,4279383126],[2,4279383126],[3,4279383126],[4,4279383126],[5,4279383126],[6,4279383126],[7,4279383126],[8,4279383126],[9,4279383126],[10,4279383126],[11,4279383126],[12,4279383126],[13,4279383126],[14,4279383126],[15,4279383126],[16,4279383126],[17,4279383126],[18,4279383126],[19,4279383126],[20,4279383126],[21,4279383126],[22,4279383126],[23,4279383126],[24,4279383126],[25,4279383126],[26,4279383126],[27,4279383126],[28,4279383126],[29,4279383126],[30,4279383126],[31,4279383126],[32,4279383126],[33,4279383126],[34,4279383126],[35,4279383126],[36,4279383126],[37,4279383126],[38,4279383126],[39,4279383126],[40,4279383126],[41,4279383126],[42,4279383126],[43,4279383126],[44,4279383126],[45,4279383126],[46,4279383126],[47,4279383126],[48,4279383126],[49,4279383126],[50,4279383126],[51,4279383126],[52,4279383126],[53,4279383126],[54,4279383126],[55,4279383126],[56,4279383126],[57,4279383126],[58,4279383126],[59,4279383126],[60,4279383126],[61,4279383126],[62,4279383126],[63,4279383126],[64,4279383126],[65,4279383126],[66,4279383126],[67,4279383126],[68,4279383126],[69,4279383126],[70,4279383126],[71,4279383126],[72,4279383126],[73,4279383126],[74,4279383126],[75,4279383126],[76,4279383126],[77,4279383126],[78,4279383126],[79,4279383126],[80,4279383126],[81,4279383126],[82,4279383126],[83,4279383126],[84,4279383126],[85,4279383126],[86,4279383126],[87,4279383126],[88,4279383126],[89,4279383126],[90,4279383126],[91,4279383126],[92,4279383126],[93,4279383126],[94,4279383126],[95,4279383126],[96,4279383126],[97,4279383126],[98,4279383126],[99,4279383126],[100,4279383126],[101,4279383126],[102,4279383126],[103,4279383126],[104,4279383126],[105,4279383126],[106,4279383126],[107,4279383126],[108,4279383126],[109,4279383126],[110,4279383126],[111,4279383126],[112,4279383126],[113,4279383126],[114,4279383126],[115,4279383126],[116,4279383126],[117,4279383126],[118,4279383126],[119,4279383126],[120,4279383126],[121,4279383126],[122,4279383126],[123,4279383126],[124,4279383126],[125,4279383126],[126,4279383126],[127,4279383126],[128,4279383126],[129,4279383126],[130,4279383126],[131,4279383126],[132,4279383126],[133,4279383126],[134,4279383126],[135,4279383126],[136,4279383126],[137,4279383126],[138,4279383126],[139,4279383126],[140,4279383126],[141,4279383126],[142,4279383126],[143,4279383126],[144,4279383126],[145,4279383126],[146,4279383126],[147,4279383126],[148,4279383126],[149,4279383126],[150,4279383126],[151,4279383126],[152,4279383126],[153,4279383126],[154,4279383126],[155,4279383126],[156,4279383126],[157,4279383126],[158,4279383126],[159,4279383126],[160,4279383126],[161,4279383126],[162,4279383126],[163,4279383126],[164,4279383126],[165,4279383126],[166,4279383126],[167,4279383126],[168,4279383126],[169,4279383126],[170,4279383126],[171,4279383126],[172,4279383126],[173,4279383126],[174,4279383126],[175,4279383126],[176,4279383126],[177,4279383126],[178,4279383126],[179,4279383126],[180,4279383126],[181,4279383126],[182,4279383126],[183,4279383126],[184,4279383126],[185,4279383126],[186,4279383126],[187,4279383126],[188,4279383126],[189,4279383126],[190,4279383126],[191,4279383126],[192,4279383126],[193,4279383126],[194,4279383126],[195,4279383126],[196,4279383126],[197,4279383126],[198,4279383126],[199,4279383126],[200,4279383126],[201,4279383126],[202,4279383126],[203,4279383126],[204,4279383126],[205,4279383126],[206,4279383126],[207,4279383126],[208,4279383126],[209,4279383126],[210,4279383126],[211,4279383126],[212,4279383126],[213,4279383126],[214,4279383126],[215,4279383126],[216,4279383126],[217,4279383126],[218,4279383126],[219,4279383126],[220,4279383126],[221,4279383126],[222,4279383126],[223,4279383126],[224,4279383126],[225,4279383126],[226,4279383126],[227,4279383126],[228,4279383126],[229,4279383126],[230,4279383126],[231,4279383126],[232,4279383126],[233,4279383126],[234,4279383126],[235,4279383126],[236,4279383126],[237,4279383126],[238,4279383126],[239,4279383126],[240,4279383126],[241,4279383126],[242,4279383126],[243,4279383126],[244,4279383126],[245,4279383126],[246,4279383126],[247,4279383126],[248,4279383126],[249,4279383126],[250,4279383126],[251,4279383126],[252,4279383126],[253,4279383126],[254,4279383126],[255,4279383126]],4294967295,1,1,false,255]},\"region\":{\"depth\":1,\"height\":1,\"width\":16,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[{\"state\":0,\"x\":0,\"y\":0,\"z\":0}],\"writes\":[],\"yaw\":1056964608}",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"valid-tints-full-wire-value-budget\",\"observations\":[{\"name\":\"valid-tints-full-wire-value-budget\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"default\":[[[0,4279383126],[1,4279383126],[2,4279383126],[3,4279383126],[4,4279383126],[5,4279383126],[6,4279383126],[7,4279383126],[8,4279383126],[9,4279383126],[10,4279383126],[11,4279383126],[12,4279383126],[13,4279383126],[14,4279383126],[15,4279383126],[16,4279383126],[17,4279383126],[18,4279383126],[19,4279383126],[20,4279383126],[21,4279383126],[22,4279383126],[23,4279383126],[24,4279383126],[25,4279383126],[26,4279383126],[27,4279383126],[28,4279383126],[29,4279383126],[30,4279383126],[31,4279383126],[32,4279383126],[33,4279383126],[34,4279383126],[35,4279383126],[36,4279383126],[37,4279383126],[38,4279383126],[39,4279383126],[40,4279383126],[41,4279383126],[42,4279383126],[43,4279383126],[44,4279383126],[45,4279383126],[46,4279383126],[47,4279383126],[48,4279383126],[49,4279383126],[50,4279383126],[51,4279383126],[52,4279383126],[53,4279383126],[54,4279383126],[55,4279383126],[56,4279383126],[57,4279383126],[58,4279383126],[59,4279383126],[60,4279383126],[61,4279383126],[62,4279383126],[63,4279383126],[64,4279383126],[65,4279383126],[66,4279383126],[67,4279383126],[68,4279383126],[69,4279383126],[70,4279383126],[71,4279383126],[72,4279383126],[73,4279383126],[74,4279383126],[75,4279383126],[76,4279383126],[77,4279383126],[78,4279383126],[79,4279383126],[80,4279383126],[81,4279383126],[82,4279383126],[83,4279383126],[84,4279383126],[85,4279383126],[86,4279383126],[87,4279383126],[88,4279383126],[89,4279383126],[90,4279383126],[91,4279383126],[92,4279383126],[93,4279383126],[94,4279383126],[95,4279383126],[96,4279383126],[97,4279383126],[98,4279383126],[99,4279383126],[100,4279383126],[101,4279383126],[102,4279383126],[103,4279383126],[104,4279383126],[105,4279383126],[106,4279383126],[107,4279383126],[108,4279383126],[109,4279383126],[110,4279383126],[111,4279383126],[112,4279383126],[113,4279383126],[114,4279383126],[115,4279383126],[116,4279383126],[117,4279383126],[118,4279383126],[119,4279383126],[120,4279383126],[121,4279383126],[122,4279383126],[123,4279383126],[124,4279383126],[125,4279383126],[126,4279383126],[127,4279383126],[128,4279383126],[129,4279383126],[130,4279383126],[131,4279383126],[132,4279383126],[133,4279383126],[134,4279383126],[135,4279383126],[136,4279383126],[137,4279383126],[138,4279383126],[139,4279383126],[140,4279383126],[141,4279383126],[142,4279383126],[143,4279383126],[144,4279383126],[145,4279383126],[146,4279383126],[147,4279383126],[148,4279383126],[149,4279383126],[150,4279383126],[151,4279383126],[152,4279383126],[153,4279383126],[154,4279383126],[155,4279383126],[156,4279383126],[157,4279383126],[158,4279383126],[159,4279383126],[160,4279383126],[161,4279383126],[162,4279383126],[163,4279383126],[164,4279383126],[165,4279383126],[166,4279383126],[167,4279383126],[168,4279383126],[169,4279383126],[170,4279383126],[171,4279383126],[172,4279383126],[173,4279383126],[174,4279383126],[175,4279383126],[176,4279383126],[177,4279383126],[178,4279383126],[179,4279383126],[180,4279383126],[181,4279383126],[182,4279383126],[183,4279383126],[184,4279383126],[185,4279383126],[186,4279383126],[187,4279383126],[188,4279383126],[189,4279383126],[190,4279383126],[191,4279383126],[192,4279383126],[193,4279383126],[194,4279383126],[195,4279383126],[196,4279383126],[197,4279383126],[198,4279383126],[199,4279383126],[200,4279383126],[201,4279383126],[202,4279383126],[203,4279383126],[204,4279383126],[205,4279383126],[206,4279383126],[207,4279383126],[208,4279383126],[209,4279383126],[210,4279383126],[211,4279383126],[212,4279383126],[213,4279383126],[214,4279383126],[215,4279383126],[216,4279383126],[217,4279383126],[218,4279383126],[219,4279383126],[220,4279383126],[221,4279383126],[222,4279383126],[223,4279383126],[224,4279383126],[225,4279383126],[226,4279383126],[227,4279383126],[228,4279383126],[229,4279383126],[230,4279383126],[231,4279383126],[232,4279383126],[233,4279383126],[234,4279383126],[235,4279383126],[236,4279383126],[237,4279383126],[238,4279383126],[239,4279383126],[240,4279383126],[241,4279383126],[242,4279383126],[243,4279383126],[244,4279383126],[245,4279383126],[246,4279383126],[247,4279383126],[248,4279383126],[249,4279383126],[250,4279383126],[251,4279383126],[252,4279383126],[253,4279383126],[254,4279383126],[255,4279383126]],4294967295,1,1,false,255]},\"region\":{\"depth\":1,\"height\":2,\"width\":16,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[{\"state\":0,\"x\":0,\"y\":0,\"z\":0}],\"writes\":[],\"yaw\":1056964608}"
+      ],
+      "exit_code": 0,
+      "leader_reaped": true,
+      "pid": 42651,
+      "process_group": 42651,
+      "seconds": 0.306,
+      "status": "passed",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "64140c1eca12bbd373e93fd2da65a78aaf0d870d5d86fb4d8f204cf9cf6a1e6a",
+      "tag": "native-1-032",
+      "timeout_seconds": 180,
+      "timeout_signals": []
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-read-tests/generation-002/native",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"signed-raw-air-slab-stairs-unknown\",\"observations\":[{\"name\":\"signed-first\"},{\"name\":\"signed-repeated\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":2,\"height\":2,\"width\":2,\"x\":4294967295,\"y\":0,\"z\":4294967295},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[{\"state\":0,\"x\":4294967295,\"y\":0,\"z\":4294967295},{\"state\":0,\"x\":0,\"y\":0,\"z\":4294967295},{\"state\":0,\"x\":4294967295,\"y\":0,\"z\":0},{\"state\":0,\"x\":0,\"y\":0,\"z\":0}],\"writes\":[{\"state\":15178,\"x\":4294967295,\"y\":0,\"z\":4294967295},{\"state\":5532,\"x\":0,\"y\":0,\"z\":4294967295},{\"state\":0,\"x\":4294967295,\"y\":1,\"z\":4294967295},{\"state\":1,\"x\":0,\"y\":1,\"z\":4294967295},{\"state\":4294967295,\"x\":4294967295,\"y\":0,\"z\":0},{\"state\":0,\"x\":0,\"y\":0,\"z\":0},{\"state\":15178,\"x\":4294967295,\"y\":1,\"z\":0},{\"state\":5532,\"x\":0,\"y\":1,\"z\":0}],\"yaw\":1056964608}",
+        "{\"cache\":\"bad\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"aliased-palette-invalid-cache-ignored\",\"observations\":[{\"name\":\"aliased-palette-invalid-cache-ignored\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"aliases\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":2,\"height\":2,\"width\":2,\"x\":4294967295,\"y\":0,\"z\":4294967295},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[{\"state\":0,\"x\":4294967295,\"y\":0,\"z\":4294967295},{\"state\":0,\"x\":0,\"y\":0,\"z\":4294967295},{\"state\":0,\"x\":4294967295,\"y\":0,\"z\":0},{\"state\":0,\"x\":0,\"y\":0,\"z\":0}],\"writes\":[{\"state\":15178,\"x\":4294967295,\"y\":0,\"z\":4294967295},{\"state\":5532,\"x\":0,\"y\":0,\"z\":4294967295},{\"state\":0,\"x\":4294967295,\"y\":1,\"z\":4294967295},{\"state\":1,\"x\":0,\"y\":1,\"z\":4294967295},{\"state\":4294967295,\"x\":4294967295,\"y\":0,\"z\":0},{\"state\":0,\"x\":0,\"y\":0,\"z\":0},{\"state\":15178,\"x\":4294967295,\"y\":1,\"z\":0},{\"state\":5532,\"x\":0,\"y\":1,\"z\":0}],\"yaw\":1056964608}",
+        "{\"cache\":\"bad\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"absent-palette-invalid-cache-ignored\",\"observations\":[{\"name\":\"absent-palette-invalid-cache-ignored\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":2,\"height\":2,\"width\":2,\"x\":4294967295,\"y\":0,\"z\":4294967295},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[{\"state\":0,\"x\":4294967295,\"y\":0,\"z\":4294967295},{\"state\":0,\"x\":0,\"y\":0,\"z\":4294967295},{\"state\":0,\"x\":4294967295,\"y\":0,\"z\":0},{\"state\":0,\"x\":0,\"y\":0,\"z\":0}],\"writes\":[{\"state\":15178,\"x\":4294967295,\"y\":0,\"z\":4294967295},{\"state\":5532,\"x\":0,\"y\":0,\"z\":4294967295},{\"state\":0,\"x\":4294967295,\"y\":1,\"z\":4294967295},{\"state\":1,\"x\":0,\"y\":1,\"z\":4294967295},{\"state\":4294967295,\"x\":4294967295,\"y\":0,\"z\":0},{\"state\":0,\"x\":0,\"y\":0,\"z\":0},{\"state\":15178,\"x\":4294967295,\"y\":1,\"z\":0},{\"state\":5532,\"x\":0,\"y\":1,\"z\":0}],\"yaw\":1056964608}",
+        "{\"cache\":\"stale\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"matching-stale-cache-and-raw-change\",\"observations\":[{\"name\":\"stale-first\"},{\"name\":\"stale-after-change\",\"writes\":[{\"state\":5532,\"x\":4294967295,\"y\":0,\"z\":4294967295}]},{\"name\":\"stale-repeated\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"normal\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":2,\"height\":2,\"width\":2,\"x\":4294967295,\"y\":0,\"z\":4294967295},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[{\"state\":0,\"x\":4294967295,\"y\":0,\"z\":4294967295},{\"state\":0,\"x\":0,\"y\":0,\"z\":4294967295},{\"state\":0,\"x\":4294967295,\"y\":0,\"z\":0},{\"state\":0,\"x\":0,\"y\":0,\"z\":0}],\"writes\":[{\"state\":15178,\"x\":4294967295,\"y\":0,\"z\":4294967295},{\"state\":5532,\"x\":0,\"y\":0,\"z\":4294967295},{\"state\":0,\"x\":4294967295,\"y\":1,\"z\":4294967295},{\"state\":1,\"x\":0,\"y\":1,\"z\":4294967295},{\"state\":4294967295,\"x\":4294967295,\"y\":0,\"z\":0},{\"state\":0,\"x\":0,\"y\":0,\"z\":0},{\"state\":15178,\"x\":4294967295,\"y\":1,\"z\":0},{\"state\":5532,\"x\":0,\"y\":1,\"z\":0}],\"yaw\":1056964608}"
+      ],
+      "exit_code": 0,
+      "leader_reaped": true,
+      "pid": 42653,
+      "process_group": 42653,
+      "seconds": 0.514,
+      "status": "passed",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "5f6304df562936243a02b6941571a083692de793a77e8dab53c45b2d31b0ade8",
+      "tag": "native-2-000",
+      "timeout_seconds": 180,
+      "timeout_signals": []
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-read-tests/generation-002/native",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"default-state-cell-appearance-precedence\",\"observations\":[{\"name\":\"default-state-cell-appearance-precedence\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"cells\":[{\"appearance\":[[[0,4288181844]],4294967295,1,0,false,255],\"x\":4294967295,\"y\":0,\"z\":4294967295},{\"appearance\":[[[0,4289449216]],4294967295,0,0,false,128],\"x\":0,\"y\":1,\"z\":4294967295}],\"default\":[[[0,4278256131]],4279312947,1,1,true,7],\"seed\":4294967295,\"states\":[{\"appearance\":[[[0,4288721088]],4282668390,0,0,false,64],\"state\":15178}]},\"region\":{\"depth\":2,\"height\":2,\"width\":2,\"x\":4294967295,\"y\":0,\"z\":4294967295},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[{\"state\":0,\"x\":4294967295,\"y\":0,\"z\":4294967295},{\"state\":0,\"x\":0,\"y\":0,\"z\":4294967295},{\"state\":0,\"x\":4294967295,\"y\":0,\"z\":0},{\"state\":0,\"x\":0,\"y\":0,\"z\":0}],\"writes\":[{\"state\":15178,\"x\":4294967295,\"y\":0,\"z\":4294967295},{\"state\":5532,\"x\":0,\"y\":0,\"z\":4294967295},{\"state\":0,\"x\":4294967295,\"y\":1,\"z\":4294967295},{\"state\":1,\"x\":0,\"y\":1,\"z\":4294967295},{\"state\":4294967295,\"x\":4294967295,\"y\":0,\"z\":0},{\"state\":0,\"x\":0,\"y\":0,\"z\":0},{\"state\":15178,\"x\":4294967295,\"y\":1,\"z\":0},{\"state\":5532,\"x\":0,\"y\":1,\"z\":0}],\"yaw\":1056964608}",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"first-missing-section\",\"observations\":[{\"name\":\"first-missing-section\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":2,\"height\":2,\"width\":2,\"x\":4294967295,\"y\":0,\"z\":4294967295},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[],\"writes\":[],\"yaw\":1056964608}",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"late-missing-section\",\"observations\":[{\"name\":\"late-missing-section\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":2,\"height\":2,\"width\":2,\"x\":4294967295,\"y\":0,\"z\":4294967295},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[{\"state\":0,\"x\":4294967295,\"y\":0,\"z\":4294967295}],\"writes\":[{\"state\":15178,\"x\":4294967295,\"y\":0,\"z\":4294967295}],\"yaw\":1056964608}",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"all-air-still-read\",\"observations\":[{\"name\":\"all-air-still-read\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":2,\"height\":2,\"width\":2,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[{\"state\":0,\"x\":0,\"y\":0,\"z\":0}],\"writes\":[],\"yaw\":1056964608}"
+      ],
+      "exit_code": 0,
+      "leader_reaped": true,
+      "pid": 42654,
+      "process_group": 42654,
+      "seconds": 0.454,
+      "status": "passed",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "dca304d9bbe218e4fce766a83af50db8e00552314387cfc91ec1e679540b4fce",
+      "tag": "native-2-004",
+      "timeout_seconds": 180,
+      "timeout_signals": []
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-read-tests/generation-002/native",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "{\"cache\":\"none\",\"identity\":\"test:registry-vx\",\"name\":\"nonempty-custom-registry-token-retained\",\"observations\":[{\"name\":\"nonempty-custom-registry-token-retained\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":1,\"height\":1,\"width\":1,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[{\"state\":0,\"x\":0,\"y\":0,\"z\":0}],\"writes\":[],\"yaw\":1056964608}",
+        "{\"cache\":\"none\",\"identity\":\"\",\"name\":\"empty-registry-token\",\"observations\":[{\"name\":\"empty-registry-token\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":1,\"height\":1,\"width\":1,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[],\"writes\":[],\"yaw\":1056964608}",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"zero-width-before-missing\",\"observations\":[{\"name\":\"zero-width-before-missing\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":1,\"height\":1,\"width\":0,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[],\"writes\":[],\"yaw\":1056964608}",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"axis-above-sixteen\",\"observations\":[{\"name\":\"axis-above-sixteen\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":1,\"height\":1,\"width\":17,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[],\"writes\":[],\"yaw\":1056964608}"
+      ],
+      "exit_code": 0,
+      "leader_reaped": true,
+      "pid": 42659,
+      "process_group": 42659,
+      "seconds": 0.443,
+      "status": "passed",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "6fbdebdeb4bff3780cf9646fef1a843b8c24dc7f1c4e6c3b3abd55a1fbc6622a",
+      "tag": "native-2-008",
+      "timeout_seconds": 180,
+      "timeout_signals": []
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-read-tests/generation-002/native",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"signed-positive-axis-overflow\",\"observations\":[{\"name\":\"signed-positive-axis-overflow\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":1,\"height\":1,\"width\":2,\"x\":2147483647,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[],\"writes\":[],\"yaw\":1056964608}",
+        "{\"cache\":\"none\",\"identity\":\"\",\"name\":\"region-before-origin-camera-identity\",\"observations\":[{\"name\":\"region-before-origin-camera-identity\"}],\"origin\":[2146435072,0,0,0,0,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":1,\"height\":1,\"width\":0,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[],\"writes\":[],\"yaw\":2139095040}",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"infinite-origin-before-camera\",\"observations\":[{\"name\":\"infinite-origin-before-camera\"}],\"origin\":[2146435072,0,0,0,0,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":1,\"height\":1,\"width\":1,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[],\"writes\":[],\"yaw\":2139095040}",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"nan-origin\",\"observations\":[{\"name\":\"nan-origin\"}],\"origin\":[2146959360,0,0,0,0,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":1,\"height\":1,\"width\":1,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[],\"writes\":[],\"yaw\":1056964608}"
+      ],
+      "exit_code": 0,
+      "leader_reaped": true,
+      "pid": 42660,
+      "process_group": 42660,
+      "seconds": 0.441,
+      "status": "passed",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "f5d40fedbead6956191e90f3fb2caf1e2a1efbe5623f354d801259b388eaf188",
+      "tag": "native-2-012",
+      "timeout_seconds": 180,
+      "timeout_signals": []
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-read-tests/generation-002/native",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"origin-at-positive-outside\",\"observations\":[{\"name\":\"origin-at-positive-outside\"}],\"origin\":[1105199104,0,0,0,0,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":1,\"height\":1,\"width\":1,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[],\"writes\":[],\"yaw\":1056964608}",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"origin-below-negative-outside\",\"observations\":[{\"name\":\"origin-below-negative-outside\"}],\"origin\":[3252682752,2097152,0,0,0,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":1,\"height\":1,\"width\":1,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[],\"writes\":[],\"yaw\":1056964608}",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"yaw-infinity\",\"observations\":[{\"name\":\"yaw-infinity\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":1,\"height\":1,\"width\":1,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[],\"writes\":[],\"yaw\":2139095040}",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"pitch-nan\",\"observations\":[{\"name\":\"pitch-nan\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":2143289344,\"policy\":{\"seed\":0},\"region\":{\"depth\":1,\"height\":1,\"width\":1,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[],\"writes\":[],\"yaw\":1056964608}"
+      ],
+      "exit_code": 0,
+      "leader_reaped": true,
+      "pid": 42661,
+      "process_group": 42661,
+      "seconds": 0.445,
+      "status": "passed",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "b1a9ac0b2ccb2772d1e03c2bb144c12245765e87e3a1c330d078fde46d451675",
+      "tag": "native-2-016",
+      "timeout_seconds": 180,
+      "timeout_signals": []
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-read-tests/generation-002/native",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"finite-yaw-too-large\",\"observations\":[{\"name\":\"finite-yaw-too-large\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":1,\"height\":1,\"width\":1,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[],\"writes\":[],\"yaw\":1199571072}",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"finite-camera-limit-inclusive\",\"observations\":[{\"name\":\"finite-camera-limit-inclusive\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3347054592,\"policy\":{\"seed\":0},\"region\":{\"depth\":1,\"height\":1,\"width\":1,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[{\"state\":0,\"x\":0,\"y\":0,\"z\":0}],\"writes\":[],\"yaw\":1199570944}",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"fractional-origin-near-positive-limit\",\"observations\":[{\"name\":\"fractional-origin-near-positive-limit\"}],\"origin\":[1105199103,4293918720,0,0,0,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":1,\"height\":1,\"width\":1,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[{\"state\":0,\"x\":0,\"y\":0,\"z\":0}],\"writes\":[],\"yaw\":1056964608}",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"signed-minimum-cell\",\"observations\":[{\"name\":\"signed-minimum-cell\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":1,\"height\":1,\"width\":1,\"x\":2147483648,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[{\"state\":15178,\"x\":2147483648,\"y\":0,\"z\":0}],\"writes\":[],\"yaw\":1056964608}"
+      ],
+      "exit_code": 0,
+      "leader_reaped": true,
+      "pid": 42662,
+      "process_group": 42662,
+      "seconds": 0.452,
+      "status": "passed",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "2f2d01d19b6f3c71e6d725900e867e5617d095247ec544936ea3aad5a0fa90d3",
+      "tag": "native-2-020",
+      "timeout_seconds": 180,
+      "timeout_signals": []
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-read-tests/generation-002/native",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"invalid-appearance-after-valid-reads\",\"observations\":[{\"name\":\"invalid-appearance-after-valid-reads\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"default\":[[],4294967295,0,0,false,256]},\"region\":{\"depth\":1,\"height\":1,\"width\":1,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[{\"state\":0,\"x\":0,\"y\":0,\"z\":0}],\"writes\":[],\"yaw\":1056964608}",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"duplicate-tint-index-after-valid-reads\",\"observations\":[{\"name\":\"duplicate-tint-index-after-valid-reads\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"default\":[[[0,1],[0,2]],4294967295,0,0,false,128]},\"region\":{\"depth\":1,\"height\":1,\"width\":1,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[{\"state\":0,\"x\":0,\"y\":0,\"z\":0}],\"writes\":[],\"yaw\":1056964608}",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"invalid-light-after-valid-reads\",\"observations\":[{\"name\":\"invalid-light-after-valid-reads\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"default\":[[],1122867,0,0,false,128]},\"region\":{\"depth\":1,\"height\":1,\"width\":1,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[{\"state\":0,\"x\":0,\"y\":0,\"z\":0}],\"writes\":[],\"yaw\":1056964608}",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"missing-section-before-invalid-appearance\",\"observations\":[{\"name\":\"missing-section-before-invalid-appearance\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"default\":[[],4294967295,0,0,false,256]},\"region\":{\"depth\":1,\"height\":1,\"width\":1,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[],\"writes\":[],\"yaw\":1056964608}"
+      ],
+      "exit_code": 0,
+      "leader_reaped": true,
+      "pid": 42663,
+      "process_group": 42663,
+      "seconds": 0.443,
+      "status": "passed",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "6f61d0a28a2802aa62e7af9ab570bc9c655c589591ab1d8cff7022f9416af878",
+      "tag": "native-2-024",
+      "timeout_seconds": 180,
+      "timeout_signals": []
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-read-tests/generation-002/native",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "{\"cache\":\"none\",\"identity\":\"test:\u03bb\",\"name\":\"sampler-token-accepted-wire-ascii-refused\",\"observations\":[{\"name\":\"sampler-token-accepted-wire-ascii-refused\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":1,\"height\":1,\"width\":1,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[{\"state\":0,\"x\":0,\"y\":0,\"z\":0}],\"writes\":[],\"yaw\":1056964608}",
+        "{\"cache\":\"none\",\"identity\":\"test registry\",\"name\":\"sampler-token-accepted-wire-space-refused\",\"observations\":[{\"name\":\"sampler-token-accepted-wire-space-refused\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":1,\"height\":1,\"width\":1,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[{\"state\":0,\"x\":0,\"y\":0,\"z\":0}],\"writes\":[],\"yaw\":1056964608}",
+        "{\"cache\":\"none\",\"identity\":\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\"name\":\"sampler-token-accepted-wire-length-refused\",\"observations\":[{\"name\":\"sampler-token-accepted-wire-length-refused\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":0},\"region\":{\"depth\":1,\"height\":1,\"width\":1,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[{\"state\":0,\"x\":0,\"y\":0,\"z\":0}],\"writes\":[],\"yaw\":1056964608}",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"maximum4096-direct-codec-full-wire-value-budget\",\"observations\":[{\"name\":\"maximum4096-direct-codec-full-wire-value-budget\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"seed\":305419896},\"region\":{\"depth\":16,\"height\":16,\"width\":16,\"x\":4294967280,\"y\":4294967280,\"z\":4294967280},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[{\"state\":0,\"x\":4294967280,\"y\":4294967280,\"z\":4294967280}],\"writes\":[],\"yaw\":1056964608}"
+      ],
+      "exit_code": 0,
+      "leader_reaped": true,
+      "pid": 42664,
+      "process_group": 42664,
+      "seconds": 0.631,
+      "status": "passed",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "ebce4f5750f7ae3df290bda374f5ce18bf3412fcd201471c7b436cc1264d3c3a",
+      "tag": "native-2-028",
+      "timeout_seconds": 180,
+      "timeout_signals": []
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-read-tests/generation-002/native",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"valid-tints-full-wire-text-budget\",\"observations\":[{\"name\":\"valid-tints-full-wire-text-budget\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"default\":[[[0,4279383126],[1,4279383126],[2,4279383126],[3,4279383126],[4,4279383126],[5,4279383126],[6,4279383126],[7,4279383126],[8,4279383126],[9,4279383126],[10,4279383126],[11,4279383126],[12,4279383126],[13,4279383126],[14,4279383126],[15,4279383126],[16,4279383126],[17,4279383126],[18,4279383126],[19,4279383126],[20,4279383126],[21,4279383126],[22,4279383126],[23,4279383126],[24,4279383126],[25,4279383126],[26,4279383126],[27,4279383126],[28,4279383126],[29,4279383126],[30,4279383126],[31,4279383126],[32,4279383126],[33,4279383126],[34,4279383126],[35,4279383126],[36,4279383126],[37,4279383126],[38,4279383126],[39,4279383126],[40,4279383126],[41,4279383126],[42,4279383126],[43,4279383126],[44,4279383126],[45,4279383126],[46,4279383126],[47,4279383126],[48,4279383126],[49,4279383126],[50,4279383126],[51,4279383126],[52,4279383126],[53,4279383126],[54,4279383126],[55,4279383126],[56,4279383126],[57,4279383126],[58,4279383126],[59,4279383126],[60,4279383126],[61,4279383126],[62,4279383126],[63,4279383126],[64,4279383126],[65,4279383126],[66,4279383126],[67,4279383126],[68,4279383126],[69,4279383126],[70,4279383126],[71,4279383126],[72,4279383126],[73,4279383126],[74,4279383126],[75,4279383126],[76,4279383126],[77,4279383126],[78,4279383126],[79,4279383126],[80,4279383126],[81,4279383126],[82,4279383126],[83,4279383126],[84,4279383126],[85,4279383126],[86,4279383126],[87,4279383126],[88,4279383126],[89,4279383126],[90,4279383126],[91,4279383126],[92,4279383126],[93,4279383126],[94,4279383126],[95,4279383126],[96,4279383126],[97,4279383126],[98,4279383126],[99,4279383126],[100,4279383126],[101,4279383126],[102,4279383126],[103,4279383126],[104,4279383126],[105,4279383126],[106,4279383126],[107,4279383126],[108,4279383126],[109,4279383126],[110,4279383126],[111,4279383126],[112,4279383126],[113,4279383126],[114,4279383126],[115,4279383126],[116,4279383126],[117,4279383126],[118,4279383126],[119,4279383126],[120,4279383126],[121,4279383126],[122,4279383126],[123,4279383126],[124,4279383126],[125,4279383126],[126,4279383126],[127,4279383126],[128,4279383126],[129,4279383126],[130,4279383126],[131,4279383126],[132,4279383126],[133,4279383126],[134,4279383126],[135,4279383126],[136,4279383126],[137,4279383126],[138,4279383126],[139,4279383126],[140,4279383126],[141,4279383126],[142,4279383126],[143,4279383126],[144,4279383126],[145,4279383126],[146,4279383126],[147,4279383126],[148,4279383126],[149,4279383126],[150,4279383126],[151,4279383126],[152,4279383126],[153,4279383126],[154,4279383126],[155,4279383126],[156,4279383126],[157,4279383126],[158,4279383126],[159,4279383126],[160,4279383126],[161,4279383126],[162,4279383126],[163,4279383126],[164,4279383126],[165,4279383126],[166,4279383126],[167,4279383126],[168,4279383126],[169,4279383126],[170,4279383126],[171,4279383126],[172,4279383126],[173,4279383126],[174,4279383126],[175,4279383126],[176,4279383126],[177,4279383126],[178,4279383126],[179,4279383126],[180,4279383126],[181,4279383126],[182,4279383126],[183,4279383126],[184,4279383126],[185,4279383126],[186,4279383126],[187,4279383126],[188,4279383126],[189,4279383126],[190,4279383126],[191,4279383126],[192,4279383126],[193,4279383126],[194,4279383126],[195,4279383126],[196,4279383126],[197,4279383126],[198,4279383126],[199,4279383126],[200,4279383126],[201,4279383126],[202,4279383126],[203,4279383126],[204,4279383126],[205,4279383126],[206,4279383126],[207,4279383126],[208,4279383126],[209,4279383126],[210,4279383126],[211,4279383126],[212,4279383126],[213,4279383126],[214,4279383126],[215,4279383126],[216,4279383126],[217,4279383126],[218,4279383126],[219,4279383126],[220,4279383126],[221,4279383126],[222,4279383126],[223,4279383126],[224,4279383126],[225,4279383126],[226,4279383126],[227,4279383126],[228,4279383126],[229,4279383126],[230,4279383126],[231,4279383126],[232,4279383126],[233,4279383126],[234,4279383126],[235,4279383126],[236,4279383126],[237,4279383126],[238,4279383126],[239,4279383126],[240,4279383126],[241,4279383126],[242,4279383126],[243,4279383126],[244,4279383126],[245,4279383126],[246,4279383126],[247,4279383126],[248,4279383126],[249,4279383126],[250,4279383126],[251,4279383126],[252,4279383126],[253,4279383126],[254,4279383126],[255,4279383126]],4294967295,1,1,false,255]},\"region\":{\"depth\":1,\"height\":1,\"width\":16,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[{\"state\":0,\"x\":0,\"y\":0,\"z\":0}],\"writes\":[],\"yaw\":1056964608}",
+        "{\"cache\":\"none\",\"identity\":\"4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc\",\"name\":\"valid-tints-full-wire-value-budget\",\"observations\":[{\"name\":\"valid-tints-full-wire-value-budget\"}],\"origin\":[1078108160,0,1076136509,1889785610,3224043520,0],\"palette\":\"none\",\"pitch\":3196059648,\"policy\":{\"default\":[[[0,4279383126],[1,4279383126],[2,4279383126],[3,4279383126],[4,4279383126],[5,4279383126],[6,4279383126],[7,4279383126],[8,4279383126],[9,4279383126],[10,4279383126],[11,4279383126],[12,4279383126],[13,4279383126],[14,4279383126],[15,4279383126],[16,4279383126],[17,4279383126],[18,4279383126],[19,4279383126],[20,4279383126],[21,4279383126],[22,4279383126],[23,4279383126],[24,4279383126],[25,4279383126],[26,4279383126],[27,4279383126],[28,4279383126],[29,4279383126],[30,4279383126],[31,4279383126],[32,4279383126],[33,4279383126],[34,4279383126],[35,4279383126],[36,4279383126],[37,4279383126],[38,4279383126],[39,4279383126],[40,4279383126],[41,4279383126],[42,4279383126],[43,4279383126],[44,4279383126],[45,4279383126],[46,4279383126],[47,4279383126],[48,4279383126],[49,4279383126],[50,4279383126],[51,4279383126],[52,4279383126],[53,4279383126],[54,4279383126],[55,4279383126],[56,4279383126],[57,4279383126],[58,4279383126],[59,4279383126],[60,4279383126],[61,4279383126],[62,4279383126],[63,4279383126],[64,4279383126],[65,4279383126],[66,4279383126],[67,4279383126],[68,4279383126],[69,4279383126],[70,4279383126],[71,4279383126],[72,4279383126],[73,4279383126],[74,4279383126],[75,4279383126],[76,4279383126],[77,4279383126],[78,4279383126],[79,4279383126],[80,4279383126],[81,4279383126],[82,4279383126],[83,4279383126],[84,4279383126],[85,4279383126],[86,4279383126],[87,4279383126],[88,4279383126],[89,4279383126],[90,4279383126],[91,4279383126],[92,4279383126],[93,4279383126],[94,4279383126],[95,4279383126],[96,4279383126],[97,4279383126],[98,4279383126],[99,4279383126],[100,4279383126],[101,4279383126],[102,4279383126],[103,4279383126],[104,4279383126],[105,4279383126],[106,4279383126],[107,4279383126],[108,4279383126],[109,4279383126],[110,4279383126],[111,4279383126],[112,4279383126],[113,4279383126],[114,4279383126],[115,4279383126],[116,4279383126],[117,4279383126],[118,4279383126],[119,4279383126],[120,4279383126],[121,4279383126],[122,4279383126],[123,4279383126],[124,4279383126],[125,4279383126],[126,4279383126],[127,4279383126],[128,4279383126],[129,4279383126],[130,4279383126],[131,4279383126],[132,4279383126],[133,4279383126],[134,4279383126],[135,4279383126],[136,4279383126],[137,4279383126],[138,4279383126],[139,4279383126],[140,4279383126],[141,4279383126],[142,4279383126],[143,4279383126],[144,4279383126],[145,4279383126],[146,4279383126],[147,4279383126],[148,4279383126],[149,4279383126],[150,4279383126],[151,4279383126],[152,4279383126],[153,4279383126],[154,4279383126],[155,4279383126],[156,4279383126],[157,4279383126],[158,4279383126],[159,4279383126],[160,4279383126],[161,4279383126],[162,4279383126],[163,4279383126],[164,4279383126],[165,4279383126],[166,4279383126],[167,4279383126],[168,4279383126],[169,4279383126],[170,4279383126],[171,4279383126],[172,4279383126],[173,4279383126],[174,4279383126],[175,4279383126],[176,4279383126],[177,4279383126],[178,4279383126],[179,4279383126],[180,4279383126],[181,4279383126],[182,4279383126],[183,4279383126],[184,4279383126],[185,4279383126],[186,4279383126],[187,4279383126],[188,4279383126],[189,4279383126],[190,4279383126],[191,4279383126],[192,4279383126],[193,4279383126],[194,4279383126],[195,4279383126],[196,4279383126],[197,4279383126],[198,4279383126],[199,4279383126],[200,4279383126],[201,4279383126],[202,4279383126],[203,4279383126],[204,4279383126],[205,4279383126],[206,4279383126],[207,4279383126],[208,4279383126],[209,4279383126],[210,4279383126],[211,4279383126],[212,4279383126],[213,4279383126],[214,4279383126],[215,4279383126],[216,4279383126],[217,4279383126],[218,4279383126],[219,4279383126],[220,4279383126],[221,4279383126],[222,4279383126],[223,4279383126],[224,4279383126],[225,4279383126],[226,4279383126],[227,4279383126],[228,4279383126],[229,4279383126],[230,4279383126],[231,4279383126],[232,4279383126],[233,4279383126],[234,4279383126],[235,4279383126],[236,4279383126],[237,4279383126],[238,4279383126],[239,4279383126],[240,4279383126],[241,4279383126],[242,4279383126],[243,4279383126],[244,4279383126],[245,4279383126],[246,4279383126],[247,4279383126],[248,4279383126],[249,4279383126],[250,4279383126],[251,4279383126],[252,4279383126],[253,4279383126],[254,4279383126],[255,4279383126]],4294967295,1,1,false,255]},\"region\":{\"depth\":1,\"height\":2,\"width\":16,\"x\":0,\"y\":0,\"z\":0},\"registry\":\"/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv\",\"sections\":[{\"state\":0,\"x\":0,\"y\":0,\"z\":0}],\"writes\":[],\"yaw\":1056964608}"
+      ],
+      "exit_code": 0,
+      "leader_reaped": true,
+      "pid": 42665,
+      "process_group": 42665,
+      "seconds": 0.303,
+      "status": "passed",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "64140c1eca12bbd373e93fd2da65a78aaf0d870d5d86fb4d8f204cf9cf6a1e6a",
+      "tag": "native-2-032",
+      "timeout_seconds": 180,
+      "timeout_signals": []
+    }
+  ],
   "preparation": {
     "cases": 34,
     "observations": 37,
@@ -45,6 +548,7 @@
     "sha256": "27769e75bf862d0540b2df2a6e99f6b7556a867bff6339fb08566240ee124cac"
   },
   "registry_identity": "4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc",
+  "reports_sha256": "28a038a3fe70043891de618b9fbd7fdbfb680eb4e0f18a28b094fbf9dfb8f496",
   "scope": "Actual arbitrary Core block reads through Read.snapshot, exact section-array/trie topology and all Core fields compared through existing core_refusal world_image/worlds_equal, all six View fields and actual official Registry.identity observed before/after, returned owner reused for subsequent reads and edits, independent host traversal/seed/appearance oracle, actual direct catalog sample codec and full reply text codec. No simulation ticking, legacy palette sampling, resource binding, model geometry, shader/GPU/render/frame, UI-loop or Java parity claim.",
   "source_check": {
     "command": [
@@ -531,5 +1035,16 @@
       "sha256": "e6cd85732e8d35e322dcb0cd277523a303b658544871d7b3a5c4cac7f834df89"
     }
   },
-  "status": "source_checked_native_unexecuted"
+  "status": "passed",
+  "validation": {
+    "complete_core_equal_checks": 37,
+    "direct_wire_refusals": 3,
+    "full_wire_refusals": 6,
+    "observations": 37,
+    "observed_cells": 4223,
+    "sampler_refusals": 18,
+    "sampler_successes": 19,
+    "two_runs_equal": true
+  },
+  "validation_scope": "Validation counts are per pass unless explicitly aggregate; two identical native passes executed through frozen generation002 with unchanged working-source guard passing before the later authorized GS frame split."
 }
