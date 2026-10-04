@@ -1,0 +1,233 @@
+{
+  "artifact": {
+    "bytes": 329194,
+    "file": "selected.bendtt",
+    "sha1": "f7ad2656cd4582f123f158c3f986787d166d44f7",
+    "sha256": "3313817a4ccb6b3938309a75a40eb9401c69b56147a65261f11457d0a23d16e6"
+  },
+  "export": {
+    "command": [
+      "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+      "--experimental-transform-types",
+      "--max-old-space-size=2048",
+      "--stack-size=4096",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/furnace_authority_proof.mjs",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft"
+    ],
+    "seconds": 1.469597,
+    "status": 0,
+    "stderr": "(node:26445) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+    "stdout": "ALL ORDINARY SOURCE CHECKS PASS\nCHECKED ROOT EXPORT PASS\n"
+  },
+  "kernel": {
+    "command": [
+      "/usr/bin/env",
+      "LEAN_STACK_SIZE=4194304",
+      "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/furnace-authority-reference/proof/selected.bendtt"
+    ],
+    "seconds": 0.0575,
+    "status": 0,
+    "stderr": "",
+    "stdout": "ALL PROOFS CHECK\n"
+  },
+  "kernel_binary": {
+    "bytes": 3271216,
+    "file": "bendtt",
+    "sha1": "f19dfe8aec3b3911b6c9f0acae2a54f5b05ca5f0",
+    "sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7"
+  },
+  "scope": "Actual affine owner rollback/admission, cache retention, fuel remainder routing and shared consumption boundary, provider fallback/arithmetic refusal, persisted field preservation and keyed XP structural laws. No theorem of complete IEEE timer arithmetic or whole Java server/world equivalence.",
+  "selection": {
+    "all_original_declaration_maps_retained": true,
+    "checked_types_and_bodies_unchanged": true,
+    "exclusions": [],
+    "ordinary_only_reason": "No ordinary-only laws omitted from this selected furnace proof graph.",
+    "ordinary_only_roots": [],
+    "roots": [
+      "furnace_authority_laws:failed_tick_preserves_affine_owner",
+      "furnace_authority_laws:invalid_backing_preserves_affine_owner",
+      "furnace_authority_laws:invalid_snapshot_cannot_publish_tick",
+      "furnace_authority_laws:invalid_slot_write_cannot_publish_mutation",
+      "furnace_authority_laws:unlit_timer_is_not_decremented",
+      "furnace_authority_laws:nonpositive_progress_is_not_cooled",
+      "furnace_authority_laws:cache_miss_retains_previous_recipe",
+      "furnace_authority_laws:new_completion_creates_one_recipe_use",
+      "furnace_authority_laws:empty_fuel_cannot_create_remainder",
+      "furnace_authority_laws:last_fuel_routes_remainder_to_slot",
+      "furnace_authority_laws:accepted_last_fuel_keeps_exact_item_remainder",
+      "furnace_authority_laws:remaining_fuel_routes_remainder_to_drop",
+      "furnace_authority_laws:one_fuel_spends_one_unit_at_shared_count_boundary",
+      "furnace_authority_laws:empty_fuel_uses_real_receiver_fallbacks",
+      "furnace_authority_laws:absent_integer_provider_uses_zero_fallback",
+      "furnace_authority_laws:absent_float_provider_uses_one_fallback",
+      "furnace_authority_laws:divide_by_zero_is_arithmetic_failure",
+      "furnace_authority_laws:restore_omits_ephemeral_cache",
+      "furnace_authority_laws:save_preserves_timers_slots_and_use_counts",
+      "furnace_authority_laws:xp_pop_ignores_deleted_recipe",
+      "furnace_authority_laws:empty_use_table_does_not_request_awards",
+      "furnace_authority_laws:changed_current_subclass_refuses_xp_projection",
+      "furnace_authority_laws:claimed_use_clear_preserves_all_other_fields"
+    ],
+    "source_pins": {
+      "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/base.bend": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_recipe.bend": "085bfe968f3e7169e5c7bacf633029ebd9e4fc8c8ecb79ad81f63a193110f795",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_recipe_decoder.bend": "ca334faae18c0a25664d4d3170f29aa26e33fa4a0b9da0bcc08348c79e51ae28",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_recipe_number.bend": "c3b8b18a323f9c95602c55d0063c2ae49796979ed6d7a4506b00a4091db1921a",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe.bend": "3c5f3fc7b3e0be9be7d553da2a107dc1245fe13f17afac0efdf84bc41c15ffe2",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe_component_registry.bend": "911786032b2c22759208edaf7112ae403b2a03663d9237c3e036c2b5ba4ece2a",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe_components.bend": "2a35e31f26187ebbdab1c4261d54083acb68072a56a7b5869e5dfc490bc946be",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe_decoder.bend": "739037cf939bcef5a8008c34216b717ed60574c66690f627d11dc949e8542397",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/furnace_authority.bend": "1aeba248310862e0d3df4efce300c842a31e5377daa79dc166e59d7414758be2",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/furnace_authority_fuel.bend": "e118a5890567ea91431890b3889d9392891bf84bbd4d827ed088983fdf80fa74",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/furnace_authority_laws.bend": "8f8412ba88790d7d0bc68c324c5225aa6c5bb3c06dc6f9630e63dbad9644fa03",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/furnace_authority_proof.bend": "60f5eb9500b1de4326d09d1d14bb710a7e6ea16121b12d29c1a3850f6e7bbe59",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/furnace_authority_slots.bend": "0a4167f5aa16dfd14c000dd02ba5a156ec81d0942683d24927025a857a85827a",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/furnace_authority_xp.bend": "9820b625be1d27542fc6a2105cc1558520af2cbde99b18abb5503d438bceec2d",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/inventory.bend": "9d2be7fb88afa1dc6386ab9e8b046b15d2a2a73b7e14566e5bfad3e6dd1f2702",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/json.bend": "a1789e3b4f5bea158ec0d95a8bcb39aa5b7c7e7355a5254d3de1d52a93c719d1",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/u32_decimal.bend": "d0b4b33f10b9e9801c4e99b83803afba5031ea40013a9263f9090bed8543d25c"
+    },
+    "termPins": [
+      {
+        "checked_proof_sha256": "ce79f4f5e0be3d20eae857cf5e4059e74df3f61c00a6db1639338bea9a37924d",
+        "name": "furnace_authority_laws:failed_tick_preserves_affine_owner",
+        "source_body_sha256": "b85c0d0f66e81c4d7d91592ecf42f3b6a760514630003bc938c1ac6590d800e7",
+        "type_sha256": "80ca7638ff5d0fffec192faa13d36821325e637c53a007e3b2e7f937e9c29ca4"
+      },
+      {
+        "checked_proof_sha256": "7c046a0522c47bf927f17d5a0f1de1625c7f92cbd9448c11464a9c0407663a9d",
+        "name": "furnace_authority_laws:invalid_backing_preserves_affine_owner",
+        "source_body_sha256": "625f895bac484946a8901d5db71feea3de722026b9e2191c04963d6a59020626",
+        "type_sha256": "9bf99b9a95dd6d2278731ece25980edfc1d0d521276c400420e8213e7d401d47"
+      },
+      {
+        "checked_proof_sha256": "846d6a2bbae2045f35c698ed1902d5df53d465f0acfcb331c1a683331c002439",
+        "name": "furnace_authority_laws:invalid_snapshot_cannot_publish_tick",
+        "source_body_sha256": "e6306d101e6801ebfc98e2a9a4513bb8154cfa5108c1044bfb2cea5dc10dab4c",
+        "type_sha256": "fbe94e5560e5030d240b9a847f69b526b45238ffb481e6b0c066cc917c87887e"
+      },
+      {
+        "checked_proof_sha256": "9b38bc25a5afe45630594697d24da4642b26539229b1a8db98a99a5a463cca56",
+        "name": "furnace_authority_laws:invalid_slot_write_cannot_publish_mutation",
+        "source_body_sha256": "b6ca0ca4767cacfe3fff5467b0c5c6cb8e7e1abc6b39f5ea3e845414b036c795",
+        "type_sha256": "25af9e49bc4043035bd4bab34f8bc26c105d39c10585a6d5186ab3bf8fe57fbd"
+      },
+      {
+        "checked_proof_sha256": "cbef114dc90725d2d27b9735deb793cd791361d390c17571e4fdfc236348dd2a",
+        "name": "furnace_authority_laws:unlit_timer_is_not_decremented",
+        "source_body_sha256": "66f124241986a52da623d1460b079e323fac534f2782d473d2f7407819f8267a",
+        "type_sha256": "38a8966c9d519e27dcb334a812e0f57ef87b6e727d0dca4676831321f55591e0"
+      },
+      {
+        "checked_proof_sha256": "7b1807dd717f5d3914142a447830beca1bfad537d8a9a5b07baf64dfabddafb8",
+        "name": "furnace_authority_laws:nonpositive_progress_is_not_cooled",
+        "source_body_sha256": "66f124241986a52da623d1460b079e323fac534f2782d473d2f7407819f8267a",
+        "type_sha256": "6956ac5c081b5b2c5de6f8006d122cd774475f72ce68fe32132fd47449cea858"
+      },
+      {
+        "checked_proof_sha256": "19cf34aaedbd5133b510832c55dc2f169df186d0fd1e7fb9d8e71c9112490a88",
+        "name": "furnace_authority_laws:cache_miss_retains_previous_recipe",
+        "source_body_sha256": "f34ad57f4b3c7726b87c172d3dfaca685d24ad8daa23652384f0ee6c029d11d7",
+        "type_sha256": "a70f3754b0adf0e020ecde7778d271aa9a00a617ed9006ae38f7a252d0ec613a"
+      },
+      {
+        "checked_proof_sha256": "1fe8fb7cb440ad0b512fba044d8672c5666008b9ab3c53122cc626eb234c057d",
+        "name": "furnace_authority_laws:new_completion_creates_one_recipe_use",
+        "source_body_sha256": "2ffdacbe235781951011fe6328c16bc6c5808311f39ff704f3ed14a4311f84c1",
+        "type_sha256": "f262352ee2b6fd463ca2f67ff3d49a9a62e5091ee3f3d2513ebef790ffa9c10a"
+      },
+      {
+        "checked_proof_sha256": "c98e2dc75f9bd6ee5e845b10ebfd0a56e0e742e5fb68fb370846fea78b2fe56f",
+        "name": "furnace_authority_laws:empty_fuel_cannot_create_remainder",
+        "source_body_sha256": "8f07a75911784fa8fb5d1962c5fc91095c6de6a1f067f81e851ede36dee7daeb",
+        "type_sha256": "66c347b759c9043943b371fb36fb2b493c7e9da3dd705afd1a0e7727b3340ca2"
+      },
+      {
+        "checked_proof_sha256": "00983c807824c2e500d75463b9643368d8d82672a64cb1cdc3a5b727861a50b0",
+        "name": "furnace_authority_laws:last_fuel_routes_remainder_to_slot",
+        "source_body_sha256": "6685bead42229a9fa4e4e228d5900d70b681b582b15ddfb53c7269f9efde652b",
+        "type_sha256": "3d122bf43be7615f1751527bfc81b3573cef82567b51ae3bcd5096b30c183ab4"
+      },
+      {
+        "checked_proof_sha256": "7e9bdd20c64ee34383fc4668af8ff27d53a6045f984eee1b11fec2b6a7fd1e08",
+        "name": "furnace_authority_laws:accepted_last_fuel_keeps_exact_item_remainder",
+        "source_body_sha256": "faf651f22c394b200b4acc64359d4a7406dd43c1f45484524736832f7397d495",
+        "type_sha256": "693a0be3b0222ae04768847f47d4f355db594cade395ff813c4793104337ccf7"
+      },
+      {
+        "checked_proof_sha256": "521cddb89d770e0deaa86816bb1cd2a3284d451e8909d120e9e1240ee2976a01",
+        "name": "furnace_authority_laws:remaining_fuel_routes_remainder_to_drop",
+        "source_body_sha256": "36421bda7d10495a599396e7477b857303849823456a2ecde700c44fd197163b",
+        "type_sha256": "c7867d22dcdb37bbdffdee87e7fe86039e72403212c9dfd5120906de6cca6c70"
+      },
+      {
+        "checked_proof_sha256": "0ea3bf41e6892812b5fc27a2ceed4a83aeed2963eb2916af02d93044c3dae92d",
+        "name": "furnace_authority_laws:one_fuel_spends_one_unit_at_shared_count_boundary",
+        "source_body_sha256": "604e57b000b29269c144fca4444b8e51c48583bc389fb851f9fabe7ea5e447cd",
+        "type_sha256": "67794c6af6309138e0837b3a8d3f2fcd2c7680396130315acc2cde59b41dc156"
+      },
+      {
+        "checked_proof_sha256": "06434dd6781d3ceab8986d0a50ca6d72516314db5201afc0f2fa5a5ee3d44c8a",
+        "name": "furnace_authority_laws:empty_fuel_uses_real_receiver_fallbacks",
+        "source_body_sha256": "e5b0b5a0b2f477ca57dec2132af7dbac592c118ae18fe8cf7ba53d0f22de7a7f",
+        "type_sha256": "514e7ff112bec25f7a3eff74770c4f6dbb20fe44cc0f443164490cc91dd79aa7"
+      },
+      {
+        "checked_proof_sha256": "b6900cb356c509e26a7cb7e0d3e3992bc36ca2a49f2fffb16100351a55485d83",
+        "name": "furnace_authority_laws:absent_integer_provider_uses_zero_fallback",
+        "source_body_sha256": "c1859dae71849d5a08e8575c6e001d85f21cc72b2423a47366d8fe89842f35b1",
+        "type_sha256": "d985d73fa4fb6dd9648c716a5898260fa0faaf1134fc9d57b81c8357f09098f5"
+      },
+      {
+        "checked_proof_sha256": "efa60bb4392eb9c4601a0f038ca978180f443a6821c845fb02b4a4aa6bd24a67",
+        "name": "furnace_authority_laws:absent_float_provider_uses_one_fallback",
+        "source_body_sha256": "c1859dae71849d5a08e8575c6e001d85f21cc72b2423a47366d8fe89842f35b1",
+        "type_sha256": "4af7d28f4bed6251cd8d8a2fd08b3d0b25090e3787b2b23a5494a4c6b89d1e41"
+      },
+      {
+        "checked_proof_sha256": "cda0ec81f49ed8b2f18d35b223aa5c1a76d47a18af5f16d24274c2a7634ded48",
+        "name": "furnace_authority_laws:divide_by_zero_is_arithmetic_failure",
+        "source_body_sha256": "89ed427f7eacd7a7a209a364042fa52d6f255111d6e1697f354461761c4c1821",
+        "type_sha256": "2095be8f784089db837ac5c471f7134f3e5537a660f2f200b89871e6764c3f4b"
+      },
+      {
+        "checked_proof_sha256": "eb7b05d725c023e4275003746968be3727f693c5c847acd171ea29212d5b6a6a",
+        "name": "furnace_authority_laws:restore_omits_ephemeral_cache",
+        "source_body_sha256": "0eb2a92ed4729980219eaeb24e14bf6890cbed3d97e4424c040dd52e8cc6e309",
+        "type_sha256": "4eef2fb61c15018f33ca5f47f9f65f18330ecdf8a4d0f5e1c088c5233d39f1b9"
+      },
+      {
+        "checked_proof_sha256": "3b5578b408378f01cce834a7590080ba889452eea3c84b869fe0f91980687249",
+        "name": "furnace_authority_laws:save_preserves_timers_slots_and_use_counts",
+        "source_body_sha256": "795d87a807a1564030887f979b619e1bb7158d490443ee02a4dc62d3a8ffbaee",
+        "type_sha256": "b69739d7252791affaf29911761acebbf09426664223629c3c7e7ae7584efe49"
+      },
+      {
+        "checked_proof_sha256": "df98b654fe1ae3b15f6f6fe548d61844958a76a3e2861a6a33ef7ed0ee407f65",
+        "name": "furnace_authority_laws:xp_pop_ignores_deleted_recipe",
+        "source_body_sha256": "b5cc3ce2baab6d64a6f617a806087585a98fb73377ad377b58efc261ba302ab2",
+        "type_sha256": "c3b4b08abd7bee2b6bb693b6241aa78e6ac6922b281f164234fe3c0f63495930"
+      },
+      {
+        "checked_proof_sha256": "7ee20a21281053f77a0808b2512d6163a1287453091a695564c1f01455234d5e",
+        "name": "furnace_authority_laws:empty_use_table_does_not_request_awards",
+        "source_body_sha256": "1dc605bd06001de591b7fdfc456953aae9482ee1a63dbfc425fc5668294061cb",
+        "type_sha256": "951ef1165c2f4dbf416d940053e5150eeb4e125dbe6132df8cef64e53a519b8f"
+      },
+      {
+        "checked_proof_sha256": "8eb082a4069923053849354cee729ac52eb3d03ae9dc6181aadac1f5de0a05d2",
+        "name": "furnace_authority_laws:changed_current_subclass_refuses_xp_projection",
+        "source_body_sha256": "d2efbd73a183e9d999c4cefe50c63d780872c42959bb0518ff5d7b372c3b3201",
+        "type_sha256": "e768e803942676818fea84501e861056048a787cf86c737b8f891ba33cd014ed"
+      },
+      {
+        "checked_proof_sha256": "dbbe7df619ece18041b07850505719df9598c62def8ed8c9cffae6c784f4c195",
+        "name": "furnace_authority_laws:claimed_use_clear_preserves_all_other_fields",
+        "source_body_sha256": "e8511fc10114f10e555055402b46bc1c6a0d9de3bec1332b59b98203e1246a1c",
+        "type_sha256": "3975c39777b740976919a6dcd6ae40ef15645e1cae52cac2865aeb36cf483c26"
+      }
+    ]
+  },
+  "status": "passed"
+}

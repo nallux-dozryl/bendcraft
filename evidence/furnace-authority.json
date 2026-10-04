@@ -1,0 +1,124 @@
+{
+  "binary": {
+    "bytes": 2238568,
+    "file": "furnace-authority-tests",
+    "sha1": "eca8b3e8a1683a3ae02e8852015f18f581fd1297",
+    "sha256": "077f9b756a0cd2739fe5526455cc04e45a249e95629636e47ebc880a65140311"
+  },
+  "build": {
+    "command": [
+      "/Users/chuah/.bend/bin/bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/furnace_authority.bend",
+      "-o",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/furnace-authority-tests"
+    ],
+    "seconds": 33.549784,
+    "status": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  "limitations": [
+    "Future world/block entity consumer must apply drops/LIT/dirty effects at 20 Hz and own block lifecycle, slot transfer permissions, recipe reload, RNG and XP orb/player awards.",
+    "Typed Persisted seam preserves vanilla fields; physical NBT/live durable-save integration is not implemented here.",
+    "Installed provider expression domain is constant/reference/div/conditional/match_block; other provider/predicate subclasses are preserved and explicitly refuse evaluation.",
+    "XP traversal order is supplied by caller: Java Reference2IntOpenHashMap iteration depends on process object identity and is not replaced by invented canonical ordering."
+  ],
+  "native_input": {
+    "bytes": 3430125,
+    "file": "native-input.json",
+    "sha1": "4ce950a0d0e018d8c727f8b4c6095ec9afd80f48",
+    "sha256": "e916ad0f78b4cb430ccc72f6adb33f9d42597c526e1db10ade2fba95a6fb2691"
+  },
+  "output_sha256": "a74ae6671ebcfb2ac866cbb111ec4f54b13da8cd84e8a36645ee9398205ae46b",
+  "reference": {
+    "bytes": 1788630,
+    "file": "furnace_authority.json",
+    "sha1": "5132bf719cb8bffd2baabdc5301770772f05c910",
+    "sha256": "181369a7b36da9f3fff421ccd16f61a0f3cddc2dc268112c3c57bb34c13eeed6"
+  },
+  "reference_tool": {
+    "bytes": 23031,
+    "file": "reference_furnace_authority_probe.py",
+    "sha1": "61832dd00497da01a9b6271fb4160b1694077b9b",
+    "sha256": "a51d813b3c66ad3b4a6b87db4799e9ed5a11623b5868dfe3127fdc020a4130e3"
+  },
+  "runs": [
+    {
+      "command": [
+        "/usr/bin/env",
+        "BEND_THREADS=1",
+        "BEND_GPU=0",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/furnace-authority-tests",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/furnace-authority-reference/native-input.json"
+      ],
+      "counts": {
+        "current_registry_xp_receivers": 5,
+        "fuel_context_receivers": 1041,
+        "initialized_component_defaults": 1658,
+        "initialized_fuel_items": 347,
+        "owned_state_scenarios": 27,
+        "owned_state_steps": 28
+      },
+      "seconds": 18.402801,
+      "status": 0,
+      "stderr": "",
+      "stdout": "time\":100,\"speed_bits\":1073741824},{\"id\":\"minecraft:bamboo_sign\",\"block\":\"minecraft:smoker\",\"time\":100,\"speed_bits\":1073741824},{\"id\":\"minecraft:oak_hanging_sign\",\"block\":\"minecraft:smoker\",\"time\":400,\"speed_bits\":1073741824},{\"id\":\"minecraft:spruce_hanging_sign\",\"block\":\"minecraft:smoker\",\"time\":400,\"speed_bits\":1073741824},{\"id\":\"minecraft:birch_hanging_sign\",\"block\":\"minecraft:smoker\",\"time\":400,\"speed_bits\":1073741824},{\"id\":\"minecraft:jungle_hanging_sign\",\"block\":\"minecraft:smoker\",\"time\":400,\"speed_bits\":1073741824},{\"id\":\"minecraft:acacia_hanging_sign\",\"block\":\"minecraft:smoker\",\"time\":400,\"speed_bits\":1073741824},{\"id\":\"minecraft:cherry_hanging_sign\",\"block\":\"minecraft:smoker\",\"time\":400,\"speed_bits\":1073741824},{\"id\":\"minecraft:dark_oak_hanging_sign\",\"block\":\"minecraft:smoker\",\"time\":400,\"speed_bits\":1073741824},{\"id\":\"minecraft:pale_oak_hanging_sign\",\"block\":\"minecraft:smoker\",\"time\":400,\"speed_bits\":1073741824},{\"id\":\"minecraft:mangrove_hanging_sign\",\"block\":\"minecraft:smoker\",\"time\":400,\"speed_bits\":1073741824},{\"id\":\"minecraft:poplar_hanging_sign\",\"block\":\"minecraft:smoker\",\"time\":400,\"speed_bits\":1073741824},{\"id\":\"minecraft:bamboo_hanging_sign\",\"block\":\"minecraft:smoker\",\"time\":400,\"speed_bits\":1073741824},{\"id\":\"minecraft:lava_bucket\",\"block\":\"minecraft:smoker\",\"time\":10000,\"speed_bits\":1073741824},{\"id\":\"minecraft:dried_kelp_block\",\"block\":\"minecraft:smoker\",\"time\":2000,\"speed_bits\":1073741824},{\"id\":\"minecraft:white_cushion\",\"block\":\"minecraft:smoker\",\"time\":25,\"speed_bits\":1073741824},{\"id\":\"minecraft:orange_cushion\",\"block\":\"minecraft:smoker\",\"time\":25,\"speed_bits\":1073741824},{\"id\":\"minecraft:magenta_cushion\",\"block\":\"minecraft:smoker\",\"time\":25,\"speed_bits\":1073741824},{\"id\":\"minecraft:light_blue_cushion\",\"block\":\"minecraft:smoker\",\"time\":25,\"speed_bits\":1073741824},{\"id\":\"minecraft:yellow_cushion\",\"block\":\"minecraft:smoker\",\"time\":25,\"speed_bits\":1073741824},{\"id\":\"minecraft:lime_cushion\",\"block\":\"minecraft:smoker\",\"time\":25,\"speed_bits\":1073741824},{\"id\":\"minecraft:pink_cushion\",\"block\":\"minecraft:smoker\",\"time\":25,\"speed_bits\":1073741824},{\"id\":\"minecraft:gray_cushion\",\"block\":\"minecraft:smoker\",\"time\":25,\"speed_bits\":1073741824},{\"id\":\"minecraft:light_gray_cushion\",\"block\":\"minecraft:smoker\",\"time\":25,\"speed_bits\":1073741824},{\"id\":\"minecraft:cyan_cushion\",\"block\":\"minecraft:smoker\",\"time\":25,\"speed_bits\":1073741824},{\"id\":\"minecraft:purple_cushion\",\"block\":\"minecraft:smoker\",\"time\":25,\"speed_bits\":1073741824},{\"id\":\"minecraft:blue_cushion\",\"block\":\"minecraft:smoker\",\"time\":25,\"speed_bits\":1073741824},{\"id\":\"minecraft:brown_cushion\",\"block\":\"minecraft:smoker\",\"time\":25,\"speed_bits\":1073741824},{\"id\":\"minecraft:green_cushion\",\"block\":\"minecraft:smoker\",\"time\":25,\"speed_bits\":1073741824},{\"id\":\"minecraft:red_cushion\",\"block\":\"minecraft:smoker\",\"time\":25,\"speed_bits\":1073741824},{\"id\":\"minecraft:black_cushion\",\"block\":\"minecraft:smoker\",\"time\":25,\"speed_bits\":1073741824},{\"id\":\"minecraft:fishing_rod\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:blaze_rod\",\"block\":\"minecraft:smoker\",\"time\":1200,\"speed_bits\":1073741824},{\"id\":\"minecraft:white_banner\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:orange_banner\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:magenta_banner\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:light_blue_banner\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:yellow_banner\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:lime_banner\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:pink_banner\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:gray_banner\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:light_gray_banner\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:cyan_banner\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:purple_banner\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:blue_banner\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:brown_banner\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:green_banner\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:red_banner\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:black_banner\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:wooden_spear\",\"block\":\"minecraft:smoker\",\"time\":100,\"speed_bits\":1073741824},{\"id\":\"minecraft:crossbow\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:loom\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:composter\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:barrel\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:cartography_table\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:fletching_table\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:smithing_table\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824}],\"xp_cases\":[{\"id\":\"current_rate\",\"status\":\"accepted\",\"requests\":[{\"id\":\"bendcraft:first\",\"uses\":3,\"rate_bits\":1065353216}],\"uses\":{\"bendcraft:first\":3}},{\"id\":\"deleted_skipped\",\"status\":\"accepted\",\"requests\":[],\"uses\":{\"bendcraft:first\":3}},{\"id\":\"current_zero\",\"status\":\"accepted\",\"requests\":[{\"id\":\"bendcraft:first\",\"uses\":3,\"rate_bits\":0}],\"uses\":{\"bendcraft:first\":3}},{\"id\":\"noncooking_cast_failure\",\"status\":\"error\",\"uses\":{\"bendcraft:first\":3}},{\"id\":\"negative_uses\",\"status\":\"accepted\",\"requests\":[{\"id\":\"bendcraft:first\",\"uses\":4294967295,\"rate_bits\":1065353216}],\"uses\":{\"bendcraft:first\":4294967295}}]}\n",
+      "threads": 1
+    },
+    {
+      "command": [
+        "/usr/bin/env",
+        "BEND_THREADS=4",
+        "BEND_GPU=0",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/furnace-authority-tests",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/furnace-authority-reference/native-input.json"
+      ],
+      "counts": {
+        "current_registry_xp_receivers": 5,
+        "fuel_context_receivers": 1041,
+        "initialized_component_defaults": 1658,
+        "initialized_fuel_items": 347,
+        "owned_state_scenarios": 27,
+        "owned_state_steps": 28
+      },
+      "seconds": 9.746471,
+      "status": 0,
+      "stderr": "",
+      "stdout": "time\":100,\"speed_bits\":1073741824},{\"id\":\"minecraft:bamboo_sign\",\"block\":\"minecraft:smoker\",\"time\":100,\"speed_bits\":1073741824},{\"id\":\"minecraft:oak_hanging_sign\",\"block\":\"minecraft:smoker\",\"time\":400,\"speed_bits\":1073741824},{\"id\":\"minecraft:spruce_hanging_sign\",\"block\":\"minecraft:smoker\",\"time\":400,\"speed_bits\":1073741824},{\"id\":\"minecraft:birch_hanging_sign\",\"block\":\"minecraft:smoker\",\"time\":400,\"speed_bits\":1073741824},{\"id\":\"minecraft:jungle_hanging_sign\",\"block\":\"minecraft:smoker\",\"time\":400,\"speed_bits\":1073741824},{\"id\":\"minecraft:acacia_hanging_sign\",\"block\":\"minecraft:smoker\",\"time\":400,\"speed_bits\":1073741824},{\"id\":\"minecraft:cherry_hanging_sign\",\"block\":\"minecraft:smoker\",\"time\":400,\"speed_bits\":1073741824},{\"id\":\"minecraft:dark_oak_hanging_sign\",\"block\":\"minecraft:smoker\",\"time\":400,\"speed_bits\":1073741824},{\"id\":\"minecraft:pale_oak_hanging_sign\",\"block\":\"minecraft:smoker\",\"time\":400,\"speed_bits\":1073741824},{\"id\":\"minecraft:mangrove_hanging_sign\",\"block\":\"minecraft:smoker\",\"time\":400,\"speed_bits\":1073741824},{\"id\":\"minecraft:poplar_hanging_sign\",\"block\":\"minecraft:smoker\",\"time\":400,\"speed_bits\":1073741824},{\"id\":\"minecraft:bamboo_hanging_sign\",\"block\":\"minecraft:smoker\",\"time\":400,\"speed_bits\":1073741824},{\"id\":\"minecraft:lava_bucket\",\"block\":\"minecraft:smoker\",\"time\":10000,\"speed_bits\":1073741824},{\"id\":\"minecraft:dried_kelp_block\",\"block\":\"minecraft:smoker\",\"time\":2000,\"speed_bits\":1073741824},{\"id\":\"minecraft:white_cushion\",\"block\":\"minecraft:smoker\",\"time\":25,\"speed_bits\":1073741824},{\"id\":\"minecraft:orange_cushion\",\"block\":\"minecraft:smoker\",\"time\":25,\"speed_bits\":1073741824},{\"id\":\"minecraft:magenta_cushion\",\"block\":\"minecraft:smoker\",\"time\":25,\"speed_bits\":1073741824},{\"id\":\"minecraft:light_blue_cushion\",\"block\":\"minecraft:smoker\",\"time\":25,\"speed_bits\":1073741824},{\"id\":\"minecraft:yellow_cushion\",\"block\":\"minecraft:smoker\",\"time\":25,\"speed_bits\":1073741824},{\"id\":\"minecraft:lime_cushion\",\"block\":\"minecraft:smoker\",\"time\":25,\"speed_bits\":1073741824},{\"id\":\"minecraft:pink_cushion\",\"block\":\"minecraft:smoker\",\"time\":25,\"speed_bits\":1073741824},{\"id\":\"minecraft:gray_cushion\",\"block\":\"minecraft:smoker\",\"time\":25,\"speed_bits\":1073741824},{\"id\":\"minecraft:light_gray_cushion\",\"block\":\"minecraft:smoker\",\"time\":25,\"speed_bits\":1073741824},{\"id\":\"minecraft:cyan_cushion\",\"block\":\"minecraft:smoker\",\"time\":25,\"speed_bits\":1073741824},{\"id\":\"minecraft:purple_cushion\",\"block\":\"minecraft:smoker\",\"time\":25,\"speed_bits\":1073741824},{\"id\":\"minecraft:blue_cushion\",\"block\":\"minecraft:smoker\",\"time\":25,\"speed_bits\":1073741824},{\"id\":\"minecraft:brown_cushion\",\"block\":\"minecraft:smoker\",\"time\":25,\"speed_bits\":1073741824},{\"id\":\"minecraft:green_cushion\",\"block\":\"minecraft:smoker\",\"time\":25,\"speed_bits\":1073741824},{\"id\":\"minecraft:red_cushion\",\"block\":\"minecraft:smoker\",\"time\":25,\"speed_bits\":1073741824},{\"id\":\"minecraft:black_cushion\",\"block\":\"minecraft:smoker\",\"time\":25,\"speed_bits\":1073741824},{\"id\":\"minecraft:fishing_rod\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:blaze_rod\",\"block\":\"minecraft:smoker\",\"time\":1200,\"speed_bits\":1073741824},{\"id\":\"minecraft:white_banner\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:orange_banner\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:magenta_banner\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:light_blue_banner\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:yellow_banner\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:lime_banner\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:pink_banner\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:gray_banner\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:light_gray_banner\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:cyan_banner\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:purple_banner\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:blue_banner\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:brown_banner\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:green_banner\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:red_banner\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:black_banner\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:wooden_spear\",\"block\":\"minecraft:smoker\",\"time\":100,\"speed_bits\":1073741824},{\"id\":\"minecraft:crossbow\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:loom\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:composter\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:barrel\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:cartography_table\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:fletching_table\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824},{\"id\":\"minecraft:smithing_table\",\"block\":\"minecraft:smoker\",\"time\":150,\"speed_bits\":1073741824}],\"xp_cases\":[{\"id\":\"current_rate\",\"status\":\"accepted\",\"requests\":[{\"id\":\"bendcraft:first\",\"uses\":3,\"rate_bits\":1065353216}],\"uses\":{\"bendcraft:first\":3}},{\"id\":\"deleted_skipped\",\"status\":\"accepted\",\"requests\":[],\"uses\":{\"bendcraft:first\":3}},{\"id\":\"current_zero\",\"status\":\"accepted\",\"requests\":[{\"id\":\"bendcraft:first\",\"uses\":3,\"rate_bits\":0}],\"uses\":{\"bendcraft:first\":3}},{\"id\":\"noncooking_cast_failure\",\"status\":\"error\",\"uses\":{\"bendcraft:first\":3}},{\"id\":\"negative_uses\",\"status\":\"accepted\",\"requests\":[{\"id\":\"bendcraft:first\",\"uses\":4294967295,\"rate_bits\":1065353216}],\"uses\":{\"bendcraft:first\":4294967295}}]}\n",
+      "threads": 4
+    }
+  ],
+  "source_check": {
+    "command": [
+      "/Users/chuah/.bend/bin/bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/furnace_authority.bend",
+      "--check-only"
+    ],
+    "seconds": 1.988966,
+    "status": 0,
+    "stderr": "",
+    "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+  },
+  "sources": {
+    "src/cooking_recipe.bend": "085bfe968f3e7169e5c7bacf633029ebd9e4fc8c8ecb79ad81f63a193110f795",
+    "src/cooking_recipe_decoder.bend": "ca334faae18c0a25664d4d3170f29aa26e33fa4a0b9da0bcc08348c79e51ae28",
+    "src/cooking_recipe_number.bend": "c3b8b18a323f9c95602c55d0063c2ae49796979ed6d7a4506b00a4091db1921a",
+    "src/crafting_recipe.bend": "3c5f3fc7b3e0be9be7d553da2a107dc1245fe13f17afac0efdf84bc41c15ffe2",
+    "src/crafting_recipe_component_registry.bend": "911786032b2c22759208edaf7112ae403b2a03663d9237c3e036c2b5ba4ece2a",
+    "src/crafting_recipe_components.bend": "2a35e31f26187ebbdab1c4261d54083acb68072a56a7b5869e5dfc490bc946be",
+    "src/crafting_recipe_decoder.bend": "739037cf939bcef5a8008c34216b717ed60574c66690f627d11dc949e8542397",
+    "src/furnace_authority.bend": "1aeba248310862e0d3df4efce300c842a31e5377daa79dc166e59d7414758be2",
+    "src/furnace_authority_decoder.bend": "e69c7050eb2a51fe019bbcfb1716f2512f12f8853f19320502d3769d0626ce47",
+    "src/furnace_authority_fuel.bend": "e118a5890567ea91431890b3889d9392891bf84bbd4d827ed088983fdf80fa74",
+    "src/furnace_authority_laws.bend": "8f8412ba88790d7d0bc68c324c5225aa6c5bb3c06dc6f9630e63dbad9644fa03",
+    "src/furnace_authority_proof.bend": "60f5eb9500b1de4326d09d1d14bb710a7e6ea16121b12d29c1a3850f6e7bbe59",
+    "src/furnace_authority_slots.bend": "0a4167f5aa16dfd14c000dd02ba5a156ec81d0942683d24927025a857a85827a",
+    "src/furnace_authority_xp.bend": "9820b625be1d27542fc6a2105cc1558520af2cbde99b18abb5503d438bceec2d",
+    "src/inventory.bend": "9d2be7fb88afa1dc6386ab9e8b046b15d2a2a73b7e14566e5bfad3e6dd1f2702",
+    "src/json.bend": "a1789e3b4f5bea158ec0d95a8bcb39aa5b7c7e7355a5254d3de1d52a93c719d1",
+    "src/u32_decimal.bend": "d0b4b33f10b9e9801c4e99b83803afba5031ea40013a9263f9090bed8543d25c",
+    "tests/furnace_authority.bend": "162b80530b359df70fa27931e6cdc08759efedca841e70e93a525b261976005f",
+    "tools/furnace_authority_proof.mjs": "c4c3a827c21476d5f72172e8e3004080084e0ab071b571d4e7dd93243ab4840d"
+  },
+  "status": "passed"
+}

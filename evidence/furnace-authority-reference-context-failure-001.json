@@ -1,0 +1,10 @@
+{
+  "cause": "VanillaRegistries.createWorldLookup omits reloadable context provider/predicate registries, despite valid initialized item component keys.",
+  "failed_receiver": "AbstractFurnaceBlockEntity.getBurnDuration → ResolvableInt.Reference.getProvider",
+  "fixture_boundary": "ServerLevel overrides world I/O; XP spawn supplies empty collision/entity queries. No production host gameplay.",
+  "observed_failure": "IllegalStateException: Registry minecraft:context_int_provider not found",
+  "pin": "26.3",
+  "repair": "Predeclare holder references in MappedRegistry, parse installed cooking/predicate JSON with actual DIRECT_CODECs and RegistryOps, register real decoded values, freeze and supply expanded LootContext resolver. No forced numeric/default table.",
+  "status": "repaired",
+  "subsequent_reference": "reference/furnace_authority.json"
+}
