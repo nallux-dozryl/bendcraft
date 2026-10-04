@@ -1,0 +1,24 @@
+{
+  "generation": 19,
+  "status": "changed_entry_source_passed",
+  "attempts": [
+    {
+      "kind": "read_only_layout_probe",
+      "directory": "build/local-player-cooking/layout/1791153280194127000",
+      "checker_called": false,
+      "emitter_called": false,
+      "status": "failed_current_source_parse",
+      "reason": "Original book_load rejected operation_checked case owned_tail (world,False{}): expected two patterns. Original compiler unchanged; no native verdict. The initial runner lacked compact Err formatting; it is repaired for later runs."
+    },
+    {
+      "kind": "compact_leaf_parse",
+      "node_stack_size": 4096,
+      "status": "failed",
+      "message": "expected 2 patterns (one per scrutinee), observed owned_tail (world,False{}) at local_player_cooking.bend line183"
+    }
+  ],
+  "scope": "Honest changed019 preparation failures; neither a kernel nor native gameplay claim.",
+  "accepted_source": "evidence/local-player-cooking-source-019.json",
+  "accepted_layout": "evidence/local-player-cooking-layout-019.json",
+  "native_claim": false
+}

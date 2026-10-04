@@ -14,6 +14,7 @@ NODE = pathlib.Path('/opt/homebrew/bin/node')
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--diagnose', action='store_true', help='Observe original checker order; bound the failed-graph diagnosis to 40 seconds.')
+    parser.add_argument('--generation', type=int, help='Keep a later changed-source receipt distinct from the initial 018 splice.')
     options = parser.parse_args()
     directory = ROOT / 'build/local-player-cooking/source' / str(time.time_ns())
     directory.mkdir(parents=True, exist_ok=False)
@@ -28,7 +29,8 @@ def main():
         evidence = {**source, 'directory': str(directory), 'receipt': receipt,
                     'runner': fingerprint(pathlib.Path(__file__)),
                     'checker': fingerprint(ROOT / 'tools/local_player_cooking_source.mjs')}
-        write_json(ROOT / 'evidence/local-player-cooking-source.json', evidence)
+        suffix = '' if options.generation is None else f'-{options.generation:03d}'
+        write_json(ROOT / f'evidence/local-player-cooking-source{suffix}.json', evidence)
         print(json.dumps({'status': source['status'], 'seconds': receipt['seconds'],
                           'declarations': source['declarations'], 'holes': source['holes']}))
     except BaseException as error:

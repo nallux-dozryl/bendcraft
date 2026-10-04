@@ -1,0 +1,834 @@
+{
+  "checker": {
+    "bytes": 2528,
+    "file": "local_player_cooking_source.mjs",
+    "sha1": "e0443d53a18c1b434752400b7ee74110903377da",
+    "sha256": "f5301f24abb76a997af15fad2672d40e62841ccdae993b066f35f21ea3af1b51"
+  },
+  "declaration_selection": false,
+  "declarations": 7786,
+  "directory": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking/source/1791153778690095000",
+  "entry": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/remote_resource_server.bend",
+  "holes": 0,
+  "kernel_or_native_claim": false,
+  "order_progress_observation": false,
+  "original_book_checked": true,
+  "receipt": {
+    "argv": [
+      "/opt/homebrew/bin/node",
+      "--expose-gc",
+      "--max-old-space-size=8192",
+      "--stack-size=4096",
+      "--experimental-transform-types",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/local_player_cooking_source.mjs",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking/source/1791153778690095000"
+    ],
+    "exit_code": 0,
+    "group_absent": true,
+    "pid": 9567,
+    "seconds": 16.821739,
+    "stderr": {
+      "bytes": 176,
+      "file": "original-source.stderr",
+      "sha1": "fa4d02c9c5859367da14628809c078b8f0398c46",
+      "sha256": "27a49bd59778bd46241917891456f272fb6b521c84b00ef330fec123d4f2bf7b"
+    },
+    "stdout": {
+      "bytes": 77,
+      "file": "original-source.stdout",
+      "sha1": "0ad991fb108ac84c11d6c153cd964c634eb8a016",
+      "sha256": "b5ff39a3dbb3b4a2ba3aef462626e9adc51136734677c18fdf28204056391b20"
+    },
+    "timed_out": false
+  },
+  "runner": {
+    "bytes": 2157,
+    "file": "test_local_player_cooking_source.py",
+    "sha1": "22cb84b0a3ea477d596952fe8d7a54d87806da3f",
+    "sha256": "03735892fbbdce0f8385a883221f41eeb867d47a0b1e91d01ddf19fbe39f9889"
+  },
+  "scope": "Original compiler book_valid checks the complete actual Entry and its cooking/runtime/storage imports. Native/foreign IO boundaries are typed here; this is neither an independent-kernel nor native execution verdict.",
+  "source_files": [
+    {
+      "bytes": 71530,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/base.bend",
+      "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+    },
+    {
+      "bytes": 33835,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/remote_resource_server.bend",
+      "sha256": "e7567b69b74a6e2c5b875e020281f508f7fa76def8a695f018da24bbf536b490"
+    },
+    {
+      "bytes": 36610,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/archive.bend",
+      "sha256": "c0f7b34a22726d220f6b867730b7d080d57d82c84d619c35721b9b8d18fa5d6e"
+    },
+    {
+      "bytes": 5429,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/atomic_file.bend",
+      "sha256": "ef82fcddc460705f0761473bcfd8fcd896b779f89e56c4551c9ced23b13f987a"
+    },
+    {
+      "bytes": 3344,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/big_uint.bend",
+      "sha256": "fbe5965ee16ee3d6864def33fbc6e5e4b1b9bc7da4735d99311c1a23c65e2444"
+    },
+    {
+      "bytes": 28430,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/block_bake.bend",
+      "sha256": "3611116e0ba63915d6013463c1640f83b6b80cb08e802f93be5f7eaa4d600595"
+    },
+    {
+      "bytes": 11199,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/block_light.bend",
+      "sha256": "e829015163260450b03c9a25e90d6f78df39e3797b77f9e03a917231fdd4e159"
+    },
+    {
+      "bytes": 5151,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/block_light_registry.bend",
+      "sha256": "0c763c8f6b8828671d64b983b635a2b63744265ffb9ff248990a7d6fdee77522"
+    },
+    {
+      "bytes": 10161,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/block_light_registry_decoder.bend",
+      "sha256": "f9470cde8b8494448151c078602dd36fa88c2db16911a0557b16189f8de7299a"
+    },
+    {
+      "bytes": 4224,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/block_light_registry_loader.bend",
+      "sha256": "fe77793cf8236920cce91498e414b7ef75bc9e1a737cb2107b7271e71536883b"
+    },
+    {
+      "bytes": 27232,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/block_light_world.bend",
+      "sha256": "870727d29cd91025f34140efb06c7042eae8f52b3bb300f706bd682b7f0df456"
+    },
+    {
+      "bytes": 41987,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/block_model.bend",
+      "sha256": "40e89cd6fb2335526cf5f48d7fc6c92c669fa0123fbfc7652f676d39f552c9a7"
+    },
+    {
+      "bytes": 12413,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/campfire_authority.bend",
+      "sha256": "78a59482edfd9f1ed0455524b99fda220dbe697bfcc72fe1a7b71a343396ab21"
+    },
+    {
+      "bytes": 5549,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/campfire_authority_items.bend",
+      "sha256": "cc8e33b0636309348135ec32aabb8f6cfceb23a24863fd064fc30bf730ba79c2"
+    },
+    {
+      "bytes": 463,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/client_controls.bend",
+      "sha256": "aa55b7905c339d58909e6319d2d31b972c23ea1a2a3c895ea72c2a2c72605f25"
+    },
+    {
+      "bytes": 13696,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/client_presenter.bend",
+      "sha256": "2a0d595fbb3ace754853e9a650139189b63331608bf995b6fb494f46ecd9e6fb"
+    },
+    {
+      "bytes": 14921,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/client_render.bend",
+      "sha256": "735b643d733bd190d7ad3b6c2462773f6d8aa713eb156750dc9865ac7842b5f6"
+    },
+    {
+      "bytes": 33218,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/client_world.bend",
+      "sha256": "05040abf35b2b9ceaf87fed5c48f8d074d211750a59ab00fa6ff08e60a9ea5d7"
+    },
+    {
+      "bytes": 41725,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/compression.bend",
+      "sha256": "255cdff06a33050c7b0a48fdea75c1842ebe2dab0439cfe4f03d126d4edc20aa"
+    },
+    {
+      "bytes": 13597,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_block_entity_codec.bend",
+      "sha256": "3e14021533973a0acd837bcad0f384ab699743a31c1364d1a72bddb8210828bd"
+    },
+    {
+      "bytes": 11118,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_block_entity_codec_components.bend",
+      "sha256": "f0a2bf8551c0d64e691cf482484056573a9862ce09bf4da783125644460db414"
+    },
+    {
+      "bytes": 7878,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_block_entity_codec_items.bend",
+      "sha256": "119b8c6f0819320b8cdbe3dcea3840c1b6a6f4483fa74d496164fb671e355e01"
+    },
+    {
+      "bytes": 6559,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_block_entity_codec_nbt.bend",
+      "sha256": "ceacb780ad51bd196c2317a31b990756ef42a1e22852fc733296f2ad21331a8a"
+    },
+    {
+      "bytes": 1643,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_effect_delivery.bend",
+      "sha256": "ae51c38f0625faf0c3ff0625bf25eea9ae5ee5923efc707247780522816a5680"
+    },
+    {
+      "bytes": 7391,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_effect_recovery.bend",
+      "sha256": "b4bee29239b13a710af2c758feb5429aed2aafe531df8fd3f4b2efcade9f5c53"
+    },
+    {
+      "bytes": 8866,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_recipe.bend",
+      "sha256": "085bfe968f3e7169e5c7bacf633029ebd9e4fc8c8ecb79ad81f63a193110f795"
+    },
+    {
+      "bytes": 7715,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_recipe_decoder.bend",
+      "sha256": "ca334faae18c0a25664d4d3170f29aa26e33fa4a0b9da0bcc08348c79e51ae28"
+    },
+    {
+      "bytes": 2076,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_recipe_number.bend",
+      "sha256": "c3b8b18a323f9c95602c55d0063c2ae49796979ed6d7a4506b00a4091db1921a"
+    },
+    {
+      "bytes": 14812,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_world.bend",
+      "sha256": "18a63205bf5ff2478e3a44a46f0bb0faa5d22d30118b909a13e3cc122acef4f2"
+    },
+    {
+      "bytes": 2092,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_world_actor.bend",
+      "sha256": "50b7dd0397cabe1f8a2e5c5a7e3ac095fba09bd95bfe59969dd8e4ef1e2aea28"
+    },
+    {
+      "bytes": 2161,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_world_bindings.bend",
+      "sha256": "0ca79f788bc40742c575cca1345196bc12cd5d5984e4dae9866cf408b6886f75"
+    },
+    {
+      "bytes": 5227,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_world_bindings_loader.bend",
+      "sha256": "3e32c3e3b1b3cd48dcefc28b6aab8062645adedd6e2145650a9dfb985a0faa70"
+    },
+    {
+      "bytes": 2106,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_world_items.bend",
+      "sha256": "eae4556b5d42bf46243628df01f25bb2a91534b7a54aea1a79a9ef2a7a8cad88"
+    },
+    {
+      "bytes": 7905,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_world_persistence.bend",
+      "sha256": "9b956f0cbbff4df6d7ee690f9218e3e0b4721c442dc61558dc14cbdc3ecdd4dc"
+    },
+    {
+      "bytes": 10647,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_world_store.bend",
+      "sha256": "c8ef44f81e44dddfe9d2d87c9208524de13715254a59b78b5b1c0af9691f3666"
+    },
+    {
+      "bytes": 11950,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_world_tick.bend",
+      "sha256": "682dbe98213690405e575815fe77556cf3666fa95e8f9cffd6f4ec9fa717a3b3"
+    },
+    {
+      "bytes": 13300,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/core.bend",
+      "sha256": "9636bb1dfdde3fe36e650ab8e8d4b62dad2a49b419a27454794e5923cb570b05"
+    },
+    {
+      "bytes": 17073,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe.bend",
+      "sha256": "3c5f3fc7b3e0be9be7d553da2a107dc1245fe13f17afac0efdf84bc41c15ffe2"
+    },
+    {
+      "bytes": 5705,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe_component_registry.bend",
+      "sha256": "911786032b2c22759208edaf7112ae403b2a03663d9237c3e036c2b5ba4ece2a"
+    },
+    {
+      "bytes": 13197,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe_components.bend",
+      "sha256": "2a35e31f26187ebbdab1c4261d54083acb68072a56a7b5869e5dfc490bc946be"
+    },
+    {
+      "bytes": 24901,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe_decoder.bend",
+      "sha256": "739037cf939bcef5a8008c34216b717ed60574c66690f627d11dc949e8542397"
+    },
+    {
+      "bytes": 939,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/durability.bend",
+      "sha256": "079b5342e76be090793dc2e44f8d337eda144d75653d23eea36a7131558aed05"
+    },
+    {
+      "bytes": 7632,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/entity_common_tick.bend",
+      "sha256": "b8d5416c18423543d90eb3fa74cd9291c7786036f2708fe45c9534c4f2b41f4e"
+    },
+    {
+      "bytes": 43377,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/extended_persistence.bend",
+      "sha256": "64a48f642169328355bc761509c46e1f6f33b08e3e538ac941a7e001e2091a1a"
+    },
+    {
+      "bytes": 33288,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/f64.bend",
+      "sha256": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7"
+    },
+    {
+      "bytes": 18955,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/fall_reset_world.bend",
+      "sha256": "8353ad65484f28b80ae49a3b4191bf98aad5903f6565f6d17f2d64eeec2c7948"
+    },
+    {
+      "bytes": 21993,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/float_parse.bend",
+      "sha256": "fe22007f0805f3c955fcaada88c1da76a3cceda74f0ff3840ae47af49a02c683"
+    },
+    {
+      "bytes": 6845,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/framing.bend",
+      "sha256": "307f95049df03d92687b7bd0eafb2cd566e660926510bb88163f9bc825fccdb5"
+    },
+    {
+      "bytes": 19604,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/furnace_authority.bend",
+      "sha256": "1aeba248310862e0d3df4efce300c842a31e5377daa79dc166e59d7414758be2"
+    },
+    {
+      "bytes": 12457,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/furnace_authority_decoder.bend",
+      "sha256": "e69c7050eb2a51fe019bbcfb1716f2512f12f8853f19320502d3769d0626ce47"
+    },
+    {
+      "bytes": 10757,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/furnace_authority_fuel.bend",
+      "sha256": "e118a5890567ea91431890b3889d9392891bf84bbd4d827ed088983fdf80fa74"
+    },
+    {
+      "bytes": 3333,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/furnace_authority_xp.bend",
+      "sha256": "9820b625be1d27542fc6a2105cc1558520af2cbde99b18abb5503d438bceec2d"
+    },
+    {
+      "bytes": 12517,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/game.bend",
+      "sha256": "43e3eee5d15613bb06cc608fe43657aa14d8c0fbe899d4efa580fc8335d23882"
+    },
+    {
+      "bytes": 3760,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/generic_resource_world_sample.bend",
+      "sha256": "2f46f290d54c6c0d8547d80fb247bc4a5278d52f3d16d131b98a2fa22931ab6b"
+    },
+    {
+      "bytes": 2220,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/generic_resource_world_sample_backend.bend",
+      "sha256": "79bac8db13bf5158e8813ad1b353b0a3ee02c93b6684a44c06ff844940353f0d"
+    },
+    {
+      "bytes": 4849,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/generic_resource_world_sample_read.bend",
+      "sha256": "25e4536d1442d6fb1bdd6d1743fe9c996f530079fe5b5c568082a39ef1d434be"
+    },
+    {
+      "bytes": 1885,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/generic_resource_world_sample_session.bend",
+      "sha256": "fd73b2e1f0e846baddfa97d08c6cfbdd998e85a1a1e6b84e539c4e2d2bda8d2e"
+    },
+    {
+      "bytes": 13604,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/geometry.bend",
+      "sha256": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f"
+    },
+    {
+      "bytes": 12147,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/hash.bend",
+      "sha256": "d2473695632b19e68c8d636668e4617f04d70892fb2ab6559cb24d4b33c1b978"
+    },
+    {
+      "bytes": 13558,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/inventory.bend",
+      "sha256": "9d2be7fb88afa1dc6386ab9e8b046b15d2a2a73b7e14566e5bfad3e6dd1f2702"
+    },
+    {
+      "bytes": 12587,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_component.bend",
+      "sha256": "85fd96ab967f3b031465ab9e0a815dd71882aec813683d73cd07dc31b991a2a7"
+    },
+    {
+      "bytes": 11465,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_component_effects.bend",
+      "sha256": "717a46a1603866be6f3f1458721cb2281a135b36f27a652da9432756b168ae35"
+    },
+    {
+      "bytes": 3920,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_component_inventory_codec.bend",
+      "sha256": "30042d1355014c413ae5e9f9a2a8410fa3a37ddd1532b0e01c93ef46fb5891a5"
+    },
+    {
+      "bytes": 3345,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_component_wire_candidate.bend",
+      "sha256": "18370f621889080fe44d432f4509e6935c5837129bb6f53d45c6bdd4266d049c"
+    },
+    {
+      "bytes": 21384,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/json.bend",
+      "sha256": "a1789e3b4f5bea158ec0d95a8bcb39aa5b7c7e7355a5254d3de1d52a93c719d1"
+    },
+    {
+      "bytes": 28434,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/live.bend",
+      "sha256": "cb5a2f8237a53e48d3f6751d321a023e11694721f789373984d7d77620f32e87"
+    },
+    {
+      "bytes": 21031,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/local_collision.bend",
+      "sha256": "7793db30d3fa054b8b62139b9843bde2537e0f072da6680c247e117b6de5ff8b"
+    },
+    {
+      "bytes": 14887,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/local_collision_world.bend",
+      "sha256": "4e6e46737890c1203fb66ee95859e26825b306a6db865a1869e8663a7b9a2346"
+    },
+    {
+      "bytes": 16171,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/local_input.bend",
+      "sha256": "c430bbbc518246bc7c8028a1079ee97e7071a3d7ce093a921547643e19e81ddb"
+    },
+    {
+      "bytes": 7117,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/local_move_history.bend",
+      "sha256": "21eb495a38fd767c412a860314760e5c237ac9425ce17ca78232b5892f09c11f"
+    },
+    {
+      "bytes": 17815,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/local_move_world.bend",
+      "sha256": "3823c3e6d4ebd0ab8743792aad3bf0cacae7a081a5791bd23d888037bd569f81"
+    },
+    {
+      "bytes": 96016,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/local_phase_runtime.bend",
+      "sha256": "73a639a69d729e723678b17524338a4d9eb97189758ce79554274f407e6289fe"
+    },
+    {
+      "bytes": 958,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/local_player_ability_selection.bend",
+      "sha256": "ca23bd8f1d9a3446ded22f26e8f41ebc591e052423839273b1b0d3446f4b2e70"
+    },
+    {
+      "bytes": 43438,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/local_player_cooking.bend",
+      "sha256": "7cc9946f4a3d340bf43fb350fc49de3ad9e11077dfc44b6764e5fd7e643700a3"
+    },
+    {
+      "bytes": 10253,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/local_player_cooking_storage.bend",
+      "sha256": "1b10f1ac8210da60dfc6324aea6432965461e7cf0335e3643b0f04d81b3817b1"
+    },
+    {
+      "bytes": 11971,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/local_player_record.bend",
+      "sha256": "38d96549001eeba7e1d65f8557cc60b802663450f3ca383db2db8557e4b367d7"
+    },
+    {
+      "bytes": 30421,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/local_player_runtime.bend",
+      "sha256": "c10e382c3dd8a2569b7e04372ac7377bcd57cd0742112331fda9e88dc9c88ff6"
+    },
+    {
+      "bytes": 14976,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/local_player_scene.bend",
+      "sha256": "176a994fcd73b4bdc144bf21b878d7a782d848f896f2d6981e2af056c7dc5d47"
+    },
+    {
+      "bytes": 49302,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/local_player_session.bend",
+      "sha256": "ce79ba46ccdce008e8935274b99ed3a9a42b18bc9e39d6cc3cbe620662d8f54c"
+    },
+    {
+      "bytes": 2814,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/local_player_storage.bend",
+      "sha256": "00ca9bcc6d57526b30879e37b8537e6c6638673e640e32a6bcf0a98ac7bbb8d8"
+    },
+    {
+      "bytes": 11229,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/local_resource_world_sample.bend",
+      "sha256": "bebe8f9b98e4c0dda28ac9a6a64ce249dff42a3476a34ea6f88464661c82caa1"
+    },
+    {
+      "bytes": 41693,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/local_travel_history.bend",
+      "sha256": "9d990242926cb9388f02314cd2790f087c2f22cda15bb88a7e25d4f6b3dbaee8"
+    },
+    {
+      "bytes": 13662,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/locomotion.bend",
+      "sha256": "ccf8aa12636ba1fce5575606383bf75c02a8ac79ba952645b89aea2eef6cd459"
+    },
+    {
+      "bytes": 29731,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/mesh_render.bend",
+      "sha256": "cc8c7d3cf4badf3ec76a6dfd32939ec1d4c9d856fc181fa36a45cfe268df7424"
+    },
+    {
+      "bytes": 7661,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/mouse_input.bend",
+      "sha256": "2157b1804cb7ad58f6b58fd167de978eb9605ddac9485241d102128d055158a9"
+    },
+    {
+      "bytes": 25567,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/movement.bend",
+      "sha256": "31f5a4c47903506c0f388f688eaeaf78a36a0d266efde52bc57ea8cc89627b45"
+    },
+    {
+      "bytes": 26178,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/nbt.bend",
+      "sha256": "b677546b5fc02aaa38f5c09e5b798c0d35aec32b1c4b37cbd7042b9a1a5275e4"
+    },
+    {
+      "bytes": 24291,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/persistence.bend",
+      "sha256": "1561a863a74fdfc676b8ba4bbb5eddd206823f7363bf05c8a50ddffbbc30a4af"
+    },
+    {
+      "bytes": 4350,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/persistent_client_world.bend",
+      "sha256": "b85d6ea4339a6bc97f4a6b28cef71801ec7243bc11c37f1e33907600ec81cbab"
+    },
+    {
+      "bytes": 21440,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_block_inside_stuck.bend",
+      "sha256": "0fe9049b773fece03e57aa1d6887c7f7be6f7e0839a0dade4d24845a096ed9f7"
+    },
+    {
+      "bytes": 3623,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_block_inside_stuck_motion.bend",
+      "sha256": "3790226464c227c07ac93586997fdd21970da236a89bdebffe7ee5cbc43f2200"
+    },
+    {
+      "bytes": 26614,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_block_inside_sweep.bend",
+      "sha256": "769c59ac2c2f5b39767c430608f10708680464bc0d74fc9f3f657a05bff76301"
+    },
+    {
+      "bytes": 3383,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_block_inside_sweep_clip.bend",
+      "sha256": "5089373373a2537a4182029d83836456d4b9a6198c6a2383f6a31098f6eb530d"
+    },
+    {
+      "bytes": 4782,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_block_inside_sweep_motion.bend",
+      "sha256": "fd9eef83464774429dcc66df303d7a95d741d5d72491621e48457c2a58a6b0ba"
+    },
+    {
+      "bytes": 3057,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_block_inside_sweep_travel.bend",
+      "sha256": "3e75b9196d021895f364d6126473884d83976b7bfe76bd84db0eb9335ce99ce1"
+    },
+    {
+      "bytes": 10228,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_block_inside_sweep_world.bend",
+      "sha256": "33659a9836014d04ef82a7936c5b68dfcba4857881854c0c6c599db6c486754a"
+    },
+    {
+      "bytes": 22134,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_block_interaction.bend",
+      "sha256": "736dc12b48a4689bc105014e09a5b636bfd03bbb2dabdb150a916b54fe8292fd"
+    },
+    {
+      "bytes": 16028,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_codec.bend",
+      "sha256": "98a5d7e8e11bb1a811c4e3b1e19dcee010e9f36eb15967810fbe95f4222a09a7"
+    },
+    {
+      "bytes": 8413,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_controls.bend",
+      "sha256": "69e06c1f5900d816e15c88fa093dbc5ab47a0fc2fb5d784a6cbb38fcc4c14d90"
+    },
+    {
+      "bytes": 3609,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_core_edit.bend",
+      "sha256": "ced4c368ae781a1543fff9bebfe661ba99efe01a71fd1bb95e188bf62f1dc449"
+    },
+    {
+      "bytes": 14804,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_crafting_authority.bend",
+      "sha256": "3032b09376879239438415654d151917fb9ff5f989900200aba6552d9eb8ac35"
+    },
+    {
+      "bytes": 2785,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_crafting_authority_components.bend",
+      "sha256": "4389a4b976e75b5a96fb8261b789396e176acb3678f7f1379687393c0d16108d"
+    },
+    {
+      "bytes": 16270,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_crafting_authority_load.bend",
+      "sha256": "944f45abe88b984b2848b1a2301c7f00f5a885a4cad17ba3abb11596eead086e"
+    },
+    {
+      "bytes": 6066,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_crafting_authority_menu.bend",
+      "sha256": "ab9158d4d08946065d1bb0fbe6a0053254081b8e8ad564a379a569796cda352e"
+    },
+    {
+      "bytes": 11507,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_crafting_authority_plan.bend",
+      "sha256": "763936af81278a57c8045e7ea7f655b26f90b1a174f6aca7a36cf05edde88c65"
+    },
+    {
+      "bytes": 3366,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_crafting_authority_startup.bend",
+      "sha256": "a6d3f057a4d39b5664d7ba27fd70659e2b1658ccdafcb5b822669ae3acd3c028"
+    },
+    {
+      "bytes": 2956,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_crafting_session_adapter.bend",
+      "sha256": "2901438043da16dcd866f16194e6ccd7d713a5e7424a653b84615345bb1721bf"
+    },
+    {
+      "bytes": 8328,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_fall_history.bend",
+      "sha256": "0367657abca30a33851d043cf7adaea6c547e55e838896c2b3ff4d8dea73cdc9"
+    },
+    {
+      "bytes": 3922,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_input.bend",
+      "sha256": "d3938f96416691739eb54f2b0f77377c6ba7c74ac63ffa8335840152feb355d5"
+    },
+    {
+      "bytes": 28759,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_inventory.bend",
+      "sha256": "065be0bc6aa1d0cb10b9fcac77b6dcea73d4bdbab20fd2e13e264a8ea91c3340"
+    },
+    {
+      "bytes": 7532,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_inventory_click_swap.bend",
+      "sha256": "2284a56e93d10299419701acc9cba2aec4427acf7ed4a9196fb56ec75f831048"
+    },
+    {
+      "bytes": 20708,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_inventory_codec.bend",
+      "sha256": "041a145dff7d2500396b5f9b05cad16ef55e04a7fbd5ee9b0b6287374940f1b6"
+    },
+    {
+      "bytes": 7643,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_inventory_return.bend",
+      "sha256": "53f4d0cea442ebcc6abfc306f520101a01cca8e46a139ebb89930fd94a5ac3ab"
+    },
+    {
+      "bytes": 1379,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_item_catalog.bend",
+      "sha256": "1337d82cc70e28b5aab552dc178401549602b6461e1ffe95d29f1eb09bed55a3"
+    },
+    {
+      "bytes": 12607,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_item_definitions.bend",
+      "sha256": "df5183e0c4be23b4eaf081e9a72099436e5d674402e9ac15102ecabc7a1b1d90"
+    },
+    {
+      "bytes": 739,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_item_table.bend",
+      "sha256": "92ffa8bcf3b2a66e876a9485e2efc986817d8aa292c4232bc24908c65e1ebe05"
+    },
+    {
+      "bytes": 5891,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_look.bend",
+      "sha256": "35ec863e078e46f2c2502b975f3e9f259114aec7baac614c68ba6e46773260ca"
+    },
+    {
+      "bytes": 18644,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_pose.bend",
+      "sha256": "fee092d03f01673fad7f2c5e2329dbafabc1cc2781a275e5e2e5f47380eebea0"
+    },
+    {
+      "bytes": 9896,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_pose_world.bend",
+      "sha256": "d7f256c3e93e2f55b944e75ff8b156c9951e800611db3cd205d49629c094ce77"
+    },
+    {
+      "bytes": 7621,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_presentation.bend",
+      "sha256": "795422051d936dbc70de658b6e6600cf6d7eeb9f759d842b2d4f40e00eee5137"
+    },
+    {
+      "bytes": 5470,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_record.bend",
+      "sha256": "1812d954991cbce193353490d5db002f26873f364c426f497f82e7b13594235b"
+    },
+    {
+      "bytes": 5811,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_rotation_tick.bend",
+      "sha256": "63ae51ac3d0f579061d21a90af4cb80ac782c56b56b7c7d867c06e309d90973b"
+    },
+    {
+      "bytes": 13737,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_runtime.bend",
+      "sha256": "0580f77db4a9e9d570938f6c6487867cd1ea92b0a2c24246fa0f354aa0604242"
+    },
+    {
+      "bytes": 19820,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_tick.bend",
+      "sha256": "07a35c96b0887bc7c600340835ec29bfdea98cdbfb283af67826f93ec57dba9d"
+    },
+    {
+      "bytes": 8012,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_tick_world.bend",
+      "sha256": "98d5fe1383351c463f3fa172ff012325864292cfa7909cf21167e6642500170b"
+    },
+    {
+      "bytes": 18786,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/png.bend",
+      "sha256": "8c24c14a250cf6dbdf0c2804e4b28bfebd7ef62ed5d9ee97a1d07094d4745f22"
+    },
+    {
+      "bytes": 36821,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/registry.bend",
+      "sha256": "821c53d9cfa3044be3cae2af968f55563c0be2bebc9beae55a29d77d47b140a0"
+    },
+    {
+      "bytes": 27592,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/remote_resource_backend.bend",
+      "sha256": "efbbae548b9e10d3838ee1d79c2db213e579aef77be9389ee19bb17218c90ea3"
+    },
+    {
+      "bytes": 20525,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/remote_resource_transport.bend",
+      "sha256": "48a95a9b7eabcf4990aec3551503c79072be7e5c577db1eac99af9d811fc8e94"
+    },
+    {
+      "bytes": 1498,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/resource_client_framing.bend",
+      "sha256": "c1691abaf369ef5db7f9458b80e642d9b9ba8733080923938bc9c853eebf1d39"
+    },
+    {
+      "bytes": 43641,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/resource_client_wire.bend",
+      "sha256": "0084c838fce62f76555208ccc9cf2b834ef5364c5f9345d0378b8cbfeefd171c"
+    },
+    {
+      "bytes": 5087,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/resource_server_options.bend",
+      "sha256": "2228e3eac9ffa85b1c183c797274c67bf262d4dbbab6337421d4dade338933af"
+    },
+    {
+      "bytes": 4554,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/runtime_block_inside.bend",
+      "sha256": "3f6f44f9dbc97ac3249a999c7cb101bac67390c09d4cfc5051156131bf03b34e"
+    },
+    {
+      "bytes": 3365,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/schedule.bend",
+      "sha256": "93aa79895fe340e27ae5fd562102d5980f0938003eb1bbde669a84010779b8c9"
+    },
+    {
+      "bytes": 6520,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/section.bend",
+      "sha256": "02b5c15c57b173c7eb8b4c55a1433c10c192926e91af5e3e69050b4404044aa5"
+    },
+    {
+      "bytes": 3987,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/section_map.bend",
+      "sha256": "ded59d7938c02fd0876d65e37f9f90ea0cfebf3ca4bd107394342f8adbf33965"
+    },
+    {
+      "bytes": 3379,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/section_map_read.bend",
+      "sha256": "7a6a0d6fe8b8736ab64adb34b896074da709f91f2ae5bd205a7301c868690fc1"
+    },
+    {
+      "bytes": 7101,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/section_map_update.bend",
+      "sha256": "93a1cb016ac86eaaea2773ab8b75b95e93f1976348b3c2c500fc0de0cc9831be"
+    },
+    {
+      "bytes": 15241,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/server.bend",
+      "sha256": "3c9e5f681b0957b3e8c36b4ddde94a6ad5705b8b5b45cc6b2a81572446d7c2cf"
+    },
+    {
+      "bytes": 3158,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/superflat_player.bend",
+      "sha256": "74cd49e7d3cf6fec67d7b2bc2808decc7a153be0b257ba7a83f9e6396562bee2"
+    },
+    {
+      "bytes": 13744,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/superflat_population.bend",
+      "sha256": "6a34c8478dab0bd06688ef0b9869ee07d65fb3f8b671bf5f8d4c66894ee639d2"
+    },
+    {
+      "bytes": 3027,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/superflat_resolver.bend",
+      "sha256": "2550770c8609342cda122dd1b35b5f01e5317be026ec67658d73b27d0b0cec61"
+    },
+    {
+      "bytes": 24969,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/superflat_world.bend",
+      "sha256": "752036ba2f90b2e93c0e68e252cb1d7c18e6e30d7037c028b3cd244b5b5840a7"
+    },
+    {
+      "bytes": 15543,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/support.bend",
+      "sha256": "aca42f24e0a32bd89356ac33f6d9bbe2ab5975ce938e2d2750496c01a6137455"
+    },
+    {
+      "bytes": 14705,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/support_world.bend",
+      "sha256": "a2e42fb06cab36408e7631e8ff3b9e61793696d4b049592d3ce137f69fa3b381"
+    },
+    {
+      "bytes": 13789,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/travel.bend",
+      "sha256": "f04bc69579d1b1a5fa048f1e07976e646c1c2f2e817e334ee632397fbe99b589"
+    },
+    {
+      "bytes": 4815,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/travel_world.bend",
+      "sha256": "a3c787699a9ae12d9301638d39a7abd3aa1cfeba160182b9c176797424aad682"
+    },
+    {
+      "bytes": 573,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/u32_decimal.bend",
+      "sha256": "d0b4b33f10b9e9801c4e99b83803afba5031ea40013a9263f9090bed8543d25c"
+    },
+    {
+      "bytes": 7242,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/unicode.bend",
+      "sha256": "8f0cd9bbcd0e7f938af370675eca0c73a9b97b90c2789a1e77e5a29a918455bd"
+    },
+    {
+      "bytes": 720,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/window_input.bend",
+      "sha256": "1f95abdc8c6e2d9f909ee81543dbbb91115e85cc2f80d68a536494ac631435ac"
+    },
+    {
+      "bytes": 36733,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/world_codec.bend",
+      "sha256": "461e2bc342005831a3d16824303f79e1f4dac2dca0eaf0731d18052dbfe0bf86"
+    },
+    {
+      "bytes": 5947,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/world_generation_settings.bend",
+      "sha256": "cb5cc9ee81c266dd2d5543ecf83c6f99c08542739cad6e59d8e5d9166d6560c7"
+    },
+    {
+      "bytes": 10910,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/world_generation_settings_codec.bend",
+      "sha256": "896d6d5e2032f8806043383a5455f08f9e10ed578fe37e4fc56ce9259a359db4"
+    },
+    {
+      "bytes": 992,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/world_lock.bend",
+      "sha256": "5b527809b0a6686a8c3ba0459b9fa3ce2c3414acdbf4fa7453a57f7bd303568e"
+    },
+    {
+      "bytes": 12207,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/world_mesh.bend",
+      "sha256": "97df63c4f20c855350f254873ed05b7112015781e212f5d0b7837bd7e32c4e22"
+    },
+    {
+      "bytes": 16968,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/world_visibility.bend",
+      "sha256": "599e28975027958b48da9a299a968bf837fc6a244ac6750b37866c32182dbb07"
+    }
+  ],
+  "status": "source_checked"
+}
