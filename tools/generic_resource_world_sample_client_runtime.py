@@ -38,6 +38,7 @@ PREFIX = 'generic_resource_world_sample_client_runtime'
 CATALOG_REFERENCE = ROOT/'reference/resource_block_catalog.json'
 MODEL_REFERENCE = ROOT/'reference/model_semantics.json'
 JAR = Boundary.JAR
+REGISTRY = S.P.OFFICIAL
 WIDTH = HEIGHT = 128
 require, pin, digest, canonical = R.require, R.pin, R.digest, R.canonical
 
@@ -247,6 +248,7 @@ class Renderer(R.Renderer):
         original = R.subprocess.Popen
         def launch(argv, *args, **kwargs):
             require(argv[:2] == [helpers['observer']['artifact'], str(binary)], 'Unexpected renderer launch')
+            kwargs['env'] = {**kwargs['env'], 'BEND_MINECRAFT_REGISTRY': str(REGISTRY)}
             return original([*argv, '--width', str(WIDTH), '--height', str(HEIGHT),
                              '--render-scale', '100', '--hud-scale', '0', '--item-table',
                              str(ROOT/'generated/reference_item_metadata.tsv')], *args, **kwargs)
@@ -400,11 +402,18 @@ def sweep_owned(directory):
             raise
 
 
+def backend(binary, label, path):
+    # Pair pins MC_BLOCK_REGISTRY. Pin the original recipe JAR here as well;
+    # inherited host overrides must not change this independently authored lane.
+    with mock.patch.dict(os.environ, {'MC_GAME_JAR': str(JAR)}):
+        return Pair.Backend(binary, label, path)
+
+
 def launch_lane(binary, actor_binary, directory, data, rgb, helpers, *, refusal=False):
     path = directory/'world.nbt'
     with path.open('xb') as handle:
         handle.write(data['payload'])
-    actor = Pair.Backend(actor_binary, 'backend-glass' if refusal else 'backend-supported', path)
+    actor = backend(actor_binary, 'backend-glass' if refusal else 'backend-supported', path)
     renderer = relay = None
     try:
         raw, ping = actor.tcp(True)
@@ -441,7 +450,7 @@ def launch_lane(binary, actor_binary, directory, data, rgb, helpers, *, refusal=
 
 
 def reload_lane(actor_binary, directory, path, data, saved):
-    actor = Pair.Backend(actor_binary, 'backend-cold-reload', path)
+    actor = backend(actor_binary, 'backend-cold-reload', path)
     control = None
     try:
         raw, ping = actor.tcp(True)
