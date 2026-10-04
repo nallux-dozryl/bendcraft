@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 import copy
 import json
+import struct
 import sys
 from pathlib import Path
 
@@ -89,6 +90,43 @@ def inspect(client, record, world):
               'Actual saved actor complete Core clock differs')
 
 
+def frame(control, world, record):
+    value = control.call([13, 128, 128], 7)[4]
+    S.require(len(value) == 6, 'Generic FrameCatalog field count')
+    registry, tick, revision, origin, camera, cells = value
+    words, _ = S.PC.parse_snapshot(S.PR.decode(record.motion)[0])
+    position = tuple(struct.unpack('>d', struct.pack('>Q', raw))[0]
+                     for raw in S.PC.bits64(words[:6]))
+    eye = (position[0], position[1] + S.PC.f32(record.eye), position[2])
+    S.require((registry, tick, revision) == (world['registry'], world['tick'], world['revision'])
+              and origin == list(S.PC.words64(tuple(map(S.PC.raw64, eye))))
+              and camera == [0, 0, 0, *words[39:41]],
+              'Generic actual registry/clock/pose-aware eye/camera')
+    sections = {section['key']: section['cells'] for section in world['sections']}
+    def cell(x, y, z):
+        return sections[S.BASE.section_key(x, y, z)][
+            (x & 15) + ((z & 15) << 4) + ((y & 15) << 8)]
+    def mixed(seed, index):
+        return ((seed ^ (((index + 1) & 0xffffffff) * 2246822519 & 0xffffffff))
+                * 3266489917) & 0xffffffff
+    # Loaded legacy sessions keep W.default_region. Scene.ensure is a no-op;
+    # this is the held 8x6x8 view, not generated terrain's moving 8x8x8 view.
+    expected = []
+    for z in range(-4, 4):
+        for y in range(-1, 5):
+            for x in range(-4, 4):
+                raw = tuple(map(S.unsigned, (x, y, z)))
+                boundary = int(x in (-4, 3)) + int(y in (-1, 4)) + int(z in (-4, 3))
+                seed = mixed(mixed(mixed(0, raw[0]), raw[1]), raw[2])
+                expected.append([*raw, boundary, cell(x, y, z), seed,
+                                 [[], 4294967295, 0, 0, False, 128]])
+    S.require(cells == expected and len(cells) == 384,
+              'All legacy held-region cells, order/boundaries/seed/policy')
+    return {'sample_sha256': S.sha(S.canonical(value)), 'cells': len(cells),
+            'state_ids': sorted({row[4] for row in cells}),
+            'bounds': [-4, -1, -4, 8, 6, 8], 'tick': tick, 'revision': revision}
+
+
 def tick(client, world, record):
     reply = client.call('simulation.step', {'ticks': 1})
     S.BASE.apply_tick(world)
@@ -124,7 +162,7 @@ def scenario(directory, binary, bridge):
         control = B.connect(actor)
         B.admitted_menu(control, full, menu, checks, [8], 'original-neutral-default-authority')
         inspect(raw, before, world)
-        frames.append(B.generic_frame(control, world, before))
+        frames.append(frame(control, world, before))
         observer.call('simulation.step', {'ticks': 1}, fault='PermissionDenied')
         observer.call('world.save', {}, fault='PermissionDenied')
         raw.call('simulation.step', {'ticks': 0}, fault='InvalidArguments')
@@ -133,7 +171,7 @@ def scenario(directory, binary, bridge):
 
         control.call(packet(17))
         tick(raw, world, first)
-        frames.append(B.generic_frame(control, world, first))
+        frames.append(frame(control, world, first))
         acknowledged, receipt = save(raw, path, world, highwater, first, directory,
                                      'acknowledged-original-first-tick')
         saves.append(receipt)
@@ -150,7 +188,7 @@ def scenario(directory, binary, bridge):
         control = B.connect(actor)
         control.call(packet(1))
         tick(raw, world, second)
-        frames.append(B.generic_frame(control, world, second))
+        frames.append(frame(control, world, second))
         B.admitted_menu(control, full, menu, checks, [8], 'recovered-neutral-authority')
         S.require(path.read_bytes() == acknowledged, 'Unsaved original second tick published')
         actor.stop(kill=True)
@@ -168,10 +206,10 @@ def scenario(directory, binary, bridge):
         S.require(path.read_bytes() == acknowledged, 'Cold startup rewrote acknowledged save')
         control = B.connect(actor)
         B.admitted_menu(control, full, menu, checks, [8], 'cold-restored-default-authority')
-        frames.append(B.generic_frame(control, world, first))
+        frames.append(frame(control, world, first))
         control.call(packet(1))
         tick(raw, world, second)
-        frames.append(B.generic_frame(control, world, second))
+        frames.append(frame(control, world, second))
         _, receipt = save(raw, path, world, ping['peer'], second, directory,
                           'cold-continuation-original-second-tick')
         saves.append(receipt)
@@ -197,8 +235,13 @@ def child(directory):
         S.require(R.pin(A.ACTOR) == build['binary'], 'Current actor changed during motion run')
     with H.bindings(S, {'SERVER': A.ACTOR, 'ROOT': ROOT, 'activation': identity,
                         'OWNED_GROUPS': journal}):
-        result = scenario(directory / 'actors', A.ACTOR, bridge)
-        identity()
+        try:
+            result = scenario(directory / 'actors', A.ACTOR, bridge)
+            identity()
+        except BaseException as error:
+            S.exclusive_json(directory / 'first-failure.json',
+                             {'type': type(error).__name__, 'message': str(error)})
+            raise
     print(json.dumps({'status': result['status'], 'actual_original_ticks': 3}), flush=True)
 
 
@@ -220,6 +263,13 @@ def native():
                                 180, 'execution')
         finally:
             B.descendant_cleanup(directory, bridge)
+    if process['exit_code'] != 0 or process['timed_out'] or process['error']:
+        R.write(ROOT / ('evidence/runtime-block-inside-actor-motion-failure-'
+                       + str(number).zfill(3) + '.json'),
+                {**inputs, 'status': 'failed', 'directory': str(directory),
+                 'failure': json.loads((directory / 'first-failure.json').read_bytes())
+                            if (directory / 'first-failure.json').exists() else None,
+                 'process': process, 'cleanup': R.pin(directory / 'cleanup.json')}, True)
     R.process_ok(process)
     S.require(inputs['runner'] == R.pin(Path(__file__)) and B.artifact()['binary'] == inputs['binary']
               and inputs['expectations'] == requirements() and inputs['helpers'] == helper_pins(),
