@@ -1,0 +1,259 @@
+{
+  "binary": {
+    "bytes": 12151256,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-019/actor",
+    "sha256": "641089cd1a7e1fd48467df39a4a74068e5d71c507964d5ada3dd03ff038516fd"
+  },
+  "build": {
+    "bytes": 3287,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-019/native-build.json",
+    "sha256": "79a0a911904c5dded38aec3d18ad0ca0b9a86b18ca7299ca3999804daeee89a5"
+  },
+  "cleanup": {
+    "bytes": 738,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-client-cooking/011/cleanup.json",
+    "sha256": "d1ebf7650696f10258c5028392dc611d9cb59184b57b387f2fd97b76ea1efa99"
+  },
+  "process": {
+    "bytes": 1038,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-client-cooking/011/execution/result.full.json",
+    "sha256": "8b135f9cd8b0d98da4b69cd56da69dd9b42a139e382cdc4a21661d768d7d5eff"
+  },
+  "status": "PASS_NARROW",
+  "summary": {
+    "OwnerReset_Core_remove_recreate_observed": true,
+    "OwnerReset_saved_keyed_Details_clear_observed": true,
+    "actual_SIGKILL_cold_restores": 2,
+    "actual_TCP_MCP": true,
+    "actual_operation_names": [
+      "discover",
+      "ping",
+      "session.open",
+      "world.clock",
+      "simulation.pause",
+      "simulation.step",
+      "world.section.create",
+      "world.block.get",
+      "world.block.set",
+      "world.time.set",
+      "world.daylight.set",
+      "action.cancel",
+      "world.events",
+      "registry.block",
+      "registry.state.decode",
+      "registry.state.resolve",
+      "world.save",
+      "player.inspect",
+      "inventory.inspect",
+      "inventory.selected",
+      "inventory.select",
+      "inventory.transfer",
+      "inventory.acquire"
+    ],
+    "atomic_saves": [
+      {
+        "body_sha256": "e3a1bf28adfe6e1a172dbce21011694e3718a527804ef8ba80a49df36e1bf91b",
+        "bytes": 18731,
+        "exact_physical_body_bytes_equal": true,
+        "expected_sha256": "c69500d2f806d3422b321ff7d5b202fb881e181026a4bbaf3e69fb87dce0ca64",
+        "full_atomic_bytes_equal": true,
+        "label": "loaded-physical-startup",
+        "pending_ordered_drop_slots": [],
+        "pending_sha256": null,
+        "reply": {
+          "bytes": 18731,
+          "durable": true,
+          "peer_highwater": 43,
+          "published": true,
+          "status": "durable"
+        },
+        "sha256": "c69500d2f806d3422b321ff7d5b202fb881e181026a4bbaf3e69fb87dce0ca64"
+      },
+      {
+        "body_sha256": "d453a138e981dbcbd477c2e5770b84f14a77e359958437ce975fdb1348376af1",
+        "bytes": 18731,
+        "exact_physical_body_bytes_equal": true,
+        "expected_sha256": "78399fc493313b64c672815e30148ceda2e2a2ab581c872b4774d886a48b52b7",
+        "full_atomic_bytes_equal": true,
+        "label": "effect-free-furnace-tick",
+        "pending_ordered_drop_slots": [],
+        "pending_sha256": null,
+        "reply": {
+          "bytes": 18731,
+          "durable": true,
+          "peer_highwater": 43,
+          "published": true,
+          "status": "durable"
+        },
+        "sha256": "78399fc493313b64c672815e30148ceda2e2a2ab581c872b4774d886a48b52b7"
+      },
+      {
+        "body_sha256": "d453a138e981dbcbd477c2e5770b84f14a77e359958437ce975fdb1348376af1",
+        "bytes": 18731,
+        "exact_physical_body_bytes_equal": true,
+        "expected_sha256": "6bda882ad126aa8d4dcff9f97b23227d3d433473be31e4bc7d82df71ef685f39",
+        "full_atomic_bytes_equal": true,
+        "label": "cold-physical-restore",
+        "pending_ordered_drop_slots": [],
+        "pending_sha256": null,
+        "reply": {
+          "bytes": 18731,
+          "durable": true,
+          "peer_highwater": 45,
+          "published": true,
+          "status": "durable"
+        },
+        "sha256": "6bda882ad126aa8d4dcff9f97b23227d3d433473be31e4bc7d82df71ef685f39"
+      },
+      {
+        "body_sha256": "647d69ffaaabd0053bcdf86bf8fd54404762b94a98adc579f4470d95550999c0",
+        "bytes": 19409,
+        "exact_physical_body_bytes_equal": true,
+        "expected_sha256": "ac03b1e02a4939b6cb674545934f5f7d0bf47c4a58de2131626c325008236980",
+        "full_atomic_bytes_equal": true,
+        "label": "owner-reset-atomic-recovery",
+        "pending_ordered_drop_slots": [
+          0,
+          1,
+          2
+        ],
+        "pending_sha256": "b1a36d0ccf0dbf652a0da5f12a8f4940146a66791150b57c739cef9d31b99c90",
+        "reply": {
+          "bytes": 19409,
+          "durable": true,
+          "peer_highwater": 45,
+          "published": true,
+          "status": "durable"
+        },
+        "sha256": "ac03b1e02a4939b6cb674545934f5f7d0bf47c4a58de2131626c325008236980"
+      },
+      {
+        "body_sha256": "647d69ffaaabd0053bcdf86bf8fd54404762b94a98adc579f4470d95550999c0",
+        "bytes": 19409,
+        "exact_physical_body_bytes_equal": true,
+        "expected_sha256": "e0457b77a23884c7661e89e0c88d9bf900ad1df62ba9641b18f6efb9affd4b9b",
+        "full_atomic_bytes_equal": true,
+        "label": "cold-pending-atomic-recovery",
+        "pending_ordered_drop_slots": [
+          0,
+          1,
+          2
+        ],
+        "pending_sha256": "b1a36d0ccf0dbf652a0da5f12a8f4940146a66791150b57c739cef9d31b99c90",
+        "reply": {
+          "bytes": 19409,
+          "durable": true,
+          "peer_highwater": 47,
+          "published": true,
+          "status": "durable"
+        },
+        "sha256": "e0457b77a23884c7661e89e0c88d9bf900ad1df62ba9641b18f6efb9affd4b9b"
+      }
+    ],
+    "backends": 3,
+    "blocked_next_tick_requests": 2,
+    "exact_missing_owner_refusals": [
+      {
+        "error": {
+          "code": "PlayerStepUnavailable",
+          "message": "cooking-effects:item-entity-and-level-rng-owner-required"
+        },
+        "id": "raw-7",
+        "ok": false
+      },
+      {
+        "error": {
+          "code": "PlayerStepUnavailable",
+          "message": "cooking-effects:item-entity-and-level-rng-owner-required"
+        },
+        "id": "raw-12",
+        "ok": false
+      },
+      {
+        "error": {
+          "code": "PlayerStepUnavailable",
+          "message": "cooking-effects:item-entity-and-level-rng-owner-required"
+        },
+        "id": "raw-4",
+        "ok": false
+      }
+    ],
+    "final_acknowledged_tick": 2,
+    "first_tick_physical_furnace_progression_observed": true,
+    "furnace_scene_Core_ticks_before_first_kill": 2,
+    "generation": "Actor004/producer019",
+    "missing_consumer": "No real item-entity/XP-orb/level-RNG/comparator publishers exist. Unsupported ordered Drop calls, including empty output, remain saved/restored intents; no host simulation or effects drain substitutes.",
+    "ordered_pending_Drops_atomic_save_and_cold_restore_observed": true,
+    "pending_Drops_gate_next_Core_tick_observed": true,
+    "progression_acknowledged_tick": 1,
+    "reset_tick_calls": 1,
+    "scope": "Current real actor startup/sole-Core effect-free furnace progression/physical Details atomic save and cold restoration. Reset physical Details clearing and ordered unsupported intent recovery are tested; completion/drop/XP delivery, cooking UI, visible native client controls and whole-game parity remain unverified.",
+    "status": "PASS_NARROW",
+    "tick_expectation_scope": "Apply the observed effect-free timer/burn progression to the actual Java-decoded beef recipe with the same 200-tick cooking time. The retained furnace tick uses a controlled recipe; this composed expectation is not a retained full-world Java beef tick observation.",
+    "world_generation_metadata": "Unspecified; existing loaded legacy terrain retained",
+    "world_generation_sha256": "526c09ba2f1d174f997b91f20aa5e3eae37fc32a6df1a4e8504ee96d33a960d9"
+  },
+  "summary_pin": {
+    "bytes": 5174,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-client-cooking/011/actors/summary.json",
+    "sha256": "696afee0571a8fe8b3a5cc42f3fe06f091dbd25c4685b691b0d47d1f8eb55bdf"
+  },
+  "inputs": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-client-cooking/011/inputs.json",
+    "bytes": 3827,
+    "sha256": "e073b07721120a278f4ce066534ebfb44401ae2cc2ff51a58dc5c66b3d19735f"
+  },
+  "actor_processes": [
+    {
+      "label": "loaded-startup",
+      "process": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-client-cooking/011/actors/loaded-startup/process.json",
+        "bytes": 862,
+        "sha256": "44bf99358a4a82c0f0731f1eef1cc7360598fd5adab696a1940859ec458f95f5"
+      },
+      "pid": 25194,
+      "exit_code": -9,
+      "actual_SIGKILL": true,
+      "group_absent": true,
+      "listeners_absent": [
+        true,
+        true
+      ]
+    },
+    {
+      "label": "cold-restore",
+      "process": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-client-cooking/011/actors/cold-restore/process.json",
+        "bytes": 858,
+        "sha256": "babcce3b9e2df0d55c7793774cd2c7be29ae77a8d67408d801153bf2f97afb5c"
+      },
+      "pid": 25404,
+      "exit_code": -9,
+      "actual_SIGKILL": true,
+      "group_absent": true,
+      "listeners_absent": [
+        true,
+        true
+      ]
+    },
+    {
+      "label": "cold-pending-restore",
+      "process": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-client-cooking/011/actors/cold-pending-restore/process.json",
+        "bytes": 875,
+        "sha256": "d703c0b4ea72f199e8b3fc23c08fa22f3b637e53e3418a91d5aa5532acd0b539"
+      },
+      "pid": 25590,
+      "exit_code": 0,
+      "actual_SIGKILL": false,
+      "group_absent": true,
+      "listeners_absent": [
+        true,
+        true
+      ]
+    }
+  ],
+  "seconds": 99.8971161255613,
+  "exact_command": "/Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 -B tools/test_playable_client_cooking.py --actor-generation 19 --native",
+  "confidence": "high for this frozen artifact and narrow executed sequence"
+}

@@ -7,13 +7,17 @@ immutable actor artifact. Current preparation targets Actor004/producer019 with
 builds an actor, compiles a checker, or launches a foreground client. File-only
 preparation passed. The actual019 native artifact is available with binary SHA256
 `641089cd1a7e1fd48467df39a4a74068e5d71c507964d5ada3dd03ff038516fd`.
-The corrected native sequence remains pending lane capacity after the two
-retained attempts described below.
+Actual corrected attempt011 passed the complete narrow native sequence in
+99.897116 seconds; its owned processes and listeners were reaped. Evidence is
+`evidence/playable-client-cooking-native-011.json`, retaining input/process pins,
+all five full atomic save receipts, exact missing-owner responses and both
+SIGKILL process records. Confidence is high for this frozen artifact and sequence.
 
 The retained producer018 prepared receipt records file-only preparation only.
 Its actual producer later failed native arity greater than247, with no emitted C.
 The new source generation boxes the cooking sidecar and adds atomic pending-intent
-recovery. This consumer has not established its complete narrow native verdict.
+recovery. Attempt011 establishes the narrow durable recovery behavior below;
+producer018 has no native consumer verdict.
 
 Use the bundled Python runtime required by the existing actor helpers:
 
@@ -61,7 +65,7 @@ Java beef-tick observation. The physical unknown-field input is reused from
 `reference_cooking_block_entity_codec.inputs()` and its recorded Java acceptance.
 The test does not interpret raw CustomName/Lock/base fields as gameplay authority.
 
-The prepared native sequence is:
+The executed attempt011 sequence is:
 
 1. Cold-start the actual Entry from the physical cooking wrapper. Verify that
    startup/discovery did not advance Core, then acknowledge the complete save.
@@ -86,10 +90,13 @@ The prepared native sequence is:
 
 Every successful save compares all physical bytes for the atomic Core,
 LocalPlayer, inventory, equipment, status, generation and cooking extension. All
-five saves are compared. The
+five saves were compared in attempt011. The
 independent decoder also checks the complete wrapper, keyed location/body and
-peer highwater. A successful narrow native run will report `PASS_NARROW`; the
-post-reset saved physical projection exposes whether keyed Details were cleared.
+peer highwater. Attempt011 reported `PASS_NARROW`; its post-reset saved physical
+projection verified that keyed Details were cleared. Pending Drop bytes were
+identical before and after the second SIGKILL/cold restore. All three missing-owner
+responses matched exactly, the reset completed Core/player work once, and both
+subsequent requests left Core/player unchanged.
 
 ## Actual operation hooks and missing consumers
 
