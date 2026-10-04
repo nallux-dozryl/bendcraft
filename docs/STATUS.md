@@ -93,7 +93,8 @@ A separate continuation producer is now prepared and read-only audited: 6,069
 pinned files and 111 Bend imports, with ten inert host controls. It preserves
 the old binary, emitted C, failures and host generations by immutable paths.
 Independent admission found two host cleanup gaps: permission errors could
-abort the group sweep, and a codec cleanup error could prevent its PID receipt.
+abort the group sweep, and a codec cleanup error could prevent its PID receipt
+(admission2a01bea5; inert reproductions, high confidence).
 This producer is held for a scoped wrapper correction; no new native build is
 granted yet. Its
 required order is first primary suite, the frozen codec twice, complete phase
