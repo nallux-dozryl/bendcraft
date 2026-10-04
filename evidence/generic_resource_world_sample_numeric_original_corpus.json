@@ -1,0 +1,617 @@
+{
+  "cached_provenance": {
+    "blockstate": {
+      "harness": {
+        "bytes": 20462,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/blockstate-model-oracle/ReferenceModelProbe.java",
+        "sha256": "78707257a4a2941f757ff3bbb307496172ad4cc2dfbe772308e4d467975d3dc8"
+      },
+      "inputs": {
+        "bytes": 52174,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/blockstate-model-oracle/inputs.json",
+        "sha256": "322005310f1f32414f7b1b4a7a41e71510d67b184d44270eec928acc740535d9"
+      },
+      "metadata": {
+        "bytes": 11607,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/blockstate-model-oracle/metadata.json",
+        "sha256": "c6a4e8f4d7bddc1cc1b4a4de9fb90251e6010cd2dc2411d3cbc75781cb3c671c"
+      },
+      "observations": {
+        "bytes": 1000974,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/blockstate-model-oracle/observations.json",
+        "sha256": "6ae7b30a69e615847ff108a03a29ef93a6e6743cf047faf848233d1db7329552"
+      }
+    },
+    "model": {
+      "harness": {
+        "bytes": 17209,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/block-model-edges/ReferenceModelProbe.java",
+        "sha256": "d0ea602ed3acdaac2f03448445535354ee60129697866aa6d0914ff0eefdc4f6"
+      },
+      "inputs": {
+        "bytes": 8242,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/block-model-edges/inputs.json",
+        "sha256": "714bfa98ff1e1f8b61ef323f79c147fc9cca5f09b8e55d77efcbed75ec5dfef1"
+      },
+      "metadata": {
+        "bytes": 11491,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/block-model-edges/metadata.json",
+        "sha256": "f303b61cc9f539ee36b7bfaef3836254a33d34164c2b5455eeac074e473e2d9e"
+      },
+      "observations": {
+        "bytes": 30904,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/block-model-edges/observations.json",
+        "sha256": "8fd99e3bf162344d08ce186c67196202de941378a0c8da34ead037078fc7ae60"
+      }
+    }
+  },
+  "client": {
+    "bytes": 41483720,
+    "file": "26.3.jar",
+    "sha1": "e877b6a07acd633fb3bb475002175cec036e7b87",
+    "sha256": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d"
+  },
+  "confidence": "high for pinned Java observations; candidate parity remains unverified",
+  "corpora": [
+    {
+      "bytes": 938344,
+      "path": "build/generic-resource-world-sample-numeric-original-corpus-001/cached-corpus.json",
+      "sha256": "96a3769487bb57897b3bd1dc7ad7baead828b586eed7260739565fb3e9fc293a"
+    },
+    {
+      "bytes": 581594,
+      "path": "build/generic-resource-world-sample-numeric-original-corpus-001/exponent-corpus.json",
+      "sha256": "ccfd19ce6afd53666679a3718a4bed9133d96af31348db96421ea873fb0d75ac"
+    }
+  ],
+  "counts": {
+    "cached_cases": 35,
+    "candidate_native_cases": 0,
+    "fresh_original_java_cases": 10,
+    "java_acceptance": 26,
+    "java_rejection": 19,
+    "total_cases": 45
+  },
+  "failure_preservation": {
+    "error": "wheat",
+    "error_class": "KeyError",
+    "original_command_exit": 1,
+    "phase": "host_projection_after_successful_java",
+    "receipt": {
+      "bytes": 510,
+      "path": "build/generic-resource-world-sample-numeric-original-corpus-001/projection-failure-001.json",
+      "sha256": "e290d3a11e74ad1c03b7a938af99775522d26a30318b0edca64c115f355db95a"
+    },
+    "repair": "Use dispatcher-only request projection with unchanged existing dispatcher_projection and original Java schema; successful Java output was reused without a second Java execution."
+  },
+  "files": [
+    {
+      "bytes": 10432,
+      "path": "tools/generic_resource_world_sample_numeric_original_corpus.py",
+      "sha256": "788c0938e6cc8dcac6cd08ba5f30ce0d53f30cdc8935e13e67b8905fdaec798f"
+    }
+  ],
+  "java": {
+    "elapsed_seconds": 3.8812321657314897,
+    "harness": {
+      "bytes": 20462,
+      "path": "build/generic-resource-world-sample-numeric-original-corpus-001/exponent-java/ReferenceModelProbe.java",
+      "sha256": "78707257a4a2941f757ff3bbb307496172ad4cc2dfbe772308e4d467975d3dc8"
+    },
+    "inputs": {
+      "bytes": 2041,
+      "path": "build/generic-resource-world-sample-numeric-original-corpus-001/exponent-java/inputs.json",
+      "sha256": "112eb4bf834f364fa4b0e835f571cbd05d426cf6f0491367ebeeec310c07c859"
+    },
+    "metadata": {
+      "bytes": 11983,
+      "path": "build/generic-resource-world-sample-numeric-original-corpus-001/exponent-java/metadata.json",
+      "sha256": "4c8bb427feedb33fdd06799f7c62d916c082f812c15a337d1ea87981fedf60b0"
+    },
+    "observations": {
+      "bytes": 186616,
+      "path": "build/generic-resource-world-sample-numeric-original-corpus-001/exponent-java/observations.json",
+      "sha256": "89b5ff51b7461c997a71b6bc835c6d58c5843008aa4f1d84cb5fbf5ea689683b"
+    },
+    "returncode": 0,
+    "version": "openjdk version \"25.0.1\" 2025-10-21 LTS\nOpenJDK Runtime Environment Microsoft-12574220 (build 25.0.1+8-LTS)\nOpenJDK 64-Bit Server VM Microsoft-12574220 (build 25.0.1+8-LTS, mixed mode)"
+  },
+  "projections": [
+    {
+      "bytes": 17706,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_block_model.py",
+      "sha256": "ee39d0b9bec2b5d82d011cea6f8bc1ffd83d3958b9e593b0183a4e9ff4cc87ef"
+    },
+    {
+      "bytes": 28688,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_blockstate_model.py",
+      "sha256": "1e49cb798b52bb6f988c913d6d53b1e6b3a97171a882e5f544f3e8c2763fb8b1"
+    }
+  ],
+  "reproduction": {
+    "fresh_original_java": "python3 tools/generic_resource_world_sample_numeric_original_corpus.py --directory build/generic-resource-world-sample-numeric-original-corpus-NNN --run-java",
+    "prepare": "python3 tools/generic_resource_world_sample_numeric_original_corpus.py --directory build/generic-resource-world-sample-numeric-original-corpus-NNN",
+    "reuse_successful_java_after_host_projection_repair": "python3 tools/generic_resource_world_sample_numeric_original_corpus.py --directory build/generic-resource-world-sample-numeric-original-corpus-NNN --project-java"
+  },
+  "results": [
+    {
+      "consumer": "model",
+      "id": "integer-light-0",
+      "java_status": "ok",
+      "light_emission": [
+        1
+      ]
+    },
+    {
+      "consumer": "model",
+      "id": "integer-light-1",
+      "java_status": "ok",
+      "light_emission": [
+        0
+      ]
+    },
+    {
+      "consumer": "model",
+      "id": "integer-light-2",
+      "java_status": "ok",
+      "light_emission": [
+        0
+      ]
+    },
+    {
+      "consumer": "model",
+      "id": "integer-light-3",
+      "java_status": "ok",
+      "light_emission": [
+        15
+      ]
+    },
+    {
+      "consumer": "model",
+      "id": "integer-light-4",
+      "java_status": "ok",
+      "light_emission": [
+        15
+      ]
+    },
+    {
+      "consumer": "model",
+      "id": "integer-light-5",
+      "java_status": "ok",
+      "light_emission": [
+        1
+      ]
+    },
+    {
+      "consumer": "model",
+      "id": "integer-light-6",
+      "java_status": "ok",
+      "light_emission": [
+        0
+      ]
+    },
+    {
+      "consumer": "model",
+      "id": "integer-light-7",
+      "java_status": "ok",
+      "light_emission": [
+        0
+      ]
+    },
+    {
+      "consumer": "model",
+      "id": "integer-light-8",
+      "java_status": "error"
+    },
+    {
+      "consumer": "model",
+      "id": "integer-light-9",
+      "java_status": "error"
+    },
+    {
+      "consumer": "model",
+      "id": "integer-light-10",
+      "java_status": "error"
+    },
+    {
+      "consumer": "model",
+      "id": "integer-light-11",
+      "java_status": "error"
+    },
+    {
+      "consumer": "model",
+      "id": "integer-light-12",
+      "java_status": "error"
+    },
+    {
+      "consumer": "model",
+      "id": "integer-light-13",
+      "java_status": "error"
+    },
+    {
+      "consumer": "model",
+      "id": "integer-light-14",
+      "java_status": "error"
+    },
+    {
+      "consumer": "model",
+      "id": "integer-light-15",
+      "java_status": "error"
+    },
+    {
+      "consumer": "model",
+      "id": "integer-light-16",
+      "java_status": "error"
+    },
+    {
+      "choice": {
+        "kind": "single",
+        "variant": {
+          "model": "minecraft:block/stone",
+          "uvlock": false,
+          "x": 90,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "consumer": "blockstate",
+      "id": "edge_dispatcher_32",
+      "java_status": "ok"
+    },
+    {
+      "choice": {
+        "kind": "single",
+        "variant": {
+          "model": "minecraft:block/stone",
+          "uvlock": false,
+          "x": 270,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "consumer": "blockstate",
+      "id": "edge_dispatcher_33",
+      "java_status": "ok"
+    },
+    {
+      "choice": {
+        "kind": "single",
+        "variant": {
+          "model": "minecraft:block/stone",
+          "uvlock": false,
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "consumer": "blockstate",
+      "id": "edge_dispatcher_34",
+      "java_status": "ok"
+    },
+    {
+      "choice": {
+        "kind": "single",
+        "variant": {
+          "model": "minecraft:block/stone",
+          "uvlock": false,
+          "x": 90,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "consumer": "blockstate",
+      "id": "edge_dispatcher_35",
+      "java_status": "ok"
+    },
+    {
+      "consumer": "blockstate",
+      "id": "edge_dispatcher_36",
+      "java_status": "error"
+    },
+    {
+      "consumer": "blockstate",
+      "id": "edge_dispatcher_37",
+      "java_status": "error"
+    },
+    {
+      "consumer": "blockstate",
+      "id": "edge_dispatcher_38",
+      "java_status": "error"
+    },
+    {
+      "choice": {
+        "kind": "single",
+        "variant": {
+          "model": "minecraft:block/stone",
+          "uvlock": false,
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "consumer": "blockstate",
+      "id": "edge_dispatcher_39",
+      "java_status": "ok"
+    },
+    {
+      "consumer": "blockstate",
+      "id": "edge_dispatcher_58",
+      "java_status": "error"
+    },
+    {
+      "consumer": "blockstate",
+      "id": "edge_dispatcher_59",
+      "java_status": "error"
+    },
+    {
+      "choice": {
+        "entries": [
+          {
+            "variant": {
+              "model": "minecraft:block/stone",
+              "uvlock": false,
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "weight": 1
+          }
+        ],
+        "kind": "weighted",
+        "total": 1
+      },
+      "consumer": "blockstate",
+      "id": "edge_dispatcher_60",
+      "java_status": "ok"
+    },
+    {
+      "choice": {
+        "entries": [
+          {
+            "variant": {
+              "model": "minecraft:block/stone",
+              "uvlock": false,
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "weight": 1
+          }
+        ],
+        "kind": "weighted",
+        "total": 1
+      },
+      "consumer": "blockstate",
+      "id": "edge_dispatcher_61",
+      "java_status": "ok"
+    },
+    {
+      "choice": {
+        "entries": [
+          {
+            "variant": {
+              "model": "minecraft:block/stone",
+              "uvlock": false,
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "weight": 1
+          }
+        ],
+        "kind": "weighted",
+        "total": 1
+      },
+      "consumer": "blockstate",
+      "id": "edge_dispatcher_62",
+      "java_status": "ok"
+    },
+    {
+      "choice": {
+        "entries": [
+          {
+            "variant": {
+              "model": "minecraft:block/stone",
+              "uvlock": false,
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "weight": 2147483647
+          }
+        ],
+        "kind": "weighted",
+        "total": 2147483647
+      },
+      "consumer": "blockstate",
+      "id": "edge_dispatcher_63",
+      "java_status": "ok"
+    },
+    {
+      "consumer": "blockstate",
+      "id": "edge_dispatcher_64",
+      "java_status": "error"
+    },
+    {
+      "consumer": "blockstate",
+      "id": "edge_dispatcher_65",
+      "java_status": "error"
+    },
+    {
+      "consumer": "blockstate",
+      "id": "edge_dispatcher_66",
+      "java_status": "error"
+    },
+    {
+      "choice": {
+        "entries": [
+          {
+            "variant": {
+              "model": "minecraft:block/stone",
+              "uvlock": false,
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "weight": 1
+          }
+        ],
+        "kind": "weighted",
+        "total": 1
+      },
+      "consumer": "blockstate",
+      "id": "edge_dispatcher_67",
+      "java_status": "ok"
+    },
+    {
+      "choice": {
+        "kind": "single",
+        "variant": {
+          "model": "minecraft:block/stone",
+          "uvlock": false,
+          "x": 90,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "consumer": "blockstate",
+      "id": "exponent_rotation_positive",
+      "java_status": "ok"
+    },
+    {
+      "choice": {
+        "kind": "single",
+        "variant": {
+          "model": "minecraft:block/stone",
+          "uvlock": false,
+          "x": 90,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "consumer": "blockstate",
+      "id": "exponent_rotation_positive_sign",
+      "java_status": "ok"
+    },
+    {
+      "choice": {
+        "kind": "single",
+        "variant": {
+          "model": "minecraft:block/stone",
+          "uvlock": false,
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "consumer": "blockstate",
+      "id": "exponent_rotation_negative_exponent",
+      "java_status": "ok"
+    },
+    {
+      "choice": {
+        "kind": "single",
+        "variant": {
+          "model": "minecraft:block/stone",
+          "uvlock": false,
+          "x": 90,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "consumer": "blockstate",
+      "id": "exponent_rotation_wrapped_decimal",
+      "java_status": "ok"
+    },
+    {
+      "choice": {
+        "kind": "single",
+        "variant": {
+          "model": "minecraft:block/stone",
+          "uvlock": false,
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "consumer": "blockstate",
+      "id": "exponent_rotation_large_positive",
+      "java_status": "ok"
+    },
+    {
+      "choice": {
+        "kind": "single",
+        "variant": {
+          "model": "minecraft:block/stone",
+          "uvlock": false,
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "consumer": "blockstate",
+      "id": "exponent_rotation_large_negative",
+      "java_status": "ok"
+    },
+    {
+      "choice": {
+        "entries": [
+          {
+            "variant": {
+              "model": "minecraft:block/stone",
+              "uvlock": false,
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "weight": 1
+          }
+        ],
+        "kind": "weighted",
+        "total": 1
+      },
+      "consumer": "blockstate",
+      "id": "exponent_weight_zero_exponent",
+      "java_status": "ok"
+    },
+    {
+      "choice": {
+        "entries": [
+          {
+            "variant": {
+              "model": "minecraft:block/stone",
+              "uvlock": false,
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "weight": 10
+          }
+        ],
+        "kind": "weighted",
+        "total": 10
+      },
+      "consumer": "blockstate",
+      "id": "exponent_weight_positive_exponent",
+      "java_status": "ok"
+    },
+    {
+      "consumer": "blockstate",
+      "id": "exponent_weight_negative_exponent",
+      "java_status": "error"
+    },
+    {
+      "consumer": "blockstate",
+      "id": "exponent_weight_signed_boundary",
+      "java_status": "error"
+    }
+  ],
+  "schema": "generic-numeric-original-corpus-v1",
+  "scope": [
+    "Exact original decimal/exponent input text is retained.",
+    "Accepted model results compare every field in the existing full parsed projection; accepted dispatchers retain the original Java schema, all real states, selectors, dependencies and normalized choices.",
+    "Java rejection is compared as status; unrelated Java/Bend error wording is not asserted equal.",
+    "This establishes original Java corpus results only. Ordinary proof checking, independent kernel continuation equivalence, generated C cost and candidate native parity remain separate pending obligations."
+  ],
+  "status": "original_java_corpus_ready_native_pending"
+}
