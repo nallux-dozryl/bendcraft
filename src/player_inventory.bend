@@ -4,11 +4,13 @@ import ./player_item_definitions.bend as D
 import ./nbt.bend as N
 import ./player_inventory_return.bend as Return
 import ./player_inventory_click_swap.bend as SwapKernel
+import ./item_component.bend as Components
 
 # One owner retains main inventory, equipment and temporary menu storage.
 # The legacy36 projection keeps slots0..8 as the hotbar.
 # Empty component strings denote unmodified pinned item defaults, not an NBT
-# component payload. Modified items are deliberately outside this consumer.
+# component payload. Modified keys require the closed typed profile and actual
+# catalog admission; their complete canonical identity travels with the stack.
 type Abilities is Data:
   Abilities{instabuild:Bool,maybuild:Bool}
 
@@ -301,12 +303,26 @@ def menu_inspect(state:State) -> State & MenuSnapshot:
   State{inventory,selected,abilities,profile} = state
   menu_inspected(selected,abilities,profile,read_slots(48n,0,Inv.read(inventory,0),[]))
 
+def structural_components(result:Result<&2,&2,String,Inv.ItemMetadata>) -> Bool:
+  match result:
+    case Fail{message}: False{}
+    case Done{metadata}: True{}
+
+def structural_stack(+key:Inv.ItemKey,+count:U32,plain:Bool) -> Bool:
+  Inv.ItemKey{+id,components} = key
+  match plain:
+    case False{}:
+      structural_components(Components.slot_metadata(Some{Components.InitializedSuspiciousStew{}},Inv.InvStack{key,count}))
+    case True{}:
+      Nat.is_gt(String.length(id),0n) && Nat.is_le(String.length(id),256n) && D.identifier(id) &&
+        U32.is_gt(count,0) && U32.is_le(count,99)
+
 def structural_slot(slot:Inv.Slot) -> Bool:
   match slot:
     case Inv.InvEmpty{}: True{}
-    case Inv.InvStack{Inv.ItemKey{+id,components},+count}:
-      Nat.is_gt(String.length(id),0n) && Nat.is_le(String.length(id),256n) && D.identifier(id) &&
-        String.is_empty(components) && U32.is_gt(count,0) && U32.is_le(count,99)
+    case Inv.InvStack{+key,count}:
+      Inv.ItemKey{id,components} = key
+      structural_stack(key,count,String.is_empty(components))
 
 def structural_slots(left:Nat,slots:List<&2,Inv.Slot>) -> Bool:
   match left slots:

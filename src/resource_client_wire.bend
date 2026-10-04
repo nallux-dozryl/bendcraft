@@ -373,8 +373,17 @@ def menu_click(value:J.Value) -> Result<&2,&2,String,I.Click>:
     case J.JArray{[J.JNumber{"6"}]}: Done{I.PickupAll{}}
     case _: Fail{"wire:menu-click-tag-or-cardinality"}
 
-def acquire_valid(index:U32,key:Inv.ItemKey,count:U32) -> Bool:
-  U32.is_lt(index,36) && I.structural_slot(Inv.InvStack{key,1}) && U32.is_le(count,99)
+def acquire_component_count(key:Inv.ItemKey,count:U32) -> Bool:
+  Inv.ItemKey{id,components} = key
+  String.is_empty(components) || U32.is_le(count,1)
+
+def acquire_valid(index:U32,+key:Inv.ItemKey,+count:U32) -> Bool:
+  U32.is_lt(index,36) && I.structural_slot(Inv.InvStack{key,1}) && U32.is_le(count,99) && acquire_component_count(key,count)
+
+def admitted_item_key(+key:Inv.ItemKey) -> Result<&2,&2,String,Inv.ItemKey>:
+  do Result<&2,&2,String,Inv.ItemKey>:
+    guard(I.structural_slot(Inv.InvStack{key,1}),"wire:item-key-components")
+    Done{key}
 
 def item_key(value:J.Value) -> Result<&2,&2,String,Inv.ItemKey>:
   match value:
@@ -382,7 +391,7 @@ def item_key(value:J.Value) -> Result<&2,&2,String,Inv.ItemKey>:
       do Result<&2,&2,String,Inv.ItemKey>:
         id:String <- text(name)
         patch:String <- text(components)
-        Done{Inv.ItemKey{id,patch}}
+        admitted_item_key(Inv.ItemKey{id,patch})
     case _: Fail{"wire:item-key-cardinality"}
 
 def command_valid(command:Command) -> Bool:
@@ -481,6 +490,11 @@ def request_value(value:J.Value) -> Result<&2,&2,String,Request>:
 def fault_valid(+epoch:String,+sequence:Nat,message:String) -> Bool:
   ((String.eq(epoch,"") && Nat.is_eq(sequence,0n)) || (epoch_valid(epoch) && sequence_valid(sequence))) && diagnostic_valid(message)
 
+def admitted_inventory_slot(+slot:Inv.Slot) -> Result<&2,&2,String,Inv.Slot>:
+  do Result<&2,&2,String,Inv.Slot>:
+    guard(I.structural_slot(slot),"wire:inventory-slot-components-count")
+    Done{slot}
+
 def inventory_slot(value:J.Value) -> Result<&2,&2,String,Inv.Slot>:
   match value:
     case J.JArray{[J.JNumber{"0"}]}: Done{Inv.InvEmpty{}}
@@ -489,7 +503,7 @@ def inventory_slot(value:J.Value) -> Result<&2,&2,String,Inv.Slot>:
         id:String <- text(name)
         payload:String <- text(components)
         amount:U32 <- uint(count)
-        Done{Inv.InvStack{Inv.ItemKey{id,payload},amount}}
+        admitted_inventory_slot(Inv.InvStack{Inv.ItemKey{id,payload},amount})
     case _: Fail{"wire:inventory-slot-tag-or-cardinality"}
 
 def inventory_slots(left:Nat,values:List<&2,J.Value>) -> Result<&2,&2,String,List<&2,Inv.Slot>>:

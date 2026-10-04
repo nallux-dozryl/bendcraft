@@ -2,10 +2,16 @@ import Base
 import ./remote_resource_backend.bend as B
 import ./resource_client_wire.bend as W
 import ./world_visibility.bend as V
+import ./generic_resource_world_sample.bend as GS
+import ./generic_resource_world_sample_backend.bend as GenericBackend
 import ./server.bend as S
 import ./framing.bend as F
 import ./player_inventory.bend as I
 import ./player_block_interaction.bend as BI
+import ./local_player_session.bend as Session
+import ./player_crafting_session_adapter.bend as Craft
+import ./item_component_wire_candidate.bend as Candidate
+import ./core.bend as Core
 
 # The socket remembers its assigned epoch. Cleanup never trusts an incoming
 # request's epoch, so a stale socket cannot clear a newer renderer's controls.
@@ -13,6 +19,10 @@ type Link is Type:
   Link{socket:Socket,buffer:F.Buffer,epoch:String,deadline:Nat}
 type Answer is Data:
   Answer{reply:W.Reply,assigned:String,keep:Bool}
+type PreparedAnswer is Data:
+  PreparedAnswer{answer:Answer,encoding:Result<&2,&2,String,String>}
+type MenuRollback is Type:
+  MenuRollback{inventory:I.State,lease:B.Lease,crafting:Maybe<&2,Craft.Context>}
 
 def hello_answer(result:B.State & Result<&2,&2,String,String>) -> B.State & Answer:
   (state,status) = result
@@ -31,6 +41,12 @@ def frame_answer(+epoch:String,sequence:Nat,result:B.State & Result<&2,&2,String
   match status:
     case Fail{message}: (state,Answer{W.Fault{epoch,sequence,message},"",False{}})
     case Done{sample}: (state,Answer{W.FrameReply{epoch,sequence,sample},epoch,True{}})
+
+def catalog_frame_answer(+epoch:String,sequence:Nat,result:B.State & Result<&2,&2,String,GS.Sample>) -> B.State & Answer:
+  (state,status) = result
+  match status:
+    case Fail{message}: (state,Answer{W.Fault{epoch,sequence,message},"",False{}})
+    case Done{sample}: (state,Answer{W.CatalogFrameReply{epoch,sequence,sample},epoch,True{}})
 
 def inventory_answer(+epoch:String,sequence:Nat,result:B.State & Result<&2,&2,String,I.Snapshot>) -> B.State & Answer:
   (state,status) = result
@@ -54,6 +70,7 @@ def menu_answer(+epoch:String,sequence:Nat,result:B.State & Result<&2,&2,String,
 def command(state:B.State,+epoch:String,+sequence:Nat,value:W.Command) -> B.State & Answer:
   match value:
     case W.Frame{width,height}: frame_answer(epoch,sequence,B.frame(state,epoch,sequence,width,height))
+    case W.FrameCatalog{width,height}: catalog_frame_answer(epoch,sequence,GenericBackend.frame(state,epoch,sequence,width,height,GS.defaults()))
     case W.Input{packet}: unit_answer(epoch,sequence,B.input(state,epoch,sequence,packet))
     case W.Release{}: unit_answer(epoch,sequence,B.release(state,epoch,sequence))
     case W.Action{button}: action_answer(epoch,sequence,B.action(state,epoch,sequence,button))
@@ -66,6 +83,110 @@ def command(state:B.State,+epoch:String,+sequence:Nat,value:W.Command) -> B.Stat
     case W.MenuClose{}: menu_answer(epoch,sequence,B.menu_close(state,epoch,sequence))
     case W.MenuClick{index,click}: menu_answer(epoch,sequence,B.menu_click(state,epoch,sequence,index,click))
     case W.Select{index}: menu_answer(epoch,sequence,B.select(state,epoch,sequence,index))
+
+# These commands own only inventory, immutable recipe context and the lease.
+# A frame, world edit or physical packet must never use inventory-only rollback.
+def prospective_menu(value:W.Command) -> Bool:
+  match value:
+    case W.Transfer{source,destination,count,mode}: True{}
+    case W.Acquire{index,key,count}: True{}
+    case W.MenuInspect{}: True{}
+    case W.MenuOpen{}: True{}
+    case W.MenuClose{}: True{}
+    case W.MenuClick{index,click}: True{}
+    case W.Select{index}: True{}
+    case _: False{}
+
+def answer_reply(value:Answer) -> W.Reply:
+  Answer{reply,assigned,keep} = value
+  reply
+
+def prepared(result:B.State & Answer) -> B.State & PreparedAnswer:
+  (state,+value) = result
+  (state,PreparedAnswer{value,W.encode_reply(answer_reply(value))})
+
+def candidate_saved(+lease:B.Lease,counter:Nat,nonce:String,capability:String,owner:Core.Capability,
+    +crafting:Maybe<&2,Craft.Context>,result:Session.State & I.State) -> B.State & MenuRollback:
+  (saved,original) = result
+  (B.State{saved,lease,counter,nonce,capability,owner,crafting},MenuRollback{original,lease,crafting})
+
+def menu_candidate(state:B.State) -> B.State & MenuRollback:
+  B.State{saved,lease,counter,nonce,capability,owner,crafting} = state
+  candidate_saved(lease,counter,nonce,capability,owner,crafting,Session.inventory_query(I.State,saved,Candidate.prepare))
+
+def restored_inventory(original:I.State,candidate:I.State) -> I.State & Unit:
+  (original,Unit{})
+
+def restored_saved(lease:B.Lease,counter:Nat,nonce:String,capability:String,owner:Core.Capability,
+    crafting:Maybe<&2,Craft.Context>,result:Session.State & Unit) -> B.State:
+  (saved,unit) = result
+  B.State{saved,B.renewed(lease),counter,nonce,capability,owner,crafting}
+
+def restore_menu(rollback:MenuRollback,candidate:B.State) -> B.State:
+  MenuRollback{original,lease,crafting} = rollback
+  B.State{saved,new_lease,counter,nonce,capability,owner,new_crafting} = candidate
+  restored_saved(lease,counter,nonce,capability,owner,crafting,
+    Session.inventory_query(Unit,saved,discarded => restored_inventory(original,discarded)))
+
+def fallback_encoded(+epoch:String,+sequence:Nat,state:B.State,+value:Answer,
+    encoding:Result<&2,&2,String,String>) -> B.State & PreparedAnswer:
+  match encoding:
+    case Done{text}: (state,PreparedAnswer{value,Done{text}})
+    case Fail{message}:
+      prepared((state,Answer{W.Fault{epoch,sequence,"Wire:InventoryReplyEncoding"},epoch,False{}}))
+
+def fallback_observed(+epoch:String,+sequence:Nat,lease:B.Lease,counter:Nat,nonce:String,capability:String,
+    owner:Core.Capability,crafting:Maybe<&2,Craft.Context>,result:Session.State & I.MenuSnapshot) -> B.State & PreparedAnswer:
+  (saved,snapshot) = result
+  +value:Answer = Answer{W.MenuReply{epoch,sequence,False{},"inventory:prospective-reply-refused",snapshot},epoch,True{}}
+  fallback_encoded(epoch,sequence,B.State{saved,lease,counter,nonce,capability,owner,crafting},value,W.encode_reply(answer_reply(value)))
+
+# Observation of the restored owner does not refresh or replace its cache.
+def menu_fallback(+epoch:String,+sequence:Nat,state:B.State) -> B.State & PreparedAnswer:
+  B.State{saved,lease,counter,nonce,capability,owner,crafting} = state
+  fallback_observed(epoch,sequence,lease,counter,nonce,capability,owner,crafting,
+    Session.inventory_query(I.MenuSnapshot,saved,Candidate.inspect))
+
+def prospective_encoded(epoch:String,sequence:Nat,rollback:MenuRollback,candidate:B.State,value:Answer,
+    encoding:Result<&2,&2,String,String>) -> B.State & PreparedAnswer:
+  match encoding:
+    case Done{text}: (candidate,PreparedAnswer{value,Done{text}})
+    case Fail{message}: menu_fallback(epoch,sequence,restore_menu(rollback,candidate))
+
+def prospective_completed(epoch:String,sequence:Nat,rollback:MenuRollback,result:B.State & Answer) -> B.State & PreparedAnswer:
+  (candidate,+value) = result
+  prospective_encoded(epoch,sequence,rollback,candidate,value,W.encode_reply(answer_reply(value)))
+
+def prospective_geometry(+epoch:String,+sequence:Nat,value:W.Command,rollback:MenuRollback,
+    result:B.State & Bool) -> B.State & PreparedAnswer:
+  (candidate,valid) = result
+  match valid:
+    case False{}: menu_fallback(epoch,sequence,restore_menu(rollback,candidate))
+    case True{}: prospective_completed(epoch,sequence,rollback,command(candidate,epoch,sequence,value))
+
+def geometry_saved(lease:B.Lease,counter:Nat,nonce:String,capability:String,owner:Core.Capability,
+    crafting:Maybe<&2,Craft.Context>,result:Session.State & Bool) -> B.State & Bool:
+  (saved,valid) = result
+  (B.State{saved,lease,counter,nonce,capability,owner,crafting},valid)
+
+def menu_geometry(state:B.State) -> B.State & Bool:
+  B.State{saved,lease,counter,nonce,capability,owner,crafting} = state
+  geometry_saved(lease,counter,nonce,capability,owner,crafting,Session.inventory_query(Bool,saved,Candidate.geometry))
+
+def prospective_cloned(+epoch:String,+sequence:Nat,value:W.Command,result:B.State & MenuRollback) -> B.State & PreparedAnswer:
+  (candidate,rollback) = result
+  # Invoke the real command once. Reply admission precedes actor publication.
+  prospective_geometry(epoch,sequence,value,rollback,menu_geometry(candidate))
+
+def prospective_checked(state:B.State,+epoch:String,+sequence:Nat,+value:W.Command,admitted:Bool) -> B.State & PreparedAnswer:
+  match admitted:
+    case False{}: prepared(command(state,epoch,sequence,value))
+    case True{}: prospective_cloned(epoch,sequence,value,menu_candidate(state))
+
+def command_prepared(state:B.State,+epoch:String,+sequence:Nat,+value:W.Command) -> B.State & PreparedAnswer:
+  B.State{saved,+lease,counter,nonce,capability,owner,crafting} = state
+  prospective_checked(B.State{saved,lease,counter,nonce,capability,owner,crafting},epoch,sequence,value,
+    prospective_menu(value) && B.admitted(lease,epoch,sequence))
 
 def close_link(+handle:S.Handle<B.State>,link:Link) -> IO(Maybe<&1,Link>):
   Link{socket,buffer,epoch,deadline} = link
@@ -107,6 +228,10 @@ def answer(+handle:S.Handle<B.State>,link:Link,value:Answer) -> IO(Maybe<&1,Link
   Answer{reply,assigned,keep} = value
   encoded(handle,link,assigned,keep,W.encode_reply(reply))
 
+def prepared_answer(handle:S.Handle<B.State>,link:Link,value:PreparedAnswer) -> IO(Maybe<&1,Link>):
+  PreparedAnswer{Answer{reply,assigned,keep},encoding} = value
+  encoded(handle,link,assigned,keep,encoding)
+
 def hello_allowed(+handle:S.Handle<B.State>,link:Link,capability:String,allowed:Bool) -> IO(Maybe<&1,Link>):
   match allowed:
     case False{}: answer(handle,link,Answer{W.Fault{"",0n,"Wire:DuplicateHello"},"",False{}})
@@ -120,8 +245,8 @@ def call_allowed(+handle:S.Handle<B.State>,link:Link,+epoch:String,+sequence:Nat
     case False{}: answer(handle,link,Answer{W.Fault{epoch,sequence,"Wire:SocketEpoch"},"",False{}})
     case True{}:
       do IO<Maybe<&1,Link>>:
-        value : Answer <- S.local_call(B.State,Answer,handle,state => command(state,epoch,sequence,value))
-        answer(handle,link,value)
+        value : PreparedAnswer <- S.local_call(B.State,PreparedAnswer,handle,state => command_prepared(state,epoch,sequence,value))
+        prepared_answer(handle,link,value)
 
 def request_parsed(+handle:S.Handle<B.State>,link:Link,result:Result<&2,&2,String,W.Request>) -> IO(Maybe<&1,Link>):
   Link{socket,buffer,+assigned,deadline} = link
