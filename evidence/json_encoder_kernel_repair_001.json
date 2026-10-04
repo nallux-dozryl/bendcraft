@@ -1,0 +1,312 @@
+{
+  "schema": 1,
+  "status": "private-source-repair-unresolved-no-adoption",
+  "scope": "Unbounded canonical serializer shape with unchanged public Value/Member AST and unchanged encode/encode_go semantics. No full item-component13 kernel PASS claim.",
+  "confidence": {
+    "observed_source_and_kernel_rejections": "high",
+    "existence_of_another_complete_source_only_repair": "unknown"
+  },
+  "production_json": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/json.bend",
+    "bytes": 21384,
+    "sha256": "a1789e3b4f5bea158ec0d95a8bcb39aa5b7c7e7355a5254d3de1d52a93c719d1"
+  },
+  "production_json_unchanged": true,
+  "original_toolchain_unchanged_pins": [
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/bend.ts",
+      "bytes": 137761,
+      "sha256": "7deae3693eb896f33c73867081b99d2c6f3ed3b57e77e55eb5f6260840dd0e63"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/safe.ts",
+      "bytes": 63418,
+      "sha256": "54cb3a534ab7cc9ee313bf6383b3948ccdcac022469b3020e00745bbfe6f7e04"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/base.bend",
+      "bytes": 71530,
+      "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/bendtt.lean",
+      "bytes": 165581,
+      "sha256": "e15042434e73aab07ab05cea4b77b5619082c00a6d4924ea2d4a2cdec05facce"
+    },
+    {
+      "path": "/Users/chuah/.bend/bin/bend",
+      "bytes": 63885392,
+      "sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e"
+    },
+    {
+      "path": "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+      "bytes": 3271216,
+      "sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7"
+    },
+    {
+      "path": "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+      "bytes": 77577344,
+      "sha256": "ec307018e1e8b80d68588b01ce6e9f8f9b8f4a03412c513b0fc3ac4d0f5db799"
+    }
+  ],
+  "late_typed_witness": {
+    "candidate_sources": [
+      {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/jsonencoder-late-witness-001/json.bend",
+        "bytes": 22849,
+        "sha256": "717576f2f02a70496fe25da50f49c8a8c4bf31e3d2bf4e46b7fae2345528907d"
+      },
+      {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/jsonencoder-late-witness-001/json-case-lambda.bend",
+        "bytes": 22765,
+        "sha256": "6cd4a0745f137f17331b2e20f7c65a8883c821a54abac5d0b1f5f808698f7083"
+      }
+    ],
+    "intended_full_traversal": "visit(-A:Data,payload:A,kind:VisitKind<A>,continuation:Bool), with Value, List<Value>, List<Member> witnesses and complete scalar/array/member cases. Recursive calls pass raw constructor fields and raw list tails. No fuel or size limit.",
+    "ordinary_attempts": [
+      {
+        "receipt": {
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/jsonencoder-late-witness-001/ordinary-001/result.full.json",
+          "bytes": 835,
+          "sha256": "f2aea0ad7563d694227175571d04027fae08db04c5a3b31cb0d7ae7c185aa414"
+        },
+        "argv": [
+          "/Users/chuah/.bend/bin/bend",
+          "build/jsonencoder-late-witness-001/json.bend",
+          "--check-only"
+        ],
+        "cap_seconds": 30,
+        "exit_code": 1,
+        "seconds": 0.23353916592895985,
+        "timed_out": false,
+        "cleanup": {
+          "after": [],
+          "before": [],
+          "errors": [],
+          "leader_reaped": true,
+          "live_group_absent": true,
+          "seconds": 0.0884719155728817
+        },
+        "stdout": {
+          "bytes": 0,
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/jsonencoder-late-witness-001/ordinary-001/stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "bytes": 323,
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/jsonencoder-late-witness-001/ordinary-001/stderr",
+          "sha256": "380f54cfe63eed3a18e1322126ea2cf742b6f4c2b4a52f8c924ac2d613616e1c"
+        }
+      },
+      {
+        "receipt": {
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/jsonencoder-late-witness-001/ordinary-002/result.full.json",
+          "bytes": 849,
+          "sha256": "9f2ba8f79345d9a4c3015d2ea26c9488f5b975d9db1cee7d1db6667ce1bde217"
+        },
+        "argv": [
+          "/Users/chuah/.bend/bin/bend",
+          "build/jsonencoder-late-witness-001/json-case-lambda.bend",
+          "--check-only"
+        ],
+        "cap_seconds": 30,
+        "exit_code": 1,
+        "seconds": 0.3997366661205888,
+        "timed_out": false,
+        "cleanup": {
+          "after": [],
+          "before": [],
+          "errors": [],
+          "leader_reaped": true,
+          "live_group_absent": true,
+          "seconds": 0.09248424973338842
+        },
+        "stdout": {
+          "bytes": 0,
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/jsonencoder-late-witness-001/ordinary-002/stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "bytes": 629,
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/jsonencoder-late-witness-001/ordinary-002/stderr",
+          "sha256": "de6b3ce186b6a6d6354066b888e9239be8a8042173b6f5e275553f79d8e2310a"
+        }
+      }
+    ],
+    "final_rejection": "Inline case-lambda bypasses statement match-order rejection, then visit(List<Value>,values,VisitValues{{==}},continuation) is rejected as nondecreasing. Equality-transported lambda input is not tracked as a piece of the earlier generic payload.",
+    "kernel_attempted": false,
+    "semantic_execution_attempted": false
+  },
+  "reusable_value": {
+    "candidate": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/jsonencoder-reusable-001/json.bend",
+      "bytes": 21393,
+      "sha256": "e984f9010e6b9f079fa7227ad85e9bbd11b1f5a8604a70259d210d37870fff79"
+    },
+    "proof": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/jsonencoder-reusable-001/proof.bend",
+      "bytes": 333,
+      "sha256": "fcbe8759de9ab0bb31acdc25e0927ca98989b66906ab146f33a34f9e963642b4"
+    },
+    "source_delta": [
+      "Decimal import redirected to unchanged production module",
+      "encode_go input quantity made reusable (+value)"
+    ],
+    "encoder_semantic_body_changed": false,
+    "ordinary": {
+      "receipt": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/jsonencoder-reusable-001/ordinary-001/result.full.json",
+        "bytes": 827,
+        "sha256": "d0096a153322dce2fbcdc09fd0c9650dbdfff4429f012bb2bb9a6f86cba2b031"
+      },
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "build/jsonencoder-reusable-001/proof.bend",
+        "--check-only"
+      ],
+      "cap_seconds": 30,
+      "exit_code": 0,
+      "seconds": 0.6554211247712374,
+      "timed_out": false,
+      "cleanup": {
+        "after": [],
+        "before": [],
+        "errors": [],
+        "leader_reaped": true,
+        "live_group_absent": true,
+        "seconds": 0.11063416581600904
+      },
+      "stdout": {
+        "bytes": 58,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/jsonencoder-reusable-001/ordinary-001/stdout",
+        "sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1"
+      },
+      "stderr": {
+        "bytes": 0,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/jsonencoder-reusable-001/ordinary-001/stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "export": {
+      "receipt": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/jsonencoder-reusable-001/export-process-001/result.full.json",
+        "bytes": 1043,
+        "sha256": "f67b22af5266b7261c7ed00a9657f238a5b1784cf9bb4e0cf15d3d2ad0f02663"
+      },
+      "argv": [
+        "/opt/homebrew/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=2048",
+        "--experimental-transform-types",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/jsonencoder-reusable-001/export.mjs",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/jsonencoder-reusable-001/export-001"
+      ],
+      "cap_seconds": 30,
+      "exit_code": 0,
+      "seconds": 1.2214807914569974,
+      "timed_out": false,
+      "cleanup": {
+        "after": [],
+        "before": [],
+        "errors": [],
+        "leader_reaped": true,
+        "live_group_absent": true,
+        "seconds": 0.12390537559986115
+      },
+      "stdout": {
+        "bytes": 155,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/jsonencoder-reusable-001/export-process-001/stdout",
+        "sha256": "c9e0b7b1683cb44c70e667147f8d9f6330aaf5e1bd03bbfc1eb5e2ec73975c5e"
+      },
+      "stderr": {
+        "bytes": 177,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/jsonencoder-reusable-001/export-process-001/stderr",
+        "sha256": "d166d1b758a381cbb3aa4443317ce4f36ba2aa116a67873e212a50f7109a4d0b"
+      }
+    },
+    "export_script": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/jsonencoder-reusable-001/export.mjs",
+      "bytes": 3049,
+      "sha256": "279b9db21d49c4c20f44c6df769db2b31d678b67faea6ce601bf21b56c2bf965"
+    },
+    "selection": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/jsonencoder-reusable-001/export-001/selection.json",
+      "bytes": 1174,
+      "sha256": "bd7f04321b5cee1bb092583d5385d79ae7f79aebb6b38c6a6c70b8cde54aa2d0"
+    },
+    "source_pins": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/jsonencoder-reusable-001/export-001/source-pins.json",
+      "bytes": 602,
+      "sha256": "82bf83530d5b2ff6159d4e1fae6d19f6b5c5214a859e9f802117e6ef9f9ed701"
+    },
+    "artifact": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/jsonencoder-reusable-001/export-001/selected.bendtt",
+      "bytes": 662990,
+      "sha256": "59f868038528cd93b4d93b11ac0c3b61ad545252a09cbcc700d938fd7d505c15"
+    },
+    "export_declarations": 94,
+    "exclusions": [],
+    "actual_encoder_all_branches_retained": true,
+    "reconstructed_array_and_object_tail_calls_retained": true,
+    "root": [
+      "number_lexeme_identity"
+    ],
+    "term_pins": [
+      {
+        "name": "number_lexeme_identity",
+        "type_sha256": "fee83d537fbdf4c7269cc91a468c81ae7ca3ffd6bf5de2dafd40e002b1e26b59",
+        "checked_proof_sha256": "bf2581acd095b7dc7ee9dbd3b3e3f5e1cecad819c72e4e8ead284c9292515a5d",
+        "source_body_sha256": "673d29365d6fa094121979250d82a3e79780e93265e0abeb8b733a12fb2cd257"
+      }
+    ],
+    "law_contract": "For every raw String, encode(JNumber{raw}) equals raw exactly; the export includes the complete real encode_go body and quote/string dependencies, so the independent live-code validator checks all encoder branches. This is not a universal canonical-output theorem or a component13 subset verdict.",
+    "kernel": {
+      "receipt": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/jsonencoder-reusable-001/kernel-001/result.full.json",
+        "bytes": 894,
+        "sha256": "62cef098c3e508b27aeabdfac05dd724fcaa0ee2e27353021d83924c210078ca"
+      },
+      "argv": [
+        "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/jsonencoder-reusable-001/export-001/selected.bendtt"
+      ],
+      "cap_seconds": 30,
+      "exit_code": 1,
+      "seconds": 0.29886704217642546,
+      "timed_out": false,
+      "cleanup": {
+        "after": [],
+        "before": [],
+        "errors": [],
+        "leader_reaped": true,
+        "live_group_absent": true,
+        "seconds": 0.1049820426851511
+      },
+      "stdout": {
+        "bytes": 73,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/jsonencoder-reusable-001/kernel-001/stdout",
+        "sha256": "2275b00118525c37690bd0f4ff7ea0c6e31d3c0da890a188b519a556706ee11f"
+      },
+      "stderr": {
+        "bytes": 0,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/jsonencoder-reusable-001/kernel-001/stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "kernel_error": "In json.encode_go: affine live code, calls that descend",
+    "semantic_execution_attempted": false
+  },
+  "capability_findings": [
+    "The kernel accepts raw child paths but current JArray{tail}/JObject{tail} rebuilds do not have proper-piece paths. Reusable quantity does not change this result.",
+    "Three raw visitors require live Value/list-value/list-member mutual recursion, blocked by filled-definition ordering.",
+    "The strongest payload-first erased-type/trailing-witness encoding requires type refinement preserving payload descent through equality transport. The complete private candidate is rejected by the actual ordinary checker; kernel Term.takes excludes Rwt as well.",
+    "This is not an impossibility proof over all Bend programs. No complete source-only repair is established."
+  ],
+  "excluded_workarounds": [
+    "Artificial fixed fuel, AST/input bounds or truncation",
+    "Axioms, unsafe or foreign serializer declarations",
+    "Modifying original compiler/kernel",
+    "Claiming excluded component roots or a scalar identity as full13 proof"
+  ],
+  "next_required_capability": "A checked mutual raw-payload traversal or a heterogeneous eliminator preserving the original payload column through type refinement; either must be demonstrated with the actual full encoder and independent kernel before adoption."
+}
