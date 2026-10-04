@@ -5,6 +5,10 @@ import ./block_bake.bend as K
 import ./world_mesh.bend as WM
 import ./mesh_render.bend as M
 import ./client_render.bend as R
+import ./resource_catalog_world.bend as CW
+import ./resource_catalog_world_load.bend as CWL
+import ./resource_block_catalog.bend as Catalog
+import ./registry.bend as Registry
 
 # The caller maps its actual registry palette into this lightweight Data value.
 # This module deliberately selects three named models at zero transform;
@@ -126,3 +130,18 @@ def info(assets:Assets) -> Assets & Info:
 def close_assets(assets:Assets) -> IO(Unit):
   Assets{resources,bindings,textures,palette,catalog} = assets
   close_resources(resources)
+
+# Generic world frames carry the actual registry identity and explicit model
+# selection/appearance per cell. The earlier Palette interface remains the
+# named three-state instrument used by its existing clients.
+def catalog_load(jar:String,registry:Registry.Registry,requests:List<&2,Catalog.Request>,policy:BR.Policy,limits:Catalog.Limits) -> IO(Registry.Registry & Result<&2,&1,Catalog.Error,CW.Assets>):
+  CWL.load(jar,registry,requests,policy,limits)
+
+def catalog_info(assets:CW.Assets) -> CW.Assets & CW.Info:
+  CW.info(assets)
+
+def catalog_draw(frame:CW.Frame,assets:CW.Assets,width:U32,height:U32,limits:WM.Limits) -> CW.Assets & Result<&2,&2,Catalog.Error,Image>:
+  CW.draw(frame,assets,width,height,limits)
+
+def catalog_close(assets:CW.Assets) -> IO(Unit):
+  CW.close_assets(assets)
