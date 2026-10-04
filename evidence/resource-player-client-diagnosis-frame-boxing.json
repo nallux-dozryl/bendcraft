@@ -1,0 +1,252 @@
+{
+  "candidate_contract": {
+    "assets_type": "Assets{resources:RF.Assets,tail:List<&1,Assets>} is Type",
+    "canonical_tails": "Nil{}",
+    "combined_native_words_per_live_pair_after": 2,
+    "combined_native_words_per_live_pair_before": 46,
+    "combined_word_reduction": 44,
+    "driver": "CP.Driver<S.State,Frame>",
+    "frame_type": "Frame{sample:V.Sample,tail:List<&2,Frame>} is Data",
+    "heap_allocations_indirection_and_reference_count_cost": "unmeasured",
+    "invalid_asset_error": "ResourceScene:AssetsTail",
+    "invalid_frame_error": "ResourceScene:FrameTail",
+    "renderer": "CP.Renderer<Frame,Assets>",
+    "saved_or_gameplay_content_elided": false,
+    "source_changes_outside_new_entry_scene": "none"
+  },
+  "closure_comparison": {
+    "added": {
+      "resource_player_client.bend": "b0811c595678d3624ff3e25441ad3d18f71a7d02ce42401e259b7a9aab16be73",
+      "src/big_uint.bend": "fbe5965ee16ee3d6864def33fbc6e5e4b1b9bc7da4735d99311c1a23c65e2444",
+      "src/block_bake.bend": "3611116e0ba63915d6013463c1640f83b6b80cb08e802f93be5f7eaa4d600595",
+      "src/block_model.bend": "08108bae9b89c6768de56bdddea158f3604b36c7de4ee0408815e2c7f48b97a1",
+      "src/block_resources.bend": "34fd345b8239dde6d097e6051839a28fef475f0f6d3d147c8dc1b4adb9512fb0",
+      "src/float_parse.bend": "fe22007f0805f3c955fcaada88c1da76a3cceda74f0ff3840ae47af49a02c683",
+      "src/mesh_render.bend": "90cc444e01b6a97f814a20a22a09b67e322b1eec4afc879e1d5b9b7f57f3b16c",
+      "src/resource_frame.bend": "39c820e76998f7f718a7adcc1a25f1d3ebb454dbdd89b33712ab5f777c894baa",
+      "src/resource_json.bend": "271f9ace6304fdd42ced039ab2e7f95459eed1f20f011115f399b619f2bc6ffb",
+      "src/resource_player_scene.bend": "978558e7a741f0c019095849a57e0d098557c19582a5963f2da24f67a0260ccf",
+      "src/world_mesh.bend": "55ae3a8d0efcd1e69ac59c3db49b4a0db1359d3e655c93ca11ba04a36a72cc45",
+      "src/world_resource_frame.bend": "865a4b4687a71e5a75487b6e8ccd1cc4f9e4947a582f5a927deb7e2e42f0e3c3",
+      "src/world_visibility.bend": "599e28975027958b48da9a299a968bf837fc6a244ac6750b37866c32182dbb07"
+    },
+    "common_changed": {},
+    "first_count": 98,
+    "old_count": 85,
+    "removed": {}
+  },
+  "compiler_inspection": {
+    "checked_book_or_first_native_ir_available": false,
+    "checkout_commit": "79df8d9c40722ee9507a1e253f283b51025f9d6c",
+    "cli_source_path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/main.ts",
+    "cli_source_sha256": "d1a3e026f5014f8daec3614df8e39cf261e3fbc47769eb0916fd891bc18703c9",
+    "compiler_source_path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/comp.ts",
+    "compiler_source_sha256": "32fb66e09f608ce9e4b173384bcfeec453db8c5bc96650e26ad861bef815a8d9",
+    "dedicated_ir_dump_or_phase_profiler_cli_found": false,
+    "executable_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+    "functions_extracted_but_not_executed": true,
+    "installed_embedded_functions": {
+      "compile_book": {
+        "bytes": 5823,
+        "offset": 63394086,
+        "sha256": "53cf24d5e55dacc3f0150b23d1e6f4ce5cc38a8401a6ffccdafcf4719e6314dd"
+      },
+      "emit_clo": {
+        "bytes": 566,
+        "offset": 63377872,
+        "sha256": "c7a75962ede5e5db0dbc4bf1ecfd5817646420504b1b78e48b67aaeb30b4b5b2"
+      },
+      "flat_of": {
+        "bytes": 169,
+        "offset": 63352157,
+        "sha256": "6b2f0f3e364c30eee7f1ec35861c1d99c3527e601c6bafe6e09639fa03825316"
+      },
+      "fun_of": {
+        "bytes": 899,
+        "offset": 63349515,
+        "sha256": "f0e03e4487b3ee359a0036e025c99b7c5712d45ee061ae9a6fd7289411aaa229"
+      },
+      "lay_of": {
+        "bytes": 586,
+        "offset": 63343266,
+        "sha256": "5412ac5f61818c5c99f67e811d33f6024d95d9ba0b8cc06ec30b72c9088e56f5"
+      },
+      "lay_pack": {
+        "bytes": 354,
+        "offset": 63344158,
+        "sha256": "b178661dd407688e6dcba8809789c8a218f7fbb6777beed345dca7afbcd83995"
+      },
+      "seg_clo": {
+        "bytes": 197,
+        "offset": 63358064,
+        "sha256": "4da8dcc11df98657a6799e3a4fcf74d2ead2b7ec01d917ff3ee1b591b6163e58"
+      },
+      "seg_open": {
+        "bytes": 633,
+        "offset": 63358359,
+        "sha256": "bf750b1e2be4918a16b35e5135f212faeba957f367dfdc294fd2471da9370e10"
+      },
+      "ty_holds": {
+        "bytes": 445,
+        "offset": 63342226,
+        "sha256": "63a635176bb0db27d342c42269c33afec359f8d8fcc37a66791d8f0f9e24337b"
+      }
+    }
+  },
+  "confidence": {
+    "candidate_build_time_native_behavior_runtime_cost": "unknown",
+    "dominant_timeout_cause": "unknown",
+    "installed_layout_and_capture_rules": "high",
+    "narrowing_may_reduce_emission_work": "moderate",
+    "source_derived_word_counts": "high"
+  },
+  "date": "2026-10-04T00:53:16.994996+00:00",
+  "diagnosis_execution": {
+    "UI_actions": 0,
+    "checker_invocations": 0,
+    "client_launches": 0,
+    "compiler_emission_invocations": 0,
+    "frozen_source_runner_resource_edits": 0,
+    "input_posts": 0,
+    "kernel_invocations": 0,
+    "method": "file/source/binary reads, pure source layout arithmetic and read-only existing seal audit; separate later boxed build is excluded",
+    "native_builds": 0,
+    "permission_requests": 0,
+    "screenshots": 0
+  },
+  "document": {
+    "path": "docs/resource-player-client-diagnosis-frame-boxing.md",
+    "sha256": "700879ee8266667f43d608275e36a97b3e1ba6d27087e58c53681a0590652163"
+  },
+  "first_generation": {
+    "post_diagnosis_audit_passed": true,
+    "preflight_sha256": "e9f4d37c479ecfc7d8256d6d4992ff2bc56a0589c8d8b48a184a4d9d4baf19b1",
+    "raw_attempt_sha256": "0f970675a0adfd510f0c6eec1f4c76371a4db2c21ad81bf4db71b6dcf75ae92a",
+    "seal_sha256": "32f2817fdbd5d7f28c5a76875ab629217c0b453b9d396754906def260e37f610",
+    "selected_project_source_sha256": {
+      "resource_player_client.bend": "b0811c595678d3624ff3e25441ad3d18f71a7d02ce42401e259b7a9aab16be73",
+      "src/player_runtime.bend": "0580f77db4a9e9d570938f6c6487867cd1ea92b0a2c24246fa0f354aa0604242",
+      "src/player_scene.bend": "1887393c33a6eafc3b72e198518932c7c9465f4e6f8723d7cf5c5494a5b359ac",
+      "src/player_session.bend": "e4d515442e9446aa308dee68630ef48755565562a2441052f54d3e422416e6d2",
+      "src/resource_frame.bend": "39c820e76998f7f718a7adcc1a25f1d3ebb454dbdd89b33712ab5f777c894baa",
+      "src/resource_player_scene.bend": "978558e7a741f0c019095849a57e0d098557c19582a5963f2da24f67a0260ccf",
+      "src/world_resource_frame.bend": "865a4b4687a71e5a75487b6e8ccd1cc4f9e4947a582f5a927deb7e2e42f0e3c3",
+      "src/world_visibility.bend": "599e28975027958b48da9a299a968bf837fc6a244ac6750b37866c32182dbb07"
+    },
+    "source_dependency_count": 98,
+    "source_manifest_sha256": "c325fff8af76538a60b7a6e5394592ee3fcc53e3ae06fa11bceb623a6ea62f6c",
+    "timeout_receipt_sha256": "03cefbe6ca85d1b66417c5926913da91c9e48b932072fe7c138d83da69b00c31",
+    "unchanged": true
+  },
+  "ignored_full_reports": [
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-player-client-diagnosis/embedded-functions.full.json",
+      "sha256": "0c1f203a1b89e7f0308faa57338461064d328bb8fd2022bd1b764d7cefeb7c93"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-player-client-diagnosis/baseline-presenter-segments.full.json",
+      "sha256": "c6c56d7ac0d3ba62be4affe9fc53b7028901aa154b97764bc1596db3dc75071d"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-player-client-diagnosis/source-closure-comparison.full.json",
+      "sha256": "8549e6585998bddab74d8ef28806f09f90798a7898a650fec41cf8e42589120b"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/resource-player-client-diagnosis/layout-inference.full.json",
+      "sha256": "bc674d9b66b858ba47d8fb1fdd0206fd845134a75448b04788b48921e124110a"
+    }
+  ],
+  "layout_inference": {
+    "assets_savings": 24,
+    "combined_savings_per_live_pair": 44,
+    "derived_native_word_counts": {
+      "Assets_constructor_payload": 26,
+      "Assets_recursive": 1,
+      "BR.Catalog": 18,
+      "BR.Usage": 5,
+      "CR.Assets": 1,
+      "CR.Camera": 5,
+      "CR.Snapshot": 8,
+      "F.F64": 2,
+      "Frame_constructor_payload": 22,
+      "Frame_nonrecursive": 21,
+      "Frame_recursive": 1,
+      "K.Context": 9,
+      "K.Sprite": 7,
+      "MV.Vec3": 6,
+      "Maybe<K.Sprite>": 8,
+      "RF.Assets": 25,
+      "RF.Info": 24,
+      "RF.Palette": 4,
+      "Result<String,Frame_recursive>": 2,
+      "Result<String,V.Sample>": 22,
+      "V.Sample": 21,
+      "W.Palette": 4,
+      "WRF.DrawConfig": 7,
+      "WRF.DrawSource": 52
+    },
+    "frame_savings": 20,
+    "method": "Static source field layouts applied to inspected installed lay_of/lay_pack rules; no checked Book/native IR/compiler invocation",
+    "not_all_worker_arity_claim": true,
+    "not_heap_payload_elision": true,
+    "unmeasured_candidate": true
+  },
+  "limits": [
+    "First attempt had no completedC or compilerdiagnostic; no causal or arityfailure determination",
+    "V.Sample21 is below247 itself; added13modules and fact/ownership/fusion work remainalternativecosts",
+    "131baselineLoopworkers do not imply frame/asset live in everyworker",
+    "Static word counts are not generatedcandidate IR or machinecode measurements",
+    "No measuredcompiler speedup, nativebehavior proof, gameplay benchmark or wholeclient parity"
+  ],
+  "mechanism": {
+    "actual_first_pass_count_worker_count_arity_and_C_bytes": "unavailable",
+    "closure_capture_concatenates_live_words": true,
+    "compiler_reemits_until_fact_sets_stabilize": true,
+    "cp_loop_keeps_frame_through_draw_window_and_input": "src/client_presenter.bend:166",
+    "finite_record_flattened": true,
+    "ordinary_parameter_wide_boxing_and_closure_capture_are_different_paths": true,
+    "recursive_tail_forces_single_box": true
+  },
+  "new_root_generation_source_review": {
+    "canonical_frame_capture_matches_original_true": true,
+    "close_all_visits_nested_tail_and_siblings_by_source": true,
+    "entry": "resource_player_boxed_client.bend",
+    "entry_still_loads_RF_and_wraps_returned_owner": true,
+    "invalid_draw_returns_complete_owned_assets_by_source": true,
+    "later_granted_execution_is_separate_receipt": true,
+    "native_or_kernel_cleanup_claim": false,
+    "normal_draw_passes_exact_sample_and_unwraps_rewraps_RF_owner": true,
+    "root_reported_ordinary_counts": [
+      92,
+      79
+    ],
+    "root_reported_source_dependencies": 99,
+    "runner": "tools/test_resource_player_boxed_client.py",
+    "scene": "src/resource_player_boxed_scene.bend",
+    "sha256": {
+      "resource_player_boxed_client.bend": "567d02e32e32549ee61ad590c588d7e5d74bb8c175e968f0ed7a5a68cecd5cc8",
+      "src/resource_player_boxed_scene.bend": "c1d943f7a9fc52367ce4270ebefc86787bc3ac55c4bbfecd251b9ba6f21696c2",
+      "tools/test_resource_player_boxed_client.py": "c145890778e8f9441334d662c41689bc0fdb6cb83bc0e3ac8e920c631cbf02f7"
+    }
+  },
+  "retained_baseline": {
+    "all_max_arity": 209,
+    "all_worker_count": 4219,
+    "c_bytes": 17075035,
+    "loop_max_arity": 128,
+    "loop_worker_count": 131,
+    "presenter_max_arity": 128,
+    "presenter_worker_count": 219,
+    "sha256": "c2cd3816316e902b73e715458f309968680383482fbb0ece1cac406be0e2730a",
+    "source": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/platform-cache/sources/563ddc321001c425b6b0bb74acb2ab59f2c79edeb6d4d53b787081daeb82f61f/original.c"
+  },
+  "status": "read-only-layout-diagnosis-candidate-unmeasured",
+  "verification_obligations": [
+    "separately seal new generation and preserve original failure",
+    "ordinary affine/termination checks before granted native slot",
+    "one guarded600s build, stop first failure without comparator repair",
+    "verify actualC/transform/fullSDK/dependencies/artifact before and after when available",
+    "preserve all actual hidden18catalog/Java/queuedticks/save/restart/look/cadence/frames0/failure/recovery execution",
+    "noncanonical nested owner consumption requires its own real native coverage; no leak theorem"
+  ]
+}
