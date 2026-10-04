@@ -23,6 +23,7 @@ import ./src/campfire_authority_items.bend as CookingItems
 import ./src/furnace_authority_fuel.bend as CookingFuel
 import ./src/furnace_authority_decoder.bend as FuelDecoder
 import ./src/cooking_world.bend as CookingWorld
+import ./src/cooking_world_store.bend as CookingStore
 import ./src/cooking_block_entity_codec.bend as CookingCodec
 import ./src/cooking_world_bindings.bend as CookingBindings
 import ./src/cooking_world_bindings_loader.bend as CookingBindingsLoad
@@ -262,24 +263,36 @@ def cooking_bodies(values:List<&2,CookingStorage.Body>,state:Session.State) -> S
       cooking_bodies_next(Session.cooking_load_body(state,position,CookingStorage.nbt_limits(),bytes,Core.Developer{}),
         state => cooking_bodies(rest,state))
 
-def cooking_bodies_ready(first_peer:U32,result:Session.State & Result<&2,&2,String,Unit>) -> IO(Session.Ready):
+def cooking_delivered(first_peer:U32,result:Session.State & Result<&2,&2,String,Unit>) -> IO(Session.Ready):
+  (state,status) = result
+  match status:
+    case Fail{message}: IO.pure(Session.Ready,Session.Ready{Session.cooking_error(state,message),first_peer})
+    case Done{unit}: IO.pure(Session.Ready,Session.Ready{state,first_peer})
+
+def cooking_restored(first_peer:U32,result:Session.State & Result<&2,&2,String,Unit>) -> IO(Session.Ready):
   (state,status) = result
   match status:
     case Fail{message}: cooking_failed(state,message)
-    case Done{unit}: IO.pure(Session.Ready,Session.Ready{state,first_peer})
+    case Done{unit}: cooking_delivered(first_peer,Session.cooking_deliver_pending(state))
 
-def cooking_resumed(first_peer:U32,bodies:List<&2,CookingStorage.Body>,result:Session.State & Result<&2,&2,String,Bool>) -> IO(Session.Ready):
+def cooking_bodies_ready(first_peer:U32,pending:List<&2,CookingStore.Effect>,result:Session.State & Result<&2,&2,String,Unit>) -> IO(Session.Ready):
+  (state,status) = result
+  match status:
+    case Fail{message}: cooking_failed(state,message)
+    case Done{unit}: cooking_restored(first_peer,Session.cooking_restore_pending(state,pending))
+
+def cooking_resumed(first_peer:U32,bodies:List<&2,CookingStorage.Body>,pending:List<&2,CookingStore.Effect>,result:Session.State & Result<&2,&2,String,Bool>) -> IO(Session.Ready):
   (state,status) = result
   match status:
     case Fail{message}: cooking_failed(state,message)
     case Done{False{}}: cooking_failed(state,"terrain bootstrap did not complete its derived work budget")
-    case Done{True{}}: cooking_bodies_ready(first_peer,cooking_bodies(bodies,state))
+    case Done{True{}}: cooking_bodies_ready(first_peer,pending,cooking_bodies(bodies,state))
 
-def cooking_begun(first_peer:U32,bodies:List<&2,CookingStorage.Body>,budget:Nat,result:Session.State & Result<&2,&2,String,Unit>) -> IO(Session.Ready):
+def cooking_begun(first_peer:U32,bodies:List<&2,CookingStorage.Body>,pending:List<&2,CookingStore.Effect>,budget:Nat,result:Session.State & Result<&2,&2,String,Unit>) -> IO(Session.Ready):
   (state,status) = result
   match status:
     case Fail{message}: cooking_failed(state,message)
-    case Done{unit}: cooking_resumed(first_peer,bodies,Session.cooking_resume_loading(state,budget))
+    case Done{unit}: cooking_resumed(first_peer,bodies,pending,Session.cooking_resume_loading(state,budget))
 
 def cooking_context(catalogs:Catalogs,enabled:Map<&2,Bool>,light:Result<&2,&2,LightLoad.Error,LightRegistry.Catalog>,bindings:Result<&2,&2,String,CookingBindings.Catalog>) -> Result<&2,&2,String,Cooking.Context>:
   match catalogs light bindings:
@@ -288,37 +301,38 @@ def cooking_context(catalogs:Catalogs,enabled:Map<&2,Bool>,light:Result<&2,&2,Li
     case Catalogs{definitions,crafting,cooking,defaults,features,fuel} Done{registry} Done{catalog}:
       Done{Cooking.Context{registry,enabled,CookingWorld.Context{catalog,CookingItems.Context{cooking,defaults,features},fuel,256n},[]}}
 
-def cooking_configured(first_peer:U32,bodies:List<&2,CookingStorage.Body>,budget:Nat,state:Session.State,status:Result<&2,&2,String,Cooking.Context>) -> IO(Session.Ready):
+def cooking_configured(first_peer:U32,bodies:List<&2,CookingStorage.Body>,pending:List<&2,CookingStore.Effect>,budget:Nat,state:Session.State,status:Result<&2,&2,String,Cooking.Context>) -> IO(Session.Ready):
   match status:
     case Fail{message}: cooking_failed(state,message)
-    case Done{context}: cooking_begun(first_peer,bodies,budget,Session.cooking_begin(state,context))
+    case Done{context}: cooking_begun(first_peer,bodies,pending,budget,Session.cooking_begin(state,context))
 
 def cooking_bindings(+identity:String,count:U32,status:Result<&2,&2,String,List<&2,U32>>) -> Result<&2,&2,String,CookingBindings.Catalog>:
   match status:
     case Fail{message}: Fail{message}
     case Done{bytes}: CookingBindingsLoad.parse(identity,count,65536n,bytes)
 
-def cooking_actual(catalogs:Catalogs,first_peer:U32,bodies:List<&2,CookingStorage.Body>,terrain:Terrain,state:Session.State) -> IO(Session.Ready):
+def cooking_actual(catalogs:Catalogs,first_peer:U32,bodies:List<&2,CookingStorage.Body>,pending:List<&2,CookingStore.Effect>,terrain:Terrain,state:Session.State) -> IO(Session.Ready):
   Terrain{+count,enabled,budget} = terrain
   Session.State{player,Session.Shell{+identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation,cooking}} = state
   state : Session.State = Session.State{player,Session.Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation,cooking}}
   do IO<Session.Ready>:
     light:Result<&2,&2,LightLoad.Error,LightRegistry.Catalog> <- LightLoad.load(identity,count,1048576n,"reference/block_light_registry.tsv")
     bytes:Result<&2,&2,String,List<&2,U32>> <- startup_read("reference/cooking_world_bindings.tsv",65536n)
-    cooking_configured(first_peer,bodies,budget,state,cooking_context(catalogs,enabled,light,cooking_bindings(identity,count,bytes)))
+    cooking_configured(first_peer,bodies,pending,budget,state,cooking_context(catalogs,enabled,light,cooking_bindings(identity,count,bytes)))
 
-def cooking_terrain(catalogs:Catalogs,first_peer:U32,bodies:List<&2,CookingStorage.Body>,result:Session.State & Result<&2,&2,String,Terrain>) -> IO(Session.Ready):
+def cooking_terrain(catalogs:Catalogs,first_peer:U32,bodies:List<&2,CookingStorage.Body>,pending:List<&2,CookingStore.Effect>,result:Session.State & Result<&2,&2,String,Terrain>) -> IO(Session.Ready):
   (state,status) = result
   match status:
     case Fail{message}: cooking_failed(state,message)
-    case Done{observed}: cooking_actual(catalogs,first_peer,bodies,observed,state)
+    case Done{observed}: cooking_actual(catalogs,first_peer,bodies,pending,observed,state)
 
 # One bootstrap unit per acquisition/cell/release and one discovery unit per
 # loaded section. The budget scales with the actual terrain; it is not a world
-# size limit. All physical saved bodies are admitted before ticks/listeners.
-def cooking_initialized(catalogs:Catalogs,bodies:List<&2,CookingStorage.Body>,ready:Session.Ready) -> IO(Session.Ready):
+# size limit. All physical saved bodies are admitted before restoring/delivering
+# the saved ordered intent queue and before ticks/listeners.
+def cooking_initialized(catalogs:Catalogs,bodies:List<&2,CookingStorage.Body>,pending:List<&2,CookingStore.Effect>,ready:Session.Ready) -> IO(Session.Ready):
   Session.Ready{state,first_peer} = ready
-  cooking_terrain(catalogs,first_peer,bodies,terrain(state))
+  cooking_terrain(catalogs,first_peer,bodies,pending,terrain(state))
 
 def checked_options(result:Result<&2,&2,String,CLI.Options>) -> IO(CLI.Options):
   match result:
@@ -455,7 +469,7 @@ def fixture_loaded(+options:CLI.Options,config:Config,tables:Motion.Tables,catal
     stored : Persistence.Ready<Record.Record> <- Persistence.load_with(~Record.Record,~Storage.codec(),~Session.operations(),Storage.limits())
     ready : Session.Ready <- Session.new(stored,tables)
     initialized : Session.Ready <- Scene.initialize(ready)
-    cooking : Session.Ready <- cooking_initialized(catalogs,[],initialized)
+    cooking : Session.Ready <- cooking_initialized(catalogs,[],[],initialized)
     started(options,config,Scene.run_requested(cooking,CLI.running(options)))
 
 def crafting_reserved(control:Bool,+config:Config,context:CraftingSession.Context,
@@ -473,17 +487,17 @@ def crafting_started(+options:CLI.Options,config:Config,context:CraftingSession.
   Session.Ready{state,first_peer} = ready
   crafting_reserved(control,config,context,Session.reserve_local_player(state))
 
-def profile_adopted(+options:CLI.Options,config:Config,settings:Generation.Settings,context:CraftingSession.Context,catalogs:Catalogs,adopted:Session.Ready & List<&2,CookingStorage.Body>) -> IO(Unit):
-  (ready,bodies) = adopted
+def profile_adopted(+options:CLI.Options,config:Config,settings:Generation.Settings,context:CraftingSession.Context,catalogs:Catalogs,adopted:Session.Ready & List<&2,CookingStorage.Body> & List<&2,CookingStore.Effect>) -> IO(Unit):
+  (ready,bodies,pending) = adopted
   do IO<Unit>:
     initialized : Session.Ready <- Scene.initialize_generated(ready,settings)
-    cooking : Session.Ready <- cooking_initialized(catalogs,bodies,initialized)
+    cooking : Session.Ready <- cooking_initialized(catalogs,bodies,pending,initialized)
     crafting_started(options,config,context,Scene.run_requested(cooking,CLI.running(options)))
 
 def profile_loaded(codec:Persistence.Codec<CookingStorage.Saved>,options:CLI.Options,config:Config,tables:Motion.Tables,settings:Generation.Settings,context:CraftingSession.Context,catalogs:Catalogs) -> IO(Unit):
   do IO<Unit>:
     stored : Persistence.Ready<CookingStorage.Saved> <- Persistence.load_codec(~CookingStorage.Saved,~Session.cooking_inventory_operations(),codec,CookingStorage.limits())
-    adopted : Session.Ready & List<&2,CookingStorage.Body> <- Session.new_cooking_inventory(stored,tables)
+    adopted : Session.Ready & List<&2,CookingStorage.Body> & List<&2,CookingStore.Effect> <- Session.new_cooking_inventory(stored,tables)
     profile_adopted(options,config,settings,context,catalogs,adopted)
 
 def profile_definitions(+options:CLI.Options,config:Config,tables:Motion.Tables,+definitions:ItemDefinitions.Catalog,context:CraftingSession.Context,catalogs:Catalogs) -> IO(Unit):
