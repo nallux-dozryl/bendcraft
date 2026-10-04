@@ -1,0 +1,158 @@
+{
+  "status": "PRIVATE_CANDIDATE_VERIFIED_READY_FOR_016",
+  "confidence": {
+    "observation_defect": "high",
+    "cache_ownership_correction": "high",
+    "actor_memory_or_speed_effect": "unknown"
+  },
+  "original_checker": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/bend.ts",
+    "bytes": 137761,
+    "sha256": "7deae3693eb896f33c73867081b99d2c6f3ed3b57e77e55eb5f6260840dd0e63"
+  },
+  "original_compiler": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/comp.ts",
+    "bytes": 185829,
+    "sha256": "32fb66e09f608ce9e4b173384bcfeec453db8c5bc96650e26ad861bef815a8d9"
+  },
+  "private_compiler": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/actor-compiler-memory-001/comp_instrumented.ts",
+    "bytes": 191680,
+    "sha256": "d2e149a6c97c6f57af8bb8c2bc86b4203a933cf18e430916efe40f456e818f4a"
+  },
+  "retained015": {
+    "source": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/playable-client-actor004-source-015.json",
+      "bytes": 38745,
+      "sha256": "09732f19a72476711f58ff7a9691389c51300b58382408533720a91dfece22e4"
+    },
+    "producer": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-015/receipt.json",
+      "bytes": 7604,
+      "sha256": "ef5b6c3b97ed04e6369b67500e4d7035a062c7a7f274b098b48d6b64f337c77d"
+    },
+    "declared_count": 7123,
+    "loaded_sources": 205,
+    "termination": "producer_stall",
+    "seconds": 283.319827250205,
+    "final_observed_phase": "pass_begin 3",
+    "pass1_seconds": 43.8350585,
+    "pass2_seconds": 67.13427275,
+    "final_observed_heap_bytes": 7452295040,
+    "complete_C": false,
+    "group_absent": true
+  },
+  "findings": [
+    {
+      "finding": "Retained __bend_diag filters every emit_begin/open/end despite their call sites; 90 seconds without recorded progress establishes a long pass, not a stalled function. Actual function and nested stage are unobservable in retained015.",
+      "confidence": "high"
+    },
+    {
+      "finding": "TELES is a compiler-global strong Map keyed by HTerm and survives memo_gc; transient instantiated type and telescope closures stay rooted across emitted functions/passes. Candidate uses WeakMap, preserving memo results while the key is otherwise live. Effect on actual015 measured memory not yet established.",
+      "confidence": "high"
+    }
+  ],
+  "delta": [
+    "WeakMap telescope keys reset once at file_book start; memo accepts get/set cache interface. No checked declaration/order/type/field/quantity modification.",
+    "Actual emitter begin/open/end plus native helper begin/end and real work counters; no timer-only heartbeat.",
+    "After previous pass outputs and function-local memo trees are discarded, explicit GC at pass reset; between complete declarations only heap>=6GiB, allocation>=256MiB over last post-GC floor and>=10s since last collection."
+  ],
+  "verification": {
+    "status": "PASS",
+    "receipt": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/actor-compiler-memory-001/verification.json",
+      "bytes": 5830,
+      "sha256": "eeafd9a2133c9e1f22c8f85ac11bcd29db4acec4c4d705a9a2e071fd069d9a47"
+    },
+    "source_checked_graphs": 10,
+    "exact_C_equal_graphs": 9,
+    "native_independent_expected_outputs": 9,
+    "same_expected_emission_refusal": "an open Array element type",
+    "GC_progress_smoke": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/actor-compiler-memory-001/progress-smoke-process-002/result.full.json",
+      "bytes": 1133,
+      "sha256": "59017d10a98fa6eeb12b6771aeed07e70e4df52b385083bc35553e5d65bbd40e"
+    },
+    "C_equal_under_GC": true,
+    "meaningful_telemetry_rows": 68,
+    "smoke_first_failure": "Observer initially filtered boundary_gc records; primary phase filter repaired, successful002 retained. C already identical."
+  },
+  "actual_run": {
+    "status": "not launched by instruction: await substantively reduced current graph for lead016",
+    "runner": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/actor-compiler-memory-001/actual.py",
+      "bytes": 541,
+      "sha256": "c5a1c49815d0d2e313969297cb59b312e65347c1aff500666eccdd56ff27c4ce"
+    },
+    "manifest": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/actor-compiler-memory-001/manifest.json",
+      "bytes": 38043,
+      "sha256": "30568c655109bf4224b66a37e3ab97192b327f435d5af5ec0cc317b39fafe194"
+    },
+    "limits": {
+      "heap_mib": 8192,
+      "sampled_rss_bytes": 8589934592,
+      "total_seconds": 600
+    },
+    "command": [
+      "/Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/actor-compiler-memory-001/actual.py"
+    ],
+    "silence_only_cutoff_removed": true
+  },
+  "scope": "Private tested compiler/producer diagnosis for exact frozen015. Does not complete source-current actor after concurrent product changes, native integration, kernel proof, gameplay acceptance, or full26.3 goal.",
+  "private_documentation": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/actor-compiler-memory-001/README.md",
+    "bytes": 3581,
+    "sha256": "11fdacbf5b3353d53a77209f74d62451fcc836b7e7ca37234ffd38bc893ff35a"
+  },
+  "candidate_files": [
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/actor-compiler-memory-001/comp_instrumented.ts",
+      "bytes": 191680,
+      "sha256": "d2e149a6c97c6f57af8bb8c2bc86b4203a933cf18e430916efe40f456e818f4a"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/actor-compiler-memory-001/comp_baseline.ts",
+      "bytes": 187981,
+      "sha256": "81086cf817582f50dd8ca65e1afc7aea7767e070c5864c610b2772d3ef1fe41f"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/actor-compiler-memory-001/diagnose.mjs",
+      "bytes": 3161,
+      "sha256": "0fa7123d0de3334c92da0a522ce91f43f9cac8014161dfe2ee06d05b91bb78df"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/actor-compiler-memory-001/run.py",
+      "bytes": 2331,
+      "sha256": "3dc542c1e956b42ea1052344f40cdf94dd2b33a68ec7387113e16952a91e5fbd"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/actor-compiler-memory-001/actual.py",
+      "bytes": 541,
+      "sha256": "c5a1c49815d0d2e313969297cb59b312e65347c1aff500666eccdd56ff27c4ce"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/actor-compiler-memory-001/verify.py",
+      "bytes": 1643,
+      "sha256": "d2cc97d2255809a80ca6e69a4c9d31b1d4f1a39592a904b144a1acfec3b744b1"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/actor-compiler-memory-001/equivalence.mjs",
+      "bytes": 2071,
+      "sha256": "a2c5d1ebd1b79eecf03ae562a96cbbb0933c00854a6c99b0a1151c63a25872e7"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/actor-compiler-memory-001/fixtures.json",
+      "bytes": 3884,
+      "sha256": "abf373ec22d486d5493106ca612d9b453fd6f9a35fc0ef945e814086085199b6"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/actor-compiler-memory-001/progress-smoke.mjs",
+      "bytes": 1053,
+      "sha256": "e10b303e81eed53a61aa6ba486fc12a8ed8c73bff255e4b1fab2bc8bac72e31c"
+    }
+  ],
+  "original_compiler_unchanged": true,
+  "original_checker_unchanged": true
+}
