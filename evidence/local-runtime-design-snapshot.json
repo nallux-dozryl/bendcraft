@@ -1,0 +1,586 @@
+{
+  "checks": {
+    "all_phase_state_deltas_reconstruct_after_exactly": true,
+    "all_snapshot_file_bytes_unchanged_during_audit": true,
+    "both_shift_histories_checked": true,
+    "canonical_compact_phase_digest_matches": true,
+    "no_production_behavior_executed": true,
+    "scheduled_failure_counter_increment_checked": true,
+    "seven_current_source_receipt_hash_bindings_checked": true,
+    "two_complete_phase_raw_reports_size_and_sha256_checked": true
+  },
+  "confidence": {
+    "executed_new_runtime": "unknown",
+    "measured_order": "high",
+    "proposed_composition": "moderate"
+  },
+  "dependencies": {
+    "FallHistory": {
+      "kernel_status": "passed",
+      "native_status": "passed_neutral_history_projection",
+      "scope": "Full imported production source plus twelve stated helper laws; not universal Minecraft lifecycle parity"
+    },
+    "LI": {
+      "chain_scope": "Native LI key/vector/timer/crouch/bob and final sprint cache feeds next control phase; next authoritative Body/PT metadata comes from direct Java observations. No native full physical tick trajectory claim.",
+      "kernel_pass_stated_laws": true,
+      "status": "passed"
+    },
+    "LM": {
+      "counts": {
+        "actual_admitted_native_moves": 74,
+        "actual_whole_moves": 75,
+        "backoff_ordered_reads": 4523,
+        "backoff_queries": 187,
+        "collision_queries": 102,
+        "collision_shape_yields": 247,
+        "gate_skips": 7,
+        "measured_rejections": 1,
+        "minor_calls": 22,
+        "outside_projection_recordMovement_queries": 1,
+        "policy_owner_recoveries": 23,
+        "registry_remap_histories": 4,
+        "registry_remap_moves": 14,
+        "support_queries": 63
+      },
+      "kernel": {
+        "cap_seconds": 60,
+        "exit_code": 1,
+        "full_harness_attempts": 1,
+        "retry_or_separate_diagnostic": false,
+        "scope": "TypeScript/BendTT mismatch with no named location/law; semantic proof unverified, ordinary3production laws only",
+        "seconds": 18.240721
+      },
+      "status": "frozen-native-verified-independent-proof-unverified"
+    },
+    "LTW": {
+      "scope": "local aiStep motion/metadata; old TW path",
+      "status": "passed",
+      "whole_module_kernel_verified": false
+    },
+    "MH": {
+      "kernel": {
+        "harness": "not-attempted; conditional lead grant requires successful source first",
+        "laws_independent_verified": false,
+        "laws_ordinary_checked": 6,
+        "retry_or_projection": false,
+        "source": "unverified compiler/kernel mismatch",
+        "source_exit_code": 1,
+        "source_seconds": 20.686065
+      },
+      "root_retained_output_audit": "pending at design assignment; separate root audit not executed here",
+      "status": "frozen_native_passed_independent_kernel_unverified"
+    },
+    "PlayerRuntime": {
+      "scope": "plain Player.aiStep facade",
+      "status": "native_behavior_passed_runtime_kernel_unverified"
+    },
+    "Pose": {
+      "actual_counts": {
+        "actual_fit_queries": 86,
+        "actual_update_cases": 46,
+        "admitted_cases": 44,
+        "metadata_rows": 54,
+        "plain_observer_compared_updates": 92,
+        "refreshes": 28
+      },
+      "counts": {
+        "actual_fit_queries": 86,
+        "actual_updates": 46,
+        "admitted_updates": 44,
+        "metadata_reference_rows": 54,
+        "native_exact_output_rows": 243,
+        "native_metadata_or_refusals": 18,
+        "rejection_original_recovery_cases": 29,
+        "scale_refusals": 2,
+        "source_laws_in_full_import_kernel": 4
+      },
+      "kernel_scope": "One installed full-import harness mathematical verdict; separate from native reference parity. No projection or repeated source verdict.",
+      "kernel_status": "passed",
+      "scope": "Stable adult unscaled client conditional pose replay, explicit actual fit observations; no world/clock/lifecycle/full LocalPlayer tick claim.",
+      "status": "passed"
+    },
+    "Rotation": {
+      "kernel_status": "passed",
+      "native_status": "passed_fuel_bounded_finite_camera_projection",
+      "scope": "Full imported production source and eleven stated helper laws; not universal Minecraft tick parity"
+    },
+    "TH": {
+      "debug_only": {
+        "actual_returns": 3,
+        "cases": 3,
+        "neutral_steps": 3,
+        "queries": 16,
+        "ray_statuses": {
+          "Miss": 1,
+          "NotRequired": 2
+        },
+        "reads": 282,
+        "steps": 3,
+        "yielded_shapes": 8
+      },
+      "source_not_frozen_by_this_task": true,
+      "status": "provisional ordinary prepared; broad direct Java extraction/native/kernel pending"
+    }
+  },
+  "design_decisions": [
+    "Separate C.step, Entity.commonTick and LP.tick; no Core.commonTick API exists.",
+    "MH owns sole world/body/support/minor/history; Tables external transient owner.",
+    "Controller owns physical buttons and sole four PL degree fields; LI owns prior sampled cache.",
+    "LI.prepare once; TH no decay; T.finish and P.finish each exactly once at their separate phases.",
+    "Support/minor/history internal to MH; do not append support after TH final gravity/drag.",
+    "Late pose uses current shift; authoritative F32 cached eye widens before F64 feet addition.",
+    "Propose post-commonTick local rollback anchor while retaining accepted Core step; explicit Bend extension."
+  ],
+  "file_count": 59,
+  "file_pins": {
+    "AGENTS.md": {
+      "bytes": 4890,
+      "sha256": "75537ca41c4fa38121c58b138e6c778a696238f62cfd149a7fb0045632cf698f"
+    },
+    "docs/LOCAL_COLLISION_WORLD.md": {
+      "bytes": 16695,
+      "sha256": "73c9a38eff415160a60a0cd1fcb564af4ff76187f83c347af9f928d2c2c4f15f"
+    },
+    "docs/LOCAL_INPUT.md": {
+      "bytes": 12303,
+      "sha256": "1609d5b5dd4a721c4206748e6bf41cbf3f2ff8dc6b7b6c1dc0606861653457cc"
+    },
+    "docs/LOCAL_MOVE_HISTORY.md": {
+      "bytes": 12971,
+      "sha256": "377dd2777829ba323bd0d3a193ab7e1c55151ad9023f2fed1270dea2fba337fe"
+    },
+    "docs/LOCAL_MOVE_WORLD.md": {
+      "bytes": 15449,
+      "sha256": "bb590d55bce31c1a330e2b16e7f668372624a3d3ea2ca036a52102c5fa892322"
+    },
+    "docs/LOCAL_RUNTIME_DESIGN.md": {
+      "bytes": 35346,
+      "sha256": "3020f171bc1aab739c3715833efd355233dabf2ede0fcc3cc5d44fb0528b25f2"
+    },
+    "docs/LOCAL_TICK_WORLD.md": {
+      "bytes": 12674,
+      "sha256": "2f930f6ad2177b79967ea51b88d746b1514c60438cac6a6a37c75e1a44d1297d"
+    },
+    "docs/LOCAL_TRAVEL_HISTORY.md": {
+      "bytes": 9354,
+      "sha256": "468ed9f014cd41418e444299c2dfa78fdc0f2f2c84176eec92af3d189b7f2622"
+    },
+    "docs/MOVEMENT.md": {
+      "bytes": 16883,
+      "sha256": "3974808a3227515befbc97cfb4cc371fa94284f6cf76a987c0eb78a1a080bc01"
+    },
+    "docs/PLAYER_CONTROLS.md": {
+      "bytes": 9520,
+      "sha256": "ef77f00745a171cd3cc69dfa8e82d28613ff57bab1eacf3fc1912ddd6578f196"
+    },
+    "docs/PLAYER_FALL_HISTORY.md": {
+      "bytes": 12078,
+      "sha256": "f111c0f7ca2cffee48bc645a9a344952e4ca87e65eba7036c9567433906b9e8e"
+    },
+    "docs/PLAYER_LOOK.md": {
+      "bytes": 9243,
+      "sha256": "7faaf25d2361e5130cf48d9963ab002eab4139d1e31607f24b710a71084156f5"
+    },
+    "docs/PLAYER_POSE.md": {
+      "bytes": 11442,
+      "sha256": "cbfbcf33b47158917286d72b8699ca1087cc055428a9101d4ed0d08dd0ce011e"
+    },
+    "docs/PLAYER_ROTATION_TICK.md": {
+      "bytes": 11205,
+      "sha256": "0dd6416fb8bbfc9baa370ffdc2ed1930a75c86a37e94fc20394532d47a95e2af"
+    },
+    "docs/PLAYER_RUNTIME.md": {
+      "bytes": 7293,
+      "sha256": "734bf86c4d658f86291b239f759236c9b9d406652a1ef2c47a040d9052f051b2"
+    },
+    "docs/PLAYER_TICK_PHASES.md": {
+      "bytes": 18282,
+      "sha256": "30b8c807d7d73e0cb8e8b944a488bdfa772f1e7fa80335f747a51d18b3d36756"
+    },
+    "docs/TRAVEL.md": {
+      "bytes": 13348,
+      "sha256": "cd1790374a96ccf03e6fd662fee39ccda1617153ba1ed639b43342c6f5e9576c"
+    },
+    "evidence/local-input-verification.json": {
+      "bytes": 33880,
+      "sha256": "ff6f8ba319e0f854e61f8d75b04dafdda9f882c050a45d718365eebccb816839"
+    },
+    "evidence/local-move-history-handoff.json": {
+      "bytes": 8739,
+      "sha256": "7b7f76cd6c8744d2e9551c2e2cff125e2c281b79e82969f42f8ac2c8f9626d61"
+    },
+    "evidence/local-move-world-handoff.json": {
+      "bytes": 7015,
+      "sha256": "77ac5ec2836b7f23deddbb85cc138dc2e9dd0b07562c274a68846c45ecb3b06f"
+    },
+    "evidence/local-tick-world-verification.json": {
+      "bytes": 24869,
+      "sha256": "b74817561810032667667ef5fb05a340134c3eaf2942e53bbd630ab819fe59b0"
+    },
+    "evidence/local-travel-history-reference-debug.json": {
+      "bytes": 22344,
+      "sha256": "6c1b219ae5dc8efb56cdcc0ae2c3ec57aaddd39335a07bb0eb7d0df2c886c7cb"
+    },
+    "evidence/player-fall-history-kernel.json": {
+      "bytes": 1439,
+      "sha256": "74e693039b04b2a7a22c5997dcf43a183909f0837adb4a46313be75d93e359ac"
+    },
+    "evidence/player-fall-history-native.json": {
+      "bytes": 27110,
+      "sha256": "12f5799f775eaad461055a1c5adbdb39ceccd9e3490eda663f3ae214a2547857"
+    },
+    "evidence/player-pose-kernel.json": {
+      "bytes": 4207,
+      "sha256": "519afeb7fa47d7daf23ddae893cc91f4633a1544eea5c982f7395a8ce2bc5fc6"
+    },
+    "evidence/player-pose-preparation.json": {
+      "bytes": 5337,
+      "sha256": "c628af7a2dfb4fd5b8a64ec9da1d97578ed1baddfd5983bfed4269e0b76ea492"
+    },
+    "evidence/player-pose-reference.json": {
+      "bytes": 27563,
+      "sha256": "99a3fd9ed0acfe5b70a70948b1d6fb7ab8cd92e0483af4a30ad8fbb6c8ceca03"
+    },
+    "evidence/player-pose-verification.json": {
+      "bytes": 6396,
+      "sha256": "3401a3d19834d5502eb63a2861f80a5f21b082a3e41d234fd19ffbd02ea3dacd"
+    },
+    "evidence/player-rotation-tick-kernel.json": {
+      "bytes": 2768,
+      "sha256": "94f3dfbaadd29e42cbc8fcff65c743a681f5435f496cca2c0a21158772adc8a2"
+    },
+    "evidence/player-rotation-tick-native.json": {
+      "bytes": 40833,
+      "sha256": "3e6c2768f640ff7c48a6d00a7b9255af13cbf8fb7f8b29a33be7a0d02862b8bf"
+    },
+    "evidence/player-runtime-verification.json": {
+      "bytes": 38002,
+      "sha256": "f74cdf4d0471bf7636566189f5341bde1d15065c3de8b13dc4f1f22744ced737"
+    },
+    "evidence/player-tick-phases-audit.json": {
+      "bytes": 5685,
+      "sha256": "7d10ff763f123b3c76c305eb62d7ac33b3cb5e8f2e25ec6d06cdec4b2e79c0e3"
+    },
+    "evidence/player-tick-phases-bytecode.json": {
+      "bytes": 81269,
+      "sha256": "eb50b4a1a62b0dd0369d63fcb662442de9f7dae3c297abd2934cd4828a3e70e0"
+    },
+    "reference/local_move_history.json": {
+      "bytes": 9100469,
+      "sha256": "2b510ed3c932d830ed0481343ac4508cfea9e9e98dfcb7856dd2d1ce191f2f95"
+    },
+    "reference/player_fall_history.json": {
+      "bytes": 1558776,
+      "sha256": "831c2f369cb4b433f62885ab25594db673468f0f80702f25834e786e5ebed320"
+    },
+    "reference/player_pose.json": {
+      "bytes": 310259,
+      "sha256": "9990b80a6d23a6a6463728bcb0ca9876cc9b8e7e90e374814f34aad78e8914a3"
+    },
+    "reference/player_rotation_tick.json": {
+      "bytes": 274992,
+      "sha256": "f6ba57815820b5c21cf109d3b3df8c98d448fe511153f9431031adad4c65250b"
+    },
+    "reference/player_tick_phases.json": {
+      "bytes": 224105,
+      "sha256": "a0ed9d126facbedaa4b2336a2502d04cb8c447e60789c3037e5ea1f40ac7cc65"
+    },
+    "src/client_world.bend": {
+      "bytes": 33218,
+      "sha256": "05040abf35b2b9ceaf87fed5c48f8d074d211750a59ab00fa6ff08e60a9ea5d7"
+    },
+    "src/core.bend": {
+      "bytes": 11690,
+      "sha256": "c1ee5a5390cdac0452c9c6cd3b0584a68ef68b5b0dfec867491c27e67ecadd4e"
+    },
+    "src/local_collision.bend": {
+      "bytes": 21060,
+      "sha256": "7b2b8301246f3e385a038eca81790fa7d6c4285113a069e040d968e105be5cc0"
+    },
+    "src/local_collision_world.bend": {
+      "bytes": 14887,
+      "sha256": "4e6e46737890c1203fb66ee95859e26825b306a6db865a1869e8663a7b9a2346"
+    },
+    "src/local_input.bend": {
+      "bytes": 15908,
+      "sha256": "5e3555fdb06258a76478a32d32332455ad186ec956607ce981e198a3c28ca02e"
+    },
+    "src/local_move_history.bend": {
+      "bytes": 7117,
+      "sha256": "21eb495a38fd767c412a860314760e5c237ac9425ce17ca78232b5892f09c11f"
+    },
+    "src/local_move_world.bend": {
+      "bytes": 17815,
+      "sha256": "3823c3e6d4ebd0ab8743792aad3bf0cacae7a081a5791bd23d888037bd569f81"
+    },
+    "src/local_tick_world.bend": {
+      "bytes": 9220,
+      "sha256": "baa67724b6b5d5e98d3fdba3d733e753d64e4b6c5109e2263cadd003ee721a2c"
+    },
+    "src/local_travel_history.bend": {
+      "bytes": 14135,
+      "sha256": "32016fde52830ef6b8ca21cee4c6170c2596943c89c81cd6589190c678a1f00c"
+    },
+    "src/player_codec.bend": {
+      "bytes": 16028,
+      "sha256": "98a5d7e8e11bb1a811c4e3b1e19dcee010e9f36eb15967810fbe95f4222a09a7"
+    },
+    "src/player_controls.bend": {
+      "bytes": 7489,
+      "sha256": "52e012a959078eb06b80fb17f17f6ca06d98c4d84ab0ca529164f82d03637d38"
+    },
+    "src/player_fall_history.bend": {
+      "bytes": 7052,
+      "sha256": "b181c43948cc01e66b05e0edf9dbc0338e1ebdcfecbf86a525731a07aad26db3"
+    },
+    "src/player_look.bend": {
+      "bytes": 5891,
+      "sha256": "35ec863e078e46f2c2502b975f3e9f259114aec7baac614c68ba6e46773260ca"
+    },
+    "src/player_pose.bend": {
+      "bytes": 18644,
+      "sha256": "fee092d03f01673fad7f2c5e2329dbafabc1cc2781a275e5e2e5f47380eebea0"
+    },
+    "src/player_record.bend": {
+      "bytes": 5470,
+      "sha256": "1812d954991cbce193353490d5db002f26873f364c426f497f82e7b13594235b"
+    },
+    "src/player_rotation_tick.bend": {
+      "bytes": 5811,
+      "sha256": "63ae51ac3d0f579061d21a90af4cb80ac782c56b56b7c7d867c06e309d90973b"
+    },
+    "src/player_runtime.bend": {
+      "bytes": 13737,
+      "sha256": "0580f77db4a9e9d570938f6c6487867cd1ea92b0a2c24246fa0f354aa0604242"
+    },
+    "src/player_tick.bend": {
+      "bytes": 14455,
+      "sha256": "d583f3014011313097779b69ee0fd8d77bd3ed0e1e7895b629903eb64da9699f"
+    },
+    "src/player_tick_world.bend": {
+      "bytes": 8012,
+      "sha256": "98d5fe1383351c463f3fa172ff012325864292cfa7909cf21167e6642500170b"
+    },
+    "src/travel.bend": {
+      "bytes": 11567,
+      "sha256": "717e969e3989a7a8e443b18f69c171bdc11a14130828233ce85e6cd914e1f8f1"
+    },
+    "src/travel_world.bend": {
+      "bytes": 4815,
+      "sha256": "a3c787699a9ae12d9301638d39a7abd3aa1cfeba160182b9c176797424aad682"
+    }
+  },
+  "kind": "read_only_local_runtime_integration_design",
+  "metadata_reproduce": {
+    "canonical_serialization": "json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(\",\", \":\")).encode(); no newline",
+    "command": [
+      "python3",
+      "build/local-runtime-design/audit_design.py"
+    ],
+    "ignored_script_sha256": "763b3f24bbb52d0476ed4dd227d9e31f0706316c54b427f4fdb1369b0ef9f4f2",
+    "scope": "Read and hash the pinned files; reconstruct already observed phase deltas only. This does not rerun game/native/proof verification."
+  },
+  "not_a_global_freeze": "TH is provisional; all statuses apply to these pinned files. Pose source/API are frozen and bounded native/kernel validation passed in its separately recorded generation.",
+  "owned_outputs": [
+    "docs/LOCAL_RUNTIME_DESIGN.md",
+    "evidence/local-runtime-design-snapshot.json"
+  ],
+  "phase_corpus": {
+    "case_count": 7,
+    "cases_compact_sha256": "5718e5752e8a66a9430e32b9d01a1efe728a77cc99d589ec0496837bafecb8d6",
+    "cases_full_sha256": "e2ea637186c5c695bf9d42a1437eb326e8e3e6d9b14006e7f5587e1feba6f8d3",
+    "complete_raw_observation_pins_verified": [
+      {
+        "bytes": 4297664,
+        "path": "build/player-tick-phases/final-first.full.json",
+        "sha256": "b9376a7e98d8abcedae896596fc469b72febadfb149d682430b12e560031823e"
+      },
+      {
+        "bytes": 4297664,
+        "path": "build/player-tick-phases/final-rerun.full.json",
+        "sha256": "995e3c734759f169ec460f128bd2ad8b3224148c232b2ebbac5426e1d8f4944f"
+      }
+    ],
+    "distinct_entry_calls": 16,
+    "failure_count": 1,
+    "failures": [
+      {
+        "after_count": 9,
+        "before_count": 8,
+        "case": "scheduled_sprint_jump",
+        "error_class": "java.lang.NoSuchFieldError",
+        "error_message": "Class net.minecraft.client.Minecraft does not have member field 'net.minecraft.client.renderer.GameRenderer gameRenderer'",
+        "last_phase": "base_tick_entry",
+        "step": 1
+      }
+    ],
+    "new_receiver_execution": false,
+    "phase_snapshots": 540,
+    "shift_phase_projection": [
+      {
+        "after": {
+          "cached_eye_height_f32_bits": "3fa28f5c",
+          "height_f32_bits": "3fc00000",
+          "pose": "CROUCHING",
+          "tick_count_u32": 1
+        },
+        "case": "scheduled_shift",
+        "current_shift": true,
+        "move": {
+          "cached_eye_height_f32_bits": "3fcf5c29",
+          "crouching": false,
+          "height_f32_bits": "3fe66666"
+        },
+        "step": 0
+      },
+      {
+        "after": {
+          "cached_eye_height_f32_bits": "3fa28f5c",
+          "height_f32_bits": "3fc00000",
+          "pose": "CROUCHING",
+          "tick_count_u32": 2
+        },
+        "case": "scheduled_shift",
+        "current_shift": true,
+        "move": {
+          "cached_eye_height_f32_bits": "3fa28f5c",
+          "crouching": true,
+          "height_f32_bits": "3fc00000"
+        },
+        "step": 1
+      },
+      {
+        "after": {
+          "cached_eye_height_f32_bits": "3fcf5c29",
+          "height_f32_bits": "3fe66666",
+          "pose": "STANDING",
+          "tick_count_u32": 3
+        },
+        "case": "scheduled_shift",
+        "current_shift": false,
+        "move": {
+          "cached_eye_height_f32_bits": "3fa28f5c",
+          "crouching": true,
+          "height_f32_bits": "3fc00000"
+        },
+        "step": 2
+      },
+      {
+        "after": {
+          "cached_eye_height_f32_bits": "3fcf5c29",
+          "height_f32_bits": "3fe66666",
+          "pose": "STANDING",
+          "tick_count_u32": 4
+        },
+        "case": "scheduled_shift",
+        "current_shift": false,
+        "move": {
+          "cached_eye_height_f32_bits": "3fcf5c29",
+          "crouching": false,
+          "height_f32_bits": "3fe66666"
+        },
+        "step": 3
+      },
+      {
+        "after": {
+          "cached_eye_height_f32_bits": "3fa28f5c",
+          "height_f32_bits": "3fc00000",
+          "pose": "CROUCHING",
+          "tick_count_u32": 40
+        },
+        "case": "direct_shift",
+        "current_shift": true,
+        "move": {
+          "cached_eye_height_f32_bits": "3fcf5c29",
+          "crouching": false,
+          "height_f32_bits": "3fe66666"
+        },
+        "step": 0
+      },
+      {
+        "after": {
+          "cached_eye_height_f32_bits": "3fa28f5c",
+          "height_f32_bits": "3fc00000",
+          "pose": "CROUCHING",
+          "tick_count_u32": 40
+        },
+        "case": "direct_shift",
+        "current_shift": true,
+        "move": {
+          "cached_eye_height_f32_bits": "3fa28f5c",
+          "crouching": true,
+          "height_f32_bits": "3fc00000"
+        },
+        "step": 1
+      },
+      {
+        "after": {
+          "cached_eye_height_f32_bits": "3fcf5c29",
+          "height_f32_bits": "3fe66666",
+          "pose": "STANDING",
+          "tick_count_u32": 40
+        },
+        "case": "direct_shift",
+        "current_shift": false,
+        "move": {
+          "cached_eye_height_f32_bits": "3fa28f5c",
+          "crouching": true,
+          "height_f32_bits": "3fc00000"
+        },
+        "step": 2
+      },
+      {
+        "after": {
+          "cached_eye_height_f32_bits": "3fcf5c29",
+          "height_f32_bits": "3fe66666",
+          "pose": "STANDING",
+          "tick_count_u32": 40
+        },
+        "case": "direct_shift",
+        "current_shift": false,
+        "move": {
+          "cached_eye_height_f32_bits": "3fcf5c29",
+          "crouching": false,
+          "height_f32_bits": "3fe66666"
+        },
+        "step": 3
+      }
+    ],
+    "snapshot_reconstruction_exact": true,
+    "successful_calls": 15
+  },
+  "pin": "26.3",
+  "schema_version": 1,
+  "scope": "Sole-owner state, exact bounded phase dependencies, proposed transaction policy; no production execution or parity verdict.",
+  "snapshot_stable_during_this_audit": true,
+  "source_matches_existing_receipt": {
+    "FallHistory": true,
+    "LI": true,
+    "LM": true,
+    "MH": true,
+    "Pose_final": true,
+    "Pose_preparation": true,
+    "Rotation": true
+  },
+  "status": "design_written_metadata_audit_passed_runtime_unimplemented",
+  "task_actions": {
+    "commits": 0,
+    "compiler_launches": 0,
+    "java_launches": 0,
+    "metadata_only": "Python stdlib JSON/hash/phase reconstruction; no game expected arithmetic or unfinished module imports.",
+    "native_launches": 0,
+    "production_edits": false,
+    "test_edits": false,
+    "window_or_ui_launches": 0
+  },
+  "unresolved_prerequisites": [
+    "TH broad actual oracle/native/kernel freeze; Pose actual fit/lifecycle supplier integration.",
+    "World-backed pre-control fits, support/friction/jump attributes, reset clips and late Pose queries.",
+    "Entity old position/interpolation/invulnerability and broader head/body lifecycle.",
+    "Base tick sprint particles, arbitrary block effects/actor pushes/equipment/presentation.",
+    "Forced crawl and other LI/travel modes; damage/reset hits/fluids/flight.",
+    "Separate network sendChanges and outer Minecraft/client/server clock correspondence.",
+    "Pose-aware view adapter and versioned complete local record/restore contract.",
+    "Required reset ray needs collision-resolved pre-position staging/callback; frozen MH/TH Clip is supplied before execution."
+  ]
+}
