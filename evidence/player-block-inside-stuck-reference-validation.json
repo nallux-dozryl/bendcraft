@@ -1,0 +1,33 @@
+{
+  "generator": {
+    "bytes": 24911,
+    "file": "reference_player_block_inside_stuck_probe.py",
+    "sha1": "beeaca73c4e0ce54cc631a15a7fb62ae36a9cdcb",
+    "sha256": "558b0e3595c28382f814e0ae131dee09198fb290c0915c75bef02e23b6b53089"
+  },
+  "independent_observations_checked": 2,
+  "official_source_runtime_libraries_checked": true,
+  "pin": "26.3",
+  "reference": {
+    "bytes": 2215981,
+    "file": "player_block_inside_stuck.json",
+    "sha1": "a2a128d72d9790194462033806f3568b68c43362",
+    "sha256": "3b1a0f1965a823aa023c6086cdc40a6fec36744a3862fda48fc335830072b86a"
+  },
+  "reproduce": "PYTHONDONTWRITEBYTECODE=1 python3 tools/reference_player_block_inside_stuck_probe.py --verify-existing",
+  "schema_version": 1,
+  "status": "passed",
+  "validation": {
+    "actual_impulse_reset_calls_observed": 155,
+    "actual_inside_shapes_checked": 225,
+    "case_count": 142,
+    "oracle_compared": true,
+    "receiver_counts": {
+      "bee": 2,
+      "fox": 2,
+      "nonliving": 14,
+      "player": 124
+    },
+    "step_count": 254
+  }
+}

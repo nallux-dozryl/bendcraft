@@ -1,0 +1,26 @@
+{
+  "pin": "26.3",
+  "raw_directory": "build/player-block-inside-stuck/reference/attempt-001",
+  "raw_files": {
+    "independent-1-input.jsonl": {
+      "bytes": 83050,
+      "sha256": "45f4d363041064a31bd53c01c426b2f6a07e8a64a0428f08e0de0b8127366ff1"
+    },
+    "independent-1-observed.jsonl": {
+      "bytes": 4358,
+      "sha256": "3049ef383eadc2a6bc13a6eb3748c3effe2279e15390c0494dc0f200b77f6c44"
+    },
+    "independent-1.log": {
+      "bytes": 1241,
+      "sha256": "4c4293395155494ecaf4c0eeaf7485d89c27ee84d86ddad0fa43c249c765eb36"
+    },
+    "javac.log": {
+      "bytes": 219,
+      "sha256": "334fae457cbf7fcb6d5ac99b2b23342ab4999ffa5a5015c9c34e18b4eefb4d2a"
+    }
+  },
+  "reason": "Original ItemStack leather-boots constructor rejected unbound item components. Added actual DATA_COMPONENT_INITIALIZERS binding from original VanillaRegistries, matching existing pinned item oracle; no callback algorithm changed.",
+  "schema_version": 1,
+  "stage": "actual-java-equipment-setup",
+  "status": "failed"
+}

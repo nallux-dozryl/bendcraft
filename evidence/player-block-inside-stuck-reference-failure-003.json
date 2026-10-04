@@ -1,0 +1,26 @@
+{
+  "pin": "26.3",
+  "raw_directory": "build/player-block-inside-stuck/reference/attempt-003",
+  "raw_files": {
+    "independent-1-input.jsonl": {
+      "bytes": 93638,
+      "sha256": "4aad4c98091c77bcf3f9d165db7278086dca77f3ba2146fd227cc02de11d0697"
+    },
+    "independent-1-observed.jsonl": {
+      "bytes": 458136,
+      "sha256": "1948ab5b5d92014d718d1867006878724cd975316c5e20f4d4786ac6e45a4fb1"
+    },
+    "independent-1.log": {
+      "bytes": 1095,
+      "sha256": "c47a14215f766762e01658cf45ac1bfcc7d88d7d74dc7bcab8411c6260a78c7d"
+    },
+    "javac.log": {
+      "bytes": 219,
+      "sha256": "334fae457cbf7fcb6d5ac99b2b23342ab4999ffa5a5015c9c34e18b4eefb4d2a"
+    }
+  },
+  "reason": "Berry stationary worlds were emitted as objects instead of one-element arrays. Corrected generator array topology; 84 direct/repeated callback cases completed before first malformed world.",
+  "schema_version": 1,
+  "stage": "generated-stationary-world-input",
+  "status": "failed"
+}
