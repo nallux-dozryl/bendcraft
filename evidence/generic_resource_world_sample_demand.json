@@ -1,0 +1,70 @@
+{
+  "api": {
+    "collect": "(Owner, GS.Sample, C.Catalog, Admission, Limits) -> Owner & Result<C.Error,Plan>",
+    "initial": "(Owner, GS.Sample, Admission, Limits) -> Owner & Result<C.Error,Plan>",
+    "owner": "actual affine Registry, admitted identity, unchanged committed family requests",
+    "plan": "full committed request prefix plus newly demanded first-observed family suffix; caller BR.Policy unchanged"
+  },
+  "integrated_into_entry_or_client": false,
+  "kernel_executed": false,
+  "native_executed": false,
+  "prepared_roots": [
+    "generic_resource_world_sample_demand_laws:another_sample_registry_is_refused_before_registry_or_catalog_traversal",
+    "generic_resource_world_sample_demand_laws:prior_identity_refusal_retains_complete_registry_and_committed_inventory",
+    "generic_resource_world_sample_demand_laws:actual_identity_failure_keeps_the_returned_registry_and_full_inventory",
+    "generic_resource_world_sample_demand_laws:configuration_refusal_keeps_the_complete_owner_and_precise_error",
+    "generic_resource_world_sample_demand_laws:a_prior_traversal_error_stops_every_remaining_cell",
+    "generic_resource_world_sample_demand_laws:a_repeated_raw_state_never_reenters_catalog_or_registry",
+    "generic_resource_world_sample_demand_laws:an_already_demanded_sibling_family_adds_no_second_request",
+    "generic_resource_world_sample_demand_laws:a_missing_committed_family_refuses_instead_of_reloading_forever",
+    "generic_resource_world_sample_demand_laws:a_non_miss_lookup_refusal_retains_the_named_error_and_actual_owner",
+    "generic_resource_world_sample_demand_laws:registry_decode_refusal_keeps_the_returned_owner_and_full_inventory",
+    "generic_resource_world_sample_demand_laws:a_family_admission_refusal_never_mutates_the_committed_inventory",
+    "generic_resource_world_sample_demand_laws:an_absent_caller_mode_stays_an_explicit_named_refusal",
+    "generic_resource_world_sample_demand_laws:an_admitted_plan_preserves_prefix_addition_order_and_all_caller_materials",
+    "generic_resource_world_sample_demand_laws:initial_identity_refusal_preserves_the_complete_owner_before_decode",
+    "generic_resource_world_sample_demand_laws:initial_refuses_existing_commitments_without_inventing_a_catalog",
+    "generic_resource_world_sample_demand_laws:catalog_absence_uses_the_actual_registry_decode_and_returned_owner"
+  ],
+  "review": {
+    "corrected_findings": [
+      "family_seen name reused without + binder",
+      "identity_first catalog reused without + binder",
+      "startup path required an explicit absent catalog",
+      "decoder-only-on-miss comment scoped to an installed catalog",
+      "already-demanded family helper law named precisely"
+    ],
+    "method": "Independent read-only production API, ownership, coalescing, budget and source-shape audit"
+  },
+  "scope": [
+    "Pure registry-backed demand planning; no resource installation, ownership commit, renderer/sprite classifier or light-provider duplication.",
+    "Installed catalog path decodes only exact StateNotLoaded; startup None explicitly decodes without a fabricated catalog or miss error.",
+    "Sixteen prepared arbitrary laws cover named owner/admission refusals, actual startup decode call, already-seen helper branches and admitted full-prefix/material output. They have not been source/kernel checked and do not establish end-to-end seen-map invariants.",
+    "Registry must be parse/load validated and loaded catalog entries satisfy the existing catalog contract.",
+    "Existing CLoad replaces the whole asset/material context, so actual integration must coherently load all Plan.requests and admit the candidate before updating committed inventory."
+  ],
+  "source_checked": false,
+  "source_files": {
+    "docs/generic_resource_world_sample_demand.md": {
+      "bytes": 4355,
+      "sha256": "581d86405fd35ac518fbe4ca17d5d007f5217f51e60c1fa0b290f49be3eb417a"
+    },
+    "src/generic_resource_world_sample_demand.bend": {
+      "bytes": 16047,
+      "sha256": "9499cc7a649298434cf2f25be70acbb3e7fcbb1d34355a4ad5ceb5e5fa0a8524"
+    },
+    "src/generic_resource_world_sample_demand_laws.bend": {
+      "bytes": 6992,
+      "sha256": "e7714eccc72d94b9908cc0d35544a35616793ebfae81c751152d3df14b275818"
+    },
+    "src/generic_resource_world_sample_demand_proof.bend": {
+      "bytes": 3367,
+      "sha256": "86cf51e55fa033a6fd8942ee90763fd5fbba01689b45b8249360c4bf76be8fcd"
+    },
+    "tools/generic_resource_world_sample_demand_proof.mjs": {
+      "bytes": 3852,
+      "sha256": "85ba21161ee0af63b0dcd318114b77d8efb37aa1d66ea144d52d5bcb14785caf"
+    }
+  },
+  "status": "prepared_source_kernel_native_unexecuted"
+}
