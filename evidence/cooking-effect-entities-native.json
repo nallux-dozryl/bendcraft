@@ -1,0 +1,102 @@
+{
+  "status": "passed",
+  "command": "python3 tools/test_cooking_effect_entities.py",
+  "source_sha256": {
+    "src/cooking_effect_entities_clock.c": "9e2c57354803078ed6b34372b9556872d02af2b413b99cd17c4521b0b0805c4d",
+    "src/cooking_effect_entities_clock.bend": "b9eeb3e8e560956a25a6dc800f25d49d431f88d6077cda03ca0c7bec919880c4",
+    "src/cooking_effect_entities_model.bend": "c637fa93acc5707c8c5c101e23bfde7d7549d06523ae157581e32dae53f3d07c",
+    "src/cooking_effect_entities_query.bend": "44828291ef388789847551258e65762c0d80a06f31b21ef24fb9103a65b34f50",
+    "src/cooking_effect_entities.bend": "a52c1c203674ee163abbef5b7a7e171b4596ba8d32eea541569b5e60193b4448",
+    "src/cooking_effect_entities_xp.bend": "e551d6ccbd90ce327a76ebd7c61a6ea7f8fb250e18839331c850a352759667e8",
+    "src/cooking_effect_entities_spawn.bend": "c76e6c8614c26ee0966f8d28b9545830b3b8ded6dc66e38f86b1feeb2f76dc67",
+    "src/cooking_effect_entities_math.bend": "2c8170d47fab715319698a09dba4344ea51046867feac6e2f71aadddc65943f4",
+    "src/cooking_effect_entities_clock.js": "2f962ac677ff5d18b1e59605987055119fed143a794a91b740a7d984b449991c",
+    "tests/cooking_effect_entities_values.bend": "79ab12fd85a6fc53c8aaca5c0d39c91dc614ee655c9d4ca27df34dfa00d667ab",
+    "tests/cooking_effect_entities.bend": "de2af9b8ed2dc60f2cda8ad29f8a5e50f874ce780cbb0bd909a8de5955b13633",
+    "tools/cooking_effect_entities_emit.mjs": "2b585bc9c477a584407533918e1123d0834bf4a24f9802e4960eaa89e97cf6ff",
+    "tools/test_cooking_effect_entities.py": "6949eb39b3a9f5754aebb3cf6d9eed7bb2dd27a85a8e14f88de8331cf45223f2",
+    "tools/reference_cooking_effect_entities.py": "8ad5dd84056114ceddc194fb0e28640a392101b26898713fc88475841d89d969",
+    "tools/cooking_effect_entities_codegen.mjs": "90fcd73344b6dbdba85d608f8c569b65876a58367cd8c4dfbc1a26c15922f661",
+    "src/random.bend": "76302d587a74d2601994f6b0bc7c9000b04a65a0bbd06cc0ce643c5452eb3162",
+    "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "src/vanilla_entity_fields.bend": "c5b2e1f2982d8470ba246c425db78bb09d988f58941a8db6a3f2d959a7b6b7fe",
+    "reference/cooking_effect_entities.json": "7d44fd6dddfafa2f193cd20626a923f42a6587c8eb73dd05e152ef6208f4f971"
+  },
+  "checks": [
+    {
+      "kind": "check",
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/cooking_effect_entities.bend",
+        "--check-only"
+      ],
+      "exit": 0,
+      "seconds": 1.847,
+      "sampled_process_tree_peak_rss_bytes": 787857408,
+      "bounded_stop": null,
+      "stdout_sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "emit",
+      "command": [
+        "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+        "--experimental-transform-types",
+        "--stack-size=4096",
+        "--max-old-space-size=1536",
+        "tools/cooking_effect_entities_emit.mjs",
+        "tests/cooking_effect_entities.bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-entities-native/receiver.c"
+      ],
+      "exit": 0,
+      "seconds": 7.2023,
+      "sampled_process_tree_peak_rss_bytes": 971620352,
+      "bounded_stop": null,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "ec316a6708a1bce0cdb8be61c110d779c9c40d2d13f85c67652c59120e49d80e"
+    },
+    {
+      "kind": "clang",
+      "command": [
+        "/usr/bin/clang",
+        "-std=c11",
+        "-O2",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-entities-native/receiver.c",
+        "-lpthread",
+        "-lm",
+        "-o",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-entities-native/receiver"
+      ],
+      "exit": 0,
+      "seconds": 6.7707,
+      "sampled_process_tree_peak_rss_bytes": 809992192,
+      "bounded_stop": null,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "native",
+      "command": [
+        "/usr/bin/time",
+        "-l",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-entities-native/receiver",
+        "--gpu",
+        "off",
+        "--threads",
+        "1",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-entities-native/input.json"
+      ],
+      "exit": 0,
+      "seconds": 7.8859,
+      "sampled_process_tree_peak_rss_bytes": 47677440,
+      "bounded_stop": null,
+      "stdout_sha256": "57a7965f21ba4cc2ce6031e83edec905f58fdcc158338c003ae0f91491736a72",
+      "stderr_sha256": "d058951d949c1c0b7b3b04a6babbe275c6f396412bd04ddf7eb0824ecc1827e8",
+      "peak_rss_bytes": 46645248
+    }
+  ],
+  "cases": 15,
+  "actual_java_spawn_records_compared": 61,
+  "full_identity_and_bitwise_position_velocity_uuid_rotation_rng": true,
+  "boundary": "Pure production affine owner and ordered per-effect prefix consumer; actual Java Containers.dropItemStack and ExperienceOrb.award/constructors, real section query ordering and declared geometry I/O. Clock FFI, live Sidecar/storage/world tick/pickup/render require their named integration checks."
+}

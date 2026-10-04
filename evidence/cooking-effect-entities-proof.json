@@ -1,0 +1,219 @@
+{
+  "status": "passed",
+  "kernel_laws": 8,
+  "checks": [
+    {
+      "kind": "ordinary",
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/cooking_effect_entities_proof.bend",
+        "--check-only"
+      ],
+      "exit": 0,
+      "seconds": 1.6103,
+      "sampled_process_tree_peak_rss_bytes": 731906048,
+      "bounded_stop": null,
+      "stdout_sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "export",
+      "command": [
+        "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+        "--experimental-transform-types",
+        "--stack-size=4096",
+        "--max-old-space-size=1536",
+        "tools/cooking_effect_entities_proof.mjs",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-entities-proof"
+      ],
+      "exit": 0,
+      "seconds": 1.7973,
+      "sampled_process_tree_peak_rss_bytes": 438796288,
+      "bounded_stop": null,
+      "stdout_sha256": "7abe31fa0f39a96476a120ff1b86baac95981da6089be4f3341b9ed035a08661",
+      "stderr_sha256": "7a0fb4b485ddd78b8acfba571e298a676ca6577baa2fc4a59f6f7578e90ba6c4"
+    },
+    {
+      "kind": "kernel",
+      "command": [
+        "/usr/bin/env",
+        "LEAN_STACK_SIZE=4194304",
+        "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-entities-proof/selected.bendtt"
+      ],
+      "exit": 0,
+      "seconds": 0.2314,
+      "sampled_process_tree_peak_rss_bytes": 163840,
+      "bounded_stop": null,
+      "stdout_sha256": "61b73cda11b6b665b9f99f2defd3d3b57f985c865225e942a5bdaa594a503e47",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "selection": {
+    "entry": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_effect_entities_proof.bend",
+    "roots": [
+      "cooking_effect_entities_laws:refused_spawn_retains_complete_actual_owner",
+      "cooking_effect_entities_laws:delivery_refusal_retains_failed_effect_and_ordered_suffix",
+      "cooking_effect_entities_laws:constructor_entropy_missing_cannot_install_an_item",
+      "cooking_effect_entities_laws:constructor_entropy_missing_cannot_install_an_orb",
+      "cooking_effect_entities_laws:zero_award_does_not_spend_constructor_entropy_or_rng",
+      "cooking_effect_entities_laws:zero_fragment_count_does_not_spend_constructor_entropy_or_rng",
+      "cooking_effect_entities_laws:merging_orbs_resets_age_and_increments_count",
+      "cooking_effect_entities_laws:orb_merge_keeps_level_rng_factory_id_cursor_and_entropy"
+    ],
+    "ordinary_roots": [
+      "cooking_effect_entities_laws:refused_spawn_retains_complete_actual_owner",
+      "cooking_effect_entities_laws:delivery_refusal_retains_failed_effect_and_ordered_suffix",
+      "cooking_effect_entities_laws:constructor_entropy_missing_cannot_install_an_item",
+      "cooking_effect_entities_laws:constructor_entropy_missing_cannot_install_an_orb",
+      "cooking_effect_entities_laws:zero_award_does_not_spend_constructor_entropy_or_rng",
+      "cooking_effect_entities_laws:zero_fragment_count_does_not_spend_constructor_entropy_or_rng",
+      "cooking_effect_entities_laws:merging_orbs_resets_age_and_increments_count",
+      "cooking_effect_entities_laws:orb_merge_keeps_level_rng_factory_id_cursor_and_entropy"
+    ],
+    "original_root_count": 2020,
+    "selected_root_count": 8,
+    "checked_types_and_bodies_unchanged": true,
+    "all_original_tlds_ctrs_tmps_retained": true,
+    "term_pins": [
+      {
+        "name": "cooking_effect_entities_laws:refused_spawn_retains_complete_actual_owner",
+        "type_sha256": "385fa5fd8b81e0a61229025fdf3d8d438bb71bfa3d442cee9f9a83ecc9b76233",
+        "checked_proof_sha256": "01f1ac041834ca0acf4038d68a652bb350ed19ea0f18d1bcb64eab8d24af55c0",
+        "source_body_sha256": "ffb4f2c2b852f28c330323286e55f4692d5fc28b18cf27a8f6f236007b241658"
+      },
+      {
+        "name": "cooking_effect_entities_laws:delivery_refusal_retains_failed_effect_and_ordered_suffix",
+        "type_sha256": "b27c44fee147c2282857d0fb6a9e28a7df4c39f450f44cbff985d51eceb267a6",
+        "checked_proof_sha256": "a43b448464b674f7a2845890c61347a175fc0d4fde57849e9269b5150c3d34b7",
+        "source_body_sha256": "328ec51efc957f88d5b46c0c19a08b5ad98b8e014d9cb7a546b1d5c4987f2ea8"
+      },
+      {
+        "name": "cooking_effect_entities_laws:constructor_entropy_missing_cannot_install_an_item",
+        "type_sha256": "e074213f24c36e4777732bbcf94eecdf455c8145888b3ab150cafd3b3da437ad",
+        "checked_proof_sha256": "e150b690989a7c2d2f4f6862824866261fe51cbfce910276a79b19af091dc9f9",
+        "source_body_sha256": "8aa4e365f3e0434a12c8eb51ea69322878236af5e9d8d1300627b3f37d2d21e3"
+      },
+      {
+        "name": "cooking_effect_entities_laws:constructor_entropy_missing_cannot_install_an_orb",
+        "type_sha256": "3a31dca8cd3ab3e351110610fd893f1901c6ba5bbfb67e9a892059aa6174b3a9",
+        "checked_proof_sha256": "399576f4d493fe5f0d939baffb3b9a3ce0e53ce0562692c153a0555a1c934b10",
+        "source_body_sha256": "8039b6c1b52a591d16e20a7f0e5708325537b00241ad65a7292b1346c845284c"
+      },
+      {
+        "name": "cooking_effect_entities_laws:zero_award_does_not_spend_constructor_entropy_or_rng",
+        "type_sha256": "283bc15fad8dbb90f0a6b5faf5f11ca57eae7e7092b5a0875fe5eb3ed173ad42",
+        "checked_proof_sha256": "3114beeb7b0476df3ef26d34ce7f8bdf3ff885386c02fd34e82c590ecd4c2c57",
+        "source_body_sha256": "6a5a708ee8ac8cd92e476eedcd418807a7dae99e42a3596ee7b275e7b3b9bcfb"
+      },
+      {
+        "name": "cooking_effect_entities_laws:zero_fragment_count_does_not_spend_constructor_entropy_or_rng",
+        "type_sha256": "af4614f2717536136329e18c6dcb75b9480abf618d58e74447ff18616039a117",
+        "checked_proof_sha256": "c78543bbeced2fb309acbe4f7cd28e7ed7c3e5d13f732cbdfcc6308c078745d3",
+        "source_body_sha256": "f1591797f0bf4690cf62c2ae6280806d19c66544a3bee949df771cadb7cf7b97"
+      },
+      {
+        "name": "cooking_effect_entities_laws:merging_orbs_resets_age_and_increments_count",
+        "type_sha256": "4408ff78ae4be000d431a7590c849a3d60072d2cbbe570111fc5092a71dd5abc",
+        "checked_proof_sha256": "2dc12cd43aa4a39f7db69886f8af4a81560cd790b70601da40bbf4946f8cee97",
+        "source_body_sha256": "dd401a5ce887436ef5090674a4343fcc18aff0426866f594a6f30f289c96000d"
+      },
+      {
+        "name": "cooking_effect_entities_laws:orb_merge_keeps_level_rng_factory_id_cursor_and_entropy",
+        "type_sha256": "9c09e5bfe4a19616fe78c06b9f98b560b25725a7fff336f7609c218c452897f0",
+        "checked_proof_sha256": "13be53d4ab0757d35632d5cbd67e300c0696b5118168133e946a3294ce9ba69f",
+        "source_body_sha256": "9ee6b5f868ebab25fa88f199241bcb92cf09f95c7d5b4493324483644b1c3114"
+      }
+    ],
+    "source_files": [
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_effect_entities_proof.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/base.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_effect_entities_laws.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/inventory.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/random.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/f64.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/vanilla_entity_fields.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/nbt.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_look.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_world_store.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/core.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/schedule.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/section.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/section_map.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/section_map_read.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/section_map_update.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_world_bindings.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_recipe.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/campfire_authority.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/campfire_authority_items.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe_components.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/json.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/u32_decimal.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe_component_registry.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/furnace_authority.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe_decoder.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_recipe_number.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/furnace_authority_fuel.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_recipe_decoder.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/furnace_authority_xp.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_effect_entities_model.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_effect_entities.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_effect_entities_spawn.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_block_entity_codec_components.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_block_entity_codec_nbt.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_world_items.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/furnace_authority_decoder.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_effect_entities_math.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_effect_entities_query.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_effect_entities_xp.bend"
+    ],
+    "ordinary_source_api_check_passed": true
+  },
+  "scope_exclusions": [],
+  "source_sha256": {
+    "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/base.bend": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/campfire_authority.bend": "78a59482edfd9f1ed0455524b99fda220dbe697bfcc72fe1a7b71a343396ab21",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/campfire_authority_items.bend": "cc8e33b0636309348135ec32aabb8f6cfceb23a24863fd064fc30bf730ba79c2",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_block_entity_codec_components.bend": "f0a2bf8551c0d64e691cf482484056573a9862ce09bf4da783125644460db414",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_block_entity_codec_nbt.bend": "ceacb780ad51bd196c2317a31b990756ef42a1e22852fc733296f2ad21331a8a",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_effect_entities.bend": "a52c1c203674ee163abbef5b7a7e171b4596ba8d32eea541569b5e60193b4448",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_effect_entities_laws.bend": "3fe007408648a7ac72f4dda082a1c17612b46df0eb30e027db1326d3186015f8",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_effect_entities_math.bend": "2c8170d47fab715319698a09dba4344ea51046867feac6e2f71aadddc65943f4",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_effect_entities_model.bend": "c637fa93acc5707c8c5c101e23bfde7d7549d06523ae157581e32dae53f3d07c",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_effect_entities_proof.bend": "12fa87399f5bcee26fb4e05ad563ec4e0d89ee366a5d4b82fd60d13781157504",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_effect_entities_query.bend": "44828291ef388789847551258e65762c0d80a06f31b21ef24fb9103a65b34f50",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_effect_entities_spawn.bend": "c76e6c8614c26ee0966f8d28b9545830b3b8ded6dc66e38f86b1feeb2f76dc67",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_effect_entities_xp.bend": "e551d6ccbd90ce327a76ebd7c61a6ea7f8fb250e18839331c850a352759667e8",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_recipe.bend": "085bfe968f3e7169e5c7bacf633029ebd9e4fc8c8ecb79ad81f63a193110f795",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_recipe_decoder.bend": "ca334faae18c0a25664d4d3170f29aa26e33fa4a0b9da0bcc08348c79e51ae28",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_recipe_number.bend": "c3b8b18a323f9c95602c55d0063c2ae49796979ed6d7a4506b00a4091db1921a",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_world_bindings.bend": "0ca79f788bc40742c575cca1345196bc12cd5d5984e4dae9866cf408b6886f75",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_world_items.bend": "eae4556b5d42bf46243628df01f25bb2a91534b7a54aea1a79a9ef2a7a8cad88",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_world_store.bend": "c8ef44f81e44dddfe9d2d87c9208524de13715254a59b78b5b1c0af9691f3666",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/core.bend": "9636bb1dfdde3fe36e650ab8e8d4b62dad2a49b419a27454794e5923cb570b05",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe.bend": "3c5f3fc7b3e0be9be7d553da2a107dc1245fe13f17afac0efdf84bc41c15ffe2",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe_component_registry.bend": "911786032b2c22759208edaf7112ae403b2a03663d9237c3e036c2b5ba4ece2a",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe_components.bend": "2a35e31f26187ebbdab1c4261d54083acb68072a56a7b5869e5dfc490bc946be",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe_decoder.bend": "739037cf939bcef5a8008c34216b717ed60574c66690f627d11dc949e8542397",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/furnace_authority.bend": "1aeba248310862e0d3df4efce300c842a31e5377daa79dc166e59d7414758be2",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/furnace_authority_decoder.bend": "e69c7050eb2a51fe019bbcfb1716f2512f12f8853f19320502d3769d0626ce47",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/furnace_authority_fuel.bend": "e118a5890567ea91431890b3889d9392891bf84bbd4d827ed088983fdf80fa74",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/furnace_authority_xp.bend": "9820b625be1d27542fc6a2105cc1558520af2cbde99b18abb5503d438bceec2d",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/inventory.bend": "9d2be7fb88afa1dc6386ab9e8b046b15d2a2a73b7e14566e5bfad3e6dd1f2702",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/json.bend": "a1789e3b4f5bea158ec0d95a8bcb39aa5b7c7e7355a5254d3de1d52a93c719d1",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/nbt.bend": "b677546b5fc02aaa38f5c09e5b798c0d35aec32b1c4b37cbd7042b9a1a5275e4",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_look.bend": "35ec863e078e46f2c2502b975f3e9f259114aec7baac614c68ba6e46773260ca",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/random.bend": "76302d587a74d2601994f6b0bc7c9000b04a65a0bbd06cc0ce643c5452eb3162",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/schedule.bend": "93aa79895fe340e27ae5fd562102d5980f0938003eb1bbde669a84010779b8c9",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/section.bend": "02b5c15c57b173c7eb8b4c55a1433c10c192926e91af5e3e69050b4404044aa5",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/section_map.bend": "ded59d7938c02fd0876d65e37f9f90ea0cfebf3ca4bd107394342f8adbf33965",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/section_map_read.bend": "7a6a0d6fe8b8736ab64adb34b896074da709f91f2ae5bd205a7301c868690fc1",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/section_map_update.bend": "93a1cb016ac86eaaea2773ab8b75b95e93f1976348b3c2c500fc0de0cc9831be",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/u32_decimal.bend": "d0b4b33f10b9e9801c4e99b83803afba5031ea40013a9263f9090bed8543d25c",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/vanilla_entity_fields.bend": "c5b2e1f2982d8470ba246c425db78bb09d988f58941a8db6a3f2d959a7b6b7fe"
+  },
+  "kernel_sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7",
+  "artifact_sha256": "8a5462f49d24370a5e7df478e9588312854cadfb0be9729b907abc07ab1e04ae"
+}

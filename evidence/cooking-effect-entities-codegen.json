@@ -1,0 +1,52 @@
+{
+  "installed_bounded_attempt": {
+    "kind": "C emission",
+    "seconds": 6.2431,
+    "sampled_process_tree_peak_rss_bytes": 2301394944,
+    "bound_bytes": 2147483648,
+    "exit": -15,
+    "result": "reaped at RSS bound before C output"
+  },
+  "source_api_diagnostic": {
+    "kind": "diagnose-stack",
+    "command": [
+      "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+      "--experimental-transform-types",
+      "--stack-size=4096",
+      "--max-old-space-size=1536",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/cooking_effect_entities_codegen.mjs",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-entities-codegen",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/cooking_effect_entities.bend"
+    ],
+    "exit": 0,
+    "seconds": 7.2184,
+    "sampled_process_tree_peak_rss_bytes": 973225984,
+    "bounded_stop": null,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "d1936c3ee5caf8e3f0c6887cbd3fd04138169602717c85e1276e926259e3ecfe"
+  },
+  "source_api_native_emit": {
+    "kind": "emit",
+    "command": [
+      "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+      "--experimental-transform-types",
+      "--stack-size=4096",
+      "--max-old-space-size=1536",
+      "tools/cooking_effect_entities_emit.mjs",
+      "tests/cooking_effect_entities.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-entities-native/receiver.c"
+    ],
+    "exit": 0,
+    "seconds": 7.2023,
+    "sampled_process_tree_peak_rss_bytes": 971620352,
+    "bounded_stop": null,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "ec316a6708a1bce0cdb8be61c110d779c9c40d2d13f85c67652c59120e49d80e"
+  },
+  "source_sha256": {
+    "tools/cooking_effect_entities_codegen.mjs": "90fcd73344b6dbdba85d608f8c569b65876a58367cd8c4dfbc1a26c15922f661",
+    "tools/cooking_effect_entities_emit.mjs": "2b585bc9c477a584407533918e1123d0834bf4a24f9802e4960eaa89e97cf6ff"
+  },
+  "compiler_checkout_edited": false,
+  "finding": "Identical original checked book emitted 3.9MiB C with unchanged source compiler under bounded Node; no unsupported declaration or semantic substitute. Compiler host/GC behavior is a candidate explanation for the observed memory difference; no exponential source expansion was demonstrated."
+}
