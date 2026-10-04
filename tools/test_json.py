@@ -182,7 +182,7 @@ def corpus():
         Case('depth-64', 'parse', '[' * 64 + '0' + ']' * 64, 'ok\t' + '[' * 64 + '0' + ']' * 64),
         Case('depth-65', 'parse', '[' * 65 + '0' + ']' * 65, None),
         Case('input-16384', 'parse', ' ' * 16380 + 'null', 'ok\tnull'),
-        Case('input-16385', 'parse', ' ' * 16381 + 'null', None),
+        Case('input-16385', 'parse', ' ' * 16381 + 'null', 'error\tJSON input exceeds configured code point limit'),
         Case('unicode-input-16384', 'parse', '"' + '😀' * 16382 + '"', 'ok\t"' + '😀' * 16382 + '"'),
         Case('wide-array', 'parse', '[' + ','.join(['0'] * 4096) + ']', 'ok\t[' + ','.join(['0'] * 4096) + ']'),
         Case('wide-object', 'parse', '{' + ','.join(f'"k{i}":0' for i in range(1200)) + '}',

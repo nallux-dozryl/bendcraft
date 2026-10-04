@@ -2,6 +2,7 @@ import Base
 import ./json.bend as J
 import ./crafting_recipe_component_registry.bend as Registry
 import ./inventory.bend as Inv
+import ./u32_decimal.bend as Decimal
 
 # The inventory foundation owns opaque canonical identities. Here only
 # explicitly implemented codec types may produce a resolved identity.
@@ -31,7 +32,7 @@ def signed_positive(raw:String,parsed:Maybe<&2,U32>) -> Result<&2,&2,String,Stri
     case Some{+value}:
       do Result<&2,&2,String,String>:
         guard(U32.is_le(value,2147483647),"component codec outside supported domain")
-        return U32.show(value)
+        return Decimal.show(value)
 
 def signed_negative(parsed:Maybe<&2,U32>) -> Result<&2,&2,String,String>:
   match parsed:
@@ -39,7 +40,7 @@ def signed_negative(parsed:Maybe<&2,U32>) -> Result<&2,&2,String,String>:
     case Some{+value}:
       do Result<&2,&2,String,String>:
         guard(U32.is_le(value,2147483648),"component codec outside supported domain")
-        return choose(String,"0","-" ++ U32.show(value),U32.is_zero(value))
+        return choose(String,"0","-" ++ Decimal.show(value),U32.is_zero(value))
 
 def signed(+raw:String) -> Result<&2,&2,String,String>:
   match raw:
@@ -92,7 +93,7 @@ def bounded_read(value:Maybe<&2,U32>,minimum:U32,maximum:U32) -> Result<&2,&2,St
     case Some{+amount}:
       do Result<&2,&2,String,J.Value>:
         guard(U32.is_ge(amount,minimum) && U32.is_le(amount,maximum),"integer component outside its range")
-        return J.JNumber{U32.show(amount)}
+        return J.JNumber{Decimal.show(amount)}
 
 def bounded_number(value:J.Value,minimum:U32,maximum:U32) -> Result<&2,&2,String,J.Value>:
   match value:
@@ -215,7 +216,7 @@ def unsigned_default(value:Maybe<&2,J.Value>,fallback:U32) -> U32:
 def envelope_checked(valid:Bool,limit:U32,effective:String) -> String:
   match valid:
     case False{}: "BendCraftInvalidComponents1\t" ++ effective
-    case True{}: "BendCraftComponents1\t" ++ U32.show(limit) ++ "\t" ++ effective
+    case True{}: "BendCraftComponents1\t" ++ Decimal.show(limit) ++ "\t" ++ effective
 
 def identity(+defaults:List<&2,J.Member>,+effective:List<&2,J.Member>) -> String:
   +original = J.encode(J.JObject{sorted(defaults)})

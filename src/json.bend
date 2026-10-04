@@ -1,4 +1,5 @@
 import Base
+import ./u32_decimal.bend as Decimal
 
 # Pure JSON. Offsets count Unicode scalar/code-point positions, starting at zero.
 type Value is Data:
@@ -60,7 +61,7 @@ def choose(-A: Data, yes: A, no: A, test: Bool) -> A:
     case False{}: no
 
 def error(offset: U32, message: String) -> Step:
-  Rejected{message ++ " at offset " ++ U32.show(offset)}
+  Rejected{message ++ " at offset " ++ Decimal.show(offset)}
 
 def stay(text: String, offset: U32, depth: U32, frames: List<&2, Frame>, mode: Mode) -> Step:
   Continue{State{text, offset, depth, frames, mode}}
@@ -345,7 +346,7 @@ def run(fuel: Nat, result: Step) -> Result<&2, &2, String, Value>:
 
 def parse_size_checked(+text: String, max_codepoints: Nat, max_depth: U32, valid: Bool) -> Result<&2, &2, String, Value>:
   match valid:
-    case False{}: Fail{"JSON input exceeds " ++ Nat.show(max_codepoints) ++ " code points"}
+    case False{}: Fail{"JSON input exceeds configured code point limit"}
     case True{}:
       fuel = Nat.add(16n, Nat.mul(4n, String.length(text)))
       run_with(fuel, Continue{State{text, 0, 0, Nil{}, NeedValue{}}}, max_depth)
