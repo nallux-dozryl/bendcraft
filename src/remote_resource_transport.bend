@@ -6,6 +6,7 @@ import ./generic_resource_world_sample.bend as GS
 import ./generic_resource_world_sample_backend.bend as GenericBackend
 import ./server.bend as S
 import ./framing.bend as F
+import ./resource_client_framing.bend as PrivateFraming
 import ./player_inventory.bend as I
 import ./player_block_interaction.bend as BI
 import ./local_player_session.bend as Session
@@ -304,7 +305,7 @@ def scalars(text:String) -> List<&2,U32>:
 def segment_valid(+handle:S.Handle<B.State>,bytes:List<&2,U32>,link:Link,valid:Bool) -> IO(Maybe<&1,Link>):
   match link valid:
     case _ False{}: close_link(handle,link)
-    case Link{socket,buffer,epoch,deadline} True{}: fed(handle,socket,epoch,deadline,F.feed(buffer,bytes))
+    case Link{socket,buffer,epoch,deadline} True{}: fed(handle,socket,epoch,deadline,PrivateFraming.feed(buffer,bytes))
 
 def segment(+handle:S.Handle<B.State>,+bytes:List<&2,U32>,link:Link,rest:Link -> IO(Maybe<&1,Link>)) -> IO(Maybe<&1,Link>):
   do IO<Maybe<&1,Link>>:

@@ -3,6 +3,35 @@
 Target: Minecraft Java 26.3. Compiler: Bend 2.0.35. The full goal remains active
 and incomplete; the current build is a limited integrated client.
 
+Actor004's immutable producer016 builds original-JAR crafting startup,
+retained crafting context, prospective menu-reply publication, generic sampling
+and the moving runtime receiver. Its actual renderer008 hidden pair passes in
+39.913 seconds, including all 16,384 Java-reference pixels and a complete
+104-section/player/WG durable save, with no focus or Spaces change. Current
+ordinary TCP/MCP acceptance passes 28 complete menu replies, Swap, repeated
+stick takes, honey/sugar/bottle remainders, controls, break/place, three full
+saves and SIGKILL/cold recovery. The direct movement consumer also passes exact
+Java ticks and acknowledged-state continuation. These are bounded integration
+results, not full gameplay or visible-input acceptance.
+
+A valid 35,620-byte component request exposed the private server's inherited
+16,384-scalar framer. Producer017 joins the existing 65,536-byte private ASCII
+adapter and removes duplicate initialized-catalog validation during crafting
+startup. Its complete original checker accepts 6,647 declarations; C emission
+takes 284.018 seconds and native compilation 119.246 seconds. Original compiler
+files remain unchanged. The exact 017 large-request consumer passes 30 complete correlated replies in
+97.704 seconds. The 35,620-byte request succeeds; aggregate reply overflow
+retains the whole inventory and crafting context, witnessed by two cached
+result takes without a refresh. Three exact full saves and SIGKILL/cold
+recovery pass. Current startup helpers allow 150
+seconds for the full crafting startup, based on the observed 20-second cutoff
+failure and subsequent healthy run. Public 007/003 remains the verified launch
+pair until the changed 017/008 consumer passes.
+See `evidence/playable-client-actor004-build-017.json`,
+`evidence/playable-client-actor004-source-017.json`,
+`evidence/playable-client-actor004-boundary-001.json`, and
+`evidence/runtime-block-inside-actor-motion-002.json`.
+
 The recommended launch is `tools/play_minecraft.sh`: verified renderer007 with
 actor003, two CPU workers, 1920×1080 output and 100% scene resolution. Actual hidden
 checks pass fresh startup, carried/crafting return, full-capacity refusal and

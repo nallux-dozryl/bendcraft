@@ -2,7 +2,7 @@ import Base
 import ./framing.bend as F
 import ./resource_client_wire.bend as W
 
-# Private replies are ASCII JSON, including escaped Unicode fields. Their
+# Private requests and replies are ASCII JSON, including escaped Unicode fields. Their
 # scalar and byte bounds are therefore identical. The general UTF-8 framer's
 # 16384-scalar policy remains appropriate for the separate public protocol.
 def text(reversed:List<&2,U32>,result:String) -> String:
