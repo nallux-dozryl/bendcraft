@@ -7,6 +7,7 @@ launches a process; Python owns fixtures/expected bytes, Bend owns transitions.
 from __future__ import annotations
 
 import copy
+from collections import Counter
 import csv
 import dataclasses
 import hashlib
@@ -157,6 +158,143 @@ def focused_suite(executor):
     return {'cases': len(expected) + len(expected_survival), 'processes': [processpin, second_pin],
             'expected_sha256': sha(json.dumps(expected + expected_survival, sort_keys=True).encode()),
             'full_slot_snapshot_compared_after_every_transition': True}
+
+
+def close_fixtures(reference, table):
+    """Actual Java insertion outcomes, with explicit retained-ownership refusal.
+
+    The four client-side InventoryMenu.removed observations are not server
+    close fixtures. The two ordered receiver sequences use the carried-first
+    ordering established separately by the pinned server bytecode.
+    """
+    reference, table = Path(reference), Path(table)
+    raw = reference.read_bytes()
+    value = json.loads(raw)
+    require(value['pin'] == '26.3' and sha(canonical(value['observations'])) ==
+            value['observations_sha256'], 'Java close observation seal differs')
+    require(value['loaded_official_classes']['all_verified_against_client_jar'],
+            'Java close official class checks absent')
+    require(sha(table.read_bytes()) == TABLE_SHA256, 'Full item table identity differs')
+
+    def actual_stack(observed):
+        if observed is None or observed.get('empty', False):
+            return None
+        item = observed.get('item', observed.get('visible_item'))
+        count = observed.get('count', observed.get('visible_count'))
+        require(isinstance(item, str) and isinstance(count, int) and count > 0,
+                'Invalid nonempty Java close slot')
+        return stack(item, count)
+
+    def logical(observed):
+        inventory = observed['inventory']
+        require(inventory['container_size'] == 43 and inventory['main_length'] == 36,
+                'Java durable topology differs')
+        main = [actual_stack(slot) for slot in inventory['main_slots']]
+        equipment = [actual_stack(slot) for slot in observed['equipment']]
+        craft = [actual_stack(slot) for slot in observed['craft']]
+        require((len(main), len(equipment), len(craft)) == (36, 7, 4),
+                'Java close complete slot dimensions differ')
+        return main + equipment + craft + [actual_stack(observed['carried'])]
+
+    def abilities(observed):
+        source = observed['inventory']['abilities']
+        fields = {key: source[key] for key in
+                  ('instabuild', 'maybuild', 'invulnerable', 'mayfly', 'flying')}
+        fields.update(walking_speed=int(source['walking_speed_f32_bits'], 16),
+                      flying_speed=int(source['flying_speed_f32_bits'], 16))
+        return fields
+
+    def item_counts(slots):
+        counts = Counter()
+        for slot in slots:
+            if slot:
+                counts[(slot['id'], slot['components'])] += slot['count']
+        return counts
+
+    tail = [stack(ITEMS[index % 3], index + 1) for index in range(16)]
+    revision, fixtures = 23, []
+    rows = [row for row in value['observations']
+            if row['operation'] in ('return', 'return_sequence')]
+    require(len(rows) == 22, 'Observed return receiver subset differs')
+    for row in rows:
+        require(row['ok'], 'Java close receiver failed: ' + row['id'])
+        before, after = logical(row['before']), logical(row['after'])
+        require(item_counts(before) == item_counts(after),
+                'Executed receiver count retention differs: ' + row['id'])
+        accepted = not any(after[43:])
+        expected_slots = (after if accepted else before) + tail
+        expected = {'id': row['id'], 'accepted': accepted,
+                    'message': '' if accepted else
+                    'menu retains carried or crafting items; return/drop authority is required before closing',
+                    'selected': row['before']['inventory']['selected'],
+                    'abilities': abilities(row['before']), 'opened': not accepted,
+                    'revision': revision + int(accepted and any(before[43:])),
+                    'result': None, 'logical_length': 48, 'catalog_count': 1658,
+                    'all_backing_slots': expected_slots}
+        fixtures.append({'before_slots': before + tail, 'expected': expected,
+                         'before_result': None,
+                         'scope': 'actual-return-match' if accepted else 'atomic-capacity-refusal'})
+
+    # Separate complete raw-word/permission retention checks; these are not
+    # relabeled Java observations. They reuse an observed returnable topology.
+    basis = next(f for f in fixtures if f['expected']['id'] == 'return-order:creative')
+    for label, patch in [
+            ('raw-signed-zero-nan', {'walking_speed': 2147483648, 'flying_speed': 2143289429}),
+            ('raw-negative-infinite', {'walking_speed': 4286578688, 'flying_speed': 3212836864}),
+            ('maybuild-false-inventory-return', {'maybuild': False})]:
+        fixture = copy.deepcopy(basis)
+        fixture['expected']['id'] = label
+        fixture['expected']['abilities'].update(patch)
+        fixture['scope'] = 'full-profile-retention'
+        fixtures.append(fixture)
+
+    for source_id in ('empty:survival', 'empty:creative',
+                      'return-order:creative', 'return-full:creative'):
+        fixture = copy.deepcopy(next(f for f in fixtures if f['expected']['id'] == source_id))
+        fixture['expected']['id'] = 'derived-cache:' + source_id
+        fixture['before_result'] = stack('minecraft:stone', 1)
+        if fixture['expected']['accepted']:
+            fixture['expected']['revision'] = revision + 1
+        else:
+            fixture['expected']['result'] = fixture['before_result']
+        fixture['scope'] = 'derived-cache-disposition'
+        fixtures.append(fixture)
+
+    arguments = [str(table.resolve())]
+    for fixture in fixtures:
+        expected, before = fixture['expected'], fixture['before_slots']
+        require(len(before) == len(expected['all_backing_slots']) == 64,
+                'Close fixture full backing length differs')
+        require(item_counts(before) == item_counts(expected['all_backing_slots']),
+                'Expected close outcome loses/invents an item')
+        ability = expected['abilities']
+        header = [expected['id'], expected['selected'],
+                  *[int(ability[key]) for key in
+                    ('instabuild', 'maybuild', 'invulnerable', 'mayfly', 'flying')],
+                  ability['walking_speed'], ability['flying_speed'], revision,
+                  '_' if fixture['before_result'] is None else
+                  f'{fixture["before_result"]["id"]}~{fixture["before_result"]["count"]}']
+        encoded = ['_' if slot is None else f'{slot["id"]}~{slot["count"]}' for slot in before]
+        arguments.append('|'.join(map(str, header + encoded)))
+    return arguments, fixtures, {'path': str(reference), 'sha256': sha(raw),
+                                 'observations_sha256': value['observations_sha256']}
+
+
+def close_suite(executor, reference, table):
+    """executor(label,args,env=None) runs tests/player_inventory_close.bend."""
+    arguments, fixtures, reference_pin = close_fixtures(reference, table)
+    stdout, processpin = executor('player-inventory-close', arguments)
+    actual = [json.loads(line) for line in stdout.splitlines() if line.strip()]
+    require(len(actual) == len(fixtures), 'Native close observation count differs')
+    for observed, fixture in zip(actual, fixtures):
+        require(observed == fixture['expected'], 'Native close differs: ' + fixture['expected']['id'])
+    return {'cases': len(fixtures), 'java_returnable_cases': 16,
+            'atomic_capacity_refusal_cases': 6, 'additional_profile_retention_cases': 3,
+            'derived_cache_disposition_cases': 4,
+            'all64_backing_cells_and_all_saved_ability_words_compared': True,
+            'expected_sha256': sha(canonical([fixture['expected'] for fixture in fixtures])),
+            'reference': reference_pin, 'process': processpin,
+            'excluded': 'whole ServerPlayer lifecycle, world-owned item drops, client removed no-op branch'}
 
 
 def reference_suite(executor, reference):

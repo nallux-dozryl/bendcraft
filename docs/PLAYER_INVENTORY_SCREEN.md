@@ -26,10 +26,16 @@ consumer, rather than being interpreted as unmodified defaults.
 Crafting output `None` means that the recipe derivation consumer is absent. The
 screen marks this explicitly. It never manufactures an empty output stack.
 Crafting and carried items are ephemeral menu ownership and are excluded from
-the version 3 durable codec. Current close/save refuses while these slots are
-nonempty and retains the entire actor. Vanilla close's return/drop behavior
-requires the actual player return/drop consumer; it must join before complete
-menu-close parity. Version 3 stores equipment, complete saved ability fields and
+the version 3 durable codec. MenuClose now plans carried-item return before the
+four crafting inputs, using the pinned Java receiver's insertion order. It
+commits the complete owned inventory only if every temporary item fits and
+every item count is conserved. Otherwise it retains all slots, the derived
+result, abilities and open menu. The actor has no item-entity/drop ownership
+consumer, so the capacity-exhausted world-drop branch remains an explicit
+refusal. Save itself still refuses nonempty temporary ownership. Successful
+close clears the derived output cache; it never inserts that cache as an item.
+See `docs/PLAYER_INVENTORY_CLOSE.md` for the executed receiver scope and complete
+ownership contracts. Version 3 stores equipment, complete saved ability fields and
 typed world-generation settings; legacy/default and eligible version 2 payload
 bytes remain exact.
 

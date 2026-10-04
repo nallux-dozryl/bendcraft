@@ -2,6 +2,7 @@ import Base
 import ./inventory.bend as Inv
 import ./player_item_definitions.bend as D
 import ./nbt.bend as N
+import ./player_inventory_return.bend as Return
 
 # One owner retains main inventory, equipment and temporary menu storage.
 # The legacy36 projection keeps slots0..8 as the hotbar.
@@ -385,9 +386,68 @@ def close_checked(allowed:Bool,state:State) -> State & Result<&2,&2,String,Unit>
     case False{}: (state,Fail{"menu retains carried or crafting items; return/drop authority is required before closing"})
     case True{}: (menu_set(state,False{}),Done{Unit{}})
 
+def menu_slots(snapshot:MenuSnapshot) -> List<&2,Inv.Slot>:
+  MenuSnapshot{Persisted{Snapshot{selected,main,abilities},equipment,status},craft,carried,result,opened,revision} = snapshot
+  List.append(&2,Inv.Slot,main,List.append(&2,Inv.Slot,equipment,List.append(&2,Inv.Slot,craft,[carried])))
+
+def written_inventory(result:Inv.Inventory & Bool) -> Inv.Inventory:
+  (inventory,valid) = result
+  inventory
+
+def write_returned(slots:List<&2,Inv.Slot>,+index:U32,inventory:Inv.Inventory) -> Inv.Inventory:
+  match slots:
+    case Nil{}: inventory
+    case slot <> rest: write_returned(rest,U32.add(index,1),written_inventory(Inv.load_valid(inventory,index,slot,True{})))
+
+def revised(state:State) -> State:
+  State{inventory,selected,abilities,Profile{definitions,status,Menu{opened,revision,result}}} = state
+  State{inventory,selected,abilities,Profile{definitions,status,Menu{opened,1n+revision,None{}}}}
+
+def close_written(selected:U32,abilities:Abilities,profile:Profile,inventory:Inv.Inventory) -> State & Result<&2,&2,String,Unit>:
+  (menu_set(revised(State{inventory,selected,abilities,profile}),False{}),Done{Unit{}})
+
+# No item entity/drop consumer exists in this actor. Plan admission therefore
+# requires every temporary item to fit, with exact full per-item conservation.
+# An unreturnable stack leaves the entire original owner untouched.
+def close_return_guard(allowed:Bool,state:State,slots:List<&2,Inv.Slot>) -> State & Result<&2,&2,String,Unit>:
+  match allowed:
+    case False{}: close_checked(False{},state)
+    case True{}:
+      State{inventory,selected,abilities,profile} = state
+      close_written(selected,abilities,profile,write_returned(slots,0,inventory))
+
+def close_planned(state:State,+plan:Return.Plan) -> State & Result<&2,&2,String,Unit>:
+  close_return_guard(Return.admitted(plan),state,Return.slots(plan))
+
+def main_projection(snapshot:MenuSnapshot) -> Snapshot:
+  MenuSnapshot{Persisted{main,equipment,status},craft,carried,result,opened,revision} = snapshot
+  main
+
+def close_projected(main:Snapshot,snapshot:MenuSnapshot,state:State,catalog:D.Catalog) -> State & Result<&2,&2,String,Unit>:
+  Snapshot{selected,slots,abilities} = main
+  close_planned(state,Return.plan(menu_slots(snapshot),selected,catalog))
+
+def close_with_catalog(+snapshot:MenuSnapshot,result:State & D.Catalog) -> State & Result<&2,&2,String,Unit>:
+  (state,catalog) = result
+  close_projected(main_projection(snapshot),snapshot,state,catalog)
+
+def close_empty_output(result:Maybe<&2,Inv.Slot>,state:State) -> State & Result<&2,&2,String,Unit>:
+  match result:
+    case None{}: close_checked(True{},state)
+    case Some{slot}: close_checked(True{},revised(state))
+
+def close_without_temporary(snapshot:MenuSnapshot,state:State) -> State & Result<&2,&2,String,Unit>:
+  MenuSnapshot{saved,craft,carried,result,opened,revision} = snapshot
+  close_empty_output(result,state)
+
+def close_empty(empty:Bool,state:State,snapshot:MenuSnapshot) -> State & Result<&2,&2,String,Unit>:
+  match empty:
+    case True{}: close_without_temporary(snapshot,state)
+    case False{}: close_with_catalog(snapshot,definitions(state))
+
 def close_inspected(result:State & MenuSnapshot) -> State & Result<&2,&2,String,Unit>:
-  (state,snapshot) = result
-  close_checked(temporary_empty(snapshot),state)
+  (state,+snapshot) = result
+  close_empty(temporary_empty(snapshot),state,snapshot)
 
 def menu_close(state:State) -> State & Result<&2,&2,String,Unit>: close_inspected(menu_inspect(state))
 
@@ -427,10 +487,6 @@ def menu_slot_room(+index:U32,slot:Inv.Slot) -> Bool:
   match slot:
     case Inv.InvEmpty{}: True{}
     case Inv.InvStack{key,count}: Bool.not(U32.is_ge(index,36) && U32.is_lt(index,40))
-
-def revised(state:State) -> State:
-  State{inventory,selected,abilities,Profile{definitions,status,Menu{opened,revision,result}}} = state
-  State{inventory,selected,abilities,Profile{definitions,status,Menu{opened,1n+revision,None{}}}}
 
 def menu_moved(result:State & Inv.TransferStatus) -> State & Result<&2,&2,String,Unit>:
   (state,status) = result

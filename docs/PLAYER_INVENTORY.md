@@ -1,11 +1,13 @@
 # Owned local-player inventory
 
-The playable LocalPlayer session owns one 36-slot main inventory. Slots 0–8 are
-the hotbar; selection is restricted to that range. The current admitted item
-profile is `minecraft:stone`, `minecraft:dirt` and `minecraft:oak_planks`, each
-with its unmodified defaults and maximum count 64. This is an explicit subset;
-equipment, offhand, containers, creative-browser categories, recipes, drops,
-pickup, item-use effects and modified component payloads remain unimplemented.
+The playable LocalPlayer session owns 36 main slots, seven durable equipment
+slots, four temporary crafting inputs and carried ownership. Slots 0–8 are the
+hotbar; selection is restricted to that range. The production profile loads the
+verified 1658-row item table and uses each item's actual default stack limit
+and equipment admission. The three-item profile remains an explicit legacy
+fixture interface. Full menu topology, native controller and current dependency
+gaps are documented in `PLAYER_INVENTORY_SCREEN.md`; owned close disposition is
+documented in `PLAYER_INVENTORY_CLOSE.md`.
 
 `src/player_inventory.bend` owns the affine backing array and uses the existing
 `src/inventory.bend` checked transfer kernel. A transfer clamps to the source
@@ -17,8 +19,8 @@ permit it. These custom split/merge admission names are not assertions about
 vanilla mouse-click protocols.
 
 Creative acquisition replaces a single slot and requires the player's
-`instabuild` ability. It accepts a supported item and count 0–64; zero clears the
-slot. Modified components, unsupported item IDs and invalid indices/counts are
+`instabuild` ability. It accepts a table-backed item and count up to that item's
+actual limit; zero clears the slot. Modified components, unknown item IDs and invalid indices/counts are
 refused. Acquisition does not change either build ability. `maybuild` is a
 separate permission consumed by block interaction. Public transport has no
 operation that grants either ability.
@@ -38,12 +40,17 @@ The additive public catalog contains:
 | `inventory.selected` | none | `index`, `slot` |
 | `inventory.select` | `slot`: 0–8 | `selected` |
 | `inventory.transfer` | `source`, `destination`: 0–35; `count`: unsigned U32; `mode`: `transfer`, `split`, `merge` | `moved`; rejected transfers return a fault |
-| `inventory.acquire` | `slot`: 0–35; `item`: one of the three supported IDs; `count`: 0–64 | `acquired`; ability/state refusals return a fault |
+| `inventory.acquire` | `slot`: 0–35; `item`: verified catalog ID; `count`: unsigned U32 admitted by actual metadata | `acquired`; ability/state refusals return a fault |
 
 Empty slots are JSON `null`; occupied slots contain exact `id`, `components`
 (the empty default marker) and `count`. Duplicate/unknown fields, invalid numeric
 lexemes, omitted required fields, out-of-range values and scheduled `at` fields
 are rejected by the existing extension admission path before mutation.
+
+Public MCP reads are Public; select, transfer and acquire are DeveloperOnly
+because that API has no live player authentication. The private native-client
+wire instead uses the retained authenticated Player capability and saved
+abilities. Ordinary inventory movement does not require maybuild.
 
 `S.operations()` and `S.new()` remain the legacy record-only catalog/adoption
 contract. `S.inventory_operations()` and `S.new_inventory()` adopt the additive
@@ -57,7 +64,14 @@ When selection is zero, all 36 slots are empty and abilities are the default
 record bytes exactly. The original `Record`, storage codec, helpers and fixture
 routes are retained.
 
-Nondefault inventory uses inner root
+The production format 3 payload extends the complete inner root with equipment,
+all five additional saved ability fields (including exact raw binary32 words),
+and standalone typed generation bytes. Temporary menu ownership is excluded
+and prevents save until close returns it or a future real drop consumer takes
+ownership. Eligible legacy/default and format 2 payloads retain exact bytes.
+Decoding restores the actual saved profile without a launch-mode override.
+
+The explicit legacy nondefault format 2 interface uses inner root
 `bendex:local-player-inventory-record`. Its exact fields are `format` Int 2,
 `record` ByteArray (the complete existing LocalPlayer record), `selected` Int,
 `instabuild` and `maybuild` Boolean Bytes, and `slots` List of exactly 36
@@ -94,7 +108,8 @@ and both abilities after every transition, exact canonical bytes for accepted
 payloads, refusal without output files for malformed payloads, legacy empty
 byte equality and transient fresh/load provenance.
 
-Preparation and host corpus self-checks pass. The pure inventory source reaches
+The following ordinary-check counts describe the historical legacy generation,
+not the expanded current actor. Preparation and host corpus self-checks pass. The pure inventory source reaches
 ordinary `ALL PROOFS CHECK`; the codec and harness reach only the existing 42
 foreign durability/locking/persistence definitions. The session reaches only
 58 effect dependents, without syntax, type or law diagnostics. This is ordinary

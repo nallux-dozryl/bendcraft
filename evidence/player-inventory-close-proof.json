@@ -1,0 +1,229 @@
+{
+  "status": "ordinary-and-independent-kernel-pass",
+  "captured_utc": "2026-10-04T14:38:41.014392+00:00",
+  "production_target": "I.menu_close via S/private MenuClose",
+  "laws": [
+    "player_inventory_close_laws:false_is_not_true",
+    "player_inventory_close_laws:conjunction_left_is_true",
+    "player_inventory_close_laws:conjunction_right_is_true",
+    "player_inventory_close_laws:admitted_nat_is_equal",
+    "player_inventory_close_laws:admitted_complete_ledgers_are_equal",
+    "player_inventory_close_laws:production_plan_admission_conserves_every_item_count",
+    "player_inventory_close_laws:actual_production_return_preserves_complete_item_count_ledger",
+    "player_inventory_close_laws:refused_actual_plan_retains_complete_owned_inventory",
+    "player_inventory_close_laws:refused_return_retains_complete_owned_inventory",
+    "player_inventory_close_laws:committed_return_retains_entire_noninventory_owner",
+    "player_inventory_close_laws:closing_empty_menu_clears_only_derived_result_and_retains_owned_inventory",
+    "player_inventory_close_laws:complete_production_array_commit_and_backing_retention"
+  ],
+  "law_count": 12,
+  "logical_helpers": 5,
+  "production_contracts": 7,
+  "holes": 0,
+  "exclusions": [],
+  "source_closure": {
+    "count": 10,
+    "sha256": "772de478e7d445b8b8ef2c08071ae8b14760598fb242265bd48ca7e912095f7f",
+    "pinned_before_load_and_unchanged": true
+  },
+  "source_pins": {
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_inventory_close_proof.bend": "34dfe03dc714908a1d7d9991b6fbd530c50da5217953592dc7845e8d0d2dc5ca",
+    "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/base.bend": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_inventory.bend": "57edf9b4c289fec72afc10a926bafa7016aa428378ee04653c07398cac66d407",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/inventory.bend": "9d2be7fb88afa1dc6386ab9e8b046b15d2a2a73b7e14566e5bfad3e6dd1f2702",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_item_definitions.bend": "6a7a57f62a2df6a3f43883824c167877f16e67a1a2a95e8b2f9a3e31e60c49a9",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/png.bend": "8c24c14a250cf6dbdf0c2804e4b28bfebd7ef62ed5d9ee97a1d07094d4745f22",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/compression.bend": "255cdff06a33050c7b0a48fdea75c1842ebe2dab0439cfe4f03d126d4edc20aa",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/nbt.bend": "b677546b5fc02aaa38f5c09e5b798c0d35aec32b1c4b37cbd7042b9a1a5275e4",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_inventory_return.bend": "53f4d0cea442ebcc6abfc306f520101a01cca8e46a139ebb89930fd94a5ac3ab",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_inventory_close_laws.bend": "7ca0b35c67932c3c5e1fd9177704670f4955403c68e9e0ac647127c0d1ff34c6"
+  },
+  "compiler_implementation_unchanged": [
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/bend.ts",
+      "sha256": "7deae3693eb896f33c73867081b99d2c6f3ed3b57e77e55eb5f6260840dd0e63"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/safe.ts",
+      "sha256": "54cb3a534ab7cc9ee313bf6383b3948ccdcac022469b3020e00745bbfe6f7e04"
+    }
+  ],
+  "checked_type_proof_body_pins": [
+    {
+      "name": "player_inventory_close_laws:false_is_not_true",
+      "type_sha256": "3fbbe741913e800723a136d8f064677e1270757a210454fe139a10701939c0ac",
+      "checked_proof_sha256": "259a7c1277e7ba0d3b78344479d3a7b908d24d180e2baaf3df7e394cf53c595a",
+      "source_body_sha256": "d1675a872618d4e8be290c00f6e6520b6c9f1f259d32cb68c398054f89b2fd16"
+    },
+    {
+      "name": "player_inventory_close_laws:conjunction_left_is_true",
+      "type_sha256": "4f3742b919c2496ecefa697df75a66d3d1002586b2d5ac7cfcdb0f3d1aba4bf9",
+      "checked_proof_sha256": "4bc8f3894ba12cd1402c245f7f68b8f7b4c3a58eb74a491274dfb1bbd6f2b915",
+      "source_body_sha256": "997d459c7681e9dae4cc5406908ba451c1e7adbf3eae2000ed0661443509a8ac"
+    },
+    {
+      "name": "player_inventory_close_laws:conjunction_right_is_true",
+      "type_sha256": "9820f91625dd320bd1f6629557c4c08049edd2b7a1a508bc3281609e3b050554",
+      "checked_proof_sha256": "112adc8d796d7509d6ed6cd8f25b3fb19e8d5dad7cca35e02b9a21acc411d187",
+      "source_body_sha256": "529a6794cffcc6f84452f2dc989e5627bbaf649fffc287db32f2dbc96c8f5b2e"
+    },
+    {
+      "name": "player_inventory_close_laws:admitted_nat_is_equal",
+      "type_sha256": "0585935ac10abb333426432232a815e92c737bfed85b94d2a3548584bc65f0fa",
+      "checked_proof_sha256": "d1e8e2ea07b609f0b713edd031ab3fabf6feacae20543e4450355f60105c87a0",
+      "source_body_sha256": "eaf0efa39cdaeba9e2ca8e98cdef8e9f47cb9ab48a6a63b80ac6329775b13e44"
+    },
+    {
+      "name": "player_inventory_close_laws:admitted_complete_ledgers_are_equal",
+      "type_sha256": "4f99c753bad2320fd1ee18f3c435f2e2f1c4229dcc0d14b57a96afdd8f83e736",
+      "checked_proof_sha256": "51c5e667f53db4b822a0fe30ada2e20bd53cf458a3a65ecde7a6a3b85830619b",
+      "source_body_sha256": "fbdb71c6a605b4539ddd967956818775570f3f63362128f55ef89a06f72835e5"
+    },
+    {
+      "name": "player_inventory_close_laws:production_plan_admission_conserves_every_item_count",
+      "type_sha256": "aa86d8d5e6e36b58d0af6837dbf81e4243ad619b3ef6efd4afc9e363617e2394",
+      "checked_proof_sha256": "4a8c15c6ee6fa9f30b5058605957ace04180477f170049181f514ca6eb97287a",
+      "source_body_sha256": "013b09dd2da944fe55a1ce3ffc8a31494c5897ed8cd5f4de4d74d5fdb1deb8ed"
+    },
+    {
+      "name": "player_inventory_close_laws:actual_production_return_preserves_complete_item_count_ledger",
+      "type_sha256": "b41c8c34fab99dc802774d81dd854dd52f3091cf1ed4f81bcda92d0270535ca1",
+      "checked_proof_sha256": "d5e4f59c79f5342433a0e7b5002f19371f8173637708d87286d18f09f46aa4c7",
+      "source_body_sha256": "eb464c98fb3cbc0964fa0b00e18cc57308d70bd067d9b882ae7fc39b6086543a"
+    },
+    {
+      "name": "player_inventory_close_laws:refused_actual_plan_retains_complete_owned_inventory",
+      "type_sha256": "38b749bafc87180909ac1d7f8286bff6bce347c01d9536c0a99f5e0fb2f2737e",
+      "checked_proof_sha256": "20336a7369d7cccef85416b31500931abe2eb5214868ea08351f6119ed90ee73",
+      "source_body_sha256": "50f5eb214dfc27ccb3f2c248c89a5501cff249f6c8e8cd8937d35b3237fe4955"
+    },
+    {
+      "name": "player_inventory_close_laws:refused_return_retains_complete_owned_inventory",
+      "type_sha256": "facfe9aea0fbb9d0f6bdc6d2625b72d2aa104b84c7b94749432e6260e435f218",
+      "checked_proof_sha256": "73a87178a9b8c10d09cecf772f926c5cbd1a38427fc4676ca42769ad109654dc",
+      "source_body_sha256": "21a770989c15942204a5215cbebc3b5bebce84a5b156ccddf6de8356540bea9e"
+    },
+    {
+      "name": "player_inventory_close_laws:committed_return_retains_entire_noninventory_owner",
+      "type_sha256": "630dbe8b77851be1c89caf15f59f2f13cb7a3c55e7c7a230aaca1fe45714ddcd",
+      "checked_proof_sha256": "5480dc154cf36fd792dcf1c32435896544d6d3d7c0b73df6fcfe70c5d61411bb",
+      "source_body_sha256": "d4d6c33de452c37a101d0d5b5ca3fc087aa3d26e4b4aebb666b20e2c87e74ab0"
+    },
+    {
+      "name": "player_inventory_close_laws:closing_empty_menu_clears_only_derived_result_and_retains_owned_inventory",
+      "type_sha256": "076435e02269a3f7c212f1e61c729a252783471c597ac25966a8cca45b7e4dbe",
+      "checked_proof_sha256": "8c71fe7629ee4198af34171df38339b3af4dc263b04f4a552847646ce9ee16ef",
+      "source_body_sha256": "4bc875e6548fdf9b3211f8ca87827774dcafdd973fa261ba7e6144a5fb3264bc"
+    },
+    {
+      "name": "player_inventory_close_laws:complete_production_array_commit_and_backing_retention",
+      "type_sha256": "3bb0145c047e15342f0367516d2a9f51acbe1b4bb3e28030579d6da20e8cc60f",
+      "checked_proof_sha256": "951abd35c193ccbef62f8092afae96445a6ef872d6dd9870ff41fe403886a277",
+      "source_body_sha256": "659562138d558cd65e5e2cbf311448272bd242411bfd3b2075e3b22d509c3624"
+    }
+  ],
+  "export": {
+    "argv": [
+      "/opt/homebrew/bin/node",
+      "--stack-size=4096",
+      "--max-old-space-size=4096",
+      "--experimental-transform-types",
+      "--input-type=module",
+      "--eval"
+    ],
+    "script_path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-inventory-screen/close-selective-export-001/executed-inline-source.mjs",
+    "script_sha256": "6ff3bbf783240805863b89dbc16cdab29eb0eb82c789efbbda424be72ec48d69",
+    "mode": "export",
+    "pid": 7828,
+    "process_group_absent": true,
+    "returncode": 0,
+    "seconds": 5.199933166615665,
+    "timed_out": false,
+    "stdout_sha256": "7d81057a31b868b52a76837c02d4598c6e1b5569cf457f9f596125a5b9f43fd4",
+    "stderr_sha256": "69c24849775cafb6909deae55ef2da72426beb7d2bfc4196bdf2b3765f76b2f4",
+    "emitted_sha256": "26f623f358f7cb57fca40481d533f587cc6994facb8da69e02f4f3ab4f6fa576",
+    "emitted_bytes": 118723
+  },
+  "kernel": {
+    "argv": [
+      "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-inventory-screen/close-selective-export-001/selected.bendtt"
+    ],
+    "script_path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-inventory-screen/close-selective-export-001/executed-inline-source.mjs",
+    "script_sha256": "6ff3bbf783240805863b89dbc16cdab29eb0eb82c789efbbda424be72ec48d69",
+    "mode": "kernel",
+    "pid": 7965,
+    "process_group_absent": true,
+    "returncode": 0,
+    "seconds": 2.066546875052154,
+    "timed_out": false,
+    "stdout_sha256": "61b73cda11b6b665b9f99f2defd3d3b57f985c865225e942a5bdaa594a503e47",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "emitted_sha256": "26f623f358f7cb57fca40481d533f587cc6994facb8da69e02f4f3ab4f6fa576",
+    "emitted_bytes": 118723
+  },
+  "ordinary": {
+    "proof": {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/player_inventory_close_proof.bend",
+        "--check-only"
+      ],
+      "pid": 7126,
+      "returncode": 0,
+      "seconds": 3.974088958464563,
+      "timed_out": false,
+      "source_sha256": "34dfe03dc714908a1d7d9991b6fbd530c50da5217953592dc7845e8d0d2dc5ca",
+      "source_unchanged": true,
+      "stdout_sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "harness": {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/player_inventory_close.bend",
+        "--check-only"
+      ],
+      "pid": 7333,
+      "returncode": 0,
+      "seconds": 4.178858749568462,
+      "timed_out": false,
+      "source_sha256": "1701e15d346ab2a4a7a4ec67c93442e8cb03fafee400edc641e363cf5d32fca0",
+      "source_unchanged": true,
+      "stdout_sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "fixture_preparation": {
+    "cases": 29,
+    "java_returnable": 16,
+    "capacity_refusal": 6,
+    "raw_profile_retention": 3,
+    "derived_cache": 4,
+    "all64_cells_and_all_saved_ability_values": true,
+    "expected_sha256": "40b11a03721c07e5218290fdc06502cd855d4405ed8f78a4128bca06932d1b7c",
+    "reference": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/player_inventory_close.json",
+      "sha256": "e9d95f3521fa3a9e72281b998c3731696e878c4f96b5b11e01e4b7fa3db28ce4",
+      "observations_sha256": "6c5c54ac766fa6d765e28a70f01cfe755baf19fbb1eb6ce112d6560ae4915035"
+    }
+  },
+  "semantic_boundaries": [
+    "Actual whole ServerPlayer lifecycle/drop consumer is not executed",
+    "No Bend item-entity/drop ownership receiver exists; unreturnable close atomically retains the entire original owner",
+    "The conservation theorem certifies complete item-count ledger equality under the actual production admission guard, not unconditional capacity availability",
+    "Native/transport/save/OS boundaries remain separate generation-specific checks"
+  ],
+  "raw_receipts": {
+    "build/player-inventory-screen/close-selective-export-001/selection.json": "82505b3ca8a2a0b74e2dc32199e01a01d5e092b763e199b6ea8f148a421f84c9",
+    "build/player-inventory-screen/close-selective-export-001/scope.json": "096eba7c600446a2f906369a6ff747804a51b9ad3153ca10d9a1d673e416b337",
+    "build/player-inventory-screen/close-selective-export-001/selected.bendtt": "26f623f358f7cb57fca40481d533f587cc6994facb8da69e02f4f3ab4f6fa576",
+    "build/player-inventory-screen/close-selective-export-001/export.receipt.json": "ba0257500f33aacd0ea4f12ed5f46138e71b2a2f3dd79b0b9594478b5b3dee36",
+    "build/player-inventory-screen/close-selective-export-001/kernel.receipt.json": "a6948ae1ee1c261449d75e7a12c87dcb3c04bb6096fed58bebed1a6f96b87f85",
+    "build/player-inventory-screen/close-selective-export-001/executed-inline-source.mjs": "6ff3bbf783240805863b89dbc16cdab29eb0eb82c789efbbda424be72ec48d69"
+  },
+  "focused_native_evidence": {
+    "path": "evidence/player-inventory-close-native.json",
+    "sha256": "b8cdc6049e44e9f4cee406e9dfa2d531cea5d9bf687f460b6e9da4062aa29181"
+  }
+}

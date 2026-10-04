@@ -137,3 +137,52 @@ Interruption/communication failure kills and reaps the JVM, with a bounded
 split/merge admission, same-slot transfer, menu clicks, quickMoveStack, equipment,
 modified components, other items, creative acquisition and filesystem persistence
 remain unverified.
+
+## Menu-close return receiver
+
+The additive `--profile menu-close` corpus has 26 actual cases: 18 direct
+`Inventory.placeItemBackInInventory(stack,false,Prediction.SERVER_ONLY)` calls,
+four normal LocalPlayer `InventoryMenu.removed` calls and four ordered return
+receiver sequences. Fresh extraction exited 0 in 6.222263 seconds; fresh-process
+reproduction exited 0 in 4.005021 seconds. All 4,355 loaded official classes matched
+the pinned 26.3 client JAR. Observation seal:
+`6c5c54ac766fa6d765e28a70f01cfe755baf19fbb1eb6ce112d6560ae4915035`.
+The separate artifact is `reference/player_inventory_close.json`; the extraction
+and reproduction receipts are `evidence/player-inventory-close-reference-extract.json`
+and `evidence/player-inventory-close-reference-reproduce.json`.
+
+The executed return receiver merges into the selected slot first, then offhand,
+then ascending main slots 0–35. Only after compatible stacks have no room does
+it choose the first empty main slot. Empty equipment/offhand cells are not
+available main slots. Both survival and creative use this order and retain a
+source remainder when this normal LocalPlayer context cannot transfer it into
+inventory. Limits 16 and 1 were observed using ender pearls and shields. A full
+inventory retains source 17 in both modes; one available stone cell in a
+stone 63 stack receives 1 and leaves source 16. Creative does not destroy that
+remainder in this actual receiver.
+
+JDK `javap` runs through its ToolProvider inside the same bounded JVM, against
+the same pinned classpath. Its exact bytecode establishes server close ordering:
+`AbstractContainerMenu.removed` returns carried ownership for a ServerPlayer;
+`InventoryMenu.removed` then clears the derived result and, on the server branch,
+returns crafting cells 0–3. The executed four ordered sequences call the actual
+return receiver in this order. This is executed insertion evidence plus static
+server composition evidence; no ServerPlayer world/lifecycle/drop receiver is
+fabricated. The four actual LocalPlayer `removed` cases exercise the client
+branch and correctly retain temporary items, so they are excluded from Bend
+server-close comparisons.
+
+The producer uses one 512 MiB JVM with a 60-second cap and 10-second cleanup:
+
+```sh
+python3 tools/reference_player_inventory_probe.py --profile menu-close --mode extract
+python3 tools/reference_player_inventory_probe.py --profile menu-close --mode reproduce
+```
+
+No actual Bend item-entity/drop consumer exists. Its production close therefore
+matches the 16 returnable receiver cases and atomically refuses the six
+capacity-exhausted cases, retaining the entire original owner. Those refusals
+are an explicit current ownership limitation, not a vanilla world-drop parity
+claim. `tools/test_player_inventory.py:close_suite` also prepares three saved
+raw-word/permission-retention cases and four derived-output disposition cases;
+these additional cases are not relabeled Java observations.

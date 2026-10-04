@@ -1,0 +1,154 @@
+{
+  "status": "focused-production-close-native-pass",
+  "captured_utc": "2026-10-04T14:42:10.632433+00:00",
+  "generation_scope": "Actual current I.menu_close; immutable actor002/render003 are earlier generations",
+  "production_target": "src/player_inventory.bend",
+  "test_consumer": "tests/player_inventory_close.bend",
+  "comparison": {
+    "cases": 29,
+    "java_returnable_cases": 16,
+    "atomic_capacity_refusal_cases": 6,
+    "additional_profile_retention_cases": 3,
+    "derived_cache_disposition_cases": 4,
+    "all64_backing_cells_and_all_saved_ability_words_compared": true,
+    "expected_sha256": "40b11a03721c07e5218290fdc06502cd855d4405ed8f78a4128bca06932d1b7c",
+    "reference": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/player_inventory_close.json",
+      "sha256": "e9d95f3521fa3a9e72281b998c3731696e878c4f96b5b11e01e4b7fa3db28ce4",
+      "observations_sha256": "6c5c54ac766fa6d765e28a70f01cfe755baf19fbb1eb6ce112d6560ae4915035"
+    },
+    "process": {
+      "receipt": {
+        "path": "build/player-inventory-close-native-001/processes/player-inventory-close/execution.json",
+        "file": "execution.json",
+        "bytes": 21692,
+        "sha1": "ce6516456640404083f14cec65ff84aa85155ac9",
+        "sha256": "f4d629490e15e63414761a3cbe91f74a91287ab2091c294a9514bf49d7837417"
+      },
+      "binary_sha256": "e0b9d98a7b5020f0a16784e0cafacf5d32faa30a41f5bcefecd396d4fbd776e9",
+      "seconds": 1.9491192502900958
+    },
+    "excluded": "whole ServerPlayer lifecycle, world-owned item drops, client removed no-op branch"
+  },
+  "source_pins": {
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_inventory.bend": "57edf9b4c289fec72afc10a926bafa7016aa428378ee04653c07398cac66d407",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_inventory_return.bend": "53f4d0cea442ebcc6abfc306f520101a01cca8e46a139ebb89930fd94a5ac3ab",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/inventory.bend": "9d2be7fb88afa1dc6386ab9e8b046b15d2a2a73b7e14566e5bfad3e6dd1f2702",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_item_definitions.bend": "6a7a57f62a2df6a3f43883824c167877f16e67a1a2a95e8b2f9a3e31e60c49a9",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_item_catalog.bend": "1337d82cc70e28b5aab552dc178401549602b6461e1ffe95d29f1eb09bed55a3",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_item_table.bend": "92ffa8bcf3b2a66e876a9485e2efc986817d8aa292c4232bc24908c65e1ebe05",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_inventory_close.bend": "1701e15d346ab2a4a7a4ec67c93442e8cb03fafee400edc641e363cf5d32fca0",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_player_inventory.py": "0b200f610216d79d16542808cedacd5e0bf7c0655ef82e3fbf5176be22b0235b",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/build_native.py": "3418c78cddc092aec55c7447a818735569b5b279d3bc4b05e3c0077624387c18",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_fall_reset_world_continuation_r2.py": "c2580703b97e4f698153e6dbbd3d9d48ae1c50f3d6b3fbc5e727d0bc39cdfa14",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_item_metadata.tsv": "1cf2669ac760fed886b33d19b12e4782d5011c68c629d22328147d8a9a9bfa22",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/player_inventory_close.json": "e9d95f3521fa3a9e72281b998c3731696e878c4f96b5b11e01e4b7fa3db28ce4"
+  },
+  "sources_unchanged": true,
+  "builder": "Existing build_native.ensure_native ordinary CPU route with existing FRR2 no-retry binding, bounded capture/journal/cleanup",
+  "cache_hit": false,
+  "retries": 0,
+  "timings": {
+    "total_seconds": 14.63041037414223,
+    "emission_seconds": 4.459715500473976,
+    "native_seconds": 6.694747583009303
+  },
+  "binary": {
+    "artifact": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-inventory-close-native-001/native-cache/artifacts/e0b9d98a7b5020f0a16784e0cafacf5d32faa30a41f5bcefecd396d4fbd776e9/program",
+    "sha256": "e0b9d98a7b5020f0a16784e0cafacf5d32faa30a41f5bcefecd396d4fbd776e9",
+    "bytes": 1393768
+  },
+  "emitted_c_sha256": "2e75416d8f4de2ddef868477c565a4eedfbef402270a9aab3eb247c1f4b09fef",
+  "builder_dependency_count": 1644,
+  "complete_dependency_manifest": "build/player-inventory-close-native-001/native-build.json",
+  "build": {
+    "pid": 8909,
+    "pgid": 8909,
+    "exit_code": 0,
+    "timed_out": false,
+    "seconds": 14.771258332766593,
+    "cap_seconds": 600,
+    "cleanup": {
+      "deadline_monotonic": 5698238.594257,
+      "errors": [],
+      "had_lingering_after_leader_exit": false,
+      "leader_reaped": true,
+      "rows": [
+        {
+          "after_absent": true,
+          "before_absent": true,
+          "errors": [],
+          "pgid": 8909
+        }
+      ],
+      "scope": "Observed managed groups only. Unobserved descendants that escape/reparent between snapshots are not authenticated.",
+      "seconds": 0.0193274999037385,
+      "status": "passed",
+      "unknown_groups": [],
+      "verified": true
+    }
+  },
+  "native": {
+    "pid": 9146,
+    "pgid": 9146,
+    "exit_code": 0,
+    "timed_out": false,
+    "seconds": 1.9491192502900958,
+    "cap_seconds": 60,
+    "cleanup": {
+      "deadline_monotonic": 5698240.553764333,
+      "errors": [],
+      "had_lingering_after_leader_exit": false,
+      "leader_reaped": true,
+      "rows": [
+        {
+          "after_absent": true,
+          "before_absent": true,
+          "errors": [],
+          "pgid": 9146
+        }
+      ],
+      "scope": "Observed managed groups only. Unobserved descendants that escape/reparent between snapshots are not authenticated.",
+      "seconds": 0.018782082945108414,
+      "status": "passed",
+      "unknown_groups": [],
+      "verified": true
+    }
+  },
+  "final_cleanup": {
+    "deadline_monotonic": 5698240.575554583,
+    "errors": [],
+    "rows": [
+      {
+        "after_absent": true,
+        "before_absent": true,
+        "errors": [],
+        "pgid": 8909
+      },
+      {
+        "after_absent": true,
+        "before_absent": true,
+        "errors": [],
+        "pgid": 9146
+      }
+    ],
+    "scope": "Observed managed groups only. Unobserved descendants that escape/reparent between snapshots are not authenticated.",
+    "status": "passed",
+    "unknown_groups": []
+  },
+  "raw_receipts": {
+    "build/player-inventory-close-native-001/receipt.json": "5e3f1cba7e9224619d0901641358ba3aca8c7a7d9e9b595cf5deb280435722a0",
+    "build/player-inventory-close-native-001/native-build.json": "85bd6d96b0468014f3830699322a0d2014523345d1f23d0faa9ef4fd09b22f7e",
+    "build/player-inventory-close-native-001/owned-groups.jsonl": "022864c9b55b8f6cd86a1f908a16a836ed374a3a727215b3eaf7a3b5eab8ae23",
+    "build/player-inventory-close-native-001/final-cleanup.json": "446f5fc41e841a9438d9b91d6684ee05ba6039acbcdaae918a36744ad5c4bba9",
+    "build/player-inventory-close-native-001/processes/build/execution.json": "b693f7676ad66acf425af4bab6579417b34d50238a92aa3777c3b9f8b09da4f9",
+    "build/player-inventory-close-native-001/processes/player-inventory-close/execution.json": "f4d629490e15e63414761a3cbe91f74a91287ab2091c294a9514bf49d7837417",
+    "build/player-inventory-close-native-001/executed-build-child.py": "f32ceb3bbcd759a12e04a98efa4bf11170159dddeef214169bbab770612b0a78",
+    "build/player-inventory-close-native-001/executed-supervisor.py": "d106e5dbc9adacbb5fb3ec94efb311b7ff2a8ba4912d91077855b61e01f06ea7"
+  },
+  "limits": [
+    "Whole ServerPlayer lifecycle and real item-entity drops are not claimed",
+    "Private wire/backend/world.save composition of these new close semantics requires the next actor generation",
+    "Native Screen/OS input behavior is a separate presentation generation"
+  ]
+}
