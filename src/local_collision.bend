@@ -394,8 +394,8 @@ def edge_begin_active(body: M.Body, requested: M.Vec3, context: EdgeContext,
 
 def edge_begin(body: M.Body, +requested: M.Vec3, +context: EdgeContext) -> Result<&2, &2, Error, EdgeProgress>:
   M.Vec3{x, +y, z} = requested
-  EdgeContext{maximum, fall, flying, +keys, mover, mode} = context
-  edge_begin_active(body, requested, context, Bool.not(F.is_gt(y, zero())) && shift(keys))
+  EdgeContext{maximum, fall, +flying, +keys, mover, mode} = context
+  edge_begin_active(body, requested, context, Bool.not(flying) && Bool.not(F.is_gt(y, zero())) && shift(keys))
 
 def bool_error(bad: Bool, error: Error) -> Maybe<&2, Error>:
   match bad:
@@ -412,10 +412,10 @@ def edge_error(+body: M.Body, requested: M.Vec3, context: EdgeContext) -> Maybe<
   EdgeContext{+maximum, +fall, flying, keys, mover, mode} = context
   +step = F.from_f32(maximum)
   first_error(mode_error(mode), first_error(mover_error(mover),
-    first_error(bool_error(flying, FlyingAbility{}), first_error(body_error(M.Body.invalid(body)),
+    first_error(body_error(M.Body.invalid(body)),
     first_error(body_error(M.bounds_error(0, 0, box)), first_error(input_error(M.Vec3.invalid_field(requested)),
     first_error(bool_error(Bool.not(F.is_finite(step) && F.is_ge(step, zero())), InvalidStep{}),
-      bool_error(Bool.not(F.is_finite(fall)), InvalidFallDistance{}))))))))
+      bool_error(Bool.not(F.is_finite(fall)), InvalidFallDistance{})))))))
 
 def edge_begin_gate(body: M.Body, requested: M.Vec3, context: EdgeContext, error: Maybe<&2, Error>) -> Result<&2, &2, Error, EdgeProgress>:
   match error:

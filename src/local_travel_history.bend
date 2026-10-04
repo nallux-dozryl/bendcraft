@@ -639,3 +639,111 @@ law reset_finish_failure_restores_preparation_anchor:
 
 def reset_finish_failure_restores_preparation_anchor(world, tables, support, minor, history, work, cause):
   {==}
+
+
+# Status-aware dispatcher shares the actual move/supplier/finish and rollback
+# helpers. The original neutral dispatcher and its generic laws remain exact.
+def ability_reset_apply_history(history_mode:H.Mode,world: W.State, tables: L.Tables, support: SP.State,
+                        minor: LM.MinorState, +work: ResetWork, clip: H.Clip) -> MH.State & L.Tables & Result<&2, &2, ResetError, ResetOutcome>:
+  reset_history_finished(world, tables, support, minor, work,
+    H.movement(history_mode, MH.movement_from(MH.outcome_transition(reset_work_move(work)), clip),
+      H.State{frame_history(reset_stage_frame(reset_work_stage(work)))}))
+
+
+def ability_reset_supplied(history_mode:H.Mode,tables: L.Tables, support: SP.State, minor: LM.MinorState,
+                   work: ResetWork, result: W.State & Result<&2, &2, FR.Error, FR.Observation>) -> MH.State & L.Tables & Result<&2, &2, ResetError, ResetOutcome>:
+  (world, status) = result
+  match status:
+    case Fail{cause}: reset_rollback(world, tables, reset_stage_frame(reset_work_stage(work)), ResetSupplierError{cause})
+    case Done{+observation}:
+      ability_reset_apply_history(history_mode,world, tables, support, minor, reset_with_observation(work, observation), FR.observation_clip(observation))
+
+
+def ability_reset_requirement(history_mode:H.Mode,world: W.State, tables: L.Tables, support: SP.State,
+                      minor: LM.MinorState, +work: ResetWork, required: Bool) -> MH.State & L.Tables & Result<&2, &2, ResetError, ResetOutcome>:
+  match required:
+    case False{}: ability_reset_apply_history(history_mode,world, tables, support, minor, work, H.NotRequired{})
+    case True{}:
+      ability_reset_supplied(history_mode,tables, support, minor, work,
+        FR.clip_checked(world, reset_ray_request(reset_work_stage(work), MH.outcome_transition(reset_work_move(work)))))
+
+
+def ability_reset_metadata_checked(history_mode:H.Mode,world: W.State, tables: L.Tables, support: SP.State,
+                           minor: LM.MinorState, +work: ResetWork,
+                           error: Maybe<&2, H.Error>) -> MH.State & L.Tables & Result<&2, &2, ResetError, ResetOutcome>:
+  match error:
+    case Some{cause}: reset_rollback(world, tables, reset_stage_frame(reset_work_stage(work)), ResetHistoryError{cause})
+    case None{}:
+      ability_reset_requirement(history_mode,world, tables, support, minor, work,
+        reset_is_required(frame_history(reset_stage_frame(reset_work_stage(work))), MH.outcome_transition(reset_work_move(work))))
+
+
+def ability_reset_moved(history_mode:H.Mode,+stage: ResetStage,
+                result: W.State & L.Tables & SP.State & LM.MinorState & Result<&2, &2, LM.Error, LM.Outcome>) -> MH.State & L.Tables & Result<&2, &2, ResetError, ResetOutcome>:
+  (world, tables, support, minor, status) = result
+  match status:
+    case Fail{cause}: reset_rollback(world, tables, reset_stage_frame(stage), ResetTravelError{MovementError{MH.MoveError{cause}}})
+    case Done{+move}:
+      ability_reset_metadata_checked(history_mode,world, tables, support, minor, ResetWork{stage, move, None{}, []},
+        H.movement_error(MH.movement_from(MH.outcome_transition(move), H.NotRequired{})))
+
+
+def ability_reset_prepared(history_mode:H.Mode,engine: G.Engine, +frame: Frame, policy: ResetPolicy,
+                   result: L.Tables & Result<&2, &2, T.Error, T.Prepared>) -> MH.State & L.Tables & Result<&2, &2, ResetError, ResetOutcome>:
+  (tables, status) = result
+  match status:
+    case Fail{cause}: reset_rollback_taken(tables, frame, ResetTravelError{PreparationError{cause}}, (engine, frame_view(frame)))
+    case Done{+value}:
+      ability_reset_moved(history_mode,ResetStage{frame, policy, Preparation{value, []}, []},
+        LM.move_checked(W.attach(engine, with_body(frame_view(frame), prepared_body(value))), tables,
+          frame_support(frame), frame_minor(frame), reset_move_request(frame, value)))
+
+
+def ability_reset_initial_history(history_mode:H.Mode,engine: G.Engine, tables: L.Tables, +frame: Frame,
+                          policy: ResetPolicy, error: Maybe<&2, H.Error>) -> MH.State & L.Tables & Result<&2, &2, ResetError, ResetOutcome>:
+  match error:
+    case Some{cause}: reset_rollback_taken(tables, frame, ResetHistoryError{cause}, (engine, frame_view(frame)))
+    case None{}:
+      ability_reset_prepared(history_mode,engine, frame, policy,
+        T.prepare_checked(tables, view_body(frame_view(frame)), request_input(frame_request(frame)), request_context(frame_request(frame))))
+
+
+def ability_reset_extracted(history_mode:H.Mode,tables: L.Tables, support: SP.State, minor: LM.MinorState,
+                     +history: H.History, request: Request, policy: ResetPolicy,
+                     result: G.Engine & W.View) -> MH.State & L.Tables & Result<&2, &2, ResetError, ResetOutcome>:
+  (engine, view) = result
+  ability_reset_initial_history(history_mode,engine, tables, Frame{view, support, minor, history, request, []}, policy, H.history_error(history))
+
+
+def ability_reset_canonical_state(history_mode:H.Mode,state: MH.State, tables: L.Tables, request: Request,
+                           policy: ResetPolicy) -> MH.State & L.Tables & Result<&2, &2, ResetError, ResetOutcome>:
+  match state:
+    case MH.State{world, support, minor, H.State{history}, Nil{}}:
+      ability_reset_extracted(history_mode,tables, support, minor, history, request, policy, W.take(world))
+    case MH.State{world, support, minor, history, tail}:
+      (MH.State{world, support, minor, history, tail}, tables, Fail{ResetTravelError{NonCanonicalState{}}})
+
+
+def ability_reset_policy_gate(history_mode:H.Mode,state: MH.State, tables: L.Tables, request: Request,
+                       policy: ResetPolicy) -> MH.State & L.Tables & Result<&2, &2, ResetError, ResetOutcome>:
+  match policy:
+    case ResetPolicy{interior, work, profile, Nil{}}:
+      ability_reset_canonical_state(history_mode,state, tables, request, ResetPolicy{interior, work, profile, []})
+    case _: (state, tables, Fail{ResetTravelError{NonCanonicalRequest{2}}})
+
+
+def ability_reset_hooks_gate(history_mode:H.Mode,state: MH.State, tables: L.Tables, input: M.Vec3,
+                      context: T.Context, hooks: Hooks, policy: ResetPolicy) -> MH.State & L.Tables & Result<&2, &2, ResetError, ResetOutcome>:
+  match hooks:
+    case Hooks{keys, axes, flying, mode, simulate, authority, stuck, removed, auto, speed, restitution, environment, fuel, Nil{}}:
+      ability_reset_policy_gate(history_mode,state, tables,
+        Request{input, context, Hooks{keys, axes, flying, mode, simulate, authority, stuck, removed, auto, speed, restitution, environment, fuel, []}, H.NotRequired{}, []}, policy)
+    case _: (state, tables, Fail{ResetTravelError{NonCanonicalRequest{1}}})
+
+
+def ability_travel_with_reset_checked(history_mode:H.Mode,state: MH.State, tables: L.Tables,
+                              request: ResetRequest) -> MH.State & L.Tables & Result<&2, &2, ResetError, ResetOutcome>:
+  match request:
+    case ResetRequest{input, context, hooks, policy, Nil{}}: ability_reset_hooks_gate(history_mode,state, tables, input, context, hooks, policy)
+    case _: (state, tables, Fail{ResetTravelError{NonCanonicalRequest{0}}})
+

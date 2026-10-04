@@ -140,9 +140,9 @@ def sprint_commands(+can_start: Bool, old_forward: Bool, trigger: U32, key: Bool
 
 def controls_sample(state: State, +current: Bool, context: Context, sample: PI.Sample) -> Controls:
   State{+old, +old_move, trigger, old_crouch, x, y, xo, yo} = state
-  Context{standing, crouching, food, Abilities{+mayfly, flying}, mobility, horizontal, minor, window, pose, mode} = context
+  Context{standing, crouching, food, Abilities{+mayfly, +flying}, mobility, horizontal, minor, window, pose, mode} = context
   PI.Sample{+next, move, +next_forward} = sample
-  +crouching_now = crouch(old, standing, crouching)
+  +crouching_now = Bool.not(flying) && crouch(old, standing, crouching)
   +allowed = possible(food, mayfly, mobility)
   +eligible = can_start(current, next_forward, allowed, crouching_now)
   +old_forward = forward(old_move)
@@ -275,8 +275,7 @@ def pose_error(pose: Pose) -> Maybe<&2, Error>:
 
 def abilities_error(abilities: Abilities) -> Maybe<&2, Error>:
   match abilities:
-    case Abilities{False{}, False{}}: None{}
-    case _: Some{UnsupportedAbilities{}}
+    case Abilities{mayfly, flying}: None{}
 
 def context_error(context: Context) -> Maybe<&2, Error>:
   Context{standing, crouching_now, food, abilities, mobility, horizontal, minor, window, pose, mode} = context
@@ -338,10 +337,17 @@ def prepare_applied(tables: L.Tables, applied: State & P.State, context: P.Conte
   (+local, +player) = applied
   applied_gate(tables, local, player, context, first_error(state_error(local), player_error(P.state_error(player))))
 
+def prepare_ability(local: State, +context: ApplyContext, read: L.Tables & P.State) -> L.Tables & Result<&2, &2, Error, PreTravel>:
+  ApplyContext{tick, sneak, pitch} = context
+  (tables, player) = read
+  prepare_applied(tables, applied_state(local, cleaned_state(player), context), tick)
+
+
 def prepare(tables: L.Tables, controls: Controls, player: P.State, +context: ApplyContext) -> L.Tables & Result<&2, &2, Error, PreTravel>:
   Controls{local, sprinting, updates} = controls
   ApplyContext{tick, sneak, pitch} = context
-  prepare_applied(tables, applied_state(local, cleaned_state(player), context), tick)
+  prepare_ability(local, context, P.local_ability_input(tables, player, tick))
+
 
 def prepare_gate(tables: L.Tables, controls: Controls, player: P.State, +context: ApplyContext, error: Maybe<&2, Error>) -> L.Tables & Result<&2, &2, Error, PreTravel>:
   match error:

@@ -12,6 +12,7 @@ type State is Type:
 # reducer cannot infer water, abilities, effects or callback behavior from ground.
 type Mode is Data:
   NeutralDryNoDamage{}
+  DryImmuneLanding{}
   NoPhysics{}
   WaterOrFluid{}
   FlightOrPassenger{}
@@ -111,11 +112,40 @@ def movement_clip(state: State, movement: Movement) -> State & Result<&2, &2, Er
     case State{History{+distance}} Movement{+applied, +y, +squared, +ground, +clip}:
       movement_ready(State{History{distance}}, distance, Movement{applied, y, squared, ground, clip}, clip_error(clip_required(distance, applied, squared), clip))
 
+def immune_finite(original: State, distance: F.F64, ground: Bool,
+                  finite: Bool) -> State & Result<&2, &2, Error, Unit>:
+  match finite:
+    case False{}: (original, Fail{NonFiniteResult{}})
+    case True{}: finish_ground(original, distance, ground, True{})
+
+
+def immune_ready(original: State, +distance: F.F64, movement: Movement,
+                 error: Maybe<&2, Error>) -> State & Result<&2, &2, Error, Unit>:
+  match movement error:
+    case _ Some{error}: (original, Fail{error})
+    case Movement{applied, y, squared, ground, clip} None{}:
+      +next = accumulate(distance, y)
+      immune_finite(original, next, ground, F.is_finite(next))
+
+
+
+def immune_clip(state: State, movement: Movement) -> State & Result<&2, &2, Error, Unit>:
+  match state movement:
+    case State{History{+distance}} Movement{+applied, +y, +squared, +ground, +clip}:
+      immune_ready(State{History{distance}}, distance, Movement{applied, y, squared, ground, clip},
+        clip_error(clip_required(distance, applied, squared), clip))
+
+
 def movement_mode(mode: Mode, state: State, movement: Movement) -> State & Result<&2, &2, Error, Unit>:
   match mode:
     case NeutralDryNoDamage{}: movement_clip(state, movement)
+    case DryImmuneLanding{}: immune_clip(state, movement)
     case NoPhysics{}: (state, Done{Unit{}})
     case _: (state, Fail{UnsupportedMode{mode}})
+
+# Player.causeFallDamage returns false for mayfly even when flying is false.
+# Entity.move still performs the same reset-ray gate and downward accumulation.
+
 
 def movement_gate(mode: Mode, state: State, movement: Movement, error: Maybe<&2, Error>) -> State & Result<&2, &2, Error, Unit>:
   match error:

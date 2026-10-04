@@ -412,14 +412,37 @@ def rotation_finished(motion: MH.State, tables: L.Tables, +metadata: Metadata,
     case Fail{cause}: rollback(motion, tables, work_frame(work), RotationError{cause})
     case Done{unit}: late_pose(motion, tables, with_controls(metadata, with_look(controls(metadata), look)), work)
 
+def install_finished_taken(body:M.Body,support:SP.State,minor:LM.MinorState,history:H.State,
+                           tail:List<&1,MH.State>,result:G.Engine & W.View) -> MH.State:
+  (engine,view) = result
+  MH.State{W.attach(engine,with_body(view,body)),support,minor,history,tail}
+
+
+def install_finished_gate(motion:MH.State,player:P.State,flying:Bool) -> MH.State:
+  match motion player flying:
+    case motion _ False{}: motion
+    case MH.State{world,support,minor,history,tail} P.State{body,input,jumping,delay,trigger,sync,speed,head} True{}:
+      install_finished_taken(body,support,minor,history,tail,W.take(world))
+
+
+
+def install_finished_body(motion:MH.State,player:P.State,context:P.Context) -> MH.State:
+  P.Context{travel,strength,factor,affected,mode} = context
+  install_finished_gate(motion,player,P.mode_flying(mode))
+
+
+
 def player_finished(motion: MH.State, tables: L.Tables, +work: Work,
                     result: Result<&2, &2, P.Error, P.Transition>) -> State & Result<&2, &2, Error, Observation>:
   match result:
     case Fail{cause}: rollback(motion, tables, work_frame(work), FinishError{cause})
-    case Done{P.Transition{player, transition, attempted, jumped}}:
+    case Done{P.Transition{+player, transition, attempted, jumped}}:
       +next = with_player(work_metadata(work), PR.metadata(player))
-      rotation_finished(motion, tables, next, work,
+      rotation_finished(install_finished_body(motion,player,work_context(work)), tables, next, work,
         Rotation.normalize(request_rotation_fuel(frame_request(work_frame(work))), Rotation.State{PR.look(controls(next)), entity_count(entity(next))}))
+
+# In the neutral path TH already owns this same body. Flight's outer Player
+# override must be committed into that sole owner before rotation/late pose.
 
 def traveled(+work: Work, result: MH.State & L.Tables & Result<&2, &2, TH.Error, TH.Outcome>) -> State & Result<&2, &2, Error, Observation>:
   (motion, tables, status) = result
@@ -1540,15 +1563,39 @@ def reset_stage_traveled(+work:Work,
     case Done{outcome}: player_finished(motion,tables,work,
       P.finish_checked(work_prepared(work),work_context(work),TH.reset_outcome_transition(outcome)))
 
+def ability_history_gate(history:H.History,flying:Bool) -> H.History:
+  match flying:
+    case False{}: history
+    case True{}: H.History{M.zero()}
+
+
+def ability_history(history:H.History,mode:P.Mode) -> H.History:
+  ability_history_gate(history,P.mode_flying(mode))
+
+
+
+def ability_history_mode_gate(mayfly:Bool) -> H.Mode:
+  match mayfly:
+    case False{}: H.NeutralDryNoDamage{}
+    case True{}: H.DryImmuneLanding{}
+
+
+def ability_history_mode(mode:P.Mode) -> H.Mode:
+  ability_history_mode_gate(P.mode_mayfly(mode))
+
+
+
 def reset_stage_travel_started(engine:G.Engine,candidate:W.View,tables:L.Tables,
                                +work:Work,policy:TH.ResetPolicy) -> State & Result<&2,&2,Error,Observation>:
   Work{+frame,+metadata,early,updates,+prepared,+context,tail} = work
-  P.Context{travel,strength,factor,affected,mode} = context
-  reset_stage_traveled(work,TH.travel_with_reset_checked(
-    MH.State{W.attach(engine,with_body(candidate,prepared_body(prepared))),frame_support(frame),frame_minor(frame),H.State{frame_history(frame)},[]},tables,
+  P.Context{travel,strength,factor,affected,+mode} = context
+  reset_stage_traveled(work,TH.ability_travel_with_reset_checked(ability_history_mode(mode),
+    MH.State{W.attach(engine,with_body(candidate,prepared_body(prepared))),frame_support(frame),frame_minor(frame),H.State{ability_history(frame_history(frame),mode)},[]},tables,
     TH.ResetRequest{prepared_input(prepared),travel,
-      TH.Hooks{keys(local(metadata)),processed_input(prepared),False{},LC.NeutralDry{},True{},True{},
+      TH.Hooks{keys(local(metadata)),processed_input(prepared),P.mode_flying(mode),LC.NeutralDry{},True{},True{},
         M.Vec3{M.zero(),M.zero(),M.zero()},False{},False{},True{},True{},request_environment(frame_request(frame)),request_movement_fuel(frame_request(frame)),[]},policy,[]}))
+
+
 
 def reset_stage_prepared(engine:G.Engine,candidate:W.View,+frame:Frame,+decision:LI.Controls,
                          context:P.Context,early:List<&2,PPW.QueryRecord>,policy:TH.ResetPolicy,

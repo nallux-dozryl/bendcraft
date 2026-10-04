@@ -43,6 +43,8 @@ REFUSALS = [
 OWNER_FIELDS = ('body', 'support', 'minor', 'history', 'metadata', 'clock', 'queue',
                 'sections', 'view', 'state-tail', 'motion-tail', 'table-sample')
 OLD_FACADE = 'fd932047be8c476e812d15618a5b0b9a8c71bea62aef5cb69bed707703b77ec7'
+ABILITIES_PROOF = ROOT / 'evidence/local-player-abilities-proof-001.json'
+ABILITIES_PROOF_SHA = '9217624e78cd0073eb40c8b04be25a70ee2b96748bf246af4e15ef5ac7611f92'
 OLD_RESUME = b'tick_result(X.resume_apply_checked(stage, status))'
 RESET_RESUME = b'tick_result(X.resume_apply_with_reset_checked(stage, status, reset_policy()))'
 RESET_IMPORT = b'import ./fall_reset_world.bend as FR\n'
@@ -66,7 +68,7 @@ def pin(path):
 
 
 def facade_generation():
-    """Admit only the reviewed supplier policy and one resume-call substitution."""
+    """Admit the original exact delta or the separately certified status generation."""
     archive = ROOT / 'build/local-player-reset-integration/baseline/src/local_player_runtime.bend'
     require(pin(archive)['sha256'] == OLD_FACADE, 'Original facade archive changed')
     current = (ROOT / 'src/local_player_runtime.bend').read_bytes()
@@ -78,9 +80,23 @@ def facade_generation():
     stripped = current.replace(RESET_IMPORT, b'', 1).replace(RESET_POLICY, b'', 1)
     if enabled:
         stripped = stripped.replace(RESET_RESUME, OLD_RESUME, 1)
-    require(stripped == archive.read_bytes(), 'An unrelated facade field/operation changed')
+    preserved = stripped == archive.read_bytes()
+    abilities = None
+    if not preserved:
+        require(pin(ABILITIES_PROOF)['sha256'] == ABILITIES_PROOF_SHA,
+                'Certified abilities receipt changed')
+        abilities = json.loads(ABILITIES_PROOF.read_text())
+        require(abilities['status'] == 'PASS' and abilities['scope']['exclusions'] == []
+                and abilities['independent_kernel']['process']['exit_code'] == 0
+                and abilities['independent_kernel']['unchanged'],
+                'Abilities whole-owner certificate is incomplete')
+        for name, digest in abilities['production_source_pins'].items():
+            require(pin(Path(name))['sha256'] == digest,
+                    'Certified abilities production source changed: ' + name)
     return {'pin': pin(ROOT / 'src/local_player_runtime.bend'),
-            'required_reset_enabled': enabled, 'old_facade_preserved_outside_admitted_delta': True,
+            'required_reset_enabled': enabled, 'old_facade_preserved_outside_admitted_delta': preserved,
+            'certified_abilities_generation': abilities is not None,
+            'abilities_proof': pin(ABILITIES_PROOF) if abilities is not None else None,
             'policy': {'whole_cell_interior': [-64, 64], 'read_work': 128,
                        'profile': 'DefaultClientOverworldFourState'}}
 
@@ -95,14 +111,17 @@ def contract():
         require(pin(ROOT / row['archive']) == {'bytes': row['bytes'], 'sha256': row['sha256']},
                 'Original archived baseline changed: ' + row['source'])
     old = (ROOT / 'build/local-player-reset-integration/baseline/src/local_phase_runtime.bend').read_bytes()
-    require(SOURCE.read_bytes().startswith(old), 'An original X byte/unit changed')
+    old_prefix = SOURCE.read_bytes().startswith(old)
+    facade = facade_generation()
+    require(old_prefix or facade['certified_abilities_generation'],
+            'X is outside both exact admitted source generations')
     compiler = Path('/Users/chuah/.bend/bin/bend')
     snapshot = Snapshot()
     source_graph(HARNESS, (compiler.resolve().parent.parent / 'bend2/base.bend').resolve(),
                  dict(os.environ), snapshot)
     return {'source': pin(SOURCE), 'harness': pin(HARNESS), 'tool': pin(__file__),
-            'facade': facade_generation(),
-            'baseline': pin(BASELINE), 'old_x_exact_prefix': True, 'old_x_bytes': len(old),
+            'facade': facade,
+            'baseline': pin(BASELINE), 'old_x_exact_prefix': old_prefix, 'old_x_bytes': len(old),
             'fixed': {name: pin(ROOT / name) for name in FIXED_PINS},
             'closure': snapshot.manifest(), 'compiler': pin(compiler),
             'scope': 'Existing independent component observations and project phase/rollback policies; no whole-tick required-ray Java oracle.'}

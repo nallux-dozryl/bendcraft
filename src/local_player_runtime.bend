@@ -33,6 +33,7 @@ import ./geometry.bend as A
 import ./game.bend as G
 import ./core.bend as C
 import ./registry.bend as B
+import ./player_inventory.bend as I
 
 # X.State is the only runtime owner; this facade introduces no Body/Engine state.
 # A bundle detour carries every unsaved field and every forged owned/Data tail.
@@ -319,6 +320,152 @@ def advance(~driver: Driver, ticks: Nat, state: X.State) -> X.State:
   match ticks:
     case 0n: state
     case 1n+rest: advance(~driver, rest, step(driver, state))
+
+# Saved Status is queried by the owning session before each actual tick. Raw
+# binary32 words remain saved verbatim; attribute sanitization is runtime-only.
+type AbilitySelection is Data:
+  AbilitySelection{flying:Bool,trigger:U32,takeoff:Bool,jump:Bool,sneak:Bool}
+
+def selection_flying(selection:AbilitySelection) -> Bool:
+  AbilitySelection{flying,trigger,takeoff,jump,sneak} = selection
+  flying
+
+def body_grounded(body:M.Body) -> Bool:
+  M.Body{position,box,velocity,width,height,ground,horizontal,vertical,below} = body
+  ground
+
+def status_request(driver:Driver,status:I.Status) -> X.PrepareRequest:
+  Driver{X.PrepareRequest{life,common,X.ControlFacts{food,abilities,mobility,window,mode},environment,cf,mf,rf,pf,tail}} = driver
+  I.Status{invulnerable,mayfly,flying,walk,fly} = status
+  X.PrepareRequest{life,common,X.ControlFacts{food,LI.Abilities{mayfly,flying},mobility,window,mode},environment,cf,mf,rf,pf,tail}
+
+def selection_timer(+flying:Bool,trigger:U32,ground:Bool,jump:Bool,sneak:Bool,empty:Bool) -> AbilitySelection:
+  match empty:
+    case True{}: AbilitySelection{flying,7,False{},jump,sneak}
+    case False{}: AbilitySelection{Bool.not(flying),0,Bool.not(flying) && ground,jump,sneak}
+
+
+def selection_edge(flying:Bool,+trigger:U32,ground:Bool,jump:Bool,sneak:Bool,edge:Bool) -> AbilitySelection:
+  match edge:
+    case False{}: AbilitySelection{flying,trigger,False{},jump,sneak}
+    case True{}: selection_timer(flying,trigger,ground,jump,sneak,U32.is_eq(trigger,0))
+
+
+
+def selection_metadata(status:I.Status,metadata:X.Metadata,decision:LI.Controls,view:W.View) -> AbilitySelection:
+  I.Status{invulnerable,+mayfly,+flying,walk,fly} = status
+  X.Metadata{LI.State{PI.Buttons{of,ob,ol,or,+old_jump,oh,os},om,st,oc,bx,by,ox,oy},
+    PR.Metadata{input,jumping,delay,+trigger,sync,speed,head},current_sprint,pose,controls,entity,error,tail} = metadata
+  LI.Controls{LI.State{PI.Buttons{nf,nb,nl,nr,+jump,+sneak,ns},nm,nt,nc,nx,ny,nox,noy},sprinting,updates} = decision
+  W.View{M.Body{position,box,velocity,width,height,+ground,horizontal,vertical,below},yaw,pitch,palette,region,cache} = view
+  selection_edge(flying,trigger,ground,jump,sneak,mayfly && Bool.not(old_jump) && jump)
+
+
+
+def ability_selection(status:I.Status,+pending:X.ApplyPending) -> AbilitySelection:
+  selection_metadata(status,X.pre_frame_metadata(X.pending_frame(pending)),X.pending_decision(pending),X.pre_frame_view(X.pending_frame(pending)))
+
+
+def attribute_clamp(value:F.F64,low:Bool,high:Bool) -> F.F64:
+  match low high:
+    case True{} _: M.zero()
+    case False{} True{}: F.F64{1083179008,0}
+    case False{} False{}: value
+
+
+def attribute_nan(+value:F.F64,nan:Bool) -> F.F64:
+  match nan:
+    case True{}: M.zero()
+    case False{}: attribute_clamp(value,F.is_lt(value,M.zero()),F.is_gt(value,F.F64{1083179008,0}))
+
+
+
+def attribute_sanitize(+value:F.F64) -> F.F64:
+  attribute_nan(value,F.is_nan(value))
+
+
+def walking_attribute(word:U32,sprinting:Bool) -> F.F64:
+  match sprinting:
+    case False{}: attribute_sanitize(F.from_f32(L.float_bits(word)))
+    case True{}: attribute_sanitize(F.mul(F.from_f32(L.float_bits(word)),F.add(M.one(),F.from_f32(L.float_bits(1050253722)))))
+
+def status_attributes(status:I.Status,sprinting:Bool) -> T.Attributes:
+  I.Status{invulnerable,mayfly,flying,walk,fly} = status
+  T.Attributes{walking_attribute(walk,sprinting),F.F64{1068792545,1202590843},M.one(),M.one()}
+
+def status_travel_mode(flying:Bool,speed:F32) -> T.Mode:
+  match flying:
+    case False{}: T.NeutralDryAir{}
+    case True{}: T.ResolvedFlight{speed}
+
+def status_apply_sample(+saved:I.Status,+selection:AbilitySelection,+sprinting:Bool,
+                        result:W.State & Result<&2,&2,SW.Error,SW.Sample>) -> W.State & Result<&2,&2,X.Error,X.ApplyFacts>:
+  I.Status{invulnerable,+mayfly,old_flying,walk,fly} = saved
+  AbilitySelection{+flying,trigger,takeoff,jump,sneak} = selection
+  (world,status) = result
+  match status:
+    case Fail{cause}: (world,Fail{X.ViewError{SW.error_text(cause)}})
+    case Done{SW.Sample{ground,factor}}:
+      +speed = L.float_bits(fly)
+      (world,Done{X.ApplyFacts{ground,status_attributes(saved,sprinting),L.float_bits(1058642330),sprinting,False{},False{},status_travel_mode(flying,speed),
+        F.F64{1071309127,2684354560},factor,Bool.not(flying),P.AbilityInput{mayfly,flying,speed,trigger,takeoff,jump,sneak},F.F64{1070805811,858993459}}})
+
+def status_apply_provider(saved:I.Status,selection:AbilitySelection,sprinting:Bool,
+                          world:W.State,support:SP.State) -> W.State & Result<&2,&2,X.Error,X.ApplyFacts>:
+  status_apply_sample(saved,selection,sprinting,SW.sample_checked(world,support))
+
+def status_with_flying(saved:I.Status,flying:Bool) -> I.Status:
+  I.Status{invulnerable,mayfly,old,walking_speed,flying_speed} = saved
+  I.Status{invulnerable,mayfly,flying,walking_speed,flying_speed}
+
+def grounded_world(world:W.State) -> W.State & Bool:
+  W.State{engine,M.Body{position,box,velocity,width,height,+ground,horizontal,vertical,below},yaw,pitch,palette,region,cache} = world
+  (W.State{engine,M.Body{position,box,velocity,width,height,ground,horizontal,vertical,below},yaw,pitch,palette,region,cache},ground)
+
+def status_committed(saved:I.Status,flying:Bool,result:X.State & Bool) -> X.State & I.Status:
+  (state,ground) = result
+  (with_error(state,None{}),status_with_flying(saved,flying && Bool.not(ground)))
+
+def status_tick_result(saved:I.Status,selection:AbilitySelection,
+                       result:X.State & Result<&2,&2,X.Error,X.Observation>) -> X.State & I.Status:
+  AbilitySelection{flying,trigger,takeoff,jump,sneak} = selection
+  (state,status) = result
+  match status:
+    case Fail{cause}: (with_error(state,Some{error_text(cause)}),saved)
+    case Done{observation}:
+      status_committed(saved,flying,query(Bool,state,grounded_world))
+
+def status_apply_resolved(saved:I.Status,selection:AbilitySelection,
+                          result:X.ApplyStage & Result<&2,&2,X.Error,X.ApplyFacts>) -> X.State & I.Status:
+  (stage,status) = result
+  status_tick_result(saved,selection,X.resume_apply_with_reset_checked(stage,status,reset_policy()))
+
+def status_intent(+saved:I.Status,+selection:AbilitySelection,result:X.ApplyStage & X.ApplyIntent) -> X.State & I.Status:
+  (stage,X.ApplyIntent{sprinting,updates}) = result
+  status_apply_resolved(saved,selection,X.stage_query(stage,world => support => status_apply_provider(saved,selection,sprinting,world,support)))
+
+def status_prepared(+saved:I.Status,result:X.PrepareResult) -> X.State & I.Status:
+  match result:
+    case X.Rejected{state,error}: (with_error(state,Some{error_text(error)}),saved)
+    case X.Paused{state}: (state,saved)
+    case X.AwaitApply{X.ApplyStage{state,+pending}}:
+      status_intent(saved,ability_selection(saved,pending),X.stage_intent(X.ApplyStage{state,pending}))
+
+def step_status(driver:Driver,+status:I.Status,state:X.State) -> X.State & I.Status:
+  status_prepared(status,X.prepare_scheduled_checked(state,status_request(driver,status)))
+
+def realtime_status(driver:Driver,+status:I.Status,state:X.State) -> X.State & I.Status:
+  status_prepared(status,X.prepare_realtime_checked(state,status_request(driver,status)))
+
+def advance_status_return(operation:I.Status -> X.State -> X.State & I.Status,
+                          result:X.State & I.Status) -> X.State & I.Status:
+  (state,status) = result
+  operation(status,state)
+
+def advance_status(~driver:Driver,ticks:Nat,status:I.Status,state:X.State) -> X.State & I.Status:
+  match ticks:
+    case 0n: (state,status)
+    case 1n+rest: advance_status_return(status => state => advance_status(~driver,rest,status,state),step_status(driver,status,state))
 
 def eye_result(result: X.State & Result<&2, &2, Pose.Error, M.Vec3>) -> X.State & Result<&2, &2, String, M.Vec3>:
   (state, status) = result

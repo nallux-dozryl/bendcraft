@@ -19,6 +19,7 @@ type Mode is Data:
   Liquid{}
   Swimming{}
   AbilityFlight{}
+  ResolvedFlight{speed: F32}
   Gliding{}
   Climbing{}
   PowderSnow{}
@@ -86,16 +87,43 @@ def prepare_values(tables: L.Tables, body: M.Body, input: M.Vec3, yaw: F32, +fri
   +accel = acceleration(speed, friction, ground, sprinting)
   prepared_input(body, friction, accel, maximum, gravity, drag, discard, L.get_input_vector(tables, input, accel, yaw))
 
+def W_flight_speed(speed: F32, sprinting: Bool) -> F32:
+  match sprinting:
+    case False{}: speed
+    case True{}: F32.mul(speed, 2.0)
+
+
+def prepare_mode(tables: L.Tables, body: M.Body, input: M.Vec3, yaw: F32, +friction: F32,
+                 speed: F.F64, maximum: F32, gravity: F.F64, drag: F.F64, discard: Bool,
+                 ground: Bool, sprinting: Bool, mode: Mode) -> L.Tables & Prepared:
+  match ground mode:
+    case False{} ResolvedFlight{+flying_speed}:
+      +accel = W_flight_speed(flying_speed, sprinting)
+      prepared_input(body, friction, accel, maximum, gravity, drag, discard, L.get_input_vector(tables, input, accel, yaw))
+    case _ _: prepare_values(tables, body, input, yaw, friction, speed, maximum, gravity, drag, discard, ground, sprinting)
+
+
+
 def prepare(tables: L.Tables, body: M.Body, input: M.Vec3, context: Context) -> L.Tables & Prepared:
   match body context:
     case M.Body{position, box, velocity, width, height, +grounded, horizontal, vertical, below}
          Context{sample, Attributes{speed, gravity, modifier, drag}, yaw, maximum, sprinting, no_gravity, discard, mode}:
-      prepare_values(tables, M.Body{position, box, velocity, width, height, grounded, horizontal, vertical, below}, input, yaw,
-                     ground_friction(sample, modifier, grounded), speed, maximum, gravity_gate(gravity, no_gravity), drag, discard, grounded, sprinting)
+      prepare_mode(tables, M.Body{position, box, velocity, width, height, grounded, horizontal, vertical, below}, input, yaw,
+                   ground_friction(sample, modifier, grounded), speed, maximum, gravity_gate(gravity, no_gravity), drag, discard, grounded, sprinting, mode)
+
+# Player.getFlyingSpeed is selected only for airborne flight. Ground friction
+# still selects the inherited movement attribute path before the outer Player
+# travel override restores vertical velocity.
+
+def flight_mode_error(valid:Bool) -> Maybe<&2,Error>:
+  match valid:
+    case True{}: None{}
+    case False{}: Some{InvalidAttribute{4}}
 
 def mode_error(mode: Mode) -> Maybe<&2, Error>:
   match mode:
     case NeutralDryAir{}: None{}
+    case ResolvedFlight{speed}: flight_mode_error(F.is_finite(F.from_f32(speed)))
     case +mode: Some{UnsupportedContext{mode}}
 
 def context_field(field: U32, valid: Bool, rest: Maybe<&2, Error>) -> Maybe<&2, Error>:

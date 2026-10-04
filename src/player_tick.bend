@@ -14,6 +14,8 @@ type State is Data:
 
 type Mode is Data:
   Neutral{}
+  AbilityInput{mayfly: Bool, flying: Bool, flight_speed: F32, jump_trigger: U32,
+               takeoff: Bool, jump: Bool, sneak: Bool}
   Immobile{}
   Interpolating{}
   SimulationDisabled{}
@@ -98,6 +100,76 @@ def sprint_jump(tables: L.Tables, vector: M.Vec3, yaw: F32, sprinting: Bool) -> 
       +angle = F.from_f32(F32.mul(yaw, L.float_bits(1016003125)))
       sprint_sine(vector, angle, L.sin(tables, angle))
 
+def mode_flying(mode: Mode) -> Bool:
+  match mode:
+    case AbilityInput{mayfly, flying, speed, trigger, takeoff, jump, sneak}: flying
+    case _: False{}
+
+def mode_mayfly(mode: Mode) -> Bool:
+  match mode:
+    case AbilityInput{mayfly, flying, speed, trigger, takeoff, jump, sneak}: mayfly
+    case _: False{}
+
+def flight_vertical(vector: M.Vec3, speed: F32, jump: Bool, sneak: Bool) -> M.Vec3:
+  match vector jump sneak:
+    case vector False{} False{}: vector
+    case vector True{} True{}: vector
+    case M.Vec3{x, y, z} True{} False{}:
+      M.Vec3{x, F.add(y, F.from_f32(F32.mul(F32.mul(1.0, speed), 3.0))), z}
+    case M.Vec3{x, y, z} False{} True{}:
+      M.Vec3{x, F.add(y, F.from_f32(F32.mul(F32.mul(L.float_bits(3212836864), speed), 3.0))), z}
+
+def ability_vertical(state: State, speed: F32, jump: Bool, sneak: Bool, flying: Bool) -> State:
+  match state flying:
+    case state False{}: state
+    case State{M.Body{position, box, velocity, width, height, ground, horizontal, vertical, below}, input, jumping, delay, trigger, sync, stored, head} True{}:
+      State{M.Body{position, box, flight_vertical(velocity, speed, jump, sneak), width, height, ground, horizontal, vertical, below},
+        input, jumping, delay, trigger, sync, stored, head}
+
+def takeoff_return(input: Input, jumping: Bool, delay: U32, trigger: U32, speed: F32, head: F32,
+                   body: M.Body, read: L.Tables & M.Vec3) -> L.Tables & State:
+  (tables, velocity) = read
+  (tables, State{T.body_velocity(body, velocity), input, jumping, delay, trigger, True{}, speed, head})
+
+# LocalPlayer's flight-on jumpFromGround precedes inherited aiStep and does not
+# set LivingEntity.noJumpDelay. It shares the actual jump impulse table services.
+def takeoff_perform(tables:L.Tables,body:M.Body,input:Input,jumping:Bool,delay:U32,trigger:U32,
+                    sync:Bool,speed:F32,head:F32,power:F32,velocity:M.Vec3,yaw:F32,
+                    sprinting:Bool,perform:Bool) -> L.Tables & State:
+  match perform:
+    case False{}: (tables, State{body, input, jumping, delay, trigger, sync, speed, head})
+    case True{}: takeoff_return(input, jumping, delay, trigger, speed, head, body,
+      sprint_jump(tables, jump_velocity(velocity, power), yaw, sprinting))
+
+
+def takeoff_guard(tables: L.Tables, body: M.Body, input: Input, jumping: Bool, delay: U32, trigger: U32,
+                  sync: Bool, speed: F32, head: F32, +power: F32, velocity: M.Vec3,
+                  yaw: F32, sprinting: Bool) -> L.Tables & State:
+  takeoff_perform(tables,body,input,jumping,delay,trigger,sync,speed,head,power,velocity,yaw,sprinting,F32.is_gt(power,L.float_bits(925353388)))
+
+
+
+def takeoff(tables: L.Tables, state: State, context: Context, selected: Bool) -> L.Tables & State:
+  match state context selected:
+    case state _ False{}: (tables, state)
+    case State{M.Body{position, box, +velocity, width, height, ground, horizontal, vertical, below}, input, jumping, delay, trigger, sync, speed, head}
+         Context{T.Context{sample, attributes, +yaw, maximum, +sprinting, no_gravity, discard, mode}, strength, factor, affected, tick_mode} True{}:
+      takeoff_guard(tables, M.Body{position, box, velocity, width, height, ground, horizontal, vertical, below}, input, jumping, delay, trigger, sync, speed, head,
+        jump_power(strength, factor), velocity, yaw, sprinting)
+
+
+def ability_prepared(speed: F32, jump: Bool, sneak: Bool, flying: Bool, read: L.Tables & State) -> L.Tables & State:
+  (tables, state) = read
+  (tables, ability_vertical(state, speed, jump, sneak, flying))
+
+def local_ability_input(tables: L.Tables, state: State, +context: Context) -> L.Tables & State:
+  match state context:
+    case State{body, input, jumping, delay, old_trigger, sync, stored, head}
+         Context{travel,strength,factor,affected,AbilityInput{mayfly,flying,speed,trigger,selected,jump,sneak}}:
+      ability_prepared(speed, jump, sneak, flying,
+        takeoff(tables, State{body, input, jumping, delay, trigger, sync, stored, head}, context, selected))
+    case state _: (tables, state)
+
 def pretravel(state: State, attempted: Bool, jumped: Bool) -> PreTravel:
   match state:
     case State{body, +input, jumping, delay, trigger, sync, speed, head}:
@@ -141,9 +213,17 @@ def prepare(tables: L.Tables, state: State, context: Context) -> L.Tables & PreT
       M.Body{position, box, velocity, width, height, ground, horizontal, vertical, below} = body
       prepared_state(tables, State{M.Body{position, box, clean_velocity(velocity), width, height, ground, horizontal, vertical, below}, decay(input), jumping, decrement(delay), decrement(trigger), sync, speed, head}, context)
 
+def flight_mode_error(valid:Bool) -> Maybe<&2,Error>:
+  match valid:
+    case True{}: None{}
+    case False{}: Some{InvalidJump{2}}
+
 def mode_error(mode: Mode) -> Maybe<&2, Error>:
   match mode:
     case Neutral{}: None{}
+    case AbilityInput{mayfly, False{}, speed, trigger, takeoff, jump, sneak}: None{}
+    case AbilityInput{mayfly, True{}, speed, trigger, takeoff, jump, sneak}:
+      flight_mode_error(F.is_finite(F.from_f32(speed)))
     case mode: Some{UnsupportedContext{mode}}
 
 def travel_error(error: Maybe<&2, T.Error>) -> Maybe<&2, Error>:
@@ -201,11 +281,25 @@ def prepare_gate(tables: L.Tables, state: State, context: Context, error: Maybe<
 def prepare_checked(tables: L.Tables, +state: State, +context: Context) -> L.Tables & Result<&2, &2, Error, PreTravel>:
   prepare_gate(tables, state, context, first_error(context_error(context), state_error(state)))
 
-def finish(prepared: PreTravel, context: Context, +movement: M.Transition) -> Transition:
+def flight_finish(old: M.Body, movement: M.Transition, flying: Bool) -> M.Transition:
+  match old movement flying:
+    case _ movement False{}: movement
+    case M.Body{op, ob, M.Vec3{ox, oy, oz}, ow, oh, og, oc, ov, odb}
+         M.Transition{M.Body{p, b, M.Vec3{x, y, z}, w, h, g, c, v, db}, displacement, stepped, changed} True{}:
+      M.Transition{M.Body{p, b, M.Vec3{x, F.mul(oy, F.F64{1071854387, 858993459}), z}, w, h, g, c, v, db}, displacement, stepped, changed}
+
+def finish_movement(input:Input,jumping:Bool,delay:U32,trigger:U32,sync:Bool,
+                    current_speed:F.F64,yaw:F32,attempted:Bool,jumped:Bool,+finished:M.Transition) -> Transition:
+  M.Transition{body, displacement, stepped, changed} = finished
+  Transition{State{body, input, jumping, delay, trigger, sync, F.to_f32(current_speed), yaw}, finished, attempted, jumped}
+
+
+def finish(prepared: PreTravel, context: Context, movement: M.Transition) -> Transition:
   PreTravel{State{old, input, jumping, delay, trigger, sync, speed, head}, vector, attempted, jumped} = prepared
   Context{T.Context{sample, T.Attributes{current_speed, gravity, friction, drag}, yaw, maximum, sprinting, no_gravity, discard, mode}, strength, factor, affected, tick_mode} = context
-  M.Transition{body, displacement, stepped, changed} = movement
-  Transition{State{body, input, jumping, delay, trigger, sync, F.to_f32(current_speed), yaw}, movement, attempted, jumped}
+  finish_movement(input,jumping,delay,trigger,sync,current_speed,yaw,attempted,jumped,
+    flight_finish(old,movement,mode_flying(tick_mode)))
+
 
 def finished_result(value: Transition, error: Maybe<&2, Error>) -> Result<&2, &2, Error, Transition>:
   match error:
