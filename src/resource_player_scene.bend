@@ -49,7 +49,7 @@ def capture_allowed(frame:V.Sample) -> Bool:
   True{}
 
 def presenter_driver() -> CP.Driver<S.State,V.Sample>:
-  CP.Driver{snapshot,input,capture_allowed}
+  CP.Driver{snapshot,input,S.release,capture_allowed}
 
 def describe(frame:V.Sample) -> String:
   V.Sample{CR.Snapshot{tick,revision,blocks,CR.Camera{x,y,z,yaw,pitch}},raw,masks,origin,palette,reads} = frame

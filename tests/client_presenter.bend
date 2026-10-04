@@ -72,6 +72,14 @@ def packet(state:State,value:CC.Packet) -> State & Result<&2,&2,String,Unit>:
   packet_result(updated,U32.is_eq(mode,3))
 
 
+# The fixture records a dedicated state release independently of packet
+# admission, preserving the world and non-control actor fields.
+def release(state:State) -> State:
+  State{world,counts,audit,mode} = state
+  Counts{snapshots,packets,releases,pulses} = counts
+  Audit{previous,old_focus,old_capture} = audit
+  State{world,Counts{snapshots,packets,U32.add(releases,1),pulses},Audit{previous ++ "R|",False{},False{}},mode}
+
 def policy(frame:Frame) -> Bool:
   Frame{tick,ordinal,width,height,allowed,fail_draw} = frame
   allowed
@@ -153,7 +161,7 @@ def close(assets:Assets) -> IO(Unit):
     marker_written(result)
 
 def driver() -> CP.Driver<State,Frame>:
-  CP.Driver{snapshot,packet,policy}
+  CP.Driver{snapshot,packet,release,policy}
 
 def renderer() -> CP.Renderer<Frame,Assets>:
   CP.Renderer{frame => assets => width => height => draw(frame,assets,width,height),describe,close}

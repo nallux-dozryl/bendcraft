@@ -3,6 +3,7 @@ import ./server.bend as S
 import ./png.bend as P
 import ./window_input.bend as WI
 import ./client_controls.bend as CC
+import ./player_controls.bend as PC
 
 # A physical frame becomes one actor operation, including capture transitions.
 # This prevents timer pulses from observing half an OS event batch and permits
@@ -10,6 +11,7 @@ import ./client_controls.bend as CC
 type Driver<-State:Type,-Frame:Data> is Type:
   Driver{snapshot:State -> U32 -> U32 -> State & Result<&2,&2,String,Frame>,
     input:State -> CC.Packet -> State & Result<&2,&2,String,Unit>,
+    release:State -> State,
     capture_allowed:Frame -> Bool}
 
 type Renderer<-Frame:Data,-Assets:Type> is Type:
@@ -17,15 +19,35 @@ type Renderer<-Frame:Data,-Assets:Type> is Type:
     describe:Frame -> String,close:Assets -> IO(Unit)}
 
 def snapshot(-State:Type,-Frame:Data,driver:Driver<State,Frame>,state:State,width:U32,height:U32) -> State & Result<&2,&2,String,Frame>:
-  Driver{query,input,allowed} = driver
+  Driver{query,input,release,allowed} = driver
   query(state,width,height)
 
 def input(-State:Type,-Frame:Data,driver:Driver<State,Frame>,state:State,packet:CC.Packet) -> State & Result<&2,&2,String,Unit>:
-  Driver{query,input,allowed} = driver
+  Driver{query,input,release,allowed} = driver
   input(state,packet)
 
+# Pre-release and admitted input remain inside the same actor operation. The
+# driver input receives an already released owner, so its ordinary rejection
+# preserves that owner while a valid packet retains its complete action order.
+def input_releasing(-State:Type,operation:State -> CC.Packet -> State & Result<&2,&2,String,Unit>,release:State -> State,state:State,packet:CC.Packet,needed:Bool) -> State & Result<&2,&2,String,Unit>:
+  match needed:
+    case False{}: operation(state,packet)
+    case True{}: operation(release(state),packet)
+
+def release_requested(packet:CC.Packet) -> Bool:
+  CC.Packet{actions,focused,captured} = packet
+  PC.release_requested(actions)
+
+def input_released(-State:Type,-Frame:Data,driver:Driver<State,Frame>,state:State,+packet:CC.Packet) -> State & Result<&2,&2,String,Unit>:
+  Driver{query,input,release,allowed} = driver
+  input_releasing(State,input,release,state,packet,release_requested(packet))
+
+def release(-State:Type,-Frame:Data,driver:Driver<State,Frame>,state:State) -> State:
+  Driver{query,input,release,allowed} = driver
+  release(state)
+
 def capture_allowed(-State:Type,-Frame:Data,driver:Driver<State,Frame>,frame:Frame) -> Bool:
-  Driver{query,input,allowed} = driver
+  Driver{query,input,release,allowed} = driver
   allowed(frame)
 
 def draw(-Frame:Data,-Assets:Type,renderer:Renderer<Frame,Assets>,frame:Frame,assets:Assets,width:U32,height:U32) -> Assets & Result<&2,&2,String,Image>:
@@ -47,11 +69,13 @@ def input_result(result:Result<&2,&2,String,Unit>) -> IO(Unit):
 
 def local_input(~State:Type,~Frame:Data,~driver:Driver<State,Frame>,handle:S.Handle<State>,packet:CC.Packet) -> IO(Unit):
   do IO<Unit>:
-    result : Result<&2,&2,String,Unit> <- S.local_call(State,Result<&2,&2,String,Unit>,handle,state => input(State,Frame,driver,state,packet))
+    result : Result<&2,&2,String,Unit> <- S.local_call(State,Result<&2,&2,String,Unit>,handle,state => input_released(State,Frame,driver,state,packet))
     input_result(result)
 
 def local_release(~State:Type,~Frame:Data,~driver:Driver<State,Frame>,handle:S.Handle<State>) -> IO(Unit):
-  local_input(~State,~Frame,~driver,handle,CC.release())
+  do IO<Unit>:
+    unit : Unit <- S.local_call(State,Unit,handle,state => (release(State,Frame,driver,state),Unit{}))
+    return unit
 
 def lost_actions(actions:List<&2,CC.Action>,lost:Bool) -> List<&2,CC.Action>:
   match lost:

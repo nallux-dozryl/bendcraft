@@ -42,7 +42,7 @@ def capture_allowed(frame:CR.Snapshot) -> Bool:
   True{}
 
 def presenter_driver() -> CP.Driver<S.State,CR.Snapshot>:
-  CP.Driver{S.snapshot,input,capture_allowed}
+  CP.Driver{S.snapshot,input,S.release,capture_allowed}
 
 def rendered(result:CR.Assets & Image) -> CR.Assets & Result<&2,&2,String,Image>:
   (assets,image) = result

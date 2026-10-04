@@ -51,7 +51,7 @@ def canonical(frame: Frame) -> Bool:
     case _: False{}
 
 def presenter_driver() -> CP.Driver<S.State, Frame>:
-  CP.Driver{snapshot, Plain.input, canonical}
+  CP.Driver{snapshot, Plain.input, S.release, canonical}
 
 def describe(frame: Frame) -> String:
   Frame{sample, tail} = frame

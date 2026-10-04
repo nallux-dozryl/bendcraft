@@ -147,6 +147,13 @@ def expected(mode: int) -> dict:
         snapshots, draws, packets, frames = 0, 0, 1, 0
     elif mode in (11, 13):
         snapshots, draws, packets, frames = 1, 1, 2, 1
+    # Standalone cleanup uses the direct release callback, not a packet. A
+    # packet containing Release invokes that callback inside its actor operation
+    # before the original actions, making the operation visible to this fixture.
+    packets -= 1
+    if mode in (5, 7):
+        releases += 1
+        text = "R|" + text
     return dict(mode=mode, snapshots=snapshots, draws=draws, packets=packets,
                 releases=releases, trace=text, frames=frames, exit_code=exit_code, error=error)
 
@@ -233,6 +240,32 @@ def execute(observer: Path, mode: int, repetition: int) -> dict:
     return result
 
 
+def compact_evidence(evidence: dict) -> dict:
+    """Keep full observations locally and publish a reproducible scoped receipt."""
+    raw = json.dumps(evidence, indent=2, sort_keys=True) + "\n"
+    digest = hashlib.sha256(raw.encode()).hexdigest()
+    retained = ROOT / "build" / "client-presenter-receipts" / (digest + ".json")
+    retained.parent.mkdir(parents=True, exist_ok=True)
+    retained.write_text(raw)
+    full_build = evidence["build"]
+    build = {key: full_build[key] for key in (
+        "artifact", "binary_bytes", "binary_sha256", "cache_hit", "cache_key",
+        "compiler", "original_c_sha256", "output_replaced", "path", "retries",
+        "route", "timings", "transformed_c_sha256")}
+    build["dependency_count"] = len(full_build["dependencies"])
+    build["identity_sha256"] = hashlib.sha256(
+        json.dumps(full_build["identity"], sort_keys=True, separators=(",", ":")).encode()
+    ).hexdigest()
+    build["source_sha256"] = {
+        item["path"]: item["sha256"] for item in full_build["dependencies"]
+        if item.get("path", "").endswith(".bend") and "sha256" in item}
+    return {**evidence, "build": build,
+        "raw_receipt": {"path": str(retained), "bytes": len(raw.encode()), "sha256": digest},
+        "observations": [{key: value for key, value in item.items()
+            if key not in ("native_events", "stdout")}
+            for item in evidence["observations"]]}
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--build-only", action="store_true")
@@ -275,7 +308,7 @@ def main() -> None:
                 "native_runs": len(observations), "scenario_count": 14, "observations": observations,
                 "scope": ["real hidden NativeWindow, Window.frame/grab/status/close", "actual shared Server actor, timer, local_call and external TCP clock query", "owned core state remains paused at tick2 while timer pulses, snapshots and inputs run", "whole synthetic event batch arrives in one actor operation", "final Release, asset-close File write and close before actor stop", "snapshot/draw/input and opened(Fail) cleanup injections"],
                 "limitations": ["No visible presentation or physical keyboard/mouse input acceptance", "No actual focused-to-unfocused OS transition; only synthetic prior-capture flag against real unfocused native state", "Open failure injected into existing opened callback, not an observed OS allocation failure", "File marker proves the asset callback and ordering; it does not count all native resources", "Server.stop closes the actor; its accept socket is released by process exit", "Native/unsafe dependency refusals are not a whole-module kernel proof"]}
-    REPORT.write_text(json.dumps(evidence, indent=2, sort_keys=True)+"\n")
+    REPORT.write_text(json.dumps(compact_evidence(evidence), indent=2, sort_keys=True)+"\n")
     print(json.dumps({"status": evidence["status"], "native_runs": len(observations),
                       "binary_sha256": build["binary_sha256"], "evidence": str(REPORT)}))
 

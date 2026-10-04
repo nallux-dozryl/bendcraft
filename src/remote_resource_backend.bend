@@ -4,6 +4,7 @@ import ./local_player_scene.bend as Scene
 import ./local_resource_world.bend as World
 import ./world_visibility.bend as V
 import ./client_controls.bend as CC
+import ./player_controls.bend as PC
 import ./server.bend as Server
 import ./live.bend as L
 import ./json.bend as J
@@ -144,11 +145,22 @@ def input_result(lease:Lease,counter:Nat,nonce:String,capability:String,owner:C.
   (saved,status) = result
   (State{saved,renewed(lease),counter,nonce,capability,owner},status)
 
+# The renderer lease is admitted before this is called. Release and the rest
+# of one physical input packet execute in the existing single actor operation.
+def input_releasing(saved:S.State,packet:CC.Packet,needed:Bool) -> S.State & Result<&2,&2,String,Unit>:
+  match needed:
+    case False{}: Scene.input(saved,packet)
+    case True{}: Scene.input(S.release(saved),packet)
+
+def input_released(saved:S.State,+packet:CC.Packet) -> S.State & Result<&2,&2,String,Unit>:
+  CC.Packet{+actions,focused,captured} = packet
+  input_releasing(saved,CC.Packet{actions,focused,captured},PC.release_requested(actions))
+
 def input_checked(state:State,packet:CC.Packet,valid:Bool) -> State & Result<&2,&2,String,Unit>:
   match state valid:
     case _ False{}: (state,Fail{"RendererLeaseOrSequence"})
     case State{saved,lease,counter,nonce,capability,owner} True{}:
-      input_result(lease,counter,nonce,capability,owner,Scene.input(saved,packet))
+      input_result(lease,counter,nonce,capability,owner,input_released(saved,packet))
 
 def input(state:State,epoch:String,sequence:Nat,packet:CC.Packet) -> State & Result<&2,&2,String,Unit>:
   State{saved,+lease,counter,nonce,capability,owner} = state
