@@ -1,0 +1,59 @@
+{
+  "competing_jobs_observed": [],
+  "confidence": "high for this bounded paired workload",
+  "counterbalanced_order": [
+    "004A",
+    "007A",
+    "007B",
+    "004B"
+  ],
+  "elapsed_seconds": 42.1880035828799,
+  "existing18_law_recertification": {
+    "bytes": 19096,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/mesh_render_performance_reader_007_recert.json",
+    "sha256": "18ad142aacbe6782bb1b03e888663719fb11283f85020e1846e62f0b2e7bc13c"
+  },
+  "frames_each": 16,
+  "full_C_ownership_evidence": {
+    "bytes": 9157,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/mesh_render_performance_texture_lifetime_full_007.json",
+    "sha256": "2002974a6123190475e371bb9b494f7f49bea35916eab87cef6b541ec7ac1ad8"
+  },
+  "full_native_pixel_evidence": {
+    "bytes": 3068,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/playable-renderer-current-full-pixels-007.json",
+    "sha256": "66c569283f9c0ae82413f066af2602c7817ed553e2e15060cca1c00ec2343184"
+  },
+  "mean_ms": {
+    "004": 967.8125,
+    "007": 147.5
+  },
+  "median_frame_time_reduction_percent": 85.97333333333333,
+  "median_ms": {
+    "004": 937.5,
+    "007": 131.5
+  },
+  "median_ratio_004_over_007": 7.129277566539924,
+  "monitor_interval_seconds": 0.25,
+  "native_binary_pins": {
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/004/renderer": {
+      "bytes": 5550408,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/004/renderer",
+      "sha256": "0e5bac4aa6e4ff36232e4c25ed67cda6ac2e73bc45d378ae5a597c66ed7e8399"
+    },
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/007/renderer": {
+      "bytes": 5550680,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/007/renderer",
+      "sha256": "71d7763bc576509a8d8b43205eeb4bb07f4541c283a6bfd75f1ea15a6a7b0130"
+    }
+  },
+  "paired_evidence": {
+    "bytes": 5813,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/playable-renderer-current-paired-performance-004-007.json",
+    "sha256": "ff903434a3e98bfd316b4fd378efc098d2e29c44e93e53d15eb5c526d9e75f27"
+  },
+  "scope": "Counterbalanced004A/007A/007B/004B actualfresh104section256visibleblock1920x1080scene/output100%,480x270HUD,2CPUworkers,traceoff,oldactor010identical. No competing observed Bend/Node/compiler/Java job at each start or throughout250ms process monitoring; normalOS/backgroundapps untouched. Includes render/composition/Window.frame; noFPS/inputlatency/fullMinecraftbenchmark.",
+  "status": "PASS",
+  "unchanged_inputs": true,
+  "whole_game_performance_claim": false
+}
