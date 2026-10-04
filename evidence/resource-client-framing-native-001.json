@@ -1,0 +1,128 @@
+{
+  "status": "focused-native-pass",
+  "captured_utc": "2026-10-04T14:31:56.338929+00:00",
+  "production_target": "src/resource_client_framing.bend",
+  "test_consumer": "tests/resource_client_framing.bend",
+  "source_pins": {
+    "tests/resource_client_framing.bend": "3696a244073b5521c4a5a4f7092cde3826e8450845586af2cf633864c12066b3",
+    "src/resource_client_framing.bend": "fc275cc717a4b7cab4b8640d645c2059615db66bb936f97b8035200921bae802",
+    "src/framing.bend": "307f95049df03d92687b7bd0eafb2cd566e660926510bb88163f9bc825fccdb5",
+    "src/resource_client_wire.bend": "3ac3d62234b0b1e8078ed849927efcd8eb082cb51831f3c13c1e80a3312cb2a5",
+    "tests/resource_client_interaction_wire.bend": "8442be1368f02ed6b3a72f366d58323d0832844fb82e0166217adb704761e2f6",
+    "src/player_inventory.bend": "57edf9b4c289fec72afc10a926bafa7016aa428378ee04653c07398cac66d407",
+    "src/player_item_definitions.bend": "6a7a57f62a2df6a3f43883824c167877f16e67a1a2a95e8b2f9a3e31e60c49a9",
+    "src/inventory.bend": "9d2be7fb88afa1dc6386ab9e8b046b15d2a2a73b7e14566e5bfad3e6dd1f2702",
+    "tools/build_native.py": "3418c78cddc092aec55c7447a818735569b5b279d3bc4b05e3c0077624387c18",
+    "tools/test_fall_reset_world_continuation_r2.py": "c2580703b97e4f698153e6dbbd3d9d48ae1c50f3d6b3fbc5e727d0bc39cdfa14",
+    "/Users/chuah/.bend/bin/bend": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e"
+  },
+  "sources_unchanged": true,
+  "original_compiler_unchanged": true,
+  "cases": [
+    {
+      "name": "valid full wire frame fixture",
+      "ascii_bytes": 19784,
+      "result": "passes real production Wire.decode_reply plus complete Fixture.large_frame_decoded comparison"
+    },
+    {
+      "name": "fragmented frame",
+      "first_chunk_bytes": 10000,
+      "result": "first chunk retained without a dispatched partial line; second chunk reassembles exact original frame and decodes it"
+    },
+    {
+      "name": "exact transport boundary",
+      "ascii_bytes_before_lf": 65536,
+      "result": "one complete line admitted, empty remaining buffer"
+    },
+    {
+      "name": "oversized transport record",
+      "ascii_bytes_before_lf": 65537,
+      "result": "atomic refusal with exact line exceeds 65536 bytes before LF"
+    },
+    {
+      "name": "non-ASCII byte",
+      "input": [
+        97,
+        10,
+        128,
+        10
+      ],
+      "result": "atomic refusal of entire feed, including its prior completed line"
+    },
+    {
+      "name": "CRLF",
+      "input": [
+        97,
+        13,
+        10
+      ],
+      "result": "terminal CR removed; one-character line returned"
+    }
+  ],
+  "native_stdout": "PASS private framing: real19784-byte frame, fragmented authority,65536 boundary,oversize/non-ASCII atomic refusal,CRLF\n",
+  "build": {
+    "argv": [
+      "/opt/homebrew/opt/python@3.14/bin/python3.14",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-client-framing-native-001/executed-build-child.py"
+    ],
+    "cap_seconds": 600,
+    "elapsed_seconds": 38.61413904093206,
+    "exit_code": 0,
+    "timed_out": false,
+    "process_group": 6557,
+    "process_group_absent_at_audit": true,
+    "stdout_sha256": "3113f865f574cbae267d333a4b7e2c0bd4dcaba52654806fd5d47f912bb4ac0c",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "native": {
+    "argv": [
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-client-framing-native-001/native-cache/artifacts/07fdd9523f04962452f3fc8ab9696f4c11cbfafe869a35ad1604b9399960cafb/program"
+    ],
+    "cap_seconds": 30,
+    "elapsed_seconds": 0.5412885416299105,
+    "exit_code": 0,
+    "timed_out": false,
+    "process_group": 6788,
+    "process_group_absent_at_audit": true,
+    "stdout_sha256": "9bd2be4f938dba062608e73e7eea64dbf1cec8b487b3006a2ddcb7799aca5bb9",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "builder": "tools/build_native.py ensure_native ordinary CPU native route; fresh isolated cache, existing FRR2 retry_scope prevents input-drift retries",
+  "build_attempts": 1,
+  "cache_hit": false,
+  "retries": 0,
+  "binary": {
+    "artifact": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-client-framing-native-001/native-cache/artifacts/07fdd9523f04962452f3fc8ab9696f4c11cbfafe869a35ad1604b9399960cafb/program",
+    "sha256": "07fdd9523f04962452f3fc8ab9696f4c11cbfafe869a35ad1604b9399960cafb",
+    "bytes": 1610152,
+    "unchanged_after_execution": true
+  },
+  "native_build_timings": {
+    "total_seconds": 38.50272904150188,
+    "emission_seconds": 16.100478916428983,
+    "native_seconds": 17.86118874978274
+  },
+  "emitted_c_sha256": "719a2b789a741149c7c835b56e1575a18ef54ee5d4f82a573ed4d2045787d05b",
+  "builder_dependency_count": 1663,
+  "builder_dependency_manifest": "Complete dependency identities are retained in native-build.json; tracked evidence avoids duplicating all1663 entries.",
+  "raw_receipts": {
+    "build/playable-client-framing-native-001/receipt.json": "2d592335bfdbf40e952a6153ae8feadcb9382953ae15e0402c80f8d456122c6a",
+    "build/playable-client-framing-native-001/build.receipt.json": "871330ebea06e6357aef2f5a7bd6b611ffaa5879bc97ba345db6b0f74a267b0a",
+    "build/playable-client-framing-native-001/native.receipt.json": "4541b36793c946ae8abf6ed878fdecd1b31579932a01bafd878f55f0d0e7d636",
+    "build/playable-client-framing-native-001/native-build.json": "acbf7f6a59fc96fcc174696ce32778c324df3fac3bfdba517ea28b2edf73de4f",
+    "build/playable-client-framing-native-001/executed-build-child.py": "9edbac80a2784ca5d9b9f76423d17522bb28ec352b1ca68d5e12bed1e82a7f78",
+    "build/playable-client-framing-native-001/build.stdout": "3113f865f574cbae267d333a4b7e2c0bd4dcaba52654806fd5d47f912bb4ac0c",
+    "build/playable-client-framing-native-001/build.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build/playable-client-framing-native-001/native.stdout": "9bd2be4f938dba062608e73e7eea64dbf1cec8b487b3006a2ddcb7799aca5bb9",
+    "build/playable-client-framing-native-001/native.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "executed_build_child": "from pathlib import Path\nimport json,sys\nroot=Path.cwd();sys.path.insert(0,str(root/'tools'))\nimport build_native as B\nimport test_fall_reset_world_continuation_r2 as R\nfolder=root/'build/playable-client-framing-native-001'\nwith R.retry_scope(B):\n report=B.ensure_native(root/'tests/resource_client_framing.bend',folder/'framing-native',bend='/Users/chuah/.bend/bin/bend',cache_dir=folder/'native-cache',force=False)\nassert report['retries']==0 and report['cache_hit'] is False\n(folder/'native-build.json').write_text(json.dumps(report,indent=2)+'\\n')\nprint(json.dumps({key:report[key] for key in ['artifact','binary_sha256','binary_bytes','cache_hit','retries','timings']}))\n",
+  "compile_policy": "600-second sensible compile cap per latest human correction; successful38.614-second supervisor, no timeout or termination. Direct finite-test execution cap30seconds; completed0.541seconds.",
+  "prior_ordinary_receipt": {
+    "stdout": "build/playable-renderer-current/framing-source-005.stdout",
+    "stdout_sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1"
+  },
+  "scope": "Actual native execution of the production private ASCII framer and production wire decoder on the stated finite fixture and byte boundaries. Generated valid FrameReply fixture is not an actual backend snapshot or OS/TCP observation. No universal proof, real socket segmentation/malformed UTF8 replacement, live launcher, render or save/reload claim. No production/test source was edited.",
+  "reproduction": "Directly rerun native.argv only after verifying the captured immutable artifact digest. To reproduce the cold build, choose a fresh build/cache directory and change only the executed_build_child folder path plus recorded Python script path consistently; retain the recorded source/tool generation, existing builder and original compiler. This avoids treating an intentional cache hit as the captured cold build. A changed source generation needs its own identity/results; no optional corpus or new host framework.",
+  "confidence": "high for captured finite native results and source/tool/binary identity"
+}
