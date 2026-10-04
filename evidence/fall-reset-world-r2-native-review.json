@@ -1,0 +1,123 @@
+{
+  "binary": {
+    "bytes": 2138616,
+    "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/fall-reset-world-continuation-r2/fall-reset-world-native",
+    "resolved": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/fall-reset-world-continuation-r2/fall-reset-world-native",
+    "sha256": "6311ff2c0623f1d5f95d560c4ef19243fadcc65afcf4bc56f768a533568a812c",
+    "stat": [
+      16777229,
+      335535749,
+      2138616,
+      1791105301368509001,
+      1791105301370081380,
+      33261
+    ]
+  },
+  "checks": {
+    "complete_run_results_and_digests": "PASS",
+    "default_and_remapped_registry_bindings": "PASS",
+    "every_command_and_input_digest": "PASS",
+    "exact_frozen_comparator_raw_replay": "PASS",
+    "journal_process_cleanup_group_equality": "PASS",
+    "per_process_and_final_cleanup": "PASS",
+    "per_process_source_admission_receipts": "PASS",
+    "raw_success_statuses_and_stream_hashes": "PASS",
+    "unchanged_binary_and_prior_artifact_identity": "PASS"
+  },
+  "cleanup": {
+    "bytes": 33253,
+    "path": "build/fall-reset-world-continuation-r2/native-attempt/final-cleanup.json",
+    "sha256": "c39b8bf689cd2bf23d8b140903b3bab23fc330ac0e8514977f0c27f92a713260"
+  },
+  "cleanup_scope": "Observed managed groups only. Unobserved descendants that escape/reparent between snapshots are not authenticated.",
+  "confidence": "high",
+  "counts": {
+    "absent_observed_groups": 300,
+    "actual_per_run": 107,
+    "captured_bytes_checked": 2511250,
+    "excluded_observations_per_run": 20,
+    "policies_per_run": 29,
+    "raw_processes": 300,
+    "remap_per_run": 14,
+    "runs": 2
+  },
+  "defects": [],
+  "execution_granted": false,
+  "facade_activation_granted": false,
+  "native_evidence": {
+    "bytes": 1948,
+    "path": "evidence/fall-reset-world-continuation-r2-native.json",
+    "sha256": "30477141b029271d9bb275f342e39aec11b290a4af24c7112e8fb7637c3af37e"
+  },
+  "owned_groups": {
+    "bytes": 138432,
+    "path": "build/fall-reset-world-continuation-r2/native-attempt/owned-groups.jsonl",
+    "sha256": "a5e4c83ac0f7d7e4c4d344917808045c61b5998423356ac847dfaf2e3b02f23e"
+  },
+  "prior_artifact_admission": {
+    "bytes": 9755,
+    "path": "evidence/fall-reset-world-r2-artifact-review.json",
+    "sha256": "ca836570a5304855d192acb553666441e16b62eac7889370e73ef0bcfb4abb9b"
+  },
+  "process_admission": {
+    "bytes": 335199,
+    "path": "build/review-fall-reset-world-r2/native-review/run001/process-admission.json",
+    "sha256": "c766c13483ae648b1610bf75e851c9863d883eb9dd1b4a0c29df17f5230ce167"
+  },
+  "proof_admitted": false,
+  "ready_payload_seal": "7653a0935883e36c5a9f07efbcdd59b67cf73e6f333fa7813587d7a02e38ca0d",
+  "remaining": "Lead may activate the facade after this native admission. Proof remains separately gated; this review grants no execution or activation.",
+  "reproducible_command": "PYTHONDONTWRITEBYTECODE=1 python3 build/review-fall-reset-world-r2/native-review/review.py UNIQUE_REVIEW_DIRECTORY UNIQUE_EVIDENCE_PATH",
+  "result_sha256": "7bdf5f101984e4b879a44db2fc6fd018582b2aabf69edd9fe51c47b2ac0c7248",
+  "retained_review": {
+    "bytes": 4838,
+    "path": "build/review-fall-reset-world-r2/native-review/run001/review.json",
+    "sha256": "9f2751f1ba01fbadf551a6a916bfbd632f06ca746f3b35067049347e7ef46b11"
+  },
+  "review_seconds": 0.2969869999215007,
+  "review_settings": {
+    "model": "gpt-6.1-sol",
+    "reasoning_effort": "ultra"
+  },
+  "reviewer": {
+    "bytes": 15077,
+    "path": "build/review-fall-reset-world-r2/native-review/review.py",
+    "sha256": "637f9746edfb3e5b0d3e91c591ba04a9911d8ffae0bf979b0e4177ba4b513e8e"
+  },
+  "runs": [
+    {
+      "bytes": 372384,
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/fall-reset-world-continuation-r2/native-attempt/run0.json",
+      "resolved": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/fall-reset-world-continuation-r2/native-attempt/run0.json",
+      "sha256": "0b548e3631f26a28ea3d990bc3672276f925bdcd02a8561ee03f69babafe20f6",
+      "stat": [
+        16777229,
+        335549498,
+        372384,
+        1791105866848393446,
+        1791105866848393446,
+        33188
+      ]
+    },
+    {
+      "bytes": 372361,
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/fall-reset-world-continuation-r2/native-attempt/run1.json",
+      "resolved": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/fall-reset-world-continuation-r2/native-attempt/run1.json",
+      "sha256": "ad3e4e99881ffff8af2e6240a541a19004db64cf308da447b12aa919aa11ba0a",
+      "stat": [
+        16777229,
+        335553578,
+        372361,
+        1791105941578439239,
+        1791105941578439239,
+        33188
+      ]
+    }
+  ],
+  "runtime_guard": {
+    "denied_events": [],
+    "installed_before_producer_import": true
+  },
+  "scope": "File-only review of newly completed native evidence using exact frozen comparator against retained raw captures; no native/compiler/kernel/Java launch, dependency inventory, class inventory, or prior oracle replay.",
+  "status": "PASS-native-evidence"
+}

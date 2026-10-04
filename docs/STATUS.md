@@ -1,12 +1,16 @@
 # Status
 
-Paused at the user's explicit request for a Codex update on2026-10-04. All child
-agents are stopped and owned check groups are absent; execution grants are
-revoked. Resume only after an explicit user request. Read
-`UPDATE_CHECKPOINT_2026-10-04.md` before continuing. Dirty/incomplete work and all
-passing/failing generations are preserved.
+Engineering resumed after the user's explicit 2026-10-04 continuation request.
+The checkpoint remains immutable. Seven implementation lanes resumed with
+disjoint ownership; actual gpt-6.1-sol/ultra replacements took over after the
+app rejected in-place settings changes for v2 subagents. Two heavy execution
+slots remain the limit. Saved inventory, block interaction, custom bounded
+superflat terrain and HUD are being joined to the existing saved resource
+client alongside the checked fall-reset join. Prior passing/failing generations
+remain preserved. The goal tool still reports paused; engineering resumption is
+authorized, but no unsupported status mutation has been made.
 
-Target: Minecraft Java 26.3. Compiler: Bend 2.0.35. Persistent goal: active.
+Target: Minecraft Java 26.3. Compiler: Bend 2.0.35. Full goal remains incomplete.
 
 ## Established
 

@@ -1,0 +1,244 @@
+{
+  "confidence": "high",
+  "control_count": 13,
+  "controls": [
+    {
+      "id": "original-internal-input-drift-blocker-reproduced",
+      "preparations": 3,
+      "status": "PASS"
+    },
+    {
+      "binding_restored": true,
+      "id": "R2-exact-builder-one-preparation-zero-retry-no-emission",
+      "output_created": false,
+      "preparations": 1,
+      "status": "PASS"
+    },
+    {
+      "calls": [
+        [
+          100,
+          "SIGTERM"
+        ]
+      ],
+      "id": "original-first-EPERM-skips-later-group-reproduced",
+      "status": "PASS"
+    },
+    {
+      "calls": [
+        [
+          100,
+          "probe"
+        ],
+        [
+          100,
+          "TERM"
+        ],
+        [
+          100,
+          "KILL"
+        ],
+        [
+          100,
+          "wait"
+        ],
+        [
+          100,
+          "probe"
+        ],
+        [
+          200,
+          "probe"
+        ],
+        [
+          200,
+          "TERM"
+        ],
+        [
+          200,
+          "KILL"
+        ],
+        [
+          200,
+          "wait"
+        ],
+        [
+          200,
+          "probe"
+        ],
+        [
+          300,
+          "probe"
+        ],
+        [
+          300,
+          "probe"
+        ]
+      ],
+      "errors": 6,
+      "groups": [
+        100,
+        200,
+        300
+      ],
+      "id": "R2-all-groups-visited-all-six-errors-retained-unknown-fails",
+      "raw": {
+        "bytes": 2107,
+        "path": "build/review-fall-reset-world-r2/run002/all-groups-cleanup.json",
+        "sha256": "ce0d60c4c0041070a14f5cfcafcca9a6fab051323f366de20912f38a155d3ff9"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "R2-unconditional-parent-sweep-preserves-primary-and-allerrors",
+      "primary": "ValueError: primary semantic failure",
+      "raw": {
+        "bytes": 2107,
+        "path": "build/review-fall-reset-world-r2/run002/primary-error/final-cleanup.json",
+        "sha256": "fd96047f7a975f2b5c622db079386122235f0895b92de5da01306ee6a8a8ddf6"
+      },
+      "secondary_errors": 6,
+      "status": "PASS"
+    },
+    {
+      "cleanup_errors": 6,
+      "id": "R2-durable-primary-process-error-raw-and-allgroups-before-comparison",
+      "observed_groups": [
+        100,
+        200,
+        300
+      ],
+      "raw": {
+        "bytes": 3724,
+        "file": "execution.json",
+        "path": "build/review-fall-reset-world-r2/run002/processes/primary-wait-EPERM/execution.json",
+        "sha1": "a925ef8755336b82d356f3b1a8a3cc1322333733",
+        "sha256": "a37588a1495f5e81f6425c3421d2c95a83b4d693ca3392f9215e1fe9438516d5"
+      },
+      "status": "PASS"
+    },
+    {
+      "calls": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/review-fall-reset-world-r2/run002/dependency-fixture/lookup.bin",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/review-fall-reset-world-r2/run002/dependency-fixture/target.bin",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/review-fall-reset-world-r2/run002/dependency-fixture/lookup2.bin"
+      ],
+      "id": "R2-every-explicit-lookup-and-canonical-target-hashed-once",
+      "shared_target_hashed_once": true,
+      "stat_fields": 6,
+      "status": "PASS"
+    },
+    {
+      "id": "R2-dependency-invalid-lookup-target-hash-bytes-duplicate-refused",
+      "refusals": [
+        "Invalid native dependency row",
+        "Native dependency lookup/target differs: /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/review-fall-reset-world-r2/run002/dependency-fixture/lookup.bin",
+        "Native dependency bytes/hash/stable stat differs: /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/review-fall-reset-world-r2/run002/dependency-fixture/lookup.bin",
+        "Native dependency bytes/hash/stable stat differs: /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/review-fall-reset-world-r2/run002/dependency-fixture/lookup.bin",
+        "Duplicate native dependency lookup: /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/review-fall-reset-world-r2/run002/dependency-fixture/lookup.bin"
+      ],
+      "status": "PASS"
+    },
+    {
+      "bytes_unchanged": true,
+      "id": "R2-consumer-rejects-missing-lookup-same-bytes-retarget-and-stat-drift",
+      "refusals": [
+        "Native dependency absent from consumer files: /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/review-fall-reset-world-r2/run002/dependency-fixture/lookup.bin",
+        "Native dependency lookup/target differs: /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/review-fall-reset-world-r2/run002/dependency-fixture/lookup.bin",
+        "Pinned file drift: /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/review-fall-reset-world-r2/run002/dependency-fixture/lookup.bin",
+        "Pinned file drift: /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/review-fall-reset-world-r2/run002/dependency-fixture/lookup.bin"
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "R2-in-read-alias-and-fstat-drift-refused",
+      "refusals": [
+        "Lookup/target changed while hashing: /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/review-fall-reset-world-r2/run002/dependency-fixture/lookup.bin",
+        "File changed while reading: /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/review-fall-reset-world-r2/run002/dependency-fixture/lookup.bin"
+      ],
+      "status": "PASS"
+    },
+    {
+      "fixture_scope": "Inert host receipt only; no native artifact claimed",
+      "id": "R2-exact-verify-build-binds-row-kind-and-consumer-lookup",
+      "refusals": [
+        "Native dependency lookup/target admission changed",
+        "Native dependency absent from consumer files: /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/review-fall-reset-world-r2/run002/dependency-fixture/lookup.bin"
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "R2-native-no-hidden-build-and-success-after-unconditional-parent-cleanup",
+      "routes": [
+        "build-only",
+        "native-only",
+        "proof-only"
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "R2-final-exact-seal-file-admission-R1-and-frozen-host-preserved",
+      "payload_seal": "7653a0935883e36c5a9f07efbcdd59b67cf73e6f333fa7813587d7a02e38ca0d",
+      "pinned_files": 311,
+      "status": "PASS"
+    }
+  ],
+  "defects": [],
+  "documentation": {
+    "bytes": 3445,
+    "path": "docs/FALL_RESET_WORLD_R2_REVIEW.md",
+    "sha256": "6c217a1660be5598bda10f164d32476bc14b66db51268c17e5cdca93c463a70b"
+  },
+  "execution_granted": false,
+  "historical_blocker_receipt": {
+    "bytes": 15237,
+    "path": "build/review-fall-reset-world/current-admission/admission.json",
+    "sha256": "d2e637a49ab3231f7f3f731e47dc8724ced8332594232f60b712e8997150532c"
+  },
+  "native_dependency_admission": "Each explicit builder lookup and canonical target has bytes/hash/six-field stable stat; consumer retains both paths plus exact dependency rows and requires fresh equality.",
+  "ready": {
+    "bytes": 214616,
+    "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/fall-reset-world-continuation-r2/prepared.json",
+    "resolved": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/fall-reset-world-continuation-r2/prepared.json",
+    "sha256": "c2313906c8b94b849a7a86a8045e5e96628ae97cfe5c7741c730c3689cc7d697",
+    "stat": [
+      16777229,
+      335534490,
+      214616,
+      1791104928022321902,
+      1791104928022321902,
+      33188
+    ]
+  },
+  "ready_payload_seal": "7653a0935883e36c5a9f07efbcdd59b67cf73e6f333fa7813587d7a02e38ca0d",
+  "remaining": "Separate lead build-only grant required, followed by independent artifact admission and separate native-only/proof-only grants; this review grants no execution.",
+  "reproducible_command": "PYTHONDONTWRITEBYTECODE=1 python3 build/review-fall-reset-world-r2/review.py c2580703b97e4f698153e6dbbd3d9d48ae1c50f3d6b3fbc5e727d0bc39cdfa14 UNIQUE_REVIEW_DIRECTORY",
+  "retained_review": {
+    "bytes": 8051,
+    "path": "build/review-fall-reset-world-r2/run002/review.json",
+    "sha256": "e5ddd011a3a5fb2647172c8e505047296cdd1558f102976fd6d52a7cd44f1048"
+  },
+  "review_fixture_history": {
+    "correction": "Exact AST call-name inspection; run002 passes all13 controls.",
+    "first_run": "run001",
+    "original_run_retained": true,
+    "result": "Stopped at reviewer static substring assertion: verify_build was mistaken for build; producer controls through exact verify_build had passed.",
+    "script": {
+      "bytes": 16220,
+      "path": "build/review-fall-reset-world-r2/review-run001.py",
+      "sha256": "0b54982c9c3688d978dcdb6b138e71928e73087e05db0b189cced8b8ad24296a"
+    }
+  },
+  "reviewer": {
+    "bytes": 16360,
+    "path": "build/review-fall-reset-world-r2/review.py",
+    "sha256": "92da14f1a2ca358f05995290defcd270a8ac61f3b6f9dd65e956dbd130a11407"
+  },
+  "runner": {
+    "bytes": 41967,
+    "path": "tools/test_fall_reset_world_continuation_r2.py",
+    "sha256": "c2580703b97e4f698153e6dbbd3d9d48ae1c50f3d6b3fbc5e727d0bc39cdfa14"
+  },
+  "scope": "File admission and narrow inert exact-function controls; no Bend/emitter/native/kernel/Java/UI execution, real subprocess or signal; no game behavior/proof result admitted.",
+  "status": "PASS-host-only-build-readiness"
+}

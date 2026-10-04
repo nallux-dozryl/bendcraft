@@ -1,0 +1,247 @@
+{
+  "build": {
+    "attempts": 1,
+    "builder_timings": {
+      "emission_seconds": 6.821401874534786,
+      "native_seconds": 14.299894290976226,
+      "total_seconds": 25.406835291534662
+    },
+    "cache_hit": false,
+    "fresh_cache": true,
+    "only_observed_group": 16107,
+    "retries": 0,
+    "wall_seconds": 27.00344429165125
+  },
+  "checks": {
+    "durable_per_process_and_parent_cleanup": "PASS",
+    "every_native_lookup_and_target": "PASS",
+    "exact_producer_verify_build": "PASS",
+    "native_and_source_cache_bindings": "PASS",
+    "no_separate_native_or_proof_attempt": "PASS",
+    "published_frozen_cache_binary_equal": "PASS",
+    "raw_stream_and_execution_bindings": "PASS",
+    "ready_source_oracle_tool_file_admission": "PASS",
+    "source_closure_matches_actual_build": "PASS",
+    "split_route_AST_no_hidden_build_native_proof": "PASS"
+  },
+  "cleanup_scope": "Observed managed groups only. Unobserved descendants that escape/reparent between snapshots are not authenticated.",
+  "confidence": "high",
+  "consumer_payload_seal": "7555f91466fee1b89b58309921689563fe7368f06a64a7fa67e1d75181edfa21",
+  "counts": {
+    "consumer_files": 2140,
+    "dependency_aliases": 388,
+    "native_dependencies": 1652,
+    "ready_files": 311,
+    "sealed_source_closure": 58
+  },
+  "defects": [],
+  "execution_granted": false,
+  "identities": {
+    "binary": {
+      "bytes": 2138616,
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/fall-reset-world-continuation-r2/fall-reset-world-native",
+      "resolved": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/fall-reset-world-continuation-r2/fall-reset-world-native",
+      "sha256": "6311ff2c0623f1d5f95d560c4ef19243fadcc65afcf4bc56f768a533568a812c",
+      "stat": [
+        16777229,
+        335535749,
+        2138616,
+        1791105301368509001,
+        1791105301370081380,
+        33261
+      ]
+    },
+    "build_result": {
+      "bytes": 2434,
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/fall-reset-world-continuation-r2-build.json",
+      "resolved": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/fall-reset-world-continuation-r2-build.json",
+      "sha256": "2e2f507970de534c9cb971ff36757e3688fbb3e162ec2c5e3063ae721519d035",
+      "stat": [
+        16777229,
+        335535761,
+        2434,
+        1791105304025202962,
+        1791105304025202962,
+        33188
+      ]
+    },
+    "consumer": {
+      "bytes": 3752318,
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/fall-reset-world-continuation-r2/consumer-manifest.json",
+      "resolved": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/fall-reset-world-continuation-r2/consumer-manifest.json",
+      "sha256": "4e39dd8124bde8e43ca60b73a60bab17c51748f7128e2d624bde156f6176cf85",
+      "stat": [
+        16777229,
+        335535757,
+        3752318,
+        1791105302901084053,
+        1791105302901084053,
+        33188
+      ]
+    },
+    "producer": {
+      "bytes": 41967,
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_fall_reset_world_continuation_r2.py",
+      "resolved": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_fall_reset_world_continuation_r2.py",
+      "sha256": "c2580703b97e4f698153e6dbbd3d9d48ae1c50f3d6b3fbc5e727d0bc39cdfa14",
+      "stat": [
+        16777229,
+        335527375,
+        41967,
+        1791104840938210824,
+        1791104840938210824,
+        33188
+      ]
+    },
+    "ready": {
+      "bytes": 214616,
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/fall-reset-world-continuation-r2/prepared.json",
+      "resolved": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/fall-reset-world-continuation-r2/prepared.json",
+      "sha256": "c2313906c8b94b849a7a86a8045e5e96628ae97cfe5c7741c730c3689cc7d697",
+      "stat": [
+        16777229,
+        335534490,
+        214616,
+        1791104928022321902,
+        1791104928022321902,
+        33188
+      ]
+    },
+    "receipt": {
+      "bytes": 655043,
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/fall-reset-world-continuation-r2/native-build.json",
+      "resolved": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/fall-reset-world-continuation-r2/native-build.json",
+      "sha256": "c102202b724ca5d9d4b9529e9abaecfb6cffde32afccef574651c4b21581f3ec",
+      "stat": [
+        16777229,
+        335535756,
+        655043,
+        1791105302398911153,
+        1791105302398911153,
+        33188
+      ]
+    }
+  },
+  "native_behavior_admitted": false,
+  "proof_admitted": false,
+  "raw_evidence": [
+    {
+      "bytes": 630878,
+      "path": "build/fall-reset-world-continuation-r2/build-attempt/builder.json",
+      "sha256": "03b5cb6b247963cf1b6cdca8a00e35a0cde36cf0eea60f79294189615c9ac4f9"
+    },
+    {
+      "bytes": 17118,
+      "path": "build/fall-reset-world-continuation-r2/build-attempt/processes/build/execution.json",
+      "sha256": "ac9cbbab419610275a9dfd9c86c8254a478e09f4ecffd37c3eeb280528a9f0b0"
+    },
+    {
+      "bytes": 422,
+      "path": "build/fall-reset-world-continuation-r2/build-attempt/request.json",
+      "sha256": "05609b875104970c3afb4f06e65e43627aab0f932c3873c8e39a4526460bed08"
+    },
+    {
+      "bytes": 138,
+      "path": "build/fall-reset-world-continuation-r2/build-attempt/child-claim.json",
+      "sha256": "1eb257eb524117db04d3ee5117a7ee46600edf02fcb9e2fa15948cfbe823e107"
+    },
+    {
+      "bytes": 339,
+      "path": "build/fall-reset-world-continuation-r2/build-attempt/owned-groups.jsonl",
+      "sha256": "1c26b078d1ff2aef1666158899967d50179eb6818b39d963e997bac5967a5a14"
+    },
+    {
+      "bytes": 126,
+      "path": "build/fall-reset-world-continuation-r2/build-attempt/admission/before-build.json",
+      "sha256": "e6f5b9144fad09f037df39b650ee7903304d8c2bbece918d2e3cbfc31baf97e2"
+    },
+    {
+      "bytes": 452,
+      "path": "build/fall-reset-world-continuation-r2/build-attempt/processes/build/started.json",
+      "sha256": "660378e25d1bb230cdb6ded02dbaaa4217265e80ea50e6f92767e9bf2846858b"
+    },
+    {
+      "bytes": 454,
+      "path": "build/fall-reset-world-continuation-r2/build-attempt/processes/build/planned.json",
+      "sha256": "ed0713d532a3abd42303d1a8204a921241970a4a47f5dd4d08ceaa170c138df2"
+    },
+    {
+      "bytes": 363,
+      "path": "build/fall-reset-world-continuation-r2/build-attempt/processes/build/cleanup.json",
+      "sha256": "8164fd1fc8b2d123891122afde6d98b6e7c9486b645c8d3bc4e6514a1975025c"
+    },
+    {
+      "bytes": 363,
+      "path": "build/fall-reset-world-continuation-r2/build-attempt/final-cleanup.json",
+      "sha256": "30d1df1de818ea502b9773ae4f24c148ea55240a2a8d77e5c9ca224877263c8c"
+    },
+    {
+      "bytes": 139,
+      "path": "build/fall-reset-world-continuation-r2/build-attempt/processes/build/stdout",
+      "sha256": "b75d9cb4dc239d0d05ffd193e6678c67fb94d405f46cbead9c9d1b7db33615f7"
+    },
+    {
+      "bytes": 0,
+      "path": "build/fall-reset-world-continuation-r2/build-attempt/processes/build/stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 547319,
+      "path": "build/fall-reset-world-continuation-r2/native-cache/entries/4d72be9c52a707f3a1a5f31c35fb634826aa9c5ba305027f2ae6c06ef9d729f2/manifest.json",
+      "sha256": "5ccd8e417f7f448154bf787cbe3c43769608be1f6fac8d8c14cd3c2a8e1a16f5"
+    },
+    {
+      "bytes": 153,
+      "path": "build/fall-reset-world-continuation-r2/native-cache/sources/681c372a25c2222bb346179cb64dfd939e9fa51baf3839a150feaa0605ab6b2f/manifest.json",
+      "sha256": "4ecb43441493493718d6eba308421e0605e9d99ca64fa88d08fa64878fab7603"
+    }
+  ],
+  "ready_payload_seal": "7653a0935883e36c5a9f07efbcdd59b67cf73e6f333fa7813587d7a02e38ca0d",
+  "remaining": "Lead may separately grant native-only after this admission. This receipt grants no execution and establishes no game behavior or proof result.",
+  "reproducible_command": "PYTHONDONTWRITEBYTECODE=1 python3 build/review-fall-reset-world-r2/artifact-review/audit.py UNIQUE_REVIEW_DIRECTORY UNIQUE_EVIDENCE_PATH",
+  "retained_review": {
+    "bytes": 9350,
+    "path": "build/review-fall-reset-world-r2/artifact-review/run002/audit.json",
+    "sha256": "f334ea2328c7d25c97fbfa2ac7553459961f4336dd7924f93602f9f0ea78d799"
+  },
+  "review_fixture_history": {
+    "correction": "Compare raw cleanup fields to the enriched execution copy; separately require leader reaped, verified, and no lingering group.",
+    "original_attempt_preserved": {
+      "bytes": 14578,
+      "path": "build/review-fall-reset-world-r2/artifact-review/audit-run001.py",
+      "sha256": "112439e40d209ab7c4c9d74334be74c8322d45167cf18c20b8074bf77a0d0c12"
+    },
+    "original_stop": {
+      "bytes": 796,
+      "path": "build/review-fall-reset-world-r2/artifact-review/run001-failure.json",
+      "sha256": "c307ea016e4f65386c6a08407cf715375f5ecd333fd66bb314a70cde07982411"
+    }
+  },
+  "review_seconds": 2.3337193746119738,
+  "review_settings": {
+    "model": "gpt-6.1-sol",
+    "reasoning_effort": "ultra"
+  },
+  "reviewer": {
+    "bytes": 14998,
+    "path": "build/review-fall-reset-world-r2/artifact-review/audit.py",
+    "sha256": "179201ee0cbf064a66c030c89c885e8a1b3a6056628d956e481aac88620be5bf"
+  },
+  "runtime_guard": {
+    "blocks": [
+      "os.exec",
+      "os.fork",
+      "os.forkpty",
+      "os.kill",
+      "os.killpg",
+      "os.posix_spawn",
+      "os.system",
+      "subprocess.Popen",
+      "ctypes.*"
+    ],
+    "denied_events": [],
+    "installed_before_producer_import": true
+  },
+  "scope": "File-only independent artifact admission; no compiler/emitter/native/kernel/Java/UI execution, no producer edits, no old oracle or cache-control replay.",
+  "status": "PASS-artifact-admission"
+}

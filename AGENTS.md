@@ -30,4 +30,4 @@ The persistent goal in chat 01a101ff-32b6-7910-a9af-96488bfb0c2f is authoritativ
 - Tests must probe real failure modes and independent expected outcomes. Check Bend code, native builds, relevant CPU/GPU execution, and independent behavioral evidence where applicable.
 - Routine automated client launches must avoid focus changes and Spaces switching. Human launches use normal input/focus behavior. Required visible OS-input sessions follow the coordinated/isolated acceptance policy in docs/VISUAL_ACCEPTANCE.md.
 
-The user explicitly authorizes useful parallel subagents, all gpt-6.1-sol with xhigh reasoning, and autonomous engineering decisions within this scope. Never request routine milestone approval.
+The user explicitly authorizes useful parallel subagents, all gpt-6.1-sol with ultra reasoning, and autonomous engineering decisions within this scope. The 2026-10-04 ultra instruction supersedes earlier xhigh settings. Never request routine milestone approval.
