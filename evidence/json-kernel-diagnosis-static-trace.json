@@ -1,0 +1,684 @@
+{
+  "schema": 1,
+  "scope": "Read-only diagnostic instrumentation of pinned Lean live/tree rules; not type checking or kernel validation.",
+  "input": "build/json-limits/json-limits-module.bendtt",
+  "input_sha256": "7682dddf75ce536780e56e4e2b6b36ef7947ca0d3d7ed586cbfc312eeb367f81",
+  "encode_go_block_sha256": "eea8b42b93a8e78f44c4e17c5e084e5780e33484f05b44d80515a00e519d2395",
+  "script_sha256": "0cff5a237a7a6515ce1d0be09702fd89512a6422fa89f3606bce4892cbf69b9e",
+  "instrumentation_result": false,
+  "self_calls": [
+    {
+      "branch": [
+        "JArray",
+        "Con",
+        "()",
+        "()"
+      ],
+      "call": "(encode_go x0 (.False, ()))",
+      "arguments": [
+        {
+          "column": 0,
+          "quantity": 1,
+          "argument": "x0",
+          "paths_innermost_first": [
+            [
+              false,
+              true,
+              false,
+              true
+            ]
+          ],
+          "comparison": "lt"
+        },
+        {
+          "column": 1,
+          "quantity": 1,
+          "argument": "(.False, ())",
+          "paths_innermost_first": [],
+          "comparison": "gt"
+        }
+      ],
+      "descent": "lt",
+      "allowed": true,
+      "variable_tags": [
+        [
+          1,
+          []
+        ],
+        [
+          0,
+          [
+            false,
+            true,
+            true,
+            false,
+            true
+          ]
+        ],
+        [
+          0,
+          [
+            false,
+            true,
+            false,
+            true
+          ]
+        ]
+      ],
+      "matched_label_hits": [
+        [
+          [
+            0,
+            [
+              true,
+              true
+            ]
+          ],
+          "()"
+        ],
+        [
+          [
+            0,
+            [
+              true,
+              true,
+              true,
+              false,
+              true
+            ]
+          ],
+          "()"
+        ],
+        [
+          [
+            0,
+            [
+              false,
+              false,
+              true
+            ]
+          ],
+          "Con"
+        ],
+        [
+          [
+            0,
+            [
+              false
+            ]
+          ],
+          "JArray"
+        ]
+      ]
+    },
+    {
+      "branch": [
+        "JArray",
+        "Con",
+        "()",
+        "()"
+      ],
+      "call": "(encode_go (.JArray, (x1, ())) (.True, ()))",
+      "arguments": [
+        {
+          "column": 0,
+          "quantity": 1,
+          "argument": "(.JArray, (x1, ()))",
+          "paths_innermost_first": [],
+          "comparison": "gt"
+        },
+        {
+          "column": 1,
+          "quantity": 1,
+          "argument": "(.True, ())",
+          "paths_innermost_first": [],
+          "comparison": "gt"
+        }
+      ],
+      "descent": "gt",
+      "allowed": false,
+      "variable_tags": [
+        [
+          1,
+          []
+        ],
+        [
+          0,
+          [
+            false,
+            true,
+            true,
+            false,
+            true
+          ]
+        ],
+        [
+          0,
+          [
+            false,
+            true,
+            false,
+            true
+          ]
+        ]
+      ],
+      "matched_label_hits": [
+        [
+          [
+            0,
+            [
+              true,
+              true
+            ]
+          ],
+          "()"
+        ],
+        [
+          [
+            0,
+            [
+              true,
+              true,
+              true,
+              false,
+              true
+            ]
+          ],
+          "()"
+        ],
+        [
+          [
+            0,
+            [
+              false,
+              false,
+              true
+            ]
+          ],
+          "Con"
+        ],
+        [
+          [
+            0,
+            [
+              false
+            ]
+          ],
+          "JArray"
+        ]
+      ]
+    },
+    {
+      "branch": [
+        "JObject",
+        "Con",
+        "JMember",
+        "()",
+        "()",
+        "()"
+      ],
+      "call": "(encode_go x1 (.False, ()))",
+      "arguments": [
+        {
+          "column": 0,
+          "quantity": 1,
+          "argument": "x1",
+          "paths_innermost_first": [
+            [
+              false,
+              true,
+              true,
+              false,
+              true,
+              false,
+              true
+            ]
+          ],
+          "comparison": "lt"
+        },
+        {
+          "column": 1,
+          "quantity": 1,
+          "argument": "(.False, ())",
+          "paths_innermost_first": [],
+          "comparison": "gt"
+        }
+      ],
+      "descent": "lt",
+      "allowed": true,
+      "variable_tags": [
+        [
+          1,
+          []
+        ],
+        [
+          0,
+          [
+            false,
+            true,
+            true,
+            false,
+            true
+          ]
+        ],
+        [
+          0,
+          [
+            false,
+            true,
+            true,
+            false,
+            true,
+            false,
+            true
+          ]
+        ],
+        [
+          0,
+          [
+            false,
+            true,
+            false,
+            true,
+            false,
+            true
+          ]
+        ]
+      ],
+      "matched_label_hits": [
+        [
+          [
+            0,
+            [
+              true,
+              true
+            ]
+          ],
+          "()"
+        ],
+        [
+          [
+            0,
+            [
+              true,
+              true,
+              true,
+              false,
+              true
+            ]
+          ],
+          "()"
+        ],
+        [
+          [
+            0,
+            [
+              true,
+              true,
+              true,
+              false,
+              true,
+              false,
+              true
+            ]
+          ],
+          "()"
+        ],
+        [
+          [
+            0,
+            [
+              false,
+              false,
+              true,
+              false,
+              true
+            ]
+          ],
+          "JMember"
+        ],
+        [
+          [
+            0,
+            [
+              false,
+              false,
+              true
+            ]
+          ],
+          "Con"
+        ],
+        [
+          [
+            0,
+            [
+              false
+            ]
+          ],
+          "JObject"
+        ]
+      ]
+    },
+    {
+      "branch": [
+        "JObject",
+        "Con",
+        "JMember",
+        "()",
+        "()",
+        "()"
+      ],
+      "call": "(encode_go (.JObject, (x2, ())) (.True, ()))",
+      "arguments": [
+        {
+          "column": 0,
+          "quantity": 1,
+          "argument": "(.JObject, (x2, ()))",
+          "paths_innermost_first": [],
+          "comparison": "gt"
+        },
+        {
+          "column": 1,
+          "quantity": 1,
+          "argument": "(.True, ())",
+          "paths_innermost_first": [],
+          "comparison": "gt"
+        }
+      ],
+      "descent": "gt",
+      "allowed": false,
+      "variable_tags": [
+        [
+          1,
+          []
+        ],
+        [
+          0,
+          [
+            false,
+            true,
+            true,
+            false,
+            true
+          ]
+        ],
+        [
+          0,
+          [
+            false,
+            true,
+            true,
+            false,
+            true,
+            false,
+            true
+          ]
+        ],
+        [
+          0,
+          [
+            false,
+            true,
+            false,
+            true,
+            false,
+            true
+          ]
+        ]
+      ],
+      "matched_label_hits": [
+        [
+          [
+            0,
+            [
+              true,
+              true
+            ]
+          ],
+          "()"
+        ],
+        [
+          [
+            0,
+            [
+              true,
+              true,
+              true,
+              false,
+              true
+            ]
+          ],
+          "()"
+        ],
+        [
+          [
+            0,
+            [
+              true,
+              true,
+              true,
+              false,
+              true,
+              false,
+              true
+            ]
+          ],
+          "()"
+        ],
+        [
+          [
+            0,
+            [
+              false,
+              false,
+              true,
+              false,
+              true
+            ]
+          ],
+          "JMember"
+        ],
+        [
+          [
+            0,
+            [
+              false,
+              false,
+              true
+            ]
+          ],
+          "Con"
+        ],
+        [
+          [
+            0,
+            [
+              false
+            ]
+          ],
+          "JObject"
+        ]
+      ]
+    }
+  ],
+  "binders": [
+    {
+      "branch": [
+        "JNull",
+        "()"
+      ],
+      "binder": "x0",
+      "quantity": 1,
+      "uses": 0,
+      "allowed": true
+    },
+    {
+      "branch": [
+        "JBool",
+        "True",
+        "()",
+        "()"
+      ],
+      "binder": "x0",
+      "quantity": 1,
+      "uses": 0,
+      "allowed": true
+    },
+    {
+      "branch": [
+        "JBool",
+        "False",
+        "()",
+        "()"
+      ],
+      "binder": "x0",
+      "quantity": 1,
+      "uses": 0,
+      "allowed": true
+    },
+    {
+      "branch": [
+        "JNumber"
+      ],
+      "binder": "x0",
+      "quantity": 1,
+      "uses": 1,
+      "allowed": true
+    },
+    {
+      "branch": [
+        "JNumber",
+        "()"
+      ],
+      "binder": "x1",
+      "quantity": 1,
+      "uses": 0,
+      "allowed": true
+    },
+    {
+      "branch": [
+        "JString"
+      ],
+      "binder": "x0",
+      "quantity": 1,
+      "uses": 1,
+      "allowed": true
+    },
+    {
+      "branch": [
+        "JString",
+        "()"
+      ],
+      "binder": "x1",
+      "quantity": 1,
+      "uses": 0,
+      "allowed": true
+    },
+    {
+      "branch": [
+        "JArray",
+        "Nil",
+        "()",
+        "()"
+      ],
+      "binder": "x0",
+      "quantity": 1,
+      "uses": 1,
+      "allowed": true
+    },
+    {
+      "branch": [
+        "JArray",
+        "Con"
+      ],
+      "binder": "x0",
+      "quantity": 1,
+      "uses": 1,
+      "allowed": true
+    },
+    {
+      "branch": [
+        "JArray",
+        "Con"
+      ],
+      "binder": "x1",
+      "quantity": 1,
+      "uses": 1,
+      "allowed": true
+    },
+    {
+      "branch": [
+        "JArray",
+        "Con",
+        "()",
+        "()"
+      ],
+      "binder": "x2",
+      "quantity": 1,
+      "uses": 1,
+      "allowed": true
+    },
+    {
+      "branch": [
+        "JObject",
+        "Nil",
+        "()",
+        "()"
+      ],
+      "binder": "x0",
+      "quantity": 1,
+      "uses": 1,
+      "allowed": true
+    },
+    {
+      "branch": [
+        "JObject",
+        "Con",
+        "JMember"
+      ],
+      "binder": "x0",
+      "quantity": 1,
+      "uses": 1,
+      "allowed": true
+    },
+    {
+      "branch": [
+        "JObject",
+        "Con",
+        "JMember"
+      ],
+      "binder": "x1",
+      "quantity": 1,
+      "uses": 1,
+      "allowed": true
+    },
+    {
+      "branch": [
+        "JObject",
+        "Con",
+        "JMember",
+        "()"
+      ],
+      "binder": "x2",
+      "quantity": 1,
+      "uses": 1,
+      "allowed": true
+    },
+    {
+      "branch": [
+        "JObject",
+        "Con",
+        "JMember",
+        "()",
+        "()",
+        "()"
+      ],
+      "binder": "x3",
+      "quantity": 1,
+      "uses": 1,
+      "allowed": true
+    }
+  ],
+  "rejected_other_calls": [],
+  "affinity_violations": []
+}

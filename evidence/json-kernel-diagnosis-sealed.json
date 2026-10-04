@@ -1,0 +1,67 @@
+{
+  "schema": 1,
+  "sealed_utc": "2026-10-04T00:46:37.547873+00:00",
+  "status": "diagnosis_sealed; actual encoder kernel rejection and exact helper control acceptance",
+  "confidence": {
+    "actual_commands_hashes_translation_equality": "high",
+    "static_descent_localization": "high; diagnostic instrumentation only",
+    "general_JSON_correctness_or_impossibility": "not claimed"
+  },
+  "production_unchanged": true,
+  "34_inventory_pins_unchanged": true,
+  "actual_kernel_result": {
+    "encoder_projection": "rejected encode_go: affine live code, calls that descend",
+    "pre_encode_go_control": "ALL PROOFS CHECK"
+  },
+  "slot_released": true,
+  "process_groups_remaining": [],
+  "generation": [
+    {
+      "path": "docs/JSON_KERNEL_DIAGNOSIS.md",
+      "bytes": 11658,
+      "sha256": "b2c879ebd82b8ad3b7a647720ad3ef3f7bc8f57977fbdda1f4b157c548cef21e"
+    },
+    {
+      "path": "evidence/json-kernel-diagnosis-inventory.json",
+      "bytes": 13096,
+      "sha256": "c8e4d408ab0169cfa8d694c13c60715ded5703c6ecc76d0c2ade58b5481fc25e"
+    },
+    {
+      "path": "evidence/json-kernel-diagnosis-projection.json",
+      "bytes": 56724,
+      "sha256": "0aff2769aacbd1b594ae8576525dcac28bcf4252072ca940e61894188ac5c738"
+    },
+    {
+      "path": "evidence/json-kernel-diagnosis-static-trace.json",
+      "bytes": 11504,
+      "sha256": "be118503e7b3c49414f3842d931c1d567ad0486cb26a7ce8ef6d0d0772bac971"
+    },
+    {
+      "path": "build/json-kernel-diagnosis/static_trace.py",
+      "bytes": 9629,
+      "sha256": "0cff5a237a7a6515ce1d0be09702fd89512a6422fa89f3606bce4892cbf69b9e"
+    },
+    {
+      "path": "build/json-kernel-diagnosis/serializer_exact.bend",
+      "bytes": 1720,
+      "sha256": "e5a7dce5ca3dbf4b3b8e89b4a255645128c1415da4881baef42e601b2be1a26d"
+    },
+    {
+      "path": "build/json-kernel-diagnosis/serializer_exact.bendtt",
+      "bytes": 659542,
+      "sha256": "c2e13a158636e02c1ef013237b3a28f07e0977076a0e867e1c3398ecff01739d"
+    },
+    {
+      "path": "build/json-kernel-diagnosis/pre-encode-go-control.bendtt",
+      "bytes": 657207,
+      "sha256": "89accf736a6173fe75e987bd7dcf7166b48961259514c4876e9cfe0eda553319"
+    }
+  ],
+  "new_executions": [
+    "verbatim projection ordinary checker once",
+    "verbatim projection BendTT export once",
+    "pinned kernel encoder projection once",
+    "pinned kernel exact predefinition control once"
+  ],
+  "no_new_native_test_or_full_module_verdict": true
+}

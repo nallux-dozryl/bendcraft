@@ -65,7 +65,7 @@ declared interfaces; integration evidence determines subsequent work.
 | Build reuse | Cache complete; runtime integration tests complete; full Pclient cache queued | Shared plain Player tick/input/restore native evidence passes; whole-runtime kernel export timed out; cached full-client test remains queued |
 | Block catalog | Completed stored-factor catalog and owned world lookup; new `slab_collision.bend` preparation | All-state stored factors and exact Core/Registry lookup pass; actual registered slab-state shapes are being derived before a broader world-collision consumer |
 | Save reference | New actual player/entity serialization evidence | Current saves use the custom PlayerRecord extension. Official save/load fields, raw types, default/reset rules and runtime-only state are being observed before vanilla-format compatibility work |
-| Kernel diagnosis | New read-only JSON diagnosis | Existing generic checker mismatch remains unresolved; only exact production projections and pinned historical translations may inform a source-level repair |
+| Kernel diagnosis | Completed exact JSON serializer localization; production unchanged | The unchanged serializer projection fails independent descent checking while its exact predefinition control passes. All 93 translated definitions match retained full export. Rebuilt array/object tail wrappers lose kernel proper-piece paths. No complete source repair is prepared; preserve public AST, exact unbounded serialization semantics and existing native evidence |
 
 Owners integrate through these interfaces; they do not concurrently modify
 another owner's source. Changes to an interface are announced before dependent
