@@ -1,0 +1,587 @@
+{
+  "binary": {
+    "bytes": 2635208,
+    "file": "player-block-inside-stuck-tests",
+    "sha1": "b06c16ed6ba36a22ca440771667e54400800025e",
+    "sha256": "2ebc5984b5a6617983214e96ff4653228858575ff4edfda0a68c844d04a673b2"
+  },
+  "build_report": {
+    "bytes": 628052,
+    "file": "native-build.json",
+    "sha1": "9c5ae3efd00df7e445a59d7550925a01bfaaa192",
+    "sha256": "516635e922ffbc4a8838eeab8b4a34744e2dcffc172d94e1776eb6bc0a8b31f6"
+  },
+  "comparison_corruptions_rejected": [
+    "missing-row",
+    "extra-row",
+    "altered-row",
+    "reordered-row",
+    "missing-newline",
+    "crlf",
+    "state-observation-disagreement"
+  ],
+  "corpus": {
+    "actual_callback_comparisons": 138,
+    "actual_consumption_comparisons": 72,
+    "actual_consumption_vectors": 36,
+    "actual_ordered_contact_comparisons": 116,
+    "actual_ordered_reads": 560,
+    "actual_stationary_comparisons": 116,
+    "authority_consistency_checks": 482,
+    "case_manifest": {
+      "bytes": 210769,
+      "file": "case-manifest.json",
+      "sha1": "1e2bc5d9c65b2ef2aa025ccba2e2f011814e614c",
+      "sha256": "d587448adaca582e4a6296056a381acd53cf19d098dbd8907e6a49b203dbc481"
+    },
+    "categories": {
+      "actual-ordered-world-contacts": 116,
+      "actual-original-callback": 138,
+      "actual-original-stationary-dispatch": 116,
+      "actual-travel-multiplier-consumption": 72,
+      "callback-property-refusal": 7,
+      "complete-owner-checkpoint": 46,
+      "complete-owner-recheck": 1,
+      "explicit-world-load": 273,
+      "forged-raw-world-cell": 14,
+      "intersection-skip-without-world-read": 1,
+      "queried-bucket-and-candidate-atomic-rollback": 1,
+      "queried-hash-collision-bucket-retention": 3,
+      "query-refusal-and-atomic-rollback": 7,
+      "raw-registry-id-refusal-and-retention": 6,
+      "receiver-history-impulse-seed": 297,
+      "receiver-world-context": 261,
+      "same-owner-recovery": 36,
+      "server-damage-boundary-rollback": 4,
+      "server-movement-observation-refusal": 3,
+      "stationary-refusal-and-rollback": 6
+    },
+    "checked_refusals": 34,
+    "expected": {
+      "bytes": 68937,
+      "file": "expected.tsv",
+      "sha1": "55678a5dc56abeb2dbc043286c508ba38fe80c65",
+      "sha256": "08a1b4d0df4402176352b254cafd4cde11cde38a9363d9fc2accc2b4daf78cc5"
+    },
+    "operations": 1408,
+    "owner_scope": "All raw Core section cells/trie/clock/queues/events and all Registry capacity slots/names/counts, plus receiver/fall history/impulse on refusal and held State versus Observation on every success; canonical State tails only. Nonliving Java receivers have no impulse service, so their inert test field is zero/None.",
+    "queried_collision_bucket_sequences": 4,
+    "requests": {
+      "bytes": 126698,
+      "file": "requests.tsv",
+      "sha1": "ea9409abe9ad669bca23f062aaa4c398de4f0efe",
+      "sha256": "ccee73ef0fda3a0605f46b1065ab729615782965d83f28e82a2f8be12678d7ba"
+    },
+    "responses": 1965,
+    "same_owner_recoveries": 36,
+    "world_fixture_count": 11,
+    "worlds": [
+      {
+        "bytes": 33589,
+        "file": "world-0.nbt",
+        "sha1": "f62f02df008bd17d4531a183491ca19c5aee840f",
+        "sha256": "cfec33b7bd34626318263706da14dde6e751bcc6f490379bb3a00d7c2e04b3ac"
+      },
+      {
+        "bytes": 50019,
+        "file": "world-1.nbt",
+        "sha1": "7c62b3fc1bdf1973c71b760af35957f25a1511c0",
+        "sha256": "b99694a88e143d0e97eb095b85f2466b6c3a5593e44761d91521340a0956a6d4"
+      },
+      {
+        "bytes": 50019,
+        "file": "world-2.nbt",
+        "sha1": "9eb4dd41534486bd5ab018fba23d2287a8696374",
+        "sha256": "ca0119ba6c74f3faf73fb74053d11a0e12d9c22a09c55170761e84cfbcab6e1a"
+      },
+      {
+        "bytes": 50019,
+        "file": "world-3.nbt",
+        "sha1": "e1fbdb424583810a14a6c52ebb79589d90ff6a7c",
+        "sha256": "23d0a12f1ca186b57258998b4f1fe5260339b161b1b047690217156c2289d680"
+      },
+      {
+        "bytes": 50019,
+        "file": "world-4.nbt",
+        "sha1": "342510e90af24ebe6ba5f6d9923ac24418eb9924",
+        "sha256": "31868ae328d6d4d9389016240b7e7dba8dad060374917c06006d8327867f5b70"
+      },
+      {
+        "bytes": 50019,
+        "file": "world-5.nbt",
+        "sha1": "40013265efb0017c2084840afbfe96ed2e58d9ae",
+        "sha256": "6055d5da2e82925a43d8bdc6c90094c2365a4713e3d5e3bfcd35da645772b551"
+      },
+      {
+        "bytes": 50019,
+        "file": "world-6.nbt",
+        "sha1": "a45c98133a1b31e177748c06254c89ac6b24d497",
+        "sha256": "264ddfa135d871e540d8879e4418493cf7ba5899a2aef899b420d68cf88f3bbc"
+      },
+      {
+        "bytes": 50019,
+        "file": "world-7.nbt",
+        "sha1": "dbfe06216ca0d0d21c19b903262e14d4ae39cfb7",
+        "sha256": "1fdf7cb4051dc066d10f560d937cbc4b8792484c88ae1a7de3e33aac805f7cb5"
+      },
+      {
+        "bytes": 50019,
+        "file": "world-8.nbt",
+        "sha1": "abafd8cc47063a01ec9d4012abf4a01d6623dacd",
+        "sha256": "02cb3ce6497481f32407107eb6267c2a18536ad541e552ecf6310e715a618e24"
+      },
+      {
+        "bytes": 50019,
+        "file": "world-9.nbt",
+        "sha1": "20a82f98270cc9d40570ab6a31dd557ddc089906",
+        "sha256": "79390e9e18ac628281c19795f85c1dbf5f05e357e4e5fe2700bec70792ac80b2"
+      },
+      {
+        "bytes": 66458,
+        "file": "world-10.nbt",
+        "sha1": "1c411f9456a52a8c48c96807341defc5be22758d",
+        "sha256": "a8f7291aed048d45bbf7d526ff3938aed69d7109e6fc7ab1dc66af449b1cfae8"
+      }
+    ]
+  },
+  "expected_receiver_corruption_rejected": true,
+  "folder": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-stuck/native/1791133403090082000",
+  "motion_reference": {
+    "bytes": 1194108,
+    "file": "player_motion_current.json",
+    "sha1": "9139796cd4990fbf255377914f9e7c1fcea56520",
+    "sha256": "fc0cfd70f1392b4f8f5cce70aeaa6176863e03732e4017e91b9ccfc834c11332"
+  },
+  "motion_reference_corruptions_rejected": [
+    "checksum",
+    "actual-input-resealed",
+    "entry-multiplier-resealed"
+  ],
+  "motion_reference_evidence": {
+    "bytes": 21433,
+    "file": "player-motion-current-reference.json",
+    "sha1": "263d2f8b5eac8430cc8a1bbd765abccfff49680d",
+    "sha256": "d91fc86a055e5a7c832b7e9bd81f0dd920a03555dbe7a6d2c3aa08d297a60ae5"
+  },
+  "pin": "26.3",
+  "prior_failed_attempts": [
+    {
+      "error": "KeyError('impulse_position')",
+      "failure": {
+        "bytes": 2958,
+        "file": "failure.json",
+        "sha1": "6b7533ebb0800902833077c2e07f33b400669757",
+        "sha256": "cc7d9e7aa6fc74676bb85430e54dbfb1ba13a39150d356b4a130b5ac00edbfb6"
+      },
+      "folder": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-stuck/native/1791130449199190000",
+      "target_executed": false
+    },
+    {
+      "diagnosis": {
+        "cleanup_controls": [
+          {
+            "argv": [
+              "/usr/bin/true"
+            ],
+            "exit_code": 0,
+            "group_absent": true,
+            "pid": 52653,
+            "seconds": 0.005729,
+            "stderr": {
+              "bytes": 0,
+              "file": "cleanup-normal.stderr",
+              "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            "stdout": {
+              "bytes": 0,
+              "file": "cleanup-normal.stdout",
+              "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            "timed_out": false
+          },
+          {
+            "argv": [
+              "/bin/sleep",
+              "0.05"
+            ],
+            "exit_code": -9,
+            "group_absent": true,
+            "pid": 52654,
+            "seconds": 0.009334,
+            "stderr": {
+              "bytes": 0,
+              "file": "cleanup-deadline.stderr",
+              "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            "stdout": {
+              "bytes": 0,
+              "file": "cleanup-deadline.stdout",
+              "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            "timed_out": true
+          }
+        ],
+        "failed_attempt": {
+          "bytes": 3209,
+          "file": "failure.json",
+          "sha1": "70faebec48d5e1ee693729e6e3d44e0e67f4f48a",
+          "sha256": "ac12616f67a1b181a1f4bae68cd218df42cd751311aa824cb434751fc788a778"
+        },
+        "last_observed_emitter": {
+          "cpu_percent": 92.7,
+          "elapsed_seconds": 99,
+          "pid": 49479,
+          "rss_kib": 2150112
+        },
+        "native_artifact_created": false,
+        "native_target_started": false,
+        "new_bend_dependency_count": 16,
+        "new_source_sha256": {
+          "src/core.bend": "c1ee5a5390cdac0452c9c6cd3b0584a68ef68b5b0dfec867491c27e67ecadd4e",
+          "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+          "src/geometry.bend": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f",
+          "src/hash.bend": "d2473695632b19e68c8d636668e4617f04d70892fb2ab6559cb24d4b33c1b978",
+          "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+          "src/movement.bend": "31f5a4c47903506c0f388f688eaeaf78a36a0d266efde52bc57ea8cc89627b45",
+          "src/nbt.bend": "b677546b5fc02aaa38f5c09e5b798c0d35aec32b1c4b37cbd7042b9a1a5275e4",
+          "src/player_block_inside_stuck.bend": "0fe9049b773fece03e57aa1d6887c7f7be6f7e0839a0dade4d24845a096ed9f7",
+          "src/player_fall_history.bend": "0367657abca30a33851d043cf7adaea6c547e55e838896c2b3ff4d8dea73cdc9",
+          "src/registry.bend": "821c53d9cfa3044be3cae2af968f55563c0be2bebc9beae55a29d77d47b140a0",
+          "src/schedule.bend": "93aa79895fe340e27ae5fd562102d5980f0938003eb1bbde669a84010779b8c9",
+          "src/section.bend": "02b5c15c57b173c7eb8b4c55a1433c10c192926e91af5e3e69050b4404044aa5",
+          "src/section_map.bend": "ded59d7938c02fd0876d65e37f9f90ea0cfebf3ca4bd107394342f8adbf33965",
+          "src/unicode.bend": "8f0cd9bbcd0e7f938af370675eca0c73a9b97b90c2789a1e77e5a29a918455bd",
+          "src/world_codec.bend": "461e2bc342005831a3d16824303f79e1f4dac2dca0eaf0731d18052dbfe0bf86",
+          "tests/player_block_inside_stuck.bend": "1fa1d32b6f7f66bac0c39f700acd119a5ef6beb9d36892abc026e7a6355a1f8d"
+        },
+        "observed_exception": "PermissionError(1, 'Operation not permitted')",
+        "output_bytes": {
+          "stderr": 0,
+          "stdout": 0
+        },
+        "prepared_to_output_seconds": 180.048579,
+        "removed_bend_dependencies": [
+          "src/archive.bend",
+          "src/client_render.bend",
+          "src/client_world.bend",
+          "src/compression.bend",
+          "src/framing.bend",
+          "src/game.bend",
+          "src/live.bend",
+          "src/png.bend"
+        ],
+        "source_narrowing": "Replace observer-only client_world import/error printer with the already imported production P.world_error, removing the unrelated frontend/rendering dependency graph.",
+        "status": "diagnosed-and-narrowed"
+      },
+      "error": "PermissionError(1, 'Operation not permitted')",
+      "failure": {
+        "bytes": 3209,
+        "file": "failure.json",
+        "sha1": "70faebec48d5e1ee693729e6e3d44e0e67f4f48a",
+        "sha256": "ac12616f67a1b181a1f4bae68cd218df42cd751311aa824cb434751fc788a778"
+      },
+      "folder": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-stuck/native/1791130878458826000",
+      "target_executed": false
+    },
+    {
+      "build_receipt": {
+        "argv": [
+          "python3",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/build_native.py",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_block_inside_stuck.bend",
+          "-o",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-stuck-tests",
+          "--report",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-stuck/native/1791132485389947000/native-build.json"
+        ],
+        "exit_code": -9,
+        "group_absent": false,
+        "group_probe_error": {
+          "errno": 1,
+          "group_members": [
+            "60051 59448 ?E"
+          ],
+          "type": "PermissionError"
+        },
+        "pid": 59448,
+        "seconds": 180.103646,
+        "stderr": {
+          "bytes": 0,
+          "file": "build.stderr",
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout": {
+          "bytes": 0,
+          "file": "build.stdout",
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "timed_out": true
+      },
+      "diagnosis": {
+        "builder_group_absent_now": true,
+        "cleanup_controls": [
+          {
+            "argv": [
+              "/usr/bin/true"
+            ],
+            "cleanup_poll_count": 1,
+            "exit_code": 0,
+            "group_absent": true,
+            "pid": 62031,
+            "seconds": 0.004758,
+            "stderr": {
+              "bytes": 0,
+              "file": "cleanup-normal.stderr",
+              "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            "stdout": {
+              "bytes": 0,
+              "file": "cleanup-normal.stdout",
+              "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            "timed_out": false
+          },
+          {
+            "argv": [
+              "/bin/sleep",
+              ".05"
+            ],
+            "cleanup_poll_count": 1,
+            "exit_code": -9,
+            "group_absent": true,
+            "pid": 62032,
+            "seconds": 0.008181,
+            "stderr": {
+              "bytes": 0,
+              "file": "cleanup-deadline.stderr",
+              "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            "stdout": {
+              "bytes": 0,
+              "file": "cleanup-deadline.stdout",
+              "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            "timed_out": true
+          }
+        ],
+        "phase": "source C completed; repeated Bend native emission exceeded total builder180s deadline",
+        "second_emitter_last_measured_elapsed_seconds": 56,
+        "second_emitter_last_measured_rss_kib": 4935824,
+        "second_emitter_pid": 60051,
+        "source_c": {
+          "bytes": 6320424,
+          "file": "generated.c",
+          "sha1": "a5c6e08fe79c6f6cd5f339951a867d1f67958583",
+          "sha256": "3a64315e7ac47d62074844d74cde043add4c766aa7fb500625de97a5bc4b7adb"
+        },
+        "substantive_change": "Context, Owner and test State gain inert recursive tails to box native continuation arguments; production callback/query/complete signatures and authority consistency remain unchanged.",
+        "target_executed": false
+      },
+      "error": "AssertionError({'argv': ['python3', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/build_native.py', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_block_inside_stuck.bend', '-o', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-stuck-tests', '--report', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-stuck/native/1791132485389947000/native-build.json'], 'pid': 59448, 'exit_code': -9, 'seconds': 180.103646, 'timed_out': True, 'group_absent': False, 'stdout': {'file': 'build.stdout', 'bytes': 0, 'sha1': 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'}, 'stderr': {'file': 'build.stderr', 'bytes': 0, 'sha1': 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'}, 'group_probe_error': {'type': 'PermissionError', 'errno': 1, 'group_members': ['60051 59448 ?E']}})",
+      "failure": {
+        "bytes": 3845,
+        "file": "failure.json",
+        "sha1": "30e4a112905c9992cd3499c96f1dedf03c582797",
+        "sha256": "160d99577991d8308475a588049bc7a40d4e1edd4d86507385eefd0f118d8f92"
+      },
+      "folder": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-stuck/native/1791132485389947000",
+      "target_executed": false
+    },
+    {
+      "build_receipt": {
+        "argv": [
+          "python3",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/build_native.py",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_block_inside_stuck.bend",
+          "-o",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-stuck-tests",
+          "--report",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-stuck/native/1791133026351490000/native-build.json"
+        ],
+        "cleanup_poll_count": 5,
+        "exit_code": -9,
+        "group_absent": true,
+        "group_probe_error": {
+          "errno": 1,
+          "group_members": [
+            "64532 63670 ?E"
+          ],
+          "type": "PermissionError"
+        },
+        "pid": 63670,
+        "seconds": 180.340644,
+        "stderr": {
+          "bytes": 0,
+          "file": "build.stderr",
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout": {
+          "bytes": 0,
+          "file": "build.stdout",
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "timed_out": true
+      },
+      "diagnosis": {
+        "builder_group_absent": true,
+        "continuation": "_collect reproduced exact retained source prekey8c64e5ef and frozen harness/production/reference pins; manifest SHA validates5,817,277-byte C. Existing builder source-cache continuation avoids first76s emission; unchanged180s deadline, no policy changes or forged cache records.",
+        "phase": "first C emission completed around76s; subsequent Bend native compilation exceeded remaining104s in180s total builder cap",
+        "second_emitter_last_measured_elapsed_seconds": 35,
+        "second_emitter_last_measured_rss_kib": 2675520,
+        "second_emitter_pid": 64532,
+        "source_c": {
+          "bytes": 5817277,
+          "file": "generated.c",
+          "sha1": "d56899f96869723685f5ff8b8693f9572b2ef1fe",
+          "sha256": "b0bd2b56706ec6c80ea53a461dfb1d3070c07d33591896d12729bc3fc2b2c62d"
+        },
+        "target_executed": false
+      },
+      "error": "AssertionError({'argv': ['python3', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/build_native.py', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_block_inside_stuck.bend', '-o', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-stuck-tests', '--report', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-stuck/native/1791133026351490000/native-build.json'], 'pid': 63670, 'exit_code': -9, 'seconds': 180.340644, 'timed_out': True, 'group_absent': True, 'cleanup_poll_count': 5, 'stdout': {'file': 'build.stdout', 'bytes': 0, 'sha1': 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'}, 'stderr': {'file': 'build.stderr', 'bytes': 0, 'sha1': 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'}, 'group_probe_error': {'type': 'PermissionError', 'errno': 1, 'group_members': ['64532 63670 ?E']}})",
+      "failure": {
+        "bytes": 5131,
+        "file": "failure.json",
+        "sha1": "a6680dae8e0cab54364ebb5f3ab43e2e645ad40d",
+        "sha256": "d1d6a2fa863ff12c04f44d539dc23865b65691887807199fe13e16b09aee9f7f"
+      },
+      "folder": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-stuck/native/1791133026351490000",
+      "target_executed": false
+    }
+  ],
+  "receipts": [
+    {
+      "argv": [
+        "python3",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/build_native.py",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_block_inside_stuck.bend",
+        "-o",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-stuck-tests",
+        "--report",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-stuck/native/1791133403090082000/native-build.json"
+      ],
+      "cleanup_poll_count": 1,
+      "exit_code": 0,
+      "group_absent": true,
+      "pid": 67423,
+      "seconds": 87.629126,
+      "stderr": {
+        "bytes": 0,
+        "file": "build.stderr",
+        "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 589,
+        "file": "build.stdout",
+        "sha1": "a0eb79ed037955996ab0e74127a2e7d7e6b5c0cb",
+        "sha256": "e3c615715d3e2c75389d047867d28b5231be0ba4bfc4a2497d1ba771343d7f21"
+      },
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-stuck-tests",
+        "--gpu",
+        "off",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_blocks.tsv",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-stuck/native/1791133403090082000/world-0.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-stuck/native/1791133403090082000/requests.tsv",
+        "35723",
+        "4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc"
+      ],
+      "cleanup_poll_count": 1,
+      "exit_code": 0,
+      "group_absent": true,
+      "pid": 67930,
+      "seconds": 30.456633,
+      "stderr": {
+        "bytes": 0,
+        "file": "native.stderr",
+        "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 68937,
+        "file": "native.stdout",
+        "sha1": "55678a5dc56abeb2dbc043286c508ba38fe80c65",
+        "sha256": "08a1b4d0df4402176352b254cafd4cde11cde38a9363d9fc2accc2b4daf78cc5"
+      },
+      "timed_out": false
+    }
+  ],
+  "reference": {
+    "bytes": 2215981,
+    "file": "player_block_inside_stuck.json",
+    "sha1": "a2a128d72d9790194462033806f3568b68c43362",
+    "sha256": "3b1a0f1965a823aa023c6086cdc40a6fec36744a3862fda48fc335830072b86a"
+  },
+  "reference_corruptions_rejected": [
+    "checksum",
+    "expected-unsealed",
+    "expected-resealed",
+    "input-resealed"
+  ],
+  "reference_evidence": {
+    "bytes": 21626,
+    "file": "player-block-inside-stuck-reference.json",
+    "sha1": "27a4bab65b6453c7729ff2dea177f232c4a5b55b",
+    "sha256": "a75cf4ba114ee7a2beb5dd78b7f776cb1c159d201b8e3a2aeb0a2cf5c2c3c29a"
+  },
+  "registry": {
+    "bytes": 182136,
+    "file": "reference_blocks.tsv",
+    "sha1": "3461038d5c8086185591df08e6fb96de6e523faf",
+    "sha256": "27769e75bf862d0540b2df2a6e99f6b7556a867bff6339fb08566240ee124cac"
+  },
+  "registry_identity": "4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc",
+  "registry_info": {
+    "blocks": 1286,
+    "canonical_bytes": 167974,
+    "canonical_sha256": "4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc",
+    "source_sha256": "27769e75bf862d0540b2df2a6e99f6b7556a867bff6339fb08566240ee124cac",
+    "states": 35723
+  },
+  "scope": "Actual production callback_checked, query, and stationary through persistent native State; exact Java multiplier/fall/impulse words and read order. Server berry damage is an explicit refused dependency; swept traversal and full tick are outside scope.",
+  "sources_sha256": {
+    "evidence/player-block-inside-stuck-reference.json": "a75cf4ba114ee7a2beb5dd78b7f776cb1c159d201b8e3a2aeb0a2cf5c2c3c29a",
+    "evidence/player-motion-current-reference.json": "d91fc86a055e5a7c832b7e9bd81f0dd920a03555dbe7a6d2c3aa08d297a60ae5",
+    "generated/reference_blocks.tsv": "27769e75bf862d0540b2df2a6e99f6b7556a867bff6339fb08566240ee124cac",
+    "reference/player_block_inside_stuck.json": "3b1a0f1965a823aa023c6086cdc40a6fec36744a3862fda48fc335830072b86a",
+    "reference/player_motion_current.json": "fc0cfd70f1392b4f8f5cce70aeaa6176863e03732e4017e91b9ccfc834c11332",
+    "src/core.bend": "48d63c4a50b4387d55304eed449d0ea1f4749fbd8e393ca56673006f0919a5a7",
+    "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "src/geometry.bend": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f",
+    "src/hash.bend": "d2473695632b19e68c8d636668e4617f04d70892fb2ab6559cb24d4b33c1b978",
+    "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+    "src/movement.bend": "31f5a4c47903506c0f388f688eaeaf78a36a0d266efde52bc57ea8cc89627b45",
+    "src/nbt.bend": "b677546b5fc02aaa38f5c09e5b798c0d35aec32b1c4b37cbd7042b9a1a5275e4",
+    "src/player_block_inside_stuck.bend": "0fe9049b773fece03e57aa1d6887c7f7be6f7e0839a0dade4d24845a096ed9f7",
+    "src/player_fall_history.bend": "0367657abca30a33851d043cf7adaea6c547e55e838896c2b3ff4d8dea73cdc9",
+    "src/registry.bend": "821c53d9cfa3044be3cae2af968f55563c0be2bebc9beae55a29d77d47b140a0",
+    "src/schedule.bend": "93aa79895fe340e27ae5fd562102d5980f0938003eb1bbde669a84010779b8c9",
+    "src/section.bend": "02b5c15c57b173c7eb8b4c55a1433c10c192926e91af5e3e69050b4404044aa5",
+    "src/section_map.bend": "ded59d7938c02fd0876d65e37f9f90ea0cfebf3ca4bd107394342f8adbf33965",
+    "src/section_map_read.bend": "7a6a0d6fe8b8736ab64adb34b896074da709f91f2ae5bd205a7301c868690fc1",
+    "src/unicode.bend": "8f0cd9bbcd0e7f938af370675eca0c73a9b97b90c2789a1e77e5a29a918455bd",
+    "src/world_codec.bend": "461e2bc342005831a3d16824303f79e1f4dac2dca0eaf0731d18052dbfe0bf86",
+    "tests/player_block_inside_stuck.bend": "51af6b95b011370b87f105322961dc094eea45de2c472b8a35a2f137c25309f8",
+    "tools/reference_movement_probe.py": "e8500b4509fd12a47bd1c5c085fc04d00b8c18af4ad3d551487b323eec9d7736",
+    "tools/reference_player_block_inside_stuck_probe.py": "558b0e3595c28382f814e0ae131dee09198fb290c0915c75bef02e23b6b53089",
+    "tools/reference_player_motion_current_probe.py": "93405ab6ed6c635030d6db1e273450474357f5cbac00672a3047ee3603b5c7fc",
+    "tools/reference_travel_probe.py": "c99dc149a18838ba8fffc7096bca77ddef000f8cc846e52b4a98cbce0a6c8239",
+    "tools/test_player_block_inside_stuck.py": "80f7aea249b05ecefa4df555293372293a787d87c7102b67c0a4279d8f44ac9c"
+  },
+  "status": "passed"
+}
