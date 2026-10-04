@@ -39,11 +39,26 @@ receiver did not finish writing its process record, so its exit code and
 timeout status remain unknown. The exact 49 input files and fresh owned-group
 absence are retained in
 `evidence/worldgen-density-integration-ordinary-build-failure.json`. The
-separate prepared private route reuses the reviewed actor012 CPU emitter on
+separate private route reuses the reviewed actor012 CPU emitter on
 that same immutable map, with full original ordinary checking and source pins
 before/after emission. It does not edit the original compiler or promote output
-to the installed content cache. The build and comparison evidence determine
-its actual result.
+to the installed content cache. That private build completed in 104.604 seconds
+for emission and 32.490 seconds for native compilation, producing 15,100,807
+bytes of C and a 4,321,936-byte executable. It retained all 49 copied Bend/Base
+inputs and the 117 loaded or referenced native/foreign files. The measured peak
+RSS was 5,791,875,072 bytes. Its receipts and distinct compiler boundary are in
+`evidence/worldgen-density-integration-private-build.json`.
+
+The actual native interval suite passed all 82 interval cases, all 50 coordinate
+cases (150 raw binary64 coordinate values), 24 compiled graphs with 288 raw
+float outputs and 48 range-bound words, and all 96 shipped sloped-cheese column
+values. Every comparison used the exact Java words, with no tolerance or
+conversion through a float for the double coordinates. The artifact source
+map and all loaded native/foreign inputs matched current originals at
+comparison time. All 184 processes were reaped with groups absent; total native
+execution time was 5.900 seconds.
+`evidence/worldgen-density-interval-native.json` records that numerical scope
+separately from kernel admission and normal-population status.
 
 ```sh
 python3 tools/reference_worldgen_density_intervals.py --observe
@@ -56,7 +71,7 @@ python3 tools/test_worldgen_density_interval_proof.py --check
 python3 tools/test_worldgen_density_interval_proof.py --runtime-owned
 ```
 
-The prepared private route uses the bundled workspace Python (the existing
+The private route uses the bundled workspace Python (the existing
 process receiver imports its available numerical/image packages) and accepts
 the retained ordinary attempt's `source-map.json` with `--build-private`.
 The inherited limits are 6 GiB heap, 600 seconds total emission, 90 seconds

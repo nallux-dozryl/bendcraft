@@ -70,6 +70,9 @@ def checked_build(pointer,retained_core=None):
         for row in report['private_build']['retained_inputs']:
             expected={k:row[k] for k in ('file','bytes','sha1','sha256')}
             if fingerprint(Path(row['path']))!=expected:raise RuntimeError('Private native input/receipt changed: '+row['path'])
+        loaded_pin=next(row for row in report['private_build']['retained_inputs'] if row['file']=='loaded-source-pins.json')
+        for path,sha in json.loads(Path(loaded_pin['path']).read_text()).items():
+            if fingerprint(Path(path))['sha256']!=sha:raise RuntimeError('Private loaded/native source changed: '+path)
         manifest_path=Path(report['private_build']['manifest_path'])
         emitted=Path(report['private_build']['emitted_c_path'])
         if report['private_build']['product_cache_promoted'] or report['cache_key'] is not None:

@@ -100,6 +100,20 @@ def interval_fixture(row):
 def coordinate_fixture(row):
     return '|'.join(['coords',row['mode'],*(str(v&0xffffffff) for v in row['point']),*(str(v) for v in row['xz']),*(str(v) for v in row['y']),*(str(v) for v in row['shift'])])
 
+def retain_comparison(result):
+    directory=WORK/('density-integration-compare-'+str(time.time_ns()));directory.mkdir()
+    raw=directory/'result.json';write_json(raw,result)
+    pointer=json.loads(CURRENT.read_text());build=result['native_build']
+    compact={k:v for k,v in result.items() if k not in ('executions','native_build')}
+    compact['native_build']={'report':{'path':pointer['report'],**fingerprint(Path(pointer['report']))},
+        'binary':{'path':pointer['binary'],**fingerprint(Path(pointer['binary']))},
+        'timings':build['timings'],'source_generation':build['comparison_source_generation'],
+        'product_cache_promoted':build.get('private_build',{}).get('product_cache_promoted')}
+    compact['executions']={'count':len(result['executions']),'native_seconds':sum(row['seconds'] for row in result['executions']),
+        'all_groups_absent':all(row['leader_reaped'] and row['group_absent'] for row in result['executions'])}
+    compact['raw_receipt']={'path':str(raw.relative_to(ROOT)),**fingerprint(raw)}
+    write_json(ROOT/'evidence/worldgen-density-interval-native.json',compact)
+
 def compare():
     reference=json.loads(REFERENCE.read_text());base=json.loads((ROOT/'reference/worldgen_density.json').read_text())
     if reference['pin']!='26.3' or reference['status']!='observed':raise RuntimeError('Pinned Java observations required')
@@ -136,7 +150,7 @@ def compare():
             wanted='column|'+case['expression_json']+'|'+','.join(str(request[key]&0xffffffff) for key in ['x','z','bottom','step'])+'|'+';'.join(map(str,observed['column_bits']))+';'
             check(row['id']+'-column',invoke(row['id']+'-column',arg),wanted);counts['loaded_sloped_cheese_column_words']+=len(observed['column_bits'])
     result={'schema':1,'pin':'26.3','status':'passed' if not failures else 'failed','counts':counts,'failures':failures,'reference':fingerprint(REFERENCE),'native_build':report,'executions':receipts,'helper':fingerprint(Path(__file__).resolve()),'scope':'Actual Interval operations, production compiled MinMax/no-blending scalar DAG, and raw binary64 coordinates used by actual production NoiseFunction arithmetic. Numerical boundary comparison; no full normal chunk population or IEEE kernel theorem.'}
-    write_json(ROOT/'evidence/worldgen-density-interval-native.json',result)
+    retain_comparison(result)
     if failures:raise AssertionError(failures[:10])
     return {'status':'passed',**counts}
 
