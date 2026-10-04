@@ -1,0 +1,211 @@
+{
+  "binary": {
+    "bytes": 1603960,
+    "file": "dispatch",
+    "sha1": "bf323e9b7808a5c45d23197980bc7616ba369e4a",
+    "sha256": "a5f76524e87aa0d5c83e8aea5620d9ebb638da390e380d7484ad18b1792b1b8e"
+  },
+  "build": {
+    "command": [
+      "/Users/chuah/.bend/bin/bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/furnace_authority_dispatch.bend",
+      "-o",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/furnace-authority-dispatch/dispatch"
+    ],
+    "seconds": 8.292243,
+    "status": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  "check": {
+    "command": [
+      "/Users/chuah/.bend/bin/bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/furnace_authority_dispatch.bend",
+      "--check-only"
+    ],
+    "seconds": 1.05305,
+    "status": 0,
+    "stderr": "",
+    "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+  },
+  "native": [
+    {
+      "command": [
+        "/usr/bin/env",
+        "BEND_THREADS=1",
+        "BEND_GPU=0",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/furnace-authority-dispatch/dispatch"
+      ],
+      "comparisons": 80,
+      "seconds": 0.730937,
+      "status": 0,
+      "stderr": "",
+      "stdout": "[true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true]\n",
+      "threads": 1
+    },
+    {
+      "command": [
+        "/usr/bin/env",
+        "BEND_THREADS=4",
+        "BEND_GPU=0",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/furnace-authority-dispatch/dispatch"
+      ],
+      "comparisons": 80,
+      "seconds": 0.006905,
+      "status": 0,
+      "stderr": "",
+      "stdout": "[true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true]\n",
+      "threads": 4
+    }
+  ],
+  "scope": "Full result/recipe structural equivalence to original branch destinations for 5 payloads and 8 independently labelled kinds, both public entry points. Includes exact failure strings, shaped trim, alternatives/tags, count/component output identity and unsupported subclasses; no unchanged crafting corpus replay.",
+  "source_memory": {
+    "baseline_decoder_commit": "bd1e3dfa00a2722499767ff76876054e51c604a2",
+    "runs": {
+      "after": {
+        "declarations": {
+          "decode_kind": {
+            "after_rss_bytes": 350961664,
+            "before_rss_bytes": 350961664,
+            "check_ms": 0,
+            "rss_delta_bytes": 0
+          },
+          "ordinary_output": {
+            "after_rss_bytes": 350945280,
+            "before_rss_bytes": 350945280,
+            "check_ms": 0,
+            "rss_delta_bytes": 0
+          }
+        },
+        "decoder": {
+          "bytes": 24901,
+          "file": "crafting_recipe_decoder.bend",
+          "sha1": "ec2ae2d5644d03b0ada6860a8b6596ced4117387",
+          "sha256": "739037cf939bcef5a8008c34216b717ed60574c66690f627d11dc949e8542397"
+        },
+        "max_rss_kib": 342848,
+        "receipt": {
+          "command": [
+            "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+            "--experimental-transform-types",
+            "--stack-size=4096",
+            "--max-old-space-size=1536",
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/furnace-authority-dispatch/memory/after.mjs"
+          ],
+          "seconds": 1.047387,
+          "status": 0,
+          "stderr": "(node:24683) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+        },
+        "total_ms": 858
+      },
+      "before": {
+        "declarations": {
+          "decode_kind": {
+            "after_rss_bytes": 919519232,
+            "before_rss_bytes": 534659072,
+            "check_ms": 832,
+            "rss_delta_bytes": 384860160
+          },
+          "ordinary_output": {
+            "after_rss_bytes": 534659072,
+            "before_rss_bytes": 521060352,
+            "check_ms": 25,
+            "rss_delta_bytes": 13598720
+          }
+        },
+        "decoder": {
+          "bytes": 24265,
+          "file": "crafting_recipe_decoder.bend",
+          "sha1": "61bf3b7d46f467abd5f460af355b59e051dedd14",
+          "sha256": "c9cd224262b326a06d0ca8ff99e7ff04aa9fe4a77af40101cd0aedc8e0642b71"
+        },
+        "max_rss_kib": 898000,
+        "receipt": {
+          "command": [
+            "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+            "--experimental-transform-types",
+            "--stack-size=4096",
+            "--max-old-space-size=1536",
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/furnace-authority-dispatch/memory/before.mjs"
+          ],
+          "seconds": 3.007633,
+          "status": 0,
+          "stderr": "(node:24647) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+        },
+        "total_ms": 2647
+      }
+    },
+    "scope": "Both runs load the same seven-file source-only graph; only the decoder dispatch differs. RSS deltas are observed allocation/residency, not proof of an asymptotic rate or a named internal hot function.",
+    "tool": {
+      "bytes": 3272,
+      "file": "furnace_authority_dispatch_memory.py",
+      "sha1": "e61afcb669f2c994c087b7d35ace839963045c8e",
+      "sha256": "51e4ca0b62595c3c9abfff3db9fdd2d68b5da7fa97d69e326ca5ed8650d53cd8"
+    },
+    "unchanged_dependency_sources": {
+      "crafting_recipe.bend": {
+        "bytes": 17073,
+        "file": "crafting_recipe.bend",
+        "sha1": "fa00479c5c90d63786369b4babf40cf1851fb55f",
+        "sha256": "3c5f3fc7b3e0be9be7d553da2a107dc1245fe13f17afac0efdf84bc41c15ffe2"
+      },
+      "crafting_recipe_component_registry.bend": {
+        "bytes": 5705,
+        "file": "crafting_recipe_component_registry.bend",
+        "sha1": "36fd966d899cd375b44dd3c255f173a827275f47",
+        "sha256": "911786032b2c22759208edaf7112ae403b2a03663d9237c3e036c2b5ba4ece2a"
+      },
+      "crafting_recipe_components.bend": {
+        "bytes": 13197,
+        "file": "crafting_recipe_components.bend",
+        "sha1": "090d0fd0fb4be3f67e41ceef4b7b110b5e179229",
+        "sha256": "2a35e31f26187ebbdab1c4261d54083acb68072a56a7b5869e5dfc490bc946be"
+      },
+      "crafting_recipe_decoder.bend": {
+        "bytes": 24901,
+        "file": "crafting_recipe_decoder.bend",
+        "sha1": "ec2ae2d5644d03b0ada6860a8b6596ced4117387",
+        "sha256": "739037cf939bcef5a8008c34216b717ed60574c66690f627d11dc949e8542397"
+      },
+      "inventory.bend": {
+        "bytes": 13558,
+        "file": "inventory.bend",
+        "sha1": "83c7b005e6e9f7336a1d06a49a4a39931302500a",
+        "sha256": "9d2be7fb88afa1dc6386ab9e8b046b15d2a2a73b7e14566e5bfad3e6dd1f2702"
+      },
+      "json.bend": {
+        "bytes": 21384,
+        "file": "json.bend",
+        "sha1": "f573cd5692da17f83db6f2414ab59e7758e2c462",
+        "sha256": "a1789e3b4f5bea158ec0d95a8bcb39aa5b7c7e7355a5254d3de1d52a93c719d1"
+      },
+      "u32_decimal.bend": {
+        "bytes": 573,
+        "file": "u32_decimal.bend",
+        "sha1": "c4ce37abb511555629215b8795e78bd2627e1a32",
+        "sha256": "d0b4b33f10b9e9801c4e99b83803afba5031ea40013a9263f9090bed8543d25c"
+      }
+    }
+  },
+  "sources": {
+    "src/crafting_recipe_decoder.bend": {
+      "bytes": 24901,
+      "file": "crafting_recipe_decoder.bend",
+      "sha1": "ec2ae2d5644d03b0ada6860a8b6596ced4117387",
+      "sha256": "739037cf939bcef5a8008c34216b717ed60574c66690f627d11dc949e8542397"
+    },
+    "tests/furnace_authority_dispatch.bend": {
+      "bytes": 4294,
+      "file": "furnace_authority_dispatch.bend",
+      "sha1": "beb8a5954156a21a8cf92a89422e5f230d4cf248",
+      "sha256": "ad888d6ac72ad3a47c9ddcc142f124e800cc6b6a7b53fc3e2f87bcf3b98cfca2"
+    },
+    "tools/test_furnace_authority_dispatch.py": {
+      "bytes": 1793,
+      "file": "test_furnace_authority_dispatch.py",
+      "sha1": "405970cdfc33e53bc6bbdbad2895b3a2c0b03c33",
+      "sha256": "aa37c68f2d59c2068f41ff738dc7f4079dd96473564087033d08e96de953496e"
+    }
+  },
+  "status": "passed"
+}

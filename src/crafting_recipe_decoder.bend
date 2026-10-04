@@ -242,11 +242,18 @@ def shapeless(id:String,value:J.Value,output:Inv.Slot) -> Result<&2,&2,String,R.
     parsed : List<&2,R.Ingredient> <- ingredients(values)
     return R.Shapeless{id,parsed,output}
 
-def ordinary_output(kind:String,id:String,value:J.Value,output:Inv.Slot) -> Result<&2,&2,String,R.Recipe>:
-  match kind:
-    case "minecraft:crafting_shaped": shaped(id,value,output)
-    case "minecraft:crafting_shapeless": shapeless(id,value,output)
-    case _: Fail{"unsupported ordinary recipe subclass"}
+def ordinary_output_shapeless(shapeless_kind:Bool,id:String,value:J.Value,output:Inv.Slot) -> Result<&2,&2,String,R.Recipe>:
+  match shapeless_kind:
+    case True{}: shapeless(id,value,output)
+    case False{}: Fail{"unsupported ordinary recipe subclass"}
+
+def ordinary_output_shaped(shaped_kind:Bool,shapeless_kind:Bool,id:String,value:J.Value,output:Inv.Slot) -> Result<&2,&2,String,R.Recipe>:
+  match shaped_kind:
+    case True{}: shaped(id,value,output)
+    case False{}: ordinary_output_shapeless(shapeless_kind,id,value,output)
+
+def ordinary_output(+kind:String,id:String,value:J.Value,output:Inv.Slot) -> Result<&2,&2,String,R.Recipe>:
+  ordinary_output_shaped(String.eq(kind,"minecraft:crafting_shaped"),String.eq(kind,"minecraft:crafting_shapeless"),id,value,output)
 
 def ordinary_result(decoded:Result<&2,&2,String,Inv.Slot>,kind:String,id:String,value:J.Value) -> Result<&2,&2,String,R.Recipe>:
   match decoded:
@@ -258,11 +265,13 @@ def ordinary(kind:String,id:String,+value:J.Value) -> Result<&2,&2,String,R.Reci
     +raw_result : J.Value <- require(J.member(value,"result"),"result")
     ordinary_result(result(raw_result),kind,id,value)
 
-def decode_kind(kind:String,id:String,+value:J.Value) -> Result<&2,&2,String,R.Recipe>:
-  match kind:
-    case "minecraft:crafting_shaped": ordinary(kind,id,value)
-    case "minecraft:crafting_shapeless": ordinary(kind,id,value)
-    case _: Done{R.Unsupported{id,kind}}
+def decode_ordinary(ordinary_kind:Bool,kind:String,id:String,value:J.Value) -> Result<&2,&2,String,R.Recipe>:
+  match ordinary_kind:
+    case True{}: ordinary(kind,id,value)
+    case False{}: Done{R.Unsupported{id,kind}}
+
+def decode_kind(+kind:String,id:String,+value:J.Value) -> Result<&2,&2,String,R.Recipe>:
+  decode_ordinary(String.eq(kind,"minecraft:crafting_shaped") || String.eq(kind,"minecraft:crafting_shapeless"),kind,id,value)
 
 def decode(+id:String,+value:J.Value) -> Result<&2,&2,String,R.Recipe>:
   do Result<&2,&2,String,R.Recipe>:
