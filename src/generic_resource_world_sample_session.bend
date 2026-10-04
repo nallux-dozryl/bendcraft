@@ -20,9 +20,9 @@ def player_snapshot(player:X.State,identity:String,policy:GS.Policy) -> X.State 
   eye_result(identity,policy,R.eye(player))
 
 def session_snapshot(state:S.State,policy:GS.Policy) -> S.State & Result<&2,&2,String,GS.Sample>:
-  S.State{player,S.Shell{+identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation}} = state
+  S.State{player,S.Shell{+identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation,cooking}} = state
   S.query(Result<&2,&2,String,GS.Sample>,
-    S.State{player,S.Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation}},
+    S.State{player,S.Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation,cooking}},
     current => player_snapshot(current,identity,policy))
 
 def snapshot_checked(valid:Bool,state:S.State,width:U32,height:U32,policy:GS.Policy) -> S.State & Result<&2,&2,String,GS.Sample>:
