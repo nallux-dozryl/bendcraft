@@ -17,6 +17,7 @@ type Body is Data:
   FurnaceView{snapshot:F.Snapshot}
   CampfireView{kind:A.CampfireKind,lit:Bool,cells:A.Four,cache:Maybe<&2,String>}
 type Effect is Data:
+  OwnerReset{position:C.Position}
   Drop{position:C.Position,slot:U32,item:I.Slot}
   Experience{position:C.Position,request:F.XpRequest}
   Dirty{position:C.Position}
@@ -117,7 +118,10 @@ def changed_entry(entry:Entry,+position:C.Position,+value:B.Classification,
     case B.Cooking{+next} True{}:
       (Entry{candidate,next,updated_entity(previous,next,entity)} <> rest,[])
     case _ _:
-      (create(position,value,rest),removal(views,position,previous))
+      # This branch is reached by accepted Core lifecycle publication. The
+      # marker distinguishes old-owner teardown from ordinary output drops,
+      # including removal and recreation of the same block in one due batch.
+      (create(position,value,rest),OwnerReset{position} <> removal(views,position,previous))
 def found_entry(entry:Entry,+position:C.Position,+value:B.Classification,
     rest:List<&1,Entry>,views:List<&2,View>) -> List<&1,Entry> & List<&2,Effect>:
   Entry{candidate,+previous,entity} = entry

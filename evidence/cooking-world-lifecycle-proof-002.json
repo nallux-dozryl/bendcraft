@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "status": "pass",
+  "roots": [
+    "teardown_precedes_original_ordered_intents",
+    "same_block_branch_retains_owner_without_reset"
+  ],
+  "term_pins": [
+    {
+      "name": "teardown_precedes_original_ordered_intents",
+      "type_sha256": "1df3232b5da28fd883a9ca2de664c18e0ef4b7f18a7915db3a7fd4e680614a01",
+      "checked_proof_sha256": "9222d4926fa56abf67066e4d10a46a1da3a63c1ae5135f844fec3a475aba5890",
+      "source_body_sha256": "e5181a31164cd1b90c724a7a21e2de04f1a29cc92ee9b2d269a1ed09476d22b8"
+    },
+    {
+      "name": "same_block_branch_retains_owner_without_reset",
+      "type_sha256": "92c354f13710cad77dccced35550239bfa71a8c62a3bc97235c74ace55707c74",
+      "checked_proof_sha256": "c145bf16a60a78b3a6319273a9362a24e6f6e4808c4573f1d665ba18a665b421",
+      "source_body_sha256": "d4d0fdfddee5e745085f4d527bd3e18b2728283fd06d0b2049b56bb64afb69fb"
+    }
+  ],
+  "checked_types_and_bodies_unchanged": true,
+  "all_original_tlds_ctrs_tmps_retained": true,
+  "exclusions": [],
+  "reproduction": "python3 tools/test_cooking_world_lifecycle.py",
+  "observation_and_process_receipt": "evidence/cooking-world-lifecycle-002.json",
+  "scope": "Two actual Store.changed_entry affine-owner contracts: teardown marker before original ordered drop/XP intents; same-block owner update with no teardown marker."
+}

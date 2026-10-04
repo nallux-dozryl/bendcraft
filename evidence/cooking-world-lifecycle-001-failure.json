@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "status": "failed-retained",
+  "stage": "new-test-ordinary",
+  "exit_code": 1,
+  "seconds": 0.7284141667187214,
+  "timed_out": false,
+  "cleanup": {
+    "after": [],
+    "before": [],
+    "errors": [],
+    "leader_reaped": true,
+    "live_group_absent": true,
+    "seconds": 0.09050554037094116
+  },
+  "stderr": {
+    "bytes": 447,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-world-lifecycle/001/ordinary/stderr",
+    "sha256": "40b951960da389c36ec87f48bcbebdd3a838fdad477468ffb8e02ab134ada2c6"
+  },
+  "diagnostic": "SOME PROOFS FAIL\nError:\n- message  : a parameter or field scrutinee (a match cannot scrutinize a computed value: give it its own def)\nLocation:\n109 | def checked_clock(label:String,expected_revision:Nat,world:C.World,next:C.World -> IO(Unit)) -> IO(Unit):\n110>|   (owner,C.Clock{tick,time,paused,daylight,revision,pending}) = C.clock(world)\n    |                                                                 ^^^^^^^^^^^^^^\n111 |   do IO<Unit>:\n",
+  "attempt": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-world-lifecycle/001",
+  "resolution": "Computed C.clock destructure was moved to a parameter helper; fresh numbered attempt002 passed. The first failure and its streams remain unchanged."
+}
