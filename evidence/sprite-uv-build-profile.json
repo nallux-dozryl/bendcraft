@@ -1,0 +1,167 @@
+{
+  "boundary": "Actual installed emission with preserved original C and observed clang/cc1 flags; no edited C or manual compilation. Observation times are sampled process existence, not exact phase durations.",
+  "build_receipt": {
+    "binary_bytes": 1405568,
+    "binary_sha256": "1da8caa5ed3a5fa4798a63a42c2c085486a68f219270d0135f7ad466731b5e80",
+    "build_seconds": 4.692265584133565,
+    "command": [
+      "/Users/chuah/.bend/bin/bend",
+      "tests/sprite_uv.bend",
+      "-o",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/sprite-uv-tests"
+    ],
+    "compiler_pid": 1342,
+    "generation": {
+      "native_sources": {
+        "compiler_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+        "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+        "src/sprite_uv.bend": "f3147a83e0defdfbe77faccb4773a54a3ffd94fa89c161483ffdd13e3cd72766",
+        "tests/sprite_uv.bend": "e4cf518747133a4223acf38a97273b12acae678229656592ca911fc7ea62fd45"
+      },
+      "observation_sha256": "986ee476e709df03fa9f2de87bd511e45f878d328350baffff9b45106a25ba7d",
+      "reference_sha256": "6c19bb6e451a7aaf652abe4354f4ff32693c1fd0d3e67320090c562a87e67d39",
+      "runner_sha256": "258d9b4ea69c1f6735c09853bb1c2a3efb37f48256f8ecf95481deccab4b830c",
+      "semantic_inputs_sha256": "8b72cdf71d1306d6a4da07333044b4a7c1b5c70697230e9ee5380b24f754b528"
+    },
+    "preparation_sha256": "ce8daa2f6d32dd31ce1c017db4c684ae03933cc3f9831893034c9d9632a00d13",
+    "schema": 1
+  },
+  "c_metadata": {
+    "all_closure_count": 27,
+    "function_ids": 316,
+    "maximum_all_tag_clo_capture_words": 7,
+    "maximum_fid_arity": 54,
+    "maximum_uv_tag_clo_capture_words": 7,
+    "method": "Read-only generated C FID defines and FID_T[][3]; runtime TAG_CLO uses fid_arity-1 capture words. Special EXIT/ENTER IDs have no FID_T row.",
+    "special_ids": {
+      "ENTER": 315,
+      "EXIT": 314
+    },
+    "table_rows": 314,
+    "uv_closure_count": 4,
+    "uv_closures": [
+      {
+        "fid": 218,
+        "fid_arity": 8,
+        "name": "___SRC_SPRITE_UV_DERIVE_C368",
+        "tag_clo_capture_words": 7
+      },
+      {
+        "fid": 219,
+        "fid_arity": 8,
+        "name": "___SRC_SPRITE_UV_DERIVE_C369",
+        "tag_clo_capture_words": 7
+      },
+      {
+        "fid": 220,
+        "fid_arity": 8,
+        "name": "___SRC_SPRITE_UV_DERIVE_C370",
+        "tag_clo_capture_words": 7
+      },
+      {
+        "fid": 221,
+        "fid_arity": 1,
+        "name": "___SRC_SPRITE_UV_DERIVE_C371",
+        "tag_clo_capture_words": 0
+      }
+    ]
+  },
+  "compiler_changes": false,
+  "generation_after": {
+    "native_sources": {
+      "compiler_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+      "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+      "src/sprite_uv.bend": "f3147a83e0defdfbe77faccb4773a54a3ffd94fa89c161483ffdd13e3cd72766",
+      "tests/sprite_uv.bend": "e4cf518747133a4223acf38a97273b12acae678229656592ca911fc7ea62fd45"
+    },
+    "observation_sha256": "986ee476e709df03fa9f2de87bd511e45f878d328350baffff9b45106a25ba7d",
+    "reference_sha256": "6c19bb6e451a7aaf652abe4354f4ff32693c1fd0d3e67320090c562a87e67d39",
+    "runner_sha256": "258d9b4ea69c1f6735c09853bb1c2a3efb37f48256f8ecf95481deccab4b830c",
+    "semantic_inputs_sha256": "8b72cdf71d1306d6a4da07333044b4a7c1b5c70697230e9ee5380b24f754b528"
+  },
+  "generation_before": {
+    "native_sources": {
+      "compiler_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+      "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+      "src/sprite_uv.bend": "f3147a83e0defdfbe77faccb4773a54a3ffd94fa89c161483ffdd13e3cd72766",
+      "tests/sprite_uv.bend": "e4cf518747133a4223acf38a97273b12acae678229656592ca911fc7ea62fd45"
+    },
+    "observation_sha256": "986ee476e709df03fa9f2de87bd511e45f878d328350baffff9b45106a25ba7d",
+    "reference_sha256": "6c19bb6e451a7aaf652abe4354f4ff32693c1fd0d3e67320090c562a87e67d39",
+    "runner_sha256": "258d9b4ea69c1f6735c09853bb1c2a3efb37f48256f8ecf95481deccab4b830c",
+    "semantic_inputs_sha256": "8b72cdf71d1306d6a4da07333044b4a7c1b5c70697230e9ee5380b24f754b528"
+  },
+  "observer": {
+    "command": [
+      "python3",
+      "tools/test_sprite_uv.py",
+      "--skip-kernel",
+      "--build-only"
+    ],
+    "emitted_c": {
+      "bytes": 1060064,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/sprite-uv/preserved.c",
+      "sha256": "f2b0fbf0017c36616d6e0a2e023616d446af5ef41756e9cbb4e3f75fa06ba782",
+      "source_mtime_utc": "2026-10-04T00:10:56.562233+00:00"
+    },
+    "exit_code": 0,
+    "launcher_pid": 1338,
+    "observations": [
+      {
+        "command": "/Users/chuah/.bend/bin/bend tests/sprite_uv.bend --check-only",
+        "elapsed_seconds": 0.6068408749997616,
+        "observed_utc": "2026-10-04T00:10:53.705444+00:00",
+        "parent": 1338,
+        "pid": 1340
+      },
+      {
+        "command": "/Users/chuah/.bend/bin/bend tests/sprite_uv.bend -o /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/sprite-uv-tests",
+        "elapsed_seconds": 1.1660106666386127,
+        "observed_utc": "2026-10-04T00:10:54.264920+00:00",
+        "parent": 1338,
+        "pid": 1342
+      },
+      {
+        "command": "/Library/Developer/CommandLineTools/usr/bin/clang -std=c11 -O3 /var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/bend-Zdawxm/sprite-uv-tests.c -lpthread -lm -o /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/sprite-uv-tests",
+        "elapsed_seconds": 3.9148172084242105,
+        "observed_utc": "2026-10-04T00:10:57.013756+00:00",
+        "parent": 1342,
+        "pid": 1359
+      },
+      {
+        "command": "/Library/Developer/CommandLineTools/usr/bin/clang -cc1 -triple arm64-apple-macosx15.5.0 -Wundef-prefix=TARGET_OS_ -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -Werror=implicit-function-declaration -emit-obj -dumpdir /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/sprite-uv-tests- -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name sprite-uv-tests.c -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -mllvm -extra-vectorizer-passes -fno-strict-return -ffp-contract=on -fno-rounding-math -funwind-tables=1 -fobjc-msgsend-selector-stubs -target-sdk-version=15.5 -fvisibility-inlines-hidden-static-local-var -fdefine-target-os-macros -fno-assume-unique-vtables -fno-modulemap-allow-subdirectory-search -target-cpu apple-m1 -target-feature +zcm -target-feature +zcz -target-feature +v8.5a -target-feature +aes -target-feature +altnzcv -target-feature +ccdp -target-feature +complxnum -target-feature +crc -target-feature +dotprod -target-feature +fp-armv8 -target-feature +fp16fml -target-feature +fptoint -target-feature +fullfp16 -target-feature +jsconv -target-feature +lse -target-feature +neon -target-feature +pauth -target-feature +perfmon -target-feature +predres -target-feature +ras -target-feature +rcpc -target-feature +rdm -target-feature +sb -target-feature +sha2 -target-feature +sha3 -target-feature +specrestrict -target-feature +ssbs -target-abi darwinpcs -debugger-tuning=lldb -fdebug-compilation-dir=/Users/chuah/Documents/ChatGPT/bendex/minecraft -target-linker-version 1167.5 -fcoverage-compilation-dir=/Users/chuah/Documents/ChatGPT/bendex/minecraft -resource-dir /Library/Developer/CommandLineTools/usr/lib/clang/17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/usr/lib/clang/17/include -internal-externc-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -internal-externc-isystem /Library/Developer/CommandLineTools/usr/include -O3 -Wno-reorder-init-list -Wno-implicit-int-float-conversion -Wno-c99-designator -Wno-final-dtor-non-final-class -Wno-extra-semi-stmt -Wno-misleading-indentation -Wno-quoted-include-in-framework-header -Wno-implicit-fallthrough -Wno-enum-enum-conversion -Wno-enum-float-conversion -Wno-elaborated-enum-base -Wno-reserved-identifier -Wno-gnu-folding-constant -std=c11 -ferror-limit 19 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fmax-type-align=16 -fcommon -vectorize-loops -vectorize-slp -clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation -fno-odr-hash-protocols -clang-vendor-feature=+enableAggressiveVLAFolding -clang-vendor-feature=+revert09abecef7bbf -clang-vendor-feature=+thisNoAlignAttr -clang-vendor-feature=+thisNoNullAttr -clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o /var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/sprite-uv-tests-e0b117.o -x c /var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/bend-Zdawxm/sprite-uv-tests.c",
+        "elapsed_seconds": 3.9167057080194354,
+        "observed_utc": "2026-10-04T00:10:57.015663+00:00",
+        "parent": 1359,
+        "pid": 1360
+      }
+    ],
+    "process_group": 1338,
+    "status": "completed",
+    "total_seconds": 5.515211875550449
+  },
+  "prepared_generation_unchanged": true,
+  "process_group_cap_seconds": 600,
+  "profile_readback_diagnostics": [
+    "Initial ad-hoc metadata count assertion assumed every FID had a table row; inspection identified two special EXIT/ENTER IDs.",
+    "Ad-hoc version readback first used unsupported --version; actual version command succeeds. These read-only bookkeeping corrections caused no source/expectation/native changes."
+  ],
+  "resource_profile": {
+    "reason": "Native build completed in4.692 seconds before slow-build sampling; peak RSS/physical footprint unobserved",
+    "sampled": false
+  },
+  "source_changes": false,
+  "status": "native-build-passed",
+  "tool_identity": {
+    "bend_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+    "bend_version": "bend 2.0.35",
+    "bend_version_command": [
+      "/Users/chuah/.bend/bin/bend",
+      "version"
+    ],
+    "clang_path": "/Library/Developer/CommandLineTools/usr/bin/clang",
+    "clang_realpath": "/Library/Developer/CommandLineTools/usr/bin/clang",
+    "clang_sha256": "4c458256bcdf913774de1bb4a37768244d3b41f32ad55afb2dfec3432f46f4fe",
+    "clang_version": "Apple clang version 17.0.0 (clang-1700.0.13.5)\nTarget: arm64-apple-darwin25.4.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin"
+  }
+}

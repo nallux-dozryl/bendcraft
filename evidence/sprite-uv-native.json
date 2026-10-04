@@ -1,0 +1,54 @@
+{
+  "actual_direct_cases": 210,
+  "actual_stitch_sprites": 25,
+  "admitted": 224,
+  "boundary": "Exact raw Java int/F32 constructor endpoints, actual getters and CuboidFace R0 mapped corners, getU/getV ordered operations incl recorded nonfinite bits on pinned target. Explicit usable-layout admission. No pixel atlas/mipmap/animation/GPU/UBO/frame execution.",
+  "canonical_report_sha256": "5b20a9677855bf02bb6cb33419c75fd4699d89d2b61cb87d0e8f1404fe7c6bc6",
+  "command": "python3 tools/test_sprite_uv.py --skip-kernel --reuse-build",
+  "kernel": {
+    "reason": "explicit --skip-kernel; native evidence is independent of mathematical verdict",
+    "status": "not-run"
+  },
+  "native_artifact": {
+    "binary_bytes": 1405568,
+    "binary_sha256": "1da8caa5ed3a5fa4798a63a42c2c085486a68f219270d0135f7ad466731b5e80",
+    "build_seconds": 4.692265584133565,
+    "command": [
+      "/Users/chuah/.bend/bin/bend",
+      "tests/sprite_uv.bend",
+      "-o",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/sprite-uv-tests"
+    ],
+    "compiler_pid": 1342,
+    "generation": {
+      "native_sources": {
+        "compiler_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+        "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+        "src/sprite_uv.bend": "f3147a83e0defdfbe77faccb4773a54a3ffd94fa89c161483ffdd13e3cd72766",
+        "tests/sprite_uv.bend": "e4cf518747133a4223acf38a97273b12acae678229656592ca911fc7ea62fd45"
+      },
+      "observation_sha256": "986ee476e709df03fa9f2de87bd511e45f878d328350baffff9b45106a25ba7d",
+      "reference_sha256": "6c19bb6e451a7aaf652abe4354f4ff32693c1fd0d3e67320090c562a87e67d39",
+      "runner_sha256": "258d9b4ea69c1f6735c09853bb1c2a3efb37f48256f8ecf95481deccab4b830c",
+      "semantic_inputs_sha256": "8b72cdf71d1306d6a4da07333044b4a7c1b5c70697230e9ee5380b24f754b528"
+    },
+    "preparation_sha256": "ce8daa2f6d32dd31ce1c017db4c684ae03933cc3f9831893034c9d9632a00d13",
+    "schema": 1
+  },
+  "native_cases": 249,
+  "native_run_seconds": [
+    0.6619609594345093,
+    0.08408949989825487
+  ],
+  "ordinary": {
+    "output": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.",
+    "seconds": 0.46322041749954224
+  },
+  "policy_rejections": 25,
+  "preparation_sha256": "ce8daa2f6d32dd31ce1c017db4c684ae03933cc3f9831893034c9d9632a00d13",
+  "query_pairs": 4700,
+  "reference_sha256": "6c19bb6e451a7aaf652abe4354f4ff32693c1fd0d3e67320090c562a87e67d39",
+  "schema": 1,
+  "status": "passed_bounded_domain",
+  "two_native_runs_equal": true
+}

@@ -1,0 +1,123 @@
+{
+  "boundary": "Scalar placement-to-UV only. No authenticated from_stitch membership adapter, pixel atlas, production animation/frame selection, mipmaps, texture upload, GPU/UBO/final frame or resource/baker integration.",
+  "canonical_native_report_sha256": "5b20a9677855bf02bb6cb33419c75fd4699d89d2b61cb87d0e8f1404fe7c6bc6",
+  "confidence": "high within recorded scalar constructor/interpolation/admission contract",
+  "counts": {
+    "actual_direct_cases": 210,
+    "actual_stitch_sprites": 25,
+    "admitted": 224,
+    "native_cases": 249,
+    "policy_rejections": 25,
+    "query_pairs": 4700
+  },
+  "existing_modules_edited": false,
+  "files": {
+    "docs/SPRITE_UV.md": {
+      "bytes": 13825,
+      "sha256": "08c465a29d8b7fd770a4a872e191631907455040259f74288cb9f118f3afd0d5"
+    },
+    "evidence/sprite-uv-build-profile.json": {
+      "bytes": 10646,
+      "sha256": "b33e57632d6453f7127caa92d544b0005732fbd513cade1c63a3dd795b823d7c"
+    },
+    "evidence/sprite-uv-kernel.json": {
+      "bytes": 636,
+      "sha256": "0f07755b12dc88bd1c788ef6fda3c31e9dd0b653ff7083c3cb1acc33ad98dbbb"
+    },
+    "evidence/sprite-uv-native.json": {
+      "bytes": 2555,
+      "sha256": "a5963250c8eaed33cfc3b99434f54228b5de9d1b2f66be5b40843f6186b98ea3"
+    },
+    "evidence/sprite-uv-preflight.json": {
+      "bytes": 1347,
+      "sha256": "b239557dedadbc1cc7b08825f2523ab6f6c16c3aaecd54565457911b241591c1"
+    },
+    "evidence/sprite-uv-preparation-retention.json": {
+      "bytes": 2367,
+      "sha256": "27220502cfa668710228f4989cce07e4240a6528dfdc1a79a0ca3f685b650359"
+    },
+    "evidence/sprite-uv-reference-selftest.json": {
+      "bytes": 693,
+      "sha256": "70ee3d7ca940dc92370dac6fefb3d41eb50c7a3c292ee01fc8277e2e785697ed"
+    },
+    "evidence/sprite-uv-reference-validate.json": {
+      "bytes": 423,
+      "sha256": "45ca7c0ae4d9f7c9193f89a02832d846d24ca28f56cb9e270410e0832633bd40"
+    },
+    "evidence/sprite-uv-reference.json": {
+      "bytes": 422,
+      "sha256": "bd3e9427291428223f10f769fbc7b35a4ab54175681907a7a42ab4b783bd5c3d"
+    },
+    "reference/sprite_uv.json": {
+      "bytes": 1048059,
+      "sha256": "6c19bb6e451a7aaf652abe4354f4ff32693c1fd0d3e67320090c562a87e67d39"
+    },
+    "src/sprite_uv.bend": {
+      "bytes": 3783,
+      "sha256": "f3147a83e0defdfbe77faccb4773a54a3ffd94fa89c161483ffdd13e3cd72766"
+    },
+    "tests/sprite_uv.bend": {
+      "bytes": 4871,
+      "sha256": "e4cf518747133a4223acf38a97273b12acae678229656592ca911fc7ea62fd45"
+    },
+    "tools/reference_sprite_uv_probe.py": {
+      "bytes": 14016,
+      "sha256": "e98a910a7305cd59f4e22dcc35aee54b98cb698513d6f0d455fae72cf2e63839"
+    },
+    "tools/test_sprite_uv.py": {
+      "bytes": 11413,
+      "sha256": "258d9b4ea69c1f6735c09853bb1c2a3efb37f48256f8ecf95481deccab4b830c"
+    }
+  },
+  "generation_unchanged": true,
+  "heavy_slot": "A released after granted emission/native/verdict phases; no further emission",
+  "kernel": {
+    "attempts": 1,
+    "boundary": "One unchanged full production module verdict; stated laws are input retention and the supplied integer origin example, not whole Java F32 parity.",
+    "command": [
+      "/Users/chuah/.bend/bin/bend",
+      "src/sprite_uv.bend",
+      "--verdict"
+    ],
+    "compiler_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+    "exit_code": 0,
+    "output": "ALL PROOFS CHECK",
+    "pid": 2428,
+    "process_group": 2428,
+    "process_group_cap_seconds": 60,
+    "seconds": 0.1161769162863493,
+    "source_sha256": "f3147a83e0defdfbe77faccb4773a54a3ffd94fa89c161483ffdd13e3cd72766",
+    "status": "passed"
+  },
+  "native_artifact": {
+    "binary_bytes": 1405568,
+    "binary_sha256": "1da8caa5ed3a5fa4798a63a42c2c085486a68f219270d0135f7ad466731b5e80",
+    "build_seconds": 4.692265584133565,
+    "command": [
+      "/Users/chuah/.bend/bin/bend",
+      "tests/sprite_uv.bend",
+      "-o",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/sprite-uv-tests"
+    ],
+    "compiler_pid": 1342,
+    "generation": {
+      "native_sources": {
+        "compiler_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+        "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+        "src/sprite_uv.bend": "f3147a83e0defdfbe77faccb4773a54a3ffd94fa89c161483ffdd13e3cd72766",
+        "tests/sprite_uv.bend": "e4cf518747133a4223acf38a97273b12acae678229656592ca911fc7ea62fd45"
+      },
+      "observation_sha256": "986ee476e709df03fa9f2de87bd511e45f878d328350baffff9b45106a25ba7d",
+      "reference_sha256": "6c19bb6e451a7aaf652abe4354f4ff32693c1fd0d3e67320090c562a87e67d39",
+      "runner_sha256": "258d9b4ea69c1f6735c09853bb1c2a3efb37f48256f8ecf95481deccab4b830c",
+      "semantic_inputs_sha256": "8b72cdf71d1306d6a4da07333044b4a7c1b5c70697230e9ee5380b24f754b528"
+    },
+    "preparation_sha256": "ce8daa2f6d32dd31ce1c017db4c684ae03933cc3f9831893034c9d9632a00d13",
+    "schema": 1
+  },
+  "preparation_sha256": "ce8daa2f6d32dd31ce1c017db4c684ae03933cc3f9831893034c9d9632a00d13",
+  "prepared_case_sha256": "ae48bb056ababc4e7611704f41243d5bba2d18d0db7a8b30e3ae9b7c7a89f970",
+  "reference_observation_sha256": "986ee476e709df03fa9f2de87bd511e45f878d328350baffff9b45106a25ba7d",
+  "source_edits_after_native": false,
+  "status": "frozen-bounded-handoff"
+}
