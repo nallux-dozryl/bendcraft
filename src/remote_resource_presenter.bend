@@ -13,6 +13,9 @@ import ./movement.bend as Movement
 import ./f64.bend as Double
 import ./png.bend as PNG
 import ./compression.bend as Checksum
+import ./player_hud.bend as HUD
+import ./player_inventory.bend as Inventory
+import ./block_resources.bend as Resources
 
 # This process owns textures, one private connection and one Window. The only
 # world authority is the peer's saved LocalPlayer actor; no driver/actor handle
@@ -26,6 +29,11 @@ type Receive is Type:
 type Config is Data:
   Config{human:Bool,frames:Maybe<&2,Nat>,width:U32,height:U32,
     trace:Maybe<&2,String>,serial:Nat}
+def presentation_width(human:Bool,logical:U32) -> U32:
+  HUD.presentation_width(human,logical)
+
+def presentation_height(human:Bool,logical:U32) -> U32:
+  HUD.presentation_height(human,logical)
 
 def close_link(link:Link) -> IO(Unit):
   match link:
@@ -146,6 +154,10 @@ def correlated_reply(+epoch:String,+sequence:Nat,socket:Socket,buffer:Framing.Bu
       correlation_gate(String.eq(epoch,actual) && Nat.is_eq(sequence,seq),socket,buffer,current,next,reply)
     case Wire.Ack{actual,seq} True{}:
       correlation_gate(String.eq(epoch,actual) && Nat.is_eq(sequence,seq),socket,buffer,current,next,reply)
+    case Wire.InventoryReply{actual,seq,inventory} True{}:
+      correlation_gate(String.eq(epoch,actual) && Nat.is_eq(sequence,seq),socket,buffer,current,next,reply)
+    case Wire.ActionReply{actual,seq,changed,message} True{}:
+      correlation_gate(String.eq(epoch,actual) && Nat.is_eq(sequence,seq),socket,buffer,current,next,reply)
     case Wire.Fault{actual,seq,message} True{}:
       fault_correlated(String.eq(epoch,actual) && Nat.is_eq(sequence,seq),socket,message)
     case _ _: failure(socket,"Wire:Unsolicited")
@@ -257,10 +269,11 @@ def trace_write(path:String,+image:Image,+width:U32,+height:U32) -> IO(Result<&2
     trace_opened(image,width,height,opened)
 
 def trace(image:Image,config:Config) -> IO(Result<&2,&2,String,Unit>):
-  Config{human,frames,+width,+height,mode,serial} = config
+  Config{+human,frames,width,height,mode,serial} = config
   match mode:
     case None{}: IO.pure(Result<&2,&2,String,Unit>,Done{Unit{}})
-    case Some{directory}: trace_write(directory ++ "/" ++ Nat.show(serial) ++ ".ppm",image,width,height)
+    case Some{directory}: trace_write(directory ++ "/" ++ Nat.show(serial) ++ ".ppm",image,
+      presentation_width(human,width),presentation_height(human,height))
 
 def words(values:List<&2,U32>) -> String:
   match values:
@@ -302,18 +315,24 @@ def sample_description(sample:Visibility.Sample,serial:Nat,mode:Maybe<&2,String>
 
 def frame_description(+sample:Visibility.Sample,config:Config) -> IO(Unit):
   Visibility.Sample{Pixels.Snapshot{tick,revision,+blocks,Pixels.Camera{x,y,z,yaw,pitch}},raw,masks,origin,palette,reads} = sample
-  Config{human,frames,width,height,mode,serial} = config
+  Config{+human,frames,+width,+height,mode,serial} = config
   do IO<Unit>:
     IO.print("{\"event\":\"client.frame\",\"renderer\":\"remote-local-resource-instrument\",\"tick\":" ++ Nat.show(tick) ++
       ",\"revision\":" ++ Nat.show(revision) ++ ",\"blocks\":" ++ Nat.show(List.length(&2,Pixels.Block,blocks)) ++
-      ",\"neighbor_reads\":" ++ U32.show(reads) ++ ",\"yaw_f32\":" ++ U32.show(F32.bits(yaw)) ++ ",\"pitch_f32\":" ++ U32.show(F32.bits(pitch)) ++ "}")
+      ",\"neighbor_reads\":" ++ U32.show(reads) ++ ",\"yaw_f32\":" ++ U32.show(F32.bits(yaw)) ++ ",\"pitch_f32\":" ++ U32.show(F32.bits(pitch)) ++
+      ",\"logical_width\":" ++ U32.show(width) ++ ",\"logical_height\":" ++ U32.show(height) ++
+      ",\"presentation_width\":" ++ U32.show(presentation_width(human,width)) ++
+      ",\"presentation_height\":" ++ U32.show(presentation_height(human,height)) ++ "}")
     sample_description(sample,serial,mode)
 
 def image_description(+image:Image,config:Config) -> IO(Unit):
-  Config{human,frames,+width,+height,mode,serial} = config
+  Config{+human,frames,width,height,mode,serial} = config
   match mode:
     case None{}: IO.pure(Unit,Unit{})
-    case Some{directory}: IO.print("resource.image|" ++ Nat.show(serial) ++ "|" ++ U32.show(width) ++ "|" ++ U32.show(height) ++ "|" ++ U32.show(Checksum.crc32(PNG.rgba_bytes(Pixels.pixels_of(image,width,height)))))
+    case Some{directory}:
+      +present_width = presentation_width(human,width)
+      +present_height = presentation_height(human,height)
+      IO.print("resource.image|" ++ Nat.show(serial) ++ "|" ++ U32.show(present_width) ++ "|" ++ U32.show(present_height) ++ "|" ++ U32.show(Checksum.crc32(PNG.rgba_bytes(Pixels.pixels_of(image,present_width,present_height)))))
 
 def closing(window:Window,assets:RF.Assets,link:Link,code:U32,message:String) -> IO(Unit):
   do IO<Unit>:
@@ -340,38 +359,81 @@ def packet_advance(window:Window,assets:RF.Assets,link:Link,+next:Config,capture
   Config{human,frames,width,height,trace,serial} = next
   scheduled(window,assets,link,next,captured,keep && Common.continuing(frames),resume)
 
-def packet_sent(window:Window,assets:RF.Assets,config:Config,captured:Bool,keep:Bool,
+def describe_command(command:Wire.Command,status:Result<&2,&2,String,Wire.Reply>) -> IO(Unit):
+  match command status:
+    case Wire.Action{button} Done{Wire.ActionReply{epoch,sequence,changed,message}}:
+      IO.print("client.action|" ++ Nat.show(sequence) ++ "|" ++ Bool.show(changed) ++ "|" ++ message)
+    case _ _: IO.pure(Unit,Unit{})
+
+def command_continue(rest:List<&2,Wire.Command>,link:Link,status:Result<&2,&2,String,Unit>,
+    continue:List<&2,Wire.Command> -> Link -> IO(Link & Result<&2,&2,String,Unit>)) -> IO(Link & Result<&2,&2,String,Unit>):
+  match status:
+    case Fail{message}: IO.pure(Link & Result<&2,&2,String,Unit>,(link,Fail{message}))
+    case Done{unit}: continue(rest,link)
+
+def command_sent(+command:Wire.Command,rest:List<&2,Wire.Command>,+status:Result<&2,&2,String,Wire.Reply>,link:Link,
+    continue:List<&2,Wire.Command> -> Link -> IO(Link & Result<&2,&2,String,Unit>)) -> IO(Link & Result<&2,&2,String,Unit>):
+  do IO<Link & Result<&2,&2,String,Unit>>:
+    describe_command(command,status)
+    command_continue(rest,link,HUD.command_result(command,status),continue)
+
+def command_pair(command:Wire.Command,rest:List<&2,Wire.Command>,result:Link & Result<&2,&2,String,Wire.Reply>,
+    continue:List<&2,Wire.Command> -> Link -> IO(Link & Result<&2,&2,String,Unit>)) -> IO(Link & Result<&2,&2,String,Unit>):
+  (link,status) = result
+  command_sent(command,rest,status,link,continue)
+
+@unsafe
+def send_commands(commands:List<&2,Wire.Command>,link:Link) -> IO(Link & Result<&2,&2,String,Unit>):
+  match commands:
+    case Nil{}: IO.pure(Link & Result<&2,&2,String,Unit>,(link,Done{Unit{}}))
+    case +command <> rest:
+      do IO<Link & Result<&2,&2,String,Unit>>:
+        result : Link & Result<&2,&2,String,Wire.Reply> <- call(link,command)
+        command_pair(command,rest,result,tail => peer => send_commands(tail,peer))
+
+def commands_sent(window:Window,assets:RF.Assets,config:Config,captured:Bool,keep:Bool,
+    result:Link & Result<&2,&2,String,Unit>,resume:Window -> RF.Assets -> Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
+  (link,status) = result
+  match status:
+    case Done{unit}: packet_advance(window,assets,link,advance(config),captured,keep,resume)
+    case Fail{message}: closing(window,assets,link,1,"game command: " ++ message)
+
+def packet_sent(window:Window,assets:RF.Assets,config:Config,captured:Bool,keep:Bool,commands:List<&2,Wire.Command>,
     result:Link & Result<&2,&2,String,Wire.Reply>,resume:Window -> RF.Assets -> Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
   (link,status) = result
   match status:
-    case Done{Wire.Ack{epoch,sequence}}: packet_advance(window,assets,link,advance(config),captured,keep,resume)
+    case Done{Wire.Ack{epoch,sequence}}:
+      do IO<Unit>:
+        sent : Link & Result<&2,&2,String,Unit> <- send_commands(commands,link)
+        commands_sent(window,assets,config,captured,keep,sent,resume)
     case Done{other}: closing(window,assets,link,1,"input: Wire:ExpectedAck")
     case Fail{message}: closing(window,assets,link,1,"input: " ++ message)
 
-def packet_flags(assets:RF.Assets,link:Link,config:Config,old:Bool,keep:Bool,actions:List<&2,Controls.Action>,
+def packet_flags(assets:RF.Assets,link:Link,config:Config,old:Bool,previous_capture:Bool,keep:Bool,actions:List<&2,Controls.Action>,
     window:Window,+focused:Bool,+captured:Bool,resume:Window -> RF.Assets -> Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
+  +packet = {Controls.Packet{List.reverse(&2,Controls.Action,
+    Common.lost_actions(actions,old && Bool.not(focused && captured))),focused,captured}:Controls.Packet}
   do IO<Unit>:
-    sent : Link & Result<&2,&2,String,Wire.Reply> <- call(link,Wire.Input{Controls.Packet{
-      List.reverse(&2,Controls.Action,Common.lost_actions(actions,old && Bool.not(focused && captured))),focused,captured}})
-    packet_sent(window,assets,config,focused && captured,keep,sent,resume)
+    sent : Link & Result<&2,&2,String,Wire.Reply> <- call(link,Wire.Input{packet})
+    packet_sent(window,assets,config,focused && captured,keep,HUD.packet_commands(packet,previous_capture),sent,resume)
 
-def packet_final(assets:RF.Assets,link:Link,config:Config,old:Bool,keep:Bool,actions:List<&2,Controls.Action>,
+def packet_final(assets:RF.Assets,link:Link,config:Config,old:Bool,previous_capture:Bool,keep:Bool,actions:List<&2,Controls.Action>,
     result:Window & Bool & Bool,resume:Window -> RF.Assets -> Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
   (window,focused,captured) = result
-  packet_flags(assets,link,config,old,keep,actions,window,focused,captured,resume)
+  packet_flags(assets,link,config,old,previous_capture,keep,actions,window,focused,captured,resume)
 
-def packet_events(assets:RF.Assets,link:Link,config:Config,result:Window & Bool & Bool & List<&2,Controls.Action>,
+def packet_events(assets:RF.Assets,link:Link,config:Config,previous_capture:Bool,result:Window & Bool & Bool & List<&2,Controls.Action>,
     resume:Window -> RF.Assets -> Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
   (window,captured,keep,actions) = result
   do IO<Unit>:
     status : Window & Bool & Bool <- Input.Native.status(window)
-    packet_final(assets,link,config,captured,keep,actions,status,resume)
+    packet_final(assets,link,config,captured,previous_capture,keep,actions,status,resume)
 
 def packet_initial_flags(assets:RF.Assets,link:Link,config:Config,pending:List<Event>,allow:Bool,old:Bool,
     window:Window,+focused:Bool,+captured:Bool,resume:Window -> RF.Assets -> Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
   do IO<Unit>:
     events : Window & Bool & Bool & List<&2,Controls.Action> <- Common.events(pending,window,allow,focused && captured,True{},Common.lost_actions([],old && Bool.not(focused && captured)))
-    packet_events(assets,link,config,events,resume)
+    packet_events(assets,link,config,focused && captured,events,resume)
 
 def packet_initial(assets:RF.Assets,link:Link,config:Config,pending:List<Event>,allow:Bool,old:Bool,
     result:Window & Bool & Bool,resume:Window -> RF.Assets -> Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
@@ -400,22 +462,48 @@ def presented(assets:RF.Assets,link:Link,+config:Config,captured:Bool,result:Win
     status : Result<&2,&2,String,Unit> <- trace(image,config)
     traced(window,assets,link,config,captured,image,pending,status,resume)
 
-def drawn(window:Window,link:Link,config:Config,captured:Bool,result:RF.Assets & Result<&2,&2,String,Image>,
+def drawn(window:Window,link:Link,+config:Config,captured:Bool,view:HUD.View,result:RF.Assets & Result<&2,&2,String,Image>,
     resume:Window -> RF.Assets -> Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
+  Config{human,frames,width,height,trace,serial} = config
   (assets,status) = result
   match status:
     case Fail{message}: closing(window,assets,link,1,"render: " ++ message)
     case Done{image}:
       do IO<Unit>:
-        shown : Window & Image & List<Event> <- Window.frame(window,image)
+        shown : Window & Image & List<Event> <- Window.frame(window,HUD.presentation(HUD.draw(image,view,width,height),human,width,height))
         presented(assets,link,config,captured,shown,resume)
 
-def snapshot_ready(window:Window,assets:RF.Assets,link:Link,+config:Config,captured:Bool,+sample:Visibility.Sample,
-    resume:Window -> RF.Assets -> Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
+# Textures and catalog values are immutable Data. Retain their lists while
+# restoring the sole affine RF.Assets owner before world rendering begins.
+def hud_view(assets:RF.Assets,snapshot:Inventory.Snapshot) -> RF.Assets & HUD.View:
+  match assets snapshot:
+    case RF.Assets{Pixels.Assets{+textures},bindings,count,palette,
+        Resources.Catalog{roots,source,models,+sprites,context,usage}} Inventory.Snapshot{selected,slots,abilities}:
+      (RF.Assets{Pixels.Assets{textures},bindings,count,palette,Resources.Catalog{roots,source,models,sprites,context,usage}},
+        HUD.prepare(selected,slots,HUD.icons(textures,sprites)))
+
+def inventory_draw(window:Window,link:Link,+config:Config,captured:Bool,+sample:Visibility.Sample,
+    prepared:RF.Assets & HUD.View,resume:Window -> RF.Assets -> Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
   Config{human,frames,width,height,trace,serial} = config
+  (assets,view) = prepared
   do IO<Unit>:
     frame_description(sample,config)
-    drawn(window,link,config,captured,WRF.draw(sample,assets,width,height),resume)
+    drawn(window,link,config,captured,view,WRF.draw(sample,assets,width,height),resume)
+
+def inventoried(window:Window,assets:RF.Assets,config:Config,captured:Bool,sample:Visibility.Sample,
+    result:Link & Result<&2,&2,String,Wire.Reply>,resume:Window -> RF.Assets -> Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
+  (link,status) = result
+  match status:
+    case Done{Wire.InventoryReply{epoch,sequence,snapshot}}:
+      inventory_draw(window,link,config,captured,sample,hud_view(assets,snapshot),resume)
+    case Done{other}: closing(window,assets,link,1,"inventory query: Wire:ExpectedInventory")
+    case Fail{message}: closing(window,assets,link,1,"inventory query: " ++ message)
+
+def snapshot_ready(window:Window,assets:RF.Assets,link:Link,config:Config,captured:Bool,sample:Visibility.Sample,
+    resume:Window -> RF.Assets -> Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
+  do IO<Unit>:
+    reply : Link & Result<&2,&2,String,Wire.Reply> <- call(link,Wire.Inventory{})
+    inventoried(window,assets,config,captured,sample,reply,resume)
 
 def sampled(window:Window,assets:RF.Assets,config:Config,captured:Bool,result:Link & Result<&2,&2,String,Wire.Reply>,
     resume:Window -> RF.Assets -> Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
@@ -455,8 +543,9 @@ def opened(assets:RF.Assets,link:Link,+config:Config,sample:Visibility.Sample,re
         actual : Window & Bool <- Input.capture(window,human)
         captured(assets,link,config,sample,actual)
 
-def open(assets:RF.Assets,link:Link,sample:Visibility.Sample,human:Bool,frames:Maybe<&2,Nat>,width:U32,height:U32) -> IO(Unit):
+def open(assets:RF.Assets,link:Link,sample:Visibility.Sample,+human:Bool,frames:Maybe<&2,Nat>,width:U32,height:U32) -> IO(Unit):
   do IO<Unit>:
     mode : Result<&1,&1,U32 & String,String> <- IO.get_env("BEND_MINECRAFT_FRAME_DIR")
-    window : Result<&1,&1,U32 & String,Window> <- Window.open("Minecraft 26.3 — remote LocalPlayer resource client",512,512)
+    window : Result<&1,&1,U32 & String,Window> <- Window.open("Minecraft 26.3 — remote LocalPlayer resource client",
+      PNG.choose(U32,960,512,human),PNG.choose(U32,540,512,human))
     opened(assets,link,Config{human,frames,width,height,trace_mode(mode),0n},sample,window)
