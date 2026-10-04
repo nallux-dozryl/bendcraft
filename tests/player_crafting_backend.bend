@@ -23,6 +23,9 @@ import ../src/world_lock.bend as Lock
 import ../src/world_generation_settings.bend as Generation
 import ../src/json.bend as J
 import ../src/section_map.bend as SectionMap
+import ../src/player_cooking_menu.bend as PCMenu
+import ../src/cooking_recipe.bend as CookingRecipe
+import ../src/local_player_cooking.bend as Cooking
 import ./core_refusal.bend as CoreImage
 
 # These fixtures call the production Backend menu gates and Session adapter.
@@ -58,6 +61,16 @@ def session_world(state:S.State) -> S.State & CoreImage.WorldImage:
 # is tested separately by item_component_wire_transport; this fixture directly
 # exercises Backend and does not import unrelated generic Frame codecs.
 def number(value:U32) -> J.Value: J.JNumber{U32.show(value)}
+
+def cooking_value(value:PCMenu.Handle) -> J.Value:
+  match value:
+    case PCMenu.Closed{}: J.JArray{[number(0)]}
+    case PCMenu.Furnace{menu,peer,C.Position{dimension,x,y,z},block,kind,incarnation}:
+      J.JArray{[number(1),number(menu),number(peer),J.JArray{[J.JString{dimension},number(x),number(y),number(z)}],
+        J.JString{block},J.JString{CookingRecipe.kind_name(kind)},J.JNumber{Nat.show(incarnation)}]}
+
+def cooking_equal(a:PCMenu.Handle,b:PCMenu.Handle) -> Bool:
+  String.eq(J.encode(cooking_value(a)),J.encode(cooking_value(b)))
 def slot(value:Inv.Slot) -> J.Value:
   match value:
     case Inv.InvEmpty{}: J.JArray{[number(0)]}
@@ -102,29 +115,36 @@ def selected_context(context:CS.Context,with_context:Bool) -> Maybe<&2,CS.Contex
     case False{}: None{}
     case True{}: Some{context}
 
-def printed(label:String,protocol:Bool,accepted:Bool,message:String,snapshot:Maybe<&2,I.MenuSnapshot>,lease:B.Lease,counter:Nat,nonce:String,capability:String,owner:C.Capability,+context:Maybe<&2,CS.Context>,before:CoreImage.WorldImage,result:S.State & List<&2,Inv.Slot>) -> IO(B.State):
+def printed(label:String,protocol:Bool,accepted:Bool,message:String,snapshot:Maybe<&2,I.MenuSnapshot>,lease:B.Lease,counter:Nat,nonce:String,capability:String,owner:C.Capability,+context:Maybe<&2,CS.Context>,cooking:PCMenu.Handle,next_cooking_menu:U32,before:CoreImage.WorldImage,result:S.State & List<&2,Inv.Slot>) -> IO(B.State):
   B.Lease{epoch,+next,remaining,active} = lease
   (saved,+all) = result
   do IO<B.State>:
     CoreImage.require(Nat.is_eq(List.length(&2,Inv.Slot,all),64n),"backend lost inventory backing cells")
-    IO.print(J.encode(J.JObject{[J.JMember{"label",J.JString{label}},J.JMember{"protocol",J.JBool{protocol}},J.JMember{"accepted",J.JBool{accepted}},J.JMember{"message",J.JString{message}},J.JMember{"next",J.JNumber{Nat.show(next)}},J.JMember{"cells",slots(all)},J.JMember{"context",cache(context)},J.JMember{"menu",snapshot_value(snapshot)}]}))
-    return B.State{saved,B.Lease{epoch,next,remaining,active},counter,nonce,capability,owner,context}
+    IO.print(J.encode(J.JObject{[J.JMember{"label",J.JString{label}},J.JMember{"protocol",J.JBool{protocol}},J.JMember{"accepted",J.JBool{accepted}},J.JMember{"message",J.JString{message}},J.JMember{"next",J.JNumber{Nat.show(next)}},J.JMember{"cells",slots(all)},J.JMember{"context",cache(context)},J.JMember{"menu",snapshot_value(snapshot)},J.JMember{"cooking",cooking_value(cooking)},J.JMember{"next_cooking_menu",number(next_cooking_menu)}]}))
+    return B.State{saved,B.Lease{epoch,next,remaining,active},counter,nonce,capability,owner,context,cooking,next_cooking_menu}
 
-def observed(label:String,protocol:Bool,accepted:Bool,message:String,snapshot:Maybe<&2,I.MenuSnapshot>,lease:B.Lease,counter:Nat,nonce:String,capability:String,owner:C.Capability,context:Maybe<&2,CS.Context>,+before:CoreImage.WorldImage,result:S.State & CoreImage.WorldImage) -> IO(B.State):
+def observed(label:String,protocol:Bool,accepted:Bool,message:String,snapshot:Maybe<&2,I.MenuSnapshot>,lease:B.Lease,counter:Nat,nonce:String,capability:String,owner:C.Capability,context:Maybe<&2,CS.Context>,cooking:PCMenu.Handle,next_cooking_menu:U32,+before:CoreImage.WorldImage,result:S.State & CoreImage.WorldImage) -> IO(B.State):
   (saved,after) = result
   do IO<B.State>:
     CoreImage.require(CoreImage.worlds_equal(before,after),"backend crafting changed complete raw Core")
-    printed(label,protocol,accepted,message,snapshot,lease,counter,nonce,capability,owner,context,before,S.inventory_query(List<&2,Inv.Slot>,saved,inventory_image))
+    printed(label,protocol,accepted,message,snapshot,lease,counter,nonce,capability,owner,context,cooking,next_cooking_menu,before,S.inventory_query(List<&2,Inv.Slot>,saved,inventory_image))
 
-def reported(label:String,protocol:Bool,accepted:Bool,message:String,snapshot:Maybe<&2,I.MenuSnapshot>,before:CoreImage.WorldImage,state:B.State) -> IO(B.State):
-  B.State{saved,lease,counter,nonce,capability,owner,context} = state
-  observed(label,protocol,accepted,message,snapshot,lease,counter,nonce,capability,owner,context,before,session_world(saved))
+def reported(label:String,protocol:Bool,accepted:Bool,message:String,snapshot:Maybe<&2,I.MenuSnapshot>,before:CoreImage.WorldImage,original_cooking:PCMenu.Handle,original_next:U32,state:B.State) -> IO(B.State):
+  B.State{saved,lease,counter,nonce,capability,owner,context,cooking,next_cooking_menu} = state
+  do IO<B.State>:
+    CoreImage.require(cooking_equal(original_cooking,cooking) && U32.is_eq(original_next,next_cooking_menu),"backend crafting changed cooking menu metadata")
+    observed(label,protocol,accepted,message,snapshot,lease,counter,nonce,capability,owner,context,cooking,next_cooking_menu,before,session_world(saved))
 
-def emitted(label:String,before:CoreImage.WorldImage,result:B.State & Result<&2,&2,String,B.MenuOutcome>) -> IO(B.State):
+def emitted_result(label:String,before:CoreImage.WorldImage,cooking:PCMenu.Handle,next_cooking_menu:U32,result:B.State & Result<&2,&2,String,B.MenuOutcome>) -> IO(B.State):
   (state,status) = result
   match status:
-    case Fail{message}: reported(label,False{},False{},message,None{},before,state)
-    case Done{B.MenuOutcome{accepted,message,snapshot}}: reported(label,True{},accepted,message,Some{snapshot},before,state)
+    case Fail{message}: reported(label,False{},False{},message,None{},before,cooking,next_cooking_menu,state)
+    case Done{B.MenuOutcome{accepted,message,snapshot}}: reported(label,True{},accepted,message,Some{snapshot},before,cooking,next_cooking_menu,state)
+
+def emitted(label:String,before:CoreImage.WorldImage,operation:B.State -> B.State & Result<&2,&2,String,B.MenuOutcome>,state:B.State) -> IO(B.State):
+  B.State{saved,lease,counter,nonce,capability,owner,context,+cooking,+next_cooking_menu} = state
+  emitted_result(label,before,cooking,next_cooking_menu,
+    operation(B.State{saved,lease,counter,nonce,capability,owner,context,cooking,next_cooking_menu}))
 
 def empty_slots(n:Nat) -> List<&2,Inv.Slot>:
   match n:
@@ -145,39 +165,39 @@ def player(definitions:D.Catalog,inputs:List<&2,Inv.Slot>) -> I.State:
 def session(file:File,inventory:I.State) -> S.State:
   +body:Motion.Body = Motion.Body.new(Motion.Vec3{F.from_f32(0.5),F.from_u32(1),F.from_f32(0.5)},0.6,1.8,Motion.Vec3.zero(),True{})
   world:W.State = W.State{G.Engine{CoreImage.fixture(SectionMap.EmptySections{},C.Position{"minecraft:overworld",16,32,48}),Registry.Registry{ALeaf{Registry.empty_block()},Map.new(&2,U32),1,32}},body,0.0,0.0,None{},W.Bounds{0,0,0,4,4,4},None{}}
-  S.State{Runtime.fresh(world,L.Tables{ALeaf{0.25}}),S.Shell{"fixture:crafting-backend","/dev/null",13,Persistence.default_limits(),Lock.Lease{file},99,[],inventory,False{},Generation.legacy()}}
+  S.State{Runtime.fresh(world,L.Tables{ALeaf{0.25}}),S.Shell{"fixture:crafting-backend","/dev/null",13,Persistence.default_limits(),Lock.Lease{file},99,[],inventory,False{},Generation.legacy(),Cooking.empty()}}
 
 def seeded(file:File,definitions:D.Catalog,inputs:List<&2,Inv.Slot>,catalog:R.Catalog,owner:C.Capability,with_context:Bool) -> B.State:
   +context = CS.new(catalog)
-  B.State{session(file,player(definitions,inputs)),B.Lease{"fixture:epoch",1n,100,True{}},5n,"fixture:nonce","fixture:token",owner,selected_context(context,with_context)}
+  B.State{session(file,player(definitions,inputs)),B.Lease{"fixture:epoch",1n,100,True{}},5n,"fixture:nonce","fixture:token",owner,selected_context(context,with_context),PCMenu.Closed{},1}
 
 def changed_player(state:I.State) -> I.State:
   I.State{inventory,selected,abilities,profile} = state
   I.State{I.write_returned([Inv.InvStack{Inv.ItemKey{"minecraft:oak_planks",""},3}],43,inventory),selected,abilities,profile}
 
-def changed(result:S.State & Unit,lease:B.Lease,counter:Nat,nonce:String,capability:String,owner:C.Capability,context:Maybe<&2,CS.Context>) -> B.State:
+def changed(result:S.State & Unit,lease:B.Lease,counter:Nat,nonce:String,capability:String,owner:C.Capability,context:Maybe<&2,CS.Context>,cooking:PCMenu.Handle,next_cooking_menu:U32) -> B.State:
   (saved,unit) = result
-  B.State{saved,lease,counter,nonce,capability,owner,context}
+  B.State{saved,lease,counter,nonce,capability,owner,context,cooking,next_cooking_menu}
 
 def make_stale(state:B.State) -> B.State:
-  B.State{saved,lease,counter,nonce,capability,owner,context} = state
-  changed(S.inventory_query(Unit,saved,player => (changed_player(player),Unit{})),lease,counter,nonce,capability,owner,context)
+  B.State{saved,lease,counter,nonce,capability,owner,context,cooking,next_cooking_menu} = state
+  changed(S.inventory_query(Unit,saved,player => (changed_player(player),Unit{})),lease,counter,nonce,capability,owner,context,cooking,next_cooking_menu)
 
 def dispose(state:B.State) -> IO(Unit):
-  B.State{S.State{player,S.Shell{identity,path,highwater,limits,Lock.Lease{file},maximum,catalog,inventory,fresh,generation}},lease,counter,nonce,capability,owner,context} = state
+  B.State{S.State{player,S.Shell{identity,path,highwater,limits,Lock.Lease{file},maximum,catalog,inventory,fresh,generation,sidecar}},lease,counter,nonce,capability,owner,context,cooking,next_cooking_menu} = state
   File.close(file)
 
 def sequence(+before:CoreImage.WorldImage,state:B.State) -> IO(Unit):
   do IO<Unit>:
-    state:B.State <- emitted("opened",before,B.menu_open(state,"fixture:epoch",1n))
-    state:B.State <- emitted("inspected",before,B.menu_inspect(state,"fixture:epoch",2n))
-    state:B.State <- emitted("wrong-sequence",before,B.menu_click(state,"fixture:epoch",999n,0,I.Pickup{0}))
-    state:B.State <- emitted("stale",before,B.menu_click(make_stale(state),"fixture:epoch",3n,0,I.Pickup{0}))
-    state:B.State <- emitted("refreshed",before,B.menu_inspect(state,"fixture:epoch",4n))
-    state:B.State <- emitted("first",before,B.menu_click(state,"fixture:epoch",5n,0,I.Pickup{1}))
-    state:B.State <- emitted("second",before,B.menu_click(state,"fixture:epoch",6n,0,I.Pickup{0}))
-    state:B.State <- emitted("absent",before,B.menu_click(state,"fixture:epoch",7n,0,I.Pickup{0}))
-    state:B.State <- emitted("closed",before,B.menu_close(state,"fixture:epoch",8n))
+    state:B.State <- emitted("opened",before,state => B.menu_open(state,"fixture:epoch",1n),state)
+    state:B.State <- emitted("inspected",before,state => B.menu_inspect(state,"fixture:epoch",2n),state)
+    state:B.State <- emitted("wrong-sequence",before,state => B.menu_click(state,"fixture:epoch",999n,0,I.Pickup{0}),state)
+    state:B.State <- emitted("stale",before,state => B.menu_click(make_stale(state),"fixture:epoch",3n,0,I.Pickup{0}),state)
+    state:B.State <- emitted("refreshed",before,state => B.menu_inspect(state,"fixture:epoch",4n),state)
+    state:B.State <- emitted("first",before,state => B.menu_click(state,"fixture:epoch",5n,0,I.Pickup{1}),state)
+    state:B.State <- emitted("second",before,state => B.menu_click(state,"fixture:epoch",6n,0,I.Pickup{0}),state)
+    state:B.State <- emitted("absent",before,state => B.menu_click(state,"fixture:epoch",7n,0,I.Pickup{0}),state)
+    state:B.State <- emitted("closed",before,state => B.menu_close(state,"fixture:epoch",8n),state)
     dispose(state)
 
 def begun_mode(state:B.State,+before:CoreImage.WorldImage,mode:U32) -> IO(Unit):
@@ -185,30 +205,30 @@ def begun_mode(state:B.State,+before:CoreImage.WorldImage,mode:U32) -> IO(Unit):
     case 0: sequence(before,state)
     case 1:
       do IO<Unit>:
-        state:B.State <- emitted("observer",before,B.menu_open(state,"fixture:epoch",1n))
+        state:B.State <- emitted("observer",before,state => B.menu_open(state,"fixture:epoch",1n),state)
         dispose(state)
     case 2:
       do IO<Unit>:
-        state:B.State <- emitted("legacy-open",before,B.menu_open(state,"fixture:epoch",1n))
-        state:B.State <- emitted("legacy-result",before,B.menu_click(state,"fixture:epoch",2n,0,I.Pickup{0}))
+        state:B.State <- emitted("legacy-open",before,state => B.menu_open(state,"fixture:epoch",1n),state)
+        state:B.State <- emitted("legacy-result",before,state => B.menu_click(state,"fixture:epoch",2n,0,I.Pickup{0}),state)
         dispose(state)
     case 4:
       do IO<Unit>:
-        state:B.State <- emitted("invalid-player",before,B.menu_open(state,"fixture:epoch",1n))
+        state:B.State <- emitted("invalid-player",before,state => B.menu_open(state,"fixture:epoch",1n),state)
         dispose(state)
     case _:
       do IO<Unit>:
-        state:B.State <- emitted("failure-open",before,B.menu_open(state,"fixture:epoch",1n))
-        state:B.State <- emitted("committed-refresh-failure",before,B.menu_click(state,"fixture:epoch",2n,0,I.Pickup{0}))
+        state:B.State <- emitted("failure-open",before,state => B.menu_open(state,"fixture:epoch",1n),state)
+        state:B.State <- emitted("committed-refresh-failure",before,state => B.menu_click(state,"fixture:epoch",2n,0,I.Pickup{0}),state)
         dispose(state)
 
-def begun(result:S.State & CoreImage.WorldImage,lease:B.Lease,counter:Nat,nonce:String,capability:String,owner:C.Capability,context:Maybe<&2,CS.Context>,mode:U32) -> IO(Unit):
+def begun(result:S.State & CoreImage.WorldImage,lease:B.Lease,counter:Nat,nonce:String,capability:String,owner:C.Capability,context:Maybe<&2,CS.Context>,cooking:PCMenu.Handle,next_cooking_menu:U32,mode:U32) -> IO(Unit):
   (saved,before) = result
-  begun_mode(B.State{saved,lease,counter,nonce,capability,owner,context},before,mode)
+  begun_mode(B.State{saved,lease,counter,nonce,capability,owner,context,cooking,next_cooking_menu},before,mode)
 
 def begin(state:B.State,mode:U32) -> IO(Unit):
-  B.State{saved,lease,counter,nonce,capability,owner,context} = state
-  begun(session_world(saved),lease,counter,nonce,capability,owner,context,mode)
+  B.State{saved,lease,counter,nonce,capability,owner,context,cooking,next_cooking_menu} = state
+  begun(session_world(saved),lease,counter,nonce,capability,owner,context,cooking,next_cooking_menu,mode)
 
 def loaded(result:Result<&2,&2,String,D.Catalog>) -> IO(Unit):
   match result:

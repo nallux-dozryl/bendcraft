@@ -17,9 +17,11 @@ import ../src/crafting_recipe.bend as R
 import ../src/resource_client_wire.bend as W
 import ../src/json.bend as J
 import ../src/core.bend as Core
+import ../src/player_cooking_menu.bend as PCMenu
 
 type ActorImage is Data:
-  ActorImage{inventory:J.Value,context:Maybe<&2,CS.Context>,lease:B.Lease,counter:Nat,nonce:String,capability:String,world:CoreImage.WorldImage}
+  ActorImage{inventory:J.Value,context:Maybe<&2,CS.Context>,lease:B.Lease,counter:Nat,nonce:String,capability:String,
+    cooking:PCMenu.Handle,next_cooking_menu:U32,world:CoreImage.WorldImage}
 
 def tree_paired(left:Array<Inv.Slot> & J.Value,right:Array<Inv.Slot> & J.Value) -> Array<Inv.Slot> & J.Value:
   (xs,a) = left
@@ -47,18 +49,18 @@ def inventory_image(owner:I.State) -> I.State & J.Value:
   imaged_fields(length,selected,abilities,profile,tree(slots))
 
 def imaged_inventory(+lease:B.Lease,+counter:Nat,+nonce:String,+capability:String,owner:Core.Capability,
-    +context:Maybe<&2,CS.Context>,world:CoreImage.WorldImage,result:S.State & J.Value) -> B.State & ActorImage:
+    +context:Maybe<&2,CS.Context>,+cooking:PCMenu.Handle,+next_cooking_menu:U32,world:CoreImage.WorldImage,result:S.State & J.Value) -> B.State & ActorImage:
   (saved,inventory) = result
-  (B.State{saved,lease,counter,nonce,capability,owner,context},ActorImage{inventory,context,lease,counter,nonce,capability,world})
+  (B.State{saved,lease,counter,nonce,capability,owner,context,cooking,next_cooking_menu},ActorImage{inventory,context,lease,counter,nonce,capability,cooking,next_cooking_menu,world})
 
 def imaged_world(lease:B.Lease,counter:Nat,nonce:String,capability:String,owner:Core.Capability,
-    context:Maybe<&2,CS.Context>,result:S.State & CoreImage.WorldImage) -> B.State & ActorImage:
+    context:Maybe<&2,CS.Context>,cooking:PCMenu.Handle,next_cooking_menu:U32,result:S.State & CoreImage.WorldImage) -> B.State & ActorImage:
   (saved,world) = result
-  imaged_inventory(lease,counter,nonce,capability,owner,context,world,S.inventory_query(J.Value,saved,inventory_image))
+  imaged_inventory(lease,counter,nonce,capability,owner,context,cooking,next_cooking_menu,world,S.inventory_query(J.Value,saved,inventory_image))
 
 def image(state:B.State) -> B.State & ActorImage:
-  B.State{saved,lease,counter,nonce,capability,owner,context} = state
-  imaged_world(lease,counter,nonce,capability,owner,context,BackendFixture.session_world(saved))
+  B.State{saved,lease,counter,nonce,capability,owner,context,cooking,next_cooking_menu} = state
+  imaged_world(lease,counter,nonce,capability,owner,context,cooking,next_cooking_menu,BackendFixture.session_world(saved))
 
 def selectors(values:List<&2,R.Selector>) -> List<&2,J.Value>:
   match values:
@@ -121,15 +123,21 @@ def context(value:Maybe<&2,CS.Context>) -> J.Value:
       J.JArray{[J.JArray{recipes(specs)},J.JArray{tags(groups)},J.JArray{definitions(items)},plan(cached),mode(components)]}
 
 def image_value(value:ActorImage) -> J.Value:
-  ActorImage{inventory,old_context,B.Lease{epoch,next,remaining,active},counter,nonce,capability,world} = value
+  ActorImage{inventory,old_context,B.Lease{epoch,next,remaining,active},counter,nonce,capability,cooking,next_cooking_menu,world} = value
   J.JObject{[J.JMember{"inventory",inventory},J.JMember{"context",context(old_context)},
     J.JMember{"lease",J.JArray{[J.JString{epoch},W.n(next),W.u(remaining),J.JBool{active}]}},
-    J.JMember{"counter",W.n(counter)},J.JMember{"nonce",J.JString{nonce}},J.JMember{"capability",J.JString{capability}}]}
+    J.JMember{"counter",W.n(counter)},J.JMember{"nonce",J.JString{nonce}},J.JMember{"capability",J.JString{capability}},
+    J.JMember{"cooking",BackendFixture.cooking_value(cooking)},J.JMember{"next_cooking_menu",W.u(next_cooking_menu)}]}
 
 def worlds(before:ActorImage,after:ActorImage) -> Bool:
-  ActorImage{inventory,context,lease,counter,nonce,capability,first} = before
-  ActorImage{inventory2,context2,lease2,counter2,nonce2,capability2,second} = after
+  ActorImage{inventory,context,lease,counter,nonce,capability,cooking,next_cooking_menu,first} = before
+  ActorImage{inventory2,context2,lease2,counter2,nonce2,capability2,cooking2,next_cooking_menu2,second} = after
   CoreImage.worlds_equal(first,second)
+
+def cooking_metadata_equal(before:ActorImage,after:ActorImage) -> Bool:
+  ActorImage{inventory,context,lease,counter,nonce,capability,cooking,next_cooking_menu,world} = before
+  ActorImage{inventory2,context2,lease2,counter2,nonce2,capability2,cooking2,next_cooking_menu2,world2} = after
+  BackendFixture.cooking_equal(cooking,cooking2) && U32.is_eq(next_cooking_menu,next_cooking_menu2)
 
 def reply(value:Result<&2,&2,String,J.Value>) -> J.Value:
   match value:
@@ -141,6 +149,7 @@ def report(+before:ActorImage,+prepared:T.PreparedAnswer,result:B.State & ActorI
   (state,+after) = result
   do IO<Unit>:
     CoreImage.require(worlds(before,after),"prospective inventory command changed complete raw Core")
+    CoreImage.require(cooking_metadata_equal(before,after),"prospective inventory command changed cooking menu metadata")
     IO.print(J.encode(J.JObject{[J.JMember{"before",image_value(before)},J.JMember{"after",image_value(after)},
       J.JMember{"reply",reply(W.reply_json(answer))},J.JMember{"encoding",Fixture.encoded_string(encoding)},
       J.JMember{"assigned",J.JString{assigned}},J.JMember{"keep",J.JBool{keep}},J.JMember{"world_unchanged",J.JBool{True{}}}]}))
@@ -181,7 +190,7 @@ def requested(inventory:I.State,context_name:String,shape_name:String,key:Inv.It
     case W.Call{epoch,sequence,command}:
       do IO<Unit>:
         file:File <- IO.try(File,File.open("/dev/null","r"))
-        observed(epoch,sequence,command,image(B.State{BackendFixture.session(file,shape(shape_name,inventory)),B.Lease{"fixture:epoch",1n,41,True{}},5n,"fixture:nonce","fixture:token",Core.Player{17},fixture_context(context_name,key)}))
+        observed(epoch,sequence,command,image(B.State{BackendFixture.session(file,shape(shape_name,inventory)),B.Lease{"fixture:epoch",1n,41,True{}},5n,"fixture:nonce","fixture:token",Core.Player{17},fixture_context(context_name,key),PCMenu.Closed{},1}))
     case _: IO.die(Unit,2,"call fixture required")
 
 def ready(+value:J.Value,result:Result<&2,&1,String,I.State>) -> IO(Unit):
