@@ -1,0 +1,158 @@
+{
+  "actor": {
+    "bytes": 9712104,
+    "file": "actor",
+    "sha1": "ffa5f0f4a7260faaf9a01857ddd956bad4d14ffd",
+    "sha256": "ab4c16dfd01c73826f4dd7727e3f520d820b76f966302c5838ddeba0b4abfcef"
+  },
+  "actor_generation": "immutable-actor004/producer016",
+  "actor_source_load": {
+    "bytes": 16112,
+    "file": "player_crafting_authority_load.bend",
+    "sha1": "3b4f8bc5d7bc44dce604551f9506d3d3b204f234",
+    "sha256": "f7dddeef69f5c3ef09d1b2fa5b50b07faec901dbc6d77bb9b050d66f3db4d1d8"
+  },
+  "boundaries": [
+    "No actor launch/restart or foreground interaction by this profiling lane.",
+    "The second existing PID59206 had already exited when a read-only sample was attempted; that attempt produced no profile.",
+    "No new harness, broad replay, C emission or actor build was started.",
+    "No admission predicate was removed; field/default, item/tag/remainder, definition-count/limit and final recipe checks remain."
+  ],
+  "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+  "flags": [
+    "--gpu",
+    "off",
+    "--threads",
+    "2",
+    "--",
+    "--game-mode",
+    "creative",
+    "--sine",
+    "generated/reference_mth_sin.f32"
+  ],
+  "process": {
+    "helper_condition_wait_samples": 253,
+    "main_io_select_samples": 76,
+    "main_native_evaluation_samples": 177,
+    "main_samples": 253,
+    "parent_pid": 57439,
+    "pid": 57446,
+    "sample": {
+      "bytes": 14303,
+      "file": "sample-early.txt",
+      "sha1": "30fe9464ede7a9b6a538e7ad1e4e8b0349321282",
+      "sha256": "aebb43198cbe1b95d0ba473e741bde9f25b81b9b867be2c0d2c3888ef7dffac5"
+    },
+    "sample_command": [
+      "/usr/bin/sample",
+      "57446",
+      "3",
+      "10",
+      "-file",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-startup-profile-016/sample-early.txt"
+    ],
+    "sample_launch_time": "2026-10-05 03:32:42.351 +0700",
+    "sample_start_after_launch_seconds": 31.27,
+    "sample_start_time": "2026-10-05 03:33:13.621 +0700",
+    "scope": "A late three-second sample overlapping catalog comparisons, world initialization and readiness. Tail-dispatched String.cmp/order work cannot be assigned to a single caller from this sample."
+  },
+  "readiness": {
+    "owner_observer_seconds": 39.093,
+    "owner_outer_seconds": 39.913,
+    "owner_outer_seconds_is_startup_upper_bound": true,
+    "renderer_ready": true,
+    "separate_monotonic_readiness_timer": false,
+    "server_ready": true,
+    "stderr": {
+      "bytes": 0,
+      "file": "actor.stderr",
+      "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 167,
+      "file": "actor.stdout",
+      "sha1": "d29c2991b4ffa3f752d2c1990711edcb8a12a829",
+      "sha256": "af73322d1f8756df35df841e2292d5a8a231aa2308a5dcfa4f1b8a536cc076af"
+    },
+    "stdout_last_modified_time": "2026-10-05T03:33:15.783081",
+    "timestamp_derivation": "Sample launch timestamp has millisecond precision; stdout modification time follows the recorded two ready events. This is not a separately instrumented readiness timer.",
+    "timestamp_derived_ready_seconds_approximately": 33.432081
+  },
+  "retained_full_loader_timings": [
+    {
+      "pinned_startup_facts": false,
+      "scope": "Full service/startup plus six menu observations and67 authority outputs; not an isolated startup phase timer.",
+      "seconds": 33.962907208129764,
+      "threads": 1
+    },
+    {
+      "pinned_startup_facts": false,
+      "scope": "Full service/startup plus six menu observations and67 authority outputs; not an isolated startup phase timer.",
+      "seconds": 46.343395583331585,
+      "threads": 4
+    },
+    {
+      "pinned_startup_facts": true,
+      "scope": "Full service/startup plus six menu observations and67 authority outputs; not an isolated startup phase timer.",
+      "seconds": 55.53524962440133,
+      "threads": 1
+    },
+    {
+      "pinned_startup_facts": true,
+      "scope": "Full service/startup plus six menu observations and67 authority outputs; not an isolated startup phase timer.",
+      "seconds": 51.780814374797046,
+      "threads": 4
+    }
+  ],
+  "source_only_fix": {
+    "actor016_binary_changed": false,
+    "benchmarked_native_speedup": false,
+    "change": "Factor common field/default checks into context_parts; retain context public catalog validation and context_with catalog+definition validation, eliminating one repeated immutable metadata catalog pass. Final recipe catalog validation remains.",
+    "file": {
+      "bytes": 16270,
+      "file": "player_crafting_authority_load.bend",
+      "sha1": "f6e61e6399d6787b8da798bf21f1e698025825c6",
+      "sha256": "944f45abe88b984b2848b1a2301c7f00f5a885a4cad17ba3abb11596eead086e"
+    },
+    "metadata_catalog_passes_before_recipe_loading_after": 1,
+    "metadata_catalog_passes_before_recipe_loading_before": 2,
+    "ordinary_check": {
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/player_crafting_authority_load.bend",
+        "--check-only"
+      ],
+      "attempts": 1,
+      "cap_seconds": 60,
+      "cleanup": {
+        "after": [],
+        "before": [],
+        "errors": [],
+        "leader_reaped": true,
+        "live_group_absent": true,
+        "seconds": 0.09148695785552263
+      },
+      "deadline_monotonic": 5719909.35543925,
+      "error": null,
+      "exit_code": 0,
+      "pid": 59703,
+      "seconds": 6.172240249812603,
+      "started_monotonic": 5719849.35543925,
+      "stderr": {
+        "bytes": 0,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-startup-profile-016/load-source-check/stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 58,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-startup-profile-016/load-source-check/stdout",
+        "sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1"
+      },
+      "timed_out": false
+    },
+    "ordinary_check_scope": "Original installed CLI ordinary source checking; no independent kernel or new native verdict for this factoring.",
+    "public_api_or_layout_change": false
+  },
+  "status": "measured-existing-actor-readiness-and-source-only-factoring"
+}

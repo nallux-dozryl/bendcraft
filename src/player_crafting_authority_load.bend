@@ -94,14 +94,19 @@ def default_rows(values:List<&2,J.Value>) -> Result<&2,&2,String,Unit>:
         default_map(components,id,limit)
         default_rows(rest)
 
-def context(+value:J.Value) -> Result<&2,&2,String,Context>:
+def context_parts(+value:J.Value) -> Result<&2,&2,String,Context>:
   do Result<&2,&2,String,Context>:
     +items:J.Value <- D.field(value,"items")
     +tags:J.Value <- D.field(value,"tags")
     rows:List<&2,J.Value> <- D.array(items)
     default_rows(rows)
-    admitted:R.Catalog <- context_catalog(Context{items,tags},[])
     return Context{items,tags}
+
+def context(+value:J.Value) -> Result<&2,&2,String,Context>:
+  do Result<&2,&2,String,Context>:
+    +parsed:Context <- context_parts(value)
+    admitted:R.Catalog <- context_catalog(parsed,[])
+    return parsed
 
 def definition_matches(value:Maybe<&2,Definitions.Definition>,limit:U32) -> Bool:
   match value:
@@ -125,7 +130,7 @@ def initialized(result:Result<&2,&2,String,R.Catalog>,context:Context,+definitio
 
 def context_with(value:J.Value,definitions:Definitions.Catalog) -> Result<&2,&2,String,Context>:
   do Result<&2,&2,String,Context>:
-    +parsed:Context <- context(value)
+    +parsed:Context <- context_parts(value)
     initialized(context_catalog(parsed,[]),parsed,definitions)
 
 def request_ids(values:List<&2,String>,+seen:List<&2,String>) -> Result<&2,&2,String,Unit>:

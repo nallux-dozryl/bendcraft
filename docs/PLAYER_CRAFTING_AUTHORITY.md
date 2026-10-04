@@ -268,3 +268,24 @@ physical inventory cells, including two takes, stale plans, lease/observer
 refusals, the absent-context route, close, and an accepted committed take with a
 failed cache refresh. That receipt uses its explicitly frozen Core/Runtime
 generation and does not establish TCP or full startup execution.
+
+The existing actor 016 binary also reaches actual server and renderer readiness
+in the adjusted 008 startup run with no actor stderr. The run owner records
+39.913 seconds for the complete outer run, an upper bound on startup rather than
+an isolated readiness timer. A three-second read-only native sample beginning
+31.270 seconds after launch overlaps catalog comparisons, world initialization
+and subsequent IO waiting. It cannot attribute the whole startup cost to one
+function. The retained full-loader receipts take 33.963/46.343 seconds through
+the explicit service and 55.535/51.781 through pinned startup on one/four CPU
+threads; those include six menu transitions and 67 authority fixture outputs.
+
+A subsequent source-only loader factoring removes one repeated metadata
+catalog validation: `context_parts` performs the original field/default checks;
+`context` still validates the catalog; `context_with` uses those common parts
+directly with the original catalog-and-definition validation. The recipe
+completion catalog validation remains. Public layouts and admission checks are
+unchanged. The existing loader module passes ordinary checking in 6.172 seconds.
+Actor016 and the full native receipts use the earlier frozen loader; the
+factoring has no native speedup or new actor verdict yet. The measured sample
+and source-check identities are recorded in
+`player-crafting-startup-profile-016.json`.
