@@ -1,0 +1,61 @@
+{
+  "status": "PASS",
+  "scope": "Preserve opaque primitive declarations in exact conservative BendTT declaration closures; certify only two actual complete crafting-backend composition equations. No IO-effect or full ten-law claim.",
+  "tool": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/bendtt_closure.py",
+    "bytes": 3674,
+    "sha256": "6d9a42d7704bd4da1f99c1350eab326c5923a645a15b658fa1cdcd6ce409d8b8"
+  },
+  "original_export": {
+    "bytes": 56231359,
+    "sha256": "ee34970881dc047eed25704aecfd3b5ecc6d8efba850d242d2c3a3187e643d0e"
+  },
+  "closure": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-backend/selective-003/composition-002.bendtt",
+    "bytes": 39712,
+    "sha256": "9b409f8837e724590bc573a820489f843f0dfe0c34268a97f61c243776d33272"
+  },
+  "closure_manifest": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-backend/selective-003/composition-002.closure.json",
+    "bytes": 65697,
+    "sha256": "0369aa3dd802dd1f82301631836afc09a4deeb21d3a2b4b78b7d01af9463fd1f"
+  },
+  "roots": [
+    "player_crafting_backend_laws.public_dispatch_rejoins_complete_session_and_context",
+    "player_crafting_backend_laws.committed_craft_with_failed_refresh_stays_accepted"
+  ],
+  "retained_declarations": 229,
+  "opaque_file_retained": true,
+  "declarations_unchanged": true,
+  "source_order_preserved": true,
+  "kernel": {
+    "argv": [
+      "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+      "build/player-crafting-backend/selective-003/composition-002.bendtt"
+    ],
+    "cleanup_poll_count": 1,
+    "exit_code": 0,
+    "group_absent": true,
+    "pid": 15655,
+    "seconds": 0.011784,
+    "stderr": {
+      "bytes": 0,
+      "file": "composition-kernel-002.stderr",
+      "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 17,
+      "file": "composition-kernel-002.stdout",
+      "sha1": "ba8ec8289ea6f6e6fec687b636c07f05c26d0a8b",
+      "sha256": "61b73cda11b6b665b9f99f2defd3d3b57f985c865225e942a5bdaa594a503e47"
+    },
+    "timed_out": false
+  },
+  "prior_missing_file_failure": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-backend/selective-003/composition-kernel.json",
+    "bytes": 703,
+    "sha256": "59379eea14129730eb758a385d44c250928db35d1540dd282ec974b5350ef3ff"
+  },
+  "full_ten_root_status": "Independent kernel rejects json.encode_go affine live descent; this repair does not resolve it."
+}

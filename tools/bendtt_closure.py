@@ -21,7 +21,9 @@ def retain(source: bytes, roots: list[str]) -> tuple[bytes, dict]:
     text = source.decode("utf-8")
     # BendTT Parse.name admits alphanumeric characters, '_' and '.'. Unicode
     # Python \w conservatively also admits every exported alphanumeric name.
-    headers = list(re.finditer(r"^([\w.]+) : ", text, re.MULTILINE))
+    # Opaque primitive types are declarations too. Their unchanged bytes must
+    # accompany any retained owner/type that refers to them.
+    headers = list(re.finditer(r"^(?:opaque )?([\w.]+) : ", text, re.MULTILINE))
     if not headers or text[:headers[0].start()].strip():
         raise ValueError("Expected a full declaration-only BendTT export")
     chunks: dict[str, str] = {}
