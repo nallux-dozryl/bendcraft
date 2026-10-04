@@ -1,0 +1,122 @@
+{
+  "status": "PASS",
+  "confidence": "high",
+  "generation": "immutable-current002/producer010",
+  "scope": "Actual current002 transport/menu/v3/WG durable boundary; synthetic private packets. The later extracted selector, next-generation close disposition, physical window input and numerical flight/world fidelity are separate.",
+  "binary": {
+    "bytes": 7583960,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-010/actor",
+    "sha256": "92e1633e0cd32cb6c50c19ffafbff542ab06a97643c8dd45a3b815d04ef745c5"
+  },
+  "source_map": {
+    "bytes": 117290,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-client-current-source/002/source-map.json",
+    "sha256": "381b7d7da7661b413d6e42301319c18e13596411007a0fce826d3f32c94fd77d"
+  },
+  "producer": {
+    "bytes": 10592,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-010/receipt.json",
+    "sha256": "7b51dc2ef0b843beb043c697c37f68a84e68c540b6af86f8b73954b51ca4245d"
+  },
+  "loaded_source_pins": {
+    "bytes": 27643,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-010/loaded-source-pins.json",
+    "sha256": "82062207a68de22bf78fa2e6454ffb42ee40a8c27a2254b7c3c90fe2e9e258b9"
+  },
+  "final_source_pins": {
+    "bytes": 27643,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-010/final-source-pins.json",
+    "sha256": "82062207a68de22bf78fa2e6454ffb42ee40a8c27a2254b7c3c90fe2e9e258b9"
+  },
+  "inputs": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-010/current-boundary-001/inputs.json",
+    "bytes": 14398,
+    "sha256": "f4d5dc01d88833ff1bce4c191efc74ce7e433911e73c920a973852073f49647c"
+  },
+  "summary": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-010/current-boundary-001/backend/summary.json",
+    "bytes": 3437,
+    "sha256": "8e719ba1bb72ff161438917da212a3301e6ea35f773b641e9edf6ad6e717ef63"
+  },
+  "execution": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-010/current-boundary-001/execution/result.full.json",
+    "bytes": 1005,
+    "sha256": "ad627320c649d3a9f18a12b142ef77ce22d360cc0e4a0cced853e418b338c054"
+  },
+  "cleanup": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-010/current-boundary-001/descendant-cleanup.json",
+    "bytes": 1773,
+    "sha256": "f030a548479ff8e714449e3201e8b743920ccc32b02cc0b9e73074e079befde5"
+  },
+  "actor_processes": [
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-010/current-boundary-001/backend/cold-reload/process.json",
+      "bytes": 911,
+      "sha256": "ab0f379f93551f8894980289f83684c461f54b303069dd74f84a3c56037de51f"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-010/current-boundary-001/backend/loaded-v3/process.json",
+      "bytes": 906,
+      "sha256": "712af9250d57c714ad01cc9d822cab8e7795f1e32b889ff883cae30034c46c15"
+    }
+  ],
+  "seconds": 12.167242332361639,
+  "native_backends": 2,
+  "actual_MCP_bridge_processes": 2,
+  "private_menu_snapshots": 12,
+  "main_slots": 36,
+  "equipment_slots": 7,
+  "raw_status": {
+    "flying": true,
+    "flying_speed": 2141266757,
+    "invulnerable": true,
+    "mayfly": true,
+    "walking_speed": 2147483648
+  },
+  "full_UINT64_seed_and_generation_bytes": true,
+  "terrain_sections": 104,
+  "independent_Frame_samples": 3,
+  "first_person_break_place": true,
+  "observer_mutations_refused": 4,
+  "actual_item_limit16_refusal": true,
+  "temporary_carried_close_and_save_refused": true,
+  "refusal_snapshots_preserve_authority": true,
+  "complete_save_comparisons": [
+    {
+      "actual_sha256": "d85c39976facfcac5754705a6f377363bd1b73fd2e28463f9c499c678e09eda9",
+      "bytes": 1712569,
+      "expected_sha256": "d85c39976facfcac5754705a6f377363bd1b73fd2e28463f9c499c678e09eda9",
+      "label": "acknowledged-save",
+      "reply": {
+        "bytes": 1712569,
+        "durable": true,
+        "peer_highwater": 44,
+        "published": true,
+        "status": "durable"
+      }
+    },
+    {
+      "actual_sha256": "c9d9624f1c69c07dde21572f4f99804049edc6a31e6bc00becb5d2c97dc8b99c",
+      "bytes": 1712569,
+      "expected_sha256": "c9d9624f1c69c07dde21572f4f99804049edc6a31e6bc00becb5d2c97dc8b99c",
+      "label": "cold-reloaded-save",
+      "reply": {
+        "bytes": 1712569,
+        "durable": true,
+        "peer_highwater": 46,
+        "published": true,
+        "status": "durable"
+      }
+    }
+  ],
+  "actual_SIGKILL_cold_reload": true,
+  "actual_OS_input": false,
+  "native_renderer": false,
+  "later_extracted_selector": false,
+  "future_close_disposition": false,
+  "prepared_runner_preservation": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-client-backend-session/002/frozen-host-inputs/manifest.json",
+    "bytes": 323,
+    "sha256": "fb423d819aa8398634ffa0c618df9007f27311f611b2214cfec7c826e6d1797d"
+  }
+}

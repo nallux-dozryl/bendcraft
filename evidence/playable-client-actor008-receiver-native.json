@@ -1,0 +1,77 @@
+{
+  "status": "PASS",
+  "confidence": "high",
+  "scope": "Earlier frozen actor008 only: existing actual_local_receivers through TCP/private packets, exact actual-Java LocalPlayer records/clock, pinned Java visibility sample and complete durable legacy bundle bytes.",
+  "native_actors": 4,
+  "cases": 4,
+  "steps": 8,
+  "complete_save_comparisons": 8,
+  "seconds": 4.72930174972862,
+  "binary": {
+    "bytes": 6770008,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-008/actor",
+    "sha256": "4eebfd9f541ab8b8bdd4fb96f46683c4e286751f2e088af600792084ee33fd5c"
+  },
+  "producer": {
+    "bytes": 8956,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-008/receipt.json",
+    "sha256": "7f51abedbfe0de0093bc6d027a731aa9f96121fa2fe9546dffc1b3989a33472f"
+  },
+  "loaded_source_pins": {
+    "bytes": 25473,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-008/loaded-source-pins.json",
+    "sha256": "2a11e15b790c6ef1b3fe0702b70ffbae4580f5276581e05cc96277d7de5ed078"
+  },
+  "final_source_pins": {
+    "bytes": 25473,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-008/final-source-pins.json",
+    "sha256": "2a11e15b790c6ef1b3fe0702b70ffbae4580f5276581e05cc96277d7de5ed078"
+  },
+  "Java_visibility": {
+    "bytes": 2707188,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/world_visibility.json",
+    "sha256": "c81f6e26110d2275905a6d94f30462935814e8951fdd8e6c10f9a084febacbde"
+  },
+  "inputs": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-008/receiver-boundary-002/inputs.json",
+    "bytes": 13280,
+    "sha256": "a39d42fda004fd81322094d72923426bde3199e6c9f2f77c11be26386e49b2df"
+  },
+  "comparison": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-008/receiver-boundary-002/comparison.json",
+    "bytes": 2793,
+    "sha256": "177d676470a4c5b578248bba34d6babb61b6d0abf9de6b5e9a019ffae9e2d10f"
+  },
+  "execution": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-008/receiver-boundary-002/execution/result.full.json",
+    "bytes": 1005,
+    "sha256": "9d52a40402e045d1ececcae1645ce5a5dd3edb89b36ee4fda4007f47665f62a1"
+  },
+  "cleanup": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-008/receiver-boundary-002/descendant-cleanup.json",
+    "bytes": 1454,
+    "sha256": "4cd91318d3f7d6c6c391ffe09f7762cf260b2e4dc290233dcf686c5f2216ec8b"
+  },
+  "processes": [],
+  "retained_first_failures": [
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-008/receiver-import-failure.json",
+      "bytes": 492,
+      "sha256": "bd308a91da0e6cadfe9b134d5c351e8f615b34e5f80f900fa7b3f75940cf123b"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-008/receiver-boundary/execution/result.full.json",
+      "bytes": 998,
+      "sha256": "1730d71dc3e427eed8698d53da75d05b9d0eb9c076f70a47c4c6317627ecea7e"
+    }
+  ],
+  "correction": "Use existing bundled Python dependencies and bind only the consumed pinned Java visibility table; retain all receiver expectations. Historical RF native renderer/source admission is outside this actor-only receiver function.",
+  "claims": {
+    "MCP": false,
+    "cold_restart": false,
+    "actual_OS_input": false,
+    "native_renderer": false,
+    "current_actor002": false,
+    "current_menu_or_v3": false
+  }
+}
