@@ -186,9 +186,11 @@ seconds. Peak sampled emitter RSS was 5.55 GiB under a 6 GiB Node heap cap;
 RSS is a different measure from the failed attempt's physical footprint.
 
 Two complete native runs passed with equal outputs, including equality under
-reordered requests. Each run checked 28 cases, 17 load refusals, 331 successful
-queries, 34 query refusals and 4,310 quads. The eight native invocations yielded
-56 case observations. The catalog emitter, compiler and native process groups
+reordered requests. Each run observed 28 cases, 17 load refusals, 331 successful
+queries, 34 query refusals and 4,310 quads. The first run compared all 4,310 quads
+with the independent metadata oracle; the second reproduced the same outputs.
+The eight native invocations yielded 56 case observations and 730 query
+observations. The catalog emitter, compiler and native process groups
 were reaped after execution. These checks establish the listed selection,
 metadata, pixel and budget behaviors. Geometry-coordinate and final frame
 parity remain separate checks.
