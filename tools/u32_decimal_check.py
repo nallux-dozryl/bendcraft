@@ -20,6 +20,10 @@ def main():
     proof=run([BEND,paths[2],'--verdict']);assert proof['stdout'].strip()=='ALL PROOFS CHECK'
     export=run([BEND,paths[2],'-o',BUILD/'proof.bendtt'])
     binary=BUILD/'observer';build=build_native.ensure_native(paths[3],binary,bend=BEND) if args.build else None
+    if build is not None:
+        write_json(BUILD/'native-build.json',build)
+        build={k:build[k] for k in ['path','binary_sha256','cache_key','cache_hit','timings']}
+        build['full_receipt']=str(BUILD/'native-build.json')
     assert binary.is_file(),'Run --build with a coordinated CPU compile slot'
     values=list(range(65536));values.extend([0xffffffff,0x80000000,0x7fffffff,0xfffffffe])
     for power in range(10):

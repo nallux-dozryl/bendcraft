@@ -1,6 +1,7 @@
 import Base
 import ./inventory.bend as Inv
 import ./png.bend as P
+import ./item_component.bend as C
 
 # The full pinned table is an input to the game, not a Python item implementation.
 # Empty components mean the item's observed defaults, not absent components.
@@ -65,9 +66,22 @@ def metadata_plain(catalog:Catalog,+key:Inv.ItemKey) -> Maybe<&2,Inv.ItemMetadat
   Inv.ItemKey{id,components} = key
   metadata_known(definition(catalog,id),key)
 
+def component_defaults_known(item:Maybe<&2,Definition>) -> Maybe<&2,C.Defaults>:
+  match item:
+    case None{}: None{}
+    case Some{Definition{number,id,description,limit,component_set,identity,enabled}}:
+      C.default_from_identity(id,enabled && U32.is_eq(limit,1),identity)
+
+def component_defaults(catalog:Catalog,id:String) -> Maybe<&2,C.Defaults>:
+  component_defaults_known(definition(catalog,id))
+
+def metadata_modified(catalog:Catalog,+key:Inv.ItemKey) -> Maybe<&2,Inv.ItemMetadata>:
+  Inv.ItemKey{id,components} = key
+  C.metadata(component_defaults(catalog,id),key)
+
 def metadata_components(catalog:Catalog,key:Inv.ItemKey,plain:Bool) -> Maybe<&2,Inv.ItemMetadata>:
   match plain:
-    case False{}: None{}
+    case False{}: metadata_modified(catalog,key)
     case True{}: metadata_plain(catalog,key)
 
 def metadata(catalog:Catalog,+key:Inv.ItemKey) -> Maybe<&2,Inv.ItemMetadata>:
@@ -151,12 +165,10 @@ def all(catalog:Catalog) -> List<&2,Definition>:
   definitions
 
 
-law component_patch_cannot_use_default_metadata:
-  for catalog:Catalog
-  for key:Inv.ItemKey
-  {metadata_components(catalog,key,False{}) == None{} : Maybe<&2,Inv.ItemMetadata>}
+law missing_component_definition_cannot_admit_defaults:
+  {component_defaults_known(None{}) == None{} : Maybe<&2,C.Defaults>}
 
-def component_patch_cannot_use_default_metadata(catalog,key):
+def missing_component_definition_cannot_admit_defaults():
   {==}
 
 # Generated from each observed default minecraft:equippable component; player

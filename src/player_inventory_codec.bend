@@ -10,6 +10,7 @@ import ./player_item_definitions.bend as D
 import ./world_generation_settings.bend as WG
 import ./world_generation_settings_codec.bend as WGC
 import ./player_item_table.bend as Table
+import ./item_component_inventory_codec.bend as Components
 
 # The existing outer local-player-record schema remains 1. Its legacy payload
 # stays byte-identical for a default empty inventory; nondefault state uses an
@@ -21,7 +22,7 @@ def limits() -> E.Limits:
   E.Limits{E.core_limits(E.default_limits()),65536,E.file_limit(E.default_limits())}
 
 def nbt_limits() -> N.Limits:
-  N.Limits{65536,4,16384}
+  N.Limits{65536,8,16384}
 
 def require(valid:Bool,message:String) -> Result<&2,&2,String,Unit>:
   match valid:
@@ -183,13 +184,20 @@ def status_members(status:I.Status) -> List<&2,N.Member>:
   [P.member("invulnerable",P.bool_tag(invulnerable)),P.member("mayfly",P.bool_tag(mayfly)),
     P.member("flying",P.bool_tag(flying)),P.member("walking_speed",N.Float{walking}),P.member("flying_speed",N.Float{flying_speed})]
 
-def root_full(saved:I.Persisted,record:List<&2,U32>,generation:List<&2,U32>) -> N.Root:
-  I.Persisted{I.Snapshot{selected,slots,I.Abilities{instabuild,maybuild}},equipment,status} = saved
+def root_full_tags(saved:I.Persisted,record:List<&2,U32>,generation:List<&2,U32>,slots:List<&2,N.Value>,equipment:List<&2,N.Value>) -> N.Root:
+  I.Persisted{I.Snapshot{selected,main,I.Abilities{instabuild,maybuild}},gear,status} = saved
   N.Root{P.text("bendex:local-player-inventory-record"),N.Compound{[
     P.member("format",N.Int{3}),P.member("record",N.ByteArray{record}),P.member("selected",N.Int{selected}),
     P.member("instabuild",P.bool_tag(instabuild)),P.member("maybuild",P.bool_tag(maybuild)),
-    P.member("slots",N.ListTag{10,slot_tags(slots)}),P.member("equipment",N.ListTag{10,slot_tags(equipment)}),
+    P.member("slots",N.ListTag{10,slots}),P.member("equipment",N.ListTag{10,equipment}),
     P.member("abilities",N.Compound{status_members(status)}),P.member("generation",N.ByteArray{generation})]}}
+
+def root_full(+definitions:D.Catalog,+saved:I.Persisted,record:List<&2,U32>,generation:List<&2,U32>) -> Result<&2,&2,String,N.Root>:
+  I.Persisted{I.Snapshot{selected,slots,abilities},equipment,status} = saved
+  do Result<&2,&2,String,N.Root>:
+    main : List<&2,N.Value> <- Components.slot_tags(definitions,slots)
+    gear : List<&2,N.Value> <- Components.slot_tags(definitions,equipment)
+    return root_full_tags(saved,record,generation,main,gear)
 
 def legacy_status(status:I.Status) -> Bool:
   I.Status{invulnerable,mayfly,flying,walking,flying_speed} = status
@@ -200,12 +208,13 @@ def version_two_eligible(snapshot:I.Persisted,generation:WG.Settings) -> Bool:
   I.Persisted{main,equipment,status} = snapshot
   I.snapshot_valid(main) && I.empty_slots(equipment) && legacy_status(status) && WG.is_legacy(generation)
 
-def payload_full(record:R.Record,+snapshot:I.Persisted,generation:WG.Settings,definitions:D.Catalog) -> Result<&2,&2,String,List<&2,U32>>:
+def payload_full(record:R.Record,+snapshot:I.Persisted,generation:WG.Settings,+definitions:D.Catalog) -> Result<&2,&2,String,List<&2,U32>>:
   do Result<&2,&2,String,List<&2,U32>>:
     require(I.persisted_valid_with(definitions,snapshot),"invalid full inventory state")
     bytes : List<&2,U32> <- record_result(List<&2,U32>,R.encode(record))
     settings : List<&2,U32> <- WGC.encode(generation)
-    N.encode_with(nbt_limits(),root_full(snapshot,bytes,settings))
+    root : N.Root <- root_full(definitions,snapshot,bytes,settings)
+    N.encode_with(nbt_limits(),root)
 
 def payload_selected(legacy:Bool,record:R.Record,snapshot:I.Persisted,generation:WG.Settings,definitions:D.Catalog) -> Result<&2,&2,String,List<&2,U32>>:
   match legacy:
@@ -221,9 +230,12 @@ def menu_payload(valid:Bool,record:R.Record,+snapshot:I.MenuSnapshot,+generation
       I.MenuSnapshot{+saved,craft,carried,result,opened,revision} = snapshot
       payload_selected(version_two_eligible(saved,generation),record,saved,generation,definitions)
 
+def encoded_payload(record:R.Record,fresh:Bool,generation:WG.Settings,inventory:I.State,payload:Result<&2,&2,String,List<&2,U32>>) -> Saved & Result<&2,&2,String,List<&2,U32>>:
+  (Saved{record,inventory,fresh,generation},payload)
+
 def encoded_menu(+record:R.Record,fresh:Bool,+generation:WG.Settings,+definitions:D.Catalog,result:I.State & I.MenuSnapshot) -> Saved & Result<&2,&2,String,List<&2,U32>>:
   (inventory,+snapshot) = result
-  (Saved{record,inventory,fresh,generation},menu_payload(I.temporary_empty(snapshot),record,snapshot,generation,definitions))
+  encoded_payload(record,fresh,generation,inventory,menu_payload(I.temporary_empty(snapshot),record,snapshot,generation,definitions))
 
 def encoding_definitions(record:R.Record,fresh:Bool,generation:WG.Settings,result:I.State & D.Catalog) -> Saved & Result<&2,&2,String,List<&2,U32>>:
   (inventory,definitions) = result
@@ -266,7 +278,7 @@ def sized_value(value:N.Value,count:Nat) -> Result<&2,&2,String,List<&2,Inv.Slot
 type FullProjection is Data:
   FullProjection{record:R.Record,snapshot:I.Persisted,generation:WG.Settings}
 
-def full_projection(value:N.Value) -> Result<&2,&2,String,FullProjection>:
+def full_projection(+definitions:D.Catalog,value:N.Value) -> Result<&2,&2,String,FullProjection>:
   do Result<&2,&2,String,FullProjection>:
     +fields : List<&2,P.Field> <- schema(List<&2,P.Field>,P.fields(value,["format","record","selected","instabuild","maybuild","slots","equipment","abilities","generation"]))
     version : U32 <- schema(U32,P.int_value(P.field(fields,"format"),"format"))
@@ -276,8 +288,8 @@ def full_projection(value:N.Value) -> Result<&2,&2,String,FullProjection>:
     selected : U32 <- schema(U32,P.int_value(P.field(fields,"selected"),"selected"))
     instabuild : Bool <- schema(Bool,P.bool_value(P.field(fields,"instabuild"),"instabuild"))
     maybuild : Bool <- schema(Bool,P.bool_value(P.field(fields,"maybuild"),"maybuild"))
-    slots : List<&2,Inv.Slot> <- sized_value(P.field(fields,"slots"),36n)
-    equipment : List<&2,Inv.Slot> <- sized_value(P.field(fields,"equipment"),7n)
+    slots : List<&2,Inv.Slot> <- Components.sized_value(definitions,P.field(fields,"slots"),36n)
+    equipment : List<&2,Inv.Slot> <- Components.sized_value(definitions,P.field(fields,"equipment"),7n)
     status : I.Status <- status_value(P.field(fields,"abilities"))
     settings : List<&2,U32> <- byte_array(P.field(fields,"generation"))
     generation : WG.Settings <- WGC.decode(settings)
@@ -302,10 +314,10 @@ def old_projected(definitions:D.Catalog,result:Result<&2,&2,String,Projection>) 
     case Done{Projection{record,snapshot}}:
       full_restored(record,WG.legacy(),I.restore_persisted(definitions,I.Persisted{snapshot,empty_equipment(),I.default_status()}))
 
-def version_root(version:Maybe<&2,N.Value>,definitions:D.Catalog,value:N.Value) -> Result<&2,&1,String,Saved>:
+def version_root(version:Maybe<&2,N.Value>,+definitions:D.Catalog,value:N.Value) -> Result<&2,&1,String,Saved>:
   match version:
     case Some{N.Int{2}}: old_projected(definitions,projection(value))
-    case Some{N.Int{3}}: full_projected(definitions,full_projection(value))
+    case Some{N.Int{3}}: full_projected(definitions,full_projection(definitions,value))
     case _: Fail{"unsupported inventory format field"}
 
 def is_format(result:Result<&2,&2,P.Error,String>) -> Bool:

@@ -1,0 +1,62 @@
+{
+  "ordinary_laws": 13,
+  "full_export_bytes": 33587431,
+  "full_export_exclusions": [
+    "- item_component_laws.missing_defaults_refuse_complete_key: names item_component.validate, out of scope: a mutual recursion through Nat.show.fin, Nat.show.go that no live parameter of Nat.show.fin leads\n",
+    "- item_component_laws.missing_defaults_refuse_metadata: names item_component.metadata, out of scope: a mutual recursion through Nat.show.fin, Nat.show.go that no live parameter of Nat.show.fin leads\n",
+    "- item_component_laws.load_refusal_retains_complete_inventory_owner: names item_component.slot_metadata, out of scope: a mutual recursion through Nat.show.fin, Nat.show.go that no live parameter of Nat.show.fin leads\n",
+    "- item_component_laws.missing_defaults_load_retains_complete_inventory_owner: names item_component.load, out of scope: a mutual recursion through Nat.show.fin, Nat.show.go that no live parameter of Nat.show.fin leads\n",
+    "- item_component_laws.nbt_refusal_retains_complete_inventory_owner: names item_component.load_tag, out of scope: a mutual recursion through Nat.show.fin, Nat.show.go that no live parameter of Nat.show.fin leads\n"
+  ],
+  "full_export_directory": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item_component/kernel-current",
+  "ordinary_physical_byte_law": "machine stack overflow while expanding N.decode_with; diagnostic source and receipts retained in build/item_component/diagnosis",
+  "diagnosis_receipt": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item_component/diagnosis/receipt.json",
+  "current_full_attempt": {
+    "directory": "build/item_component/kernel-json-fixed",
+    "roots": [
+      "item_component_laws:effect_identifier_roundtrip",
+      "item_component_laws:nbt_duration_retains_all_signed_words",
+      "item_component_laws:typed_nbt_effect_roundtrip",
+      "item_component_laws:ordered_nbt_effects_roundtrip",
+      "item_component_laws:complete_typed_patch_roundtrip",
+      "item_component_laws:missing_defaults_refuse_complete_key",
+      "item_component_laws:missing_defaults_refuse_metadata",
+      "item_component_laws:admitted_metadata_retains_complete_key",
+      "item_component_laws:disabled_catalog_definition_refuses_components",
+      "item_component_laws:admission_refusal_retains_complete_inventory_owner",
+      "item_component_laws:load_refusal_retains_complete_inventory_owner",
+      "item_component_laws:missing_defaults_load_retains_complete_inventory_owner",
+      "item_component_laws:nbt_refusal_retains_complete_inventory_owner"
+    ],
+    "roots_count": 13,
+    "scope": {
+      "exclusions": []
+    },
+    "source_pins": {
+      "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/base.bend": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe_component_registry.bend": "911786032b2c22759208edaf7112ae403b2a03663d9237c3e036c2b5ba4ece2a",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe_components.bend": "2a35e31f26187ebbdab1c4261d54083acb68072a56a7b5869e5dfc490bc946be",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/geometry.bend": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/inventory.bend": "9d2be7fb88afa1dc6386ab9e8b046b15d2a2a73b7e14566e5bfad3e6dd1f2702",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_component.bend": "85fd96ab967f3b031465ab9e0a815dd71882aec813683d73cd07dc31b991a2a7",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_component_effects.bend": "717a46a1603866be6f3f1458721cb2281a135b36f27a652da9432756b168ae35",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_component_laws.bend": "601f1ca837432ea9f5d605a1ca35154fd546872013ef5f51aa39afd70e201926",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_component_proof.bend": "f99b05ff0f74cf307ca42b98b3383ce52b80c112597273c6c85d78d12a40569c",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/json.bend": "a1789e3b4f5bea158ec0d95a8bcb39aa5b7c7e7355a5254d3de1d52a93c719d1",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/locomotion.bend": "ccf8aa12636ba1fce5575606383bf75c02a8ac79ba952645b89aea2eef6cd459",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/movement.bend": "31f5a4c47903506c0f388f688eaeaf78a36a0d266efde52bc57ea8cc89627b45",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/nbt.bend": "b677546b5fc02aaa38f5c09e5b798c0d35aec32b1c4b37cbd7042b9a1a5275e4",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_codec.bend": "98a5d7e8e11bb1a811c4e3b1e19dcee010e9f36eb15967810fbe95f4222a09a7",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_tick.bend": "07a35c96b0887bc7c600340835ec29bfdea98cdbfb283af67826f93ec57dba9d",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/support.bend": "aca42f24e0a32bd89356ac33f6d9bbe2ab5975ce938e2d2750496c01a6137455",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/travel.bend": "f04bc69579d1b1a5fa048f1e07976e646c1c2f2e817e334ee632397fbe99b589",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/u32_decimal.bend": "d0b4b33f10b9e9801c4e99b83803afba5031ea40013a9263f9090bed8543d25c"
+    },
+    "kernel_status": "rejected",
+    "kernel_diagnostic": "In json.encode_go: affine live code, calls that descend",
+    "artifact_sha256": "d95603dfb27a9b1f0b633bffb78995dfa159b4d0c8d0a36ee99088b70f49d26b",
+    "artifact_bytes": 36697926,
+    "scope_note": "All13 unchanged checked roots; no exclusion. Historical8-root kernel pass is not this full13 attempt."
+  }
+}
