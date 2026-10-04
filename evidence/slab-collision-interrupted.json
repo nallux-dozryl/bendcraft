@@ -1,0 +1,217 @@
+{
+  "actual_tool_command": [
+    "PYTHONDONTWRITEBYTECODE=1",
+    "python3",
+    "tools/test_slab_collision.py",
+    "--build-only"
+  ],
+  "build": {
+    "artifact": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native-cache/artifacts/45bd2638e46f82ab94e058ecd50052adbb0bc39389bdc8389a3b4148b02108b4/program",
+    "binary_bytes": 1774472,
+    "binary_sha256": "45bd2638e46f82ab94e058ecd50052adbb0bc39389bdc8389a3b4148b02108b4",
+    "cache_hit": false,
+    "cache_key": "16f7b1d08be3e1976bc7f426eb8633d0de8e057a8576d313ed155b8920d54f8f",
+    "emitted_c_sha256": "603a63d77431a9e7c506f93c6860e200586ca53cc7d33ab1fd7759d7d8c26e08",
+    "retries": 0,
+    "timings": {
+      "emission_seconds": 7.776891416870058,
+      "native_seconds": 9.834770082496107,
+      "total_seconds": 20.30350483302027
+    }
+  },
+  "build_cache_manifest_sha256": "d5cab1bb09c434c1b0c93f549ca42913f17e67f9294e1986aea063e180dc1853",
+  "build_receipt_sha256": "880a8dcc474e768d97527050780ba47d08181858e6973667b2a4870610504a28",
+  "comparison_tool_command": [
+    "PYTHONDONTWRITEBYTECODE=1",
+    "python3",
+    "tools/test_slab_collision.py",
+    "--skip-build",
+    "--kernel"
+  ],
+  "compiler": {
+    "flags": [
+      "-std=c11",
+      "-O3",
+      "<emitted.c>",
+      "-lpthread",
+      "-lm",
+      "-o",
+      "<native>"
+    ],
+    "path": "/usr/bin/clang",
+    "resource_dir": "/Library/Developer/CommandLineTools/usr/lib/clang/17",
+    "sysroots": [
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk"
+    ],
+    "version": "Apple clang version 17.0.0 (clang-1700.0.13.5)\nTarget: arm64-apple-darwin25.4.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin\n"
+  },
+  "compiler_driver_probe_sha256": "ebdd02590ad991c04039a59784c788cbf3ecb74a7ca1f57b32dea295eb6b00c9",
+  "eager_diagnostic_maximum_per_comparison": {
+    "cost_reason": "require diagnostic argument eagerly evaluated on all passing rows; rereads/splits complete request file",
+    "lines_split_total": 5334695521,
+    "request_bytes_read_total": 64168048255,
+    "request_file_bytes_each": 878545,
+    "request_file_reads": 73039
+  },
+  "expected": {
+    "bytes": 1777116,
+    "file": "expected.tsv",
+    "sha1": "8ffc57a02ab0b742ed19b233443fae6b34bd6fe6",
+    "sha256": "1e8a6abb69f2b02f5abb9bb7ef5a3f9b88f0d4ce36b57dd6e92e1df6620b5662"
+  },
+  "frozen_generation_audit": "passed",
+  "generation": {
+    "compiler_executable": {
+      "bytes": 63885392,
+      "file": "bend",
+      "sha1": "ddce6e432357be618d905b19c0f79abe3d28c388",
+      "sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e"
+    },
+    "derived_table_sha256": "e36cb6c6bd59dea0b4bd6300eb96ff61bf689ef006029bc9b954b042cc630856",
+    "fixture_manifest_sha256": "8ba1a5a1ab59dd75a84d6898f5f081babeb7c1ab798b2e44f1e8af1a3f6e616f",
+    "prepared_case_manifest_sha256": "0990afd3cb93167448785c17e35b0181fcb78605bc50045d569a98854469a035",
+    "prepared_expected_sha256": "1e8a6abb69f2b02f5abb9bb7ef5a3f9b88f0d4ce36b57dd6e92e1df6620b5662",
+    "prepared_request_sha256": "f14b40aad8c7382ff8d57bdfe741520f28696955b5ce575dc27b88875f9fa9d3",
+    "python_tool_sha256": {
+      "tools/build_native.py": "3418c78cddc092aec55c7447a818735569b5b279d3bc4b05e3c0077624387c18",
+      "tools/reference_block_probe.py": "5456bfddf84b37aec253c958ff12b723260875485289a7afc34a88d04c023003",
+      "tools/reference_inventory.py": "e82b66508a99d9bac37c62917645e9adcac06e52ab2b65e2bc8afd5be66a8d9e",
+      "tools/reference_model_probe.py": "4c82153a59a0eeb58e8c5df181e13adb16424343de9f7c2957f73c662cc598b7",
+      "tools/reference_movement_probe.py": "e8500b4509fd12a47bd1c5c085fc04d00b8c18af4ad3d551487b323eec9d7736",
+      "tools/reference_player_look_probe.py": "f118b99f861ae3d10983b57cfb10a94d22e3a06765c455858766b60a4760a9e2",
+      "tools/reference_slab_collision_probe.py": "c424113580e7997af635b0e3d8bc1fd57cff9d75f09ef9399021211f4faa7570",
+      "tools/test_mcp.py": "71eed7d510b4533eb35793cfd24227b7121456b4d27373ae10c04cc790e0de45",
+      "tools/test_nbt.py": "d81adb1a04baa13777e54abaaf1e20cbe97bc5d15c5cf2df047c4f17be2c8cdf",
+      "tools/test_persistence.py": "c43cd057d992de30d946de7b46f358100a23ba3d7a9c688aea75ae7f2e872359",
+      "tools/test_player_codec.py": "222bb198e3a4c0585db44967a0c6d26e345ece67fe68e5a509358f091086cbe0",
+      "tools/test_player_look.py": "8f37e0ec698f1373161164ed3d69d40b5708f1fd786aceac234fcfe8af155dad",
+      "tools/test_player_record.py": "cd84b5f1b1b36ffd248a4232929030e574f7fbd3ed1ff97897bcde2e84c5a001",
+      "tools/test_slab_collision.py": "a99203ea4e88e31c106d3f6e21a325b87f78c6a378cfedff3a70b0fb2392cc9b",
+      "tools/test_world_codec.py": "6c89a554e0d1a4301ca3bf85d75706780f5f7398f4c100fd1a582bc2653a559a"
+    },
+    "raw_java_run_pins": [
+      {
+        "receivers": {
+          "bytes": 231689,
+          "file": "receivers-0.json",
+          "sha1": "f9b3f5e47b18f510451e39188ab99f7001e00950",
+          "sha256": "e78b5825125b000507a74a5e6f1b3e438a0d9c3abb64466271c778776df93e61"
+        },
+        "table": {
+          "bytes": 27385498,
+          "file": "actual-0.tsv",
+          "sha1": "2bfaa44c74dff3df0fd6044f031023b1f4fffa56",
+          "sha256": "4b972d6bb11cb5e2165fc18c815549d3db5ab0db57cadf2a4f447e26036fc4b9"
+        }
+      },
+      {
+        "receivers": {
+          "bytes": 231689,
+          "file": "receivers-1.json",
+          "sha1": "f9b3f5e47b18f510451e39188ab99f7001e00950",
+          "sha256": "e78b5825125b000507a74a5e6f1b3e438a0d9c3abb64466271c778776df93e61"
+        },
+        "table": {
+          "bytes": 27385498,
+          "file": "actual-1.tsv",
+          "sha1": "2bfaa44c74dff3df0fd6044f031023b1f4fffa56",
+          "sha256": "4b972d6bb11cb5e2165fc18c815549d3db5ab0db57cadf2a4f447e26036fc4b9"
+        }
+      }
+    ],
+    "reference_sha256": "ef31f928400c910fc9e15069f74c08c909b3ccc3149b87a3b8b8438c537312ac",
+    "registry_sha256": "27769e75bf862d0540b2df2a6e99f6b7556a867bff6339fb08566240ee124cac",
+    "sources_sha256": {
+      "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+      "src/geometry.bend": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f",
+      "src/hash.bend": "d2473695632b19e68c8d636668e4617f04d70892fb2ab6559cb24d4b33c1b978",
+      "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+      "src/registry.bend": "821c53d9cfa3044be3cae2af968f55563c0be2bebc9beae55a29d77d47b140a0",
+      "src/slab_collision.bend": "81d2254d67642b1895a7a6fcd37ffd13ef031de33d59c215d49102364aa824a8",
+      "src/unicode.bend": "8f0cd9bbcd0e7f938af370675eca0c73a9b97b90c2789a1e77e5a29a918455bd",
+      "tests/slab_collision.bend": "f4de66cde98c8c11989fddc0388725efe632e7de9d063736b2c2f251df497585"
+    }
+  },
+  "kernel": "not started",
+  "missing_observations": [
+    "The transient native compilation clang process argv and transient C bytes were not captured live. Retained generated C is the unchanged preparation emission, not claimed to be observed transient compilation input.",
+    "The original comparator did not log native child PIDs or per-child durations before its interrupted final suite summary.",
+    "Independent kernel was not reached; no proof verdict exists."
+  ],
+  "native_dependency_count": 1634,
+  "native_dependency_manifest_sha256": "ff89dc3f58c0d46b0910813dabf516560ec8c665e7e6ab152c86248bc28d65d4",
+  "native_output_byte_equality": "passed for both actual completed executions",
+  "observed_at_utc": "2026-10-04T01:15:22.833380+00:00",
+  "original_comparator_line": 215,
+  "original_runner_sha256": "a99203ea4e88e31c106d3f6e21a325b87f78c6a378cfedff3a70b0fb2392cc9b",
+  "original_suite_completion": "unverified; second eager Python comparison interrupted; no final native suite receipt",
+  "outputs": [
+    {
+      "bytes": 1777116,
+      "exact_expected_bytes_equal": true,
+      "file": "observed-0.tsv",
+      "path": "build/slab-collision/observed-0.tsv",
+      "responses": 73039,
+      "sha1": "8ffc57a02ab0b742ed19b233443fae6b34bd6fe6",
+      "sha256": "1e8a6abb69f2b02f5abb9bb7ef5a3f9b88f0d4ce36b57dd6e92e1df6620b5662"
+    },
+    {
+      "bytes": 1777116,
+      "exact_expected_bytes_equal": true,
+      "file": "observed-1.tsv",
+      "path": "build/slab-collision/observed-1.tsv",
+      "responses": 73039,
+      "sha1": "8ffc57a02ab0b742ed19b233443fae6b34bd6fe6",
+      "sha256": "1e8a6abb69f2b02f5abb9bb7ef5a3f9b88f0d4ce36b57dd6e92e1df6620b5662"
+    }
+  ],
+  "reap": {
+    "build_child_exit_code": 0,
+    "build_group17065_absent": true,
+    "build_outer16874_absent": true,
+    "comparison_direct_children_before_interrupt": "pgrep-P17308 returned1 / empty",
+    "comparison_outer17308_absent": true,
+    "native_child_pids": "not logged by the original comparator; output completion and native() control flow recorded",
+    "outer_exit_code": 130,
+    "signal": "SIGINT"
+  },
+  "receipt_corruption": {
+    "count": 10,
+    "rejected": [
+      "source",
+      "missing-source",
+      "cache-key",
+      "binary-sha",
+      "binary-size",
+      "C-sha",
+      "compiler",
+      "dependency-sha",
+      "missing-dependency",
+      "artifact-alias"
+    ],
+    "shared_files_changed": false,
+    "status": "passed"
+  },
+  "repair_proposal": "Preload request lines once; enter diagnostic formatting only under if a != b; preserve the same a == b comparison, ordering, count and expected/source/oracle inputs. Reuse retained outputs for comparator validation; no additional native execution without a new grant.",
+  "request": {
+    "bytes": 878545,
+    "file": "requests.tsv",
+    "sha1": "be8c2ed6bb0cb8d869197f508da13f11b66cae53",
+    "sha256": "f14b40aad8c7382ff8d57bdfe741520f28696955b5ce575dc27b88875f9fa9d3"
+  },
+  "retained_preparation_C": {
+    "bytes": 2773543,
+    "file": "generated.c",
+    "path": "build/native-cache/sources/2161f0baa4980c010435daf0a5d0f2280ee4bc4aae6eb4336e0a76d067956258/generated.c",
+    "sha1": "5ba68d2f889cf909a84cea3c3ec8945b3f72c22d",
+    "sha256": "603a63d77431a9e7c506f93c6860e200586ca53cc7d33ab1fd7759d7d8c26e08"
+  },
+  "status": "native-two-retained-outputs-byte-pass-original-verifier-interrupted",
+  "targeted_readonly_process_observation_before_interrupt": {
+    "active_direct_children": 0,
+    "cpu_percent": 99.6,
+    "cpu_time": "02:27.09",
+    "elapsed": "02:47",
+    "pid": 17308
+  }
+}

@@ -1,0 +1,617 @@
+{
+  "class_counts": {
+    "net.minecraft.world.level.block.SlabBlock": 97,
+    "net.minecraft.world.level.block.WeatheringCopperSlabBlock": 4
+  },
+  "class_sha256": {
+    "net.minecraft.world.entity.decoration.ArmorStand": "6dda7904d3a3b5b3059d2c30327236b2f578faa44ba34e9d47dd7f9dc6280160",
+    "net.minecraft.world.entity.item.ItemEntity": "681d09a8066295075dc2f62eb0358b5f110f3445371d8fe3c1ee1909e082678a",
+    "net.minecraft.world.level.block.Block": "2275d8eb742074b354c96fe31a6cf1d78e31d410a32acb18a96d84a1c9851ff5",
+    "net.minecraft.world.level.block.SlabBlock": "82d73c22546568f5c9fbde749e9e789ce6caf8df2db0b52cc8f75235f12bc3d4",
+    "net.minecraft.world.level.block.SlabBlock$1": "3c1ce5cb6fee9db1aef7ddc41a1d17f76a469dc17c6bcf2902b4042dd49849e8",
+    "net.minecraft.world.level.block.WeatheringCopperSlabBlock": "cc56a59785a6f05c80c2d06424eb2434e73fc4d2b7a0d9dbff4d4556a7608e9d",
+    "net.minecraft.world.level.block.state.BlockBehaviour": "c407675a1f665d14f73103c2896b7f4c109890ce409fda662d77824fd991747d",
+    "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase": "a712b300de9f9e9bc1a48cdf38c7386ce10bd33bc3dc001861884e6d17029ad1",
+    "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase$Cache": "7a576c8a6fc1b654f4d40bddeff9402330c73b877beaee6f3e5760673ad7c715",
+    "net.minecraft.world.level.block.state.BlockState": "f78ce51d7cb8b3d5304135336e78835d3c6a62055da5ee0b5719f19d9f9ebb4e",
+    "net.minecraft.world.level.block.state.properties.SlabType": "65e63940d5d9519b51a843763f46e9b1a6cd071ccb54b99413c2080e3387cf70",
+    "net.minecraft.world.phys.shapes.CollisionContext": "bd46b152d8bbcf9dfdffb7a0e40eaf2ecf4ca5a108acde6d2d32d7a9f2c57138",
+    "net.minecraft.world.phys.shapes.EntityCollisionContext": "27082b63a8ea64951d9caceff982087555a2f93f253baa2f09d36c888ccef039",
+    "net.minecraft.world.phys.shapes.EntityCollisionContext$Empty": "fb9adc6a354401b01bb52a7b307a9b25054ea9c6b2c5381d381f015b50b68eb2",
+    "net.minecraft.world.phys.shapes.PositionCollisionContext": "8048dce8d1cbb1d7c72541a8c6d8a573740a14342669b454368d43cc75f20b88",
+    "net.minecraft.world.phys.shapes.Shapes": "23add505fd7570b30c9f723734471f71cbd02a84998ad002cf27f87c6b0ddb66",
+    "net.minecraft.world.phys.shapes.VoxelShape": "c442be4671feb17de9adf9b88962baea0e0048af293faaf3677985cc50e35062"
+  },
+  "classpath_count": 40,
+  "classpath_manifest_sha256": "767470b5f04b0e2d06f07296e43ed707f94e83aeb8d9491d570dfbaa0846d48b",
+  "context_matrix": {
+    "baseline_calls_per_run": 606,
+    "calls_per_run": 123624,
+    "constructor_world_calls": {},
+    "context_receivers": {
+      "armor-descending": {
+        "class": "net.minecraft.world.phys.shapes.EntityCollisionContext",
+        "shape_owner": "net.minecraft.world.phys.shapes.EntityCollisionContext"
+      },
+      "armor-standing": {
+        "class": "net.minecraft.world.phys.shapes.EntityCollisionContext",
+        "shape_owner": "net.minecraft.world.phys.shapes.EntityCollisionContext"
+      },
+      "empty": {
+        "class": "net.minecraft.world.phys.shapes.EntityCollisionContext$Empty",
+        "shape_owner": "net.minecraft.world.phys.shapes.EntityCollisionContext"
+      },
+      "fluid": {
+        "class": "net.minecraft.world.phys.shapes.EntityCollisionContext$Empty",
+        "shape_owner": "net.minecraft.world.phys.shapes.EntityCollisionContext"
+      },
+      "item": {
+        "class": "net.minecraft.world.phys.shapes.EntityCollisionContext",
+        "shape_owner": "net.minecraft.world.phys.shapes.EntityCollisionContext"
+      },
+      "placement-null": {
+        "class": "net.minecraft.world.phys.shapes.EntityCollisionContext",
+        "shape_owner": "net.minecraft.world.phys.shapes.EntityCollisionContext"
+      },
+      "position-high": {
+        "class": "net.minecraft.world.phys.shapes.PositionCollisionContext",
+        "shape_owner": "net.minecraft.world.phys.shapes.PositionCollisionContext"
+      },
+      "position-low": {
+        "class": "net.minecraft.world.phys.shapes.PositionCollisionContext",
+        "shape_owner": "net.minecraft.world.phys.shapes.PositionCollisionContext"
+      }
+    },
+    "contexts": [
+      "empty",
+      "position-low",
+      "position-high",
+      "fluid",
+      "item",
+      "armor-standing",
+      "armor-descending",
+      "placement-null"
+    ],
+    "dispatch_wrapper_calls_per_invocation": 1,
+    "explicit_context_property_reads": 0,
+    "normally_constructed_entities": [
+      "net.minecraft.world.entity.item.ItemEntity",
+      "net.minecraft.world.entity.decoration.ArmorStand"
+    ],
+    "positions": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        7,
+        11,
+        -13
+      ],
+      [
+        -2147483648,
+        2147483647,
+        -17
+      ]
+    ],
+    "route_counts": {
+      "cached-two-arg": 7272,
+      "context-dispatch": 58176,
+      "explicit-state": 58176
+    },
+    "worlds": [
+      "empty",
+      "stone-neighbors",
+      "water-neighbors",
+      "throw-on-read"
+    ],
+    "zero_world_reads": true
+  },
+  "derived_table": {
+    "bytes": 8519,
+    "file": "reference_slab_collision.tsv",
+    "sha1": "7fe9d9d9cf61b549c1ec8063a2bdaf1177b7f17e",
+    "sha256": "e36cb6c6bd59dea0b4bd6300eb96ff61bf689ef006029bc9b954b042cc630856"
+  },
+  "existing_empty_context_observations_equal": true,
+  "guards": {
+    "all_cache_present": true,
+    "all_dynamicShape_false": true,
+    "all_hasCollision_true": true,
+    "all_offset_false": true,
+    "cached_two_arg": "actual initialized cache.collisionShape; fallback explicit empty context if cache absent",
+    "explicit_context": "BlockBehaviour hasCollision guard then two-arg BlockState.getShape discards caller context and supplies CollisionContext.empty; SlabBlock.getShape reads TYPE only",
+    "registered_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+    "registered_shape_owner": "net.minecraft.world.level.block.SlabBlock",
+    "shape_input_read": "TYPE only",
+    "shape_return": "static SHAPE_TOP/SHAPE_BOTTOM or Shapes.block",
+    "stored_hasCollision": "protected final"
+  },
+  "helper_sources": {
+    "ReferenceDirectMovementProbe": "29596dda603edcf0e81d2a7a8fd69c12f5f69241476148efcccb922d11906392",
+    "ReferenceMovementProbe": "7216b65e8dc9a343f6693009efc212ca885325780a37d48be1e55ea8abc56fd6"
+  },
+  "java_compiler": {
+    "bytes": 84640,
+    "file": "javac",
+    "sha1": "104f9ead0ffe0d52486c0a879227f1eeab2ea707",
+    "sha256": "46b2f3452f6145ac37796a494c20a49b2c884e4eac59cbaa4e642730b57d64fa"
+  },
+  "java_runtime": {
+    "bytes": 84720,
+    "file": "java",
+    "sha1": "5af4a90be54ddeec03db3700e6989594c9438952",
+    "sha256": "e0879c0df70d880d66904064d1b388b08aeee0958a047f37601435b28db849a3"
+  },
+  "javap_text_sha256": {
+    "net.minecraft.world.entity.decoration.ArmorStand": "9bc60b22231f13aab596a4858f45e061c8beed2c2a98a3110e3911944baf9399",
+    "net.minecraft.world.entity.item.ItemEntity": "305afba739afcf812c178628684549cb979d7a90ce2f029cebcd9994a85fd465",
+    "net.minecraft.world.level.block.Block": "1181925bc43a0244e33e24162a5b57b4aac145a1acf699a11b050e5778d9cf61",
+    "net.minecraft.world.level.block.SlabBlock": "79de64aa01cad535686c2e41c4fbdb6362388f66f9747c10e27dc0032cb22228",
+    "net.minecraft.world.level.block.SlabBlock$1": "de4a7219d78e550b968f69ced5789f137623c511d1bc97f5a4547b74f9f219bc",
+    "net.minecraft.world.level.block.WeatheringCopperSlabBlock": "f5cf9710938a184703e491481b1c4f786c938b6c4411cfc8ab1d5f950805507d",
+    "net.minecraft.world.level.block.state.BlockBehaviour": "bb81e9eb8e24ca72bcf1e06fa6f5b0863d9ffecf7d853f3082c04e723743cb14",
+    "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase": "75484cc6a66fba15d6264f91f2add67c2acf7dad40714544da6fa1c67e017bc8",
+    "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase$Cache": "3e087a388c7f3e21da2f8cc495b9981dccd4699eaae485dd40b278d265fab362",
+    "net.minecraft.world.level.block.state.BlockState": "4dc923c2d50dc6ad1869e568d6e77ce1b1c04db72cff6f586fbf68520c4af136",
+    "net.minecraft.world.level.block.state.properties.SlabType": "451b4a4c447c29d24f0a21b39f88fb8938a9cd6e3e91f10df020c8edb710800e",
+    "net.minecraft.world.phys.shapes.CollisionContext": "022d6628259f1654fcb6cdc4caa08a5fbb28dc852ff43b2c7e542ae0d0604307",
+    "net.minecraft.world.phys.shapes.EntityCollisionContext": "86aec65540ceb2f69a55a1a86f35e86aebc1926889edd2bc5b72f4ae29a86c4d",
+    "net.minecraft.world.phys.shapes.EntityCollisionContext$Empty": "2f7017da3acea6ee28d5a3192cc0da005fde5995df8d3f1eab3f1adb43be8fb5",
+    "net.minecraft.world.phys.shapes.PositionCollisionContext": "880f4c32bae7cc7da170f6f8442d5d8f593e453c654a7860045996bf8ab7b9c8",
+    "net.minecraft.world.phys.shapes.Shapes": "802bcd56e238add6ff803d3f2b1002b1ecb40672de4018d98c8128dd6ae8b534",
+    "net.minecraft.world.phys.shapes.VoxelShape": "e9f7e9688c90751e0107174ac2783db5eea008424aec02d9fb67b700666ce6b5"
+  },
+  "methods": {
+    "net.minecraft.world.level.block.SlabBlock#protected net.minecraft.world.phys.shapes.VoxelShape getShape(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.BlockGetter, net.minecraft.core.BlockPos, net.minecraft.world.phys.shapes.CollisionContext)": {
+      "bytecode_text_sha256": "b76f0df8fb289325d9b2a8830fa74f1215477c6100277100949e2170d354812a",
+      "declaration": "protected net.minecraft.world.phys.shapes.VoxelShape getShape(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.BlockGetter, net.minecraft.core.BlockPos, net.minecraft.world.phys.shapes.CollisionContext)",
+      "operations": [
+        "getstatic",
+        "aload_1",
+        "getstatic",
+        "invokevirtual",
+        "checkcast",
+        "invokevirtual",
+        "iaload",
+        "tableswitch",
+        "54",
+        "60",
+        "66",
+        "new",
+        "dup",
+        "aconst_null",
+        "aconst_null",
+        "invokespecial",
+        "athrow",
+        "getstatic",
+        "goto",
+        "getstatic",
+        "goto",
+        "invokestatic",
+        "areturn"
+      ],
+      "owner": "net.minecraft.world.level.block.SlabBlock"
+    },
+    "net.minecraft.world.level.block.state.BlockBehaviour#protected net.minecraft.world.phys.shapes.VoxelShape getCollisionShape(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.BlockGetter, net.minecraft.core.BlockPos, net.minecraft.world.phys.shapes.CollisionContext)": {
+      "bytecode_text_sha256": "325498f41dfd920fd23d48aa2af6188f354c5ae2ea0a7d3f669e0160012b7442",
+      "declaration": "protected net.minecraft.world.phys.shapes.VoxelShape getCollisionShape(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.BlockGetter, net.minecraft.core.BlockPos, net.minecraft.world.phys.shapes.CollisionContext)",
+      "operations": [
+        "aload_0",
+        "getfield",
+        "ifeq",
+        "aload_1",
+        "aload_2",
+        "aload_3",
+        "invokevirtual",
+        "goto",
+        "invokestatic",
+        "areturn"
+      ],
+      "owner": "net.minecraft.world.level.block.state.BlockBehaviour"
+    },
+    "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase#public net.minecraft.world.phys.shapes.VoxelShape getCollisionShape(net.minecraft.world.level.BlockGetter, net.minecraft.core.BlockPos)": {
+      "bytecode_text_sha256": "6cbe1469991d9f771cad2b8c5d6cdeca51e5ac3a6e8d6a30dff9f5c83107fe42",
+      "declaration": "public net.minecraft.world.phys.shapes.VoxelShape getCollisionShape(net.minecraft.world.level.BlockGetter, net.minecraft.core.BlockPos)",
+      "operations": [
+        "aload_0",
+        "getfield",
+        "ifnull",
+        "aload_0",
+        "getfield",
+        "getfield",
+        "areturn",
+        "aload_0",
+        "aload_1",
+        "aload_2",
+        "invokestatic",
+        "invokevirtual",
+        "areturn"
+      ],
+      "owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase"
+    },
+    "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase#public net.minecraft.world.phys.shapes.VoxelShape getCollisionShape(net.minecraft.world.level.BlockGetter, net.minecraft.core.BlockPos, net.minecraft.world.phys.shapes.CollisionContext)": {
+      "bytecode_text_sha256": "f052750c8fba4875cb805a42e18dc2af96e91cd062bc17804c08916b8cc0eeca",
+      "declaration": "public net.minecraft.world.phys.shapes.VoxelShape getCollisionShape(net.minecraft.world.level.BlockGetter, net.minecraft.core.BlockPos, net.minecraft.world.phys.shapes.CollisionContext)",
+      "operations": [
+        "aload_0",
+        "invokevirtual",
+        "aload_0",
+        "invokevirtual",
+        "aload_1",
+        "aload_2",
+        "aload_3",
+        "invokevirtual",
+        "areturn"
+      ],
+      "owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase"
+    },
+    "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase#public net.minecraft.world.phys.shapes.VoxelShape getShape(net.minecraft.world.level.BlockGetter, net.minecraft.core.BlockPos)": {
+      "bytecode_text_sha256": "ffd1d3d7077df589200516448e81b4bd9bdcb6ac3e49527aba64f773d86ae475",
+      "declaration": "public net.minecraft.world.phys.shapes.VoxelShape getShape(net.minecraft.world.level.BlockGetter, net.minecraft.core.BlockPos)",
+      "operations": [
+        "aload_0",
+        "aload_1",
+        "aload_2",
+        "invokestatic",
+        "invokevirtual",
+        "areturn"
+      ],
+      "owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase"
+    },
+    "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase#public net.minecraft.world.phys.shapes.VoxelShape getShape(net.minecraft.world.level.BlockGetter, net.minecraft.core.BlockPos, net.minecraft.world.phys.shapes.CollisionContext)": {
+      "bytecode_text_sha256": "f6cf92aa6b79f5c8c26d6828d4012f2488118a06eded3eb62b0dd9b64f53b98d",
+      "declaration": "public net.minecraft.world.phys.shapes.VoxelShape getShape(net.minecraft.world.level.BlockGetter, net.minecraft.core.BlockPos, net.minecraft.world.phys.shapes.CollisionContext)",
+      "operations": [
+        "aload_0",
+        "invokevirtual",
+        "aload_0",
+        "invokevirtual",
+        "aload_1",
+        "aload_2",
+        "aload_3",
+        "invokevirtual",
+        "areturn"
+      ],
+      "owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase"
+    },
+    "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase#public void initCache()": {
+      "bytecode_text_sha256": "716ee24be6460cc60313e21e0347f74883e60cc742c7c0d249e326c69cca0bba",
+      "declaration": "public void initCache()",
+      "operations": [
+        "aload_0",
+        "aload_0",
+        "getfield",
+        "checkcast",
+        "aload_0",
+        "invokevirtual",
+        "invokevirtual",
+        "putfield",
+        "aload_0",
+        "aload_0",
+        "getfield",
+        "checkcast",
+        "aload_0",
+        "invokevirtual",
+        "invokevirtual",
+        "putfield",
+        "aload_0",
+        "invokevirtual",
+        "invokevirtual",
+        "ifne",
+        "aload_0",
+        "new",
+        "dup",
+        "aload_0",
+        "invokevirtual",
+        "invokespecial",
+        "putfield",
+        "aload_0",
+        "aload_0",
+        "invokevirtual",
+        "putfield",
+        "aload_0",
+        "aload_0",
+        "getfield",
+        "ifeq",
+        "aload_0",
+        "getfield",
+        "checkcast",
+        "aload_0",
+        "invokevirtual",
+        "invokevirtual",
+        "goto",
+        "invokestatic",
+        "putfield",
+        "aload_0",
+        "aload_0",
+        "getfield",
+        "invokestatic",
+        "putfield",
+        "aload_0",
+        "getfield",
+        "invokevirtual",
+        "ifeq",
+        "aload_0",
+        "getstatic",
+        "putfield",
+        "goto",
+        "aload_0",
+        "getfield",
+        "ifeq",
+        "aload_0",
+        "getstatic",
+        "putfield",
+        "goto",
+        "aload_0",
+        "getstatic",
+        "arraylength",
+        "anewarray",
+        "putfield",
+        "getstatic",
+        "astore_1",
+        "aload_1",
+        "arraylength",
+        "istore_2",
+        "iconst_0",
+        "istore_3",
+        "iload_3",
+        "iload_2",
+        "if_icmpge",
+        "aload_1",
+        "iload_3",
+        "aaload",
+        "astore",
+        "aload_0",
+        "getfield",
+        "aload",
+        "invokevirtual",
+        "aload_0",
+        "getfield",
+        "aload",
+        "invokevirtual",
+        "aastore",
+        "iinc",
+        "goto",
+        "aload_0",
+        "aload_0",
+        "getfield",
+        "checkcast",
+        "aload_0",
+        "invokevirtual",
+        "invokevirtual",
+        "putfield",
+        "aload_0",
+        "aload_0",
+        "getfield",
+        "checkcast",
+        "aload_0",
+        "invokevirtual",
+        "invokevirtual",
+        "putfield",
+        "return"
+      ],
+      "owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase"
+    },
+    "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase$Cache#private net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase$Cache(net.minecraft.world.level.block.state.BlockState)": {
+      "bytecode_text_sha256": "a93c446a203e80351b09db2cac7ae8be4a0b7efa226095299050e3b845b8c593",
+      "declaration": "private net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase$Cache(net.minecraft.world.level.block.state.BlockState)",
+      "operations": [
+        "aload_0",
+        "invokespecial",
+        "aload_1",
+        "invokevirtual",
+        "astore_2",
+        "aload_0",
+        "aload_2",
+        "aload_1",
+        "getstatic",
+        "getstatic",
+        "invokestatic",
+        "invokevirtual",
+        "putfield",
+        "aload_0",
+        "getfield",
+        "invokevirtual",
+        "ifne",
+        "aload_1",
+        "invokevirtual",
+        "ifeq",
+        "new",
+        "dup",
+        "getstatic",
+        "ldc",
+        "iconst_1",
+        "anewarray",
+        "dup",
+        "iconst_0",
+        "getstatic",
+        "aload_2",
+        "invokeinterface",
+        "aastore",
+        "invokestatic",
+        "invokespecial",
+        "athrow",
+        "aload_0",
+        "invokestatic",
+        "invokestatic",
+        "aload_0",
+        "invokedynamic",
+        "invokeinterface",
+        "putfield",
+        "aload_0",
+        "getstatic",
+        "arraylength",
+        "getstatic",
+        "imul",
+        "newarray",
+        "putfield",
+        "getstatic",
+        "astore_3",
+        "aload_3",
+        "arraylength",
+        "istore",
+        "iconst_0",
+        "istore",
+        "iload",
+        "iload",
+        "if_icmpge",
+        "aload_3",
+        "iload",
+        "aaload",
+        "astore",
+        "invokestatic",
+        "astore",
+        "aload",
+        "arraylength",
+        "istore",
+        "iconst_0",
+        "istore",
+        "iload",
+        "iload",
+        "if_icmpge",
+        "aload",
+        "iload",
+        "aaload",
+        "astore",
+        "aload_0",
+        "getfield",
+        "aload",
+        "aload",
+        "invokestatic",
+        "aload",
+        "aload_1",
+        "getstatic",
+        "getstatic",
+        "aload",
+        "invokevirtual",
+        "bastore",
+        "iinc",
+        "goto",
+        "iinc",
+        "goto",
+        "aload_0",
+        "aload_1",
+        "getstatic",
+        "getstatic",
+        "invokevirtual",
+        "invokestatic",
+        "putfield",
+        "return"
+      ],
+      "owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase$Cache"
+    },
+    "net.minecraft.world.phys.shapes.EntityCollisionContext#public net.minecraft.world.phys.shapes.VoxelShape getCollisionShape(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.CollisionGetter, net.minecraft.core.BlockPos)": {
+      "bytecode_text_sha256": "21f15d579bb13c76d51612201a7c7ed0078955b439f18280c3bf00e2cdd35c1e",
+      "declaration": "public net.minecraft.world.phys.shapes.VoxelShape getCollisionShape(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.CollisionGetter, net.minecraft.core.BlockPos)",
+      "operations": [
+        "aload_1",
+        "aload_2",
+        "aload_3",
+        "aload_0",
+        "invokevirtual",
+        "areturn"
+      ],
+      "owner": "net.minecraft.world.phys.shapes.EntityCollisionContext"
+    },
+    "net.minecraft.world.phys.shapes.PositionCollisionContext#public net.minecraft.world.phys.shapes.VoxelShape getCollisionShape(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.CollisionGetter, net.minecraft.core.BlockPos)": {
+      "bytecode_text_sha256": "2e972c3d5728eaba5acf67763789621322da1ab1fd100544760603453f390131",
+      "declaration": "public net.minecraft.world.phys.shapes.VoxelShape getCollisionShape(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.CollisionGetter, net.minecraft.core.BlockPos)",
+      "operations": [
+        "aload_1",
+        "aload_2",
+        "aload_3",
+        "aload_0",
+        "invokevirtual",
+        "areturn"
+      ],
+      "owner": "net.minecraft.world.phys.shapes.PositionCollisionContext"
+    }
+  },
+  "pin": "26.3",
+  "receiver_manifest_sha256": "f76715129a098c5be517fc0585e2d19057d36049bb2c491fba5973302e95d3c5",
+  "reference_only": true,
+  "registered_slab_blocks": 101,
+  "registered_states": 35723,
+  "registry": {
+    "blocks": 1286,
+    "canonical_bytes": 167974,
+    "canonical_sha256": "4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc",
+    "source_sha256": "27769e75bf862d0540b2df2a6e99f6b7556a867bff6339fb08566240ee124cac",
+    "states": 35723
+  },
+  "registry_identity": "4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc",
+  "scope": [
+    "Registered SlabBlock instances, including actual WeatheringCopperSlabBlock subclass receivers, for these collision getter routes only.",
+    "One exact unshifted collision AABB by actual TYPE. WATERLOGGED is retained metadata and does not affect this getter.",
+    "Method-body and actual-receiver guard evidence establishes static collision values for these pinned receivers; context sampling alone is not generalized.",
+    "No fluid-union, ray outline, step, support, friction, Entity movement, block updates, placement or world collision iteration claim."
+  ],
+  "server_sha256": "a362163eec5d1612d520772bc16e5b39c09e3b234fdc045f56bf544284ee8ae6",
+  "shapes_by_type": {
+    "bottom": [
+      [
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "3ff0000000000000",
+        "3fe0000000000000",
+        "3ff0000000000000"
+      ]
+    ],
+    "double": [
+      [
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "3ff0000000000000",
+        "3ff0000000000000",
+        "3ff0000000000000"
+      ]
+    ],
+    "top": [
+      [
+        "0000000000000000",
+        "3fe0000000000000",
+        "0000000000000000",
+        "3ff0000000000000",
+        "3ff0000000000000",
+        "3ff0000000000000"
+      ]
+    ]
+  },
+  "slab_states": 606,
+  "source_sha256": "c8a94dd2e0c739106b5b6984113ce227de80cd8a1dcbf719075b930c73d2f47d",
+  "tool_sha256": "c424113580e7997af635b0e3d8bc1fd57cff9d75f09ef9399021211f4faa7570",
+  "two_byte_identical_java_runs": [
+    {
+      "receivers": {
+        "bytes": 231689,
+        "file": "receivers-0.json",
+        "sha1": "f9b3f5e47b18f510451e39188ab99f7001e00950",
+        "sha256": "e78b5825125b000507a74a5e6f1b3e438a0d9c3abb64466271c778776df93e61"
+      },
+      "table": {
+        "bytes": 27385498,
+        "file": "actual-0.tsv",
+        "sha1": "2bfaa44c74dff3df0fd6044f031023b1f4fffa56",
+        "sha256": "4b972d6bb11cb5e2165fc18c815549d3db5ab0db57cadf2a4f447e26036fc4b9"
+      }
+    },
+    {
+      "receivers": {
+        "bytes": 231689,
+        "file": "receivers-1.json",
+        "sha1": "f9b3f5e47b18f510451e39188ab99f7001e00950",
+        "sha256": "e78b5825125b000507a74a5e6f1b3e438a0d9c3abb64466271c778776df93e61"
+      },
+      "table": {
+        "bytes": 27385498,
+        "file": "actual-1.tsv",
+        "sha1": "2bfaa44c74dff3df0fd6044f031023b1f4fffa56",
+        "sha256": "4b972d6bb11cb5e2165fc18c815549d3db5ab0db57cadf2a4f447e26036fc4b9"
+      }
+    }
+  ]
+}

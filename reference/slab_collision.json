@@ -1,0 +1,5368 @@
+{
+  "class_counts": {
+    "net.minecraft.world.level.block.SlabBlock": 97,
+    "net.minecraft.world.level.block.WeatheringCopperSlabBlock": 4
+  },
+  "class_sha256": {
+    "net.minecraft.world.entity.decoration.ArmorStand": "6dda7904d3a3b5b3059d2c30327236b2f578faa44ba34e9d47dd7f9dc6280160",
+    "net.minecraft.world.entity.item.ItemEntity": "681d09a8066295075dc2f62eb0358b5f110f3445371d8fe3c1ee1909e082678a",
+    "net.minecraft.world.level.block.Block": "2275d8eb742074b354c96fe31a6cf1d78e31d410a32acb18a96d84a1c9851ff5",
+    "net.minecraft.world.level.block.SlabBlock": "82d73c22546568f5c9fbde749e9e789ce6caf8df2db0b52cc8f75235f12bc3d4",
+    "net.minecraft.world.level.block.SlabBlock$1": "3c1ce5cb6fee9db1aef7ddc41a1d17f76a469dc17c6bcf2902b4042dd49849e8",
+    "net.minecraft.world.level.block.WeatheringCopperSlabBlock": "cc56a59785a6f05c80c2d06424eb2434e73fc4d2b7a0d9dbff4d4556a7608e9d",
+    "net.minecraft.world.level.block.state.BlockBehaviour": "c407675a1f665d14f73103c2896b7f4c109890ce409fda662d77824fd991747d",
+    "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase": "a712b300de9f9e9bc1a48cdf38c7386ce10bd33bc3dc001861884e6d17029ad1",
+    "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase$Cache": "7a576c8a6fc1b654f4d40bddeff9402330c73b877beaee6f3e5760673ad7c715",
+    "net.minecraft.world.level.block.state.BlockState": "f78ce51d7cb8b3d5304135336e78835d3c6a62055da5ee0b5719f19d9f9ebb4e",
+    "net.minecraft.world.level.block.state.properties.SlabType": "65e63940d5d9519b51a843763f46e9b1a6cd071ccb54b99413c2080e3387cf70",
+    "net.minecraft.world.phys.shapes.CollisionContext": "bd46b152d8bbcf9dfdffb7a0e40eaf2ecf4ca5a108acde6d2d32d7a9f2c57138",
+    "net.minecraft.world.phys.shapes.EntityCollisionContext": "27082b63a8ea64951d9caceff982087555a2f93f253baa2f09d36c888ccef039",
+    "net.minecraft.world.phys.shapes.EntityCollisionContext$Empty": "fb9adc6a354401b01bb52a7b307a9b25054ea9c6b2c5381d381f015b50b68eb2",
+    "net.minecraft.world.phys.shapes.PositionCollisionContext": "8048dce8d1cbb1d7c72541a8c6d8a573740a14342669b454368d43cc75f20b88",
+    "net.minecraft.world.phys.shapes.Shapes": "23add505fd7570b30c9f723734471f71cbd02a84998ad002cf27f87c6b0ddb66",
+    "net.minecraft.world.phys.shapes.VoxelShape": "c442be4671feb17de9adf9b88962baea0e0048af293faaf3677985cc50e35062"
+  },
+  "classpath_count": 40,
+  "classpath_manifest_sha256": "767470b5f04b0e2d06f07296e43ed707f94e83aeb8d9491d570dfbaa0846d48b",
+  "context_matrix": {
+    "baseline_calls_per_run": 606,
+    "calls_per_run": 123624,
+    "constructor_world_calls": {},
+    "context_receivers": {
+      "armor-descending": {
+        "class": "net.minecraft.world.phys.shapes.EntityCollisionContext",
+        "shape_owner": "net.minecraft.world.phys.shapes.EntityCollisionContext"
+      },
+      "armor-standing": {
+        "class": "net.minecraft.world.phys.shapes.EntityCollisionContext",
+        "shape_owner": "net.minecraft.world.phys.shapes.EntityCollisionContext"
+      },
+      "empty": {
+        "class": "net.minecraft.world.phys.shapes.EntityCollisionContext$Empty",
+        "shape_owner": "net.minecraft.world.phys.shapes.EntityCollisionContext"
+      },
+      "fluid": {
+        "class": "net.minecraft.world.phys.shapes.EntityCollisionContext$Empty",
+        "shape_owner": "net.minecraft.world.phys.shapes.EntityCollisionContext"
+      },
+      "item": {
+        "class": "net.minecraft.world.phys.shapes.EntityCollisionContext",
+        "shape_owner": "net.minecraft.world.phys.shapes.EntityCollisionContext"
+      },
+      "placement-null": {
+        "class": "net.minecraft.world.phys.shapes.EntityCollisionContext",
+        "shape_owner": "net.minecraft.world.phys.shapes.EntityCollisionContext"
+      },
+      "position-high": {
+        "class": "net.minecraft.world.phys.shapes.PositionCollisionContext",
+        "shape_owner": "net.minecraft.world.phys.shapes.PositionCollisionContext"
+      },
+      "position-low": {
+        "class": "net.minecraft.world.phys.shapes.PositionCollisionContext",
+        "shape_owner": "net.minecraft.world.phys.shapes.PositionCollisionContext"
+      }
+    },
+    "contexts": [
+      "empty",
+      "position-low",
+      "position-high",
+      "fluid",
+      "item",
+      "armor-standing",
+      "armor-descending",
+      "placement-null"
+    ],
+    "dispatch_wrapper_calls_per_invocation": 1,
+    "explicit_context_property_reads": 0,
+    "normally_constructed_entities": [
+      "net.minecraft.world.entity.item.ItemEntity",
+      "net.minecraft.world.entity.decoration.ArmorStand"
+    ],
+    "positions": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        7,
+        11,
+        -13
+      ],
+      [
+        -2147483648,
+        2147483647,
+        -17
+      ]
+    ],
+    "route_counts": {
+      "cached-two-arg": 7272,
+      "context-dispatch": 58176,
+      "explicit-state": 58176
+    },
+    "worlds": [
+      "empty",
+      "stone-neighbors",
+      "water-neighbors",
+      "throw-on-read"
+    ],
+    "zero_world_reads": true
+  },
+  "derived_table": {
+    "bytes": 8519,
+    "file": "reference_slab_collision.tsv",
+    "sha1": "7fe9d9d9cf61b549c1ec8063a2bdaf1177b7f17e",
+    "sha256": "e36cb6c6bd59dea0b4bd6300eb96ff61bf689ef006029bc9b954b042cc630856"
+  },
+  "existing_empty_context_observations_equal": true,
+  "guards": {
+    "all_cache_present": true,
+    "all_dynamicShape_false": true,
+    "all_hasCollision_true": true,
+    "all_offset_false": true,
+    "cached_two_arg": "actual initialized cache.collisionShape; fallback explicit empty context if cache absent",
+    "explicit_context": "BlockBehaviour hasCollision guard then two-arg BlockState.getShape discards caller context and supplies CollisionContext.empty; SlabBlock.getShape reads TYPE only",
+    "registered_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+    "registered_shape_owner": "net.minecraft.world.level.block.SlabBlock",
+    "shape_input_read": "TYPE only",
+    "shape_return": "static SHAPE_TOP/SHAPE_BOTTOM or Shapes.block",
+    "stored_hasCollision": "protected final"
+  },
+  "helper_sources": {
+    "ReferenceDirectMovementProbe": "29596dda603edcf0e81d2a7a8fd69c12f5f69241476148efcccb922d11906392",
+    "ReferenceMovementProbe": "7216b65e8dc9a343f6693009efc212ca885325780a37d48be1e55ea8abc56fd6"
+  },
+  "java_compiler": {
+    "bytes": 84640,
+    "file": "javac",
+    "sha1": "104f9ead0ffe0d52486c0a879227f1eeab2ea707",
+    "sha256": "46b2f3452f6145ac37796a494c20a49b2c884e4eac59cbaa4e642730b57d64fa"
+  },
+  "java_runtime": {
+    "bytes": 84720,
+    "file": "java",
+    "sha1": "5af4a90be54ddeec03db3700e6989594c9438952",
+    "sha256": "e0879c0df70d880d66904064d1b388b08aeee0958a047f37601435b28db849a3"
+  },
+  "javap_text_sha256": {
+    "net.minecraft.world.entity.decoration.ArmorStand": "9bc60b22231f13aab596a4858f45e061c8beed2c2a98a3110e3911944baf9399",
+    "net.minecraft.world.entity.item.ItemEntity": "305afba739afcf812c178628684549cb979d7a90ce2f029cebcd9994a85fd465",
+    "net.minecraft.world.level.block.Block": "1181925bc43a0244e33e24162a5b57b4aac145a1acf699a11b050e5778d9cf61",
+    "net.minecraft.world.level.block.SlabBlock": "79de64aa01cad535686c2e41c4fbdb6362388f66f9747c10e27dc0032cb22228",
+    "net.minecraft.world.level.block.SlabBlock$1": "de4a7219d78e550b968f69ced5789f137623c511d1bc97f5a4547b74f9f219bc",
+    "net.minecraft.world.level.block.WeatheringCopperSlabBlock": "f5cf9710938a184703e491481b1c4f786c938b6c4411cfc8ab1d5f950805507d",
+    "net.minecraft.world.level.block.state.BlockBehaviour": "bb81e9eb8e24ca72bcf1e06fa6f5b0863d9ffecf7d853f3082c04e723743cb14",
+    "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase": "75484cc6a66fba15d6264f91f2add67c2acf7dad40714544da6fa1c67e017bc8",
+    "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase$Cache": "3e087a388c7f3e21da2f8cc495b9981dccd4699eaae485dd40b278d265fab362",
+    "net.minecraft.world.level.block.state.BlockState": "4dc923c2d50dc6ad1869e568d6e77ce1b1c04db72cff6f586fbf68520c4af136",
+    "net.minecraft.world.level.block.state.properties.SlabType": "451b4a4c447c29d24f0a21b39f88fb8938a9cd6e3e91f10df020c8edb710800e",
+    "net.minecraft.world.phys.shapes.CollisionContext": "022d6628259f1654fcb6cdc4caa08a5fbb28dc852ff43b2c7e542ae0d0604307",
+    "net.minecraft.world.phys.shapes.EntityCollisionContext": "86aec65540ceb2f69a55a1a86f35e86aebc1926889edd2bc5b72f4ae29a86c4d",
+    "net.minecraft.world.phys.shapes.EntityCollisionContext$Empty": "2f7017da3acea6ee28d5a3192cc0da005fde5995df8d3f1eab3f1adb43be8fb5",
+    "net.minecraft.world.phys.shapes.PositionCollisionContext": "880f4c32bae7cc7da170f6f8442d5d8f593e453c654a7860045996bf8ab7b9c8",
+    "net.minecraft.world.phys.shapes.Shapes": "802bcd56e238add6ff803d3f2b1002b1ecb40672de4018d98c8128dd6ae8b534",
+    "net.minecraft.world.phys.shapes.VoxelShape": "e9f7e9688c90751e0107174ac2783db5eea008424aec02d9fb67b700666ce6b5"
+  },
+  "methods": {
+    "net.minecraft.world.level.block.SlabBlock#protected net.minecraft.world.phys.shapes.VoxelShape getShape(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.BlockGetter, net.minecraft.core.BlockPos, net.minecraft.world.phys.shapes.CollisionContext)": {
+      "bytecode_text_sha256": "b76f0df8fb289325d9b2a8830fa74f1215477c6100277100949e2170d354812a",
+      "declaration": "protected net.minecraft.world.phys.shapes.VoxelShape getShape(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.BlockGetter, net.minecraft.core.BlockPos, net.minecraft.world.phys.shapes.CollisionContext)",
+      "operations": [
+        "getstatic",
+        "aload_1",
+        "getstatic",
+        "invokevirtual",
+        "checkcast",
+        "invokevirtual",
+        "iaload",
+        "tableswitch",
+        "54",
+        "60",
+        "66",
+        "new",
+        "dup",
+        "aconst_null",
+        "aconst_null",
+        "invokespecial",
+        "athrow",
+        "getstatic",
+        "goto",
+        "getstatic",
+        "goto",
+        "invokestatic",
+        "areturn"
+      ],
+      "owner": "net.minecraft.world.level.block.SlabBlock"
+    },
+    "net.minecraft.world.level.block.state.BlockBehaviour#protected net.minecraft.world.phys.shapes.VoxelShape getCollisionShape(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.BlockGetter, net.minecraft.core.BlockPos, net.minecraft.world.phys.shapes.CollisionContext)": {
+      "bytecode_text_sha256": "325498f41dfd920fd23d48aa2af6188f354c5ae2ea0a7d3f669e0160012b7442",
+      "declaration": "protected net.minecraft.world.phys.shapes.VoxelShape getCollisionShape(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.BlockGetter, net.minecraft.core.BlockPos, net.minecraft.world.phys.shapes.CollisionContext)",
+      "operations": [
+        "aload_0",
+        "getfield",
+        "ifeq",
+        "aload_1",
+        "aload_2",
+        "aload_3",
+        "invokevirtual",
+        "goto",
+        "invokestatic",
+        "areturn"
+      ],
+      "owner": "net.minecraft.world.level.block.state.BlockBehaviour"
+    },
+    "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase#public net.minecraft.world.phys.shapes.VoxelShape getCollisionShape(net.minecraft.world.level.BlockGetter, net.minecraft.core.BlockPos)": {
+      "bytecode_text_sha256": "6cbe1469991d9f771cad2b8c5d6cdeca51e5ac3a6e8d6a30dff9f5c83107fe42",
+      "declaration": "public net.minecraft.world.phys.shapes.VoxelShape getCollisionShape(net.minecraft.world.level.BlockGetter, net.minecraft.core.BlockPos)",
+      "operations": [
+        "aload_0",
+        "getfield",
+        "ifnull",
+        "aload_0",
+        "getfield",
+        "getfield",
+        "areturn",
+        "aload_0",
+        "aload_1",
+        "aload_2",
+        "invokestatic",
+        "invokevirtual",
+        "areturn"
+      ],
+      "owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase"
+    },
+    "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase#public net.minecraft.world.phys.shapes.VoxelShape getCollisionShape(net.minecraft.world.level.BlockGetter, net.minecraft.core.BlockPos, net.minecraft.world.phys.shapes.CollisionContext)": {
+      "bytecode_text_sha256": "f052750c8fba4875cb805a42e18dc2af96e91cd062bc17804c08916b8cc0eeca",
+      "declaration": "public net.minecraft.world.phys.shapes.VoxelShape getCollisionShape(net.minecraft.world.level.BlockGetter, net.minecraft.core.BlockPos, net.minecraft.world.phys.shapes.CollisionContext)",
+      "operations": [
+        "aload_0",
+        "invokevirtual",
+        "aload_0",
+        "invokevirtual",
+        "aload_1",
+        "aload_2",
+        "aload_3",
+        "invokevirtual",
+        "areturn"
+      ],
+      "owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase"
+    },
+    "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase#public net.minecraft.world.phys.shapes.VoxelShape getShape(net.minecraft.world.level.BlockGetter, net.minecraft.core.BlockPos)": {
+      "bytecode_text_sha256": "ffd1d3d7077df589200516448e81b4bd9bdcb6ac3e49527aba64f773d86ae475",
+      "declaration": "public net.minecraft.world.phys.shapes.VoxelShape getShape(net.minecraft.world.level.BlockGetter, net.minecraft.core.BlockPos)",
+      "operations": [
+        "aload_0",
+        "aload_1",
+        "aload_2",
+        "invokestatic",
+        "invokevirtual",
+        "areturn"
+      ],
+      "owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase"
+    },
+    "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase#public net.minecraft.world.phys.shapes.VoxelShape getShape(net.minecraft.world.level.BlockGetter, net.minecraft.core.BlockPos, net.minecraft.world.phys.shapes.CollisionContext)": {
+      "bytecode_text_sha256": "f6cf92aa6b79f5c8c26d6828d4012f2488118a06eded3eb62b0dd9b64f53b98d",
+      "declaration": "public net.minecraft.world.phys.shapes.VoxelShape getShape(net.minecraft.world.level.BlockGetter, net.minecraft.core.BlockPos, net.minecraft.world.phys.shapes.CollisionContext)",
+      "operations": [
+        "aload_0",
+        "invokevirtual",
+        "aload_0",
+        "invokevirtual",
+        "aload_1",
+        "aload_2",
+        "aload_3",
+        "invokevirtual",
+        "areturn"
+      ],
+      "owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase"
+    },
+    "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase#public void initCache()": {
+      "bytecode_text_sha256": "716ee24be6460cc60313e21e0347f74883e60cc742c7c0d249e326c69cca0bba",
+      "declaration": "public void initCache()",
+      "operations": [
+        "aload_0",
+        "aload_0",
+        "getfield",
+        "checkcast",
+        "aload_0",
+        "invokevirtual",
+        "invokevirtual",
+        "putfield",
+        "aload_0",
+        "aload_0",
+        "getfield",
+        "checkcast",
+        "aload_0",
+        "invokevirtual",
+        "invokevirtual",
+        "putfield",
+        "aload_0",
+        "invokevirtual",
+        "invokevirtual",
+        "ifne",
+        "aload_0",
+        "new",
+        "dup",
+        "aload_0",
+        "invokevirtual",
+        "invokespecial",
+        "putfield",
+        "aload_0",
+        "aload_0",
+        "invokevirtual",
+        "putfield",
+        "aload_0",
+        "aload_0",
+        "getfield",
+        "ifeq",
+        "aload_0",
+        "getfield",
+        "checkcast",
+        "aload_0",
+        "invokevirtual",
+        "invokevirtual",
+        "goto",
+        "invokestatic",
+        "putfield",
+        "aload_0",
+        "aload_0",
+        "getfield",
+        "invokestatic",
+        "putfield",
+        "aload_0",
+        "getfield",
+        "invokevirtual",
+        "ifeq",
+        "aload_0",
+        "getstatic",
+        "putfield",
+        "goto",
+        "aload_0",
+        "getfield",
+        "ifeq",
+        "aload_0",
+        "getstatic",
+        "putfield",
+        "goto",
+        "aload_0",
+        "getstatic",
+        "arraylength",
+        "anewarray",
+        "putfield",
+        "getstatic",
+        "astore_1",
+        "aload_1",
+        "arraylength",
+        "istore_2",
+        "iconst_0",
+        "istore_3",
+        "iload_3",
+        "iload_2",
+        "if_icmpge",
+        "aload_1",
+        "iload_3",
+        "aaload",
+        "astore",
+        "aload_0",
+        "getfield",
+        "aload",
+        "invokevirtual",
+        "aload_0",
+        "getfield",
+        "aload",
+        "invokevirtual",
+        "aastore",
+        "iinc",
+        "goto",
+        "aload_0",
+        "aload_0",
+        "getfield",
+        "checkcast",
+        "aload_0",
+        "invokevirtual",
+        "invokevirtual",
+        "putfield",
+        "aload_0",
+        "aload_0",
+        "getfield",
+        "checkcast",
+        "aload_0",
+        "invokevirtual",
+        "invokevirtual",
+        "putfield",
+        "return"
+      ],
+      "owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase"
+    },
+    "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase$Cache#private net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase$Cache(net.minecraft.world.level.block.state.BlockState)": {
+      "bytecode_text_sha256": "a93c446a203e80351b09db2cac7ae8be4a0b7efa226095299050e3b845b8c593",
+      "declaration": "private net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase$Cache(net.minecraft.world.level.block.state.BlockState)",
+      "operations": [
+        "aload_0",
+        "invokespecial",
+        "aload_1",
+        "invokevirtual",
+        "astore_2",
+        "aload_0",
+        "aload_2",
+        "aload_1",
+        "getstatic",
+        "getstatic",
+        "invokestatic",
+        "invokevirtual",
+        "putfield",
+        "aload_0",
+        "getfield",
+        "invokevirtual",
+        "ifne",
+        "aload_1",
+        "invokevirtual",
+        "ifeq",
+        "new",
+        "dup",
+        "getstatic",
+        "ldc",
+        "iconst_1",
+        "anewarray",
+        "dup",
+        "iconst_0",
+        "getstatic",
+        "aload_2",
+        "invokeinterface",
+        "aastore",
+        "invokestatic",
+        "invokespecial",
+        "athrow",
+        "aload_0",
+        "invokestatic",
+        "invokestatic",
+        "aload_0",
+        "invokedynamic",
+        "invokeinterface",
+        "putfield",
+        "aload_0",
+        "getstatic",
+        "arraylength",
+        "getstatic",
+        "imul",
+        "newarray",
+        "putfield",
+        "getstatic",
+        "astore_3",
+        "aload_3",
+        "arraylength",
+        "istore",
+        "iconst_0",
+        "istore",
+        "iload",
+        "iload",
+        "if_icmpge",
+        "aload_3",
+        "iload",
+        "aaload",
+        "astore",
+        "invokestatic",
+        "astore",
+        "aload",
+        "arraylength",
+        "istore",
+        "iconst_0",
+        "istore",
+        "iload",
+        "iload",
+        "if_icmpge",
+        "aload",
+        "iload",
+        "aaload",
+        "astore",
+        "aload_0",
+        "getfield",
+        "aload",
+        "aload",
+        "invokestatic",
+        "aload",
+        "aload_1",
+        "getstatic",
+        "getstatic",
+        "aload",
+        "invokevirtual",
+        "bastore",
+        "iinc",
+        "goto",
+        "iinc",
+        "goto",
+        "aload_0",
+        "aload_1",
+        "getstatic",
+        "getstatic",
+        "invokevirtual",
+        "invokestatic",
+        "putfield",
+        "return"
+      ],
+      "owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase$Cache"
+    },
+    "net.minecraft.world.phys.shapes.EntityCollisionContext#public net.minecraft.world.phys.shapes.VoxelShape getCollisionShape(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.CollisionGetter, net.minecraft.core.BlockPos)": {
+      "bytecode_text_sha256": "21f15d579bb13c76d51612201a7c7ed0078955b439f18280c3bf00e2cdd35c1e",
+      "declaration": "public net.minecraft.world.phys.shapes.VoxelShape getCollisionShape(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.CollisionGetter, net.minecraft.core.BlockPos)",
+      "operations": [
+        "aload_1",
+        "aload_2",
+        "aload_3",
+        "aload_0",
+        "invokevirtual",
+        "areturn"
+      ],
+      "owner": "net.minecraft.world.phys.shapes.EntityCollisionContext"
+    },
+    "net.minecraft.world.phys.shapes.PositionCollisionContext#public net.minecraft.world.phys.shapes.VoxelShape getCollisionShape(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.CollisionGetter, net.minecraft.core.BlockPos)": {
+      "bytecode_text_sha256": "2e972c3d5728eaba5acf67763789621322da1ab1fd100544760603453f390131",
+      "declaration": "public net.minecraft.world.phys.shapes.VoxelShape getCollisionShape(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.CollisionGetter, net.minecraft.core.BlockPos)",
+      "operations": [
+        "aload_1",
+        "aload_2",
+        "aload_3",
+        "aload_0",
+        "invokevirtual",
+        "areturn"
+      ],
+      "owner": "net.minecraft.world.phys.shapes.PositionCollisionContext"
+    }
+  },
+  "pin": "26.3",
+  "receiver_manifest_sha256": "f76715129a098c5be517fc0585e2d19057d36049bb2c491fba5973302e95d3c5",
+  "receivers": {
+    "minecraft:acacia_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 15204,
+      "dynamic_shape": false,
+      "first_state_id": 15201,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 657,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:andesite_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 19830,
+      "dynamic_shape": false,
+      "first_state_id": 19827,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 910,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:bamboo_mosaic_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 15246,
+      "dynamic_shape": false,
+      "first_state_id": 15243,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 664,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:bamboo_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 15240,
+      "dynamic_shape": false,
+      "first_state_id": 15237,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 663,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:birch_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 15192,
+      "dynamic_shape": false,
+      "first_state_id": 15189,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 655,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:black_concrete_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 18400,
+      "dynamic_shape": false,
+      "first_state_id": 18397,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 815,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:black_wool_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 3798,
+      "dynamic_shape": false,
+      "first_state_id": 3795,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 198,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:blackstone_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 25596,
+      "dynamic_shape": false,
+      "first_state_id": 25593,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 1017,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:blue_concrete_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 18376,
+      "dynamic_shape": false,
+      "first_state_id": 18373,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 811,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:blue_wool_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 3774,
+      "dynamic_shape": false,
+      "first_state_id": 3771,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 194,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:brick_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 15282,
+      "dynamic_shape": false,
+      "first_state_id": 15279,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 670,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:brown_concrete_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 18382,
+      "dynamic_shape": false,
+      "first_state_id": 18379,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 812,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:brown_wool_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 3780,
+      "dynamic_shape": false,
+      "first_state_id": 3777,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 195,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:cherry_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 15210,
+      "dynamic_shape": false,
+      "first_state_id": 15207,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 658,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:cinnabar_brick_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 30109,
+      "dynamic_shape": false,
+      "first_state_id": 30106,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 1111,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:cinnabar_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 29287,
+      "dynamic_shape": false,
+      "first_state_id": 29284,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 1103,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:cobbled_deepslate_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 33860,
+      "dynamic_shape": false,
+      "first_state_id": 33857,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 1244,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:cobblestone_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 15276,
+      "dynamic_shape": false,
+      "first_state_id": 15273,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 669,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:crimson_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 24394,
+      "dynamic_shape": false,
+      "first_state_id": 24391,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 975,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:cut_copper_slab": {
+      "class": "net.minecraft.world.level.block.WeatheringCopperSlabBlock",
+      "default_state_id": 31808,
+      "dynamic_shape": false,
+      "first_state_id": 31805,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 1158,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:cut_red_sandstone_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 15318,
+      "dynamic_shape": false,
+      "first_state_id": 15315,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 676,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:cut_sandstone_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 15264,
+      "dynamic_shape": false,
+      "first_state_id": 15261,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 667,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:cyan_concrete_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 18364,
+      "dynamic_shape": false,
+      "first_state_id": 18361,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 809,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:cyan_wool_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 3762,
+      "dynamic_shape": false,
+      "first_state_id": 3759,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 192,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:dark_oak_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 15216,
+      "dynamic_shape": false,
+      "first_state_id": 15213,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 659,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:dark_prismarine_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 14736,
+      "dynamic_shape": false,
+      "first_state_id": 14733,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 589,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:deepslate_brick_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 35093,
+      "dynamic_shape": false,
+      "first_state_id": 35090,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 1256,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:deepslate_tile_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 34682,
+      "dynamic_shape": false,
+      "first_state_id": 34679,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 1252,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:diorite_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 19848,
+      "dynamic_shape": false,
+      "first_state_id": 19845,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 913,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:end_stone_brick_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 19806,
+      "dynamic_shape": false,
+      "first_state_id": 19803,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 906,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:exposed_cut_copper_slab": {
+      "class": "net.minecraft.world.level.block.WeatheringCopperSlabBlock",
+      "default_state_id": 31814,
+      "dynamic_shape": false,
+      "first_state_id": 31811,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 1159,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:granite_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 19824,
+      "dynamic_shape": false,
+      "first_state_id": 19821,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 909,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:gray_concrete_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 18352,
+      "dynamic_shape": false,
+      "first_state_id": 18349,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 807,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:gray_wool_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 3750,
+      "dynamic_shape": false,
+      "first_state_id": 3747,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 190,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:green_concrete_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 18388,
+      "dynamic_shape": false,
+      "first_state_id": 18385,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 813,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:green_wool_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 3786,
+      "dynamic_shape": false,
+      "first_state_id": 3783,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 196,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:jungle_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 15198,
+      "dynamic_shape": false,
+      "first_state_id": 15195,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 656,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:light_blue_concrete_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 18328,
+      "dynamic_shape": false,
+      "first_state_id": 18325,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 803,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:light_blue_wool_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 3726,
+      "dynamic_shape": false,
+      "first_state_id": 3723,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 186,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:light_gray_concrete_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 18358,
+      "dynamic_shape": false,
+      "first_state_id": 18355,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 808,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:light_gray_wool_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 3756,
+      "dynamic_shape": false,
+      "first_state_id": 3753,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 191,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:lime_concrete_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 18340,
+      "dynamic_shape": false,
+      "first_state_id": 18337,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 805,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:lime_wool_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 3738,
+      "dynamic_shape": false,
+      "first_state_id": 3735,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 188,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:magenta_concrete_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 18322,
+      "dynamic_shape": false,
+      "first_state_id": 18319,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 802,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:magenta_wool_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 3720,
+      "dynamic_shape": false,
+      "first_state_id": 3717,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 185,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:mangrove_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 15228,
+      "dynamic_shape": false,
+      "first_state_id": 15225,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 661,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:mossy_cobblestone_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 19800,
+      "dynamic_shape": false,
+      "first_state_id": 19797,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 905,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:mossy_stone_brick_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 19788,
+      "dynamic_shape": false,
+      "first_state_id": 19785,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 903,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:mud_brick_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 15294,
+      "dynamic_shape": false,
+      "first_state_id": 15291,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 672,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:nether_brick_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 15300,
+      "dynamic_shape": false,
+      "first_state_id": 15297,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 673,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:oak_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 15180,
+      "dynamic_shape": false,
+      "first_state_id": 15177,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 653,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:orange_concrete_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 18316,
+      "dynamic_shape": false,
+      "first_state_id": 18313,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 801,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:orange_wool_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 3714,
+      "dynamic_shape": false,
+      "first_state_id": 3711,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 184,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:oxidized_cut_copper_slab": {
+      "class": "net.minecraft.world.level.block.WeatheringCopperSlabBlock",
+      "default_state_id": 31826,
+      "dynamic_shape": false,
+      "first_state_id": 31823,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 1161,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:pale_oak_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 15222,
+      "dynamic_shape": false,
+      "first_state_id": 15219,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 660,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:petrified_oak_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 15270,
+      "dynamic_shape": false,
+      "first_state_id": 15267,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 668,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:pink_concrete_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 18346,
+      "dynamic_shape": false,
+      "first_state_id": 18343,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 806,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:pink_wool_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 3744,
+      "dynamic_shape": false,
+      "first_state_id": 3741,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 189,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:polished_andesite_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 19842,
+      "dynamic_shape": false,
+      "first_state_id": 19839,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 912,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:polished_blackstone_brick_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 25606,
+      "dynamic_shape": false,
+      "first_state_id": 25603,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 1022,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:polished_blackstone_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 26097,
+      "dynamic_shape": false,
+      "first_state_id": 26094,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 1027,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:polished_cinnabar_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 29698,
+      "dynamic_shape": false,
+      "first_state_id": 29695,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 1107,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:polished_deepslate_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 34271,
+      "dynamic_shape": false,
+      "first_state_id": 34268,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 1248,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:polished_diorite_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 19794,
+      "dynamic_shape": false,
+      "first_state_id": 19791,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 904,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:polished_granite_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 19776,
+      "dynamic_shape": false,
+      "first_state_id": 19773,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 901,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:polished_sulfur_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 28464,
+      "dynamic_shape": false,
+      "first_state_id": 28461,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 1094,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:polished_tuff_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 27224,
+      "dynamic_shape": false,
+      "first_state_id": 27221,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 1079,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:poplar_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 15234,
+      "dynamic_shape": false,
+      "first_state_id": 15231,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 662,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:prismarine_brick_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 14730,
+      "dynamic_shape": false,
+      "first_state_id": 14727,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 588,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:prismarine_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 14724,
+      "dynamic_shape": false,
+      "first_state_id": 14721,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 587,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:purple_concrete_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 18370,
+      "dynamic_shape": false,
+      "first_state_id": 18367,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 810,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:purple_wool_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 3768,
+      "dynamic_shape": false,
+      "first_state_id": 3765,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 193,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:purpur_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 16691,
+      "dynamic_shape": false,
+      "first_state_id": 16688,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 716,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:quartz_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 15306,
+      "dynamic_shape": false,
+      "first_state_id": 15303,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 674,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:red_concrete_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 18394,
+      "dynamic_shape": false,
+      "first_state_id": 18391,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 814,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:red_nether_brick_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 19836,
+      "dynamic_shape": false,
+      "first_state_id": 19833,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 911,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:red_sandstone_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 15312,
+      "dynamic_shape": false,
+      "first_state_id": 15309,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 675,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:red_wool_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 3792,
+      "dynamic_shape": false,
+      "first_state_id": 3789,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 197,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:resin_brick_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 10740,
+      "dynamic_shape": false,
+      "first_state_id": 10737,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 428,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:sandstone_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 15258,
+      "dynamic_shape": false,
+      "first_state_id": 15255,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 666,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:smooth_quartz_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 19818,
+      "dynamic_shape": false,
+      "first_state_id": 19815,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 908,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:smooth_red_sandstone_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 19782,
+      "dynamic_shape": false,
+      "first_state_id": 19779,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 902,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:smooth_sandstone_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 19812,
+      "dynamic_shape": false,
+      "first_state_id": 19809,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 907,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:smooth_stone_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 15325,
+      "dynamic_shape": false,
+      "first_state_id": 15322,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 678,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:spruce_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 15186,
+      "dynamic_shape": false,
+      "first_state_id": 15183,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 654,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:stone_brick_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 15288,
+      "dynamic_shape": false,
+      "first_state_id": 15285,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 671,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:stone_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 15252,
+      "dynamic_shape": false,
+      "first_state_id": 15249,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 665,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:sulfur_brick_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 28875,
+      "dynamic_shape": false,
+      "first_state_id": 28872,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 1098,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:sulfur_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 28053,
+      "dynamic_shape": false,
+      "first_state_id": 28050,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 1090,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:tuff_brick_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 27636,
+      "dynamic_shape": false,
+      "first_state_id": 27633,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 1084,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:tuff_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 26813,
+      "dynamic_shape": false,
+      "first_state_id": 26810,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 1075,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:warped_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 24400,
+      "dynamic_shape": false,
+      "first_state_id": 24397,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 976,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:waxed_cut_copper_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 31832,
+      "dynamic_shape": false,
+      "first_state_id": 31829,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 1162,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:waxed_exposed_cut_copper_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 31838,
+      "dynamic_shape": false,
+      "first_state_id": 31835,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 1163,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:waxed_oxidized_cut_copper_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 31850,
+      "dynamic_shape": false,
+      "first_state_id": 31847,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 1165,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:waxed_weathered_cut_copper_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 31844,
+      "dynamic_shape": false,
+      "first_state_id": 31841,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 1164,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:weathered_cut_copper_slab": {
+      "class": "net.minecraft.world.level.block.WeatheringCopperSlabBlock",
+      "default_state_id": 31820,
+      "dynamic_shape": false,
+      "first_state_id": 31817,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 1160,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:white_concrete_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 18310,
+      "dynamic_shape": false,
+      "first_state_id": 18307,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 800,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:white_wool_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 3708,
+      "dynamic_shape": false,
+      "first_state_id": 3705,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 183,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:yellow_concrete_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 18334,
+      "dynamic_shape": false,
+      "first_state_id": 18331,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 804,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    },
+    "minecraft:yellow_wool_slab": {
+      "class": "net.minecraft.world.level.block.SlabBlock",
+      "default_state_id": 3732,
+      "dynamic_shape": false,
+      "first_state_id": 3729,
+      "has_collision": true,
+      "has_collision_modifiers": "protected final",
+      "has_collision_owner": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "method_owners": {
+        "getCollisionShape": "net.minecraft.world.level.block.state.BlockBehaviour",
+        "getShape": "net.minecraft.world.level.block.SlabBlock"
+      },
+      "protocol": 187,
+      "state_collision_cached_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_collision_context_owner": "net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase",
+      "state_count": 6
+    }
+  },
+  "reference_only": true,
+  "registered_slab_blocks": 101,
+  "registered_states": 35723,
+  "registry": {
+    "blocks": 1286,
+    "canonical_bytes": 167974,
+    "canonical_sha256": "4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc",
+    "source_sha256": "27769e75bf862d0540b2df2a6e99f6b7556a867bff6339fb08566240ee124cac",
+    "states": 35723
+  },
+  "registry_identity": "4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc",
+  "scope": [
+    "Registered SlabBlock instances, including actual WeatheringCopperSlabBlock subclass receivers, for these collision getter routes only.",
+    "One exact unshifted collision AABB by actual TYPE. WATERLOGGED is retained metadata and does not affect this getter.",
+    "Method-body and actual-receiver guard evidence establishes static collision values for these pinned receivers; context sampling alone is not generalized.",
+    "No fluid-union, ray outline, step, support, friction, Entity movement, block updates, placement or world collision iteration claim."
+  ],
+  "server_sha256": "a362163eec5d1612d520772bc16e5b39c09e3b234fdc045f56bf544284ee8ae6",
+  "shapes_by_type": {
+    "bottom": [
+      [
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "3ff0000000000000",
+        "3fe0000000000000",
+        "3ff0000000000000"
+      ]
+    ],
+    "double": [
+      [
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "3ff0000000000000",
+        "3ff0000000000000",
+        "3ff0000000000000"
+      ]
+    ],
+    "top": [
+      [
+        "0000000000000000",
+        "3fe0000000000000",
+        "0000000000000000",
+        "3ff0000000000000",
+        "3ff0000000000000",
+        "3ff0000000000000"
+      ]
+    ]
+  },
+  "slab_entries": [
+    {
+      "slab_type": "top",
+      "state_id": 3705,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 3706,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 3707,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 3708,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 3709,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 3710,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 3711,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 3712,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 3713,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 3714,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 3715,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 3716,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 3717,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 3718,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 3719,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 3720,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 3721,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 3722,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 3723,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 3724,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 3725,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 3726,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 3727,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 3728,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 3729,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 3730,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 3731,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 3732,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 3733,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 3734,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 3735,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 3736,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 3737,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 3738,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 3739,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 3740,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 3741,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 3742,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 3743,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 3744,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 3745,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 3746,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 3747,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 3748,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 3749,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 3750,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 3751,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 3752,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 3753,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 3754,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 3755,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 3756,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 3757,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 3758,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 3759,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 3760,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 3761,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 3762,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 3763,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 3764,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 3765,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 3766,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 3767,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 3768,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 3769,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 3770,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 3771,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 3772,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 3773,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 3774,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 3775,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 3776,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 3777,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 3778,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 3779,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 3780,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 3781,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 3782,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 3783,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 3784,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 3785,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 3786,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 3787,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 3788,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 3789,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 3790,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 3791,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 3792,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 3793,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 3794,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 3795,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 3796,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 3797,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 3798,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 3799,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 3800,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 10737,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 10738,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 10739,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 10740,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 10741,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 10742,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 14721,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 14722,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 14723,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 14724,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 14725,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 14726,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 14727,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 14728,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 14729,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 14730,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 14731,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 14732,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 14733,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 14734,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 14735,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 14736,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 14737,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 14738,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15177,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15178,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15179,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15180,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15181,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15182,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15183,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15184,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15185,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15186,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15187,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15188,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15189,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15190,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15191,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15192,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15193,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15194,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15195,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15196,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15197,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15198,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15199,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15200,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15201,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15202,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15203,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15204,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15205,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15206,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15207,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15208,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15209,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15210,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15211,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15212,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15213,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15214,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15215,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15216,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15217,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15218,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15219,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15220,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15221,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15222,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15223,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15224,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15225,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15226,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15227,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15228,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15229,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15230,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15231,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15232,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15233,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15234,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15235,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15236,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15237,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15238,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15239,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15240,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15241,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15242,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15243,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15244,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15245,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15246,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15247,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15248,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15249,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15250,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15251,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15252,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15253,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15254,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15255,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15256,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15257,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15258,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15259,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15260,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15261,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15262,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15263,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15264,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15265,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15266,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15267,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15268,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15269,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15270,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15271,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15272,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15273,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15274,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15275,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15276,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15277,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15278,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15279,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15280,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15281,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15282,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15283,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15284,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15285,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15286,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15287,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15288,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15289,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15290,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15291,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15292,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15293,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15294,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15295,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15296,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15297,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15298,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15299,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15300,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15301,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15302,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15303,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15304,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15305,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15306,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15307,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15308,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15309,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15310,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15311,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15312,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15313,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15314,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15315,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15316,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15317,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15318,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15319,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15320,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15322,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 15323,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15324,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 15325,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15326,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 15327,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 16688,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 16689,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 16690,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 16691,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 16692,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 16693,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 18307,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 18308,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 18309,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 18310,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 18311,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 18312,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 18313,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 18314,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 18315,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 18316,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 18317,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 18318,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 18319,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 18320,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 18321,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 18322,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 18323,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 18324,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 18325,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 18326,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 18327,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 18328,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 18329,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 18330,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 18331,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 18332,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 18333,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 18334,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 18335,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 18336,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 18337,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 18338,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 18339,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 18340,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 18341,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 18342,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 18343,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 18344,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 18345,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 18346,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 18347,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 18348,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 18349,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 18350,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 18351,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 18352,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 18353,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 18354,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 18355,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 18356,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 18357,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 18358,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 18359,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 18360,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 18361,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 18362,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 18363,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 18364,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 18365,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 18366,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 18367,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 18368,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 18369,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 18370,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 18371,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 18372,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 18373,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 18374,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 18375,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 18376,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 18377,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 18378,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 18379,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 18380,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 18381,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 18382,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 18383,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 18384,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 18385,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 18386,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 18387,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 18388,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 18389,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 18390,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 18391,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 18392,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 18393,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 18394,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 18395,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 18396,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 18397,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 18398,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 18399,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 18400,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 18401,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 18402,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 19773,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 19774,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 19775,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 19776,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 19777,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 19778,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 19779,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 19780,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 19781,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 19782,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 19783,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 19784,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 19785,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 19786,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 19787,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 19788,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 19789,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 19790,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 19791,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 19792,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 19793,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 19794,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 19795,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 19796,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 19797,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 19798,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 19799,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 19800,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 19801,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 19802,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 19803,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 19804,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 19805,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 19806,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 19807,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 19808,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 19809,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 19810,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 19811,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 19812,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 19813,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 19814,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 19815,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 19816,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 19817,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 19818,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 19819,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 19820,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 19821,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 19822,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 19823,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 19824,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 19825,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 19826,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 19827,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 19828,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 19829,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 19830,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 19831,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 19832,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 19833,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 19834,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 19835,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 19836,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 19837,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 19838,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 19839,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 19840,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 19841,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 19842,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 19843,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 19844,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 19845,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 19846,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 19847,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 19848,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 19849,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 19850,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 24391,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 24392,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 24393,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 24394,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 24395,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 24396,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 24397,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 24398,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 24399,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 24400,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 24401,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 24402,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 25593,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 25594,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 25595,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 25596,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 25597,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 25598,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 25603,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 25604,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 25605,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 25606,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 25607,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 25608,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 26094,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 26095,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 26096,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 26097,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 26098,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 26099,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 26810,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 26811,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 26812,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 26813,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 26814,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 26815,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 27221,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 27222,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 27223,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 27224,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 27225,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 27226,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 27633,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 27634,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 27635,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 27636,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 27637,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 27638,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 28050,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 28051,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 28052,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 28053,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 28054,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 28055,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 28461,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 28462,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 28463,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 28464,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 28465,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 28466,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 28872,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 28873,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 28874,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 28875,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 28876,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 28877,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 29284,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 29285,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 29286,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 29287,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 29288,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 29289,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 29695,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 29696,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 29697,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 29698,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 29699,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 29700,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 30106,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 30107,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 30108,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 30109,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 30110,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 30111,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 31805,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 31806,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 31807,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 31808,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 31809,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 31810,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 31811,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 31812,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 31813,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 31814,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 31815,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 31816,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 31817,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 31818,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 31819,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 31820,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 31821,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 31822,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 31823,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 31824,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 31825,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 31826,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 31827,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 31828,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 31829,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 31830,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 31831,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 31832,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 31833,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 31834,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 31835,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 31836,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 31837,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 31838,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 31839,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 31840,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 31841,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 31842,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 31843,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 31844,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 31845,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 31846,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 31847,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 31848,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 31849,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 31850,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 31851,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 31852,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 33857,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 33858,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 33859,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 33860,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 33861,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 33862,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 34268,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 34269,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 34270,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 34271,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 34272,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 34273,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 34679,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 34680,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 34681,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 34682,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 34683,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 34684,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "top",
+      "state_id": 35090,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "top",
+      "state_id": 35091,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 35092,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "bottom",
+      "state_id": 35093,
+      "waterlogged": false
+    },
+    {
+      "slab_type": "double",
+      "state_id": 35094,
+      "waterlogged": true
+    },
+    {
+      "slab_type": "double",
+      "state_id": 35095,
+      "waterlogged": false
+    }
+  ],
+  "slab_states": 606,
+  "source_sha256": "c8a94dd2e0c739106b5b6984113ce227de80cd8a1dcbf719075b930c73d2f47d",
+  "tool_sha256": "c424113580e7997af635b0e3d8bc1fd57cff9d75f09ef9399021211f4faa7570",
+  "two_byte_identical_java_runs": [
+    {
+      "receivers": {
+        "bytes": 231689,
+        "file": "receivers-0.json",
+        "sha1": "f9b3f5e47b18f510451e39188ab99f7001e00950",
+        "sha256": "e78b5825125b000507a74a5e6f1b3e438a0d9c3abb64466271c778776df93e61"
+      },
+      "table": {
+        "bytes": 27385498,
+        "file": "actual-0.tsv",
+        "sha1": "2bfaa44c74dff3df0fd6044f031023b1f4fffa56",
+        "sha256": "4b972d6bb11cb5e2165fc18c815549d3db5ab0db57cadf2a4f447e26036fc4b9"
+      }
+    },
+    {
+      "receivers": {
+        "bytes": 231689,
+        "file": "receivers-1.json",
+        "sha1": "f9b3f5e47b18f510451e39188ab99f7001e00950",
+        "sha256": "e78b5825125b000507a74a5e6f1b3e438a0d9c3abb64466271c778776df93e61"
+      },
+      "table": {
+        "bytes": 27385498,
+        "file": "actual-1.tsv",
+        "sha1": "2bfaa44c74dff3df0fd6044f031023b1f4fffa56",
+        "sha256": "4b972d6bb11cb5e2165fc18c815549d3db5ab0db57cadf2a4f447e26036fc4b9"
+      }
+    }
+  ]
+}
