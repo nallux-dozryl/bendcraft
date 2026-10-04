@@ -1,0 +1,27 @@
+{
+  "before_runtime_certificate_pin": {
+    "bytes": 6221,
+    "file": "worldgen_density_spline_codec.bend",
+    "path": "src/worldgen_density_spline_codec.bend",
+    "sha1": "130f8e54b51508e63286a37fc487289b5eece38c",
+    "sha256": "8c1b9cf2aa7ff731dac584219548e7a25772c38cce291d83674558189c7a193c"
+  },
+  "change": "Remove spline-only inherited128/16384-codepoint numeric-lexeme caps by calling existing NS.number_body lexical validation. Public signatures and constructors unchanged.",
+  "changed_file": "src/worldgen_density_spline_codec.bend",
+  "current_pin": {
+    "bytes": 6190,
+    "file": "worldgen_density_spline_codec.bend",
+    "sha1": "0cc93183ffc2ec574b828cc3750aa82bb8252fbc",
+    "sha256": "610a00ac32cd1544b0b58dc0d4657837f0d472aeedcca79f0141b4f402cd74b9"
+  },
+  "pin": "26.3",
+  "runtime_certificate": {
+    "bytes": 30737,
+    "file": "worldgen-density-runtime-proof.json",
+    "sha1": "5a0d7afb0a0693cfc30c7dad065a8bee1638eea5",
+    "sha256": "9f253fcd6a3688a5c415265bc216681f63edd26d65d6f5cd359d2ebba81a251f"
+  },
+  "runtime_export_contains_spline_codec_float": false,
+  "schema": 1,
+  "scope": "The existing runtime19 certificate retains its original complete loaded-source generation. The changed lexical-reader implementation is absent from the exact selected runtime proof dependency export. No proof type, body or exported term is rewritten. Current native closure identity must include the new lexical reader."
+}
