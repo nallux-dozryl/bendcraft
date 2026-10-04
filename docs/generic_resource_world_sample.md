@@ -56,9 +56,15 @@ types, appearance/seed production and admission. Client-only weighted model
 selection and frame binding live in `Frame`; the presenter calls
 `Frame.draw_frame`. The shared module's dependency graph fell from 67 to 62
 files and has no catalog/resource-owner import. Its three DTO declarations are
-byte-identical to frozen client generation 001. The actor still has an
-independent legacy `Backend` → `local_resource_world` → `RF`/`WRF` dependency;
-this split alone does not establish a minimal whole-server graph.
+byte-identical to frozen client generation 001. The actor's separate legacy
+`Backend` → `local_resource_world` → `RF`/`WRF` dependency was then removed by
+joining `Backend.World.snapshot` to `local_resource_world_sample`. The original
+client-facing module remains available. The pure extraction retains the shared
+`V.Sample` type and all 26 common sampler function bodies, with only the
+renderer error formatter replaced by identical pure text. Its six actual
+palette/cache/alignment/read-owner refusal laws pass the independent kernel;
+this proves those stated refusal paths, not rollback after a completed cache
+refresh. See `evidence/local_resource_world_sample_kernel.json`.
 
 ## Additive wire v1
 
@@ -118,6 +124,14 @@ private producer logged only pass boundaries, so this receipt does not prove
 that the compiler had stopped doing work. A corrected private producer with
 actual function progress and measured memory retention is separate work; no
 equivalent retry or original compiler edit was performed.
+
+Fresh client generation 002 is prepared from current production sources with
+the separately verified private telescope-cache/progress correction and the
+existing native platform transform. Nine upstream regression graphs produced
+exactly equal C and native expected outputs; the tenth retained its expected
+compiler refusal. The correction's full generic-client behavior remains
+unmeasured until emission and the real actor/window run finish. Preparation
+starts no compiler or native process and retains generation 001 unchanged.
 
 The profile is an explicit coverage instrument, not the normal product's
 content boundary. The registry-backed demand-loader plan is recorded in
