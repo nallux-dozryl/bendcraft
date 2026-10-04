@@ -18,6 +18,13 @@ with an empty body list. The current wrapper uses the existing NBT defaults:
 the outer file bound adds that budget to the existing default file bound.
 These resource limits remain explicit.
 
+The initialized item catalog is runtime data captured by one codec owner.
+`extended_persistence.dispatch_codec` and `encode_codec` carry that owner
+through the existing routing and encoding helpers. The closed-codec entry
+points delegate to the same helpers. Schema checks, capability checks, peer
+observation, request sequencing, atomic publication and acknowledgments
+therefore remain shared with the existing world-save path.
+
 The live cooking owner produces known cooking-body bytes. `with_details`
 decodes those bytes as a Compound and reinserts the root name and ordered
 unknown/base fields retained by the accepted physical load. It preserves

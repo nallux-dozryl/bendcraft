@@ -13,7 +13,7 @@ import test_remote_resource_client as R
 import test_local_player_session as S
 import test_fall_reset_world_continuation_r2 as H
 ROOT=Path(__file__).resolve().parents[1]
-WORK=ROOT/'build/compiler-producer-diagnostic-017'
+WORK=ROOT/'build/compiler-producer-diagnostic-018'
 SOURCE=WORK/'source'
 ACTOR=WORK/'actor'
 OLD=ROOT/'build/compiler-producer-diagnostic-012'
@@ -22,10 +22,23 @@ PRIVATE_PINS={
     'comp_instrumented.ts':'d2e149a6c97c6f57af8bb8c2bc86b4203a933cf18e430916efe40f456e818f4a',
     'run.py':'3dc542c1e956b42ea1052344f40cdf94dd2b33a68ec7387113e16952a91e5fbd',
 }
+RUNTIME_FACTS=(
+    'generated/reference_item_metadata.tsv',
+    'generated/reference_crafting_authority_metadata.json',
+    'reference/block_light_registry.tsv',
+    'reference/cooking_world_bindings.tsv',
+)
 class PlayableBackend(P.PlayableBackend):
     """Current full crafting startup; historical P callers keep their budgets."""
     def __init__(self, directory, binary, path, bridge, *, create=False, mode='creative',
                  startup_seconds=150, lifetime_seconds=180):
+        # Entry consumes these relative files from the working directory.
+        # Check the frozen inputs once when launching this generation.
+        runtime=WORK/'runtime-inputs.json'
+        if Path(binary).resolve()==ACTOR.resolve() and runtime.exists():
+            for row in json.loads(runtime.read_bytes())['files']:
+                R.require(R.pin(row['original']['path'])==row['original'],
+                          'Actor runtime input differs from built generation: '+row['original']['path'])
         super().__init__(directory, binary, path, bridge, create=create, mode=mode,
                          startup_seconds=startup_seconds, lifetime_seconds=lifetime_seconds)
 
@@ -44,15 +57,21 @@ def snapshot():
         R.require(actual['sha256']==row['original_sha256'],'Mapped source drift: '+row['path'])
     runtime_path=WORK/'runtime-inputs.json'
     if not runtime_path.exists():
-        original=ROOT/'generated/reference_crafting_authority_metadata.json'
-        target=SOURCE/'generated/reference_crafting_authority_metadata.json'
-        before=pin(original)
-        target.parent.mkdir(parents=True,exist_ok=True)
-        with target.open('xb') as output:output.write(original.read_bytes())
-        mapped=pin(target)
-        R.require(pin(original)==before and mapped['sha256']==before['sha256'],'Runtime facts changed while copying')
-        R.write(runtime_path,{'scope':'Pinned runtime facts; original recipe JSON is read from installed26.3 JAR at startup, not copied into product sources.',
-            'files':[{'original':before,'mapped':mapped}]},True)
+        rows=[]
+        for name in RUNTIME_FACTS:
+            original=ROOT/name
+            target=SOURCE/name
+            before=pin(original)
+            target.parent.mkdir(parents=True,exist_ok=True)
+            # The production mapper already carries item metadata. Admit that
+            # exact existing copy; create only the additional runtime facts.
+            if not target.exists():
+                with target.open('xb') as output:output.write(original.read_bytes())
+            mapped=pin(target)
+            R.require(pin(original)==before and mapped['sha256']==before['sha256'],'Runtime facts changed while copying: '+name)
+            rows.append({'original':before,'mapped':mapped})
+        R.write(runtime_path,{'scope':'Pinned initialized item facts and authenticated light/cooking manifests. Original recipe and fuel-provider JSON are read from the installed26.3 JAR at startup, not copied into product sources.',
+            'files':rows},True)
     else:
         for row in json.loads(runtime_path.read_bytes())['files']:
             R.require(pin(row['mapped']['path'])==row['mapped'],'Mapped runtime input changed')
@@ -115,7 +134,7 @@ def build():
             with (WORK/name).open('x') as output:output.write(text)
         inputs={**original,**{str(path):pin(path)['sha256'] for path in [WORK/name for name in ('comp_instrumented.ts','run.py','diagnose.mjs')]+[PRIVATE/name for name in PRIVATE_PINS]+[SOURCE/'remote_resource_server.bend',SOURCE/'source-map.json',WORK/'runtime-inputs.json']+[Path(row['mapped']['path']) for row in runtime['files']]}}
         limits={'heap_mib':8192,'total_seconds':600,'silence_only_termination':False,'sampled_rss_bytes':8589934592}
-        R.write(WORK/'manifest.json',{'scope':'Actor004/producer017 joins the existing65536byte private server framer, fixing the observed35620byte valid request EOF, and includes startup duplicate-validation removal. Actual production graph retains pure sampling, original-JAR crafting, prospective menu publication and moving receiver. Narrow-tested private WeakMap telescope cache/per-function progress builds on012 queue/zero-arity emitter; original checker/compiler unchanged. No silence-only kill, installed cache promotion or compiler-wide certification.','files':inputs,'limits':limits,'entry':str(SOURCE/'remote_resource_server.bend')},True)
+        R.write(WORK/'manifest.json',{'scope':'Actor004/producer018 joins the sole live cooking owner, original-JAR cooking/fuel startup, authenticated light/cooking discovery and physical bodies in the atomic world save. Includes the native-verified numeric continuation fix. Retains private65536-byte framing, crafting, prospective menu publication, generic samples and moving receiver. Tested private WeakMap/per-function producer; original checker/compiler unchanged. Native cooking consumer is separate; no cache promotion or compiler-wide certification.','files':inputs,'limits':limits,'entry':str(SOURCE/'remote_resource_server.bend')},True)
         with H.bindings(R,{'WORK':WORK}):
             emitted=R.bounded([sys.executable,str(WORK/'run.py')],605,'emission-process')
             R.process_ok(emitted)
@@ -137,8 +156,8 @@ def build():
         R.process_ok(compiled)
         R.require(Path(compiled['stderr']['path']).read_bytes()==b'' and pin(c)==cpin and pin('/usr/bin/clang')==clangpin,'Unexpected native compiler diagnostic or input drift')
     R.require(pin(ACTOR)['sha256']!=pin(OLD/'actor')['sha256'],'New actor reused old binary')
-    done={'status':'PASS','generation':'immutable-actor004/producer017','binary':pin(ACTOR),'source_map':pin(SOURCE/'source-map.json'),'runtime_inputs':pin(WORK/'runtime-inputs.json'),'entry':pin(SOURCE/'remote_resource_server.bend'),'C':cpin,'producer':pin(WORK/'receipt.json'),'source_API':pin(ROOT.parent/'bend/bend2/bend.ts'),'private_compiler':pin(WORK/'comp_instrumented.ts'),'original_compiler':pin(ROOT.parent/'bend/bend2/comp.ts'),'loaded_source_pins':pin(WORK/'loaded-source-pins.json'),'final_source_pins':pin(WORK/'final-source-pins.json'),'emission_seconds':receipt['seconds'],'sampled_peak_RSS_bytes':receipt['sampled_peak_rss_bytes'],'clang':{'command':command,'SDKROOT':sdk,'seconds':compiled['seconds'],'process':pin(WORK/'native-build-process/result.full.json')},'retries':0,'product_cache_promoted':False,'behavior':'pending actual native sockets/save/reload'}
-    R.write(result,done,True);R.write(ROOT/'evidence/playable-client-actor004-build-017.json',done,True)
+    done={'status':'PASS','generation':'immutable-actor004/producer018','binary':pin(ACTOR),'source_map':pin(SOURCE/'source-map.json'),'runtime_inputs':pin(WORK/'runtime-inputs.json'),'entry':pin(SOURCE/'remote_resource_server.bend'),'C':cpin,'producer':pin(WORK/'receipt.json'),'source_API':pin(ROOT.parent/'bend/bend2/bend.ts'),'private_compiler':pin(WORK/'comp_instrumented.ts'),'original_compiler':pin(ROOT.parent/'bend/bend2/comp.ts'),'loaded_source_pins':pin(WORK/'loaded-source-pins.json'),'final_source_pins':pin(WORK/'final-source-pins.json'),'emission_seconds':receipt['seconds'],'sampled_peak_RSS_bytes':receipt['sampled_peak_rss_bytes'],'clang':{'command':command,'SDKROOT':sdk,'seconds':compiled['seconds'],'process':pin(WORK/'native-build-process/result.full.json')},'retries':0,'product_cache_promoted':False,'behavior':'pending actual native cooking/socket/save/reload consumer'}
+    R.write(result,done,True);R.write(ROOT/'evidence/playable-client-actor004-build-018.json',done,True)
     print(json.dumps({'status':done['status'],'binary':done['binary'],'emission_seconds':done['emission_seconds'],'clang_seconds':compiled['seconds']}),flush=True)
 
 
@@ -148,7 +167,7 @@ def main():
     args=parser.parse_args()
     if args.snapshot_only:
         mapping=snapshot()
-        print(json.dumps({'status':'frozen-production-source','generation':'immutable-actor004/producer017',
+        print(json.dumps({'status':'frozen-production-source','generation':'immutable-actor004/producer018',
             'source_map':pin(SOURCE/'source-map.json'),'runtime_inputs':pin(WORK/'runtime-inputs.json'),
             'project_files':len(mapping['files'])}),flush=True)
     else:build()

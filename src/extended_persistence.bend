@@ -403,9 +403,17 @@ def encode_bytes(-Extra: Type, metadata: String & U32, +limits: Limits, result: 
   (State{P.State{engine, identity, path, highwater, old_limits, lease}, extra, maximum, catalog},
     encode_checked(metadata, limits, identity, highwater, encoded))
 
-def encode_counted(~Extra: Type, ~codec: Codec<Extra>, counted: State<Extra> & Limits) -> State<Extra> & Result<&2, &2, String, List<&2, U32>>:
+def encode_codec_counted(~Extra: Type, codec: Codec<Extra>, counted: State<Extra> & Limits) -> State<Extra> & Result<&2, &2, String, List<&2, U32>>:
+  Codec{+namespace, +schema, encode, decode, fresh, legacy} = codec
   (state, limits) = counted
-  encode_bytes(Extra, codec_metadata(Extra, codec), limits, encode_owners(Extra, codec, state))
+  encode_bytes(Extra, (namespace, schema), limits,
+    encode_owners(Extra, Codec{namespace, schema, encode, decode, fresh, legacy}, state))
+
+def encode_codec(~Extra: Type, codec: Codec<Extra>, state: State<Extra>) -> State<Extra> & Result<&2, &2, String, List<&2, U32>>:
+  encode_codec_counted(~Extra, codec, state_limits(Extra, state))
+
+def encode_counted(~Extra: Type, ~codec: Codec<Extra>, counted: State<Extra> & Limits) -> State<Extra> & Result<&2, &2, String, List<&2, U32>>:
+  encode_codec_counted(~Extra, codec, counted)
 
 def encode(~Extra: Type, ~codec: Codec<Extra>, state: State<Extra>) -> State<Extra> & Result<&2, &2, String, List<&2, U32>>:
   encode_counted(~Extra, ~codec, state_limits(Extra, state))
@@ -424,8 +432,11 @@ def save_result(-Extra: Type, session: L.Session, id: String, encoded: State<Ext
   (state, bytes) = encoded
   save_encoded(Extra, bytes, state, session, id)
 
+def save_codec(~Extra: Type, codec: Codec<Extra>, state: State<Extra>, session: L.Session, id: String) -> IO(State<Extra> & L.Session & J.Value):
+  save_result(Extra, session, id, encode_codec(~Extra, codec, state))
+
 def save(~Extra: Type, ~codec: Codec<Extra>, state: State<Extra>, session: L.Session, id: String) -> IO(State<Extra> & L.Session & J.Value):
-  save_result(Extra, session, id, encode(~Extra, ~codec, state))
+  save_codec(~Extra, codec, state, session, id)
 
 def save_descriptor() -> J.Value:
   L.obj([J.JMember{"name", L.text("world.save")}, J.JMember{"phase", L.text("persistence")}, J.JMember{"permitted_mode", L.text("developer")},
@@ -483,17 +494,20 @@ def hook(-Extra: Type, operations: Operations<Extra>, operation: Operation, stat
   L.Envelope{id, op, args, at} = envelope
   hook_valid(Extra, operations, L.validate_args(args, fields) && Maybe.is_none(&2, Nat, at), allowed(access, L.capability(session)), state, session, envelope)
 
-def custom_valid(~Extra: Type, ~codec: Codec<Extra>, valid: Bool, permitted: Bool, +op: String, state: State<Extra>, session: L.Session, id: String) -> IO(State<Extra> & L.Session & J.Value):
+def custom_valid(~Extra: Type, codec: Codec<Extra>, valid: Bool, permitted: Bool, +op: String, state: State<Extra>, session: L.Session, id: String) -> IO(State<Extra> & L.Session & J.Value):
   match valid permitted op:
     case False{} _ _: IO.pure(State<Extra> & L.Session & J.Value, failure(Extra, state, session, id, L.bad("InvalidArguments", "operation requires empty arguments and no at field")))
     case True{} False{} _: IO.pure(State<Extra> & L.Session & J.Value, failure(Extra, state, session, id, L.bad("PermissionDenied", "developer capability required")))
-    case True{} True{} "world.save": save(~Extra, ~codec, state, session, id)
+    case True{} True{} "world.save": save_codec(~Extra, codec, state, session, id)
     case True{} True{} _: IO.pure(State<Extra> & L.Session & J.Value, discover(Extra, state, session, id))
 
-def custom(~Extra: Type, ~codec: Codec<Extra>, envelope: L.Envelope, state: State<Extra>, +session: L.Session) -> IO(State<Extra> & L.Session & J.Value):
+def custom_codec(~Extra: Type, codec: Codec<Extra>, envelope: L.Envelope, state: State<Extra>, +session: L.Session) -> IO(State<Extra> & L.Session & J.Value):
   L.Envelope{id, +op, args, at} = envelope
   L.Session{peer, sequence, capability} = session
-  custom_valid(~Extra, ~codec, L.validate_args(args, []) && Maybe.is_none(&2, Nat, at), String.eq(op, "discover") || C.developer(capability), op, state, L.Session{peer, 1n+sequence, capability}, id)
+  custom_valid(~Extra, codec, L.validate_args(args, []) && Maybe.is_none(&2, Nat, at), String.eq(op, "discover") || C.developer(capability), op, state, L.Session{peer, 1n+sequence, capability}, id)
+
+def custom(~Extra: Type, ~codec: Codec<Extra>, envelope: L.Envelope, state: State<Extra>, session: L.Session) -> IO(State<Extra> & L.Session & J.Value):
+  custom_codec(~Extra, codec, envelope, state, session)
 
 def extra_found(-Extra: Type, operations: Operations<Extra>, found: Maybe<&2, Operation>, envelope: L.Envelope, state: State<Extra>, session: L.Session, token: String, request: J.Value) -> IO(State<Extra> & L.Session & J.Value):
   match found:
@@ -507,23 +521,29 @@ def routed(-Extra: Type, operations: Operations<Extra>, +envelope: L.Envelope, s
   State{base, extra, maximum, +catalog} = state
   extra_found(Extra, operations, lookup(catalog, op), envelope, State{base, extra, maximum, catalog}, session, token, request)
 
-def chosen(~Extra: Type, ~codec: Codec<Extra>, ~operations: Operations<Extra>, own: Bool, envelope: L.Envelope, state: State<Extra>, session: L.Session, token: String, request: J.Value) -> IO(State<Extra> & L.Session & J.Value):
+def chosen(~Extra: Type, ~operations: Operations<Extra>, codec: Codec<Extra>, own: Bool, envelope: L.Envelope, state: State<Extra>, session: L.Session, token: String, request: J.Value) -> IO(State<Extra> & L.Session & J.Value):
   match own:
-    case True{}: custom(~Extra, ~codec, envelope, state, session)
+    case True{}: custom_codec(~Extra, codec, envelope, state, session)
     case False{}: routed(Extra, operations, envelope, state, session, token, request)
 
-def parsed(~Extra: Type, ~codec: Codec<Extra>, ~operations: Operations<Extra>, parsed: Result<&2, &2, L.Fault, L.Envelope>, state: State<Extra>, session: L.Session, token: String, request: J.Value) -> IO(State<Extra> & L.Session & J.Value):
+def parsed(~Extra: Type, ~operations: Operations<Extra>, codec: Codec<Extra>, parsed: Result<&2, &2, L.Fault, L.Envelope>, state: State<Extra>, session: L.Session, token: String, request: J.Value) -> IO(State<Extra> & L.Session & J.Value):
   match parsed:
     case Fail{fault}: delegate(Extra, state, session, token, request)
     case Done{+envelope}:
       L.Envelope{id, +op, args, at} = envelope
-      chosen(~Extra, ~codec, ~operations, String.eq(op, "discover") || String.eq(op, "world.save"), envelope, state, session, token, request)
+      chosen(~Extra, ~operations, codec, String.eq(op, "discover") || String.eq(op, "world.save"), envelope, state, session, token, request)
 
-def dispatch_inner(~Extra: Type, ~codec: Codec<Extra>, ~operations: Operations<Extra>, state: State<Extra>, +session: L.Session, +token: String, +request: J.Value) -> IO(State<Extra> & L.Session & J.Value):
-  parsed(~Extra, ~codec, ~operations, L.envelope(request), observe(Extra, state, L.peer(session)), session, token, request)
+def dispatch_inner(~Extra: Type, ~operations: Operations<Extra>, codec: Codec<Extra>, state: State<Extra>, +session: L.Session, +token: String, +request: J.Value) -> IO(State<Extra> & L.Session & J.Value):
+  parsed(~Extra, ~operations, codec, L.envelope(request), observe(Extra, state, L.peer(session)), session, token, request)
 
 def dispatch(~Extra: Type, ~codec: Codec<Extra>, ~operations: Operations<Extra>, state: State<Extra>, session: L.Session, token: String, request: J.Value) -> IO(State<Extra> & L.Session & J.Value):
-  dispatch_inner(~Extra, ~codec, ~operations, state, session, token, request)
+  dispatch_inner(~Extra, ~operations, codec, state, session, token, request)
+
+# Runtime initialized catalogs are captured by one codec owner, as in
+# load_codec. Both entry points use the same schema/permission/sequence routes
+# and the same encode, atomic publication and acknowledgment functions.
+def dispatch_codec(~Extra: Type, ~operations: Operations<Extra>, codec: Codec<Extra>, state: State<Extra>, session: L.Session, token: String, request: J.Value) -> IO(State<Extra> & L.Session & J.Value):
+  dispatch_inner(~Extra, ~operations, codec, state, session, token, request)
 
 # All initial/load hooks must succeed before a State is adopted or a listener exists.
 def ready_peer(-Extra: Type, state: State<Extra>, peer: Result<&2, &2, String, U32>) -> IO(Ready<Extra>):
