@@ -1,0 +1,62 @@
+{
+  "attempt": {
+    "argv": [
+      "/Users/chuah/.bend/bin/bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/tests/player_crafting_authority_load.bend",
+      "-o",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/loader"
+    ],
+    "attempts": 1,
+    "cap_seconds": 600,
+    "cleanup": {
+      "after": [],
+      "before": [
+        {
+          "argv": "/Users/chuah/.bend/bin/bend /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/source/tests/player_crafting_authority_load.bend -o /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/loader",
+          "group": 20623,
+          "pid": 20623,
+          "state": "Rs"
+        }
+      ],
+      "errors": [],
+      "leader_reaped": true,
+      "live_group_absent": true,
+      "seconds": 0.5512758335098624
+    },
+    "deadline_monotonic": 5715039.148036333,
+    "error": null,
+    "exit_code": -15,
+    "pid": 20623,
+    "seconds": 600.5747225834057,
+    "started_monotonic": 5714439.148036333,
+    "stderr": {
+      "bytes": 0,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/compiler/stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 0,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-load/build-1791140894115165000/compiler/stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "timed_out": true
+  },
+  "boundary": "No new binary was published and no native cases ran. Source19/export19 passed and structural Array kernel2 passed separately. Next route will use existing verified native C-emission cache, preserving exact same frozen source and compiler inputs.",
+  "observed_contention": [
+    "Wire20604 and Wire20999 alongside loader20623 for several minutes (three heavy jobs).",
+    "Density22251 started while all three were listed; actual four-job occupancy recorded to root."
+  ],
+  "pin": "26.3",
+  "prior_runtime_fixture_build_seconds": 401.52670666668564,
+  "snapshot_directory": "build/player-crafting-authority-load/build-1791140894115165000/source",
+  "source_differences": {
+    "added": [
+      "tests/player_crafting_authority_observer.bend"
+    ],
+    "changed": [
+      "src/player_crafting_authority.bend",
+      "tests/player_crafting_authority.bend"
+    ]
+  },
+  "status": "compile-timeout-no-native-verdict"
+}

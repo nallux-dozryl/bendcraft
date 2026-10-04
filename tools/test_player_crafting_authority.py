@@ -176,36 +176,45 @@ def run(args,timeout):
  if r.returncode:raise AssertionError(receipt)
  return r,receipt
 
-def build(entry_relative='tests/player_crafting_authority.bend',binary=BINARY,cache=CACHE):
- # Freeze the actual source graph once. Other owners may keep developing their
- # namespaces while the compiler consumes these exact bytes. No source API or
- # checked term is rewritten, and original Base/compiler inputs remain pinned.
+def build(entry_relative='tests/player_crafting_authority.bend',binary=BINARY,cache=CACHE,resume_snapshot=None):
+ # Freeze the actual source graph once. The verified modular native cache
+ # separately retains exact C emission and compiler/library closure, so a
+ # bounded link failure cannot discard a completed expensive emission.
  import build_native as B
  import test_remote_resource_client as Owned
+ import sys
  work=cache/('build-'+str(time.time_ns()));work.mkdir(parents=True)
- snapshot=B.Snapshot();base=Path('/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/base.bend')
- B.source_graph(ROOT/entry_relative,base,os.environ,snapshot)
- manifest=snapshot.manifest();frozen=work/'source';frozen.mkdir()
- for record in manifest:
-  path=Path(record['path']);content=path.read_bytes()
-  assert hashlib.sha256(content).hexdigest()==record['sha256'],('source changed during freeze',path)
-  if path.is_relative_to(ROOT):
-   target=frozen/path.relative_to(ROOT);target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(content)
+ base=Path('/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/base.bend')
+ if resume_snapshot is None:
+  snapshot=B.Snapshot();B.source_graph(ROOT/entry_relative,base,os.environ,snapshot)
+  manifest=snapshot.manifest();frozen=work/'source';frozen.mkdir()
+  for record in manifest:
+   path=Path(record['path']);content=path.read_bytes()
+   assert hashlib.sha256(content).hexdigest()==record['sha256'],('source changed during freeze',path)
+   if path.is_relative_to(ROOT):
+    target=frozen/path.relative_to(ROOT);target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(content)
+ else:
+  frozen=Path(resume_snapshot).resolve();pins=json.loads((frozen.parent/'source-pins.json').read_text())
+  manifest=pins['original']
  entry=frozen/entry_relative;compiled=B.Snapshot();B.source_graph(entry,base,os.environ,compiled)
- compiled_manifest=compiled.manifest();write_json(work/'source-pins.json',{'original':manifest,'compiled':compiled_manifest})
+ compiled_manifest=compiled.manifest()
+ if resume_snapshot is not None:assert compiled_manifest==pins['compiled'],'resumed frozen graph changed'
+ write_json(work/'source-pins.json',{'original':manifest,'compiled':compiled_manifest})
  Owned.WORK=work
- receipt=Owned.bounded(['/Users/chuah/.bend/bin/bend',entry,'-o',binary],600,'compiler');Owned.process_ok(receipt)
+ cache_report=work/'native-cache.json'
+ receipt=Owned.bounded([sys.executable,ROOT/'tools/build_native.py',entry,'-o',binary,'--report',cache_report],600,'modular-compiler');Owned.process_ok(receipt)
+ native=json.loads(cache_report.read_text());assert native['binary_sha256']==fingerprint(binary)['sha256']
  after=B.Snapshot();B.source_graph(entry,base,os.environ,after)
  assert compiled_manifest==after.manifest(),'frozen compiler graph changed'
- report={'result':receipt,'binary':fingerprint(binary),'sources':manifest,'compiled_sources':compiled_manifest,'compiler':fingerprint(Path('/Users/chuah/.bend/bin/bend')),'snapshot_directory':str(frozen)}
+ report={'result':receipt,'binary':fingerprint(binary),'sources':manifest,'compiled_sources':compiled_manifest,'compiler':fingerprint(Path('/Users/chuah/.bend/bin/bend')),'snapshot_directory':str(frozen),'native_cache':{k:native[k] for k in ('cache_key','cache_hit','binary_sha256','timings','compiler','identity')},'native_cache_report':fingerprint(cache_report)}
  write_json(work/'success.json',report);write_json(cache/'build.json',report)
  return report
 
 def main():
- p=argparse.ArgumentParser();p.add_argument('--prepare',action='store_true');p.add_argument('--native',action='store_true');p.add_argument('--build',action='store_true');a=p.parse_args();expected=prepare()
+ p=argparse.ArgumentParser();p.add_argument('--prepare',action='store_true');p.add_argument('--native',action='store_true');p.add_argument('--build',action='store_true');p.add_argument('--frozen-source',type=Path);a=p.parse_args();expected=prepare()
  if a.prepare:print(json.dumps({'prepared_cases':len(expected)}));return
  if a.build:
-  build()
+  build(resume_snapshot=a.frozen_source)
  if a.native:
   checks=[]
   for threads in (1,4):

@@ -179,17 +179,17 @@ PYTHONDONTWRITEBYTECODE=1 /Users/chuah/.cache/codex-runtimes/codex-primary-runti
 PYTHONDONTWRITEBYTECODE=1 /Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 tools/test_player_crafting_authority_load.py --build --native
 ```
 
-The named integration is the session owner currently retaining `I.State`.
-Adopt `A.State` at that boundary, preserve it through ordinary noncrafting
-inventory operations, invalidate/recompute `A.cache` after any input change,
-route menu requests through `player_crafting_authority_menu` and publish its
-correlated full MenuReply. Ordinary nonresult player clicks use the existing I
-controller inside that producer. Load the service from the actual local JAR and
-recorded metadata through `player_crafting_authority_load.service`; use its
-definitions for the player profile and its recipes for the authority catalog.
-Session/backend/entry adoption is owned by the main integration task. World
-crafting-table access,9-input click topology, recipe awards and owned drop
-disposition remain explicit integration work.
+The concrete production source join is the nonfixture `remote_resource_server`
+startup and the authenticated Backend menu consumer. Startup obtains validated
+player definitions and recipe catalog from the original JAR service; it installs
+those definitions in the durable codec and supplies the catalog to
+`CS.new_with_components`. The Backend retains optional `CS.Context` alongside the
+original Session Shell and routes authenticated MenuInspect/Open/Close/Click to
+the adapter. The explicit fixture path retains the legacy absent-context route.
+The authority native receipt tests the owned producer and loader; the Backend,
+entry, transport and visible client require their separate integration receipts.
+World crafting-table access, nine-input click topology, recipe awards and owned
+drop disposition remain explicit integration work.
 
 `player_crafting_session_adapter.bend` supplies the concrete player Session join.
 Its immutable `Context{catalog,cache,components}` and `CraftOpen`, `CraftClose`,
@@ -223,3 +223,12 @@ now walks the physical Array tree and retains it exactly; its source check and
 structural kernel law pass. The fresh combined replay also checks bench logical
 length and exact ordered catalog/component-mode retention. Its native verdict
 is pending.
+
+The subsequent strengthened combined direct build reached600 seconds while
+several other checker jobs were active. Its exact frozen source and cleaned-up
+process receipt are preserved in failure003; no new native cases ran. The test
+builder now uses the existing verified modular native cache, retaining exact C
+emission separately from native linking and validating the compiler/library
+closure. `--frozen-source` resumes a preserved graph only when every compiled
+input still has the recorded identity. This route has no fresh authority native
+verdict yet.

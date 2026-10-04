@@ -35,10 +35,10 @@ def prepare():
  return request,{'definitions':1658,'items':1658,'tags':236,'recipes':expected}
 
 def main():
- parser=argparse.ArgumentParser();parser.add_argument('--prepare',action='store_true');parser.add_argument('--build',action='store_true');parser.add_argument('--native',action='store_true');args=parser.parse_args()
+ parser=argparse.ArgumentParser();parser.add_argument('--prepare',action='store_true');parser.add_argument('--build',action='store_true');parser.add_argument('--native',action='store_true');parser.add_argument('--frozen-source',type=Path);args=parser.parse_args()
  request,expected=prepare();authority_expected=Authority.prepare()
  if args.prepare:print(json.dumps({'recipe_entries':2042,'ordinary':1202,'unsupported':840,'patched':17}));return
- if args.build:Authority.build('tests/player_crafting_authority_load.bend',BINARY,CACHE)
+ if args.build:Authority.build('tests/player_crafting_authority_load.bend',BINARY,CACHE,args.frozen_source)
  if args.native:
   checks=[]
   for threads in (1,4):
