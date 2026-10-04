@@ -99,6 +99,12 @@ This producer is held for a scoped wrapper correction; no new native build is
 granted yet. Its
 required order is first primary suite, the frozen codec twice, complete phase
 and facade cases twice, then the second primary suite.
+The separate R2 wrapper is now sealed (runner51810052, ready0ba082ff): 6,110
+pins, the same 111 imports and 21 inert controls. Its codec supervisor durably
+registers launches and retains raw/process/cleanup errors; the parent sweep
+checks every registered PID and rejects unknown cleanup. Overall success is
+published only after that sweep. The lead checked the exact syntax-tree delta;
+independent R2 admission is pending and both heavy slots remain free.
 The lead rehashed all 1,693 native dependencies and the binary/receipt/manifest;
 actual Clang-used C equals the cached emitted C. Historical preparation docs
 remain frozen; current results are in the retained host3 partial evidence.

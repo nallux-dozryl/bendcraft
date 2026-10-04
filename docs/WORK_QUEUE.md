@@ -89,7 +89,11 @@ fixture is a verification instrument; none satisfies a gameplay completion gate.
    generation and repair only the external wrapper. Admission must then pass
    before a new bounded build; full phase/facade/two-primary verification follows
    on the new artifact. No production/helper/reference changes or new emission
-   grant yet. Preserve existing
+   grant yet. The separate R2 wrapper is prepared (runner51810052,
+   ready0ba082ff/payload7024be27;6,110pins/111imports), with 21 inert controls
+   covering durable codec registration, permission errors, later-PID cleanup,
+   binding restoration and early failure receipt preservation. Its independent
+   admission is pending. Preserve existing
    phase/reference generations and verify the final consumer generation.
    Required outcome: one shared 20 Hz input/tick/save actor, ordered
    Core/common/input/travel/rotation/pose phases, exact supported metadata across
@@ -100,7 +104,7 @@ Finish in-flight slab/fall host repairs and freeze their useful evidence. Defer
 new standalone feature libraries, expanded reference inventories and peripheral
 receipt polish unless they unblock these two outcomes or fix a concrete defect.
 At most two heavy jobs may run; both slots are free while the corrected phase
-fixture's new composite producer repairs those host cleanup gaps. Foreground
+fixture's sealed R2 composite producer awaits independent admission. Foreground
 validation remains pending the user's coordination;
 no duplicate request or unsolicited foreground launch.
 
