@@ -1,0 +1,187 @@
+{
+  "status": "native-build-passed",
+  "build_receipt": {
+    "binary_bytes": 1514240,
+    "binary_sha256": "5540a279b0ddb0269ca69ee0d9d9842bb7f7782373cb51c09d6a539b8e698307",
+    "build_seconds": 6.708102917298675,
+    "command": [
+      "/Users/chuah/.bend/bin/bend",
+      "tests/sprite_stitch.bend",
+      "-o",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/sprite-stitch-tests"
+    ],
+    "compiler_pid": 95322,
+    "generation": {
+      "inputs_sha256": "5b7537688c55157ad2921209773bb231176050ebcd15e25d260e54b4f7b476c4",
+      "native_sources": {
+        "compiler_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+        "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+        "src/sprite_stitch.bend": "a8f76be7d3e6266c512999436c12e509883b2bd5663123ec810bb05837d93190",
+        "tests/sprite_stitch.bend": "e2b2b788615017ae07af2c41f4a2db9ed47c39b09a3afe1dc747bf12298858fe"
+      },
+      "reference_observation_sha256": "dcf8930bf979b08d0ef5ced2ee9cc9aec516a8d124919d7c652cfe6fbbe9de5c",
+      "reference_sha256": "23e40bd2abb5b7bd57a98bfa35f09059a7860ea8ce8399c3447b33a44d292dcb",
+      "runner_sha256": "b9fd03b036b0d9e3f76ac2d7bfc5294ae80dd6d4821cf294fa210f7dca899d89"
+    },
+    "preparation_sha256": "ea823e7bd235fee655b94c9398a5d73aa926ea83677cc703985715d92e7b1de7",
+    "schema": 1
+  },
+  "process_group_cap_seconds": 600,
+  "observer": {
+    "status": "completed",
+    "launcher_pid": 95316,
+    "process_group": 95316,
+    "command": [
+      "python3",
+      "tools/test_sprite_stitch.py",
+      "--skip-kernel",
+      "--build-only"
+    ],
+    "exit_code": 0,
+    "total_seconds": 7.72965629119426,
+    "observations": [
+      {
+        "pid": 95318,
+        "parent": 95316,
+        "command": "/Users/chuah/.bend/bin/bend tests/sprite_stitch.bend --check-only",
+        "observed_utc": "2026-10-03T23:45:34.947484+00:00",
+        "elapsed_seconds": 0.5971783325076103
+      },
+      {
+        "pid": 95322,
+        "parent": 95316,
+        "command": "/Users/chuah/.bend/bin/bend tests/sprite_stitch.bend -o /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/sprite-stitch-tests",
+        "observed_utc": "2026-10-03T23:45:35.502480+00:00",
+        "elapsed_seconds": 1.1521079577505589
+      },
+      {
+        "pid": 95355,
+        "parent": 95322,
+        "command": "/Library/Developer/CommandLineTools/usr/bin/clang -std=c11 -O3 /var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/bend-591fN6/sprite-stitch-tests.c -lpthread -lm -o /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/sprite-stitch-tests",
+        "observed_utc": "2026-10-03T23:45:39.930730+00:00",
+        "elapsed_seconds": 5.581514249555767
+      },
+      {
+        "pid": 95356,
+        "parent": 95355,
+        "command": "/Library/Developer/CommandLineTools/usr/bin/clang -cc1 -triple arm64-apple-macosx15.5.0 -Wundef-prefix=TARGET_OS_ -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -Werror=implicit-function-declaration -emit-obj -dumpdir /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/sprite-stitch-tests- -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name sprite-stitch-tests.c -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -mllvm -extra-vectorizer-passes -fno-strict-return -ffp-contract=on -fno-rounding-math -funwind-tables=1 -fobjc-msgsend-selector-stubs -target-sdk-version=15.5 -fvisibility-inlines-hidden-static-local-var -fdefine-target-os-macros -fno-assume-unique-vtables -fno-modulemap-allow-subdirectory-search -target-cpu apple-m1 -target-feature +zcm -target-feature +zcz -target-feature +v8.5a -target-feature +aes -target-feature +altnzcv -target-feature +ccdp -target-feature +complxnum -target-feature +crc -target-feature +dotprod -target-feature +fp-armv8 -target-feature +fp16fml -target-feature +fptoint -target-feature +fullfp16 -target-feature +jsconv -target-feature +lse -target-feature +neon -target-feature +pauth -target-feature +perfmon -target-feature +predres -target-feature +ras -target-feature +rcpc -target-feature +rdm -target-feature +sb -target-feature +sha2 -target-feature +sha3 -target-feature +specrestrict -target-feature +ssbs -target-abi darwinpcs -debugger-tuning=lldb -fdebug-compilation-dir=/Users/chuah/Documents/ChatGPT/bendex/minecraft -target-linker-version 1167.5 -fcoverage-compilation-dir=/Users/chuah/Documents/ChatGPT/bendex/minecraft -resource-dir /Library/Developer/CommandLineTools/usr/lib/clang/17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/usr/lib/clang/17/include -internal-externc-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -internal-externc-isystem /Library/Developer/CommandLineTools/usr/include -O3 -Wno-reorder-init-list -Wno-implicit-int-float-conversion -Wno-c99-designator -Wno-final-dtor-non-final-class -Wno-extra-semi-stmt -Wno-misleading-indentation -Wno-quoted-include-in-framework-header -Wno-implicit-fallthrough -Wno-enum-enum-conversion -Wno-enum-float-conversion -Wno-elaborated-enum-base -Wno-reserved-identifier -Wno-gnu-folding-constant -std=c11 -ferror-limit 19 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fmax-type-align=16 -fcommon -vectorize-loops -vectorize-slp -clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation -fno-odr-hash-protocols -clang-vendor-feature=+enableAggressiveVLAFolding -clang-vendor-feature=+revert09abecef7bbf -clang-vendor-feature=+thisNoAlignAttr -clang-vendor-feature=+thisNoNullAttr -clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o /var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/sprite-stitch-tests-71928b.o -x c /var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/bend-591fN6/sprite-stitch-tests.c",
+        "observed_utc": "2026-10-03T23:45:39.932317+00:00",
+        "elapsed_seconds": 5.583079541102052
+      }
+    ],
+    "emitted_c": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/sprite-stitch/preserved.c",
+      "sha256": "01f6d2b61d09343bc1f199736bcd02a118a40dfb84790e2d07e643e63eac267d",
+      "bytes": 1344176,
+      "source_mtime_utc": "2026-10-03T23:45:39.676697+00:00"
+    }
+  },
+  "c_metadata": {
+    "method": "Read-only generated C FID defines and FID_T[][3]; runtime TAG_CLO uses fid_arity-1 capture words",
+    "function_ids": 507,
+    "maximum_fid_arity": 54,
+    "all_closure_count": 46,
+    "maximum_all_tag_clo_capture_words": 20,
+    "packer_closure_count": 15,
+    "maximum_packer_tag_clo_capture_words": 20,
+    "packer_closures": [
+      {
+        "name": "___SRC_SPRITE_STITCH_ADD_SLOTS_C187",
+        "fid": 110,
+        "fid_arity": 21,
+        "tag_clo_capture_words": 20
+      },
+      {
+        "name": "___SRC_SPRITE_STITCH_ADD_SLOTS_C189",
+        "fid": 112,
+        "fid_arity": 21,
+        "tag_clo_capture_words": 20
+      },
+      {
+        "name": "___SRC_SPRITE_STITCH_PROCEED_C344",
+        "fid": 183,
+        "fid_arity": 7,
+        "tag_clo_capture_words": 6
+      },
+      {
+        "name": "___SRC_SPRITE_STITCH_PROCEED_C346",
+        "fid": 185,
+        "fid_arity": 5,
+        "tag_clo_capture_words": 4
+      },
+      {
+        "name": "___SRC_SPRITE_STITCH_PROCEED_C348",
+        "fid": 187,
+        "fid_arity": 5,
+        "tag_clo_capture_words": 4
+      },
+      {
+        "name": "___SRC_SPRITE_STITCH_PROCEED_C349",
+        "fid": 188,
+        "fid_arity": 5,
+        "tag_clo_capture_words": 4
+      },
+      {
+        "name": "___SRC_SPRITE_STITCH_MAKE_HOLDER_C356",
+        "fid": 195,
+        "fid_arity": 9,
+        "tag_clo_capture_words": 8
+      },
+      {
+        "name": "___SRC_SPRITE_STITCH_MAKE_HOLDER_C359",
+        "fid": 198,
+        "fid_arity": 6,
+        "tag_clo_capture_words": 5
+      },
+      {
+        "name": "___SRC_SPRITE_STITCH_MAKE_HOLDER_C360",
+        "fid": 199,
+        "fid_arity": 4,
+        "tag_clo_capture_words": 3
+      },
+      {
+        "name": "___SRC_SPRITE_STITCH_HOLDERS_C430",
+        "fid": 261,
+        "fid_arity": 8,
+        "tag_clo_capture_words": 7
+      },
+      {
+        "name": "___SRC_SPRITE_STITCH_HOLDERS_C432",
+        "fid": 263,
+        "fid_arity": 8,
+        "tag_clo_capture_words": 7
+      },
+      {
+        "name": "___SRC_SPRITE_STITCH_CONFIG_OK_C439",
+        "fid": 269,
+        "fid_arity": 2,
+        "tag_clo_capture_words": 1
+      },
+      {
+        "name": "___SRC_SPRITE_STITCH_PACKING_C484",
+        "fid": 307,
+        "fid_arity": 8,
+        "tag_clo_capture_words": 7
+      },
+      {
+        "name": "___SRC_SPRITE_STITCH_PACKING_C486",
+        "fid": 309,
+        "fid_arity": 11,
+        "tag_clo_capture_words": 10
+      },
+      {
+        "name": "___SRC_SPRITE_STITCH_PACKING_C488",
+        "fid": 311,
+        "fid_arity": 5,
+        "tag_clo_capture_words": 4
+      }
+    ]
+  },
+  "resource_profile": {
+    "sampled": false,
+    "reason": "Native build completed in6.708 seconds before a slow-build sampling threshold; RSS/physical peak unobserved"
+  },
+  "source_changes": false,
+  "compiler_changes": false,
+  "boundary": "Actual installed -O3 emission/native invocation; generated C inspected only, not edited/recompiled"
+}

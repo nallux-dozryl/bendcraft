@@ -1,0 +1,27 @@
+{
+  "boundary": "Integrity of retained generation, not packing behavioral evidence",
+  "generation": {
+    "inputs_sha256": "5b7537688c55157ad2921209773bb231176050ebcd15e25d260e54b4f7b476c4",
+    "native_sources": {
+      "compiler_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+      "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+      "src/sprite_stitch.bend": "a8f76be7d3e6266c512999436c12e509883b2bd5663123ec810bb05837d93190",
+      "tests/sprite_stitch.bend": "e2b2b788615017ae07af2c41f4a2db9ed47c39b09a3afe1dc747bf12298858fe"
+    },
+    "reference_observation_sha256": "dcf8930bf979b08d0ef5ced2ee9cc9aec516a8d124919d7c652cfe6fbbe9de5c",
+    "reference_sha256": "23e40bd2abb5b7bd57a98bfa35f09059a7860ea8ce8399c3447b33a44d292dcb",
+    "runner_sha256": "b9fd03b036b0d9e3f76ac2d7bfc5294ae80dd6d4821cf294fa210f7dca899d89"
+  },
+  "method": "In-memory mutated manifest injection; original prepared files never rewritten",
+  "mutations_rejected": [
+    "manifest_seal",
+    "resealed_source",
+    "resealed_runner",
+    "resealed_reference",
+    "resealed_input_generation",
+    "resealed_case_bytes",
+    "resealed_missing_case"
+  ],
+  "preparation_sha256": "ea823e7bd235fee655b94c9398a5d73aa926ea83677cc703985715d92e7b1de7",
+  "status": "passed"
+}
