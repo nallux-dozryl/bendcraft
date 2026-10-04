@@ -86,8 +86,9 @@ def run(directory):
         index=case['id'];expected=case['expected_pixels']
         exact={mode:observed.get((index,mode))==expected for mode in ['tile','flat','bvh']}
         results.append({k:case[k] for k in ['id','name','width','height','quads']}|{'exact':exact,'forced_proposal_admission_exact':case['expected_forced_proposal_admission'] is None or selectors.get(index)==case['expected_forced_proposal_admission'],'original_scene_quad_count_retained':released.get(index)==case['quads'],'milliseconds_including_forced_output':{mode:timings.get((index,mode)) for mode in exact}})
-    ok=r['exit_code']==0 and r['group_absent'] and not r['timed_out'] and len(observed)==3*len(results) and all(all(c['exact'].values()) and c['forced_proposal_admission_exact'] and c['original_scene_quad_count_retained'] for c in results)
-    S.exclusive_json(directory/'result.json',{'status':'PASS' if ok else 'FAIL','process':r,'results':results,'binary':S.pin(directory/'test'),'preparation':S.pin(directory/'preparation.json'),'unchanged':prep['source_generation']==generation(),'scope':prep['scope']})
+    unchanged=prep['source_generation']==generation()
+    ok=r['exit_code']==0 and r['group_absent'] and not r['timed_out'] and unchanged and len(observed)==3*len(results) and all(all(c['exact'].values()) and c['forced_proposal_admission_exact'] and c['original_scene_quad_count_retained'] for c in results)
+    S.exclusive_json(directory/'result.json',{'status':'PASS' if ok else 'FAIL','process':r,'results':results,'binary':S.pin(directory/'test'),'preparation':S.pin(directory/'preparation.json'),'unchanged':unchanged,'scope':prep['scope']})
     print(json.dumps({'status':'PASS' if ok else 'FAIL','cases':len(results),'results':results}));assert ok,err.decode()[-5000:]
 
 if __name__=='__main__':

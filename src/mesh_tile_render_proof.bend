@@ -68,7 +68,19 @@ def rejected_proposal(proposal:Bool,+quad:M.Prepared,+camera:R.Basis,+settings:M
 def L.actual_tile_rejection_has_complete_miss_contract(quad,bounds,camera,settings,x,y,width,height,rejected):
   rejected_proposal(T.may_overlap(bounds,x,y),quad,camera,settings,x,y,width,height,rejected)
 
+def missed_candidate(prepared:M.Prepared,+textures:List<&2,R.Texture>,+best:M.Fragment) ->
+  {M.solid_candidate(None{},prepared,textures,best) == best : M.Fragment}:
+  match prepared textures:
+    case M.Prepared{a,b,material,cull,order,index,bounds} Nil{}: {==}
+    case M.Prepared{a,b,material,cull,order,index,bounds} head <> tail: {==}
+
 def L.omitted_miss_preserves_complete_opaque_trace(head,tail,origin,direction,settings,textures,best,miss):
-  Equal.cong(Maybe<&2,M.Hit>,M.Fragment,
-    hit => M.opaque_trace(tail,origin,direction,settings,textures,M.solid_candidate(hit,head,textures,best)),
-    M.quad_hit(head,origin,direction,settings),None{},miss)
+  Equal.trans(M.Fragment,
+    M.opaque_trace(head <> tail,origin,direction,settings,textures,best),
+    M.opaque_trace(tail,origin,direction,settings,textures,M.solid_candidate(None{},head,textures,best)),
+    M.opaque_trace(tail,origin,direction,settings,textures,best),
+    Equal.cong(Maybe<&2,M.Hit>,M.Fragment,
+      hit => M.opaque_trace(tail,origin,direction,settings,textures,M.solid_candidate(hit,head,textures,best)),
+      M.quad_hit(head,origin,direction,settings),None{},miss),
+    Equal.cong(M.Fragment,M.Fragment,candidate => M.opaque_trace(tail,origin,direction,settings,textures,candidate),
+      M.solid_candidate(None{},head,textures,best),best,missed_candidate(head,textures,best)))

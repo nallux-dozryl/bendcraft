@@ -71,3 +71,6 @@ def cases(remaining:List<&2,F.Case>,assets:R.Assets) -> IO(Unit):
 
 def arguments(args:List<String>) -> IO(Unit):
   cases(F.cases(),F.assets())
+
+def main() -> IO(Unit):
+  IO.bind(List<String>,Unit,IO.args(),arguments)

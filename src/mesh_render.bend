@@ -267,7 +267,7 @@ def uv_interpolate(base:UV,one:UV,two:UV,+u:F32,+v:F32) -> UV:
 def hit_chosen(valid:Bool,distance:F32,uv:UV) -> Maybe<&2,Hit>:
   match valid uv:
     case True{} UV{u,v}: Some{Hit{distance,u,v}}
-    case False{} _: None{}
+    case False{} UV{u,v}: None{}
 
 def barycentric_scalar(valid:Bool,+ax:F32,+ay:F32,+az:F32,bx:F32,by:F32,bz:F32,dx:F32,dy:F32,dz:F32,+tx:F32,+ty:F32,+tz:F32,px:F32,py:F32,pz:F32,+det:F32,uv:UV,uv1:UV,uv2:UV,settings:Settings) -> Maybe<&2,Hit>:
   match valid:
@@ -293,11 +293,16 @@ def intersect(triangle:Triangle,cull:Cull,origin:Vec3,direction:Vec3,settings:Se
   +det = F32.add(F32.mul(ax,px),F32.add(F32.mul(ay,py),F32.mul(az,pz)))
   barycentric_scalar(determinant_valid(cull,det),ax,ay,az,bx,by,bz,dx,dy,dz,F32.sub(ox,x),F32.sub(oy,y),F32.sub(oz,z),px,py,pz,det,uv,uv1,uv2,settings)
 
+def chosen_hit(first:Bool,distance:F32,u:F32,v:F32,other:F32,other_u:F32,other_v:F32) -> Maybe<&2,Hit>:
+  match first:
+    case True{}: Some{Hit{distance,u,v}}
+    case False{}: Some{Hit{other,other_u,other_v}}
+
 def nearer(first:Maybe<&2,Hit>,second:Maybe<&2,Hit>) -> Maybe<&2,Hit>:
   match first second:
     case None{} _: second
     case _ None{}: first
-    case Some{Hit{+a,u,v}} Some{Hit{+b,uu,vv}}: P.choose(Maybe<&2,Hit>,first,second,F32.is_le(a,b))
+    case Some{Hit{+a,u,v}} Some{Hit{+b,uu,vv}}: chosen_hit(F32.is_le(a,b),a,u,v,b,uu,vv)
 
 def quad_hit(prepared:Prepared,+origin:Vec3,+direction:Vec3,+settings:Settings) -> Maybe<&2,Hit>:
   Prepared{a,b,material,+cull,order,index,bounds} = prepared
@@ -346,18 +351,30 @@ def before(a:Fragment,b:Fragment) -> Bool:
     case Fragment{+distance,+order,+index,color} Fragment{+other,+other_order,other_index,c}:
       F32.is_lt(distance,other) || (F32.is_eq(distance,other) && (U32.is_lt(order,other_order) || (U32.is_eq(order,other_order) && U32.is_lt(index,other_index))))
 
+# Match the resource owner even on a rejected ray. This is a read, not a sink.
+def unchanged_best(textures:List<&2,R.Texture>,best:Fragment) -> Fragment:
+  match textures:
+    case Nil{}: best
+    case head <> tail: best
+
+# A concrete scalar selector avoids boxing two Fragments for generic choice.
+def chosen_fragment(first:Bool,candidate:Fragment,best:Fragment) -> Fragment:
+  match first candidate best:
+    case True{} Fragment{distance,order,index,color} Fragment{other,other_order,other_index,other_color}: Fragment{distance,order,index,color}
+    case False{} Fragment{distance,order,index,color} Fragment{other,other_order,other_index,other_color}: Fragment{other,other_order,other_index,other_color}
+
 def solid_candidate(hit:Maybe<&2,Hit>,prepared:Prepared,+textures:List<&2,R.Texture>,+best:Fragment) -> Fragment:
   match hit prepared:
-    case None{} _: best
+    case None{} Prepared{a,b,material,cull,order,index,bounds}: unchanged_best(textures,best)
     case Some{Hit{+distance,+u,+v}} Prepared{a,b,+material,cull,order,index,bounds}:
       Material{texture,tint,light,shade,+mode,address} = material
       +color = hit_color(Hit{distance,u,v},material,textures)
       +candidate : Fragment = Fragment{distance,order,index,U32.or(color,4278190080)}
-      P.choose(Fragment,candidate,best,solid(mode,channel(color,24n)) && before(candidate,best))
+      chosen_fragment(solid(mode,channel(color,24n)) && before(candidate,best),candidate,best)
 
 def opaque_trace(quads:List<&2,Prepared>,+origin:Vec3,+direction:Vec3,+settings:Settings,+textures:List<&2,R.Texture>,best:Fragment) -> Fragment:
   match quads:
-    case Nil{}: best
+    case Nil{}: unchanged_best(textures,best)
     case +head <> tail: opaque_trace(tail,origin,direction,settings,textures,solid_candidate(quad_hit(head,origin,direction,settings),head,textures,best))
 
 def distance(fragment:Fragment) -> F32:
@@ -373,8 +390,10 @@ def spatial_visible(tree:Spatial,origin:Vec3,direction:Vec3,best:F32) -> Bool:
 
 def spatial_trace(tree:Spatial,+origin:Vec3,+direction:Vec3,+settings:Settings,+textures:List<&2,R.Texture>,+best:Fragment,visible:Bool) -> Fragment:
   match tree visible:
-    case _ False{}: best
-    case Empty{} _: best
+    case Empty{} _: unchanged_best(textures,best)
+    case Flat{quads} False{}: unchanged_best(textures,best)
+    case Leaf{bounds,quads} False{}: unchanged_best(textures,best)
+    case Branch{bounds,left,right} False{}: unchanged_best(textures,best)
     case Flat{quads} True{}: opaque_trace(quads,origin,direction,settings,textures,best)
     case Leaf{bounds,quads} True{}: opaque_trace(quads,origin,direction,settings,textures,best)
     case Branch{bounds,+left,+right} True{}: spatial_trace(right,origin,direction,settings,textures,spatial_trace(left,origin,direction,settings,textures,best,spatial_visible(left,origin,direction,distance(best))),spatial_visible(right,origin,direction,distance(best)))
@@ -385,9 +404,18 @@ def insert_fragment(fragments:List<&2,Fragment>,+fragment:Fragment) -> List<&2,F
     case Nil{}: [fragment]
     case +head <> +tail: P.choose(List<&2,Fragment>,fragment <> fragments,head <> insert_fragment(tail,fragment),before(fragment,head))
 
+def unchanged_fragments(textures:List<&2,R.Texture>,fragments:List<&2,Fragment>) -> List<&2,Fragment>:
+  match textures:
+    case Nil{}: fragments
+    case head <> tail: fragments
+
+def rejected_material(head:Prepared,textures:List<&2,R.Texture>,fragments:List<&2,Fragment>) -> List<&2,Fragment>:
+  Prepared{a,b,material,cull,order,index,bounds} = head
+  unchanged_fragments(textures,fragments)
+
 def trans_candidate(hit:Maybe<&2,Hit>,prepared:Prepared,+textures:List<&2,R.Texture>,+best:Fragment,+fragments:List<&2,Fragment>) -> List<&2,Fragment>:
   match hit prepared:
-    case None{} _: fragments
+    case None{} Prepared{a,b,material,cull,order,index,bounds}: unchanged_fragments(textures,fragments)
     case Some{Hit{+distance,+u,+v}} Prepared{a,b,+material,cull,order,index,bounds}:
       +color = hit_color(Hit{distance,u,v},material,textures)
       +fragment : Fragment = Fragment{distance,order,index,color}
@@ -396,11 +424,12 @@ def trans_candidate(hit:Maybe<&2,Hit>,prepared:Prepared,+textures:List<&2,R.Text
 def trans_selected(mode:Mode,+head:Prepared,+origin:Vec3,+direction:Vec3,+settings:Settings,+textures:List<&2,R.Texture>,+best:Fragment,fragments:List<&2,Fragment>) -> List<&2,Fragment>:
   match mode:
     case Translucent{}: trans_candidate(quad_hit(head,origin,direction,settings),head,textures,best,fragments)
-    case _: fragments
+    case Opaque{}: rejected_material(head,textures,fragments)
+    case Cutout{threshold}: rejected_material(head,textures,fragments)
 
 def trans_trace(quads:List<&2,Prepared>,+origin:Vec3,+direction:Vec3,+settings:Settings,+textures:List<&2,R.Texture>,+best:Fragment,fragments:List<&2,Fragment>) -> List<&2,Fragment>:
   match quads:
-    case Nil{}: fragments
+    case Nil{}: unchanged_fragments(textures,fragments)
     case +head <> tail:
       Prepared{a,b,Material{texture,tint,light,shade,mode,address},cull,order,index,bounds} = head
       trans_trace(tail,origin,direction,settings,textures,best,trans_selected(mode,head,origin,direction,settings,textures,best,fragments))
@@ -438,9 +467,23 @@ def pixel_direction(tree:Spatial,+quads:List<&2,Prepared>,+textures:List<&2,R.Te
   +best = spatial_trace(tree,origin,dir,settings,textures,Fragment{F32.add(far,1.0),4294967295,4294967295,background},True{})
   pixel_best(best,quads,textures,origin,dir,settings)
 
+def outside_lists(quads:List<&2,Prepared>,textures:List<&2,R.Texture>) -> U32:
+  match quads textures:
+    case Nil{} Nil{}: 0
+    case head <> tail Nil{}: 0
+    case Nil{} head <> tail: 0
+    case head <> tail other <> rest: 0
+
+def outside_tree(tree:Spatial,quads:List<&2,Prepared>,textures:List<&2,R.Texture>) -> U32:
+  match tree:
+    case Empty{}: outside_lists(quads,textures)
+    case Flat{entries}: outside_lists(quads,textures)
+    case Leaf{bounds,entries}: outside_lists(quads,textures)
+    case Branch{bounds,left,right}: outside_lists(quads,textures)
+
 def pixel_inside(inside:Bool,tree:Spatial,quads:List<&2,Prepared>,textures:List<&2,R.Texture>,+camera:R.Basis,settings:Settings,x:U32,y:U32,width:U32,height:U32) -> U32:
   match inside:
-    case False{}: 0
+    case False{}: outside_tree(tree,quads,textures)
     case True{}: pixel_direction(tree,quads,textures,camera,settings,R.direction(camera,x,y,width,height))
 
 def pixel(+tree:Spatial,+quads:List<&2,Prepared>,+textures:List<&2,R.Texture>,+camera:R.Basis,+settings:Settings,+x:U32,+y:U32,+width:U32,+height:U32) -> U32:
@@ -462,11 +505,32 @@ def frame(+n:Nat,+tile_depth:Nat,+tree:Spatial,+quads:List<&2,Prepared>,+texture
         frame(p,tile_depth,tree,quads,textures,camera,settings,x,U32.add(y,half),half,width,height) frame(p,tile_depth,tree,quads,textures,camera,settings,U32.add(x,half),U32.add(y,half),half,width,height)
       Qua{a,b,c,d}
 
-def render_prepared(pair:List<&2,Prepared> & List<&2,Prepared>,camera:R.Camera,+settings:Settings,+textures:List<&2,R.Texture>,+width:U32,+height:U32,accelerated:Bool) -> Image:
+def spatial_mode(accelerated:Bool,+opaque:List<&2,Prepared>) -> Spatial:
+  match accelerated:
+    case True{}: spatial(10n,opaque,leaf_ready(opaque))
+    case False{}: Flat{opaque}
+
+# Last ownership use follows all frame reads; these walkers stay on the host.
+def finish_quads(quads:List<&2,Prepared>,image:Image) -> Image:
+  match quads:
+    case Nil{}: image
+    case head <> tail: finish_quads(tail,image)
+
+def finish_tree(tree:Spatial,image:Image) -> Image:
+  match tree:
+    case Empty{}: image
+    case Flat{quads}: finish_quads(quads,image)
+    case Leaf{bounds,quads}: finish_quads(quads,image)
+    case Branch{bounds,left,right}: finish_tree(right,finish_tree(left,image))
+
+def prepared_frame(+tree:Spatial,+alpha:List<&2,Prepared>,textures:List<&2,R.Texture>,camera:R.Basis,settings:Settings,+depth:Nat,+tile_depth:Nat,width:U32,height:U32) -> Image:
+  finish_tree(tree,finish_quads(alpha,frame(Nat.sub(depth,tile_depth),tile_depth,tree,alpha,textures,camera,settings,0,0,U32.shln(1,depth),width,height)))
+
+def render_prepared(pair:List<&2,Prepared> & List<&2,Prepared>,camera:R.Camera,+settings:Settings,textures:List<&2,R.Texture>,+width:U32,+height:U32,accelerated:Bool) -> Image:
   (+opaque,alpha) = pair
   +depth = Presentation.depth(width,height)
-  +tile_depth = Nat.min(depth,4n)
-  frame(Nat.sub(depth,tile_depth),tile_depth,P.choose(Spatial,spatial(10n,opaque,leaf_ready(opaque)),Flat{opaque},accelerated),alpha,textures,basis(camera,settings),settings,0,0,U32.shln(1,depth),width,height)
+  tile_depth = Nat.min(depth,4n)
+  prepared_frame(spatial_mode(accelerated,opaque),alpha,textures,basis(camera,settings),settings,depth,tile_depth,width,height)
 
 def render_valid(error:String,scene:Scene,+textures:List<&2,R.Texture>,+width:U32,+height:U32,accelerated:Bool) -> Result<&2,&2,Error,Image>:
   match error:

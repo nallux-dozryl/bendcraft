@@ -167,7 +167,7 @@ def cells(n:Nat,+remaining:List<&2,Entry>,+camera:R.Basis,+settings:M.Settings,+
 def prepare(+scene:M.Scene,+width:U32,+height:U32) -> Owner:
   M.Scene{camera,quads,+settings} = scene
   +basis = M.basis(camera,settings)
-  +depth = Nat.max(4n,P.depth(width,height))
+  +depth = P.depth(width,height)
   Owner{scene,basis,settings,width,height,depth,
     cells(Nat.sub(depth,4n),entries(M.prepare(quads,0),lens(basis,width,height)),basis,settings,0,0,U32.shln(1,depth),width,height)}
 
@@ -217,14 +217,20 @@ def fin(image:Image,opaque:List<&2,M.Prepared>,alpha:List<&2,M.Prepared>) -> Ima
     case Nil{} head <> tail: fin(image,[],tail)
     case Nil{} Nil{}: image
 
-def tile(value:Candidates,camera:R.Basis,settings:M.Settings,textures:List<&2,R.Texture>,x:U32,y:U32,width:U32,height:U32) -> Image:
+def tile_span(large:Bool,medium:Bool,opaque:List<&2,M.Prepared>,alpha:List<&2,M.Prepared>,camera:R.Basis,settings:M.Settings,textures:List<&2,R.Texture>,x:U32,y:U32,width:U32,height:U32) -> Image:
+  match large medium:
+    case True{} _: b16(opaque,alpha,camera,settings,textures,x,y,width,height)
+    case False{} True{}: b8(opaque,alpha,camera,settings,textures,x,y,width,height)
+    case False{} False{}: b4(opaque,alpha,camera,settings,textures,x,y,width,height)
+
+def tile(value:Candidates,camera:R.Basis,settings:M.Settings,textures:List<&2,R.Texture>,x:U32,y:U32,+side:U32,width:U32,height:U32) -> Image:
   Candidates{+opaque,+alpha} = value
-  fin(b16(opaque,alpha,camera,settings,textures,x,y,width,height),opaque,alpha)
+  fin(tile_span(U32.is_ge(side,16),U32.is_ge(side,8),opaque,alpha,camera,settings,textures,x,y,width,height),opaque,alpha)
 
 # Balanced forks stop at16 pixels. No per-pixel fork or Spatial ownership.
 def node(value:Cells,+camera:R.Basis,+settings:M.Settings,+textures:List<&2,R.Texture>,+x:U32,+y:U32,+side:U32,+width:U32,+height:U32) -> Image:
   match value:
-    case Tile{entries}: tile(split_entries(entries,Candidates{[],[]}),camera,settings,textures,x,y,width,height)
+    case Tile{entries}: tile(split_entries(entries,Candidates{[],[]}),camera,settings,textures,x,y,side,width,height)
     case Node{tl,tr,bl,br}:
       +half = U32.div(side,2)
       a b c d = node(tl,camera,settings,textures,x,y,half,width,height) node(tr,camera,settings,textures,U32.add(x,half),y,half,width,height)
