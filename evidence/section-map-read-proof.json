@@ -1,0 +1,217 @@
+{
+  "all_original_declaration_maps_retained": true,
+  "artifact": {
+    "bytes": 54538,
+    "file": "selected.bendtt",
+    "sha1": "94f7589be6bfc17061f23e752474b45d5c71764a",
+    "sha256": "fb587838764621f93f57835df3af4b0516f3428669107375e0f300280661ba71"
+  },
+  "checked_types_and_bodies_unchanged": true,
+  "compiler_api": [
+    {
+      "bytes": 137761,
+      "file": "bend.ts",
+      "sha1": "2105cb635e087b686b1bc5c4b6b139660eeb3db9",
+      "sha256": "7deae3693eb896f33c73867081b99d2c6f3ed3b57e77e55eb5f6260840dd0e63"
+    },
+    {
+      "bytes": 63418,
+      "file": "safe.ts",
+      "sha1": "0b72424978b2acf7eb30f53d9b01b96f267dbcac",
+      "sha256": "54cb3a534ab7cc9ee313bf6383b3948ccdcac022469b3020e00745bbfe6f7e04"
+    }
+  ],
+  "export_script": {
+    "bytes": 3551,
+    "file": "section_map_read_proof.mjs",
+    "sha1": "3272f9b7e06a4a91b2a0f2b1d94165baff5659c4",
+    "sha256": "3c1f9ceec215193c236afa447133e4836ef9eb75a910f99fd435b594409e18ff"
+  },
+  "folder": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/section-map-read-proof/1791132363218808000",
+  "kernel": {
+    "bytes": 3271216,
+    "file": "bendtt",
+    "sha1": "f19dfe8aec3b3911b6c9f0acae2a54f5b05ca5f0",
+    "sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7"
+  },
+  "laws": 11,
+  "node": {
+    "bytes": 77577344,
+    "file": "node",
+    "sha1": "606616eb1de7b4974f98c95de3a88e21aaa37249",
+    "sha256": "ec307018e1e8b80d68588b01ce6e9f8f9b8f4a03412c513b0fc3ac4d0f5db799"
+  },
+  "receipts": [
+    {
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/section_map_read_proof.bend",
+        "--check-only"
+      ],
+      "exit_code": 0,
+      "group_absent": true,
+      "pid": 58757,
+      "seconds": 0.114599,
+      "stderr": {
+        "bytes": 0,
+        "file": "ordinary.stderr",
+        "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 58,
+        "file": "ordinary.stdout",
+        "sha1": "7ac487c4af0e6a0b7df1ebae438bf1c0ffe5e478",
+        "sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1"
+      },
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+        "--experimental-transform-types",
+        "--stack-size=4096",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/section_map_read_proof.mjs",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/section-map-read-proof/1791132363218808000"
+      ],
+      "exit_code": 0,
+      "group_absent": true,
+      "pid": 58758,
+      "seconds": 1.104942,
+      "stderr": {
+        "bytes": 177,
+        "file": "export.stderr",
+        "sha1": "33fc055456c3b688475ecb628fc3aa1e97973315",
+        "sha256": "11b70c50cc676185fb33ee941916bba53a2cee082624f37e9deb7bf6a9473c18"
+      },
+      "stdout": {
+        "bytes": 989,
+        "file": "export.stdout",
+        "sha1": "5710b2bdff711e1a94a40f09143f2fd2efbf08b4",
+        "sha256": "4236a0bd8a37be95920946472a933034d74971e13876ebf56647a8a3a67709c1"
+      },
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/env",
+        "LEAN_STACK_SIZE=4194304",
+        "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/section-map-read-proof/1791132363218808000/selected.bendtt"
+      ],
+      "exit_code": 0,
+      "group_absent": true,
+      "pid": 58759,
+      "seconds": 0.018286,
+      "stderr": {
+        "bytes": 0,
+        "file": "independent-kernel.stderr",
+        "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 17,
+        "file": "independent-kernel.stdout",
+        "sha1": "ba8ec8289ea6f6e6fec687b636c07f05c26d0a8b",
+        "sha256": "61b73cda11b6b665b9f99f2defd3d3b57f985c865225e942a5bdaa594a503e47"
+      },
+      "timed_out": false
+    }
+  ],
+  "roots": [
+    "section_map_read_laws:checked_section_refusal_preserves_full_head_and_bucket_tail",
+    "section_map_read_laws:selected_section_result_stays_at_its_original_bucket_position",
+    "section_map_read_laws:collision_prefix_is_neither_deleted_nor_reordered",
+    "section_map_read_laws:empty_leaf_preserves_its_exact_trie_constructor",
+    "section_map_read_laws:malformed_depth_preserves_all_owned_bucket_entries",
+    "section_map_read_laws:terminal_branch_is_retained_on_shape_refusal",
+    "section_map_read_laws:left_read_retains_untouched_right_and_returned_left_owners",
+    "section_map_read_laws:right_read_retains_untouched_left_and_returned_right_owners",
+    "section_map_read_laws:leaf_read_preserves_all_entries_and_their_order",
+    "section_map_read_laws:actual_bucket_head_read_preserves_complete_collision_bucket",
+    "section_map_read_laws:actual_bucket_miss_retains_arbitrary_prefix_and_tail"
+  ],
+  "scope": "Actual owned section getter refusal, exact trie constructors/branch/bucket framing, and arbitrary collision-bucket order preservation composed with explicit actual Section.get/recursive-read owner premises. Complete Core native retention is tested through the real callback consumer.",
+  "scope_exclusions": [],
+  "selection": {
+    "bytes": 6009,
+    "file": "selection.json",
+    "sha1": "5e14bb98a84aaea61d40c1a0a46abe2b006f4e8f",
+    "sha256": "ecc73d91b188f15025cd1f3660d99906258a2d603ab3bef30961d50ace338f9b"
+  },
+  "source_pins": {
+    "bytes": 867,
+    "file": "source-pins.json",
+    "sha1": "2fbb4d9a03883e754d9a5bcc40775a8e52c239e6",
+    "sha256": "1c26d43cd59fcbab76b02a5bcda8fd28535f30b017cffb34dbf88edc7c28320a"
+  },
+  "status": "passed",
+  "term_pins": [
+    {
+      "checked_proof_sha256": "a16fe70b9b12e8975ac933bd7583e7f82e49309ebfc26691195f5b78af36d74b",
+      "name": "section_map_read_laws:checked_section_refusal_preserves_full_head_and_bucket_tail",
+      "source_body_sha256": "888af42ef2f9bf8f32930d434d5bdd19f679294f036b993e1a6436968119f2ab",
+      "type_sha256": "190b6953896c7455a53bf8ed07f4b5f322315f88a83e9b694d0f5e880b1c796b"
+    },
+    {
+      "checked_proof_sha256": "1e95f1e9509b6a2d2f74d377598472cfc5b0d648833fd2b0ba5ca95c76a3e93c",
+      "name": "section_map_read_laws:selected_section_result_stays_at_its_original_bucket_position",
+      "source_body_sha256": "a98e58029b2b5c8ac2fc11aa6037b631a9d763a29164c5934bf8df5238899a3c",
+      "type_sha256": "58db34d48539f4ffacc518ad28c278c59656afe7878770908edefce25b1aaade"
+    },
+    {
+      "checked_proof_sha256": "173cbcdce1d602f49066fda6b9dd78c6bb4040a0fb20c5647ec8c91bc42f91f3",
+      "name": "section_map_read_laws:collision_prefix_is_neither_deleted_nor_reordered",
+      "source_body_sha256": "cc0ed081f2c47711c9aa636eb1d43e5fad3094c8eaf6e7d84634f592bc204c64",
+      "type_sha256": "9bf08e3bf5211fb6520800aa8b4d74d906b1e9fa1c383cabe2c6fb320867e719"
+    },
+    {
+      "checked_proof_sha256": "69ca2095340da2701d2d0b2f5b4d29360d44286bf668e6ca14fd1b743ffec9d0",
+      "name": "section_map_read_laws:empty_leaf_preserves_its_exact_trie_constructor",
+      "source_body_sha256": "ac7bb8e722ef7643675bf4d59bb78185a27df6ee872ebd4f6af9008d52442302",
+      "type_sha256": "b9faab85add110f8ec3393da01e812d5314f00a794daf14c0e9081abdbe406ed"
+    },
+    {
+      "checked_proof_sha256": "769ba0b24e5542e797b0770aca0276e5fe94ec29ba6ab0c66acc9d91a64b50d5",
+      "name": "section_map_read_laws:malformed_depth_preserves_all_owned_bucket_entries",
+      "source_body_sha256": "01d61ee6c2b283706de6844668b72a7373311e74f0c7768c6aa61500ba0f502a",
+      "type_sha256": "6e39ea74e149879ac861a9eebe239bc8720d7c18f2a2598e7a11b6de5dfb20a6"
+    },
+    {
+      "checked_proof_sha256": "61e19e1caea6ab9b3561923228376a553dbd8c1c00e807b07adef80911ec563d",
+      "name": "section_map_read_laws:terminal_branch_is_retained_on_shape_refusal",
+      "source_body_sha256": "a0274cea900e0c65529eb2c7add316a8003d6f2c0fe8a60bd017e9baf7d8c3e5",
+      "type_sha256": "c902485358986f9f6bb40d92255f103cc09a7fea1b95c078672eb04b606d81a3"
+    },
+    {
+      "checked_proof_sha256": "cacaf9542326a7791decb7c474dcebd9dfddfa0c70351bee80ee357c898d27f9",
+      "name": "section_map_read_laws:left_read_retains_untouched_right_and_returned_left_owners",
+      "source_body_sha256": "5f91977f99818871ba271ba9989d9369802bc914da87e58d1c34bea805efd113",
+      "type_sha256": "24608438542629e6e008bbc62f297351fcc79499307d29efea72753ca4bfd30f"
+    },
+    {
+      "checked_proof_sha256": "f689b112fc7225aa0904577f9ff7b6328137d4f803d7160e5ba70a79de5d8e8d",
+      "name": "section_map_read_laws:right_read_retains_untouched_left_and_returned_right_owners",
+      "source_body_sha256": "5f91977f99818871ba271ba9989d9369802bc914da87e58d1c34bea805efd113",
+      "type_sha256": "3b2d7ff84d5ed525f220bf76c0711e0ad3d451ed9f7d275f2fedcf60c00085d3"
+    },
+    {
+      "checked_proof_sha256": "941366e5fb4c4e664d52f2bf712d1865a727810776090fd4f2fb039e7637a8b4",
+      "name": "section_map_read_laws:leaf_read_preserves_all_entries_and_their_order",
+      "source_body_sha256": "b0adb6eba627191c4d3b3215fd630dfa6f0bdca902479580fc8076f0c20263b6",
+      "type_sha256": "3c5d948e75bf04dddb64a795bf5f76b940dd2b80bb963cf551c84a867b2fe191"
+    },
+    {
+      "checked_proof_sha256": "40b8fb5f537b0037f60488bdfa9796133f2ad6fb0384e7919676caf32b8df645",
+      "name": "section_map_read_laws:actual_bucket_head_read_preserves_complete_collision_bucket",
+      "source_body_sha256": "c380d6b9e6866d76b821a1b5f15992617ac7c07c6451103819d38e9b770b32ab",
+      "type_sha256": "e94062720b6238a34ad004e56e546f4a7504354500be5e5bf0e7eceff7cbcedb"
+    },
+    {
+      "checked_proof_sha256": "7875309cae0eb80cd5571ee0c34fadcafa019702abb746969b07516782096d71",
+      "name": "section_map_read_laws:actual_bucket_miss_retains_arbitrary_prefix_and_tail",
+      "source_body_sha256": "f91debeb3a1ecb9bf488a8858b11ce4ae3b513637a62cec9e6110b4ce34b8a09",
+      "type_sha256": "bf47f18ec3ed68f9e9bd4fb7c89e31689c887fbe68b9bc31cde3222f9eb50163"
+    }
+  ]
+}

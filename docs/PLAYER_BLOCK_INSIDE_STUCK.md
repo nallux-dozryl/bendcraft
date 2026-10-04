@@ -40,6 +40,8 @@ State{world: Core.World, registry: Registry.Registry,
 
 `query(state, request)` reads each admitted contact through `Core.read_block`, decodes its actual state ID through `Registry.decode`, and evaluates the callback. The registry is the general loaded metadata owner; the query does not use the four-state visual palette or assume that movement collision describes entity-inside collision. Contact positions carry their dimension. The caller supplies contacts in the original traversal order, with a `BlockIntersection`, `NoBlockIntersection`, or `UnresolvedIntersection` admission. The traversal service must establish the original entity-inside intersection and deduplication. This is an explicit service boundary, not an assertion that supplied contacts were geometrically verified by this module.
 
+The shared Core reader now uses `section_map_read` so a read cannot reorder a queried hash-collision bucket through pop/set reinsertion. This was a real shared-service retention defect exposed by the complete raw-owner observer. See `docs/SECTION_MAP_READ.md`; Core integration is root-owned.
+
 Candidates remain separate immutable Data until every read and callback succeeds. Failure restores the original receiver and owned fall history, retaining the complete world, registry and arbitrary affine tail. Missing sections remain failures; unloaded positions do not become air. Query fuel is an explicit work budget. Unknown intersections, unknown callback classes, invalid state metadata and required damage services refuse the entire candidate. The supported neutral callbacks are air, stone, dirt and oak planks. All other classes besides cobweb and sweet berry are refused.
 
 `stationary(state, request)` implements the stationary `Entity.checkInsideBlocks` slice: deflate the actual box by `double(1e-5f)`, floor its endpoints, enumerate X fastest, then Y, then Z, and read the actual loaded states. It uses the original full entity-inside shapes independently observed for the admitted classes. The removed/noPhysics/alive gates suppress reads. This entry is for a genuinely stationary traversal. Passing the final box of a moving entity is not equivalent to the moving swept traversal.
@@ -69,6 +71,8 @@ The concrete join is:
 
 This slice does not add receiver fields to the root record or save codec. A consumer that constructs a new receiver uses `empty`; reconstructing other lifecycle states must preserve or initialize the actual transient fields according to that lifecycle's Java contract. Codec/lifecycle integration has not been inferred from a fabricated persistence field.
 
+The impulse grace timer is stored for the exact callback reset gate. The LivingEntity timer tick and impulse-producing lifecycle are separate consumer responsibilities; this slice does not decrement that timer or create an impulse.
+
 ## Explicit damage and traversal boundaries
 
 For a real `ServerLevel`, nonzero-age berry bushes can call `hurtServer` after the setter. The movement is the observed known movement for a client-authoritative receiver, otherwise `oldPosition - position`. Damage is required when horizontal squared movement is positive and either absolute horizontal component reaches `double(.003f)`. Flying does not suppress this damage branch. The module admits a server callback only when the exact predicate establishes no damage; otherwise it returns `ServerBerryDamageRequired` with whole-owner retention. Health, damage-source/effect semantics and a real ServerLevel damage observation remain separate dependencies. ClientLevel and ordinary non-ServerLevel callbacks have no such branch.
@@ -79,7 +83,7 @@ The full Java dispatcher also handles moving sweeps, movement step limits, dedup
 
 `src/player_block_inside_stuck_laws.bend` states 15 production laws. They cover exact replacement and exclusion behavior, flying/impulse retention, grace-dependent reset, complete arbitrary owner retention at budget/world/intersection/callback refusals, preservation of affine environment owners on commit, transient consumption, and the actual MH adapter's body-mismatch rollback. A callback-service premise is explicitly bound to the real `callback_checked`, and earlier speculative results are discarded on its refusal.
 
-The independently checked final source export retains every original declaration map, checked source type and checked proof body, selects the 15 production roots without altering them, and has zero exclusions. Final IR: 3,565,356 bytes. Ordinary/source-export/kernel times: 16.949/37.117/0.844 seconds. See `evidence/player-block-inside-stuck-proof.json`. Original successful receipts before the direct raw-constant refinement remain in ignored build directories.
+The independently checked final source export retains every original declaration map, checked source type and checked proof body, selects the 15 production roots without altering them, and has zero exclusions. The final check includes the actual shared Core reader join. IR: 3,550,707 bytes. Ordinary/source-export/kernel times: 5.121/35.960/0.673 seconds. See `evidence/player-block-inside-stuck-proof.json`. Original successful receipts before the raw-constant refinement and shared reader join remain in ignored build directories.
 
 Reproduction:
 
@@ -89,4 +93,4 @@ PYTHONDONTWRITEBYTECODE=1 python3 tools/test_player_block_inside_stuck_proof.py
 PYTHONDONTWRITEBYTECODE=1 python3 tools/test_player_block_inside_stuck.py
 ```
 
-The native harness calls actual production reducers. Its world/registry retention observations include raw registry slots/names, every section cell and trie bucket, clocks, pending operations and events, so a successful canonical serialization cannot mask rollback corruption. Native results are recorded separately in `evidence/player-block-inside-stuck-native.json`; the root live consumer and visible acceptance remain separately tracked.
+The prepared native harness calls actual production reducers. Its world/registry retention observations include raw registry slots/names, every section cell and trie bucket, clocks, pending operations and events, so a successful canonical serialization cannot mask rollback corruption. Two bounded build attempts ended before native comparisons; their retained diagnostics drove removal of an unrelated client graph and boxing of observer continuation state. Native execution remains pending and its result will be recorded separately in `evidence/player-block-inside-stuck-native.json`; the root live consumer and visible acceptance remain separately tracked.
