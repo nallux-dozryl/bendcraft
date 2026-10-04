@@ -1,0 +1,482 @@
+{
+  "audited_source_snapshot_sha256": "f69d25d1299fea180ada1a209a5feedf6096a01ddcf0dbc29838d0ce5631b6f0",
+  "blockers": [
+    "FR native comparison and host receipt adoption pending",
+    "New endpoint/adapter source and type checks not implemented",
+    "Fresh untouched full-travel endpoint/read/phase corpus needed",
+    "Future native/kernel work requires separate grants",
+    "Existing full-import kernel mismatch remains unresolved",
+    "Generic observable callback timing needs a future collision prepare/callback/commit boundary"
+  ],
+  "confidence": {
+    "frozen_api_bytecode_facts": "high",
+    "proposed_composition_behavior": "unverified"
+  },
+  "document": {
+    "bytes": 16309,
+    "path": "docs/FALL_RESET_TRAVEL_DESIGN.md",
+    "sha256": "0abd5ecd6be2a9bfed3a65b231ca7152292b23cbb574b568977df6861047e43c"
+  },
+  "documentation_snapshots": [
+    {
+      "bytes": 14632,
+      "path": "docs/LOCAL_TRAVEL_HISTORY.md",
+      "sha256": "636f255988708d4917c7582365edf2bdf75abd07f42ff23510d1a8f8aaf69e03"
+    },
+    {
+      "bytes": 12971,
+      "path": "docs/LOCAL_MOVE_HISTORY.md",
+      "sha256": "377dd2777829ba323bd0d3a193ab7e1c55151ad9023f2fed1270dea2fba337fe"
+    },
+    {
+      "bytes": 12078,
+      "path": "docs/PLAYER_FALL_HISTORY.md",
+      "sha256": "f111c0f7ca2cffee48bc645a9a344952e4ca87e65eba7036c9567433906b9e8e"
+    },
+    {
+      "bytes": 13893,
+      "path": "docs/FALL_RESET_WORLD.md",
+      "sha256": "952155e1d31858d221f820adfb76784f63a5d7e1533ee3a50409a54b64256f23"
+    },
+    {
+      "bytes": 18282,
+      "path": "docs/PLAYER_TICK_PHASES.md",
+      "sha256": "30b8c807d7d73e0cb8e8b944a488bdfa772f1e7fa80335f747a51d18b3d36756"
+    }
+  ],
+  "execution": {
+    "existing_modules_changed": false,
+    "kernel_or_ordinary_checks": false,
+    "native_build": false,
+    "new_bend_source": false,
+    "new_java_calls": false
+  },
+  "existing_component_observations": {
+    "FR_counts": {
+      "actual_returns": 120,
+      "block_reads": 2620,
+      "cases": 127,
+      "hits": 6,
+      "interrupted_clips": 7,
+      "required_actual_move_rays": 7,
+      "supported": 107,
+      "supported_block_reads": 984,
+      "supported_visited_cells": 492,
+      "visited_cells": 1310
+    },
+    "FR_mixed_subnormal_ids": [
+      "mixed_negative_y_subnormal:5e-324",
+      "mixed_negative_y_subnormal:1e-320"
+    ],
+    "TH_actual_required_entries": [
+      {
+        "actual_clip_entry": {
+          "from": [
+            "3fe0000000000000",
+            "4024000000000000",
+            "3fe0000000000000"
+          ],
+          "method": "fallClip_entry",
+          "sequence": 95,
+          "to": [
+            "3fe0000000000000",
+            "4021c00000000000",
+            "3fe0000000000000"
+          ]
+        },
+        "admission": {
+          "neutral_context": true
+        },
+        "case_id": "air_miss",
+        "position_application_gate": true,
+        "resolved": [
+          "0000000000000000",
+          "bff2000000000000",
+          "0000000000000000"
+        ],
+        "step_index": 0
+      },
+      {
+        "actual_clip_entry": {
+          "from": [
+            "3fe0000000000000",
+            "4024000000000000",
+            "3fe0000000000000"
+          ],
+          "method": "fallClip_entry",
+          "sequence": 95,
+          "to": [
+            "3fe010624dcccccd",
+            "4021c00000000000",
+            "3fe020c49b99999a"
+          ]
+        },
+        "admission": {
+          "neutral_context": true
+        },
+        "case_id": "air_miss_history",
+        "position_application_gate": true,
+        "resolved": [
+          "3f60624dcccccccd",
+          "bff2000000000000",
+          "3f70624dcccccccd"
+        ],
+        "step_index": 0
+      },
+      {
+        "actual_clip_entry": {
+          "from": [
+            "3fe010624dcccccd",
+            "4021c00000000000",
+            "3fe020c49b99999a"
+          ],
+          "method": "fallClip_entry",
+          "sequence": 63,
+          "to": [
+            "3fe02fad6caa8976",
+            "401ec6c224f5c28f",
+            "3fe05f5ad95512ed"
+          ]
+        },
+        "admission": {
+          "neutral_context": true
+        },
+        "case_id": "air_miss_history",
+        "position_application_gate": true,
+        "resolved": [
+          "3f6f4b1eddbca967",
+          "bff2e4f76c28f5c3",
+          "3f7f4b1eddbca967"
+        ],
+        "step_index": 1
+      },
+      {
+        "actual_clip_entry": {
+          "from": [
+            "3fe02fad6caa8976",
+            "401ec6c224f5c28f",
+            "3fe05f5ad95512ed"
+          ],
+          "method": "fallClip_entry",
+          "sequence": 63,
+          "to": [
+            "3fe05c89d92b0bf5",
+            "4019d56b828c9b83",
+            "3fe0b913b25617eb"
+          ]
+        },
+        "admission": {
+          "neutral_context": true
+        },
+        "case_id": "air_miss_history",
+        "position_application_gate": true,
+        "resolved": [
+          "3f766e3640413f64",
+          "bff3c55a89a49c2f",
+          "3f866e3640413f64"
+        ],
+        "step_index": 2
+      },
+      {
+        "actual_clip_entry": {
+          "from": [
+            "3fe05c89d92b0bf5",
+            "4019d56b828c9b83",
+            "3fe0b913b25617eb"
+          ],
+          "method": "fallClip_entry",
+          "sequence": 63,
+          "to": [
+            "3fe095befa6c0ca7",
+            "4014ad1b4fe291d8",
+            "3fe12b7df4d81950"
+          ]
+        },
+        "admission": {
+          "neutral_context": true
+        },
+        "case_id": "air_miss_history",
+        "position_application_gate": true,
+        "resolved": [
+          "3f7c9a90a080593c",
+          "bff4a140caa826ac",
+          "3f8c9a90a080593c"
+        ],
+        "step_index": 3
+      }
+    ],
+    "TH_calls": 90,
+    "TH_cases": 63
+  },
+  "pinned_method_facts": [
+    {
+      "class": "net.minecraft.world.entity.Entity",
+      "class_sha256": "7ac5f6a929abbf4fa00f0a87ad530669f7d96c8ee2bb86a5076ab1fab352fb3c",
+      "complete_bytecode_text_sha256": "b40a07fb9c65684d90e818c4e808fa74036ca4f9dbf5cfaeac20be2a634e6236",
+      "methods": [
+        {
+          "bytecode_text_sha256": "e249e44b3284de31c4063975c8bd69366f33b514cc19f27c57f842a98d3657b2",
+          "direct_call_references": [
+            "addMovementThisTick:(Lnet/minecraft/world/entity/Entity$Movement;)V",
+            "applyMovementEmissionAndPlaySound:(Lnet/minecraft/world/entity/Entity$MovementEmission;Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V",
+            "canSimulateMovement:()Z",
+            "checkFallDamage:(DZLnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;)V",
+            "collide:(Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/Vec3;",
+            "getBlockSpeedFactor:()F",
+            "getDeltaMovement:()Lnet/minecraft/world/phys/Vec3;",
+            "getMovementEmission:()Lnet/minecraft/world/entity/Entity$MovementEmission;",
+            "getOnPosLegacy:()Lnet/minecraft/core/BlockPos;",
+            "getX:()D",
+            "getY:()D",
+            "getZ:()D",
+            "isHorizontalCollisionMinor:(Lnet/minecraft/world/phys/Vec3;)Z",
+            "isLocalInstanceAuthoritative:()Z",
+            "isPassenger:()Z",
+            "isRemoved:()Z",
+            "java/lang/IllegalStateException.\"<init>\":(Ljava/lang/String;)V",
+            "java/lang/Math.abs:(D)D",
+            "java/lang/Math.min:(DD)D",
+            "level:()Lnet/minecraft/world/level/Level;",
+            "limitPistonMovement:(Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/Vec3;",
+            "maybeBackOffFromEdge:(Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/entity/MoverType;)Lnet/minecraft/world/phys/Vec3;",
+            "net/minecraft/util/Mth.equal:(DD)Z",
+            "net/minecraft/util/Util.pauseInIde:(Ljava/lang/Throwable;)Ljava/lang/Throwable;",
+            "net/minecraft/util/profiling/Profiler.get:()Lnet/minecraft/util/profiling/ProfilerFiller;",
+            "net/minecraft/util/profiling/ProfilerFiller.pop:()V",
+            "net/minecraft/util/profiling/ProfilerFiller.push:(Ljava/lang/String;)V",
+            "net/minecraft/world/entity/Entity$Movement.\"<init>\":(Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;)V",
+            "net/minecraft/world/entity/Entity$MovementEmission.emitsAnything:()Z",
+            "net/minecraft/world/entity/MoverType.isServerAndClientSimulated:()Z",
+            "net/minecraft/world/level/ClipContext.\"<init>\":(Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/level/ClipContext$Block;Lnet/minecraft/world/level/ClipContext$Fluid;Lnet/minecraft/world/entity/Entity;)V",
+            "net/minecraft/world/level/Level.clip:(Lnet/minecraft/world/level/ClipContext;)Lnet/minecraft/world/phys/BlockHitResult;",
+            "net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;",
+            "net/minecraft/world/level/Level.isClientSide:()Z",
+            "net/minecraft/world/phys/BlockHitResult.getType:()Lnet/minecraft/world/phys/HitResult$Type;",
+            "net/minecraft/world/phys/Vec3.add:(Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/Vec3;",
+            "net/minecraft/world/phys/Vec3.equals:(Ljava/lang/Object;)Z",
+            "net/minecraft/world/phys/Vec3.length:()D",
+            "net/minecraft/world/phys/Vec3.lengthSqr:()D",
+            "net/minecraft/world/phys/Vec3.multiply:(DDD)Lnet/minecraft/world/phys/Vec3;",
+            "net/minecraft/world/phys/Vec3.multiply:(Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/Vec3;",
+            "net/minecraft/world/phys/Vec3.normalize:()Lnet/minecraft/world/phys/Vec3;",
+            "net/minecraft/world/phys/Vec3.scale:(D)Lnet/minecraft/world/phys/Vec3;",
+            "onGround:()Z",
+            "position:()Lnet/minecraft/world/phys/Vec3;",
+            "recordMovement:(Lnet/minecraft/world/entity/MoverType;Lnet/minecraft/world/phys/Vec3;)V",
+            "resetFallDistance:()V",
+            "restituteMovementAfterCollisions:(Lnet/minecraft/world/level/block/state/BlockState;ZZLnet/minecraft/world/phys/Vec3;)V",
+            "setDeltaMovement:(Lnet/minecraft/world/phys/Vec3;)V",
+            "setOnGroundWithMovement:(ZZLnet/minecraft/world/phys/Vec3;)V",
+            "setPos:(DDD)V",
+            "setPos:(Lnet/minecraft/world/phys/Vec3;)V"
+          ],
+          "field_references": [
+            "fallDistance:D",
+            "horizontalCollision:Z",
+            "minorHorizontalCollision:Z",
+            "net/minecraft/SharedConstants.IS_RUNNING_IN_IDE:Z",
+            "net/minecraft/world/entity/MoverType.PISTON:Lnet/minecraft/world/entity/MoverType;",
+            "net/minecraft/world/level/ClipContext$Block.FALLDAMAGE_RESETTING:Lnet/minecraft/world/level/ClipContext$Block;",
+            "net/minecraft/world/level/ClipContext$Fluid.WATER:Lnet/minecraft/world/level/ClipContext$Fluid;",
+            "net/minecraft/world/phys/HitResult$Type.MISS:Lnet/minecraft/world/phys/HitResult$Type;",
+            "net/minecraft/world/phys/Vec3.ZERO:Lnet/minecraft/world/phys/Vec3;",
+            "net/minecraft/world/phys/Vec3.x:D",
+            "net/minecraft/world/phys/Vec3.y:D",
+            "net/minecraft/world/phys/Vec3.z:D",
+            "noPhysics:Z",
+            "stuckSpeedMultiplier:Lnet/minecraft/world/phys/Vec3;",
+            "verticalCollision:Z",
+            "verticalCollisionBelow:Z"
+          ],
+          "signature": "public void move(net.minecraft.world.entity.MoverType, net.minecraft.world.phys.Vec3);"
+        }
+      ]
+    },
+    {
+      "class": "net.minecraft.world.phys.Vec3",
+      "class_sha256": "6327bc64d44f34c75ec2e015d040ac31819af062688518544bdf333bcaff7597",
+      "complete_bytecode_text_sha256": "e417fdab5da3077c902e6ba5034e03b8c1b728c3157540718669c81afbe2ce7e",
+      "methods": [
+        {
+          "bytecode_text_sha256": "fc28681584276d0e65fbc9ac9296605047664a5b05564626ce89dcd2cf66ebb0",
+          "direct_call_references": [
+            "\"<init>\":(DDD)V",
+            "java/lang/Math.sqrt:(D)D"
+          ],
+          "field_references": [
+            "ZERO:Lnet/minecraft/world/phys/Vec3;",
+            "x:D",
+            "y:D",
+            "z:D"
+          ],
+          "signature": "public net.minecraft.world.phys.Vec3 normalize();"
+        },
+        {
+          "bytecode_text_sha256": "747afd3d284a4ba936b5431126fe961691a5742db921506c575a4ded26140550",
+          "direct_call_references": [
+            "add:(DDD)Lnet/minecraft/world/phys/Vec3;"
+          ],
+          "field_references": [
+            "x:D",
+            "y:D",
+            "z:D"
+          ],
+          "signature": "public net.minecraft.world.phys.Vec3 add(net.minecraft.world.phys.Vec3);"
+        },
+        {
+          "bytecode_text_sha256": "8bcc2c0081ebf19590493dd7070b4e466d2fe2ca71945aa30c94c99aeb7c6ab7",
+          "direct_call_references": [
+            "multiply:(DDD)Lnet/minecraft/world/phys/Vec3;"
+          ],
+          "field_references": [],
+          "signature": "public net.minecraft.world.phys.Vec3 scale(double);"
+        },
+        {
+          "bytecode_text_sha256": "c22b96408cf9c14cd8ff4c021c38eacf55886cc9d2f02da49443082b3f0ff939",
+          "direct_call_references": [
+            "java/lang/Math.sqrt:(D)D"
+          ],
+          "field_references": [
+            "x:D",
+            "y:D",
+            "z:D"
+          ],
+          "signature": "public double length();"
+        },
+        {
+          "bytecode_text_sha256": "fbce06aa870aa9b31847d3d5e3b6fa0c19e340c668193204ebf7514fbbc3771f",
+          "direct_call_references": [],
+          "field_references": [
+            "x:D",
+            "y:D",
+            "z:D"
+          ],
+          "signature": "public double lengthSqr();"
+        }
+      ]
+    }
+  ],
+  "proposal": {
+    "actual_clip_phase": "Before position application/support/minor/fall/restitution in Java. Proposed read-only candidate evaluation computes LM first, so no global read/callback-order parity is claimed.",
+    "api": "travel_checked(MH.State,L.Tables,Request)->MH.State & L.Tables & Result<&2,&2,Error,Outcome>",
+    "call_order": [
+      "T.prepare_checked",
+      "LM.move_checked exactly once",
+      "derive resolved metadata/required predicate from M.Transition and old saved H/feet",
+      "required FR.clip_checked or explicit NotRequired without FR",
+      "H.movement fixed NeutralDryNoDamage exactly once",
+      "T.finish_checked",
+      "atomic commit"
+    ],
+    "module_path_not_created": "src/fall_reset_travel.bend",
+    "no_caller_authoritative_body_history_endpoints_clip": true,
+    "not_required_policy": "Canonical tails still checked; ray profile/interior/work unused and no FR call.",
+    "persistent_authority": "Existing MH.State alone owns W/SP/minor/H; Tables remain external.",
+    "ray_policy": "Explicit FR profile, whole-visited-cell interior and two-reads-per-cell work; independent of LCW query-AABB border admission and edge fuel.",
+    "rollback_anchor": "One pre-preparation Frame.View/SP/minor/H; retain the returned Engine/Core/Registry/Tables, restore original immutable data on every failure.",
+    "unsupported": "Hits/damage/fluid/flight/effects/history-sensitive restitution/observable callbacks and full travel/tick remain outside projection."
+  },
+  "reference_snapshots": [
+    {
+      "bytes": 9156736,
+      "path": "reference/local_travel_history.json",
+      "sha256": "07646e7fef0e55f3fd89421d1862b0e6dc5fdde3a0a84800b70b857a66609dbf"
+    },
+    {
+      "bytes": 9100469,
+      "path": "reference/local_move_history.json",
+      "sha256": "2b510ed3c932d830ed0481343ac4508cfea9e9e98dfcb7856dd2d1ce191f2f95"
+    },
+    {
+      "bytes": 3384342,
+      "path": "reference/local_move_world.json",
+      "sha256": "94afc9b4b47138115207d1d6e5936c9498cea49008f6c86e52d4b1932178a820"
+    },
+    {
+      "bytes": 2785980,
+      "path": "reference/fall_reset_world.json",
+      "sha256": "5286ed1f9a8cfbb190d98f4ec8f67ef1e066910e7a5788aa3aef5570144a8014"
+    },
+    {
+      "bytes": 224105,
+      "path": "reference/player_tick_phases.json",
+      "sha256": "a0ed9d126facbedaa4b2336a2502d04cb8c447e60789c3037e5ea1f40ac7cc65"
+    }
+  ],
+  "snapshot_scope": "Historical read-only source/design snapshots. FR host runner/docs may undergo separately authorized reporting adoption; these pins do not claim that future documents remain unchanged.",
+  "source_snapshots": [
+    {
+      "bytes": 14135,
+      "path": "src/local_travel_history.bend",
+      "sha256": "32016fde52830ef6b8ca21cee4c6170c2596943c89c81cd6589190c678a1f00c"
+    },
+    {
+      "bytes": 7117,
+      "path": "src/local_move_history.bend",
+      "sha256": "21eb495a38fd767c412a860314760e5c237ac9425ce17ca78232b5892f09c11f"
+    },
+    {
+      "bytes": 17815,
+      "path": "src/local_move_world.bend",
+      "sha256": "3823c3e6d4ebd0ab8743792aad3bf0cacae7a081a5791bd23d888037bd569f81"
+    },
+    {
+      "bytes": 7052,
+      "path": "src/player_fall_history.bend",
+      "sha256": "b181c43948cc01e66b05e0edf9dbc0338e1ebdcfecbf86a525731a07aad26db3"
+    },
+    {
+      "bytes": 18955,
+      "path": "src/fall_reset_world.bend",
+      "sha256": "8353ad65484f28b80ae49a3b4191bf98aad5903f6565f6d17f2d64eeec2c7948"
+    },
+    {
+      "bytes": 11567,
+      "path": "src/travel.bend",
+      "sha256": "717e969e3989a7a8e443b18f69c171bdc11a14130828233ce85e6cd914e1f8f1"
+    },
+    {
+      "bytes": 13662,
+      "path": "src/locomotion.bend",
+      "sha256": "ccf8aa12636ba1fce5575606383bf75c02a8ac79ba952645b89aea2eef6cd459"
+    },
+    {
+      "bytes": 22954,
+      "path": "src/movement.bend",
+      "sha256": "0e94fea7cc941a23d2ed7bbd2ccaf0117e6af363eb91f2db2e34428f9dd9e67f"
+    },
+    {
+      "bytes": 21060,
+      "path": "src/local_collision.bend",
+      "sha256": "7b2b8301246f3e385a038eca81790fa7d6c4285113a069e040d968e105be5cc0"
+    },
+    {
+      "bytes": 14887,
+      "path": "src/local_collision_world.bend",
+      "sha256": "4e6e46737890c1203fb66ee95859e26825b306a6db865a1869e8663a7b9a2346"
+    },
+    {
+      "bytes": 33218,
+      "path": "src/client_world.bend",
+      "sha256": "05040abf35b2b9ceaf87fed5c48f8d074d211750a59ab00fa6ff08e60a9ea5d7"
+    },
+    {
+      "bytes": 15543,
+      "path": "src/support.bend",
+      "sha256": "aca42f24e0a32bd89356ac33f6d9bbe2ab5975ce938e2d2750496c01a6137455"
+    }
+  ],
+  "status": "design-only-no-new-gameplay-or-execution",
+  "stored_primary_bytecode": [
+    {
+      "bytes": 620714,
+      "path": "build/player-tick-phases/Entity.javap.txt",
+      "sha256": "ae683ac4927ef5e8d3fc88452ba712309d6a926a9e371506bc0c127ddca02274"
+    },
+    {
+      "bytes": 49674,
+      "path": "build/fall-reset-world-reference/bytecode/Vec3.txt",
+      "sha256": "e417fdab5da3077c902e6ba5034e03b8c1b728c3157540718669c81afbe2ce7e"
+    }
+  ]
+}

@@ -115,6 +115,16 @@ observations. Native supplier success is required before enabling the facade's
 new entry. Focused travel/phase comparisons will use the next integrated
 saved-session artifact alongside its full transport/save regression.
 
+Independent FR admissiond2e637a4 is blocked on the two host controls. An inert
+execution of the exact builder function retries preparation three times on input
+drift; an inert first-group EPERM skips later known groups during both TERM and
+fallback KILL. The original driver retains raw inconclusive receipts, but drops
+fallback errors. Source/oracle admission passes all58source/effect,12tool and
+119sealed-file pins, both retained127-case actual Java runs, all107MISS cases,
+the seven raw movement rays and4,368official class hashes per run. This is
+file/inert evidence, with no new compiler/native/Java/proof execution. Preserve
+the original generation and correct the external continuation only.
+
 ## 2026-10-04: preserve producers during verifier repairs
 
 An orchestration correction does not become the original native producer.
