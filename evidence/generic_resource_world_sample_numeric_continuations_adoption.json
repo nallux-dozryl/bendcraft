@@ -25,6 +25,11 @@
     "path": "build/generic-resource-world-sample-numeric-continuations-001/candidate-001/focused-native-001/clang-result.json",
     "sha256": "1e29131d4431156bf36c1a20da92dabc4fd9947173622eec6b4d7f16251747ed"
   },
+  "full_client_build": {
+    "bytes": 7062,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/003/build.json",
+    "sha256": "4b09a6266b470b92e94553ce92003b11f2045ea2a8f693bbe5d3bbd52991b59a"
+  },
   "law_sources": [
     {
       "bytes": 3896,
@@ -55,12 +60,17 @@
     "path": "build/generic-resource-world-sample-numeric-continuations-001/candidate-001/validation-001/ordinary-check-result.json",
     "sha256": "6a3248bcb0a79b060dc1a7e89bde5a596dbbe78ff6a0004e9e39dbe321f4a78c"
   },
+  "runtime_acceptance": {
+    "bytes": 8832,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/generic_resource_world_sample_client_runtime_001.json",
+    "sha256": "c029d94256d0f212de07142805716caecb50ef882dbdde44402d12bd95c3e84c"
+  },
   "scope": [
     "Only int_scan/scan_number exponent branches and their narrow Bool guard helpers changed; all other production source bytes in both modules match the original baseline.",
     "The exact original wrapped U32 update,100000 threshold,continuation arguments and error payloads are preserved.",
     "Six arbitrary continuation laws passed ordinary checking; six-root Safe export reached60-second cap with no kernel artifact. No independent-kernel or whole-parser equivalence claim is made here.",
     "Both focused baseline and candidate each matched45 pinned-Java cases; all successful projected fields match, and rejection status matches. Four extra exponent-limit cases compare exact baseline/candidate errors without Java parity claim.",
-    "Original compiler and immutable generic-client001/002 remain untouched. Fresh generic003 must use the actual changed production source and complete the actual consumer build/runtime."
+    "Original compiler and immutable generic-client001/002 remain untouched. Actual fresh generic003 completed full emission/native compile and its explicit Actor017 hidden Window/socket/pixel/save/coldreload consumer passed. Static content profile, demand loading and broader rendering/visible acceptance remain separate work."
   ],
-  "status": "verified_narrow_production_adopted_full_client_pending"
+  "status": "verified_narrow_production_adopted_full_client_native_hidden_pass"
 }

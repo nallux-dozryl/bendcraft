@@ -59,7 +59,8 @@ def commands(memory):
             f'--generation {int(WORK.name)}')
     if memory:
         base += ' --memory-producer'
-    return {'prepare':base, 'build':base+' --build'}
+    return {'prepare':base, 'build':base+' --build',
+            'finish_native_from_retained_C':base+' --finish-native'}
 
 
 def record_failure(error):
@@ -165,6 +166,14 @@ def build(memory=False):
     receipt_path = Catalog.PRIVATE/'receipt.json'
     assert not receipt_path.exists(), 'Preserve the existing attempt; use a substantive fresh generation'
     _, emission = Catalog.run([sys.executable, Catalog.PRIVATE/'run.py'], 'private-emission', 620)
+    return finish_native(memory, emission)
+
+
+def finish_native(memory=False, emission=None):
+    """Continue a completed, pinned C emission without starting the emitter."""
+    manifest = json.loads((Catalog.PRIVATE/'manifest.json').read_text())
+    assert bool(manifest.get('memory_producer')) == memory
+    receipt_path = Catalog.PRIVATE/'receipt.json'
     receipt = json.loads(receipt_path.read_text())
     assert receipt['returncode'] == 0 and receipt['termination_reason'] is None, (
         f"Private producer {receipt['termination_reason']}: returncode {receipt['returncode']}; "
@@ -178,11 +187,17 @@ def build(memory=False):
     assert Catalog.sha(raw_path) == receipt['C']['sha256']
     raw = raw_path.read_text()
     assert re.search(r'^#define BANGS\s+0$', raw, re.M)
-    Catalog.build_native.guard_route(raw)
+    # This is the existing platform route, including pinned project AppKit
+    # presentation/observation effects. The plain-CPU cache excludes this route.
+    patched = Platform.transform(raw)
+    assert not Catalog.BINARY.exists(), 'Preserve the existing native artifact'
+    if emission is None:
+        emission = json.loads((WORK/'private-emission.receipt.json').read_text())
     transformed = WORK/'renderer.c'
-    transformed.write_text(Platform.transform(raw))
+    transformed.write_text(patched)
     write(WORK/'window-transform.json', {'base_window_sha256':Platform.PINNED_WINDOW_SHA256,
-          'raw':Remote.pin(raw_path), 'transformed':Remote.pin(transformed), 'gpu_bangs':False})
+          'raw':Remote.pin(raw_path), 'transformed':Remote.pin(transformed), 'gpu_bangs':False,
+          'route':'existing guarded platform transform and pinned project presentation effects'})
     compiled, native = Catalog.run(['/usr/bin/clang', '-x', 'objective-c', '-fobjc-arc', '-fmodules',
                 '-std=c11', '-O3', transformed, '-lpthread', '-lm', '-o', Catalog.BINARY], 'native-clang', 300)
     assert compiled.stderr == ''
@@ -195,6 +210,7 @@ def build(memory=False):
               'memory_producer':manifest.get('memory_producer'),
               'window_transform':Remote.pin(WORK/'window-transform.json'),
               'commands':commands(memory),
+              'retained_failures':[Remote.pin(path) for path in sorted(WORK.glob('failure-attempt-*.json'))],
               'original_compiler_untouched':True, 'native_consumer_run':False, 'window_opened':False}
     write(WORK/'build.json', result)
     write(EVIDENCE, result)
@@ -205,7 +221,10 @@ def build(memory=False):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--generation', type=int, default=1)
-    parser.add_argument('--build', action='store_true')
+    phase = parser.add_mutually_exclusive_group()
+    phase.add_argument('--build', action='store_true')
+    phase.add_argument('--finish-native', action='store_true',
+                       help='Compile a completed immutable C emission; never rerun the emitter')
     parser.add_argument('--memory-producer', action='store_true',
                         help='Use the separately byte/native-verified private cache/progress correction')
     args = parser.parse_args()
@@ -213,6 +232,8 @@ if __name__ == '__main__':
     try:
         if args.build:
             build(args.memory_producer)
+        elif args.finish_native:
+            finish_native(args.memory_producer)
         else:
             manifest = prepare(args.memory_producer)
             print(json.dumps({'status':'frozen_native_pending', 'entry':manifest['entry'],

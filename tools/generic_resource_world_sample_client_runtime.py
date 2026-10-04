@@ -572,13 +572,20 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--native', action='store_true', help='Explicitly launch admitted actual native artifacts')
     parser.add_argument('--client', type=Path, default=CLIENT)
+    parser.add_argument('--actor-generation', type=int,
+                        help='Explicit completed producer generation; bind its existing artifact owner')
     parser.add_argument('--generation', type=int, default=1, help='Fresh runtime receipt directory only')
     parser.add_argument('--prepare-directory', type=Path, help='Write pure independent prepared data to a NEW directory')
     args = parser.parse_args()
     require(1 <= args.generation <= 999, 'Runtime generation range')
     if args.native:
         require(args.prepare_directory is None, 'Native and preparation destinations are distinct')
-        result = native(args.client, args.generation)
+        require(args.actor_generation is not None and 1 <= args.actor_generation <= 999,
+                'Native acceptance requires an explicit completed actor generation')
+        actor_work = ROOT/f'build/compiler-producer-diagnostic-{args.actor_generation:03d}'
+        with Host.bindings(Boundary.A, {'WORK': actor_work, 'SOURCE': actor_work/'source',
+                                       'ACTOR': actor_work/'actor'}):
+            result = native(args.client, args.generation)
         print(json.dumps({'status': result['status'], 'native_consumer_run': True,
                           'compared_pixels': result['supported']['compared_pixels']}))
     else:
