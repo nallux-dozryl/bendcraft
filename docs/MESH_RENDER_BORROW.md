@@ -20,10 +20,12 @@ the actual Hit and Fragment selectors equal the established conditional interfac
 and both actual last-owner walkers preserve the complete Image. The complete
 production tree walk is proved by structural induction, including both children
 of each Branch. The Tile renderer's six conditional hit/owner laws also pass at
-the current Mesh source. The eight existing presentation statements remain
-unchanged; their padding proof needs the actual constructor cases, and root owns
-its current recertification. This receipt records the latest ordinary deadline
-without claiming that eight-root kernel result.
+the current Mesh source. The eight existing presentation statements remain unchanged;
+root repaired the padding proof with the actual constructor cases. All eight
+current roots then passed read-only source-API export and the independent cached
+kernel with zero exclusions; their checked types equal the previous eight-root
+generation. The earlier ordinary deadline is preserved separately. See
+`evidence/mesh-render-presentation-kernel-001.json`.
 
 The focused compiled consumer compares every pixel in15 cases (10,975 per
 renderer) with the retained pre-change renderer captures and the existing
