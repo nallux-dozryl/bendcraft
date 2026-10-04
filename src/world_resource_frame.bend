@@ -4,6 +4,8 @@ import ./world_visibility.bend as V
 import ./client_world.bend as W
 import ./world_mesh.bend as WM
 import ./mesh_render.bend as M
+import ./resource_catalog_world.bend as CW
+import ./resource_block_catalog.bend as Catalog
 
 # Keep the immutable draw inputs in one record rather than a wide continuation.
 # The sole texture owner remains RF.Assets throughout production and rendering.
@@ -98,6 +100,11 @@ def draw_with(sample:V.Sample,assets:RF.Assets,width:U32,height:U32,limits:WM.Li
 
 def draw(sample:V.Sample,assets:RF.Assets,width:U32,height:U32) -> RF.Assets & Result<&2,&2,String,Image>:
   draw_with(sample,assets,width,height,WM.defaults())
+
+# Registry-bound frames carry each cell's admitted selection and appearance.
+# Rendering returns the same complete resource owner on either outcome.
+def draw_catalog(frame:CW.Frame,assets:CW.Assets,width:U32,height:U32) -> CW.Assets & Result<&2,&2,Catalog.Error,Image>:
+  RF.catalog_draw(frame,assets,width,height,WM.defaults())
 
 def sampled(value:W.State & Result<&2,&2,V.Error,V.Sample>,assets:RF.Assets,config:DrawConfig) -> W.State & (RF.Assets & Result<&2,&2,String,Image>):
   (world,status) = value

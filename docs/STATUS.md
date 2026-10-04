@@ -3,10 +3,12 @@
 Target: Minecraft Java 26.3. Compiler: Bend 2.0.35. The full goal remains active
 and incomplete; the current build is a limited integrated client.
 
-The recommended launch is `tools/play_minecraft.sh`: verified renderer004 with
+The recommended launch is `tools/play_minecraft.sh`: verified renderer007 with
 actor003, two CPU workers, 1920×1080 output and 100% scene resolution. Actual hidden
 checks pass fresh startup, carried/crafting return, full-capacity refusal and
-INT/TERM shutdown. MenuClose precedes correlated public durable save; refusal
+INT/TERM shutdown, followed by an actual run of the updated public command.
+The six acceptance receipts are indexed in `evidence/playable-client-pair007-actor003.json`.
+MenuClose precedes correlated public durable save; refusal
 retains the live actor and a0600 reconnect environment. The launcher does not yet
 establish physical input, visible drawable, audio or complete gameplay acceptance.
 
@@ -14,8 +16,8 @@ Renderer004's fresh128×128 CPU image matches every16,384 pixel of the independe
 26.3 Java/JAR quad/HUD oracle and renderer003. A monitored quiet counterbalanced
 004A/005A/005B/004B comparison verifies16 full1080 frames each:004 median947.5ms,
 0051194.5ms,26.1% slower. Twelve workers worsen both (0041360ms,0053458.5ms).
-These envelopes remain roughly one second per frame; sustained FPS/input latency
-and equivalent whole-game performance remain open. Immutable003/004/005 are kept.
+Those earlier candidates remained roughly one second per frame; sustained FPS/input
+latency and equivalent whole-game performance remain open. Immutable003/004/005 are kept.
 
 Renderer006 builds (C278.906s, clang59.027s) and its fresh128 image/save/focus/Spaces
 checks pass exactly. The private post-frame texture lifetime candidate fails its
@@ -27,7 +29,9 @@ laws pass with zero kernel exclusions. Its full build and borrowed-C criterion p
 actual1920×1080CPU capture matches the independent oracle. A155ms frame envelope
 is an initial observation; a quiet counterbalanced16-frame pair verifies004937.5ms/007131.5ms medians
 (7.13×lower envelope for this bounded scene,85.97% less time). The exact18-law recertified mesh candidatecc8 is now adopted in source;
-current frontend/actor paired adoption remains separate.
+the public007/actor003 pair has passed its six hidden acceptance checks. Their
+timings include competing build load and do not replace the quiet benchmark.
+The next frontend and actor source generation still requires separate adoption.
 The005 trace-enabled1080 attempt failed before its first frame, with a durable
 save; full-resolution captured equality now passes for007
 (the older failed generation is retained).
@@ -53,9 +57,12 @@ GUI observations. Its actual presenter and physical/rebinding consumer join is
 active. Typed suspicious-stew components pass560 native fixtures and the decimal
 utility passes73,747 native words/four laws. JSON formatting changes retain536
 native cases/299 roundtrips. Full13 component roots now export with zero
-exclusions but the independent kernel rejects JSON encode_go's recursive shape;
-a private unbounded encoder repair is active. Real item-definition admission and
-fallible v3 component save/load are being joined, without silently losing tags.
+exclusions but the independent kernel rejects JSON encode_go's recursive shape.
+Private unbounded repair attempts did not resolve that rejection; their exact
+negative evidence is retained. Real item-definition admission and fallible v3
+component save/load pass115 native cases, including17 filesystem cold reloads,
+23 Java physical-NBT comparisons and three complete-owner kernel laws.
+Inventory and wire component gates are undergoing their own current checks.
 Crafting authority's frozen63-case native corpus passes at one/four workers,
 including17 typed stew takes; current shared-default/loaded-catalog/menu consumers
 and actual Session/Runtime joins remain separate work.
@@ -64,12 +71,18 @@ Moving blockInside traversal and berry callback inputs are being added to the
 verified stationary producer, including original Entity.move records and ordered
 callback/dedup behavior. Generic resources now have14 kernel roots and28 native
 cases twice (730 query observations/4310 checked quads), with actual resource
-frame adapters underway. Block light's base/world bridge and saved104-section
-bootstrap exist; lifecycle/shading integration is pending. Actual density has29
-independent owner/cache/loader/evaluator roots and current native builds; signed
-zero admission correction and exact final Java comparisons remain recorded per
-generation. The climate tree has12 kernel roots and4,375 exact native selections;
-full normal terrain population still refuses pending real router joins.
+frame adapters have19 independently accepted world/loader laws and two current
+native18-frame runs: eleven exact geometry/pixel successes and seven complete
+diagnostics per run, plus two separate loader refusals. The origin-error correction retains
+the requested state. The root registry-frame draw delegate passes a complete
+2,916-event source check. Block light's
+base/world bridge, saved104-section bootstrap and full35,723-state registry
+provider are verified; lifecycle/shading integration is pending. Actual density
+has34 independent owner/cache/loader/evaluator/column roots and six seeded-noise
+roots. Current native comparisons verify263 calls,828 density words and180,224
+permutation words; retained-Core provenance is explicit. The climate tree has12
+kernel roots and4,375 exact native selections. Spline/router integration is active;
+full normal terrain population still refuses pending its remaining consumers.
 
 The 65-law root aggregation and separate current production targets are indexed
 in [PRODUCTION_PROOFS.md](PRODUCTION_PROOFS.md). Current independent-kernel results
