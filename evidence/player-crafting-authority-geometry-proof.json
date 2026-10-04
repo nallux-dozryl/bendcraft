@@ -1,0 +1,556 @@
+{
+  "boundaries": [
+    "Two actual structural Array-owner laws only: geometry checker and malformed snapshot observer.",
+    "Proofs recursively reconstruct the exact original affine Array; full typed planning/JSON dependencies are outside this selected kernel receipt.",
+    "All19 actual proof roots were source checked before the unchanged-term two-root export; full original declaration tables retained."
+  ],
+  "commands": [
+    "/opt/homebrew/bin/node --stack-size=4096 --experimental-transform-types tools/player_crafting_authority_proof.mjs build/player-crafting-authority-proof/005-geometry build/player-crafting-authority-proof/005-geometry/source/src/player_crafting_authority_proof.bend --geometry",
+    "LEAN_STACK_SIZE_KB=4194304 /Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt build/player-crafting-authority-proof/005-geometry/selected.bendtt"
+  ],
+  "ir": {
+    "bytes": 15138,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/selected.bendtt",
+    "sha256": "5cee96e7498102091737f3b5f8bcdf39a52fe058bde5065365edca4426579a0a"
+  },
+  "kernel": {
+    "diagnostic": "ALL PROOFS CHECK",
+    "log": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/kernel.log",
+    "returncode": 0,
+    "sha256": "61b73cda11b6b665b9f99f2defd3d3b57f985c865225e942a5bdaa594a503e47"
+  },
+  "original_source_pins": [
+    {
+      "bytes": 71530,
+      "kind": "base",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/base.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/base.bend",
+      "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+    },
+    {
+      "bytes": 354,
+      "kind": "native-effect",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/args.c",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/args.c",
+      "sha256": "2635223ad1d401b07e1834b9341e3f0be254796f6de1d9a0e800ca59fb3000b4"
+    },
+    {
+      "bytes": 6677,
+      "kind": "native-effect",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/audio.c",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/audio.c",
+      "sha256": "5b77ca51a275e0113cfb6fada35211f767c792a549d3b23375bde853d28d9478"
+    },
+    {
+      "bytes": 4587,
+      "kind": "native-effect",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/chan.c",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/chan.c",
+      "sha256": "cf026f9d428e83870d046a973ac434ce0a2471f5b93748bb264af84a239eacd3"
+    },
+    {
+      "bytes": 245,
+      "kind": "native-effect",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/file_close.c",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/file_close.c",
+      "sha256": "08fdd18ef43dff0bc6f7e064eb7ccf7a49f4140c238450f1b5f49ee1a2739dd5"
+    },
+    {
+      "bytes": 1069,
+      "kind": "native-effect",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/file_open.c",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/file_open.c",
+      "sha256": "361322488ad1508478c8a8fc4c0d35434924cd6fe92c02fd0c12b28b37b16726"
+    },
+    {
+      "bytes": 1922,
+      "kind": "native-effect",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/file_read.c",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/file_read.c",
+      "sha256": "f6b78f6c6060257a91e341fcc38ba6560d5023ded78e3096fa5bfdc50da9538f"
+    },
+    {
+      "bytes": 722,
+      "kind": "native-effect",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/file_size.c",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/file_size.c",
+      "sha256": "f9d0f2aba9f3e89131b8b4d6d69ab2f33a99b645f403174e60e26238cfee33f1"
+    },
+    {
+      "bytes": 1248,
+      "kind": "native-effect",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/file_write.c",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/file_write.c",
+      "sha256": "a4d891e392ae0d913a73359fd80a30a64629eb893bf974c08eedb79b5fb9e2db"
+    },
+    {
+      "bytes": 400,
+      "kind": "native-effect",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/get_env.c",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/get_env.c",
+      "sha256": "3c05cb6453d858df9f24d5734defb51afce55da23f5799025782fe8e3191634f"
+    },
+    {
+      "bytes": 269,
+      "kind": "native-effect",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/listener_close.c",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/listener_close.c",
+      "sha256": "f3b023a763f62d85c861b9f6e0a717ba05992fe0b9d08bb827722ebaad291310"
+    },
+    {
+      "bytes": 199,
+      "kind": "native-effect",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/now.c",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/now.c",
+      "sha256": "268e869a5b5dd667aeb61ee7ef07f832238fb17f93015fe708528e95987c3ec3"
+    },
+    {
+      "bytes": 325,
+      "kind": "native-effect",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/print.c",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/print.c",
+      "sha256": "28552d3b56aee6f6cdb66326aaa49ad0df35e4476e08c548c908efcbfafbd3e7"
+    },
+    {
+      "bytes": 238,
+      "kind": "native-effect",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/print_err.c",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/print_err.c",
+      "sha256": "1ae1025f57d14ccc5a593319f9ea82bff061a05b4c468ab1bd0b939d4b98e2c4"
+    },
+    {
+      "bytes": 8993,
+      "kind": "native-effect",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/process_run.c",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/process_run.c",
+      "sha256": "bf22b58053df01a4a3ac5edacf1593ae6fc0a3c2a2f238de682703a1826a01e8"
+    },
+    {
+      "bytes": 706,
+      "kind": "native-effect",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/random_u32.c",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/random_u32.c",
+      "sha256": "bb1e6b2d690590858e4cdbd78ba9b10d349eb3fc7dde0c3265e23af7991623fe"
+    },
+    {
+      "bytes": 208,
+      "kind": "native-effect",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/sleep.c",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/sleep.c",
+      "sha256": "eb9d441b0ec6b11cbc775dd6f85da0aefdf8d9cdcb7f45f316d4f12c7aa1fdbc"
+    },
+    {
+      "bytes": 257,
+      "kind": "native-effect",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/socket_close.c",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/socket_close.c",
+      "sha256": "742b164fecf63abf8b39fe8d2dd027cec4aa5a9cd31184e7d9d7825c91d5d65c"
+    },
+    {
+      "bytes": 220,
+      "kind": "native-effect",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/spawn.c",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/spawn.c",
+      "sha256": "6d140b2b73b200c4bbd3004528734e7517e87d3f7ed40b901a06bfcbf2449abc"
+    },
+    {
+      "bytes": 855,
+      "kind": "native-effect",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/tcp_accept.c",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/tcp_accept.c",
+      "sha256": "c72b9f83e2fb8f48b8bf28dc9a3ae95c3c9cee7725a6915797199949d560511c"
+    },
+    {
+      "bytes": 1295,
+      "kind": "native-effect",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/tcp_connect.c",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/tcp_connect.c",
+      "sha256": "ec6d1900f4c7ca88890c7e689bd8317e807665eed0c84418bd7e6505addac8e7"
+    },
+    {
+      "bytes": 878,
+      "kind": "native-effect",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/tcp_listen.c",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/tcp_listen.c",
+      "sha256": "e126135c5a7cf46e4b4a57060a83ef1983340502f958c65e5c9faf27787abd8a"
+    },
+    {
+      "bytes": 1345,
+      "kind": "native-effect",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/tcp_poll.c",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/tcp_poll.c",
+      "sha256": "1e651ea609d61e1fef86cd07aaca13fa81b04a2159b3a3ef85e788e381c21560"
+    },
+    {
+      "bytes": 1627,
+      "kind": "native-effect",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/tcp_recv.c",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/tcp_recv.c",
+      "sha256": "18f669d4cac74e862559f39ecb277592d6b0f06da50000e32751b6505e1a7a43"
+    },
+    {
+      "bytes": 1383,
+      "kind": "native-effect",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/tcp_send.c",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/tcp_send.c",
+      "sha256": "571d9790ce5c32b2cae08d69ae83ffa0d2c13e2e149f524d14237a79a2f86410"
+    },
+    {
+      "bytes": 346,
+      "kind": "native-effect",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/thread_count.c",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/thread_count.c",
+      "sha256": "ff5605b52535484adc10cb800c376ed77ededbddc9adea7064294e2cc0670d49"
+    },
+    {
+      "bytes": 747,
+      "kind": "native-effect",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/udp_bind.c",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/udp_bind.c",
+      "sha256": "abffc463de08b76c0a1ca1235af56b463711d91e7f6720a976b414443096da8b"
+    },
+    {
+      "bytes": 916,
+      "kind": "native-effect",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/udp_poll.c",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/udp_poll.c",
+      "sha256": "b6b6c6eb0ee4fce361e15df09b6579d30634ceab95d530f1e9e401c06155511b"
+    },
+    {
+      "bytes": 1124,
+      "kind": "native-effect",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/udp_recv_from.c",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/udp_recv_from.c",
+      "sha256": "32cab1742c2e5017af56fc97c20db5b38490d05eb4eab39e137ea20cdccf1aa2"
+    },
+    {
+      "bytes": 1171,
+      "kind": "native-effect",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/udp_send_to.c",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/udp_send_to.c",
+      "sha256": "f00dd855ec7120706bd26a4bab6cc44ebd438584b73d479db3e00ec21b95eb2d"
+    },
+    {
+      "bytes": 23756,
+      "kind": "native-effect",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/window.c",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/window.c",
+      "sha256": "617611d994fb7f4c57467f8d1a7e644ba19d4fce35770613dea2711e6cafd65c"
+    },
+    {
+      "bytes": 298,
+      "kind": "native-effect",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/write.c",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/effs/write.c",
+      "sha256": "3e1dc13b5edbbed0c344df665d68e82c8b9d4b5972166ff2411ec039f76cf943"
+    },
+    {
+      "bytes": 41725,
+      "kind": "bend",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/compression.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/compression.bend",
+      "sha256": "255cdff06a33050c7b0a48fdea75c1842ebe2dab0439cfe4f03d126d4edc20aa"
+    },
+    {
+      "bytes": 17073,
+      "kind": "bend",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe.bend",
+      "sha256": "3c5f3fc7b3e0be9be7d553da2a107dc1245fe13f17afac0efdf84bc41c15ffe2"
+    },
+    {
+      "bytes": 5705,
+      "kind": "bend",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe_component_registry.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe_component_registry.bend",
+      "sha256": "911786032b2c22759208edaf7112ae403b2a03663d9237c3e036c2b5ba4ece2a"
+    },
+    {
+      "bytes": 13197,
+      "kind": "bend",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe_components.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe_components.bend",
+      "sha256": "2a35e31f26187ebbdab1c4261d54083acb68072a56a7b5869e5dfc490bc946be"
+    },
+    {
+      "bytes": 33288,
+      "kind": "bend",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/f64.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/f64.bend",
+      "sha256": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7"
+    },
+    {
+      "bytes": 13604,
+      "kind": "bend",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/geometry.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/geometry.bend",
+      "sha256": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f"
+    },
+    {
+      "bytes": 13558,
+      "kind": "bend",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/inventory.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/inventory.bend",
+      "sha256": "9d2be7fb88afa1dc6386ab9e8b046b15d2a2a73b7e14566e5bfad3e6dd1f2702"
+    },
+    {
+      "bytes": 12587,
+      "kind": "bend",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_component.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_component.bend",
+      "sha256": "85fd96ab967f3b031465ab9e0a815dd71882aec813683d73cd07dc31b991a2a7"
+    },
+    {
+      "bytes": 11465,
+      "kind": "bend",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_component_effects.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_component_effects.bend",
+      "sha256": "717a46a1603866be6f3f1458721cb2281a135b36f27a652da9432756b168ae35"
+    },
+    {
+      "bytes": 21384,
+      "kind": "bend",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/json.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/json.bend",
+      "sha256": "a1789e3b4f5bea158ec0d95a8bcb39aa5b7c7e7355a5254d3de1d52a93c719d1"
+    },
+    {
+      "bytes": 13662,
+      "kind": "bend",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/locomotion.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/locomotion.bend",
+      "sha256": "ccf8aa12636ba1fce5575606383bf75c02a8ac79ba952645b89aea2eef6cd459"
+    },
+    {
+      "bytes": 25567,
+      "kind": "bend",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/movement.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/movement.bend",
+      "sha256": "31f5a4c47903506c0f388f688eaeaf78a36a0d266efde52bc57ea8cc89627b45"
+    },
+    {
+      "bytes": 26178,
+      "kind": "bend",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/nbt.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/nbt.bend",
+      "sha256": "b677546b5fc02aaa38f5c09e5b798c0d35aec32b1c4b37cbd7042b9a1a5275e4"
+    },
+    {
+      "bytes": 16028,
+      "kind": "bend",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_codec.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_codec.bend",
+      "sha256": "98a5d7e8e11bb1a811c4e3b1e19dcee010e9f36eb15967810fbe95f4222a09a7"
+    },
+    {
+      "bytes": 14804,
+      "kind": "bend",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_crafting_authority.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_crafting_authority.bend",
+      "sha256": "3032b09376879239438415654d151917fb9ff5f989900200aba6552d9eb8ac35"
+    },
+    {
+      "bytes": 2785,
+      "kind": "bend",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_crafting_authority_components.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_crafting_authority_components.bend",
+      "sha256": "4389a4b976e75b5a96fb8261b789396e176acb3678f7f1379687393c0d16108d"
+    },
+    {
+      "bytes": 7458,
+      "kind": "bend",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_crafting_authority_laws.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_crafting_authority_laws.bend",
+      "sha256": "a06d3b4fafe161ab65d264991c36a3b12f8d78f253d72ad5cb093fa68247eafa"
+    },
+    {
+      "bytes": 11507,
+      "kind": "bend",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_crafting_authority_plan.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_crafting_authority_plan.bend",
+      "sha256": "763936af81278a57c8045e7ea7f655b26f90b1a174f6aca7a36cf05edde88c65"
+    },
+    {
+      "bytes": 8523,
+      "kind": "bend",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_crafting_authority_proof.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_crafting_authority_proof.bend",
+      "sha256": "77363db27c12b209689c2c74d815275eaebad54b09d333460d0d28f5ea17ebbd"
+    },
+    {
+      "bytes": 28759,
+      "kind": "bend",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_inventory.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_inventory.bend",
+      "sha256": "065be0bc6aa1d0cb10b9fcac77b6dcea73d4bdbab20fd2e13e264a8ea91c3340"
+    },
+    {
+      "bytes": 7532,
+      "kind": "bend",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_inventory_click_swap.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_inventory_click_swap.bend",
+      "sha256": "2284a56e93d10299419701acc9cba2aec4427acf7ed4a9196fb56ec75f831048"
+    },
+    {
+      "bytes": 8155,
+      "kind": "bend",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_inventory_close_laws.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_inventory_close_laws.bend",
+      "sha256": "7ca0b35c67932c3c5e1fd9177704670f4955403c68e9e0ac647127c0d1ff34c6"
+    },
+    {
+      "bytes": 3704,
+      "kind": "bend",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_inventory_close_proof.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_inventory_close_proof.bend",
+      "sha256": "34dfe03dc714908a1d7d9991b6fbd530c50da5217953592dc7845e8d0d2dc5ca"
+    },
+    {
+      "bytes": 7643,
+      "kind": "bend",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_inventory_return.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_inventory_return.bend",
+      "sha256": "53f4d0cea442ebcc6abfc306f520101a01cca8e46a139ebb89930fd94a5ac3ab"
+    },
+    {
+      "bytes": 12607,
+      "kind": "bend",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_item_definitions.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_item_definitions.bend",
+      "sha256": "df5183e0c4be23b4eaf081e9a72099436e5d674402e9ac15102ecabc7a1b1d90"
+    },
+    {
+      "bytes": 19820,
+      "kind": "bend",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_tick.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_tick.bend",
+      "sha256": "07a35c96b0887bc7c600340835ec29bfdea98cdbfb283af67826f93ec57dba9d"
+    },
+    {
+      "bytes": 18786,
+      "kind": "bend",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/png.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/png.bend",
+      "sha256": "8c24c14a250cf6dbdf0c2804e4b28bfebd7ef62ed5d9ee97a1d07094d4745f22"
+    },
+    {
+      "bytes": 15543,
+      "kind": "bend",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/support.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/support.bend",
+      "sha256": "aca42f24e0a32bd89356ac33f6d9bbe2ab5975ce938e2d2750496c01a6137455"
+    },
+    {
+      "bytes": 13789,
+      "kind": "bend",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/travel.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/travel.bend",
+      "sha256": "f04bc69579d1b1a5fa048f1e07976e646c1c2f2e817e334ee632397fbe99b589"
+    },
+    {
+      "bytes": 573,
+      "kind": "bend",
+      "lookup": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/u32_decimal.bend",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/u32_decimal.bend",
+      "sha256": "d0b4b33f10b9e9801c4e99b83803afba5031ea40013a9263f9090bed8543d25c"
+    }
+  ],
+  "pin": "26.3",
+  "roots": 2,
+  "scope": {
+    "exclusions": []
+  },
+  "selection": {
+    "all_original_tlds_ctrs_tmps_retained": true,
+    "checked_types_and_bodies_unchanged": true,
+    "entry": "build/player-crafting-authority-proof/005-geometry/source/src/player_crafting_authority_proof.bend",
+    "ordinary_source_api_check_passed": true,
+    "original_root_count": 2080,
+    "roots": [
+      "player_crafting_authority_laws:malformed_snapshot_walk_retains_complete_original_array",
+      "player_crafting_authority_laws:geometry_shape_check_retains_complete_original_array"
+    ],
+    "selected_root_count": 2,
+    "source_files": [
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/player_crafting_authority_proof.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/base.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/inventory.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/player_crafting_authority.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/player_inventory.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/player_item_definitions.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/png.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/compression.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/item_component.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/json.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/u32_decimal.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/nbt.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/player_codec.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/f64.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/geometry.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/movement.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/travel.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/locomotion.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/player_tick.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/support.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/crafting_recipe_components.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/crafting_recipe_component_registry.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/item_component_effects.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/player_inventory_return.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/player_inventory_click_swap.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/crafting_recipe.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/player_crafting_authority_plan.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/player_crafting_authority_components.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/player_crafting_authority_laws.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/player_inventory_close_laws.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/player_inventory_close_proof.bend"
+    ],
+    "term_pins": [
+      {
+        "checked_proof_sha256": "537a48e4f4307c06ce65914d73d9c0f6bc9a3d3c71d3c218097da892d0bbf7df",
+        "name": "player_crafting_authority_laws:malformed_snapshot_walk_retains_complete_original_array",
+        "source_body_sha256": "05d2b1ed801f7addbb7c0ff80c0d62e1b0f464aa047c2672fd0155a3a4af401a",
+        "type_sha256": "7d61497919282ee8ea42bb1f055a8953a4db32b602cc19d8c8de304b0eafa09a"
+      },
+      {
+        "checked_proof_sha256": "b20a0163243f334bafe16d83df13cff44d0f942d37eb436574903ddfab030164",
+        "name": "player_crafting_authority_laws:geometry_shape_check_retains_complete_original_array",
+        "source_body_sha256": "abcdf5e9f9b1a18d3748aaca3268250954fa96619ad27a7af9a5253d00d0d152",
+        "type_sha256": "e111fe97c9151763067fbbd7136d0f7e9a2b7bba4a5f68fd04ad3f25594dc00a"
+      }
+    ]
+  },
+  "source_pins": {
+    "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/base.bend": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/compression.bend": "255cdff06a33050c7b0a48fdea75c1842ebe2dab0439cfe4f03d126d4edc20aa",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/crafting_recipe.bend": "3c5f3fc7b3e0be9be7d553da2a107dc1245fe13f17afac0efdf84bc41c15ffe2",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/crafting_recipe_component_registry.bend": "911786032b2c22759208edaf7112ae403b2a03663d9237c3e036c2b5ba4ece2a",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/crafting_recipe_components.bend": "2a35e31f26187ebbdab1c4261d54083acb68072a56a7b5869e5dfc490bc946be",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/geometry.bend": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/inventory.bend": "9d2be7fb88afa1dc6386ab9e8b046b15d2a2a73b7e14566e5bfad3e6dd1f2702",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/item_component.bend": "85fd96ab967f3b031465ab9e0a815dd71882aec813683d73cd07dc31b991a2a7",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/item_component_effects.bend": "717a46a1603866be6f3f1458721cb2281a135b36f27a652da9432756b168ae35",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/json.bend": "a1789e3b4f5bea158ec0d95a8bcb39aa5b7c7e7355a5254d3de1d52a93c719d1",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/locomotion.bend": "ccf8aa12636ba1fce5575606383bf75c02a8ac79ba952645b89aea2eef6cd459",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/movement.bend": "31f5a4c47903506c0f388f688eaeaf78a36a0d266efde52bc57ea8cc89627b45",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/nbt.bend": "b677546b5fc02aaa38f5c09e5b798c0d35aec32b1c4b37cbd7042b9a1a5275e4",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/player_codec.bend": "98a5d7e8e11bb1a811c4e3b1e19dcee010e9f36eb15967810fbe95f4222a09a7",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/player_crafting_authority.bend": "3032b09376879239438415654d151917fb9ff5f989900200aba6552d9eb8ac35",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/player_crafting_authority_components.bend": "4389a4b976e75b5a96fb8261b789396e176acb3678f7f1379687393c0d16108d",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/player_crafting_authority_laws.bend": "a06d3b4fafe161ab65d264991c36a3b12f8d78f253d72ad5cb093fa68247eafa",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/player_crafting_authority_plan.bend": "763936af81278a57c8045e7ea7f655b26f90b1a174f6aca7a36cf05edde88c65",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/player_crafting_authority_proof.bend": "77363db27c12b209689c2c74d815275eaebad54b09d333460d0d28f5ea17ebbd",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/player_inventory.bend": "065be0bc6aa1d0cb10b9fcac77b6dcea73d4bdbab20fd2e13e264a8ea91c3340",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/player_inventory_click_swap.bend": "2284a56e93d10299419701acc9cba2aec4427acf7ed4a9196fb56ec75f831048",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/player_inventory_close_laws.bend": "7ca0b35c67932c3c5e1fd9177704670f4955403c68e9e0ac647127c0d1ff34c6",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/player_inventory_close_proof.bend": "34dfe03dc714908a1d7d9991b6fbd530c50da5217953592dc7845e8d0d2dc5ca",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/player_inventory_return.bend": "53f4d0cea442ebcc6abfc306f520101a01cca8e46a139ebb89930fd94a5ac3ab",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/player_item_definitions.bend": "df5183e0c4be23b4eaf081e9a72099436e5d674402e9ac15102ecabc7a1b1d90",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/player_tick.bend": "07a35c96b0887bc7c600340835ec29bfdea98cdbfb283af67826f93ec57dba9d",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/png.bend": "8c24c14a250cf6dbdf0c2804e4b28bfebd7ef62ed5d9ee97a1d07094d4745f22",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/support.bend": "aca42f24e0a32bd89356ac33f6d9bbe2ab5975ce938e2d2750496c01a6137455",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/travel.bend": "f04bc69579d1b1a5fa048f1e07976e646c1c2f2e817e334ee632397fbe99b589",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-authority-proof/005-geometry/source/src/u32_decimal.bend": "d0b4b33f10b9e9801c4e99b83803afba5031ea40013a9263f9090bed8543d25c"
+  },
+  "status": "passed"
+}

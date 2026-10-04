@@ -1,0 +1,33 @@
+import * as B from "file:///Users/chuah/Documents/ChatGPT/bendex/bend/bend2/bend.ts";
+import * as Safe from "file:///Users/chuah/Documents/ChatGPT/bendex/bend/bend2/safe.ts";
+import * as fs from "node:fs";
+import * as crypto from "node:crypto";
+const entry=process.argv.slice(3).find(a=>!a.startsWith("--"))||new URL("../src/player_crafting_authority_proof.bend", import.meta.url).pathname;
+const dir=process.argv[2];
+if(!dir)throw Error("Fresh output directory required");
+const allRoots=["player_crafting_authority_laws:malformed_snapshot_walk_retains_complete_original_array", "player_crafting_authority_laws:geometry_shape_check_retains_complete_original_array", "player_crafting_authority_laws:malformed_owner_take_retains_entire_authority", "player_crafting_authority_laws:malformed_owner_refresh_retains_entire_authority", "player_crafting_authority_laws:admitted_craft_preserves_complete_transformation_ledger", "player_crafting_authority_laws:actual_crafting_plan_preserves_complete_transformation_ledger", "player_crafting_authority_laws:refused_craft_retains_entire_player_bench_catalog_and_cache", "player_crafting_authority_laws:stale_plan_retains_entire_crafting_authority", "player_crafting_authority_laws:absent_plan_retains_entire_crafting_authority", "player_crafting_authority_laws:closed_menu_or_invalid_button_retains_entire_crafting_authority", "player_crafting_authority_laws:changed_recipe_retains_entire_crafting_authority", "player_crafting_authority_laws:empty_result_refuses_before_owned_mutation", "player_crafting_authority_laws:missing_component_admission_refuses_before_owned_mutation", "player_crafting_authority_laws:refused_refresh_retains_entire_authority_and_previous_result", "player_crafting_authority_laws:craft_commit_preserves_all_noninventory_player_fields", "player_crafting_authority_laws:actual_typed_crafting_plan_preserves_complete_transformation_ledger", "player_crafting_authority_laws:default_only_refuses_all_nonempty_component_keys", "player_crafting_authority_laws:absent_initialized_component_definition_refuses", "player_crafting_authority_laws:complete_bench_commit_retains_seven_nonlogical_backing_cells"];
+const roots=process.argv.includes("--geometry")?allRoots.filter(k=>k.endsWith(":geometry_shape_check_retains_complete_original_array")||k.endsWith(":malformed_snapshot_walk_retains_complete_original_array")):allRoots;
+
+const sha=x=>crypto.createHash("sha256").update(x).digest("hex");
+const book=B.book_nil(),seen=new Map();
+await B.book_load(book,entry,"",seen);
+const before=Object.fromEntries([...seen.keys()].sort().map(p=>[p,sha(fs.readFileSync(p))]));
+B.book_valid(book);
+if(book.hols!==0)throw Error("Open proof holes");
+const originalOrder=[...book.order],originalTlds=book.tlds,originalCtrs=book.ctrs,originalTmps=book.tmps;
+const originals=Object.entries(book.tlds).map(([k,t])=>[k,t,t.T,t.$==="Def"?t.v:null,t.$==="Def"?t.e:null]);
+const termPins=roots.map(k=>{const t=book.tlds[k];if(t?.$!=="Def"||!t.e||!t.v||t.u||t.i)throw Error("Missing checked pure proof "+k);return {name:k,type_sha256:sha(B.term_key(B.term_lower(t.T))),checked_proof_sha256:sha(B.term_key(t.e)),source_body_sha256:sha(B.term_key(B.term_lower(t.v)))};});
+book.order=originalOrder.filter((k,i)=>roots.includes(k)&&originalOrder.lastIndexOf(k)===i);
+if(book.order.length!==roots.length||book.tlds!==originalTlds||book.ctrs!==originalCtrs||book.tmps!==originalTmps)throw Error("Selection changed declaration ownership");
+for(const [k,t,T,v,e] of originals)if(book.tlds[k]!==t||t.T!==T||(t.$==="Def"&&(t.v!==v||t.e!==e)))throw Error("Selection altered term "+k);
+const manifest={entry,roots,original_root_count:originalOrder.length,selected_root_count:book.order.length,checked_types_and_bodies_unchanged:true,all_original_tlds_ctrs_tmps_retained:true,term_pins:termPins,source_files:[...seen.keys()],ordinary_source_api_check_passed:true};
+fs.writeFileSync(dir+"/selection.json",JSON.stringify(manifest,null,2)+"\n");
+console.log(JSON.stringify({phase:"checked-root-selection",roots,original_root_count:originalOrder.length}));
+const exclusions=Safe.safe_emit(book,dir+"/selected.bendtt");
+fs.writeFileSync(dir+"/scope.json",JSON.stringify({exclusions},null,2)+"\n");
+console.log(JSON.stringify({phase:"export-complete",bytes:fs.statSync(dir+"/selected.bendtt").size,exclusions}));
+if(exclusions.length)process.exitCode=2;
+
+const after=Object.fromEntries([...seen.keys()].sort().map(p=>[p,sha(fs.readFileSync(p))]));
+if(JSON.stringify(before)!==JSON.stringify(after))throw Error("Proof source changed during check/export");
+fs.writeFileSync(dir+"/source-pins.json",JSON.stringify(after,null,2)+"\n");
