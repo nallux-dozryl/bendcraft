@@ -1,5 +1,38 @@
 # Decisions
 
+## 2026-10-04: preserve producers during verifier repairs
+
+An orchestration correction does not become the original native producer.
+SlabCollision retains its interrupted eager diagnostic verifier and both completed
+native outputs; a separately pinned runner adopts those outputs after exact
+lineage, row and byte checks. TextureMipmap retains the original uneven-array
+construction failure and adopts the same executable for the corpus excluding
+only that unrepresentable input. Sources, independent expectations and the
+original receipts remain preserved. Native array-shape coverage and independent
+kernel status are reported separately.
+
+## 2026-10-04: resolve fall rays from actual movement
+
+The local runtime keeps one authoritative world/body/support/minor/history
+owner. Actual required fall-reset ray endpoints depend on collision-resolved
+motion; a prior supplied Clip is insufficient for a general runtime. Prepare a
+checked staged supplier using actual Core reads and the pinned release's DDA,
+tag and fluid rules. A narrow NotRequired admission must reject required rays.
+Do not manufacture a Miss, deduplicate actual repeated cells or shift the
+history callback after gravity/drag. Late pose queries and Entity.commonTick
+snapshots remain distinct phase operations.
+
+## 2026-10-04: diagnose the resource-client compiler before retrying
+
+The original and recursive Frame/Assets-boxed resource entries each reached
+their single 600-second C-emission bound without an executable. A source layout
+reduction and an unsymbolized memory sample do not identify the bottleneck.
+Next distinguish native graph construction from ownership/fusion/fact-pass
+emission using a provenance-pinned, capped read-only source-copy diagnostic.
+Source-copy Node observations cannot be attributed to the installed compiler's
+JavaScript engine or reported as a build speedup. A further native client build
+requires evidence that justifies its changed generation.
+
 ## 2026-10-04: visible native acceptance is explicit
 
 Record real visible native presentation/input verification using computer use
