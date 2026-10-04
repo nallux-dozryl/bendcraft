@@ -1,0 +1,49 @@
+{
+  "boundary": "In-memory manifest/existence mutations; no fixture regeneration or emission",
+  "case_sha256": "acad13f6650bdc583c4c1140d7624af80675ec2814fd81f5c14ae34a58ea1324",
+  "corruptions_rejected": [
+    {
+      "error": "Prepared source/runner/reference/input generation stale",
+      "name": "source_resealed"
+    },
+    {
+      "error": "Prepared source/runner/reference/input generation stale",
+      "name": "runner_resealed"
+    },
+    {
+      "error": "Prepared source/runner/reference/input generation stale",
+      "name": "reference_resealed"
+    },
+    {
+      "error": "Prepared source/runner/reference/input generation stale",
+      "name": "semantics_resealed"
+    },
+    {
+      "error": "Prepared input bytes/semantics differ",
+      "name": "case_bytes_resealed"
+    },
+    {
+      "error": "Missing prepared generation; use explicit --prepare-only",
+      "name": "missing_manifest"
+    }
+  ],
+  "files_unchanged": true,
+  "generation": {
+    "case_path": "build/texture-mipmap/cases.json",
+    "case_sha256": "acad13f6650bdc583c4c1140d7624af80675ec2814fd81f5c14ae34a58ea1324",
+    "native_sources": {
+      "compiler_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+      "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+      "src/texture_mipmap.bend": "6be887316b9660442be7a2f7d701edd1d6675c6956f243b9bdbc6c54794bd38b",
+      "tests/texture_mipmap.bend": "05dc6119fb4c4cd8e3712110af4f431f9e69497987a4b6406e3d833a1399991d"
+    },
+    "observation_sha256": "1d0272163b4bf753b4bde0bfd36cbd0f094f73e26cf8b1b5360cb397697d1ac7",
+    "reference_sha256": "77297d625f5e43cd126803846a7f50604773d49fbc07a90fbd37a5f08c2b4aec",
+    "runner_sha256": "b365d301ab5c2ff718370e2d1ef08bf404967dcb6e495b71953075ee60883f78",
+    "schema": 1,
+    "seal_sha256": "e95b07f6b73d8b29febf42a6d7d819a8daf3bebc13e1369bb3bd29b44cf71e6a",
+    "semantic_inputs_sha256": "dc8da784b84a47bb0e61ede5cc1d1ef736fdc99684dd178242d46d18cd6ac10c"
+  },
+  "preparation_sha256": "33682c9f6b72784c9a4427484ea20a69b4bc23d008afce2038ff780c11d63d3a",
+  "status": "passed"
+}

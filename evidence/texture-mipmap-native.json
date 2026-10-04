@@ -1,0 +1,135 @@
+{
+  "actual_compared_pixels": 28120,
+  "actual_scalar_quads": 260,
+  "boundary": "Actual five-strategy CPU mip pixels, original/preconditioned/provided levels, explicit prevalidation, logical ARGB order, complete original unused capacity preservation and generated zero padding; scalar diagnostics borrow Data while arrays retain sole ownership. No physical address identity assertion, failed-Java partial mutation recovery parity, atlas/GPU/animation frame selection.",
+  "canonical_report_sha256": "76a2063f67b043900dc77e3626d19c9ced2e89437f3a1af14da4d6ef0e73d07a",
+  "cases": 498,
+  "command": "python3 tools/test_texture_mipmap.py --skip-kernel --reuse-build",
+  "expected_pixels_in_native_inputs": false,
+  "kernel": {
+    "reason": "explicit --skip-kernel; native pixel evidence precedes proof",
+    "status": "not-run"
+  },
+  "lut_values": 1280,
+  "native_artifact": {
+    "binary_bytes": 1644520,
+    "binary_sha256": "20f03b4a18e82570e5ee6b699a714309067697f414f455a379e41609057ca284",
+    "build_seconds": 13.163871000520885,
+    "command": [
+      "/Users/chuah/.bend/bin/bend",
+      "tests/texture_mipmap.bend",
+      "-o",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/texture-mipmap-tests"
+    ],
+    "compiler_pid": 13750,
+    "generation": {
+      "native_sources": {
+        "compiler_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+        "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+        "src/texture_mipmap.bend": "6be887316b9660442be7a2f7d701edd1d6675c6956f243b9bdbc6c54794bd38b",
+        "tests/texture_mipmap.bend": "05dc6119fb4c4cd8e3712110af4f431f9e69497987a4b6406e3d833a1399991d"
+      },
+      "observation_sha256": "1d0272163b4bf753b4bde0bfd36cbd0f094f73e26cf8b1b5360cb397697d1ac7",
+      "reference_sha256": "77297d625f5e43cd126803846a7f50604773d49fbc07a90fbd37a5f08c2b4aec",
+      "runner_sha256": "b365d301ab5c2ff718370e2d1ef08bf404967dcb6e495b71953075ee60883f78",
+      "semantic_inputs_sha256": "dc8da784b84a47bb0e61ede5cc1d1ef736fdc99684dd178242d46d18cd6ac10c"
+    },
+    "preparation_sha256": "33682c9f6b72784c9a4427484ea20a69b4bc23d008afce2038ff780c11d63d3a",
+    "schema": 1
+  },
+  "native_run_seconds": [
+    0.2799445828422904,
+    0.2779969582334161
+  ],
+  "ordinary": [
+    {
+      "output": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.",
+      "path": "src/texture_mipmap.bend",
+      "seconds": 0.2191119994968176
+    },
+    {
+      "output": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.",
+      "path": "tests/texture_mipmap.bend",
+      "seconds": 0.697564166970551
+    }
+  ],
+  "policy_rejections": 33,
+  "preparation_sha256": "74dce69959a9c4ea2a403feb6a8bd7f4baf0f22703af8a5193cadd962033a4f4",
+  "retained_artifact_adoption": {
+    "binary_sha256": "20f03b4a18e82570e5ee6b699a714309067697f414f455a379e41609057ca284",
+    "boundary": "Only unrepresentable unequal-tree native fixture removed. Original runtime attempt remains failed; BufferShape native coverage absent. Harness/production/transitive Bend, installed Base/native effects, compiler, original C and binary unchanged. Full system native/header/library closure remains uncaptured.",
+    "failed_archive_manifest_sha256": "61fb27a7664820e42233a5391606da8a6662c9982a98bb04df527902d81468a4",
+    "generated_c_sha256": "34c460b8128c8fe40901553da90c4338adebf80f63533ac111f44014a33df9ad",
+    "new_preparation_sha256": "74dce69959a9c4ea2a403feb6a8bd7f4baf0f22703af8a5193cadd962033a4f4",
+    "old_native_producer_generation": {
+      "native_sources": {
+        "compiler_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+        "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+        "src/texture_mipmap.bend": "6be887316b9660442be7a2f7d701edd1d6675c6956f243b9bdbc6c54794bd38b",
+        "tests/texture_mipmap.bend": "05dc6119fb4c4cd8e3712110af4f431f9e69497987a4b6406e3d833a1399991d"
+      },
+      "observation_sha256": "1d0272163b4bf753b4bde0bfd36cbd0f094f73e26cf8b1b5360cb397697d1ac7",
+      "reference_sha256": "77297d625f5e43cd126803846a7f50604773d49fbc07a90fbd37a5f08c2b4aec",
+      "runner_sha256": "b365d301ab5c2ff718370e2d1ef08bf404967dcb6e495b71953075ee60883f78",
+      "semantic_inputs_sha256": "dc8da784b84a47bb0e61ede5cc1d1ef736fdc99684dd178242d46d18cd6ac10c"
+    },
+    "old_native_receipt_sha256": "db86d625bc87042cfa329115b8a5a430264e9d5a1075bdd7ce70aeae574f090d",
+    "old_preparation_sha256": "33682c9f6b72784c9a4427484ea20a69b4bc23d008afce2038ff780c11d63d3a",
+    "remaining_inputs_equal_to_original_filtered_once": true,
+    "removed_input": {
+      "bias": 0,
+      "id": "policy_unequal_tree",
+      "kind": "frame",
+      "levels": [
+        {
+          "capacity": 3,
+          "height": 1,
+          "pixels": [
+            4278256131,
+            4278453510,
+            4278650889
+          ],
+          "unbalanced": true,
+          "width": 2
+        }
+      ],
+      "path": "block/probe",
+      "strategy": "mean",
+      "target_level": 0,
+      "translucent": false,
+      "transparent": false
+    },
+    "schema": 1,
+    "seal_sha256": "088cb466e4670ecc6fb6f57f48e020433eef74cecc6abb98a7b00e06c73c713f",
+    "status": "explicit-retained-artifact-adoption",
+    "verification_generation": {
+      "native_sources": {
+        "compiler_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+        "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+        "src/texture_mipmap.bend": "6be887316b9660442be7a2f7d701edd1d6675c6956f243b9bdbc6c54794bd38b",
+        "tests/texture_mipmap.bend": "05dc6119fb4c4cd8e3712110af4f431f9e69497987a4b6406e3d833a1399991d"
+      },
+      "observation_sha256": "1d0272163b4bf753b4bde0bfd36cbd0f094f73e26cf8b1b5360cb397697d1ac7",
+      "reference_sha256": "77297d625f5e43cd126803846a7f50604773d49fbc07a90fbd37a5f08c2b4aec",
+      "runner_sha256": "03987baf68b6f2407e57c9093cdfb2630cac25228f9517ede4bd8deb55789e44",
+      "semantic_inputs_sha256": "c01a064e563bc9456ba699f29eb7e9f43849b101f7e7409773805250544216f9"
+    }
+  },
+  "same_owner_successful_recoveries": 230,
+  "schema": 1,
+  "status": "passed_bounded_domain",
+  "successful_frames": 204,
+  "two_native_runs_equal": true,
+  "verification_generation": {
+    "native_sources": {
+      "compiler_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+      "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+      "src/texture_mipmap.bend": "6be887316b9660442be7a2f7d701edd1d6675c6956f243b9bdbc6c54794bd38b",
+      "tests/texture_mipmap.bend": "05dc6119fb4c4cd8e3712110af4f431f9e69497987a4b6406e3d833a1399991d"
+    },
+    "observation_sha256": "1d0272163b4bf753b4bde0bfd36cbd0f094f73e26cf8b1b5360cb397697d1ac7",
+    "reference_sha256": "77297d625f5e43cd126803846a7f50604773d49fbc07a90fbd37a5f08c2b4aec",
+    "runner_sha256": "03987baf68b6f2407e57c9093cdfb2630cac25228f9517ede4bd8deb55789e44",
+    "semantic_inputs_sha256": "c01a064e563bc9456ba699f29eb7e9f43849b101f7e7409773805250544216f9"
+  }
+}

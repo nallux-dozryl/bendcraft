@@ -1,0 +1,61 @@
+{
+  "activation_commands_proposed": [
+    "Copy reviewed proposed runner into tools/test_texture_mipmap.py; copy proposed cases/preparation into their original paths after authorization",
+    "python3 tools/test_texture_mipmap.py --skip-kernel --adopt-build (metadata-only, no ordinary/compiler/native run)",
+    "python3 tools/test_texture_mipmap.py --skip-kernel --reuse-build (two retained native runs only after explicit grant)"
+  ],
+  "actual_oracle_and_expected_mapping_unchanged": true,
+  "added_python_functions": [
+    "retained_adoption"
+  ],
+  "adoption_archive_identity_pinned_to_reviewed_SHA256": true,
+  "all_nonfunction_module_ASTs_equal": true,
+  "all_other_function_ASTs_equal": true,
+  "cases_AST_exactly_original_plus_one_ID_filter": true,
+  "changed_python_functions": [
+    "cases",
+    "main"
+  ],
+  "comparator_functions_unchanged": [
+    "check_frame",
+    "policy",
+    "source_images"
+  ],
+  "counters": {
+    "actual_compared_pixels": 28120,
+    "actual_scalar_quads": 260,
+    "frames_and_policies": 237,
+    "lut_values": 1280,
+    "policy_rejections": 33,
+    "rejections_by_code": {
+      "BufferLength": 1,
+      "CapacityLimit": 3,
+      "DimensionRange": 3,
+      "LevelCount": 3,
+      "LevelRange": 4,
+      "LimitsRange": 7,
+      "PathLimit": 1,
+      "WorkLimit": 2,
+      "ZeroGeneratedDimension": 9
+    },
+    "successful_frames": 204,
+    "total": 498
+  },
+  "expected_dict_value_equal_to_archived_runner": true,
+  "main_AST_exactly_original_with_enumerated_metadata_adoption_changes": true,
+  "main_allowed_change_count": 4,
+  "native_BufferShape_coverage": false,
+  "no_live_files_edited": true,
+  "no_native_or_Bend_or_Java_execution": true,
+  "original_archive_manifest_sha256": "61fb27a7664820e42233a5391606da8a6662c9982a98bb04df527902d81468a4",
+  "original_cases_sha256": "acad13f6650bdc583c4c1140d7624af80675ec2814fd81f5c14ae34a58ea1324",
+  "original_runner_sha256": "b365d301ab5c2ff718370e2d1ef08bf404967dcb6e495b71953075ee60883f78",
+  "proposed_cases_sha256": "c3caa4097229602b0e76584dc0c3a9195cce4059da240a3c10b7312b85f7a17d",
+  "proposed_preparation_sha256": "74dce69959a9c4ea2a403feb6a8bd7f4baf0f22703af8a5193cadd962033a4f4",
+  "proposed_runner_sha256": "03987baf68b6f2407e57c9093cdfb2630cac25228f9517ede4bd8deb55789e44",
+  "remaining_semantic_inputs_byte_value_equal": true,
+  "removed_input_id": "policy_unequal_tree",
+  "runner_diff_sha256": "839eada2fd2cc1a4249c019d9ba51c2bee183d7f4a02024282b417b2b6f9f63b",
+  "schema": 1,
+  "status": "proposed-not-activated-or-executed"
+}

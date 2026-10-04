@@ -1,0 +1,278 @@
+{
+  "api": {
+    "bias": "finite and measured terminating +/-Inf/quiet NaN raw F32 admitted",
+    "close_chain": "Chain -> Unit",
+    "compute_transparency": "Level, Limits -> Level & Result<Error, Transparency>",
+    "early_mutation_and_provided_levels": "Measured base preconditioning before early return, retains all provided/extra levels and original capacity, higher provided levels can be alpha-scaled during extension",
+    "generate": "Chain, Config, Limits -> Chain & Result<Error, Summary>",
+    "pixel_word": "straight ARGB 0xAARRGGBB",
+    "rejection_recovery": "All public allocation/access/config/budget admission before pixel mutation; Java partial-mutating failed receiver behavior excluded",
+    "storage": "positive logical rectangle and complete balanced power-of-two Array capacity, original unused cells retained, generated unused capacity zero",
+    "strategies": [
+      "auto",
+      "mean",
+      "cutout",
+      "strict_cutout",
+      "dark_cutout"
+    ]
+  },
+  "artifacts": [
+    {
+      "bytes": 693511,
+      "path": "build/texture-mipmap/cases.json",
+      "sha256": "c3caa4097229602b0e76584dc0c3a9195cce4059da240a3c10b7312b85f7a17d"
+    },
+    {
+      "bytes": 1009,
+      "path": "build/texture-mipmap/preparation.json",
+      "sha256": "74dce69959a9c4ea2a403feb6a8bd7f4baf0f22703af8a5193cadd962033a4f4"
+    },
+    {
+      "bytes": 1280,
+      "path": "build/texture-mipmap/native-build.json",
+      "sha256": "db86d625bc87042cfa329115b8a5a430264e9d5a1075bdd7ce70aeae574f090d"
+    },
+    {
+      "bytes": 3217,
+      "path": "build/texture-mipmap/native-adoption.json",
+      "sha256": "4136b93f6d2ae251aeba1cecd6dd3dbee30aa1440630fa4b6145f8d99e3b6397"
+    },
+    {
+      "bytes": 1917384,
+      "path": "build/texture-mipmap/preserved.c",
+      "sha256": "34c460b8128c8fe40901553da90c4338adebf80f63533ac111f44014a33df9ad"
+    },
+    {
+      "bytes": 1644520,
+      "path": "build/texture-mipmap-tests",
+      "sha256": "20f03b4a18e82570e5ee6b699a714309067697f414f455a379e41609057ca284"
+    },
+    {
+      "bytes": 2417122,
+      "path": "build/texture-mipmap/native-run-1.json",
+      "sha256": "06bf9adbab3a963fdf8404d0ccd99ea0a0577fb07b50c977f4d0b4115bda4bda"
+    },
+    {
+      "bytes": 2417122,
+      "path": "build/texture-mipmap/native-run-2.json",
+      "sha256": "06bf9adbab3a963fdf8404d0ccd99ea0a0577fb07b50c977f4d0b4115bda4bda"
+    },
+    {
+      "bytes": 1193102,
+      "path": "build/texture-mipmap/native-run-1-stdout.txt",
+      "sha256": "81a8f784ddd85a4c2d6a7ce31e66e31f6e9d284615ac3bff78ae887bcb993ec2"
+    },
+    {
+      "bytes": 1193102,
+      "path": "build/texture-mipmap/native-run-2-stdout.txt",
+      "sha256": "81a8f784ddd85a4c2d6a7ce31e66e31f6e9d284615ac3bff78ae887bcb993ec2"
+    },
+    {
+      "bytes": 5263,
+      "path": "build/texture-mipmap/compiler-observation.json",
+      "sha256": "e155ea067febdb87bc31bdf625e57e8df22a0244a41cb8707d5296dcdf186b51"
+    },
+    {
+      "bytes": 586,
+      "path": "build/texture-mipmap/adoption-observation.json",
+      "sha256": "63bfcd55fda0281282abbd971a1224babdcd7f4f5679789ce6aa9686ea2f8f66"
+    },
+    {
+      "bytes": 315,
+      "path": "build/texture-mipmap/adopted-runtime-observation.json",
+      "sha256": "f7010e1f702d885ae2f615cb420bd631bb152eb81090bb9a1c8140a1d0782d0e"
+    },
+    {
+      "bytes": 10840,
+      "path": "build/texture-mipmap/archive-failed-33682c9f/manifest.json",
+      "sha256": "61fb27a7664820e42233a5391606da8a6662c9982a98bb04df527902d81468a4"
+    },
+    {
+      "bytes": 483,
+      "path": "build/root-mipmap-repair-review.json",
+      "sha256": "8763382483feca0fb4061128fc8359a3dc0c2df404e78ec2cb9de80fe5abd9fe"
+    }
+  ],
+  "boundary": "Exact measured CPU MipmapGenerator/NativeImage words and explicit engineering admission; no physical pointer identity equivalence, BufferShape native coverage, failed-Java partial-mutation recovery parity, animation frame selection, padded atlas construction, upload/GPU sampler, renderer mip selection or full Minecraft acceptance.",
+  "build": {
+    "actual_clang_and_cc1_invocations_retained": true,
+    "binary_bytes": 1644520,
+    "binary_sha256": "20f03b4a18e82570e5ee6b699a714309067697f414f455a379e41609057ca284",
+    "full_system_native_header_library_closure": "uncaptured",
+    "installed_emissions": 1,
+    "native_build_seconds": 13.163871000520885,
+    "original_C_bytes": 1917384,
+    "original_C_sha256": "34c460b8128c8fe40901553da90c4338adebf80f63533ac111f44014a33df9ad",
+    "physical_footprint_and_peak_rss": "unobserved"
+  },
+  "commits_created": false,
+  "confidence": "high within measured bounded CPU receiver/admission domain",
+  "existing_modules_edited": false,
+  "explicit_adoption_sha256": "4136b93f6d2ae251aeba1cecd6dd3dbee30aa1440630fa4b6145f8d99e3b6397",
+  "files": [
+    {
+      "bytes": 48995,
+      "path": "src/texture_mipmap.bend",
+      "sha256": "6be887316b9660442be7a2f7d701edd1d6675c6956f243b9bdbc6c54794bd38b"
+    },
+    {
+      "bytes": 10558,
+      "path": "tests/texture_mipmap.bend",
+      "sha256": "05dc6119fb4c4cd8e3712110af4f431f9e69497987a4b6406e3d833a1399991d"
+    },
+    {
+      "bytes": 14887,
+      "path": "tools/reference_texture_mipmap_probe.py",
+      "sha256": "81b24c70493a5f29aa878ec0163fdda91cd35f7a53960cf5942891b4285e4d1f"
+    },
+    {
+      "bytes": 21012,
+      "path": "tools/test_texture_mipmap.py",
+      "sha256": "03987baf68b6f2407e57c9093cdfb2630cac25228f9517ede4bd8deb55789e44"
+    },
+    {
+      "bytes": 2585133,
+      "path": "reference/texture_mipmap.json",
+      "sha256": "77297d625f5e43cd126803846a7f50604773d49fbc07a90fbd37a5f08c2b4aec"
+    },
+    {
+      "bytes": 19309,
+      "path": "docs/TEXTURE_MIPMAP.md",
+      "sha256": "819814107dafb27dc32054abd7b53c4ee0d33acf4c3aaba7edbbfb5dab9870a8"
+    },
+    {
+      "bytes": 10408,
+      "path": "evidence/texture-mipmap-build-profile.json",
+      "sha256": "cedaa18385f0ca20ebe4155b3f70f4f44813e5cea574e8d7ec892c3eb21db868"
+    },
+    {
+      "bytes": 2048,
+      "path": "evidence/texture-mipmap-kernel.json",
+      "sha256": "5279ad4171d38e9fad6856f9f801e06533d4befa2a8c2604b96f002d30ae5abf"
+    },
+    {
+      "bytes": 17802,
+      "path": "evidence/texture-mipmap-native-runtime-failure.json",
+      "sha256": "8505d7cd78c052f0bb7f88abc90aa3abf5e2988f537f9108c259ca1b3397cb88"
+    },
+    {
+      "bytes": 7110,
+      "path": "evidence/texture-mipmap-native.json",
+      "sha256": "104209a5aa927d6218709a01186ba56233d3b644b31c107c0b176d0add143b1b"
+    },
+    {
+      "bytes": 1422,
+      "path": "evidence/texture-mipmap-preflight.json",
+      "sha256": "e3b8d32e13bd1a3b5fcd9853832ee39e13e14a237e1d1d60015e9871d71eed32"
+    },
+    {
+      "bytes": 2118,
+      "path": "evidence/texture-mipmap-preparation-retention.json",
+      "sha256": "4cb1a75e72de68ad7dffec5331aaff20eba286a50db69190c413c3581e8137ec"
+    },
+    {
+      "bytes": 683,
+      "path": "evidence/texture-mipmap-reference-selftest.json",
+      "sha256": "5dfb30787d589be9c4057598616d26193a598c081e267084ecc4f9287dd93ac1"
+    },
+    {
+      "bytes": 440,
+      "path": "evidence/texture-mipmap-reference.json",
+      "sha256": "7f6d0de786728f4c1e67539755c11f4ae81be7b1c1969c94262eb43cdf8c2211"
+    },
+    {
+      "bytes": 3106,
+      "path": "evidence/texture-mipmap-repair-activation.json",
+      "sha256": "58bd172c6dfddeee6d9b0ee7c407b1aba5f42faf2d120deec9a860b04550f85a"
+    },
+    {
+      "bytes": 2533,
+      "path": "evidence/texture-mipmap-repair-proposal.json",
+      "sha256": "c13ccbf8a0fab5075b378206f4c3c2465f6ff82de6a7b297ce0948faf49dac1e"
+    }
+  ],
+  "kernel": {
+    "attempts": 1,
+    "harness_or_projection_attempts": 0,
+    "production_source": true,
+    "scope": "Zero-alpha bit law and black/white integer MEAN LUT endpoint laws only",
+    "seconds": 0.7473829993978143,
+    "status": "passed"
+  },
+  "native": {
+    "actual_compared_pixels": 28120,
+    "actual_scalar_quads": 260,
+    "canonical_report_sha256": "76a2063f67b043900dc77e3626d19c9ced2e89437f3a1af14da4d6ef0e73d07a",
+    "cases": 498,
+    "expected_pixels_in_native_inputs": false,
+    "lut_values": 1280,
+    "native_run_seconds": [
+      0.2799445828422904,
+      0.2779969582334161
+    ],
+    "policy_rejections": 33,
+    "same_owner_successful_recoveries": 230,
+    "successful_frames": 204,
+    "two_native_runs_equal": true
+  },
+  "original_attempt": {
+    "archived": true,
+    "no_native_BufferShape_coverage": true,
+    "preserved_unchanged": true,
+    "reason": "Harness unequal-class ANode construction posts ERR_TAGS in installed runtime before production entry",
+    "receipt_sha256": "8505d7cd78c052f0bb7f88abc90aa3abf5e2988f537f9108c259ca1b3397cb88",
+    "removed_case": "policy_unequal_tree",
+    "status": "failed-native-runtime"
+  },
+  "original_native_producer": {
+    "binary_bytes": 1644520,
+    "binary_sha256": "20f03b4a18e82570e5ee6b699a714309067697f414f455a379e41609057ca284",
+    "build_seconds": 13.163871000520885,
+    "command": [
+      "/Users/chuah/.bend/bin/bend",
+      "tests/texture_mipmap.bend",
+      "-o",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/texture-mipmap-tests"
+    ],
+    "compiler_pid": 13750,
+    "generation": {
+      "native_sources": {
+        "compiler_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+        "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+        "src/texture_mipmap.bend": "6be887316b9660442be7a2f7d701edd1d6675c6956f243b9bdbc6c54794bd38b",
+        "tests/texture_mipmap.bend": "05dc6119fb4c4cd8e3712110af4f431f9e69497987a4b6406e3d833a1399991d"
+      },
+      "observation_sha256": "1d0272163b4bf753b4bde0bfd36cbd0f094f73e26cf8b1b5360cb397697d1ac7",
+      "reference_sha256": "77297d625f5e43cd126803846a7f50604773d49fbc07a90fbd37a5f08c2b4aec",
+      "runner_sha256": "b365d301ab5c2ff718370e2d1ef08bf404967dcb6e495b71953075ee60883f78",
+      "semantic_inputs_sha256": "dc8da784b84a47bb0e61ede5cc1d1ef736fdc99684dd178242d46d18cd6ac10c"
+    },
+    "preparation_sha256": "33682c9f6b72784c9a4427484ea20a69b4bc23d008afce2038ff780c11d63d3a",
+    "schema": 1
+  },
+  "recorded_utc": "2026-10-04T01:19:16.168984+00:00",
+  "reference": {
+    "corruption_checks": 8,
+    "jar_sha256": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d",
+    "observation_sha256": "1d0272163b4bf753b4bde0bfd36cbd0f094f73e26cf8b1b5360cb397697d1ac7",
+    "reference_sha256": "77297d625f5e43cd126803846a7f50604773d49fbc07a90fbd37a5f08c2b4aec",
+    "two_fresh_actual_Java_runs_equal": true
+  },
+  "schema": 1,
+  "seal_sha256": "6307c9f8ef708603c6c0f82e7fc2a354c943b7f855ea1bdf199b7d5c0bf7f6f7",
+  "slot": "A explicitly released after whole-group reaping",
+  "status": "passed_bounded_domain_after_reviewed_unrepresentable_fixture_exclusion",
+  "verification_generation": {
+    "native_sources": {
+      "compiler_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+      "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+      "src/texture_mipmap.bend": "6be887316b9660442be7a2f7d701edd1d6675c6956f243b9bdbc6c54794bd38b",
+      "tests/texture_mipmap.bend": "05dc6119fb4c4cd8e3712110af4f431f9e69497987a4b6406e3d833a1399991d"
+    },
+    "observation_sha256": "1d0272163b4bf753b4bde0bfd36cbd0f094f73e26cf8b1b5360cb397697d1ac7",
+    "reference_sha256": "77297d625f5e43cd126803846a7f50604773d49fbc07a90fbd37a5f08c2b4aec",
+    "runner_sha256": "03987baf68b6f2407e57c9093cdfb2630cac25228f9517ede4bd8deb55789e44",
+    "semantic_inputs_sha256": "c01a064e563bc9456ba699f29eb7e9f43849b101f7e7409773805250544216f9"
+  },
+  "verification_preparation_sha256": "74dce69959a9c4ea2a403feb6a8bd7f4baf0f22703af8a5193cadd962033a4f4"
+}
