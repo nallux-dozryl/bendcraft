@@ -1,0 +1,153 @@
+{
+  "build_seconds": 9.97522637527436,
+  "confidence": "high for exact project reader equivalence and recorded focused fixture outputs; full007 ownership/runtime pending",
+  "focused_active_pixels_per_mode": 10975,
+  "focused_cases": 15,
+  "focused_modes": [
+    "tile",
+    "flat",
+    "bvh"
+  ],
+  "focused_native_build": {
+    "bytes": 626825,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-render-performance-002/focused/native-build.json",
+    "sha256": "5393298f40bcc8f1bc775a2cb3ac8f67a3dc8d38afac4c219434bb8deb2be7d2"
+  },
+  "focused_native_result": {
+    "bytes": 5394,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-render-performance-002/focused/result.json",
+    "sha256": "e976012c2c0916a7bc3a5b9acd8540aa8194b7871a11c24b7056e5a0112b26f0"
+  },
+  "forcing_chain": {
+    "compiler_rule": "comp.ts val_own1618\u20131627 forces an unheld owned box destination owned; fixed-point ownership is global by function parameter",
+    "correction": "Dedicated M.texture_pixel_lookup/texture_pixel_at isolate ray reading from fresh-Image HUD calls; identical scalar project reader semantics.",
+    "full006_mesh_sample_C_line": 67054,
+    "full006_resource_pixel_lookup_C_helper": "spin_20",
+    "full006_resource_pixel_lookup_C_line": 7991,
+    "source_fresh_image_callers": [
+      "src/player_hud.bend:181",
+      "src/player_hud.bend:232",
+      "src/player_inventory_screen.bend:876"
+    ]
+  },
+  "kernel_output": "ALL PROOFS CHECK\n",
+  "law_source": {
+    "bytes": 555,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-render-performance-002/source/src/mesh_render_performance_reader_laws.bend",
+    "sha256": "6b40ef08b61041b4073040ef5deaa649fa09d22811e3ff114a3f02a78385005d"
+  },
+  "native_group_absent": true,
+  "new_law_closure": {
+    "bytes": 23306,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-render-performance-002/reader-law/selected.bendtt",
+    "sha256": "41221c99ed7bf55396e815a20bd8f3c7fae4b312c90dce93705a6d4ce5bcc839"
+  },
+  "new_law_exclusions": [],
+  "new_law_processes": {
+    "export": {
+      "argv": [
+        "/opt/homebrew/bin/node",
+        "--stack-size=4096",
+        "--experimental-transform-types",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-render-performance-002/reader-law/export.mjs"
+      ],
+      "cap_seconds": 60,
+      "cleanup_error": null,
+      "exit_code": 0,
+      "group_absent": true,
+      "launch_error": null,
+      "pid": 78387,
+      "seconds": 0.5317328330129385,
+      "stderr": {
+        "bytes": 177,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-render-performance-002/reader-law/export.stderr",
+        "sha256": "4138a075ece188fd095ae95e6947569e90c507540801209ed237eb007bf060b4"
+      },
+      "stdout": {
+        "bytes": 295,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-render-performance-002/reader-law/export.stdout",
+        "sha256": "e4aee3fd056a55de1cd1f7d7c7fd11653ae5b58efdb35900d4278c12e46a0146"
+      },
+      "timed_out": false
+    },
+    "kernel": {
+      "argv": [
+        "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-render-performance-002/reader-law/selected.bendtt"
+      ],
+      "cap_seconds": 60,
+      "cleanup_error": null,
+      "exit_code": 0,
+      "group_absent": true,
+      "launch_error": null,
+      "pid": 78388,
+      "seconds": 0.012040333822369576,
+      "stderr": {
+        "bytes": 0,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-render-performance-002/reader-law/kernel.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 17,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-render-performance-002/reader-law/kernel.stdout",
+        "sha256": "61b73cda11b6b665b9f99f2defd3d3b57f985c865225e942a5bdaa594a503e47"
+      },
+      "timed_out": false
+    }
+  },
+  "new_law_selection": {
+    "all_original_tlds_ctrs_tmps_retained": true,
+    "checked_types_and_bodies_unchanged": true,
+    "entry": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-render-performance-002/source/src/mesh_render_performance_reader_proof.bend",
+    "ordinary_source_api_check_passed": true,
+    "original_root_count": 976,
+    "roots": [
+      "mesh_render_performance_reader_laws:texture_pixel_lookup_preserves_resource_reader",
+      "mesh_render_performance_reader_laws:texture_pixel_at_preserves_resource_reader"
+    ],
+    "selected_root_count": 2,
+    "source_files": [
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-render-performance-002/source/src/mesh_render_performance_reader_proof.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/base.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-render-performance-002/source/src/mesh_render.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-render-performance-002/source/src/client_render.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-render-performance-002/source/src/png.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-render-performance-002/source/src/compression.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-render-performance-002/source/src/archive.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-render-performance-002/source/src/framing.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-render-performance-002/source/src/player_presentation.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-render-performance-002/source/src/mesh_render_performance_reader_laws.bend"
+    ],
+    "term_pins": [
+      {
+        "checked_proof_sha256": "3b7c46f6f2d244649c098986c388d099da5cf0546c085c310fc5aad0ad153219",
+        "name": "mesh_render_performance_reader_laws:texture_pixel_lookup_preserves_resource_reader",
+        "source_body_sha256": "fcce5e709540709b33f4448ab7055d10cdaeba27ac6e4ae1229e3fd3aa45be3e",
+        "type_sha256": "3228e52ce39defa96a01be2d6482681b1c767c2da17d6f207b805ab5ac59b593"
+      },
+      {
+        "checked_proof_sha256": "40e5762f687bbc9b9c5a6397c3a00bc69702fc5a950323f9f5551d63f0229d31",
+        "name": "mesh_render_performance_reader_laws:texture_pixel_at_preserves_resource_reader",
+        "source_body_sha256": "cd2bc0d14c731bf4a6e5d95194059687ec95cf637d5e2afec8234779227b3ac1",
+        "type_sha256": "e1fde2c67ee44fd9e8188d2861ea9688fa8cbabaab2b9b25f3553787756d3de6"
+      }
+    ]
+  },
+  "private_source": {
+    "bytes": 29731,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-render-performance-002/source/src/mesh_render.bend",
+    "sha256": "cc8c7d3cf4badf3ec76a6dfd32939ec1d4c9d856fc181fa36a45cfe268df7424"
+  },
+  "proof_source": {
+    "bytes": 1574,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-render-performance-002/source/src/mesh_render_performance_reader_proof.bend",
+    "sha256": "5e5f02034933d650ad5c28fc9b9b116f8b495aaac2641e899dbcbf5605cdd549"
+  },
+  "scope": "Private M-only source correction; native pixel comparison reuses existing15-case independent Java/Pillow fixture; two NEW universal equivalence laws only. Original compiler, working M19c and frozen003/004/005/006 untouched.",
+  "source_preparation": {
+    "bytes": 556,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-render-performance-002/source-preparation.json",
+    "sha256": "b9a08159ae5dbe0c0e051f10bc062d6c81741cfe1025527b5ae358b2292b2dfa"
+  },
+  "status": "PASS_FOCUSED_AND_NEW_READER_EQUIVALENCE"
+}
