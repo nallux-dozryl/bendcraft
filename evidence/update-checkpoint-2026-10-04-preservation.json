@@ -1,0 +1,219 @@
+{
+  "agents": "All four running child agents interrupted; all other live-tree children already completed.",
+  "git_status_file": "build/update-checkpoint-2026-10-04/git-status.txt",
+  "goal": "Pause requested; tool status will be set after checkpoint commit.",
+  "inert_pg300_excluded": "Initial cleanup inventory included synthetic inert started.json PG300; no real process was launched or signalled for it.",
+  "last_commit": "294554de8a3cccde23c95f3b14f7f88fa6998668",
+  "ordinary_pass_receipts": [
+    {
+      "cleanup": null,
+      "groups_absent": true,
+      "path": "build/local-travel-reset/ordinary-source-003/receipt.json",
+      "pid": 3976,
+      "seconds": 1.336996,
+      "sha256": "da43faac626b66ae7dcaa94b3d20afc89cc6127bec51356c1f792a51bce81fd4",
+      "status": "passed"
+    },
+    {
+      "cleanup": null,
+      "groups_absent": true,
+      "path": "build/local-travel-reset/ordinary-harness-003/receipt.json",
+      "pid": 4564,
+      "seconds": 3.177713,
+      "sha256": "12c660de71e535acc9907384d56c5e5b6828ed494e207fe1762a100cf72569dd",
+      "status": "passed"
+    },
+    {
+      "cleanup": {
+        "cap_seconds": 5,
+        "clean": true,
+        "errors": [],
+        "kill_sent": false,
+        "leader_reaped": true,
+        "members_after": [],
+        "members_before": [],
+        "pgid": 4231,
+        "reaped_children": [],
+        "seconds": 0.032026
+      },
+      "groups_absent": null,
+      "path": "build/local-phase-reset/ordinary-source-001/receipt.json",
+      "pid": 4231,
+      "seconds": 1.5305314166471362,
+      "sha256": "c3de414d9315a92461ed861aaf56277bfc5d5908825c2156dbacc8d5d8ba1b75",
+      "status": "PASS"
+    },
+    {
+      "cleanup": {
+        "cap_seconds": 5,
+        "clean": true,
+        "errors": [],
+        "kill_sent": false,
+        "leader_reaped": true,
+        "members_after": [],
+        "members_before": [],
+        "pgid": 6037,
+        "reaped_children": [],
+        "seconds": 0.033417
+      },
+      "groups_absent": null,
+      "path": "build/local-phase-reset/ordinary-harness-004/receipt.json",
+      "pid": 6037,
+      "seconds": 2.2036676248535514,
+      "sha256": "19a77aa4f3eebf1a1b22132f7b58a3441658be0917e94d751e0cc606764c4c34",
+      "status": "PASS"
+    }
+  ],
+  "purpose": "Preservation and cleanup checkpoint at explicit user stop; no new test/build/audit",
+  "real_owned_group_absence": [
+    {
+      "absent": true,
+      "pgid": 3220
+    },
+    {
+      "absent": true,
+      "pgid": 3491
+    },
+    {
+      "absent": true,
+      "pgid": 3976
+    },
+    {
+      "absent": true,
+      "pgid": 4061
+    },
+    {
+      "absent": true,
+      "pgid": 4231
+    },
+    {
+      "absent": true,
+      "pgid": 4288
+    },
+    {
+      "absent": true,
+      "pgid": 4430
+    },
+    {
+      "absent": true,
+      "pgid": 4564
+    },
+    {
+      "absent": true,
+      "pgid": 5448
+    },
+    {
+      "absent": true,
+      "pgid": 5642
+    },
+    {
+      "absent": true,
+      "pgid": 6037
+    }
+  ],
+  "timestamp_utc": "2026-10-04T08:43:55.635210+00:00",
+  "working_files": [
+    {
+      "bytes": 32096,
+      "path": "src/local_travel_history.bend",
+      "sha256": "cb36ebe1707a8832c801944d8096eba384aec00c149a456c60e3333829746a06",
+      "snapshot": "build/update-checkpoint-2026-10-04/working-files/src/local_travel_history.bend"
+    },
+    {
+      "bytes": 89245,
+      "path": "src/local_phase_runtime.bend",
+      "sha256": "196c4bb4ede7194444dcdd031aa507b740d9fc28717ba48860aef699c839be4f",
+      "snapshot": "build/update-checkpoint-2026-10-04/working-files/src/local_phase_runtime.bend"
+    },
+    {
+      "bytes": 21275,
+      "path": "src/local_player_runtime.bend",
+      "sha256": "fd932047be8c476e812d15618a5b0b9a8c71bea62aef5cb69bed707703b77ec7",
+      "snapshot": "build/update-checkpoint-2026-10-04/working-files/src/local_player_runtime.bend"
+    },
+    {
+      "bytes": 27709,
+      "path": "tests/local_player_session.bend",
+      "sha256": "2081023f80df39c92ebbe11a2b19083b73bfe234cc193866521b1a13a0f198d6",
+      "snapshot": "build/update-checkpoint-2026-10-04/working-files/tests/local_player_session.bend"
+    },
+    {
+      "bytes": 63763,
+      "path": "tests/local_phase_runtime.bend",
+      "sha256": "9589c37194a807e01b3ac27eb4e83935ceaec4fba544b6fb05b00b1a9a2aeb22",
+      "snapshot": "build/update-checkpoint-2026-10-04/working-files/tests/local_phase_runtime.bend"
+    },
+    {
+      "bytes": 55180,
+      "path": "tests/local_travel_reset.bend",
+      "sha256": "c508273dac08746a93315ba83ef9fc45eeda0cddd82548147f6ef589ce02ae45",
+      "snapshot": "build/update-checkpoint-2026-10-04/working-files/tests/local_travel_reset.bend"
+    },
+    {
+      "bytes": 10704,
+      "path": "tests/local_phase_reset.bend",
+      "sha256": "61326ae4c0351be74b5af2f897e0e89544241dad84013e09f497a16fa3d697be",
+      "snapshot": "build/update-checkpoint-2026-10-04/working-files/tests/local_phase_reset.bend"
+    },
+    {
+      "bytes": 17212,
+      "path": "tools/test_local_travel_reset.py",
+      "sha256": "491772a1987a746c67086f4ce66cdd6841e86d2f1df2fdd51dc4ecf33a665d69",
+      "snapshot": "build/update-checkpoint-2026-10-04/working-files/tools/test_local_travel_reset.py"
+    },
+    {
+      "bytes": 9725,
+      "path": "tools/test_local_phase_reset.py",
+      "sha256": "1471d026836ce5ee6141c6f48e8a58625b919c3efb14ee3ff0d5d6d72b203dff",
+      "snapshot": "build/update-checkpoint-2026-10-04/working-files/tools/test_local_phase_reset.py"
+    },
+    {
+      "bytes": 16254,
+      "path": "tools/test_local_player_reset_session.py",
+      "sha256": "b55e8f19f2922d2ba29f6bf8ef18764ab0ae01b7e15d0bc7090b603091a913ae",
+      "snapshot": "build/update-checkpoint-2026-10-04/working-files/tools/test_local_player_reset_session.py"
+    },
+    {
+      "bytes": 36764,
+      "path": "tools/test_fall_reset_world_continuation.py",
+      "sha256": "9b455d5433b4401a8e3381419453bad9a3521394b6fd726cbdc38d9aff34344d",
+      "snapshot": "build/update-checkpoint-2026-10-04/working-files/tools/test_fall_reset_world_continuation.py"
+    },
+    {
+      "bytes": 36764,
+      "path": "tools/test_fall_reset_world_continuation_r2.py",
+      "sha256": "9b455d5433b4401a8e3381419453bad9a3521394b6fd726cbdc38d9aff34344d",
+      "snapshot": "build/update-checkpoint-2026-10-04/working-files/tools/test_fall_reset_world_continuation_r2.py"
+    },
+    {
+      "bytes": 5147,
+      "path": "docs/FALL_RESET_WORLD_CONTINUATION.md",
+      "sha256": "0d3452220df22aeef6d9534ad7dfb8988dd0f133d1392234cd77791f7cf96bda",
+      "snapshot": "build/update-checkpoint-2026-10-04/working-files/docs/FALL_RESET_WORLD_CONTINUATION.md"
+    },
+    {
+      "bytes": 4529,
+      "path": "docs/LOCAL_PHASE_RESET.md",
+      "sha256": "c3f51e679b8bd74de7c4c35bbb6f3090fbaff8317f179f2b3a724f843b51b66c",
+      "snapshot": "build/update-checkpoint-2026-10-04/working-files/docs/LOCAL_PHASE_RESET.md"
+    },
+    {
+      "bytes": 2093,
+      "path": "evidence/local-travel-reset-preparation.json",
+      "sha256": "f16cf4cc175b69738e6260e6400197335c4d53ff6fa58680d7dad772af002441",
+      "snapshot": "build/update-checkpoint-2026-10-04/working-files/evidence/local-travel-reset-preparation.json"
+    },
+    {
+      "bytes": 3699,
+      "path": "evidence/fall-reset-world-continuation-preparation.json",
+      "sha256": "408d83821a0fb2f0a509a125e0f5eb9fa9813d35be9ee52d09075c4be2b04e5a",
+      "snapshot": "build/update-checkpoint-2026-10-04/working-files/evidence/fall-reset-world-continuation-preparation.json"
+    },
+    {
+      "bytes": 5668,
+      "path": "evidence/fall-reset-world-continuation-ready.json",
+      "sha256": "be82c959303ddcb064d1039b95470175ae66938c82ad238457e6ae2e528d38e5",
+      "snapshot": "build/update-checkpoint-2026-10-04/working-files/evidence/fall-reset-world-continuation-ready.json"
+    }
+  ]
+}

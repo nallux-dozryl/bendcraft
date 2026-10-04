@@ -1,5 +1,11 @@
 # Status
 
+Paused at the user's explicit request for a Codex update on2026-10-04. All child
+agents are stopped and owned check groups are absent; execution grants are
+revoked. Resume only after an explicit user request. Read
+`UPDATE_CHECKPOINT_2026-10-04.md` before continuing. Dirty/incomplete work and all
+passing/failing generations are preserved.
+
 Target: Minecraft Java 26.3. Compiler: Bend 2.0.35. Persistent goal: active.
 
 ## Established
