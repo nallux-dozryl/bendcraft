@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Freeze a private numeric-continuation candidate; start no toolchain or game.
 
-The only production changes are two exponent branches and their scalar guards.
+The candidate changes only two exponent branches and their scalar guards.
 Original source/API copies, branch diffs, and candidate laws are retained beside
 the candidate. This prepares source, not a checker/kernel/native verdict.
 """
@@ -279,7 +279,7 @@ def main():
     args = parser.parse_args()
     record = prepare(args.directory)
     print(json.dumps({'status': record['status'], 'directory': record['directory'],
-                      'production_files_changed': len(record['changes']), 'law_count': record['law_count'],
+                      'candidate_implementation_files_changed': len(record['changes']), 'law_count': record['law_count'],
                       'product_processes_started': 0, 'diff': record['diff']}))
 
 
