@@ -150,9 +150,25 @@ renderer and state-identity refusal, exact diagnostic retention, and transform/
 binding identity mapping over arbitrary fields. They do not prove archive IO,
 PNG decoding, IEEE geometry, Java RNG or final rendered frame parity.
 
-The native harness is being added separately to exercise the actual loader and
-binder against all static states and concrete failure cases. Native execution
-and root live-client integration remain pending at this source/proof checkpoint.
-Lighting, biome tint, fluid/block-entity geometry, atlas/mipmap sampling,
-position randomness and actual visible client acceptance retain their own
-production obligations.
+`tests/resource_block_catalog.bend` and its driver now prepare 28 cases against
+the actual loader and binder. They cover all 130 profile entries including air,
+165 official queries with weighted ticket boundaries, arbitrary `test:` variant
+and multipart resources, missing dependencies, exact resource budgets, precise
+diagnostics, returned registry readback, per-quad sprite/layer/tint metadata,
+image pixel readback and an independent ZIP/PNG resource usage oracle. The
+harness passes ordinary source checking; preparation does not establish native
+behavior.
+
+The first ordinary native compilation timed out after 600 seconds before
+creating C or a binary. Its process group was reaped; the diagnostic sample
+recorded a 15.6 GiB peak physical footprint on the 18 GiB machine. The failed
+attempt remains in `evidence/resource-block-catalog-tests.json`. A distinct
+private emitter route, already exercised by the playable renderer, is being
+prepared against an immutable source snapshot. It changes emitter queue
+traversal and available-arity handling without changing the installed compiler
+or production sources. No native case has passed at this checkpoint.
+
+Native execution and root live-client integration remain pending. Lighting,
+biome tint, fluid/block-entity geometry, atlas/mipmap sampling, position
+randomness and actual visible client acceptance retain their own production
+obligations.
