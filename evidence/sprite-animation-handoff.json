@@ -1,0 +1,331 @@
+{
+  "api": {
+    "admit": "(M.Chain,Maybe<Metadata>,Limits)->Result<&1,&1,Rejected,Contents>",
+    "close": "close_contents/close_rejected recursively consume owned chains",
+    "inspect": "Contents->Contents & Result<Error,Observation{Plan,Selection}>",
+    "metadata": "decode_section/decode_document/parse_document/parse_document_with; exact frozen T.boolean reuse",
+    "ownership": "Contents has canonical recursive tail; forged nested owners retained on errors and closed; timeline authority only in Contents; immutable Plan/Selection observations",
+    "read_frame": "(Contents,index,mip)->Contents & Result<&2,&1,Error,M.Level>",
+    "static": "raw unique_frames [1] sentinel never inferred crop/index0/index1; NoAnimation selection width/height only",
+    "tick": "Contents->Contents & Result<Error,Selection>"
+  },
+  "artifacts": [
+    {
+      "bytes": 3102776,
+      "path": "build/sprite-animation-tests",
+      "sha256": "742ff21e7e3be631cb47ffb4729c87a1245dfcb159fedd591ea65eb1d6b54bb2"
+    },
+    {
+      "bytes": 1685,
+      "path": "build/sprite-animation/preparation.json",
+      "sha256": "9b78cda973ffa5c7a721718790e8fb2aed0033a285259f83411ed792466e4b59"
+    },
+    {
+      "bytes": 6983540,
+      "path": "build/sprite-animation/cases.json",
+      "sha256": "88099e627c4471b0a934d1662bd9a864e9ed60ab59c97f24a2a9a33b58782eaf"
+    },
+    {
+      "bytes": 8929,
+      "path": "build/sprite-animation/native-build.json",
+      "sha256": "91bd2de6065859e2c7eb032b3d3a8cc1dd96388ff051e2aa06831568a511725d"
+    },
+    {
+      "bytes": 7038,
+      "path": "build/sprite-animation/native-build-execution.json",
+      "sha256": "dc8ec5083d0c492353a782d7bd44ae2b0865c697606e367f46d735e903889356"
+    },
+    {
+      "bytes": 7792750,
+      "path": "build/sprite-animation/preserved.c",
+      "sha256": "5a88afd1decfcf5555f9f8d5e0e436890254bb105e1e8db11e3c7c375b9cf88f"
+    },
+    {
+      "bytes": 5276184,
+      "path": "build/sprite-animation/compiler-sample-120s.txt",
+      "sha256": "030624504bac4918486befdc852fe907d115c7dcec46bb9dda1f412c38e2c68b"
+    },
+    {
+      "bytes": 13291,
+      "path": "build/sprite-animation/preflight-SPRITE_ANIMATION.md",
+      "sha256": "879d2484436f0c4717621d0551c23b4c8b8bba5ab35ebba44811a3c9be82357d"
+    },
+    {
+      "bytes": 14016612,
+      "path": "build/sprite-animation/native-run-1-stdout.txt",
+      "sha256": "a3d9ea6c6bd47b9c4d0b704fbfc66c3b7e512380d95b10693a8c23943bdadd98"
+    },
+    {
+      "bytes": 0,
+      "path": "build/sprite-animation/native-run-1-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 36698042,
+      "path": "build/sprite-animation/native-run-1.json",
+      "sha256": "7f35ec3ffc3cdb921c4b45d8083e440a6d4cb1a70fd783c5d5168cbe83afa7eb"
+    },
+    {
+      "bytes": 2484,
+      "path": "build/sprite-animation/native-run-1-execution.json",
+      "sha256": "ef4fcd90e6577eeac520494a96e1bbb4dbce20aa1624a960f618458de05b0cdf"
+    },
+    {
+      "bytes": 14016612,
+      "path": "build/sprite-animation/native-run-2-stdout.txt",
+      "sha256": "a3d9ea6c6bd47b9c4d0b704fbfc66c3b7e512380d95b10693a8c23943bdadd98"
+    },
+    {
+      "bytes": 0,
+      "path": "build/sprite-animation/native-run-2-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 36698042,
+      "path": "build/sprite-animation/native-run-2.json",
+      "sha256": "7f35ec3ffc3cdb921c4b45d8083e440a6d4cb1a70fd783c5d5168cbe83afa7eb"
+    },
+    {
+      "bytes": 2485,
+      "path": "build/sprite-animation/native-run-2-execution.json",
+      "sha256": "d35ff8a4442cc5af1bd0f0e90404375c320d45c00fc108fd944355ceadc49a54"
+    },
+    {
+      "bytes": 0,
+      "path": "build/sprite-animation/kernel-stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 0,
+      "path": "build/sprite-animation/kernel-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 2276,
+      "path": "build/sprite-animation/kernel-execution.json",
+      "sha256": "9440f3606004ecb4cbe4385f1bd6d4f7c968636c92c0aa071291860f6f9d9604"
+    },
+    {
+      "bytes": 721,
+      "path": "build/root-sprite-animation-pregrant.json",
+      "sha256": "ac7d3fb158ac6151156699515b052cf71fe5c0e3e93e0f74d13f6fb2d2de3a60"
+    }
+  ],
+  "boundary": "Actual animation CODEC/resource rejection/default/filter/order, bounded owned mip timeline and reference copyRect pixels. Raw direct invalid constructors distinct from loader admission, DataResult partial flags diagnostic. No public GPU animation constructor/draw/upload/shader interpolation, atlas/final presentation/GPU parity; no CPU blend invented; native unequal Array tree coverage absent. One installed build, unchanged references/expectations, no automatic correction/retry/projection. Physical-footprint raw10.3G sample distinct from RSS. Full native/header/library closure uncaptured.",
+  "commits_created": false,
+  "confidence": "high within bounded tested CPU domain; full mathematical verdict unresolved",
+  "existing_modules_edited": false,
+  "files": [
+    {
+      "bytes": 28093,
+      "path": "src/sprite_animation.bend",
+      "sha256": "72043273ba0e7bfac7652f365b0703552de0b88c56a9b56ee38a43dafa8d00b7"
+    },
+    {
+      "bytes": 19846,
+      "path": "tests/sprite_animation.bend",
+      "sha256": "0ede6d26413463b84dd872b930739da1bce91af63735aed0fcfa89973828ee83"
+    },
+    {
+      "bytes": 21912,
+      "path": "tools/reference_sprite_animation_probe.py",
+      "sha256": "2cdad55606b9bccfdb4cbbf44fe7c8fa2499704a71d1aa15603cd5074288c1ef"
+    },
+    {
+      "bytes": 24186,
+      "path": "tools/test_sprite_animation.py",
+      "sha256": "7865dc004812d29d453164b7f57430140000dc9a7de1ac20215a5de645d5624d"
+    },
+    {
+      "bytes": 9332977,
+      "path": "reference/sprite_animation.json",
+      "sha256": "b0a1368cf27bd99548f5a98203b195ba97b2d1488550e087e8ded458fec28294"
+    },
+    {
+      "bytes": 16128,
+      "path": "docs/SPRITE_ANIMATION.md",
+      "sha256": "9eb5996c027b53b6fdaf6e9cd22d6b48a6e0eec55694f91e4200a559f69b58a2"
+    },
+    {
+      "bytes": 11027,
+      "path": "evidence/sprite-animation-initial-receiver.json",
+      "sha256": "c14f3daa51b6817f8c483cef32343e839ec9b0349a64c3c805a91a3371054c29"
+    },
+    {
+      "bytes": 484,
+      "path": "evidence/sprite-animation-reference.json",
+      "sha256": "ccd82cb82d1ada3ffa83707e3c0528ea5bfa4815e54062e1c84b9e72fdc17dae"
+    },
+    {
+      "bytes": 740,
+      "path": "evidence/sprite-animation-reference-selftest.json",
+      "sha256": "a4c50c7ec7728ed11dff80042c52e37447fb8aa65aafe2cede4080b717bbddb2"
+    },
+    {
+      "bytes": 7544,
+      "path": "evidence/sprite-animation-preflight.json",
+      "sha256": "509e5d4124d9fe64c70049227246f4702331cbfa68eb2e0afa5bb166bb6e32b5"
+    },
+    {
+      "bytes": 5010,
+      "path": "evidence/sprite-animation-ready.json",
+      "sha256": "6c89189e024cfac7e9c590cd7a62a6849bd22862a939029c950897ab7b689ec5"
+    },
+    {
+      "bytes": 21838,
+      "path": "evidence/sprite-animation-native.json",
+      "sha256": "d7d882e73c74412c597f0c5dbc4457d8162219c57193929ac7c869e5991f73ff"
+    },
+    {
+      "bytes": 2503,
+      "path": "evidence/sprite-animation-kernel-failure.json",
+      "sha256": "6e05554937a29e985043fdd633768c24507de3da8577c466f09433e58c78fb0a"
+    },
+    {
+      "bytes": 11108,
+      "path": "evidence/sprite-animation-build-profile.json",
+      "sha256": "2c5c73316c8069dfd1a6576adcd7ab735ffde66870b02f6361cdde15e46d313f"
+    }
+  ],
+  "generation": {
+    "native_sources": {
+      "compiler_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+      "installed_base_sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+      "src/big_uint.bend": "fbe5965ee16ee3d6864def33fbc6e5e4b1b9bc7da4735d99311c1a23c65e2444",
+      "src/float_parse.bend": "fe22007f0805f3c955fcaada88c1da76a3cceda74f0ff3840ae47af49a02c683",
+      "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+      "src/resource_json.bend": "271f9ace6304fdd42ced039ab2e7f95459eed1f20f011115f399b619f2bc6ffb",
+      "src/sprite_animation.bend": "72043273ba0e7bfac7652f365b0703552de0b88c56a9b56ee38a43dafa8d00b7",
+      "src/texture_metadata.bend": "6d0fe93f022cae2680ae7499ef5b0822f2f7b8d02fbbf1b1f60278aefb9f9f4c",
+      "src/texture_mipmap.bend": "6be887316b9660442be7a2f7d701edd1d6675c6956f243b9bdbc6c54794bd38b",
+      "tests/sprite_animation.bend": "0ede6d26413463b84dd872b930739da1bce91af63735aed0fcfa89973828ee83"
+    },
+    "observation_sha256": "6d4961b02061f288b922f63f2402dc72129e7f5f26f6fa712b9de3508da85470",
+    "probe_sha256": "2cdad55606b9bccfdb4cbbf44fe7c8fa2499704a71d1aa15603cd5074288c1ef",
+    "reference_sha256": "b0a1368cf27bd99548f5a98203b195ba97b2d1488550e087e8ded458fec28294",
+    "runner_sha256": "7865dc004812d29d453164b7f57430140000dc9a7de1ac20215a5de645d5624d",
+    "semantic_inputs_sha256": "6d5d1361c6d222bb9fdaf7c54fdcbe502b9b40f1cbc61c42d68e2c04d4825adc"
+  },
+  "kernel": {
+    "attempts": 1,
+    "exit_code": -9,
+    "pid": 42223,
+    "projection": false,
+    "retry": false,
+    "seconds": 60.12952374946326,
+    "status": "inconclusive-timeout",
+    "stderr_bytes": 0,
+    "stdout_bytes": 0,
+    "whole_group_cap_seconds": 60
+  },
+  "native": {
+    "actual_compiler_invocations": [
+      {
+        "command": "/Users/chuah/.bend/bin/bend tests/sprite_animation.bend -o /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/sprite-animation-tests",
+        "observed_seconds": 0.16057820804417133,
+        "pid": 38780,
+        "ppid": 38566
+      },
+      {
+        "command": "/Library/Developer/CommandLineTools/usr/bin/clang --version",
+        "observed_seconds": 239.26036099996418,
+        "pid": 41229,
+        "ppid": 38780
+      },
+      {
+        "command": "/Library/Developer/CommandLineTools/usr/bin/clang -std=c11 -O3 /var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/bend-69p6nQ/sprite-animation-tests.c -lpthread -lm -o /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/sprite-animation-tests",
+        "observed_seconds": 239.4504932910204,
+        "original_c": {
+          "bytes": 7792750,
+          "preserved_path": "build/sprite-animation/preserved.c",
+          "sha256": "5a88afd1decfcf5555f9f8d5e0e436890254bb105e1e8db11e3c7c375b9cf88f",
+          "source_path": "/var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/bend-69p6nQ/sprite-animation-tests.c"
+        },
+        "pid": 41232,
+        "ppid": 38780
+      },
+      {
+        "command": "/Library/Developer/CommandLineTools/usr/bin/clang -cc1 -triple arm64-apple-macosx15.5.0 -Wundef-prefix=TARGET_OS_ -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -Werror=implicit-function-declaration -emit-obj -dumpdir /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/sprite-animation-tests- -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name sprite-animation-tests.c -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -mllvm -extra-vectorizer-passes -fno-strict-return -ffp-contract=on -fno-rounding-math -funwind-tables=1 -fobjc-msgsend-selector-stubs -target-sdk-version=15.5 -fvisibility-inlines-hidden-static-local-var -fdefine-target-os-macros -fno-assume-unique-vtables -fno-modulemap-allow-subdirectory-search -target-cpu apple-m1 -target-feature +zcm -target-feature +zcz -target-feature +v8.5a -target-feature +aes -target-feature +altnzcv -target-feature +ccdp -target-feature +complxnum -target-feature +crc -target-feature +dotprod -target-feature +fp-armv8 -target-feature +fp16fml -target-feature +fptoint -target-feature +fullfp16 -target-feature +jsconv -target-feature +lse -target-feature +neon -target-feature +pauth -target-feature +perfmon -target-feature +predres -target-feature +ras -target-feature +rcpc -target-feature +rdm -target-feature +sb -target-feature +sha2 -target-feature +sha3 -target-feature +specrestrict -target-feature +ssbs -target-abi darwinpcs -debugger-tuning=lldb -fdebug-compilation-dir=/Users/chuah/Documents/ChatGPT/bendex/minecraft -target-linker-version 1167.5 -fcoverage-compilation-dir=/Users/chuah/Documents/ChatGPT/bendex/minecraft -resource-dir /Library/Developer/CommandLineTools/usr/lib/clang/17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/usr/lib/clang/17/include -internal-externc-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -internal-externc-isystem /Library/Developer/CommandLineTools/usr/include -O3 -Wno-reorder-init-list -Wno-implicit-int-float-conversion -Wno-c99-designator -Wno-final-dtor-non-final-class -Wno-extra-semi-stmt -Wno-misleading-indentation -Wno-quoted-include-in-framework-header -Wno-implicit-fallthrough -Wno-enum-enum-conversion -Wno-enum-float-conversion -Wno-elaborated-enum-base -Wno-reserved-identifier -Wno-gnu-folding-constant -std=c11 -ferror-limit 19 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fmax-type-align=16 -fcommon -vectorize-loops -vectorize-slp -clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation -fno-odr-hash-protocols -clang-vendor-feature=+enableAggressiveVLAFolding -clang-vendor-feature=+revert09abecef7bbf -clang-vendor-feature=+thisNoAlignAttr -clang-vendor-feature=+thisNoNullAttr -clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o /var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/sprite-animation-tests-adbf00.o -x c /var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/bend-69p6nQ/sprite-animation-tests.c",
+        "observed_seconds": 239.47431483212858,
+        "original_c": {
+          "bytes": 7792750,
+          "preserved_path": "build/sprite-animation/preserved.c",
+          "sha256": "5a88afd1decfcf5555f9f8d5e0e436890254bb105e1e8db11e3c7c375b9cf88f",
+          "source_path": "/var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/bend-69p6nQ/sprite-animation-tests.c"
+        },
+        "pid": 41233,
+        "ppid": 41232
+      }
+    ],
+    "actual_native_tool": {
+      "bytes": 264942528,
+      "path": "/Library/Developer/CommandLineTools/usr/bin/clang",
+      "sha256": "4c458256bcdf913774de1bb4a37768244d3b41f32ad55afb2dfec3432f46f4fe"
+    },
+    "binary_bytes": 3102776,
+    "binary_sha256": "742ff21e7e3be631cb47ffb4729c87a1245dfcb159fedd591ea65eb1d6b54bb2",
+    "canonical_output_sha256": "0c76f01dc9cb89e3df52c2d725cd163eeb412f909cc14cfa45185f6f5f5d8e28",
+    "cases": 494,
+    "counts": {
+      "admit": 113,
+      "crops": 2276,
+      "decode": 349,
+      "forged": 4,
+      "pixels": 772106,
+      "read_reject": 229,
+      "recover": 21,
+      "reject": 28,
+      "timeline": 6551
+    },
+    "full_native_header_library_closure": "uncaptured",
+    "one_build_seconds": 261.1151617076248,
+    "original_c_bytes": 7792750,
+    "original_c_sha256": "5a88afd1decfcf5555f9f8d5e0e436890254bb105e1e8db11e3c7c375b9cf88f",
+    "runtime_seconds": [
+      9.822817208245397,
+      8.969312916509807
+    ],
+    "two_runs_equal": true
+  },
+  "recorded_utc": "2026-10-04T02:33:46.871403+00:00",
+  "reference": {
+    "actual_pngs": 63,
+    "codec_partial_errors_diagnostic": 72,
+    "copy_rect_receivers": 2252,
+    "corruptions_rejected": 8,
+    "cpu_cases": 118,
+    "decode_cases": 349,
+    "fresh_runs": 2,
+    "observation_sha256": "6d4961b02061f288b922f63f2402dc72129e7f5f26f6fa712b9de3508da85470",
+    "timeline_samples": 6736,
+    "zero_crop_errors_diagnostic": 35
+  },
+  "reporting_docs_lineage": {
+    "change": "reporting-only native/build/resource-cost/verdict results; production/harness/runner/probe/reference/inputs unchanged",
+    "final_doc": {
+      "bytes": 16128,
+      "path": "docs/SPRITE_ANIMATION.md",
+      "sha256": "9eb5996c027b53b6fdaf6e9cd22d6b48a6e0eec55694f91e4200a559f69b58a2"
+    },
+    "pregrant_doc": {
+      "bytes": 13291,
+      "path": "build/sprite-animation/preflight-SPRITE_ANIMATION.md",
+      "sha256": "879d2484436f0c4717621d0551c23b4c8b8bba5ab35ebba44811a3c9be82357d"
+    }
+  },
+  "schema": 1,
+  "seal_sha256": "e81e1c96c6af72b70dc6e48192802f6d3f135e80b854a675855964a00fd8625a",
+  "slot": {
+    "all_recorded_remaining_group_members_empty": true,
+    "name": "A",
+    "owned_groups": [
+      38780,
+      41765,
+      41925,
+      42223
+    ],
+    "status": "explicitly-released"
+  },
+  "status": "native-passed-production-verdict-inconclusive",
+  "verification_preparation_sha256": "9b78cda973ffa5c7a721718790e8fb2aed0033a285259f83411ed792466e4b59"
+}

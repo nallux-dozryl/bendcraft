@@ -4658,6 +4658,46 @@
       ],
       "verification_status": "verified_bounded_native_cases",
       "whole_parent_parity_established": false
+    },
+    {
+      "behavioral_reference_evidence": [
+        "reference/sprite_animation.json",
+        "evidence/sprite-animation-reference-selftest.json"
+      ],
+      "behavioral_reference_status": "actual_java_bounded_cases",
+      "current_evidence_sha256": {
+        "evidence/sprite-animation-handoff.json": "2a558091bee41869a8335b36341f44fc555d6c78b7ceed2afa4a07f1f67f1a07",
+        "evidence/sprite-animation-kernel-failure.json": "6e05554937a29e985043fdd633768c24507de3da8577c466f09433e58c78fb0a",
+        "evidence/sprite-animation-native.json": "d7d882e73c74412c597f0c5dbc4457d8162219c57193929ac7c869e5991f73ff",
+        "evidence/sprite-animation-root-audit.json": "514ebb21e622e84ca880f6e0c3e24ce07fade17a6553480f74cd27d6c9f4aa4d",
+        "reference/sprite_animation.json": "b0a1368cf27bd99548f5a98203b195ba97b2d1488550e087e8ded458fec28294",
+        "src/sprite_animation.bend": "72043273ba0e7bfac7652f365b0703552de0b88c56a9b56ee38a43dafa8d00b7",
+        "tests/sprite_animation.bend": "0ede6d26413463b84dd872b930739da1bce91af63735aed0fcfa89973828ee83"
+      },
+      "id": "component:cpu_sprite_animation",
+      "implementation_evidence": [
+        "src/sprite_animation.bend",
+        "tests/sprite_animation.bend"
+      ],
+      "implementation_status": "implemented_bounded_projection",
+      "independent_kernel_status": "unverified_full_production_verdict_timeout_60_seconds_no_output",
+      "kind": "bounded_behavior_component",
+      "measured_scope": "494 inputs twice; 349 metadata cases, 6551 timeline samples, 772106 Java-compared sheet/crop pixels, 28 rejections, 21 successful recoveries, 229 read refusals and four forged-owner/timeline cases per run.",
+      "parent_obligation": "behavior:rendering",
+      "reference_evidence": [
+        "reference/sprite_animation.json"
+      ],
+      "reference_inventory_status": "captured_bounded_release_scope",
+      "required_behavior": "Actual animation metadata decoding, owned CPU mip timeline and checked frame extraction.",
+      "scope_limit": "CPU domain only. Static [1] remains sentinel; direct invalid constructors and partial CODEC diagnostics distinct from loader admission. No public GPU animation construction, upload, shader interpolation, atlas assembly or final presentation. Original C and actual clang/cc1 captured; full native header/library closure uncaptured. No kernel retry/projection.",
+      "verification_evidence": [
+        "evidence/sprite-animation-native.json",
+        "evidence/sprite-animation-handoff.json",
+        "evidence/sprite-animation-root-audit.json",
+        "evidence/sprite-animation-kernel-failure.json"
+      ],
+      "verification_status": "verified_bounded_native_cases",
+      "whole_parent_parity_established": false
     }
   ]
 }

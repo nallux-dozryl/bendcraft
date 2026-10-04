@@ -1,0 +1,411 @@
+{
+  "actual_animation_metadata_resources": 63,
+  "bytecode_sha256": "a3d7f423791aca10d806bcd645d1d2c1a91b53b8a97f271f5b1015cbe1d511f4",
+  "classes_sha256": {
+    "net.minecraft.client.renderer.texture.SpriteContents": "388655770b6c410bf85bf7f33d731daf15a67606b447b49e08f679e0caa1c615",
+    "net.minecraft.client.renderer.texture.SpriteContents$AnimatedTexture": "6c49632698953bfa85c4ae36a6c64ead434f62a1c1c099ce7efd4c46ce6a9e3b",
+    "net.minecraft.client.renderer.texture.SpriteContents$AnimationState": "eee73b9e64d0d7189b971f63519862b9d54a306b8e42563a69c7414c18e99bb6",
+    "net.minecraft.client.renderer.texture.SpriteContents$FrameInfo": "e4d0e42941a66c7576052b6a6a5ee0a2a839ad74996d6d7c2b03c2c883f81b8a",
+    "net.minecraft.client.resources.metadata.animation.AnimationFrame": "5d46daa6153814eb17427a7330fb3884f3cfb32f3c9fc43b686edec2f6942295",
+    "net.minecraft.client.resources.metadata.animation.AnimationMetadataSection": "9a23a295699e8c90ba0e5900ace10e049088f612dde2d4e0c8d7d31607b144d4",
+    "net.minecraft.client.resources.metadata.animation.FrameSize": "472388c48b48976ee776d2e7ed140998512d32b66bdf5d47939e49987a967d52",
+    "net.minecraft.client.resources.metadata.animation.VillagerMetadataSection": "879d3c996048421f58fceb6ad1190091577ea99a60d233e8455fefa8fe5aab90",
+    "net.minecraft.client.resources.metadata.animation.VillagerMetadataSection$Hat": "d26e3ac7d3db9fcddaa7639826041ded0714e14749c7c4ebf02916bc76f4cc8f",
+    "net.minecraft.client.resources.metadata.animation.package-info": "65c3c914195017554b87f6a5e8691c228cd5c7382be06a7310e8cf5032d307c1"
+  },
+  "constructor_cpu_preconditions": "AnimationState constructor requires nonnull enclosing SpriteContents and stores animationInfo,map,slices; tick/needsToDraw never dereference map/slices; close on empty actual map consumes no GPU owners.",
+  "constructor_route": "Untouched actual SpriteContents constructor with normal NativeImage and actual AnimationMetadataSection.CODEC; untouched private AnimationState constructor receives actual contents/animatedTexture, actual empty Int2ObjectOpenHashMap and zero-length GpuBufferSlice[] solely for tick/needsToDraw; reflective reads only, no field writes/mock GPU objects.",
+  "gpu_upload_draw_or_interpolation": "unexecuted and unclaimed; actual shaders distinct open consumer",
+  "inputs": [
+    {
+      "id": "absent",
+      "sheet_height": 6,
+      "sheet_width": 4
+    },
+    {
+      "animation": {},
+      "id": "default",
+      "sheet_height": 6,
+      "sheet_width": 4
+    },
+    {
+      "animation": {
+        "frames": [
+          2,
+          2,
+          0
+        ],
+        "frametime": 2,
+        "height": 2,
+        "width": 2
+      },
+      "id": "repeat",
+      "sheet_height": 6,
+      "sheet_width": 4
+    },
+    {
+      "animation": {
+        "frames": [
+          2,
+          2,
+          0
+        ],
+        "frametime": 3,
+        "height": 2,
+        "interpolate": true,
+        "width": 2
+      },
+      "id": "interpolate",
+      "sheet_height": 6,
+      "sheet_width": 4
+    },
+    {
+      "animation": {
+        "frames": [
+          2
+        ],
+        "height": 2,
+        "width": 2
+      },
+      "id": "single_notzero",
+      "sheet_height": 6,
+      "sheet_width": 4
+    },
+    {
+      "animation": {
+        "frames": []
+      },
+      "id": "empty",
+      "sheet_height": 6,
+      "sheet_width": 4
+    },
+    {
+      "animation": {
+        "frames": [
+          99,
+          0,
+          1
+        ]
+      },
+      "id": "invalid_index",
+      "sheet_height": 6,
+      "sheet_width": 4
+    },
+    {
+      "animation": {
+        "frametime": 1.9
+      },
+      "id": "fractional",
+      "sheet_height": 6,
+      "sheet_width": 4
+    }
+  ],
+  "native_build_or_kernel": "not run; grant required",
+  "outputs": [
+    {
+      "id": "absent",
+      "result": {
+        "frame_height": 6,
+        "frame_width": 4,
+        "is_animated": false,
+        "status": "ok",
+        "unique_frames": [
+          1
+        ]
+      }
+    },
+    {
+      "id": "default",
+      "result": {
+        "frame_height": 4,
+        "frame_width": 4,
+        "is_animated": false,
+        "status": "ok",
+        "unique_frames": [
+          1
+        ]
+      }
+    },
+    {
+      "id": "repeat",
+      "result": {
+        "frame_height": 2,
+        "frame_width": 2,
+        "frames": [
+          {
+            "index": 2,
+            "time": 2
+          },
+          {
+            "index": 2,
+            "time": 2
+          },
+          {
+            "index": 0,
+            "time": 2
+          }
+        ],
+        "interpolate": false,
+        "is_animated": true,
+        "row_size": 2,
+        "state_constructor": "private net.minecraft.client.renderer.texture.SpriteContents$AnimationState(net.minecraft.client.renderer.texture.SpriteContents$AnimatedTexture,it.unimi.dsi.fastutil.ints.Int2ObjectMap<com.mojang.renderpearl.api.textures.GpuTextureView>,com.mojang.renderpearl.api.buffers.GpuBufferSlice[])",
+        "status": "ok",
+        "timeline": [
+          {
+            "dirty": true,
+            "entry": 0,
+            "needs_to_draw": true,
+            "sub_frame": 0
+          },
+          {
+            "dirty": false,
+            "entry": 0,
+            "needs_to_draw": false,
+            "sub_frame": 1
+          },
+          {
+            "dirty": false,
+            "entry": 1,
+            "needs_to_draw": false,
+            "sub_frame": 0
+          },
+          {
+            "dirty": false,
+            "entry": 1,
+            "needs_to_draw": false,
+            "sub_frame": 1
+          },
+          {
+            "dirty": true,
+            "entry": 2,
+            "needs_to_draw": true,
+            "sub_frame": 0
+          },
+          {
+            "dirty": false,
+            "entry": 2,
+            "needs_to_draw": false,
+            "sub_frame": 1
+          },
+          {
+            "dirty": true,
+            "entry": 0,
+            "needs_to_draw": true,
+            "sub_frame": 0
+          },
+          {
+            "dirty": false,
+            "entry": 0,
+            "needs_to_draw": false,
+            "sub_frame": 1
+          },
+          {
+            "dirty": false,
+            "entry": 1,
+            "needs_to_draw": false,
+            "sub_frame": 0
+          },
+          {
+            "dirty": false,
+            "entry": 1,
+            "needs_to_draw": false,
+            "sub_frame": 1
+          },
+          {
+            "dirty": true,
+            "entry": 2,
+            "needs_to_draw": true,
+            "sub_frame": 0
+          },
+          {
+            "dirty": false,
+            "entry": 2,
+            "needs_to_draw": false,
+            "sub_frame": 1
+          },
+          {
+            "dirty": true,
+            "entry": 0,
+            "needs_to_draw": true,
+            "sub_frame": 0
+          }
+        ],
+        "unique_frames": [
+          2,
+          0
+        ]
+      }
+    },
+    {
+      "id": "interpolate",
+      "result": {
+        "frame_height": 2,
+        "frame_width": 2,
+        "frames": [
+          {
+            "index": 2,
+            "time": 3
+          },
+          {
+            "index": 2,
+            "time": 3
+          },
+          {
+            "index": 0,
+            "time": 3
+          }
+        ],
+        "interpolate": true,
+        "is_animated": true,
+        "row_size": 2,
+        "state_constructor": "private net.minecraft.client.renderer.texture.SpriteContents$AnimationState(net.minecraft.client.renderer.texture.SpriteContents$AnimatedTexture,it.unimi.dsi.fastutil.ints.Int2ObjectMap<com.mojang.renderpearl.api.textures.GpuTextureView>,com.mojang.renderpearl.api.buffers.GpuBufferSlice[])",
+        "status": "ok",
+        "timeline": [
+          {
+            "dirty": true,
+            "entry": 0,
+            "needs_to_draw": true,
+            "sub_frame": 0
+          },
+          {
+            "dirty": false,
+            "entry": 0,
+            "needs_to_draw": true,
+            "sub_frame": 1
+          },
+          {
+            "dirty": false,
+            "entry": 0,
+            "needs_to_draw": true,
+            "sub_frame": 2
+          },
+          {
+            "dirty": false,
+            "entry": 1,
+            "needs_to_draw": true,
+            "sub_frame": 0
+          },
+          {
+            "dirty": false,
+            "entry": 1,
+            "needs_to_draw": true,
+            "sub_frame": 1
+          },
+          {
+            "dirty": false,
+            "entry": 1,
+            "needs_to_draw": true,
+            "sub_frame": 2
+          },
+          {
+            "dirty": true,
+            "entry": 2,
+            "needs_to_draw": true,
+            "sub_frame": 0
+          },
+          {
+            "dirty": false,
+            "entry": 2,
+            "needs_to_draw": true,
+            "sub_frame": 1
+          },
+          {
+            "dirty": false,
+            "entry": 2,
+            "needs_to_draw": true,
+            "sub_frame": 2
+          },
+          {
+            "dirty": true,
+            "entry": 0,
+            "needs_to_draw": true,
+            "sub_frame": 0
+          },
+          {
+            "dirty": false,
+            "entry": 0,
+            "needs_to_draw": true,
+            "sub_frame": 1
+          },
+          {
+            "dirty": false,
+            "entry": 0,
+            "needs_to_draw": true,
+            "sub_frame": 2
+          },
+          {
+            "dirty": false,
+            "entry": 1,
+            "needs_to_draw": true,
+            "sub_frame": 0
+          }
+        ],
+        "unique_frames": [
+          2,
+          0
+        ]
+      }
+    },
+    {
+      "id": "single_notzero",
+      "result": {
+        "frame_height": 2,
+        "frame_width": 2,
+        "is_animated": false,
+        "status": "ok",
+        "unique_frames": [
+          1
+        ]
+      }
+    },
+    {
+      "id": "empty",
+      "result": {
+        "frame_height": 4,
+        "frame_width": 4,
+        "is_animated": false,
+        "status": "ok",
+        "unique_frames": [
+          1
+        ]
+      }
+    },
+    {
+      "id": "invalid_index",
+      "result": {
+        "frame_height": 4,
+        "frame_width": 4,
+        "is_animated": false,
+        "status": "ok",
+        "unique_frames": [
+          1
+        ]
+      }
+    },
+    {
+      "id": "fractional",
+      "result": {
+        "frame_height": 4,
+        "frame_width": 4,
+        "is_animated": false,
+        "status": "ok",
+        "unique_frames": [
+          1
+        ]
+      }
+    }
+  ],
+  "schema": 1,
+  "shader_resource_paths": [
+    "assets/minecraft/shaders/core/animate_sprite.vsh",
+    "assets/minecraft/shaders/core/animate_sprite_blit.fsh",
+    "assets/minecraft/shaders/core/animate_sprite_interpolate.fsh",
+    "assets/minecraft/shaders/include/animation_sprite.glsl"
+  ],
+  "source_implementation": "not yet written",
+  "source_sha256": "2de47f1085c26be0acd0b37ba07a9bbcb234be27a042c34ab8132b790ee98c17",
+  "static_unique_frames_observation": [
+    1
+  ],
+  "status": "initial-actual-CPU-constructor-timeline-observations"
+}

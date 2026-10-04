@@ -1,0 +1,162 @@
+{
+  "boundary": "RSS and macOS physical-footprint metrics distinct. Compiler phase timings are first observations, not exact internal boundaries. Full native header/library closure uncaptured. Single build/no retry; original C and flags retained.",
+  "build_execution": {
+    "cap_seconds": 600,
+    "command": [
+      "/Users/chuah/.bend/bin/bend",
+      "tests/sprite_animation.bend",
+      "-o",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/sprite-animation-tests"
+    ],
+    "exit_code": 0,
+    "full_native_header_library_closure": "uncaptured",
+    "generation": {
+      "native_sources": {
+        "compiler_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+        "installed_base_sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+        "src/big_uint.bend": "fbe5965ee16ee3d6864def33fbc6e5e4b1b9bc7da4735d99311c1a23c65e2444",
+        "src/float_parse.bend": "fe22007f0805f3c955fcaada88c1da76a3cceda74f0ff3840ae47af49a02c683",
+        "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+        "src/resource_json.bend": "271f9ace6304fdd42ced039ab2e7f95459eed1f20f011115f399b619f2bc6ffb",
+        "src/sprite_animation.bend": "72043273ba0e7bfac7652f365b0703552de0b88c56a9b56ee38a43dafa8d00b7",
+        "src/texture_metadata.bend": "6d0fe93f022cae2680ae7499ef5b0822f2f7b8d02fbbf1b1f60278aefb9f9f4c",
+        "src/texture_mipmap.bend": "6be887316b9660442be7a2f7d701edd1d6675c6956f243b9bdbc6c54794bd38b",
+        "tests/sprite_animation.bend": "0ede6d26413463b84dd872b930739da1bce91af63735aed0fcfa89973828ee83"
+      },
+      "observation_sha256": "6d4961b02061f288b922f63f2402dc72129e7f5f26f6fa712b9de3508da85470",
+      "probe_sha256": "2cdad55606b9bccfdb4cbbf44fe7c8fa2499704a71d1aa15603cd5074288c1ef",
+      "reference_sha256": "b0a1368cf27bd99548f5a98203b195ba97b2d1488550e087e8ded458fec28294",
+      "runner_sha256": "7865dc004812d29d453164b7f57430140000dc9a7de1ac20215a5de645d5624d",
+      "semantic_inputs_sha256": "6d5d1361c6d222bb9fdaf7c54fdcbe502b9b40f1cbc61c42d68e2c04d4825adc"
+    },
+    "group_members_after_cleanup": [],
+    "observed_processes": [
+      {
+        "command": "/Users/chuah/.bend/bin/bend tests/sprite_animation.bend -o /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/sprite-animation-tests",
+        "observed_seconds": 0.16057820804417133,
+        "pid": 38780,
+        "ppid": 38566
+      },
+      {
+        "command": "/Library/Developer/CommandLineTools/usr/bin/clang --version",
+        "observed_seconds": 239.26036099996418,
+        "pid": 41229,
+        "ppid": 38780
+      },
+      {
+        "command": "/Library/Developer/CommandLineTools/usr/bin/clang -std=c11 -O3 /var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/bend-69p6nQ/sprite-animation-tests.c -lpthread -lm -o /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/sprite-animation-tests",
+        "observed_seconds": 239.4504932910204,
+        "original_c": {
+          "bytes": 7792750,
+          "preserved_path": "build/sprite-animation/preserved.c",
+          "sha256": "5a88afd1decfcf5555f9f8d5e0e436890254bb105e1e8db11e3c7c375b9cf88f",
+          "source_path": "/var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/bend-69p6nQ/sprite-animation-tests.c"
+        },
+        "pid": 41232,
+        "ppid": 38780
+      },
+      {
+        "command": "/Library/Developer/CommandLineTools/usr/bin/clang -cc1 -triple arm64-apple-macosx15.5.0 -Wundef-prefix=TARGET_OS_ -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -Werror=implicit-function-declaration -emit-obj -dumpdir /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/sprite-animation-tests- -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name sprite-animation-tests.c -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -mllvm -extra-vectorizer-passes -fno-strict-return -ffp-contract=on -fno-rounding-math -funwind-tables=1 -fobjc-msgsend-selector-stubs -target-sdk-version=15.5 -fvisibility-inlines-hidden-static-local-var -fdefine-target-os-macros -fno-assume-unique-vtables -fno-modulemap-allow-subdirectory-search -target-cpu apple-m1 -target-feature +zcm -target-feature +zcz -target-feature +v8.5a -target-feature +aes -target-feature +altnzcv -target-feature +ccdp -target-feature +complxnum -target-feature +crc -target-feature +dotprod -target-feature +fp-armv8 -target-feature +fp16fml -target-feature +fptoint -target-feature +fullfp16 -target-feature +jsconv -target-feature +lse -target-feature +neon -target-feature +pauth -target-feature +perfmon -target-feature +predres -target-feature +ras -target-feature +rcpc -target-feature +rdm -target-feature +sb -target-feature +sha2 -target-feature +sha3 -target-feature +specrestrict -target-feature +ssbs -target-abi darwinpcs -debugger-tuning=lldb -fdebug-compilation-dir=/Users/chuah/Documents/ChatGPT/bendex/minecraft -target-linker-version 1167.5 -fcoverage-compilation-dir=/Users/chuah/Documents/ChatGPT/bendex/minecraft -resource-dir /Library/Developer/CommandLineTools/usr/lib/clang/17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/usr/lib/clang/17/include -internal-externc-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -internal-externc-isystem /Library/Developer/CommandLineTools/usr/include -O3 -Wno-reorder-init-list -Wno-implicit-int-float-conversion -Wno-c99-designator -Wno-final-dtor-non-final-class -Wno-extra-semi-stmt -Wno-misleading-indentation -Wno-quoted-include-in-framework-header -Wno-implicit-fallthrough -Wno-enum-enum-conversion -Wno-enum-float-conversion -Wno-elaborated-enum-base -Wno-reserved-identifier -Wno-gnu-folding-constant -std=c11 -ferror-limit 19 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fmax-type-align=16 -fcommon -vectorize-loops -vectorize-slp -clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation -fno-odr-hash-protocols -clang-vendor-feature=+enableAggressiveVLAFolding -clang-vendor-feature=+revert09abecef7bbf -clang-vendor-feature=+thisNoAlignAttr -clang-vendor-feature=+thisNoNullAttr -clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o /var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/sprite-animation-tests-adbf00.o -x c /var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/bend-69p6nQ/sprite-animation-tests.c",
+        "observed_seconds": 239.47431483212858,
+        "original_c": {
+          "bytes": 7792750,
+          "preserved_path": "build/sprite-animation/preserved.c",
+          "sha256": "5a88afd1decfcf5555f9f8d5e0e436890254bb105e1e8db11e3c7c375b9cf88f",
+          "source_path": "/var/folders/dl/j8lfpwd912qfrf8w2cv6mvz40000gn/T/bend-69p6nQ/sprite-animation-tests.c"
+        },
+        "pid": 41233,
+        "ppid": 41232
+      }
+    ],
+    "pid": 38780,
+    "process_group": 38780,
+    "seconds": 261.1151617076248,
+    "status": "passed",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "whole_group_killed_on_timeout": false
+  },
+  "kernel_execution": {
+    "boundary": "First failure retained. No automatic second run/verdict/source/oracle/compiler retry.",
+    "cap_seconds": 60,
+    "command": [
+      "/Users/chuah/.bend/bin/bend",
+      "src/sprite_animation.bend",
+      "--verdict"
+    ],
+    "exit_code": -9,
+    "full_native_header_library_closure": "uncaptured",
+    "generation": {
+      "native_sources": {
+        "compiler_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+        "installed_base_sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+        "src/big_uint.bend": "fbe5965ee16ee3d6864def33fbc6e5e4b1b9bc7da4735d99311c1a23c65e2444",
+        "src/float_parse.bend": "fe22007f0805f3c955fcaada88c1da76a3cceda74f0ff3840ae47af49a02c683",
+        "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+        "src/resource_json.bend": "271f9ace6304fdd42ced039ab2e7f95459eed1f20f011115f399b619f2bc6ffb",
+        "src/sprite_animation.bend": "72043273ba0e7bfac7652f365b0703552de0b88c56a9b56ee38a43dafa8d00b7",
+        "src/texture_metadata.bend": "6d0fe93f022cae2680ae7499ef5b0822f2f7b8d02fbbf1b1f60278aefb9f9f4c",
+        "src/texture_mipmap.bend": "6be887316b9660442be7a2f7d701edd1d6675c6956f243b9bdbc6c54794bd38b",
+        "tests/sprite_animation.bend": "0ede6d26413463b84dd872b930739da1bce91af63735aed0fcfa89973828ee83"
+      },
+      "observation_sha256": "6d4961b02061f288b922f63f2402dc72129e7f5f26f6fa712b9de3508da85470",
+      "probe_sha256": "2cdad55606b9bccfdb4cbbf44fe7c8fa2499704a71d1aa15603cd5074288c1ef",
+      "reference_sha256": "b0a1368cf27bd99548f5a98203b195ba97b2d1488550e087e8ded458fec28294",
+      "runner_sha256": "7865dc004812d29d453164b7f57430140000dc9a7de1ac20215a5de645d5624d",
+      "semantic_inputs_sha256": "6d5d1361c6d222bb9fdaf7c54fdcbe502b9b40f1cbc61c42d68e2c04d4825adc"
+    },
+    "group_members_after_cleanup": [],
+    "last_stdout_line": null,
+    "observed_processes": [
+      {
+        "command": "/Users/chuah/.bend/bin/bend src/sprite_animation.bend --verdict",
+        "observed_seconds": 0.151293708011508,
+        "pid": 42223,
+        "ppid": 42098
+      }
+    ],
+    "pid": 42223,
+    "process_group": 42223,
+    "retained_binary_sha256": "742ff21e7e3be631cb47ffb4729c87a1245dfcb159fedd591ea65eb1d6b54bb2",
+    "seconds": 60.12952374946326,
+    "status": "inconclusive-timeout",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "whole_group_killed_on_timeout": true
+  },
+  "native_bytes": 3102776,
+  "native_sha256": "742ff21e7e3be631cb47ffb4729c87a1245dfcb159fedd591ea65eb1d6b54bb2",
+  "read_only_sample": {
+    "actual_launch_local": "2026-10-04 09:23:38.818 +0700",
+    "actual_sample_local": "2026-10-04 09:25:40.725 +0700",
+    "bytes": 5276184,
+    "elapsed_seconds": 121.907,
+    "path": "build/sprite-animation/compiler-sample-120s.txt",
+    "physical_footprint_peak_raw": "10.3G",
+    "physical_footprint_raw": "10.3G",
+    "sha256": "030624504bac4918486befdc852fe907d115c7dcec46bb9dda1f412c38e2c68b"
+  },
+  "rss_observations": {
+    "command": "ps -p 38780 -o pid=,etime=,rss=,vsz=,state=,comm=",
+    "rows": [
+      {
+        "elapsed": "00:48",
+        "rss_kib": 2629520
+      },
+      {
+        "elapsed": "01:51",
+        "rss_kib": 2235472
+      },
+      {
+        "elapsed": "03:01",
+        "rss_kib": 1762672
+      },
+      {
+        "elapsed": "04:16",
+        "rss_kib": 34096
+      }
+    ]
+  },
+  "schema": 1,
+  "status": "native-build-passed-production-verdict-inconclusive"
+}

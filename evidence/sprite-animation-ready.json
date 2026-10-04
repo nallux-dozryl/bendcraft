@@ -1,0 +1,110 @@
+{
+  "boundary": "Plan/Selection observations; owned Contents is timeline authority; static [1] sentinel never selected/cropped; exact mip offsets and owned crop admission; public GPU animation/create/draw/upload/interpolation unexecuted; Java partial DataResult flags diagnostic, actual getOrThrow rejection retained; no frozen modules edited",
+  "caps_seconds": {
+    "each_runtime_group": 120,
+    "full_source_verdict_group": 60,
+    "whole_build_group": 600
+  },
+  "commands": {
+    "kernel": "python3 tools/test_sprite_animation.py --kernel-only",
+    "native": "python3 tools/test_sprite_animation.py --skip-kernel --build-only",
+    "runtime": "python3 tools/test_sprite_animation.py --skip-kernel --reuse-build"
+  },
+  "confidence": "high for actual observed CPU behavior; native implementation verification pending",
+  "counts": {
+    "actual_copyRect_receivers": 2252,
+    "actual_pngs": 63,
+    "actual_timeline_samples": 6736,
+    "actual_zero_crop_errors_retained": 35,
+    "cpu_cases": 145,
+    "decode_cases": 349,
+    "direct_codec_partial_error_diagnostics": 72,
+    "native_cases": 494
+  },
+  "files": [
+    {
+      "bytes": 28093,
+      "path": "src/sprite_animation.bend",
+      "sha256": "72043273ba0e7bfac7652f365b0703552de0b88c56a9b56ee38a43dafa8d00b7"
+    },
+    {
+      "bytes": 19846,
+      "path": "tests/sprite_animation.bend",
+      "sha256": "0ede6d26413463b84dd872b930739da1bce91af63735aed0fcfa89973828ee83"
+    },
+    {
+      "bytes": 21912,
+      "path": "tools/reference_sprite_animation_probe.py",
+      "sha256": "2cdad55606b9bccfdb4cbbf44fe7c8fa2499704a71d1aa15603cd5074288c1ef"
+    },
+    {
+      "bytes": 24186,
+      "path": "tools/test_sprite_animation.py",
+      "sha256": "7865dc004812d29d453164b7f57430140000dc9a7de1ac20215a5de645d5624d"
+    },
+    {
+      "bytes": 9332977,
+      "path": "reference/sprite_animation.json",
+      "sha256": "b0a1368cf27bd99548f5a98203b195ba97b2d1488550e087e8ded458fec28294"
+    },
+    {
+      "bytes": 13291,
+      "path": "docs/SPRITE_ANIMATION.md",
+      "sha256": "879d2484436f0c4717621d0551c23b4c8b8bba5ab35ebba44811a3c9be82357d"
+    },
+    {
+      "bytes": 484,
+      "path": "evidence/sprite-animation-reference.json",
+      "sha256": "ccd82cb82d1ada3ffa83707e3c0528ea5bfa4815e54062e1c84b9e72fdc17dae"
+    },
+    {
+      "bytes": 740,
+      "path": "evidence/sprite-animation-reference-selftest.json",
+      "sha256": "a4c50c7ec7728ed11dff80042c52e37447fb8aa65aafe2cede4080b717bbddb2"
+    },
+    {
+      "bytes": 7544,
+      "path": "evidence/sprite-animation-preflight.json",
+      "sha256": "509e5d4124d9fe64c70049227246f4702331cbfa68eb2e0afa5bb166bb6e32b5"
+    },
+    {
+      "bytes": 1685,
+      "path": "build/sprite-animation/preparation.json",
+      "sha256": "9b78cda973ffa5c7a721718790e8fb2aed0033a285259f83411ed792466e4b59"
+    },
+    {
+      "bytes": 6983540,
+      "path": "build/sprite-animation/cases.json",
+      "sha256": "88099e627c4471b0a934d1662bd9a864e9ed60ab59c97f24a2a9a33b58782eaf"
+    }
+  ],
+  "generation": {
+    "case_path": "build/sprite-animation/cases.json",
+    "case_sha256": "88099e627c4471b0a934d1662bd9a864e9ed60ab59c97f24a2a9a33b58782eaf",
+    "native_sources": {
+      "compiler_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+      "installed_base_sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+      "src/big_uint.bend": "fbe5965ee16ee3d6864def33fbc6e5e4b1b9bc7da4735d99311c1a23c65e2444",
+      "src/float_parse.bend": "fe22007f0805f3c955fcaada88c1da76a3cceda74f0ff3840ae47af49a02c683",
+      "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+      "src/resource_json.bend": "271f9ace6304fdd42ced039ab2e7f95459eed1f20f011115f399b619f2bc6ffb",
+      "src/sprite_animation.bend": "72043273ba0e7bfac7652f365b0703552de0b88c56a9b56ee38a43dafa8d00b7",
+      "src/texture_metadata.bend": "6d0fe93f022cae2680ae7499ef5b0822f2f7b8d02fbbf1b1f60278aefb9f9f4c",
+      "src/texture_mipmap.bend": "6be887316b9660442be7a2f7d701edd1d6675c6956f243b9bdbc6c54794bd38b",
+      "tests/sprite_animation.bend": "0ede6d26413463b84dd872b930739da1bce91af63735aed0fcfa89973828ee83"
+    },
+    "observation_sha256": "6d4961b02061f288b922f63f2402dc72129e7f5f26f6fa712b9de3508da85470",
+    "probe_sha256": "2cdad55606b9bccfdb4cbbf44fe7c8fa2499704a71d1aa15603cd5074288c1ef",
+    "reference_sha256": "b0a1368cf27bd99548f5a98203b195ba97b2d1488550e087e8ded458fec28294",
+    "runner_sha256": "7865dc004812d29d453164b7f57430140000dc9a7de1ac20215a5de645d5624d",
+    "schema": 1,
+    "seal_sha256": "90c900ba16bd51399f29f11177a3c8f56921acaf7ef211e9592a69c79ea69bf7",
+    "semantic_inputs_sha256": "6d5d1361c6d222bb9fdaf7c54fdcbe502b9b40f1cbc61c42d68e2c04d4825adc"
+  },
+  "kernel": "not-run",
+  "native": "not-run: waiting explicit lead heavy slot",
+  "ordinary": "production and harness pass",
+  "schema": 1,
+  "seal_sha256": "a8feeea89d7c9ceb290d5e4100d1f030edbacb36a6343b7e4261517c23b93131",
+  "status": "ready-native-unverified"
+}

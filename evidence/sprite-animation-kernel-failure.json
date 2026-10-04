@@ -1,0 +1,48 @@
+{
+  "boundary": "First failure retained. No automatic second run/verdict/source/oracle/compiler retry.",
+  "cap_seconds": 60,
+  "command": [
+    "/Users/chuah/.bend/bin/bend",
+    "src/sprite_animation.bend",
+    "--verdict"
+  ],
+  "exit_code": -9,
+  "full_native_header_library_closure": "uncaptured",
+  "generation": {
+    "native_sources": {
+      "compiler_sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e",
+      "installed_base_sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+      "src/big_uint.bend": "fbe5965ee16ee3d6864def33fbc6e5e4b1b9bc7da4735d99311c1a23c65e2444",
+      "src/float_parse.bend": "fe22007f0805f3c955fcaada88c1da76a3cceda74f0ff3840ae47af49a02c683",
+      "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+      "src/resource_json.bend": "271f9ace6304fdd42ced039ab2e7f95459eed1f20f011115f399b619f2bc6ffb",
+      "src/sprite_animation.bend": "72043273ba0e7bfac7652f365b0703552de0b88c56a9b56ee38a43dafa8d00b7",
+      "src/texture_metadata.bend": "6d0fe93f022cae2680ae7499ef5b0822f2f7b8d02fbbf1b1f60278aefb9f9f4c",
+      "src/texture_mipmap.bend": "6be887316b9660442be7a2f7d701edd1d6675c6956f243b9bdbc6c54794bd38b",
+      "tests/sprite_animation.bend": "0ede6d26413463b84dd872b930739da1bce91af63735aed0fcfa89973828ee83"
+    },
+    "observation_sha256": "6d4961b02061f288b922f63f2402dc72129e7f5f26f6fa712b9de3508da85470",
+    "probe_sha256": "2cdad55606b9bccfdb4cbbf44fe7c8fa2499704a71d1aa15603cd5074288c1ef",
+    "reference_sha256": "b0a1368cf27bd99548f5a98203b195ba97b2d1488550e087e8ded458fec28294",
+    "runner_sha256": "7865dc004812d29d453164b7f57430140000dc9a7de1ac20215a5de645d5624d",
+    "semantic_inputs_sha256": "6d5d1361c6d222bb9fdaf7c54fdcbe502b9b40f1cbc61c42d68e2c04d4825adc"
+  },
+  "group_members_after_cleanup": [],
+  "last_stdout_line": null,
+  "observed_processes": [
+    {
+      "command": "/Users/chuah/.bend/bin/bend src/sprite_animation.bend --verdict",
+      "observed_seconds": 0.151293708011508,
+      "pid": 42223,
+      "ppid": 42098
+    }
+  ],
+  "pid": 42223,
+  "process_group": 42223,
+  "retained_binary_sha256": "742ff21e7e3be631cb47ffb4729c87a1245dfcb159fedd591ea65eb1d6b54bb2",
+  "seconds": 60.12952374946326,
+  "status": "inconclusive-timeout",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "whole_group_killed_on_timeout": true
+}
