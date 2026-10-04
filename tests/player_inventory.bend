@@ -115,7 +115,7 @@ def codec_inspected(fresh:Bool,result:I.State & I.Snapshot) -> IO(Unit):
   IO.print(J.encode(L.obj([J.JMember{"status",L.text("ok")},J.JMember{"fresh",L.boolean(fresh)},J.JMember{"inventory",snapshot_value(snapshot)}])))
 
 def codec_encoded(output:String,result:C.Saved & Result<&2,&2,String,List<&2,U32>>) -> IO(Unit):
-  (C.Saved{record,inventory,fresh},status) = result
+  (C.Saved{record,inventory,fresh,generation},status) = result
   match status:
     case Fail{message}: IO.print(J.encode(L.obj([J.JMember{"status",L.text("error")},J.JMember{"message",L.text(message)}])))
     case Done{bytes}:

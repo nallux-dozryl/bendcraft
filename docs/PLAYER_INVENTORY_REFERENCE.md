@@ -1,7 +1,6 @@
 # Pinned 26.3 player inventory reference
 
-Status: **one successful actual extraction; fresh-process reproduction remains
-unperformed**. Confidence is **high for the recorded pinned receivers and exact
+Status: **one successful actual extraction and exact fresh-process reproduction**. Confidence is **high for the recorded pinned receivers and exact
 method outcomes**, and **unknown for unexecuted gameplay/lifecycle paths**.
 
 The extraction ran one bounded JVM, PID 35513, exiting 0 in approximately 3.41
@@ -115,8 +114,8 @@ through official NbtIo. It is not a player-save filesystem or recovery test.
 
 Each command below requires one allocated Java job slot and launches exactly
 one source-execution JVM, with a 512 MiB heap and a 120-second process-group
-limit. Extraction has run once; reproduction is still required and must be
-separately allocated:
+limit. Extraction and a separately allocated fresh-process reproduction have
+both completed; future reruns must be separately allocated:
 
 ```sh
 python3 tools/reference_player_inventory_probe.py --mode extract
@@ -132,7 +131,9 @@ exception details, source/class identities and fixture hashes exactly.
 Unique raw receipts retain fixture sources, launcher, exact command, stdout and
 stderr before parsing, so failed reruns cannot overwrite prior pinned artifacts.
 Interruption/communication failure kills and reaps the JVM, with a bounded
-10-second cleanup. No fresh-process reproduction receipt is claimed. Custom
+10-second cleanup. Fresh-process reproduction is recorded in
+`evidence/player-inventory-reference-reproduce.json`: PID41907, exit0 in
+5.499957 seconds, all125 cases and4405 official class identities exact. Custom
 split/merge admission, same-slot transfer, menu clicks, quickMoveStack, equipment,
 modified components, other items, creative acquisition and filesystem persistence
 remain unverified.

@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "status": "production-screen-nine-laws-independent-kernel-passed-native-pending",
+  "confidence": "high for listed source/proof verdicts; native boundary unperformed",
+  "full_menu_slots": 46,
+  "durable_slots": 43,
+  "temporary_slots": 5,
+  "creative_cells": 45,
+  "registry_rows": 1658,
+  "production_native_consumer": "remote_resource_client",
+  "source_files": [
+    {
+      "path": "src/player_inventory_screen.bend",
+      "sha256": "792ac74a1bda8be6c530034943b51a933c3f3c614d45cf33bce3cbaccd56ff2d",
+      "bytes": 41680
+    },
+    {
+      "path": "src/player_inventory_screen_laws.bend",
+      "sha256": "ed55956735fcf7207f40ff80bf9e30beeb350390fa42c49192795cd89af2c708",
+      "bytes": 3112
+    },
+    {
+      "path": "src/player_inventory_screen_proof.bend",
+      "sha256": "aa0a56258af69faab6a1c36b40a2da0bd236a3f87a6f29ec4a2f57ee38ea6ac8",
+      "bytes": 1339
+    },
+    {
+      "path": "tests/player_inventory_screen.bend",
+      "sha256": "c221c6eac1076c744166facacf78b5560dcb9bd849446ad364104e119a3170cf",
+      "bytes": 10800
+    },
+    {
+      "path": "tools/test_player_inventory_screen.py",
+      "sha256": "304f6d30f00509525b2cea1030c71d89452195acf3e1910f0b1c03f50e0a83aa",
+      "bytes": 5573
+    },
+    {
+      "path": "src/player_item_definitions.bend",
+      "sha256": "6a7a57f62a2df6a3f43883824c167877f16e67a1a2a95e8b2f9a3e31e60c49a9",
+      "bytes": 12025
+    },
+    {
+      "path": "tools/player_item_definitions_evidence.py",
+      "sha256": "a3fa689f39c5a4517697575d8b0b9ef601fc8c754867cfe0daf47f207a440862",
+      "bytes": 2907
+    },
+    {
+      "path": "docs/PLAYER_INVENTORY_SCREEN.md",
+      "sha256": "26bc612b4186c040fb26ac0dbb081100aadaef74b7785ac18f47e44b477133f7",
+      "bytes": 7612
+    },
+    {
+      "path": "src/player_inventory.bend",
+      "sha256": "c006db7b6a6dbdccbc1400120091518b37751d73745af374977d3a8f7c290e65",
+      "bytes": 23278
+    },
+    {
+      "path": "src/player_inventory_codec.bend",
+      "sha256": "6b05c03de506ef290f8ec0ddcc758b8bc7760304c5dae5d71530452a23950104",
+      "bytes": 19810
+    },
+    {
+      "path": "src/local_player_session.bend",
+      "sha256": "b449dfc37a4c61cf67ba426abd9a8b9f77eb5082316836372e9b42470988eaca",
+      "bytes": 32370
+    },
+    {
+      "path": "tools/test_player_inventory.py",
+      "sha256": "7f98821dd4e60c9e5bbccfd977369c0975be5f74c37cac7d2d981e40fca8089b",
+      "bytes": 25854
+    }
+  ],
+  "static_provenance": "evidence/player-item-definitions-provenance.json",
+  "ordinary_inventory_session_receipt": "build/player-inventory-screen/ordinary-session-15/receipt.json",
+  "screen_ordinary": "production screen dependency checked unchanged in ordinary-proof-32",
+  "independent_kernel": {
+    "status": "passed",
+    "roots": [
+      "player_inventory_screen_laws:event_retains_full_authority",
+      "player_inventory_screen_laws:reply_installs_full_authority",
+      "player_inventory_screen_laws:focus_loss_composes_without_changing_pending_or_authority",
+      "player_inventory_screen_laws:unadmitted_observation_retains_entire_controller",
+      "player_inventory_screen_laws:refused_close_retains_owned_inventory",
+      "player_inventory_screen_laws:menu_open_close_changes_only_open_flag",
+      "player_inventory_screen_laws:inventory_authority_refusal_retains_every_owned_slot",
+      "player_inventory_screen_laws:invalid_transfer_retains_every_owned_slot",
+      "player_inventory_screen_laws:production_transfer_count_conservation"
+    ],
+    "holes": 0,
+    "exclusions": [],
+    "imported_files": 42,
+    "all_checked_types_and_bodies_unchanged": true,
+    "all_original_declarations_retained": true,
+    "source_closure_pinned_before_load_and_unchanged": true,
+    "export_seconds": 10.362746334634721,
+    "kernel_seconds": 0.399320499971509,
+    "heap_cap_mib": 4096,
+    "emitted_bytes": 1514020,
+    "emitted_sha256": "cce18d8343003a32bfbd49b1028c96cdd7bc6166523b0c2bc45752e0b7a135aa",
+    "process_groups_absent": true,
+    "selection": "build/player-inventory-screen/selective-export-002/selection.json",
+    "selection_sha256": "d8aaf5844fdf2d11e1b49a5989190e76113d06f9bc87eed59bda82f8aaf5cf77",
+    "export_receipt": "build/player-inventory-screen/selective-export-002/export.receipt.json",
+    "export_receipt_sha256": "8866d58e87ad7c225d008b3838be2b04da49854a6e20ab1b11ba331822305004",
+    "kernel_receipt": "build/player-inventory-screen/selective-export-002/kernel.receipt.json",
+    "kernel_receipt_sha256": "de61dae71008a102c45ad5e8dd2c5392aa9b630dcdc3a44c2ee242a08a269128"
+  },
+  "native_fixtures": "unperformed",
+  "native_capture_and_render": "unperformed",
+  "impeccable_source_detector": "build/player-inventory-screen/impeccable-detector.json",
+  "impeccable_detector_limit": "No Bend-specific visual/native acceptance; regex scan is source advice only",
+  "remaining_dependencies": [
+    "full item model textures",
+    "resource fonts and player preview",
+    "recipe derivation",
+    "return/drop/menu-close lifecycle",
+    "remaining typed menu click consumers",
+    "modified item components"
+  ],
+  "screen_proof_ordinary": "build/player-inventory-screen/ordinary-proof-32/receipt.json",
+  "controller_fixture_cases": 27,
+  "literal_native_hit_cases": 46,
+  "complete_definition_fixture_cases": 1658,
+  "screen_production_source_stable": true,
+  "test_harness_ordinary": "build/player-inventory-screen/ordinary-tests-33/receipt.json",
+  "independent_export_attempt": "build/player-inventory-screen/selective-export-001/export.receipt.json",
+  "independent_export_diagnosis": "First2GiB export OOM; unmodified whole-book load/valid completed at4GiB in second attempt. Compact Nat literals preserved; no Json semantics change.",
+  "production_laws": 9,
+  "full_format3_host_fixture": "build/player-inventory-screen/full-codec-fixtures/manifest.json",
+  "full_format3_host_fixture_limit": "Independent physical host preparation only; native codec/atomic save/cold reload remain pending.",
+  "refocus_authority_join": "observed preserves complete controller while pending/unfocused/invalid; synchronize_authority reconciles idle open state before actual capture/event processing."
+}

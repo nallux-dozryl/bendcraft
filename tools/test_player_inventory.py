@@ -7,8 +7,10 @@ launches a process; Python owns fixtures/expected bytes, Bend owns transitions.
 from __future__ import annotations
 
 import copy
+import csv
 import dataclasses
 import hashlib
+import io
 import json
 from pathlib import Path
 import test_nbt as N
@@ -19,6 +21,9 @@ from reference_inventory import canonical
 ITEMS = ('minecraft:stone', 'minecraft:dirt', 'minecraft:oak_planks')
 NAME = 'bendex:local-player-inventory-record'
 FIELDS = ('format', 'record', 'selected', 'instabuild', 'maybuild', 'slots')
+FULL_FIELDS = FIELDS + ('equipment', 'abilities', 'generation')
+STATUS_FIELDS = ('invulnerable', 'mayfly', 'flying', 'walking_speed', 'flying_speed')
+TABLE_SHA256 = '1cf2669ac760fed886b33d19b12e4782d5011c68c629d22328147d8a9a9bfa22'
 
 
 def require(condition, message):
@@ -237,6 +242,89 @@ def inventory_root(record, snapshot):
 
 def inventory_bytes(record, snapshot):
     return record if snapshot == empty() else N.encode_root(inventory_root(record, snapshot))
+
+
+def inventory_full_root(record, snapshot, equipment, status, generation):
+    """Independently construct the explicit format3 physical NBT fixture.
+
+    record and generation are complete standalone NBT bytes. Equipment order is
+    feet, legs, chest, head, offhand, BODY, SADDLE. The five status fields retain
+    all raw binary32 words; no Python float conversion occurs. This constructor
+    intentionally emits format3 even if a particular fixture could use format2.
+    """
+    slot_tags = lambda slots: [P.compound([]) if slot is None else P.compound([
+        ('id', N.Value(8, N.text(slot['id']))), ('count', N.Value(3, slot['count']))])
+        for slot in slots]
+    ability_fields = [(name, N.Value(1, int(status[name]))) for name in STATUS_FIELDS[:3]]
+    ability_fields.extend((name, N.Value(5, status[name])) for name in STATUS_FIELDS[3:])
+    return N.RootTag(N.text(NAME), P.compound([
+        ('format', N.Value(3, 3)), ('record', N.Value(7, record)),
+        ('selected', N.Value(3, snapshot['selected'])),
+        ('instabuild', N.Value(1, int(snapshot['abilities']['instabuild']))),
+        ('maybuild', N.Value(1, int(snapshot['abilities']['maybuild']))),
+        ('slots', N.Value(9, (10, slot_tags(snapshot['slots'])))),
+        ('equipment', N.Value(9, (10, slot_tags(equipment)))),
+        ('abilities', P.compound(ability_fields)), ('generation', N.Value(7, generation))]))
+
+
+def inventory_full_bytes(record, snapshot, equipment, status, generation):
+    return N.encode_root(inventory_full_root(record, snapshot, equipment, status, generation))
+
+
+def _full_item_limits(table=None):
+    path = Path(table or Path(__file__).resolve().parents[1] / 'generated/reference_item_metadata.tsv')
+    raw = path.read_bytes()
+    require(sha(raw) == TABLE_SHA256, 'Full inventory item table hash differs')
+    rows = list(csv.DictReader(io.StringIO(raw.decode()), delimiter='\t'))
+    require(len(rows) == 1658, 'Full inventory registry count differs')
+    return {row['identifier']: int(row['default_stack_max_stack_size']) for row in rows
+            if row['enabled_default_flags'] == 'True' and row['identifier'] != 'minecraft:air'}
+
+
+def parse_inventory_full(data, *, table=None):
+    """Independent format3 durable projection for current save/reload fixtures.
+
+    Generator bytes stay exact and receive a separate bounded physical NBT
+    parse. Generator-semantic acceptance belongs to the focused WGC suite.
+    Legacy/version2 acceptance keeps its existing parse_inventory entry point.
+    """
+    root = N.Reader(data, max_bytes=65536, max_depth=4, max_elements=16384).root()
+    require(root.name == N.text(NAME), 'Full inventory root differs')
+    fields = P.fields(root.value, FULL_FIELDS)
+    require(P.scalar(fields['format'], 3) == 3, 'Full inventory format differs')
+    require(fields['record'].kind == 7, 'Full player record is not ByteArray')
+    record = R.encode(R.decode(fields['record'].payload))
+    selected = P.scalar(fields['selected'], 3)
+    require(0 <= selected < 9, 'Full inventory selection differs')
+    abilities = {name: bool(P.boolean(fields[name])) for name in ('instabuild', 'maybuild')}
+    limits = _full_item_limits(table)
+
+    def slots(tag, count):
+        require(tag.kind == 9 and tag.payload[0] == 10 and len(tag.payload[1]) == count,
+                'Full inventory slot shape differs')
+        result = []
+        for value in tag.payload[1]:
+            require(value.kind == 10, 'Full inventory slot is not Compound')
+            if not value.payload:
+                result.append(None)
+                continue
+            members = P.fields(value, ('id', 'count'))
+            require(members['id'].kind == 8, 'Full inventory item is not String')
+            item = ''.join(chr(unit) for unit in members['id'].payload)
+            amount = P.scalar(members['count'], 3)
+            require(item in limits and 1 <= amount <= limits[item], 'Full inventory item limit differs')
+            result.append(stack(item, amount))
+        return result
+
+    status_fields = P.fields(fields['abilities'], STATUS_FIELDS)
+    status = {name: bool(P.boolean(status_fields[name])) for name in STATUS_FIELDS[:3]}
+    status.update((name, P.scalar(status_fields[name], 5)) for name in STATUS_FIELDS[3:])
+    generation = fields['generation']
+    require(generation.kind == 7, 'Full inventory generation is not ByteArray')
+    N.Reader(generation.payload, max_bytes=16384, max_depth=8, max_elements=4096).root()
+    return record, {'main': {'selected': selected, 'slots': slots(fields['slots'], 36), 'abilities': abilities},
+                    'equipment': slots(fields['equipment'], 7), 'status': status,
+                    'generation': generation.payload}
 
 
 def parse_inventory(data):

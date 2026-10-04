@@ -1,0 +1,733 @@
+{
+  "default_limits": [
+    1,
+    16,
+    64
+  ],
+  "enabled_non_air": 1657,
+  "equipment": {
+    "minecraft:black_carpet": 41,
+    "minecraft:black_harness": 41,
+    "minecraft:blue_carpet": 41,
+    "minecraft:blue_harness": 41,
+    "minecraft:brown_carpet": 41,
+    "minecraft:brown_harness": 41,
+    "minecraft:carved_pumpkin": 39,
+    "minecraft:chainmail_boots": 36,
+    "minecraft:chainmail_chestplate": 38,
+    "minecraft:chainmail_helmet": 39,
+    "minecraft:chainmail_leggings": 37,
+    "minecraft:copper_boots": 36,
+    "minecraft:copper_chestplate": 38,
+    "minecraft:copper_helmet": 39,
+    "minecraft:copper_horse_armor": 41,
+    "minecraft:copper_leggings": 37,
+    "minecraft:copper_nautilus_armor": 41,
+    "minecraft:creeper_head": 39,
+    "minecraft:cyan_carpet": 41,
+    "minecraft:cyan_harness": 41,
+    "minecraft:diamond_boots": 36,
+    "minecraft:diamond_chestplate": 38,
+    "minecraft:diamond_helmet": 39,
+    "minecraft:diamond_horse_armor": 41,
+    "minecraft:diamond_leggings": 37,
+    "minecraft:diamond_nautilus_armor": 41,
+    "minecraft:dragon_head": 39,
+    "minecraft:elytra": 38,
+    "minecraft:golden_boots": 36,
+    "minecraft:golden_chestplate": 38,
+    "minecraft:golden_helmet": 39,
+    "minecraft:golden_horse_armor": 41,
+    "minecraft:golden_leggings": 37,
+    "minecraft:golden_nautilus_armor": 41,
+    "minecraft:gray_carpet": 41,
+    "minecraft:gray_harness": 41,
+    "minecraft:green_carpet": 41,
+    "minecraft:green_harness": 41,
+    "minecraft:iron_boots": 36,
+    "minecraft:iron_chestplate": 38,
+    "minecraft:iron_helmet": 39,
+    "minecraft:iron_horse_armor": 41,
+    "minecraft:iron_leggings": 37,
+    "minecraft:iron_nautilus_armor": 41,
+    "minecraft:leather_boots": 36,
+    "minecraft:leather_chestplate": 38,
+    "minecraft:leather_helmet": 39,
+    "minecraft:leather_horse_armor": 41,
+    "minecraft:leather_leggings": 37,
+    "minecraft:light_blue_carpet": 41,
+    "minecraft:light_blue_harness": 41,
+    "minecraft:light_gray_carpet": 41,
+    "minecraft:light_gray_harness": 41,
+    "minecraft:lime_carpet": 41,
+    "minecraft:lime_harness": 41,
+    "minecraft:magenta_carpet": 41,
+    "minecraft:magenta_harness": 41,
+    "minecraft:netherite_boots": 36,
+    "minecraft:netherite_chestplate": 38,
+    "minecraft:netherite_helmet": 39,
+    "minecraft:netherite_horse_armor": 41,
+    "minecraft:netherite_leggings": 37,
+    "minecraft:netherite_nautilus_armor": 41,
+    "minecraft:orange_carpet": 41,
+    "minecraft:orange_harness": 41,
+    "minecraft:piglin_head": 39,
+    "minecraft:pink_carpet": 41,
+    "minecraft:pink_harness": 41,
+    "minecraft:player_head": 39,
+    "minecraft:purple_carpet": 41,
+    "minecraft:purple_harness": 41,
+    "minecraft:red_carpet": 41,
+    "minecraft:red_harness": 41,
+    "minecraft:saddle": 42,
+    "minecraft:shield": 40,
+    "minecraft:skeleton_skull": 39,
+    "minecraft:turtle_helmet": 39,
+    "minecraft:white_carpet": 41,
+    "minecraft:white_harness": 41,
+    "minecraft:wither_skeleton_skull": 39,
+    "minecraft:wolf_armor": 41,
+    "minecraft:yellow_carpet": 41,
+    "minecraft:yellow_harness": 41,
+    "minecraft:zombie_head": 39
+  },
+  "equippable_components": {
+    "minecraft:black_carpet": {
+      "allowed_entities": [
+        "minecraft:llama",
+        "minecraft:trader_llama"
+      ],
+      "asset_id": "minecraft:black_carpet",
+      "can_be_sheared": true,
+      "equip_sound": "minecraft:entity.llama.swag",
+      "shearing_sound": "minecraft:item.llama_carpet.unequip",
+      "slot": "body"
+    },
+    "minecraft:black_harness": {
+      "allowed_entities": "#minecraft:can_equip_harness",
+      "asset_id": "minecraft:black_harness",
+      "can_be_sheared": true,
+      "equip_on_interact": true,
+      "equip_sound": "minecraft:entity.happy_ghast.equip",
+      "shearing_sound": "minecraft:entity.happy_ghast.unequip",
+      "slot": "body"
+    },
+    "minecraft:blue_carpet": {
+      "allowed_entities": [
+        "minecraft:llama",
+        "minecraft:trader_llama"
+      ],
+      "asset_id": "minecraft:blue_carpet",
+      "can_be_sheared": true,
+      "equip_sound": "minecraft:entity.llama.swag",
+      "shearing_sound": "minecraft:item.llama_carpet.unequip",
+      "slot": "body"
+    },
+    "minecraft:blue_harness": {
+      "allowed_entities": "#minecraft:can_equip_harness",
+      "asset_id": "minecraft:blue_harness",
+      "can_be_sheared": true,
+      "equip_on_interact": true,
+      "equip_sound": "minecraft:entity.happy_ghast.equip",
+      "shearing_sound": "minecraft:entity.happy_ghast.unequip",
+      "slot": "body"
+    },
+    "minecraft:brown_carpet": {
+      "allowed_entities": [
+        "minecraft:llama",
+        "minecraft:trader_llama"
+      ],
+      "asset_id": "minecraft:brown_carpet",
+      "can_be_sheared": true,
+      "equip_sound": "minecraft:entity.llama.swag",
+      "shearing_sound": "minecraft:item.llama_carpet.unequip",
+      "slot": "body"
+    },
+    "minecraft:brown_harness": {
+      "allowed_entities": "#minecraft:can_equip_harness",
+      "asset_id": "minecraft:brown_harness",
+      "can_be_sheared": true,
+      "equip_on_interact": true,
+      "equip_sound": "minecraft:entity.happy_ghast.equip",
+      "shearing_sound": "minecraft:entity.happy_ghast.unequip",
+      "slot": "body"
+    },
+    "minecraft:carved_pumpkin": {
+      "camera_overlay": "minecraft:misc/pumpkinblur",
+      "slot": "head",
+      "swappable": false
+    },
+    "minecraft:chainmail_boots": {
+      "asset_id": "minecraft:chainmail",
+      "equip_sound": "minecraft:item.armor.equip_chain",
+      "slot": "feet"
+    },
+    "minecraft:chainmail_chestplate": {
+      "asset_id": "minecraft:chainmail",
+      "equip_sound": "minecraft:item.armor.equip_chain",
+      "slot": "chest"
+    },
+    "minecraft:chainmail_helmet": {
+      "asset_id": "minecraft:chainmail",
+      "equip_sound": "minecraft:item.armor.equip_chain",
+      "slot": "head"
+    },
+    "minecraft:chainmail_leggings": {
+      "asset_id": "minecraft:chainmail",
+      "equip_sound": "minecraft:item.armor.equip_chain",
+      "slot": "legs"
+    },
+    "minecraft:copper_boots": {
+      "asset_id": "minecraft:copper",
+      "equip_sound": "minecraft:item.armor.equip_copper",
+      "slot": "feet"
+    },
+    "minecraft:copper_chestplate": {
+      "asset_id": "minecraft:copper",
+      "equip_sound": "minecraft:item.armor.equip_copper",
+      "slot": "chest"
+    },
+    "minecraft:copper_helmet": {
+      "asset_id": "minecraft:copper",
+      "equip_sound": "minecraft:item.armor.equip_copper",
+      "slot": "head"
+    },
+    "minecraft:copper_horse_armor": {
+      "allowed_entities": "#minecraft:can_wear_horse_armor",
+      "asset_id": "minecraft:copper",
+      "can_be_sheared": true,
+      "damage_on_hurt": false,
+      "equip_sound": "minecraft:entity.horse.armor",
+      "shearing_sound": "minecraft:item.horse_armor.unequip",
+      "slot": "body"
+    },
+    "minecraft:copper_leggings": {
+      "asset_id": "minecraft:copper",
+      "equip_sound": "minecraft:item.armor.equip_copper",
+      "slot": "legs"
+    },
+    "minecraft:copper_nautilus_armor": {
+      "allowed_entities": "#minecraft:can_wear_nautilus_armor",
+      "asset_id": "minecraft:copper",
+      "can_be_sheared": true,
+      "damage_on_hurt": false,
+      "equip_on_interact": true,
+      "equip_sound": "minecraft:item.armor.equip_nautilus",
+      "shearing_sound": "minecraft:item.armor.unequip_nautilus",
+      "slot": "body"
+    },
+    "minecraft:creeper_head": {
+      "slot": "head",
+      "swappable": false
+    },
+    "minecraft:cyan_carpet": {
+      "allowed_entities": [
+        "minecraft:llama",
+        "minecraft:trader_llama"
+      ],
+      "asset_id": "minecraft:cyan_carpet",
+      "can_be_sheared": true,
+      "equip_sound": "minecraft:entity.llama.swag",
+      "shearing_sound": "minecraft:item.llama_carpet.unequip",
+      "slot": "body"
+    },
+    "minecraft:cyan_harness": {
+      "allowed_entities": "#minecraft:can_equip_harness",
+      "asset_id": "minecraft:cyan_harness",
+      "can_be_sheared": true,
+      "equip_on_interact": true,
+      "equip_sound": "minecraft:entity.happy_ghast.equip",
+      "shearing_sound": "minecraft:entity.happy_ghast.unequip",
+      "slot": "body"
+    },
+    "minecraft:diamond_boots": {
+      "asset_id": "minecraft:diamond",
+      "equip_sound": "minecraft:item.armor.equip_diamond",
+      "slot": "feet"
+    },
+    "minecraft:diamond_chestplate": {
+      "asset_id": "minecraft:diamond",
+      "equip_sound": "minecraft:item.armor.equip_diamond",
+      "slot": "chest"
+    },
+    "minecraft:diamond_helmet": {
+      "asset_id": "minecraft:diamond",
+      "equip_sound": "minecraft:item.armor.equip_diamond",
+      "slot": "head"
+    },
+    "minecraft:diamond_horse_armor": {
+      "allowed_entities": "#minecraft:can_wear_horse_armor",
+      "asset_id": "minecraft:diamond",
+      "can_be_sheared": true,
+      "damage_on_hurt": false,
+      "equip_sound": "minecraft:entity.horse.armor",
+      "shearing_sound": "minecraft:item.horse_armor.unequip",
+      "slot": "body"
+    },
+    "minecraft:diamond_leggings": {
+      "asset_id": "minecraft:diamond",
+      "equip_sound": "minecraft:item.armor.equip_diamond",
+      "slot": "legs"
+    },
+    "minecraft:diamond_nautilus_armor": {
+      "allowed_entities": "#minecraft:can_wear_nautilus_armor",
+      "asset_id": "minecraft:diamond",
+      "can_be_sheared": true,
+      "damage_on_hurt": false,
+      "equip_on_interact": true,
+      "equip_sound": "minecraft:item.armor.equip_nautilus",
+      "shearing_sound": "minecraft:item.armor.unequip_nautilus",
+      "slot": "body"
+    },
+    "minecraft:dragon_head": {
+      "slot": "head",
+      "swappable": false
+    },
+    "minecraft:elytra": {
+      "asset_id": "minecraft:elytra",
+      "damage_on_hurt": false,
+      "equip_sound": "minecraft:item.armor.equip_elytra",
+      "slot": "chest"
+    },
+    "minecraft:golden_boots": {
+      "asset_id": "minecraft:gold",
+      "equip_sound": "minecraft:item.armor.equip_gold",
+      "slot": "feet"
+    },
+    "minecraft:golden_chestplate": {
+      "asset_id": "minecraft:gold",
+      "equip_sound": "minecraft:item.armor.equip_gold",
+      "slot": "chest"
+    },
+    "minecraft:golden_helmet": {
+      "asset_id": "minecraft:gold",
+      "equip_sound": "minecraft:item.armor.equip_gold",
+      "slot": "head"
+    },
+    "minecraft:golden_horse_armor": {
+      "allowed_entities": "#minecraft:can_wear_horse_armor",
+      "asset_id": "minecraft:gold",
+      "can_be_sheared": true,
+      "damage_on_hurt": false,
+      "equip_sound": "minecraft:entity.horse.armor",
+      "shearing_sound": "minecraft:item.horse_armor.unequip",
+      "slot": "body"
+    },
+    "minecraft:golden_leggings": {
+      "asset_id": "minecraft:gold",
+      "equip_sound": "minecraft:item.armor.equip_gold",
+      "slot": "legs"
+    },
+    "minecraft:golden_nautilus_armor": {
+      "allowed_entities": "#minecraft:can_wear_nautilus_armor",
+      "asset_id": "minecraft:gold",
+      "can_be_sheared": true,
+      "damage_on_hurt": false,
+      "equip_on_interact": true,
+      "equip_sound": "minecraft:item.armor.equip_nautilus",
+      "shearing_sound": "minecraft:item.armor.unequip_nautilus",
+      "slot": "body"
+    },
+    "minecraft:gray_carpet": {
+      "allowed_entities": [
+        "minecraft:llama",
+        "minecraft:trader_llama"
+      ],
+      "asset_id": "minecraft:gray_carpet",
+      "can_be_sheared": true,
+      "equip_sound": "minecraft:entity.llama.swag",
+      "shearing_sound": "minecraft:item.llama_carpet.unequip",
+      "slot": "body"
+    },
+    "minecraft:gray_harness": {
+      "allowed_entities": "#minecraft:can_equip_harness",
+      "asset_id": "minecraft:gray_harness",
+      "can_be_sheared": true,
+      "equip_on_interact": true,
+      "equip_sound": "minecraft:entity.happy_ghast.equip",
+      "shearing_sound": "minecraft:entity.happy_ghast.unequip",
+      "slot": "body"
+    },
+    "minecraft:green_carpet": {
+      "allowed_entities": [
+        "minecraft:llama",
+        "minecraft:trader_llama"
+      ],
+      "asset_id": "minecraft:green_carpet",
+      "can_be_sheared": true,
+      "equip_sound": "minecraft:entity.llama.swag",
+      "shearing_sound": "minecraft:item.llama_carpet.unequip",
+      "slot": "body"
+    },
+    "minecraft:green_harness": {
+      "allowed_entities": "#minecraft:can_equip_harness",
+      "asset_id": "minecraft:green_harness",
+      "can_be_sheared": true,
+      "equip_on_interact": true,
+      "equip_sound": "minecraft:entity.happy_ghast.equip",
+      "shearing_sound": "minecraft:entity.happy_ghast.unequip",
+      "slot": "body"
+    },
+    "minecraft:iron_boots": {
+      "asset_id": "minecraft:iron",
+      "equip_sound": "minecraft:item.armor.equip_iron",
+      "slot": "feet"
+    },
+    "minecraft:iron_chestplate": {
+      "asset_id": "minecraft:iron",
+      "equip_sound": "minecraft:item.armor.equip_iron",
+      "slot": "chest"
+    },
+    "minecraft:iron_helmet": {
+      "asset_id": "minecraft:iron",
+      "equip_sound": "minecraft:item.armor.equip_iron",
+      "slot": "head"
+    },
+    "minecraft:iron_horse_armor": {
+      "allowed_entities": "#minecraft:can_wear_horse_armor",
+      "asset_id": "minecraft:iron",
+      "can_be_sheared": true,
+      "damage_on_hurt": false,
+      "equip_sound": "minecraft:entity.horse.armor",
+      "shearing_sound": "minecraft:item.horse_armor.unequip",
+      "slot": "body"
+    },
+    "minecraft:iron_leggings": {
+      "asset_id": "minecraft:iron",
+      "equip_sound": "minecraft:item.armor.equip_iron",
+      "slot": "legs"
+    },
+    "minecraft:iron_nautilus_armor": {
+      "allowed_entities": "#minecraft:can_wear_nautilus_armor",
+      "asset_id": "minecraft:iron",
+      "can_be_sheared": true,
+      "damage_on_hurt": false,
+      "equip_on_interact": true,
+      "equip_sound": "minecraft:item.armor.equip_nautilus",
+      "shearing_sound": "minecraft:item.armor.unequip_nautilus",
+      "slot": "body"
+    },
+    "minecraft:leather_boots": {
+      "asset_id": "minecraft:leather",
+      "equip_sound": "minecraft:item.armor.equip_leather",
+      "slot": "feet"
+    },
+    "minecraft:leather_chestplate": {
+      "asset_id": "minecraft:leather",
+      "equip_sound": "minecraft:item.armor.equip_leather",
+      "slot": "chest"
+    },
+    "minecraft:leather_helmet": {
+      "asset_id": "minecraft:leather",
+      "equip_sound": "minecraft:item.armor.equip_leather",
+      "slot": "head"
+    },
+    "minecraft:leather_horse_armor": {
+      "allowed_entities": "#minecraft:can_wear_horse_armor",
+      "asset_id": "minecraft:leather",
+      "can_be_sheared": true,
+      "damage_on_hurt": false,
+      "equip_sound": "minecraft:entity.horse.armor",
+      "shearing_sound": "minecraft:item.horse_armor.unequip",
+      "slot": "body"
+    },
+    "minecraft:leather_leggings": {
+      "asset_id": "minecraft:leather",
+      "equip_sound": "minecraft:item.armor.equip_leather",
+      "slot": "legs"
+    },
+    "minecraft:light_blue_carpet": {
+      "allowed_entities": [
+        "minecraft:llama",
+        "minecraft:trader_llama"
+      ],
+      "asset_id": "minecraft:light_blue_carpet",
+      "can_be_sheared": true,
+      "equip_sound": "minecraft:entity.llama.swag",
+      "shearing_sound": "minecraft:item.llama_carpet.unequip",
+      "slot": "body"
+    },
+    "minecraft:light_blue_harness": {
+      "allowed_entities": "#minecraft:can_equip_harness",
+      "asset_id": "minecraft:light_blue_harness",
+      "can_be_sheared": true,
+      "equip_on_interact": true,
+      "equip_sound": "minecraft:entity.happy_ghast.equip",
+      "shearing_sound": "minecraft:entity.happy_ghast.unequip",
+      "slot": "body"
+    },
+    "minecraft:light_gray_carpet": {
+      "allowed_entities": [
+        "minecraft:llama",
+        "minecraft:trader_llama"
+      ],
+      "asset_id": "minecraft:light_gray_carpet",
+      "can_be_sheared": true,
+      "equip_sound": "minecraft:entity.llama.swag",
+      "shearing_sound": "minecraft:item.llama_carpet.unequip",
+      "slot": "body"
+    },
+    "minecraft:light_gray_harness": {
+      "allowed_entities": "#minecraft:can_equip_harness",
+      "asset_id": "minecraft:light_gray_harness",
+      "can_be_sheared": true,
+      "equip_on_interact": true,
+      "equip_sound": "minecraft:entity.happy_ghast.equip",
+      "shearing_sound": "minecraft:entity.happy_ghast.unequip",
+      "slot": "body"
+    },
+    "minecraft:lime_carpet": {
+      "allowed_entities": [
+        "minecraft:llama",
+        "minecraft:trader_llama"
+      ],
+      "asset_id": "minecraft:lime_carpet",
+      "can_be_sheared": true,
+      "equip_sound": "minecraft:entity.llama.swag",
+      "shearing_sound": "minecraft:item.llama_carpet.unequip",
+      "slot": "body"
+    },
+    "minecraft:lime_harness": {
+      "allowed_entities": "#minecraft:can_equip_harness",
+      "asset_id": "minecraft:lime_harness",
+      "can_be_sheared": true,
+      "equip_on_interact": true,
+      "equip_sound": "minecraft:entity.happy_ghast.equip",
+      "shearing_sound": "minecraft:entity.happy_ghast.unequip",
+      "slot": "body"
+    },
+    "minecraft:magenta_carpet": {
+      "allowed_entities": [
+        "minecraft:llama",
+        "minecraft:trader_llama"
+      ],
+      "asset_id": "minecraft:magenta_carpet",
+      "can_be_sheared": true,
+      "equip_sound": "minecraft:entity.llama.swag",
+      "shearing_sound": "minecraft:item.llama_carpet.unequip",
+      "slot": "body"
+    },
+    "minecraft:magenta_harness": {
+      "allowed_entities": "#minecraft:can_equip_harness",
+      "asset_id": "minecraft:magenta_harness",
+      "can_be_sheared": true,
+      "equip_on_interact": true,
+      "equip_sound": "minecraft:entity.happy_ghast.equip",
+      "shearing_sound": "minecraft:entity.happy_ghast.unequip",
+      "slot": "body"
+    },
+    "minecraft:netherite_boots": {
+      "asset_id": "minecraft:netherite",
+      "equip_sound": "minecraft:item.armor.equip_netherite",
+      "slot": "feet"
+    },
+    "minecraft:netherite_chestplate": {
+      "asset_id": "minecraft:netherite",
+      "equip_sound": "minecraft:item.armor.equip_netherite",
+      "slot": "chest"
+    },
+    "minecraft:netherite_helmet": {
+      "asset_id": "minecraft:netherite",
+      "equip_sound": "minecraft:item.armor.equip_netherite",
+      "slot": "head"
+    },
+    "minecraft:netherite_horse_armor": {
+      "allowed_entities": "#minecraft:can_wear_horse_armor",
+      "asset_id": "minecraft:netherite",
+      "can_be_sheared": true,
+      "damage_on_hurt": false,
+      "equip_sound": "minecraft:entity.horse.armor",
+      "shearing_sound": "minecraft:item.horse_armor.unequip",
+      "slot": "body"
+    },
+    "minecraft:netherite_leggings": {
+      "asset_id": "minecraft:netherite",
+      "equip_sound": "minecraft:item.armor.equip_netherite",
+      "slot": "legs"
+    },
+    "minecraft:netherite_nautilus_armor": {
+      "allowed_entities": "#minecraft:can_wear_nautilus_armor",
+      "asset_id": "minecraft:netherite",
+      "can_be_sheared": true,
+      "damage_on_hurt": false,
+      "equip_on_interact": true,
+      "equip_sound": "minecraft:item.armor.equip_nautilus",
+      "shearing_sound": "minecraft:item.armor.unequip_nautilus",
+      "slot": "body"
+    },
+    "minecraft:orange_carpet": {
+      "allowed_entities": [
+        "minecraft:llama",
+        "minecraft:trader_llama"
+      ],
+      "asset_id": "minecraft:orange_carpet",
+      "can_be_sheared": true,
+      "equip_sound": "minecraft:entity.llama.swag",
+      "shearing_sound": "minecraft:item.llama_carpet.unequip",
+      "slot": "body"
+    },
+    "minecraft:orange_harness": {
+      "allowed_entities": "#minecraft:can_equip_harness",
+      "asset_id": "minecraft:orange_harness",
+      "can_be_sheared": true,
+      "equip_on_interact": true,
+      "equip_sound": "minecraft:entity.happy_ghast.equip",
+      "shearing_sound": "minecraft:entity.happy_ghast.unequip",
+      "slot": "body"
+    },
+    "minecraft:piglin_head": {
+      "slot": "head",
+      "swappable": false
+    },
+    "minecraft:pink_carpet": {
+      "allowed_entities": [
+        "minecraft:llama",
+        "minecraft:trader_llama"
+      ],
+      "asset_id": "minecraft:pink_carpet",
+      "can_be_sheared": true,
+      "equip_sound": "minecraft:entity.llama.swag",
+      "shearing_sound": "minecraft:item.llama_carpet.unequip",
+      "slot": "body"
+    },
+    "minecraft:pink_harness": {
+      "allowed_entities": "#minecraft:can_equip_harness",
+      "asset_id": "minecraft:pink_harness",
+      "can_be_sheared": true,
+      "equip_on_interact": true,
+      "equip_sound": "minecraft:entity.happy_ghast.equip",
+      "shearing_sound": "minecraft:entity.happy_ghast.unequip",
+      "slot": "body"
+    },
+    "minecraft:player_head": {
+      "slot": "head",
+      "swappable": false
+    },
+    "minecraft:purple_carpet": {
+      "allowed_entities": [
+        "minecraft:llama",
+        "minecraft:trader_llama"
+      ],
+      "asset_id": "minecraft:purple_carpet",
+      "can_be_sheared": true,
+      "equip_sound": "minecraft:entity.llama.swag",
+      "shearing_sound": "minecraft:item.llama_carpet.unequip",
+      "slot": "body"
+    },
+    "minecraft:purple_harness": {
+      "allowed_entities": "#minecraft:can_equip_harness",
+      "asset_id": "minecraft:purple_harness",
+      "can_be_sheared": true,
+      "equip_on_interact": true,
+      "equip_sound": "minecraft:entity.happy_ghast.equip",
+      "shearing_sound": "minecraft:entity.happy_ghast.unequip",
+      "slot": "body"
+    },
+    "minecraft:red_carpet": {
+      "allowed_entities": [
+        "minecraft:llama",
+        "minecraft:trader_llama"
+      ],
+      "asset_id": "minecraft:red_carpet",
+      "can_be_sheared": true,
+      "equip_sound": "minecraft:entity.llama.swag",
+      "shearing_sound": "minecraft:item.llama_carpet.unequip",
+      "slot": "body"
+    },
+    "minecraft:red_harness": {
+      "allowed_entities": "#minecraft:can_equip_harness",
+      "asset_id": "minecraft:red_harness",
+      "can_be_sheared": true,
+      "equip_on_interact": true,
+      "equip_sound": "minecraft:entity.happy_ghast.equip",
+      "shearing_sound": "minecraft:entity.happy_ghast.unequip",
+      "slot": "body"
+    },
+    "minecraft:saddle": {
+      "allowed_entities": "#minecraft:can_equip_saddle",
+      "asset_id": "minecraft:saddle",
+      "can_be_sheared": true,
+      "equip_on_interact": true,
+      "equip_sound": "minecraft:entity.horse.saddle",
+      "shearing_sound": "minecraft:item.saddle.unequip",
+      "slot": "saddle"
+    },
+    "minecraft:shield": {
+      "slot": "offhand",
+      "swappable": false
+    },
+    "minecraft:skeleton_skull": {
+      "slot": "head",
+      "swappable": false
+    },
+    "minecraft:turtle_helmet": {
+      "asset_id": "minecraft:turtle_scute",
+      "equip_sound": "minecraft:item.armor.equip_turtle",
+      "slot": "head"
+    },
+    "minecraft:white_carpet": {
+      "allowed_entities": [
+        "minecraft:llama",
+        "minecraft:trader_llama"
+      ],
+      "asset_id": "minecraft:white_carpet",
+      "can_be_sheared": true,
+      "equip_sound": "minecraft:entity.llama.swag",
+      "shearing_sound": "minecraft:item.llama_carpet.unequip",
+      "slot": "body"
+    },
+    "minecraft:white_harness": {
+      "allowed_entities": "#minecraft:can_equip_harness",
+      "asset_id": "minecraft:white_harness",
+      "can_be_sheared": true,
+      "equip_on_interact": true,
+      "equip_sound": "minecraft:entity.happy_ghast.equip",
+      "shearing_sound": "minecraft:entity.happy_ghast.unequip",
+      "slot": "body"
+    },
+    "minecraft:wither_skeleton_skull": {
+      "slot": "head",
+      "swappable": false
+    },
+    "minecraft:wolf_armor": {
+      "allowed_entities": "minecraft:wolf",
+      "asset_id": "minecraft:armadillo_scute",
+      "can_be_sheared": true,
+      "equip_sound": "minecraft:item.armor.equip_wolf",
+      "shearing_sound": "minecraft:item.armor.unequip_wolf",
+      "slot": "body"
+    },
+    "minecraft:yellow_carpet": {
+      "allowed_entities": [
+        "minecraft:llama",
+        "minecraft:trader_llama"
+      ],
+      "asset_id": "minecraft:yellow_carpet",
+      "can_be_sheared": true,
+      "equip_sound": "minecraft:entity.llama.swag",
+      "shearing_sound": "minecraft:item.llama_carpet.unequip",
+      "slot": "body"
+    },
+    "minecraft:yellow_harness": {
+      "allowed_entities": "#minecraft:can_equip_harness",
+      "asset_id": "minecraft:yellow_harness",
+      "can_be_sheared": true,
+      "equip_on_interact": true,
+      "equip_sound": "minecraft:entity.happy_ghast.equip",
+      "shearing_sound": "minecraft:entity.happy_ghast.unequip",
+      "slot": "body"
+    },
+    "minecraft:zombie_head": {
+      "slot": "head",
+      "swappable": false
+    }
+  },
+  "equippable_defaults": 84,
+  "native_or_java_execution": false,
+  "reference_sha256": "1fefc97dfba596d6034ffab92ce6fed21cf0f0cd1e7bd72b21b110691ea2e6c9",
+  "registry_rows": 1658,
+  "schema_version": 1,
+  "status": "static-provenance-verified",
+  "table_bytes": 556426,
+  "table_sha256": "1cf2669ac760fed886b33d19b12e4782d5011c68c629d22328147d8a9a9bfa22"
+}
