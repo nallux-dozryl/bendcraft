@@ -157,7 +157,7 @@ def same_owner(a: Owner, b: Owner, failed: Bool) -> Bool:
 def child(+tag: U32) -> MH.State:
   +body = M.Body.new(M.Vec3{F.from_u32(tag),M.one(),M.zero()},0.6,1.8,M.Vec3.zero(),False{})
   world = C.World{U32.to_nat(tag),37n,False{},True{},91n,3,
-    Sections.Bucket{[Sections.Entry{"child:" ++ U32.show(tag),Section.Section{[4294967295 : U32*3n]}}]},
+    Sections.Bucket{[Sections.Entry{"child:" ++ U32.show(tag),Section.Section{[4294967295 : U32*4n]}}]},
     [Q.Pending{Q.Stamp{101n,tag,9n},C.TimeSet{31n}}],[C.Applied{Q.Stamp{3n,tag,4n},17n}]}
   registry = B.Registry{[B.Block{tag,"child:block",0,0,4294967295,[]} : B.Block*2n],MLeaf{"child",tag},0,3}
   MH.State{CW.State{G.Engine{world,registry},body,float_word(2147483648),float_word(2143289345),None{},CW.Bounds{tag,0,1,2,3,4},None{}},
