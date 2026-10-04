@@ -60,6 +60,13 @@ general resources, complete gameplay and performance remain unverified. Earlier
 resource-entry timeouts, the empty host-loader diagnostics and unsymbolized
 sample do not identify a compiler bottleneck.
 
+The fresh LocalPlayer composite now passes both actual TCP/MCP/save/restart
+suites, 1,510 codec executions, all 43 phase cases twice and all three facade
+guards twice. Root replay validates complete outputs and 28 final bundles;
+all 252 groups are absent and all 158 listeners refused connections. Current
+results are in LOCAL_PLAYER_SESSION_NATIVE_RESULTS.md. Earlier stopped
+generations below remain historical evidence.
+
 The new LocalPlayer session and client join actual held-input sampling, staged
 post-sprint world facts, ordered Core/common/travel/rotation/pose phases and the
 complete supported local record in the existing leased atomic save transaction.
@@ -89,14 +96,13 @@ that harness requires a new executable. With the resource pair verified, its
 sole tick-0 to tick-1 fixture correction is applied (SHA9589c371) and passes
 ordinary checking in 1.934 seconds. The old harness and failure receipts are
 archived; frozen Python helpers, production runtime and references are unchanged.
-A separate continuation producer is now prepared and read-only audited: 6,069
+The first separate continuation producer was prepared and read-only audited: 6,069
 pinned files and 111 Bend imports, with ten inert host controls. It preserves
 the old binary, emitted C, failures and host generations by immutable paths.
 Independent admission found two host cleanup gaps: permission errors could
 abort the group sweep, and a codec cleanup error could prevent its PID receipt
 (admission2a01bea5; inert reproductions, high confidence).
-This producer is held for a scoped wrapper correction; no new native build is
-granted yet. Its
+R1 was held before any build for a correction confined to the wrapper. Its
 required order is first primary suite, the frozen codec twice, complete phase
 and facade cases twice, then the second primary suite.
 The separate R2 wrapper is now sealed (runner51810052, ready0ba082ff): 6,110
@@ -104,13 +110,21 @@ pins, the same 111 imports and 21 inert controls. Its codec supervisor durably
 registers launches and retains raw/process/cleanup errors; the parent sweep
 checks every registered PID and rejects unknown cleanup. Overall success is
 published only after that sweep. The lead checked the exact syntax-tree delta;
-independent R2 admission passes (77e7d715, high confidence). One build-only
-attempt is granted on slot B with a 600-second child bound; slot A remains free.
-Resulting artifact execution is not yet granted. Cleanup has separate per-group
-five-second bounds, rather than an overall suite duration claim.
+independent R2 admission passes (77e7d715, high confidence). Its one build passed
+in 567.740 seconds with zero retries (binaryc7da9766, receipt5b6efc5d). Root
+auditb5ffc54b rehashed 6,124 unique files/1,004,909,173 bytes, including all
+1,693 native dependencies, 6,116 consumer pins and three executable copies.
+The retained C matches the actual Clang input independently hashed while present;
+the compiler group is absent. The full native suite passed and slot B is
+released; both slots are free. Primary suites pass 52 checks/74 exact save
+comparisons/100 refusals, including ten stage kill/restarts. Codec1,510,
+phase43x2 and facade3x2 pass with exact reruns. Root replayd38da6d6/709b4cba
+independently verifies all outputs, 28 final bundles and cleanup. Each group has a
+120-second run cap and cleanup has separate per-group five-second bounds,
+rather than an overall suite duration claim.
 The lead rehashed all 1,693 native dependencies and the binary/receipt/manifest;
 actual Clang-used C equals the cached emitted C. Historical preparation docs
-remain frozen; current results are in the retained host3 partial evidence.
+remain frozen; current results are in the continuation completion/root audits.
 Visible OS controls remain unverified. The fixed neutral
 four-state profile excludes required reset rays, general attributes, fluids,
 flight and full player lifecycle services.

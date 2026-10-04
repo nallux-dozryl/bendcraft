@@ -88,14 +88,20 @@ fixture is a verification instrument; none satisfies a gameplay completion gate.
    permission-error gaps in group sweeping and codec PID receipts; hold this
    generation and repair only the external wrapper. Admission must then pass
    before a new bounded build; full phase/facade/two-primary verification follows
-   on the new artifact. No production/helper/reference changes or new emission
-   grant yet. The separate R2 wrapper is prepared (runner51810052,
+   on the new artifact. Production/helpers/references remain unchanged. The
+   separate R2 wrapper was prepared (runner51810052,
    ready0ba082ff/payload7024be27;6,110pins/111imports), with 21 inert controls
    covering durable codec registration, permission errors, later-PID cleanup,
    binding restoration and early failure receipt preservation. Its independent
-   admission passes77e7d715. One build-only attempt is granted on slot B with a
-   600-second child bound; no native artifact execution grant yet. Preserve existing
-   phase/reference generations and verify the final consumer generation.
+   admission passes77e7d715. Its one build passes567.740s/no retries
+   (binaryc7da9766/receipt5b6efc5d). Root auditb5ffc54b verifies all1,693native
+   dependencies/6,116consumer pins and actual/cached C equality. The one full
+   native suite passes: both Primary26checks/37exact saves/50refusals, Record1510,
+   Phase43x2 and Facade3x2. Root replayd38da6d6/709b4cba recomputes alloutputs,
+   codecargv/stdout and28finalbundles;252groups absent/158listeners refused61.
+   Preserve all previous generations. The declared bounded consumer outcome is
+   achieved; full gameplay remains open. Current results and reproducible
+   commands are in LOCAL_PLAYER_SESSION_NATIVE_RESULTS.md.
    Required outcome: one shared 20 Hz input/tick/save actor, ordered
    Core/common/input/travel/rotation/pose phases, exact supported metadata across
    save/restart, and real TCP/MCP client regression. Required reset rays still
@@ -103,9 +109,11 @@ fixture is a verification instrument; none satisfies a gameplay completion gate.
 
 Finish in-flight slab/fall host repairs and freeze their useful evidence. Defer
 new standalone feature libraries, expanded reference inventories and peripheral
-receipt polish unless they unblock these two outcomes or fix a concrete defect.
-At most two heavy jobs may run; slot B owns the corrected phase fixture's one
-600-second composite build-only attempt and slot A remains free. Foreground
+receipt polish unless they extend these verified consumers or fix a concrete
+defect. Both declared bounded consumer checks pass. At most two heavy jobs may
+run; both slots are currently free. The next read-only assessment addresses
+required-reset-ray supply within the actual LocalPlayer movement/history owner.
+Foreground
 validation remains pending the user's coordination;
 no duplicate request or unsolicited foreground launch.
 
@@ -121,9 +129,10 @@ no duplicate request or unsolicited foreground launch.
    pass separately. Fresh full-tick phase evidence fixes scheduler, input-cache,
    support/minor/fall, late pose/dimensions and cached eye ordering; the composed
    local runtime is wired into the session/client. Its first complete TCP/MCP/
-   persistence suite and codec pass, as does the paired resource consumer. The
-   corrected full phase/facade/two-primary continuation needs its new executable;
-   current admission is held for host cleanup correction.
+   persistence suites, codec and corrected complete phase/facade corpus pass,
+   as does the paired resource consumer. Next: supply checked required reset
+   rays after actual resolved movement, retaining exact move/history-once and
+   full owner rollback, before widening gameplay.
    Owned local move/fall history now passes two native comparisons with full
    failure rollback. Loaded-world travel and conditional pose/dimension replay
    are being prepared around those frozen authorities.

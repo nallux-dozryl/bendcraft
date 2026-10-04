@@ -21,8 +21,11 @@ The ledger now also records ten explicit bounded component/reference rows for
 owned local travel/history, conditional pose, CPU mipmaps, the slab catalog,
 actual vanilla serialization evidence, the resource-client build attempts and
 Entity common-tick metadata, CPU sprite animation, owned pose-world queries and
-the saved LocalPlayer actor. Its primary native integration and1,510codec cases
-pass; the interrupted shared phase harness remains explicit. The resource row
+the saved LocalPlayer actor. Its fresh composite passes both primary suites,
+1,510codec cases, complete43phase cases twice and3facade guards twice. Root
+replay recomputes allphase/facade/codec outputs and28finalbundles; prior phase
+interruption and all host failures remain preserved as historical evidence.
+The resource row
 now records the third failed monolithic attempt and successful Bend actor/
 renderer builds. Three actual hidden standing frames, atomic sample and full
 saved bundle pass and were independently replayed; the first paired suite then

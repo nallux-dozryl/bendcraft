@@ -85,6 +85,16 @@ audit and a separate native-suite grant follow success; no old native milestone
 substitutes for the complete new generation. Cleanup retains its separate
 five-second per-group budgets and does not establish an overall wall-time cap.
 
+The one build passed567.740s, and its separately granted native suite completed
+both primary runs, Record1,510, Phase43x2 and Facade3x2. Root independently
+recomputed complete phase/facade and codec outputs, codec argv/stdout, and 28
+retained final bundles, then freshly confirmed252absent groups/158refused ports.
+All74producer save comparisons remain recorded; overwritten intermediate bytes
+are not all retained. This closes the declared bounded consumer check, rather
+than the full-game objective. Both heavy slots are released. Assess direct
+required-reset-ray integration next, preserving the now-verified consumers and
+requiring the actual resolved movement before any checked ray/history completion.
+
 ## 2026-10-04: preserve producers during verifier repairs
 
 An orchestration correction does not become the original native producer.
