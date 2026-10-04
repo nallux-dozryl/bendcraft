@@ -332,13 +332,25 @@ def peer_fault(actor, request, expected, directory, label):
         stream.close()
 
 
-def scenario(directory, binary, bridge):
+def fresh_spawn():
+    # Explicit generated-settings spawn starts ungrounded until actual travel.
+    # Legacy fixed-profile spawn and loaded fixture expectations stay unchanged.
+    record = A.playable_spawn()
+    motion, look = S.PR.decode(record.motion)
+    words, dimension = S.PC.parse_snapshot(motion)
+    words = list(words)
+    words[26] = 0
+    return S.validate_local(dataclasses.replace(record, motion=S.N.encode_root(S.PR.root(
+        S.N.encode_root(S.PC.snapshot_root(tuple(words), dimension)), S.PR.look_words(look)))))
+
+
+def scenario(directory, binary, bridge, *, component_stress=True):
     directory.mkdir(exist_ok=False)
     key = component_key()
     palette, identity, count = palette_and_registry()
     checks, saves, frames = [], [], []
     fresh = terrain(count, identity, palette, fresh=True)
-    record = A.playable_spawn()
+    record = fresh_spawn()
     full = {'main': P.playable_inventory(), 'equipment': [None] * 7,
             'status': dict(zip(Inventory.STATUS_FIELDS,
                 (True, True, False, 1036831949, 1028443341), strict=True)),
@@ -446,20 +458,22 @@ def scenario(directory, binary, bridge):
             menu['revision'] += 1
             menu['result'] = stack('minecraft:oak_button', 1) if target == 1 else stack('minecraft:stick', 4)
             admitted_menu(control, full, menu, checks, [11, target, [0, 0]], 'place-grid' + str(target))
-        full['main']['slots'][2] = stack('minecraft:suspicious_stew', 1, key)
-        admitted_menu(control, full, menu, checks, [7, 2, ['minecraft:suspicious_stew', key], 1],
-                      'admit-one-1200-effect-stack')
-        admitted_menu(control, full, menu, checks, [7, 3, ['minecraft:suspicious_stew', key], 1],
-                      'aggregate-reply-rollback', accepted=False, message=OVERFLOW)
-        # No inspect/refresh occurs after refusal. These actual output takes
-        # require the retained original recipe plan, beyond inventory equality.
+        if component_stress:
+            full['main']['slots'][2] = stack('minecraft:suspicious_stew', 1, key)
+            admitted_menu(control, full, menu, checks, [7, 2, ['minecraft:suspicious_stew', key], 1],
+                          'admit-one-1200-effect-stack')
+            admitted_menu(control, full, menu, checks, [7, 3, ['minecraft:suspicious_stew', key], 1],
+                          'aggregate-reply-rollback', accepted=False, message=OVERFLOW)
+        # The full profile witnesses the retained recipe plan directly after
+        # rollback. The small profile takes the same actual original-JAR result
+        # without claiming the separately blocked large transport boundary.
         for number in (1, 2):
             menu['craft'][0] = menu['craft'][2] = stack('minecraft:oak_planks', 1) if number == 1 else None
             menu['carried'] = stack('minecraft:stick', number * 4)
             menu['result'] = stack('minecraft:stick', 4) if number == 1 else None
             menu['revision'] += 1
-            admitted_menu(control, full, menu, checks, [11, 0, [0, 0]],
-                          'cached-result-take-after-rollback' + str(number))
+            label = 'cached-result-take-after-rollback' if component_stress else 'original-JAR-result-take'
+            admitted_menu(control, full, menu, checks, [11, 0, [0, 0]], label + str(number))
         raw.call('world.save', {}, fault='SaveEncodingFailed')
         S.require(path.read_bytes() == initial, 'Temporary crafting saved prematurely')
         full['main']['slots'][1] = stack('minecraft:stick', 8)
@@ -476,15 +490,17 @@ def scenario(directory, binary, bridge):
         menu['craft'][0], menu['carried'] = menu['carried'], None
         menu.update(result=stack('minecraft:sugar', 3), revision=menu['revision'] + 1)
         admitted_menu(control, full, menu, checks, [11, 1, [0, 0]], 'place-original-JAR-honey-recipe')
-        full['main']['slots'][3] = stack('minecraft:glass_bottle', 1)
+        # Small profile leaves main2 empty; the full profile has the stew there.
+        bottle_slot = 3 if component_stress else 2
+        full['main']['slots'][bottle_slot] = stack('minecraft:glass_bottle', 1)
         menu.update(craft=[stack('minecraft:honey_bottle', 1), None, None, None],
                     carried=stack('minecraft:sugar', 3), revision=menu['revision'] + 1)
         admitted_menu(control, full, menu, checks, [11, 0, [0, 0]], 'honey-take-output-and-inventory-remainder')
         menu.update(craft=[stack('minecraft:glass_bottle', 1), None, None, None],
                     carried=stack('minecraft:sugar', 6), result=None, revision=menu['revision'] + 1)
         admitted_menu(control, full, menu, checks, [11, 0, [0, 0]], 'honey-take-output-and-grid-remainder')
-        full['main']['slots'][3] = stack('minecraft:glass_bottle', 2)
-        full['main']['slots'][4] = stack('minecraft:sugar', 6)
+        full['main']['slots'][bottle_slot] = stack('minecraft:glass_bottle', 2)
+        full['main']['slots'][bottle_slot + 1] = stack('minecraft:sugar', 6)
         menu.update(craft=[None] * 4, carried=None, result=None, opened=False,
                     revision=menu['revision'] + 1)
         admitted_menu(control, full, menu, checks, [10], 'close-returns-remainders-and-output')
@@ -536,9 +552,11 @@ def scenario(directory, binary, bridge):
     result = {'status': 'PASS', 'generation': 'actor004/' + A.WORK.name,
         'backends': 3, 'TCP_MCP': True, 'scheduled_control_release': True,
         'private_menu_checks': checks, 'original_JAR_crafting': True,
+        'profile': 'full' if component_stress else 'small-inventory-crafting-control-save',
         'prospective_reply_refusal': {'effects': 1200, 'key_sha256': KEY_SHA,
             'message': OVERFLOW, 'next_sequence_same_epoch': True,
-            'direct_cache_witness': 'two result takes without intervening inspect/refresh'},
+            'direct_cache_witness': 'two result takes without intervening inspect/refresh'} if component_stress else
+            {'status': 'not run; separately retained 35,620-byte private framing refusal'},
         'accepted_Swap': True, 'generic_frames': frames, 'player_break_place': True,
         'complete_saved_comparisons': saves, 'actual_SIGKILL_cold_reload': True,
         'main_slots': 36, 'equipment_slots': 7, 'raw_status': full['status'],
@@ -566,7 +584,7 @@ def artifact():
     return build
 
 
-def child(directory):
+def child(directory, *, component_stress=True):
     build = artifact()
     before = runtime_pins()
     journal = directory / 'owned-groups.jsonl'
@@ -577,7 +595,7 @@ def child(directory):
     with H.bindings(S, {'SERVER': A.ACTOR, 'ROOT': ROOT, 'activation': identity,
                         'OWNED_GROUPS': journal}):
         try:
-            result = scenario(directory / 'actors', A.ACTOR, bridge)
+            result = scenario(directory / 'actors', A.ACTOR, bridge, component_stress=component_stress)
             S.require(runtime_pins() == before, 'Actual JAR/table/facts/reference changed')
             identity()
         except BaseException as error:
@@ -608,12 +626,13 @@ def descendant_cleanup(directory, bridge):
               'Actor/MCP descendant cleanup not verified')
 
 
-def native():
+def native(*, component_stress=True):
     build = artifact()
+    prefix = 'boundary-' if component_stress else 'boundary-small-'
     number = 1
-    while (A.WORK / ('boundary-' + str(number).zfill(3))).exists():
+    while (A.WORK / (prefix + str(number).zfill(3))).exists():
         number += 1
-    directory = A.WORK / ('boundary-' + str(number).zfill(3))
+    directory = A.WORK / (prefix + str(number).zfill(3))
     directory.mkdir(exist_ok=False)
     before = runtime_pins()
     own_pin = R.pin(Path(__file__))
@@ -623,15 +642,17 @@ def native():
     bridge, _ = P.retained_bridge()
     with H.bindings(R, {'WORK': directory}):
         try:
-            process = R.bounded([sys.executable, str(Path(__file__)), '--_child', str(directory)],
-                                180, 'execution')
+            argv = [sys.executable, str(Path(__file__)), '--_child', str(directory)]
+            if not component_stress:
+                argv.append('--_small')
+            process = R.bounded(argv, 180, 'execution')
         finally:
             descendant_cleanup(directory, bridge)
     R.process_ok(process)
     S.require(runtime_pins() == before and R.pin(Path(__file__)) == own_pin,
               'Native input or runner changed')
     summary = json.loads((directory / 'actors/summary.json').read_bytes())
-    output = ROOT / ('evidence/playable-client-actor004-boundary-' + str(number).zfill(3) + '.json')
+    output = ROOT / ('evidence/playable-client-actor004-' + prefix + str(number).zfill(3) + '.json')
     R.write(output, {'status': summary['status'], 'binary': build['binary'],
         'build': R.pin(A.WORK / 'native-build.json'), 'source_map': build['source_map'],
         'runtime_inputs': before, 'summary': R.pin(directory / 'actors/summary.json'),
@@ -644,12 +665,17 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--expectations', action='store_true', help='file-only fixture/data checks')
     parser.add_argument('--native', action='store_true', help='consume the actual successful current actor')
+    parser.add_argument('--small-native', action='store_true',
+                        help='inventory/crafting/control/save without the separately blocked large component frame')
     parser.add_argument('--_child', type=Path, help=argparse.SUPPRESS)
+    parser.add_argument('--_small', action='store_true', help=argparse.SUPPRESS)
     args = parser.parse_args()
     if args._child:
-        child(args._child)
+        child(args._child, component_stress=not args._small)
     elif args.native:
         native()
+    elif args.small_native:
+        native(component_stress=False)
     elif args.expectations:
         value = requirements()
         output = ROOT / 'evidence/playable-client-actor004-boundary-expectations.json'

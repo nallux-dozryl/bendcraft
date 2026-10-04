@@ -780,7 +780,8 @@ class PlayablePrivate:
 
 
 class PlayableBackend:
-    def __init__(self, directory, binary, path, bridge, *, create=False, mode='creative'):
+    def __init__(self, directory, binary, path, bridge, *, create=False, mode='creative',
+                 startup_seconds=20, lifetime_seconds=120):
         self.directory, self.path, self.bridge = Path(directory), Path(path), Path(bridge)
         self.directory.mkdir(exist_ok=False)
         self.port, self.private_port = S.MCP.free_port(), S.MCP.free_port()
@@ -794,10 +795,10 @@ class PlayableBackend:
                    MC_RENDER_EPOCH='playable-test-' + self.directory.name[:18])
         self.argv = [str(binary), '--gpu', 'off', '--threads', '2', '--',
                      '--paused', '--game-mode', mode, '--stdin-control', '--sine', str(S.TABLE)]
-        self.started = time.monotonic(); self.deadline = self.started + 120
+        self.started = time.monotonic(); self.deadline = self.started + lifetime_seconds
         S.exclusive_json(self.directory / 'attempt.json', {'argv': self.argv,
             'save': str(self.path), 'public_port': self.port, 'private_port': self.private_port,
-            'startup_cap_seconds': 20, 'lifetime_cap_seconds': 120})
+            'startup_cap_seconds': startup_seconds, 'lifetime_cap_seconds': lifetime_seconds})
         self.out = (self.directory / 'stdout').open('xb')
         self.err = (self.directory / 'stderr').open('xb')
         S.activation()
@@ -807,7 +808,7 @@ class PlayableBackend:
         S.exclusive_json(self.directory / 'launched.json',
             {'pid': self.process.pid, 'pgid': self.process.pid, 'argv': self.argv})
         try:
-            deadline = min(self.deadline, time.monotonic() + 20)
+            deadline = min(self.deadline, time.monotonic() + startup_seconds)
             while time.monotonic() < deadline:
                 lines = (self.directory / 'stdout').read_bytes().split(b'\n')[:-1]
                 events = [json.loads(line) for line in lines if line]
