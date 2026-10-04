@@ -9,6 +9,8 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
 from test_player_block_inside_stuck import run
+from test_player_look import imports
+from build_native import foreign_paths, file_digest, guard_route
 
 
 def require(value, message):
@@ -18,6 +20,33 @@ def require(value, message):
 
 def stack(name, count):
     return [1, name, '', count]
+
+
+def frozen_entry(work):
+    """Keep the actual imported declarations stable during the ordinary build."""
+    entry = ROOT / 'tests/player_crafting_backend.bend'
+    pins = imports([entry])
+    bend_pins = dict(pins)
+    for relative in bend_pins:
+        path = ROOT / relative
+        for effect in foreign_paths(path.read_text()):
+            if effect.endswith('.c'):
+                native = (path.parent / effect).resolve()
+                pins[str(native.relative_to(ROOT))] = hashlib.sha256(native.read_bytes()).hexdigest()
+    source = work / 'source'
+    require(not source.exists(), 'fresh source snapshot directory required')
+    for relative, expected in pins.items():
+        data = (ROOT / relative).read_bytes()
+        require(hashlib.sha256(data).hexdigest() == expected, 'source changed while copying: ' + relative)
+        destination = source / relative
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_bytes(data)
+    require(imports([entry]) == bend_pins, 'source changed during snapshot')
+    require(all(hashlib.sha256((ROOT / name).read_bytes()).hexdigest() == expected
+        for name, expected in pins.items()), 'native effect changed during snapshot')
+    (work / 'source-snapshot.json').write_text(json.dumps({'original_source_sha256': pins,
+        'declaration_bytes_unchanged': True, 'fixture_entry': str(source / 'tests/player_crafting_backend.bend')}, indent=2) + '\n')
+    return source / 'tests/player_crafting_backend.bend'
 
 
 def verify(rows):
@@ -73,8 +102,23 @@ def main():
     work.mkdir(parents=True, exist_ok=True)
     binary = args.binary.resolve() if args.binary else work / 'backend-tests'
     if args.binary is None:
-        run([sys.executable, ROOT / 'tools/build_native.py', ROOT / 'tests/player_crafting_backend.bend',
-             '-o', binary, '--report', work / 'native-build.json'], work, 'build', 600)
+        entry = frozen_entry(work)
+        prepare = ROOT / 'tools/player_crafting_authority_native.py'
+        run([sys.executable, prepare, entry, '--report', work / 'prepared.json'], work, 'prepare', 600)
+        prepared = json.loads((work / 'prepared.json').read_text())
+        emitted = Path(prepared['emitted_file'])
+        require(file_digest(emitted) == prepared['emitted_c_sha256'], 'prepared C bytes changed')
+        guard_route(emitted.read_text())
+        require(prepared['context']['compiler']['flags'] ==
+            ['-std=c11', '-O3', '<emitted.c>', '-lpthread', '-lm', '-o', '<native>'],
+            'original CLI CPU flags changed')
+        run([prepared['context']['compiler']['path'], '-std=c11', '-O3', emitted,
+             '-lpthread', '-lm', '-o', binary], work, 'clang', 600)
+        run([sys.executable, prepare, entry, '--report', work / 'prepared-after.json'], work, 'prepare-after', 600)
+        checked = json.loads((work / 'prepared-after.json').read_text())
+        require(checked['cache_key'] == prepared['cache_key'] and
+            checked['emitted_c_sha256'] == prepared['emitted_c_sha256'],
+            'build dependencies changed during clang')
     stdout, native = run([binary, '--gpu', 'off', '--threads', '2'], work, 'native', 30)
     rows = [json.loads(x) for x in stdout.decode().splitlines() if x.startswith('{')]
     result = verify(rows)

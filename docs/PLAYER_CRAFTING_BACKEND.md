@@ -59,6 +59,30 @@ behavior, close reclamation and the accepted post-commit refresh failure.
 The deliberately incomplete refresh-failure catalog is a fault fixture, not a
 claim about the installed vanilla recipe catalog. No physics, durability/save,
 full service-loader fidelity or network framing conclusion follows from these
-cases. The focused runner uses the existing native builder and process receipt
-helper. Current results and exact source/artifact pins are recorded in
-`evidence/player-crafting-backend-001.json`.
+cases.
+
+The focused runner copies the actual imported Bend and C effect declarations
+unchanged, then uses the existing guarded native-cache preparation helper. It
+compiles that ordinary Bend C once with the original CLI's CPU flags and checks
+the source/header/toolchain closure again afterward. This avoids the ordinary
+builder's second C emission. The existing process receipt helper supervises
+each stage.
+
+All **15 native cases passed**, with complete raw Core preservation and all
+64 inventory backing cells checked. Native execution took 1.604 seconds; direct
+clang compilation took 23.194 seconds. The frozen C is 12,276,047 bytes with
+SHA256 `d599986c4589997b0a81dd359e84722db11d22791cd6d575715fba5465d90521`.
+The binary SHA256 is
+`65e3548d9a915d5fb0bea5d1ba61765c675d7d7f0f75db9cc65af7dbb879e150`.
+This is the retained Core/Runtime source generation in the fixture snapshot;
+later runtime changes are outside this verdict. No target compiler or native
+process remains.
+
+The first ordinary build was not published because a new Wire dependency
+changed during compilation. A missing C effect in the initial snapshot was a
+quick preflight refusal. The corrected frozen ordinary builder reached its
+600-second outer bound during its second compiler pass. Those failed attempts
+remain recorded; the final passing route reused its already verified C output.
+Current results and exact source/artifact pins are recorded in
+`evidence/player-crafting-backend-001.json`. To reproduce from source, use
+`python3 tools/test_player_crafting_backend.py --work <fresh-directory>`.

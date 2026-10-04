@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "production-source-checked; two-composition-roots-kernel-certified; native-retry-pending",
+  "status": "production-source-checked; two-composition-roots-kernel-certified; fifteen-frozen-generation-native-cases-passed",
   "production": {
     "owner": "remote_resource_backend.State",
     "fields": 7,
@@ -43,13 +43,13 @@
       },
       {
         "path": "tools/test_player_crafting_backend.py",
-        "bytes": 6350,
-        "sha256": "824e1bb64f0d6e80199805007e7c45f919a17bcde0f198ef70fc96143dda16e8"
+        "bytes": 8951,
+        "sha256": "5c48ca651329ffb9dd35167c21393e36fab45db97535efaee5c7d8dff05d3b68"
       },
       {
         "path": "docs/PLAYER_CRAFTING_BACKEND.md",
-        "bytes": 3856,
-        "sha256": "2d89cdea363c4e1a022dbaaef302905f33ccabb6b30b1d4d2766cbb7e0f5ddf2"
+        "bytes": 5234,
+        "sha256": "f6cef03614efc2265bbeb90df45844224b32c2849a90047bd8631437946a9a1a"
       }
     ]
   },
@@ -291,47 +291,275 @@
     "Wire_encoding_or_protocol_claimed": false
   },
   "native": {
-    "status": "not-run-after-unpublished-build",
-    "failed_build": {
+    "status": "passed",
+    "cases": 15,
+    "scope": "actual production Backend/CS menu calls with original complete Core and all64 inventory backing cells; retained frozen Core/Runtime generation, no later runtime verdict",
+    "typed_menu_snapshot_observer": true,
+    "Wire_or_TCP_protocol_claimed": false,
+    "source_snapshot": {
+      "path": "build/player-crafting-backend/native-003/source-snapshot.json",
+      "bytes": 13016,
+      "sha256": "a996ca611c4a6f56e9d11a07169c64a7209ce66adfb206b539a2ce8fc5fdbbf8"
+    },
+    "source_files_unchanged": true,
+    "guarded_CPU_route": true,
+    "second_C_emission_avoided": true,
+    "original_CLI_CPU_flags": [
+      "-std=c11",
+      "-O3",
+      "<emitted.c>",
+      "-lpthread",
+      "-lm",
+      "-o",
+      "<native>"
+    ],
+    "ordinary_Bend_C": {
+      "path": "build/native-cache/sources/0fe26cd5ef7bf3784838db53b4a5bc84427ef943b2479231c449df08bbf6e5a9/generated.c",
+      "bytes": 12276047,
+      "sha256": "d599986c4589997b0a81dd359e84722db11d22791cd6d575715fba5465d90521"
+    },
+    "prepared_source_header_toolchain_manifest": {
+      "path": "build/player-crafting-backend/native-004/prepared.json",
+      "bytes": 1321568,
+      "sha256": "b1a9260bc10cdffffac6960213f86b8697c5d29e34e04905f402a4fedee7fb45"
+    },
+    "post_compile_manifest": {
+      "path": "build/player-crafting-backend/native-004/prepared-after.json",
+      "bytes": 1321568,
+      "sha256": "b1a9260bc10cdffffac6960213f86b8697c5d29e34e04905f402a4fedee7fb45"
+    },
+    "post_compile_closure_unchanged": true,
+    "prepare_receipt": {
       "file": {
-        "path": "build/player-crafting-backend/native-001/build.json",
-        "bytes": 1022,
-        "sha256": "9a0a027d6ea9fb31562c880f3ec1681b4c207a5bc315c7b834ff025798748bbb"
+        "path": "build/player-crafting-backend/native-004/prepare.json",
+        "bytes": 872,
+        "sha256": "4d332d22534d492331f07ed112b53e33e424ad72fac75523e4d346db5f4ed3a5"
       },
       "result": {
         "argv": [
           "/opt/homebrew/opt/python@3.14/bin/python3.14",
-          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/build_native.py",
-          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_crafting_backend.bend",
-          "-o",
-          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-backend/native-001/backend-tests",
+          "tools/player_crafting_authority_native.py",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-backend/native-003/source/tests/player_crafting_backend.bend",
           "--report",
-          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-backend/native-001/native-build.json"
+          "build/player-crafting-backend/native-004/prepared.json"
         ],
         "cleanup_poll_count": 1,
-        "exit_code": 1,
+        "exit_code": 0,
         "group_absent": true,
-        "pid": 16034,
-        "seconds": 389.726351,
+        "pid": 39286,
+        "seconds": 2.684679,
         "stderr": {
-          "bytes": 598,
-          "file": "build.stderr",
-          "sha1": "da1cc01846e6c3210c748ea5e153636a99339b25",
-          "sha256": "02f8ed5565691f95dbc94af8d2250c9abf486f3aa7c5effebdca9709f26bf9d4"
+          "bytes": 0,
+          "file": "prepare.stderr",
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout": {
+          "bytes": 194,
+          "file": "prepare.stdout",
+          "sha1": "232d97ccc12ed391d40174e05d5c56b19675f712",
+          "sha256": "b54b461c645cd4c5b082d4ec22ed424a1e02af13aeec4c19f181e0152e003031"
+        },
+        "timed_out": false
+      }
+    },
+    "clang_receipt": {
+      "file": {
+        "path": "build/player-crafting-backend/native-004/clang.json",
+        "bytes": 906,
+        "sha256": "d905eb4880861318aa40d07ef962831c78241e121179fe6f3234589dc598265c"
+      },
+      "result": {
+        "argv": [
+          "/usr/bin/clang",
+          "-std=c11",
+          "-O3",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native-cache/sources/0fe26cd5ef7bf3784838db53b4a5bc84427ef943b2479231c449df08bbf6e5a9/generated.c",
+          "-lpthread",
+          "-lm",
+          "-o",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-backend/native-004/backend-tests"
+        ],
+        "cleanup_poll_count": 1,
+        "exit_code": 0,
+        "group_absent": true,
+        "pid": 39339,
+        "seconds": 23.193837,
+        "stderr": {
+          "bytes": 0,
+          "file": "clang.stderr",
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
         },
         "stdout": {
           "bytes": 0,
-          "file": "build.stdout",
+          "file": "clang.stdout",
           "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
           "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
         },
         "timed_out": false
       }
     },
-    "diagnostic": "native cache: command failed (1): /Users/chuah/.bend/bin/bend /Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_crafting_backend.bend -o /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native-cache/sources/.source-t4f0zewu/generated.c\nSOME PROOFS FAIL\nError:\n- message  : a parameter or field scrutinee (a match cannot scrutinize a computed value: give it its own def)\nLocation:\n76 | def sample_checked(+value:Sample) -> Result<&2,&2,String,Sample>:\n77>|   match sample_valid(value):\n   |         ^^^^^^^^^^^^^^^^^^^\n78 |     case False{}: Fail{\"generic-resource:invalid-sample\"}\n\n",
-    "attempt_timed_out": false,
-    "binary_published": false,
-    "next_attempt": "Native retry uses fixture without unrelated Wire generic Frame import."
+    "native_receipt": {
+      "file": {
+        "path": "build/player-crafting-backend/native-004/native.json",
+        "bytes": 715,
+        "sha256": "0b9ae6dc7b05233d67cb05af9c313b4dd34e2d9b7d06675294c0ae48718e9ff4"
+      },
+      "result": {
+        "argv": [
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-backend/native-004/backend-tests",
+          "--gpu",
+          "off",
+          "--threads",
+          "2"
+        ],
+        "cleanup_poll_count": 1,
+        "exit_code": 0,
+        "group_absent": true,
+        "pid": 39760,
+        "seconds": 1.603915,
+        "stderr": {
+          "bytes": 0,
+          "file": "native.stderr",
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout": {
+          "bytes": 13142,
+          "file": "native.stdout",
+          "sha1": "26c6fc389a3f8ee4d03a14fd71ed50bc914d0cca",
+          "sha256": "6b55296c6462776df07f15b2ed4c58b59ad3a36d67c78512e171573a8a9c889b"
+        },
+        "timed_out": false
+      }
+    },
+    "host_verification_receipt": {
+      "file": {
+        "path": "build/player-crafting-backend/native-004/verify.json",
+        "bytes": 839,
+        "sha256": "4455a358ab2b4428f575235bc3013816f1d79f3aa4f5df409f928a82d448e73d"
+      },
+      "result": {
+        "argv": [
+          "/opt/homebrew/opt/python@3.14/bin/python3.14",
+          "tools/test_player_crafting_backend.py",
+          "--binary",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-backend/native-004/backend-tests",
+          "--work",
+          "build/player-crafting-backend/native-004"
+        ],
+        "cleanup_poll_count": 1,
+        "exit_code": 0,
+        "group_absent": true,
+        "pid": 39758,
+        "seconds": 1.723431,
+        "stderr": {
+          "bytes": 0,
+          "file": "verify.stderr",
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout": {
+          "bytes": 1239,
+          "file": "verify.stdout",
+          "sha1": "52aaefd0dc83c9dd590750a71705da49bebff83f",
+          "sha256": "b2bffaa2fcc152bac26044d8f221d6017a9d7bfb396cb838d7b9365ae6da806f"
+        },
+        "timed_out": false
+      }
+    },
+    "post_compile_receipt": {
+      "file": {
+        "path": "build/player-crafting-backend/native-004/prepare-after.json",
+        "bytes": 890,
+        "sha256": "3676453ccbaed5377e483661dcd3cd9e73d1b8e9e0ec26fa76837750c638bbd1"
+      },
+      "result": {
+        "argv": [
+          "/opt/homebrew/opt/python@3.14/bin/python3.14",
+          "tools/player_crafting_authority_native.py",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-backend/native-003/source/tests/player_crafting_backend.bend",
+          "--report",
+          "build/player-crafting-backend/native-004/prepared-after.json"
+        ],
+        "cleanup_poll_count": 1,
+        "exit_code": 0,
+        "group_absent": true,
+        "pid": 42747,
+        "seconds": 1.956856,
+        "stderr": {
+          "bytes": 0,
+          "file": "prepare-after.stderr",
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout": {
+          "bytes": 194,
+          "file": "prepare-after.stdout",
+          "sha1": "232d97ccc12ed391d40174e05d5c56b19675f712",
+          "sha256": "b54b461c645cd4c5b082d4ec22ed424a1e02af13aeec4c19f181e0152e003031"
+        },
+        "timed_out": false
+      }
+    },
+    "summary": {
+      "cases": 15,
+      "complete_raw_core_unchanged_each_case": true,
+      "all_64_inventory_cells_observed": true,
+      "post_commit_refresh_failure_accepted": true,
+      "binary": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-backend/native-004/backend-tests",
+      "binary_sha256": "65e3548d9a915d5fb0bea5d1ba61765c675d7d7f0f75db9cc65af7dbb879e150",
+      "native_receipt": {
+        "argv": [
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-backend/native-004/backend-tests",
+          "--gpu",
+          "off",
+          "--threads",
+          "2"
+        ],
+        "pid": 39760,
+        "exit_code": 0,
+        "seconds": 1.603915,
+        "timed_out": false,
+        "group_absent": true,
+        "cleanup_poll_count": 1,
+        "stdout": {
+          "file": "native.stdout",
+          "bytes": 13142,
+          "sha1": "26c6fc389a3f8ee4d03a14fd71ed50bc914d0cca",
+          "sha256": "6b55296c6462776df07f15b2ed4c58b59ad3a36d67c78512e171573a8a9c889b"
+        },
+        "stderr": {
+          "file": "native.stderr",
+          "bytes": 0,
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "records_sha256": "6b55296c6462776df07f15b2ed4c58b59ad3a36d67c78512e171573a8a9c889b"
+    },
+    "summary_file": {
+      "path": "build/player-crafting-backend/native-004/summary.json",
+      "bytes": 1239,
+      "sha256": "b2bffaa2fcc152bac26044d8f221d6017a9d7bfb396cb838d7b9365ae6da806f"
+    },
+    "stdout": {
+      "path": "build/player-crafting-backend/native-004/native.stdout",
+      "bytes": 13142,
+      "sha256": "6b55296c6462776df07f15b2ed4c58b59ad3a36d67c78512e171573a8a9c889b"
+    },
+    "binary": {
+      "path": "build/player-crafting-backend/native-004/backend-tests",
+      "bytes": 2419200,
+      "sha256": "65e3548d9a915d5fb0bea5d1ba61765c675d7d7f0f75db9cc65af7dbb879e150"
+    },
+    "known_runtime_table": {
+      "path": "generated/reference_item_metadata.tsv",
+      "bytes": 556426,
+      "sha256": "1cf2669ac760fed886b33d19b12e4782d5011c68c629d22328147d8a9a9bfa22"
+    },
+    "process_cleanup": "all target compiler and native process groups absent"
   },
   "preserved_attempts": [
     {
@@ -648,11 +876,155 @@
         },
         "timed_out": false
       }
+    },
+    {
+      "file": {
+        "path": "build/player-crafting-backend/native-001/build.json",
+        "bytes": 1022,
+        "sha256": "9a0a027d6ea9fb31562c880f3ec1681b4c207a5bc315c7b834ff025798748bbb"
+      },
+      "result": {
+        "argv": [
+          "/opt/homebrew/opt/python@3.14/bin/python3.14",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/build_native.py",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_crafting_backend.bend",
+          "-o",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-backend/native-001/backend-tests",
+          "--report",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-backend/native-001/native-build.json"
+        ],
+        "cleanup_poll_count": 1,
+        "exit_code": 1,
+        "group_absent": true,
+        "pid": 16034,
+        "seconds": 389.726351,
+        "stderr": {
+          "bytes": 598,
+          "file": "build.stderr",
+          "sha1": "da1cc01846e6c3210c748ea5e153636a99339b25",
+          "sha256": "02f8ed5565691f95dbc94af8d2250c9abf486f3aa7c5effebdca9709f26bf9d4"
+        },
+        "stdout": {
+          "bytes": 0,
+          "file": "build.stdout",
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "timed_out": false
+      }
+    },
+    {
+      "file": {
+        "path": "build/player-crafting-backend/native-002/build.json",
+        "bytes": 1067,
+        "sha256": "69135d84106ebf2c575e34c7c15c2dc9edbe9f167164b7b2d96dda7be0d2e1d4"
+      },
+      "result": {
+        "argv": [
+          "/opt/homebrew/opt/python@3.14/bin/python3.14",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/build_native.py",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-backend/native-002/source/tests/player_crafting_backend.bend",
+          "-o",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-backend/native-002/backend-tests",
+          "--report",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-backend/native-002/native-build.json"
+        ],
+        "cleanup_poll_count": 1,
+        "exit_code": 1,
+        "group_absent": true,
+        "pid": 27341,
+        "seconds": 0.31053,
+        "stderr": {
+          "bytes": 305,
+          "file": "build.stderr",
+          "sha1": "e36ad88d6fda6fd798b53f0159d326e1292bb9fe",
+          "sha256": "2f350c003eb3190e5d149dd26a832dca462b7c735833796c0511248cfae6751c"
+        },
+        "stdout": {
+          "bytes": 0,
+          "file": "build.stdout",
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "timed_out": false
+      }
+    },
+    {
+      "file": {
+        "path": "build/player-crafting-backend/native-003/build.json",
+        "bytes": 1197,
+        "sha256": "37e7dc2f087809b2f2adfe69590ddf15b0f24a553d8c97a73073d582823fef0c"
+      },
+      "result": {
+        "argv": [
+          "/opt/homebrew/opt/python@3.14/bin/python3.14",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/build_native.py",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-backend/native-003/source/tests/player_crafting_backend.bend",
+          "-o",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-backend/native-003/backend-tests",
+          "--report",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-backend/native-003/native-build.json"
+        ],
+        "cleanup_poll_count": 9,
+        "exit_code": -9,
+        "group_absent": true,
+        "group_probe_error": {
+          "errno": 1,
+          "group_members": [
+            "30387 27744 ?E"
+          ],
+          "type": "PermissionError"
+        },
+        "pid": 27744,
+        "seconds": 600.664416,
+        "stderr": {
+          "bytes": 0,
+          "file": "build.stderr",
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout": {
+          "bytes": 0,
+          "file": "build.stdout",
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "timed_out": true
+      }
     }
   ],
   "limits": [
     "No complete-ten-root independent-kernel certification.",
     "No vanilla full service-loader, durability/save, physics, network, or GPU claim from the focused Backend cases.",
     "Transport prospective encoding/rollback is maintained and tested by its separate owner."
+  ],
+  "native_builder_failures": [
+    {
+      "attempt": "native-001",
+      "kind": "post-build dependency revalidation rejected newly imported generic_resource_world_sample computed scrutinee",
+      "stderr": {
+        "path": "build/player-crafting-backend/native-001/build.stderr",
+        "bytes": 598,
+        "sha256": "02f8ed5565691f95dbc94af8d2250c9abf486f3aa7c5effebdca9709f26bf9d4"
+      }
+    },
+    {
+      "attempt": "native-002",
+      "kind": "snapshot omitted relative native durability.c; fixed exact C effect collector",
+      "stderr": {
+        "path": "build/player-crafting-backend/native-002/build.stderr",
+        "bytes": 305,
+        "sha256": "2f350c003eb3190e5d149dd26a832dca462b7c735833796c0511248cfae6751c"
+      }
+    },
+    {
+      "attempt": "native-003",
+      "kind": "600-second outer builder bound during second native compiler pass; guarded ordinary C emission retained",
+      "receipt": {
+        "path": "build/player-crafting-backend/native-003/build.json",
+        "bytes": 1197,
+        "sha256": "37e7dc2f087809b2f2adfe69590ddf15b0f24a553d8c97a73073d582823fef0c"
+      }
+    }
   ]
 }
