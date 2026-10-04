@@ -35,7 +35,9 @@ gates does it call `Core.write_block`, followed by `Core.accepted` with the actu
 `Stamp{worldTick,reservedPeer,privateSequence}`. Success increments the real Core
 revision and emits its normal Applied event, so revision-based world samples
 refresh and the existing save transaction persists the edit. Refusals retain
-the world and emit no invented successful event.
+the handed owner and emit no invented successful event. Exact restoration of
+arbitrary section-map representations after a refused Core read/write remains
+an open proof obligation.
 
 `Backend.new_reserved` retains the capability supplied by the server's saved
 peer reservation. The original `Backend.new` retains Observer and its actions
@@ -75,3 +77,26 @@ single combined native artifact. A direct raw Java replay admits only this
 consumer's full-cube geometry domain; multibox/partial-shape observations must
 not be counted as implemented. Visible physical-input acceptance remains a
 separate recorded client requirement.
+
+The persistent production proof target `src/player_core_edit_proof.bend` proves
+all 11 contracts in `src/player_core_edit_laws.bend` against the actual CoreEdit,
+Core, Schedule and SectionMap modules. Its ordinary check passed in 0.130 seconds
+and its independent kernel verdict passed in 0.237 seconds, with unchanged
+source closures and complete process cleanup. Permission and invalid-player
+refusals preserve the entire affine Core world. The success theorem derives
+the exact original tick, passed peer and passed sequence in the Applied stamp,
+one revision increment, every returned world metadata field, pending operations
+and the complete bounded event stream from facts about the actual Core
+validator/read/write results. It does not prove section-array contents or
+pre-read representation identity after a refused Core operation.
+
+Five separate BI contracts use the actual Engine and Tables owners for denied
+player authority and disabled building. Full BI kernel certification remains
+open. Direct checking of an unchanged production BI translation identifies
+`json.encode_go` with the exact diagnostic `affine live code, calls that descend`;
+this is reproducible without the new proof terms. Root's conservative exact
+dependency-closure experiment subsequently exposed an unresolved `F32.neg`
+kernel definition. Neither failure establishes a failed CoreEdit proof, and
+neither is hidden by an axiom or unsafe proof. The exact checks, source pins,
+failed attempts and remaining proof scope are retained in
+[`evidence/player-block-interaction-proofs.json`](../evidence/player-block-interaction-proofs.json).
