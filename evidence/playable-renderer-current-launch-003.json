@@ -1,0 +1,312 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "scope": "Fresh missing=create production pair, installed resources/item metadata, two correlated private frame/menu cycles, complete saved fields and durable shutdown. This is not sustained-FPS, physical-input or drawable-readback acceptance.",
+  "actor": {
+    "path": "build/compiler-producer-diagnostic-010/actor",
+    "bytes": 7583960,
+    "sha256": "92e1633e0cd32cb6c50c19ffafbff542ab06a97643c8dd45a3b815d04ef745c5"
+  },
+  "actor_source_generation": "Immutable current002: inline ability selector and temporary-item close/save refusal. Later selector extraction/close-return are separate.",
+  "renderer": {
+    "path": "build/playable-renderer-current/003/renderer",
+    "bytes": 5547320,
+    "sha256": "dac9d1289d7d6d1c50eec2d0731a2afed376080e990d2676463ae8586c7888b3"
+  },
+  "renderer_build_receipt": {
+    "path": "evidence/playable-renderer-current-build-003.json",
+    "bytes": 5612,
+    "sha256": "617671aad23202ba2c36e31133c45dafbfc9760bd137e0f759ab69b4a8c323a7"
+  },
+  "launcher": {
+    "path": "build/playable-renderer-current/003/play.sh",
+    "bytes": 4544,
+    "sha256": "1602dbeeb6631c76c67e2fd8dba34517ba2262f4c6e4a8b64c15d6603027d3c4"
+  },
+  "practical_command": "env -u BEND_MINECRAFT_FRAME_DIR build/playable-renderer-current/003/play.sh --render-scale 25",
+  "native_runs": [
+    {
+      "name": "128-validation-002",
+      "status": "PASS",
+      "receipt": {
+        "path": "evidence/playable-renderer-current-hidden-startup-003-128-validation-002.json",
+        "bytes": 5063,
+        "sha256": "bcc6278ed0d7427784f259cbbc1d7dde02e5cfc2bdfd4a8867feceb9db841edf"
+      },
+      "frames": [
+        {
+          "blocks": 256,
+          "event": "client.frame",
+          "hud_height": 128,
+          "hud_width": 128,
+          "logical_height": 128,
+          "logical_width": 128,
+          "neighbor_reads": 1536,
+          "output_backing_pixels": 16384,
+          "pitch_f32": 0,
+          "presentation_height": 128,
+          "presentation_width": 128,
+          "renderer": "remote-local-resource-instrument",
+          "revision": 1,
+          "scene_backing_pixels": 16384,
+          "tick": 9,
+          "yaw_f32": 0
+        }
+      ],
+      "render_present_milliseconds": [
+        522
+      ],
+      "complete_launch_save_seconds": 7.0812001675367355,
+      "trace_enabled": true,
+      "save": {
+        "event": "client.save",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/003/hidden-startup-001/fresh-world.nbt",
+        "result": {
+          "bytes": 1712158,
+          "durable": true,
+          "peer_highwater": 2,
+          "published": true,
+          "status": "durable"
+        }
+      },
+      "complete_saved_Core_sections": 104,
+      "complete_main36_equipment7_status_and_generation": true,
+      "focus_and_Spaces_unchanged": true,
+      "owned_group_and_listeners_absent": true,
+      "actual_CPU_image": {
+        "bytes": 49167,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/003/hidden-startup-001/images/0.ppm",
+        "sha256": "813bf585a14a83a69b1801ef1af357e2e5d6009856f5d7ea22bc21b6da334471"
+      }
+    },
+    {
+      "name": "1080-trace-off",
+      "status": "PASS",
+      "receipt": {
+        "path": "evidence/playable-renderer-current-hidden-startup-003-1080-trace-off.json",
+        "bytes": 5294,
+        "sha256": "8ab47f909957160d58c040cea809c1ac0ac7cba02608721f9f4df665f2aacd28"
+      },
+      "frames": [
+        {
+          "blocks": 256,
+          "event": "client.frame",
+          "hud_height": 270,
+          "hud_width": 480,
+          "logical_height": 1080,
+          "logical_width": 1920,
+          "neighbor_reads": 1536,
+          "output_backing_pixels": 4194304,
+          "pitch_f32": 0,
+          "presentation_height": 1080,
+          "presentation_width": 1920,
+          "renderer": "remote-local-resource-instrument",
+          "revision": 1,
+          "scene_backing_pixels": 4194304,
+          "tick": 0,
+          "yaw_f32": 0
+        },
+        {
+          "blocks": 256,
+          "event": "client.frame",
+          "hud_height": 270,
+          "hud_width": 480,
+          "logical_height": 1080,
+          "logical_width": 1920,
+          "neighbor_reads": 1536,
+          "output_backing_pixels": 4194304,
+          "pitch_f32": 0,
+          "presentation_height": 1080,
+          "presentation_width": 1920,
+          "renderer": "remote-local-resource-instrument",
+          "revision": 1,
+          "scene_backing_pixels": 4194304,
+          "tick": 121,
+          "yaw_f32": 0
+        }
+      ],
+      "render_present_milliseconds": [
+        3827,
+        3909
+      ],
+      "complete_launch_save_seconds": 13.463100708089769,
+      "trace_enabled": false,
+      "save": {
+        "event": "client.save",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/003/hidden-startup-003/fresh-world.nbt",
+        "result": {
+          "bytes": 1712160,
+          "durable": true,
+          "peer_highwater": 2,
+          "published": true,
+          "status": "durable"
+        }
+      },
+      "complete_saved_Core_sections": 104,
+      "complete_main36_equipment7_status_and_generation": true,
+      "focus_and_Spaces_unchanged": true,
+      "owned_group_and_listeners_absent": true,
+      "actual_CPU_image": null
+    },
+    {
+      "name": "1080-25-trace-off",
+      "status": "PASS",
+      "receipt": {
+        "path": "evidence/playable-renderer-current-hidden-startup-003-1080-25-trace-off.json",
+        "bytes": 5276,
+        "sha256": "f4de3d8ea68c8c928ee95f0aebbca0285dcb19f15e35be58e29d6e470d9e8b3e"
+      },
+      "frames": [
+        {
+          "blocks": 256,
+          "event": "client.frame",
+          "hud_height": 270,
+          "hud_width": 480,
+          "logical_height": 270,
+          "logical_width": 480,
+          "neighbor_reads": 1536,
+          "output_backing_pixels": 4194304,
+          "pitch_f32": 0,
+          "presentation_height": 1080,
+          "presentation_width": 1920,
+          "renderer": "remote-local-resource-instrument",
+          "revision": 1,
+          "scene_backing_pixels": 262144,
+          "tick": 0,
+          "yaw_f32": 0
+        },
+        {
+          "blocks": 256,
+          "event": "client.frame",
+          "hud_height": 270,
+          "hud_width": 480,
+          "logical_height": 270,
+          "logical_width": 480,
+          "neighbor_reads": 1536,
+          "output_backing_pixels": 4194304,
+          "pitch_f32": 0,
+          "presentation_height": 1080,
+          "presentation_width": 1920,
+          "renderer": "remote-local-resource-instrument",
+          "revision": 1,
+          "scene_backing_pixels": 262144,
+          "tick": 56,
+          "yaw_f32": 0
+        }
+      ],
+      "render_present_milliseconds": [
+        434,
+        653
+      ],
+      "complete_launch_save_seconds": 6.924011708237231,
+      "trace_enabled": false,
+      "save": {
+        "event": "client.save",
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/003/hidden-startup-004/fresh-world.nbt",
+        "result": {
+          "bytes": 1712158,
+          "durable": true,
+          "peer_highwater": 2,
+          "published": true,
+          "status": "durable"
+        }
+      },
+      "complete_saved_Core_sections": 104,
+      "complete_main36_equipment7_status_and_generation": true,
+      "focus_and_Spaces_unchanged": true,
+      "owned_group_and_listeners_absent": true,
+      "actual_CPU_image": null
+    }
+  ],
+  "retained_first_failures": [
+    {
+      "path": "evidence/playable-renderer-current-hidden-startup-003.json",
+      "bytes": 3135,
+      "sha256": "265d28c9a87919cee08df84f454b7c2caa3f61657ebf5cf8149fe3cfbd981c4d"
+    },
+    {
+      "path": "evidence/playable-renderer-current-hidden-startup-003-128-validation.json",
+      "bytes": 3147,
+      "sha256": "3c55d5197eccbcb0ceb15275b8d1ea4149796d9d3949384908c68dcb89b6ebf4"
+    },
+    {
+      "path": "evidence/playable-renderer-current-hidden-startup-003-1080.json",
+      "bytes": 3369,
+      "sha256": "262d075e2d5806dab37be13b15971a33881fbddf5468edecbc88a7a7ca64790e"
+    }
+  ],
+  "trace_failure_scope": "Image-traced100%1080 firstframe3847ms then second private command ReceiveClosedFailedOrTimedOut. Same binaries passed two100%1080 frames with normal trace-off policy. Post-failure complete durable save separately validated.",
+  "post_failure_save_receipt": {
+    "path": "evidence/playable-renderer-current-hidden-startup-003-1080-save-validation.json",
+    "bytes": 5480,
+    "sha256": "130d0a05508a7aa334fbc5bff10c7dfef804878b4356c0188ff56646e05c8bdd"
+  },
+  "independent128RGB_comparison": {
+    "path": "evidence/playable-renderer-current-fresh-pixels-003.json",
+    "bytes": 2235,
+    "sha256": "a11605f0692ad55281606f47e100a9652f82ff9459f563d290fa680f04f8aaac"
+  },
+  "launcher_finalization_checks": {
+    "scope": "Mocked actor/renderer shell-control checks, separate from actual native product save evidence.",
+    "cases": [
+      {
+        "case": "normal",
+        "exit": 0,
+        "save_requested": true,
+        "acknowledged": true,
+        "actor_left_running": false,
+        "stdout_sha256": "a27c5456d2de81a2a7fe7b11a34ed54d813c1d2a0faa4de04746a36a4176918c",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "case": "renderer-failure",
+        "exit": 7,
+        "save_requested": true,
+        "acknowledged": true,
+        "actor_left_running": false,
+        "stdout_sha256": "01f1bd5cf8e1227487666ca3888f32e8a6fb6404bf2f7f1c01bbf53258a2fef7",
+        "stderr_sha256": "afe6f14407068895b963c851531fa52feeaa76b687a52aa89d0287918d80a124"
+      },
+      {
+        "case": "terminal-signal",
+        "exit": 143,
+        "save_requested": true,
+        "acknowledged": true,
+        "actor_left_running": false,
+        "stdout_sha256": "0bd7d0070ab81f8ee0284bc22ce2da7edee1f06b94d3278a59511e5f41dc1621",
+        "stderr_sha256": "ee1269ac904a0e70bec46b9fbe5d73e05df9030310370c40884271c440f3f94e"
+      },
+      {
+        "case": "save-refusal",
+        "exit": 2,
+        "save_requested": true,
+        "acknowledged": false,
+        "actor_left_running": true,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256": "0721aa9d5f24c250bd10caf68e26c235c81c40025755a90391978439337997f0"
+      },
+      {
+        "case": "terminal-interrupt",
+        "exit": 130,
+        "save_requested": true,
+        "acknowledged": true,
+        "actor_left_running": false,
+        "stdout_sha256": "c7f9dcb4c83f7b1cf8f2cadabc7ee2ebe28959bd82fa71f2d37ea1e4e515416c",
+        "stderr_sha256": "ce25b456e40124f0e74f4001d069c2a95ca3620f1f44d1a68aa0d57113c1f304"
+      }
+    ],
+    "receipts": [
+      {
+        "path": "build/playable-renderer-current/003/launcher-exit-check-001/result.json",
+        "bytes": 1724,
+        "sha256": "8dcb00a12a4d6cd27b8c0015d7997e7c1058e2eb7f8c92b2525af4e9e7d1ce35"
+      },
+      {
+        "path": "build/playable-renderer-current/003/launcher-exit-check-002/result.json",
+        "bytes": 727,
+        "sha256": "140479a3b70356e0b143fc4f057d51e43c613d51757895a19b83407a0eff7e7b"
+      }
+    ]
+  },
+  "remaining": "Two-frame envelopes establish startup/continuation only; physical Retina/resize/capture/OS controls and sustained interaction remain outside this run."
+}

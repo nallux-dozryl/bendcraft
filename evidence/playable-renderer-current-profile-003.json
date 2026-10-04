@@ -1,0 +1,165 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "scope": "One1s native sample every1ms during actual hidden traceoff1920x1080 renderer003. This sample overlaps startup/catalog/window creation and first world draw; proportions are sample occupancy, not sustained CPU percentages/FPS.",
+  "confidence": {
+    "observed_stack_attribution": "high",
+    "generalization_to_later_frames": "moderate"
+  },
+  "binary": {
+    "path": "build/playable-renderer-current/003/renderer",
+    "bytes": 5547320,
+    "sha256": "dac9d1289d7d6d1c50eec2d0731a2afed376080e990d2676463ae8586c7888b3"
+  },
+  "generated_C": {
+    "path": "build/playable-renderer-current/003/renderer.c",
+    "bytes": 15124678,
+    "sha256": "95d2d31e2f92e0d19295c8ca3060ad230d0c984a352fd1287a0fa6606a2ef37e"
+  },
+  "raw_sample": {
+    "path": "build/playable-renderer-current/003/hidden-startup-006/renderer.sample.txt",
+    "bytes": 366282,
+    "sha256": "1354b6902ce0ad732e394f506512378b0e051ed82bd54e7b9737a4488d8d82d6"
+  },
+  "sample_process": {
+    "pid": 11960,
+    "ppid": 11902,
+    "process_group": 11902,
+    "argv": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/003/renderer --gpu off --threads 2 -- --jar /Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar --item-table /Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_item_metadata.tsv --frames 3 --width 1920 --height 1080 --hud-scale 0 --render-scale 100",
+    "trigger": "Actual rendererPID observed plus2s delay; traceoff stdout is buffered. Stack symbols identify sampled work.",
+    "sample_duration_seconds": 1,
+    "sample_interval_milliseconds": 1
+  },
+  "sampled_main_and_active_world_worker_instances": 1018,
+  "main_samples": 731,
+  "active_world_worker_samples": 287,
+  "sampled_world_pool_rows": {
+    "inclusive_instances": 569,
+    "percent_of_main_and_active_world_worker_instances": 55.89
+  },
+  "sampled_spatial_trace": {
+    "inclusive_instances": 454,
+    "percent_of_world_pool_rows": 79.79
+  },
+  "sampled_startup_catalog_work_loop_instances": 263,
+  "sampled_native_window_open_instances": 181,
+  "top_of_stack_renderer_counts": {
+    "term_drop": 433,
+    "span_fade": 143,
+    "spin_81": 56,
+    "WL_FID_SRC_MESH_RENDER_SPATIAL_TRACE": 29,
+    "spin_119": 27,
+    "WL_FID_SRC_MESH_RENDER_TILE": 16,
+    "WL_FID_STRING_CMP": 16,
+    "rfc_wrap": 11,
+    "WL_FID_SRC_MESH_RENDER_PIXEL": 9,
+    "WL_FID_SRC_MESH_RENDER_TILE_K401": 9,
+    "WL_FID_STRING_CMP_K7141": 9,
+    "OUTLINED_FUNCTION_0": 8,
+    "WL_FID_SRC_MESH_RENDER_TILE_K400": 8,
+    "heap_hand": 7,
+    "WL_FID_SRC_PNG_ARRAY_DEPTH": 5,
+    "heap_alloc_miss": 5,
+    "spin_76": 5
+  },
+  "hot_symbol_map": [
+    {
+      "C_symbol": "WL_FID_SRC_MESH_RENDER_SPATIAL_TRACE(_K228)",
+      "C_line": 69023,
+      "Bend_file": "build/playable-renderer-current/003/source/src/mesh_render.bend",
+      "Bend_line": 363
+    },
+    {
+      "C_symbol": "spin_119",
+      "C_line": 16827,
+      "Bend_file": "build/playable-renderer-current/003/source/src/mesh_render.bend",
+      "Bend_line": 356,
+      "meaning": "spatial_visible"
+    },
+    {
+      "C_symbol": "spin_81",
+      "C_line": 14217,
+      "Bend_file": "build/playable-renderer-current/003/source/src/mesh_render.bend",
+      "Bend_line": 229,
+      "meaning": "box_span"
+    }
+  ],
+  "finding": "Actual world spatial traversal and ownership/drop/span runtime dominate sampled draw work. HUD/resample/Window.frame/transport are not hot in this sampled interval; native Window.open and item-catalog validation are separate startup contributors.",
+  "native_three_frames": {
+    "status": "PASS",
+    "render_present_milliseconds": [
+      3958,
+      4152,
+      4054
+    ],
+    "full_launch_save_seconds": 18.8615367077291,
+    "frames": [
+      {
+        "blocks": 256,
+        "event": "client.frame",
+        "hud_height": 270,
+        "hud_width": 480,
+        "logical_height": 1080,
+        "logical_width": 1920,
+        "neighbor_reads": 1536,
+        "output_backing_pixels": 4194304,
+        "pitch_f32": 0,
+        "presentation_height": 1080,
+        "presentation_width": 1920,
+        "renderer": "remote-local-resource-instrument",
+        "revision": 1,
+        "scene_backing_pixels": 4194304,
+        "tick": 2,
+        "yaw_f32": 0
+      },
+      {
+        "blocks": 256,
+        "event": "client.frame",
+        "hud_height": 270,
+        "hud_width": 480,
+        "logical_height": 1080,
+        "logical_width": 1920,
+        "neighbor_reads": 1536,
+        "output_backing_pixels": 4194304,
+        "pitch_f32": 0,
+        "presentation_height": 1080,
+        "presentation_width": 1920,
+        "renderer": "remote-local-resource-instrument",
+        "revision": 1,
+        "scene_backing_pixels": 4194304,
+        "tick": 142,
+        "yaw_f32": 0
+      },
+      {
+        "blocks": 256,
+        "event": "client.frame",
+        "hud_height": 270,
+        "hud_width": 480,
+        "logical_height": 1080,
+        "logical_width": 1920,
+        "neighbor_reads": 1536,
+        "output_backing_pixels": 4194304,
+        "pitch_f32": 0,
+        "presentation_height": 1080,
+        "presentation_width": 1920,
+        "renderer": "remote-local-resource-instrument",
+        "revision": 1,
+        "scene_backing_pixels": 4194304,
+        "tick": 226,
+        "yaw_f32": 0
+      }
+    ],
+    "durable_save": {
+      "bytes": 1712160,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/003/hidden-startup-006/fresh-world.nbt",
+      "sha256": "417ffde149763a83572c0f1f30e32fc52561e1fcf39d8aee96dec14fe9ea744d"
+    },
+    "focus_and_Spaces_unchanged": true,
+    "group_and_listeners_absent": true
+  },
+  "missed_first_sample_receipt": {
+    "path": "build/playable-renderer-current/003/hidden-startup-005/sample-failure.json",
+    "bytes": 281,
+    "sha256": "8a8ca5446c4ff9bc1e627c770f78017cbd373c0c6f9427d4ceccf1f2e11116ad"
+  }
+}

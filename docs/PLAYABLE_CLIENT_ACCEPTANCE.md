@@ -15,6 +15,35 @@ Two complete 1,712,569-byte saves matched independent expected bytes. Actual
 SIGKILL and cold restart preserved the acknowledged save and discarded an
 unsaved acquisition. Every owned process group and listener was absent afterward.
 
+The actual renderer003 pair also passed fresh `missing=create` startup with
+installed 26.3 resources and all 1,658 item definitions. The 128×128 frame took
+522 ms and all 49,152 RGB channels matched independent baked-quad/texture/HUD
+expectations. Two 1920×1080 frames passed with normal tracing disabled, taking
+3,827 and 3,909 ms to render and present. Explicit `--render-scale 25` kept
+1920×1080 output and a 480×270 HUD viewport while rendering the scene at
+480×270; its two frames took 434 and 653 ms. The complete fast launch and save
+check took 6.924 seconds. Each run acknowledged a durable fresh version3 bundle
+and independently validated all 104 terrain sections, main36, equipment7,
+raw ability fields and default generation metadata. Focus and Spaces stayed
+unchanged, and every owned process group/listener was absent afterward.
+
+The concrete command for this locally built pair is:
+
+```
+env -u BEND_MINECRAFT_FRAME_DIR build/playable-renderer-current/003/play.sh --render-scale 25
+```
+
+The launcher captures renderer failures and INT/TERM before requesting the same
+acknowledged save. A save refusal leaves a live actor with private reconnect
+settings; it reports an already-dead actor honestly. Shell-control fixtures cover
+those exit paths; the actual native pair covers normal close and a renderer
+failure followed by durable save. The initial diagnostic expectation failures
+and image-traced 1080 disconnect remain retained. That run failed at its second
+command; the same binaries passed two full-size frames without tracing. These
+measured frame envelopes do not establish sustained FPS, physical input or
+drawable readback. Exact artifacts and receipts
+are in `evidence/playable-renderer-current-launch-003.json`.
+
 The producer used an explicitly private source-API copy with the measured queue
 and zero-extra-arity mitigations; original compiler sources and the installed
 tool remain unchanged. At a 6 GiB heap limit, current002 C emission converged
@@ -67,7 +96,7 @@ informational metadata in future preparations; it is not a build or launch input
 Earlier preparations retain their exact original dependency manifests. An invalid existing entry
 is preserved and refused. Fresh attempt directories keep failed receipts intact.
 
-Active commands are:
+The retained ordinary-builder commands are:
 
 ```
 python3 tools/test_playable_client_session.py --prepare
@@ -168,10 +197,11 @@ manifests and evidence remain unchanged. Those copies retain the historical
 inputs; the active supervisor refuses to consume an old attempt after runner or
 input drift. New execution requires a fresh attempt with verified identities.
 
-Production backend native executions remain zero. The retained evidence does not
-establish current menu topology, equipment/status/flight and world-generation
-settings saves, full-height demand generation, visible OS input, high-resolution
-rendering, held-button cooldown, neighbor updates, drops, general Java placement,
-audio, latency, multiplayer or complete 26.3 parity. The reference pass covers
-the preserved geometry implementation only. A coherent current-source backend
-and renderer generation is required for the later expanded contracts.
+The current002 actor's menu, equipment/status, world-generation saves and
+full-height demand generation have the concrete native boundary results stated
+above. The renderer003 pair covers fresh startup and two-frame presentation
+with normal trace policy. Visible OS input, physical Retina/resize behavior,
+sustained interaction, held-button cooldown, neighbor updates, drops, general
+Java placement, audio, multiplayer and complete 26.3 parity remain separate
+work. The reference pass covers its preserved geometry implementation; later
+selector/close-return source generations require their own actual actor run.
