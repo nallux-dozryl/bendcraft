@@ -81,9 +81,15 @@ fixture is a verification instrument; none satisfies a gameplay completion gate.
    is accepted. The resource pair now passes, so authorize only that harness
    stamp 0 to 1 correction. It is applied (SHA9589c371), with its original
    bytes archived and ordinary checking passed in 1.934 seconds. A new
-   composite producer must reuse the frozen Python helpers and
-   comparisons, then verify the full phase corpus/facade/second primary suite.
-   No production/helper/reference changes or new emission grant yet. Preserve existing
+   continuation producer is prepared and read-only audited (runner7b3f308b,
+   readyfe09251d/payload39d8982e;6,069pins/111imports). Ten inert controls pass.
+   It reuses the frozen Python helpers and comparisons and preserves the whole
+   old evidence tree without copying payloads. Independent admission found
+   permission-error gaps in group sweeping and codec PID receipts; hold this
+   generation and repair only the external wrapper. Admission must then pass
+   before a new bounded build; full phase/facade/two-primary verification follows
+   on the new artifact. No production/helper/reference changes or new emission
+   grant yet. Preserve existing
    phase/reference generations and verify the final consumer generation.
    Required outcome: one shared 20 Hz input/tick/save actor, ordered
    Core/common/input/travel/rotation/pose phases, exact supported metadata across
@@ -93,8 +99,8 @@ fixture is a verification instrument; none satisfies a gameplay completion gate.
 Finish in-flight slab/fall host repairs and freeze their useful evidence. Defer
 new standalone feature libraries, expanded reference inventories and peripheral
 receipt polish unless they unblock these two outcomes or fix a concrete defect.
-At most two heavy jobs may run; both slots are free while the narrow phase
-fixture correction and new composite producer design are prepared. Foreground
+At most two heavy jobs may run; both slots are free while the corrected phase
+fixture's new composite producer repairs those host cleanup gaps. Foreground
 validation remains pending the user's coordination;
 no duplicate request or unsolicited foreground launch.
 

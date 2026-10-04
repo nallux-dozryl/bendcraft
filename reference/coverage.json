@@ -4802,8 +4802,10 @@
       ],
       "behavioral_reference_status": "actual_java_bounded_cases",
       "current_evidence_sha256": {
+        "evidence/local-phase-runtime-stamp-fix.json": "3e39d2b320604cb8e2462ecb3458494b74ced9367dd6fc5b184a6ae1488ecc92",
         "evidence/local-player-record-prepared.json": "1a4d8ac08d074b744c19cfe8eff1bbb9a1842bcf859fe7d9d413937eb434d296",
         "evidence/local-player-session-build.json": "cf5c2b399f375456cb98732d2e8fa39513672b12e982351271b51a2cefcbfe4f",
+        "evidence/local-player-session-continuation-prepared.json": "bcffd1a3aaf1dca884b6ef2574cfad3ae284b03bfdd526a7d149f3c99dc618fc",
         "evidence/local-player-session-host3-partial.json": "a1826d02e2f28fce5a5f77f16c32313190862a43958cd1d2fba72c7ada058d6a",
         "evidence/local-player-session-phase-prefix-limit.json": "5d3c993e9dd15f475027c33aa0241b188c5e30d160cf8d029f909bdd931a8cce",
         "evidence/local-player-session-root-audit.json": "f6967e4b0e74c228c41ce8f6019969a2248a3a7e3b8b214236836646a24e07c4",
@@ -4815,7 +4817,9 @@
         "src/local_player_scene.bend": "aa28a61b3766d7990448cbc3138be1cccf357f2a3a633bee95e36fc948acead1",
         "src/local_player_session.bend": "dbfcf1307dd42e419297d67a41566742c2934df721b3439227502e2448d51a49",
         "src/local_player_storage.bend": "00ca9bcc6d57526b30879e37b8537e6c6638673e640e32a6bcf0a98ac7bbb8d8",
-        "tests/local_player_session.bend": "2081023f80df39c92ebbe11a2b19083b73bfe234cc193866521b1a13a0f198d6"
+        "tests/local_phase_runtime.bend": "9589c37194a807e01b3ac27eb4e83935ceaec4fba544b6fb05b00b1a9a2aeb22",
+        "tests/local_player_session.bend": "2081023f80df39c92ebbe11a2b19083b73bfe234cc193866521b1a13a0f198d6",
+        "tools/test_local_player_session_continuation.py": "7b3f308b5a03b3d199b9e6bae7bb9127ab5e2e6b6277e98fd9f7b9665a684bf0"
       },
       "id": "component:local_player_saved_actor",
       "implementation_evidence": [
@@ -4837,12 +4841,14 @@
       ],
       "reference_inventory_status": "captured_bounded_release_scope",
       "required_behavior": "One actual held-input LocalPlayer actor orders Core/common/local/travel/rotation/pose and owns complete supported atomic record/save/restart.",
-      "scope_limit": "Same retained native executable built once558.354s and passed first primary26checks/37exact bundles/50rejections including44corruptstartups and5separateAtomic stage kills/restarts; frozen755recordcases passed twice1510. Synthetic fixture input is not OS input. Shared phase corpus stopped before due-crawl because frozen harness admits tick0 against fresh tick0; its incomplete prefix is not validated by the unchanged comparator. Facade/second primary suite remain unrun. Neutral four-state/default-attribute profile, no required fall-reset rays/full lifecycle/player.dat/full-game parity or visible acceptance. Preparation docs are immutable historical pre-run artifacts; current results are in root status/evidence.",
+      "scope_limit": "Same retained native executable built once558.354s and passed first primary26checks/37exact bundles/50rejections including44corruptstartups and5separateAtomic stage kills/restarts; frozen755recordcases passed twice1510. Synthetic fixture input is not OS input. Shared phase corpus stopped before due-crawl because frozen harness admits tick0 against fresh tick0; its incomplete prefix is not validated by the unchanged comparator. Facade/second primary suite remain unrun. Neutral four-state/default-attribute profile, no required fall-reset rays/full lifecycle/player.dat/full-game parity or visible acceptance. Preparation docs are immutable historical pre-run artifacts; current results are in root status/evidence. Sole due_wall stamp0->1 correction is now ordinary-checked; new continuation producer is prepared/read-only audited6069pins/111imports with frozen helpers and old history preserved. Independent admission found wrapper-only EPERM cleanup/PID-retention gaps; hold prepared generation for correction. New native build/execution remain ungranted.",
       "verification_evidence": [
         "evidence/local-player-session-build.json",
         "evidence/local-player-session-host3-partial.json",
         "evidence/local-player-session-root-audit.json",
-        "evidence/local-player-session-phase-prefix-limit.json"
+        "evidence/local-player-session-phase-prefix-limit.json",
+        "evidence/local-phase-runtime-stamp-fix.json",
+        "evidence/local-player-session-continuation-prepared.json"
       ],
       "verification_status": "primary_native_suite_and_codec_pass_phase_harness_interrupted",
       "whole_parent_parity_established": false

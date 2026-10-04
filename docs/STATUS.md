@@ -89,7 +89,15 @@ that harness requires a new executable. With the resource pair verified, its
 sole tick-0 to tick-1 fixture correction is applied (SHA9589c371) and passes
 ordinary checking in 1.934 seconds. The old harness and failure receipts are
 archived; frozen Python helpers, production runtime and references are unchanged.
-A new composite producer is being designed; no native build is granted yet.
+A separate continuation producer is now prepared and read-only audited: 6,069
+pinned files and 111 Bend imports, with ten inert host controls. It preserves
+the old binary, emitted C, failures and host generations by immutable paths.
+Independent admission found two host cleanup gaps: permission errors could
+abort the group sweep, and a codec cleanup error could prevent its PID receipt.
+This producer is held for a scoped wrapper correction; no new native build is
+granted yet. Its
+required order is first primary suite, the frozen codec twice, complete phase
+and facade cases twice, then the second primary suite.
 The lead rehashed all 1,693 native dependencies and the binary/receipt/manifest;
 actual Clang-used C equals the cached emitted C. Historical preparation docs
 remain frozen; current results are in the retained host3 partial evidence.

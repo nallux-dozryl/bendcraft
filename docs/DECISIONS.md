@@ -55,6 +55,27 @@ while building/exercising the actual resource pair; queue the fixture correction
 and complete component replay afterward. Immutable preparation docs retain
 their original pre-run wording; current native status is recorded separately.
 
+After the resource pair passed, apply only the approved due_wall stamp byte
+change. Its ordinary check passes; retain the old harness at its archived path.
+The new continuation runner admits the historical Phase contract through that
+archive and separately pins the corrected current harness. It temporarily
+changes only executable/process routing and that admission callback; original
+parsers, completion markers, assertions and independent expectations remain
+unchanged. All bindings restore on normal or exceptional scope exit. Its
+6,069-file generation, entire historical evidence tree and ten inert controls
+are sealed; independent admission precedes one new 600-second build. A passed
+build still requires separate actual primary/codec/phase/facade execution.
+
+Independent review found that the original registered-group sweep can raise
+on EPERM before checking later groups, and the frozen codec supervisor can
+raise in cleanup before writing its PID receipt. Hold this prepared generation.
+Correct only the external wrapper: durably register codec PIDs at launch,
+preserve raw/process/error receipts unconditionally, check every registered
+group despite earlier errors, and restore the temporary codec-supervisor
+binding. Unknown or erroneous cleanup rejects the lane. The frozen scenarios,
+parsers, corpus and comparisons remain exact; preserve the codec's 120-second
+run bound and two/five-second termination waits.
+
 ## 2026-10-04: preserve producers during verifier repairs
 
 An orchestration correction does not become the original native producer.
