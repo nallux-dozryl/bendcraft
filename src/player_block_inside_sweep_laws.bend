@@ -14,6 +14,14 @@ import ./local_move_world.bend as LM
 import ./client_world.bend as CW
 import ./game.bend as G
 import ./support.bend as SP
+import ./player_block_inside_sweep_travel.bend as ST
+import ./local_travel_history.bend as TH
+import ./travel.bend as T
+import ./local_collision_world.bend as LCW
+import ./f64.bend as F
+import ./player_block_inside_sweep_clip.bend as Clip
+import ./local_collision.bend as LC
+import ./fall_reset_world.bend as FR
 
 law next_segment_resets_only_local_seen_and_step:
   for +fuel: Nat
@@ -332,3 +340,65 @@ law public_motion_join_preserves_full_owner_on_service_refusal:
     (P.State{world, registry, receiver, history, []}, Fail{error}) : P.State & Result<&2, &2, W.Error, W.Observation>}
   {SM.after_movements(MH.State{CW.attach(G.Engine{world, registry}, view), support, minor, history, tail}, receiver, dimension, request) ==
     (MH.State{CW.attach(G.Engine{world, registry}, view), support, minor, history, tail}, receiver, Fail{SM.SweepError{error}}) : MH.State & P.Receiver & Result<&2, &2, SM.Error, W.Observation>}
+
+law empty_original_queue_uses_old_to_current_fallback:
+  for +old: M.Vec3
+  for +position: M.Vec3
+  {ST.ready([], old, position) == [S.Movement{old, position, None{}}] : List<&2, S.Movement>}
+
+law actual_subthreshold_endpoint_retains_complete_ordered_queue:
+  for +pending: List<&2, S.Movement>
+  for +endpoint: M.Vec3
+  for +position: M.Vec3
+  for within: {F.is_gt(M.Vec3.length_squared(Clip.subtract(endpoint, position)), S.tiny_square()) == False{} : Bool}
+  {ST.ready_tail(pending, endpoint, position) == pending : List<&2, S.Movement>}
+
+law dispatched_bridge_appends_without_changing_prior_records:
+  for +pending: List<&2, S.Movement>
+  for +endpoint: M.Vec3
+  for +position: M.Vec3
+  {ST.bridged(pending, endpoint, position, True{}) ==
+    List.append(&2, S.Movement, pending, [S.Movement{endpoint, position, None{}}]) : List<&2, S.Movement>}
+
+law refused_position_change_never_creates_a_travel_record:
+  for prepared: T.Prepared
+  for prepared_tail: List<&2, TH.Preparation>
+  for body: M.Body
+  for displacement: M.Vec3
+  for stepped: Bool
+  for motion_tail: List<&2, LM.Motion>
+  for backoff: LCW.Observation
+  for before: LM.BodySnapshot
+  for minor: Maybe<&2, LC.MinorObservation>
+  for move_tail: List<&2, LM.Outcome>
+  for history: H.History
+  for history_tail: List<&2, MH.Outcome>
+  for final_motion: LM.Motion
+  for travel_tail: List<&2, TH.Outcome>
+  for ray: Maybe<&2, FR.Observation>
+  for reset_tail: List<&2, TH.ResetOutcome>
+  {ST.reset_record(TH.ResetOutcome{TH.Outcome{TH.Preparation{prepared, prepared_tail},
+    MH.Outcome{LM.Outcome{LM.Motion{M.Transition{body, displacement, stepped, False{}}, motion_tail}, backoff, before, minor, move_tail}, history, history_tail}, final_motion, travel_tail}, ray, reset_tail}) ==
+    None{} : Maybe<&2, S.Movement>}
+
+law actual_travel_record_retains_post_backoff_original_and_raw_endpoint:
+  for +prepared: T.Prepared
+  for prepared_tail: List<&2, TH.Preparation>
+  for body: M.Body
+  for +displacement: M.Vec3
+  for stepped: Bool
+  for motion_tail: List<&2, LM.Motion>
+  for +backoff: LCW.Observation
+  for before: LM.BodySnapshot
+  for minor: Maybe<&2, LC.MinorObservation>
+  for move_tail: List<&2, LM.Outcome>
+  for history: H.History
+  for history_tail: List<&2, MH.Outcome>
+  for final_motion: LM.Motion
+  for travel_tail: List<&2, TH.Outcome>
+  for ray: Maybe<&2, FR.Observation>
+  for reset_tail: List<&2, TH.ResetOutcome>
+  {ST.reset_record(TH.ResetOutcome{TH.Outcome{TH.Preparation{prepared, prepared_tail},
+    MH.Outcome{LM.Outcome{LM.Motion{M.Transition{body, displacement, stepped, True{}}, motion_tail}, backoff, before, minor, move_tail}, history, history_tail}, final_motion, travel_tail}, ray, reset_tail}) ==
+    Some{S.Movement{ST.body_position(TH.prepared_body(prepared)),
+      M.Vec3.add(ST.body_position(TH.prepared_body(prepared)), displacement), Some{LM.backoff_requested(backoff)}}} : Maybe<&2, S.Movement>}

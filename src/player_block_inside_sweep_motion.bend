@@ -7,6 +7,8 @@ import ./local_move_history.bend as MH
 import ./client_world.bend as CW
 import ./game.bend as G
 import ./movement.bend as M
+import ./f64.bend as F
+import ./player_block_inside_sweep_clip.bend as Clip
 
 type Error is Data:
   DimensionsMismatch{}
@@ -31,6 +33,12 @@ def endpoint(movements: List<&2, S.Movement>, fallback: M.Vec3) -> M.Vec3:
     case Nil{}: fallback
     case S.Movement{from, to, original} <> rest: endpoint(rest, to)
 
+# applyEffectsFromBlocks appends a bridge only when the last recorded endpoint
+# is farther from the actual position than squared float 1e-5f. Signed zeros
+# and smaller differences are legitimate ready-list endpoints.
+def endpoint_bound(+position: M.Vec3, movements: List<&2, S.Movement>) -> Bool:
+  F.is_le(M.Vec3.length_squared(Clip.subtract(endpoint(movements, position), position)), S.tiny_square())
+
 def receiver_position(level: P.Level, fallback: M.Vec3) -> M.Vec3:
   match level:
     case P.ServerLevel{authority, known, old, current}: current
@@ -49,7 +57,7 @@ def view_binding(view: CW.View, request: W.Request) -> Maybe<&2, Error>:
          W.Request{facts, level, removed, physics, alive, expected_width, expected_height, movements, traversal_fuel, read_fuel, tail}:
       binding_error(U32.is_eq(F32.bits(width), F32.bits(expected_width)) &&
         U32.is_eq(F32.bits(height), F32.bits(expected_height)),
-        same_vector(position, endpoint(movements, position)),
+        endpoint_bound(position, movements),
         same_vector(position, receiver_position(level, position)))
 
 def restore(frame: PM.Frame, result: P.State & Result<&2, &2, Error, W.Observation>) -> MH.State & P.Receiver & Result<&2, &2, Error, W.Observation>:

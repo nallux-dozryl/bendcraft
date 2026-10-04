@@ -24,12 +24,12 @@ def main():
         selection = json.loads((folder / 'selection.json').read_text())
         assert scope['exclusions'] == []
         assert selection['checked_types_and_bodies_unchanged'] and selection['all_original_tlds_ctrs_tmps_retained']
-        assert selection['selected_root_count'] == 23
+        assert selection['selected_root_count'] == 28
         stdout, checked = run(['/usr/bin/env', 'LEAN_STACK_SIZE=4194304', KERNEL, folder / 'selected.bendtt'],
                              folder, 'independent-kernel', 60)
         checks.append(checked)
         assert stdout.strip() == 'ALL PROOFS CHECK', stdout
-        evidence = {'status': 'passed', 'folder': str(folder), 'laws': 23, 'roots': selection['roots'], 'scope_exclusions': [],
+        evidence = {'status': 'passed', 'folder': str(folder), 'laws': 28, 'roots': selection['roots'], 'scope_exclusions': [],
                     'checked_types_and_bodies_unchanged': True, 'all_original_declaration_maps_retained': True,
                     'receipts': checks, 'selection': fingerprint(folder / 'selection.json'),
                     'artifact': fingerprint(folder / 'selected.bendtt'), 'kernel': fingerprint(KERNEL),
@@ -37,9 +37,9 @@ def main():
                     'term_pins': selection['term_pins'], 'export_script': fingerprint(ROOT / 'tools/player_block_inside_sweep_proof.mjs'),
                     'compiler_api': [fingerprint(pathlib.Path('/Users/chuah/Documents/ChatGPT/bendex/bend/bend2') / name)
                                      for name in ['bend.ts', 'safe.ts']], 'node': fingerprint(NODE),
-                    'scope': 'Actual sweep segment dedup and vanilla-limit policy; ordered air/duplicate reads; arbitrary complete Core/Registry/receiver/history owner retention; late callback/read/traversal refusal precedence and speculation rollback; actual berry input branch independence; public full MH owner composition under named actual service premises. Traversal IEEE/geometry/order specification is independently observed against pinned Java and native tests, not claimed as proved by these laws.'}
+                    'scope': 'Actual sweep segment dedup and vanilla-limit policy; ordered air/duplicate reads; arbitrary complete Core/Registry/receiver/history owner retention; late callback/read/traversal refusal precedence and speculation rollback; actual berry input branch independence; actual retained TH record extraction and original ready-list fallback/bridge policy; public full MH owner composition under named actual service premises. Traversal IEEE/geometry/order specification is independently observed against pinned Java and native tests, not claimed as proved by these laws.'}
         write_json(ROOT / 'evidence/player-block-inside-sweep-proof.json', evidence)
-        print(json.dumps({'status': evidence['status'], 'laws': 23, 'artifact_bytes': evidence['artifact']['bytes'],
+        print(json.dumps({'status': evidence['status'], 'laws': 28, 'artifact_bytes': evidence['artifact']['bytes'],
                           'seconds': [x['seconds'] for x in checks]}))
     except BaseException as error:
         write_json(folder / 'failure.json', {'status': 'failed', 'error': repr(error), 'receipts': checks})

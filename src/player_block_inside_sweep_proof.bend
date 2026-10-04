@@ -10,6 +10,11 @@ import ./player_block_inside_stuck_motion.bend as PM
 import ./client_world.bend as CW
 import ./game.bend as G
 import ./local_move_history.bend as MH
+import ./player_block_inside_sweep_travel.bend as ST
+import ./travel.bend as T
+import ./movement.bend as M
+import ./f64.bend as F
+import ./player_block_inside_sweep_clip.bend as Clip
 
 def Laws.next_segment_resets_only_local_seen_and_step(fuel, seen, visits, last, stopped, failure, tail):
   {==}
@@ -134,3 +139,22 @@ def Laws.public_motion_join_preserves_full_owner_on_service_refusal(world, regis
         {SM.completed(PM.Frame{CW.View{body, yaw, pitch, palette, region, cache}, support, minor, tail}, _) ==
           (MH.State{CW.attach(G.Engine{world, registry}, CW.View{body, yaw, pitch, palette, region, cache}), support, minor, history, tail}, receiver, Fail{SM.SweepError{error}}) : MH.State & P.Receiver & Result<&2, &2, SM.Error, W.Observation>}
       {==}
+
+def Laws.empty_original_queue_uses_old_to_current_fallback(old, position):
+  {==}
+
+def Laws.actual_subthreshold_endpoint_retains_complete_ordered_queue(pending, endpoint, position, within):
+  %Equal.sym(Bool, F.is_gt(M.Vec3.length_squared(Clip.subtract(endpoint, position)), S.tiny_square()), False{}, within) :
+    {ST.bridged(pending, endpoint, position, _) == pending : List<&2, S.Movement>}
+  {==}
+
+def Laws.dispatched_bridge_appends_without_changing_prior_records(pending, endpoint, position):
+  {==}
+
+def Laws.refused_position_change_never_creates_a_travel_record(prepared, prepared_tail, body, displacement, stepped, motion_tail, backoff, before, minor, move_tail, history, history_tail, final_motion, travel_tail, ray, reset_tail):
+  match prepared:
+    case T.Prepared{before_body, requested, friction, acceleration, maximum, gravity, drag, discard}: {==}
+
+def Laws.actual_travel_record_retains_post_backoff_original_and_raw_endpoint(prepared, prepared_tail, body, displacement, stepped, motion_tail, backoff, before, minor, move_tail, history, history_tail, final_motion, travel_tail, ray, reset_tail):
+  match prepared:
+    case T.Prepared{before_body, requested, friction, acceleration, maximum, gravity, drag, discard}: {==}

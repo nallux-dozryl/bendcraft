@@ -1,10 +1,10 @@
 {
   "all_original_declaration_maps_retained": true,
   "artifact": {
-    "bytes": 3842208,
+    "bytes": 3861962,
     "file": "selected.bendtt",
-    "sha1": "15f30b7c93da9ad30107b9f672afe872ae4922b6",
-    "sha256": "c580f5b84f56ddbe765c60d68a19b70bc13ff854a53fd924349a66db896e07aa"
+    "sha1": "e0f2bc1037d606f0425ed7063b1e4bc206afe882",
+    "sha256": "61442d875685ec0f402e8c73483ee502e54b9aead5030fa318784c87dd421bf8"
   },
   "checked_types_and_bodies_unchanged": true,
   "compiler_api": [
@@ -22,19 +22,19 @@
     }
   ],
   "export_script": {
-    "bytes": 4732,
+    "bytes": 5191,
     "file": "player_block_inside_sweep_proof.mjs",
-    "sha1": "22c8e2e51200e66e5912f15b8d4b1c9e17a84ee2",
-    "sha256": "e69fc56297369bb4d879b053f36ff74941490cd6cfd45bf5cdc6ddae5ea87878"
+    "sha1": "d52774e94067444625861fbc11578d7b6ada8cad",
+    "sha256": "01d50ff8c7825e5f01e67c3a50813cb096ce57848f454709d6d1e01b89ffe87a"
   },
-  "folder": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-sweep-proof/1791138136801246000",
+  "folder": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-sweep-proof/1791139966841894000",
   "kernel": {
     "bytes": 3271216,
     "file": "bendtt",
     "sha1": "f19dfe8aec3b3911b6c9f0acae2a54f5b05ca5f0",
     "sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7"
   },
-  "laws": 23,
+  "laws": 28,
   "node": {
     "bytes": 77577344,
     "file": "node",
@@ -50,8 +50,8 @@
       ],
       "exit_code": 0,
       "group_absent": true,
-      "pid": 844,
-      "seconds": 24.984198,
+      "pid": 13781,
+      "seconds": 4.665361,
       "stderr": {
         "bytes": 0,
         "file": "ordinary.stderr",
@@ -72,23 +72,23 @@
         "--experimental-transform-types",
         "--stack-size=4096",
         "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/player_block_inside_sweep_proof.mjs",
-        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-sweep-proof/1791138136801246000"
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-sweep-proof/1791139966841894000"
       ],
       "exit_code": 0,
       "group_absent": true,
-      "pid": 1021,
-      "seconds": 41.639546,
+      "pid": 13832,
+      "seconds": 26.900862,
       "stderr": {
-        "bytes": 176,
+        "bytes": 177,
         "file": "export.stderr",
-        "sha1": "35fdcee0f6a4ca52ec5bb0b5ddbda62c379af4db",
-        "sha256": "65a0053a0413abfc4f2bbb10f13de721e1c94a07697984eca498b21f2f337757"
+        "sha1": "45a4c14e44e60fc3215e6b10f20604a323f7e5af",
+        "sha256": "a00c607b34c419b3bde2033f9a8e64148b482c7e4efe6b5e87e30bba84f1d3d1"
       },
       "stdout": {
-        "bytes": 2152,
+        "bytes": 2606,
         "file": "export.stdout",
-        "sha1": "24ff91174f04db1bbb76c7029fe508b76ff739a4",
-        "sha256": "d23786252bd6e9e18b36cfde33d22f32408e35b4bb343d23caf43bcf5c5a7e3a"
+        "sha1": "d113cb148fc65f1e30134070ed59d02077ba10da",
+        "sha256": "604f5662693fa5d3b0925e5b6c7f294c7e24597ed1baf22c26f0f62edd67a5fc"
       },
       "timed_out": false
     },
@@ -97,12 +97,12 @@
         "/usr/bin/env",
         "LEAN_STACK_SIZE=4194304",
         "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
-        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-sweep-proof/1791138136801246000/selected.bendtt"
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-sweep-proof/1791139966841894000/selected.bendtt"
       ],
       "exit_code": 0,
       "group_absent": true,
-      "pid": 1284,
-      "seconds": 0.896163,
+      "pid": 14032,
+      "seconds": 0.654596,
       "stderr": {
         "bytes": 0,
         "file": "independent-kernel.stderr",
@@ -141,21 +141,26 @@
     "player_block_inside_sweep_laws:existing_refusal_prevents_every_remaining_world_read",
     "player_block_inside_sweep_laws:earliest_actual_read_refusal_prevents_later_reads",
     "player_block_inside_sweep_laws:public_motion_join_installs_only_actual_successful_service_result",
-    "player_block_inside_sweep_laws:public_motion_join_preserves_full_owner_on_service_refusal"
+    "player_block_inside_sweep_laws:public_motion_join_preserves_full_owner_on_service_refusal",
+    "player_block_inside_sweep_laws:empty_original_queue_uses_old_to_current_fallback",
+    "player_block_inside_sweep_laws:actual_subthreshold_endpoint_retains_complete_ordered_queue",
+    "player_block_inside_sweep_laws:dispatched_bridge_appends_without_changing_prior_records",
+    "player_block_inside_sweep_laws:refused_position_change_never_creates_a_travel_record",
+    "player_block_inside_sweep_laws:actual_travel_record_retains_post_backoff_original_and_raw_endpoint"
   ],
-  "scope": "Actual sweep segment dedup and vanilla-limit policy; ordered air/duplicate reads; arbitrary complete Core/Registry/receiver/history owner retention; late callback/read/traversal refusal precedence and speculation rollback; actual berry input branch independence; public full MH owner composition under named actual service premises. Traversal IEEE/geometry/order specification is independently observed against pinned Java and native tests, not claimed as proved by these laws.",
+  "scope": "Actual sweep segment dedup and vanilla-limit policy; ordered air/duplicate reads; arbitrary complete Core/Registry/receiver/history owner retention; late callback/read/traversal refusal precedence and speculation rollback; actual berry input branch independence; actual retained TH record extraction and original ready-list fallback/bridge policy; public full MH owner composition under named actual service premises. Traversal IEEE/geometry/order specification is independently observed against pinned Java and native tests, not claimed as proved by these laws.",
   "scope_exclusions": [],
   "selection": {
-    "bytes": 15199,
+    "bytes": 17945,
     "file": "selection.json",
-    "sha1": "55e1a3fe882f868f69ee46a510500c2af2548eaa",
-    "sha256": "498abd356f8b38043c76b4c1963d74ca3d42b1e9c073104fddcb6c51d3c9feb5"
+    "sha1": "ad384db06c267b71f6a020abc37c93f8ac703b1c",
+    "sha256": "da73c49d01631b3e6aa2165444bd017a8706ea12e7234d8b6759aa45ed55fa93"
   },
   "source_pins": {
-    "bytes": 6521,
+    "bytes": 6982,
     "file": "source-pins.json",
-    "sha1": "b263eb83890cdbaf67d736b98f6f731f5f1120b9",
-    "sha256": "7ad077c2197eb1cf7cf4d50f82e3062feb230366d5090d692a53bdcf7f05d037"
+    "sha1": "97ea5a2fa202b71ac292da834bd0a664a2bd2960",
+    "sha256": "33cacedcec484ce96113d0a69f682c041ff6c9036d5552d9c503791b812f20e3"
   },
   "status": "passed",
   "term_pins": [
@@ -296,6 +301,36 @@
       "name": "player_block_inside_sweep_laws:public_motion_join_preserves_full_owner_on_service_refusal",
       "source_body_sha256": "228e0656198de206efce84072f0a65de2e14e9198337427ecc3aa4c8783e1cc5",
       "type_sha256": "1f888ba2d03e4d13d622a358eaa72c1a5ab486ad3135d8d282f6186a40b0546d"
+    },
+    {
+      "checked_proof_sha256": "eaade03f936b6d4b598d74e23fff37e2c27db8c45896894c09124be8cb5a049e",
+      "name": "player_block_inside_sweep_laws:empty_original_queue_uses_old_to_current_fallback",
+      "source_body_sha256": "59187c341fb0b33d39afb12e4535a59493ccc926b6deb2b80e4dc081661c7fcd",
+      "type_sha256": "8fb600e63c9939f2b1b5a3139cb5c10b137141f71fa5867644b497ffb7ba08a2"
+    },
+    {
+      "checked_proof_sha256": "b42385e986a3af262c5aabf8dbe9b8adee03c41a348d5f48c2a2d394d7909af4",
+      "name": "player_block_inside_sweep_laws:actual_subthreshold_endpoint_retains_complete_ordered_queue",
+      "source_body_sha256": "b3e2b8bcf694840d88add9a8295a77fd217202cee433d954bb03b49756b0474f",
+      "type_sha256": "3f97cf84fa065972d1ad8aa3e2a497364f0edd3b7ebeed0afc820f5dbcff7f59"
+    },
+    {
+      "checked_proof_sha256": "1cf97c80a9c1121a30eb56f58d715409f308fb9caef35bd6d7eee4e7d484bac2",
+      "name": "player_block_inside_sweep_laws:dispatched_bridge_appends_without_changing_prior_records",
+      "source_body_sha256": "cb57a10cecf14033ab2f000d71a2fd135d61b91c1c0ff553865ef29621dd1e43",
+      "type_sha256": "a81a5af54823dff92ce4f4054cefe9cc4af8b777d98183eb174aa05de8258608"
+    },
+    {
+      "checked_proof_sha256": "669f046325b2473f70d511f8defe028e14d7b31ccc104d6d9165ead7673988bb",
+      "name": "player_block_inside_sweep_laws:refused_position_change_never_creates_a_travel_record",
+      "source_body_sha256": "7bb8cf0bec16986613ef1950835b438b5da565984464ea3151558cb92bca84f6",
+      "type_sha256": "baa433424b274ac4a797ac49783e3cf90f01ba120126d5406f2deb31c9f10bca"
+    },
+    {
+      "checked_proof_sha256": "e5cd2f64ed547e34e41dfe5bda5c91ab949ea99db7df3cb7a027dd7b1b29c333",
+      "name": "player_block_inside_sweep_laws:actual_travel_record_retains_post_backoff_original_and_raw_endpoint",
+      "source_body_sha256": "7bb8cf0bec16986613ef1950835b438b5da565984464ea3151558cb92bca84f6",
+      "type_sha256": "4796f4c5542071a010ef437eea27a51f35f657ee9a04d2f19929b03e91617a41"
     }
   ]
 }

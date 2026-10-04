@@ -31,31 +31,36 @@ def point_gate(old: Hit, time: F.F64, valid: Bool) -> Hit:
     case True{}: Hit{time, True{}}
     case False{}: old
 
-def point(+old: Hit, +dx: F.F64, +dy: F.F64, +dz: F.F64,
-          plane: F.F64, low_y: F.F64, high_y: F.F64, low_z: F.F64, high_z: F.F64,
-          x: F.F64, y: F.F64, z: F.F64) -> Hit:
-  Hit{limit, found} = old
-  +t = F.div(F.sub(plane, x), dx)
-  +a = F.add(y, F.mul(t, dy))
-  +b = F.add(z, F.mul(t, dz))
-  point_gate(old, t, F.is_gt(t, M.zero()) && F.is_lt(t, limit) &&
-    F.is_gt(a, F.sub(low_y, A.epsilon())) && F.is_lt(a, F.add(high_y, A.epsilon())) &&
-    F.is_gt(b, F.sub(low_z, A.epsilon())) && F.is_lt(b, F.add(high_z, A.epsilon())))
+# Recursive context bounds native continuation specialization; internal tails
+# are Nil. The transverse-axis permutation is supplied by clip_delta.
+type AxisInput is Data:
+  AxisInput{delta: M.Vec3, low: M.Vec3, high: M.Vec3,
+            start: M.Vec3, tail: List<&2, AxisInput>}
 
-def axis_gate(old: Hit, dx: F.F64, dy: F.F64, dz: F.F64,
-              low: F.F64, high: F.F64, low_y: F.F64, high_y: F.F64,
-              low_z: F.F64, high_z: F.F64, x: F.F64, y: F.F64, z: F.F64,
-              positive: Bool, negative: Bool) -> Hit:
+def plane(input: AxisInput, high: Bool) -> F.F64:
+  match input high:
+    case AxisInput{delta, M.Vec3{x, y, z}, upper, start, tail} False{}: x
+    case AxisInput{delta, lower, M.Vec3{x, y, z}, start, tail} True{}: x
+
+def point(+old: Hit, input: AxisInput, plane: F.F64) -> Hit:
+  match old input:
+    case Hit{limit, found} AxisInput{M.Vec3{dx, dy, dz}, M.Vec3{low, low_y, low_z}, M.Vec3{high, high_y, high_z}, M.Vec3{x, y, z}, tail}:
+      +t = F.div(F.sub(plane, x), dx)
+      +a = F.add(y, F.mul(t, dy))
+      +b = F.add(z, F.mul(t, dz))
+      point_gate(old, t, F.is_gt(t, M.zero()) && F.is_lt(t, limit) &&
+        F.is_gt(a, F.sub(low_y, A.epsilon())) && F.is_lt(a, F.add(high_y, A.epsilon())) &&
+        F.is_gt(b, F.sub(low_z, A.epsilon())) && F.is_lt(b, F.add(high_z, A.epsilon())))
+
+def axis_gate(old: Hit, +input: AxisInput, positive: Bool, negative: Bool) -> Hit:
   match positive negative:
-    case True{} _: point(old, dx, dy, dz, low, low_y, high_y, low_z, high_z, x, y, z)
-    case False{} True{}: point(old, dx, dy, dz, high, low_y, high_y, low_z, high_z, x, y, z)
+    case True{} _: point(old, input, plane(input, False{}))
+    case False{} True{}: point(old, input, plane(input, True{}))
     case False{} False{}: old
 
-def axis(old: Hit, +dx: F.F64, dy: F.F64, dz: F.F64,
-         low: F.F64, high: F.F64, low_y: F.F64, high_y: F.F64,
-         low_z: F.F64, high_z: F.F64, x: F.F64, y: F.F64, z: F.F64) -> Hit:
-  axis_gate(old, dx, dy, dz, low, high, low_y, high_y, low_z, high_z, x, y, z,
-    F.is_gt(dx, A.epsilon()), F.is_lt(dx, F.neg(A.epsilon())))
+def axis(old: Hit, +input: AxisInput) -> Hit:
+  AxisInput{M.Vec3{+dx, dy, dz}, low, high, start, tail} = input
+  axis_gate(old, input, F.is_gt(dx, A.epsilon()), F.is_lt(dx, F.neg(A.epsilon())))
 
 def hit_point(start: M.Vec3, delta: M.Vec3, hit: Hit) -> Maybe<&2, M.Vec3>:
   match start delta hit:
@@ -67,9 +72,9 @@ def clip_delta(box: A.AABB, +start: M.Vec3, +delta: M.Vec3) -> Maybe<&2, M.Vec3>
   A.AABB{+a, +b, +c, +d, +e, +f} = box
   M.Vec3{+x, +y, +z} = start
   M.Vec3{+u, +v, +w} = delta
-  x_hit = axis(Hit{one(), False{}}, u, v, w, a, d, b, e, c, f, x, y, z)
-  y_hit = axis(x_hit, v, w, u, b, e, c, f, a, d, y, z, x)
-  hit_point(start, delta, axis(y_hit, w, u, v, c, f, a, d, b, e, z, x, y))
+  x_hit = axis(Hit{one(), False{}}, AxisInput{M.Vec3{u, v, w}, M.Vec3{a, b, c}, M.Vec3{d, e, f}, M.Vec3{x, y, z}, []})
+  y_hit = axis(x_hit, AxisInput{M.Vec3{v, w, u}, M.Vec3{b, c, a}, M.Vec3{e, f, d}, M.Vec3{y, z, x}, []})
+  hit_point(start, delta, axis(y_hit, AxisInput{M.Vec3{w, u, v}, M.Vec3{c, a, b}, M.Vec3{f, d, e}, M.Vec3{z, x, y}, []}))
 
 def clip(box: A.AABB, +start: M.Vec3, end: M.Vec3) -> Maybe<&2, M.Vec3>:
   clip_delta(box, start, subtract(end, start))
