@@ -1,0 +1,103 @@
+{
+  "status": "ordinary-source-clean",
+  "captured_utc": "2026-10-04T15:41:58.867584+00:00",
+  "source_pins": {
+    "src/player_inventory.bend": "5cbd1565eff2218c3096db82a36af2a8ed1bee695969c67f02290efde786eed4",
+    "src/player_inventory_click_swap.bend": "2284a56e93d10299419701acc9cba2aec4427acf7ed4a9196fb56ec75f831048",
+    "src/player_inventory_click_laws.bend": "7534b1e487072200e614c814c3d1f44cf126ae235873b4e4060b6a43ede16716",
+    "src/player_inventory_click_proof.bend": "9e393068014d4b00f278aec263124ac93d6d3975c5096fc7598040909b7fdf45",
+    "tests/player_inventory_click.bend": "6847cc63c3f59d28f80a5e6fffefa1a6996a36a0c9c28766ee973c94d86e6039"
+  },
+  "attempts": [
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/player_inventory_click_swap.bend",
+        "--check-only"
+      ],
+      "pid": 27404,
+      "returncode": 1,
+      "seconds": 3.0292587084695697,
+      "timed_out": false,
+      "source_sha256": "d32a07062fa272d92d0009a2f02aae46747ea92d818535ae0ddbceffa2e212dd",
+      "source_unchanged": true,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "07e42b76d10598f5f9987a17072c82568ed2c8de6989bd5743acceee231fe5f6",
+      "folder": "build/player-inventory-screen/click-swap-ordinary-001"
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/player_inventory_click_swap.bend",
+        "--check-only"
+      ],
+      "pid": 27483,
+      "returncode": 0,
+      "seconds": 3.8030855413526297,
+      "timed_out": false,
+      "source_sha256": "2284a56e93d10299419701acc9cba2aec4427acf7ed4a9196fb56ec75f831048",
+      "source_unchanged": true,
+      "stdout_sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "folder": "build/player-inventory-screen/click-swap-ordinary-002"
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/player_inventory_click_proof.bend",
+        "--check-only"
+      ],
+      "pid": 29967,
+      "returncode": 1,
+      "seconds": 2.741973999887705,
+      "timed_out": false,
+      "source_sha256": "63b49ed647c302e42170a8be7024e24281ed84415ae9aac9c9fe0ea3afe1e521",
+      "source_unchanged": true,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "ea6fc08612be672aa5e9debafbba9d6fded9bc0070cabd12a371fcf8d366a7da",
+      "folder": "build/player-inventory-screen/click-proof-ordinary-001"
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/player_inventory_click_proof.bend",
+        "--check-only"
+      ],
+      "pid": 30128,
+      "returncode": 0,
+      "seconds": 3.7455010833218694,
+      "timed_out": false,
+      "source_sha256": "9e393068014d4b00f278aec263124ac93d6d3975c5096fc7598040909b7fdf45",
+      "source_unchanged": true,
+      "stdout_sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "folder": "build/player-inventory-screen/click-proof-ordinary-002"
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/player_inventory_click.bend",
+        "--check-only"
+      ],
+      "pid": 30224,
+      "returncode": 0,
+      "seconds": 4.730530375614762,
+      "timed_out": false,
+      "source_sha256": "6847cc63c3f59d28f80a5e6fffefa1a6996a36a0c9c28766ee973c94d86e6039",
+      "source_unchanged": true,
+      "stdout_sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "folder": "build/player-inventory-screen/click-harness-ordinary-001"
+    }
+  ],
+  "current_successes": [
+    "click-swap-ordinary-002",
+    "click-proof-ordinary-002",
+    "click-harness-ordinary-001"
+  ],
+  "preserved_failures": [
+    "missing affine +index on planner helper",
+    "missing required import alias on reused proof module"
+  ],
+  "native_or_kernel_claim": false
+}

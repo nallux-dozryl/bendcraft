@@ -1,0 +1,143 @@
+{
+  "status": "focused-production-swap-native-pass",
+  "captured_utc": "2026-10-04T15:46:23.998991+00:00",
+  "generation_scope": "Actual current I.menu_click Swap; captured actor003/012 is an earlier independent source generation",
+  "production_target": "src/player_inventory.bend",
+  "test_consumer": "tests/player_inventory_click.bend",
+  "comparison": {
+    "cases": 57,
+    "scope_counts": {
+      "exact-Java-count-retaining-swap": 45,
+      "atomic-disposition-refusal": 2,
+      "explicit-recipe-dependency": 2,
+      "full-profile-retention": 3,
+      "derived-cache-retention-or-invalidation": 3,
+      "actual-menu-authority-and-slot-domain": 2
+    },
+    "all64_backing_cells_and_all_saved_ability_words_compared": true,
+    "expected_sha256": "687851278d58c688ecdd8972901bf6e51a0bde7fdd745396a7794d74d6075d5f",
+    "reference": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/player_inventory_click.json",
+      "sha256": "87542aa31acc94f3ff563b7810e69e205e9c660b47c22a1a4543b38cca53466b",
+      "observations_sha256": "9e92439603cbe6babbc9ace405dbb65f3246b991999f8b766ed8866895550b96"
+    },
+    "process": {
+      "receipt": {
+        "path": "build/player-inventory-click-native-001/processes/player-inventory-click-swap/execution.json",
+        "file": "execution.json",
+        "bytes": 38773,
+        "sha1": "c89c54b30396f3334c361de4bd76aaeea503398c",
+        "sha256": "da00eadecd28f8bbea139a647d2717d3c3dca1c612a3f4d39540c1529ef39386"
+      },
+      "binary_sha256": "e20798d1d121d057703d6a035d4eb13c780f08e647248e41c4a1d687a3aa902d",
+      "seconds": 2.9412807505577803
+    },
+    "explicit_gaps": [
+      "real world-owned item drop",
+      "creative overflow-discard ownership",
+      "derived crafting result take/consumption",
+      "native number-key/offhand input binding"
+    ]
+  },
+  "source_pins": {
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_inventory.bend": "5cbd1565eff2218c3096db82a36af2a8ed1bee695969c67f02290efde786eed4",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_inventory_return.bend": "53f4d0cea442ebcc6abfc306f520101a01cca8e46a139ebb89930fd94a5ac3ab",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_inventory_click_swap.bend": "2284a56e93d10299419701acc9cba2aec4427acf7ed4a9196fb56ec75f831048",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/inventory.bend": "9d2be7fb88afa1dc6386ab9e8b046b15d2a2a73b7e14566e5bfad3e6dd1f2702",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_item_definitions.bend": "6a7a57f62a2df6a3f43883824c167877f16e67a1a2a95e8b2f9a3e31e60c49a9",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_item_catalog.bend": "1337d82cc70e28b5aab552dc178401549602b6461e1ffe95d29f1eb09bed55a3",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_item_table.bend": "92ffa8bcf3b2a66e876a9485e2efc986817d8aa292c4232bc24908c65e1ebe05",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_inventory_click.bend": "6847cc63c3f59d28f80a5e6fffefa1a6996a36a0c9c28766ee973c94d86e6039",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_player_inventory_click.py": "a4d93046f8d322b647f7cc5707b44ad42eda60234f0cc74cff720e9f888760f6",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_player_inventory.py": "0b200f610216d79d16542808cedacd5e0bf7c0655ef82e3fbf5176be22b0235b",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_inventory_close.bend": "1701e15d346ab2a4a7a4ec67c93442e8cb03fafee400edc641e363cf5d32fca0",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/build_native.py": "3418c78cddc092aec55c7447a818735569b5b279d3bc4b05e3c0077624387c18",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_fall_reset_world_continuation_r2.py": "c2580703b97e4f698153e6dbbd3d9d48ae1c50f3d6b3fbc5e727d0bc39cdfa14",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_item_metadata.tsv": "1cf2669ac760fed886b33d19b12e4782d5011c68c629d22328147d8a9a9bfa22",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/player_inventory_click.json": "87542aa31acc94f3ff563b7810e69e205e9c660b47c22a1a4543b38cca53466b"
+  },
+  "sources_unchanged": true,
+  "builder": "Existing build_native.ensure_native ordinary CPU route with existing FRR2 no-retry binding, bounded raw capture/journal/cleanup",
+  "cache_hit": false,
+  "retries": 0,
+  "timings": {
+    "total_seconds": 47.44449979159981,
+    "emission_seconds": 10.834266709163785,
+    "native_seconds": 32.363067333586514
+  },
+  "binary": {
+    "artifact": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-inventory-click-native-001/native-cache/artifacts/e20798d1d121d057703d6a035d4eb13c780f08e647248e41c4a1d687a3aa902d/program",
+    "sha256": "e20798d1d121d057703d6a035d4eb13c780f08e647248e41c4a1d687a3aa902d",
+    "bytes": 1480376
+  },
+  "emitted_c_sha256": "d141ceee22bcca94937e5a0d6a990ae56978943e5d78749d0bd5e25bb04514d5",
+  "builder_dependency_count": 1646,
+  "complete_dependency_manifest": "build/player-inventory-click-native-001/native-build.json",
+  "build": {
+    "pid": 33366,
+    "pgid": 33366,
+    "exit_code": 0,
+    "timed_out": false,
+    "seconds": 47.56517054140568,
+    "cap_seconds": 600,
+    "cleanup": {
+      "deadline_monotonic": 5702125.46848175,
+      "errors": [],
+      "had_lingering_after_leader_exit": false,
+      "leader_reaped": true,
+      "rows": [
+        {
+          "after_absent": true,
+          "before_absent": true,
+          "errors": [],
+          "pgid": 33366
+        }
+      ],
+      "scope": "Observed managed groups only. Unobserved descendants that escape/reparent between snapshots are not authenticated.",
+      "seconds": 0.02136487513780594,
+      "status": "passed",
+      "unknown_groups": [],
+      "verified": true
+    }
+  },
+  "native": {
+    "pid": 33760,
+    "pgid": 33760,
+    "exit_code": 0,
+    "timed_out": false,
+    "seconds": 2.9412807505577803,
+    "cap_seconds": 60,
+    "cleanup": {
+      "deadline_monotonic": 5702128.419953041,
+      "errors": [],
+      "had_lingering_after_leader_exit": false,
+      "leader_reaped": true,
+      "rows": [
+        {
+          "after_absent": true,
+          "before_absent": true,
+          "errors": [],
+          "pgid": 33760
+        }
+      ],
+      "scope": "Observed managed groups only. Unobserved descendants that escape/reparent between snapshots are not authenticated.",
+      "seconds": 0.02313279267400503,
+      "status": "passed",
+      "unknown_groups": [],
+      "verified": true
+    }
+  },
+  "raw_receipt_pins": {
+    "build/player-inventory-click-native-001/receipt.json": "3df461b91ea7933462216c36c9c35a0e7204b4d547e99071c215ba1bca9a43ec",
+    "build/player-inventory-click-native-001/native-build.json": "3ec17b67503e66025cbd54955e72059155131dc0d37394ca5181f236a09254bc",
+    "build/player-inventory-click-native-001/owned-groups.jsonl": "39d5c1370a9c100ed22fb5039b9ee827ac19bf9af4f65deb5ef5f45dc3b0b843",
+    "build/player-inventory-click-native-001/executed-build-child.py": "27dee711c4db0013cdfe3938a8a9aaacda11e385aad7b03479026a1e5d97fdad",
+    "build/player-inventory-click-native-001/executed-supervisor.py": "4dd7d52a9b775a335784d8dc844234da2fde07ee129e2895723490018ed26a1a",
+    "build/player-inventory-click-native-001/processes/player-inventory-click-swap/execution.json": "da00eadecd28f8bbea139a647d2717d3c3dca1c612a3f4d39540c1529ef39386",
+    "build/player-inventory-click-native-001/processes/build/execution.json": "896b7c0ed8e2cc05e2be697b46ac38a838038d4dbdf10f76b870afd6542d7195"
+  },
+  "commands": [
+    "python3 build/player-inventory-click-native-001/executed-supervisor.py"
+  ],
+  "no_native_foreground_or_broad_actor_build": true
+}

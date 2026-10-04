@@ -3,6 +3,7 @@ import ./inventory.bend as Inv
 import ./player_item_definitions.bend as D
 import ./nbt.bend as N
 import ./player_inventory_return.bend as Return
+import ./player_inventory_click_swap.bend as SwapKernel
 
 # One owner retains main inventory, equipment and temporary menu storage.
 # The legacy36 projection keeps slots0..8 as the hotbar.
@@ -519,10 +520,43 @@ def pickup_button(valid:Bool,state:State,index:U32,button:U32) -> State & Result
     case False{}: (state,Fail{"pickup button must be left or right"})
     case True{}: pickup_inspected(index,button,menu_inspect(state))
 
+# The complete immutable plan is admitted before the sole Array owner changes.
+# An unchanged Java no-op retains the revision and derived recipe cache too.
+def swap_written(selected:U32,abilities:Abilities,profile:Profile,inventory:Inv.Inventory) -> State & Result<&2,&2,String,Unit>:
+  (revised(State{inventory,selected,abilities,profile}),Done{Unit{}})
+
+def swap_changed(changed:Bool,state:State,slots:List<&2,Inv.Slot>) -> State & Result<&2,&2,String,Unit>:
+  match changed:
+    case False{}: (state,Done{Unit{}})
+    case True{}:
+      State{inventory,selected,abilities,profile} = state
+      swap_written(selected,abilities,profile,write_returned(slots,0,inventory))
+
+def swap_guard(allowed:Bool,state:State,+plan:SwapKernel.Plan) -> State & Result<&2,&2,String,Unit>:
+  match allowed:
+    case False{}: (state,Fail{SwapKernel.message(plan)})
+    case True{}: swap_changed(SwapKernel.changed(plan),state,SwapKernel.slots(plan))
+
+def swap_planned(state:State,+plan:SwapKernel.Plan) -> State & Result<&2,&2,String,Unit>:
+  swap_guard(SwapKernel.admitted(plan),state,plan)
+
+def swap_projected(main:Snapshot,snapshot:MenuSnapshot,state:State,index:U32,button:U32,catalog:D.Catalog) -> State & Result<&2,&2,String,Unit>:
+  Snapshot{selected,slots,abilities} = main
+  swap_planned(state,SwapKernel.plan(menu_slots(snapshot),selected,index,button,catalog))
+
+def swap_with_catalog(+snapshot:MenuSnapshot,index:U32,button:U32,result:State & D.Catalog) -> State & Result<&2,&2,String,Unit>:
+  (state,catalog) = result
+  swap_projected(main_projection(snapshot),snapshot,state,index,button,catalog)
+
+def swap_inspected(index:U32,button:U32,result:State & MenuSnapshot) -> State & Result<&2,&2,String,Unit>:
+  (state,snapshot) = result
+  swap_with_catalog(snapshot,index,button,definitions(state))
+
 def click_index(index:Maybe<&2,U32>,state:State,click:Click) -> State & Result<&2,&2,String,Unit>:
   match index click:
     case None{} _: (state,Fail{"crafting output or outside slot requires recipe/drop authority"})
     case Some{slot} Pickup{+button}: pickup_button(U32.is_lt(button,2),state,slot,button)
+    case Some{slot} Swap{button}: swap_inspected(slot,button,menu_inspect(state))
     case Some{slot} _: (state,Fail{"menu click kind requires its authoritative vanilla consumer"})
 
 def click_open(allowed:Bool,state:State,index:U32,click:Click) -> State & Result<&2,&2,String,Unit>:

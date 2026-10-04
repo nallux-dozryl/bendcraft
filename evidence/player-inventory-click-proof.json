@@ -1,0 +1,161 @@
+{
+  "status": "ordinary-and-independent-kernel-pass",
+  "captured_utc": "2026-10-04T15:42:54.774557+00:00",
+  "entry": "src/player_inventory_click_proof.bend",
+  "new_production_law_count": 7,
+  "reused_complete64_array_commit_law_count": 1,
+  "selected_roots": [
+    "player_inventory_click_laws:production_swap_admission_conserves_every_item_count",
+    "player_inventory_click_laws:actual_swap_planner_conserves_complete_item_count_ledger",
+    "player_inventory_click_laws:refused_swap_plan_retains_complete_owned_player",
+    "player_inventory_click_laws:admitted_unchanged_swap_retains_complete_owned_player",
+    "player_inventory_click_laws:closed_inventory_menu_refuses_swap_and_retains_complete_owned_player",
+    "player_inventory_click_laws:committed_swap_retains_entire_noninventory_owner",
+    "player_inventory_click_laws:unchanged_swap_retains_complete_array_profile_and_derived_cache",
+    "player_inventory_close_laws:complete_production_array_commit_and_backing_retention"
+  ],
+  "scope": "Actual production I.menu_click Swap planner/controller; conditional complete-ledger admission, complete owner refusal/no-op/closed authority, complete noninventory retention, actual64-cell commit foundation",
+  "explicit_limits": [
+    "Conservation theorem is conditional on the actual runtime full-ledger admission guard",
+    "No theorem establishes world-drop or creative-discard ownership",
+    "Pinned Java parity comes from independent receiver/native comparison, not kernel checking"
+  ],
+  "source_pins": {
+    "src/player_inventory_click_proof.bend": "9e393068014d4b00f278aec263124ac93d6d3975c5096fc7598040909b7fdf45",
+    "src/player_inventory.bend": "5cbd1565eff2218c3096db82a36af2a8ed1bee695969c67f02290efde786eed4",
+    "src/inventory.bend": "9d2be7fb88afa1dc6386ab9e8b046b15d2a2a73b7e14566e5bfad3e6dd1f2702",
+    "src/player_item_definitions.bend": "6a7a57f62a2df6a3f43883824c167877f16e67a1a2a95e8b2f9a3e31e60c49a9",
+    "src/png.bend": "8c24c14a250cf6dbdf0c2804e4b28bfebd7ef62ed5d9ee97a1d07094d4745f22",
+    "src/compression.bend": "255cdff06a33050c7b0a48fdea75c1842ebe2dab0439cfe4f03d126d4edc20aa",
+    "src/nbt.bend": "b677546b5fc02aaa38f5c09e5b798c0d35aec32b1c4b37cbd7042b9a1a5275e4",
+    "src/player_inventory_return.bend": "53f4d0cea442ebcc6abfc306f520101a01cca8e46a139ebb89930fd94a5ac3ab",
+    "src/player_inventory_click_swap.bend": "2284a56e93d10299419701acc9cba2aec4427acf7ed4a9196fb56ec75f831048",
+    "src/player_inventory_click_laws.bend": "7534b1e487072200e614c814c3d1f44cf126ae235873b4e4060b6a43ede16716",
+    "src/player_inventory_close_laws.bend": "7ca0b35c67932c3c5e1fd9177704670f4955403c68e9e0ac647127c0d1ff34c6",
+    "src/player_inventory_close_proof.bend": "34dfe03dc714908a1d7d9991b6fbd530c50da5217953592dc7845e8d0d2dc5ca"
+  },
+  "source_count": 13,
+  "source_closure_pinned_before_load_and_unchanged": true,
+  "all_checked_types_bodies_and_original_tlds_ctrs_tmps_retained": true,
+  "whole_book_ordinary_check_zero_holes": true,
+  "term_pins": [
+    {
+      "name": "player_inventory_click_laws:production_swap_admission_conserves_every_item_count",
+      "type_sha256": "39cb57113b7e864e05ce876bc1df43373320fc1eff6a12585138f751752a8d01",
+      "checked_proof_sha256": "782577984f79122a814de261b6957d1d291d86c23543a0348eb70d38d127542d",
+      "source_body_sha256": "92956c4830ad9fe9e577e048544bcab8c03b28f7204d65bbae1a6d3e80b9f67a"
+    },
+    {
+      "name": "player_inventory_click_laws:actual_swap_planner_conserves_complete_item_count_ledger",
+      "type_sha256": "9f2d7e40e3466753021a9c4163c65076d2a05020f662460df066662e2a6a70f1",
+      "checked_proof_sha256": "b3f9afd62c24c1f028cafda64176b06afd26ebfcfd61e5dc44a20e9cf3d2d3c7",
+      "source_body_sha256": "5bec3fd4a4c7802aa0c6b7d3c16f689f4c6348f0fda984e105689c67bdfa549f"
+    },
+    {
+      "name": "player_inventory_click_laws:refused_swap_plan_retains_complete_owned_player",
+      "type_sha256": "692bcfc385eaa015fc66d6334205be3af939f4fcd04f56de9a6ffe7fbe202ba2",
+      "checked_proof_sha256": "47bc94c11176f81529d51dca9a19edee22a4670b415f623903cffa92e75cf502",
+      "source_body_sha256": "666a441e9b0175df0b4a51a8d5b334554b1a7f08c7197fb830e33f6c95a30ac0"
+    },
+    {
+      "name": "player_inventory_click_laws:admitted_unchanged_swap_retains_complete_owned_player",
+      "type_sha256": "c7ce1ce6f4e3288578b73dbae6dc081d9df8b7d3d073cb70a44d92fa7554cf27",
+      "checked_proof_sha256": "5368cb6ab1a9a419de8d3e88f463eded721ceaabaf54e0320c6b94dfb4d72b37",
+      "source_body_sha256": "de529902dd28c2618f09eaf7252d749c1dba2766fd0ce3746896b279e9de5876"
+    },
+    {
+      "name": "player_inventory_click_laws:closed_inventory_menu_refuses_swap_and_retains_complete_owned_player",
+      "type_sha256": "cb66c9313946070d6b2d345a51d51c032c60dcc64c483b916196cdca889e495e",
+      "checked_proof_sha256": "26defe6c46f8042a133e85338eeb0c141246f14292228b06fd298e1d6b768dcc",
+      "source_body_sha256": "eb51c6966e70dad7e663cc398c450d7894610c1a5f94c29b1511889a1bb778af"
+    },
+    {
+      "name": "player_inventory_click_laws:committed_swap_retains_entire_noninventory_owner",
+      "type_sha256": "6988ceb86267417421c0ec287d045b4520312e63fe472ab7cbd00aedb7a7df6f",
+      "checked_proof_sha256": "112f798fb957f94185784b5daeaa951ebc6fcb00122cd9e5bbbf75ae90c345be",
+      "source_body_sha256": "673e3c760722d5b2a7e1905cc319e0a59f5d61faaa731749a0b23bac69fbfa55"
+    },
+    {
+      "name": "player_inventory_click_laws:unchanged_swap_retains_complete_array_profile_and_derived_cache",
+      "type_sha256": "e2d98c600efe240c6a06469e89a81aa02869df635fda3de51996732b25a655c6",
+      "checked_proof_sha256": "a50369cb80729aacde7d118306c871533e82949c652dda1b696674e9b27db30e",
+      "source_body_sha256": "21a770989c15942204a5215cbebc3b5bebce84a5b156ccddf6de8356540bea9e"
+    },
+    {
+      "name": "player_inventory_close_laws:complete_production_array_commit_and_backing_retention",
+      "type_sha256": "3bb0145c047e15342f0367516d2a9f51acbe1b4bb3e28030579d6da20e8cc60f",
+      "checked_proof_sha256": "951abd35c193ccbef62f8092afae96445a6ef872d6dd9870ff41fe403886a277",
+      "source_body_sha256": "659562138d558cd65e5e2cbf311448272bd242411bfd3b2075e3b22d509c3624"
+    }
+  ],
+  "compiler_implementation_pins": [
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/bend.ts",
+      "sha256": "7deae3693eb896f33c73867081b99d2c6f3ed3b57e77e55eb5f6260840dd0e63"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/safe.ts",
+      "sha256": "54cb3a534ab7cc9ee313bf6383b3948ccdcac022469b3020e00745bbfe6f7e04"
+    }
+  ],
+  "selection_original_root_count": 1023,
+  "export": {
+    "argv": [
+      "/opt/homebrew/bin/node",
+      "--stack-size=4096",
+      "--max-old-space-size=4096",
+      "--experimental-transform-types",
+      "--input-type=module",
+      "--eval"
+    ],
+    "script_path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-inventory-screen/click-selective-export-001/executed-inline-source.mjs",
+    "script_sha256": "df27144d95cacaca86d286ca5974d31dc8bfb23949035fcb183034aa5defaf53",
+    "mode": "export",
+    "pid": 32962,
+    "process_group_absent": true,
+    "returncode": 0,
+    "seconds": 6.7701822919771075,
+    "timed_out": false,
+    "stdout_sha256": "ccb07b95713ca255e4d6acb264092d3f4000ced09d508976989ca00977941b97",
+    "stderr_sha256": "0bb668920482ec38ddaf7dddb7190581c501a372f8efaa6038d148bfd72d405f",
+    "emitted_sha256": "904cf95f3c980c793cab7fb29408b4e8795976e2badf34d1b37532e3b452d42e",
+    "emitted_bytes": 18837910
+  },
+  "kernel": {
+    "argv": [
+      "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-inventory-screen/click-selective-export-001/selected.bendtt"
+    ],
+    "script_path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-inventory-screen/click-selective-export-001/executed-inline-source.mjs",
+    "script_sha256": "df27144d95cacaca86d286ca5974d31dc8bfb23949035fcb183034aa5defaf53",
+    "mode": "kernel",
+    "pid": 33299,
+    "process_group_absent": true,
+    "returncode": 0,
+    "seconds": 4.490850916132331,
+    "timed_out": false,
+    "stdout_sha256": "61b73cda11b6b665b9f99f2defd3d3b57f985c865225e942a5bdaa594a503e47",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "emitted_sha256": "904cf95f3c980c793cab7fb29408b4e8795976e2badf34d1b37532e3b452d42e",
+    "emitted_bytes": 18837910
+  },
+  "exclusions": [],
+  "raw_receipt_pins": {
+    "build/player-inventory-screen/click-selective-export-001/selection.json": "d12dd2d95727aba8d82e6e0b06389831a51e892207104643512b48256ddc76cc",
+    "build/player-inventory-screen/click-selective-export-001/scope.json": "096eba7c600446a2f906369a6ff747804a51b9ad3153ca10d9a1d673e416b337",
+    "build/player-inventory-screen/click-selective-export-001/executed-inline-source.mjs": "df27144d95cacaca86d286ca5974d31dc8bfb23949035fcb183034aa5defaf53",
+    "build/player-inventory-screen/click-selective-export-001/export.receipt.json": "0176eabdffcdbd0b7caafc7fb196697f4051a69bbf0f0efc36ff16170ea07c74",
+    "build/player-inventory-screen/click-selective-export-001/export.stdout": "ccb07b95713ca255e4d6acb264092d3f4000ced09d508976989ca00977941b97",
+    "build/player-inventory-screen/click-selective-export-001/export.stderr": "0bb668920482ec38ddaf7dddb7190581c501a372f8efaa6038d148bfd72d405f",
+    "build/player-inventory-screen/click-selective-export-001/kernel.receipt.json": "fc65ee1fea8653f643990d3a6571eedefe9ba0b38cdf07c4892ad97e04b1d1bd",
+    "build/player-inventory-screen/click-selective-export-001/kernel.stdout": "61b73cda11b6b665b9f99f2defd3d3b57f985c865225e942a5bdaa594a503e47",
+    "build/player-inventory-screen/click-selective-export-001/kernel.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "commands": [
+    "/Users/chuah/.bend/bin/bend src/player_inventory_click_proof.bend --check-only",
+    "python3 /tmp/inventory_screen_selective.py export click-selective-export-001",
+    "python3 /tmp/inventory_screen_selective.py kernel click-selective-export-001"
+  ],
+  "export_exact_script": "build/player-inventory-screen/click-selective-export-001/executed-inline-source.mjs",
+  "kernel_no_axioms_or_foreign_dependencies": true
+}
