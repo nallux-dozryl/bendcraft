@@ -1,0 +1,676 @@
+{
+  "binary": {
+    "bytes": 2580344,
+    "file": "player-block-inside-sweep-tests",
+    "sha1": "d5357290ccb2a8a3d1eea5297afc36c81876c710",
+    "sha256": "8d8214de31fa3b667c6db578d17f6ad40eb4859d5f87f0b5bf8f528a51a8b5c7"
+  },
+  "build_report": {
+    "bytes": 630109,
+    "file": "native-build.json",
+    "sha1": "240aaf4fcf7cb7d6982c34826811a3db798396aa",
+    "sha256": "457be33632f3a0d91c78a1c3804fb167f1304cf568b3c08aa577c8384c64b737"
+  },
+  "comparison_corruptions_rejected": [
+    "missing-row",
+    "extra-row",
+    "altered-row",
+    "reordered-row",
+    "missing-newline",
+    "crlf",
+    "state-observation-disagreement"
+  ],
+  "corpus": {
+    "actual_accepted_visits": 955,
+    "actual_callback_comparisons": 986,
+    "actual_clip_comparisons": 6,
+    "actual_ordered_reads": 1656,
+    "actual_sweep_comparisons": 117,
+    "actual_walk_comparisons": 59,
+    "authority_consistency_checks": 147,
+    "case_manifest": {
+      "bytes": 146758,
+      "file": "case-manifest.json",
+      "sha1": "cc6990c160fbdf3d7ef72f5c01225ccfacbd4387",
+      "sha256": "e87cfd717b319e983ab21f1b085d36ba4ef415f813783541de3a067ee60ac099"
+    },
+    "categories": {
+      "actual-receiver-service-refusal": 1,
+      "atomic-query-refusal": 9,
+      "checked-dispatch-gate-suppression": 4,
+      "collision-owner-recovery": 2,
+      "complete-owner-checkpoint": 152,
+      "complete-owner-recheck": 1,
+      "deferred-geometry-refusal-and-precedence": 5,
+      "explicit-world-load": 146,
+      "forged-raw-world-cell": 14,
+      "held-receiver-before-operation": 148,
+      "late-world-refusal-atomic-retention": 6,
+      "original-aabb-clip": 6,
+      "original-blockgetter-accepted-visits": 59,
+      "original-entity-moving-dispatch": 117,
+      "queried-collision-buckets-and-candidate-rollback": 1,
+      "receiver-history-impulse-seed": 133,
+      "receiver-world-context": 170,
+      "same-owned-state-recovery": 24,
+      "server-damage-service-refusal": 2
+    },
+    "checked_dispatch_gate_suppressions": 4,
+    "checked_refusals": 24,
+    "expected": {
+      "bytes": 130846,
+      "file": "expected.tsv",
+      "sha1": "a8cd802450c3a9daf4bc6d2d945f6fd90adb4940",
+      "sha256": "643ac96e93364ec17fd7835b5bff75d585e380768853bd1d265333bca0a9c832"
+    },
+    "operations": 1000,
+    "owner_scope": "Complete raw Core fields/SectionMap trie/bucket order/all capacity cells, complete Registry fields/capacity slots/names map; receiver/history/impulse exact on refusal and held State versus Observation on every success. Canonical State and observer tails only.",
+    "queried_collision_bucket_sequences": 7,
+    "requests": {
+      "bytes": 103659,
+      "file": "requests.tsv",
+      "sha1": "2d5bd1929fd1fd4aa741f1c5cb92f3a212e20ba4",
+      "sha256": "3dc18a2ac36380d8f0a3b158565052fc32433318e79f63c1747e10ce88bddaa1"
+    },
+    "responses": 1466,
+    "same_owner_recoveries": 26,
+    "total_native_callback_trace_comparisons": 1146,
+    "total_native_read_trace_comparisons": 1864,
+    "world_fixture_count": 37,
+    "worlds": [
+      {
+        "bytes": 33589,
+        "file": "world-0.nbt",
+        "sha1": "f62f02df008bd17d4531a183491ca19c5aee840f",
+        "sha256": "cfec33b7bd34626318263706da14dde6e751bcc6f490379bb3a00d7c2e04b3ac"
+      },
+      {
+        "bytes": 99345,
+        "file": "world-1.nbt",
+        "sha1": "c485559c3e976115257daff41b721de1f00035ea",
+        "sha256": "1bab016e180effcfcfb0abac32e414e2777ffbb80d398898de49c293fc60a938"
+      },
+      {
+        "bytes": 99345,
+        "file": "world-2.nbt",
+        "sha1": "8b76cfbe706fd89f126c73230f3d2ce9922372bc",
+        "sha256": "658c71d3e96db4ece3009b9aaf6a574490342f74c35778d950b8fec014d23ae6"
+      },
+      {
+        "bytes": 99345,
+        "file": "world-3.nbt",
+        "sha1": "db4c4760942755dbd229a350f2e60665658de5cd",
+        "sha256": "6695f28d1ffb45f4053949c988b9737fa7b895886f5ae479f96ff0624eebc033"
+      },
+      {
+        "bytes": 165137,
+        "file": "world-4.nbt",
+        "sha1": "af434277f9e541bcae26e271b9b96887fc864c91",
+        "sha256": "a563eac8d9b8dabb250a679b660d95a0f49c8244a04d2afb7d2bc9879ed93a99"
+      },
+      {
+        "bytes": 99345,
+        "file": "world-5.nbt",
+        "sha1": "cc512f785e33770bddc0a1c66dc8ab6b60dfc27b",
+        "sha256": "f56cf656bfe1422a703b08e4150d5557d47d56019e80e977149f4dbf0873f881"
+      },
+      {
+        "bytes": 99345,
+        "file": "world-6.nbt",
+        "sha1": "cfa628d3619d5bd7dfe20bb31f556762c7cc1b05",
+        "sha256": "c37eaa394dad8b664338284bda8a7b788be0e4563611bd6db594e91f42829908"
+      },
+      {
+        "bytes": 99345,
+        "file": "world-7.nbt",
+        "sha1": "5659208de772ab992c968597ece042fce1794b7a",
+        "sha256": "e6b7f3261c9f9f447462f3a2a20e1ea05779bdd87054455cde08d40a654414b7"
+      },
+      {
+        "bytes": 99345,
+        "file": "world-8.nbt",
+        "sha1": "282feeb2594abe3e813d2cbbb5125e4538e443e9",
+        "sha256": "0dec1cef91f12e4bf6c962b8bc6a99e66bd9e9af7cec96e73cddc8c89539ee8a"
+      },
+      {
+        "bytes": 99345,
+        "file": "world-9.nbt",
+        "sha1": "bbf969e5c716b8f5fddc19f336c4f911c7063504",
+        "sha256": "b81859f659b809bb67fcf9bec29692b5f984cdd0af9cf34db67169ed36fbf925"
+      },
+      {
+        "bytes": 165137,
+        "file": "world-10.nbt",
+        "sha1": "887528db59a1396795e2659da7e09ed14e1cae03",
+        "sha256": "f820b6bdc43137246bcf12c2fefdc202707f843889754b9e08b5eca9b23d93be"
+      },
+      {
+        "bytes": 99345,
+        "file": "world-11.nbt",
+        "sha1": "ed992a160afe7eb5a1ff719c4e43f33926e5b33a",
+        "sha256": "c8a94a8bc23620bc7cfde729f3213a2bff806b769f060a614eb4ea8dbb30973a"
+      },
+      {
+        "bytes": 165137,
+        "file": "world-12.nbt",
+        "sha1": "099e76a2dfd3c7cc76e5449f9e8e5a1e897135b3",
+        "sha256": "b8ef7f180608f0c913001fd6cf9e1cf6894dc054bdf0216094263fe64416fd03"
+      },
+      {
+        "bytes": 99345,
+        "file": "world-13.nbt",
+        "sha1": "5f2942da599feb690bfac1e983e8a00d8c6651c0",
+        "sha256": "b6ca5495ef6d9071519bea2e70411ec719b5de3cfba99635fae9f80ea04d40d6"
+      },
+      {
+        "bytes": 165137,
+        "file": "world-14.nbt",
+        "sha1": "813fb611fede7038c783a046449b91bf097cd434",
+        "sha256": "afdd73adf86ebda19a9e65403da31a285157c07c44aaef83ac704150bc477dab"
+      },
+      {
+        "bytes": 99345,
+        "file": "world-15.nbt",
+        "sha1": "bda228237034f15de28dbebaaef016e26a18a4d3",
+        "sha256": "dbeaede81551f9dc0a05232dc4102ff9b715f8b76b3384b3e962fb72d9e8ac17"
+      },
+      {
+        "bytes": 99345,
+        "file": "world-16.nbt",
+        "sha1": "486a1a25913279cb6834b6ba5d727d2955bcf1dc",
+        "sha256": "b072dc932ad92b326e902006fc16aaa9f2ba8d7d92e1103dfdace0c235cdeabe"
+      },
+      {
+        "bytes": 99345,
+        "file": "world-17.nbt",
+        "sha1": "fbeda89f4f90a7b4fb0beb4993ce375f0b0cf664",
+        "sha256": "0461d396574057e9ee4a0562208d6378a64cdb6d20688c5edf02337e3b746ae0"
+      },
+      {
+        "bytes": 66467,
+        "file": "world-18.nbt",
+        "sha1": "9fca9b78f48cb03fa66cce08b386f2b82423e523",
+        "sha256": "33a0b4823a4c7bc35afc9cf0fe7d7d6f069d00d4229a5820a1ab91ce5d5b8472"
+      },
+      {
+        "bytes": 99345,
+        "file": "world-19.nbt",
+        "sha1": "241318c250980b9e3718da32d21081037844a9fb",
+        "sha256": "d48f4092bfe52bd6bf373df06a874f2ee8b555e48b1a582ee518fa3c9088e29f"
+      },
+      {
+        "bytes": 99345,
+        "file": "world-20.nbt",
+        "sha1": "264ce19fe0eaea586a03c444069bfba7341ae477",
+        "sha256": "e1783bc8640eb27dd88c88ff2d290d905aa7d83f95cbcf2cb23f6922e61b4bdc"
+      },
+      {
+        "bytes": 99345,
+        "file": "world-21.nbt",
+        "sha1": "d3952b83601f614cf1f3a1746e9e661ac7381507",
+        "sha256": "7a2ddb6151a0211eabe0e2208589a693213571afd6c0bd51b88a27ed091d29fd"
+      },
+      {
+        "bytes": 82888,
+        "file": "world-22.nbt",
+        "sha1": "8947476fcc0e51861c923c51d23df66a1f771b80",
+        "sha256": "94bb0d0d3da0530ba159568bce9392c5b16ca3d4c6000df7cd37c53571187764"
+      },
+      {
+        "bytes": 82888,
+        "file": "world-23.nbt",
+        "sha1": "bc45160c14a0204b36e71fce0790dce5f55668a8",
+        "sha256": "86d3d6e24aef723ad07e1b0aae7d1e156fd68f152538a8d5dcc6c47274f84587"
+      },
+      {
+        "bytes": 82888,
+        "file": "world-24.nbt",
+        "sha1": "7efa4033fb257b3a953bd9fcd2e0296c1b40acb6",
+        "sha256": "1abca13249e87c79bc47d2db0f5e61188bec70f4c537e7a71294f7b15a29bdd4"
+      },
+      {
+        "bytes": 82888,
+        "file": "world-25.nbt",
+        "sha1": "68aaaef879257687c10e83bb3c9c64b9fdbac633",
+        "sha256": "68dfa1b1bae3cfa8011247ff34abb6e090a3b499c255b93a34b678f2ee2f2689"
+      },
+      {
+        "bytes": 82897,
+        "file": "world-26.nbt",
+        "sha1": "a9b7b7282370ffbe109a6b2dd831acc2f088d14b",
+        "sha256": "f67a79d7470cd01e68a5358e24e7d82646fddb5f28fd50e0082f904ae6f191fa"
+      },
+      {
+        "bytes": 181513,
+        "file": "world-27.nbt",
+        "sha1": "e2214daa4cfd7358db27159d70eecf0910acc691",
+        "sha256": "f4c1242d54e405a2355d2452f754effebd6c6804977296e95cfc184ebad27c78"
+      },
+      {
+        "bytes": 50019,
+        "file": "world-28.nbt",
+        "sha1": "6e3ce2e57457fafe3a5b3c91c07be0321d5acf50",
+        "sha256": "7063b8f9c6ad149dbd4048542a6675e1c8ff30d67c62bae852d0cec43789b6be"
+      },
+      {
+        "bytes": 66451,
+        "file": "world-29.nbt",
+        "sha1": "28e6e754e421aa39a3f267756fa9144ae47dcc28",
+        "sha256": "048fe2a7934dd93c488ed026cd73aeaaa85a2cbcb2e720ae006ada6591ead4a9"
+      },
+      {
+        "bytes": 66455,
+        "file": "world-30.nbt",
+        "sha1": "909e78c6c366f9c4968230f31addc3a76c2c2f8d",
+        "sha256": "692074b30bbf7c428f31c44135badf88059cd46797eb4f63b763967614f50c40"
+      },
+      {
+        "bytes": 99345,
+        "file": "world-31.nbt",
+        "sha1": "66815280b59fed6961c02d3dfb1ecf5e39455556",
+        "sha256": "cb470cb890a93b276c988b5f36bb923099d28ef664067d910feb3fd751717db8"
+      },
+      {
+        "bytes": 50019,
+        "file": "world-32.nbt",
+        "sha1": "47700009294581ea4ce42a79ddda145f7ccd73c7",
+        "sha256": "277e3bbb865db8d57d8dfc45d58333db24c811034761028bf70f136318f9fe27"
+      },
+      {
+        "bytes": 66451,
+        "file": "world-33.nbt",
+        "sha1": "9b19b0c89be2771e7835fbcc3891b00b847b2bbe",
+        "sha256": "97f4e8c9e1fb1db0acae584f670d6c942ba7391e1e049dec1041cf38427e9e5a"
+      },
+      {
+        "bytes": 50019,
+        "file": "world-34.nbt",
+        "sha1": "261939d491118f4f332839c11982d86411d2bf57",
+        "sha256": "c908245a925db58dd7a3e742bf37ae987cd1989b223a1cfb276891341ddc55ed"
+      },
+      {
+        "bytes": 66451,
+        "file": "world-35.nbt",
+        "sha1": "c54f2fa4e9040f89802628c7cf1aedbc08e84ec9",
+        "sha256": "03fe9abb6262422881c1b67bbebf7e71865abb6cd92ba05fcfca0e04db46563d"
+      },
+      {
+        "bytes": 99345,
+        "file": "world-36.nbt",
+        "sha1": "8bf15d800493c30513ad572e1d33748a46bb1c74",
+        "sha256": "b1aac55d6d873eb713c72bcdb3ae6a8343027719a0ddafc2ba8c4dac467bcb55"
+      }
+    ]
+  },
+  "folder": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-sweep/native/1791139626177693000",
+  "pin": "26.3",
+  "post_run_verification": {
+    "all_34_source_reference_pins_unchanged": true,
+    "all_37_world_fixtures_requests_expected_and_case_manifest_verified": true,
+    "independent_read_only_audit": "No concrete mapping, authoritative-state, provenance, failure-ledger or comparison-scope issue found.",
+    "prior_failed_capture_fingerprints_verified": true,
+    "retained_native_artifact_and_dependencies_verified": true,
+    "status": "passed"
+  },
+  "prior_failed_attempts": [
+    {
+      "diagnosis": {
+        "builder_pid": 97915,
+        "cleanup_poll_count": 5,
+        "cleanup_transient": {
+          "errno": 1,
+          "group_members": [
+            "97964 97915 ?E"
+          ],
+          "type": "PermissionError"
+        },
+        "deadline_seconds": 180,
+        "elapsed_seconds": 180.557882,
+        "emitter_pid": 97964,
+        "group_absent": true,
+        "next_change": "Production Segment will receive an inert recursive tail to bound native specialization width; no unchanged emission retry or budget increase.",
+        "phase": "first Bend C emission; no native C compiler or target reached",
+        "produced_binary": false,
+        "produced_c": false,
+        "sample": {
+          "bytes": 1440646,
+          "file": "emitter.sample",
+          "sha1": "7d9f1e3fb8e8ca9d24433f704d354c1142779f4f",
+          "sha256": "9024096109d8e059e52453b10cd7056533cc882da2e65ff05c369dde3c02c767"
+        },
+        "sample_launch_time": "2026-10-05 01:16:37.361 +0700",
+        "sample_peak_physical_footprint": "8.3G",
+        "sample_physical_footprint": "8.2G",
+        "sample_time": "2026-10-05 01:18:27.529 +0700",
+        "sample_units_note": "Original macOS sample output reports G; no conversion to bytes is inferred.",
+        "source_temp_directory": "build/native-cache/sources/.source-xkds69kr",
+        "source_temp_files": [],
+        "target_executed": false,
+        "timed_out": true
+      },
+      "error": "AssertionError({'argv': ['python3', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/build_native.py', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_block_inside_sweep.bend', '-o', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-sweep-tests', '--report', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-sweep/native/1791137795368827000/native-build.json'], 'pid': 97915, 'exit_code': -9, 'seconds': 180.557882, 'timed_out': True, 'group_absent': True, 'cleanup_poll_count': 5, 'stdout': {'file': 'build.stdout', 'bytes': 0, 'sha1': 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'}, 'stderr': {'file': 'build.stderr', 'bytes': 0, 'sha1': 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'}, 'group_probe_error': {'type': 'PermissionError', 'errno': 1, 'group_members': ['97964 97915 ?E']}})",
+      "failure": {
+        "bytes": 6013,
+        "file": "failure.json",
+        "sha1": "5b6b9de8e2e01a668f7b83e68324ce7beda8f810",
+        "sha256": "9360c938246376a079f509909d59f8e62b45fe5312bc2c00a20de56063b1edec"
+      },
+      "folder": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-sweep/native/1791137795368827000",
+      "receipts": [
+        {
+          "argv": [
+            "python3",
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/build_native.py",
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_block_inside_sweep.bend",
+            "-o",
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-sweep-tests",
+            "--report",
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-sweep/native/1791137795368827000/native-build.json"
+          ],
+          "cleanup_poll_count": 5,
+          "exit_code": -9,
+          "group_absent": true,
+          "group_probe_error": {
+            "errno": 1,
+            "group_members": [
+              "97964 97915 ?E"
+            ],
+            "type": "PermissionError"
+          },
+          "pid": 97915,
+          "seconds": 180.557882,
+          "stderr": {
+            "bytes": 0,
+            "file": "build.stderr",
+            "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 0,
+            "file": "build.stdout",
+            "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "timed_out": true
+        }
+      ],
+      "sources_sha256": {
+        "evidence/player-block-inside-sweep-reference.json": "65637a6936960c40b8029d3a0029f2a979bf0a25490785c44f4f34516c855fd3",
+        "generated/reference_blocks.tsv": "27769e75bf862d0540b2df2a6e99f6b7556a867bff6339fb08566240ee124cac",
+        "reference/player_block_inside_sweep.json": "a81f496ef04ce6fd30ed4a4d1ed35f69fb8e90e34233acb45c44911e76aa05b9",
+        "src/core.bend": "9636bb1dfdde3fe36e650ab8e8d4b62dad2a49b419a27454794e5923cb570b05",
+        "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+        "src/geometry.bend": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f",
+        "src/hash.bend": "d2473695632b19e68c8d636668e4617f04d70892fb2ab6559cb24d4b33c1b978",
+        "src/json.bend": "a1789e3b4f5bea158ec0d95a8bcb39aa5b7c7e7355a5254d3de1d52a93c719d1",
+        "src/movement.bend": "31f5a4c47903506c0f388f688eaeaf78a36a0d266efde52bc57ea8cc89627b45",
+        "src/nbt.bend": "b677546b5fc02aaa38f5c09e5b798c0d35aec32b1c4b37cbd7042b9a1a5275e4",
+        "src/player_block_inside_stuck.bend": "0fe9049b773fece03e57aa1d6887c7f7be6f7e0839a0dade4d24845a096ed9f7",
+        "src/player_block_inside_sweep.bend": "9eca6f4b9672c42da03b0f38d3519f5050538c97ef1df8faa70cf184947fe0ec",
+        "src/player_block_inside_sweep_clip.bend": "470c12c130ce3212bc08fa0a9ec59866b53b02799e7341634bd4f25320183903",
+        "src/player_block_inside_sweep_world.bend": "33659a9836014d04ef82a7936c5b68dfcba4857881854c0c6c599db6c486754a",
+        "src/player_fall_history.bend": "0367657abca30a33851d043cf7adaea6c547e55e838896c2b3ff4d8dea73cdc9",
+        "src/registry.bend": "821c53d9cfa3044be3cae2af968f55563c0be2bebc9beae55a29d77d47b140a0",
+        "src/schedule.bend": "93aa79895fe340e27ae5fd562102d5980f0938003eb1bbde669a84010779b8c9",
+        "src/section.bend": "02b5c15c57b173c7eb8b4c55a1433c10c192926e91af5e3e69050b4404044aa5",
+        "src/section_map.bend": "ded59d7938c02fd0876d65e37f9f90ea0cfebf3ca4bd107394342f8adbf33965",
+        "src/section_map_read.bend": "7a6a0d6fe8b8736ab64adb34b896074da709f91f2ae5bd205a7301c868690fc1",
+        "src/section_map_update.bend": "93a1cb016ac86eaaea2773ab8b75b95e93f1976348b3c2c500fc0de0cc9831be",
+        "src/u32_decimal.bend": "d0b4b33f10b9e9801c4e99b83803afba5031ea40013a9263f9090bed8543d25c",
+        "src/unicode.bend": "8f0cd9bbcd0e7f938af370675eca0c73a9b97b90c2789a1e77e5a29a918455bd",
+        "src/world_codec.bend": "461e2bc342005831a3d16824303f79e1f4dac2dca0eaf0731d18052dbfe0bf86",
+        "tests/player_block_inside_stuck.bend": "51af6b95b011370b87f105322961dc094eea45de2c472b8a35a2f137c25309f8",
+        "tests/player_block_inside_sweep.bend": "f9b9de9b4af0645d65c6570a81e3bdc9e3a2f09fbfcd207e30435e51ae039c80",
+        "tools/reference_movement_probe.py": "e8500b4509fd12a47bd1c5c085fc04d00b8c18af4ad3d551487b323eec9d7736",
+        "tools/reference_player_block_inside_stuck_probe.py": "558b0e3595c28382f814e0ae131dee09198fb290c0915c75bef02e23b6b53089",
+        "tools/reference_player_block_inside_sweep_probe.py": "278a59e3ae61c6f136a8360a20ccf10bc18bd2ce5bc7322bedc88075670bf37c",
+        "tools/reference_travel_probe.py": "c99dc149a18838ba8fffc7096bca77ddef000f8cc846e52b4a98cbce0a6c8239",
+        "tools/test_nbt.py": "d81adb1a04baa13777e54abaaf1e20cbe97bc5d15c5cf2df047c4f17be2c8cdf",
+        "tools/test_player_block_inside_stuck.py": "80f7aea249b05ecefa4df555293372293a787d87c7102b67c0a4279d8f44ac9c",
+        "tools/test_player_block_inside_sweep.py": "3f76f61bb1624a4a58adbd26f5da6fe0a2309b33f4219861cee7676998975e68",
+        "tools/test_world_codec.py": "6c89a554e0d1a4301ca3bf85d75706780f5f7398f4c100fd1a582bc2653a559a"
+      },
+      "status": "failed",
+      "target_executed": false
+    },
+    {
+      "diagnosis": {
+        "builder_pid": 2107,
+        "cleanup_poll_count": 4,
+        "cleanup_transient": {
+          "errno": 1,
+          "group_members": [
+            "2157  2107 ?E"
+          ],
+          "type": "PermissionError"
+        },
+        "deadline_seconds": 180,
+        "elapsed_seconds": 180.453819,
+        "emitter_pid": 2157,
+        "group_absent": true,
+        "memory_samples": {
+          "59s_rss_kib": 198784,
+          "5s_rss_kib": 2311328,
+          "peak_physical_footprint": null,
+          "physical_footprint": null
+        },
+        "next_change": "Diagnose and narrow observer parser/entry boundary before any replacement; no equivalent unchanged retry or budget increase.",
+        "occupancy_note": "Parent/root reported inventory native619 and crafting loader98772 overlapping emitter2157. Local initial filter missed commands without -- and was corrected. This attempt is not a controlled performance comparison.",
+        "phase": "first Bend C emission; no native C compiler or target reached",
+        "produced_binary": false,
+        "produced_c": false,
+        "representation_change": "Production S.Segment gained an inert recursive Nil tail; parent recertified23laws before this attempt. Observer and original expectations unchanged.",
+        "source_temp_directory": "build/native-cache/sources/.source-4ko183ga",
+        "source_temp_files": [],
+        "target_executed": false,
+        "timed_out": true
+      },
+      "error": "AssertionError({'argv': ['python3', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/build_native.py', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_block_inside_sweep.bend', '-o', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-sweep-tests', '--report', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-sweep/native/1791138249806010000/native-build.json'], 'pid': 2107, 'exit_code': -9, 'seconds': 180.453819, 'timed_out': True, 'group_absent': True, 'cleanup_poll_count': 4, 'stdout': {'file': 'build.stdout', 'bytes': 0, 'sha1': 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'}, 'stderr': {'file': 'build.stderr', 'bytes': 0, 'sha1': 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'}, 'group_probe_error': {'type': 'PermissionError', 'errno': 1, 'group_members': ['2157  2107 ?E']}})",
+      "failure": {
+        "bytes": 6009,
+        "file": "failure.json",
+        "sha1": "81ee1d0bdd568b66ecdf98531d2d51fd730c5358",
+        "sha256": "086292b532de2ac153ffa806528a618fe3d62379a29a5e9e88a18bb8d799cb49"
+      },
+      "folder": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-sweep/native/1791138249806010000",
+      "receipts": [
+        {
+          "argv": [
+            "python3",
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/build_native.py",
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_block_inside_sweep.bend",
+            "-o",
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-sweep-tests",
+            "--report",
+            "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-sweep/native/1791138249806010000/native-build.json"
+          ],
+          "cleanup_poll_count": 4,
+          "exit_code": -9,
+          "group_absent": true,
+          "group_probe_error": {
+            "errno": 1,
+            "group_members": [
+              "2157  2107 ?E"
+            ],
+            "type": "PermissionError"
+          },
+          "pid": 2107,
+          "seconds": 180.453819,
+          "stderr": {
+            "bytes": 0,
+            "file": "build.stderr",
+            "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 0,
+            "file": "build.stdout",
+            "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "timed_out": true
+        }
+      ],
+      "sources_sha256": {
+        "evidence/player-block-inside-sweep-reference.json": "65637a6936960c40b8029d3a0029f2a979bf0a25490785c44f4f34516c855fd3",
+        "generated/reference_blocks.tsv": "27769e75bf862d0540b2df2a6e99f6b7556a867bff6339fb08566240ee124cac",
+        "reference/player_block_inside_sweep.json": "a81f496ef04ce6fd30ed4a4d1ed35f69fb8e90e34233acb45c44911e76aa05b9",
+        "src/core.bend": "9636bb1dfdde3fe36e650ab8e8d4b62dad2a49b419a27454794e5923cb570b05",
+        "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+        "src/geometry.bend": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f",
+        "src/hash.bend": "d2473695632b19e68c8d636668e4617f04d70892fb2ab6559cb24d4b33c1b978",
+        "src/json.bend": "a1789e3b4f5bea158ec0d95a8bcb39aa5b7c7e7355a5254d3de1d52a93c719d1",
+        "src/movement.bend": "31f5a4c47903506c0f388f688eaeaf78a36a0d266efde52bc57ea8cc89627b45",
+        "src/nbt.bend": "b677546b5fc02aaa38f5c09e5b798c0d35aec32b1c4b37cbd7042b9a1a5275e4",
+        "src/player_block_inside_stuck.bend": "0fe9049b773fece03e57aa1d6887c7f7be6f7e0839a0dade4d24845a096ed9f7",
+        "src/player_block_inside_sweep.bend": "769c59ac2c2f5b39767c430608f10708680464bc0d74fc9f3f657a05bff76301",
+        "src/player_block_inside_sweep_clip.bend": "470c12c130ce3212bc08fa0a9ec59866b53b02799e7341634bd4f25320183903",
+        "src/player_block_inside_sweep_world.bend": "33659a9836014d04ef82a7936c5b68dfcba4857881854c0c6c599db6c486754a",
+        "src/player_fall_history.bend": "0367657abca30a33851d043cf7adaea6c547e55e838896c2b3ff4d8dea73cdc9",
+        "src/registry.bend": "821c53d9cfa3044be3cae2af968f55563c0be2bebc9beae55a29d77d47b140a0",
+        "src/schedule.bend": "93aa79895fe340e27ae5fd562102d5980f0938003eb1bbde669a84010779b8c9",
+        "src/section.bend": "02b5c15c57b173c7eb8b4c55a1433c10c192926e91af5e3e69050b4404044aa5",
+        "src/section_map.bend": "ded59d7938c02fd0876d65e37f9f90ea0cfebf3ca4bd107394342f8adbf33965",
+        "src/section_map_read.bend": "7a6a0d6fe8b8736ab64adb34b896074da709f91f2ae5bd205a7301c868690fc1",
+        "src/section_map_update.bend": "93a1cb016ac86eaaea2773ab8b75b95e93f1976348b3c2c500fc0de0cc9831be",
+        "src/u32_decimal.bend": "d0b4b33f10b9e9801c4e99b83803afba5031ea40013a9263f9090bed8543d25c",
+        "src/unicode.bend": "8f0cd9bbcd0e7f938af370675eca0c73a9b97b90c2789a1e77e5a29a918455bd",
+        "src/world_codec.bend": "461e2bc342005831a3d16824303f79e1f4dac2dca0eaf0731d18052dbfe0bf86",
+        "tests/player_block_inside_stuck.bend": "51af6b95b011370b87f105322961dc094eea45de2c472b8a35a2f137c25309f8",
+        "tests/player_block_inside_sweep.bend": "f9b9de9b4af0645d65c6570a81e3bdc9e3a2f09fbfcd207e30435e51ae039c80",
+        "tools/reference_movement_probe.py": "e8500b4509fd12a47bd1c5c085fc04d00b8c18af4ad3d551487b323eec9d7736",
+        "tools/reference_player_block_inside_stuck_probe.py": "558b0e3595c28382f814e0ae131dee09198fb290c0915c75bef02e23b6b53089",
+        "tools/reference_player_block_inside_sweep_probe.py": "278a59e3ae61c6f136a8360a20ccf10bc18bd2ce5bc7322bedc88075670bf37c",
+        "tools/reference_travel_probe.py": "c99dc149a18838ba8fffc7096bca77ddef000f8cc846e52b4a98cbce0a6c8239",
+        "tools/test_nbt.py": "d81adb1a04baa13777e54abaaf1e20cbe97bc5d15c5cf2df047c4f17be2c8cdf",
+        "tools/test_player_block_inside_stuck.py": "80f7aea249b05ecefa4df555293372293a787d87c7102b67c0a4279d8f44ac9c",
+        "tools/test_player_block_inside_sweep.py": "3f76f61bb1624a4a58adbd26f5da6fe0a2309b33f4219861cee7676998975e68",
+        "tools/test_world_codec.py": "6c89a554e0d1a4301ca3bf85d75706780f5f7398f4c100fd1a582bc2653a559a"
+      },
+      "status": "failed",
+      "target_executed": false
+    }
+  ],
+  "receipts": [
+    {
+      "argv": [
+        "python3",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/build_native.py",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_block_inside_sweep.bend",
+        "-o",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-sweep-tests",
+        "--report",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-sweep/native/1791139626177693000/native-build.json"
+      ],
+      "cleanup_poll_count": 1,
+      "exit_code": 0,
+      "group_absent": true,
+      "pid": 11648,
+      "seconds": 164.878152,
+      "stderr": {
+        "bytes": 0,
+        "file": "build.stderr",
+        "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 605,
+        "file": "build.stdout",
+        "sha1": "03c5582387720c3d3381232c1ddac5d076be50d2",
+        "sha256": "7fa4bd46a73b4b37b8b799e490289ca536f8a11a148c2daa2157dee956a1b1f8"
+      },
+      "timed_out": false
+    }
+  ],
+  "reference": {
+    "bytes": 9586611,
+    "file": "player_block_inside_sweep.json",
+    "sha1": "4f8731c7c4fb716d7102092b6542a2f09c3e6508",
+    "sha256": "12a08395c05c5401d68637d97f9e13f64ebf9633b02bb7d842dc924c476d2c28"
+  },
+  "reference_corruptions_rejected": [
+    "checksum",
+    "expected-unsealed",
+    "expected-resealed",
+    "input-resealed",
+    "visit-step-resealed",
+    "callback-position-resealed"
+  ],
+  "reference_evidence": {
+    "bytes": 21804,
+    "file": "player-block-inside-sweep-reference.json",
+    "sha1": "49a5ee965b49db9e25b231a67bbefbd4bd341df9",
+    "sha256": "fc3616fcf24283fb56e46204ff5effee729ebd9bbb74ba08c3c44630fa296e13"
+  },
+  "reference_validation": {
+    "actual_callbacks": 986,
+    "actual_dispatch_reads": 1656,
+    "actual_walk_visits": 959,
+    "case_count": 143,
+    "operations": {
+      "geometry": 6,
+      "sweep": 117,
+      "walk": 59
+    },
+    "oracle_compared": true,
+    "step_count": 182,
+    "stopped_walks": 4
+  },
+  "registry": {
+    "bytes": 182136,
+    "file": "reference_blocks.tsv",
+    "sha1": "3461038d5c8086185591df08e6fb96de6e523faf",
+    "sha256": "27769e75bf862d0540b2df2a6e99f6b7556a867bff6339fb08566240ee124cac"
+  },
+  "registry_identity": "4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc",
+  "registry_info": {
+    "blocks": 1286,
+    "canonical_bytes": 167974,
+    "canonical_sha256": "4f75fa335a12e34cf74be71ff6a0ee530b13233212423f5463bb26a2fe4f3cfc",
+    "source_sha256": "27769e75bf862d0540b2df2a6e99f6b7556a867bff6339fb08566240ee124cac",
+    "states": 35723
+  },
+  "representation_changes_before_success": [
+    "Production S.Segment inert recursive Nil tail",
+    "Observer MovementRead inert recursive Nil tail and boxed continuation",
+    "Production Clip.AxisInput inert recursive Nil tail"
+  ],
+  "sources_sha256": {
+    "evidence/player-block-inside-sweep-reference.json": "fc3616fcf24283fb56e46204ff5effee729ebd9bbb74ba08c3c44630fa296e13",
+    "generated/reference_blocks.tsv": "27769e75bf862d0540b2df2a6e99f6b7556a867bff6339fb08566240ee124cac",
+    "reference/player_block_inside_sweep.json": "12a08395c05c5401d68637d97f9e13f64ebf9633b02bb7d842dc924c476d2c28",
+    "src/core.bend": "9636bb1dfdde3fe36e650ab8e8d4b62dad2a49b419a27454794e5923cb570b05",
+    "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "src/geometry.bend": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f",
+    "src/hash.bend": "d2473695632b19e68c8d636668e4617f04d70892fb2ab6559cb24d4b33c1b978",
+    "src/json.bend": "a1789e3b4f5bea158ec0d95a8bcb39aa5b7c7e7355a5254d3de1d52a93c719d1",
+    "src/movement.bend": "31f5a4c47903506c0f388f688eaeaf78a36a0d266efde52bc57ea8cc89627b45",
+    "src/nbt.bend": "b677546b5fc02aaa38f5c09e5b798c0d35aec32b1c4b37cbd7042b9a1a5275e4",
+    "src/player_block_inside_stuck.bend": "0fe9049b773fece03e57aa1d6887c7f7be6f7e0839a0dade4d24845a096ed9f7",
+    "src/player_block_inside_sweep.bend": "769c59ac2c2f5b39767c430608f10708680464bc0d74fc9f3f657a05bff76301",
+    "src/player_block_inside_sweep_clip.bend": "5089373373a2537a4182029d83836456d4b9a6198c6a2383f6a31098f6eb530d",
+    "src/player_block_inside_sweep_world.bend": "33659a9836014d04ef82a7936c5b68dfcba4857881854c0c6c599db6c486754a",
+    "src/player_fall_history.bend": "0367657abca30a33851d043cf7adaea6c547e55e838896c2b3ff4d8dea73cdc9",
+    "src/registry.bend": "821c53d9cfa3044be3cae2af968f55563c0be2bebc9beae55a29d77d47b140a0",
+    "src/schedule.bend": "93aa79895fe340e27ae5fd562102d5980f0938003eb1bbde669a84010779b8c9",
+    "src/section.bend": "02b5c15c57b173c7eb8b4c55a1433c10c192926e91af5e3e69050b4404044aa5",
+    "src/section_map.bend": "ded59d7938c02fd0876d65e37f9f90ea0cfebf3ca4bd107394342f8adbf33965",
+    "src/section_map_read.bend": "7a6a0d6fe8b8736ab64adb34b896074da709f91f2ae5bd205a7301c868690fc1",
+    "src/section_map_update.bend": "93a1cb016ac86eaaea2773ab8b75b95e93f1976348b3c2c500fc0de0cc9831be",
+    "src/u32_decimal.bend": "d0b4b33f10b9e9801c4e99b83803afba5031ea40013a9263f9090bed8543d25c",
+    "src/unicode.bend": "8f0cd9bbcd0e7f938af370675eca0c73a9b97b90c2789a1e77e5a29a918455bd",
+    "src/world_codec.bend": "461e2bc342005831a3d16824303f79e1f4dac2dca0eaf0731d18052dbfe0bf86",
+    "tests/player_block_inside_stuck.bend": "51af6b95b011370b87f105322961dc094eea45de2c472b8a35a2f137c25309f8",
+    "tests/player_block_inside_sweep.bend": "d269ae551ef2c18f6c8d0ba0c63a5e34e978439829c9994af0cb0af5cabae913",
+    "tools/reference_movement_probe.py": "e8500b4509fd12a47bd1c5c085fc04d00b8c18af4ad3d551487b323eec9d7736",
+    "tools/reference_player_block_inside_stuck_probe.py": "558b0e3595c28382f814e0ae131dee09198fb290c0915c75bef02e23b6b53089",
+    "tools/reference_player_block_inside_sweep_probe.py": "6f2a85fd1a8d736703837cd7e5f59e84771830b06205789ac3a1a4808eb9a229",
+    "tools/reference_travel_probe.py": "c99dc149a18838ba8fffc7096bca77ddef000f8cc846e52b4a98cbce0a6c8239",
+    "tools/test_nbt.py": "d81adb1a04baa13777e54abaaf1e20cbe97bc5d15c5cf2df047c4f17be2c8cdf",
+    "tools/test_player_block_inside_stuck.py": "80f7aea249b05ecefa4df555293372293a787d87c7102b67c0a4279d8f44ac9c",
+    "tools/test_player_block_inside_sweep.py": "3f76f61bb1624a4a58adbd26f5da6fe0a2309b33f4219861cee7676998975e68",
+    "tools/test_world_codec.py": "6c89a554e0d1a4301ca3bf85d75706780f5f7398f4c100fd1a582bc2653a559a"
+  },
+  "status": "build-passed",
+  "timing_scope": "Measured bounded build of the changed representation. Prior emissions produced no C at their 180-second deadlines; the second attempt had reported unrelated overlapping jobs, so these are not a controlled performance comparison."
+}

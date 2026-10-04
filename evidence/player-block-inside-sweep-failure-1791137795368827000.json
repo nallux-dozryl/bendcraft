@@ -1,0 +1,114 @@
+{
+  "diagnosis": {
+    "builder_pid": 97915,
+    "cleanup_poll_count": 5,
+    "cleanup_transient": {
+      "errno": 1,
+      "group_members": [
+        "97964 97915 ?E"
+      ],
+      "type": "PermissionError"
+    },
+    "deadline_seconds": 180,
+    "elapsed_seconds": 180.557882,
+    "emitter_pid": 97964,
+    "group_absent": true,
+    "next_change": "Production Segment will receive an inert recursive tail to bound native specialization width; no unchanged emission retry or budget increase.",
+    "phase": "first Bend C emission; no native C compiler or target reached",
+    "produced_binary": false,
+    "produced_c": false,
+    "sample": {
+      "bytes": 1440646,
+      "file": "emitter.sample",
+      "sha1": "7d9f1e3fb8e8ca9d24433f704d354c1142779f4f",
+      "sha256": "9024096109d8e059e52453b10cd7056533cc882da2e65ff05c369dde3c02c767"
+    },
+    "sample_launch_time": "2026-10-05 01:16:37.361 +0700",
+    "sample_peak_physical_footprint": "8.3G",
+    "sample_physical_footprint": "8.2G",
+    "sample_time": "2026-10-05 01:18:27.529 +0700",
+    "sample_units_note": "Original macOS sample output reports G; no conversion to bytes is inferred.",
+    "source_temp_directory": "build/native-cache/sources/.source-xkds69kr",
+    "source_temp_files": [],
+    "target_executed": false,
+    "timed_out": true
+  },
+  "error": "AssertionError({'argv': ['python3', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/build_native.py', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_block_inside_sweep.bend', '-o', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-sweep-tests', '--report', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-sweep/native/1791137795368827000/native-build.json'], 'pid': 97915, 'exit_code': -9, 'seconds': 180.557882, 'timed_out': True, 'group_absent': True, 'cleanup_poll_count': 5, 'stdout': {'file': 'build.stdout', 'bytes': 0, 'sha1': 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'}, 'stderr': {'file': 'build.stderr', 'bytes': 0, 'sha1': 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'}, 'group_probe_error': {'type': 'PermissionError', 'errno': 1, 'group_members': ['97964 97915 ?E']}})",
+  "folder": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-sweep/native/1791137795368827000",
+  "receipts": [
+    {
+      "argv": [
+        "python3",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/build_native.py",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_block_inside_sweep.bend",
+        "-o",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-sweep-tests",
+        "--report",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-sweep/native/1791137795368827000/native-build.json"
+      ],
+      "cleanup_poll_count": 5,
+      "exit_code": -9,
+      "group_absent": true,
+      "group_probe_error": {
+        "errno": 1,
+        "group_members": [
+          "97964 97915 ?E"
+        ],
+        "type": "PermissionError"
+      },
+      "pid": 97915,
+      "seconds": 180.557882,
+      "stderr": {
+        "bytes": 0,
+        "file": "build.stderr",
+        "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 0,
+        "file": "build.stdout",
+        "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "timed_out": true
+    }
+  ],
+  "sources_sha256": {
+    "evidence/player-block-inside-sweep-reference.json": "65637a6936960c40b8029d3a0029f2a979bf0a25490785c44f4f34516c855fd3",
+    "generated/reference_blocks.tsv": "27769e75bf862d0540b2df2a6e99f6b7556a867bff6339fb08566240ee124cac",
+    "reference/player_block_inside_sweep.json": "a81f496ef04ce6fd30ed4a4d1ed35f69fb8e90e34233acb45c44911e76aa05b9",
+    "src/core.bend": "9636bb1dfdde3fe36e650ab8e8d4b62dad2a49b419a27454794e5923cb570b05",
+    "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "src/geometry.bend": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f",
+    "src/hash.bend": "d2473695632b19e68c8d636668e4617f04d70892fb2ab6559cb24d4b33c1b978",
+    "src/json.bend": "a1789e3b4f5bea158ec0d95a8bcb39aa5b7c7e7355a5254d3de1d52a93c719d1",
+    "src/movement.bend": "31f5a4c47903506c0f388f688eaeaf78a36a0d266efde52bc57ea8cc89627b45",
+    "src/nbt.bend": "b677546b5fc02aaa38f5c09e5b798c0d35aec32b1c4b37cbd7042b9a1a5275e4",
+    "src/player_block_inside_stuck.bend": "0fe9049b773fece03e57aa1d6887c7f7be6f7e0839a0dade4d24845a096ed9f7",
+    "src/player_block_inside_sweep.bend": "9eca6f4b9672c42da03b0f38d3519f5050538c97ef1df8faa70cf184947fe0ec",
+    "src/player_block_inside_sweep_clip.bend": "470c12c130ce3212bc08fa0a9ec59866b53b02799e7341634bd4f25320183903",
+    "src/player_block_inside_sweep_world.bend": "33659a9836014d04ef82a7936c5b68dfcba4857881854c0c6c599db6c486754a",
+    "src/player_fall_history.bend": "0367657abca30a33851d043cf7adaea6c547e55e838896c2b3ff4d8dea73cdc9",
+    "src/registry.bend": "821c53d9cfa3044be3cae2af968f55563c0be2bebc9beae55a29d77d47b140a0",
+    "src/schedule.bend": "93aa79895fe340e27ae5fd562102d5980f0938003eb1bbde669a84010779b8c9",
+    "src/section.bend": "02b5c15c57b173c7eb8b4c55a1433c10c192926e91af5e3e69050b4404044aa5",
+    "src/section_map.bend": "ded59d7938c02fd0876d65e37f9f90ea0cfebf3ca4bd107394342f8adbf33965",
+    "src/section_map_read.bend": "7a6a0d6fe8b8736ab64adb34b896074da709f91f2ae5bd205a7301c868690fc1",
+    "src/section_map_update.bend": "93a1cb016ac86eaaea2773ab8b75b95e93f1976348b3c2c500fc0de0cc9831be",
+    "src/u32_decimal.bend": "d0b4b33f10b9e9801c4e99b83803afba5031ea40013a9263f9090bed8543d25c",
+    "src/unicode.bend": "8f0cd9bbcd0e7f938af370675eca0c73a9b97b90c2789a1e77e5a29a918455bd",
+    "src/world_codec.bend": "461e2bc342005831a3d16824303f79e1f4dac2dca0eaf0731d18052dbfe0bf86",
+    "tests/player_block_inside_stuck.bend": "51af6b95b011370b87f105322961dc094eea45de2c472b8a35a2f137c25309f8",
+    "tests/player_block_inside_sweep.bend": "f9b9de9b4af0645d65c6570a81e3bdc9e3a2f09fbfcd207e30435e51ae039c80",
+    "tools/reference_movement_probe.py": "e8500b4509fd12a47bd1c5c085fc04d00b8c18af4ad3d551487b323eec9d7736",
+    "tools/reference_player_block_inside_stuck_probe.py": "558b0e3595c28382f814e0ae131dee09198fb290c0915c75bef02e23b6b53089",
+    "tools/reference_player_block_inside_sweep_probe.py": "278a59e3ae61c6f136a8360a20ccf10bc18bd2ce5bc7322bedc88075670bf37c",
+    "tools/reference_travel_probe.py": "c99dc149a18838ba8fffc7096bca77ddef000f8cc846e52b4a98cbce0a6c8239",
+    "tools/test_nbt.py": "d81adb1a04baa13777e54abaaf1e20cbe97bc5d15c5cf2df047c4f17be2c8cdf",
+    "tools/test_player_block_inside_stuck.py": "80f7aea249b05ecefa4df555293372293a787d87c7102b67c0a4279d8f44ac9c",
+    "tools/test_player_block_inside_sweep.py": "3f76f61bb1624a4a58adbd26f5da6fe0a2309b33f4219861cee7676998975e68",
+    "tools/test_world_codec.py": "6c89a554e0d1a4301ca3bf85d75706780f5f7398f4c100fd1a582bc2653a559a"
+  },
+  "status": "failed",
+  "target_executed": false
+}
