@@ -570,7 +570,7 @@ def due_wall(world:W.State) -> IO(W.State):
   match world:
     case W.State{G.Engine{core,registry},body,yaw,pitch,Some{W.Palette{air,+stone,dirt,planks}},region,cache}:
       mutation_done(registry,Slot{W.View{body,yaw,pitch,Some{W.Palette{air,stone,dirt,planks}},region,cache},[]},
-        C.admit(core,C.Developer{},Q.Stamp{0n,8,1n},C.BlockSet{C.Position{"minecraft:overworld",0,2,0},stone}))
+        C.admit(core,C.Developer{},Q.Stamp{1n,8,1n},C.BlockSet{C.Position{"minecraft:overworld",0,2,0},stone}))
     case _: IO.die(W.State,3,"runtime due wall needs palette")
 
 def fixture_extra(id:String,world:W.State) -> IO(W.State):

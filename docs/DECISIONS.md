@@ -129,6 +129,14 @@ success-marker acceptance plus fresh host provenance/output routing, retaining
 all exit/error/group/listener, comparison and120s bounds. No production source,
 oracle, pixel input or native build change is authorized by that decision.
 
+That adoption passed independent admission a9bef92a and the complete paired suite
+in 75.489s. All 271 compared returned CPU images, six complete saved views and
+eight actual LocalPlayer fixture steps were independently replayed by the lead
+(0a1ef749). Forty registered groups and the supervisor are absent; all 34
+listeners closed. Preserve the original failure and narrow scope. Proceed with
+the already classified phase-harness stamp 0 to 1 correction and a new composite
+producer, reusing frozen Python comparisons and preserving all old artifacts.
+
 ## 2026-10-04: visible native acceptance is explicit
 
 Record real visible native presentation/input verification using computer use

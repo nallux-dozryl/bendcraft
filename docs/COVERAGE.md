@@ -27,7 +27,12 @@ now records the third failed monolithic attempt and successful Bend actor/
 renderer builds. Three actual hidden standing frames, atomic sample and full
 saved bundle pass and were independently replayed; the first paired suite then
 stopped at a host expectation rejecting the intended stop0 stderr marker. The
-remaining paired lanes are unrun and a narrow host adoption is pending.
+exact-marker host adoption then passed the full paired suite: six views, live
+edits, actual LocalPlayer fixture inputs, full save/reload, protocol and resource
+failure recovery, idle release and real timer callbacks. The lead recomputed
+271 compared returned CPU images (4,440,064 RGB pixels), six complete view
+bundles and eight actual records. Physical OS input, drawable/GPU presentation,
+general resources/gameplay and performance remain unverified.
 Each pins its current sources and receipts, states its measured domain and
 keeps independent kernel status separate. Parent obligations remain unchanged:
 a bounded projection or reproduced reference does not complete its broader

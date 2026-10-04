@@ -4594,10 +4594,15 @@
         "evidence/remote-resource-client-build.json": "f22ad690abc8a1f66f8e7a1c5189d519c74a13796c532cb906e5b0eb856e3f8d",
         "evidence/remote-resource-client-first-failure-decision.json": "d544c6d1cb2a413b0c3164ace6587b73531623c145988d0a1bc59e30ea34c9a9",
         "evidence/remote-resource-client-host-guards.json": "4cad9bb859230e1f36b40e9c62ab933b357ae1807278f381eb6ca44ed18d26c2",
+        "evidence/remote-resource-client-lifecycle-r1.json": "3202ed9ba7eabba90b5a26a511225374dafa3239901f9bab88694f1219f7db36",
         "evidence/remote-resource-client-lifecycle.json": "542236820845970736356e673edbf270ffe7295870ce7151cac5767db7fde8d6",
+        "evidence/remote-resource-client-native-r1.json": "5e2c8630dde335a2f638484d0d4f799ac460f2be2c492f6014232183a8cd6ed2",
         "evidence/remote-resource-client-native.json": "648ecabc9c94143e8e45e974ca0630acf50e86d73c6710c87021c7dea07243f7",
         "evidence/remote-resource-client-preflight.json": "6a67a483633d9c930034b5201f5372fd0c28dd68551df806c87ded068c259e3a",
+        "evidence/remote-resource-client-stop-marker-admission.json": "a9bef92ad22c19d5cb29a1dfb7eb184e39ee518ee0c32e0785a65d5f04325afb",
+        "evidence/remote-resource-client-stop-marker-adoption.json": "00ff76c064b317e573c68563ba6f99c71e720ccbdf1d995d8b1d1a0c0c29ad66",
         "evidence/remote-resource-first-view-root-audit.json": "6e50514e983ad4019e266d2e5ea44127223f0afc3c180864915584c3bea57027",
+        "evidence/remote-resource-paired-root-audit.json": "0a1ef749d204d63c762dc1edd3b814b5ff2b5e01bb1ae34ac3132888909cbac2",
         "evidence/remote-resource-renderer-root-audit.json": "ae1aa1bcf7191d6d9ddc6e65a44902d146b1c1bf63fb1c6d1b67c1d359ffdb91",
         "evidence/resource-player-boxed-client-native.json": "b906b49decebc6329d5cd3fdbddf9b9b70342a25c4fd9947cca5deed9dafdb28",
         "evidence/resource-player-boxed-client-preflight.json": "31cc4733b4f3105ea587fad4f01d16e5e1870b2928e92c3a9d860ef5555900b8",
@@ -4636,7 +4641,7 @@
         "remote_resource_client.bend",
         "src/remote_resource_presenter.bend"
       ],
-      "implementation_status": "split_native_artifacts_built_bounded_integration",
+      "implementation_status": "implemented_bounded_integration",
       "kind": "bounded_behavior_component",
       "parent_obligation": "behavior:rendering",
       "reference_evidence": [
@@ -4647,7 +4652,7 @@
       ],
       "reference_inventory_status": "captured_bounded_release_scope",
       "required_behavior": "Saved actual LocalPlayer actor joined to resource/visibility renderer and native Window.",
-      "scope_limit": "Original, boxed and monomorphic presented attempts produced no executable; the last supervisor lost child streams/return code during cleanup PermissionError. The changed two-process Bend consumer built the actual LocalPlayer backend once in236.320s and guarded resource renderer once in462.359s with no retries; root rehashed1710backend/3663renderer dependencies and artifacts. Its first paired run passed three hidden standing returned-image frames (49152RGBpixels), atomic sample, full LocalRecord/Core clock and exact saved bundle, independently replayed by the lead. At6.005s the host empty-stderr assertion rejected the exact intended stop0 success marker; source/emittedC review classifies a host expectation defect. All owned groups/listeners closed. Remaining five views, actual receiver, private protocol, live edits, reload and cadence lanes are unreached; narrow host adoption is pending. OS input/drawable readback, full resources/gameplay, latency and performance remain unverified.",
+      "scope_limit": "Three monolithic attempts produced no executable; the last lost raw child receipts in cleanup. The actual saved LocalPlayer backend and guarded resource renderer built once each, with all 1710/3663 dependencies independently rehashed. An initial standing-view pass then failed only at a host empty-stderr assertion against intended stop0 output; that history remains preserved. Exact-marker-only adoption retains both binaries and all critical comparisons. Its one full native suite passed in75.489s: six paused views, eight retained actual LocalPlayer outcomes via synthetic packets, six live queued edits, 18 public operations, complete saves/reload, nine malformed renderer replies, twelve private protocol cases, silent/partial idle cleanup, four resource/readback failures and recovery, and real50ms timer callbacks. Root recomputed all271 compared returned CPU images (4440064RGBpixels), six full view bundles and eight actual records; all40 registered groups plus supervisor absent, all34 listener ports closed. Live image oracle replay is conditional on observed atomic samples. Fixed neutral four-state finite-world/static-texture scope only; no physical OS input, drawable/GPU parity, strict latepoll race, stale-disconnect scheduling, general resource/gameplay, latency or performance claim.",
       "verification_evidence": [
         "evidence/resource-player-client-native.json",
         "evidence/resource-player-boxed-client-native.json",
@@ -4663,9 +4668,14 @@
         "evidence/remote-resource-client-native.json",
         "evidence/remote-resource-client-lifecycle.json",
         "evidence/remote-resource-client-first-failure-decision.json",
-        "evidence/remote-resource-first-view-root-audit.json"
+        "evidence/remote-resource-first-view-root-audit.json",
+        "evidence/remote-resource-client-stop-marker-adoption.json",
+        "evidence/remote-resource-client-stop-marker-admission.json",
+        "evidence/remote-resource-client-native-r1.json",
+        "evidence/remote-resource-client-lifecycle-r1.json",
+        "evidence/remote-resource-paired-root-audit.json"
       ],
-      "verification_status": "both_builds_and_first_standing_view_pass_host_stop_expectation_failure",
+      "verification_status": "native_paired_pixels_actual_input_protocol_save_reload_and_timer_pass",
       "whole_parent_parity_established": false
     },
     {

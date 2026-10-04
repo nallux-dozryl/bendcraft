@@ -19,6 +19,11 @@ from unittest import mock
 
 ROOT=PC.ROOT
 WORK=ROOT/'build/remote-resource-client'
+PRODUCER_WORK=WORK
+PRODUCER_READY=WORK/'ready.full.json'
+ADOPTION_ARCHIVE=WORK/'stop-marker-adoption-original'
+CONSUMER_READY=WORK/'runtime-stop-marker-r1/ready.full.json'
+ACTIVE_CONSUMER=None
 ENTRY=ROOT/'remote_resource_client.bend'
 PRESENTER=ROOT/'src/remote_resource_presenter.bend'
 BACKEND=ROOT/'remote_resource_server.bend'
@@ -136,7 +141,7 @@ def original_pins():
  return {str(ROOT/name):pin(ROOT/name) for name in names}
 
 def initial_view_generation():
- path=WORK/'pre-frustum-generation/manifest.full.json';value=json.loads(path.read_bytes());files=[]
+ path=PRODUCER_WORK/'pre-frustum-generation/manifest.full.json';value=json.loads(path.read_bytes());files=[]
  for row in value['files']:
   archived=pin(row['archive']);require(archived['sha256']==row['sha256'],'archived all-sky candidate changed:'+row['archive'])
   files.append(archived)
@@ -311,7 +316,123 @@ def audit():
  require(backend_ordinary_admission()==value['backend_ordinary'],'backend ordinary admission changed')
  audit_views(value['views'])
  for r in value['ordinary']:require(pin(r['receipt']['path'])==r['receipt'],'ordinary receipt changed')
+ if ACTIVE_CONSUMER is not None:
+  require(consumer_lineage()==value['host_adoption'],'consumer producer/artifact/failure lineage changed')
  return value
+
+def adoption_archive():
+ path=ADOPTION_ARCHIVE/'manifest.full.json'
+ require(pin(path)['sha256']=='1629b4c7eebf24c58c870ae43b312b070da59a0f044eb3dc32cfe642ff515d23','original adoption archive seal changed')
+ value=json.loads(path.read_bytes())
+ require(len(value['files'])==151,'original archive cardinality changed')
+ own=str(Path(__file__).resolve())
+ for row in value['files']:
+  require(pin(row['archive'])['sha256']==row['sha256'] and pin(row['archive'])['bytes']==row['bytes'],'archived original bytes changed:'+row['archive'])
+  if row['original']!=own:
+   current=pin(row['original']);require(current['sha256']==row['sha256'] and current['bytes']==row['bytes'],'retained original producer/output changed:'+row['original'])
+ original=next(row for row in value['files'] if row['original']==own)
+ require(original['sha256']=='007146823befd1438df19a3a248b4fb91601c451a1478d59abe565737f1f9e4c','wrong archived executed runner')
+ return {'manifest':pin(path),'files':len(value['files']),'original_runner':pin(original['archive'])}
+
+def producer_admission():
+ require(pin(PRODUCER_READY)['sha256']=='3465023b0be24bcb6a40fe3edf7d28b3faa4ce5935f545f12dbd26f0de9967ec','original producer ready changed')
+ value=json.loads(PRODUCER_READY.read_bytes());body={k:v for k,v in value.items() if k!='seal_sha256'}
+ require(value['seal_sha256']==digest(canonical(body)),'original producer seal invalid')
+ original=copy.deepcopy(value['generation']);current=source_generation();own=str(Path(__file__).resolve())
+ require(original['tools'][own]['sha256']=='007146823befd1438df19a3a248b4fb91601c451a1478d59abe565737f1f9e4c','wrong producer tool pin')
+ original['tools'][own]=current['tools'][own]
+ require(current==original,'host adoption changed non-runner source/effect/helper/resource/original closure')
+ audit_views(value['views'])
+ require(decoder_admission()==value['decoder_source'] and backend_ordinary_admission()==value['backend_ordinary'],'retained decoder/backend source admission changed')
+ for row in value['ordinary']:require(pin(row['receipt']['path'])==row['receipt'],'retained ordinary receipt changed')
+ return value
+
+def artifact_admission():
+ outputs=[]
+ for report_path,binary,expected in ((BACKEND_BUILD,BACKEND_BINARY,'9a779e6f867d42929e45750e7caec73e86795bc5b29e8fd255bb9527398bb878'),
+       (BUILD,BINARY,'7a5e7632457e33fd04a274ec69ab0d9107730042d7a0ee919d2cadf5a2e47765')):
+  report=json.loads(report_path.read_bytes());require(report['binary_sha256']==expected and report['retries']==0,'wrong original native producer artifact')
+  require(pin(binary)['sha256']==expected and pin(report['artifact'])['sha256']==expected,'original executable/cache artifact changed')
+  for row in report['dependencies']:
+   actual=pin(row['path']);require(actual['sha256']==row['sha256'] and actual['bytes']==row['bytes'],'original full native dependency changed:'+row['path'])
+  outputs.append({'report':pin(report_path),'output':pin(binary),'cache_artifact':pin(report['artifact']),
+                  'dependencies':len(report['dependencies']),'dependency_manifest_sha256':digest(canonical(report['dependencies']))})
+ return outputs
+
+def adoption_delta():
+ old_path=ADOPTION_ARCHIVE/'outside/tools/test_remote_resource_client.py'
+ old_text=old_path.read_text();new_text=Path(__file__).read_text();old=ast.parse(old_text);new=ast.parse(new_text)
+ def definitions(tree):
+  result={}
+  for node in tree.body:
+   if isinstance(node,(ast.FunctionDef,ast.AsyncFunctionDef)):result[node.name]=ast.dump(node,include_attributes=False)
+   elif isinstance(node,ast.ClassDef):
+    for child in node.body:
+     if isinstance(child,(ast.FunctionDef,ast.AsyncFunctionDef)):result[node.name+'.'+child.name]=ast.dump(child,include_attributes=False)
+  return result
+ before=definitions(old);after=definitions(new);changed=sorted(k for k in before if before[k]!=after.get(k))
+ require(changed==['Backend.stop','audit','initial_view_generation','main','native'],'unapproved executed-definition AST delta:'+str(changed))
+ expected=old_path.read_text().replace("require(not self.err.read_bytes(),'backend emitted unexpected error')", "require(self.err.read_bytes()==b'resource backend stopped\\n','backend emitted unexpected error')")
+ require(definitions(ast.parse(expected))['Backend.stop']==after['Backend.stop'],'stop oracle changed beyond exact successful marker equality')
+ unchanged=sorted(k for k in before if before[k]==after[k])
+ require('native_once' in unchanged and 'pixels' in unchanged and 'decode_sample' in unchanged and 'prepare_views' in unchanged and 'scenario' in unchanged,'native suite/comparators/scenarios changed')
+ byte_identical={}
+ for name in('native_once','pixels','decode_sample','prepare_views','local_sample','scenario','joined_lanes','protocol_lanes','idle_release_lanes','actual_local_receivers','renderer_protocol_faults','resource_failure_lanes','cadence_lane'):
+  original=next(n for n in old.body if isinstance(n,ast.FunctionDef) and n.name==name)
+  current=next(n for n in new.body if isinstance(n,ast.FunctionDef) and n.name==name)
+  old_bytes=ast.get_source_segment(old_text,original).encode();new_bytes=ast.get_source_segment(new_text,current).encode()
+  require(old_bytes==new_bytes,'native scenario/comparator bytes changed:'+name);byte_identical[name]=digest(old_bytes)
+ return {'archive_runner':pin(old_path),'current_runner':pin(Path(__file__)),'changed_existing_definitions':changed,
+         'unchanged_definitions':unchanged,'unchanged_definition_count':len(unchanged),
+         'new_definitions':sorted(set(after)-set(before)),'native_once_and_comparators_byte_AST_unchanged':True,
+         'exact_original_scenario_definition_byte_sha256':byte_identical,
+         'source_diff_sha256':digest(''.join(__import__('difflib').unified_diff(old_path.read_text().splitlines(True),Path(__file__).read_text().splitlines(True),fromfile='producer',tofile='consumer')).encode())}
+
+def consumer_lineage():
+ archived=adoption_archive();producer_admission()
+ return {'archive':archived,'producer_ready':pin(PRODUCER_READY),'producer_seal_sha256':'7ee6a82e7b18faaf459d2a67b412e84b46e7d2f6d815fe26c00cdf8047d43578',
+         'artifacts':artifact_admission(),'original_failure':pin(ROOT/'evidence/remote-resource-client-native.json'),
+         'original_lifecycle':pin(ROOT/'evidence/remote-resource-client-lifecycle.json'),
+         'independent_decision':pin(ROOT/'build/review-remote-resource-client/first-native-failure-decision.json'),
+         'definition_delta':adoption_delta(),'allowed_semantic_delta':'exact successful stdin-stop stderr marker only',
+         'native_Bend_inputs_reference_pixels_oracles_unchanged':True,'new_build_emission_forbidden':True}
+
+def adopt_stop_marker(args):
+ require(ACTIVE_CONSUMER is None and not CONSUMER_READY.exists(),'consumer already active or adopted; no automatic regeneration')
+ lineage=consumer_lineage();old=producer_admission();value=copy.deepcopy(old)
+ value['generation']=source_generation();value['host_adoption']=lineage
+ value['runtime_root']=str(CONSUMER_READY.parent);value['native_evidence']=str(ROOT/'evidence/remote-resource-client-native-r1.json')
+ value.pop('seal_sha256');value['seal_sha256']=digest(canonical(value))
+ CONSUMER_READY.parent.mkdir(exist_ok=False);write(CONSUMER_READY,value,True)
+ return {'status':'stop-marker-host-consumer-prepared_no_native_replay','ready':pin(CONSUMER_READY),'seal_sha256':value['seal_sha256'],'host_adoption':lineage}
+
+def activate_consumer(path):
+ global WORK,READY,GROUPS,NATIVE,ACTIVE_CONSUMER
+ path=Path(path).resolve();require(path==CONSUMER_READY.resolve(),'unexpected consumer ready path')
+ value=json.loads(path.read_bytes());body={k:v for k,v in value.items() if k!='seal_sha256'}
+ require(value['seal_sha256']==digest(canonical(body)),'invalid adopted consumer seal')
+ require(value['host_adoption']==consumer_lineage(),'adopted producer/artifact/failure lineage changed')
+ require(value['runtime_root']==str(CONSUMER_READY.parent) and value['native_evidence']==str(ROOT/'evidence/remote-resource-client-native-r1.json'),'consumer output route changed')
+ WORK=CONSUMER_READY.parent;READY=CONSUMER_READY;GROUPS=WORK/'native-owned-groups.ndjson'
+ NATIVE=ROOT/'evidence/remote-resource-client-native-r1.json';ACTIVE_CONSUMER=str(path)
+ return audit()
+
+def consumer_modes(args):
+ require(not any(getattr(args,name,False) for name in('prepare','build_only','backend_build_only','_emit','_backend_emit','adopt_stop_marker')),
+         'adopted consumer forbids preparation/build/emission modes')
+
+def adoption_host_guards():
+ before=consumer_lineage();controls=[]
+ for name in('prepare','build_only','backend_build_only','_emit','_backend_emit','adopt_stop_marker'):
+  try:consumer_modes(argparse.Namespace(**{name:True}))
+  except AssertionError as e:require(str(e)=='adopted consumer forbids preparation/build/emission modes','forbidden consumer route raised wrong diagnostic')
+  else:raise AssertionError('forbidden consumer route accepted:'+name)
+  controls.append(name)
+ for data,accepted in((b'resource backend stopped\n',True),(b'',False),(b'resource backend stopped',False),(b'resource backend stopped\nextra\n',False)):
+  require((data==b'resource backend stopped\n')==accepted,'exact stop marker guard changed')
+ require(consumer_lineage()==before,'adoption generation drifted during inert controls')
+ return {'status':'passed_inert_adoption_guards','forbidden_routes':controls,'exact_stop_marker_controls':4,
+         'lineage':before,'new_native_build_java_UI_executions':0}
 
 
 class UnretriedInputDrift(RuntimeError):pass
@@ -477,7 +598,7 @@ class Backend:
   write(self.directory/'process.full.json',value,True)
   if not failed:
    require(self.proc.returncode==0 and result['leader_reaped'] and result['live_group_absent'] and not errors,'backend explicit stop failed')
-   require(not self.err.read_bytes(),'backend emitted unexpected error')
+   require(self.err.read_bytes()==b'resource backend stopped\n','backend emitted unexpected error')
   for port in(self.port,self.private_port):
    with socket.socket() as probe:probe.settimeout(.5);require(probe.connect_ex(('127.0.0.1',port))!=0,'backend left listener after exit')
 
@@ -684,11 +805,13 @@ def native(args):
  audit();require(not GROUPS.exists(),'paired native ownership registry already exists')
  result=None
  try:
-  result=bounded([sys.executable,Path(__file__),'--_native-once','--lead-slot-granted',
-                  '--backend-build-report',args.backend_build_report],120,'native-supervisor')
+  argv=[sys.executable,Path(__file__),'--_native-once','--lead-slot-granted',
+        '--backend-build-report',args.backend_build_report]
+  if ACTIVE_CONSUMER is not None:argv+=['--consumer-ready',ACTIVE_CONSUMER]
+  result=bounded(argv,120,'native-supervisor')
  finally:
   rows=registered_cleanup();write(WORK/'native-supervisor-groups.full.json',rows,True)
-  write(ROOT/'evidence/remote-resource-client-lifecycle.json',{'process':result,'registered_group_cleanup':rows,
+  write(ROOT/('evidence/remote-resource-client-lifecycle-r1.json' if ACTIVE_CONSUMER is not None else 'evidence/remote-resource-client-lifecycle.json'),{'process':result,'registered_group_cleanup':rows,
          'native_worker_result':pin(NATIVE) if NATIVE.exists() else None},True)
  require(all(not live(r['after']) and not r['errors'] for r in rows),'paired registered group cleanup failed')
  process_ok(result);require(json.loads(NATIVE.read_bytes())['status']=='passed_bounded_joined_domain','native worker first failure')
@@ -954,18 +1077,23 @@ def host_guards():
 
 def main():
  p=argparse.ArgumentParser(description=__doc__);g=p.add_mutually_exclusive_group()
- for name in('prepare','audit','host-guards','build-only','backend-build-only','native','_emit','_backend-emit','_native-once'):g.add_argument('--'+name,action='store_true',dest=name.replace('-','_'))
+ for name in('prepare','audit','host-guards','adoption-host-guards','adopt-stop-marker','build-only','backend-build-only','native','_emit','_backend-emit','_native-once'):g.add_argument('--'+name,action='store_true',dest=name.replace('-','_'))
  p.add_argument('--lead-slot-granted',action='store_true');p.add_argument('--backend-build-report',type=Path)
+ p.add_argument('--consumer-ready',type=Path)
  args=p.parse_args()
+ if args.consumer_ready:
+  consumer_modes(args);activate_consumer(args.consumer_ready)
  if args._emit:return emit(args)
  if args._backend_emit:return backend_emit(args)
  if args._native_once:return native_once(args)
  if args.prepare:value=prepare()
+ elif args.adopt_stop_marker:value=adopt_stop_marker(args)
+ elif args.adoption_host_guards:value=adoption_host_guards()
  elif args.build_only:value=build(args)
  elif args.backend_build_only:value=backend_build(args)
  elif args.native:value=native(args)
  elif args.host_guards:value=host_guards()
  else:value={'status':'prepared-generation-read-only-audit-passed','ready':pin(READY),'seal_sha256':audit()['seal_sha256']}
- print(json.dumps(value if args.host_guards else {k:v for k,v in value.items() if k in('schema','status','seal_sha256','ready','process','binary')},indent=2),flush=True)
+ print(json.dumps(value if args.host_guards else {k:v for k,v in value.items() if k in('schema','status','seal_sha256','ready','process','binary','forbidden_routes','exact_stop_marker_controls')},indent=2),flush=True)
 
 if __name__=='__main__':main()

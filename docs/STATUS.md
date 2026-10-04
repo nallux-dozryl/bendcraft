@@ -45,9 +45,18 @@ the host required empty backend stderr, although the source and compiled halt
 path intentionally print the exact success marker and exit 0. Independent
 review classifies this as a host expectation defect with high confidence. All
 owned groups are absent and both listeners closed. Preserve the failed
-generation; only exact success-marker acceptance and fresh host output routing
-are being prepared. The other five views and remaining joined runtime lanes
-have not run. Both slots are free. Earlier
+generation. The exact success-marker adoption is sealed (runner a99f4e77,
+ready f82e5f49); independent admission a9bef92a passes, preserving thirteen
+critical runtime/comparison definitions byte-for-byte and both artifacts.
+Its one paired suite passed in 75.489 seconds: six paused views, eight retained
+actual LocalPlayer steps, live queued edits, full save/reload, private protocol
+and malformed renderer replies, idle input release, resource/readback failure
+recovery and the real actor timer. The lead recomputed all 271 compared returned
+CPU images (4,440,064 RGB pixels), six complete saved view bundles and eight
+actual records. All 40 registered groups and the supervisor are absent; all
+34 recorded listener ports closed. Both slots are free. This establishes the
+declared bounded integration; physical OS controls, drawable/GPU presentation,
+general resources, complete gameplay and performance remain unverified. Earlier
 resource-entry timeouts, the empty host-loader diagnostics and unsymbolized
 sample do not identify a compiler bottleneck.
 
@@ -76,7 +85,11 @@ The frozen 755-case codec passed twice (1,510 executions). The shared phase corp
 then stopped because its frozen fixture schedules tick 0 against a fresh tick-0
 Core, which requires a future tick. Its incomplete prefix is unvalidated by the
 unchanged comparator; facade and second primary suite did not run. Correcting
-that harness requires a new executable and is queued after the resource client.
+that harness requires a new executable. With the resource pair verified, its
+sole tick-0 to tick-1 fixture correction is applied (SHA9589c371) and passes
+ordinary checking in 1.934 seconds. The old harness and failure receipts are
+archived; frozen Python helpers, production runtime and references are unchanged.
+A new composite producer is being designed; no native build is granted yet.
 The lead rehashed all 1,693 native dependencies and the binary/receipt/manifest;
 actual Clang-used C equals the cached emitted C. Historical preparation docs
 remain frozen; current results are in the retained host3 partial evidence.

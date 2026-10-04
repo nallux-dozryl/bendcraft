@@ -35,9 +35,18 @@ fixture is a verification instrument; none satisfies a gameplay completion gate.
    code intentionally print exact success marker and exit0; independent
    decision d544c6d1 classifies a host expectation defect. The lead recomputed
    all three pixels/sample/fullbundle (6e50514e). All owned groups/listeners
-   closed. Preserve the failed generation and both binaries; prepare only exact
-   stop-marker acceptance with a new host seal/output directory. Remaining
-   five views/actual receiver/protocol/liveedit/reload/cadence lanes are unrun.
+   closed. The exact stop-marker host adoption is sealed (runner a99f4e77,
+   ready f82e5f49/payload dbf03054), preserving thirteen critical definitions
+   byte-for-byte, all other inputs and both binaries. Independent admission
+   a9bef92a passes. The one full paired run passed in 75.489 seconds. It covers
+   all six views, eight actual LocalPlayer outcomes, six queued edits, the
+   unchanged 18-operation public API, full save/reload, nine malformed renderer
+   replies, twelve private protocol cases, silent/partial idle release, four
+   resource/readback failures with recovery and actual timer cadence. The lead
+   recomputed 271 returned images/4,440,064 RGB pixels, six full view bundles
+   and all eight actual records. All 40 registered groups plus the supervisor
+   are absent and all 34 listeners closed; slot A released. Hidden CPU images
+   do not establish visible controls, drawable/GPU parity or full gameplay.
    No retry of the
    same monolithic source generation.
    Required outcome: actual integrated executable,
@@ -69,9 +78,12 @@ fixture is a verification instrument; none satisfies a gameplay completion gate.
    37exact saves, 50refusals including all five interruption/restarts), and the
    frozen codec passed twice (1,510executions). The phase harness then stopped on
    its tick0 admission against a fresh tick0 Core; no incomplete-prefix comparison
-   is accepted. Correcting the fixture requires a new executable, queued after
-   the actual resource pair. Facade and second primary suite remain unrun. No
-   current harness/source/helper edits. Preserve existing
+   is accepted. The resource pair now passes, so authorize only that harness
+   stamp 0 to 1 correction. It is applied (SHA9589c371), with its original
+   bytes archived and ordinary checking passed in 1.934 seconds. A new
+   composite producer must reuse the frozen Python helpers and
+   comparisons, then verify the full phase corpus/facade/second primary suite.
+   No production/helper/reference changes or new emission grant yet. Preserve existing
    phase/reference generations and verify the final consumer generation.
    Required outcome: one shared 20 Hz input/tick/save actor, ordered
    Core/common/input/travel/rotation/pose phases, exact supported metadata across
@@ -81,8 +93,8 @@ fixture is a verification instrument; none satisfies a gameplay completion gate.
 Finish in-flight slab/fall host repairs and freeze their useful evidence. Defer
 new standalone feature libraries, expanded reference inventories and peripheral
 receipt polish unless they unblock these two outcomes or fix a concrete defect.
-At most two heavy jobs may run; both slots are free while the resource paired
-host stop-oracle adoption is prepared and reviewed. Foreground
+At most two heavy jobs may run; both slots are free while the narrow phase
+fixture correction and new composite producer design are prepared. Foreground
 validation remains pending the user's coordination;
 no duplicate request or unsolicited foreground launch.
 
