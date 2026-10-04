@@ -143,15 +143,42 @@ failure. Both failed generations remain intact; a subsequent attempt requires
 a substantive correction. See
 `evidence/generic_resource_world_sample_client_native_002.json`.
 
-The independent generic runtime helper admits the actual Actor016 artifact,
-matches its unchanged Wire/GS DTOs and verifies saved degrees project to the
-same camera radians. Its backend/renderer inputs explicitly pin the official
+The independent generic runtime helper's recorded preparation admitted the
+actual Actor016 artifact, matched its unchanged Wire/GS DTOs and verified saved
+degrees project to the same camera radians. At launch it resolves and pins the
+current actor through the existing boundary owner, now producer017. Its
+backend/renderer inputs explicitly pin the official
 registry and installed JAR. The inherited 20-second actor startup bound has
 been replaced in this new helper by fixed 120-second readiness and 180-second
 lifetime bounds using the existing actual process owner. These are adapter
 preparations, not an executed generic client test. The complete 128-pixel
 Java-geometry/current-CPU oracle, exact 512-cell sample, typed save/cold reload
 and unloaded-glass refusal await a successful client build.
+
+The generation002 work telemetry isolated the actual numeric scanners as the
+dominant repeated emitter work. A private scalar-continuation substitution has
+now been adopted narrowly in `block_model.int_scan` and
+`blockstate_model.scan_number`: each exponent update is computed once, then a
+Bool guard invokes the unchanged recursive continuation or returns the exact
+old error. Wrapped U32 arithmetic, threshold100000, all scanner arguments and
+all other decoder bytes remain unchanged. Original compiler files and frozen
+client001/002 are preserved.
+
+Both focused baseline and candidate native harnesses matched45 pinned-Java
+numeric cases (90 observations). Accepted outputs match the complete existing
+projections; rejected inputs match rejection status. Four extra exponent-limit
+inputs per variant preserve exact old/new errors, without claiming Java parity
+outside the existing bounded parser. Six arbitrary continuation laws passed
+ordinary checking; their initial six-root Safe export hit its60-second cap and
+produced no kernel artifact. Whole-parser equivalence is not established.
+
+The same focused harnesses produced13.04%/18.80% less C for model/blockstate;
+scanner-plus-guard emitted lines fell23.99%/36.48%. Observed emission elapsed
+times were62.382→37.285 seconds and82.763→51.122 seconds. These are focused
+compiler measurements, not full-client or game speed claims. See
+`evidence/generic_resource_world_sample_numeric_continuations_adoption.json`.
+A fresh generic003 consumer generation is the next full build; it must consume
+the actual changed source and pass native transport/pixels/save/reload.
 
 The profile is an explicit coverage instrument, not the normal product's
 content boundary. The registry-backed demand-loader plan is recorded in

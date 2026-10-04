@@ -1,0 +1,66 @@
+{
+  "additional_bounded_refusals_per_variant": 4,
+  "changes": [
+    {
+      "after_sha256": "40e89cd6fb2335526cf5f48d7fc6c92c669fa0123fbfc7652f676d39f552c9a7",
+      "before_sha256": "08108bae9b89c6768de56bdddea158f3604b36c7de4ee0408815e2c7f48b97a1",
+      "bytes": 41987,
+      "path": "src/block_model.bend"
+    },
+    {
+      "after_sha256": "2ba9e4e6ceaaa5a7734cae0c46c4c4512e41218b94defe05aea2573089bbfd8d",
+      "before_sha256": "d084876d32e232c3869be84bc07535b491274695bd91529c5fae159b290cdc57",
+      "bytes": 46230,
+      "path": "src/blockstate_model.bend"
+    }
+  ],
+  "confidence": "high for scoped continuation substitution and recorded native corpus; full client build/runtime pending",
+  "focused_C": {
+    "bytes": 7088,
+    "path": "build/generic-resource-world-sample-numeric-continuations-001/candidate-001/focused-native-001/focused-C-comparison.json",
+    "sha256": "f5b8a8d742691e12993e4940e4527ad1e53dc01de7a71049353043678fb0eb95"
+  },
+  "focused_clang": {
+    "bytes": 2239,
+    "path": "build/generic-resource-world-sample-numeric-continuations-001/candidate-001/focused-native-001/clang-result.json",
+    "sha256": "1e29131d4431156bf36c1a20da92dabc4fd9947173622eec6b4d7f16251747ed"
+  },
+  "law_sources": [
+    {
+      "bytes": 3896,
+      "path": "src/generic_resource_world_sample_numeric_continuations_laws.bend",
+      "sha256": "8f4c5cfd2ec182886825833c46396c0a8a689976b2860c960fe72a5d45144603"
+    },
+    {
+      "bytes": 1598,
+      "path": "src/generic_resource_world_sample_numeric_continuations_proof.bend",
+      "sha256": "49fe7a0268256a25116b239f70ce6ca7a5fd30021dfa35a9b347d2b1d57db4e9"
+    }
+  ],
+  "native_cases_per_variant": 45,
+  "native_observations": 90,
+  "native_observations_receipt": {
+    "bytes": 1126377,
+    "path": "build/generic-resource-world-sample-numeric-continuations-001/candidate-001/focused-native-001/native-observations.json",
+    "sha256": "5a3bce8fb92ea844be772145f81ab2022a1f17bff43c2544cc39082ed8ba689d"
+  },
+  "native_verdict": {
+    "bytes": 818,
+    "path": "build/generic-resource-world-sample-numeric-continuations-001/candidate-001/focused-native-001/native-result.json",
+    "sha256": "ba1d1f0284c31592a4e121a1d0b8cce49098ae5cc3ab0fc178dd84090b8cd8b0"
+  },
+  "ordinary_checked_laws": 6,
+  "private_ordinary_receipt": {
+    "bytes": 1527,
+    "path": "build/generic-resource-world-sample-numeric-continuations-001/candidate-001/validation-001/ordinary-check-result.json",
+    "sha256": "6a3248bcb0a79b060dc1a7e89bde5a596dbbe78ff6a0004e9e39dbe321f4a78c"
+  },
+  "scope": [
+    "Only int_scan/scan_number exponent branches and their narrow Bool guard helpers changed; all other production source bytes in both modules match the original baseline.",
+    "The exact original wrapped U32 update,100000 threshold,continuation arguments and error payloads are preserved.",
+    "Six arbitrary continuation laws passed ordinary checking; six-root Safe export reached60-second cap with no kernel artifact. No independent-kernel or whole-parser equivalence claim is made here.",
+    "Both focused baseline and candidate each matched45 pinned-Java cases; all successful projected fields match, and rejection status matches. Four extra exponent-limit cases compare exact baseline/candidate errors without Java parity claim.",
+    "Original compiler and immutable generic-client001/002 remain untouched. Fresh generic003 must use the actual changed production source and complete the actual consumer build/runtime."
+  ],
+  "status": "verified_narrow_production_adopted_full_client_pending"
+}

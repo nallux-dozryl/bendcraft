@@ -244,6 +244,12 @@ def identifier(text: String, path: String) -> Result<&2, &2, Error, String>:
 type IntToken is Data:
   IntToken{digits: List<&2, U32>, fraction: U32, exponent: U32, exponent_negative: Bool, negative: Bool}
 
+def int_exponent_guard(next: U32, allowed: Bool,
+  continuation: U32 -> Result<&2, &2, Error, IntToken>) -> Result<&2, &2, Error, IntToken>:
+  match allowed:
+    case True{}: continuation(next)
+    case False{}: fail(IntToken, "UnsupportedIntegerExponent", "integer")
+
 def int_scan(text: String, +stage: U32, reversed: List<&2, U32>, +fraction: U32, +exponent: U32,
   +exponent_negative: Bool, +negative: Bool) -> Result<&2, &2, Error, IntToken>:
   match text:
@@ -263,12 +269,9 @@ def int_scan(text: String, +stage: U32, reversed: List<&2, U32>, +fraction: U32,
             case 0: int_scan(rest, stage, U32.sub(c, 48) <> reversed, fraction, exponent, exponent_negative, negative)
             case 1: int_scan(rest, stage, U32.sub(c, 48) <> reversed, U32.add(fraction, 1), exponent, exponent_negative, negative)
             case _:
-              do Result<&2, &2, Error, IntToken>:
-                next : U32 <- J.choose(Result<&2, &2, Error, U32>,
-                  Done{U32.add(U32.mul(exponent, 10), U32.sub(c, 48))},
-                  fail(U32, "UnsupportedIntegerExponent", "integer"),
-                  U32.is_le(U32.add(U32.mul(exponent, 10), U32.sub(c, 48)), 100000))
-                int_scan(rest, stage, reversed, fraction, next, exponent_negative, negative)
+              +next = U32.add(U32.mul(exponent, 10), U32.sub(c, 48))
+              int_exponent_guard(next, U32.is_le(next, 100000),
+                value => int_scan(rest, stage, reversed, fraction, value, exponent_negative, negative))
 
 def digit_word(fuel: Nat, digits: List<&2, U32>, acc: U32) -> U32:
   match fuel digits:

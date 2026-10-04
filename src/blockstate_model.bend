@@ -113,6 +113,12 @@ def strict_boolean(+value:J.Value,+path:String) -> Result<&2,&2,Error,Bool>:
 def signed_show(+word:U32) -> String:
   choose_value(String,"-" ++ U32.show(U32.sub(0,word)),U32.show(word),U32.is_ge(word,2147483648))
 
+def scan_number_exponent_guard(next:U32,allowed:Bool,path:String,
+  continuation:U32 -> Result<&2,&2,Error,NumberParts>) -> Result<&2,&2,Error,NumberParts>:
+  match allowed:
+    case True{}: continuation(next)
+    case False{}: fail(NumberParts,"IntegerExponentLimit",path,"Exponent magnitude exceeds 100000")
+
 def scan_number(+text:String,+stage:U32,+digits:List<&2,U32>,+fraction:U32,+exponent:U32,+eneg:Bool,+negative:Bool,+path:String)
   -> Result<&2,&2,Error,NumberParts>:
   match text:
@@ -130,11 +136,9 @@ def scan_number(+text:String,+stage:U32,+digits:List<&2,U32>,+fraction:U32,+expo
             case 0: scan_number(rest,stage,U32.sub(c,48) <> digits,fraction,exponent,eneg,negative,path)
             case 1: scan_number(rest,stage,U32.sub(c,48) <> digits,U32.add(fraction,1),exponent,eneg,negative,path)
             case _:
-              do Result<&2,&2,Error,NumberParts>:
-                next:U32 <- choose_value(Result<&2,&2,Error,U32>,Done{U32.add(U32.mul(exponent,10),U32.sub(c,48))},
-                  fail(U32,"IntegerExponentLimit",path,"Exponent magnitude exceeds 100000"),
-                  U32.is_le(U32.add(U32.mul(exponent,10),U32.sub(c,48)),100000))
-                scan_number(rest,stage,digits,fraction,next,eneg,negative,path)
+              +next = U32.add(U32.mul(exponent,10),U32.sub(c,48))
+              scan_number_exponent_guard(next,U32.is_le(next,100000),path,
+                value => scan_number(rest,stage,digits,fraction,value,eneg,negative,path))
 def digit_word(+fuel:Nat,+digits:List<&2,U32>,+acc:U32) -> U32:
   match fuel digits:
     case 1n+p h <> rest: digit_word(p,rest,U32.add(U32.mul(acc,10),h))
