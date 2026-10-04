@@ -1,0 +1,301 @@
+{
+  "all_original_declaration_maps_retained": true,
+  "artifact": {
+    "bytes": 3842208,
+    "file": "selected.bendtt",
+    "sha1": "15f30b7c93da9ad30107b9f672afe872ae4922b6",
+    "sha256": "c580f5b84f56ddbe765c60d68a19b70bc13ff854a53fd924349a66db896e07aa"
+  },
+  "checked_types_and_bodies_unchanged": true,
+  "compiler_api": [
+    {
+      "bytes": 137761,
+      "file": "bend.ts",
+      "sha1": "2105cb635e087b686b1bc5c4b6b139660eeb3db9",
+      "sha256": "7deae3693eb896f33c73867081b99d2c6f3ed3b57e77e55eb5f6260840dd0e63"
+    },
+    {
+      "bytes": 63418,
+      "file": "safe.ts",
+      "sha1": "0b72424978b2acf7eb30f53d9b01b96f267dbcac",
+      "sha256": "54cb3a534ab7cc9ee313bf6383b3948ccdcac022469b3020e00745bbfe6f7e04"
+    }
+  ],
+  "export_script": {
+    "bytes": 4732,
+    "file": "player_block_inside_sweep_proof.mjs",
+    "sha1": "22c8e2e51200e66e5912f15b8d4b1c9e17a84ee2",
+    "sha256": "e69fc56297369bb4d879b053f36ff74941490cd6cfd45bf5cdc6ddae5ea87878"
+  },
+  "folder": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-sweep-proof/1791138136801246000",
+  "kernel": {
+    "bytes": 3271216,
+    "file": "bendtt",
+    "sha1": "f19dfe8aec3b3911b6c9f0acae2a54f5b05ca5f0",
+    "sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7"
+  },
+  "laws": 23,
+  "node": {
+    "bytes": 77577344,
+    "file": "node",
+    "sha1": "606616eb1de7b4974f98c95de3a88e21aaa37249",
+    "sha256": "ec307018e1e8b80d68588b01ce6e9f8f9b8f4a03412c513b0fc3ac4d0f5db799"
+  },
+  "receipts": [
+    {
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_block_inside_sweep_proof.bend",
+        "--check-only"
+      ],
+      "exit_code": 0,
+      "group_absent": true,
+      "pid": 844,
+      "seconds": 24.984198,
+      "stderr": {
+        "bytes": 0,
+        "file": "ordinary.stderr",
+        "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 58,
+        "file": "ordinary.stdout",
+        "sha1": "7ac487c4af0e6a0b7df1ebae438bf1c0ffe5e478",
+        "sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1"
+      },
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+        "--experimental-transform-types",
+        "--stack-size=4096",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/player_block_inside_sweep_proof.mjs",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-sweep-proof/1791138136801246000"
+      ],
+      "exit_code": 0,
+      "group_absent": true,
+      "pid": 1021,
+      "seconds": 41.639546,
+      "stderr": {
+        "bytes": 176,
+        "file": "export.stderr",
+        "sha1": "35fdcee0f6a4ca52ec5bb0b5ddbda62c379af4db",
+        "sha256": "65a0053a0413abfc4f2bbb10f13de721e1c94a07697984eca498b21f2f337757"
+      },
+      "stdout": {
+        "bytes": 2152,
+        "file": "export.stdout",
+        "sha1": "24ff91174f04db1bbb76c7029fe508b76ff739a4",
+        "sha256": "d23786252bd6e9e18b36cfde33d22f32408e35b4bb343d23caf43bcf5c5a7e3a"
+      },
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/env",
+        "LEAN_STACK_SIZE=4194304",
+        "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-inside-sweep-proof/1791138136801246000/selected.bendtt"
+      ],
+      "exit_code": 0,
+      "group_absent": true,
+      "pid": 1284,
+      "seconds": 0.896163,
+      "stderr": {
+        "bytes": 0,
+        "file": "independent-kernel.stderr",
+        "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 17,
+        "file": "independent-kernel.stdout",
+        "sha1": "ba8ec8289ea6f6e6fec687b636c07f05c26d0a8b",
+        "sha256": "61b73cda11b6b665b9f99f2defd3d3b57f985c865225e942a5bdaa594a503e47"
+      },
+      "timed_out": false
+    }
+  ],
+  "roots": [
+    "player_block_inside_sweep_laws:next_segment_resets_only_local_seen_and_step",
+    "player_block_inside_sweep_laws:duplicate_crossing_does_not_advance_collector_or_visit_trace",
+    "player_block_inside_sweep_laws:vanilla_step_limit_stops_without_work_budget_error",
+    "player_block_inside_sweep_laws:initial_range_keeps_duplicate_visits_but_not_duplicate_keys",
+    "player_block_inside_sweep_laws:actual_air_read_preserves_receiver_and_global_seen",
+    "player_block_inside_sweep_laws:actual_duplicate_read_keeps_callbacks_and_collector_unchanged",
+    "player_block_inside_sweep_laws:callback_refusal_wins_over_later_traversal_failure",
+    "player_block_inside_sweep_laws:deferred_traversal_failure_discards_all_speculative_callbacks",
+    "player_block_inside_sweep_laws:read_budget_refusal_retains_complete_arbitrary_owner",
+    "player_block_inside_sweep_laws:failed_read_retains_world_registry_receiver_history_and_affine_tail",
+    "player_block_inside_sweep_laws:actual_core_refusal_retains_complete_sweep_owner",
+    "player_block_inside_sweep_laws:registry_decode_refusal_retains_every_owned_field",
+    "player_block_inside_sweep_laws:late_callback_service_refusal_discards_prior_effects",
+    "player_block_inside_sweep_laws:successful_sweep_commits_only_receiver_and_history",
+    "player_block_inside_sweep_laws:noncanonical_request_cannot_read_or_commit",
+    "player_block_inside_sweep_laws:authoritative_berry_uses_actual_known_movement_observation",
+    "player_block_inside_sweep_laws:other_authority_berry_uses_actual_old_minus_current",
+    "player_block_inside_sweep_laws:rejected_body_binding_retains_actual_motion_environment",
+    "player_block_inside_sweep_laws:completed_sweep_restores_every_motion_environment_field",
+    "player_block_inside_sweep_laws:existing_refusal_prevents_every_remaining_world_read",
+    "player_block_inside_sweep_laws:earliest_actual_read_refusal_prevents_later_reads",
+    "player_block_inside_sweep_laws:public_motion_join_installs_only_actual_successful_service_result",
+    "player_block_inside_sweep_laws:public_motion_join_preserves_full_owner_on_service_refusal"
+  ],
+  "scope": "Actual sweep segment dedup and vanilla-limit policy; ordered air/duplicate reads; arbitrary complete Core/Registry/receiver/history owner retention; late callback/read/traversal refusal precedence and speculation rollback; actual berry input branch independence; public full MH owner composition under named actual service premises. Traversal IEEE/geometry/order specification is independently observed against pinned Java and native tests, not claimed as proved by these laws.",
+  "scope_exclusions": [],
+  "selection": {
+    "bytes": 15199,
+    "file": "selection.json",
+    "sha1": "55e1a3fe882f868f69ee46a510500c2af2548eaa",
+    "sha256": "498abd356f8b38043c76b4c1963d74ca3d42b1e9c073104fddcb6c51d3c9feb5"
+  },
+  "source_pins": {
+    "bytes": 6521,
+    "file": "source-pins.json",
+    "sha1": "b263eb83890cdbaf67d736b98f6f731f5f1120b9",
+    "sha256": "7ad077c2197eb1cf7cf4d50f82e3062feb230366d5090d692a53bdcf7f05d037"
+  },
+  "status": "passed",
+  "term_pins": [
+    {
+      "checked_proof_sha256": "212ab35c3572425799849db1bd9fbf56eb8bd06bc88c09643c34932d5ead8251",
+      "name": "player_block_inside_sweep_laws:next_segment_resets_only_local_seen_and_step",
+      "source_body_sha256": "12c9a08ce47aeb85ecad4d969c12e3303064368be4d25ce136a5ab357bb15d08",
+      "type_sha256": "327313fe50336ef022774cb026f04583b5e7ba3a9532a709d768c08faff23bca"
+    },
+    {
+      "checked_proof_sha256": "09cc314d4002fceeea0cb84a93b0ffb298d7a31c7eae27b3e3c9bc72c65b82ca",
+      "name": "player_block_inside_sweep_laws:duplicate_crossing_does_not_advance_collector_or_visit_trace",
+      "source_body_sha256": "101aa2195e989a1fae4343a644e8445d935eb10e8043e82847b3cf33ea402787",
+      "type_sha256": "8fcfd70108cfe1aaa48afa4a5cda9971ae9d424fa004a64fa1af4efe6dffbc13"
+    },
+    {
+      "checked_proof_sha256": "fd70ab781c8d1475f6c09883b758cae2aff481c0cad6f5179164c8115282e56a",
+      "name": "player_block_inside_sweep_laws:vanilla_step_limit_stops_without_work_budget_error",
+      "source_body_sha256": "e134787e12d7d60846e3960903a126b56f35ba8752097496ec4d3b869fb83cd8",
+      "type_sha256": "a9fef0264783c4da7bb6e871d98c3e2a3738bf84ae9831c8502aa458f445a092"
+    },
+    {
+      "checked_proof_sha256": "ee03b16c07987ca6e59ccdb34e03f159e7d0357b159d796a5e14b20e5b2b64f0",
+      "name": "player_block_inside_sweep_laws:initial_range_keeps_duplicate_visits_but_not_duplicate_keys",
+      "source_body_sha256": "22c2cc174c72d63222c6aecfdbd94c0139a32a6e0e4250bd9b28b53bf1fdf370",
+      "type_sha256": "630fa1f0a5482aad6e88b3251882bcb2ae2ce4a0a2aca34f5562639d59d9cf98"
+    },
+    {
+      "checked_proof_sha256": "c824c5c11408c832597a19a3d6d8cf67ed23138fe619acb85be998a53c8f49fc",
+      "name": "player_block_inside_sweep_laws:actual_air_read_preserves_receiver_and_global_seen",
+      "source_body_sha256": "d680d1e811e6ebad6119006e66e5307c3ec1e9b2b2f98832d237cd6ad4d67da3",
+      "type_sha256": "d51514dc82f6121ed9f0e2ced2d65eac9cfc7fcd7dad31c15ef5a1b5755454b1"
+    },
+    {
+      "checked_proof_sha256": "c7d8fa646ab01631a231dbe15db682b8eccb188599948cfb091fd69e7c986145",
+      "name": "player_block_inside_sweep_laws:actual_duplicate_read_keeps_callbacks_and_collector_unchanged",
+      "source_body_sha256": "732569af9f52a688bef78f355f8ac043fa8ee076b2f27e65141e3eff27c15547",
+      "type_sha256": "e335e3fe122e588a6d77f08e817bc0e47334c8b8c16a5888b90e94da60dc0edf"
+    },
+    {
+      "checked_proof_sha256": "8194b5b6a57df88eb07f4d30aec3a521e9871a600b66aa2a632c05c80e2e87c3",
+      "name": "player_block_inside_sweep_laws:callback_refusal_wins_over_later_traversal_failure",
+      "source_body_sha256": "b1ada5228a6cb5a6fd6aeab87633b6d0c12258159a111cb3b163fed330e400e3",
+      "type_sha256": "4bc78a5d7600a473fa748334b60f347ea84378056d1148da20b9dff14cd316e3"
+    },
+    {
+      "checked_proof_sha256": "a4164df3679ec6d4067fb6385bfcc2b6a349b21f1176c4c87bf2d6b393c426f0",
+      "name": "player_block_inside_sweep_laws:deferred_traversal_failure_discards_all_speculative_callbacks",
+      "source_body_sha256": "bf8845d6a597c81b3294112ae1a3e1b5b5a403d5aa1ff7d2fc83fc4d801d53da",
+      "type_sha256": "94e25fc7c41e84020afc79388ee29db52d9724c88e6eb76c45b288cb4e4f3ef0"
+    },
+    {
+      "checked_proof_sha256": "73c4932ea3333dea36c64fa213f1880a1e699bb19095575b27cc24c27222ebcd",
+      "name": "player_block_inside_sweep_laws:read_budget_refusal_retains_complete_arbitrary_owner",
+      "source_body_sha256": "bcc607ca9a13aa8fbe07cccac33cbf0781f9700ae42f8f76dda084a8c6305760",
+      "type_sha256": "c01a0de38e2a3719afdf80b53ee4ab16dff368e2d1e0011de66820b407770211"
+    },
+    {
+      "checked_proof_sha256": "9d87e1b453cc38e604af4f43c73497f9c3ef585da43252e164347180ad75839d",
+      "name": "player_block_inside_sweep_laws:failed_read_retains_world_registry_receiver_history_and_affine_tail",
+      "source_body_sha256": "9fa0c1b72f002602c756815f16c1847204b0db184c43c38013e48ff8a6607f43",
+      "type_sha256": "634ef224914f9a4cf5028d5ef67bff7cf99f2d52fe5ffedbd63cea3cae083c8c"
+    },
+    {
+      "checked_proof_sha256": "637590d6a460fce3ea0ad288d5a368835c5f9e27579e48100d8f73da6979bcfa",
+      "name": "player_block_inside_sweep_laws:actual_core_refusal_retains_complete_sweep_owner",
+      "source_body_sha256": "798252d27ee67f6fc4f0366d8af834ce768827ca29c4209f414681aa98c6303f",
+      "type_sha256": "13a7a848bb0f4d428f17fede21013ddf76739bb6a5955362fe1d53587df0e09f"
+    },
+    {
+      "checked_proof_sha256": "3bbd0c5e8a95a2f8070d4703f58de54cd1e3cdb48ade6b2e375151b91849a6d0",
+      "name": "player_block_inside_sweep_laws:registry_decode_refusal_retains_every_owned_field",
+      "source_body_sha256": "338c356539b3526c588df2d1ee18f8f79a2ea50d7a3f159d585a8c649b9c714c",
+      "type_sha256": "1bf3da6fc5b14ecfa53b11833edb2edb23228752f7c71ce05b134dc63b54bf63"
+    },
+    {
+      "checked_proof_sha256": "42aa3540fdf19cccf2abb0760487c516b0fc4f5a294325573af45ae6c12260a8",
+      "name": "player_block_inside_sweep_laws:late_callback_service_refusal_discards_prior_effects",
+      "source_body_sha256": "511ac595ed70c1f638a51b0cb347181d868c6bd6be3741ba51e990f6cc6a9970",
+      "type_sha256": "b3b49e3a9eeff0ccbe51e3cef1399ddf9806e4f82be26adf8f7d87687e3e556b"
+    },
+    {
+      "checked_proof_sha256": "9484b074acab0fd2698d53cb69aa155246f22e14c80fc4557a84d730aaecc3d6",
+      "name": "player_block_inside_sweep_laws:successful_sweep_commits_only_receiver_and_history",
+      "source_body_sha256": "5e43725cdccc5e6b07b6624155a0cf2c873029d6806bcec9529609c330331310",
+      "type_sha256": "d5225b2b764154358cd6a5a0a0de1801871020a43beb7bdf96f2b077321886de"
+    },
+    {
+      "checked_proof_sha256": "52a2822b1c1f0b0cc4fd12b8587e3b051b9a78f61c4ab5f13eae8c50b58b9294",
+      "name": "player_block_inside_sweep_laws:noncanonical_request_cannot_read_or_commit",
+      "source_body_sha256": "aa0b247097fb332a82935e71fec4ca162f94578d807e22b00ce39ec6e582c90b",
+      "type_sha256": "6d591cd444a32ac0f372d642a1d01a69a7ccd328d23d5059777885d644f46871"
+    },
+    {
+      "checked_proof_sha256": "838d2d1b53e70e071e3f6e9156c5b070bdb715d7c0892f4340af744bef3b8418",
+      "name": "player_block_inside_sweep_laws:authoritative_berry_uses_actual_known_movement_observation",
+      "source_body_sha256": "26f368ec095f56850a5d322d0d1f6d1c4bc7cf1a21011abf09f8657c3c16b49b",
+      "type_sha256": "3273e167bfa51e6f7421c48c44378bafc6a4e7c117c6a62ece7ce967cc985861"
+    },
+    {
+      "checked_proof_sha256": "450a50af8c5052b87b24d107bd8b8412d9d3a46e9443b6244330a29359682c3f",
+      "name": "player_block_inside_sweep_laws:other_authority_berry_uses_actual_old_minus_current",
+      "source_body_sha256": "26f368ec095f56850a5d322d0d1f6d1c4bc7cf1a21011abf09f8657c3c16b49b",
+      "type_sha256": "19f1d602c52b739a258251bf945d88fc9213501be30359b267ccc52141ad73ca"
+    },
+    {
+      "checked_proof_sha256": "d8ef418d58f2a9b0cf81430460f5081ad6bf8128a4d1a297e850f0034cad2ead",
+      "name": "player_block_inside_sweep_laws:rejected_body_binding_retains_actual_motion_environment",
+      "source_body_sha256": "ff6797477bd2c363f70d29f4f8f16b1e0f67f0aa47cc128f8763a94b9a999450",
+      "type_sha256": "741dac32371706f7dde919980ea9f31469bcea14f1698d6311e0e15201c4ddc0"
+    },
+    {
+      "checked_proof_sha256": "8d856ca01e2c38e6d7bf27848f388a6f043ae5d7d64bd545a33f7514831bbd71",
+      "name": "player_block_inside_sweep_laws:completed_sweep_restores_every_motion_environment_field",
+      "source_body_sha256": "5bf20c3235952377406c7408183b62effc73bb3e12d171c60608df88ee875b65",
+      "type_sha256": "f17eef200ff78536c96ad0f952b84d17d06fe9118102b379d9d8782e38dff55b"
+    },
+    {
+      "checked_proof_sha256": "43fb8815ed2241981516e62c06bf7684ef5e159e8a6128100835814dbe28a8fa",
+      "name": "player_block_inside_sweep_laws:existing_refusal_prevents_every_remaining_world_read",
+      "source_body_sha256": "350199d8b524299e5d22b2af25bcc7ca9f361acada11c1a1050a5f144b93790e",
+      "type_sha256": "ba6035b92b72d2324b0bc4370584e1dc2661fe70e4cf56ca92e61f8edca4d870"
+    },
+    {
+      "checked_proof_sha256": "c88a171245c280041291ea80778fc5f8ca30f94559e15b41d78d581a735854c1",
+      "name": "player_block_inside_sweep_laws:earliest_actual_read_refusal_prevents_later_reads",
+      "source_body_sha256": "e6bf0ee54dc90476d5edea9f4d59924ac583698f52999175e43d318aa2c18f2d",
+      "type_sha256": "2bc965b906df27d7b3c53640558040dbcacd07b04ecd051e5619311cb0f141a9"
+    },
+    {
+      "checked_proof_sha256": "95703dd79dfd2cddb68595863d1ed902579b4d4704d9be62688e7f42cfaef043",
+      "name": "player_block_inside_sweep_laws:public_motion_join_installs_only_actual_successful_service_result",
+      "source_body_sha256": "1824dbda6b629c5873badc2fde1d2989925143c0ba6e948de8aed0461eb58ff9",
+      "type_sha256": "598d38bd59075f9f4b17f23f8f6017253bcf991838cf9c1f2c6c7333f0bb0db2"
+    },
+    {
+      "checked_proof_sha256": "7b1705e3b13b84a5fd26fc3e3fd8f8484f31fc3122de2140d828bb389883edbe",
+      "name": "player_block_inside_sweep_laws:public_motion_join_preserves_full_owner_on_service_refusal",
+      "source_body_sha256": "228e0656198de206efce84072f0a65de2e14e9198337427ecc3aa4c8783e1cc5",
+      "type_sha256": "1f888ba2d03e4d13d622a358eaa72c1a5ab486ad3135d8d282f6186a40b0546d"
+    }
+  ]
+}
