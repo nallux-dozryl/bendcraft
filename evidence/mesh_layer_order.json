@@ -292,11 +292,54 @@
       "2df8f5f18a6a03d44fa01d5e85f558ed95c9dd6c"
     ],
     "arithmetic_template_sha256": "db73454f507f537a221a552c2af4dc0837c7d668b4fb9df6f47d5113da9a31a3",
+    "closure": {
+      "bytes": 63123,
+      "sha256": "97fa9d63e72f033f70bb9705eb2bad7df815dac9fe159ba96729a8d26684e5cd"
+    },
     "count": 6,
+    "export_directory": "build/mesh-layer-order-proof-001",
     "exporter_sha256": "bcbd60e725da828cdc60ee08ab43fdd10ebf92ac5e114c1932dab3ab5eb9ca99",
-    "independent_kernel": "not_run",
+    "independent_kernel": "pass",
+    "kernel_binary_sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7",
     "ordinary_source_check": "pass",
     "ordinary_source_check_seconds": 27.06311820819974,
+    "receipt_directory": "build/mesh-layer-order-verification-001",
+    "receipts": [
+      {
+        "command": [
+          "/opt/homebrew/bin/node",
+          "--experimental-transform-types",
+          "--stack-size=4096",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/mesh_layer_order_proof.mjs",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-layer-order-005",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-layer-order-proof-001"
+        ],
+        "exit_code": 0,
+        "group_absent": true,
+        "pid": 7577,
+        "sampled_peak_rss_bytes": 1433878528,
+        "seconds": 4.682544541545212,
+        "stderr": "(node:7577) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+        "stdout": "{\"phase\":\"export-complete\",\"roots\":6,\"bytes\":63123,\"exclusions\":[]}\n",
+        "termination_reason": null
+      },
+      {
+        "command": [
+          "/usr/bin/env",
+          "LEAN_STACK_SIZE=4194304",
+          "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-layer-order-proof-001/selected.bendtt"
+        ],
+        "exit_code": 0,
+        "group_absent": true,
+        "pid": 7620,
+        "sampled_peak_rss_bytes": 196608,
+        "seconds": 0.25613637547940016,
+        "stderr": "",
+        "stdout": "ALL PROOFS CHECK\n",
+        "termination_reason": null
+      }
+    ],
     "roots": [
       "bounded_layer_keys_separate",
       "bounded_coplanar_cutout_retains_its_complete_fragment",
@@ -305,7 +348,102 @@
       "within_layer_generated_key_preference_is_retained",
       "equal_generated_keys_preserve_source_index_preference"
     ],
-    "scope": "Bounded order keys and complete Fragment selector composition over actual private WM and unchanged production M; no GPU, texture coverage, pixel, world, depth quantization, or Java frame parity claim"
+    "scope": "Bounded order keys and complete Fragment selector composition over actual private WM and unchanged production M; no GPU, texture coverage, pixel, world, depth quantization, or Java frame parity claim",
+    "scope_exclusions": [],
+    "selection": {
+      "all_original_tlds_ctrs_tmps_retained": true,
+      "checked_types_and_bodies_unchanged": true,
+      "entry": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-layer-order-005/mesh_layer_order_proof.bend",
+      "ordinary_source_api_check_passed": true,
+      "original_root_count": 1511,
+      "roots": [
+        "mesh_layer_order_laws:bounded_layer_keys_separate",
+        "mesh_layer_order_laws:bounded_coplanar_cutout_retains_its_complete_fragment",
+        "mesh_layer_order_laws:strictly_nearer_fragment_overrides_every_layer_key",
+        "mesh_layer_order_laws:strictly_farther_fragment_preserves_the_complete_prior_best",
+        "mesh_layer_order_laws:within_layer_generated_key_preference_is_retained",
+        "mesh_layer_order_laws:equal_generated_keys_preserve_source_index_preference"
+      ],
+      "selected_root_count": 6,
+      "source_files": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-layer-order-005/mesh_layer_order_proof.bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/base.bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-layer-order-005/mesh_layer_order_laws.bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-layer-order-005/world_mesh.bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/client_render.bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/png.bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/compression.bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/archive.bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/framing.bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/mesh_render.bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_presentation.bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/block_bake.bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/block_model.bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/json.bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/u32_decimal.bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/float_parse.bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/big_uint.bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-layer-order-005/mesh_layer_order_arithmetic.bend"
+      ],
+      "term_pins": [
+        {
+          "checked_proof_sha256": "b920709453f7d03c86b4efed3d0b079bc266dc6eed87e5794c5979276735c037",
+          "name": "mesh_layer_order_laws:bounded_layer_keys_separate",
+          "source_body_sha256": "72a7b688543e1aedcc1aba464f1ce706614c4c5da56bbc9e274dcd338467b9e0",
+          "type_sha256": "a96fd63faa4d3a896abd1b6f483d8381ae431b5f46c9be5cec30917072706778"
+        },
+        {
+          "checked_proof_sha256": "4d536227631797ddb6647623ed17a3e3987916a5513a2141ce01feff02535280",
+          "name": "mesh_layer_order_laws:bounded_coplanar_cutout_retains_its_complete_fragment",
+          "source_body_sha256": "a1ecda13be14ddffd8e80a625f36f1ef338fb2e4ca7e6c3302bf9f452074953c",
+          "type_sha256": "cf35be65b714567965e59878b318f8c84608f966699acca1195be20df4b81281"
+        },
+        {
+          "checked_proof_sha256": "87c86d09d923f595f76c6476160abfa514269f52434795adbd24e818ff1c1823",
+          "name": "mesh_layer_order_laws:strictly_nearer_fragment_overrides_every_layer_key",
+          "source_body_sha256": "6a3e7d419e4754dad9cee6a9a8fe08fe7f1cc09a76c9db08cabc791886337f8a",
+          "type_sha256": "f85ccccdffacdb611f2bf524d10403877bd4cb11d096c1b08421a7bb622cb70b"
+        },
+        {
+          "checked_proof_sha256": "1bec028ee5fae24af8788d861fcccc34dd8efabbc354b7c269a872446b653ee4",
+          "name": "mesh_layer_order_laws:strictly_farther_fragment_preserves_the_complete_prior_best",
+          "source_body_sha256": "fd93a8afa3d4879157127dc17a22ce629ad65162f18107836c7cb97a49609235",
+          "type_sha256": "018e64975f5239a05dc4f5a87ffdd9e630b4ecac00e534a93604d2c230e9ce3d"
+        },
+        {
+          "checked_proof_sha256": "2203aeeda9bf277f9797ec45054a1b6f5fea5d1288971b2116fead8832a87a0c",
+          "name": "mesh_layer_order_laws:within_layer_generated_key_preference_is_retained",
+          "source_body_sha256": "8d1d995881450fc0a387e30f7b0c9b6f524e6cca9ead0efae09753f87b5001f8",
+          "type_sha256": "0ba9fe1af0e9c156e6f88675518b2e0a2cf1bd1ecce33bacd7a317996417e367"
+        },
+        {
+          "checked_proof_sha256": "56ee5a56e4350d930a9d5d1d9242bc81b0dfa8684eb9b9d6c01cff9f4a178698",
+          "name": "mesh_layer_order_laws:equal_generated_keys_preserve_source_index_preference",
+          "source_body_sha256": "c9cbe9c46fb9f180bd27a97bdcbcc63143dba2c95d8fccaebb2eeec9e41435ba",
+          "type_sha256": "f12c9693c7bd7220a6f6b238398b97ff53f2f2f7e95a3b382d7cba1b520fc2d2"
+        }
+      ]
+    },
+    "source_pins": {
+      "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/base.bend": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-layer-order-005/mesh_layer_order_arithmetic.bend": "db73454f507f537a221a552c2af4dc0837c7d668b4fb9df6f47d5113da9a31a3",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-layer-order-005/mesh_layer_order_laws.bend": "105220ef8037308b230658f671cde711e0957b65475d8c2318623eb096a110ed",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-layer-order-005/mesh_layer_order_proof.bend": "3b5e933ea359b0bb6116384dcab36319cb4a90737de1de1abcb16e4961efe94e",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/mesh-layer-order-005/world_mesh.bend": "dbaf18f5845d8a4139b5c0c8c9cc5e887bfec97c64b519b39b69b1c688572550",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/archive.bend": "c0f7b34a22726d220f6b867730b7d080d57d82c84d619c35721b9b8d18fa5d6e",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/big_uint.bend": "fbe5965ee16ee3d6864def33fbc6e5e4b1b9bc7da4735d99311c1a23c65e2444",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/block_bake.bend": "3611116e0ba63915d6013463c1640f83b6b80cb08e802f93be5f7eaa4d600595",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/block_model.bend": "08108bae9b89c6768de56bdddea158f3604b36c7de4ee0408815e2c7f48b97a1",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/client_render.bend": "735b643d733bd190d7ad3b6c2462773f6d8aa713eb156750dc9865ac7842b5f6",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/compression.bend": "255cdff06a33050c7b0a48fdea75c1842ebe2dab0439cfe4f03d126d4edc20aa",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/float_parse.bend": "fe22007f0805f3c955fcaada88c1da76a3cceda74f0ff3840ae47af49a02c683",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/framing.bend": "307f95049df03d92687b7bd0eafb2cd566e660926510bb88163f9bc825fccdb5",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/json.bend": "a1789e3b4f5bea158ec0d95a8bcb39aa5b7c7e7355a5254d3de1d52a93c719d1",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/mesh_render.bend": "cc8c7d3cf4badf3ec76a6dfd32939ec1d4c9d856fc181fa36a45cfe268df7424",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_presentation.bend": "795422051d936dbc70de658b6e6600cf6d7eeb9f759d842b2d4f40e00eee5137",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/png.bend": "8c24c14a250cf6dbdf0c2804e4b28bfebd7ef62ed5d9ee97a1d07094d4745f22",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/u32_decimal.bend": "d0b4b33f10b9e9801c4e99b83803afba5031ea40013a9263f9090bed8543d25c"
+    }
   },
   "reference_sha256": "8150c2d8de61103a099afe118581e282a5617b4e431357f488169379b891c617",
   "schema": 1,
@@ -325,5 +463,5 @@
     }
   ],
   "source_pins_unchanged_after_checks": true,
-  "status": "source_checked_native_and_kernel_pending"
+  "status": "independent_kernel_pass_native_pending"
 }
