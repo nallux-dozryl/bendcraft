@@ -1,0 +1,46 @@
+{
+  "cases": 8,
+  "helper": {
+    "bytes": 6561,
+    "file": "test_world_generation_settings.py",
+    "sha1": "d16c998a91f64cf72d45b31c906d8300788d9c54",
+    "sha256": "2bf4f32815e884da2525fc4d084287f786b43ebeb719ff8ee0c7ec029fac314b"
+  },
+  "host_stone_dirt_seed0_fixture": {
+    "bytes": 499,
+    "ordered_host_nbt_roundtrip": true,
+    "production_decode_executed": false,
+    "sha256": "1dcbeaaeaaf19a585d8662d82e52db8c1e543948b1bd9f216e4a235e3831708b"
+  },
+  "injected_corruptions_refused": 5,
+  "native_executed": false,
+  "reference": {
+    "bytes": 6608,
+    "file": "world_generation_settings.json",
+    "sha1": "c094ee5be81e70548b3572d10e66d8de4c93d666",
+    "sha256": "62daee14a2945b524fb19c304a65e89bfe37bf7f70fe7aec9ada1b3405af1c53"
+  },
+  "scope": "Actual production settings encode/decode through shared artifact only; no generation/region persistence claim",
+  "shared_artifact_mode": "generation-settings-cases",
+  "sources": [
+    {
+      "bytes": 5947,
+      "file": "world_generation_settings.bend",
+      "sha1": "81b2ff8fc40955ebd68f4c53a2e22a0ba96c0983",
+      "sha256": "cb5cc9ee81c266dd2d5543ecf83c6f99c08542739cad6e59d8e5d9166d6560c7"
+    },
+    {
+      "bytes": 10910,
+      "file": "world_generation_settings_codec.bend",
+      "sha1": "66ea282aec8ebad744ada59b4f0a34c1bf3030c7",
+      "sha256": "896d6d5e2032f8806043383a5455f08f9e10ed578fe37e4fc56ce9259a359db4"
+    },
+    {
+      "bytes": 3402,
+      "file": "world_generation_settings_roundtrip.bend",
+      "sha1": "037708254e566996bb84abb4721509196765694a",
+      "sha256": "d5814aa499ee1b6359daf364d32a9a0feafb14da2ac9a3dada2771a5b950e277"
+    }
+  ],
+  "status": "prepared-only"
+}

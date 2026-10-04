@@ -18,6 +18,10 @@ import ./locomotion.bend as Motion
 import ./support.bend as Support
 import ./local_move_world.bend as Move
 import ./player_fall_history.bend as Fall
+import ./world_generation_settings.bend as WG
+import ./superflat_population.bend as Population
+import ./schedule.bend as Schedule
+import ./superflat_player.bend as TerrainPlayer
 
 # One explicit supported neutral LocalPlayer profile. The runtime driver
 # resolves ground and post-sprint attributes from the authoritative owner.
@@ -28,23 +32,6 @@ def followed(result:S.State & Unit) -> S.State:
   (state,unit) = result
   state
 
-def follow(state:S.State) -> S.State:
-  followed(S.query(Unit,state,p => R.query(Unit,p,SF.follow)))
-
-def realtime_step(state:S.State) -> S.State:
-  follow(S.realtime_step(motion_driver(),state))
-
-def dispatched(result:S.State & L.Session & J.Value) -> S.State & L.Session & J.Value:
-  (state,session,value) = result
-  (follow(state),session,value)
-
-def dispatch(state:S.State,session:L.Session,token:String,request:J.Value) -> IO(S.State & L.Session & J.Value):
-  do IO<S.State & L.Session & J.Value>:
-    result : S.State & L.Session & J.Value <- S.dispatch(~motion_driver(),state,session,token,request)
-    return dispatched(result)
-
-# Base macOS lowercases characters; modifier events use 65536 + hardware code.
-# Physical input verification remains separate from this source-derived mapping.
 def bindings() -> I.Bindings:
   I.Bindings{119,115,97,100,32,65592,65595}
 
@@ -153,6 +140,177 @@ def superflat_gate(first_peer:U32,result:S.State & Bool) -> IO(S.Ready):
 def initialize_superflat(ready:S.Ready) -> IO(S.Ready):
   S.Ready{state,first_peer} = ready
   superflat_gate(first_peer,S.fresh(state))
+
+def production_player_result(tables:Motion.Tables,support:Support.State,minor:Move.MinorState,
+    history:Fall.State,metadata:X.Metadata,motion_tail:List<&1,MH.State>,tail:List<&1,X.State>,
+    result:W.State & Result<&2,&2,String,SF.Outcome>) -> X.State & Result<&2,&2,String,Unit>:
+  TerrainPlayer.initialized(tables,support,minor,history,metadata,motion_tail,tail,result)
+
+def production_player(settings:WG.Settings,fresh:Bool,player:X.State) -> X.State & Result<&2,&2,String,Unit>:
+  TerrainPlayer.initialize(settings,fresh,player)
+
+def production_settings_set(first_peer:U32,settings:WG.Settings,result:S.State & Result<&2,&2,String,Unit>) -> IO(S.Ready):
+  (state,status) = result
+  match status:
+    case Fail{message}: superflat_failed(state,message)
+    case Done{unit}:
+      superflat_finished(first_peer,S.query(Result<&2,&2,String,Unit>,state,p => production_player(settings,True{},p)))
+
+def demanded_configured(receipt:Population.Receipt,result:W.State & Result<&2,&2,String,Unit>) -> W.State & Result<&2,&2,String,Population.Receipt>:
+  (state,status) = result
+  match status:
+    case Fail{message}: (state,Fail{message})
+    case Done{unit}: (state,Done{receipt})
+
+def demanded_followed(result:W.State & Result<&2,&2,String,Population.Receipt>) -> W.State & Result<&2,&2,String,Population.Receipt>:
+  (state,status) = result
+  match status:
+    case Fail{message}: (state,Fail{message})
+    case Done{receipt}: demanded_configured(receipt,SF.configure_production(state,SF.default_view_policy()))
+
+def demand_world(state:W.State,settings:WG.Settings,stamp:Schedule.Stamp) -> W.State & Result<&2,&2,String,Population.Receipt>:
+  demanded_followed(SF.demand(state,settings,SF.default_view_policy(),Population.default_budget(),stamp))
+
+def demand_supported(state:S.State,settings:WG.Settings,stamp:Schedule.Stamp,supported:Bool) -> S.State & Result<&2,&2,String,Population.Receipt>:
+  match supported:
+    case False{}: (state,Fail{"player world adapter only supports minecraft:overworld"})
+    case True{}:
+      S.query(Result<&2,&2,String,Population.Receipt>,state,p => R.query(Result<&2,&2,String,Population.Receipt>,p,w => demand_world(w,settings,stamp)))
+
+def demand_settings(stamp:Schedule.Stamp,result:S.State & WG.Settings) -> S.State & Result<&2,&2,String,Population.Receipt>:
+  (state,+settings) = result
+  demand_supported(state,settings,stamp,TerrainPlayer.supported_dimension(settings))
+
+# The actor calls this before reads/ticks that need a new region. An admission
+# failure retains the authoritative owner and is available to the actor as an
+# explicit error; it is not silently converted to air or a clamped position.
+def demand(state:S.State,stamp:Schedule.Stamp) -> S.State & Result<&2,&2,String,Population.Receipt>:
+  demand_settings(stamp,S.generation(state))
+
+def ensure_legacy(state:S.State,settings:WG.Settings,legacy:Bool) -> S.State & Result<&2,&2,String,Unit>:
+  match legacy:
+    case True{}: (state,Done{Unit{}})
+    case False{}: S.query(Result<&2,&2,String,Unit>,state,p => TerrainPlayer.ensure(settings,p))
+
+def ensure_settings(result:S.State & WG.Settings) -> S.State & Result<&2,&2,String,Unit>:
+  (state,+settings) = result
+  ensure_legacy(state,settings,WG.is_legacy(settings))
+
+def ensure(state:S.State) -> S.State & Result<&2,&2,String,Unit>:
+  ensure_settings(S.generation(state))
+
+def terrain_error_player(player:X.State,message:String) -> X.State & Unit:
+  (R.with_error(player,Some{message}),Unit{})
+
+def terrain_error(state:S.State,message:String) -> S.State:
+  followed(S.query(Unit,state,p => terrain_error_player(p,message)))
+
+def follow_ensured(result:S.State & Result<&2,&2,String,Unit>) -> S.State:
+  (state,status) = result
+  match status:
+    case Fail{message}: terrain_error(state,message)
+    case Done{unit}: state
+
+def follow_legacy(state:S.State,legacy:Bool) -> S.State:
+  match legacy:
+    case True{}: followed(S.query(Unit,state,p => R.query(Unit,p,SF.follow)))
+    case False{}: follow_ensured(ensure(state))
+
+def follow_settings(result:S.State & WG.Settings) -> S.State:
+  (state,settings) = result
+  follow_legacy(state,WG.is_legacy(settings))
+
+def follow(state:S.State) -> S.State:
+  follow_settings(S.generation(state))
+
+def player_step_error(player:X.State) -> X.State & Maybe<&2,String>:
+  X.State{motion,tables,X.Metadata{local,record,sprint,pose,controls,entity,+error,metadata_tail},tail} = player
+  (X.State{motion,tables,X.Metadata{local,record,sprint,pose,controls,entity,error,metadata_tail},tail},error)
+
+
+def realtime_ensured(result:S.State & Result<&2,&2,String,Unit>) -> S.State:
+  (state,status) = result
+  match status:
+    case Fail{message}: terrain_error(state,message)
+    case Done{unit}: follow(S.run_with_status(state,status => player => R.realtime_status(motion_driver(),status,player)))
+
+def realtime_step(state:S.State) -> S.State:
+  realtime_ensured(ensure(state))
+
+def scheduled_step(state:S.State) -> S.State:
+  S.run_with_status(state,status => player => R.step_status(motion_driver(),status,player))
+
+def advance_checked(next:S.State -> S.State,result:S.State & Maybe<&2,String>) -> S.State:
+  (state,error) = result
+  match error:
+    case None{}: next(state)
+    case Some{message}: state
+
+def advance_ensured(result:S.State & Result<&2,&2,String,Unit>,next:S.State -> S.State) -> S.State:
+  (state,status) = result
+  match status:
+    case Fail{message}: terrain_error(state,message)
+    case Done{unit}: advance_checked(next,S.query(Maybe<&2,String>,follow(scheduled_step(state)),player_step_error))
+
+def advance_go(fuel:Nat,state:S.State) -> S.State:
+  match fuel:
+    case 0n: state
+    case 1n+rest: advance_ensured(ensure(state),next => advance_go(rest,next))
+
+def advance(state:S.State,ticks:U32) -> S.State:
+  advance_go(U32.to_nat(ticks),state)
+
+def dispatched(result:S.State & L.Session & J.Value) -> S.State & L.Session & J.Value:
+  (state,session,value) = result
+  (state,session,value)
+
+def step_request(found:Maybe<&2,J.Value>) -> Bool:
+  match found:
+    case Some{J.JString{"simulation.step"}}: True{}
+    case _: False{}
+
+def success_value(found:Maybe<&2,J.Value>) -> Bool:
+  match found:
+    case Some{J.JBool{True{}}}: True{}
+    case _: False{}
+
+
+def dispatch_step_error(session:L.Session,+value:J.Value,result:S.State & Maybe<&2,String>) -> S.State & L.Session & J.Value:
+  (state,error) = result
+  match error:
+    case None{}: (state,session,value)
+    case Some{message}: S.failure(state,session,L.id_of(J.member(value,"id")),L.bad("PlayerStepUnavailable",message))
+
+def dispatch_checked(state:S.State,session:L.Session,value:J.Value,check:Bool) -> S.State & L.Session & J.Value:
+  match check:
+    case False{}: (state,session,value)
+    case True{}: dispatch_step_error(session,value,S.query(Maybe<&2,String>,state,player_step_error))
+
+def dispatch_value(state:S.State,session:L.Session,+value:J.Value,step:Bool) -> S.State & L.Session & J.Value:
+  dispatch_checked(state,session,value,step && success_value(J.member(value,"ok")))
+
+def dispatch_response(request:J.Value,result:S.State & L.Session & J.Value) -> S.State & L.Session & J.Value:
+  (state,session,value) = result
+  dispatch_value(state,session,value,step_request(J.member(request,"op")))
+
+def dispatch(state:S.State,session:L.Session,token:String,+request:J.Value) -> IO(S.State & L.Session & J.Value):
+  do IO<S.State & L.Session & J.Value>:
+    result : S.State & L.Session & J.Value <- S.dispatch_using(state => ticks => advance(state,ticks),state,session,token,request)
+    return dispatch_response(request,result)
+
+# Base macOS lowercases characters; modifier events use 65536 + hardware code.
+# Physical input verification remains separate from this source-derived mapping.
+def production_gate(first_peer:U32,+settings:WG.Settings,result:S.State & Bool) -> IO(S.Ready):
+  (state,fresh) = result
+  match fresh:
+    case False{}: superflat_finished(first_peer,ensure(state))
+    case True{}: production_settings_set(first_peer,settings,S.set_generation(state,settings))
+
+# CLI settings are chosen only for a new world. A loaded world keeps its saved
+# generator, complete player record, view/cache and all runtime metadata.
+def initialize_generated(ready:S.Ready,settings:WG.Settings) -> IO(S.Ready):
+  S.Ready{state,first_peer} = ready
+  production_gate(first_peer,settings,S.fresh(state))
 
 def unpaused_world(result:G.Engine & W.View) -> W.State & Unit:
   (G.Engine{world,registry},view) = result

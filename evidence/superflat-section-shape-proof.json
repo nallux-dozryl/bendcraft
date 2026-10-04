@@ -1,0 +1,728 @@
+{
+  "all_original_tlds_ctrs_tmps_retained": true,
+  "all_recorded_attempts_bounded_and_owned_process_groups_reaped": true,
+  "boundaries": [
+    "No kernel certification of either named closed Population.complete_section completion corollary.",
+    "No theorem here establishes layer state values, write coverage, read-after-write indexing, biome/structure generation or save-codec roundtrip.",
+    "Shape preservation keeps malformed public Section trees malformed; only Section.new is certified to construct perfect depth-12 topology.",
+    "Array.size follows only its left spine; its reported number alone is not a proof of complete balanced topology."
+  ],
+  "certified_contracts": [
+    {
+      "meaning": "Array.size returns the exact original owned array, independent of the reported left-spine size.",
+      "root": "superflat_section_shape_laws:array_size_returns_exact_owner"
+    },
+    {
+      "meaning": "Actual Base.Array.set preserves both branches of the complete array topology for every U32 index and state.",
+      "root": "superflat_section_shape_laws:array_set_preserves_complete_shape"
+    },
+    {
+      "meaning": "Actual Section.set_index, including rejected indices, preserves the complete Section array topology.",
+      "root": "superflat_section_shape_laws:section_set_preserves_complete_shape"
+    },
+    {
+      "meaning": "Actual Population.fill preserves complete array topology for every Nat fuel, U32 index/origin, Flat configuration and owned Section. U32 wrap needs no shape premise.",
+      "root": "superflat_section_shape_laws:fill_preserves_complete_shape"
+    },
+    {
+      "meaning": "Actual Base.Array.new(depth,initial) has the independently specified perfect binary topology of that depth.",
+      "root": "superflat_section_shape_laws:array_new_has_perfect_shape"
+    },
+    {
+      "meaning": "The independent perfect binary topology has exactly Nat.pow(2,depth) leaves for every Nat depth.",
+      "root": "superflat_section_shape_laws:perfect_shape_capacity"
+    },
+    {
+      "meaning": "Actual Section.new(initial) has perfect depth-12 topology.",
+      "root": "superflat_section_shape_laws:section_new_has_perfect_shape"
+    }
+  ],
+  "certified_root_count": 7,
+  "certified_roots": [
+    "superflat_section_shape_laws:array_size_returns_exact_owner",
+    "superflat_section_shape_laws:array_set_preserves_complete_shape",
+    "superflat_section_shape_laws:section_set_preserves_complete_shape",
+    "superflat_section_shape_laws:fill_preserves_complete_shape",
+    "superflat_section_shape_laws:array_new_has_perfect_shape",
+    "superflat_section_shape_laws:perfect_shape_capacity",
+    "superflat_section_shape_laws:section_new_has_perfect_shape"
+  ],
+  "checked_term_pins": [
+    {
+      "checked_proof_sha256": "49192652d3c807e8f36d9670ba99680e3ab2b6ac2ec3d0be9473fd83c3003e3c",
+      "name": "superflat_section_shape_laws:array_size_returns_exact_owner",
+      "source_body_sha256": "fefaa34436a9b2033fce04b3c1e791e89b974b20d60ef3779cfc41329c3022a6",
+      "type_sha256": "c781142a719e8f769364781d7f095171413844feab8a879fd9e43f90a55c2414"
+    },
+    {
+      "checked_proof_sha256": "a57be3b85dd06ec9e1475afca4af85c126345c0effdbe5b5fbd23cf7946472be",
+      "name": "superflat_section_shape_laws:array_set_preserves_complete_shape",
+      "source_body_sha256": "102f6b0fed9a34c94a7f727fbf5bd36ca7041365bcc93c2217da54b6762f3afd",
+      "type_sha256": "c85bb6a644c6c7140cc374c03b8d13b053c361625f65a2e4e826c283aec1f8d7"
+    },
+    {
+      "checked_proof_sha256": "bed9b686e70f6e96765fbe742218ee558f889ce480e014434673aae8f1a3acb5",
+      "name": "superflat_section_shape_laws:section_set_preserves_complete_shape",
+      "source_body_sha256": "9e05ac1af19748c09c80eb5740e0cec7d522c445dc3dcc9c9a8fb6e7a268d1d2",
+      "type_sha256": "12b82ee0511413bfe4598252e7332643bedf7aa17626ac3362706a9ac578dbb3"
+    },
+    {
+      "checked_proof_sha256": "d4a4a0b3729dcc7d5199d502114dea889f3a69cd4c60d4f69e716fe79f1a95f4",
+      "name": "superflat_section_shape_laws:fill_preserves_complete_shape",
+      "source_body_sha256": "a152da6ebc14606f79392e373e28c90cb923ddaf82066221ffc2d5e816f95e05",
+      "type_sha256": "0b3dfad0a1819768f53889b704447a38bd280ae09be424982b7150beecb6a9f5"
+    },
+    {
+      "checked_proof_sha256": "89b383bf2741325526b6ebab27836a1c2e0f56ad00ff89aed7defcf5436960e6",
+      "name": "superflat_section_shape_laws:array_new_has_perfect_shape",
+      "source_body_sha256": "5a1931f58d3fdc7ca8f8cb337ddf511edba81ee74e66aa2e89eeccfc29efed9d",
+      "type_sha256": "7feb7e44ddb80be2cb47da55d55e9679c2d3088bd22b52cd0d838b40b0337725"
+    },
+    {
+      "checked_proof_sha256": "6992fbd107132eb70e5b9d97e23cd5b49fe888e718554894c1aa7350652f1c59",
+      "name": "superflat_section_shape_laws:perfect_shape_capacity",
+      "source_body_sha256": "752bc2b61ae8108941b07bcb87aa7fe27f9b0501f7e17a1733a8b1ac8362f307",
+      "type_sha256": "f141c340f4aaa6b86b5ae39021084fdd1abaee176f96cb4e2a3f40c83eb50ae7"
+    },
+    {
+      "checked_proof_sha256": "2d00afc5645ebb01b2a5374207787324227898ee7f60e9b21c1a220195e272af",
+      "name": "superflat_section_shape_laws:section_new_has_perfect_shape",
+      "source_body_sha256": "be71fe8a10b6e1b8c9ddeec44dbbd9e0dd43daecd86601b89daf388fbdbcb6a1",
+      "type_sha256": "11276ffb8f1f5b2f9b9c68ec3070032f6042566aff44fe9cf1f61a74f346226f"
+    }
+  ],
+  "checked_types_and_bodies_unchanged": true,
+  "closed_complete_section_certified": false,
+  "compiler_sources": [
+    {
+      "bytes": 137761,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/bend.ts",
+      "sha256": "7deae3693eb896f33c73867081b99d2c6f3ed3b57e77e55eb5f6260840dd0e63"
+    },
+    {
+      "bytes": 63418,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/safe.ts",
+      "sha256": "54cb3a534ab7cc9ee313bf6383b3948ccdcac022469b3020e00745bbfe6f7e04"
+    }
+  ],
+  "confidence": "high: exact kernel receipts and source/checked-term identity checks",
+  "export_exclusions": [],
+  "export_script": {
+    "bytes": 3984,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/section-shape-1791120184659868000-split7-013-inputs/executed-inline-source.mjs",
+    "sha256": "93b214ce396e74fac03ce6969f870e78e46622e6ceb1dde42190a1b420f0ccb4"
+  },
+  "exported_proof": {
+    "bytes": 65840,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/section-shape-1791120184659868000-split7-013-inputs/selected.bendtt",
+    "sha256": "fda95ebc80c3796f649d41327c9e683312e4a16625ed4793dc13a2b6964beafa"
+  },
+  "kernel": {
+    "bytes": 3271216,
+    "path": "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+    "sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7"
+  },
+  "kernel_child_environment": {
+    "LEAN_STACK_SIZE_KB": "4194304"
+  },
+  "kernel_execution": {
+    "execution": {
+      "argv": [
+        "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/section-shape-1791120184659868000-split7-013-inputs/selected.bendtt"
+      ],
+      "cap_seconds": 60,
+      "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+      "exit_code": 0,
+      "group_absent": true,
+      "leader_reaped": true,
+      "pgid": 88792,
+      "pid": 88792,
+      "retry": false,
+      "seconds": 0.016424999572336674,
+      "status": "passed",
+      "stderr": {
+        "bytes": 0,
+        "file": "stderr",
+        "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 17,
+        "file": "stdout",
+        "sha1": "ba8ec8289ea6f6e6fec687b636c07f05c26d0a8b",
+        "sha256": "61b73cda11b6b665b9f99f2defd3d3b57f985c865225e942a5bdaa594a503e47"
+      },
+      "timed_out": false
+    },
+    "process": {
+      "bytes": 898,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/section-shape-1791120184659868000-split7-013-kernel/process.json",
+      "sha256": "bbadd2db16ae8f82f03a81df32ca1872d1cb718503aaa23b3081b2d9765d9fac"
+    },
+    "stderr": {
+      "bytes": 0,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/section-shape-1791120184659868000-split7-013-kernel/stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 17,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/section-shape-1791120184659868000-split7-013-kernel/stdout",
+      "sha256": "61b73cda11b6b665b9f99f2defd3d3b57f985c865225e942a5bdaa594a503e47"
+    }
+  },
+  "kernel_verdict": "ALL PROOFS CHECK",
+  "main_entry": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/superflat_section_shape_proof.bend",
+  "main_laws": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/superflat_section_shape_laws.bend",
+  "no_native_java_or_ui_processes_in_this_lane": true,
+  "omitted_main_theorem_roots": [],
+  "ordinary_and_export": {
+    "execution": {
+      "argv": [
+        "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "--experimental-transform-types",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/section-shape-1791120184659868000-split7-013-inputs/executed-inline-source.mjs"
+      ],
+      "cap_seconds": 60,
+      "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+      "exit_code": 0,
+      "group_absent": true,
+      "leader_reaped": true,
+      "pgid": 88515,
+      "pid": 88515,
+      "retry": false,
+      "seconds": 0.5270052086561918,
+      "status": "passed",
+      "stderr": {
+        "bytes": 177,
+        "file": "stderr",
+        "sha1": "09455b046e03646b6b88e33a72a99a4ac74e9c11",
+        "sha256": "8d406c764dd127ea6ee8b38c41da6b19918b2790a67c045bed21b43075e80510"
+      },
+      "stdout": {
+        "bytes": 560,
+        "file": "stdout",
+        "sha1": "72fb2b6e71895c446ceb738b2e854493e72ee63f",
+        "sha256": "e3ef6330be2798bbfea1c7df92e56d518639beb98c28b916a4cab291c5768b89"
+      },
+      "timed_out": false
+    },
+    "process": {
+      "bytes": 998,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/section-shape-1791120184659868000-split7-013-export/process.json",
+      "sha256": "7b372e5a84031d7c091915f4a1f64a859645078af3336d5dd7e43eaa9fb3d3ab"
+    },
+    "stderr": {
+      "bytes": 177,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/section-shape-1791120184659868000-split7-013-export/stderr",
+      "sha256": "8d406c764dd127ea6ee8b38c41da6b19918b2790a67c045bed21b43075e80510"
+    },
+    "stdout": {
+      "bytes": 560,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/section-shape-1791120184659868000-split7-013-export/stdout",
+      "sha256": "e3ef6330be2798bbfea1c7df92e56d518639beb98c28b916a4cab291c5768b89"
+    }
+  },
+  "owner_bridge_diagnostic": {
+    "exact_diagnostic_source": {
+      "bytes": 20548,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/section-shape-1791119814698640000-owner-011-inputs/5b4cefcee82c0314905b296b7d692c2918b9e91d5f53290dfe4934d196a1a7da-diagnostic-superflat_section_shape_proof.bend",
+      "sha256": "5b4cefcee82c0314905b296b7d692c2918b9e91d5f53290dfe4934d196a1a7da"
+    },
+    "execution": {
+      "execution": {
+        "argv": [
+          "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=4096",
+          "--experimental-transform-types",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/section-shape-1791119814698640000-owner-011-inputs/executed-inline-source.mjs"
+        ],
+        "cap_seconds": 60,
+        "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+        "exit_code": 1,
+        "group_absent": true,
+        "leader_reaped": true,
+        "pgid": 85651,
+        "pid": 85651,
+        "retry": false,
+        "seconds": 44.03128437511623,
+        "status": "failed",
+        "stderr": {
+          "bytes": 1205,
+          "file": "stderr",
+          "sha1": "ca191ad03d0bf80453781e02c616d7e1d3cac6ac",
+          "sha256": "1c3f088347a79ef1de90b0a0897effae31aa1cc25c35c3d8c513626ead36d525"
+        },
+        "stdout": {
+          "bytes": 631,
+          "file": "stdout",
+          "sha1": "deced67adf1990cc3ae0e4012f133681d6244bdb",
+          "sha256": "7b9a5f93bf6803e20161db9ca6fe3821fb9a61a401900b00fe7dae85ad812b24"
+        },
+        "timed_out": false
+      },
+      "process": {
+        "bytes": 997,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/section-shape-1791119814698640000-owner-011-export/process.json",
+        "sha256": "a933593664f7c9c1e56cb1277c5c4a42257d19bfa6e98d11b92a741e7235216a"
+      },
+      "stderr": {
+        "bytes": 1205,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/section-shape-1791119814698640000-owner-011-export/stderr",
+        "sha256": "1c3f088347a79ef1de90b0a0897effae31aa1cc25c35c3d8c513626ead36d525"
+      },
+      "stdout": {
+        "bytes": 631,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/section-shape-1791119814698640000-owner-011-export/stdout",
+        "sha256": "7b9a5f93bf6803e20161db9ca6fe3821fb9a61a401900b00fe7dae85ad812b24"
+      }
+    },
+    "export_failure": "RangeError: Maximum call stack size exceeded in safe.ts ctr_term/arg_term with Node stack4096",
+    "kernel_launched": false,
+    "ordinary_book_valid_and_checked_nine_root_selection_passed": true,
+    "retained_in_current_source": false,
+    "script": {
+      "bytes": 3707,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/section-shape-1791119814698640000-owner-011-inputs/executed-inline-source.mjs",
+      "sha256": "6fae86d4cfbdda3612725f4fc54d8585ad67c356879a855f619452a35d6731a4"
+    },
+    "selection": {
+      "bytes": 6409,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/section-shape-1791119814698640000-owner-011-inputs/selection.json",
+      "sha256": "45152d3635e8d2e8348b88376ddb9642ea1db67b421de94a0d0045ccc9d5514f"
+    }
+  },
+  "pending_entry": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/superflat_complete_section_pending_proof.bend",
+  "pending_laws": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/superflat_complete_section_pending_laws.bend",
+  "pending_root_count": 2,
+  "pending_roots": [
+    "superflat_complete_section_pending_laws:complete_section_has_perfect_shape",
+    "superflat_complete_section_pending_laws:complete_section_has_4096_cells"
+  ],
+  "pending_source_only": {
+    "execution": {
+      "execution": {
+        "argv": [
+          "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=4096",
+          "--experimental-transform-types",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/section-shape-1791120184659868000-split7-013-inputs/pending-source-check.mjs"
+        ],
+        "cap_seconds": 60,
+        "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+        "exit_code": 0,
+        "group_absent": true,
+        "leader_reaped": true,
+        "pgid": 88873,
+        "pid": 88873,
+        "retry": false,
+        "seconds": 19.22474654018879,
+        "status": "passed",
+        "stderr": {
+          "bytes": 177,
+          "file": "stderr",
+          "sha1": "a801bd557b6dc25cb4fb4a52f12645e62cae7c8e",
+          "sha256": "d09cee75a466830a2a30501312663de66761143ffc265f89a029a1ffe0f8bdaf"
+        },
+        "stdout": {
+          "bytes": 122,
+          "file": "stdout",
+          "sha1": "8cff7e35aef8428c71c3143094f10d4b80cbbd1e",
+          "sha256": "87ebd589ae12c5fa7e82ba15b4f877affbdf3fe2650fdb2de2923d96245f6f93"
+        },
+        "timed_out": false
+      },
+      "process": {
+        "bytes": 995,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/section-shape-1791120184659868000-split7-013-pending-source/process.json",
+        "sha256": "b65ef5f0b6532337f5d4b23e3ef4c8327556c6d325bd7e60ef5cba892d384829"
+      },
+      "stderr": {
+        "bytes": 177,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/section-shape-1791120184659868000-split7-013-pending-source/stderr",
+        "sha256": "d09cee75a466830a2a30501312663de66761143ffc265f89a029a1ffe0f8bdaf"
+      },
+      "stdout": {
+        "bytes": 122,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/section-shape-1791120184659868000-split7-013-pending-source/stdout",
+        "sha256": "87ebd589ae12c5fa7e82ba15b4f877affbdf3fe2650fdb2de2923d96245f6f93"
+      }
+    },
+    "kernel_certified": false,
+    "script": {
+      "bytes": 2918,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/section-shape-1791120184659868000-split7-013-inputs/pending-source-check.mjs",
+      "sha256": "2f6196cccfbe1f0474ca6889a2ad0658dc57c7aff5a4601454e9578a7f3bee75"
+    },
+    "selection": {
+      "bytes": 3606,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/section-shape-1791120184659868000-split7-013-inputs/pending-source-check.json",
+      "sha256": "af6ba1d2c35148840db09a83ce3e4112ce62687ccfb7f13b4a4b015f280b900e"
+    },
+    "source_files": [
+      {
+        "bytes": 18804,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/superflat_section_shape_proof.bend",
+        "sha256": "896d4b44db5c5296c897dd190fbbfcc9c945ae3cc6de8ad883e5b92ffda4ce53"
+      },
+      {
+        "bytes": 71530,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/base.bend",
+        "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+      },
+      {
+        "bytes": 2536,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/superflat_section_shape_laws.bend",
+        "sha256": "d031a3f718a7ea4da725b7730b02578b0c050fd9ab35915375e6c54a8703b721"
+      },
+      {
+        "bytes": 6520,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/section.bend",
+        "sha256": "02b5c15c57b173c7eb8b4c55a1433c10c192926e91af5e3e69050b4404044aa5"
+      },
+      {
+        "bytes": 13744,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/superflat_population.bend",
+        "sha256": "6a34c8478dab0bd06688ef0b9869ee07d65fb3f8b671bf5f8d4c66894ee639d2"
+      },
+      {
+        "bytes": 5947,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/world_generation_settings.bend",
+        "sha256": "cb5cc9ee81c266dd2d5543ecf83c6f99c08542739cad6e59d8e5d9166d6560c7"
+      },
+      {
+        "bytes": 26178,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/nbt.bend",
+        "sha256": "b677546b5fc02aaa38f5c09e5b798c0d35aec32b1c4b37cbd7042b9a1a5275e4"
+      },
+      {
+        "bytes": 11690,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/core.bend",
+        "sha256": "c1ee5a5390cdac0452c9c6cd3b0584a68ef68b5b0dfec867491c27e67ecadd4e"
+      },
+      {
+        "bytes": 3365,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/schedule.bend",
+        "sha256": "93aa79895fe340e27ae5fd562102d5980f0938003eb1bbde669a84010779b8c9"
+      },
+      {
+        "bytes": 3987,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/section_map.bend",
+        "sha256": "ded59d7938c02fd0876d65e37f9f90ea0cfebf3ca4bd107394342f8adbf33965"
+      },
+      {
+        "bytes": 574,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/superflat_complete_section_pending_laws.bend",
+        "sha256": "b7a635eabf4a9268e01e951bdee089e73e506358a9e87231ffb9e8abc30ee15e"
+      },
+      {
+        "bytes": 1269,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/superflat_complete_section_pending_proof.bend",
+        "sha256": "0f9df3d3947c7cf37cd6f809ea1136243cad10fb4e6fc9ddbdf818df3be5c44f"
+      }
+    ],
+    "term_pins": [
+      {
+        "checked_proof_sha256": "c330dd70139a4822a87bc079e95a28f6566137d65feb38994794ac3ff349069e",
+        "name": "superflat_complete_section_pending_laws:complete_section_has_perfect_shape",
+        "source_body_sha256": "112d09a6be1530ac48d4b590697920ae9b6e9edcd94e93e8a8e3c030c49c0463",
+        "type_sha256": "c4e04e5ac7604de99a5a847f025fe0f2d959ffcf5478eaea65dbb0dbb4c85567"
+      },
+      {
+        "checked_proof_sha256": "9ee99cc9b29da0ee15fa171a60855c508f14ba6fdf37d28c65535c6961efd419",
+        "name": "superflat_complete_section_pending_laws:complete_section_has_4096_cells",
+        "source_body_sha256": "edb7bf8f323d6a7586defb8a9d44f4ec18520fc401222ab2e401eab31512a752",
+        "type_sha256": "4eaaa1f39972b5b12458ef3eb9e29084d735da7e575733eaa5bc90dfee9e5a45"
+      }
+    ]
+  },
+  "pre_load_pins": {
+    "bytes": 1964,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/section-shape-1791120184659868000-split7-013-inputs/pre-load-pins.json",
+    "sha256": "8fd90fb3118435bf02e3accf0bb7f2681b31c7272b598b16e5bbd2a656c32b7f"
+  },
+  "pre_load_source_pins_verified": true,
+  "previous_nine_root_result": {
+    "capacity_corollary": "No independent kernel verdict; depends on the failed closed topology corollary.",
+    "export": {
+      "execution": {
+        "argv": [
+          "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=4096",
+          "--experimental-transform-types",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/section-shape-1791117229653090000-inputs/executed-inline-source.mjs"
+        ],
+        "cap_seconds": 60,
+        "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+        "exit_code": 0,
+        "group_absent": true,
+        "leader_reaped": true,
+        "pgid": 80939,
+        "pid": 80939,
+        "retry": false,
+        "seconds": 17.930137333460152,
+        "status": "passed",
+        "stderr": {
+          "bytes": 177,
+          "file": "stderr",
+          "sha1": "86e378c66df3227274d7517a48550abe2e19f771",
+          "sha256": "741cb88e9928f57822480c39cdda4bb1d80c5f7647285e05002ffac5c844f2a8"
+        },
+        "stdout": {
+          "bytes": 690,
+          "file": "stdout",
+          "sha1": "1d83e213704f89bb259d578505946ddf35445bbd",
+          "sha256": "acae87ccd354a1381a4f92955bb7296d30472eceba230bda2f0794964702de62"
+        },
+        "timed_out": false
+      },
+      "process": {
+        "bytes": 987,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/section-shape-1791117229653090000-export-005/process.json",
+        "sha256": "41c72ef76f177defd30acfd75f09e5a6355b88757416ed86680c8210cf9e3ed4"
+      },
+      "stderr": {
+        "bytes": 177,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/section-shape-1791117229653090000-export-005/stderr",
+        "sha256": "741cb88e9928f57822480c39cdda4bb1d80c5f7647285e05002ffac5c844f2a8"
+      },
+      "stdout": {
+        "bytes": 690,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/section-shape-1791117229653090000-export-005/stdout",
+        "sha256": "acae87ccd354a1381a4f92955bb7296d30472eceba230bda2f0794964702de62"
+      }
+    },
+    "exported_proof": {
+      "bytes": 376470,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/section-shape-1791117229653090000-inputs/selected.bendtt",
+      "sha256": "c07840cd40eee6a57ff5337fbed052405bb8ea250d2dc6deaf458b3882d02cef"
+    },
+    "kernel": {
+      "execution": {
+        "argv": [
+          "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/section-shape-1791117229653090000-inputs/selected.bendtt"
+        ],
+        "cap_seconds": 60,
+        "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+        "exit_code": 1,
+        "group_absent": true,
+        "leader_reaped": true,
+        "pgid": 81376,
+        "pid": 81376,
+        "retry": false,
+        "seconds": 13.428851708769798,
+        "status": "failed",
+        "stderr": {
+          "bytes": 0,
+          "file": "stderr",
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout": {
+          "bytes": 97,
+          "file": "stdout",
+          "sha1": "3202b9b2d74c9883e0e6efbddd905ed295ecea2a",
+          "sha256": "379266c4f77187221f25d949b8671e944179bc14c4ef25c11b13c558406fae49"
+        },
+        "timed_out": false
+      },
+      "process": {
+        "bytes": 885,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/section-shape-1791117229653090000-kernel-006/process.json",
+        "sha256": "21da41ef30b34cbc93abf54ea637c4fc09661abfb9f430b1a4d34b6df87421dc"
+      },
+      "stderr": {
+        "bytes": 0,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/section-shape-1791117229653090000-kernel-006/stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 97,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/section-shape-1791117229653090000-kernel-006/stdout",
+        "sha256": "379266c4f77187221f25d949b8671e944179bc14c4ef25c11b13c558406fae49"
+      }
+    },
+    "kernel_certified": false,
+    "ordinary": {
+      "execution": {
+        "argv": [
+          "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=4096",
+          "--experimental-transform-types",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/section-shape-1791117229653090000-inputs/diagnostic-ordinary-stack4096.mjs"
+        ],
+        "cap_seconds": 60,
+        "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+        "exit_code": 0,
+        "group_absent": true,
+        "leader_reaped": true,
+        "pgid": 80795,
+        "pid": 80795,
+        "retry": false,
+        "seconds": 18.02131929155439,
+        "status": "passed",
+        "stderr": {
+          "bytes": 177,
+          "file": "stderr",
+          "sha1": "df652b6dd4a7b4df57c5795006bfc8487d5a1dd9",
+          "sha256": "6c2de7fd0ad16c87ef4b6aaa3ad3a2c39a08349c114d701860997b640a531f4b"
+        },
+        "stdout": {
+          "bytes": 2679,
+          "file": "stdout",
+          "sha1": "355cef740c9edc00a57e50b5b05df941b44e0902",
+          "sha256": "e916a0a5697541040f151a1c668a07878ef0bb1808540c85f50aa5c8bf570b4f"
+        },
+        "timed_out": false
+      },
+      "process": {
+        "bytes": 994,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/section-shape-1791117229653090000-ordinary-api-stack4096-004/process.json",
+        "sha256": "69f583a828a3cc4a8fb97a7f46a059b27a72b013507a27c7a104529b3107bc22"
+      },
+      "stderr": {
+        "bytes": 177,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/section-shape-1791117229653090000-ordinary-api-stack4096-004/stderr",
+        "sha256": "6c2de7fd0ad16c87ef4b6aaa3ad3a2c39a08349c114d701860997b640a531f4b"
+      },
+      "stdout": {
+        "bytes": 2679,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/section-shape-1791117229653090000-ordinary-api-stack4096-004/stdout",
+        "sha256": "e916a0a5697541040f151a1c668a07878ef0bb1808540c85f50aa5c8bf570b4f"
+      }
+    },
+    "roots": [
+      "superflat_section_shape_laws:array_size_returns_exact_owner",
+      "superflat_section_shape_laws:array_set_preserves_complete_shape",
+      "superflat_section_shape_laws:section_set_preserves_complete_shape",
+      "superflat_section_shape_laws:fill_preserves_complete_shape",
+      "superflat_section_shape_laws:array_new_has_perfect_shape",
+      "superflat_section_shape_laws:perfect_shape_capacity",
+      "superflat_section_shape_laws:section_new_has_perfect_shape",
+      "superflat_section_shape_laws:complete_section_has_perfect_shape",
+      "superflat_section_shape_laws:complete_section_has_4096_cells"
+    ],
+    "scope": {
+      "bytes": 23,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/section-shape-1791117229653090000-inputs/scope.json",
+      "sha256": "096eba7c600446a2f906369a6ff747804a51b9ad3153ca10d9a1d673e416b337"
+    },
+    "script": {
+      "bytes": 3450,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/section-shape-1791117229653090000-inputs/executed-inline-source.mjs",
+      "sha256": "0654da41dbfbe132bd18d64ce77fe91cdc7a2cd7b65f905373b2455499d99896"
+    },
+    "selection": {
+      "bytes": 6409,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/section-shape-1791117229653090000-inputs/selection.json",
+      "sha256": "c498e26576800713b85c6ec1a7684190e21558a3ffd2d3a600eaa3ca741e7b74"
+    },
+    "source_snapshot_index": {
+      "bytes": 4403,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/section-shape-1791117229653090000-inputs/kernel-006-sources/index.json",
+      "sha256": "4fb009488f06472997f826eddf71370a77274e2640c1590729a1ffd8c74da734"
+    },
+    "verdict": "SOME PROOFS FAIL\nIn superflat_section_shape_laws.complete_section_has_perfect_shape:\nout of fuel"
+  },
+  "production_implementation_changed": false,
+  "proof_architecture": "Shape observes both children of actual Array nodes. Existential witnesses return the actual size/swap/set/fill owner plus equality and shape evidence; original owners used only in semantic equations are erased. Structural Array induction handles topology preservation; Nat-fuel induction handles actual Population.fill. No replacement fill algorithm, new axiom or unsafe proof operation is introduced.",
+  "recorded_utc": "2026-10-04T13:29:11.635523+00:00",
+  "scope": {
+    "bytes": 23,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/section-shape-1791120184659868000-split7-013-inputs/scope.json",
+    "sha256": "096eba7c600446a2f906369a6ff747804a51b9ad3153ca10d9a1d673e416b337"
+  },
+  "selection": {
+    "bytes": 5555,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/section-shape-1791120184659868000-split7-013-inputs/selection.json",
+    "sha256": "3d5741375f4171910dc098ed742a00ee6ab363896c2e1e4e55b172bb9fe662f6"
+  },
+  "source_files": [
+    {
+      "bytes": 18804,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/superflat_section_shape_proof.bend",
+      "sha256": "896d4b44db5c5296c897dd190fbbfcc9c945ae3cc6de8ad883e5b92ffda4ce53"
+    },
+    {
+      "bytes": 71530,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/base.bend",
+      "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+    },
+    {
+      "bytes": 2536,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/superflat_section_shape_laws.bend",
+      "sha256": "d031a3f718a7ea4da725b7730b02578b0c050fd9ab35915375e6c54a8703b721"
+    },
+    {
+      "bytes": 6520,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/section.bend",
+      "sha256": "02b5c15c57b173c7eb8b4c55a1433c10c192926e91af5e3e69050b4404044aa5"
+    },
+    {
+      "bytes": 13744,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/superflat_population.bend",
+      "sha256": "6a34c8478dab0bd06688ef0b9869ee07d65fb3f8b671bf5f8d4c66894ee639d2"
+    },
+    {
+      "bytes": 5947,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/world_generation_settings.bend",
+      "sha256": "cb5cc9ee81c266dd2d5543ecf83c6f99c08542739cad6e59d8e5d9166d6560c7"
+    },
+    {
+      "bytes": 26178,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/nbt.bend",
+      "sha256": "b677546b5fc02aaa38f5c09e5b798c0d35aec32b1c4b37cbd7042b9a1a5275e4"
+    },
+    {
+      "bytes": 11690,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/core.bend",
+      "sha256": "c1ee5a5390cdac0452c9c6cd3b0584a68ef68b5b0dfec867491c27e67ecadd4e"
+    },
+    {
+      "bytes": 3365,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/schedule.bend",
+      "sha256": "93aa79895fe340e27ae5fd562102d5980f0938003eb1bbde669a84010779b8c9"
+    },
+    {
+      "bytes": 3987,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/section_map.bend",
+      "sha256": "ded59d7938c02fd0876d65e37f9f90ea0cfebf3ca4bd107394342f8adbf33965"
+    }
+  ],
+  "source_mutation_scope": [
+    "src/superflat_section_shape_laws.bend",
+    "src/superflat_section_shape_proof.bend",
+    "src/superflat_complete_section_pending_laws.bend",
+    "src/superflat_complete_section_pending_proof.bend"
+  ],
+  "source_pins_stable_through_export_and_kernel": true,
+  "source_snapshot_index": {
+    "bytes": 5612,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/section-shape-1791120184659868000-split7-013-inputs/certified-source-snapshots/index.json",
+    "sha256": "e73795ec3e936275adb6a7617ed1da4ecb54e1e58086d3618a7d82b0a1c2b3b0"
+  },
+  "split_identity": {
+    "completion_bodies_unchanged_modulo_module_namespace": true,
+    "completion_statement_type_hashes_unchanged": true,
+    "pre_split_artifact": {
+      "bytes": 65840,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/section-shape-1791119984232021000-generic7-012-inputs/selected.bendtt",
+      "sha256": "fda95ebc80c3796f649d41327c9e683312e4a16625ed4793dc13a2b6964beafa"
+    },
+    "seven_checked_types_proofs_and_bodies_identical_to_pre_split": true,
+    "seven_proof_artifact_identical_to_pre_split": true
+  },
+  "status": "seven_generic_roots_kernel_pass_two_completion_roots_pending",
+  "supervisor": {
+    "bytes": 10871,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/reference_superflat_probe.py",
+    "sha256": "04a84f86008779960a694fd01507517c718326dce4189d2719f4d6be9fae0a56"
+  }
+}

@@ -1,0 +1,207 @@
+{
+  "archive": {
+    "mtime_ns": 1791033863253798161,
+    "path": "/Users/chuah/Library/Application Support/minecraft/versions/26.3/26.3.jar",
+    "size": 41483720
+  },
+  "classic_flat_reused": {
+    "bytes": 433,
+    "json": {
+      "display": "minecraft:grass_block",
+      "settings": {
+        "biome": "minecraft:plains",
+        "features": false,
+        "lakes": false,
+        "layers": [
+          {
+            "block": "minecraft:bedrock",
+            "height": 1
+          },
+          {
+            "block": "minecraft:dirt",
+            "height": 2
+          },
+          {
+            "block": "minecraft:grass_block",
+            "height": 1
+          }
+        ],
+        "structure_overrides": "minecraft:villages"
+      }
+    },
+    "member": "data/minecraft/worldgen/flat_level_generator_preset/classic_flat.json",
+    "sha256": "5ff703d294ac00303c8f8f93f15f57c53c47a281a412217c16a79874e0c63629",
+    "source": "reference/superflat_world.json"
+  },
+  "entries": {
+    "data/minecraft/dimension_type/overworld.json": {
+      "bytes": 1786,
+      "json": {
+        "ambient_light": 0.0,
+        "attributes": {
+          "minecraft:audio/ambient_sounds": {
+            "mood": {
+              "block_search_extent": 8,
+              "offset": 2.0,
+              "sound": "minecraft:ambient.cave",
+              "tick_delay": 6000
+            }
+          },
+          "minecraft:audio/background_music": {
+            "creative": {
+              "max_delay": 24000,
+              "min_delay": 12000,
+              "sound": "minecraft:music.creative"
+            },
+            "default": {
+              "max_delay": 24000,
+              "min_delay": 12000,
+              "sound": "minecraft:music.game"
+            }
+          },
+          "minecraft:gameplay/bed_rule": {
+            "can_set_spawn": "always",
+            "can_sleep": "when_dark",
+            "error_message": {
+              "translate": "block.minecraft.bed.no_sleep"
+            }
+          },
+          "minecraft:gameplay/nether_portal_spawns_piglin": true,
+          "minecraft:gameplay/respawn_anchor_works": false,
+          "minecraft:gameplay/straw_bed_rule": {
+            "can_set_spawn": "never",
+            "can_sleep": "when_dark",
+            "destroy_on_leave": true,
+            "error_message": {
+              "translate": "block.minecraft.bed.no_sleep"
+            }
+          },
+          "minecraft:visual/ambient_light_color": "#0a0a0a",
+          "minecraft:visual/cloud_color": "#ccffffff",
+          "minecraft:visual/cloud_height": 192.33,
+          "minecraft:visual/fog_color": "#c0d8ff",
+          "minecraft:visual/sky_color": "#78a7ff"
+        },
+        "coordinate_scale": 1.0,
+        "default_clock": "minecraft:overworld",
+        "has_ceiling": false,
+        "has_ender_dragon_fight": false,
+        "has_skylight": true,
+        "height": 384,
+        "infiniburn": "#minecraft:infiniburn_overworld",
+        "logical_height": 384,
+        "min_y": -64,
+        "monster_spawn_block_light_limit": 0,
+        "monster_spawn_light_level": {
+          "max_inclusive": 7,
+          "min_inclusive": 0,
+          "type": "minecraft:uniform"
+        },
+        "timelines": "#minecraft:in_overworld"
+      },
+      "sha256": "d1fc489f93934f77d855e721bd822595aa1e44460342f0e5ce9de7e2dfc9e10e"
+    },
+    "data/minecraft/worldgen/world_preset/flat.json": {
+      "bytes": 1276,
+      "json": {
+        "dimensions": {
+          "minecraft:overworld": {
+            "generator": {
+              "settings": {
+                "biome": "minecraft:plains",
+                "features": false,
+                "lakes": false,
+                "layers": [
+                  {
+                    "block": "minecraft:bedrock",
+                    "height": 1
+                  },
+                  {
+                    "block": "minecraft:dirt",
+                    "height": 2
+                  },
+                  {
+                    "block": "minecraft:grass_block",
+                    "height": 1
+                  }
+                ],
+                "structure_overrides": [
+                  "minecraft:strongholds",
+                  "minecraft:villages"
+                ]
+              },
+              "type": "minecraft:flat"
+            },
+            "type": "minecraft:overworld"
+          },
+          "minecraft:the_end": {
+            "generator": {
+              "biome_source": {
+                "type": "minecraft:the_end"
+              },
+              "settings": "minecraft:end",
+              "type": "minecraft:noise"
+            },
+            "type": "minecraft:the_end"
+          },
+          "minecraft:the_nether": {
+            "generator": {
+              "biome_source": {
+                "preset": "minecraft:nether",
+                "type": "minecraft:multi_noise"
+              },
+              "settings": "minecraft:nether",
+              "type": "minecraft:noise"
+            },
+            "type": "minecraft:the_nether"
+          }
+        }
+      },
+      "sha256": "f7236dd3fa057bc6d573c3c2757e65625f0f493601f797bdfe163b65c98d78d1"
+    },
+    "data/minecraft/worldgen/world_preset/normal.json": {
+      "bytes": 866,
+      "json": {
+        "dimensions": {
+          "minecraft:overworld": {
+            "generator": {
+              "biome_source": {
+                "preset": "minecraft:overworld",
+                "type": "minecraft:multi_noise"
+              },
+              "settings": "minecraft:overworld",
+              "type": "minecraft:noise"
+            },
+            "type": "minecraft:overworld"
+          },
+          "minecraft:the_end": {
+            "generator": {
+              "biome_source": {
+                "type": "minecraft:the_end"
+              },
+              "settings": "minecraft:end",
+              "type": "minecraft:noise"
+            },
+            "type": "minecraft:the_end"
+          },
+          "minecraft:the_nether": {
+            "generator": {
+              "biome_source": {
+                "preset": "minecraft:nether",
+                "type": "minecraft:multi_noise"
+              },
+              "settings": "minecraft:nether",
+              "type": "minecraft:noise"
+            },
+            "type": "minecraft:the_nether"
+          }
+        }
+      },
+      "sha256": "215a0aaf16365e2b0131162d6c4d391659d4c508fe62cc34e7962953a2334ce4"
+    }
+  },
+  "observation": "exact bounded installed ZIP member reads; no Java process and no whole archive rehash",
+  "pin": "26.3",
+  "schema_version": 1,
+  "scope": "Settings factory data provenance only; no biome/density/structure execution claim"
+}

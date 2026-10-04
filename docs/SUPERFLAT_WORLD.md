@@ -1,6 +1,11 @@
-# Bounded custom superflat scene
+# Historical bounded custom superflat scene
 
-The playable client uses the explicit profile `bendex:stone-dirt-superflat`:
+The regular saved client source now uses typed durable settings and demand
+population described in [WORLD_GENERATION.md](WORLD_GENERATION.md). The fixed
+75-section layout and native test expectations below remain the historical
+instrument/reference scope; they are not production Minecraft world bounds.
+
+The original bounded client instrument uses the explicit profile `bendex:stone-dirt-superflat`:
 one stone layer, two dirt layers, and one stone surface layer, starting at
 Overworld `min_y=-64`. Player feet start at `(0.5,-60,0.5)`. These names resolve
 through the loaded registry; state IDs are not built into the generator.
