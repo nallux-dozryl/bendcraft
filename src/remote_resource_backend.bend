@@ -14,6 +14,8 @@ import ./player_block_interaction.bend as BI
 import ./player_core_edit.bend as Edit
 import ./inventory.bend as Inv
 import ./world_mesh.bend as WM
+import ./player_crafting_session_adapter.bend as CS
+import ./player_crafting_authority_menu.bend as CraftMenu
 
 # The public save session and private renderer lease live in one actor.
 # Resources and the native window belong to the remote renderer process.
@@ -21,7 +23,7 @@ type Lease is Data:
   Lease{epoch:String,next:Nat,remaining:U32,active:Bool}
 
 type State is Type:
-  State{saved:S.State,lease:Lease,counter:Nat,nonce:String,capability:String,owner:C.Capability}
+  State{saved:S.State,lease:Lease,counter:Nat,nonce:String,capability:String,owner:C.Capability,crafting:Maybe<&2,CS.Context>}
 type MenuOutcome is Data:
   MenuOutcome{accepted:Bool,message:String,snapshot:I.MenuSnapshot}
 
@@ -32,7 +34,10 @@ def maximum_sequence() -> Nat:
   Nat.add(Nat.mul(4294967295n,65536n),65535n)
 
 def new_reserved(saved:S.State,nonce:String,capability:String,owner:C.Capability) -> State:
-  State{saved,idle(),0n,nonce,capability,owner}
+  State{saved,idle(),0n,nonce,capability,owner,None{}}
+
+def new_reserved_with_crafting(saved:S.State,nonce:String,capability:String,owner:C.Capability,context:CS.Context) -> State:
+  State{saved,idle(),0n,nonce,capability,owner,Some{context}}
 
 def new(saved:S.State,nonce:String,capability:String) -> State:
   new_reserved(saved,nonce,capability,C.Observer{})
@@ -52,20 +57,20 @@ def expired(lease:Lease) -> Lease:
 
 def lease_tick(state:State) -> State:
   match state:
-    case State{saved,Lease{epoch,next,remaining,False{}},counter,nonce,capability,owner}:
-      State{saved,Lease{epoch,next,remaining,False{}},counter,nonce,capability,owner}
-    case State{saved,Lease{epoch,next,0,True{}},counter,nonce,capability,owner}:
-      State{S.release(saved),Lease{epoch,next,0,False{}},counter,nonce,capability,owner}
-    case State{saved,Lease{epoch,next,1,True{}},counter,nonce,capability,owner}:
-      State{S.release(saved),Lease{epoch,next,0,False{}},counter,nonce,capability,owner}
-    case State{saved,Lease{epoch,next,remaining,True{}},counter,nonce,capability,owner}:
-      State{saved,Lease{epoch,next,U32.sub(remaining,1),True{}},counter,nonce,capability,owner}
+    case State{saved,Lease{epoch,next,remaining,False{}},counter,nonce,capability,owner,crafting}:
+      State{saved,Lease{epoch,next,remaining,False{}},counter,nonce,capability,owner,crafting}
+    case State{saved,Lease{epoch,next,0,True{}},counter,nonce,capability,owner,crafting}:
+      State{S.release(saved),Lease{epoch,next,0,False{}},counter,nonce,capability,owner,crafting}
+    case State{saved,Lease{epoch,next,1,True{}},counter,nonce,capability,owner,crafting}:
+      State{S.release(saved),Lease{epoch,next,0,False{}},counter,nonce,capability,owner,crafting}
+    case State{saved,Lease{epoch,next,remaining,True{}},counter,nonce,capability,owner,crafting}:
+      State{saved,Lease{epoch,next,U32.sub(remaining,1),True{}},counter,nonce,capability,owner,crafting}
 
 # Lease expiry is checked on real actor pulses, including paused pulses, and
 # releases physical controls before the same pulse can advance player physics.
 def pulsed(state:State) -> State:
-  State{saved,lease,counter,nonce,capability,owner} = state
-  State{Scene.realtime_step(saved),lease,counter,nonce,capability,owner}
+  State{saved,lease,counter,nonce,capability,owner,crafting} = state
+  State{Scene.realtime_step(saved),lease,counter,nonce,capability,owner,crafting}
 
 def realtime_active(state:State,live:Bool) -> State:
   match live:
@@ -73,18 +78,18 @@ def realtime_active(state:State,live:Bool) -> State:
     case True{}: pulsed(lease_tick(state))
 
 def realtime_step(state:State) -> State:
-  State{saved,lease,counter,nonce,+capability,owner} = state
-  realtime_active(State{saved,lease,counter,nonce,capability,owner},Bool.not(String.is_empty(capability)))
+  State{saved,lease,counter,nonce,+capability,owner,crafting} = state
+  realtime_active(State{saved,lease,counter,nonce,capability,owner,crafting},Bool.not(String.is_empty(capability)))
 
-def dispatched(lease:Lease,counter:Nat,nonce:String,capability:String,owner:C.Capability,result:S.State & L.Session & J.Value) -> State & L.Session & J.Value:
+def dispatched(lease:Lease,counter:Nat,nonce:String,capability:String,owner:C.Capability,crafting:Maybe<&2,CS.Context>,result:S.State & L.Session & J.Value) -> State & L.Session & J.Value:
   (saved,session,value) = result
-  (State{saved,lease,counter,nonce,capability,owner},session,value)
+  (State{saved,lease,counter,nonce,capability,owner,crafting},session,value)
 
 def dispatch(state:State,session:L.Session,token:String,request:J.Value) -> IO(State & L.Session & J.Value):
-  State{saved,lease,counter,nonce,capability,owner} = state
+  State{saved,lease,counter,nonce,capability,owner,crafting} = state
   do IO<State & L.Session & J.Value>:
     result : S.State & L.Session & J.Value <- Scene.dispatch(saved,session,token,request)
-    return dispatched(lease,counter,nonce,capability,owner,result)
+    return dispatched(lease,counter,nonce,capability,owner,crafting,result)
 
 def driver() -> Server.EffectfulDriver<State>:
   Server.EffectfulDriver{realtime_step,dispatch}
@@ -92,16 +97,16 @@ def driver() -> Server.EffectfulDriver<State>:
 def hello_capacity(state:State,room:Bool) -> State & Result<&2,&2,String,String>:
   match state room:
     case _ False{}: (state,Fail{"RendererLeaseExhausted"})
-    case State{saved,lease,+counter,+nonce,capability,owner} True{}:
+    case State{saved,lease,+counter,+nonce,capability,owner,crafting} True{}:
       +fresh = nonce ++ ":" ++ Nat.show(1n+counter)
-      (State{S.release(saved),Lease{fresh,1n,100,True{}},1n+counter,nonce,capability,owner},Done{fresh})
+      (State{S.release(saved),Lease{fresh,1n,100,True{}},1n+counter,nonce,capability,owner,crafting},Done{fresh})
 
 def hello_available(state:State) -> State & Result<&2,&2,String,String>:
   match state:
-    case State{saved,Lease{epoch,next,remaining,True{}},counter,nonce,capability,owner}:
-      (State{saved,Lease{epoch,next,remaining,True{}},counter,nonce,capability,owner},Fail{"RendererLeaseBusy"})
-    case State{saved,lease,+counter,+nonce,capability,owner}:
-      hello_capacity(State{saved,lease,counter,nonce,capability,owner},Nat.is_lt(counter,maximum_sequence()))
+    case State{saved,Lease{epoch,next,remaining,True{}},counter,nonce,capability,owner,crafting}:
+      (State{saved,Lease{epoch,next,remaining,True{}},counter,nonce,capability,owner,crafting},Fail{"RendererLeaseBusy"})
+    case State{saved,lease,+counter,+nonce,capability,owner,crafting}:
+      hello_capacity(State{saved,lease,counter,nonce,capability,owner,crafting},Nat.is_lt(counter,maximum_sequence()))
 
 def hello_checked(state:State,authorized:Bool) -> State & Result<&2,&2,String,String>:
   match authorized:
@@ -109,13 +114,13 @@ def hello_checked(state:State,authorized:Bool) -> State & Result<&2,&2,String,St
     case True{}: hello_available(state)
 
 def hello(state:State,presented:String) -> State & Result<&2,&2,String,String>:
-  State{saved,lease,counter,nonce,+capability,owner} = state
-  hello_checked(State{saved,lease,counter,nonce,capability,owner},
+  State{saved,lease,counter,nonce,+capability,owner,crafting} = state
+  hello_checked(State{saved,lease,counter,nonce,capability,owner,crafting},
     Bool.not(String.is_empty(capability)) && String.eq(capability,presented))
 
-def frame_result(lease:Lease,counter:Nat,nonce:String,capability:String,owner:C.Capability,result:S.State & Result<&2,&2,String,V.Sample>) -> State & Result<&2,&2,String,V.Sample>:
+def frame_result(lease:Lease,counter:Nat,nonce:String,capability:String,owner:C.Capability,crafting:Maybe<&2,CS.Context>,result:S.State & Result<&2,&2,String,V.Sample>) -> State & Result<&2,&2,String,V.Sample>:
   (saved,status) = result
-  (State{saved,renewed(lease),counter,nonce,capability,owner},status)
+  (State{saved,renewed(lease),counter,nonce,capability,owner,crafting},status)
 
 def frame_ensured(width:U32,height:U32,result:S.State & Result<&2,&2,String,Unit>) -> S.State & Result<&2,&2,String,V.Sample>:
   (saved,status) = result
@@ -134,16 +139,16 @@ def frame_sample(saved:S.State,+width:U32,+height:U32) -> S.State & Result<&2,&2
 def frame_checked(state:State,width:U32,height:U32,valid:Bool) -> State & Result<&2,&2,String,V.Sample>:
   match state valid:
     case _ False{}: (state,Fail{"RendererLeaseOrSequence"})
-    case State{saved,lease,counter,nonce,capability,owner} True{}:
-      frame_result(lease,counter,nonce,capability,owner,frame_sample(saved,width,height))
+    case State{saved,lease,counter,nonce,capability,owner,crafting} True{}:
+      frame_result(lease,counter,nonce,capability,owner,crafting,frame_sample(saved,width,height))
 
 def frame(state:State,epoch:String,sequence:Nat,width:U32,height:U32) -> State & Result<&2,&2,String,V.Sample>:
-  State{saved,+lease,counter,nonce,capability,owner} = state
-  frame_checked(State{saved,lease,counter,nonce,capability,owner},width,height,admitted(lease,epoch,sequence))
+  State{saved,+lease,counter,nonce,capability,owner,crafting} = state
+  frame_checked(State{saved,lease,counter,nonce,capability,owner,crafting},width,height,admitted(lease,epoch,sequence))
 
-def input_result(lease:Lease,counter:Nat,nonce:String,capability:String,owner:C.Capability,result:S.State & Result<&2,&2,String,Unit>) -> State & Result<&2,&2,String,Unit>:
+def input_result(lease:Lease,counter:Nat,nonce:String,capability:String,owner:C.Capability,crafting:Maybe<&2,CS.Context>,result:S.State & Result<&2,&2,String,Unit>) -> State & Result<&2,&2,String,Unit>:
   (saved,status) = result
-  (State{saved,renewed(lease),counter,nonce,capability,owner},status)
+  (State{saved,renewed(lease),counter,nonce,capability,owner,crafting},status)
 
 # The renderer lease is admitted before this is called. Release and the rest
 # of one physical input packet execute in the existing single actor operation.
@@ -159,26 +164,26 @@ def input_released(saved:S.State,+packet:CC.Packet) -> S.State & Result<&2,&2,St
 def input_checked(state:State,packet:CC.Packet,valid:Bool) -> State & Result<&2,&2,String,Unit>:
   match state valid:
     case _ False{}: (state,Fail{"RendererLeaseOrSequence"})
-    case State{saved,lease,counter,nonce,capability,owner} True{}:
-      input_result(lease,counter,nonce,capability,owner,input_released(saved,packet))
+    case State{saved,lease,counter,nonce,capability,owner,crafting} True{}:
+      input_result(lease,counter,nonce,capability,owner,crafting,input_released(saved,packet))
 
 def input(state:State,epoch:String,sequence:Nat,packet:CC.Packet) -> State & Result<&2,&2,String,Unit>:
-  State{saved,+lease,counter,nonce,capability,owner} = state
-  input_checked(State{saved,lease,counter,nonce,capability,owner},packet,admitted(lease,epoch,sequence))
+  State{saved,+lease,counter,nonce,capability,owner,crafting} = state
+  input_checked(State{saved,lease,counter,nonce,capability,owner,crafting},packet,admitted(lease,epoch,sequence))
 
-def inventory_result(lease:Lease,counter:Nat,nonce:String,capability:String,owner:C.Capability,result:S.State & I.Snapshot) -> State & Result<&2,&2,String,I.Snapshot>:
+def inventory_result(lease:Lease,counter:Nat,nonce:String,capability:String,owner:C.Capability,crafting:Maybe<&2,CS.Context>,result:S.State & I.Snapshot) -> State & Result<&2,&2,String,I.Snapshot>:
   (saved,snapshot) = result
-  (State{saved,renewed(lease),counter,nonce,capability,owner},Done{snapshot})
+  (State{saved,renewed(lease),counter,nonce,capability,owner,crafting},Done{snapshot})
 
 def inventory_checked(state:State,valid:Bool) -> State & Result<&2,&2,String,I.Snapshot>:
   match state valid:
     case _ False{}: (state,Fail{"RendererLeaseOrSequence"})
-    case State{saved,lease,counter,nonce,capability,owner} True{}:
-      inventory_result(lease,counter,nonce,capability,owner,S.inventory_inspect(saved))
+    case State{saved,lease,counter,nonce,capability,owner,crafting} True{}:
+      inventory_result(lease,counter,nonce,capability,owner,crafting,S.inventory_inspect(saved))
 
 def inventory(state:State,epoch:String,sequence:Nat) -> State & Result<&2,&2,String,I.Snapshot>:
-  State{saved,+lease,counter,nonce,capability,owner} = state
-  inventory_checked(State{saved,lease,counter,nonce,capability,owner},admitted(lease,epoch,sequence))
+  State{saved,+lease,counter,nonce,capability,owner,crafting} = state
+  inventory_checked(State{saved,lease,counter,nonce,capability,owner,crafting},admitted(lease,epoch,sequence))
 
 def hotbar_owner_checked(saved:S.State,index:U32,player:Bool) -> S.State & Result<&2,&2,String,Unit>:
   match player:
@@ -188,16 +193,16 @@ def hotbar_owner_checked(saved:S.State,index:U32,player:Bool) -> S.State & Resul
 def hotbar_checked(state:State,index:U32,valid:Bool) -> State & Result<&2,&2,String,Unit>:
   match state valid:
     case _ False{}: (state,Fail{"RendererLeaseOrSequence"})
-    case State{saved,lease,counter,nonce,capability,+owner} True{}:
-      input_result(lease,counter,nonce,capability,owner,hotbar_owner_checked(saved,index,Maybe.is_some(&2,U32,Edit.player_peer(owner))))
+    case State{saved,lease,counter,nonce,capability,+owner,crafting} True{}:
+      input_result(lease,counter,nonce,capability,owner,crafting,hotbar_owner_checked(saved,index,Maybe.is_some(&2,U32,Edit.player_peer(owner))))
 
 def hotbar(state:State,epoch:String,sequence:Nat,index:U32) -> State & Result<&2,&2,String,Unit>:
-  State{saved,+lease,counter,nonce,capability,owner} = state
-  hotbar_checked(State{saved,lease,counter,nonce,capability,owner},index,admitted(lease,epoch,sequence))
+  State{saved,+lease,counter,nonce,capability,owner,crafting} = state
+  hotbar_checked(State{saved,lease,counter,nonce,capability,owner,crafting},index,admitted(lease,epoch,sequence))
 
-def action_result(lease:Lease,counter:Nat,nonce:String,capability:String,owner:C.Capability,result:S.State & BI.Outcome) -> State & Result<&2,&2,String,BI.Outcome>:
+def action_result(lease:Lease,counter:Nat,nonce:String,capability:String,owner:C.Capability,crafting:Maybe<&2,CS.Context>,result:S.State & BI.Outcome) -> State & Result<&2,&2,String,BI.Outcome>:
   (saved,status) = result
-  (State{saved,renewed(lease),counter,nonce,capability,owner},Done{status})
+  (State{saved,renewed(lease),counter,nonce,capability,owner,crafting},Done{status})
 
 def action_ensured(owner:C.Capability,sequence:Nat,button:U32,result:S.State & Result<&2,&2,String,Unit>) -> S.State & BI.Outcome:
   (saved,status) = result
@@ -227,53 +232,76 @@ def action_requested(saved:S.State,+owner:C.Capability,sequence:Nat,button:U32) 
 def action_checked(state:State,sequence:Nat,button:U32,valid:Bool) -> State & Result<&2,&2,String,BI.Outcome>:
   match state valid:
     case _ False{}: (state,Fail{"RendererLeaseOrSequence"})
-    case State{saved,lease,counter,nonce,capability,+owner} True{}:
-      action_result(lease,counter,nonce,capability,owner,action_requested(saved,owner,sequence,button))
+    case State{saved,lease,counter,nonce,capability,+owner,crafting} True{}:
+      action_result(lease,counter,nonce,capability,owner,crafting,action_requested(saved,owner,sequence,button))
 
 def action(state:State,epoch:String,+sequence:Nat,button:U32) -> State & Result<&2,&2,String,BI.Outcome>:
-  State{saved,+lease,counter,nonce,capability,owner} = state
-  action_checked(State{saved,lease,counter,nonce,capability,owner},sequence,button,admitted(lease,epoch,sequence))
+  State{saved,+lease,counter,nonce,capability,owner,crafting} = state
+  action_checked(State{saved,lease,counter,nonce,capability,owner,crafting},sequence,button,admitted(lease,epoch,sequence))
 
 # Every admitted menu operation reports the actual server-owned inventory.
 # A gameplay refusal consumes the private sequence and keeps the lease usable.
-def menu_observed(lease:Lease,counter:Nat,nonce:String,capability:String,owner:C.Capability,accepted:Bool,message:String,result:S.State & I.MenuSnapshot) -> State & Result<&2,&2,String,MenuOutcome>:
+def menu_observed(lease:Lease,counter:Nat,nonce:String,capability:String,owner:C.Capability,crafting:Maybe<&2,CS.Context>,accepted:Bool,message:String,result:S.State & I.MenuSnapshot) -> State & Result<&2,&2,String,MenuOutcome>:
   (saved,snapshot) = result
-  (State{saved,renewed(lease),counter,nonce,capability,owner},Done{MenuOutcome{accepted,message,snapshot}})
+  (State{saved,renewed(lease),counter,nonce,capability,owner,crafting},Done{MenuOutcome{accepted,message,snapshot}})
 
-def menu_status(lease:Lease,counter:Nat,nonce:String,capability:String,owner:C.Capability,result:S.State & Result<&2,&2,String,Unit>) -> State & Result<&2,&2,String,MenuOutcome>:
+# The adapter owns recipe admission and the original inventory. Its acceptance
+# describes committed physics even when its subsequent derived-cache refresh
+# fails, so the backend forwards that fact without reinterpreting the message.
+def crafting_reported(lease:Lease,counter:Nat,nonce:String,capability:String,owner:C.Capability,result:S.State & CS.Context & CraftMenu.Reply) -> State & Result<&2,&2,String,MenuOutcome>:
+  (saved,context,CraftMenu.Reply{accepted,message,snapshot,grid,taken,cache_refreshed}) = result
+  (State{saved,renewed(lease),counter,nonce,capability,owner,Some{context}},Done{MenuOutcome{accepted,message,snapshot}})
+
+# A committed ordinary inventory operation remains accepted if observing its
+# refreshed crafting output subsequently reports a service-catalog error.
+def crafting_completed(lease:Lease,counter:Nat,nonce:String,capability:String,owner:C.Capability,result:S.State & CS.Context & CraftMenu.Reply) -> State & Result<&2,&2,String,MenuOutcome>:
+  (saved,context,CraftMenu.Reply{accepted,message,snapshot,grid,taken,cache_refreshed}) = result
+  (State{saved,renewed(lease),counter,nonce,capability,owner,Some{context}},Done{MenuOutcome{True{},message,snapshot}})
+
+def menu_completed(saved:S.State,lease:Lease,counter:Nat,nonce:String,capability:String,owner:C.Capability,crafting:Maybe<&2,CS.Context>) -> State & Result<&2,&2,String,MenuOutcome>:
+  match crafting:
+    case None{}: menu_observed(lease,counter,nonce,capability,owner,None{},True{},"",S.menu_inspect(saved))
+    case Some{context}: crafting_completed(lease,counter,nonce,capability,owner,CS.inspect(saved,context))
+
+def menu_status(lease:Lease,counter:Nat,nonce:String,capability:String,owner:C.Capability,crafting:Maybe<&2,CS.Context>,result:S.State & Result<&2,&2,String,Unit>) -> State & Result<&2,&2,String,MenuOutcome>:
   (saved,status) = result
   match status:
-    case Fail{message}: menu_observed(lease,counter,nonce,capability,owner,False{},message,S.menu_inspect(saved))
-    case Done{unit}: menu_observed(lease,counter,nonce,capability,owner,True{},"",S.menu_inspect(saved))
+    case Fail{message}: menu_observed(lease,counter,nonce,capability,owner,crafting,False{},message,S.menu_inspect(saved))
+    case Done{unit}: menu_completed(saved,lease,counter,nonce,capability,owner,crafting)
 
 def menu_player_checked(state:State,operation:S.State -> S.State & Result<&2,&2,String,Unit>,player:Bool) -> State & Result<&2,&2,String,MenuOutcome>:
   match state player:
-    case State{saved,lease,counter,nonce,capability,owner} False{}:
-      menu_observed(lease,counter,nonce,capability,owner,False{},"inventory:player-permission",S.menu_inspect(saved))
-    case State{saved,lease,counter,nonce,capability,owner} True{}:
-      menu_status(lease,counter,nonce,capability,owner,operation(saved))
+    case State{saved,lease,counter,nonce,capability,owner,crafting} False{}:
+      menu_observed(lease,counter,nonce,capability,owner,crafting,False{},"inventory:player-permission",S.menu_inspect(saved))
+    case State{saved,lease,counter,nonce,capability,owner,crafting} True{}:
+      menu_status(lease,counter,nonce,capability,owner,crafting,operation(saved))
 
 def menu_mutation_checked(state:State,operation:S.State -> S.State & Result<&2,&2,String,Unit>,valid:Bool) -> State & Result<&2,&2,String,MenuOutcome>:
   match state valid:
     case _ False{}: (state,Fail{"RendererLeaseOrSequence"})
-    case State{saved,lease,counter,nonce,capability,+owner} True{}:
-      menu_player_checked(State{saved,lease,counter,nonce,capability,owner},operation,Maybe.is_some(&2,U32,Edit.player_peer(owner)))
+    case State{saved,lease,counter,nonce,capability,+owner,crafting} True{}:
+      menu_player_checked(State{saved,lease,counter,nonce,capability,owner,crafting},operation,Maybe.is_some(&2,U32,Edit.player_peer(owner)))
 
 # Ordinary inventory movement does not require maybuild. Acquisition is gated
 # by the actual inventory's instabuild ability inside S.inventory_acquire.
 def menu_mutation(state:State,epoch:String,sequence:Nat,operation:S.State -> S.State & Result<&2,&2,String,Unit>) -> State & Result<&2,&2,String,MenuOutcome>:
-  State{saved,+lease,counter,nonce,capability,owner} = state
-  menu_mutation_checked(State{saved,lease,counter,nonce,capability,owner},operation,admitted(lease,epoch,sequence))
+  State{saved,+lease,counter,nonce,capability,owner,crafting} = state
+  menu_mutation_checked(State{saved,lease,counter,nonce,capability,owner,crafting},operation,admitted(lease,epoch,sequence))
+
+def menu_authority(saved:S.State,lease:Lease,counter:Nat,nonce:String,capability:String,owner:C.Capability,crafting:Maybe<&2,CS.Context>) -> State & Result<&2,&2,String,MenuOutcome>:
+  match crafting:
+    case None{}: menu_observed(lease,counter,nonce,capability,owner,None{},True{},"",S.menu_inspect(saved))
+    case Some{context}: crafting_reported(lease,counter,nonce,capability,owner,CS.inspect(saved,context))
 
 def menu_inspect_checked(state:State,valid:Bool) -> State & Result<&2,&2,String,MenuOutcome>:
   match state valid:
     case _ False{}: (state,Fail{"RendererLeaseOrSequence"})
-    case State{saved,lease,counter,nonce,capability,owner} True{}:
-      menu_observed(lease,counter,nonce,capability,owner,True{},"",S.menu_inspect(saved))
+    case State{saved,lease,counter,nonce,capability,owner,crafting} True{}:
+      menu_authority(saved,lease,counter,nonce,capability,owner,crafting)
 
 def menu_inspect(state:State,epoch:String,sequence:Nat) -> State & Result<&2,&2,String,MenuOutcome>:
-  State{saved,+lease,counter,nonce,capability,owner} = state
-  menu_inspect_checked(State{saved,lease,counter,nonce,capability,owner},admitted(lease,epoch,sequence))
+  State{saved,+lease,counter,nonce,capability,owner,crafting} = state
+  menu_inspect_checked(State{saved,lease,counter,nonce,capability,owner,crafting},admitted(lease,epoch,sequence))
 
 def transfer_status(result:S.State & Inv.TransferStatus) -> S.State & Result<&2,&2,String,Unit>:
   (saved,status) = result
@@ -297,57 +325,88 @@ def acquire_checked(saved:S.State,index:U32,key:Inv.ItemKey,count:U32,bounds:Boo
 def acquire(state:State,epoch:String,sequence:Nat,+index:U32,key:Inv.ItemKey,count:U32) -> State & Result<&2,&2,String,MenuOutcome>:
   menu_mutation(state,epoch,sequence,saved => acquire_checked(saved,index,key,count,U32.is_lt(index,36)))
 
+# With no recipe service context the legacy menu semantics remain exact.
+def legacy_crafting_request(saved:S.State,request:CS.Request) -> S.State & Result<&2,&2,String,Unit>:
+  match request:
+    case CS.CraftInspect{}: (saved,Done{Unit{}})
+    case CS.CraftOpen{}: S.menu_open(saved)
+    case CS.CraftClose{}: S.menu_close(saved)
+    case CS.CraftClick{index,kind}: S.menu_click(saved,index,kind)
+
+def crafting_context(saved:S.State,lease:Lease,counter:Nat,nonce:String,capability:String,owner:C.Capability,crafting:Maybe<&2,CS.Context>,request:CS.Request) -> State & Result<&2,&2,String,MenuOutcome>:
+  match crafting:
+    case None{}: menu_status(lease,counter,nonce,capability,owner,None{},legacy_crafting_request(saved,request))
+    case Some{context}: crafting_reported(lease,counter,nonce,capability,owner,CS.request(saved,context,request))
+
+def crafting_player_checked(state:State,request:CS.Request,player:Bool) -> State & Result<&2,&2,String,MenuOutcome>:
+  match state player:
+    case State{saved,lease,counter,nonce,capability,owner,crafting} False{}:
+      menu_observed(lease,counter,nonce,capability,owner,crafting,False{},"inventory:player-permission",S.menu_inspect(saved))
+    case State{saved,lease,counter,nonce,capability,owner,crafting} True{}:
+      crafting_context(saved,lease,counter,nonce,capability,owner,crafting,request)
+
+# Admission precedes both inventory-owner reconstruction and recipe refresh.
+def crafting_checked(state:State,request:CS.Request,valid:Bool) -> State & Result<&2,&2,String,MenuOutcome>:
+  match state valid:
+    case _ False{}: (state,Fail{"RendererLeaseOrSequence"})
+    case State{saved,lease,counter,nonce,capability,+owner,crafting} True{}:
+      crafting_player_checked(State{saved,lease,counter,nonce,capability,owner,crafting},request,Maybe.is_some(&2,U32,Edit.player_peer(owner)))
+
+def crafting_menu(state:State,epoch:String,sequence:Nat,request:CS.Request) -> State & Result<&2,&2,String,MenuOutcome>:
+  State{saved,+lease,counter,nonce,capability,owner,crafting} = state
+  crafting_checked(State{saved,lease,counter,nonce,capability,owner,crafting},request,admitted(lease,epoch,sequence))
+
 def menu_open(state:State,epoch:String,sequence:Nat) -> State & Result<&2,&2,String,MenuOutcome>:
-  menu_mutation(state,epoch,sequence,S.menu_open)
+  crafting_menu(state,epoch,sequence,CS.CraftOpen{})
 
 def select(state:State,epoch:String,sequence:Nat,index:U32) -> State & Result<&2,&2,String,MenuOutcome>:
   menu_mutation(state,epoch,sequence,saved => S.inventory_select(saved,index))
 
 def menu_close(state:State,epoch:String,sequence:Nat) -> State & Result<&2,&2,String,MenuOutcome>:
-  menu_mutation(state,epoch,sequence,S.menu_close)
+  crafting_menu(state,epoch,sequence,CS.CraftClose{})
 
 def menu_click(state:State,epoch:String,sequence:Nat,index:U32,click:I.Click) -> State & Result<&2,&2,String,MenuOutcome>:
-  menu_mutation(state,epoch,sequence,saved => S.menu_click(saved,index,click))
+  crafting_menu(state,epoch,sequence,CS.CraftClick{index,click})
 
 def release_checked(state:State,valid:Bool) -> State & Result<&2,&2,String,Unit>:
   match state valid:
     case _ False{}: (state,Fail{"RendererLeaseOrSequence"})
-    case State{saved,lease,counter,nonce,capability,owner} True{}:
-      (State{S.release(saved),renewed(lease),counter,nonce,capability,owner},Done{Unit{}})
+    case State{saved,lease,counter,nonce,capability,owner,crafting} True{}:
+      (State{S.release(saved),renewed(lease),counter,nonce,capability,owner,crafting},Done{Unit{}})
 
 def release(state:State,epoch:String,sequence:Nat) -> State & Result<&2,&2,String,Unit>:
-  State{saved,+lease,counter,nonce,capability,owner} = state
-  release_checked(State{saved,lease,counter,nonce,capability,owner},admitted(lease,epoch,sequence))
+  State{saved,+lease,counter,nonce,capability,owner,crafting} = state
+  release_checked(State{saved,lease,counter,nonce,capability,owner,crafting},admitted(lease,epoch,sequence))
 
 def disconnect_checked(state:State,matching:Bool) -> State & Unit:
   match state matching:
     case _ False{}: (state,Unit{})
-    case State{saved,lease,counter,nonce,capability,owner} True{}:
-      (State{S.release(saved),expired(lease),counter,nonce,capability,owner},Unit{})
+    case State{saved,lease,counter,nonce,capability,owner,crafting} True{}:
+      (State{S.release(saved),expired(lease),counter,nonce,capability,owner,crafting},Unit{})
 
 # EOF from an older socket cannot release a newer connection's controls.
 def disconnect(state:State,epoch:String) -> State & Unit:
-  State{saved,+lease,counter,nonce,capability,owner} = state
+  State{saved,+lease,counter,nonce,capability,owner,crafting} = state
   Lease{+actual,next,remaining,+active} = lease
-  disconnect_checked(State{saved,lease,counter,nonce,capability,owner},active && String.eq(actual,epoch))
+  disconnect_checked(State{saved,lease,counter,nonce,capability,owner,crafting},active && String.eq(actual,epoch))
 
 def stop_release(state:State) -> State & Unit:
-  State{saved,lease,counter,nonce,capability,owner} = state
-  (State{S.release(saved),expired(lease),counter,nonce,"",owner},Unit{})
+  State{saved,lease,counter,nonce,capability,owner,crafting} = state
+  (State{S.release(saved),expired(lease),counter,nonce,"",owner,crafting},Unit{})
 
 law rejected_hello_preserves_complete_actor:
   for state:State
   {hello_checked(state,False{}) == (state,Fail{"RendererAuthenticationFailed"}) : State & Result<&2,&2,String,String>}
 def rejected_hello_preserves_complete_actor(state):
   match state:
-    case State{saved,lease,counter,nonce,capability,owner}: {==}
+    case State{saved,lease,counter,nonce,capability,owner,crafting}: {==}
 
 law stale_disconnect_preserves_complete_actor:
   for state:State
   {disconnect_checked(state,False{}) == (state,Unit{}) : State & Unit}
 def stale_disconnect_preserves_complete_actor(state):
   match state:
-    case State{saved,lease,counter,nonce,capability,owner}: {==}
+    case State{saved,lease,counter,nonce,capability,owner,crafting}: {==}
 
 law rejected_menu_mutation_preserves_complete_actor:
   for state:State
@@ -355,7 +414,7 @@ law rejected_menu_mutation_preserves_complete_actor:
   {menu_mutation_checked(state,operation,False{}) == (state,Fail{"RendererLeaseOrSequence"}) : State & Result<&2,&2,String,MenuOutcome>}
 def rejected_menu_mutation_preserves_complete_actor(state,operation):
   match state:
-    case State{saved,lease,counter,nonce,capability,owner}: {==}
+    case State{saved,lease,counter,nonce,capability,owner,crafting}: {==}
 
 law inadmissible_menu_call_preserves_complete_actor:
   for saved:S.State
@@ -364,16 +423,17 @@ law inadmissible_menu_call_preserves_complete_actor:
   for nonce:String
   for capability:String
   for owner:C.Capability
+  for crafting:Maybe<&2,CS.Context>
   for +epoch:String
   for +sequence:Nat
   for operation:S.State -> S.State & Result<&2,&2,String,Unit>
   for denied:{admitted(lease,epoch,sequence) == False{} : Bool}
-  {menu_mutation(State{saved,lease,counter,nonce,capability,owner},epoch,sequence,operation) ==
-    (State{saved,lease,counter,nonce,capability,owner},Fail{"RendererLeaseOrSequence"}) : State & Result<&2,&2,String,MenuOutcome>}
-def inadmissible_menu_call_preserves_complete_actor(saved,lease,counter,nonce,capability,owner,epoch,sequence,operation,denied):
+  {menu_mutation(State{saved,lease,counter,nonce,capability,owner,crafting},epoch,sequence,operation) ==
+    (State{saved,lease,counter,nonce,capability,owner,crafting},Fail{"RendererLeaseOrSequence"}) : State & Result<&2,&2,String,MenuOutcome>}
+def inadmissible_menu_call_preserves_complete_actor(saved,lease,counter,nonce,capability,owner,crafting,epoch,sequence,operation,denied):
   %Equal.sym(Bool,admitted(lease,epoch,sequence),False{},denied) :
-    {menu_mutation_checked(State{saved,lease,counter,nonce,capability,owner},operation,_) ==
-      (State{saved,lease,counter,nonce,capability,owner},Fail{"RendererLeaseOrSequence"}) : State & Result<&2,&2,String,MenuOutcome>}
+    {menu_mutation_checked(State{saved,lease,counter,nonce,capability,owner,crafting},operation,_) ==
+      (State{saved,lease,counter,nonce,capability,owner,crafting},Fail{"RendererLeaseOrSequence"}) : State & Result<&2,&2,String,MenuOutcome>}
   {==}
 
 # This gate precedes inventory reads and demand generation, so a denied

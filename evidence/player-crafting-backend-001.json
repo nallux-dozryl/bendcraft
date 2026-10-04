@@ -1,0 +1,658 @@
+{
+  "schema_version": 1,
+  "status": "production-source-checked; two-composition-roots-kernel-certified; native-retry-pending",
+  "production": {
+    "owner": "remote_resource_backend.State",
+    "fields": 7,
+    "context": "Maybe<player_crafting_session_adapter.Context>",
+    "legacy_context": "None",
+    "factory": "new_reserved_with_crafting",
+    "authenticated_mutations": [
+      "menu_open",
+      "menu_close",
+      "menu_click"
+    ],
+    "committed_refresh_failure_keeps_accepted": true,
+    "SessionShell_and_bundle_ABI_changed": false,
+    "Wire_reply_ABI_changed_by_this_join": false,
+    "source_pins": [
+      {
+        "path": "src/remote_resource_backend.bend",
+        "bytes": 27585,
+        "sha256": "577947907e1f12475e24b4b20b6745f226b73c8ca046186dc36987f4777a428f"
+      },
+      {
+        "path": "src/player_crafting_backend_laws.bend",
+        "bytes": 5449,
+        "sha256": "7e4c9e258d523aceb48510758b70b68b4dfd37c3b13129e850ba4e79035d843a"
+      },
+      {
+        "path": "src/player_crafting_backend_proof.bend",
+        "bytes": 3524,
+        "sha256": "2a9f850d08c2366508c3dbe8ac452e41118b174bb3945c17a620023a720f9adc"
+      },
+      {
+        "path": "tests/player_crafting_backend.bend",
+        "bytes": 14691,
+        "sha256": "b397bc8de11ab06d0d76d47d2b51e7937156c88a050934c6e73e0a9438a2ce76"
+      },
+      {
+        "path": "tools/player_crafting_backend_proof.mjs",
+        "bytes": 5232,
+        "sha256": "cb3041106ef6e3ff8d61a2518e1e93a74b93601d79fddd1df81f89ddbef5c683"
+      },
+      {
+        "path": "tools/test_player_crafting_backend.py",
+        "bytes": 6350,
+        "sha256": "824e1bb64f0d6e80199805007e7c45f919a17bcde0f198ef70fc96143dda16e8"
+      },
+      {
+        "path": "docs/PLAYER_CRAFTING_BACKEND.md",
+        "bytes": 3856,
+        "sha256": "2d89cdea363c4e1a022dbaaef302905f33ccabb6b30b1d4d2766cbb7e0f5ddf2"
+      }
+    ]
+  },
+  "ordinary_pure_proofs": {
+    "status": "passed",
+    "roots": [
+      "player_crafting_backend_laws.denied_crafting_request_retains_complete_actor",
+      "player_crafting_backend_laws.denied_menu_observation_retains_complete_actor",
+      "player_crafting_backend_laws.denied_physical_packet_retains_complete_actor_before_release",
+      "player_crafting_backend_laws.inadmissible_crafting_request_retains_complete_actor",
+      "player_crafting_backend_laws.inadmissible_menu_open_retains_complete_actor",
+      "player_crafting_backend_laws.inadmissible_menu_close_retains_complete_actor",
+      "player_crafting_backend_laws.inadmissible_result_click_retains_complete_actor",
+      "player_crafting_backend_laws.inadmissible_menu_inspect_retains_complete_actor",
+      "player_crafting_backend_laws.public_dispatch_rejoins_complete_session_and_context",
+      "player_crafting_backend_laws.committed_craft_with_failed_refresh_stays_accepted"
+    ],
+    "all_original_order_events_checked": 6530,
+    "checked_terms_and_original_maps_preserved": true,
+    "source_generation": {
+      "path": "build/player-crafting-backend/selective-003/source-pins.json",
+      "bytes": 16874,
+      "sha256": "91f9d6009190492c024bb5e1795df061499acb6a1e6809fb7161ddb70a21348f"
+    },
+    "selection": {
+      "path": "build/player-crafting-backend/selective-003/selection.json",
+      "bytes": 14421,
+      "sha256": "b6d52f06fa8934a11605f2bf440b06665f3ab808c3d5dfc8163542aa0ce1aa79"
+    },
+    "export": {
+      "file": {
+        "path": "build/player-crafting-backend/selective-003/export.json",
+        "bytes": 862,
+        "sha256": "b8abab4b44d68f0954c56093c401d50b083ebb5e891fd72a1815b72efedaf0fc"
+      },
+      "result": {
+        "argv": [
+          "/Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "--experimental-transform-types",
+          "--stack-size=4096",
+          "--max-old-space-size=8192",
+          "--expose-gc",
+          "tools/player_crafting_backend_proof.mjs",
+          "build/player-crafting-backend/selective-003"
+        ],
+        "cleanup_poll_count": 1,
+        "exit_code": 0,
+        "group_absent": true,
+        "pid": 8520,
+        "seconds": 29.22479,
+        "stderr": {
+          "bytes": 177,
+          "file": "export.stderr",
+          "sha1": "43eb9ffbfcea5cfce8696757ca51abc610867c53",
+          "sha256": "b2f32c6e9eaf02dd459a573e7e0537fe9fc8c42dc8ac7757d485dbbf51ebd7f3"
+        },
+        "stdout": {
+          "bytes": 1213528,
+          "file": "export.stdout",
+          "sha1": "918e94a37701439ef3a4e69ccf56ebee31c72139",
+          "sha256": "7646adc3d5169aaab8db29872b4e3b2e41b6d8f79712368d39923d5aa9c05706"
+        },
+        "timed_out": false
+      }
+    },
+    "exported_ir": {
+      "path": "build/player-crafting-backend/selective-003/selected.bendtt",
+      "bytes": 56231359,
+      "sha256": "ee34970881dc047eed25704aecfd3b5ecc6d8efba850d242d2c3a3187e643d0e"
+    },
+    "scope": {
+      "exclusions": []
+    }
+  },
+  "independent_kernel": {
+    "complete_ten_root_group": {
+      "status": "blocked",
+      "definition": "json.encode_go",
+      "diagnostic": "affine live code, calls that descend",
+      "receipt": {
+        "file": {
+          "path": "build/player-crafting-backend/selective-003/kernel.json",
+          "bytes": 676,
+          "sha256": "7940f0e6df37d30cc74bb26c988664c6852d7b51095a77d793e8a638d5089e55"
+        },
+        "result": {
+          "argv": [
+            "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+            "build/player-crafting-backend/selective-003/selected.bendtt"
+          ],
+          "cleanup_poll_count": 1,
+          "exit_code": 1,
+          "group_absent": true,
+          "pid": 10541,
+          "seconds": 6.772798,
+          "stderr": {
+            "bytes": 0,
+            "file": "kernel.stderr",
+            "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 73,
+            "file": "kernel.stdout",
+            "sha1": "cbb15f98f2abaf8d20b75e0b9852d2ec5e74f1aa",
+            "sha256": "2275b00118525c37690bd0f4ff7ea0c6e31d3c0da890a188b519a556706ee11f"
+          },
+          "timed_out": false
+        }
+      },
+      "stdout": {
+        "path": "build/player-crafting-backend/selective-003/kernel.stdout",
+        "bytes": 73,
+        "sha256": "2275b00118525c37690bd0f4ff7ea0c6e31d3c0da890a188b519a556706ee11f"
+      }
+    },
+    "exact_composition_subset": {
+      "status": "passed",
+      "roots": [
+        "player_crafting_backend_laws.public_dispatch_rejoins_complete_session_and_context",
+        "player_crafting_backend_laws.committed_craft_with_failed_refresh_stays_accepted"
+      ],
+      "retained_declarations": 229,
+      "opaque_native_types_retained": [
+        "File",
+        "F32"
+      ],
+      "IO_effects_claimed": false,
+      "all_retained_declared_references_present": true,
+      "declaration_bytes_and_source_order_preserved": true,
+      "IR": {
+        "path": "build/player-crafting-backend/selective-003/composition-002.bendtt",
+        "bytes": 39712,
+        "sha256": "9b409f8837e724590bc573a820489f843f0dfe0c34268a97f61c243776d33272"
+      },
+      "closure_manifest": {
+        "path": "build/player-crafting-backend/selective-003/composition-002.closure.json",
+        "bytes": 65697,
+        "sha256": "0369aa3dd802dd1f82301631836afc09a4deeb21d3a2b4b78b7d01af9463fd1f"
+      },
+      "receipt": {
+        "file": {
+          "path": "build/player-crafting-backend/selective-003/composition-kernel-002.json",
+          "bytes": 715,
+          "sha256": "99004ee071d422d0dea4d6866f783f91d15d65a1026039072d75d306e8c05b4f"
+        },
+        "result": {
+          "argv": [
+            "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+            "build/player-crafting-backend/selective-003/composition-002.bendtt"
+          ],
+          "cleanup_poll_count": 1,
+          "exit_code": 0,
+          "group_absent": true,
+          "pid": 15655,
+          "seconds": 0.011784,
+          "stderr": {
+            "bytes": 0,
+            "file": "composition-kernel-002.stderr",
+            "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 17,
+            "file": "composition-kernel-002.stdout",
+            "sha1": "ba8ec8289ea6f6e6fec687b636c07f05c26d0a8b",
+            "sha256": "61b73cda11b6b665b9f99f2defd3d3b57f985c865225e942a5bdaa594a503e47"
+          },
+          "timed_out": false
+        }
+      },
+      "stdout": {
+        "path": "build/player-crafting-backend/selective-003/composition-kernel-002.stdout",
+        "bytes": 17,
+        "sha256": "61b73cda11b6b665b9f99f2defd3d3b57f985c865225e942a5bdaa594a503e47"
+      }
+    },
+    "not_independently_certified_roots": [
+      "player_crafting_backend_laws.denied_crafting_request_retains_complete_actor",
+      "player_crafting_backend_laws.denied_menu_observation_retains_complete_actor",
+      "player_crafting_backend_laws.denied_physical_packet_retains_complete_actor_before_release",
+      "player_crafting_backend_laws.inadmissible_crafting_request_retains_complete_actor",
+      "player_crafting_backend_laws.inadmissible_menu_open_retains_complete_actor",
+      "player_crafting_backend_laws.inadmissible_menu_close_retains_complete_actor",
+      "player_crafting_backend_laws.inadmissible_result_click_retains_complete_actor",
+      "player_crafting_backend_laws.inadmissible_menu_inspect_retains_complete_actor"
+    ],
+    "kernel": {
+      "path": "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+      "bytes": 3271216,
+      "sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7"
+    }
+  },
+  "native_fixture_source": {
+    "status": "passed",
+    "receipt": {
+      "file": {
+        "path": "build/player-crafting-backend/fixture-source-006/check.json",
+        "bytes": 956,
+        "sha256": "aaa630ac6454a28e2e1f137c651c6a41acc41328753c25430367525868f15a2a"
+      },
+      "result": {
+        "argv": [
+          "/Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "--experimental-transform-types",
+          "--stack-size=4096",
+          "--max-old-space-size=8192",
+          "--expose-gc",
+          "tools/player_crafting_backend_proof.mjs",
+          "build/player-crafting-backend/fixture-source-006",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_crafting_backend.bend"
+        ],
+        "cleanup_poll_count": 1,
+        "exit_code": 0,
+        "group_absent": true,
+        "pid": 20766,
+        "seconds": 22.21464,
+        "stderr": {
+          "bytes": 178,
+          "file": "check.stderr",
+          "sha1": "5dbed222f5e13eecdfac0dba7bf547d89dc9164b",
+          "sha256": "28b61386b3c8e74cc36ffc496faee80eda20c091046ad902a91c8156e77ff8e2"
+        },
+        "stdout": {
+          "bytes": 1265363,
+          "file": "check.stdout",
+          "sha1": "e389b509081c2948daacc5a8c38913cb1fcff259",
+          "sha256": "a948d360e910ec6bdfdc3c6d2a96c386ca75e67ac6f0e39d2f9fec598511e5f4"
+        },
+        "timed_out": false
+      }
+    },
+    "source_manifest": {
+      "path": "build/player-crafting-backend/fixture-source-006/source-check.json",
+      "bytes": 17469,
+      "sha256": "bd934c3e477b2e689e64c9cb6f8999104bc63439900e95d351425e18edfe3831"
+    },
+    "observations": "actual complete raw Core and all64 actual inventory backing cells; typed MenuSnapshot observer; direct Backend/CS calls",
+    "Wire_encoding_or_protocol_claimed": false
+  },
+  "native": {
+    "status": "not-run-after-unpublished-build",
+    "failed_build": {
+      "file": {
+        "path": "build/player-crafting-backend/native-001/build.json",
+        "bytes": 1022,
+        "sha256": "9a0a027d6ea9fb31562c880f3ec1681b4c207a5bc315c7b834ff025798748bbb"
+      },
+      "result": {
+        "argv": [
+          "/opt/homebrew/opt/python@3.14/bin/python3.14",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/build_native.py",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_crafting_backend.bend",
+          "-o",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-backend/native-001/backend-tests",
+          "--report",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-crafting-backend/native-001/native-build.json"
+        ],
+        "cleanup_poll_count": 1,
+        "exit_code": 1,
+        "group_absent": true,
+        "pid": 16034,
+        "seconds": 389.726351,
+        "stderr": {
+          "bytes": 598,
+          "file": "build.stderr",
+          "sha1": "da1cc01846e6c3210c748ea5e153636a99339b25",
+          "sha256": "02f8ed5565691f95dbc94af8d2250c9abf486f3aa7c5effebdca9709f26bf9d4"
+        },
+        "stdout": {
+          "bytes": 0,
+          "file": "build.stdout",
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "timed_out": false
+      }
+    },
+    "diagnostic": "native cache: command failed (1): /Users/chuah/.bend/bin/bend /Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_crafting_backend.bend -o /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/native-cache/sources/.source-t4f0zewu/generated.c\nSOME PROOFS FAIL\nError:\n- message  : a parameter or field scrutinee (a match cannot scrutinize a computed value: give it its own def)\nLocation:\n76 | def sample_checked(+value:Sample) -> Result<&2,&2,String,Sample>:\n77>|   match sample_valid(value):\n   |         ^^^^^^^^^^^^^^^^^^^\n78 |     case False{}: Fail{\"generic-resource:invalid-sample\"}\n\n",
+    "attempt_timed_out": false,
+    "binary_published": false,
+    "next_attempt": "Native retry uses fixture without unrelated Wire generic Frame import."
+  },
+  "preserved_attempts": [
+    {
+      "file": {
+        "path": "build/player-crafting-backend/ordinary-001/receipt.json",
+        "bytes": 1099,
+        "sha256": "3d6a86a5648905a790bf10ff5540fd22f60b2e9b9b1da333e0a83ba1074ece50"
+      },
+      "result": {
+        "argv": [
+          "/Users/chuah/.bend/bin/bend",
+          "src/player_crafting_backend_proof.bend",
+          "--check-only"
+        ],
+        "status": "source-check-timeout",
+        "timeout_seconds": 60,
+        "stdout_bytes": 0,
+        "stderr_bytes": 0,
+        "process_reaped": true,
+        "source_pins_after_timeout": {
+          "src/remote_resource_backend.bend": "577947907e1f12475e24b4b20b6745f226b73c8ca046186dc36987f4777a428f",
+          "src/player_crafting_backend_laws.bend": "7e4c9e258d523aceb48510758b70b68b4dfd37c3b13129e850ba4e79035d843a",
+          "src/player_crafting_backend_proof.bend": "2a9f850d08c2366508c3dbe8ac452e41118b174bb3945c17a620023a720f9adc",
+          "src/player_crafting_session_adapter.bend": "2901438043da16dcd866f16194e6ccd7d713a5e7424a653b84615345bb1721bf",
+          "src/player_crafting_authority_menu.bend": "ab9158d4d08946065d1bb0fbe6a0053254081b8e8ad564a379a569796cda352e",
+          "src/player_crafting_authority.bend": "ec872664df53395512159041f46351786f8707b9e60468f6bff2c470406da7ba",
+          "src/player_inventory.bend": "065be0bc6aa1d0cb10b9fcac77b6dcea73d4bdbab20fd2e13e264a8ea91c3340"
+        },
+        "before_pins_not_retained": true
+      }
+    },
+    {
+      "file": {
+        "path": "build/player-crafting-backend/selective-001/export.json",
+        "bytes": 834,
+        "sha256": "7b87e50c865a69ef4f96c878419e93885619ae3badc1f0edb4b68d6e9aef2d74"
+      },
+      "result": {
+        "argv": [
+          "/Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "--experimental-strip-types",
+          "--stack-size=4096",
+          "--max-old-space-size=4096",
+          "tools/player_crafting_backend_proof.mjs",
+          "build/player-crafting-backend/selective-001"
+        ],
+        "cleanup_poll_count": 1,
+        "exit_code": 1,
+        "group_absent": true,
+        "pid": 6937,
+        "seconds": 0.306702,
+        "stderr": {
+          "bytes": 1164,
+          "file": "export.stderr",
+          "sha1": "b8fe27effc0dd03e9cf577b68466765283cc130b",
+          "sha256": "e35f1594e81592e3d7b1b9d3d688698058fefdeacc832f91d135b78334475a6b"
+        },
+        "stdout": {
+          "bytes": 0,
+          "file": "export.stdout",
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "timed_out": false
+      }
+    },
+    {
+      "file": {
+        "path": "build/player-crafting-backend/selective-002/export.json",
+        "bytes": 842,
+        "sha256": "e79c1c5dc1f3edf87a1aaf4e1d4bbd39509e2a2943d38c15569d8ddb32f7851f"
+      },
+      "result": {
+        "argv": [
+          "/Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "--experimental-transform-types",
+          "--stack-size=4096",
+          "--max-old-space-size=4096",
+          "tools/player_crafting_backend_proof.mjs",
+          "build/player-crafting-backend/selective-002"
+        ],
+        "cleanup_poll_count": 1,
+        "exit_code": -6,
+        "group_absent": true,
+        "pid": 7068,
+        "seconds": 18.098243,
+        "stderr": {
+          "bytes": 9334,
+          "file": "export.stderr",
+          "sha1": "9acc9642a0d447edcf1fd3a88d92559be6e14ae5",
+          "sha256": "9e3e96ddc035b1e880177e3e9811ca5967acfadcf59452d69355d5ca5eee3fd0"
+        },
+        "stdout": {
+          "bytes": 187,
+          "file": "export.stdout",
+          "sha1": "06caac7b7e699a65415c4b3acb46dce2ad6a5aef",
+          "sha256": "200f12176e05887d8cbd87c0d46114f36e834c44d678c8cb6019e7e915009399"
+        },
+        "timed_out": false
+      }
+    },
+    {
+      "file": {
+        "path": "build/player-crafting-backend/selective-003/composition-kernel.json",
+        "bytes": 703,
+        "sha256": "59379eea14129730eb758a385d44c250928db35d1540dd282ec974b5350ef3ff"
+      },
+      "result": {
+        "argv": [
+          "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+          "build/player-crafting-backend/selective-003/composition.bendtt"
+        ],
+        "cleanup_poll_count": 1,
+        "exit_code": 1,
+        "group_absent": true,
+        "pid": 13073,
+        "seconds": 0.013211,
+        "stderr": {
+          "bytes": 0,
+          "file": "composition-kernel.stderr",
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout": {
+          "bytes": 61,
+          "file": "composition-kernel.stdout",
+          "sha1": "218b6a8279287f3885a4067041458b7392de1f0e",
+          "sha256": "fe8a6bd68381577ec5c48079007c8f0619865bc5a827a1398c626396447bdca3"
+        },
+        "timed_out": false
+      }
+    },
+    {
+      "file": {
+        "path": "build/player-crafting-backend/fixture-source-001/check.json",
+        "bytes": 956,
+        "sha256": "31e1744a976c8742dc09f78253bea7bff6a054a66bce751658be4d212f6512da"
+      },
+      "result": {
+        "argv": [
+          "/Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "--experimental-transform-types",
+          "--stack-size=4096",
+          "--max-old-space-size=8192",
+          "--expose-gc",
+          "tools/player_crafting_backend_proof.mjs",
+          "build/player-crafting-backend/fixture-source-001",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_crafting_backend.bend"
+        ],
+        "cleanup_poll_count": 1,
+        "exit_code": 1,
+        "group_absent": true,
+        "pid": 11240,
+        "seconds": 9.281548,
+        "stderr": {
+          "bytes": 1586137,
+          "file": "check.stderr",
+          "sha1": "47e742c03e8fad397386ade3a082d090941ea427",
+          "sha256": "b3c7e447b39d73e6893965159970798081fe03ea519d5328aef66e23b3f6cb85"
+        },
+        "stdout": {
+          "bytes": 116,
+          "file": "check.stdout",
+          "sha1": "6e2cabcd07ff2d7b55e60a9449ce206fa0e659ac",
+          "sha256": "3ace153171fe2568cdeffb2249cb9fba14454379af1211ebf345299d883a2f55"
+        },
+        "timed_out": false
+      }
+    },
+    {
+      "file": {
+        "path": "build/player-crafting-backend/fixture-source-002/check.json",
+        "bytes": 952,
+        "sha256": "f7eeb9c91681a5cbcc1bb70b4dd4159f908d548801b7c7f851547f5370a7026b"
+      },
+      "result": {
+        "argv": [
+          "/Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "--experimental-transform-types",
+          "--stack-size=4096",
+          "--max-old-space-size=8192",
+          "--expose-gc",
+          "tools/player_crafting_backend_proof.mjs",
+          "build/player-crafting-backend/fixture-source-002",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_crafting_backend.bend"
+        ],
+        "cleanup_poll_count": 1,
+        "exit_code": 1,
+        "group_absent": true,
+        "pid": 11619,
+        "seconds": 9.320904,
+        "stderr": {
+          "bytes": 520,
+          "file": "check.stderr",
+          "sha1": "2fbc6197d12640c65a008a434700cf909e64d295",
+          "sha256": "96d19b8c9b47e9e4c9741b8760b5c38735759e0a63a8d6bad3e370f559d25f05"
+        },
+        "stdout": {
+          "bytes": 116,
+          "file": "check.stdout",
+          "sha1": "6e2cabcd07ff2d7b55e60a9449ce206fa0e659ac",
+          "sha256": "3ace153171fe2568cdeffb2249cb9fba14454379af1211ebf345299d883a2f55"
+        },
+        "timed_out": false
+      }
+    },
+    {
+      "file": {
+        "path": "build/player-crafting-backend/fixture-source-003/check.json",
+        "bytes": 959,
+        "sha256": "4d463b3fadf8fc790f0792db3be25dd1618a3c0bb4d345c10ddac25491e31f4b"
+      },
+      "result": {
+        "argv": [
+          "/Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "--experimental-transform-types",
+          "--stack-size=4096",
+          "--max-old-space-size=8192",
+          "--expose-gc",
+          "tools/player_crafting_backend_proof.mjs",
+          "build/player-crafting-backend/fixture-source-003",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_crafting_backend.bend"
+        ],
+        "cleanup_poll_count": 1,
+        "exit_code": 1,
+        "group_absent": true,
+        "pid": 12202,
+        "seconds": 20.790074,
+        "stderr": {
+          "bytes": 66181,
+          "file": "check.stderr",
+          "sha1": "d7eccbf48b7b299558f11a7c24151a21b8117b83",
+          "sha256": "5695b0d5222c0c6d067dc91810e6160daacb50c21dc2b81d673182c650ddb2b8"
+        },
+        "stdout": {
+          "bytes": 1286456,
+          "file": "check.stdout",
+          "sha1": "93b3ee1a497f4362b6ae3ca09777e0cc0a996d74",
+          "sha256": "9076cdcd6c01e7d59edd880c1ea8bf78a868bac21d284e6b1af5a18649bfc5c7"
+        },
+        "timed_out": false
+      }
+    },
+    {
+      "file": {
+        "path": "build/player-crafting-backend/fixture-source-004/check.json",
+        "bytes": 958,
+        "sha256": "f1c2ef90409512e5d621a77fbf860981cbad4a9a3d7e908d4d587a21e93f155b"
+      },
+      "result": {
+        "argv": [
+          "/Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "--experimental-transform-types",
+          "--stack-size=4096",
+          "--max-old-space-size=8192",
+          "--expose-gc",
+          "tools/player_crafting_backend_proof.mjs",
+          "build/player-crafting-backend/fixture-source-004",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_crafting_backend.bend"
+        ],
+        "cleanup_poll_count": 1,
+        "exit_code": 1,
+        "group_absent": true,
+        "pid": 15462,
+        "seconds": 14.290708,
+        "stderr": {
+          "bytes": 1300,
+          "file": "check.stderr",
+          "sha1": "39167b928293ca9199140a853da09d126adf1bef",
+          "sha256": "a12047b3f27cd862d6c0999459e184dd7c87113a1c72ef2a225926d3723560e5"
+        },
+        "stdout": {
+          "bytes": 1293989,
+          "file": "check.stdout",
+          "sha1": "639ddddf45f346f5bc5580b7dfccfb894b9c808c",
+          "sha256": "63bf8676df94640656985dec9e4ca8c74d8fb99bc6c3f795d08e6ebf4a540622"
+        },
+        "timed_out": false
+      }
+    },
+    {
+      "file": {
+        "path": "build/player-crafting-backend/fixture-source-005/check.json",
+        "bytes": 957,
+        "sha256": "31bee56cc55648ec63d95040aa80cc3d8440ec47ce6bb677a9d74f1b3ac9b958"
+      },
+      "result": {
+        "argv": [
+          "/Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "--experimental-transform-types",
+          "--stack-size=4096",
+          "--max-old-space-size=8192",
+          "--expose-gc",
+          "tools/player_crafting_backend_proof.mjs",
+          "build/player-crafting-backend/fixture-source-005",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_crafting_backend.bend"
+        ],
+        "cleanup_poll_count": 1,
+        "exit_code": 0,
+        "group_absent": true,
+        "pid": 15725,
+        "seconds": 15.018335,
+        "stderr": {
+          "bytes": 178,
+          "file": "check.stderr",
+          "sha1": "7f70ae2ae59c63f2bb17e01b583e0040f0ef6fae",
+          "sha256": "dd054d00227e845bc1ade8270701ad3868c310a279011d28686e2e6ef17c7325"
+        },
+        "stdout": {
+          "bytes": 1294852,
+          "file": "check.stdout",
+          "sha1": "4dd76ebaa0738cd6bef6724ed80886a018dcfe20",
+          "sha256": "fd9a71a35c0102d0a5637d418ad48bbaea3dda4cfcadbd57c601bd1077474151"
+        },
+        "timed_out": false
+      }
+    }
+  ],
+  "limits": [
+    "No complete-ten-root independent-kernel certification.",
+    "No vanilla full service-loader, durability/save, physics, network, or GPU claim from the focused Backend cases.",
+    "Transport prospective encoding/rollback is maintained and tested by its separate owner."
+  ]
+}
