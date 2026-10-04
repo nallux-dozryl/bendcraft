@@ -10,6 +10,25 @@ def open(context:Unit,from:B.Descriptor,to:B.Descriptor,direction:B.Direction) -
 def retained(-A:Type,result:W.State & A) -> W.State:
   (state,value) = result
   state
+def queue_count(state:B.State) -> Nat:
+  B.State{cells,front,back,queued,pending} = state
+  pending
+
+law nonemitting_bootstrap_preserves_pending_work:
+  for cells:Map<&2,Maybe<&2,B.Cell>>
+  for front:List<&2,C.Position>
+  for back:List<&2,C.Position>
+  for queued:Set()
+  for +pending:Nat
+  for position:C.Position
+  for id:U32
+  for dampening:U32
+  {queue_count(W.initial_light(B.State{cells,front,back,queued,pending},position,
+    B.Descriptor{id,0,dampening})) == pending : Nat}
+
+law zero_air_neighbor_cannot_initiate_positive_light:
+  for closed:Bool
+  {B.transfer(closed,0,0) == 0 : U32}
 
 law zero_load_budget_preserves_both_actual_owners:
   for state:W.State

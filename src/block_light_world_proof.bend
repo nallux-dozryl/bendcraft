@@ -4,6 +4,12 @@ import ./block_light.bend as B
 import ./core.bend as C
 import ./block_light_world_laws.bend as L
 
+def L.nonemitting_bootstrap_preserves_pending_work(cells,front,back,queued,pending,position,id,dampening): {==}
+def L.zero_air_neighbor_cannot_initiate_positive_light(closed):
+  match closed:
+    case True{}: {==}
+    case False{}: {==}
+
 def L.zero_load_budget_preserves_both_actual_owners(state): {==}
 def L.bootstrap_refuses_actual_world_mutations(world,light,cursor,mutation):
   match world:

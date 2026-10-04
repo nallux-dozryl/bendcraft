@@ -25,7 +25,7 @@ occludes: Context -> BL.Descriptor -> BL.Descriptor -> BL.Direction -> Bool
 ```
 
 `properties` must return the requested raw state ID and both light properties
-within0..15. `None` yields `MissingDescriptor`; a different ID or invalid level
+within 0..15. `None` yields `MissingDescriptor`; a different ID or invalid level
 yields `InvalidDescriptor`. `enabled` receives a normalized **section origin**;
 disabled sections use effective emission zero but retain their real dampening.
 `occludes` has the exact directional shape contract described below. The current
@@ -36,9 +36,9 @@ The catalog/state-property owner must supply those general definitions.
 | Bridge operation | Consumer contract |
 | --- | --- |
 | `BW.begin(world)` | Preserve the actual world and enumerate its owned section keys. Start an empty light field and resumable bootstrap cursor. No fixed region, section count, height or block list is assumed. |
-| `BW.load_resume(~Context,~properties,~enabled,context,budget,state)` | Return `State & Result<Error,Unit>`. Each section acquisition and each cell publication consumes one unit. Acquisition copies4096 scalar IDs with `Section.snapshot`, returning the original array and exact map/bucket order. Every cell, including air, is published. Missing properties stop at that cell and retain the cursor for retry. |
+| `BW.load_resume(~Context,~properties,~enabled,context,budget,state)` | Return `State & Result<Error,Unit>`. Each section acquisition and each cell publication consumes one unit. Acquisition copies 4096 scalar IDs with `Section.snapshot`, returning the original array and exact map/bucket order. Every cell, including air, is published. Missing properties stop at that cell and retain the cursor for retry. |
 | `BW.progress(state)` | Return the owner with `Loading`, `Propagating{pending}`, or `Settled`. A successful load call may still leave loading or propagation work. |
-| `BW.apply(~Context,~properties,~enabled,context,state,mutation)` | Authorized low-level Core application with registry/catalog and existence preflight. Block edits publish their descriptor only after real Core acceptance; section creation publishes all4096 fill cells. A refused operation retains both owners. Bootstrap refuses mutations. It does not perform permission admission or increment the revision. |
+| `BW.apply(~Context,~properties,~enabled,context,state,mutation)` | Authorized low-level Core application with registry/catalog and existence preflight. Block edits publish their descriptor only after real Core acceptance; section creation publishes all 4096 fill cells. A refused operation retains both owners. Bootstrap refuses mutations. It does not perform permission admission or increment the revision. |
 | `BW.apply_finished(stamp,apply_result)` | Complete a successful immediate application through `Core.finish`, incrementing revision and recording `Applied`. Refused immediate applications retain both states and return the error. |
 | `BW.admit(~Context,~properties,~enabled,context,state,cap,stamp,mutation)` | Preserve Core's developer capability, future tick, queue bound and registry validation priority; preflight descriptors, then call actual `Core.admit`. May queue during bootstrap. |
 | `BW.step(~Context,~properties,~enabled,context,state)` | Partition actual Core pending actions, preflight the entire due descriptor batch before changing the clock, then call actual `Core.apply` and `Core.finish` in Core order. Successes update light; Core refusals record `Rejected` and leave light unchanged. Missing catalog data retains the complete old tick, pending batch and both owners for retry. Bootstrap refuses a tick. |
@@ -46,14 +46,24 @@ The catalog/state-property owner must supply those general definitions.
 | `BW.advance(~Context,~occludes,context,budget,state)` | Bounded propagation over the joined owner. Bootstrap does not propagate an incomplete domain. |
 | `BW.sample_batch(positions,state)` | Return `State & Result<Error,FrameSamples>`. Only a completed bootstrap and `BL.Stable` can produce a frame. Each observation reads the actual current Core array and light field, with the actual Core clock/revision. Missing world plus missing field yields explicit `None/None`; only one resident owner yields `ResidencyMismatch`. Pending fields return `LightPending` without reads. |
 
-The saved104-section world follows the same path: pass its decoded real Core
+The saved 104-section world follows the same path: pass its decoded real Core
 owner to `begin`, resume its enumerated section arrays, then advance until
 `Settled`. Bootstrap is a loading operation, not a simulation tick; it preserves
 tick, time, revision, pending actions and event history. One acquisition has a
-fixed4096-scalar snapshot cost, so the budget is work units rather than a hard
-microsecond guarantee. An accepted section creation also publishes4096 cells
+fixed 4096-scalar snapshot cost, so the budget is work units rather than a hard
+microsecond guarantee. An accepted section creation also publishes 4096 cells
 in that call. Map/FIFO memory and initialization latency require native checks;
 this is not compact vanilla nibble storage.
+
+Bootstrap seeds each resident level at zero and schedules only effective
+emitters plus their six neighbors. `begin` starts a new field and loading
+forbids edits/propagation, so nonemitting cells cannot have an incoming positive
+level during initialization. Processing an emitter schedules changed consumers
+through the existing propagation function. A fully nonemitting saved world
+therefore becomes settled as soon as loading finishes. Accepted edits and
+section creation retain their incremental notifications, and unknown positions
+remain absent. This avoids notifying every initially dark cell and its neighbors
+while initializing the current 425,984-cell world.
 
 Core currently has no section-unload mutation. The bridge does not invent an
 eviction permission policy or silently keep a stale sidecar after replacement.
@@ -66,11 +76,37 @@ brightness, sky light, chunk loading policy and actor/frame entry adoption
 remain separate integration work.
 
 `src/block_light_world_laws.bend` and `src/block_light_world_proof.bend` prove
-nine contracts against this actual adapter: zero-load owner retention,
+eleven contracts against this actual adapter: zero-load owner retention,
 bootstrap edit/tick/frame refusal, failed preflight retention, pending-frame
 refusal, daylight preserving the whole block-light owner, explicit unknowns,
-and rejection of a field with no corresponding world cell. The independent
+rejection of a field with no corresponding world cell, nonemitting bootstrap
+preserving queued work, and zero air neighbors supplying no light. The independent
 kernel verifies them; they do not prove world-scale performance or convergence.
+
+The initial bridge checkpoint `6963fcd` passed 28 retained Java phases and 1,594
+actual Core-ID/light sample pairs through `tools/test_block_light_world.py`.
+Its pinned source receipt is `evidence/block-light-world-native.json`; those
+unchanged propagation cases were not replayed for the bootstrap repair.
+`python3 tools/test_block_light_world_saved.py` checks the current initializer
+against the actual saved 104-section world. It losslessly supplies all 425,984
+saved IDs to real Bend-owned Section arrays, checks section/cell counts and
+checksums plus tick/time/revision retention, verifies resident-cell count and
+settled sampling, and applies/removes a source through actual Core edits.
+The test also bootstraps a preexisting glowstone source behind complementary
+slabs against 25 retained Java-observed levels, checks disabled emission and
+unknown boundaries, and independently checks all 11 bridge laws. A narrow
+installed-JAR catalog query added dirt state 10 and 2,646 directed shape
+observations with **zero** settled-phase reruns; its pinned result is
+`reference/block_light_world_saved.json`.
+
+The measured current `begin` plus resumable loading took 5,555 ms. The complete
+native receiver, including extra initialization/edit checks and array summaries,
+took 9.9695 s and peaked at 443,318,272 bytes RSS. These measurements are in
+`evidence/block-light-world-saved.json`. They establish the saved-world loading
+seam, not a frame-time guarantee or acceptable memory for a larger world. The
+string-keyed light map still costs hundreds of megabytes at 425,984 cells; compact
+section storage remains future production work. Sky light, rendered brightness,
+long-session memory and actor/resource-frame entry adoption are not claimed.
 
 ## API
 

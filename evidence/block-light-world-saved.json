@@ -1,0 +1,95 @@
+{
+  "status": "passed",
+  "command": "python3 tools/test_block_light_world_saved.py",
+  "source_sha256": {
+    "tests/block_light_world_saved.bend": "698112e0e3e463e7a98308ebbbc6d52102ccb6f083d25204e22b97add52cdddf",
+    "tools/test_block_light_world_saved.py": "1b21719bf9ffbb23f3b28d2d668b5d338e941fc0b14b7bcba7a4ed2611167129",
+    "src/block_light_world.bend": "870727d29cd91025f34140efb06c7042eae8f52b3bb300f706bd682b7f0df456",
+    "src/block_light_world_laws.bend": "85f8c2d3ebbd5e50ca39e558684c3dcbdd242961f58443cf69505c381e55294b",
+    "src/block_light_world_proof.bend": "d98c94893d6a9c0479b744d0986a62a2524a0d6fc3b94ed0538ae0fb2ebdd0ac",
+    "src/core.bend": "48d63c4a50b4387d55304eed449d0ea1f4749fbd8e393ca56673006f0919a5a7",
+    "src/block_light.bend": "e829015163260450b03c9a25e90d6f78df39e3797b77f9e03a917231fdd4e159",
+    "src/section.bend": "02b5c15c57b173c7eb8b4c55a1433c10c192926e91af5e3e69050b4404044aa5",
+    "src/section_map_read.bend": "7a6a0d6fe8b8736ab64adb34b896074da709f91f2ae5bd205a7301c868690fc1"
+  },
+  "actual_save": "build/playable-renderer-current/005/hidden-startup-003/fresh-world.nbt",
+  "actual_save_sha256": "b06a0ae3af207d7fd3d9a2ea920860564703d42253f7ecd9764fe5ef16d21d58",
+  "actual_save_core_bytes_sha256": "c7d85b6e42eb60c9d2b1da50c22e2b12e5220bdebed880ae9d0bf278849e3bfc",
+  "sections": 104,
+  "cells": 425984,
+  "catalog_properties_observed": 21,
+  "java_settled_phases_rerun": 0,
+  "checks": [
+    {
+      "kind": "ordinary",
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/block_light_world_saved.bend",
+        "--check-only"
+      ],
+      "exit": 0,
+      "seconds": 0.5061,
+      "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.",
+      "stderr": ""
+    },
+    {
+      "kind": "proof",
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/block_light_world_proof.bend",
+        "--verdict"
+      ],
+      "exit": 0,
+      "seconds": 1.132,
+      "stdout": "ALL PROOFS CHECK",
+      "stderr": ""
+    },
+    {
+      "kind": "emit",
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/block_light_world_saved.bend",
+        "-o",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/block-light-world-saved/receiver.c"
+      ],
+      "exit": 0,
+      "seconds": 1.3808,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "kind": "clang",
+      "command": [
+        "/usr/bin/clang",
+        "-std=c11",
+        "-O3",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/block-light-world-saved/receiver.c",
+        "-lpthread",
+        "-lm",
+        "-o",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/block-light-world-saved/receiver"
+      ],
+      "exit": 0,
+      "seconds": 3.4544,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "native": {
+    "exit": 0,
+    "seconds": 9.9695,
+    "sampled_process_tree_peak_rss_bytes": 443695104,
+    "bounded_stop": null,
+    "stdout": "seed_pending refused\nseed stable 0/0 0:13 0:14 8686:15 0:14 0:13 15180:12 15178:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 ?:? \ndisabled stable 0/0 0:0 0:0 8686:0 0:0 0:0 15180:0 15178:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 ?:? \nbootstrap_ms 5555\n104/425984/1638306400 104/425984/1638306400 275/275/1/0 425984\nstable 275/1 \nadd stable 275/2 4926:14 0:13 0:13 ?:? \nremove stable 275/3 0:0 0:0 0:0 ?:?",
+    "stderr": "9.79 real         8.02 user         0.51 sys\n           443318272  maximum resident set size\n                   0  average shared memory size\n                   0  average unshared data size\n                   0  average unshared stack size\n              116719  page reclaims\n                   2  page faults\n                   0  swaps\n                   0  block input operations\n                   0  block output operations\n                   0  messages sent\n                   0  messages received\n                   0  signals received\n                   4  voluntary context switches\n               37785  involuntary context switches\n        108827562370  instructions retired\n         29978662287  cycles elapsed\n           448103240  peak memory footprint",
+    "bootstrap_ms": 5555,
+    "peak_rss_bytes": 443318272
+  },
+  "expected_stdout": "seed_pending refused\nseed stable 0/0 0:13 0:14 8686:15 0:14 0:13 15180:12 15178:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 ?:?\ndisabled stable 0/0 0:0 0:0 8686:0 0:0 0:0 15180:0 15178:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 0:0 ?:?\n104/425984/1638306400 104/425984/1638306400 275/275/1/0 425984\nstable 275/1\nadd stable 275/2 4926:14 0:13 0:13 ?:?\nremove stable 275/3 0:0 0:0 0:0 ?:?",
+  "full_bootstrap_passed": true,
+  "java_catalog_query_reused": true,
+  "bootstrap_initial_emitter_java_sample_pairs": 25,
+  "bootstrap_disabled_sample_pairs": 25,
+  "post_saved_world_edit_samples": 8,
+  "boundary": "Actual104 saved section scalar IDs independently decoded, losslessly run-length input to actual Bend-owned Section arrays/Core.World, then production bootstrap; no Python light implementation. Count/checksum/clock retention, settled nonemitting initialization, add/remove actual Core edits/revisions and explicit unknowns tested. New preexisting-emitter initialization compares25 retained Java partial-occlusion phase samples; disabled emission tests actual Core IDs with zero effective light. No replay of unchanged propagation corpus. This receiver does not claim persistence parser adoption, complete event equality, sky light, or actual actor/frame entry wiring."
+}

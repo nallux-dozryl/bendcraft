@@ -190,6 +190,20 @@ def published(result:B.State & Result<&2,&2,B.Error,Unit>) -> B.State:
   (state,status) = result
   state
 
+# Bootstrap starts at B.new and cannot advance/edit until its cursor ends.
+# All resident levels therefore start0. Only effective emitters can initiate a
+# positive change; their changes will schedule each subsequent consumer through
+# B.advance. Nonemitters need no initial self/neighbor notifications.
+def initial_notify(emits:Bool,position:C.Position,state:B.State) -> B.State:
+  match emits:
+    case False{}: state
+    case True{}: B.notify(state,position)
+def initial_light(light:B.State,+position:C.Position,+descriptor:B.Descriptor) -> B.State:
+  B.State{cells,front,back,queued,pending} = light
+  initial_notify(U32.is_gt(B.emission(descriptor),0),position,
+    B.State{Map.set(&2,Maybe<&2,B.Cell>,cells,B.key(position),Some{B.Cell{descriptor,0}}),
+      front,back,queued,pending})
+
 def load_cell(state:State,keys:List<&2,String>,
     +position:C.Position,+index:U32,+id:U32,tail:List<&2,U32>,result:Result<&2,&2,Error,B.Descriptor>,
     next:State -> State & Result<&2,&2,Error,Unit>) -> State & Result<&2,&2,Error,Unit>:
@@ -198,7 +212,7 @@ def load_cell(state:State,keys:List<&2,String>,
     case Fail{error}:
       (State{world,light,Some{Cursor{keys,Some{Work{position,index,id <> tail}}}}},Fail{error})
     case Done{descriptor}:
-      next(State{world,published(B.publish(light,indexed(position,index),descriptor)),
+      next(State{world,initial_light(light,indexed(position,index),descriptor),
         Some{Cursor{keys,Some{Work{position,U32.inc(index),tail}}}}})
 def load_snapshot(state:State,+key:String,keys:List<&2,String>,position:C.Position,
     observed:C.World & Maybe<&2,List<&2,U32>>,
