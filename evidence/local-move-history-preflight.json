@@ -1,0 +1,88 @@
+{
+  "commands": [
+    "PYTHONDONTWRITEBYTECODE=1 python3 tools/test_local_move_history.py --skip-ordinary --skip-kernel",
+    "PYTHONDONTWRITEBYTECODE=1 python3 tools/test_local_move_history.py --skip-build --skip-ordinary --kernel-only"
+  ],
+  "existing_modules_unchanged_by_this_task": true,
+  "generation_count": 65,
+  "generation_sha256": "0d8772c3ba4fa9fb58740947844833913272cc3ed6186bc2245a6fb283a75ed4",
+  "harness_frozen": true,
+  "heavy_attempts": 0,
+  "kernel_plan": {
+    "full_harness_cap_seconds": 60,
+    "full_source_cap_seconds": 60,
+    "laws": 6
+  },
+  "native_plan": {
+    "installed_build_cap_seconds": 600,
+    "native_each_process_cap_seconds": 120,
+    "policy_recoveries_each": 28,
+    "registry_remap_moves_each": 14,
+    "suite_runs": 2
+  },
+  "oracle_counts": {
+    "actual_miss": 2,
+    "cases": 69,
+    "integrity_mutations_rejected": 6,
+    "loaded_official_classes": 4390,
+    "move_attempts": 85,
+    "observed_not_required": 83,
+    "prior_cases_byte_exact": 61,
+    "prior_moves_byte_exact": 75,
+    "successful_admitted_moves": 83
+  },
+  "ordinary_harness": "passed",
+  "ordinary_source": "passed",
+  "owned_files": {
+    "docs/LOCAL_MOVE_HISTORY.md": {
+      "bytes": 10833,
+      "sha256": "34de255cc5968057cc639eef1db5b9972d05d478fc0b190ade285e32d1949383"
+    },
+    "evidence/local-move-history-ordinary-harness.json": {
+      "bytes": 13720,
+      "sha256": "ac260ae7dcc036ba2bd903e8466e2f15cf78ffd0a82565861a53158f1c818ef4"
+    },
+    "evidence/local-move-history-ordinary-source.json": {
+      "bytes": 13713,
+      "sha256": "3e55ec1090cb8c11af4fdc3d6b8a772119e56ffd2e751591d6c80c067877c99e"
+    },
+    "evidence/local-move-history-preparation.json": {
+      "bytes": 43052,
+      "sha256": "7913a9244080230374e7b846c4cf27fb5b4bfb2bdbfc939d142800d0e753ef51"
+    },
+    "evidence/local-move-history-reference-extract.json": {
+      "bytes": 43196,
+      "sha256": "d5c7fa22b36e9baf103e9399cb8645bda1eb5cebf09ddc9a6f60b9d01c1c4574"
+    },
+    "evidence/local-move-history-reference-integrity.json": {
+      "bytes": 767,
+      "sha256": "d93a8bbf155bdaf7bccce89b9ce66bba3aaf8799ff4bef4df3c13bf9fd6f386f"
+    },
+    "evidence/local-move-history-reference-rerun.json": {
+      "bytes": 43000,
+      "sha256": "fc4b4834605f9ea6b01b619292edf0e36a6eed72264b6886e2d5ad9596f45493"
+    },
+    "reference/local_move_history.json": {
+      "bytes": 9100469,
+      "sha256": "2b510ed3c932d830ed0481343ac4508cfea9e9e98dfcb7856dd2d1ce191f2f95"
+    },
+    "src/local_move_history.bend": {
+      "bytes": 7117,
+      "sha256": "21eb495a38fd767c412a860314760e5c237ac9425ce17ca78232b5892f09c11f"
+    },
+    "tests/local_move_history.bend": {
+      "bytes": 46644,
+      "sha256": "e754c5fd5b56ccf04a25821d4d563dd5de039c64679f934a3aca504c637a7493"
+    },
+    "tools/reference_local_move_history_probe.py": {
+      "bytes": 16636,
+      "sha256": "ae96616818b0fc631dd0ef155072b6c9adbf1d640a9c577f38108c8d5c14e053"
+    },
+    "tools/test_local_move_history.py": {
+      "bytes": 19898,
+      "sha256": "c1d237a99b34a9011fa89b261102e52822b429bd8e197ba5ebc85cd88b267805"
+    }
+  },
+  "source_frozen": true,
+  "status": "frozen_lightweight_preflight_passed_heavy_pending"
+}

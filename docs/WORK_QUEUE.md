@@ -15,6 +15,9 @@ fixture is a verification instrument; none satisfies a gameplay completion gate.
    pass separately. Fresh full-tick phase evidence fixes scheduler, input-cache,
    support/minor/fall, late pose/dimensions and cached eye ordering; the composed
    local runtime still needs those authorities and lifecycle consumers.
+   Owned local move/fall history now passes two native comparisons with full
+   failure rollback. Loaded-world travel and conditional pose/dimension replay
+   are being prepared around those frozen authorities.
    The discrete debug controller is
    an integration instrument, not vanilla walking.
 2. Registry identity → leased save-owning server → durable publication → actual
@@ -30,6 +33,9 @@ fixture is a verification instrument; none satisfies a gameplay completion gate.
    filtering also pass their split native corpora. Resource-to-frame drawing,
    asset audit and geometry pass twice on their retained artifacts. Same-process
    neighbor-culled resource frames also pass exact geometry/pixel/owner checks.
+   The first resource-client build timed out during C emission without an
+   artifact; its prepared integration scenarios remain unexecuted. Diagnose that
+   frozen generation before changing the frame representation or building again.
    Next: connect that pipeline to native client frames → atlas,
    world lighting and complete presentation.
 4. Exact signed-cell snapshot caching and camera-relative F64 subtraction before
@@ -46,10 +52,10 @@ declared interfaces; integration evidence determines subsequent work.
 
 | Owner | Exclusive working files or subsystem | Stable integration interface |
 | --- | --- | --- |
-| Lead | `player_runtime.bend`, `player_session.bend`, `player_storage.bend`, `player_scene.bend`, `player_client.bend`, `client_presenter.bend`, new resource entry/scene and window input | Verified plain Player runtime and saved-session TCP/MCP/restart composition; one W body plus metadata, Tables, support and complete Controller. Continuous entry passes 22 bounded launches; the resource/visibility client is undergoing its first bounded hidden build. Visible presentation and physical focused input remain required |
+| Lead | `player_runtime.bend`, `player_session.bend`, `player_storage.bend`, `player_scene.bend`, `player_client.bend`, `client_presenter.bend`, new resource entry/scene and window input | Verified plain Player runtime and saved-session TCP/MCP/restart composition; one W body plus metadata, Tables, support and complete Controller. Continuous entry passes 22 bounded launches; the separate resource/visibility client's first build timed out without an artifact. Read-only emission diagnosis precedes a changed generation. Visible presentation and physical focused input remain required |
 | World bridge | Completed PW/SW, `local_tick_world.bend` and tick phase audit; new `player_pose.bend` preparation | LocalPlayer prepare override before checked travel/finish passes retained motion/finish lanes; actual phase/eye observations are frozen. Conditional pose-fit replay and exact dimension refresh are being prepared without changing current consumers |
 | Client/render | Completed BR/texture metadata, `resource_frame.bend`, `sprite_stitch.bend` and `sprite_uv.bend`; new `texture_mipmap.bend` preparation | Resource/frame draw, audit and geometry pass twice; actual atlas packing and scalar UV receiver checks pass separately. Owned mip pixels, atlas/frame selection and resource consumers remain required |
-| Player motion | Completed support, LocalPlayer input, collision hooks, `local_collision_world.bend` and `local_move_world.bend`; new `local_travel_history.bend` preparation | Exact minor arithmetic and edge hooks pass native/kernel; actual Core backoff/collision/support/minor composition passes retained native corpora with explicit entity/border admission. Owned fall-history composition is undergoing native checks; travel preparation/final gravity and drag will wrap those hook phases. Full world-composition kernel and lifecycle consumers remain unresolved |
+| Player motion | Completed support, LocalPlayer input, collision hooks, `local_collision_world.bend`, `local_move_world.bend` and `local_move_history.bend`; new `local_travel_history.bend` preparation | Exact minor arithmetic and edge hooks pass native/kernel; actual Core backoff/collision/support/minor/history composition passes retained native corpora with explicit entity/border/ray admission. Travel preparation/final gravity and drag will wrap those hook phases. The actual receiver fixture must establish loaded chunks for the gravity branch. Full world-composition kernel and lifecycle consumers remain unresolved |
 | Model interpretation | Completed `blockstate_model.bend`; presenter integration test | Exact selector/multipart/ordered state semantics; 28 hidden actor/window/failure cleanup executions pass; actual visible focused input remains required |
 | Model bake | Completed Bake/Choice/Record/Session verification | Exact quads, RNG consumption and atomic raw degree save composition pass; complete player lifecycle persistence remains open |
 | World mesh | Completed `world_mesh.bend` and `world_visibility.bend` | Exact relative quads, actual four-state neighbor visibility and owned halo reads pass; sampler O0 and geometry O3 are separate measured artifacts |
