@@ -88,9 +88,9 @@
   },
   "directory": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-numeric-continuations-001/candidate-001",
   "documentation": {
-    "bytes": 7019,
+    "bytes": 7734,
     "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/docs/generic_resource_world_sample_numeric_continuations.md",
-    "sha256": "c756036bf10da28ad6138cce9cd4906bea86b518ec4ed45231303cd036bd9ae9"
+    "sha256": "305cb952fd9cb62bc48031a1c29b5efff0eb39312bad1856272e8b300002af47"
   },
   "focused_artifacts": {
     "baseline-block_model": {
@@ -580,6 +580,54 @@
       "scanner_and_guard_total_emit_seconds": 35.87369804200001
     }
   },
+  "four_root_export": {
+    "BendTT": {
+      "bytes": 53490,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-numeric-continuations-001/candidate-001/validation-001/selective-export-four/selected.bendtt",
+      "sha256": "0bc65b58b29de461fc4a3aad79252c6b16e53ff7ea61e7f1901cb04849d3baa7"
+    },
+    "group_absence_verified_after_run": true,
+    "independent_kernel_started": false,
+    "launched_despite_manual_gate_failure": true,
+    "manual_occupancy_gate_status": "FAIL: two actual jobs",
+    "ordinary_checked_roots": 6,
+    "other_groups_touched": false,
+    "preflight": {
+      "bytes": 21920,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-numeric-continuations-001/candidate-001/validation-001/four-root-preflight-processes.json",
+      "sha256": "49044d2d26b59766b39db07e5462fd3678c37905a2420a13ccf2f6ae747b51b8"
+    },
+    "process_receipt": {
+      "bytes": 1259,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-numeric-continuations-001/candidate-001/validation-001/selective-export-four/result.full.json",
+      "sha256": "5606f54819c6dd7353c898ddb3ff5ada04e7b6ee8fdebaca3b7dd82b28fe38fb"
+    },
+    "result_receipt": {
+      "bytes": 1576,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-numeric-continuations-001/candidate-001/validation-001/four-root-export-result.json",
+      "sha256": "9d5ad9a86bea3b26b7f01475bd1322318edbd5365b74856795759cb2a60e3668"
+    },
+    "scope": {
+      "bytes": 23,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-numeric-continuations-001/candidate-001/validation-001/selective-export-four/scope.json",
+      "sha256": "096eba7c600446a2f906369a6ff747804a51b9ad3153ca10d9a1d673e416b337"
+    },
+    "seconds": 12.449348707683384,
+    "selected_kernel_roots": 4,
+    "selection": {
+      "bytes": 4203,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-numeric-continuations-001/candidate-001/validation-001/selective-export-four/selection.json",
+      "sha256": "f7d173c6575b73c337c1d6e82a3d2863753670005ba486f3ac3237a0de248817"
+    },
+    "signals_sent": 0,
+    "source_pins": {
+      "bytes": 2248,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-numeric-continuations-001/candidate-001/validation-001/selective-export-four/source-pins.json",
+      "sha256": "c3524794a3faa862bf0af06ef9ac70393c6019f48126de9a4b15dd6676fde9de"
+    },
+    "status": "PASS",
+    "technical_status": "PASS"
+  },
   "guard_scope": "Arbitrary scalar next/Bool and affine continuation; exact original choice+Result.bind, wrapped update, and actual scanner continuation specialization. No whole-parser equality theorem.",
   "handoff": {
     "bytes": 7387,
@@ -611,7 +659,7 @@
     "exact_reverse_production_diff": "passed",
     "generic002_source_and_api_before_after_hashes": "identical",
     "guard_proof_bodies": "all six accepted by actual ordinary checker",
-    "independent_kernel_verdict": "not run: six-root export timed out before BendTT output",
+    "independent_kernel_verdict": "Not run. Four-root BendTT export technically passed; actual occupancy gate failure and erroneous launch are retained separately, further heavy work held.",
     "wrapped_update_occurrences_per_new_branch": 1
   },
   "independent_kernel_scope": {
@@ -619,8 +667,10 @@
       "model_guard_uses_actual_recursive_continuation",
       "blockstate_guard_uses_actual_recursive_continuation"
     ],
-    "export_started": false,
-    "four_root_export_started": false,
+    "export_started": true,
+    "export_status": "PASS with separately retained coordination failure",
+    "exported_root_count": 4,
+    "four_root_export_started": true,
     "four_root_selector": {
       "bytes": 3979,
       "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-numeric-continuations-001/candidate-001/validation-001/selective-export-four.mjs",
@@ -641,6 +691,7 @@
       "selected-root array drops two explicit scanner specializations",
       "selected count guard 6 to 4"
     ],
+    "next_kernel_start_held_pending_actual_inventory_and_parent_release": true,
     "ordinary_checked_root_count": 6,
     "preparation_receipt": {
       "bytes": 3842,
@@ -759,14 +810,15 @@
     "focused_C_emitters": 4,
     "native_batches": 12,
     "ordinary_source_checker": 1,
-    "total": 23
+    "successful_four_root_export": 1,
+    "total": 24
   },
   "preparation_receipt": {
     "bytes": 4795,
     "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-numeric-continuations-001/candidate-001/preparation.json",
     "sha256": "282f41cc14d0c283e9da827a2e6b51edde60b6c4f0418471c6088d0a340a2ba9"
   },
-  "product_processes_started": 23,
+  "product_processes_started": 24,
   "production_adoption": {
     "commit": "b27e64f511a9bdeb2c736635552a3f75bf3fdd0e",
     "committed_bytes_match_verified_private_candidate": true,
@@ -816,6 +868,11 @@
     },
     "stage": "Safe.safe_emit after ordinary validation and six-root selection",
     "unchanged_retry_performed": false
+  },
+  "retained_four_root_coordination_failure": {
+    "bytes": 1968,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-numeric-continuations-001/candidate-001/validation-001/four-root-export-coordination-failure.json",
+    "sha256": "0cc42efe954bc90019be04c446f684907d0211be0d34fc56cbea0ef52f52d38b"
   },
   "retained_host_preparation_failure": {
     "bytes": 584,
