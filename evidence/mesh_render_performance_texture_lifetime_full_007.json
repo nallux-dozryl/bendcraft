@@ -1,0 +1,375 @@
+{
+  "C": {
+    "bytes": 15152997,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/007/renderer.c",
+    "sha256": "e23e89e71579aceae6a51b6b6871e793f1b873cff81584552b85697115b27838"
+  },
+  "binary": {
+    "bytes": 5550680,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/007/renderer",
+    "sha256": "71d7763bc576509a8d8b43205eeb4bb07f4541c283a6bfd75f1ea15a6a7b0130"
+  },
+  "comparison": "005 and006 consuming texture rejection operations and texture keeps are absent in007. Dedicated ray image reader is borrowed; HUD resource reader retains its separate ownership decisions. finish_textures borrowed infull007.",
+  "confidence": "high for pinned emitted C; native performance pending",
+  "helpers": [
+    {
+      "body_sha256": "e188fe7752d7154ab03053631d4ec1f165b990e8832ccfb3ec4ddec7f51df71a",
+      "line": 7380,
+      "name": "spin_12",
+      "source_meaning": "dedicated_texture_pixel_lookup",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "task_node": 0,
+        "term_keep": 0,
+        "term_peek": 2,
+        "term_sink": 0
+      }
+    },
+    {
+      "body_sha256": "e984f491a2589a5baf20cc6b085417c41491a3e0c21d62ee6c79643ad6e255fb",
+      "line": 10866,
+      "name": "spin_47",
+      "source_meaning": "unchanged_fragments",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "task_node": 0,
+        "term_keep": 0,
+        "term_peek": 2,
+        "term_sink": 0
+      }
+    },
+    {
+      "body_sha256": "2b602d60451f284993127ceb0a724f8986a6b9eaa309328731eca2593e710c60",
+      "line": 13708,
+      "name": "spin_74",
+      "source_meaning": "unchanged_best",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "task_node": 0,
+        "term_keep": 0,
+        "term_peek": 2,
+        "term_sink": 0
+      }
+    },
+    {
+      "body_sha256": "14ae1c80ffa80538dc25a2ad546ba3849d3047ba4a650d12193f17fdd3912251",
+      "line": 15520,
+      "name": "spin_103",
+      "source_meaning": "outside_lists",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "task_node": 0,
+        "term_keep": 0,
+        "term_peek": 6,
+        "term_sink": 0
+      }
+    },
+    {
+      "body_sha256": "03be570629e30d72de78c8a7cd73b14b53da828035d333a2a161152fbb711a06",
+      "line": 17145,
+      "name": "spin_124",
+      "source_meaning": "outside_tree",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "task_node": 0,
+        "term_keep": 0,
+        "term_peek": 3,
+        "term_sink": 0
+      }
+    },
+    {
+      "body_sha256": "928a602ae6a872886b657500c5f4b82be26264236fdd837019e411d60cd0ca66",
+      "line": 21775,
+      "name": "spin_182",
+      "source_meaning": "finish_textures",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "task_node": 0,
+        "term_keep": 0,
+        "term_peek": 2,
+        "term_sink": 0
+      }
+    }
+  ],
+  "inspected_reader_body_count": 22,
+  "padded_path": "PIXEL72613 outside branch calls spin124 outside_tree \u2192 spin103 outside_lists; both read textures/tree/quads with term_peek and noctr_take/term_keep/term_sink.",
+  "reader_and_continuation_bodies": [
+    {
+      "line": 67186,
+      "name": "SAMPLE",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "task_node": 2,
+        "term_keep": 0,
+        "term_peek": 2,
+        "term_sink": 0
+      }
+    },
+    {
+      "line": 67304,
+      "name": "SAMPLE_K36",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "task_node": 0,
+        "term_keep": 0,
+        "term_peek": 0,
+        "term_sink": 0
+      }
+    },
+    {
+      "line": 68193,
+      "name": "TRANS_TRACE",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "task_node": 2,
+        "term_keep": 0,
+        "term_peek": 2,
+        "term_sink": 0
+      }
+    },
+    {
+      "line": 68452,
+      "name": "TRANS_TRACE_K117",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "task_node": 1,
+        "term_keep": 0,
+        "term_peek": 0,
+        "term_sink": 0
+      }
+    },
+    {
+      "line": 68578,
+      "name": "OPAQUE_TRACE",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "task_node": 2,
+        "term_keep": 0,
+        "term_peek": 2,
+        "term_sink": 0
+      }
+    },
+    {
+      "line": 68839,
+      "name": "OPAQUE_TRACE_K123",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "task_node": 1,
+        "term_keep": 0,
+        "term_peek": 0,
+        "term_sink": 0
+      }
+    },
+    {
+      "line": 69236,
+      "name": "SPATIAL_TRACE",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "task_node": 3,
+        "term_keep": 0,
+        "term_peek": 3,
+        "term_sink": 0
+      }
+    },
+    {
+      "line": 69529,
+      "name": "SPATIAL_TRACE_K162",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "task_node": 1,
+        "term_keep": 0,
+        "term_peek": 0,
+        "term_sink": 0
+      }
+    },
+    {
+      "line": 72613,
+      "name": "PIXEL",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "task_node": 2,
+        "term_keep": 0,
+        "term_peek": 0,
+        "term_sink": 0
+      }
+    },
+    {
+      "line": 72750,
+      "name": "PIXEL_K293",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "task_node": 2,
+        "term_keep": 0,
+        "term_peek": 0,
+        "term_sink": 0
+      }
+    },
+    {
+      "line": 72824,
+      "name": "PIXEL_K294",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "task_node": 1,
+        "term_keep": 0,
+        "term_peek": 0,
+        "term_sink": 0
+      }
+    },
+    {
+      "line": 77311,
+      "name": "TILE",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "task_node": 3,
+        "term_keep": 0,
+        "term_peek": 0,
+        "term_sink": 0
+      }
+    },
+    {
+      "line": 77521,
+      "name": "TILE_K353",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "task_node": 0,
+        "term_keep": 0,
+        "term_peek": 0,
+        "term_sink": 0
+      }
+    },
+    {
+      "line": 77531,
+      "name": "TILE_K354",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "task_node": 2,
+        "term_keep": 0,
+        "term_peek": 0,
+        "term_sink": 0
+      }
+    },
+    {
+      "line": 77681,
+      "name": "TILE_K355",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "task_node": 2,
+        "term_keep": 0,
+        "term_peek": 0,
+        "term_sink": 0
+      }
+    },
+    {
+      "line": 77834,
+      "name": "TILE_K356",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "task_node": 2,
+        "term_keep": 0,
+        "term_peek": 0,
+        "term_sink": 0
+      }
+    },
+    {
+      "line": 77940,
+      "name": "TILE_K357",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 1,
+        "task_node": 0,
+        "term_keep": 0,
+        "term_peek": 0,
+        "term_sink": 0
+      }
+    },
+    {
+      "line": 80092,
+      "name": "FRAME",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "task_node": 6,
+        "term_keep": 0,
+        "term_peek": 0,
+        "term_sink": 0
+      }
+    },
+    {
+      "line": 80386,
+      "name": "FRAME_K429",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "task_node": 1,
+        "term_keep": 0,
+        "term_peek": 0,
+        "term_sink": 0
+      }
+    },
+    {
+      "line": 80481,
+      "name": "FRAME_K430",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "task_node": 1,
+        "term_keep": 0,
+        "term_peek": 0,
+        "term_sink": 0
+      }
+    },
+    {
+      "line": 80577,
+      "name": "FRAME_K431",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "task_node": 1,
+        "term_keep": 0,
+        "term_peek": 0,
+        "term_sink": 0
+      }
+    },
+    {
+      "line": 80674,
+      "name": "FRAME_K432",
+      "static_body_calls": {
+        "ctr_take": 0,
+        "heap_alloc": 0,
+        "task_node": 1,
+        "term_keep": 0,
+        "term_peek": 0,
+        "term_sink": 0
+      }
+    }
+  ],
+  "scope": "Static inspection of actual frozen007 full client generated C, including inline rejection/padding reader bodies and22 main/continuation cases. This is not a measured speedup or Java presentation parity verdict.",
+  "source": {
+    "bytes": 29731,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/007/source/src/mesh_render.bend",
+    "sha256": "cc8c7d3cf4badf3ec76a6dfd32939ec1d4c9d856fc181fa36a45cfe268df7424"
+  },
+  "status": "PASS_FULL_GRAPH_TEXTURE_BORROWING_CRITERION"
+}
