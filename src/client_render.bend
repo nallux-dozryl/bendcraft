@@ -58,13 +58,34 @@ def quadrant(tl: Image,tr: Image,bl: Image,br: Image,right: Bool,bottom: Bool) -
     case False{} True{}: bl
     case True{} True{}: br
 
-def pixel_at(n: Nat,image: Image,+x: U32,+y: U32,+side: U32) -> U32:
-  match n image:
-    case _ Pix{color}: color
-    case 0n Qua{tl,tr,bl,br}: 0
-    case 1n+p Qua{tl,tr,bl,br}:
+def pixel_lookup(n: Nat,image: Image,+x: U32,+y: U32,+side: U32,right: Bool,bottom: Bool) -> U32:
+  # Return a scalar from each branch so the reader can borrow Image nodes.
+  match n image right bottom:
+    case _ Pix{color} _ _: color
+    case 0n Qua{tl,tr,bl,br} _ _: 0
+    case 1n+p Qua{tl,tr,bl,br} False{} False{}:
       +half = U32.div(side,2)
-      pixel_at(p,quadrant(tl,tr,bl,br,U32.is_ge(x,half),U32.is_ge(y,half)),U32.mod(x,half),U32.mod(y,half),half)
+      +nx = U32.mod(x,half)
+      +ny = U32.mod(y,half)
+      pixel_lookup(p,tl,nx,ny,half,U32.is_ge(nx,U32.div(half,2)),U32.is_ge(ny,U32.div(half,2)))
+    case 1n+p Qua{tl,tr,bl,br} True{} False{}:
+      +half = U32.div(side,2)
+      +nx = U32.mod(x,half)
+      +ny = U32.mod(y,half)
+      pixel_lookup(p,tr,nx,ny,half,U32.is_ge(nx,U32.div(half,2)),U32.is_ge(ny,U32.div(half,2)))
+    case 1n+p Qua{tl,tr,bl,br} False{} True{}:
+      +half = U32.div(side,2)
+      +nx = U32.mod(x,half)
+      +ny = U32.mod(y,half)
+      pixel_lookup(p,bl,nx,ny,half,U32.is_ge(nx,U32.div(half,2)),U32.is_ge(ny,U32.div(half,2)))
+    case 1n+p Qua{tl,tr,bl,br} True{} True{}:
+      +half = U32.div(side,2)
+      +nx = U32.mod(x,half)
+      +ny = U32.mod(y,half)
+      pixel_lookup(p,br,nx,ny,half,U32.is_ge(nx,U32.div(half,2)),U32.is_ge(ny,U32.div(half,2)))
+
+def pixel_at(n: Nat,image: Image,+x: U32,+y: U32,+side: U32) -> U32:
+  pixel_lookup(n,image,x,y,side,U32.is_ge(x,U32.div(side,2)),U32.is_ge(y,U32.div(side,2)))
 
 def fractional(+x: F32) -> F32:
   F32.sub(x,F32.floor(x))
