@@ -54,6 +54,14 @@ def write(path, value):
     Path(path).write_text(json.dumps(value, sort_keys=True, indent=2)+'\n')
 
 
+def commands(memory):
+    base = ('python3 tools/generic_resource_world_sample_client_native.py '
+            f'--generation {int(WORK.name)}')
+    if memory:
+        base += ' --memory-producer'
+    return {'prepare':base, 'build':base+' --build'}
+
+
 def memory_producer(manifest):
     """Relocate the separately verified cache/progress correction, byte checked."""
     assert WORK.name != '001', 'Preserve the failed original generation'
@@ -119,8 +127,7 @@ def prepare(memory=False):
               'production_sources':before, 'original_compiler_untouched':True,
               'memory_producer':manifest.get('memory_producer'),
               'native_consumer_run':False, 'window_opened':False,
-              'commands':{'prepare':'python3 tools/generic_resource_world_sample_client_native.py',
-                          'build':'python3 tools/generic_resource_world_sample_client_native.py --build'}}
+              'commands':commands(memory)}
     if not EVIDENCE.exists():
         write(EVIDENCE, public)
     return manifest
@@ -158,6 +165,7 @@ def build(memory=False):
               'sampled_peak_rss_bytes':receipt['sampled_peak_rss_bytes'], 'basis':manifest['basis'],
               'memory_producer':manifest.get('memory_producer'),
               'window_transform':Remote.pin(WORK/'window-transform.json'),
+              'commands':commands(memory),
               'original_compiler_untouched':True, 'native_consumer_run':False, 'window_opened':False}
     write(WORK/'build.json', result)
     write(EVIDENCE, result)
