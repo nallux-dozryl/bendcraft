@@ -18,16 +18,16 @@ import net.minecraft.world.item.*;import net.minecraft.world.item.crafting.*;
 import net.minecraft.core.component.*;
 import net.minecraft.tags.*;
 class CraftingRecipeComponentsProbe {
- static final Gson JSON=new GsonBuilder().serializeNulls().create();static RegistryOps<JsonElement> OPS;
+ static final Gson JSON=new GsonBuilder().serializeNulls().create();static RegistryOps<JsonElement> OPS,RECIPE_OPS;
  static Object encode(DataResult<JsonElement> result){return result.result().isPresent()?result.result().get():Map.of("error",result.error().orElseThrow().message());}
  static Map<String,Object> stack(ItemStack value){Map<String,Object> out=new TreeMap<>();out.put("empty",value.isEmpty());out.put("id",BuiltInRegistries.ITEM.getKey(value.getItem()).toString());out.put("count",value.getCount());out.put("limit",value.getMaxStackSize());out.put("components",encode(DataComponentMap.CODEC.encodeStart(OPS,value.getComponents())));out.put("patch",encode(DataComponentPatch.CODEC.encodeStart(OPS,value.getComponentsPatch())));return out;}
  public static void main(String[] args)throws Exception{
   SharedConstants.tryDetectVersion();Bootstrap.bootStrap();var lookup=VanillaRegistries.createWorldLookup();for(var pending:BuiltInRegistries.DATA_COMPONENT_INITIALIZERS.build(lookup))pending.forEach((holder,components)->holder.bindComponents(components));
   var catalog=JsonParser.parseString(Files.readString(Path.of(args[2]))).getAsJsonObject();Map<TagKey<Item>,List<Holder<Item>>> tags=new LinkedHashMap<>();for(var value:catalog.getAsJsonArray("tags")){var tag=value.getAsJsonObject();List<Holder<Item>> members=new ArrayList<>();for(var id:tag.getAsJsonArray("items"))members.add(BuiltInRegistries.ITEM.get(Identifier.parse(id.getAsString())).orElseThrow());tags.put(TagKey.create(Registries.ITEM,Identifier.parse(tag.get("id").getAsString())),members);}BuiltInRegistries.ITEM.prepareTagReload(new TagLoader.LoadResult<Item>(Registries.ITEM,tags)).apply();
-  OPS=RegistryOps.create(JsonOps.INSTANCE,RegistryAccess.fromRegistryOfRegistries(BuiltInRegistries.REGISTRY));
+  OPS=RegistryOps.create(JsonOps.INSTANCE,lookup);RECIPE_OPS=RegistryOps.create(JsonOps.INSTANCE,RegistryAccess.fromRegistryOfRegistries(BuiltInRegistries.REGISTRY));
   var input=JsonParser.parseString(Files.readString(Path.of(args[0]))).getAsJsonArray();Map<String,ItemStack> outputs=new LinkedHashMap<>();Map<String,Object> records=new TreeMap<>();List<Object> cases=new ArrayList<>();
   for(var element:input){var row=element.getAsJsonObject();String id=row.get("id").getAsString();Map<String,Object> result=new TreeMap<>();result.put("id",id);
-   try{var decoded=Recipe.DIRECT_CODEC.parse(OPS,row.get("source"));result.put("accepted",decoded.result().isPresent());if(decoded.result().isPresent()){
+   try{var decoded=Recipe.DIRECT_CODEC.parse(RECIPE_OPS,row.get("source"));result.put("accepted",decoded.result().isPresent());if(decoded.result().isPresent()){
     CraftingRecipe recipe=(CraftingRecipe)decoded.result().get();var raw=row.getAsJsonObject("grid");List<ItemStack> slots=new ArrayList<>();for(var item:raw.getAsJsonArray("slots")){if(item.isJsonNull())slots.add(ItemStack.EMPTY);else {var s=item.getAsJsonObject();slots.add(new ItemStack(BuiltInRegistries.ITEM.getValue(Identifier.parse(s.get("id").getAsString())),s.get("count").getAsInt()));}}var grid=CraftingInput.of(raw.get("width").getAsInt(),raw.get("height").getAsInt(),slots);result.put("matches",recipe.matches(grid,null));var value=recipe.assemble(grid);outputs.put(id,value);result.put("output",stack(value));
    }else result.put("error",decoded.error().orElseThrow().message());}catch(RuntimeException e){result.put("accepted",false);result.put("exception",e.getClass().getName());result.put("error",String.valueOf(e.getMessage()));}cases.add(result);
   }
@@ -79,13 +79,34 @@ def inputs():
     for component in sorted(t['identifier'] for t in observed['component_types']):add('remove_registered_'+component.split(':')[1],'minecraft:stone',components={'!'+component:{}})
     return rows
 
+REQUIRED_DEFAULTS = {
+    'minecraft:attack_animation','minecraft:attribute_modifiers','minecraft:break_sound',
+    'minecraft:enchantments','minecraft:interact_animation','minecraft:item_model',
+    'minecraft:item_name','minecraft:lore','minecraft:max_stack_size','minecraft:rarity',
+    'minecraft:repair_cost','minecraft:tooltip_display','minecraft:use_effects',
+}
+
+def validate_defaults(data,catalog):
+    """Refuse incomplete codec extraction before promoting reference inputs."""
+    rows=data['defaults']; expected={r['id']:r for r in catalog['items']}
+    assert len(rows)==len(expected)==1658, (len(rows),len(expected))
+    actual={r['id']:r['components'] for r in rows}
+    assert len(actual)==len(rows) and set(actual)==set(expected), 'default item registry mismatch'
+    registered=set(data['component_types'])
+    for id,components in actual.items():
+        assert isinstance(components,dict) and REQUIRED_DEFAULTS<=components.keys(), ('incomplete defaults',id,components)
+        assert set(components)<=registered, ('unknown/error default member',id,set(components)-registered)
+        maximum=components['minecraft:max_stack_size']
+        assert type(maximum) is int and (maximum==expected[id]['limit'] or (id=='minecraft:air' and maximum==64 and expected[id]['limit']==1)), ('default stack limit',id,maximum)
+    return actual
+
 def extract():
     CACHE.mkdir(parents=True,exist_ok=True);rows=inputs();write_json(CACHE/'input.json',rows);source=CACHE/'CraftingRecipeComponentsProbe.java';source.write_text(SOURCE)
     cp,provenance=verified_classpath();start=time.monotonic()
     result=subprocess.run([str(JAVA),'-Xmx768m','-Djava.awt.headless=true','--class-path',':'.join(map(str,cp)),str(source),str(CACHE/'input.json'),str(CACHE/'output.json'),str(P.CACHE/'catalog.json')],capture_output=True,text=True,timeout=90)
     (CACHE/'process.log').write_text(result.stdout+result.stderr)
     if result.returncode:raise RuntimeError((result.stdout+result.stderr)[-6000:])
-    data=json.loads((CACHE/'output.json').read_text());data.update(schema_version=1,pin='26.3',source_sha256=P.sha(SOURCE.encode()),inputs_sha256=P.sha(canonical(rows)),provenance=provenance,seconds=round(time.monotonic()-start,6))
+    data=json.loads((CACHE/'output.json').read_text());vanilla=[r for r in data['cases'] if r['id'].startswith('minecraft:')];assert len(vanilla)==17 and all(r.get('accepted') and r.get('matches') and not r['output']['empty'] for r in vanilla), 'patched recipe reference failed';validate_defaults(data,json.loads((P.CACHE/'catalog.json').read_text()));data.update(schema_version=1,pin='26.3',registry_contexts={'recipe_decode':'initialized BuiltIn item/tag registries','component_map_encode':'full VanillaRegistries world lookup'},source_sha256=P.sha(SOURCE.encode()),inputs_sha256=P.sha(canonical(rows)),provenance=provenance,seconds=round(time.monotonic()-start,6))
     write_json(OUTPUT,data)
     materialize(data,rows)
     return data
@@ -94,15 +115,20 @@ def materialize(data,rows=None):
     # Fixture and production catalogs are separate: diagnostics must not become
     # recipes in the game registry. Source recipes and jars remain ignored.
     rows=inputs() if rows is None else rows
-    catalog=json.loads((P.CACHE/'catalog.json').read_text());defaults={d['id']:d['components'] for d in data['defaults']}
+    catalog=json.loads((P.CACHE/'catalog.json').read_text());defaults=validate_defaults(data,catalog)
     for item in catalog['items']:item['components']=defaults[item['id']]
     originals,_,_=P.resources()
     production={**catalog,'recipes':[r for r in catalog['recipes'] if r['id'] in originals]}
     assert len(production['recipes'])==2042
     for row in production['recipes']:assert row['source']==originals[row['id']]
     write_json(CACHE/'production-catalog.json',production)
+    # Runtime registry facts are independently observed data, never copied
+    # recipe implementations/assets. Original recipe sources stay in the JAR.
+    facts={k:production[k] for k in ('items','tags')}
+    facts.update(schema_version=1,pin='26.3',ordered_recipe_ids=[r['id'] for r in production['recipes']],default_registry_context='full VanillaRegistries RegistryOps',reference_source_sha256=data['source_sha256'])
+    write_json(ROOT/'generated/reference_crafting_authority_metadata.json',facts)
     catalog['recipes']=rows;write_json(CACHE/'catalog.json',catalog)
     return production
 
 if __name__=='__main__':
-    data=extract();print(json.dumps({'cases':len(data['cases']),'comparisons':len(data['comparisons']),'effects':len(data['effects']),'component_types':len(data['component_types']),'seconds':data['seconds']}))
+    data=extract();print(json.dumps({'cases':len(data['cases']),'comparisons':len(data['comparisons']),'effects':len(data['effects']),'component_types':len(data['component_types']),'initialized_default_maps':len(data['defaults']),'default_codec_errors':0,'seconds':data['seconds']}))
