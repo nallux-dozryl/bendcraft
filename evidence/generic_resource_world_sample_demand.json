@@ -5,6 +5,11 @@
     "owner": "actual affine Registry, admitted identity, unchanged committed family requests",
     "plan": "full committed request prefix plus newly demanded first-observed family suffix; caller BR.Policy unchanged"
   },
+  "coordination_hold": {
+    "ordinary_retry_started": false,
+    "proof_export_emitted": false,
+    "reason": "Parent prioritizes actual numeric-continuation consumer fix; no heavyweight demand check/export/kernel until direct root capacity notice."
+  },
   "integrated_into_entry_or_client": false,
   "kernel_executed": false,
   "native_executed": false,
@@ -32,26 +37,64 @@
       "identity_first catalog reused without + binder",
       "startup path required an explicit absent catalog",
       "decoder-only-on-miss comment scoped to an installed catalog",
-      "already-demanded family helper law named precisely"
+      "already-demanded family helper law named precisely",
+      "configured matched later limits before earlier sample binder",
+      "default-mode refusal applies to newly demanded families",
+      "finalizer request_guard premise is limits/count only; materials preserved rather than validated"
     ],
-    "method": "Independent read-only production API, ownership, coalescing, budget and source-shape audit"
+    "method": "Independent read-only production API, affine usage, match-order, coalescing, budget and law-scope audits; no compiler, kernel or native execution."
   },
   "scope": [
     "Pure registry-backed demand planning; no resource installation, ownership commit, renderer/sprite classifier or light-provider duplication.",
     "Installed catalog path decodes only exact StateNotLoaded; startup None explicitly decodes without a fabricated catalog or miss error.",
-    "Sixteen prepared arbitrary laws cover named owner/admission refusals, actual startup decode call, already-seen helper branches and admitted full-prefix/material output. They have not been source/kernel checked and do not establish end-to-end seen-map invariants.",
+    "Sixteen prepared arbitrary laws cover named owner/admission refusal branches, the actual startup decode helper call, already-seen helpers, and finalizer prefix/material preservation under a C.request_guard limits/count premise. They have not passed ordinary source/kernel admission and do not establish end-to-end seen-map or traversal-order invariants.",
     "Registry must be parse/load validated and loaded catalog entries satisfy the existing catalog contract.",
-    "Existing CLoad replaces the whole asset/material context, so actual integration must coherently load all Plan.requests and admit the candidate before updating committed inventory."
+    "Existing CLoad replaces the whole asset/material context, so actual integration must coherently load all Plan.requests and admit the candidate before updating committed inventory.",
+    "Material layer normalization, collisions, budget and per-sprite coverage remain loader checks; planning merely preserves caller BR.Policy.",
+    "Loaded ledger checks compare family-name membership, not committed-mode equality or completeness of unobserved family states; those are coherent-catalog preconditions."
   ],
   "source_checked": false,
+  "source_failures": [
+    {
+      "complete_loaded_graph_pinned": false,
+      "correction": "configured destructures earlier sample binder before later limits binder",
+      "export_emitted": false,
+      "failed_module_source_sha256": "9499cc7a649298434cf2f25be70acbb3e7fcbb1d34355a4ad5ceb5e5fa0a8524",
+      "failure_stage": "ordinary book_load parser admission",
+      "kernel_executed": false,
+      "receipt": {
+        "command": [
+          "/opt/homebrew/bin/node",
+          "--max-old-space-size=6144",
+          "--stack-size=4096",
+          "--experimental-transform-types",
+          "tools/generic_resource_world_sample_demand_proof.mjs",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-demand-proof-001"
+        ],
+        "exit_code": 1,
+        "leader_reaped": true,
+        "pid": 67358,
+        "process_group": 67358,
+        "seconds": 5.178,
+        "status": "failed",
+        "stderr_sha256": "0165518fe133c9892e08938277f789b6dd6391748ca83579488a8df8a6b880a2",
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "tag": "source-api-export",
+        "timeout_seconds": 180,
+        "timeout_signals": []
+      },
+      "receipt_sha256": "a8f2b71dc72568f447766579e06e0c13696f2869a3db113b4fe04f18785b6de7",
+      "stderr": "(node:67358) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\nError:\n- message  : 'sample' can't be matched in this position (it is matched after a local statement or after a match on a later binder, it was already matched, or it is a def)\nLocation:\n74 |   Limits{+cells,+families,+catalog} = limits\n75>|   GS.Sample{identity,tick,revision,origin,camera,+values} = sample\n   |                                                             ^^^^^^\n76 |   do Result<&2,&2,C.Error,Commitment>:\n"
+    }
+  ],
   "source_files": {
     "docs/generic_resource_world_sample_demand.md": {
-      "bytes": 4355,
-      "sha256": "581d86405fd35ac518fbe4ca17d5d007f5217f51e60c1fa0b290f49be3eb417a"
+      "bytes": 5096,
+      "sha256": "937ab57784d4395a4247d08cfe768932e9772772e903d98de4e59107af8ec35d"
     },
     "src/generic_resource_world_sample_demand.bend": {
       "bytes": 16047,
-      "sha256": "9499cc7a649298434cf2f25be70acbb3e7fcbb1d34355a4ad5ceb5e5fa0a8524"
+      "sha256": "76c7c6021378f8dfa7343815c1418ba6198cce7df7f904d5f23f4e93acefe26f"
     },
     "src/generic_resource_world_sample_demand_laws.bend": {
       "bytes": 6992,
@@ -66,5 +109,5 @@
       "sha256": "85ba21161ee0af63b0dcd318114b77d8efb37aa1d66ea144d52d5bcb14785caf"
     }
   },
-  "status": "prepared_source_kernel_native_unexecuted"
+  "status": "source_load_failed_repaired_capacity_hold"
 }

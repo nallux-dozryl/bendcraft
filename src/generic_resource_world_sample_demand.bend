@@ -71,8 +71,8 @@ def commitment(values:List<&2,C.Request>,+names:Map<&2,Unit>,+count:U32) -> Resu
         commitment(tail,Map.set(&2,Unit,names,name,Unit{}),U32.inc(count))
 
 def configured(+sample:GS.Sample,+committed:List<&2,C.Request>,limits:Limits) -> Result<&2,&2,C.Error,Commitment>:
-  Limits{+cells,+families,+catalog} = limits
   GS.Sample{identity,tick,revision,origin,camera,+values} = sample
+  Limits{+cells,+families,+catalog} = limits
   do Result<&2,&2,C.Error,Commitment>:
     C.require(U32.is_le(cells,4096) && U32.is_le(families,4096),"Limits","demand","unsupported demand limits")
     C.request_guard(committed,catalog)

@@ -1,9 +1,12 @@
 The demand planner is a pure client API over the real loaded Registry owner, the
 committed family-request inventory, a catalog, and an observed `GS.Sample`.
-Its source and 16 proposed laws are prepared; source, independent-kernel, and
-native checks have not been run for this new API.
+Its source and 16 proposed laws are prepared. The first ordinary source-load
+attempt found a parameter-match ordering error, now repaired; source checking
+has not yet passed, and independent-kernel/native checks have not run.
+Further proof work is held for the coordinated consumer-fix capacity window.
 The proposed laws cover named admission/refusal and already-seen branches, the
-actual startup decode call, and the complete plan prefix/materials; they do not
+actual startup decode call, and finalizer preservation of the supplied request
+prefix and materials under the catalog request-budget premise; they do not
 yet prove the traversal's seen-map invariant or an arbitrary end-to-end success
 theorem.
 
@@ -23,12 +26,16 @@ constructs a fake empty resource catalog nor injects a synthetic miss error.
 `collect` subsequently wraps the actual admitted catalog in `Some`.
 
 The caller constructs `Admission{default_mode,modes,materials}`. With
-`default_mode=None`, an unlisted family produces `ModeNotAdmitted`. An explicit
+`default_mode=None`, an unlisted newly demanded family produces `ModeNotAdmitted`.
+Already loaded committed families retain their admitted catalog modes. An explicit
 `Some{mode}` is the caller's blanket renderer admission, overridden by named
 `modes`; this module supplies no default renderer and no vanilla or sprite-layer
 classifier. Every newly demanded mode passes the production `C.mode_guard`, so
 an explicit special renderer yields `UnsupportedRenderer` before resource IO.
 The complete `BR.Policy` material declaration is returned unchanged.
+The planner does not validate its layer keys or per-sprite assignments. The
+resource loader remains responsible for those material checks before candidate
+installation.
 
 The planner first compares the sample and catalog identities with the admitted
 owner identity. It then threads the actual owner through `Registry.identity`
@@ -47,6 +54,9 @@ invariant rather than retry the same family indefinitely. The owner Registry
 must come from validated registry loading. Successful catalog entries are
 trusted under the existing loaded-catalog contract: lookup checks their raw ID,
 and this planner does not independently revalidate their name/property metadata.
+Ledger checks compare family-name membership; they do not independently check
+committed-mode equality with an installed entry or completeness of unobserved
+family states. Those obligations belong to the coherent loaded-catalog contract.
 
 `Limits{max_cells,max_families,catalog}` bounds observed cells, total committed
 plus proposed families, and the production `C.request_guard`. Family expansion
