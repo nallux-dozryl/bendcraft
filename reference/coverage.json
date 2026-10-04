@@ -4554,7 +4554,9 @@
       ],
       "behavioral_reference_status": "actual_java_bounded_cases",
       "current_evidence_sha256": {
+        "docs/PLAYER_SAVE_REFERENCE.md": "ed33d8a3efac88bfa9c36a9e6d40f4d476a59d72f5037126cd8b5797007dc236",
         "evidence/player-save-audit.json": "c1e20d8e211f3d8490290db95f338071073615018a4577c49ba2b9430e63cf4c",
+        "evidence/player-save-document-correction.json": "c485751880994e4a6bee51a38b8ec2b47585ce2e7dfa3960e8424b1f6738d56f",
         "evidence/player-save-extract.json": "fbb60df6dfa81c18776a3f9f46f9282304ad83f3d322cc840ddeee7a1f9d10cd",
         "evidence/player-save-reproduce.json": "827f787f4fc9696e65cf52d025075b00b536cec28a36a17788b6e37820032d7f",
         "reference/player_save.json": "762a02a965cea86390ad0582bebc187eccd4b847a9f9db5552d9311c73d3dbc2"
@@ -4573,7 +4575,8 @@
       "scope_limit": "No normal ServerPlayer/fullplayer.dat/filesystem/datafix/vanilla save-compatibility claim.",
       "verification_evidence": [
         "evidence/player-save-extract.json",
-        "evidence/player-save-reproduce.json"
+        "evidence/player-save-reproduce.json",
+        "evidence/player-save-document-correction.json"
       ],
       "verification_status": "reference_reproduced_two_fresh_processes",
       "whole_parent_parity_established": false

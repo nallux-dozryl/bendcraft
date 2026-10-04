@@ -15,7 +15,7 @@ The measured core mapping is:
 | Actual field | Saved key and physical type | Observed absent/load behavior |
 | --- | --- | --- |
 | Position XYZ | `Pos`: List of three Double tags | Missing or short list yields zero vector; load clamps X/Z to ±30,000,512 and Y to ±20,000,000. Infinite position components clamp to limits. NaN position throws after earlier mutations. |
-| Delta movement XYZ | `Motion`: List of three Double tags | Missing/short list yields zero vector. Each component whose absolute value exceeds 10, including infinities and the tested NaN, becomes positive zero. Exactly ±10 survives. |
+| Delta movement XYZ | `Motion`: List of three Double tags | Missing/short list yields zero vector. Each component whose absolute value exceeds 10, including infinities, becomes positive zero. Exactly ±10 survives. A NaN survives that comparison; the subsequent finite-vector setter retains the entire prior velocity. |
 | Current yaw/pitch, degrees | `Rotation`: List of two Float tags | Missing/short list yields zero. Numeric Double list also decodes. Yaw is later reduced modulo 360; pitch uses the actual finite-check/modulo/clamp setters. Prior angles are not saved. |
 | `Entity.fallDistance` | **`fall_distance`: Double** | Missing yields positive double zero. Historical `FallDistance` Float is ignored. Float/Int values coerce numerically; String is reported and defaults to zero. A Double NaN survives load after wire canonicalization. |
 | Ground flag | `OnGround`: Byte | Missing yields false. Tested Byte −1, Int 2 and Float 1 yield true; Short 0 and Double NaN yield false. String `true` is reported and defaults false. |
@@ -66,3 +66,5 @@ python3 tools/reference_player_save_probe.py --mode reproduce
 ```
 
 Each actual Java invocation has a 120-second process-group limit and 512 MiB heap. The runner pins the Java runtime, official artifact/classpaths, normal fixture/service sources, launcher, loaded classes, selected complete javap text and the read-only generation of PlayerRecord/Storage/Session/TickPhases/FallHistory/LocalInput/Pose dependencies. Raw Java sources, exact commands/stdout/stderr and full observations live under ignored `build/player-save`; committed receipts contain hashes and summaries. Current custom Session correctness, interrupted publication and full vanilla player/server persistence remain separate evidence scopes.
+
+The Motion NaN description was corrected after checking the existing `motion-nonfinite` receiver row and pinned Entity bytecode. That row retains its prior `(2, -2, -0)` velocity for the supplied `(NaN, +Infinity, -Infinity)` vector. The original document bytes remain archived; `evidence/player-save-document-correction.json` records the old/new hashes and unchanged reference evidence. No new target execution or historical receipt rewrite was needed.

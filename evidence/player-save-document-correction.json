@@ -1,0 +1,59 @@
+{
+  "actual_bytecode": {
+    "bytes": 620714,
+    "file": "Entity.javap.txt",
+    "path": "build/player-save/Entity.javap.txt",
+    "sha1": "928797c084dcce45a86a5f4f7ecfa6f8fffeb160",
+    "sha256": "ae683ac4927ef5e8d3fc88452ba712309d6a926a9e371506bc0c127ddca02274"
+  },
+  "actual_case": "motion-nonfinite",
+  "after_velocity_f64_bits": [
+    "4000000000000000",
+    "c000000000000000",
+    "8000000000000000"
+  ],
+  "before_velocity_f64_bits": [
+    "4000000000000000",
+    "c000000000000000",
+    "8000000000000000"
+  ],
+  "class_sha256": "7ac5f6a929abbf4fa00f0a87ad530669f7d96c8ee2bb86a5076ab1fab352fb3c",
+  "confidence": "high",
+  "corrected_document": {
+    "bytes": 15379,
+    "path": "docs/PLAYER_SAVE_REFERENCE.md",
+    "sha256": "ed33d8a3efac88bfa9c36a9e6d40f4d476a59d72f5037126cd8b5797007dc236"
+  },
+  "corrected_statement": "Missing/short list yields zero vector. Each component whose absolute value exceeds 10, including infinities, becomes positive zero. Exactly \u00b110 survives. A NaN survives that comparison; the subsequent finite-vector setter retains the entire prior velocity.",
+  "historical_receipts_unchanged": true,
+  "input_motion": {
+    "items": [
+      {
+        "bits": "7ff8000000000263",
+        "type": 6
+      },
+      {
+        "bits": "7ff0000000000000",
+        "type": 6
+      },
+      {
+        "bits": "fff0000000000000",
+        "type": 6
+      }
+    ],
+    "type": 9
+  },
+  "new_target_executions": 0,
+  "original_document": {
+    "bytes": 14840,
+    "path": "build/root-save-document-correction/PLAYER_SAVE_REFERENCE.original.md",
+    "sha256": "5558778037de5dc5b32f016eacbdcc92d89fcdebd4a019cc3ec5159586643d1a"
+  },
+  "reason": "Entity.load clips only Math.abs(component)>10. A NaN survives the dcmpl/ifle branch; setDeltaMovement(Vec3) writes only when Vec3.isFinite(), retaining the complete prior vector otherwise.",
+  "reference": {
+    "bytes": 1291127,
+    "path": "reference/player_save.json",
+    "sha256": "762a02a965cea86390ad0582bebc187eccd4b847a9f9db5552d9311c73d3dbc2"
+  },
+  "status": "corrected_document_interpretation_using_preserved_actual_reference"
+}
