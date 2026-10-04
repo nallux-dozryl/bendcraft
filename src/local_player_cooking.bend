@@ -237,6 +237,33 @@ def resume_loading(world:C.World,sidecar:Sidecar,budget:Nat) -> C.World & Sideca
     case Initialized{+context,light,loading,entries,phase,keys,effects,details}:
       loading_checked(Initialized{context,light,loading,entries,phase,keys,effects,details},budget,checked_world(world,context))
 
+def light_advanced(context:Context,entries:List<&1,Store.Entry>,phase:CW.Phase,keys:List<&2,String>,
+    effects:List<&2,Store.Effect>,details:List<&2,BodyDetails>,result:BW.State & BW.Progress) ->
+    C.World & Sidecar & Result<&2,&2,String,BW.Progress>:
+  (BW.State{world,light,loading},progress) = result
+  (world,Initialized{context,light,loading,entries,phase,keys,effects,details},Done{progress})
+
+def light_running(world:C.World,sidecar:Sidecar,budget:Nat) -> C.World & Sidecar & Result<&2,&2,String,BW.Progress>:
+  match sidecar:
+    case Uninitialized{}: (world,Uninitialized{},Fail{"local-cooking:uninitialized"})
+    case Initialized{+context,light,loading,entries,phase,keys,effects,details}:
+      light_advanced(context,entries,phase,keys,effects,details,
+        BW.advance(~Context,~occludes,context,budget,BW.State{world,light,loading}))
+
+def light_checked(sidecar:Sidecar,budget:Nat,result:C.World & Bool) -> C.World & Sidecar & Result<&2,&2,String,BW.Progress>:
+  match result:
+    case (world,False{}): (world,sidecar,Fail{"local-cooking:invalid-context"})
+    case (world,True{}): light_running(world,sidecar,budget)
+
+# Registry properties/enablement were used by bootstrap/publication. Advance
+# uses their retained descriptors and the actual authenticated face table.
+# It preserves Core's clock and every cooking phase, body and metadata owner.
+def advance_light(world:C.World,sidecar:Sidecar,budget:Nat) -> C.World & Sidecar & Result<&2,&2,String,BW.Progress>:
+  match sidecar:
+    case Uninitialized{}: (world,Uninitialized{},Fail{"local-cooking:uninitialized"})
+    case Initialized{+context,light,loading,entries,phase,keys,effects,details}:
+      light_checked(Initialized{context,light,loading,entries,phase,keys,effects,details},budget,checked_world(world,context))
+
 def completed(context:Context,effects:List<&2,Store.Effect>,details:List<&2,BodyDetails>,
     result:CW.State & Result<&2,&2,CW.Error,List<&2,Store.Effect>>) -> C.World & Sidecar & Result<&2,&2,String,Bool>:
   match result:
@@ -311,6 +338,22 @@ def save_admission(sidecar:Sidecar) -> Sidecar & Result<&2,&2,String,Unit>:
       (Initialized{context,light,None{},[],CW.Idle{},[],effect <> rest,[]},Fail{"local-cooking:save-undelivered-effects"})
     case Initialized{context,light,None{},Nil{},CW.Idle{},Nil{},Nil{},Nil{}}:
       (Initialized{context,light,None{},[],CW.Idle{},[],[],[]},Done{Unit{}})
+
+# Complete physical framing may retain known bodies and their base/extras.
+# Pending work and unreleased intents still cannot be silently omitted.
+def persistence_ready(sidecar:Sidecar) -> Sidecar & Result<&2,&2,String,Unit>:
+  match sidecar:
+    case Uninitialized{}: (Uninitialized{},Done{Unit{}})
+    case Initialized{context,light,loading,entries,CW.Cooking{tick,effects},keys,released,details}:
+      (Initialized{context,light,loading,entries,CW.Cooking{tick,effects},keys,released,details},Fail{"local-cooking:save-pending-tick"})
+    case Initialized{context,light,Some{cursor},entries,CW.Idle{},keys,effects,details}:
+      (Initialized{context,light,Some{cursor},entries,CW.Idle{},keys,effects,details},Fail{"local-cooking:save-light-loading"})
+    case Initialized{context,light,None{},entries,CW.Idle{},key <> rest,effects,details}:
+      (Initialized{context,light,None{},entries,CW.Idle{},key <> rest,effects,details},Fail{"local-cooking:save-section-discovery"})
+    case Initialized{context,light,None{},entries,CW.Idle{},Nil{},effect <> rest,details}:
+      (Initialized{context,light,None{},entries,CW.Idle{},[],effect <> rest,details},Fail{"local-cooking:save-undelivered-effects"})
+    case Initialized{context,light,None{},entries,CW.Idle{},Nil{},Nil{},details}:
+      (Initialized{context,light,None{},entries,CW.Idle{},[],[],details},Done{Unit{}})
 
 def positions_cons(head:Store.Entry,result:List<&1,Store.Entry> & List<&2,C.Position>) ->
     List<&1,Store.Entry> & List<&2,C.Position>:
