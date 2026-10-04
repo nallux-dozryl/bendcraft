@@ -301,3 +301,126 @@ def separated(cutout,solid,small_cutout,small_solid):
           comparison_lt(Word.cmp(32n,right,power(12n,19n)),small_solid))) :
         {Cmp.is_lt(_) == True{} : Bool}
       {==}
+
+# Adding the separating bit also preserves the complete comparison of any
+# two bounded counters. This supports actual same-layer producer ordering.
+law zero_offset_comparison:
+  for +high:Nat
+  {Word.cmp(1n+high,
+    Word.add(1n+high,Word.zero(1n+high),power(0n,high)),
+    Word.add(1n+high,Word.zero(1n+high),power(0n,high))) ==
+    Word.cmp(1n+high,Word.zero(1n+high),Word.zero(1n+high)) : Cmp}
+
+def zero_offset_comparison(high):
+  %Equal.sym(Word(1n+high),Word.add(1n+high,Word.zero(1n+high),power(0n,high)),
+    power(0n,high),add_zero_left(1n+high,power(0n,high))) :
+    {Word.cmp(1n+high,_,Word.add(1n+high,Word.zero(1n+high),power(0n,high))) ==
+      Word.cmp(1n+high,Word.zero(1n+high),Word.zero(1n+high)) : Cmp}
+  %Equal.sym(Word(1n+high),Word.add(1n+high,Word.zero(1n+high),power(0n,high)),
+    power(0n,high),add_zero_left(1n+high,power(0n,high))) :
+    {Word.cmp(1n+high,power(0n,high),_) ==
+      Word.cmp(1n+high,Word.zero(1n+high),Word.zero(1n+high)) : Cmp}
+  %Equal.sym(Cmp,Word.cmp(high,Word.zero(high),Word.zero(high)),EQ{},zero_self(high)) :
+    {Word.cmp.fin(True{},True{},_) == Word.cmp.fin(False{},False{},_) : Cmp}
+  {==}
+
+def comparison_finish(+left_head:Bool,+right_head:Bool,
+    +shifted:Cmp,+original:Cmp,equal:{shifted == original : Cmp}) ->
+    {Word.cmp.fin(left_head,right_head,shifted) == Word.cmp.fin(left_head,right_head,original) : Cmp}:
+  Equal.cong(Cmp,Cmp,comparison => Word.cmp.fin(left_head,right_head,comparison),shifted,original,equal)
+
+law offset_step:
+  for +low:Nat
+  for +high:Nat
+  for left_head:Bool
+  for +left_tail:Word(Nat.add(low,1n+high))
+  for right_head:Bool
+  for +right_tail:Word(Nat.add(low,1n+high))
+  for tail_equal:{Word.cmp(Nat.add(low,1n+high),
+    Word.add(Nat.add(low,1n+high),left_tail,power(low,high)),
+    Word.add(Nat.add(low,1n+high),right_tail,power(low,high))) ==
+    Word.cmp(Nat.add(low,1n+high),left_tail,right_tail) : Cmp}
+  {Word.cmp(1n+Nat.add(low,1n+high),
+    Word.add(1n+Nat.add(low,1n+high),WCon{left_head,left_tail},WCon{False{},power(low,high)}),
+    Word.add(1n+Nat.add(low,1n+high),WCon{right_head,right_tail},WCon{False{},power(low,high)})) ==
+    Word.cmp(1n+Nat.add(low,1n+high),WCon{left_head,left_tail},WCon{right_head,right_tail}) : Cmp}
+
+def offset_step(low,high,left_head,left_tail,right_head,right_tail,tail_equal):
+  match left_head right_head:
+    case False{} False{}:
+      comparison_finish(False{},False{},
+        Word.cmp(Nat.add(low,1n+high),Word.add(Nat.add(low,1n+high),left_tail,power(low,high)),
+          Word.add(Nat.add(low,1n+high),right_tail,power(low,high))),
+        Word.cmp(Nat.add(low,1n+high),left_tail,right_tail),tail_equal)
+    case False{} True{}:
+      comparison_finish(False{},True{},
+        Word.cmp(Nat.add(low,1n+high),Word.add(Nat.add(low,1n+high),left_tail,power(low,high)),
+          Word.add(Nat.add(low,1n+high),right_tail,power(low,high))),
+        Word.cmp(Nat.add(low,1n+high),left_tail,right_tail),tail_equal)
+    case True{} False{}:
+      comparison_finish(True{},False{},
+        Word.cmp(Nat.add(low,1n+high),Word.add(Nat.add(low,1n+high),left_tail,power(low,high)),
+          Word.add(Nat.add(low,1n+high),right_tail,power(low,high))),
+        Word.cmp(Nat.add(low,1n+high),left_tail,right_tail),tail_equal)
+    case True{} True{}:
+      comparison_finish(True{},True{},
+        Word.cmp(Nat.add(low,1n+high),Word.add(Nat.add(low,1n+high),left_tail,power(low,high)),
+          Word.add(Nat.add(low,1n+high),right_tail,power(low,high))),
+        Word.cmp(Nat.add(low,1n+high),left_tail,right_tail),tail_equal)
+
+law offset_words_comparison:
+  for +low:Nat
+  for +high:Nat
+  for +left:Word(Nat.add(low,1n+high))
+  for +right:Word(Nat.add(low,1n+high))
+  for small_left:{Word.cmp(Nat.add(low,1n+high),left,power(low,high)) == LT{} : Cmp}
+  for small_right:{Word.cmp(Nat.add(low,1n+high),right,power(low,high)) == LT{} : Cmp}
+  {Word.cmp(Nat.add(low,1n+high),
+    Word.add(Nat.add(low,1n+high),left,power(low,high)),
+    Word.add(Nat.add(low,1n+high),right,power(low,high))) ==
+    Word.cmp(Nat.add(low,1n+high),left,right) : Cmp}
+
+def offset_words_comparison(low,high,left,right,small_left,small_right):
+  match low:
+    case 0n:
+      %Equal.sym(Word(1n+high),left,Word.zero(1n+high),below_one_is_zero(high,left,small_left)) :
+        {Word.cmp(1n+high,Word.add(1n+high,_,power(0n,high)),
+          Word.add(1n+high,right,power(0n,high))) == Word.cmp(1n+high,_,right) : Cmp}
+      %Equal.sym(Word(1n+high),right,Word.zero(1n+high),below_one_is_zero(high,right,small_right)) :
+        {Word.cmp(1n+high,Word.add(1n+high,Word.zero(1n+high),power(0n,high)),
+          Word.add(1n+high,_,power(0n,high))) == Word.cmp(1n+high,Word.zero(1n+high),_) : Cmp}
+      zero_offset_comparison(high)
+    case 1n+p:
+      match left right:
+        case WCon{+left_head,+left_tail} WCon{+right_head,+right_tail}:
+          offset_step(p,high,left_head,left_tail,right_head,right_tail,
+            offset_words_comparison(p,high,left_tail,right_tail,
+              fin_lt_tail(left_head,Word.cmp(Nat.add(p,1n+high),left_tail,power(p,high)),small_left),
+              fin_lt_tail(right_head,Word.cmp(Nat.add(p,1n+high),right_tail,power(p,high)),small_right)))
+
+law offset_comparison:
+  for +left:U32
+  for +right:U32
+  for small_left:{U32.is_lt(left,4096) == True{} : Bool}
+  for small_right:{U32.is_lt(right,4096) == True{} : Bool}
+  {U32.cmp(U32.add(left,4096),U32.add(right,4096)) == U32.cmp(left,right) : Cmp}
+
+def offset_comparison(left,right,small_left,small_right):
+  match left right:
+    case U32{+a} U32{+b}:
+      offset_words_comparison(12n,19n,a,b,
+        comparison_lt(Word.cmp(32n,a,power(12n,19n)),small_left),
+        comparison_lt(Word.cmp(32n,b,power(12n,19n)),small_right))
+
+law shifted_less:
+  for +left:U32
+  for +right:U32
+  for small_left:{U32.is_lt(left,4096) == True{} : Bool}
+  for small_right:{U32.is_lt(right,4096) == True{} : Bool}
+  for less:{U32.is_lt(left,right) == True{} : Bool}
+  {U32.is_lt(U32.add(left,4096),U32.add(right,4096)) == True{} : Bool}
+
+def shifted_less(left,right,small_left,small_right,less):
+  %Equal.sym(Cmp,U32.cmp(U32.add(left,4096),U32.add(right,4096)),U32.cmp(left,right),
+    offset_comparison(left,right,small_left,small_right)) : {Cmp.is_lt(_) == True{} : Bool}
+  less
