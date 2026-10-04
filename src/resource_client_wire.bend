@@ -9,6 +9,8 @@ import ./movement.bend as M
 import ./f64.bend as F
 import ./player_inventory.bend as I
 import ./inventory.bend as Inv
+import ./generic_resource_world_sample.bend as GS
+import ./mesh_render.bend as Mesh
 
 # Pure, monomorphic renderer wire DTOs. Authentication, matching lease cleanup,
 # strict expected-sequence transition and expiry belong to the backend actor.
@@ -26,6 +28,7 @@ type Command is Data:
   MenuClose{}
   MenuClick{index:U32,click:I.Click}
   Select{index:U32}
+  FrameCatalog{width:U32,height:U32}
 type Request is Data:
   Hello{capability:String}
   Call{epoch:String,sequence:Nat,command:Command}
@@ -37,6 +40,7 @@ type Reply is Data:
   InventoryReply{epoch:String,sequence:Nat,snapshot:I.Snapshot}
   ActionReply{epoch:String,sequence:Nat,changed:Bool,message:String}
   MenuReply{epoch:String,sequence:Nat,accepted:Bool,message:String,snapshot:I.MenuSnapshot}
+  CatalogFrameReply{epoch:String,sequence:Nat,sample:GS.Sample}
 type Row is Data:
   Row{raw:W.RawBlock,block:R.Block,visibility:V.Visibility}
 type Rows is Data:
@@ -384,6 +388,7 @@ def item_key(value:J.Value) -> Result<&2,&2,String,Inv.ItemKey>:
 def command_valid(command:Command) -> Bool:
   match command:
     case Frame{width,height}: WM.frame_valid(WM.frame(width,height))
+    case FrameCatalog{width,height}: WM.frame_valid(WM.frame(width,height))
     case Input{CC.Packet{actions,focused,captured}}: WM.fits(CC.Action,actions,1024)
     case Release{}: True{}
     case Action{button}: U32.is_le(button,1)
@@ -449,6 +454,12 @@ def command(value:J.Value) -> Result<&2,&2,String,Command>:
         +i:U32 <- uint(index)
         guard(U32.is_lt(i,9),"wire:select-hotbar-index")
         Done{Select{i}}
+    case J.JArray{[J.JNumber{"13"},width,height]}:
+      do Result<&2,&2,String,Command>:
+        +w:U32 <- uint(width)
+        +h:U32 <- uint(height)
+        guard(WM.frame_valid(WM.frame(w,h)),"wire:catalog-frame-dimensions")
+        Done{FrameCatalog{w,h}}
     case _: Fail{"wire:command-tag-or-cardinality"}
 
 def request_value(value:J.Value) -> Result<&2,&2,String,Request>:
@@ -563,6 +574,80 @@ def menu_snapshot(value:J.Value) -> Result<&2,&2,String,I.MenuSnapshot>:
         Done{snapshot}
     case _: Fail{"wire:menu-snapshot-cardinality"}
 
+def catalog_address(value:J.Value) -> Result<&2,&2,String,Mesh.Address>:
+  match value:
+    case J.JNumber{"0"}: Done{Mesh.Clamp{}}
+    case J.JNumber{"1"}: Done{Mesh.Repeat{}}
+    case _: Fail{"wire:catalog-address"}
+
+def catalog_cull(value:J.Value) -> Result<&2,&2,String,Mesh.Cull>:
+  match value:
+    case J.JNumber{"0"}: Done{Mesh.Back{}}
+    case J.JNumber{"1"}: Done{Mesh.NoCull{}}
+    case _: Fail{"wire:catalog-cull"}
+
+def catalog_tints(values:List<&2,J.Value>,fuel:Nat) -> Result<&2,&2,String,List<&2,WM.Tint>>:
+  match values fuel:
+    case Nil{} _: Done{[]}
+    case J.JArray{[index,color]} <> tail 1n+rest:
+      do Result<&2,&2,String,List<&2,WM.Tint>>:
+        i:U32 <- uint(index)
+        c:U32 <- uint(color)
+        remaining:List<&2,WM.Tint> <- catalog_tints(tail,rest)
+        Done{WM.Tint{i,c} <> remaining}
+    case _ _: Fail{"wire:catalog-tint-cardinality-or-budget"}
+
+def catalog_appearance(value:J.Value) -> Result<&2,&2,String,WM.Appearance>:
+  match value:
+    case J.JArray{[J.JArray{tints},light,address,cull,nether,threshold]}:
+      do Result<&2,&2,String,WM.Appearance>:
+        colors:List<&2,WM.Tint> <- catalog_tints(tints,256n)
+        l:U32 <- uint(light)
+        a:Mesh.Address <- catalog_address(address)
+        c:Mesh.Cull <- catalog_cull(cull)
+        n:Bool <- boolean(nether)
+        t:U32 <- uint(threshold)
+        +appearance:WM.Appearance = WM.Appearance{colors,l,a,c,n,t}
+        guard(WM.appearance_valid(appearance,256),"wire:catalog-appearance")
+        Done{appearance}
+    case _: Fail{"wire:catalog-appearance-cardinality"}
+
+def catalog_cells(values:List<&2,J.Value>,fuel:Nat) -> Result<&2,&2,String,List<&2,GS.Cell>>:
+  match values fuel:
+    case Nil{} _: Done{[]}
+    case J.JArray{[x,y,z,boundary,state,seed,appearance]} <> tail 1n+rest:
+      do Result<&2,&2,String,List<&2,GS.Cell>>:
+        a:U32 <- uint(x)
+        b:U32 <- uint(y)
+        c:U32 <- uint(z)
+        edge:U32 <- uint(boundary)
+        id:U32 <- uint(state)
+        ticket:U32 <- uint(seed)
+        surface:WM.Appearance <- catalog_appearance(appearance)
+        remaining:List<&2,GS.Cell> <- catalog_cells(tail,rest)
+        Done{GS.Cell{W.Cell{a,b,c,edge},id,ticket,surface} <> remaining}
+    case _ _: Fail{"wire:catalog-cell-cardinality-or-budget"}
+
+def catalog_sample_valid(+sample:GS.Sample) -> Bool:
+  GS.Sample{registry,tick,revision,origin,camera,cells} = sample
+  nonempty_ascii(registry,128n) && Nat.is_le(tick,nat_max()) &&
+    Nat.is_le(revision,nat_max()) && GS.sample_valid(sample)
+
+def catalog_sample(value:J.Value) -> Result<&2,&2,String,GS.Sample>:
+  match value:
+    case J.JArray{[identity,tick,revision,origin_value,camera_value,J.JArray{cells}]}:
+      do Result<&2,&2,String,GS.Sample>:
+        registry:String <- text(identity)
+        t:Nat <- natural(tick)
+        r:Nat <- natural(revision)
+        o:M.Vec3 <- origin(origin_value)
+        c:R.Camera <- floats3(camera_value)
+        values:List<&2,GS.Cell> <- catalog_cells(cells,4096n)
+        +sample:GS.Sample = GS.Sample{registry,t,r,o,c,values}
+        guard(catalog_sample_valid(sample),"wire:catalog-sample")
+        Done{sample}
+    case _: Fail{"wire:catalog-sample-cardinality"}
+
 def reply_value(value:J.Value) -> Result<&2,&2,String,Reply>:
   match value:
     case J.JArray{[J.JNumber{"1"},J.JNumber{"0"},epoch,sequence]}:
@@ -615,6 +700,13 @@ def reply_value(value:J.Value) -> Result<&2,&2,String,Reply>:
         snapshot:I.MenuSnapshot <- menu_snapshot(body)
         guard(epoch_valid(e) && sequence_valid(s) && diagnostic_valid(m),"wire:menu-correlation-or-message")
         Done{MenuReply{e,s,value,m,snapshot}}
+    case J.JArray{[J.JNumber{"1"},J.JNumber{"7"},epoch,sequence,body]}:
+      do Result<&2,&2,String,Reply>:
+        +e:String <- text(epoch)
+        +s:Nat <- natural(sequence)
+        value:GS.Sample <- catalog_sample(body)
+        guard(epoch_valid(e) && sequence_valid(s),"wire:catalog-frame-correlation")
+        Done{CatalogFrameReply{e,s,value}}
     case _: Fail{"wire:reply-version-tag-or-cardinality"}
 
 def decode_request(input:String) -> Result<&2,&2,String,Request>:
@@ -663,6 +755,39 @@ def sample_value(value:V.Sample) -> Result<&2,&2,String,J.Value>:
     cells:List<&2,J.Value> <- encode_rows(raw,blocks,masks)
     Done{J.JArray{[n(tick),n(revision),origin_value(origin),camera_value(camera),palette_value(palette),u(reads),J.JArray{cells}]}}
 
+def catalog_address_value(value:Mesh.Address) -> J.Value:
+  match value:
+    case Mesh.Clamp{}: u(0)
+    case Mesh.Repeat{}: u(1)
+
+def catalog_cull_value(value:Mesh.Cull) -> J.Value:
+  match value:
+    case Mesh.Back{}: u(0)
+    case Mesh.NoCull{}: u(1)
+
+def catalog_tint_values(values:List<&2,WM.Tint>) -> List<&2,J.Value>:
+  match values:
+    case Nil{}: []
+    case WM.Tint{index,color} <> tail:
+      J.JArray{[u(index),u(color)]} <> catalog_tint_values(tail)
+
+def catalog_appearance_value(value:WM.Appearance) -> J.Value:
+  WM.Appearance{tints,light,address,cull,nether,threshold} = value
+  J.JArray{[J.JArray{catalog_tint_values(tints)},u(light),catalog_address_value(address),
+    catalog_cull_value(cull),b(nether),u(threshold)]}
+
+def catalog_cell_values(values:List<&2,GS.Cell>) -> List<&2,J.Value>:
+  match values:
+    case Nil{}: []
+    case GS.Cell{W.Cell{x,y,z,boundary},state,seed,appearance} <> tail:
+      J.JArray{[u(x),u(y),u(z),u(boundary),u(state),u(seed),catalog_appearance_value(appearance)]} <>
+        catalog_cell_values(tail)
+
+def catalog_sample_value(value:GS.Sample) -> J.Value:
+  GS.Sample{identity,tick,revision,origin,camera,cells} = value
+  J.JArray{[s(identity),n(tick),n(revision),origin_value(origin),camera_value(camera),
+    J.JArray{catalog_cell_values(cells)}]}
+
 def event_value(value:Event) -> J.Value:
   match value:
     case Key{code,down}: J.JArray{[u(0),u(code),b(down)]}
@@ -705,6 +830,7 @@ def click_value(click:I.Click) -> J.Value:
 def command_value(value:Command) -> J.Value:
   match value:
     case Frame{width,height}: J.JArray{[u(0),u(width),u(height)]}
+    case FrameCatalog{width,height}: J.JArray{[u(13),u(width),u(height)]}
     case Input{packet}: J.JArray{[u(1),packet_value(packet)]}
     case Release{}: J.JArray{[u(2)]}
     case Action{button}: J.JArray{[u(3),u(button)]}
@@ -732,6 +858,7 @@ def reply_valid(reply:Reply) -> Bool:
   match reply:
     case HelloAck{epoch,sequence}: epoch_valid(epoch) && Nat.is_eq(sequence,0n)
     case FrameReply{epoch,sequence,sample}: epoch_valid(epoch) && sequence_valid(sequence) && sample_valid(sample)
+    case CatalogFrameReply{epoch,sequence,sample}: epoch_valid(epoch) && sequence_valid(sequence) && catalog_sample_valid(sample)
     case Ack{epoch,sequence}: epoch_valid(epoch) && sequence_valid(sequence)
     case Fault{epoch,sequence,message}: fault_valid(epoch,sequence,message)
     case InventoryReply{epoch,sequence,snapshot}: epoch_valid(epoch) && sequence_valid(sequence) && main_snapshot_valid(snapshot)
@@ -773,6 +900,8 @@ def reply_json(reply:Reply) -> Result<&2,&2,String,J.Value>:
       do Result<&2,&2,String,J.Value>:
         value:J.Value <- sample_value(sample)
         Done{J.JArray{[u(1),u(1),s(epoch),n(sequence),value]}}
+    case CatalogFrameReply{epoch,sequence,sample}:
+      Done{J.JArray{[u(1),u(7),s(epoch),n(sequence),catalog_sample_value(sample)]}}
     case Ack{epoch,sequence}: Done{J.JArray{[u(1),u(2),s(epoch),n(sequence)]}}
     case Fault{epoch,sequence,message}: Done{J.JArray{[u(1),u(3),s(epoch),n(sequence),s(message)]}}
     case InventoryReply{epoch,sequence,snapshot}: Done{J.JArray{[u(1),u(4),s(epoch),n(sequence),inventory_snapshot_value(snapshot)]}}
@@ -844,6 +973,7 @@ def correlation(+epoch:String,+sequence:Nat,reply:Reply) -> Bool:
   match reply:
     case HelloAck{other,number}: String.eq(epoch,other) && Nat.is_eq(sequence,number)
     case FrameReply{other,number,sample}: String.eq(epoch,other) && Nat.is_eq(sequence,number)
+    case CatalogFrameReply{other,number,sample}: String.eq(epoch,other) && Nat.is_eq(sequence,number)
     case Ack{other,number}: String.eq(epoch,other) && Nat.is_eq(sequence,number)
     case Fault{other,number,message}: String.eq(epoch,other) && Nat.is_eq(sequence,number)
     case InventoryReply{other,number,snapshot}: String.eq(epoch,other) && Nat.is_eq(sequence,number)
