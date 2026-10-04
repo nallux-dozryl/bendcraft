@@ -2,8 +2,9 @@
 
 `src/resource_client_wire.bend` is a pure monomorphic codec shared by the actual
 LocalPlayer Session backend and remote resource renderer. It owns no actor,
-world, resource assets, socket, timer or authentication state. It introduces no
-world editing, save or developer operation.
+world, resource assets, socket, timer or authentication state. Its action command
+requests the backend's reserved player interaction; it accepts no block position,
+state ID, player peer, ability, inventory mutation or developer capability.
 
 Public API:
 
@@ -16,9 +17,12 @@ Public API:
   expose the admitted limits.
 
 Types are `Hello{capability}` or `Call{epoch,sequence,command}`;
-`Command` is `Frame{width,height}`, `Input{packet:CC.Packet}` or `Release{}`.
+`Command` is `Frame{width,height}`, `Input{packet:CC.Packet}`, `Release{}`,
+`Action{button}`, `Hotbar{index}` or `Inventory{}`.
 Replies are `HelloAck{epoch,sequence}`, `FrameReply{epoch,sequence,sample:V.Sample}`,
-`Ack{epoch,sequence}` or `Fault{epoch,sequence,message}`.
+`Ack{epoch,sequence}`, `Fault{epoch,sequence,message}`,
+`InventoryReply{epoch,sequence,snapshot:I.Snapshot}` or
+`ActionReply{epoch,sequence,changed,message}`.
 
 The backend owns token authentication, a fresh boot nonce plus monotonic lease
 counter as epoch, the one active renderer lease and strict expected-sequence
@@ -44,10 +48,30 @@ raw U32 word, F64 is `[hi,lo]`.
 | Frame command | `[0,width,height]` |
 | Input command | `[1,packet]` |
 | Release command | `[2]` |
+| Action command | `[3,button]`, button 0 breaks, 1 places |
+| Hotbar command | `[4,index]`, index 0 through 8 |
+| Inventory command | `[5]` |
 | HelloAck | `[1,0,epoch,0]` |
 | FrameReply | `[1,1,epoch,sequence,sample]` |
 | Ack | `[1,2,epoch,sequence]` |
 | Fault | `[1,3,epoch,sequence,message]` |
+| InventoryReply | `[1,4,epoch,sequence,inventory]` |
+| ActionReply | `[1,5,epoch,sequence,changed,message]` |
+
+The additive commands keep version 1 and every original tag/shape unchanged.
+An inventory is `[selected,instabuild,maybuild,slots]`. It contains exactly 36
+ordered main-inventory slots, with hotbar slots first. A slot is `[0]` for empty
+or `[1,itemIdentifier,components,count]` for a stack. The current consumer admits
+unmodified stone, dirt and oak planks only: the component string is empty and
+count is 1 through 64. Selection is 0 through 8. Abilities are exact Booleans
+owned by the backend; the client cannot set them through this wire.
+
+Hotbar uses the existing Ack. An admitted Action uses ActionReply even for a
+miss or a gameplay refusal (`changed=false` with a diagnostic); these outcomes
+consume the expected sequence and keep the lease. Protocol/admission failures
+still use Fault and close the socket. Inventory is an atomic actor read and
+does not tick simulation. [PLAYER_BLOCK_INTERACTION.md](PLAYER_BLOCK_INTERACTION.md)
+records the actual interaction scope and independent Java geometry evidence.
 
 The sample is `[tick,revision,origin,camera,palette,neighborReads,cells]`.
 Origin is `[xHi,xLo,yHi,yLo,zHi,zLo]`; camera is five F32 words in XYZ/yaw/pitch
@@ -79,9 +103,12 @@ conversion. The existing checked controller owns gameplay input admission.
 
 ## Refusal boundaries and verification
 
-Both encoding and decoding enforce 65536 transport bytes, 16384 parser scalar
-characters, depth 8, and 16384 JSON values including containers. Canonical ASCII
-means the character bound also limits byte length. Frame size is 4..1024 in
+Both encoding and decoding enforce 65536 ASCII transport characters/bytes,
+depth 8, and an independent 16384 JSON values including containers. The parser
+character limit is 65536: a valid initial 256-cell frame is 16826 characters and
+cannot fit the former conflated 16384-character limit. Existing diagnostic,
+capability, epoch, input-action and inventory schema bounds remain separate.
+Canonical ASCII means the character bound also limits byte length. Frame size is 4..1024 in
 both axes; samples contain at most 4096 raw cells and 24576 neighbor reads.
 `mesh_limits()` supplies the existing actual defaults: 4096 blocks, 1024
 bindings, 4096 quads, 64 translucent quads and 256 tints, each below 16384.
@@ -104,5 +131,10 @@ Pinned TCP.poll source inspection supports replacement of invalid bytes with
 non-ASCII U+FFFD; decoded ASCII admission is therefore the intended rejection
 boundary. This is not a native malformed-byte observation.
 
-No standalone native build, Java extraction, export or kernel run accompanies
-this module. Frozen local-phase sources, helpers and oracles remain unchanged.
+The additive finite checks in `tests/resource_client_interaction_wire.bend`
+cover original and new serialization, all hotbar selections, ordered inventory
+roundtrips, malformed slot counts/items/components/stacks, extra fields,
+correlation and escaped Unicode. Their current execution status is recorded by
+the combined playable-client acceptance artifact; prepared assertions alone
+do not establish a native pass. No standalone native build accompanies this
+module.

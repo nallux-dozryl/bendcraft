@@ -7,6 +7,8 @@ import ./world_visibility.bend as V
 import ./world_mesh.bend as WM
 import ./movement.bend as M
 import ./f64.bend as F
+import ./player_inventory.bend as I
+import ./inventory.bend as Inv
 
 # Pure, monomorphic renderer wire DTOs. Authentication, matching lease cleanup,
 # strict expected-sequence transition and expiry belong to the backend actor.
@@ -14,6 +16,9 @@ type Command is Data:
   Frame{width:U32,height:U32}
   Input{packet:CC.Packet}
   Release{}
+  Action{button:U32}
+  Hotbar{index:U32}
+  Inventory{}
 type Request is Data:
   Hello{capability:String}
   Call{epoch:String,sequence:Nat,command:Command}
@@ -22,6 +27,8 @@ type Reply is Data:
   FrameReply{epoch:String,sequence:Nat,sample:V.Sample}
   Ack{epoch:String,sequence:Nat}
   Fault{epoch:String,sequence:Nat,message:String}
+  InventoryReply{epoch:String,sequence:Nat,snapshot:I.Snapshot}
+  ActionReply{epoch:String,sequence:Nat,changed:Bool,message:String}
 type Row is Data:
   Row{raw:W.RawBlock,block:R.Block,visibility:V.Visibility}
 type Rows is Data:
@@ -31,7 +38,7 @@ def version() -> U32: 1
 
 def transport_bytes() -> U32: 65536
 
-def parser_scalars() -> Nat: 16384n
+def parser_scalars() -> Nat: 65536n
 
 def parser_depth() -> U32: 8
 
@@ -79,8 +86,8 @@ def scalar_text(text:String) -> Bool:
 def diagnostic_valid(+message:String) -> Bool:
   J.within(2048n,message) && scalar_text(message)
 
-# Count containers as well as scalar values, so all admitted ASTs also satisfy
-# the scalar budget. Fuel precedes the rebuilt traversal stack for termination.
+# Count containers as well as scalar values. This independent AST budget is
+# smaller than the transport character bound. Fuel precedes traversal state.
 def values_fit(fuel:Nat,values:List<&2,J.Value>) -> Bool:
   match fuel values:
     case _ Nil{}: True{}
@@ -92,10 +99,10 @@ def values_fit(fuel:Nat,values:List<&2,J.Value>) -> Bool:
 def parse_admitted(+text:String,valid:Bool) -> Result<&2,&2,String,J.Value>:
   match valid:
     case False{}: Fail{"wire:ASCII-or-transport-parser-budget"}
-    case True{}: J.parse_with(text,J.Limits{16384n,8})
+    case True{}: J.parse_with(text,J.Limits{65536n,8})
 
 def parse(+text:String) -> Result<&2,&2,String,J.Value>:
-  parse_admitted(text,J.within(16384n,text) && J.within(65536n,text) && ascii(text))
+  parse_admitted(text,J.within(65536n,text) && ascii(text))
 
 def float_bits(value:U32) -> F32:
   U32{word} = value
@@ -322,6 +329,9 @@ def command_valid(command:Command) -> Bool:
     case Frame{width,height}: WM.frame_valid(WM.frame(width,height))
     case Input{CC.Packet{actions,focused,captured}}: WM.fits(CC.Action,actions,1024)
     case Release{}: True{}
+    case Action{button}: U32.is_le(button,1)
+    case Hotbar{index}: U32.is_lt(index,9)
+    case Inventory{}: True{}
 
 def command(value:J.Value) -> Result<&2,&2,String,Command>:
   match value:
@@ -336,6 +346,17 @@ def command(value:J.Value) -> Result<&2,&2,String,Command>:
         +p:CC.Packet <- packet(value)
         Done{Input{p}}
     case J.JArray{[J.JNumber{"2"}]}: Done{Release{}}
+    case J.JArray{[J.JNumber{"3"},button]}:
+      do Result<&2,&2,String,Command>:
+        +value:U32 <- uint(button)
+        guard(U32.is_le(value,1),"wire:interaction-button")
+        Done{Action{value}}
+    case J.JArray{[J.JNumber{"4"},index]}:
+      do Result<&2,&2,String,Command>:
+        +value:U32 <- uint(index)
+        guard(U32.is_lt(value,9),"wire:hotbar-index")
+        Done{Hotbar{value}}
+    case J.JArray{[J.JNumber{"5"}]}: Done{Inventory{}}
     case _: Fail{"wire:command-tag-or-cardinality"}
 
 def request_value(value:J.Value) -> Result<&2,&2,String,Request>:
@@ -356,6 +377,45 @@ def request_value(value:J.Value) -> Result<&2,&2,String,Request>:
 
 def fault_valid(+epoch:String,+sequence:Nat,message:String) -> Bool:
   ((String.eq(epoch,"") && Nat.is_eq(sequence,0n)) || (epoch_valid(epoch) && sequence_valid(sequence))) && diagnostic_valid(message)
+
+def inventory_slot(value:J.Value) -> Result<&2,&2,String,Inv.Slot>:
+  match value:
+    case J.JArray{[J.JNumber{"0"}]}: Done{Inv.InvEmpty{}}
+    case J.JArray{[J.JNumber{"1"},name,components,count]}:
+      do Result<&2,&2,String,Inv.Slot>:
+        id:String <- text(name)
+        payload:String <- text(components)
+        amount:U32 <- uint(count)
+        Done{Inv.InvStack{Inv.ItemKey{id,payload},amount}}
+    case _: Fail{"wire:inventory-slot-tag-or-cardinality"}
+
+def inventory_slots(left:Nat,values:List<&2,J.Value>) -> Result<&2,&2,String,List<&2,Inv.Slot>>:
+  match left values:
+    case 0n Nil{}: Done{[]}
+    case 1n+rest head <> tail:
+      do Result<&2,&2,String,List<&2,Inv.Slot>>:
+        own:Inv.Slot <- inventory_slot(head)
+        remaining:List<&2,Inv.Slot> <- inventory_slots(rest,tail)
+        Done{own <> remaining}
+    case _ _: Fail{"wire:inventory-slots-cardinality"}
+
+def inventory_array(value:J.Value) -> Result<&2,&2,String,List<&2,Inv.Slot>>:
+  match value:
+    case J.JArray{slots}: inventory_slots(36n,slots)
+    case _: Fail{"wire:expected-inventory-slots-array"}
+
+def inventory_snapshot(value:J.Value) -> Result<&2,&2,String,I.Snapshot>:
+  match value:
+    case J.JArray{[selected,instabuild,maybuild,slots]}:
+      do Result<&2,&2,String,I.Snapshot>:
+        +index:U32 <- uint(selected)
+        +creative:Bool <- boolean(instabuild)
+        +build:Bool <- boolean(maybuild)
+        +items:List<&2,Inv.Slot> <- inventory_array(slots)
+        +snapshot:I.Snapshot = I.Snapshot{index,items,I.Abilities{creative,build}}
+        guard(I.snapshot_valid(snapshot),"wire:inventory-snapshot")
+        Done{snapshot}
+    case _: Fail{"wire:inventory-snapshot-cardinality"}
 
 def reply_value(value:J.Value) -> Result<&2,&2,String,Reply>:
   match value:
@@ -385,6 +445,21 @@ def reply_value(value:J.Value) -> Result<&2,&2,String,Reply>:
         +m:String <- text(message)
         guard(fault_valid(e,s,m),"wire:fault-correlation-or-message")
         Done{Fault{e,s,m}}
+    case J.JArray{[J.JNumber{"1"},J.JNumber{"4"},epoch,sequence,body]}:
+      do Result<&2,&2,String,Reply>:
+        +e:String <- text(epoch)
+        +s:Nat <- natural(sequence)
+        value:I.Snapshot <- inventory_snapshot(body)
+        guard(epoch_valid(e) && sequence_valid(s),"wire:inventory-correlation")
+        Done{InventoryReply{e,s,value}}
+    case J.JArray{[J.JNumber{"1"},J.JNumber{"5"},epoch,sequence,changed,message]}:
+      do Result<&2,&2,String,Reply>:
+        +e:String <- text(epoch)
+        +s:Nat <- natural(sequence)
+        value:Bool <- boolean(changed)
+        +m:String <- text(message)
+        guard(epoch_valid(e) && sequence_valid(s) && diagnostic_valid(m),"wire:interaction-correlation-or-message")
+        Done{ActionReply{e,s,value,m}}
     case _: Fail{"wire:reply-version-tag-or-cardinality"}
 
 def decode_request(input:String) -> Result<&2,&2,String,Request>:
@@ -461,6 +536,9 @@ def command_value(value:Command) -> J.Value:
     case Frame{width,height}: J.JArray{[u(0),u(width),u(height)]}
     case Input{packet}: J.JArray{[u(1),packet_value(packet)]}
     case Release{}: J.JArray{[u(2)]}
+    case Action{button}: J.JArray{[u(3),u(button)]}
+    case Hotbar{index}: J.JArray{[u(4),u(index)]}
+    case Inventory{}: J.JArray{[u(5)]}
 
 def request_valid(request:Request) -> Bool:
   match request:
@@ -478,6 +556,22 @@ def reply_valid(reply:Reply) -> Bool:
     case FrameReply{epoch,sequence,sample}: epoch_valid(epoch) && sequence_valid(sequence) && sample_valid(sample)
     case Ack{epoch,sequence}: epoch_valid(epoch) && sequence_valid(sequence)
     case Fault{epoch,sequence,message}: fault_valid(epoch,sequence,message)
+    case InventoryReply{epoch,sequence,snapshot}: epoch_valid(epoch) && sequence_valid(sequence) && I.snapshot_valid(snapshot)
+    case ActionReply{epoch,sequence,changed,message}: epoch_valid(epoch) && sequence_valid(sequence) && diagnostic_valid(message)
+
+def inventory_slot_value(value:Inv.Slot) -> J.Value:
+  match value:
+    case Inv.InvEmpty{}: J.JArray{[u(0)]}
+    case Inv.InvStack{Inv.ItemKey{name,components},count}: J.JArray{[u(1),s(name),s(components),u(count)]}
+
+def inventory_slot_values(values:List<&2,Inv.Slot>) -> List<&2,J.Value>:
+  match values:
+    case Nil{}: []
+    case head <> tail: inventory_slot_value(head) <> inventory_slot_values(tail)
+
+def inventory_snapshot_value(value:I.Snapshot) -> J.Value:
+  I.Snapshot{selected,slots,I.Abilities{instabuild,maybuild}} = value
+  J.JArray{[u(selected),b(instabuild),b(maybuild),J.JArray{inventory_slot_values(slots)}]}
 
 def reply_json(reply:Reply) -> Result<&2,&2,String,J.Value>:
   match reply:
@@ -488,6 +582,8 @@ def reply_json(reply:Reply) -> Result<&2,&2,String,J.Value>:
         Done{J.JArray{[u(1),u(1),s(epoch),n(sequence),value]}}
     case Ack{epoch,sequence}: Done{J.JArray{[u(1),u(2),s(epoch),n(sequence)]}}
     case Fault{epoch,sequence,message}: Done{J.JArray{[u(1),u(3),s(epoch),n(sequence),s(message)]}}
+    case InventoryReply{epoch,sequence,snapshot}: Done{J.JArray{[u(1),u(4),s(epoch),n(sequence),inventory_snapshot_value(snapshot)]}}
+    case ActionReply{epoch,sequence,changed,message}: Done{J.JArray{[u(1),u(5),s(epoch),n(sequence),b(changed),s(message)]}}
 
 def hex4(+word:U32) -> String:
   Char.show(J.hex_char(U32.and(U32.shrn(word,12n),15))) ++
@@ -521,7 +617,7 @@ def json_ascii(value:J.Value,continuation:Bool) -> String:
 
 def encoded_text(+output:String) -> Result<&2,&2,String,String>:
   do Result<&2,&2,String,String>:
-    guard(J.within(16384n,output) && J.within(65536n,output) && ascii(output),"wire:encoded-transport-parser-budget")
+    guard(J.within(65536n,output) && ascii(output),"wire:encoded-transport-parser-budget")
     Done{output}
 
 def encode_value(+value:J.Value) -> Result<&2,&2,String,String>:
@@ -556,6 +652,8 @@ def correlation(+epoch:String,+sequence:Nat,reply:Reply) -> Bool:
     case FrameReply{other,number,sample}: String.eq(epoch,other) && Nat.is_eq(sequence,number)
     case Ack{other,number}: String.eq(epoch,other) && Nat.is_eq(sequence,number)
     case Fault{other,number,message}: String.eq(epoch,other) && Nat.is_eq(sequence,number)
+    case InventoryReply{other,number,snapshot}: String.eq(epoch,other) && Nat.is_eq(sequence,number)
+    case ActionReply{other,number,changed,message}: String.eq(epoch,other) && Nat.is_eq(sequence,number)
 
 law raw_look_preserves_signed_zero_and_nan_payload:
   {event(J.JArray{[u(3),u(2147483648),u(2143289345)]}) ==

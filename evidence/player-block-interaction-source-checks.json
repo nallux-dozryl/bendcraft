@@ -1,0 +1,154 @@
+{
+  "status": "source-checks-complete-current-graph",
+  "checks": [
+    {
+      "entry": "tests/player_block_reference.bend",
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/player_block_reference.bend",
+        "--check-only"
+      ],
+      "verdict": "all-proofs-check",
+      "declared_boundaries": 0,
+      "seconds": 1.6563522079959512,
+      "exit_code": 0,
+      "source_closure_unchanged": true,
+      "process_group_absent_at_audit": true,
+      "receipt": "build/player-block-interaction-ordinary/player_block_reference-final-1791107411337932000/receipt.json",
+      "receipt_sha256": "7d3689f9dd6d9fa952210e5effb27ae9ce0a796a0dbe87d0a12f19b4a40ad363",
+      "stdout_sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "entry": "src/remote_resource_backend.bend",
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/remote_resource_backend.bend",
+        "--check-only"
+      ],
+      "verdict": "declared-boundaries-only",
+      "declared_boundaries": 92,
+      "seconds": 11.856106500141323,
+      "exit_code": 1,
+      "source_closure_unchanged": true,
+      "process_group_absent_at_audit": true,
+      "receipt": "build/player-block-interaction-ordinary/remote_resource_backend-final-1791107413007905000/receipt.json",
+      "receipt_sha256": "09adb350fb665fd8661ac99cf46b0a6cfe47294d1bd36d7eeaa0d522de6e4d55",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "99e89bce14c63612bd6dd7991185feec9f6938d7a464d9ca02d646fbc008a602"
+    },
+    {
+      "entry": "src/remote_resource_transport.bend",
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/remote_resource_transport.bend",
+        "--check-only"
+      ],
+      "verdict": "declared-boundaries-only",
+      "declared_boundaries": 98,
+      "seconds": 12.206736125051975,
+      "exit_code": 1,
+      "source_closure_unchanged": true,
+      "process_group_absent_at_audit": true,
+      "receipt": "build/player-block-interaction-ordinary/remote_resource_transport-final-1791107424888485000/receipt.json",
+      "receipt_sha256": "410412aba57c2698b6812ae1a6665d3502a20b1723d17f3055863129e8f14877",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "858478d1ae7662593c6ea248de09f812bff217aea8d46e3f897894398dc05c5f"
+    },
+    {
+      "entry": "tests/resource_client_interaction_wire.bend",
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/resource_client_interaction_wire.bend",
+        "--check-only"
+      ],
+      "verdict": "all-proofs-check",
+      "declared_boundaries": 0,
+      "seconds": 5.743209583684802,
+      "exit_code": 0,
+      "source_closure_unchanged": true,
+      "process_group_absent_at_audit": true,
+      "entry_sha256": "140ab000d526760f1e88f798684636969a4763eb22a2c2fe545b438b7cc32a9c",
+      "receipt": "build/player-block-interaction-ordinary/resource_client_interaction_wire-budget-final-1791108138240131000/receipt.json",
+      "receipt_sha256": "8e3f4624a61f8e4d5bb881e97377a107e825cd6b035f831c7046c682e957d7ce",
+      "stdout_sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "default_js_test": {
+    "entry": "tests/player_block_interaction.bend",
+    "status": "passed",
+    "receipt": "build/player-block-interaction-ordinary/player_block_interaction-1791106910406902000/receipt.json"
+  },
+  "pure_sources": [
+    "src/player_core_edit.bend",
+    "src/player_block_interaction.bend",
+    "src/resource_client_wire.bend"
+  ],
+  "native_builds": 0,
+  "native_reference_replay": false,
+  "wire_budget_extension": {
+    "status": "ordinary-source-check-complete-native-pending",
+    "tests_sha256": "140ab000d526760f1e88f798684636969a4763eb22a2c2fe545b438b7cc32a9c",
+    "transport_ascii_characters": 65536,
+    "parsed_json_values_including_containers": 16384,
+    "depth": 8,
+    "valid_frame_rows": 256,
+    "valid_frame_ascii_characters": 19784,
+    "valid_frame_json_values": 2844,
+    "transport_refused_frame_rows": 1024,
+    "transport_refused_frame_ascii_characters": 78920,
+    "transport_refused_frame_json_values": 11292,
+    "sample_domain_max_rows": 4096,
+    "max_sample_json_values": 45084,
+    "scope": "Exact semantic roundtrip, all 256 rows and fields, correlation, independent transport/value/domain refusals, capability/diagnostic/action bounds, literal transport and value budget boundaries. Assertions are source checked; combined native execution remains pending."
+  },
+  "scope": "Ordinary checking and one default JavaScript finite interaction execution only. Foreign/unsafe boundaries are explicit, not kernel proof or native acceptance.",
+  "confidence": "high for captured source outcomes",
+  "historical_wire_check_before_boundary_extension": {
+    "entry": "tests/resource_client_interaction_wire.bend",
+    "argv": [
+      "/Users/chuah/.bend/bin/bend",
+      "tests/resource_client_interaction_wire.bend",
+      "--check-only"
+    ],
+    "verdict": "all-proofs-check",
+    "declared_boundaries": 0,
+    "seconds": 5.555302541702986,
+    "exit_code": 0,
+    "source_closure_unchanged": true,
+    "process_group_absent_at_audit": true,
+    "receipt": "build/player-block-interaction-ordinary/resource_client_interaction_wire-final-1791107437112052000/receipt.json",
+    "receipt_sha256": "e6b9fbf2f1c8aff6022e52feb586b6d5e4bcbcbeaa6e6bafaf7fad05515f623a",
+    "stdout_sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "failed_final_wire_attempts": [
+    {
+      "entry": "tests/resource_client_interaction_wire.bend",
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/resource_client_interaction_wire.bend",
+        "--check-only"
+      ],
+      "verdict": "own-source-annotation-error",
+      "seconds": 3.0932185417041183,
+      "exit_code": 1,
+      "source_closure_unchanged": true,
+      "process_group_absent_at_audit": true,
+      "entry_sha256": "6fc6c24f7aef3cd101db5747969779b19ab41254067357627ad6754f23c08092",
+      "receipt": "build/player-block-interaction-ordinary/resource_client_interaction_wire-budget-final-1791108074984077000/receipt.json",
+      "receipt_sha256": "100652334152dc97caa011ea0e7178927c1e41110b3c6464c5a2b21d9bcc92ac",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "ab7239d1fcc171b9a2f7f4f8f0c1d1949b014d713f675c23441558b3a28533df",
+      "diagnostic": "independent_budget_cases +ack string literal required explicit String annotation; repaired before final success.",
+      "diagnostic_bullets": 2,
+      "declared_boundaries": 0
+    }
+  ],
+  "pure_source_pins": {
+    "src/player_core_edit.bend": "ced4c368ae781a1543fff9bebfe661ba99efe01a71fd1bb95e188bf62f1dc449",
+    "src/player_block_interaction.bend": "736dc12b48a4689bc105014e09a5b636bfd03bbb2dabdb150a916b54fe8292fd",
+    "src/resource_client_wire.bend": "a7e52cf782dd094edaba53c35ab4eadf998edd88f1b223bdc9b3c959561d5808"
+  }
+}

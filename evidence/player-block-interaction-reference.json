@@ -1,0 +1,57 @@
+{
+  "java_source": {
+    "bytes": 6037,
+    "file": "ReferencePlayerBlockInteractionProbe.java",
+    "sha1": "b289c4427c946c83637320a3076a7dcd18e67840",
+    "sha256": "dfe2c8dc0bfd46cf62149b969c7f665ef079923165bb4818445ac33b418b407c"
+  },
+  "operation_counts": {
+    "aabb_clip": 215,
+    "direction_nearest": 133,
+    "reach_constants": 1,
+    "shape_clip": 215,
+    "view_vector": 70
+  },
+  "reference": {
+    "bytes": 657371,
+    "file": "player_block_interaction.json",
+    "sha1": "d1ae22a48a4776578550dd988147c845da777982",
+    "sha256": "d985d99113f98a78b5e5bba60df64579afc8b8a1e57968e1f4f68acb24d86c40"
+  },
+  "status": "passed",
+  "two_byte_identical_java_runs": [
+    {
+      "log": {
+        "bytes": 466,
+        "file": "run-0.log",
+        "sha1": "e431618aa5e3f4d979b0b56563568631885db20e",
+        "sha256": "dc23f039b55c166cfa412f3e9f5270b7df07f4c93596e2537d1f1afaeb01ce0d"
+      },
+      "observations": {
+        "bytes": 176991,
+        "file": "actual-0.jsonl",
+        "sha1": "b7c55873509ca4a8d1b048639e00bf8120983fc2",
+        "sha256": "81017fd705d1478e460ab70df3ddf881d17edd0846dedfd3e6c1d8188a17e219"
+      }
+    },
+    {
+      "log": {
+        "bytes": 466,
+        "file": "run-1.log",
+        "sha1": "e431618aa5e3f4d979b0b56563568631885db20e",
+        "sha256": "dc23f039b55c166cfa412f3e9f5270b7df07f4c93596e2537d1f1afaeb01ce0d"
+      },
+      "observations": {
+        "bytes": 176991,
+        "file": "actual-1.jsonl",
+        "sha1": "b7c55873509ca4a8d1b048639e00bf8120983fc2",
+        "sha256": "81017fd705d1478e460ab70df3ddf881d17edd0846dedfd3e6c1d8188a17e219"
+      }
+    }
+  ],
+  "validation": {
+    "cases": 634,
+    "directed_semantic_assertions": true,
+    "unique_fixture_ids": true
+  }
+}

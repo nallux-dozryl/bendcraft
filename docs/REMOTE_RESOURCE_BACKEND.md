@@ -40,6 +40,20 @@ physical input sample. Input applies one ordered whole packet through the actual
 LocalPlayer scene. Release clears physical controls and advances the private
 sequence. These calls do not consume public peer/session sequence numbers.
 
+The additive reserved-player constructor `Backend.new_reserved` supports
+Action, Hotbar and Inventory on the same lease. Action computes the actual
+pose-eye ray against the owned world, then admits a creative edit with the
+server-reserved Player capability. The private DTO contains no peer or
+developer mutation. Inventory returns the owned 36-slot snapshot; Hotbar sets
+only the selected slot. `Backend.new` retains Observer and its actions are
+denied. All three commands use the same expected sequence and refresh rule;
+unsuccessful gameplay actions return `ActionReply{changed=false,message}` while
+protocol faults retain the existing close/cleanup behavior. See
+[PLAYER_BLOCK_INTERACTION.md](PLAYER_BLOCK_INTERACTION.md) for the restricted
+shape/item domain and Java reference evidence. The combined playable entry's
+startup owns saved-player peer reservation; original frozen fixture acceptance
+must remain explicitly distinguished from that additive startup path.
+
 Admitted calls refresh a lease of 100 actor Pulse callbacks. The timer schedules
 50 ms deadlines, including paused callbacks. Expiry releases physical controls
 before that pulse can advance LocalPlayer physics. This is a callback-count
@@ -68,12 +82,16 @@ public requests may still dispatch before Stop. No general API quiescence or
 automatic save is implied. Without stdin control, the actor/listeners continue
 until process termination.
 
-The whole entry currently passes ordinary checking with exactly 97 declared
+The retained entry previously passed ordinary checking with exactly 97 declared
 unsafe/foreign dependencies and no other diagnostic. The two backend laws cover
 complete-state preservation on explicitly failed authentication and stale
 disconnect admission. They are ordinary-checker laws; no independent kernel or
 native behavior is claimed here. The retained source check is
 `build/remote-resource-server-ordinary.stop-revoke.full.json` (14.394435 seconds,
 five source pins unchanged). Native compilation, paired protocol/render/save
-regressions and visible controls remain pending. The renderer documents its
-selected resource and image-quality boundaries separately.
+regressions and visible controls were pending in that historical preparation.
+The later native result is recorded in
+[RESOURCE_CLIENT_NATIVE_RESULTS.md](RESOURCE_CLIENT_NATIVE_RESULTS.md). Those
+results do not establish the new action/inventory graph; its source and native
+status belongs to the current combined playable-client acceptance. The renderer
+documents its selected resource and image-quality boundaries separately.

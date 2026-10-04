@@ -4,6 +4,8 @@ import ./resource_client_wire.bend as W
 import ./world_visibility.bend as V
 import ./server.bend as S
 import ./framing.bend as F
+import ./player_inventory.bend as I
+import ./player_block_interaction.bend as BI
 
 # The socket remembers its assigned epoch. Cleanup never trusts an incoming
 # request's epoch, so a stale socket cannot clear a newer renderer's controls.
@@ -30,11 +32,26 @@ def frame_answer(+epoch:String,sequence:Nat,result:B.State & Result<&2,&2,String
     case Fail{message}: (state,Answer{W.Fault{epoch,sequence,message},"",False{}})
     case Done{sample}: (state,Answer{W.FrameReply{epoch,sequence,sample},epoch,True{}})
 
+def inventory_answer(+epoch:String,sequence:Nat,result:B.State & Result<&2,&2,String,I.Snapshot>) -> B.State & Answer:
+  (state,status) = result
+  match status:
+    case Fail{message}: (state,Answer{W.Fault{epoch,sequence,message},"",False{}})
+    case Done{snapshot}: (state,Answer{W.InventoryReply{epoch,sequence,snapshot},epoch,True{}})
+
+def action_answer(+epoch:String,sequence:Nat,result:B.State & Result<&2,&2,String,BI.Outcome>) -> B.State & Answer:
+  (state,status) = result
+  match status:
+    case Fail{message}: (state,Answer{W.Fault{epoch,sequence,message},"",False{}})
+    case Done{BI.Outcome{changed,message}}: (state,Answer{W.ActionReply{epoch,sequence,changed,message},epoch,True{}})
+
 def command(state:B.State,+epoch:String,+sequence:Nat,value:W.Command) -> B.State & Answer:
   match value:
     case W.Frame{width,height}: frame_answer(epoch,sequence,B.frame(state,epoch,sequence,width,height))
     case W.Input{packet}: unit_answer(epoch,sequence,B.input(state,epoch,sequence,packet))
     case W.Release{}: unit_answer(epoch,sequence,B.release(state,epoch,sequence))
+    case W.Action{button}: action_answer(epoch,sequence,B.action(state,epoch,sequence,button))
+    case W.Hotbar{index}: unit_answer(epoch,sequence,B.hotbar(state,epoch,sequence,index))
+    case W.Inventory{}: inventory_answer(epoch,sequence,B.inventory(state,epoch,sequence))
 
 def close_link(+handle:S.Handle<B.State>,link:Link) -> IO(Maybe<&1,Link>):
   Link{socket,buffer,epoch,deadline} = link
