@@ -3,6 +3,7 @@ import ./schedule.bend as Q
 import ./section.bend as S
 import ./section_map.bend as M
 import ./section_map_read.bend as Read
+import ./section_map_update.bend as Update
 
 type Capability is Data:
   Observer{}
@@ -164,9 +165,24 @@ def create_checked(w: World, +p: Position, fill: U32, popped: M.Sections & Maybe
     case None{}:
       (replace_sections(w, M.set(sections, section_key(p), S.Section.new(fill))), Done{Unit{}})
 
+# Failed writes/creates retain the complete section representation, including
+# empty buckets and the order of hash-colliding entries.
+def updated_status(+p: Position, status: Result<&2, &2, Update.Error, Unit>) -> Result<&2, &2, Error, Unit>:
+  match status:
+    case Done{unit}: Done{unit}
+    case Fail{Update.Existing{}}: Fail{SectionExists{section_key(p)}}
+    case Fail{Update.Missing{}}: Fail{MissingSection{section_key(p)}}
+    case Fail{Update.Malformed{}}: Fail{InvalidCoordinate{}}
+    case Fail{Update.SectionRejected{error}}: Fail{InvalidCoordinate{}}
+
+def updated_sections(w: World, p: Position, changed: M.Sections & Result<&2, &2, Update.Error, Unit>) -> World & Result<&2, &2, Error, Unit>:
+  (sections, status) = changed
+  (replace_sections(w, sections), updated_status(p, status))
+
 def create_section(w: World, +p: Position, fill: U32) -> World & Result<&2, &2, Error, Unit>:
   World{tick, time, paused, daylight, rev, count, sections, pending, events} = w
-  create_checked(World{tick, time, paused, daylight, rev, count, M.EmptySections{}, pending, events}, p, fill, M.pop(sections, section_key(p)))
+  updated_sections(World{tick, time, paused, daylight, rev, count, M.EmptySections{}, pending, events}, p,
+    Update.create(sections, section_key(p), fill))
 
 def write_result(w: World, result: Result<&2, &2, S.Section.Error, Unit>) -> World & Result<&2, &2, Error, Unit>:
   match result:
@@ -193,7 +209,9 @@ def write_existing(w: World, +p: Position, state: U32, popped: M.Sections & Mayb
 
 def write_block(w: World, +p: Position, state: U32) -> World & Result<&2, &2, Error, Unit>:
   World{tick, time, paused, daylight, rev, count, sections, pending, events} = w
-  write_existing(World{tick, time, paused, daylight, rev, count, M.EmptySections{}, pending, events}, p, state, M.pop(sections, section_key(p)))
+  Position{dimension, x, y, z} = p
+  updated_sections(World{tick, time, paused, daylight, rev, count, M.EmptySections{}, pending, events}, p,
+    Update.write(sections, section_key(p), S.Coord.local(x), S.Coord.local(y), S.Coord.local(z), state))
 
 def apply(w: World, m: Mutation) -> World & Result<&2, &2, Error, Unit>:
   match m:
