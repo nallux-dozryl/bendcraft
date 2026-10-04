@@ -6,6 +6,89 @@ Python only extracts reference observations and orchestrates comparisons.
 The authoritative Core and resource-frame integration belongs to their owner.
 Those existing files are unchanged by this lane.
 
+## Full pinned registry providers
+
+`src/block_light_registry.bend` supplies the actual vanilla 26.3 state properties
+and effective facing shapes for every **35,723** registered state. Its immutable
+`BR.Catalog` is `Data`, so the existing `BL`/`BW` provider callbacks accept it
+directly. This replaces the earlier 20/21-state receiver providers as production
+input; neither their selected blocks nor their tested domains define a product
+limit. There are 55 distinct effective face shapes and 18,757 contiguous state
+ranges in the authenticated input. Those observed counts are data, not source
+capacities: the decoder and maps use the loaded dimensions.
+
+```text
+BLR.load(identity:String, state_count:U32, max_bytes:Nat, path:String)
+  -> IO<Result<&2,&2,BLR.Error,BR.Catalog>>
+BR.properties(catalog:BR.Catalog, state:U32)
+  -> Maybe<&2,BL.Descriptor>
+BR.occludes(catalog:BR.Catalog, source:BL.Descriptor, target:BL.Descriptor,
+            direction:BL.Direction) -> Bool
+BR.occlusion(catalog:BR.Catalog, source_state:U32, target_state:U32,
+             direction:BL.Direction) -> Result<&2,&2,BR.Error,Bool>
+```
+
+Use `reference/block_light_registry.tsv` and pass the identity and count from
+the actual bound registry. `BLR.load` closes its real file owner on success,
+read failure and over-budget input; checks the pinned SHA-256; decodes UTF-8;
+and validates version, registry binding, contiguous complete state coverage,
+property ranges, every face reference, matrix row indices/widths and unused
+padding bits. `max_bytes` is caller loading policy; the current file is 522,187
+bytes and the native check uses 1 MiB. File reads use the existing native U32
+length API. `BLR.parse` provides the same authenticated path for existing byte
+owners. The lower-level `BRD.decode` is a schema decoder, not an authentication
+replacement. A changed or modded registry needs a matching provider through the
+existing callback interface; this pinned loader refuses a mismatched binding.
+
+Wire `BW.load_resume(~BR.Catalog,~BR.properties,~enabled,catalog,...)` and
+`BW.advance(~BR.Catalog,~BR.occludes,catalog,...)`, or put the catalog into an
+immutable consumer context with closed forwarding definitions. The `enabled`
+provider still implements the actor's section lighting policy. The world and
+field remain the single `BW.State` owner; loading this immutable catalog does
+not create a second world. `BR.properties` returns `Some` for known air state 0
+and `None` for an absent/out-of-domain descriptor. World residency continues to
+come from Core and the bridge. `BR.occlusion` reports missing state/face/word
+data explicitly. The Bool callback fails closed on unavailable data; the
+bridge's property preflight already refuses unknown registry descriptors.
+
+The installed pinned Java class observations settle the context dependency:
+`BlockStateBase.getLightEmission` and `getLightDampening` read cached scalar
+fields; `getFaceOcclusionShape(Direction)` reads a cached direction entry.
+`initCache` constructs those entries from `Block.getOcclusionShape(BlockState)`
+without a world or position argument. `LightEngine.getOcclusionShape` supplies
+the cached face only when `canOcclude && useShapeForLightOcclusion`; otherwise it
+supplies the empty shape. `LightEngine.shapeOccludes` unions the source's face
+and the target's **opposite** face using actual `Shapes.faceShapeOccludes`.
+The provider records precisely those effective shapes, rather than reusing
+render, outline or collision geometry. All 199 states of dynamic-shape blocks
+are included; this establishes cached block-light behavior, not context
+independence of those other shape APIs. Neighbor-dependent state properties
+such as connection/facing values must still arrive as the authoritative current
+Core state IDs. Their gameplay update rules are outside this provider.
+
+`python3 tools/reference_block_light_registry.py` observed every state, all
+3,025 unique face pairs, and checked the interned representative's union
+behavior against each actual state-face object (11,788,590 checks). It binds
+the installed classpath and official class hashes in
+`reference/block_light_registry.json`. Python only compresses the observations;
+the decoder, table lookup and runtime edge composition are Bend.
+
+`python3 tools/test_block_light_registry.py` checks the actual authenticated
+native loader, all 35,723 emission/dampening/six-face rows, all 3,025 matrix
+pairs, 214,338 directed edge compositions, and 23 rejection/unknown/read guards.
+The independent kernel checks 11 implementation-connected laws: out-of-domain
+descriptors/faces, missing entries, source-error priority, conservative failure,
+unsigned bit 31 and next-word bit 32, truncated rows, invalid range admission,
+canonical numbers, and rejecting unauthenticated input before decoding. They
+do not prove the Java table contents or propagation convergence. The native
+check took 2.05 s and peaked at 43,843,584 bytes RSS, including file loading,
+hashing, every provider query and output; this is a resource/real-file check,
+not a long-session leak bound. Evidence is
+`evidence/block-light-registry-reference.json` and
+`evidence/block-light-registry-provider.json`. No unchanged settled propagation
+phases were rerun. Actor/frame adoption, sky light and rendered brightness
+remain separate lead-owned integration work.
+
 ## Actual Core bridge
 
 `src/block_light_world.bend` joins the **actual** `Core.World` and `BL.State`
@@ -28,10 +111,10 @@ occludes: Context -> BL.Descriptor -> BL.Descriptor -> BL.Direction -> Bool
 within 0..15. `None` yields `MissingDescriptor`; a different ID or invalid level
 yields `InvalidDescriptor`. `enabled` receives a normalized **section origin**;
 disabled sections use effective emission zero but retain their real dampening.
-`occludes` has the exact directional shape contract described below. The current
-render catalog lacks emission/dampening/light-occlusion fields; this adapter
-does not infer them from collision geometry, render models or a small block list.
-The catalog/state-property owner must supply those general definitions.
+`occludes` has the exact directional shape contract described below. The full
+`BR` provider above supplies these pinned properties independently of the
+render catalog; this adapter does not infer them from collision geometry,
+render models or a small block list.
 
 | Bridge operation | Consumer contract |
 | --- | --- |

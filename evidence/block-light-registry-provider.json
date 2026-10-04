@@ -1,0 +1,150 @@
+{
+  "status": "passed",
+  "command": "python3 tools/test_block_light_registry.py",
+  "source_sha256": {
+    "src/block_light_registry.bend": "0c763c8f6b8828671d64b983b635a2b63744265ffb9ff248990a7d6fdee77522",
+    "src/block_light_registry_decoder.bend": "f9470cde8b8494448151c078602dd36fa88c2db16911a0557b16189f8de7299a",
+    "src/block_light_registry_loader.bend": "fe77793cf8236920cce91498e414b7ef75bc9e1a737cb2107b7271e71536883b",
+    "src/block_light_registry_laws.bend": "ffbfafba4f978dbc21206aecb6a568d9ef669ed8bdeb827f215a7ab86eb6ae82",
+    "src/block_light_registry_proof.bend": "4afbcf1298995528d3640cfed56f5e28241fd0a54d6280a066ac7827ec439ada",
+    "tests/block_light_registry.bend": "5b0796195fc43b162bd138fd32938448edaa8b771af0d710dc017b82c323fee9",
+    "tools/test_block_light_registry.py": "8ecfb9f6872fb48579160062373c96910659774de20b2acad1ce1f0a15db25cd",
+    "reference/block_light_registry.tsv": "0f147d2b6f9fa9cd3442ecd57175ae5f886d14b297f9ee45c1055ec2c0ad2f88",
+    "reference/block_light_registry.json": "89659463e7b356710c5e9b30c05a6906d9dfd2ed292b766210ad8a2f7c26503f",
+    "src/block_light.bend": "e829015163260450b03c9a25e90d6f78df39e3797b77f9e03a917231fdd4e159",
+    "src/hash.bend": "d2473695632b19e68c8d636668e4617f04d70892fb2ab6559cb24d4b33c1b978",
+    "src/unicode.bend": "8f0cd9bbcd0e7f938af370675eca0c73a9b97b90c2789a1e77e5a29a918455bd"
+  },
+  "checks": [
+    {
+      "kind": "ordinary",
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/block_light_registry.bend",
+        "--check-only"
+      ],
+      "exit": 0,
+      "seconds": 0.2303,
+      "sampled_process_tree_peak_rss_bytes": 1425408,
+      "bounded_stop": null,
+      "stdout_sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "proof",
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/block_light_registry_proof.bend",
+        "--verdict"
+      ],
+      "exit": 0,
+      "seconds": 3.8019,
+      "sampled_process_tree_peak_rss_bytes": 222773248,
+      "bounded_stop": null,
+      "stdout_sha256": "61b73cda11b6b665b9f99f2defd3d3b57f985c865225e942a5bdaa594a503e47",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "emit",
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/block_light_registry.bend",
+        "-o",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/block-light-registry-check/receiver.c"
+      ],
+      "exit": 0,
+      "seconds": 0.6921,
+      "sampled_process_tree_peak_rss_bytes": 268337152,
+      "bounded_stop": null,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "clang",
+      "command": [
+        "/usr/bin/clang",
+        "-std=c11",
+        "-O3",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/block-light-registry-check/receiver.c",
+        "-lpthread",
+        "-lm",
+        "-o",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/block-light-registry-check/receiver"
+      ],
+      "exit": 0,
+      "seconds": 2.0439,
+      "sampled_process_tree_peak_rss_bytes": 191856640,
+      "bounded_stop": null,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "native": {
+    "kind": "native",
+    "command": [
+      "/usr/bin/time",
+      "-l",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/block-light-registry-check/receiver",
+      "--gpu",
+      "off",
+      "--threads",
+      "1"
+    ],
+    "exit": 0,
+    "seconds": 2.0526,
+    "sampled_process_tree_peak_rss_bytes": 45056000,
+    "bounded_stop": null,
+    "stdout_sha256": "38e284329db9e0a43ac191c2598a2e5011fda746a5479707a245cb5e6dc0ef22",
+    "stderr_sha256": "a16895040263d02f207fda3a14c84a590145a4dd3e28c404c3b379a16ef67ad6",
+    "peak_rss_bytes": 43843584
+  },
+  "state_property_and_six_face_rows_compared": 35723,
+  "directed_composed_occlusion_queries_compared": 214338,
+  "exact_unique_face_pairs_compared": 3025,
+  "guard_cases": [
+    "guard valid ok/ok",
+    "guard identity identity/identity",
+    "guard count count/count",
+    "guard version schema/schema",
+    "guard width schema/schema",
+    "guard zero_shape schema/schema",
+    "guard range_gap schema/schema",
+    "guard range_overflow schema/schema",
+    "guard zero_range schema/schema",
+    "guard emission schema/schema",
+    "guard dampening schema/schema",
+    "guard face schema/schema",
+    "guard coverage schema/schema",
+    "guard matrix_gap schema/schema",
+    "guard matrix_padding schema/schema",
+    "guard matrix_truncated schema/schema",
+    "guard matrix_extra_word schema/schema",
+    "guard trailing schema/schema",
+    "guard noncanonical schema/schema",
+    "guard overflow_decimal schema/schema",
+    "guard loader_corruption integrity/integrity",
+    "guard loader_limit limit/limit",
+    "guard loader_absent read/read"
+  ],
+  "kernel_laws": 11,
+  "raw_java_observations_compared": true,
+  "java_settled_phases_rerun": 0,
+  "native_emitted_c_sha256": "4041b1674c5c79ac54e2b75db0e93d4a2f9b3fc085ac547bb71fe99589cfc90a",
+  "expected_stdout_sha256": "36363323158e52d8597afb2b46b0ed9b3ad45878043a544361170d9236bc5b99",
+  "boundary": "Actual production Bend authenticated file loader, contiguous full-registry decoder, descriptor/face providers, packed matrix and source-to-target opposite-face composition. Independent retained Java cached state/face observations; no Python runtime provider or lighting algorithm. Native resource/read/ownership checks remain distinct from11 independent-kernel laws. Actor/frame adoption remains lead-owned; sky light is outside this block-light provider.",
+  "kernel_law_name_clarification_recheck": {
+    "command": [
+      "/Users/chuah/.bend/bin/bend",
+      "src/block_light_registry_proof.bend",
+      "--verdict"
+    ],
+    "exit": 0,
+    "stdout": "ALL PROOFS CHECK",
+    "initial_law_proof_sha256": {
+      "src/block_light_registry_laws.bend": "df55b99df308fd85b4788f5fca798996175512aeb37bc3319977e05be7d88b80",
+      "src/block_light_registry_proof.bend": "7479ad4c075816c6190b9366dcaf1d3f6d4455a5223dac34702724065590adf1"
+    },
+    "change": "Rename source failure law to has_error_priority; predicate/proof unchanged. Rechecked final named laws through independent kernel. No native/Java replay."
+  },
+  "receipt_collection": "Successful retained kernel/reference results reused. Changed receiver now prints returned descriptor state ID and was rechecked/emitted/native-run; production source/data unchanged. No propagation replay."
+}
