@@ -207,10 +207,12 @@ def fixture(facts):
     world = S.WC.empty_world(facts['count'], facts['identity'])
     world['daylight'] = False
     cells = [facts['palette']['minecraft:air']] * 4096
-    cells[:256] = [facts['palette']['minecraft:stone']] * 256
+    # Keep the player's complete movement/support query inside this section.
+    # The first actual019 attempt at y1 requested the lower neighbor on step2.
+    cells[7 * 256:8 * 256] = [facts['palette']['minecraft:stone']] * 256
     world['sections'] = [{'key': S.BASE.section_key(0, 0, 0), 'cells': tuple(cells)}]
     S.BASE.set_block(world, *POSITION[1:], facts['lit'])
-    record = A.playable_spawn((8.5, 1.0, 8.5))
+    record = A.playable_spawn((8.5, 8.0, 8.5))
     full = {'main': B.Inventory.empty(creative=True), 'equipment': [None] * 7,
             'status': dict(zip(B.Inventory.STATUS_FIELDS,
                 (True, True, False, 1036831949, 1028443341), strict=True)),
@@ -489,7 +491,19 @@ def native(generation):
                                  600, 'execution')
         finally:
             B.descendant_cleanup(directory, bridge)
-    R.process_ok(process)
+    try:
+        R.process_ok(process)
+    except BaseException:
+        R.write(ROOT / f'evidence/playable-client-cooking-native-failure-{number:03}.json',
+            {'status': 'FAIL', 'actor_generation': generation, 'binary': build['binary'],
+             'inputs': R.pin(directory / 'inputs.json'),
+             'process': R.pin(directory / 'execution/result.full.json'),
+             'runtime_error': R.pin(directory / 'execution/stderr'),
+             'cleanup': R.pin(directory / 'cleanup.json'),
+             'scope': 'Actual changed consumer failed; no native acceptance claim. '
+                      'Dynamic socket frames, durable file and individual process journals '
+                      'remain in the named build directory.'}, True)
+        raise
     S.require(runtime_pins() == before and R.pin(Path(__file__)) == own_pin,
               'Native cooking consumer inputs or runner changed')
     summary = json.loads((directory / 'actors/summary.json').read_bytes())

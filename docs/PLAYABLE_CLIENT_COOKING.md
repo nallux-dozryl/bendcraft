@@ -31,6 +31,11 @@ north-facing lit furnace. It uses the existing `W.Unspecified` legacy generation
 metadata (`format=1`, `kind=unspecified`, empty payload), encoded by the actual
 WG codec schema and retained byte for byte. Scene's legacy admission preserves
 this loaded section; this fixture makes no generated-terrain behavior claim.
+The player stands at section-local y8 on a y7 stone floor so the movement/support
+footprint stays inside the loaded section. Actual native attempt007 used y1 and
+passed startup plus the first complete furnace save, then its second step refused
+the unloaded lower neighboring section. That failure is retained independently;
+the corrected fixture changes loaded coordinates only.
 Its bootstrap budget is the actual section-derived 4100 units. The saved furnace
 contains beef2, coal2, progress40/total200,
 remaining burn10/total10 and speed1. The body uses the physical receiver's tag
