@@ -9,6 +9,7 @@ The persistent goal in chat 01a101ff-32b6-7910-a9af-96488bfb0c2f is authoritativ
 - Do not edit ../bend/bend2/bend.ts. Avoid toolchain edits unless evidence requires one. No axioms, placeholder proofs, or foreign/unsafe dependencies presented as proof.
 - Proofs establish only their stated laws. Behavioral parity requires independent Java-reference fixtures or observations.
 - Pure production correctness is proof-led: state meaningful contracts in LAWS and prove them in PROOF against the actual implementation and its subsystem interfaces, using the independent kernel where supported. Typing, finite samples, hashes and review receipts are not substitutes. No axioms, tautological implementation mirrors, disconnected miniature projections, or unsafe/foreign declarations may manufacture a proof claim. Name specific compiler/kernel limitations and address them directly.
+- Use docs/PRODUCTION_PROOFS.md to select current subsystem proof obligations and commands. Root LAWS.bend/PROOF.bend aggregate foundation and player CoreEdit laws; their verdict does not replace the other current production composition targets.
 - Use affine ownership explicitly. Arrays have one owner. Shared simulation runs at vanilla's tick cadence; rendering and API polling cannot redefine simulation time.
 
 ## Evidence and fidelity

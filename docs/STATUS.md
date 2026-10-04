@@ -20,16 +20,27 @@ the production backend and renderer entries reach only declared native
 dependencies. The combined checker reached its 60-second cap without
 diagnostics, so whole-entry checking is incomplete. Root file admission passed,
 and the one fresh native build failed at 600.108 seconds before emitting C.
-Its failed/unknown cleanup receipt is retained; a later root `ps` observation
-found no owned-group processes, and the owner is recording the final state.
-No executable or native behavior resulted. The next route must materially reduce
-the compiler work rather than repeat the same broad graph. New gameplay,
-save/reload and protocol behavior are still awaiting a working changed artifact. The earlier accepted artifacts and their immutable evidence
-remain separate. A new paired renderer consumer and inventory screen are being
+Its failed/unknown cleanup receipt is retained; later observations establish
+that its owned process group is absent. The reduced live dispatcher also failed
+at 600.075 seconds before C or a binary; the initial cleanup uncertainty and
+later absence observation remain separate. No new native behavior resulted.
+The current materially different route compiles the backend entry alone and
+drives TCP/MCP/save boundaries externally. It uses one C emission, verified
+content-keyed cache reuse and a fresh immutable attempt directory. New gameplay,
+save/reload and protocol behavior still await its working artifact. Earlier
+accepted artifacts and immutable evidence remain separate. The current main
+menu/settings/terrain expansion is outside that archived backend generation.
+A paired renderer consumer and inventory screen are being
 prepared without changing the failed generation. The user requires finished
 presentation contracts and proof-led pure correctness. Routine manual
 admission/review/grant ladders are removed; automated source/cache identity and
 bounded cleanup remain. No foreground launch is authorized by this preparation.
+
+Current pure contracts are discoverable in [PRODUCTION_PROOFS.md](PRODUCTION_PROOFS.md).
+The 46-law root aggregation passes independent kernel checking; three unchanged
+reset composition laws and seven presentation laws independently pass their
+complete selective dependency exports. Full interaction, expanded inventory,
+focus/capture and generation proof obligations remain explicit.
 
 ## Established
 
@@ -38,7 +49,7 @@ bounded cleanup remain. No foreground launch is authorized by this preparation.
 - Compiler source revision verified: 79df8d9c40722ee9507a1e253f283b51025f9d6c.
 - Installed reference jar and version metadata exist under the local Minecraft installation.
 - Full data inventory extracted reproducibly from hash-verified official artifacts: 1,286 blocks / 35,723 states, 1,658 items, 161 entity types, 95 static registries / 7,053 entries, 94 command roots / 2,475 nodes. Inventory is not behavior implementation.
-- Independent Lean 4.34.0 distribution fetched and SHA-256 verified. BendTT kernel built and cached. Root PROOF.bend accepts 35 implementation laws in both checker and independent kernel.
+- Independent Lean 4.34.0 distribution fetched and SHA-256 verified. BendTT kernel built and cached. Current root PROOF.bend accepts 46 implementation laws in checker and independent kernel (35 foundations plus eleven player CoreEdit contracts); saved-client composition has separate scoped targets.
 
 ## Current implementation
 
@@ -158,17 +169,20 @@ Visible OS controls remain unverified. The fixed neutral
 four-state profile excludes required reset rays, general attributes, fluids,
 flight and full player lifecycle services.
 
-Direct required-reset-ray integration is now in preparation, through additive
-existing TH/X APIs and then the runtime facade. The passing generation's source,
-harness, helper and receipt bytes were archived before edits (14 files,
-baseline manifest22a651f1). The facade remains on its verified path pending
-native validation of the frozen FR supplier. Its original host runner lacks a
-strict internal input-drift retry prohibition and separate build/native/proof
-modes; a separate continuation is being prepared. No FR compiler/native/kernel
-grant has been issued. The new consumer must resolve movement once, query the
-same world owner only when the actual predicate requires it, complete history
-once, and restore its entire prior anchor on failure. Its focused comparisons
-will share the next saved-session artifact with the existing full regression.
+Required reset rays now flow through the actual TH/X/runtime consumer. The
+pre-edit generation remains archived (14 files, baseline manifest22a651f1).
+FR R2 passes two 150-case native suites with matching outputs and cleanup;
+see [FALL_RESET_WORLD_R2_NATIVE_RESULTS.md](FALL_RESET_WORLD_R2_NATIVE_RESULTS.md).
+Three production laws state whole-owner reset success, refusal rollback through
+the saved facade, and scheduled/direct preparation composition. They pass
+ordinary checking on a stable source closure. A selective read-only compiler
+API export of the three unchanged law/proof roots retains every actual referenced
+implementation and type, with no exclusions; the pinned independent kernel
+passes in 0.199 seconds. Earlier full-graph export timeouts remain preserved.
+Float-service premises and operational call-count limits remain explicit. The new
+saved-client native artifact is still being built; earlier artifact results do
+not establish this changed consumer. Current proof targets and gaps are in
+[PRODUCTION_PROOFS.md](PRODUCTION_PROOFS.md).
 
 | Foundation | Implementation and verification |
 | --- | --- |

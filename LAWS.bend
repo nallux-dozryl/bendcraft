@@ -1,7 +1,10 @@
 import Base
+# Foundation and player CoreEdit aggregation. Other production obligations and
+# independent execution targets are listed in docs/PRODUCTION_PROOFS.md.
 import ./src/schedule.bend as S
 import ./src/section_laws.bend as SectionLaws
 import ./src/inventory_laws.bend as InventoryLaws
+import ./src/player_core_edit_laws.bend as PlayerCoreEditLaws
 
 # Every admitted action remains queued, even when its order key equals another.
 law schedule_insert_count:

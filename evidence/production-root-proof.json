@@ -1,0 +1,59 @@
+{
+  "scope": "Current root aggregation: 35 foundation laws + 11 actual player CoreEdit laws. Other production targets and native boundaries remain separate.",
+  "attempts": [
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "PROOF.bend",
+        "--check-only"
+      ],
+      "seconds": 0.26065262500196695,
+      "returncode": 0,
+      "timed_out": false,
+      "pid": 56030,
+      "group_absent": true,
+      "source_before": {
+        "LAWS.bend": "9b67ed6589a86ad680a156f4a00aea331db0d53658e8b7c7d005237ea9253002",
+        "PROOF.bend": "a01a3c7c507f4ff70386714b6db8c60447ac699723cda449989d6a886c17c5be",
+        "src/player_core_edit_laws.bend": "6d85e46ad5504956636255bcef45141948ba3f63d74b9a88923c8e70396e736e",
+        "src/player_core_edit_proof.bend": "e4daface3c3298b66adc36b219cb6d957f7271076427c356e3da886b1ed8d6ea"
+      },
+      "source_after": {
+        "LAWS.bend": "9b67ed6589a86ad680a156f4a00aea331db0d53658e8b7c7d005237ea9253002",
+        "PROOF.bend": "a01a3c7c507f4ff70386714b6db8c60447ac699723cda449989d6a886c17c5be",
+        "src/player_core_edit_laws.bend": "6d85e46ad5504956636255bcef45141948ba3f63d74b9a88923c8e70396e736e",
+        "src/player_core_edit_proof.bend": "e4daface3c3298b66adc36b219cb6d957f7271076427c356e3da886b1ed8d6ea"
+      },
+      "source_unchanged": true,
+      "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "PROOF.bend",
+        "--verdict"
+      ],
+      "seconds": 0.7745608342811465,
+      "returncode": 0,
+      "timed_out": false,
+      "pid": 56031,
+      "group_absent": true,
+      "source_before": {
+        "LAWS.bend": "9b67ed6589a86ad680a156f4a00aea331db0d53658e8b7c7d005237ea9253002",
+        "PROOF.bend": "a01a3c7c507f4ff70386714b6db8c60447ac699723cda449989d6a886c17c5be",
+        "src/player_core_edit_laws.bend": "6d85e46ad5504956636255bcef45141948ba3f63d74b9a88923c8e70396e736e",
+        "src/player_core_edit_proof.bend": "e4daface3c3298b66adc36b219cb6d957f7271076427c356e3da886b1ed8d6ea"
+      },
+      "source_after": {
+        "LAWS.bend": "9b67ed6589a86ad680a156f4a00aea331db0d53658e8b7c7d005237ea9253002",
+        "PROOF.bend": "a01a3c7c507f4ff70386714b6db8c60447ac699723cda449989d6a886c17c5be",
+        "src/player_core_edit_laws.bend": "6d85e46ad5504956636255bcef45141948ba3f63d74b9a88923c8e70396e736e",
+        "src/player_core_edit_proof.bend": "e4daface3c3298b66adc36b219cb6d957f7271076427c356e3da886b1ed8d6ea"
+      },
+      "source_unchanged": true,
+      "stdout": "ALL PROOFS CHECK\n",
+      "stderr": ""
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "command": [
+    "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-block-interaction-proofs/bi-closure/execute.bendtt"
+  ],
+  "seconds": 0.18519054166972637,
+  "returncode": 1,
+  "timed_out": false,
+  "pid": 55126,
+  "group_absent": true,
+  "scope": "Actual BI.execute implementation declaration closure only; no new interaction law or JSON serializer proof claimed.",
+  "source_sha256": "2c9880b1d7bac8020170947cd94fea0acae03632951570652243f29cc06b9fe5",
+  "kernel_sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7",
+  "stdout": "SOME PROOFS FAIL\nIn face_normal:\nunknown def: F32.neg\n",
+  "stderr": "",
+  "closure_manifest": "build/player-block-interaction-proofs/bi-closure/execute.closure.json",
+  "closure_tool": {
+    "path": "tools/bendtt_closure.py",
+    "sha256": "f2ad8f687cf31c0743e99edc8492fe389ef2dd45292aae509454416ba1a13f00"
+  },
+  "verdict": "FAIL: unknown def F32.neg; no interaction theorem proof claimed"
+}

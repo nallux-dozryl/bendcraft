@@ -1,8 +1,11 @@
 import Base
+# Foundation and player CoreEdit aggregation; a green verdict does not certify the
+# saved client. Run the scoped production targets in docs/PRODUCTION_PROOFS.md.
 import ./src/schedule.bend as S
 import ./LAWS.bend as Laws
 import ./src/section_proof.bend as SectionProof
 import ./src/inventory_proof.bend as InventoryProof
+import ./src/player_core_edit_proof.bend as PlayerCoreEditProof
 
 def insert_case(-P: Data, c: Cmp, +p: S.Pending<P>, +q: S.Pending<P>, +t: List<&2, S.Pending<P>>, +rest: List<&2, S.Pending<P>>, e: {S.length(P, rest) == 1n+S.length(P, t) : Nat}) -> {S.length(P, S.insert_choose(P, c, p, q, t, u => rest)) == 2n+S.length(P, t) : Nat}:
   match c:
