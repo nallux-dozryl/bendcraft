@@ -1,0 +1,48 @@
+# Successful travel receiver boundary
+
+`src/runtime_block_inside.bend` is the checked adapter between the actual retained `TH.Outcome` and the complete `MH.State` sweep producer. It does not import `local_phase_runtime` or `local_player_runtime`, so an explicit runtime receiver field can use it without a dependency cycle. This adapter is currently unjoined to those shared consumers. Its ten laws are recorded separately from the moving producer's 28 laws and independently observed Java/native traversal evidence.
+
+## Actual owner and API
+
+`after_successful_travel(motion, receiver, hooks, outcome)` returns the sole `MH.State`, a receiver, and a checked callback result. The caller enters only after both inner travel and the outer `Player.finish` succeed and after installing the outer finished Body in that MH owner. `Hooks` contains explicit player/profile facts, level identity, old position, dimension, removal/physics/liveness flags and separate traversal/read budgets; its recursive tail must be empty. The current caller contract admits one `Entity.move` operation per dispatch. A future consumer that calls `Entity.move` repeatedly must retain and pass the complete ordered queue and its original axis-dependent requests.
+
+The adapter uses the actual `TH.Outcome` through `ST.travel_record`. Its start position is the retained preparation Body. Its optional original vector is the post-stuck, post-`maybeBackOffFromEdge` vector before collision. Its endpoint is the original `Vec3.add(start, resolved displacement)`, conditioned on the original position-change admission. It is not reconstructed from the final Body, whose signed-zero position can differ. The actual held View supplies dimensions and current position; a transport request supplies neither. `ST.ready` retains the recorded queue below the original promoted float-square endpoint threshold and otherwise appends the original no-axis bridge. An empty queue uses old-to-current fallback.
+
+`consume` preserves every receiver field when noPhysics is true. Normal successful travel clears only an active multiplier, using the same ordered numeric threshold as the actual movement phase; inactive and nonfinite comparisons follow that existing production operation. Impulse grace and impact are retained. This operation must not run after a failed travel or a failed outer finish.
+
+`PM.extract` moves the sole World/Registry/history owner into the actual producer state. Its frame retains the entire View, cache, support, minor state and arbitrary affine MH tail. `SM.framed` performs binding and the actual `W.query`; the latter reads through the shared Core reader and decodes actual registry states. No world or block-view clone is introduced. Callback success returns the complete actual service owner, receiver and observation. Callback refusal returns the service's post-travel MH owner with the original pre-consumption receiver, allowing the enclosing runtime to restore its retained pre-travel frame. The adapter does not manufacture that earlier frame.
+
+A nonempty Hooks tail refuses before consumption or query. `same_receiver` compares all multiplier and optional impact double payloads and U32 grace. Signed zero, NaN payloads and missing-versus-present impact positions remain distinguishable; numerical vector equality would lose receiver state required by retention checks.
+
+## Shared consumer splice
+
+The exact existing files needed for explicit storage and construction are:
+
+- `src/local_phase_runtime.bend`: add a receiver field to `Metadata`, preserve it through every `with_*` constructor and canonical/stage pattern, compare it in `same_stage_metadata`, replace the three literal-zero `TH.Hooks` multipliers with the held receiver, and join successful callbacks before the remaining player-finish pipeline.
+- `src/local_player_runtime.bend`: carry it in `Transient`, `detached_view`, `attach`, fresh/restored transient construction, error updates and the ability-selector path.
+- `src/local_player_session.bend`: preserve it in block-action detachment/execution and the corresponding bundle law.
+- `src/local_player_scene.bend`: update its explicit phase Metadata error pattern.
+
+The corresponding constructor and preservation tests are `tests/local_phase_runtime.bend`, `tests/local_phase_reset.bend`, `tests/local_player_runtime.bend`, `tests/local_player_session.bend` and `tests/playable_client_transport.bend`. Shared files are owned by the lead; this document and adapter do not change their active build snapshot. Do not put the receiver in `Metadata.tail`.
+
+Both `X.traveled` and `X.reset_stage_traveled` currently call `P.finish_checked` and then `player_finished`. Their splice must evaluate `P.finish_checked` once. A successful transition's outer Body must be installed before callbacks: flying travel restores the final vertical velocity using the original pre-travel velocity and its factor. Callback known movement is therefore the installed outer Body velocity for the admitted unmounted, client-authoritative player. Calling callbacks before outer finish gives the wrong receiver input. Retain the transition for the existing player metadata update, rotation and late pose path.
+
+The callback's flying fact is the selected travel context's `P.mode_flying` before the later grounded flight-disable decision. It cannot use `RT.status_committed`'s final `flying && !ground` result. Original LivingEntity dispatch occurs inside `aiStep` before the returning LocalPlayer disables flying on ground. The actual old position is the second position vector, `ECT.Metadata.position_old`, retained through the common-tick phase; the first interpolation position vector has a different role.
+
+Receiver updates stay in candidate `Work.metadata`. The original runtime Frame keeps its receiver. Callback refusal and every later rotation, pose or provider refusal must use the existing whole-frame rollback. A successful callback result alone is not a committed runtime phase.
+
+## Saved profile and durable fields
+
+The existing saved client's four-state palette contains air, stone, dirt and oak planks. Neutral callbacks and current block reads are consequential even there; cobweb or sweet-berry gameplay requires actual world state and shape integration in addition to this producer. The producer separately admits supported empty-fluid full entity-inside shapes, and refuses unimplemented shapes or services. Mature server berry damage remains a checked refusal when `hurtServer` would be required. It is not replaced with invented health updates.
+
+The current saved local-player profile has no active weaving effect, impulse creator/countdown service, mounted controlling-passenger receiver, ServerLevel damage receiver or alive/removal/noPhysics state transition. A runtime splice may state the current admitted no-effects/no-impulse, ClientLevel, alive/unremoved, normal-physics profile. Those are explicit profile admissions, not observations proven for every vanilla player. Known movement, old position and flying must use the actual held observations described above.
+
+The stuck multiplier is transient. The original impulse context grace time and explosion impact position are durable LivingEntity tags (`current_impulse_context_reset_grace_time` and `current_explosion_impact_pos`), while the current project Record lacks these fields. Keeping a complete receiver in current transient storage is exact for the admitted zero-grace/absent-impact profile; it does not establish arbitrary impulse save/reload parity. Existing Record and codec ABI files need no multiplier field. Universal impulse persistence is a separate durable receiver work item.
+
+## Verification scope
+
+The ten new laws are against the actual runtime adapter and actual production services. They establish noPhysics preservation, active/inactive successful consumption, complete receiver rollback on callback refusal, whole MH owner retention or actual returned owner installation, early noncanonical-hooks refusal, held-Body request formation and public composition under explicitly named `SM.framed` service premises. Full World, Registry, View, support, minor, history and arbitrary affine tails occur in those composition laws. They neither replace the service nor prove a disconnected miniature owner.
+
+The selected export retains the original checked declaration maps, types and proof bodies and has no exclusions. The independent kernel checks the ten checked roots. Reproduce with `python3 tools/test_runtime_block_inside_proof.py`; receipts, source pins and compiler/kernel identities are in `evidence/runtime-block-inside-proof.json`. The producer's numerical traversal, read order, original callback dispatch and Java oracle scope remain in `docs/PLAYER_BLOCK_INSIDE_SWEEP.md`.
+
+This law target does not establish shared X/RT/Session/Scene constructor changes, actual whole-runtime dispatch, visible input, save/reload, generic shapes/fluids or universal receiver lifecycle. Those require their own joined caller and native evidence. The new narrow native adapter harness, when run, must distinguish original captured movement data assembled into a TH outcome from original sweep callback dispatch; it must not relabel those separate captures as a new combined Java travel-plus-dispatch operation.

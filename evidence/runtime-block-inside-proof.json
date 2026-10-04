@@ -1,0 +1,210 @@
+{
+  "all_original_declaration_maps_retained": true,
+  "artifact": {
+    "bytes": 3838927,
+    "file": "selected.bendtt",
+    "sha1": "02bb2cb7a2d80b51b50b7a59bb8d0beeb0678b1e",
+    "sha256": "a7ba5c468eec539b180799b2f106702e0be34e748b2cef466243464eefd2492d"
+  },
+  "checked_types_and_bodies_unchanged": true,
+  "compiler_api": [
+    {
+      "bytes": 137761,
+      "file": "bend.ts",
+      "sha1": "2105cb635e087b686b1bc5c4b6b139660eeb3db9",
+      "sha256": "7deae3693eb896f33c73867081b99d2c6f3ed3b57e77e55eb5f6260840dd0e63"
+    },
+    {
+      "bytes": 63418,
+      "file": "safe.ts",
+      "sha1": "0b72424978b2acf7eb30f53d9b01b96f267dbcac",
+      "sha256": "54cb3a534ab7cc9ee313bf6383b3948ccdcac022469b3020e00745bbfe6f7e04"
+    }
+  ],
+  "export_script": {
+    "bytes": 3617,
+    "file": "runtime_block_inside_proof.mjs",
+    "sha1": "4e80ba4fe85131afdd209225f2c4a338cffa5d31",
+    "sha256": "04b5626932fa317e7dc2e97cfa10e34ae5e56d892f00a9a5deb329f368db735a"
+  },
+  "folder": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/runtime-block-inside-proof/1791140821561129000",
+  "kernel": {
+    "bytes": 3271216,
+    "file": "bendtt",
+    "sha1": "f19dfe8aec3b3911b6c9f0acae2a54f5b05ca5f0",
+    "sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7"
+  },
+  "laws": 10,
+  "node": {
+    "bytes": 77577344,
+    "file": "node",
+    "sha1": "606616eb1de7b4974f98c95de3a88e21aaa37249",
+    "sha256": "ec307018e1e8b80d68588b01ce6e9f8f9b8f4a03412c513b0fc3ac4d0f5db799"
+  },
+  "receipts": [
+    {
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/runtime_block_inside_proof.bend",
+        "--check-only"
+      ],
+      "exit_code": 0,
+      "group_absent": true,
+      "pid": 20248,
+      "seconds": 14.287153,
+      "stderr": {
+        "bytes": 0,
+        "file": "ordinary.stderr",
+        "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 58,
+        "file": "ordinary.stdout",
+        "sha1": "7ac487c4af0e6a0b7df1ebae438bf1c0ffe5e478",
+        "sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1"
+      },
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+        "--experimental-transform-types",
+        "--stack-size=4096",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/runtime_block_inside_proof.mjs",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/runtime-block-inside-proof/1791140821561129000"
+      ],
+      "exit_code": 0,
+      "group_absent": true,
+      "pid": 20334,
+      "seconds": 27.151707,
+      "stderr": {
+        "bytes": 177,
+        "file": "export.stderr",
+        "sha1": "f7f9e8d306969590e1905cab93c78fadb0d7ed51",
+        "sha256": "05019edeee09bdbf7165768c0978a68f79529d79dff0e52c439e5d95aa2d797b"
+      },
+      "stdout": {
+        "bytes": 1055,
+        "file": "export.stdout",
+        "sha1": "5b45f5f39ef6196bd4f6b860a34436af8fbe01cc",
+        "sha256": "116ebd158c1c52e350ce156577f13739ea5631bd74cb579a27af729d58ff940e"
+      },
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/env",
+        "LEAN_STACK_SIZE=4194304",
+        "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/runtime-block-inside-proof/1791140821561129000/selected.bendtt"
+      ],
+      "exit_code": 0,
+      "group_absent": true,
+      "pid": 20473,
+      "seconds": 0.705995,
+      "stderr": {
+        "bytes": 0,
+        "file": "independent-kernel.stderr",
+        "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 17,
+        "file": "independent-kernel.stdout",
+        "sha1": "ba8ec8289ea6f6e6fec687b636c07f05c26d0a8b",
+        "sha256": "61b73cda11b6b665b9f99f2defd3d3b57f985c865225e942a5bdaa594a503e47"
+      },
+      "timed_out": false
+    }
+  ],
+  "roots": [
+    "runtime_block_inside_laws:no_physics_preserves_complete_receiver_without_consumption",
+    "runtime_block_inside_laws:active_success_clears_multiplier_and_keeps_raw_impulse",
+    "runtime_block_inside_laws:inactive_success_keeps_raw_multiplier_and_impulse",
+    "runtime_block_inside_laws:callback_failure_restores_preconsumption_receiver_and_whole_motion_owner",
+    "runtime_block_inside_laws:callback_success_installs_actual_receiver_observation_and_whole_motion_owner",
+    "runtime_block_inside_laws:noncanonical_hooks_refuse_before_consumption_or_world_callbacks",
+    "runtime_block_inside_laws:request_uses_actual_held_dimensions_and_position_with_ordered_travel_record",
+    "runtime_block_inside_laws:public_callback_refusal_restores_original_receiver_and_complete_held_owner",
+    "runtime_block_inside_laws:public_callback_success_keeps_entire_actual_service_owner_and_receiver",
+    "runtime_block_inside_laws:receiver_comparison_rejects_missing_impact"
+  ],
+  "scope": "Actual successful travel consumption and noPhysics preservation; pre-consumption receiver rollback on actual callback refusal; complete arbitrary motion owner retention or actual returned owner installation; noncanonical hooks refusal before any query; actual held-body dimensions and ordered TH movement request formation; public runtime-to-sweep composition under named actual SM.framed service premises. Shared X/RT/Session/Scene storage and dispatch integration, numerical IEEE geometry specification and native execution are outside these laws.",
+  "scope_exclusions": [],
+  "selection": {
+    "bytes": 9147,
+    "file": "selection.json",
+    "sha1": "ead252463bc7a0ad92beebc1759c65e72dcd1410",
+    "sha256": "06bcc03e68b19ca4c3298d67863f146d676d3f4e8ab92fc01a19f0549660b305"
+  },
+  "source_pins": {
+    "bytes": 6961,
+    "file": "source-pins.json",
+    "sha1": "fd84304b0f9dab44c99d922637932aea439d51e5",
+    "sha256": "f82fcf2fca1b7667375137d1602db392d98eaa4678dd436e997958f9a4388fdf"
+  },
+  "status": "passed",
+  "term_pins": [
+    {
+      "checked_proof_sha256": "41596dea73cf3f57a2f5a99f61ec390aaa5c31229a124e0fa7d81c48a4d38ed5",
+      "name": "runtime_block_inside_laws:no_physics_preserves_complete_receiver_without_consumption",
+      "source_body_sha256": "883b43445b47c5b7bf830a6135840cce7e70bbaebc84ac0c8aa5e9996c699665",
+      "type_sha256": "6592c40b65daa18d483f79d1e2df87f39eac35950b116750ead2f8d552a82722"
+    },
+    {
+      "checked_proof_sha256": "7f740636f4cc60cafa36eccf10aaf562f917c61b6d3d41a3daecb3fb38b83633",
+      "name": "runtime_block_inside_laws:active_success_clears_multiplier_and_keeps_raw_impulse",
+      "source_body_sha256": "b9411b8c46aabc86476f7d9fa1c8717b752c8e702b4e7743beebc7f56e38b17c",
+      "type_sha256": "c6b81b05b6c14d5fc747a8cee2bb0c2e2f53b51339656961622aed1bc369abcb"
+    },
+    {
+      "checked_proof_sha256": "a1fa151a8fbf11cb046ba74ba90c6a46313e077a80dbe0b0728345debd3858a0",
+      "name": "runtime_block_inside_laws:inactive_success_keeps_raw_multiplier_and_impulse",
+      "source_body_sha256": "dde7d17bbe80dbc6dfa31034e0c1f61852585f48a3532885f4bd951b33d55ebc",
+      "type_sha256": "5ae21a8bb21bdd7771ee3af8993eab7a97b720a3f0ff2855363cfdb1df869d49"
+    },
+    {
+      "checked_proof_sha256": "5c6242fad79ff7e8b00ad9fb400f38a4e1449ed175e3d242998dbce886c5ea48",
+      "name": "runtime_block_inside_laws:callback_failure_restores_preconsumption_receiver_and_whole_motion_owner",
+      "source_body_sha256": "4bfb7b18f72c55f21cf05ecca4d74d8793ab8ceba05a6341431948fa1395d090",
+      "type_sha256": "3f710575009a7819f34cfd03578655aaf8ab32f860238d62d286a5c3867b9a6d"
+    },
+    {
+      "checked_proof_sha256": "24526cf43ccbd8ef7c00a0b32b35497dadb03cdfe8507d691522d7f31be7bf54",
+      "name": "runtime_block_inside_laws:callback_success_installs_actual_receiver_observation_and_whole_motion_owner",
+      "source_body_sha256": "21e81277fc39a249f7e9a16294ccbff4179b662875c55a2c081dbf460bfce963",
+      "type_sha256": "ef477e1b80614f497963ba50607f4083d769bc00c78ba74d92c5c23ba600e5c3"
+    },
+    {
+      "checked_proof_sha256": "e9c42fea70526bd4055a639816efcb1119fd594a7d0b2a4d9eb740d1a2342375",
+      "name": "runtime_block_inside_laws:noncanonical_hooks_refuse_before_consumption_or_world_callbacks",
+      "source_body_sha256": "55be8092f5bfb2623942751f1b5b8622b8394eec6a29d10bc7225b13c9d7dea0",
+      "type_sha256": "b7074e55e4cff0b527f36244679bf9f64db0aa1ec6bae2f2feff7748d6849cd2"
+    },
+    {
+      "checked_proof_sha256": "8ac98919d4b109e0b5a9481eff7c522bd89fb43ab4eee3dbdb6c6f43ad0cc91e",
+      "name": "runtime_block_inside_laws:request_uses_actual_held_dimensions_and_position_with_ordered_travel_record",
+      "source_body_sha256": "6816c90603ce115633f00164471d782bec83bdf5c467bb7b03066a286234f767",
+      "type_sha256": "7a87f4db510fac46b61b31f4f05beca52f0cad28db30b1d573f1928bb83b1eea"
+    },
+    {
+      "checked_proof_sha256": "b369a4035b6faf60cbe9eba519c6f5e137f10e1cf3e8a5dba70c7450f688f1bd",
+      "name": "runtime_block_inside_laws:public_callback_refusal_restores_original_receiver_and_complete_held_owner",
+      "source_body_sha256": "82dfc7f45d0fac206ecb65d80aad1c3d4969b47d710b26fc306e75bdf8c37c38",
+      "type_sha256": "15090da949abd0b336a117c31606fec6d4cd8e5859fc47af427dc01760332a31"
+    },
+    {
+      "checked_proof_sha256": "7546d20763ea1004725df9e1d115e048a5d391baa7c625d0289bc05d4ea0b22c",
+      "name": "runtime_block_inside_laws:public_callback_success_keeps_entire_actual_service_owner_and_receiver",
+      "source_body_sha256": "0847f420ec7e024df076d26a50e822939f8d1398558e2ea0ced08f3d144ae211",
+      "type_sha256": "88543a460f3ba51e021792871c0d66fa3ad08293cc74d9e164228ce35798f85e"
+    },
+    {
+      "checked_proof_sha256": "68a1ccb225ca5ea296b3bd8e6419727e323a763c8c588113af97d98ccfc6ce7e",
+      "name": "runtime_block_inside_laws:receiver_comparison_rejects_missing_impact",
+      "source_body_sha256": "f7fb7ad50e672b970f64c1c41969f8d6d4cf13cdec6baf7bb1eeb334299df9fc",
+      "type_sha256": "57fd6341db0bcb7ff50f2ee78bc578afe4a60206c9fd67ccc8ffb571b55946d0"
+    }
+  ]
+}
