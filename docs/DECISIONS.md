@@ -95,6 +95,26 @@ than the full-game objective. Both heavy slots are released. Assess direct
 required-reset-ray integration next, preserving the now-verified consumers and
 requiring the actual resolved movement before any checked ray/history completion.
 
+The read-only reset-ray assessment selects additive entries in existing TH and X,
+followed by the existing runtime facade. Preserve every prior type/function/law
+unit and the old no-ray entry. The root archived14 original source/harness/helper
+and result files before edits (manifest22a651f1). No new production adapter or
+second movement/history owner is needed. Derive endpoints from saved old feet
+and the actual resolved/applied transition, retaining normalize-then-scale
+rounding. A checked FR refusal restores the complete pre-travel anchor; the X
+entry also restores its pre-input anchor. Frozen LM ordering supports only the
+existing neutral read-only MISS/NotRequired projection; it does not establish
+observable-hit or callback-order parity.
+
+The frozen FR runner's single build subprocess may retry `InputsChanged` inside
+the builder. Its public execution also couples build, two native suites and
+proof. Prepare a separate host continuation with constructor-abort drift
+handling, zero-retry admission, durable multi-group cleanup and distinct
+build/native/proof grants. Preserve the original runner/adoption and all oracle
+observations. Native supplier success is required before enabling the facade's
+new entry. Focused travel/phase comparisons will use the next integrated
+saved-session artifact alongside its full transport/save regression.
+
 ## 2026-10-04: preserve producers during verifier repairs
 
 An orchestration correction does not become the original native producer.

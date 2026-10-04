@@ -1,0 +1,96 @@
+{
+  "archive_manifest": {
+    "bytes": 4217,
+    "path": "build/local-player-reset-integration/baseline/manifest.json",
+    "sha256": "22a651f1f6799390ce8031f9c5d6bea00e297815d24da73f6ebbc1f6606cb2a8"
+  },
+  "confidence": "high",
+  "files": [
+    {
+      "archive": "build/local-player-reset-integration/baseline/src/local_travel_history.bend",
+      "bytes": 14135,
+      "sha256": "32016fde52830ef6b8ca21cee4c6170c2596943c89c81cd6589190c678a1f00c",
+      "source": "src/local_travel_history.bend"
+    },
+    {
+      "archive": "build/local-player-reset-integration/baseline/src/local_phase_runtime.bend",
+      "bytes": 81112,
+      "sha256": "8daf7e2f2fdc32d07f9250c4815883568ffd6d020bbbc8c5f94e18d198c481f3",
+      "source": "src/local_phase_runtime.bend"
+    },
+    {
+      "archive": "build/local-player-reset-integration/baseline/src/local_player_runtime.bend",
+      "bytes": 21275,
+      "sha256": "fd932047be8c476e812d15618a5b0b9a8c71bea62aef5cb69bed707703b77ec7",
+      "source": "src/local_player_runtime.bend"
+    },
+    {
+      "archive": "build/local-player-reset-integration/baseline/tests/local_travel_history.bend",
+      "bytes": 48398,
+      "sha256": "0042b3f3016db7eddb2b81ffec1b087afe83977d825110c78789d8cf5e0daa27",
+      "source": "tests/local_travel_history.bend"
+    },
+    {
+      "archive": "build/local-player-reset-integration/baseline/tests/local_phase_runtime.bend",
+      "bytes": 63763,
+      "sha256": "9589c37194a807e01b3ac27eb4e83935ceaec4fba544b6fb05b00b1a9a2aeb22",
+      "source": "tests/local_phase_runtime.bend"
+    },
+    {
+      "archive": "build/local-player-reset-integration/baseline/tests/local_player_session.bend",
+      "bytes": 27709,
+      "sha256": "2081023f80df39c92ebbe11a2b19083b73bfe234cc193866521b1a13a0f198d6",
+      "source": "tests/local_player_session.bend"
+    },
+    {
+      "archive": "build/local-player-reset-integration/baseline/tools/test_local_travel_history.py",
+      "bytes": 24512,
+      "sha256": "73af0a203888476f5a2e86409cdce96a3548ea1a27cb5d5810d5fae2ca1120cd",
+      "source": "tools/test_local_travel_history.py"
+    },
+    {
+      "archive": "build/local-player-reset-integration/baseline/tools/test_local_phase_runtime.py",
+      "bytes": 32885,
+      "sha256": "4c2105a6f6283394bbd794e8db7ef9fd667ab35b85f5968b4dbe21c133bbb69d",
+      "source": "tools/test_local_phase_runtime.py"
+    },
+    {
+      "archive": "build/local-player-reset-integration/baseline/tools/test_local_player_session.py",
+      "bytes": 92935,
+      "sha256": "ffa2d9d7105b2fd1eb0b1e3bbace195f3dceed75bdbe80e8814349df3545b2c1",
+      "source": "tools/test_local_player_session.py"
+    },
+    {
+      "archive": "build/local-player-reset-integration/baseline/tools/test_local_player_session_continuation_r2.py",
+      "bytes": 43652,
+      "sha256": "518100528731b5f7da69693bee381407433b6d4fcc019005817b9c04e4dcd457",
+      "source": "tools/test_local_player_session_continuation_r2.py"
+    },
+    {
+      "archive": "build/local-player-reset-integration/baseline/docs/LOCAL_PLAYER_SESSION_NATIVE_RESULTS.md",
+      "bytes": 5034,
+      "sha256": "ad70d1e58cede3f4b29ad019100f2675ae3d451f21ff53c74cd0908875c37fb0",
+      "source": "docs/LOCAL_PLAYER_SESSION_NATIVE_RESULTS.md"
+    },
+    {
+      "archive": "build/local-player-reset-integration/baseline/evidence/local-player-session-continuation-r2-completion.json",
+      "bytes": 28208,
+      "sha256": "a8bf82ba98ddd756d840a7dc69f072ce70f9b88e7ffa432b387e200d32bbfbd4",
+      "source": "evidence/local-player-session-continuation-r2-completion.json"
+    },
+    {
+      "archive": "build/local-player-reset-integration/baseline/evidence/local-player-session-continuation-root-native-audit.json",
+      "bytes": 8698,
+      "sha256": "d38da6d6d66867ae70b1283145046f4a8e5431f1cb4b2289d17582f21a51e1c9",
+      "source": "evidence/local-player-session-continuation-root-native-audit.json"
+    },
+    {
+      "archive": "build/local-player-reset-integration/baseline/evidence/local-player-session-continuation-root-codec-audit.json",
+      "bytes": 12438,
+      "sha256": "709b4cba8dab186cac079984591fccddc30fb126942f24295bde61ecbb428492",
+      "source": "evidence/local-player-session-continuation-root-codec-audit.json"
+    }
+  ],
+  "scope": "Prior passing source/test/helper/result generation preserved. Existing TH and X receive additive APIs; facade remains on the verified entry until frozen FR native validation. No compiler/native/kernel/Java/UI execution.",
+  "status": "baseline-preserved-additive-integration-preparing"
+}

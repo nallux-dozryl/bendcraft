@@ -111,8 +111,19 @@ Finish in-flight slab/fall host repairs and freeze their useful evidence. Defer
 new standalone feature libraries, expanded reference inventories and peripheral
 receipt polish unless they extend these verified consumers or fix a concrete
 defect. Both declared bounded consumer checks pass. At most two heavy jobs may
-run; both slots are currently free. The next read-only assessment addresses
-required-reset-ray supply within the actual LocalPlayer movement/history owner.
+run; both slots are currently free. The required-reset-ray assessment is complete:
+extend existing TH/X APIs, then the runtime facade, with one resolved movement,
+one checked same-owner FR query when required, and one history completion.
+The prior passing generation is archived in
+`build/local-player-reset-integration/baseline/manifest.json` (22a651f1;14 files).
+TH and X additive implementations and focused composite test modes are in
+preparation; the facade remains on its verified entry until the supplier passes.
+FR's frozen runner can internally retry input drift and couples build/native/proof
+execution. A separate host continuation is being prepared with strict drift
+abort, durable cleanup and explicit separate grants. No supplier compiler,
+native or proof attempt is granted yet. Preserve the frozen FR sources,
+references, runner and host adoption. Use one changed saved-session artifact
+for focused ray/phase comparisons and the complete existing consumer suite.
 Foreground
 validation remains pending the user's coordination;
 no duplicate request or unsolicited foreground launch.
@@ -177,7 +188,7 @@ declared interfaces; integration evidence determines subsequent work.
 
 | Owner | Exclusive working files or subsystem | Stable integration interface |
 | --- | --- | --- |
-| Lead | `player_runtime.bend`, `player_session.bend`, `player_storage.bend`, `player_scene.bend`, `player_client.bend`, `client_presenter.bend`, resource entries/scenes and window input | Verified plain Player runtime and saved-session TCP/MCP/restart composition; one W body plus metadata, Tables, support and complete Controller. Continuous entry passes 22 bounded launches. Earlier monolithic resource generations remain preserved after emission timeouts; the separate actual LocalPlayer backend and resource renderer both built and pass the paired native suite. Corrected LocalPlayer composite continuation awaits host cleanup admission/build. Visible presentation and physical focused input remain required |
+| Lead | `player_runtime.bend`, `player_session.bend`, `player_storage.bend`, `player_scene.bend`, `player_client.bend`, `client_presenter.bend`, resource entries/scenes and window input | Verified plain Player runtime and saved-session TCP/MCP/restart composition; one W body plus metadata, Tables, support and complete Controller. Continuous entry passes 22 bounded launches. Earlier monolithic resource generations remain preserved after emission timeouts; the separate actual LocalPlayer backend and resource renderer both built and pass the paired native suite. Fresh LocalPlayer composite passes both primary suites, full codec/phase/facade comparisons and cleanup. Direct checked reset-ray integration is now in preparation. Visible presentation and physical focused input remain required |
 | World bridge | Completed PW/SW, phase audit, conditional pose and bounded pose-world native verification | All 81 fresh jobs pass; root replayed every output, both fresh Java traces and all 4,372 class hashes per run, plus 33 runner and 58 supplemental source/effect pins. Exact 156 queries, 3,759 reads and twelve yields include recovery/remap scenarios. Original comparator and queue-setup failures remain preserved under the 203-file archive. One full-import verdict returned the installed TypeScript/BendTT mismatch; no retry/projection. No current runtime consumer changes; source/API frozen and slot released |
 | Client/render | Completed BR/texture metadata, resource frames, atlas packing, UV mapping, owned CPU mipmaps and bounded sprite animation | Sprite animation passes 494 native inputs twice, including 6,551 actual timeline samples and 772,106 Java-compared pixels per run. Root replayed both outputs, fresh Java observations and artifact provenance. One full production verdict timed out at 60 seconds without output; no retry/projection. Static unique-frame sentinel, raw partial CODEC diagnostics and unsupported direct constructors remain explicit. GPU animation construction, shader interpolation, atlas assembly and visible presentation remain required |
 | Player motion | Completed support, LocalPlayer input, collision hooks and owned collision/move/history/travel; fall-reset supplier frozen for root review | Travel passes 87 actual calls, 40 complete-owner recoveries and 18 remaps twice. Supplier reference preserves 127 actual rays, 107 admitted MISS cases and seven watchdog interruptions, including relevant length-one mixed negative-subnormal Y rays. Ordinary source/harness checks pass; 58 Bend/Base/effect and twelve tool dependencies are sealed. Native/proof grant pending. Four-state MISS and whole-visited-cell interior are conditional; hits/damage and general runtime ray staging remain unresolved |

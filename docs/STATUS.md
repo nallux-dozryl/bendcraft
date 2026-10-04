@@ -129,6 +129,18 @@ Visible OS controls remain unverified. The fixed neutral
 four-state profile excludes required reset rays, general attributes, fluids,
 flight and full player lifecycle services.
 
+Direct required-reset-ray integration is now in preparation, through additive
+existing TH/X APIs and then the runtime facade. The passing generation's source,
+harness, helper and receipt bytes were archived before edits (14 files,
+baseline manifest22a651f1). The facade remains on its verified path pending
+native validation of the frozen FR supplier. Its original host runner lacks a
+strict internal input-drift retry prohibition and separate build/native/proof
+modes; a separate continuation is being prepared. No FR compiler/native/kernel
+grant has been issued. The new consumer must resolve movement once, query the
+same world owner only when the actual predicate requires it, complete history
+once, and restore its entire prior anchor on failure. Its focused comparisons
+will share the next saved-session artifact with the existing full regression.
+
 | Foundation | Implementation and verification |
 | --- | --- |
 | Section storage | Owned 16³ arrays, checked indexing, signed coordinate conversion, clone/snapshot. All 4,096 coordinates/cells and 33 independent signed fixtures tested; 17 laws pass independent kernel. |
