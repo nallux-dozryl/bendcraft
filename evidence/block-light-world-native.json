@@ -1,0 +1,277 @@
+{
+  "status": "passed",
+  "pin": "26.3",
+  "command": "python3 tools/test_block_light_world.py",
+  "source_sha256": {
+    "src/block_light_world.bend": "9c5f1215f0d63d185972fddac5297d31a3038b1938063eb1b54b20ebbc3c8c43",
+    "src/block_light_world_laws.bend": "3f70542765a78569eaffa9629025acd7d74fa6ba7b0d6a4d10eec4285eca2bc9",
+    "src/block_light_world_proof.bend": "bdb32296aaef20c360b49f6d2e9f6f6240222595765c9c5fdcfffc43101d0b37",
+    "tests/block_light_world_receiver.bend": "068a447e0cc2b84e2c71befa6039c7c46df7a0b20e568a23e50cdb6077f26912",
+    "tools/test_block_light_world.py": "71cfcd7bdce13b2ea77466436a592ee358d12d8011b2564d00c685d041a0dff0",
+    "docs/BLOCK_LIGHT.md": "cd7de3516fc2732e0b7a43e93dfcfe9e510ebe0b3ddf7cfd8ef6337178eb1e07"
+  },
+  "core_sha256": "48d63c4a50b4387d55304eed449d0ea1f4749fbd8e393ca56673006f0919a5a7",
+  "section_map_read_sha256": "7a6a0d6fe8b8736ab64adb34b896074da709f91f2ae5bd205a7301c868690fc1",
+  "reference_sha256": "22b094d6a68cda101659bbf49a907dadd4bb23f6e0f018e68cdf8a01d9dfae91",
+  "checks": [
+    {
+      "kind": "ordinary",
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/block_light_world_receiver.bend",
+        "--check-only"
+      ],
+      "seconds": 0.4247,
+      "exit": 0,
+      "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.",
+      "stderr": "",
+      "reused_completed_check_after_whitespace_assertion_repair": true
+    },
+    {
+      "kind": "proof",
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/block_light_world_proof.bend",
+        "--verdict"
+      ],
+      "seconds": 0.9992,
+      "exit": 0,
+      "stdout": "ALL PROOFS CHECK",
+      "stderr": "",
+      "reused_completed_check_after_whitespace_assertion_repair": true
+    },
+    {
+      "kind": "emit",
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/block_light_world_receiver.bend",
+        "-o",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/block-light-world/receiver.c"
+      ],
+      "seconds": 2.1794,
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "reused_completed_check_after_whitespace_assertion_repair": true
+    },
+    {
+      "kind": "native",
+      "command": [
+        "/usr/bin/clang",
+        "-std=c11",
+        "-O3",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/block-light-world/receiver.c",
+        "-lpthread",
+        "-lm",
+        "-o",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/block-light-world/receiver"
+      ],
+      "seconds": 2.9051,
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "reused_completed_check_after_whitespace_assertion_repair": true
+    }
+  ],
+  "java_receiver_rerun": false,
+  "java_phases_reused": 28,
+  "actual_core_block_and_java_light_sample_pairs": 1594,
+  "observations": [
+    {
+      "scenario": "source_add_remove",
+      "phase": "add",
+      "samples": 25,
+      "actual_core_ids_and_java_levels_sha256": "a344a5a41a9d9968a8a03696c51839e60a6d0078590f8841f41ad846b0260149"
+    },
+    {
+      "scenario": "source_add_remove",
+      "phase": "remove",
+      "samples": 25,
+      "actual_core_ids_and_java_levels_sha256": "d4012ac0ba94668dea1fbf1a960fbf5454f66998e93981346f889a49f02bbc1e"
+    },
+    {
+      "scenario": "source_add_remove",
+      "phase": "readd",
+      "samples": 25,
+      "actual_core_ids_and_java_levels_sha256": "b57e145a00bcb40fd80bada24b1fa23ee9387a401bd55573050dc35c000f5801"
+    },
+    {
+      "scenario": "competing_sources",
+      "phase": "both",
+      "samples": 25,
+      "actual_core_ids_and_java_levels_sha256": "aafaf2d19e342a36db1953ea2a3503d4248ca0bf5b8fdcf17192e0eae03ea88a"
+    },
+    {
+      "scenario": "competing_sources",
+      "phase": "remove_stronger",
+      "samples": 25,
+      "actual_core_ids_and_java_levels_sha256": "322b1e545a401c8a7240b841e223acd1a07a8309da39f42e4b7271ed8eec1f72"
+    },
+    {
+      "scenario": "competing_sources",
+      "phase": "remove_last",
+      "samples": 25,
+      "actual_core_ids_and_java_levels_sha256": "d4012ac0ba94668dea1fbf1a960fbf5454f66998e93981346f889a49f02bbc1e"
+    },
+    {
+      "scenario": "opaque_edit",
+      "phase": "closed",
+      "samples": 25,
+      "actual_core_ids_and_java_levels_sha256": "f7e3ed9010fc3178338f35f7af2414e4a852d3e05470c4c2558f4cb4f6e41f55"
+    },
+    {
+      "scenario": "opaque_edit",
+      "phase": "open",
+      "samples": 25,
+      "actual_core_ids_and_java_levels_sha256": "c399c2c721c8610b93f49ad3157080a7157ce3571bd46afa9cba0e242d8c1b2a"
+    },
+    {
+      "scenario": "opaque_edit",
+      "phase": "reclose",
+      "samples": 25,
+      "actual_core_ids_and_java_levels_sha256": "f7e3ed9010fc3178338f35f7af2414e4a852d3e05470c4c2558f4cb4f6e41f55"
+    },
+    {
+      "scenario": "attenuation",
+      "phase": "water",
+      "samples": 25,
+      "actual_core_ids_and_java_levels_sha256": "0ebdd5c6bb6f94a50a2f3c64ec713e8c6e0de1d1634a7ced6d2bdbf3dbe4c08b"
+    },
+    {
+      "scenario": "attenuation",
+      "phase": "ice",
+      "samples": 25,
+      "actual_core_ids_and_java_levels_sha256": "77083c9621f57abb7089ee888822d586109928091793fb5146b68e9b4edd4bc3"
+    },
+    {
+      "scenario": "attenuation",
+      "phase": "glass",
+      "samples": 25,
+      "actual_core_ids_and_java_levels_sha256": "9334b1cbde2f60ffcc73d431b9a6a010a8c997de95d0fdc9639459e609527ae7"
+    },
+    {
+      "scenario": "partial_complementary",
+      "phase": "halves_closed",
+      "samples": 25,
+      "actual_core_ids_and_java_levels_sha256": "000f0cd8f26b1c4c785b3f006535bfe3357a548cb1fc34fd853b53fa8ad9b3fe"
+    },
+    {
+      "scenario": "partial_complementary",
+      "phase": "halves_open",
+      "samples": 25,
+      "actual_core_ids_and_java_levels_sha256": "ec3ad424ac780013a761794411db4f075edd403200c488dbc5e0ac62f4cd218a"
+    },
+    {
+      "scenario": "partial_complementary",
+      "phase": "halves_reclosed",
+      "samples": 25,
+      "actual_core_ids_and_java_levels_sha256": "000f0cd8f26b1c4c785b3f006535bfe3357a548cb1fc34fd853b53fa8ad9b3fe"
+    },
+    {
+      "scenario": "emission_change",
+      "phase": "lit",
+      "samples": 25,
+      "actual_core_ids_and_java_levels_sha256": "5c4f8fc89f3dba174b916126a57c6ad69c6033e302ac9ed50ce3c854a7cdd866"
+    },
+    {
+      "scenario": "emission_change",
+      "phase": "unlit",
+      "samples": 25,
+      "actual_core_ids_and_java_levels_sha256": "49d04c4ad53e07cd8900c5fc81a63f32f3584e13cc51bac9acd778ca05b11c7e"
+    },
+    {
+      "scenario": "emission_change",
+      "phase": "low",
+      "samples": 25,
+      "actual_core_ids_and_java_levels_sha256": "31bb79c19d931babcb42b8d222caa5360f21f609f7023150a1c969a956ac66a1"
+    },
+    {
+      "scenario": "emission_change",
+      "phase": "high",
+      "samples": 25,
+      "actual_core_ids_and_java_levels_sha256": "fcd8cb9c9d52285704f30faee567341ca0c4b9be52334138fa846446a9431273"
+    },
+    {
+      "scenario": "signed_coordinates",
+      "phase": "add",
+      "samples": 25,
+      "actual_core_ids_and_java_levels_sha256": "d2648b68aa3a5aeb1c8fb2f68ff32441fe6e2d78ddeb6e6e5612dca266204ada"
+    },
+    {
+      "scenario": "signed_coordinates",
+      "phase": "barrier",
+      "samples": 25,
+      "actual_core_ids_and_java_levels_sha256": "23bd2814eab880d077bef6de9ad8704fb8b16fe2dd6623a00e735a69485f4838"
+    },
+    {
+      "scenario": "signed_coordinates",
+      "phase": "remove",
+      "samples": 25,
+      "actual_core_ids_and_java_levels_sha256": "0f94604e8338ac68366ea3a41cae4b50fa01824dedae7a2d1ff887aae44330e0"
+    },
+    {
+      "scenario": "absent_neighbor_chunk",
+      "phase": "edge_source",
+      "samples": 5,
+      "actual_core_ids_and_java_levels_sha256": "8d5cabd549ef66ed76a633334881cf5f2ee05802f339864fe02ade2dda876960"
+    },
+    {
+      "scenario": "absent_neighbor_chunk",
+      "phase": "remove",
+      "samples": 5,
+      "actual_core_ids_and_java_levels_sha256": "18c36fe1b2d17e83a39ddd3d45116c678065709510bf95051f2d3dc30e576368"
+    },
+    {
+      "scenario": "absent_neighbor_chunk",
+      "phase": "readd",
+      "samples": 5,
+      "actual_core_ids_and_java_levels_sha256": "f13818b07af8e42db9eca60c1ba5bd567baebd5a16ca5d838eb1ea76db03f9c6"
+    },
+    {
+      "scenario": "six_directions",
+      "phase": "center",
+      "samples": 343,
+      "actual_core_ids_and_java_levels_sha256": "9ebb22c688c409828fd278afb6d52a599c11b2622d8c563ca93a2f4852f9b558"
+    },
+    {
+      "scenario": "six_directions",
+      "phase": "opaque_shell",
+      "samples": 343,
+      "actual_core_ids_and_java_levels_sha256": "0b93605b22c709040e08c43b11d3c8ead434abf066ff819f7f05b0c33b845ca8"
+    },
+    {
+      "scenario": "six_directions",
+      "phase": "reopen",
+      "samples": 343,
+      "actual_core_ids_and_java_levels_sha256": "9ebb22c688c409828fd278afb6d52a599c11b2622d8c563ca93a2f4852f9b558"
+    }
+  ],
+  "guards": {
+    "kind": "core-owner-and-schedule-guards",
+    "command": [
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/block-light-world/receiver",
+      "--gpu",
+      "off",
+      "--threads",
+      "1",
+      "--",
+      "guards"
+    ],
+    "seconds": 0.374,
+    "exit": 0,
+    "stdout": "permission invalid catalog duplicate missing\naccepted catalog accepted refused stable 1/1 4926:14 ?:?",
+    "stderr": "",
+    "reused_completed_check_after_whitespace_assertion_repair": true
+  },
+  "native_resource": {
+    "command": "python3 tools/test_block_light_world.py",
+    "fixture": "six_directions",
+    "peak_rss_bytes": 9748480,
+    "seconds": 0.6498,
+    "raw_log": "build/block-light-world/native-resource.json",
+    "boundary": "Bounded real Core arrays plus joined light native receiver; not world-scale latency or long-session leak evidence."
+  },
+  "boundary": "Actual Core.World/Section arrays bootstrap, reads, edit acceptance, permission admission, due-step clock/events and Stable batch reads. General descriptors/directional edges are inputs from unchanged Java26.3 observations. Outside fixture cells are actual opaque nonemitting stone sections, equivalent to oracle bedrock for these light paths. Core has no unload operation: resident_boundary phase excluded explicitly. Nine bridge laws independently kernel checked. Actor/resource-frame entry wiring, sky light, world-scale performance and compact storage remain outside this lane.",
+  "execution_note": "Completed ordinary/kernel/emission/native and28 Java comparisons retained after Python trailing-space guard assertion repair; resource stage newly executed. Bend sources and receiver binary unchanged between stages.",
+  "native_binary_sha256": "1e52ed53486aca9fc5ba26ab98895e122556004e00ee849830dd9562f466ff2f"
+}

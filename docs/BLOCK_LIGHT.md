@@ -6,6 +6,72 @@ Python only extracts reference observations and orchestrates comparisons.
 The authoritative Core and resource-frame integration belongs to their owner.
 Those existing files are unchanged by this lane.
 
+## Actual Core bridge
+
+`src/block_light_world.bend` joins the **actual** `Core.World` and `BL.State`
+in `BW.State{world,light,loading}`. It is ready for the authoritative actor and
+resource-frame owner to adopt; their entry points have not been edited here.
+It calls Core admission, validation, reads, mutation application and event
+completion, plus real `Section.snapshot`. There is no secondary world or host
+lighting implementation. A frame or actor consumer transfers its Core owner
+into `BW.begin(world)` once and retains the joined owner thereafter.
+
+The three supplied providers are closed Bend definitions over immutable data:
+
+```text
+properties: Context -> U32 -> Maybe<&2,BL.Descriptor>
+enabled: Context -> Core.Position -> Bool
+occludes: Context -> BL.Descriptor -> BL.Descriptor -> BL.Direction -> Bool
+```
+
+`properties` must return the requested raw state ID and both light properties
+within0..15. `None` yields `MissingDescriptor`; a different ID or invalid level
+yields `InvalidDescriptor`. `enabled` receives a normalized **section origin**;
+disabled sections use effective emission zero but retain their real dampening.
+`occludes` has the exact directional shape contract described below. The current
+render catalog lacks emission/dampening/light-occlusion fields; this adapter
+does not infer them from collision geometry, render models or a small block list.
+The catalog/state-property owner must supply those general definitions.
+
+| Bridge operation | Consumer contract |
+| --- | --- |
+| `BW.begin(world)` | Preserve the actual world and enumerate its owned section keys. Start an empty light field and resumable bootstrap cursor. No fixed region, section count, height or block list is assumed. |
+| `BW.load_resume(~Context,~properties,~enabled,context,budget,state)` | Return `State & Result<Error,Unit>`. Each section acquisition and each cell publication consumes one unit. Acquisition copies4096 scalar IDs with `Section.snapshot`, returning the original array and exact map/bucket order. Every cell, including air, is published. Missing properties stop at that cell and retain the cursor for retry. |
+| `BW.progress(state)` | Return the owner with `Loading`, `Propagating{pending}`, or `Settled`. A successful load call may still leave loading or propagation work. |
+| `BW.apply(~Context,~properties,~enabled,context,state,mutation)` | Authorized low-level Core application with registry/catalog and existence preflight. Block edits publish their descriptor only after real Core acceptance; section creation publishes all4096 fill cells. A refused operation retains both owners. Bootstrap refuses mutations. It does not perform permission admission or increment the revision. |
+| `BW.apply_finished(stamp,apply_result)` | Complete a successful immediate application through `Core.finish`, incrementing revision and recording `Applied`. Refused immediate applications retain both states and return the error. |
+| `BW.admit(~Context,~properties,~enabled,context,state,cap,stamp,mutation)` | Preserve Core's developer capability, future tick, queue bound and registry validation priority; preflight descriptors, then call actual `Core.admit`. May queue during bootstrap. |
+| `BW.step(~Context,~properties,~enabled,context,state)` | Partition actual Core pending actions, preflight the entire due descriptor batch before changing the clock, then call actual `Core.apply` and `Core.finish` in Core order. Successes update light; Core refusals record `Rejected` and leave light unchanged. Missing catalog data retains the complete old tick, pending batch and both owners for retry. Bootstrap refuses a tick. |
+| `BW.realtime_step(...)` | Preserve Core's paused no-op behavior; otherwise call the bridge tick seam. The consumer must use this seam instead of bypassing it with `Core.step`. |
+| `BW.advance(~Context,~occludes,context,budget,state)` | Bounded propagation over the joined owner. Bootstrap does not propagate an incomplete domain. |
+| `BW.sample_batch(positions,state)` | Return `State & Result<Error,FrameSamples>`. Only a completed bootstrap and `BL.Stable` can produce a frame. Each observation reads the actual current Core array and light field, with the actual Core clock/revision. Missing world plus missing field yields explicit `None/None`; only one resident owner yields `ResidencyMismatch`. Pending fields return `LightPending` without reads. |
+
+The saved104-section world follows the same path: pass its decoded real Core
+owner to `begin`, resume its enumerated section arrays, then advance until
+`Settled`. Bootstrap is a loading operation, not a simulation tick; it preserves
+tick, time, revision, pending actions and event history. One acquisition has a
+fixed4096-scalar snapshot cost, so the budget is work units rather than a hard
+microsecond guarantee. An accepted section creation also publishes4096 cells
+in that call. Map/FIFO memory and initialization latency require native checks;
+this is not compact vanilla nibble storage.
+
+Core currently has no section-unload mutation. The bridge does not invent an
+eviction permission policy or silently keep a stale sidecar after replacement.
+A replaced/persisted Core owner starts a new bootstrap with `begin`; absent
+sections remain unknown and stop propagation. External direct Core edits,
+catalog shape changes or lighting-enablement changes require republishing or
+rebootstrap before settled sampling. The actor owner must retain this joined
+state across frames and route accepted mutations through this API. Renderer
+brightness, sky light, chunk loading policy and actor/frame entry adoption
+remain separate integration work.
+
+`src/block_light_world_laws.bend` and `src/block_light_world_proof.bend` prove
+nine contracts against this actual adapter: zero-load owner retention,
+bootstrap edit/tick/frame refusal, failed preflight retention, pending-frame
+refusal, daylight preserving the whole block-light owner, explicit unknowns,
+and rejection of a field with no corresponding world cell. The independent
+kernel verifies them; they do not prove world-scale performance or convergence.
+
 ## API
 
 Import `src/block_light.bend` as `BL` and retain one `BL.State` owner beside the
