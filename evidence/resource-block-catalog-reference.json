@@ -1,0 +1,183 @@
+{
+  "checks": {
+    "all_selected_model_dependencies_resolved": true,
+    "all_selected_states_mapped": true,
+    "generated_table_hashes": true,
+    "java_runs_reproduce": true,
+    "no_raw_assets_or_pixels_in_fixture": true,
+    "official_client_sha1_size_sha256": true,
+    "official_registry_report_hashes": true,
+    "selected_resource_hashes_match_official_inventory": true,
+    "summaries_match_existing_production_java_geometry": true,
+    "tsv_states_equal_official_report_and_java_states": true
+  },
+  "extractor_sha256": "cf1789d0975e28f3802ed6052325ec3ab995a82a94959eedc18ac7130464cec6",
+  "fixture": {
+    "bytes": 214334,
+    "path": "reference/resource_block_catalog.json",
+    "sha256": "5d1f233bf9b818fbc61a252d7c30ac5e30f7d02eb77bcf3d0fbeaf8ca504e3ea"
+  },
+  "geometry_crosscheck": {
+    "fixture": "reference/model_semantics.json",
+    "fixture_sha256": "3cbe8aa7780f14c1b37159a885710b04680e3b6c4ffa4975b4d8297015f11e7e",
+    "matched_baked_variants": 110,
+    "matched_models": [
+      "minecraft:block/dirt",
+      "minecraft:block/glass",
+      "minecraft:block/grass_block",
+      "minecraft:block/grass_block_snow",
+      "minecraft:block/oak_fence_post",
+      "minecraft:block/oak_fence_side",
+      "minecraft:block/oak_planks",
+      "minecraft:block/oak_slab",
+      "minecraft:block/oak_slab_top",
+      "minecraft:block/oak_stairs",
+      "minecraft:block/oak_stairs_inner",
+      "minecraft:block/oak_stairs_outer",
+      "minecraft:block/stone",
+      "minecraft:block/stone_mirrored"
+    ],
+    "observations_sha256": "9263a1b57b1ca285be717daa24b6b87c2a73a86efd23c3404cf46d51726cfe0f",
+    "scope": "Production CPU bake face counts, material layers, sprites and tint indices under controlled normalized atlas."
+  },
+  "java": {
+    "classpath_manifest_sha256": "30b03f027df6429f3b8288bd799ca67f981c307db1ed8a8dfbfbc430da218c58",
+    "harness_sha256": "372dd631ef9a9a1d6d24910480ce82e36e1ab80b931e86f46c902d3174470e61",
+    "runs": [
+      {
+        "exit_code": 0,
+        "output_sha256": "c3816208329981f57daf241690e4d269fd2afd8a3a07c36b425c5dc8b796ee27"
+      },
+      {
+        "exit_code": 0,
+        "output_sha256": "c3816208329981f57daf241690e4d269fd2afd8a3a07c36b425c5dc8b796ee27"
+      }
+    ],
+    "runtime": {
+      "bytes": 84720,
+      "file": "java",
+      "sha1": "5af4a90be54ddeec03db3700e6989594c9438952",
+      "sha256": "e0879c0df70d880d66904064d1b388b08aeee0958a047f37601435b28db849a3"
+    },
+    "verified_libraries_sha256": "4d2b4f8f9de99601ff9f459e3ddc5178fc6c237747b2ae5b874ddb58db4aab2b",
+    "version": "openjdk version \"25.0.1\" 2025-10-21 LTS\nOpenJDK Runtime Environment Microsoft-12574220 (build 25.0.1+8-LTS)\nOpenJDK 64-Bit Server VM Microsoft-12574220 (build 25.0.1+8-LTS, mixed mode)"
+  },
+  "limits": [
+    "Model geometry is summarized; no proprietary model source, texture bytes or pixels are committed.",
+    "No Bend/native build, atlas bake or visible client session is executed by this reference extractor.",
+    "PNG alpha gives source texture requirements; force_translucent overrides alpha and mipmap/render behavior remains separately tested.",
+    "Weighted roots retain all official choices and weights; no fixed seed/position selects a single outcome here."
+  ],
+  "pin": "26.3",
+  "reproduce": "python3 tools/resource_block_catalog_reference.py --verify",
+  "schema": 1,
+  "sources": {
+    "classes": {
+      "net/minecraft/client/color/block/BlockTintSources$4.class": {
+        "bytes": 1618,
+        "sha256": "cee8615d600573f28e619d46f7aabfd1d53b6160c161b645fd49c3664f5d29b0"
+      },
+      "net/minecraft/client/renderer/block/FluidRenderer.class": {
+        "bytes": 16656,
+        "sha256": "c75cdf2727b0b7813c75dcf2cbe5762f2779bff492b509ef47d3c7551c43856f"
+      },
+      "net/minecraft/client/renderer/block/FluidStateModelSet.class": {
+        "bytes": 4345,
+        "sha256": "fd6238c571be8142b75aa9808af95f8cfb838b919c9388568be95f37017af857"
+      },
+      "net/minecraft/client/renderer/block/dispatch/BlockStateModel$SimpleCachedUnbakedRoot.class": {
+        "bytes": 2712,
+        "sha256": "b93fd5e7a54bfdec42153b7569de80e863d0f3ff1eb14c295db26897a24782f0"
+      },
+      "net/minecraft/client/renderer/block/dispatch/BlockStateModelDispatcher.class": {
+        "bytes": 11177,
+        "sha256": "83f10d4328789122a50d13dc72e0cb81fc138fdb2e3948f32dfbc2f18b48dbf2"
+      },
+      "net/minecraft/client/renderer/block/dispatch/VariantSelector.class": {
+        "bytes": 5763,
+        "sha256": "0b9878223318d736e9c27316c8e9447d855219e2215a0e8216b7c8ef3f9236be"
+      },
+      "net/minecraft/client/renderer/blockentity/ChestRenderer.class": {
+        "bytes": 14591,
+        "sha256": "5520305031cce82370d5d0e83811aa64cee63ea40502aa995a7a85294af6b1c2"
+      },
+      "net/minecraft/client/renderer/chunk/ChunkSectionLayer.class": {
+        "bytes": 3518,
+        "sha256": "ff7872789c797fb1071c02659dc6cc1a201dfca91dfba3904ee65aebf8dd0ee6"
+      },
+      "net/minecraft/client/resources/model/cuboid/FaceBakery.class": {
+        "bytes": 13289,
+        "sha256": "c1a8bb6832ac68382de60ba6a1116c5f0c4d8413c36b6f7abeabec01c4b48550"
+      },
+      "net/minecraft/client/resources/model/sprite/Material.class": {
+        "bytes": 6137,
+        "sha256": "fa074d54c04dc3e3731636309aa5f00cdf58fb6ba41766fb616c0775488761aa"
+      },
+      "net/minecraft/world/level/block/LiquidBlock.class": {
+        "bytes": 17406,
+        "sha256": "590a0296b90ff7164ac521581385298f3e5e06308a60444b3a4dbade2d72bb0d"
+      }
+    },
+    "client": {
+      "bytes": 41483720,
+      "file": "26.3.jar",
+      "sha1": "e877b6a07acd633fb3bb475002175cec036e7b87",
+      "sha256": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d"
+    },
+    "official_reports": {
+      "reference/reports/reports/blocks.json": {
+        "bytes": 7330564,
+        "canonical_json_sha256": "79fc25fd3d4d57ba35002ce88347e08a68c41f3c26d7edd706656bf02dce38a4"
+      },
+      "reference/reports/reports/registries.json": {
+        "bytes": 536272,
+        "canonical_json_sha256": "6f76431c05c9dd2945b2ef2f419e3e43cb0f3cedcd9beb07c24744f4e2a6bc27"
+      }
+    },
+    "tables": {
+      "generated/reference_blocks.tsv": {
+        "bytes": 182136,
+        "file": "reference_blocks.tsv",
+        "sha1": "3461038d5c8086185591df08e6fb96de6e523faf",
+        "sha256": "27769e75bf862d0540b2df2a6e99f6b7556a867bff6339fb08566240ee124cac"
+      },
+      "generated/reference_registries.tsv": {
+        "bytes": 373823,
+        "file": "reference_registries.tsv",
+        "sha1": "337cedf6ad76551f817d6c3d57faebda0aa12ffc",
+        "sha256": "d61a62470873881789696fd419a12ed73d4fbd22b50cd450d97e137d8c526394"
+      },
+      "generated/reference_resources.tsv": {
+        "bytes": 2334805,
+        "file": "reference_resources.tsv",
+        "sha1": "c420ae570e7a5a09082d8a7aac3bcca920e29ded",
+        "sha256": "b69e4c2eddeb0a576bb323879bf4c70ba983fb26f957892431e643ea4a7e34ee"
+      }
+    },
+    "version_metadata": {
+      "bytes": 44992,
+      "file": "26.3.json",
+      "sha1": "4fe1aa1ef8da1cb95c5bad1fb98890ca56dd8ca3",
+      "sha256": "9a7b39dae3b9c8d30006b650e357aae220629b7852fa0fc7221db7a8646bd5e4"
+    }
+  },
+  "summary": {
+    "blocks": 14,
+    "models": 36,
+    "multipart_state_roots": 32,
+    "resources": 66,
+    "states": 170,
+    "support_classifications": {
+      "supported_static_cutout": 1,
+      "supported_static_solid": 128,
+      "unsupported_block_entity": 24,
+      "unsupported_fluid": 16,
+      "unsupported_translucent": 1
+    },
+    "textures": 14,
+    "tinted_models": [
+      "minecraft:block/grass_block"
+    ],
+    "weighted_state_roots": 4
+  }
+}
