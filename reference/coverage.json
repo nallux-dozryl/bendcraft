@@ -4394,6 +4394,228 @@
       "scope_limit": "Acceptance method remains unverified; hidden pixels, synthetic events and a few visible scenes cannot establish complete parity.",
       "verification_evidence": [],
       "verification_status": "not_assessed"
+    },
+    {
+      "behavioral_reference_evidence": [
+        "reference/local_travel_history.json"
+      ],
+      "behavioral_reference_status": "actual_java_bounded_cases",
+      "current_evidence_sha256": {
+        "evidence/local-travel-history-handoff.json": "1655f0ba8da3337c24e3a18e8f6c959423135680d655ac238e202ec670bf6c46",
+        "evidence/local-travel-history-kernel.json": "187e3126ebc759d883efcc60304524cbeb00d53b9e388970d53c9cc208147dbd",
+        "evidence/local-travel-history-native.json": "f365499996ff5e1bffe02532b8541859d56051478a7f3ca380225907dfdb032b",
+        "reference/local_travel_history.json": "07646e7fef0e55f3fd89421d1862b0e6dc5fdde3a0a84800b70b857a66609dbf",
+        "src/local_travel_history.bend": "32016fde52830ef6b8ca21cee4c6170c2596943c89c81cd6589190c678a1f00c",
+        "tests/local_travel_history.bend": "0042b3f3016db7eddb2b81ffec1b087afe83977d825110c78789d8cf5e0daa27"
+      },
+      "id": "component:local_travel_history",
+      "implementation_evidence": [
+        "src/local_travel_history.bend",
+        "tests/local_travel_history.bend"
+      ],
+      "implementation_status": "implemented_bounded_projection",
+      "independent_kernel_status": "unverified_generic_checker_mismatch",
+      "kind": "bounded_behavior_component",
+      "measured_scope": "87 actual admitted travel calls,40 complete-owner recoveries and18remapped calls twice;3actual exclusions.",
+      "parent_obligation": "behavior:movement_collision",
+      "reference_evidence": [
+        "reference/local_travel_history.json"
+      ],
+      "reference_inventory_status": "captured_bounded_release_scope",
+      "required_behavior": "Owned neutral LocalPlayer travel through acceleration, backoff/collision/support/minor/fall history and final gravity/drag.",
+      "scope_limit": "Five ordinary laws; one full harness mismatch. Conditional neutral contexts and supplied actual ray evidence; no full local runtime.",
+      "verification_evidence": [
+        "evidence/local-travel-history-handoff.json",
+        "evidence/local-travel-history-native.json",
+        "evidence/local-travel-history-kernel.json"
+      ],
+      "verification_status": "verified_bounded_native_cases",
+      "whole_parent_parity_established": false
+    },
+    {
+      "behavioral_reference_evidence": [
+        "reference/player_pose.json"
+      ],
+      "behavioral_reference_status": "actual_java_bounded_cases",
+      "current_evidence_sha256": {
+        "evidence/player-pose-kernel.json": "519afeb7fa47d7daf23ddae893cc91f4633a1544eea5c982f7395a8ce2bc5fc6",
+        "evidence/player-pose-native.json": "c72922e24de9c8c44b2a779d3d512dafa7a58b2fa00f70dbe2cac6bff139b900",
+        "evidence/player-pose-verification.json": "3401a3d19834d5502eb63a2861f80a5f21b082a3e41d234fd19ffbd02ea3dacd",
+        "reference/player_pose.json": "9990b80a6d23a6a6463728bcb0ca9876cc9b8e7e90e374814f34aad78e8914a3",
+        "src/player_pose.bend": "fee092d03f01673fad7f2c5e2329dbafabc1cc2781a275e5e2e5f47380eebea0",
+        "tests/player_pose.bend": "03657addb3c28c21c4647a131702025e9caa722d9215ec2cd3ff23d9626d02c9"
+      },
+      "id": "component:conditional_player_pose",
+      "implementation_evidence": [
+        "src/player_pose.bend",
+        "tests/player_pose.bend"
+      ],
+      "implementation_status": "implemented_bounded_projection",
+      "independent_kernel_status": "passed_four_stated_laws",
+      "kind": "bounded_behavior_component",
+      "measured_scope": "46 actual updates,44admitted/2scale refusals;243raw native rows including29recovery pairs and18metadata rows.",
+      "parent_obligation": "behavior:players_modes",
+      "reference_evidence": [
+        "reference/player_pose.json"
+      ],
+      "reference_inventory_status": "captured_bounded_release_scope",
+      "required_behavior": "Conditional pose-fit query order, dimension refresh and cached eye position.",
+      "scope_limit": "Explicit fit answers and conditional mode flags; actual world queries and mode activation/full tick are separate.",
+      "verification_evidence": [
+        "evidence/player-pose-verification.json",
+        "evidence/player-pose-native.json",
+        "evidence/player-pose-kernel.json"
+      ],
+      "verification_status": "verified_bounded_native_cases",
+      "whole_parent_parity_established": false
+    },
+    {
+      "behavioral_reference_evidence": [
+        "reference/texture_mipmap.json"
+      ],
+      "behavioral_reference_status": "actual_java_bounded_cases",
+      "current_evidence_sha256": {
+        "evidence/texture-mipmap-handoff.json": "6e1ec30ce4f778f4176434bcefbb6d0f5d705c1654dd59962a0f4900e52d7c1c",
+        "evidence/texture-mipmap-kernel.json": "5279ad4171d38e9fad6856f9f801e06533d4befa2a8c2604b96f002d30ae5abf",
+        "evidence/texture-mipmap-native-runtime-failure.json": "8505d7cd78c052f0bb7f88abc90aa3abf5e2988f537f9108c259ca1b3397cb88",
+        "evidence/texture-mipmap-native.json": "104209a5aa927d6218709a01186ba56233d3b644b31c107c0b176d0add143b1b",
+        "reference/texture_mipmap.json": "77297d625f5e43cd126803846a7f50604773d49fbc07a90fbd37a5f08c2b4aec",
+        "src/texture_mipmap.bend": "6be887316b9660442be7a2f7d701edd1d6675c6956f243b9bdbc6c54794bd38b",
+        "tests/texture_mipmap.bend": "05dc6119fb4c4cd8e3712110af4f431f9e69497987a4b6406e3d833a1399991d"
+      },
+      "id": "component:cpu_texture_mipmap",
+      "implementation_evidence": [
+        "src/texture_mipmap.bend",
+        "tests/texture_mipmap.bend"
+      ],
+      "implementation_status": "implemented_bounded_projection",
+      "independent_kernel_status": "passed_three_scalar_laws",
+      "kind": "bounded_behavior_component",
+      "measured_scope": "498native inputs twice;28120actual pixels,260quads,1280LUTvalues,33rejections and230recoveries.",
+      "parent_obligation": "behavior:models_assets",
+      "reference_evidence": [
+        "reference/texture_mipmap.json"
+      ],
+      "reference_inventory_status": "captured_bounded_release_scope",
+      "required_behavior": "Owned five-strategy CPU mip generation, base preprocessing, supplied levels, gamma tables and checked prevalidation.",
+      "scope_limit": "Original499-input failure archived and executable explicitly adopted; BufferShape native coverage absent. No atlas/timeline/GPU upload claim.",
+      "verification_evidence": [
+        "evidence/texture-mipmap-handoff.json",
+        "evidence/texture-mipmap-native.json",
+        "evidence/texture-mipmap-kernel.json",
+        "evidence/texture-mipmap-native-runtime-failure.json"
+      ],
+      "verification_status": "verified_bounded_native_cases",
+      "whole_parent_parity_established": false
+    },
+    {
+      "behavioral_reference_evidence": [
+        "reference/slab_collision.json"
+      ],
+      "behavioral_reference_status": "actual_java_bounded_cases",
+      "current_evidence_sha256": {
+        "evidence/slab-collision-adoption.json": "2f7c544451becb444ff6a7a354cea6584c9855d7680e8436152a42adc12e6a11",
+        "evidence/slab-collision-interrupted.json": "61a1901832732d11590b2362d443e27ebe1d5aaa391e1a42609132fb9a3548f2",
+        "evidence/slab-collision-kernel.json": "635f96da3defe55b2453fa6a36d612245c140aae962d08e5fc81cf184a44d502",
+        "evidence/slab-collision-native.json": "2f7c544451becb444ff6a7a354cea6584c9855d7680e8436152a42adc12e6a11",
+        "reference/slab_collision.json": "ef31f928400c910fc9e15069f74c08c909b3ccc3149b87a3b8b8438c537312ac",
+        "src/slab_collision.bend": "81d2254d67642b1895a7a6fcd37ffd13ef031de33d59c215d49102364aa824a8",
+        "tests/slab_collision.bend": "f4de66cde98c8c11989fddc0388725efe632e7de9d063736b2c2f251df497585"
+      },
+      "id": "component:slab_collision_catalog",
+      "implementation_evidence": [
+        "src/slab_collision.bend",
+        "tests/slab_collision.bend"
+      ],
+      "implementation_status": "implemented_bounded_projection",
+      "independent_kernel_status": "unverified_generic_checker_mismatch",
+      "kind": "bounded_behavior_component",
+      "measured_scope": "All606registered slab states;73039responses per actual run twice.",
+      "parent_obligation": "behavior:movement_collision",
+      "reference_evidence": [
+        "reference/slab_collision.json"
+      ],
+      "reference_inventory_status": "captured_bounded_release_scope",
+      "required_behavior": "Integrity-bound registered slab getter catalog and exact checked catalog lookup/admission.",
+      "scope_limit": "Original eager verifier interruption preserved; exact retained-output adoption only. No world scan,fluid union,placement or Entity.move claim.",
+      "verification_evidence": [
+        "evidence/slab-collision-native.json",
+        "evidence/slab-collision-adoption.json",
+        "evidence/slab-collision-interrupted.json",
+        "evidence/slab-collision-kernel.json"
+      ],
+      "verification_status": "verified_bounded_native_cases",
+      "whole_parent_parity_established": false
+    },
+    {
+      "behavioral_reference_evidence": [
+        "reference/player_save.json",
+        "evidence/player-save-audit.json"
+      ],
+      "behavioral_reference_status": "actual_java_bounded_cases",
+      "current_evidence_sha256": {
+        "evidence/player-save-audit.json": "c1e20d8e211f3d8490290db95f338071073615018a4577c49ba2b9430e63cf4c",
+        "evidence/player-save-extract.json": "fbb60df6dfa81c18776a3f9f46f9282304ad83f3d322cc840ddeee7a1f9d10cd",
+        "evidence/player-save-reproduce.json": "827f787f4fc9696e65cf52d025075b00b536cec28a36a17788b6e37820032d7f",
+        "reference/player_save.json": "762a02a965cea86390ad0582bebc187eccd4b847a9f9db5552d9311c73d3dbc2"
+      },
+      "id": "reference:vanilla_player_serialization",
+      "implementation_evidence": [],
+      "implementation_status": "not_implemented_by_this_reference",
+      "kind": "bounded_behavior_reference",
+      "measured_scope": "134actualcase executions;9save and58load cases each;55successful loads and3actual errors per process.",
+      "parent_obligation": "behavior:persistence",
+      "reference_evidence": [
+        "reference/player_save.json"
+      ],
+      "reference_inventory_status": "captured_bounded_release_scope",
+      "required_behavior": "Actual normal LocalPlayer save/load tags,wire and partial receiver state.",
+      "scope_limit": "No normal ServerPlayer/fullplayer.dat/filesystem/datafix/vanilla save-compatibility claim.",
+      "verification_evidence": [
+        "evidence/player-save-extract.json",
+        "evidence/player-save-reproduce.json"
+      ],
+      "verification_status": "reference_reproduced_two_fresh_processes",
+      "whole_parent_parity_established": false
+    },
+    {
+      "behavioral_reference_evidence": [
+        "evidence/resource-player-client-preflight.json"
+      ],
+      "behavioral_reference_status": "actual_java_bounded_cases",
+      "current_evidence_sha256": {
+        "evidence/resource-player-boxed-client-native.json": "b906b49decebc6329d5cd3fdbddf9b9b70342a25c4fd9947cca5deed9dafdb28",
+        "evidence/resource-player-boxed-client-preflight.json": "31cc4733b4f3105ea587fad4f01d16e5e1870b2928e92c3a9d860ef5555900b8",
+        "evidence/resource-player-client-native.json": "03cefbe6ca85d1b66417c5926913da91c9e48b932072fe7c138d83da69b00c31",
+        "evidence/resource-player-client-preflight.json": "e9f4d37c479ecfc7d8256d6d4992ff2bc56a0589c8d8b48a184a4d9d4baf19b1",
+        "resource_player_boxed_client.bend": "567d02e32e32549ee61ad590c588d7e5d74bb8c175e968f0ed7a5a68cecd5cc8",
+        "resource_player_client.bend": "b0811c595678d3624ff3e25441ad3d18f71a7d02ce42401e259b7a9aab16be73",
+        "src/resource_player_boxed_scene.bend": "c1d943f7a9fc52367ce4270ebefc86787bc3ac55c4bbfecd251b9ba6f21696c2",
+        "src/resource_player_scene.bend": "978558e7a741f0c019095849a57e0d098557c19582a5963f2da24f67a0260ccf"
+      },
+      "id": "component:resource_player_client",
+      "implementation_evidence": [
+        "resource_player_client.bend",
+        "src/resource_player_scene.bend",
+        "resource_player_boxed_client.bend",
+        "src/resource_player_boxed_scene.bend"
+      ],
+      "implementation_status": "prepared_native_unverified",
+      "kind": "bounded_behavior_component",
+      "parent_obligation": "behavior:rendering",
+      "reference_evidence": [
+        "evidence/resource-player-client-preflight.json",
+        "evidence/resource-player-boxed-client-preflight.json"
+      ],
+      "reference_inventory_status": "captured_bounded_release_scope",
+      "required_behavior": "Saved plain Player client joined to actual resource/visibility renderer.",
+      "scope_limit": "Each600scapped generation produced no C/executable; no clientintegration,pixels,presentation or performance claim.",
+      "verification_evidence": [
+        "evidence/resource-player-client-native.json",
+        "evidence/resource-player-boxed-client-native.json"
+      ],
+      "verification_status": "two_build_timeouts_no_native_result",
+      "whole_parent_parity_established": false
     }
   ]
 }
