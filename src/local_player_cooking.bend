@@ -174,19 +174,27 @@ def split_result(~A:Data,context:Context,effects:List<&2,Store.Effect>,lifecycle
     case (CW.State{BW.State{world,light,loading},entries,+phase,keys},Done{value}):
       (world,installed(context,light,loading,entries,phase,keys,effects,lifecycle_phase(phase,lifecycle),owned_tail),Done{value})
 
-def operation_checked(~A:Data,+context:Context,light:L.State,loading:Maybe<&2,BW.Cursor>,
+def operation_canonical(~A:Data,world:C.World,+context:Context,light:L.State,loading:Maybe<&2,BW.Cursor>,
+    entries:List<&1,Store.Entry>,phase:CW.Phase,keys:List<&2,String>,effects:List<&2,Store.Effect>,
+    details:List<&2,BodyDetails>,incarnations:Map<&2,Nat>,acknowledged_resets:Nat,owned_tail:List<&1,Sidecar>,
+    operation:CW.Context -> CW.State -> CW.State & Result<&2,&2,CW.Error,A>) -> C.World & Sidecar & Result<&2,&2,String,A>:
+  match owned_tail:
+    case Nil{}:
+      split_result(~A,context,effects,Lifecycle{details,incarnations,acknowledged_resets},[],
+        operation(cooking_context(context),CW.State{BW.State{world,light,loading},entries,phase,keys}))
+    case child <> rest:
+      (world,Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,child <> rest},Fail{"local-cooking:noncanonical-sidecar-tail"})
+
+def operation_checked(~A:Data,context:Context,light:L.State,loading:Maybe<&2,BW.Cursor>,
     entries:List<&1,Store.Entry>,phase:CW.Phase,keys:List<&2,String>,effects:List<&2,Store.Effect>,
     details:List<&2,BodyDetails>,incarnations:Map<&2,Nat>,acknowledged_resets:Nat,owned_tail:List<&1,Sidecar>,
     operation:CW.Context -> CW.State -> CW.State & Result<&2,&2,CW.Error,A>,
     result:C.World & Bool) -> C.World & Sidecar & Result<&2,&2,String,A>:
-  match owned_tail result:
-    case owned_tail (world,False{}):
+  match result:
+    case (world,False{}):
       (world,Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,owned_tail},Fail{"local-cooking:invalid-context"})
-    case Nil{} (world,True{}):
-      split_result(~A,context,effects,Lifecycle{details,incarnations,acknowledged_resets},[],
-        operation(cooking_context(context),CW.State{BW.State{world,light,loading},entries,phase,keys}))
-    case child <> rest (world,True{}):
-      (world,Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,child <> rest},Fail{"local-cooking:noncanonical-sidecar-tail"})
+    case (world,True{}):
+      operation_canonical(~A,world,context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,owned_tail,operation)
 
 # Generic same-owner seam for subsequent slot/edit consumers. Returned effects
 # remain the operation's result; only tick appends its released effects here.
@@ -303,14 +311,18 @@ def loading_go(budget:Nat,world:C.World,sidecar:Sidecar) -> C.World & Sidecar & 
     case 1n+rest:
       loading_return(loading_round(world,sidecar),world => sidecar => loading_go(rest,world,sidecar))
 
-def loading_canonical(budget:Nat,world:C.World,sidecar:Sidecar) -> C.World & Sidecar & Result<&2,&2,String,Bool>:
-  match budget sidecar:
-    case 0n sidecar: loading_status(world,sidecar)
-    case _ Uninitialized{}: (world,Uninitialized{},Fail{"local-cooking:uninitialized"})
-    case 1n+remaining Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,Nil{}}:
-      loading_go(1n+remaining,world,Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,[]})
-    case _ Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,child <> rest}:
+def loading_positive(budget:Nat,world:C.World,sidecar:Sidecar) -> C.World & Sidecar & Result<&2,&2,String,Bool>:
+  match sidecar:
+    case Uninitialized{}: (world,Uninitialized{},Fail{"local-cooking:uninitialized"})
+    case Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,Nil{}}:
+      loading_go(budget,world,Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,[]})
+    case Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,child <> rest}:
       (world,Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,child <> rest},Fail{"local-cooking:noncanonical-sidecar-tail"})
+
+def loading_canonical(budget:Nat,world:C.World,sidecar:Sidecar) -> C.World & Sidecar & Result<&2,&2,String,Bool>:
+  match budget:
+    case 0n: loading_status(world,sidecar)
+    case 1n+remaining: loading_positive(1n+remaining,world,sidecar)
 
 def loading_phase(world:C.World,sidecar:Sidecar,budget:Nat) -> C.World & Sidecar & Result<&2,&2,String,Bool>:
   match sidecar:
@@ -368,19 +380,27 @@ def completed(context:Context,effects:List<&2,Store.Effect>,lifecycle:Lifecycle,
       (world,installed(context,light,loading,entries,phase,keys,List.append(&2,Store.Effect,effects,more),
         lifecycle_completed(lifecycle_effects(lifecycle,more)),owned_tail),Done{True{}})
 
-def tick_selected(active:Bool,world:C.World,+context:Context,light:L.State,loading:Maybe<&2,BW.Cursor>,
+def tick_activated(world:C.World,+context:Context,light:L.State,loading:Maybe<&2,BW.Cursor>,
     entries:List<&1,Store.Entry>,keys:List<&2,String>,effects:List<&2,Store.Effect>,details:List<&2,BodyDetails>,
     incarnations:Map<&2,Nat>,acknowledged_resets:Nat,owned_tail:List<&1,Sidecar>) ->
     C.World & Sidecar & Result<&2,&2,String,Bool>:
-  match active owned_tail:
-    case False{} owned_tail:
-      (world,Initialized{context,light,loading,entries,CW.Idle{},keys,effects,details,incarnations,acknowledged_resets,owned_tail},Done{False{}})
-    case True{} Nil{}:
+  match owned_tail:
+    case Nil{}:
       completed(context,effects,Lifecycle{details,incarnations,acknowledged_resets},[],Actor.started(~Context,~properties,~enabled,context,cooking_context(context),
         CW.start_tick(~Context,~properties,~enabled,context,cooking_context(context),
           CW.State{BW.State{world,light,loading},entries,CW.Idle{},keys})))
-    case True{} child <> rest:
+    case child <> rest:
       (world,Initialized{context,light,loading,entries,CW.Idle{},keys,effects,details,incarnations,acknowledged_resets,child <> rest},Fail{"local-cooking:noncanonical-sidecar-tail"})
+
+def tick_selected(active:Bool,world:C.World,context:Context,light:L.State,loading:Maybe<&2,BW.Cursor>,
+    entries:List<&1,Store.Entry>,keys:List<&2,String>,effects:List<&2,Store.Effect>,details:List<&2,BodyDetails>,
+    incarnations:Map<&2,Nat>,acknowledged_resets:Nat,owned_tail:List<&1,Sidecar>) ->
+    C.World & Sidecar & Result<&2,&2,String,Bool>:
+  match active:
+    case False{}:
+      (world,Initialized{context,light,loading,entries,CW.Idle{},keys,effects,details,incarnations,acknowledged_resets,owned_tail},Done{False{}})
+    case True{}:
+      tick_activated(world,context,light,loading,entries,keys,effects,details,incarnations,acknowledged_resets,owned_tail)
 
 def tick_idle(world:C.World,scheduled:Bool,context:Context,light:L.State,loading:Maybe<&2,BW.Cursor>,
     entries:List<&1,Store.Entry>,keys:List<&2,String>,effects:List<&2,Store.Effect>,details:List<&2,BodyDetails>,
