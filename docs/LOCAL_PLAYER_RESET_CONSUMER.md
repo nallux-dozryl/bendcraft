@@ -82,3 +82,42 @@ ordinary baselines were not repeated.
 Current confidence is high for file-only provenance and canonical fixture
 encoding. Native behavior, transport, durable saves, cold continuation and
 runtime admission remain unverified until their explicit shared-artifact run.
+
+The pure production composition now has three independently kernel-checked
+contracts in `src/local_player_reset_laws.bend`, with proofs in
+`src/local_player_reset_proof.bend`. The success contract compares the complete
+MH owner and returned Tables: the actual resolved movement, required read-only
+ray answer, history update and travel finish compose into the specified final
+Body, support, minor collision, history and observations. These service outcomes
+are premises. The contract selects one movement/history/finish result; it does
+not prove an operational invocation count or the services' numerical behavior.
+
+The refusal contract threads an actual required-ray failure through TH, X,
+facade diagnostics and the complete R save detour. It restores the whole phase
+anchor while retaining the returned Engine and Tables; only `last_error` changes
+to the specified diagnostic. The anchor can be the post-common scheduled state.
+The interface contract equates scheduled preparation with direct preparation at
+the actual successful post-`Core.step`/post-`ECT.common_tick` owner. It does not
+equate scheduling with direct preparation at the old state. All equations retain
+the affine world and table owners rather than comparing scalar projections.
+
+The full imported-book verdict/export attempts timed out before producing usable
+IR. A selective compiler-source export then retained every checked type and body
+in the loaded book and restricted only `book.order` to the three actual theorem
+roots. The unchanged proof bodies and their actual recursive dependencies
+exported as 1,750 declarations, 1,201,351 bytes, with no scope exclusions. The
+pinned independent cached kernel accepted that artifact in 0.199 seconds with
+`ALL PROOFS CHECK`. This certifies the three stated conditional contracts and
+their retained dependencies, not every unrelated imported declaration.
+
+`evidence/local-player-reset-proof-002.json` retains the exact script, root names,
+compiled type/proof/body hashes, repository compiler-source pins, Node 23.5.0
+runtime and stack setting, export and kernel receipts, and the earlier failed
+attempts. The Node source-API route required `--stack-size=4096` after its default
+stack failed during ordinary loading; no compiler or production source was
+edited. The repository source API and installed CLI are pinned separately; an
+original build manifest linking the bundled CLI to those source files has not
+been independently established. IEEE arithmetic, universal service preservation,
+transport/leases, durable host IO and Java whole-tick parity remain outside these
+pure conditional contracts. Confidence is high for their independent kernel
+acceptance.
