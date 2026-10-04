@@ -7,6 +7,7 @@ import ./local_player_scene.bend as Scene
 import ./world_mesh.bend as WM
 import ./core.bend as C
 import ./player_crafting_session_adapter.bend as CS
+import ./player_cooking_menu.bend as PCMenu
 
 def ensured(width:U32,height:U32,policy:GS.Policy,result:S.State & Result<&2,&2,String,Unit>) -> S.State & Result<&2,&2,String,GS.Sample>:
   (saved,status) = result
@@ -23,17 +24,18 @@ def sampled(saved:S.State,+width:U32,+height:U32,policy:GS.Policy) -> S.State & 
   supported(WM.frame_valid(WM.frame(width,height)),saved,width,height,policy)
 
 def returned(lease:B.Lease,counter:Nat,nonce:String,capability:String,owner:C.Capability,crafting:Maybe<&2,CS.Context>,
+    cooking:PCMenu.Handle,next_cooking_menu:U32,
     result:S.State & Result<&2,&2,String,GS.Sample>) -> B.State & Result<&2,&2,String,GS.Sample>:
   (saved,status) = result
-  (B.State{saved,B.renewed(lease),counter,nonce,capability,owner,crafting},status)
+  (B.State{saved,B.renewed(lease),counter,nonce,capability,owner,crafting,cooking,next_cooking_menu},status)
 
 def checked(valid:Bool,state:B.State,width:U32,height:U32,policy:GS.Policy) -> B.State & Result<&2,&2,String,GS.Sample>:
   match valid state:
     case False{} _: (state,Fail{"RendererLeaseOrSequence"})
-    case True{} B.State{saved,lease,counter,nonce,capability,owner,crafting}:
-      returned(lease,counter,nonce,capability,owner,crafting,sampled(saved,width,height,policy))
+    case True{} B.State{saved,lease,counter,nonce,capability,owner,crafting,cooking,next_cooking_menu}:
+      returned(lease,counter,nonce,capability,owner,crafting,cooking,next_cooking_menu,sampled(saved,width,height,policy))
 
 # Same actor lease and expected-sequence admission as the legacy frame path.
 def frame(state:B.State,epoch:String,sequence:Nat,width:U32,height:U32,policy:GS.Policy) -> B.State & Result<&2,&2,String,GS.Sample>:
-  B.State{saved,+lease,counter,nonce,capability,owner,crafting} = state
-  checked(B.admitted(lease,epoch,sequence),B.State{saved,lease,counter,nonce,capability,owner,crafting},width,height,policy)
+  B.State{saved,+lease,counter,nonce,capability,owner,crafting,cooking,next_cooking_menu} = state
+  checked(B.admitted(lease,epoch,sequence),B.State{saved,lease,counter,nonce,capability,owner,crafting,cooking,next_cooking_menu},width,height,policy)

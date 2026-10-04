@@ -1,0 +1,57 @@
+{
+  "actor": {
+    "bytes": 9711976,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-017/actor",
+    "sha256": "66bbe97279f8ee268d891ad762d5da40337e1c318d09160e415823e25d4d8bd5"
+  },
+  "client": {
+    "bytes": 7253224,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/004/renderer",
+    "sha256": "68e6920f515bf608207a2bb64a4ef50c6adc47277df2ca8c17a822973a6ba31c"
+  },
+  "client_stderr": {
+    "bytes": 52,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-demand-runtime/001/renderer-supported/stderr",
+    "sha256": "7bb1702e94bf98764d3fba653632cd7f6867c59c67073807c84cdf155463602f"
+  },
+  "client_stdout": {
+    "bytes": 39,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-demand-runtime/001/renderer-supported/stdout",
+    "sha256": "63368eba917af47c95d75972cc4848602af6fd809db303079e072f5eb614d38e"
+  },
+  "diagnosis": "Actual furnace publication succeeded. Cold load holds the sole Link silent across resource IO; socket/lease bounds require real client keepalive, not a test timeout increase. In-memory relay failed before existing helper retained exchanges; exact negative response/trace is not claimed.",
+  "first_failure": {
+    "bytes": 123,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-demand-runtime/001/first-failure.json",
+    "sha256": "6246bcdfb1e9be4098c513f6fd4138b7502daf6eafc5ef489a6a6c5e3405778f"
+  },
+  "native_build": {
+    "bytes": 6590,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/004/build.json",
+    "sha256": "4c074e288e9187ae7dba97eacbe9068f4cad3284e94d87795cc97465d0944add"
+  },
+  "native_consumer_run": true,
+  "next": "Only exact StateNotLoaded Pending receives asynchronous worker; main keeps sole Link and correlated release-only Input heartbeats, drains affine result on network failure. Fresh substantive005, no004 retry.",
+  "original_source_negative": {
+    "code": "sent_status resets idle read deadline to5000n+now; read_ready/received close expired connection",
+    "code_lease": "renewed resets100 paused/live pulses; silent reload does not renew",
+    "lease": {
+      "bytes": 27592,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-017/source/src/remote_resource_backend.bend",
+      "sha256": "efbbae548b9e10d3838ee1d79c2db213e579aef77be9389ee19bb17218c90ea3"
+    },
+    "transport": {
+      "bytes": 20525,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-017/source/src/remote_resource_transport.bend",
+      "sha256": "48a95a9b7eabcf4990aec3551503c79072be7e5c577db1eac99af9d811fc8e94"
+    }
+  },
+  "owned_cleanup": {
+    "bytes": 1215,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-demand-runtime/001/owned-groups-cleanup.json",
+    "sha256": "b26b228cdd86d6a570a630a3fa9e27d959f41e8f1a10fb8d5830f3403c9375e4"
+  },
+  "pixel_acceptance": false,
+  "schema": "generic-resource-demand-runtime-failure-v1",
+  "status": "family_published_then_actual_transport_failure"
+}
