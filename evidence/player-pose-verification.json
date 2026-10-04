@@ -1,0 +1,168 @@
+{
+  "actual_java": {
+    "bytes": 27563,
+    "file": "player-pose-reference.json",
+    "sha1": "894b5d649d556d7b34c00c9e75c55de5d6a1480c",
+    "sha256": "99a3fd9ed0acfe5b70a70948b1d6fb7ab8cd92e0483af4a30ad8fbb6c8ceca03"
+  },
+  "counts": {
+    "actual_fit_queries": 86,
+    "actual_updates": 46,
+    "admitted_updates": 44,
+    "metadata_reference_rows": 54,
+    "native_exact_output_rows": 243,
+    "native_metadata_or_refusals": 18,
+    "rejection_original_recovery_cases": 29,
+    "scale_refusals": 2,
+    "source_laws_in_full_import_kernel": 4
+  },
+  "documentation": {
+    "bytes": 11442,
+    "file": "PLAYER_POSE.md",
+    "sha1": "35f1b1131d22b538e71f1439a2519024cbb8e6c1",
+    "sha256": "cbfbcf33b47158917286d72b8699ca1087cc055428a9101d4ed0d08dd0ce011e"
+  },
+  "durations_seconds": {
+    "full_import_kernel": 9.270143,
+    "native_build": 25.497481,
+    "native_comparison": 0.491586
+  },
+  "harness": {
+    "bytes": 16329,
+    "file": "player_pose.bend",
+    "sha1": "3d718ae752a387086633170638ac2962bd1fa5b0",
+    "sha256": "03657addb3c28c21c4647a131702025e9caa722d9215ec2cd3ff23d9626d02c9"
+  },
+  "kernel": {
+    "bytes": 4207,
+    "file": "player-pose-kernel.json",
+    "sha1": "c89b1392443e4513832bcde539b7d8bfc0cfcbc8",
+    "sha256": "519afeb7fa47d7daf23ddae893cc91f4633a1544eea5c982f7395a8ce2bc5fc6"
+  },
+  "native": {
+    "bytes": 46631,
+    "file": "player-pose-native.json",
+    "sha1": "62ab852f52265ede00640b3d5b37358815f29559",
+    "sha256": "c72922e24de9c8c44b2a779d3d512dafa7a58b2fa00f70dbe2cac6bff139b900"
+  },
+  "ordinary_preparation": {
+    "bytes": 5337,
+    "file": "player-pose-preparation.json",
+    "sha1": "d8311349ae795fcce700b50eaed551e11176d68e",
+    "sha256": "c628af7a2dfb4fd5b8a64ec9da1d97578ed1baddfd5983bfed4269e0b76ea492"
+  },
+  "preserved_generation": {
+    "all_10_preparation_dependency_pins_equal": true,
+    "clang_commands_sha256": "fbaf1387d6eb920abfc8a38fcb82e808555cee455846d89b1e2f64fdea6aaeed",
+    "clang_seal_encoding": "canonical JSON UTF-8, ensure_ascii=False, sorted keys, comma/colon separators, no trailing newline",
+    "expected_and_actual_output_sha256": "1f4e447908038807121f5a927e51f700308ee71acc679b1d3a840a1d01d99a26",
+    "input_sha256": "07ce0c49c38f8e917da27498577298c2a57c01c19e91618bf7071f73b108f0b0"
+  },
+  "probe": {
+    "bytes": 24016,
+    "file": "reference_player_pose_probe.py",
+    "sha1": "13d7169b79d5e43d813680bdb722a496a0fde19a",
+    "sha256": "24f1ea6e5812e028b2fbab8aa70b89b8a5997bd2a9dbbda4213c00cfa8295ca0"
+  },
+  "process_groups_reaped": true,
+  "raw_artifacts": [
+    {
+      "bytes": 5486,
+      "file": "player-pose-native-build.json",
+      "path": "build/player-pose-native-build.json",
+      "sha1": "f0a52b4fab9222586e11e1c94c878f456431b65e",
+      "sha256": "a54b24d727f89810f91b1299117361641338190dd933f1044420e6fa9a3dd9c7"
+    },
+    {
+      "bytes": 2679920,
+      "file": "player-pose-tests",
+      "path": "build/player-pose-tests",
+      "sha1": "c76fda35512b1bcdaefbd988efc7216f23920c6f",
+      "sha256": "3276cd5faa99a960136d5d3c97ba723a96f1f611581d00f1a3444057a002ed0d"
+    },
+    {
+      "bytes": 6214922,
+      "file": "source-2.c",
+      "path": "build/player-pose-tests-artifacts/native-capture/source-2.c",
+      "sha1": "43cde2b959dd3d622eef246370992e670bb4427b",
+      "sha256": "095630ae3385acbd988e63efb7d9ec7a224facd976bf5c09aeb7501ec9ac7946"
+    },
+    {
+      "bytes": 213,
+      "file": "commands.jsonl",
+      "path": "build/player-pose-tests-artifacts/native-capture/commands.jsonl",
+      "sha1": "2f25d43f6f2a00b9eee76d502b35369ee6368964",
+      "sha256": "69870ff769d73ee2aac8073de51e106cf01a651f00b5d9779f9c1c9efd8ee57a"
+    },
+    {
+      "bytes": 0,
+      "file": "native-stdout.txt",
+      "path": "build/player-pose-tests-artifacts/native-stdout.txt",
+      "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 0,
+      "file": "native-stderr.txt",
+      "path": "build/player-pose-tests-artifacts/native-stderr.txt",
+      "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 90027,
+      "file": "comparison-stdout.txt",
+      "path": "build/player-pose-tests-artifacts/comparison-stdout.txt",
+      "sha1": "00838b593bc8f60bb9872c58f5de6ae7fa76e28b",
+      "sha256": "8b3cc1fba9099e6ca4b77f980914946a5a0222a6f9376c555af15a334e5ce5f0"
+    },
+    {
+      "bytes": 0,
+      "file": "comparison-stderr.txt",
+      "path": "build/player-pose-tests-artifacts/comparison-stderr.txt",
+      "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 17,
+      "file": "kernel-stdout.txt",
+      "path": "build/player-pose-tests-artifacts/kernel-stdout.txt",
+      "sha1": "ba8ec8289ea6f6e6fec687b636c07f05c26d0a8b",
+      "sha256": "61b73cda11b6b665b9f99f2defd3d3b57f985c865225e942a5bdaa594a503e47"
+    },
+    {
+      "bytes": 0,
+      "file": "kernel-stderr.txt",
+      "path": "build/player-pose-tests-artifacts/kernel-stderr.txt",
+      "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "raw_artifacts_ignored": true,
+  "reference": {
+    "bytes": 310259,
+    "file": "player_pose.json",
+    "sha1": "41ab0fb7398a213a2fdb296ebc33e715d0d9040c",
+    "sha256": "9990b80a6d23a6a6463728bcb0ca9876cc9b8e7e90e374814f34aad78e8914a3"
+  },
+  "runner": {
+    "bytes": 11519,
+    "file": "test_player_pose.py",
+    "sha1": "d4f0f5c75cfd644ed3ccd8263840707352eaaf4c",
+    "sha256": "a9344cf10acba1560e665410334b3f3352ad95ce8e367577e9e17146f50d127e"
+  },
+  "scope": "Stable adult unscaled client conditional pose replay, explicit actual fit observations; no world/clock/lifecycle/full LocalPlayer tick claim.",
+  "source": {
+    "bytes": 18644,
+    "file": "player_pose.bend",
+    "sha1": "0f93802bb1407a770c18ed3a35790dfaa60b773a",
+    "sha256": "fee092d03f01673fad7f2c5e2329dbafabc1cc2781a275e5e2e5f47380eebea0"
+  },
+  "status": "passed",
+  "verdicts": {
+    "actual_java_fresh_rerun_and_plain_observer": "passed",
+    "complete_import_installed_kernel": "passed",
+    "installed_native_raw_parity": "passed",
+    "ordinary": "passed"
+  },
+  "version": "26.3"
+}

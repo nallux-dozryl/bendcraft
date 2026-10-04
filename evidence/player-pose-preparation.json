@@ -1,0 +1,134 @@
+{
+  "counts": {
+    "actual_updates": 46,
+    "expected_output_lines": 243,
+    "explicit_rejection_recoveries": 29,
+    "metadata": 18
+  },
+  "dependency_pins": {
+    "/Users/chuah/.bend/bin/bend": {
+      "bytes": 63885392,
+      "file": "bend",
+      "sha1": "ddce6e432357be618d905b19c0f79abe3d28c388",
+      "sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e"
+    },
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/player_pose.json": {
+      "bytes": 310259,
+      "file": "player_pose.json",
+      "sha1": "41ab0fb7398a213a2fdb296ebc33e715d0d9040c",
+      "sha256": "9990b80a6d23a6a6463728bcb0ca9876cc9b8e7e90e374814f34aad78e8914a3"
+    },
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/f64.bend": {
+      "bytes": 33288,
+      "file": "f64.bend",
+      "sha1": "0b66e156b910de4c17abbe0d7c4fcd1b18d27d9e",
+      "sha256": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7"
+    },
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/geometry.bend": {
+      "bytes": 13604,
+      "file": "geometry.bend",
+      "sha1": "dc026256dcd8a81bee7ac451a25d0ce22c1d613c",
+      "sha256": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f"
+    },
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/movement.bend": {
+      "bytes": 22954,
+      "file": "movement.bend",
+      "sha1": "22fa1737fd57a2a66065b9471694b310e0b97d15",
+      "sha256": "0e94fea7cc941a23d2ed7bbd2ccaf0117e6af363eb91f2db2e34428f9dd9e67f"
+    },
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_pose.bend": {
+      "bytes": 18644,
+      "file": "player_pose.bend",
+      "sha1": "0f93802bb1407a770c18ed3a35790dfaa60b773a",
+      "sha256": "fee092d03f01673fad7f2c5e2329dbafabc1cc2781a275e5e2e5f47380eebea0"
+    },
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_pose.bend": {
+      "bytes": 16329,
+      "file": "player_pose.bend",
+      "sha1": "3d718ae752a387086633170638ac2962bd1fa5b0",
+      "sha256": "03657addb3c28c21c4647a131702025e9caa722d9215ec2cd3ff23d9626d02c9"
+    },
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/reference_local_input_probe.py": {
+      "bytes": 72229,
+      "file": "reference_local_input_probe.py",
+      "sha1": "7a3300927be696f5f526623a1d503c5752ac8adb",
+      "sha256": "42ad844c7ee3616286ce99bcea00c6bc0710b20888912b6e98c1b4af6072a56e"
+    },
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/reference_player_pose_probe.py": {
+      "bytes": 24016,
+      "file": "reference_player_pose_probe.py",
+      "sha1": "13d7169b79d5e43d813680bdb722a496a0fde19a",
+      "sha256": "24f1ea6e5812e028b2fbab8aa70b89b8a5997bd2a9dbbda4213c00cfa8295ca0"
+    },
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_player_pose.py": {
+      "bytes": 11519,
+      "file": "test_player_pose.py",
+      "sha1": "d4f0f5c75cfd644ed3ccd8263840707352eaaf4c",
+      "sha256": "a9344cf10acba1560e665410334b3f3352ad95ce8e367577e9e17146f50d127e"
+    }
+  },
+  "expected_lines_sha256": "1f4e447908038807121f5a927e51f700308ee71acc679b1d3a840a1d01d99a26",
+  "fixture_argument_sha256": "07ce0c49c38f8e917da27498577298c2a57c01c19e91618bf7071f73b108f0b0",
+  "ordinary_checks": [
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_pose.bend",
+        "--check-only"
+      ],
+      "process_group_cap": true,
+      "returncode": 0,
+      "seconds": 0.200951,
+      "stderr": {
+        "bytes": 0,
+        "file": "src-player_pose-ordinary-stderr.txt",
+        "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 58,
+        "file": "src-player_pose-ordinary-stdout.txt",
+        "sha1": "7ac487c4af0e6a0b7df1ebae438bf1c0ffe5e478",
+        "sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1"
+      },
+      "timed_out": false
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_pose.bend",
+        "--check-only"
+      ],
+      "process_group_cap": true,
+      "returncode": 0,
+      "seconds": 0.526134,
+      "stderr": {
+        "bytes": 0,
+        "file": "tests-player_pose-ordinary-stderr.txt",
+        "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 58,
+        "file": "tests-player_pose-ordinary-stdout.txt",
+        "sha1": "7ac487c4af0e6a0b7df1ebae438bf1c0ffe5e478",
+        "sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1"
+      },
+      "timed_out": false
+    }
+  ],
+  "raw_artifact": {
+    "bytes": 148742,
+    "file": "prepared-fixtures.json",
+    "sha1": "22d82e39c811d764158ba1bd80f90706ffd3e53f",
+    "sha256": "3ec3e44fe14551e0e9fc91c0c576405a2a5182f4d0cea650cdfaa2ebb8d05af5"
+  },
+  "raw_artifact_ignored": true,
+  "reference": {
+    "bytes": 310259,
+    "file": "player_pose.json",
+    "sha1": "41ab0fb7398a213a2fdb296ebc33e715d0d9040c",
+    "sha256": "9990b80a6d23a6a6463728bcb0ca9876cc9b8e7e90e374814f34aad78e8914a3"
+  },
+  "status": "ordinary preparation passes; native and independent kernel not executed"
+}
