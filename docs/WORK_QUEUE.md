@@ -14,46 +14,26 @@ manual lead grants or serial review/seal/replay ceremonies; stable source/cache
 identity and bounded cleanup stay automated. Reuse unchanged passing evidence.
 Coordinate at most two heavy jobs; never repeat an equivalent timed-out build.
 
-1. **Usable authoritative saved client.** Integration owner: root and
-   `client_acceptance_ultra`; production consumers: `remote_resource_server.bend`
-   and `remote_resource_client.bend`. Join the real 20 Hz player/world actor,
-   resources, input, inventory, block interaction, TCP/MCP and durable saves.
-   Acceptance: real input reaches the same saved authority, actions obey abilities,
-   reset travel preserves ownership, full supported world/player/inventory state
-   survives acknowledged save, interruption and cold restart. Component proof
-   ownership: reset consumer, inventory and block-interaction lanes; root joins
-   LAWS/PROOF and resolves interfaces. Existing finite terrain and three-item
-   support expose missing general blockstate/resource/shape/item definitions;
-   they are not the finished product contract. The broad combined build timed
-   out before emitting C at 600.108 seconds; reduced-dispatcher and backend-only
-   variants also timed out before C. Peak sampled physical footprint reached
-   15.7 GiB. Preserve failures and cleanup observations; isolate actual expansion
-   producers before another broad build. Reuse accepted unchanged historical corpora.
-2. **Production-quality native presentation and controls.** Owner:
-   `client_presentation_ultra`; consumer: `remote_resource_client.bend`. Implement
-   configurable window/output resolution, internal render scale and HUD sizing,
-   correct resize/fullscreen where the native boundary permits, and consistent
-   physical/logical input coordinates. Target actual 1080p rendering and the
-   display-native resolution when supported. Deterministic 128×128 fixtures stay
-   tests; enlarging 320×180 adds no visual detail. Prove dimension, allocation,
-   crop and coordinate contracts against production functions. Measure real
-   scene frame times, responsiveness and memory at meaningful settings; select
-   defaults from measurements and expose supported higher settings. Native pixel
-   and coordinated/isolated real OS-input acceptance cover the remaining display
-   and control boundary; no unsolicited foreground capture.
-3. **Complete player-facing inventory interactions.** Owner:
-   `saved_inventory_ultra`, with block/wire and presentation integration owners;
-   consumers: the same remote resource client/server and saved session. Implement
-   the pinned player/menu topology, item definitions, open/close/capture behavior,
-   slot interactions and creative acquisition with authoritative replies and
-   persistent abilities. Reuse existing inventory transfer laws and add meaningful
-   authority, full-state retention/conservation and controller/interface proofs.
-   The current 36-slot/three-item codec and missing menu/item semantics are
-   concrete dependencies to extend, not a reason to design a throwaway menu.
-   Acceptance: a player acquires and arranges supported items through the native
-   interface, sees exact acknowledged counts/selection, builds with them, and
-   retains the same inventory on reload; then extend the validated definition
-   domain to the full release without substituting an easier clone.
+Current disjoint implementation owners (2026-10-04 15:06 UTC):
+
+| Active owner | Exclusive production files / namespace | Concrete deliverable and actual consumer |
+| --- | --- | --- |
+| Root | `src/mesh_render.bend`, presentation allocation laws/proof, resource entries and integration | Full-quality bounds/span/tile performance repair and renderer004; retain working003 launcher. Integrate verified subsystem APIs into real resource client/server. |
+| `reset_consumer_ultra` | NEW `src/mesh_tile_render.bend` and same-prefix laws/tests | Tile-local flat quad readers and retained scene owner, exact pixel/candidate contracts; integrate through resource frame outside Mesh to avoid import cycle. |
+| Parent `compiler_memory_static` | `src/client_render.bend` plus NEW texture_borrow tests/proofs | Return pixel values directly from chosen texture quadrant, eliminating owned rejected subtree disposal; used by Mesh/HUD/native image readers. |
+| `client_acceptance_ultra` | NEW `tools/test_playable_client_actor.py`, actor003 evidence and next actor build | Current AS/menu-return backend; correlated MenuClose, durable save, forced stop and cold reload through actual TCP/MCP. Snapshot stable inventory before later click integration. |
+| `saved_inventory_ultra` | `src/player_inventory.bend`, NEW player_inventory_click modules/laws/tests/reference | Missing pinned vanilla menu actions with complete owner retention/conservation; consumed by existing authoritative menu dispatcher. Existing close-return dependency stays stable for actor003. |
+| Parent `crafting_recipes_ultra` | NEW crafting_recipe modules/tests/reference/tools | Actual shaped/shapeless2×2/3×3 decoding/matching and result/consumption plans. Inventory integration consumes retained Catalog, original slot indices and remainders. |
+| `player_motion_current_ultra` | movement/travel/travel_world/local_collision/local_collision_world/local_travel_history; NEW player_motion_current evidence/proofs | Concrete pinned player movement/flight/collision behavior through saved LocalPlayer travel; root retains runtime/phase join ownership. |
+| `native_controls_current_ultra` | native/player_presentation.c/.js, player_presentation_native, player_controls; NEW native_controls_current tests | Native focus/capture, physical/logical input and supported presentation repair; no unsolicited foreground test; real OS acceptance remains required. |
+| `terrain_client_ultra` | NEW worldgen seed/MD5/Perlin/Blended/settings/biome/overworld modules and noise proof/reference | Exact normal-generation dependencies. Native seed/permutation/base-noise comparisons now pass; final density, biome search and chunk population remain implementation work. Existing flat generation remains working. |
+
+Independent source, reference extraction and small checks proceed concurrently.
+Only expensive compilation/native/kernel jobs share the two heavy-job slots;
+owners coordinate actual occupancy directly. No manual grants, sealing ladders
+or duplicate broad build attempts. Required physical input, visible drawable,
+audio, sustained full-quality performance and complete gameplay parity remain
+open. Working003 is preserved while subsequent generations are repaired.
 
 Prior results remain in [LOCAL_PLAYER_SESSION_NATIVE_RESULTS.md](LOCAL_PLAYER_SESSION_NATIVE_RESULTS.md),
 [FALL_RESET_WORLD_R2_NATIVE_RESULTS.md](FALL_RESET_WORLD_R2_NATIVE_RESULTS.md),

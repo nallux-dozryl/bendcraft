@@ -1,0 +1,132 @@
+{
+  "status": "PASS",
+  "confidence": "high for this exact checked-source/native build",
+  "scope": "Current production renderer with private ASCII framing repair, pure presentation/menu/input policy and actual item catalog loader. Source snapshot includes new inventory return implementation but remote authority remains separately frozen current002; no new close-disposition actor claim. No native launch, physical-input, drawable-readback, performance or whole-game completion claim from this build.",
+  "entry": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/003/source/remote_resource_client.bend",
+    "bytes": 4882,
+    "sha256": "2be51bf2176205b07ba346f71ac3bb191f6ae3afbd018b712bc4f6f2f82aa202"
+  },
+  "source_map": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/003/source/source-map.json",
+    "bytes": 36546,
+    "sha256": "ca80357afc3212b649d4edd4eb536d77b570412642aba2f60148ba008e7cbc21"
+  },
+  "loaded_source_pins": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/003/loaded-source-pins.json",
+    "bytes": 19507,
+    "sha256": "75f811b93552b09f4984a6f03ff2bee5cf34ec1e1da298340ce32f74e58e4de3"
+  },
+  "final_source_pins": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/003/final-source-pins.json",
+    "bytes": 19507,
+    "sha256": "75f811b93552b09f4984a6f03ff2bee5cf34ec1e1da298340ce32f74e58e4de3"
+  },
+  "loaded_files": 122,
+  "loaded_sources_unchanged": true,
+  "compiler_route": "Explicit reviewed private sourceAPI emitter; queue dedup/zero-available-arity guard. No installed CLI cache promotion; original bend.ts and comp.ts unchanged.",
+  "compiler_private": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/003/comp_instrumented.ts",
+    "bytes": 188216,
+    "sha256": "b6c2d35ba7bb17b1801932f7f24bc27e896805050b9026ba9fcd3161b04767b7"
+  },
+  "source_API": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/bend.ts",
+    "bytes": 137761,
+    "sha256": "7deae3693eb896f33c73867081b99d2c6f3ed3b57e77e55eb5f6260840dd0e63"
+  },
+  "original_compiler_source": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/comp.ts",
+    "bytes": 185829,
+    "sha256": "32fb66e09f608ce9e4b173384bcfeec453db8c5bc96650e26ad861bef815a8d9"
+  },
+  "installed_baseline_compiler": {
+    "path": "/Users/chuah/.bend/bin/bend",
+    "bytes": 63885392,
+    "sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e"
+  },
+  "driver": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/003/emit.mjs",
+    "bytes": 2239,
+    "sha256": "a72bd70421d7d83cbafd431efbf5a7e7329e98517664b87db940b961508cb249"
+  },
+  "emission": {
+    "seconds": 250.8924381248653,
+    "passes": 12,
+    "result": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/003/emission/result.full.json",
+      "bytes": 957,
+      "sha256": "075c682406170f47aec22e56b3876c1432655e1bd6153665eed1fdafe697de18"
+    },
+    "C": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/003/diagnostic.c",
+      "bytes": 15124199,
+      "sha256": "85c3910bc371a317e8353ecbe9bf5cc3e0101d82884eb512ff7e4f2ffd173196"
+    }
+  },
+  "native_compile": {
+    "seconds": 50.98642645776272,
+    "command": [
+      "/usr/bin/clang",
+      "-x",
+      "objective-c",
+      "-fobjc-arc",
+      "-fmodules",
+      "-std=c11",
+      "-O3",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/003/renderer.c",
+      "-lpthread",
+      "-lm",
+      "-o",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/003/renderer"
+    ],
+    "result": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/003/native-build/result.full.json",
+      "bytes": 1035,
+      "sha256": "72dc1b399d25826894b13941d96bac2f159945e64a31a009502720ab9670d8ed"
+    },
+    "stderr_bytes": 0
+  },
+  "Window_transform": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/platform_build.py",
+    "bytes": 7383,
+    "sha256": "1c9c53f77e63afa313816b8f3d1ae2ac2459273b0d0e5a26c63bbdc58c7aba8c"
+  },
+  "Window_transform_result": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/003/window-transform.json",
+    "bytes": 528,
+    "sha256": "c6c805ce934e2578e204a34e0f635ad330bd027f50d59c4357a83d7769b8543d"
+  },
+  "binary": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/003/renderer",
+    "bytes": 5547320,
+    "sha256": "dac9d1289d7d6d1c50eec2d0731a2afed376080e990d2676463ae8586c7888b3"
+  },
+  "gpu_bangs": false,
+  "foreground_launches": 0,
+  "owned_compiler_groups_absent": true,
+  "reproduce_commands": [
+    [
+      "/opt/homebrew/bin/node",
+      "--expose-gc",
+      "--max-old-space-size=6144",
+      "--stack-size=4096",
+      "--experimental-transform-types",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/003/emit.mjs"
+    ],
+    [
+      "/usr/bin/clang",
+      "-x",
+      "objective-c",
+      "-fobjc-arc",
+      "-fmodules",
+      "-std=c11",
+      "-O3",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/003/renderer.c",
+      "-lpthread",
+      "-lm",
+      "-o",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/003/renderer"
+    ]
+  ]
+}

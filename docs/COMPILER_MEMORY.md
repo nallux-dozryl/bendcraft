@@ -14,7 +14,7 @@ The read-only source-API trace identifies `fun_of` / `def_raise` for actual app
 the parser exhausts the explicit 4096 MiB Node heap before raising completes.
 This is application option parsing, not the compiler's own command-line parser.
 
-Installed Bend2.0.35 isolated diagnostics contain Base and the actual Options /
+Installed Bend 2.0.35 isolated diagnostics contain Base and the actual Options /
 validator/parser, with no game imports. Equivalent validator string equality
 reduces sampled peak RSS from 1785.922 MiB to 81.391 MiB and C emission from 3.456
 seconds to 0.368 seconds. The original option vocabulary still exceeds 2 GiB after
@@ -65,7 +65,8 @@ compiler algorithm. The current 002 native build succeeds with the ordinary CPU 
 bytes, O3 compile 89.13 seconds, with 3,277,373,440 bytes maximum RSS reported by
 macOS time. The earlier actor008 separately passes four real receiver scenarios,
 eight actual-Java steps and eight complete durable-bundle comparisons. Current
-menu/TCP/v3-save/coldreload checks remain required. Its frozen runtime predates the
+menu/TCP/MCP/v3-save/coldreload checks now pass in 12.167 seconds, including 12
+complete menu authority replies and two exact 1,712,569-byte saves. Its frozen runtime predates the
 subsequent selector-module extraction in the working tree.
 
 ## Scope and remaining work
@@ -85,7 +86,11 @@ Confidence is high in both demonstrated contributors. Attribution of the entire
 original 15.7 GiB physical peak remains open: the successful sourceAPI run uses
 a different runtime plus explicit private mitigations. Complete C is now
 available as native executables for both the earlier actor and frozen integrated
-actor002. The compatible windowed renderer and current actor boundary checks
-remain required before offering a playable pair. Minecraft runtime memory, frame
-times and client performance remain unmeasured by these experiments. Preserve all failed inputs and continue from
-the named producer/pass state with bounded jobs; no equivalent 10-minute retry.
+actor002. The compatible renderer003 now emits C in 250.892 seconds and builds
+natively in 50.986 seconds. Actual hidden fresh-world/JAR/item-table startup,
+durable exit save and two trace-disabled 1920×1080 frame/menu cycles pass. Their
+3.827/3.909-second render/presentation envelopes are runtime observations separate
+from compiler memory. High-resolution trace recording exposes a retained
+follow-up input failure; the normal unrecorded path passes. Physical controls,
+visible drawable acceptance, sustained performance and whole-game parity remain
+open. Preserve the earlier failed inputs; no equivalent unchanged 10-minute retry.

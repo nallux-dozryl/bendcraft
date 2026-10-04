@@ -1,56 +1,50 @@
 # Status
 
-Engineering resumed after the user's explicit 2026-10-04 continuation request.
-The checkpoint remains immutable. Seven implementation lanes resumed with
-disjoint ownership; actual gpt-6.1-sol/ultra replacements took over after the
-app rejected in-place settings changes for v2 subagents. Two heavy execution
-slots remain the limit. Saved inventory, block interaction, custom bounded
-superflat terrain and HUD are being joined to the existing saved resource
-client alongside the checked fall-reset join. Prior passing/failing generations
-remain preserved. The user resumed the persistent goal; `get_goal` confirms active status.
-No unsupported status mutation was made.
+Target: Minecraft Java 26.3. Compiler: Bend 2.0.35. The full goal remains active
+and incomplete; the current build is a limited integrated client.
 
-Target: Minecraft Java 26.3. Compiler: Bend 2.0.35. Full goal remains incomplete.
+The current paired artifacts now exist: `build/compiler-producer-diagnostic-010/actor`
+uses the frozen current002 backend, and `build/playable-renderer-current/003/renderer`
+uses current production presentation/menu/input code with the repaired private
+ASCII frame receiver. The actor compiled after 159.196 seconds of C emission and
+89.13 seconds of O3 native compilation. The renderer compiled after 250.892 seconds
+of C emission and 50.986 seconds of O3 compilation. Original `bend.ts`/`comp.ts`
+remain unchanged; these are explicitly identified private sourceAPI builds.
 
-The 2026-10-04 playable generation is sealed at
-`8a15c21f206473c5d29480ad72f7c361ded377c7f2947d79f7fd533590a80b7e`
-(135 Bend import-graph rows, 221 admitted files). Inventory, superflat,
-block interaction, wire and HUD components have their scoped source checks;
-the production backend and renderer entries reach only declared native
-dependencies. The combined checker reached its 60-second cap without
-diagnostics, so whole-entry checking is incomplete. Root file admission passed,
-and the one fresh native build failed at 600.108 seconds before emitting C.
-Its failed/unknown cleanup receipt is retained; later observations establish
-that its owned process group is absent. The reduced live dispatcher also failed
-at 600.075 seconds before C or a binary; the initial cleanup uncertainty and
-later absence observation remain separate. No new native behavior resulted.
-The backend-only entry also failed at 600.087 seconds without C or a binary;
-the sampled peak physical footprint was 15.7 GiB on this 18 GiB machine.
-All three failed generations remain preserved. The next work isolates actual
-compiler expansion producers; no fourth broad retry is planned. The active
-runner uses one C emission, verified content-keyed cache reuse and immutable
-attempt directories. New gameplay, save/reload and protocol behavior still
-await a working artifact. Earlier
-accepted artifacts and immutable evidence remain separate. The current main
-menu/settings/terrain expansion is outside that archived backend generation.
-A paired renderer consumer and inventory screen are being
-prepared without changing the failed generation. The user requires finished
-presentation contracts and proof-led pure correctness. Routine manual
-admission/review/grant ladders are removed; automated source/cache identity and
-bounded cleanup remain. No foreground launch is authorized by this preparation.
+Actual backend TCP/MCP checks pass in 12.167 seconds: complete menu/status/WG
+replies, first-person break/place, permission and item-limit refusals, exact v3
+save bytes, forced-stop recovery and cold reload. Actual fresh `missing=create`
+launcher startup now loads the installed JAR and verified 1,658-item table,
+populates 104 sections, renders, and receives a durable save acknowledgement on
+exit. The 128×128 CPU image matches every RGB channel of the independent original
+JAR/Java quad and HUD comparison. Two normal trace-disabled 1920×1080 frames also
+pass with a 480×270 HUD; render/composition/Window.frame envelopes are 3.827 and
+3.909 seconds. This is slow and establishes two cycles, not sustained FPS.
+High-resolution image recording causes a subsequent private-input failure; that
+failed attempt remains retained. Focus and Spaces stayed unchanged throughout
+these hidden launches. Physical input, visible drawable acceptance, Retina
+resize/fullscreen behavior and full game performance remain open.
 
-Current pure contracts are discoverable in [PRODUCTION_PROOFS.md](PRODUCTION_PROOFS.md).
-The 46-law root aggregation passes independent kernel checking; three unchanged
-reset composition laws, seven presentation laws and five interaction authority
-laws independently pass their complete selective dependency exports. Full
-interaction fidelity, expanded inventory,
-focus/capture and generation proof obligations remain explicit.
+The local launcher is `build/playable-renderer-current/003/play.sh`. Normal exit
+requests the actual Bend authority's durable save before stopping the actor;
+save refusal retains the actor and private reconnect environment. The launcher
+uses the prior backend generation, so return carried/crafting items before exit.
+New automatic inventory-return logic passes twelve independent-kernel laws and
+29 focused native cases; it is not yet in this backend artifact. No foreground window was launched.
 
-The current main startup now reads the full 1,658-item definition catalog and
-uses a linear runtime codec for durable generator settings. Its joined source
-check completes in 53.578 seconds with no typing/ownership/proof errors and only
-116 declared native boundaries, on unchanged integration inputs. This result
-does not establish native execution; see `evidence/playable-current-startup-source-checks.json`.
+The 65-law root aggregation and separate current production targets are indexed
+in [PRODUCTION_PROOFS.md](PRODUCTION_PROOFS.md). Current independent-kernel results
+include five complete menu-adapter authority laws, nine Screen/controller laws,
+seven presentation allocation/event laws, nine presentation focus/projection laws,
+three saved ability/reset composition laws and 49 generation/topology roots.
+Each scope and its remaining obligations stay explicit. The first three broad
+600-second build failures, original 15.7 GiB compiler footprint, intermediate heap
+failure and initial framing/host-expectation failures remain historical evidence.
+See [COMPILER_MEMORY.md](COMPILER_MEMORY.md) and the current compact artifacts
+under `evidence/playable-renderer-current-*`.
+
+Minecraft is a standalone repository on `master`, with coherent scoped unsigned
+local commits. The user will push manually while SSH needs their passphrase.
 
 ## Established
 
@@ -59,7 +53,7 @@ does not establish native execution; see `evidence/playable-current-startup-sour
 - Compiler source revision verified: 79df8d9c40722ee9507a1e253f283b51025f9d6c.
 - Installed reference jar and version metadata exist under the local Minecraft installation.
 - Full data inventory extracted reproducibly from hash-verified official artifacts: 1,286 blocks / 35,723 states, 1,658 items, 161 entity types, 95 static registries / 7,053 entries, 94 command roots / 2,475 nodes. Inventory is not behavior implementation.
-- Independent Lean 4.34.0 distribution fetched and SHA-256 verified. BendTT kernel built and cached. Current root PROOF.bend accepts 46 implementation laws in checker and independent kernel (35 foundations plus eleven player CoreEdit contracts); saved-client composition has separate scoped targets.
+- Independent Lean 4.34.0 distribution fetched and SHA-256 verified. BendTT kernel built and cached. Current root PROOF.bend accepts 65 implementation laws in checker and independent kernel (35 foundations, eleven player CoreEdit contracts and nineteen options laws); saved-client composition has separate scoped targets.
 
 ## Current implementation
 

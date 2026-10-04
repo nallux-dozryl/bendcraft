@@ -7,6 +7,7 @@ import ../src/png.bend as P
 import ../src/inventory.bend as I
 import ../src/block_resources.bend as Resources
 import ../src/block_bake.bend as Bake
+import ../src/player_presentation.bend as Presentation
 
 # These checks use synthetic inputs and no Window, socket or saved-world owner.
 # OS-input and pinned-vanilla HUD acceptance remain separate evidence.
@@ -191,6 +192,68 @@ def checks_presentation() -> IO(Unit):
     require(U32.is_eq(pixel(H.presentation(logical,False{},320,180),320,180,160,90),4293774249),
       "hidden path changed logical pixels")
 
+def plan_matches(plan:Presentation.Plan,scene_width:U32,scene_height:U32,
+    output_width:U32,output_height:U32,hud_width:U32,hud_height:U32) -> Bool:
+  Presentation.Plan{settings,Presentation.Viewport{hw,hh,ow,oh},sw,sh,pw,ph} = plan
+  U32.is_eq(sw,scene_width) && U32.is_eq(sh,scene_height) &&
+    U32.is_eq(ow,output_width) && U32.is_eq(oh,output_height) &&
+    U32.is_eq(hw,hud_width) && U32.is_eq(hh,hud_height)
+
+def mapped_mouse(event:Event) -> Bool:
+  match event:
+    case Mouse{x,y,button,down}:
+      U32.is_eq(x,100) && U32.is_eq(y,200) && U32.is_eq(button,1) && down
+    case _: False{}
+
+def preserved_look(event:Event) -> Bool:
+  match event:
+    case Look{dx,dy}: U32.is_eq(F32.bits(dx),1065353216) && U32.is_eq(F32.bits(dy),3204448256)
+    case _: False{}
+
+def checks_production_presentation() -> IO(Unit):
+  +plan = Presentation.plan(Presentation.Settings{1920,1080,50,0,False{},False{}},
+    Presentation.Geometry{1920,1080,960,540},True{})
+  +native_plan = Presentation.plan(Presentation.Settings{3456,2234,100,0,True{},False{}},
+    Presentation.Geometry{3456,2234,1728,1117},True{})
+  +texture = color_texture(4281558732)
+  +view = {H.View{4,[H.Stack{64,Some{texture}},H.Empty{},H.Empty{},H.Empty{},H.Stack{2,Some{texture}},
+    H.Empty{},H.Empty{},H.Empty{},H.Empty{}]}:H.View}
+  +image = H.compose(Pix{4279383126},view,plan)
+  +cell = H.native_overlay(2n,Pix{4279383126},view,H.layout(480,270),
+    Presentation.hud_viewport(plan),608,996,4,True{})
+  do IO<Unit>:
+    require(Presentation.dimensions(1920,1080) && Presentation.dimensions(3456,2234) &&
+      Bool.not(Presentation.dimensions(4097,1080)),"production dimension admission")
+    require(U32.is_eq(Presentation.side(1920,1080),2048) &&
+      U32.is_eq(Presentation.backing_pixels(1920,1080),4194304) &&
+      U32.is_eq(Presentation.side(3456,2234),4096) &&
+      U32.is_eq(Presentation.backing_pixels(3456,2234),16777216),"power-of-two backing allocation")
+    require(plan_matches(plan,960,540,1920,1080,480,270) &&
+      plan_matches(native_plan,3456,2234,3456,2234,864,558),"scene scale and output/HUD extents")
+    require(U32.is_eq(Presentation.effective_scale(128,128,0),1) &&
+      U32.is_eq(Presentation.effective_scale(1920,1080,2),2),"auto and explicit HUD scale")
+    require(mapped_mouse(Presentation.native_event(Mouse{50,100,1,True{}},plan)) &&
+      preserved_look(Presentation.native_event(Look{1.0,F32.sub(0.0,0.5)},plan)),"content point coordinates or relative Look")
+    require(U32.is_eq(Presentation.coordinate(959,960,1920),1918) &&
+      U32.is_eq(Presentation.coordinate(960,960,1920),1918) &&
+      U32.is_eq(Presentation.coordinate(1919,1920,480),479) &&
+      U32.is_eq(Presentation.pointer_coordinate(960,960,1920),1920),"bounded endpoint and outside pointer mapping")
+    require(U32.is_eq(pixel(image,1920,1080,960,540),4293774249) &&
+      U32.is_eq(pixel(image,1920,1080,975,540),4293774249) &&
+      U32.is_eq(pixel(image,1920,1080,976,540),4279383126),"native HUD crosshair mapping")
+    require(U32.is_eq(pixel(image,1920,1080,920,988),4294967295) &&
+      U32.is_eq(pixel(image,1920,1080,608,996),4281558732),"native selected border or icon mapping")
+    require(U32.is_eq(pixel(image,1920,1080,984,1052),4278190080) &&
+      U32.is_eq(pixel(image,1920,1080,988,1056),4294967295),"native count shadow/glyph mapping")
+    require(U32.is_eq(pixel(image,1920,1080,1320,1070),4283782485) &&
+      U32.is_eq(pixel(image,1920,1080,1324,1070),4279383126),"native bar right edge mapping")
+    require(U32.is_eq(pixel(image,1920,1080,1919,1079),4279383126) &&
+      U32.is_eq(pixel(image,1920,1080,1920,0),0) &&
+      U32.is_eq(pixel(image,1920,1080,0,1080),0),"native drawable edge or crop padding")
+    require(U32.is_lt(leaves(image),262144),"uniform scene/HUD composition expanded the full 1080 backing")
+    require(U32.is_eq(leaves(cell),1) && U32.is_eq(pixel(cell,4,4,3,3),4281558732),
+      "native uniform icon cell was not retained as one subtree")
+
 def run() -> IO(Unit):
   do IO<Unit>:
     checks_input()
@@ -198,6 +261,7 @@ def run() -> IO(Unit):
     checks_data()
     checks_pixels()
     checks_presentation()
+    checks_production_presentation()
     IO.print("PASS player HUD: saved values, resource identifiers, responsive sparse pixels, capture transitions, strict reply types")
 
 def main() -> IO(Unit):

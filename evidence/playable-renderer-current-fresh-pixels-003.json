@@ -1,0 +1,53 @@
+{
+  "status": "PASS",
+  "confidence": "high for this exact rendered CPU sample",
+  "scope": "Independent original26.3 JAR/Java baked-quad F32 ray comparator plus literal HUD painter matches all128x128 RGB channels; actual firstfresh unpaused sampledscene and emptyhotbar. No drawable framebuffer/physicalinput/fullgame parity claim.",
+  "sample_tick": 9,
+  "blocks": 256,
+  "java_visible_quads": 128,
+  "RGB_pixels": 16384,
+  "RGB_bytes": 49152,
+  "actual_sha256": "003c8800a13e34cb8cd21566c822e6d1849c7c2d837ccd75fe860af924b267a2",
+  "expected_sha256": "003c8800a13e34cb8cd21566c822e6d1849c7c2d837ccd75fe860af924b267a2",
+  "world_pixels_not_background": 2816,
+  "image": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/003/hidden-startup-001/images/0.ppm",
+  "comparison_tools": [
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_playable_resource_client.py",
+      "bytes": 50859,
+      "sha256": "dc6131f31baf470a7b28b6f6feeb228e3fc69c30cc178daeb835edbc20f8d9db"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_world_resource_frame.py",
+      "bytes": 40161,
+      "sha256": "9f7fa85a82dee1255cd805335b2a69e9cd34d1d41a013846e47f4650618a55b4"
+    }
+  ],
+  "native_inputs": {
+    "build/playable-renderer-current/003/renderer": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/003/renderer",
+      "bytes": 5547320,
+      "sha256": "dac9d1289d7d6d1c50eec2d0731a2afed376080e990d2676463ae8586c7888b3"
+    },
+    "build/playable-renderer-current/003/hidden-startup-001/client.stdout": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/003/hidden-startup-001/client.stdout",
+      "bytes": 26123,
+      "sha256": "40cf8208a989179cb06ba7905739de422cb685e9aa2e323d360e3f996a34ffb6"
+    },
+    "build/playable-renderer-current/003/hidden-startup-001/images/0.ppm": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/003/hidden-startup-001/images/0.ppm",
+      "bytes": 49167,
+      "sha256": "813bf585a14a83a69b1801ef1af357e2e5d6009856f5d7ea22bc21b6da334471"
+    }
+  },
+  "reference_inputs": {
+    "reference/model_semantics.json": {
+      "bytes": 4799077,
+      "sha256": "3cbe8aa7780f14c1b37159a885710b04680e3b6c4ffa4975b4d8297015f11e7e"
+    },
+    "reference/world_visibility.json": {
+      "bytes": 2707188,
+      "sha256": "c81f6e26110d2275905a6d94f30462935814e8951fdd8e6c10f9a084febacbde"
+    }
+  }
+}

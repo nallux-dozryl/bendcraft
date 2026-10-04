@@ -1,6 +1,10 @@
 import Base
 import ./client_render.bend as R
 import ./png.bend as P
+import ./player_presentation.bend as Presentation
+
+def dimensions(width:U32,height:U32) -> Bool:
+  Presentation.dimensions(width,height)
 
 # Input vertices are already baked, in the camera's finite coordinate frame.
 # Production model parsing/baking, world tint, AO and lightmaps are upstream.
@@ -112,7 +116,7 @@ def textures_valid(textures:List<&2,R.Texture>) -> Bool:
 
 def validation(scene:Scene,+textures:List<&2,R.Texture>,+width:U32,+height:U32) -> String:
   Scene{+camera,quads,+settings} = scene
-  P.choose(String,"Dimensions",P.choose(String,"Camera",P.choose(String,"Settings",P.choose(String,"Textures",quads_error(quads,U32.from_nat(List.length(&2,R.Texture,textures)),0,0),Bool.not(textures_valid(textures))),Bool.not(settings_valid(settings))),Bool.not(camera_valid(camera))),U32.is_lt(width,4) || U32.is_lt(height,4) || U32.is_gt(width,1024) || U32.is_gt(height,1024))
+  P.choose(String,"Dimensions",P.choose(String,"Camera",P.choose(String,"Settings",P.choose(String,"Textures",quads_error(quads,U32.from_nat(List.length(&2,R.Texture,textures)),0,0),Bool.not(textures_valid(textures))),Bool.not(settings_valid(settings))),Bool.not(camera_valid(camera))),Bool.not(Presentation.dimensions(width,height)))
 
 def subtract(a:Vec3,b:Vec3) -> Vec3:
   match a b:
@@ -444,7 +448,7 @@ def frame(+n:Nat,+tree:Spatial,+quads:List<&2,Prepared>,+textures:List<&2,R.Text
 
 def render_prepared(pair:List<&2,Prepared> & List<&2,Prepared>,camera:R.Camera,+settings:Settings,+textures:List<&2,R.Texture>,+width:U32,+height:U32,accelerated:Bool) -> Image:
   (+opaque,alpha) = pair
-  +depth = P.array_depth(11n,U32.max(width,height),1)
+  +depth = Presentation.depth(width,height)
   frame(Nat.sub(depth,2n),P.choose(Spatial,spatial(10n,opaque,leaf_ready(opaque)),Flat{opaque},accelerated),alpha,textures,basis(camera,settings),settings,0,0,U32.shln(1,depth),width,height)
 
 def render_valid(error:String,scene:Scene,+textures:List<&2,R.Texture>,+width:U32,+height:U32,accelerated:Bool) -> Result<&2,&2,Error,Image>:

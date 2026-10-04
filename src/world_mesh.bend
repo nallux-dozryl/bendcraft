@@ -43,8 +43,7 @@ def relative_camera(+camera:R.Camera) -> Bool:
 
 def frame_valid(value:Frame) -> Bool:
   Frame{+width,+height,settings} = value
-  U32.is_ge(width,4) && U32.is_ge(height,4) && U32.is_le(width,1024) &&
-    U32.is_le(height,1024) && M.settings_valid(settings)
+  M.dimensions(width,height) && M.settings_valid(settings)
 
 def fits(-A:Data,values:List<&2,A>,+remaining:U32) -> Bool:
   match values:

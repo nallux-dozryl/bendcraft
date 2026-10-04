@@ -6,6 +6,7 @@ import ./block_resources.bend as BR
 import ./inventory.bend as Inv
 import ./client_controls.bend as CC
 import ./resource_client_wire.bend as Wire
+import ./player_presentation.bend as Presentation
 
 # Presentation-only values. The caller supplies a snapshot from the same saved
 # player authority as the world frame. No stack or selection is synthesized.
@@ -195,16 +196,73 @@ def draw(image:Image,view:View,+width:U32,+height:U32) -> Image:
   +depth = P.array_depth(13n,U32.max(width,height),1)
   overlay(depth,image,view,layout(width,height),0,0,U32.shln(1,depth),True{})
 
+def native_pixel(view:View,layout:Layout,viewport:Presentation.Viewport,+x:U32,+y:U32,+world:U32) -> U32:
+  Presentation.Viewport{+width,+height,+native_width,+native_height} = viewport
+  P.choose(U32,pixel(view,layout,Presentation.coordinate(x,native_width,width),
+    Presentation.coordinate(y,native_height,height),world),world,U32.is_lt(x,native_width) && U32.is_lt(y,native_height))
+
+def native_touched(layout:Layout,viewport:Presentation.Viewport,+x:U32,+y:U32,+side:U32) -> Bool:
+  Presentation.Viewport{+width,+height,+native_width,+native_height} = viewport
+  +left = Presentation.coordinate(x,native_width,width)
+  +top = Presentation.coordinate(y,native_height,height)
+  +right = Presentation.coordinate(U32.sub(U32.add(x,side),1),native_width,width)
+  +bottom = Presentation.coordinate(U32.sub(U32.add(y,side),1),native_height,height)
+  U32.is_lt(x,native_width) && U32.is_lt(y,native_height) &&
+    touched(layout,left,top,U32.add(1,U32.max(U32.sub(right,left),U32.sub(bottom,top))))
+
+def native_uniform(view:View,layout:Layout,+viewport:Presentation.Viewport,+x:U32,+y:U32,+side:U32,color:U32) -> Maybe<&2,U32>:
+  Presentation.Viewport{+width,+height,+native_width,+native_height} = viewport
+  +right = U32.sub(U32.add(x,side),1)
+  +bottom = U32.sub(U32.add(y,side),1)
+  P.choose(Maybe<&2,U32>,Some{native_pixel(view,layout,viewport,x,y,color)},None{},
+    U32.is_lt(right,native_width) && U32.is_lt(bottom,native_height) &&
+    U32.is_eq(Presentation.coordinate(x,native_width,width),Presentation.coordinate(right,native_width,width)) &&
+    U32.is_eq(Presentation.coordinate(y,native_height,height),Presentation.coordinate(bottom,native_height,height)))
+
+def native_uniform_or(color:Maybe<&2,U32>,draw:Unit -> Image) -> Image:
+  match color:
+    case Some{value}: Pix{value}
+    case None{}: draw(Unit{})
+
+def native_overlay(fuel:Nat,image:Image,+view:View,+layout:Layout,+viewport:Presentation.Viewport,
+    +x:U32,+y:U32,+side:U32,active:Bool) -> Image:
+  match fuel image active:
+    case _ _ False{}: image
+    case 0n Pix{color} True{}: Pix{native_pixel(view,layout,viewport,x,y,color)}
+    case 0n Qua{tl,tr,bl,br} True{}: Pix{native_pixel(view,layout,viewport,x,y,R.pixel_at(0n,Qua{tl,tr,bl,br},0,0,1))}
+    case 1n+ +rest Pix{+color} True{}:
+      +half = U32.div(side,2)
+      native_uniform_or(native_uniform(view,layout,viewport,x,y,side,color),unused =>
+        Qua{native_overlay(rest,Pix{color},view,layout,viewport,x,y,half,native_touched(layout,viewport,x,y,half)),
+        native_overlay(rest,Pix{color},view,layout,viewport,U32.add(x,half),y,half,native_touched(layout,viewport,U32.add(x,half),y,half)),
+        native_overlay(rest,Pix{color},view,layout,viewport,x,U32.add(y,half),half,native_touched(layout,viewport,x,U32.add(y,half),half)),
+        native_overlay(rest,Pix{color},view,layout,viewport,U32.add(x,half),U32.add(y,half),half,native_touched(layout,viewport,U32.add(x,half),U32.add(y,half),half))})
+    case 1n+ +rest Qua{tl,tr,bl,br} True{}:
+      +half = U32.div(side,2)
+      Qua{native_overlay(rest,tl,view,layout,viewport,x,y,half,native_touched(layout,viewport,x,y,half)),
+        native_overlay(rest,tr,view,layout,viewport,U32.add(x,half),y,half,native_touched(layout,viewport,U32.add(x,half),y,half)),
+        native_overlay(rest,bl,view,layout,viewport,x,U32.add(y,half),half,native_touched(layout,viewport,x,U32.add(y,half),half)),
+        native_overlay(rest,br,view,layout,viewport,U32.add(x,half),U32.add(y,half),half,native_touched(layout,viewport,U32.add(x,half),U32.add(y,half),half))}
+
+def draw_native(image:Image,view:View,+viewport:Presentation.Viewport) -> Image:
+  Presentation.Viewport{width,height,+native_width,+native_height} = viewport
+  +depth = Presentation.depth(native_width,native_height)
+  native_overlay(depth,image,view,layout(width,height),viewport,0,0,U32.shln(1,depth),True{})
+
 # Common.events preserves each event's observed capture. The first left click
 # that establishes capture is consumed, so resuming control cannot break a
 # block accidentally. A final focus/capture loss suppresses all game commands.
-def command(event:Event,admitted:Bool) -> Maybe<&2,Wire.Command>:
-  match event admitted:
-    case Key{+code,True{}} True{}:
+def command_admitted(admitted:Bool,event:Event) -> Maybe<&2,Wire.Command>:
+  match admitted event:
+    case False{} _: None{}
+    case True{} Key{+code,True{}}:
       P.choose(Maybe<&2,Wire.Command>,Some{Wire.Hotbar{U32.sub(code,49)}},None{},U32.is_ge(code,49) && U32.is_le(code,57))
-    case Mouse{x,y,0,True{}} True{}: Some{Wire.Action{0}}
-    case Mouse{x,y,1,True{}} True{}: Some{Wire.Action{1}}
+    case True{} Mouse{x,y,0,True{}}: Some{Wire.Action{0}}
+    case True{} Mouse{x,y,1,True{}}: Some{Wire.Action{1}}
     case _ _: None{}
+
+def command(event:Event,admitted:Bool) -> Maybe<&2,Wire.Command>:
+  command_admitted(admitted,event)
 
 def prepend(value:Maybe<&2,Wire.Command>,tail:List<&2,Wire.Command>) -> List<&2,Wire.Command>:
   match value:
@@ -235,7 +293,8 @@ def presentation_height(human:Bool,logical:U32) -> U32:
 # Base's Window samples against the drawable's power-of-two backing side.
 # A rectangular logical raster therefore needs a Bend-owned projection first.
 # Constant source subtrees are returned as one Pix, without visiting each
-# destination pixel. The non-resizable human drawable is exactly 960x540.
+# destination pixel. Production composition uses its measured output extent;
+# presentation() below remains the historical fixed960 fixture compatibility.
 def uniform(fuel:Nat,image:Image,+x:U32,+y:U32,+right:U32,+bottom:U32,+side:U32) -> Maybe<&2,U32>:
   match fuel image:
     case _ Pix{color}: Some{color}
@@ -293,6 +352,17 @@ def presentation(image:Image,human:Bool,width:U32,height:U32) -> Image:
   match human:
     case False{}: image
     case True{}: project(image,width,height,960,540)
+
+def project_matching(image:Image,width:U32,height:U32,output_width:U32,output_height:U32,same:Bool) -> Image:
+  match same:
+    case True{}: image
+    case False{}: project(image,width,height,output_width,output_height)
+
+def compose(image:Image,view:View,plan:Presentation.Plan) -> Image:
+  Presentation.Plan{settings,+viewport,+width,+height,point_width,point_height} = plan
+  Presentation.Viewport{hud_width,hud_height,+output_width,+output_height} = viewport
+  draw_native(project_matching(image,width,height,output_width,output_height,
+    U32.is_eq(width,output_width) && U32.is_eq(height,output_height)),view,viewport)
 
 def command_result(command:Wire.Command,status:Result<&2,&2,String,Wire.Reply>) -> Result<&2,&2,String,Unit>:
   match command status:
