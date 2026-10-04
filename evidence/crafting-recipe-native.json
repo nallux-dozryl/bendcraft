@@ -1,0 +1,199 @@
+{
+  "binary": {
+    "bytes": 1799128,
+    "file": "crafting-recipe-tests",
+    "sha1": "77e4599d2a07798d9fe55a37476db7cc0990c6a4",
+    "sha256": "f1e2464c8d1fcd729478d4425b9f898d5e421dc5977408f11f57c38fec4ea69f"
+  },
+  "build": {
+    "command": [
+      "/Users/chuah/.bend/bin/bend",
+      "tests/crafting_recipe.bend",
+      "-o",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/crafting-recipe-tests"
+    ],
+    "seconds": 43.72257,
+    "status": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  "checks": [
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/crafting_recipe_proof.bend",
+        "--verdict"
+      ],
+      "seconds": 0.156563,
+      "status": 0,
+      "stderr": "",
+      "stdout": "ALL PROOFS CHECK\n"
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/crafting_recipe_decoder.bend",
+        "--check-only"
+      ],
+      "seconds": 2.73468,
+      "status": 0,
+      "stderr": "",
+      "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/crafting_recipe.bend",
+        "--check-only"
+      ],
+      "seconds": 2.762491,
+      "status": 0,
+      "stderr": "",
+      "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+    }
+  ],
+  "confidence": "high for recorded ordinary crafting domain",
+  "inventory_dependency": {
+    "bytes": 13558,
+    "file": "inventory.bend",
+    "sha1": "83c7b005e6e9f7336a1d06a49a4a39931302500a",
+    "sha256": "9d2be7fb88afa1dc6386ab9e8b046b15d2a2a73b7e14566e5bfad3e6dd1f2702"
+  },
+  "java_codec_edge_queries": 19,
+  "java_queries": 2386,
+  "json_dependency": {
+    "bytes": 21362,
+    "file": "json.bend",
+    "sha1": "ff33b3dc87a80fe32355f099ae9d145d4fee7aa8",
+    "sha256": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0"
+  },
+  "kernel_laws": [
+    "empty_pattern_cell_accepts_empty_slot",
+    "empty_pattern_cell_refuses_occupied_slot",
+    "nonempty_ingredient_refuses_empty_slot",
+    "unsupported_recipe_cannot_manufacture_match",
+    "exhausted_injective_assignment_refuses",
+    "established_first_match_retains_order",
+    "invalid_grid_cannot_publish_plan",
+    "plan_consumes_each_occupied_slot_once",
+    "consumption_has_one_entry_per_occupied_slot",
+    "invalid_result_cannot_publish_items",
+    "shaped_plan_retains_snapshot_and_validated_output"
+  ],
+  "limitations": [
+    "Finite Java fixtures validate versioned specification, not universal Java equivalence.",
+    "Kernel certifies eleven exact production laws; no universal bijective-matcher completeness theorem.",
+    "Source-pack resolution/tag recursion precedes catalog boundary.",
+    "17 patched result recipes and all other recipe subclasses remain explicit Unsupported.",
+    "No menu take/quickmove, award, recipe-book/autofill, world crafting-table, or special recipe implementation.",
+    "No GPU workload: bounded crafting executes sequential CPU logic."
+  ],
+  "native": [
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/crafting-recipe-tests",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/crafting-recipe-reference/native-input.json"
+      ],
+      "decoded": 2047,
+      "decoder_queries": 19,
+      "output_sha256": "a07a71cbe9b76dd81d8f0e1fd1ca60747cf93510c6799eadc33efb5dbbe5c055",
+      "queries": 2400,
+      "seconds": 35.467162,
+      "status": 0,
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/crafting-recipe-tests",
+        "--threads",
+        "4",
+        "--gpu",
+        "off",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/crafting-recipe-reference/native-input.json"
+      ],
+      "decoded": 2047,
+      "decoder_queries": 19,
+      "output_sha256": "a07a71cbe9b76dd81d8f0e1fd1ca60747cf93510c6799eadc33efb5dbbe5c055",
+      "queries": 2400,
+      "seconds": 33.586667,
+      "status": 0,
+      "stderr": ""
+    }
+  ],
+  "native_admission_and_stale_plan_queries": 14,
+  "ordinary_recipes": 1202,
+  "patched_outputs_explicitly_unsupported": 17,
+  "pin": "26.3",
+  "plain_ordinary_recipes": 1185,
+  "query_categories": {
+    "all_plain_ordinary": 1185,
+    "asymmetric_shape": 1,
+    "asymmetric_shape_mirrored": 1,
+    "crafting_remainders": 1,
+    "empty_grid": 1,
+    "missing_occupied_slot": 1185,
+    "mixed_tag_stacks_count": 1,
+    "non_greedy": 2,
+    "one_unit_per_slot": 1,
+    "outside_pattern_occupied": 1,
+    "registry_order_collision": 2,
+    "result_count_above_item_stack_limit": 1,
+    "source_padding_trim_grid_offset": 4
+  },
+  "reference": {
+    "bytes": 3328606,
+    "file": "crafting_recipe_observations.json",
+    "sha1": "96087e38639a3d4e89da3e5bdcfd810cf2138c65",
+    "sha256": "3ba65b3f12451b7746f2bf62cb2b6da667bd1634ea6fee02f94d438d76e1fe18"
+  },
+  "reference_tool": {
+    "bytes": 18955,
+    "file": "reference_crafting_recipe_probe.py",
+    "sha1": "35ee47c98e23ea886954f367025e319fcf46c287",
+    "sha256": "2b942c1159925a7c12e62b9f88a4ae9a65114547ad66af3bba2513596418403e"
+  },
+  "schema_version": 1,
+  "sources": {
+    "src/crafting_recipe.bend": {
+      "bytes": 12627,
+      "file": "crafting_recipe.bend",
+      "sha1": "7dfe6a669938d4cb3b3ebfae521a625cae527fdc",
+      "sha256": "55f1f9d35400576da339bf1cbbaada6d7424c0023fc606de5258d798f59d3d0e"
+    },
+    "src/crafting_recipe_decoder.bend": {
+      "bytes": 20360,
+      "file": "crafting_recipe_decoder.bend",
+      "sha1": "203e447c9e6a8d887458b5565a3b883b36e7676f",
+      "sha256": "06931e0cbb17e91213b8ac65cde92d5987b8084fc71a815dc3ae2361cf98f886"
+    },
+    "src/crafting_recipe_laws.bend": {
+      "bytes": 2601,
+      "file": "crafting_recipe_laws.bend",
+      "sha1": "418fc75793d0f87bd370e6e5c33c854961bfe336",
+      "sha256": "b3fafa7edd4d5cb3b97b37296abb1b8c12dbcd2bb7a30304bf7890e69b718764"
+    },
+    "src/crafting_recipe_proof.bend": {
+      "bytes": 1736,
+      "file": "crafting_recipe_proof.bend",
+      "sha1": "f9975addec41181c4a3647aea888d9e7b1fc610e",
+      "sha256": "53b255af4706ed72a840a0b48af9783e62396391037a081c5b21efebc2ee20ce"
+    },
+    "tests/crafting_recipe.bend": {
+      "bytes": 8455,
+      "file": "crafting_recipe.bend",
+      "sha1": "6d4b7c6c142f3d481e9ccb02ac273c25f7cc9a62",
+      "sha256": "308ad7875acc0538126e8e84803babbff6df62b8ab408436c88a210d84474b9f"
+    }
+  },
+  "status": "passed",
+  "tool": {
+    "bytes": 8237,
+    "file": "test_crafting_recipe.py",
+    "sha1": "af2d5f68a47828fd90ccbcaeb29501733c13d616",
+    "sha256": "6e59d6333f8683561557d9b8ca5baff548736cddc73f0426400d389d459f0557"
+  }
+}

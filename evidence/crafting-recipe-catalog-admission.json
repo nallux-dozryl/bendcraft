@@ -1,0 +1,84 @@
+{
+  "binary": {
+    "bytes": 1799128,
+    "file": "crafting-recipe-tests",
+    "sha1": "77e4599d2a07798d9fe55a37476db7cc0990c6a4",
+    "sha256": "f1e2464c8d1fcd729478d4425b9f898d5e421dc5977408f11f57c38fec4ea69f"
+  },
+  "boundary": "Actual Bend catalog decoder admission failures. These independently specified malformed interchange cases are not Java JSON error-text parity.",
+  "cases": [
+    {
+      "error": "duplicate crafting catalog item",
+      "id": "duplicate_item",
+      "status": 2
+    },
+    {
+      "error": "invalid crafting catalog item definition",
+      "id": "zero_item_limit",
+      "status": 2
+    },
+    {
+      "error": "invalid crafting catalog item definition",
+      "id": "large_item_limit",
+      "status": 2
+    },
+    {
+      "error": "crafting catalog contains an unknown or invalid remainder",
+      "id": "unknown_remainder",
+      "status": 2
+    },
+    {
+      "error": "crafting catalog contains an unknown or invalid remainder",
+      "id": "overfull_remainder",
+      "status": 2
+    },
+    {
+      "error": "duplicate crafting catalog tag",
+      "id": "duplicate_tag",
+      "status": 2
+    },
+    {
+      "error": "tag contains an unknown item",
+      "id": "unknown_tag_member",
+      "status": 2
+    },
+    {
+      "error": "duplicate crafting catalog recipe",
+      "id": "duplicate_recipe",
+      "status": 2
+    },
+    {
+      "error": "crafting recipe contains an unknown item/tag or invalid output count",
+      "id": "unknown_ingredient_tag",
+      "status": 2
+    },
+    {
+      "error": "crafting recipe contains an unknown item/tag or invalid output count",
+      "id": "unknown_ingredient_item",
+      "status": 2
+    },
+    {
+      "error": "crafting recipe contains an unknown item/tag or invalid output count",
+      "id": "unknown_output_item",
+      "status": 2
+    }
+  ],
+  "pin": "26.3",
+  "schema_version": 1,
+  "source_identity": {
+    "src/crafting_recipe.bend": "55f1f9d35400576da339bf1cbbaada6d7424c0023fc606de5258d798f59d3d0e",
+    "src/crafting_recipe_decoder.bend": "06931e0cbb17e91213b8ac65cde92d5987b8084fc71a815dc3ae2361cf98f886",
+    "src/crafting_recipe_laws.bend": "b3fafa7edd4d5cb3b97b37296abb1b8c12dbcd2bb7a30304bf7890e69b718764",
+    "src/crafting_recipe_proof.bend": "53b255af4706ed72a840a0b48af9783e62396391037a081c5b21efebc2ee20ce",
+    "src/inventory.bend": "9d2be7fb88afa1dc6386ab9e8b046b15d2a2a73b7e14566e5bfad3e6dd1f2702",
+    "src/json.bend": "bf6cb1ca478823e70ae55b44b6656cacff068c44e31dfed501552bc90982f2a0",
+    "tests/crafting_recipe.bend": "308ad7875acc0538126e8e84803babbff6df62b8ab408436c88a210d84474b9f"
+  },
+  "status": "passed",
+  "tool": {
+    "bytes": 3501,
+    "file": "test_crafting_recipe_catalog.py",
+    "sha1": "e6a1cad63fd33a37bfa3f70be4279051d013bd74",
+    "sha256": "f75fa3b3199a5d4a347f63085cf2805369c46ea265fb8618b072cf418037749c"
+  }
+}

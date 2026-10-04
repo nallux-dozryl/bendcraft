@@ -1,0 +1,59 @@
+{
+  "class_sha256": {
+    "ItemStack": "c6d650ae8248b529b5db7f0d27376ecb8cf48dfce8eb89bf3280902dcc9ece32",
+    "ItemStackTemplate": "da694314babe9afcac54021450dfd5aeef39d82a21a09c9e427fdb3e22c60b2c"
+  },
+  "java_assembly_observation": {
+    "consumption": [
+      {
+        "count": 1,
+        "remainder": null,
+        "slot": 0
+      }
+    ],
+    "id": "large-result-count",
+    "kind": "query",
+    "matches": [
+      "bendcraft:large_result"
+    ],
+    "output": null,
+    "trimmed": {
+      "height": 1,
+      "ingredient_count": 1,
+      "left": 0,
+      "top": 0,
+      "width": 1
+    }
+  },
+  "java_codec_observation": {
+    "accepted": true,
+    "id": "bendcraft:valid_large_result",
+    "kind": "decoder_query"
+  },
+  "javap": {
+    "bytes": 169048,
+    "file": "javap.txt",
+    "sha1": "c389d2fef2b6b1a51dbab0de521698b6e05608a8",
+    "sha256": "359019436b8686c15ca41e5734ab5d2829754a11b98e1b3a65866b6dc0231691"
+  },
+  "pin": "26.3",
+  "prior_native_discrepancy": {
+    "declared_count": 99,
+    "java_created_output": null,
+    "native_output_before_correction": {
+      "count": 99,
+      "id": "minecraft:stick"
+    },
+    "recipe": "bendcraft:large_result"
+  },
+  "production_correction": "Decoder preserves admitted1..99 template count. Plan assembly validates default-item output against authoritative metadata and returns InvEmpty for an invalid created stack. Empty output cannot authorize menu consumption.",
+  "reference": {
+    "bytes": 3328606,
+    "file": "crafting_recipe_observations.json",
+    "sha1": "96087e38639a3d4e89da3e5bdcfd810cf2138c65",
+    "sha256": "3ba65b3f12451b7746f2bf62cb2b6da667bd1634ea6fee02f94d438d76e1fe18"
+  },
+  "schema_version": 1,
+  "scope": "Default components only; ItemStackTemplate.create invokes ItemStack.validateStrict, whose other component validation obligations remain with the component owner.",
+  "status": "independent_java_edge_identified_and_production_corrected"
+}
