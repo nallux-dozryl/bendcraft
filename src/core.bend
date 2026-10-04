@@ -2,6 +2,7 @@ import Base
 import ./schedule.bend as Q
 import ./section.bend as S
 import ./section_map.bend as M
+import ./section_map_read.bend as Read
 
 type Capability is Data:
   Observer{}
@@ -275,9 +276,19 @@ def read_existing(w: World, +p: Position, popped: M.Sections & Maybe<&1, S.Secti
     case Some{section}:
       read_local(w, p, sections, section)
 
+# Read preserves the owned trie and collision-bucket order. A query must not
+# become an implicit pop/set update of the complete world representation.
+def read_retained(w: World, +p: Position, observed: M.Sections & Maybe<&2, Result<&2, &2, S.Section.Error, U32>>) -> World & Result<&2, &2, Error, U32>:
+  (sections, result) = observed
+  match result:
+    case None{}: (replace_sections(w, sections), Fail{MissingSection{section_key(p)}})
+    case Some{status}: read_result(replace_sections(w, sections), status)
+
 def read_block(w: World, +p: Position) -> World & Result<&2, &2, Error, U32>:
   World{tick, time, paused, daylight, rev, count, sections, pending, events} = w
-  read_existing(World{tick, time, paused, daylight, rev, count, M.EmptySections{}, pending, events}, p, M.pop(sections, section_key(p)))
+  Position{dimension, x, y, z} = p
+  read_retained(World{tick, time, paused, daylight, rev, count, M.EmptySections{}, pending, events}, p,
+    Read.read(sections, section_key(p), S.Coord.local(x), S.Coord.local(y), S.Coord.local(z)))
 
 def events(w: World) -> World & List<&2, CoreEvent>:
   World{tick, time, paused, daylight, rev, count, sections, pending, +events} = w
