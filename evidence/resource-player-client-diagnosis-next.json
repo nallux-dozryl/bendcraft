@@ -1,0 +1,425 @@
+{
+  "accepted_plain_client": {
+    "C_worker_table_entries": 4219,
+    "binary_sha256": "dc23c1d632273ce59b26e7a67bc79bab7cbf94497d7d49d709bf9ae1f1a455f3",
+    "families": {
+      "SRC_CLIENT_PRESENTER": {
+        "max_arity": 128,
+        "workers": 219
+      },
+      "SRC_MESH_RENDER": {
+        "max_arity": null,
+        "workers": 0
+      },
+      "SRC_PLAYER_RUNTIME": {
+        "max_arity": 191,
+        "workers": 33
+      },
+      "SRC_PLAYER_SCENE": {
+        "max_arity": 128,
+        "workers": 22
+      },
+      "SRC_PLAYER_SESSION": {
+        "max_arity": 138,
+        "workers": 35
+      },
+      "SRC_RESOURCE_FRAME": {
+        "max_arity": null,
+        "workers": 0
+      },
+      "SRC_SERVER_ACTOR": {
+        "max_arity": 138,
+        "workers": 42
+      },
+      "SRC_SERVER_LOCAL": {
+        "max_arity": 4,
+        "workers": 13
+      },
+      "SRC_WORLD_RESOURCE_FRAME": {
+        "max_arity": null,
+        "workers": 0
+      }
+    },
+    "max_worker_arity": 209,
+    "original_c": {
+      "bytes": 17075035,
+      "path": "build/platform-cache/sources/563ddc321001c425b6b0bb74acb2ab59f2c79edeb6d4d53b787081daeb82f61f/original.c",
+      "sha256": "c2cd3816316e902b73e715458f309968680383482fbb0ece1cac406be0e2730a"
+    },
+    "receipt": {
+      "bytes": 1485279,
+      "path": "build/player-client/build.full.json",
+      "sha256": "38a2aebdb74f09ee29a09d3686ce5898ab4829e74342ddd3faba01f9b8428650"
+    },
+    "recorded_cache_phase_timings": {
+      "emission_seconds": 51.7789942920208,
+      "guarded_native_build_seconds": 58.91335762478411,
+      "total_seconds": 118.88878799974918
+    },
+    "timing_boundary": "C CLI phase includes source loading/checking/backend; guarded build phase comes from original accepted cache receipt",
+    "transformed_c_sha256": "aac8d1f7f72016d28d79c018c0636f975d971ee748f30a68f2c4c9d5328e0b74"
+  },
+  "boxed_OS_sample": {
+    "attribution": "source functions not symbolized; no layout/GC/emission cause claim",
+    "peak_literal": "17.0G",
+    "physical_footprint_literal": "17.0G",
+    "report": {
+      "bytes": 2133447,
+      "path": "build/resource-player-boxed-client/emitter-stack.full.txt",
+      "sha256": "d5affea4f4618ff8b6d3b06008a1b8ed197aa887e48d553a2bb3d3682b19be70"
+    }
+  },
+  "called_body_comparison": {
+    "behavioral_body_change_identified": false,
+    "boundary": "AST normalization/manual bundler-difference review, not a formal whole-compiler equivalence proof; Node and installed Bun runtimes differ",
+    "checker_function_hoist": "bend:term_check nested term_check_mat_goal becomes let/function-expression before same consts; retained body and recursive references",
+    "helper_count": 193,
+    "mismatch_bodies": {
+      "bytes": 2593673,
+      "path": "build/resource-player-client-diagnosis-next/helper-mismatches.full.json",
+      "sha256": "9870c3f479104e8046f8b1db5928dc51542bec18c871d3dd27ec772704b3abf7"
+    },
+    "native_root_and_constant_matches": [
+      "RUNTIME_ADTS",
+      "OWNED",
+      "WORDS",
+      "WIDE",
+      "OPTIMIZED",
+      "compile_book first three statements (native roots)"
+    ],
+    "normalized_AST_equal": 184,
+    "report": {
+      "bytes": 105765,
+      "path": "build/resource-player-client-diagnosis-next/helper-comparison.full.json",
+      "sha256": "da307c60a1052859759afd7fd4c8037bc3376daca236865fdd11acd68e82d59a"
+    },
+    "roots": [
+      "main:book_read",
+      "bend:book_nil",
+      "bend:book_load",
+      "bend:book_valid",
+      "comp:show_main",
+      "comp:file_book"
+    ],
+    "scoped_rename_functions": [
+      "bend:name_show",
+      "bend:parse_body",
+      "bend:parse_book",
+      "bend:parse_term_ops",
+      "bend:term_show",
+      "comp:lay_of",
+      "comp:show_main",
+      "comp:term_spine"
+    ],
+    "script": {
+      "bytes": 8919,
+      "path": "build/resource-player-client-diagnosis-next/compare_helpers.cjs",
+      "sha256": "d2f201981a28305b118937195489f4142bd7625e92234a3409d711be25f1a671"
+    },
+    "syntactic_differences": 9
+  },
+  "compiler": {
+    "bytes": 63885392,
+    "path": "/Users/chuah/.bend/bin/bend",
+    "sha256": "99b3de8f6c5643d245bed839df2c28d1bb12efd41bb221154d25c15695b72e8e"
+  },
+  "confidence": {
+    "dominant_failed_phase": "unknown",
+    "graph_traversal_fusion_fact_pass_hypothesis": "moderate",
+    "inspected_backend_and_accepted_c": "high"
+  },
+  "date": "2026-10-04",
+  "documentation": {
+    "bytes": 16390,
+    "path": "docs/resource-player-client-diagnosis-next.md",
+    "sha256": "a4704c324a35d50d831ff4c4c397c1d7abb94cbbdc94f90fd59f9afc0c69d226"
+  },
+  "execution": {
+    "book_load_attempts": 1,
+    "book_valid_runs": 0,
+    "boxed_started": false,
+    "client_launches": 0,
+    "emissions": 0,
+    "installed_bend_invocations": 0,
+    "kernel_runs": 0,
+    "native_builds": 0,
+    "native_file_book_runs": 0,
+    "node_source_graph_processes": 1,
+    "permission_requests": 0,
+    "read_only_runner_audits": 4,
+    "retries": 0,
+    "source_module_import_attempts": 1,
+    "ui_actions": 0
+  },
+  "graph_probe": {
+    "all20pins_85and99_source_native_Base_bytes_unchanged": true,
+    "boxed_started": false,
+    "cap_route": "external processgroup SIGTERM then2s grace/SIGKILL; output bounded; existing attempt refuses retry; stop-control-failure",
+    "cap_seconds_per_processgroup": 90,
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 build/resource-player-client-diagnosis-next/run_graph_probe.py --root-graph-slot-granted",
+    "compiler_algorithms_rewritten": false,
+    "control": {
+      "cap_triggered": false,
+      "elapsed_seconds": 1.1614674162119627,
+      "error": "RangeError: Maximum call stack size exceeded",
+      "exit_code": 1,
+      "frames": [
+        "term_higher bend.ts:718",
+        "term_higher bend.ts:703",
+        "term_higher bend.ts:762"
+      ],
+      "native_graph_measurements": null,
+      "phases_reached": [
+        "load.start"
+      ],
+      "pid": 30628,
+      "process_group": 30628,
+      "receipt": {
+        "bytes": 1456,
+        "path": "build/resource-player-client-diagnosis-next/plain-graph-result.full.json",
+        "sha256": "e6aa3f5d1272d24a507c38e112e6442a6ba632eb222a6354424ff72e42f0fb4e"
+      },
+      "stderr": {
+        "bytes": 1805,
+        "path": "build/resource-player-client-diagnosis-next/plain-graph-stderr.full.jsonl",
+        "sha256": "b8d3edb99953c54487e26a1ee1be5709f3f256d67def37f5a74dcf68a29dfb8f"
+      },
+      "stdout": {
+        "bytes": 172,
+        "path": "build/resource-player-client-diagnosis-next/plain-graph-stdout.full.jsonl",
+        "sha256": "1ae78ce86153d13568754b6f5877e0a2709b4676a131209f632c557a2ea65b42"
+      }
+    },
+    "future_emission_fact_pass_probe": "none prepared/granted/executed; separate review required",
+    "grant": "root slot A, exactly two sequential90s groups if control passes; only control ran",
+    "harness": {
+      "bytes": 2404,
+      "path": "build/resource-player-client-diagnosis-next/source-79df/probe.ts",
+      "sha256": "cea7fb3f9f947ad896f339f67b4f5b6173f8917f225ec37c6b9a4fbfa47c0557"
+    },
+    "interpretation": "Node23.5 failed to load accepted control; installed native bottleneck remains unknown. No Node-versus-Bun phase timing/speedup claim.",
+    "module_syntax_only_validation_passed": true,
+    "output_cap_bytes_per_case": 8388608,
+    "patch": {
+      "bytes": 3684,
+      "path": "build/resource-player-client-diagnosis-next/probe.patch",
+      "sha256": "5f4b83238399fc69c6bb0649a90e8c5e55f2a6d08a871e7f0718363702170687"
+    },
+    "patched_copy": {
+      "bytes": 188457,
+      "path": "build/resource-player-client-diagnosis-next/source-79df/comp-probe.ts",
+      "sha256": "7e3d59ff4e67347d2e2775278f86ec588a8f5e31e6d7915f8cb86af43ceb029a"
+    },
+    "post_audit": {
+      "bytes": 363,
+      "path": "build/resource-player-client-diagnosis-next/post-graph-audit.full.json",
+      "sha256": "c1f4a3e63c167a965bec9ffbbcf0d84906e97dae9ea12e5365b0cff4c3403c5f"
+    },
+    "prepared_pin_count": 20,
+    "prepared_pins": {
+      "bytes": 3386,
+      "path": "build/resource-player-client-diagnosis-next/probe-pins.full.json",
+      "sha256": "29cf3aa21b1e3681f4a0c4851978e0a74f82907fff0e2b3fd867e5bfa1e073b9"
+    },
+    "remaining_group_processes": 0,
+    "retries": 0,
+    "slot_a_released": true,
+    "source_manifests": [
+      {
+        "bytes": 8604,
+        "path": "build/resource-player-client-diagnosis-next/plain-manifest.full.json",
+        "sha256": "a3ad1d6ae3aa1406298a5be7854cbd4071ca72abdb6d3f90fe8cbadea5cfa4d1"
+      },
+      {
+        "bytes": 9977,
+        "path": "build/resource-player-client-diagnosis-next/boxed-manifest.full.json",
+        "sha256": "0a2fb87e67bda6b7af7dc53f0607f1d09568f1317e1652f50bb0373e8800f64c"
+      }
+    ],
+    "wrapper": {
+      "bytes": 4635,
+      "path": "build/resource-player-client-diagnosis-next/run_graph_probe.py",
+      "sha256": "dfebaf4791d164e74a68efc348bd2e485d55adf51b352a8ed2881e250102a7af"
+    }
+  },
+  "hypothesis": {
+    "actor_state_growth_supported": false,
+    "established": false,
+    "prediction_support": "slow resource graph traversal or disproportionate native reachable/term-visit/template/site counts relative to accepted control",
+    "prediction_weakening": "small quickly completed native graph moves investigation to one expensive emitted body, fact passes/fusion, final assembly or engine behavior; no present outcome",
+    "primary_discriminator": "Time/counters for exact native file_book after check, without compile_book.",
+    "statement": "The larger resource callback graph causes disproportionate repeated term traversal or fusion/emission across native ownership/sharing fact passes; boxing outer Frame/Assets does not remove those bodies."
+  },
+  "node": {
+    "Bun_on_PATH": false,
+    "bytes": 77577344,
+    "path": "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+    "sha256": "ec307018e1e8b80d68588b01ce6e9f8f9b8f4a03412c513b0fc3ac4d0f5db799",
+    "version": "v23.5.0"
+  },
+  "post_existing_runner_audits": [
+    {
+      "bytes": 250,
+      "path": "build/resource-player-client-diagnosis-next/post-resource_player_client-audit.full.json",
+      "sha256": "62e0c93b5af3f1b961ca607328341f557402f7985ecf2956be074bb2d9a81d32"
+    },
+    {
+      "bytes": 256,
+      "path": "build/resource-player-client-diagnosis-next/post-resource_player_boxed_client-audit.full.json",
+      "sha256": "3cbbaa339818bfc295bcaf7e218421d1827494594b73ee540409ae3f8b616621"
+    }
+  ],
+  "prior_native_attempts": [
+    {
+      "cap_seconds": 600,
+      "completed_c": false,
+      "elapsed_seconds": 600.082812,
+      "exit_code": -15,
+      "inner_phase_attribution": "unknown",
+      "native_artifact": false,
+      "receipt": {
+        "bytes": 7751,
+        "path": "evidence/resource-player-client-native.json",
+        "sha256": "03cefbe6ca85d1b66417c5926913da91c9e48b932072fe7c138d83da69b00c31"
+      },
+      "stderr_bytes": 0,
+      "stdout_bytes": 0
+    },
+    {
+      "cap_seconds": 600,
+      "completed_c": false,
+      "elapsed_seconds": 600.065755,
+      "exit_code": -15,
+      "inner_phase_attribution": "unknown",
+      "native_artifact": false,
+      "receipt": {
+        "bytes": 10396,
+        "path": "evidence/resource-player-boxed-client-native.json",
+        "sha256": "b906b49decebc6329d5cd3fdbddf9b9b70342a25c4fd9947cca5deed9dafdb28"
+      },
+      "stderr_bytes": 0,
+      "stdout_bytes": 0
+    }
+  ],
+  "raw_static_audit": {
+    "bytes": 11495,
+    "path": "build/resource-player-client-diagnosis-next/static-audit.full.json",
+    "sha256": "df35fdd71c7af818917a61c6d89b2ac8fb146053e8a9484715f243446fa80e09"
+  },
+  "read_only_existing_runner_audits": [
+    {
+      "bytes": 428,
+      "path": "build/resource-player-client-diagnosis-next/test_resource_player_client-audit.full.json",
+      "sha256": "7c4affb8ba8d1515ea9761bd0e2c58d259b58295e628db9a0d67bab2964d99f5"
+    },
+    {
+      "bytes": 440,
+      "path": "build/resource-player-client-diagnosis-next/test_resource_player_boxed_client-audit.full.json",
+      "sha256": "0a60d5f2941e5ff89b71b77f7975a693716742e18a2efc60dbe11cbe5aae5149"
+    }
+  ],
+  "sealed_generations": [
+    {
+      "entry_declared_boundary_refusals": 92,
+      "entry_ordinary_seconds": 14.454548,
+      "preflight": {
+        "bytes": 19962,
+        "path": "evidence/resource-player-client-preflight.json",
+        "sha256": "e9f4d37c479ecfc7d8256d6d4992ff2bc56a0589c8d8b48a184a4d9d4baf19b1"
+      },
+      "seal": {
+        "bytes": 33592,
+        "path": "build/resource-player-client/seal.full.json",
+        "sha256": "32f2817fdbd5d7f28c5a76875ab629217c0b453b9d396754906def260e37f610"
+      },
+      "source_snapshot_sha256": "31bff47c42a141f80e777d7a05240f1995e21be14e658bdcfd3efaba98488982"
+    },
+    {
+      "entry_declared_boundary_refusals": 92,
+      "entry_ordinary_seconds": 17.901897,
+      "preflight": {
+        "bytes": 20075,
+        "path": "evidence/resource-player-boxed-client-preflight.json",
+        "sha256": "31cc4733b4f3105ea587fad4f01d16e5e1870b2928e92c3a9d860ef5555900b8"
+      },
+      "seal": {
+        "bytes": 33779,
+        "path": "build/resource-player-boxed-client/seal.full.json",
+        "sha256": "93295a2de6631ee4ceff8658968d6b6ddfd003c8382c9fcfd2f2c106fab08590"
+      },
+      "source_snapshot_sha256": "ebd19c351ec62518d4d5b27bbb473cc80a6af3de39875de4130de183b09b52b2"
+    }
+  ],
+  "source_closures": {
+    "accepted_count": 85,
+    "accepted_vs_first_common_hash_changes": 0,
+    "added": [
+      "resource_player_client.bend",
+      "src/big_uint.bend",
+      "src/block_bake.bend",
+      "src/block_model.bend",
+      "src/block_resources.bend",
+      "src/float_parse.bend",
+      "src/mesh_render.bend",
+      "src/resource_frame.bend",
+      "src/resource_json.bend",
+      "src/resource_player_scene.bend",
+      "src/world_mesh.bend",
+      "src/world_resource_frame.bend",
+      "src/world_visibility.bend"
+    ],
+    "boxed_count": 99,
+    "boxed_kind_counts": {
+      "base": 1,
+      "bend": 64,
+      "native-effect": 34
+    },
+    "first_count": 98,
+    "first_kind_counts": {
+      "base": 1,
+      "bend": 63,
+      "native-effect": 34
+    },
+    "raw_comparison": {
+      "bytes": 20243,
+      "path": "build/resource-player-client-diagnosis/source-closure-comparison.full.json",
+      "sha256": "8549e6585998bddab74d8ef28806f09f90798a7898a650fec41cf8e42589120b"
+    },
+    "removed": 0
+  },
+  "source_provenance": {
+    "copies_used_by_probe": "build/resource-player-client-diagnosis-next/source-79df",
+    "git_blob_sha256": {
+      "bend.ts": "7deae3693eb896f33c73867081b99d2c6f3ed3b57e77e55eb5f6260840dd0e63",
+      "comp.ts": "32fb66e09f608ce9e4b173384bcfeec453db8c5bc96650e26ad861bef815a8d9",
+      "main.ts": "d1a3e026f5014f8daec3614df8e39cf261e3fbc47769eb0916fd891bc18703c9"
+    },
+    "git_bytes_equal_clean_working_copy_observed": true,
+    "git_commit": "79df8d9c40722ee9507a1e253f283b51025f9d6c",
+    "git_extraction_method": "git show 79df8d9c40722ee9507a1e253f283b51025f9d6c:bend2/<file>",
+    "installed_base": {
+      "bytes": 71530,
+      "path": "/Users/chuah/.bend/bend2/base.bend",
+      "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+    },
+    "installed_embedded_ranges": {
+      "bytes": 35616,
+      "path": "build/resource-player-client-diagnosis-next/embedded-ranges.full.json",
+      "sha256": "fffd30a3be15f8742b01a5eaadc9c6feda7b6b700effe3f0335b986f00b5b363"
+    }
+  },
+  "static_assessment": {
+    "generic_template_cache": "book.tmps maps closed argument syntax to checked tlds instances outside order; actual failed Book counts unknown",
+    "local_call_state_owner": "received by actor operation at execution; query/reply captured, no State clone",
+    "native_analysis": "file_book term traversal; memo maps cleared per definition",
+    "native_emission": "all native reachable definitions emitted per ownership/hot/static fact pass; non-flat eligible calls can fuse bodies; spin cache reset each pass",
+    "no_c_interpretation": "main writes only after compile_book returns; timeout does not isolate checker/book/native graph/fact-pass/final assembly",
+    "no_causal_speedup_claim": true,
+    "outer_boxes": "reduce representation widths, do not remove resource callback algorithms or native reachable source graph",
+    "remaining_source_record": "WRF.DrawSource finite 52 words by prior source-derived layout; actual failed capture/segment widths unknown",
+    "runtime_env": "C Env holds mem/alc pointers, distinct from source closure environments and Session.State",
+    "same_actor_callbacks": "canonical src/player_scene.bend realtime_step and dispatch, irrespective of Scene/Player aliases",
+    "same_actor_state": "Session.State in accepted plain, resource and boxed entries"
+  },
+  "status": "read-only-diagnosis-control-loader-refusal-native-bottleneck-unknown"
+}
