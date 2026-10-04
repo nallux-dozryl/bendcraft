@@ -1,0 +1,62 @@
+{
+  "actual_successes": 120,
+  "case_count": 125,
+  "checks": [
+    "exact prepared producer/inputs/source byte inventories",
+    "exact ordered observed inputs",
+    "36 main slots and43 reported total, selection size9",
+    "all nonempty observed main slots restricted to three supported items with count1..64",
+    "five exact invalid-slot exceptions preserve receiver",
+    "all clean codec diagnostics empty",
+    "NbtIo focused typed tag preservation",
+    "Slot.safeInsert returns original source and only touches slots1/34",
+    "selection/removal leave change counter0",
+    "unique raw artifact fingerprint and complete loaded-class map digest",
+    "exact fixture and launcher hashes",
+    "populated official load restores slots/selected/abilities and identical326byte focused projection"
+  ],
+  "documentation": {
+    "bytes": 8232,
+    "file": "PLAYER_INVENTORY_REFERENCE.md",
+    "path": "docs/PLAYER_INVENTORY_REFERENCE.md",
+    "sha1": "9071c92766ec6fdc25732f4bc248f2662b4c19cc",
+    "sha256": "7c2f957471b1f1799ca49f4aa288eac2817094ae2f45ea04001e6deaf49d356f"
+  },
+  "expected_selection_failures": 5,
+  "java_processes_launched_by_audit": 0,
+  "loaded_official_classes": 4405,
+  "observations_sha256": "16274bea0e084efcc2a53fb32876e4a18b82a7e816ce02f04dacdecae6d6489e",
+  "operation_counts": {
+    "abilities": 4,
+    "default": 1,
+    "insert": 81,
+    "insert_empty": 1,
+    "remove": 27,
+    "remove_empty": 1,
+    "save_load": 1,
+    "select": 9
+  },
+  "producer": {
+    "bytes": 29078,
+    "file": "reference_player_inventory_probe.py",
+    "path": "tools/reference_player_inventory_probe.py",
+    "sha1": "f486a8192e43c6aeb4ca84fd4ad6086838aeda6d",
+    "sha256": "2d178bf21186aef2b1d1a7ef2fa00f4ca1673f92df16e328822f3b0e47208fb8"
+  },
+  "raw_artifact": {
+    "bytes": 2277614,
+    "file": "extract-1791106841470623000.full.json",
+    "path": "build/player-inventory-reference/extract-1791106841470623000.full.json",
+    "sha1": "f97293aef5b287d9c7fa99281423cd29574ad339",
+    "sha256": "6c65862f76477e6e717cf76898dc7deb636cec8871cca2afaa3080081e1d5266"
+  },
+  "reference": {
+    "bytes": 662785,
+    "file": "player_inventory.json",
+    "path": "reference/player_inventory.json",
+    "sha1": "32111dd5d7ab24719a6773fd3973ac3c90ffb558",
+    "sha256": "abe110e1d66eb9ecae2764c3c7d8d4e5c836911e3be2cab1466294eefcf0110d"
+  },
+  "runtime_scope": "one successful extraction; reproduction unperformed",
+  "status": "read-only post-extraction evidence audit passed"
+}

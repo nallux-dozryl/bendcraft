@@ -5,6 +5,7 @@ import ./local_move_history.bend as MH
 import ./player_fall_history.bend as H
 import ./player_runtime.bend as Plain
 import ./player_controls.bend as CT
+import ./mouse_input.bend as MI
 import ./local_player_record.bend as PR
 import ./local_player_storage.bend as PS
 import ./client_controls.bend as CC
@@ -20,28 +21,42 @@ import ./core.bend as C
 import ./registry.bend as B
 import ./live.bend as L
 import ./json.bend as J
+import ./player_inventory.bend as I
+import ./player_inventory_codec.bend as IC
+import ./inventory.bend as Inv
+import ./player_block_interaction.bend as BI
 
 # The LocalPlayer runtime owns the only Engine/body. The leased save shell
 # transfers that Engine and the complete supported local record through the
 # existing atomic extension transaction. Renderer/API reads never tick it.
 type Shell is Type:
   Shell{identity:String,path:String,highwater:U32,limits:P.Limits,lease:WL.Lease,
-    maximum:U32,catalog:List<&2,E.Operation>}
+    maximum:U32,catalog:List<&2,E.Operation>,inventory:I.State,fresh:Bool}
 type State is Type:
   State{player:X.State,shell:Shell}
 
-def to_bundle_split(shell:Shell,result:G.Engine & PR.Record & R.Transient) -> E.State<PR.Record> & R.Transient:
-  Shell{identity,path,highwater,limits,lease,maximum,catalog} = shell
-  (engine,record,transient) = result
-  (E.State{P.State{engine,identity,path,highwater,limits,lease},record,maximum,catalog},transient)
+# Startup provenance is transient. An empty loaded Core is still a loaded
+# world; only the codec's fresh initializer authorizes terrain initialization.
+def fresh(state:State) -> State & Bool:
+  State{player,Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,+initial}} = state
+  (State{player,Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,initial}},initial)
 
-def to_bundle(state:State) -> E.State<PR.Record> & R.Transient:
+def mark_initialized(state:State) -> State:
+  State{player,Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,initial}} = state
+  State{player,Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,False{}}}
+
+def to_bundle_split(shell:Shell,result:G.Engine & PR.Record & R.Transient) -> E.State<IC.Saved> & R.Transient:
+  Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh} = shell
+  (engine,record,transient) = result
+  (E.State{P.State{engine,identity,path,highwater,limits,lease},IC.Saved{record,inventory,fresh},maximum,catalog},transient)
+
+def to_bundle(state:State) -> E.State<IC.Saved> & R.Transient:
   State{player,shell} = state
   to_bundle_split(shell,R.detach(player))
 
-def from_bundle(stored:E.State<PR.Record>,transient:R.Transient) -> State:
-  E.State{P.State{engine,identity,path,highwater,limits,lease},record,maximum,catalog} = stored
-  State{R.attach(engine,record,transient),Shell{identity,path,highwater,limits,lease,maximum,catalog}}
+def from_bundle(stored:E.State<IC.Saved>,transient:R.Transient) -> State:
+  E.State{P.State{engine,identity,path,highwater,limits,lease},IC.Saved{record,inventory,fresh},maximum,catalog} = stored
+  State{R.attach(engine,record,transient),Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh}}
 
 def queried(-A:Type,shell:Shell,result:X.State & A) -> State & A:
   (player,value) = result
@@ -69,6 +84,32 @@ def advance(~driver:R.Driver,state:State,ticks:U32) -> State:
   State{player,shell} = state
   State{R.advance(~driver,U32.to_nat(ticks),player),shell}
 
+def inventory_queried(-A:Type,player:X.State,identity:String,path:String,highwater:U32,limits:P.Limits,lease:WL.Lease,maximum:U32,catalog:List<&2,E.Operation>,fresh:Bool,result:I.State & A) -> State & A:
+  (inventory,value) = result
+  (State{player,Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh}},value)
+
+def inventory_query(-A:Type,state:State,operation:I.State -> I.State & A) -> State & A:
+  State{player,Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh}} = state
+  inventory_queried(A,player,identity,path,highwater,limits,lease,maximum,catalog,fresh,operation(inventory))
+
+def inventory_inspect(state:State) -> State & I.Snapshot:
+  inventory_query(I.Snapshot,state,I.inspect)
+
+def inventory_selected(state:State) -> State & Inv.Slot:
+  inventory_query(Inv.Slot,state,I.selected)
+
+def inventory_select(state:State,index:U32) -> State & Result<&2,&2,String,Unit>:
+  inventory_query(Result<&2,&2,String,Unit>,state,i => I.select(i,index))
+
+def inventory_transfer(state:State,source:U32,destination:U32,count:U32,mode:Inv.TransferMode) -> State & Inv.TransferStatus:
+  inventory_query(Inv.TransferStatus,state,i => I.transfer(i,source,destination,count,mode))
+
+def inventory_acquire(state:State,index:U32,key:Inv.ItemKey,count:U32) -> State & Result<&2,&2,String,Unit>:
+  inventory_query(Result<&2,&2,String,Unit>,state,i => I.acquire(i,index,key,count))
+
+def inventory_abilities(state:State) -> State & I.Abilities:
+  inventory_query(I.Abilities,state,I.abilities)
+
 def catalog(unit:Unit) -> List<&2,E.Operation>:
   [E.Operation{"player.inspect",L.Public{},[],"Observe the complete supported LocalPlayer record as exact typed NBT bytes; this query does not advance simulation."}]
 
@@ -94,14 +135,140 @@ def operation_dispatch_plain(engine:G.Engine,record:PR.Record,session:L.Session,
 def operations() -> E.Operations<PR.Record>:
   E.Operations{catalog,operation_dispatch_plain}
 
-def dispatched(transient:R.Transient,result:E.State<PR.Record> & L.Session & J.Value) -> State & L.Session & J.Value:
+def inventory_catalog(unit:Unit) -> List<&2,E.Operation>:
+  List.append(&2,E.Operation,catalog(unit),[
+    E.Operation{"inventory.inspect",L.Public{},[],"Read the owned 36-slot main inventory, selected hotbar and player build abilities without advancing simulation."},
+    E.Operation{"inventory.selected",L.Public{},[],"Read the selected hotbar item without advancing simulation."},
+    E.Operation{"inventory.select",L.Public{},[L.Field{"slot",L.Unsigned{0,8},True{}}],"Select one of the nine hotbar slots."},
+    E.Operation{"inventory.transfer",L.Public{},[L.Field{"source",L.Unsigned{0,35},True{}},L.Field{"destination",L.Unsigned{0,35},True{}},L.Field{"count",L.Unsigned{0,4294967295},True{}},L.Field{"mode",L.Text{["transfer","split","merge"]},True{}}],"Transfer a clamped count between two main-inventory slots; split requires an empty destination and merge requires a stack."},
+    E.Operation{"inventory.acquire",L.Public{},[L.Field{"slot",L.Unsigned{0,35},True{}},L.Field{"item",L.Text{["minecraft:stone","minecraft:dirt","minecraft:oak_planks"]},True{}},L.Field{"count",L.Unsigned{0,64},True{}}],"Creative acquisition replaces one slot with a supported default-component item; player instabuild ability is required."}])
+
+def inventory_slot_value(slot:Inv.Slot) -> J.Value:
+  match slot:
+    case Inv.InvEmpty{}: J.JNull{}
+    case Inv.InvStack{Inv.ItemKey{id,components},count}:
+      L.obj([J.JMember{"id",L.text(id)},J.JMember{"components",L.text(components)},J.JMember{"count",L.uint(count)}])
+
+def inventory_slot_values(slots:List<&2,Inv.Slot>) -> List<&2,J.Value>:
+  match slots:
+    case Nil{}: []
+    case slot <> rest: inventory_slot_value(slot) <> inventory_slot_values(rest)
+
+def inventory_abilities_value(profile:I.Abilities) -> J.Value:
+  I.Abilities{instabuild,maybuild} = profile
+  L.obj([J.JMember{"instabuild",L.boolean(instabuild)},J.JMember{"maybuild",L.boolean(maybuild)}])
+
+def inventory_snapshot_value(snapshot:I.Snapshot) -> J.Value:
+  I.Snapshot{selected,slots,abilities} = snapshot
+  L.obj([J.JMember{"selected",L.uint(selected)},J.JMember{"slots",J.JArray{inventory_slot_values(slots)}},J.JMember{"abilities",inventory_abilities_value(abilities)}])
+
+def inventory_answer(engine:G.Engine,record:PR.Record,fresh:Bool,result:I.State & Result<&2,&2,L.Fault,J.Value>) -> G.Engine & IC.Saved & Result<&2,&2,L.Fault,J.Value>:
+  (inventory,answer) = result
+  (engine,IC.Saved{record,inventory,fresh},answer)
+
+def inventory_inspected(result:I.State & I.Snapshot) -> I.State & Result<&2,&2,L.Fault,J.Value>:
+  (inventory,snapshot) = result
+  (inventory,Done{inventory_snapshot_value(snapshot)})
+
+def inventory_selected_value(index:U32,result:I.State & Inv.Slot) -> I.State & Result<&2,&2,L.Fault,J.Value>:
+  (inventory,slot) = result
+  (inventory,Done{L.obj([J.JMember{"index",L.uint(index)},J.JMember{"slot",inventory_slot_value(slot)}])})
+
+def inventory_selected_inspected(inventory:I.State) -> I.State & Result<&2,&2,L.Fault,J.Value>:
+  I.State{owned,+selected,abilities} = inventory
+  inventory_selected_value(selected,I.selected(I.State{owned,selected,abilities}))
+
+def inventory_selection_value(index:U32,result:I.State & Result<&2,&2,String,Unit>) -> I.State & Result<&2,&2,L.Fault,J.Value>:
+  (inventory,status) = result
+  match status:
+    case Fail{message}: (inventory,Fail{L.bad("InvalidArguments",message)})
+    case Done{unit}: (inventory,Done{L.obj([J.JMember{"selected",L.uint(index)}])})
+
+def inventory_select_args(inventory:I.State,result:Result<&2,&2,L.Fault,U32>) -> I.State & Result<&2,&2,L.Fault,J.Value>:
+  match result:
+    case Fail{fault}: (inventory,Fail{fault})
+    case Done{+index}: inventory_selection_value(index,I.select(inventory,index))
+
+def inventory_transfer_value(result:I.State & Inv.TransferStatus) -> I.State & Result<&2,&2,L.Fault,J.Value>:
+  (inventory,status) = result
+  match status:
+    case Inv.InvRejected{reason}: (inventory,Fail{L.bad("InventoryTransferRejected",Inv.error_name(reason))})
+    case Inv.InvMoved{count}: (inventory,Done{L.obj([J.JMember{"moved",L.uint(count)}])})
+
+type InventoryTransfer is Data:
+  InventoryTransfer{source:U32,destination:U32,count:U32,mode:Inv.TransferMode}
+
+def inventory_transfer_mode(mode:String) -> Result<&2,&2,L.Fault,Inv.TransferMode>:
+  match mode:
+    case "transfer": Done{Inv.TransferAny{}}
+    case "split": Done{Inv.TransferSplit{}}
+    case "merge": Done{Inv.TransferMerge{}}
+    case _: Fail{L.invalid("mode")}
+
+def inventory_transfer_arguments(+args:J.Value) -> Result<&2,&2,L.Fault,InventoryTransfer>:
+  do Result<&2,&2,L.Fault,InventoryTransfer>:
+    source : U32 <- L.get_number(args,"source",False{})
+    destination : U32 <- L.get_number(args,"destination",False{})
+    count : U32 <- L.get_number(args,"count",False{})
+    mode : String <- L.get_string(args,"mode")
+    parsed : Inv.TransferMode <- inventory_transfer_mode(mode)
+    return InventoryTransfer{source,destination,count,parsed}
+
+def inventory_transfer_args(inventory:I.State,result:Result<&2,&2,L.Fault,InventoryTransfer>) -> I.State & Result<&2,&2,L.Fault,J.Value>:
+  match result:
+    case Fail{fault}: (inventory,Fail{fault})
+    case Done{InventoryTransfer{source,destination,count,mode}}:
+      inventory_transfer_value(I.transfer(inventory,source,destination,count,mode))
+
+type InventoryAcquire is Data:
+  InventoryAcquire{slot:U32,item:String,count:U32}
+
+def inventory_acquire_arguments(+args:J.Value) -> Result<&2,&2,L.Fault,InventoryAcquire>:
+  do Result<&2,&2,L.Fault,InventoryAcquire>:
+    slot : U32 <- L.get_number(args,"slot",False{})
+    item : String <- L.get_string(args,"item")
+    count : U32 <- L.get_number(args,"count",False{})
+    return InventoryAcquire{slot,item,count}
+
+def inventory_acquisition_value(result:I.State & Result<&2,&2,String,Unit>) -> I.State & Result<&2,&2,L.Fault,J.Value>:
+  (inventory,status) = result
+  match status:
+    case Fail{message}: (inventory,Fail{L.bad("InventoryAcquisitionRejected",message)})
+    case Done{unit}: (inventory,Done{L.obj([J.JMember{"acquired",L.boolean(True{})}])})
+
+def inventory_acquire_args(inventory:I.State,result:Result<&2,&2,L.Fault,InventoryAcquire>) -> I.State & Result<&2,&2,L.Fault,J.Value>:
+  match result:
+    case Fail{fault}: (inventory,Fail{fault})
+    case Done{InventoryAcquire{slot,item,count}}:
+      inventory_acquisition_value(I.acquire(inventory,slot,Inv.ItemKey{item,""},count))
+
+def inventory_record_inspected(inventory:I.State,fresh:Bool,result:G.Engine & PR.Record & Result<&2,&2,L.Fault,J.Value>) -> G.Engine & IC.Saved & Result<&2,&2,L.Fault,J.Value>:
+  (engine,record,answer) = result
+  (engine,IC.Saved{record,inventory,fresh},answer)
+
+def inventory_operation_dispatch(engine:G.Engine,saved:IC.Saved,session:L.Session,envelope:L.Envelope) -> G.Engine & IC.Saved & Result<&2,&2,L.Fault,J.Value>:
+  IC.Saved{record,inventory,fresh} = saved
+  L.Envelope{id,+op,args,at} = envelope
+  match op:
+    case "player.inspect": inventory_record_inspected(inventory,fresh,operation_dispatch(engine,record,session,L.Envelope{id,op,args,at}))
+    case "inventory.inspect": inventory_answer(engine,record,fresh,inventory_inspected(I.inspect(inventory)))
+    case "inventory.selected": inventory_answer(engine,record,fresh,inventory_selected_inspected(inventory))
+    case "inventory.select": inventory_answer(engine,record,fresh,inventory_select_args(inventory,L.get_number(args,"slot",False{})))
+    case "inventory.transfer": inventory_answer(engine,record,fresh,inventory_transfer_args(inventory,inventory_transfer_arguments(args)))
+    case "inventory.acquire": inventory_answer(engine,record,fresh,inventory_acquire_args(inventory,inventory_acquire_arguments(args)))
+    case _: (engine,IC.Saved{record,inventory,fresh},Fail{L.bad("UnknownOperation","unknown player inventory operation")})
+
+def inventory_operations() -> E.Operations<IC.Saved>:
+  E.Operations{inventory_catalog,inventory_operation_dispatch}
+
+def dispatched(transient:R.Transient,result:E.State<IC.Saved> & L.Session & J.Value) -> State & L.Session & J.Value:
   (stored,session,value) = result
   (from_bundle(stored,transient),session,value)
 
-def delegate_bundle(session:L.Session,token:String,request:J.Value,result:E.State<PR.Record> & R.Transient) -> IO(State & L.Session & J.Value):
+def delegate_bundle(session:L.Session,token:String,request:J.Value,result:E.State<IC.Saved> & R.Transient) -> IO(State & L.Session & J.Value):
   (stored,transient) = result
   do IO<State & L.Session & J.Value>:
-    result : E.State<PR.Record> & L.Session & J.Value <- E.dispatch(~PR.Record,~PS.codec(),~operations(),stored,session,token,request)
+    result : E.State<IC.Saved> & L.Session & J.Value <- E.dispatch(~IC.Saved,~IC.codec(),~inventory_operations(),stored,session,token,request)
     return dispatched(transient,result)
 
 def delegate(state:State,session:L.Session,token:String,request:J.Value) -> IO(State & L.Session & J.Value):
@@ -117,8 +284,42 @@ def failure(state:State,session:L.Session,id:String,fault:L.Fault) -> State & L.
   response(state,session,L.obj([J.JMember{"id",L.text(id)},J.JMember{"ok",L.boolean(False{})},J.JMember{"error",L.fault_value(fault)}]))
 
 def observed(state:State,+peer:U32) -> State:
-  State{player,Shell{identity,path,+highwater,limits,lease,maximum,catalog}} = state
-  State{player,Shell{identity,path,U32.max(highwater,peer),limits,lease,maximum,catalog}}
+  State{player,Shell{identity,path,+highwater,limits,lease,maximum,catalog,inventory,fresh}} = state
+  State{player,Shell{identity,path,U32.max(highwater,peer),limits,lease,maximum,catalog,inventory,fresh}}
+
+def reserved_local_peer(state:State,result:Result<&2,&2,String,U32>) -> State & Result<&2,&2,String,C.Capability>:
+  match result:
+    case Fail{message}: (state,Fail{message})
+    case Done{4294967295}: (state,Fail{"peer ID range cannot reserve a local player and a public peer"})
+    case Done{+peer}: (observed(state,peer),Done{C.Player{peer}})
+
+# The renderer's Player identity belongs to the durable peer allocator. Reserve
+# it before opening public listeners; no peer zero or fabricated identity is used.
+def reserve_local_player(state:State) -> State & Result<&2,&2,String,C.Capability>:
+  State{player,Shell{identity,path,+highwater,limits,lease,maximum,catalog,inventory,fresh}} = state
+  reserved_local_peer(State{player,Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh}},P.next_peer(highwater))
+
+def block_action_executed(shell:Shell,record:PR.Record,palette:Maybe<&2,W.Palette>,region:W.Bounds,cache:Maybe<&2,W.SnapshotCache>,buttons:PI.Buttons,mouse:MI.State,options:MI.Options,error:Maybe<&2,String>,state_tail:List<&1,X.State>,motion_tail:List<&1,MH.State>,metadata_tail:List<&2,X.Metadata>,result:G.Engine & T.Tables & BI.Outcome) -> State & BI.Outcome:
+  (engine,tables,outcome) = result
+  (State{R.attach(engine,record,R.Transient{tables,palette,region,cache,buttons,mouse,options,error,state_tail,motion_tail,metadata_tail}),shell},outcome)
+
+def block_action_detached(shell:Shell,abilities:I.Abilities,held:Inv.Slot,cap:C.Capability,sequence:Nat,button:U32,result:G.Engine & PR.Record & R.Transient) -> State & BI.Outcome:
+  (engine,+record,R.Transient{tables,palette,region,cache,buttons,mouse,options,error,state_tail,motion_tail,metadata_tail}) = result
+  block_action_executed(shell,record,palette,region,cache,buttons,mouse,options,error,state_tail,motion_tail,metadata_tail,BI.execute(engine,record,tables,abilities,held,cap,sequence,button))
+
+def block_action_record(abilities:I.Abilities,held:Inv.Slot,cap:C.Capability,sequence:Nat,button:U32,shell:Shell,result:X.State & Result<&2,&2,String,PR.Record>) -> State & BI.Outcome:
+  (player,status) = result
+  match status:
+    case Fail{message}: (State{player,shell},BI.Outcome{False{},message})
+    case Done{record}: block_action_detached(shell,abilities,held,cap,sequence,button,R.detach(player))
+
+def block_action_selected(cap:C.Capability,sequence:Nat,button:U32,result:State & Inv.Slot) -> State & BI.Outcome:
+  (State{player,shell},held) = result
+  Shell{identity,path,highwater,limits,lease,maximum,catalog,I.State{owned,selected,+abilities},fresh} = shell
+  block_action_record(abilities,held,cap,sequence,button,Shell{identity,path,highwater,limits,lease,maximum,catalog,I.State{owned,selected,abilities},fresh},R.record_checked(player))
+
+def block_action(state:State,cap:C.Capability,sequence:Nat,button:U32) -> State & BI.Outcome:
+  block_action_selected(cap,sequence,button,inventory_selected(state))
 
 def clock_core(registry:B.Registry,view:W.View,result:C.World & C.Clock) -> W.State & C.Clock:
   (world,clock) = result
@@ -208,7 +409,7 @@ def startup_closed(message:String,result:Result<&1,&1,U32 & String,Unit>) -> IO(
     case Done{unit}: IO.die(Ready,1,"player session startup refused: " ++ message)
 
 def startup_failed(shell:Shell,message:String) -> IO(Ready):
-  Shell{identity,path,highwater,limits,lease,maximum,catalog} = shell
+  Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh} = shell
   do IO<Ready>:
     result : Result<&1,&1,U32 & String,Unit> <- WL.release(lease)
     startup_closed(message,result)
@@ -227,7 +428,7 @@ def startup_world(shell:Shell,first_peer:U32,tables:T.Tables,record:PR.Record,re
 
 def startup_base(base:P.State,record:PR.Record,maximum:U32,catalog:List<&2,E.Operation>,first_peer:U32,tables:T.Tables) -> IO(Ready):
   P.State{engine,identity,path,highwater,limits,lease} = base
-  startup_world(Shell{identity,path,highwater,limits,lease,maximum,catalog},first_peer,tables,record,W.new(engine))
+  startup_world(Shell{identity,path,highwater,limits,lease,maximum,catalog,I.new(),False{}},first_peer,tables,record,W.new(engine))
 
 # Caller loads the closed PS codec/operations before adoption. The supplied
 # Tables are the pinned owned sine lookup. Palette failure closes the save lease.
@@ -235,7 +436,16 @@ def new(ready:E.Ready<PR.Record>,tables:T.Tables) -> IO(Ready):
   E.Ready{E.State{base,record,maximum,catalog},first_peer} = ready
   startup_base(base,record,maximum,catalog,first_peer,tables)
 
-def returned_bundle(result:E.State<PR.Record> & R.Transient) -> State:
+def startup_inventory_base(base:P.State,saved:IC.Saved,maximum:U32,catalog:List<&2,E.Operation>,first_peer:U32,tables:T.Tables) -> IO(Ready):
+  P.State{engine,identity,path,highwater,limits,lease} = base
+  IC.Saved{record,inventory,fresh} = saved
+  startup_world(Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh},first_peer,tables,record,W.new(engine))
+
+def new_inventory(ready:E.Ready<IC.Saved>,tables:T.Tables) -> IO(Ready):
+  E.Ready{E.State{base,saved,maximum,catalog},first_peer} = ready
+  startup_inventory_base(base,saved,maximum,catalog,first_peer,tables)
+
+def returned_bundle(result:E.State<IC.Saved> & R.Transient) -> State:
   (stored,transient) = result
   from_bundle(stored,transient)
 
@@ -249,4 +459,4 @@ def bundle_transfer_preserves_all_local_runtime_and_save_fields(state):
     case State{X.State{MH.State{W.State{engine,body,yaw,pitch,palette,region,cache},support,minor,H.State{history},motion_tail},tables,
       X.Metadata{local,Plain.Metadata{input,jumping,delay,trigger,sync,speed,head},sprinting,pose,
         CT.Controller{buttons,look,mouse,options},entity,error,metadata_tail},state_tail},
-      Shell{identity,path,highwater,limits,lease,maximum,catalog}}: {==}
+      Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh}}: {==}

@@ -1,0 +1,73 @@
+{
+  "atomic_save_coldrestart": false,
+  "codec_accepted": 11,
+  "codec_cases": 50,
+  "codec_rejected": 39,
+  "executor_contract": "executor(label,args,env=None)->(stdout,processpin); host comparator owns no process launcher",
+  "host_selfcheck": "accepted bytes canonicalize to exact expected record/inventory;39malformed fixtures independently rejected;91observed Java subset fixture replay selfchecks exact",
+  "independent_default_record_bytes": 938,
+  "java": {
+    "cases": 125,
+    "extracted": true,
+    "fresh_jvm_reproduced": false,
+    "loaded_official_classes": 4405,
+    "observations_sha256": "16274bea0e084efcc2a53fb32876e4a18b82a7e816ce02f04dacdecae6d6489e",
+    "receipt": "evidence/player-inventory-reference-extract.json"
+  },
+  "native": false,
+  "native_reference_subset": {
+    "cases": 91,
+    "explicit_exclusions": [
+      "custom rejection names",
+      "split/merge admission",
+      "menu click protocol",
+      "equipment",
+      "modified components"
+    ],
+    "native_observations_including_setup": 645,
+    "safe_insert": 82,
+    "selected": 9,
+    "status": "prepared; no native process"
+  },
+  "ordinary_codec": {
+    "receipt": "build/player-inventory-ordinary/codec-2.json",
+    "result": "only established42 foreign durability/lock/persistence definitions"
+  },
+  "ordinary_harness": {
+    "receipt": "build/player-inventory-ordinary/harness-3.json",
+    "result": "only established42 foreign durability/lock/persistence definitions"
+  },
+  "ordinary_pure_inventory": {
+    "receipt": "build/player-inventory-ordinary/inventory-4.json",
+    "result": "ALL PROOFS CHECK; mathematical verdict pending"
+  },
+  "ordinary_receipts": "build/player-inventory-ordinary",
+  "ordinary_session": {
+    "receipt": "build/player-inventory-ordinary/session-6.json",
+    "result": "only58 effect dependents; no syntax/type/law diagnostics"
+  },
+  "source_pins": {
+    "src/local_player_session.bend": {
+      "bytes": 27644,
+      "sha256": "17698c5c14c1e22ebaf6b9a9802d68f09f96ad4dfd39744bc196a876f990676c"
+    },
+    "src/player_inventory.bend": {
+      "bytes": 8956,
+      "sha256": "1570d6e53471f904060a392cfaa48e8babee69e855f605d2f86ead59b43b6f3a"
+    },
+    "src/player_inventory_codec.bend": {
+      "bytes": 8323,
+      "sha256": "f989ee803c331da7ed99213f1f16e6c8f33fe9e00944a87b325c5872023e104c"
+    },
+    "tests/player_inventory.bend": {
+      "bytes": 7030,
+      "sha256": "bd389afa79dbf2f89897263ac6e912ff009b2bc86d00bb4c5f7d2ac206802f3b"
+    },
+    "tools/test_player_inventory.py": {
+      "bytes": 20884,
+      "sha256": "13cb94d2bbd4332167983a745f0c9295e342e29eb6d025a4d3a1f77fe7918db1"
+    }
+  },
+  "status": "ordinary checked; actual Java extracted; native/atomic-save/cold-restart pending",
+  "transition_cases": 62
+}
