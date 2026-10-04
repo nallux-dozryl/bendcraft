@@ -1,0 +1,841 @@
+{
+  "confidence": "high for retained resource identity and documented JSON object counts",
+  "counting_method": "Walk density-valued JSON recursively, excluding type labels and noise-registry identifiers. Expand each reachable named density definition exactly once per closure. Count typed JSON objects, including objects under unsupported parents; these are not compiled DAG nodes, dynamic sample counts or proof obligations.",
+  "decoder": {
+    "bytes": 11498,
+    "file": "worldgen_density_codec.bend",
+    "sha1": "fb22e307861a9e5baff3b0ff64c172e6c2ab07dd",
+    "sha256": "a194fabc717e57e3cdf12092d4cf8d15ca341a68793ec5fdeaab3f23def7b3be"
+  },
+  "density_reference": {
+    "bytes": 1222829,
+    "file": "worldgen_density.json",
+    "sha1": "b940ddd2fc3f89d737f34dbacbc75da0df3c787f",
+    "sha256": "d7a276d360bda532173cfec8d924e741f352ececf7348ec646c752baf16690b7"
+  },
+  "helper": {
+    "bytes": 5522,
+    "file": "inspect_worldgen_density_router_boundaries.py",
+    "sha1": "1ccc52b72ee7e21d68a97a84ed3ee44238be96ef",
+    "sha256": "b9820dc8c688f2f4514571c16c09e7c02aeec36ee61d46d935823ac363ddddcd"
+  },
+  "installed_density_definitions": [
+    {
+      "bytes": 157,
+      "key": "minecraft:end/base_3d_noise",
+      "member": "data/minecraft/worldgen/density_function/end/base_3d_noise.json",
+      "sha256": "38db7d590abc3144e3357a79562d649d9880bc2c62ddc99480d93f4b6401c9a6"
+    },
+    {
+      "bytes": 882,
+      "key": "minecraft:end/islands",
+      "member": "data/minecraft/worldgen/density_function/end/islands.json",
+      "sha256": "6e4f02929580ecc34bfb059855b4e88d080dc7ca6c9984f216bdaa32e6b47700"
+    },
+    {
+      "bytes": 106,
+      "key": "minecraft:end/sloped_cheese",
+      "member": "data/minecraft/worldgen/density_function/end/sloped_cheese.json",
+      "sha256": "5dee072865321e57e5e231e60a57bfcd1919454f93da33b3c1651b3712f2cfb2"
+    },
+    {
+      "bytes": 157,
+      "key": "minecraft:nether/base_3d_noise",
+      "member": "data/minecraft/worldgen/density_function/nether/base_3d_noise.json",
+      "sha256": "76cfd16e6fc2b1ce8bdb5f5ee277d431c167bc01afc2462bffff09eb5f0bd582"
+    },
+    {
+      "bytes": 158,
+      "key": "minecraft:overworld/base_3d_noise",
+      "member": "data/minecraft/worldgen/density_function/overworld/base_3d_noise.json",
+      "sha256": "2791a1e6c5c730eac1bd35aaea9a7ab22855872fdb92349192d045330fd4614f"
+    },
+    {
+      "bytes": 5638,
+      "key": "minecraft:overworld/caves/entrances",
+      "member": "data/minecraft/worldgen/density_function/overworld/caves/entrances.json",
+      "sha256": "63a1b8351e6dea212501c36f515f32e5a0e960228b5b5ccf0dc5b43855cbc1ab"
+    },
+    {
+      "bytes": 2802,
+      "key": "minecraft:overworld/caves/noodle",
+      "member": "data/minecraft/worldgen/density_function/overworld/caves/noodle.json",
+      "sha256": "3bce7453470fd37e3bfc11dc8584494aab094f9fd820038dc5592cb47e825a69"
+    },
+    {
+      "bytes": 1113,
+      "key": "minecraft:overworld/caves/pillars",
+      "member": "data/minecraft/worldgen/density_function/overworld/caves/pillars.json",
+      "sha256": "069d35fbdaed7d74521fc3e9355a94e778450b52a05f1efbd470ce3917b8a207"
+    },
+    {
+      "bytes": 3295,
+      "key": "minecraft:overworld/caves/spaghetti_2d",
+      "member": "data/minecraft/worldgen/density_function/overworld/caves/spaghetti_2d.json",
+      "sha256": "a99c68ac415596788c84e93e81c96c9786e31db21a81157459a13272cda4cb1f"
+    },
+    {
+      "bytes": 337,
+      "key": "minecraft:overworld/caves/spaghetti_2d_thickness_modulator",
+      "member": "data/minecraft/worldgen/density_function/overworld/caves/spaghetti_2d_thickness_modulator.json",
+      "sha256": "4f987a0b9e8c0adb02df47034fa8b3cebfbfb2c8e607123614ef009a16bfaf6c"
+    },
+    {
+      "bytes": 712,
+      "key": "minecraft:overworld/caves/spaghetti_roughness_function",
+      "member": "data/minecraft/worldgen/density_function/overworld/caves/spaghetti_roughness_function.json",
+      "sha256": "03bd1b405e53aeb75b6a3440d97975c25b6f11c7fc07149471b86c80fbdb6ea4"
+    },
+    {
+      "bytes": 140,
+      "key": "minecraft:overworld/chunk_surface_level",
+      "member": "data/minecraft/worldgen/density_function/overworld/chunk_surface_level.json",
+      "sha256": "93a4e26ce4a1144c42040f52ca375f0dec94648c70ccdcc52db4a7f55ca526a5"
+    },
+    {
+      "bytes": 235,
+      "key": "minecraft:overworld/continents",
+      "member": "data/minecraft/worldgen/density_function/overworld/continents.json",
+      "sha256": "0f2ff487c0556391ae2d56b7cab6990d45766ade2503236fe2669f83a64517be"
+    },
+    {
+      "bytes": 236,
+      "key": "minecraft:overworld/depth",
+      "member": "data/minecraft/worldgen/density_function/overworld/depth.json",
+      "sha256": "9fcd7c8badcae4dc8e86303b0f72b05b5fd998d5bb7ac637729dd7e688688069"
+    },
+    {
+      "bytes": 227,
+      "key": "minecraft:overworld/erosion",
+      "member": "data/minecraft/worldgen/density_function/overworld/erosion.json",
+      "sha256": "8173a3df61a3c5cfe352fb4a8fa64e99840836e42f2f4b0ddf8035f4d28f97a5"
+    },
+    {
+      "bytes": 29062,
+      "key": "minecraft:overworld/factor",
+      "member": "data/minecraft/worldgen/density_function/overworld/factor.json",
+      "sha256": "f7cd1629f1a034504bd74fd38af5ea75a59257c565b5d919a6212e2e08778e30"
+    },
+    {
+      "bytes": 5137,
+      "key": "minecraft:overworld/final_density",
+      "member": "data/minecraft/worldgen/density_function/overworld/final_density.json",
+      "sha256": "a7e6b9f4618e27cb08ec37a294d8ca2a96747128a8d65d788dc418fda372cfb1"
+    },
+    {
+      "bytes": 9963,
+      "key": "minecraft:overworld/jaggedness",
+      "member": "data/minecraft/worldgen/density_function/overworld/jaggedness.json",
+      "sha256": "5e8acc680409ae0b56596be02954eb5b49a72069d004e5dcf9a92c5e106ccdb2"
+    },
+    {
+      "bytes": 53460,
+      "key": "minecraft:overworld/offset",
+      "member": "data/minecraft/worldgen/density_function/overworld/offset.json",
+      "sha256": "da6b4e686d8eb16c19443a1126168b6f2719712c02b690b9d7384ce53badf995"
+    },
+    {
+      "bytes": 1457,
+      "key": "minecraft:overworld/ore_vein/copper_density",
+      "member": "data/minecraft/worldgen/density_function/overworld/ore_vein/copper_density.json",
+      "sha256": "3b16d3a4499981f40bfd2b33786a99046bbca0c958f8f41692ffcbf44ae927d7"
+    },
+    {
+      "bytes": 168,
+      "key": "minecraft:overworld/ore_vein/gap",
+      "member": "data/minecraft/worldgen/density_function/overworld/ore_vein/gap.json",
+      "sha256": "89ccfa58c6b8ae3e3954d2ff2dbcc42a8a3ae24a7b07437dbfb85fdced55945a"
+    },
+    {
+      "bytes": 1536,
+      "key": "minecraft:overworld/ore_vein/iron_density",
+      "member": "data/minecraft/worldgen/density_function/overworld/ore_vein/iron_density.json",
+      "sha256": "8de70a31c97e2a8299679770d53c8e366ace1aa8585e8d840375d25f85b72f8f"
+    },
+    {
+      "bytes": 1655,
+      "key": "minecraft:overworld/ore_vein/mask",
+      "member": "data/minecraft/worldgen/density_function/overworld/ore_vein/mask.json",
+      "sha256": "7f92df0b19e7d29fef01abc7025fea2bdae7a57453e186785cde2fc7d08aa5bc"
+    },
+    {
+      "bytes": 312,
+      "key": "minecraft:overworld/ore_vein/richness",
+      "member": "data/minecraft/worldgen/density_function/overworld/ore_vein/richness.json",
+      "sha256": "3eb0183e295a5f9c54aab936b706b4b9d570ddf56c983ae89b91151e6e38fb9d"
+    },
+    {
+      "bytes": 474,
+      "key": "minecraft:overworld/ore_vein/toggle",
+      "member": "data/minecraft/worldgen/density_function/overworld/ore_vein/toggle.json",
+      "sha256": "49b9db48740578911d0f8a2de40f02eced3ae742f03ebb05fee381af579cc9ed"
+    },
+    {
+      "bytes": 2263,
+      "key": "minecraft:overworld/preliminary_surface_level",
+      "member": "data/minecraft/worldgen/density_function/overworld/preliminary_surface_level.json",
+      "sha256": "4b6ce4c38ede0bec7485d4c029b9fcc7ceb5b26977c2c391a650fe8f3a3272b6"
+    },
+    {
+      "bytes": 225,
+      "key": "minecraft:overworld/ridges",
+      "member": "data/minecraft/worldgen/density_function/overworld/ridges.json",
+      "sha256": "bf66a03bd8474d09dad4da23f4b7e76816b83e23df9f53d9c0b7c529c25ed9c1"
+    },
+    {
+      "bytes": 367,
+      "key": "minecraft:overworld/ridges_folded",
+      "member": "data/minecraft/worldgen/density_function/overworld/ridges_folded.json",
+      "sha256": "c8a4343b56273a476648a84fbbe07d8c473c1dd3769749260db6340ba5b37f9a"
+    },
+    {
+      "bytes": 1036,
+      "key": "minecraft:overworld/sloped_cheese",
+      "member": "data/minecraft/worldgen/density_function/overworld/sloped_cheese.json",
+      "sha256": "5e2e7756881a4f2acf2e8c8dc826a04681939ff1dc7508ce868e865e92a069d7"
+    },
+    {
+      "bytes": 173,
+      "key": "minecraft:overworld/temperature",
+      "member": "data/minecraft/worldgen/density_function/overworld/temperature.json",
+      "sha256": "3c2f498cbf4636cd1fa7f555c14220a733c9d07fb5a1563f11c6144a27f31ce8"
+    },
+    {
+      "bytes": 172,
+      "key": "minecraft:overworld/vegetation",
+      "member": "data/minecraft/worldgen/density_function/overworld/vegetation.json",
+      "sha256": "c902ef045f63a568ef4c3d834716c67b5835f0994997ee45756837de111a806c"
+    },
+    {
+      "bytes": 150,
+      "key": "minecraft:overworld_amplified/chunk_surface_level",
+      "member": "data/minecraft/worldgen/density_function/overworld_amplified/chunk_surface_level.json",
+      "sha256": "378eef8542e7ee3adffeaf746e0c776d1e00ff75cf030d9244292acd796739f6"
+    },
+    {
+      "bytes": 246,
+      "key": "minecraft:overworld_amplified/depth",
+      "member": "data/minecraft/worldgen/density_function/overworld_amplified/depth.json",
+      "sha256": "35bbe18bc8eaec3bc8d81f1b3130018874d6cc8fa516c1e8380bdb8caf68c803"
+    },
+    {
+      "bytes": 29409,
+      "key": "minecraft:overworld_amplified/factor",
+      "member": "data/minecraft/worldgen/density_function/overworld_amplified/factor.json",
+      "sha256": "b42bc13d4d3c1cbeb7c6dfa2e16f4ef532ad0cff3a92d20bace01711fee6edd4"
+    },
+    {
+      "bytes": 5161,
+      "key": "minecraft:overworld_amplified/final_density",
+      "member": "data/minecraft/worldgen/density_function/overworld_amplified/final_density.json",
+      "sha256": "cde96d8a5efa63cd20cea615dd1172e5e6f2626e9275d359fa2864e77083ac4f"
+    },
+    {
+      "bytes": 9959,
+      "key": "minecraft:overworld_amplified/jaggedness",
+      "member": "data/minecraft/worldgen/density_function/overworld_amplified/jaggedness.json",
+      "sha256": "9f9a8993ce50cd2f0736ef98c3f8ff55db02d47b2a3e4f6aacae7c45a3c95bcc"
+    },
+    {
+      "bytes": 53432,
+      "key": "minecraft:overworld_amplified/offset",
+      "member": "data/minecraft/worldgen/density_function/overworld_amplified/offset.json",
+      "sha256": "0bb9ae6088ea4dbfdf79f6f2b2eed789c68e9a4e919a31bf912f91ddeda28e8b"
+    },
+    {
+      "bytes": 2297,
+      "key": "minecraft:overworld_amplified/preliminary_surface_level",
+      "member": "data/minecraft/worldgen/density_function/overworld_amplified/preliminary_surface_level.json",
+      "sha256": "e8a82a9dfe183f4e624ea7a268efa2c54376caf99139596a26ad1dd27e887e5f"
+    },
+    {
+      "bytes": 1066,
+      "key": "minecraft:overworld_amplified/sloped_cheese",
+      "member": "data/minecraft/worldgen/density_function/overworld_amplified/sloped_cheese.json",
+      "sha256": "d8609154b76d0eefcfbc3746fa84f32cb04c5817a2fd1b80e72ee0ae9d88e96c"
+    },
+    {
+      "bytes": 153,
+      "key": "minecraft:overworld_large_biomes/chunk_surface_level",
+      "member": "data/minecraft/worldgen/density_function/overworld_large_biomes/chunk_surface_level.json",
+      "sha256": "72f29b5fa9c01afa296d3679e6be662ee1b0bfdc1ba40cc2092ea74380be5c47"
+    },
+    {
+      "bytes": 241,
+      "key": "minecraft:overworld_large_biomes/continents",
+      "member": "data/minecraft/worldgen/density_function/overworld_large_biomes/continents.json",
+      "sha256": "cfab013269cff17cfdf95497f87e70591378e7a39da44a241199fb64b304d411"
+    },
+    {
+      "bytes": 249,
+      "key": "minecraft:overworld_large_biomes/depth",
+      "member": "data/minecraft/worldgen/density_function/overworld_large_biomes/depth.json",
+      "sha256": "9ec8ced85b58494f5400d4a5f6a27f1d4d44271d7a87adb8c5d842319eb5997f"
+    },
+    {
+      "bytes": 233,
+      "key": "minecraft:overworld_large_biomes/erosion",
+      "member": "data/minecraft/worldgen/density_function/overworld_large_biomes/erosion.json",
+      "sha256": "773d626db8e356d92a321270895ce085287d2befcb4504842371c38fd10102ac"
+    },
+    {
+      "bytes": 29127,
+      "key": "minecraft:overworld_large_biomes/factor",
+      "member": "data/minecraft/worldgen/density_function/overworld_large_biomes/factor.json",
+      "sha256": "0e7aa57eca20ebd6d2f089a9a4a34502efe902295812650f71b2ff087bb8b15f"
+    },
+    {
+      "bytes": 5176,
+      "key": "minecraft:overworld_large_biomes/final_density",
+      "member": "data/minecraft/worldgen/density_function/overworld_large_biomes/final_density.json",
+      "sha256": "6f644644293c5489c499dc57663f2c12de60fc720bc4f1120efd343246eb159e"
+    },
+    {
+      "bytes": 10002,
+      "key": "minecraft:overworld_large_biomes/jaggedness",
+      "member": "data/minecraft/worldgen/density_function/overworld_large_biomes/jaggedness.json",
+      "sha256": "30090703d4d9e493d40d60e06ee12f1310a608e20b73aeb8f86efa8e31b11453"
+    },
+    {
+      "bytes": 53538,
+      "key": "minecraft:overworld_large_biomes/offset",
+      "member": "data/minecraft/worldgen/density_function/overworld_large_biomes/offset.json",
+      "sha256": "75517306420732023e2dfeeb253439d8f0edcde9bb8b10ee7870d1bdb072ec22"
+    },
+    {
+      "bytes": 2315,
+      "key": "minecraft:overworld_large_biomes/preliminary_surface_level",
+      "member": "data/minecraft/worldgen/density_function/overworld_large_biomes/preliminary_surface_level.json",
+      "sha256": "ece7767faac91980f5349ddfdc6040dc4ebbfce71a9f4d5842fa1b7bb169db3b"
+    },
+    {
+      "bytes": 1075,
+      "key": "minecraft:overworld_large_biomes/sloped_cheese",
+      "member": "data/minecraft/worldgen/density_function/overworld_large_biomes/sloped_cheese.json",
+      "sha256": "347e160b5f951137b5f82a39c18572f8851c5a22484d11f31d1f90f5e5f6ac99"
+    },
+    {
+      "bytes": 179,
+      "key": "minecraft:overworld_large_biomes/temperature",
+      "member": "data/minecraft/worldgen/density_function/overworld_large_biomes/temperature.json",
+      "sha256": "051138f2c2f0ca4050b92f7320ddea461dca2038a49eb6f9931ecbf39129f4ef"
+    },
+    {
+      "bytes": 178,
+      "key": "minecraft:overworld_large_biomes/vegetation",
+      "member": "data/minecraft/worldgen/density_function/overworld_large_biomes/vegetation.json",
+      "sha256": "187b08814a3831cd0ff2f405c6683e7213a79dc7eeec44cd46136e350b0718b7"
+    },
+    {
+      "bytes": 114,
+      "key": "minecraft:shift_x",
+      "member": "data/minecraft/worldgen/density_function/shift_x.json",
+      "sha256": "0db6e5f781089feede9d8d2936d7564024752e34006b8bc9f2a138749f91e3e7"
+    },
+    {
+      "bytes": 114,
+      "key": "minecraft:shift_z",
+      "member": "data/minecraft/worldgen/density_function/shift_z.json",
+      "sha256": "0b561cdfafa9e82f431a8051576eb2ddc386d01459df571d7040021b0debb762"
+    },
+    {
+      "bytes": 149,
+      "key": "minecraft:y",
+      "member": "data/minecraft/worldgen/density_function/y.json",
+      "sha256": "e7766e59792605f5c3d8e05ff6263db1dc6c91343c736b3ab7a58ddee9771282"
+    },
+    {
+      "bytes": 3,
+      "key": "minecraft:zero",
+      "member": "data/minecraft/worldgen/density_function/zero.json",
+      "sha256": "8aed642bf5118b9d3c859bd4be35ecac75b6e873cce34e7b6f554b06f75550d7"
+    }
+  ],
+  "per_router_root": {
+    "chunk_surface_level": {
+      "explicit_blending_context_objects": [
+        {
+          "kind": "minecraft:blend_alpha",
+          "path": "minecraft:overworld/offset/input/alpha"
+        },
+        {
+          "kind": "minecraft:blend_offset",
+          "path": "minecraft:overworld/offset/input/first"
+        },
+        {
+          "kind": "minecraft:blend_alpha",
+          "path": "minecraft:overworld/factor/input/alpha"
+        }
+      ],
+      "loaded_definition_count": 10,
+      "loaded_definitions": {
+        "minecraft:overworld/chunk_surface_level": "noise_router/chunk_surface_level",
+        "minecraft:overworld/continents": "minecraft:overworld/offset/input/second/right/spline/coordinate",
+        "minecraft:overworld/erosion": "minecraft:overworld/offset/input/second/right/spline/points/5/value/coordinate",
+        "minecraft:overworld/factor": "minecraft:overworld/preliminary_surface_level/density/left/second/second/input/left/left/input/right",
+        "minecraft:overworld/offset": "minecraft:overworld/preliminary_surface_level/density/left/second/second/input/left/left/input/left/right",
+        "minecraft:overworld/preliminary_surface_level": "minecraft:overworld/chunk_surface_level/input",
+        "minecraft:overworld/ridges": "minecraft:overworld/ridges_folded/left/left/input/left/input",
+        "minecraft:overworld/ridges_folded": "minecraft:overworld/offset/input/second/right/spline/points/5/value/points/0/value/coordinate",
+        "minecraft:shift_x": "minecraft:overworld/continents/input/shift_x",
+        "minecraft:shift_z": "minecraft:overworld/continents/input/shift_z"
+      },
+      "type_counts": {
+        "minecraft:abs": 2,
+        "minecraft:add": 7,
+        "minecraft:blend_alpha": 2,
+        "minecraft:blend_offset": 1,
+        "minecraft:cache": 7,
+        "minecraft:clamp": 2,
+        "minecraft:div": 1,
+        "minecraft:find_top_surface": 1,
+        "minecraft:gradient": 3,
+        "minecraft:interpolated": 1,
+        "minecraft:lerp": 4,
+        "minecraft:mul": 4,
+        "minecraft:noise": 3,
+        "minecraft:quarter_negative": 1,
+        "minecraft:shift_a": 1,
+        "minecraft:shift_b": 1,
+        "minecraft:spline": 2,
+        "minecraft:sub": 1
+      },
+      "typed_json_object_count": 44,
+      "unsupported_objects": [
+        {
+          "kind": "minecraft:interpolated",
+          "path": "minecraft:overworld/chunk_surface_level"
+        },
+        {
+          "kind": "minecraft:find_top_surface",
+          "path": "minecraft:overworld/preliminary_surface_level"
+        }
+      ],
+      "unsupported_type_counts": {
+        "minecraft:find_top_surface": 1,
+        "minecraft:interpolated": 1
+      },
+      "unsupported_typed_json_object_count": 2
+    },
+    "continents": {
+      "explicit_blending_context_objects": [],
+      "loaded_definition_count": 3,
+      "loaded_definitions": {
+        "minecraft:overworld/continents": "noise_router/continents",
+        "minecraft:shift_x": "minecraft:overworld/continents/input/shift_x",
+        "minecraft:shift_z": "minecraft:overworld/continents/input/shift_z"
+      },
+      "type_counts": {
+        "minecraft:cache": 3,
+        "minecraft:noise": 1,
+        "minecraft:shift_a": 1,
+        "minecraft:shift_b": 1
+      },
+      "typed_json_object_count": 6,
+      "unsupported_objects": [],
+      "unsupported_type_counts": {},
+      "unsupported_typed_json_object_count": 0
+    },
+    "depth": {
+      "explicit_blending_context_objects": [
+        {
+          "kind": "minecraft:blend_alpha",
+          "path": "minecraft:overworld/offset/input/alpha"
+        },
+        {
+          "kind": "minecraft:blend_offset",
+          "path": "minecraft:overworld/offset/input/first"
+        }
+      ],
+      "loaded_definition_count": 8,
+      "loaded_definitions": {
+        "minecraft:overworld/continents": "minecraft:overworld/offset/input/second/right/spline/coordinate",
+        "minecraft:overworld/depth": "noise_router/depth",
+        "minecraft:overworld/erosion": "minecraft:overworld/offset/input/second/right/spline/points/5/value/coordinate",
+        "minecraft:overworld/offset": "minecraft:overworld/depth/right",
+        "minecraft:overworld/ridges": "minecraft:overworld/ridges_folded/left/left/input/left/input",
+        "minecraft:overworld/ridges_folded": "minecraft:overworld/offset/input/second/right/spline/points/5/value/points/0/value/coordinate",
+        "minecraft:shift_x": "minecraft:overworld/continents/input/shift_x",
+        "minecraft:shift_z": "minecraft:overworld/continents/input/shift_z"
+      },
+      "type_counts": {
+        "minecraft:abs": 2,
+        "minecraft:add": 4,
+        "minecraft:blend_alpha": 1,
+        "minecraft:blend_offset": 1,
+        "minecraft:cache": 6,
+        "minecraft:gradient": 1,
+        "minecraft:lerp": 1,
+        "minecraft:mul": 1,
+        "minecraft:noise": 3,
+        "minecraft:shift_a": 1,
+        "minecraft:shift_b": 1,
+        "minecraft:spline": 1
+      },
+      "typed_json_object_count": 23,
+      "unsupported_objects": [],
+      "unsupported_type_counts": {},
+      "unsupported_typed_json_object_count": 0
+    },
+    "erosion": {
+      "explicit_blending_context_objects": [],
+      "loaded_definition_count": 3,
+      "loaded_definitions": {
+        "minecraft:overworld/erosion": "noise_router/erosion",
+        "minecraft:shift_x": "minecraft:overworld/erosion/input/shift_x",
+        "minecraft:shift_z": "minecraft:overworld/erosion/input/shift_z"
+      },
+      "type_counts": {
+        "minecraft:cache": 3,
+        "minecraft:noise": 1,
+        "minecraft:shift_a": 1,
+        "minecraft:shift_b": 1
+      },
+      "typed_json_object_count": 6,
+      "unsupported_objects": [],
+      "unsupported_type_counts": {},
+      "unsupported_typed_json_object_count": 0
+    },
+    "final_density": {
+      "explicit_blending_context_objects": [
+        {
+          "kind": "minecraft:blend_density",
+          "path": "minecraft:overworld/final_density/left/left/input/input/left"
+        },
+        {
+          "kind": "minecraft:blend_alpha",
+          "path": "minecraft:overworld/offset/input/alpha"
+        },
+        {
+          "kind": "minecraft:blend_offset",
+          "path": "minecraft:overworld/offset/input/first"
+        },
+        {
+          "kind": "minecraft:blend_alpha",
+          "path": "minecraft:overworld/jaggedness/input/alpha"
+        },
+        {
+          "kind": "minecraft:blend_alpha",
+          "path": "minecraft:overworld/factor/input/alpha"
+        }
+      ],
+      "loaded_definition_count": 20,
+      "loaded_definitions": {
+        "minecraft:overworld/base_3d_noise": "minecraft:overworld/sloped_cheese/input/right",
+        "minecraft:overworld/caves/entrances": "minecraft:overworld/final_density/left/left/input/input/left/input/second/second/when_in_range/right/left",
+        "minecraft:overworld/caves/noodle": "minecraft:overworld/final_density/left/right",
+        "minecraft:overworld/caves/pillars": "minecraft:overworld/final_density/left/left/input/input/left/input/second/second/when_out_of_range/right/input",
+        "minecraft:overworld/caves/spaghetti_2d": "minecraft:overworld/final_density/left/left/input/input/left/input/second/second/when_out_of_range/left/right/left",
+        "minecraft:overworld/caves/spaghetti_2d_thickness_modulator": "minecraft:overworld/caves/spaghetti_2d/input/left/right/left",
+        "minecraft:overworld/caves/spaghetti_roughness_function": "minecraft:overworld/caves/entrances/input/right/left",
+        "minecraft:overworld/continents": "minecraft:overworld/offset/input/second/right/spline/coordinate",
+        "minecraft:overworld/depth": "minecraft:overworld/sloped_cheese/input/left/left/input/left/left",
+        "minecraft:overworld/erosion": "minecraft:overworld/offset/input/second/right/spline/points/5/value/coordinate",
+        "minecraft:overworld/factor": "minecraft:overworld/sloped_cheese/input/left/left/input/right",
+        "minecraft:overworld/final_density": "noise_router/final_density",
+        "minecraft:overworld/jaggedness": "minecraft:overworld/sloped_cheese/input/left/left/input/left/right/input/left",
+        "minecraft:overworld/offset": "minecraft:overworld/depth/right",
+        "minecraft:overworld/ridges": "minecraft:overworld/ridges_folded/left/left/input/left/input",
+        "minecraft:overworld/ridges_folded": "minecraft:overworld/offset/input/second/right/spline/points/5/value/points/0/value/coordinate",
+        "minecraft:overworld/sloped_cheese": "minecraft:overworld/final_density/left/left/input/input/left/input/second/second/input",
+        "minecraft:shift_x": "minecraft:overworld/continents/input/shift_x",
+        "minecraft:shift_z": "minecraft:overworld/continents/input/shift_z",
+        "minecraft:y": "minecraft:overworld/caves/noodle/input/input/input"
+      },
+      "type_counts": {
+        "minecraft:abs": 9,
+        "minecraft:add": 28,
+        "minecraft:beardifier": 1,
+        "minecraft:blend_alpha": 3,
+        "minecraft:blend_density": 1,
+        "minecraft:blend_offset": 1,
+        "minecraft:cache": 17,
+        "minecraft:clamp": 4,
+        "minecraft:cube": 2,
+        "minecraft:gradient": 6,
+        "minecraft:half_negative": 1,
+        "minecraft:interpolated": 5,
+        "minecraft:interval_select": 3,
+        "minecraft:lerp": 5,
+        "minecraft:max": 4,
+        "minecraft:min": 5,
+        "minecraft:mul": 33,
+        "minecraft:noise": 35,
+        "minecraft:old_blended_noise": 1,
+        "minecraft:quarter_negative": 1,
+        "minecraft:range_choice": 7,
+        "minecraft:shift_a": 1,
+        "minecraft:shift_b": 1,
+        "minecraft:spline": 3,
+        "minecraft:square": 1,
+        "minecraft:squeeze": 1
+      },
+      "typed_json_object_count": 179,
+      "unsupported_objects": [
+        {
+          "kind": "minecraft:interpolated",
+          "path": "minecraft:overworld/final_density/left/left/input"
+        },
+        {
+          "kind": "minecraft:interval_select",
+          "path": "minecraft:overworld/caves/entrances/input/right/right/input/left/left/input"
+        },
+        {
+          "kind": "minecraft:interval_select",
+          "path": "minecraft:overworld/caves/entrances/input/right/right/input/left/right/input"
+        },
+        {
+          "kind": "minecraft:interval_select",
+          "path": "minecraft:overworld/caves/spaghetti_2d/input/left/left/input"
+        },
+        {
+          "kind": "minecraft:interpolated",
+          "path": "minecraft:overworld/caves/noodle/input"
+        },
+        {
+          "kind": "minecraft:interpolated",
+          "path": "minecraft:overworld/caves/noodle/when_out_of_range/left"
+        },
+        {
+          "kind": "minecraft:interpolated",
+          "path": "minecraft:overworld/caves/noodle/when_out_of_range/right/left/left/input"
+        },
+        {
+          "kind": "minecraft:interpolated",
+          "path": "minecraft:overworld/caves/noodle/when_out_of_range/right/left/right/input"
+        },
+        {
+          "kind": "minecraft:beardifier",
+          "path": "minecraft:overworld/final_density/right"
+        }
+      ],
+      "unsupported_type_counts": {
+        "minecraft:beardifier": 1,
+        "minecraft:interpolated": 5,
+        "minecraft:interval_select": 3
+      },
+      "unsupported_typed_json_object_count": 9
+    },
+    "ridges": {
+      "explicit_blending_context_objects": [],
+      "loaded_definition_count": 3,
+      "loaded_definitions": {
+        "minecraft:overworld/ridges": "noise_router/ridges",
+        "minecraft:shift_x": "minecraft:overworld/ridges/input/shift_x",
+        "minecraft:shift_z": "minecraft:overworld/ridges/input/shift_z"
+      },
+      "type_counts": {
+        "minecraft:cache": 3,
+        "minecraft:noise": 1,
+        "minecraft:shift_a": 1,
+        "minecraft:shift_b": 1
+      },
+      "typed_json_object_count": 6,
+      "unsupported_objects": [],
+      "unsupported_type_counts": {},
+      "unsupported_typed_json_object_count": 0
+    },
+    "temperature": {
+      "explicit_blending_context_objects": [],
+      "loaded_definition_count": 3,
+      "loaded_definitions": {
+        "minecraft:overworld/temperature": "noise_router/temperature",
+        "minecraft:shift_x": "minecraft:overworld/temperature/shift_x",
+        "minecraft:shift_z": "minecraft:overworld/temperature/shift_z"
+      },
+      "type_counts": {
+        "minecraft:cache": 2,
+        "minecraft:noise": 1,
+        "minecraft:shift_a": 1,
+        "minecraft:shift_b": 1
+      },
+      "typed_json_object_count": 5,
+      "unsupported_objects": [],
+      "unsupported_type_counts": {},
+      "unsupported_typed_json_object_count": 0
+    },
+    "vegetation": {
+      "explicit_blending_context_objects": [],
+      "loaded_definition_count": 3,
+      "loaded_definitions": {
+        "minecraft:overworld/vegetation": "noise_router/vegetation",
+        "minecraft:shift_x": "minecraft:overworld/vegetation/shift_x",
+        "minecraft:shift_z": "minecraft:overworld/vegetation/shift_z"
+      },
+      "type_counts": {
+        "minecraft:cache": 2,
+        "minecraft:noise": 1,
+        "minecraft:shift_a": 1,
+        "minecraft:shift_b": 1
+      },
+      "typed_json_object_count": 5,
+      "unsupported_objects": [],
+      "unsupported_type_counts": {},
+      "unsupported_typed_json_object_count": 0
+    }
+  },
+  "pin": "26.3",
+  "retained_official_signature_receipts": [
+    {
+      "bytes": 180270,
+      "file": "stdout",
+      "path": "build/superflat-world/reference/density-noise-helper-signatures/stdout",
+      "sha1": "7ea4cc31b1ceddbb81f216f284a70cc7b2f41fb0",
+      "sha256": "7be0fea7140581307926e15681deae4255f4c4318b73c03b363a1da90ab87180"
+    },
+    {
+      "bytes": 286622,
+      "file": "stdout",
+      "path": "build/superflat-world/reference/density-operator-signatures/stdout",
+      "sha1": "1d6ae494015cee99216b905af26233b8e6568a9d",
+      "sha256": "3a8691733a480b26156b73f92c1b79383f4a07de17790bc18cf6fbf6ff1b695a"
+    },
+    {
+      "bytes": 119357,
+      "file": "stdout",
+      "path": "build/superflat-world/reference/density-interval-blend-signatures-1791137663854721000/stdout",
+      "sha1": "cfba73885dc386aa1e4b72af64c48a52fcad23c0",
+      "sha256": "22105a63b158353321a025586ebd8a12872dd74e858aaa10441ff43ad1495683"
+    }
+  ],
+  "schema": 1,
+  "scope": "File-only inventory of actual loaded shipped Overworld router resources and current decoder type cases. Explicit no-blending defaults cover blend alpha/offset/density only; beardifier remains unsupported. This inventory does not establish operator semantics, executable full-router admission, material/aquifer/surface joins or normal population.",
+  "shared_eight_root_closure": {
+    "explicit_blending_context_objects": [
+      {
+        "kind": "minecraft:blend_alpha",
+        "path": "minecraft:overworld/offset/input/alpha"
+      },
+      {
+        "kind": "minecraft:blend_offset",
+        "path": "minecraft:overworld/offset/input/first"
+      },
+      {
+        "kind": "minecraft:blend_alpha",
+        "path": "minecraft:overworld/factor/input/alpha"
+      },
+      {
+        "kind": "minecraft:blend_density",
+        "path": "minecraft:overworld/final_density/left/left/input/input/left"
+      },
+      {
+        "kind": "minecraft:blend_alpha",
+        "path": "minecraft:overworld/jaggedness/input/alpha"
+      }
+    ],
+    "loaded_definition_count": 24,
+    "loaded_definitions": {
+      "minecraft:overworld/base_3d_noise": "minecraft:overworld/sloped_cheese/input/right",
+      "minecraft:overworld/caves/entrances": "minecraft:overworld/final_density/left/left/input/input/left/input/second/second/when_in_range/right/left",
+      "minecraft:overworld/caves/noodle": "minecraft:overworld/final_density/left/right",
+      "minecraft:overworld/caves/pillars": "minecraft:overworld/final_density/left/left/input/input/left/input/second/second/when_out_of_range/right/input",
+      "minecraft:overworld/caves/spaghetti_2d": "minecraft:overworld/final_density/left/left/input/input/left/input/second/second/when_out_of_range/left/right/left",
+      "minecraft:overworld/caves/spaghetti_2d_thickness_modulator": "minecraft:overworld/caves/spaghetti_2d/input/left/right/left",
+      "minecraft:overworld/caves/spaghetti_roughness_function": "minecraft:overworld/caves/entrances/input/right/left",
+      "minecraft:overworld/chunk_surface_level": "noise_router/chunk_surface_level",
+      "minecraft:overworld/continents": "minecraft:overworld/offset/input/second/right/spline/coordinate",
+      "minecraft:overworld/depth": "noise_router/depth",
+      "minecraft:overworld/erosion": "minecraft:overworld/offset/input/second/right/spline/points/5/value/coordinate",
+      "minecraft:overworld/factor": "minecraft:overworld/preliminary_surface_level/density/left/second/second/input/left/left/input/right",
+      "minecraft:overworld/final_density": "noise_router/final_density",
+      "minecraft:overworld/jaggedness": "minecraft:overworld/sloped_cheese/input/left/left/input/left/right/input/left",
+      "minecraft:overworld/offset": "minecraft:overworld/preliminary_surface_level/density/left/second/second/input/left/left/input/left/right",
+      "minecraft:overworld/preliminary_surface_level": "minecraft:overworld/chunk_surface_level/input",
+      "minecraft:overworld/ridges": "minecraft:overworld/ridges_folded/left/left/input/left/input",
+      "minecraft:overworld/ridges_folded": "minecraft:overworld/offset/input/second/right/spline/points/5/value/points/0/value/coordinate",
+      "minecraft:overworld/sloped_cheese": "minecraft:overworld/final_density/left/left/input/input/left/input/second/second/input",
+      "minecraft:overworld/temperature": "noise_router/temperature",
+      "minecraft:overworld/vegetation": "noise_router/vegetation",
+      "minecraft:shift_x": "minecraft:overworld/continents/input/shift_x",
+      "minecraft:shift_z": "minecraft:overworld/continents/input/shift_z",
+      "minecraft:y": "minecraft:overworld/caves/noodle/input/input/input"
+    },
+    "type_counts": {
+      "minecraft:abs": 9,
+      "minecraft:add": 32,
+      "minecraft:beardifier": 1,
+      "minecraft:blend_alpha": 3,
+      "minecraft:blend_density": 1,
+      "minecraft:blend_offset": 1,
+      "minecraft:cache": 17,
+      "minecraft:clamp": 6,
+      "minecraft:cube": 2,
+      "minecraft:div": 1,
+      "minecraft:find_top_surface": 1,
+      "minecraft:gradient": 9,
+      "minecraft:half_negative": 1,
+      "minecraft:interpolated": 6,
+      "minecraft:interval_select": 3,
+      "minecraft:lerp": 7,
+      "minecraft:max": 4,
+      "minecraft:min": 5,
+      "minecraft:mul": 36,
+      "minecraft:noise": 37,
+      "minecraft:old_blended_noise": 1,
+      "minecraft:quarter_negative": 2,
+      "minecraft:range_choice": 7,
+      "minecraft:shift_a": 1,
+      "minecraft:shift_b": 1,
+      "minecraft:spline": 3,
+      "minecraft:square": 1,
+      "minecraft:squeeze": 1,
+      "minecraft:sub": 1
+    },
+    "typed_json_object_count": 200,
+    "unsupported_objects": [
+      {
+        "kind": "minecraft:interpolated",
+        "path": "minecraft:overworld/chunk_surface_level"
+      },
+      {
+        "kind": "minecraft:find_top_surface",
+        "path": "minecraft:overworld/preliminary_surface_level"
+      },
+      {
+        "kind": "minecraft:interpolated",
+        "path": "minecraft:overworld/final_density/left/left/input"
+      },
+      {
+        "kind": "minecraft:interval_select",
+        "path": "minecraft:overworld/caves/entrances/input/right/right/input/left/left/input"
+      },
+      {
+        "kind": "minecraft:interval_select",
+        "path": "minecraft:overworld/caves/entrances/input/right/right/input/left/right/input"
+      },
+      {
+        "kind": "minecraft:interval_select",
+        "path": "minecraft:overworld/caves/spaghetti_2d/input/left/left/input"
+      },
+      {
+        "kind": "minecraft:interpolated",
+        "path": "minecraft:overworld/caves/noodle/input"
+      },
+      {
+        "kind": "minecraft:interpolated",
+        "path": "minecraft:overworld/caves/noodle/when_out_of_range/left"
+      },
+      {
+        "kind": "minecraft:interpolated",
+        "path": "minecraft:overworld/caves/noodle/when_out_of_range/right/left/left/input"
+      },
+      {
+        "kind": "minecraft:interpolated",
+        "path": "minecraft:overworld/caves/noodle/when_out_of_range/right/left/right/input"
+      },
+      {
+        "kind": "minecraft:beardifier",
+        "path": "minecraft:overworld/final_density/right"
+      }
+    ],
+    "unsupported_type_counts": {
+      "minecraft:beardifier": 1,
+      "minecraft:find_top_surface": 1,
+      "minecraft:interpolated": 6,
+      "minecraft:interval_select": 3
+    },
+    "unsupported_typed_json_object_count": 11
+  },
+  "status": "inspected",
+  "verified_installed_density_definition_count": 55
+}

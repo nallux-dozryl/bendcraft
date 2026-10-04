@@ -1,0 +1,71 @@
+{
+  "actual_java_reference": {
+    "bytes": 52244,
+    "file": "worldgen_density_router.json",
+    "sha1": "d7dda0b2e5e8d8b1354ab664e0272b010f20d103",
+    "sha256": "45c8aa99b17c4c41cc4a5939b26600d07d5868ca49a05b00de49d1afaa7bff24"
+  },
+  "first_ordinary_build_attempt": {
+    "bytes": 1522,
+    "file": "worldgen-density-integration-ordinary-build-failure.json",
+    "path": "evidence/worldgen-density-integration-ordinary-build-failure.json",
+    "sha1": "68f562735e7d738839940f3cf0da4243afbf36bb",
+    "sha256": "830dd82a61582975fbfb6c2c8edca429b100f94ed5458e6ec67bd2adb0d02d6f"
+  },
+  "full34_kernel_limitation": {
+    "bytes": 23435,
+    "file": "worldgen-density-router-proof-limitation.json",
+    "sha1": "7bbc78cbc47f002b7999b11443f9dabe29417f70",
+    "sha256": "b25ee1342d6e2cb0fc9931572da04b085998f1182c4e3e38fd88a3b071f3af00"
+  },
+  "independent_runtime_proof": {
+    "bytes": 36501,
+    "file": "worldgen-density-router-runtime-proof.json",
+    "sha1": "44129aca07e970575c665a96fa184f28934491e0",
+    "sha256": "761d4dbcc5ccb2e0c2494d3f4a95e7fa5aa119b615ef2f907aa829061f875933"
+  },
+  "independently_admitted_runtime_laws": 24,
+  "native_artifact_available": false,
+  "native_numerical_parity_established": false,
+  "pin": "26.3",
+  "prepared_native_comparison": {
+    "combined_native_prefix": [
+      "router"
+    ],
+    "command": "python3 tools/test_worldgen_density_router.py --compare-cached",
+    "executed": false,
+    "expected_counts": {
+      "column_float_words": 18,
+      "eight_root_float_words": 720,
+      "loaded_biome_queries": 28,
+      "loaded_sloped_cheese_column_words": 8,
+      "refused_boundaries": 8,
+      "shared_reference_scenarios": 1,
+      "six_axis_float_words": 168,
+      "six_axis_quantized_longs": 168
+    },
+    "helper": {
+      "bytes": 10623,
+      "file": "test_worldgen_density_router.py",
+      "sha1": "c8774e18ab0d32c55314027a39e8e2e098288969",
+      "sha256": "207c39e0cec2422f847817f00d20d0400db007d09fa90f5b1a94382043606f25"
+    },
+    "pointer": "build/superflat-world/reference/density-router-native-current.json"
+  },
+  "reference_observations": {
+    "cases": 13,
+    "eight_root_float_words": 720,
+    "selected_biome_queries": 28,
+    "six_axis_float_words": 168,
+    "six_axis_quantized_longs": 168
+  },
+  "schema": 1,
+  "scope": "Actual production source and selected independent-kernel runtime contracts are verified; pinned Java outcomes are observed. Native comparison is prepared and has not executed because the first coordinated ordinary combined build produced no executable, generated C or final report, and its receiver raised PermissionError during cleanup. A coordinated alternative emission route is separate work; no normal chunk-population claim.",
+  "source_validation": {
+    "bytes": 19772,
+    "file": "worldgen-density-router-source.json",
+    "sha1": "46658575136f17ad89017322f883ea95c4c77411",
+    "sha256": "17806f64306487b82488425583d32a330a0feb3f4c409823736c9cb7e6c2520e"
+  },
+  "status": "prepared_native_unverified"
+}
