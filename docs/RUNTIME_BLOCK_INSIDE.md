@@ -31,6 +31,8 @@ The callback's flying fact is the selected travel context's `P.mode_flying` befo
 
 Receiver updates stay in candidate `Work.metadata`. The original runtime Frame keeps its receiver. Callback refusal and every later rotation, pose or provider refusal must use the existing whole-frame rollback. A successful callback result alone is not a committed runtime phase.
 
+Attach/detach, record projections, block actions and other in-memory bundle detours preserve the receiver. Fresh construction and a successful startup restore clear the transient stuck multiplier. In the admitted zero-grace/absent-impact profile, `P.empty()` supplies that exact fresh receiver. A failed restore retains the original receiver. The current `restored_transient` constructor therefore needs an intentional receiver reset rather than mechanically carrying its multiplier across a load.
+
 ## Saved profile and durable fields
 
 The existing saved client's four-state palette contains air, stone, dirt and oak planks. Neutral callbacks and current block reads are consequential even there; cobweb or sweet-berry gameplay requires actual world state and shape integration in addition to this producer. The producer separately admits supported empty-fluid full entity-inside shapes, and refuses unimplemented shapes or services. Mature server berry damage remains a checked refusal when `hurtServer` would be required. It is not replaced with invented health updates.
