@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Actual catalog-world IO/native observer with retained Java geometry oracle."""
 from __future__ import annotations
-import argparse, copy, hashlib, io, json, os, sys, zipfile
+import argparse, copy, hashlib, io, json, os, sys, time, zipfile
 from pathlib import Path
 
 PYTHON = Path.home()/'.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3'
@@ -20,6 +20,15 @@ Catalog.WORK = WORK
 Catalog.BINARY = WORK/'native'
 Catalog.PRIVATE = WORK/'private-001'
 Catalog.EVIDENCE = EVIDENCE
+
+def generation(number):
+    global WORK
+    assert 1 <= number <= 999
+    if number != 1:
+        WORK = ROOT/'build/resource-catalog-world-tests'/f'generation-{number:03d}'
+    Catalog.WORK = WORK
+    Catalog.BINARY = WORK/'native'
+    Catalog.PRIVATE = WORK/'private-001'
 
 
 def pin(path):
@@ -162,8 +171,14 @@ def run():
             assert wanted['name'] == got['name']
             assert got['retained_identity'] == header['registry_identity'] and got['retained_textures'] == header['textures']
             if wanted['error']:
-                assert got['scene']['code'] == got['render']['code'] == wanted['error'], (wanted['name'], got)
-                checked.append({'name': wanted['name'], 'error': wanted['error'], 'owner_retained': True})
+                config = next(f for f in prep['config']['frames'] if f['name'] == wanted['name'])
+                resource = 'world' if wanted['error'].startswith('WorldMesh:') else 'catalog'
+                detail = '' if wanted['error'] == 'WorldMesh:Frame' else str(config['instances'][0]['state'])
+                if wanted['error'] == 'RegistryIdentityMismatch':
+                    detail = config['identity']+':'+header['registry_identity']
+                diagnostic = {'status': 'error', 'code': wanted['error'], 'resource': resource, 'detail': detail}
+                assert got['scene'] == got['render'] == diagnostic, (wanted['name'], got)
+                checked.append({'name': wanted['name'], 'diagnostic': diagnostic, 'owner_retained': True})
             else:
                 assert got['scene']['status'] == got['render']['status'] == 'ok', (wanted['name'], got)
                 assert sorted(map(geometry_key, got['scene']['quads'])) == sorted(map(geometry_key, wanted['geometry'])), wanted['name']
@@ -171,10 +186,22 @@ def run():
                 assert [q['order'] for q in got['scene']['quads']] == list(range(len(wanted['geometry']))), wanted['name']
                 checked.append({'name': wanted['name'], 'pixels': len(wanted['pixels']), 'quads': len(wanted['geometry']), 'exact': True, 'owner_retained': True})
         reports.append({'process': process, 'frames': checked})
+    load_failures = []
+    absent = WORK/'unsupported-renderer-must-not-open.jar'
+    assert not absent.exists()
+    for name, requests, code in [
+            ('unsupported-fluid-retains-registry', [{'name': 'minecraft:water'}], 'UnsupportedRenderer'),
+            ('duplicate-request-retains-registry', [{'name': 'minecraft:stone'}]*2, 'DuplicateBlock')]:
+        config = {'jar': str(absent), 'registry': str(Catalog.REGISTRY), 'requests': requests, 'frames': []}
+        result, process = Catalog.run([Catalog.BINARY, '--gpu', 'off', '--threads', '2', json.dumps(config, separators=(',', ':'))], name, 120)
+        rows = [json.loads(line) for line in result.stdout.splitlines()]
+        assert len(rows) == 1 and rows[0]['status'] == 'error' and rows[0]['code'] == code, (name, rows)
+        assert rows[0]['registry_after']['id'] == 0 and rows[0]['registry_after']['identifier'] == 'minecraft:air'
+        load_failures.append({'name': name, 'code': code, 'registry_owner_retained': True, 'process': process})
     assert Catalog.sources() == prep['sources']
     evidence = {'status': 'PASS', 'scope': prep['scope'], 'preparation': pin(WORK/'preparation.json'), 'driver': pin(__file__),
                 'entry': pin(ENTRY), 'binary': pin(Catalog.BINARY), 'build': pin(WORK/'build.json'), 'sources': prep['sources'],
-                'reports': reports, 'no_window_opened': True, 'unchanged_sources': True}
+                'reports': reports, 'load_failures': load_failures, 'no_window_opened': True, 'unchanged_sources': True}
     EVIDENCE.write_text(json.dumps(evidence, indent=2, sort_keys=True)+'\n')
     print(json.dumps({'status': 'PASS', 'frames_per_run': len(prep['expected']), 'repeats': 2, 'evidence': str(EVIDENCE)}))
 
@@ -182,5 +209,14 @@ def run():
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('mode', choices=['prepare', 'build', 'run'])
+    parser.add_argument('--generation', type=int, default=1, help='Fresh preserved generation after a source correction')
     args = parser.parse_args()
-    {'prepare': prepare, 'build': build, 'run': run}[args.mode]()
+    generation(args.generation)
+    try:
+        {'prepare': prepare, 'build': build, 'run': run}[args.mode]()
+    except BaseException as error:
+        failure = EVIDENCE.with_name(f'resource_catalog_world_{args.mode}_failure_{time.time_ns()}.json')
+        failure.write_text(json.dumps({'status': 'FAIL', 'mode': args.mode, 'error_type': type(error).__name__,
+            'message': str(error), 'driver': pin(__file__), 'work': str(WORK),
+            'retained_process_receipts': [pin(p) for p in sorted(WORK.glob('*.receipt.json'))]}, indent=2, sort_keys=True)+'\n')
+        raise

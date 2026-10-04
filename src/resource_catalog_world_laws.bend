@@ -119,6 +119,20 @@ law binding_admission_failure_does_not_advance_the_accumulator:
   for limits:WM.Limits
   {CW.bound_checked(Fail{error},block,binding,acc,textures,limits) == Fail{error} : Result<&2,&2,C.Error,WM.Accumulator>}
 
+law invalid_origin_retains_the_requested_registry_state:
+  for +x:F32
+  for +y:F32
+  for +z:F32
+  for +state:U32
+  for +material:U32
+  for binding:WM.Binding
+  for acc:WM.Accumulator
+  for textures:U32
+  for limits:WM.Limits
+  for refused:{WM.block_bound(R.Block{x,y,z,state,material}) == False{} : Bool}
+  {CW.bound_checked(Done{Unit{}},R.Block{x,y,z,state,material},binding,acc,textures,limits) ==
+    Fail{C.Error{"WorldMesh:BlockOrigin","world",U32.show(state)}} : Result<&2,&2,C.Error,WM.Accumulator>}
+
 # The actual cell path must pass the complete incoming accumulator, appearance,
 # translated origin, and state to the baker. Its premises are subsystem outcomes,
 # rather than an alternate implementation or assumptions about geometry values.

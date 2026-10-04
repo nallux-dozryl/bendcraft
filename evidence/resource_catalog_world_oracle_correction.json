@@ -3,5 +3,10 @@
   "native_build_started_for_old_attempt": false,
   "preserved_attempt": "build/resource-catalog-world-tests/preparation-cutout-fixture-policy-001.json",
   "reason": "The reused production_quad host fixture helper adds an artificial non-cutout order offset. Current production WM orders all quads sequentially, so the new driver now explicitly resets order to its sequential index. Missing catalog entry is StateNotLoaded, not UnknownState.",
+  "second_preparation_preserved": {
+    "path": "build/resource-catalog-world-tests/preparation-pre-reader-adoption-002.json",
+    "reason": "Corrected oracle preparation preceded root adoption of exact Mcc8. Reprepared once after adoption, before any native build, so current graph identity agrees with immutable build sources.",
+    "sha256": "66081a80d41fc0ca91a464d031c485861c8169b9d750d865379741d00a39ad7f"
+  },
   "status": "CORRECTED_BEFORE_NATIVE_BUILD"
 }

@@ -64,12 +64,21 @@ def instance_budget(blocks:U32,bindings:U32,+state:U32) -> Result<&2,&2,C.Error,
     C.require(U32.is_gt(blocks,0),"WorldMesh:BlockLimit","world",U32.show(state))
     C.require(U32.is_gt(bindings,0),"WorldMesh:BindingLimit","world",U32.show(state))
 
+def origin_checked(valid:Bool,+block:R.Block,binding:WM.Binding,acc:WM.Accumulator,
+    textures:U32,limits:WM.Limits) -> Result<&2,&2,C.Error,WM.Accumulator>:
+  match valid:
+    case False{}:
+      R.Block{x,y,z,state,material} = block
+      Fail{C.Error{"WorldMesh:BlockOrigin","world",U32.show(state)}}
+    case True{}:
+      mesh_result(WM.Accumulator,WM.bound_block(True{},block,Some{binding},acc,textures,limits))
+
 def bound_checked(status:Result<&2,&2,C.Error,Unit>,+block:R.Block,binding:WM.Binding,
     acc:WM.Accumulator,textures:U32,limits:WM.Limits) -> Result<&2,&2,C.Error,WM.Accumulator>:
   match status:
     case Fail{error}: Fail{error}
     case Done{Unit{}}:
-      mesh_result(WM.Accumulator,WM.bound_block(WM.block_bound(block),block,Some{binding},acc,textures,limits))
+      origin_checked(WM.block_bound(block),block,binding,acc,textures,limits)
 
 def instance_bound(value:Result<&2,&2,C.Error,C.Bound>,+block:R.Block,acc:WM.Accumulator,
     +textures:U32,+limits:WM.Limits) -> Result<&2,&2,C.Error,WM.Accumulator>:

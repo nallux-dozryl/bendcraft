@@ -31,12 +31,18 @@ def L.cell_binding_uses_its_explicit_selection_and_appearance(x,y,z,state,materi
 
 def L.binding_admission_failure_does_not_advance_the_accumulator(error,block,binding,acc,textures,limits): {==}
 
+def L.invalid_origin_retains_the_requested_registry_state(x,y,z,state,material,binding,acc,textures,limits,refused):
+  %Equal.sym(Bool,WM.block_bound(R.Block{x,y,z,state,material}),False{},refused) :
+    {CW.origin_checked(_,R.Block{x,y,z,state,material},binding,acc,textures,limits) ==
+      Fail{C.Error{"WorldMesh:BlockOrigin","world",U32.show(state)}} : Result<&2,&2,C.Error,WM.Accumulator>}
+  {==}
+
 def L.admitted_cell_extends_the_existing_accumulator(identity,variants,baked,appearance,x,y,z,state,material,acc,textures,blocks,bindings,quads,layers,tints,next,checked,origin,generated):
   %Equal.sym(Result<&2,&2,String,Unit>,WM.bindings_check(WM.Binding{state,baked,appearance} <> Nil{},textures,1,quads,tints),Done{Unit{}},checked) :
     {CW.bound_checked(CW.binding_check(_,state),R.Block{x,y,z,state,material},WM.Binding{state,baked,appearance},acc,textures,WM.Limits{blocks,bindings,quads,layers,tints}) ==
       Done{next} : Result<&2,&2,C.Error,WM.Accumulator>}
   %Equal.sym(Bool,WM.block_bound(R.Block{x,y,z,state,material}),True{},origin) :
-    {CW.mesh_result(WM.Accumulator,WM.bound_block(_,R.Block{x,y,z,state,material},Some{WM.Binding{state,baked,appearance}},acc,textures,WM.Limits{blocks,bindings,quads,layers,tints})) ==
+    {CW.origin_checked(_,R.Block{x,y,z,state,material},WM.Binding{state,baked,appearance},acc,textures,WM.Limits{blocks,bindings,quads,layers,tints}) ==
       Done{next} : Result<&2,&2,C.Error,WM.Accumulator>}
   %Equal.sym(Result<&2,&2,WM.Error,WM.Accumulator>,WM.baked_produce(baked,appearance,M.Vec3{x,y,z},acc,textures,WM.Limits{blocks,bindings,quads,layers,tints},state),Done{next},generated) :
     {CW.mesh_result(WM.Accumulator,_) == Done{next} : Result<&2,&2,C.Error,WM.Accumulator>}

@@ -17,7 +17,7 @@ Budget admission checks registry identity, frame/camera, then per-cell block and
 
 ## Verification
 
-The 17 `resource_catalog_world_laws` and loader failure-owner law are arbitrary pure contracts for identity/error precedence, complete owner return, explicit selection/appearance pass-through, accumulator composition, shared budget refusal and sprite slot retention. Their subsystem premises identify actual bake/admission outcomes; they do not assert unproved geometric or raster fidelity. The checked original declarations and proof terms are retained by the selective exporter. All 18 selected roots passed the independent kernel with zero exclusions; see `evidence/resource_catalog_world_kernel.json`.
+The 18 `resource_catalog_world_laws` and loader failure-owner law are arbitrary pure contracts for identity/error precedence, complete owner return, explicit selection/appearance pass-through, accumulator composition, shared budget refusal and sprite slot retention. Their subsystem premises identify actual bake/admission outcomes; they do not assert unproved geometric or raster fidelity. The checked original declarations and proof terms are retained by the selective exporter. All 19 current selected roots passed the independent kernel with zero exclusions; see `evidence/resource_catalog_world_kernel_002.json`. The prior 18-law receipt is retained separately.
 
 Reproduce in a fresh output directory:
 
@@ -29,15 +29,15 @@ mkdir build/resource-catalog-world-kernel-fresh
 
 `tests/resource_catalog_world.bend` uses the actual RF catalog loader and world draw route. Its ordinary source check passed. `tools/resource_catalog_world_test.py prepare` prepares 18 frames: 11 successful geometry/pixel cases and seven diagnostic/owner-return cases. The Java reference supplies exact selected vertex/UV/material words, and official pinned 26.3 textures feed the existing independent binary32/Pillow ray oracle. Geometry is compared as a multiset because Java quad groups do not retain source element/face order; native sequential order is checked separately. The current corpus selects only Java-observed variants. Across the larger static profile, 123 states plus air have geometry observations, while six states (three oak logs, cobblestone, sand and bricks) do not.
 
-The native build uses the previously measured private queue/zero-available-arity producer, exact immutable project/foreign source copies and bounded process groups. Original `comp.ts`/`bend.ts` remain untouched. Native execution is pending the coordinated two-heavy-job window and root renderer performance comparison.
+The native build uses the previously measured private queue/zero-available-arity producer, exact immutable project/foreign source copies and bounded process groups. Original `comp.ts`/`bend.ts` remain untouched. The first immutable build passed (249.368 seconds emission, 39.610 seconds compilation; 5.48 GiB sampled peak RSS). Its first native run passed all 11 successful geometry/pixel cases but failed the exact invalid-origin diagnostic: existing `WM.bound_block` supplied state zero instead of the requested state. That failed run and build are retained. The current CW admission wrapper now retains the actual state before invoking the admitted WM path; the additional arbitrary actual-path law proves this refusal behavior. Corrected generation 002 native verification is pending the coordinated two-heavy-job window.
 
 ```sh
-python3 tools/resource_catalog_world_test.py prepare
-python3 tools/resource_catalog_world_test.py build
-python3 tools/resource_catalog_world_test.py run
+python3 tools/resource_catalog_world_test.py prepare --generation 2
+python3 tools/resource_catalog_world_test.py build --generation 2
+python3 tools/resource_catalog_world_test.py run --generation 2
 ```
 
-The tool preserves each preparation/build generation and refuses equivalent retries. These commands must use a new ignored work generation after a source change, not overwrite an existing native attempt.
+The tool preserves each preparation/build generation and refuses equivalent retries. Use a fresh `--generation` number after a source correction; preparations, native attempts and failure receipts are preserved. The two additional loader-refusal cases verify registry owner return for unsupported fluid and duplicate requests before an intentionally absent archive can be opened.
 
 ## Known composition gap
 
