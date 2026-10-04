@@ -10,7 +10,8 @@ import ./nbt.bend as N
 import ./atomic_file.bend as A
 import ./world_lock.bend as WL
 
-# These hooks are supplied only as closed template values. No plugin source is loaded.
+# Codec closures may capture runtime data; operation hooks remain closed templates.
+# No plugin source is loaded.
 type Codec<-Extra: Type> is Type:
   Codec{namespace: String, schema: U32,
     encode: Extra -> Extra & Result<&2, &2, String, List<&2, U32>>,
@@ -551,17 +552,17 @@ def loaded(-Extra: Type, decoded: Result<&2, &1, String, Loaded<Extra>>, base: P
       P.State{G.Engine{old_world, registry}, identity, path, old_highwater, limits, lease} = base
       ready(Extra, State{P.State{G.Engine{world, registry}, identity, path, highwater, limits, lease}, extra, maximum, catalog})
 
-def loaded_counted(~Extra: Type, ~codec: Codec<Extra>, +limits: Limits, catalog: List<&2, Operation>, bytes: List<&2, U32>, counted: P.State & U32) -> IO(Ready<Extra>):
+def loaded_counted(~Extra: Type, codec: Codec<Extra>, +limits: Limits, catalog: List<&2, Operation>, +bytes: List<&2, U32>, counted: P.State & U32) -> IO(Ready<Extra>):
   (base, count) = counted
   P.State{engine, +identity, path, highwater, old_limits, lease} = base
-  loaded(Extra, decode(~Extra, ~codec, limits, bytes, count, identity), P.State{engine, identity, path, highwater, old_limits, lease}, extra_limit(limits), catalog)
+  loaded(Extra, decode_parsed(Extra, codec, limits, bytes, count, identity, envelope_parse(limits, bytes)), P.State{engine, identity, path, highwater, old_limits, lease}, extra_limit(limits), catalog)
 
-def loaded_bytes(~Extra: Type, ~codec: Codec<Extra>, limits: Limits, catalog: List<&2, Operation>, base: P.State, bytes: Result<&2, &2, String, List<&2, U32>>) -> IO(Ready<Extra>):
+def loaded_bytes(~Extra: Type, codec: Codec<Extra>, limits: Limits, catalog: List<&2, Operation>, base: P.State, bytes: Result<&2, &2, String, List<&2, U32>>) -> IO(Ready<Extra>):
   match bytes:
     case Fail{message}: IO.die(Ready<Extra>, 1, "bundle startup refused: " ++ message)
-    case Done{raw}: loaded_counted(~Extra, ~codec, limits, catalog, raw, P.state_count(base))
+    case Done{raw}: loaded_counted(~Extra, codec, limits, catalog, raw, P.state_count(base))
 
-def measured_valid(~Extra: Type, ~codec: Codec<Extra>, +limits: Limits, catalog: List<&2, Operation>, base: P.State, file: File, +size: U32, valid: Bool) -> IO(Ready<Extra>):
+def measured_valid(~Extra: Type, codec: Codec<Extra>, +limits: Limits, catalog: List<&2, Operation>, base: P.State, file: File, +size: U32, valid: Bool) -> IO(Ready<Extra>):
   match valid:
     case False{}:
       do IO<Ready<Extra>>:
@@ -570,46 +571,46 @@ def measured_valid(~Extra: Type, ~codec: Codec<Extra>, +limits: Limits, catalog:
     case True{}:
       do IO<Ready<Extra>>:
         bytes : Result<&2, &2, String, List<&2, U32>> <- P.read_loop(U32.to_nat(size), file, size, [])
-        loaded_bytes(~Extra, ~codec, limits, catalog, base, bytes)
+        loaded_bytes(~Extra, codec, limits, catalog, base, bytes)
 
-def measured(~Extra: Type, ~codec: Codec<Extra>, +limits: Limits, catalog: List<&2, Operation>, base: P.State, result: File & Result<&1, &1, U32 & String, U32>) -> IO(Ready<Extra>):
+def measured(~Extra: Type, codec: Codec<Extra>, +limits: Limits, catalog: List<&2, Operation>, base: P.State, result: File & Result<&1, &1, U32 & String, U32>) -> IO(Ready<Extra>):
   (file, status) = result
   match status:
     case Fail{Tuple{code, message}}:
       do IO<Ready<Extra>>:
         File.close(file)
         IO.die(Ready<Extra>, 1, "bundle startup refused: file size failed: " ++ U32.show(code) ++ ": " ++ message)
-    case Done{+size}: measured_valid(~Extra, ~codec, limits, catalog, base, file, size, U32.is_le(size, file_limit(limits)))
+    case Done{+size}: measured_valid(~Extra, codec, limits, catalog, base, file, size, U32.is_le(size, file_limit(limits)))
 
-def opened(~Extra: Type, ~codec: Codec<Extra>, +limits: Limits, catalog: List<&2, Operation>, base: P.State, allowed: Bool, result: Result<&1, &1, U32 & String, File>) -> IO(Ready<Extra>):
+def opened(~Extra: Type, codec: Codec<Extra>, +limits: Limits, catalog: List<&2, Operation>, base: P.State, allowed: Bool, result: Result<&1, &1, U32 & String, File>) -> IO(Ready<Extra>):
   match result:
     case Fail{Tuple{2, message}}: missing(Extra, codec, allowed, base, extra_limit(limits), catalog)
     case Fail{Tuple{code, message}}: IO.die(Ready<Extra>, 1, "bundle startup refused: file open failed: " ++ U32.show(code) ++ ": " ++ message)
     case Done{file}:
       do IO<Ready<Extra>>:
         size : File & Result<&1, &1, U32 & String, U32> <- File.size(file)
-        measured(~Extra, ~codec, limits, catalog, base, size)
+        measured(~Extra, codec, limits, catalog, base, size)
 
-def identified(~Extra: Type, ~codec: Codec<Extra>, +limits: Limits, catalog: List<&2, Operation>, world: C.World, +path: String, allowed: Bool, lease: WL.Lease, identity: R.Registry & Result<&2, &2, String, String>) -> IO(Ready<Extra>):
+def identified(~Extra: Type, codec: Codec<Extra>, +limits: Limits, catalog: List<&2, Operation>, world: C.World, +path: String, allowed: Bool, lease: WL.Lease, identity: R.Registry & Result<&2, &2, String, String>) -> IO(Ready<Extra>):
   (registry, status) = identity
   match status:
     case Fail{message}: IO.die(Ready<Extra>, 1, "bundle startup refused: registry identity failed: " ++ message)
     case Done{id}:
       do IO<Ready<Extra>>:
         file : Result<&1, &1, U32 & String, File> <- File.open(path, "r")
-        opened(~Extra, ~codec, limits, catalog, P.State{G.Engine{world, registry}, id, path, 0, P.Limits{core_limits(limits), file_limit(limits)}, lease}, allowed, file)
+        opened(~Extra, codec, limits, catalog, P.State{G.Engine{world, registry}, id, path, 0, P.Limits{core_limits(limits), file_limit(limits)}, lease}, allowed, file)
 
-def load_engine(~Extra: Type, ~codec: Codec<Extra>, limits: Limits, catalog: List<&2, Operation>, path: String, allowed: Bool, lease: WL.Lease, engine: G.Engine) -> IO(Ready<Extra>):
+def load_engine(~Extra: Type, codec: Codec<Extra>, limits: Limits, catalog: List<&2, Operation>, path: String, allowed: Bool, lease: WL.Lease, engine: G.Engine) -> IO(Ready<Extra>):
   G.Engine{world, registry} = engine
-  identified(~Extra, ~codec, limits, catalog, world, path, allowed, lease, R.Registry.identity(registry))
+  identified(~Extra, codec, limits, catalog, world, path, allowed, lease, R.Registry.identity(registry))
 
-def leased(~Extra: Type, ~codec: Codec<Extra>, limits: Limits, catalog: List<&2, Operation>, path: String, allowed: Bool, result: Result<&1, &1, U32 & String, WL.Lease>) -> IO(Ready<Extra>):
+def leased(~Extra: Type, codec: Codec<Extra>, limits: Limits, catalog: List<&2, Operation>, path: String, allowed: Bool, result: Result<&1, &1, U32 & String, WL.Lease>) -> IO(Ready<Extra>):
   match result:
     case Fail{Tuple{code, message}}: IO.die(Ready<Extra>, 1, "bundle startup refused: lease acquisition failed: " ++ U32.show(code) ++ ": " ++ message)
     case Done{lease}:
       do IO<Ready<Extra>>:
         engine : G.Engine <- G.load()
-        load_engine(~Extra, ~codec, limits, catalog, path, allowed, lease, engine)
+        load_engine(~Extra, codec, limits, catalog, path, allowed, lease, engine)
 
 def setup(~Extra: Type, ~codec: Codec<Extra>, ~operations: Operations<Extra>, +limits: Limits) -> Result<&2, &2, String, List<&2, Operation>>:
   +catalog = operation_catalog(Extra, operations)
@@ -618,7 +619,7 @@ def setup(~Extra: Type, ~codec: Codec<Extra>, ~operations: Operations<Extra>, +l
     W.require(valid_catalog(128n, catalog, []), "invalid extension operation catalog: duplicate/reserved name or invalid schema")
     return catalog
 
-def load_setup(~Extra: Type, ~codec: Codec<Extra>, +limits: Limits, checked: Result<&2, &2, String, List<&2, Operation>>) -> IO(Ready<Extra>):
+def load_setup(~Extra: Type, codec: Codec<Extra>, +limits: Limits, checked: Result<&2, &2, String, List<&2, Operation>>) -> IO(Ready<Extra>):
   match checked:
     case Fail{message}: IO.die(Ready<Extra>, 1, "bundle startup refused: " ++ message)
     case Done{catalog}:
@@ -628,10 +629,24 @@ def load_setup(~Extra: Type, ~codec: Codec<Extra>, +limits: Limits, checked: Res
         missing_result : Result<&1, &1, U32 & String, String> <- IO.get_env("MC_WORLD_MISSING")
         allowed : Bool <- P.policy(missing_result)
         lease : Result<&1, &1, U32 & String, WL.Lease> <- WL.acquire(path ++ ".lock")
-        leased(~Extra, ~codec, limits, catalog, path, allowed, lease)
+        leased(~Extra, codec, limits, catalog, path, allowed, lease)
+
+# Runtime catalogs/settings are captured by the codec closures. Validate only
+# their metadata before passing the single codec owner into the existing loader.
+def setup_metadata(-Extra: Type, metadata: String & U32, operations: Operations<Extra>, +limits: Limits) -> Result<&2, &2, String, List<&2, Operation>>:
+  +catalog = operation_catalog(Extra, operations)
+  do Result<&2, &2, String, List<&2, Operation>>:
+    metadata_checked(metadata, limits)
+    W.require(valid_catalog(128n, catalog, []), "invalid extension operation catalog: duplicate/reserved name or invalid schema")
+    return catalog
+
+def load_codec(~Extra: Type, ~operations: Operations<Extra>, codec: Codec<Extra>, +limits: Limits) -> IO(Ready<Extra>):
+  Codec{+namespace, +schema, encode, decode, fresh, legacy} = codec
+  load_setup(~Extra, Codec{namespace, schema, encode, decode, fresh, legacy}, limits,
+    setup_metadata(Extra, (namespace, schema), operations, limits))
 
 def load_with(~Extra: Type, ~codec: Codec<Extra>, ~operations: Operations<Extra>, +limits: Limits) -> IO(Ready<Extra>):
-  load_setup(~Extra, ~codec, limits, setup(~Extra, ~codec, ~operations, limits))
+  load_codec(~Extra, ~operations, codec, limits)
 
 def load(~Extra: Type, ~codec: Codec<Extra>, ~operations: Operations<Extra>) -> IO(Ready<Extra>):
   load_with(~Extra, ~codec, ~operations, default_limits())

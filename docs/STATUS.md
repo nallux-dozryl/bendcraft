@@ -24,10 +24,13 @@ Its failed/unknown cleanup receipt is retained; later observations establish
 that its owned process group is absent. The reduced live dispatcher also failed
 at 600.075 seconds before C or a binary; the initial cleanup uncertainty and
 later absence observation remain separate. No new native behavior resulted.
-The current materially different route compiles the backend entry alone and
-drives TCP/MCP/save boundaries externally. It uses one C emission, verified
-content-keyed cache reuse and a fresh immutable attempt directory. New gameplay,
-save/reload and protocol behavior still await its working artifact. Earlier
+The backend-only entry also failed at 600.087 seconds without C or a binary;
+the sampled peak physical footprint was 15.7 GiB on this 18 GiB machine.
+All three failed generations remain preserved. The next work isolates actual
+compiler expansion producers; no fourth broad retry is planned. The active
+runner uses one C emission, verified content-keyed cache reuse and immutable
+attempt directories. New gameplay, save/reload and protocol behavior still
+await a working artifact. Earlier
 accepted artifacts and immutable evidence remain separate. The current main
 menu/settings/terrain expansion is outside that archived backend generation.
 A paired renderer consumer and inventory screen are being
@@ -38,9 +41,16 @@ bounded cleanup remain. No foreground launch is authorized by this preparation.
 
 Current pure contracts are discoverable in [PRODUCTION_PROOFS.md](PRODUCTION_PROOFS.md).
 The 46-law root aggregation passes independent kernel checking; three unchanged
-reset composition laws and seven presentation laws independently pass their
-complete selective dependency exports. Full interaction, expanded inventory,
+reset composition laws, seven presentation laws and five interaction authority
+laws independently pass their complete selective dependency exports. Full
+interaction fidelity, expanded inventory,
 focus/capture and generation proof obligations remain explicit.
+
+The current main startup now reads the full 1,658-item definition catalog and
+uses a linear runtime codec for durable generator settings. Its joined source
+check completes in 53.578 seconds with no typing/ownership/proof errors and only
+116 declared native boundaries, on unchanged integration inputs. This result
+does not establish native execution; see `evidence/playable-current-startup-source-checks.json`.
 
 ## Established
 

@@ -25,9 +25,10 @@ Coordinate at most two heavy jobs; never repeat an equivalent timed-out build.
    LAWS/PROOF and resolves interfaces. Existing finite terrain and three-item
    support expose missing general blockstate/resource/shape/item definitions;
    they are not the finished product contract. The broad combined build timed
-   out before emitting C at 600.108 seconds. Preserve that failure, verify current
-   process cleanup, then identify a substantive modular/cached compiler route;
-   do not repeat the same graph. Reuse the accepted unchanged historical corpora.
+   out before emitting C at 600.108 seconds; reduced-dispatcher and backend-only
+   variants also timed out before C. Peak sampled physical footprint reached
+   15.7 GiB. Preserve failures and cleanup observations; isolate actual expansion
+   producers before another broad build. Reuse accepted unchanged historical corpora.
 2. **Production-quality native presentation and controls.** Owner:
    `client_presentation_ultra`; consumer: `remote_resource_client.bend`. Implement
    configurable window/output resolution, internal render scale and HUD sizing,

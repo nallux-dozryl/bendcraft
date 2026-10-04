@@ -7,6 +7,9 @@ import ./src/local_player_session.bend as Session
 import ./src/local_player_storage.bend as Storage
 import ./src/local_player_record.bend as Record
 import ./src/player_inventory_codec.bend as InventoryStorage
+import ./src/player_item_definitions.bend as ItemDefinitions
+import ./src/world_generation_settings.bend as Generation
+import ./src/nbt.bend as NBT
 import ./src/core.bend as Core
 import ./src/extended_persistence.bend as Persistence
 import ./src/locomotion.bend as Motion
@@ -190,19 +193,26 @@ def fixture_loaded(+options:Options,config:Config,tables:Motion.Tables) -> IO(Un
     initialized : Session.Ready <- Scene.initialize(ready)
     started(options,config,Scene.run_requested(initialized,running(options)))
 
-def profile_loaded(~codec:Persistence.Codec<InventoryStorage.Saved>,+options:Options,config:Config,tables:Motion.Tables) -> IO(Unit):
+def profile_loaded(codec:Persistence.Codec<InventoryStorage.Saved>,+options:Options,config:Config,tables:Motion.Tables,settings:Generation.Settings) -> IO(Unit):
   do IO<Unit>:
-    stored : Persistence.Ready<InventoryStorage.Saved> <- Persistence.load_with(~InventoryStorage.Saved,~codec,~Session.inventory_operations(),InventoryStorage.limits())
+    stored : Persistence.Ready<InventoryStorage.Saved> <- Persistence.load_codec(~InventoryStorage.Saved,~Session.inventory_operations(),codec,InventoryStorage.limits())
     ready : Session.Ready <- Session.new_inventory(stored,tables)
-    initialized : Session.Ready <- Scene.initialize_superflat(ready)
+    initialized : Session.Ready <- Scene.initialize_generated(ready,settings)
     started(options,config,Scene.run_requested(initialized,running(options)))
+
+def profile_definitions(+options:Options,config:Config,tables:Motion.Tables,definitions:ItemDefinitions.Catalog) -> IO(Unit):
+  Options{fixture,profile,creative,run,control,sine} = options
+  +settings = Generation.stone_dirt(NBT.Word64{0,0})
+  profile_loaded(InventoryStorage.codec_with(definitions,creative,settings),options,config,tables,settings)
 
 def selected_world(+options:Options,config:Config,tables:Motion.Tables) -> IO(Unit):
   Options{fixture,profile,creative,run,control,sine} = options
-  match fixture creative:
-    case True{} _: fixture_loaded(options,config,tables)
-    case False{} True{}: profile_loaded(~InventoryStorage.codec_creative(),options,config,tables)
-    case False{} False{}: profile_loaded(~InventoryStorage.codec(),options,config,tables)
+  match fixture:
+    case True{}: fixture_loaded(options,config,tables)
+    case False{}:
+      do IO<Unit>:
+        definitions : ItemDefinitions.Catalog <- InventoryStorage.load_definitions("generated/reference_item_metadata.tsv")
+        profile_definitions(options,config,tables,definitions)
 
 def loaded(+options:Options,config:Config) -> IO(Unit):
   Options{fixture,profile,creative,run,control,sine} = options

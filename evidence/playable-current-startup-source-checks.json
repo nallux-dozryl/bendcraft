@@ -1,0 +1,71 @@
+{
+  "status": "typed-with-declared-native-boundaries",
+  "startup": {
+    "command": [
+      "/Users/chuah/.bend/bin/bend",
+      "remote_resource_server.bend",
+      "--check-only"
+    ],
+    "seconds": 53.57828437536955,
+    "returncode": 1,
+    "timed_out": false,
+    "pid": 60296,
+    "group_absent": true,
+    "source_before": {
+      "remote_resource_server.bend": "be5b9d15bce5c9e5c520306bdee7fdeffa9ead14e78442285ac7a5f0ec83e9c9",
+      "src/extended_persistence.bend": "b74938eb2fbbe5e1a6f4044f5705fb2289f0574b13fbaacad710d11ab69cb4d4",
+      "src/player_inventory.bend": "1e734e606a464b48cf935dee482ab948019b38d45eaa808630f795e657d684f8",
+      "src/player_inventory_codec.bend": "4c1814467f25e7d71aa61448075dfa11de51233e8cfe2a3805c92489675f93fc",
+      "src/player_item_definitions.bend": "6a7a57f62a2df6a3f43883824c167877f16e67a1a2a95e8b2f9a3e31e60c49a9",
+      "src/local_player_session.bend": "f081c3bae08ba70e8d79e5d4b9a4f12ad8c3871ea2fb243e6c8e77faf4f768a6",
+      "src/local_player_scene.bend": "2ed56d7a954de10b1447e9d3435bfabad5a7e13f548876a6a5dd1d604cba0233",
+      "src/remote_resource_backend.bend": "aa55eaae8fbcd8028208ca92f186cad167a7aa2e77bcd28686cd51b575044378",
+      "src/resource_client_wire.bend": "3ac3d62234b0b1e8078ed849927efcd8eb082cb51831f3c13c1e80a3312cb2a5",
+      "src/world_generation_settings.bend": "c1e1121f8e54fb74f50ba070b0a630b92995128474491046735b7b2803cd4a71",
+      "src/superflat_world.bend": "f17162537d1c0629022624a8567c000f82fa1dabcbc1d35eaddc0a9cf81d9e4b",
+      "src/superflat_population.bend": "6a34c8478dab0bd06688ef0b9869ee07d65fb3f8b671bf5f8d4c66894ee639d2",
+      "src/superflat_player.bend": "5e0e1f38f4553badaa4b4dadf98d3e629c1164a5cd272cae840ff27e82ad3e0d",
+      "src/superflat_resolver.bend": "2550770c8609342cda122dd1b35b5f01e5317be026ec67658d73b27d0b0cec61"
+    },
+    "source_after": {
+      "remote_resource_server.bend": "be5b9d15bce5c9e5c520306bdee7fdeffa9ead14e78442285ac7a5f0ec83e9c9",
+      "src/extended_persistence.bend": "b74938eb2fbbe5e1a6f4044f5705fb2289f0574b13fbaacad710d11ab69cb4d4",
+      "src/player_inventory.bend": "1e734e606a464b48cf935dee482ab948019b38d45eaa808630f795e657d684f8",
+      "src/player_inventory_codec.bend": "4c1814467f25e7d71aa61448075dfa11de51233e8cfe2a3805c92489675f93fc",
+      "src/player_item_definitions.bend": "6a7a57f62a2df6a3f43883824c167877f16e67a1a2a95e8b2f9a3e31e60c49a9",
+      "src/local_player_session.bend": "f081c3bae08ba70e8d79e5d4b9a4f12ad8c3871ea2fb243e6c8e77faf4f768a6",
+      "src/local_player_scene.bend": "2ed56d7a954de10b1447e9d3435bfabad5a7e13f548876a6a5dd1d604cba0233",
+      "src/remote_resource_backend.bend": "aa55eaae8fbcd8028208ca92f186cad167a7aa2e77bcd28686cd51b575044378",
+      "src/resource_client_wire.bend": "3ac3d62234b0b1e8078ed849927efcd8eb082cb51831f3c13c1e80a3312cb2a5",
+      "src/world_generation_settings.bend": "c1e1121f8e54fb74f50ba070b0a630b92995128474491046735b7b2803cd4a71",
+      "src/superflat_world.bend": "f17162537d1c0629022624a8567c000f82fa1dabcbc1d35eaddc0a9cf81d9e4b",
+      "src/superflat_population.bend": "6a34c8478dab0bd06688ef0b9869ee07d65fb3f8b671bf5f8d4c66894ee639d2",
+      "src/superflat_player.bend": "5e0e1f38f4553badaa4b4dadf98d3e629c1164a5cd272cae840ff27e82ad3e0d",
+      "src/superflat_resolver.bend": "2550770c8609342cda122dd1b35b5f01e5317be026ec67658d73b27d0b0cec61"
+    },
+    "scope": "Actual full-catalog runtime-codec durable-generator startup and consumer composition source check only. Native/OS/transport/save execution not implied.",
+    "stdout": "",
+    "stderr": "SOME PROOFS FAIL\nError: 116 defs rely on unsafe or foreign code:\n- src/durability.Durability.create\n- src/durability.Durability.sync\n- src/durability.Durability.replace\n- src/durability.Durability.sync_directory\n- src/durability.Durability.remove\n- src/atomic_file.cleanup\n- src/atomic_file.renamed\n- src/atomic_file.synced\n- src/atomic_file.written\n- src/atomic_file.created\n- src/atomic_file.publish_valid\n- src/atomic_file.publish_with\n- src/atomic_file.publish\n- src/world_lock.Native.acquire\n- src/world_lock.Native.release\n- src/world_lock.acquire\n- src/world_lock.release\n- src/persistence.save_publish\n- src/persistence.save_envelope\n- src/persistence.save_world_bytes\n- src/persistence.save_world_result\n- src/persistence.save\n- src/persistence.local_valid\n- src/persistence.local\n- src/persistence.chosen\n- src/persistence.parsed\n- src/persistence.dispatch_inner\n- src/persistence.dispatch\n- src/persistence.load_with\n- src/persistence.load\n- src/extended_persistence.save_encoded\n- src/extended_persistence.save_result\n- src/extended_persistence.save\n- src/extended_persistence.custom_valid\n- src/extended_persistence.custom\n- src/extended_persistence.chosen\n- src/extended_persistence.parsed\n- src/extended_persistence.dispatch_inner\n- src/extended_persistence.dispatch\n- src/extended_persistence.load_setup\n- src/extended_persistence.load_codec\n- src/extended_persistence.load_with\n- src/extended_persistence.load\n- src/local_player_session.delegate_bundle\n- src/local_player_session.delegate\n- src/local_player_session.record_runtime_checked\n- src/local_player_session.record_admitted\n- src/local_player_session.record_valid\n- src/local_player_session.save_envelope\n- src/local_player_session.inspect_envelope\n- src/local_player_session.parsed\n- src/local_player_session.dispatch_using\n- src/local_player_session.dispatch\n- src/local_player_session.startup_failed\n- src/local_player_session.startup_restored\n- src/local_player_session.startup_world\n- src/local_player_session.startup_base\n- src/local_player_session.new\n- src/local_player_session.startup_inventory_base\n- src/local_player_session.new_inventory\n- src/persistent_client_world.dispatch\n- src/server.actor\n- src/server.timer\n- src/server.read_loop\n- src/server.accepted\n- src/server.accept_loop\n- src/server.start_effectful_from_peer\n- src/server.start_effectful\n- src/server.start_handle\n- src/server.run_effectful_from_peer\n- src/server.run_effectful\n- src/server.run\n- src/window_input.Native.status\n- src/window_input.capture\n- src/client_presenter.events\n- src/client_presenter.packet_events\n- src/client_presenter.packet_initial\n- src/client_presenter.packet_inspected\n- src/client_presenter.frame_input\n- src/client_presenter.loop\n- src/client_presenter.started\n- src/client_presenter.opened\n- src/client_presenter.open\n- src/local_player_scene.fixture_failed\n- src/local_player_scene.fixture_finished\n- src/local_player_scene.fixture_gate\n- src/local_player_scene.initialize\n- src/local_player_scene.superflat_failed\n- src/local_player_scene.superflat_finished\n- src/local_player_scene.superflat_gate\n- src/local_player_scene.initialize_superflat\n- src/local_player_scene.production_settings_set\n- src/local_player_scene.dispatch\n- src/local_player_scene.production_gate\n- src/local_player_scene.initialize_generated\n- src/remote_resource_backend.dispatch\n- src/remote_resource_backend.driver\n- src/remote_resource_transport.continued\n- src/remote_resource_transport.read_ready\n- src/remote_resource_transport.read_loop\n- src/remote_resource_transport.accepted\n- src/remote_resource_transport.accept_loop\n- src/remote_resource_transport.start\n- control_loop\n- controlled\n- serving\n- reserved\n- started_mode\n- started\n- fixture_loaded\n- profile_loaded\n- profile_definitions\n- selected_world\n- loaded\n- arguments\n- main\n",
+    "classification": "ordinary type/ownership/interface checking reaches declared native boundaries only; not independent proof or native acceptance"
+  },
+  "runtime_codec": {
+    "command": [
+      "/Users/chuah/.bend/bin/bend",
+      "src/extended_persistence.bend",
+      "--check-only"
+    ],
+    "seconds": 1.4530497081577778,
+    "returncode": 1,
+    "timed_out": false,
+    "pid": 57625,
+    "group_absent": true,
+    "source_before": "b74938eb2fbbe5e1a6f4044f5705fb2289f0574b13fbaacad710d11ab69cb4d4",
+    "source_after": "b74938eb2fbbe5e1a6f4044f5705fb2289f0574b13fbaacad710d11ab69cb4d4",
+    "scope": "Ordinary checking of actual runtime-codec loader; IO/native/save recovery not implied.",
+    "stdout": "",
+    "stderr": "SOME PROOFS FAIL\nError: 43 defs rely on unsafe or foreign code:\n- durability.Durability.create\n- durability.Durability.sync\n- durability.Durability.replace\n- durability.Durability.sync_directory\n- durability.Durability.remove\n- atomic_file.cleanup\n- atomic_file.renamed\n- atomic_file.synced\n- atomic_file.written\n- atomic_file.created\n- atomic_file.publish_valid\n- atomic_file.publish_with\n- atomic_file.publish\n- world_lock.Native.acquire\n- world_lock.Native.release\n- world_lock.acquire\n- world_lock.release\n- persistence.save_publish\n- persistence.save_envelope\n- persistence.save_world_bytes\n- persistence.save_world_result\n- persistence.save\n- persistence.local_valid\n- persistence.local\n- persistence.chosen\n- persistence.parsed\n- persistence.dispatch_inner\n- persistence.dispatch\n- persistence.load_with\n- persistence.load\n- save_encoded\n- save_result\n- save\n- custom_valid\n- custom\n- chosen\n- parsed\n- dispatch_inner\n- dispatch\n- load_setup\n- load_codec\n- load_with\n- load\n",
+    "classification": "ordinary type/ownership/interface checking reaches declared native boundaries only; not independent proof or native acceptance"
+  },
+  "native_generation_status": "unverified; preceding immutable backend generation failed to emit C",
+  "scope": "Current full-catalog/durable-generator startup and linear runtime-codec load path. Full menu interactions, generator completeness, native execution and save/OS recovery are not implied."
+}
