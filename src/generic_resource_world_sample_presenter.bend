@@ -1,5 +1,6 @@
 import Base
 import ./generic_resource_world_sample.bend as GS
+import ./generic_resource_world_sample_frame.bend as Frame
 import ./resource_catalog_world.bend as CW
 import ./resource_block_catalog.bend as C
 import ./world_resource_frame.bend as WRF
@@ -21,7 +22,7 @@ def framed(value:Result<&2,&2,C.Error,CW.Frame>,assets:CW.Assets,width:U32,heigh
 
 def informed(sample:GS.Sample,width:U32,height:U32,value:CW.Assets & CW.Info) -> CW.Assets & Result<&2,&2,String,Image>:
   (assets,info) = value
-  framed(GS.draw_frame(sample,info),assets,width,height)
+  framed(Frame.draw_frame(sample,info),assets,width,height)
 
 # Real presenter consumers call this after a correlated CatalogFrameReply.
 # The complete resource/texture owner returns on decode/bind/render failures.

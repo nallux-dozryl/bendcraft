@@ -4,8 +4,9 @@ The new runnable entry is `remote_resource_catalog_client.bend`. It connects to
 the existing private renderer transport, requests a catalog frame, loads the
 official registry and the checked block-resource profile, and retains the sole
 `CW.Assets` owner through native presentation. The legacy remote client entry
-remains available. The generic entry has passed source validation; its native
-consumer build and end-to-end run are pending.
+remains available. The generic entry has passed source validation. Its first
+frozen native emission terminated at the producer's progress guard before C was
+produced; the real consumer build and end-to-end run remain pending.
 
 ## Actual producer and consumer
 
@@ -35,7 +36,8 @@ the actual loaded blockstate root. Zero weight totals are refused. Repeated stat
 can retain different seeds and appearances; no state-indexed binding cache
 collapses those decisions.
 
-`GS.frame` checks the full registry identity before sample or catalog lookup. It
+`Frame.frame` in `generic_resource_world_sample_frame.bend` checks the full
+registry identity before sample or catalog lookup. It
 validates every observed state, then omits only entries explicitly marked
 `Invisible` from visible mesh/binding budgets. Unknown or unloaded states and
 unsupported renderers retain catalog diagnostics. Each visible instance is
@@ -48,6 +50,15 @@ menu-intent APIs, hardware-key profiles, menu controller, inventory HUD,
 presentation geometry/capture policy and trace writer. A correlated catalog
 sample reaches `GenericDraw.draw` → `WRF.draw_catalog` → `CW.draw`, followed by
 `Window.frame`. Failure paths close the window, resource owner and lease.
+
+The shared `GS` module now contains the existing `Cell`, `Sample` and `Policy`
+types, appearance/seed production and admission. Client-only weighted model
+selection and frame binding live in `Frame`; the presenter calls
+`Frame.draw_frame`. The shared module's dependency graph fell from 67 to 62
+files and has no catalog/resource-owner import. Its three DTO declarations are
+byte-identical to frozen client generation 001. The actor still has an
+independent legacy `Backend` → `local_resource_world` → `RF`/`WRF` dependency;
+this split alone does not establish a minimal whole-server graph.
 
 ## Additive wire v1
 
@@ -72,11 +83,11 @@ and cell budgets. The transport retains its actor-owned lease/sequence authority
 
 The actual generic entry and its 79-file consumer closure passed the ordinary
 source API checker with stable source pins. The complete composition check
-covered 7513 declarations and selected exactly 22 current arbitrary laws: nine
+covered 7516 declarations after the module split and selected exactly 22 current arbitrary laws: nine
 mapping/admission laws, ten actual Core-read/sampler composition laws, and three
 session/actor/texture-owner refusal laws. Checked original types and proof bodies
-were retained. The independent kernel checked the 2,137,174-byte closure in
-0.618458 seconds, with zero exclusions. See
+were retained. The independent kernel checked the 2,137,964-byte closure in
+0.356822 seconds, with zero exclusions. See
 `evidence/generic_resource_world_sample_kernel.json`.
 
 The first reader proof required a structural Nat split; affine consumer owners
@@ -88,8 +99,31 @@ in the tool transcript; no failed verdict has been presented as a pass.
 The profile currently contains air plus 129 states from 11 useful block families,
 using pinned 26.3 resources. Its earlier independent Java geometry/current native
 pixel evidence is in `docs/resource_catalog_world.md`; that evidence does not
-establish this new wire/window consumer's behavior. Native sampler and real
-transport checks are separate work in progress.
+establish this new wire/window consumer's behavior.
+
+The real native sampler observer passed two runs of 37 observations before the
+subsequent module split: 38 sampler successes, 36 refusals and 8,446 observed
+cells in total. All 74 observations retained complete Core storage, metadata,
+registry identity and all View/cache fields. Direct and full-text wire codecs
+were checked separately, including their token, value and byte-budget refusals.
+The two runs were identical. These are frozen generation 002 results, with exact
+working-source guards passing at execution; post-split native behavior and the
+real actor/window join remain separate checks. See
+`evidence/generic_resource_world_sample_read_native.json`.
+
+Standalone client generation 001 passed its full source checker, then hit the
+90-second no-recorded-progress guard during emission pass 2 after 219.54 seconds.
+The process group was reaped and no C or native executable was produced. The
+private producer logged only pass boundaries, so this receipt does not prove
+that the compiler had stopped doing work. A corrected private producer with
+actual function progress and measured memory retention is separate work; no
+equivalent retry or original compiler edit was performed.
+
+The profile is an explicit coverage instrument, not the normal product's
+content boundary. The registry-backed demand-loader plan is recorded in
+`docs/generic_resource_world_sample_demand_plan.md`, including complete
+generation replacement, a single transport owner during cold loading and the
+pinned face-UV material-classification requirement.
 
 Generic model faces are currently retained rather than applying the legacy
 three-full-cube neighbor classifier. Biome tint production, full light sampling,

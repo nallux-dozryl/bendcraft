@@ -1,6 +1,7 @@
 import Base
 import ./generic_resource_world_sample_laws.bend as L
 import ./generic_resource_world_sample.bend as GS
+import ./generic_resource_world_sample_frame.bend as Frame
 import ./resource_block_catalog.bend as C
 import ./resource_catalog_world.bend as CW
 import ./block_resources.bend as BR
@@ -12,7 +13,7 @@ import ./movement.bend as MV
 
 def L.another_registry_is_refused_before_sample_or_state_validation(declared,actual,tick,revision,origin,camera,cells,entries,loaded,mismatch):
   %Equal.sym(Bool,String.eq(declared,actual),False{},mismatch) :
-    {GS.frame_gated(CW.identity_guard(_,declared,actual),GS.Sample{declared,tick,revision,origin,camera,cells},C.Catalog{actual,entries,loaded}) ==
+    {Frame.frame_gated(CW.identity_guard(_,declared,actual),GS.Sample{declared,tick,revision,origin,camera,cells},C.Catalog{actual,entries,loaded}) ==
       Fail{C.Error{"RegistryIdentityMismatch","catalog",declared ++ ":" ++ actual}} : Result<&2,&2,C.Error,CW.Frame>}
   {==}
 def L.prior_registry_refusal_retains_the_exact_diagnostic(error,sample,catalog): {==}
