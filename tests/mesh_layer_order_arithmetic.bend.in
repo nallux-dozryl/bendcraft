@@ -1,0 +1,303 @@
+import Base
+
+# Genuine arithmetic over Base.Word, used by the actual WM -> M ordering
+# composition. No game projection, axiom, numeric enumeration or foreign code.
+# `power(low,high)` is the single bit at position low, in low+1+high bits.
+
+def true_empty(value:Bool) -> Type:
+  match value:
+    case False{}: Unit
+    case True{}: Empty
+
+def false_true(value:{False{} == True{} : Bool}) -> Empty:
+  %value : true_empty(_)
+  Unit{}
+
+def lt_empty(value:Cmp) -> Type:
+  match value:
+    case LT{}: Empty
+    case EQ{}: Unit
+    case GT{}: Unit
+
+def eq_empty(value:Cmp) -> Type:
+  match value:
+    case LT{}: Unit
+    case EQ{}: Empty
+    case GT{}: Unit
+
+def eq_lt(value:{EQ{} == LT{} : Cmp}) -> Empty:
+  %value : lt_empty(_)
+  Unit{}
+
+def gt_lt(value:{GT{} == LT{} : Cmp}) -> Empty:
+  %value : lt_empty(_)
+  Unit{}
+
+def lt_eq(value:{LT{} == EQ{} : Cmp}) -> Empty:
+  %value : eq_empty(_)
+  Unit{}
+
+def gt_eq(value:{GT{} == EQ{} : Cmp}) -> Empty:
+  %value : eq_empty(_)
+  Unit{}
+
+law comparison_lt:
+  for comparison:Cmp
+  for less:{Cmp.is_lt(comparison) == True{} : Bool}
+  {comparison == LT{} : Cmp}
+
+def comparison_lt(comparison,less):
+  match comparison:
+    case LT{}: {==}
+    case EQ{}: Empty.absurd({EQ{} == LT{} : Cmp},false_true(less))
+    case GT{}: Empty.absurd({GT{} == LT{} : Cmp},false_true(less))
+
+law fin_zero_not_lt:
+  for head:Bool
+  for comparison:Cmp
+  for tail_not_less:{Cmp.is_lt(comparison) == False{} : Bool}
+  {Cmp.is_lt(Word.cmp.fin(head,False{},comparison)) == False{} : Bool}
+
+def fin_zero_not_lt(head,comparison,tail_not_less):
+  match head comparison:
+    case False{} LT{}:
+      Empty.absurd({True{} == False{} : Bool},false_true(Equal.sym(Bool,True{},False{},tail_not_less)))
+    case True{} LT{}:
+      Empty.absurd({True{} == False{} : Bool},false_true(Equal.sym(Bool,True{},False{},tail_not_less)))
+    case False{} EQ{}: {==}
+    case True{} EQ{}: {==}
+    case False{} GT{}: {==}
+    case True{} GT{}: {==}
+
+law zero_not_less:
+  for +n:Nat
+  for value:Word(n)
+  {Cmp.is_lt(Word.cmp(n,value,Word.zero(n))) == False{} : Bool}
+
+def zero_not_less(n,value):
+  match n:
+    case 0n:
+      match value:
+        case WNil{}: {==}
+    case 1n+p:
+      match value:
+        case WCon{head,+tail}:
+          fin_zero_not_lt(head,Word.cmp(p,tail,Word.zero(p)),zero_not_less(p,tail))
+
+law fin_zero_eq:
+  for head:Bool
+  for comparison:Cmp
+  for equal:{Word.cmp.fin(head,False{},comparison) == EQ{} : Cmp}
+  {head == False{} : Bool} & {comparison == EQ{} : Cmp}
+
+def fin_zero_eq(head,comparison,equal):
+  match head comparison:
+    case False{} LT{}:
+      Empty.absurd({False{} == False{} : Bool} & {LT{} == EQ{} : Cmp},lt_eq(equal))
+    case True{} LT{}:
+      Empty.absurd({True{} == False{} : Bool} & {LT{} == EQ{} : Cmp},lt_eq(equal))
+    case False{} EQ{}: ({==},{==})
+    case True{} EQ{}:
+      Empty.absurd({True{} == False{} : Bool} & {EQ{} == EQ{} : Cmp},gt_eq(equal))
+    case False{} GT{}:
+      Empty.absurd({False{} == False{} : Bool} & {GT{} == EQ{} : Cmp},gt_eq(equal))
+    case True{} GT{}:
+      Empty.absurd({True{} == False{} : Bool} & {GT{} == EQ{} : Cmp},gt_eq(equal))
+
+def zero_eq_step(+n:Nat,+head:Bool,+tail:Word(n),
+    equal:{head == False{} : Bool} & {Word.cmp(n,tail,Word.zero(n)) == EQ{} : Cmp},
+    derive:{Word.cmp(n,tail,Word.zero(n)) == EQ{} : Cmp} -> {tail == Word.zero(n) : Word(n)}) ->
+    {WCon{head,tail} == Word.zero(1n+n) : Word(1n+n)}:
+  match equal:
+    case Tuple{head_equal,tail_equal}:
+      Equal.trans(Word(1n+n),WCon{head,tail},WCon{False{},tail},WCon{False{},Word.zero(n)},
+        Equal.cong(Bool,Word(1n+n),bit => WCon{bit,tail},head,False{},head_equal),
+        Equal.cong(Word(n),Word(1n+n),rest => WCon{False{},rest},tail,Word.zero(n),derive(tail_equal)))
+
+law compared_zero_is_zero:
+  for +n:Nat
+  for +value:Word(n)
+  for equal:{Word.cmp(n,value,Word.zero(n)) == EQ{} : Cmp}
+  {value == Word.zero(n) : Word(n)}
+
+def compared_zero_is_zero(n,value,equal):
+  match n:
+    case 0n:
+      match value:
+        case WNil{}: {==}
+    case 1n+p:
+      match value:
+        case WCon{+head,+tail}:
+          zero_eq_step(p,head,tail,fin_zero_eq(head,Word.cmp(p,tail,Word.zero(p)),equal),
+            tail_equal => compared_zero_is_zero(p,tail,tail_equal))
+
+law one_step:
+  for n:Nat
+  for +head:Bool
+  for +tail:Word(n)
+  for comparison:Cmp
+  for tail_comparison:{Word.cmp(n,tail,Word.zero(n)) == comparison : Cmp}
+  for tail_not_less:{Cmp.is_lt(comparison) == False{} : Bool}
+  for less:{Word.cmp.fin(head,True{},comparison) == LT{} : Cmp}
+  {WCon{head,tail} == Word.zero(1n+n) : Word(1n+n)}
+
+def one_step(n,head,tail,comparison,tail_comparison,tail_not_less,less):
+  match head comparison:
+    case False{} LT{}:
+      Empty.absurd({WCon{False{},tail} == Word.zero(1n+n) : Word(1n+n)},
+        false_true(Equal.sym(Bool,True{},False{},tail_not_less)))
+    case True{} LT{}:
+      Empty.absurd({WCon{True{},tail} == Word.zero(1n+n) : Word(1n+n)},
+        false_true(Equal.sym(Bool,True{},False{},tail_not_less)))
+    case False{} EQ{}:
+      Equal.cong(Word(n),Word(1n+n),rest => WCon{False{},rest},tail,Word.zero(n),
+        compared_zero_is_zero(n,tail,tail_comparison))
+    case True{} EQ{}:
+      Empty.absurd({WCon{True{},tail} == Word.zero(1n+n) : Word(1n+n)},eq_lt(less))
+    case False{} GT{}:
+      Empty.absurd({WCon{False{},tail} == Word.zero(1n+n) : Word(1n+n)},gt_lt(less))
+    case True{} GT{}:
+      Empty.absurd({WCon{True{},tail} == Word.zero(1n+n) : Word(1n+n)},gt_lt(less))
+
+law below_one_is_zero:
+  for +n:Nat
+  for +value:Word(1n+n)
+  for less:{Word.cmp(1n+n,value,WCon{True{},Word.zero(n)}) == LT{} : Cmp}
+  {value == Word.zero(1n+n) : Word(1n+n)}
+
+def below_one_is_zero(n,value,less):
+  match value:
+    case WCon{head,+tail}:
+      one_step(n,head,tail,Word.cmp(n,tail,Word.zero(n)),{==},zero_not_less(n,tail),less)
+
+law zero_self:
+  for +n:Nat
+  {Word.cmp(n,Word.zero(n),Word.zero(n)) == EQ{} : Cmp}
+
+def zero_self(n):
+  match n:
+    case 0n: {==}
+    case 1n+p:
+      %Equal.sym(Cmp,Word.cmp(p,Word.zero(p),Word.zero(p)),EQ{},zero_self(p)) :
+        {Word.cmp.fin(False{},False{},_) == EQ{} : Cmp}
+      {==}
+
+law zero_below_one:
+  for +n:Nat
+  {Word.cmp(1n+n,Word.zero(1n+n),WCon{True{},Word.zero(n)}) == LT{} : Cmp}
+
+def zero_below_one(n):
+  %Equal.sym(Cmp,Word.cmp(n,Word.zero(n),Word.zero(n)),EQ{},zero_self(n)) :
+    {Word.cmp.fin(False{},True{},_) == LT{} : Cmp}
+  {==}
+
+law add_zero_left:
+  for +n:Nat
+  for +value:Word(n)
+  {Word.add(n,Word.zero(n),value) == value : Word(n)}
+
+def add_zero_left(n,value):
+  match n:
+    case 0n:
+      match value:
+        case WNil{}: {==}
+    case 1n+p:
+      match value:
+        case WCon{False{},+tail}:
+          Equal.cong(Word(p),Word(1n+p),rest => WCon{False{},rest},
+            Word.add(p,Word.zero(p),tail),tail,add_zero_left(p,tail))
+        case WCon{True{},+tail}:
+          Equal.cong(Word(p),Word(1n+p),rest => WCon{True{},rest},
+            Word.add(p,Word.zero(p),tail),tail,add_zero_left(p,tail))
+
+def power(low:Nat,+high:Nat) -> Word(Nat.add(low,1n+high)):
+  match low:
+    case 0n: WCon{True{},Word.zero(high)}
+    case 1n+p: WCon{False{},power(p,high)}
+
+law fin_lt_tail:
+  for head:Bool
+  for comparison:Cmp
+  for less:{Word.cmp.fin(head,False{},comparison) == LT{} : Cmp}
+  {comparison == LT{} : Cmp}
+
+def fin_lt_tail(head,comparison,less):
+  match head comparison:
+    case False{} LT{}: {==}
+    case True{} LT{}: {==}
+    case False{} EQ{}: Empty.absurd({EQ{} == LT{} : Cmp},eq_lt(less))
+    case True{} EQ{}: Empty.absurd({EQ{} == LT{} : Cmp},gt_lt(less))
+    case False{} GT{}: Empty.absurd({GT{} == LT{} : Cmp},gt_lt(less))
+    case True{} GT{}: Empty.absurd({GT{} == LT{} : Cmp},gt_lt(less))
+
+law separation_step:
+  for +low:Nat
+  for +high:Nat
+  for +left_head:Bool
+  for +left_tail:Word(Nat.add(low,1n+high))
+  for right_head:Bool
+  for +right_tail:Word(Nat.add(low,1n+high))
+  for tail_less:{Word.cmp(Nat.add(low,1n+high),left_tail,
+    Word.add(Nat.add(low,1n+high),right_tail,power(low,high))) == LT{} : Cmp}
+  {Word.cmp(1n+Nat.add(low,1n+high),WCon{left_head,left_tail},
+    Word.add(1n+Nat.add(low,1n+high),WCon{right_head,right_tail},
+      WCon{False{},power(low,high)})) == LT{} : Cmp}
+
+def separation_step(low,high,left_head,left_tail,right_head,right_tail,tail_less):
+  match right_head:
+    case False{}:
+      %Equal.sym(Cmp,Word.cmp(Nat.add(low,1n+high),left_tail,
+        Word.add(Nat.add(low,1n+high),right_tail,power(low,high))),LT{},tail_less) :
+        {Word.cmp.fin(left_head,False{},_) == LT{} : Cmp}
+      {==}
+    case True{}:
+      %Equal.sym(Cmp,Word.cmp(Nat.add(low,1n+high),left_tail,
+        Word.add(Nat.add(low,1n+high),right_tail,power(low,high))),LT{},tail_less) :
+        {Word.cmp.fin(left_head,True{},_) == LT{} : Cmp}
+      {==}
+
+law separated_words:
+  for +low:Nat
+  for +high:Nat
+  for +left:Word(Nat.add(low,1n+high))
+  for +right:Word(Nat.add(low,1n+high))
+  for small_left:{Word.cmp(Nat.add(low,1n+high),left,power(low,high)) == LT{} : Cmp}
+  for small_right:{Word.cmp(Nat.add(low,1n+high),right,power(low,high)) == LT{} : Cmp}
+  {Word.cmp(Nat.add(low,1n+high),left,
+    Word.add(Nat.add(low,1n+high),right,power(low,high))) == LT{} : Cmp}
+
+def separated_words(low,high,left,right,small_left,small_right):
+  match low:
+    case 0n:
+      %Equal.sym(Word(1n+high),left,Word.zero(1n+high),below_one_is_zero(high,left,small_left)) :
+        {Word.cmp(1n+high,_,Word.add(1n+high,right,power(0n,high))) == LT{} : Cmp}
+      %Equal.sym(Word(1n+high),right,Word.zero(1n+high),below_one_is_zero(high,right,small_right)) :
+        {Word.cmp(1n+high,Word.zero(1n+high),Word.add(1n+high,_,power(0n,high))) == LT{} : Cmp}
+      %Equal.sym(Word(1n+high),Word.add(1n+high,Word.zero(1n+high),power(0n,high)),
+        power(0n,high),add_zero_left(1n+high,power(0n,high))) :
+        {Word.cmp(1n+high,Word.zero(1n+high),_) == LT{} : Cmp}
+      zero_below_one(high)
+    case 1n+p:
+      match left right:
+        case WCon{+left_head,+left_tail} WCon{+right_head,+right_tail}:
+          separation_step(p,high,left_head,left_tail,right_head,right_tail,
+            separated_words(p,high,left_tail,right_tail,
+              fin_lt_tail(left_head,Word.cmp(Nat.add(p,1n+high),left_tail,power(p,high)),small_left),
+              fin_lt_tail(right_head,Word.cmp(Nat.add(p,1n+high),right_tail,power(p,high)),small_right)))
+
+law separated:
+  for +cutout:U32
+  for +solid:U32
+  for small_cutout:{U32.is_lt(cutout,4096) == True{} : Bool}
+  for small_solid:{U32.is_lt(solid,4096) == True{} : Bool}
+  {U32.is_lt(cutout,U32.add(solid,4096)) == True{} : Bool}
+
+def separated(cutout,solid,small_cutout,small_solid):
+  match cutout solid:
+    case U32{+left} U32{+right}:
+      %Equal.sym(Cmp,Word.cmp(32n,left,Word.add(32n,right,power(12n,19n))),LT{},
+        separated_words(12n,19n,left,right,
+          comparison_lt(Word.cmp(32n,left,power(12n,19n)),small_cutout),
+          comparison_lt(Word.cmp(32n,right,power(12n,19n)),small_solid))) :
+        {Cmp.is_lt(_) == True{} : Bool}
+      {==}
