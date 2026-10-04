@@ -155,13 +155,26 @@ def guard_state() -> B.State:
     C.Position{"minecraft:overworld",2147483648,0,0},B.Descriptor{0,0,0})),
     C.Position{"minecraft:overworld",2147483649,0,0},B.Descriptor{0,0,0}))
 
+def guard_rejected(result:B.State & Result<&2,&2,B.Error,Unit>) -> B.State & Bool:
+  (state,result) = result
+  match result:
+    case Fail{B.InvalidDescriptor{}}: (state,True{})
+    case Done{unit}: (state,False{})
+
+def show_rejected(rejected:Bool) -> String:
+  match rejected:
+    case True{}: "rejected"
+    case False{}: "accepted"
+
 def guard_settled(settled:B.State & B.Status) -> IO(Unit):
-  (state,status) = settled
+  (state,previous_status) = settled
   +position : C.Position = C.Position{"minecraft:overworld",0,0,0}
-  retained = published(B.publish(published(B.publish(state,position,
-    B.Descriptor{4926,16,0})),position,B.Descriptor{4926,14,16}))
-  B.paired(B.State,List<&2,Maybe<&2,U32>>,IO(Unit),samples(guard_positions(),retained),state => values =>
-    IO.print(show_status(status) ++ " " ++ show_levels(values)))
+  B.paired(B.State,Bool,IO(Unit),guard_rejected(B.publish(state,position,B.Descriptor{4926,16,0})),state => emission_rejected =>
+    B.paired(B.State,Bool,IO(Unit),guard_rejected(B.publish(state,position,B.Descriptor{4926,14,16})),state => dampening_rejected =>
+      B.paired(B.State,B.Status,IO(Unit),B.status(state),state => status =>
+        B.paired(B.State,List<&2,Maybe<&2,U32>>,IO(Unit),samples(guard_positions(),state),state => values =>
+          IO.print(show_rejected(emission_rejected) ++ " " ++ show_rejected(dampening_rejected) ++ " " ++
+            show_status(status) ++ " " ++ show_levels(values))))))
 
 def guards() -> IO(Unit):
   guard_settled(settle(1000n,MTip{},1n,guard_state()))

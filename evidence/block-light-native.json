@@ -6,8 +6,8 @@
     "src/block_light.bend": "e829015163260450b03c9a25e90d6f78df39e3797b77f9e03a917231fdd4e159",
     "src/block_light_laws.bend": "0a3423fc1c8bf04dcd8865d2937d403f7185f62f20bd2b93476f1e9aba7e3bcc",
     "src/block_light_proof.bend": "12f3c07ea8ac75ef93036a682b3cd0e6585e869b3ffcdd8bc6cebe8f3befc713",
-    "tests/block_light_receiver.bend": "ca60d6a15f4c3df149b5a1fa4a085d82deb48f1b6a480d85ded268058748d5f5",
-    "tools/test_block_light.py": "a435f83c46eb25d7f43616775e94489f146e014dc29e39a24b9eaf2c59e8b1e3"
+    "tests/block_light_receiver.bend": "a0411c90075118b53594147a2430b45ef43cc6b9ec284c27c1afe43c22f89899",
+    "tools/test_block_light.py": "376e4004ff612826e97fa9f0201a13c9101f9b4d0b188fc8b0f45f6d6feefb33"
   },
   "reference_sha256": "22b094d6a68cda101659bbf49a907dadd4bb23f6e0f018e68cdf8a01d9dfae91",
   "checks": [
@@ -19,7 +19,7 @@
         "--check-only"
       ],
       "exit": 0,
-      "seconds": 0.4041,
+      "seconds": 0.6896,
       "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.",
       "stderr": ""
     },
@@ -31,7 +31,7 @@
         "--verdict"
       ],
       "exit": 0,
-      "seconds": 0.3136,
+      "seconds": 0.7443,
       "stdout": "ALL PROOFS CHECK",
       "stderr": ""
     },
@@ -44,7 +44,7 @@
         "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/block-light-native/receiver.c"
       ],
       "exit": 0,
-      "seconds": 3.1972,
+      "seconds": 4.5195,
       "stdout": "",
       "stderr": ""
     },
@@ -61,7 +61,7 @@
         "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/block-light-native/receiver"
       ],
       "exit": 0,
-      "seconds": 7.6889,
+      "seconds": 7.2238,
       "stdout": "",
       "stderr": ""
     }
@@ -88,19 +88,19 @@
       "guards"
     ],
     "exit": 0,
-    "seconds": 0.0046,
-    "stdout": "stable 14 15 13 14 14 0 0",
+    "seconds": 0.004,
+    "stdout": "rejected rejected stable 14 15 13 14 14 0 0",
     "stderr": ""
   },
   "native_resource": {
     "kind": "native-resource",
     "exit": 0,
-    "seconds": 0.2206,
+    "seconds": 0.1985,
     "fixture": "six_directions",
     "budget": 1,
-    "peak_rss_bytes": 3080192,
+    "peak_rss_bytes": 3063808,
     "arguments_sha256": "53c4a07d8e41f75bc4a43cedf3f966fcb1799e768f06ed6d78a7be9289eae701",
-    "output_sha256": "3693a3abc1feaf59edd4267df988d63ea8d904e1b96b457bdc6ad4b758b73489",
+    "output_sha256": "28a2e49a2dd3f8fd29b4f0785d37ce63de14218b356a6661890ee9f90d731602",
     "reproduce": "python3 tools/test_block_light.py",
     "raw_log": "build/block-light-native/native-resource.json",
     "boundary": "Bounded CPU native receiver RSS; not world-scale memory or long-session leak evidence."
@@ -851,7 +851,5 @@
       "levels_sha256": "ec6d60777a613358d35b2c95298371b66677de080476d25a3c233e88ed57fa23"
     }
   ],
-  "boundary": "Actual Bend State/publish/unload/advance/sample, CPU native; no Python propagation. Exact Java-observed shape callback inputs for selected arbitrary registry states. Settled fields compared; transient ordering and queue work counts differ. Eight implementation laws independently checked; no universal convergence or whole-world/sky-light/shading claim. No foreign lighting or GUI.",
-  "evidence_formatter_sha256": "93e3b476c5f96fb143eaaffaf9a766fd47a6f9f92a074cb33f0cabd7edae4c52",
-  "evidence_format_note": "Resource argument vector/output compacted after passing checks. Recorded source_sha256 retains the exact executed test orchestrator; production/laws/native receiver files are unchanged and their hashes were rechecked."
+  "boundary": "Actual Bend State/publish/unload/advance/sample, CPU native; no Python propagation. Exact Java-observed shape callback inputs for selected arbitrary registry states. Settled fields compared; transient ordering and queue work counts differ. Eight implementation laws independently checked; no universal convergence or whole-world/sky-light/shading claim. No foreign lighting or GUI."
 }

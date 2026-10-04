@@ -114,7 +114,7 @@ def main():
                              'samples':len(actual),'unknown':actual.count(None),
                              'levels_sha256':hashlib.sha256(json.dumps(actual).encode()).hexdigest()})
     output,guard_check=command([WORK/'receiver','--gpu','off','--threads','1','--','guards'],'owner-guards',15)
-    assert output.split()==['stable','14','15','13','14','14','0','0'],guard_check
+    assert output.split()==['rejected','rejected','stable','14','15','13','14','14','0','0'],guard_check
     # The real owner survives all resumptions and rejected edits. Capture the
     # host/native resource check independently of source/kernel claims.
     args=request(reference,reference['inputs']['scenarios'][-1],1)
