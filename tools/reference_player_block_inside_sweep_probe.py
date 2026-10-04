@@ -96,7 +96,7 @@ SOURCE = SOURCE[:start] + r'''
     String route=step.get("route").getAsString();
     if(route.equals("public")){if(movements.size()!=1||!step.getAsJsonArray("movements").get(0).getAsJsonObject().getAsJsonArray("axis_original").isEmpty())throw new AssertionError("Invalid public route");JsonObject request=step.getAsJsonArray("movements").get(0).getAsJsonObject();e.applyEffectsFromBlocks(vec(request.getAsJsonArray("from")),vec(request.getAsJsonArray("to")));}
     else if(route.equals("list"))APPLY_LIST.invoke(e,movements);
-    else if(route.equals("stored")){ArrayDeque<Object> queue=(ArrayDeque<Object>)QUEUED.get(e);queue.addAll(movements);m.put("queued_before",movementRecords(queue));APPLY_STORED.invoke(e);m.put("queued_after",movementRecords(queue));m.put("final_movements",movementRecords(FINAL_MOVEMENTS.get(e)));}
+    else if(route.equals("stored")){ArrayDeque<Object> queue=(ArrayDeque<Object>)QUEUED.get(e);queue.addAll(movements);m.put("queued_before",movementRecords(queue));if(step.has("observe_endpoint_distance")&&step.get("observe_endpoint_distance").getAsBoolean()){Object last=queue.getLast();Method getTo=last.getClass().getDeclaredMethod("to");getTo.setAccessible(true);Vec3 endpoint=(Vec3)getTo.invoke(last);m.put("queued_endpoint_distance_squared",bits(endpoint.distanceToSqr(e.position())));m.put("body_position_before_dispatch",ReferenceMovementProbe.vectorBits(e.position()));}APPLY_STORED.invoke(e);m.put("queued_after",movementRecords(queue));m.put("final_movements",movementRecords(FINAL_MOVEMENTS.get(e)));}
     else throw new IllegalArgumentException("Unknown original dispatch route");
     m.put("entity_visited_after",visited(e).size());m.put("collector_step_after",collectorStep(e));
     m.put("entity_inside_shapes",level.insideReads.stream().filter(r->{List<?> p=(List<?>)r.get("position");BlockState value=level.blocks.get(new BlockPos((int)p.get(0),(int)p.get(1),(int)p.get(2)));return value!=null&&!value.isAir();}).map(r->{List<?> p=(List<?>)r.get("position");BlockPos pos=new BlockPos((int)p.get(0),(int)p.get(1),(int)p.get(2));return Map.of("position",r.get("position"),"shape",insideShape(level.blocks.get(pos),level,pos,e));}).toList());
@@ -264,6 +264,23 @@ def generate_inputs():
         for reverse in [False,True]:
             pair=[movement(low,low),movement(high,high)];pair.reverse() if reverse else None
             add('air-alias-'+air_name+'-'+str(reverse),[sweep(pair,aliases),sweep(pair,aliases)],['actual_is_air','packed_long_alias','air_bypasses_entity_dedup','repeated_dispatch'],position=vec(high))
+    # Stored queue preparation has its own strict squared-distance bridge gate.
+    # Around .5 the rounded nominal sqrt endpoint is already above that gate;
+    # the origin-zero cases additionally expose an exact squared equality.
+    near = .5 + threshold
+    endpoint_cases = [('clear-subthreshold', .5, .5 + eps/4.),
+                      ('half-sqrt-predecessor', .5, math.nextafter(near, -math.inf)),
+                      ('half-sqrt-rounded', .5, near),
+                      ('half-sqrt-successor', .5, math.nextafter(near, math.inf)),
+                      ('zero-sqrt-predecessor', 0., math.nextafter(threshold, -math.inf)),
+                      ('zero-sqrt-equal', 0., threshold),
+                      ('zero-sqrt-successor', 0., math.nextafter(threshold, math.inf)),
+                      ('signed-zero-endpoint', 0., -0.)]
+    for label,current_x,endpoint_x in endpoint_cases:
+        current=[current_x,1.,.5];endpoint=[endpoint_x,1.,.5]
+        queued=sweep([movement([.25,1.,.5],endpoint)],grid((-1,0,-1),(1,3,1)),'stored')
+        queued['observe_endpoint_distance']=True
+        add('stored-bridge-'+label,[queued],['actual_movement_queue','original_endpoint_bridge_gate','float_square_threshold','raw_endpoint_body_difference'],position=vec(current))
     return cases
 
 
