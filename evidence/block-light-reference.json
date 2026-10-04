@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "pin": "26.3",
+  "reference": "reference/block_light.json",
+  "sha256": "22b094d6a68cda101659bbf49a907dadd4bb23f6e0f018e68cdf8a01d9dfae91",
+  "scenarios": 10,
+  "phases": 31,
+  "properties": 20,
+  "directed_edges": 2400,
+  "command": "python3 tools/reference_block_light_probe.py",
+  "boundary": "Actual unmodified BlockLightEngine plus declared LightChunk/LightChunkGetter receiver fixture. Unlisted resident positions and absent chunks return bedrock, forming closed boundaries. All sampled phases settle the real receiver; work ordering/count is not a Bend parity target. Sky light, real chunk persistence/packet updates, face shading and lighting-enable lifecycle are separate."
+}
