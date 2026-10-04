@@ -192,13 +192,20 @@ def apply_framed(receiver: P.Receiver, +request: R.Hooks, +outcome: TH.Outcome,
   (state,frame) = result
   R.framed(receiver,state,frame,request,ST.travel_record(outcome))
 
-def apply(motion: MH.State, +receiver: P.Receiver, +input: Input, context: O.Context) -> MH.State & P.Receiver & Result<&2,&2,R.Error,W.Observation>:
-  Input{body,prepared,old,original,displacement,changed,framed,malformed,traversal,reads,tail} = input
-  +request = hooks(input,context)
-  +outcome = carrier(input)
+def apply_mode(motion: MH.State, +receiver: P.Receiver, +request: R.Hooks,
+               +outcome: TH.Outcome, framed: Bool) -> MH.State & P.Receiver & Result<&2,&2,R.Error,W.Observation>:
   match framed:
     case False{}: R.after_successful_travel(motion,receiver,request,outcome)
     case True{}: apply_framed(receiver,request,outcome,PM.extract(motion,receiver))
+
+def apply(motion: MH.State, receiver: P.Receiver, +input: Input, context: O.Context) -> MH.State & P.Receiver & Result<&2,&2,R.Error,W.Observation>:
+  Input{body,prepared,old,original,displacement,changed,framed,malformed,traversal,reads,tail} = input
+  apply_mode(motion,receiver,hooks(input,context),carrier(input),framed)
+
+def status_failed(status: Result<&2,&2,R.Error,W.Observation>) -> Bool:
+  match status:
+    case Fail{cause}: True{}
+    case Done{observation}: False{}
 
 def emit_trace(id: String, trace: Bool, reads: List<&2,W.Read>, callbacks: List<&2,W.Callback>) -> IO(Unit):
   match trace:
@@ -223,10 +230,7 @@ def returned_extracted(+id: String, info: Return, valid: Bool, result: P.State &
 def returned(id: String, +info: Return, result: MH.State & Owner) -> IO(O.State):
   Return{context,retained,previous,+receiver,+status,trace,info_tail} = info
   (motion,next) = result
-  +failed = match status:
-    case Fail{cause}: True{}
-    case Done{observation}: False{}
-  returned_extracted(id,info,same_owner(previous,next,failed),PM.extract(motion,receiver))
+  returned_extracted(id,info,same_owner(previous,next,status_failed(status)),PM.extract(motion,receiver))
 
 def applied(id: String, context: O.Context, retained: Bool, previous: Owner, trace: Bool,
             result: MH.State & P.Receiver & Result<&2,&2,R.Error,W.Observation>) -> IO(O.State):
