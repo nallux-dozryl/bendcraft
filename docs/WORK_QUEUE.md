@@ -11,7 +11,10 @@ fixture is a verification instrument; none satisfies a gameplay completion gate.
    owned motion composition → authoritative 20 Hz
    held-input controls and typed player saves. The plain Player runtime now passes
    73 actual Java comparisons with per-tick queued edits, packet/physics rollback
-   and raw record restoration; the LocalPlayer override remains separately queued.
+   and raw record restoration. The owned LocalPlayer input/travel/finish lanes
+   pass separately. Fresh full-tick phase evidence fixes scheduler, input-cache,
+   support/minor/fall, late pose/dimensions and cached eye ordering; the composed
+   local runtime still needs those authorities and lifecycle consumers.
    The discrete debug controller is
    an integration instrument, not vanilla walking.
 2. Registry identity → leased save-owning server → durable publication → actual
@@ -44,7 +47,7 @@ declared interfaces; integration evidence determines subsequent work.
 | Owner | Exclusive working files or subsystem | Stable integration interface |
 | --- | --- | --- |
 | Lead | `player_runtime.bend`, `player_session.bend`, `player_storage.bend`, `player_scene.bend`, `player_client.bend`, `client_presenter.bend` and window input | Verified plain Player runtime and saved-session TCP/MCP/restart composition; one W body plus metadata, Tables, support and complete Controller. Continuous entry passes 22 bounded launches with exact API/save/restart checks; visible presentation and physical focused input remain required |
-| World bridge | Completed PW/SW and `local_tick_world.bend`; new tick phase audit | LocalPlayer prepare override before checked travel/finish passes retained motion/finish lanes; full tick ordering, pose/dimensions and cached eye observations are being derived |
+| World bridge | Completed PW/SW, `local_tick_world.bend` and tick phase audit; new `player_pose.bend` preparation | LocalPlayer prepare override before checked travel/finish passes retained motion/finish lanes; actual phase/eye observations are frozen. Conditional pose-fit replay and exact dimension refresh are being prepared without changing current consumers |
 | Client/render | Completed BR/texture metadata and `resource_frame.bend`; new `sprite_stitch.bend` | Resource/frame draw, audit and geometry pass twice on three frozen artifacts; actual four-argument Java atlas stitcher and metadata consumer integration remain separate |
 | Player motion | Completed support, LocalPlayer input, collision hooks and `local_collision_world.bend` | Exact minor arithmetic and edge hooks pass native/kernel; actual Core read/yield composition passes native with explicit entity/border admission. Fall history and lifecycle consumers remain open; full world-composition kernel is unresolved |
 | Model interpretation | Completed `blockstate_model.bend`; presenter integration test | Exact selector/multipart/ordered state semantics; 28 hidden actor/window/failure cleanup executions pass; actual visible focused input remains required |

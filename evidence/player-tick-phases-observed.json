@@ -1,0 +1,302 @@
+{
+  "actual_entry_calls": 16,
+  "actual_receiver_entry_calls_both_reruns": 64,
+  "api_sources_sha256": {
+    "src/local_input.bend": "5e3555fdb06258a76478a32d32332455ad186ec956607ce981e198a3c28ca02e",
+    "src/local_move_world.bend": "3823c3e6d4ebd0ab8743792aad3bf0cacae7a081a5791bd23d888037bd569f81",
+    "src/local_tick_world.bend": "baa67724b6b5d5e98d3fdba3d733e753d64e4b6c5109e2263cadd003ee721a2c",
+    "src/player_fall_history.bend": "b181c43948cc01e66b05e0edf9dbc0338e1ebdcfecbf86a525731a07aad26db3",
+    "src/player_rotation_tick.bend": "63ae51ac3d0f579061d21a90af4cb80ac782c56b56b7c7d867c06e309d90973b",
+    "src/player_tick.bend": "d583f3014011313097779b69ee0fd8d77bd3ed0e1e7895b629903eb64da9699f",
+    "src/support.bend": "aca42f24e0a32bd89356ac33f6d9bbe2ab5975ce938e2d2750496c01a6137455",
+    "src/support_world.bend": "a2e42fb06cab36408e7631e8ff3b9e61793696d4b049592d3ce137f69fa3b381",
+    "src/travel.bend": "717e969e3989a7a8e443b18f69c171bdc11a14130828233ce85e6cd914e1f8f1"
+  },
+  "base_templates_sha256": {
+    "net.minecraft.client.Minecraft": "c5b0273eaad86b460eef291eb08a99faa8ddb17b137bb813c95f804388986c7b",
+    "net.minecraft.client.gui.Gui": "530742a3f5f1cfc041ed53ad6ecc5028c2fec4cd649b747abe52e6433e903d9c",
+    "net.minecraft.client.multiplayer.ClientPacketListener": "ae1f0d16b26cfdc4df13a51057b831920dc585225fe703757bfe8d6432c854cd",
+    "net.minecraft.client.tutorial.Tutorial": "e2edc28f63509a2bfd3f4d7eacfc26ba92410a176c683a971e67bb87e9cd4e0c",
+    "net.minecraft.fixture.LocalInputReceiverFixture": "c8433c9f406575b068b2ba6b6521bd33775802a65cea454d06c01857261031d5"
+  },
+  "cases_full_sha256": "e2ea637186c5c695bf9d42a1437eb326e8e3e6d9b14006e7f5587e1feba6f8d3",
+  "classpath_sha256": "e726e02962d0375f210b29c59b447af38ba8194446577aa2aaaa363f4087e88b",
+  "client_jar": {
+    "bytes": 41483720,
+    "file": "26.3.jar",
+    "sha1": "e877b6a07acd633fb3bb475002175cec036e7b87",
+    "sha256": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d"
+  },
+  "derived_sources_sha256": {
+    "net.minecraft.client.Minecraft": "c5b0273eaad86b460eef291eb08a99faa8ddb17b137bb813c95f804388986c7b",
+    "net.minecraft.client.gui.Gui": "530742a3f5f1cfc041ed53ad6ecc5028c2fec4cd649b747abe52e6433e903d9c",
+    "net.minecraft.client.multiplayer.ClientPacketListener": "ae1f0d16b26cfdc4df13a51057b831920dc585225fe703757bfe8d6432c854cd",
+    "net.minecraft.client.tutorial.Tutorial": "e2edc28f63509a2bfd3f4d7eacfc26ba92410a176c683a971e67bb87e9cd4e0c",
+    "net.minecraft.fixture.LocalInputReceiverFixture": "7c7708efe33cf0bc55777923707894a5a02a1f1ea980640b082ab53bc238f21a"
+  },
+  "exact_observation_rerun_equal": true,
+  "execution": {
+    "command_sha256": "74fedf2162ca1696a86a4ebe70201f2f2768a0ae71f758341be2b9731df1c698",
+    "returncode": 0,
+    "seconds": 5.395155,
+    "stderr_sha256": "9f59a7e7abaf6fe9628f48fdd42716fd0e40620eecbb9a6f491576a809b33269",
+    "stdout_sha256": "309f1c713b7a1b2f1dc48011606a4d15659539592b9dae705299950352aabc6c"
+  },
+  "external_service_boundary": "Unchanged four LI service fixtures; normally constructed real ClientLevel/player/input. No additional service mocks. Observer methods call super. Pose/metadata snapshots observe effects, not model them.",
+  "failures": [
+    {
+      "error_class": "java.lang.NoSuchFieldError",
+      "error_message": "Class net.minecraft.client.Minecraft does not have member field 'net.minecraft.client.renderer.GameRenderer gameRenderer'",
+      "id": "scheduled_sprint_jump"
+    }
+  ],
+  "histories": 7,
+  "imported_producer_sha256": "42ad844c7ee3616286ce99bcea00c6bc0710b20888912b6e98c1b4af6072a56e",
+  "independent_rerun": {
+    "execution": {
+      "command_sha256": "74fedf2162ca1696a86a4ebe70201f2f2768a0ae71f758341be2b9731df1c698",
+      "returncode": 0,
+      "seconds": 5.172782,
+      "stderr_sha256": "9f59a7e7abaf6fe9628f48fdd42716fd0e40620eecbb9a6f491576a809b33269",
+      "stdout_sha256": "38d41ba1703589b3c6a022291d05eecd7025d3a3570e06a4d41c9acf7e6c6815"
+    },
+    "loaded_official_class_tree_sha256": "459b65dd2b86461a493adb937417798c26c247168706342f3dc4ebc78d70877e",
+    "raw_artifact": {
+      "bytes": 4297664,
+      "file": "final-rerun.full.json",
+      "path": "build/player-tick-phases/final-rerun.full.json",
+      "sha1": "ef0b314c6d3418f85c20895bf978cee610dd04ce",
+      "sha256": "995e3c734759f169ec460f128bd2ad8b3224148c232b2ebbac5426e1d8f4944f"
+    }
+  },
+  "inputs_sha256": "bcfe91c30ce7b48a167c988d02090ff3a65c35e8be1a9ed544b716f6d5dfc038",
+  "java_runtime": {
+    "bytes": 84720,
+    "file": "java",
+    "sha1": "5af4a90be54ddeec03db3700e6989594c9438952",
+    "sha256": "e0879c0df70d880d66904064d1b388b08aeee0958a047f37601435b28db849a3"
+  },
+  "kind": "actual normally constructed receiver behavior; no Bend/native verdict",
+  "launcher_sha256": "7ce6d487c178318a3c3ae701c04543d566d859c29ff779444dd6f907d0f5aa3c",
+  "loaded_critical_classes_sha256": {
+    "net.minecraft.client.multiplayer.ClientLevel": "7d69f81d39e64a679b51f745211619204073167d59b149d9de683e10eb2d97ba",
+    "net.minecraft.client.player.AbstractClientPlayer": "328cdd5884df5b2e9697d88f304d8fc2a457e9edc33bcb75f0a3751eb6665771",
+    "net.minecraft.client.player.KeyboardInput": "69b159758e3b678bae48d19999f00d1dbc7f37a6cdc490e17e4533f102ae696c",
+    "net.minecraft.client.player.LocalPlayer": "d5390f22219039f78f5f59a9961685c11d3cf36f12a645866008135862b59435",
+    "net.minecraft.world.entity.Avatar": "b85674319614e72b1857f8e21d16121682648220452feaac41ed68d770d62f82",
+    "net.minecraft.world.entity.Entity": "7ac5f6a929abbf4fa00f0a87ad530669f7d96c8ee2bb86a5076ab1fab352fb3c",
+    "net.minecraft.world.entity.LivingEntity": "6eaecd529ba26174652f3bb71e7c86262e54ac6f5e1e70944fb0e629b3b9948a",
+    "net.minecraft.world.entity.player.Player": "28ad0c7756a5cbdfde6c22772f585da9177d6f9eb418ea5ff2dd85657d81dfb2"
+  },
+  "loaded_official_class_count": 4391,
+  "loaded_official_class_tree_sha256": "459b65dd2b86461a493adb937417798c26c247168706342f3dc4ebc78d70877e",
+  "observed_facts": {
+    "application_gate_skips_with_support_and_fall": 6,
+    "inline_camera_normalization_between_ai_step_and_pose_checked": true,
+    "minor_calls_after_support_before_fall": 1,
+    "neutral_calls_with_gliding_clamp": 0,
+    "pose_dimension_refreshes": 4,
+    "raw_eye_field_getter_position_checks": 572,
+    "retained_position_on_every_observed_refresh": true,
+    "shift_cache_pose_latency_checked": true,
+    "successful_call_order_checks": 15,
+    "summary": [
+      {
+        "after_eye_height_f32_bits": "3fa28f5c",
+        "after_pose": "CROUCHING",
+        "application_recorded": true,
+        "before_pose": "STANDING",
+        "id": "scheduled_shift",
+        "index": 0,
+        "move_eye_height_f32_bits": "3fcf5c29",
+        "move_height_f32_bits": "3fe66666",
+        "phase_order_sha256": "2839be124e3e2ecb2fd1c5bc2783977b019e4c25a2a32776de547f4c32676da2"
+      },
+      {
+        "after_eye_height_f32_bits": "3fa28f5c",
+        "after_pose": "CROUCHING",
+        "application_recorded": false,
+        "before_pose": "CROUCHING",
+        "id": "scheduled_shift",
+        "index": 1,
+        "move_eye_height_f32_bits": "3fa28f5c",
+        "move_height_f32_bits": "3fc00000",
+        "phase_order_sha256": "1f38a87246bdea2a558ed8c985324f304176b9f50604697562506f103aa1e76a"
+      },
+      {
+        "after_eye_height_f32_bits": "3fcf5c29",
+        "after_pose": "STANDING",
+        "application_recorded": false,
+        "before_pose": "CROUCHING",
+        "id": "scheduled_shift",
+        "index": 2,
+        "move_eye_height_f32_bits": "3fa28f5c",
+        "move_height_f32_bits": "3fc00000",
+        "phase_order_sha256": "94f7600355ab1eee5b1f94ac04915af3aac6abb59eecbadda58c6c64cef7da5f"
+      },
+      {
+        "after_eye_height_f32_bits": "3fcf5c29",
+        "after_pose": "STANDING",
+        "application_recorded": false,
+        "before_pose": "STANDING",
+        "id": "scheduled_shift",
+        "index": 3,
+        "move_eye_height_f32_bits": "3fcf5c29",
+        "move_height_f32_bits": "3fe66666",
+        "phase_order_sha256": "1f38a87246bdea2a558ed8c985324f304176b9f50604697562506f103aa1e76a"
+      },
+      {
+        "after_eye_height_f32_bits": "3fa28f5c",
+        "after_pose": "CROUCHING",
+        "application_recorded": true,
+        "before_pose": "STANDING",
+        "id": "direct_shift",
+        "index": 0,
+        "move_eye_height_f32_bits": "3fcf5c29",
+        "move_height_f32_bits": "3fe66666",
+        "phase_order_sha256": "6f25de7dbfbeefd60a4a8c97f7dcaef96b17280088fa9270ea559b92a8d1c5b9"
+      },
+      {
+        "after_eye_height_f32_bits": "3fa28f5c",
+        "after_pose": "CROUCHING",
+        "application_recorded": false,
+        "before_pose": "CROUCHING",
+        "id": "direct_shift",
+        "index": 1,
+        "move_eye_height_f32_bits": "3fa28f5c",
+        "move_height_f32_bits": "3fc00000",
+        "phase_order_sha256": "5da4a343f6fdf6384268d3b073e6028cc9efb2a57766537c17f2b227185dbc1a"
+      },
+      {
+        "after_eye_height_f32_bits": "3fcf5c29",
+        "after_pose": "STANDING",
+        "application_recorded": false,
+        "before_pose": "CROUCHING",
+        "id": "direct_shift",
+        "index": 2,
+        "move_eye_height_f32_bits": "3fa28f5c",
+        "move_height_f32_bits": "3fc00000",
+        "phase_order_sha256": "718f5258c554278bf274a6498ad70a8f8fd48232f2b7c9400fcd470a37947b5f"
+      },
+      {
+        "after_eye_height_f32_bits": "3fcf5c29",
+        "after_pose": "STANDING",
+        "application_recorded": false,
+        "before_pose": "STANDING",
+        "id": "direct_shift",
+        "index": 3,
+        "move_eye_height_f32_bits": "3fcf5c29",
+        "move_height_f32_bits": "3fe66666",
+        "phase_order_sha256": "5da4a343f6fdf6384268d3b073e6028cc9efb2a57766537c17f2b227185dbc1a"
+      },
+      {
+        "after_eye_height_f32_bits": "3fcf5c29",
+        "after_pose": "STANDING",
+        "application_recorded": true,
+        "before_pose": "STANDING",
+        "id": "scheduled_sprint_jump",
+        "index": 0,
+        "move_eye_height_f32_bits": "3fcf5c29",
+        "move_height_f32_bits": "3fe66666",
+        "phase_order_sha256": "7650d8662d4381650de0ad2480b362f3d112c234ed9176f0fd44f7abe0a25583"
+      },
+      {
+        "after_eye_height_f32_bits": "3fcf5c29",
+        "after_pose": "STANDING",
+        "application_recorded": true,
+        "before_pose": "STANDING",
+        "id": "scheduled_jump",
+        "index": 0,
+        "move_eye_height_f32_bits": "3fcf5c29",
+        "move_height_f32_bits": "3fe66666",
+        "phase_order_sha256": "70ae6dda0158172f98e00f7c01038e3b73a605077b8b3eeebf3962f19651fabd"
+      },
+      {
+        "after_eye_height_f32_bits": "3fcf5c29",
+        "after_pose": "STANDING",
+        "application_recorded": true,
+        "before_pose": "STANDING",
+        "id": "scheduled_jump",
+        "index": 1,
+        "move_eye_height_f32_bits": "3fcf5c29",
+        "move_height_f32_bits": "3fe66666",
+        "phase_order_sha256": "c22914cd16928ca2deeeb4cbc227ca3c3c6469b96863d1c1d5f8d48f72b5c628"
+      },
+      {
+        "after_eye_height_f32_bits": "3fcf5c29",
+        "after_pose": "STANDING",
+        "application_recorded": true,
+        "before_pose": "STANDING",
+        "id": "scheduled_blocked",
+        "index": 0,
+        "move_eye_height_f32_bits": "3fcf5c29",
+        "move_height_f32_bits": "3fe66666",
+        "phase_order_sha256": "954121bbe34001546c8098d6b787b7d9e9b2d2e523247f66ae7dc3629abf8e3a"
+      },
+      {
+        "after_eye_height_f32_bits": "3fcf5c29",
+        "after_pose": "STANDING",
+        "application_recorded": true,
+        "before_pose": "STANDING",
+        "id": "scheduled_step",
+        "index": 0,
+        "move_eye_height_f32_bits": "3fcf5c29",
+        "move_height_f32_bits": "3fe66666",
+        "phase_order_sha256": "c22914cd16928ca2deeeb4cbc227ca3c3c6469b96863d1c1d5f8d48f72b5c628"
+      },
+      {
+        "after_eye_height_f32_bits": "3fcf5c29",
+        "after_pose": "STANDING",
+        "application_recorded": true,
+        "before_pose": "STANDING",
+        "id": "scheduled_step",
+        "index": 1,
+        "move_eye_height_f32_bits": "3fcf5c29",
+        "move_height_f32_bits": "3fe66666",
+        "phase_order_sha256": "c22914cd16928ca2deeeb4cbc227ca3c3c6469b96863d1c1d5f8d48f72b5c628"
+      },
+      {
+        "after_eye_height_f32_bits": "3fcf5c29",
+        "after_pose": "STANDING",
+        "application_recorded": true,
+        "before_pose": "STANDING",
+        "id": "scheduled_zero",
+        "index": 0,
+        "move_eye_height_f32_bits": "3fcf5c29",
+        "move_height_f32_bits": "3fe66666",
+        "phase_order_sha256": "c22914cd16928ca2deeeb4cbc227ca3c3c6469b96863d1c1d5f8d48f72b5c628"
+      }
+    ]
+  },
+  "observer_free_state_parity": true,
+  "phase_snapshots": 540,
+  "pin": "26.3",
+  "probe_sha256": "2f778c81a3b2931068d9ce7cebf5b4bd0516dbe47b4897a2b2e9d6f7148f1070",
+  "producers_after_sha256": {
+    "client_jar": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d",
+    "local_input_probe": "42ad844c7ee3616286ce99bcea00c6bc0710b20888912b6e98c1b4af6072a56e",
+    "probe": "2f778c81a3b2931068d9ce7cebf5b4bd0516dbe47b4897a2b2e9d6f7148f1070"
+  },
+  "producers_before_sha256": {
+    "client_jar": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d",
+    "local_input_probe": "42ad844c7ee3616286ce99bcea00c6bc0710b20888912b6e98c1b4af6072a56e",
+    "probe": "2f778c81a3b2931068d9ce7cebf5b4bd0516dbe47b4897a2b2e9d6f7148f1070"
+  },
+  "raw_artifact": {
+    "bytes": 4297664,
+    "file": "final-first.full.json",
+    "path": "build/player-tick-phases/final-first.full.json",
+    "sha1": "53f1b18de19197db8dfea399545c5ea385647aaa",
+    "sha256": "b9376a7e98d8abcedae896596fc469b72febadfb149d682430b12e560031823e"
+  },
+  "reference_artifact": {
+    "bytes": 224105,
+    "file": "player_tick_phases.json",
+    "path": "reference/player_tick_phases.json",
+    "sha1": "1e2ef5287b8ba94242ceb7da58d910353454fabd",
+    "sha256": "a0ed9d126facbedaa4b2336a2502d04cb8c447e60789c3037e5ea1f40ac7cc65"
+  },
+  "schema_version": 1,
+  "status": "observed",
+  "successful_calls": 15
+}

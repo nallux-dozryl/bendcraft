@@ -1,0 +1,2212 @@
+{
+  "api_sources_sha256": {
+    "src/local_input.bend": "5e3555fdb06258a76478a32d32332455ad186ec956607ce981e198a3c28ca02e",
+    "src/local_move_world.bend": "3823c3e6d4ebd0ab8743792aad3bf0cacae7a081a5791bd23d888037bd569f81",
+    "src/local_tick_world.bend": "baa67724b6b5d5e98d3fdba3d733e753d64e4b6c5109e2263cadd003ee721a2c",
+    "src/player_fall_history.bend": "b181c43948cc01e66b05e0edf9dbc0338e1ebdcfecbf86a525731a07aad26db3",
+    "src/player_rotation_tick.bend": "63ae51ac3d0f579061d21a90af4cb80ac782c56b56b7c7d867c06e309d90973b",
+    "src/player_tick.bend": "d583f3014011313097779b69ee0fd8d77bd3ed0e1e7895b629903eb64da9699f",
+    "src/support.bend": "aca42f24e0a32bd89356ac33f6d9bbe2ab5975ce938e2d2750496c01a6137455",
+    "src/support_world.bend": "a2e42fb06cab36408e7631e8ff3b9e61793696d4b049592d3ce137f69fa3b381",
+    "src/travel.bend": "717e969e3989a7a8e443b18f69c171bdc11a14130828233ce85e6cd914e1f8f1"
+  },
+  "bootstrap_raw_artifact": {
+    "bytes": 536433,
+    "file": "ClientLevel.verbose.javap.txt",
+    "path": "build/player-tick-phases/ClientLevel.verbose.javap.txt",
+    "sha1": "3ec12ed27dfb5dd7e4d7e0fa1a16de137c5e1fc3",
+    "sha256": "2ebe56dff9c64faea202cd0a06ff6096c350197b7b55002456a543c6b5bb1dbd"
+  },
+  "classes": {
+    "net.minecraft.client.Minecraft": {
+      "class_entry": "net/minecraft/client/Minecraft.class",
+      "class_sha256": "6620185007eb572e953c5fdad1e6e369b75b058b9dcd9a0bda9f8bc3f212c9d6",
+      "javap_artifact": {
+        "bytes": 547703,
+        "file": "Minecraft.javap.txt",
+        "path": "build/player-tick-phases/Minecraft.javap.txt",
+        "sha1": "fd8d71ed790527effc537926808da8f19b1b7e6d",
+        "sha256": "025316dc33e5f70c310273210590a2ae3bea270d56d127456284ca4bd9819149"
+      },
+      "methods": [
+        {
+          "all_call_count": 55,
+          "body_sha256": "9a3264a3ba1b15e71a6b207f7ae8f6161ca424cb183d55dce06ce64bc174e022",
+          "branch_count": 30,
+          "descriptor": "()V",
+          "name": "tick",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 31,
+              "opcode": "invokevirtual",
+              "target": "net/minecraft/world/TickRateManager.tick:()V"
+            },
+            {
+              "offset": 82,
+              "opcode": "invokevirtual",
+              "target": "net/minecraft/client/multiplayer/MultiPlayerGameMode.tick:()V"
+            },
+            {
+              "offset": 124,
+              "opcode": "invokevirtual",
+              "target": "net/minecraft/client/gui/Gui.tick:()V"
+            },
+            {
+              "offset": 221,
+              "opcode": "invokevirtual",
+              "target": "net/minecraft/client/renderer/GameRenderer.tick:()V"
+            },
+            {
+              "offset": 237,
+              "opcode": "invokevirtual",
+              "target": "net/minecraft/client/multiplayer/ClientLevel.tickEntities:()V"
+            },
+            {
+              "offset": 286,
+              "opcode": "invokevirtual",
+              "target": "net/minecraft/client/player/LocalPlayer.sendChanges:()V"
+            },
+            {
+              "offset": 313,
+              "opcode": "invokevirtual",
+              "target": "net/minecraft/client/sounds/MusicManager.tick:()V"
+            },
+            {
+              "offset": 324,
+              "opcode": "invokevirtual",
+              "target": "net/minecraft/client/sounds/SoundManager.tick:(Z)V"
+            },
+            {
+              "offset": 393,
+              "opcode": "invokevirtual",
+              "target": "net/minecraft/client/tutorial/Tutorial.tick:()V"
+            },
+            {
+              "offset": 405,
+              "opcode": "invokevirtual",
+              "target": "net/minecraft/client/multiplayer/ClientLevel.tick:(Ljava/util/function/BooleanSupplier;)V"
+            },
+            {
+              "offset": 547,
+              "opcode": "invokevirtual",
+              "target": "net/minecraft/client/particle/ParticleEngine.tick:()V"
+            },
+            {
+              "offset": 596,
+              "opcode": "invokevirtual",
+              "target": "net/minecraft/network/Connection.tick:()V"
+            },
+            {
+              "offset": 612,
+              "opcode": "invokevirtual",
+              "target": "net/minecraft/client/KeyboardHandler.tick:()V"
+            }
+          ],
+          "phase_field_writes": [],
+          "signature": "public void tick();"
+        }
+      ]
+    },
+    "net.minecraft.client.multiplayer.ClientLevel": {
+      "class_entry": "net/minecraft/client/multiplayer/ClientLevel.class",
+      "class_sha256": "7d69f81d39e64a679b51f745211619204073167d59b149d9de683e10eb2d97ba",
+      "javap_artifact": {
+        "bytes": 198156,
+        "file": "ClientLevel.javap.txt",
+        "path": "build/player-tick-phases/ClientLevel.javap.txt",
+        "sha1": "4195674770aefc3e8ebf54dafbc51fbe205eff11",
+        "sha256": "06087e9b8c32339bdf71b296e985566e60fbf7dc185fb83f7959c7a3ce86e14a"
+      },
+      "methods": [
+        {
+          "all_call_count": 30,
+          "body_sha256": "e6802d82ac4c7bba3859cc69a04e3768fcc4bb1607df77f848e8902d41fd2288",
+          "branch_count": 9,
+          "descriptor": "(Ljava/util/function/BooleanSupplier;)V",
+          "name": "tick",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 18,
+              "opcode": "invokevirtual",
+              "target": "net/minecraft/world/level/border/WorldBorder.tick:()V"
+            },
+            {
+              "offset": 65,
+              "opcode": "invokevirtual",
+              "target": "net/minecraft/client/renderer/EndFlashState.tick:(J)V"
+            },
+            {
+              "offset": 152,
+              "opcode": "invokevirtual",
+              "target": "net/minecraft/client/multiplayer/ClientExplosionTracker.tick:(Lnet/minecraft/client/multiplayer/ClientLevel;)V"
+            },
+            {
+              "offset": 173,
+              "opcode": "invokevirtual",
+              "target": "net/minecraft/client/multiplayer/ClientChunkCache.tick:(Ljava/util/function/BooleanSupplier;Z)V"
+            }
+          ],
+          "phase_field_writes": [],
+          "signature": "public void tick(java.util.function.BooleanSupplier);"
+        },
+        {
+          "all_call_count": 1,
+          "body_sha256": "a2a659e15694271dea6abfc1a67a0c4ab74255e9acf2383f5ba703f62c068ab8",
+          "branch_count": 0,
+          "descriptor": "()V",
+          "name": "tickEntities",
+          "phase_calls_in_bytecode_order": [],
+          "phase_field_writes": [],
+          "signature": "public void tickEntities();"
+        },
+        {
+          "all_call_count": 13,
+          "body_sha256": "ba8c312f68c4626ca76af59433d87975892c2c40c6f1f3d1ef83c6dc6911a489",
+          "branch_count": 2,
+          "descriptor": "(Lnet/minecraft/world/entity/Entity;)V",
+          "name": "tickNonPassenger",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 23,
+              "opcode": "invokevirtual",
+              "target": "net/minecraft/world/entity/Entity.commonTick:()V"
+            },
+            {
+              "offset": 27,
+              "opcode": "invokevirtual",
+              "target": "net/minecraft/world/entity/Entity.tick:()V"
+            }
+          ],
+          "phase_field_writes": [],
+          "signature": "public void tickNonPassenger(net.minecraft.world.entity.Entity);"
+        },
+        {
+          "all_call_count": 4,
+          "body_sha256": "cb7984aa07730d0701097fd97aee2989176058d9908edcf71c33bd107a64f4a6",
+          "branch_count": 3,
+          "descriptor": "(Lnet/minecraft/world/entity/Entity;)V",
+          "name": "lambda$tickEntities$0",
+          "phase_calls_in_bytecode_order": [],
+          "phase_field_writes": [],
+          "signature": "private void lambda$tickEntities$0(net.minecraft.world.entity.Entity);"
+        }
+      ]
+    },
+    "net.minecraft.client.player.AbstractClientPlayer": {
+      "class_entry": "net/minecraft/client/player/AbstractClientPlayer.class",
+      "class_sha256": "328cdd5884df5b2e9697d88f304d8fc2a457e9edc33bcb75f0a3751eb6665771",
+      "javap_artifact": {
+        "bytes": 11900,
+        "file": "AbstractClientPlayer.javap.txt",
+        "path": "build/player-tick-phases/AbstractClientPlayer.javap.txt",
+        "sha1": "c3d77b07a6a428f39129c99074bf40a35f5afddf",
+        "sha256": "1c66caadf9ea81f5da9b5760383e78952132a318274462b79d083733eda4d44e"
+      },
+      "methods": [
+        {
+          "all_call_count": 4,
+          "body_sha256": "079625a34acb302a3db61eb82b38ddffcdc0f20f9e58f975b2d107234a696904",
+          "branch_count": 0,
+          "descriptor": "()V",
+          "name": "tick",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 12,
+              "opcode": "invokevirtual",
+              "target": "net/minecraft/client/entity/ClientAvatarState.tick:(Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;)V"
+            },
+            {
+              "offset": 16,
+              "opcode": "invokespecial",
+              "target": "net/minecraft/world/entity/player/Player.tick:()V"
+            }
+          ],
+          "phase_field_writes": [],
+          "signature": "public void tick();"
+        },
+        {
+          "all_call_count": 1,
+          "body_sha256": "dd183c1da72eeaa43e6c80ac2dd51a77699deff808ba715f8dfd443bfb8e15c1",
+          "branch_count": 0,
+          "descriptor": "(F)V",
+          "name": "addWalkedDistance",
+          "phase_calls_in_bytecode_order": [],
+          "phase_field_writes": [],
+          "signature": "protected void addWalkedDistance(float);"
+        },
+        {
+          "all_call_count": 2,
+          "body_sha256": "57f240b96b2449b9359cb4fed4b39c208960cb2cf2fe5805e94e37be95d6a972",
+          "branch_count": 0,
+          "descriptor": "()V",
+          "name": "aiStep",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 1,
+              "opcode": "invokevirtual",
+              "target": "updateBob:()V"
+            },
+            {
+              "offset": 5,
+              "opcode": "invokespecial",
+              "target": "net/minecraft/world/entity/player/Player.aiStep:()V"
+            }
+          ],
+          "phase_field_writes": [],
+          "signature": "public void aiStep();"
+        },
+        {
+          "all_call_count": 8,
+          "body_sha256": "9ca2c96fc13a956ded6c96f0dabff60c2310f2287c0fea617bb0b033937fbe57",
+          "branch_count": 4,
+          "descriptor": "()V",
+          "name": "updateBob",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 45,
+              "opcode": "invokevirtual",
+              "target": "net/minecraft/client/entity/ClientAvatarState.updateBob:(F)V"
+            }
+          ],
+          "phase_field_writes": [],
+          "signature": "protected void updateBob();"
+        }
+      ]
+    },
+    "net.minecraft.client.player.KeyboardInput": {
+      "class_entry": "net/minecraft/client/player/KeyboardInput.class",
+      "class_sha256": "69b159758e3b678bae48d19999f00d1dbc7f37a6cdc490e17e4533f102ae696c",
+      "javap_artifact": {
+        "bytes": 5482,
+        "file": "KeyboardInput.javap.txt",
+        "path": "build/player-tick-phases/KeyboardInput.javap.txt",
+        "sha1": "ad41dabe69820b7d707230a607d9618fae51362c",
+        "sha256": "f2e57f554e1595ff2203003e8618a2a127392440492460e82f7cadcbc379878a"
+      },
+      "methods": [
+        {
+          "all_call_count": 16,
+          "body_sha256": "bcc33f8d42540a935ac334cc4eea8add0b4b5ae07f014f5492ff97390a63074a",
+          "branch_count": 0,
+          "descriptor": "()V",
+          "name": "tick",
+          "phase_calls_in_bytecode_order": [],
+          "phase_field_writes": [],
+          "signature": "public void tick();"
+        }
+      ]
+    },
+    "net.minecraft.client.player.LocalPlayer": {
+      "class_entry": "net/minecraft/client/player/LocalPlayer.class",
+      "class_sha256": "d5390f22219039f78f5f59a9961685c11d3cf36f12a645866008135862b59435",
+      "javap_artifact": {
+        "bytes": 201504,
+        "file": "LocalPlayer.javap.txt",
+        "path": "build/player-tick-phases/LocalPlayer.javap.txt",
+        "sha1": "8e072091919aabb5459b7c7d9b194be637e1785e",
+        "sha256": "59cf94d75c98df1ed1692a2352a367d14a6f0f67bde51b9f5064b358b9f9365f"
+      },
+      "methods": [
+        {
+          "all_call_count": 8,
+          "body_sha256": "03acdd43da407e8ae252656fcc72190fe6927931df001f4daffc03d3bad5d964",
+          "branch_count": 3,
+          "descriptor": "()V",
+          "name": "tick",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 15,
+              "opcode": "invokevirtual",
+              "target": "net/minecraft/util/TickThrottler.tick:()V"
+            },
+            {
+              "offset": 19,
+              "opcode": "invokespecial",
+              "target": "net/minecraft/client/player/AbstractClientPlayer.tick:()V"
+            },
+            {
+              "offset": 27,
+              "opcode": "invokevirtual",
+              "target": "net/minecraft/client/player/FirstPersonHandsAndItems.tick:(Lnet/minecraft/client/player/LocalPlayer;)V"
+            },
+            {
+              "offset": 60,
+              "opcode": "invokeinterface",
+              "target": "net/minecraft/client/resources/sounds/AmbientSoundHandler.tick:()V"
+            }
+          ],
+          "phase_field_writes": [],
+          "signature": "public void tick();"
+        },
+        {
+          "all_call_count": 16,
+          "body_sha256": "0e4aa7d620e71f7718637763d06d447dba87fa52a2b675c6924a4f12d0f0bad0",
+          "branch_count": 6,
+          "descriptor": "()V",
+          "name": "sendChanges",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 108,
+              "opcode": "invokevirtual",
+              "target": "net/minecraft/world/entity/Entity.isLocalInstanceAuthoritative:()Z"
+            },
+            {
+              "offset": 126,
+              "opcode": "invokevirtual",
+              "target": "sendIsSprintingIfNeeded:()V"
+            },
+            {
+              "offset": 133,
+              "opcode": "invokevirtual",
+              "target": "sendPosition:()V"
+            }
+          ],
+          "phase_field_writes": [],
+          "signature": "public void sendChanges();"
+        },
+        {
+          "all_call_count": 37,
+          "body_sha256": "fbb28722e625d4c8498f3b55f3c1d5786d140057b2442770f340e779bed07e5c",
+          "branch_count": 18,
+          "descriptor": "()V",
+          "name": "sendPosition",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 1,
+              "opcode": "invokevirtual",
+              "target": "sendIsSprintingIfNeeded:()V"
+            }
+          ],
+          "phase_field_writes": [
+            {
+              "offset": 384,
+              "opcode": "putfield",
+              "target": "autoJumpEnabled:Z"
+            }
+          ],
+          "signature": "private void sendPosition();"
+        },
+        {
+          "all_call_count": 3,
+          "body_sha256": "fb47dd70ad8a2ca1f7ca8b1f866d81e1519df1fb444ff7b7beb8864e5eab08e8",
+          "branch_count": 3,
+          "descriptor": "()V",
+          "name": "sendIsSprintingIfNeeded",
+          "phase_calls_in_bytecode_order": [],
+          "phase_field_writes": [],
+          "signature": "private void sendIsSprintingIfNeeded();"
+        },
+        {
+          "all_call_count": 13,
+          "body_sha256": "2304aebb22b5b11ff1049a0533d60f4627050552c79be5067bff6da3055f2d74",
+          "branch_count": 13,
+          "descriptor": "(Lnet/minecraft/network/syncher/EntityDataAccessor;)V",
+          "name": "onSyncedDataUpdated",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 2,
+              "opcode": "invokespecial",
+              "target": "net/minecraft/client/player/AbstractClientPlayer.onSyncedDataUpdated:(Lnet/minecraft/network/syncher/EntityDataAccessor;)V"
+            }
+          ],
+          "phase_field_writes": [],
+          "signature": "public void onSyncedDataUpdated(net.minecraft.network.syncher.EntityDataAccessor<?>);"
+        },
+        {
+          "all_call_count": 1,
+          "body_sha256": "7cc27b1159487e0dba33b9544b1097f1ccee2d2a256b96fbbfb2bab04d63a7f8",
+          "branch_count": 0,
+          "descriptor": "()Z",
+          "name": "isShiftKeyDown",
+          "phase_calls_in_bytecode_order": [],
+          "phase_field_writes": [],
+          "signature": "public boolean isShiftKeyDown();"
+        },
+        {
+          "all_call_count": 0,
+          "body_sha256": "278de2c79f210fd03ba7cf487d85c363af5813b6832f2df67e95cebd211861dd",
+          "branch_count": 0,
+          "descriptor": "()Z",
+          "name": "isCrouching",
+          "phase_calls_in_bytecode_order": [],
+          "phase_field_writes": [],
+          "signature": "public boolean isCrouching();"
+        },
+        {
+          "all_call_count": 2,
+          "body_sha256": "76ff401576300af50025e5480fae5c321854193e46e4ba96093524252abe60f0",
+          "branch_count": 3,
+          "descriptor": "()Z",
+          "name": "isMovingSlowly",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 1,
+              "opcode": "invokevirtual",
+              "target": "isCrouching:()Z"
+            },
+            {
+              "offset": 8,
+              "opcode": "invokevirtual",
+              "target": "isVisuallyCrawling:()Z"
+            }
+          ],
+          "phase_field_writes": [],
+          "signature": "public boolean isMovingSlowly();"
+        },
+        {
+          "all_call_count": 7,
+          "body_sha256": "0e164c66f9d05265a2d42daf4bfe66059823ee13191e943661f4a12fd511348f",
+          "branch_count": 2,
+          "descriptor": "()V",
+          "name": "applyInput",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 15,
+              "opcode": "invokevirtual",
+              "target": "modifyInput:(Lnet/minecraft/world/phys/Vec2;)Lnet/minecraft/world/phys/Vec2;"
+            },
+            {
+              "offset": 113,
+              "opcode": "invokespecial",
+              "target": "net/minecraft/client/player/AbstractClientPlayer.applyInput:()V"
+            }
+          ],
+          "phase_field_writes": [
+            {
+              "offset": 24,
+              "opcode": "putfield",
+              "target": "xxa:F"
+            },
+            {
+              "offset": 32,
+              "opcode": "putfield",
+              "target": "zza:F"
+            },
+            {
+              "offset": 46,
+              "opcode": "putfield",
+              "target": "jumping:Z"
+            },
+            {
+              "offset": 54,
+              "opcode": "putfield",
+              "target": "yBobO:F"
+            },
+            {
+              "offset": 62,
+              "opcode": "putfield",
+              "target": "xBobO:F"
+            },
+            {
+              "offset": 84,
+              "opcode": "putfield",
+              "target": "xBob:F"
+            },
+            {
+              "offset": 106,
+              "opcode": "putfield",
+              "target": "yBob:F"
+            }
+          ],
+          "signature": "public void applyInput();"
+        },
+        {
+          "all_call_count": 10,
+          "body_sha256": "34060317bb12168a8a2c601fa7db21e181d0a297c15f329dbe2ab924ce4692c5",
+          "branch_count": 4,
+          "descriptor": "(Lnet/minecraft/world/phys/Vec2;)Lnet/minecraft/world/phys/Vec2;",
+          "name": "modifyInput",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 43,
+              "opcode": "invokevirtual",
+              "target": "isMovingSlowly:()Z"
+            }
+          ],
+          "phase_field_writes": [],
+          "signature": "private net.minecraft.world.phys.Vec2 modifyInput(net.minecraft.world.phys.Vec2);"
+        },
+        {
+          "all_call_count": 99,
+          "body_sha256": "1515b9478b7f2cdcaf45d6535b3a4f5c2d3cdb3b467db21fe2eb17c5c8576cf2",
+          "branch_count": 80,
+          "descriptor": "()V",
+          "name": "aiStep",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 123,
+              "opcode": "invokevirtual",
+              "target": "canPlayerFitWithinBlocksAndEntitiesWhen:(Lnet/minecraft/world/entity/Pose;)Z"
+            },
+            {
+              "offset": 130,
+              "opcode": "invokevirtual",
+              "target": "isShiftKeyDown:()Z"
+            },
+            {
+              "offset": 147,
+              "opcode": "invokevirtual",
+              "target": "canPlayerFitWithinBlocksAndEntitiesWhen:(Lnet/minecraft/world/entity/Pose;)Z"
+            },
+            {
+              "offset": 165,
+              "opcode": "invokevirtual",
+              "target": "net/minecraft/client/player/ClientInput.tick:()V"
+            },
+            {
+              "offset": 255,
+              "opcode": "invokevirtual",
+              "target": "moveTowardsClosestSpace:(DD)V"
+            },
+            {
+              "offset": 287,
+              "opcode": "invokevirtual",
+              "target": "moveTowardsClosestSpace:(DD)V"
+            },
+            {
+              "offset": 319,
+              "opcode": "invokevirtual",
+              "target": "moveTowardsClosestSpace:(DD)V"
+            },
+            {
+              "offset": 351,
+              "opcode": "invokevirtual",
+              "target": "moveTowardsClosestSpace:(DD)V"
+            },
+            {
+              "offset": 410,
+              "opcode": "invokevirtual",
+              "target": "setSprinting:(Z)V"
+            },
+            {
+              "offset": 454,
+              "opcode": "invokevirtual",
+              "target": "setSprinting:(Z)V"
+            },
+            {
+              "offset": 480,
+              "opcode": "invokevirtual",
+              "target": "setSprinting:(Z)V"
+            },
+            {
+              "offset": 495,
+              "opcode": "invokevirtual",
+              "target": "setSprinting:(Z)V"
+            },
+            {
+              "offset": 599,
+              "opcode": "invokevirtual",
+              "target": "jumpableVehicle:()Lnet/minecraft/world/entity/PlayerRideableJumping;"
+            },
+            {
+              "offset": 639,
+              "opcode": "invokevirtual",
+              "target": "jumpFromGround:()V"
+            },
+            {
+              "offset": 905,
+              "opcode": "invokevirtual",
+              "target": "setDeltaMovement:(Lnet/minecraft/world/phys/Vec3;)V"
+            },
+            {
+              "offset": 909,
+              "opcode": "invokevirtual",
+              "target": "jumpableVehicle:()Lnet/minecraft/world/entity/PlayerRideableJumping;"
+            },
+            {
+              "offset": 1106,
+              "opcode": "invokespecial",
+              "target": "net/minecraft/client/player/AbstractClientPlayer.aiStep:()V"
+            }
+          ],
+          "phase_field_writes": [
+            {
+              "offset": 14,
+              "opcode": "putfield",
+              "target": "sprintTriggerTime:I"
+            },
+            {
+              "offset": 158,
+              "opcode": "putfield",
+              "target": "crouching:Z"
+            },
+            {
+              "offset": 387,
+              "opcode": "putfield",
+              "target": "sprintTriggerTime:I"
+            },
+            {
+              "offset": 436,
+              "opcode": "putfield",
+              "target": "sprintTriggerTime:I"
+            },
+            {
+              "offset": 578,
+              "opcode": "putfield",
+              "target": "jumpTriggerTime:I"
+            },
+            {
+              "offset": 651,
+              "opcode": "putfield",
+              "target": "jumpTriggerTime:I"
+            }
+          ],
+          "signature": "public void aiStep();"
+        },
+        {
+          "all_call_count": 8,
+          "body_sha256": "185fa9f2f1426fca637d6f56120875148cd3bdfb15f6f274f1f6f33ea9b2b551",
+          "branch_count": 0,
+          "descriptor": "(Lnet/minecraft/world/entity/MoverType;Lnet/minecraft/world/phys/Vec3;)V",
+          "name": "move",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 14,
+              "opcode": "invokespecial",
+              "target": "net/minecraft/client/player/AbstractClientPlayer.move:(Lnet/minecraft/world/entity/MoverType;Lnet/minecraft/world/phys/Vec3;)V"
+            },
+            {
+              "offset": 41,
+              "opcode": "invokevirtual",
+              "target": "updateAutoJump:(FF)V"
+            },
+            {
+              "offset": 56,
+              "opcode": "invokevirtual",
+              "target": "addWalkedDistance:(F)V"
+            }
+          ],
+          "phase_field_writes": [],
+          "signature": "public void move(net.minecraft.world.entity.MoverType, net.minecraft.world.phys.Vec3);"
+        },
+        {
+          "all_call_count": 80,
+          "body_sha256": "809808b1b6b4ccc3e76c8c01244bced26fc4d970d29e3b3ccdcde06785d7c172",
+          "branch_count": 21,
+          "descriptor": "(FF)V",
+          "name": "updateAutoJump",
+          "phase_calls_in_bytecode_order": [],
+          "phase_field_writes": [],
+          "signature": "protected void updateAutoJump(float, float);"
+        },
+        {
+          "all_call_count": 9,
+          "body_sha256": "1520a738171aa16dc0077ea43d54521626e72a3a52c76963977f2f1e2725d6e4",
+          "branch_count": 4,
+          "descriptor": "(Lnet/minecraft/world/phys/Vec3;)Z",
+          "name": "isHorizontalCollisionMinor",
+          "phase_calls_in_bytecode_order": [],
+          "phase_field_writes": [],
+          "signature": "protected boolean isHorizontalCollisionMinor(net.minecraft.world.phys.Vec3);"
+        },
+        {
+          "all_call_count": 15,
+          "body_sha256": "28c15ee2bcdb2bc1f08e173925765b880008c5bd5865149a64a49ba94ad53689",
+          "branch_count": 5,
+          "descriptor": "()Z",
+          "name": "updateIsUnderwater",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 6,
+              "opcode": "invokespecial",
+              "target": "net/minecraft/client/player/AbstractClientPlayer.updateIsUnderwater:()Z"
+            }
+          ],
+          "phase_field_writes": [],
+          "signature": "protected boolean updateIsUnderwater();"
+        }
+      ]
+    },
+    "net.minecraft.world.entity.Avatar": {
+      "class_entry": "net/minecraft/world/entity/Avatar.class",
+      "class_sha256": "b85674319614e72b1857f8e21d16121682648220452feaac41ed68d770d62f82",
+      "javap_artifact": {
+        "bytes": 16644,
+        "file": "Avatar.javap.txt",
+        "path": "build/player-tick-phases/Avatar.javap.txt",
+        "sha1": "07590db845a163ed3b6dace53852503cf52f5e76",
+        "sha256": "72ce60d21f2133112a1fa9d36a1a40ffec8ff4b5b1cc62765c1a9abb686bfe98"
+      },
+      "methods": []
+    },
+    "net.minecraft.world.entity.Entity": {
+      "class_entry": "net/minecraft/world/entity/Entity.class",
+      "class_sha256": "7ac5f6a929abbf4fa00f0a87ad530669f7d96c8ee2bb86a5076ab1fab352fb3c",
+      "javap_artifact": {
+        "bytes": 620714,
+        "file": "Entity.javap.txt",
+        "path": "build/player-tick-phases/Entity.javap.txt",
+        "sha1": "928797c084dcce45a86a5f4f7ecfa6f8fffeb160",
+        "sha256": "ae683ac4927ef5e8d3fc88452ba712309d6a926a9e371506bc0c127ddca02274"
+      },
+      "methods": [
+        {
+          "all_call_count": 1,
+          "body_sha256": "703027fd876c90943dda44aa890015361625ef97f76de0a96eb04d16d686ce6d",
+          "branch_count": 0,
+          "descriptor": "(Lnet/minecraft/world/entity/Pose;)V",
+          "name": "setPose",
+          "phase_calls_in_bytecode_order": [],
+          "phase_field_writes": [],
+          "signature": "public void setPose(net.minecraft.world.entity.Pose);"
+        },
+        {
+          "all_call_count": 1,
+          "body_sha256": "7202b05fedec1be0de5d6f4e90230166c7b5acf8e1a6f5927c8a2d0729d97759",
+          "branch_count": 0,
+          "descriptor": "()Lnet/minecraft/world/phys/AABB;",
+          "name": "makeBoundingBox",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 5,
+              "opcode": "invokevirtual",
+              "target": "makeBoundingBox:(Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/AABB;"
+            }
+          ],
+          "phase_field_writes": [],
+          "signature": "protected final net.minecraft.world.phys.AABB makeBoundingBox();"
+        },
+        {
+          "all_call_count": 1,
+          "body_sha256": "95818155f1feb70e72a83d46c24324c81e51737838bfc9d207a95c008e73f945",
+          "branch_count": 0,
+          "descriptor": "(Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/AABB;",
+          "name": "makeBoundingBox",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 5,
+              "opcode": "invokevirtual",
+              "target": "net/minecraft/world/entity/EntityDimensions.makeBoundingBox:(Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/AABB;"
+            }
+          ],
+          "phase_field_writes": [],
+          "signature": "protected net.minecraft.world.phys.AABB makeBoundingBox(net.minecraft.world.phys.Vec3);"
+        },
+        {
+          "all_call_count": 1,
+          "body_sha256": "edc6373275cfa4f66d8466f8a00e90ab42de3c82827cdaab296853db81b71b17",
+          "branch_count": 0,
+          "descriptor": "()V",
+          "name": "reapplyPosition",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 27,
+              "opcode": "invokevirtual",
+              "target": "setPos:(DDD)V"
+            }
+          ],
+          "phase_field_writes": [],
+          "signature": "protected void reapplyPosition();"
+        },
+        {
+          "all_call_count": 1,
+          "body_sha256": "6b53742aa60777054c75badc6bc772d00a34329399a207dcf4d140623762e98e",
+          "branch_count": 0,
+          "descriptor": "()V",
+          "name": "tick",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 1,
+              "opcode": "invokevirtual",
+              "target": "baseTick:()V"
+            }
+          ],
+          "phase_field_writes": [],
+          "signature": "public void tick();"
+        },
+        {
+          "all_call_count": 5,
+          "body_sha256": "b8a7ed5cea4171f1d6858c71cd740244102669cb2af713dc165c70fbda9ebb50",
+          "branch_count": 2,
+          "descriptor": "()V",
+          "name": "commonTick",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 18,
+              "opcode": "invokevirtual",
+              "target": "setOldPosAndRot:()V"
+            }
+          ],
+          "phase_field_writes": [
+            {
+              "offset": 47,
+              "opcode": "putfield",
+              "target": "tickCount:I"
+            }
+          ],
+          "signature": "public final void commonTick();"
+        },
+        {
+          "all_call_count": 30,
+          "body_sha256": "5fafb4011abe18e04120270841701f1fa058fe792f5ced8b7e1a570f25fbd277",
+          "branch_count": 17,
+          "descriptor": "()V",
+          "name": "baseTick",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 61,
+              "opcode": "invokevirtual",
+              "target": "handlePortal:()V"
+            },
+            {
+              "offset": 100,
+              "opcode": "invokevirtual",
+              "target": "updateFluidInteraction:()Z"
+            },
+            {
+              "offset": 105,
+              "opcode": "invokevirtual",
+              "target": "updateSwimming:()V"
+            }
+          ],
+          "phase_field_writes": [
+            {
+              "offset": 210,
+              "opcode": "putfield",
+              "target": "fallDistance:D"
+            }
+          ],
+          "signature": "public void baseTick();"
+        },
+        {
+          "all_call_count": 1,
+          "body_sha256": "4a8acaba8df2329d0c81d7b53a5069e747c314d3072f423d28662ca605cbd6be",
+          "branch_count": 0,
+          "descriptor": "(ZLnet/minecraft/world/phys/Vec3;)V",
+          "name": "setOnGroundWithMovement",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 7,
+              "opcode": "invokevirtual",
+              "target": "setOnGroundWithMovement:(ZZLnet/minecraft/world/phys/Vec3;)V"
+            }
+          ],
+          "phase_field_writes": [],
+          "signature": "public void setOnGroundWithMovement(boolean, net.minecraft.world.phys.Vec3);"
+        },
+        {
+          "all_call_count": 1,
+          "body_sha256": "30dbd27614c4b444e290e8b5ecdce5286fa614a0bcb18e8a4674fadf6b4a8b6c",
+          "branch_count": 0,
+          "descriptor": "(ZZLnet/minecraft/world/phys/Vec3;)V",
+          "name": "setOnGroundWithMovement",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 13,
+              "opcode": "invokevirtual",
+              "target": "checkSupportingBlock:(ZLnet/minecraft/world/phys/Vec3;)V"
+            }
+          ],
+          "phase_field_writes": [
+            {
+              "offset": 7,
+              "opcode": "putfield",
+              "target": "horizontalCollision:Z"
+            }
+          ],
+          "signature": "public void setOnGroundWithMovement(boolean, boolean, net.minecraft.world.phys.Vec3);"
+        },
+        {
+          "all_call_count": 9,
+          "body_sha256": "9a247867dea0f5af1ef210aa655f8aa78ff035aea2eaa7f08f1950b873223ea9",
+          "branch_count": 7,
+          "descriptor": "(ZLnet/minecraft/world/phys/Vec3;)V",
+          "name": "checkSupportingBlock",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 99,
+              "opcode": "invokevirtual",
+              "target": "net/minecraft/world/phys/AABB.move:(DDD)Lnet/minecraft/world/phys/AABB;"
+            }
+          ],
+          "phase_field_writes": [
+            {
+              "offset": 76,
+              "opcode": "putfield",
+              "target": "mainSupportingBlockPos:Ljava/util/Optional;"
+            },
+            {
+              "offset": 119,
+              "opcode": "putfield",
+              "target": "mainSupportingBlockPos:Ljava/util/Optional;"
+            },
+            {
+              "offset": 128,
+              "opcode": "putfield",
+              "target": "onGroundNoBlocks:Z"
+            },
+            {
+              "offset": 136,
+              "opcode": "putfield",
+              "target": "onGroundNoBlocks:Z"
+            },
+            {
+              "offset": 153,
+              "opcode": "putfield",
+              "target": "mainSupportingBlockPos:Ljava/util/Optional;"
+            }
+          ],
+          "signature": "protected void checkSupportingBlock(boolean, net.minecraft.world.phys.Vec3);"
+        },
+        {
+          "all_call_count": 68,
+          "body_sha256": "df29131e1be4efc9690fd0ee8c27d80706006d5a1b4de412c1932358f34aada8",
+          "branch_count": 41,
+          "descriptor": "(Lnet/minecraft/world/entity/MoverType;Lnet/minecraft/world/phys/Vec3;)V",
+          "name": "move",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 14,
+              "opcode": "invokevirtual",
+              "target": "canSimulateMovement:()Z"
+            },
+            {
+              "offset": 72,
+              "opcode": "invokevirtual",
+              "target": "setPos:(DDD)V"
+            },
+            {
+              "offset": 78,
+              "opcode": "invokevirtual",
+              "target": "recordMovement:(Lnet/minecraft/world/entity/MoverType;Lnet/minecraft/world/phys/Vec3;)V"
+            },
+            {
+              "offset": 180,
+              "opcode": "invokevirtual",
+              "target": "setDeltaMovement:(Lnet/minecraft/world/phys/Vec3;)V"
+            },
+            {
+              "offset": 186,
+              "opcode": "invokevirtual",
+              "target": "maybeBackOffFromEdge:(Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/entity/MoverType;)Lnet/minecraft/world/phys/Vec3;"
+            },
+            {
+              "offset": 192,
+              "opcode": "invokevirtual",
+              "target": "collide:(Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/Vec3;"
+            },
+            {
+              "offset": 299,
+              "opcode": "invokevirtual",
+              "target": "net/minecraft/world/level/Level.clip:(Lnet/minecraft/world/level/ClipContext;)Lnet/minecraft/world/phys/BlockHitResult;"
+            },
+            {
+              "offset": 316,
+              "opcode": "invokevirtual",
+              "target": "resetFallDistance:()V"
+            },
+            {
+              "offset": 353,
+              "opcode": "invokevirtual",
+              "target": "setPos:(Lnet/minecraft/world/phys/Vec3;)V"
+            },
+            {
+              "offset": 360,
+              "opcode": "invokevirtual",
+              "target": "recordMovement:(Lnet/minecraft/world/entity/MoverType;Lnet/minecraft/world/phys/Vec3;)V"
+            },
+            {
+              "offset": 466,
+              "opcode": "invokevirtual",
+              "target": "isLocalInstanceAuthoritative:()Z"
+            },
+            {
+              "offset": 530,
+              "opcode": "invokevirtual",
+              "target": "setOnGroundWithMovement:(ZZLnet/minecraft/world/phys/Vec3;)V"
+            },
+            {
+              "offset": 544,
+              "opcode": "invokevirtual",
+              "target": "isHorizontalCollisionMinor:(Lnet/minecraft/world/phys/Vec3;)Z"
+            },
+            {
+              "offset": 559,
+              "opcode": "invokevirtual",
+              "target": "getOnPosLegacy:()Lnet/minecraft/core/BlockPos;"
+            },
+            {
+              "offset": 576,
+              "opcode": "invokevirtual",
+              "target": "isLocalInstanceAuthoritative:()Z"
+            },
+            {
+              "offset": 596,
+              "opcode": "invokevirtual",
+              "target": "checkFallDamage:(DZLnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;)V"
+            },
+            {
+              "offset": 614,
+              "opcode": "invokevirtual",
+              "target": "canSimulateMovement:()Z"
+            },
+            {
+              "offset": 648,
+              "opcode": "invokevirtual",
+              "target": "restituteMovementAfterCollisions:(Lnet/minecraft/world/level/block/state/BlockState;ZZLnet/minecraft/world/phys/Vec3;)V"
+            },
+            {
+              "offset": 662,
+              "opcode": "invokevirtual",
+              "target": "isLocalInstanceAuthoritative:()Z"
+            },
+            {
+              "offset": 698,
+              "opcode": "invokevirtual",
+              "target": "applyMovementEmissionAndPlaySound:(Lnet/minecraft/world/entity/Entity$MovementEmission;Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V"
+            },
+            {
+              "offset": 702,
+              "opcode": "invokevirtual",
+              "target": "getBlockSpeedFactor:()F"
+            },
+            {
+              "offset": 722,
+              "opcode": "invokevirtual",
+              "target": "setDeltaMovement:(Lnet/minecraft/world/phys/Vec3;)V"
+            }
+          ],
+          "phase_field_writes": [
+            {
+              "offset": 83,
+              "opcode": "putfield",
+              "target": "horizontalCollision:Z"
+            },
+            {
+              "offset": 88,
+              "opcode": "putfield",
+              "target": "verticalCollision:Z"
+            },
+            {
+              "offset": 93,
+              "opcode": "putfield",
+              "target": "verticalCollisionBelow:Z"
+            },
+            {
+              "offset": 98,
+              "opcode": "putfield",
+              "target": "minorHorizontalCollision:Z"
+            },
+            {
+              "offset": 438,
+              "opcode": "putfield",
+              "target": "horizontalCollision:Z"
+            },
+            {
+              "offset": 491,
+              "opcode": "putfield",
+              "target": "verticalCollision:Z"
+            },
+            {
+              "offset": 516,
+              "opcode": "putfield",
+              "target": "verticalCollisionBelow:Z"
+            },
+            {
+              "offset": 547,
+              "opcode": "putfield",
+              "target": "minorHorizontalCollision:Z"
+            },
+            {
+              "offset": 555,
+              "opcode": "putfield",
+              "target": "minorHorizontalCollision:Z"
+            }
+          ],
+          "signature": "public void move(net.minecraft.world.entity.MoverType, net.minecraft.world.phys.Vec3);"
+        },
+        {
+          "all_call_count": 20,
+          "body_sha256": "acabfee24bd7ce04d303f5ed77dfe4e934a60d8f00485d6646266ab5c2447b48",
+          "branch_count": 17,
+          "descriptor": "(Lnet/minecraft/world/level/block/state/BlockState;ZZLnet/minecraft/world/phys/Vec3;)V",
+          "name": "restituteMovementAfterCollisions",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 252,
+              "opcode": "invokevirtual",
+              "target": "getBlockPosBelowThatAffectsMyMovement:()Lnet/minecraft/core/BlockPos;"
+            },
+            {
+              "offset": 278,
+              "opcode": "invokevirtual",
+              "target": "setDeltaMovement:(Lnet/minecraft/world/phys/Vec3;)V"
+            }
+          ],
+          "phase_field_writes": [],
+          "signature": "private void restituteMovementAfterCollisions(net.minecraft.world.level.block.state.BlockState, boolean, boolean, net.minecraft.world.phys.Vec3);"
+        },
+        {
+          "all_call_count": 16,
+          "body_sha256": "5b2eb12695c47a798f1662d6ed37944760ea05d9da74b5a65d953cd6e666fa94",
+          "branch_count": 3,
+          "descriptor": "()V",
+          "name": "applyEffectsFromBlocks",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 140,
+              "opcode": "invokevirtual",
+              "target": "applyEffectsFromBlocks:(Ljava/util/List;)V"
+            }
+          ],
+          "phase_field_writes": [],
+          "signature": "protected void applyEffectsFromBlocks();"
+        },
+        {
+          "all_call_count": 1,
+          "body_sha256": "9b449035ffb720dbaa8188b0edc6b22ee2e2888b5083adf7af4753b4f9760fc1",
+          "branch_count": 0,
+          "descriptor": "()V",
+          "name": "applyEffectsFromBlocksForLastMovements",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 5,
+              "opcode": "invokevirtual",
+              "target": "applyEffectsFromBlocks:(Ljava/util/List;)V"
+            }
+          ],
+          "phase_field_writes": [],
+          "signature": "protected void applyEffectsFromBlocksForLastMovements();"
+        },
+        {
+          "all_call_count": 3,
+          "body_sha256": "d006bd851e190fe28b951343e0f3132b8daecda38e190e8fdf4f4ca0c1fc9252",
+          "branch_count": 0,
+          "descriptor": "(Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;)V",
+          "name": "applyEffectsFromBlocks",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 13,
+              "opcode": "invokevirtual",
+              "target": "applyEffectsFromBlocks:(Ljava/util/List;)V"
+            }
+          ],
+          "phase_field_writes": [],
+          "signature": "public void applyEffectsFromBlocks(net.minecraft.world.phys.Vec3, net.minecraft.world.phys.Vec3);"
+        },
+        {
+          "all_call_count": 24,
+          "body_sha256": "f22a4a170d77b78801c5681dfb8702d0504d01dce53473b8d07e2776256b4ae9",
+          "branch_count": 12,
+          "descriptor": "(Ljava/util/List;)V",
+          "name": "applyEffectsFromBlocks",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 16,
+              "opcode": "invokevirtual",
+              "target": "getOnPosLegacy:()Lnet/minecraft/core/BlockPos;"
+            },
+            {
+              "offset": 40,
+              "opcode": "invokevirtual",
+              "target": "net/minecraft/world/level/block/Block.stepOn:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/entity/Entity;)V"
+            }
+          ],
+          "phase_field_writes": [],
+          "signature": "private void applyEffectsFromBlocks(java.util.List<net.minecraft.world.entity.Entity$Movement>);"
+        },
+        {
+          "all_call_count": 0,
+          "body_sha256": "1d15ec9f2ca79bf02a1ba93878307445ae5e553470b19f6052d0c79faf4787cc",
+          "branch_count": 0,
+          "descriptor": "(Lnet/minecraft/world/phys/Vec3;)Z",
+          "name": "isHorizontalCollisionMinor",
+          "phase_calls_in_bytecode_order": [],
+          "phase_field_writes": [],
+          "signature": "protected boolean isHorizontalCollisionMinor(net.minecraft.world.phys.Vec3);"
+        },
+        {
+          "all_call_count": 0,
+          "body_sha256": "511a846fd1cd8aae43092282aeb1ee7998dcb7696bbbd64c5053464f8916080e",
+          "branch_count": 0,
+          "descriptor": "(Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/entity/MoverType;)Lnet/minecraft/world/phys/Vec3;",
+          "name": "maybeBackOffFromEdge",
+          "phase_calls_in_bytecode_order": [],
+          "phase_field_writes": [],
+          "signature": "protected net.minecraft.world.phys.Vec3 maybeBackOffFromEdge(net.minecraft.world.phys.Vec3, net.minecraft.world.entity.MoverType);"
+        },
+        {
+          "all_call_count": 7,
+          "body_sha256": "3324fc3d66ffc86c0e4deab6b0dfefdcfd468a62ff721885d61ca59fa19909f2",
+          "branch_count": 1,
+          "descriptor": "(DDDZ)V",
+          "name": "doCheckFallDamage",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 22,
+              "opcode": "invokevirtual",
+              "target": "checkSupportingBlock:(ZLnet/minecraft/world/phys/Vec3;)V"
+            },
+            {
+              "offset": 26,
+              "opcode": "invokevirtual",
+              "target": "getOnPosLegacy:()Lnet/minecraft/core/BlockPos;"
+            },
+            {
+              "offset": 50,
+              "opcode": "invokevirtual",
+              "target": "checkFallDamage:(DZLnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;)V"
+            }
+          ],
+          "phase_field_writes": [],
+          "signature": "public final void doCheckFallDamage(double, double, double, boolean);"
+        },
+        {
+          "all_call_count": 10,
+          "body_sha256": "cf565362c71dbe0b9bb69d785f71c090ed6268fb07d187c322743f8614149eff",
+          "branch_count": 4,
+          "descriptor": "(DZLnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;)V",
+          "name": "checkFallDamage",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 56,
+              "opcode": "invokevirtual",
+              "target": "net/minecraft/world/level/block/Block.fallOn:(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/Entity;D)V"
+            },
+            {
+              "offset": 99,
+              "opcode": "invokevirtual",
+              "target": "resetFallDistance:()V"
+            }
+          ],
+          "phase_field_writes": [
+            {
+              "offset": 22,
+              "opcode": "putfield",
+              "target": "fallDistance:D"
+            }
+          ],
+          "signature": "protected void checkFallDamage(double, boolean, net.minecraft.world.level.block.state.BlockState, net.minecraft.core.BlockPos);"
+        },
+        {
+          "all_call_count": 12,
+          "body_sha256": "3cf3e3fa5a673657f42c8790aef0f8b749eb47f765788c7a7727041f0aae464b",
+          "branch_count": 11,
+          "descriptor": "()V",
+          "name": "updateSwimming",
+          "phase_calls_in_bytecode_order": [],
+          "phase_field_writes": [],
+          "signature": "public void updateSwimming();"
+        },
+        {
+          "all_call_count": 12,
+          "body_sha256": "86b520fec27702233e5438523e9d226e612c75cb62e79840a41e79c9806a7f8b",
+          "branch_count": 10,
+          "descriptor": "()Z",
+          "name": "updateFluidInteraction",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 48,
+              "opcode": "invokevirtual",
+              "target": "resetFallDistance:()V"
+            }
+          ],
+          "phase_field_writes": [],
+          "signature": "protected boolean updateFluidInteraction();"
+        },
+        {
+          "all_call_count": 2,
+          "body_sha256": "8348aa7be2eb82278753d7b9598582bf20167881642791fad700794a10dde35d",
+          "branch_count": 0,
+          "descriptor": "()V",
+          "name": "setOldPosAndRot",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 1,
+              "opcode": "invokevirtual",
+              "target": "setOldPos:()V"
+            },
+            {
+              "offset": 5,
+              "opcode": "invokevirtual",
+              "target": "setOldRot:()V"
+            }
+          ],
+          "phase_field_writes": [],
+          "signature": "public final void setOldPosAndRot();"
+        },
+        {
+          "all_call_count": 2,
+          "body_sha256": "f55a51d36536b8c4b1285cb4026ee1c658546a96301b39d037e2701f41606228",
+          "branch_count": 0,
+          "descriptor": "(Lnet/minecraft/world/phys/Vec3;FF)V",
+          "name": "setOldPosAndRot",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 2,
+              "opcode": "invokevirtual",
+              "target": "setOldPos:(Lnet/minecraft/world/phys/Vec3;)V"
+            },
+            {
+              "offset": 8,
+              "opcode": "invokevirtual",
+              "target": "setOldRot:(FF)V"
+            }
+          ],
+          "phase_field_writes": [],
+          "signature": "public final void setOldPosAndRot(net.minecraft.world.phys.Vec3, float, float);"
+        },
+        {
+          "all_call_count": 1,
+          "body_sha256": "0721d81f7d9f9353628fdf08b849982303bf43ea3ea062ac053872f529054c5a",
+          "branch_count": 0,
+          "descriptor": "()V",
+          "name": "setOldPos",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 5,
+              "opcode": "invokevirtual",
+              "target": "setOldPos:(Lnet/minecraft/world/phys/Vec3;)V"
+            }
+          ],
+          "phase_field_writes": [],
+          "signature": "protected void setOldPos();"
+        },
+        {
+          "all_call_count": 3,
+          "body_sha256": "1e8c2643cf4889e44637700dd337642afbc4f7779543e78e36599d52ed4189ff",
+          "branch_count": 0,
+          "descriptor": "()V",
+          "name": "setOldRot",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 9,
+              "opcode": "invokevirtual",
+              "target": "setOldRot:(FF)V"
+            }
+          ],
+          "phase_field_writes": [],
+          "signature": "public void setOldRot();"
+        },
+        {
+          "all_call_count": 0,
+          "body_sha256": "345ae271e7eb8ec8e5140b61141588e85b45985da18b1bd05b9657af3e903362",
+          "branch_count": 0,
+          "descriptor": "(Lnet/minecraft/world/phys/Vec3;)V",
+          "name": "setOldPos",
+          "phase_calls_in_bytecode_order": [],
+          "phase_field_writes": [
+            {
+              "offset": 10,
+              "opcode": "putfield",
+              "target": "xo:D"
+            },
+            {
+              "offset": 23,
+              "opcode": "putfield",
+              "target": "yo:D"
+            },
+            {
+              "offset": 36,
+              "opcode": "putfield",
+              "target": "zo:D"
+            }
+          ],
+          "signature": "private void setOldPos(net.minecraft.world.phys.Vec3);"
+        },
+        {
+          "all_call_count": 0,
+          "body_sha256": "9471daf89b7be4bd70cd5f27273d329a2e498e106785dace7f58a077a6e135a0",
+          "branch_count": 0,
+          "descriptor": "(FF)V",
+          "name": "setOldRot",
+          "phase_calls_in_bytecode_order": [],
+          "phase_field_writes": [
+            {
+              "offset": 2,
+              "opcode": "putfield",
+              "target": "yRotO:F"
+            },
+            {
+              "offset": 7,
+              "opcode": "putfield",
+              "target": "xRotO:F"
+            }
+          ],
+          "signature": "private void setOldRot(float, float);"
+        },
+        {
+          "all_call_count": 4,
+          "body_sha256": "9345cee2f87053b322c58cde97a0c19fa74aaf8757bee2e8cba429c25ee72e70",
+          "branch_count": 0,
+          "descriptor": "()Lnet/minecraft/world/phys/Vec3;",
+          "name": "getEyePosition",
+          "phase_calls_in_bytecode_order": [],
+          "phase_field_writes": [],
+          "signature": "public final net.minecraft.world.phys.Vec3 getEyePosition();"
+        },
+        {
+          "all_call_count": 8,
+          "body_sha256": "aa65aa8615d3213e9bc8947ce390397c64b50122965908bc1996072761949d86",
+          "branch_count": 0,
+          "descriptor": "(F)Lnet/minecraft/world/phys/Vec3;",
+          "name": "getEyePosition",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 28,
+              "opcode": "invokevirtual",
+              "target": "getEyeHeight:()F"
+            }
+          ],
+          "phase_field_writes": [],
+          "signature": "public final net.minecraft.world.phys.Vec3 getEyePosition(float);"
+        },
+        {
+          "all_call_count": 1,
+          "body_sha256": "5418e4e622ac089bca91fb1151bcb55fc6179b022188b5624cd0789f25571a27",
+          "branch_count": 0,
+          "descriptor": "()Z",
+          "name": "isShiftKeyDown",
+          "phase_calls_in_bytecode_order": [],
+          "phase_field_writes": [],
+          "signature": "public boolean isShiftKeyDown();"
+        },
+        {
+          "all_call_count": 1,
+          "body_sha256": "06b0c9c46c5ddd5e36558e4ce5b1ecacd2b96d53c67c0e3ecba7bc74ecc9d0b4",
+          "branch_count": 0,
+          "descriptor": "()Z",
+          "name": "isCrouching",
+          "phase_calls_in_bytecode_order": [],
+          "phase_field_writes": [],
+          "signature": "public boolean isCrouching();"
+        },
+        {
+          "all_call_count": 2,
+          "body_sha256": "ec99b0a1ffcb05f55d1cb2e4770a41ac00afad891c41fc67159f01d5e7510268",
+          "branch_count": 3,
+          "descriptor": "()Z",
+          "name": "isVisuallyCrawling",
+          "phase_calls_in_bytecode_order": [],
+          "phase_field_writes": [],
+          "signature": "public boolean isVisuallyCrawling();"
+        },
+        {
+          "all_call_count": 2,
+          "body_sha256": "5cea4b3f197acb29332360a236d029ffc735641935786d6626779ee44b06f4b2",
+          "branch_count": 2,
+          "descriptor": "()V",
+          "name": "checkFallDistanceAccumulation",
+          "phase_calls_in_bytecode_order": [],
+          "phase_field_writes": [
+            {
+              "offset": 25,
+              "opcode": "putfield",
+              "target": "fallDistance:D"
+            }
+          ],
+          "signature": "public void checkFallDistanceAccumulation();"
+        },
+        {
+          "all_call_count": 0,
+          "body_sha256": "78125eaac2917f4c7904e8a3c7d84719c9bc84f6d0f85dc0f6faa4f4b472f1d1",
+          "branch_count": 0,
+          "descriptor": "()V",
+          "name": "resetFallDistance",
+          "phase_calls_in_bytecode_order": [],
+          "phase_field_writes": [
+            {
+              "offset": 2,
+              "opcode": "putfield",
+              "target": "fallDistance:D"
+            }
+          ],
+          "signature": "public void resetFallDistance();"
+        },
+        {
+          "all_call_count": 0,
+          "body_sha256": "f770d2fc569f1444457a8daea02c1e269675f3d06711443dd01ea6fefb9e5467",
+          "branch_count": 0,
+          "descriptor": "(Ljava/util/List;)V",
+          "name": "onSyncedDataUpdated",
+          "phase_calls_in_bytecode_order": [],
+          "phase_field_writes": [],
+          "signature": "public void onSyncedDataUpdated(java.util.List<net.minecraft.network.syncher.SynchedEntityData$DataValue<?>>);"
+        },
+        {
+          "all_call_count": 2,
+          "body_sha256": "f9a7af43dda674801428dfb815e6356329d9b49f304a3ecb68632052d07ec3f6",
+          "branch_count": 1,
+          "descriptor": "(Lnet/minecraft/network/syncher/EntityDataAccessor;)V",
+          "name": "onSyncedDataUpdated",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 11,
+              "opcode": "invokevirtual",
+              "target": "refreshDimensions:()V"
+            }
+          ],
+          "phase_field_writes": [],
+          "signature": "public void onSyncedDataUpdated(net.minecraft.network.syncher.EntityDataAccessor<?>);"
+        },
+        {
+          "all_call_count": 12,
+          "body_sha256": "d04ebcf222ba52695b3ddc29c2481876c2c00b189781c5cd9386b00e64cc14d2",
+          "branch_count": 10,
+          "descriptor": "()V",
+          "name": "refreshDimensions",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 30,
+              "opcode": "invokevirtual",
+              "target": "reapplyPosition:()V"
+            }
+          ],
+          "phase_field_writes": [
+            {
+              "offset": 18,
+              "opcode": "putfield",
+              "target": "dimensions:Lnet/minecraft/world/entity/EntityDimensions;"
+            }
+          ],
+          "signature": "public void refreshDimensions();"
+        },
+        {
+          "all_call_count": 0,
+          "body_sha256": "4133a3ae7a78bcfe43833bf2a1a4d385dc9cb417e1be614257538b3348c418cb",
+          "branch_count": 0,
+          "descriptor": "(Lnet/minecraft/world/phys/AABB;)V",
+          "name": "setBoundingBox",
+          "phase_calls_in_bytecode_order": [],
+          "phase_field_writes": [],
+          "signature": "public final void setBoundingBox(net.minecraft.world.phys.AABB);"
+        },
+        {
+          "all_call_count": 2,
+          "body_sha256": "2c1052c9d053693f78f60e351208dedec46b4b904a1b10d3cb19ffb13ec4e5b3",
+          "branch_count": 0,
+          "descriptor": "(Lnet/minecraft/world/entity/Pose;)F",
+          "name": "getEyeHeight",
+          "phase_calls_in_bytecode_order": [],
+          "phase_field_writes": [],
+          "signature": "public final float getEyeHeight(net.minecraft.world.entity.Pose);"
+        },
+        {
+          "all_call_count": 0,
+          "body_sha256": "880314c350cd4b45459c05f793e40061f7a79e231f36ef02c46af129eb87b4c1",
+          "branch_count": 0,
+          "descriptor": "()F",
+          "name": "getEyeHeight",
+          "phase_calls_in_bytecode_order": [],
+          "phase_field_writes": [],
+          "signature": "public final float getEyeHeight();"
+        }
+      ]
+    },
+    "net.minecraft.world.entity.LivingEntity": {
+      "class_entry": "net/minecraft/world/entity/LivingEntity.class",
+      "class_sha256": "6eaecd529ba26174652f3bb71e7c86262e54ac6f5e1e70944fb0e629b3b9948a",
+      "javap_artifact": {
+        "bytes": 627751,
+        "file": "LivingEntity.javap.txt",
+        "path": "build/player-tick-phases/LivingEntity.javap.txt",
+        "sha1": "54db20d9fb3bedb950d770fa0c767fcd3963a2d0",
+        "sha256": "6627a5fb99c919abd31e8080054f461aea085054b118d52cd89b4f02c26cf02f"
+      },
+      "methods": [
+        {
+          "all_call_count": 28,
+          "body_sha256": "e9b6a98e047846f4faea48e6ec235bfa346c0b5de58cbd5c74313b78d40afb7a",
+          "branch_count": 9,
+          "descriptor": "(DZLnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;)V",
+          "name": "checkFallDamage",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 8,
+              "opcode": "invokevirtual",
+              "target": "updateFluidInteraction:()Z"
+            },
+            {
+              "offset": 292,
+              "opcode": "invokespecial",
+              "target": "net/minecraft/world/entity/Entity.checkFallDamage:(DZLnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;)V"
+            }
+          ],
+          "phase_field_writes": [],
+          "signature": "protected void checkFallDamage(double, boolean, net.minecraft.world.level.block.state.BlockState, net.minecraft.core.BlockPos);"
+        },
+        {
+          "all_call_count": 77,
+          "body_sha256": "7c3873c336e94a210eeb35d3632880616f9af1d3e2efd11fc973ee22384013e0",
+          "branch_count": 41,
+          "descriptor": "()V",
+          "name": "baseTick",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 4,
+              "opcode": "invokevirtual",
+              "target": "net/minecraft/world/entity/LivingEntity$SwingState.tick:()V"
+            },
+            {
+              "offset": 46,
+              "opcode": "invokestatic",
+              "target": "net/minecraft/world/item/enchantment/EnchantmentHelper.tickEffects:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/LivingEntity;)V"
+            },
+            {
+              "offset": 50,
+              "opcode": "invokespecial",
+              "target": "net/minecraft/world/entity/Entity.baseTick:()V"
+            },
+            {
+              "offset": 509,
+              "opcode": "invokevirtual",
+              "target": "tickDeath:()V"
+            },
+            {
+              "offset": 603,
+              "opcode": "invokevirtual",
+              "target": "tickEffects:()V"
+            }
+          ],
+          "phase_field_writes": [
+            {
+              "offset": 611,
+              "opcode": "putfield",
+              "target": "yHeadRotO:F"
+            },
+            {
+              "offset": 619,
+              "opcode": "putfield",
+              "target": "yBodyRotO:F"
+            }
+          ],
+          "signature": "public void baseTick();"
+        },
+        {
+          "all_call_count": 8,
+          "body_sha256": "7eb519b72fd6488841d6f35aba944ccbbd8147c3e17f1e190a69a1ce491168be",
+          "branch_count": 4,
+          "descriptor": "(Lnet/minecraft/world/phys/Vec3;)V",
+          "name": "travel",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 43,
+              "opcode": "invokevirtual",
+              "target": "travelInAir:(Lnet/minecraft/world/phys/Vec3;)V"
+            }
+          ],
+          "phase_field_writes": [],
+          "signature": "public void travel(net.minecraft.world.phys.Vec3);"
+        },
+        {
+          "all_call_count": 26,
+          "body_sha256": "430e43ab85a714e7b7dc860f519965c505730b341727364667331b1ea06c1a49",
+          "branch_count": 13,
+          "descriptor": "(Lnet/minecraft/world/phys/Vec3;)V",
+          "name": "travelInAir",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 1,
+              "opcode": "invokevirtual",
+              "target": "getBlockPosBelowThatAffectsMyMovement:()Lnet/minecraft/core/BlockPos;"
+            },
+            {
+              "offset": 23,
+              "opcode": "invokevirtual",
+              "target": "net/minecraft/world/level/block/Block.getFriction:()F"
+            },
+            {
+              "offset": 162,
+              "opcode": "invokevirtual",
+              "target": "shouldDiscardFriction:()Z"
+            },
+            {
+              "offset": 181,
+              "opcode": "invokevirtual",
+              "target": "setDeltaMovement:(DDD)V"
+            },
+            {
+              "offset": 260,
+              "opcode": "invokevirtual",
+              "target": "setDeltaMovement:(DDD)V"
+            }
+          ],
+          "phase_field_writes": [],
+          "signature": "private void travelInAir(net.minecraft.world.phys.Vec3);"
+        },
+        {
+          "all_call_count": 40,
+          "body_sha256": "45836e8859c52fcfbb83d1285bce4f88d376e3fce0ba709e83e97ada01b0110b",
+          "branch_count": 37,
+          "descriptor": "()V",
+          "name": "tick",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 1,
+              "opcode": "invokespecial",
+              "target": "net/minecraft/world/entity/Entity.tick:()V"
+            },
+            {
+              "offset": 178,
+              "opcode": "invokevirtual",
+              "target": "aiStep:()V"
+            },
+            {
+              "offset": 646,
+              "opcode": "invokevirtual",
+              "target": "net/minecraft/world/entity/ElytraAnimationState.tick:()V"
+            }
+          ],
+          "phase_field_writes": [
+            {
+              "offset": 371,
+              "opcode": "putfield",
+              "target": "yRotO:F"
+            },
+            {
+              "offset": 402,
+              "opcode": "putfield",
+              "target": "yRotO:F"
+            },
+            {
+              "offset": 433,
+              "opcode": "putfield",
+              "target": "yBodyRotO:F"
+            },
+            {
+              "offset": 464,
+              "opcode": "putfield",
+              "target": "yBodyRotO:F"
+            },
+            {
+              "offset": 495,
+              "opcode": "putfield",
+              "target": "xRotO:F"
+            },
+            {
+              "offset": 526,
+              "opcode": "putfield",
+              "target": "xRotO:F"
+            },
+            {
+              "offset": 557,
+              "opcode": "putfield",
+              "target": "yHeadRotO:F"
+            },
+            {
+              "offset": 588,
+              "opcode": "putfield",
+              "target": "yHeadRotO:F"
+            }
+          ],
+          "signature": "public void tick();"
+        },
+        {
+          "all_call_count": 89,
+          "body_sha256": "e5db4175f15fd09fe4e0115abdcd97977a13cce37f2f4bce6ca79263fd960981",
+          "branch_count": 55,
+          "descriptor": "()V",
+          "name": "aiStep",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 25,
+              "opcode": "invokevirtual",
+              "target": "canSimulateMovement:()Z"
+            },
+            {
+              "offset": 42,
+              "opcode": "invokevirtual",
+              "target": "setDeltaMovement:(Lnet/minecraft/world/phys/Vec3;)V"
+            },
+            {
+              "offset": 79,
+              "opcode": "invokevirtual",
+              "target": "net/minecraft/world/entity/EntityEquipment.tick:(Lnet/minecraft/world/entity/Entity;)V"
+            },
+            {
+              "offset": 189,
+              "opcode": "invokevirtual",
+              "target": "setDeltaMovement:(DDD)V"
+            },
+            {
+              "offset": 208,
+              "opcode": "invokevirtual",
+              "target": "applyInput:()V"
+            },
+            {
+              "offset": 452,
+              "opcode": "invokevirtual",
+              "target": "jumpFromGround:()V"
+            },
+            {
+              "offset": 494,
+              "opcode": "invokevirtual",
+              "target": "updateFallFlying:()V"
+            },
+            {
+              "offset": 548,
+              "opcode": "invokevirtual",
+              "target": "resetFallDistance:()V"
+            },
+            {
+              "offset": 591,
+              "opcode": "invokevirtual",
+              "target": "canSimulateMovement:()Z"
+            },
+            {
+              "offset": 607,
+              "opcode": "invokevirtual",
+              "target": "travel:(Lnet/minecraft/world/phys/Vec3;)V"
+            },
+            {
+              "offset": 621,
+              "opcode": "invokevirtual",
+              "target": "isLocalInstanceAuthoritative:()Z"
+            },
+            {
+              "offset": 628,
+              "opcode": "invokevirtual",
+              "target": "applyEffectsFromBlocks:()V"
+            }
+          ],
+          "phase_field_writes": [
+            {
+              "offset": 14,
+              "opcode": "putfield",
+              "target": "noJumpDelay:I"
+            },
+            {
+              "offset": 220,
+              "opcode": "putfield",
+              "target": "jumping:Z"
+            },
+            {
+              "offset": 225,
+              "opcode": "putfield",
+              "target": "xxa:F"
+            },
+            {
+              "offset": 230,
+              "opcode": "putfield",
+              "target": "zza:F"
+            },
+            {
+              "offset": 458,
+              "opcode": "putfield",
+              "target": "noJumpDelay:I"
+            },
+            {
+              "offset": 466,
+              "opcode": "putfield",
+              "target": "noJumpDelay:I"
+            }
+          ],
+          "signature": "public void aiStep();"
+        },
+        {
+          "all_call_count": 0,
+          "body_sha256": "47d9af1aabb7e71f55313cb406366e6bebc5c810b698f0bf75e874540a003fe2",
+          "branch_count": 0,
+          "descriptor": "()V",
+          "name": "applyInput",
+          "phase_calls_in_bytecode_order": [],
+          "phase_field_writes": [
+            {
+              "offset": 9,
+              "opcode": "putfield",
+              "target": "xxa:F"
+            },
+            {
+              "offset": 21,
+              "opcode": "putfield",
+              "target": "zza:F"
+            }
+          ],
+          "signature": "protected void applyInput();"
+        },
+        {
+          "all_call_count": 12,
+          "body_sha256": "3be5ec6c302e13181090ce6a87b1139fdb72cad767cda400b1260fed4d6e11c2",
+          "branch_count": 4,
+          "descriptor": "()V",
+          "name": "updateFallFlying",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 1,
+              "opcode": "invokevirtual",
+              "target": "checkFallDistanceAccumulation:()V"
+            }
+          ],
+          "phase_field_writes": [],
+          "signature": "protected void updateFallFlying();"
+        },
+        {
+          "all_call_count": 17,
+          "body_sha256": "e117e5264b6bf16bd69b371d0147ae64e3c15be57867a1708f9091c0597618a3",
+          "branch_count": 11,
+          "descriptor": "(Lnet/minecraft/network/syncher/EntityDataAccessor;)V",
+          "name": "onSyncedDataUpdated",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 2,
+              "opcode": "invokespecial",
+              "target": "net/minecraft/world/entity/Entity.onSyncedDataUpdated:(Lnet/minecraft/network/syncher/EntityDataAccessor;)V"
+            }
+          ],
+          "phase_field_writes": [],
+          "signature": "public void onSyncedDataUpdated(net.minecraft.network.syncher.EntityDataAccessor<?>);"
+        }
+      ]
+    },
+    "net.minecraft.world.entity.player.Player": {
+      "class_entry": "net/minecraft/world/entity/player/Player.class",
+      "class_sha256": "28ad0c7756a5cbdfde6c22772f585da9177d6f9eb418ea5ff2dd85657d81dfb2",
+      "javap_artifact": {
+        "bytes": 263493,
+        "file": "Player.javap.txt",
+        "path": "build/player-tick-phases/Player.javap.txt",
+        "sha1": "4fc5709365ce98b7e385b52981f844f9563e8443",
+        "sha256": "5fa8f56634c6a90b5edd361a51287e1f8ecd4daf318ff27b642236e62a018f69"
+      },
+      "methods": [
+        {
+          "all_call_count": 35,
+          "body_sha256": "a401f0d27e03493afb0a06b008324f3a1999bd238f20a9093e4228a8b323cba2",
+          "branch_count": 17,
+          "descriptor": "()V",
+          "name": "tick",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 24,
+              "opcode": "invokevirtual",
+              "target": "setOnGround:(Z)V"
+            },
+            {
+              "offset": 169,
+              "opcode": "invokevirtual",
+              "target": "updateIsUnderwater:()Z"
+            },
+            {
+              "offset": 174,
+              "opcode": "invokespecial",
+              "target": "net/minecraft/world/entity/Avatar.tick:()V"
+            },
+            {
+              "offset": 237,
+              "opcode": "invokevirtual",
+              "target": "setPos:(DDD)V"
+            },
+            {
+              "offset": 331,
+              "opcode": "invokevirtual",
+              "target": "net/minecraft/world/item/ItemCooldowns.tick:()V"
+            },
+            {
+              "offset": 335,
+              "opcode": "invokevirtual",
+              "target": "updatePlayerPose:()V"
+            }
+          ],
+          "phase_field_writes": [],
+          "signature": "public void tick();"
+        },
+        {
+          "all_call_count": 1,
+          "body_sha256": "9ebecbd572a6f48b25ff6b4a7103ff54ba399a3c250c58108b57b3ae57761e65",
+          "branch_count": 0,
+          "descriptor": "()Z",
+          "name": "updateIsUnderwater",
+          "phase_calls_in_bytecode_order": [],
+          "phase_field_writes": [],
+          "signature": "protected boolean updateIsUnderwater();"
+        },
+        {
+          "all_call_count": 7,
+          "body_sha256": "7523fb4787ac8a424990ea269b5665187843771522587d4fe186ef5892951f57",
+          "branch_count": 7,
+          "descriptor": "()V",
+          "name": "updatePlayerPose",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 4,
+              "opcode": "invokevirtual",
+              "target": "canPlayerFitWithinBlocksAndEntitiesWhen:(Lnet/minecraft/world/entity/Pose;)Z"
+            },
+            {
+              "offset": 12,
+              "opcode": "invokevirtual",
+              "target": "getDesiredPose:()Lnet/minecraft/world/entity/Pose;"
+            },
+            {
+              "offset": 32,
+              "opcode": "invokevirtual",
+              "target": "canPlayerFitWithinBlocksAndEntitiesWhen:(Lnet/minecraft/world/entity/Pose;)Z"
+            },
+            {
+              "offset": 47,
+              "opcode": "invokevirtual",
+              "target": "canPlayerFitWithinBlocksAndEntitiesWhen:(Lnet/minecraft/world/entity/Pose;)Z"
+            },
+            {
+              "offset": 66,
+              "opcode": "invokevirtual",
+              "target": "setPose:(Lnet/minecraft/world/entity/Pose;)V"
+            }
+          ],
+          "phase_field_writes": [],
+          "signature": "protected void updatePlayerPose();"
+        },
+        {
+          "all_call_count": 5,
+          "body_sha256": "bc5970098ef265212d30ad1c11ca3b77330c35d5dff0aaa2a29c5796f6da7da2",
+          "branch_count": 6,
+          "descriptor": "()Lnet/minecraft/world/entity/Pose;",
+          "name": "getDesiredPose",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 45,
+              "opcode": "invokevirtual",
+              "target": "isShiftKeyDown:()Z"
+            }
+          ],
+          "phase_field_writes": [],
+          "signature": "private net.minecraft.world.entity.Pose getDesiredPose();"
+        },
+        {
+          "all_call_count": 6,
+          "body_sha256": "06e7255bb7b932491a0918e104c54d87685f8307911c0fb73d30c9204639f562",
+          "branch_count": 0,
+          "descriptor": "(Lnet/minecraft/world/entity/Pose;)Z",
+          "name": "canPlayerFitWithinBlocksAndEntitiesWhen",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 14,
+              "opcode": "invokevirtual",
+              "target": "net/minecraft/world/entity/EntityDimensions.makeBoundingBox:(Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/AABB;"
+            }
+          ],
+          "phase_field_writes": [],
+          "signature": "protected boolean canPlayerFitWithinBlocksAndEntitiesWhen(net.minecraft.world.entity.Pose);"
+        },
+        {
+          "all_call_count": 34,
+          "body_sha256": "7148764bf12cc7d874c3ccd060e20a15d2be23b3a84de9979337670c8f5cd133",
+          "branch_count": 14,
+          "descriptor": "()V",
+          "name": "aiStep",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 25,
+              "opcode": "invokevirtual",
+              "target": "net/minecraft/world/entity/player/Inventory.tick:()V"
+            },
+            {
+              "offset": 46,
+              "opcode": "invokevirtual",
+              "target": "resetFallDistance:()V"
+            },
+            {
+              "offset": 50,
+              "opcode": "invokespecial",
+              "target": "net/minecraft/world/entity/Avatar.aiStep:()V"
+            }
+          ],
+          "phase_field_writes": [
+            {
+              "offset": 14,
+              "opcode": "putfield",
+              "target": "jumpTriggerTime:I"
+            }
+          ],
+          "signature": "public void aiStep();"
+        },
+        {
+          "all_call_count": 13,
+          "body_sha256": "4d5682122fa704b401f544e837fd646315636ee1c080d038d16877721c85e642",
+          "branch_count": 24,
+          "descriptor": "(Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/entity/MoverType;)Lnet/minecraft/world/phys/Vec3;",
+          "name": "maybeBackOffFromEdge",
+          "phase_calls_in_bytecode_order": [],
+          "phase_field_writes": [],
+          "signature": "protected net.minecraft.world.phys.Vec3 maybeBackOffFromEdge(net.minecraft.world.phys.Vec3, net.minecraft.world.entity.MoverType);"
+        },
+        {
+          "all_call_count": 21,
+          "body_sha256": "f908bd9f561b4ff8cb790af7acd7249cb19df5894f3eb1c7d64ddb89986d8d99",
+          "branch_count": 9,
+          "descriptor": "(Lnet/minecraft/world/phys/Vec3;)V",
+          "name": "travel",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 9,
+              "opcode": "invokespecial",
+              "target": "net/minecraft/world/entity/Avatar.travel:(Lnet/minecraft/world/phys/Vec3;)V"
+            },
+            {
+              "offset": 118,
+              "opcode": "invokevirtual",
+              "target": "setDeltaMovement:(Lnet/minecraft/world/phys/Vec3;)V"
+            },
+            {
+              "offset": 141,
+              "opcode": "invokespecial",
+              "target": "net/minecraft/world/entity/Avatar.travel:(Lnet/minecraft/world/phys/Vec3;)V"
+            },
+            {
+              "offset": 160,
+              "opcode": "invokevirtual",
+              "target": "setDeltaMovement:(Lnet/minecraft/world/phys/Vec3;)V"
+            },
+            {
+              "offset": 168,
+              "opcode": "invokespecial",
+              "target": "net/minecraft/world/entity/Avatar.travel:(Lnet/minecraft/world/phys/Vec3;)V"
+            }
+          ],
+          "phase_field_writes": [],
+          "signature": "public void travel(net.minecraft.world.phys.Vec3);"
+        },
+        {
+          "all_call_count": 2,
+          "body_sha256": "986bb5f4e55347d7159d7e1c458423def3364f6c8e68874d4ce08b75a6ca6918",
+          "branch_count": 2,
+          "descriptor": "()V",
+          "name": "updateSwimming",
+          "phase_calls_in_bytecode_order": [
+            {
+              "offset": 19,
+              "opcode": "invokespecial",
+              "target": "net/minecraft/world/entity/Avatar.updateSwimming:()V"
+            }
+          ],
+          "phase_field_writes": [],
+          "signature": "public void updateSwimming();"
+        }
+      ]
+    }
+  },
+  "client_jar": {
+    "bytes": 41483720,
+    "file": "26.3.jar",
+    "sha1": "e877b6a07acd633fb3bb475002175cec036e7b87",
+    "sha256": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d"
+  },
+  "entity_iteration_actual_bootstrap_targets": [
+    "REF_invokeVirtual net/minecraft/client/multiplayer/ClientLevel.lambda$tickEntities$0:(Lnet/minecraft/world/entity/Entity;)V",
+    "REF_invokeVirtual net/minecraft/client/multiplayer/ClientLevel.tickNonPassenger:(Lnet/minecraft/world/entity/Entity;)V"
+  ],
+  "java_runtime": {
+    "bytes": 84720,
+    "file": "java",
+    "sha1": "5af4a90be54ddeec03db3700e6989594c9438952",
+    "sha256": "e0879c0df70d880d66904064d1b388b08aeee0958a047f37601435b28db849a3"
+  },
+  "javap": {
+    "bytes": 84640,
+    "file": "javap",
+    "sha1": "87e2ba1d337aff8cd91916ca2213251f2b91b6e3",
+    "sha256": "197a897f83e328c784de64b1452b8166ae17b06eba62cb14fc2115a52f88a200"
+  },
+  "kind": "static call sites, not executed traces",
+  "ordering_limit": "Ascending bytecode offsets are instruction layout; guarded branches, loops and virtual dispatch require call-path interpretation. Full instructions/guards remain in raw artifacts.",
+  "pin": "26.3",
+  "raw_artifact": {
+    "bytes": 1303819,
+    "file": "bytecode-inventory.full.json",
+    "path": "build/player-tick-phases/bytecode-inventory.full.json",
+    "sha1": "c7310b4cbeb05a16141883d0c165f5f49e5d9fd0",
+    "sha256": "7aaa5b952893adc9d4ad08c0114ab616b630e5996e9b49eb0bea780b7ace8758"
+  },
+  "schema_version": 1,
+  "status": "extracted"
+}

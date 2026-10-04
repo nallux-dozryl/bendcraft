@@ -1,0 +1,108 @@
+{
+  "actual_receiver_entry_calls_in_plain_observed_and_two_reruns": 64,
+  "api_hashes_match_inventory_observation_and_final_audit": true,
+  "api_sources_sha256": {
+    "src/local_input.bend": "5e3555fdb06258a76478a32d32332455ad186ec956607ce981e198a3c28ca02e",
+    "src/local_move_world.bend": "3823c3e6d4ebd0ab8743792aad3bf0cacae7a081a5791bd23d888037bd569f81",
+    "src/local_tick_world.bend": "baa67724b6b5d5e98d3fdba3d733e753d64e4b6c5109e2263cadd003ee721a2c",
+    "src/player_fall_history.bend": "b181c43948cc01e66b05e0edf9dbc0338e1ebdcfecbf86a525731a07aad26db3",
+    "src/player_rotation_tick.bend": "63ae51ac3d0f579061d21a90af4cb80ac782c56b56b7c7d867c06e309d90973b",
+    "src/player_tick.bend": "d583f3014011313097779b69ee0fd8d77bd3ed0e1e7895b629903eb64da9699f",
+    "src/support.bend": "aca42f24e0a32bd89356ac33f6d9bbe2ab5975ce938e2d2750496c01a6137455",
+    "src/support_world.bend": "a2e42fb06cab36408e7631e8ff3b9e61793696d4b049592d3ce137f69fa3b381",
+    "src/travel.bend": "717e969e3989a7a8e443b18f69c171bdc11a14130828233ce85e6cd914e1f8f1"
+  },
+  "canonical_serialization": "json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(\",\", \":\")).encode(); no newline",
+  "client_jar": {
+    "bytes": 41483720,
+    "file": "26.3.jar",
+    "sha1": "e877b6a07acd633fb3bb475002175cec036e7b87",
+    "sha256": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d"
+  },
+  "confidence": "high for static call sites and explicitly observed histories; unknown outside measured receiver context",
+  "distinct_receiver_entry_calls": 16,
+  "entity_iteration_callbacks": [
+    "REF_invokeVirtual net/minecraft/client/multiplayer/ClientLevel.lambda$tickEntities$0:(Lnet/minecraft/world/entity/Entity;)V",
+    "REF_invokeVirtual net/minecraft/client/multiplayer/ClientLevel.tickNonPassenger:(Lnet/minecraft/world/entity/Entity;)V"
+  ],
+  "execution_seconds": [
+    5.395155,
+    5.172782
+  ],
+  "failures": [
+    {
+      "error_class": "java.lang.NoSuchFieldError",
+      "error_message": "Class net.minecraft.client.Minecraft does not have member field 'net.minecraft.client.renderer.GameRenderer gameRenderer'",
+      "id": "scheduled_sprint_jump"
+    }
+  ],
+  "file_bytes": {
+    "docs/PLAYER_TICK_PHASES.md": 18282,
+    "evidence/player-tick-phases-bytecode.json": 81269,
+    "evidence/player-tick-phases-observed.json": 14071,
+    "reference/player_tick_phases.json": 224105,
+    "tools/reference_player_tick_phases_probe.py": 36757
+  },
+  "files_sha256": {
+    "docs/PLAYER_TICK_PHASES.md": "30b8c807d7d73e0cb8e8b944a488bdfa772f1e7fa80335f747a51d18b3d36756",
+    "evidence/player-tick-phases-bytecode.json": "eb50b4a1a62b0dd0369d63fcb662442de9f7dae3c297abd2934cd4828a3e70e0",
+    "evidence/player-tick-phases-observed.json": "bec09e6733a70e0f7fc8b61e31884e6f201c9a213b9a4c201d002265b2c36567",
+    "reference/player_tick_phases.json": "a0ed9d126facbedaa4b2336a2502d04cb8c447e60789c3037e5ea1f40ac7cc65",
+    "tools/reference_player_tick_phases_probe.py": "2f778c81a3b2931068d9ce7cebf5b4bd0516dbe47b4897a2b2e9d6f7148f1070"
+  },
+  "fixture_service_sources_identical_to_existing_LI": true,
+  "fixture_service_types": [
+    "net.minecraft.client.Minecraft",
+    "net.minecraft.client.gui.Gui",
+    "net.minecraft.client.multiplayer.ClientPacketListener",
+    "net.minecraft.client.tutorial.Tutorial"
+  ],
+  "fresh_rerun_exact_observations_equal": true,
+  "histories": 7,
+  "java_runtime": {
+    "bytes": 84720,
+    "file": "java",
+    "sha1": "5af4a90be54ddeec03db3700e6989594c9438952",
+    "sha256": "e0879c0df70d880d66904064d1b388b08aeee0958a047f37601435b28db849a3"
+  },
+  "no_bend_or_native_build": true,
+  "no_production_or_consumer_edits": true,
+  "observed_facts": {
+    "application_gate_skips_with_support_and_fall": 6,
+    "inline_camera_normalization_between_ai_step_and_pose_checked": true,
+    "minor_calls_after_support_before_fall": 1,
+    "neutral_calls_with_gliding_clamp": 0,
+    "pose_dimension_refreshes": 4,
+    "raw_eye_field_getter_position_checks": 572,
+    "retained_position_on_every_observed_refresh": true,
+    "shift_cache_pose_latency_checked": true,
+    "successful_call_order_checks": 15
+  },
+  "phase_snapshots": 540,
+  "pin": "26.3",
+  "raw_artifact_digests_verified": true,
+  "reference_phase_state_round_trip_verified": true,
+  "reference_snapshot_encoding": "Start from each step.before; apply each phase.state_changes to the previous complete state. Details and event order are exact. Full uncompressed observations remain in pinned raw artifacts.",
+  "remaining_integration_gaps": [
+    "full Minecraft tick and services",
+    "pose-fit/crawl and non-standing/crouching dimensions",
+    "old position/interpolation and lifecycle/equipment state",
+    "sprint particle renderer service",
+    "fluid/swimming/fire/lava and damaging falls",
+    "post-travel arbitrary block effects and actor pushes",
+    "auto-jump/walked distance and local presentation",
+    "network sendChanges and server/client clock correspondence"
+  ],
+  "reproduce": [
+    "PYTHONDONTWRITEBYTECODE=1 python3 tools/reference_player_tick_phases_probe.py --inventory",
+    "PYTHONDONTWRITEBYTECODE=1 python3 tools/reference_player_tick_phases_probe.py --extract"
+  ],
+  "schema_version": 1,
+  "scope": "Static official bytecode is distinct from actual narrow full-local-tick traces. No whole-game or native/Bend integration verdict; local production interfaces merely read and hash-pinned.",
+  "source_generation_stable": true,
+  "state_and_failure_parity_plain_vs_observed": true,
+  "static_classes": 9,
+  "static_methods": 84,
+  "status": "passed phase evidence integrity audit; explicit receiver service gap retained",
+  "successful_distinct_entry_calls": 15
+}
