@@ -1,0 +1,448 @@
+{
+  "conclusion": "006 retains005 texture consumption in unchanged_best/unchanged_fragments/outside_lists and texture keeps in frame/tile/pixel/opaque_trace/spatial_trace. finish_textures is added as an owned post-frame walker, without eliminating the hot rejection ownership operations. Focused fixture borrowing did not generalize to full graph.",
+  "confidence": "high for pinned emitted C; runtime effect not measured by this inspection",
+  "generations": {
+    "004": {
+      "C": {
+        "bytes": 15131891,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/004/renderer.c",
+        "sha256": "20328eb9d3f9fe3f753a96f52cc0e082fee06313105e8f115501921ebe9e3d0a"
+      },
+      "binary": {
+        "bytes": 5550408,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/004/renderer",
+        "sha256": "0e5bac4aa6e4ff36232e4c25ed67cda6ac2e73bc45d378ae5a597c66ed7e8399"
+      },
+      "helpers": [],
+      "main_reader_bodies": [
+        {
+          "line": 67954,
+          "name": "TRANS_TRACE",
+          "static_body_calls": {
+            "ctr_take": 2,
+            "heap_alloc": 0,
+            "task_node": 2,
+            "term_keep": 1,
+            "term_peek": 0,
+            "term_sink": 1
+          },
+          "texture_keep_lines": [
+            68032
+          ]
+        },
+        {
+          "line": 68339,
+          "name": "OPAQUE_TRACE",
+          "static_body_calls": {
+            "ctr_take": 2,
+            "heap_alloc": 0,
+            "task_node": 2,
+            "term_keep": 1,
+            "term_peek": 0,
+            "term_sink": 1
+          },
+          "texture_keep_lines": [
+            68439
+          ]
+        },
+        {
+          "line": 68986,
+          "name": "SPATIAL_TRACE",
+          "static_body_calls": {
+            "ctr_take": 3,
+            "heap_alloc": 0,
+            "task_node": 3,
+            "term_keep": 1,
+            "term_peek": 0,
+            "term_sink": 8
+          },
+          "texture_keep_lines": [
+            69172
+          ]
+        },
+        {
+          "line": 75832,
+          "name": "PIXEL",
+          "static_body_calls": {
+            "ctr_take": 0,
+            "heap_alloc": 0,
+            "task_node": 2,
+            "term_keep": 1,
+            "term_peek": 0,
+            "term_sink": 3
+          },
+          "texture_keep_lines": [
+            75889
+          ]
+        },
+        {
+          "line": 77839,
+          "name": "TILE",
+          "static_body_calls": {
+            "ctr_take": 0,
+            "heap_alloc": 0,
+            "task_node": 3,
+            "term_keep": 3,
+            "term_peek": 0,
+            "term_sink": 0
+          },
+          "texture_keep_lines": [
+            77935
+          ]
+        },
+        {
+          "line": 80696,
+          "name": "FRAME",
+          "static_body_calls": {
+            "ctr_take": 0,
+            "heap_alloc": 0,
+            "task_node": 6,
+            "term_keep": 12,
+            "term_peek": 0,
+            "term_sink": 0
+          },
+          "texture_keep_lines": [
+            80789,
+            80792,
+            80795,
+            80913
+          ]
+        }
+      ],
+      "mesh_source": {
+        "bytes": 24625,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/004/source/src/mesh_render.bend",
+        "sha256": "62aff16470bb38313e0d1a732d16e4bb61fc65315ec8664df4a2a8c007de8cd6"
+      }
+    },
+    "005": {
+      "C": {
+        "bytes": 15147531,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/005/renderer.c",
+        "sha256": "e954b3f69a3681a718b4886e110312bdc62ca7091a5f72237856f6068c246021"
+      },
+      "binary": {
+        "bytes": 5550760,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/005/renderer",
+        "sha256": "7f026928664dae67f951289041205ca75d650fbace0ae30db14a2012cae9a623"
+      },
+      "helpers": [
+        {
+          "body_sha256": "20aea7575d53f94daa4d2d086028c19a37a3841cf2aa53910f046cc6e5b6533d",
+          "line": 13733,
+          "name": "spin_74",
+          "source_meaning": "unchanged_best",
+          "static_body_calls": {
+            "ctr_take": 2,
+            "heap_alloc": 0,
+            "task_node": 0,
+            "term_keep": 0,
+            "term_peek": 0,
+            "term_sink": 2
+          }
+        },
+        {
+          "body_sha256": "34a2f104905347bad4c3d19c45ea39e5f5d1a844da3a4b63d5051ddbe6beaf42",
+          "line": 10885,
+          "name": "spin_47",
+          "source_meaning": "unchanged_fragments",
+          "static_body_calls": {
+            "ctr_take": 2,
+            "heap_alloc": 0,
+            "task_node": 0,
+            "term_keep": 0,
+            "term_peek": 0,
+            "term_sink": 2
+          }
+        },
+        {
+          "body_sha256": "9f92915a324f4e29a9df434ee3fbad6eafafb2c3600ac64aa7d5dd0f23e7848b",
+          "line": 15551,
+          "name": "spin_103",
+          "source_meaning": "outside_lists",
+          "static_body_calls": {
+            "ctr_take": 4,
+            "heap_alloc": 0,
+            "task_node": 0,
+            "term_keep": 0,
+            "term_peek": 2,
+            "term_sink": 4
+          }
+        }
+      ],
+      "main_reader_bodies": [
+        {
+          "line": 68032,
+          "name": "TRANS_TRACE",
+          "static_body_calls": {
+            "ctr_take": 0,
+            "heap_alloc": 0,
+            "task_node": 2,
+            "term_keep": 1,
+            "term_peek": 2,
+            "term_sink": 0
+          },
+          "texture_keep_lines": [
+            68112
+          ]
+        },
+        {
+          "line": 68418,
+          "name": "OPAQUE_TRACE",
+          "static_body_calls": {
+            "ctr_take": 0,
+            "heap_alloc": 0,
+            "task_node": 2,
+            "term_keep": 1,
+            "term_peek": 2,
+            "term_sink": 0
+          },
+          "texture_keep_lines": [
+            68526
+          ]
+        },
+        {
+          "line": 69077,
+          "name": "SPATIAL_TRACE",
+          "static_body_calls": {
+            "ctr_take": 0,
+            "heap_alloc": 0,
+            "task_node": 3,
+            "term_keep": 1,
+            "term_peek": 3,
+            "term_sink": 0
+          },
+          "texture_keep_lines": [
+            69287
+          ]
+        },
+        {
+          "line": 72455,
+          "name": "PIXEL",
+          "static_body_calls": {
+            "ctr_take": 0,
+            "heap_alloc": 0,
+            "task_node": 2,
+            "term_keep": 1,
+            "term_peek": 0,
+            "term_sink": 0
+          },
+          "texture_keep_lines": [
+            72515
+          ]
+        },
+        {
+          "line": 77154,
+          "name": "TILE",
+          "static_body_calls": {
+            "ctr_take": 0,
+            "heap_alloc": 0,
+            "task_node": 3,
+            "term_keep": 1,
+            "term_peek": 0,
+            "term_sink": 0
+          },
+          "texture_keep_lines": [
+            77248
+          ]
+        },
+        {
+          "line": 79938,
+          "name": "FRAME",
+          "static_body_calls": {
+            "ctr_take": 0,
+            "heap_alloc": 0,
+            "task_node": 6,
+            "term_keep": 4,
+            "term_peek": 0,
+            "term_sink": 0
+          },
+          "texture_keep_lines": [
+            80029,
+            80030,
+            80031,
+            80147
+          ]
+        }
+      ],
+      "mesh_source": {
+        "bytes": 27976,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/005/source/src/mesh_render.bend",
+        "sha256": "19c42543263873cf53f378b38135939762d8af6f375f8a64148faa26c9dc8e24"
+      }
+    },
+    "006": {
+      "C": {
+        "bytes": 15148759,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/006/renderer.c",
+        "sha256": "d5597f00e6d7370640dfb9674685f25e70fea1eb2cd40a59cd3cc62323aa4fa5"
+      },
+      "binary": {
+        "bytes": 5550760,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/006/renderer",
+        "sha256": "ee18ea425c8c6b4b15df455ce71b468af4a6226c444899c65185cdc2c8db2dda"
+      },
+      "helpers": [
+        {
+          "body_sha256": "20aea7575d53f94daa4d2d086028c19a37a3841cf2aa53910f046cc6e5b6533d",
+          "line": 13733,
+          "name": "spin_74",
+          "source_meaning": "unchanged_best",
+          "static_body_calls": {
+            "ctr_take": 2,
+            "heap_alloc": 0,
+            "task_node": 0,
+            "term_keep": 0,
+            "term_peek": 0,
+            "term_sink": 2
+          }
+        },
+        {
+          "body_sha256": "34a2f104905347bad4c3d19c45ea39e5f5d1a844da3a4b63d5051ddbe6beaf42",
+          "line": 10885,
+          "name": "spin_47",
+          "source_meaning": "unchanged_fragments",
+          "static_body_calls": {
+            "ctr_take": 2,
+            "heap_alloc": 0,
+            "task_node": 0,
+            "term_keep": 0,
+            "term_peek": 0,
+            "term_sink": 2
+          }
+        },
+        {
+          "body_sha256": "9f92915a324f4e29a9df434ee3fbad6eafafb2c3600ac64aa7d5dd0f23e7848b",
+          "line": 15551,
+          "name": "spin_103",
+          "source_meaning": "outside_lists",
+          "static_body_calls": {
+            "ctr_take": 4,
+            "heap_alloc": 0,
+            "task_node": 0,
+            "term_keep": 0,
+            "term_peek": 2,
+            "term_sink": 4
+          }
+        },
+        {
+          "body_sha256": "cee6623f62fd1aeb2c3954d2371e108bc72a458af4db7bec9a14bffde64bfebe",
+          "line": 21818,
+          "name": "spin_182",
+          "source_meaning": "finish_textures",
+          "static_body_calls": {
+            "ctr_take": 2,
+            "heap_alloc": 0,
+            "task_node": 0,
+            "term_keep": 0,
+            "term_peek": 0,
+            "term_sink": 1
+          }
+        }
+      ],
+      "main_reader_bodies": [
+        {
+          "line": 68068,
+          "name": "TRANS_TRACE",
+          "static_body_calls": {
+            "ctr_take": 0,
+            "heap_alloc": 0,
+            "task_node": 2,
+            "term_keep": 1,
+            "term_peek": 2,
+            "term_sink": 0
+          },
+          "texture_keep_lines": [
+            68148
+          ]
+        },
+        {
+          "line": 68454,
+          "name": "OPAQUE_TRACE",
+          "static_body_calls": {
+            "ctr_take": 0,
+            "heap_alloc": 0,
+            "task_node": 2,
+            "term_keep": 1,
+            "term_peek": 2,
+            "term_sink": 0
+          },
+          "texture_keep_lines": [
+            68562
+          ]
+        },
+        {
+          "line": 69113,
+          "name": "SPATIAL_TRACE",
+          "static_body_calls": {
+            "ctr_take": 0,
+            "heap_alloc": 0,
+            "task_node": 3,
+            "term_keep": 1,
+            "term_peek": 3,
+            "term_sink": 0
+          },
+          "texture_keep_lines": [
+            69323
+          ]
+        },
+        {
+          "line": 72491,
+          "name": "PIXEL",
+          "static_body_calls": {
+            "ctr_take": 0,
+            "heap_alloc": 0,
+            "task_node": 2,
+            "term_keep": 1,
+            "term_peek": 0,
+            "term_sink": 0
+          },
+          "texture_keep_lines": [
+            72551
+          ]
+        },
+        {
+          "line": 77190,
+          "name": "TILE",
+          "static_body_calls": {
+            "ctr_take": 0,
+            "heap_alloc": 0,
+            "task_node": 3,
+            "term_keep": 1,
+            "term_peek": 0,
+            "term_sink": 0
+          },
+          "texture_keep_lines": [
+            77284
+          ]
+        },
+        {
+          "line": 79974,
+          "name": "FRAME",
+          "static_body_calls": {
+            "ctr_take": 0,
+            "heap_alloc": 0,
+            "task_node": 6,
+            "term_keep": 4,
+            "term_peek": 0,
+            "term_sink": 0
+          },
+          "texture_keep_lines": [
+            80065,
+            80066,
+            80067,
+            80183
+          ]
+        }
+      ],
+      "mesh_source": {
+        "bytes": 28166,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/006/source/src/mesh_render.bend",
+        "sha256": "5209671e17ec8f69a79ac8f855ae1225e7ca4129ef9aace4ff8fbf0beb1e5f7a"
+      }
+    }
+  },
+  "padded_pixels_1920x1080_in_2048_square": 2120704,
+  "scope": "Full frozen004/005/006 C reader and rejection ownership inspection. Six main-body static counts omit inline helpers and continuations; they are not execution counts. Scalar selector changes are preserved. No native timing repeated.",
+  "status": "INTENDED_FULL_GRAPH_BORROWING_NOT_ACHIEVED"
+}
