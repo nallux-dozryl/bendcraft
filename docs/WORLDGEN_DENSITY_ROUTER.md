@@ -115,23 +115,36 @@ expressions. These fixtures do not claim the shipped final-density graph.
 The native harness consumes the production loader/compiler/sampler/Column and
 loaded-preset join. Python decodes requests, checks source/artifact identity and
 compares independently emitted Java answers; it implements no density or biome
-search algorithm. The ordinary `tools/build_native.py` route supplies the
-content-keyed frozen source closure. Reference and native executions use the
-existing bounded process receiver and verified official classpath.
+search algorithm. The ordinary `tools/build_native.py` route prepared the
+frozen source closure. The successful comparison uses the separately reviewed
+private CPU emitter on those same 49 current sources and 117 retained
+loaded/native input files. This artifact is recorded without product-cache
+promotion. Reference and native executions use the existing bounded process
+receiver and verified official classpath.
 
 The first coordinated ordinary combined build produced no generated C,
 executable or final build report. Its receiver raised `PermissionError` during
 process-group cleanup, leaving exit/timeout status unknown; the parent verified
 that its owned group was absent and preserved the exact attempt in
-`evidence/worldgen-density-integration-ordinary-build-failure.json`. A reviewed
-alternative emission route uses the same frozen runtime closure. No native
-pointer has been published at this checkpoint, so the router numerical
-comparison has not executed. `evidence/worldgen-density-router-native-prepared.json`
-records the prepared matrix: 720 eight-root float words, 168 six-axis float
-words, 168 quantized axis longs, 28 biome selections, 18 Column words
-(including eight through SlopedCheese), the shared-reference budget scenario,
-and eight refusal boundaries. These are intended comparison counts, not
-passing native results.
+`evidence/worldgen-density-integration-ordinary-build-failure.json`. The reviewed
+private CPU emission route subsequently produced a validated common executable;
+its recorded emission and native compilation times are 104.604 and 32.490
+seconds. The router pointer retains the `router` argument prefix and identifies
+that exact artifact.
+
+The coordinated `--compare-cached` run passes in 9.300 seconds across 35 reaped
+native process groups. It matches 720 eight-root float words, 168 six-axis float
+words, 168 quantized signed-long axis values, 28 biome identifier/index/fitness
+selections, and 18 Column words, including eight through the loaded SlopedCheese
+predecessor. The shared-reference budget scenario and all eight refusal
+boundaries also pass, including refusal of the shipped full router. The
+comparison records a current source generation with no source drift.
+`evidence/worldgen-density-router-native.json` records the successful counts,
+artifact/source identity and pinned raw receipt.
+`evidence/worldgen-density-router-native-prepared.json` now records the completed
+matrix while preserving the earlier failed ordinary build. These observations
+cover the stated finite inputs through the actual scalar consumers; they do not
+establish the remaining shipped final-density or normal-population stages.
 
 Commands:
 
