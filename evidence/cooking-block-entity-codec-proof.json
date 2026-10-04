@@ -1,0 +1,239 @@
+{
+  "artifact": {
+    "bytes": 9283881,
+    "file": "selected.bendtt",
+    "sha1": "9e3c2be620e6eecd186126fbcac8e4a99b13f8f4",
+    "sha256": "2587f840fbd21377a78cd078705ce793c6f4645db8aadd54980a22af37f64aa9"
+  },
+  "export": {
+    "command": [
+      "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+      "--experimental-transform-types",
+      "--max-old-space-size=2048",
+      "--stack-size=4096",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/cooking_block_entity_codec_proof.mjs",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft"
+    ],
+    "seconds": 3.481025,
+    "status": 0,
+    "stderr": "(node:58994) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+    "stdout": "ALL ORDINARY SOURCE CHECKS PASS\nCHECKED ROOT EXPORT PASS\n"
+  },
+  "kernel": {
+    "command": [
+      "/usr/bin/env",
+      "LEAN_STACK_SIZE=4194304",
+      "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-block-entity-codec/proof/selected.bendtt"
+    ],
+    "seconds": 1.44501,
+    "status": 0,
+    "stderr": "",
+    "stdout": "ALL PROOFS CHECK\n"
+  },
+  "kernel_binary": {
+    "bytes": 3271216,
+    "file": "bendtt",
+    "sha1": "f19dfe8aec3b3911b6c9f0acae2a54f5b05ca5f0",
+    "sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7"
+  },
+  "scope": "Actual owner refusal/retention, missing-item clearing, physical signed integer preservation, campfire prefix/record composition, malformed component/effect sibling retention. The full encoding/JSON graph is ordinary checked and native compared; independent kernel rejects existing json.encode_go affine live descent.",
+  "selection": {
+    "all_original_declaration_maps_retained": true,
+    "checked_types_and_bodies_unchanged": true,
+    "exclusions": [],
+    "ordinary_only_reason": "Existing json.encode_go reaches independent-kernel rejection: affine live code calls that descend. The five full campfire-load/save and physical-item decode laws remain ordinary checked and native compared. Selected furnace owner refusal, commit refusal and record/timer composition laws avoid that unrelated live JSON dependency.",
+    "ordinary_only_roots": [
+      "cooking_block_entity_codec_laws:rejected_campfire_decode_preserves_complete_owner",
+      "cooking_block_entity_codec_laws:refused_furnace_save_preserves_owner",
+      "cooking_block_entity_codec_laws:campfire_save_preserves_owner_and_uses_actual_snapshot",
+      "cooking_block_entity_codec_laws:absent_items_clear_previous_furnace_inputs",
+      "cooking_block_entity_codec_laws:absent_items_clear_previous_campfire_inputs"
+    ],
+    "roots": [
+      "cooking_block_entity_codec_laws:rejected_furnace_decode_preserves_complete_owner",
+      "cooking_block_entity_codec_laws:invalid_furnace_backing_cannot_publish_load",
+      "cooking_block_entity_codec_laws:refused_furnace_commit_preserves_owner",
+      "cooking_block_entity_codec_laws:refused_campfire_commit_preserves_owner",
+      "cooking_block_entity_codec_laws:present_empty_timer_array_retains_prior_tail",
+      "cooking_block_entity_codec_laws:missing_timer_array_resets_all_four_cells",
+      "cooking_block_entity_codec_laws:wrong_timer_array_resets_all_four_cells",
+      "cooking_block_entity_codec_laws:short_timer_array_retains_three_old_cells",
+      "cooking_block_entity_codec_laws:full_timer_array_discards_source_tail",
+      "cooking_block_entity_codec_laws:physical_int_timer_preserves_signed_bits",
+      "cooking_block_entity_codec_laws:physical_long_timer_uses_low_signed_word",
+      "cooking_block_entity_codec_laws:malformed_recipe_count_preserves_valid_sibling",
+      "cooking_block_entity_codec_laws:overwritten_physical_recipe_entry_is_not_reintroduced",
+      "cooking_block_entity_codec_laws:output_slots_preserve_exact_keys_and_counts",
+      "cooking_block_entity_codec_laws:campfire_record_preserves_patch_and_timer_ownership",
+      "cooking_block_entity_codec_laws:empty_items_emit_java_end_list_header",
+      "cooking_block_entity_codec_laws:invalid_physical_component_is_discarded_without_fabrication",
+      "cooking_block_entity_codec_laws:noncompound_registered_removal_is_discarded",
+      "cooking_block_entity_codec_laws:invalid_stew_effect_preserves_valid_siblings",
+      "cooking_block_entity_codec_laws:campfire_timer_and_item_decomposition_roundtrips_record",
+      "cooking_block_entity_codec_laws:physical_list_wrapper_returns_exact_wrapped_effect",
+      "cooking_block_entity_codec_laws:valid_recipe_key_does_not_require_a_nonair_item"
+    ],
+    "source_pins": {
+      "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/base.bend": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/campfire_authority.bend": "78a59482edfd9f1ed0455524b99fda220dbe697bfcc72fe1a7b71a343396ab21",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/campfire_authority_items.bend": "cc8e33b0636309348135ec32aabb8f6cfceb23a24863fd064fc30bf730ba79c2",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_block_entity_codec.bend": "3e14021533973a0acd837bcad0f384ab699743a31c1364d1a72bddb8210828bd",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_block_entity_codec_components.bend": "f0a2bf8551c0d64e691cf482484056573a9862ce09bf4da783125644460db414",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_block_entity_codec_items.bend": "119b8c6f0819320b8cdbe3dcea3840c1b6a6f4483fa74d496164fb671e355e01",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_block_entity_codec_laws.bend": "71be541ce885c41a893e768f4ee303868193d4ef6458ff8d7d841a83c2bd863f",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_block_entity_codec_nbt.bend": "ceacb780ad51bd196c2317a31b990756ef42a1e22852fc733296f2ad21331a8a",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_block_entity_codec_proof.bend": "19fcf8e64e432a0f2447a620631d90232ef74351fe9aaddd3353b8df24517760",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_recipe.bend": "085bfe968f3e7169e5c7bacf633029ebd9e4fc8c8ecb79ad81f63a193110f795",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_recipe_decoder.bend": "ca334faae18c0a25664d4d3170f29aa26e33fa4a0b9da0bcc08348c79e51ae28",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_recipe_number.bend": "c3b8b18a323f9c95602c55d0063c2ae49796979ed6d7a4506b00a4091db1921a",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe.bend": "3c5f3fc7b3e0be9be7d553da2a107dc1245fe13f17afac0efdf84bc41c15ffe2",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe_component_registry.bend": "911786032b2c22759208edaf7112ae403b2a03663d9237c3e036c2b5ba4ece2a",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe_components.bend": "2a35e31f26187ebbdab1c4261d54083acb68072a56a7b5869e5dfc490bc946be",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe_decoder.bend": "739037cf939bcef5a8008c34216b717ed60574c66690f627d11dc949e8542397",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/furnace_authority.bend": "1aeba248310862e0d3df4efce300c842a31e5377daa79dc166e59d7414758be2",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/furnace_authority_decoder.bend": "e69c7050eb2a51fe019bbcfb1716f2512f12f8853f19320502d3769d0626ce47",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/furnace_authority_fuel.bend": "e118a5890567ea91431890b3889d9392891bf84bbd4d827ed088983fdf80fa74",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/inventory.bend": "9d2be7fb88afa1dc6386ab9e8b046b15d2a2a73b7e14566e5bfad3e6dd1f2702",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/json.bend": "a1789e3b4f5bea158ec0d95a8bcb39aa5b7c7e7355a5254d3de1d52a93c719d1",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/nbt.bend": "b677546b5fc02aaa38f5c09e5b798c0d35aec32b1c4b37cbd7042b9a1a5275e4",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/u32_decimal.bend": "d0b4b33f10b9e9801c4e99b83803afba5031ea40013a9263f9090bed8543d25c"
+    },
+    "termPins": [
+      {
+        "checked_proof_sha256": "cdbb8ae26dd054e30eda207ba1ebb08cf5ffd8567c976dc8e36fbf9c90acbd48",
+        "name": "cooking_block_entity_codec_laws:rejected_furnace_decode_preserves_complete_owner",
+        "source_body_sha256": "1d400da8a2707ffb295235aea7a4b741090a268774e4534919d89ec767130ba0",
+        "type_sha256": "451d6f4c8e8a3532375aa15d1ab8ba379ef722f99f119cec6d04d4fddc3144c0"
+      },
+      {
+        "checked_proof_sha256": "da424e03514c23aaba3bcc985fafb21b7e19b4185b8999ea5b9be449c928d2a8",
+        "name": "cooking_block_entity_codec_laws:invalid_furnace_backing_cannot_publish_load",
+        "source_body_sha256": "3eec9fc3dcd684809e8b75608026b8035cde7ad72f55fc6e9dc37f3dfeecf8b5",
+        "type_sha256": "b437716ac149240045237a3b54975b353bd2547f04b9300ed5bae9ba69b5e014"
+      },
+      {
+        "checked_proof_sha256": "9be022b9c1cb4408faf5079ceb19764ab6cd0e4923e8e9d8cbb2bad5cbdd6469",
+        "name": "cooking_block_entity_codec_laws:refused_furnace_commit_preserves_owner",
+        "source_body_sha256": "95c0c5339d10f3df066d1d513d18a0738edbf80ea5ce31774cf629bcc8110ef8",
+        "type_sha256": "5425e34a7e06bd6b3dc9c919a6fdd184fa9db604975491020788f235d2fc5449"
+      },
+      {
+        "checked_proof_sha256": "cdd01fe0be23e428120c061251ab3c26f8ab08a8523b4298f80f9d2f677c6bb6",
+        "name": "cooking_block_entity_codec_laws:refused_campfire_commit_preserves_owner",
+        "source_body_sha256": "95c0c5339d10f3df066d1d513d18a0738edbf80ea5ce31774cf629bcc8110ef8",
+        "type_sha256": "75e400560abf413ec6ffb38952b96c009ea4daa5f4c418cd6ca6c83ca4ed1a56"
+      },
+      {
+        "checked_proof_sha256": "61e4aba7f6fb0fe3b0b66e4223392dca5f098b7ff8f3976529c49b2d9aae32ad",
+        "name": "cooking_block_entity_codec_laws:present_empty_timer_array_retains_prior_tail",
+        "source_body_sha256": "77ee3665d9dfc3d6c70bb67d9df78f348c0d5b0b852d4cb67c553d9bf8e15500",
+        "type_sha256": "719e3df1d651f4dc6f3f441985d68f08ddc1b6d3a3bac0086ac54af1ab0e17fe"
+      },
+      {
+        "checked_proof_sha256": "679347172633bddbbbd4daad8ee1a93c68a5eb1fe6149317bc958ffe4faf4252",
+        "name": "cooking_block_entity_codec_laws:missing_timer_array_resets_all_four_cells",
+        "source_body_sha256": "1781958affd4e6f20269730f34001369602f476e629fb04ad9ec4be773bfd5a9",
+        "type_sha256": "98edd1a81de8c72be57515a189355f15b8022d9a88cf4c2d6353437f712a6be4"
+      },
+      {
+        "checked_proof_sha256": "4534bd68c0af3b0e63e6ecf9dc8e37a28b98a8b5224479e54c253ba3b880965a",
+        "name": "cooking_block_entity_codec_laws:wrong_timer_array_resets_all_four_cells",
+        "source_body_sha256": "dc26904b949724ddb95b4691d25d50e33efaaeae8be5e19de7d6de0e1c66ce28",
+        "type_sha256": "061a4ff819c62e7622d678545e8d0d8ea7166b3a3922a3f15759f5c2cf7640f2"
+      },
+      {
+        "checked_proof_sha256": "d4fc91138194e4da4b9dcf82ae01795831656cc638c2de748acebabc4a563696",
+        "name": "cooking_block_entity_codec_laws:short_timer_array_retains_three_old_cells",
+        "source_body_sha256": "803c1e0e08956b7a0d7ac1d39b055a4435839c796570794c8ad243ecbc9191c7",
+        "type_sha256": "140441231411c0e8ccffd0d48c152efdf15899c65b06b6d66d9d81158ccff91a"
+      },
+      {
+        "checked_proof_sha256": "9f01cf51697eda9cc836e6a9e444d9c27d7b4db17930db9f4d5da0203caba454",
+        "name": "cooking_block_entity_codec_laws:full_timer_array_discards_source_tail",
+        "source_body_sha256": "61fff5b6bb8166d9f1ff4a386b5a0f31deef64d50fabb41c199108d16516d16f",
+        "type_sha256": "cc94e4cb195de48375434a55749524f97f987c9d484a3967f9b6246ef6a0346b"
+      },
+      {
+        "checked_proof_sha256": "687a318ce6660a3f1ab718925a9aeef3615be9c9f83b7a702fae3c829cf11536",
+        "name": "cooking_block_entity_codec_laws:physical_int_timer_preserves_signed_bits",
+        "source_body_sha256": "0cbc73e6f0be8cae446572e16d7ecc5d8844cfe3116a3a7c2fa766a2fe19c73c",
+        "type_sha256": "6c04e38e948b16002808e3960deab94c92a614d013578212fc706b84d1b0e3ee"
+      },
+      {
+        "checked_proof_sha256": "5406140ada7f2f7b7ed1d39d18e2cf4573df739802d0996a8e2c3417015ed818",
+        "name": "cooking_block_entity_codec_laws:physical_long_timer_uses_low_signed_word",
+        "source_body_sha256": "757ba7f4bb9ff0df19780aaed3d2df8a475116cd7ed65a0e4490e88097f26333",
+        "type_sha256": "4ebd5f8ff6e1cf400d762d3f0ded261344de68cd4d5ea00873070291c1182e44"
+      },
+      {
+        "checked_proof_sha256": "8059c82a48f018d1f46b7dde651e8a0c3bf5b6235e98bd3c452c20a79543b645",
+        "name": "cooking_block_entity_codec_laws:malformed_recipe_count_preserves_valid_sibling",
+        "source_body_sha256": "cf1e9b0501ff78b796d1b8c3d0e637afe89dd0fbd8fcfa8f9487d3a8be6b5238",
+        "type_sha256": "9c6e31f1d63af1894b4c4de2d0f9e012f0265544287ee2dff244e326888a7a6c"
+      },
+      {
+        "checked_proof_sha256": "113810c666c25e0638f317a047ad36b65da943cd8b75fa5394c2b60164d9ca88",
+        "name": "cooking_block_entity_codec_laws:overwritten_physical_recipe_entry_is_not_reintroduced",
+        "source_body_sha256": "b15fdce9de6ac437a8f4475284906f1edbe0bb6ed609507729fb69695cd11364",
+        "type_sha256": "dfaefb8854891354b45a5b165846f3202e356cbf1b886c8708ea74d9e8e4384c"
+      },
+      {
+        "checked_proof_sha256": "58c09a09b2641854ed1201f985220333b4dddb4a30dba6b44c6649cac4147d7d",
+        "name": "cooking_block_entity_codec_laws:output_slots_preserve_exact_keys_and_counts",
+        "source_body_sha256": "f6c04d3908a10e14df0de24c4da38bf92ac3bbe2e999a80c06483e9e9be49405",
+        "type_sha256": "38468740721c84540414e4922acf140bd9e88ddc25d8e0ee8f20295b77ea7420"
+      },
+      {
+        "checked_proof_sha256": "80d735001abce7594d9be58a7a6f7c0544ea4cd4650539f88f3b0b11b1dabf17",
+        "name": "cooking_block_entity_codec_laws:campfire_record_preserves_patch_and_timer_ownership",
+        "source_body_sha256": "6a79b94aa12b45423ce97a2f6a7536d3cc8da73fb1f9d96967461860b2cc94e2",
+        "type_sha256": "d2bef459e0487f0594cd40ad1f8a485e4e02c4e250aacf9e1033340d976f46e1"
+      },
+      {
+        "checked_proof_sha256": "776a1af6d5bf7e6af0913a513519aa059cd75df62049cbffb2206f59b382094e",
+        "name": "cooking_block_entity_codec_laws:empty_items_emit_java_end_list_header",
+        "source_body_sha256": "b189a979eb922749b8bbb320e472afb8312d85712fa632b01284a659aee558d4",
+        "type_sha256": "6249a2c3857c30b569e1eff24a52546ebd21e40022097c16dc543d83c97d2d76"
+      },
+      {
+        "checked_proof_sha256": "d898a0bd2cddb3094f059ea328b3c76850a0cd91ee3d355539d9f23ff50c2765",
+        "name": "cooking_block_entity_codec_laws:invalid_physical_component_is_discarded_without_fabrication",
+        "source_body_sha256": "69ab588cb0e7dd18130edfcb3d931f47ba6a62e8d48b3186947f7602bd65ebcf",
+        "type_sha256": "e4f66324a4b88112e7b6c1fef212189919ba24ae5a83f70f43a361dbcaa15952"
+      },
+      {
+        "checked_proof_sha256": "3a866294ba66f7d83e7883b060ea8f47a3ae4d608c28388d0e6c0cbe7d6dc012",
+        "name": "cooking_block_entity_codec_laws:noncompound_registered_removal_is_discarded",
+        "source_body_sha256": "b0219f070d17e22b3c4e61f57850e3f4a95c454cbdda4919d40947685900e2c2",
+        "type_sha256": "1aaea6155e88dea5dfe9d9f4630843b2ba298e240941c64fa2138996ed82bd46"
+      },
+      {
+        "checked_proof_sha256": "a2b922945f8e20478a118f65c37db6a1170406c2a6edd96c077d49393099d7c1",
+        "name": "cooking_block_entity_codec_laws:invalid_stew_effect_preserves_valid_siblings",
+        "source_body_sha256": "85f61913c1b224d98af404bf7fe34655222d246c69d3a22e6eabc75117a65acc",
+        "type_sha256": "a9d15a296a3de12abab9c4174e5883291ef3882ae693a4d80c4b75dc92df21bd"
+      },
+      {
+        "checked_proof_sha256": "a7365ce3a15bac1b08e7c9d3845e93850a2b669a86af6069c7b44a7e57614fef",
+        "name": "cooking_block_entity_codec_laws:campfire_timer_and_item_decomposition_roundtrips_record",
+        "source_body_sha256": "c78ac58a797103bf0e5e4145ab3768da2bd50921b332482d4867958bb3db9e73",
+        "type_sha256": "b9cf613cc9aa66fbd1308592c2b4ac6a45e8e7fe1bbcfeba27c378ba804a4a7c"
+      },
+      {
+        "checked_proof_sha256": "8f3daedbe0251b93cc5a2ebc6e8334c7acf875362042d930851a79062f096226",
+        "name": "cooking_block_entity_codec_laws:physical_list_wrapper_returns_exact_wrapped_effect",
+        "source_body_sha256": "f29d3a552f4afa03420e7599aa824358b21171febb3fe1268d4edfb217a0322b",
+        "type_sha256": "edb180eac72c39b3167c318610c7278bf4d959fab4fc9234b4f409ed220f83f6"
+      },
+      {
+        "checked_proof_sha256": "1637b5b54cf53732402a90a60ab8961d369d757802db3105b44e438aefb81715",
+        "name": "cooking_block_entity_codec_laws:valid_recipe_key_does_not_require_a_nonair_item",
+        "source_body_sha256": "b189a979eb922749b8bbb320e472afb8312d85712fa632b01284a659aee558d4",
+        "type_sha256": "45687ac43f987ade31eff6cbb8276923443b0606fe7d4e88ab03a78b8e9df671"
+      }
+    ]
+  },
+  "status": "passed"
+}

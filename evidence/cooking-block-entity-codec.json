@@ -1,0 +1,129 @@
+{
+  "binary": {
+    "bytes": 2189032,
+    "file": "native",
+    "sha1": "746d1c2b5a0d3a408c2bbf16d55459767d7f23b5",
+    "sha256": "75cc012fa5cb3c5c7645cc723ea201d2ed813392a041f6a809536b9d555efeda"
+  },
+  "build": {
+    "command": [
+      "/Users/chuah/.bend/bin/bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/cooking_block_entity_codec.bend",
+      "-o",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-block-entity-codec/native"
+    ],
+    "seconds": 14.444616,
+    "status": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  "limitations": [
+    "No full base BlockEntity CustomName/Lock/components interpretation: exact raw extras are retained in Details and known-body encoder omits them for the future base consumer.",
+    "Known persistent setters outside the shared seven-setter codec domain explicitly refuse the whole load; raw canonical envelope alone never authenticates metadata.",
+    "Actual physical ItemStack codec accepts count99 even for limit64. Typed records preserve this; live FA/CA owners refuse it atomically pending a coordinated raw-overstack authority extension.",
+    "Distinct physical names which normalize to the same recipe identifier refuse rather than invent Java map traversal order.",
+    "Durable region writer, physical compression/region framing and live world-save recovery remain the root integration seam."
+  ],
+  "native_input": {
+    "bytes": 82623,
+    "file": "native-input.json",
+    "sha1": "aa78565931a21a27359730afb596033695afda1d",
+    "sha256": "fb2e2a30c78617db771d746709fc7c6abd398ec6618ff17b9a8fa74c7b48de8d"
+  },
+  "output_sha256": "170fe5a8c8e657d7abb1521946ce8aa42bd483335b9cb6213f9bf50b88e254a4",
+  "reference": {
+    "bytes": 112775,
+    "file": "cooking_block_entity_codec.json",
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/cooking_block_entity_codec_initial.json",
+    "sha1": "c101816643478c304265700bc1c0bd261c8b154b",
+    "sha256": "c3458584333bc12db21e12aa307a92941fc528b15d02fcf614affb08ebc705c8"
+  },
+  "runs": [
+    {
+      "command": [
+        "/usr/bin/env",
+        "BEND_THREADS=1",
+        "BEND_GPU=0",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-block-entity-codec/native",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-block-entity-codec/native-input.json"
+      ],
+      "counts": {
+        "admission_owner_refusals": 2,
+        "exact_physical_body_comparisons": 61,
+        "explicit_component_domain_refusals": 1,
+        "java_physical_receivers": 62,
+        "malformed_wire_owner_refusals": 2,
+        "selected_initialized_item_profiles": 6
+      },
+      "seconds": 36.070726,
+      "status": 0,
+      "stderr": "",
+      "stdout": "ime\\\":\\\"minecraft:cooking/time_coal\\\",\\\"speed_multiplier\\\":\\\"minecraft:cooking/speed_default\\\"},\\\"minecraft:enchantment_glint_override\\\":true,\\\"minecraft:enchantments\\\":{},\\\"minecraft:interact_animation\\\":{},\\\"minecraft:item_model\\\":\\\"minecraft:coal\\\",\\\"minecraft:item_name\\\":{\\\"translate\\\":\\\"item.minecraft.coal\\\"},\\\"minecraft:lore\\\":[],\\\"minecraft:max_stack_size\\\":64,\\\"minecraft:rarity\\\":\\\"common\\\",\\\"minecraft:repair_cost\\\":0,\\\"minecraft:tooltip_display\\\":{},\\\"minecraft:use_effects\\\":{}}\",\"count\":1},null,null],\"cookingTimer\":0,\"cookingTotalTime\":0,\"litTimeRemaining\":0,\"litTotalTime\":0,\"speed_bits\":1065353216,\"uses\":{}},\"load\":{\"status\":\"accepted\",\"owner\":{\"state\":{\"slots\":[{\"id\":\"minecraft:coal\",\"components\":\"BendCraftComponents1\\t64\\t{\\\"minecraft:attack_animation\\\":{},\\\"minecraft:attribute_modifiers\\\":[],\\\"minecraft:break_sound\\\":\\\"minecraft:entity.item.break\\\",\\\"minecraft:cooking_fuel\\\":{\\\"burn_time\\\":\\\"minecraft:cooking/time_coal\\\",\\\"speed_multiplier\\\":\\\"minecraft:cooking/speed_default\\\"},\\\"minecraft:enchantment_glint_override\\\":true,\\\"minecraft:enchantments\\\":{},\\\"minecraft:interact_animation\\\":{},\\\"minecraft:item_model\\\":\\\"minecraft:coal\\\",\\\"minecraft:item_name\\\":{\\\"translate\\\":\\\"item.minecraft.coal\\\"},\\\"minecraft:lore\\\":[],\\\"minecraft:max_stack_size\\\":64,\\\"minecraft:rarity\\\":\\\"common\\\",\\\"minecraft:repair_cost\\\":0,\\\"minecraft:tooltip_display\\\":{},\\\"minecraft:use_effects\\\":{}}\",\"count\":1},null,null],\"cookingTimer\":0,\"cookingTotalTime\":0,\"litTimeRemaining\":0,\"litTotalTime\":0,\"speed_bits\":1065353216,\"uses\":{}},\"hidden\":{\"id\":\"minecraft:stone\",\"components\":\"\",\"count\":5},\"cache\":null}}},{\"id\":\"glint_negative_zero\",\"status\":\"accepted\",\"state\":{\"slots\":[{\"id\":\"minecraft:coal\",\"components\":\"BendCraftComponents1\\t64\\t{\\\"minecraft:attack_animation\\\":{},\\\"minecraft:attribute_modifiers\\\":[],\\\"minecraft:break_sound\\\":\\\"minecraft:entity.item.break\\\",\\\"minecraft:cooking_fuel\\\":{\\\"burn_time\\\":\\\"minecraft:cooking/time_coal\\\",\\\"speed_multiplier\\\":\\\"minecraft:cooking/speed_default\\\"},\\\"minecraft:enchantment_glint_override\\\":false,\\\"minecraft:enchantments\\\":{},\\\"minecraft:interact_animation\\\":{},\\\"minecraft:item_model\\\":\\\"minecraft:coal\\\",\\\"minecraft:item_name\\\":{\\\"translate\\\":\\\"item.minecraft.coal\\\"},\\\"minecraft:lore\\\":[],\\\"minecraft:max_stack_size\\\":64,\\\"minecraft:rarity\\\":\\\"common\\\",\\\"minecraft:repair_cost\\\":0,\\\"minecraft:tooltip_display\\\":{},\\\"minecraft:use_effects\\\":{}}\",\"count\":1},null,null],\"cookingTimer\":0,\"cookingTotalTime\":0,\"litTimeRemaining\":0,\"litTotalTime\":0,\"speed_bits\":1065353216,\"uses\":{}},\"details\":{\"extras\":0,\"discarded\":0},\"bytes\":[10,0,0,3,0,18,99,111,111,107,105,110,103,95,116,105,109,101,95,115,112,101,110,116,0,0,0,0,3,0,18,99,111,111,107,105,110,103,95,116,111,116,97,108,95,116,105,109,101,0,0,0,0,3,0,18,108,105,116,95,116,105,109,101,95,114,101,109,97,105,110,105,110,103,0,0,0,0,3,0,14,108,105,116,95,116,111,116,97,108,95,116,105,109,101,0,0,0,0,5,0,16,115,112,101,101,100,95,109,117,108,116,105,112,108,105,101,114,63,128,0,0,9,0,5,73,116,101,109,115,10,0,0,0,1,1,0,4,83,108,111,116,0,8,0,2,105,100,0,14,109,105,110,101,99,114,97,102,116,58,99,111,97,108,3,0,5,99,111,117,110,116,0,0,0,1,10,0,10,99,111,109,112,111,110,101,110,116,115,1,0,36,109,105,110,101,99,114,97,102,116,58,101,110,99,104,97,110,116,109,101,110,116,95,103,108,105,110,116,95,111,118,101,114,114,105,100,101,0,0,0,10,0,11,82,101,99,105,112,101,115,85,115,101,100,0,0],\"roundtrip\":{\"slots\":[{\"id\":\"minecraft:coal\",\"components\":\"BendCraftComponents1\\t64\\t{\\\"minecraft:attack_animation\\\":{},\\\"minecraft:attribute_modifiers\\\":[],\\\"minecraft:break_sound\\\":\\\"minecraft:entity.item.break\\\",\\\"minecraft:cooking_fuel\\\":{\\\"burn_time\\\":\\\"minecraft:cooking/time_coal\\\",\\\"speed_multiplier\\\":\\\"minecraft:cooking/speed_default\\\"},\\\"minecraft:enchantment_glint_override\\\":false,\\\"minecraft:enchantments\\\":{},\\\"minecraft:interact_animation\\\":{},\\\"minecraft:item_model\\\":\\\"minecraft:coal\\\",\\\"minecraft:item_name\\\":{\\\"translate\\\":\\\"item.minecraft.coal\\\"},\\\"minecraft:lore\\\":[],\\\"minecraft:max_stack_size\\\":64,\\\"minecraft:rarity\\\":\\\"common\\\",\\\"minecraft:repair_cost\\\":0,\\\"minecraft:tooltip_display\\\":{},\\\"minecraft:use_effects\\\":{}}\",\"count\":1},null,null],\"cookingTimer\":0,\"cookingTotalTime\":0,\"litTimeRemaining\":0,\"litTotalTime\":0,\"speed_bits\":1065353216,\"uses\":{}},\"load\":{\"status\":\"accepted\",\"owner\":{\"state\":{\"slots\":[{\"id\":\"minecraft:coal\",\"components\":\"BendCraftComponents1\\t64\\t{\\\"minecraft:attack_animation\\\":{},\\\"minecraft:attribute_modifiers\\\":[],\\\"minecraft:break_sound\\\":\\\"minecraft:entity.item.break\\\",\\\"minecraft:cooking_fuel\\\":{\\\"burn_time\\\":\\\"minecraft:cooking/time_coal\\\",\\\"speed_multiplier\\\":\\\"minecraft:cooking/speed_default\\\"},\\\"minecraft:enchantment_glint_override\\\":false,\\\"minecraft:enchantments\\\":{},\\\"minecraft:interact_animation\\\":{},\\\"minecraft:item_model\\\":\\\"minecraft:coal\\\",\\\"minecraft:item_name\\\":{\\\"translate\\\":\\\"item.minecraft.coal\\\"},\\\"minecraft:lore\\\":[],\\\"minecraft:max_stack_size\\\":64,\\\"minecraft:rarity\\\":\\\"common\\\",\\\"minecraft:repair_cost\\\":0,\\\"minecraft:tooltip_display\\\":{},\\\"minecraft:use_effects\\\":{}}\",\"count\":1},null,null],\"cookingTimer\":0,\"cookingTotalTime\":0,\"litTimeRemaining\":0,\"litTotalTime\":0,\"speed_bits\":1065353216,\"uses\":{}},\"hidden\":{\"id\":\"minecraft:stone\",\"components\":\"\",\"count\":5},\"cache\":null}}},{\"id\":\"truncated_wire\",\"status\":\"refused\",\"message\":\"truncated NBT at byte 3\",\"load\":{\"status\":\"refused\",\"owner\":{\"state\":{\"slots\":[{\"id\":\"minecraft:dirt\",\"components\":\"\",\"count\":2},null,null],\"cookingTimer\":51,\"cookingTotalTime\":61,\"litTimeRemaining\":31,\"litTotalTime\":41,\"speed_bits\":1073741824,\"uses\":{\"probe:previous\":7}},\"hidden\":{\"id\":\"minecraft:stone\",\"components\":\"\",\"count\":5},\"cache\":\"probe:previous\"}}},{\"id\":\"noncompound_root\",\"status\":\"refused\",\"message\":\"cooking block entity requires Compound root\",\"load\":{\"status\":\"refused\",\"owner\":{\"slots\":[{\"id\":\"minecraft:dirt\",\"components\":\"\",\"count\":1},null,null,null],\"progress\":[11,22,33,44],\"total\":[101,202,303,404]},\"kind\":\"soul\",\"lit\":true,\"cache\":\"probe:previous\"}}]\n",
+      "threads": 1
+    },
+    {
+      "command": [
+        "/usr/bin/env",
+        "BEND_THREADS=4",
+        "BEND_GPU=0",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-block-entity-codec/native",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-block-entity-codec/native-input.json"
+      ],
+      "counts": {
+        "admission_owner_refusals": 2,
+        "exact_physical_body_comparisons": 61,
+        "explicit_component_domain_refusals": 1,
+        "java_physical_receivers": 62,
+        "malformed_wire_owner_refusals": 2,
+        "selected_initialized_item_profiles": 6
+      },
+      "seconds": 35.622006,
+      "status": 0,
+      "stderr": "",
+      "stdout": "ime\\\":\\\"minecraft:cooking/time_coal\\\",\\\"speed_multiplier\\\":\\\"minecraft:cooking/speed_default\\\"},\\\"minecraft:enchantment_glint_override\\\":true,\\\"minecraft:enchantments\\\":{},\\\"minecraft:interact_animation\\\":{},\\\"minecraft:item_model\\\":\\\"minecraft:coal\\\",\\\"minecraft:item_name\\\":{\\\"translate\\\":\\\"item.minecraft.coal\\\"},\\\"minecraft:lore\\\":[],\\\"minecraft:max_stack_size\\\":64,\\\"minecraft:rarity\\\":\\\"common\\\",\\\"minecraft:repair_cost\\\":0,\\\"minecraft:tooltip_display\\\":{},\\\"minecraft:use_effects\\\":{}}\",\"count\":1},null,null],\"cookingTimer\":0,\"cookingTotalTime\":0,\"litTimeRemaining\":0,\"litTotalTime\":0,\"speed_bits\":1065353216,\"uses\":{}},\"load\":{\"status\":\"accepted\",\"owner\":{\"state\":{\"slots\":[{\"id\":\"minecraft:coal\",\"components\":\"BendCraftComponents1\\t64\\t{\\\"minecraft:attack_animation\\\":{},\\\"minecraft:attribute_modifiers\\\":[],\\\"minecraft:break_sound\\\":\\\"minecraft:entity.item.break\\\",\\\"minecraft:cooking_fuel\\\":{\\\"burn_time\\\":\\\"minecraft:cooking/time_coal\\\",\\\"speed_multiplier\\\":\\\"minecraft:cooking/speed_default\\\"},\\\"minecraft:enchantment_glint_override\\\":true,\\\"minecraft:enchantments\\\":{},\\\"minecraft:interact_animation\\\":{},\\\"minecraft:item_model\\\":\\\"minecraft:coal\\\",\\\"minecraft:item_name\\\":{\\\"translate\\\":\\\"item.minecraft.coal\\\"},\\\"minecraft:lore\\\":[],\\\"minecraft:max_stack_size\\\":64,\\\"minecraft:rarity\\\":\\\"common\\\",\\\"minecraft:repair_cost\\\":0,\\\"minecraft:tooltip_display\\\":{},\\\"minecraft:use_effects\\\":{}}\",\"count\":1},null,null],\"cookingTimer\":0,\"cookingTotalTime\":0,\"litTimeRemaining\":0,\"litTotalTime\":0,\"speed_bits\":1065353216,\"uses\":{}},\"hidden\":{\"id\":\"minecraft:stone\",\"components\":\"\",\"count\":5},\"cache\":null}}},{\"id\":\"glint_negative_zero\",\"status\":\"accepted\",\"state\":{\"slots\":[{\"id\":\"minecraft:coal\",\"components\":\"BendCraftComponents1\\t64\\t{\\\"minecraft:attack_animation\\\":{},\\\"minecraft:attribute_modifiers\\\":[],\\\"minecraft:break_sound\\\":\\\"minecraft:entity.item.break\\\",\\\"minecraft:cooking_fuel\\\":{\\\"burn_time\\\":\\\"minecraft:cooking/time_coal\\\",\\\"speed_multiplier\\\":\\\"minecraft:cooking/speed_default\\\"},\\\"minecraft:enchantment_glint_override\\\":false,\\\"minecraft:enchantments\\\":{},\\\"minecraft:interact_animation\\\":{},\\\"minecraft:item_model\\\":\\\"minecraft:coal\\\",\\\"minecraft:item_name\\\":{\\\"translate\\\":\\\"item.minecraft.coal\\\"},\\\"minecraft:lore\\\":[],\\\"minecraft:max_stack_size\\\":64,\\\"minecraft:rarity\\\":\\\"common\\\",\\\"minecraft:repair_cost\\\":0,\\\"minecraft:tooltip_display\\\":{},\\\"minecraft:use_effects\\\":{}}\",\"count\":1},null,null],\"cookingTimer\":0,\"cookingTotalTime\":0,\"litTimeRemaining\":0,\"litTotalTime\":0,\"speed_bits\":1065353216,\"uses\":{}},\"details\":{\"extras\":0,\"discarded\":0},\"bytes\":[10,0,0,3,0,18,99,111,111,107,105,110,103,95,116,105,109,101,95,115,112,101,110,116,0,0,0,0,3,0,18,99,111,111,107,105,110,103,95,116,111,116,97,108,95,116,105,109,101,0,0,0,0,3,0,18,108,105,116,95,116,105,109,101,95,114,101,109,97,105,110,105,110,103,0,0,0,0,3,0,14,108,105,116,95,116,111,116,97,108,95,116,105,109,101,0,0,0,0,5,0,16,115,112,101,101,100,95,109,117,108,116,105,112,108,105,101,114,63,128,0,0,9,0,5,73,116,101,109,115,10,0,0,0,1,1,0,4,83,108,111,116,0,8,0,2,105,100,0,14,109,105,110,101,99,114,97,102,116,58,99,111,97,108,3,0,5,99,111,117,110,116,0,0,0,1,10,0,10,99,111,109,112,111,110,101,110,116,115,1,0,36,109,105,110,101,99,114,97,102,116,58,101,110,99,104,97,110,116,109,101,110,116,95,103,108,105,110,116,95,111,118,101,114,114,105,100,101,0,0,0,10,0,11,82,101,99,105,112,101,115,85,115,101,100,0,0],\"roundtrip\":{\"slots\":[{\"id\":\"minecraft:coal\",\"components\":\"BendCraftComponents1\\t64\\t{\\\"minecraft:attack_animation\\\":{},\\\"minecraft:attribute_modifiers\\\":[],\\\"minecraft:break_sound\\\":\\\"minecraft:entity.item.break\\\",\\\"minecraft:cooking_fuel\\\":{\\\"burn_time\\\":\\\"minecraft:cooking/time_coal\\\",\\\"speed_multiplier\\\":\\\"minecraft:cooking/speed_default\\\"},\\\"minecraft:enchantment_glint_override\\\":false,\\\"minecraft:enchantments\\\":{},\\\"minecraft:interact_animation\\\":{},\\\"minecraft:item_model\\\":\\\"minecraft:coal\\\",\\\"minecraft:item_name\\\":{\\\"translate\\\":\\\"item.minecraft.coal\\\"},\\\"minecraft:lore\\\":[],\\\"minecraft:max_stack_size\\\":64,\\\"minecraft:rarity\\\":\\\"common\\\",\\\"minecraft:repair_cost\\\":0,\\\"minecraft:tooltip_display\\\":{},\\\"minecraft:use_effects\\\":{}}\",\"count\":1},null,null],\"cookingTimer\":0,\"cookingTotalTime\":0,\"litTimeRemaining\":0,\"litTotalTime\":0,\"speed_bits\":1065353216,\"uses\":{}},\"load\":{\"status\":\"accepted\",\"owner\":{\"state\":{\"slots\":[{\"id\":\"minecraft:coal\",\"components\":\"BendCraftComponents1\\t64\\t{\\\"minecraft:attack_animation\\\":{},\\\"minecraft:attribute_modifiers\\\":[],\\\"minecraft:break_sound\\\":\\\"minecraft:entity.item.break\\\",\\\"minecraft:cooking_fuel\\\":{\\\"burn_time\\\":\\\"minecraft:cooking/time_coal\\\",\\\"speed_multiplier\\\":\\\"minecraft:cooking/speed_default\\\"},\\\"minecraft:enchantment_glint_override\\\":false,\\\"minecraft:enchantments\\\":{},\\\"minecraft:interact_animation\\\":{},\\\"minecraft:item_model\\\":\\\"minecraft:coal\\\",\\\"minecraft:item_name\\\":{\\\"translate\\\":\\\"item.minecraft.coal\\\"},\\\"minecraft:lore\\\":[],\\\"minecraft:max_stack_size\\\":64,\\\"minecraft:rarity\\\":\\\"common\\\",\\\"minecraft:repair_cost\\\":0,\\\"minecraft:tooltip_display\\\":{},\\\"minecraft:use_effects\\\":{}}\",\"count\":1},null,null],\"cookingTimer\":0,\"cookingTotalTime\":0,\"litTimeRemaining\":0,\"litTotalTime\":0,\"speed_bits\":1065353216,\"uses\":{}},\"hidden\":{\"id\":\"minecraft:stone\",\"components\":\"\",\"count\":5},\"cache\":null}}},{\"id\":\"truncated_wire\",\"status\":\"refused\",\"message\":\"truncated NBT at byte 3\",\"load\":{\"status\":\"refused\",\"owner\":{\"state\":{\"slots\":[{\"id\":\"minecraft:dirt\",\"components\":\"\",\"count\":2},null,null],\"cookingTimer\":51,\"cookingTotalTime\":61,\"litTimeRemaining\":31,\"litTotalTime\":41,\"speed_bits\":1073741824,\"uses\":{\"probe:previous\":7}},\"hidden\":{\"id\":\"minecraft:stone\",\"components\":\"\",\"count\":5},\"cache\":\"probe:previous\"}}},{\"id\":\"noncompound_root\",\"status\":\"refused\",\"message\":\"cooking block entity requires Compound root\",\"load\":{\"status\":\"refused\",\"owner\":{\"slots\":[{\"id\":\"minecraft:dirt\",\"components\":\"\",\"count\":1},null,null,null],\"progress\":[11,22,33,44],\"total\":[101,202,303,404]},\"kind\":\"soul\",\"lit\":true,\"cache\":\"probe:previous\"}}]\n",
+      "threads": 4
+    }
+  ],
+  "source_check": {
+    "command": [
+      "/Users/chuah/.bend/bin/bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/cooking_block_entity_codec.bend",
+      "--check-only"
+    ],
+    "seconds": 1.469617,
+    "status": 0,
+    "stderr": "",
+    "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+  },
+  "source_scope_note": "The reference above and source hashes are the successful 62-receiver native snapshot. Final additions to physical list partials are separately verified by cooking-block-entity-codec-lists.json; proof-root selection changes do not change this native graph.",
+  "sources_at_run": {
+    "src/campfire_authority.bend": "78a59482edfd9f1ed0455524b99fda220dbe697bfcc72fe1a7b71a343396ab21",
+    "src/campfire_authority_items.bend": "cc8e33b0636309348135ec32aabb8f6cfceb23a24863fd064fc30bf730ba79c2",
+    "src/cooking_block_entity_codec.bend": "6d5fccd72b4ae57531f25cb836b639f1b5dee60c9ab6c1fd0e73e800628c2fdb",
+    "src/cooking_block_entity_codec_components.bend": "730fa0448021d8b6cc80b1308e26fd0f70669a8909145cbb8703ccf6684026c0",
+    "src/cooking_block_entity_codec_items.bend": "119b8c6f0819320b8cdbe3dcea3840c1b6a6f4483fa74d496164fb671e355e01",
+    "src/cooking_block_entity_codec_laws.bend": "8267eae0714ff23df62354f822325ff89ce422bdb0aaacf6edd71c955ac6cf6a",
+    "src/cooking_block_entity_codec_nbt.bend": "ceacb780ad51bd196c2317a31b990756ef42a1e22852fc733296f2ad21331a8a",
+    "src/cooking_block_entity_codec_proof.bend": "793c1205e477a1b48ba7c665f7f7b7b85fa5eb34d3436e1a42018e41c71940a2",
+    "src/cooking_recipe.bend": "085bfe968f3e7169e5c7bacf633029ebd9e4fc8c8ecb79ad81f63a193110f795",
+    "src/cooking_recipe_decoder.bend": "ca334faae18c0a25664d4d3170f29aa26e33fa4a0b9da0bcc08348c79e51ae28",
+    "src/cooking_recipe_number.bend": "c3b8b18a323f9c95602c55d0063c2ae49796979ed6d7a4506b00a4091db1921a",
+    "src/crafting_recipe.bend": "3c5f3fc7b3e0be9be7d553da2a107dc1245fe13f17afac0efdf84bc41c15ffe2",
+    "src/crafting_recipe_component_registry.bend": "911786032b2c22759208edaf7112ae403b2a03663d9237c3e036c2b5ba4ece2a",
+    "src/crafting_recipe_components.bend": "2a35e31f26187ebbdab1c4261d54083acb68072a56a7b5869e5dfc490bc946be",
+    "src/crafting_recipe_decoder.bend": "739037cf939bcef5a8008c34216b717ed60574c66690f627d11dc949e8542397",
+    "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "src/furnace_authority.bend": "1aeba248310862e0d3df4efce300c842a31e5377daa79dc166e59d7414758be2",
+    "src/furnace_authority_decoder.bend": "e69c7050eb2a51fe019bbcfb1716f2512f12f8853f19320502d3769d0626ce47",
+    "src/furnace_authority_fuel.bend": "e118a5890567ea91431890b3889d9392891bf84bbd4d827ed088983fdf80fa74",
+    "src/inventory.bend": "9d2be7fb88afa1dc6386ab9e8b046b15d2a2a73b7e14566e5bfad3e6dd1f2702",
+    "src/json.bend": "a1789e3b4f5bea158ec0d95a8bcb39aa5b7c7e7355a5254d3de1d52a93c719d1",
+    "src/nbt.bend": "b677546b5fc02aaa38f5c09e5b798c0d35aec32b1c4b37cbd7042b9a1a5275e4",
+    "src/u32_decimal.bend": "d0b4b33f10b9e9801c4e99b83803afba5031ea40013a9263f9090bed8543d25c",
+    "tests/cooking_block_entity_codec.bend": "a571710f8d200b60498f82b339241f62c9a2190d7325076b5ea7ccfa2c656096",
+    "tools/cooking_block_entity_codec_proof.mjs": "9039755d0e2685aaa5dfb488711f73552ab8e6514dc2be5e009f1cc7743967a1",
+    "tools/reference_cooking_block_entity_codec.py": "33fe68f7924f76681dce54e7d04b059954ca101bbbdae7c4dee7cec3b2968ca2",
+    "tools/test_cooking_block_entity_codec.py": "ee40118402fba77ca0a6e6fa55eacde9ff19512fdc814ecc9d27917742ce9a11"
+  },
+  "status": "passed"
+}
