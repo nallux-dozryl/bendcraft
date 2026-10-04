@@ -1,5 +1,8 @@
 import Base
 import ./local_player_cooking.bend as K
+import ./local_player_cooking_entity_owner.bend as Owner
+import ./cooking_effect_entities_model.bend as Model
+import ./random.bend as Random
 import ./local_player_session.bend as Session
 import ./core.bend as C
 import ./section_map.bend as Sections
@@ -42,10 +45,11 @@ law already_initialized_begin_retains_complete_cooking_owner:
   for details:List<&2,K.BodyDetails>
   for incarnations:Map<&2,Nat>
   for acknowledged_resets:Nat
+  for entity_owner:Owner.Carrier
   for sidecar_tail:List<&1,K.Sidecar>
   for replacement:K.Context
-  {K.begin(world,K.Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,sidecar_tail},replacement) ==
-    (world,K.Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,sidecar_tail},Fail{"local-cooking:already-initialized"}) :
+  {K.begin(world,K.Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,entity_owner,sidecar_tail},replacement) ==
+    (world,K.Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,entity_owner,sidecar_tail},Fail{"local-cooking:already-initialized"}) :
     C.World & K.Sidecar & Result<&2,&2,String,Unit>}
 
 # Pausing an idle owner without a scheduled tick does not discover sections,
@@ -69,12 +73,13 @@ law paused_idle_tick_retains_complete_cooking_owner:
   for details:List<&2,K.BodyDetails>
   for incarnations:Map<&2,Nat>
   for acknowledged_resets:Nat
+  for entity_owner:Owner.Carrier
   for sidecar_tail:List<&1,K.Sidecar>
   for admitted:{K.context_counts(count,context) == True{} : Bool}
   {K.tick(C.World{tick,time,True{},daylight,revision,count,sections,pending,events},
-      K.Initialized{context,light,loading,entries,CW.Idle{},keys,effects,details,incarnations,acknowledged_resets,sidecar_tail},False{}) ==
+      K.Initialized{context,light,loading,entries,CW.Idle{},keys,effects,details,incarnations,acknowledged_resets,entity_owner,sidecar_tail},False{}) ==
     (C.World{tick,time,True{},daylight,revision,count,sections,pending,events},
-      K.Initialized{context,light,loading,entries,CW.Idle{},keys,effects,details,incarnations,acknowledged_resets,sidecar_tail},Done{False{}}) :
+      K.Initialized{context,light,loading,entries,CW.Idle{},keys,effects,details,incarnations,acknowledged_resets,entity_owner,sidecar_tail},Done{False{}}) :
     C.World & K.Sidecar & Result<&2,&2,String,Bool>}
 
 # A forged nonempty Context tail refuses before the physical save supplier.
@@ -95,14 +100,15 @@ law noncanonical_context_save_retains_complete_cooking_owner:
   for details:List<&2,K.BodyDetails>
   for incarnations:Map<&2,Nat>
   for acknowledged_resets:Nat
+  for entity_owner:Owner.Carrier
   for sidecar_tail:List<&1,K.Sidecar>
   for position:C.Position
   for limits:N.Limits
   for cap:C.Capability
   {K.save_body(world,K.Initialized{K.Context{registry,enabled,cooking,head <> tail},
-      light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,sidecar_tail},position,limits,cap) ==
+      light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,entity_owner,sidecar_tail},position,limits,cap) ==
     (world,K.Initialized{K.Context{registry,enabled,cooking,head <> tail},
-      light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,sidecar_tail},Fail{"local-cooking:invalid-context"}) :
+      light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,entity_owner,sidecar_tail},Fail{"local-cooking:invalid-context"}) :
     C.World & K.Sidecar & Result<&2,&2,String,List<&2,U32>>}
 
 # This is the actual Session detour, not a smaller view or copied world.
@@ -110,8 +116,8 @@ law noncanonical_context_save_retains_complete_cooking_owner:
 # Success and failure both publish that returned owner, since an accepted
 # cooking tick can commit Core before a later supplier refuses its finish.
 # Registry, tables, inventory, lease and every owned/Data runtime tail remain.
-# Arbitrary input/returned Sidecar includes incarnation counters, reset ack
-# and its complete recursively boxed affine tail.
+# Arbitrary input/returned Sidecar includes incarnation counters, reset ack,
+# the complete actual entity/RNG Carrier and recursively boxed affine tail.
 law cooking_query_publishes_supplied_owner_and_retains_complete_session:
   for world:C.World
   for registry:B.Registry
@@ -213,14 +219,15 @@ law pending_delivery_installs_actual_suffix_and_preserves_complete_sidecar:
   for details:List<&2,K.BodyDetails>
   for incarnations:Map<&2,Nat>
   for acknowledged_resets:Nat
+  for entity_owner:Owner.Carrier
   for sidecar_tail:List<&1,K.Sidecar>
   for +pending:List<&2,Store.Effect>
   for +status:Result<&2,&2,String,Unit>
   for supplied:{Delivery.deliver(effects) == Delivery.Outcome{pending,status} : Delivery.Outcome}
   {K.deliver_pending(K.Initialized{context,light,loading,entries,phase,keys,effects,details,
-      incarnations,acknowledged_resets,sidecar_tail}) ==
+      incarnations,acknowledged_resets,entity_owner,sidecar_tail}) ==
     (K.Initialized{context,light,loading,entries,phase,keys,pending,details,
-      incarnations,acknowledged_resets,sidecar_tail},status) :
+      incarnations,acknowledged_resets,entity_owner,sidecar_tail},status) :
     K.Sidecar & Result<&2,&2,String,Unit>}
 
 # An admitted scheduled tick refuses a recursive child owner before Core
@@ -244,13 +251,43 @@ law noncanonical_tail_active_tick_retains_complete_cooking_owner:
   for details:List<&2,K.BodyDetails>
   for incarnations:Map<&2,Nat>
   for acknowledged_resets:Nat
+  for entity_owner:Owner.Carrier
   for child:K.Sidecar
   for sidecar_tail:List<&1,K.Sidecar>
   for admitted:{K.context_counts(count,context) == True{} : Bool}
   {K.tick(C.World{tick,time,paused,daylight,revision,count,sections,pending,events},
       K.Initialized{context,light,loading,entries,CW.Idle{},keys,effects,details,
-        incarnations,acknowledged_resets,child <> sidecar_tail},True{}) ==
+        incarnations,acknowledged_resets,entity_owner,child <> sidecar_tail},True{}) ==
     (C.World{tick,time,paused,daylight,revision,count,sections,pending,events},
       K.Initialized{context,light,loading,entries,CW.Idle{},keys,effects,details,
-        incarnations,acknowledged_resets,child <> sidecar_tail},Fail{"local-cooking:noncanonical-sidecar-tail"}) :
+        incarnations,acknowledged_resets,entity_owner,child <> sidecar_tail},Fail{"local-cooking:noncanonical-sidecar-tail"}) :
     C.World & K.Sidecar & Result<&2,&2,String,Bool>}
+
+# A saved entity View cannot overwrite an already bound actual entity/RNG
+# owner or consume its pending clock inputs. The public context admission
+# is separate; all physical cooking and lifecycle fields remain exact.
+law entity_restore_refusal_retains_bound_owner_and_complete_sidecar:
+  for +context:K.Context
+  for light:Light.State
+  for loading:Maybe<&2,BW.Cursor>
+  for entries:List<&1,Store.Entry>
+  for phase:CW.Phase
+  for keys:List<&2,String>
+  for effects:List<&2,Store.Effect>
+  for details:List<&2,K.BodyDetails>
+  for incarnations:Map<&2,Nat>
+  for acknowledged_resets:Nat
+  for prior_context:Model.Context
+  for prior_state:Model.State
+  for prior_inputs:List<&2,Random.Bits64>
+  for incoming_context:Model.Context
+  for incoming_view:Maybe<&2,Model.View>
+  for incoming_inputs:List<&2,Random.Bits64>
+  for admitted:{K.context_ready(context) == True{} : Bool}
+  {K.restore_entity_view(K.Initialized{context,light,loading,entries,phase,keys,effects,details,
+      incarnations,acknowledged_resets,Owner.Bound{prior_context,prior_state,prior_inputs},[]},
+      incoming_context,incoming_view,incoming_inputs) ==
+    (K.Initialized{context,light,loading,entries,phase,keys,effects,details,
+      incarnations,acknowledged_resets,Owner.Bound{prior_context,prior_state,prior_inputs},[]},
+      Fail{"local-cooking:entity-owner-already-bound"}) :
+    K.Sidecar & Result<&2,&2,String,Unit>}

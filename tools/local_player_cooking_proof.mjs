@@ -6,6 +6,7 @@ import * as crypto from "node:crypto";
 try {
 const sourceRoot = new URL("../src/", import.meta.url).pathname;
 const entry = new URL("../src/local_player_cooking_proof.bend", import.meta.url).pathname;
+const entitiesEntry = new URL("../src/local_player_cooking_entities_proof.bend", import.meta.url).pathname;
 const joinEntry = new URL("../src/runtime_block_inside_join_proof.bend", import.meta.url).pathname;
 const runtimeTest = new URL("../tests/local_player_runtime.bend", import.meta.url).pathname;
 const dir = process.argv[2];
@@ -18,19 +19,22 @@ const ordinaryRoots = [
   "local_player_cooking_laws:cooking_inventory_query_publishes_all_supplied_owners_and_retains_session",
   "local_player_cooking_laws:pending_delivery_installs_actual_suffix_and_preserves_complete_sidecar",
   "local_player_cooking_laws:noncanonical_tail_active_tick_retains_complete_cooking_owner",
+  "local_player_cooking_laws:entity_restore_refusal_retains_bound_owner_and_complete_sidecar",
+  "local_player_cooking_entities_laws:delivered_result_installs_complete_entity_owner_and_preserves_sidecar",
 ];
 // Their public gate statements retain Nat.show.fin/go through diagnostic
 // branches in full-definition export. Keep them ordinary checked; do not
 // replace their statements or claim these refused/unsupported roots were
 // independently certified.
-const roots = ordinaryRoots.slice(3,6);
-const ordinaryOnlyRoots = ordinaryRoots.filter(name => !roots.includes(name));
+const ordinaryOnlyRoots = [ordinaryRoots[0],ordinaryRoots[1],ordinaryRoots[2],ordinaryRoots[6]];
+const roots = ordinaryRoots.filter(name => !ordinaryOnlyRoots.includes(name));
 const sha = x => crypto.createHash("sha256").update(x).digest("hex");
 const filePins = seen => Object.fromEntries([...seen.keys()].sort().map(p => [p, sha(fs.readFileSync(p))]));
 const book = B.book_nil(), seen = new Map();
 // One original Book and one import map: shared production modules are loaded
 // and checked once. The test entry receives its own real path namespace.
 await B.book_load(book, entry, "", seen, undefined, sourceRoot);
+await B.book_load(book, entitiesEntry, "local_player_cooking_entities_proof", seen, undefined, sourceRoot);
 await B.book_load(book, joinEntry, "runtime_block_inside_join_proof", seen, undefined, sourceRoot);
 await B.book_load(book, runtimeTest, "../tests/local_player_runtime", seen, undefined, sourceRoot);
 const before = filePins(seen);
@@ -64,13 +68,13 @@ for (const [k,t,T,v,e] of originals)
     throw Error("Selection altered original checked declaration " + k);
 const manifest = {entry, roots, ordinary_roots:ordinaryRoots, ordinary_only_roots:ordinaryOnlyRoots,
   ordinary_only_reason:"Four public leaf gate laws retain the observed unsupported Nat.show.fin/go mutual recursion through real diagnostic branches. Their proof bodies pass ordinary checking; they receive no independent-kernel claim.",
-  ordinary_entries:[entry,joinEntry,runtimeTest], original_book_checks:1,
+  ordinary_entries:[entry,entitiesEntry,joinEntry,runtimeTest], original_book_checks:1,
   shared_imports_loaded_once:true, ordinary_seconds:ordinarySeconds, original_root_count:originalOrder.length,
   selected_root_count:book.order.length, checked_types_and_bodies_unchanged:true,
   all_original_tlds_ctrs_tmps_retained:true, term_pins:termPins, ordinary_law_term_pins:ordinaryLawPins,
   ordinary_only_term_pins:ordinaryOnlyPins,
   source_files:[...seen.keys()], ordinary_source_api_check_passed:true,
-  kernel_scope:"Only three new supplier-splice/delivery cooking laws. Seven new laws, runtime test annotation and renamed Detached join declarations are ordinary checked in this same original Book; no old kernel or native corpus replay."};
+  kernel_scope:"Only five supplier-splice/delivery/bound-entity-restore cooking laws for generation20, including the complete entity-delivery result splice. Nine laws, runtime test annotation and Detached join declarations are ordinary checked in this same original Book; no separate old kernel or native corpus replay."};
 fs.writeFileSync(dir + "/selection.json", JSON.stringify(manifest,null,2) + "\n");
 console.log(JSON.stringify({phase:"original-book-checked", roots:roots.length,
   ordinary_entries:manifest.ordinary_entries, ordinary_seconds:ordinarySeconds, original_root_count:originalOrder.length}));

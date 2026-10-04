@@ -1,6 +1,7 @@
 import Base
 import ./local_player_cooking_laws.bend as Laws
 import ./local_player_cooking.bend as K
+import ./local_player_cooking_entity_owner.bend as Owner
 import ./local_player_session.bend as Session
 import ./core.bend as C
 import ./cooking_world.bend as CW
@@ -21,19 +22,19 @@ import ./player_controls.bend as Controls
 import ./player_inventory_codec.bend as IC
 import ./player_inventory.bend as I
 
-def Laws.already_initialized_begin_retains_complete_cooking_owner(world,context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,sidecar_tail,replacement):
+def Laws.already_initialized_begin_retains_complete_cooking_owner(world,context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,entity_owner,sidecar_tail,replacement):
   {==}
 
-def Laws.paused_idle_tick_retains_complete_cooking_owner(tick,time,daylight,revision,count,sections,pending,events,context,light,loading,entries,keys,effects,details,incarnations,acknowledged_resets,sidecar_tail,admitted):
+def Laws.paused_idle_tick_retains_complete_cooking_owner(tick,time,daylight,revision,count,sections,pending,events,context,light,loading,entries,keys,effects,details,incarnations,acknowledged_resets,entity_owner,sidecar_tail,admitted):
   %Equal.sym(Bool,K.context_counts(count,context),True{},admitted) :
-    {K.tick_checked(K.Initialized{context,light,loading,entries,CW.Idle{},keys,effects,details,incarnations,acknowledged_resets,sidecar_tail},False{},
+    {K.tick_checked(K.Initialized{context,light,loading,entries,CW.Idle{},keys,effects,details,incarnations,acknowledged_resets,entity_owner,sidecar_tail},False{},
       (C.World{tick,time,True{},daylight,revision,count,sections,pending,events},_)) ==
       (C.World{tick,time,True{},daylight,revision,count,sections,pending,events},
-        K.Initialized{context,light,loading,entries,CW.Idle{},keys,effects,details,incarnations,acknowledged_resets,sidecar_tail},Done{False{}}) :
+        K.Initialized{context,light,loading,entries,CW.Idle{},keys,effects,details,incarnations,acknowledged_resets,entity_owner,sidecar_tail},Done{False{}}) :
       C.World & K.Sidecar & Result<&2,&2,String,Bool>}
   {==}
 
-def Laws.noncanonical_context_save_retains_complete_cooking_owner(world,registry,enabled,cooking,head,tail,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,sidecar_tail,position,limits,cap):
+def Laws.noncanonical_context_save_retains_complete_cooking_owner(world,registry,enabled,cooking,head,tail,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,entity_owner,sidecar_tail,position,limits,cap):
   match world registry cooking:
     case C.World{tick,time,paused,daylight,revision,count,sections,pending,events}
       LR.Catalog{identity,states,shapes,rows,faces}
@@ -73,22 +74,33 @@ def Laws.cooking_inventory_query_publishes_all_supplied_owners_and_retains_sessi
           Session.State & Result<&2,&2,String,Unit>}
       {==}
 
-def Laws.pending_delivery_installs_actual_suffix_and_preserves_complete_sidecar(context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,sidecar_tail,pending,status,supplied):
+def Laws.pending_delivery_installs_actual_suffix_and_preserves_complete_sidecar(context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,entity_owner,sidecar_tail,pending,status,supplied):
   %Equal.sym(Delivery.Outcome,Delivery.deliver(effects),Delivery.Outcome{pending,status},supplied) :
     {K.pending_delivered(context,light,loading,entries,phase,keys,details,
-        incarnations,acknowledged_resets,sidecar_tail,_) ==
+        incarnations,acknowledged_resets,entity_owner,sidecar_tail,_) ==
       (K.Initialized{context,light,loading,entries,phase,keys,pending,details,
-        incarnations,acknowledged_resets,sidecar_tail},status) :
+        incarnations,acknowledged_resets,entity_owner,sidecar_tail},status) :
       K.Sidecar & Result<&2,&2,String,Unit>}
   {==}
 
-def Laws.noncanonical_tail_active_tick_retains_complete_cooking_owner(tick,time,paused,daylight,revision,count,sections,pending,events,context,light,loading,entries,keys,effects,details,incarnations,acknowledged_resets,child,sidecar_tail,admitted):
+def Laws.noncanonical_tail_active_tick_retains_complete_cooking_owner(tick,time,paused,daylight,revision,count,sections,pending,events,context,light,loading,entries,keys,effects,details,incarnations,acknowledged_resets,entity_owner,child,sidecar_tail,admitted):
   %Equal.sym(Bool,K.context_counts(count,context),True{},admitted) :
     {K.tick_checked(K.Initialized{context,light,loading,entries,CW.Idle{},keys,effects,details,
-        incarnations,acknowledged_resets,child <> sidecar_tail},True{},
+        incarnations,acknowledged_resets,entity_owner,child <> sidecar_tail},True{},
       (C.World{tick,time,paused,daylight,revision,count,sections,pending,events},_)) ==
       (C.World{tick,time,paused,daylight,revision,count,sections,pending,events},
         K.Initialized{context,light,loading,entries,CW.Idle{},keys,effects,details,
-          incarnations,acknowledged_resets,child <> sidecar_tail},Fail{"local-cooking:noncanonical-sidecar-tail"}) :
+          incarnations,acknowledged_resets,entity_owner,child <> sidecar_tail},Fail{"local-cooking:noncanonical-sidecar-tail"}) :
       C.World & K.Sidecar & Result<&2,&2,String,Bool>}
+  {==}
+
+def Laws.entity_restore_refusal_retains_bound_owner_and_complete_sidecar(context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,prior_context,prior_state,prior_inputs,incoming_context,incoming_view,incoming_inputs,admitted):
+  %Equal.sym(Bool,K.context_ready(context),True{},admitted) :
+    {K.entity_restore_checked(_,K.Initialized{context,light,loading,entries,phase,keys,effects,details,
+        incarnations,acknowledged_resets,Owner.Bound{prior_context,prior_state,prior_inputs},[]},
+        incoming_context,incoming_view,incoming_inputs) ==
+      (K.Initialized{context,light,loading,entries,phase,keys,effects,details,
+        incarnations,acknowledged_resets,Owner.Bound{prior_context,prior_state,prior_inputs},[]},
+        Fail{"local-cooking:entity-owner-already-bound"}) :
+      K.Sidecar & Result<&2,&2,String,Unit>}
   {==}
