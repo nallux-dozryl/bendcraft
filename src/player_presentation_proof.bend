@@ -57,6 +57,25 @@ def L.outside_pointer_rejected(pixel,source,target,outside):
   Equal.cong(Bool,U32,inside => P.pointer_coordinate_checked(pixel,source,target,inside),
     U32.is_lt(pixel,source),False{},outside)
 
+def outside_lists_zero(+quads:List<&2,M.Prepared>,+textures:List<&2,R.Texture>) ->
+    {M.outside_lists(quads,textures) == 0 : U32}:
+  match quads textures:
+    case Nil{} Nil{}: {==}
+    case head <> tail Nil{}: {==}
+    case Nil{} head <> tail: {==}
+    case head <> tail other <> rest: {==}
+
+def outside_tree_zero(tree:M.Spatial,quads:List<&2,M.Prepared>,textures:List<&2,R.Texture>) ->
+    {M.outside_tree(tree,quads,textures) == 0 : U32}:
+  match tree:
+    case M.Empty{}: outside_lists_zero(quads,textures)
+    case M.Flat{entries}: outside_lists_zero(quads,textures)
+    case M.Leaf{bounds,entries}: outside_lists_zero(quads,textures)
+    case M.Branch{bounds,left,right}: outside_lists_zero(quads,textures)
+
 def L.invisible_pixel_zero(tree,quads,textures,camera,settings,x,y,width,height,outside):
-  Equal.cong(Bool,U32,inside => M.pixel_inside(inside,tree,quads,textures,camera,settings,x,y,width,height),
-    U32.is_lt(x,width) && U32.is_lt(y,height),False{},outside)
+  Equal.trans(U32,M.pixel(tree,quads,textures,camera,settings,x,y,width,height),
+    M.outside_tree(tree,quads,textures),0,
+    Equal.cong(Bool,U32,inside => M.pixel_inside(inside,tree,quads,textures,camera,settings,x,y,width,height),
+      U32.is_lt(x,width) && U32.is_lt(y,height),False{},outside),
+    outside_tree_zero(tree,quads,textures))

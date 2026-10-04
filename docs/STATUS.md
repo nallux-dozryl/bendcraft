@@ -3,40 +3,52 @@
 Target: Minecraft Java 26.3. Compiler: Bend 2.0.35. The full goal remains active
 and incomplete; the current build is a limited integrated client.
 
-The current paired artifacts now exist: `build/compiler-producer-diagnostic-010/actor`
-uses the frozen current002 backend, and `build/playable-renderer-current/003/renderer`
-uses current production presentation/menu/input code with the repaired private
-ASCII frame receiver. The actor compiled after 159.196 seconds of C emission and
-89.13 seconds of O3 native compilation. The renderer compiled after 250.892 seconds
-of C emission and 50.986 seconds of O3 compilation. Original `bend.ts`/`comp.ts`
-remain unchanged; these are explicitly identified private sourceAPI builds.
+Renderer004 is built and verified against the installed 26.3 resources. Its
+fresh hidden128×128 CPU image matches all16,384 pixels of the independent Java/JAR
+quad and HUD oracle and is byte-identical to renderer003. Eight trace-disabled
+1920×1080 scene/output frames, with the same480×270 HUD and two CPU workers, take
+[1015,1272,951,923,961,949,956,945] milliseconds; median953.5ms. This improves the
+prior003 two-frame3.827/3.909-second envelopes, but remains roughly one second
+per frame. It establishes neither sustained FPS nor input latency. Full1080
+pixel equality, physical OS input, visible drawable acceptance, Retina resizing,
+fullscreen, audio and complete-game performance remain open.
 
-Actual backend TCP/MCP checks pass in 12.167 seconds: complete menu/status/WG
-replies, first-person break/place, permission and item-limit refusals, exact v3
-save bytes, forced-stop recovery and cold reload. Actual fresh `missing=create`
-launcher startup now loads the installed JAR and verified 1,658-item table,
-populates 104 sections, renders, and receives a durable save acknowledgement on
-exit. The 128×128 CPU image matches every RGB channel of the independent original
-JAR/Java quad and HUD comparison. Two normal trace-disabled 1920×1080 frames also
-pass with a 480×270 HUD; render/composition/Window.frame envelopes are 3.827 and
-3.909 seconds. This is slow and establishes two cycles, not sustained FPS.
-High-resolution image recording causes a subsequent private-input failure; that
-failed attempt remains retained. Focus and Spaces stayed unchanged throughout
-these hidden launches. Physical input, visible drawable acceptance, Retina
-resize/fullscreen behavior and full game performance remain open.
+The004 repair admits bounds before ray construction, removes boxed parallel
+span work, uses16×16 tiles, borrows texture pixels and includes77 hidden native
+control assertions. It compiled in212.602 seconds of C emission and52.133 seconds
+of O3 native compilation. Renderer005 is now building from this frozen55-file
+baseline with ONLY the certified MeshRender borrow/fragment repair overlaid.
+All18 current mesh/presentation laws pass the independent kernel with zero
+exclusions;15 focused native fixtures match10,975 pixels per path exactly.
+The tile candidate prepass was slower than BVH and is not integrated. Working003
+and004 artifacts remain preserved;005 full-frame performance is unmeasured.
 
-Renderer004 is now compiling the checked bounds/span/16×16 tile repairs, scalar
-texture borrowing and 70-assertion hidden native control repair. Its image parity
-and frame performance remain pending; working003 is preserved. Independent
-backend, inventory Swap, stuck movement, terrain, recipe and resource-catalog
-owners continue implementation concurrently (see WORK_QUEUE.md).
+The newer actor003 at `build/compiler-producer-diagnostic-012/actor` builds and
+passes actualTCP/MCP/menu/durable-save checks in17.109 seconds. These include69
+correlated complete-authority replies, carried/crafting close-return, atomic
+full-capacity refusal, three exact v3 saves and two forced-stop/cold reloads with
+all43 slots and raw status/generation values. It compiled in111.103 seconds of C
+emission and111.87 seconds of O3 compilation. Original `bend.ts`/`comp.ts` remain
+unchanged; both products use explicitly identified private sourceAPI emitters.
 
-The local launcher is `build/playable-renderer-current/003/play.sh`. Normal exit
-requests the actual Bend authority's durable save before stopping the actor;
-save refusal retains the actor and private reconnect environment. The launcher
-uses the prior backend generation, so return carried/crafting items before exit.
-New automatic inventory-return logic passes twelve independent-kernel laws and
-29 focused native cases; it is not yet in this backend artifact. No foreground window was launched.
+The preserved003/004 `play.sh` launchers still use the prior actor002. Return
+carried/crafting items before exiting those launchers. The launcher owner is
+adopting004+actor003 with a correlated MenuClose before public durable save and
+live-actor recovery on capacity refusal. Paired launcher acceptance is pending;
+separate actor checks do not establish that integration. Routine launches remain
+hidden and preserve focus/Spaces. The source control-release join now keeps
+pre-release and remaining packet input inside one actor operation; presenter
+checking reaches exactly38 expected native/unsafe declarations, with native
+consumer validation still pending.
+
+Parallel implementation now includes the loaded recipe authority, typed item
+components, hover-key inventory controls, blockInside movement producer, block
+lighting, generic resource catalog and actual normal-density/climate graph. The
+catalog's ordinary600-second native build timed out before C at15.6GiB measured
+physical footprint; its private emitter preparation is a substantive memory
+route change. Normal seed/noise dependencies have23 independent-kernel laws and
+exact native Java comparisons; full normal population still refuses. See the
+current ownership table in WORK_QUEUE.md.
 
 The 65-law root aggregation and separate current production targets are indexed
 in [PRODUCTION_PROOFS.md](PRODUCTION_PROOFS.md). Current independent-kernel results

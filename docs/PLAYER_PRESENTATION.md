@@ -94,10 +94,20 @@ high-resolution CPU image exposes a subsequent private-input failure; keep that
 failed attempt separate. These observations do not establish physical OS input,
 drawable framebuffer equality, Retina resizing/fullscreen or sustained FPS.
 
-The next renderer uses structural pixel bounds before ray construction, matched
-parallel/nonparallel slab spans without rejected boxed allocations, and 16×16
-sequential tiles below the parallel fork tree. The actual allocation theorem now
-quantifies tile depth; full image backing shape is preserved. Eight actual roots
-pass the independent kernel (`evidence/player-presentation-proof-002.json`).
-Renderer004 native pixel equality and frame times remain pending; renderer003
-remains the working launch artifact.
+Renderer004 implements structural bounds before ray construction, matched
+parallel/nonparallel slab spans and16×16 sequential tiles below the fork tree.
+Its128×128 captured CPU image matches the independent Java/JAR/HUD oracle and
+renderer003 byte-for-byte. Eight trace-disabled1920×1080 envelopes take
+1015,1272,951,923,961,949,956,945ms (median953.5ms), with unchanged100% scene/output
+quality,480×270 HUD and two CPU workers. It is still slow; no FPS or input-latency
+claim follows. Full1080 pixel comparison remains pending.
+
+The borrowed mesh traversal and scalar candidate repair now pass15 exact native
+fixtures and18 current independent-kernel laws (8 presentation,6 tile,4 reader),
+zero exclusions. The current eight presentation statement types are unchanged;
+proofs handle the structural resource-list/tree zero branch explicitly. Receipts
+are `evidence/mesh-render-presentation-kernel-001.json` and
+`evidence/mesh-render-borrow-repair-001.json`. Renderer005 is compiling from the
+frozen004 sources plus only this MeshRender overlay; full-frame performance is
+unmeasured. The slower tile prepass remains separate. Both working launch
+artifacts are preserved.

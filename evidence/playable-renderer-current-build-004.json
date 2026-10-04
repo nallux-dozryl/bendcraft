@@ -1,0 +1,55 @@
+{
+  "status": "PASS",
+  "confidence": "high for successful build only; native pixels and performance pending",
+  "entry": "remote_resource_client.bend",
+  "source_map": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/004/source/source-map.json",
+    "bytes": 24028,
+    "sha256": "df1da8b063a10030e84913d85181abc2e258ddf5feb5527c9808afc8ff0c4770"
+  },
+  "private_emitter": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/004/comp_instrumented.ts",
+    "bytes": 188216,
+    "sha256": "832b94d488828e7befc63cadc81b1932d7e5cd782f1679363111ea79e951543e"
+  },
+  "driver": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/004/emit.mjs",
+    "bytes": 2239,
+    "sha256": "187291453cee5135b9cc7dfb07bad55861d1ee44356b70ffab05b75479bd78b9"
+  },
+  "emission_seconds": 212.60232562478632,
+  "native_seconds": 52.13276475016028,
+  "emission_passes": 11,
+  "original_compiler_unchanged": true,
+  "checked_holes": 0,
+  "loaded_files": 124,
+  "checked_declarations": 3379,
+  "C": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/004/diagnostic.c",
+    "bytes": 15131412,
+    "sha256": "454b7ea198f2b4b666720e8f8e6e2609aedfba1e4a0f70a469ad68efa3d7d02f"
+  },
+  "transformed_C": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/004/renderer.c",
+    "bytes": 15131891,
+    "sha256": "20328eb9d3f9fe3f753a96f52cc0e082fee06313105e8f115501921ebe9e3d0a"
+  },
+  "binary": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/004/renderer",
+    "bytes": 5550408,
+    "sha256": "0e5bac4aa6e4ff36232e4c25ed67cda6ac2e73bc45d378ae5a597c66ed7e8399"
+  },
+  "launcher": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/004/play.sh",
+    "bytes": 4544,
+    "sha256": "3bb2366424c2ca6207b17a708c7c537c5d7d84a6355889c0d26710fb6bea2b8f"
+  },
+  "native_adapter_sha256": "0c6aebd6a22f999851798a13980a0c04ac6bfa6d85ff6193429efff1a4a61363",
+  "scope": "Actual checked55 copied project/foreign inputs; structural Mesh bounds/span/16x16 tiles, scalar texture reader, hidden-tested native keys/pointers. CPU O3 with BANGS0; same original Base/compiler sourceAPI as003, private queue mitigation unchanged. No runtime/frame/parity claim from build alone.",
+  "processes_reaped": true,
+  "reproduce": [
+    "/opt/homebrew/bin/node --expose-gc --max-old-space-size=6144 --stack-size=4096 --experimental-transform-types build/playable-renderer-current/004/emit.mjs",
+    "Use tools/platform_build.transform on emitted diagnostic.c; /usr/bin/clang -x objective-c -fobjc-arc -fmodules -std=c11 -O3 build/playable-renderer-current/004/renderer.c -lpthread -lm -o build/playable-renderer-current/004/renderer"
+  ],
+  "retained_local_receipts": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/playable-renderer-current/004"
+}
