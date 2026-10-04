@@ -4,8 +4,9 @@ import * as crypto from "node:crypto";
 
 const directory = process.argv[2];
 if (!directory) throw Error("Fresh output directory required");
-const diagnostic = process.argv[3] === "--diagnose";
-const entry = new URL("../remote_resource_server.bend", import.meta.url).pathname;
+const diagnostic = process.argv.slice(3).includes("--diagnose");
+const scene = process.argv.slice(3).includes("--scene");
+const entry = new URL(scene ? "../src/local_player_scene.bend" : "../remote_resource_server.bend", import.meta.url).pathname;
 const sha = bytes => crypto.createHash("sha256").update(bytes).digest("hex");
 const book = B.book_nil(), seen = new Map();
 try {
@@ -37,7 +38,7 @@ try {
     original_book_checked: true, declaration_selection: false,
     order_progress_observation: diagnostic,
     kernel_or_native_claim: false,
-    scope: "Original compiler book_valid checks the complete actual Entry and " +
+    scope: "Original compiler book_valid checks the complete actual " + (scene ? "Scene" : "Entry") + " and " +
       "its cooking/runtime/storage imports. Native/foreign IO boundaries are " +
       "typed here; this is neither an independent-kernel nor native execution verdict."};
   fs.writeFileSync(directory + "/source.json", JSON.stringify(result, null, 2) + "\n");

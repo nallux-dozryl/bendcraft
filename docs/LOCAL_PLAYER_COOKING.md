@@ -82,9 +82,11 @@ typing/ownership verdict; it does not claim an independent-kernel proof,
 native cooking gameplay, interruption recovery or full block-entity semantics.
 The changed019 receipt in `evidence/local-player-cooking-source-019.json`
 checks the actual complete Entry graph with recursive boxing and pending
-recovery: 7,786 declarations, zero holes, 16.821739 seconds. Native emission
-and the new independent ownership proofs have separate verdicts; this source
-receipt does not claim either.
+recovery: 7,786 declarations, zero holes, 16.821739 seconds. The immutable019
+native build subsequently passed its original arity guard and produced a
+12,151,256-byte executable (SHA256
+`641089cd1a7e1fd48467df39a4a74068e5d71c507964d5ada3dd03ff038516fd`).
+Its native consumer acceptance and ownership proofs have separate receipts.
 
 `evidence/local-player-cooking-proof.json` records one ordinary Book checking
 seven new quantified laws plus the changed Detached constructor closures.
@@ -100,6 +102,43 @@ remain applicable to their unchanged production modules. Actual cooker menu
 and player inventory transactions, direct player edit lifecycle adoption,
 real effect-owner delivery and native save/reload acceptance remain named
 consumer work.
+
+Generation20 adds an actual entity/RNG carrier inside the same boxed Sidecar.
+`Owner.Bound` retains the authenticated entity context, sole `Model.State` and
+every unconsumed raw constructor-clock input. `entity_snapshot` observes the
+real owner with `Model.inspect`; a rejected bind returns the incoming affine
+owner separately. Restore refuses an already bound owner and never manufactures
+an RNG source from an absent saved View.
+
+The changed Session save snapshots the complete entity View and clock queue
+alongside bodies and pending effects into the same atomic format3 wrapper.
+Returning from that transaction retains the live carrier rather than installing
+the copied save snapshot. `new_cooking_inventory` now returns a fourth value,
+`Maybe<EntityRecovery>`, for startup restoration after physical body admission.
+An unbound actor preserves the old format1/2 bytes.
+
+`Scene.realtime_step_io`, `Scene.advance_io` and `Scene.dispatch_io` close the
+actual `local_player_cooking_entities.deliver_io` supplier. It uses
+`cooking_effect_consumer.deliver_io`, then installs the returned entity owner,
+pending suffix and remaining clock list together. An entropy retry does not
+repeat a completed Core/player tick. Both the pre-tick and post-completion
+delivery paths keep the sole Core in their IO continuation. Accepted menu
+effects have the ordered `Session.cooking_enqueue_effects` seam.
+
+`evidence/local-player-cooking-source-scene-020.json` checks this complete
+actual Scene closure with the original Book: 6,934 declarations, 138 files,
+zero holes, 14.646279 seconds. Its source hashes remained unchanged throughout
+checking. This is a typing verdict, not final Entry adoption or native entity
+gameplay. The initial matcher refusal and parser repairs are retained in
+`evidence/local-player-cooking-integration-attempts-020.json`.
+
+Fresh or legacy startup still needs the pinned Level random-factory transition
+using actual monotonic observations. It cannot substitute the world seed for
+Level's Legacy RNG or reconstruct a historical factory from an absent View.
+Creation of a new XP orb currently refuses the missing actual collision
+placement service; item creation and existing-orb merge plans remain supplied
+by the real entity consumer. The separately owned geometry and Entry producers
+must complete those joins before a fresh live entity-delivery claim.
 
 Run the changed source check with:
 

@@ -4,6 +4,9 @@ import ./cooking_block_entity_codec.bend as CookingCodec
 import ./cooking_world_store.bend as CookingStore
 import ./nbt.bend as Nbt
 import ./local_player_cooking_storage.bend as CookingStorage
+import ./local_player_cooking_entities.bend as CookingEntities
+import ./cooking_effect_entities_model.bend as CookingModel
+import ./random.bend as Random
 import ./player_block_inside_stuck.bend as Inside
 import ./local_player_runtime.bend as R
 import ./local_phase_runtime.bend as X
@@ -102,6 +105,21 @@ def cooking_detached(-A:Data,operation:C.World -> Cooking.Sidecar -> C.World & C
 def cooking_query(-A:Data,state:State,operation:C.World -> Cooking.Sidecar -> C.World & Cooking.Sidecar & Result<&2,&2,String,A>) -> State & Result<&2,&2,String,A>:
   cooking_detached(A,operation,to_bundle(state))
 
+# IO suppliers receive the same sole Core and Sidecar as the pure detour.
+# The other Session owners live in this continuation until the supplier returns.
+def cooking_detached_io(-A:Data,
+    operation:C.World -> Cooking.Sidecar -> IO(C.World & Cooking.Sidecar & Result<&2,&2,String,A>),
+    result:E.State<IC.Saved> & R.Transient) -> IO(State & Result<&2,&2,String,A>):
+  (E.State{P.State{G.Engine{world,registry},identity,path,highwater,limits,lease},saved,maximum,catalog},
+    R.Transient{player,cooking}) = result
+  do IO<State & Result<&2,&2,String,A>>:
+    returned : C.World & Cooking.Sidecar & Result<&2,&2,String,A> <- operation(world,cooking)
+    return cooking_returned(A,registry,identity,path,highwater,limits,lease,saved,maximum,catalog,player,returned)
+
+def cooking_query_io(-A:Data,state:State,
+    operation:C.World -> Cooking.Sidecar -> IO(C.World & Cooking.Sidecar & Result<&2,&2,String,A>)) -> IO(State & Result<&2,&2,String,A>):
+  cooking_detached_io(A,operation,to_bundle(state))
+
 # A container transaction also transfers the actual player inventory once.
 # The operation returns both array owners before the Session is reconstructed.
 def cooking_inventory_returned(-A:Data,registry:B.Registry,identity:String,path:String,highwater:U32,
@@ -165,8 +183,50 @@ def cooking_pending(state:State) -> State & List<&2,CookingStore.Effect>:
 def cooking_restore_pending(state:State,effects:List<&2,CookingStore.Effect>) -> State & Result<&2,&2,String,Unit>:
   cooking_sidecar_query(Result<&2,&2,String,Unit>,state,sidecar => Cooking.restore_pending(sidecar,effects))
 
+def cooking_enqueue_effects(state:State,effects:List<&2,CookingStore.Effect>) -> State & Result<&2,&2,String,Unit>:
+  cooking_sidecar_query(Result<&2,&2,String,Unit>,state,sidecar => Cooking.enqueue_effects(sidecar,effects))
+
 def cooking_deliver_pending(state:State) -> State & Result<&2,&2,String,Unit>:
   cooking_sidecar_query(Result<&2,&2,String,Unit>,state,Cooking.deliver_pending)
+
+def cooking_deliver_pending_io(state:State) -> IO(State & Result<&2,&2,String,Unit>):
+  cooking_query_io(Unit,state,CookingEntities.deliver_io)
+
+def cooking_recovery(view:Maybe<&2,CookingModel.View>,inputs:List<&2,Random.Bits64>) -> Maybe<&2,CookingStorage.EntityRecovery>:
+  match view:
+    case None{}: None{}
+    case Some{value}: Some{CookingStorage.EntityRecovery{value,inputs}}
+
+def cooking_entity_observed(result:Cooking.Sidecar & Maybe<&2,CookingModel.View> & List<&2,Random.Bits64>) ->
+    Cooking.Sidecar & Maybe<&2,CookingStorage.EntityRecovery>:
+  (sidecar,view,inputs) = result
+  (sidecar,cooking_recovery(view,inputs))
+
+# The immutable View is observed from the actual owner; the live carrier and
+# its complete clock queue remain inside the same Session throughout saving.
+def cooking_entities(state:State) -> State & Maybe<&2,CookingStorage.EntityRecovery>:
+  cooking_sidecar_query(Maybe<&2,CookingStorage.EntityRecovery>,state,
+    sidecar => cooking_entity_observed(Cooking.entity_snapshot(sidecar)))
+
+def cooking_restore_entities(state:State,context:CookingModel.Context,recovery:Maybe<&2,CookingStorage.EntityRecovery>) -> State & Result<&2,&2,String,Unit>:
+  match recovery:
+    case None{}:
+      cooking_sidecar_query(Result<&2,&2,String,Unit>,state,sidecar => Cooking.restore_entity_view(sidecar,context,None{},[]))
+    case Some{CookingStorage.EntityRecovery{view,inputs}}:
+      cooking_sidecar_query(Result<&2,&2,String,Unit>,state,sidecar => Cooking.restore_entity_view(sidecar,context,Some{view},inputs))
+
+def cooking_entity_bound(player:X.State,identity:String,path:String,highwater:U32,limits:P.Limits,lease:WL.Lease,
+    maximum:U32,catalog:List<&2,E.Operation>,inventory:I.State,fresh:Bool,generation:WG.Settings,
+    result:Cooking.Sidecar & Maybe<&1,CookingModel.State> & Result<&2,&2,String,Unit>) ->
+    State & Maybe<&1,CookingModel.State> & Result<&2,&2,String,Unit>:
+  (cooking,rejected,status) = result
+  (State{player,Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation,cooking}},rejected,status)
+
+def cooking_bind_entities(state:State,context:CookingModel.Context,owner:CookingModel.State,inputs:List<&2,Random.Bits64>) ->
+    State & Maybe<&1,CookingModel.State> & Result<&2,&2,String,Unit>:
+  State{player,Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation,cooking}} = state
+  cooking_entity_bound(player,identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation,
+    Cooking.bind_entity_owner(cooking,context,owner,inputs))
 
 def cooking_positions(state:State) -> State & List<&2,C.Position>:
   cooking_sidecar_query(List<&2,C.Position>,state,Cooking.positions)
@@ -337,6 +397,49 @@ def realtime_step(driver:R.Driver,state:State) -> State:
 def step(driver:R.Driver,state:State) -> State:
   cooking_step(driver,state,True{})
 
+# The closed delivery supplier may obtain real monotonic inputs while retaining
+# the actual World. No player/common continuation starts before that IO returns.
+def cooking_tick_completed_io(~delivery:C.World -> Cooking.Sidecar -> IO(C.World & Cooking.Sidecar & Result<&2,&2,String,Unit>),
+    driver:R.Driver,result:State & Result<&2,&2,String,Bool>) -> IO(State):
+  (state,status) = result
+  match status:
+    case Fail{message}: IO.pure(State,cooking_error(state,message))
+    case Done{False{}}: IO.pure(State,state)
+    case Done{True{}}:
+      do IO<State>:
+        delivered : State & Result<&2,&2,String,Unit> <- cooking_query_io(Unit,
+          run_with_status(state,status => player => R.status_after_world_tick(driver,status,player)),delivery)
+        return cooking_delivery_completed(delivered)
+
+def cooking_tick_shaped_io(~delivery:C.World -> Cooking.Sidecar -> IO(C.World & Cooking.Sidecar & Result<&2,&2,String,Unit>),
+    driver:R.Driver,scheduled:Bool,result:State & Maybe<&2,X.Error>) -> IO(State):
+  (state,error) = result
+  match error:
+    case Some{cause}: IO.pure(State,cooking_error(state,R.error_text(cause)))
+    case None{}:
+      cooking_tick_completed_io(~delivery,driver,cooking_query(Bool,state,world => sidecar => Cooking.tick(world,sidecar,scheduled)))
+
+def cooking_step_delivered_io(~delivery:C.World -> Cooking.Sidecar -> IO(C.World & Cooking.Sidecar & Result<&2,&2,String,Unit>),
+    driver:R.Driver,scheduled:Bool,result:State & Result<&2,&2,String,Unit>) -> IO(State):
+  (state,status) = result
+  match status:
+    case Fail{message}: IO.pure(State,cooking_error(state,message))
+    case Done{unit}: cooking_tick_shaped_io(~delivery,driver,scheduled,query(Maybe<&2,X.Error>,state,X.stage_shape))
+
+def cooking_step_io(~delivery:C.World -> Cooking.Sidecar -> IO(C.World & Cooking.Sidecar & Result<&2,&2,String,Unit>),
+    driver:R.Driver,state:State,scheduled:Bool) -> IO(State):
+  do IO<State>:
+    delivered : State & Result<&2,&2,String,Unit> <- cooking_query_io(Unit,state,delivery)
+    cooking_step_delivered_io(~delivery,driver,scheduled,delivered)
+
+def realtime_step_io(~delivery:C.World -> Cooking.Sidecar -> IO(C.World & Cooking.Sidecar & Result<&2,&2,String,Unit>),
+    driver:R.Driver,state:State) -> IO(State):
+  cooking_step_io(~delivery,driver,state,False{})
+
+def step_io(~delivery:C.World -> Cooking.Sidecar -> IO(C.World & Cooking.Sidecar & Result<&2,&2,String,Unit>),
+    driver:R.Driver,state:State) -> IO(State):
+  cooking_step_io(~delivery,driver,state,True{})
+
 def advance_runtime_error(player:X.State) -> X.State & Maybe<&2,String>:
   X.State{motion,tables,X.Metadata{local,record,sprint,pose,controls,entity,receiver,+error,metadata_tail},tail} = player
   (X.State{motion,tables,X.Metadata{local,record,sprint,pose,controls,entity,receiver,error,metadata_tail},tail},error)
@@ -355,6 +458,25 @@ def advance_go(+driver:R.Driver,ticks:Nat,state:State) -> State:
 
 def advance(~driver:R.Driver,state:State,ticks:U32) -> State:
   advance_go(driver,U32.to_nat(ticks),state)
+
+def advance_completed_io(next:State -> IO(State),result:State & Maybe<&2,String>) -> IO(State):
+  (state,error) = result
+  match error:
+    case Some{message}: IO.pure(State,state)
+    case None{}: next(state)
+
+def advance_go_io(~delivery:C.World -> Cooking.Sidecar -> IO(C.World & Cooking.Sidecar & Result<&2,&2,String,Unit>),
+    +driver:R.Driver,ticks:Nat,state:State) -> IO(State):
+  match ticks:
+    case 0n: IO.pure(State,state)
+    case 1n+rest:
+      do IO<State>:
+        stepped : State <- step_io(~delivery,driver,state)
+        advance_completed_io(state => advance_go_io(~delivery,driver,rest,state),query(Maybe<&2,String>,stepped,advance_runtime_error))
+
+def advance_io(~delivery:C.World -> Cooking.Sidecar -> IO(C.World & Cooking.Sidecar & Result<&2,&2,String,Unit>),
+    driver:R.Driver,state:State,ticks:U32) -> IO(State):
+  advance_go_io(~delivery,driver,U32.to_nat(ticks),state)
 
 def inventory_definitions(state:State) -> State & D.Catalog:
   inventory_query(D.Catalog,state,I.definitions)
@@ -623,6 +745,34 @@ def step_envelope(advance:State -> U32 -> State,state:State,session:L.Session,en
   L.Envelope{id,op,+args,at} = envelope
   step_checked(advance,observed(state,peer),L.Session{peer,1n+sequence,capability},id,args,L.validate_args(args,[L.Field{"ticks",L.Unsigned{1,1000},True{}}]) && Maybe.is_none(&2,Nat,at),C.developer(capability))
 
+def stepped_io(advance:State -> U32 -> IO(State),state:State,session:L.Session,id:String,
+    result:Result<&2,&2,L.Fault,L.Command>) -> IO(State & L.Session & J.Value):
+  match result:
+    case Fail{fault}: IO.pure(State & L.Session & J.Value,failure(state,session,id,fault))
+    case Done{L.StepCommand{ticks}}:
+      do IO<State & L.Session & J.Value>:
+        advanced : State <- advance(state,ticks)
+        return clock_response(session,id,query(C.Clock,advanced,p => R.query(C.Clock,p,clock_read)))
+    case _: IO.pure(State & L.Session & J.Value,
+      failure(state,session,id,L.bad("InvalidArguments","expected a simulation step command")))
+
+def step_checked_io(advance:State -> U32 -> IO(State),state:State,session:L.Session,id:String,args:J.Value,
+    valid:Bool,allowed:Bool) -> IO(State & L.Session & J.Value):
+  match valid allowed:
+    case False{} _: IO.pure(State & L.Session & J.Value,
+      failure(state,session,id,L.bad("InvalidArguments","arguments or scheduled at field do not match the operation schema")))
+    case True{} False{}: IO.pure(State & L.Session & J.Value,
+      failure(state,session,id,L.bad("PermissionDenied","developer capability required")))
+    case True{} True{}: stepped_io(advance,state,session,id,L.decode(L.StepTicks{},args))
+
+# Authority/sequence/schema semantics match step_envelope. Each admitted tick's
+# delivery IO finishes before the next tick in an explicit multi-step request.
+def step_envelope_io(advance:State -> U32 -> IO(State),state:State,session:L.Session,envelope:L.Envelope) -> IO(State & L.Session & J.Value):
+  L.Session{+peer,sequence,+capability} = session
+  L.Envelope{id,op,+args,at} = envelope
+  step_checked_io(advance,observed(state,peer),L.Session{peer,1n+sequence,capability},id,args,
+    L.validate_args(args,[L.Field{"ticks",L.Unsigned{1,1000},True{}}]) && Maybe.is_none(&2,Nat,at),C.developer(capability))
+
 # The durable codec cannot see transient ownership tails. Check the complete
 # runtime only after the existing save/inspect schema and capability gates.
 # Other requests keep the unconditional detach/attach owner-preserving path.
@@ -631,16 +781,16 @@ def record_refused(state:State,session:L.Session,id:String,code:String,message:S
   failure(observed(state,peer),L.Session{peer,1n+sequence,capability},id,L.bad(code,message))
 
 def from_cooking_bundle(stored:E.State<CookingStorage.Saved>,transient:R.Transient) -> State:
-  E.State{base,CookingStorage.Saved{saved,bodies,pending},maximum,catalog} = stored
+  E.State{base,CookingStorage.Saved{saved,bodies,pending,entities},maximum,catalog} = stored
   from_bundle(E.State{base,saved,maximum,catalog},transient)
 
-def cooking_inventory_answer(bodies:List<&2,CookingStorage.Body>,pending:List<&2,CookingStore.Effect>,result:G.Engine & IC.Saved & Result<&2,&2,L.Fault,J.Value>) -> G.Engine & CookingStorage.Saved & Result<&2,&2,L.Fault,J.Value>:
+def cooking_inventory_answer(bodies:List<&2,CookingStorage.Body>,pending:List<&2,CookingStore.Effect>,entities:Maybe<&2,CookingStorage.EntityRecovery>,result:G.Engine & IC.Saved & Result<&2,&2,L.Fault,J.Value>) -> G.Engine & CookingStorage.Saved & Result<&2,&2,L.Fault,J.Value>:
   (engine,saved,status) = result
-  (engine,CookingStorage.Saved{saved,bodies,pending},status)
+  (engine,CookingStorage.Saved{saved,bodies,pending,entities},status)
 
 def cooking_inventory_dispatch(engine:G.Engine,saved:CookingStorage.Saved,session:L.Session,envelope:L.Envelope) -> G.Engine & CookingStorage.Saved & Result<&2,&2,L.Fault,J.Value>:
-  CookingStorage.Saved{player,bodies,pending} = saved
-  cooking_inventory_answer(bodies,pending,inventory_operation_dispatch(engine,player,session,envelope))
+  CookingStorage.Saved{player,bodies,pending,entities} = saved
+  cooking_inventory_answer(bodies,pending,entities,inventory_operation_dispatch(engine,player,session,envelope))
 
 def cooking_inventory_operations() -> E.Operations<CookingStorage.Saved>:
   E.Operations{inventory_catalog,cooking_inventory_dispatch}
@@ -649,20 +799,25 @@ def cooking_dispatched(transient:R.Transient,result:E.State<CookingStorage.Saved
   (stored,session,value) = result
   (from_cooking_bundle(stored,transient),session,value)
 
-def cooking_delegate_bundle(definitions:D.Catalog,bodies:List<&2,CookingStorage.Body>,pending:List<&2,CookingStore.Effect>,session:L.Session,token:String,request:J.Value,
+def cooking_delegate_bundle(definitions:D.Catalog,bodies:List<&2,CookingStorage.Body>,pending:List<&2,CookingStore.Effect>,entities:Maybe<&2,CookingStorage.EntityRecovery>,session:L.Session,token:String,request:J.Value,
     result:E.State<IC.Saved> & R.Transient) -> IO(State & L.Session & J.Value):
   (E.State{base,saved,maximum,catalog},transient) = result
   do IO<State & L.Session & J.Value>:
     result : E.State<CookingStorage.Saved> & L.Session & J.Value <-
       E.dispatch_codec(~CookingStorage.Saved,~cooking_inventory_operations(),
         CookingStorage.codec_with(definitions,False{},WG.legacy()),
-        E.State{base,CookingStorage.Saved{saved,bodies,pending},maximum,catalog},session,token,request)
+        E.State{base,CookingStorage.Saved{saved,bodies,pending,entities},maximum,catalog},session,token,request)
     return cooking_dispatched(transient,result)
+
+def cooking_save_entities(definitions:D.Catalog,bodies:List<&2,CookingStorage.Body>,pending:List<&2,CookingStore.Effect>,session:L.Session,token:String,request:J.Value,
+    result:State & Maybe<&2,CookingStorage.EntityRecovery>) -> IO(State & L.Session & J.Value):
+  (state,entities) = result
+  cooking_delegate_bundle(definitions,bodies,pending,entities,session,token,request,to_bundle(state))
 
 def cooking_save_pending(definitions:D.Catalog,bodies:List<&2,CookingStorage.Body>,session:L.Session,token:String,request:J.Value,
     result:State & List<&2,CookingStore.Effect>) -> IO(State & L.Session & J.Value):
   (state,pending) = result
-  cooking_delegate_bundle(definitions,bodies,pending,session,token,request,to_bundle(state))
+  cooking_save_entities(definitions,bodies,pending,session,token,request,cooking_entities(state))
 
 def cooking_save_definitions(bodies:List<&2,CookingStorage.Body>,session:L.Session,token:String,request:J.Value,
     result:State & D.Catalog) -> IO(State & L.Session & J.Value):
@@ -721,6 +876,21 @@ def parsed(advance:State -> U32 -> State,state:State,session:L.Session,token:Str
 def dispatch_using(advance:State -> U32 -> State,state:State,session:L.Session,token:String,+request:J.Value) -> IO(State & L.Session & J.Value):
   parsed(advance,state,session,token,request,L.envelope(request))
 
+def parsed_io(advance:State -> U32 -> IO(State),state:State,session:L.Session,token:String,request:J.Value,
+    result:Result<&2,&2,L.Fault,L.Envelope>) -> IO(State & L.Session & J.Value):
+  match result:
+    case Done{envelope}:
+      L.Envelope{id,+op,args,at} = envelope
+      match op:
+        case "simulation.step": step_envelope_io(advance,state,session,L.Envelope{id,op,args,at})
+        case "world.save": save_envelope(state,session,token,request,L.Envelope{id,op,args,at})
+        case "player.inspect": inspect_envelope(state,session,token,request,L.Envelope{id,op,args,at})
+        case _: delegate(state,session,token,request)
+    case _: delegate(state,session,token,request)
+
+def dispatch_using_io(advance:State -> U32 -> IO(State),state:State,session:L.Session,token:String,+request:J.Value) -> IO(State & L.Session & J.Value):
+  parsed_io(advance,state,session,token,request,L.envelope(request))
+
 def dispatch(~driver:R.Driver,state:State,session:L.Session,token:String,+request:J.Value) -> IO(State & L.Session & J.Value):
   dispatch_using(state => ticks => advance(~driver,state,ticks),state,session,token,request)
 
@@ -776,11 +946,11 @@ def new_inventory(ready:E.Ready<IC.Saved>,tables:T.Tables) -> IO(Ready):
 
 # Pending body bytes remain with Entry until its real context/bootstrap and
 # discovery succeed. No transient fallback or second durable save is created.
-def new_cooking_inventory(ready:E.Ready<CookingStorage.Saved>,tables:T.Tables) -> IO(Ready & List<&2,CookingStorage.Body> & List<&2,CookingStore.Effect>):
-  E.Ready{E.State{base,CookingStorage.Saved{saved,bodies,pending},maximum,catalog},first_peer} = ready
-  do IO<Ready & List<&2,CookingStorage.Body> & List<&2,CookingStore.Effect>>:
+def new_cooking_inventory(ready:E.Ready<CookingStorage.Saved>,tables:T.Tables) -> IO(Ready & List<&2,CookingStorage.Body> & List<&2,CookingStore.Effect> & Maybe<&2,CookingStorage.EntityRecovery>):
+  E.Ready{E.State{base,CookingStorage.Saved{saved,bodies,pending,entities},maximum,catalog},first_peer} = ready
+  do IO<Ready & List<&2,CookingStorage.Body> & List<&2,CookingStore.Effect> & Maybe<&2,CookingStorage.EntityRecovery>>:
     ready : Ready <- startup_inventory_base(base,saved,maximum,catalog,first_peer,tables)
-    return (ready,bodies,pending)
+    return (ready,bodies,pending,entities)
 
 def returned_bundle(result:E.State<IC.Saved> & R.Transient) -> State:
   (stored,transient) = result

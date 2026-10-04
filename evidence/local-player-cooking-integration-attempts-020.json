@@ -1,0 +1,68 @@
+{
+  "status": "retained_failed_attempts",
+  "generation": 20,
+  "scope": "Changed generation20 actual Scene entity/IO/storage integration; failures are not success evidence.",
+  "ordinary_failure": {
+    "directory": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking/source/1791155998291848000",
+    "receipt": {
+      "argv": [
+        "/opt/homebrew/bin/node",
+        "--expose-gc",
+        "--max-old-space-size=8192",
+        "--stack-size=4096",
+        "--experimental-transform-types",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/local_player_cooking_source.mjs",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking/source/1791155998291848000",
+        "--scene"
+      ],
+      "exit_code": 1,
+      "group_absent": true,
+      "pid": 25505,
+      "seconds": 11.696103,
+      "stderr": {
+        "bytes": 1061,
+        "file": "original-source.stderr",
+        "sha1": "da8fa8d33b5c79cf7118f298b932cfdd45d4e290",
+        "sha256": "db5d28720f6c44c57a19f7e06f91b596faa392e8f80ad22d363a8c994589e419"
+      },
+      "stdout": {
+        "bytes": 0,
+        "file": "original-source.stdout",
+        "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "timed_out": false
+    },
+    "diagnostic": "(node:25505) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\nError:\n- expected : cases for local_player_cooking_entity_owner.Bound\n- observed : \\{}\nContext:\n- world               : C.World\n- context             : Cooking.Context\n- light               : block_light.State\n- loading             : Maybe<&2, block_light_world.Cursor>\n- entries             : List<&1, Store.Entry>\n- phase               : cooking_world.Phase\n- keys                : List<&2, String>\n- effects             : List<&2, Store.Effect>\n- details             : List<&2, Cooking.BodyDetails>\n- incarnations        : Map<&2, Nat>\n- acknowledged_resets : Nat\nLocation: delivered\n41 |     result:Model.State & Entities.Outcome) -> C.World & Cooking.Sidecar & Result<&2,&2,String,Unit>:\n42>|   match sidecar:\n   |   ^^^^^^^^^^^^^^\n43 |     case Cooking.Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,Owner.Unbound{},tail}:\n",
+    "repair": "Replaced non-exhaustive temporary Unbound Sidecar result pattern with a complete affine constructor continuation carrying every other field."
+  },
+  "parser_preflight_failures": [
+    {
+      "pid": 23736,
+      "error": "RangeError: Maximum call stack size exceeded",
+      "repair": "Used the existing source checker stack-size4096 setting."
+    },
+    {
+      "pid": 23815,
+      "error": "delivered matched earlier sidecar binder after destructuring later result binder",
+      "repair": "Matched sidecar before result; later ordinary failure replaced the partial match entirely."
+    },
+    {
+      "pid": 24170,
+      "error": "Computed Cooking.deliver_pending tuple cannot be a scrutinee",
+      "repair": "Added parameter-scrutinee fallback helper."
+    },
+    {
+      "pid": 24376,
+      "error": "Forward advance_go_io closed argument parsed as unexpected tilde",
+      "repair": "Passed typed recursion continuations into earlier helpers."
+    }
+  ],
+  "parser_pass": {
+    "pid": 24949,
+    "declarations": 6815,
+    "files": 138,
+    "scope": "Original book_load only; not checking or execution."
+  },
+  "successful_changed_receipt": "evidence/local-player-cooking-source-scene-020.json"
+}
