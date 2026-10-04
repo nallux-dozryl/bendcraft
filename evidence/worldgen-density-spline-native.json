@@ -1,0 +1,94 @@
+{
+  "cases": 36,
+  "codec_token_regressions": 1,
+  "executions": {
+    "all_groups_absent": true,
+    "count": 88,
+    "native_seconds": 8.12979741487652
+  },
+  "failures": [],
+  "helper": {
+    "bytes": 10570,
+    "file": "test_worldgen_density_spline.py",
+    "sha1": "05c74db954e1922995487a473999536c40cab684",
+    "sha256": "7e18bc5bd473d71348d84219edaa4d24fd1f11432d58cd2df57488b0f5174df7"
+  },
+  "java_observed_cases": 40,
+  "native_build": {
+    "binary": {
+      "bytes": 4321936,
+      "file": "worldgen-density-integration",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/density-integration-private-native-1791142656005458000/worldgen-density-integration",
+      "sha1": "85e32169888deeeb9ee683bc34d34dce052fc8ae",
+      "sha256": "54d26a9913301880788d7ed74102bd12aacb85392b34dcc91d3c59750bcea738"
+    },
+    "dependency_count": 49,
+    "frozen_source_generation": {
+      "mapping": {
+        "bytes": 23597,
+        "file": "source-map.json",
+        "sha1": "d505840f3ae83e437ab65b62d4a08f5f0e343045",
+        "sha256": "d34f8859a59049c018bd1e1103d911b07811a7d57facedb4b679287e65a3dade"
+      },
+      "mapping_path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/density-integration-native-1791141207213606000/source-map.json",
+      "original_input_drift": [],
+      "original_inputs_unchanged": true
+    },
+    "product_cache_promoted": false,
+    "report": {
+      "bytes": 23451,
+      "file": "native-build.json",
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/superflat-world/reference/density-integration-private-native-1791142656005458000/native-build.json",
+      "sha1": "64bedfbbfc2697641ff5decba8218b0979ec0bad",
+      "sha256": "3bf30883f70a676f09d95afbbe09b3a2a848242c7c0c37a7454f1e0a29ef13fb"
+    },
+    "reviewed_recipe": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-012",
+    "source_generation": {
+      "all_sources_current": true,
+      "changed_sources": [],
+      "emitted_c": {
+        "bytes": 15100807,
+        "file": "diagnostic.c",
+        "sha1": "b79a4f70f61ff9670263661ba9e83dd638da1f75",
+        "sha256": "fc1c46164795ff3e24f163fe39b025a746659075e81d3296eafd5efd5cfe73e7"
+      },
+      "manifest": {
+        "bytes": 13585,
+        "file": "manifest.json",
+        "sha1": "bfba4938b712cbf93b066c2ba7597fcb4fd1adf6",
+        "sha256": "2cfe62ba744d16ef544045f159e694f17bbd2c7aa556d984b601dd8cab86b9bb"
+      }
+    },
+    "timings": {
+      "emission_seconds": 104.60379637498409,
+      "native_seconds": 32.48986462503672
+    }
+  },
+  "pin": "26.3",
+  "range_cases": 36,
+  "raw_receipt": {
+    "bytes": 12299115,
+    "file": "result.json",
+    "path": "build/superflat-world/reference/density-spline-compare-1791143647743064000/result.json",
+    "sha1": "3d219642fb6e11c03a03b148026852440b5b72a5",
+    "sha256": "e22e8af5f073ed3080edae4fbea4d1fed891e084f5e64a7fd37b40655ef680a3"
+  },
+  "reference": {
+    "bytes": 76900,
+    "file": "worldgen_density_spline.json",
+    "sha1": "985dbe66bd287f6b84455c4ac64c4c091e4d95c3",
+    "sha256": "96cceab74e48a38646327d92791b9ce5c04ee7c345370b88dd8079564c94d879"
+  },
+  "refusal_cases": 7,
+  "retention_helper": {
+    "bytes": 11959,
+    "file": "test_worldgen_density_spline.py",
+    "sha1": "25e40bb163969f10a4c9242d2940bc520c52e556",
+    "sha256": "27d6343899dfd58efb921b0dbb7c4cf4b7323774a6949e95063c04a6d30aa156"
+  },
+  "samples": 289,
+  "schema": 1,
+  "scope": "Actual compiled unblended density DAG sampling and range analysis through the production loader/state/evaluator. Includes recursive spline/noise/registry coordinates, arbitrary accepted point ordering, FLOAT decode boundaries, and unconstrained infinite spline constants. Four NaI/Inf coordinates requiring unsupported Divide retain their Java observations and exercise the production explicit refusal. No full chunk population or interpolation volume claim.",
+  "status": "passed",
+  "unsupported_node_cases": 4
+}

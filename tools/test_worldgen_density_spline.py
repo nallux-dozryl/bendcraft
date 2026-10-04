@@ -68,6 +68,28 @@ def spline_fixture(case,settings,registry,range=False,**limits):
       str(limits.get('compile_depth',128)),str(limits.get('nodes',4096)),str(limits.get('entries',256)),
       str(limits.get('sampler_fuel',64)),str(limits.get('depth',128))])
 
+def retain_comparison(result,evidence_path=None):
+    directory=WORK/('density-spline-compare-'+str(time.time_ns()));directory.mkdir()
+    raw=directory/'result.json';write_json(raw,result)
+    pointer=json.loads(CURRENT.read_text());build=result['native_build']
+    compact={k:v for k,v in result.items() if k not in ('executions','native_build')}
+    private=build.get('private_build',{})
+    compact['native_build']={'report':{'path':pointer['report'],**fingerprint(Path(pointer['report']))},
+      'binary':{'path':pointer['binary'],**fingerprint(Path(pointer['binary']))},
+      'timings':build['timings'],'source_generation':build['comparison_source_generation'],
+      'frozen_source_generation':build.get('frozen_source_generation'),
+      'dependency_count':len(build['dependencies']),
+      'reviewed_recipe':private.get('reviewed_recipe'),
+      'product_cache_promoted':private.get('product_cache_promoted')}
+    compact['executions']={'count':len(result['executions']),
+      'native_seconds':sum(row['seconds'] for row in result['executions']),
+      'all_groups_absent':all(row['leader_reaped'] and row['group_absent'] for row in result['executions'])}
+    compact['raw_receipt']={'path':str(raw.relative_to(ROOT)),**fingerprint(raw)}
+    compact['retention_helper']=fingerprint(Path(__file__).resolve())
+    write_json(evidence_path or ROOT/'evidence/worldgen-density-spline-native.json',compact)
+    return compact
+
+
 def compare():
     reference=json.loads(REFERENCE.read_text());density=json.loads((ROOT/'reference/worldgen_density.json').read_text())
     if reference['pin']!='26.3' or reference['status']!='observed':raise ValueError('Actual pinned reference required')
@@ -113,7 +135,10 @@ def compare():
       ('node-budget',{'nodes':1},'density DAG exceeds caller node budget'),
       ('runtime-depth',{'depth':1},'density evaluation exceeds caller depth budget')]:
         actual=invoke('budget-'+label,spline_fixture(budget_case,density['settings'],density['registry'],**limits))
-        expected='fail|'+message
+        # Runtime failures are serialized per sampled point by H.samples;
+        # compile/initialization failures use the harness's top-level refusal.
+        expected=('density|'+''.join('fail:'+message+';' for _ in budget_case['points'])
+          if label=='runtime-depth' else 'fail|'+message)
         if actual!=expected:failures.append({'id':label,'kind':'caller-budget-refusal','expected':expected,'actual':actual})
         refusals+=1
     long_token_case={'id':'long-FLOAT-lexeme','seed':'0','points':[[0,0,0]],
@@ -126,7 +151,7 @@ def compare():
       'failures':failures,'native_build':report,'reference':fingerprint(REFERENCE),'executions':receipts,
       'helper':fingerprint(Path(__file__).resolve()),
       'scope':'Actual compiled unblended density DAG sampling and range analysis through the production loader/state/evaluator. Includes recursive spline/noise/registry coordinates, arbitrary accepted point ordering, FLOAT decode boundaries, and unconstrained infinite spline constants. Four NaI/Inf coordinates requiring unsupported Divide retain their Java observations and exercise the production explicit refusal. No full chunk population or interpolation volume claim.'}
-    write_json(ROOT/'evidence/worldgen-density-spline-native.json',result)
+    retain_comparison(result)
     if failures:raise AssertionError(failures[:8])
     return {'status':'passed','cases':result['cases'],'samples':samples,'range_cases':result['range_cases'],'unsupported_node_cases':unsupported,'refusal_cases':refusals}
 

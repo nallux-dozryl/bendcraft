@@ -107,8 +107,18 @@ caller's semantic nesting allowance.
   and three caller-budget refusals. A separate long-token regression checks
   removal of inherited numeric lexeme caps; its expected binary32 word comes
   from the representable value 1.0 and its negligible positive decimal tail.
-  Native comparison status is recorded only
-  after execution in `evidence/worldgen-density-spline-native.json`.
+  The native comparison passed all those checks in 88 bounded calls;
+  their retained execution time totals 8.130 seconds and all owned process
+  groups are absent. `evidence/worldgen-density-spline-native.json` records
+  counts, failures, source identity, binary/report hashes, and the fingerprint
+  of the complete retained raw receipt under `build/`.
+- The first native attempt matched every spline sample and range but exposed
+  a Python assertion that expected runtime-depth failure at the top level.
+  The existing harness reports that failure separately for each sampled
+  point. The expectation was corrected; production Bend and the native
+  artifact were unchanged. The initial failure remains in
+  `evidence/worldgen-density-spline-native-initial-failure.json` with its own
+  full-receipt fingerprint.
 
 Commands, coordinated under the repository's two-heavy-job limit:
 
@@ -121,8 +131,13 @@ python3 tools/test_worldgen_density_spline.py --build
 python3 tools/test_worldgen_density_spline.py --compare
 ```
 
-The parent may supply one frozen combined native artifact for the spline,
-router, and interval suites instead of a separate build. Its dependency
-manifest and emitted-source identity are verified before comparison.
+The completed comparison used the parent's frozen combined native artifact
+for the spline, router, and interval suites. Its 49 original source files,
+117 loaded/native input pins, emitted C, and native binary were validated.
+After the ordinary build's process-cleanup error produced no artifact, the
+reviewed diagnostic-012 CPU emission route compiled the same frozen closure.
+The report retains that private build provenance; it was not promoted into
+the product cache. The complete comparison receipts remain under ignored
+`build/` paths, while committed evidence carries their hashes and summaries.
 These scopes do not establish complete chunk generation or visible world
 acceptance. Numeric parity claims are limited to the actual compared cases.
