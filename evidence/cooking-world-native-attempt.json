@@ -1,0 +1,117 @@
+{
+  "status": "superseded-targeted-attempt",
+  "checks": {
+    "ordinary": {
+      "kind": "ordinary",
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/cooking_world.bend",
+        "--check-only"
+      ],
+      "exit": 0,
+      "seconds": 1.5888,
+      "sampled_process_tree_peak_rss_bytes": 853426176,
+      "bounded_stop": null,
+      "stdout_sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "emit": {
+      "kind": "emit",
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/cooking_world.bend",
+        "-o",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-world-native/receiver.c"
+      ],
+      "exit": 0,
+      "seconds": 11.2656,
+      "sampled_process_tree_peak_rss_bytes": 3172073472,
+      "bounded_stop": null,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "clang": {
+      "kind": "clang",
+      "command": [
+        "/usr/bin/clang",
+        "-std=c11",
+        "-O3",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-world-native/receiver.c",
+        "-lpthread",
+        "-lm",
+        "-o",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-world-native/receiver"
+      ],
+      "exit": -15,
+      "seconds": 4.9831,
+      "sampled_process_tree_peak_rss_bytes": 1073938432,
+      "bounded_stop": "RSS bound",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "clang-o1": {
+      "kind": "clang-o1",
+      "command": [
+        "/usr/bin/clang",
+        "-std=c11",
+        "-O1",
+        "build/cooking-world-native/receiver.c",
+        "-lpthread",
+        "-lm",
+        "-o",
+        "build/cooking-world-native/receiver"
+      ],
+      "exit": 0,
+      "seconds": 11.8175,
+      "sampled_process_tree_peak_rss_bytes": 1234878464,
+      "bounded_stop": null,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "native": {
+      "kind": "native",
+      "command": [
+        "/usr/bin/time",
+        "-l",
+        "build/cooking-world-native/receiver",
+        "--gpu",
+        "off",
+        "--threads",
+        "1",
+        "build/cooking-world-native/input.json"
+      ],
+      "exit": 2,
+      "seconds": 11.2254,
+      "sampled_process_tree_peak_rss_bytes": 84180992,
+      "bounded_stop": null,
+      "stdout_sha256": "b697d72a9727c3108e9d54717a83d6e34826bca4404044a9fd41c6caaaf73cef",
+      "stderr_sha256": "9be7778402db5b4350597499e57ef94d997fa0aa4b4b0a5becd9b5fb00cf0567",
+      "peak_rss_bytes": 83017728
+    }
+  },
+  "native_failure": "refusal accepted: missing_provider_retries_whole_pending_owner",
+  "diagnosis": "Test removed known provider definitions, but actual unknown-reference vanilla fallback correctly succeeded. Injection changed to explicit OtherInt at the real coal time reference; production unchanged. Clang -O3 exceeded the 1 GiB test bound; cached -O1 completed at 1.235 GB, and targeted recipe rerun uses that measured bound.",
+  "second_native_attempt": {
+    "result": {
+      "kind": "native",
+      "command": [
+        "/usr/bin/time",
+        "-l",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-world-native/receiver",
+        "--gpu",
+        "off",
+        "--threads",
+        "1",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-world-native/input.json"
+      ],
+      "exit": 3,
+      "seconds": 11.5614,
+      "sampled_process_tree_peak_rss_bytes": 84705280,
+      "bounded_stop": null,
+      "stdout_sha256": "bb196633a37c036ebe29ba67b467fc838768f5adf707518b55a3e93f11b1452e",
+      "stderr_sha256": "933e46f6e639aee42173c454a7b70117d46f52e65965d44f1858765306448d0d",
+      "peak_rss_bytes": 83509248
+    },
+    "diagnosis": "Input fixture selected actual unlit campfire states. Production correctly produced no cooked drops; changed input selects actual verified LIT states. Production source and generated C unchanged, so reuse cached receiver only."
+  }
+}

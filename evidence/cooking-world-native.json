@@ -1,0 +1,237 @@
+{
+  "status": "passed",
+  "command": "python3 tools/test_cooking_world.py",
+  "checks": [
+    {
+      "kind": "ordinary",
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/cooking_world.bend",
+        "--check-only"
+      ],
+      "exit": 0,
+      "seconds": 1.5902,
+      "sampled_process_tree_peak_rss_bytes": 883556352,
+      "bounded_stop": null,
+      "stdout_sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "proof-export",
+      "command": [
+        "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+        "--experimental-transform-types",
+        "--stack-size=4096",
+        "--max-old-space-size=1536",
+        "tools/cooking_world_proof.mjs",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-world-native"
+      ],
+      "exit": 0,
+      "seconds": 1.8169,
+      "sampled_process_tree_peak_rss_bytes": 403767296,
+      "bounded_stop": null,
+      "stdout_sha256": "173e2b35d906c90130a2c1a333f9f28910020227bf67cd637423dd3e657635ba",
+      "stderr_sha256": "2c9ee23a4c27bc12707bf8f6d00f031625c1151247b9c3a26359ac8771d1ad15"
+    },
+    {
+      "kind": "independent-kernel",
+      "command": [
+        "/usr/bin/env",
+        "LEAN_STACK_SIZE=4194304",
+        "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-world-native/selected.bendtt"
+      ],
+      "exit": 0,
+      "seconds": 0.2304,
+      "sampled_process_tree_peak_rss_bytes": 1196032,
+      "bounded_stop": null,
+      "stdout_sha256": "61b73cda11b6b665b9f99f2defd3d3b57f985c865225e942a5bdaa594a503e47",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "emit",
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/cooking_world.bend",
+        "-o",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-world-native/receiver.c"
+      ],
+      "exit": 0,
+      "seconds": 12.4059,
+      "sampled_process_tree_peak_rss_bytes": 2993160192,
+      "bounded_stop": null,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "clang",
+      "command": [
+        "/usr/bin/clang",
+        "-std=c11",
+        "-O1",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-world-native/receiver.c",
+        "-lpthread",
+        "-lm",
+        "-o",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-world-native/receiver"
+      ],
+      "exit": 0,
+      "seconds": 14.7297,
+      "sampled_process_tree_peak_rss_bytes": 1784922112,
+      "bounded_stop": null,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "native": {
+    "kind": "native",
+    "command": [
+      "/usr/bin/time",
+      "-l",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-world-native/receiver",
+      "--gpu",
+      "off",
+      "--threads",
+      "1",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-world-native/input.json"
+    ],
+    "exit": 0,
+    "seconds": 11.0742,
+    "sampled_process_tree_peak_rss_bytes": 84787200,
+    "bounded_stop": null,
+    "stdout_sha256": "ef855c3aeb48b3eba9806cf9dccd813047b6c06ddc53bc5ef0a9aeca0ebe8fc6",
+    "stderr_sha256": "692b60f7cbeba4e23eab8f683986426be22f72d0dc6440cbac628c832c2bb35a",
+    "peak_rss_bytes": 83591168
+  },
+  "guards": [
+    "ok malformed_body_retains_owner_0",
+    "ok malformed_body_retains_owner_1",
+    "ok malformed_body_retains_owner_2",
+    "ok malformed_body_retains_owner_3",
+    "ok malformed_body_retains_owner_4",
+    "ok player_cannot_load_physical_body",
+    "ok pending_tick_cannot_advance",
+    "ok unsupported_provider_retries_whole_pending_owner",
+    "ok two_actual_campfire_outputs",
+    "ok completed_tick_does_not_replay",
+    "ok observer_edit_preserved",
+    "ok output_slot_denied",
+    "ok unloaded_slot_denied",
+    "ok actual_java_ignite_frame",
+    "ok removal_no_duplicate_items",
+    "ok empty_drop_calls_retained",
+    "ok all_removed"
+  ],
+  "production_source_sha256": {
+    "src/cooking_world_laws.bend": "3145d0e91b48c62cf7228dd9d3e9466d6b43b052f74c15e6df61baebce160e27",
+    "src/cooking_world_items.bend": "eae4556b5d42bf46243628df01f25bb2a91534b7a54aea1a79a9ef2a7a8cad88",
+    "src/cooking_world_actor.bend": "50b7dd0397cabe1f8a2e5c5a7e3ac095fba09bd95bfe59969dd8e4ef1e2aea28",
+    "src/cooking_world_tick.bend": "682dbe98213690405e575815fe77556cf3666fa95e8f9cffd6f4ec9fa717a3b3",
+    "src/cooking_world_bindings_loader.bend": "3e32c3e3b1b3cd48dcefc28b6aab8062645adedd6e2145650a9dfb985a0faa70",
+    "src/cooking_world_store.bend": "756ca6f6397f08d2bba756236bcbf83c51cad6c9e4bd2d60c2859e0379278ebb",
+    "src/cooking_world_slots.bend": "e71c3361f2c77d792b76c1702f76a3b767b5e5e5ab8dd01995ac2aa5a27e7b14",
+    "src/cooking_world_proof.bend": "35dbc2db8e3c9877ece1415f096f7667f02d17e660cc86605100ba552157f764",
+    "src/cooking_world_persistence.bend": "9b956f0cbbff4df6d7ee690f9218e3e0b4721c442dc61558dc14cbdc3ecdd4dc",
+    "src/cooking_world.bend": "18a63205bf5ff2478e3a44a46f0bb0faa5d22d30118b909a13e3cc122acef4f2",
+    "src/cooking_world_bindings.bend": "0ca79f788bc40742c575cca1345196bc12cd5d5984e4dae9866cf408b6886f75",
+    "src/cooking_world_edit.bend": "51cc9367ebe73d035f0110f5751bb05e59e47dd1ce46937b724c8e9c956c03ab",
+    "tests/cooking_world.bend": "250f23d3bc3bbd189d8a98f92e2c719fdb4f657082e585fb726f09c6afd2b905"
+  },
+  "native_emitted_c_sha256": "6e28f3c1e05299fdad453029f166f58e7e8bc9c5ba9b920e3f57289659612ef6",
+  "native_binary_sha256": "0b428ae63f335445c372233eb75019577584aa1ead53d49907087a0fb048d9ce",
+  "actual_registry_states": 35723,
+  "cooking_bindings": 88,
+  "light_provider_rows": 90,
+  "ordinary_laws": 6,
+  "kernel_laws": 6,
+  "scope_exclusions": [],
+  "term_pins": [
+    {
+      "name": "cooking_world_laws:refused_cooking_plan_retains_ready_owner",
+      "type_sha256": "8e0b592ba90986c7f1e852b4cbcd5347f9dfb5565a7d3d00cfeb5f420aecb9a7",
+      "checked_proof_sha256": "e8b77122dccc4447258ee47f3506f77cd2875a2f2a55bd283ba423418788ab83",
+      "source_body_sha256": "563decd41a4a54ad8769ff3a5cb2041d9b6306d98084d3875ef1ae24bb3b2bc4"
+    },
+    {
+      "name": "cooking_world_laws:refused_cooking_plan_retains_pending_owner",
+      "type_sha256": "82a01f4cadfb9f49ee1143b572c64ec0518e4a1a9cc27833a2bf492438e18270",
+      "checked_proof_sha256": "f797894c35fa68f4a7be8bfdf8f723387bda1364033fec42576a1d8c3553160e",
+      "source_body_sha256": "4e87a71635cdf633790c52dbde332faf127ab96c07c8b7500ae253672815d3c4"
+    },
+    {
+      "name": "cooking_world_laws:furnace_property_transition_retains_actual_array",
+      "type_sha256": "05f1e7b37fb7f67ebe04321351be7828fd1f8570cb20eb019de343c494f243c6",
+      "checked_proof_sha256": "ebaee37b83be7190b73d4c4eb552f76f1e0e594e1aee44a239f814243ed1e72e",
+      "source_body_sha256": "5243763714b378c6ec36a34d4896b92f42496f0c761d7b910a4dd210bc9bc125"
+    },
+    {
+      "name": "cooking_world_laws:campfire_ticker_change_preserves_items_and_resets_cache",
+      "type_sha256": "0ad5334e618c5578f6ed656f7eb1e4cb414e465ccfe7223ac9f1349f36a7d8b1",
+      "checked_proof_sha256": "edab2bd8d6e8c768caef15cf93a7a4d74345dcb82ea7ca48d91f1cf58e0939b5",
+      "source_body_sha256": "6449ea95861669a31caf89ad13d793785882caa2544c6cffdcd9de8b28d4e29e"
+    },
+    {
+      "name": "cooking_world_laws:unlit_partner_uses_exact_registry_state",
+      "type_sha256": "26f8eaa5e3463ccd8d35d5cd05d18243115c859683da86d6f71818cf9e707e12",
+      "checked_proof_sha256": "534fd6ec3e0d029d0c91ff87a89f93fa4f3ee97a8adb7cb70ef5a57bc26d4fd5",
+      "source_body_sha256": "1a3efd8c7307678fc535b788ca24e43be03964dc47f829c475d2c35d5eb4a929"
+    },
+    {
+      "name": "cooking_world_laws:lit_partner_uses_exact_registry_state",
+      "type_sha256": "ee4d642bb66ef48cc5e73259e37bbd8d4ba3da82722d0f3d4be8df2215860f19",
+      "checked_proof_sha256": "7fee5673e7a2874a5c03d0c93658d133787f8d9c7d31632422f5495da81fc4a8",
+      "source_body_sha256": "1a3efd8c7307678fc535b788ca24e43be03964dc47f829c475d2c35d5eb4a929"
+    }
+  ],
+  "kernel_sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7",
+  "selected_artifact_sha256": "3b1521108796a578e4ff62655de49cfd49f2bd3df51ed46aec86ee1b16075951",
+  "proof_source_sha256": {
+    "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/base.bend": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/block_light.bend": "e829015163260450b03c9a25e90d6f78df39e3797b77f9e03a917231fdd4e159",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/block_light_world.bend": "870727d29cd91025f34140efb06c7042eae8f52b3bb300f706bd682b7f0df456",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/campfire_authority.bend": "78a59482edfd9f1ed0455524b99fda220dbe697bfcc72fe1a7b71a343396ab21",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/campfire_authority_items.bend": "cc8e33b0636309348135ec32aabb8f6cfceb23a24863fd064fc30bf730ba79c2",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_block_entity_codec_components.bend": "f0a2bf8551c0d64e691cf482484056573a9862ce09bf4da783125644460db414",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_block_entity_codec_nbt.bend": "ceacb780ad51bd196c2317a31b990756ef42a1e22852fc733296f2ad21331a8a",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_recipe.bend": "085bfe968f3e7169e5c7bacf633029ebd9e4fc8c8ecb79ad81f63a193110f795",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_recipe_decoder.bend": "ca334faae18c0a25664d4d3170f29aa26e33fa4a0b9da0bcc08348c79e51ae28",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_recipe_number.bend": "c3b8b18a323f9c95602c55d0063c2ae49796979ed6d7a4506b00a4091db1921a",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_world.bend": "18a63205bf5ff2478e3a44a46f0bb0faa5d22d30118b909a13e3cc122acef4f2",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_world_bindings.bend": "0ca79f788bc40742c575cca1345196bc12cd5d5984e4dae9866cf408b6886f75",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_world_edit.bend": "51cc9367ebe73d035f0110f5751bb05e59e47dd1ce46937b724c8e9c956c03ab",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_world_items.bend": "eae4556b5d42bf46243628df01f25bb2a91534b7a54aea1a79a9ef2a7a8cad88",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_world_laws.bend": "3145d0e91b48c62cf7228dd9d3e9466d6b43b052f74c15e6df61baebce160e27",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_world_proof.bend": "35dbc2db8e3c9877ece1415f096f7667f02d17e660cc86605100ba552157f764",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_world_slots.bend": "e71c3361f2c77d792b76c1702f76a3b767b5e5e5ab8dd01995ac2aa5a27e7b14",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_world_store.bend": "756ca6f6397f08d2bba756236bcbf83c51cad6c9e4bd2d60c2859e0379278ebb",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_world_tick.bend": "682dbe98213690405e575815fe77556cf3666fa95e8f9cffd6f4ec9fa717a3b3",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/core.bend": "9636bb1dfdde3fe36e650ab8e8d4b62dad2a49b419a27454794e5923cb570b05",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe.bend": "3c5f3fc7b3e0be9be7d553da2a107dc1245fe13f17afac0efdf84bc41c15ffe2",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe_component_registry.bend": "911786032b2c22759208edaf7112ae403b2a03663d9237c3e036c2b5ba4ece2a",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe_components.bend": "2a35e31f26187ebbdab1c4261d54083acb68072a56a7b5869e5dfc490bc946be",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe_decoder.bend": "739037cf939bcef5a8008c34216b717ed60574c66690f627d11dc949e8542397",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/furnace_authority.bend": "1aeba248310862e0d3df4efce300c842a31e5377daa79dc166e59d7414758be2",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/furnace_authority_decoder.bend": "e69c7050eb2a51fe019bbcfb1716f2512f12f8853f19320502d3769d0626ce47",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/furnace_authority_fuel.bend": "e118a5890567ea91431890b3889d9392891bf84bbd4d827ed088983fdf80fa74",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/furnace_authority_slots.bend": "0a4167f5aa16dfd14c000dd02ba5a156ec81d0942683d24927025a857a85827a",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/furnace_authority_xp.bend": "9820b625be1d27542fc6a2105cc1558520af2cbde99b18abb5503d438bceec2d",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/inventory.bend": "9d2be7fb88afa1dc6386ab9e8b046b15d2a2a73b7e14566e5bfad3e6dd1f2702",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/json.bend": "a1789e3b4f5bea158ec0d95a8bcb39aa5b7c7e7355a5254d3de1d52a93c719d1",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/nbt.bend": "b677546b5fc02aaa38f5c09e5b798c0d35aec32b1c4b37cbd7042b9a1a5275e4",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_core_edit.bend": "ced4c368ae781a1543fff9bebfe661ba99efe01a71fd1bb95e188bf62f1dc449",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/schedule.bend": "93aa79895fe340e27ae5fd562102d5980f0938003eb1bbde669a84010779b8c9",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/section.bend": "02b5c15c57b173c7eb8b4c55a1433c10c192926e91af5e3e69050b4404044aa5",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/section_map.bend": "ded59d7938c02fd0876d65e37f9f90ea0cfebf3ca4bd107394342f8adbf33965",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/section_map_read.bend": "7a6a0d6fe8b8736ab64adb34b896074da709f91f2ae5bd205a7301c868690fc1",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/section_map_update.bend": "93a1cb016ac86eaaea2773ab8b75b95e93f1976348b3c2c500fc0de0cc9831be",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/u32_decimal.bend": "d0b4b33f10b9e9801c4e99b83803afba5031ea40013a9263f9090bed8543d25c"
+  },
+  "unchanged_cooking_corpus_replayed": false,
+  "retained_java_ignite_frame": "reference/furnace_authority.json cases[ignite]",
+  "proof_boundary": "The six stated production laws cover failed whole-owner plans, array/property retention, campfire cache reset and exact LIT partners. Generic permission/cadence whole-state equations do not normalize in the current matcher; native guards establish their tested boundaries, not universal proof.",
+  "boundary": "Actual sole Core/BW owner, accepted scheduled creation/removal/replacement, actual loaded recipes/item defaults/fuel authority, pending whole-owner provider retry, campfire outputs, player/slot/unloaded refusal, physical body save/load all five families, malformed NBT and Player import refusal, empty drop calls and remove/recreate/remove ownership. Native entity/XP RNG spawning, menu inventory transaction and durable save actor adoption remain explicit consumers.",
+  "fixture_only_cached_retry": "Verified lit campfire input states substituted after the unlit-state fixture assertion. Same production/test source, emitted C and binary; retained failed observation in cooking-world-native-attempt.json. Kernel/compiler checks retained from immediately preceding run.",
+  "input_sha256": "318e48580359125159437a3dffab2b083c9e0d4a4ede238edc71e3eb17050c84",
+  "consumer_hook": "cooking_world_actor.realtime_tick"
+}
