@@ -2,7 +2,7 @@
 
 `tools/test_playable_client_cooking_atomic_crash.py --actor-generation 20` is a
 separate consumer for the already verified immutable Actor020 binary. Current
-status is **prepared file-only; crash-window execution is pending**. It does not
+status is **actual attempt 004 UNOBSERVED**, in 50.909993 seconds. It does not
 build, change source, install stage hooks or repeat the earlier five-save entity
 consumer. That consumer's actual final format3 snapshot supplies the complete
 player/inventory/equipment/status/generation and two Item/one Orb owner.
@@ -19,7 +19,7 @@ Preparation:
 /Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 -B tools/test_playable_client_cooking_atomic_crash.py --actor-generation 20 --expectations
 ```
 
-The eventual separately coordinated run substitutes `--native`. It reuses the
+Native execution substitutes `--native`. It reuses the
 existing 600-second bounded process owner, actual actor/TCP journals and cleanup.
 It does not signal the user's unrelated 012 actor. The prepared receipt is
 `evidence/playable-client-cooking-atomic-crash-prepared-003.json`.
@@ -78,12 +78,24 @@ is **UNOBSERVED** and the runner sends no witness-driven SIGKILL. It retains the
 size transitions, actual reply or transport fault and destination identity. No
 crash-during-write success is manufactured from a missed window.
 
+Actual attempt 004 retained the correct temporary name
+`world.nbt.pending-save-49-9` and inode 335732634. The monitor observed size 0 at
+1.598324 seconds and the full 1,714,835-byte image at 1.611255 seconds; it observed
+no positive incomplete payload. The actual TCP save returned a durable complete
+new image at 1.647631 seconds. The acknowledged large baseline also matched every
+expected byte. No SIGKILL was sent, no cold-restore actor was launched, and no
+crash/replay acceptance is claimed. The writer actor exited 0; all owned groups
+were reaped and listeners were absent. The public receipt is
+`evidence/playable-client-cooking-atomic-crash-native-004.json`, including exact
+size observations, dynamic TCP journals, complete-image hashes and process
+receipts. The earlier actual five-save/two-crash entity consumer remains unchanged.
+
 The first file-only preparation exposed the old small consumer's outer NBT
 reader element bound at the new large ByteArray. The new runner uses an explicit
 33,624,064-byte/element outer reader; the verified entity consumer is unchanged.
 The failure is retained in
 `evidence/playable-client-cooking-atomic-crash-prepared-failure-001.json`.
 Preparation 003 passed complete old/new framing checks. Confidence is high in the
-inspected protocol and retained source identities; actual crash-window behavior
-is unknown until this separate native attempt. Physical power loss and precise
+inspected protocol and retained size/reply observations; crash-window recovery
+remains unestablished after the actual UNOBSERVED result. Physical power loss and precise
 inside-syscall interruption remain outside its scope.
