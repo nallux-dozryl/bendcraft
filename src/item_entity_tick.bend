@@ -295,14 +295,38 @@ def canonical_context(context:T.Context) -> Bool:
 def canonical_runtime(snapshot:T.Snapshot) -> Bool:
   T.Snapshot{+record,T.Runtime{+p,+b,+f,+pending,+moves,+s,+runtime_tail}}=snapshot
   List.is_empty(&2,T.Runtime,runtime_tail)
-def live_plan(+context:T.Context,+snapshot:T.Snapshot,records:List<&2,E.Record>) -> Result<&2,&2,T.Error,T.Plan>:
-  do Result<&2,&2,T.Error,T.Plan>:
+def prepared_motion(+context:T.Context,prior:List<&2,T.Publication>,old_position:V.Vec3,old_velocity:V.Vec3,result:M.MotionResult) -> T.Prepared:
+  M.MotionResult{snapshot,events}=result
+  T.Physics{after_blocks(snapshot,server_authority(context)),List.append(&2,T.Publication,prior,events),old_position,old_velocity}
+def prepared_started(+context:T.Context,events:List<&2,T.Publication>,+snapshot:T.Snapshot) -> Result<&2,&2,T.Error,T.Prepared>:
+  T.Snapshot{+record,+runtime} = snapshot
+  +started : E.Record = item_start(record)
+  do Result<&2,&2,T.Error,T.Prepared>:
+    +escaped : T.Snapshot <- M.collision(context,T.Snapshot{M.buoyancy(started,runtime),runtime})
+    +motion : M.MotionResult <- move_snapshot(context,escaped)
+    return prepared_motion(context,events,U.pos(started),U.velocity(started),motion)
+def prepared_lifecycle(+context:T.Context,result:M.MotionResult) -> Result<&2,&2,T.Error,T.Prepared>:
+  M.MotionResult{+snapshot,events}=result
+  do Result<&2,&2,T.Error,T.Prepared>:
+    snapshot : T.Snapshot <- lifecycle(context,snapshot)
+    prepared_started(context,events,snapshot)
+def live_prepare(+context:T.Context,+snapshot:T.Snapshot) -> Result<&2,&2,T.Error,T.Prepared>:
+  do Result<&2,&2,T.Error,T.Prepared>:
     _ : Unit <- U.guard(canonical_context(context) && canonical_runtime(snapshot),"item tick context/runtime frame must be canonical")
     _ : Unit <- U.guard(dimension(context,snapshot),"item tick geometry dimension differs from entity")
     _ : Unit <- U.guard(server_authority(context),"item client authority/network movement receiver unavailable")
     _ : I.ItemMetadata <- Merge.metadata_for(items(context),record(snapshot))
     +first : M.MotionResult <- observe_fluid(context,base_prepare(snapshot))
-    base_phase(context,records,first)
+    prepared_lifecycle(context,first)
+def settled_plan(plan:T.Plan) -> Result<&2,&2,T.Error,T.Plan>: Done{plan}
+def prepared_default(+context:T.Context,records:List<&2,E.Record>,value:T.Prepared) -> Result<&2,&2,T.Error,T.Plan>:
+  match value:
+    case T.Settled{plan}: settled_plan(plan)
+    case T.Physics{snapshot,events,old_position,old_velocity}: moved_ready(context,records,events,old_position,old_velocity,snapshot)
+def live_plan(+context:T.Context,+snapshot:T.Snapshot,records:List<&2,E.Record>) -> Result<&2,&2,T.Error,T.Plan>:
+  do Result<&2,&2,T.Error,T.Plan>:
+    prepared : T.Prepared <- live_prepare(context,snapshot)
+    prepared_default(context,records,prepared)
 def discarded(+snapshot:T.Snapshot,records:List<&2,E.Record>) -> Result<&2,&2,T.Error,T.Plan>:
   T.Snapshot{+record,+runtime}=snapshot
   +removed=U.discard(record)
@@ -320,6 +344,20 @@ def is_item(record:E.Record) -> Bool:
   match record:
     case E.Item{+c,+i,+a,+d,+h,+t,+target,+b}: True{}
     case _: False{}
+def prepared_settled(result:Result<&2,&2,T.Error,T.Plan>) -> Result<&2,&2,T.Error,T.Prepared>:
+  match result:
+    case Fail{error}: Fail{error}
+    case Done{plan}: Done{T.Settled{plan}}
+def prepare_empty(+context:T.Context,+snapshot:T.Snapshot,records:List<&2,E.Record>,empty:Bool) -> Result<&2,&2,T.Error,T.Prepared>:
+  match empty:
+    case False{}: live_prepare(context,snapshot)
+    case True{}: prepared_settled(discarded(snapshot,records))
+def prepare_kind(+context:T.Context,+snapshot:T.Snapshot,records:List<&2,E.Record>,item:Bool) -> Result<&2,&2,T.Error,T.Prepared>:
+  match item:
+    case False{}: Fail{T.Refused{"ItemEntity tick cannot tick an experience orb"}}
+    case True{}: prepare_empty(context,snapshot,records,U.empty(U.slot(record(snapshot))))
+def prepare(+context:T.Context,+snapshot:T.Snapshot,records:List<&2,E.Record>) -> Result<&2,&2,T.Error,T.Prepared>:
+  prepare_kind(context,snapshot,records,is_item(record(snapshot)))
 def plan_item(frame:PlanFrame) -> Result<&2,&2,T.Error,T.Plan>:
   PlanFrame{+context,+snapshot,+records,+tail}=frame
   item_plan(context,snapshot,records)

@@ -74,3 +74,8 @@ type Context is Data:
     step_budget:Nat,fall_clip:Maybe<&2,Bool>,tail:List<&2,Context>}
 type Plan is Data:
   Plan{snapshot:Snapshot,records:List<&2,E.Record>,publications:List<&2,Publication>}
+# Both routes share physical preparation. A settled empty-item discard requires
+# removal authority, while Physics requires its real move callback before query.
+type Prepared is Data:
+  Physics{snapshot:Snapshot,publications:List<&2,Publication>,old_position:V.Vec3,old_velocity:V.Vec3}
+  Settled{plan:Plan}

@@ -160,3 +160,27 @@ def neighbours(+context:CI.Context,+left:Nat,+record:E.Record,+records:List<&2,E
   do Result<&2,&2,T.Error,Neighbours>:
     +meta : I.ItemMetadata <- metadata_for(context,record)
     neighbours_gate(context,left,record,records,eligible(meta,record))
+
+# The real manager route takes one fixed getEntitiesOfClass query before the
+# loop. Do not sort again or regenerate the neighbour list after a transfer.
+def ordered_head(+context:CI.Context,+record:E.Record,+id:U32,+rest:List<&2,U32>,admitted:Bool) -> Result<&2,&2,T.Error,List<&2,U32>>:
+  match admitted:
+    case False{}: Done{rest}
+    case True{}:
+      do Result<&2,&2,T.Error,List<&2,U32>>:
+        +meta : I.ItemMetadata <- metadata_for(context,record)
+        return U.select(List<&2,U32>,id <> rest,rest,eligible(meta,record))
+def ordered_ids(values:List<&2,E.Record>,+context:CI.Context,+source:U32) -> Result<&2,&2,T.Error,List<&2,U32>>:
+  match values:
+    case Nil{}: Done{[]}
+    case +head <> rest:
+      do Result<&2,&2,T.Error,List<&2,U32>>:
+        tail : List<&2,U32> <- ordered_ids(rest,context,source)
+        ordered_head(context,head,E.record_id(head),tail,U32.is_ne(E.record_id(head),source) && Bool.not(U.empty(U.slot(head))) && Bool.not(U.removed(head)))
+# Actual private tryToMerge checks target/component/count compatibility; the
+# public neighbour loop, rather than this receiver, controls isMergable calls.
+def private_pair(+context:CI.Context,+first:E.Record,+second:E.Record) -> Result<&2,&2,T.Error,MergePair>:
+  do Result<&2,&2,T.Error,MergePair>:
+    _ : I.ItemMetadata <- metadata_for(context,first)
+    +sm : I.ItemMetadata <- metadata_for(context,second)
+    return merged(first,second,P.maximum(sm),can_join(first,second,sm))
