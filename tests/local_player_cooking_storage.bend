@@ -9,6 +9,9 @@ import ../src/cooking_block_entity_codec_items.bend as Items
 import ../src/cooking_block_entity_codec_nbt.bend as Text
 import ../src/cooking_world_store.bend as Store
 import ../src/cooking_effect_recovery.bend as Effects
+import ../src/cooking_effect_entities_model.bend as Entities
+import ../src/local_player_effect_entities_codec.bend as EntityCodec
+import ../src/random.bend as Random
 
 def bytes_equal(a:List<&2,U32>,b:List<&2,U32>) -> Bool:
   match a b:
@@ -30,7 +33,7 @@ def encoded_equal(expected:Result<&2,&2,String,List<&2,U32>>,result:S.Saved & Re
 
 def legacy_encoded(result:I.Saved & Result<&2,&2,String,List<&2,U32>>) -> Bool:
   (owner,expected) = result
-  encoded_equal(expected,S.encode(S.Saved{owner,[],[]}))
+  encoded_equal(expected,S.encode(S.Saved{owner,[],[],None{}}))
 
 def legacy_initial(result:Result<&2,&1,String,I.Saved>) -> Bool:
   match result:
@@ -45,7 +48,7 @@ def projection_valid(result:Result<&2,&2,String,S.Projection>) -> Bool:
   match result:
     case Done{S.Projection{player,
       S.Body{C.Position{"minecraft:overworld",4294967295,2147483648,0},first} <>
-      S.Body{C.Position{"minecraft:the_end",0,2147483647,4294967295},second} <> Nil{},Nil{}}}:
+      S.Body{C.Position{"minecraft:the_end",0,2147483647,4294967295},second} <> Nil{},Nil{},None{}}}:
       bytes_equal(player,[7,8]) && bytes_equal(first,[1,2,3]) && bytes_equal(second,[255,0])
     case _: False{}
 
@@ -120,7 +123,7 @@ def recovery_projection(result:Result<&2,&2,String,S.Projection>) -> Bool:
   match result:
     case Done{S.Projection{player,Nil{},
       Store.OwnerReset{C.Position{"minecraft:overworld",1,2,3}} <>
-      Store.Dirty{C.Position{"minecraft:the_end",4294967295,0,2147483648}} <> Nil{}}}:
+      Store.Dirty{C.Position{"minecraft:the_end",4294967295,0,2147483648}} <> Nil{},None{}}}:
       bytes_equal(player,[7,8])
     case _: False{}
 
@@ -139,6 +142,65 @@ def empty_recovery(result:Result<&2,&2,String,List<&2,U32>>) -> Bool:
     case Fail{message}: False{}
     case Done{bytes}: duplicate_root(S.recovery_root([7,8],[],bytes))
 
+def entity_view() -> Entities.View:
+  Entities.View{Random.Xoroshiro{Random.Bits64{4294967295,0},Random.Bits64{2147483648,4294967295}},
+    Random.Bits64{3735928559,4275878552},99,Nat.add(4294967295n,1n),[]}
+
+def entity_clocks() -> List<&2,Random.Bits64>:
+  [Random.Bits64{2147483648,4294967295},Random.Bits64{4294967295,0}]
+
+def entity_projection(result:Result<&2,&2,String,S.Projection>) -> Bool:
+  match result:
+    case Done{S.Projection{player,Nil{},Nil{},Some{S.EntityRecovery{
+        Entities.View{Random.Xoroshiro{Random.Bits64{4294967295,0},Random.Bits64{2147483648,4294967295}},
+          Random.Bits64{3735928559,4275878552},99,order,Nil{}},
+        Random.Bits64{2147483648,4294967295} <> Random.Bits64{4294967295,0} <> Nil{}}}}}:
+      bytes_equal(player,[7,8]) && Nat.is_eq(order,Nat.add(4294967295n,1n))
+    case _: False{}
+
+def entity_decoded(result:Result<&2,&2,String,N.Root>) -> Bool:
+  match result:
+    case Fail{message}: False{}
+    case Done{N.Root{name,value}}: entity_projection(S.projection(value))
+
+def entity_bytes(result:Result<&2,&2,String,List<&2,U32>>) -> Bool:
+  match result:
+    case Fail{message}: False{}
+    case Done{bytes}: entity_decoded(N.decode_with(S.nbt_limits(),bytes))
+
+def wrong_clock_fields(effects:List<&2,U32>,records:List<&2,U32>) -> Bool:
+  projection_refused(S.projection(N.Compound{[
+    P.member("format",N.Int{3}),P.member("player",N.ByteArray{[7,8]}),
+    P.member("bodies",N.ListTag{10,[]}),P.member("effects",N.ByteArray{effects}),
+    P.member("entities",N.ByteArray{records}),P.member("clock_inputs",N.Int{0})]}))
+
+def wrong_clock_records(effects:List<&2,U32>,result:Result<&2,&2,String,List<&2,U32>>) -> Bool:
+  match result:
+    case Fail{message}: False{}
+    case Done{records}: wrong_clock_fields(effects,records)
+
+def wrong_clock_effects(result:Result<&2,&2,String,List<&2,U32>>) -> Bool:
+  match result:
+    case Fail{message}: False{}
+    case Done{effects}: wrong_clock_records(effects,EntityCodec.encode(S.nbt_limits(),entity_view()))
+
+def duplicate_entity_clock(root:N.Root) -> Bool:
+  N.Root{name,value} = root
+  match value:
+    case N.Compound{members}:
+      projection_refused(S.projection(N.Compound{P.member("clock_inputs",N.LongArray{[]}) <> members}))
+    case _: False{}
+
+def duplicate_clock_records(effects:List<&2,U32>,result:Result<&2,&2,String,List<&2,U32>>) -> Bool:
+  match result:
+    case Fail{message}: False{}
+    case Done{records}: duplicate_entity_clock(S.entity_root([7,8],[],effects,records,entity_clocks()))
+
+def duplicate_clock_effects(result:Result<&2,&2,String,List<&2,U32>>) -> Bool:
+  match result:
+    case Fail{message}: False{}
+    case Done{effects}: duplicate_clock_records(effects,EntityCodec.encode(S.nbt_limits(),entity_view()))
+
 def check(valid:Bool,name:String) -> IO(Unit):
   match valid:
     case False{}: IO.die(Unit,1,"failed " ++ name)
@@ -150,7 +212,7 @@ def main() -> IO(Unit):
     check(empty_payload(S.payload([],[7,8])),"empty cooking payload preserves player bytes")
     check(wrapper_bytes(S.payload(bodies(),[7,8])),"physical wrapper retains dimensions coordinate bits body order and bytes")
     check(duplicate_root(S.root([7,8],[S.Body{C.Position{"minecraft:overworld",1,2,3},[1]},S.Body{C.Position{"minecraft:overworld",1,2,3},[2]}])),"duplicate body positions refuse complete projection")
-    check(projection_refused(S.projection(N.Compound{[P.member("format",N.Int{3}),P.member("player",N.ByteArray{[]}),P.member("bodies",N.ListTag{10,[]})]})),"unsupported cooking format refuses")
+    check(projection_refused(S.projection(N.Compound{[P.member("format",N.Int{4}),P.member("player",N.ByteArray{[]}),P.member("bodies",N.ListTag{10,[]})]})),"unsupported cooking format refuses")
     check(projection_refused(S.projection(N.Compound{[P.member("format",N.Int{1}),P.member("player",N.ByteArray{[]}),P.member("bodies",N.ListTag{3,[]})]})),"wrong cooking list element type refuses")
     check(merge_known(N.encode_with(S.nbt_limits(),known())),"physical root UTF16 duplicate extras types and raw bits retained")
     check(refused(S.with_details(S.nbt_limits(),[10,0],Some{details()})),"malformed known body refuses extras merge")
@@ -158,3 +220,7 @@ def main() -> IO(Unit):
     check(recovery_bytes(S.payload_pending([],pending(),[7,8])),"pending effects retain order coordinates and player payload in format2")
     check(empty_recovery(Effects.encode(S.nbt_limits(),[])),"empty recovery payload refuses noncanonical format2")
     check(projection_refused(S.projection(N.Compound{[P.member("format",N.Int{2}),P.member("player",N.ByteArray{[]}),P.member("bodies",N.ListTag{10,[]}),P.member("effects",N.Int{0})]})),"recovery effects require complete ByteArray")
+    check(entity_bytes(S.payload_entities([],[],Some{S.EntityRecovery{entity_view(),entity_clocks()}},[7,8])),"format3 retains empty entity owner RNG cursors and ordered raw clock inputs")
+    check(status_equal(S.payload_pending([],pending(),[7,8]),S.payload_entities([],pending(),None{},[7,8])),"absent entity owner preserves format2 bytes exactly")
+    check(wrong_clock_effects(Effects.encode(S.nbt_limits(),[])),"entity clock inputs require complete LongArray")
+    check(duplicate_clock_effects(Effects.encode(S.nbt_limits(),[])),"duplicate entity recovery clock field refuses")

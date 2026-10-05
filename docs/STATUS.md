@@ -43,13 +43,18 @@ fixture and expected-error failures. This establishes durable recovery for
 the safe019 facade, while real item/XP publication remains the next joined
 source generation. See `evidence/playable-client-cooking-native-011.json`.
 
-Cooking storage now has a strict format 2 recovery queue inside the same
-atomic Core/player/body save. Twelve actual Bend JavaScript guards pass;
-empty queues preserve the earlier format 1 and empty-inventory bytes exactly.
-The current safe effect facade retains unavailable deliveries. Real owned
-item/XP spawning and RNG consumption are being implemented and joined; this
-recovery encoding does not establish effect delivery. Native cooking actor
-and interrupted-save acceptance remain pending. The public launcher remains
+Cooking storage's changed format 3 carries the complete Item/Orb owner snapshot
+and unused constructor clock inputs inside the same atomic Core/player/body/
+effect save. Sixteen actual Bend JavaScript wrapper guards pass; absent entity
+owners preserve the earlier format 1/2 bytes exactly. The separate native
+entity codec passes eleven guards and 385 independent physical cases, including
+raw numeric words and complete RNG/factory/ID state. The actual delivery facade
+passes ten native owner/queue/clock cases. Generation20 joins these consumers,
+fresh isolated Level bootstrap and IO actor stepping; its complete actor
+delivery and format 3 interrupted-save/cold-recovery acceptance remain pending.
+See `evidence/local-player-cooking-storage-005.json`,
+`evidence/local-player-effect-entities-codec-002.json`, and
+`evidence/cooking-effect-consumer-native-001.json`. The public launcher remains
 the verified017/008 pair below.
 
 Actor004's immutable producer016 builds original-JAR crafting startup,

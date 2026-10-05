@@ -1,8 +1,9 @@
 # Cooking bodies in the atomic world save
 
 `local_player_cooking_storage.Saved` wraps the unchanged
-`player_inventory_codec.Saved` and an ordered list of
-`Body{position:Core.Position,bytes:List<U32>}`. Empty cooking state encodes the
+`player_inventory_codec.Saved`, an ordered list of
+`Body{position:Core.Position,bytes:List<U32>}`, the pending effect queue, and an
+optional complete entity recovery snapshot. Empty cooking state encodes the
 existing inventory payload exactly. Nonempty state uses the explicitly named
 `bendex:local-player-cooking-record` NBT root with format 1, the existing player
 payload as a ByteArray, and physical cooking bodies with their complete
@@ -17,11 +18,25 @@ JavaScript runner canonicalizes NaN payloads, as retained failure attempts
 002 and 003 demonstrate. Empty queues retain the existing format 1
 body bytes, and an empty body list plus empty queue retains the original
 inventory bytes. Format 2 with an empty queue refuses as noncanonical.
+An admitted entity owner uses wrapper format 3. Its six required members are
+`format`, `player`, `bodies`, `effects`, `entities`, and `clock_inputs`.
+`entities` is the strict complete `local_player_effect_entities_codec` ByteArray;
+`clock_inputs` is an ordered LongArray of raw high/low constructor timestamp
+words. The snapshot retains the actual LEVEL random source, process factory
+uniquifier, ID and section-order cursors, and every complete Item/Orb record.
+An empty record list still requires format 3: dropping its RNG or cursor state
+would change subsequent gameplay. A missing entity owner retains the exact
+format 1/2 encoding. A wrong or duplicate clock member, incomplete entity
+snapshot, or unsupported format refuses the complete decode. No defaults or
+fresh random values fill missing recovery fields.
+
 The outer extension namespace/schema remain `bendex:local-player-record`/1.
-Core, player inventory and cooking bodies therefore use the existing single
+Core, player inventory, cooking bodies, pending effects and the entity recovery
+snapshot therefore use the existing single
 `extended_persistence` atomic publication and acknowledgment. There is no
 separately acknowledged cooking file. Legacy player/inventory payloads decode
-with an empty body list. The current wrapper uses the existing NBT defaults:
+with an empty body list, effect queue and entity snapshot. The current wrapper
+uses the existing NBT defaults:
 16 MiB bytes, depth 512 and 1,048,576 elements; the extension admits 16 MiB and
 the outer file bound adds that budget to the existing default file bound.
 These resource limits remain explicit.
@@ -46,16 +61,25 @@ and cooking-owner discovery, then loads each stored body against its actual
 registered block. A failed body admission stops startup before ticks or
 listeners. The Session save collector must retain the sole Core and affine
 owners on any refusal, reject pending discovery/ticks, and collect every
-current body and pending effect before the single atomic transaction. Accepted
+current body and pending effect, plus the complete admitted entity snapshot and
+unused clock inputs, before the single atomic transaction. The save collector
+retains the original live entity owner; a decoded snapshot is installed once
+during cold startup. Accepted
 owner-reset markers clear old keyed Details even when a due batch recreates
 the same block. These live joins require the coherent actor consumer.
 
-`python3 tools/test_local_player_cooking_storage.py` passed twelve actual Bend
-default-JavaScript guards in attempt 003. The checks cover byte-identical
+`python3 tools/test_local_player_cooking_storage.py` passed sixteen actual Bend
+default-JavaScript guards in attempt 005, in 12.917 seconds. The checks cover byte-identical
 empty inventory encoding, physical wrapper dimensions/coordinate words/body
 order, duplicate positions, format/list rejection, physical extras and
 malformed/noncompound merge refusal, the ordered format 2 queue, and empty or
-wrong-tag recovery rejection. Attempt 002 passed the earlier nine guards.
+wrong-tag recovery rejection. The four new guards cover an empty entity owner
+with nonempty RNG/cursors and ordered raw clock words, absent-owner format 2
+byte identity, wrong clock tag, and duplicate clock-member rejection. Attempt
+004 retains a fixture-only out-of-range U32 Nat literal parser failure; using
+`Nat.add(4294967295n,1n)` tested the intended above-U32 value without changing
+production code. Attempt 003 passed the earlier twelve guards; attempt 002
+passed nine guards.
 Attempt 001 preserves a test-only
 matcher-order failure; its repaired fixture passed without a production
 change. This is high-confidence evidence for these codec boundaries. It is
@@ -69,6 +93,19 @@ independent 2,758-byte NBT comparison, including XP NaN `0x7fc01211`, signed
 zero `0x80000000`, Unicode/NUL item components and ordered duplicate effects.
 Its nineteen-case strict corpus accepted two valid encodings and refused the
 seventeen malformed encodings. See
-`evidence/cooking-effect-recovery-004.json`. These codec checks do not
-establish real item/XP publication or the whole actor's interrupted-save
-behavior.
+`evidence/cooking-effect-recovery-004.json`.
+
+The complete entity codec separately passed eleven native guards and 385
+independent physical cases, preserving raw F32/F64 NaN payloads, signed zero,
+all entity fields, UUIDs, local and LEVEL RNGs, and actual native Nat orders.
+See `evidence/local-player-effect-entities-codec-002.json`; its default-JS
+surrogate-character failure remains recorded separately. These native codec
+results do not extend the JavaScript wrapper guards to every raw numeric or
+character value.
+
+The frozen actor019 consumer passed five complete atomic save comparisons and
+two actual SIGKILL/cold restores with format 2 pending effects. See
+`evidence/playable-client-cooking-native-011.json`. That actor has the earlier
+safe delivery facade. Real Item/Orb publication and format 3 interrupted-save
+and cold-restore acceptance require the changed generation20 consumer and
+remain unverified here.

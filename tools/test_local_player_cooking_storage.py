@@ -23,6 +23,10 @@ EXPECTED = [
     'pending effects retain order coordinates and player payload in format2',
     'empty recovery payload refuses noncanonical format2',
     'recovery effects require complete ByteArray',
+    'format3 retains empty entity owner RNG cursors and ordered raw clock inputs',
+    'absent entity owner preserves format2 bytes exactly',
+    'entity clock inputs require complete LongArray',
+    'duplicate entity recovery clock field refuses',
 ]
 
 

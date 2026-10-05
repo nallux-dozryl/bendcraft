@@ -35,6 +35,7 @@ RUNTIME_FACTS=(
     'generated/reference_crafting_authority_metadata.json',
     'reference/block_light_registry.tsv',
     'reference/cooking_world_bindings.tsv',
+    'generated/reference_slab_collision.tsv',
 )
 class PlayableBackend(P.PlayableBackend):
     """Current full crafting startup; historical P callers keep their budgets."""
