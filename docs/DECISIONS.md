@@ -1,5 +1,23 @@
 # Decisions
 
+## 2026-10-05: select immutable actor generations explicitly
+
+`tools/test_playable_client_actor004.py --actor-generation 20` selects a new
+production snapshot and artifact directory. Existing callers retain generation
+19 by default; its completed source map, C, executable and recovery evidence
+remain immutable. Generation selection also determines the manifest and build
+evidence names. No failed generation is replaced or retried by selecting another.
+
+Use `--native-seconds 600` for the fresh generation20 build: the smaller
+generation19 graph already required 240.042 seconds of clang's previous
+300-second bound. The emitter retains its measured 600-second/8-GiB bounds and
+does not terminate for silence. This budget choice is preparation for a changed
+graph, not native acceptance. Python syntax verification passed, and explicit
+generation19 reuse authenticated the unchanged 12,151,256-byte executable
+without launching a compiler or actor. The next native build follows the
+original checker verdict for its actual frozen production graph; the actual
+Item/Orb/save/cold-restore consumer remains a separate runtime result.
+
 ## 2026-10-04: make integration the immediate execution path
 
 Concentrate the next heavy jobs on the resource-presented saved client and the

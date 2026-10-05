@@ -22,6 +22,14 @@ PRIVATE_PINS={
     'comp_instrumented.ts':'d2e149a6c97c6f57af8bb8c2bc86b4203a933cf18e430916efe40f456e818f4a',
     'run.py':'3dc542c1e956b42ea1052344f40cdf94dd2b33a68ec7387113e16952a91e5fbd',
 }
+NATIVE_SECONDS=300
+
+def generation():
+    return int(WORK.name.rsplit('-',1)[1])
+
+def generation_name():
+    return f'immutable-actor004/producer{generation():03}'
+
 RUNTIME_FACTS=(
     'generated/reference_item_metadata.tsv',
     'generated/reference_crafting_authority_metadata.json',
@@ -116,7 +124,7 @@ def build():
     result=WORK/'native-build.json'
     if result.exists():
         done=json.loads(result.read_bytes())
-        R.require(done['status']=='PASS' and done['binary']==pin(ACTOR) and done['source_map']==pin(SOURCE/'source-map.json'),'Existing actor004 artifact mismatch')
+        R.require(done['status']=='PASS' and done['generation']==generation_name() and done['binary']==pin(ACTOR) and done['source_map']==pin(SOURCE/'source-map.json'),'Existing actor004 artifact mismatch')
         print(json.dumps({'status':'verified-build-reuse','binary':done['binary']}),flush=True)
         return
     R.require(not ACTOR.exists(),'Unrecorded existing actor binary')
@@ -133,8 +141,10 @@ def build():
                 text=checked_progress(text)
             with (WORK/name).open('x') as output:output.write(text)
         inputs={**original,**{str(path):pin(path)['sha256'] for path in [WORK/name for name in ('comp_instrumented.ts','run.py','diagnose.mjs')]+[PRIVATE/name for name in PRIVATE_PINS]+[SOURCE/'remote_resource_server.bend',SOURCE/'source-map.json',WORK/'runtime-inputs.json']+[Path(row['mapped']['path']) for row in runtime['files']]}}
-        limits={'heap_mib':8192,'total_seconds':600,'silence_only_termination':False,'sampled_rss_bytes':8589934592}
-        R.write(WORK/'manifest.json',{'scope':'Actor004/producer019 boxes the sole live cooking owner and joins strict pending-effect recovery to original-JAR cooking/fuel startup, authenticated light/cooking discovery and physical bodies in the atomic world save. This changed source addresses the retained018 native argument-limit failure; successful source typing and layout reduction do not establish native completion. Includes the native-verified numeric continuation fix. Retains private65536-byte framing, crafting, prospective menu publication, generic samples and moving receiver. Tested private WeakMap/per-function producer; original checker/compiler unchanged. Native cooking consumer is separate; no cache promotion or compiler-wide certification.','files':inputs,'limits':limits,'entry':str(SOURCE/'remote_resource_server.bend')},True)
+        limits={'heap_mib':8192,'total_seconds':600,'silence_only_termination':False,'sampled_rss_bytes':8589934592,'native_seconds':NATIVE_SECONDS}
+        scope=('Actor004/producer019 boxes the sole live cooking owner and joins strict pending-effect recovery to original-JAR cooking/fuel startup, authenticated light/cooking discovery and physical bodies in the atomic world save. This changed source addresses the retained018 native argument-limit failure; successful source typing and layout reduction do not establish native completion.' if generation()==19 else
+            f'Actor004/producer{generation():03} freezes the actual current production Entry graph, including original-JAR cooking/fuel startup, authenticated light/cooking discovery, complete cooking entity/RNG recovery and IO actor stepping. Native delivery/save/cold-restore acceptance is a separate actual consumer; source typing alone does not establish it.')
+        R.write(WORK/'manifest.json',{'scope':scope+' Includes the native-verified numeric continuation fix. Retains private65536-byte framing, crafting, prospective menu publication, generic samples and moving receiver. Tested private WeakMap/per-function producer; original checker/compiler unchanged. No cache promotion or compiler-wide certification.','files':inputs,'limits':limits,'entry':str(SOURCE/'remote_resource_server.bend')},True)
         with H.bindings(R,{'WORK':WORK}):
             emitted=R.bounded([sys.executable,str(WORK/'run.py')],605,'emission-process')
             R.process_ok(emitted)
@@ -152,22 +162,31 @@ def build():
         sdk=subprocess.check_output(['/usr/bin/xcrun','--show-sdk-path'],text=True).strip()
         command=['/usr/bin/env','SDKROOT='+sdk,'/usr/bin/clang','-std=c11','-O3',str(c),'-lpthread','-lm','-o',str(ACTOR)]
         clangpin=pin('/usr/bin/clang')
-        compiled=R.bounded(command,300,'native-build-process')
+        compiled=R.bounded(command,NATIVE_SECONDS,'native-build-process')
         R.process_ok(compiled)
         R.require(Path(compiled['stderr']['path']).read_bytes()==b'' and pin(c)==cpin and pin('/usr/bin/clang')==clangpin,'Unexpected native compiler diagnostic or input drift')
     R.require(pin(ACTOR)['sha256']!=pin(OLD/'actor')['sha256'],'New actor reused old binary')
-    done={'status':'PASS','generation':'immutable-actor004/producer019','binary':pin(ACTOR),'source_map':pin(SOURCE/'source-map.json'),'runtime_inputs':pin(WORK/'runtime-inputs.json'),'entry':pin(SOURCE/'remote_resource_server.bend'),'C':cpin,'producer':pin(WORK/'receipt.json'),'source_API':pin(ROOT.parent/'bend/bend2/bend.ts'),'private_compiler':pin(WORK/'comp_instrumented.ts'),'original_compiler':pin(ROOT.parent/'bend/bend2/comp.ts'),'loaded_source_pins':pin(WORK/'loaded-source-pins.json'),'final_source_pins':pin(WORK/'final-source-pins.json'),'emission_seconds':receipt['seconds'],'sampled_peak_RSS_bytes':receipt['sampled_peak_rss_bytes'],'clang':{'command':command,'SDKROOT':sdk,'seconds':compiled['seconds'],'process':pin(WORK/'native-build-process/result.full.json')},'retries':0,'product_cache_promoted':False,'behavior':'pending actual native cooking/socket/save/reload consumer'}
-    R.write(result,done,True);R.write(ROOT/'evidence/playable-client-actor004-build-019.json',done,True)
+    done={'status':'PASS','generation':generation_name(),'binary':pin(ACTOR),'source_map':pin(SOURCE/'source-map.json'),'runtime_inputs':pin(WORK/'runtime-inputs.json'),'entry':pin(SOURCE/'remote_resource_server.bend'),'C':cpin,'producer':pin(WORK/'receipt.json'),'source_API':pin(ROOT.parent/'bend/bend2/bend.ts'),'private_compiler':pin(WORK/'comp_instrumented.ts'),'original_compiler':pin(ROOT.parent/'bend/bend2/comp.ts'),'loaded_source_pins':pin(WORK/'loaded-source-pins.json'),'final_source_pins':pin(WORK/'final-source-pins.json'),'emission_seconds':receipt['seconds'],'sampled_peak_RSS_bytes':receipt['sampled_peak_rss_bytes'],'clang':{'command':command,'SDKROOT':sdk,'seconds':compiled['seconds'],'cap_seconds':NATIVE_SECONDS,'process':pin(WORK/'native-build-process/result.full.json')},'retries':0,'product_cache_promoted':False,'behavior':'pending actual native cooking/socket/save/reload consumer'}
+    R.write(result,done,True);R.write(ROOT/f'evidence/playable-client-actor004-build-{generation():03}.json',done,True)
     print(json.dumps({'status':done['status'],'binary':done['binary'],'emission_seconds':done['emission_seconds'],'clang_seconds':compiled['seconds']}),flush=True)
 
 
 def main():
+    global WORK,SOURCE,ACTOR,NATIVE_SECONDS
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--snapshot-only',action='store_true')
+    parser.add_argument('--actor-generation',type=int,default=19,
+                        help='immutable producer generation; default19 preserves existing callers')
+    parser.add_argument('--native-seconds',type=int,default=300,
+                        help='explicit native compilation bound; actor019 measured240 seconds')
     args=parser.parse_args()
+    if args.actor_generation<19 or args.native_seconds<1:
+        parser.error('actor generation must be19 or later and native seconds positive')
+    WORK=ROOT/f'build/compiler-producer-diagnostic-{args.actor_generation:03}'
+    SOURCE=WORK/'source';ACTOR=WORK/'actor';NATIVE_SECONDS=args.native_seconds
     if args.snapshot_only:
         mapping=snapshot()
-        print(json.dumps({'status':'frozen-production-source','generation':'immutable-actor004/producer019',
+        print(json.dumps({'status':'frozen-production-source','generation':generation_name(),
             'source_map':pin(SOURCE/'source-map.json'),'runtime_inputs':pin(WORK/'runtime-inputs.json'),
             'project_files':len(mapping['files'])}),flush=True)
     else:build()
