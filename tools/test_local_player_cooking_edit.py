@@ -28,6 +28,11 @@ LAWS = [
     'invalid_player_retains_complete_core_and_cooking_owner',
     'refused_prepared_edit_retains_core_light_and_entry_owners',
 ]
+OVERFLOW_LAWS = [
+    'incarnation_exhaustion_retains_prepared_owners',
+    'refused_capacity_result_retains_complete_owner',
+    'no_reset_has_capacity_at_every_counter',
+]
 EXPECTED = [
     'stale revision retains complete Core and sidecar',
     'disabled build retains complete Core and sidecar',
@@ -45,6 +50,25 @@ EXPECTED = [
     'pinned furnace outline families admitted while campfire remains unsupported',
     'actual DDA and pinned full cube outline select furnace south face',
     'actual ray callback accepts exactly one furnace break',
+    'successful edit records current tick actual peer and sequence',
+    'actual Core final block',
+    'furnace teardown retains unrelated owner and exact ordered prior/drop/XP intents',
+    'successful reset removes only old physical Details and increments only its incarnation',
+    'successful edit publishes actual air descriptor and pending light work',
+    'successful edit retains complete entity RNG clock and geometry carrier',
+]
+EXPECTED += [
+    'incarnation limit is exact native MAX48',
+    'MAX teardown refuses before every Core and sidecar owner changes',
+    'MAX replacement refuses before every Core and sidecar owner changes',
+    'MAX stale revision keeps original refusal precedence',
+    'MAX zero sequence keeps original refusal precedence',
+    'MAX permission refusal retains arbitrary publisher and complete owners',
+    'MAX recursive tail keeps original refusal precedence',
+    'MAX identical block accepts actual edit without resetting physical owner',
+    'actual Core final block',
+    'MAX LIT update accepts without resetting physical owner',
+    'actual Core final block',
     'successful edit records current tick actual peer and sequence',
     'actual Core final block',
     'furnace teardown retains unrelated owner and exact ordered prior/drop/XP intents',
@@ -75,11 +99,11 @@ def source_check(work, entry):
     return {'receipt': receipt, 'source_manifest': pin(work / 'source-check.json')}
 
 
-def proof_check(work):
+def proof_check(work, laws=LAWS):
     # Only the exact requested root names change in this read-only script copy.
     # The established helper still checks the whole original Book before any
     # selection and preserves original maps, definitions, types and bodies.
-    roots = ['local_player_cooking_edit_laws:' + law for law in LAWS]
+    roots = ['local_player_cooking_edit_laws:' + law for law in laws]
     script = CHECKER.read_text()
     script, count = re.subn(r'const roots=\[.*?\];',
                            'const roots=' + json.dumps(roots) + ';', script, count=1)
@@ -98,8 +122,8 @@ def proof_check(work):
     output, kernel = run(['/usr/bin/env', 'LEAN_STACK_SIZE=67108864', KERNEL, closure],
                          work, 'kernel', 60)
     require(b'ALL PROOFS CHECK' in output and not (work / 'kernel.stderr').read_bytes(),
-            'independent kernel did not accept the exact four-root closure')
-    return {'laws': LAWS, 'export': export, 'kernel': kernel,
+            'independent kernel did not accept the exact requested closure')
+    return {'laws': laws, 'export': export, 'kernel': kernel,
             'selection': pin(work / 'selection.json'), 'closure': pin(closure),
             'closure_manifest': pin(work / 'closure.json'), 'kernel_binary': pin(KERNEL)}
 
@@ -193,7 +217,7 @@ def native_check(work):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--work', type=Path, required=True)
-    parser.add_argument('--mode', choices=['source', 'proof', 'included-proof', 'native'], default='source')
+    parser.add_argument('--mode', choices=['source', 'proof', 'overflow-proof', 'overflow-owner-proof', 'included-proof', 'native'], default='source')
     parser.add_argument('--export', type=Path, help='Retained four-root export for included-proof mode')
     args = parser.parse_args()
     work = args.work.resolve()
@@ -203,6 +227,10 @@ def main():
             result = source_check(work, ENTRY)
         elif args.mode == 'proof':
             result = proof_check(work)
+        elif args.mode == 'overflow-proof':
+            result = proof_check(work, OVERFLOW_LAWS)
+        elif args.mode == 'overflow-owner-proof':
+            result = proof_check(work, OVERFLOW_LAWS[:2])
         elif args.mode == 'included-proof':
             require(args.export is not None, '--export is required for included-proof mode')
             result = included_proof_check(work, args.export.resolve())

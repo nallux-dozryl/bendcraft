@@ -10,6 +10,10 @@ import ../src/local_player_cooking.bend as K
 import ../src/local_player_cooking_edit.bend as E
 import ../src/local_player_cooking_entity_owner.bend as Owner
 import ../src/local_player_cooking_geometry_owner.bend as Geometry
+import ../src/local_player_cooking_publication_owner.bend as Publisher
+import ../src/cooking_effect_publication.bend as Publication
+import ../src/cooking_effect_publication_journal.bend as Journal
+import ../src/local_player_cooking_incarnation_guard.bend as Incarnation
 import ../src/cooking_effect_entities_model.bend as Model
 import ../src/local_collision_world.bend as Collision
 import ../src/slab_collision.bend as Slab
@@ -79,8 +83,11 @@ def light_valid(owner:L.State) -> Bool:
 def descriptors() -> Map<&2,Maybe<&2,LR.Entry>>:
   Map.set(&2,Maybe<&2,LR.Entry>,Map.set(&2,Maybe<&2,LR.Entry>,MTip{},"0",
     Some{LR.Entry{0,0,LR.Faces{0,0,0,0,0,0}}}),"1",Some{LR.Entry{13,0,LR.Faces{0,0,0,0,0,0}}})
+def edit_descriptors() -> Map<&2,Maybe<&2,LR.Entry>>:
+  Map.set(&2,Maybe<&2,LR.Entry>,Map.set(&2,Maybe<&2,LR.Entry>,descriptors(),"2",
+    Some{LR.Entry{13,0,LR.Faces{0,0,0,0,0,0}}}),"3",Some{LR.Entry{0,0,LR.Faces{0,0,0,0,0,0}}})
 def context() -> K.Context:
-  K.Context{LR.Catalog{"lifecycle-fixture",4,1,descriptors(),MTip{}},
+  K.Context{LR.Catalog{"lifecycle-fixture",4,1,edit_descriptors(),MTip{}},
     MLeaf{L.key(W.origin(position(0))),True{}},Life.context(),[]}
 def recipes_valid(catalog:Recipe.Catalog) -> Bool:
   match catalog:
@@ -96,7 +103,7 @@ def context_valid(value:K.Context) -> Bool:
   match value:
     case K.Context{LR.Catalog{"lifecycle-fixture",4,1,states,MTip{}},enabled,
       CW.Context{B.Catalog{"lifecycle-fixture",4,bindings},AI.Context{recipes,Nil{},MTip{}},Fuel.Catalog{Nil{},Nil{},Nil{},Nil{},Nil{},Nil{}},64n},Nil{}}:
-      map_equal(~Maybe<&2,LR.Entry>,~registry_entry_equal,states,descriptors()) &&
+      map_equal(~Maybe<&2,LR.Entry>,~registry_entry_equal,states,edit_descriptors()) &&
         map_equal(~Bool,~bool_equal,enabled,MLeaf{L.key(W.origin(position(0))),True{}}) &&
         bindings_valid(bindings,Life.bindings()) && recipes_valid(recipes)
     case _: False{}
@@ -141,36 +148,57 @@ def body_details_valid(values:List<&2,K.BodyDetails>) -> Bool:
     case _: False{}
 def incarnations() -> Map<&2,Nat>:
   Map.set(&2,Nat,Map.set(&2,Nat,MTip{},B.key(position(0)),10n),B.key(position(1)),6n)
+def counted_incarnations(first:Nat) -> Map<&2,Nat>:
+  Map.set(&2,Nat,Map.set(&2,Nat,MTip{},B.key(position(0)),first),B.key(position(1)),6n)
+def publisher() -> Publisher.Carrier:
+  Publisher.Bound{Publication.Context{Life.bindings()},Journal.State{Journal.View{17n,
+    [Journal.DirtyChunk{Journal.chunk(position(1)),17n}],
+    Some{Journal.Receipt{position(1),Journal.Source{position(1),Life.furnace(1,False{}),6n},Journal.chunk(position(1)),17n}}}},
+    [Publisher.Unbound{}]}
+def publisher_valid(value:Publisher.Carrier) -> Bool:
+  match value:
+    case Publisher.Bound{Publication.Context{B.Catalog{"lifecycle-fixture",4,bindings}},
+      Journal.State{Journal.View{17n,Journal.DirtyChunk{+chunk,17n} <> Nil{},
+        Some{Journal.Receipt{+p,Journal.Source{other,binding,6n},target,17n}}}},Publisher.Unbound{} <> Nil{}}:
+      bindings_valid(bindings,Life.bindings()) && Journal.chunk_equal(chunk,Journal.chunk(position(1))) &&
+        Journal.chunk_equal(target,chunk) && B.equal_position(p,position(1)) && B.equal_position(other,p) &&
+        binding_equal(Some{binding},Some{Life.furnace(1,False{})})
+    case _: False{}
 def carrier() -> Owner.Carrier:
   Owner.Bound{Model.Context{AI.Context{Life.recipes(),[],MTip{}},Model.Limits{7n,11n,13n},[41]},
     Model.State{Random.Xoroshiro{Random.Bits64{4294967295,0},Random.Bits64{2147483648,99}},Random.Bits64{17,23},99,123n,[]},
     [Random.Bits64{2147483648,4294967295},Random.Bits64{0,7}],
     Some{Geometry.Owner{Slab.Catalog{ANode{ALeaf{Slab.Entry{1,Slab.TopSlab{},True{}}},ALeaf{Slab.Entry{2,Slab.BottomSlab{},False{}}}},1,4,"geometry-marker"},
-      Collision.Environment{Collision.UnresolvedEntityCollisions{},Collision.UnresolvedWorldBorder{}}}}}
+      Collision.Environment{Collision.UnresolvedEntityCollisions{},Collision.UnresolvedWorldBorder{}}}},publisher()}
 def carrier_valid(value:Owner.Carrier) -> Bool:
   match value:
     case Owner.Bound{Model.Context{AI.Context{recipes,Nil{},MTip{}},Model.Limits{7n,11n,13n},41 <> Nil{}},
       Model.State{Random.Xoroshiro{Random.Bits64{first,0},Random.Bits64{second,99}},Random.Bits64{17,23},99,123n,Nil{}},
       Random.Bits64{clock_high,clock_low} <> Random.Bits64{0,7} <> Nil{},
       Some{Geometry.Owner{Slab.Catalog{ANode{ALeaf{Slab.Entry{1,Slab.TopSlab{},True{}}},ALeaf{Slab.Entry{2,Slab.BottomSlab{},False{}}}},1,4,"geometry-marker"},
-        Collision.Environment{Collision.UnresolvedEntityCollisions{},Collision.UnresolvedWorldBorder{}}}}}:
+        Collision.Environment{Collision.UnresolvedEntityCollisions{},Collision.UnresolvedWorldBorder{}}}},publication}:
       recipes_valid(recipes) && U32.is_eq(first,4294967295) && U32.is_eq(second,2147483648) &&
-        U32.is_eq(clock_high,2147483648) && U32.is_eq(clock_low,4294967295)
+        U32.is_eq(clock_high,2147483648) && U32.is_eq(clock_low,4294967295) && publisher_valid(publication)
     case _: False{}
 def sidecar(first_state:U32,tail:List<&1,K.Sidecar>) -> K.Sidecar:
   K.Initialized{context(),light(),None{},entries(first_state),CW.Idle{},[],[S.Dirty{position(1)}],
     [K.BodyDetails{position(0),details()},K.BodyDetails{position(1),details()}],incarnations(),5n,carrier(),tail}
+def counted_sidecar(first_state:U32,first:Nat,tail:List<&1,K.Sidecar>) -> K.Sidecar:
+  K.Initialized{context(),light(),None{},entries(first_state),CW.Idle{},[],[S.Dirty{position(1)}],
+    [K.BodyDetails{position(0),details()},K.BodyDetails{position(1),details()}],counted_incarnations(first),5n,carrier(),tail}
 def tail_valid(values:List<&1,K.Sidecar>,expected:Bool) -> Bool:
   match values expected:
     case Nil{} False{}: True{}
     case K.Uninitialized{} <> Nil{} True{}: True{}
     case _ _: False{}
-def retained(value:K.Sidecar,first_state:U32,has_tail:Bool) -> Bool:
+def retained_count(value:K.Sidecar,first_state:U32,first:Nat,has_tail:Bool) -> Bool:
   match value:
     case K.Initialized{context,light,None{},entries,CW.Idle{},Nil{},S.Dirty{p} <> Nil{},details,values,5n,owner,tail}:
       context_valid(context) && light_valid(light) && entries_valid(entries,first_state) && B.equal_position(p,position(1)) &&
-        body_details_valid(details) && map_equal(~Nat,~nat_equal,values,incarnations()) && carrier_valid(owner) && tail_valid(tail,has_tail)
+        body_details_valid(details) && map_equal(~Nat,~nat_equal,values,counted_incarnations(first)) && carrier_valid(owner) && tail_valid(tail,has_tail)
     case _: False{}
+def retained(value:K.Sidecar,first_state:U32,has_tail:Bool) -> Bool:
+  retained_count(value,first_state,10n,has_tail)
 
 def guard(label:String,okay:Bool) -> IO(Unit): Life.guard(label,okay)
 def refused_images(label:String,expected:String,first_state:U32,has_tail:Bool,before:Raw.WorldImage,sidecar:K.Sidecar,
@@ -239,17 +267,17 @@ def accepted_light(owner:L.State) -> Bool:
   L.State{cells,front,back,queued,pending} = owner
   accepted_cell(pending,Map.get(Maybe<&2,L.Cell>,None{},cells,L.key(position(0))))
 
-def accepted_sidecar(value:K.Sidecar) -> IO(Unit):
+def accepted_sidecar_count(first:Nat,value:K.Sidecar) -> IO(Unit):
   match value:
     case K.Initialized{context,light,None{},entries,CW.Idle{},Nil{},effects,details,incarnations,5n,owner,Nil{}}:
       do IO<Unit>:
         guard("furnace teardown retains unrelated owner and exact ordered prior/drop/XP intents",context_valid(context) && accepted_entries(entries) && accepted_effects(effects))
         guard("successful reset removes only old physical Details and increments only its incarnation",accepted_details(details) &&
-          map_equal(~Nat,~nat_equal,incarnations,Map.set(&2,Nat,Map.set(&2,Nat,MTip{},B.key(position(0)),11n),B.key(position(1)),6n)))
+          map_equal(~Nat,~nat_equal,incarnations,counted_incarnations(first)))
         guard("successful edit publishes actual air descriptor and pending light work",accepted_light(light))
         guard("successful edit retains complete entity RNG clock and geometry carrier",carrier_valid(owner))
     case _: IO.die(Unit,3,"accepted sidecar shape changed")
-def accepted_core(sidecar:K.Sidecar,result:C.World & Raw.WorldImage) -> IO(Unit):
+def accepted_core_count(first:Nat,sidecar:K.Sidecar,result:C.World & Raw.WorldImage) -> IO(Unit):
   (world,image) = result
   match image:
     case Raw.WorldImage{29n,time,False{},False{},8n,4,tree,pending,C.Applied{Q.Stamp{29n,17,19n},8n} <> old}:
@@ -257,13 +285,80 @@ def accepted_core(sidecar:K.Sidecar,result:C.World & Raw.WorldImage) -> IO(Unit)
         guard("successful edit records current tick actual peer and sequence",Nat.is_eq(time,13499n) && Raw.pending_equal(pending,[Q.Pending{Q.Stamp{100n,31,37n},C.DaylightSet{True{}}}]) &&
           Raw.events_equal(old,[C.Applied{Q.Stamp{11n,5,13n},3n}]))
         Life.final_block(C.read_block(world,position(0)),0)
-        accepted_sidecar(sidecar)
+        accepted_sidecar_count(first,sidecar)
     case _: IO.die(Unit,3,"accepted Core clock/stamp changed")
 def accepted(result:C.World & K.Sidecar & Result<&2,&2,String,Unit>) -> IO(Unit):
   (world,sidecar,status) = result
   match status:
     case Fail{message}: IO.die(Unit,3,"furnace player break refused: " ++ message)
-    case Done{unit}: accepted_core(sidecar,Raw.world_image(world))
+    case Done{unit}: accepted_core_count(11n,sidecar,Raw.world_image(world))
+def accepted_core(sidecar:K.Sidecar,result:C.World & Raw.WorldImage) -> IO(Unit):
+  accepted_core_count(11n,sidecar,result)
+
+def max_refused_images(label:String,expected:String,has_tail:Bool,before:Raw.WorldImage,
+    sidecar:K.Sidecar,world:C.World,after:Raw.WorldImage,status:Result<&2,&2,String,Unit>) -> IO(Unit):
+  match status:
+    case Done{unit}: IO.die(Unit,3,"unexpected MAX edit acceptance: " ++ label)
+    case Fail{message}: guard(label,String.eq(message,expected) && Raw.worlds_equal(before,after) &&
+      retained_count(sidecar,1,Incarnation.maximum(),has_tail))
+def max_refused_observed(label:String,expected:String,has_tail:Bool,before:Raw.WorldImage,
+    sidecar:K.Sidecar,status:Result<&2,&2,String,Unit>,result:C.World & Raw.WorldImage) -> IO(Unit):
+  (world,after) = result
+  max_refused_images(label,expected,has_tail,before,sidecar,world,after,status)
+def max_refused(label:String,expected:String,has_tail:Bool,before:Raw.WorldImage,
+    result:C.World & K.Sidecar & Result<&2,&2,String,Unit>) -> IO(Unit):
+  (world,sidecar,status) = result
+  max_refused_observed(label,expected,has_tail,before,sidecar,status,Raw.world_image(world))
+def max_refusal_world(kind:U32,world:C.World,before:Raw.WorldImage) -> IO(Unit):
+  match kind:
+    case 0: max_refused("MAX teardown refuses before every Core and sidecar owner changes","local-cooking:authority:incarnation-exhausted",False{},before,
+      E.player_edit(world,counted_sidecar(1,Incarnation.maximum(),[]),C.Player{17},position(0),0,7n,19n,True{}))
+    case 1: max_refused("MAX replacement refuses before every Core and sidecar owner changes","local-cooking:authority:incarnation-exhausted",False{},before,
+      E.player_edit(world,counted_sidecar(1,Incarnation.maximum(),[]),C.Player{17},position(0),3,7n,19n,True{}))
+    case 2: max_refused("MAX stale revision keeps original refusal precedence","local-cooking:interaction:stale-revision",False{},before,
+      E.player_edit(world,counted_sidecar(1,Incarnation.maximum(),[]),C.Player{17},position(0),0,6n,19n,True{}))
+    case 3: max_refused("MAX zero sequence keeps original refusal precedence","local-cooking:interaction:invalid-sequence",False{},before,
+      E.player_edit(world,counted_sidecar(1,Incarnation.maximum(),[]),C.Player{17},position(0),0,7n,0n,True{}))
+    case 4: max_refused("MAX permission refusal retains arbitrary publisher and complete owners","local-cooking:interaction:permission-denied",False{},before,
+      E.player_edit(world,counted_sidecar(1,Incarnation.maximum(),[]),C.Player{17},position(0),0,7n,19n,False{}))
+    case _: max_refused("MAX recursive tail keeps original refusal precedence","local-cooking:noncanonical-sidecar-tail",True{},before,
+      E.player_edit(world,counted_sidecar(1,Incarnation.maximum(),[K.Uninitialized{}]),C.Player{17},position(0),0,7n,19n,True{}))
+def max_refusal(kind:U32,result:C.World & Raw.WorldImage) -> IO(Unit):
+  (world,before) = result
+  max_refusal_world(kind,world,before)
+
+def retained_binding(entry:S.Entry,state:U32,lit:Bool) -> Bool:
+  match entry:
+    case S.Entry{p,B.Binding{id,name,B.Furnace{Recipe.Smelting{}},actual,1,2},S.Furnace{owner}}:
+      B.equal_position(p,position(0)) && U32.is_eq(id,state) && String.eq(name,"minecraft:furnace") &&
+        bool_equal(actual,lit) && furnace_valid(owner)
+    case _: False{}
+def max_kept_sidecar(state:U32,lit:Bool,value:K.Sidecar) -> Bool:
+  match value:
+    case K.Initialized{context,light,None{},a <> b <> Nil{},CW.Idle{},Nil{},S.Dirty{p} <> Nil{},details,values,5n,owner,Nil{}}:
+      context_valid(context) && retained_binding(a,state,lit) && entry_valid(b,1,1) &&
+        B.equal_position(p,position(1)) && body_details_valid(details) &&
+        map_equal(~Nat,~nat_equal,values,counted_incarnations(Incarnation.maximum())) && carrier_valid(owner)
+    case _: False{}
+def max_kept_core(label:String,+state:U32,lit:Bool,sidecar:K.Sidecar,result:C.World & Raw.WorldImage) -> IO(Unit):
+  (world,image) = result
+  match image:
+    case Raw.WorldImage{29n,time,False{},False{},8n,4,tree,pending,C.Applied{Q.Stamp{29n,17,19n},8n} <> old}:
+      do IO<Unit>:
+        guard(label,Nat.is_eq(time,13499n) && Raw.pending_equal(pending,[Q.Pending{Q.Stamp{100n,31,37n},C.DaylightSet{True{}}}]) &&
+          Raw.events_equal(old,[C.Applied{Q.Stamp{11n,5,13n},3n}]) && max_kept_sidecar(state,lit,sidecar))
+        Life.final_block(C.read_block(world,position(0)),state)
+    case _: IO.die(Unit,3,"MAX same-owner Core stamp changed")
+def max_kept(label:String,state:U32,lit:Bool,result:C.World & K.Sidecar & Result<&2,&2,String,Unit>) -> IO(Unit):
+  (world,sidecar,status) = result
+  match status:
+    case Fail{message}: IO.die(Unit,3,"MAX same-owner update refused: " ++ message)
+    case Done{unit}: max_kept_core(label,state,lit,sidecar,Raw.world_image(world))
+def near_max(result:C.World & K.Sidecar & Result<&2,&2,String,Unit>) -> IO(Unit):
+  (world,sidecar,status) = result
+  match status:
+    case Fail{message}: IO.die(Unit,3,"MAX-1 teardown refused: " ++ message)
+    case Done{unit}: accepted_core_count(Incarnation.maximum(),sidecar,Raw.world_image(world))
 
 # Registry IDs are explicitly synthetic fixture IDs. Production ray picking
 # still performs the actual Registry lookup and authoritative Core read. The
@@ -312,3 +407,15 @@ def main() -> IO(Unit):
     guard("pinned furnace outline families admitted while campfire remains unsupported",BI.supported_cube("minecraft:furnace") &&
       BI.supported_cube("minecraft:smoker") && BI.supported_cube("minecraft:blast_furnace") && Bool.not(BI.supported_cube("minecraft:campfire")))
     initial(ray_break)
+    guard("incarnation limit is exact native MAX48",String.eq(Nat.show(Incarnation.maximum()),"281474976710655"))
+    initial(world => max_refusal(0,Raw.world_image(world)))
+    initial(world => max_refusal(1,Raw.world_image(world)))
+    initial(world => max_refusal(2,Raw.world_image(world)))
+    initial(world => max_refusal(3,Raw.world_image(world)))
+    initial(world => max_refusal(4,Raw.world_image(world)))
+    initial(world => max_refusal(5,Raw.world_image(world)))
+    initial(world => max_kept("MAX identical block accepts actual edit without resetting physical owner",1,False{},
+      E.player_edit(world,counted_sidecar(1,Incarnation.maximum(),[]),C.Player{17},position(0),1,7n,19n,True{})))
+    initial(world => max_kept("MAX LIT update accepts without resetting physical owner",2,True{},
+      E.player_edit(world,counted_sidecar(1,Incarnation.maximum(),[]),C.Player{17},position(0),2,7n,19n,True{})))
+    initial(world => near_max(E.player_edit(world,counted_sidecar(1,Nat.sub(Incarnation.maximum(),1n),[]),C.Player{17},position(0),0,7n,19n,True{})))

@@ -9,6 +9,7 @@ import ./cooking_world_edit.bend as Edit
 import ./cooking_world_store.bend as Store
 import ./cooking_world_bindings.bend as B
 import ./player_core_edit.bend as P
+import ./local_player_cooking_incarnation_guard.bend as Incarnation
 
 # Equality includes the entire actual Core trie/arrays and Sidecar, including
 # arbitrary entity/RNG/geometry owners, physical Details and recursive tails.
@@ -62,3 +63,34 @@ law refused_prepared_edit_retains_core_light_and_entry_owners:
     (CW.State{W.State{world,light,loading},entries,CW.Idle{},[]},Fail{CW.Player{error}}) :
     CW.State & Result<&2,&2,CW.Error,List<&2,Store.Effect>>}
 
+# This is the actual pre-write continuation, after existing admission. Every
+# affine field and array in the incoming prepared owner is retained on overflow.
+law incarnation_exhaustion_retains_prepared_owners:
+  for world:W.State
+  for entries:List<&1,Store.Entry>
+  for views:List<&2,Store.View>
+  for operation:W.Prepared
+  for classification:B.Classification
+  for cap:C.Capability
+  for position:C.Position
+  for state:U32
+  for expected:Nat
+  for sequence:Nat
+  for maybuild:Bool
+  {E.capacity_checked(world,entries,views,operation,classification,cap,position,state,expected,sequence,maybuild,False{}) ==
+    (CW.State{world,entries,CW.Idle{},[]},Fail{CW.Authority{"incarnation-exhausted"}}) :
+    CW.State & Result<&2,&2,CW.Error,List<&2,Store.Effect>>}
+
+# The actual outer result seam cannot publish/reset any part of an arbitrary
+# Sidecar on refusal, including its publisher, Details, clocks and affine tail.
+law refused_capacity_result_retains_complete_owner:
+  for world:C.World
+  for sidecar:K.Sidecar
+  {E.returned((world,sidecar,Fail{"local-cooking:authority:incarnation-exhausted"})) ==
+    (world,sidecar,Fail{"local-cooking:authority:incarnation-exhausted"}) :
+    C.World & K.Sidecar & Result<&2,&2,String,Unit>}
+
+law no_reset_has_capacity_at_every_counter:
+  for incarnations:Map<&2,Nat>
+  for headers:List<&2,Incarnation.Header>
+  {E.capacity(incarnations,Incarnation.Change{headers,None{}}) == True{} : Bool}

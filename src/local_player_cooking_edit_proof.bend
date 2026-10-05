@@ -16,3 +16,12 @@ def Laws.invalid_player_retains_complete_core_and_cooking_owner(world,sidecar,po
 
 def Laws.refused_prepared_edit_retains_core_light_and_entry_owners(operation,position,classification,light,loading,entries,views,world,error):
   {==}
+
+def Laws.incarnation_exhaustion_retains_prepared_owners(world,entries,views,operation,classification,cap,position,state,expected,sequence,maybuild):
+  {==}
+
+def Laws.refused_capacity_result_retains_complete_owner(world,sidecar):
+  {==}
+
+def Laws.no_reset_has_capacity_at_every_counter(incarnations,headers):
+  {==}
