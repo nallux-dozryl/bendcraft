@@ -1,8 +1,10 @@
 # Real TCP entity scene observer
 
-`tools/test_remote_entity_scene_network.py` is prepared for an explicitly selected
-successful actor producer after020. No actor with the new command20 endpoint has
-been exercised by this runner yet. Actor020 and all existing receipts stay intact.
+`tools/test_remote_entity_scene_network.py` passed its actual TCP scenario against
+the genuine successful Actor022 producer. Native attempt004 used the unchanged
+prepared runner and retains raw request/reply streams, physical saves and owned
+process cleanup in `build/remote-entity-scene-network/004`. Actor020 and all
+existing receipts stay intact.
 The separate 407-case native codec receipt remains
 `evidence/remote-entity-scene-wire-native.json`.
 
@@ -29,7 +31,7 @@ empty and its journal is sequence0 with no dirty chunks/latest receipt. Paused
 frame reads and private lease operations must preserve that complete state.
 Prepared physical round trips establish serialization expectations only.
 
-The planned actual socket run will:
+The actual socket run passed these checks:
 
 - Admit the genuine private capability and read old command13/reply7. Check all
   384 actual default-region cells, traversal order, state IDs, boundaries,
@@ -50,18 +52,17 @@ Use the bundled Python runtime that already imports the existing helper closure:
 
 ```
 /Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 -B \
-  tools/test_remote_entity_scene_network.py --actor-generation 21 --expectations
+  tools/test_remote_entity_scene_network.py --actor-generation 22 --native
 ```
 
-Once the actual successful Actor021 binary/source/runtime pins are available,
-the same command with `--native` starts one bounded paused actor and its real
-public/private TCP clients. It never builds. Every attempt uses a fresh numbered
+The command starts one bounded paused actor and its real public/private TCP
+clients. It never builds. Every attempt uses a fresh numbered
 directory and receipt; artifact/source/runtime identity is checked automatically.
 The old actor protocol is not substituted if the new artifact is unavailable.
 
 Network Unbound remains unexercised because Entry initializes a bound entity
 owner; the codec independently covers Unbound and Bound-empty. The socket run
-will establish this paused read scenario, not general capture serialization,
+establishes this paused read scenario, not general capture serialization,
 entity simulation, Java behavioral parity, rendered pixels, Window/OS input or
 whole-game acceptance. Camera/fraction are captured within the actual atomic
 DTO; this runner does not join separately timed publications.
@@ -71,3 +72,21 @@ single-section seed. Preparation002 also validates the resident fixture needed
 for the actual default sampler. Both are file-only records, with no socket or
 actor execution claim. The latest preparation receipt pins the current runner
 and exact physical input/expectations.
+
+Native004 completed in 40.092 seconds with all owned groups/listeners reaped.
+The actual 16,246,616-byte actor has SHA256
+`1ba545e7ccd84e5011f51199c2ee9562e4063c24b98c64148323551039357712`.
+All five complete command20/reply9 records matched independent expectations;
+each consumed 24,911 ASCII bytes. The old command13 sample matched all 384
+default-region cells. Every scene retained the same sample and the saved two
+Item records plus one Orb, including exact raw words and order. All eight
+correlated refusals passed, followed by a successful lease reacquisition.
+
+Both acknowledged format4 saves contain 136,449 bytes and have SHA256
+`624556a6a3ff8b729b2768e742561a348452fd24fa4ca5b8de0fefa510ac993d`.
+Their complete physical bytes were equal before and after polling, preserving
+Core/player/inventory/Details/entities, RNG/factory/clock inputs and the fresh
+publication journal. Paused Core time also stayed unchanged. The receipt is
+`evidence/remote-entity-scene-network-native-004.json`. This result exercises the
+real format4/atomic SceneFrame consumer; it does not claim future format5,
+managed tick/lighting, renderer pixels or OS presentation acceptance.
