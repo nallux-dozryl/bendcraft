@@ -150,11 +150,11 @@ not establish the outer cooking/player storage transport or durable save IO.
 
 The independent-kernel target passes 15 stated laws, with all 15 checked roots
 and their complete unchanged dependency closure accepted. Source/export takes
-1.738 seconds and the pinned kernel takes 0.192 seconds. These laws cover the
+2.509 seconds and the pinned kernel takes 0.292 seconds. These laws cover the
 actual owner, reconciliation and installation contracts, including invalid
 insertion chronology rollback. Six drafted cursor/capacity/preflight wrapper
 targets remain unproved because original checker conversion exhausts its stack
 while unfolding the concrete Nat48 bound. Their failed attempts are retained;
 exact cursor exhaustion and advance behavior is covered by native checks, and
 is not presented as kernel proof. Reproduce the current proof scope with
-`python3 tools/test_entity_section_membership_recovery_proof.py --generation 7`.
+`python3 tools/test_entity_section_membership_recovery_proof.py --generation 9`.
