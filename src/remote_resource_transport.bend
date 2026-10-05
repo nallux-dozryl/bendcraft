@@ -15,6 +15,8 @@ import ./item_component_wire_candidate.bend as Candidate
 import ./core.bend as Core
 import ./player_cooking_menu.bend as PCMenu
 import ./player_cooking_session.bend as CookingSession
+import ./remote_entity_frame.bend as EntityFrame
+import ./remote_entity_scene_backend.bend as EntityBackend
 
 # The socket remembers its assigned epoch. Cleanup never trusts an incoming
 # request's epoch, so a stale socket cannot clear a newer renderer's controls.
@@ -50,6 +52,12 @@ def catalog_frame_answer(+epoch:String,sequence:Nat,result:B.State & Result<&2,&
   match status:
     case Fail{message}: (state,Answer{W.Fault{epoch,sequence,message},"",False{}})
     case Done{sample}: (state,Answer{W.CatalogFrameReply{epoch,sequence,sample},epoch,True{}})
+
+def scene_frame_answer(+epoch:String,sequence:Nat,result:B.State & Result<&2,&2,String,EntityFrame.Frame>) -> B.State & Answer:
+  (state,status) = result
+  match status:
+    case Fail{message}: (state,Answer{W.Fault{epoch,sequence,message},epoch,False{}})
+    case Done{frame}: (state,Answer{W.SceneFrameReply{epoch,sequence,frame},epoch,True{}})
 
 def inventory_answer(+epoch:String,sequence:Nat,result:B.State & Result<&2,&2,String,I.Snapshot>) -> B.State & Answer:
   (state,status) = result
@@ -95,6 +103,7 @@ def command(state:B.State,+epoch:String,+sequence:Nat,value:W.Command) -> B.Stat
   match value:
     case W.Frame{width,height}: frame_answer(epoch,sequence,B.frame(state,epoch,sequence,width,height))
     case W.FrameCatalog{width,height}: catalog_frame_answer(epoch,sequence,GenericBackend.frame(state,epoch,sequence,width,height,GS.defaults()))
+    case W.SceneFrame{width,height,partial}: scene_frame_answer(epoch,sequence,EntityBackend.frame(state,epoch,sequence,width,height,GS.defaults(),partial))
     case W.Input{packet}: unit_answer(epoch,sequence,B.input(state,epoch,sequence,packet))
     case W.Release{}: unit_answer(epoch,sequence,B.release(state,epoch,sequence))
     case W.Action{button}: action_answer(epoch,sequence,B.action(state,epoch,sequence,button))

@@ -190,6 +190,8 @@ def correlated_reply(+epoch:String,+sequence:Nat,socket:Socket,buffer:Framing.Bu
       correlation_gate(String.eq(epoch,actual) && Nat.is_eq(sequence,seq),socket,buffer,current,next,reply)
     case Wire.CatalogFrameReply{actual,seq,sample} True{}:
       correlation_gate(String.eq(epoch,actual) && Nat.is_eq(sequence,seq),socket,buffer,current,next,reply)
+    case Wire.SceneFrameReply{actual,seq,frame} True{}:
+      correlation_gate(String.eq(epoch,actual) && Nat.is_eq(sequence,seq),socket,buffer,current,next,reply)
     case Wire.Ack{actual,seq} True{}:
       correlation_gate(String.eq(epoch,actual) && Nat.is_eq(sequence,seq),socket,buffer,current,next,reply)
     case Wire.InventoryReply{actual,seq,inventory} True{}:
@@ -246,11 +248,30 @@ def send_text(link:Link,expected:String,seq:Nat,encoded:Result<&2,&2,String,Stri
     case Open{socket,buffer,pending,epoch,sequence} Fail{message}: failure(socket,"Wire:Encode:" ++ message)
     case Open{socket,buffer,pending,epoch,sequence} Done{text}: failure(socket,"Wire:Unsolicited")
 
-def call(link:Link,command:Wire.Command) -> IO(Link & Result<&2,&2,String,Wire.Reply>):
+def command_reply_gate(valid:Bool,link:Link,reply:Wire.Reply) -> IO(Link & Result<&2,&2,String,Wire.Reply>):
+  match valid link:
+    case True{} _: IO.pure(Link & Result<&2,&2,String,Wire.Reply>,(link,Done{reply}))
+    case False{} Dead{message}: IO.pure(Link & Result<&2,&2,String,Wire.Reply>,(Dead{"Wire:CaptureStamp"},Fail{"Wire:CaptureStamp"}))
+    case False{} Open{socket,buffer,pending,epoch,sequence}: failure(socket,"Wire:CaptureStamp")
+
+def command_received(command:Wire.Command,link:Link,status:Result<&2,&2,String,Wire.Reply>) -> IO(Link & Result<&2,&2,String,Wire.Reply>):
+  match command status:
+    case Wire.SceneFrame{width,height,partial} Done{+reply}:
+      command_reply_gate(Wire.scene_fraction_valid(partial,reply),link,reply)
+    case _ _: IO.pure(Link & Result<&2,&2,String,Wire.Reply>,(link,status))
+
+def command_result(command:Wire.Command,result:Link & Result<&2,&2,String,Wire.Reply>) -> IO(Link & Result<&2,&2,String,Wire.Reply>):
+  (link,status) = result
+  command_received(command,link,status)
+
+def call(link:Link,+command:Wire.Command) -> IO(Link & Result<&2,&2,String,Wire.Reply>):
   match link:
     case Dead{+message}: IO.pure(Link & Result<&2,&2,String,Wire.Reply>,(Dead{message},Fail{message}))
     case Open{socket,buffer,pending,+epoch,+sequence}:
-      send_text(Open{socket,buffer,pending,epoch,1n+sequence},epoch,sequence,Wire.encode_request(Wire.Call{epoch,sequence,command}))
+      do IO<Link & Result<&2,&2,String,Wire.Reply>>:
+        response : Link & Result<&2,&2,String,Wire.Reply> <-
+          send_text(Open{socket,buffer,pending,epoch,1n+sequence},epoch,sequence,Wire.encode_request(Wire.Call{epoch,sequence,command}))
+        command_result(command,response)
 
 def hello(capability:String,result:Result<&1,&1,U32 & String,Socket>) -> IO(Link & Result<&2,&2,String,Wire.Reply>):
   match result:

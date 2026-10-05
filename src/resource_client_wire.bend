@@ -14,6 +14,9 @@ import ./mesh_render.bend as Mesh
 import ./core.bend as Core
 import ./cooking_recipe.bend as Cooking
 import ./player_cooking_menu.bend as CookingMenu
+import ./remote_entity_frame.bend as EntityFrame
+import ./remote_entity_snapshot_wire.bend as EntityWire
+import ./item_entity_render_model.bend as EntityModel
 
 # Pure, monomorphic renderer wire DTOs. Authentication, matching lease cleanup,
 # strict expected-sequence transition and expiry belong to the backend actor.
@@ -38,6 +41,7 @@ type Command is Data:
   CookingQuickMove{menu:U32,index:U32}
   CookingClose{menu:U32}
   CookingUse{offhand:Bool}
+  SceneFrame{width:U32,height:U32,partial:F32}
 type Request is Data:
   Hello{capability:String}
   Call{epoch:String,sequence:Nat,command:Command}
@@ -51,6 +55,7 @@ type Reply is Data:
   MenuReply{epoch:String,sequence:Nat,accepted:Bool,message:String,snapshot:I.MenuSnapshot}
   CatalogFrameReply{epoch:String,sequence:Nat,sample:GS.Sample}
   CookingReply{epoch:String,sequence:Nat,accepted:Bool,message:String,snapshot:CookingMenu.Snapshot}
+  SceneFrameReply{epoch:String,sequence:Nat,frame:EntityFrame.Frame}
 type Row is Data:
   Row{raw:W.RawBlock,block:R.Block,visibility:V.Visibility}
 type Rows is Data:
@@ -464,6 +469,7 @@ def command_valid(command:Command) -> Bool:
   match command:
     case Frame{width,height}: WM.frame_valid(WM.frame(width,height))
     case FrameCatalog{width,height}: WM.frame_valid(WM.frame(width,height))
+    case SceneFrame{width,height,partial}: WM.frame_valid(WM.frame(width,height)) && EntityWire.partial_valid(partial)
     case Input{CC.Packet{actions,focused,captured}}: WM.fits(CC.Action,actions,1024)
     case Release{}: True{}
     case Action{button}: U32.is_le(button,1)
@@ -571,6 +577,14 @@ def command(value:J.Value) -> Result<&2,&2,String,Command>:
       do Result<&2,&2,String,Command>:
         hand:Bool <- boolean(offhand)
         Done{CookingUse{hand}}
+    case J.JArray{[J.JNumber{"20"},width,height,partial]}:
+      do Result<&2,&2,String,Command>:
+        +w:U32 <- EntityWire.uint(width)
+        +h:U32 <- EntityWire.uint(height)
+        bits:U32 <- EntityWire.uint(partial)
+        +fraction:F32 = float_bits(bits)
+        guard(WM.frame_valid(WM.frame(w,h)) && EntityWire.partial_valid(fraction),"wire:scene-frame-dimensions-or-partial")
+        Done{SceneFrame{w,h,fraction}}
     case _: Fail{"wire:command-tag-or-cardinality"}
 
 def request_value(value:J.Value) -> Result<&2,&2,String,Request>:
@@ -811,6 +825,23 @@ def catalog_sample(value:J.Value) -> Result<&2,&2,String,GS.Sample>:
         Done{sample}
     case _: Fail{"wire:catalog-sample-cardinality"}
 
+def scene_frame_valid(+frame:EntityFrame.Frame) -> Bool:
+  EntityFrame.Frame{sample,entities,dimension,partial} = frame
+  catalog_sample_valid(sample) && EntityWire.frame_fields_valid(frame)
+
+def scene_frame(value:J.Value) -> Result<&2,&2,String,EntityFrame.Frame>:
+  match value:
+    case J.JArray{[sample,entities,dimension,partial]}:
+      do Result<&2,&2,String,EntityFrame.Frame>:
+        world:GS.Sample <- catalog_sample(sample)
+        records:EntityModel.Snapshot <- EntityWire.snapshot(entities)
+        name:String <- text(dimension)
+        bits:U32 <- EntityWire.uint(partial)
+        +frame:EntityFrame.Frame = EntityFrame.Frame{world,records,name,float_bits(bits)}
+        guard(scene_frame_valid(frame),"wire:scene-frame")
+        Done{frame}
+    case _: Fail{"wire:scene-frame-cardinality"}
+
 def reply_value(value:J.Value) -> Result<&2,&2,String,Reply>:
   match value:
     case J.JArray{[J.JNumber{"1"},J.JNumber{"0"},epoch,sequence]}:
@@ -879,6 +910,13 @@ def reply_value(value:J.Value) -> Result<&2,&2,String,Reply>:
         snapshot:CookingMenu.Snapshot <- cooking_snapshot(body)
         guard(epoch_valid(e) && sequence_valid(s) && diagnostic_valid(m),"wire:cooking-correlation-or-message")
         Done{CookingReply{e,s,value,m,snapshot}}
+    case J.JArray{[J.JNumber{"1"},J.JNumber{"9"},epoch,sequence,body]}:
+      do Result<&2,&2,String,Reply>:
+        +e:String <- text(epoch)
+        +s:Nat <- natural(sequence)
+        frame:EntityFrame.Frame <- scene_frame(body)
+        guard(epoch_valid(e) && sequence_valid(s),"wire:scene-frame-correlation")
+        Done{SceneFrameReply{e,s,frame}}
     case _: Fail{"wire:reply-version-tag-or-cardinality"}
 
 def decode_request(input:String) -> Result<&2,&2,String,Request>:
@@ -960,6 +998,10 @@ def catalog_sample_value(value:GS.Sample) -> J.Value:
   J.JArray{[s(identity),n(tick),n(revision),origin_value(origin),camera_value(camera),
     J.JArray{catalog_cell_values(cells)}]}
 
+def scene_frame_value(value:EntityFrame.Frame) -> J.Value:
+  EntityFrame.Frame{sample,entities,dimension,partial} = value
+  J.JArray{[catalog_sample_value(sample),EntityWire.snapshot_value(entities),s(dimension),u(F32.bits(partial))]}
+
 def event_value(value:Event) -> J.Value:
   match value:
     case Key{code,down}: J.JArray{[u(0),u(code),b(down)]}
@@ -1020,6 +1062,7 @@ def command_value(value:Command) -> J.Value:
   match value:
     case Frame{width,height}: J.JArray{[u(0),u(width),u(height)]}
     case FrameCatalog{width,height}: J.JArray{[u(13),u(width),u(height)]}
+    case SceneFrame{width,height,partial}: J.JArray{[u(20),u(width),u(height),u(F32.bits(partial))]}
     case Input{packet}: J.JArray{[u(1),packet_value(packet)]}
     case Release{}: J.JArray{[u(2)]}
     case Action{button}: J.JArray{[u(3),u(button)]}
@@ -1054,6 +1097,7 @@ def reply_valid(reply:Reply) -> Bool:
     case HelloAck{epoch,sequence}: epoch_valid(epoch) && Nat.is_eq(sequence,0n)
     case FrameReply{epoch,sequence,sample}: epoch_valid(epoch) && sequence_valid(sequence) && sample_valid(sample)
     case CatalogFrameReply{epoch,sequence,sample}: epoch_valid(epoch) && sequence_valid(sequence) && catalog_sample_valid(sample)
+    case SceneFrameReply{epoch,sequence,frame}: epoch_valid(epoch) && sequence_valid(sequence) && scene_frame_valid(frame)
     case Ack{epoch,sequence}: epoch_valid(epoch) && sequence_valid(sequence)
     case Fault{epoch,sequence,message}: fault_valid(epoch,sequence,message)
     case InventoryReply{epoch,sequence,snapshot}: epoch_valid(epoch) && sequence_valid(sequence) && main_snapshot_valid(snapshot)
@@ -1108,6 +1152,8 @@ def reply_json(reply:Reply) -> Result<&2,&2,String,J.Value>:
         Done{J.JArray{[u(1),u(1),s(epoch),n(sequence),value]}}
     case CatalogFrameReply{epoch,sequence,sample}:
       Done{J.JArray{[u(1),u(7),s(epoch),n(sequence),catalog_sample_value(sample)]}}
+    case SceneFrameReply{epoch,sequence,frame}:
+      Done{J.JArray{[u(1),u(9),s(epoch),n(sequence),scene_frame_value(frame)]}}
     case Ack{epoch,sequence}: Done{J.JArray{[u(1),u(2),s(epoch),n(sequence)]}}
     case Fault{epoch,sequence,message}: Done{J.JArray{[u(1),u(3),s(epoch),n(sequence),s(message)]}}
     case InventoryReply{epoch,sequence,snapshot}: Done{J.JArray{[u(1),u(4),s(epoch),n(sequence),inventory_snapshot_value(snapshot)]}}
@@ -1181,12 +1227,32 @@ def correlation(+epoch:String,+sequence:Nat,reply:Reply) -> Bool:
     case HelloAck{other,number}: String.eq(epoch,other) && Nat.is_eq(sequence,number)
     case FrameReply{other,number,sample}: String.eq(epoch,other) && Nat.is_eq(sequence,number)
     case CatalogFrameReply{other,number,sample}: String.eq(epoch,other) && Nat.is_eq(sequence,number)
+    case SceneFrameReply{other,number,frame}: String.eq(epoch,other) && Nat.is_eq(sequence,number)
     case Ack{other,number}: String.eq(epoch,other) && Nat.is_eq(sequence,number)
     case Fault{other,number,message}: String.eq(epoch,other) && Nat.is_eq(sequence,number)
     case InventoryReply{other,number,snapshot}: String.eq(epoch,other) && Nat.is_eq(sequence,number)
     case ActionReply{other,number,changed,message}: String.eq(epoch,other) && Nat.is_eq(sequence,number)
     case MenuReply{other,number,accepted,message,snapshot}: String.eq(epoch,other) && Nat.is_eq(sequence,number)
     case CookingReply{other,number,accepted,message,snapshot}: String.eq(epoch,other) && Nat.is_eq(sequence,number)
+
+# The caller binds the fraction it requested, or a complete extracted capture
+# stamp when composing a prepared entity/world frame. Numeric signed-zero
+# equality cannot silently replace this exact raw-word comparison.
+def scene_fraction_valid(+partial:F32,reply:Reply) -> Bool:
+  match reply:
+    case SceneFrameReply{other,number,EntityFrame.Frame{sample,entities,dimension,actual}}:
+      U32.is_eq(F32.bits(partial),F32.bits(actual))
+    case _: False{}
+def scene_fraction_matches(+epoch:String,+sequence:Nat,+partial:F32,reply:Reply) -> Bool:
+  match reply:
+    case SceneFrameReply{other,number,EntityFrame.Frame{sample,entities,dimension,actual}}:
+      String.eq(epoch,other) && Nat.is_eq(sequence,number) && U32.is_eq(F32.bits(partial),F32.bits(actual))
+    case _: False{}
+def scene_stamp_matches(+epoch:String,+sequence:Nat,expected:EntityWire.Stamp,reply:Reply) -> Bool:
+  match reply:
+    case SceneFrameReply{other,number,frame}:
+      String.eq(epoch,other) && Nat.is_eq(sequence,number) && EntityWire.matches(expected,frame)
+    case _: False{}
 
 law raw_look_preserves_signed_zero_and_nan_payload:
   {event(J.JArray{[u(3),u(2147483648),u(2143289345)]}) ==
