@@ -11,6 +11,7 @@ import argparse
 import json
 import re
 import shutil
+import shlex
 import sys
 from pathlib import Path
 
@@ -30,6 +31,7 @@ WORK = ROOT/'build/generic-resource-world-sample-client-native/001'
 MEMORY_BASIS = ROOT/'build/actor-compiler-memory-001'
 MEMORY_EVIDENCE = ROOT/'evidence/actor-compiler-memory-001.json'
 BASELINE_GENERATION = None
+CLIENT_OVERLAY_EVIDENCE = ROOT/'evidence/generic_resource_world_sample_client_config_box.json'
 SCOPE = ('Actual standalone remote_resource_catalog_client production graph, '
          'including correlated catalog frames, CW.Assets, WRF.draw_catalog, '
          'hardware-key/menu consumer, retained Registry demand owner and native Window loop. Compilation alone '
@@ -63,6 +65,7 @@ def commands(memory):
         base += ' --memory-producer'
     if BASELINE_GENERATION is not None:
         base += f' --baseline-generation {BASELINE_GENERATION}'
+        base += ' --client-overlay-evidence ' + shlex.quote(str(CLIENT_OVERLAY_EVIDENCE))
     return {'prepare':base, 'build':base+' --build',
             'finish_native_from_retained_C':base+' --finish-native'}
 
@@ -146,7 +149,7 @@ def prepare_baseline():
     assert receipt['source_before'] == receipt['source_after'] == previous['files']
     assert all(Catalog.sha(path) == expected for path, expected in previous['files'].items())
     client = ROOT/'src/generic_resource_world_sample_client.bend'
-    verified = ROOT/'evidence/generic_resource_world_sample_client_config_box.json'
+    verified = CLIENT_OVERLAY_EVIDENCE
     proof = json.loads(verified.read_text())
     assert proof['production_client'] == Remote.pin(client)
     assert proof['ordinary_source_check']['source_pins_unchanged']
@@ -155,7 +158,11 @@ def prepare_baseline():
     assert proof['ordinary_source_check']['process_receipt'] == Remote.pin(
         proof['ordinary_source_check']['process_receipt']['path'])
     checked = json.loads(Path(proof['ordinary_source_check']['process_receipt']['path']).read_text())
-    assert checked['exit_code'] == 0 and checked['cleanup']['live_group_absent']
+    if 'returncode' in checked:
+        assert checked['returncode'] == 0 and checked['group_absent']
+        assert checked['termination_reason'] is None
+    else:
+        assert checked['exit_code'] == 0 and checked['cleanup']['live_group_absent']
     manifest_path = Catalog.PRIVATE/'manifest.json'
     if manifest_path.exists():
         value = json.loads(manifest_path.read_text())
@@ -200,7 +207,7 @@ def prepare_baseline():
         'only_project_source_delta':'src/generic_resource_world_sample_client.bend',
         'current_working_dependency_graph_claim':False}
     value['scope'] = ('Coherent immutable generic baseline graph with only the verified '
-        'working GenericClient Config overlay; explicit Actor017 consumer baseline. '
+        'working GenericClient continuation overlay; explicit Actor017 consumer baseline. '
         'Changing working publication/entity joins are outside this generation.')
     write(manifest_path, value)
     return value
@@ -310,9 +317,13 @@ if __name__ == '__main__':
                         help='Use the separately byte/native-verified private cache/progress correction')
     parser.add_argument('--baseline-generation', type=int,
                         help='Reuse a coherent immutable graph with only the verified working client overlay')
+    parser.add_argument('--client-overlay-evidence', type=Path,
+                        default=CLIENT_OVERLAY_EVIDENCE,
+                        help='Exact retained source-check receipt for the changed client overlay')
     args = parser.parse_args()
     configure(args.generation)
     BASELINE_GENERATION = args.baseline_generation
+    CLIENT_OVERLAY_EVIDENCE = args.client_overlay_evidence.resolve()
     try:
         if args.build:
             build(args.memory_producer)

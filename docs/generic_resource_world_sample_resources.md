@@ -181,3 +181,26 @@ Selected original-body emission must establish the next concrete source change;
 the frozen008 graph is preserved and will not be retried unchanged. The actual
 017 demand/heartbeat/pixel/save/cold consumer and public launcher promotion remain
 pending.
+
+The narrowed008 diagnostic subsequently measured all 47 initially reachable
+GenericClient bodies. The recursive Config fixed `snapshot_ready` at 113 words,
+but later functions reopened its 149 native fields and retained that expanded
+metadata across IO or pure packet-return cuts. Eleven bodies still contained
+oversized segments. The actual menu-status capture also retained both previous
+and newly returned 48-word menu states. These are measured selected-body causes;
+the diagnostic does not reproduce the final fixpoint's exact segment suffixes.
+
+The working client now uses pure projections and updates to keep Config closed
+at those cuts. It removes `inventory_draw`'s unused projection, updates Config
+from the actual returned menu state before awaiting native status, and preserves
+the existing HUD/menu composition, timing location, input order and owner/error
+paths. The complete copied baseline with this sole client change passed original
+source checking with 5,779 declarations, zero holes and 113 unchanged loaded
+source pins. All 64 reachable changed client bodies were emitted once from
+initial ownership facts with their partial evolution: the largest reachable
+segment was 147 words, with none above 247. `inventory_draw`, `menu_events_sent`
+and `input_presented` each measured at most 121, and `resources_ready` at most 147.
+The 49.658-second diagnostic used at most 4,170,170,368 sampled RSS bytes and
+reaped normally. The source/parser refusals encountered during the change remain
+retained. This establishes the changed source and selected captures, while the
+fresh full build and actual Actor017 consumer remain pending.

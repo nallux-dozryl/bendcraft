@@ -1,0 +1,110 @@
+{
+  "baseline": {
+    "bytes": 54200,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/008/private/source-map.json",
+    "sha256": "806383cb9b9f15451cab55d954acfef8fbdea119f324b176309cefd73c6d4114"
+  },
+  "frozen006_008_untouched": true,
+  "native_consumer_run": false,
+  "only_project_delta": "src/generic_resource_world_sample_client.bend",
+  "ordinary_source_check": {
+    "checked_graph": {
+      "bytes": 2319405,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-continuation-private-005/probe.json",
+      "sha256": "e92c4c7f6dddb33f6c1053a2e347121987af9c5918956a3bdaf821c2d7b5db77"
+    },
+    "declarations": 5779,
+    "group_absent": true,
+    "holes": 0,
+    "loaded_source_files": 113,
+    "process_receipt": {
+      "bytes": 661,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-continuation-private-005/receipt.json",
+      "sha256": "a081db371bda7affd81c8403723114fbc8418b6d5c0b6b8e187bf12ee229b761"
+    },
+    "seconds": 24.153266125,
+    "source_pins_unchanged": true,
+    "whole_original_check_order_entries": 5870
+  },
+  "original_compiler_untouched": true,
+  "production_client": {
+    "bytes": 29817,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/generic_resource_world_sample_client.bend",
+    "sha256": "d9e82db56bcc1a0b133746c71b274cd90b264c23dbdca08a0bc8f5db15b143c5"
+  },
+  "public_launcher_changed": false,
+  "retained_failures": [
+    {
+      "bytes": 661,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-continuation-private-003/receipt.json",
+      "sha256": "3cdee8192ffee5594dad89290d8b2dbf429b9a549547cac5d2c814630c0b3743"
+    },
+    {
+      "bytes": 662,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-continuation-private-004/receipt.json",
+      "sha256": "64797ff93aa51f33c88c126f1f888a9b610c4d3b132fd6eccbb762db879e7720"
+    }
+  ],
+  "retained_file_only_preparation_refusal": {
+    "bytes": 228,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-continuation-private-003/preparation-failure-001.json",
+    "sha256": "5539143016dd6e6ffb7dba7e8596c8e525304c242f9a7587a3d6434f27d2b407"
+  },
+  "scope": "Immutable008 dependency graph with only actual GenericClient closed-config source overlay; complete original source checking and one selected-body pass from initial ownership facts with their partial evolution, no whole ownership fixpoint or native result.",
+  "selected_emission": {
+    "bodies": 64,
+    "changes": [
+      {
+        "body": "snapshot_ready",
+        "changed_maximum_words": 113,
+        "old_maximum_words": 170
+      },
+      {
+        "body": "inventory_draw",
+        "changed_maximum_words": 121,
+        "old_maximum_words": 261
+      },
+      {
+        "body": "menu_events_sent",
+        "changed_maximum_words": 121,
+        "old_maximum_words": 258
+      },
+      {
+        "body": "input_presented",
+        "changed_maximum_words": 121,
+        "old_maximum_words": 261
+      },
+      {
+        "body": "resources_ready",
+        "changed_maximum_words": 147,
+        "old_maximum_words": 261
+      }
+    ],
+    "constructor_max": {
+      "name": "src/generic_resource_world_sample_client:Config",
+      "words": 150
+    },
+    "foreign_max": {
+      "name": "src/player_presentation_native:Native.configure",
+      "words": 7
+    },
+    "full_final_guard_claim": false,
+    "helper_basis": {
+      "bytes": 195555,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-client-arity-004/probe_comp.ts",
+      "sha256": "59cd6fd1864592d8ba6df65ba24495959c2674b69c7ee49768726013d35d5e72"
+    },
+    "maximum_reachable_segment_words": 147,
+    "oversized_reachable_segments": 0,
+    "probe_helper": {
+      "bytes": 194773,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-continuation-private-005/probe_comp.ts",
+      "sha256": "98cd3f3a2f6127812c3cc4287860a132578cde88decfc46a65877cc05cbd0884"
+    },
+    "receipt_seconds": 49.65763083379716,
+    "sampled_peak_rss_bytes": 4170170368,
+    "scope": "One prioritized pass over all reachable changed GenericClient bodies; unchanged original full source checker and existing008 private WeakMap telescope helpers; initial ownership facts; actual generated capture widths. No whole-book emission/fixpoint/C output or final-pass suffix reproduction."
+  },
+  "source_change": "Keep recursive Config closed at IO and pure return cuts using scalar/project/update helpers; absorb authoritative menu state before Native.status; remove unused full projection; preserve actual Session/Registry/Link, all12 Presenter fields and tail, HUD composition, timing, input/error/close order.",
+  "status": "production_adopted_full_native_pending"
+}

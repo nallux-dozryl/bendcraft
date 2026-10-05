@@ -47,13 +47,74 @@ def with_menu(value:Config,menu:MenuInput.State) -> Config:
   Config{config,tail} = value
   Config{P.with_menu(config,menu),tail}
 
+# Pure projections and updates leave the recursive Config closed at IO cuts.
+def config_human(value:Config) -> Bool:
+  Config{P.Config{human,frames,width,height,trace,serial,plan,started,menu,keys,physical_keys,cooking},tail} = value
+  human
+
+def config_frames(value:Config) -> Maybe<&2,Nat>:
+  Config{P.Config{human,frames,width,height,trace,serial,plan,started,menu,keys,physical_keys,cooking},tail} = value
+  frames
+
+def config_width(value:Config) -> U32:
+  Config{P.Config{human,frames,width,height,trace,serial,plan,started,menu,keys,physical_keys,cooking},tail} = value
+  width
+
+def config_height(value:Config) -> U32:
+  Config{P.Config{human,frames,width,height,trace,serial,plan,started,menu,keys,physical_keys,cooking},tail} = value
+  height
+
+def config_serial(value:Config) -> Nat:
+  Config{P.Config{human,frames,width,height,trace,serial,plan,started,menu,keys,physical_keys,cooking},tail} = value
+  serial
+
+def config_started(value:Config) -> U32:
+  Config{P.Config{human,frames,width,height,trace,serial,plan,started,menu,keys,physical_keys,cooking},tail} = value
+  started
+
+def config_menu(value:Config) -> MenuInput.State:
+  Config{P.Config{human,frames,width,height,trace,serial,plan,started,menu,keys,physical_keys,cooking},tail} = value
+  menu
+
+def config_plan(value:Config) -> Presentation.Plan:
+  Config{P.Config{human,frames,width,height,trace,serial,plan,started,menu,keys,physical_keys,cooking},tail} = value
+  plan
+
+def config_settings(value:Config) -> Presentation.Settings:
+  Config{P.Config{human,frames,width,height,trace,serial,Presentation.Plan{settings,viewport,sw,sh,pw,ph},started,menu,keys,physical_keys,cooking},tail} = value
+  settings
+
+def config_events(value:Config,pending:List<Event>) -> List<Event>:
+  Config{P.Config{human,frames,width,height,trace,serial,plan,started,menu,keys,physical_keys,cooking},tail} = value
+  Presentation.native_events(pending,plan)
+
+def with_started(value:Config,begin:U32) -> Config:
+  Config{P.Config{human,frames,width,height,trace,serial,plan,started,menu,keys,physical_keys,cooking},tail} = value
+  Config{P.Config{human,frames,width,height,trace,serial,plan,begin,menu,keys,physical_keys,cooking},tail}
+
+def with_physical_keys(value:Config,enabled:Bool) -> Config:
+  Config{P.Config{human,frames,width,height,trace,serial,plan,started,menu,keys,physical_keys,cooking},tail} = value
+  Config{P.Config{human,frames,width,height,trace,serial,plan,started,menu,keys,enabled,cooking},tail}
+
+def with_geometry(value:Config,geometry:Presentation.Geometry) -> Config:
+  Config{P.Config{+human,frames,width,height,trace,serial,Presentation.Plan{settings,viewport,sw,sh,pw,ph},started,menu,keys,physical_keys,cooking},tail} = value
+  +plan = Presentation.plan(settings,geometry,human)
+  Config{P.Config{human,frames,Presentation.scene_width(plan),Presentation.scene_height(plan),trace,serial,plan,started,menu,keys,physical_keys,cooking},tail}
+
+def config_menu_batch(value:Config,pending:List<Event>,focused:Bool,captured:Bool) -> MenuInput.Batch:
+  Config{P.Config{human,frames,width,height,trace,serial,plan,started,menu,keys,physical_keys,cooking},tail} = value
+  MenuInput.packet_keys(physical_keys,keys,menu,pending,MenuInput.viewport(Presentation.hud_viewport(plan)),focused,captured)
+
+def config_image(value:Config,image:Image,view:HUD.View,screen:Maybe<&2,Screen.View>) -> Image:
+  Config{P.Config{human,frames,width,height,trace,serial,+plan,started,menu,keys,physical_keys,cooking},tail} = value
+  MenuInput.draw(HUD.compose(image,view,plan),menu,screen,Presentation.hud_viewport(plan))
+
 # Native resource owner/window consumer. Shared transport, hardware-key/menu
 # contracts and presentation policy are imported from the real remote client.
 # Only the scene sampling/model/resource owner differs from its legacy route.
 def frame_description(sample:GS.Sample,config:Config) -> IO(Unit):
   GS.Sample{identity,tick,revision,origin,Pixels.Camera{x,y,z,yaw,pitch},cells} = sample
-  Config{P.Config{human,frames,width,height,mode,serial,plan,started,menu,keys,physical_keys,cooking},tail} = config
-  IO.print("catalog.frame|" ++ Nat.show(serial) ++ "|" ++ identity ++ "|" ++ Nat.show(tick) ++ "|" ++
+  IO.print("catalog.frame|" ++ Nat.show(config_serial(config)) ++ "|" ++ identity ++ "|" ++ Nat.show(tick) ++ "|" ++
     Nat.show(revision) ++ "|" ++ Nat.show(List.length(&2,GS.Cell,cells)))
 
 def closing(window:Window,assets:Session.Session,link:P.Link,code:U32,message:String) -> IO(Unit):
@@ -78,8 +139,7 @@ def scheduled(window:Window,assets:Session.Session,link:P.Link,config:Config,cap
 
 def packet_advance(window:Window,assets:Session.Session,link:P.Link,+next:Config,captured:Bool,keep:Bool,
     resume:Window -> Session.Session -> P.Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
-  Config{P.Config{human,frames,width,height,trace,serial,+plan,started,menu,keys,physical_keys,cooking},tail} = next
-  scheduled(window,assets,link,next,captured,keep && Common.continuing(frames),resume)
+  scheduled(window,assets,link,next,captured,keep && Common.continuing(config_frames(next)),resume)
 
 def commands_sent(window:Window,assets:Session.Session,config:Config,captured:Bool,keep:Bool,
     result:P.Link & Result<&2,&2,String,Unit>,resume:Window -> Session.Session -> P.Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
@@ -133,38 +193,38 @@ def packet_initial(assets:Session.Session,link:P.Link,config:Config,pending:List
 
 def menu_events_sent(assets:Session.Session,+config:Config,pending:List<Event>,old:Bool,result:P.MenuResult,
     resume:Window -> Session.Session -> P.Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
-  Config{P.Config{+human,frames,width,height,trace,serial,plan,started,previous,keys,physical_keys,cooking},tail} = config
   match result:
     case P.MenuResult{window,link,state,False{},Done{unit}}: closing(window,assets,link,0,"client closed")
     case P.MenuResult{window,link,+state,True{},Done{unit}}:
+      +next = with_menu(config,state)
+      allow = config_human(next) && MenuInput.capture_allowed(state)
       do IO<Unit>:
         status : Window & Bool & Bool <- Input.Native.status(window)
-        packet_initial(assets,link,with_menu(config,state),pending,human && MenuInput.capture_allowed(state),old,status,resume)
+        packet_initial(assets,link,next,pending,allow,old,status,resume)
     case P.MenuResult{window,link,state,keep,Fail{message}}: closing(window,assets,link,1,"menu command: " ++ message)
 
 def menu_intercepted(assets:Session.Session,link:P.Link,+config:Config,old:Bool,window:Window,
     batch:MenuInput.Batch,resume:Window -> Session.Session -> P.Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
-  Config{P.Config{human,frames,width,height,trace,serial,plan,started,menu,keys,physical_keys,cooking},tail} = config
   MenuInput.Batch{state,intents,events} = batch
+  pending = MenuInput.game_events(events)
   do IO<Unit>:
-    sent : P.MenuResult <- P.send_menu_intents(intents,window,link,state,human,True{})
-    menu_events_sent(assets,config,MenuInput.game_events(events),old,sent,resume)
+    sent : P.MenuResult <- P.send_menu_intents(intents,window,link,state,config_human(config),True{})
+    menu_events_sent(assets,config,pending,old,sent,resume)
 
 def menu_intercept(assets:Session.Session,link:P.Link,+config:Config,pending:List<Event>,old:Bool,
     result:Window & Bool & Bool,resume:Window -> Session.Session -> P.Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
-  Config{P.Config{human,frames,width,height,trace,serial,+plan,started,menu,keys,physical_keys,cooking},tail} = config
   (window,focused,captured) = result
-  menu_intercepted(assets,link,config,old,window,MenuInput.packet_keys(physical_keys,keys,menu,pending,
-    MenuInput.viewport(Presentation.hud_viewport(plan)),focused,captured),resume)
+  menu_intercepted(assets,link,config,old,window,config_menu_batch(config,pending,focused,captured),resume)
 
 def input_presented(window:Window,assets:Session.Session,link:P.Link,+config:Config,captured:Bool,+image:Image,pending:List<Event>,
     resume:Window -> Session.Session -> P.Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
-  Config{P.Config{+human,frames,width,height,trace,serial,+plan,started,menu,keys,physical_keys,cooking},tail} = config
+  human = config_human(config)
+  events = config_events(config,pending)
   do IO<Unit>:
     P.image_description(image,native_config(config))
     window : Window <- Common.window_policy(window,human)
     status : Window & Bool & Bool <- Input.Native.status(window)
-    menu_intercept(assets,link,config,Presentation.native_events(pending,plan),captured,status,resume)
+    menu_intercept(assets,link,config,events,captured,status,resume)
 
 def traced(window:Window,assets:Session.Session,link:P.Link,config:Config,captured:Bool,image:Image,pending:List<Event>,
     status:Result<&2,&2,String,Unit>,resume:Window -> Session.Session -> P.Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
@@ -174,24 +234,21 @@ def traced(window:Window,assets:Session.Session,link:P.Link,config:Config,captur
 
 def presented(assets:Session.Session,link:P.Link,+config:Config,captured:Bool,result:Window & Image & List<Event>,
     resume:Window -> Session.Session -> P.Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
-  Config{P.Config{human,frames,width,height,mode,serial,plan,started,menu,keys,physical_keys,cooking},tail} = config
   (window,+image,pending) = result
   do IO<Unit>:
     now : U32 <- NativePresentation.Native.milliseconds()
-    IO.print("client.timing|" ++ Nat.show(serial) ++ "|" ++ U32.show(U32.sub(now,started)))
+    IO.print("client.timing|" ++ Nat.show(config_serial(config)) ++ "|" ++ U32.show(U32.sub(now,config_started(config))))
     status : Result<&2,&2,String,Unit> <- P.trace(image,native_config(config))
     traced(window,assets,link,config,captured,image,pending,status,resume)
 
 def drawn(window:Window,link:P.Link,+config:Config,captured:Bool,view:HUD.View,screen:Maybe<&2,Screen.View>,result:Session.Session & Result<&2,&2,String,Image>,
     resume:Window -> Session.Session -> P.Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
-  Config{P.Config{human,frames,width,height,trace,serial,+plan,started,menu,keys,physical_keys,cooking},tail} = config
   (assets,status) = result
   match status:
     case Fail{message}: closing(window,assets,link,1,"render: " ++ message)
     case Done{image}:
       do IO<Unit>:
-        shown : Window & Image & List<Event> <- Window.frame(window,
-          MenuInput.draw(HUD.compose(image,view,plan),menu,screen,Presentation.hud_viewport(plan)))
+        shown : Window & Image & List<Event> <- Window.frame(window,config_image(config,image,view,screen))
         presented(assets,link,config,captured,shown,resume)
 
 # Textures and catalog values are immutable Data. Retain their lists while
@@ -233,15 +290,13 @@ def menu_views(session:Session.Session,menu:MenuInput.State) -> Session.Session 
 def inventory_timed(window:Window,assets:Session.Session,link:P.Link,+config:Config,captured:Bool,+sample:GS.Sample,
     view:HUD.View,screen:Maybe<&2,Screen.View>,begin:U32,
     resume:Window -> Session.Session -> P.Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
-  Config{P.Config{human,frames,width,height,trace,serial,plan,started,menu,keys,physical_keys,cooking},tail} = config
-  +timed : Config = Config{P.Config{human,frames,width,height,trace,serial,plan,begin,menu,keys,physical_keys,cooking},tail}
+  +timed = with_started(config,begin)
   do IO<Unit>:
     frame_description(sample,timed)
-    drawn(window,link,timed,captured,view,screen,Session.draw(sample,assets,width,height),resume)
+    drawn(window,link,timed,captured,view,screen,Session.draw(sample,assets,config_width(timed),config_height(timed)),resume)
 
 def inventory_draw(window:Window,link:P.Link,+config:Config,captured:Bool,+sample:GS.Sample,
     prepared:Session.Session & Result<&2,&1,String,HUD.View & Maybe<&2,Screen.View>>,resume:Window -> Session.Session -> P.Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
-  Config{P.Config{human,frames,width,height,trace,serial,+plan,started,menu,keys,physical_keys,cooking},tail} = config
   (assets,status) = prepared
   match status:
     case Fail{message}: closing(window,assets,link,1,message)
@@ -255,7 +310,7 @@ def inventoried(window:Window,assets:Session.Session,+config:Config,captured:Boo
   (link,status) = result
   match status:
     case Done{Wire.MenuReply{epoch,sequence,accepted,message,snapshot}}:
-      +menu = MenuInput.observed(P.menu_state(native_config(config)),snapshot)
+      +menu = MenuInput.observed(config_menu(config),snapshot)
       inventory_draw(window,link,with_menu(config,menu),captured,sample,menu_views(assets,menu),resume)
     case Done{other}: closing(window,assets,link,1,"inventory query: Wire:ExpectedMenu")
     case Fail{message}: closing(window,assets,link,1,"inventory query: " ++ message)
@@ -279,13 +334,12 @@ def resources_linked(window:Window,+config:Config,captured:Bool,sample:GS.Sample
 
 def resources_prepared(window:Window,link:P.Link,+config:Config,captured:Bool,sample:GS.Sample,
     prepared:Session.Preparation,resume:Window -> Session.Session -> P.Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
-  Config{P.Config{human,frames,width,height,trace,serial,plan,started,menu,keys,physical_keys,cooking},tail} = config
   match prepared:
     case Session.Ready{result}: resources_ready(window,link,config,captured,sample,result,resume)
     case Session.Pending{missing,owner,catalog,error}:
       do IO<Unit>:
         value:P.Link & (Session.Session & Result<&2,&2,Catalog.Error,Unit>) <-
-          ResourceTransport.load(link,Session.Pending{missing,owner,catalog,error},width,height)
+          ResourceTransport.load(link,Session.Pending{missing,owner,catalog,error},config_width(config),config_height(config))
         resources_linked(window,config,captured,sample,value,resume)
 
 def snapshot_ready(window:Window,assets:Session.Session,link:P.Link,config:Config,captured:Bool,+sample:GS.Sample,
@@ -302,24 +356,20 @@ def sampled(window:Window,assets:Session.Session,config:Config,captured:Bool,res
 
 def query_planned(window:Window,assets:Session.Session,link:P.Link,+config:Config,captured:Bool,valid:Bool,
     resume:Window -> Session.Session -> P.Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
-  match config valid:
-    case _ False{}: closing(window,assets,link,1,"drawable dimensions exceed the configured presentation allocation policy")
-    case Config{P.Config{human,frames,width,height,trace,serial,plan,started,menu,keys,physical_keys,cooking},tail} True{}:
+  match valid:
+    case False{}: closing(window,assets,link,1,"drawable dimensions exceed the configured presentation allocation policy")
+    case True{}:
       do IO<Unit>:
-        reply : P.Link & Result<&2,&2,String,Wire.Reply> <- P.call(link,Wire.FrameCatalog{width,height})
+        reply : P.Link & Result<&2,&2,String,Wire.Reply> <- P.call(link,Wire.FrameCatalog{config_width(config),config_height(config)})
         sampled(window,assets,config,captured,reply,resume)
 
 def planned(assets:Session.Session,link:P.Link,+config:Config,captured:Bool,
     result:Window & Presentation.Geometry,resume:Window -> Session.Session -> P.Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
-  Config{P.Config{+human,frames,width,height,trace,serial,Presentation.Plan{+settings,viewport,sw,sh,pw,ph},started,menu,keys,physical_keys,cooking},tail} = config
   (actual,+geometry) = result
-  +next_plan = Presentation.plan(settings,geometry,human)
-  +next_width = Presentation.scene_width(next_plan)
-  +next_height = Presentation.scene_height(next_plan)
-  +next : Config = Config{P.Config{human,frames,next_width,next_height,trace,serial,next_plan,started,menu,keys,physical_keys,cooking},tail}
+  +next = with_geometry(config,geometry)
   query_planned(actual,assets,link,next,captured,
     Presentation.geometry_valid(geometry) &&
-      Presentation.dimensions(Presentation.output_width(next_plan),Presentation.output_height(next_plan)),resume)
+      Presentation.dimensions(Presentation.output_width(config_plan(next)),Presentation.output_height(config_plan(next))),resume)
 
 @unsafe
 def loop(window:Window,assets:Session.Session,link:P.Link,+config:Config,captured:Bool) -> IO(Unit):
@@ -327,42 +377,42 @@ def loop(window:Window,assets:Session.Session,link:P.Link,+config:Config,capture
     actual : Window & Presentation.Geometry <- NativePresentation.measure(window)
     planned(assets,link,config,captured,actual,w => a => l => c => capture => loop(w,a,l,c,capture))
 
-def starting(window:Window,assets:Session.Session,link:P.Link,+config:Config,captured:Bool,sample:GS.Sample) -> IO(Unit):
-  Config{P.Config{human,frames,width,height,trace,serial,+plan,started,menu,keys,physical_keys,cooking},tail} = config
+def starting_frames(window:Window,assets:Session.Session,link:P.Link,+config:Config,captured:Bool,sample:GS.Sample,frames:Maybe<&2,Nat>) -> IO(Unit):
   match frames:
     case Some{0n}: closing(window,assets,link,0,"client closed")
     case _: snapshot_ready(window,assets,link,config,captured,sample,w => a => l => c => capture => loop(w,a,l,c,capture))
+
+def starting(window:Window,assets:Session.Session,link:P.Link,+config:Config,captured:Bool,sample:GS.Sample) -> IO(Unit):
+  starting_frames(window,assets,link,config,captured,sample,config_frames(config))
 
 def captured(assets:Session.Session,link:P.Link,config:Config,sample:GS.Sample,result:Window & Bool) -> IO(Unit):
   (window,capture) = result
   starting(window,assets,link,config,capture,sample)
 
 def capture_configured(window:Window,assets:Session.Session,link:P.Link,+config:Config,sample:GS.Sample,valid:Bool) -> IO(Unit):
-  match config valid:
-    case _ False{}: closing(window,assets,link,1,"drawable/content dimensions exceed the configured presentation allocation policy")
-    case Config{P.Config{+human,frames,width,height,trace,serial,plan,started,menu,keys,physical_keys,cooking},tail} True{}:
+  match valid:
+    case False{}: closing(window,assets,link,1,"drawable/content dimensions exceed the configured presentation allocation policy")
+    case True{}:
       do IO<Unit>:
-        actual : Window & Bool <- Input.capture(window,human)
+        actual : Window & Bool <- Input.capture(window,config_human(config))
         captured(assets,link,config,sample,actual)
 
 def configured_window(assets:Session.Session,link:P.Link,+config:Config,sample:GS.Sample,
     actual:Window & Presentation.Geometry) -> IO(Unit):
-  Config{P.Config{+human,frames,width,height,trace,serial,Presentation.Plan{+settings,viewport,sw,sh,pw,ph},started,menu,keys,physical_keys,cooking},tail} = config
   (window,+geometry) = actual
-  +plan = Presentation.plan(settings,geometry,human)
-  +next : Config = Config{P.Config{human,frames,Presentation.scene_width(plan),Presentation.scene_height(plan),trace,serial,plan,started,menu,keys,physical_keys,cooking},tail}
+  +next = with_geometry(config,geometry)
   capture_configured(window,assets,link,next,sample,Presentation.geometry_valid(geometry) &&
-    Presentation.dimensions(Presentation.output_width(plan),Presentation.output_height(plan)))
+    Presentation.dimensions(Presentation.output_width(config_plan(next)),Presentation.output_height(config_plan(next))))
 
 def keys_enabled(assets:Session.Session,link:P.Link,config:Config,sample:GS.Sample,result:Window & Bool) -> IO(Unit):
-  Config{P.Config{human,frames,width,height,trace,serial,plan,started,menu,keys,previous,cooking},tail} = config
   (window,enabled) = result
+  next = with_physical_keys(config,enabled)
   do IO<Unit>:
     actual : Window & Presentation.Geometry <- NativePresentation.measure(window)
-    configured_window(assets,link,Config{P.Config{human,frames,width,height,trace,serial,plan,started,menu,keys,enabled,cooking},tail},sample,actual)
+    configured_window(assets,link,next,sample,actual)
 
-def opened(assets:Session.Session,link:P.Link,+config:Config,sample:GS.Sample,result:Result<&1,&1,U32 & String,Window>) -> IO(Unit):
-  Config{P.Config{+human,frames,width,height,trace,serial,Presentation.Plan{Presentation.Settings{+ow,+oh,percent,scale,+native,+fullscreen},viewport,sw,sh,pw,ph},started,menu,keys,physical_keys,cooking},tail} = config
+def opened_settings(assets:Session.Session,link:P.Link,+config:Config,sample:GS.Sample,settings:Presentation.Settings,result:Result<&1,&1,U32 & String,Window>) -> IO(Unit):
+  Presentation.Settings{+ow,+oh,percent,scale,+native,+fullscreen} = settings
   match result:
     case Fail{(code,message)}:
       do IO<Unit>:
@@ -371,9 +421,12 @@ def opened(assets:Session.Session,link:P.Link,+config:Config,sample:GS.Sample,re
         IO.die(Unit,code,"window open: " ++ message)
     case Done{window}:
       do IO<Unit>:
-        configured : Window <- NativePresentation.Native.configure(window,ow,oh,native,fullscreen,human)
+        configured : Window <- NativePresentation.Native.configure(window,ow,oh,native,fullscreen,config_human(config))
         keyed : Window & Bool <- NativePresentation.Native.inventory_keys(configured)
         keys_enabled(assets,link,config,sample,keyed)
+
+def opened(assets:Session.Session,link:P.Link,+config:Config,sample:GS.Sample,result:Result<&1,&1,U32 & String,Window>) -> IO(Unit):
+  opened_settings(assets,link,config,sample,config_settings(config),result)
 
 def open_catalogued_valid(assets:Session.Session,link:P.Link,sample:GS.Sample,+human:Bool,frames:Maybe<&2,Nat>,+settings:Presentation.Settings,catalog:ItemDefinitions.Catalog,keys:Keys.Profile) -> IO(Unit):
   Presentation.Settings{+ow,+oh,percent,scale,native,fullscreen} = settings
