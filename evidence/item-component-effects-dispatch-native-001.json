@@ -1,0 +1,665 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "scope": "API-preserving closed40 effect identifier dispatcher repair. Actual effect JSON/NBT conversion and the existing modified-stew receiver are checked; this does not establish whole renderer or gameplay parity.",
+  "prior_source": {
+    "source": "src/item_component_effects.bend",
+    "sha256": "717a46a1603866be6f3f1458721cb2281a135b36f27a652da9432756b168ae35",
+    "bytes": 11465,
+    "mapping": [
+      [
+        "minecraft:absorption",
+        "Absorption"
+      ],
+      [
+        "minecraft:bad_omen",
+        "BadOmen"
+      ],
+      [
+        "minecraft:blindness",
+        "Blindness"
+      ],
+      [
+        "minecraft:breath_of_the_nautilus",
+        "BreathOfTheNautilus"
+      ],
+      [
+        "minecraft:conduit_power",
+        "ConduitPower"
+      ],
+      [
+        "minecraft:darkness",
+        "Darkness"
+      ],
+      [
+        "minecraft:dolphins_grace",
+        "DolphinsGrace"
+      ],
+      [
+        "minecraft:fire_resistance",
+        "FireResistance"
+      ],
+      [
+        "minecraft:glowing",
+        "Glowing"
+      ],
+      [
+        "minecraft:haste",
+        "Haste"
+      ],
+      [
+        "minecraft:health_boost",
+        "HealthBoost"
+      ],
+      [
+        "minecraft:hero_of_the_village",
+        "HeroOfTheVillage"
+      ],
+      [
+        "minecraft:hunger",
+        "Hunger"
+      ],
+      [
+        "minecraft:infested",
+        "Infested"
+      ],
+      [
+        "minecraft:instant_damage",
+        "InstantDamage"
+      ],
+      [
+        "minecraft:instant_health",
+        "InstantHealth"
+      ],
+      [
+        "minecraft:invisibility",
+        "Invisibility"
+      ],
+      [
+        "minecraft:jump_boost",
+        "JumpBoost"
+      ],
+      [
+        "minecraft:levitation",
+        "Levitation"
+      ],
+      [
+        "minecraft:luck",
+        "Luck"
+      ],
+      [
+        "minecraft:mining_fatigue",
+        "MiningFatigue"
+      ],
+      [
+        "minecraft:nausea",
+        "Nausea"
+      ],
+      [
+        "minecraft:night_vision",
+        "NightVision"
+      ],
+      [
+        "minecraft:oozing",
+        "Oozing"
+      ],
+      [
+        "minecraft:poison",
+        "Poison"
+      ],
+      [
+        "minecraft:raid_omen",
+        "RaidOmen"
+      ],
+      [
+        "minecraft:regeneration",
+        "Regeneration"
+      ],
+      [
+        "minecraft:resistance",
+        "Resistance"
+      ],
+      [
+        "minecraft:saturation",
+        "Saturation"
+      ],
+      [
+        "minecraft:slow_falling",
+        "SlowFalling"
+      ],
+      [
+        "minecraft:slowness",
+        "Slowness"
+      ],
+      [
+        "minecraft:speed",
+        "Speed"
+      ],
+      [
+        "minecraft:strength",
+        "Strength"
+      ],
+      [
+        "minecraft:trial_omen",
+        "TrialOmen"
+      ],
+      [
+        "minecraft:unluck",
+        "Unluck"
+      ],
+      [
+        "minecraft:water_breathing",
+        "WaterBreathing"
+      ],
+      [
+        "minecraft:weakness",
+        "Weakness"
+      ],
+      [
+        "minecraft:weaving",
+        "Weaving"
+      ],
+      [
+        "minecraft:wind_charged",
+        "WindCharged"
+      ],
+      [
+        "minecraft:wither",
+        "Wither"
+      ]
+    ],
+    "independent_registry_sha256": "d61a62470873881789696fd419a12ed73d4fbd22b50cd450d97e137d8c526394",
+    "prior_failure": "build/item-entity-render-source/resources-diagnose.json"
+  },
+  "retained_original_source": {
+    "path": "build/item-component-effects/001/original.bend",
+    "bytes": 11465,
+    "sha256": "717a46a1603866be6f3f1458721cb2281a135b36f27a652da9432756b168ae35"
+  },
+  "source": {
+    "path": "src/item_component_effects.bend",
+    "bytes": 10748,
+    "sha256": "453c1ab97ddb1e3956dac8b7e6a2334324b87e4a13a608a95aca7b53fb3933be"
+  },
+  "owned_law": {
+    "path": "src/item_component_effects_dispatch_laws.bend",
+    "bytes": 2982,
+    "sha256": "8afe5dc655a8210bacfa3db0e1f21ed2d9cfd196b3317dc0ba8f9b0dfa4ad3bc"
+  },
+  "observer": {
+    "path": "tests/item_component_effects_dispatch.bend",
+    "bytes": 2995,
+    "sha256": "e8dadf7cff7bb98e8063f08a6d1800146d56482d8212796c2e7c35f519c33a12"
+  },
+  "helper": {
+    "path": "tools/test_item_component_effects_dispatch.py",
+    "bytes": 8255,
+    "sha256": "e6927a8f921dcc065804ea0684f410be780b8105460c9b4aa2e2d31a0221a885"
+  },
+  "change": {
+    "old": "Forty long String literal patterns in item_component_effects.kind.",
+    "new": "The exact same40 enum values in a fixed registry, String.eq against unchanged kind_name, Bool branch with one lazy structural tail.",
+    "public_api_unchanged": true,
+    "supported_ids_unchanged": true,
+    "unknown_refusal": "unknown suspicious stew effect",
+    "all_other_effect_duration_json_nbt_bodies_unchanged": true
+  },
+  "ordinary_checks": [
+    {
+      "receipt": {
+        "path": "build/item-component-effects/002/ordinary-process.json",
+        "bytes": 860,
+        "sha256": "f54b708c22d7403d7698c5d354963f306855c24a0219d3bb52276201b90d4eca"
+      },
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_component_effects.bend",
+        "--check-only"
+      ],
+      "exit_code": 0,
+      "seconds": 0.988265042193234,
+      "timed_out": false,
+      "leader_reaped": true,
+      "owned_group_absent": true,
+      "stderr": {
+        "bytes": 0,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-component-effects/002/ordinary/stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 58,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-component-effects/002/ordinary/stdout",
+        "sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1"
+      }
+    },
+    {
+      "receipt": {
+        "path": "build/item-component-effects/003/laws-process.json",
+        "bytes": 867,
+        "sha256": "9edfc4db487da279b8c916ff0a0e56e164e5340e97d6f6e801d1c90ef9f70e97"
+      },
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_component_effects_dispatch_laws.bend",
+        "--check-only"
+      ],
+      "exit_code": 0,
+      "seconds": 1.4784121252596378,
+      "timed_out": false,
+      "leader_reaped": true,
+      "owned_group_absent": true,
+      "stderr": {
+        "bytes": 0,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-component-effects/003/laws/stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 58,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-component-effects/003/laws/stdout",
+        "sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1"
+      }
+    },
+    {
+      "receipt": {
+        "path": "build/item-component-effects/004/observer-process.json",
+        "bytes": 871,
+        "sha256": "bdd1432857c8b705dafb9e012466b3e6a20dafaca8b7d0005e74f739e161ec6a"
+      },
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/item_component_effects_dispatch.bend",
+        "--check-only"
+      ],
+      "exit_code": 0,
+      "seconds": 2.135259541682899,
+      "timed_out": false,
+      "leader_reaped": true,
+      "owned_group_absent": true,
+      "stderr": {
+        "bytes": 0,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-component-effects/004/observer/stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 58,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-component-effects/004/observer/stdout",
+        "sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1"
+      }
+    }
+  ],
+  "independent_kernel": {
+    "status": "passed",
+    "roots": [
+      "every_registered_effect_identifier_has_its_original_type",
+      "lookup_refuses_an_identifier_absent_from_every_supplied_type",
+      "an_identifier_outside_the_complete_effect_registry_is_refused"
+    ],
+    "term_pins": [
+      {
+        "name": "every_registered_effect_identifier_has_its_original_type",
+        "type_sha256": "8f5b78a27b47f6259ea79e2fc8191ec4a6d9a7a4cca5aa9d5bae63a0a76fb833",
+        "checked_proof_sha256": "2ee0a785a18a25927407d281bbc03034b03bfe6c388f205643136de608bcb238",
+        "source_body_sha256": "342667f16c135caa6907bc0fd2119f59f9420dee8819519d5aee81d86ce395fb"
+      },
+      {
+        "name": "lookup_refuses_an_identifier_absent_from_every_supplied_type",
+        "type_sha256": "2497dc7e978234da8f3ef715a3a0552e23fa56b9c6799a282863d8b6d5fc3e07",
+        "checked_proof_sha256": "4d69477f4d1629e495ce606e760363a15d0db0bb005c0b8a50923e20b96de924",
+        "source_body_sha256": "c2f244ba041bb44ceebc0e33600a6190eea79775069fec42cf8e0d7b141a56fb"
+      },
+      {
+        "name": "an_identifier_outside_the_complete_effect_registry_is_refused",
+        "type_sha256": "8db02d83951ae56641f2b133f142968500bbc451648e10cc795e4bebd2897b95",
+        "checked_proof_sha256": "8feb79f3ce35ce9275d9a507ea0aa3b13520bf343a55410547592e1882f3280d",
+        "source_body_sha256": "424d4813737f7f70d127c6754cd6a4a689d4ef34ed9cf9394efc8667ba29e468"
+      }
+    ],
+    "original_root_count": 1335,
+    "selected_root_count": 3,
+    "complete_original_book_checked": true,
+    "all_original_tlds_ctrs_tmps_retained": true,
+    "checked_types_and_bodies_unchanged": true,
+    "exclusions": [],
+    "source_files": 14,
+    "source_manifest": {
+      "path": "build/item-component-effects/proof-001/source-pins.json",
+      "bytes": 1979,
+      "sha256": "da667ceb314907d089ffd7764af463f14cb347914d75b5d05c062a7b80c82245"
+    },
+    "sources_unchanged_during_export": true,
+    "exporter": {
+      "path": "build/item-component-effects/proof-001/export.mjs",
+      "bytes": 3039,
+      "sha256": "9cd3a5f515a068a51711297f518f0982af8731aa93a09cdb2d36e1cc02a433f0"
+    },
+    "ir": {
+      "path": "build/item-component-effects/proof-001/selected.bendtt",
+      "bytes": 90228,
+      "sha256": "f960eea66bf2320b6284553b48ec2557091d86df3a306ccd5a787c0ed51fed8d"
+    },
+    "export": {
+      "receipt": {
+        "path": "build/item-component-effects/proof-001/export-process.json",
+        "bytes": 1135,
+        "sha256": "7d3e815020811a26746dc3ea27efc13ac89c7a04bfcca20f8d867bfa62c3aea7"
+      },
+      "argv": [
+        "/opt/homebrew/bin/node",
+        "--max-old-space-size=1536",
+        "--stack-size=4096",
+        "--experimental-transform-types",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-component-effects/proof-001/export.mjs",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-component-effects/proof-001",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_component_effects_dispatch_laws.bend"
+      ],
+      "exit_code": 0,
+      "seconds": 2.537070833146572,
+      "timed_out": false,
+      "leader_reaped": true,
+      "owned_group_absent": true,
+      "stderr": {
+        "bytes": 177,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-component-effects/proof-001/export/stderr",
+        "sha256": "f0196448748988e8c701cf674313d93d4123f69df9d160eb2b169c390a0d978f"
+      },
+      "stdout": {
+        "bytes": 316,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-component-effects/proof-001/export/stdout",
+        "sha256": "bc4c1275c806f4040e32b8dcdd09f72b1f469064d539cf80e76b1751d3613dcd"
+      }
+    },
+    "kernel": {
+      "receipt": {
+        "path": "build/item-component-effects/proof-001/kernel-process.json",
+        "bytes": 940,
+        "sha256": "32953395d07bd08f17ce1814974a19c869713905d34f97cd70a47a76ab4b007a"
+      },
+      "argv": [
+        "/usr/bin/env",
+        "LEAN_STACK_SIZE=67108864",
+        "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-component-effects/proof-001/selected.bendtt"
+      ],
+      "exit_code": 0,
+      "seconds": 5.472415625117719,
+      "timed_out": false,
+      "leader_reaped": true,
+      "owned_group_absent": true,
+      "stderr": {
+        "bytes": 0,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-component-effects/proof-001/kernel/stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 17,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-component-effects/proof-001/kernel/stdout",
+        "sha256": "61b73cda11b6b665b9f99f2defd3d3b57f985c865225e942a5bdaa594a503e47"
+      }
+    },
+    "kernel_executable": {
+      "path": "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+      "bytes": 3271216,
+      "sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7"
+    }
+  },
+  "native": {
+    "status": "passed",
+    "cases": 209,
+    "complete_registry_ids": 40,
+    "signed_word_edges": 7,
+    "unknown_refusals": 128,
+    "existing_java_recipe_key_and_nbt_receiver_cases": 34,
+    "java_recipes": 17,
+    "comparator_corruption_controls_refused": 3,
+    "seconds": 0.8332724580541253,
+    "binary": {
+      "bytes": 1858600,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-component-effects/native-001/native",
+      "sha256": "95fd87ab501b847c6cf5b2a7cff056c69cde0ac2e6b16cf1052f9e1332751ee7"
+    },
+    "stdout_sha256": "dac3daeaf9fbee3cd85a3d21d405b2a442e9debc37924bc38c5f39fd7178e403",
+    "source_inputs": [
+      {
+        "bytes": 2995,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/item_component_effects_dispatch.bend",
+        "sha256": "e8dadf7cff7bb98e8063f08a6d1800146d56482d8212796c2e7c35f519c33a12"
+      },
+      {
+        "bytes": 8255,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_item_component_effects_dispatch.py",
+        "sha256": "e6927a8f921dcc065804ea0684f410be780b8105460c9b4aa2e2d31a0221a885"
+      },
+      {
+        "bytes": 10748,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_component_effects.bend",
+        "sha256": "453c1ab97ddb1e3956dac8b7e6a2334324b87e4a13a608a95aca7b53fb3933be"
+      }
+    ],
+    "sources_unchanged": true,
+    "binary_unchanged": true,
+    "process": {
+      "receipt": {
+        "path": "build/item-component-effects/native-001/native-process.json",
+        "bytes": 1047,
+        "sha256": "1bd3793a1dbe9e286c08705e55c17657b5506b4fcca9f6bd6d95c29b29713c28"
+      },
+      "argv": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-component-effects/native-001/native",
+        "--gpu",
+        "off",
+        "--threads",
+        "1",
+        "--",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-component-effects/native-001/fixtures/fixtures.json"
+      ],
+      "exit_code": 0,
+      "seconds": 0.8332724580541253,
+      "timed_out": false,
+      "leader_reaped": true,
+      "owned_group_absent": true,
+      "stderr": {
+        "bytes": 0,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-component-effects/native-001/effect-registry-and-existing-stew/stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 106338,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-component-effects/native-001/effect-registry-and-existing-stew/stdout",
+        "sha256": "dac3daeaf9fbee3cd85a3d21d405b2a442e9debc37924bc38c5f39fd7178e403"
+      }
+    },
+    "inputs": {
+      "input": {
+        "bytes": 37793,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-component-effects/native-001/fixtures/fixtures.json",
+        "sha256": "896eac2e831b16ca124e97181e9fe7b748f1610bbef6806c8cbcb46d9b51b374"
+      },
+      "registry": {
+        "bytes": 373823,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_registries.tsv",
+        "sha256": "d61a62470873881789696fd419a12ed73d4fbd22b50cd450d97e137d8c526394"
+      },
+      "effect_registry": {
+        "bytes": 1762172,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/crafting_recipe_components.json",
+        "sha256": "2a677248a345741d810a1f03fc19c7c34b6ac709c06c99ac8a6433bc2d3e9e64"
+      },
+      "reference": {
+        "bytes": 107884,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/item_component.json",
+        "sha256": "96ea75ecd223109d05162e21e9c2e1561e66eda24d488ff709021c663a292711"
+      }
+    },
+    "physical_claim": "The existing receiver compares complete canonical keys, parsed typed NBT against the observed Java tags, and raw signed effect words. Compound byte ordering and whole Saved recovery are not asserted by this focused corpus."
+  },
+  "native_build": {
+    "producer": "Existing tools/build_native.py and original installed Bend CLI; no private compiler modification used.",
+    "cache_hit": false,
+    "retries": 0,
+    "cache_key": "f1dfdee332f8fcaf01c4339e216320a392b9afe098d7767ca28f6b5a7e83f929",
+    "timings": {
+      "emission_seconds": 5.946418042294681,
+      "native_seconds": 10.269075583666563,
+      "total_seconds": 20.226443542167544
+    },
+    "compiler": "/usr/bin/clang",
+    "flags": [
+      "-std=c11",
+      "-O3",
+      "<emitted.c>",
+      "-lpthread",
+      "-lm",
+      "-o",
+      "<native>"
+    ],
+    "binary_sha256": "95fd87ab501b847c6cf5b2a7cff056c69cde0ac2e6b16cf1052f9e1332751ee7",
+    "emitted_c_sha256": "990fc28e78bf80db2882ff1250b89f5f95ace53376e385caa97568589e590751",
+    "dependency_count": 1651,
+    "full_report": {
+      "path": "build/item-component-effects/native-001/build.json",
+      "bytes": 548070,
+      "sha256": "6b27231228000411f95fcd637ad249bfa8a5c283529a0b6e3eb2686acdeee2f7"
+    },
+    "process": {
+      "receipt": {
+        "path": "build/item-component-effects/native-001/build-process.json",
+        "bytes": 1030,
+        "sha256": "894b75b409dbb338b581f687ae5cac84d08a7b0499a8edb76e71e44eb91a6eae"
+      },
+      "argv": [
+        "/Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_item_component_effects_dispatch.py",
+        "--_build-child",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-component-effects/native-001"
+      ],
+      "exit_code": 0,
+      "seconds": 20.508957957848907,
+      "timed_out": false,
+      "leader_reaped": true,
+      "owned_group_absent": true,
+      "stderr": {
+        "bytes": 0,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-component-effects/native-001/build/stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 0,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-component-effects/native-001/build/stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  },
+  "retained_failures": {
+    "original_caller_oom": {
+      "scope": "Parent item entity renderer resources original checker; trace stopped at item_component_effects:kind, before renderer-owned declarations. No unchanged retry was run by this lane.",
+      "result": {
+        "kind": "resources-diagnose",
+        "command": [
+          "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+          "--experimental-transform-types",
+          "--stack-size=4096",
+          "--max-old-space-size=1536",
+          "tools/item_entity_render_emit.mjs",
+          "src/item_entity_render_resources.bend"
+        ],
+        "exit": -6,
+        "seconds": 13.9105,
+        "sampled_process_tree_peak_rss_bytes": 1778925568,
+        "bounded_stop": null,
+        "stdout_sha256": "d4849e983823391befb30f4ad0bbe4f36f03d01ab84d862583e8986ad2125947",
+        "stderr_sha256": "625ab6b7705004b16d447e790997cf5ec4f201bb1141b26e366b06e27812f152"
+      },
+      "report": {
+        "path": "build/item-entity-render-source/resources-diagnose.json",
+        "bytes": 572,
+        "sha256": "2fb6694f814c119958c25dd7c106571ce5753bde6b44771c1d21dc114c6bc415"
+      },
+      "stdout": {
+        "path": "build/item-entity-render-source/resources-diagnose.stdout",
+        "bytes": 160418,
+        "sha256": "d4849e983823391befb30f4ad0bbe4f36f03d01ab84d862583e8986ad2125947"
+      },
+      "stderr": {
+        "path": "build/item-entity-render-source/resources-diagnose.stderr",
+        "bytes": 7451,
+        "sha256": "625ab6b7705004b16d447e790997cf5ec4f201bb1141b26e366b06e27812f152"
+      }
+    },
+    "initial_forward_call": {
+      "process": {
+        "receipt": {
+          "path": "build/item-component-effects/001/ordinary-process.json",
+          "bytes": 862,
+          "sha256": "d3ba9df6e4862ee7837e705969aa50e5b0b57e1146466d3b70dc6e1d7021bf5d"
+        },
+        "argv": [
+          "/Users/chuah/.bend/bin/bend",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_component_effects.bend",
+          "--check-only"
+        ],
+        "exit_code": 1,
+        "seconds": 0.6770761674270034,
+        "timed_out": false,
+        "leader_reaped": true,
+        "owned_group_absent": true,
+        "stderr": {
+          "bytes": 378,
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-component-effects/001/ordinary/stderr",
+          "sha256": "b49751447e499b8b9d09227ae65c20a53b945bae48f5053c6e6abbb50dda8c08"
+        },
+        "stdout": {
+          "bytes": 0,
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-component-effects/001/ordinary/stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "source": {
+        "path": "build/item-component-effects/001/failed-forward-call.bend",
+        "bytes": 10734,
+        "sha256": "8545c7bf35c1c8f2560b55ef0d469c37d558895036741fdb13135d119771a6fe"
+      },
+      "repair": "Removed the helper forward call by passing the existing Unit continuation pattern."
+    },
+    "observer_affine_name": {
+      "process": {
+        "receipt": {
+          "path": "build/item-component-effects/003/observer-process.json",
+          "bytes": 872,
+          "sha256": "61d3cc4bc89698f74dd6fa543d5f4edc31d1886b7c855d2423357cb7ba3f20aa"
+        },
+        "argv": [
+          "/Users/chuah/.bend/bin/bend",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/item_component_effects_dispatch.bend",
+          "--check-only"
+        ],
+        "exit_code": 1,
+        "seconds": 1.582962124608457,
+        "timed_out": false,
+        "leader_reaped": true,
+        "owned_group_absent": true,
+        "stderr": {
+          "bytes": 294,
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-component-effects/003/observer/stderr",
+          "sha256": "6d51d1897685ea55b568d576ee1fea3ce87c3b267b8e1e8f5f26df762ef896e0"
+        },
+        "stdout": {
+          "bytes": 0,
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-component-effects/003/observer/stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "repair": "Marked the reused fixture field-name argument +name. No expected game output changed."
+    }
+  },
+  "remaining_gaps": [
+    "Parent renderer resource consumer must pass on this changed source generation; this focused native result does not certify the whole renderer.",
+    "Whole component gameplay, pickup, current actor and durable-save integration remain separately scoped."
+  ],
+  "reproduce": [
+    "bend src/item_component_effects.bend --check-only",
+    "bend src/item_component_effects_dispatch_laws.bend --check-only",
+    "bend tests/item_component_effects_dispatch.bend --check-only",
+    "python3 tools/test_item_component_effects_dispatch.py --build (fresh absent native-001 directory; verified content-keyed builder, retries0)",
+    "Exact original-book selective export/kernel commands and pins appear in independent_kernel; no required dependency is omitted."
+  ]
+}

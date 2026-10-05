@@ -95,49 +95,64 @@ def kind_name(kind:EffectType) -> String:
     case WindCharged{}: "minecraft:wind_charged"
     case Wither{}: "minecraft:wither"
 
+# Compare identifiers as values, then branch on Bool. Matching forty long
+# String literals here expands the original checker pattern tree excessively.
+def registered() -> List<&2,EffectType>:
+  [
+    Absorption{},
+    BadOmen{},
+    Blindness{},
+    BreathOfTheNautilus{},
+    ConduitPower{},
+    Darkness{},
+    DolphinsGrace{},
+    FireResistance{},
+    Glowing{},
+    Haste{},
+    HealthBoost{},
+    HeroOfTheVillage{},
+    Hunger{},
+    Infested{},
+    InstantDamage{},
+    InstantHealth{},
+    Invisibility{},
+    JumpBoost{},
+    Levitation{},
+    Luck{},
+    MiningFatigue{},
+    Nausea{},
+    NightVision{},
+    Oozing{},
+    Poison{},
+    RaidOmen{},
+    Regeneration{},
+    Resistance{},
+    Saturation{},
+    SlowFalling{},
+    Slowness{},
+    Speed{},
+    Strength{},
+    TrialOmen{},
+    Unluck{},
+    WaterBreathing{},
+    Weakness{},
+    Weaving{},
+    WindCharged{},
+    Wither{}
+  ]
+
+def kind_match(equal:Bool,selected:EffectType,rest:Unit -> Result<&2,&2,String,EffectType>) -> Result<&2,&2,String,EffectType>:
+  match equal:
+    case True{}: Done{selected}
+    case False{}: rest(Unit{})
+
+def kind_lookup(values:List<&2,EffectType>,+value:String) -> Result<&2,&2,String,EffectType>:
+  match values:
+    case Nil{}: Fail{"unknown suspicious stew effect"}
+    case +head <> rest: kind_match(String.eq(value,kind_name(head)),head,u => kind_lookup(rest,value))
+
 def kind(value:String) -> Result<&2,&2,String,EffectType>:
-  match value:
-    case "minecraft:absorption": Done{Absorption{}}
-    case "minecraft:bad_omen": Done{BadOmen{}}
-    case "minecraft:blindness": Done{Blindness{}}
-    case "minecraft:breath_of_the_nautilus": Done{BreathOfTheNautilus{}}
-    case "minecraft:conduit_power": Done{ConduitPower{}}
-    case "minecraft:darkness": Done{Darkness{}}
-    case "minecraft:dolphins_grace": Done{DolphinsGrace{}}
-    case "minecraft:fire_resistance": Done{FireResistance{}}
-    case "minecraft:glowing": Done{Glowing{}}
-    case "minecraft:haste": Done{Haste{}}
-    case "minecraft:health_boost": Done{HealthBoost{}}
-    case "minecraft:hero_of_the_village": Done{HeroOfTheVillage{}}
-    case "minecraft:hunger": Done{Hunger{}}
-    case "minecraft:infested": Done{Infested{}}
-    case "minecraft:instant_damage": Done{InstantDamage{}}
-    case "minecraft:instant_health": Done{InstantHealth{}}
-    case "minecraft:invisibility": Done{Invisibility{}}
-    case "minecraft:jump_boost": Done{JumpBoost{}}
-    case "minecraft:levitation": Done{Levitation{}}
-    case "minecraft:luck": Done{Luck{}}
-    case "minecraft:mining_fatigue": Done{MiningFatigue{}}
-    case "minecraft:nausea": Done{Nausea{}}
-    case "minecraft:night_vision": Done{NightVision{}}
-    case "minecraft:oozing": Done{Oozing{}}
-    case "minecraft:poison": Done{Poison{}}
-    case "minecraft:raid_omen": Done{RaidOmen{}}
-    case "minecraft:regeneration": Done{Regeneration{}}
-    case "minecraft:resistance": Done{Resistance{}}
-    case "minecraft:saturation": Done{Saturation{}}
-    case "minecraft:slow_falling": Done{SlowFalling{}}
-    case "minecraft:slowness": Done{Slowness{}}
-    case "minecraft:speed": Done{Speed{}}
-    case "minecraft:strength": Done{Strength{}}
-    case "minecraft:trial_omen": Done{TrialOmen{}}
-    case "minecraft:unluck": Done{Unluck{}}
-    case "minecraft:water_breathing": Done{WaterBreathing{}}
-    case "minecraft:weakness": Done{Weakness{}}
-    case "minecraft:weaving": Done{Weaving{}}
-    case "minecraft:wind_charged": Done{WindCharged{}}
-    case "minecraft:wither": Done{Wither{}}
-    case _: Fail{"unknown suspicious stew effect"}
+  kind_lookup(registered(),value)
 
 def guard(valid:Bool,message:String) -> Result<&2,&2,String,Unit>:
   match valid:
