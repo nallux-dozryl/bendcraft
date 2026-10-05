@@ -14,28 +14,30 @@ manual lead grants or serial review/seal/replay ceremonies; stable source/cache
 identity and bounded cleanup stay automated. Reuse unchanged passing evidence.
 Coordinate at most two heavy jobs; never repeat an equivalent timed-out build.
 
-Current disjoint implementation owners (2026-10-05 02:40 UTC):
+Current disjoint implementation owners (2026-10-05):
 
 | Active owner | Exclusive production files / namespace | Concrete deliverable and actual consumer |
 | --- | --- | --- |
-| Root | Entry, typed durable writer, cooking storage formats and root integration/docs | Format4 recovery and typed writer are committed; freeze/build actor021 after the actual whole Entry check, then run real publication and SceneFrame TCP consumers. Preserve verified public actor017 while newer actor acceptance is open. |
-| `player_motion_current_ultra` | Actual Session/cooking/publication carrier and atomic entity frame join | Thread sole Core, independent journal and entity owners through delivery/save/restore. Complete current whole Entry check; source PASS permits the immediate frozen actor build. Optional export/kernel work does not serialize it. Future lighting needs real block/sky/lightmap authority. |
-| Motion incarnation-guard child | Additive Core prospective admission, scheduled cooking preflight, NEW local_player_cooking_incarnation_guard* | Refuse accepted lifecycle resets at MAX48 before clock/Core/body mutation; retain same-family/LIT updates. Changed narrow checks proceed independently of the actor build. |
-| `actor_compiler_memory_ultra` | `local_player_cooking_edit.bend` and its direct-edit checks | Add the same MAX48 lifecycle guarantee to actual player break/place, preserving admission precedence and every Core/light/body/metadata/entity/publication owner. Coordinate the production source cut with Motion. |
-| `cooking_dirty_publication` | Delivery-facade compatibility and NEW publication TCP observer | Journal54 native observations and seven kernel laws pass. Real actor021 menu/tick/durable-save/SIGKILL/cold continuation remains pending; nonzero pending capture may be UNOBSERVED when a real pulse wins. |
-| `native_controls_current_ultra` | NEW entity scene wire/frame/backend and actual command20 network observer | Wire407 native cases and stamp laws pass. Execute the prepared actual TCP observer with actor021, validating complete Item/Orb snapshots and format4 save recovery. |
-| `saved_inventory_ultra` | NEW local_player_effect_tick_recovery* only | Persist every actual Runtime field and separate sound RNG without fabricating unavailable legacy authority. Native physical/owner/boundary checks are active; future root format5/sole Tick.State join is separate. |
-| `block_resource_catalog_ultra` | Generic client/resource lifecycle, demand observer and public launcher adoption | Renderer009 full C/native build and real017 demand/pixels/full-save/cold consumer pass. Complete exact017/009 launcher adoption, then integrate the stable shared entity-scene composition API. |
-| Parent section membership owner | NEW entity_section_membership* only | Actual registration/migration/removal/visibility/section insertion order provider for Tick.Scene. Commit manager, entity runtime, cursor and removal publications atomically. Core/camera residency cannot substitute for this authority. |
-| Parent scene compositor | NEW entity_scene_render* only | Combine actual world+Item+XP geometry into one retained texture/material domain with shared ordering/budgets/occlusion. Require real stamped lighting; join the actual generic client after the stable API exists. |
+| Root | Entry, typed durable writer and root integration/docs | Whole actor021 source passes; native producer fails final arity after nine passes. Build coherent022 from frozen021 plus only the measured tiny save-owner repair, then execute actual publication and SceneFrame TCP consumers. Preserve public017/008. |
+| `terrain_client_ultra` | Private frozen021 Session overlay and bounded arity diagnostic | Measure actual changed cooking-save callback widths after boxing the sole transient/snapshot anchor; keep original021 and mutable future Session distinct. No compiler guard changes. |
+| `player_motion_current_ultra` | Actual Session/cooking/publication carrier and atomic entity frame join | Future TickBound runtime/separate sound preservation passes changed whole source and five owner kernel laws. Join actual managed Tick.State and separate membership authority through real loader observations, ordered publication and atomic Frame; require real block/sky/lightmap authority. |
+| Motion incarnation-guard child | Additive Core prospective admission, scheduled cooking preflight, NEW local_player_cooking_incarnation_guard* | MAX48 scheduled preflight passes 16 native owner/admission rows and nine kernel roots. Preserve the open universal numeric comparison theorem and Java parity scope. |
+| `actor_compiler_memory_ultra` | NEW entity_chunk_loading* only; direct-edit checkpoint complete | Direct MAX48 edit passes 39 native guards. Implement separate witnessed Full-status/visibility and entity-file Fresh/Pending/Loaded owners and supply actual current facts to membership recovery. Core/camera residency cannot substitute for completion authority. |
+| `cooking_dirty_publication` | Delivery-facade compatibility and NEW publication TCP observer | Journal54 native observations and seven kernel laws pass. Genuine actor022 menu/tick/durable-save/SIGKILL/cold continuation awaits its binary; nonzero pending capture may be UNOBSERVED when a real pulse wins. |
+| `native_controls_current_ultra` | NEW entity membership codec/proofs and actual command20 network observer | Membership codec passes 24 owner guards and 277 physical cases; live loader installation is separate. Wire407 native cases and stamp laws pass. Execute prepared SceneFrame observer with genuine022, complete Item/Orb snapshots and format4 recovery. |
+| `saved_inventory_ultra` | NEW tick recovery/storage modules and cooking format5 wrapper | Complete runtime/separate sound recovery, optional manager payload and raw clocks pass physical/native and kernel checks. Preserve exact legacy formats1–4; absent runtime/sound/manager remains unavailable. Mutable future graph is separate from022. |
+| `block_resource_catalog_ultra` | Generic client/resource lifecycle, demand observer and public launcher adoption | Renderer009 demand/pixels/full-save/cold checks pass; initial cold catalog startup misses lease. Build and test010 with actual worker heartbeats before public promotion, then join shared entity compositor with real stamped lighting. |
+| Parent membership recovery owner | NEW entity_section_membership_recovery* only | Validate saved M.View against actual E.View and current real loader facts, returning a proposal for atomic activation. Preserve insertion/callback/cursor authority; no assumed visible or loaded defaults. |
+| Parent managed tick owner | Additive item_entity_tick_managed_scene*; checkpoint complete | Managed actual movement/removal/merge passes ten Java/native cases, seven complete-owner refusals and five kernel laws. Stable tick_id returns both sole T.State and M.State plus ordered publications/callbacks. |
+| Parent lighting owners | NEW sky_light* and vanilla_lightmap* only | Derive actual sky fields and evaluated Lightmap shader RGB from pinned26.3; connect future stamped world/entity lighting. Shared compositor61b2719 is stable and refuses missing lighting. |
 
 Independent source, reference extraction and small checks proceed concurrently.
 Only expensive compilation/native/kernel jobs share the two heavy-job slots;
 owners coordinate actual occupancy directly. No manual grants, sealing ladders
 or duplicate broad build attempts. Required physical input, visible drawable,
 audio, sustained full-quality performance and complete gameplay parity remain
-open. The verified public actor017/renderer008 pair is preserved until exact
-017/009 launcher adoption completes. Actor020's separate native cooking entity
+open. The verified public actor017/renderer008 pair is preserved until changed
+010 startup and exact launcher acceptance pass. Actor020's separate native cooking entity
 consumer passes; it is not a public client promotion or a complete game.
 
 Prior results remain in [LOCAL_PLAYER_SESSION_NATIVE_RESULTS.md](LOCAL_PLAYER_SESSION_NATIVE_RESULTS.md),

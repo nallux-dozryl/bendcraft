@@ -11,28 +11,44 @@ The cold resource load retains the lease using three release-only input
 acknowledgements, with a measured maximum reply gap of 4,113.850 ms under the
 5,000 ms lease. This is an immutable baseline graph plus the verified client
 continuation repair, not the newer publication/entity actor graph. Public
-launcher adoption is being completed separately. See
+adoption remains held: a cold grass startup exposed an initial catalog load
+that did not maintain the lease before its first frame. The changed010 graph
+joins the actual catalog worker to bounded transport heartbeats; its whole
+original source check passes, and its genuine native build is in progress.
+The public launcher remains the verified017/008 pair. See
 `evidence/generic_resource_world_sample_client_native_009.json` and the actual
 `build/generic-resource-world-sample-demand-runtime/002/result.json`.
 
-The next actor joins captured cooking Dirty sources, an authenticated live
+Frozen actor021 joins captured cooking Dirty sources, an authenticated live
 publication journal, lossless incarnation-map recovery, format4 full saves,
 and an atomic entity SceneFrame command. The publication codec passes 22
 native guards and 442 independent physical cases; the wrapper passes 22 actual
 JavaScript guards while retaining old format1/2/3 bytes. The standalone entity
-wire passes 407 native cases. Whole Entry checking is still being repaired at
-the actual changed consumers; no actor021 native/TCP or public adoption verdict
-is claimed. Only a typed receipt from actual durable publication may clean the
+wire passes 407 native cases. One unchanged original whole Entry check accepts
+9,564 declarations, 211 source files and zero holes; all 202 mapped Bend files
+match that checked source. The actual021 producer completes nine ownership
+passes, then fails the original 247-word argument guard after 360.755 seconds
+at 5,109,366,784 bytes peak sampled RSS. No C, clang or native binary exists.
+A bounded changed-body diagnostic identifies cooking-save callbacks with
+268 and 250 words; a small private boxed save-owner change is being measured
+against the same frozen graph before generation022. No newer actor TCP or
+public adoption verdict is claimed. Only a typed receipt from actual durable publication may clean the
 live journal. A pulse may consume pending effects before a save; a nonzero
 pending capture is an observation, never an assumed scheduling guarantee.
 See `evidence/local-player-cooking-publication-codec-native-002.json`,
 `evidence/local-player-cooking-storage-008.json`, and
-`docs/REMOTE_ENTITY_SCENE_WIRE.md`.
+`docs/REMOTE_ENTITY_SCENE_WIRE.md`,
+`evidence/playable-client-actor004-source-021.json`, and
+`evidence/playable-client-actor004-build-failure-021.json`.
 
 Item tick33 section-order cases and the earlier native24 tick/merge cases are
-verified in the separate production Tick.Scene lane. Actual section membership,
-runtime/separate sound recovery, and one shared world/entity rendering domain
-are being integrated by disjoint owners. These narrow results do not establish
+verified in the separate production Tick.Scene lane. The additive managed
+join passes ten actual Java/native cases, seven complete-owner refusals and
+five independent kernel laws. One shared world/Item/XP compositor passes its
+native occlusion/resource cases and twelve kernel laws, while requiring
+explicit stamped lighting. Runtime/separate sound and manager format5 recovery
+passes its narrow codec and changed Session/Frame owner checks; actual loader
+observations and live scheduling remain integration work. These results do not establish
 live item scheduling, pickup, complete lighting, visible input, or full gameplay.
 
 The actual frozen actor020 passes the complete original checker with 8,998
