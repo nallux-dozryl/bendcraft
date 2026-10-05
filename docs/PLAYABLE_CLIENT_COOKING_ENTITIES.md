@@ -2,8 +2,11 @@
 
 `tools/test_playable_client_cooking_entities.py --actor-generation 20` selects
 only the actual immutable Actor004/producer020 artifact, with no fallback and no
-build operation. Current status is **prepared file-only; native delivery remains
-unverified**. The preparation does not require an Actor020 executable. It reuses
+build operation. Current status is **actual native narrow PASS**, in 111.939352
+seconds: `evidence/playable-client-cooking-entities-native-005.json`. The actual
+15,304,904-byte binary has SHA256
+`54b79ea92479b84ebd3d194d2f2fadd8f8504970d6aa9db2b42beb2d865741e8`.
+File-only preparation does not require an Actor020 executable. The consumer reuses
 the successful019 TCP/MCP/process/save helpers and leaves that runner, fixture and
 `evidence/playable-client-cooking-native-011.json` unchanged. That earlier result
 establishes atomic physical Details and unsupported intent recovery; it does not
@@ -12,8 +15,8 @@ establish the new entity delivery path.
 The complete actual Entry passed original `B.book_valid` in 18.232369 seconds,
 with 8998 declarations and zero holes. `evidence/local-player-cooking-source-020.json`
 pins the checked source, including this startup geometry join, authenticated
-defaults and IO serving driver. This verdict establishes source typing; native
-delivery and recovery remain pending the actual generation020 artifact.
+defaults and IO serving driver. The source verdict and the native consumer
+establish their respective scopes.
 
 The new test uses the same loaded legacy one-section Core, y7 stone floor, y8
 player and a north-facing furnace moved to overworld12,8,12 for the new geometry
@@ -31,13 +34,13 @@ Preparation command:
 /Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 -B tools/test_playable_client_cooking_entities.py --actor-generation 20 --expectations
 ```
 
-The eventual native command substitutes `--native`. The existing bounded owner
+The native command substitutes `--native`. The existing bounded owner
 provides a600-second total cap, sequential actual actors, TCP/MCP journals,
 SIGKILL process records and descendant/listener cleanup. Root coordinates the
 actual build and two-job capacity; preparation launches no checker, compiler,
 Java receiver, proof or native process.
 
-The planned five complete atomic save comparisons are:
+The actual TCP/MCP run passed these five complete atomic save comparisons:
 
 1. Actual legacy body startup/discovery and fresh entity owner initialization,
    without a Core tick. The saved format3 exposes the real Level Legacy raw seed,
@@ -59,6 +62,14 @@ The planned five complete atomic save comparisons are:
    create no entity, read no constructor clock, and retain all complete records,
    factory/ID cursors and section order. The fifth save compares every byte of
    this continued authority.
+
+The two killed actors returned -9, and the final actor stopped with exit 0. Their
+process receipts retain actual SIGKILL markers, absent groups/listeners and exact
+stdout/stderr pins. The MCP and bounded Python child were also reaped. The public
+receipt includes all three process records, socket journals, five save hashes and
+the complete final typed entity View decoded from the retained atomic file. The
+run reached sole Core tick 4 with two Items, one value7 Orb, no pending effects or
+constructor clocks, and all complete records preserved through cold recovery.
 
 Each save compares the complete Core, player, inventory, equipment, status,
 generation, physical body, drained effects, complete raw entity snapshot and
@@ -114,6 +125,5 @@ placement callback. A missing geometry publisher or a real Dirty/nonzero block
 notification refusal is preserved as a native failure; the test does not drain
 or acknowledge such effects itself. Pickup/playerTouch, entity movement/ticking,
 UI/rendering, comparator delivery, multi-Level continuity and whole-game parity
-remain outside this consumer. Confidence is high in the retained reference and
-file-only expectations; actual Actor020 integration confidence remains unknown
-until the native sequence executes.
+remain outside this consumer. Confidence is high for the retained reference and
+this actual isolated overworld delivery/save/recovery sequence.
