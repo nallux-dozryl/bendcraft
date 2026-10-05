@@ -1,0 +1,155 @@
+{
+  "actor_binary": {
+    "bytes": 16246584,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-023/actor",
+    "sha256": "7fd7ee9269802a6e128716f53bf34030ec592728ef954f9b61bebecac36719d1"
+  },
+  "actor_generation": 23,
+  "actor_native_build": {
+    "bytes": 3896,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-023/native-build.json",
+    "sha256": "1769010597eef5211eff69296c7426430279b66636e86c628d17e42d42710286"
+  },
+  "after_preparation_runner_only_delta": "Initialization receipts now mark observed foreign workload FAIL_CONTAMINATED before writing, matching existing trial semantics. Syntax checked; no native replay claimed.",
+  "clients": [
+    "010",
+    "012"
+  ],
+  "cohort": "Fixed-quality010/012 commonActor023",
+  "current_runner": {
+    "bytes": 27795,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/generic_client_responsiveness_comparison.py",
+    "sha256": "fee5e3dc2982c611e2709fa124a2d138326378c720e48ecb5e5352dac964cb7f"
+  },
+  "frames_per_timed_trial": 8,
+  "launch_gate": "Catalog public groups reaped and foreground approval window pending; direct coordination and fresh broad ps before --native. This consumer must not delay cooking/public delivery.",
+  "native_launches": 0,
+  "order": [
+    "010",
+    "012",
+    "012",
+    "010"
+  ],
+  "planned_native_command": "python3 -B tools/generic_client_responsiveness_comparison.py --actor-generation 23 --clients 010,012 --native",
+  "predeclared_warmup_frames": 2,
+  "preparation": {
+    "bytes": 12797,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-client-responsiveness-comparison/007/preparation.json",
+    "sha256": "9181075644eae7c625da57b085d32bbeebad53fa47f4fc34f4e7a12d6e10f801"
+  },
+  "preparation_runner": {
+    "bytes": 27539,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/generic_client_responsiveness_comparison.py",
+    "sha256": "29a2d493ae4b0f52de62dce67008e07751e506ad56d5b2fca92624f5fc07ee38"
+  },
+  "prior_006": "Retained008/010 Actor017 image mismatch. No008 rerun, cohort mixing, speedup/regression inference or quality masking.",
+  "renderer_builds": {
+    "010": {
+      "build_receipt": {
+        "bytes": 8919,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/010/build.json",
+        "sha256": "532f302cd0ee156ac7a1e081b7787d9afb5b904e7bc7c75d63950f219525c8d9"
+      },
+      "manifest": {
+        "bytes": 71561,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/010/private/manifest.json",
+        "sha256": "1dc73901016eff10e643d0d496a0915d734e5ae6079813e93fb8ae576c4c1fe3"
+      },
+      "native_command": [
+        "/usr/bin/clang",
+        "-x",
+        "objective-c",
+        "-fobjc-arc",
+        "-fmodules",
+        "-std=c11",
+        "-O3",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/010/renderer.c",
+        "-lpthread",
+        "-lm",
+        "-o",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/010/renderer"
+      ],
+      "source_deltas_from_declared_baseline": [
+        "remote_resource_catalog_client.bend",
+        "src/generic_resource_world_sample_resource_initial_transport.bend"
+      ],
+      "source_map": {
+        "bytes": 54654,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/010/private/source-map.json",
+        "sha256": "64c933b2acef2baef244271460340d97b90c112140916c360c4915eac347028d"
+      }
+    },
+    "012": {
+      "build_receipt": {
+        "bytes": 10076,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/012/build.json",
+        "sha256": "0ccbe71835a81a89ebfdd187174fcf9461ba49980e52cb6b7944723c818e8422"
+      },
+      "manifest": {
+        "bytes": 72357,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/012/private/manifest.json",
+        "sha256": "73b0285f572959099934227effc78696046eb90c486566e88c71d8f1699f6138"
+      },
+      "native_command": [
+        "/usr/bin/clang",
+        "-x",
+        "objective-c",
+        "-fobjc-arc",
+        "-fmodules",
+        "-std=c11",
+        "-O3",
+        "-fno-stack-check",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/012/renderer.c",
+        "-lpthread",
+        "-lm",
+        "-o",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/012/renderer"
+      ],
+      "source_deltas_from_declared_baseline": [
+        "src/generic_resource_world_sample_client.bend",
+        "src/block_model.bend"
+      ],
+      "source_map": {
+        "bytes": 54654,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/012/private/source-map.json",
+        "sha256": "ec255df0c52c6214aeece182c7ac92276c0c00ce2a59dd0769f3faadbc6d4e7c"
+      }
+    }
+  },
+  "reproduce_preparation": "python3 -B tools/generic_client_responsiveness_comparison.py --actor-generation 23 --clients 010,012",
+  "required_checks": [
+    "All 2,073,600 RGB pixels match exactly within and between arms",
+    "Same actual full saved owner bytes, correlated sample/menu, exact player/main/clock",
+    "Same actual seed, camera, assets, profile and settings",
+    "Broad quiet-load gate every 250ms; protected012 retained",
+    "All owned groups reaped; unchanged focus/Spaces",
+    "Actual completed build, source-map, manifest and binary pins before/after"
+  ],
+  "scope": "Paused render/composition/Window.frame envelope only; excludes query/resource/menu preparation. Returned CPU images; no drawable readback, OS-input, FPS, active server20TPS, cooking throughput or whole-game claim.",
+  "separate_active_performance": "Paused drawing does not establish active20TPS or remedy the observed67-second two-recipe cooking sequence.",
+  "settings": {
+    "eye_body": [
+      0.5,
+      -60.0,
+      0.5
+    ],
+    "gpu": "off",
+    "hud_scale": "automatic4/480x270",
+    "menu": "closed",
+    "output": [
+      1920,
+      1080
+    ],
+    "paused": true,
+    "pitch_degrees": 15.0,
+    "render_percent": 100,
+    "scene": [
+      1920,
+      1080
+    ],
+    "seed": 0,
+    "workers": 2
+  },
+  "status": "PREPARED_NATIVE_PENDING",
+  "utc": "2026-10-05T05:32:25.871611+00:00"
+}

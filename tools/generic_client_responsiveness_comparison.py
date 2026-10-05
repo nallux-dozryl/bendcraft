@@ -29,6 +29,7 @@ PROTECTED = 47566
 KNOWN = {
     'actor017': '66bbe97279f8ee268d891ad762d5da40337e1c318d09160e415823e25d4d8bd5',
     'actor022': '1ba545e7ccd84e5011f51199c2ee9562e4063c24b98c64148323551039357712',
+    'actor023': '7fd7ee9269802a6e128716f53bf34030ec592728ef954f9b61bebecac36719d1',
     '008': '3134689e2905e3b3a3ca3790f854996f9da49d8ca33b19677890cc4b10c91d04',
     '010': 'c6a861ae04a4de8f918912149ff8ead4e92dfe16d581a7ca2f97983ff9cf3f94',
     '012': '3bd945855c7526f713ed1df03ab89e136429fbc36132f6152ef16fc7a491a232',
@@ -295,7 +296,7 @@ def trial(directory, actor_binary, binary, generation, data, helpers, trace):
 
 
 def initialized_baseline(directory, actor_binary, data):
-    """Persist genuine factory entropy once; every022 arm restores these bytes."""
+    """Persist genuine factory entropy once; every common-actor arm restores it."""
     directory.mkdir()
     path = directory/'world.nbt'
     path.write_bytes(data['payload'])
@@ -323,6 +324,10 @@ def initialized_baseline(directory, actor_binary, data):
         with Host.bindings(R, {'WORK': directory, 'GROUPS': directory/'owned-groups.ndjson'}):
             G.sweep_owned(directory)
         value['loads'] = loads.finish()
+        if value['loads']['foreign_work_observed']:
+            value['status'] = 'FAIL_CONTAMINATED'
+            value['error'] = {'type': 'ForeignWorkObserved',
+                'message': 'Actual initialization was not quiet; comparison cannot proceed'}
         write(directory/'report.json', value)
     R.require(not value['loads']['foreign_work_observed'], 'Baseline initialization was not quiet')
     return value
@@ -331,13 +336,16 @@ def initialized_baseline(directory, actor_binary, data):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--native', action='store_true', help='Run existing hidden native owners; default prepares only')
-    parser.add_argument('--actor-generation', choices=(17, 22), type=int, default=17)
-    parser.add_argument('--clients', default='008,010', help='008,010 or 008,010,COOKING_GENERATION; cooking requires common022')
+    parser.add_argument('--actor-generation', choices=(17, 22, 23), type=int, default=17)
+    parser.add_argument('--clients', default='008,010', help='Historical008,010 on017/022; fixed-quality010,012 on023')
     args = parser.parse_args()
     clients = args.clients.split(',')
     cooking = len(clients) == 3 and clients[:2] == ['008', '010'] and clients[2].isdigit() and int(clients[2]) >= 11
-    R.require(clients == ['008', '010'] or cooking, 'Predeclared supported comparison arms')
-    R.require(not cooking or args.actor_generation == 22, 'Cooking client requires authentic Actor022')
+    fixed_quality = clients == ['010', '012']
+    R.require(clients == ['008', '010'] or cooking or fixed_quality, 'Predeclared supported comparison arms')
+    R.require((fixed_quality and args.actor_generation == 23)
+              or (not fixed_quality and args.actor_generation in (17, 22)), 'Comparison cohort cannot mix actor generations')
+    R.require(not cooking or args.actor_generation == 22, 'Historical three-arm preparation requires Actor022')
     parent = ROOT/'build/generic-client-responsiveness-comparison'
     parent.mkdir(exist_ok=True)
     number = max([int(p.name) for p in parent.iterdir() if p.is_dir() and p.name.isdigit()] or [0])+1
@@ -352,12 +360,29 @@ def main():
     inputs = {str(path): R.pin(path) for path in [Path(__file__), actor, *binaries.values(), G.JAR,
         Boundary.TABLE, R.Plain.P.OFFICIAL, R.Pixels.VISIBILITY_REFERENCE, *helper_paths,
         Path(helpers['observer']['artifact'])]}
+    builds = {}
     for key, binary in binaries.items():
         if key in KNOWN:
             R.require(inputs[str(binary)]['sha256'] == KNOWN[key], 'Retained renderer identity differs')
         if key != '008':
-            G.client_artifact(binary)
+            value = G.client_artifact(binary)
+            paths = [binary.parent/'build.json', Path(value['source_map']['path']), Path(value['manifest']['path'])]
+            inputs.update({str(path): R.pin(path) for path in paths})
+            builds[key] = {'build_receipt': R.pin(paths[0]), 'source_map': value['source_map'],
+                'manifest': value['manifest'], 'native_command': value['native']['command'],
+                'source_deltas_from_declared_baseline': value['generation_basis']['only_project_source_deltas']}
+            R.require('-O3' in value['native']['command'], 'Retained renderer optimization flags differ')
+            if key == '012':
+                R.require('-fno-stack-check' in value['native']['command'], '012 accepted native stack-check flag missing')
     R.require(inputs[str(actor)]['sha256'] == KNOWN[f'actor{args.actor_generation:03}'], 'Retained actor identity differs')
+    if fixed_quality:
+        receipt = actor.parent/'native-build.json'
+        value = json.loads(receipt.read_bytes())
+        R.require(value['status'] == 'PASS' and value['binary'] == inputs[str(actor)]
+                  and value['generation_basis']['baseline_generation'] == 22
+                  and value['generation_basis']['only_project_source_deltas'] == ['src/remote_resource_backend.bend'],
+                  'Actor023 genuine completed native receipt/cohort mismatch')
+        inputs[str(receipt)] = R.pin(receipt)
     data = fixture()
     (work/'fixture.nbt').write_bytes(data['payload'])
     # ABBA for two arms; balanced positions ABC/BCA/CAB for three arms.
@@ -373,15 +398,16 @@ def main():
         'frames_per_timed_trial': FRAMES, 'predeclared_warmup_frames': WARMUP, 'order': order,
         'fixture': R.pin(work/'fixture.nbt'), 'catalog_sample_sha256': digest(R.canonical(data['catalog'])),
         'legacy_sample_sha256': digest(R.canonical(data['legacy'])), 'menu_sha256': digest(R.canonical(data['authority'])),
-        'inputs': inputs, 'protected012_pid': PROTECTED,
-        'scope': 'Render/composition/Window.frame envelope only; excludes query/resource/menu preparation. Returned CPU images; no drawable readback, OS-input, FPS or whole-game claim.'}
+        'inputs': inputs, 'renderer_builds': builds, 'protected012_pid': PROTECTED,
+        'cohort': 'Fixed-quality010/012 commonActor023' if fixed_quality else 'Historical017/022 preparation;006 image mismatch remains retained',
+        'scope': 'Paused render/composition/Window.frame envelope only; excludes query/resource/menu preparation. Returned CPU images; no drawable readback, OS-input, FPS, active server20TPS, cooking throughput or whole-game claim.'}
     write(work/'preparation.json', preparation)
     if not args.native:
         print(json.dumps({'status': 'PREPARED', 'work': str(work), 'native_launches': 0}))
         return
     report = {'status': 'FAIL', 'preparation': R.pin(work/'preparation.json'), 'prechecks': [], 'trials': []}
     try:
-        if args.actor_generation == 22:
+        if args.actor_generation in (22, 23):
             report['initialized_baseline'] = initialized_baseline(work/'initialized-baseline', actor, data)
         for key in clients:
             row = trial(work/('precheck-'+key), actor, binaries[key], key, data, helpers, True)
@@ -413,6 +439,9 @@ def main():
                 'report': R.pin(work/label/'report.json')})
         for path, expected in inputs.items():
             R.require(R.pin(Path(path)) == expected, 'Comparison input changed: '+path)
+        for key, binary in binaries.items():
+            if key != '008':
+                G.client_artifact(binary)
         report['summary'] = {}
         for key in clients:
             rows = [row for row in report['trials'] if row['client'] == key]

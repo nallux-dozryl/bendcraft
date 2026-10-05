@@ -9,12 +9,14 @@ process cleanup owners. It builds no compiler, actor, renderer or observer.
 
 The first cohort is legacy 008 and Generic 010 against Actor 017. The cooking
 client's initial cooking inspection is absent from 017. The runner also has
-an unexecuted Actor022 cohort preparation path that persists one actual
-initialization for every arm; fresh entity factory entropy must not vary
-between arms. Actor023's timer repair and cooking/public acceptance have
-priority. A later fixed-quality 010/012 comparison must use one accepted
-common actor and its exact binary pin. The public launcher remains the
-delivery owner's separate acceptance target.
+an unexecuted Actor022 cohort preparation path. The current fixed-quality
+010/012 cohort exclusively uses the accepted Actor023 binary, SHA
+`7fd7ee9269802a6e128716f53bf34030ec592728ef954f9b61bebecac36719d1`.
+It persists one actual initialization before all arms; fresh entity factory
+entropy must not vary between arms. Its source basis is frozen022 plus only
+Backend's duplicate pulse lease-charge repair. The runner refuses mixed
+cohorts. Cooking/public acceptance retains priority, and the public launcher
+remains the delivery owner's separate acceptance target.
 
 All native launches are hidden. The existing observer requires unchanged
 frontmost PID, no client activation and no Spaces notification. The protected
@@ -51,6 +53,7 @@ Reproduction with the bundled Python runtime:
 python3 -B tools/generic_client_responsiveness_comparison.py
 python3 -B tools/generic_client_responsiveness_comparison.py --actor-generation 17 --native
 python3 -B tools/generic_client_responsiveness_comparison.py --actor-generation 22 --clients 008,010,012
+python3 -B tools/generic_client_responsiveness_comparison.py --actor-generation 23 --clients 010,012
 ```
 
 Each invocation creates a new numbered directory under
@@ -93,3 +96,21 @@ Client011's bounded emission failed without a binary; the delivery owner's
 substantively repaired client012 is the planned cooking arm. The runner
 authenticates the chosen generation's actual completed build receipt and
 binary rather than relabeling an earlier artifact.
+
+The current023 preparation is attempt007: no native process was launched.
+The [prepared receipt](../evidence/generic-client-responsiveness-comparison-prepared-023.json)
+records the exact pins and launch condition separately from observed006.
+Both010 and012 use retained `-O3` native builds. Client012 additionally uses
+the accepted `-fno-stack-check` invocation; its exact binary SHA is
+`3bd945855c7526f713ed1df03ab89e136429fbc36132f6152ef16fc7a491a232`.
+Build receipts, native command lines, frozen source maps and manifests are
+pinned explicitly. A future observation compares those deployed artifacts;
+it does not isolate the cost of the Bend caller change from native build
+differences. Every actual image and full-state check remains mandatory.
+
+Only after the delivery owner's public groups reap and its foreground
+approval window is pending may the coordinated quiet run add `--native` to
+the023 command. The quiet process gate must still pass at launch and through
+each arm, with protected012 retained. No new build or008 replay is needed.
+This paused drawing comparison does not measure active server20TPS or remedy
+the separately observed67-second two-recipe cooking sequence.
