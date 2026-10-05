@@ -36,3 +36,14 @@ overflow, so no independent kernel claim is made for this generation.
 `evidence/local-player-entity-scene-source-012.json` records the source pass
 separately from that export failure. Actual TCP acceptance belongs to the
 coherent new actor artifact and strict Wire consumer.
+
+Actor022 has now exercised this frozen capture through genuine private TCP
+tag20/reply9. Five full frames matched the independent 384-cell sample and
+the saved two Item records and one XP Orb, including exact interpolation bits
+for 0.5, negative zero and 1. Eight lease/header fault and reacquisition cases
+also passed. Complete 136,449-byte format4 saves before and after the reads
+were identical, retaining RNG, factory and publication fields; the paused
+Core clock was unchanged. The 40.092-second narrow run ended all owned groups.
+`evidence/remote-entity-scene-network-native-004.json` records this acceptance.
+It covers the frozen actor022 capture, not the newer format5 recovery path,
+managed entity ticks, renderer parity or visible client acceptance.
