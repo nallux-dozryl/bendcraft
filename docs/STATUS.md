@@ -1,9 +1,33 @@
 # Status
 
-Target: Minecraft Java 26.3. Compiler: Bend 2.0.35. The full goal remains active
-and incomplete; the current build is a limited integrated client.
+Target: Minecraft Java 26.3. Compiler: Bend 2.0.35. The full goal remains
+incomplete; the current build is a limited integrated client.
 
-Current integration work (2026-10-05): generic renderer009 has passed its full
+Current runnable pair (2026-10-05): actor023 plus cooking client012. Start the
+verified demo with
+`/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/play_minecraft_cooking_demo.sh --width 960 --height 540 --render-scale 100`.
+It creates a fresh unpaused world with a furnace ahead, beef2 and coal2, uses
+HUD scale3, chooses available loopback ports and prints the command for
+reopening that saved world. Add the same window/render settings and
+`--hud-scale 3` to the printed reopen command to retain this presentation.
+The full actual callback flow passes open,
+input/fuel, ambient progress, output into main2, E-close, native close, durable
+save and cold reload with all104 sections,43 cells and physical owners checked.
+The original production binaries then pass the actual public demo shell,
+two complete CPU frames, cooking-aware close/save and full cold restoration.
+The public launcher selects023/012; all test-owned groups/listeners are gone
+and the older actor012 remains running on25565/25566. This is qualified hidden
+and synthetic-callback acceptance. Real OS presentation/input is still
+pending the coordinated foreground question, which has been asked once.
+The recorded two-beef cooking interval is67.009seconds; timing parity remains
+open. Coal and food icons use explicit missing-artwork marks, and XP extraction
+is not established by the output-transfer check. The full game is incomplete.
+See `evidence/generic_resource_world_sample_cooking_runtime_002.json` and
+`evidence/generic_resource_world_sample_cooking_launcher_runtime_001.json`.
+Retained test-driver cleanup/None-versus-zero oracle failures remain separate
+from the successful native stages.
+
+Retained public baseline: generic renderer009 passed its full
 C/native build and the actual actor017 demand-loading consumer. Both 128×128
 frames match all 32,768 independent reference pixels; the complete 104-section,
 43-slot/equipment/status/WG save passes durable publication and cold resave.
@@ -11,7 +35,7 @@ The cold resource load retains the lease using three release-only input
 acknowledgements, with a measured maximum reply gap of 4,113.850 ms under the
 5,000 ms lease. This is an immutable baseline graph plus the verified client
 continuation repair, not the newer publication/entity actor graph. Public
-adoption remains held: a cold grass startup exposed an initial catalog load
+adoption was initially held: a cold grass startup exposed an initial catalog load
 that did not maintain the lease before its first frame. The changed010 graph
 joins the actual catalog worker to bounded transport heartbeats and passes
 its full C/native build. Its actual initial grass case maintains the lease,
@@ -19,13 +43,15 @@ then reaches the explicit missing-tint refusal; the initial EOF case drains
 the worker and closes before creating a window. Positive demand loading,
 all 32,768 reference pixels and complete save/cold restoration also pass.
 Changed public-shell fresh, grass-refusal, capacity-refusal and same-process
-reconnect/save acceptance also passes. The public launcher now selects017/010.
-The new cooking client join is separate work; matched performance against008
-remains open. See
+reconnect/save acceptance also passed. That historical public pair was017/010;
+023/012 supersedes it for the current delivery. The008/010 comparison failed
+image equivalence because010 uses the actual weighted stone UV variants.
+Matched010/012 responsiveness on common023 remains unmeasured. See
 `evidence/generic_resource_world_sample_client_native_009.json` and the actual
 `build/generic-resource-world-sample-demand-runtime/002/result.json`.
 
-Cooking delivery now uses accepted actor022. The coherent010 plus Generic
+Cooking delivery now uses actor023, retaining022 as its accepted baseline.
+The coherent010 plus Generic
 caller passes the original full5812-declaration check and selected new sender
 capture measurement. Client011 then hits its unchanged600-second producer
 limit in the historical block-model integer scanner, before producing C.
@@ -36,19 +62,45 @@ fails in56.296seconds with a stack-probe/register-clobber error. A native-only
 O3 `-fno-stack-check` build of the unchanged C then passes in105.047seconds,
 producing renderer012,6,986,328bytes, SHA-256
 `3bd945855c7526f713ed1df03ab89e136429fbc36132f6152ef16fc7a491a232`.
-The full callback cooking consumer is still pending; public017/010 remains
-selected. Real opened/input/fuel/partial-progress frames are observed. Ambient
+The initial callback cooking consumer remains a retained negative. Real
+opened/input/fuel/partial-progress frames are observed. Ambient
 run009 reaches cooked_beef2 and pins its complete960×540 CPU frame at90.401s,
 then rejects correctly correlated next private sequence99 after accepting98,
 before output pickup. This also occurs without the earlier test pause, so the
 pause-specific explanation is insufficient. The real renderer lease is
-inactive; queued timer catch-up is the source-supported cause under diagnosis,
+inactive; duplicate pulse-budget charging during queued timer catch-up is the
+source-supported cause,
 not an independently observed internal queue trace. All009-owned groups reap.
-A required narrow timer/lease repair now precedes the same full consumer and
-public promotion. No output/close/save/cold success is inferred from009.
+A narrow timer/lease repair removes duplicate runtime pulse-budget charging;
+the existing monotonic socket timeout remains the inactivity authority and
+every Scene pulse is preserved. Coherent023 changes only Backend in the same
+208-file map, with all five runtime facts unchanged. Its original full source
+check passes in14.511s; C emission passes in331.010s and O3 native compilation
+in206.499s. The actual16,246,584-byte actor has SHA-256
+`7fd7ee9269802a6e128716f53bf34030ec592728ef954f9b61bebecac36719d1`.
+Real idle EOF at5.008s, EOF/reacquisition, epoch isolation,12-second heartbeat
+continuation and replay/skipped-sequence release checks pass. Their controller
+observations are actual scheduled Receiver ticks, not OS held-input evidence.
+Callback010 then takes cooked_beef2 into main2, E-closes and native-closes with
+all replies accepted, painting the closed scene at105.310s. Its final oracle
+incorrectly assumed the first fuel was still burning; actualtick1744/unlit
+revision3 is retained. Corrected-host011 admits fuel exhaustion and its exact
+tick1601 event/publication. Actual011 passes the complete full-owner durable
+save/cold checks and all nine callback batches. Its outer duplicate Relay
+receipt-write failure is retained; post-exit verification confirms all three
+owned groups and five listeners absent without another gameplay replay.
+No output/close/save/cold success is inferred from009. Original public001
+then passes two frames, real cooking-aware close/durable save and complete
+cold restoration. Two host max_peer=0 expectations are corrected to the
+actual seededNone; no original public-shell replay is used. Initial default
+world hashes were not persisted, so no before/after byte-equality claim is
+made for them. The actual unique save path and protected old actor are verified.
 See `evidence/generic_resource_world_sample_cooking_build.json`.
 The retained callback attempts and validated unpaused demo seed are in
 `evidence/generic_resource_world_sample_cooking_runtime_001.json`.
+The changed actor and actual socket evidence are in
+`evidence/playable-client-actor004-build-023.json` and
+`evidence/renderer-lease-elapsed-native-001.json`.
 Root shutdown acceptance passes
 actual cooking Inspect/Close, carried return, full-inventory refusal retaining
 the old save and same actor, reconnect/recovery, and the already-closed route.
@@ -57,8 +109,8 @@ accepted Close, real carried-item return, incarnation3→4 and complete durable
 save reconstruction. The initial stale test's ordered-body oracle failure is
 retained: recreation appends the target after unchanged entries. See
 `evidence/playable-client-cooking-close-native-001.json`, `-002.json` and
-`-003.json`. The historical user actor occupies both25565/25566; public
-adoption will choose free default loopback ports and supply a separate demo
+`-003.json`. The historical user actor occupies both25565/25566; the public
+launcher chooses free default loopback ports and supplies a separate demo
 save. Foreground OS input and matched responsiveness remain unverified.
 
 Frozen actor021 joins captured cooking Dirty sources, an authenticated live
@@ -88,8 +140,9 @@ sequence4 to5; legacy and stale queued sources preserve their full ordered
 suffix on refusal. Each save increments the peer session exactly once.
 The nonzero pending capture is UNOBSERVED because the actual50ms pulse won;
 no crash-during-unfinished-write or direct live dirty-flag observation is
-claimed. Client cooking controls and the changed playable pair remain the
-next integration work. Only a typed receipt from actual durable publication may clean the
+claimed. The current023/012 cooking controls and public delivery are verified
+above; independent OS acceptance remains pending. Only a typed receipt from
+actual durable publication may clean the
 live journal. A pulse may consume pending effects before a save; a nonzero
 pending capture is an observation, never an assumed scheduling guarantee.
 See `evidence/local-player-cooking-publication-codec-native-002.json`,
