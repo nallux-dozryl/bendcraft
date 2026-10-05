@@ -125,3 +125,20 @@ emitted 33,176 and 31,449 lines respectively. These measured subsets motivate a
 first-order scanner candidate; they do not attribute the entire deadline failure
 or demonstrate a candidate benefit. The configured bound was not raised and
 the unchanged frozen005 graph will not be retried.
+
+The admitted first-order numeric scanner change was adopted only after both
+complete native model/state harnesses matched the cached original Java corpus
+and exact prior bounded refusals. Their generated C was smaller by 24.20% and
+28.26%; historical emission was slower, so this is not an emission-speed claim.
+Fresh frozen generic006 then completed all seven ownership passes in 416.213
+seconds and failed the final compiler guard with `an arity over 247`. Its bounded
+producer returned 1 after 421.714 seconds, without a timeout, complete C or native
+start. All 147 source/foreign pins were unchanged and its process group was absent.
+The guard rejects either a live segment with more than 247 parameters or a
+constructor layout whose encoded arity exceeds 255. The actual offending segment
+or constructor is not recorded by this existing diagnostic producer, so assigning
+the failure to a specific owner is still a hypothesis. The next change must
+reduce that concrete production layout; the immutable006 graph will not be
+retried unchanged, and the compiler ABI limit will not be raised. Source and
+scanner acceptance still do not establish actual heartbeat delivery. The public
+launcher remains the independently verified Actor017/Renderer008 pair.
