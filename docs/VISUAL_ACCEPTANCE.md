@@ -84,7 +84,7 @@ Its source map is SHA-256
 `95acf6a8c10c4f0eca5c696ef9126a5bfc27cdec36806288147714e2510835db`,
 recorded in [the native build receipt](../evidence/playable-client-actor004-build-022.json).
 Its earlier bounded consumers remain valid, but the normal ambient cooking
-caller now exposes a required lease defect: callback run009 accepted sequence
+caller exposed a required lease defect: callback run009 accepted sequence
 98 with two cooked beef, then refused the correct next sequence 99 Input before
 the output take. The run used normal ambient ticks with no host pause. Full CPU
 frame 28 is retained at 90.4008217 seconds; it is not an OS screenshot or a
@@ -117,9 +117,11 @@ Actual ambient callback run011 completed the full functional cooking flow,
 durable save and cold stage with this 023/012 pair. Its observer ran for
 107.234 seconds without a focus or Space change. This is **synthetic UI
 consumer evidence only**. The outer duplicate-relay-receipt cleanup failed;
-that failure is retained and owner-journal finalization is underway. Preserve
-that completed stage and failure without replaying the functional run. Neither
-complete outer-run success nor OS acceptance is claimed.
+that original failure is retained and cleanup was finalized without new
+gameplay or compiler runs, as recorded in the
+[retained callback receipt](../evidence/generic_resource_world_sample_cooking_runtime_002.json).
+The original outer run is not relabelled a success. There is no OS acceptance
+claim.
 
 Material timing remains unresolved: two recipes with 200 cooking ticks each
 took **67.009 seconds** in the actual callback run. This is substantially slower
@@ -127,19 +129,30 @@ than the intended simulation cadence. Do not report achieved 20 TPS or a
 20-second cooking flow for this artifact. Record wall time and actual tick/
 progress observations separately; timing parity remains open.
 
-The original-binary public launcher acceptance is the next delivery check.
-Its final public launcher/fixture/close-route pins and result must be recorded
-here or in the linked session record after actual adoption. Historical
-actor017/client010 public launch receipts do not certify this pair. The
-test-only native callback queue is a separate hidden consumer method, not an
-OS keyboard/mouse input surface. Catalog's new
-`tools/play_minecraft_cooking_demo.sh` is guarded until actual pair promotion
-and will copy the validated demo seed into a new world directory, protecting
-old saves. Public promotion remains pending; root will coordinate foreground
-access only after the actual public result. There is no OS acceptance claim.
+The **original-binary public launcher run001 passed** with this actor023 and
+production client012, recorded in the
+[public launcher receipt](../evidence/generic_resource_world_sample_cooking_launcher_runtime_001.json).
+It produced two complete 960 by 540 CPU frames, performed actual close/save at
+peer high-water 42, cold-loaded and independently reconstructed all 104
+sections, all 43 durable inventory cells, raw status, world-generation settings,
+furnace bodies, effects, entity and publication owners, then saved at high-water
+44. Its own process groups and listeners were absent after cleanup; the old
+baseline was preserved. The source-None/max-peer oracle negatives are retained,
+and the public shell run was not replayed. CPU frames and the test-only native
+callback queue remain separate from actual OS presentation/input evidence.
+
+The adopted public launcher `tools/play_minecraft.sh` is 6,490 bytes, SHA-256
+`6c69f6999554e43e205e87c04d72cf664dc27e8690e4fc3aee905ca4fe1e45c0`.
+The cooking demo `tools/play_minecraft_cooking_demo.sh` is 1,695 bytes, SHA-256
+`4542830092ac941bb231817e5c1f80d4f83b88993b8e7abaab7e5bb8f0f7cc2c`.
+The demo validates the actual pair and seed, copies the seed into a new
+world directory with a permission-0600 save, and prints its unique saved-world
+reopen command. That protects older saves. These pins and the public run make
+the prepared foreground scenario concrete; they do not establish its OS
+acceptance.
 
 The validated unpaused demo seed is
-`build/generic-resource-world-sample-cooking-runtime/009/demo-seed.nbt`,
+`build/generic-resource-world-sample-cooking-runtime/011/demo-seed.nbt`,
 1,712,794 bytes, SHA-256
 `e88e15ab0267beb9fea4ad55c9b9b7cd3cca27eea0cf5a3cc6d7b59a2ad1b859`.
 Compared with its controlled source seed, only the Core.paused byte at offset
@@ -147,6 +160,20 @@ Compared with its controlled source seed, only the Core.paused byte at offset
 cells and furnace owners are retained. This is the initial demo image, not a
 successful cooking-run save. The paused controlled seed is not a substitute
 for it.
+
+The prepared human launch command is the following. It is **not executed by this
+preparation**; foreground coordination remains required:
+
+```sh
+BEND_MINECRAFT_LAUNCH_MODE=human \
+  /Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/play_minecraft_cooking_demo.sh \
+  --width 960 --height 540 --render-scale 100
+```
+
+HUD scale 3 is already the demo's default. Retain its printed new save path and
+reopen command. For step 10, reopen that saved world with the printed public
+launcher route and the same display options, including `--hud-scale 3`; do not
+run the demo again, which creates a fresh world instead of reloading the save.
 
 Prepare the candidate and its exclusive disposable world before asking for
 foreground access. Reuse the verified binaries and the existing launcher and
@@ -170,7 +197,8 @@ and mouse input, briefly switch away to test release, then close and reopen it
 on the same save. Request **up to ten minutes** of coordinated foreground use
 for both launches, the cooking sequence and cleanup. This is a planning budget,
 not a measured runtime. Return to the previous foreground application at the
-end. Request this once, only when the pinned pair and fixture are ready; no
+end. Root has now asked for this single coordinated foreground session and the
+response is pending. Do not treat elapsed time as an answer or approval. No
 window, input, focus or Space action was performed while preparing this section.
 
 Use **`cua_repl` for all agent-operated UI interactions** in the coordinated
@@ -197,9 +225,9 @@ at it. Catalog's prepared GUI fixture has the empty unlit overworld furnace at
 z 6..13. The furnace collision/light scan halo is resident. Main inventory
 slots 0/1 contain two plain `minecraft:beef` and two plain `minecraft:coal`,
 which appear as cooking menu cells 30/31. Empty cells remain for returns and
-output. These fixture facts are pinned by the unpaused demo image above;
-final public adoption and outer-run finalization remain pending. Do not
-silently substitute the paused publication fixture.
+output. These fixture facts are pinned by the unpaused demo image above and
+retained through the accepted original public run. Visible OS acceptance
+remains pending. Do not silently substitute the paused publication fixture.
 Setup is fixture preparation, not an observed world edit or acquisition of
 those items.
 The furnace body must use the normal initialized recipe/speed profile with no
