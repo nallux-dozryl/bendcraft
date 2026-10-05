@@ -156,7 +156,8 @@ def correlated(relay, data, *, pairs=2):
             require(command == [2] and reply == [1, 2, epoch, request[3]], 'Unexpected hidden command')
     require(epoch is not None and pending is None and len(observations) == pairs,
             'Complete actual sample/menu pairs')
-    require(observations[0]['load_heartbeat_sequences'] and not observations[1]['load_heartbeat_sequences'],
+    require(observations[0]['load_heartbeat_sequences'] and
+            (pairs == 1 or not observations[1]['load_heartbeat_sequences']),
             'Only actual cold demand may schedule heartbeats; warm frame stays direct')
     cold = observations[0]
     require(cold['sample_to_menu_milliseconds'] < 1000 or
@@ -295,12 +296,12 @@ def native(binary, actor_generation, generation):
                 G.sweep_owned(directory)
 
 
-def disconnect_native(binary, actor_generation, generation):
+def disconnect_native(binary, actor_generation, generation, *, initial=False):
     actor_work = ROOT/'build'/f'compiler-producer-diagnostic-{actor_generation:03d}'
     selected = {'WORK': actor_work, 'SOURCE': actor_work/'source', 'ACTOR': actor_work/'actor'}
     with G.Host.bindings(G.Boundary.A, selected), G.Host.bindings(G, {'CLIENT': Path(binary)}):
         data, _, prepared = G.prepare()
-    data = demand_fixture(data)
+    data = data if initial else demand_fixture(data)
     client = G.client_artifact(binary)
     directory = ROOT/'build/generic-resource-world-sample-demand-runtime'/f'{generation:03d}'
     directory.mkdir(parents=True, exist_ok=False)
@@ -325,9 +326,11 @@ def disconnect_native(binary, actor_generation, generation):
                     and canonical(relay.records[1]['reply'][4]) == canonical(data['sample'])
                     and relay.cut['sequence'] == 3, 'Actual sample then immediate and recurring Pending heartbeats')
             output = renderer.out.read_text()
-            require(output.splitlines() == ['catalog.demand|12|13|minecraft:furnace'],
-                    'Authentic worker result must publish after Pending disconnect and before ordinary refusal')
-            require(renderer.err.read_text().strip() == 'inventory query: Wire:ReceiveClosedFailedOrTimedOut'
+            expected_output = [] if initial else ['catalog.demand|12|13|minecraft:furnace']
+            require(output.splitlines() == expected_output,
+                    'Initial completion must close before Window open; later demand completion must publish before refusal')
+            expected_error = ('resource loading: ' if initial else 'inventory query: ') + 'Wire:ReceiveClosedFailedOrTimedOut'
+            require(renderer.err.read_text().strip() == expected_error
                     and not list(renderer.images.iterdir()), 'Expected network refusal without a presented frame')
             # A fresh authenticated owner must see the exact complete authority.
             # Renderer exit follows actual Completed receive/close/drain and
@@ -346,17 +349,18 @@ def disconnect_native(binary, actor_generation, generation):
                                        data['full'],'',directory,'exact-typed-disconnect-save')
             require(G.client_artifact(binary) == client and G.Boundary.artifact() == actor_artifact,
                     'Admitted negative native artifacts changed')
-            record = {'schema':'generic-resource-demand-disconnect-v1','status':'PASS',
+            record = {'schema':'generic-resource-initial-disconnect-v1' if initial else 'generic-resource-demand-disconnect-v1','status':'PASS',
                 'client':client['binary'],'actor':actor_artifact['binary'],'actor_generation':actor_generation,
                 'intentional_cut':relay.cut,'traffic':traffic_pin,'observer':observation,
                 'authentic_worker_publication':output.strip(),'network_refusal':renderer.err.read_text().strip(),
                 'presented_frames':0,'full_sample_and_menu_after_lease_reacquisition':True,
                 'durable_bytes_unchanged_until_explicit_save':True,'typed_save':saved,
-                'scope':'Actual network cut during Pending furnace load. Authentic worker completion/publication precedes ordinary refusal and native process exit, exercising pinned Completed/close/drain/owner-close control flow.',
+                'scope': ('Actual network cut during initial Registry/catalog load. Native exit follows authentic worker completion, closed-channel drain and complete outcome closure before any Window opens.' if initial else
+                          'Actual network cut during Pending furnace load. Authentic worker completion/publication precedes ordinary refusal and native process exit, exercising pinned Completed/close/drain/owner-close control flow.'),
                 'limits':['No independently exposed live-channel/heap census; completion and disposal control flow, not zero allocated-row telemetry.',
                           'No rendered pixels or visible-input claim in this negative case.']}
             G.exclusive(directory/'result.json',record)
-            print(json.dumps({'status':'PASS','scenario':'Pending disconnect','result':str(directory/'result.json')}))
+            print(json.dumps({'status':'PASS','scenario':'Initial disconnect' if initial else 'Pending disconnect','result':str(directory/'result.json')}))
         except BaseException as error:
             G.exclusive(directory/'first-failure.json',{'status':'failed','type':type(error).__name__,
                 'message':str(error),'notes':getattr(error,'__notes__',[]),'native_consumer_run':True})
@@ -371,10 +375,73 @@ def disconnect_native(binary, actor_generation, generation):
             G.sweep_owned(directory)
 
 
+def initial_grass_native(binary, actor_generation, generation):
+    actor_work = ROOT/'build'/f'compiler-producer-diagnostic-{actor_generation:03d}'
+    selected = {'WORK': actor_work, 'SOURCE': actor_work/'source', 'ACTOR': actor_work/'actor'}
+    with G.Host.bindings(G.Boundary.A, selected), G.Host.bindings(G, {'CLIENT': Path(binary)}):
+        data, _, prepared = G.prepare()
+    G.S.BASE.set_block(data['world'], -1, -60, 0, 9)
+    data['world']['revision'] += 1
+    data['sample'] = G.expected_sample(data['world'], data['record'])
+    data['payload'] = G.Boundary.bundle(data['world'], 40, data['record'], data['full'], '')
+    client = G.client_artifact(binary)
+    directory = ROOT/'build/generic-resource-world-sample-demand-runtime'/f'{generation:03d}'
+    directory.mkdir(parents=True, exist_ok=False)
+    G.exclusive(directory/'preparation.json', prepared)
+    G.exclusive(directory/'expected-sample.json', data['sample'])
+    path = directory/'world.nbt';path.write_bytes(data['payload'])
+    with G.Host.bindings(G.Boundary.A, selected), G.Host.bindings(G.Pair, {'WORK': directory}), \
+         G.Host.bindings(G.R, {'WORK': directory, 'GROUPS': directory/'owned-groups.ndjson'}):
+        actor_artifact = G.Boundary.artifact()
+        actor = relay = renderer = None
+        try:
+            actor = G.backend(G.Boundary.A.ACTOR, 'backend-initial-grass', path)
+            raw, ping = actor.tcp(True)
+            require(ping['peer'] == 42, 'Actual complete saved grass owner')
+            relay = DemandRelay(actor, 'relay-initial-grass')
+            renderer = DemandRenderer(Path(binary), relay, 'renderer-initial-grass', prepared['helpers'])
+            observation = renderer.finish_generic(status=1, markers=1)
+            traffic, traffic_pin = relay.finish()
+            pairs = correlated(traffic, data, pairs=1)
+            require(renderer.err.read_text().strip() == 'render: WorldMesh:MissingTint:world:9'
+                    and not list(renderer.images.iterdir()), 'Loaded grass must reach actual absent-tint refusal after a healthy initial lease')
+            require(not any(v.startswith('catalog.demand|') for v in renderer.out.read_text().splitlines()),
+                    'Static-profile grass must already be admitted; no unrelated family publication')
+            G.S.inspect(raw, data['record'])
+            require(raw.call('world.clock') == G.S.P.clock(data['world']) and path.read_bytes() == data['payload'],
+                    'Tint refusal mutated simulation or durable owner')
+            saved, receipt = G.Boundary.saved(raw, path, data['world'], ping['peer'], data['record'],
+                                             data['full'], '', directory, 'exact-typed-grass-save')
+            G.R.finish_backend(actor);actor = None
+            reload = G.reload_lane(G.Boundary.A.ACTOR, directory, path, data, saved)
+            require(G.client_artifact(binary) == client and G.Boundary.artifact() == actor_artifact,
+                    'Actual initial refusal artifacts changed')
+            record = {'schema':'generic-resource-initial-grass-v1','status':'PASS',
+                'client':client['binary'],'actor':actor_artifact['binary'],'actor_generation':actor_generation,
+                'observer':observation,'traffic':traffic_pin,'sample_menu_pairs':pairs,
+                'refusal':'render: WorldMesh:MissingTint:world:9','presented_frames':0,
+                'typed_save':receipt,'cold_reload':reload,
+                'scope':'Actual initial cold loading renews the sole private lease, then loaded grass refuses its absent tint; no fabricated tint or presented frame.'}
+            G.exclusive(directory/'result.json', record)
+            print(json.dumps({'status':'PASS','scenario':'Initial grass tint refusal','result':str(directory/'result.json')}))
+        except BaseException as error:
+            G.exclusive(directory/'first-failure.json',{'status':'failed','type':type(error).__name__,
+                'message':str(error),'notes':getattr(error,'__notes__',[]),'native_consumer_run':True})
+            raise
+        finally:
+            actions = []
+            if renderer is not None:actions.append(('renderer', renderer.cleanup))
+            if relay is not None and relay.thread.is_alive():actions.append(('relay',lambda:relay.finish(failed=True)))
+            if actor is not None:actions.append(('backend',lambda:G.R.finish_backend(actor)))
+            G.finish_owned(actions,directory/'owners-cleanup-secondary.json');G.sweep_owned(directory)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--native', action='store_true')
-    parser.add_argument('--disconnect', action='store_true', help='Real Pending socket failure; no altered resource/simulation bytes')
+    parser.add_argument('--disconnect', action='store_true', help='Historical009 later-demand socket cut;010 uses --initial-disconnect')
+    parser.add_argument('--initial-disconnect', action='store_true', help='Real socket EOF during initial cold Registry/catalog loading')
+    parser.add_argument('--initial-grass', action='store_true', help='Loaded grass refuses absent tint after actual initial lease renewal')
     parser.add_argument('--client', type=Path)
     parser.add_argument('--actor-generation', type=int)
     parser.add_argument('--generation', type=int, default=1)
@@ -382,10 +449,17 @@ def main():
     if args.native:
         require(args.client is not None and args.actor_generation is not None,
                 'Native demand requires an explicit completed client and actor generation')
-        runner = disconnect_native if args.disconnect else native
-        runner(args.client.resolve(), args.actor_generation, args.generation)
+        require(sum(map(bool,[args.disconnect,args.initial_disconnect,args.initial_grass])) <= 1, 'Choose one actual native scenario')
+        if args.disconnect:
+            require(pin(args.client)['sha256'] == '17e93095938731a1df4f8d94de56b0524477d5bfa239ed845e829145ec9c2b0a',
+                    'The historical later-demand cut targets009;010 heartbeats start during initial loading')
+        if args.initial_disconnect:
+            disconnect_native(args.client.resolve(),args.actor_generation,args.generation,initial=True)
+        else:
+            runner = initial_grass_native if args.initial_grass else disconnect_native if args.disconnect else native
+            runner(args.client.resolve(), args.actor_generation, args.generation)
     else:
-        require(not args.disconnect, 'Disconnect requires explicit native artifacts')
+        require(not (args.disconnect or args.initial_disconnect or args.initial_grass), 'Changed scenarios require explicit native artifacts')
         print(json.dumps(original_furnace(), sort_keys=True, indent=2))
 
 

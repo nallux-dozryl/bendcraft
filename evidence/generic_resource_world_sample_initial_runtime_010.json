@@ -1,0 +1,321 @@
+{
+  "actor": {
+    "bytes": 9711976,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-017/actor",
+    "sha256": "66bbe97279f8ee268d891ad762d5da40337e1c318d09160e415823e25d4d8bd5"
+  },
+  "actor_generation": 17,
+  "cleanup": {
+    "4": {
+      "errors": [],
+      "receipt": {
+        "bytes": 1578,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-demand-runtime/004/owned-groups-cleanup.json",
+        "sha256": "8163f7c042fb7264b8aad0e56ba7f0cb2fe4d98f79ae735bb6203bb93c767ea3"
+      },
+      "registered_groups": 3,
+      "remaining_processes": 0
+    },
+    "5": {
+      "errors": [],
+      "receipt": {
+        "bytes": 1594,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-demand-runtime/005/owned-groups-cleanup.json",
+        "sha256": "3bbc075f7c764717068cb9d9d8463a2001bd2bdd62e2cbebd37b13648bcf23a7"
+      },
+      "registered_groups": 3,
+      "remaining_processes": 0
+    },
+    "6": {
+      "errors": [],
+      "receipt": {
+        "bytes": 1219,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-demand-runtime/006/owned-groups-cleanup.json",
+        "sha256": "5c29ea9ed21e8d69ca7eb6a27f711e6062c6837e8a4f9fb036ae5903fcc92175"
+      },
+      "registered_groups": 2,
+      "remaining_processes": 0
+    }
+  },
+  "client": {
+    "bytes": 6226456,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/010/renderer",
+    "sha256": "c6a861ae04a4de8f918912149ff8ead4e92dfe16d581a7ca2f97983ff9cf3f94"
+  },
+  "commands": {
+    "demand": "python3 tools/generic_resource_world_sample_demand_runtime.py --native --actor-generation 17 --client build/generic-resource-world-sample-client-native/010/renderer --generation 4",
+    "grass": "python3 tools/generic_resource_world_sample_demand_runtime.py --native --initial-grass --actor-generation 17 --client build/generic-resource-world-sample-client-native/010/renderer --generation 5",
+    "initial_EOF": "python3 tools/generic_resource_world_sample_demand_runtime.py --native --initial-disconnect --actor-generation 17 --client build/generic-resource-world-sample-client-native/010/renderer --generation 6"
+  },
+  "demand": {
+    "OS_observer": {
+      "activation_notification_pids": [],
+      "after_frontmost_pid": 58600,
+      "before_frontmost_pid": 58600,
+      "child_pid": 64805,
+      "child_status": 0,
+      "cleanup": {
+        "after": [],
+        "before": [],
+        "errors": [],
+        "leader_reaped": true,
+        "live_group_absent": true,
+        "seconds": 0.10878112446516752
+      },
+      "drawable_readback": false,
+      "elapsed_seconds": 8.796563982963562,
+      "frame_descriptions": 0,
+      "same_returned_cpu_image": true,
+      "sampled_frontmost_pids": [
+        58600
+      ],
+      "samples": 317,
+      "space_change_notifications": 0,
+      "timed_out": false
+    },
+    "cold": {
+      "all_cells": 512,
+      "heartbeat_reply_offsets_milliseconds": [
+        26.091334,
+        1487.987667,
+        2895.893334,
+        4126.692792,
+        5478.986292,
+        7083.516417
+      ],
+      "load_heartbeat_sequences": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "maximum_observed_reply_gap_milliseconds": 1604.530125,
+      "menu_sequence": 8,
+      "menu_sha256": "a6581b4a57364f4ed523612edf018ac52a2b3aaadc73c2c14a97f72905a8c5d1",
+      "sample_sequence": 1,
+      "sample_sha256": "55d394ac836b0ea10bf5d585b673ea5cc8c7211c220e45be282d8fbc69983d69",
+      "sample_to_menu_milliseconds": 7349.233709,
+      "scope": "Reply observations; cooperative timer scheduling is not a fixed-interval guarantee."
+    },
+    "cold_reload": {
+      "receipt": {
+        "actual_sha256": "53c24d08ae8fecaaaf6d0183d90bf4a78db1a37afc3891e5d061f22b379c6c91",
+        "bytes": 1712616,
+        "expected_sha256": "53c24d08ae8fecaaaf6d0183d90bf4a78db1a37afc3891e5d061f22b379c6c91",
+        "label": "exact-typed-reloaded-save",
+        "reply": {
+          "bytes": 1712616,
+          "durable": true,
+          "peer_highwater": 44,
+          "published": true,
+          "status": "durable"
+        }
+      },
+      "sample_cells": 512,
+      "status": "exact_typed_cold_reload"
+    },
+    "compared_pixels": 32768,
+    "family_states": [
+      6883,
+      6884,
+      6885,
+      6886,
+      6887,
+      6888,
+      6889,
+      6890
+    ],
+    "frames": 2,
+    "full_RGB_exact": true,
+    "publication": [
+      "catalog.demand|12|13|minecraft:furnace"
+    ],
+    "receipt": {
+      "bytes": 5957,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-demand-runtime/004/result.json",
+      "sha256": "6b81be9b18a5566ed0c57bbaff2bf2a8b26ae90fd5c1b53ee50b2e484f66ddd5"
+    },
+    "typed_save": {
+      "actual_sha256": "b7720c5bd82397a5b2238e5613c9b6eaf3aa374caafea83dd6cd8d5d7a59d93b",
+      "bytes": 1712616,
+      "expected_sha256": "b7720c5bd82397a5b2238e5613c9b6eaf3aa374caafea83dd6cd8d5d7a59d93b",
+      "label": "exact-typed-save",
+      "reply": {
+        "bytes": 1712616,
+        "durable": true,
+        "peer_highwater": 42,
+        "published": true,
+        "status": "durable"
+      }
+    },
+    "warm": {
+      "all_cells": 512,
+      "heartbeat_reply_offsets_milliseconds": [],
+      "load_heartbeat_sequences": [],
+      "maximum_observed_reply_gap_milliseconds": 32.937542,
+      "menu_sequence": 11,
+      "menu_sha256": "a6581b4a57364f4ed523612edf018ac52a2b3aaadc73c2c14a97f72905a8c5d1",
+      "sample_sequence": 10,
+      "sample_sha256": "55d394ac836b0ea10bf5d585b673ea5cc8c7211c220e45be282d8fbc69983d69",
+      "sample_to_menu_milliseconds": 32.937542,
+      "scope": "Reply observations; cooperative timer scheduling is not a fixed-interval guarantee."
+    }
+  },
+  "initial_EOF": {
+    "OS_observer": {
+      "activation_notification_pids": [],
+      "after_frontmost_pid": 58600,
+      "before_frontmost_pid": 58600,
+      "child_pid": 66508,
+      "child_status": 1,
+      "cleanup": {
+        "after": [],
+        "before": [],
+        "errors": [],
+        "leader_reaped": true,
+        "live_group_absent": true,
+        "seconds": 0.11934195924550295
+      },
+      "drawable_readback": false,
+      "elapsed_seconds": 5.477095007896423,
+      "frame_descriptions": 0,
+      "same_returned_cpu_image": true,
+      "sampled_frontmost_pids": [
+        58600
+      ],
+      "samples": 199,
+      "space_change_notifications": 0,
+      "timed_out": false
+    },
+    "authentic_worker_publication": "",
+    "cut_sequence": 3,
+    "durable_bytes_unchanged_until_explicit_save": true,
+    "full_sample_and_menu_after_lease_reacquisition": true,
+    "network_refusal": "resource loading: Wire:ReceiveClosedFailedOrTimedOut",
+    "presented_frames": 0,
+    "receipt": {
+      "bytes": 2859,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-demand-runtime/006/result.json",
+      "sha256": "ad8250216b4c13e84356c34b233121acefdc01fa3dec70fe2ed87b95181eb3d4"
+    },
+    "scope": "Actual network cut during initial Registry/catalog load. Native exit follows authentic worker completion, closed-channel drain and complete outcome closure before any Window opens.",
+    "typed_save": {
+      "actual_sha256": "75bc2e770e74093d9ac1faf625d811643201ab443e1f744f1f4e4d08d8d0d719",
+      "bytes": 1712616,
+      "expected_sha256": "75bc2e770e74093d9ac1faf625d811643201ab443e1f744f1f4e4d08d8d0d719",
+      "label": "exact-typed-disconnect-save",
+      "reply": {
+        "bytes": 1712616,
+        "durable": true,
+        "peer_highwater": 42,
+        "published": true,
+        "status": "durable"
+      }
+    }
+  },
+  "limits": [
+    "Furnace contributes no visible pixels in this case; exact prior visible pixels verify coherent texture replacement.",
+    "No Java furnace baked-geometry, positionRandom, full-light, drawable or visible-input claim.",
+    "Other material, tint, animation and special-renderer requirements remain named admission failures.",
+    "Cooperative heartbeat observations do not establish a fixed500ms interval.",
+    "Native EOF completion exercises returned-outcome closure and channel drain; no independent heap/channel census or every scheduling interleaving.",
+    "Initial owner laws are authored separately; no new kernel verdict is claimed here.",
+    "Actor017/immutable010 baseline excludes current cooking/publication/entity/light joins."
+  ],
+  "native_consumer_run": true,
+  "original_initial_grass_counterexample": {
+    "OS_observer": {
+      "activation_notification_pids": [],
+      "after_frontmost_pid": 58600,
+      "before_frontmost_pid": 58600,
+      "child_pid": 65643,
+      "child_status": 1,
+      "cleanup": {
+        "after": [],
+        "before": [],
+        "errors": [],
+        "leader_reaped": true,
+        "live_group_absent": true,
+        "seconds": 0.13512629177421331
+      },
+      "drawable_readback": false,
+      "elapsed_seconds": 4.502599000930786,
+      "frame_descriptions": 0,
+      "same_returned_cpu_image": true,
+      "sampled_frontmost_pids": [
+        58600
+      ],
+      "samples": 162,
+      "space_change_notifications": 0,
+      "timed_out": false
+    },
+    "Window_frame_timings": [],
+    "catalog_markers": 1,
+    "changed_receipt": {
+      "bytes": 3544,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-demand-runtime/005/result.json",
+      "sha256": "ce96af32fe2bbbbe8c70acdc886951694d3bb579cd650d82e3ff628220c0e5ef"
+    },
+    "cold_reload": {
+      "receipt": {
+        "actual_sha256": "1831904a17b1c17883d64a54e115d2cd69d9af77014f996ffcd4f55b4547b861",
+        "bytes": 1712616,
+        "expected_sha256": "1831904a17b1c17883d64a54e115d2cd69d9af77014f996ffcd4f55b4547b861",
+        "label": "exact-typed-reloaded-save",
+        "reply": {
+          "bytes": 1712616,
+          "durable": true,
+          "peer_highwater": 44,
+          "published": true,
+          "status": "durable"
+        }
+      },
+      "sample_cells": 512,
+      "status": "exact_typed_cold_reload"
+    },
+    "initial_sample_menu": {
+      "all_cells": 512,
+      "heartbeat_reply_offsets_milliseconds": [
+        19.641541,
+        1499.29375,
+        3065.789125
+      ],
+      "load_heartbeat_sequences": [
+        2,
+        3,
+        4
+      ],
+      "maximum_observed_reply_gap_milliseconds": 1566.495375,
+      "menu_sequence": 5,
+      "menu_sha256": "a6581b4a57364f4ed523612edf018ac52a2b3aaadc73c2c14a97f72905a8c5d1",
+      "sample_sequence": 1,
+      "sample_sha256": "edcbe324c8d4fd0c27d2326b8039e4735e892b0ba8015e28fb8469704305a5a5",
+      "sample_to_menu_milliseconds": 4154.539208,
+      "scope": "Reply observations; cooperative timer scheduling is not a fixed-interval guarantee."
+    },
+    "presented_frames": 0,
+    "receipt": {
+      "bytes": 3323,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/generic_resource_world_sample_launcher_initial_load_failure_001.json",
+      "sha256": "44bfbee3cb937b253df75ad307cd4c72745fc99d9c5b4ba9e8979b6711dc4e66"
+    },
+    "refusal": "render: WorldMesh:MissingTint:world:9",
+    "typed_save": {
+      "actual_sha256": "41c6bd868a23bb22b342943e1989b290ec30b34865db31e44d31d91f1930c951",
+      "bytes": 1712616,
+      "expected_sha256": "41c6bd868a23bb22b342943e1989b290ec30b34865db31e44d31d91f1930c951",
+      "label": "exact-typed-grass-save",
+      "reply": {
+        "bytes": 1712616,
+        "durable": true,
+        "peer_highwater": 42,
+        "published": true,
+        "status": "durable"
+      }
+    }
+  },
+  "schema": "generic-resource-initial-and-demand-runtime-v1",
+  "status": "PASS"
+}

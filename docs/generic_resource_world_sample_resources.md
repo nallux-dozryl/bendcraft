@@ -268,7 +268,13 @@ The next substantive source change adds a separate bounded initial resource
 worker/channel and uses the same release-only heartbeat with one Link owner.
 Completion closes/drains the channel before returning the actual loaded Session
 or the retained Registry on catalog refusal; Dead Link closes the complete
-returned outcome before opening a Window. Native timing, a healthy-lease grass
-MissingTint refusal and the final launcher change remain required. The laws for
+returned outcome before opening a Window. The changed010 consumer now passed native initial/demand loading, the original
+healthy-lease grass MissingTint case, authentic initial EOF completion/closure,
+exact pixels and complete save/cold restore. The actual017/010 public launcher
+also passed fresh1920×1080, grass refusal/save and same-actor capacity refusal/
+reconnect/save cases and now selects that exact pair. Details and limitations
+are in `generic_resource_world_sample_launcher_adoption.md` and the compact
+`generic_resource_world_sample_initial_runtime_010.json` /
+`generic_resource_world_sample_launcher_runtime_010.json` evidence. The laws for
 its arbitrary initial Registry/assets mapping are authored separately; their
 source/kernel verdict is not claimed before execution.

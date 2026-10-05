@@ -1,158 +1,123 @@
-# Generic003 public launcher adoption proposal
+# Generic010 public launcher adoption
 
-Generic003 is an actual runnable catalog client for Actor017. Its native socket,
-Window-loop, pixel and durable reload checks passed. A public launcher can select
-that binary without changing the actor protocol or the close/save helper. An
-unconditional replacement of Renderer008 is not yet justified: Generic003 still
-loads a fixed resource profile and exits when an unadmitted state enters its
-sample. This is a file-only proposal; the public launcher remains Actor017 with
-Renderer008. Confidence is high for the recorded native observations and the
-source-derived integration below, and unknown for unexecuted public-shell or
-visible-input scenarios.
+`tools/play_minecraft.sh` now selects the actual Actor017/Generic010 pair. The
+changed renderer passed native initial loading, missing-family demand, exact
+pixels, complete durable save/cold restore, initial socket failure, and the
+public shell's fresh/refusal/reconnect transactions. Confidence is high for
+these recorded bounded observations. Visible hardware input and drawable
+readback remain unexecuted for this generic client.
 
-## Exact candidate and observed behavior
+The actual selected binaries are:
 
-| Component | Existing public route | Catalog candidate |
+| Component | Artifact | SHA256 |
 | --- | --- | --- |
-| Actor | `build/compiler-producer-diagnostic-017/actor` | Same actual Actor017 |
-| Renderer | `build/playable-renderer-current/008/renderer` | `build/generic-resource-world-sample-client-native/003/renderer` |
-| Bend entry | `remote_resource_client.bend` | `remote_resource_catalog_client.bend` |
-| Scene command/reply | Frame0 / FrameReply1 | FrameCatalog13 / CatalogFrameReply7 |
-| Protocol version | 1 | 1 |
-| Resource owner | Legacy `RF.Assets` | Retained `CW.Assets` through the real Window loop |
-| Scene draw | Legacy frame/palette path | GS.Sample → Frame.draw_frame → WRF.draw_catalog |
-| Shutdown | Presenter.release_close, then launcher MenuClose/world.save | Same shared Presenter and existing launcher transaction |
+| Actor017 | `build/compiler-producer-diagnostic-017/actor` | `66bbe97279f8ee268d891ad762d5da40337e1c318d09160e415823e25d4d8bd5` |
+| Generic010 | `build/generic-resource-world-sample-client-native/010/renderer` | `c6a861ae04a4de8f918912149ff8ead4e92dfe16d581a7ca2f97983ff9cf3f94` |
 
-Actor017 SHA256 is
-`66bbe97279f8ee268d891ad762d5da40337e1c318d09160e415823e25d4d8bd5`.
-Generic003 SHA256 is
-`3346be8b07699db488591935b8e9e502c10a8f1aa437c99543dcb97d4f21ce6a`.
-Renderer008 remains pinned to
-`3134689e2905e3b3a3ca3790f854996f9da49d8ca33b19677890cc4b10c91d04`.
-The catalog source map is the immutable
-`003/private/source-map.json`, SHA256
-`b3f2c4c83ae26860285fe40885bc1771eb85a89ec5f20687e5c21d655d47d63d`.
+The normal command remains `./tools/play_minecraft.sh`; the existing settings,
+physical-key/menu APIs, pinned26.3 JAR, item table and argument forwarding remain
+in use. Human settings resolve to1920×1080,100% scene rendering, automatic HUD
+scale and a windowed native client. Tests explicitly used hidden launch mode to
+preserve focus. This checkpoint changes the renderer selector/hash, aligns
+`BEND_MINECRAFT_REGISTRY` with the actor's generated registry, and places logs in
+the actual010 artifact directory. The existing close/save/refusal/reconnect
+implementation remains the same.
 
-Commit `318e71a` records two actual hidden 128×128 catalog frames with all 512
-raw cells per sample. The current CPU oracle using original Java baked geometry
-compared 32,768 pixels with zero differences, including slab and stairs pixels
-outside the HUD. A complete 104-section world, 36 main slots, seven equipment
-slots, status, generation metadata and clocks survived acknowledged durable save,
-cold reload and resave. The actual glass661 scenario returned
-`render: StateNotLoaded:catalog:661`. All five owned runtime groups were reaped;
-there were zero observed focus or Spaces changes. This establishes neither an
-AppKit drawable readback nor visible keyboard/mouse acceptance.
+## Actual resource ownership and loading
 
-## Settings, controls and menu join
+The real entry sends protocol-v1 FrameCatalog13 and receives CatalogFrameReply7
+with all512 sampled cells, registry identity, tick/revision, eye/camera and raw
+state/seed/appearance. It retains the actual Registry together with CW.Assets,
+the accepted request ledger and resource policy through the Window loop. The
+initial130-state profile is the starting inventory. Missing sampled states use
+the real registry to coalesce whole-family requests; the loader constructs a
+complete replacement candidate and publishes only after admission. Refusal
+retains the previous owner/ledger/assets. This is functional demand loading;
+it does not make every material, animation or special renderer supported.
 
-The shell can retain `--gpu off --threads 2`, the pinned 26.3 JAR, generated item
-table and forwarded client arguments. Both entries use `player_client_options`
-and `player_presentation`: width/height 4..4096, render scale 25..100%, HUD scale 0
-(auto)..4, `--frames`, `--display-native`, fullscreen and windowed options.
-Human resolved defaults are 1920×1080, 100% scene scale, automatic HUD scale,
-windowed, with native-display selection disabled. Actual drawable geometry drives
-the human output plan; a requested size is not proof of that drawable size.
-The initial logical human window is 960×540. Hidden defaults are 128×128; the
-128×128 hidden case initially opens a 512×512 logical window before native
-configuration. Generic003 initially requests a 128×128 sample and subsequently
-requests the current scene dimensions.
+Initial Registry/catalog loading and later Pending demand each run in the
+existing owned worker/channel pattern. The caller is the sole Link owner and
+sends only release-only input heartbeats. Completion closes/drains the channel.
+A Dead Link still receives the authentic initial result and closes that whole
+outcome before opening a Window. No fixed500ms timer interval is claimed: the
+measured gaps determine acceptance.
 
-GenericClient has its own real asset-owning loop and uses the shared Presenter's
-input command, menu-intent, correlation, trace, close and item-table APIs. It joins
-the same physical-key profile, native inventory-key configuration, captured
-pointer/status, native events, HUD composition and menu drawing modules as 008.
-It sends MenuInspect after each correlated sample before drawing that menu. This
-is a source-level controls/menu join; the generic128 test did not execute human
-hardware input or all menu actions. Existing HUD item-icon selection still
-recognizes only stone, dirt and oak_planks, despite the larger texture owner.
+Generation010 freezes completed009 plus only the verified entry and new initial
+transport module. Its source-map SHA is
+`64c933b2acef2baef244271460340d97b90c112140916c360c4915eac347028d`.
+The bounded producer completed in537.098 seconds with4,653,907,968 sampled peak
+RSS bytes; O3 clang completed in58.561 seconds. The original600-second/8GiB
+producer bounds and original compiler files remain unchanged. The frozen graph
+is the coherent Actor017 consumer baseline; current cooking/publication/entity
+joins are outside this artifact.
 
-The frozen008 manifest contains77 project and32 external files (109 total);
-generic003 contains81 project and33 external files (114 total). There are76
-common project paths:72 have identical bytes and four differ. Five project paths
-are generic-only and one is legacy-only. All19 explicitly inspected shared
-settings, control, menu, presentation and renderer component pins match. The four
-changed common paths are the two measured numeric scanners, the GS client-only
-graph extraction/local map accessors, and a framing comment. The extra external
-file is the source-API `bend.ts`, not an original compiler mutation. The companion
-comparison records the exact per-path differences; these inventory counts are
-not a runtime or proof verdict.
+## Native acceptance
 
-Actor017's normal CLI profile is `bendex:stone-dirt-superflat`, creative and
-running unless explicitly paused. Its pristine generator uses stone/dirt/stone
-layers, all present in the static catalog. Loaded worlds and later edits remain
-authoritative, so those defaults do not establish that every future sampled
-state will be admitted.
+The actual010/017 demand case sampled furnace states6883/6884 and published the
+complete family6883..6890 once. Initial plus cold-demand sample-to-menu time was
+7349.234ms with six authentic release-only Acks; the largest observed reply gap
+was1604.530ms, below the actor's5000ms renewal bound. The next warm sample/menu
+pair took32.938ms and scheduled no load heartbeats. Both128×128 returned CPU
+images matched all32,768 independently expected Java-geometry/JAR/HUD pixels.
+All104 sections,43 inventory/equipment slots, raw status, generation and clocks
+survived exact acknowledged save, cold restore and resave. Furnace cells were
+behind the camera; these pixels establish coherent replacement of the visible
+resource atlas, not visible furnace or Java furnace baking parity.
 
-## Concrete shell delta for root selection
+The original009 startup counterexample is retained: initial cold loading
+expired the lease before the intended grass refusal. Changed010 repeated that
+same grass9 workload. Initial sample-to-menu took4154.539ms with three release
+Acks and a maximum gap1566.495ms. It then emitted exactly
+`render: WorldMesh:MissingTint:world:9`, with one catalog marker, no timing/image
+and no demand publication. Its complete save and cold restore were exact. No
+white tint was supplied.
 
-For a deliberate catalog selection using the **current017 actor**, the minimal
-change to `tools/play_minecraft.sh` is:
+A separate real initial socket cut forwarded the immediate heartbeat and
+withheld the genuine recurring Ack at sequence3 by graceful downstream EOF.
+The authentic worker completed; the client closed/drained its channel and
+returned resources, then exited1 before any Window opened with
+`resource loading: Wire:ReceiveClosedFailedOrTimedOut`. A fresh private lease
+recovered the exact512-cell sample and complete menu. Durable bytes were
+unchanged until explicit exact save. This observes actual completion/closure;
+it is not an independent heap/channel census or every scheduling interleaving.
 
-```diff
--renderer="$root/build/playable-renderer-current/008/renderer"
-+renderer="$root/build/generic-resource-world-sample-client-native/003/renderer"
--  echo "Current actor017, renderer008 and bundled Python are required." >&2; exit 1
-+  echo "Current actor017, catalog renderer003 and bundled Python are required." >&2; exit 1
--for path,expected in zip(sys.argv[1:],['66bbe97279f8ee268d891ad762d5da40337e1c318d09160e415823e25d4d8bd5','3134689e2905e3b3a3ca3790f854996f9da49d8ca33b19677890cc4b10c91d04']):
-+for path,expected in zip(sys.argv[1:],['66bbe97279f8ee268d891ad762d5da40337e1c318d09160e415823e25d4d8bd5','3346be8b07699db488591935b8e9e502c10a8f1aa437c99543dcb97d4f21ce6a']):
- export MC_BLOCK_REGISTRY="$root/generated/reference_blocks.tsv"
-+export BEND_MINECRAFT_REGISTRY="$MC_BLOCK_REGISTRY"
--logs=$(/usr/bin/mktemp -d "$root/build/playable-renderer-current/008/current-launch.XXXXXX")
-+logs=$(/usr/bin/mktemp -d "$root/build/generic-resource-world-sample-client-native/003/current-launch.XXXXXX")
-```
+## Public shell acceptance
 
-This proposed delta has not been applied. The registry export matters because
-the actor reads MC_BLOCK_REGISTRY while the generic entry reads
-BEND_MINECRAFT_REGISTRY. The current launcher force-sets the former to the
-generated registry; explicit alignment prevents an inherited second path from
-giving the client a different registry owner. No new client CLI flag, protocol
-version, save codec or arbitrary executable-path selector is needed.
+All three changed017/010 shell cases passed directly, without replaying retained
+native records:
 
-The shell's existing traps, readiness bound and renderer status handling can
-remain. On a renderer error it still attempts MenuClose and durable world.save;
-on close/save refusal it retains the actor, writes a 0600 reconnect file and exits 2
-without claiming a saved result. Reconnect verifies the actor PID belongs to the
-exact actor binary. `play_minecraft_close.py` uses Hello, MenuClose10/Reply6 and
-the public save operation, without requesting either scene format. Source
-compatibility is high-confidence; that exact shell transaction, refusal and
-reconnect route has **not** yet been executed with Generic003. A future018 actor
-needs its own completed artifact identity and coherent acceptance; the current
-017 observations do not certify 018.
+- Fresh: two actual1920×1080 CPU images, actual unpaused cadence,104 default
+  sections and full43-slot/status/generation save;1,712,160 acknowledged bytes.
+- Loaded grass: actual MissingTint refusal with no image, followed by the
+  shell's accepted MenuClose and exact1,712,616-byte durable save.
+- Menu capacity: close refusal retained the same actor and permissions0600
+  reconnect file without changing prior durable bytes. One real count0 acquire
+  freed main0. Reconnecting to that same PID returned17 carried plus3 crafting
+  stone into20 main stone, cleared temporary contents and durably saved the
+  exact1,713,367-byte complete owner.
 
-## Product boundary and useful next selection
+Every observation recorded zero activation/focus/Spaces changes; all owned
+process groups and listeners were absent after final cleanup. The full1080
+shell images verify requested CPU dimensions/cardinality, not a full1080 RGB
+oracle or AppKit drawable readback. The independent RGB oracle is the separate
+128×128 case above. Timings taken alongside the actor022 compiler are not a
+controlled performance comparison.
 
-The normal catalog entry loads air plus 129 states from eleven families, 33
-models and 12 sprites. It discards the returned Registry owner after
-loading CW.Assets, so the real loop cannot yet use the new Demand APIs. The
-profile includes unsnowed grass, but Actor017's default policy supplies empty
-tints and white light: the actual WorldMesh code predicts MissingTint for a
-sampled grass quad with tint index 0. That grass outcome is a source inference,
-not a newly executed native refusal. State identity is arbitrary in the wire;
-admission and rendering remain bounded by the loaded catalog.
+Reproducible recorded commands and compact facts are in
+`evidence/generic_resource_world_sample_initial_runtime_010.json`,
+`evidence/generic_resource_world_sample_launcher_runtime_010.json` and
+`evidence/generic_resource_world_sample_client_native_010.json`. Local binary
+build receipts preserve their immutable build-time status; those later evidence
+records separately describe runtime acceptance.
 
-The generic producer emits complete model quads for every admitted non-invisible
-sample cell rather than using the legacy neighbor visibility mask. Existing
-WorldMesh bounds include 4096 source quads and 64 translucent quads. It uses the
-explicit deterministic seed mixer rather than Java position Random, and has no
-full biome-tint, lighting, AO/lightmap/atlas or special-renderer parity. These are
-material adoption limits, not problems solved by changing the shell binary path.
+Tint/material/animation/special-renderer and resource/mesh budgets still produce
+named admission failures. Position selection uses the explicit seed mixer;
+Java positionRandom, full biome tint, block/sky lighting, AO/lightmap and vanilla
+GPU parity are not established. Generic cooking GUI and atomic SceneFrame/entity
+rendering are future changed-consumer joins; Actor017 does not provide command20.
+This adoption does not establish whole-game completion or visible-input parity.
 
-Root can choose a bounded public catalog route now, clearly presenting its
-admission failures, while keeping 008 as the existing default. A general default
-should retain the Registry with CW.Assets and integrate functional demand or
-complete resource loading, plus the actual tint/material requirements. This
-requires a changed consumer generation; retrying unchanged 003 cannot extend it.
-
-The next public-shell acceptance should reuse the existing launcher, close/save
-helper and process observer: a hidden bounded normal-profile run at the intended
-output dimensions; close/save after a catalog refusal; and a temporary-menu
-close refusal followed by reconnect to the retained actor. These are concrete
-unexecuted scenarios, not a requirement to repeat completed proofs or rebuild
-unchanged artifacts. Visible hardware input remains a separate coordinated or
-isolated desktop acceptance. This proposal starts none of those processes and
-does not change the current launcher or saved world.
-
-Related compact records: `generic_resource_world_sample_launcher_comparison.md`,
-`generic_resource_world_sample_client_native_003.json`,
-`generic_resource_world_sample_client_runtime_001.json` and
-`generic_resource_world_sample_launcher_adoption.json`.
+The earlier003 file-only comparison is historical
+`docs/generic_resource_world_sample_launcher_comparison.md`. The009 failed
+initial-load receipt remains
+`evidence/generic_resource_world_sample_launcher_initial_load_failure_001.json`.

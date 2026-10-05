@@ -2,15 +2,15 @@
 set -euo pipefail
 root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 actor="$root/build/compiler-producer-diagnostic-017/actor"
-renderer="$root/build/playable-renderer-current/008/renderer"
+renderer="$root/build/generic-resource-world-sample-client-native/010/renderer"
 python='/Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3'
 cd "$root"
 if [ ! -x "$actor" ] || [ ! -x "$renderer" ] || [ ! -x "$python" ]; then
-  echo "Current actor017, renderer008 and bundled Python are required." >&2; exit 1
+  echo "Current actor017, catalog renderer010 and bundled Python are required." >&2; exit 1
 fi
 "$python" - "$actor" "$renderer" <<'CHECK'
 import hashlib,sys
-for path,expected in zip(sys.argv[1:],['66bbe97279f8ee268d891ad762d5da40337e1c318d09160e415823e25d4d8bd5','3134689e2905e3b3a3ca3790f854996f9da49d8ca33b19677890cc4b10c91d04']):
+for path,expected in zip(sys.argv[1:],['66bbe97279f8ee268d891ad762d5da40337e1c318d09160e415823e25d4d8bd5','c6a861ae04a4de8f918912149ff8ead4e92dfe16d581a7ca2f97983ff9cf3f94']):
     if hashlib.sha256(open(path,'rb').read()).hexdigest()!=expected:
         sys.exit('Current playable binary changed: '+path)
 CHECK
@@ -30,12 +30,13 @@ export MC_WORLD_PATH="${MC_WORLD_PATH:-$root/build/playable-world.nbt}"
 export MC_WORLD_MISSING=create
 export MC_LIVE_PORT="${MC_LIVE_PORT:-25565}"
 export MC_BLOCK_REGISTRY="$root/generated/reference_blocks.tsv"
+export BEND_MINECRAFT_REGISTRY="$root/generated/reference_blocks.tsv"
 export MC_RENDER_PORT="${MC_RENDER_PORT:-25566}"
 export MC_RENDER_TOKEN="${MC_RENDER_TOKEN:-$(/usr/bin/uuidgen)}"
 export MC_RENDER_EPOCH="${MC_RENDER_EPOCH:-$(/usr/bin/uuidgen | /usr/bin/tr -d '-')}"
 export MC_DEV_TOKEN="${MC_DEV_TOKEN:-$(/usr/bin/uuidgen)}"
 export BEND_MINECRAFT_LAUNCH_MODE="${BEND_MINECRAFT_LAUNCH_MODE:-human}"
-logs=$(/usr/bin/mktemp -d "$root/build/playable-renderer-current/008/current-launch.XXXXXX")
+logs=$(/usr/bin/mktemp -d "$root/build/generic-resource-world-sample-client-native/010/current-launch.XXXXXX")
 if [ -z "$reconnect" ]; then
   "$actor" --gpu off --threads 2 -- --game-mode creative --sine "$root/generated/reference_mth_sin.f32" >"$logs/actor.stdout" 2>"$logs/actor.stderr" &
   actor_pid=$!

@@ -24,6 +24,7 @@ LAUNCH=ROOT/'tools/play_minecraft.sh'
 CLOSE=ROOT/'tools/play_minecraft_close.py'
 ACTOR_SHA='66bbe97279f8ee268d891ad762d5da40337e1c318d09160e415823e25d4d8bd5'
 CLIENT_SHA='17e93095938731a1df4f8d94de56b0524477d5bfa239ed845e829145ec9c2b0a'
+CLIENT_PINS={9:CLIENT_SHA,10:'c6a861ae04a4de8f918912149ff8ead4e92dfe16d581a7ca2f97983ff9cf3f94'}
 require,pin,exclusive=G.require,G.pin,G.exclusive
 S,R=G.S,G.R
 
@@ -346,12 +347,21 @@ def grass_refusal(directory):
 
 
 def main():
+    global CLIENT, CLIENT_SHA
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('case',choices=['fresh','capacity','grass']);parser.add_argument('--generation',type=int,default=1)
+    parser.add_argument('--client-generation',type=int,choices=sorted(CLIENT_PINS),default=9)
     parser.add_argument('--finish-retained-fresh',action='store_true',help='Finish only the retained final csv-import verifier failure; no native relaunch')
     args=parser.parse_args()
+    CLIENT=ROOT/f'build/generic-resource-world-sample-client-native/{args.client_generation:03d}/renderer'
+    CLIENT_SHA=CLIENT_PINS[args.client_generation]
     require(pin(ACTOR)['sha256']==ACTOR_SHA and pin(CLIENT)['sha256']==CLIENT_SHA,'Admitted actual binaries changed')
     G.client_artifact(CLIENT)
+    if not args.finish_retained_fresh:
+        selected=LAUNCH.read_text()
+        require('renderer="$root/'+str(CLIENT.relative_to(ROOT))+'"' in selected
+                and CLIENT_SHA in selected and ACTOR_SHA in selected,
+                'The actual public launcher must select the exact requested Actor017/catalog-client pair')
     directory=ROOT/'build/generic-resource-world-sample-launcher-runtime'/f'{args.case}-{args.generation:03d}'
     if args.finish_retained_fresh:
         require(args.case=='fresh' and directory.exists(),'Retained finish only applies to existing fresh case')
@@ -366,7 +376,7 @@ def main():
         result=finish_retained_fresh(directory) if args.finish_retained_fresh else {'fresh':fresh,'capacity':capacity,'grass':grass_refusal}[args.case](directory)
         require(all(pin(p)==v for p,v in inputs.items()),'Runtime inputs changed')
         record={'status':'PASS','case':args.case,'native_consumer_run':True,'inputs':inputs,'result':result,
-            'scope':'Actual public shell Actor017/Generic009 hidden route; no visible-input, cooking GUI, drawable or whole-game claim.'}
+            'scope':f'Actual public shell Actor017/Generic{args.client_generation:03d} hidden route; no visible-input, cooking GUI, drawable or whole-game claim.'}
         exclusive(directory/'result.json',record)
         print(json.dumps({'status':'PASS','case':args.case,'result':str(directory/'result.json')}))
       except BaseException as error:

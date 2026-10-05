@@ -1,3 +1,7 @@
+Historical Generic003 file-only comparison. The current actual adoption and
+changed-consumer evidence are recorded in `generic_resource_world_sample_launcher_adoption.md`.
+The selector/state claims below describe that earlier checkpoint.
+
 Generic003 can use the existing public launcher's connection, settings, input,
 menu, close/save and reconnect contracts. It is not currently selected by that
 launcher. Selecting it would replace the legacy three-model scene with an
