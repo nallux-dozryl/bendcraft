@@ -31,6 +31,7 @@ KNOWN = {
     'actor022': '1ba545e7ccd84e5011f51199c2ee9562e4063c24b98c64148323551039357712',
     '008': '3134689e2905e3b3a3ca3790f854996f9da49d8ca33b19677890cc4b10c91d04',
     '010': 'c6a861ae04a4de8f918912149ff8ead4e92dfe16d581a7ca2f97983ff9cf3f94',
+    '012': '3bd945855c7526f713ed1df03ab89e136429fbc36132f6152ef16fc7a491a232',
 }
 
 
@@ -190,7 +191,7 @@ def exchanges(value, data, generation, frame_count):
             samples.append(digest(R.canonical(actual)))
             pending = request[3]
         elif command[0] in (8, 15):
-            cooking = generation == '011'
+            cooking = generation not in ('008', '010')
             R.require(command == ([15, 0] if cooking else [8])
                       and reply[1] == (8 if cooking else 6) and len(reply) == 7
                       and reply[4:6] == [True, ''] and pending is not None,
@@ -284,6 +285,10 @@ def trial(directory, actor_binary, binary, generation, data, helpers, trace):
         with Host.bindings(R, {'WORK': directory, 'GROUPS': directory/'owned-groups.ndjson'}):
             G.sweep_owned(directory)
         report['loads'] = load.finish()
+        if report['loads']['foreign_work_observed']:
+            report['status'] = 'FAIL_CONTAMINATED'
+            report['error'] = {'type': 'ForeignWorkObserved',
+                'message': 'Retained native observations have no quiet comparative claim'}
         write(directory/'report.json', report)
     R.require(not report['loads']['foreign_work_observed'], 'Competing workload observed; retained run has no clean comparison claim')
     return report
@@ -327,11 +332,12 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--native', action='store_true', help='Run existing hidden native owners; default prepares only')
     parser.add_argument('--actor-generation', choices=(17, 22), type=int, default=17)
-    parser.add_argument('--clients', default='008,010', help='008,010 or 008,010,011;011 requires common022')
+    parser.add_argument('--clients', default='008,010', help='008,010 or 008,010,COOKING_GENERATION; cooking requires common022')
     args = parser.parse_args()
     clients = args.clients.split(',')
-    R.require(clients in (['008', '010'], ['008', '010', '011']), 'Predeclared supported comparison arms')
-    R.require('011' not in clients or args.actor_generation == 22, '011 requires authentic Actor022')
+    cooking = len(clients) == 3 and clients[:2] == ['008', '010'] and clients[2].isdigit() and int(clients[2]) >= 11
+    R.require(clients == ['008', '010'] or cooking, 'Predeclared supported comparison arms')
+    R.require(not cooking or args.actor_generation == 22, 'Cooking client requires authentic Actor022')
     parent = ROOT/'build/generic-client-responsiveness-comparison'
     parent.mkdir(exist_ok=True)
     number = max([int(p.name) for p in parent.iterdir() if p.is_dir() and p.name.isdigit()] or [0])+1
@@ -384,6 +390,8 @@ def main():
         expected_ppm = (work/('precheck-'+clients[0])/'renderer/images/0.ppm').read_bytes()
         expected_saved = (work/('precheck-'+clients[0])/'world.nbt').read_bytes()
         for key in clients[1:]:
+            R.require((work/('precheck-'+key)/'world.nbt').read_bytes() == expected_saved,
+                      'Whole actual saved state differs between comparison arms')
             actual = (work/('precheck-'+key)/'renderer/images/0.ppm').read_bytes()
             if actual != expected_ppm:
                 header_size = len(f'P6\n{WIDTH} {HEIGHT}\n255\n'.encode())
@@ -394,8 +402,6 @@ def main():
                     'first_differences': [{'xy': [i % WIDTH, i // WIDTH],
                         'actual': list(a[i*3:i*3+3]), 'expected': list(b[i*3:i*3+3])} for i in first]}
             R.require(actual == expected_ppm, 'Actual full1080 RGB pixels differ; no timing comparison')
-            R.require((work/('precheck-'+key)/'world.nbt').read_bytes() == expected_saved,
-                      'Whole actual saved state differs between comparison arms')
         for index, key in enumerate(order):
             label = f'timed-{index+1:02}-{key}'
             row = trial(work/label, actor, binaries[key], key, data, helpers, False)
@@ -421,8 +427,8 @@ def main():
         raise
     finally:
         write(work/'result.json', report)
-    evidence = ROOT/'evidence'/f'generic-client-responsiveness-comparison-{number:03}.json'
-    write(evidence, report)
+        evidence = ROOT/'evidence'/f'generic-client-responsiveness-comparison-{number:03}.json'
+        write(evidence, report)
     print(json.dumps({'status': report['status'], 'summary': report['summary'], 'evidence': str(evidence)}))
 
 

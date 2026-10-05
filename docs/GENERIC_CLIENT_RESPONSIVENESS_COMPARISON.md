@@ -7,12 +7,14 @@ seven equipment slots and explicit creative status. It consumes retained
 binaries and the existing actor, unchanged-byte relay, Cocoa observer and
 process cleanup owners. It builds no compiler, actor, renderer or observer.
 
-The first cohort is legacy 008 and Generic 010 against Actor 017. Generic 011
-requires genuine Actor022 because its initial cooking inspection is absent
-from 017. A subsequent 008/010/011 cohort therefore uses 022 for **every** arm.
-It first saves one real 022 initialization, then restores those exact owner
-bytes throughout; fresh entity factory entropy must not vary between arms.
-The public launcher remains the delivery owner's separate acceptance target.
+The first cohort is legacy 008 and Generic 010 against Actor 017. The cooking
+client's initial cooking inspection is absent from 017. The runner also has
+an unexecuted Actor022 cohort preparation path that persists one actual
+initialization for every arm; fresh entity factory entropy must not vary
+between arms. Actor023's timer repair and cooking/public acceptance have
+priority. A later fixed-quality 010/012 comparison must use one accepted
+common actor and its exact binary pin. The public launcher remains the
+delivery owner's separate acceptance target.
 
 All native launches are hidden. The existing observer requires unchanged
 frontmost PID, no client activation and no Spaces notification. The protected
@@ -48,7 +50,7 @@ Reproduction with the bundled Python runtime:
 ```sh
 python3 -B tools/generic_client_responsiveness_comparison.py
 python3 -B tools/generic_client_responsiveness_comparison.py --actor-generation 17 --native
-python3 -B tools/generic_client_responsiveness_comparison.py --actor-generation 22 --clients 008,010,011 --native
+python3 -B tools/generic_client_responsiveness_comparison.py --actor-generation 22 --clients 008,010,012
 ```
 
 Each invocation creates a new numbered directory under
@@ -56,5 +58,38 @@ Each invocation creates a new numbered directory under
 attempt. Preparation starts no native process. Native receipts include actual
 post-adapter argv, binary/helper/JAR/table pins, UTC order, full frame timings,
 image/state checks, background loads and existing cleanup/focus observations.
-Native comparison is pending a quiet window after cooking-client delivery
-builds and consumers finish. No measured comparative conclusion exists yet.
+Attempt006 completed both genuine Actor017 prechecks in the quiet interval.
+Each arm retained identical complete 1,712,250-byte saved state, returned two
+identical images within its own run, passed actual correlated sample/menu
+checks, and changed neither focus nor Spaces. All owned groups were reaped;
+the protected012 actor remained present in every load sample. There was no
+foreign native/compiler workload during these prechecks.
+
+Cross-arm image equality failed: **331,590 of 2,073,600 pixels (15.991%)**
+differ, with inclusive bounds `(0,674)` through `(1919,1079)`. Every differing
+pixel is grayscale in both images. The first difference is `(45,674)`, where
+008 returns `(127,127,127)` and 010 returns `(143,143,143)`. The runner stopped
+before every timed ABBA trial. The traced precheck timing values are retained
+as raw observations and provide no admitted speedup or regression comparison.
+
+The frozen callers establish a concrete world texture difference. 008's
+`resource_frame.binding` bakes one unrotated `minecraft:block/stone` model.
+010's `generic_resource_world_sample_frame.choice_ticket` selects each cell's
+actual seed modulo the weighted variant total; `resource_block_catalog`
+bakes that selected model and rotation. The pinned26.3 JAR supplies four
+stone variants: plain, mirrored, plain Y=180°, and mirrored Y=180°. Its
+mirrored cube uses reversed face UV `[16,0,0,16]`. In the actual010 reply,
+the 128 stone cells distribute evenly across all four tickets. The origin,
+camera words and appearances match; shared bake, mesh, rendering, HUD and
+presentation source files are byte-identical. Confidence is high that the
+observed texture orientation changes come from world model/UV selection;
+there is no supported camera, HUD/status or shading explanation.
+
+The [compact failure receipt](../evidence/generic-client-responsiveness-comparison-006.json)
+pins the raw images, full native reports, source files and primary JAR members.
+The output difference remains intact. No renderer change, quality masking or
+native rerun was made to enable timing. No responsiveness conclusion exists.
+Client011's bounded emission failed without a binary; the delivery owner's
+substantively repaired client012 is the planned cooking arm. The runner
+authenticates the chosen generation's actual completed build receipt and
+binary rather than relabeling an earlier artifact.
