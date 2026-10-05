@@ -1,0 +1,92 @@
+{
+  "status": "RETAINED_SOURCE_FAILURES",
+  "attempts": [
+    {
+      "generation": 1,
+      "status": "FAILED_ORIGINAL_SOURCE_CHECK; no C/native from this attempt",
+      "raw_receipt": "build/player-cooking-menu-owned-dirty/001/ordinary.json",
+      "raw_receipt_sha256": "95b1b1020db99efb1e1c8bbf7ab60f15753f6964bf67f8f0be4dced319af339f",
+      "diagnostic": "Imported DirtyStamp.dirty_effect position consumed more than once",
+      "repair": "Motion annotated the retained Data position; current narrow receiver uses stable helper",
+      "result": {
+        "kind": "ordinary",
+        "command": [
+          "/Users/chuah/.bend/bin/bend",
+          "src/player_cooking_menu.bend",
+          "--check-only"
+        ],
+        "exit": 1,
+        "seconds": 4.906,
+        "sampled_process_tree_peak_rss_bytes": 1639317504,
+        "bounded_stop": null,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256": "5490edba4f50f49a0c2f7c8ad24452c0ce7114a4ab871beea5b203ee193283dc"
+      }
+    },
+    {
+      "generation": 3,
+      "status": "FAILED_ORIGINAL_SOURCE_CHECK; no C/native from this attempt",
+      "raw_receipt": "build/player-cooking-menu-owned-dirty/003/emit.json",
+      "raw_receipt_sha256": "93a5fd6d8190a9907d63d7b589a110a6b128507c2ee657e9618448b1249bdb02",
+      "diagnostic": "Camp.capture_entries recursive continuation did not prove a decreasing call",
+      "repair": "Camp capture now threads the actual Store.size budget before first-position metadata capture",
+      "result": {
+        "kind": "emit",
+        "command": [
+          "/usr/bin/env",
+          "BEND_PRODUCER_LOG=/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-cooking-menu-owned-dirty/003/emit-functions.jsonl",
+          "BEND_PRODUCER_GC=1",
+          "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+          "--expose-gc",
+          "--max-old-space-size=8192",
+          "--stack-size=4096",
+          "--experimental-transform-types",
+          "tools/player_cooking_menu_emit.mjs",
+          "tests/player_cooking_menu.bend",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-cooking-menu-owned-dirty/003/receiver.c"
+        ],
+        "exit": 1,
+        "seconds": 9.054,
+        "sampled_process_tree_peak_rss_bytes": 1465024512,
+        "bounded_stop": null,
+        "stdout_sha256": "f8ca9c09de6a7bba748b9506fd7bfaea83f9b0cc6e463d4b7f32647b523b554e",
+        "stderr_sha256": "793ae608dc0a1080e50041af4d700c7e8b90de3f0ab2609afc5a2d434505d86a"
+      },
+      "loaded_source_manifest_sha256": "52ee6cb62197fa8e535fa1f3db9094da9629f666c23c7bff19e998aca97c17f4",
+      "loaded_source_count": 174
+    },
+    {
+      "generation": 4,
+      "status": "FAILED_ORIGINAL_SOURCE_CHECK; no C/native from this attempt",
+      "raw_receipt": "build/player-cooking-menu-owned-dirty/004/emit.json",
+      "raw_receipt_sha256": "f3e858f5ccf51019f4a9368b2544d1c6f76d0f13475f5035b7b944e1522a222a",
+      "diagnostic": "Test source_furnace_kind omitted actual K.Campfire constructor",
+      "repair": "Serializer now covers all four CookingKind constructors",
+      "result": {
+        "kind": "emit",
+        "command": [
+          "/usr/bin/env",
+          "BEND_PRODUCER_LOG=/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-cooking-menu-owned-dirty/004/emit-functions.jsonl",
+          "BEND_PRODUCER_GC=1",
+          "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+          "--expose-gc",
+          "--max-old-space-size=8192",
+          "--stack-size=4096",
+          "--experimental-transform-types",
+          "tools/player_cooking_menu_emit.mjs",
+          "tests/player_cooking_menu.bend",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-cooking-menu-owned-dirty/004/receiver.c"
+        ],
+        "exit": 1,
+        "seconds": 11.3118,
+        "sampled_process_tree_peak_rss_bytes": 1864318976,
+        "bounded_stop": null,
+        "stdout_sha256": "ff787915b858ee5594c80b9a9c66ad16f600be10d358f11b3981b1776faefa59",
+        "stderr_sha256": "57b589317acf9ab21df3d5bfdf27baf6d407baf3afe7a7677e07d12e69edbd92"
+      },
+      "loaded_source_manifest_sha256": "11c1a4deeb12b94133612d047826d87dbbea4f9f94f1fd6cfedb6879749d71b7",
+      "loaded_source_count": 174
+    }
+  ],
+  "scope": "Original source checking refusals; each raw stdout/stderr hash retained in the receipt. Corrections precede new-generation receiver. No native parity, independent kernel, legacy pending attestation or frozen020 change claimed."
+}

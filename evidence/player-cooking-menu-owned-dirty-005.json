@@ -1,0 +1,204 @@
+{
+  "status": "PASS",
+  "cases": 9,
+  "furnace_source_cases": 3,
+  "campfire_source_cases": 2,
+  "player_only_or_refusal_cases": 4,
+  "checks": [
+    {
+      "kind": "emit",
+      "command": [
+        "/usr/bin/env",
+        "BEND_PRODUCER_LOG=/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-cooking-menu-owned-dirty/005/emit-functions.jsonl",
+        "BEND_PRODUCER_GC=1",
+        "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+        "--expose-gc",
+        "--max-old-space-size=8192",
+        "--stack-size=4096",
+        "--experimental-transform-types",
+        "tools/player_cooking_menu_emit.mjs",
+        "tests/player_cooking_menu.bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-cooking-menu-owned-dirty/005/receiver.c"
+      ],
+      "exit": 0,
+      "seconds": 38.3602,
+      "sampled_process_tree_peak_rss_bytes": 3222880256,
+      "bounded_stop": null,
+      "stdout_sha256": "ec909ca4c0321a5747bb68d731c46683e2e096e4b2105bb4ae47b02dd6bf03b7",
+      "stderr_sha256": "c14327360d1383d6099781cb9ab72a1b9fd9d37c7470d00bcda7ea6d3f7c75c4"
+    },
+    {
+      "kind": "clang",
+      "command": [
+        "/usr/bin/clang",
+        "-std=c11",
+        "-O1",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-cooking-menu-owned-dirty/005/receiver.c",
+        "-lpthread",
+        "-lm",
+        "-o",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-cooking-menu-owned-dirty/005/receiver"
+      ],
+      "exit": 0,
+      "seconds": 20.9479,
+      "sampled_process_tree_peak_rss_bytes": 2371190784,
+      "bounded_stop": null,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "native": {
+    "kind": "native",
+    "command": [
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-cooking-menu-owned-dirty/005/receiver",
+      "--gpu",
+      "off",
+      "--threads",
+      "1",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_item_metadata.tsv",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-cooking-menu-owned-dirty/005/context/input.json",
+      "input-right-take|PICKUP|0|1|0|1||minecraft:cobblestone~17|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|minecraft:shield~1|minecraft:wolf_armor~1|minecraft:saddle~1|_|_|_|_|_|fixture:hidden-player-48~48|fixture:hidden-player-49~49|fixture:hidden-player-50~50|fixture:hidden-player-51~51|fixture:hidden-player-52~52|fixture:hidden-player-53~53|fixture:hidden-player-54~54|fixture:hidden-player-55~55|fixture:hidden-player-56~56|fixture:hidden-player-57~57|fixture:hidden-player-58~58|fixture:hidden-player-59~59|fixture:hidden-player-60~60|fixture:hidden-player-61~61|fixture:hidden-player-62~62|fixture:hidden-player-63~63",
+      "input-right-put|PICKUP|0|1|0|1||_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|minecraft:shield~1|minecraft:wolf_armor~1|minecraft:saddle~1|_|_|_|_|minecraft:cobblestone~17|fixture:hidden-player-48~48|fixture:hidden-player-49~49|fixture:hidden-player-50~50|fixture:hidden-player-51~51|fixture:hidden-player-52~52|fixture:hidden-player-53~53|fixture:hidden-player-54~54|fixture:hidden-player-55~55|fixture:hidden-player-56~56|fixture:hidden-player-57~57|fixture:hidden-player-58~58|fixture:hidden-player-59~59|fixture:hidden-player-60~60|fixture:hidden-player-61~61|fixture:hidden-player-62~62|fixture:hidden-player-63~63",
+      "quick-output-reverse|QUICK_MOVE|2|0|0|1||_|_|minecraft:stone~17|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|minecraft:shield~1|minecraft:wolf_armor~1|minecraft:saddle~1|_|_|_|_|_|fixture:hidden-player-48~48|fixture:hidden-player-49~49|fixture:hidden-player-50~50|fixture:hidden-player-51~51|fixture:hidden-player-52~52|fixture:hidden-player-53~53|fixture:hidden-player-54~54|fixture:hidden-player-55~55|fixture:hidden-player-56~56|fixture:hidden-player-57~57|fixture:hidden-player-58~58|fixture:hidden-player-59~59|fixture:hidden-player-60~60|fixture:hidden-player-61~61|fixture:hidden-player-62~62|fixture:hidden-player-63~63",
+      "quick-hotbar-other-main|QUICK_MOVE|30|0|0|1||_|_|_|minecraft:dirt~17|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|minecraft:shield~1|minecraft:wolf_armor~1|minecraft:saddle~1|_|_|_|_|_|fixture:hidden-player-48~48|fixture:hidden-player-49~49|fixture:hidden-player-50~50|fixture:hidden-player-51~51|fixture:hidden-player-52~52|fixture:hidden-player-53~53|fixture:hidden-player-54~54|fixture:hidden-player-55~55|fixture:hidden-player-56~56|fixture:hidden-player-57~57|fixture:hidden-player-58~58|fixture:hidden-player-59~59|fixture:hidden-player-60~60|fixture:hidden-player-61~61|fixture:hidden-player-62~62|fixture:hidden-player-63~63",
+      "refusal-budget|PICKUP|0|0|0|1|budget|minecraft:cobblestone~17|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|minecraft:shield~1|minecraft:wolf_armor~1|minecraft:saddle~1|_|_|_|_|_|fixture:hidden-player-48~48|fixture:hidden-player-49~49|fixture:hidden-player-50~50|fixture:hidden-player-51~51|fixture:hidden-player-52~52|fixture:hidden-player-53~53|fixture:hidden-player-54~54|fixture:hidden-player-55~55|fixture:hidden-player-56~56|fixture:hidden-player-57~57|fixture:hidden-player-58~58|fixture:hidden-player-59~59|fixture:hidden-player-60~60|fixture:hidden-player-61~61|fixture:hidden-player-62~62|fixture:hidden-player-63~63",
+      "refusal-incarnation|PICKUP|0|0|0|1|incarnation|minecraft:cobblestone~17|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|minecraft:shield~1|minecraft:wolf_armor~1|minecraft:saddle~1|_|_|_|_|_|fixture:hidden-player-48~48|fixture:hidden-player-49~49|fixture:hidden-player-50~50|fixture:hidden-player-51~51|fixture:hidden-player-52~52|fixture:hidden-player-53~53|fixture:hidden-player-54~54|fixture:hidden-player-55~55|fixture:hidden-player-56~56|fixture:hidden-player-57~57|fixture:hidden-player-58~58|fixture:hidden-player-59~59|fixture:hidden-player-60~60|fixture:hidden-player-61~61|fixture:hidden-player-62~62|fixture:hidden-player-63~63",
+      "campfire-0-0-place|USE_MAIN|0|0|0|1||_|_|_|minecraft:dirt~13|_|_|_|_|_|_|minecraft:potato~5|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|minecraft:potato~5|minecraft:wolf_armor~1|minecraft:saddle~1|_|_|_|_|_|fixture:hidden-player-48~48|fixture:hidden-player-49~49|fixture:hidden-player-50~50|fixture:hidden-player-51~51|fixture:hidden-player-52~52|fixture:hidden-player-53~53|fixture:hidden-player-54~54|fixture:hidden-player-55~55|fixture:hidden-player-56~56|fixture:hidden-player-57~57|fixture:hidden-player-58~58|fixture:hidden-player-59~59|fixture:hidden-player-60~60|fixture:hidden-player-61~61|fixture:hidden-player-62~62|fixture:hidden-player-63~63",
+      "campfire-0-0-budget|USE_MAIN|0|0|0|1|budget|_|_|_|minecraft:dirt~13|_|_|_|_|_|_|minecraft:potato~5|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|minecraft:potato~5|minecraft:wolf_armor~1|minecraft:saddle~1|_|_|_|_|_|fixture:hidden-player-48~48|fixture:hidden-player-49~49|fixture:hidden-player-50~50|fixture:hidden-player-51~51|fixture:hidden-player-52~52|fixture:hidden-player-53~53|fixture:hidden-player-54~54|fixture:hidden-player-55~55|fixture:hidden-player-56~56|fixture:hidden-player-57~57|fixture:hidden-player-58~58|fixture:hidden-player-59~59|fixture:hidden-player-60~60|fixture:hidden-player-61~61|fixture:hidden-player-62~62|fixture:hidden-player-63~63",
+      "campfire-hands-main-pass-offhand|USE_HANDS|0|0|0|1||_|_|_|minecraft:dirt~13|_|_|_|_|_|_|minecraft:dirt~13|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|minecraft:potato~5|minecraft:wolf_armor~1|minecraft:saddle~1|_|_|_|_|_|fixture:hidden-player-48~48|fixture:hidden-player-49~49|fixture:hidden-player-50~50|fixture:hidden-player-51~51|fixture:hidden-player-52~52|fixture:hidden-player-53~53|fixture:hidden-player-54~54|fixture:hidden-player-55~55|fixture:hidden-player-56~56|fixture:hidden-player-57~57|fixture:hidden-player-58~58|fixture:hidden-player-59~59|fixture:hidden-player-60~60|fixture:hidden-player-61~61|fixture:hidden-player-62~62|fixture:hidden-player-63~63"
+    ],
+    "exit": 0,
+    "seconds": 12.8184,
+    "sampled_process_tree_peak_rss_bytes": 100073472,
+    "bounded_stop": null,
+    "stdout_sha256": "913f043191499693d56eaa05be82e6ddbd38de360168507eeb72cad79b9c6779",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "expected_sources": {
+    "input-right-take": [
+      {
+        "dimension": "minecraft:overworld",
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "state": 6884,
+        "block": "minecraft:furnace",
+        "family": "smelting",
+        "lit": false,
+        "dark_state": 6884,
+        "lit_state": 6883,
+        "incarnation": 2
+      }
+    ],
+    "input-right-put": [
+      {
+        "dimension": "minecraft:overworld",
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "state": 6884,
+        "block": "minecraft:furnace",
+        "family": "smelting",
+        "lit": false,
+        "dark_state": 6884,
+        "lit_state": 6883,
+        "incarnation": 2
+      },
+      {
+        "dimension": "minecraft:overworld",
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "state": 6884,
+        "block": "minecraft:furnace",
+        "family": "smelting",
+        "lit": false,
+        "dark_state": 6884,
+        "lit_state": 6883,
+        "incarnation": 2
+      }
+    ],
+    "quick-output-reverse": [
+      {
+        "dimension": "minecraft:overworld",
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "state": 6884,
+        "block": "minecraft:furnace",
+        "family": "smelting",
+        "lit": false,
+        "dark_state": 6884,
+        "lit_state": 6883,
+        "incarnation": 2
+      }
+    ],
+    "quick-hotbar-other-main": [],
+    "refusal-budget": [],
+    "refusal-incarnation": [],
+    "campfire-0-0-place": [
+      {
+        "dimension": "minecraft:overworld",
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "state": 24235,
+        "block": "minecraft:campfire",
+        "family": "campfire",
+        "lit": true,
+        "dark_state": 24239,
+        "lit_state": 24235,
+        "incarnation": 2
+      }
+    ],
+    "campfire-0-0-budget": [],
+    "campfire-hands-main-pass-offhand": [
+      {
+        "dimension": "minecraft:overworld",
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "state": 24235,
+        "block": "minecraft:campfire",
+        "family": "campfire",
+        "lit": true,
+        "dark_state": 24239,
+        "lit_state": 24235,
+        "incarnation": 2
+      }
+    ]
+  },
+  "source_sha256": {
+    "src/player_cooking_menu.bend": "f7ac1df4e3c5a4077b855b5d65556adb81333f759891d44564aa0d121b77a8a1",
+    "src/player_cooking_menu_laws.bend": "98667b67266bcecd13b44b82e484b511657479650a4d7f80b9596003f08bdf0e",
+    "src/player_cooking_menu_campfire.bend": "a5e20bb0ea663866ab63bade16c12041a33c42604d5156cf43fd2fd94bb5d309",
+    "tests/player_cooking_menu.bend": "ce10e16ba0daaa3d9f7ede2a7400f60fe4f59b5dcdbefa6644b2bb0a19064b26",
+    "tools/test_player_cooking_menu_owned_dirty.py": "99ee9cfbe493bc2acb9b36d7504ab993ad930afa4a6560e3acd5e5227cf8906f",
+    "reference/player_cooking_menu.json": "91e1ee5292b5925337d4a4b5f334a2f2ff3ccbd61483507a9b77b46dfe338fea",
+    "reference/cooking_world.json": "9e90f8da3cab5ea5db7405f1e9581a4dc750e83b48979f11f0714379687a170a"
+  },
+  "compiled_source_manifest_sha256": "33b8ca26168c5142e7afc4d0fa28d1b3525165d5f79fbb5d6c65743078656bb9",
+  "compiled_source_count": 174,
+  "post_emission_import_drift": [
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/block_model.bend",
+      "compiled_sha256": "73a864417c6c344727a5fb979feb3342052c31b550c0dc2270f4bc13fab705cc",
+      "current_sha256": "613c554153da8082cb1e3b8e2918dc45b3b827b03aac07af5f6e0a0017bfa11c"
+    }
+  ],
+  "binary_sha256": "5b4cfad2a447c9073e3d749a438e1a516304a3c67bdf30558f4ebffb65401348",
+  "raw_native_sha256": "913f043191499693d56eaa05be82e6ddbd38de360168507eeb72cad79b9c6779",
+  "scope": "Actual Menu.dispatch and Camp.use/use_hands through Slots.dispatch; new effects only. Cached registered pre-operation binding/position and authenticated incarnation2 are exact; every existing fresh slot Dirty and appended menu Dirty is stamped in order without duplicate loss. Input identity reset emits two, same-item input count change/output removal one, and accepted campfire placement one. Whole Core,64 player backing,4 furnace backing/campfire cells, profile/timers/RecipesUsed retained and Java count/routing/placement deltas compared. Same-owner offhand fallback is exercised. Player-only and refused operations emit no source. No legacy pending drain/retroattest, public ABI change, socket/entity/publisher/native-window claim.",
+  "host_oracle_correction": {
+    "status": "NATIVE_COMPARATOR_FAILURE",
+    "diagnostic": "Host incorrectly required two Dirty sources for every furnace mutation; FS.put_snapshot.changed emits slot Dirty only on input identity reset, not same-item count change or output removal.",
+    "original_host_helper_sha256": "6195be81446dc0d61aa48af399101f1cb97b89d9c407dbed42695a90a25b67c3",
+    "original_expected_source_sha256": "23de03f9daec8c678969095590cf121c9b5cba46105c1de86d687a50b6e1c15d",
+    "raw_native_sha256": "913f043191499693d56eaa05be82e6ddbd38de360168507eeb72cad79b9c6779",
+    "native_receipt_sha256": "eb0a41cd365a6f8f05ffd87757c716748f8f0c899ac5b3d1c83f8ebdd66db438",
+    "source_manifest_sha256": "33b8ca26168c5142e7afc4d0fa28d1b3525165d5f79fbb5d6c65743078656bb9",
+    "repair": "Only expected source counts corrected; keep same Bend source/C/binary/raw native observations."
+  },
+  "corrected_expected_source_sha256": "e6fb768fc375187a5362ab4a39d728ac702974bc3edde4d05071bd3d8cf474d2",
+  "native_replayed_for_comparator_repair": false
+}

@@ -11,6 +11,7 @@ import ../src/player_item_catalog.bend as Catalog
 import ../src/cooking_world.bend as CW
 import ../src/cooking_world_store.bend as Store
 import ../src/cooking_world_bindings.bend as Binding
+import ../src/cooking_effect_publication_journal.bend as Journal
 import ../src/furnace_authority.bend as FA
 import ../src/cooking_recipe.bend as K
 import ../src/core.bend as C
@@ -73,7 +74,34 @@ def used(+values:List<&2,Store.Effect>) -> U32:
   match values:
     case Nil{}: 0
     case Store.Dirty{position} <> rest: U32.add(1,used(rest))
+    case Store.OwnedDirty{source} <> rest: U32.add(1,used(rest))
     case other <> rest: used(rest)
+def legacy_used(values:List<&2,Store.Effect>) -> U32:
+  match values:
+    case Nil{}: 0
+    case Store.Dirty{position} <> rest: U32.add(1,legacy_used(rest))
+    case other <> rest: legacy_used(rest)
+def source_furnace_kind(kind:K.CookingKind) -> String:
+  match kind:
+    case K.Smelting{}: "smelting"
+    case K.Blasting{}: "blasting"
+    case K.Smoking{}: "smoking"
+    case K.Campfire{}: "campfire"
+def source_family(family:Binding.Family) -> String:
+  match family:
+    case Binding.Furnace{kind}: source_furnace_kind(kind)
+    case Binding.Campfire{CA.Ordinary{}}: "campfire"
+    case Binding.Campfire{CA.Soul{}}: "soul_campfire"
+def source_value(value:Journal.Source) -> J.Value:
+  Journal.Source{C.Position{dimension,x,y,z},Binding.Binding{state,block,family,lit,dark,bright},incarnation} = value
+  Live.obj([J.JMember{"dimension",Live.text(dimension)},J.JMember{"x",Live.uint(x)},J.JMember{"y",Live.uint(y)},J.JMember{"z",Live.uint(z)},
+    J.JMember{"state",Live.uint(state)},J.JMember{"block",Live.text(block)},J.JMember{"family",Live.text(source_family(family))},J.JMember{"lit",Live.boolean(lit)},
+    J.JMember{"dark_state",Live.uint(dark)},J.JMember{"lit_state",Live.uint(bright)},J.JMember{"incarnation",Live.natural(incarnation)}])
+def source_values(values:List<&2,Store.Effect>) -> List<&2,J.Value>:
+  match values:
+    case Nil{}: []
+    case Store.OwnedDirty{source} <> rest: source_value(source) <> source_values(rest)
+    case other <> rest: source_values(rest)
 def player_value(state:I.State) -> J.Value:
   I.State{Inv.Inventory{slots,length},selected,abilities,I.Profile{catalog,status,I.Menu{opened,revision,result}}} = state
   Live.obj([J.JMember{"selected",Live.uint(selected)},J.JMember{"abilities",Slots.abilities_value(abilities,status)},
@@ -107,20 +135,20 @@ def handle_value(value:Menu.Handle) -> J.Value:
 def reply_view(value:Menu.Snapshot) -> J.Value:
   Menu.Snapshot{handle,furnace,inventory} = value
   Live.obj([J.JMember{"id",handle_value(handle)},J.JMember{"furnace_available",Live.boolean(Maybe.is_some(&2,Menu.FurnaceView,furnace))}])
-def output(+label:String,+before:List<&2,U32>,+accepted:Bool,+message:String,+dirty:U32,+menu:J.Value,+player:J.Value,+entries:List<&2,J.Value>,result:C.World & Result<&2,&2,String,List<&2,U32>>) -> IO(Unit):
+def output(+label:String,+before:List<&2,U32>,+accepted:Bool,+message:String,+dirty:U32,+legacy:U32,+sources:List<&2,J.Value>,+menu:J.Value,+player:J.Value,+entries:List<&2,J.Value>,result:C.World & Result<&2,&2,String,List<&2,U32>>) -> IO(Unit):
   (world,status) = result
   match status:
     case Fail{message}: IO.die(Unit,2,message)
     case Done{after}:
       IO.print(J.encode(Live.obj([J.JMember{"id",Live.text(label)},J.JMember{"accepted",Live.boolean(accepted)},J.JMember{"message",Live.text(message)},
-        J.JMember{"dirty",Live.uint(dirty)},J.JMember{"menu",menu},J.JMember{"before_core",bytes(before)},J.JMember{"after_core",bytes(after)},
+        J.JMember{"dirty",Live.uint(dirty)},J.JMember{"legacy_dirty",Live.uint(legacy)},J.JMember{"owned_dirty",J.JArray{sources}},J.JMember{"menu",menu},J.JMember{"before_core",bytes(before)},J.JMember{"after_core",bytes(after)},
         J.JMember{"player",player},J.JMember{"entries",J.JArray{entries}}])))
 def observed_status(+label:String,+before:List<&2,U32>,+identity:String,inventory:I.State,owner:CW.State,status:Result<&2,&2,String,Menu.Reply>) -> IO(Unit):
   CW.State{W.State{world,light,loading},entries,phase,keys} = owner
   match status:
     case Fail{message}: IO.die(Unit,2,message)
-    case Done{Menu.Reply{accepted,message,snapshot,effects}}:
-      output(label,before,accepted,message,used(effects),reply_view(snapshot),player_value(inventory),entry_values(entries),WC.encode(world,identity))
+    case Done{Menu.Reply{accepted,message,snapshot,+effects}}:
+      output(label,before,accepted,message,used(effects),legacy_used(effects),source_values(effects),reply_view(snapshot),player_value(inventory),entry_values(entries),WC.encode(world,identity))
 def observed(+label:String,+before:List<&2,U32>,+identity:String,result:CW.State & I.State & Result<&2,&2,String,Menu.Reply>) -> IO(Unit):
   (owner,inventory,status) = result
   observed_status(label,before,identity,inventory,owner,status)

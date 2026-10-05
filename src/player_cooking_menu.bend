@@ -5,6 +5,8 @@ import ./block_light.bend as L
 import ./campfire_authority_items.bend as AI
 import ./cooking_world.bend as CW
 import ./cooking_world_store.bend as Store
+import ./cooking_effect_publication_journal.bend as Journal
+import ./local_player_cooking_dirty_stamp.bend as DirtyStamp
 import ./cooking_world_bindings.bend as Binding
 import ./cooking_world_slots.bend as Slots
 import ./cooking_recipe.bend as K
@@ -120,10 +122,19 @@ def result(+snapshot:I.MenuSnapshot) -> Maybe<&2,Inv.Slot>:
   I.MenuSnapshot{saved,craft,carried,value,opened,revision} = snapshot
   value
 
-def dirty(+handle:Handle) -> List<&2,Store.Effect>:
+def dirty(+handle:Handle,binding:Binding.Binding) -> List<&2,Store.Effect>:
   match handle:
     case Closed{}: []
-    case Furnace{menu,peer,position,block,kind,token}: [Store.Dirty{position}]
+    case Furnace{menu,peer,position,block,kind,token}: [Store.OwnedDirty{Journal.Source{position,binding,token}}]
+
+# These are only the new effects returned by this accepted slot commit. The
+# actual cached binding came from live_result before the operation. An older
+# pending queue is never supplied, and unrelated effects retain their order.
+def stamped(+handle:Handle,binding:Binding.Binding,effects:List<&2,Store.Effect>) -> List<&2,Store.Effect>:
+  match handle:
+    case Closed{}: effects
+    case Furnace{menu,peer,position,block,kind,token}:
+      DirtyStamp.effects(effects,Journal.Source{position,binding,token})
 
 def opened_projected(+opened:Bool,+snapshot:I.MenuSnapshot) -> I.MenuSnapshot:
   I.MenuSnapshot{saved,craft,carried,result,previous,revision} = snapshot
@@ -194,7 +205,7 @@ def find(+left:Nat,+context:CW.Context,+position:C.Position,+state:U32,entries:L
     case 1n+n Store.Entry{+candidate,binding,entity} <> rest:
       find_chosen(Binding.equal_position(candidate,position),context,state,Store.Entry{candidate,binding,entity},rest,rest => find(n,context,position,state,rest))
 
-def committed(inventory:I.State,+handle:Handle,+old:FA.Snapshot,+snapshot:I.MenuSnapshot,+plan:Transfer.Plan,
+def committed(inventory:I.State,+handle:Handle,+binding:Binding.Binding,+old:FA.Snapshot,+snapshot:I.MenuSnapshot,+plan:Transfer.Plan,
     result:CW.State & Result<&2,&2,CW.Error,Slots.Receipt>) -> CW.State & I.State & Result<&2,&2,String,Reply>:
   Transfer.Plan{+next,+slots,command,before,after,valid,+changed,message} = plan
   (owner,status) = result
@@ -202,7 +213,7 @@ def committed(inventory:I.State,+handle:Handle,+old:FA.Snapshot,+snapshot:I.Menu
     case Fail{error}: (owner,inventory,Done{reply(False{},"cooking-menu:slot-publication-refused",handle,Some{view(old)},snapshot,[])})
     case Done{Slots.Receipt{previous,remaining,index,+effects}}:
       (owner,published(inventory,slots,changed),Done{reply(True{},"",handle,Some{view(next)},projected(snapshot,slots,changed),
-        List.append(&2,Store.Effect,effects,dirty(handle)))})
+        List.append(&2,Store.Effect,stamped(handle,binding,effects),dirty(handle,binding)))})
 
 def closed_actual(owner:CW.State,+previous:Handle,+next:Handle,+furnace:Maybe<&2,FurnaceView>,+old:I.MenuSnapshot,+opened:Bool,result:I.State & Result<&2,&2,String,Unit>) ->
     CW.State & I.State & Result<&2,&2,String,Reply>:
@@ -215,12 +226,12 @@ def sized(+context:CW.Context,+position:C.Position,+state:U32,world:W.State,resu
   (entries,count) = result
   found(world,find(1n+count,context,position,state,entries))
 
-def command_commit(+context:CW.Context,owner:CW.State,inventory:I.State,+handle:Handle,+old:FA.Snapshot,+snapshot:I.MenuSnapshot,+plan:Transfer.Plan,+next:FA.Snapshot,+slots:List<&2,Inv.Slot>,+changed:Bool,+capability:C.Capability,+may_interact:Bool,+command:Maybe<&2,Slots.Command>) -> CW.State & I.State & Result<&2,&2,String,Reply>:
+def command_commit(+context:CW.Context,owner:CW.State,inventory:I.State,+handle:Handle,binding:Binding.Binding,+old:FA.Snapshot,+snapshot:I.MenuSnapshot,+plan:Transfer.Plan,+next:FA.Snapshot,+slots:List<&2,Inv.Slot>,+changed:Bool,+capability:C.Capability,+may_interact:Bool,+command:Maybe<&2,Slots.Command>) -> CW.State & I.State & Result<&2,&2,String,Reply>:
   match handle command:
     case _ None{}:
       (owner,published(inventory,slots,changed),Done{reply(True{},"",handle,Some{view(next)},projected(snapshot,slots,changed),[])})
     case Furnace{menu,peer,position,block,kind,incarnation} Some{command}:
-      committed(inventory,handle,old,snapshot,plan,Slots.dispatch(context,owner,position,command,capability,may_interact))
+      committed(inventory,handle,binding,old,snapshot,plan,Slots.dispatch(context,owner,position,command,capability,may_interact))
     case Closed{} _:
       (owner,inventory,Done{reply(False{},"cooking-menu:closed",handle,Some{view(old)},snapshot,[])})
 
@@ -236,11 +247,11 @@ def block_read(+context:CW.Context,+position:C.Position,light:L.State,+loading:M
     case Fail{error}: (CW.State{W.State{world,light,loading},entries,CW.Idle{},[]},Fail{"cooking-menu:target-unavailable"})
     case Done{state}: sized(context,position,state,W.State{world,light,loading},Store.size(entries))
 
-def commit_planned(+context:CW.Context,+access:Access,owner:CW.State,inventory:I.State,+handle:Handle,+old:FA.Snapshot,+snapshot:I.MenuSnapshot,+plan:Transfer.Plan) ->
+def commit_planned(+context:CW.Context,+access:Access,owner:CW.State,inventory:I.State,+handle:Handle,binding:Binding.Binding,+old:FA.Snapshot,+snapshot:I.MenuSnapshot,+plan:Transfer.Plan) ->
     CW.State & I.State & Result<&2,&2,String,Reply>:
   Access{capability,may_interact,dimension,eye,range,token} = access
   Transfer.Plan{+next,+slots,command,before,after,valid,+changed,message} = plan
-  command_commit(context,owner,inventory,handle,old,snapshot,plan,next,slots,changed,capability,may_interact,command)
+  command_commit(context,owner,inventory,handle,binding,old,snapshot,plan,next,slots,changed,capability,may_interact,command)
 
 def return_allowed(+allowed:Bool,admit:Reply -> Result<&2,&2,String,Unit>,owner:CW.State,inventory:I.State,+previous:Handle,+next:Handle,+furnace:Maybe<&2,FurnaceView>,+old:I.MenuSnapshot,+opened:Bool,+plan:Return.Plan) ->
     CW.State & I.State & Result<&2,&2,String,Reply>:
@@ -261,22 +272,22 @@ def live(+context:CW.Context,owner:CW.State,+position:C.Position) -> CW.State & 
     case CW.State{W.State{world,light,loading},entries,CW.Idle{},Nil{}}:
       block_read(context,position,light,loading,entries,C.read_block(world,position))
 
-def preflighted(+context:CW.Context,+access:Access,owner:CW.State,inventory:I.State,+handle:Handle,+old:FA.Snapshot,+snapshot:I.MenuSnapshot,
+def preflighted(+context:CW.Context,+access:Access,owner:CW.State,inventory:I.State,+handle:Handle,binding:Binding.Binding,+old:FA.Snapshot,+snapshot:I.MenuSnapshot,
     +plan:Transfer.Plan,+admission:Result<&2,&2,String,Unit>) -> CW.State & I.State & Result<&2,&2,String,Reply>:
   match admission:
     case Fail{message}: (owner,inventory,Done{reply(False{},message,handle,Some{view(old)},snapshot,[])})
-    case Done{unit}: commit_planned(context,access,owner,inventory,handle,old,snapshot,plan)
+    case Done{unit}: commit_planned(context,access,owner,inventory,handle,binding,old,snapshot,plan)
 
 def return_planned(admit:Reply -> Result<&2,&2,String,Unit>,owner:CW.State,inventory:I.State,+previous:Handle,+next:Handle,+furnace:Maybe<&2,FurnaceView>,+old:I.MenuSnapshot,+opened:Bool,+plan:Return.Plan) -> CW.State & I.State & Result<&2,&2,String,Reply>:
   return_allowed(Return.admitted(plan),admit,owner,inventory,previous,next,furnace,old,opened,plan)
 
-def planned(admit:Reply -> Result<&2,&2,String,Unit>,+context:CW.Context,+access:Access,owner:CW.State,inventory:I.State,+handle:Handle,+old:FA.Snapshot,+snapshot:I.MenuSnapshot,+plan:Transfer.Plan) ->
+def planned(admit:Reply -> Result<&2,&2,String,Unit>,+context:CW.Context,+access:Access,owner:CW.State,inventory:I.State,+handle:Handle,binding:Binding.Binding,+old:FA.Snapshot,+snapshot:I.MenuSnapshot,+plan:Transfer.Plan) ->
     CW.State & I.State & Result<&2,&2,String,Reply>:
   Transfer.Plan{+next,+slots,command,before,after,+valid,+changed,message} = plan
   match valid:
     case False{}: (owner,inventory,Done{reply(False{},message,handle,Some{view(old)},snapshot,[])})
     case True{}:
-      preflighted(context,access,owner,inventory,handle,old,snapshot,plan,
+      preflighted(context,access,owner,inventory,handle,binding,old,snapshot,plan,
         admit(reply(True{},"",handle,Some{view(next)},projected(snapshot,slots,changed),[])))
 
 def return_catalog(admit:Reply -> Result<&2,&2,String,Unit>,owner:CW.State,+previous:Handle,+next:Handle,+furnace:Maybe<&2,FurnaceView>,+old:I.MenuSnapshot,+opened:Bool,
@@ -284,10 +295,10 @@ def return_catalog(admit:Reply -> Result<&2,&2,String,Unit>,owner:CW.State,+prev
   (inventory,catalog) = result
   return_planned(admit,owner,inventory,previous,next,furnace,old,opened,Return.plan(I.menu_slots(old),selection(old),catalog))
 
-def with_catalog(admit:Reply -> Result<&2,&2,String,Unit>,+context:CW.Context,+access:Access,owner:CW.State,+handle:Handle,+old:FA.Snapshot,+snapshot:I.MenuSnapshot,+action:Action,
+def with_catalog(admit:Reply -> Result<&2,&2,String,Unit>,+context:CW.Context,+access:Access,owner:CW.State,+handle:Handle,binding:Binding.Binding,+old:FA.Snapshot,+snapshot:I.MenuSnapshot,+action:Action,
     result:I.State & D.Catalog) -> CW.State & I.State & Result<&2,&2,String,Reply>:
   (inventory,catalog) = result
-  planned(admit,context,access,owner,inventory,handle,old,snapshot,chosen_plan(context,old,snapshot,catalog,action))
+  planned(admit,context,access,owner,inventory,handle,binding,old,snapshot,chosen_plan(context,old,snapshot,catalog,action))
 
 def open_peer(admit:Reply -> Result<&2,&2,String,Unit>,inventory:I.State,+previous:Handle,+access:Access,+position:C.Position,+menu:U32,+snapshot:I.MenuSnapshot,
     result:CW.State & Result<&2,&2,String,Live>,+peer:Maybe<&2,U32>) -> CW.State & I.State & Result<&2,&2,String,Reply>:
@@ -304,10 +315,10 @@ def close_allowed(+allowed:Bool,admit:Reply -> Result<&2,&2,String,Unit>,owner:C
     case False{}: (owner,inventory,Done{reply(False{},"cooking-menu:wrong-close-owner",handle,None{},snapshot,[])})
     case True{}: return_catalog(admit,owner,handle,Closed{},None{},snapshot,False{},I.definitions(inventory))
 
-def owner_matched(+matched:Bool,admit:Reply -> Result<&2,&2,String,Unit>,+context:CW.Context,+access:Access,owner:CW.State,inventory:I.State,+handle:Handle,+old:FA.Snapshot,+snapshot:I.MenuSnapshot,+action:Action) -> CW.State & I.State & Result<&2,&2,String,Reply>:
+def owner_matched(+matched:Bool,admit:Reply -> Result<&2,&2,String,Unit>,+context:CW.Context,+access:Access,owner:CW.State,inventory:I.State,+handle:Handle,binding:Binding.Binding,+old:FA.Snapshot,+snapshot:I.MenuSnapshot,+action:Action) -> CW.State & I.State & Result<&2,&2,String,Reply>:
   match matched:
     case False{}: (owner,inventory,Done{reply(False{},"cooking-menu:owner-replaced",handle,None{},snapshot,[])})
-    case True{}: with_catalog(admit,context,access,owner,handle,old,snapshot,action,I.definitions(inventory))
+    case True{}: with_catalog(admit,context,access,owner,handle,binding,old,snapshot,action,I.definitions(inventory))
 
 def open_live(admit:Reply -> Result<&2,&2,String,Unit>,inventory:I.State,+previous:Handle,+access:Access,+position:C.Position,+menu:U32,+snapshot:I.MenuSnapshot,result:CW.State & Result<&2,&2,String,Live>) -> CW.State & I.State & Result<&2,&2,String,Reply>:
   Access{capability,may_interact,dimension,eye,range,token} = access
@@ -318,8 +329,8 @@ def live_result(admit:Reply -> Result<&2,&2,String,Unit>,+context:CW.Context,+ac
   (owner,status) = result
   match status:
     case Fail{message}: (owner,inventory,Done{reply(False{},message,handle,None{},snapshot,[])})
-    case Done{Live{binding,+old}}:
-      owner_matched(matching(handle,binding,old),admit,context,access,owner,inventory,handle,old,snapshot,action)
+    case Done{Live{+binding,+old}}:
+      owner_matched(matching(handle,binding,old),admit,context,access,owner,inventory,handle,binding,old,snapshot,action)
 
 def open_allowed(+allowed:Bool,admit:Reply -> Result<&2,&2,String,Unit>,+context:CW.Context,+access:Access,owner:CW.State,inventory:I.State,+previous:Handle,+position:C.Position,+menu:U32,+snapshot:I.MenuSnapshot) -> CW.State & I.State & Result<&2,&2,String,Reply>:
   match allowed:
@@ -360,4 +371,3 @@ def dispatched(admit:Reply -> Result<&2,&2,String,Unit>,+context:CW.Context,+acc
 def dispatch(admit:Reply -> Result<&2,&2,String,Unit>,+context:CW.Context,owner:CW.State,inventory:I.State,+handle:Handle,+access:Access,+action:Action) ->
     CW.State & I.State & Result<&2,&2,String,Reply>:
   dispatched(admit,context,access,owner,handle,action,I.menu_inspect(inventory))
-

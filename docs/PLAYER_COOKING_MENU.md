@@ -59,6 +59,21 @@ explicit `cooking-menu:campfire-hand-pass` message. Explicit `use(...,True)`
 remains the offhand-only authority path. This avoids a second network request
 with a different camera ray or target.
 
+New menu mutations carry an authenticated `OwnedDirty` source. Furnace lookup
+retains the actual `Live.binding` before committing a transfer; the source pairs
+that complete registered binding with the handle's exact position and
+incarnation. Each new slot Dirty, when produced, and the appended menu Dirty
+are stamped in their original order. Input identity reset emits both; same-item
+input pickup and output removal emit only the menu Dirty. Campfire use captures the first exact
+target Entry's binding before placement while returning every Entry/entity and
+the sole Core unchanged. Actual slot dispatch then rechecks that same Entry
+against resident Core state. Successful placement effects use that captured
+binding and the actual `Access.token`; the campfire path has no GUI handle.
+Refused placement and player-only movement create no source. Existing pending
+effects never enter either stamping call: legacy position-only Dirty remains
+unattested and explicitly refused by the publication authority. This producer
+join does not itself establish publisher delivery or format4 recovery.
+
 The new pure cooking screen receives the correlated full snapshot and actual
 resolved resource icons. It uses the observed176x166 layout and native-to-logical
 mapping through the existing viewport. Resize invalidates stored hover/pointer
@@ -130,12 +145,34 @@ replayed. See `evidence/player-cooking-menu-screen-native-003.json`. This displa
 correction preserves all four raw authoritative timer words and makes no OS
 input or complete vanilla-resource appearance claim.
 
+The later source-producer join passes nine focused native owner cases in
+generation005: three furnace mutations, player-only movement, two furnace
+refusals, campfire placement, placement-budget refusal and actual main-hand
+PASS to offhand placement. Exact binding/position/incarnation records and effect
+counts are checked alongside the retained Java deltas, complete Core and both
+physical owners. All new Dirty effects are owned; player-only/refused operations
+produce none. Original source checking and C emission took38.3602s, compilation
+20.9479s and the nine-case native receiver12.8184s. A host expectation incorrectly
+required two Dirty calls for input count change/output removal; the actual slot
+authority marks Dirty only on input identity reset. The incorrect expectation
+and two earlier source diagnostics are retained. Only the host counts were
+corrected against the same native raw output, without a source change or native
+replay. See `evidence/player-cooking-menu-owned-dirty-005.json` and
+`evidence/player-cooking-menu-owned-dirty-failures.json`. This establishes new
+producer records and owner retention, not legacy queue delivery, publisher
+effects, format4 recovery, network cooking GUI or OS input. Owned compiled
+Menu/Camp/test pins are exact; a later unrelated `block_model` edit is recorded
+as import drift, so the receipt certifies its pinned receiver rather than the
+entire current working graph.
+
 The optional11-law production ownership/controller target has a complete
 ordinary checked selective export with zero exclusions. Its independent
 kernel attempt failed in4.7167seconds at imported `json.encode_go`, reporting
 `affine live code, calls that descend`; it did not hit a time or memory bound.
-That retained export002 predates later imported-source edits and the display
-correction. `evidence/player-cooking-menu-proof-002.json` records the exact
+That retained export002 predates later imported-source edits, the display
+correction and the new private binding argument threaded through mutation.
+The reply-refusal law now retains that argument; it has no new kernel verdict.
+`evidence/player-cooking-menu-proof-002.json` records the exact
 artifact and failure. There is no independent proof certificate or root
 aggregate inclusion. The equations concern complete-owner refusal/retention,
 profile publication and full controller close/focus composition; they do not

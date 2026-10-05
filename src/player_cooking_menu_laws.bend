@@ -3,6 +3,7 @@ import ./player_cooking_menu.bend as Menu
 import ./player_cooking_menu_transfer.bend as Move
 import ./cooking_world.bend as CW
 import ./cooking_world_store.bend as Store
+import ./cooking_world_bindings.bend as Binding
 import ./furnace_authority.bend as FA
 import ./player_inventory.bend as I
 import ./player_item_definitions.bend as D
@@ -35,13 +36,14 @@ law reply_budget_refusal_retains_both_actual_owners:
   for owner:CW.State
   for inventory:I.State
   for handle:Menu.Handle
+  for binding:Binding.Binding
   for old:FA.Snapshot
   for snapshot:I.MenuSnapshot
   for plan:Move.Plan
   for message:String
-  {Menu.preflighted(context,access,owner,inventory,handle,old,snapshot,plan,Fail{message}) ==
+  {Menu.preflighted(context,access,owner,inventory,handle,binding,old,snapshot,plan,Fail{message}) ==
     (owner,inventory,Done{Menu.reply(False{},message,handle,Some{Menu.view(old)},snapshot,[])}) : CW.State & I.State & Result<&2,&2,String,Menu.Reply>}
-def reply_budget_refusal_retains_both_actual_owners(context,access,owner,inventory,handle,old,snapshot,plan,message): {==}
+def reply_budget_refusal_retains_both_actual_owners(context,access,owner,inventory,handle,binding,old,snapshot,plan,message): {==}
 
 law failed_return_admission_retains_both_actual_owners:
   for owner:CW.State
