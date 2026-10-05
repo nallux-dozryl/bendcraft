@@ -72,6 +72,17 @@ def load(sidecar:Cooking.Sidecar,engine:G.Engine,path:String,environment:Collisi
       checked(registry,path,environment,
         geometry => Cooking.Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged,
           Carrier.Bound{entity_context,owner,inputs,geometry,publisher},[]},Cooking.checked_world(world,context))
+    case Cooking.Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged,
+        Carrier.TickBound{entity_context,owner,inputs,Some{geometry},publisher,tick},Nil{}}:
+      IO.pure(G.Engine & Cooking.Sidecar & Result<&2,&2,String,Unit>,
+        (engine,Cooking.Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged,
+          Carrier.TickBound{entity_context,owner,inputs,Some{geometry},publisher,tick},[]},Fail{"local-cooking:geometry-owner-already-bound"}))
+    case Cooking.Initialized{+context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged,
+        Carrier.TickBound{entity_context,owner,inputs,None{},publisher,tick},Nil{}}:
+      G.Engine{world,registry} = engine
+      checked(registry,path,environment,
+        geometry => Cooking.Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged,
+          Carrier.TickBound{entity_context,owner,inputs,geometry,publisher,tick},[]},Cooking.checked_world(world,context))
 
 def request_prepared(position:C.Position,environment:Collision.Environment,value:Geometry.Prepared) -> World.Request:
   Geometry.Prepared{point,body,center,search,outer} = value

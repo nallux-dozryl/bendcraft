@@ -1,0 +1,35 @@
+{
+  "status": "failed",
+  "directory": "build/local-player-cooking-tick-owner/proof-001-1791170526275654000",
+  "receipt": {
+    "argv": [
+      "/opt/homebrew/bin/node",
+      "--expose-gc",
+      "--max-old-space-size=8192",
+      "--stack-size=4096",
+      "--experimental-transform-types",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/local_player_cooking_tick_owner_proof.mjs",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-owner/proof-001-1791170526275654000"
+    ],
+    "exit_code": 1,
+    "group_absent": true,
+    "pid": 59978,
+    "seconds": 9.564141,
+    "stderr": {
+      "bytes": 438,
+      "file": "original-source-export.stderr",
+      "sha1": "70b968fc0013aaaf1b08073cbd3f1236fb540a12",
+      "sha256": "d4455cac8bfa0b8f1762eaab86a2bcbb531ba3b5c6ab1b98d6238fb95dfa1be2"
+    },
+    "stdout": {
+      "bytes": 0,
+      "file": "original-source-export.stdout",
+      "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "timed_out": false
+  },
+  "error": "(node:59978) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\nError:\n- message  : a declared constructor (unknown: src/cooking_world.Context)\nLocation:\n12 | def bindings(context:CW.Context) -> B.Catalog:\n13>|   CW.Context{catalog,campfire,fuel,depth} = context\n   |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n14 |   catalog\n",
+  "scope": "Harness namespace disagreement loaded the proof using a different source-root namespace before loading actual consumer modules. Canonical src/root loading fixed the harness; no production change was made for this failure.",
+  "source_or_kernel_or_native_claim": false
+}

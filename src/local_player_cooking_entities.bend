@@ -13,6 +13,7 @@ import ./registry.bend as Registry
 import ./local_player_cooking_geometry_owner.bend as GeometryOwner
 import ./local_player_cooking_entity_delivery.bend as Delivery
 import ./local_player_cooking_publication_owner.bend as Publisher
+import ./local_player_cooking_tick_owner.bend as Tick
 
 # This actor currently binds one overworld Level RNG. Global factory/IDs are
 # retained, but a different Level needs its own random owner before consuming
@@ -105,6 +106,19 @@ def bound(world:C.World,restore:Owner.Carrier -> List<&2,Store.Effect> -> Cookin
     result : Model.State & Entities.Outcome <- scoped_io(entity_context,owner,inputs,scope(effects))
     return delivered(world,restore,entity_context,geometry,publisher,result)
 
+def delivered_tick(world:C.World,restore:Owner.Carrier -> List<&2,Store.Effect> -> Cooking.Sidecar,entity_context:Model.Context,
+    geometry:Maybe<&1,GeometryOwner.Owner>,publisher:Publisher.Carrier,tick:Tick.State,
+    result:Model.State & Entities.Outcome) -> C.World & Cooking.Sidecar & Result<&2,&2,String,Unit>:
+  (owner,Entities.Outcome{pending,outcome,inputs}) = result
+  (world,restore(Owner.TickBound{entity_context,owner,inputs,geometry,publisher,tick})(pending),status(outcome))
+
+def bound_tick(world:C.World,restore:Owner.Carrier -> List<&2,Store.Effect> -> Cooking.Sidecar,+entity_context:Model.Context,
+    effects:List<&2,Store.Effect>,owner:Model.State,inputs:List<&2,Random.Bits64>,geometry:Maybe<&1,GeometryOwner.Owner>,
+    publisher:Publisher.Carrier,tick:Tick.State) -> IO(C.World & Cooking.Sidecar & Result<&2,&2,String,Unit>):
+  do IO<C.World & Cooking.Sidecar & Result<&2,&2,String,Unit>>:
+    result : Model.State & Entities.Outcome <- scoped_io(entity_context,owner,inputs,scope(effects))
+    return delivered_tick(world,restore,entity_context,geometry,publisher,tick,result)
+
 def fallback(world:C.World,result:Cooking.Sidecar & Result<&2,&2,String,Unit>) -> IO(C.World & Cooking.Sidecar & Result<&2,&2,String,Unit>):
   (sidecar,outcome) = result
   IO.pure(C.World & Cooking.Sidecar & Result<&2,&2,String,Unit>,(world,sidecar,outcome))
@@ -123,6 +137,10 @@ def ready(world:C.World,sidecar:Cooking.Sidecar) -> IO(C.World & Cooking.Sidecar
     case Cooking.Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,Owner.Bound{entity_context,owner,inputs,geometry,publisher},Nil{}}:
       bound(world,carrier => pending => Cooking.Initialized{context,light,loading,entries,phase,keys,pending,details,incarnations,acknowledged_resets,carrier,[]},
         entity_context,effects,owner,inputs,geometry,publisher)
+    case Cooking.Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,
+        Owner.TickBound{entity_context,owner,inputs,geometry,publisher,tick},Nil{}}:
+      bound_tick(world,carrier => pending => Cooking.Initialized{context,light,loading,entries,phase,keys,pending,details,incarnations,acknowledged_resets,carrier,[]},
+        entity_context,effects,owner,inputs,geometry,publisher,tick)
 
 def checked(sidecar:Cooking.Sidecar,result:C.World & Bool) -> IO(C.World & Cooking.Sidecar & Result<&2,&2,String,Unit>):
   (world,valid) = result
@@ -157,6 +175,22 @@ def bound_engine(engine:G.Engine,restore:Owner.Carrier -> List<&2,Store.Effect> 
       Delivery.deliver_io(~supported,effects,engine,geometry,entity_context,owner,inputs)
     return delivered_engine(restore,entity_context,publisher,result)
 
+def delivered_engine_tick(restore:Owner.Carrier -> List<&2,Store.Effect> -> Cooking.Sidecar,
+    entity_context:Model.Context,publisher:Publisher.Carrier,tick:Tick.State,
+    result:G.Engine & Maybe<&1,GeometryOwner.Owner> & Model.State & Entities.Outcome) ->
+    G.Engine & Cooking.Sidecar & Result<&2,&2,String,Unit>:
+  (engine,geometry,owner,Entities.Outcome{pending,outcome,inputs}) = result
+  (engine,restore(Owner.TickBound{entity_context,owner,inputs,geometry,publisher,tick})(pending),status(outcome))
+
+def bound_engine_tick(engine:G.Engine,restore:Owner.Carrier -> List<&2,Store.Effect> -> Cooking.Sidecar,
+    +entity_context:Model.Context,effects:List<&2,Store.Effect>,owner:Model.State,
+    inputs:List<&2,Random.Bits64>,geometry:Maybe<&1,GeometryOwner.Owner>,publisher:Publisher.Carrier,tick:Tick.State) ->
+    IO(G.Engine & Cooking.Sidecar & Result<&2,&2,String,Unit>):
+  do IO<G.Engine & Cooking.Sidecar & Result<&2,&2,String,Unit>>:
+    result : G.Engine & Maybe<&1,GeometryOwner.Owner> & Model.State & Entities.Outcome <-
+      Delivery.deliver_io(~supported,effects,engine,geometry,entity_context,owner,inputs)
+    return delivered_engine_tick(restore,entity_context,publisher,tick,result)
+
 def engine_fallback(engine:G.Engine,result:Cooking.Sidecar & Result<&2,&2,String,Unit>) ->
     IO(G.Engine & Cooking.Sidecar & Result<&2,&2,String,Unit>):
   (sidecar,status) = result
@@ -179,6 +213,10 @@ def engine_ready(engine:G.Engine,sidecar:Cooking.Sidecar) ->
         Owner.Bound{entity_context,owner,inputs,geometry,publisher},Nil{}}:
       bound_engine(engine,carrier => pending => Cooking.Initialized{context,light,loading,entries,phase,keys,pending,details,incarnations,acknowledged,carrier,[]},
         entity_context,effects,owner,inputs,geometry,publisher)
+    case Cooking.Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged,
+        Owner.TickBound{entity_context,owner,inputs,geometry,publisher,tick},Nil{}}:
+      bound_engine_tick(engine,carrier => pending => Cooking.Initialized{context,light,loading,entries,phase,keys,pending,details,incarnations,acknowledged,carrier,[]},
+        entity_context,effects,owner,inputs,geometry,publisher,tick)
 
 def engine_checked(registry:Registry.Registry,sidecar:Cooking.Sidecar,result:C.World & Bool) ->
     IO(G.Engine & Cooking.Sidecar & Result<&2,&2,String,Unit>):

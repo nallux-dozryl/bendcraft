@@ -260,8 +260,7 @@ def cooking_entity_observed(result:Cooking.Sidecar & Maybe<&2,CookingModel.View>
 # The immutable View is observed from the actual owner; the live carrier and
 # its complete clock queue remain inside the same Session throughout saving.
 def cooking_entities(state:State) -> State & Maybe<&2,CookingStorage.EntityRecovery>:
-  cooking_sidecar_query(Maybe<&2,CookingStorage.EntityRecovery>,state,
-    sidecar => cooking_entity_observed(Cooking.entity_snapshot(sidecar)))
+  cooking_sidecar_query(Maybe<&2,CookingStorage.EntityRecovery>,state,Cooking.saved_entity_snapshot)
 
 def cooking_restore_entities(state:State,context:CookingModel.Context,recovery:Maybe<&2,CookingStorage.EntityRecovery>) -> State & Result<&2,&2,String,Unit>:
   match recovery:
@@ -269,6 +268,8 @@ def cooking_restore_entities(state:State,context:CookingModel.Context,recovery:M
       cooking_sidecar_query(Result<&2,&2,String,Unit>,state,sidecar => Cooking.restore_entity_view(sidecar,context,None{},[]))
     case Some{CookingStorage.EntityRecovery{view,inputs}}:
       cooking_sidecar_query(Result<&2,&2,String,Unit>,state,sidecar => Cooking.restore_entity_view(sidecar,context,Some{view},inputs))
+    case Some{CookingStorage.TickRecovery{snapshot}}:
+      cooking_sidecar_query(Result<&2,&2,String,Unit>,state,sidecar => Cooking.restore_entity_tick(sidecar,context,snapshot))
 
 # Existing Views restore their exact owner and supplied clock queue with no
 # factory draws. Legacy/fresh absence enters only the declared fresh process

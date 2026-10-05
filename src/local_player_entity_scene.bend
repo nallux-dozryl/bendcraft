@@ -13,6 +13,8 @@ import ./item_entity_render.bend as Render
 import ./item_entity_render_model.bend as D
 import ./world_mesh.bend as WM
 import ./player_look.bend as Look
+import ./local_player_cooking_tick_storage.bend as TickStorage
+import ./local_player_effect_tick_recovery.bend as TickRecovery
 
 # Only the immutable presentation projection leaves this continuation. The
 # real entity/RNG owner and unused constructor clocks remain in the Session.
@@ -20,6 +22,8 @@ def projected(value:Maybe<&2,Storage.EntityRecovery>) -> D.Snapshot:
   match value:
     case None{}: D.Unbound{}
     case Some{Storage.EntityRecovery{view,inputs}}: Render.render_snapshot(view)
+    case Some{Storage.TickRecovery{TickStorage.Stored{TickRecovery.Recovery{view,runtimes,sound},inputs,membership}}}:
+      Render.render_snapshot(view)
 
 def captured(dimension:String,partial:F32,sample:GS.Sample,
     result:S.State & Maybe<&2,Storage.EntityRecovery>) -> S.State & Result<&2,&2,String,Frame.Frame>:

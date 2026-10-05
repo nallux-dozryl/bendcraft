@@ -17,6 +17,8 @@ import ./local_player_cooking_entity_owner.bend as Owner
 import ./cooking_effect_entities_model.bend as Model
 import ./random.bend as Random
 import ./local_player_cooking_publication_owner.bend as Publisher
+import ./local_player_cooking_storage.bend as Storage
+import ./local_player_cooking_tick_storage.bend as TickStorage
 
 # Catalogs must come from the authenticated registry loaders and the same
 # initialized recipe/item/fuel reload. The tail is an explicit canonical gate.
@@ -568,6 +570,18 @@ def entity_snapshot(sidecar:Sidecar) -> Sidecar & Maybe<&2,Model.View> & List<&2
       entity_snapshotted(context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,owned_tail,
         Owner.snapshot(entity_owner))
 
+def entity_saved(restore:Owner.Carrier -> Sidecar,result:Owner.Carrier & Maybe<&2,Storage.EntityRecovery>) ->
+    Sidecar & Maybe<&2,Storage.EntityRecovery>:
+  (owner,recovery) = result
+  (restore(owner),recovery)
+
+def saved_entity_snapshot(sidecar:Sidecar) -> Sidecar & Maybe<&2,Storage.EntityRecovery>:
+  match sidecar:
+    case Uninitialized{}: (Uninitialized{},None{})
+    case Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,entity_owner,owned_tail}:
+      entity_saved(owner => Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,owner,owned_tail},
+        Owner.saved_snapshot(entity_owner))
+
 def entity_bound(context:Context,light:L.State,loading:Maybe<&2,BW.Cursor>,entries:List<&1,Store.Entry>,phase:CW.Phase,
     keys:List<&2,String>,effects:List<&2,Store.Effect>,details:List<&2,BodyDetails>,incarnations:Map<&2,Nat>,acknowledged_resets:Nat,
     owned_tail:List<&1,Sidecar>,result:Owner.Carrier & Maybe<&1,Model.State> & Result<&2,&2,String,Unit>) ->
@@ -633,6 +647,30 @@ def restore_entity_view(sidecar:Sidecar,entity_context:Model.Context,+view:Maybe
         Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,entity_owner,owned_tail},
         entity_context,view,inputs)
 
+def entity_restore_tick_ready(sidecar:Sidecar,entity_context:Model.Context,saved:TickStorage.Stored) ->
+    Sidecar & Result<&2,&2,String,Unit>:
+  match sidecar:
+    case Uninitialized{}: (Uninitialized{},Fail{"local-cooking:uninitialized"})
+    case Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,entity_owner,Nil{}}:
+      entity_restored(context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,[],
+        Owner.restore_tick(entity_owner,entity_context,saved))
+    case Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,entity_owner,child <> rest}:
+      (Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,entity_owner,child <> rest},
+        Fail{"local-cooking:noncanonical-sidecar-tail"})
+
+def entity_restore_tick_checked(ready:Bool,sidecar:Sidecar,entity_context:Model.Context,saved:TickStorage.Stored) ->
+    Sidecar & Result<&2,&2,String,Unit>:
+  match ready:
+    case False{}: (sidecar,Fail{"local-cooking:invalid-context"})
+    case True{}: entity_restore_tick_ready(sidecar,entity_context,saved)
+
+def restore_entity_tick(sidecar:Sidecar,entity_context:Model.Context,saved:TickStorage.Stored) -> Sidecar & Result<&2,&2,String,Unit>:
+  match sidecar:
+    case Uninitialized{}: (Uninitialized{},Fail{"local-cooking:uninitialized"})
+    case Initialized{+context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,entity_owner,owned_tail}:
+      entity_restore_tick_checked(context_ready(context),
+        Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,entity_owner,owned_tail},entity_context,saved)
+
 # The legacy player bundle cannot encode a cooking owner or pending intents.
 # This admission is temporary until the actor's physical body framing is used.
 def save_admission(sidecar:Sidecar) -> Sidecar & Result<&2,&2,String,Unit>:
@@ -658,6 +696,10 @@ def save_admission(sidecar:Sidecar) -> Sidecar & Result<&2,&2,String,Unit>:
     case Initialized{context,light,None{},Nil{},CW.Idle{},Nil{},Nil{},Nil{},incarnations,acknowledged_resets,Owner.Bound{entity_context,state,inputs,geometry,publisher},Nil{}}:
       (Initialized{context,light,None{},[],CW.Idle{},[],[],[],incarnations,acknowledged_resets,Owner.Bound{entity_context,state,inputs,geometry,publisher},[]},
         Fail{"local-cooking:save-entity-owner-required"})
+    case Initialized{context,light,None{},Nil{},CW.Idle{},Nil{},Nil{},Nil{},incarnations,acknowledged_resets,
+        Owner.TickBound{entity_context,state,inputs,geometry,publisher,tick},Nil{}}:
+      (Initialized{context,light,None{},[],CW.Idle{},[],[],[],incarnations,acknowledged_resets,
+        Owner.TickBound{entity_context,state,inputs,geometry,publisher,tick},[]},Fail{"local-cooking:save-entity-owner-required"})
     case Initialized{context,light,None{},Nil{},CW.Idle{},Nil{},Nil{},Nil{},incarnations,acknowledged_resets,entity_owner,child <> rest}:
       (Initialized{context,light,None{},[],CW.Idle{},[],[],[],incarnations,acknowledged_resets,entity_owner,child <> rest},Fail{"local-cooking:noncanonical-sidecar-tail"})
 
@@ -665,6 +707,15 @@ def persistence_owner_checked(restore:Owner.Carrier -> Sidecar,result:Owner.Carr
     Sidecar & Result<&2,&2,String,Unit>:
   (owner,status) = result
   (restore(owner),status)
+
+def persistence_tick_checked(restore:Owner.Carrier -> Sidecar,effects:List<&2,Store.Effect>,incarnations:Map<&2,Nat>,
+    result:Owner.Carrier & Result<&2,&2,String,Unit>) -> Sidecar & Result<&2,&2,String,Unit>:
+  (owner,status) = result
+  match status:
+    case Fail{message}: (restore(owner),Fail{message})
+    case Done{unit}:
+      persistence_owner_checked(restore,Owner.with_publisher(Result<&2,&2,String,Unit>,owner,
+        publisher => Publisher.ready(publisher,effects,incarnations)))
 
 # Complete physical framing may retain known bodies and their base/extras.
 # Released intents are now captured in the actor's same atomic physical frame.
@@ -679,9 +730,8 @@ def persistence_ready(sidecar:Sidecar) -> Sidecar & Result<&2,&2,String,Unit>:
     case Initialized{context,light,None{},entries,CW.Idle{},key <> rest,effects,details,incarnations,acknowledged_resets,entity_owner,owned_tail}:
       (Initialized{context,light,None{},entries,CW.Idle{},key <> rest,effects,details,incarnations,acknowledged_resets,entity_owner,owned_tail},Fail{"local-cooking:save-section-discovery"})
     case Initialized{context,light,None{},entries,CW.Idle{},Nil{},+effects,details,+incarnations,acknowledged_resets,entity_owner,Nil{}}:
-      persistence_owner_checked(owner => Initialized{context,light,None{},entries,CW.Idle{},[],effects,details,incarnations,acknowledged_resets,owner,[]},
-        Owner.with_publisher(Result<&2,&2,String,Unit>,entity_owner,
-          publisher => Publisher.ready(publisher,effects,incarnations)))
+      persistence_tick_checked(owner => Initialized{context,light,None{},entries,CW.Idle{},[],effects,details,incarnations,acknowledged_resets,owner,[]},
+        effects,incarnations,Owner.persistence_ready(entity_owner))
     case Initialized{context,light,None{},entries,CW.Idle{},Nil{},effects,details,incarnations,acknowledged_resets,entity_owner,child <> rest}:
       (Initialized{context,light,None{},entries,CW.Idle{},[],effects,details,incarnations,acknowledged_resets,entity_owner,child <> rest},Fail{"local-cooking:noncanonical-sidecar-tail"})
 
