@@ -3,6 +3,20 @@
 Target: Minecraft Java 26.3. Compiler: Bend 2.0.35. The full goal remains active
 and incomplete; the current build is a limited integrated client.
 
+The actual frozen actor020 passes the complete original checker with 8,998
+declarations and zero holes, produces 63,107,010 bytes of C in 396.770 seconds
+at 4,963,155,968 bytes peak sampled RSS, and compiles to a 15,304,904-byte native
+actor in 200.110 seconds. Its real TCP/MCP consumer passes five complete format
+3 atomic byte comparisons and two SIGKILL/cold restores in 111.939 seconds,
+publishing two typed Items and an Orb worth 7 with exact constructor/RNG state.
+Fresh owner reset clears old physical Details, and cold continuation preserves
+all records/factory/IDs while advancing 18 primitive EmptyDrop draws. The
+consumer covers the isolated overworld factory/allocator and admitted
+remove-to-air geometry. Entity ticking, pickup, rendering and collision around
+present cooker blocks remain open. See
+`evidence/playable-client-actor004-build-020.json` and
+`evidence/playable-client-cooking-entities-native-005.json`.
+
 The separate generic003 resource client passes two hidden native frames with
 all 32,768 pixels equal to the pinned Java geometry/current CPU/HUD oracle,
 complete socket samples, a full durable save and cold restoration. It retains
@@ -40,8 +54,8 @@ remove/recreate clears old keyed physical Details. Its ordered pending
 beef/coal/empty Drops survive save and cold restoration; subsequent delivery
 refusals retain the unchanged Core/player. The consumer preserves earlier
 fixture and expected-error failures. This establishes durable recovery for
-the safe019 facade, while real item/XP publication remains the next joined
-source generation. See `evidence/playable-client-cooking-native-011.json`.
+the safe019 facade. Generation20 subsequently establishes the Item/Orb
+publication described above. See `evidence/playable-client-cooking-native-011.json`.
 
 Cooking storage's changed format 3 carries the complete Item/Orb owner snapshot
 and unused constructor clock inputs inside the same atomic Core/player/body/
@@ -50,9 +64,11 @@ owners preserve the earlier format 1/2 bytes exactly. The separate native
 entity codec passes eleven guards and 385 independent physical cases, including
 raw numeric words and complete RNG/factory/ID state. The actual delivery facade
 passes ten native owner/queue/clock cases. Generation20 joins these consumers,
-fresh isolated Level bootstrap and IO actor stepping; its complete actor
-delivery and format 3 interrupted-save/cold-recovery acceptance remain pending.
-See `evidence/local-player-cooking-storage-005.json`,
+fresh isolated Level bootstrap and IO actor stepping, and passes the actual
+delivery/durable-save/cold-recovery consumer described above. The sixteen
+wrapper guards also pass on the changed initialized component/inventory graph
+in attempt006. Crashes during unfinished writes remain a separate case.
+See `evidence/local-player-cooking-storage-006.json`,
 `evidence/local-player-effect-entities-codec-002.json`, and
 `evidence/cooking-effect-consumer-native-001.json`. The public launcher remains
 the verified017/008 pair below.

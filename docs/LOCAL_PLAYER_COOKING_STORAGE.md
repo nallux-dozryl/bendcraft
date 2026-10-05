@@ -69,7 +69,9 @@ owner-reset markers clear old keyed Details even when a due batch recreates
 the same block. These live joins require the coherent actor consumer.
 
 `python3 tools/test_local_player_cooking_storage.py` passed sixteen actual Bend
-default-JavaScript guards in attempt 005, in 12.917 seconds. The checks cover byte-identical
+default-JavaScript guards in attempt 005, in 12.917 seconds. Attempt 006 passed
+the same guards in 26.819 seconds after the shared initialized component and
+inventory codec changes. The checks cover byte-identical
 empty inventory encoding, physical wrapper dimensions/coordinate words/body
 order, duplicate positions, format/list rejection, physical extras and
 malformed/noncompound merge refusal, the ordered format 2 queue, and empty or
@@ -105,7 +107,17 @@ character value.
 
 The frozen actor019 consumer passed five complete atomic save comparisons and
 two actual SIGKILL/cold restores with format 2 pending effects. See
-`evidence/playable-client-cooking-native-011.json`. That actor has the earlier
-safe delivery facade. Real Item/Orb publication and format 3 interrupted-save
-and cold-restore acceptance require the changed generation20 consumer and
-remain unverified here.
+`evidence/playable-client-cooking-native-011.json`.
+
+The actual frozen actor020 consumer subsequently passed five complete format 3
+atomic byte comparisons and two SIGKILL/cold restores in 111.939 seconds. It
+published two complete Item records and an Orb worth 7, matched actual
+constructor clock intervals and 45 primitive LEVEL draws, cleared old keyed
+Details on recreation, then preserved every record/factory/ID across the
+second restore and continued 18 primitive EmptyDrop draws. Its final effect
+and clock queues are empty. The kills follow acknowledged durable saves;
+crashing during an unfinished atomic write remains a separate case. See
+`evidence/playable-client-cooking-entities-native-005.json`. This consumer uses
+the declared isolated overworld factory/allocator and supported remove-to-air
+geometry. Entity ticking, pickup, rendering and wider collision admission
+remain separate joins.
