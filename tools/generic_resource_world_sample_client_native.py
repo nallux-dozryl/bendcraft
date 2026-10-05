@@ -281,8 +281,10 @@ def prepare_baseline():
         'verified_overlay':Remote.pin(verified),
         'only_project_source_delta':'src/generic_resource_world_sample_client.bend',
         'current_working_dependency_graph_claim':False}
+    actor = proof.get('consumer_actor_generation', 17)
+    assert actor in (17, 22)
     value['scope'] = ('Coherent immutable generic baseline graph with only the verified '
-        'working GenericClient continuation overlay; explicit Actor017 consumer baseline. '
+        f'working GenericClient continuation overlay; explicit Actor{actor:03d} consumer baseline. '
         'Changing working publication/entity joins are outside this generation.')
     write(manifest_path, value)
     return value

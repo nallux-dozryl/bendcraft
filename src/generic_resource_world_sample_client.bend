@@ -32,6 +32,8 @@ import ./generic_resource_world_sample_resources.bend as Session
 import ./generic_resource_world_sample_resource_transport.bend as ResourceTransport
 import ./generic_resource_world_sample_demand.bend as Demand
 import ./player_cooking_client_input.bend as CookingInput
+import ./player_cooking_menu_screen.bend as CookingScreen
+import ./player_cooking_menu.bend as CookingMenu
 
 # Keep the complete native Presenter configuration closed across IO cuts.
 # The recursive tail makes this local presentation owner one runtime box while
@@ -48,6 +50,18 @@ def with_menu(value:Config,menu:MenuInput.State) -> Config:
   Config{P.with_menu(config,menu),tail}
 
 # Pure projections and updates leave the recursive Config closed at IO cuts.
+def with_native(value:Config,next:P.Config) -> Config:
+  Config{previous,tail} = value
+  Config{next,tail}
+
+def with_cooking(value:Config,cooking:CookingInput.State) -> Config:
+  Config{config,tail} = value
+  Config{P.with_cooking(config,cooking),tail}
+
+def config_cooking(value:Config) -> CookingInput.State:
+  Config{config,tail} = value
+  P.cooking_state(config)
+
 def config_human(value:Config) -> Bool:
   Config{P.Config{human,frames,width,height,trace,serial,plan,started,menu,keys,physical_keys,cooking},tail} = value
   human
@@ -105,6 +119,10 @@ def config_menu_batch(value:Config,pending:List<Event>,focused:Bool,captured:Boo
   Config{P.Config{human,frames,width,height,trace,serial,plan,started,menu,keys,physical_keys,cooking},tail} = value
   MenuInput.packet_keys(physical_keys,keys,menu,pending,MenuInput.viewport(Presentation.hud_viewport(plan)),focused,captured)
 
+def config_cooking_batch(value:Config,pending:List<Event>,focused:Bool,captured:Bool) -> CookingInput.Batch:
+  Config{P.Config{human,frames,width,height,trace,serial,plan,started,menu,keys,physical_keys,cooking},tail} = value
+  CookingInput.packet_keys(physical_keys,keys,cooking,pending,MenuInput.viewport(Presentation.hud_viewport(plan)),focused,captured)
+
 def config_image(value:Config,image:Image,view:HUD.View,screen:Maybe<&2,Screen.View>) -> Image:
   Config{P.Config{human,frames,width,height,trace,serial,+plan,started,menu,keys,physical_keys,cooking},tail} = value
   MenuInput.draw(HUD.compose(image,view,plan),menu,screen,Presentation.hud_viewport(plan))
@@ -141,21 +159,22 @@ def packet_advance(window:Window,assets:Session.Session,link:P.Link,+next:Config
     resume:Window -> Session.Session -> P.Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
   scheduled(window,assets,link,next,captured,keep && Common.continuing(config_frames(next)),resume)
 
-def commands_sent(window:Window,assets:Session.Session,config:Config,captured:Bool,keep:Bool,
-    result:P.Link & Result<&2,&2,String,Unit>,resume:Window -> Session.Session -> P.Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
-  (link,status) = result
-  match status:
-    case Done{unit}: packet_advance(window,assets,link,advance(config),captured,keep,resume)
-    case Fail{message}: closing(window,assets,link,1,"game command: " ++ message)
+def commands_sent(assets:Session.Session,+config:Config,captured:Bool,result:P.GameResult,
+    resume:Window -> Session.Session -> P.Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
+  match result:
+    case P.GameResult{window,link,+native,keep,Done{unit}}:
+      +next = with_native(config,native)
+      packet_advance(window,assets,link,advance(next),captured && CookingInput.capture_allowed(config_cooking(next)),keep,resume)
+    case P.GameResult{window,link,native,keep,Fail{message}}: closing(window,assets,link,1,"game command: " ++ message)
 
-def packet_sent(window:Window,assets:Session.Session,config:Config,captured:Bool,keep:Bool,commands:List<&2,Wire.Command>,
+def packet_sent(window:Window,assets:Session.Session,+config:Config,captured:Bool,keep:Bool,commands:List<&2,Wire.Command>,
     result:P.Link & Result<&2,&2,String,Wire.Reply>,resume:Window -> Session.Session -> P.Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
   (link,status) = result
   match status:
     case Done{Wire.Ack{epoch,sequence}}:
       do IO<Unit>:
-        sent : P.Link & Result<&2,&2,String,Unit> <- P.send_commands(commands,link)
-        commands_sent(window,assets,config,captured,keep,sent,resume)
+        sent:P.GameResult <- P.send_game_commands(commands,window,link,native_config(config),keep)
+        commands_sent(assets,config,captured,sent,resume)
     case Done{other}: closing(window,assets,link,1,"input: Wire:ExpectedAck")
     case Fail{message}: closing(window,assets,link,1,"input: " ++ message)
 
@@ -197,7 +216,7 @@ def menu_events_sent(assets:Session.Session,+config:Config,pending:List<Event>,o
     case P.MenuResult{window,link,state,False{},Done{unit}}: closing(window,assets,link,0,"client closed")
     case P.MenuResult{window,link,+state,True{},Done{unit}}:
       +next = with_menu(config,state)
-      allow = config_human(next) && MenuInput.capture_allowed(state)
+      allow = config_human(next) && MenuInput.capture_allowed(state) && CookingInput.capture_allowed(config_cooking(next))
       do IO<Unit>:
         status : Window & Bool & Bool <- Input.Native.status(window)
         packet_initial(assets,link,next,pending,allow,old,status,resume)
@@ -211,10 +230,39 @@ def menu_intercepted(assets:Session.Session,link:P.Link,+config:Config,old:Bool,
     sent : P.MenuResult <- P.send_menu_intents(intents,window,link,state,config_human(config),True{})
     menu_events_sent(assets,config,pending,old,sent,resume)
 
+def cooking_after_open(assets:Session.Session,link:P.Link,+config:Config,pending:List<Event>,old:Bool,window:Window,focused:Bool,captured:Bool,opened:Bool,
+    resume:Window -> Session.Session -> P.Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
+  match opened:
+    case False{}: menu_intercepted(assets,link,config,old,window,config_menu_batch(config,pending,focused,captured),resume)
+    case True{}: packet_initial(assets,link,config,pending,False{},old,(window,focused,captured),resume)
+
+def cooking_after_status(assets:Session.Session,link:P.Link,+config:Config,pending:List<Event>,old:Bool,result:Window & Bool & Bool,
+    resume:Window -> Session.Session -> P.Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
+  (window,focused,captured) = result
+  cooking_after_open(assets,link,config,pending,old,window,focused,captured,CookingInput.is_open(config_cooking(config)),resume)
+
+def cooking_events_sent(assets:Session.Session,+config:Config,pending:List<Event>,old:Bool,result:P.CookingResult,
+    resume:Window -> Session.Session -> P.Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
+  match result:
+    case P.CookingResult{window,link,state,False{},Done{unit}}: closing(window,assets,link,0,"client closed")
+    case P.CookingResult{window,link,state,True{},Done{unit}}:
+      +next = with_cooking(config,state)
+      do IO<Unit>:
+        status:Window & Bool & Bool <- Input.Native.status(window)
+        cooking_after_status(assets,link,next,pending,old,status,resume)
+    case P.CookingResult{window,link,state,keep,Fail{message}}: closing(window,assets,link,1,"cooking command: " ++ message)
+
+def cooking_intercepted(assets:Session.Session,link:P.Link,+config:Config,old:Bool,window:Window,batch:CookingInput.Batch,
+    resume:Window -> Session.Session -> P.Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
+  CookingInput.Batch{state,intents,events} = batch
+  do IO<Unit>:
+    sent:P.CookingResult <- P.send_cooking_intents(intents,window,link,state,config_human(config),True{})
+    cooking_events_sent(assets,config,MenuInput.game_events(events),old,sent,resume)
+
 def menu_intercept(assets:Session.Session,link:P.Link,+config:Config,pending:List<Event>,old:Bool,
     result:Window & Bool & Bool,resume:Window -> Session.Session -> P.Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
   (window,focused,captured) = result
-  menu_intercepted(assets,link,config,old,window,config_menu_batch(config,pending,focused,captured),resume)
+  cooking_intercepted(assets,link,config,old,window,config_cooking_batch(config,pending,focused,captured),resume)
 
 def input_presented(window:Window,assets:Session.Session,link:P.Link,+config:Config,captured:Bool,+image:Image,pending:List<Event>,
     resume:Window -> Session.Session -> P.Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
@@ -241,15 +289,34 @@ def presented(assets:Session.Session,link:P.Link,+config:Config,captured:Bool,re
     status : Result<&2,&2,String,Unit> <- P.trace(image,native_config(config))
     traced(window,assets,link,config,captured,image,pending,status,resume)
 
+def cooking_drawn(window:Window,link:P.Link,config:Config,captured:Bool,result:Session.Session & Image,
+    resume:Window -> Session.Session -> P.Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
+  (assets,image) = result
+  do IO<Unit>:
+    shown:Window & Image & List<Event> <- Window.frame(window,image)
+    presented(assets,link,config,captured,shown,resume)
+
+def asset_cooking_overlay(assets:CW.Assets,image:Image,+cooking:CookingInput.State,viewport:Presentation.Viewport) -> CW.Assets & Image:
+  CW.Assets{Pixels.Assets{+textures},Catalog.Catalog{identity,entries,
+    Resources.Catalog{roots,source,models,+sprites,context,usage}},count} = assets
+  +icons = HUD.icons(textures,sprites)
+  (CW.Assets{Pixels.Assets{textures},Catalog.Catalog{identity,entries,Resources.Catalog{roots,source,models,sprites,context,usage}},count},
+    CookingInput.draw(image,cooking,CookingInput.view(cooking,[],icons),viewport))
+
+def cooking_owned(value:CW.Assets & Image,owner:Demand.Owner,config:Session.Config) -> Session.Session & Image:
+  (assets,image) = value
+  (Session.Session{owner,assets,config},image)
+
+def cooking_overlay(image:Image,+config:Config,session:Session.Session) -> Session.Session & Image:
+  Session.Session{owner,assets,policy} = session
+  cooking_owned(asset_cooking_overlay(assets,image,config_cooking(config),Presentation.hud_viewport(config_plan(config))),owner,policy)
+
 def drawn(window:Window,link:P.Link,+config:Config,captured:Bool,view:HUD.View,screen:Maybe<&2,Screen.View>,result:Session.Session & Result<&2,&2,String,Image>,
     resume:Window -> Session.Session -> P.Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
   (assets,status) = result
   match status:
     case Fail{message}: closing(window,assets,link,1,"render: " ++ message)
-    case Done{image}:
-      do IO<Unit>:
-        shown : Window & Image & List<Event> <- Window.frame(window,config_image(config,image,view,screen))
-        presented(assets,link,config,captured,shown,resume)
+    case Done{image}: cooking_drawn(window,link,config,captured,cooking_overlay(config_image(config,image,view,screen),config,assets),resume)
 
 # Textures and catalog values are immutable Data. Retain their lists while
 # restoring the sole affine Session.Session owner before world rendering begins.
@@ -287,6 +354,11 @@ def menu_views(session:Session.Session,menu:MenuInput.State) -> Session.Session 
   Session.Session{owner,assets,config} = session
   menu_owned(asset_menu_views(assets,menu),owner,config)
 
+def cooking_views(assets:Session.Session,snapshot:CookingMenu.Snapshot) -> Session.Session & Result<&2,&1,String,HUD.View & Maybe<&2,Screen.View>>:
+  CookingMenu.Snapshot{handle,furnace,Inventory.MenuSnapshot{Inventory.Persisted{main,equipment,status},craft,carried,result,opened,revision}} = snapshot
+  PNG.paired(Session.Session,HUD.View,Session.Session & Result<&2,&1,String,HUD.View & Maybe<&2,Screen.View>>,hud_view(assets,main),
+    actual => view => (actual,Done{(view,None{})}))
+
 def inventory_timed(window:Window,assets:Session.Session,link:P.Link,+config:Config,captured:Bool,+sample:GS.Sample,
     view:HUD.View,screen:Maybe<&2,Screen.View>,begin:U32,
     resume:Window -> Session.Session -> P.Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
@@ -305,10 +377,56 @@ def inventory_draw(window:Window,link:P.Link,+config:Config,captured:Bool,+sampl
         begin : U32 <- NativePresentation.Native.milliseconds()
         inventory_timed(window,assets,link,config,captured,sample,view,screen,begin,resume)
 
+def cooking_inventory_opened(window:Window,assets:Session.Session,+config:Config,captured:Bool,sample:GS.Sample,
+    snapshot:CookingMenu.Snapshot,link:P.Link,opened:Bool,
+    resume:Window -> Session.Session -> P.Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
+  match snapshot opened:
+    case _ True{}: inventory_draw(window,link,config,captured,sample,cooking_views(assets,snapshot),resume)
+    case CookingMenu.Snapshot{handle,furnace,inventory} False{}:
+      +menu = MenuInput.observed(config_menu(config),inventory)
+      inventory_draw(window,link,with_menu(config,menu),captured,sample,menu_views(assets,menu),resume)
+
+def cooking_inventory_authority(window:Window,assets:Session.Session,+config:Config,captured:Bool,sample:GS.Sample,link:P.Link,
+    authority:Maybe<&2,CookingMenu.Snapshot>,
+    resume:Window -> Session.Session -> P.Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
+  match authority:
+    case None{}: closing(window,assets,link,1,"cooking query: missing authoritative snapshot")
+    case Some{snapshot}: cooking_inventory_opened(window,assets,config,captured,sample,snapshot,link,CookingInput.is_open(config_cooking(config)),resume)
+
+def cooking_inventory_status(assets:Session.Session,link:P.Link,+config:Config,sample:GS.Sample,result:Window & Bool & Bool,
+    resume:Window -> Session.Session -> P.Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
+  (window,focused,captured) = result
+  cooking_inventory_authority(window,assets,config,focused && captured,sample,link,CookingInput.authority(config_cooking(config)),resume)
+
+def cooking_inventory_finished(assets:Session.Session,+config:Config,sample:GS.Sample,result:P.CookingResult,
+    resume:Window -> Session.Session -> P.Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
+  match result:
+    case P.CookingResult{window,link,state,False{},Done{unit}}: closing(window,assets,link,0,"client closed")
+    case P.CookingResult{window,link,state,True{},Done{unit}}:
+      +next = with_cooking(config,state)
+      do IO<Unit>:
+        status:Window & Bool & Bool <- Input.Native.status(window)
+        cooking_inventory_status(assets,link,next,sample,status,resume)
+    case P.CookingResult{window,link,state,keep,Fail{message}}: closing(window,assets,link,1,"cooking query: " ++ message)
+
+def cooking_inventory_updated(window:Window,assets:Session.Session,link:P.Link,+config:Config,sample:GS.Sample,
+    value:CookingInput.State & List<&2,CookingScreen.Intent>,
+    resume:Window -> Session.Session -> P.Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
+  (next,intents) = value
+  do IO<Unit>:
+    result:P.CookingResult <- P.send_cooking_intents(intents,window,link,next,config_human(config),True{})
+    cooking_inventory_finished(assets,config,sample,result,resume)
+
+def cooking_inventoried(window:Window,assets:Session.Session,link:P.Link,+config:Config,sample:GS.Sample,reply:CookingMenu.Reply,
+    resume:Window -> Session.Session -> P.Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
+  cooking_inventory_updated(window,assets,link,config,sample,CookingInput.completed(config_cooking(config),reply),resume)
+
 def inventoried(window:Window,assets:Session.Session,+config:Config,captured:Bool,sample:GS.Sample,
     result:P.Link & Result<&2,&2,String,Wire.Reply>,resume:Window -> Session.Session -> P.Link -> Config -> Bool -> IO(Unit)) -> IO(Unit):
   (link,status) = result
   match status:
+    case Done{Wire.CookingReply{epoch,sequence,accepted,message,snapshot}}:
+      cooking_inventoried(window,assets,link,config,sample,CookingMenu.Reply{accepted,message,snapshot,[]},resume)
     case Done{Wire.MenuReply{epoch,sequence,accepted,message,snapshot}}:
       +menu = MenuInput.observed(config_menu(config),snapshot)
       inventory_draw(window,link,with_menu(config,menu),captured,sample,menu_views(assets,menu),resume)
@@ -323,7 +441,7 @@ def resources_ready(window:Window,link:P.Link,+config:Config,captured:Bool,sampl
     case Fail{error}: closing(window,assets,link,1,"resource demand: " ++ Draw.error_text(error))
     case Done{unit}:
       do IO<Unit>:
-        reply : P.Link & Result<&2,&2,String,Wire.Reply> <- P.call(link,Wire.MenuInspect{})
+        reply : P.Link & Result<&2,&2,String,Wire.Reply> <- P.call(link,P.inspect_command(config_cooking(config)))
         inventoried(window,assets,config,captured,sample,reply,resume)
 
 def resources_linked(window:Window,+config:Config,captured:Bool,sample:GS.Sample,
