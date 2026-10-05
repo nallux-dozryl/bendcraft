@@ -142,3 +142,25 @@ reduce that concrete production layout; the immutable006 graph will not be
 retried unchanged, and the compiler ABI limit will not be raised. Source and
 scanner acceptance still do not establish actual heartbeat delivery. The public
 launcher remains the independently verified Actor017/Renderer008 pair.
+
+The original checked frozen006 callback was then emitted selectively with the
+unchanged compiler helpers. `snapshot_ready$k1` is reachable and has 261
+parameters: 174 held words plus the returned Preparation's 87. The complete
+Presenter Config is 149 words. The measured selected graph also has no oversized
+constructor or foreign constructor; this identifies a concrete generated segment
+without pretending it is the final fixpoint's suffix or the only offender.
+The working GenericClient now threads a recursive local Config wrapper whose
+value is the unchanged actual Presenter Config. Its empty recursive tail makes
+that captured wrapper one box under the existing layout rule. It preserves the
+tail on updates and unwraps only for the existing Presenter operations; the
+resource Session, Registry, Link, ledger and texture owner types remain unchanged.
+The corresponding cut projects to 113 parameters. The private changed graph,
+using a copy of the immutable006 closure, passed original `B.book_valid` in
+18.187 seconds with 113 loaded source files, zero holes and unchanged pins.
+That is a source/layout correction, not an observed native heartbeat result.
+Fresh generic007 instead stopped during the complete current-source check on an
+imported `local_player_cooking_dirty_stamp` late-destructor error, before ownership
+emission or native execution. Its refusal and the earlier private CLI/import/
+copy-preparation attempts are retained. The shared source repair must appear in
+the next immutable generation; unchanged007 is not retried. Public adoption still
+requires the actual changed native017 demand/heartbeat/pixels/save/cold consumer.
