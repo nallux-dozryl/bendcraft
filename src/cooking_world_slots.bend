@@ -19,6 +19,7 @@ import ./player_core_edit.bend as P
 type Command is Data:
   FurnaceSet{index:U32,value:AI.Input}
   FurnaceTake{index:U32}
+  FurnaceTakeCount{index:U32,count:U32}
   CampfirePlace{held:AI.Input,infinite:Bool}
 type Receipt is Data:
   Receipt{previous:Inv.Slot,remaining:AI.Input,index:U32,effects:List<&2,S.Effect>}
@@ -53,6 +54,20 @@ def take_admitted(context:CW.Context,+snapshot:F.Snapshot,+index:U32,admission:I
   do Result<&2,&2,String,Proposal>:
     transition : F.Transition <- FS.put_snapshot(recipes,snapshot,index,Inv.InvEmpty{},metadata)
     return Proposal{transition,FS.slot_at(slots,index),AI.plain(),index}
+def extracted(+value:Inv.Slot,+requested:U32) -> Inv.Slot:
+  match value:
+    case Inv.InvEmpty{}: Inv.InvEmpty{}
+    case Inv.InvStack{key,+count}:
+      Inv.canonical_stack(key,U32.min(count,requested),U32.is_zero(requested))
+def take_count_admitted(context:CW.Context,+snapshot:F.Snapshot,+index:U32,+count:U32,admission:I.Admission) -> Result<&2,&2,String,Proposal>:
+  CW.Context{catalog,AI.Context{recipes,defaults,features},fuel,depth} = context
+  F.Snapshot{frame,+slots} = snapshot
+  I.Admission{metadata,profiles} = admission
+  +previous = extracted(FS.slot_at(slots,index),count)
+  do Result<&2,&2,String,Proposal>:
+    transition : F.Transition <- FS.put_snapshot(recipes,snapshot,index,
+      remainder(FS.slot_at(slots,index),Inv.slot_count(previous)),metadata)
+    return Proposal{transition,previous,AI.plain(),index}
 def propose(+context:CW.Context,+snapshot:F.Snapshot,command:Command) -> Result<&2,&2,String,Proposal>:
   F.Snapshot{frame,K.FurnaceSlots{input,fuel,output}} = snapshot
   match command:
@@ -64,6 +79,10 @@ def propose(+context:CW.Context,+snapshot:F.Snapshot,command:Command) -> Result<
       do Result<&2,&2,String,Proposal>:
         admission : I.Admission <- I.furnace(CW.recipes(context),snapshot)
         take_admitted(context,snapshot,index,admission)
+    case FurnaceTakeCount{+index,count}:
+      do Result<&2,&2,String,Proposal>:
+        admission : I.Admission <- I.furnace(CW.recipes(context),snapshot)
+        take_count_admitted(context,snapshot,index,count,admission)
     case _: Fail{"cooking-world:command-requires-campfire"}
 def furnace_committed(+position:C.Position,binding:B.Binding,+proposal:Proposal,result:F.State & Result<&2,&2,String,F.Effects>) -> S.Entry & Result<&2,&2,CW.Error,Receipt>:
   Proposal{transition,previous,remaining,index} = proposal
