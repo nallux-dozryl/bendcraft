@@ -33,6 +33,13 @@ Shell extraction/rejoin. The same ray, reach, shape, placement, held-item and
 ability checks serve both paths. Every legacy public BI wrapper retains its
 signature and uses the actual old Core editor with `Extra=Unit`.
 
+The five existing BI authority/build-denial contracts are recertified against
+this changed source: original whole-book checking passes in 18.406 seconds,
+and their unchanged 1,192,276-byte / 854-declaration exact closure passes the
+pinned independent kernel in 0.188 seconds, with no exclusions. Raw evidence
+is in `build/local-player-cooking-edit/legacy-bi-proof-001`. This certifies those
+actual default wrappers; it does not certify the omitted Sidecar law roots.
+
 The generation020 source snapshot was copied before the working BI patch was
 applied. Its immutable source graph is unchanged. Motion has written the
 subsequent Session extraction/rejoin consumer. The focused fixture's original
