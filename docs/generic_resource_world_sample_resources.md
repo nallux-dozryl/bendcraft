@@ -164,3 +164,20 @@ emission or native execution. Its refusal and the earlier private CLI/import/
 copy-preparation attempts are retained. The shared source repair must appear in
 the next immutable generation; unchanged007 is not retried. Public adoption still
 requires the actual changed native017 demand/heartbeat/pixels/save/cold consumer.
+
+Generic008 used the coherent immutable006 dependency graph with only that verified
+working GenericClient Config overlay. The retained baseline route checks the
+complete source map and records that sole project delta; it makes no claim about
+the changing working publication/entity graph. Its complete original source
+check accepted 5,762 declarations with zero holes, and all 162 emitter inputs
+were unchanged. Seven ownership passes completed at 510.917 seconds from the
+producer start. The producer then returned 1 after 513.242 seconds at the same
+final `an arity over 247` guard, within the unchanged 600-second bound, with no
+complete C or native start and its group absent. The sampled peak RSS was
+5,809,651,712 bytes. The previous 113-word callback count was a projection from
+the measured006 cut, not a changed-emitter or whole-graph acceptance result.
+The actual remaining008 offender is not identified by this full producer.
+Selected original-body emission must establish the next concrete source change;
+the frozen008 graph is preserved and will not be retried unchanged. The actual
+017 demand/heartbeat/pixel/save/cold consumer and public launcher promotion remain
+pending.

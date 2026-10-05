@@ -10,6 +10,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import shutil
 import sys
 from pathlib import Path
 
@@ -28,6 +29,7 @@ EVIDENCE = ROOT/'evidence/generic_resource_world_sample_client_native.json'
 WORK = ROOT/'build/generic-resource-world-sample-client-native/001'
 MEMORY_BASIS = ROOT/'build/actor-compiler-memory-001'
 MEMORY_EVIDENCE = ROOT/'evidence/actor-compiler-memory-001.json'
+BASELINE_GENERATION = None
 SCOPE = ('Actual standalone remote_resource_catalog_client production graph, '
          'including correlated catalog frames, CW.Assets, WRF.draw_catalog, '
          'hardware-key/menu consumer, retained Registry demand owner and native Window loop. Compilation alone '
@@ -59,6 +61,8 @@ def commands(memory):
             f'--generation {int(WORK.name)}')
     if memory:
         base += ' --memory-producer'
+    if BASELINE_GENERATION is not None:
+        base += f' --baseline-generation {BASELINE_GENERATION}'
     return {'prepare':base, 'build':base+' --build',
             'finish_native_from_retained_C':base+' --finish-native'}
 
@@ -132,10 +136,85 @@ def memory_producer(manifest):
     return manifest
 
 
+def prepare_baseline():
+    """Freeze a coherent retained graph with one verified working client overlay."""
+    assert BASELINE_GENERATION < int(WORK.name)
+    baseline = ROOT/'build/generic-resource-world-sample-client-native'/f'{BASELINE_GENERATION:03d}'/'private'
+    previous = json.loads((baseline/'manifest.json').read_text())
+    receipt = json.loads((baseline/'receipt.json').read_text())
+    assert previous.get('memory_producer') and receipt['group_absent']
+    assert receipt['source_before'] == receipt['source_after'] == previous['files']
+    assert all(Catalog.sha(path) == expected for path, expected in previous['files'].items())
+    client = ROOT/'src/generic_resource_world_sample_client.bend'
+    verified = ROOT/'evidence/generic_resource_world_sample_client_config_box.json'
+    proof = json.loads(verified.read_text())
+    assert proof['production_client'] == Remote.pin(client)
+    assert proof['ordinary_source_check']['source_pins_unchanged']
+    assert proof['ordinary_source_check']['group_absent']
+    assert proof['ordinary_source_check']['holes'] == 0
+    assert proof['ordinary_source_check']['process_receipt'] == Remote.pin(
+        proof['ordinary_source_check']['process_receipt']['path'])
+    checked = json.loads(Path(proof['ordinary_source_check']['process_receipt']['path']).read_text())
+    assert checked['exit_code'] == 0 and checked['cleanup']['live_group_absent']
+    manifest_path = Catalog.PRIVATE/'manifest.json'
+    if manifest_path.exists():
+        value = json.loads(manifest_path.read_text())
+        assert value['generation_basis']['baseline_generation'] == BASELINE_GENERATION
+        assert value['generation_basis']['working_client'] == Remote.pin(client)
+        assert all(Catalog.sha(path) == expected for path, expected in value['files'].items())
+        return value
+    assert not Catalog.PRIVATE.exists(), 'Preserve unrecorded private generation'
+    Catalog.PRIVATE.mkdir(parents=True)
+    for directory in ('source', 'source-api'):
+        shutil.copytree(baseline/directory, Catalog.PRIVATE/directory)
+    overlay = Catalog.PRIVATE/'source/src/generic_resource_world_sample_client.bend'
+    old_overlay = Remote.pin(baseline/'source/src/generic_resource_world_sample_client.bend')
+    overlay.chmod(0o644)
+    overlay.write_bytes(client.read_bytes())
+    overlay.chmod(0o444)
+    relocate = lambda text: text.replace(str(baseline), str(Catalog.PRIVATE))
+    for name in ('comp_instrumented.ts', 'diagnose.mjs', 'run.py'):
+        (Catalog.PRIVATE/name).write_text(relocate((baseline/name).read_text()))
+    mapping = json.loads((baseline/'source-map.json').read_text())
+    prior_map = {row['original']:row['sha256'] for row in mapping['files']}
+    for row in mapping['files']:
+        row['mapped'] = relocate(row['mapped'])
+        if row['original'] == str(client):
+            row.update(sha256=Catalog.sha(overlay), bytes=overlay.stat().st_size)
+    write(Catalog.PRIVATE/'source-map.json', mapping)
+    value = json.loads(relocate(json.dumps(previous)))
+    value['production_sources'][str(client)] = {
+        **previous['production_sources'][str(client)],
+        'sha256':Catalog.sha(overlay), 'bytes':overlay.stat().st_size}
+    value['files'] = {relocate(path):Catalog.sha(relocate(path)) for path in previous['files']}
+    value['files'][str(verified)] = Catalog.sha(verified)
+    changed = [row['original'] for row in mapping['files']
+        if Catalog.sha(row['mapped']) != prior_map[row['original']]]
+    assert changed == [str(client)], ('Unexpected project or foreign overlay', changed)
+    value['generation_basis'] = {'baseline_generation':BASELINE_GENERATION,
+        'baseline_manifest':Remote.pin(baseline/'manifest.json'),
+        'baseline_source_map':Remote.pin(baseline/'source-map.json'),
+        'baseline_emission_receipt':Remote.pin(baseline/'receipt.json'),
+        'previous_client':old_overlay, 'working_client':Remote.pin(client),
+        'verified_overlay':Remote.pin(verified),
+        'only_project_source_delta':'src/generic_resource_world_sample_client.bend',
+        'current_working_dependency_graph_claim':False}
+    value['scope'] = ('Coherent immutable generic baseline graph with only the verified '
+        'working GenericClient Config overlay; explicit Actor017 consumer baseline. '
+        'Changing working publication/entity joins are outside this generation.')
+    write(manifest_path, value)
+    return value
+
+
 def prepare(memory=False):
     WORK.mkdir(parents=True, exist_ok=True)
-    before = Catalog.sources()
-    manifest = Catalog.prepare_private(before)
+    if BASELINE_GENERATION is not None:
+        assert memory, 'The retained baseline route uses its tested memory producer'
+        manifest = prepare_baseline()
+        before = manifest['production_sources']
+    else:
+        before = Catalog.sources()
+        manifest = Catalog.prepare_private(before)
     emitter = Catalog.PRIVATE/'diagnose.mjs'
     expected = str(Catalog.PRIVATE/'source'/ENTRY.name)
     if manifest['entry'] != expected:
@@ -147,15 +226,16 @@ def prepare(memory=False):
         write(Catalog.PRIVATE/'manifest.json', manifest)
     if memory:
         manifest = memory_producer(manifest)
-    assert Catalog.sources() == before
+    if BASELINE_GENERATION is None:
+        assert Catalog.sources() == before
     assert all(Catalog.sha(path) == sha for path, sha in manifest['files'].items())
-    public = {'status':'frozen_native_pending', 'scope':SCOPE,
-              'entry':Remote.pin(ENTRY), 'source_map':Remote.pin(Catalog.PRIVATE/'source-map.json'),
+    public = {'status':'frozen_native_pending', 'scope':manifest['scope'],
+              'entry':Remote.pin(Catalog.PRIVATE/'source'/ENTRY.name), 'source_map':Remote.pin(Catalog.PRIVATE/'source-map.json'),
               'manifest':Remote.pin(Catalog.PRIVATE/'manifest.json'), 'basis':manifest['basis'],
               'production_sources':before, 'original_compiler_untouched':True,
               'memory_producer':manifest.get('memory_producer'),
               'native_consumer_run':False, 'window_opened':False,
-              'commands':commands(memory)}
+              'commands':commands(memory), 'generation_basis':manifest.get('generation_basis')}
     if not EVIDENCE.exists():
         write(EVIDENCE, public)
     return manifest
@@ -202,7 +282,7 @@ def finish_native(memory=False, emission=None):
                 '-std=c11', '-O3', transformed, '-lpthread', '-lm', '-o', Catalog.BINARY], 'native-clang', 300)
     assert compiled.stderr == ''
     assert all(Catalog.sha(path) == sha for path, sha in manifest['files'].items())
-    result = {'status':'native_built_consumer_run_pending', 'scope':SCOPE,
+    result = {'status':'native_built_consumer_run_pending', 'scope':manifest['scope'],
               'entry':Remote.pin(Catalog.PRIVATE/'source'/ENTRY.name), 'binary':Remote.pin(Catalog.BINARY),
               'source_map':Remote.pin(Catalog.PRIVATE/'source-map.json'), 'manifest':Remote.pin(Catalog.PRIVATE/'manifest.json'),
               'emission':emission, 'producer':Remote.pin(receipt_path), 'native':native,
@@ -210,6 +290,7 @@ def finish_native(memory=False, emission=None):
               'memory_producer':manifest.get('memory_producer'),
               'window_transform':Remote.pin(WORK/'window-transform.json'),
               'commands':commands(memory),
+              'generation_basis':manifest.get('generation_basis'),
               'retained_failures':[Remote.pin(path) for path in sorted(WORK.glob('failure-attempt-*.json'))],
               'original_compiler_untouched':True, 'native_consumer_run':False, 'window_opened':False}
     write(WORK/'build.json', result)
@@ -227,8 +308,11 @@ if __name__ == '__main__':
                        help='Compile a completed immutable C emission; never rerun the emitter')
     parser.add_argument('--memory-producer', action='store_true',
                         help='Use the separately byte/native-verified private cache/progress correction')
+    parser.add_argument('--baseline-generation', type=int,
+                        help='Reuse a coherent immutable graph with only the verified working client overlay')
     args = parser.parse_args()
     configure(args.generation)
+    BASELINE_GENERATION = args.baseline_generation
     try:
         if args.build:
             build(args.memory_producer)
