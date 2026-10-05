@@ -256,28 +256,39 @@ def int_scan_finished(admitted: Bool, reversed: List<&2, U32>, fraction: U32, ex
     case False{}: fail(IntToken, "UnsupportedIntegerExponent", "integer")
     case True{}: Done{IntToken{List.reverse(&2, U32, reversed), fraction, exponent, exponent_negative, negative}}
 
+def int_scan_character(minus: Bool, plus: Bool, point: Bool, lower_e: Bool, upper_e: Bool,
+  whole: Bool, fractional: Bool, +c: U32, +stage: U32, reversed: List<&2, U32>, fraction: U32, +exponent: U32,
+  exponent_negative: Bool, negative: Bool) -> Bool & U32 & IntToken:
+  match minus plus point lower_e upper_e whole fractional:
+    case True{} _ _ _ _ _ _:
+      (True{}, stage, IntToken{reversed, fraction, exponent,
+        J.choose(Bool, True{}, exponent_negative, U32.is_ge(stage, 2)),
+        J.choose(Bool, negative, True{}, U32.is_ge(stage, 2))})
+    case False{} True{} _ _ _ _ _: (True{}, stage, IntToken{reversed, fraction, exponent, exponent_negative, negative})
+    case False{} False{} True{} _ _ _ _: (True{}, 1, IntToken{reversed, fraction, exponent, exponent_negative, negative})
+    case False{} False{} False{} True{} _ _ _: (True{}, 2, IntToken{reversed, fraction, exponent, exponent_negative, negative})
+    case False{} False{} False{} False{} True{} _ _: (True{}, 2, IntToken{reversed, fraction, exponent, exponent_negative, negative})
+    case False{} False{} False{} False{} False{} True{} _:
+      (True{}, stage, IntToken{U32.sub(c, 48) <> reversed, fraction, exponent, exponent_negative, negative})
+    case False{} False{} False{} False{} False{} False{} True{}:
+      (True{}, stage, IntToken{U32.sub(c, 48) <> reversed, U32.add(fraction, 1), exponent, exponent_negative, negative})
+    case False{} False{} False{} False{} False{} False{} False{}:
+      +next = U32.add(U32.mul(exponent, 10), U32.sub(c, 48))
+      (U32.is_le(next, 100000), stage, IntToken{reversed, fraction, next, exponent_negative, negative})
+
+def int_scan_owner(text: String, state: Bool & U32 & IntToken) -> Result<&2, &2, Error, IntToken>:
+  match text state:
+    case SNil{} Tuple{admitted, Tuple{stage, IntToken{digits, fraction, exponent, exponent_negative, negative}}}:
+      int_scan_finished(admitted, digits, fraction, exponent, exponent_negative, negative)
+    case SCon{Chr{c}, rest} Tuple{False{}, Tuple{stage, token}}: fail(IntToken, "UnsupportedIntegerExponent", "integer")
+    case SCon{Chr{+c}, rest} Tuple{True{}, Tuple{+stage, IntToken{digits, fraction, exponent, exponent_negative, negative}}}:
+      int_scan_owner(rest, int_scan_character(U32.is_eq(c, 45), U32.is_eq(c, 43), U32.is_eq(c, 46),
+        U32.is_eq(c, 101), U32.is_eq(c, 69), U32.is_eq(stage, 0), U32.is_eq(stage, 1),
+        c, stage, digits, fraction, exponent, exponent_negative, negative))
+
 def int_scan_admitted(text: String, admitted: Bool, +stage: U32, reversed: List<&2, U32>, +fraction: U32, +exponent: U32,
   +exponent_negative: Bool, +negative: Bool) -> Result<&2, &2, Error, IntToken>:
-  match text:
-    case SNil{}: int_scan_finished(admitted, reversed, fraction, exponent, exponent_negative, negative)
-    case SCon{Chr{+c}, rest}:
-      match c admitted:
-        case _ False{}: fail(IntToken, "UnsupportedIntegerExponent", "integer")
-        case 45 True{}:
-          int_scan_admitted(rest, True{}, stage, reversed, fraction, exponent,
-            J.choose(Bool, True{}, exponent_negative, U32.is_ge(stage, 2)),
-            J.choose(Bool, negative, True{}, U32.is_ge(stage, 2)))
-        case 43 True{}: int_scan_admitted(rest, True{}, stage, reversed, fraction, exponent, exponent_negative, negative)
-        case 46 True{}: int_scan_admitted(rest, True{}, 1, reversed, fraction, exponent, exponent_negative, negative)
-        case 101 True{}: int_scan_admitted(rest, True{}, 2, reversed, fraction, exponent, exponent_negative, negative)
-        case 69 True{}: int_scan_admitted(rest, True{}, 2, reversed, fraction, exponent, exponent_negative, negative)
-        case _ True{}:
-          match stage:
-            case 0: int_scan_admitted(rest, True{}, stage, U32.sub(c, 48) <> reversed, fraction, exponent, exponent_negative, negative)
-            case 1: int_scan_admitted(rest, True{}, stage, U32.sub(c, 48) <> reversed, U32.add(fraction, 1), exponent, exponent_negative, negative)
-            case _:
-              +next = U32.add(U32.mul(exponent, 10), U32.sub(c, 48))
-              int_scan_admitted(rest, U32.is_le(next, 100000), stage, reversed, fraction, next, exponent_negative, negative)
+  int_scan_owner(text, (admitted, stage, IntToken{reversed, fraction, exponent, exponent_negative, negative}))
 
 def int_scan(text: String, +stage: U32, reversed: List<&2, U32>, +fraction: U32, +exponent: U32,
   +exponent_negative: Bool, +negative: Bool) -> Result<&2, &2, Error, IntToken>:
