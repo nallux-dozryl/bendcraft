@@ -113,3 +113,15 @@ chain successfully. Neither preparation attempt launched native code.
 The public launcher remains Actor017/Renderer008. The previous generic003 public
 adoption proposal is separate from this demand-enabled candidate; no launcher
 promotion or changed native result is inferred from this source checkpoint.
+
+Frozen generic005 subsequently failed its unchanged 600-second emission bound.
+The producer returned -15 with `total_deadline`, no complete C, no Clang/native
+start and its group absent. The 146-file snapshot remains intact. Source017
+acceptance therefore does not establish heartbeat delivery or a runnable client.
+The last active body was `blockstate_model.scan_number` in ownership pass seven.
+Its first six completed body emissions totaled 137.624 seconds; the model scanner
+completed seven bodies totaling 80.115 seconds. Their final completed bodies
+emitted 33,176 and 31,449 lines respectively. These measured subsets motivate a
+first-order scanner candidate; they do not attribute the entire deadline failure
+or demonstrate a candidate benefit. The configured bound was not raised and
+the unchanged frozen005 graph will not be retried.
