@@ -54,6 +54,9 @@ def expected_facts():
     retained = json.loads(VERIFIED19.read_bytes())
     S.require(retained['status'] == 'PASS_NARROW' and retained['summary']['actual_SIGKILL_cold_restores'] == 2,
               'Retained successful019 consumer scope remains fixed')
+    constructor_ref = json.loads(REFERENCE.read_bytes())
+    S.require(constructor_ref['provenance']['client']['sha256'] == R.pin(B.JAR)['sha256'],
+              'Constructor observations use the same pinned original26.3 JAR')
     facts['constructor_reference'] = E.verify_retained_java(REFERENCE)
     return facts
 
