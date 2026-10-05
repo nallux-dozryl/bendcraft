@@ -129,3 +129,15 @@ entire current working import graph. The unchanged51 owner cases were not
 replayed. See `evidence/player-cooking-menu-screen-native-003.json`. This display
 correction preserves all four raw authoritative timer words and makes no OS
 input or complete vanilla-resource appearance claim.
+
+The optional11-law production ownership/controller target has a complete
+ordinary checked selective export with zero exclusions. Its independent
+kernel attempt failed in4.7167seconds at imported `json.encode_go`, reporting
+`affine live code, calls that descend`; it did not hit a time or memory bound.
+That retained export002 predates later imported-source edits and the display
+correction. `evidence/player-cooking-menu-proof-002.json` records the exact
+artifact and failure. There is no independent proof certificate or root
+aggregate inclusion. The equations concern complete-owner refusal/retention,
+profile publication and full controller close/focus composition; they do not
+prove general successful-transfer conservation. The separately recorded
+native owner ledger and Java receiver comparisons retain their stated scope.
