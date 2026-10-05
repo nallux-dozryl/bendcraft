@@ -58,6 +58,8 @@ and the failed011 emission are retained separately. No original compiler was
 changed.
 
 Coal/beef/cooked-beef artwork is still explicitly marked missing in the current
-item icon owner. The real furnace panel, flame and progress sprites are loaded.
+item icon owner. The furnace panel, flame indicator and progress bar are drawn
+procedurally with colored rectangles and font labels; they do not use loaded
+GUI textures in the frozen Client012 screen.
 Output transfer does not invoke furnace XP authority. Lighting, entity drawing,
 full vanilla GPU appearance and whole-game completion are outside this slice.
