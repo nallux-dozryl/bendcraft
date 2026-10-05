@@ -1,0 +1,186 @@
+{
+  "status": "passed",
+  "ordinary_laws": 15,
+  "independent_kernel_laws": 12,
+  "ordinary_only_roots": [
+    "item_entity_pickup_laws:inactive_touch_retains_inventory_and_all_entity_fields",
+    "item_entity_pickup_laws:unadmitted_touch_never_reads_or_installs_inventory",
+    "item_entity_pickup_laws:exhausted_scene_scan_retains_entities_player_rng_factory_and_ids"
+  ],
+  "ordinary_only_reason": "The complete dispatch/admission/scene gates transitively reference actual initialized-key admission and shared json.encode_go. A full checked13-root export was accepted by the exporter with zero exclusions but independently rejected in json.encode_go for affine live code calls that descend. The12 selected roots retain the original checked terms; actual production inactive/scan-refusal branches and full M.committed rollback are independently checked, not replacement state models.",
+  "roots": [
+    "item_entity_pickup_laws:refused_candidate_retains_both_complete_affine_owners",
+    "item_entity_pickup_laws:client_side_item_receiver_is_inactive",
+    "item_entity_pickup_laws:partial_survival_insertion_retains_residue_without_take_or_stats",
+    "item_entity_pickup_laws:discarded_item_retains_original_count_and_nonpickup_fields",
+    "item_entity_pickup_laws:survival_no_progress_keeps_residue_and_false_return",
+    "item_entity_pickup_laws:creative_no_progress_clears_residue_and_returns_true",
+    "item_entity_pickup_laws:unresolved_thrower_refuses_success_publication",
+    "item_entity_pickup_laws:absent_thrower_does_not_require_world_resolution",
+    "item_entity_pickup_laws:exhausted_operation_budget_cannot_install_partial_inventory",
+    "item_entity_pickup_laws:successful_emptying_restores_original_entity_count_and_stat_quantity",
+    "item_entity_pickup_laws:inactive_production_branch_retains_both_actual_owners",
+    "item_entity_pickup_laws:exhausted_production_scan_branch_retains_the_full_ordered_list"
+  ],
+  "scope_exclusions": [],
+  "checks": [
+    {
+      "kind": "export",
+      "command": [
+        "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+        "--experimental-transform-types",
+        "--stack-size=4096",
+        "--max-old-space-size=1536",
+        "tools/item_entity_pickup_proof.mjs",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-entity-pickup-proof"
+      ],
+      "exit": 0,
+      "seconds": 8.6281,
+      "sampled_process_tree_peak_rss_bytes": 933134336,
+      "bounded_stop": null,
+      "stdout_sha256": "3657732058634a8069e13ee936ad1fa59ce74f4c8e4516d70ecdde6b52bce98d",
+      "stderr_sha256": "983eb8e995c5af2ab3b0a17e555d59fde81a9c6f60f60df460d1f9521d62070c"
+    },
+    {
+      "kind": "kernel",
+      "command": [
+        "/usr/bin/env",
+        "LEAN_STACK_SIZE=4194304",
+        "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-entity-pickup-proof/selected.bendtt"
+      ],
+      "exit": 0,
+      "seconds": 0.2246,
+      "sampled_process_tree_peak_rss_bytes": 163840,
+      "bounded_stop": null,
+      "stdout_sha256": "61b73cda11b6b665b9f99f2defd3d3b57f985c865225e942a5bdaa594a503e47",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "checked_types_and_bodies_unchanged": true,
+  "all_original_declaration_maps_retained": true,
+  "source_sha256": {
+    "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/base.bend": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/campfire_authority_items.bend": "cc8e33b0636309348135ec32aabb8f6cfceb23a24863fd064fc30bf730ba79c2",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/compression.bend": "255cdff06a33050c7b0a48fdea75c1842ebe2dab0439cfe4f03d126d4edc20aa",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_block_entity_codec_components.bend": "f0a2bf8551c0d64e691cf482484056573a9862ce09bf4da783125644460db414",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_block_entity_codec_nbt.bend": "ceacb780ad51bd196c2317a31b990756ef42a1e22852fc733296f2ad21331a8a",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_effect_entities_model.bend": "c637fa93acc5707c8c5c101e23bfde7d7549d06523ae157581e32dae53f3d07c",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_recipe.bend": "085bfe968f3e7169e5c7bacf633029ebd9e4fc8c8ecb79ad81f63a193110f795",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_recipe_number.bend": "c3b8b18a323f9c95602c55d0063c2ae49796979ed6d7a4506b00a4091db1921a",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe.bend": "3c5f3fc7b3e0be9be7d553da2a107dc1245fe13f17afac0efdf84bc41c15ffe2",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe_component_registry.bend": "911786032b2c22759208edaf7112ae403b2a03663d9237c3e036c2b5ba4ece2a",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe_components.bend": "2a35e31f26187ebbdab1c4261d54083acb68072a56a7b5869e5dfc490bc946be",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe_decoder.bend": "739037cf939bcef5a8008c34216b717ed60574c66690f627d11dc949e8542397",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/geometry.bend": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/inventory.bend": "9d2be7fb88afa1dc6386ab9e8b046b15d2a2a73b7e14566e5bfad3e6dd1f2702",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_component.bend": "05c81ea37efaca17694133046c974a7c6229079f834ee482777888aa0bd89a1c",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_component_effects.bend": "717a46a1603866be6f3f1458721cb2281a135b36f27a652da9432756b168ae35",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_entity_pickup.bend": "c29fa0df1c5bf22516f60e4970f6dc0b5c262fdcebb896b4d527970ef4de90c4",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_entity_pickup_insert.bend": "776d55eed2d4da9d112294a2e98c8f0e6cab8dfff5b3769b7a216c74e88d8433",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_entity_pickup_laws.bend": "db528c604e6fc8e92e280c54a9e74d12de8de3b8538441091b4d6668c792606f",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_entity_pickup_model.bend": "bc77704882e5c4a8c7e65bfe8cb0b6b49c8ddaf8db6df8422183ec5f516623e5",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_entity_pickup_patch.bend": "79f9e27f91b8b6e9d8d666bcf7a4dd9398c6d0085b2fec6ab565c783e97b2d75",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_entity_pickup_proof.bend": "182befb8339fb4d7cfa0c5569e6d18c73ac56a5672138e836627bffe338d7f61",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_entity_pickup_properties.bend": "6b26a9299010e4df3b926babde5c535d6f83b91d4ab4e882c3b1b226fc7bf0aa",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_entity_pickup_publications.bend": "2587f7cf83e31f1b00c0fcfea6439e2ac541aea45c372dc5f91c476486c355fc",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_entity_pickup_scene.bend": "98f6f1d423a24d638199be773e33b87e74bb1cac5aed0d68fc85d4f58b4342e2",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/json.bend": "a1789e3b4f5bea158ec0d95a8bcb39aa5b7c7e7355a5254d3de1d52a93c719d1",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/locomotion.bend": "ccf8aa12636ba1fce5575606383bf75c02a8ac79ba952645b89aea2eef6cd459",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/movement.bend": "31f5a4c47903506c0f388f688eaeaf78a36a0d266efde52bc57ea8cc89627b45",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/nbt.bend": "b677546b5fc02aaa38f5c09e5b798c0d35aec32b1c4b37cbd7042b9a1a5275e4",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_codec.bend": "98a5d7e8e11bb1a811c4e3b1e19dcee010e9f36eb15967810fbe95f4222a09a7",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_inventory.bend": "a1a4a8d0cbb63038c9f01edaadb90a2ec5996cf88fbc2c489a5a0050ca318c6c",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_inventory_click_swap.bend": "2284a56e93d10299419701acc9cba2aec4427acf7ed4a9196fb56ec75f831048",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_inventory_return.bend": "53f4d0cea442ebcc6abfc306f520101a01cca8e46a139ebb89930fd94a5ac3ab",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_item_component_patch.bend": "2e1be17dc860c0d6df180fc4539f0d552516d64aec13a1ff9c8aeeb96355aff6",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_item_components.bend": "93eb104f612f8f6505c8c019daeef481fd367f733ec65ff7694a8ad88e531749",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_item_definitions.bend": "83a4f184e48de82b770ceec268feb55b70afdd69a9d0a008ba901d7ed146fa98",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_look.bend": "35ec863e078e46f2c2502b975f3e9f259114aec7baac614c68ba6e46773260ca",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_tick.bend": "07a35c96b0887bc7c600340835ec29bfdea98cdbfb283af67826f93ec57dba9d",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/png.bend": "8c24c14a250cf6dbdf0c2804e4b28bfebd7ef62ed5d9ee97a1d07094d4745f22",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/random.bend": "76302d587a74d2601994f6b0bc7c9000b04a65a0bbd06cc0ce643c5452eb3162",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/support.bend": "aca42f24e0a32bd89356ac33f6d9bbe2ab5975ce938e2d2750496c01a6137455",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/travel.bend": "f04bc69579d1b1a5fa048f1e07976e646c1c2f2e817e334ee632397fbe99b589",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/u32_decimal.bend": "d0b4b33f10b9e9801c4e99b83803afba5031ea40013a9263f9090bed8543d25c",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/vanilla_entity_fields.bend": "c5b2e1f2982d8470ba246c425db78bb09d988f58941a8db6a3f2d959a7b6b7fe"
+  },
+  "term_pins": [
+    {
+      "name": "item_entity_pickup_laws:refused_candidate_retains_both_complete_affine_owners",
+      "type_sha256": "b203bc8d7a42d7e3529ccec329a805a60b37c3fe0b0a0d262224dd39de388f45",
+      "checked_proof_sha256": "212b3b3360bbbac0d806f25e10da1bdaf12c902df1d1f90ac41a6407fdd8cf8a",
+      "source_body_sha256": "ff74e5867c0453de3008dca09d8c2e577af492d4f36a681c57cb7718afe0c68c"
+    },
+    {
+      "name": "item_entity_pickup_laws:client_side_item_receiver_is_inactive",
+      "type_sha256": "00e0e705b38cb4b2a22b9d15bf387cc21672b040fe2d6f59a1a9ac79733802e3",
+      "checked_proof_sha256": "aa7a82d5a3bb6a7db0df3357a1cf5fe2494c2f06a4f0dd4331e4d78c36de8f61",
+      "source_body_sha256": "bf03dfb5b9c7239346b45644d4fbbdd1d20ecb08b50135e327bd87a5a12297b7"
+    },
+    {
+      "name": "item_entity_pickup_laws:partial_survival_insertion_retains_residue_without_take_or_stats",
+      "type_sha256": "a6b7ac376b84acc4e674a8a8761900214bed5385c5634ccec4d01e189d993b3d",
+      "checked_proof_sha256": "7e8b32f48fb9c8beaded260f6a4f7f67ec6c447baf36614da9838fa3ffece0ea",
+      "source_body_sha256": "b132aa66e03ab41b4cde877b768f17d94d6752b9f69b16e0c408d5514b67f624"
+    },
+    {
+      "name": "item_entity_pickup_laws:discarded_item_retains_original_count_and_nonpickup_fields",
+      "type_sha256": "ded185f88f95b17c52e4a7865e0da462da128f8a54c1f466f692a24fc41e5679",
+      "checked_proof_sha256": "d602af65ef37aaeb28ee82cea2068c8c0faca42ae4ec472664f795c86178a254",
+      "source_body_sha256": "7125978e97059ebb2df2907ad7f72f8be315e598ec37ce1ff064232a3576df30"
+    },
+    {
+      "name": "item_entity_pickup_laws:survival_no_progress_keeps_residue_and_false_return",
+      "type_sha256": "ea9f21e916831bbf6ee6640a3b81c79cff8ed06e3615389637c1825280af502d",
+      "checked_proof_sha256": "16ee5d2de31d4760c512e373360f1132ba7230ac50f012ee737d0c1dd4b3023c",
+      "source_body_sha256": "ae1107477c66d584410e30095871dfe37f56a893d2eb9ca16695d81780f981d7"
+    },
+    {
+      "name": "item_entity_pickup_laws:creative_no_progress_clears_residue_and_returns_true",
+      "type_sha256": "cfab5f77d60b6b7242b547dad05fcb0eb0b7d214e47ed4b65e04d80d915590df",
+      "checked_proof_sha256": "ff34eaa2c65ec2248782df158ea18501f9de858526b8d89da9a22780e953117a",
+      "source_body_sha256": "ae1107477c66d584410e30095871dfe37f56a893d2eb9ca16695d81780f981d7"
+    },
+    {
+      "name": "item_entity_pickup_laws:unresolved_thrower_refuses_success_publication",
+      "type_sha256": "faf44c3dfc9f6a9ab276c394fb24a14ed38b01731425087662881fb7e2213307",
+      "checked_proof_sha256": "01eff2d6f2749cfa1046a1096aeaa6a7eb674f67479f789358358bf041f131d9",
+      "source_body_sha256": "7f1a17f0e247b04c3dac5d5ad9da48d6f4f0d03173806c79a6a94ced76dcc2bb"
+    },
+    {
+      "name": "item_entity_pickup_laws:absent_thrower_does_not_require_world_resolution",
+      "type_sha256": "ba7f2c5854cb94b808fea0dd15d0d91a73ee4ede16ca7bc64f85a8b8ad584150",
+      "checked_proof_sha256": "5db198189303f6be2f4e7be5cd8a8038feac87d78e91e905f02d780e8df78ea6",
+      "source_body_sha256": "0b80755b3e592878d6cb3005e7e80736fdfb2ca2eb5f43e9f40528f2ce9654e3"
+    },
+    {
+      "name": "item_entity_pickup_laws:exhausted_operation_budget_cannot_install_partial_inventory",
+      "type_sha256": "7334ad1265738d7fb998f07639cf842eb79340c96a2165798bf918ead4ccd3b5",
+      "checked_proof_sha256": "243ad7c24f877c688d3e851303b0e422b70d4a9467a9688aa51eb732d036d0cb",
+      "source_body_sha256": "7d92a1b2a574ec34b087f3a6cc2cd636cbbd15077ea2671aa4a6b7f32fd64da6"
+    },
+    {
+      "name": "item_entity_pickup_laws:successful_emptying_restores_original_entity_count_and_stat_quantity",
+      "type_sha256": "db0877b219010c8a1210092e82df16b8991fd8d3fff166a16e2a14abfeb9dbff",
+      "checked_proof_sha256": "8bab88210b9bffc46d53c2ff444c0645521475d8115bac3569996876e10b7f43",
+      "source_body_sha256": "c5c2ffd6b060701bd6f191ce3ffafd93d36aa9738ba80914f428113d1b79ea4a"
+    },
+    {
+      "name": "item_entity_pickup_laws:inactive_production_branch_retains_both_actual_owners",
+      "type_sha256": "5d5e80f5cde18f6563d76f194531a59398f2d1e32887c143301a7984ebc4eba4",
+      "checked_proof_sha256": "9cbc6a147c3b6a2b3b77104a9e9e9d1055c7db06fd608c006622915684ce1ee8",
+      "source_body_sha256": "6322002d52ad1418d229edf45b04ca8499ddcadc1b12e19c4bbb145b2ac77270"
+    },
+    {
+      "name": "item_entity_pickup_laws:exhausted_production_scan_branch_retains_the_full_ordered_list",
+      "type_sha256": "550fe255be8da877e2fcc390d1b70b7e19c8ece6dee6c59a9ecb8ecba0218419",
+      "checked_proof_sha256": "4e46305557caead7b55e48a0ca30f5bf3bf6d2133d1070f67b0ccc7e1ebdd0ab",
+      "source_body_sha256": "854872f2e402b878892d0a11404096a2339d2d7757938a6013ae96bb861f7a63"
+    }
+  ],
+  "selected_artifact_sha256": "1cf262f33bb53ecbd1abf9003976cb635594f450c7e0bd138f236623dca90c71",
+  "kernel_sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7",
+  "boundary": "Actual E.Entity/E.State and P.State owners; connected refusal, count restoration/stat quantity, partial survival publications, creative residue and thrower branches. No proof of contact/world scheduling, complete component codecs, Java behavior, packet/stat execution or persistence."
+}

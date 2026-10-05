@@ -1,0 +1,238 @@
+{
+  "scope": "Bounded engineering attempts retained; successful final native/proof artifacts have separate exact source/term receipts. These failures are not passing verification.",
+  "attempts": [
+    {
+      "receipt": "build/item-entity-pickup-check/properties.json",
+      "kind": "properties",
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/item_entity_pickup_properties.bend",
+        "--check-only"
+      ],
+      "exit": 0,
+      "seconds": 7.2845,
+      "sampled_process_tree_peak_rss_bytes": 1459798016,
+      "bounded_stop": null,
+      "stdout_sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "receipt": "build/item-entity-pickup-check/insert.json",
+      "kind": "insert",
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/item_entity_pickup_insert.bend",
+        "--check-only"
+      ],
+      "exit": 1,
+      "seconds": 5.2733,
+      "sampled_process_tree_peak_rss_bytes": 1554137088,
+      "bounded_stop": null,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "cba04c28f6e889c9fadfa2801515e028c1bd6450ff814153ceb430a1c3398167"
+    },
+    {
+      "receipt": "build/item-entity-pickup-check/owner.json",
+      "kind": "owner",
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/item_entity_pickup.bend",
+        "--check-only"
+      ],
+      "exit": 1,
+      "seconds": 5.8071,
+      "sampled_process_tree_peak_rss_bytes": 1270120448,
+      "bounded_stop": null,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "75314c26e3f3ea324fca8034ae257fe21db0ccc0152325a83b736b06c9ac569f"
+    },
+    {
+      "receipt": "build/item-entity-pickup-check/owner2.json",
+      "kind": "owner2",
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/item_entity_pickup.bend",
+        "--check-only"
+      ],
+      "exit": 1,
+      "seconds": 4.971,
+      "sampled_process_tree_peak_rss_bytes": 1104953344,
+      "bounded_stop": null,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "13f5bda7a9dd6ddb9cf1e2ecbdb7d1480c57603f6e888234a6bf26a248e25767"
+    },
+    {
+      "receipt": "build/item-entity-pickup-check/owner3.json",
+      "kind": "owner3",
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/item_entity_pickup.bend",
+        "--check-only"
+      ],
+      "exit": -15,
+      "seconds": 5.7609,
+      "sampled_process_tree_peak_rss_bytes": 2166259712,
+      "bounded_stop": "RSS bound",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "receipt": "build/item-entity-pickup-check/owner-node.json",
+      "kind": "owner-node",
+      "command": [
+        "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+        "--experimental-transform-types",
+        "--stack-size=4096",
+        "--max-old-space-size=1536",
+        "tools/item_entity_pickup_emit.mjs",
+        "src/item_entity_pickup.bend",
+        "build/item-entity-pickup-check/owner.c"
+      ],
+      "exit": 1,
+      "seconds": 6.973,
+      "sampled_process_tree_peak_rss_bytes": 777682944,
+      "bounded_stop": null,
+      "stdout_sha256": "2e935db2ccb09a1fe7d4039f6ecd7143784ed285b19a09375de5bdcbd6104918",
+      "stderr_sha256": "396710bd2494d9b3b5900a34704f1f76783a764187c7e8c245cc48662a0932f4"
+    },
+    {
+      "receipt": "build/item-entity-pickup-check/test-emit.json",
+      "kind": "test-emit",
+      "command": [
+        "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+        "--experimental-transform-types",
+        "--stack-size=4096",
+        "--max-old-space-size=1536",
+        "tools/item_entity_pickup_emit.mjs",
+        "tests/item_entity_pickup.bend",
+        "build/item-entity-pickup-check/receiver.c"
+      ],
+      "exit": 1,
+      "seconds": 2.9356,
+      "sampled_process_tree_peak_rss_bytes": 319307776,
+      "bounded_stop": null,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "ad4dd98143259227faa633c9af0c7535e10fd34352bace696a9dfb43ddaa83c4"
+    },
+    {
+      "receipt": "build/item-entity-pickup-check/test-emit2.json",
+      "kind": "test-emit2",
+      "command": [
+        "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+        "--experimental-transform-types",
+        "--stack-size=4096",
+        "--max-old-space-size=1536",
+        "tools/item_entity_pickup_emit.mjs",
+        "tests/item_entity_pickup.bend",
+        "build/item-entity-pickup-check/receiver.c"
+      ],
+      "exit": 1,
+      "seconds": 7.9564,
+      "sampled_process_tree_peak_rss_bytes": 618479616,
+      "bounded_stop": null,
+      "stdout_sha256": "136d1531861757fc5b94157912cbb930787e85a94c1ca0cc54e315a3d0722eca",
+      "stderr_sha256": "ab04b6e80465205820124099eb32fb72f9b8857da4d955a83df920c4e6527a8e"
+    },
+    {
+      "receipt": "build/item-entity-pickup-proof/export-current.json",
+      "kind": "export-current",
+      "command": [
+        "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+        "--experimental-transform-types",
+        "--stack-size=4096",
+        "--max-old-space-size=1536",
+        "tools/item_entity_pickup_proof.mjs",
+        "build/item-entity-pickup-proof"
+      ],
+      "exit": 0,
+      "seconds": 9.9739,
+      "sampled_process_tree_peak_rss_bytes": 1094139904,
+      "bounded_stop": null,
+      "stdout_sha256": "bb3b1ddb998f87edbb8bafdea62b6a6c7cb1f34c74db6835c4d05c04bdd316f3",
+      "stderr_sha256": "a172e97b1a23aa685346cfe3f1296370f2a53636d1bd9085ca2fa13c333e5f39"
+    },
+    {
+      "receipt": "build/item-entity-pickup-proof/kernel-current.json",
+      "kind": "kernel-current",
+      "command": [
+        "/usr/bin/env",
+        "LEAN_STACK_SIZE=4194304",
+        "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+        "build/item-entity-pickup-proof/selected.bendtt"
+      ],
+      "exit": 1,
+      "seconds": 1.8164,
+      "sampled_process_tree_peak_rss_bytes": 529350656,
+      "bounded_stop": null,
+      "stdout_sha256": "2275b00118525c37690bd0f4ff7ea0c6e31d3c0da890a188b519a556706ee11f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "receipt": "build/item-entity-pickup-native/failed-float-literal/emit.json",
+      "kind": "emit",
+      "command": [
+        "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+        "--experimental-transform-types",
+        "--stack-size=4096",
+        "--max-old-space-size=1536",
+        "tools/item_entity_pickup_emit.mjs",
+        "tests/item_entity_pickup.bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-entity-pickup-native/receiver.c"
+      ],
+      "exit": 1,
+      "seconds": 8.3229,
+      "sampled_process_tree_peak_rss_bytes": 908951552,
+      "bounded_stop": null,
+      "stdout_sha256": "4260e673e5448023f1acc875f2c24762ab0299b410337c9241592189cdfe6743",
+      "stderr_sha256": "2142d14f0e92b25d47d8a89917a493b89c0222d542ecb2220ee968b5a6bd3955"
+    },
+    {
+      "receipt": "build/item-entity-pickup-native/failed-full-input/native-1.json",
+      "kind": "native-1",
+      "command": [
+        "/usr/bin/time",
+        "-l",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-entity-pickup-native/receiver",
+        "--gpu",
+        "off",
+        "--threads",
+        "1",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-entity-pickup-native/input.json"
+      ],
+      "exit": -15,
+      "seconds": 60.0042,
+      "sampled_process_tree_peak_rss_bytes": 70778880,
+      "bounded_stop": "time bound",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "receipt": "build/item-entity-pickup-native/failed-pre-linear-diff/native-single.json",
+      "kind": "native-single",
+      "command": [
+        "/usr/bin/time",
+        "-l",
+        "build/item-entity-pickup-native/receiver",
+        "--gpu",
+        "off",
+        "--threads",
+        "1",
+        "build/item-entity-pickup-native/one.json"
+      ],
+      "exit": 0,
+      "seconds": 9.9013,
+      "sampled_process_tree_peak_rss_bytes": 70008832,
+      "bounded_stop": null,
+      "stdout_sha256": "23aa2a807132dbb640bc7f66794479edf24f5c18e3fc037e86b65563ff04ec95",
+      "stderr_sha256": "1a250101350171853117713de787be3c506a475d0d3c9bce627fdb804bc0ea8d",
+      "peak_rss_bytes": 70189056
+    }
+  ],
+  "resolutions": [
+    "Constructor do-body and forward helper failures belonged to concurrently owned player_item_components; its owner repaired and confirmed its original source closure before pickup checks resumed.",
+    "Own source binder/multiplicity/total-pattern/F32 fixture issues were substantively repaired.",
+    "Installed CLI owner check crossed2GiB; unchanged source API checked/emitted the original book under bounded Node without term substitution.",
+    "Full-gate kernel failed specifically in shared json.encode_go affine descent; full gates remain ordinarily checked and12 actual connected production laws pass independently.",
+    "Native full36-case input timed out60s at71MiB; same binary/single case/full actual catalog passed9.90s. Private linear diff preserves shared comparison+exact C.resolve admission, evaluates one recursive tail per field; changed full36-case input passed13.10s on1thread and14.45s on4. This is a targeted boundary result, not a live game frame-rate claim."
+  ]
+}
