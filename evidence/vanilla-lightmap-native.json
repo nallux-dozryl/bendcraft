@@ -1,0 +1,164 @@
+{
+  "status": "passed",
+  "command": "python3 tools/test_vanilla_lightmap.py",
+  "reference_sha256": "bd22fee50b1028856e0135f88516aa8d5740c2185bbfb6528a1ac5f6c9073f3b",
+  "source_sha256": {
+    "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/base.bend": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/geometry.bend": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/json.bend": "a1789e3b4f5bea158ec0d95a8bcb39aa5b7c7e7355a5254d3de1d52a93c719d1",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/locomotion.bend": "ccf8aa12636ba1fce5575606383bf75c02a8ac79ba952645b89aea2eef6cd459",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/movement.bend": "31f5a4c47903506c0f388f688eaeaf78a36a0d266efde52bc57ea8cc89627b45",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/random.bend": "76302d587a74d2601994f6b0bc7c9000b04a65a0bbd06cc0ce643c5452eb3162",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/u32_decimal.bend": "d0b4b33f10b9e9801c4e99b83803afba5031ea40013a9263f9090bed8543d25c",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/vanilla_lightmap.bend": "4c3ef7972dcb6c8d64e817fa5e8f3f00b1e6cd57b20b6a4ba2989e44cd172e0d",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/vanilla_lightmap_eval.bend": "f9aaeb5f9d8aa554a93963d05a7b77ed42f6ae8eb80f83d0264629f12a563565",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/vanilla_lightmap_model.bend": "332db535a833a36d4fedbd4504e4f9155ddf8931cce75411822c44c47c666cf4",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/vanilla_lightmap_sample.bend": "9d70324d1ccd8423af8340756ff530ee1ea6e9231ae3b30730efed4e5ba4c23b",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/vanilla_lightmap.bend": "a4a1c717042d9d50d2e02d0f725c3c756a591aa193a7e6f24cfe099f94b99b2d"
+  },
+  "emitted_c_sha256": "11f16b46d746b1ab31be38e17023afcf2f94967aecf75a4a611be0858a0be437",
+  "compiler_sha256": "32fb66e09f608ce9e4b173384bcfeec453db8c5bc96650e26ad861bef815a8d9",
+  "checks": [
+    {
+      "kind": "export",
+      "command": [
+        "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+        "--experimental-transform-types",
+        "--stack-size=4096",
+        "--max-old-space-size=2048",
+        "tools/vanilla_lightmap_proof.mjs",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/vanilla-lightmap-native"
+      ],
+      "exit": 0,
+      "seconds": 0.6934,
+      "sampled_process_tree_peak_rss_bytes": 181977088,
+      "bounded_stop": null,
+      "stdout_sha256": "3d9a5756cb353cf31c80a151d428ed56a5efebed39255f81c806fdd9390dd818",
+      "stderr_sha256": "3a6762102c7f1dc7325049a750cc93679ae086feb2473aa3f38f90a2bb47409d"
+    },
+    {
+      "kind": "kernel",
+      "command": [
+        "/usr/bin/env",
+        "LEAN_STACK_SIZE=4194304",
+        "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/vanilla-lightmap-native/selected.bendtt"
+      ],
+      "exit": 0,
+      "seconds": 0.2313,
+      "sampled_process_tree_peak_rss_bytes": 196608,
+      "bounded_stop": null,
+      "stdout_sha256": "61b73cda11b6b665b9f99f2defd3d3b57f985c865225e942a5bdaa594a503e47",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "emit",
+      "command": [
+        "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+        "--expose-gc",
+        "--experimental-transform-types",
+        "--stack-size=4096",
+        "--max-old-space-size=2048",
+        "tools/vanilla_lightmap_emit.mjs",
+        "tests/vanilla_lightmap.bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/vanilla-lightmap-native/receiver.c"
+      ],
+      "exit": 0,
+      "seconds": 3.9098,
+      "sampled_process_tree_peak_rss_bytes": 702464000,
+      "bounded_stop": null,
+      "stdout_sha256": "f473a85ff6d14223d3fac9d0402fb928243a5628a147c1f0dc81a9b3f1523533",
+      "stderr_sha256": "5dfcecc2138e91fb821c75443152bc5467ab612b5938e638efb8e71036d0bb6d"
+    },
+    {
+      "kind": "clang",
+      "command": [
+        "clang",
+        "-std=c11",
+        "-O2",
+        "-ffp-contract=off",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/vanilla-lightmap-native/receiver.c",
+        "-lm",
+        "-lpthread",
+        "-o",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/vanilla-lightmap-native/receiver"
+      ],
+      "exit": 0,
+      "seconds": 2.707,
+      "sampled_process_tree_peak_rss_bytes": 278888448,
+      "bounded_stop": null,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "native-one",
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/vanilla-lightmap-native/receiver",
+        "--gpu",
+        "off",
+        "--threads",
+        "1",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/vanilla-lightmap-native/input.json"
+      ],
+      "exit": 0,
+      "seconds": 0.7012,
+      "sampled_process_tree_peak_rss_bytes": 32768,
+      "bounded_stop": null,
+      "stdout_sha256": "cefd5bdac03c8d3e461244198768d15a5fdae0a83231c138d946005f518497b7",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "native-four",
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/vanilla-lightmap-native/receiver",
+        "--gpu",
+        "off",
+        "--threads",
+        "4",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/vanilla-lightmap-native/input.json"
+      ],
+      "exit": 0,
+      "seconds": 0.2384,
+      "sampled_process_tree_peak_rss_bytes": 2228224,
+      "bounded_stop": null,
+      "stdout_sha256": "cefd5bdac03c8d3e461244198768d15a5fdae0a83231c138d946005f518497b7",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "summary": {
+    "actual_java_flicker_ticks_raw_exact": 96,
+    "actual_java_helper_preparations_raw_exact": 28,
+    "installed_fragment_shader_pixels": 2048,
+    "finite_shader_components": 4386,
+    "raw_bit_exact_shader_components": 2306,
+    "max_abs_raw_error": 4.76837158203125e-07,
+    "undefined_black_pixels_correctly_refused_raw_and_stored_zero": 586,
+    "rgba8_color_components": 6144,
+    "exact_rgba8_color_components": 6144,
+    "max_rgba8_channel_difference": 0,
+    "actual_installed_LINEAR_sampler_probes": 88,
+    "max_abs_filtered_error": 3.0666589736938477e-05
+  },
+  "threads": [
+    1,
+    4
+  ],
+  "shader_backend": {
+    "backend": "Apple M3 Pro",
+    "version": "4.1 Metal - 90.5",
+    "ubo_bytes": 96
+  },
+  "boundary": "Actual production Bend helpers and separate renderer RNG compared to retained actual pinned Java receivers; actual installed shader and LINEAR sampler executed offscreen CGL. CPU F32 results and nearest RGBA8 storage are compared at recorded numerical tolerances, never asserted globally bit-identical to GPU or to Minecraft Vulkan. No full client, gameplay environment authority, authoritative light-stamp publication or foreground/OS acceptance claimed.",
+  "owned_production_source_sha256": {
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/vanilla_lightmap.bend": "4c3ef7972dcb6c8d64e817fa5e8f3f00b1e6cd57b20b6a4ba2989e44cd172e0d",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/vanilla_lightmap_eval.bend": "f9aaeb5f9d8aa554a93963d05a7b77ed42f6ae8eb80f83d0264629f12a563565",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/vanilla_lightmap_laws.bend": "3e96024cc332f9e78f68f4800d8e8845b5c9a941ac233075eeb25dc9abde7a2d",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/vanilla_lightmap_model.bend": "332db535a833a36d4fedbd4504e4f9155ddf8931cce75411822c44c47c666cf4",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/vanilla_lightmap_proof.bend": "7856edc1edbb794f3337158522f37ef76a0242df67eb158c8e73e653d422170c",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/vanilla_lightmap_sample.bend": "9d70324d1ccd8423af8340756ff530ee1ea6e9231ae3b30730efed4e5ba4c23b",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/vanilla_lightmap_scene.bend": "6fba17b64d40409432b5c34909f58ed88e2ccc1a04563d5351914461411872ab"
+  },
+  "additional_ordinary_checked_entry": "src/vanilla_lightmap_scene.bend",
+  "additional_ordinary_verdict": "ALL PROOFS CHECK (source check only; scene adapter is excluded from the pure native receiver graph)"
+}

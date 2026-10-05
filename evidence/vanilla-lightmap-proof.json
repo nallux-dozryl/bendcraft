@@ -1,0 +1,153 @@
+{
+  "status": "passed",
+  "ordinary_laws": 13,
+  "independent_kernel_laws": 13,
+  "roots": [
+    "vanilla_lightmap_laws:fresh_texture_is_actual_white_and_does_not_draw_random",
+    "vanilla_lightmap_laws:rejected_context_recovers_complete_renderer_and_table_owners",
+    "vanilla_lightmap_laws:rejected_evaluated_uniforms_do_not_clear_dirty_or_replace_texture",
+    "vanilla_lightmap_laws:clean_extract_does_not_draw_rng_read_context_or_change_pixels",
+    "vanilla_lightmap_laws:absent_dirty_extract_retains_rng_flicker_dirty_and_previous_uniforms",
+    "vanilla_lightmap_laws:successful_uniform_commit_preserves_rng_and_clears_dirty",
+    "vanilla_lightmap_laws:hidden_flash_cannot_modify_sky_factor",
+    "vanilla_lightmap_laws:missing_flash_has_no_sky_addition",
+    "vanilla_lightmap_laws:long_or_infinite_night_vision_returns_one_without_table_read",
+    "vanilla_lightmap_laws:invalid_pixel_coordinates_or_uniforms_cannot_publish_rgb",
+    "vanilla_lightmap_laws:black_raw_shader_is_not_claimed_finite",
+    "vanilla_lightmap_laws:observed_black_storage_is_opaque_black",
+    "vanilla_lightmap_laws:nonfinite_shader_output_is_never_integer_quantized"
+  ],
+  "term_pins": [
+    {
+      "name": "vanilla_lightmap_laws:fresh_texture_is_actual_white_and_does_not_draw_random",
+      "type_sha256": "8f4cbfb0dbc82d3ecb0629840223934b9a204719fd4df66d919b1dc9aa368f53",
+      "checked_proof_sha256": "d941655fd2515b430c3ebd65b9282209ec31e4810721e9a1715e168206df0628",
+      "source_body_sha256": "30c45af13d8d5e35bd4a49d4c16cdc15ffda429ea41530a6988b9f066abc21fa"
+    },
+    {
+      "name": "vanilla_lightmap_laws:rejected_context_recovers_complete_renderer_and_table_owners",
+      "type_sha256": "324171231b2b1956df24487ae8fcf7dc30a9025c9b119375f213f1856e1d4749",
+      "checked_proof_sha256": "9313b753b53bec30c2491a1951180828ae4636148a9fc780584eb1c81367b130",
+      "source_body_sha256": "a05d1e4c951ef53b030decec266f114ece1a73dce3c190c444a3f1caec337829"
+    },
+    {
+      "name": "vanilla_lightmap_laws:rejected_evaluated_uniforms_do_not_clear_dirty_or_replace_texture",
+      "type_sha256": "ee1c3c91432358bc39cdfbbd718330fa573eea0d2029e4dc0b0d9c5e6308436f",
+      "checked_proof_sha256": "b5c2c5042b8e5fda6a1d9b33723b1e365ba7975b7f8f70d4b9207777d0531481",
+      "source_body_sha256": "06ef669715302d0fa92cf91a36e82a55b6e1602b2fab63068cc78fa7f6bfa0d9"
+    },
+    {
+      "name": "vanilla_lightmap_laws:clean_extract_does_not_draw_rng_read_context_or_change_pixels",
+      "type_sha256": "83c954c0c3be4e1514c6da05bc9cc7ca4df1cebed2519803129e98512381fd09",
+      "checked_proof_sha256": "d2417c23334a3088f3e08984d6975b6c3233f0cb7f32f1a47d5fdf322e4dc002",
+      "source_body_sha256": "7eea173dcc2cbeda558cb1d0e1cc617b471daee0ab0c086bd4c64593c4cb8174"
+    },
+    {
+      "name": "vanilla_lightmap_laws:absent_dirty_extract_retains_rng_flicker_dirty_and_previous_uniforms",
+      "type_sha256": "41dc1aeca99fb96daca4cbe88c7236c4713b6e029a2e2e4e0c822944a6c2e80f",
+      "checked_proof_sha256": "a99e414441c4380dd46bda1588b75da8b23d2a506a353d09b67e6f9514138f60",
+      "source_body_sha256": "f6d9fd2e050a2efb0295968ca787e40b0ae9b470b6d7983338fc7f2655dae253"
+    },
+    {
+      "name": "vanilla_lightmap_laws:successful_uniform_commit_preserves_rng_and_clears_dirty",
+      "type_sha256": "37f84e34e90b31ea5e0be870a9bf6e188f220da20f34b8464a0806b597cb083c",
+      "checked_proof_sha256": "c359abd01fe2359013022909f68c543631dde8970af41e3c1e8cf2187e0fdbd8",
+      "source_body_sha256": "da1fc4bbe521706667a423829bc1b4210bf3efacc3d0893f5eada9d93c1dc78f"
+    },
+    {
+      "name": "vanilla_lightmap_laws:hidden_flash_cannot_modify_sky_factor",
+      "type_sha256": "30128868c5ed5a90c0a2cc5cc222660e0bb1bb351f929528a17042b0a0d9576c",
+      "checked_proof_sha256": "6e585a9c7f08851ea56ff527a116887f83344db7cd83a9113702c5d09df5ee36",
+      "source_body_sha256": "d60ab083b677c10063ff79ea674a66dec9cfb572a49289c068a34fc344d9fc1e"
+    },
+    {
+      "name": "vanilla_lightmap_laws:missing_flash_has_no_sky_addition",
+      "type_sha256": "e6801e8f3e4d376dc03ce829941c433c50c165cf3f274b2f1e04d03b48aa6502",
+      "checked_proof_sha256": "7aad622f563dfb8aa49ebfe874a420dc19e7fbb84a89c40b39dbe3a814c59d71",
+      "source_body_sha256": "b0e82add05e97eff3cf093eebe4df13f870486e91a6737371e2ec66a7b4dac25"
+    },
+    {
+      "name": "vanilla_lightmap_laws:long_or_infinite_night_vision_returns_one_without_table_read",
+      "type_sha256": "279bce4c082c46a3edc8bcad34bfd2b12f2511a10fe17d6d28f619bc7f4fa83e",
+      "checked_proof_sha256": "240d403b7725dce346c9293c8156fc4dba35571a61fd50fdb1ad4f0236368066",
+      "source_body_sha256": "f20eb15f6c762821aefc8ad1ccd9d11f153cf8c1ff68019313a7865c9e9905d2"
+    },
+    {
+      "name": "vanilla_lightmap_laws:invalid_pixel_coordinates_or_uniforms_cannot_publish_rgb",
+      "type_sha256": "8c6f27a516f4b611a71a8553cc561b4171343c6ba96a8cd007e4ee7f5f709fce",
+      "checked_proof_sha256": "cb85c3ed1245164c17c73f5260658eb1e9be6435def4d500d96a20e6ca0744ca",
+      "source_body_sha256": "c37b49e9df4c6f5ea8488fdd63da88ee29edb205b048cf68b1c23a12e4f03b81"
+    },
+    {
+      "name": "vanilla_lightmap_laws:black_raw_shader_is_not_claimed_finite",
+      "type_sha256": "156f819bd24f35265eacf5794c6f87e056aa15fec13808fb89c944ed3021e1fd",
+      "checked_proof_sha256": "c063a5cff9a85efea98290c576445e20d3a71f09c95fcfe61e0d66b15b43a5c2",
+      "source_body_sha256": "cace17ef0296341448817c72b660a335fc26dfca4c6269bd16da48962398df89"
+    },
+    {
+      "name": "vanilla_lightmap_laws:observed_black_storage_is_opaque_black",
+      "type_sha256": "0bcc5130b3cf4577de85787ae75ef3664a8788559502fabbd2375eaeea618f9d",
+      "checked_proof_sha256": "092ede63db56f61fbd90d9d2068f2b8f81d7a01610ed160de2e0cb85b5a8a545",
+      "source_body_sha256": "cace17ef0296341448817c72b660a335fc26dfca4c6269bd16da48962398df89"
+    },
+    {
+      "name": "vanilla_lightmap_laws:nonfinite_shader_output_is_never_integer_quantized",
+      "type_sha256": "937cd439f834bd0decfc17a411c2bce579868413042aa6d742eb6fd5fec3b65a",
+      "checked_proof_sha256": "b0118718151a1c2a0268e31288948a798a1b0110a1d820a751e60b96d9f4c502",
+      "source_body_sha256": "cd67630e5cec8380ebee72a835bed05c2465c6342a2b8006e3bffbcb57c357e3"
+    }
+  ],
+  "source_sha256": {
+    "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/base.bend": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/geometry.bend": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/locomotion.bend": "ccf8aa12636ba1fce5575606383bf75c02a8ac79ba952645b89aea2eef6cd459",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/movement.bend": "31f5a4c47903506c0f388f688eaeaf78a36a0d266efde52bc57ea8cc89627b45",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/random.bend": "76302d587a74d2601994f6b0bc7c9000b04a65a0bbd06cc0ce643c5452eb3162",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/vanilla_lightmap.bend": "4c3ef7972dcb6c8d64e817fa5e8f3f00b1e6cd57b20b6a4ba2989e44cd172e0d",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/vanilla_lightmap_eval.bend": "f9aaeb5f9d8aa554a93963d05a7b77ed42f6ae8eb80f83d0264629f12a563565",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/vanilla_lightmap_laws.bend": "3e96024cc332f9e78f68f4800d8e8845b5c9a941ac233075eeb25dc9abde7a2d",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/vanilla_lightmap_model.bend": "332db535a833a36d4fedbd4504e4f9155ddf8931cce75411822c44c47c666cf4",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/vanilla_lightmap_proof.bend": "7856edc1edbb794f3337158522f37ef76a0242df67eb158c8e73e653d422170c"
+  },
+  "scope_exclusions": [],
+  "checked_types_and_bodies_unchanged": true,
+  "all_original_declaration_maps_retained": true,
+  "selected_sha256": "861b701798f6cf692094ec36ae4a4cb5777bcf0c6c6f1e1925cc36ac2b28e789",
+  "kernel_sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7",
+  "checks": [
+    {
+      "kind": "export",
+      "command": [
+        "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+        "--experimental-transform-types",
+        "--stack-size=4096",
+        "--max-old-space-size=2048",
+        "tools/vanilla_lightmap_proof.mjs",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/vanilla-lightmap-native"
+      ],
+      "exit": 0,
+      "seconds": 0.6934,
+      "sampled_process_tree_peak_rss_bytes": 181977088,
+      "bounded_stop": null,
+      "stdout_sha256": "3d9a5756cb353cf31c80a151d428ed56a5efebed39255f81c806fdd9390dd818",
+      "stderr_sha256": "3a6762102c7f1dc7325049a750cc93679ae086feb2473aa3f38f90a2bb47409d"
+    },
+    {
+      "kind": "kernel",
+      "command": [
+        "/usr/bin/env",
+        "LEAN_STACK_SIZE=4194304",
+        "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/vanilla-lightmap-native/selected.bendtt"
+      ],
+      "exit": 0,
+      "seconds": 0.2313,
+      "sampled_process_tree_peak_rss_bytes": 196608,
+      "bounded_stop": null,
+      "stdout_sha256": "61b73cda11b6b665b9f99f2defd3d3b57f985c865225e942a5bdaa594a503e47",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "boundary": "Actual affine renderer/table rollback and successful/clean/absent extraction commit laws, initial texture, NV/flash gates and shader conversion failures. These do not prove transcendental tables, RNG arithmetic, floating shader parity, live EnvironmentAttribute authority or actor/frame integration; independent native/Java/shader observations cover their stated numerical boundaries."
+}
