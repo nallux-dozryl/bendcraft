@@ -1,0 +1,795 @@
+{
+  "classes": {
+    "net.minecraft.client.gui.screens.inventory.AbstractFurnaceScreen": {
+      "bytes": 4746,
+      "class_sha256": "1c87bb3ab98fbce67f07d500d709148ecd716fb5c365d713c53a699bb4051f3d",
+      "fields": [
+        {
+          "access_flags": 18,
+          "descriptor": "Lnet/minecraft/resources/Identifier;",
+          "name": "texture"
+        },
+        {
+          "access_flags": 18,
+          "descriptor": "Lnet/minecraft/resources/Identifier;",
+          "name": "litProgressSprite"
+        },
+        {
+          "access_flags": 18,
+          "descriptor": "Lnet/minecraft/resources/Identifier;",
+          "name": "burnProgressSprite"
+        }
+      ],
+      "major_version": 69,
+      "methods": [
+        {
+          "access_flags": 1,
+          "bytecode_hex": "2a2b1c1d1704b7003c2ab4003336052ab4004036062bb200432ab4000c150515060b0b2ab4001c2ab40049110100110100b6004e2ab40054c00058b6005a990044100e36072ab40054c00058b6005e12626ab80063046036082bb200432ab40012100e100e03100e15086415051038601506102460100e60150864100e1508b60069101836072ab40054c00058b6006d12706ab8006336082bb200432ab400151018101003031505104f60150610226015081010b60069b1",
+          "bytecode_sha256": "b546c0ce8974222bdafcbf3b3a913845881de1feebddb629be1f7987bcb5a14f",
+          "code_attribute_sha256": "52acf584aaf3eb8ebbdd87184338713bde701450cf03464ae3ebadece16a2896",
+          "descriptor": "(Lnet/minecraft/client/gui/GuiGraphicsExtractor;IIF)V",
+          "name": "extractBackground"
+        }
+      ],
+      "superclass": "net/minecraft/client/gui/screens/inventory/AbstractRecipeBookScreen"
+    },
+    "net.minecraft.world.inventory.AbstractFurnaceMenu": {
+      "bytes": 10127,
+      "class_sha256": "eae9be16492a52df568ae3e637824ffebdc084e16fde4b62568864c79597546a",
+      "fields": [
+        {
+          "access_flags": 25,
+          "constant_bytes_hex": "00000000",
+          "descriptor": "I",
+          "name": "INGREDIENT_SLOT"
+        },
+        {
+          "access_flags": 25,
+          "constant_bytes_hex": "00000001",
+          "descriptor": "I",
+          "name": "FUEL_SLOT"
+        },
+        {
+          "access_flags": 25,
+          "constant_bytes_hex": "00000002",
+          "descriptor": "I",
+          "name": "RESULT_SLOT"
+        },
+        {
+          "access_flags": 25,
+          "constant_bytes_hex": "00000003",
+          "descriptor": "I",
+          "name": "SLOT_COUNT"
+        },
+        {
+          "access_flags": 25,
+          "constant_bytes_hex": "00000004",
+          "descriptor": "I",
+          "name": "DATA_COUNT"
+        },
+        {
+          "access_flags": 26,
+          "constant_bytes_hex": "00000003",
+          "descriptor": "I",
+          "name": "INV_SLOT_START"
+        },
+        {
+          "access_flags": 26,
+          "constant_bytes_hex": "0000001e",
+          "descriptor": "I",
+          "name": "INV_SLOT_END"
+        },
+        {
+          "access_flags": 26,
+          "constant_bytes_hex": "0000001e",
+          "descriptor": "I",
+          "name": "USE_ROW_SLOT_START"
+        },
+        {
+          "access_flags": 26,
+          "constant_bytes_hex": "00000027",
+          "descriptor": "I",
+          "name": "USE_ROW_SLOT_END"
+        },
+        {
+          "access_flags": 18,
+          "descriptor": "Lnet/minecraft/world/Container;",
+          "name": "container"
+        },
+        {
+          "access_flags": 18,
+          "descriptor": "Lnet/minecraft/world/inventory/ContainerData;",
+          "name": "data"
+        },
+        {
+          "access_flags": 20,
+          "descriptor": "Lnet/minecraft/world/level/Level;",
+          "name": "level"
+        },
+        {
+          "access_flags": 18,
+          "descriptor": "Lnet/minecraft/world/item/crafting/RecipePropertySet;",
+          "name": "acceptedInputs"
+        },
+        {
+          "access_flags": 18,
+          "descriptor": "Lnet/minecraft/world/inventory/RecipeBookType;",
+          "name": "recipeBookType"
+        }
+      ],
+      "major_version": 69,
+      "methods": [
+        {
+          "access_flags": 1,
+          "bytecode_hex": "2ab4002805b900be02003c2ab4002806b900be02003d1c9900071b9a00050bae1b861c866e0b0cb800c3ae",
+          "bytecode_sha256": "4cae118430d04a1130d5122c6e3bf5b6236c55e8a397ff912879f4f24aaa1cca",
+          "code_attribute_sha256": "2f9453bbc0249204f2dba3ff201479befc0008c65d718853666a75aff3680533",
+          "descriptor": "()F",
+          "name": "getBurnProgress"
+        },
+        {
+          "access_flags": 1,
+          "bytecode_hex": "2ab4002804b900be02003c1b9a00071100c83c2ab4002803b900be0200861b866e0b0cb800c3ae",
+          "bytecode_sha256": "9b9cfb1515a55f33f14c3c9101552100c4085f721acbf419d9f87286b799203c",
+          "code_attribute_sha256": "278edc634fec76f79e76ab3b945f00040ed089b66dd3dceb889cd1f2c3a35cf7",
+          "descriptor": "()F",
+          "name": "getLitProgress"
+        },
+        {
+          "access_flags": 1,
+          "bytecode_hex": "2ab4002803b900be02009e000704a7000403ac",
+          "bytecode_sha256": "d1a08d7746b1c4b4d186716c6d0ad5ab177727c39b285ff4562e7dfc2fc3447a",
+          "code_attribute_sha256": "927683bf963040f2d58c08c4556fbeecee322d93b077c7285a37a5f3e43f92e1",
+          "descriptor": "()Z",
+          "name": "isLit"
+        }
+      ],
+      "superclass": "net/minecraft/world/inventory/RecipeBookMenu"
+    },
+    "net.minecraft.world.level.block.AbstractFurnaceBlock": {
+      "bytes": 10069,
+      "class_sha256": "84d085728f6e3e3a8dcc40d8159f805cd64355af058c6be61d9a832e938ef37e",
+      "fields": [
+        {
+          "access_flags": 25,
+          "descriptor": "Lnet/minecraft/world/level/block/state/properties/EnumProperty;",
+          "name": "FACING"
+        },
+        {
+          "access_flags": 25,
+          "descriptor": "Lnet/minecraft/world/level/block/state/properties/BooleanProperty;",
+          "name": "LIT"
+        }
+      ],
+      "major_version": 69,
+      "methods": [],
+      "superclass": "net/minecraft/world/level/block/BaseEntityBlock"
+    },
+    "net.minecraft.world.level.block.BaseEntityBlock": {
+      "bytes": 3354,
+      "class_sha256": "3425e56336b72072b26716164d69520d5003db187bcd98f72aa20ae6bc8c001c",
+      "fields": [],
+      "major_version": 69,
+      "methods": [],
+      "superclass": "net/minecraft/world/level/block/Block"
+    },
+    "net.minecraft.world.level.block.BlastFurnaceBlock": {
+      "bytes": 5740,
+      "class_sha256": "77b21cc30dd7fd8a99520e25ba92fe3f5488dab45ef9247c055e38492ef863cf",
+      "fields": [],
+      "major_version": 69,
+      "methods": [],
+      "superclass": "net/minecraft/world/level/block/AbstractFurnaceBlock"
+    },
+    "net.minecraft.world.level.block.Block": {
+      "bytes": 51245,
+      "class_sha256": "2275d8eb742074b354c96fe31a6cf1d78e31d410a32acb18a96d84a1c9851ff5",
+      "fields": [
+        {
+          "access_flags": 26,
+          "descriptor": "Lorg/slf4j/Logger;",
+          "name": "LOGGER"
+        },
+        {
+          "access_flags": 18,
+          "descriptor": "Lnet/minecraft/core/Holder$Reference;",
+          "name": "builtInRegistryHolder"
+        },
+        {
+          "access_flags": 25,
+          "descriptor": "Lnet/minecraft/core/IdMapper;",
+          "name": "BLOCK_STATE_REGISTRY"
+        },
+        {
+          "access_flags": 26,
+          "descriptor": "Lcom/google/common/cache/LoadingCache;",
+          "name": "SHAPE_FULL_BLOCK_CACHE"
+        },
+        {
+          "access_flags": 25,
+          "constant_bytes_hex": "00000001",
+          "descriptor": "I",
+          "name": "UPDATE_NEIGHBORS"
+        },
+        {
+          "access_flags": 25,
+          "constant_bytes_hex": "00000002",
+          "descriptor": "I",
+          "name": "UPDATE_CLIENTS"
+        },
+        {
+          "access_flags": 25,
+          "constant_bytes_hex": "00000004",
+          "descriptor": "I",
+          "name": "UPDATE_INVISIBLE"
+        },
+        {
+          "access_flags": 25,
+          "constant_bytes_hex": "00000008",
+          "descriptor": "I",
+          "name": "UPDATE_IMMEDIATE"
+        },
+        {
+          "access_flags": 25,
+          "constant_bytes_hex": "00000010",
+          "descriptor": "I",
+          "name": "UPDATE_KNOWN_SHAPE"
+        },
+        {
+          "access_flags": 25,
+          "constant_bytes_hex": "00000020",
+          "descriptor": "I",
+          "name": "UPDATE_SUPPRESS_DROPS"
+        },
+        {
+          "access_flags": 25,
+          "constant_bytes_hex": "00000040",
+          "descriptor": "I",
+          "name": "UPDATE_MOVE_BY_PISTON"
+        },
+        {
+          "access_flags": 25,
+          "constant_bytes_hex": "00000080",
+          "descriptor": "I",
+          "name": "UPDATE_SKIP_SHAPE_UPDATE_ON_WIRE"
+        },
+        {
+          "access_flags": 25,
+          "constant_bytes_hex": "00000100",
+          "descriptor": "I",
+          "name": "UPDATE_SKIP_BLOCK_ENTITY_SIDEEFFECTS"
+        },
+        {
+          "access_flags": 25,
+          "constant_bytes_hex": "00000200",
+          "descriptor": "I",
+          "name": "UPDATE_SKIP_ON_PLACE"
+        },
+        {
+          "access_flags": 25,
+          "constant_bytes_hex": "00000104",
+          "descriptor": "I",
+          "name": "UPDATE_NONE"
+        },
+        {
+          "access_flags": 25,
+          "constant_bytes_hex": "00000003",
+          "descriptor": "I",
+          "name": "UPDATE_ALL"
+        },
+        {
+          "access_flags": 25,
+          "constant_bytes_hex": "0000000b",
+          "descriptor": "I",
+          "name": "UPDATE_ALL_IMMEDIATE"
+        },
+        {
+          "access_flags": 25,
+          "constant_bytes_hex": "00000330",
+          "descriptor": "I",
+          "name": "UPDATE_SKIP_ALL_SIDEEFFECTS"
+        },
+        {
+          "access_flags": 25,
+          "constant_bytes_hex": "bf800000",
+          "descriptor": "F",
+          "name": "INDESTRUCTIBLE"
+        },
+        {
+          "access_flags": 25,
+          "constant_bytes_hex": "00000000",
+          "descriptor": "F",
+          "name": "INSTANT"
+        },
+        {
+          "access_flags": 25,
+          "constant_bytes_hex": "00000200",
+          "descriptor": "I",
+          "name": "UPDATE_LIMIT"
+        },
+        {
+          "access_flags": 20,
+          "descriptor": "Lnet/minecraft/world/level/block/state/StateDefinition;",
+          "name": "stateDefinition"
+        },
+        {
+          "access_flags": 2,
+          "descriptor": "Lnet/minecraft/world/level/block/state/BlockState;",
+          "name": "defaultBlockState"
+        },
+        {
+          "access_flags": 2,
+          "descriptor": "Lnet/minecraft/world/item/Item;",
+          "name": "item"
+        },
+        {
+          "access_flags": 26,
+          "constant_bytes_hex": "00000100",
+          "descriptor": "I",
+          "name": "CACHE_SIZE"
+        },
+        {
+          "access_flags": 26,
+          "descriptor": "Ljava/lang/ThreadLocal;",
+          "name": "OCCLUSION_CACHE"
+        }
+      ],
+      "major_version": 69,
+      "methods": [
+        {
+          "access_flags": 9,
+          "bytecode_hex": "261400766f281400766f18041400766f18061400766f18081400766f180a1400766fb80078b0",
+          "bytecode_sha256": "6804b80bccc4134574751f4e5607d6774e4dfd74b28309b4392b71a224d22ec7",
+          "code_attribute_sha256": "ff2cbd25ce831454ee6218ce2a5292a5d1a64b48cd74706c5a2cc6017152e95e",
+          "descriptor": "(DDDDDD)Lnet/minecraft/world/phys/shapes/VoxelShape;",
+          "name": "box"
+        },
+        {
+          "access_flags": 9,
+          "bytecode_hex": "2626281804b8009ab0",
+          "bytecode_sha256": "705cc4a14ba2d77f95fbdfec1cacb3d168751208571b0772a3ab595aa1d73ca9",
+          "code_attribute_sha256": "888f90e9a0e3a58371067491f2c4b375ff80e6309fb35ab84529e7454c9eac3c",
+          "descriptor": "(DDD)Lnet/minecraft/world/phys/shapes/VoxelShape;",
+          "name": "column"
+        },
+        {
+          "access_flags": 9,
+          "bytecode_hex": "261400966f3908281400966f390a1400981808671804140098180a671400981808631806140098180a63b8009eb0",
+          "bytecode_sha256": "51934ae987d1aff329bc1f7a6da8f46837ede37c9a03c9df1661935870027053",
+          "code_attribute_sha256": "1246a77f44c2d6ecda51f7305f2441436baa9e676de70f6b8780e02e8c2a3dd2",
+          "descriptor": "(DDDD)Lnet/minecraft/world/phys/shapes/VoxelShape;",
+          "name": "column"
+        }
+      ],
+      "superclass": "net/minecraft/world/level/block/state/BlockBehaviour"
+    },
+    "net.minecraft.world.level.block.CampfireBlock": {
+      "bytes": 24518,
+      "class_sha256": "a4c35cfaeab456ed359f89cb8afb26e914ab5455e88710656c66b18a47da833a",
+      "fields": [
+        {
+          "access_flags": 25,
+          "descriptor": "Lnet/minecraft/world/level/block/state/properties/BooleanProperty;",
+          "name": "LIT"
+        },
+        {
+          "access_flags": 25,
+          "descriptor": "Lnet/minecraft/world/level/block/state/properties/BooleanProperty;",
+          "name": "SIGNAL_FIRE"
+        },
+        {
+          "access_flags": 25,
+          "descriptor": "Lnet/minecraft/world/level/block/state/properties/BooleanProperty;",
+          "name": "WATERLOGGED"
+        },
+        {
+          "access_flags": 25,
+          "descriptor": "Lnet/minecraft/world/level/block/state/properties/EnumProperty;",
+          "name": "FACING"
+        },
+        {
+          "access_flags": 26,
+          "descriptor": "Lnet/minecraft/world/phys/shapes/VoxelShape;",
+          "name": "SHAPE"
+        },
+        {
+          "access_flags": 26,
+          "descriptor": "Lnet/minecraft/world/phys/shapes/VoxelShape;",
+          "name": "SHAPE_VIRTUAL_POST"
+        },
+        {
+          "access_flags": 26,
+          "constant_bytes_hex": "00000005",
+          "descriptor": "I",
+          "name": "SMOKE_DISTANCE"
+        },
+        {
+          "access_flags": 18,
+          "descriptor": "Z",
+          "name": "spawnParticles"
+        },
+        {
+          "access_flags": 18,
+          "descriptor": "I",
+          "name": "fireDamage"
+        }
+      ],
+      "major_version": 69,
+      "methods": [
+        {
+          "access_flags": 4,
+          "bytecode_hex": "b20110b0",
+          "bytecode_sha256": "e234906d800e1439900be0cfa0a24224cfb6ef7d1eda46c9b5225a374ee54c46",
+          "code_attribute_sha256": "4d1c50f62b525013e783e727b15e9fab079c7527e7f3e2366bedb21fc3fd3ad1",
+          "descriptor": "(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/phys/shapes/CollisionContext;)Lnet/minecraft/world/phys/shapes/VoxelShape;",
+          "name": "getShape"
+        },
+        {
+          "access_flags": 8,
+          "bytecode_hex": "b20179b3001db20218b3002bb20158b3002eb20219b3003114021c0e14021eb80220b3011014019c0e14021cb80220b301a9b1",
+          "bytecode_sha256": "fcc03643901a338d67c325685a513759004da61be247ac5f6e09565f42137852",
+          "code_attribute_sha256": "cce4305c8800fba1bd442bd4f027f2d019c35014acc1a489e1058bfdf39a468d",
+          "descriptor": "()V",
+          "name": "<clinit>"
+        }
+      ],
+      "superclass": "net/minecraft/world/level/block/BaseEntityBlock"
+    },
+    "net.minecraft.world.level.block.FurnaceBlock": {
+      "bytes": 5750,
+      "class_sha256": "234d91158635c71dedbdac19f0a2494313229daf66c1108dfdd9c674831bc4d2",
+      "fields": [],
+      "major_version": 69,
+      "methods": [],
+      "superclass": "net/minecraft/world/level/block/AbstractFurnaceBlock"
+    },
+    "net.minecraft.world.level.block.SmokerBlock": {
+      "bytes": 4983,
+      "class_sha256": "bdcd0e15e3759a60b1d94d7228ffc46f6337596548eafcd44fd50ae9bc8e9f5b",
+      "fields": [],
+      "major_version": 69,
+      "methods": [],
+      "superclass": "net/minecraft/world/level/block/AbstractFurnaceBlock"
+    },
+    "net.minecraft.world.level.block.state.BlockBehaviour": {
+      "bytes": 28300,
+      "class_sha256": "c407675a1f665d14f73103c2896b7f4c109890ce409fda662d77824fd991747d",
+      "fields": [
+        {
+          "access_flags": 28,
+          "descriptor": "[Lnet/minecraft/core/Direction;",
+          "name": "UPDATE_SHAPE_ORDER"
+        },
+        {
+          "access_flags": 20,
+          "descriptor": "Z",
+          "name": "hasCollision"
+        },
+        {
+          "access_flags": 20,
+          "descriptor": "F",
+          "name": "explosionResistance"
+        },
+        {
+          "access_flags": 20,
+          "descriptor": "Z",
+          "name": "isRandomlyTicking"
+        },
+        {
+          "access_flags": 20,
+          "descriptor": "Lnet/minecraft/world/level/block/SoundType;",
+          "name": "soundType"
+        },
+        {
+          "access_flags": 20,
+          "descriptor": "F",
+          "name": "friction"
+        },
+        {
+          "access_flags": 20,
+          "descriptor": "F",
+          "name": "speedFactor"
+        },
+        {
+          "access_flags": 20,
+          "descriptor": "F",
+          "name": "jumpFactor"
+        },
+        {
+          "access_flags": 20,
+          "descriptor": "F",
+          "name": "bounceRestitution"
+        },
+        {
+          "access_flags": 20,
+          "descriptor": "F",
+          "name": "fallDistanceReduction"
+        },
+        {
+          "access_flags": 20,
+          "descriptor": "Z",
+          "name": "dynamicShape"
+        },
+        {
+          "access_flags": 20,
+          "descriptor": "Lnet/minecraft/world/flag/FeatureFlagSet;",
+          "name": "requiredFeatures"
+        },
+        {
+          "access_flags": 20,
+          "descriptor": "Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;",
+          "name": "properties"
+        },
+        {
+          "access_flags": 20,
+          "descriptor": "Ljava/util/Optional;",
+          "name": "drops"
+        },
+        {
+          "access_flags": 20,
+          "descriptor": "Ljava/lang/String;",
+          "name": "descriptionId"
+        }
+      ],
+      "major_version": 69,
+      "methods": [
+        {
+          "access_flags": 4,
+          "bytecode_hex": "b80189b0",
+          "bytecode_sha256": "e05969349db8ca0cce06f76488852af0f81b3721a75b1312724cf484e6ae3e42",
+          "code_attribute_sha256": "e424eb6ce1d5e07323c0c5512b9f4eccb0889ef8dea120c588cdcce9a879f452",
+          "descriptor": "(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/phys/shapes/VoxelShape;",
+          "name": "getInteractionShape"
+        },
+        {
+          "access_flags": 4,
+          "bytecode_hex": "b80198b0",
+          "bytecode_sha256": "4844ab47df4c0281db2166da9ca12a1c1e2c3c4c1cc7e7f1a3986ac069b8741a",
+          "code_attribute_sha256": "a9baf1a47d4d20fe200e4f2eb7b6212470b69da182d85587047f07f01958c283",
+          "descriptor": "(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/phys/shapes/CollisionContext;)Lnet/minecraft/world/phys/shapes/VoxelShape;",
+          "name": "getShape"
+        },
+        {
+          "access_flags": 4,
+          "bytecode_hex": "2ab4000d99000c2b2c2db6017ba70006b80189b0",
+          "bytecode_sha256": "09a5951f369ed20838787f3f4447334f199b56719460651db495bf37af05f314",
+          "code_attribute_sha256": "85e94221cb2b86b2dc7d7f71101c3a355ac723336e7deffe8574c72d62a89463",
+          "descriptor": "(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/phys/shapes/CollisionContext;)Lnet/minecraft/world/phys/shapes/VoxelShape;",
+          "name": "getCollisionShape"
+        }
+      ],
+      "superclass": "java/lang/Object"
+    },
+    "net.minecraft.world.phys.shapes.Shapes": {
+      "bytes": 23128,
+      "class_sha256": "23add505fd7570b30c9f723734471f71cbd02a84998ad002cf27f87c6b0ddb66",
+      "fields": [
+        {
+          "access_flags": 25,
+          "constant_bytes_hex": "3e7ad7f29abcaf48",
+          "descriptor": "D",
+          "name": "EPSILON"
+        },
+        {
+          "access_flags": 25,
+          "constant_bytes_hex": "3eb0c6f7a0b5ed8d",
+          "descriptor": "D",
+          "name": "BIG_EPSILON"
+        },
+        {
+          "access_flags": 26,
+          "descriptor": "Lnet/minecraft/world/phys/shapes/VoxelShape;",
+          "name": "BLOCK"
+        },
+        {
+          "access_flags": 26,
+          "descriptor": "Lnet/minecraft/world/phys/Vec3;",
+          "name": "BLOCK_CENTER"
+        },
+        {
+          "access_flags": 25,
+          "descriptor": "Lnet/minecraft/world/phys/shapes/VoxelShape;",
+          "name": "INFINITY"
+        },
+        {
+          "access_flags": 26,
+          "descriptor": "Lnet/minecraft/world/phys/shapes/VoxelShape;",
+          "name": "EMPTY"
+        }
+      ],
+      "major_version": 69,
+      "methods": [
+        {
+          "access_flags": 9,
+          "bytecode_hex": "b2000db0",
+          "bytecode_sha256": "fc16f656815240177c1bda87f71429a9065d7f20b8753f70b0a6fe7f8731fdac",
+          "code_attribute_sha256": "37d994b9a081e3674b82e3f05fc3b625be112ae1a689cf30ea99e06c06a50b73",
+          "descriptor": "()Lnet/minecraft/world/phys/shapes/VoxelShape;",
+          "name": "block"
+        },
+        {
+          "access_flags": 4106,
+          "bytecode_hex": "bb004059040404b701e14b2a030303b601e4bb0045592ab70047b0",
+          "bytecode_sha256": "e7be8281873bd2ede4335f76822179f5b308f7a10f52130a38d8424673ee07c0",
+          "code_attribute_sha256": "5e14ca8274393ea11511dc72359cae9f1a171a474de267b832e14a6236329c21",
+          "descriptor": "()Lnet/minecraft/world/phys/shapes/CubeVoxelShape;",
+          "name": "lambda$static$0"
+        },
+        {
+          "access_flags": 8,
+          "bytecode_hex": "ba01e70000b801eac00028b3000dbb014d591401ee1401ee1401eeb701f0b3013b1401f51401f51401f51401f71401f71401f7b801f9b301fcbb002559bb004059030303b701e1bb002e5904bc0759030e52b701ffbb002e5904bc0759030e52b701ffbb002e5904bc0759030e52b701ffb70033b30009b1",
+          "bytecode_sha256": "7b242c763f725a3984f279494ee56b908f37c2c07672ef8645760b8433557c88",
+          "code_attribute_sha256": "9869b59c7ab8aac0a7ac7ae50ea3f00cbc4b3f814361152a06d10a1423ffd069",
+          "descriptor": "()V",
+          "name": "<clinit>"
+        }
+      ],
+      "superclass": "java/lang/Object"
+    }
+  },
+  "client": {
+    "bytes": 41483720,
+    "file": "26.3.jar",
+    "sha1": "e877b6a07acd633fb3bb475002175cec036e7b87",
+    "sha256": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d"
+  },
+  "metadata": {
+    "bytes": 44992,
+    "file": "26.3.json",
+    "sha1": "4fe1aa1ef8da1cb95c5bad1fb98890ca56dd8ca3",
+    "sha256": "9a7b39dae3b9c8d30006b650e357aae220629b7852fa0fc7221db7a8646bd5e4"
+  },
+  "outline": {
+    "argument": "Inherited state-independent getShape -> Shapes.block, whose initializer fills the only cell of a 1x1x1 discrete shape and wraps CubeVoxelShape. Campfire getShape -> SHAPE -> Block.column(16,0,7), with Block.box dividing coordinates by16.",
+    "campfire_all_states": [
+      0,
+      0,
+      0,
+      1,
+      0.4375,
+      1
+    ],
+    "furnace_all_states": [
+      0,
+      0,
+      0,
+      1,
+      1,
+      1
+    ],
+    "interaction_shape": "Separate inherited getInteractionShape returns Shapes.empty. No collision-property assertion."
+  },
+  "pin": "26.3",
+  "resolved_constant_pool": {
+    "net.minecraft.client.gui.screens.inventory.AbstractFurnaceScreen": {
+      "0x5a": [
+        "net/minecraft/world/inventory/AbstractFurnaceMenu",
+        [
+          "isLit",
+          "()Z"
+        ]
+      ],
+      "0x5e": [
+        "net/minecraft/world/inventory/AbstractFurnaceMenu",
+        [
+          "getLitProgress",
+          "()F"
+        ]
+      ],
+      "0x62": 13.0,
+      "0x63": [
+        "net/minecraft/util/Mth",
+        [
+          "ceil",
+          "(F)I"
+        ]
+      ],
+      "0x6d": [
+        "net/minecraft/world/inventory/AbstractFurnaceMenu",
+        [
+          "getBurnProgress",
+          "()F"
+        ]
+      ],
+      "0x70": 24.0
+    },
+    "net.minecraft.world.level.block.Block": {
+      "0x76": 16.0,
+      "0x78": [
+        "net/minecraft/world/phys/shapes/Shapes",
+        [
+          "box",
+          "(DDDDDD)Lnet/minecraft/world/phys/shapes/VoxelShape;"
+        ]
+      ],
+      "0x96": 2.0,
+      "0x98": 8.0,
+      "0x9a": [
+        "net/minecraft/world/level/block/Block",
+        [
+          "column",
+          "(DDDD)Lnet/minecraft/world/phys/shapes/VoxelShape;"
+        ]
+      ],
+      "0x9e": [
+        "net/minecraft/world/level/block/Block",
+        [
+          "box",
+          "(DDDDDD)Lnet/minecraft/world/phys/shapes/VoxelShape;"
+        ]
+      ]
+    },
+    "net.minecraft.world.level.block.CampfireBlock": {
+      "0x110": [
+        "net/minecraft/world/level/block/CampfireBlock",
+        [
+          "SHAPE",
+          "Lnet/minecraft/world/phys/shapes/VoxelShape;"
+        ]
+      ],
+      "0x21c": 16.0,
+      "0x21e": 7.0,
+      "0x220": [
+        "net/minecraft/world/level/block/Block",
+        [
+          "column",
+          "(DDD)Lnet/minecraft/world/phys/shapes/VoxelShape;"
+        ]
+      ]
+    },
+    "net.minecraft.world.level.block.state.BlockBehaviour": {
+      "0x17b": [
+        "net/minecraft/world/level/block/state/BlockState",
+        [
+          "getShape",
+          "(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/phys/shapes/VoxelShape;"
+        ]
+      ],
+      "0x189": [
+        "net/minecraft/world/phys/shapes/Shapes",
+        [
+          "empty",
+          "()Lnet/minecraft/world/phys/shapes/VoxelShape;"
+        ]
+      ],
+      "0x198": [
+        "net/minecraft/world/phys/shapes/Shapes",
+        [
+          "block",
+          "()Lnet/minecraft/world/phys/shapes/VoxelShape;"
+        ]
+      ]
+    },
+    "net.minecraft.world.phys.shapes.Shapes": {
+      "0x1e1": [
+        "net/minecraft/world/phys/shapes/BitSetDiscreteVoxelShape",
+        [
+          "<init>",
+          "(III)V"
+        ]
+      ],
+      "0x1e4": [
+        "net/minecraft/world/phys/shapes/DiscreteVoxelShape",
+        [
+          "fill",
+          "(III)V"
+        ]
+      ],
+      "0x40": "net/minecraft/world/phys/shapes/BitSetDiscreteVoxelShape",
+      "0x45": "net/minecraft/world/phys/shapes/CubeVoxelShape",
+      "0xd": [
+        "net/minecraft/world/phys/shapes/Shapes",
+        [
+          "BLOCK",
+          "Lnet/minecraft/world/phys/shapes/VoxelShape;"
+        ]
+      ]
+    }
+  },
+  "scope": "Pinned class-byte evidence of outline inheritance and screen/menu progress instructions. No JVM execution, complete ray/collision proof, native presentation or Java GUI observation.",
+  "screen": {
+    "arrow": "ceil(clamped_signed_F32_ratio*24F)",
+    "flame": "signed lit_remaining >0 gates ceil(clamped_signed_F32_ratio*13F)+1;14-pixel sprite, bottom y50",
+    "lit_duration_zero_fallback": 200
+  }
+}
