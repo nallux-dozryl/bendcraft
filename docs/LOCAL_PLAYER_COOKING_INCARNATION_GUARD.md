@@ -67,9 +67,12 @@ exported with no exclusions; the independent kernel accepted that exact
 881,770-byte artifact with `ALL PROOFS CHECK` in 0.16387 seconds. Source and
 kernel receipts are recorded separately in
 `evidence/local-player-cooking-incarnation-guard-{source,kernel}.json`. The two
-additional source failures are retained. The native receiver is source-checked
-but has not run, so the numeric MAX48 threshold behavior remains unverified by
-this new receiver.
+additional source failures are retained. Native C emission then passed in
+9.267948 seconds, C compilation in 11.06948 seconds, and the actual receiver
+passed all 16 exact results in 0.565518 seconds. The build and native receipts
+pin the same checked source, C, binary and output. These finite native cases
+measure the actual MAX48 comparison, late refusal and admission paths; they do
+not replace the open universal arithmetic theorem.
 
 The new laws quantify over arbitrary owners. The inductive route law retains
 every actual trie path, including malformed shapes and collision arrays;
