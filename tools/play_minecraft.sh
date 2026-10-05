@@ -1,16 +1,16 @@
 #!/bin/bash
 set -euo pipefail
 root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-actor="$root/build/compiler-producer-diagnostic-017/actor"
-renderer="$root/build/generic-resource-world-sample-client-native/010/renderer"
+actor="$root/build/compiler-producer-diagnostic-023/actor"
+renderer="$root/build/generic-resource-world-sample-client-native/012/renderer"
 python='/Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3'
 cd "$root"
 if [ ! -x "$actor" ] || [ ! -x "$renderer" ] || [ ! -x "$python" ]; then
-  echo "Current actor017, catalog renderer010 and bundled Python are required." >&2; exit 1
+  echo "Current actor023, cooking catalog renderer012 and bundled Python are required." >&2; exit 1
 fi
 "$python" - "$actor" "$renderer" <<'CHECK'
 import hashlib,sys
-for path,expected in zip(sys.argv[1:],['66bbe97279f8ee268d891ad762d5da40337e1c318d09160e415823e25d4d8bd5','c6a861ae04a4de8f918912149ff8ead4e92dfe16d581a7ca2f97983ff9cf3f94']):
+for path,expected in zip(sys.argv[1:],['7fd7ee9269802a6e128716f53bf34030ec592728ef954f9b61bebecac36719d1','3bd945855c7526f713ed1df03ab89e136429fbc36132f6152ef16fc7a491a232']):
     if hashlib.sha256(open(path,'rb').read()).hexdigest()!=expected:
         sys.exit('Current playable binary changed: '+path)
 CHECK
@@ -26,17 +26,51 @@ if not stat.S_ISREG(value.st_mode) or value.st_uid!=os.getuid() or stat.S_IMODE(
 PRIVATE
   source "$reconnect"
 fi
-export MC_WORLD_PATH="${MC_WORLD_PATH:-$root/build/playable-world.nbt}"
+export MC_WORLD_PATH="${MC_WORLD_PATH:-$root/build/playable-world-022.nbt}"
 export MC_WORLD_MISSING=create
-export MC_LIVE_PORT="${MC_LIVE_PORT:-25565}"
+read -r MC_LIVE_PORT MC_RENDER_PORT < <("$python" - "${MC_LIVE_PORT:-}" "${MC_RENDER_PORT:-}" <<'PORTS'
+import socket,sys
+values=[]
+for value in sys.argv[1:]:
+    if value and (not value.isdecimal() or not 1<=int(value)<=65535):
+        sys.exit('Explicit Minecraft ports must be integers from 1 through 65535.')
+    values.append(int(value) if value else None)
+if values[0] is not None and values[0]==values[1]:
+    sys.exit('The public and private Minecraft ports must differ.')
+used={p for p in values if p is not None};held=[]
+try:
+    for index,preferred in enumerate((25565,25566)):
+        if values[index] is not None:
+            continue
+        listener=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+        held.append(listener)
+        try:
+            if preferred in used:
+                raise OSError('Port is reserved by the other explicit endpoint')
+            listener.bind(('127.0.0.1',preferred))
+        except OSError:
+            listener.bind(('127.0.0.1',0))
+        while listener.getsockname()[1] in used:
+            listener=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+            held.append(listener)
+            listener.bind(('127.0.0.1',0))
+        values[index]=listener.getsockname()[1]
+        used.add(values[index])
+    print(*values)
+finally:
+    for listener in held:
+        listener.close()
+PORTS
+)
+export MC_LIVE_PORT MC_RENDER_PORT
+export MC_COOKING_PROTOCOL=1
 export MC_BLOCK_REGISTRY="$root/generated/reference_blocks.tsv"
 export BEND_MINECRAFT_REGISTRY="$root/generated/reference_blocks.tsv"
-export MC_RENDER_PORT="${MC_RENDER_PORT:-25566}"
 export MC_RENDER_TOKEN="${MC_RENDER_TOKEN:-$(/usr/bin/uuidgen)}"
 export MC_RENDER_EPOCH="${MC_RENDER_EPOCH:-$(/usr/bin/uuidgen | /usr/bin/tr -d '-')}"
 export MC_DEV_TOKEN="${MC_DEV_TOKEN:-$(/usr/bin/uuidgen)}"
 export BEND_MINECRAFT_LAUNCH_MODE="${BEND_MINECRAFT_LAUNCH_MODE:-human}"
-logs=$(/usr/bin/mktemp -d "$root/build/generic-resource-world-sample-client-native/010/current-launch.XXXXXX")
+logs=$(/usr/bin/mktemp -d "$root/build/generic-resource-world-sample-client-native/012/current-launch.XXXXXX")
 if [ -z "$reconnect" ]; then
   "$actor" --gpu off --threads 2 -- --game-mode creative --sine "$root/generated/reference_mth_sin.f32" >"$logs/actor.stdout" 2>"$logs/actor.stderr" &
   actor_pid=$!
@@ -93,7 +127,7 @@ if ! "$python" "$root/tools/play_minecraft_close.py"; then
   trap - EXIT INT TERM
   connection="$logs/connection.env"
   umask 077
-  for name in MC_ACTOR_PID MC_LIVE_PORT MC_RENDER_PORT MC_RENDER_TOKEN MC_RENDER_EPOCH MC_DEV_TOKEN MC_WORLD_PATH BEND_MINECRAFT_LAUNCH_MODE; do printf 'export %s=%q\n' "$name" "${!name}"; done >"$connection"
+  for name in MC_ACTOR_PID MC_LIVE_PORT MC_RENDER_PORT MC_RENDER_TOKEN MC_RENDER_EPOCH MC_DEV_TOKEN MC_COOKING_PROTOCOL MC_WORLD_PATH BEND_MINECRAFT_LAUNCH_MODE; do printf 'export %s=%q\n' "$name" "${!name}"; done >"$connection"
   if kill -0 "$actor_pid" 2>/dev/null; then
     echo "Actor remains running (PID $actor_pid). No saved result is claimed. Reconnect: '$root/tools/play_minecraft.sh' --reconnect '$connection'. Make inventory space before closing again." >&2
   else

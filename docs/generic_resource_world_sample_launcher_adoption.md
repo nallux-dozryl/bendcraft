@@ -1,5 +1,9 @@
 # Generic010 public launcher adoption
 
+This records the historical Actor017/Generic010 adoption. The current verified
+limited cooking pair and demo command are recorded in
+[Cooking client delivery](generic_resource_world_sample_cooking_launcher.md).
+
 `tools/play_minecraft.sh` now selects the actual Actor017/Generic010 pair. The
 changed renderer passed native initial loading, missing-family demand, exact
 pixels, complete durable save/cold restore, initial socket failure, and the
