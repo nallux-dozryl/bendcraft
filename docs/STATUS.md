@@ -3,6 +3,38 @@
 Target: Minecraft Java 26.3. Compiler: Bend 2.0.35. The full goal remains active
 and incomplete; the current build is a limited integrated client.
 
+Current integration work (2026-10-05): generic renderer009 has passed its full
+C/native build and the actual actor017 demand-loading consumer. Both 128×128
+frames match all 32,768 independent reference pixels; the complete 104-section,
+43-slot/equipment/status/WG save passes durable publication and cold resave.
+The cold resource load retains the lease using three release-only input
+acknowledgements, with a measured maximum reply gap of 4,113.850 ms under the
+5,000 ms lease. This is an immutable baseline graph plus the verified client
+continuation repair, not the newer publication/entity actor graph. Public
+launcher adoption is being completed separately. See
+`evidence/generic_resource_world_sample_client_native_009.json` and the actual
+`build/generic-resource-world-sample-demand-runtime/002/result.json`.
+
+The next actor joins captured cooking Dirty sources, an authenticated live
+publication journal, lossless incarnation-map recovery, format4 full saves,
+and an atomic entity SceneFrame command. The publication codec passes 22
+native guards and 442 independent physical cases; the wrapper passes 22 actual
+JavaScript guards while retaining old format1/2/3 bytes. The standalone entity
+wire passes 407 native cases. Whole Entry checking is still being repaired at
+the actual changed consumers; no actor021 native/TCP or public adoption verdict
+is claimed. Only a typed receipt from actual durable publication may clean the
+live journal. A pulse may consume pending effects before a save; a nonzero
+pending capture is an observation, never an assumed scheduling guarantee.
+See `evidence/local-player-cooking-publication-codec-native-002.json`,
+`evidence/local-player-cooking-storage-008.json`, and
+`docs/REMOTE_ENTITY_SCENE_NETWORK.md`.
+
+Item tick33 section-order cases and the earlier native24 tick/merge cases are
+verified in the separate production Tick.Scene lane. Actual section membership,
+runtime/separate sound recovery, and one shared world/entity rendering domain
+are being integrated by disjoint owners. These narrow results do not establish
+live item scheduling, pickup, complete lighting, visible input, or full gameplay.
+
 The actual frozen actor020 passes the complete original checker with 8,998
 declarations and zero holes, produces 63,107,010 bytes of C in 396.770 seconds
 at 4,963,155,968 bytes peak sampled RSS, and compiles to a 15,304,904-byte native
