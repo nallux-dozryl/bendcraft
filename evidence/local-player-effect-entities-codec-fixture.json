@@ -1,0 +1,48 @@
+{
+  "accepted_physical_cases": [
+    "full-raw",
+    "empty",
+    "zero-xoroshiro-state",
+    "legacy-arbitrary-highwords"
+  ],
+  "commands": [
+    "python3 -m py_compile tools/test_local_player_effect_entities_codec.py",
+    "Python independent physical fixtures, static Bend F64/F32 sentinel comparison, retry-abort binding and owned process group success/timeout checks"
+  ],
+  "confidence": "high",
+  "fixture_bytes": 5450,
+  "fixture_sha256": "f0e96a0d44c09f2f370b7b9f9f9ce0fc39d68cfcf6a9ffdeb4deda374eb04f17",
+  "guard_labels": [
+    "encode byte budget refuses complete snapshot",
+    "encode depth budget refuses complete snapshot",
+    "encode element budget refuses complete snapshot",
+    "empty records retain actual RNG and owner cursors",
+    "complete raw state and duplicate ordered records roundtrip",
+    "one affine install and inspect retain complete snapshot",
+    "decode byte budget refuses complete snapshot",
+    "decode depth budget refuses complete snapshot",
+    "decode element budget refuses complete snapshot",
+    "truncated complete snapshot refuses",
+    "trailing complete snapshot refuses"
+  ],
+  "harness": {
+    "bytes": 8241,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/local_player_effect_entities_codec.bend",
+    "sha256": "a636a0504b28c486397290eb4fcccb1ec185e77cdf1626da8331a3fc265648fd"
+  },
+  "js_executions": 0,
+  "native_build_attempts": 0,
+  "native_executions": 0,
+  "physical_cases": 385,
+  "refusal_physical_cases": 381,
+  "runner": {
+    "bytes": 26528,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_local_player_effect_entities_codec.py",
+    "sha256": "3f8a1c651daeb17e5163e739dac45dd469b7678ad594f61da27d66d2f7264861"
+  },
+  "schema": 1,
+  "scope": "Independent Python physical-NBT fixture and orchestration checks only. Native/JS Bend typing, builds and execution remain unverified while the two heavy lanes are occupied.",
+  "source_files": 90,
+  "source_manifest_sha256": "348dc132f85ad251949abae3daad0e858036414ee9a436bc05675b8b0455e86c",
+  "status": "FIXTURE_ONLY_PASS"
+}

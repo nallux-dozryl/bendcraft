@@ -1,0 +1,44 @@
+{
+  "message": "Bounded owned process failed: {'argv': ['/Users/chuah/.bend/bin/bend', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/local_player_effect_entities_codec.bend', '--check-only'], 'cwd': '/Users/chuah/Documents/ChatGPT/bendex/minecraft', 'cap_seconds': 60, 'attempts': 1, 'pid': 20112, 'exit_code': 1, 'timed_out': False, 'error': None, 'cleanup': {'before': [], 'after': [], 'errors': [], 'leader_reaped': True, 'live_group_absent': True}, 'seconds': 0.876592374406755, 'stdout': {'path': '/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-effect-entities-codec/checks/001/ordinary/stdout', 'bytes': 0, 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'}, 'stderr': {'path': '/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-effect-entities-codec/checks/001/ordinary/stderr', 'bytes': 381, 'sha256': 'b02669e79bc6175fc945a2ab8488d2b67d3b949ccc89022bfb2d24f921d5cb7f'}}",
+  "processes": [
+    {
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/local_player_effect_entities_codec.bend",
+        "--check-only"
+      ],
+      "attempts": 1,
+      "cap_seconds": 60,
+      "cleanup": {
+        "after": [],
+        "before": [],
+        "errors": [],
+        "leader_reaped": true,
+        "live_group_absent": true
+      },
+      "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+      "error": null,
+      "exit_code": 1,
+      "pid": 20112,
+      "seconds": 0.876592374406755,
+      "stderr": {
+        "bytes": 381,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-effect-entities-codec/checks/001/ordinary/stderr",
+        "sha256": "b02669e79bc6175fc945a2ab8488d2b67d3b949ccc89022bfb2d24f921d5cb7f"
+      },
+      "stdout": {
+        "bytes": 0,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-effect-entities-codec/checks/001/ordinary/stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "timed_out": false
+    }
+  ],
+  "source_manifest": {
+    "bytes": 24253,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-effect-entities-codec/checks/001/sources.json",
+    "sha256": "5d889098ac32a02ae9615652f42cff101c3d3e2c5e60e879ae5ef36b6fd03656"
+  },
+  "status": "FAIL",
+  "type": "AssertionError"
+}

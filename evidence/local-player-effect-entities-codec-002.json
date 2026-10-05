@@ -1,0 +1,210 @@
+{
+  "accepted_physical_cases": [
+    "full-raw",
+    "empty",
+    "zero-xoroshiro-state",
+    "legacy-arbitrary-highwords"
+  ],
+  "actual_wire": {
+    "bytes": 5450,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-effect-entities-codec/checks/002/actual.nbt",
+    "sha256": "f0e96a0d44c09f2f370b7b9f9f9ce0fc39d68cfcf6a9ffdeb4deda374eb04f17"
+  },
+  "binary": {
+    "bytes": 1695768,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-effect-entities-codec/checks/002/native",
+    "sha256": "a819747898ec3a3f3cbecf4a416a5d5ead2e9bbc81fd21ae8dd9c9494cf5a779"
+  },
+  "build": {
+    "bytes": 628037,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-effect-entities-codec/checks/002/build.json",
+    "sha256": "e53140788d9b67788d7103150d2e9e172642710f76e062144047a871359d2a97"
+  },
+  "codec": {
+    "bytes": 17149,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/local_player_effect_entities_codec.bend",
+    "sha256": "f8eb3d09881085068bdeb0ab69d6a4b071cd76a7e8a0cd221661198b98f2668b"
+  },
+  "emitted_c_sha256": "daa28a10a49f0a75e15e89c85068e991f8b0e0392ecca0fe65f19df6b0d9df39",
+  "expected_wire": {
+    "bytes": 5450,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-effect-entities-codec/checks/002/expected.nbt",
+    "sha256": "f0e96a0d44c09f2f370b7b9f9f9ce0fc39d68cfcf6a9ffdeb4deda374eb04f17"
+  },
+  "full_receipt": {
+    "bytes": 210685,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-effect-entities-codec/checks/002/result.json",
+    "sha256": "f08a38088ef5f150437a9c84af0be7f1d07986b2dbd31dd7512123dc915ce501"
+  },
+  "guards": [
+    "encode byte budget refuses complete snapshot",
+    "encode depth budget refuses complete snapshot",
+    "encode element budget refuses complete snapshot",
+    "empty records retain actual RNG and owner cursors",
+    "complete raw state and duplicate ordered records roundtrip",
+    "one affine install and inspect retain complete snapshot",
+    "decode byte budget refuses complete snapshot",
+    "decode depth budget refuses complete snapshot",
+    "decode element budget refuses complete snapshot",
+    "truncated complete snapshot refuses",
+    "trailing complete snapshot refuses"
+  ],
+  "independent_kernel_checked": false,
+  "mode": "native",
+  "native_build_attempts": 1,
+  "native_build_timings": {
+    "emission_seconds": 1.9099369579926133,
+    "native_seconds": 5.782353417016566,
+    "total_seconds": 11.11920541524887
+  },
+  "native_builder_retries": 0,
+  "native_cache_hit": false,
+  "physical_cases": 385,
+  "physical_roundtrips": 4,
+  "processes": [
+    {
+      "attempts": 1,
+      "cap_seconds": 60,
+      "cleanup": {
+        "after": [],
+        "before": [],
+        "errors": [],
+        "leader_reaped": true,
+        "live_group_absent": true
+      },
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/local_player_effect_entities_codec.bend",
+        "--check-only"
+      ],
+      "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+      "error": null,
+      "exit_code": 0,
+      "pid": 20268,
+      "seconds": 1.1873050406575203,
+      "stderr": {
+        "bytes": 0,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-effect-entities-codec/checks/002/ordinary/stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 58,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-effect-entities-codec/checks/002/ordinary/stdout",
+        "sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1"
+      },
+      "timed_out": false
+    },
+    {
+      "attempts": 1,
+      "cap_seconds": 600,
+      "cleanup": {
+        "after": [],
+        "before": [],
+        "errors": [],
+        "leader_reaped": true,
+        "live_group_absent": true
+      },
+      "command": [
+        "/Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_local_player_effect_entities_codec.py",
+        "--build-child",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-effect-entities-codec/checks/002"
+      ],
+      "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+      "error": null,
+      "exit_code": 0,
+      "pid": 20274,
+      "seconds": 11.299151291139424,
+      "stderr": {
+        "bytes": 0,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-effect-entities-codec/checks/002/native-build/stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 0,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-effect-entities-codec/checks/002/native-build/stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "timed_out": false
+    },
+    {
+      "attempts": 1,
+      "cap_seconds": 60,
+      "cleanup": {
+        "after": [],
+        "before": [],
+        "errors": [],
+        "leader_reaped": true,
+        "live_group_absent": true
+      },
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-effect-entities-codec/checks/002/native",
+        "cases",
+        "2143293969"
+      ],
+      "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+      "error": null,
+      "exit_code": 0,
+      "pid": 20455,
+      "seconds": 0.7022772096097469,
+      "stderr": {
+        "bytes": 0,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-effect-entities-codec/checks/002/actual-native/stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 16610,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-effect-entities-codec/checks/002/actual-native/stdout",
+        "sha256": "e9163e1ad290ed49446acb80331d335714e32c65d42a497882997047bc3c4fa9"
+      },
+      "timed_out": false
+    },
+    {
+      "attempts": 1,
+      "cap_seconds": 60,
+      "cleanup": {
+        "after": [],
+        "before": [],
+        "errors": [],
+        "leader_reaped": true,
+        "live_group_absent": true
+      },
+      "command": {
+        "action": "decode",
+        "argument_count": 386,
+        "exact_command_receipt": {
+          "bytes": 56904,
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-effect-entities-codec/checks/002/physical-corpus-native/result.json",
+          "sha256": "15c72da45fb9ecbd8e70baff92de6bf82a53b36e41ae37673630ab9277d8d98d"
+        },
+        "program": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-effect-entities-codec/checks/002/native"
+      },
+      "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+      "error": null,
+      "exit_code": 0,
+      "pid": 20488,
+      "seconds": 1.7587092909961939,
+      "stderr": {
+        "bytes": 0,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-effect-entities-codec/checks/002/physical-corpus-native/stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 105159,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-effect-entities-codec/checks/002/physical-corpus-native/stdout",
+        "sha256": "858a5f136833fddd8549fb4e83e004af1e9e435c9d5348d7a9fa03a80e8426db"
+      },
+      "timed_out": false
+    }
+  ],
+  "refused_physical_cases": 381,
+  "schema": 1,
+  "scope": "Actual native Bend complete ordered entity owner snapshot and strict physical codec. Independent NBT bytes compare all fields, raw F64/F32, charwords, RNG, large Nat, optional UUIDs and duplicate records. Durable files and actor cold restore require their real consumer.",
+  "source_checked": true,
+  "source_manifest": {
+    "bytes": 24253,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-effect-entities-codec/checks/002/sources.json",
+    "sha256": "5f6f7aebe68b92cbaee475a2e3651c756740392677dd01211bdfc6808e88df8a"
+  },
+  "status": "PASS"
+}
