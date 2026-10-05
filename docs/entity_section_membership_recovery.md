@@ -30,9 +30,8 @@ global member list must have descending insertion orders, as actual manager
 add/move callbacks prepend their newly allocated order. Together with the
 codec's section-list linkage this checks actual section insertion chronology.
 Tracking/ticking list order is preserved independently; status transitions can
-append registry entries without moving their section membership.
-The
-registered packed key must agree with the record's completed position callback.
+append registry entries without moving their section membership. The registered
+packed key must agree with the record's completed position callback.
 This is a consistency check; recovery preserves the saved key and box instead
 of rebuilding them from the current position. Packed-coordinate aliases remain
 valid. Stale halfway-moved images refuse.
@@ -135,3 +134,27 @@ in `evidence/entity-section-membership-recovery-native.json` and
 are described in `entity_section_membership_recovery_proof.md`. These results
 do not establish actor adoption, real storage streaming, all entity types or
 full gameplay/client completion.
+
+## Focused verification
+
+The current native command `python3 tools/test_entity_section_membership_recovery.py`
+passes 58 cases against the production source. Every restore case uses the actual
+TickStorage component encode/decode/restore and activates its returned membership
+image. Nine cases compare the recorded pinned Java chunk-status transition
+journals; ten exercise fresh constructor joins and refusals. Checks include exact
+complete scene/manager byte rollback, actual Item/Orb geometry, packed-key aliases,
+registration chronology, runtime tombstones, ordered two-chunk observations and
+zero/double/exhausted constructor cursors. Native execution takes 19.333 seconds
+at 73,138,176 bytes maximum RSS. This is component restoration evidence; it does
+not establish the outer cooking/player storage transport or durable save IO.
+
+The independent-kernel target passes 15 stated laws, with all 15 checked roots
+and their complete unchanged dependency closure accepted. Source/export takes
+1.738 seconds and the pinned kernel takes 0.192 seconds. These laws cover the
+actual owner, reconciliation and installation contracts, including invalid
+insertion chronology rollback. Six drafted cursor/capacity/preflight wrapper
+targets remain unproved because original checker conversion exhausts its stack
+while unfolding the concrete Nat48 bound. Their failed attempts are retained;
+exact cursor exhaustion and advance behavior is covered by native checks, and
+is not presented as kernel proof. Reproduce the current proof scope with
+`python3 tools/test_entity_section_membership_recovery_proof.py --generation 7`.
