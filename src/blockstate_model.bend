@@ -119,26 +119,36 @@ def scan_number_exponent_guard(next:U32,allowed:Bool,path:String,
     case True{}: continuation(next)
     case False{}: fail(NumberParts,"IntegerExponentLimit",path,"Exponent magnitude exceeds 100000")
 
-def scan_number(+text:String,+stage:U32,+digits:List<&2,U32>,+fraction:U32,+exponent:U32,+eneg:Bool,+negative:Bool,+path:String)
+def scan_number_finished(admitted:Bool,digits:List<&2,U32>,fraction:U32,exponent:U32,eneg:Bool,negative:Bool,path:String)
+  -> Result<&2,&2,Error,NumberParts>:
+  match admitted:
+    case False{}: fail(NumberParts,"IntegerExponentLimit",path,"Exponent magnitude exceeds 100000")
+    case True{}: Done{NumberParts{List.reverse(&2,U32,digits),fraction,exponent,eneg,negative}}
+
+def scan_number_admitted(+text:String,admitted:Bool,+stage:U32,+digits:List<&2,U32>,+fraction:U32,+exponent:U32,+eneg:Bool,+negative:Bool,+path:String)
   -> Result<&2,&2,Error,NumberParts>:
   match text:
-    case SNil{}: Done{NumberParts{List.reverse(&2,U32,digits),fraction,exponent,eneg,negative}}
+    case SNil{}: scan_number_finished(admitted,digits,fraction,exponent,eneg,negative,path)
     case SCon{Chr{+c},+rest}:
-      match c:
-        case 45: scan_number(rest,stage,digits,fraction,exponent,
+      match c admitted:
+        case _ False{}: fail(NumberParts,"IntegerExponentLimit",path,"Exponent magnitude exceeds 100000")
+        case 45 True{}: scan_number_admitted(rest,True{},stage,digits,fraction,exponent,
           choose_value(Bool,True{},eneg,U32.is_ge(stage,2)),choose_value(Bool,negative,True{},U32.is_ge(stage,2)),path)
-        case 43: scan_number(rest,stage,digits,fraction,exponent,eneg,negative,path)
-        case 46: scan_number(rest,1,digits,fraction,exponent,eneg,negative,path)
-        case 101: scan_number(rest,2,digits,fraction,exponent,eneg,negative,path)
-        case 69: scan_number(rest,2,digits,fraction,exponent,eneg,negative,path)
-        case _:
+        case 43 True{}: scan_number_admitted(rest,True{},stage,digits,fraction,exponent,eneg,negative,path)
+        case 46 True{}: scan_number_admitted(rest,True{},1,digits,fraction,exponent,eneg,negative,path)
+        case 101 True{}: scan_number_admitted(rest,True{},2,digits,fraction,exponent,eneg,negative,path)
+        case 69 True{}: scan_number_admitted(rest,True{},2,digits,fraction,exponent,eneg,negative,path)
+        case _ True{}:
           match stage:
-            case 0: scan_number(rest,stage,U32.sub(c,48) <> digits,fraction,exponent,eneg,negative,path)
-            case 1: scan_number(rest,stage,U32.sub(c,48) <> digits,U32.add(fraction,1),exponent,eneg,negative,path)
+            case 0: scan_number_admitted(rest,True{},stage,U32.sub(c,48) <> digits,fraction,exponent,eneg,negative,path)
+            case 1: scan_number_admitted(rest,True{},stage,U32.sub(c,48) <> digits,U32.add(fraction,1),exponent,eneg,negative,path)
             case _:
               +next = U32.add(U32.mul(exponent,10),U32.sub(c,48))
-              scan_number_exponent_guard(next,U32.is_le(next,100000),path,
-                value => scan_number(rest,stage,digits,fraction,value,eneg,negative,path))
+              scan_number_admitted(rest,U32.is_le(next,100000),stage,digits,fraction,next,eneg,negative,path)
+def scan_number(+text:String,+stage:U32,+digits:List<&2,U32>,+fraction:U32,+exponent:U32,+eneg:Bool,+negative:Bool,+path:String)
+  -> Result<&2,&2,Error,NumberParts>:
+  scan_number_admitted(text,True{},stage,digits,fraction,exponent,eneg,negative,path)
+
 def digit_word(+fuel:Nat,+digits:List<&2,U32>,+acc:U32) -> U32:
   match fuel digits:
     case 1n+p h <> rest: digit_word(p,rest,U32.add(U32.mul(acc,10),h))

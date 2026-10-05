@@ -250,28 +250,38 @@ def int_exponent_guard(next: U32, allowed: Bool,
     case True{}: continuation(next)
     case False{}: fail(IntToken, "UnsupportedIntegerExponent", "integer")
 
-def int_scan(text: String, +stage: U32, reversed: List<&2, U32>, +fraction: U32, +exponent: U32,
+def int_scan_finished(admitted: Bool, reversed: List<&2, U32>, fraction: U32, exponent: U32,
+  exponent_negative: Bool, negative: Bool) -> Result<&2, &2, Error, IntToken>:
+  match admitted:
+    case False{}: fail(IntToken, "UnsupportedIntegerExponent", "integer")
+    case True{}: Done{IntToken{List.reverse(&2, U32, reversed), fraction, exponent, exponent_negative, negative}}
+
+def int_scan_admitted(text: String, admitted: Bool, +stage: U32, reversed: List<&2, U32>, +fraction: U32, +exponent: U32,
   +exponent_negative: Bool, +negative: Bool) -> Result<&2, &2, Error, IntToken>:
   match text:
-    case SNil{}: Done{IntToken{List.reverse(&2, U32, reversed), fraction, exponent, exponent_negative, negative}}
+    case SNil{}: int_scan_finished(admitted, reversed, fraction, exponent, exponent_negative, negative)
     case SCon{Chr{+c}, rest}:
-      match c:
-        case 45:
-          int_scan(rest, stage, reversed, fraction, exponent,
+      match c admitted:
+        case _ False{}: fail(IntToken, "UnsupportedIntegerExponent", "integer")
+        case 45 True{}:
+          int_scan_admitted(rest, True{}, stage, reversed, fraction, exponent,
             J.choose(Bool, True{}, exponent_negative, U32.is_ge(stage, 2)),
             J.choose(Bool, negative, True{}, U32.is_ge(stage, 2)))
-        case 43: int_scan(rest, stage, reversed, fraction, exponent, exponent_negative, negative)
-        case 46: int_scan(rest, 1, reversed, fraction, exponent, exponent_negative, negative)
-        case 101: int_scan(rest, 2, reversed, fraction, exponent, exponent_negative, negative)
-        case 69: int_scan(rest, 2, reversed, fraction, exponent, exponent_negative, negative)
-        case _:
+        case 43 True{}: int_scan_admitted(rest, True{}, stage, reversed, fraction, exponent, exponent_negative, negative)
+        case 46 True{}: int_scan_admitted(rest, True{}, 1, reversed, fraction, exponent, exponent_negative, negative)
+        case 101 True{}: int_scan_admitted(rest, True{}, 2, reversed, fraction, exponent, exponent_negative, negative)
+        case 69 True{}: int_scan_admitted(rest, True{}, 2, reversed, fraction, exponent, exponent_negative, negative)
+        case _ True{}:
           match stage:
-            case 0: int_scan(rest, stage, U32.sub(c, 48) <> reversed, fraction, exponent, exponent_negative, negative)
-            case 1: int_scan(rest, stage, U32.sub(c, 48) <> reversed, U32.add(fraction, 1), exponent, exponent_negative, negative)
+            case 0: int_scan_admitted(rest, True{}, stage, U32.sub(c, 48) <> reversed, fraction, exponent, exponent_negative, negative)
+            case 1: int_scan_admitted(rest, True{}, stage, U32.sub(c, 48) <> reversed, U32.add(fraction, 1), exponent, exponent_negative, negative)
             case _:
               +next = U32.add(U32.mul(exponent, 10), U32.sub(c, 48))
-              int_exponent_guard(next, U32.is_le(next, 100000),
-                value => int_scan(rest, stage, reversed, fraction, value, exponent_negative, negative))
+              int_scan_admitted(rest, U32.is_le(next, 100000), stage, reversed, fraction, next, exponent_negative, negative)
+
+def int_scan(text: String, +stage: U32, reversed: List<&2, U32>, +fraction: U32, +exponent: U32,
+  +exponent_negative: Bool, +negative: Bool) -> Result<&2, &2, Error, IntToken>:
+  int_scan_admitted(text, True{}, stage, reversed, fraction, exponent, exponent_negative, negative)
 
 def digit_word(fuel: Nat, digits: List<&2, U32>, acc: U32) -> U32:
   match fuel digits:

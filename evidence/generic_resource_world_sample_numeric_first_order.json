@@ -1,0 +1,161 @@
+{
+  "C_comparison": [
+    {
+      "candidate_binary": {
+        "bytes": 1865656,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-numeric-first-order-003/candidate-block_model/native",
+        "sha256": "c979eecbd3ac377655d8176577c201e221d9628edd1737758226a9b4edc8e5ed"
+      },
+      "harness": "block_model",
+      "measurements": [
+        {
+          "C": {
+            "bytes": 5814673,
+            "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-numeric-continuations-001/candidate-001/focused-native-001/candidate-block_model/diagnostic.c",
+            "sha256": "7acfa46440d147a36f105223a156d3fc0278ac89ddd2ad0f76b4b766daa939c6"
+          },
+          "emission_seconds": 37.28486679121852,
+          "group_absent": true,
+          "ownership_passes": 5,
+          "receipt": {
+            "bytes": 5908515,
+            "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-numeric-continuations-001/candidate-001/focused-native-001/candidate-block_model/receipt.json",
+            "sha256": "44bb62c8cd1b7d49ab1059d69946347310adcdcc0f8e990282e830f28971b1a1"
+          },
+          "scanner_plus_helper_all_body_seconds": 23.368639624999997,
+          "scanner_plus_helper_final_lines": 31511,
+          "variant": "cached_production"
+        },
+        {
+          "C": {
+            "bytes": 4407248,
+            "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-numeric-first-order-003/candidate-block_model/diagnostic.c",
+            "sha256": "69b64075e0a49b19142f8e17165996bedd41a97e6e3c92dcee720fbae6de40ff"
+          },
+          "emission_seconds": 66.86999687552452,
+          "group_absent": true,
+          "ownership_passes": 5,
+          "receipt": {
+            "bytes": 5958741,
+            "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-numeric-first-order-003/candidate-block_model/receipt.json",
+            "sha256": "23427959808154f3f9a68589996444246da047d4947b77158f90f06554f3ea4b"
+          },
+          "scanner_plus_helper_all_body_seconds": 50.855524833000004,
+          "scanner_plus_helper_final_lines": 30359,
+          "variant": "first_order"
+        }
+      ],
+      "whole_C_reduction_percent": 24.20471452134969
+    },
+    {
+      "candidate_binary": {
+        "bytes": 1908600,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-numeric-first-order-003/candidate-blockstate_model/native",
+        "sha256": "8212dc03bd81c14ac073d66051ae88b785beaa4bcb025c29ca838c335e4860db"
+      },
+      "harness": "blockstate_model",
+      "measurements": [
+        {
+          "C": {
+            "bytes": 5331406,
+            "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-numeric-continuations-001/candidate-001/focused-native-001/candidate-blockstate_model/diagnostic.c",
+            "sha256": "169c33f3d08fe990e1d1dccf00c8362388f7f71e918d2753f6edb033cb415c8d"
+          },
+          "emission_seconds": 51.12199387513101,
+          "group_absent": true,
+          "ownership_passes": 7,
+          "receipt": {
+            "bytes": 7698365,
+            "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-numeric-continuations-001/candidate-001/focused-native-001/candidate-blockstate_model/receipt.json",
+            "sha256": "fec7df4816717192a7a93527e030eda36782470468989688bed5efcae8530aef"
+          },
+          "scanner_plus_helper_all_body_seconds": 35.87334620900002,
+          "scanner_plus_helper_final_lines": 33242,
+          "variant": "cached_production"
+        },
+        {
+          "C": {
+            "bytes": 3824645,
+            "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-numeric-first-order-003/candidate-blockstate_model/diagnostic.c",
+            "sha256": "01c11efb8d0603bbd7330ef8366ab4159f18f6bf8f2276ecc931708554efa377"
+          },
+          "emission_seconds": 96.39346916601062,
+          "group_absent": true,
+          "ownership_passes": 7,
+          "receipt": {
+            "bytes": 7772694,
+            "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-numeric-first-order-003/candidate-blockstate_model/receipt.json",
+            "sha256": "57e3a217038568a886effbc11f845ff6fb2d7b53483055b22ac062f5e82ae8ac"
+          },
+          "scanner_plus_helper_all_body_seconds": 77.11386016700003,
+          "scanner_plus_helper_final_lines": 31961,
+          "variant": "first_order"
+        }
+      ],
+      "whole_C_reduction_percent": 28.261981923717684
+    }
+  ],
+  "full_changed_client": "unrun",
+  "independent_kernel": "unrun",
+  "native": {
+    "baseline_not_reexecuted": true,
+    "cached_baseline_observations": {
+      "bytes": 1126377,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-numeric-continuations-001/candidate-001/focused-native-001/native-observations.json",
+      "sha256": "5a3bce8fb92ea844be772145f81ab2022a1f17bff43c2544cc39082ed8ba689d"
+    },
+    "candidate_bounded_refusals": 4,
+    "candidate_original_java_cases": 45,
+    "complete_success_projection": true,
+    "corpus_sha256": {
+      "cached-corpus.json": "96a3769487bb57897b3bd1dc7ad7baead828b586eed7260739565fb3e9fc293a",
+      "exponent-corpus.json": "ccfd19ce6afd53666679a3718a4bed9133d96af31348db96421ea873fb0d75ac"
+    },
+    "observations": {
+      "bytes": 516920,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-numeric-first-order-003/native-observations.json",
+      "sha256": "342a298d7975b3c5565be6c0dd8f07892fe32a0e661f9234eaf13e0d68f8c749"
+    },
+    "refusals_exact_cached_baseline": true,
+    "scope": "Accepted outputs compare the complete existing original-Java projection; Java rejections compare status, separate bounded refusals compare exact cached baseline error records. No whole-parser theorem or client runtime claim.",
+    "status": "PASS"
+  },
+  "ordinary_equivalence_proof": "unverified",
+  "preparation": {
+    "bytes": 3164,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-numeric-first-order-003/preparation.json",
+    "sha256": "3f9f2b7ef0fec111751b73d8eb1a1878c7f7b5e4359c87740f7d566ffa7a8307"
+  },
+  "production_adopted": true,
+  "production_sources": [
+    {
+      "bytes": 42867,
+      "only_numeric_section_changed": true,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/block_model.bend",
+      "sha256": "73a864417c6c344727a5fb979feb3342052c31b550c0dc2270f4bc13fab705cc"
+    },
+    {
+      "bytes": 47091,
+      "only_numeric_section_changed": true,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/blockstate_model.bend",
+      "sha256": "36ccabcfc4a2db8040336b6a7398a6c219512a8f8c1864c2ac6cc419f6ac73a9"
+    }
+  ],
+  "retained_attempts": [
+    {
+      "directory": "build/generic-resource-world-sample-numeric-first-order-001",
+      "scope": "First ordinary source load refused nested c match after later admission Bool;0.788s/no C/group reaped."
+    },
+    {
+      "directory": "build/generic-resource-world-sample-numeric-first-order-002",
+      "scope": "File-only preparation changed an indented stage wildcard too broadly; detected before any checker/C/native and retained."
+    }
+  ],
+  "retained_full_client_failure": {
+    "bytes": 36972,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/generic_resource_world_sample_client_native_005.json",
+    "sha256": "b0364e48775adcf775ca4206aa52f4f60b4b8c7db23231c72e81f41741881e64"
+  },
+  "scope": "Actual two unchanged production numeric decoder harnesses and cached original Java cases. C-size differences are measured; emission times are sequential historical observations under differing machine workloads, not a controlled speedup. No whole-parser theorem, heartbeat or client timing result.",
+  "status": "focused_C_and_native_PASS"
+}
