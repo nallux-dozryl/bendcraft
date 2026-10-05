@@ -1,0 +1,440 @@
+{
+  "schema": 1,
+  "status": "ACTUAL_SELECTED_SAVE_CALLBACK_OVERFLOWS_OBSERVED",
+  "confidence": "high for exact selected-body widths/capture vectors; original nine-pass failing segment identity unobserved",
+  "frozen_generation": "actor021",
+  "baseline_source_map": {
+    "path": "build/compiler-producer-diagnostic-021/source/source-map.json",
+    "bytes": 244499,
+    "sha256": "a8ff175cf088dd1644680a78ade4261ae24f16e9e402612757b84271c87b89a6"
+  },
+  "baseline_failure": {
+    "seconds": 360.75531349983066,
+    "ownership_passes": 9,
+    "error": "an arity over 247",
+    "complete_C": false,
+    "native_binary": false,
+    "raw_stderr": {
+      "path": "build/compiler-producer-diagnostic-021/stderr.txt",
+      "bytes": 594,
+      "sha256": "297e29496b2c7dd82f4b3ace55d73b95ace1b9eec5e36e767955e7a5a5cb8bb9"
+    }
+  },
+  "changed_actor020_paths": 43,
+  "original_whole_book_check": {
+    "declarations": 9541,
+    "holes": 0,
+    "unchanged_order_entries_checked": 9581,
+    "seconds": 15.943469458000001,
+    "selector_or_checker_exclusions": false
+  },
+  "process": {
+    "command": [
+      "/opt/homebrew/bin/node",
+      "--expose-gc",
+      "--max-old-space-size=8192",
+      "--stack-size=4096",
+      "--experimental-transform-types",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/actor021_arity_001/probe.mjs"
+    ],
+    "pid": 50904,
+    "group_absent": true,
+    "returncode": 0,
+    "termination_reason": null,
+    "seconds": 35.87525137513876,
+    "sampled_peak_rss_bytes": 2330296320,
+    "scope": "Unchanged original full source elaboration, then one pass over selected actor021 changed-consumer bodies only; no whole C/fixpoint replay.",
+    "limits": {
+      "seconds": 90,
+      "rss_bytes": 8589934592
+    },
+    "cleanup_probe_error": null
+  },
+  "selected_roots_requested": 23,
+  "completed_selected_bodies": 20,
+  "absent_selected_names": [
+    "src/resource_client_wire:scene_frame",
+    "src/resource_client_wire:reply_value",
+    "src/resource_client_wire:reply_encoded"
+  ],
+  "targets": [
+    {
+      "root": "src/local_player_session:cooking_delegate_bundle",
+      "formal_words": 9,
+      "segments": 11,
+      "maximum_words": 268
+    },
+    {
+      "root": "src/local_player_session:cooking_save_prepared",
+      "formal_words": 102,
+      "segments": 7,
+      "maximum_words": 215
+    },
+    {
+      "root": "src/local_player_session:cooking_saved",
+      "formal_words": 3,
+      "segments": 7,
+      "maximum_words": 215
+    },
+    {
+      "root": "src/local_player_session:cooking_save_publication",
+      "formal_words": 102,
+      "segments": 1,
+      "maximum_words": 102
+    },
+    {
+      "root": "src/local_player_session:cooking_save_entities",
+      "formal_words": 75,
+      "segments": 2,
+      "maximum_words": 102
+    },
+    {
+      "root": "src/local_player_session:new_cooking_inventory",
+      "formal_words": 189,
+      "segments": 5,
+      "maximum_words": 189
+    },
+    {
+      "root": "profile_adopted",
+      "formal_words": 148,
+      "segments": 19,
+      "maximum_words": 148
+    },
+    {
+      "root": "profile_loaded",
+      "formal_words": 63,
+      "segments": 19,
+      "maximum_words": 245
+    },
+    {
+      "root": "cooking_actual",
+      "formal_words": 113,
+      "segments": 48,
+      "maximum_words": 155
+    },
+    {
+      "root": "src/remote_entity_scene_backend:checked",
+      "formal_words": 100,
+      "segments": 4,
+      "maximum_words": 107
+    },
+    {
+      "root": "src/local_player_entity_scene:captured",
+      "formal_words": 81,
+      "segments": 2,
+      "maximum_words": 81
+    },
+    {
+      "root": "src/local_player_entity_scene:sampled",
+      "formal_words": 70,
+      "segments": 3,
+      "maximum_words": 83
+    },
+    {
+      "root": "src/local_player_entity_scene:recorded",
+      "formal_words": 150,
+      "segments": 6,
+      "maximum_words": 150
+    },
+    {
+      "root": "src/local_player_cooking_entity_owner:with_publisher",
+      "formal_words": 42,
+      "segments": 7,
+      "maximum_words": 42
+    },
+    {
+      "root": "src/local_player_cooking_publication_owner:prepare",
+      "formal_words": 2,
+      "segments": 4,
+      "maximum_words": 76
+    },
+    {
+      "root": "src/local_player_cooking:persistence_ready",
+      "formal_words": 1,
+      "segments": 9,
+      "maximum_words": 53
+    },
+    {
+      "root": "src/local_player_session:block_action_detached",
+      "formal_words": 225,
+      "segments": 12,
+      "maximum_words": 225
+    },
+    {
+      "root": "src/local_player_cooking:tick_activated",
+      "formal_words": 72,
+      "segments": 3,
+      "maximum_words": 81
+    },
+    {
+      "root": "src/player_cooking_menu:owner_matched",
+      "formal_words": 143,
+      "segments": 20,
+      "maximum_words": 194
+    },
+    {
+      "root": "src/player_cooking_menu_campfire:dispatch_captured",
+      "formal_words": 117,
+      "segments": 10,
+      "maximum_words": 117
+    }
+  ],
+  "reachable_constructor_count": 1324,
+  "reachable_constructor_max": {
+    "name": "src/local_player_cooking_storage:Saved",
+    "words": 160
+  },
+  "foreign_CID_max": {
+    "name": "File.read_at",
+    "words": 4
+  },
+  "layouts": [
+    {
+      "name": "src/core:World",
+      "words": 9
+    },
+    {
+      "name": "src/local_player_session:State",
+      "words": 52
+    },
+    {
+      "name": "src/local_player_session:Shell",
+      "words": 51
+    },
+    {
+      "name": "src/local_player_runtime:Transient",
+      "words": 67
+    },
+    {
+      "name": "src/local_player_cooking:Sidecar",
+      "words": 1
+    },
+    {
+      "name": "src/local_player_cooking_entity_owner:Carrier",
+      "words": 41
+    },
+    {
+      "name": "src/local_player_cooking_publication_owner:Carrier",
+      "words": 1
+    },
+    {
+      "name": "src/local_player_cooking_storage:Saved",
+      "words": 160
+    },
+    {
+      "name": "src/remote_entity_frame:Frame",
+      "words": 19
+    },
+    {
+      "name": "src/resource_client_wire:Reply",
+      "words": 55
+    },
+    {
+      "name": "src/generic_resource_world_sample:Sample",
+      "words": 15
+    }
+  ],
+  "oversized_reachable_segments": [
+    {
+      "root": "src/local_player_session:cooking_delegate_bundle",
+      "name": "src/local_player_session:cooking_delegate_bundle$k1",
+      "fid": "FID_SRC_LOCAL_PLAYER_SESSION_COOKING_DELEGATE_BUNDLE_K1",
+      "parameter_words": 268,
+      "continuation_argument_words": 6,
+      "captured_words": 262,
+      "captures": [
+        {
+          "name": "bodies",
+          "words": 1,
+          "source_type": "{\"$\":\"ADT\",\"k\":\"List\",\"x\":[{\"$\":\"Qua\",\"q\":{\"$\":\"Many\"}},{\"$\":\"ADT\",\"k\":\"src/local_player_cooking_storage:Body\",\"x\":[],\"r\":[]}],\"r\":[]}"
+        },
+        {
+          "name": "pending",
+          "words": 1,
+          "source_type": "{\"$\":\"ADT\",\"k\":\"List\",\"x\":[{\"$\":\"Qua\",\"q\":{\"$\":\"Many\"}},{\"$\":\"ADT\",\"k\":\"src/cooking_world_store:Effect\",\"x\":[],\"r\":[]}],\"r\":[]}"
+        },
+        {
+          "name": "entities",
+          "words": 12,
+          "source_type": "{\"$\":\"ADT\",\"k\":\"Maybe\",\"x\":[{\"$\":\"Qua\",\"q\":{\"$\":\"Many\"}},{\"$\":\"ADT\",\"k\":\"src/local_player_cooking_storage:EntityRecovery\",\"x\":[],\"r\":[]}],\"r\":[]}"
+        },
+        {
+          "name": "publication",
+          "words": 25,
+          "source_type": "{\"$\":\"ADT\",\"k\":\"Maybe\",\"x\":[{\"$\":\"Qua\",\"q\":{\"$\":\"Many\"}},{\"$\":\"ADT\",\"k\":\"src/local_player_cooking_publication_codec:Recovery\",\"x\":[],\"r\":[]}],\"r\":[]}"
+        },
+        {
+          "name": "snapshot",
+          "words": 3,
+          "source_type": "{\"$\":\"ADT\",\"k\":\"Maybe\",\"x\":[{\"$\":\"Qua\",\"q\":{\"$\":\"Many\"}},{\"$\":\"ADT\",\"k\":\"src/cooking_effect_publication_journal:Snapshot\",\"x\":[],\"r\":[]}],\"r\":[]}"
+        },
+        {
+          "name": "peer",
+          "words": 1,
+          "source_type": "{\"$\":\"ADT\",\"k\":\"U32\",\"x\":[],\"r\":[]}"
+        },
+        {
+          "name": "sequence",
+          "words": 1,
+          "source_type": "{\"$\":\"ADT\",\"k\":\"Nat\",\"x\":[],\"r\":[]}"
+        },
+        {
+          "name": "capability",
+          "words": 2,
+          "source_type": "{\"$\":\"ADT\",\"k\":\"src/core:Capability\",\"x\":[],\"r\":[]}"
+        },
+        {
+          "name": "id",
+          "words": 1,
+          "source_type": "{\"$\":\"ADT\",\"k\":\"String\",\"x\":[],\"r\":[]}"
+        },
+        {
+          "name": "base",
+          "words": 25,
+          "source_type": "{\"$\":\"ADT\",\"k\":\"src/persistence:State\",\"x\":[],\"r\":[]}"
+        },
+        {
+          "name": "saved",
+          "words": 121,
+          "source_type": "{\"$\":\"Ref\",\"k\":\"src/player_inventory_codec:Saved\"}"
+        },
+        {
+          "name": "maximum",
+          "words": 1,
+          "source_type": "{\"$\":\"ADT\",\"k\":\"U32\",\"x\":[],\"r\":[]}"
+        },
+        {
+          "name": "catalog",
+          "words": 1,
+          "source_type": "{\"$\":\"ADT\",\"k\":\"List\",\"x\":[{\"$\":\"Qua\",\"q\":{\"$\":\"Many\"}},{\"$\":\"ADT\",\"k\":\"src/extended_persistence:Operation\",\"x\":[],\"r\":[]}],\"r\":[]}"
+        },
+        {
+          "name": "transient",
+          "words": 67,
+          "source_type": "{\"$\":\"Ref\",\"k\":\"src/local_player_runtime:Transient\"}"
+        }
+      ],
+      "refs": [
+        "spin_0",
+        "FID_SRC_LOCAL_PLAYER_SESSION_COOKING_DELEGATE_BUNDLE_K2",
+        "FID_SRC_EXTENDED_PERSISTENCE_SAVE_CODEC_RECEIPT_0"
+      ],
+      "emitted_body_lines": 1001
+    },
+    {
+      "root": "src/local_player_session:cooking_delegate_bundle",
+      "name": "src/local_player_session:cooking_delegate_bundle$k5",
+      "fid": "FID_SRC_LOCAL_PLAYER_SESSION_COOKING_DELEGATE_BUNDLE_K5",
+      "parameter_words": 250,
+      "continuation_argument_words": 57,
+      "captured_words": 193,
+      "captures": [
+        {
+          "name": "result",
+          "words": 193,
+          "source_type": "{\"$\":\"ADT\",\"k\":\"Sigma\",\"x\":[{\"$\":\"Qua\",\"q\":{\"$\":\"Lone\"}},{\"$\":\"Qua\",\"q\":{\"$\":\"Lone\"}},{\"$\":\"ADT\",\"k\":\"src/extended_persistence:State\",\"x\":[{\"$\":\"ADT\",\"k\":\"src/local_player_cooking_storage:Saved\",\"x\":[],\"r\":[]}],\"r\":[]},{\"$\":\"Lam\",\"k\":\"_\",\"i\":0,\"f\":{\"$\":\"ADT\",\"k\":\"Sigma\",\"x\":[{\"$\":\"Qua\",\"q\":{\"$\":\"Lone\"}},{\"$\":\"Qua\",\"q\":{\"$\":\"Lone\"}},{\"$\":\"ADT\",\"k\":\"src/live:Session\",\"x\":[],\"r\":[]},{\"$\":\"Lam\",\"k\":\"_\",\"i\":1,\"f\":{\"$\":\"ADT\",\"k\":\"Sigma\",\"x\":[{\"$\":\"Qua\",\"q\":{\"$\":\"Lone\"}},{\"$\":\"Qua\",\"q\":{\"$\":\"Lone\"}},{\"$\":\"ADT\",\"k\":\"src/json:Value\",\"x\":[],\"r\":[]},{\"$\":\"Lam\",\"k\":\"_\",\"i\":2,\"f\":{\"$\":\"ADT\",\"k\":\"src/extended_persistence:SaveCompletion\",\"x\":[],\"r\":[]},\"q\":{\"$\":\"Lone\"}}],\"r\":[]},\"q\":{\"$\":\"Lone\"}}],\"r\":[]},\"q\":{\"$\":\"Lone\"}}],\"r\":[]}"
+        }
+      ],
+      "refs": [
+        "FID_SRC_LOCAL_PLAYER_SESSION_COOKING_DELEGATE_BUNDLE_C6"
+      ],
+      "emitted_body_lines": 92
+    }
+  ],
+  "source_generation": {
+    "loaded_files": 275,
+    "loaded_and_final_pins_identical": true,
+    "all_manifest_inputs_unchanged": true,
+    "changed_manifest_paths": []
+  },
+  "raw_receipts": [
+    {
+      "path": "build/actor021_arity_001/manifest.json",
+      "bytes": 45135,
+      "sha256": "b973e53356ae08930a606cde8d1df2393ac83578092d2945957321314d7708cf"
+    },
+    {
+      "path": "build/actor021_arity_001/probe.mjs",
+      "bytes": 3597,
+      "sha256": "c1995f10a408806d706ea6c0d7b7f2a8162bebc59aaecaa77105504560c00ff0"
+    },
+    {
+      "path": "build/actor021_arity_001/probe_comp.ts",
+      "bytes": 195372,
+      "sha256": "19a92b852121b6a0269b99a7f971f4d11b93fab337a6ed18728d2d27326abeed"
+    },
+    {
+      "path": "build/actor021_arity_001/run.py",
+      "bytes": 2130,
+      "sha256": "d280be7172aa8caa36aeedef710fd1b9ca0165598509e596d86bc21ec4d51438"
+    },
+    {
+      "path": "build/actor021_arity_001/probe.json",
+      "bytes": 569230,
+      "sha256": "6e00f6fac5e83ee741cf73f7c6b5139e879d65dadd8658b02e1c7079007ae58e"
+    },
+    {
+      "path": "build/actor021_arity_001/selection.json",
+      "bytes": 107420,
+      "sha256": "ff08e11d0203832d6d2462b5230e281f69dcfb5e5db11c027f7f7404671bc041"
+    },
+    {
+      "path": "build/actor021_arity_001/receipt.json",
+      "bytes": 668,
+      "sha256": "620e15b5ba186a400fcb4b6612eb3fe4340f42ba99800eaa2c4fb2c1f66924f5"
+    },
+    {
+      "path": "build/actor021_arity_001/loaded-source-pins.json",
+      "bytes": 50264,
+      "sha256": "e02080a887653e501b155d870c1ed97aa1f3643db26667fcf45db5aab853c64e"
+    },
+    {
+      "path": "build/actor021_arity_001/final-source-pins.json",
+      "bytes": 50264,
+      "sha256": "e02080a887653e501b155d870c1ed97aa1f3643db26667fcf45db5aab853c64e"
+    },
+    {
+      "path": "build/actor021_arity_001/delta.json",
+      "bytes": 41660,
+      "sha256": "f2cf48b711a20235f5788ee134ef0eeb6e71639adb4858a36176474811a1465b"
+    },
+    {
+      "path": "build/actor021_arity_001/delta.diff",
+      "bytes": 288724,
+      "sha256": "d69d866215002ae656bb005e52e87b29b0b29b511312c07fe8cd9a974db37d3f"
+    },
+    {
+      "path": "build/actor021_arity_001/stdout.txt",
+      "bytes": 53613,
+      "sha256": "5e128dd69fec27731447a57c60ef711ab1862c70a76f4caa1b51e4fb781455ef"
+    },
+    {
+      "path": "build/actor021_arity_001/stderr.txt",
+      "bytes": 177,
+      "sha256": "5de981612c69f2e476d7b5fc7273345cd60329d816f4c90ab82d0b95e50b52aa"
+    }
+  ],
+  "original_compiler_or_source_api_modified": false,
+  "working_product_or_frozen21_modified": false,
+  "whole_C_retry": false,
+  "native_or_kernel_launched": false,
+  "guard_relaxed": false,
+  "repair_candidate": {
+    "status": "completed-save private overlay measured; incomplete anchor-only retained",
+    "evidence": "evidence/actor021_arity_overlay.json",
+    "patch": {
+      "path": "evidence/actor021_arity_anchor.patch",
+      "bytes": 4102,
+      "sha256": "ee7986d2680bdc109954f3d72d99f510de952680285f8542b6e36412bddf3f38"
+    },
+    "measured_codec_callback_words": 199,
+    "measured_return_callback_words": 58,
+    "maximum_successful_selected_segment_words": 245,
+    "original_nine_pass_or_full_native_verdict": false
+  },
+  "limitations": [
+    "Selected bodies start with initial ownership facts and evolve only through selected bodies; no nine-pass fixpoint or final-live-main segment suffix reproduced.",
+    "Three selected wire helper names were absent from done_defs and were not emitted as roots.",
+    "No claim enumerates every final-pass actor021 offender or establishes a candidate full build/native result."
+  ]
+}

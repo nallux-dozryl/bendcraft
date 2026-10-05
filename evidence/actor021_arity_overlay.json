@@ -1,0 +1,1203 @@
+{
+  "schema": 1,
+  "status": "ACTOR021_SAVE_CAPTURE_REPAIR_MEASURED_ON_PRIVATE_OVERLAY",
+  "confidence": "high for whole-Book checking, exact selected callback/capture vectors and private patch identity; full actor C/native outcome remains separate",
+  "baseline_evidence": "evidence/actor021_arity_selected.json",
+  "baseline_source_map": {
+    "path": "build/compiler-producer-diagnostic-021/source/source-map.json",
+    "bytes": 244499,
+    "sha256": "a8ff175cf088dd1644680a78ade4261ae24f16e9e402612757b84271c87b89a6"
+  },
+  "public_exact_patch": {
+    "path": "evidence/actor021_arity_anchor.patch",
+    "bytes": 4102,
+    "sha256": "ee7986d2680bdc109954f3d72d99f510de952680285f8542b6e36412bddf3f38"
+  },
+  "mechanism": {
+    "anchor": "Unary recursive CookingSaveAnchor retains complete R.Transient and publication Snapshot in exactly one affine leaf; each Nested variant has one child.",
+    "completed_result": "Unary recursive CompletedSave retains the anchor and complete E.State<CookingStorage.Saved> & L.Session & J.Value & E.SaveCompletion in one affine leaf. Its leaf contains a 1-word anchor and 193-word receipt, 194 words total.",
+    "actual_return_cut": "cooking_delegate_anchored constructs SaveCompletedData and tail-calls cooking_saved_io; cooking_saved_io keeps its single box closed across pure-return/IO.pure; cooking_saved unwraps in a pure helper.",
+    "contract_retention": "Syntactic inspection retains actual E.save_codec_receipt, E.observe, peer and sequence logic, typed E.SaveCompletion gate, original live owner reconstruction, full Session and JSON result. This is not a new formal equivalence proof."
+  },
+  "variants": [
+    {
+      "generation": "private_overlay_001",
+      "status": "INCOMPLETE: codec cut fits, return callbacks still exceed247",
+      "patch": {
+        "path": "build/actor021_arity_overlay_001/candidate.diff",
+        "bytes": 3313,
+        "sha256": "cff08d168bd0549cced735c0babccfe886220e24c92817f53ba3cd73ab23a605"
+      },
+      "before_session_sha256": "74752c19e4634d14e97cb78b47953406be06a84137ba7a5cec06cb3f8aabe293",
+      "after_session_sha256": "ab6f1b529b355689f8a7b5773c3c49f580b2325701ea7ee8cdf174abd083f218",
+      "changed_frozen_source_paths": [
+        "src/local_player_session.bend"
+      ],
+      "whole_book_check": {
+        "declarations": 9543,
+        "holes": 0,
+        "all_original_order_entries_checked": 9583,
+        "seconds": 20.123244291,
+        "selector_or_checker_exclusions": false,
+        "source_scope": "Modified private overlay; unchanged original checking algorithm/order."
+      },
+      "process": {
+        "command": [
+          "/opt/homebrew/bin/node",
+          "--expose-gc",
+          "--max-old-space-size=8192",
+          "--stack-size=4096",
+          "--experimental-transform-types",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/actor021_arity_overlay_001/diagnostic/probe.mjs"
+        ],
+        "pid": 61807,
+        "group_absent": true,
+        "returncode": 0,
+        "termination_reason": null,
+        "seconds": 42.99878500029445,
+        "sampled_peak_rss_bytes": 2043150336,
+        "scope": "Unchanged original full source elaboration, then one pass over selected actor021 changed-consumer bodies only; no whole C/fixpoint replay.",
+        "limits": {
+          "seconds": 90,
+          "rss_bytes": 8589934592
+        },
+        "cleanup_probe_error": null,
+        "scope_clarification": "Original whole-book checking algorithm/order applied to this modified private overlay, then one selected-body emission pass. No unchanged-source or formal-semantic-equivalence assertion."
+      },
+      "selected_roots_requested": 24,
+      "completed_selected_bodies": 21,
+      "absent_selected_names": [
+        "src/resource_client_wire:scene_frame",
+        "src/resource_client_wire:reply_value",
+        "src/resource_client_wire:reply_encoded"
+      ],
+      "targets": [
+        {
+          "root": "src/local_player_session:cooking_delegate_anchored",
+          "formal_words": 197,
+          "reachable_segments": 11,
+          "maximum_words": 250
+        },
+        {
+          "root": "src/local_player_session:cooking_delegate_bundle",
+          "formal_words": 9,
+          "reachable_segments": 7,
+          "maximum_words": 251
+        },
+        {
+          "root": "src/local_player_session:cooking_save_prepared",
+          "formal_words": 102,
+          "reachable_segments": 7,
+          "maximum_words": 215
+        },
+        {
+          "root": "src/local_player_session:cooking_saved",
+          "formal_words": 194,
+          "reachable_segments": 7,
+          "maximum_words": 215
+        },
+        {
+          "root": "src/local_player_session:cooking_save_publication",
+          "formal_words": 102,
+          "reachable_segments": 1,
+          "maximum_words": 102
+        },
+        {
+          "root": "src/local_player_session:cooking_save_entities",
+          "formal_words": 75,
+          "reachable_segments": 2,
+          "maximum_words": 102
+        },
+        {
+          "root": "src/local_player_session:new_cooking_inventory",
+          "formal_words": 189,
+          "reachable_segments": 5,
+          "maximum_words": 189
+        },
+        {
+          "root": "profile_adopted",
+          "formal_words": 148,
+          "reachable_segments": 19,
+          "maximum_words": 148
+        },
+        {
+          "root": "profile_loaded",
+          "formal_words": 63,
+          "reachable_segments": 19,
+          "maximum_words": 245
+        },
+        {
+          "root": "cooking_actual",
+          "formal_words": 113,
+          "reachable_segments": 48,
+          "maximum_words": 155
+        },
+        {
+          "root": "src/remote_entity_scene_backend:checked",
+          "formal_words": 100,
+          "reachable_segments": 4,
+          "maximum_words": 107
+        },
+        {
+          "root": "src/local_player_entity_scene:captured",
+          "formal_words": 81,
+          "reachable_segments": 2,
+          "maximum_words": 81
+        },
+        {
+          "root": "src/local_player_entity_scene:sampled",
+          "formal_words": 70,
+          "reachable_segments": 3,
+          "maximum_words": 83
+        },
+        {
+          "root": "src/local_player_entity_scene:recorded",
+          "formal_words": 150,
+          "reachable_segments": 6,
+          "maximum_words": 150
+        },
+        {
+          "root": "src/local_player_cooking_entity_owner:with_publisher",
+          "formal_words": 42,
+          "reachable_segments": 7,
+          "maximum_words": 42
+        },
+        {
+          "root": "src/local_player_cooking_publication_owner:prepare",
+          "formal_words": 2,
+          "reachable_segments": 4,
+          "maximum_words": 76
+        },
+        {
+          "root": "src/local_player_cooking:persistence_ready",
+          "formal_words": 1,
+          "reachable_segments": 9,
+          "maximum_words": 53
+        },
+        {
+          "root": "src/local_player_session:block_action_detached",
+          "formal_words": 225,
+          "reachable_segments": 12,
+          "maximum_words": 225
+        },
+        {
+          "root": "src/local_player_cooking:tick_activated",
+          "formal_words": 72,
+          "reachable_segments": 3,
+          "maximum_words": 81
+        },
+        {
+          "root": "src/player_cooking_menu:owner_matched",
+          "formal_words": 143,
+          "reachable_segments": 20,
+          "maximum_words": 194
+        },
+        {
+          "root": "src/player_cooking_menu_campfire:dispatch_captured",
+          "formal_words": 117,
+          "reachable_segments": 10,
+          "maximum_words": 117
+        }
+      ],
+      "save_callback_cuts": [
+        {
+          "root": "src/local_player_session:cooking_delegate_anchored",
+          "name": "src/local_player_session:cooking_delegate_anchored$k1",
+          "fid": "FID_SRC_LOCAL_PLAYER_SESSION_COOKING_DELEGATE_ANCHORED_K1",
+          "parameter_words": 199,
+          "continuation_argument_words": 6,
+          "captured_words": 193,
+          "captures": [
+            {
+              "name": "bodies",
+              "words": 1,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"List\",\"x\":[{\"$\":\"Qua\",\"q\":{\"$\":\"Many\"}},{\"$\":\"ADT\",\"k\":\"src/local_player_cooking_storage:Body\",\"x\":[],\"r\":[]}],\"r\":[]}"
+            },
+            {
+              "name": "pending",
+              "words": 1,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"List\",\"x\":[{\"$\":\"Qua\",\"q\":{\"$\":\"Many\"}},{\"$\":\"ADT\",\"k\":\"src/cooking_world_store:Effect\",\"x\":[],\"r\":[]}],\"r\":[]}"
+            },
+            {
+              "name": "entities",
+              "words": 12,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"Maybe\",\"x\":[{\"$\":\"Qua\",\"q\":{\"$\":\"Many\"}},{\"$\":\"ADT\",\"k\":\"src/local_player_cooking_storage:EntityRecovery\",\"x\":[],\"r\":[]}],\"r\":[]}"
+            },
+            {
+              "name": "publication",
+              "words": 25,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"Maybe\",\"x\":[{\"$\":\"Qua\",\"q\":{\"$\":\"Many\"}},{\"$\":\"ADT\",\"k\":\"src/local_player_cooking_publication_codec:Recovery\",\"x\":[],\"r\":[]}],\"r\":[]}"
+            },
+            {
+              "name": "anchor",
+              "words": 1,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"src/local_player_session:CookingSaveAnchor\",\"x\":[],\"r\":[]}"
+            },
+            {
+              "name": "peer",
+              "words": 1,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"U32\",\"x\":[],\"r\":[]}"
+            },
+            {
+              "name": "sequence",
+              "words": 1,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"Nat\",\"x\":[],\"r\":[]}"
+            },
+            {
+              "name": "capability",
+              "words": 2,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"src/core:Capability\",\"x\":[],\"r\":[]}"
+            },
+            {
+              "name": "id",
+              "words": 1,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"String\",\"x\":[],\"r\":[]}"
+            },
+            {
+              "name": "base",
+              "words": 25,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"src/persistence:State\",\"x\":[],\"r\":[]}"
+            },
+            {
+              "name": "saved",
+              "words": 121,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"src/player_inventory_codec:Saved\",\"x\":[],\"r\":[]}"
+            },
+            {
+              "name": "maximum",
+              "words": 1,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"U32\",\"x\":[],\"r\":[]}"
+            },
+            {
+              "name": "catalog",
+              "words": 1,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"List\",\"x\":[{\"$\":\"Qua\",\"q\":{\"$\":\"Many\"}},{\"$\":\"ADT\",\"k\":\"src/extended_persistence:Operation\",\"x\":[],\"r\":[]}],\"r\":[]}"
+            }
+          ]
+        },
+        {
+          "root": "src/local_player_session:cooking_delegate_anchored",
+          "name": "src/local_player_session:cooking_delegate_anchored$k5",
+          "fid": "FID_SRC_LOCAL_PLAYER_SESSION_COOKING_DELEGATE_ANCHORED_K5",
+          "parameter_words": 250,
+          "continuation_argument_words": 57,
+          "captured_words": 193,
+          "captures": [
+            {
+              "name": "result",
+              "words": 193,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"Sigma\",\"x\":[{\"$\":\"Qua\",\"q\":{\"$\":\"Lone\"}},{\"$\":\"Qua\",\"q\":{\"$\":\"Lone\"}},{\"$\":\"ADT\",\"k\":\"src/extended_persistence:State\",\"x\":[{\"$\":\"ADT\",\"k\":\"src/local_player_cooking_storage:Saved\",\"x\":[],\"r\":[]}],\"r\":[]},{\"$\":\"Lam\",\"k\":\"_\",\"i\":0,\"f\":{\"$\":\"ADT\",\"k\":\"Sigma\",\"x\":[{\"$\":\"Qua\",\"q\":{\"$\":\"Lone\"}},{\"$\":\"Qua\",\"q\":{\"$\":\"Lone\"}},{\"$\":\"ADT\",\"k\":\"src/live:Session\",\"x\":[],\"r\":[]},{\"$\":\"Lam\",\"k\":\"_\",\"i\":1,\"f\":{\"$\":\"ADT\",\"k\":\"Sigma\",\"x\":[{\"$\":\"Qua\",\"q\":{\"$\":\"Lone\"}},{\"$\":\"Qua\",\"q\":{\"$\":\"Lone\"}},{\"$\":\"ADT\",\"k\":\"src/json:Value\",\"x\":[],\"r\":[]},{\"$\":\"Lam\",\"k\":\"_\",\"i\":2,\"f\":{\"$\":\"ADT\",\"k\":\"src/extended_persistence:SaveCompletion\",\"x\":[],\"r\":[]},\"q\":{\"$\":\"Lone\"}}],\"r\":[]},\"q\":{\"$\":\"Lone\"}}],\"r\":[]},\"q\":{\"$\":\"Lone\"}}],\"r\":[]}"
+            }
+          ]
+        },
+        {
+          "root": "src/local_player_session:cooking_delegate_bundle",
+          "name": "src/local_player_session:cooking_delegate_bundle$k1",
+          "fid": "FID_SRC_LOCAL_PLAYER_SESSION_COOKING_DELEGATE_BUNDLE_K1",
+          "parameter_words": 199,
+          "continuation_argument_words": 6,
+          "captured_words": 193,
+          "captures": [
+            {
+              "name": "bodies",
+              "words": 1,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"List\",\"x\":[{\"$\":\"Qua\",\"q\":{\"$\":\"Many\"}},{\"$\":\"ADT\",\"k\":\"src/local_player_cooking_storage:Body\",\"x\":[],\"r\":[]}],\"r\":[]}"
+            },
+            {
+              "name": "pending",
+              "words": 1,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"List\",\"x\":[{\"$\":\"Qua\",\"q\":{\"$\":\"Many\"}},{\"$\":\"ADT\",\"k\":\"src/cooking_world_store:Effect\",\"x\":[],\"r\":[]}],\"r\":[]}"
+            },
+            {
+              "name": "entities",
+              "words": 12,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"Maybe\",\"x\":[{\"$\":\"Qua\",\"q\":{\"$\":\"Many\"}},{\"$\":\"ADT\",\"k\":\"src/local_player_cooking_storage:EntityRecovery\",\"x\":[],\"r\":[]}],\"r\":[]}"
+            },
+            {
+              "name": "publication",
+              "words": 25,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"Maybe\",\"x\":[{\"$\":\"Qua\",\"q\":{\"$\":\"Many\"}},{\"$\":\"ADT\",\"k\":\"src/local_player_cooking_publication_codec:Recovery\",\"x\":[],\"r\":[]}],\"r\":[]}"
+            },
+            {
+              "name": "anchor",
+              "words": 1,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"src/local_player_session:CookingSaveAnchor\",\"x\":[],\"r\":[]}"
+            },
+            {
+              "name": "peer",
+              "words": 1,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"U32\",\"x\":[],\"r\":[]}"
+            },
+            {
+              "name": "sequence",
+              "words": 1,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"Nat\",\"x\":[],\"r\":[]}"
+            },
+            {
+              "name": "capability",
+              "words": 2,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"src/core:Capability\",\"x\":[],\"r\":[]}"
+            },
+            {
+              "name": "id",
+              "words": 1,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"String\",\"x\":[],\"r\":[]}"
+            },
+            {
+              "name": "base",
+              "words": 25,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"src/persistence:State\",\"x\":[],\"r\":[]}"
+            },
+            {
+              "name": "saved",
+              "words": 121,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"src/player_inventory_codec:Saved\",\"x\":[],\"r\":[]}"
+            },
+            {
+              "name": "maximum",
+              "words": 1,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"U32\",\"x\":[],\"r\":[]}"
+            },
+            {
+              "name": "catalog",
+              "words": 1,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"List\",\"x\":[{\"$\":\"Qua\",\"q\":{\"$\":\"Many\"}},{\"$\":\"ADT\",\"k\":\"src/extended_persistence:Operation\",\"x\":[],\"r\":[]}],\"r\":[]}"
+            }
+          ]
+        },
+        {
+          "root": "src/local_player_session:cooking_delegate_bundle",
+          "name": "src/local_player_session:cooking_delegate_bundle$k5",
+          "fid": "FID_SRC_LOCAL_PLAYER_SESSION_COOKING_DELEGATE_BUNDLE_K5",
+          "parameter_words": 251,
+          "continuation_argument_words": 57,
+          "captured_words": 194,
+          "captures": [
+            {
+              "name": "anchor",
+              "words": 1,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"src/local_player_session:CookingSaveAnchor\",\"x\":[],\"r\":[]}"
+            },
+            {
+              "name": "result",
+              "words": 193,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"Sigma\",\"x\":[{\"$\":\"Qua\",\"q\":{\"$\":\"Lone\"}},{\"$\":\"Qua\",\"q\":{\"$\":\"Lone\"}},{\"$\":\"ADT\",\"k\":\"src/extended_persistence:State\",\"x\":[{\"$\":\"ADT\",\"k\":\"src/local_player_cooking_storage:Saved\",\"x\":[],\"r\":[]}],\"r\":[]},{\"$\":\"Lam\",\"k\":\"_\",\"i\":0,\"f\":{\"$\":\"ADT\",\"k\":\"Sigma\",\"x\":[{\"$\":\"Qua\",\"q\":{\"$\":\"Lone\"}},{\"$\":\"Qua\",\"q\":{\"$\":\"Lone\"}},{\"$\":\"ADT\",\"k\":\"src/live:Session\",\"x\":[],\"r\":[]},{\"$\":\"Lam\",\"k\":\"_\",\"i\":1,\"f\":{\"$\":\"ADT\",\"k\":\"Sigma\",\"x\":[{\"$\":\"Qua\",\"q\":{\"$\":\"Lone\"}},{\"$\":\"Qua\",\"q\":{\"$\":\"Lone\"}},{\"$\":\"ADT\",\"k\":\"src/json:Value\",\"x\":[],\"r\":[]},{\"$\":\"Lam\",\"k\":\"_\",\"i\":2,\"f\":{\"$\":\"ADT\",\"k\":\"src/extended_persistence:SaveCompletion\",\"x\":[],\"r\":[]},\"q\":{\"$\":\"Lone\"}}],\"r\":[]},\"q\":{\"$\":\"Lone\"}}],\"r\":[]},\"q\":{\"$\":\"Lone\"}}],\"r\":[]}"
+            }
+          ]
+        },
+        {
+          "root": "src/local_player_session:cooking_saved",
+          "name": "src/local_player_session:cooking_saved$k1",
+          "fid": "FID_SRC_LOCAL_PLAYER_SESSION_COOKING_SAVED_K1",
+          "parameter_words": 57,
+          "continuation_argument_words": 52,
+          "captured_words": 5,
+          "captures": [
+            {
+              "name": "session",
+              "words": 4,
+              "source_type": "{\"$\":\"Ref\",\"k\":\"src/live:Session\"}"
+            },
+            {
+              "name": "value",
+              "words": 1,
+              "source_type": "{\"$\":\"Ref\",\"k\":\"src/json:Value\"}"
+            }
+          ]
+        }
+      ],
+      "reachable_constructor_count": 1326,
+      "reachable_constructor_max": {
+        "name": "src/local_player_cooking_storage:Saved",
+        "words": 160
+      },
+      "foreign_CID_max": {
+        "name": "File.read_at",
+        "words": 4
+      },
+      "layouts": [
+        {
+          "name": "src/core:World",
+          "words": 9
+        },
+        {
+          "name": "src/local_player_session:State",
+          "words": 52
+        },
+        {
+          "name": "src/local_player_session:Shell",
+          "words": 51
+        },
+        {
+          "name": "src/local_player_runtime:Transient",
+          "words": 67
+        },
+        {
+          "name": "src/local_player_cooking:Sidecar",
+          "words": 1
+        },
+        {
+          "name": "src/local_player_cooking_entity_owner:Carrier",
+          "words": 41
+        },
+        {
+          "name": "src/local_player_cooking_publication_owner:Carrier",
+          "words": 1
+        },
+        {
+          "name": "src/local_player_cooking_storage:Saved",
+          "words": 160
+        },
+        {
+          "name": "src/remote_entity_frame:Frame",
+          "words": 19
+        },
+        {
+          "name": "src/resource_client_wire:Reply",
+          "words": 55
+        },
+        {
+          "name": "src/generic_resource_world_sample:Sample",
+          "words": 15
+        }
+      ],
+      "source_generation": {
+        "loaded_files": 275,
+        "manifest_inputs": 220,
+        "loaded_and_final_pins_identical": true,
+        "all_manifest_inputs_unchanged": true,
+        "all_loaded_source_files_unchanged": true
+      },
+      "raw_receipts": [
+        {
+          "path": "build/actor021_arity_overlay_001/preparation.json",
+          "bytes": 1559,
+          "sha256": "73ebd49f81f487d4be0f2a64f40d841dd76a7aeebfe21030a8a768cd697c8371"
+        },
+        {
+          "path": "build/actor021_arity_overlay_001/candidate.diff",
+          "bytes": 3313,
+          "sha256": "cff08d168bd0549cced735c0babccfe886220e24c92817f53ba3cd73ab23a605"
+        },
+        {
+          "path": "build/actor021_arity_overlay_001/frozen/source/source-map.json",
+          "bytes": 244845,
+          "sha256": "1e0701ec363070b699d0b614550882bcc00fa891e4422a27a47e26640e74ae75"
+        },
+        {
+          "path": "build/actor021_arity_overlay_001/diagnostic/manifest.json",
+          "bytes": 45498,
+          "sha256": "62ef648dae04ed51ad4af5f2a5d0a63f0f3346a9148cd0b3fe1c8f0669e40cb3"
+        },
+        {
+          "path": "build/actor021_arity_overlay_001/diagnostic/probe.mjs",
+          "bytes": 3671,
+          "sha256": "dae38950fbf91255363faba89ebeec9c924a025327d8fdc5dd078be8c5d39efd"
+        },
+        {
+          "path": "build/actor021_arity_overlay_001/diagnostic/probe_comp.ts",
+          "bytes": 195372,
+          "sha256": "19a92b852121b6a0269b99a7f971f4d11b93fab337a6ed18728d2d27326abeed"
+        },
+        {
+          "path": "build/actor021_arity_overlay_001/diagnostic/run.py",
+          "bytes": 2130,
+          "sha256": "d280be7172aa8caa36aeedef710fd1b9ca0165598509e596d86bc21ec4d51438"
+        },
+        {
+          "path": "build/actor021_arity_overlay_001/diagnostic/probe.json",
+          "bytes": 551515,
+          "sha256": "3c4703f90903da9f81bdf6f4a7a9ec4cd8f25552938abf1cfca10bd82cdb7b7b"
+        },
+        {
+          "path": "build/actor021_arity_overlay_001/diagnostic/selection.json",
+          "bytes": 107655,
+          "sha256": "e81a238ca0b07cf251f9993920b03b892f922a49562b012133994a427ec907f6"
+        },
+        {
+          "path": "build/actor021_arity_overlay_001/diagnostic/bodies.jsonl",
+          "bytes": 264140,
+          "sha256": "ffc66104e9bdd98ba34fe648714c8233fc0c6b4c359c72cf49ed7410027dd759"
+        },
+        {
+          "path": "build/actor021_arity_overlay_001/diagnostic/receipt.json",
+          "bytes": 687,
+          "sha256": "226aa4f7a93ec7abdf1e5f86a790c89c8cf6a5081e88581befd398630bab83c1"
+        },
+        {
+          "path": "build/actor021_arity_overlay_001/diagnostic/rss-samples.json",
+          "bytes": 14478,
+          "sha256": "14e325ffcc605feec3690d60ebbb9b5e8c7e48e77cdacf9c4df16ada72fe7596"
+        },
+        {
+          "path": "build/actor021_arity_overlay_001/diagnostic/loaded-source-pins.json",
+          "bytes": 50470,
+          "sha256": "4cdafd0fb628c8702f88c070195192cdb0496a446054bbb9576adc3c14bded34"
+        },
+        {
+          "path": "build/actor021_arity_overlay_001/diagnostic/final-source-pins.json",
+          "bytes": 50470,
+          "sha256": "4cdafd0fb628c8702f88c070195192cdb0496a446054bbb9576adc3c14bded34"
+        },
+        {
+          "path": "build/actor021_arity_overlay_001/diagnostic/delta.json",
+          "bytes": 1187,
+          "sha256": "642df5f877ecc2bbd48f8a2d40f0c678bbfc0cfa6c41d817fd5d5e5998827167"
+        },
+        {
+          "path": "build/actor021_arity_overlay_001/diagnostic/delta.diff",
+          "bytes": 3327,
+          "sha256": "cbbfd3915e9c2e850c9406f0008f482d500d57f6793cd256afcad5e9c0f85595"
+        },
+        {
+          "path": "build/actor021_arity_overlay_001/diagnostic/stdout.txt",
+          "bytes": 26214,
+          "sha256": "ba5cda3d482b0dd460f0a98e5cc8001b551477aa546e4b94586d9c877ff324b8"
+        },
+        {
+          "path": "build/actor021_arity_overlay_001/diagnostic/stderr.txt",
+          "bytes": 177,
+          "sha256": "389778ea2150d931797c417e8510837ace9e03a84eea41e9b705c9ba835b77cd"
+        }
+      ]
+    },
+    {
+      "generation": "private_overlay_002",
+      "status": "SELECTED_CALLBACKS_FIT247: full overlay Book checked, selected bodies measured",
+      "patch": {
+        "path": "build/actor021_arity_overlay_002/candidate.diff",
+        "bytes": 4102,
+        "sha256": "ee7986d2680bdc109954f3d72d99f510de952680285f8542b6e36412bddf3f38"
+      },
+      "before_session_sha256": "74752c19e4634d14e97cb78b47953406be06a84137ba7a5cec06cb3f8aabe293",
+      "after_session_sha256": "31ec9618a3b37fd76cc486b5c980bb6049b1345fe3addd80de301b30a7a731b0",
+      "changed_frozen_source_paths": [
+        "src/local_player_session.bend"
+      ],
+      "whole_book_check": {
+        "declarations": 9546,
+        "holes": 0,
+        "all_original_order_entries_checked": 9586,
+        "seconds": 15.365375208000001,
+        "selector_or_checker_exclusions": false,
+        "source_scope": "Modified private overlay; unchanged original checking algorithm/order."
+      },
+      "process": {
+        "command": [
+          "/opt/homebrew/bin/node",
+          "--expose-gc",
+          "--max-old-space-size=8192",
+          "--stack-size=4096",
+          "--experimental-transform-types",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/actor021_arity_overlay_002/diagnostic/probe.mjs"
+        ],
+        "pid": 65068,
+        "group_absent": true,
+        "returncode": 0,
+        "termination_reason": null,
+        "seconds": 27.85036054160446,
+        "sampled_peak_rss_bytes": 2817064960,
+        "scope": "Unchanged original full source elaboration, then one pass over selected actor021 changed-consumer bodies only; no whole C/fixpoint replay.",
+        "limits": {
+          "seconds": 90,
+          "rss_bytes": 8589934592
+        },
+        "cleanup_probe_error": null,
+        "scope_clarification": "Original whole-book checking algorithm/order applied to this modified private overlay, then one selected-body emission pass. No unchanged-source or formal-semantic-equivalence assertion."
+      },
+      "selected_roots_requested": 26,
+      "completed_selected_bodies": 23,
+      "absent_selected_names": [
+        "src/resource_client_wire:scene_frame",
+        "src/resource_client_wire:reply_value",
+        "src/resource_client_wire:reply_encoded"
+      ],
+      "targets": [
+        {
+          "root": "src/local_player_session:cooking_saved_io",
+          "formal_words": 1,
+          "reachable_segments": 3,
+          "maximum_words": 58
+        },
+        {
+          "root": "src/local_player_session:cooking_saved_anchor",
+          "formal_words": 194,
+          "reachable_segments": 7,
+          "maximum_words": 215
+        },
+        {
+          "root": "src/local_player_session:cooking_delegate_anchored",
+          "formal_words": 197,
+          "reachable_segments": 11,
+          "maximum_words": 199
+        },
+        {
+          "root": "src/local_player_session:cooking_delegate_bundle",
+          "formal_words": 9,
+          "reachable_segments": 7,
+          "maximum_words": 199
+        },
+        {
+          "root": "src/local_player_session:cooking_save_prepared",
+          "formal_words": 102,
+          "reachable_segments": 7,
+          "maximum_words": 215
+        },
+        {
+          "root": "src/local_player_session:cooking_saved",
+          "formal_words": 1,
+          "reachable_segments": 1,
+          "maximum_words": 1
+        },
+        {
+          "root": "src/local_player_session:cooking_save_publication",
+          "formal_words": 102,
+          "reachable_segments": 1,
+          "maximum_words": 102
+        },
+        {
+          "root": "src/local_player_session:cooking_save_entities",
+          "formal_words": 75,
+          "reachable_segments": 2,
+          "maximum_words": 102
+        },
+        {
+          "root": "src/local_player_session:new_cooking_inventory",
+          "formal_words": 189,
+          "reachable_segments": 5,
+          "maximum_words": 189
+        },
+        {
+          "root": "profile_adopted",
+          "formal_words": 148,
+          "reachable_segments": 19,
+          "maximum_words": 148
+        },
+        {
+          "root": "profile_loaded",
+          "formal_words": 63,
+          "reachable_segments": 19,
+          "maximum_words": 245
+        },
+        {
+          "root": "cooking_actual",
+          "formal_words": 113,
+          "reachable_segments": 48,
+          "maximum_words": 155
+        },
+        {
+          "root": "src/remote_entity_scene_backend:checked",
+          "formal_words": 100,
+          "reachable_segments": 4,
+          "maximum_words": 107
+        },
+        {
+          "root": "src/local_player_entity_scene:captured",
+          "formal_words": 81,
+          "reachable_segments": 2,
+          "maximum_words": 81
+        },
+        {
+          "root": "src/local_player_entity_scene:sampled",
+          "formal_words": 70,
+          "reachable_segments": 3,
+          "maximum_words": 83
+        },
+        {
+          "root": "src/local_player_entity_scene:recorded",
+          "formal_words": 150,
+          "reachable_segments": 6,
+          "maximum_words": 150
+        },
+        {
+          "root": "src/local_player_cooking_entity_owner:with_publisher",
+          "formal_words": 42,
+          "reachable_segments": 7,
+          "maximum_words": 42
+        },
+        {
+          "root": "src/local_player_cooking_publication_owner:prepare",
+          "formal_words": 2,
+          "reachable_segments": 4,
+          "maximum_words": 76
+        },
+        {
+          "root": "src/local_player_cooking:persistence_ready",
+          "formal_words": 1,
+          "reachable_segments": 9,
+          "maximum_words": 53
+        },
+        {
+          "root": "src/local_player_session:block_action_detached",
+          "formal_words": 225,
+          "reachable_segments": 12,
+          "maximum_words": 225
+        },
+        {
+          "root": "src/local_player_cooking:tick_activated",
+          "formal_words": 72,
+          "reachable_segments": 3,
+          "maximum_words": 81
+        },
+        {
+          "root": "src/player_cooking_menu:owner_matched",
+          "formal_words": 143,
+          "reachable_segments": 20,
+          "maximum_words": 194
+        },
+        {
+          "root": "src/player_cooking_menu_campfire:dispatch_captured",
+          "formal_words": 117,
+          "reachable_segments": 10,
+          "maximum_words": 117
+        }
+      ],
+      "save_callback_cuts": [
+        {
+          "root": "src/local_player_session:cooking_saved_io",
+          "name": "src/local_player_session:cooking_saved_io$k1",
+          "fid": "FID_SRC_LOCAL_PLAYER_SESSION_COOKING_SAVED_IO_K1",
+          "parameter_words": 57,
+          "continuation_argument_words": 57,
+          "captured_words": 0,
+          "captures": []
+        },
+        {
+          "root": "src/local_player_session:cooking_saved_io",
+          "name": "src/local_player_session:cooking_saved_io$c2",
+          "fid": "FID_SRC_LOCAL_PLAYER_SESSION_COOKING_SAVED_IO_C2",
+          "parameter_words": 58,
+          "continuation_argument_words": 1,
+          "captured_words": 57,
+          "captures": [
+            {
+              "name": "h",
+              "words": 57,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"Sigma\",\"x\":[{\"$\":\"Qua\",\"q\":{\"$\":\"Lone\"}},{\"$\":\"Qua\",\"q\":{\"$\":\"Lone\"}},{\"$\":\"ADT\",\"k\":\"src/local_player_session:State\",\"x\":[],\"r\":[]},{\"$\":\"Lam\",\"k\":\"_\",\"i\":0,\"f\":{\"$\":\"ADT\",\"k\":\"Sigma\",\"x\":[{\"$\":\"Qua\",\"q\":{\"$\":\"Lone\"}},{\"$\":\"Qua\",\"q\":{\"$\":\"Lone\"}},{\"$\":\"ADT\",\"k\":\"src/live:Session\",\"x\":[],\"r\":[]},{\"$\":\"Lam\",\"k\":\"_\",\"i\":1,\"f\":{\"$\":\"ADT\",\"k\":\"src/json:Value\",\"x\":[],\"r\":[]},\"q\":{\"$\":\"Lone\"}}],\"r\":[]},\"q\":{\"$\":\"Lone\"}}],\"r\":[]}"
+            }
+          ]
+        },
+        {
+          "root": "src/local_player_session:cooking_saved_anchor",
+          "name": "src/local_player_session:cooking_saved_anchor$k1",
+          "fid": "FID_SRC_LOCAL_PLAYER_SESSION_COOKING_SAVED_ANCHOR_K1",
+          "parameter_words": 57,
+          "continuation_argument_words": 52,
+          "captured_words": 5,
+          "captures": [
+            {
+              "name": "session",
+              "words": 4,
+              "source_type": "{\"$\":\"Ref\",\"k\":\"src/live:Session\"}"
+            },
+            {
+              "name": "value",
+              "words": 1,
+              "source_type": "{\"$\":\"Ref\",\"k\":\"src/json:Value\"}"
+            }
+          ]
+        },
+        {
+          "root": "src/local_player_session:cooking_delegate_anchored",
+          "name": "src/local_player_session:cooking_delegate_anchored$k1",
+          "fid": "FID_SRC_LOCAL_PLAYER_SESSION_COOKING_DELEGATE_ANCHORED_K1",
+          "parameter_words": 199,
+          "continuation_argument_words": 6,
+          "captured_words": 193,
+          "captures": [
+            {
+              "name": "bodies",
+              "words": 1,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"List\",\"x\":[{\"$\":\"Qua\",\"q\":{\"$\":\"Many\"}},{\"$\":\"ADT\",\"k\":\"src/local_player_cooking_storage:Body\",\"x\":[],\"r\":[]}],\"r\":[]}"
+            },
+            {
+              "name": "pending",
+              "words": 1,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"List\",\"x\":[{\"$\":\"Qua\",\"q\":{\"$\":\"Many\"}},{\"$\":\"ADT\",\"k\":\"src/cooking_world_store:Effect\",\"x\":[],\"r\":[]}],\"r\":[]}"
+            },
+            {
+              "name": "entities",
+              "words": 12,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"Maybe\",\"x\":[{\"$\":\"Qua\",\"q\":{\"$\":\"Many\"}},{\"$\":\"ADT\",\"k\":\"src/local_player_cooking_storage:EntityRecovery\",\"x\":[],\"r\":[]}],\"r\":[]}"
+            },
+            {
+              "name": "publication",
+              "words": 25,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"Maybe\",\"x\":[{\"$\":\"Qua\",\"q\":{\"$\":\"Many\"}},{\"$\":\"ADT\",\"k\":\"src/local_player_cooking_publication_codec:Recovery\",\"x\":[],\"r\":[]}],\"r\":[]}"
+            },
+            {
+              "name": "anchor",
+              "words": 1,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"src/local_player_session:CookingSaveAnchor\",\"x\":[],\"r\":[]}"
+            },
+            {
+              "name": "peer",
+              "words": 1,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"U32\",\"x\":[],\"r\":[]}"
+            },
+            {
+              "name": "sequence",
+              "words": 1,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"Nat\",\"x\":[],\"r\":[]}"
+            },
+            {
+              "name": "capability",
+              "words": 2,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"src/core:Capability\",\"x\":[],\"r\":[]}"
+            },
+            {
+              "name": "id",
+              "words": 1,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"String\",\"x\":[],\"r\":[]}"
+            },
+            {
+              "name": "base",
+              "words": 25,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"src/persistence:State\",\"x\":[],\"r\":[]}"
+            },
+            {
+              "name": "saved",
+              "words": 121,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"src/player_inventory_codec:Saved\",\"x\":[],\"r\":[]}"
+            },
+            {
+              "name": "maximum",
+              "words": 1,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"U32\",\"x\":[],\"r\":[]}"
+            },
+            {
+              "name": "catalog",
+              "words": 1,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"List\",\"x\":[{\"$\":\"Qua\",\"q\":{\"$\":\"Many\"}},{\"$\":\"ADT\",\"k\":\"src/extended_persistence:Operation\",\"x\":[],\"r\":[]}],\"r\":[]}"
+            }
+          ]
+        },
+        {
+          "root": "src/local_player_session:cooking_delegate_anchored",
+          "name": "src/local_player_session:cooking_delegate_anchored$k5",
+          "fid": "FID_SRC_LOCAL_PLAYER_SESSION_COOKING_DELEGATE_ANCHORED_K5",
+          "parameter_words": 58,
+          "continuation_argument_words": 57,
+          "captured_words": 1,
+          "captures": [
+            {
+              "name": "completed",
+              "words": 1,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"src/local_player_session:CompletedSave\",\"x\":[],\"r\":[]}"
+            }
+          ]
+        },
+        {
+          "root": "src/local_player_session:cooking_delegate_bundle",
+          "name": "src/local_player_session:cooking_delegate_bundle$k1",
+          "fid": "FID_SRC_LOCAL_PLAYER_SESSION_COOKING_DELEGATE_BUNDLE_K1",
+          "parameter_words": 199,
+          "continuation_argument_words": 6,
+          "captured_words": 193,
+          "captures": [
+            {
+              "name": "bodies",
+              "words": 1,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"List\",\"x\":[{\"$\":\"Qua\",\"q\":{\"$\":\"Many\"}},{\"$\":\"ADT\",\"k\":\"src/local_player_cooking_storage:Body\",\"x\":[],\"r\":[]}],\"r\":[]}"
+            },
+            {
+              "name": "pending",
+              "words": 1,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"List\",\"x\":[{\"$\":\"Qua\",\"q\":{\"$\":\"Many\"}},{\"$\":\"ADT\",\"k\":\"src/cooking_world_store:Effect\",\"x\":[],\"r\":[]}],\"r\":[]}"
+            },
+            {
+              "name": "entities",
+              "words": 12,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"Maybe\",\"x\":[{\"$\":\"Qua\",\"q\":{\"$\":\"Many\"}},{\"$\":\"ADT\",\"k\":\"src/local_player_cooking_storage:EntityRecovery\",\"x\":[],\"r\":[]}],\"r\":[]}"
+            },
+            {
+              "name": "publication",
+              "words": 25,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"Maybe\",\"x\":[{\"$\":\"Qua\",\"q\":{\"$\":\"Many\"}},{\"$\":\"ADT\",\"k\":\"src/local_player_cooking_publication_codec:Recovery\",\"x\":[],\"r\":[]}],\"r\":[]}"
+            },
+            {
+              "name": "anchor",
+              "words": 1,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"src/local_player_session:CookingSaveAnchor\",\"x\":[],\"r\":[]}"
+            },
+            {
+              "name": "peer",
+              "words": 1,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"U32\",\"x\":[],\"r\":[]}"
+            },
+            {
+              "name": "sequence",
+              "words": 1,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"Nat\",\"x\":[],\"r\":[]}"
+            },
+            {
+              "name": "capability",
+              "words": 2,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"src/core:Capability\",\"x\":[],\"r\":[]}"
+            },
+            {
+              "name": "id",
+              "words": 1,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"String\",\"x\":[],\"r\":[]}"
+            },
+            {
+              "name": "base",
+              "words": 25,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"src/persistence:State\",\"x\":[],\"r\":[]}"
+            },
+            {
+              "name": "saved",
+              "words": 121,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"src/player_inventory_codec:Saved\",\"x\":[],\"r\":[]}"
+            },
+            {
+              "name": "maximum",
+              "words": 1,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"U32\",\"x\":[],\"r\":[]}"
+            },
+            {
+              "name": "catalog",
+              "words": 1,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"List\",\"x\":[{\"$\":\"Qua\",\"q\":{\"$\":\"Many\"}},{\"$\":\"ADT\",\"k\":\"src/extended_persistence:Operation\",\"x\":[],\"r\":[]}],\"r\":[]}"
+            }
+          ]
+        },
+        {
+          "root": "src/local_player_session:cooking_delegate_bundle",
+          "name": "src/local_player_session:cooking_delegate_bundle$k5",
+          "fid": "FID_SRC_LOCAL_PLAYER_SESSION_COOKING_DELEGATE_BUNDLE_K5",
+          "parameter_words": 58,
+          "continuation_argument_words": 57,
+          "captured_words": 1,
+          "captures": [
+            {
+              "name": "completed",
+              "words": 1,
+              "source_type": "{\"$\":\"ADT\",\"k\":\"src/local_player_session:CompletedSave\",\"x\":[],\"r\":[]}"
+            }
+          ]
+        }
+      ],
+      "reachable_constructor_count": 1328,
+      "reachable_constructor_max": {
+        "name": "src/local_player_session:SaveCompletedData",
+        "words": 194
+      },
+      "foreign_CID_max": {
+        "name": "File.read_at",
+        "words": 4
+      },
+      "layouts": [
+        {
+          "name": "src/core:World",
+          "words": 9
+        },
+        {
+          "name": "src/local_player_session:State",
+          "words": 52
+        },
+        {
+          "name": "src/local_player_session:Shell",
+          "words": 51
+        },
+        {
+          "name": "src/local_player_runtime:Transient",
+          "words": 67
+        },
+        {
+          "name": "src/local_player_cooking:Sidecar",
+          "words": 1
+        },
+        {
+          "name": "src/local_player_cooking_entity_owner:Carrier",
+          "words": 41
+        },
+        {
+          "name": "src/local_player_cooking_publication_owner:Carrier",
+          "words": 1
+        },
+        {
+          "name": "src/local_player_cooking_storage:Saved",
+          "words": 160
+        },
+        {
+          "name": "src/remote_entity_frame:Frame",
+          "words": 19
+        },
+        {
+          "name": "src/resource_client_wire:Reply",
+          "words": 55
+        },
+        {
+          "name": "src/generic_resource_world_sample:Sample",
+          "words": 15
+        }
+      ],
+      "source_generation": {
+        "loaded_files": 275,
+        "manifest_inputs": 220,
+        "loaded_and_final_pins_identical": true,
+        "all_manifest_inputs_unchanged": true,
+        "all_loaded_source_files_unchanged": true
+      },
+      "raw_receipts": [
+        {
+          "path": "build/actor021_arity_overlay_002/preparation.json",
+          "bytes": 1593,
+          "sha256": "aeecd29928a72a4eae18941a8683225bedfdc9231ac4eef621db6ebc02cc5fe6"
+        },
+        {
+          "path": "build/actor021_arity_overlay_002/candidate.diff",
+          "bytes": 4102,
+          "sha256": "ee7986d2680bdc109954f3d72d99f510de952680285f8542b6e36412bddf3f38"
+        },
+        {
+          "path": "build/actor021_arity_overlay_002/frozen/source/source-map.json",
+          "bytes": 244845,
+          "sha256": "351e51a6f5e1fa761fd4644951e644c397413af3a02499018a1a1e4888c44a16"
+        },
+        {
+          "path": "build/actor021_arity_overlay_002/diagnostic/manifest.json",
+          "bytes": 45600,
+          "sha256": "3f8710cfb4a512ae9bd513ed018f0ccec8e736608672f393edd32ce3e20d9790"
+        },
+        {
+          "path": "build/actor021_arity_overlay_002/diagnostic/probe.mjs",
+          "bytes": 3765,
+          "sha256": "eebb062ad0967cb19e5633521cbe745b07210329f3abfd1d4b76758b34bfeef6"
+        },
+        {
+          "path": "build/actor021_arity_overlay_002/diagnostic/probe_comp.ts",
+          "bytes": 195372,
+          "sha256": "19a92b852121b6a0269b99a7f971f4d11b93fab337a6ed18728d2d27326abeed"
+        },
+        {
+          "path": "build/actor021_arity_overlay_002/diagnostic/run.py",
+          "bytes": 2130,
+          "sha256": "d280be7172aa8caa36aeedef710fd1b9ca0165598509e596d86bc21ec4d51438"
+        },
+        {
+          "path": "build/actor021_arity_overlay_002/diagnostic/probe.json",
+          "bytes": 536674,
+          "sha256": "39ad37afa0e9e37cc755e454a24f2b9706ed9407cda2d05e2ff78a5bbe6f0aee"
+        },
+        {
+          "path": "build/actor021_arity_overlay_002/diagnostic/selection.json",
+          "bytes": 107941,
+          "sha256": "5d0837ebeb627bd94391047aba04fc32d34b4f4034012a93708f1aa670b615b6"
+        },
+        {
+          "path": "build/actor021_arity_overlay_002/diagnostic/bodies.jsonl",
+          "bytes": 256403,
+          "sha256": "e634f3c226d72e247495bdc91e6ddac61afddabdeba7b396e368cd5baf735e5c"
+        },
+        {
+          "path": "build/actor021_arity_overlay_002/diagnostic/receipt.json",
+          "bytes": 687,
+          "sha256": "1764e212e8bd9e4460b6f1f44c18323ec98f57375ec77be4cd4c29932073e7a7"
+        },
+        {
+          "path": "build/actor021_arity_overlay_002/diagnostic/rss-samples.json",
+          "bytes": 9385,
+          "sha256": "73ec4e5cbd14b763d422bf49f32213044fbc9eee16fe40a41088a5ebb65d382a"
+        },
+        {
+          "path": "build/actor021_arity_overlay_002/diagnostic/loaded-source-pins.json",
+          "bytes": 50470,
+          "sha256": "ffa156c2545ba2105bdd4ef0c704dcabdd42098381b30e2b0ee88fb6198f7ed4"
+        },
+        {
+          "path": "build/actor021_arity_overlay_002/diagnostic/final-source-pins.json",
+          "bytes": 50470,
+          "sha256": "ffa156c2545ba2105bdd4ef0c704dcabdd42098381b30e2b0ee88fb6198f7ed4"
+        },
+        {
+          "path": "build/actor021_arity_overlay_002/diagnostic/delta.json",
+          "bytes": 1187,
+          "sha256": "7f7def9dbb5aaf1750347fda66448a847916794acc01f72484e7dc23bd3723c2"
+        },
+        {
+          "path": "build/actor021_arity_overlay_002/diagnostic/delta.diff",
+          "bytes": 4116,
+          "sha256": "305ff48f8d1285c40407ec02b60b0732aa5a68c944e3952dd7d900fcece4f39e"
+        },
+        {
+          "path": "build/actor021_arity_overlay_002/diagnostic/stdout.txt",
+          "bytes": 9152,
+          "sha256": "8ea1524511799d67d77ec17d670423fd4063ab7157fd0a09518ec12bb538dc83"
+        },
+        {
+          "path": "build/actor021_arity_overlay_002/diagnostic/stderr.txt",
+          "bytes": 177,
+          "sha256": "9390354ab438ab4d9717ca982af5aec5ec8fa028d0022cd2bab173a3b73a2a4a"
+        }
+      ]
+    }
+  ],
+  "comparison": {
+    "original_codec_callback_words": 268,
+    "both_overlay_codec_callback_words": 199,
+    "original_return_callback_words": 250,
+    "anchor_only_return_callback_words": [
+      250,
+      251
+    ],
+    "completed_save_return_callback_words": 58,
+    "successful_selected_maximum_words": 245,
+    "successful_selected_maximum_segment": "profile_loaded$k4",
+    "callback_limit": 247,
+    "completed_save_return_capture": {
+      "completed": 1,
+      "return": 57
+    },
+    "successful_constructor_maximum_words": 194
+  },
+  "preservation": {
+    "working_product_edited_by_this_lane": false,
+    "original_actor021_modified": false,
+    "original_compiler_or_source_api_modified": false,
+    "private_telemetry_only": "seg_open records actual captures; existing emit_open/emit_body and layout behavior remain copied from frozen021 private compiler.",
+    "guard_relaxed": false,
+    "whole_actor_emission_replayed": false,
+    "native_or_kernel_launched_by_this_lane": false
+  },
+  "limitations": [
+    "Every original source-check order entry was checked before body selection. Selection applies only to compact emission diagnostics.",
+    "Selected bodies use initial ownership facts which evolve through the listed target order; this does not reproduce original final nine-pass actor fixpoint or final-live-main callback suffix.",
+    "Three wire helper names are absent from done_defs. They were not emitted as independent roots; absence alone is not proof of inlining.",
+    "Reachable constructor/foreign layouts come from actual file_book reachability; callback measurements cover the listed selected bodies, not every callback of a full actor build.",
+    "The modified private overlay has a full source check, but actual full successor actor C/native/runtime results are required independently. No normal-generation claim is involved."
+  ],
+  "reproduction": {
+    "baseline_prepare": [
+      "python3",
+      "tools/actor021_arity_prepare.py",
+      "build/FRESH_actor021_arity"
+    ],
+    "overlay_prepare": [
+      "python3",
+      "tools/actor021_arity_overlay.py",
+      "build/FRESH_actor021_arity_overlay",
+      "--completed"
+    ],
+    "run": [
+      "python3",
+      "-B",
+      "build/FRESH_actor021_arity_overlay/diagnostic/run.py"
+    ],
+    "scope": "Use a new nonexistent output directory; observe actual two-heavy-job budget before the single bounded diagnostic. No whole actor C retry is part of this recipe."
+  },
+  "owned_tool_pins": [
+    {
+      "path": "tools/actor021_arity_prepare.py",
+      "bytes": 12036,
+      "sha256": "e563faf27649ea4b545b12df1dc13961a2c3662d472c8ed8f77a1bbcddea015b"
+    },
+    {
+      "path": "tools/actor021_arity_overlay.py",
+      "bytes": 7811,
+      "sha256": "960844db6629d65a3583ecd79f6cf9a8a2f6ef30a35c54a2ab82e98280a3aa36"
+    }
+  ],
+  "tool_post_measurement_changes": "Output scope wording now explicitly names original compiler/checking algorithm on the selected frozen generation; Python annotation distinguishes receipt193 from completed leaf194. Diagnostic behavior and exact candidate patch text are unchanged. Historical generated tools and receipts are retained with their original hashes."
+}

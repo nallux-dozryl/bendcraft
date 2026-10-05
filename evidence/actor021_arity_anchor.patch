@@ -1,0 +1,62 @@
+--- a/src/local_player_session.bend
++++ b/src/local_player_session.bend
+@@ -882,22 +882,51 @@
+     case E.NotCommitted{}: state
+     case E.DurablyCommitted{}: cooking_save_committed(state,snapshot)
+ 
+-def cooking_saved(transient:R.Transient,snapshot:Maybe<&2,PublicationJournal.Snapshot>,
++type CookingSaveAnchor is Type:
++  SaveAnchorData{transient:R.Transient,snapshot:Maybe<&2,PublicationJournal.Snapshot>}
++  SaveAnchorNested{inner:CookingSaveAnchor}
++
++def cooking_saved_anchor(anchor:CookingSaveAnchor,
+     result:E.State<CookingStorage.Saved> & L.Session & J.Value & E.SaveCompletion) -> State & L.Session & J.Value:
+-  (stored,session,value,completion) = result
+-  (cooking_save_completed(from_cooking_bundle(stored,transient),snapshot,completion),session,value)
+-
+-def cooking_delegate_bundle(definitions:D.Catalog,bodies:List<&2,CookingStorage.Body>,pending:List<&2,CookingStore.Effect>,entities:Maybe<&2,CookingStorage.EntityRecovery>,publication:Maybe<&2,PublicationCodec.Recovery>,snapshot:Maybe<&2,PublicationJournal.Snapshot>,+session:L.Session,id:String,
+-    result:E.State<IC.Saved> & R.Transient) -> IO(State & L.Session & J.Value):
++  match anchor:
++    case SaveAnchorNested{inner}: cooking_saved_anchor(inner,result)
++    case SaveAnchorData{transient,snapshot}:
++      (stored,session,value,completion) = result
++      (cooking_save_completed(from_cooking_bundle(stored,transient),snapshot,completion),session,value)
++
++type CompletedSave is Type:
++  SaveCompletedData{anchor:CookingSaveAnchor,
++    result:E.State<CookingStorage.Saved> & L.Session & J.Value & E.SaveCompletion}
++  SaveCompletedNested{inner:CompletedSave}
++
++def cooking_saved(completed:CompletedSave) -> State & L.Session & J.Value:
++  match completed:
++    case SaveCompletedNested{inner}: cooking_saved(inner)
++    case SaveCompletedData{anchor,result}: cooking_saved_anchor(anchor,result)
++
++# Keep the completed affine input closed across the pure-return/IO.pure cut.
++# Opening its193-word payload belongs to the pure helper, not this IO scope.
++def cooking_saved_io(completed:CompletedSave) -> IO(State & L.Session & J.Value):
++  do IO<State & L.Session & J.Value>:
++    return cooking_saved(completed)
++
++def cooking_delegate_anchored(definitions:D.Catalog,bodies:List<&2,CookingStorage.Body>,pending:List<&2,CookingStore.Effect>,entities:Maybe<&2,CookingStorage.EntityRecovery>,publication:Maybe<&2,PublicationCodec.Recovery>,anchor:CookingSaveAnchor,+session:L.Session,id:String,
++    stored:E.State<IC.Saved>) -> IO(State & L.Session & J.Value):
+   L.Session{+peer,sequence,capability} = session
+-  (E.State{base,saved,maximum,catalog},transient) = result
++  E.State{base,saved,maximum,catalog} = stored
+   do IO<State & L.Session & J.Value>:
+     result : E.State<CookingStorage.Saved> & L.Session & J.Value & E.SaveCompletion <-
+       E.save_codec_receipt(~CookingStorage.Saved,
+         CookingStorage.codec_with(definitions,False{},WG.legacy()),
+         E.observe(CookingStorage.Saved,E.State{base,CookingStorage.Saved{saved,bodies,pending,entities,publication},maximum,catalog},peer),
+         L.Session{peer,1n+sequence,capability},id)
+-    return cooking_saved(transient,snapshot,result)
++    cooking_saved_io(SaveCompletedData{anchor,result})
++
++def cooking_delegate_bundle(definitions:D.Catalog,bodies:List<&2,CookingStorage.Body>,pending:List<&2,CookingStore.Effect>,entities:Maybe<&2,CookingStorage.EntityRecovery>,publication:Maybe<&2,PublicationCodec.Recovery>,snapshot:Maybe<&2,PublicationJournal.Snapshot>,session:L.Session,id:String,
++    result:E.State<IC.Saved> & R.Transient) -> IO(State & L.Session & J.Value):
++  (stored,transient) = result
++  cooking_delegate_anchored(definitions,bodies,pending,entities,publication,
++    SaveAnchorData{transient,snapshot},session,id,stored)
+ 
+ def cooking_save_prepared(definitions:D.Catalog,bodies:List<&2,CookingStorage.Body>,pending:List<&2,CookingStore.Effect>,entities:Maybe<&2,CookingStorage.EntityRecovery>,session:L.Session,id:String,state:State,
+     value:Maybe<&2,PublicationOwner.Prepared>) -> IO(State & L.Session & J.Value):
