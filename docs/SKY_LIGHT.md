@@ -55,6 +55,28 @@ physical Core residency, rather than using Java's allocated light halos or
 above-top level-15 lookup as evidence that a block exists. Raw Java sparse-layer
 and halo observations are documented separately in `SKY_LIGHT_REFERENCE.md`.
 
+## Flat-world authority adapter
+
+`src/sky_light_flat_authority.bend` provides closed callbacks for the existing
+saved flat-world consumer, using the **actual** `WG.Settings` and authenticated
+`BR.Catalog`. Its immutable `Context{catalog,generation,air,has_sky,enabled}` can
+be passed directly to `SW.load_resume` with `F.properties`, `F.bounds`, `F.policy`,
+`F.enabled`, and `F.occludes`. Dimension sky policy, registry-resolved empty state,
+and initial chunk enablement remain explicit actor authority.
+
+The bounds callback validates actual generation settings, dimension identity,
+and the sky provider's signed-coordinate bounds; an exclusive upper endpoint
+that wraps through signed minimum is refused.
+The missing-section policy requires the existing `WG.base_only` predicate:
+features and lakes are off and structures are explicitly empty. It admits an
+aligned section only when its origin is at or above `min_y + WG.layer_height`
+and below build maximum. A missing section containing any base layer remains
+unknown. Unspecified generation, noise, another dimension, invalid settings,
+or outstanding feature/structure authority cannot manufacture empty geometry.
+This derives the current flat consumer's empty upper sections from its real
+existing generator contract; it does not duplicate the generator or assert that
+missing sections in arbitrary worlds are air.
+
 ## Source law
 
 A top-to-bottom scan begins above the actual build height using the bound empty
@@ -167,6 +189,13 @@ actual Core-result failure, deferred repair, and disabling-only stored-field
 retention. Together the two targets contain 51 checked contracts, with no
 excluded declarations. Receipts are `evidence/sky-light-proof.json` and
 `evidence/sky-light-world-proof.json`; their explicit proof scopes remain binding.
+
+`python3 tools/sky_light_flat_authority_proof.py` checks 12 supplemental adapter
+contracts with the same independent kernel, covering exact supplied registry
+delegation and generation, dimension, source-field-bounds, base-only policy,
+signed layer-ceiling and disabled-authority refusals. Its receipt is
+`evidence/sky-light-flat-authority-proof.json`. These contracts do not establish
+catalog authentication, caller air/sky bindings, or universal generation geometry.
 
 `python3 tools/test_sky_light.py` builds and runs the actual native Bend receiver.
 It compares all 8 retained Java scenarios / 36 phases, plus propagation-budget
