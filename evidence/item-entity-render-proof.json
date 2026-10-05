@@ -1,0 +1,183 @@
+{
+  "status": "passed",
+  "ordinary_laws": 14,
+  "independent_kernel_laws": 14,
+  "roots": [
+    "item_entity_render_laws:presentation_uses_actual_old_position",
+    "item_entity_render_laws:item_projection_preserves_full_components_and_bob",
+    "item_entity_render_laws:orb_projection_preserves_actual_value",
+    "item_entity_render_laws:snapshot_excludes_simulation_random_and_factory",
+    "item_entity_render_laws:record_projection_preserves_source_sequence",
+    "item_entity_render_laws:unbound_is_a_refusal_and_retains_numerical_owner",
+    "item_entity_render_laws:hidden_record_preserves_numerical_owner",
+    "item_entity_render_laws:exhausted_scan_publishes_no_partial_frame",
+    "item_entity_render_laws:empty_scan_is_a_bound_empty_frame",
+    "item_entity_render_laws:failed_quad_budget_cannot_publish_frame",
+    "item_entity_render_laws:dynamic_light_preserves_texture_tint_and_material",
+    "item_entity_render_laws:transformed_vertex_preserves_actual_uv",
+    "item_entity_render_laws:no_item_copies_produces_no_geometry",
+    "item_entity_render_laws:zero_count_item_stack_is_not_drawn"
+  ],
+  "checks": [
+    {
+      "kind": "export",
+      "command": [
+        "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+        "--experimental-transform-types",
+        "--stack-size=4096",
+        "--max-old-space-size=1536",
+        "tools/item_entity_render_proof.mjs",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-entity-render-proof"
+      ],
+      "exit": 0,
+      "seconds": 4.5241,
+      "sampled_process_tree_peak_rss_bytes": 1506705408,
+      "bounded_stop": null,
+      "stdout_sha256": "193dc91d0668e1141a25a2912074b529978ffac72c7c90c9708266e017a497e3",
+      "stderr_sha256": "c88a4f4fe988880a80bb241d118f3f2d44204f6a86074d740ad98925a2f43aed"
+    },
+    {
+      "kind": "kernel",
+      "command": [
+        "/usr/bin/env",
+        "LEAN_STACK_SIZE=4194304",
+        "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-entity-render-proof/selected.bendtt"
+      ],
+      "exit": 0,
+      "seconds": 0.2224,
+      "sampled_process_tree_peak_rss_bytes": 147456,
+      "bounded_stop": null,
+      "stdout_sha256": "61b73cda11b6b665b9f99f2defd3d3b57f985c865225e942a5bdaa594a503e47",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "scope_exclusions": [],
+  "checked_types_and_bodies_unchanged": true,
+  "all_original_declaration_maps_retained": true,
+  "source_sha256": {
+    "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/base.bend": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/archive.bend": "c0f7b34a22726d220f6b867730b7d080d57d82c84d619c35721b9b8d18fa5d6e",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/big_uint.bend": "fbe5965ee16ee3d6864def33fbc6e5e4b1b9bc7da4735d99311c1a23c65e2444",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/block_bake.bend": "3611116e0ba63915d6013463c1640f83b6b80cb08e802f93be5f7eaa4d600595",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/block_model.bend": "73a864417c6c344727a5fb979feb3342052c31b550c0dc2270f4bc13fab705cc",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/campfire_authority_items.bend": "cc8e33b0636309348135ec32aabb8f6cfceb23a24863fd064fc30bf730ba79c2",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/client_render.bend": "735b643d733bd190d7ad3b6c2462773f6d8aa713eb156750dc9865ac7842b5f6",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/compression.bend": "255cdff06a33050c7b0a48fdea75c1842ebe2dab0439cfe4f03d126d4edc20aa",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_effect_entities_model.bend": "c637fa93acc5707c8c5c101e23bfde7d7549d06523ae157581e32dae53f3d07c",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_recipe.bend": "085bfe968f3e7169e5c7bacf633029ebd9e4fc8c8ecb79ad81f63a193110f795",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe.bend": "3c5f3fc7b3e0be9be7d553da2a107dc1245fe13f17afac0efdf84bc41c15ffe2",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe_component_registry.bend": "911786032b2c22759208edaf7112ae403b2a03663d9237c3e036c2b5ba4ece2a",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe_components.bend": "2a35e31f26187ebbdab1c4261d54083acb68072a56a7b5869e5dfc490bc946be",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/float_parse.bend": "fe22007f0805f3c955fcaada88c1da76a3cceda74f0ff3840ae47af49a02c683",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/framing.bend": "307f95049df03d92687b7bd0eafb2cd566e660926510bb88163f9bc825fccdb5",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/geometry.bend": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/inventory.bend": "9d2be7fb88afa1dc6386ab9e8b046b15d2a2a73b7e14566e5bfad3e6dd1f2702",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_entity_render.bend": "01b4de2a13bbdb3e7d17707953bf52abff7b13c591ed2871db359ca12b6185b3",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_entity_render_laws.bend": "d2f04c0e16948911859f696a53f1838e75e8a036da386c3fc77efd2981cd85da",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_entity_render_model.bend": "c4f9e8179157115f482826c41fa1a9098bee29e1d5b4b7572fbc750036ab291a",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_entity_render_proof.bend": "0257d87bc092656e02c38958229bb7041e50e5758d9cedfa951929fb6e293325",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_entity_render_transform.bend": "3e6541c16dde68ee55e1219739efcae2e0b29b6fe3483dfd0c1ab8a76e6a93ee",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/json.bend": "a1789e3b4f5bea158ec0d95a8bcb39aa5b7c7e7355a5254d3de1d52a93c719d1",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/locomotion.bend": "ccf8aa12636ba1fce5575606383bf75c02a8ac79ba952645b89aea2eef6cd459",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/mesh_render.bend": "cc8c7d3cf4badf3ec76a6dfd32939ec1d4c9d856fc181fa36a45cfe268df7424",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/movement.bend": "31f5a4c47903506c0f388f688eaeaf78a36a0d266efde52bc57ea8cc89627b45",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/nbt.bend": "b677546b5fc02aaa38f5c09e5b798c0d35aec32b1c4b37cbd7042b9a1a5275e4",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_look.bend": "35ec863e078e46f2c2502b975f3e9f259114aec7baac614c68ba6e46773260ca",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_presentation.bend": "795422051d936dbc70de658b6e6600cf6d7eeb9f759d842b2d4f40e00eee5137",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/png.bend": "8c24c14a250cf6dbdf0c2804e4b28bfebd7ef62ed5d9ee97a1d07094d4745f22",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/random.bend": "76302d587a74d2601994f6b0bc7c9000b04a65a0bbd06cc0ce643c5452eb3162",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/u32_decimal.bend": "d0b4b33f10b9e9801c4e99b83803afba5031ea40013a9263f9090bed8543d25c",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/vanilla_entity_fields.bend": "c5b2e1f2982d8470ba246c425db78bb09d988f58941a8db6a3f2d959a7b6b7fe"
+  },
+  "term_pins": [
+    {
+      "name": "item_entity_render_laws:presentation_uses_actual_old_position",
+      "type_sha256": "21feea80105dd7c56ff3328b1b345596143b7911bff6314dc4fab6d81d5a4557",
+      "checked_proof_sha256": "596c4d520eefe582b5d28d5f37b0b7a7532712367e4034e0711a178ef844695a",
+      "source_body_sha256": "73cc68b78bb12c6a167a187fcdc5aeb57228b612e93fda2dd07dbcf2894100a9"
+    },
+    {
+      "name": "item_entity_render_laws:item_projection_preserves_full_components_and_bob",
+      "type_sha256": "1adbec132494124f8f0011f63e400104f17795cca94fece5252e7a141aa49720",
+      "checked_proof_sha256": "b619d9f9679ed175223353b3d0dd1af5fa3c9ef90dce5556baa2866f7eee7811",
+      "source_body_sha256": "b4be60a4aa3a38833a3cd815fbc603f0942874f09b32889cffe26169616bf211"
+    },
+    {
+      "name": "item_entity_render_laws:orb_projection_preserves_actual_value",
+      "type_sha256": "a5d571f58e331de0fc24ebbea44f27460c34d0d108f5cf81069740596ed3bf42",
+      "checked_proof_sha256": "a16783a611f3a9b22c4a0927ae931e20415586de89b7a0f351a75231f76c5ff3",
+      "source_body_sha256": "dd401a5ce887436ef5090674a4343fcc18aff0426866f594a6f30f289c96000d"
+    },
+    {
+      "name": "item_entity_render_laws:snapshot_excludes_simulation_random_and_factory",
+      "type_sha256": "6b635183997f197bb5986d9846b7e0971c56e40a296b617934a32f2d9e145a33",
+      "checked_proof_sha256": "57cd7842411d33828648ebcdc8e05a2e264a55781bf2d2666ed69f42b40eb79d",
+      "source_body_sha256": "140eb99a9948e18bf30ab4f93d05c6fc1e10868bb6abc1a0363f9ce16edbe0cd"
+    },
+    {
+      "name": "item_entity_render_laws:record_projection_preserves_source_sequence",
+      "type_sha256": "9776cb74e0fec7e3a480b5e4612c01bf91cd7de0ffc305405387acb467832343",
+      "checked_proof_sha256": "582e1f1bfd8b2fd90d1e266510a698746e3fec2fdc83fce1944eac1ccd9011ca",
+      "source_body_sha256": "ac8a4256005f854f3d3cf8014eb0346faef44a2b8ed1f8802e4eff04cb6d204c"
+    },
+    {
+      "name": "item_entity_render_laws:unbound_is_a_refusal_and_retains_numerical_owner",
+      "type_sha256": "60021cc1a072b0452d4d5809d53c1a1647e0e751faabd9406f2eff8a32abfb20",
+      "checked_proof_sha256": "ec06f605b5818d632a19882603c52bd872535b59180120c080ad7b084199355a",
+      "source_body_sha256": "ca76772de81e7ea6ab43974177f9e00ee79143f5cece9c9393a91334dcb80174"
+    },
+    {
+      "name": "item_entity_render_laws:hidden_record_preserves_numerical_owner",
+      "type_sha256": "23a3c891cb7b83a5aed54d32f244a0f1ebfbc4fe300b354f14519f22fe45a9c1",
+      "checked_proof_sha256": "7f9b474fd2985796dc73b20943862102ba4cd4b8fa8eac7b24d69d9e600a6e48",
+      "source_body_sha256": "6d9be9dd2dc53db350fc67405d5d8e30e9993c761e965d27f6da493ff4c6678a"
+    },
+    {
+      "name": "item_entity_render_laws:exhausted_scan_publishes_no_partial_frame",
+      "type_sha256": "15d41aa2435c2cd13692e8d2d7c6c8e5dd5eb4a7649a3d9437bc864e8e89912b",
+      "checked_proof_sha256": "853c4332de67ccfe3ed7e49f11712899373106e56c0c1cfdd6983469827d7d41",
+      "source_body_sha256": "8179a9cc1992275e4f4d7d87002f96480f5928bba752822469e5552ac7e4f120"
+    },
+    {
+      "name": "item_entity_render_laws:empty_scan_is_a_bound_empty_frame",
+      "type_sha256": "db889ba5d09a0f81d02942fb20720fca8aa9e3b62702d425a7ac670750bf3d29",
+      "checked_proof_sha256": "cd9c9b4540faa07f8cb9a66b552aa39c90d7441c946fb433c46d22e4edb835dd",
+      "source_body_sha256": "432ce43cd7eb318b52c4c5334f6b854d49a3a424deb3895834acc2cd4f8c9d5b"
+    },
+    {
+      "name": "item_entity_render_laws:failed_quad_budget_cannot_publish_frame",
+      "type_sha256": "9fbeca661412137139fddcbb765ee086a5c15a9e98322d201f92779d9b5f81fa",
+      "checked_proof_sha256": "052ffa4a542c607f862a6c079d14f513fb76e2c8eba56a6865567a2bea35022d",
+      "source_body_sha256": "73b508fc0f7782e2bbf4c501dcd68c5796d0a60c2dd0a86ff85da39fdef900ff"
+    },
+    {
+      "name": "item_entity_render_laws:dynamic_light_preserves_texture_tint_and_material",
+      "type_sha256": "970126edf48874bf0c69be844406a962c6478201a0ca776da3d24c10111d6683",
+      "checked_proof_sha256": "6923657c8f0480fb841c2da22cbb7009bbaaafe34f010a0b441ed7c8f4e44ac7",
+      "source_body_sha256": "8ae03a9eb7f737daf838697291451a9cb5a37595274750cf77df61f7f63b7bda"
+    },
+    {
+      "name": "item_entity_render_laws:transformed_vertex_preserves_actual_uv",
+      "type_sha256": "b677236a4b00fc9974e9225c42dc03b882ab6628ad12a6dbd0590c36dca75fae",
+      "checked_proof_sha256": "8dd3acf8114443de423d18654d7cff5191cd759d7bb957490280895efcd1b881",
+      "source_body_sha256": "816cd250307574c20dc9b87398ce04723eb892bca2fcb19c39b1820d50d3dd01"
+    },
+    {
+      "name": "item_entity_render_laws:no_item_copies_produces_no_geometry",
+      "type_sha256": "f20c51248b78ab6c5729463ae01f0994b9c4472c14658d15264af07c926608bd",
+      "checked_proof_sha256": "963f6b804959f7eb45d72dffa14af42acccd8731ec9749a42ea86a43c7f23cf0",
+      "source_body_sha256": "6e9bf43480c5e2f6ff39f36be263b383afc73f2cb828ff7d74cf7111deaf41b6"
+    },
+    {
+      "name": "item_entity_render_laws:zero_count_item_stack_is_not_drawn",
+      "type_sha256": "95bc66c71dfc928c57b8e52f63d680bd417f9e666ca8463ab9ea60e13d39bb1d",
+      "checked_proof_sha256": "208fcf0c357f810011ac0a0e3ea228e8abaff7437e41591380a227f6dce5657d",
+      "source_body_sha256": "d448691d3be681a34bd6d4e29dfebbf34e4eb2d9ab65e22e99283dab7c003677"
+    }
+  ],
+  "selected_artifact_sha256": "0ab09cd62a883fbc5d9cfc6eaa7e48f8c064eb1fc8a1a073f4d9e177d0befbcb",
+  "kernel_sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7",
+  "boundary": "Actual E.Record/E.View and visual Snapshot production projection; source sequence, actual position_old versus position_o, complete item identity, simulation RNG/factory omission, affine Mth-table refusal retention, budget atomicity, UV and material preservation. Numeric transcendental parity, resource/PNG IO, GPU/world lightmap, atlas merge, actor wire capture and OS presentation are separate native/integration boundaries."
+}

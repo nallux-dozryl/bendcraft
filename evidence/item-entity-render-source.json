@@ -1,0 +1,225 @@
+{
+  "status": "ordinary-source-checked-native-producer-blocked",
+  "original_checked_entry": "tests/item_entity_render.bend",
+  "ordinary_source_check_receipt": {
+    "kind": "emit008",
+    "command": [
+      "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+      "--experimental-transform-types",
+      "--stack-size=4096",
+      "--max-old-space-size=2048",
+      "tools/item_entity_render_emit.mjs",
+      "tests/item_entity_render.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-entity-render-native/receiver.c"
+    ],
+    "exit": -6,
+    "seconds": 33.4699,
+    "sampled_process_tree_peak_rss_bytes": 2203025408,
+    "bounded_stop": null,
+    "stdout_sha256": "079ed4902a36e4b9ff61070975a52dbbe682aad61a18b677a195e63c05bbd69a",
+    "stderr_sha256": "2da6778df3bdd9d7173dfb3453c5f542338b69873d15129b85eb71a46acd8f47"
+  },
+  "original_book_check_marker": "Checked original book",
+  "producer_location": "Original compiler file_book -> term_any/type_adts for ../src/block_model:int_scan_admitted; entered queue649441, no VisitEnd before heap exhaustion; both fun_of(int_scan_admitted) and callee int_scan_finished completed",
+  "observational_copy_receipt": {
+    "kind": "producer-phase",
+    "command": [
+      "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+      "--experimental-transform-types",
+      "--stack-size=4096",
+      "--max-old-space-size=2048",
+      "build/item-entity-render-native/diagnose/observe.mjs",
+      "tests/item_entity_render.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-entity-render-native/diagnose/output.c"
+    ],
+    "exit": -6,
+    "seconds": 17.1132,
+    "sampled_process_tree_peak_rss_bytes": 2311225344,
+    "bounded_stop": null,
+    "stdout_sha256": "cf5963226ac5c4b757ecf74576c2677848591830f45da020fcaadb5cbef1360b",
+    "stderr_sha256": "0668bb24e1cabe1ef3aaea0fd2c3561f00f18b8cd057f1a4b61bf932fc449354"
+  },
+  "limits": "No toolchain edits; observational copy in ignored build emits phase logs only and is not used for acceptance C/native",
+  "earlier_failed_attempts": [
+    {
+      "kind": "emit",
+      "command": [
+        "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+        "--experimental-transform-types",
+        "--stack-size=4096",
+        "--max-old-space-size=1536",
+        "tools/item_entity_render_emit.mjs",
+        "tests/item_entity_render.bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-entity-render-native/receiver.c"
+      ],
+      "exit": 1,
+      "seconds": 7.2754,
+      "sampled_process_tree_peak_rss_bytes": 776142848,
+      "bounded_stop": null,
+      "stdout_sha256": "4b9bb67e00ddb8a6cde45f6e411f429fe2e177e26a80853ecfdadbbc591b2077",
+      "stderr_sha256": "a33b7c497c451b314d23599e90d8d69b199dc9175389e195cb25681f975166ed"
+    },
+    {
+      "kind": "emit002",
+      "command": [
+        "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+        "--experimental-transform-types",
+        "--stack-size=4096",
+        "--max-old-space-size=1536",
+        "tools/item_entity_render_emit.mjs",
+        "tests/item_entity_render.bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-entity-render-native/receiver.c"
+      ],
+      "exit": -6,
+      "seconds": 11.8724,
+      "sampled_process_tree_peak_rss_bytes": 1741160448,
+      "bounded_stop": null,
+      "stdout_sha256": "f070243ea050429a05947ac3725c5d4bd9d2cc1e19d7d19ae5312ab39a974087",
+      "stderr_sha256": "7a13c4cf2d92ec0865c1a0283370ccd87f2c36162cdfe2cf3fbe76547c03e1ae"
+    },
+    {
+      "kind": "emit003",
+      "command": [
+        "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+        "--experimental-transform-types",
+        "--stack-size=4096",
+        "--max-old-space-size=2048",
+        "tools/item_entity_render_emit.mjs",
+        "tests/item_entity_render.bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-entity-render-native/receiver.c"
+      ],
+      "exit": 1,
+      "seconds": 10.2673,
+      "sampled_process_tree_peak_rss_bytes": 2009530368,
+      "bounded_stop": null,
+      "stdout_sha256": "e46915b923d12747eae1b594fa84287b601c81483b54cd0a1a918d921a1fb403",
+      "stderr_sha256": "e8b39225324a53809acc4ff5cc4b32193ec86d776594d00dbb2812709fff654b"
+    },
+    {
+      "kind": "emit004",
+      "command": [
+        "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+        "--experimental-transform-types",
+        "--stack-size=4096",
+        "--max-old-space-size=2048",
+        "tools/item_entity_render_emit.mjs",
+        "tests/item_entity_render.bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-entity-render-native/receiver.c"
+      ],
+      "exit": 1,
+      "seconds": 11.5654,
+      "sampled_process_tree_peak_rss_bytes": 1886797824,
+      "bounded_stop": null,
+      "stdout_sha256": "fd2d27e101fefca23c8e4753b2008323886372433ba88d308431b18e0ffd2bde",
+      "stderr_sha256": "232ef35bfbe5d8af17c1db57b8a1d23c28e5d5e64d1d1d2277ad542b714cdc62"
+    },
+    {
+      "kind": "emit005",
+      "command": [
+        "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+        "--experimental-transform-types",
+        "--stack-size=4096",
+        "--max-old-space-size=2048",
+        "tools/item_entity_render_emit.mjs",
+        "tests/item_entity_render.bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-entity-render-native/receiver.c"
+      ],
+      "exit": 1,
+      "seconds": 15.5232,
+      "sampled_process_tree_peak_rss_bytes": 1351008256,
+      "bounded_stop": null,
+      "stdout_sha256": "9bf0619ba12237d55d588e59689d7b504060c137e95de5b1c0b7ca60427e7b08",
+      "stderr_sha256": "604954222580ffb562754d81ec54c2233033f73cd6dbfe1bfd02ef76f8d4e893"
+    },
+    {
+      "kind": "emit006",
+      "command": [
+        "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+        "--experimental-transform-types",
+        "--stack-size=4096",
+        "--max-old-space-size=2048",
+        "tools/item_entity_render_emit.mjs",
+        "tests/item_entity_render.bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-entity-render-native/receiver.c"
+      ],
+      "exit": 1,
+      "seconds": 15.439,
+      "sampled_process_tree_peak_rss_bytes": 2002239488,
+      "bounded_stop": null,
+      "stdout_sha256": "35525a9f781a7273de6a3cd1342c21d38d168d0580f54757916839df357cc935",
+      "stderr_sha256": "7a39056828c1a84bded7109807758f3580734d2ba1c899813841c8b094f9f85a"
+    },
+    {
+      "kind": "emit007",
+      "command": [
+        "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+        "--experimental-transform-types",
+        "--stack-size=4096",
+        "--max-old-space-size=2048",
+        "tools/item_entity_render_emit.mjs",
+        "tests/item_entity_render.bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-entity-render-native/receiver.c"
+      ],
+      "exit": 1,
+      "seconds": 21.0288,
+      "sampled_process_tree_peak_rss_bytes": 1708179456,
+      "bounded_stop": null,
+      "stdout_sha256": "4674314927479ba20d2e93f9e2053e1bbf3d6dd62acbfb713e184ce54934de3f",
+      "stderr_sha256": "88908b3a55a87826f0de1ad9a474b262e1d7b0653f4ffac41179d004dbcea3d0"
+    },
+    {
+      "kind": "emit008",
+      "command": [
+        "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+        "--experimental-transform-types",
+        "--stack-size=4096",
+        "--max-old-space-size=2048",
+        "tools/item_entity_render_emit.mjs",
+        "tests/item_entity_render.bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-entity-render-native/receiver.c"
+      ],
+      "exit": -6,
+      "seconds": 33.4699,
+      "sampled_process_tree_peak_rss_bytes": 2203025408,
+      "bounded_stop": null,
+      "stdout_sha256": "079ed4902a36e4b9ff61070975a52dbbe682aad61a18b677a195e63c05bbd69a",
+      "stderr_sha256": "2da6778df3bdd9d7173dfb3453c5f542338b69873d15129b85eb71a46acd8f47"
+    },
+    {
+      "kind": "producer-observe",
+      "command": [
+        "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+        "--experimental-transform-types",
+        "--stack-size=4096",
+        "--max-old-space-size=2048",
+        "build/item-entity-render-native/diagnose/observe.mjs",
+        "tests/item_entity_render.bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-entity-render-native/diagnose/output.c"
+      ],
+      "exit": -6,
+      "seconds": 52.4798,
+      "sampled_process_tree_peak_rss_bytes": 2256093184,
+      "bounded_stop": null,
+      "stdout_sha256": "e4ed4f74d6de40565f2a4c8c136070510bcbdad938550446fa0def1a3d48be79",
+      "stderr_sha256": "ba801b09c995c192a7cdf69c811a6c44e2bd864a77a42bb9a54665de4ff40e62"
+    }
+  ],
+  "repair_required": "API-preserving Bool char/stage dispatch in shared block_model.int_scan_admitted, file mutation requires assigned ownership",
+  "current_owned_sha256": {
+    "docs/ITEM_ENTITY_RENDER.md": "df53028b815c2d33f375b14642a81e976743a9c9f4669f083dbcdf6bc35b3329",
+    "src/item_entity_render.bend": "01b4de2a13bbdb3e7d17707953bf52abff7b13c591ed2871db359ca12b6185b3",
+    "src/item_entity_render_generated.bend": "338603974611e83df98b4d538fd615702493dd807efa31331882c94bc50b24e4",
+    "src/item_entity_render_laws.bend": "d2f04c0e16948911859f696a53f1838e75e8a036da386c3fc77efd2981cd85da",
+    "src/item_entity_render_model.bend": "c4f9e8179157115f482826c41fa1a9098bee29e1d5b4b7572fbc750036ab291a",
+    "src/item_entity_render_proof.bend": "0257d87bc092656e02c38958229bb7041e50e5758d9cedfa951929fb6e293325",
+    "src/item_entity_render_resources.bend": "57fc53a3e5f83d8686ec5b58703ac42d302c83296e6e49ee7b9192e7670f4cf4",
+    "src/item_entity_render_transform.bend": "3e6541c16dde68ee55e1219739efcae2e0b29b6fe3483dfd0c1ab8a76e6a93ee",
+    "tests/item_entity_render.bend": "c31f9366fd099e0a8b27604e53f0c2fd51922934083325f576cd905849c46571",
+    "tools/item_entity_render_emit.mjs": "fb362ffaeed6d7f38c971b149b9a84f52cb2d585f78be8b9a8898194d7ffe411",
+    "tools/item_entity_render_proof.mjs": "46edf69d0da5d986a394248bd4deda8e91dd66491ecebe9da1e18a898e664770",
+    "tools/reference_item_entity_render.py": "846ae72f69b2772fe5cfcd30f0b0cf9d58676b036728ef54148781dde65113d6",
+    "tools/test_item_entity_render.py": "9854032289adedff23bb9e6d6d65ee170ebfe20a3ee3245f2d8024049559958a",
+    "tools/test_item_entity_render_proof.py": "96702e6577f29784bbb515aa96a0be92975a86c8fb4b421bdc3084631be3e2c8"
+  },
+  "note": "Production/test source unchanged since original ordinary-check marker; this is a source-check/producer-failure receipt, not successful C or native parity."
+}
