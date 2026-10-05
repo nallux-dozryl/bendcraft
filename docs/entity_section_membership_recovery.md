@@ -26,6 +26,12 @@ tracking/ticking lists and cached chunk status must first pass the production
 membership codec validator. Each registration must then agree with the retained
 record's UUID, insertion order, accessibility and actual entity bounding box.
 Insertion orders must be unique and below the retained next-order cursor. The
+global member list must have descending insertion orders, as actual manager
+add/move callbacks prepend their newly allocated order. Together with the
+codec's section-list linkage this checks actual section insertion chronology.
+Tracking/ticking list order is preserved independently; status transitions can
+append registry entries without moving their section membership.
+The
 registered packed key must agree with the record's completed position callback.
 This is a consistency check; recovery preserves the saved key and box instead
 of rebuilding them from the current position. Packed-coordinate aliases remain

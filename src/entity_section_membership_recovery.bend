@@ -48,6 +48,13 @@ def order_count(values:List<&2,M.Member>,+order:Nat) -> Nat:
     case Nil{}: 0n
     case M.Member{d,id,key,other,box,uuid} <> rest:
       Nat.add(MS.choose(Nat,1n,0n,Nat.is_eq(other,order)),order_count(rest,order))
+def insertion_order_valid(values:List<&2,M.Member>,+previous:Maybe<&2,Nat>) -> Bool:
+  match values previous:
+    case Nil{} _: True{}
+    case M.Member{d,id,key,+order,box,uuid} <> rest None{}:
+      insertion_order_valid(rest,Some{order})
+    case M.Member{d,id,key,+order,box,uuid} <> rest Some{prior}:
+      Nat.is_lt(order,prior) && insertion_order_valid(rest,Some{order})
 def records_valid(values:List<&2,E.Record>,+all:List<&2,E.Record>,+runtimes:List<&2,T.RuntimeEntry>,+members:List<&2,M.Member>) -> Result<&2,&2,T.Error,Unit>:
   match values:
     case Nil{}: Done{Unit{}}
@@ -136,6 +143,7 @@ def validated(+image:M.View,+entities:E.View,+runtimes:List<&2,T.RuntimeEntry>,+
   E.View{level,unique,cursor,+order,+records}=entities
   do Result<&2,&2,T.Error,D.Plan>:
     checked(Check.validate(image))
+    U.guard(insertion_order_valid(members,None{}),"membership recovery insertion list disagrees with saved insertion chronology")
     records_valid(records,records,runtimes,members)
     runtimes_valid(runtimes,records)
     members_valid(members,image,records,order)
