@@ -1,7 +1,7 @@
 {
   "status": "passed",
   "command": "python3 tools/test_entity_section_membership_recovery.py",
-  "final_comparison_invocation": "python3 tools/test_entity_section_membership_recovery.py --compare-only",
+  "final_comparison_invocation": "python3 tools/test_entity_section_membership_recovery.py",
   "pin": "26.3",
   "checks": [
     {
@@ -17,11 +17,11 @@
         "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-section-membership-recovery-native/receiver.c"
       ],
       "exit": 0,
-      "seconds": 8.6996,
-      "sampled_process_tree_peak_rss_bytes": 1079132160,
+      "seconds": 10.0321,
+      "sampled_process_tree_peak_rss_bytes": 978157568,
       "bounded_stop": null,
-      "stdout_sha256": "41fd5bcf3399c5fa52191ccf0e9bd696134ba16d66caece57274aa0a046ba7a3",
-      "stderr_sha256": "43f139253557ebce1447b130c08d26110fb2208e8886def8bae0fdcc01c7acfa"
+      "stdout_sha256": "9ab71c554e37c2abcfbd0c1420399775b332f5f47154d32c264ac11ade833060",
+      "stderr_sha256": "59f622abecd750639f10e711ae9e9cd1909dcb8004e05b51fcea0c31b25b1431"
     },
     {
       "kind": "clang",
@@ -37,8 +37,8 @@
         "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-section-membership-recovery-native/receiver"
       ],
       "exit": 0,
-      "seconds": 7.7152,
-      "sampled_process_tree_peak_rss_bytes": 915701760,
+      "seconds": 9.0213,
+      "sampled_process_tree_peak_rss_bytes": 808697856,
       "bounded_stop": null,
       "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
@@ -56,12 +56,12 @@
         "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-section-membership-recovery-native/input.json"
       ],
       "exit": 0,
-      "seconds": 19.1139,
-      "sampled_process_tree_peak_rss_bytes": 75481088,
+      "seconds": 19.3329,
+      "sampled_process_tree_peak_rss_bytes": 73318400,
       "bounded_stop": null,
       "stdout_sha256": "32f34f1435ed3dc2ff935f235d4558ea1fe4069c48cb7ffaa3ce82cf483f435c",
-      "stderr_sha256": "3ce8e02c373523bb7ce907f56b2def8a3dcad854dec5489e8ccb3a95249c0593",
-      "peak_rss_bytes": 76201984
+      "stderr_sha256": "603495d705f1c7713bc133d90603c23cafb8b452ce43d5662632195768bc465a",
+      "peak_rss_bytes": 73138176
     }
   ],
   "source": {
@@ -159,7 +159,7 @@
       "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/entity_membership_codec_validation.bend": "20d7166c17be1551c69762e8570a17555701778afa9a4ddade8685f83716b3bc",
       "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/entity_section_membership.bend": "31833a5891c5fadfdd15dadd057f4858bf7907c4183f73f0843b12cafb43cc3c",
       "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/entity_section_membership_model.bend": "b72f3c8e57209fb607c11ef8413dd22a185c453b9c4538eb5dc3cdde35dcf9f5",
-      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/entity_section_membership_recovery.bend": "0fdd9ddf3e368a22c50cdbbad7e901817689864b7ce723fbbf3bd3aa83960cf4",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/entity_section_membership_recovery.bend": "3e5f5eabff9342bb241f04d2d02a1ad4439e87cd6745f8491b2f67b7c578ea32",
       "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/entity_section_membership_recovery_model.bend": "66bc6f3f76d0ec65df536b6fa5837cd83458fe71b307f5901eea315ecf4b9ef8",
       "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/entity_section_membership_world.bend": "dc57a3e596c5dd38397ba295b67304ea0c21761d93a6c8812d096cc82e378c61",
       "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
@@ -220,8 +220,8 @@
   "native_emitter_sha256": "7830f7ec6dc6153149d53958389d9413ed938b6468b5274118412623e98079ff",
   "input_sha256": "bf102b0c13546eb5de03b1b9f94f980e7b26db2ab8a28eacc4ede070dde050a3",
   "native_output_sha256": "32f34f1435ed3dc2ff935f235d4558ea1fe4069c48cb7ffaa3ce82cf483f435c",
-  "native_C_sha256": "de7a782e1eec82d219dd9227ab34a46dc4d7ff26cf6403d9eb3db2a037caecc3",
-  "native_binary_sha256": "1f157d7d18d114f38512a2c9fe1239bd5d790b0107ecc8d77a4a606f5e7e6a54",
+  "native_C_sha256": "46f9ae9c8667c081d07700255a3812644e5469ed972b01ad341c5cfb2c3fe16c",
+  "native_binary_sha256": "129a56b9fee76ea3edb635a5e6accdbc0d58cfd2ac0235a29f892027b9afa745",
   "native_cases": 58,
   "java_visibility_reconciliation_cases": 9,
   "fresh_constructor_cases": 10,
