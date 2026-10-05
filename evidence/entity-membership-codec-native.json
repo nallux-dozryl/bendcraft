@@ -1,0 +1,1428 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "scope": "Actual complete M.View physical encoding/strict decoding/structural admission and affine inspect-return M.State. Decode returns Data; live loader-authorized reconstruction remains the restore consumer obligation.",
+  "reproduce": "python3 tools/test_entity_membership_codec.py --native",
+  "runtime": [
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/entity_membership_codec.bend",
+      "bytes": 11551,
+      "sha256": "22003256c4aa61a31fa65ab46ec4fcb8130f489bb819e9ceb49e623480f3ac54"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/entity_membership_codec_validation.bend",
+      "bytes": 7307,
+      "sha256": "20d7166c17be1551c69762e8570a17555701778afa9a4ddade8685f83716b3bc"
+    }
+  ],
+  "verification_sources": [
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/entity_membership_codec.bend",
+      "bytes": 15380,
+      "sha256": "fa6341afad6340e65d39f94e09cea8b60607e3217d588120059c62b46f1bd9b3"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_entity_membership_codec.py",
+      "bytes": 25966,
+      "sha256": "4cb4f10742ee5c93382ae99e1fbecc778306d2333414d73a50f833b352ef7b97"
+    }
+  ],
+  "module_source_attempts": [
+    {
+      "attempt": 1,
+      "status": "FAIL",
+      "seconds": 0.7896396657451987,
+      "source_drift": [],
+      "stderr": {
+        "bytes": 404,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-membership-codec/source/001/ordinary/stderr",
+        "sha256": "2e83fcf38d3af22aa95846e4b267bee9ca959e5b3c5509cea64adf6724d5a7bd"
+      },
+      "receipt": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-membership-codec/source/001/source-result.json",
+        "bytes": 1071,
+        "sha256": "78aeed6768c88e9673674233634350f2e3ab26f0eecca252b7aa6b2b9c87cb9a"
+      },
+      "cause": "Out-of-range Nat literal; repaired arithmetic construction without changing accepted domain."
+    },
+    {
+      "attempt": 2,
+      "status": "FAIL",
+      "seconds": 2.074418249540031,
+      "source_drift": [],
+      "stderr": {
+        "bytes": 655,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-membership-codec/source/002/ordinary/stderr",
+        "sha256": "c1e0b1073515427374e3f1081586420698663d7748d2e17bea51c3fe09af5d5f"
+      },
+      "receipt": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-membership-codec/source/002/source-result.json",
+        "bytes": 1070,
+        "sha256": "b9d0acffcaf24a258545138d7f001e11544ca6b9d897e540e388dd32273e464d"
+      },
+      "cause": "Bool.pick argument order; repaired condition-first call."
+    },
+    {
+      "attempt": 3,
+      "status": "PASS",
+      "seconds": 1.2825377499684691,
+      "source_drift": [],
+      "stderr": {
+        "bytes": 0,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-membership-codec/source/003/ordinary/stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "receipt": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-membership-codec/source/003/source-result.json",
+        "bytes": 1070,
+        "sha256": "68df750ed718def74d533c0b35dc83b879ecc3faba745e9cfd876444a603f3ec"
+      },
+      "cause": null
+    }
+  ],
+  "fixture_source_failure": {
+    "attempt": 4,
+    "message": "Computed constructor pattern on fixture() refused; repaired nine parameter helpers. No compiler/native started.",
+    "process": {
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/entity_membership_codec.bend",
+        "--check-only"
+      ],
+      "attempts": 1,
+      "cap_seconds": 60,
+      "cleanup": {
+        "after": [],
+        "before": [],
+        "errors": [],
+        "leader_reaped": true,
+        "live_group_absent": true
+      },
+      "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+      "error": null,
+      "exit_code": 1,
+      "pid": 50622,
+      "seconds": 0.6392834996804595,
+      "stderr": {
+        "bytes": 357,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-membership-codec/checks/004/ordinary/stderr",
+        "sha256": "9f7535cde22b94457cd0d2c9bca32104be5aff24109c02370c9df3685716fc71"
+      },
+      "stdout": {
+        "bytes": 0,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-membership-codec/checks/004/ordinary/stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "timed_out": false
+    }
+  },
+  "native": {
+    "attempt": 5,
+    "guards": [
+      "encode byte budget refuses complete snapshot",
+      "encode depth budget refuses complete snapshot",
+      "encode element budget refuses complete snapshot",
+      "empty five-list View roundtrip",
+      "public inspect encode retains complete manager and actual snapshot",
+      "invalid registry encode retains complete manager",
+      "invalid packed-key encode retains complete manager",
+      "duplicate UUID encode retains complete manager",
+      "section ID order refusal retains complete manager",
+      "empty section refusal retains complete manager",
+      "masked chunk duplicate refusal retains complete manager",
+      "missing chunk refusal retains complete manager",
+      "visibility mismatch refusal retains complete manager",
+      "missing tracking refusal retains complete manager",
+      "byte-budget encode refusal retains complete manager",
+      "depth-budget encode refusal retains complete manager",
+      "element-budget encode refusal retains complete manager",
+      "complete raw membership View roundtrip",
+      "all five independent list orders roundtrip",
+      "decode byte budget refuses complete snapshot",
+      "decode depth budget refuses complete snapshot",
+      "decode element budget refuses complete snapshot",
+      "truncated complete snapshot refuses",
+      "trailing complete snapshot refuses"
+    ],
+    "physical_cases": 277,
+    "accepted_exact_roundtrips": 20,
+    "refused": 257,
+    "corpus": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-membership-codec/checks/005/corpus.json",
+      "bytes": 97782,
+      "sha256": "71a4cad27bb83fcbac5642063fe73b75e481967c8d2525d0caad83d1f70a1bea"
+    },
+    "case_names_and_expectations": [
+      {
+        "name": "full-raw-independent-orders-and-duplicate-numeric-orders",
+        "accepted": true
+      },
+      {
+        "name": "empty-all-five-lists",
+        "accepted": true
+      },
+      {
+        "name": "unused-chunks-all-loaded-visibility-combinations",
+        "accepted": true
+      },
+      {
+        "name": "populated-unloaded-ticking-section",
+        "accepted": true
+      },
+      {
+        "name": "positive-masked-chunk-aliases-retain-raw-words",
+        "accepted": true
+      },
+      {
+        "name": "independent-section-chunk-track-tick-permutations",
+        "accepted": true
+      },
+      {
+        "name": "cross-section-member-interleave",
+        "accepted": true
+      },
+      {
+        "name": "member-order-reversed-with-matching-section-orders",
+        "accepted": true
+      },
+      {
+        "name": "empty-opaque-dimension",
+        "accepted": true
+      },
+      {
+        "name": "zero-uuid-words",
+        "accepted": true
+      },
+      {
+        "name": "same-dimension-uuid-differs-only-in-last-word",
+        "accepted": true
+      },
+      {
+        "name": "distinct-section-heights-share-one-chunk-fact",
+        "accepted": true
+      },
+      {
+        "name": "raw-zero-entity-id",
+        "accepted": true
+      },
+      {
+        "name": "nat48-boundary-0",
+        "accepted": true
+      },
+      {
+        "name": "nat48-boundary-2147483648",
+        "accepted": true
+      },
+      {
+        "name": "nat48-boundary-4294967295",
+        "accepted": true
+      },
+      {
+        "name": "nat48-boundary-4294967296",
+        "accepted": true
+      },
+      {
+        "name": "nat48-boundary-281474976710655",
+        "accepted": true
+      },
+      {
+        "name": "bbox-signed-zeros-infinities-and-distinct-nans",
+        "accepted": true
+      },
+      {
+        "name": "bbox-inverted-finite-endpoints",
+        "accepted": true
+      },
+      {
+        "name": "wrong-root-name",
+        "accepted": false
+      },
+      {
+        "name": "wrong-root-type",
+        "accepted": false
+      },
+      {
+        "name": "format-0",
+        "accepted": false
+      },
+      {
+        "name": "format-2",
+        "accepted": false
+      },
+      {
+        "name": "format-4294967295",
+        "accepted": false
+      },
+      {
+        "name": "root-missing-format",
+        "accepted": false
+      },
+      {
+        "name": "root-duplicate-format",
+        "accepted": false
+      },
+      {
+        "name": "root-wrong-type-format",
+        "accepted": false
+      },
+      {
+        "name": "root-missing-members",
+        "accepted": false
+      },
+      {
+        "name": "root-duplicate-members",
+        "accepted": false
+      },
+      {
+        "name": "root-wrong-type-members",
+        "accepted": false
+      },
+      {
+        "name": "root-missing-sections",
+        "accepted": false
+      },
+      {
+        "name": "root-duplicate-sections",
+        "accepted": false
+      },
+      {
+        "name": "root-wrong-type-sections",
+        "accepted": false
+      },
+      {
+        "name": "root-missing-chunks",
+        "accepted": false
+      },
+      {
+        "name": "root-duplicate-chunks",
+        "accepted": false
+      },
+      {
+        "name": "root-wrong-type-chunks",
+        "accepted": false
+      },
+      {
+        "name": "root-missing-tracked",
+        "accepted": false
+      },
+      {
+        "name": "root-duplicate-tracked",
+        "accepted": false
+      },
+      {
+        "name": "root-wrong-type-tracked",
+        "accepted": false
+      },
+      {
+        "name": "root-missing-ticked",
+        "accepted": false
+      },
+      {
+        "name": "root-duplicate-ticked",
+        "accepted": false
+      },
+      {
+        "name": "root-wrong-type-ticked",
+        "accepted": false
+      },
+      {
+        "name": "root-unknown-field",
+        "accepted": false
+      },
+      {
+        "name": "root-field-order-0",
+        "accepted": false
+      },
+      {
+        "name": "root-field-order-1",
+        "accepted": false
+      },
+      {
+        "name": "root-field-order-2",
+        "accepted": false
+      },
+      {
+        "name": "root-field-order-3",
+        "accepted": false
+      },
+      {
+        "name": "root-field-order-4",
+        "accepted": false
+      },
+      {
+        "name": "members-0-missing-dimension",
+        "accepted": false
+      },
+      {
+        "name": "members-0-duplicate-dimension",
+        "accepted": false
+      },
+      {
+        "name": "members-0-wrong-type-dimension",
+        "accepted": false
+      },
+      {
+        "name": "members-0-missing-id",
+        "accepted": false
+      },
+      {
+        "name": "members-0-duplicate-id",
+        "accepted": false
+      },
+      {
+        "name": "members-0-wrong-type-id",
+        "accepted": false
+      },
+      {
+        "name": "members-0-missing-key",
+        "accepted": false
+      },
+      {
+        "name": "members-0-duplicate-key",
+        "accepted": false
+      },
+      {
+        "name": "members-0-wrong-type-key",
+        "accepted": false
+      },
+      {
+        "name": "members-0-missing-order",
+        "accepted": false
+      },
+      {
+        "name": "members-0-duplicate-order",
+        "accepted": false
+      },
+      {
+        "name": "members-0-wrong-type-order",
+        "accepted": false
+      },
+      {
+        "name": "members-0-missing-box",
+        "accepted": false
+      },
+      {
+        "name": "members-0-duplicate-box",
+        "accepted": false
+      },
+      {
+        "name": "members-0-wrong-type-box",
+        "accepted": false
+      },
+      {
+        "name": "members-0-missing-uuid",
+        "accepted": false
+      },
+      {
+        "name": "members-0-duplicate-uuid",
+        "accepted": false
+      },
+      {
+        "name": "members-0-wrong-type-uuid",
+        "accepted": false
+      },
+      {
+        "name": "members-0-unknown-field",
+        "accepted": false
+      },
+      {
+        "name": "members-0-field-order-0",
+        "accepted": false
+      },
+      {
+        "name": "members-0-field-order-1",
+        "accepted": false
+      },
+      {
+        "name": "members-0-field-order-2",
+        "accepted": false
+      },
+      {
+        "name": "members-0-field-order-3",
+        "accepted": false
+      },
+      {
+        "name": "members-0-field-order-4",
+        "accepted": false
+      },
+      {
+        "name": "sections-0-missing-dimension",
+        "accepted": false
+      },
+      {
+        "name": "sections-0-duplicate-dimension",
+        "accepted": false
+      },
+      {
+        "name": "sections-0-wrong-type-dimension",
+        "accepted": false
+      },
+      {
+        "name": "sections-0-missing-key",
+        "accepted": false
+      },
+      {
+        "name": "sections-0-duplicate-key",
+        "accepted": false
+      },
+      {
+        "name": "sections-0-wrong-type-key",
+        "accepted": false
+      },
+      {
+        "name": "sections-0-missing-visibility",
+        "accepted": false
+      },
+      {
+        "name": "sections-0-duplicate-visibility",
+        "accepted": false
+      },
+      {
+        "name": "sections-0-wrong-type-visibility",
+        "accepted": false
+      },
+      {
+        "name": "sections-0-missing-ids",
+        "accepted": false
+      },
+      {
+        "name": "sections-0-duplicate-ids",
+        "accepted": false
+      },
+      {
+        "name": "sections-0-wrong-type-ids",
+        "accepted": false
+      },
+      {
+        "name": "sections-0-unknown-field",
+        "accepted": false
+      },
+      {
+        "name": "sections-0-field-order-0",
+        "accepted": false
+      },
+      {
+        "name": "sections-0-field-order-1",
+        "accepted": false
+      },
+      {
+        "name": "sections-0-field-order-2",
+        "accepted": false
+      },
+      {
+        "name": "chunks-0-missing-dimension",
+        "accepted": false
+      },
+      {
+        "name": "chunks-0-duplicate-dimension",
+        "accepted": false
+      },
+      {
+        "name": "chunks-0-wrong-type-dimension",
+        "accepted": false
+      },
+      {
+        "name": "chunks-0-missing-x",
+        "accepted": false
+      },
+      {
+        "name": "chunks-0-duplicate-x",
+        "accepted": false
+      },
+      {
+        "name": "chunks-0-wrong-type-x",
+        "accepted": false
+      },
+      {
+        "name": "chunks-0-missing-z",
+        "accepted": false
+      },
+      {
+        "name": "chunks-0-duplicate-z",
+        "accepted": false
+      },
+      {
+        "name": "chunks-0-wrong-type-z",
+        "accepted": false
+      },
+      {
+        "name": "chunks-0-missing-loaded",
+        "accepted": false
+      },
+      {
+        "name": "chunks-0-duplicate-loaded",
+        "accepted": false
+      },
+      {
+        "name": "chunks-0-wrong-type-loaded",
+        "accepted": false
+      },
+      {
+        "name": "chunks-0-missing-visibility",
+        "accepted": false
+      },
+      {
+        "name": "chunks-0-duplicate-visibility",
+        "accepted": false
+      },
+      {
+        "name": "chunks-0-wrong-type-visibility",
+        "accepted": false
+      },
+      {
+        "name": "chunks-0-unknown-field",
+        "accepted": false
+      },
+      {
+        "name": "chunks-0-field-order-0",
+        "accepted": false
+      },
+      {
+        "name": "chunks-0-field-order-1",
+        "accepted": false
+      },
+      {
+        "name": "chunks-0-field-order-2",
+        "accepted": false
+      },
+      {
+        "name": "chunks-0-field-order-3",
+        "accepted": false
+      },
+      {
+        "name": "tracked-0-missing-dimension",
+        "accepted": false
+      },
+      {
+        "name": "tracked-0-duplicate-dimension",
+        "accepted": false
+      },
+      {
+        "name": "tracked-0-wrong-type-dimension",
+        "accepted": false
+      },
+      {
+        "name": "tracked-0-missing-id",
+        "accepted": false
+      },
+      {
+        "name": "tracked-0-duplicate-id",
+        "accepted": false
+      },
+      {
+        "name": "tracked-0-wrong-type-id",
+        "accepted": false
+      },
+      {
+        "name": "tracked-0-unknown-field",
+        "accepted": false
+      },
+      {
+        "name": "tracked-0-field-order-0",
+        "accepted": false
+      },
+      {
+        "name": "ticked-0-missing-dimension",
+        "accepted": false
+      },
+      {
+        "name": "ticked-0-duplicate-dimension",
+        "accepted": false
+      },
+      {
+        "name": "ticked-0-wrong-type-dimension",
+        "accepted": false
+      },
+      {
+        "name": "ticked-0-missing-id",
+        "accepted": false
+      },
+      {
+        "name": "ticked-0-duplicate-id",
+        "accepted": false
+      },
+      {
+        "name": "ticked-0-wrong-type-id",
+        "accepted": false
+      },
+      {
+        "name": "ticked-0-unknown-field",
+        "accepted": false
+      },
+      {
+        "name": "ticked-0-field-order-0",
+        "accepted": false
+      },
+      {
+        "name": "members-0-key-short",
+        "accepted": false
+      },
+      {
+        "name": "members-0-key-long",
+        "accepted": false
+      },
+      {
+        "name": "members-0-key-long-array",
+        "accepted": false
+      },
+      {
+        "name": "members-0-key-byte-array",
+        "accepted": false
+      },
+      {
+        "name": "members-0-key-int-list",
+        "accepted": false
+      },
+      {
+        "name": "members-0-box-short",
+        "accepted": false
+      },
+      {
+        "name": "members-0-box-long",
+        "accepted": false
+      },
+      {
+        "name": "members-0-box-long-array",
+        "accepted": false
+      },
+      {
+        "name": "members-0-box-byte-array",
+        "accepted": false
+      },
+      {
+        "name": "members-0-box-int-list",
+        "accepted": false
+      },
+      {
+        "name": "members-0-uuid-short",
+        "accepted": false
+      },
+      {
+        "name": "members-0-uuid-long",
+        "accepted": false
+      },
+      {
+        "name": "members-0-uuid-long-array",
+        "accepted": false
+      },
+      {
+        "name": "members-0-uuid-byte-array",
+        "accepted": false
+      },
+      {
+        "name": "members-0-uuid-int-list",
+        "accepted": false
+      },
+      {
+        "name": "sections-0-key-short",
+        "accepted": false
+      },
+      {
+        "name": "sections-0-key-long",
+        "accepted": false
+      },
+      {
+        "name": "sections-0-key-long-array",
+        "accepted": false
+      },
+      {
+        "name": "sections-0-key-byte-array",
+        "accepted": false
+      },
+      {
+        "name": "sections-0-key-int-list",
+        "accepted": false
+      },
+      {
+        "name": "members-0-dimension-long-array",
+        "accepted": false
+      },
+      {
+        "name": "sections-0-ids-long-array",
+        "accepted": false
+      },
+      {
+        "name": "chunks-0-dimension-long-array",
+        "accepted": false
+      },
+      {
+        "name": "tracked-0-dimension-long-array",
+        "accepted": false
+      },
+      {
+        "name": "members-empty-list-element-0",
+        "accepted": false
+      },
+      {
+        "name": "members-empty-list-element-3",
+        "accepted": false
+      },
+      {
+        "name": "members-empty-list-element-11",
+        "accepted": false
+      },
+      {
+        "name": "members-empty-list-element-13",
+        "accepted": false
+      },
+      {
+        "name": "members-nonempty-int-list",
+        "accepted": false
+      },
+      {
+        "name": "sections-empty-list-element-0",
+        "accepted": false
+      },
+      {
+        "name": "sections-empty-list-element-3",
+        "accepted": false
+      },
+      {
+        "name": "sections-empty-list-element-11",
+        "accepted": false
+      },
+      {
+        "name": "sections-empty-list-element-13",
+        "accepted": false
+      },
+      {
+        "name": "sections-nonempty-int-list",
+        "accepted": false
+      },
+      {
+        "name": "chunks-empty-list-element-0",
+        "accepted": false
+      },
+      {
+        "name": "chunks-empty-list-element-3",
+        "accepted": false
+      },
+      {
+        "name": "chunks-empty-list-element-11",
+        "accepted": false
+      },
+      {
+        "name": "chunks-empty-list-element-13",
+        "accepted": false
+      },
+      {
+        "name": "chunks-nonempty-int-list",
+        "accepted": false
+      },
+      {
+        "name": "tracked-empty-list-element-0",
+        "accepted": false
+      },
+      {
+        "name": "tracked-empty-list-element-3",
+        "accepted": false
+      },
+      {
+        "name": "tracked-empty-list-element-11",
+        "accepted": false
+      },
+      {
+        "name": "tracked-empty-list-element-13",
+        "accepted": false
+      },
+      {
+        "name": "tracked-nonempty-int-list",
+        "accepted": false
+      },
+      {
+        "name": "ticked-empty-list-element-0",
+        "accepted": false
+      },
+      {
+        "name": "ticked-empty-list-element-3",
+        "accepted": false
+      },
+      {
+        "name": "ticked-empty-list-element-11",
+        "accepted": false
+      },
+      {
+        "name": "ticked-empty-list-element-13",
+        "accepted": false
+      },
+      {
+        "name": "ticked-nonempty-int-list",
+        "accepted": false
+      },
+      {
+        "name": "format-numeric-tag-1",
+        "accepted": false
+      },
+      {
+        "name": "format-numeric-tag-2",
+        "accepted": false
+      },
+      {
+        "name": "format-numeric-tag-4",
+        "accepted": false
+      },
+      {
+        "name": "members-0-id-numeric-tag-1",
+        "accepted": false
+      },
+      {
+        "name": "members-0-id-numeric-tag-2",
+        "accepted": false
+      },
+      {
+        "name": "members-0-id-numeric-tag-4",
+        "accepted": false
+      },
+      {
+        "name": "sections-0-visibility-numeric-tag-1",
+        "accepted": false
+      },
+      {
+        "name": "sections-0-visibility-numeric-tag-2",
+        "accepted": false
+      },
+      {
+        "name": "sections-0-visibility-numeric-tag-4",
+        "accepted": false
+      },
+      {
+        "name": "chunks-0-loaded-numeric-tag-1",
+        "accepted": false
+      },
+      {
+        "name": "chunks-0-loaded-numeric-tag-2",
+        "accepted": false
+      },
+      {
+        "name": "chunks-0-loaded-numeric-tag-4",
+        "accepted": false
+      },
+      {
+        "name": "chunks-0-x-numeric-tag-1",
+        "accepted": false
+      },
+      {
+        "name": "chunks-0-x-numeric-tag-2",
+        "accepted": false
+      },
+      {
+        "name": "chunks-0-x-numeric-tag-4",
+        "accepted": false
+      },
+      {
+        "name": "chunks-0-z-numeric-tag-1",
+        "accepted": false
+      },
+      {
+        "name": "chunks-0-z-numeric-tag-2",
+        "accepted": false
+      },
+      {
+        "name": "chunks-0-z-numeric-tag-4",
+        "accepted": false
+      },
+      {
+        "name": "tracked-0-id-numeric-tag-1",
+        "accepted": false
+      },
+      {
+        "name": "tracked-0-id-numeric-tag-2",
+        "accepted": false
+      },
+      {
+        "name": "tracked-0-id-numeric-tag-4",
+        "accepted": false
+      },
+      {
+        "name": "ticked-0-id-numeric-tag-1",
+        "accepted": false
+      },
+      {
+        "name": "ticked-0-id-numeric-tag-2",
+        "accepted": false
+      },
+      {
+        "name": "ticked-0-id-numeric-tag-4",
+        "accepted": false
+      },
+      {
+        "name": "sections-0-visibility-visibility-3",
+        "accepted": false
+      },
+      {
+        "name": "sections-0-visibility-visibility-4294967295",
+        "accepted": false
+      },
+      {
+        "name": "chunks-0-visibility-visibility-3",
+        "accepted": false
+      },
+      {
+        "name": "chunks-0-visibility-visibility-4294967295",
+        "accepted": false
+      },
+      {
+        "name": "chunk-loaded-2",
+        "accepted": false
+      },
+      {
+        "name": "chunk-loaded-4294967295",
+        "accepted": false
+      },
+      {
+        "name": "members-0-key-axis-overflow-0",
+        "accepted": false
+      },
+      {
+        "name": "members-0-key-axis-overflow-1",
+        "accepted": false
+      },
+      {
+        "name": "members-0-key-axis-overflow-2",
+        "accepted": false
+      },
+      {
+        "name": "sections-0-key-axis-overflow-0",
+        "accepted": false
+      },
+      {
+        "name": "sections-0-key-axis-overflow-1",
+        "accepted": false
+      },
+      {
+        "name": "sections-0-key-axis-overflow-2",
+        "accepted": false
+      },
+      {
+        "name": "order-outside-nat48-281474976710656",
+        "accepted": false
+      },
+      {
+        "name": "order-outside-nat48-9223372036854775807",
+        "accepted": false
+      },
+      {
+        "name": "order-outside-nat48-9223372036854775808",
+        "accepted": false
+      },
+      {
+        "name": "order-outside-nat48-18446744073709551615",
+        "accepted": false
+      },
+      {
+        "name": "order-wrong-type-3",
+        "accepted": false
+      },
+      {
+        "name": "order-wrong-type-11",
+        "accepted": false
+      },
+      {
+        "name": "order-wrong-type-12",
+        "accepted": false
+      },
+      {
+        "name": "order-wrong-type-8",
+        "accepted": false
+      },
+      {
+        "name": "duplicate-member-identity",
+        "accepted": false
+      },
+      {
+        "name": "same-dimension-member-id-collision",
+        "accepted": false
+      },
+      {
+        "name": "same-dimension-member-uuid-collision",
+        "accepted": false
+      },
+      {
+        "name": "unlinked-member",
+        "accepted": false
+      },
+      {
+        "name": "member-wrong-dimension",
+        "accepted": false
+      },
+      {
+        "name": "member-wrong-section-key",
+        "accepted": false
+      },
+      {
+        "name": "missing-member-with-retained-section-id",
+        "accepted": false
+      },
+      {
+        "name": "duplicate-section",
+        "accepted": false
+      },
+      {
+        "name": "missing-section",
+        "accepted": false
+      },
+      {
+        "name": "section-wrong-dimension",
+        "accepted": false
+      },
+      {
+        "name": "empty-section-ids",
+        "accepted": false
+      },
+      {
+        "name": "duplicate-section-id",
+        "accepted": false
+      },
+      {
+        "name": "dangling-section-id",
+        "accepted": false
+      },
+      {
+        "name": "member-listed-in-wrong-section",
+        "accepted": false
+      },
+      {
+        "name": "section-id-order-only",
+        "accepted": false
+      },
+      {
+        "name": "empty-extra-section",
+        "accepted": false
+      },
+      {
+        "name": "duplicate-raw-chunk",
+        "accepted": false
+      },
+      {
+        "name": "duplicate-masked-x-chunk",
+        "accepted": false
+      },
+      {
+        "name": "duplicate-masked-z-chunk",
+        "accepted": false
+      },
+      {
+        "name": "missing-referenced-chunk",
+        "accepted": false
+      },
+      {
+        "name": "chunk-wrong-dimension",
+        "accepted": false
+      },
+      {
+        "name": "chunk-section-visibility-mismatch",
+        "accepted": false
+      },
+      {
+        "name": "section-chunk-visibility-mismatch",
+        "accepted": false
+      },
+      {
+        "name": "tracked-missing-required",
+        "accepted": false
+      },
+      {
+        "name": "tracked-duplicate-registration",
+        "accepted": false
+      },
+      {
+        "name": "tracked-unknown-registration",
+        "accepted": false
+      },
+      {
+        "name": "tracked-hidden-registration",
+        "accepted": false
+      },
+      {
+        "name": "tracked-wrong-dimension",
+        "accepted": false
+      },
+      {
+        "name": "ticked-missing-required",
+        "accepted": false
+      },
+      {
+        "name": "ticked-duplicate-registration",
+        "accepted": false
+      },
+      {
+        "name": "ticked-unknown-registration",
+        "accepted": false
+      },
+      {
+        "name": "ticked-hidden-registration",
+        "accepted": false
+      },
+      {
+        "name": "ticked-wrong-dimension",
+        "accepted": false
+      },
+      {
+        "name": "tracked-only-member-scheduled",
+        "accepted": false
+      },
+      {
+        "name": "hidden-section-enters-tracking-without-registry",
+        "accepted": false
+      },
+      {
+        "name": "ticking-section-loses-ticking-with-stale-registry",
+        "accepted": false
+      },
+      {
+        "name": "truncated-root-kind",
+        "accepted": false
+      },
+      {
+        "name": "truncated-root-name-length",
+        "accepted": false
+      },
+      {
+        "name": "truncated-root-name",
+        "accepted": false
+      },
+      {
+        "name": "truncated-inside-payload",
+        "accepted": false
+      },
+      {
+        "name": "truncated-final-terminator",
+        "accepted": false
+      },
+      {
+        "name": "trailing-byte",
+        "accepted": false
+      },
+      {
+        "name": "malformed-root-mutf",
+        "accepted": false
+      },
+      {
+        "name": "invalid-root-tag",
+        "accepted": false
+      },
+      {
+        "name": "negative-count-members",
+        "accepted": false
+      },
+      {
+        "name": "oversized-count-members",
+        "accepted": false
+      },
+      {
+        "name": "negative-count-sections",
+        "accepted": false
+      },
+      {
+        "name": "oversized-count-sections",
+        "accepted": false
+      },
+      {
+        "name": "negative-count-tracked",
+        "accepted": false
+      },
+      {
+        "name": "oversized-count-tracked",
+        "accepted": false
+      },
+      {
+        "name": "negative-count-key",
+        "accepted": false
+      },
+      {
+        "name": "oversized-count-key",
+        "accepted": false
+      },
+      {
+        "name": "negative-count-box",
+        "accepted": false
+      },
+      {
+        "name": "oversized-count-box",
+        "accepted": false
+      },
+      {
+        "name": "negative-count-uuid",
+        "accepted": false
+      },
+      {
+        "name": "oversized-count-uuid",
+        "accepted": false
+      },
+      {
+        "name": "truncated-payload-order",
+        "accepted": false
+      },
+      {
+        "name": "truncated-payload-box",
+        "accepted": false
+      },
+      {
+        "name": "truncated-payload-uuid",
+        "accepted": false
+      }
+    ],
+    "actual_wire": {
+      "bytes": 2562,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-membership-codec/checks/005/actual.nbt",
+      "sha256": "c46af64ea45a5c311213cd474f5febbf7fc05caa68890c31414fd084677087e9"
+    },
+    "expected_wire": {
+      "bytes": 2562,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-membership-codec/checks/005/expected.nbt",
+      "sha256": "c46af64ea45a5c311213cd474f5febbf7fc05caa68890c31414fd084677087e9"
+    },
+    "binary": {
+      "bytes": 1703352,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-membership-codec/checks/005/native",
+      "sha256": "e1195a66ebec58c58c19e668870870e6158e54218f2849aa3c900399ea63b6ec"
+    },
+    "emitted_c_sha256": "b713506dec69a988c2ff36bd96b5bab44e3bf7d6611ce7be3a03aaf18db2b94f",
+    "build_timing": {
+      "emission_seconds": 2.7100762082263827,
+      "native_seconds": 5.707016292028129,
+      "total_seconds": 12.375506834127009
+    },
+    "retries": 0,
+    "source_manifest": {
+      "bytes": 29008,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-membership-codec/checks/005/sources.json",
+      "sha256": "c5d9db513d4d03a749d2c4eb888a7dee80b0a6075883017bd073143629b371b5"
+    },
+    "loaded_pins": 105,
+    "before_after_pins_equal": true,
+    "processes": [
+      {
+        "attempts": 1,
+        "cap_seconds": 60,
+        "cleanup": {
+          "after": [],
+          "before": [],
+          "errors": [],
+          "leader_reaped": true,
+          "live_group_absent": true
+        },
+        "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+        "error": null,
+        "exit_code": 0,
+        "pid": 52027,
+        "seconds": 2.5045849587768316,
+        "stderr": {
+          "bytes": 0,
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-membership-codec/checks/005/ordinary/stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout": {
+          "bytes": 58,
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-membership-codec/checks/005/ordinary/stdout",
+          "sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1"
+        },
+        "timed_out": false,
+        "argv": [
+          "/Users/chuah/.bend/bin/bend",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/entity_membership_codec.bend",
+          "--check-only"
+        ],
+        "argument_count": 3
+      },
+      {
+        "attempts": 1,
+        "cap_seconds": 600,
+        "cleanup": {
+          "after": [],
+          "before": [],
+          "errors": [],
+          "leader_reaped": true,
+          "live_group_absent": true
+        },
+        "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+        "error": null,
+        "exit_code": 0,
+        "pid": 52053,
+        "seconds": 12.573735582642257,
+        "stderr": {
+          "bytes": 0,
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-membership-codec/checks/005/native-build/stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout": {
+          "bytes": 0,
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-membership-codec/checks/005/native-build/stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "timed_out": false,
+        "argv": [
+          "/Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_entity_membership_codec.py",
+          "--build-child"
+        ],
+        "argument_count": 4
+      },
+      {
+        "attempts": 1,
+        "cap_seconds": 60,
+        "cleanup": {
+          "after": [],
+          "before": [],
+          "errors": [],
+          "leader_reaped": true,
+          "live_group_absent": true
+        },
+        "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+        "error": null,
+        "exit_code": 0,
+        "pid": 52241,
+        "seconds": 0.7144965417683125,
+        "stderr": {
+          "bytes": 0,
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-membership-codec/checks/005/actual-native/stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout": {
+          "bytes": 8336,
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-membership-codec/checks/005/actual-native/stdout",
+          "sha256": "564ed9f86dca1ce20483a727055828165bddf1afa139ecd71b8d4f20a54743d6"
+        },
+        "timed_out": false,
+        "argv": [
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-membership-codec/checks/005/native",
+          "cases"
+        ],
+        "argument_count": 2
+      },
+      {
+        "attempts": 1,
+        "cap_seconds": 60,
+        "cleanup": {
+          "after": [],
+          "before": [],
+          "errors": [],
+          "leader_reaped": true,
+          "live_group_absent": true
+        },
+        "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+        "error": null,
+        "exit_code": 0,
+        "pid": 52247,
+        "seconds": 0.6874381667003036,
+        "stderr": {
+          "bytes": 0,
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-membership-codec/checks/005/physical-corpus-native/stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout": {
+          "bytes": 165074,
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-membership-codec/checks/005/physical-corpus-native/stdout",
+          "sha256": "3c07eb750b6b1c91d135e56cced39600ceb4a04ea55fcc5b1b385281b99daa60"
+        },
+        "timed_out": false,
+        "argv": [
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-membership-codec/checks/005/native",
+          "decode",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-membership-codec/checks/005/full-raw-independent-orders-and-duplicate-numeric-orders.nbt"
+        ],
+        "argument_count": 279
+      }
+    ]
+  }
+}
