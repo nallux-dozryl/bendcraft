@@ -1,0 +1,158 @@
+{
+  "OS_observer": {
+    "activation_notification_pids": [],
+    "after_frontmost_pid": 48643,
+    "before_frontmost_pid": 48643,
+    "child_pid": 21382,
+    "child_status": 0,
+    "cleanup": {
+      "after": [],
+      "before": [],
+      "errors": [],
+      "leader_reaped": true,
+      "live_group_absent": true,
+      "seconds": 0.13271508365869522
+    },
+    "drawable_readback": false,
+    "elapsed_seconds": 8.694898009300232,
+    "frame_descriptions": 0,
+    "same_returned_cpu_image": true,
+    "sampled_frontmost_pids": [
+      48643
+    ],
+    "samples": 298,
+    "space_change_notifications": 0,
+    "timed_out": false
+  },
+  "actor": {
+    "bytes": 9711976,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-017/actor",
+    "sha256": "66bbe97279f8ee268d891ad762d5da40337e1c318d09160e415823e25d4d8bd5"
+  },
+  "actor_generation": 17,
+  "cleanup": {
+    "bytes": 1578,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-demand-runtime/002/owned-groups-cleanup.json",
+    "sha256": "d57152cc6b8e301d6326254f5cceeaac72ac5d942383bbbd55dd9b950efa4348"
+  },
+  "client": {
+    "bytes": 6203336,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/009/renderer",
+    "sha256": "17e93095938731a1df4f8d94de56b0524477d5bfa239ed845e829145ec9c2b0a"
+  },
+  "cold": {
+    "all_cells": 512,
+    "heartbeat_reply_offsets_milliseconds": [
+      4113.850125,
+      5470.898375,
+      7025.391833
+    ],
+    "load_heartbeat_sequences": [
+      2,
+      3,
+      4
+    ],
+    "maximum_observed_reply_gap_milliseconds": 4113.850125,
+    "menu_sequence": 5,
+    "menu_sha256": "a6581b4a57364f4ed523612edf018ac52a2b3aaadc73c2c14a97f72905a8c5d1",
+    "sample_sequence": 1,
+    "sample_sha256": "55d394ac836b0ea10bf5d585b673ea5cc8c7211c220e45be282d8fbc69983d69",
+    "sample_to_menu_milliseconds": 7282.555,
+    "scope": "Reply observations; cooperative timer scheduling is not a fixed-interval guarantee."
+  },
+  "cold_reload": {
+    "receipt": {
+      "actual_sha256": "53c24d08ae8fecaaaf6d0183d90bf4a78db1a37afc3891e5d061f22b379c6c91",
+      "bytes": 1712616,
+      "expected_sha256": "53c24d08ae8fecaaaf6d0183d90bf4a78db1a37afc3891e5d061f22b379c6c91",
+      "label": "exact-typed-reloaded-save",
+      "reply": {
+        "bytes": 1712616,
+        "durable": true,
+        "peer_highwater": 44,
+        "published": true,
+        "status": "durable"
+      }
+    },
+    "sample_cells": 512,
+    "status": "exact_typed_cold_reload"
+  },
+  "command": "python3 tools/generic_resource_world_sample_demand_runtime.py --native --actor-generation 17 --client build/generic-resource-world-sample-client-native/009/renderer --generation 2",
+  "complete_loaded_family": [
+    6883,
+    6884,
+    6885,
+    6886,
+    6887,
+    6888,
+    6889,
+    6890
+  ],
+  "helper": {
+    "bytes": 15484,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/generic_resource_world_sample_demand_runtime.py",
+    "sha256": "ad09aa442eba9e8eaef34e6b4b15c3514004152a884bb548b764ed4be7475e5d"
+  },
+  "limits": [
+    "Furnace contributes no visible pixels in this case; exact prior visible pixels verify coherent texture replacement.",
+    "No Java furnace baked-geometry, positionRandom, full-light, drawable or visible-input claim.",
+    "Other material, tint, animation and special-renderer requirements remain named admission failures.",
+    "No fixed500ms timer guarantee: observed cooperative heartbeat reply gaps are the acceptance result.",
+    "No cooking GUI, whole-game or visible hardware input parity claim.",
+    "Pending network failure/drain negative remains a separately unexecuted scenario at this checkpoint."
+  ],
+  "missing_states": [
+    6883,
+    6884
+  ],
+  "native_consumer_run": true,
+  "pixels": {
+    "compared_pixels": 32768,
+    "different_pixels": 0,
+    "drawable_readback": false,
+    "expected_and_actual_rgb_sha256": "b46dad40e80ef0b4160ea9e9b851d4e544da4cfd33ef9862411a6ff5615ec294",
+    "extent": [
+      128,
+      128
+    ],
+    "frames": 2,
+    "returned_Window_frame_CPU_Image": true
+  },
+  "primary_result": {
+    "bytes": 5912,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-demand-runtime/002/result.json",
+    "sha256": "ee80018c7fbd9de1f81a06ece724de2d4eede2e68b25e59d905b92c3b4d802ae"
+  },
+  "publication": [
+    "catalog.demand|12|13|minecraft:furnace"
+  ],
+  "sample_cells_each": 512,
+  "save": {
+    "actual_sha256": "b7720c5bd82397a5b2238e5613c9b6eaf3aa374caafea83dd6cd8d5d7a59d93b",
+    "bytes": 1712616,
+    "expected_sha256": "b7720c5bd82397a5b2238e5613c9b6eaf3aa374caafea83dd6cd8d5d7a59d93b",
+    "label": "exact-typed-save",
+    "reply": {
+      "bytes": 1712616,
+      "durable": true,
+      "peer_highwater": 42,
+      "published": true,
+      "status": "durable"
+    }
+  },
+  "schema": "generic-resource-demand-runtime-compact-v1",
+  "scope": "Actual immutable Generic009 and explicit verified Actor017. One missing furnace family load and coherent prior-scene atlas replacement; complete old Registry/catalog/assets retained until candidate admission.",
+  "status": "PASS",
+  "warm": {
+    "all_cells": 512,
+    "heartbeat_reply_offsets_milliseconds": [],
+    "load_heartbeat_sequences": [],
+    "maximum_observed_reply_gap_milliseconds": 30.530084,
+    "menu_sequence": 8,
+    "menu_sha256": "a6581b4a57364f4ed523612edf018ac52a2b3aaadc73c2c14a97f72905a8c5d1",
+    "sample_sequence": 7,
+    "sample_sha256": "55d394ac836b0ea10bf5d585b673ea5cc8c7211c220e45be282d8fbc69983d69",
+    "sample_to_menu_milliseconds": 30.530084,
+    "scope": "Reply observations; cooperative timer scheduling is not a fixed-interval guarantee."
+  }
+}

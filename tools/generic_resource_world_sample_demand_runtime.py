@@ -201,18 +201,21 @@ def demand_fixture(data):
 
 def native(binary, actor_generation, generation):
     original = original_furnace()
-    data, rgb, prepared = G.prepare()
+    actor_work = ROOT/'build'/f'compiler-producer-diagnostic-{actor_generation:03d}'
+    selected_actor = {'WORK': actor_work, 'SOURCE': actor_work/'source',
+                      'ACTOR': actor_work/'actor'}
+    with G.Host.bindings(G.Boundary.A, selected_actor), \
+         G.Host.bindings(G, {'CLIENT': Path(binary)}):
+        data, rgb, prepared = G.prepare()
     require(prepared['oracle']['full_exact_pixel_expectation_ready'], 'Existing independent visible oracle')
     data = demand_fixture(data)
-    actor_work = ROOT/'build'/f'compiler-producer-diagnostic-{actor_generation:03d}'
     client = G.client_artifact(binary)
     directory = ROOT/'build/generic-resource-world-sample-demand-runtime'/f'{generation:03d}'
     directory.mkdir(parents=True, exist_ok=False)
     G.exclusive(directory/'original-resources.json', original)
     G.exclusive(directory/'expected-sample.json', data['sample'])
     G.exclusive(directory/'preparation.json', prepared)
-    with G.Host.bindings(G.Boundary.A, {'WORK': actor_work, 'SOURCE': actor_work/'source',
-                                      'ACTOR': actor_work/'actor'}):
+    with G.Host.bindings(G.Boundary.A, selected_actor):
         actor = G.Boundary.artifact()
         before = G.Boundary.runtime_pins()
         with G.Host.bindings(G.Pair, {'WORK': directory}), G.Host.bindings(G.R, {

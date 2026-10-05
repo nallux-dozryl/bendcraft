@@ -204,3 +204,32 @@ The 49.658-second diagnostic used at most 4,170,170,368 sampled RSS bytes and
 reaped normally. The source/parser refusals encountered during the change remain
 retained. This establishes the changed source and selected captures, while the
 fresh full build and actual Actor017 consumer remain pending.
+
+
+Generic009 completed the unchanged final ABI guard and full C/native build with
+the coherent006 dependency graph plus only the verified closed-Config client
+change. Seven ownership passes reached the fixpoint at388.530 seconds; the
+bounded producer completed in390.702 seconds, with5,105,631,232 sampled peak RSS
+bytes, and O3 clang completed in57.712 seconds. All162 emitter input pins were
+unchanged. This is the immutable baseline graph, not certification of the
+working publication/entity joins. Original compiler files remain untouched.
+
+The actual Generic009/Actor017 consumer then passed a real missing-family load.
+Two sampled furnace states6883/6884 caused exactly one complete-family
+publication6883..6890. Cold sample-to-menu time was7282.555ms with three empty
+release-only InputAck heartbeats; the maximum observed reply gap4113.850ms stayed
+below the actor's5000ms renewal bound. The warm frame took30.530ms and sent no
+load heartbeats. Cooperative scheduling does not establish a fixed500ms interval.
+Both128×128 returned CPU images matched all32,768 independent Java-geometry/JAR/
+HUD pixels. Full104-section,43-slot/equipment/status/generation/clock durable
+save and cold restore/resave were exact; the OS observer recorded zero focus or
+Spaces changes, and all owned groups were absent after cleanup.
+
+Furnace cells were behind the camera: these pixels verify coherent replacement
+of the prior visible resource atlas, not visible furnace or Java furnace baked
+geometry parity. Tint, animation and special-renderer admission failures remain
+explicit, and there is no positionRandom, full-light, drawable, visible hardware
+input or cooking-GUI claim. Pending network failure and worker/channel drain are
+a separate negative scenario, not implied by successful completion. The compact
+records are `generic_resource_world_sample_client_native_009.json` and
+`generic_resource_world_sample_demand_runtime_002.json`.
