@@ -1,0 +1,267 @@
+{
+  "schema": 1,
+  "status": "CONCRETE_OVERSIZED_CALLBACK_OBSERVED",
+  "confidence": "high for measured callback widths and constructor-branch exclusion; final-pass callback suffix and exhaustive offender list unobserved",
+  "basis": {
+    "frozen_generation": 6,
+    "entry": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/006/private/source/remote_resource_catalog_client.bend",
+      "bytes": 6783,
+      "sha256": "32806e671351f0398ef3f9ac4763927777e0a51f5aaf05717f62dff44c1be102"
+    },
+    "frozen_manifest": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/006/private/manifest.json",
+      "bytes": 68832,
+      "sha256": "0e7e76e4561713037cda6f67511062f5faace85ffe85762ff193cb8ebf7103d2"
+    },
+    "actual_failed_producer": {
+      "seconds": 421.7137732496485,
+      "passes": 7,
+      "message": "an arity over 247",
+      "complete_C": false,
+      "receipt": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/generic_resource_world_sample_client_native_006.json",
+        "bytes": 37146,
+        "sha256": "9dd98272b35d0d64c4fd2219fd1c48d50430435d8323a48066659dcabd30eb6c"
+      }
+    },
+    "loaded_project_pins_equal_retained006": 112,
+    "original_Base_equal_frozen_Base": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/base.bend",
+      "bytes": 71530,
+      "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+    }
+  },
+  "original_compiler": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/comp.ts",
+    "bytes": 185829,
+    "sha256": "32fb66e09f608ce9e4b173384bcfeec453db8c5bc96650e26ad861bef815a8d9"
+  },
+  "original_source_api": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/bend.ts",
+    "bytes": 137761,
+    "sha256": "7deae3693eb896f33c73867081b99d2c6f3ed3b57e77e55eb5f6260840dd0e63"
+  },
+  "original_compiler_or_api_modified": false,
+  "frozen006_sources_modified": false,
+  "guard": {
+    "live_entry_parameters_limit": 247,
+    "encoded_constructor_arity_limit": 255,
+    "encoded_formula": "raw <=247 ? raw : 240+log2(raw); lay_node pads raw>247 to a power of two",
+    "first_padded_raw_constructor_failure": 65536,
+    "source_line": 2824
+  },
+  "source_only_layout": {
+    "process": {
+      "command": [
+        "/opt/homebrew/bin/node",
+        "--expose-gc",
+        "--max-old-space-size=8192",
+        "--stack-size=4096",
+        "--experimental-transform-types",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-client-arity-001/layout.mjs"
+      ],
+      "pid": 82474,
+      "group_absent": true,
+      "returncode": 0,
+      "termination_reason": null,
+      "seconds": 11.354813124984503,
+      "sampled_peak_rss_bytes": 1508360192,
+      "scope": "Original source-only layout; no checker/emitter called.",
+      "limits": {
+        "seconds": 60,
+        "rss_bytes": 8589934592
+      }
+    },
+    "loaded_declarations": 5747,
+    "loaded_files": 113,
+    "all_parsed_constructor_count": 1002,
+    "all_parsed_constructor_max": {
+      "name": "src/remote_resource_presenter:GameResult",
+      "words": 160,
+      "encoded": 160
+    },
+    "all_parsed_constructor_encoded_overflows": [],
+    "receipt": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-client-arity-001/layout.json",
+      "bytes": 161562,
+      "sha256": "80bfd6c197bf0bbf3d77c221e307b67bcccee34b24e3713be85bc3d0f1d4c4e6"
+    },
+    "scope": "Original lay_of/lay_node/unraised fun_of; no checker or emitter. Parsed Def.e absent, so this phase cannot observe generated callback captures."
+  },
+  "checked_selected_emission": {
+    "process": {
+      "command": [
+        "/opt/homebrew/bin/node",
+        "--expose-gc",
+        "--max-old-space-size=8192",
+        "--stack-size=4096",
+        "--experimental-transform-types",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-client-arity-002/probe.mjs"
+      ],
+      "pid": 83907,
+      "group_absent": true,
+      "returncode": 0,
+      "termination_reason": null,
+      "seconds": 41.74012312479317,
+      "sampled_peak_rss_bytes": 4926767104,
+      "scope": "Unchanged original full source elaboration, then one selected original callback body emission; no whole C/fixpoint replay.",
+      "limits": {
+        "seconds": 90,
+        "rss_bytes": 8589934592
+      }
+    },
+    "checked_declarations": 5759,
+    "source_holes": 0,
+    "unchanged_order_checked_entries": 5850,
+    "body_targets": [
+      "src/generic_resource_world_sample_client:snapshot_ready"
+    ],
+    "input_formal_words": 222,
+    "segments_generated": 5,
+    "reachable_constructor_count": 478,
+    "reachable_constructor_max": {
+      "name": "src/remote_resource_presenter:Config",
+      "words": 149
+    },
+    "reachable_foreign_cid_max": {
+      "name": "src/player_presentation_native:Native.configure",
+      "words": 7
+    },
+    "whole_compile_book_called": false,
+    "whole_ownership_fixpoint_replayed": false,
+    "C_or_native_output": false,
+    "initial_facts_after_selected_body": {
+      "own": 20,
+      "hot": 0,
+      "stat": 0
+    },
+    "receipt": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-client-arity-002/probe.json",
+      "bytes": 44426,
+      "sha256": "f7e9fc9c59b568d007fa3b33cb32b997880b386a491df1f3ee46c30902135b8e"
+    },
+    "scope": "One selected original-emitter body pass from initial ownership facts; actual generated capture widths. No whole-book emission/fixpoint/C output or final-pass suffix reproduction."
+  },
+  "actual_callback": {
+    "name": "src/generic_resource_world_sample_client:snapshot_ready$k1",
+    "fid": "FID_SRC_GENERIC_RESOURCE_WORLD_SAMPLE_CLIENT_SNAPSHOT_READY_K1",
+    "reachable_from_selected_function": true,
+    "captured_words": 174,
+    "returned_words": 87,
+    "returned_type": "src/generic_resource_world_sample_resources:Preparation",
+    "parameter_words": 261,
+    "captures": [
+      {
+        "name": "window",
+        "words": 1,
+        "layout_words": 1,
+        "type": {
+          "$": "Ref",
+          "k": "Window"
+        }
+      },
+      {
+        "name": "link",
+        "words": 7,
+        "layout_words": 7,
+        "type": {
+          "$": "ADT",
+          "k": "src/remote_resource_presenter:Link",
+          "x": [],
+          "r": []
+        }
+      },
+      {
+        "name": "config",
+        "words": 149,
+        "layout_words": 149,
+        "type": {
+          "$": "ADT",
+          "k": "src/remote_resource_presenter:Config",
+          "x": [],
+          "r": []
+        }
+      },
+      {
+        "name": "captured",
+        "words": 1,
+        "layout_words": 1,
+        "type": {
+          "$": "ADT",
+          "k": "Bool",
+          "x": [],
+          "r": []
+        }
+      },
+      {
+        "name": "sample",
+        "words": 15,
+        "layout_words": 15,
+        "type": {
+          "$": "ADT",
+          "k": "src/generic_resource_world_sample:Sample",
+          "x": [],
+          "r": []
+        }
+      },
+      {
+        "name": "resume",
+        "words": 1,
+        "layout_words": 1,
+        "type": "Window -> Session.Session -> P.Link -> P.Config -> Bool -> IO(Unit)"
+      }
+    ],
+    "exact_original_semantic_cut": "snapshot_ready calls Session.prepare(sample,assets); resources_prepared continuation retains the same window/link/config/capture/sample/resume owners."
+  },
+  "conclusion": {
+    "guard_branch": "Generated live-entry parameter overflow; checked reachable constructor/foreign encodings fit their guard.",
+    "specific_observation": "The selected original emitter creates a reachable 261-word snapshot_ready continuation from 222-word ordinary formals. The callback captures flat P.Config149 directly; ordinary formal auto-boxing is not applied to seg_open captures.",
+    "final_original_suffix_reproduced": false,
+    "all_final_pass_offenders_enumerated": false,
+    "source_repair_boundary": "Catalog-owned local recursive nominal Config holding P.Config, retained intact across IO/Preparation cuts; retain its affine recursive tail on updates. Plain nonrecursive wrapper flattens again.",
+    "projected_repaired_cut_words": 113,
+    "projection_arithmetic": "261 - 149 + 1 = 113",
+    "changed_source_projection_measured": false,
+    "changed_source_native_verdict": false,
+    "no_unchanged_full006_retry": true
+  },
+  "reproduction": {
+    "source_layout_command": "python3 -B build/generic-client-arity-001/run.py",
+    "selected_callback_command": "python3 -B build/generic-client-arity-002/run.py",
+    "private_helper_files": [
+      {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-client-arity-001/layout.mjs",
+        "bytes": 1678,
+        "sha256": "f6dbd5563c8c7f8a1db4778f9f2372890fc4d5ad7d4d912af623e245521f8fa6"
+      },
+      {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-client-arity-001/layout_comp.ts",
+        "bytes": 187419,
+        "sha256": "856eb87ec2f3cd6dd00214bf7b720c1b49e91577524376c7c98a65cbec50da42"
+      },
+      {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-client-arity-001/run.py",
+        "bytes": 1647,
+        "sha256": "2e10100a336893573faf50c069f1efc3d5b87ae0e9af9f93c2597051dc38cb86"
+      },
+      {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-client-arity-002/probe.mjs",
+        "bytes": 2549,
+        "sha256": "d26f77d8fd060b73d3d9a9fe69aa1de3148aae0dbb5967de63b3edbaa41436ac"
+      },
+      {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-client-arity-002/probe_comp.ts",
+        "bytes": 187620,
+        "sha256": "836ba37639d79bd9b691528cd4baa61c0a1645104ccc5b12e4a4b9ac17cc8263"
+      },
+      {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-client-arity-002/run.py",
+        "bytes": 1713,
+        "sha256": "3abcdbdad464bef2025e0a9aca69f90170fad515779fab3ab4d0761581d8ddec"
+      }
+    ],
+    "note": "Private directories retain completed stdout/stderr/process receipts; runner output files use exclusive creation. Reproduction requires a fresh directory with adjusted paths, preserving frozen006."
+  },
+  "scope": "Read-only frozen Generic006 diagnosis. Original full source elaboration supplies checked bodies; one selected original body pass identifies a concrete oversize continuation without re-emitting the whole graph. No product source edits, no ABI/arity-limit change, no selective production compilation or checker bypass, no new C/native/parity/speed claim. Existing actor020 source/binary and protected actor012 were not changed."
+}
