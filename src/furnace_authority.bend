@@ -78,11 +78,20 @@ def finish(+was:Bool,+after:Snapshot,+dirty:Bool,+drops:List<&2,Inv.Slot>,+compl
   +now = lit(frame)
   finish_changed(after,dirty,drops,completed,now,different(was,now))
 
+def cached_recipe_matched(recipe:K.Recipe,items:List<&2,R.ItemDefinition>,input:Inv.Slot,matched:Bool) -> Maybe<&2,K.Plan>:
+  match matched:
+    case False{}: None{}
+    case True{}: K.plan(recipe,items,input)
+def cached_recipe_identified(+recipe:K.Recipe,kind:K.CookingKind,tags:List<&2,R.Tag>,+items:List<&2,R.ItemDefinition>,+input:Inv.Slot,identified:Bool,miss:Unit -> Maybe<&2,K.Plan>) -> Maybe<&2,K.Plan>:
+  match identified:
+    case False{}: miss(Unit{})
+    case True{}: cached_recipe_matched(recipe,items,input,K.matches(recipe,kind,tags,input))
 def cached_recipe(+recipes:List<&2,K.Recipe>,+id:String,+kind:K.CookingKind,+tags:List<&2,R.Tag>,+items:List<&2,R.ItemDefinition>,+input:Inv.Slot) -> Maybe<&2,K.Plan>:
   match recipes:
     case Nil{}: None{}
     case +recipe <> rest:
-      R.choose(Maybe<&2,K.Plan>,R.choose(Maybe<&2,K.Plan>,K.plan(recipe,items,input),None{},K.matches(recipe,kind,tags,input)),cached_recipe(rest,id,kind,tags,items,input),String.eq(K.recipe_id(recipe),id))
+      cached_recipe_identified(recipe,kind,tags,items,input,String.eq(K.recipe_id(recipe),id),
+        unit => cached_recipe(rest,id,kind,tags,items,input))
 def cached_plan(+catalog:K.Catalog,+kind:K.CookingKind,+input:Inv.Slot,+id:Maybe<&2,String>) -> Maybe<&2,K.Plan>:
   K.Catalog{recipes,tags,items} = catalog
   match id:

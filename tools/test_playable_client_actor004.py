@@ -26,6 +26,7 @@ NATIVE_SECONDS=300
 BASELINE_GENERATION=None
 SESSION_OVERLAY=None
 BACKEND_OVERLAY=None
+FURNACE_OVERLAY=None
 
 def generation():
     return int(WORK.name.rsplit('-',1)[1])
@@ -65,10 +66,10 @@ def snapshot_baseline():
     source=baseline/'source'
     before=pin(source/'source-map.json')
     mapping=json.loads((source/'source-map.json').read_bytes())
-    overlay=BACKEND_OVERLAY if BACKEND_OVERLAY is not None else SESSION_OVERLAY
-    kind='backend' if BACKEND_OVERLAY is not None else 'session'
+    overlay=FURNACE_OVERLAY if FURNACE_OVERLAY is not None else BACKEND_OVERLAY if BACKEND_OVERLAY is not None else SESSION_OVERLAY
+    kind='furnace' if FURNACE_OVERLAY is not None else 'backend' if BACKEND_OVERLAY is not None else 'session'
     overlay_before=pin(overlay)
-    relative='src/remote_resource_backend.bend' if kind=='backend' else 'src/local_player_session.bend'
+    relative='src/furnace_authority.bend' if kind=='furnace' else 'src/remote_resource_backend.bend' if kind=='backend' else 'src/local_player_session.bend'
     original={row['path']:row for row in mapping['files']}
     R.require(relative in original,'Baseline lacks the actual '+kind+' consumer')
     R.require(overlay_before['sha256']!=original[relative]['original_sha256'],
@@ -85,7 +86,7 @@ def snapshot_baseline():
               'Baseline or production overlay changed while copying')
     mapping.pop('seal_sha256',None)
     mapping['status']='frozen-baseline-'+kind+'-overlay'
-    change='Backend runtime lease clock correction' if kind=='backend' else 'Session save-carrier change'
+    change='Furnace cached-recipe branch correction' if kind=='furnace' else 'Backend runtime lease clock correction' if kind=='backend' else 'Session save-carrier change'
     mapping['scope']='Immutable baseline production actor graph plus only the measured '+change+'; no current working dependency graph claim.'
     mapping['generation_basis']={'baseline_generation':BASELINE_GENERATION,
         'baseline_source_map':before,kind+'_overlay':overlay_before,
@@ -115,8 +116,8 @@ def snapshot():
     mapping=json.loads((SOURCE/'source-map.json').read_bytes())
     if BASELINE_GENERATION is not None:
         basis=mapping.get('generation_basis',{})
-        kind='backend' if BACKEND_OVERLAY is not None else 'session'
-        overlay=BACKEND_OVERLAY if BACKEND_OVERLAY is not None else SESSION_OVERLAY
+        kind='furnace' if FURNACE_OVERLAY is not None else 'backend' if BACKEND_OVERLAY is not None else 'session'
+        overlay=FURNACE_OVERLAY if FURNACE_OVERLAY is not None else BACKEND_OVERLAY if BACKEND_OVERLAY is not None else SESSION_OVERLAY
         R.require(basis.get('baseline_generation')==BASELINE_GENERATION and
                   basis.get(kind+'_overlay')==pin(overlay),
                   'Existing frozen baseline/production overlay differs')
@@ -234,7 +235,7 @@ def build():
 
 
 def main():
-    global WORK,SOURCE,ACTOR,NATIVE_SECONDS,BASELINE_GENERATION,SESSION_OVERLAY,BACKEND_OVERLAY
+    global WORK,SOURCE,ACTOR,NATIVE_SECONDS,BASELINE_GENERATION,SESSION_OVERLAY,BACKEND_OVERLAY,FURNACE_OVERLAY
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--snapshot-only',action='store_true')
     parser.add_argument('--actor-generation',type=int,default=19,
@@ -247,12 +248,15 @@ def main():
                         help='measured Session source used with --baseline-generation')
     parser.add_argument('--backend-overlay',type=Path,
                         help='measured Backend lease repair used with --baseline-generation')
+    parser.add_argument('--furnace-overlay',type=Path,
+                        help='measured Furnace cached-recipe repair used with --baseline-generation')
     args=parser.parse_args()
     if args.actor_generation<19 or args.native_seconds<1:
         parser.error('actor generation must be19 or later and native seconds positive')
-    if args.session_overlay is not None and args.backend_overlay is not None:
-        parser.error('choose exactly one of --session-overlay or --backend-overlay')
-    overlay=args.session_overlay if args.session_overlay is not None else args.backend_overlay
+    overlays=[value for value in (args.session_overlay,args.backend_overlay,args.furnace_overlay) if value is not None]
+    if len(overlays)>1:
+        parser.error('choose exactly one of --session-overlay, --backend-overlay or --furnace-overlay')
+    overlay=overlays[0] if overlays else None
     if (args.baseline_generation is None)!=(overlay is None):
         parser.error('--baseline-generation and one production overlay must be supplied together')
     if args.baseline_generation is not None and not (19<=args.baseline_generation<args.actor_generation):
@@ -262,6 +266,7 @@ def main():
     BASELINE_GENERATION=args.baseline_generation
     SESSION_OVERLAY=args.session_overlay.resolve() if args.session_overlay is not None else None
     BACKEND_OVERLAY=args.backend_overlay.resolve() if args.backend_overlay is not None else None
+    FURNACE_OVERLAY=args.furnace_overlay.resolve() if args.furnace_overlay is not None else None
     if args.snapshot_only:
         mapping=snapshot()
         print(json.dumps({'status':mapping['status'],'generation':generation_name(),

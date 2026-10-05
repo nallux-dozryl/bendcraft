@@ -1,0 +1,115 @@
+{
+  "actual_generated_C": {
+    "cached_recipe_call_order": [
+      {
+        "line": 586421,
+        "target": "K.plan"
+      },
+      {
+        "line": 586585,
+        "target": "K.matches"
+      },
+      {
+        "line": 586712,
+        "target": "cached_recipe(rest)"
+      },
+      {
+        "line": 586839,
+        "target": "String.eq cached id"
+      }
+    ],
+    "item_definition_recursion_before_equality": [
+      1432124,
+      1432193
+    ],
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-023/diagnostic.c",
+    "sha256": "07e29f4f5ca2ad5c3b8d0e7ed0d0e2d6552a7207e99f1097934c89fa88ffa05d"
+  },
+  "baseline": {
+    "bytes": 3896,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/playable-client-actor004-build-023.json",
+    "sha256": "1769010597eef5211eff69296c7426430279b66636e86c628d17e42d42710286"
+  },
+  "independent_pinned_source_counts": {
+    "installed_26_3_cooking_recipe_types": {
+      "blasting": 25,
+      "campfire_cooking": 9,
+      "smelting": 73,
+      "smoking": 9
+    },
+    "item_metadata_rows": 1658,
+    "metadata": {
+      "bytes": 1684693,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_crafting_authority_metadata.json",
+      "sha256": "9105c1fa3a9eefbab94d21626e1d5be1ad69c9765e19b608e257e458b9e853d1"
+    },
+    "ordered_recipe_rows": 2042
+  },
+  "planned_verification": {
+    "arbitrary_list_previous_result_equivalence": true,
+    "coherent_changed_actor_024": "pending exact frozen023 plus only furnace source",
+    "complete_cached_plan_goldens": 18,
+    "fallback_count_cache_cases": 6,
+    "laws": 5,
+    "native_cases": 24,
+    "native_thread_counts": [
+      1,
+      4
+    ],
+    "original_actor_023_isolated_throughput": "root owns; active",
+    "proof_source_kernel_native": "pending"
+  },
+  "retained_ambient": {
+    "CPU_profile_retained": false,
+    "interval_includes": [
+      "unpause RPC",
+      "repeated CookingInspect",
+      "completed rendered image wait"
+    ],
+    "intervening_draw_timer_seconds": 6.141,
+    "partial_to_completed_image_seconds": 63.96358408406377,
+    "progress_seconds": 67.00910229235888,
+    "relay_contains_per_request_timestamps": false,
+    "timing_fraction_attributable_to_cached_lookup": "unknown"
+  },
+  "schema": 1,
+  "scope": "Actual Actor023 cached recipe eager traversal diagnosis and narrow result-preserving branch repair; no isolated runtime gain or ambient timing result claimed.",
+  "sources": {
+    "docs/FURNACE_CACHE_LOOKUP.md": {
+      "bytes": 4282,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/docs/FURNACE_CACHE_LOOKUP.md",
+      "sha256": "5201990cf03309b41c5d27ef382a1f0e4fa2ff16666760e0a36b2ad9a13a54f4"
+    },
+    "src/furnace_authority.bend": {
+      "bytes": 20110,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/furnace_authority.bend",
+      "sha256": "2e1a76c2d81d050421e47c0e3e57e1ef98f1e44429b7d19d2c161e28ee7389e1"
+    },
+    "src/furnace_authority_cache_laws.bend": {
+      "bytes": 2811,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/furnace_authority_cache_laws.bend",
+      "sha256": "56b8dba82b2d1028872ec88dced253f39226e7811df3b84b939d8f52273283fb"
+    },
+    "src/furnace_authority_cache_proof.bend": {
+      "bytes": 2259,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/furnace_authority_cache_proof.bend",
+      "sha256": "3c996efb3c410e25e399088aacd38ed3007562d8cd9392fece028461ce705c18"
+    },
+    "tests/furnace_authority_cache.bend": {
+      "bytes": 7153,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/furnace_authority_cache.bend",
+      "sha256": "9e5bf981ccd44377ad0c31adf0439421b28707ed06190dce9b02cfa507094953"
+    },
+    "tools/test_furnace_authority_cache.py": {
+      "bytes": 11337,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_furnace_authority_cache.py",
+      "sha256": "809317320f67a40135070674c6b0786b9767a65c4a2615743ffde099fc8ac570"
+    },
+    "tools/test_playable_client_actor004.py": {
+      "bytes": 19078,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_playable_client_actor004.py",
+      "sha256": "6a42a33672fb60651e3d21ae1dae3e6224b4c9c2636c0139c5da8543f5f3ca64"
+    }
+  },
+  "status": "PREPARED_NOT_EXECUTED"
+}
