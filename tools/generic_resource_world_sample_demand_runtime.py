@@ -46,6 +46,46 @@ class DemandRelay(G.Pair.Relay):
                 'unchanged_native_bytes': True, 'capability_redacted': True})
 
 
+class DisconnectExchanges(ObservedExchanges):
+    def __init__(self, relay):
+        super().__init__()
+        self.relay, self.pending, self.beats = relay, False, 0
+
+    def append(self, value):
+        super().append(value)
+        request = value['request']
+        if len(request) != 5:
+            return
+        command = request[4]
+        if command[0] == 13:
+            self.pending = True
+        elif self.pending and command == [1, [False, False, []]]:
+            self.beats += 1
+            if self.beats == 2:
+                require(value['reply'][:2] == [1, 2], 'Cut requires an actual heartbeat Ack')
+                self[-1]['forwarded_unchanged'] = False
+                self[-1]['upstream_request_and_reply_unchanged'] = True
+                self[-1]['downstream_reply_forwarded'] = False
+                self[-1]['intentional_fault'] = 'graceful EOF after actual recurring Pending heartbeat'
+                self.relay.cut = {'sequence': request[3],
+                                  'observed_monotonic_ns': self[-1]['observed_reply_monotonic_ns']}
+                # Preserve the real request/Ack. The fault is only the socket
+                # boundary; no reply, resource, sample or simulation is forged.
+                self.relay.connections[0].shutdown(G.Pair.socket.SHUT_RDWR)
+
+
+class DisconnectRelay(G.Pair.Relay):
+    def serve(self):
+        self.cut = None
+        self.records = DisconnectExchanges(self)
+        try:
+            super().serve()
+        finally:
+            G.exclusive(G.Pair.WORK/(self.label+'-stopped.json'), {
+                'exchanges': self.records, 'failure': self.failure, 'intentional_cut': self.cut,
+                'request_and_upstream_reply_bytes_unchanged': True, 'capability_redacted': True})
+
+
 class DemandRenderer(G.Renderer):
     """Retain the original OS observer response before its assertions run."""
     def finish_generic(self, **kwargs):
@@ -255,9 +295,86 @@ def native(binary, actor_generation, generation):
                 G.sweep_owned(directory)
 
 
+def disconnect_native(binary, actor_generation, generation):
+    actor_work = ROOT/'build'/f'compiler-producer-diagnostic-{actor_generation:03d}'
+    selected = {'WORK': actor_work, 'SOURCE': actor_work/'source', 'ACTOR': actor_work/'actor'}
+    with G.Host.bindings(G.Boundary.A, selected), G.Host.bindings(G, {'CLIENT': Path(binary)}):
+        data, _, prepared = G.prepare()
+    data = demand_fixture(data)
+    client = G.client_artifact(binary)
+    directory = ROOT/'build/generic-resource-world-sample-demand-runtime'/f'{generation:03d}'
+    directory.mkdir(parents=True, exist_ok=False)
+    G.exclusive(directory/'preparation.json', prepared)
+    path = directory/'world.nbt'
+    path.write_bytes(data['payload'])
+    old_bytes = path.read_bytes()
+    with G.Host.bindings(G.Boundary.A, selected), G.Host.bindings(G.Pair, {'WORK': directory}), \
+         G.Host.bindings(G.R, {'WORK': directory, 'GROUPS': directory/'owned-groups.ndjson'}):
+        actor_artifact = G.Boundary.artifact()
+        actor = relay = renderer = control = None
+        try:
+            actor = G.backend(G.Boundary.A.ACTOR, 'backend-disconnect', path)
+            raw, ping = actor.tcp(True)
+            require(ping['peer'] == 42, 'Actual saved owner identity')
+            relay = DisconnectRelay(actor, 'relay-disconnect')
+            renderer = DemandRenderer(Path(binary), relay, 'renderer-disconnect', prepared['helpers'])
+            observation = renderer.finish_generic(status=1, markers=0)
+            traffic, traffic_pin = relay.finish(failed=True)
+            require(traffic['thread_finished'] and relay.cut is not None, 'Pending socket cut did not complete')
+            require(len(relay.records) == 4 and relay.records[1]['request'][4] == [13,128,128]
+                    and canonical(relay.records[1]['reply'][4]) == canonical(data['sample'])
+                    and relay.cut['sequence'] == 3, 'Actual sample then immediate and recurring Pending heartbeats')
+            output = renderer.out.read_text()
+            require(output.splitlines() == ['catalog.demand|12|13|minecraft:furnace'],
+                    'Authentic worker result must publish after Pending disconnect and before ordinary refusal')
+            require(renderer.err.read_text().strip() == 'inventory query: Wire:ReceiveClosedFailedOrTimedOut'
+                    and not list(renderer.images.iterdir()), 'Expected network refusal without a presented frame')
+            # A fresh authenticated owner must see the exact complete authority.
+            # Renderer exit follows actual Completed receive/close/drain and
+            # owner-close continuations; there is no exposed heap/channel census.
+            G.S.inspect(raw, data['record'])
+            require(raw.call('world.clock') == G.S.P.clock(data['world']) and path.read_bytes() == old_bytes,
+                    'Network failure mutated authoritative owner or durable bytes')
+            control = G.Boundary.connect(actor)
+            sample = control.call([13,128,128],7)
+            menu = control.call([8],6)
+            require(canonical(sample[4]) == canonical(data['sample'])
+                    and canonical(menu[4:]) == canonical([True,'',data['authority']]),
+                    'Complete owner/lease reacquisition after resource worker drain')
+            control.call([2],2); control.close(); control = None
+            _, saved = G.Boundary.saved(raw,path,data['world'],ping['peer'],data['record'],
+                                       data['full'],'',directory,'exact-typed-disconnect-save')
+            require(G.client_artifact(binary) == client and G.Boundary.artifact() == actor_artifact,
+                    'Admitted negative native artifacts changed')
+            record = {'schema':'generic-resource-demand-disconnect-v1','status':'PASS',
+                'client':client['binary'],'actor':actor_artifact['binary'],'actor_generation':actor_generation,
+                'intentional_cut':relay.cut,'traffic':traffic_pin,'observer':observation,
+                'authentic_worker_publication':output.strip(),'network_refusal':renderer.err.read_text().strip(),
+                'presented_frames':0,'full_sample_and_menu_after_lease_reacquisition':True,
+                'durable_bytes_unchanged_until_explicit_save':True,'typed_save':saved,
+                'scope':'Actual network cut during Pending furnace load. Authentic worker completion/publication precedes ordinary refusal and native process exit, exercising pinned Completed/close/drain/owner-close control flow.',
+                'limits':['No independently exposed live-channel/heap census; completion and disposal control flow, not zero allocated-row telemetry.',
+                          'No rendered pixels or visible-input claim in this negative case.']}
+            G.exclusive(directory/'result.json',record)
+            print(json.dumps({'status':'PASS','scenario':'Pending disconnect','result':str(directory/'result.json')}))
+        except BaseException as error:
+            G.exclusive(directory/'first-failure.json',{'status':'failed','type':type(error).__name__,
+                'message':str(error),'notes':getattr(error,'__notes__',[]),'native_consumer_run':True})
+            raise
+        finally:
+            actions = []
+            if control is not None: actions.append(('private',control.close))
+            if renderer is not None: actions.append(('renderer',renderer.cleanup))
+            if relay is not None and relay.thread.is_alive(): actions.append(('relay',lambda:relay.finish(failed=True)))
+            if actor is not None: actions.append(('backend',lambda:G.R.finish_backend(actor)))
+            G.finish_owned(actions,directory/'owners-cleanup-secondary.json')
+            G.sweep_owned(directory)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--native', action='store_true')
+    parser.add_argument('--disconnect', action='store_true', help='Real Pending socket failure; no altered resource/simulation bytes')
     parser.add_argument('--client', type=Path)
     parser.add_argument('--actor-generation', type=int)
     parser.add_argument('--generation', type=int, default=1)
@@ -265,8 +382,10 @@ def main():
     if args.native:
         require(args.client is not None and args.actor_generation is not None,
                 'Native demand requires an explicit completed client and actor generation')
-        native(args.client.resolve(), args.actor_generation, args.generation)
+        runner = disconnect_native if args.disconnect else native
+        runner(args.client.resolve(), args.actor_generation, args.generation)
     else:
+        require(not args.disconnect, 'Disconnect requires explicit native artifacts')
         print(json.dumps(original_furnace(), sort_keys=True, indent=2))
 
 

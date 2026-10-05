@@ -1,0 +1,100 @@
+{
+  "actor": {
+    "bytes": 9711976,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-017/actor",
+    "sha256": "66bbe97279f8ee268d891ad762d5da40337e1c318d09160e415823e25d4d8bd5"
+  },
+  "actor_generation": 17,
+  "authentic_worker_publication": "catalog.demand|12|13|minecraft:furnace",
+  "client": {
+    "bytes": 6203336,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/009/renderer",
+    "sha256": "17e93095938731a1df4f8d94de56b0524477d5bfa239ed845e829145ec9c2b0a"
+  },
+  "command": "python3 tools/generic_resource_world_sample_demand_runtime.py --native --disconnect --actor-generation 17 --client build/generic-resource-world-sample-client-native/009/renderer --generation 3",
+  "durable_bytes_unchanged_until_explicit_save": true,
+  "full_sample_and_menu_after_lease_reacquisition": true,
+  "helper": {
+    "bytes": 23284,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/generic_resource_world_sample_demand_runtime.py",
+    "sha256": "b82cccf94dd72c511a72982d438c09ff218bc59e3ea4bee53453453ed096a2f7"
+  },
+  "intentional_cut": {
+    "observed_monotonic_ns": 5741983070658083,
+    "sequence": 3
+  },
+  "limits": [
+    "No independently exposed live-channel/heap census; completion and disposal control flow, not zero allocated-row telemetry.",
+    "No rendered pixels or visible-input claim in this negative case."
+  ],
+  "native_consumer_run": true,
+  "network_refusal": "inventory query: Wire:ReceiveClosedFailedOrTimedOut",
+  "observer": {
+    "Window_frame_timings": [],
+    "generic_frames": [],
+    "generic_marker_adapter": true,
+    "legacy_JSON_frame_descriptions": 0,
+    "observer": {
+      "activation_notification_pids": [],
+      "after_frontmost_pid": 48643,
+      "before_frontmost_pid": 48643,
+      "child_pid": 30400,
+      "child_status": 1,
+      "cleanup": {
+        "after": [],
+        "before": [],
+        "errors": [],
+        "leader_reaped": true,
+        "live_group_absent": true,
+        "seconds": 0.13993304036557674
+      },
+      "drawable_readback": false,
+      "elapsed_seconds": 7.903767943382263,
+      "frame_descriptions": 0,
+      "same_returned_cpu_image": true,
+      "sampled_frontmost_pids": [
+        48643
+      ],
+      "samples": 271,
+      "space_change_notifications": 0,
+      "stderr": {
+        "bytes": 52,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-demand-runtime/003/renderer-disconnect/stderr",
+        "sha256": "7bb1702e94bf98764d3fba653632cd7f6867c59c67073807c84cdf155463602f"
+      },
+      "stdout": {
+        "bytes": 39,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-demand-runtime/003/renderer-disconnect/stdout",
+        "sha256": "63368eba917af47c95d75972cc4848602af6fd809db303079e072f5eb614d38e"
+      },
+      "timed_out": false
+    }
+  },
+  "presented_frames": 0,
+  "primary_result": {
+    "bytes": 2920,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-demand-runtime/003/result.json",
+    "sha256": "603745576fdc0799ad3363447d609e18b8844b3bf246fef6f0cc12e596bfbf28"
+  },
+  "schema": "generic-resource-demand-disconnect-v1",
+  "scope": "Actual network cut during Pending furnace load. Authentic worker completion/publication precedes ordinary refusal and native process exit, exercising pinned Completed/close/drain/owner-close control flow.",
+  "status": "PASS",
+  "traffic": {
+    "bytes": 39679,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-demand-runtime/003/relay-disconnect.json",
+    "sha256": "f13664b2c74a4efffd6b6923a78762e21cf2daac48d8e849a9ee28351d2bc131"
+  },
+  "typed_save": {
+    "actual_sha256": "b7720c5bd82397a5b2238e5613c9b6eaf3aa374caafea83dd6cd8d5d7a59d93b",
+    "bytes": 1712616,
+    "expected_sha256": "b7720c5bd82397a5b2238e5613c9b6eaf3aa374caafea83dd6cd8d5d7a59d93b",
+    "label": "exact-typed-disconnect-save",
+    "reply": {
+      "bytes": 1712616,
+      "durable": true,
+      "peer_highwater": 42,
+      "published": true,
+      "status": "durable"
+    }
+  }
+}

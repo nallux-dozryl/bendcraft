@@ -233,3 +233,19 @@ input or cooking-GUI claim. Pending network failure and worker/channel drain are
 a separate negative scenario, not implied by successful completion. The compact
 records are `generic_resource_world_sample_client_native_009.json` and
 `generic_resource_world_sample_demand_runtime_002.json`.
+
+
+The actual Pending network-failure negative also passed with the same009/017
+binaries. After the authentic FrameCatalog and first release-only heartbeat,
+the relay forwarded the recurring heartbeat to the actor, retained its genuine
+Ack and intentionally withheld downstream delivery by closing that socket.
+The worker still published the complete furnace family, then the client exited
+1 with `inventory query: Wire:ReceiveClosedFailedOrTimedOut`, without frames,
+timings or readbacks. Native completion reached the pinned Completed receive,
+channel close/drain and ordinary Window/Session close continuation. A fresh
+private lease recovered the exact512-cell sample and complete menu authority;
+durable bytes stayed unchanged until an explicit exact typed save. All owned
+groups reaped and focus/Spaces were unchanged. This exercises actual worker
+completion after network failure; it is not an independent heap/channel-row
+census or every buffered-pulse interleaving. Compact evidence is
+`generic_resource_world_sample_demand_disconnect_003.json`.
