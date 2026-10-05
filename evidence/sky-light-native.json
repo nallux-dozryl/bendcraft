@@ -1,0 +1,645 @@
+{
+  "status": "passed",
+  "pin": "26.3",
+  "command": "python3 tools/test_sky_light.py",
+  "test_source_sha256": "6b063970e7454f42295a27c9e2f89812a82dd59d597746c1e02a3e14acda0721",
+  "reference_sha256": "2fa2c37f884ad08c94181262b6383d6d5f58cd6e94d4f5c3a79cbebf18993304",
+  "java_observations_sha256": "0311a0e86f0afa030e0c739da90f67c560c83cbec99f5676e276bdad83c3e195",
+  "native": {
+    "mode": "fresh_native",
+    "source_sha256": {
+      "tests/sky_light_receiver.bend": "80d35bfa66eae5d0fbbecedc5832c8f88bca76bd35d8f9f71677437f7171ebd8",
+      "src/sky_light_world.bend": "8218fe6bebf65f11deffd2b4fb44a0370f9d2afb141d047d148b9c06fd5b366b",
+      "src/core.bend": "cb5a9a6ea1a5fe01127a58b1d45cd5c96c89a400e8cee282edd4f3acc16abb7e",
+      "src/schedule.bend": "93aa79895fe340e27ae5fd562102d5980f0938003eb1bbde669a84010779b8c9",
+      "src/section.bend": "02b5c15c57b173c7eb8b4c55a1433c10c192926e91af5e3e69050b4404044aa5",
+      "src/section_map.bend": "ded59d7938c02fd0876d65e37f9f90ea0cfebf3ca4bd107394342f8adbf33965",
+      "src/section_map_read.bend": "7a6a0d6fe8b8736ab64adb34b896074da709f91f2ae5bd205a7301c868690fc1",
+      "src/section_map_update.bend": "93a1cb016ac86eaaea2773ab8b75b95e93f1976348b3c2c500fc0de0cc9831be",
+      "src/block_light.bend": "e829015163260450b03c9a25e90d6f78df39e3797b77f9e03a917231fdd4e159",
+      "src/block_light_world.bend": "870727d29cd91025f34140efb06c7042eae8f52b3bb300f706bd682b7f0df456",
+      "src/sky_light.bend": "48a4ce2ee3a327b44477341ffdd9a3e7187446ec7b0b80ceee68140db48fb4e6",
+      "tests/block_light_receiver.bend": "a0411c90075118b53594147a2430b45ef43cc6b9ec284c27c1afe43c22f89899"
+    },
+    "binary_sha256": "a5a936c9dc77e3523eda74842adc302d97ef703f97e4b214e64b1b5cd294cfb6",
+    "c_sha256": "9e6072d643e663940322fccd437ba2d1878ef572ec65a95f8b2b286233cecd1e",
+    "build_checks": [
+      {
+        "kind": "ordinary",
+        "command": [
+          "/Users/chuah/.bend/bin/bend",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/sky_light_receiver.bend",
+          "--check-only"
+        ],
+        "seconds": 0.6525,
+        "exit": 0
+      },
+      {
+        "kind": "emit",
+        "command": [
+          "/Users/chuah/.bend/bin/bend",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/sky_light_receiver.bend",
+          "-o",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/sky-light-native/receiver.c"
+        ],
+        "seconds": 8.1591,
+        "exit": 0
+      },
+      {
+        "kind": "native",
+        "command": [
+          "/usr/bin/clang",
+          "-std=c11",
+          "-O3",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/sky-light-native/receiver.c",
+          "-lpthread",
+          "-lm",
+          "-o",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/sky-light-native/receiver"
+        ],
+        "seconds": 32.7759,
+        "exit": 0
+      }
+    ]
+  },
+  "java_receiver_rerun": false,
+  "scenarios": 8,
+  "phase_comparisons": 47,
+  "resident_java_block_and_light_pairs": 509,
+  "explicit_core_missing_pairs": 68,
+  "actual_core_array_cell_comparisons": 409600,
+  "runs": [
+    {
+      "kind": "open_sky",
+      "seconds": 0.9629,
+      "exit": 0
+    },
+    {
+      "kind": "roof_add_remove",
+      "seconds": 38.6133,
+      "exit": 0
+    },
+    {
+      "kind": "water_attenuation",
+      "seconds": 1.3838,
+      "exit": 0
+    },
+    {
+      "kind": "horizontal_shape_union",
+      "seconds": 1.3272,
+      "exit": 0
+    },
+    {
+      "kind": "vertical_shape_source_edge",
+      "seconds": 0.972,
+      "exit": 0
+    },
+    {
+      "kind": "lighting_enablement",
+      "seconds": 7.0393,
+      "exit": 0
+    },
+    {
+      "kind": "lighting_enablement_low_roof",
+      "seconds": 2.1964,
+      "exit": 0
+    },
+    {
+      "kind": "signed_chunk_boundary",
+      "seconds": 1.1772,
+      "exit": 0
+    }
+  ],
+  "budget_checks": [
+    {
+      "scenario": "horizontal_shape_union",
+      "budget": 1,
+      "seconds": 0.5009,
+      "exit": 0
+    },
+    {
+      "scenario": "water_attenuation",
+      "budget": 256,
+      "seconds": 0.6246,
+      "exit": 0
+    }
+  ],
+  "observations": [
+    {
+      "scenario": "open_sky",
+      "phase": "initial",
+      "budget": 64,
+      "resident_java_sample_pairs": 10,
+      "explicit_core_missing_sample_pairs": 2,
+      "core_cells_compared": 8192,
+      "actual_block_and_light_sha256": "5d160fa5bda581567679b44d1bb800293d5f9847fe4959f24a3d88cbdc965a9f",
+      "actual_core_arrays_sha256": "c98caf04108017d115e4a5714f51d158aca9f685f2597bf4169c9c2045fc3ed6"
+    },
+    {
+      "scenario": "open_sky",
+      "phase": "unchanged_check",
+      "budget": 64,
+      "resident_java_sample_pairs": 10,
+      "explicit_core_missing_sample_pairs": 2,
+      "core_cells_compared": 8192,
+      "actual_block_and_light_sha256": "5d160fa5bda581567679b44d1bb800293d5f9847fe4959f24a3d88cbdc965a9f",
+      "actual_core_arrays_sha256": "c98caf04108017d115e4a5714f51d158aca9f685f2597bf4169c9c2045fc3ed6"
+    },
+    {
+      "scenario": "roof_add_remove",
+      "phase": "initial",
+      "budget": 64,
+      "resident_java_sample_pairs": 14,
+      "explicit_core_missing_sample_pairs": 2,
+      "core_cells_compared": 8192,
+      "actual_block_and_light_sha256": "0b0b473197f0eda206eaa6ddd16f4026b4ef6ae99731f2e1b3f686f7fbea4e2e",
+      "actual_core_arrays_sha256": "c98caf04108017d115e4a5714f51d158aca9f685f2597bf4169c9c2045fc3ed6"
+    },
+    {
+      "scenario": "roof_add_remove",
+      "phase": "roof",
+      "budget": 64,
+      "resident_java_sample_pairs": 14,
+      "explicit_core_missing_sample_pairs": 2,
+      "core_cells_compared": 8192,
+      "actual_block_and_light_sha256": "08c8d5b1b06da038aa0d9cd57836ec2164b0f0791e226612f35fba3c2ef608fb",
+      "actual_core_arrays_sha256": "bd17e6f7a015e538f6d8926ea88774acc1f20f6b16f9f2f63ce895c191d57cfe"
+    },
+    {
+      "scenario": "roof_add_remove",
+      "phase": "hole",
+      "budget": 64,
+      "resident_java_sample_pairs": 14,
+      "explicit_core_missing_sample_pairs": 2,
+      "core_cells_compared": 8192,
+      "actual_block_and_light_sha256": "2a55cb9aa1938da5d4a002d442e46bcdc7c9d223fcc4f7623baddc2a20faabe3",
+      "actual_core_arrays_sha256": "770674d9610bab54901a2e963eef7267bbafdc77d049341ed45077fca8a050d2"
+    },
+    {
+      "scenario": "roof_add_remove",
+      "phase": "reclose",
+      "budget": 64,
+      "resident_java_sample_pairs": 14,
+      "explicit_core_missing_sample_pairs": 2,
+      "core_cells_compared": 8192,
+      "actual_block_and_light_sha256": "08c8d5b1b06da038aa0d9cd57836ec2164b0f0791e226612f35fba3c2ef608fb",
+      "actual_core_arrays_sha256": "bd17e6f7a015e538f6d8926ea88774acc1f20f6b16f9f2f63ce895c191d57cfe"
+    },
+    {
+      "scenario": "roof_add_remove",
+      "phase": "remove_roof",
+      "budget": 64,
+      "resident_java_sample_pairs": 14,
+      "explicit_core_missing_sample_pairs": 2,
+      "core_cells_compared": 8192,
+      "actual_block_and_light_sha256": "0b0b473197f0eda206eaa6ddd16f4026b4ef6ae99731f2e1b3f686f7fbea4e2e",
+      "actual_core_arrays_sha256": "c98caf04108017d115e4a5714f51d158aca9f685f2597bf4169c9c2045fc3ed6"
+    },
+    {
+      "scenario": "water_attenuation",
+      "phase": "initial",
+      "budget": 64,
+      "resident_java_sample_pairs": 10,
+      "explicit_core_missing_sample_pairs": 2,
+      "core_cells_compared": 8192,
+      "actual_block_and_light_sha256": "5d160fa5bda581567679b44d1bb800293d5f9847fe4959f24a3d88cbdc965a9f",
+      "actual_core_arrays_sha256": "8ee81f2c540fb559e877d91ee0d110a25e80060ebc561c87e5d83a151d035dc6"
+    },
+    {
+      "scenario": "water_attenuation",
+      "phase": "two_water",
+      "budget": 64,
+      "resident_java_sample_pairs": 10,
+      "explicit_core_missing_sample_pairs": 2,
+      "core_cells_compared": 8192,
+      "actual_block_and_light_sha256": "01ccc3961c4ef090b687aa855a7bae8fb85e9b8650ee409eaa4e018411dcfcad",
+      "actual_core_arrays_sha256": "b704fe45a9f59e96a6f9781002fd5873c658b7d206441615506cec1d2a3c2e28"
+    },
+    {
+      "scenario": "water_attenuation",
+      "phase": "one_water",
+      "budget": 64,
+      "resident_java_sample_pairs": 10,
+      "explicit_core_missing_sample_pairs": 2,
+      "core_cells_compared": 8192,
+      "actual_block_and_light_sha256": "f9bb05eee95527457f2599206de606b3123c35215703ca92ab915bcbb19c392d",
+      "actual_core_arrays_sha256": "4184d9558f5b79e03cfa00560186dc33edf9f8f809e7807af3b20c09610cea15"
+    },
+    {
+      "scenario": "water_attenuation",
+      "phase": "glass",
+      "budget": 64,
+      "resident_java_sample_pairs": 10,
+      "explicit_core_missing_sample_pairs": 2,
+      "core_cells_compared": 8192,
+      "actual_block_and_light_sha256": "e5b67cc89c425a7325fbb0ba9081fac6e513546cb5cbdcba373cf92e11a97070",
+      "actual_core_arrays_sha256": "698b244048464ccd8bf9c5f5401853999854652e9762761158ade4a16094819c"
+    },
+    {
+      "scenario": "water_attenuation",
+      "phase": "ice",
+      "budget": 64,
+      "resident_java_sample_pairs": 10,
+      "explicit_core_missing_sample_pairs": 2,
+      "core_cells_compared": 8192,
+      "actual_block_and_light_sha256": "17caa5cbadc0a0ae0b97e7ab6fde4ec8816f0ef892dbd3a2826c970188eac0f9",
+      "actual_core_arrays_sha256": "9fe9ea053a9f1daf8f4ef9b9f2502c1b35f7647b0219de00e528423386de1b8f"
+    },
+    {
+      "scenario": "water_attenuation",
+      "phase": "remove",
+      "budget": 64,
+      "resident_java_sample_pairs": 10,
+      "explicit_core_missing_sample_pairs": 2,
+      "core_cells_compared": 8192,
+      "actual_block_and_light_sha256": "5d160fa5bda581567679b44d1bb800293d5f9847fe4959f24a3d88cbdc965a9f",
+      "actual_core_arrays_sha256": "8ee81f2c540fb559e877d91ee0d110a25e80060ebc561c87e5d83a151d035dc6"
+    },
+    {
+      "scenario": "horizontal_shape_union",
+      "phase": "initial",
+      "budget": 64,
+      "resident_java_sample_pairs": 11,
+      "explicit_core_missing_sample_pairs": 0,
+      "core_cells_compared": 8192,
+      "actual_block_and_light_sha256": "a464c6996f58c2d77882d1f88d0997db9771c678c5d87408d8c359681f9bbf50",
+      "actual_core_arrays_sha256": "2c249e068e97f8a450e828451ee34747e64e63328b4d8f845a4f9ce73088e5b0"
+    },
+    {
+      "scenario": "horizontal_shape_union",
+      "phase": "complementary",
+      "budget": 64,
+      "resident_java_sample_pairs": 11,
+      "explicit_core_missing_sample_pairs": 0,
+      "core_cells_compared": 8192,
+      "actual_block_and_light_sha256": "8c1cb574b647c2cf63e91f6b7f09f872e9a51501224e56a679d05706bb552bdf",
+      "actual_core_arrays_sha256": "16d3f7e4cbefebb19db44f8c49ab5f8cddccd1e49b19993e9d37525aff189118"
+    },
+    {
+      "scenario": "horizontal_shape_union",
+      "phase": "matching_halves",
+      "budget": 64,
+      "resident_java_sample_pairs": 11,
+      "explicit_core_missing_sample_pairs": 0,
+      "core_cells_compared": 8192,
+      "actual_block_and_light_sha256": "2d2048ce282e0b9e7a1157856ebec4005d58f2207fa5a5c94d2882a365d4d6d8",
+      "actual_core_arrays_sha256": "296240e68c7751a0115fba9aaf6aae14490f9f3fbd15c1786bc36b98710d5adb"
+    },
+    {
+      "scenario": "horizontal_shape_union",
+      "phase": "reclose",
+      "budget": 64,
+      "resident_java_sample_pairs": 11,
+      "explicit_core_missing_sample_pairs": 0,
+      "core_cells_compared": 8192,
+      "actual_block_and_light_sha256": "8c1cb574b647c2cf63e91f6b7f09f872e9a51501224e56a679d05706bb552bdf",
+      "actual_core_arrays_sha256": "16d3f7e4cbefebb19db44f8c49ab5f8cddccd1e49b19993e9d37525aff189118"
+    },
+    {
+      "scenario": "horizontal_shape_union",
+      "phase": "clear",
+      "budget": 64,
+      "resident_java_sample_pairs": 11,
+      "explicit_core_missing_sample_pairs": 0,
+      "core_cells_compared": 8192,
+      "actual_block_and_light_sha256": "a464c6996f58c2d77882d1f88d0997db9771c678c5d87408d8c359681f9bbf50",
+      "actual_core_arrays_sha256": "2c249e068e97f8a450e828451ee34747e64e63328b4d8f845a4f9ce73088e5b0"
+    },
+    {
+      "scenario": "vertical_shape_source_edge",
+      "phase": "initial",
+      "budget": 64,
+      "resident_java_sample_pairs": 10,
+      "explicit_core_missing_sample_pairs": 2,
+      "core_cells_compared": 8192,
+      "actual_block_and_light_sha256": "5d160fa5bda581567679b44d1bb800293d5f9847fe4959f24a3d88cbdc965a9f",
+      "actual_core_arrays_sha256": "8ee81f2c540fb559e877d91ee0d110a25e80060ebc561c87e5d83a151d035dc6"
+    },
+    {
+      "scenario": "vertical_shape_source_edge",
+      "phase": "bottom_slab",
+      "budget": 64,
+      "resident_java_sample_pairs": 10,
+      "explicit_core_missing_sample_pairs": 2,
+      "core_cells_compared": 8192,
+      "actual_block_and_light_sha256": "de0285b65b23f318f42a7c0ed679606e7590d7785a4afb37613cb5fffccdde86",
+      "actual_core_arrays_sha256": "4f722c0d6555af1925aeb7cca185c02af9be473dd370d7f6370837ccd376ffb5"
+    },
+    {
+      "scenario": "vertical_shape_source_edge",
+      "phase": "top_slab",
+      "budget": 64,
+      "resident_java_sample_pairs": 10,
+      "explicit_core_missing_sample_pairs": 2,
+      "core_cells_compared": 8192,
+      "actual_block_and_light_sha256": "c07d92bf1ca1d1596724ef3ad30d81bb79b239bba8faa273029fc2dd0d179eaf",
+      "actual_core_arrays_sha256": "c3bab29c8608192d6fcb2f306ba92c78a6e6b628c1512e5b659c62e260b8ea7d"
+    },
+    {
+      "scenario": "vertical_shape_source_edge",
+      "phase": "wet_bottom",
+      "budget": 64,
+      "resident_java_sample_pairs": 10,
+      "explicit_core_missing_sample_pairs": 2,
+      "core_cells_compared": 8192,
+      "actual_block_and_light_sha256": "4d9816bb347c53812c737e6487880f9680507fde971c7637df1ff568c3cc637a",
+      "actual_core_arrays_sha256": "e886265466c5f0f9b45dd9a8999656392bdcf1df2db0df09996bc168edef0d10"
+    },
+    {
+      "scenario": "vertical_shape_source_edge",
+      "phase": "clear",
+      "budget": 64,
+      "resident_java_sample_pairs": 10,
+      "explicit_core_missing_sample_pairs": 2,
+      "core_cells_compared": 8192,
+      "actual_block_and_light_sha256": "5d160fa5bda581567679b44d1bb800293d5f9847fe4959f24a3d88cbdc965a9f",
+      "actual_core_arrays_sha256": "8ee81f2c540fb559e877d91ee0d110a25e80060ebc561c87e5d83a151d035dc6"
+    },
+    {
+      "scenario": "lighting_enablement",
+      "phase": "initial",
+      "budget": 64,
+      "resident_java_sample_pairs": 10,
+      "explicit_core_missing_sample_pairs": 2,
+      "core_cells_compared": 8192,
+      "actual_block_and_light_sha256": "9d6235040678b0ec3a4c304b674ebe12cd52a6c7345d38e1343177b34df2885f",
+      "actual_core_arrays_sha256": "c98caf04108017d115e4a5714f51d158aca9f685f2597bf4169c9c2045fc3ed6"
+    },
+    {
+      "scenario": "lighting_enablement",
+      "phase": "enable_only",
+      "budget": 64,
+      "resident_java_sample_pairs": 10,
+      "explicit_core_missing_sample_pairs": 2,
+      "core_cells_compared": 8192,
+      "actual_block_and_light_sha256": "9d6235040678b0ec3a4c304b674ebe12cd52a6c7345d38e1343177b34df2885f",
+      "actual_core_arrays_sha256": "c98caf04108017d115e4a5714f51d158aca9f685f2597bf4169c9c2045fc3ed6"
+    },
+    {
+      "scenario": "lighting_enablement",
+      "phase": "propagate",
+      "budget": 64,
+      "resident_java_sample_pairs": 10,
+      "explicit_core_missing_sample_pairs": 2,
+      "core_cells_compared": 8192,
+      "actual_block_and_light_sha256": "5d160fa5bda581567679b44d1bb800293d5f9847fe4959f24a3d88cbdc965a9f",
+      "actual_core_arrays_sha256": "c98caf04108017d115e4a5714f51d158aca9f685f2597bf4169c9c2045fc3ed6"
+    },
+    {
+      "scenario": "lighting_enablement",
+      "phase": "disable",
+      "budget": 64,
+      "resident_java_sample_pairs": 10,
+      "explicit_core_missing_sample_pairs": 2,
+      "core_cells_compared": 8192,
+      "actual_block_and_light_sha256": "5d160fa5bda581567679b44d1bb800293d5f9847fe4959f24a3d88cbdc965a9f",
+      "actual_core_arrays_sha256": "c98caf04108017d115e4a5714f51d158aca9f685f2597bf4169c9c2045fc3ed6"
+    },
+    {
+      "scenario": "lighting_enablement",
+      "phase": "disabled_after_roof_edit",
+      "budget": 64,
+      "resident_java_sample_pairs": 10,
+      "explicit_core_missing_sample_pairs": 2,
+      "core_cells_compared": 8192,
+      "actual_block_and_light_sha256": "89eff354e3c3745e5012d5c4c57e4ed00bff7f65672d98310f28dafb11aa7c60",
+      "actual_core_arrays_sha256": "bd17e6f7a015e538f6d8926ea88774acc1f20f6b16f9f2f63ce895c191d57cfe"
+    },
+    {
+      "scenario": "lighting_enablement",
+      "phase": "reenable_only_after_edit",
+      "budget": 64,
+      "resident_java_sample_pairs": 10,
+      "explicit_core_missing_sample_pairs": 2,
+      "core_cells_compared": 8192,
+      "actual_block_and_light_sha256": "89eff354e3c3745e5012d5c4c57e4ed00bff7f65672d98310f28dafb11aa7c60",
+      "actual_core_arrays_sha256": "bd17e6f7a015e538f6d8926ea88774acc1f20f6b16f9f2f63ce895c191d57cfe"
+    },
+    {
+      "scenario": "lighting_enablement",
+      "phase": "propagate_after_reenable",
+      "budget": 64,
+      "resident_java_sample_pairs": 10,
+      "explicit_core_missing_sample_pairs": 2,
+      "core_cells_compared": 8192,
+      "actual_block_and_light_sha256": "89eff354e3c3745e5012d5c4c57e4ed00bff7f65672d98310f28dafb11aa7c60",
+      "actual_core_arrays_sha256": "bd17e6f7a015e538f6d8926ea88774acc1f20f6b16f9f2f63ce895c191d57cfe"
+    },
+    {
+      "scenario": "lighting_enablement_low_roof",
+      "phase": "initial",
+      "budget": 64,
+      "resident_java_sample_pairs": 10,
+      "explicit_core_missing_sample_pairs": 2,
+      "core_cells_compared": 8192,
+      "actual_block_and_light_sha256": "0bd55c877a69504c8f76b04199ca66a4d8a82166c1e109ab775420aade7b5009",
+      "actual_core_arrays_sha256": "76d7c4df834c687317b72bfa449763b1c1ca108a77b055b04e6f28b204c247dd"
+    },
+    {
+      "scenario": "lighting_enablement_low_roof",
+      "phase": "enable_only",
+      "budget": 64,
+      "resident_java_sample_pairs": 10,
+      "explicit_core_missing_sample_pairs": 2,
+      "core_cells_compared": 8192,
+      "actual_block_and_light_sha256": "9a809c3704f5d0418f8882ebfd4a492ee1717b1b72342849f92ecbb72904d22a",
+      "actual_core_arrays_sha256": "76d7c4df834c687317b72bfa449763b1c1ca108a77b055b04e6f28b204c247dd"
+    },
+    {
+      "scenario": "lighting_enablement_low_roof",
+      "phase": "propagate",
+      "budget": 64,
+      "resident_java_sample_pairs": 10,
+      "explicit_core_missing_sample_pairs": 2,
+      "core_cells_compared": 8192,
+      "actual_block_and_light_sha256": "58ba0eea2b222f3129f97521379f23242b1a58186397f763dd52bc9c6be04023",
+      "actual_core_arrays_sha256": "76d7c4df834c687317b72bfa449763b1c1ca108a77b055b04e6f28b204c247dd"
+    },
+    {
+      "scenario": "signed_chunk_boundary",
+      "phase": "initial",
+      "budget": 64,
+      "resident_java_sample_pairs": 13,
+      "explicit_core_missing_sample_pairs": 0,
+      "core_cells_compared": 16384,
+      "actual_block_and_light_sha256": "d47493de875dddbac66f6379435313063308dd7dbf1037a8237ffa9eb6bf6007",
+      "actual_core_arrays_sha256": "fabdd9f7340797399e7617bbe9c37d71907de8fb3bcd70a82485d0a23fa472aa"
+    },
+    {
+      "scenario": "signed_chunk_boundary",
+      "phase": "closed",
+      "budget": 64,
+      "resident_java_sample_pairs": 13,
+      "explicit_core_missing_sample_pairs": 0,
+      "core_cells_compared": 16384,
+      "actual_block_and_light_sha256": "ef64e068ee23c1fb5de301f0c7444f1feb13a120d2955fbcfa75188d2158fc40",
+      "actual_core_arrays_sha256": "cc05fd1789606d9263050536143949b0d8b026ca8922e4aecedf610f6210363a"
+    },
+    {
+      "scenario": "signed_chunk_boundary",
+      "phase": "open",
+      "budget": 64,
+      "resident_java_sample_pairs": 13,
+      "explicit_core_missing_sample_pairs": 0,
+      "core_cells_compared": 16384,
+      "actual_block_and_light_sha256": "d47493de875dddbac66f6379435313063308dd7dbf1037a8237ffa9eb6bf6007",
+      "actual_core_arrays_sha256": "fabdd9f7340797399e7617bbe9c37d71907de8fb3bcd70a82485d0a23fa472aa"
+    },
+    {
+      "scenario": "horizontal_shape_union",
+      "phase": "initial",
+      "budget": 1,
+      "resident_java_sample_pairs": 11,
+      "explicit_core_missing_sample_pairs": 0,
+      "core_cells_compared": 8192,
+      "actual_block_and_light_sha256": "a464c6996f58c2d77882d1f88d0997db9771c678c5d87408d8c359681f9bbf50",
+      "actual_core_arrays_sha256": "2c249e068e97f8a450e828451ee34747e64e63328b4d8f845a4f9ce73088e5b0"
+    },
+    {
+      "scenario": "horizontal_shape_union",
+      "phase": "complementary",
+      "budget": 1,
+      "resident_java_sample_pairs": 11,
+      "explicit_core_missing_sample_pairs": 0,
+      "core_cells_compared": 8192,
+      "actual_block_and_light_sha256": "8c1cb574b647c2cf63e91f6b7f09f872e9a51501224e56a679d05706bb552bdf",
+      "actual_core_arrays_sha256": "16d3f7e4cbefebb19db44f8c49ab5f8cddccd1e49b19993e9d37525aff189118"
+    },
+    {
+      "scenario": "horizontal_shape_union",
+      "phase": "matching_halves",
+      "budget": 1,
+      "resident_java_sample_pairs": 11,
+      "explicit_core_missing_sample_pairs": 0,
+      "core_cells_compared": 8192,
+      "actual_block_and_light_sha256": "2d2048ce282e0b9e7a1157856ebec4005d58f2207fa5a5c94d2882a365d4d6d8",
+      "actual_core_arrays_sha256": "296240e68c7751a0115fba9aaf6aae14490f9f3fbd15c1786bc36b98710d5adb"
+    },
+    {
+      "scenario": "horizontal_shape_union",
+      "phase": "reclose",
+      "budget": 1,
+      "resident_java_sample_pairs": 11,
+      "explicit_core_missing_sample_pairs": 0,
+      "core_cells_compared": 8192,
+      "actual_block_and_light_sha256": "8c1cb574b647c2cf63e91f6b7f09f872e9a51501224e56a679d05706bb552bdf",
+      "actual_core_arrays_sha256": "16d3f7e4cbefebb19db44f8c49ab5f8cddccd1e49b19993e9d37525aff189118"
+    },
+    {
+      "scenario": "horizontal_shape_union",
+      "phase": "clear",
+      "budget": 1,
+      "resident_java_sample_pairs": 11,
+      "explicit_core_missing_sample_pairs": 0,
+      "core_cells_compared": 8192,
+      "actual_block_and_light_sha256": "a464c6996f58c2d77882d1f88d0997db9771c678c5d87408d8c359681f9bbf50",
+      "actual_core_arrays_sha256": "2c249e068e97f8a450e828451ee34747e64e63328b4d8f845a4f9ce73088e5b0"
+    },
+    {
+      "scenario": "water_attenuation",
+      "phase": "initial",
+      "budget": 256,
+      "resident_java_sample_pairs": 10,
+      "explicit_core_missing_sample_pairs": 2,
+      "core_cells_compared": 8192,
+      "actual_block_and_light_sha256": "5d160fa5bda581567679b44d1bb800293d5f9847fe4959f24a3d88cbdc965a9f",
+      "actual_core_arrays_sha256": "8ee81f2c540fb559e877d91ee0d110a25e80060ebc561c87e5d83a151d035dc6"
+    },
+    {
+      "scenario": "water_attenuation",
+      "phase": "two_water",
+      "budget": 256,
+      "resident_java_sample_pairs": 10,
+      "explicit_core_missing_sample_pairs": 2,
+      "core_cells_compared": 8192,
+      "actual_block_and_light_sha256": "01ccc3961c4ef090b687aa855a7bae8fb85e9b8650ee409eaa4e018411dcfcad",
+      "actual_core_arrays_sha256": "b704fe45a9f59e96a6f9781002fd5873c658b7d206441615506cec1d2a3c2e28"
+    },
+    {
+      "scenario": "water_attenuation",
+      "phase": "one_water",
+      "budget": 256,
+      "resident_java_sample_pairs": 10,
+      "explicit_core_missing_sample_pairs": 2,
+      "core_cells_compared": 8192,
+      "actual_block_and_light_sha256": "f9bb05eee95527457f2599206de606b3123c35215703ca92ab915bcbb19c392d",
+      "actual_core_arrays_sha256": "4184d9558f5b79e03cfa00560186dc33edf9f8f809e7807af3b20c09610cea15"
+    },
+    {
+      "scenario": "water_attenuation",
+      "phase": "glass",
+      "budget": 256,
+      "resident_java_sample_pairs": 10,
+      "explicit_core_missing_sample_pairs": 2,
+      "core_cells_compared": 8192,
+      "actual_block_and_light_sha256": "e5b67cc89c425a7325fbb0ba9081fac6e513546cb5cbdcba373cf92e11a97070",
+      "actual_core_arrays_sha256": "698b244048464ccd8bf9c5f5401853999854652e9762761158ade4a16094819c"
+    },
+    {
+      "scenario": "water_attenuation",
+      "phase": "ice",
+      "budget": 256,
+      "resident_java_sample_pairs": 10,
+      "explicit_core_missing_sample_pairs": 2,
+      "core_cells_compared": 8192,
+      "actual_block_and_light_sha256": "17caa5cbadc0a0ae0b97e7ab6fde4ec8816f0ef892dbd3a2826c970188eac0f9",
+      "actual_core_arrays_sha256": "9fe9ea053a9f1daf8f4ef9b9f2502c1b35f7647b0219de00e528423386de1b8f"
+    },
+    {
+      "scenario": "water_attenuation",
+      "phase": "remove",
+      "budget": 256,
+      "resident_java_sample_pairs": 10,
+      "explicit_core_missing_sample_pairs": 2,
+      "core_cells_compared": 8192,
+      "actual_block_and_light_sha256": "5d160fa5bda581567679b44d1bb800293d5f9847fe4959f24a3d88cbdc965a9f",
+      "actual_core_arrays_sha256": "8ee81f2c540fb559e877d91ee0d110a25e80060ebc561c87e5d83a151d035dc6"
+    }
+  ],
+  "guards": {
+    "command": [
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/sky-light-native/receiver",
+      "--gpu",
+      "off",
+      "--threads",
+      "1",
+      "--",
+      "guards"
+    ],
+    "seconds": 0.4709,
+    "exit": 0,
+    "refusals": [
+      "InvalidBounds",
+      "UnknownSection",
+      "MissingDescriptor"
+    ],
+    "retries": [
+      "correct bounds",
+      "KnownEmpty admission",
+      "restore descriptor"
+    ],
+    "all_clock_fields_retained": true,
+    "future_core_mutation_retained": true,
+    "actual_core_arrays_equal": true,
+    "known_empty_does_not_fabricate_core_residency": true
+  },
+  "resident_halo_guard": {
+    "command": [
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/sky-light-native/receiver",
+      "--gpu",
+      "off",
+      "--threads",
+      "1",
+      "--",
+      "halo"
+    ],
+    "seconds": 0.4107,
+    "exit": 0,
+    "resident_sections_below_build_minimum_retained": true,
+    "direct_source_membership_extends_one_section_below_minimum": true,
+    "all_clock_fields_retained": true,
+    "actual_core_arrays_equal": true,
+    "boundary": "Declared native Core residency/source-membership regression for all-air one-section storage halo. No additional Java execution or sparse Java-storage equivalence claim."
+  },
+  "boundary": "Actual native Bend Core.World/Section arrays, source scans from Core physical descriptors, initial source bootstrap, accepted Core edits with resumable refresh, source enablement/propagation lifecycle, and settled Core-aware samples. Full resident arrays and all clock fields checked through every phase; guard retains a future Core mutation and retries rejected bounds/policy/descriptor. Geometry and actual Java descriptors/faces are fixture inputs; expected levels and source heights never enter Bend. Java public above-top/absent lookup is mapped explicitly to None/None when Core lacks residency. No Java rerun, rendering/lightmap, save/packet persistence, world-scale performance, or independent-kernel proof claim."
+}
