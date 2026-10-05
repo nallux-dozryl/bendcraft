@@ -27,10 +27,39 @@ def transaction():
                 raise RuntimeError('private shutdown authentication refused: ' + str(hello))
             break
         epoch = hello[2]
-        reply = exchange([1, 1, epoch, 1, [10]])
-        if len(reply) != 7 or reply[:4] != [1, 6, epoch, 1] or not isinstance(reply[4], bool):
+        sequence = 1
+        if os.environ.get('MC_COOKING_PROTOCOL') == '1':
+            def cooking(command, label, *, require_accepted=True):
+                nonlocal sequence
+                reply = exchange([1, 1, epoch, sequence, command])
+                expected = [1, 8, epoch, sequence]
+                sequence += 1
+                if (not isinstance(reply, list) or len(reply) != 7 or reply[:4] != expected
+                        or type(reply[4]) is not bool or not isinstance(reply[5], str)
+                        or not isinstance(reply[6], list) or len(reply[6]) != 3):
+                    raise RuntimeError('uncorrelated cooking shutdown reply: ' + str(reply))
+                print(json.dumps({'event': label, 'epoch': epoch, 'sequence': expected[3],
+                                  'accepted': reply[4], 'message': reply[5],
+                                  'cooking': reply[6]}, separators=(',', ':')), flush=True)
+                if require_accepted and reply[4] is not True:
+                    raise RuntimeError('Cooking shutdown refused: ' + reply[5])
+                return reply[6]
+
+            # Inspect may refuse a stale target while retaining a valid menu
+            # handle. Close has its own menu/player authority and must still run.
+            current = cooking([15, 0], 'client.cooking-inspect', require_accepted=False)
+            handle = current[0]
+            if handle != [0]:
+                if (not isinstance(handle, list) or len(handle) != 7 or handle[0] != 1
+                        or type(handle[1]) is not int or not 0 < handle[1] < 4294967296):
+                    raise RuntimeError('invalid current cooking handle: ' + str(handle))
+                closed = cooking([18, handle[1]], 'client.cooking-close')
+                if closed[0] != [0]:
+                    raise RuntimeError('CookingClose did not acknowledge a closed handle')
+        reply = exchange([1, 1, epoch, sequence, [10]])
+        if len(reply) != 7 or reply[:4] != [1, 6, epoch, sequence] or not isinstance(reply[4], bool):
             raise RuntimeError('uncorrelated MenuClose reply: ' + str(reply))
-        print(json.dumps({'event': 'client.menu-close', 'epoch': epoch, 'sequence': 1,
+        print(json.dumps({'event': 'client.menu-close', 'epoch': epoch, 'sequence': sequence,
                           'accepted': reply[4], 'message': reply[5], 'menu': reply[6]}, separators=(',', ':')), flush=True)
         if reply[4] is not True:
             raise RuntimeError('MenuClose refused: ' + str(reply[5]))

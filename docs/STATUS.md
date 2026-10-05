@@ -25,6 +25,24 @@ remains open. See
 `evidence/generic_resource_world_sample_client_native_009.json` and the actual
 `build/generic-resource-world-sample-demand-runtime/002/result.json`.
 
+Cooking delivery now uses accepted actor022. The coherent010 plus Generic
+caller passes the original full5812-declaration check and selected new sender
+capture measurement. Client011 then hits its unchanged600-second producer
+limit in the historical block-model integer scanner, before producing C.
+Changed012 retains that graph plus only the already native-verified scalar
+scanner admission repair; its actual build is running. No new cooking client
+executable or public promotion is claimed yet. Root shutdown acceptance passes
+actual cooking Inspect/Close, carried return, full-inventory refusal retaining
+the old save and same actor, reconnect/recovery, and the already-closed route.
+A genuine empty-furnace remove/recreate also passes refused stale Inspect then
+accepted Close, real carried-item return, incarnation3→4 and complete durable
+save reconstruction. The initial stale test's ordered-body oracle failure is
+retained: recreation appends the target after unchanged entries. See
+`evidence/playable-client-cooking-close-native-001.json`, `-002.json` and
+`-003.json`. The historical user actor occupies both25565/25566; public
+adoption will choose free default loopback ports and supply a separate demo
+save. Foreground OS input and matched responsiveness remain unverified.
+
 Frozen actor021 joins captured cooking Dirty sources, an authenticated live
 publication journal, lossless incarnation-map recovery, format4 full saves,
 and an atomic entity SceneFrame command. The publication codec passes 22
