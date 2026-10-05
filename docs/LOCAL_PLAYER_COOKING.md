@@ -179,3 +179,54 @@ Run the changed full Entry source check with:
 ```
 python3 tools/test_local_player_cooking_source.py --generation 20
 ```
+
+The frozen generation 20 native consumer now passes the actual private actor
+path in `evidence/playable-client-cooking-entities-native-005.json`: five
+complete atomic saves, two SIGKILL/cold restores, two complete item entities
+and an XP orb of value 7. It observes the exact retained record/factory/ID
+fields, constructor-clock bounds, 45 Level RNG draws during publication and
+18 draws from cold empty-drop delivery, and clears the old physical Details.
+This is the narrow real delivery/save/recovery scenario, not item pickup,
+multi-Level ownership or visible gameplay acceptance.
+
+The following generation 21 working source joins direct player block edits to
+the same cooking Sidecar. `Session.block_action_detached` transfers its actual
+Engine, Sidecar and motion tables to `BI.execute_with_owner` with
+`CookingEdit.edit`. The returned continuation installs all three returned
+owners and preserves the player record, inventory, persistence header/lease,
+view, physical controls, block-inside receiver, diagnostic and all runtime
+tails. Refused outcomes also publish their actual returned owners; the Session
+does not infer rollback from `Outcome.changed=False`.
+
+Accepted edits use the real `CWEdit.player_edit` path and append its ordered
+effects once. Only new accepted OwnerReset markers clear keyed Details and
+increment container incarnation. The same retained entity/RNG/clock/geometry
+carrier remains in the Sidecar. Rejected edits do not publish a reset. The
+block-interaction owner separately added pinned full-cube furnace, smoker and
+blast-furnace outlines for picking; campfire picking remains unsupported, and
+this outline admission does not add cooker collision support to the geometry
+catalog.
+
+`evidence/local-player-cooking-source-021.json` records one complete original
+Entry Book plus the two actual Session edit laws: 9054 declarations, 191 files,
+zero holes and 18.0295 seconds. Both laws pass ordinary checking. The pure
+returned-owner continuation also passes the independent kernel in 0.014642
+seconds with zero export exclusions, recorded in
+`evidence/local-player-cooking-session-edit-proof-021.json`. This root permits
+arbitrary returned Engine/Sidecar/tables, inventory and player/save/receiver
+tails and either outcome. It does not prove BI ray/placement/admission,
+`Runtime.attach` losslessness, cooking lifecycle algorithms or native player
+edit gameplay. The actual detached-consumer law uses the complete real BI
+result as its explicit premise and receives only the ordinary verdict.
+
+The host receipt helper initially compared its text result with bytes after
+both compiler and kernel had already passed. That assertion was repaired and
+the existing outputs finalized after verifying all 191 source hashes. Its
+failure is retained in the same build folder; neither check was repeated.
+The frozen generation 20 graph and its consumer receipt remain unchanged.
+
+Run the changed consumer and owner-law check with:
+
+```
+python3 tools/test_local_player_cooking_source.py --generation 21 --edit-proof
+```

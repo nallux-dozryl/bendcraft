@@ -7,6 +7,7 @@ import ./local_player_cooking_storage.bend as CookingStorage
 import ./local_player_cooking_entities.bend as CookingEntities
 import ./local_player_cooking_bootstrap.bend as CookingBootstrap
 import ./local_player_cooking_geometry.bend as CookingGeometry
+import ./local_player_cooking_edit.bend as CookingEdit
 import ./local_collision_world.bend as Collision
 import ./cooking_effect_entities_model.bend as CookingModel
 import ./random.bend as Random
@@ -723,13 +724,16 @@ def reserve_local_player(state:State) -> State & Result<&2,&2,String,C.Capabilit
   State{player,Shell{identity,path,+highwater,limits,lease,maximum,catalog,inventory,fresh,generation,cooking}} = state
   reserved_local_peer(State{player,Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation,cooking}},P.next_peer(highwater))
 
-def block_action_executed(shell:Shell,record:PR.Record,palette:Maybe<&2,W.Palette>,region:W.Bounds,cache:Maybe<&2,W.SnapshotCache>,buttons:PI.Buttons,mouse:MI.State,options:MI.Options,receiver:Inside.Receiver,error:Maybe<&2,String>,state_tail:List<&1,X.State>,motion_tail:List<&1,MH.State>,metadata_tail:List<&2,X.Metadata>,result:G.Engine & T.Tables & BI.Outcome) -> State & BI.Outcome:
-  (engine,tables,outcome) = result
-  (State{R.attach(engine,record,R.Detached{tables,palette,region,cache,buttons,mouse,options, receiver, error,state_tail,motion_tail,metadata_tail}),shell},outcome)
+def block_action_executed(restore:Cooking.Sidecar -> Shell,record:PR.Record,palette:Maybe<&2,W.Palette>,region:W.Bounds,cache:Maybe<&2,W.SnapshotCache>,buttons:PI.Buttons,mouse:MI.State,options:MI.Options,receiver:Inside.Receiver,error:Maybe<&2,String>,state_tail:List<&1,X.State>,motion_tail:List<&1,MH.State>,metadata_tail:List<&2,X.Metadata>,result:G.Engine & Cooking.Sidecar & T.Tables & BI.Outcome) -> State & BI.Outcome:
+  (engine,cooking,tables,outcome) = result
+  (State{R.attach(engine,record,R.Detached{tables,palette,region,cache,buttons,mouse,options, receiver, error,state_tail,motion_tail,metadata_tail}),restore(cooking)},outcome)
 
 def block_action_detached(shell:Shell,abilities:I.Abilities,held:Inv.Slot,cap:C.Capability,sequence:Nat,button:U32,result:G.Engine & PR.Record & R.Detached) -> State & BI.Outcome:
+  Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation,cooking} = shell
   (engine,+record,R.Detached{tables,palette,region,cache,buttons,mouse,options, receiver, error,state_tail,motion_tail,metadata_tail}) = result
-  block_action_executed(shell,record,palette,region,cache,buttons,mouse,options,receiver,error,state_tail,motion_tail,metadata_tail,BI.execute(engine,record,tables,abilities,held,cap,sequence,button))
+  block_action_executed(cooking => Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation,cooking},
+    record,palette,region,cache,buttons,mouse,options,receiver,error,state_tail,motion_tail,metadata_tail,
+    BI.execute_with_owner(Cooking.Sidecar,CookingEdit.edit,cooking,engine,record,tables,abilities,held,cap,sequence,button))
 
 def block_action_record(abilities:I.Abilities,held:Inv.Slot,cap:C.Capability,sequence:Nat,button:U32,shell:Shell,result:X.State & Result<&2,&2,String,PR.Record>) -> State & BI.Outcome:
   (player,status) = result
