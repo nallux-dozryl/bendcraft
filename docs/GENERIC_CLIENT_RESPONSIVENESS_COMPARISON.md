@@ -114,3 +114,52 @@ the023 command. The quiet process gate must still pass at launch and through
 each arm, with protected012 retained. No new build or008 replay is needed.
 This paused drawing comparison does not measure active server20TPS or remedy
 the separately observed67-second two-recipe cooking sequence.
+
+The accepted023 cohort is now complete. Attempt008 first passed actual
+initialization and the full010 precheck. Its012 renderer returned matching
+images, but the observer incorrectly expected `CookingInspect0` on every
+frame. Frozen `remote_resource_presenter.inspect_selected` instead discovers
+the handle once; after the authentic closed snapshot is known, it requests
+ordinary `MenuInspect`. The old assertion stopped before012's AFTER-render
+player/clock inspection and durable save. That negative remains intact in
+[receipt008](../evidence/generic-client-responsiveness-comparison-008.json).
+
+The observer correction accepts exactly that first15/reply8, subsequent8/reply6
+sequence. Read-only validation of both retained streams passed; missing
+initial discovery and repeated subsequent discovery were refused. The
+continuation authenticated all previous input pins, actual saved initialization,
+accepted010 report/images and quiet-load observations. It reused those completed
+stages and ran one corrected012 precheck to observe its missing owner/save stage,
+then the four original ABBA timing trials. No product, compiler, binary, image
+or workload was changed.
+
+```sh
+python3 -B tools/generic_client_responsiveness_comparison.py --actor-generation 23 --clients 010,012 --resume-from build/generic-client-responsiveness-comparison/008 --native
+```
+
+[Receipt009](../evidence/generic-client-responsiveness-comparison-009.json)
+records `PASS_NARROW`. All2,073,600 RGB pixels matched; every arm retained the
+same complete1,712,757-byte saved owner, SHA
+`f09c49a9bd45ff5239ef0573b2bac976d96290e4e79866122cff8c437b594679`.
+Actual sample/menu correlation, full player/main/clock inspections and durable
+save acknowledgements passed. Timed order was010,012,012,010, from
+06:07:39 through06:12:08UTC on2026-10-05. Every trial retained all eight
+measurements and excluded the predeclared first two from its warm summary.
+
+| Client | Warm observations | Median | Mean | Range |
+|---|---:|---:|---:|---:|
+|010|12|424.5ms|426.0ms|421–433ms|
+|012|12|430.0ms|434.7ms|428–451ms|
+
+The012 warm median was5.5ms higher in this cohort; the observed ranges overlap.
+These are measurements of the retained deployed binaries, including their
+declared native build flags, rather than an isolated caller-cost attribution.
+The raw traced precheck values and startup/save durations do not enter the
+warm summary. This result supports neither a whole-game FPS claim nor active
+cooking/tick cadence.
+
+No foreign native/compiler work was observed. Protected012 stayed present
+throughout the four timed trials, with sampledCPU11.3–28.4% and RSS
+16,144–16,752KiB. Focus and Spaces remained unchanged; every owned actor,
+relay, renderer and observer group was reaped. The post-run inventory contained
+only protected012. No further native replay or build is queued.

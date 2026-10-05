@@ -1,0 +1,59 @@
+{
+  "error": {
+    "message": "Actual complete menu reply differs",
+    "type": "AssertionError"
+  },
+  "initialized_baseline": {
+    "acknowledgement": {
+      "bytes": 1712757,
+      "durable": true,
+      "peer_highwater": 42,
+      "published": true,
+      "status": "durable"
+    },
+    "actual_unchanged_Record": true,
+    "baseline": {
+      "bytes": 1712757,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-client-responsiveness-comparison/008/initialized-baseline/world.nbt",
+      "sha256": "ecd42a9805ae125de5ce094ac4296d85f846180275bb80a8c646b83eaad9a9d5"
+    },
+    "loads": {
+      "foreign_work_observed": false,
+      "protected012_cpu_percent": [
+        16.8,
+        28.3
+      ],
+      "protected012_rss_kib": [
+        16704,
+        16752
+      ],
+      "receipt": {
+        "bytes": 37648362,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-client-responsiveness-comparison/008/initialized-baseline/loads.json",
+        "sha256": "8fded726f3bd822b0e7ec8b369b6e0be737afd643e8b0c2ee66f946bddd75060"
+      },
+      "samples": 212
+    },
+    "purpose": "Single real factory initialization, persisted before any comparison arm; restored with exact RNG/clock/publication bytes, never fabricated by host.",
+    "status": "PASS"
+  },
+  "prechecks": [
+    {
+      "client": "010",
+      "report": {
+        "bytes": 32390,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-client-responsiveness-comparison/008/precheck-010/report.json",
+        "sha256": "b0b13ef4463c3db2fdb9bff03d03fad8c9864de3e1a46622c36633551e1262ae"
+      },
+      "rgb_sha256": "50482eb4c119c8d9789e57db1dc31a844d1d995d37f44e1e45d837c5c5c075af",
+      "whole_saved_sha256": "f09c49a9bd45ff5239ef0573b2bac976d96290e4e79866122cff8c437b594679"
+    }
+  ],
+  "preparation": {
+    "bytes": 12797,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-client-responsiveness-comparison/008/preparation.json",
+    "sha256": "1a60fe7db94d1d8c13de2a938abd64e33a7c855e178bce05a84319a3d4949c7f"
+  },
+  "status": "FAIL",
+  "trials": []
+}

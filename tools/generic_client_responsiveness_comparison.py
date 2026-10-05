@@ -192,7 +192,10 @@ def exchanges(value, data, generation, frame_count):
             samples.append(digest(R.canonical(actual)))
             pending = request[3]
         elif command[0] in (8, 15):
-            cooking = generation not in ('008', '010')
+            # The actual cooking caller first discovers its closed handle.
+            # Once that authentic snapshot is Some, inspect_command returns
+            # MenuInspect for the closed world menu on subsequent frames.
+            cooking = generation not in ('008', '010') and not menus
             R.require(command == ([15, 0] if cooking else [8])
                       and reply[1] == (8 if cooking else 6) and len(reply) == 7
                       and reply[4:6] == [True, ''] and pending is not None,
@@ -333,11 +336,56 @@ def initialized_baseline(directory, actor_binary, data):
     return value
 
 
+def resume_precheck(prior, data, inputs):
+    """Reuse completed observations; rerun the unobserved012 owner stage."""
+    result = json.loads((prior/'result.json').read_bytes())
+    prepared = json.loads((prior/'preparation.json').read_bytes())
+    R.require(prepared['actor_generation'] == 23 and prepared['clients'] == ['010', '012']
+              and result['trials'] == [] and result['error']['message'] == 'Actual complete menu reply differs',
+              'Resume requires the retained023 host-expectation failure before timing')
+    for path, expected in prepared['inputs'].items():
+        if Path(path).resolve() != Path(__file__).resolve():
+            R.require(R.pin(Path(path)) == expected and inputs.get(path) == expected,
+                      'Retained precheck input changed: '+path)
+    baseline = result['initialized_baseline']
+    R.require(baseline['status'] == 'PASS' and not baseline['loads']['foreign_work_observed']
+              and baseline['baseline'] == R.pin(Path(baseline['baseline']['path'])), 'Prior actual initialization drift')
+    data['payload'] = Path(baseline['baseline']['path']).read_bytes()
+    data['highwater'] = baseline['acknowledgement']['peer_highwater']
+    directory = prior/'precheck-010'
+    accepted = next(row for row in result['prechecks'] if row['client'] == '010')
+    row = json.loads((directory/'report.json').read_bytes())
+    R.require(accepted['report'] == R.pin(directory/'report.json') and row['status'] == 'PASS'
+              and row['trace'] is True and row['state']['unchanged_whole_owner']
+              and not row['loads']['foreign_work_observed'], 'Prior010 complete precheck not admitted')
+    R.require(digest((directory/'world.nbt').read_bytes()) == row['state']['whole_saved_sha256'],
+              'Prior010 complete saved owner drift')
+    for identity in row['images']:
+        R.require(identity == R.pin(Path(identity['path'])), 'Prior010 image drift')
+    exchanges(json.loads((directory/'relay.json').read_bytes()), data, '010', 2)
+    # The existing012 image and wire observations are authenticated read-only.
+    # Its failed host assertion prevented AFTER-render owner inspection/save,
+    # so that complete precheck must run once with the corrected observer.
+    failed = prior/'precheck-012'
+    exchanges(json.loads((failed/'relay.json').read_bytes()), data, '012', 2)
+    image = (directory/'renderer/images/0.ppm').read_bytes()
+    R.require(all((failed/f'renderer/images/{i}.ppm').read_bytes() == image for i in range(2)),
+              'Existing012 output differs from accepted010 image')
+    return baseline, directory, row, {'prior_result': R.pin(prior/'result.json'),
+        'prior_preparation': R.pin(prior/'preparation.json'), 'accepted010_report': accepted['report'],
+        'existing012_report': R.pin(failed/'report.json'), 'existing012_wire': R.pin(failed/'relay.json'),
+        'existing012_images': [R.pin(failed/f'renderer/images/{i}.ppm') for i in range(2)],
+        'existing012_all_pixels_and_correlated_wire_equal': True,
+        'existing012_after_render_full_owner_save_observed': False,
+        'observer_correction': 'InitialCookingInspect0/reply8, then closedMenuInspect/reply6, exactly as frozeninspect_selected. No product/native/image substitution.'}
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--native', action='store_true', help='Run existing hidden native owners; default prepares only')
     parser.add_argument('--actor-generation', choices=(17, 22, 23), type=int, default=17)
     parser.add_argument('--clients', default='008,010', help='Historical008,010 on017/022; fixed-quality010,012 on023')
+    parser.add_argument('--resume-from', type=Path, help='Reuse accepted023 initialization/010 precheck after the retained host-only failure')
     args = parser.parse_args()
     clients = args.clients.split(',')
     cooking = len(clients) == 3 and clients[:2] == ['008', '010'] and clients[2].isdigit() and int(clients[2]) >= 11
@@ -384,6 +432,11 @@ def main():
                   'Actor023 genuine completed native receipt/cohort mismatch')
         inputs[str(receipt)] = R.pin(receipt)
     data = fixture()
+    reused = None
+    if args.resume_from is not None:
+        prior = args.resume_from.resolve()
+        R.require(fixed_quality and prior.parent == parent.resolve() and prior.name.isdigit(), 'Resume cohort/path mismatch')
+        reused = resume_precheck(prior, data, inputs)
     (work/'fixture.nbt').write_bytes(data['payload'])
     # ABBA for two arms; balanced positions ABC/BCA/CAB for three arms.
     order = [clients[0], clients[1], clients[1], clients[0]] if len(clients) == 2 else \
@@ -401,24 +454,33 @@ def main():
         'inputs': inputs, 'renderer_builds': builds, 'protected012_pid': PROTECTED,
         'cohort': 'Fixed-quality010/012 commonActor023' if fixed_quality else 'Historical017/022 preparation;006 image mismatch remains retained',
         'scope': 'Paused render/composition/Window.frame envelope only; excludes query/resource/menu preparation. Returned CPU images; no drawable readback, OS-input, FPS, active server20TPS, cooking throughput or whole-game claim.'}
+    if reused:
+        preparation['resumed_observations'] = reused[3]
     write(work/'preparation.json', preparation)
     if not args.native:
         print(json.dumps({'status': 'PREPARED', 'work': str(work), 'native_launches': 0}))
         return
     report = {'status': 'FAIL', 'preparation': R.pin(work/'preparation.json'), 'prechecks': [], 'trials': []}
     try:
-        if args.actor_generation in (22, 23):
+        if reused:
+            report['initialized_baseline'] = reused[0]
+            report['resumed_observations'] = reused[3]
+        elif args.actor_generation in (22, 23):
             report['initialized_baseline'] = initialized_baseline(work/'initialized-baseline', actor, data)
+        precheck_directories = {}
         for key in clients:
-            row = trial(work/('precheck-'+key), actor, binaries[key], key, data, helpers, True)
-            report['prechecks'].append({'client': key, 'report': R.pin(work/('precheck-'+key)/'report.json'),
+            directory = reused[1] if reused and key == '010' else work/('precheck-'+key)
+            row = reused[2] if reused and key == '010' else trial(directory, actor, binaries[key], key, data, helpers, True)
+            precheck_directories[key] = directory
+            report['prechecks'].append({'client': key, 'report': R.pin(directory/'report.json'),
+                'reused_completed_precheck': bool(reused and key == '010'),
                 'rgb_sha256': row['rgb_sha256'], 'whole_saved_sha256': row['state']['whole_saved_sha256']})
-        expected_ppm = (work/('precheck-'+clients[0])/'renderer/images/0.ppm').read_bytes()
-        expected_saved = (work/('precheck-'+clients[0])/'world.nbt').read_bytes()
+        expected_ppm = (precheck_directories[clients[0]]/'renderer/images/0.ppm').read_bytes()
+        expected_saved = (precheck_directories[clients[0]]/'world.nbt').read_bytes()
         for key in clients[1:]:
-            R.require((work/('precheck-'+key)/'world.nbt').read_bytes() == expected_saved,
+            R.require((precheck_directories[key]/'world.nbt').read_bytes() == expected_saved,
                       'Whole actual saved state differs between comparison arms')
-            actual = (work/('precheck-'+key)/'renderer/images/0.ppm').read_bytes()
+            actual = (precheck_directories[key]/'renderer/images/0.ppm').read_bytes()
             if actual != expected_ppm:
                 header_size = len(f'P6\n{WIDTH} {HEIGHT}\n255\n'.encode())
                 a, b = actual[header_size:], expected_ppm[header_size:]
