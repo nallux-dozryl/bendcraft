@@ -335,7 +335,7 @@ def build_hook(directory):
     require(command.count(old) == 1 and command.count('-o') == 1, 'Actual immutable clang command shape')
     command[command.index(old)] = str(directory/'renderer-callback.c')
     command[command.index('-o') + 1] = str(directory/'renderer-callback')
-    with Host.bindings(R, {'WORK': directory}):
+    with Host.bindings(R, {'WORK': directory, 'GROUPS': directory/'owned-groups.ndjson'}):
         result = R.bounded(command, 300, 'callback-native-build')
     receipt = {'status': 'built_native_unexecuted' if result['exit_code'] == 0 and not result['timed_out'] else 'FAIL',
                'prepared': pin(directory/'prepared.json'), 'process': result,
@@ -391,7 +391,7 @@ def build_observer(directory):
                str(directory/'observer') if word == original['artifact'] else word for word in command]
     require(command == ['/usr/bin/swiftc', '-O', str(directory/'observer.swift'), '-o', str(directory/'observer')],
             'Exact retained observer compiler/flags; only private paths')
-    with Host.bindings(R, {'WORK': directory}):
+    with Host.bindings(R, {'WORK': directory, 'GROUPS': directory/'owned-groups.ndjson'}):
         result = R.bounded(command, 120, 'observer-build')
     receipt = {'status': 'PASS' if result['exit_code'] == 0 and not result['timed_out'] else 'FAIL',
                'source': pin(directory/'observer.swift'), 'process': result,
@@ -532,7 +532,7 @@ def check_snapshot(snapshot, full, carried, revision, slots, timers, *, opened=T
 
 def expected_body(facts, ticks):
     original = S.N.parse(Pub.physical(facts, [None, B.stack('minecraft:coal', 1), None],
-                         progress=0, remaining=1601-ticks, total=200, lit_total=1600))
+                         progress=0, remaining=max(0, 1601-ticks), total=200, lit_total=1600))
     used = S.WC.compound([('minecraft:cooked_beef', S.WC.integer(2))])
     members = tuple((name, used if name == S.N.text('RecipesUsed') else value)
                     for name, value in original.value.payload)
@@ -543,10 +543,14 @@ def expected_world(data, ticks):
     world = copy.deepcopy(data['world'])
     for _ in range(ticks):
         S.BASE.apply_tick(world)
-    S.BASE.set_block(world, *POINT[1:], data['facts']['lit'])
+    S.BASE.set_block(world, *POINT[1:], data['facts']['unlit' if ticks >= 1601 else 'lit'])
     world['revision'] += 1
     world['events'].insert(0, {'stamp': (1, 0, world['revision']),
                               'kind': 0, 'revision': world['revision']})
+    if ticks >= 1601:
+        world['revision'] += 1
+        world['events'].insert(0, {'stamp': (1601, 0, world['revision']),
+                                  'kind': 0, 'revision': world['revision']})
     world['max_peer'] = 0
     return world
 
@@ -572,219 +576,252 @@ def native(directory, actor_generation, *, clock):
         path.write_bytes(data['payload'])
         actor = renderer = relay = None
         actions = []
-        try:
-            with Host.bindings(Pair, {'WORK': attempt}), Host.bindings(R, {'WORK': attempt}):
-                began_ns = Pub.Storage.monotonic_ns()
-                actor = G.backend(A.ACTOR, 'actor-callback', path)
-                raw, ping = actor.tcp(True)
-                require(ping['peer'] == 42, 'Durable40/local41/public42 peer ownership')
-                relay = Pair.Relay(actor, 'callback-relay')
-                renderer = CallbackRenderer(binary, relay, helpers, attempt)
-                driver = Driver(attempt, renderer, relay)
-                full = copy.deepcopy(data['full'])
-                slots = [None] * 3
-                batches = dict(events())
-                # Empty CookingInspect is the real initial caller's discovery.
-                driver.reply(0, 15, lambda command: command == [15, 0], 'initial closed inspect')
-                cursor = len(relay.records)
-                driver.inject('use-ray', batches['use-ray'])
-                index, snapshot = driver.reply(cursor, 19, lambda command: command == [19, False], 'real CookingUse ray')
-                check_snapshot(snapshot, full, None, 0, slots, [0, 0, 0, 0])
-                actions.append(driver.presented(index, 'opened'))
-                for label, logical, carried, changed, timers in (
-                    ('pick-beef', 30, B.stack('minecraft:beef', 2), ('main', 0, None), [0, 0, 0, 0]),
-                    ('put-input', 0, None, ('furnace', 0, B.stack('minecraft:beef', 2)), [0, 0, 0, 200]),
-                    ('pick-coal', 31, B.stack('minecraft:coal', 2), ('main', 1, None), [0, 0, 0, 200]),
-                    ('put-fuel', 1, None, ('furnace', 1, B.stack('minecraft:coal', 2)), [0, 0, 0, 200])):
+        # The same attempt-local journal owns launches and every teardown.
+        with Host.bindings(R, {'WORK': attempt, 'GROUPS': attempt/'owned-groups.ndjson'}):
+            try:
+                with Host.bindings(Pair, {'WORK': attempt}):
+                    began_ns = Pub.Storage.monotonic_ns()
+                    actor = G.backend(A.ACTOR, 'actor-callback', path)
+                    raw, ping = actor.tcp(True)
+                    require(ping['peer'] == 42, 'Durable40/local41/public42 peer ownership')
+                    relay = Pair.Relay(actor, 'callback-relay')
+                    renderer = CallbackRenderer(binary, relay, helpers, attempt)
+                    driver = Driver(attempt, renderer, relay)
+                    full = copy.deepcopy(data['full'])
+                    slots = [None] * 3
+                    batches = dict(events())
+                    # Empty CookingInspect is the real initial caller's discovery.
+                    driver.reply(0, 15, lambda command: command == [15, 0], 'initial closed inspect')
                     cursor = len(relay.records)
-                    driver.inject(label, batches[label])
-                    index, snapshot = driver.reply(cursor, 16,
-                        lambda command, logical=logical: command == [16, 1, logical, 0], label)
-                    family, offset, item = changed
-                    (full['main']['slots'] if family == 'main' else slots)[offset] = item
-                    check_snapshot(snapshot, full, carried, len(actions), slots, timers)
-                    actions.append(driver.presented(index, label))
-                # Controller proofs alone do not execute these 400 actual ticks.
-                # Controlled mode verifies exact checkpoints; ambient mode is
-                # genuine server cadence, with observed exact timer relations.
-                checkpoints = []
-                started = time.monotonic()
-                if clock == 'controlled':
-                    for tick in range(1, 401):
-                        target = started + tick * .05
-                        if target > time.monotonic():
-                            time.sleep(target - time.monotonic())
-                        raw.call('simulation.step', {'ticks': 1})
-                        if tick in (1, 100, 200, 300, 400):
-                            cursor = len(relay.records)
-                            wanted_timers = [1601-tick, 1600, tick % 200, 200]
-                            index, snapshot = driver.reply(cursor, 15, lambda command: command == [15, 1], f'progress-{tick}',
-                                lambda snapshot, wanted_timers=wanted_timers: snapshot[1][5:] == wanted_timers)
-                            cooked = tick//200
-                            slots = [B.stack('minecraft:beef', 2-cooked) if cooked < 2 else None,
-                                     B.stack('minecraft:coal', 1), B.stack('minecraft:cooked_beef', cooked) if cooked else None]
-                            check_snapshot(snapshot, full, None, 4, slots,
-                                           [1601-tick, 1600, tick % 200, 200])
-                            checkpoints.append(driver.presented(index, f'progress-{tick}'))
-                else:
-                    raw.call('simulation.pause', {'paused': False})
-                    cursor = len(relay.records)
-                    saw_partial = False
-                    while True:
-                        index, snapshot = driver.reply(cursor, 15, lambda command: command == [15, 1], 'ambient cooking inspect')
-                        cursor = index + 1
-                        furnace = snapshot[1]
-                        require(furnace[:2] == [1, 0] and furnace[8] == 200, 'Real ambient furnace kind/total')
-                        if 0 < furnace[7] < 200 and not saw_partial:
-                            saw_partial = True
-                            checkpoints.append(driver.presented(index, 'ambient-partial'))
-                        if furnace[4] != [0] and furnace[4][-1] == 2:
-                            break
-                    require(saw_partial, 'Actual partial progress must be observed and painted')
-                    slots = [None, B.stack('minecraft:coal', 1), B.stack('minecraft:cooked_beef', 2)]
-                    # Keep the real actor unpaused until the renderer closes.
-                    # The preserved008 run showed that pausing while its
-                    # timer mailbox was behind could expire the renderer's
-                    #100-pulse lease during catch-up. This host does not change
-                    # the product timer or lease; each actual reply supplies
-                    # its own exact burn/clock relation after both inputs end.
-                    ticks = 1601-snapshot[1][5]
-                    require(400 <= ticks < 1601, 'Bounded ambient burn has not extinguished')
-                    check_snapshot(snapshot, full, None, 4, slots, [1601-ticks, 1600, 0, 200])
-                    checkpoints.append(driver.presented(index, 'ambient-completed'))
-                progress_seconds = time.monotonic()-started
-                click_clocks = []
-                for label, logical in (('pick-output', 2), ('put-main2', 32)):
-                    cursor = len(relay.records)
-                    driver.inject(label, batches[label])
-                    index, snapshot = driver.reply(cursor, 16,
-                        lambda command, logical=logical: command == [16, 1, logical, 0], label)
-                    if logical == 2:
-                        slots[2] = None
-                        carried = B.stack('minecraft:cooked_beef', 2)
+                    driver.inject('use-ray', batches['use-ray'])
+                    index, snapshot = driver.reply(cursor, 19, lambda command: command == [19, False], 'real CookingUse ray')
+                    check_snapshot(snapshot, full, None, 0, slots, [0, 0, 0, 0])
+                    actions.append(driver.presented(index, 'opened'))
+                    for label, logical, carried, changed, timers in (
+                        ('pick-beef', 30, B.stack('minecraft:beef', 2), ('main', 0, None), [0, 0, 0, 0]),
+                        ('put-input', 0, None, ('furnace', 0, B.stack('minecraft:beef', 2)), [0, 0, 0, 200]),
+                        ('pick-coal', 31, B.stack('minecraft:coal', 2), ('main', 1, None), [0, 0, 0, 200]),
+                        ('put-fuel', 1, None, ('furnace', 1, B.stack('minecraft:coal', 2)), [0, 0, 0, 200])):
+                        cursor = len(relay.records)
+                        driver.inject(label, batches[label])
+                        index, snapshot = driver.reply(cursor, 16,
+                            lambda command, logical=logical: command == [16, 1, logical, 0], label)
+                        family, offset, item = changed
+                        (full['main']['slots'] if family == 'main' else slots)[offset] = item
+                        check_snapshot(snapshot, full, carried, len(actions), slots, timers)
+                        actions.append(driver.presented(index, label))
+                    # Controller proofs alone do not execute these 400 actual ticks.
+                    # Controlled mode verifies exact checkpoints; ambient mode is
+                    # genuine server cadence, with observed exact timer relations.
+                    checkpoints = []
+                    started = time.monotonic()
+                    if clock == 'controlled':
+                        for tick in range(1, 401):
+                            target = started + tick * .05
+                            if target > time.monotonic():
+                                time.sleep(target - time.monotonic())
+                            raw.call('simulation.step', {'ticks': 1})
+                            if tick in (1, 100, 200, 300, 400):
+                                cursor = len(relay.records)
+                                wanted_timers = [1601-tick, 1600, tick % 200, 200]
+                                index, snapshot = driver.reply(cursor, 15, lambda command: command == [15, 1], f'progress-{tick}',
+                                    lambda snapshot, wanted_timers=wanted_timers: snapshot[1][5:] == wanted_timers)
+                                cooked = tick//200
+                                slots = [B.stack('minecraft:beef', 2-cooked) if cooked < 2 else None,
+                                         B.stack('minecraft:coal', 1), B.stack('minecraft:cooked_beef', cooked) if cooked else None]
+                                check_snapshot(snapshot, full, None, 4, slots,
+                                               [1601-tick, 1600, tick % 200, 200])
+                                checkpoints.append(driver.presented(index, f'progress-{tick}'))
                     else:
-                        full['main']['slots'][2] = B.stack('minecraft:cooked_beef', 2)
-                        carried = None
-                    revision = 5 if logical == 2 else 6
-                    ticks = 1601-snapshot[1][5]
-                    require(400 <= ticks < 1601, 'Actual transfer remains within first fuel burn')
-                    check_snapshot(snapshot, full, carried, revision, slots,
-                                   [1601-ticks, 1600, 0, 200])
-                    click_clocks.append({'label': label, 'inferred_exact_Core_tick': ticks,
-                                         'burn_remaining': snapshot[1][5]})
-                    actions.append(driver.presented(index, label))
-                cursor = len(relay.records)
-                driver.inject('close-cooking', batches['close-cooking'])
-                index, snapshot = driver.reply(cursor, 18, lambda command: command == [18, 1], 'E real cooking close')
-                check_snapshot(snapshot, full, None, 6, slots, [], opened=False)
-                actions.append(driver.presented(index, 'closed'))
-                driver.inject('close-window', batches['close-window'])
-                observed = renderer.finish(status=0)
-                require(renderer.err.read_text().strip() == 'client closed', 'Actual normal closing diagnostic')
-                modes = [json.loads(line) for line in (attempt/'mode-read.jsonl').read_bytes().splitlines()]
-                require(modes == [{'effect': 'CID_IO_GET_ENV', 'query': 'BEND_MINECRAFT_LAUNCH_MODE',
-                                   'returned': 'human', 'native_environment': 'hidden'}],
-                        'Exactly one synthetic interactive mode query; actual hidden environment')
-                traffic, traffic_pin = relay.finish()
-                if clock == 'ambient':
-                    raw.call('simulation.pause', {'paused': True})
-                # A renderer has completed close before pausing. Reconcile
-                # any already admitted cooking continuation before comparing
-                # the complete durable owner; no active renderer lease is
-                # needed for these public clock queries or the cold reload.
-                previous = None
-                while True:
-                    clock_result = raw.call('world.clock')
-                    if clock_result == previous and clock_result['paused']:
-                        break
-                    previous = clock_result
-                    time.sleep(.06)
-                require(400 <= clock_result['tick'] < 1601, 'Final paused clock remains within first fuel burn')
-                # This is the unchanged public cooking-aware close/save helper.
-                saves = Close.shutdown(actor, path, attempt, 'public-save', success=True)
-                require(saves[-1]['event'] == 'client.save' and saves[-1]['result']['durable'],
-                        'Real public durable shutdown save')
-                physical = publication_projection(path.read_bytes(), data['facts'])
-                require(physical['highwater'] == 43, 'Actual local41/public42/shutdown43 highwater')
-                constructor = Pub.Entity.fresh_expected(physical['entities'], began_ns, Pub.Storage.monotonic_ns())
-                ticks = clock_result['tick']
-                require(physical['world'] == expected_world(data, ticks)
-                        and physical['full'] == full and physical['clock_inputs'] == (),
-                        'Independent completeCore/104 sections/lit event/full43/status/WG/clock oracle')
-                require(physical['publication']['incarnations'] == data['counters'], 'Actual complete incarnation map retention')
-                require(physical['bodies'] == ((POINT, expected_body(data['facts'], ticks)),),
-                        'Independent exact physical Details/root/slot/timer/RecipesUsed body oracle')
-                point = Pub.J.position(*POINT)
-                producer = Pub.J.source(point, Pub.J.binding_for(Pub.catalog(), data['facts']['lit']), 3)
-                journal = {'sequence': 7, 'unsaved': (),
-                           'last': Pub.J.receipt(point, producer, Pub.J.chunk_for(point), 7)}
-                require(physical['effects'] == () and physical['publication']['journal'] == journal,
-                        'Exact seven delivered receipts/latest lit binding/incarnation/chunk/clean coverage')
-                G.exclusive(attempt/'save-projection.json', {
-                    'saved': pin(path), 'complete_reconstruction': True,
-                    'full43': True, 'clock': clock_result, 'highwater': physical['highwater'],
-                    'entity_owner': G.digest(Pub.Entity.encode(physical['entities'])),
-                    'independent_fresh_constructor': constructor,
-                    'physical_body': G.digest(physical['bodies'][0][1]),
-                    'incarnation_map_retained': True, 'publication': physical['publication']['journal']})
-                saved = path.read_bytes()
-                # Stop/reap the original actor; a new real actor reads the same
-                # complete durable envelope. No second renderer fixture is used.
-                R.finish_backend(actor)
-                actor = None
-                cold = G.backend(A.ACTOR, 'actor-cold', path)
-                actor = cold
-                cold_raw, cold_ping = cold.tcp(True)
-                require(cold_ping['peer'] == 45, 'Cold local44/public45 peer allocation')
-                require(S.local_bytes(Menu.inspect_record(cold_raw)) == physical['player'],
-                        'Actual cold full LocalPlayer record retention')
-                control = Menu.connect(cold)
-                cold_reply = control.call([15, 0], 8)
-                require(cold_reply[4:6] == [True, ''] and cold_reply[6] ==
-                        [[0], [0], B.authority(full, B.empty_menu())],
-                        'Actual cold full43 authority and empty transient cooking state')
-                control.call([2]); control.close(); cold.private = None
-                cold_raw.call('world.save', {})
-                cold_saved = publication_projection(path.read_bytes(), data['facts'])
-                require(cold_saved['highwater'] == 45 and cold_saved['world'] == physical['world'] and cold_saved['full'] == full
-                        and cold_saved['player'] == physical['player'] and cold_saved['bodies'] == physical['bodies']
-                        and cold_saved['effects'] == physical['effects'] and cold_saved['entities'] == physical['entities']
-                        and cold_saved['clock_inputs'] == physical['clock_inputs']
-                        and cold_saved['publication'] == physical['publication'],
-                        'Actual cold completeCore/player43/Details/effect/entity/RNG/clock/publication owner equality')
-                result = {'status': 'PASS', 'original_build': pin(Path(ready['donor_build']['path'])),
-                          'injected_binary': pin(binary), 'actor': actor_build['binary'],
-                          'transform': ready['transform'], 'observer': observed,
-                          'wire': traffic_pin, 'callback_batches': driver.actions,
-                          'presented': actions, 'progress_presented': checkpoints,
-                          'clock_mode': clock, 'progress_seconds': progress_seconds,
-                          'transfer_clock_observations': click_clocks,
-                          'pause_after_renderer_close': clock == 'ambient',
-                          'predeclared_driver_observer_cap_seconds': 120,
-                          'private_observer': observer,
-                          'ticks': clock_result['tick'], 'normal_speed_bits': 1065353216,
-                          'saved_before_cold': G.digest(saved), 'saved_after_cold': pin(path),
-                          'complete_cold_owner_equality': True,
-                          'limits': 'Private synthetic callbacks and focus/capture only. No foreground/hardware OS input, full vanilla frame, invented item icons, XP extraction or implicit ambient cadence claim.'}
-                G.exclusive(attempt/'summary.json', result)
-                return result
-        except BaseException as error:
-            G.exclusive(attempt/'first-failure.json', {'type': type(error).__name__, 'message': str(error)})
-            raise
-        finally:
-            # Teardown entries are kept separate from the presentation rows.
-            cleanup = []
-            if renderer is not None:
-                cleanup.append(('renderer', renderer.cleanup))
-            if relay is not None:
-                def finish_relay():
-                    with Host.bindings(Pair, {'WORK': attempt}):
-                        return relay.finish(failed=True)
-                cleanup.append(('relay', finish_relay))
-            if actor is not None:
-                cleanup.append(('actor', lambda: R.finish_backend(actor)))
-            G.finish_owned(cleanup, attempt/'final-cleanup.json')
-            G.sweep_owned(attempt)
+                        raw.call('simulation.pause', {'paused': False})
+                        cursor = len(relay.records)
+                        saw_partial = False
+                        while True:
+                            index, snapshot = driver.reply(cursor, 15, lambda command: command == [15, 1], 'ambient cooking inspect')
+                            cursor = index + 1
+                            furnace = snapshot[1]
+                            require(furnace[:2] == [1, 0] and furnace[8] == 200, 'Real ambient furnace kind/total')
+                            if 0 < furnace[7] < 200 and not saw_partial:
+                                saw_partial = True
+                                checkpoints.append(driver.presented(index, 'ambient-partial'))
+                            if furnace[4] != [0] and furnace[4][-1] == 2:
+                                break
+                        require(saw_partial, 'Actual partial progress must be observed and painted')
+                        slots = [None, B.stack('minecraft:coal', 1), B.stack('minecraft:cooked_beef', 2)]
+                        # Keep the real actor unpaused until the renderer closes.
+                        # The preserved008 run showed that pausing while its
+                        # timer mailbox was behind could expire the renderer's
+                        #100-pulse lease during catch-up. This host does not change
+                        # the product timer or lease; each actual reply supplies
+                        # its own exact burn/clock relation after both inputs end.
+                        remaining = snapshot[1][5]
+                        require(0 <= remaining <= 1201, 'Actual completed recipes retain valid first fuel burn')
+                        check_snapshot(snapshot, full, None, 4, slots, [remaining, 1600, 0, 200])
+                        checkpoints.append(driver.presented(index, 'ambient-completed'))
+                    progress_seconds = time.monotonic()-started
+                    click_clocks = []
+                    for label, logical in (('pick-output', 2), ('put-main2', 32)):
+                        cursor = len(relay.records)
+                        driver.inject(label, batches[label])
+                        index, snapshot = driver.reply(cursor, 16,
+                            lambda command, logical=logical: command == [16, 1, logical, 0], label)
+                        if logical == 2:
+                            slots[2] = None
+                            carried = B.stack('minecraft:cooked_beef', 2)
+                        else:
+                            full['main']['slots'][2] = B.stack('minecraft:cooked_beef', 2)
+                            carried = None
+                        revision = 5 if logical == 2 else 6
+                        remaining = snapshot[1][5]
+                        require(0 <= remaining <= 1201, 'Actual transfer retains valid first fuel burn')
+                        ticks = 1601-remaining if remaining > 0 else None
+                        if logical == 2:
+                            output_pick_after_extinction = remaining == 0
+                        check_snapshot(snapshot, full, carried, revision, slots,
+                                       [remaining, 1600, 0, 200])
+                        click_clocks.append({'label': label, 'inferred_exact_Core_tick': ticks,
+                                             'minimum_Core_tick': ticks if ticks is not None else 1601,
+                                             'burn_remaining': remaining})
+                        actions.append(driver.presented(index, label))
+                    cursor = len(relay.records)
+                    driver.inject('close-cooking', batches['close-cooking'])
+                    index, snapshot = driver.reply(cursor, 18, lambda command: command == [18, 1], 'E real cooking close')
+                    check_snapshot(snapshot, full, None, 6, slots, [], opened=False)
+                    actions.append(driver.presented(index, 'closed'))
+                    driver.inject('close-window', batches['close-window'])
+                    observed = renderer.finish(status=0)
+                    require(renderer.err.read_text().strip() == 'client closed', 'Actual normal closing diagnostic')
+                    modes = [json.loads(line) for line in (attempt/'mode-read.jsonl').read_bytes().splitlines()]
+                    require(modes == [{'effect': 'CID_IO_GET_ENV', 'query': 'BEND_MINECRAFT_LAUNCH_MODE',
+                                       'returned': 'human', 'native_environment': 'hidden'}],
+                            'Exactly one synthetic interactive mode query; actual hidden environment')
+                    traffic, traffic_pin = relay.finish()
+                    # Successful finish consumes the relay owner and writes
+                    # its exclusive receipt. Failure teardown must not finish
+                    # that same owner or receipt a second time.
+                    relay = None
+                    clock_deadline = min(actor.deadline, time.monotonic()+10)
+                    clock_timeout = 'Fixed10s paused world.clock stabilization deadline'
+                    require(time.monotonic() < clock_deadline, clock_timeout)
+                    raw.socket.settimeout(min(5, clock_deadline-time.monotonic()))
+                    if clock == 'ambient':
+                        raw.call('simulation.pause', {'paused': True})
+                    # A renderer has completed close before pausing. Reconcile
+                    # any already admitted cooking continuation before comparing
+                    # the complete durable owner; no active renderer lease is
+                    # needed for these public clock queries or the cold reload.
+                    previous = None
+                    while True:
+                        remaining = clock_deadline-time.monotonic()
+                        require(remaining > 0, clock_timeout)
+                        raw.socket.settimeout(min(5, remaining))
+                        try:
+                            clock_result = raw.call('world.clock')
+                        except TimeoutError as error:
+                            raise AssertionError(clock_timeout) from error
+                        if clock_result == previous and clock_result['paused']:
+                            break
+                        previous = clock_result
+                        time.sleep(min(.06, max(0, clock_deadline-time.monotonic())))
+                    raw.socket.settimeout(5)
+                    require(clock_result['tick'] >= 400, 'Final paused clock retains both completed recipes')
+                    # This is the unchanged public cooking-aware close/save helper.
+                    saves = Close.shutdown(actor, path, attempt, 'public-save', success=True)
+                    require(saves[-1]['event'] == 'client.save' and saves[-1]['result']['durable'],
+                            'Real public durable shutdown save')
+                    physical = publication_projection(path.read_bytes(), data['facts'])
+                    require(physical['highwater'] == 43, 'Actual local41/public42/shutdown43 highwater')
+                    constructor = Pub.Entity.fresh_expected(physical['entities'], began_ns, Pub.Storage.monotonic_ns())
+                    ticks = clock_result['tick']
+                    require(physical['world'] == expected_world(data, ticks)
+                            and physical['full'] == full and physical['clock_inputs'] == (),
+                            'Independent completeCore/104 sections/lit event/full43/status/WG/clock oracle')
+                    require(physical['publication']['incarnations'] == data['counters'], 'Actual complete incarnation map retention')
+                    require(physical['bodies'] == ((POINT, expected_body(data['facts'], ticks)),),
+                            'Independent exact physical Details/root/slot/timer/RecipesUsed body oracle')
+                    point = Pub.J.position(*POINT)
+                    extinguished = ticks >= 1601
+                    require(not output_pick_after_extinction or extinguished, 'Monotonic Core after output pickup')
+                    # DirtyStamp captures the original binding before writes.
+                    # Extinction after pickup records its prewrite LIT source;
+                    # pickup after extinction records its then-current UNLIT
+                    # source. Full dirty receipt count is eight in either case.
+                    producer_state = data['facts']['unlit' if output_pick_after_extinction else 'lit']
+                    producer = Pub.J.source(point, Pub.J.binding_for(Pub.catalog(), producer_state), 3)
+                    sequence = 8 if extinguished else 7
+                    journal = {'sequence': sequence, 'unsaved': (),
+                               'last': Pub.J.receipt(point, producer, Pub.J.chunk_for(point), sequence)}
+                    require(physical['effects'] == () and physical['publication']['journal'] == journal,
+                            'Exact ordered dirty receipts/source binding/incarnation/chunk/clean coverage')
+                    G.exclusive(attempt/'save-projection.json', {
+                        'saved': pin(path), 'complete_reconstruction': True,
+                        'full43': True, 'clock': clock_result, 'highwater': physical['highwater'],
+                        'entity_owner': G.digest(Pub.Entity.encode(physical['entities'])),
+                        'independent_fresh_constructor': constructor,
+                        'physical_body': G.digest(physical['bodies'][0][1]),
+                        'incarnation_map_retained': True, 'publication': physical['publication']['journal']})
+                    saved = path.read_bytes()
+                    # Stop/reap the original actor; a new real actor reads the same
+                    # complete durable envelope. No second renderer fixture is used.
+                    R.finish_backend(actor)
+                    actor = None
+                    cold = G.backend(A.ACTOR, 'actor-cold', path)
+                    actor = cold
+                    cold_raw, cold_ping = cold.tcp(True)
+                    require(cold_ping['peer'] == 45, 'Cold local44/public45 peer allocation')
+                    require(S.local_bytes(Menu.inspect_record(cold_raw)) == physical['player'],
+                            'Actual cold full LocalPlayer record retention')
+                    control = Menu.connect(cold)
+                    cold_reply = control.call([15, 0], 8)
+                    require(cold_reply[4:6] == [True, ''] and cold_reply[6] ==
+                            [[0], [0], B.authority(full, B.empty_menu())],
+                            'Actual cold full43 authority and empty transient cooking state')
+                    control.call([2]); control.close(); cold.private = None
+                    cold_raw.call('world.save', {})
+                    cold_saved = publication_projection(path.read_bytes(), data['facts'])
+                    require(cold_saved['highwater'] == 45 and cold_saved['world'] == physical['world'] and cold_saved['full'] == full
+                            and cold_saved['player'] == physical['player'] and cold_saved['bodies'] == physical['bodies']
+                            and cold_saved['effects'] == physical['effects'] and cold_saved['entities'] == physical['entities']
+                            and cold_saved['clock_inputs'] == physical['clock_inputs']
+                            and cold_saved['publication'] == physical['publication'],
+                            'Actual cold completeCore/player43/Details/effect/entity/RNG/clock/publication owner equality')
+                    result = {'status': 'PASS', 'original_build': pin(Path(ready['donor_build']['path'])),
+                              'injected_binary': pin(binary), 'actor': actor_build['binary'],
+                              'transform': ready['transform'], 'observer': observed,
+                              'wire': traffic_pin, 'callback_batches': driver.actions,
+                              'presented': actions, 'progress_presented': checkpoints,
+                              'clock_mode': clock, 'progress_seconds': progress_seconds,
+                              'transfer_clock_observations': click_clocks,
+                              'output_pick_after_extinction': output_pick_after_extinction,
+                              'pause_after_renderer_close': clock == 'ambient',
+                              'paused_clock_stabilization_cap_seconds': 10,
+                              'predeclared_driver_observer_cap_seconds': 120,
+                              'private_observer': observer,
+                              'ticks': clock_result['tick'], 'normal_speed_bits': 1065353216,
+                              'saved_before_cold': G.digest(saved), 'saved_after_cold': pin(path),
+                              'complete_cold_owner_equality': True,
+                              'limits': 'Private synthetic callbacks and focus/capture only. No foreground/hardware OS input, full vanilla frame, invented item icons, XP extraction or implicit ambient cadence claim.'}
+                    G.exclusive(attempt/'summary.json', result)
+                    return result
+            except BaseException as error:
+                G.exclusive(attempt/'first-failure.json', {'type': type(error).__name__, 'message': str(error)})
+                raise
+            finally:
+                # Teardown entries are kept separate from the presentation rows.
+                cleanup = []
+                if renderer is not None:
+                    cleanup.append(('renderer', renderer.cleanup))
+                if relay is not None:
+                    def finish_relay():
+                        with Host.bindings(Pair, {'WORK': attempt}):
+                            return relay.finish(failed=True)
+                    cleanup.append(('relay', finish_relay))
+                if actor is not None:
+                    cleanup.append(('actor', lambda: R.finish_backend(actor)))
+                try:
+                    G.finish_owned(cleanup, attempt/'final-cleanup.json')
+                finally:
+                    G.sweep_owned(attempt)
 
 
 def main():

@@ -123,9 +123,64 @@ consumed remains an inference consistent with the actual timer/lease source
 and the2.81-second retained reply-to-refusal interval. No product timer, lease
 or drawing source was changed. All scoped native groups were reaped.
 
-Every prior failure remains in its own directory. Open, four carried-owner
+Every prior failure remains in its own directory. At the009 checkpoint, open, four carried-owner
 input/fuel clicks, real ambient progress and two outputs have executed; output
 transfer, E/native close, durable save and cold reload have not passed this
 caller fixture. Ordinary unmodified012 compatibility is a separate
 public-wrapper result. The helper is retained with the named failure rather
 than advertising complete cooking GUI acceptance.
+
+The subsequent host preparation scopes `R.GROUPS` to the attempt's
+`owned-groups.ndjson` for the complete launch/try/finally/sweep lifetime;
+bounded compiler helpers use their own directory journal as well. It preserves
+the primary failure through the existing owner cleanup routine. The final
+paused-clock stabilization has a fixed deadline of the earlier actor lifetime
+or10 seconds, and socket reads use its remaining bound. These host corrections
+do not alter simulation. Actual010 explicitly selected the genuinely built
+Actor023 and reused the same callback binary,120-second observer and events.
+It executed and painted output pickup, main2 placement, E close and native
+close, ending with `client closed`. Its final clock was1744/revision3: the first
+fuel had legally expired after input consumption. The old final `<1601` host
+guard therefore failed before durable save. That positive GUI scope and host
+failure are preserved separately.
+
+The corrected observer admits zero remaining burn after input consumption,
+while retaining total1600, progress0, cook total200 and coal1. A positive
+remaining burn determines the exact tick; zero only establishes tick≥1601.
+Final body burn clamps at0; the independent Core oracle adds the unlit Applied
+event at `(1601,0,3)` and revision3. Receipt ordering matters: extinction after
+output pickup records its prewrite LIT source6883; output pickup after
+extinction records the then-current UNLIT source6884. Both paths have eight
+dirty receipts. Actual011 used this correction with the same native artifacts.
+
+Actual011 completed all nine callback batches and retained36 real Catalog
+frames, each with512 sampled cells. It pinned ten representative complete
+960×540 CPU images, including partial progress, two outputs, pickup, placement
+and E close. Ambient progress took67.009 seconds on this workload. The native
+observer completed in107.234 seconds with child status0, no activation
+notifications and no Spaces changes. These measurements concern the declared
+synthetic callbacks and real hidden process, rather than hardware input.
+
+The durable reconstruction passed for Core tick1734/revision3/unlit6884,
+all104 sections, full43/status/WG, raw player and Details/root data, coal1,
+RecipesUsed2, effects, entity/RNG/factory/ID owner, clock inputs and incarnation
+map. Publication sequence8 retained the pre-extinguish LIT source. The save
+highwater was43; a new actual Actor023 cold-loaded it, checked the closed
+transient menu and complete owners, then resaved at highwater45 with equality.
+
+The original top-level driver still exited1: its `finally` attempted a second
+exclusive `Relay.finish` receipt after the relay had already been consumed.
+That cleanup failure remains recorded. The future helper now releases the
+relay variable after successful finish and always performs the group sweep
+even if another teardown fails. A separate retained finalization executed only
+the existing011 attempt-local journal sweep and listener probes: all three
+owned groups and all five old/cold public/private/relay listeners were absent.
+It rechecked exact summary, observer, binary, wire, saved and complete-P6 pins.
+No gameplay or native compilation was replayed to finalize this receipt.
+
+The011 unpaused `demo-seed.nbt` is independently reconstructed and differs
+from the original seed only at byte330, paused1→0. Its SHA256 is
+`e88e15ab0267beb9fea4ad55c9b9b7cd3cca27eea0cf5a3cc6d7b59a2ad1b859`.
+Actual unmodified public-wrapper acceptance remains a separate result. The
+checked-in positive receipt explicitly retains behaviour/save/cold PASS,
+original host cleanup FAIL, and completed post-exit cleanup verification.

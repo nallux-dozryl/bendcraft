@@ -1,0 +1,1277 @@
+{
+  "schema": 1,
+  "status": "retained_behaviour_save_cold_PASS_original_host_cleanup_FAIL_cleanup_finalized",
+  "actual_execution_generation": 11,
+  "production_client_generation": 12,
+  "actor_generation": 23,
+  "promotion": false,
+  "actual_command": "python3 -B tools/generic_resource_world_sample_cooking_runtime.py --generation 11 --client-generation 12 --actor-generation 23 --clock ambient --native",
+  "executed_helper": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/011/executed-helper.py",
+    "bytes": 53817,
+    "sha256": "dd3f9d3edb594b53e92b5f4f2fa2f27198067d5181d6a68308702af99450f5a6"
+  },
+  "executed_preparation": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/011/prepared.json",
+    "bytes": 10994,
+    "sha256": "e871a7f5627755026c9470d3ae5c782baff6e9c64d387939160edb252eaf5432"
+  },
+  "future_helper_with_cleanup_fix": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/generic_resource_world_sample_cooking_runtime.py",
+    "bytes": 54122,
+    "sha256": "2da362ff0758ae9be5d0848fe36f6c1d7c98c0de13ad83e0272ee16d2989f99a"
+  },
+  "documentation": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/docs/generic_resource_world_sample_cooking_runtime.md",
+    "bytes": 12286,
+    "sha256": "6adbce936e89265822d91767651afc416551dacf5d8ba8fdf26afedaec476d82"
+  },
+  "native_summary": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/011/native/summary.json",
+    "bytes": 16638,
+    "sha256": "735ff7aa2ad1e18536d5d4b5780cf179d3bcd725dfa31b5eb1668c2330c13b30"
+  },
+  "original_driver_exit_code": 1,
+  "retained_original_driver_failure": {
+    "pin": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/011/first-failure.json",
+      "bytes": 212,
+      "sha256": "95d17bbbbeb3c6fa712d2669e61b231ee9fcb94408f55e80b7fa9a5e1649ff64"
+    },
+    "value": {
+      "message": "[Errno 17] File exists: '/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/011/native/callback-relay.json'",
+      "mode": "native",
+      "type": "FileExistsError"
+    }
+  },
+  "retained_original_cleanup_failure": {
+    "pin": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/011/native/final-cleanup.json",
+      "bytes": 243,
+      "sha256": "5399c810973f1c7b22abebfbed908470537ee0f02669de1b00cbed841665ba8b"
+    },
+    "value": {
+      "primary": null,
+      "secondary": [
+        {
+          "message": "[Errno 17] File exists: '/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/011/native/callback-relay.json'",
+          "owner": "relay",
+          "type": "FileExistsError"
+        }
+      ]
+    }
+  },
+  "cleanup_finalization": {
+    "pin": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/011/native/retained-finalization.json",
+      "bytes": 2552,
+      "sha256": "1863afbb88c97fc36144a1c07677c9b945154ee99904e9589b2289c647f64d07"
+    },
+    "value": {
+      "actual_group_sweep": {
+        "bytes": 1625,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/011/native/owned-groups-cleanup.json",
+        "sha256": "7a7026d5f362fd628d0eacb3209bdf5d236bf596dec6c8e4da4effce52ef7277"
+      },
+      "all_own_groups_absent": true,
+      "elapsed_post_exit_finalize_seconds": null,
+      "exact_executed_helper": {
+        "bytes": 53817,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/011/executed-helper.py",
+        "sha256": "dd3f9d3edb594b53e92b5f4f2fa2f27198067d5181d6a68308702af99450f5a6"
+      },
+      "fixed_future_host_helper": {
+        "bytes": 54122,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/generic_resource_world_sample_cooking_runtime.py",
+        "sha256": "2da362ff0758ae9be5d0848fe36f6c1d7c98c0de13ad83e0272ee16d2989f99a"
+      },
+      "listeners": [
+        {
+          "absent": true,
+          "connect_ex": 61,
+          "listener": "server.ready",
+          "owner": "actor-callback",
+          "port": 54509
+        },
+        {
+          "absent": true,
+          "connect_ex": 61,
+          "listener": "renderer.ready",
+          "owner": "actor-callback",
+          "port": 54510
+        },
+        {
+          "absent": true,
+          "connect_ex": 61,
+          "listener": "server.ready",
+          "owner": "actor-cold",
+          "port": 54621
+        },
+        {
+          "absent": true,
+          "connect_ex": 61,
+          "listener": "renderer.ready",
+          "owner": "actor-cold",
+          "port": 54622
+        },
+        {
+          "absent": true,
+          "connect_ex": 61,
+          "listener": "renderer_proxy",
+          "owner": "callback-relay",
+          "port": 54527
+        }
+      ],
+      "native_gameplay_or_compiler_replay": false,
+      "original_top_process_exit": 1,
+      "own_group_count": 3,
+      "post_exit_attempt_local_journal": {
+        "bytes": 1518,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/011/native/owned-groups.ndjson",
+        "sha256": "b87ae244070b83b85b10e51542abfbe7dcd38e8c5f7666252f591c68bf58a1ff"
+      },
+      "retained_original_final_cleanup_failure": {
+        "bytes": 243,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/011/native/final-cleanup.json",
+        "sha256": "5399c810973f1c7b22abebfbed908470537ee0f02669de1b00cbed841665ba8b"
+      },
+      "scope": "Retained actual behaviour/save/cold+observer PASS with explicit original duplicate-exclusiveRelay-finish driverFAIL. This finalization only sweeps the existing own journal and probes own exited ports; no gameplay/native run/build/OS action.",
+      "status": "retained_behaviour_save_cold_PASS_cleanup_driver_FAIL_finalized",
+      "summary": {
+        "bytes": 16638,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/011/native/summary.json",
+        "sha256": "735ff7aa2ad1e18536d5d4b5780cf179d3bcd725dfa31b5eb1668c2330c13b30"
+      },
+      "summary_observer_binary_wire_saved_P6_pins_rechecked": true
+    }
+  },
+  "zero_new_gameplay_or_compiler_runs_for_finalization": true,
+  "original_immutable_client_build": {
+    "bytes": 10076,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/012/build.json",
+    "sha256": "0ccbe71835a81a89ebfdd187174fcf9461ba49980e52cb6b7944723c818e8422"
+  },
+  "original_immutable_C": {
+    "bytes": 24951887,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/012/renderer.c",
+    "sha256": "eed88e41373aaff2d41145e690f6776deb12a6bb2893911df5b467ef1dff980d"
+  },
+  "private_callback_C": {
+    "bytes": 24957984,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/011/renderer-callback.c",
+    "sha256": "c8c98dcb674dad6c3a566027cf09fc9894c56cb0153ed12fee1fe8c270d7c4f7"
+  },
+  "private_callback_binary": {
+    "bytes": 6989616,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/011/renderer-callback",
+    "sha256": "023dc60d28bc916b0363ad42b9d56c5cbb38e6182faf95b78479cd7d5017ec19"
+  },
+  "actual_changed_actor": {
+    "bytes": 16246584,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-023/actor",
+    "sha256": "7fd7ee9269802a6e128716f53bf34030ec592728ef954f9b61bebecac36719d1"
+  },
+  "one_callback_compile_preserved": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/004/callback-build.json",
+    "bytes": 2338,
+    "sha256": "d63af40e53929266faf0e755e0c6c5d156c14ea3e0be977b7e027641ac9ea966"
+  },
+  "unchanged_callback_reuse": {
+    "build": {
+      "bytes": 3058,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/010/callback-build.json",
+      "sha256": "08e9ba06d7697644032220bb3cf121f148dc7d922d485859301d1e0259784919"
+    },
+    "new_compiler_or_emitter_processes": 0,
+    "original_binary": {
+      "bytes": 6989616,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/010/renderer-callback",
+      "sha256": "023dc60d28bc916b0363ad42b9d56c5cbb38e6182faf95b78479cd7d5017ec19"
+    },
+    "reason": "Host-only observer/driver repair; byte-identical C and binary retained.",
+    "same_binary_sha256": "023dc60d28bc916b0363ad42b9d56c5cbb38e6182faf95b78479cd7d5017ec19"
+  },
+  "private_observer_source": {
+    "bytes": 2633,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/011/observer.swift",
+    "sha256": "ea59b9e930e9e6dcacaeaf3d5bf60d7ff2782bbeae53529da30c117d6440b150"
+  },
+  "private_observer_binary": {
+    "bytes": 84872,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/011/observer",
+    "sha256": "07041fe700b9b5cf464c644161ea6c27d99c9aac3531383f8754705205ac82e6"
+  },
+  "unchanged_observer_reuse": {
+    "build": {
+      "bytes": 2088,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/010/observer-build.json",
+      "sha256": "a025ee69b675cd99f450aba66fdcb1c56c63aab8754c94eb00a2f89c38c10e32"
+    },
+    "new_compiler_processes": 0,
+    "original_binary": {
+      "bytes": 84872,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/010/observer",
+      "sha256": "07041fe700b9b5cf464c644161ea6c27d99c9aac3531383f8754705205ac82e6"
+    }
+  },
+  "private_four_seams": {
+    "declaration_sha256": "df35838c0900cea03924814bb1a37a7f8722ab54e89636324fbb3307999dfc44",
+    "edits": [
+      "Only queried BEND_MINECRAFT_LAUNCH_MODE returns human under explicit hidden callback marker; all other effect/env reads exact",
+      "Private declaration before the actual Objective-C Window.frame",
+      "After original window_show, before unchanged window_list/queue clearing",
+      "Test-only virtual grab branch; no Base cursor effects; real releaseKeys retained",
+      "Test-only focused=True/captured=virtual grab, within actual Native.status",
+      "Local callback implementation after actual MCPlayerPresentationView declaration"
+    ],
+    "event_callback_source_sha256": "9691fd6ced9f7a6290a0428ad4d0b73f937413e0c7a0083169b9d8af95187e6d",
+    "interactive_mode_read": {
+      "actual_native_environment": "hidden",
+      "effect": "CID_IO_GET_ENV",
+      "other_queries_changed": false,
+      "query": "BEND_MINECRAFT_LAUNCH_MODE",
+      "returned": "human"
+    },
+    "original_C_edits": 0,
+    "original_window_show_list_and_drawing_retained": true,
+    "production_Bend_edits": 0,
+    "production_Native_edits": 0,
+    "scope": "Synthetic local NSEvent callbacks and virtual focus/capture only; no OS event posting, focus, capture, cursor or input-latency claim."
+  },
+  "events": {
+    "bytes": 1065,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/011/events.json",
+    "sha256": "6a54f72bbf90af61ecb91adf19ccd346130b3d647907dd086fbe654cdf63003d"
+  },
+  "callback_batches": [
+    {
+      "actual_callback": {
+        "events": [
+          {
+            "button": 1,
+            "down": true,
+            "kind": "mouse",
+            "x": 480,
+            "y": 270
+          },
+          {
+            "button": 1,
+            "down": false,
+            "kind": "mouse",
+            "x": 480,
+            "y": 270
+          }
+        ],
+        "frame": 1,
+        "point_height": 540,
+        "point_width": 960,
+        "queue_words": [
+          126,
+          480,
+          270,
+          1,
+          1,
+          126,
+          480,
+          270,
+          1,
+          0
+        ],
+        "scope": "private local callbacks",
+        "token": 1,
+        "virtual_capture": true,
+        "virtual_focus": true
+      },
+      "batch": {
+        "events": [
+          {
+            "button": 1,
+            "down": true,
+            "kind": "mouse",
+            "x": 480,
+            "y": 270
+          },
+          {
+            "button": 1,
+            "down": false,
+            "kind": "mouse",
+            "x": 480,
+            "y": 270
+          }
+        ],
+        "token": 1
+      },
+      "label": "use-ray"
+    },
+    {
+      "actual_callback": {
+        "events": [
+          {
+            "button": 0,
+            "down": true,
+            "kind": "mouse",
+            "x": 408,
+            "y": 337
+          },
+          {
+            "button": 0,
+            "down": false,
+            "kind": "mouse",
+            "x": 408,
+            "y": 337
+          }
+        ],
+        "frame": 3,
+        "point_height": 540,
+        "point_width": 960,
+        "queue_words": [
+          126,
+          408,
+          337,
+          0,
+          1,
+          126,
+          408,
+          337,
+          0,
+          0
+        ],
+        "scope": "private local callbacks",
+        "token": 2,
+        "virtual_capture": false,
+        "virtual_focus": true
+      },
+      "batch": {
+        "events": [
+          {
+            "button": 0,
+            "down": true,
+            "kind": "mouse",
+            "x": 408,
+            "y": 337
+          },
+          {
+            "button": 0,
+            "down": false,
+            "kind": "mouse",
+            "x": 408,
+            "y": 337
+          }
+        ],
+        "token": 2
+      },
+      "label": "pick-beef"
+    },
+    {
+      "actual_callback": {
+        "events": [
+          {
+            "button": 0,
+            "down": true,
+            "kind": "mouse",
+            "x": 456,
+            "y": 212
+          },
+          {
+            "button": 0,
+            "down": false,
+            "kind": "mouse",
+            "x": 456,
+            "y": 212
+          }
+        ],
+        "frame": 5,
+        "point_height": 540,
+        "point_width": 960,
+        "queue_words": [
+          126,
+          456,
+          212,
+          0,
+          1,
+          126,
+          456,
+          212,
+          0,
+          0
+        ],
+        "scope": "private local callbacks",
+        "token": 3,
+        "virtual_capture": false,
+        "virtual_focus": true
+      },
+      "batch": {
+        "events": [
+          {
+            "button": 0,
+            "down": true,
+            "kind": "mouse",
+            "x": 456,
+            "y": 212
+          },
+          {
+            "button": 0,
+            "down": false,
+            "kind": "mouse",
+            "x": 456,
+            "y": 212
+          }
+        ],
+        "token": 3
+      },
+      "label": "put-input"
+    },
+    {
+      "actual_callback": {
+        "events": [
+          {
+            "button": 0,
+            "down": true,
+            "kind": "mouse",
+            "x": 426,
+            "y": 337
+          },
+          {
+            "button": 0,
+            "down": false,
+            "kind": "mouse",
+            "x": 426,
+            "y": 337
+          }
+        ],
+        "frame": 7,
+        "point_height": 540,
+        "point_width": 960,
+        "queue_words": [
+          126,
+          426,
+          337,
+          0,
+          1,
+          126,
+          426,
+          337,
+          0,
+          0
+        ],
+        "scope": "private local callbacks",
+        "token": 4,
+        "virtual_capture": false,
+        "virtual_focus": true
+      },
+      "batch": {
+        "events": [
+          {
+            "button": 0,
+            "down": true,
+            "kind": "mouse",
+            "x": 426,
+            "y": 337
+          },
+          {
+            "button": 0,
+            "down": false,
+            "kind": "mouse",
+            "x": 426,
+            "y": 337
+          }
+        ],
+        "token": 4
+      },
+      "label": "pick-coal"
+    },
+    {
+      "actual_callback": {
+        "events": [
+          {
+            "button": 0,
+            "down": true,
+            "kind": "mouse",
+            "x": 456,
+            "y": 248
+          },
+          {
+            "button": 0,
+            "down": false,
+            "kind": "mouse",
+            "x": 456,
+            "y": 248
+          }
+        ],
+        "frame": 9,
+        "point_height": 540,
+        "point_width": 960,
+        "queue_words": [
+          126,
+          456,
+          248,
+          0,
+          1,
+          126,
+          456,
+          248,
+          0,
+          0
+        ],
+        "scope": "private local callbacks",
+        "token": 5,
+        "virtual_capture": false,
+        "virtual_focus": true
+      },
+      "batch": {
+        "events": [
+          {
+            "button": 0,
+            "down": true,
+            "kind": "mouse",
+            "x": 456,
+            "y": 248
+          },
+          {
+            "button": 0,
+            "down": false,
+            "kind": "mouse",
+            "x": 456,
+            "y": 248
+          }
+        ],
+        "token": 5
+      },
+      "label": "put-fuel"
+    },
+    {
+      "actual_callback": {
+        "events": [
+          {
+            "button": 0,
+            "down": true,
+            "kind": "mouse",
+            "x": 516,
+            "y": 230
+          },
+          {
+            "button": 0,
+            "down": false,
+            "kind": "mouse",
+            "x": 516,
+            "y": 230
+          }
+        ],
+        "frame": 30,
+        "point_height": 540,
+        "point_width": 960,
+        "queue_words": [
+          126,
+          516,
+          230,
+          0,
+          1,
+          126,
+          516,
+          230,
+          0,
+          0
+        ],
+        "scope": "private local callbacks",
+        "token": 6,
+        "virtual_capture": false,
+        "virtual_focus": true
+      },
+      "batch": {
+        "events": [
+          {
+            "button": 0,
+            "down": true,
+            "kind": "mouse",
+            "x": 516,
+            "y": 230
+          },
+          {
+            "button": 0,
+            "down": false,
+            "kind": "mouse",
+            "x": 516,
+            "y": 230
+          }
+        ],
+        "token": 6
+      },
+      "label": "pick-output"
+    },
+    {
+      "actual_callback": {
+        "events": [
+          {
+            "button": 0,
+            "down": true,
+            "kind": "mouse",
+            "x": 444,
+            "y": 337
+          },
+          {
+            "button": 0,
+            "down": false,
+            "kind": "mouse",
+            "x": 444,
+            "y": 337
+          }
+        ],
+        "frame": 32,
+        "point_height": 540,
+        "point_width": 960,
+        "queue_words": [
+          126,
+          444,
+          337,
+          0,
+          1,
+          126,
+          444,
+          337,
+          0,
+          0
+        ],
+        "scope": "private local callbacks",
+        "token": 7,
+        "virtual_capture": false,
+        "virtual_focus": true
+      },
+      "batch": {
+        "events": [
+          {
+            "button": 0,
+            "down": true,
+            "kind": "mouse",
+            "x": 444,
+            "y": 337
+          },
+          {
+            "button": 0,
+            "down": false,
+            "kind": "mouse",
+            "x": 444,
+            "y": 337
+          }
+        ],
+        "token": 7
+      },
+      "label": "put-main2"
+    },
+    {
+      "actual_callback": {
+        "events": [
+          {
+            "down": true,
+            "kind": "key",
+            "physical": 14,
+            "text": "e"
+          },
+          {
+            "down": false,
+            "kind": "key",
+            "physical": 14,
+            "text": "e"
+          }
+        ],
+        "frame": 34,
+        "point_height": 540,
+        "point_width": 960,
+        "queue_words": [
+          125,
+          2147549198,
+          1,
+          0,
+          0,
+          125,
+          101,
+          1,
+          0,
+          0,
+          125,
+          2147549198,
+          0,
+          0,
+          0,
+          125,
+          101,
+          0,
+          0,
+          0
+        ],
+        "scope": "private local callbacks",
+        "token": 8,
+        "virtual_capture": false,
+        "virtual_focus": true
+      },
+      "batch": {
+        "events": [
+          {
+            "down": true,
+            "kind": "key",
+            "physical": 14,
+            "text": "e"
+          },
+          {
+            "down": false,
+            "kind": "key",
+            "physical": 14,
+            "text": "e"
+          }
+        ],
+        "token": 8
+      },
+      "label": "close-cooking"
+    },
+    {
+      "actual_callback": {
+        "events": [
+          {
+            "kind": "close"
+          }
+        ],
+        "frame": 36,
+        "point_height": 540,
+        "point_width": 960,
+        "queue_words": [
+          130,
+          0,
+          0,
+          0,
+          0
+        ],
+        "scope": "private local callbacks",
+        "token": 9,
+        "virtual_capture": true,
+        "virtual_focus": true
+      },
+      "batch": {
+        "events": [
+          {
+            "kind": "close"
+          }
+        ],
+        "token": 9
+      },
+      "label": "close-window"
+    }
+  ],
+  "fixture": {
+    "HUD_scale": 1,
+    "body_speed_bits": 1065353216,
+    "feet": [
+      12.5,
+      8,
+      10.5
+    ],
+    "full43": true,
+    "incarnation": 3,
+    "initial_registry_state": 6884,
+    "look_degrees": [
+      0,
+      30
+    ],
+    "main0": "minecraft:beef*2",
+    "main1": "minecraft:coal*2",
+    "position": [
+      "minecraft:overworld",
+      12,
+      8,
+      12
+    ],
+    "render_extent": [
+      960,
+      540
+    ],
+    "sections": 104,
+    "selected": 2
+  },
+  "seed": {
+    "bytes": 1712794,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/011/seed.nbt",
+    "sha256": "b7f7882b308716743e9cabd2437c8d6584d940d52ff6bef9f36e1d80b0f494a2"
+  },
+  "normal_ambient_cooking": {
+    "simulation_step_calls": 0,
+    "speed_bits": 1065353216,
+    "progress_seconds": 67.00910229235888,
+    "observer_cap_seconds": 120,
+    "final_paused_clock_cap_seconds": 10,
+    "final_tick": 1734,
+    "transfer_clock_observations": [
+      {
+        "burn_remaining": 864,
+        "inferred_exact_Core_tick": 737,
+        "label": "pick-output",
+        "minimum_Core_tick": 737
+      },
+      {
+        "burn_remaining": 380,
+        "inferred_exact_Core_tick": 1221,
+        "label": "put-main2",
+        "minimum_Core_tick": 1221
+      }
+    ],
+    "output_pick_after_extinction": false
+  },
+  "observer": {
+    "elapsed_seconds": 107.23411703109741,
+    "child_status": 0,
+    "timed_out": false,
+    "activation_notification_pids": [],
+    "space_change_notifications": 0,
+    "sampled_frontmost_pids": [
+      7356
+    ],
+    "before_frontmost_pid": 7356,
+    "after_frontmost_pid": 7356,
+    "same_returned_cpu_image": true,
+    "drawable_readback": false
+  },
+  "actual_catalog_frames": 36,
+  "sampled_cells_per_frame": 512,
+  "aggregate_actual_cell_observations": 18432,
+  "complete_representative_P6_images": [
+    {
+      "CPU_image": {
+        "bytes": 1555215,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/011/native/callback-client/images/1.ppm",
+        "sha256": "e0e9929126a646e1245ce143d4de5d84811508dda50e0c23b98c59174faefa95"
+      },
+      "HUD_scale": 1,
+      "actual_pixel_extent": [
+        960,
+        540
+      ],
+      "complete_P6_payload": true,
+      "completed_resource_image_marker": "resource.image|1|960|540|3894504310",
+      "elapsed_since_observer_start": 10.929519541561604,
+      "exchange_index": 10,
+      "label": "opened",
+      "scope": "Same returned CPU image composed by unchanged CookingInput/Window.frame; no drawable readback.",
+      "serial": 1
+    },
+    {
+      "CPU_image": {
+        "bytes": 1555215,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/011/native/callback-client/images/3.ppm",
+        "sha256": "00fe6e8c4ebe1d678f75bbee2f6165bb30f3390238eb358b857e322d7116c0a9"
+      },
+      "HUD_scale": 1,
+      "actual_pixel_extent": [
+        960,
+        540
+      ],
+      "complete_P6_payload": true,
+      "completed_resource_image_marker": "resource.image|3|960|540|4141954024",
+      "elapsed_since_observer_start": 12.428492083214223,
+      "exchange_index": 17,
+      "label": "pick-beef",
+      "scope": "Same returned CPU image composed by unchanged CookingInput/Window.frame; no drawable readback.",
+      "serial": 3
+    },
+    {
+      "CPU_image": {
+        "bytes": 1555215,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/011/native/callback-client/images/5.ppm",
+        "sha256": "25f0f79542bc81312f2ec2aaf16062925abc153c429c726d7a05dad429407a5a"
+      },
+      "HUD_scale": 1,
+      "actual_pixel_extent": [
+        960,
+        540
+      ],
+      "complete_P6_payload": true,
+      "completed_resource_image_marker": "resource.image|5|960|540|2935174420",
+      "elapsed_since_observer_start": 14.395115500316024,
+      "exchange_index": 24,
+      "label": "put-input",
+      "scope": "Same returned CPU image composed by unchanged CookingInput/Window.frame; no drawable readback.",
+      "serial": 5
+    },
+    {
+      "CPU_image": {
+        "bytes": 1555215,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/011/native/callback-client/images/7.ppm",
+        "sha256": "25936fc98dbdf8e19739daa89e2447123c2d6afc754e4e8823aec371ab3e7337"
+      },
+      "HUD_scale": 1,
+      "actual_pixel_extent": [
+        960,
+        540
+      ],
+      "complete_P6_payload": true,
+      "completed_resource_image_marker": "resource.image|7|960|540|691711854",
+      "elapsed_since_observer_start": 17.245845125056803,
+      "exchange_index": 31,
+      "label": "pick-coal",
+      "scope": "Same returned CPU image composed by unchanged CookingInput/Window.frame; no drawable readback.",
+      "serial": 7
+    },
+    {
+      "CPU_image": {
+        "bytes": 1555215,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/011/native/callback-client/images/9.ppm",
+        "sha256": "39863b29e4a2fb6410e7199b0f12b7cc00d46a2e1484d6c12dc4c40466e1a21d"
+      },
+      "HUD_scale": 1,
+      "actual_pixel_extent": [
+        960,
+        540
+      ],
+      "complete_P6_payload": true,
+      "completed_resource_image_marker": "resource.image|9|960|540|1710019786",
+      "elapsed_since_observer_start": 21.38603129144758,
+      "exchange_index": 38,
+      "label": "put-fuel",
+      "scope": "Same returned CPU image composed by unchanged CookingInput/Window.frame; no drawable readback.",
+      "serial": 9
+    },
+    {
+      "CPU_image": {
+        "bytes": 1555215,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/011/native/callback-client/images/30.ppm",
+        "sha256": "3afdb3be41efc4cf384d7a73ebce0de50beb432258e672846fa9cbc2b557850d"
+      },
+      "HUD_scale": 1,
+      "actual_pixel_extent": [
+        960,
+        540
+      ],
+      "complete_P6_payload": true,
+      "completed_resource_image_marker": "resource.image|30|960|540|2767443003",
+      "elapsed_since_observer_start": 94.06843962520361,
+      "exchange_index": 102,
+      "label": "pick-output",
+      "scope": "Same returned CPU image composed by unchanged CookingInput/Window.frame; no drawable readback.",
+      "serial": 30
+    },
+    {
+      "CPU_image": {
+        "bytes": 1555215,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/011/native/callback-client/images/32.ppm",
+        "sha256": "90bb0cd86b6be25dea950fca6ceb66c78708e456cc106c3c7a8af750c4329da7"
+      },
+      "HUD_scale": 1,
+      "actual_pixel_extent": [
+        960,
+        540
+      ],
+      "complete_P6_payload": true,
+      "completed_resource_image_marker": "resource.image|32|960|540|1825465987",
+      "elapsed_since_observer_start": 99.65634762495756,
+      "exchange_index": 109,
+      "label": "put-main2",
+      "scope": "Same returned CPU image composed by unchanged CookingInput/Window.frame; no drawable readback.",
+      "serial": 32
+    },
+    {
+      "CPU_image": {
+        "bytes": 1555215,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/011/native/callback-client/images/34.ppm",
+        "sha256": "1d695d14710f7f8d8d5ec310e40775dab6b7fc7b9bd9311b37759d6a93dc459a"
+      },
+      "HUD_scale": 1,
+      "actual_pixel_extent": [
+        960,
+        540
+      ],
+      "complete_P6_payload": true,
+      "completed_resource_image_marker": "resource.image|34|960|540|739029728",
+      "elapsed_since_observer_start": 105.04956966638565,
+      "exchange_index": 116,
+      "label": "closed",
+      "scope": "Same returned CPU image composed by unchanged CookingInput/Window.frame; no drawable readback.",
+      "serial": 34
+    },
+    {
+      "CPU_image": {
+        "bytes": 1555215,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/011/native/callback-client/images/10.ppm",
+        "sha256": "927ae53a4ebd86e67f07520263bc9cb3bae3e22d4a7cc1550bacf227f8bd43ff"
+      },
+      "HUD_scale": 1,
+      "actual_pixel_extent": [
+        960,
+        540
+      ],
+      "complete_P6_payload": true,
+      "completed_resource_image_marker": "resource.image|10|960|540|958638528",
+      "elapsed_since_observer_start": 24.43156591616571,
+      "exchange_index": 44,
+      "label": "ambient-partial",
+      "scope": "Same returned CPU image composed by unchanged CookingInput/Window.frame; no drawable readback.",
+      "serial": 10
+    },
+    {
+      "CPU_image": {
+        "bytes": 1555215,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/011/native/callback-client/images/28.ppm",
+        "sha256": "4947d981febcdad72cbeddcfbaa9e920fc2cb59a66b71594638db078f0e72d88"
+      },
+      "HUD_scale": 1,
+      "actual_pixel_extent": [
+        960,
+        540
+      ],
+      "complete_P6_payload": true,
+      "completed_resource_image_marker": "resource.image|28|960|540|2703417456",
+      "elapsed_since_observer_start": 88.39515000022948,
+      "exchange_index": 98,
+      "label": "ambient-completed",
+      "scope": "Same returned CPU image composed by unchanged CookingInput/Window.frame; no drawable readback.",
+      "serial": 28
+    }
+  ],
+  "representative_images_verified": 10,
+  "retained_wire": {
+    "bytes": 1051493,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/011/native/callback-relay.json",
+    "sha256": "a6976d461ff77b832984f2d235ffe25485ace3463ec17aaa59ec0878eefda75a"
+  },
+  "save_and_cold": {
+    "save_projection": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/011/native/save-projection.json",
+      "bytes": 1457,
+      "sha256": "c949f6103d6c43da31e196896bbcfe0b70e6f25f41bf3e4db3d67aebc3897430"
+    },
+    "complete_projection": {
+      "clock": {
+        "day_time": 0,
+        "daylight": false,
+        "paused": true,
+        "pending": 0,
+        "revision": 3,
+        "tick": 1734
+      },
+      "complete_reconstruction": true,
+      "entity_owner": "a7da904f96a631aa83b9b2ebe00d21e9d4770f967e91e995ac7d2696887180e9",
+      "full43": true,
+      "highwater": 43,
+      "incarnation_map_retained": true,
+      "independent_fresh_constructor": {
+        "Sound_time_scope": "Sound allocation advances the factory; its discarded RNG cannot reveal its clock input.",
+        "factory_allocations": 2,
+        "monotonic_interval_ns": [
+          5945542680458000,
+          5945693653856000
+        ],
+        "recovered_Level_constructor_time_ns": 5945583653178000
+      },
+      "physical_body": "774d0aa96f821acc91099a93ad0065859a80bdbaa2ea56fb578a9960cb6c54fc",
+      "publication": {
+        "last": {
+          "chunk": {
+            "dimension": [
+              109,
+              105,
+              110,
+              101,
+              99,
+              114,
+              97,
+              102,
+              116,
+              58,
+              111,
+              118,
+              101,
+              114,
+              119,
+              111,
+              114,
+              108,
+              100
+            ],
+            "x": 0,
+            "z": 0
+          },
+          "position": {
+            "dimension": [
+              109,
+              105,
+              110,
+              101,
+              99,
+              114,
+              97,
+              102,
+              116,
+              58,
+              111,
+              118,
+              101,
+              114,
+              119,
+              111,
+              114,
+              108,
+              100
+            ],
+            "x": 12,
+            "y": 8,
+            "z": 12
+          },
+          "sequence": 8,
+          "source": {
+            "binding": {
+              "block": [
+                109,
+                105,
+                110,
+                101,
+                99,
+                114,
+                97,
+                102,
+                116,
+                58,
+                102,
+                117,
+                114,
+                110,
+                97,
+                99,
+                101
+              ],
+              "family": 0,
+              "lit": 1,
+              "lit_state": 6883,
+              "state": 6883,
+              "unlit_state": 6884
+            },
+            "incarnation": 3,
+            "position": {
+              "dimension": [
+                109,
+                105,
+                110,
+                101,
+                99,
+                114,
+                97,
+                102,
+                116,
+                58,
+                111,
+                118,
+                101,
+                114,
+                119,
+                111,
+                114,
+                108,
+                100
+              ],
+              "x": 12,
+              "y": 8,
+              "z": 12
+            }
+          }
+        },
+        "sequence": 8,
+        "unsaved": []
+      },
+      "saved": {
+        "bytes": 1713739,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/011/native/world.nbt",
+        "sha256": "d4f40c0d33e8c4ea90d0d3709c44ab40e2616bf02c2581eead5a3f2646e04de7"
+      }
+    },
+    "first_save_highwater": 43,
+    "cold_resave_highwater": 45,
+    "complete_cold_owner_equality": true,
+    "saved_before_cold_sha256": "d4f40c0d33e8c4ea90d0d3709c44ab40e2616bf02c2581eead5a3f2646e04de7",
+    "saved_after_cold": {
+      "bytes": 1713739,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/011/native/world.nbt",
+      "sha256": "93a56397c52dd4e7724412789d66580a3e212df2829136691db9abf10791a096"
+    },
+    "checked_owners": [
+      "Core/104sections/tick/events/revision",
+      "full43main/equipment/status/WG",
+      "complete LocalPlayer record retained cold",
+      "rawDetails/root/extras/coal1/RecipesUsed2/timers",
+      "effects",
+      "entity/factory/id/RNG",
+      "clock_inputs",
+      "complete incarnation map",
+      "ordered publication journal8 latest pre-extinguishlit source"
+    ]
+  },
+  "historical_failures": {
+    "immutable_negative_receipt": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/generic_resource_world_sample_cooking_runtime_001.json",
+      "bytes": 15994,
+      "sha256": "8f4324e0bd83b81c937fe5c89a82db0b9437175b18a2660720b06f44039e188a"
+    },
+    "010_real_GUI_PASS_final_burn_guard_FAIL": {
+      "failure": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/010/native/first-failure.json",
+        "bytes": 88,
+        "sha256": "425a57a30bc2006e0fdd0cc08b736a1aab6f44b5d367f6c158ef90c9a573e504"
+      },
+      "value": {
+        "message": "Final paused clock remains within first fuel burn",
+        "type": "AssertionError"
+      },
+      "cleanup": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/010/native/owned-groups-cleanup.json",
+        "bytes": 1271,
+        "sha256": "a196f82d4dfc3b0d94926b1de879f11b7ae81080923ddc93d9f00d01a5bffea5"
+      },
+      "whole_scope": "Real open/fuel/input/progress/outputtransfer/E/nativeclose passed; final1744 clock invalidated old host positiveburn assumption before save."
+    },
+    "004_006_008_009_preserved": true,
+    "006_incomplete_PPM_pin_is_failure": true,
+    "011_original_duplicate_relay_cleanup_failure_retained": true
+  },
+  "validated_unpaused_demo_seed": {
+    "actual_synthetic_caller_behaviour_save_cold": {
+      "bytes": 16638,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/011/native/summary.json",
+      "sha256": "735ff7aa2ad1e18536d5d4b5780cf179d3bcd725dfa31b5eb1668c2330c13b30"
+    },
+    "all_other_owners_identical": true,
+    "complete_format4_reconstruction": true,
+    "demo": false,
+    "demo_seed": {
+      "bytes": 1712794,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/011/demo-seed.nbt",
+      "sha256": "e88e15ab0267beb9fea4ad55c9b9b7cd3cca27eea0cf5a3cc6d7b59a2ad1b859"
+    },
+    "exact_byte_differences": [
+      [
+        330,
+        1,
+        0
+      ]
+    ],
+    "highwater": 40,
+    "incarnation_map_retained": true,
+    "only_changed_field": "Core.paused",
+    "original": true,
+    "retained_cleanup_finalization": {
+      "bytes": 2552,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/011/native/retained-finalization.json",
+      "sha256": "1863afbb88c97fc36144a1c07677c9b945154ee99904e9589b2289c647f64d07"
+    },
+    "scope": "The synthetic callback cooking caller completed behaviour/save/cold withActor023; its originaltopdrivercleanupFAIL andpostexitfinalization are retained. This file-only demo seed has notbeenexecuted through the unmodified public wrapper and is not OS input acceptance.",
+    "sections": 104,
+    "seed": {
+      "bytes": 1712794,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/011/seed.nbt",
+      "sha256": "b7f7882b308716743e9cabd2437c8d6584d940d52ff6bef9f36e1d80b0f494a2"
+    },
+    "status": "file_only_validated_demo_seed_actual_public_wrapper_acceptance_pending"
+  },
+  "limits": [
+    "Synthetic local NSEvent callbacks/virtualfocus/capture/queriedinteractive flag; no hardware OS input acceptance",
+    "Real hidden process observer saw no activation or Spaces change; no foreground interaction requested",
+    "CPU images are complete returned Window.frame images; no drawable/GPU readback or fullvanilla pixel oracle",
+    "Controlled400step option was notexecuted; actual server timer/catchup workload duration retained",
+    "Actual testpath pickup preceded extinction; ordering-aware zero-burn pickup branch source-prepared but not independently exercised",
+    "Outputtransfer does not claim XP extraction/spawning",
+    "Unmodified public wrapper/demo acceptance belongs to a separate parent run",
+    "Original topdriver failed cleanup; retained gameplay/save/cold PASS and postexit cleanupfinalization are distinct facts"
+  ]
+}
