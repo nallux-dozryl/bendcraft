@@ -1,0 +1,328 @@
+{
+  "status": "source_and_13_kernel_laws_pass_native_and_live_provider_pending",
+  "confidence": "high for exact source, kernel and recorded Java scopes; native differential and live completion integration unverified",
+  "sources": {
+    "src/entity_chunk_loading.bend": {
+      "path": "src/entity_chunk_loading.bend",
+      "bytes": 20249,
+      "sha256": "a316cd527faf05ca24fc4cf45a921109249f00592fef3186396387c601dc7aec"
+    },
+    "src/entity_chunk_loading_laws.bend": {
+      "path": "src/entity_chunk_loading_laws.bend",
+      "bytes": 3611,
+      "sha256": "2fce4e8ae04599068cf0da0dccf2b875f526fbda9e13993cafc4a13b6c1f0e70"
+    },
+    "src/entity_chunk_loading_math.bend": {
+      "path": "src/entity_chunk_loading_math.bend",
+      "bytes": 3581,
+      "sha256": "db2f8634497f65eedbbe2bf6c26b87f41351308b89647cfba4bd09133e7b1cb9"
+    },
+    "src/entity_chunk_loading_model.bend": {
+      "path": "src/entity_chunk_loading_model.bend",
+      "bytes": 2398,
+      "sha256": "e9d363a86828684c0753c16b6d78095256a34c4a4ff246d63e433e534f5a167f"
+    },
+    "src/entity_chunk_loading_observation.bend": {
+      "path": "src/entity_chunk_loading_observation.bend",
+      "bytes": 1770,
+      "sha256": "347767ab1f1ae13ecd915458fd42df564347c466a7805df645b25bc76f25f31b"
+    },
+    "src/entity_chunk_loading_proof.bend": {
+      "path": "src/entity_chunk_loading_proof.bend",
+      "bytes": 1107,
+      "sha256": "c41cc09e716e6b664d562271966d90a5c51200e14047055fccaa05422fbc5715"
+    },
+    "src/entity_chunk_loading_tickets.bend": {
+      "path": "src/entity_chunk_loading_tickets.bend",
+      "bytes": 13038,
+      "sha256": "922d8e606dcbcc29ae51957b73b042fbd1df36458ba077c4ee299622ce577252"
+    },
+    "tools/entity_chunk_loading_proof.mjs": {
+      "path": "tools/entity_chunk_loading_proof.mjs",
+      "bytes": 8214,
+      "sha256": "8c105bcf9a0e3dcc46bfbc6b1b6a878ba80aaf917ff88e00be5cb501a313a9e5"
+    },
+    "tools/test_entity_chunk_loading.py": {
+      "path": "tools/test_entity_chunk_loading.py",
+      "bytes": 3551,
+      "sha256": "adc5fb8ecf33ccbee8823af67b2d44eddc6daa293a2487163f5b374a8485ba8c"
+    },
+    "tools/test_entity_chunk_loading_reference.py": {
+      "path": "tools/test_entity_chunk_loading_reference.py",
+      "bytes": 15485,
+      "sha256": "b9b6c16d4fce143fdb467efc700556f5426fdd62153daf111ea0bf9275231f33"
+    },
+    "tests/entity_chunk_loading_reference.bend": {
+      "path": "tests/entity_chunk_loading_reference.bend",
+      "bytes": 9405,
+      "sha256": "46b53ddae4cda7d07c08ac5d51275d6d90b10b6bd613d08d29bcaaee81e0edda"
+    },
+    "docs/entity_chunk_loading.md": {
+      "path": "docs/entity_chunk_loading.md",
+      "bytes": 5578,
+      "sha256": "2b3afb33760dd445b4b3f12032faa97dc26768976cce603e69fe9d2a9fae1e47"
+    }
+  },
+  "source": {
+    "original_book_check": true,
+    "original_order_restored": true,
+    "original_event_count": 1989,
+    "unique_declarations": 1925,
+    "holes": 0,
+    "loaded_files": 31,
+    "receipt": {
+      "pid": 81918,
+      "exit_code": 0,
+      "seconds": 1.410978,
+      "timed_out": false,
+      "group_absent": true
+    },
+    "raw_result": {
+      "path": "build/entity-chunk-loading/source-006/result.json",
+      "bytes": 2172,
+      "sha256": "d3338db6de8a8086a3a687c43ed962e73dc4b1ed78372e4b6caa15510c066322"
+    }
+  },
+  "kernel": {
+    "certified_roots": [
+      "entity_chunk_loading_laws.unavailable_ticket_retains_complete_owner",
+      "entity_chunk_loading_laws.refused_transition_retains_complete_loader",
+      "entity_chunk_loading_laws.unavailable_completion_never_creates_loaded_authority",
+      "entity_chunk_loading_laws.pending_entities_are_not_a_loaded_receipt",
+      "entity_chunk_loading_laws.successful_future_inbox_is_not_completed_insertion",
+      "entity_chunk_loading_laws.actual_loaded_phase_is_recognized",
+      "entity_chunk_loading_laws.storage_pending_does_not_disable_actual_ticking_visibility",
+      "entity_chunk_loading_laws.hidden_pending_load_cannot_be_declared_unloaded",
+      "entity_chunk_loading_laws.unloaded_status_never_ticking",
+      "entity_chunk_loading_laws.full_and_block_ticking_are_tracked",
+      "entity_chunk_loading_laws.no_timeout_preserves_every_raw_countdown",
+      "entity_chunk_loading_laws.exact_zero_timeout_is_not_expired",
+      "entity_chunk_loading_laws.absent_provider_never_mints_current_recovery_facts"
+    ],
+    "actual_checked_implementation": true,
+    "original_maps_types_bodies_retained": true,
+    "exclusions": [],
+    "export": {
+      "pid": 82221,
+      "exit_code": 0,
+      "seconds": 1.493812,
+      "timed_out": false,
+      "group_absent": true
+    },
+    "kernel": {
+      "pid": 82225,
+      "exit_code": 0,
+      "seconds": 0.034628,
+      "timed_out": false,
+      "group_absent": true
+    },
+    "closure": {
+      "path": "build/entity-chunk-loading/proof-001/closure.bendtt",
+      "bytes": 169880,
+      "sha256": "cc48d185e7c4be4052a05725a45c9c35b57a86e93554c85aaee290d4e00b78ac"
+    },
+    "selection": {
+      "path": "build/entity-chunk-loading/proof-001/selection.json",
+      "bytes": 10837,
+      "sha256": "7800982ba187447ab3085f5d0bb84e0cc400ace113c34035685c0c052f9f94c8"
+    },
+    "raw_result": {
+      "path": "build/entity-chunk-loading/proof-001/result.json",
+      "bytes": 4633,
+      "sha256": "ff6947ddd8b0107244ec7213da1866bf89095b3981f0b0713e72ada508ee2d2f"
+    }
+  },
+  "java_reference": {
+    "commit": "8e5cbcb",
+    "input": {
+      "path": "reference/entity_chunk_loading.json",
+      "bytes": 138838,
+      "sha256": "babfe1b5424be1811d5d7f79e94e5625454b1ed5ab0d2ebc1542308aa9ef1e24"
+    },
+    "client_jar_sha256": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d",
+    "returncode": 0,
+    "seconds": 3.5164,
+    "observations_sha256": "858bdd4ba28b887d2d841b76fc6c9b7902995f4e2d957398b11a0a725c8c05bd",
+    "manager_cases": 5,
+    "manager_steps": 28,
+    "graph_cells": 462,
+    "level_cases": 15,
+    "registered_types": 9,
+    "store_steps": 7,
+    "scope": "Actual Java TicketStorage, SimulationChunkTracker, ChunkLevel and controlled PersistentEntitySectionManager lifecycle. Real ChunkMap world/futures, disk entity loading and dispatcher races not executed."
+  },
+  "prepared_differential": {
+    "fixture": {
+      "path": "tests/entity_chunk_loading_reference.bend",
+      "bytes": 9405,
+      "sha256": "46b53ddae4cda7d07c08ac5d51275d6d90b10b6bd613d08d29bcaaee81e0edda"
+    },
+    "runner": {
+      "path": "tools/test_entity_chunk_loading_reference.py",
+      "bytes": 15485,
+      "sha256": "b9b6c16d4fce143fdb467efc700556f5426fdd62153daf111ea0bf9275231f33"
+    },
+    "commands": 524,
+    "oracle_cases": 507,
+    "expected_rows": 508,
+    "source": {
+      "pid": 80879,
+      "exit_code": 0,
+      "seconds": 0.477598,
+      "timed_out": false,
+      "group_absent": true
+    },
+    "original_event_count": 610,
+    "native": null,
+    "raw_result": {
+      "path": "build/entity-chunk-loading-reference/differential-source-009/result.json",
+      "bytes": 3294,
+      "sha256": "6052a8119d14f6b9ffeae535614298ce16c7acf440b464f74c901eb5d30e24d7"
+    },
+    "limits": "Callback key routing is not compared; real holder-readiness branch not exercised; no native verdict."
+  },
+  "failures": {
+    "loader": [
+      {
+        "pid": 77300,
+        "exit_code": 1,
+        "seconds": 0.385083,
+        "timed_out": false,
+        "group_absent": true,
+        "receipt": "build/entity-chunk-loading/source-001/source.json",
+        "diagnostic": "Error:\n- message  : a parameter or field scrutinee (a match cannot scrutinize a computed value: give it its own def)\nLocation:\n19 |       M.TicketType{identity,time,flags}=head\n20>|       match String.eq(identity,name):\n   |             ^^^^^^^^^^^^^^^^^^^^^^^^\n21 |         case True{}: Done{head}"
+      },
+      {
+        "pid": 80987,
+        "exit_code": 1,
+        "seconds": 0.307199,
+        "timed_out": false,
+        "group_absent": true,
+        "receipt": "build/entity-chunk-loading/source-002/source.json",
+        "diagnostic": "Error:\n- expected : a decreasing self-call (arguments are read left to right: each passed unchanged until one shrinks)\n- observed : chunk_find\nContext:\n- head : M.Chunk\n- rest : List<&2, M.Chunk>\n- key  : M.ChunkKey\n- tail : List<&2, M.Chunk>\nLocation: chunk_find\n47 |     case Nil{}: Fail{\"actual chunk scheduling observation is missing\"}\n48>|     case +head <> rest: found_head(head,rest,tail => chunk_find(tail,key),A.key_equal(chunk_key(head),key))\n   |                                                      ^^^^^^^^^^\n49 | def replaced_head(head:M.Chunk,rest:List<&2,M.Chunk>,replacement:M.Chunk,next:List<&2,M.Chunk> -> List<&2,M.Chunk>,same:Bool) -> List<&2,M.Chunk>:"
+      },
+      {
+        "pid": 81300,
+        "exit_code": 1,
+        "seconds": 0.280285,
+        "timed_out": false,
+        "group_absent": true,
+        "receipt": "build/entity-chunk-loading/source-003/source.json",
+        "diagnostic": "Error:\n- expected : insert\n- observed : insert (consumed more than once)\nContext:\n- context   : M.Context\n- active    : List<&2, M.Bucket>\n- inactive  : List<&2, M.Bucket>\n- chunks    : List<&2, M.Chunk>\n- next      : M.Word64\n- journal   : List<&2, M.LoaderEvent>\n- scope     : M.Scope\n- key       : M.ChunkKey\n- request   : M.Word64\n- artifact  : String\n- old       : M.ChunkKey\n- level     : U32\n- status    : M.FullStatus\n- loaded    : Bool\n- promotion : Maybe<&2, M.Promotion>\n- phase     : M.EntityPhase\n- holder    : Maybe<&2, M.HolderReadiness>\nLocation: batch_chunk\n165 |     case _: False{}\n166>| def batch_chunk(+view:M.View,+batch:M.EntityBatch,chunk:M.Chunk,insert:Bool) -> Result<&2,&2,"
+      },
+      {
+        "pid": 81562,
+        "exit_code": 1,
+        "seconds": 0.98112,
+        "timed_out": false,
+        "group_absent": true,
+        "receipt": "build/entity-chunk-loading/source-004/source.json",
+        "diagnostic": "Error:\n- expected : next\n- observed : next (consumed more than once)\nContext:\n- context  : M.Context\n- active   : List<&2, M.Bucket>\n- inactive : List<&2, M.Bucket>\n- chunks   : List<&2, M.Chunk>\nLocation: holder_chunk\n241 | def holder_chunk(view:M.View,key:M.ChunkKey,holder:M.HolderReadiness,chunk:M.Chunk) -> M.View:\n242>|   M.View{context,active,inactive,chunks,next,journal}=view\n    |                                         ^^^^\n243 |   M.Chunk{actual,level,status,loaded,promotion,phase,previous}=chunk"
+      },
+      {
+        "pid": 81748,
+        "exit_code": 1,
+        "seconds": 0.849251,
+        "timed_out": false,
+        "group_absent": true,
+        "receipt": "build/entity-chunk-loading/source-005/source.json",
+        "diagnostic": "Error:\n- expected : reason\n- observed : reason (consumed more than once)\nContext:\n- scope : M.Scope\nLocation: inspect\n277 |   match state:\n278>|     case M.Unavailable{scope,reason}: (M.Unavailable{scope,reason},Fail{reason})\n    |                              ^^^^^^\n279 |     case M.State{+view}: (M.State{view},Done{view})"
+      }
+    ],
+    "math_ticket_fixture": [
+      {
+        "pid": 75449,
+        "exit_code": 1,
+        "seconds": 0.254527,
+        "timed_out": false,
+        "group_absent": true,
+        "receipt": "build/entity-chunk-loading-reference/differential-source-001/source.json",
+        "diagnostic": "Error:\n- expected : a fresh constructor name (duplicate declaration: Key)\n- observed : 'Key'\nLocation:\n 9 | type Key is Data:\n10>|   Key{x:U32,z:U32}\n   |   ^^^\n11 | type FullStatus is Data:"
+      },
+      {
+        "pid": 75543,
+        "exit_code": 1,
+        "seconds": 0.397078,
+        "timed_out": false,
+        "group_absent": true,
+        "receipt": "build/entity-chunk-loading-reference/differential-source-002/source.json",
+        "diagnostic": "Error:\n- expected : a fresh name (duplicate declaration: Event)\n- observed : 'Event'\nLocation:\n50 |   EntityBatch{receipt:Receipt,artifact:String}\n51>| type Event is Data:\n   |      ^^^^^\n52 |   SourceLevelChanged{key:Key,channel:Channel,level:U32,decrease:Bool}"
+      },
+      {
+        "pid": 75636,
+        "exit_code": 1,
+        "seconds": 0.400647,
+        "timed_out": false,
+        "group_absent": true,
+        "receipt": "build/entity-chunk-loading-reference/differential-source-003/source.json",
+        "diagnostic": "Error:\n- message  : 'level' can't be matched in this position (it is matched after a local statement or after a match on a later binder, it was already matched, or it is a def)\nLocation:\n60 |     case False{}:\n61>|       match level:\n   |             ^^^^^\n62 |         case 32: M.BlockTicking{}"
+      },
+      {
+        "pid": 75785,
+        "exit_code": 1,
+        "seconds": 0.361213,
+        "timed_out": false,
+        "group_absent": true,
+        "receipt": "build/entity-chunk-loading-reference/differential-source-004/source.json",
+        "diagnostic": "Error:\n- message  : a parameter or field scrutinee (a match cannot scrutinize a computed value: give it its own def)\nLocation:\n19 |       M.TicketType{identity,time,flags}=head\n20>|       match String.eq(identity,name):\n   |             ^^^^^^^^^^^^^^^^^^^^^^^^\n21 |         case True{}: Done{head}"
+      },
+      {
+        "pid": 79448,
+        "exit_code": 1,
+        "seconds": 0.502032,
+        "timed_out": false,
+        "group_absent": true,
+        "receipt": "build/entity-chunk-loading-reference/differential-source-005/source.json",
+        "diagnostic": "Error:\n- message  : 'holder' can't be matched in this position (it is matched after a local statement or after a match on a later binder, it was already matched, or it is a def)\nLocation:\n201 |     case True{} False{}:\n202>|       match holder:\n    |             ^^^^^^\n203 |         case None{}: Fail{\"actual ChunkHolder save-readiness observation is missing\"}"
+      },
+      {
+        "pid": 79804,
+        "exit_code": 1,
+        "seconds": 0.249028,
+        "timed_out": false,
+        "group_absent": true,
+        "receipt": "build/entity-chunk-loading-reference/differential-source-006/source.json",
+        "diagnostic": "Error:\n- message  : 'head' can't be matched in this position (it is matched after a local statement or after a match on a later binder, it was already matched, or it is a def)\nLocation:\n209 |   M.TicketsChanged{+tail,+changed,+loading,+simulation}=result\n210>|   M.Ticket{+kind,level,left}=head\n    |                              ^^^^\n211 |   M.TicketsChanged{A.choose(List<&2,M.Ticket>,tail,head <> tail,expire),changed || expire,"
+      },
+      {
+        "pid": 80193,
+        "exit_code": 1,
+        "seconds": 0.398792,
+        "timed_out": false,
+        "group_absent": true,
+        "receipt": "build/entity-chunk-loading-reference/differential-source-007/source.json",
+        "diagnostic": "Error:\n- expected : maximum\n- observed : maximum (consumed more than once)\nContext:\n- world     : String\n- dimension : String\n- epoch     : M.Word64\n- types     : List<&2, M.TicketType>\nLocation: context_valid\n33 | def context_valid(context:M.Context) -> Bool:\n34>|   M.Context{M.Scope{world,dimension,epoch},types,maximum}=context\n   |                                                  ^^^^^^^\n35 |   Bool.not(String.is_empty(world)) && Bool.not(String.is_empty(dimension)) && types_valid(types) &&"
+      },
+      {
+        "pid": 80545,
+        "exit_code": 1,
+        "seconds": 0.419563,
+        "timed_out": false,
+        "group_absent": true,
+        "receipt": "build/entity-chunk-loading-reference/differential-source-008/source.json",
+        "diagnostic": "Error:\n- expected : an annotated term (cannot infer)\n- observed : M.TicketType{identity, time, flags}\nContext:\n- id        : U32\n- key       : M.ChunkKey\n- identity  : String\n- time      : M.Word64\n- flags     : U32\n- level     : U32\n- readiness : U32\n- buckets   : List<&2, M.Bucket>\nLocation: dispatch\n141 |     case \"add\":\n142>|       +kind=M.TicketType{identity,time,flags}\n    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n143 |       +before=T.bucket_tickets(buckets,key)"
+      }
+    ]
+  },
+  "live_consumer": {
+    "target": "entity_section_membership_recovery.prepare -> actual ManagedTick activation",
+    "installed": false,
+    "current_api": "entity_chunk_loading_observation.current(state,scope) -> State & Result<String,List<entity_section_membership_model.Chunk>>",
+    "absence": "Unavailable refuses; no Core/camera/saved-manager fallback",
+    "missing_producers": [
+      "Actual supported full-terrain completion transferred through the sole Core/Engine with a world-lifetime-bound request",
+      "Actual entity-bundle read/decoding completion and subsequent manager insertion acknowledgement"
+    ],
+    "root_priority": "Full producer expansion and native comparison deferred for actual Actor022/Generic011 cooking delivery."
+  },
+  "boundaries": [
+    "World/epoch/request are explicit Bend guards, not Java fields or physical-world authentication",
+    "No storage-LOADED prerequisite added to ordinary existing-entity ticking",
+    "No runnable terrain or bundle producer",
+    "No live Session/Entry/manager/ManagedTick installation",
+    "Closing/deactivation/inactive activation/persistent-ticket projection not implemented",
+    "No arbitrary lifecycle or whole-game parity claim",
+    "No native, performance, persistence or transport verdict",
+    "All owned attempted groups absent; historical012 untouched; original compiler unchanged"
+  ]
+}
