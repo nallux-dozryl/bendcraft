@@ -56,6 +56,7 @@ Run the independent physical/native target with:
 ```sh
 python3 tools/test_entity_membership_codec.py --prepare
 python3 tools/test_entity_membership_codec.py --native
+python3 tools/test_entity_membership_codec_proof.py
 ```
 
 The original complete module source check passed in attempt003 (1.283 seconds,
@@ -78,3 +79,15 @@ beside entity recovery and clocks: all 15 guards and 47 physical inputs passed,
 including six accepted byte-exact envelopes. The consumer receipt is
 `evidence/local-player-cooking-tick-storage-004.json`. The five production proof
 obligations are recorded separately from both native targets.
+
+All five production laws passed the independent kernel in proof attempt003.
+The original complete book was loaded and checked once before selecting the
+five actual law roots for Safe export. All declarations, constructor/template
+maps, checked types and bodies stayed unchanged; the export had zero exclusions
+and zero source holes. Source checking/export took 1.853 seconds and the cached
+unchanged kernel took 0.312 seconds. The actual laws establish lossless raw AABB,
+UUID, packed-key and visibility projections, and the complete original manager
+plus actual encode result from `inspect_encode` for arbitrary Views and limits.
+They do not assert a full physical parser or live activation theorem. See
+`evidence/entity-membership-codec-proof.json` and the two retained own proof
+setup failures for the exact scope and provenance.
