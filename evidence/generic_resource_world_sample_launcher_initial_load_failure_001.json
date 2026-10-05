@@ -1,0 +1,87 @@
+{
+  "actor": {
+    "bytes": 9711976,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-017/actor",
+    "sha256": "66bbe97279f8ee268d891ad762d5da40337e1c318d09160e415823e25d4d8bd5"
+  },
+  "backend_teardown": {
+    "actual_SIGKILL": false,
+    "argv": [
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-017/actor",
+      "--gpu",
+      "off",
+      "--threads",
+      "2",
+      "--",
+      "--paused",
+      "--game-mode",
+      "creative",
+      "--stdin-control",
+      "--sine",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_mth_sin.f32"
+    ],
+    "errors": [],
+    "exit_code": -15,
+    "group_absent": true,
+    "listeners_absent": [
+      true,
+      true
+    ],
+    "pid": 38781,
+    "seconds": 43.37124966643751,
+    "stderr": {
+      "bytes": 0,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-launcher-runtime/grass-001/backend-grass/stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 167,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-launcher-runtime/grass-001/backend-grass/stdout",
+      "sha256": "53004aca13c66a8ca15f3fdb8b4d6db813fbf0d13d0b2e08e0e3764f55ac9301"
+    }
+  },
+  "client": {
+    "bytes": 6203336,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/009/renderer",
+    "sha256": "17e93095938731a1df4f8d94de56b0524477d5bfa239ed845e829145ec9c2b0a"
+  },
+  "first_failure": {
+    "bytes": 107,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-launcher-runtime/grass-001/first-failure.json",
+    "sha256": "43377f59d5d4b8e91fb8f0efa66015dca2b63786d99764868ad1c37592679233"
+  },
+  "limits": [
+    "No MissingTint runtime claim; the intended scenario was pre-empted by network failure.",
+    "Earlier009 demand positive/disconnect/fresh/refusal/reconnect results remain their exact observed scope."
+  ],
+  "native_consumer_run": true,
+  "observer": {
+    "activation_notification_pids": [],
+    "after_frontmost_pid": 48643,
+    "before_frontmost_pid": 48643,
+    "child_pid": 39401,
+    "child_status": 1,
+    "elapsed_seconds": 8.114726901054382,
+    "sampled_frontmost_pids": [
+      48643
+    ],
+    "samples": 278,
+    "space_change_notifications": 0,
+    "timed_out": false
+  },
+  "public_launcher": "Restored previous exact017/Renderer008 until changed initial-load native consumer passes.",
+  "save_ack": {
+    "event": "client.save",
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-launcher-runtime/grass-001/world.nbt",
+    "result": {
+      "bytes": 1712616,
+      "durable": true,
+      "peer_highwater": 42,
+      "published": true,
+      "status": "durable"
+    }
+  },
+  "source_diagnosis": "Generic entry Registry.load/RF.catalog_load holds Link before initial open with no heartbeat; existing ResourceTransport only covers later missing-family Pending. This real attempt never reached a grass render/tint refusal.",
+  "status": "FAIL_INITIAL_PROFILE_IDLE_LEASE",
+  "stderr": "inventory query: Wire:ReceiveClosedFailedOrTimedOut"
+}

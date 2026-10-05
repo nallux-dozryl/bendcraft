@@ -249,3 +249,26 @@ groups reaped and focus/Spaces were unchanged. This exercises actual worker
 completion after network failure; it is not an independent heap/channel-row
 census or every buffered-pulse interleaving. Compact evidence is
 `generic_resource_world_sample_demand_disconnect_003.json`.
+
+
+The009 public-shell acceptance temporarily selected that renderer and completed
+two1920×1080 returned CPU images, unpaused fresh-world cadence and exact104-section
+creative save. A real temporary-menu capacity refusal retained the actor and
+0600 reconnect file; a private count0 acquire freed one main slot, and the same
+actor returned17 carried plus3 crafting stone into20 main stone before exact
+durable save. Final host-verifier import/teardown mismatches were corrected
+against retained native records without replaying those successful transactions.
+Those bounded observations do not justify promotion: the next actual grass
+case expired during the initial static catalog load before it reached the
+intended tint refusal. The public launcher was restored to017/Renderer008.
+
+The initial entry had held Link through Registry.load and RF.catalog_load with
+no heartbeat; the async transport only covered later missing-family demand.
+The next substantive source change adds a separate bounded initial resource
+worker/channel and uses the same release-only heartbeat with one Link owner.
+Completion closes/drains the channel before returning the actual loaded Session
+or the retained Registry on catalog refusal; Dead Link closes the complete
+returned outcome before opening a Window. Native timing, a healthy-lease grass
+MissingTint refusal and the final launcher change remain required. The laws for
+its arbitrary initial Registry/assets mapping are authored separately; their
+source/kernel verdict is not claimed before execution.

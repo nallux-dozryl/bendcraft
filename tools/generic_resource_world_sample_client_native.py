@@ -32,6 +32,7 @@ MEMORY_BASIS = ROOT/'build/actor-compiler-memory-001'
 MEMORY_EVIDENCE = ROOT/'evidence/actor-compiler-memory-001.json'
 BASELINE_GENERATION = None
 CLIENT_OVERLAY_EVIDENCE = ROOT/'evidence/generic_resource_world_sample_client_config_box.json'
+INITIAL_OVERLAY_EVIDENCE = None
 SCOPE = ('Actual standalone remote_resource_catalog_client production graph, '
          'including correlated catalog frames, CW.Assets, WRF.draw_catalog, '
          'hardware-key/menu consumer, retained Registry demand owner and native Window loop. Compilation alone '
@@ -65,7 +66,10 @@ def commands(memory):
         base += ' --memory-producer'
     if BASELINE_GENERATION is not None:
         base += f' --baseline-generation {BASELINE_GENERATION}'
-        base += ' --client-overlay-evidence ' + shlex.quote(str(CLIENT_OVERLAY_EVIDENCE))
+        if INITIAL_OVERLAY_EVIDENCE is not None:
+            base += ' --initial-overlay-evidence ' + shlex.quote(str(INITIAL_OVERLAY_EVIDENCE))
+        else:
+            base += ' --client-overlay-evidence ' + shlex.quote(str(CLIENT_OVERLAY_EVIDENCE))
     return {'prepare':base, 'build':base+' --build',
             'finish_native_from_retained_C':base+' --finish-native'}
 
@@ -139,8 +143,79 @@ def memory_producer(manifest):
     return manifest
 
 
+def prepare_initial_baseline():
+    """Freeze completed009 plus exactly the verified initial worker/entry fix."""
+    assert BASELINE_GENERATION == 9 and int(WORK.name) > 9
+    baseline = ROOT/'build/generic-resource-world-sample-client-native/009/private'
+    previous = json.loads((baseline/'manifest.json').read_text())
+    receipt = json.loads((baseline/'receipt.json').read_text())
+    assert previous.get('memory_producer') and receipt['group_absent']
+    assert receipt['returncode'] == 0 and receipt['complete_C']
+    assert receipt['source_before'] == receipt['source_after'] == previous['files']
+    assert all(Catalog.sha(path) == expected for path,expected in previous['files'].items())
+    verified = INITIAL_OVERLAY_EVIDENCE
+    proof = json.loads(verified.read_text())
+    relative = ['remote_resource_catalog_client.bend',
+        'src/generic_resource_world_sample_resource_initial_transport.bend']
+    actual = {str(ROOT/name):Remote.pin(ROOT/name) for name in relative}
+    assert proof['production_sources'] == actual
+    checked = proof['ordinary_source_check']
+    assert checked['source_pins_unchanged'] and checked['holes'] == 0 and checked['group_absent']
+    assert checked['process_receipt'] == Remote.pin(checked['process_receipt']['path'])
+    process = json.loads(Path(checked['process_receipt']['path']).read_text())
+    assert process['returncode'] == 0 and process['termination_reason'] is None and process['group_absent']
+    manifest_path = Catalog.PRIVATE/'manifest.json'
+    if manifest_path.exists():
+        value = json.loads(manifest_path.read_text())
+        assert value['generation_basis']['baseline_generation'] == 9
+        assert value['generation_basis']['working_initial_sources'] == actual
+        assert all(Catalog.sha(path) == expected for path,expected in value['files'].items())
+        return value
+    assert not Catalog.PRIVATE.exists(), 'Preserve unrecorded generation'
+    Catalog.PRIVATE.mkdir(parents=True)
+    for directory in ('source','source-api'):
+        shutil.copytree(baseline/directory,Catalog.PRIVATE/directory)
+    relocate = lambda text:text.replace(str(baseline),str(Catalog.PRIVATE))
+    for name in ('comp_instrumented.ts','diagnose.mjs','run.py'):
+        (Catalog.PRIVATE/name).write_text(relocate((baseline/name).read_text()))
+    mapping = json.loads((baseline/'source-map.json').read_text())
+    prior = {row['original']:row['sha256'] for row in mapping['files']}
+    for row in mapping['files']:
+        row['mapped'] = relocate(row['mapped'])
+    value = json.loads(relocate(json.dumps(previous)))
+    for name in relative:
+        source,target=ROOT/name,Catalog.PRIVATE/'source'/name
+        if target.exists(): target.chmod(0o644)
+        target.write_bytes(source.read_bytes());target.chmod(0o444)
+        row={'original':str(source),'mapped':str(target),'sha256':Catalog.sha(target),'bytes':target.stat().st_size}
+        existing=next((entry for entry in mapping['files'] if entry['original']==str(source)),None)
+        if existing is None:mapping['files'].append(row)
+        else:existing.update(row)
+        value['production_sources'][str(source)]={'kind':'bend','sha256':row['sha256'],'bytes':row['bytes']}
+    mapping['files'].sort(key=lambda row:row['original'])
+    write(Catalog.PRIVATE/'source-map.json',mapping)
+    value['files']={relocate(path):Catalog.sha(relocate(path)) for path in previous['files']}
+    for name in relative:value['files'][str(Catalog.PRIVATE/'source'/name)]=Catalog.sha(Catalog.PRIVATE/'source'/name)
+    value['files'][str(verified)]=Catalog.sha(verified)
+    changed=sorted(row['original'] for row in mapping['files'] if row['sha256']!=prior.get(row['original']))
+    assert changed==sorted(actual),('Unexpected initial source overlay',changed)
+    value['generation_basis']={'baseline_generation':9,
+        'baseline_manifest':Remote.pin(baseline/'manifest.json'),
+        'baseline_source_map':Remote.pin(baseline/'source-map.json'),
+        'baseline_emission_receipt':Remote.pin(baseline/'receipt.json'),
+        'working_initial_sources':actual,'verified_overlay':Remote.pin(verified),
+        'only_project_source_deltas':relative,'current_working_dependency_graph_claim':False}
+    value['scope']=('Coherent completed Generic009 graph plus only the verified initial '
+        'resource worker and real catalog entry join; explicit Actor017 baseline. '
+        'Changing working publication/entity/Tick joins are outside this generation.')
+    write(manifest_path,value)
+    return value
+
+
 def prepare_baseline():
     """Freeze a coherent retained graph with one verified working client overlay."""
+    if INITIAL_OVERLAY_EVIDENCE is not None:
+        return prepare_initial_baseline()
     assert BASELINE_GENERATION < int(WORK.name)
     baseline = ROOT/'build/generic-resource-world-sample-client-native'/f'{BASELINE_GENERATION:03d}'/'private'
     previous = json.loads((baseline/'manifest.json').read_text())
@@ -320,10 +395,12 @@ if __name__ == '__main__':
     parser.add_argument('--client-overlay-evidence', type=Path,
                         default=CLIENT_OVERLAY_EVIDENCE,
                         help='Exact retained source-check receipt for the changed client overlay')
+    parser.add_argument('--initial-overlay-evidence',type=Path,help='Exact complete source-check receipt for initial worker+entry on completed009')
     args = parser.parse_args()
     configure(args.generation)
     BASELINE_GENERATION = args.baseline_generation
     CLIENT_OVERLAY_EVIDENCE = args.client_overlay_evidence.resolve()
+    INITIAL_OVERLAY_EVIDENCE = args.initial_overlay_evidence.resolve() if args.initial_overlay_evidence is not None else None
     try:
         if args.build:
             build(args.memory_producer)

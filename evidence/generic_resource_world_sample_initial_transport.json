@@ -1,0 +1,69 @@
+{
+  "actual_trigger": {
+    "bytes": 3323,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/generic_resource_world_sample_launcher_initial_load_failure_001.json",
+    "sha256": "44bfbee3cb937b253df75ad307cd4c72745fc99d9c5b4ba9e8979b6711dc4e66"
+  },
+  "baseline": {
+    "generation": 9,
+    "only_project_deltas": [
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/remote_resource_catalog_client.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/generic_resource_world_sample_resource_initial_transport.bend"
+    ],
+    "source_map": {
+      "bytes": 54200,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/009/private/source-map.json",
+      "sha256": "8dd1a6596ee76bde8b460bbf8937c7797c3c7400d75ca0106c6b2f4a61837c51"
+    }
+  },
+  "independent_kernel_run": false,
+  "native_consumer_run": false,
+  "ordinary_source_check": {
+    "declarations": 5793,
+    "detail": {
+      "bytes": 24701,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-initial-private-003/source-check.json",
+      "sha256": "872e66043f1344755c9bd115ba04508607bf946210e2f2ea36957e1cca2c3933"
+    },
+    "group_absent": true,
+    "holes": 0,
+    "loaded_source_files": 114,
+    "process_receipt": {
+      "bytes": 659,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-initial-private-003/receipt.json",
+      "sha256": "f866ef0b55eb06d84c934dae20028aff7b8e85630caeec6574b04ee9393bc301"
+    },
+    "sampled_peak_rss_bytes": 3674537984,
+    "seconds": 22.314505625516176,
+    "source_pins_unchanged": true,
+    "whole_original_check_order_entries": 5884
+  },
+  "production_sources": {
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/remote_resource_catalog_client.bend": {
+      "bytes": 6890,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/remote_resource_catalog_client.bend",
+      "sha256": "c4259235e1151ec4391094952b238760a6879510ab31189c979c16cac5b49c3d"
+    },
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/generic_resource_world_sample_resource_initial_transport.bend": {
+      "bytes": 4305,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/generic_resource_world_sample_resource_initial_transport.bend",
+      "sha256": "1f8b5043bab14ed65afa28f5c525aa027a52fd404407e10820be9b29cfa8a57e"
+    }
+  },
+  "retained_source_failures": [
+    {
+      "bytes": 657,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-initial-private-001/receipt.json",
+      "sha256": "df1c0a72cc1bb739db40f28e5ce53f60975835ce7dd3c23a28efd4d074a25105"
+    },
+    {
+      "bytes": 659,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-initial-private-002/receipt.json",
+      "sha256": "352aa5c492244ee8e5665a3e78f4ddf11ccd7fec766c52ee41f5c6671de569f3"
+    }
+  ],
+  "schema": "generic-resource-initial-transport-v1",
+  "semantics": "One Link owner uses existing release-only heartbeat while Registry/catalog worker loads actual resources. Completion closes/drains channel. Failed catalog outcome retains returned Registry; network-dead completion closes full returned outcome before opening Window.",
+  "status": "source_checked_native_pending",
+  "verification_scope": "Complete original source elaboration with unchanged declaration order and zero holes, coherent009 plus only entry/new initial transport. No source/kernel proof or native scheduling claim."
+}

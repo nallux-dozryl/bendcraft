@@ -4,6 +4,7 @@ import ./src/generic_resource_world_sample_client.bend as GenericClient
 import ./src/generic_resource_world_sample.bend as GS
 import ./src/generic_resource_world_sample_presenter.bend as Draw
 import ./src/generic_resource_world_sample_resources.bend as Session
+import ./src/generic_resource_world_sample_resource_initial_transport.bend as Initial
 import ./src/generic_resource_world_sample_resource_policy.bend as Policy
 import ./src/resource_catalog_world.bend as CW
 import ./src/resource_block_catalog.bend as Catalog
@@ -59,24 +60,25 @@ def assets_ready(options:O.Options,link:Presenter.Link,sample:GS.Sample,result:R
         mode : Result<&1,&1,U32 & String,String> <- IO.get_env("BEND_MINECRAFT_LAUNCH_MODE")
         open_mode(O.Options{frames,jar,settings,item_table},link,sample,assets,human(mode))
 
-def catalog_loaded(+options:O.Options,link:Presenter.Link,sample:GS.Sample,
-    value:Registry.Registry & Result<&2,&1,Catalog.Error,CW.Assets>) -> IO(Unit):
-  O.Options{frames,jar,settings,item_table} = options
-  (registry,status) = value
-  match status:
-    case Fail{error}: failed(link,"resource catalog: " ++ Draw.error_text(error))
-    case Done{assets}: assets_ready(options,link,sample,Done{Session.installed(registry,Profile.static_requests(),assets,Policy.config(jar))})
-
-def registry_loaded(+options:O.Options,link:Presenter.Link,sample:GS.Sample,
-    value:Result<&2,&1,Registry.Error,Registry.Registry>) -> IO(Unit):
-  O.Options{frames,jar,settings,item_table} = options
+# The initial worker returns the actual Registry/resource owner, and the entry
+# remains the only Link owner until that outcome has been received and drained.
+def initial_loaded(options:O.Options,link:Presenter.Link,sample:GS.Sample,value:Initial.Outcome) -> IO(Unit):
   match value:
-    case Fail{error}: failed(link,"registry: " ++ Registry.error_text(error))
-    case Done{registry}:
+    case Initial.Failed{registry,message}: failed(link,message)
+    case Initial.Loaded{assets}: assets_ready(options,link,sample,Done{assets})
+
+def initial_link(options:O.Options,link:Presenter.Link,sample:GS.Sample,value:Initial.Outcome) -> IO(Unit):
+  match link:
+    case Presenter.Dead{+message}:
       do IO<Unit>:
-        loaded:Registry.Registry & Result<&2,&1,Catalog.Error,CW.Assets> <-
-          RF.catalog_load(jar,registry,Profile.static_requests(),Policy.materials(),Catalog.defaults())
-        catalog_loaded(options,link,sample,loaded)
+        Initial.close(value)
+        failed(Presenter.Dead{message},"resource loading: " ++ message)
+    case Presenter.Open{socket,buffer,pending,epoch,sequence}:
+      initial_loaded(options,Presenter.Open{socket,buffer,pending,epoch,sequence},sample,value)
+
+def initial_complete(options:O.Options,sample:GS.Sample,value:Presenter.Link & Initial.Outcome) -> IO(Unit):
+  (link,result) = value
+  initial_link(options,link,sample,result)
 
 def registry_path(value:Result<&1,&1,U32 & String,String>) -> String:
   match value:
@@ -84,10 +86,11 @@ def registry_path(value:Result<&1,&1,U32 & String,String>) -> String:
     case Fail{error}: "generated/reference_blocks.tsv"
 
 def load_frame(+options:O.Options,link:Presenter.Link,sample:GS.Sample) -> IO(Unit):
+  O.Options{frames,jar,settings,item_table} = options
   do IO<Unit>:
     configured:Result<&1,&1,U32 & String,String> <- IO.get_env("BEND_MINECRAFT_REGISTRY")
-    registry:Result<&2,&1,Registry.Error,Registry.Registry> <- Registry.Registry.load(registry_path(configured))
-    registry_loaded(options,link,sample,registry)
+    result:Presenter.Link & Initial.Outcome <- Initial.load(link,jar,registry_path(configured))
+    initial_complete(options,sample,result)
 
 def initial_frame(options:O.Options,result:Presenter.Link & Result<&2,&2,String,Wire.Reply>) -> IO(Unit):
   (link,status) = result
