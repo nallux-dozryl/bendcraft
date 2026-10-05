@@ -46,10 +46,14 @@ def zero() -> F.F64: F.from_u32(0)
 # attribute modifiers; the pinned Java behavior probe records the actual value.
 def creative_reach() -> F.F64: F.from_u32(5)
 
+# Picking uses the block outline, not its interaction or collision shape.
+# The pinned 26.3 furnace/smoker/blast-furnace class chains inherit getShape
+# from BlockBehaviour, which returns the filled Shapes.block() for every state.
 def supported_cube(+name:String) -> Bool:
   String.eq(name,"minecraft:stone") || String.eq(name,"minecraft:dirt") ||
     String.eq(name,"minecraft:oak_planks") || String.eq(name,"minecraft:grass_block") ||
-    String.eq(name,"minecraft:bedrock")
+    String.eq(name,"minecraft:bedrock") || String.eq(name,"minecraft:furnace") ||
+    String.eq(name,"minecraft:smoker") || String.eq(name,"minecraft:blast_furnace")
 
 def placeable(+name:String) -> Bool:
   String.eq(name,"minecraft:stone") || String.eq(name,"minecraft:dirt") ||
@@ -338,102 +342,172 @@ def default_state(result:B.Registry & Result<&2,&2,B.Error,B.Block>) -> B.Regist
     case Fail{cause}: (registry,Fail{B.error_text(cause)})
     case Done{B.Block{protocol,name,first,count,default_id,properties}}: (registry,Done{default_id})
 
-def break_hit(authority:Authority,engine:G.Engine,hit:Hit,air:U32) -> G.Engine & Outcome:
+def bare_action(result:G.Engine & Unit & Outcome) -> G.Engine & Outcome:
+  (engine,unit,outcome) = result
+  (engine,outcome)
+
+def bare_execution(result:G.Engine & Unit & T.Tables & Outcome) -> G.Engine & T.Tables & Outcome:
+  (engine,unit,tables,outcome) = result
+  (engine,tables,outcome)
+
+def default_edited(result:G.Engine & Outcome) -> G.Engine & Unit & Outcome:
+  (engine,outcome) = result
+  (engine,Unit{},outcome)
+
+def default_edit(authority:Authority,engine:G.Engine,unit:Unit,position:C.Position,state:U32) -> G.Engine & Unit & Outcome:
+  default_edited(edit(authority,engine,position,state))
+
+def break_hit_with_owner(-Extra:Type,editor:Authority -> G.Engine -> Extra -> C.Position -> U32 -> G.Engine & Extra & Outcome,extra:Extra,authority:Authority,engine:G.Engine,hit:Hit,air:U32) -> G.Engine & Extra & Outcome:
   Hit{position,state,face,location,inside} = hit
-  edit(authority,engine,position,air)
+  editor(authority,engine,extra,position,air)
+
+def break_hit(authority:Authority,engine:G.Engine,hit:Hit,air:U32) -> G.Engine & Outcome:
+  bare_action(break_hit_with_owner(Unit,default_edit,Unit{},authority,engine,hit,air))
+
+def break_state_with_owner(-Extra:Type,editor:Authority -> G.Engine -> Extra -> C.Position -> U32 -> G.Engine & Extra & Outcome,extra:Extra,authority:Authority,world:C.World,hit:Hit,result:B.Registry & Result<&2,&2,String,U32>) -> G.Engine & Extra & Outcome:
+  (registry,status) = result
+  match status:
+    case Fail{message}: (G.Engine{world,registry},extra,Outcome{False{},message})
+    case Done{air}: break_hit_with_owner(Extra,editor,extra,authority,G.Engine{world,registry},hit,air)
 
 def break_state(authority:Authority,world:C.World,hit:Hit,result:B.Registry & Result<&2,&2,String,U32>) -> G.Engine & Outcome:
-  (registry,status) = result
-  match status:
-    case Fail{message}: (G.Engine{world,registry},Outcome{False{},message})
-    case Done{air}: break_hit(authority,G.Engine{world,registry},hit,air)
+  bare_action(break_state_with_owner(Unit,default_edit,Unit{},authority,world,hit,result))
+
+def break_block_with_owner(-Extra:Type,editor:Authority -> G.Engine -> Extra -> C.Position -> U32 -> G.Engine & Extra & Outcome,extra:Extra,authority:Authority,engine:G.Engine,hit:Hit) -> G.Engine & Extra & Outcome:
+  G.Engine{world,registry} = engine
+  break_state_with_owner(Extra,editor,extra,authority,world,hit,default_state(B.Registry.block(registry,"minecraft:air")))
 
 def break_block(authority:Authority,engine:G.Engine,hit:Hit) -> G.Engine & Outcome:
-  G.Engine{world,registry} = engine
-  break_state(authority,world,hit,default_state(B.Registry.block(registry,"minecraft:air")))
+  bare_action(break_block_with_owner(Unit,default_edit,Unit{},authority,engine,hit))
+
+def placement_empty_checked_with_owner(-Extra:Type,editor:Authority -> G.Engine -> Extra -> C.Position -> U32 -> G.Engine & Extra & Outcome,extra:Extra,authority:Authority,engine:G.Engine,position:C.Position,state:U32,empty:Bool) -> G.Engine & Extra & Outcome:
+  match empty:
+    case False{}: (engine,extra,Outcome{False{},"interaction:placement-occupied"})
+    case True{}: editor(authority,engine,extra,position,state)
 
 def placement_empty_checked(authority:Authority,engine:G.Engine,position:C.Position,state:U32,empty:Bool) -> G.Engine & Outcome:
-  match empty:
-    case False{}: (engine,Outcome{False{},"interaction:placement-occupied"})
-    case True{}: edit(authority,engine,position,state)
+  bare_action(placement_empty_checked_with_owner(Unit,default_edit,Unit{},authority,engine,position,state,empty))
+
+def placement_empty_with_owner(-Extra:Type,editor:Authority -> G.Engine -> Extra -> C.Position -> U32 -> G.Engine & Extra & Outcome,extra:Extra,authority:Authority,world:C.World,position:C.Position,state:U32,result:B.Registry & Result<&2,&2,B.Error,B.Block>) -> G.Engine & Extra & Outcome:
+  (registry,status) = result
+  match status:
+    case Fail{cause}: (G.Engine{world,registry},extra,Outcome{False{},B.error_text(cause)})
+    case Done{B.Block{protocol,name,first,count,default_id,properties}}:
+      placement_empty_checked_with_owner(Extra,editor,extra,authority,G.Engine{world,registry},position,state,empty_shape(name))
 
 def placement_empty(authority:Authority,world:C.World,position:C.Position,state:U32,result:B.Registry & Result<&2,&2,B.Error,B.Block>) -> G.Engine & Outcome:
-  (registry,status) = result
-  match status:
-    case Fail{cause}: (G.Engine{world,registry},Outcome{False{},B.error_text(cause)})
-    case Done{B.Block{protocol,name,first,count,default_id,properties}}:
-      placement_empty_checked(authority,G.Engine{world,registry},position,state,empty_shape(name))
+  bare_action(placement_empty_with_owner(Unit,default_edit,Unit{},authority,world,position,state,result))
 
-def placement_read(authority:Authority,registry:B.Registry,position:C.Position,state:U32,result:C.World & Result<&2,&2,C.Error,U32>) -> G.Engine & Outcome:
+def placement_read_with_owner(-Extra:Type,editor:Authority -> G.Engine -> Extra -> C.Position -> U32 -> G.Engine & Extra & Outcome,extra:Extra,authority:Authority,registry:B.Registry,position:C.Position,state:U32,result:C.World & Result<&2,&2,C.Error,U32>) -> G.Engine & Extra & Outcome:
   (world,status) = result
   match status:
-    case Fail{cause}: (G.Engine{world,registry},Outcome{False{},W.error_text(cause)})
-    case Done{old}: placement_empty(authority,world,position,state,B.Registry.state_block(registry,old))
+    case Fail{cause}: (G.Engine{world,registry},extra,Outcome{False{},W.error_text(cause)})
+    case Done{old}: placement_empty_with_owner(Extra,editor,extra,authority,world,position,state,B.Registry.state_block(registry,old))
 
-def placement_fits(intersects:Bool,authority:Authority,engine:G.Engine,+position:C.Position,state:U32) -> G.Engine & Outcome:
+def placement_read(authority:Authority,registry:B.Registry,position:C.Position,state:U32,result:C.World & Result<&2,&2,C.Error,U32>) -> G.Engine & Outcome:
+  bare_action(placement_read_with_owner(Unit,default_edit,Unit{},authority,registry,position,state,result))
+
+def placement_fits_with_owner(-Extra:Type,editor:Authority -> G.Engine -> Extra -> C.Position -> U32 -> G.Engine & Extra & Outcome,extra:Extra,intersects:Bool,authority:Authority,engine:G.Engine,+position:C.Position,state:U32) -> G.Engine & Extra & Outcome:
   match intersects:
-    case True{}: (engine,Outcome{False{},"interaction:placement-intersects-player"})
+    case True{}: (engine,extra,Outcome{False{},"interaction:placement-intersects-player"})
     case False{}:
       G.Engine{world,registry} = engine
-      placement_read(authority,registry,position,state,C.read_block(world,position))
+      placement_read_with_owner(Extra,editor,extra,authority,registry,position,state,C.read_block(world,position))
 
-def placement_state(authority:Authority,world:C.World,record:Record.Record,+position:C.Position,result:B.Registry & Result<&2,&2,String,U32>) -> G.Engine & Outcome:
+def placement_fits(intersects:Bool,authority:Authority,engine:G.Engine,+position:C.Position,state:U32) -> G.Engine & Outcome:
+  bare_action(placement_fits_with_owner(Unit,default_edit,Unit{},intersects,authority,engine,position,state))
+
+def placement_state_with_owner(-Extra:Type,editor:Authority -> G.Engine -> Extra -> C.Position -> U32 -> G.Engine & Extra & Outcome,extra:Extra,authority:Authority,world:C.World,record:Record.Record,+position:C.Position,result:B.Registry & Result<&2,&2,String,U32>) -> G.Engine & Extra & Outcome:
   (registry,status) = result
   match status:
-    case Fail{message}: (G.Engine{world,registry},Outcome{False{},message})
+    case Fail{message}: (G.Engine{world,registry},extra,Outcome{False{},message})
     case Done{state}:
-      placement_fits(A.AABB.intersects(body_box(record),cube(position)),authority,G.Engine{world,registry},position,state)
+      placement_fits_with_owner(Extra,editor,extra,A.AABB.intersects(body_box(record),cube(position)),authority,G.Engine{world,registry},position,state)
 
-def place_name(valid:Bool,authority:Authority,engine:G.Engine,record:Record.Record,hit:Hit,name:String) -> G.Engine & Outcome:
+def placement_state(authority:Authority,world:C.World,record:Record.Record,+position:C.Position,result:B.Registry & Result<&2,&2,String,U32>) -> G.Engine & Outcome:
+  bare_action(placement_state_with_owner(Unit,default_edit,Unit{},authority,world,record,position,result))
+
+def place_name_with_owner(-Extra:Type,editor:Authority -> G.Engine -> Extra -> C.Position -> U32 -> G.Engine & Extra & Outcome,extra:Extra,valid:Bool,authority:Authority,engine:G.Engine,record:Record.Record,hit:Hit,name:String) -> G.Engine & Extra & Outcome:
   match valid:
-    case False{}: (engine,Outcome{False{},"interaction:unsupported-held-item"})
+    case False{}: (engine,extra,Outcome{False{},"interaction:unsupported-held-item"})
     case True{}:
       G.Engine{world,registry} = engine
-      placement_state(authority,world,record,neighbor(hit),default_state(B.Registry.block(registry,name)))
+      placement_state_with_owner(Extra,editor,extra,authority,world,record,neighbor(hit),default_state(B.Registry.block(registry,name)))
+
+def place_name(valid:Bool,authority:Authority,engine:G.Engine,record:Record.Record,hit:Hit,name:String) -> G.Engine & Outcome:
+  bare_action(place_name_with_owner(Unit,default_edit,Unit{},valid,authority,engine,record,hit,name))
+
+def place_block_with_owner(-Extra:Type,editor:Authority -> G.Engine -> Extra -> C.Position -> U32 -> G.Engine & Extra & Outcome,extra:Extra,authority:Authority,engine:G.Engine,record:Record.Record,held:Inv.Slot,hit:Hit) -> G.Engine & Extra & Outcome:
+  match held:
+    case Inv.InvEmpty{}: (engine,extra,Outcome{False{},"interaction:empty-hand"})
+    case Inv.InvStack{Inv.ItemKey{+name,+components},+count}:
+      place_name_with_owner(Extra,editor,extra,placeable(name) && String.eq(components,"") && U32.is_gt(count,0) && U32.is_le(count,64),authority,engine,record,hit,name)
 
 def place_block(authority:Authority,engine:G.Engine,record:Record.Record,held:Inv.Slot,hit:Hit) -> G.Engine & Outcome:
-  match held:
-    case Inv.InvEmpty{}: (engine,Outcome{False{},"interaction:empty-hand"})
-    case Inv.InvStack{Inv.ItemKey{+name,+components},+count}:
-      place_name(placeable(name) && String.eq(components,"") && U32.is_gt(count,0) && U32.is_le(count,64),authority,engine,record,hit,name)
+  bare_action(place_block_with_owner(Unit,default_edit,Unit{},authority,engine,record,held,hit))
+
+def action_hit_with_owner(-Extra:Type,editor:Authority -> G.Engine -> Extra -> C.Position -> U32 -> G.Engine & Extra & Outcome,extra:Extra,button:U32,authority:Authority,engine:G.Engine,record:Record.Record,held:Inv.Slot,hit:Hit) -> G.Engine & Extra & Outcome:
+  match button:
+    case 0: break_block_with_owner(Extra,editor,extra,authority,engine,hit)
+    case 1: place_block_with_owner(Extra,editor,extra,authority,engine,record,held,hit)
+    case _: (engine,extra,Outcome{False{},"interaction:invalid-button"})
 
 def action_hit(button:U32,authority:Authority,engine:G.Engine,record:Record.Record,held:Inv.Slot,hit:Hit) -> G.Engine & Outcome:
-  match button:
-    case 0: break_block(authority,engine,hit)
-    case 1: place_block(authority,engine,record,held,hit)
-    case _: (engine,Outcome{False{},"interaction:invalid-button"})
+  bare_action(action_hit_with_owner(Unit,default_edit,Unit{},button,authority,engine,record,held,hit))
 
-def action_picked(authority:Authority,record:Record.Record,held:Inv.Slot,button:U32,result:G.Engine & Result<&2,&2,String,Maybe<&2,Hit>>) -> G.Engine & Outcome:
+def action_picked_with_owner(-Extra:Type,editor:Authority -> G.Engine -> Extra -> C.Position -> U32 -> G.Engine & Extra & Outcome,extra:Extra,authority:Authority,record:Record.Record,held:Inv.Slot,button:U32,result:G.Engine & Result<&2,&2,String,Maybe<&2,Hit>>) -> G.Engine & Extra & Outcome:
   (engine,status) = result
   match status:
-    case Fail{message}: (engine,Outcome{False{},message})
-    case Done{None{}}: (engine,Outcome{False{},"interaction:miss"})
-    case Done{Some{hit}}: action_hit(button,authority,engine,record,held,hit)
+    case Fail{message}: (engine,extra,Outcome{False{},message})
+    case Done{None{}}: (engine,extra,Outcome{False{},"interaction:miss"})
+    case Done{Some{hit}}: action_hit_with_owner(Extra,editor,extra,button,authority,engine,record,held,hit)
+
+def action_picked(authority:Authority,record:Record.Record,held:Inv.Slot,button:U32,result:G.Engine & Result<&2,&2,String,Maybe<&2,Hit>>) -> G.Engine & Outcome:
+  bare_action(action_picked_with_owner(Unit,default_edit,Unit{},authority,record,held,button,result))
+
+def action_return_with_owner(-Extra:Type,tables:T.Tables,result:G.Engine & Extra & Outcome) -> G.Engine & Extra & T.Tables & Outcome:
+  (engine,extra,status) = result
+  (engine,extra,tables,status)
 
 def action_return(tables:T.Tables,result:G.Engine & Outcome) -> G.Engine & T.Tables & Outcome:
   (engine,status) = result
   (engine,tables,status)
 
-def action_direction(authority:Authority,engine:G.Engine,+record:Record.Record,held:Inv.Slot,button:U32,result:T.Tables & M.Vec3) -> G.Engine & T.Tables & Outcome:
+def action_direction_with_owner(-Extra:Type,editor:Authority -> G.Engine -> Extra -> C.Position -> U32 -> G.Engine & Extra & Outcome,extra:Extra,authority:Authority,engine:G.Engine,+record:Record.Record,held:Inv.Slot,button:U32,result:T.Tables & M.Vec3) -> G.Engine & Extra & T.Tables & Outcome:
   (tables,direction) = result
   +from = eye(record)
-  action_return(tables,action_picked(authority,record,held,button,pick(engine,from,endpoint(from,direction))))
+  action_return_with_owner(Extra,tables,action_picked_with_owner(Extra,editor,extra,authority,record,held,button,pick(engine,from,endpoint(from,direction))))
+
+def action_direction(authority:Authority,engine:G.Engine,+record:Record.Record,held:Inv.Slot,button:U32,result:T.Tables & M.Vec3) -> G.Engine & T.Tables & Outcome:
+  bare_execution(action_direction_with_owner(Unit,default_edit,Unit{},authority,engine,record,held,button,result))
+
+def execute_record_with_owner(-Extra:Type,editor:Authority -> G.Engine -> Extra -> C.Position -> U32 -> G.Engine & Extra & Outcome,extra:Extra,engine:G.Engine,record:Record.Record,tables:T.Tables,held:Inv.Slot,cap:C.Capability,sequence:Nat,button:U32,maybuild:Bool,allowed:Bool,status:Result<&2,&2,Record.Error,Record.Record>) -> G.Engine & Extra & T.Tables & Outcome:
+  match allowed status:
+    case False{} _: (engine,extra,tables,Outcome{False{},"interaction:creative-build-ability-required"})
+    case True{} Fail{cause}: (engine,extra,tables,Outcome{False{},Record.error_text(cause)})
+    case True{} Done{valid}: action_direction_with_owner(Extra,editor,extra,Authority{cap,sequence,maybuild},engine,valid,held,button,direction(tables,record))
 
 def execute_record(engine:G.Engine,record:Record.Record,tables:T.Tables,held:Inv.Slot,cap:C.Capability,sequence:Nat,button:U32,maybuild:Bool,allowed:Bool,status:Result<&2,&2,Record.Error,Record.Record>) -> G.Engine & T.Tables & Outcome:
-  match allowed status:
-    case False{} _: (engine,tables,Outcome{False{},"interaction:creative-build-ability-required"})
-    case True{} Fail{cause}: (engine,tables,Outcome{False{},Record.error_text(cause)})
-    case True{} Done{valid}: action_direction(Authority{cap,sequence,maybuild},engine,valid,held,button,direction(tables,record))
+  bare_execution(execute_record_with_owner(Unit,default_edit,Unit{},engine,record,tables,held,cap,sequence,button,maybuild,allowed,status))
 
-def execute_player(engine:G.Engine,+record:Record.Record,tables:T.Tables,abilities:I.Abilities,held:Inv.Slot,cap:C.Capability,sequence:Nat,+button:U32) -> G.Engine & T.Tables & Outcome:
+def execute_player_with_owner(-Extra:Type,editor:Authority -> G.Engine -> Extra -> C.Position -> U32 -> G.Engine & Extra & Outcome,extra:Extra,engine:G.Engine,+record:Record.Record,tables:T.Tables,abilities:I.Abilities,held:Inv.Slot,cap:C.Capability,sequence:Nat,+button:U32) -> G.Engine & Extra & T.Tables & Outcome:
   I.Abilities{instabuild,+maybuild} = abilities
-  execute_record(engine,record,tables,held,cap,sequence,button,maybuild,
+  execute_record_with_owner(Extra,editor,extra,engine,record,tables,held,cap,sequence,button,maybuild,
     instabuild && maybuild && U32.is_le(button,1),Record.validate(record))
 
-def execute_checked(engine:G.Engine,record:Record.Record,tables:T.Tables,abilities:I.Abilities,held:Inv.Slot,cap:C.Capability,sequence:Nat,button:U32,authorized:Bool) -> G.Engine & T.Tables & Outcome:
+def execute_player(engine:G.Engine,+record:Record.Record,tables:T.Tables,abilities:I.Abilities,held:Inv.Slot,cap:C.Capability,sequence:Nat,+button:U32) -> G.Engine & T.Tables & Outcome:
+  bare_execution(execute_player_with_owner(Unit,default_edit,Unit{},engine,record,tables,abilities,held,cap,sequence,button))
+
+def execute_checked_with_owner(-Extra:Type,editor:Authority -> G.Engine -> Extra -> C.Position -> U32 -> G.Engine & Extra & Outcome,extra:Extra,engine:G.Engine,record:Record.Record,tables:T.Tables,abilities:I.Abilities,held:Inv.Slot,cap:C.Capability,sequence:Nat,button:U32,authorized:Bool) -> G.Engine & Extra & T.Tables & Outcome:
   match authorized:
-    case False{}: (engine,tables,Outcome{False{},"interaction:permission-denied"})
-    case True{}: execute_player(engine,record,tables,abilities,held,cap,sequence,button)
+    case False{}: (engine,extra,tables,Outcome{False{},"interaction:permission-denied"})
+    case True{}: execute_player_with_owner(Extra,editor,extra,engine,record,tables,abilities,held,cap,sequence,button)
+
+def execute_checked(engine:G.Engine,record:Record.Record,tables:T.Tables,abilities:I.Abilities,held:Inv.Slot,cap:C.Capability,sequence:Nat,button:U32,authorized:Bool) -> G.Engine & T.Tables & Outcome:
+  bare_execution(execute_checked_with_owner(Unit,default_edit,Unit{},engine,record,tables,abilities,held,cap,sequence,button,authorized))
+
+def execute_with_owner(-Extra:Type,editor:Authority -> G.Engine -> Extra -> C.Position -> U32 -> G.Engine & Extra & Outcome,extra:Extra,engine:G.Engine,record:Record.Record,tables:T.Tables,abilities:I.Abilities,held:Inv.Slot,+cap:C.Capability,sequence:Nat,button:U32) -> G.Engine & Extra & T.Tables & Outcome:
+  execute_checked_with_owner(Extra,editor,extra,engine,record,tables,abilities,held,cap,sequence,button,Maybe.is_some(&2,U32,Edit.player_peer(cap)))
 
 def execute(engine:G.Engine,record:Record.Record,tables:T.Tables,abilities:I.Abilities,held:Inv.Slot,+cap:C.Capability,sequence:Nat,button:U32) -> G.Engine & T.Tables & Outcome:
-  execute_checked(engine,record,tables,abilities,held,cap,sequence,button,Maybe.is_some(&2,U32,Edit.player_peer(cap)))
+  bare_execution(execute_with_owner(Unit,default_edit,Unit{},engine,record,tables,abilities,held,cap,sequence,button))

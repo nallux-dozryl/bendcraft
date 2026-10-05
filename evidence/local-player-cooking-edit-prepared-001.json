@@ -1,0 +1,92 @@
+{
+  "status": "source_checked_native_pending",
+  "production_module": "src/local_player_cooking_edit.bend",
+  "laws": "src/local_player_cooking_edit_laws.bend",
+  "proof": "src/local_player_cooking_edit_proof.bend",
+  "prepared_bi_patch": "build/local-player-cooking-edit/bi-editor.patch",
+  "existing_bi_source_modified": true,
+  "bi_modified_after_020_snapshot_copied": true,
+  "session_consumer_adopted": true,
+  "ordinary_checked": true,
+  "independent_kernel_checked": true,
+  "native_executed": false,
+  "law_count": 4,
+  "owner_path": "sole Core + complete retained Sidecar -> actual CookingWorldEdit.player_edit -> actual PlayerCoreEdit.edit",
+  "success_publication": "actual light/store changes, existing queue followed by exact returned effects, newly returned OwnerReset markers only",
+  "refusal": "complete returned Core/Sidecar, no effect publication or physical Details/incarnation reset",
+  "explicit_gap": "Three actual player_edit permission-law exports reach Nat.show.fin/go mutual-recursion limitation; source derivations are checked but not independent-kernel-certified. Native22guard direct/ray/refusal test is pending.",
+  "frozen_generation": "020 source snapshot copied before working BI modification; immutable020 graph unchanged",
+  "session_consumer_verified": true,
+  "furnace_outline_admission": {
+    "blocks": [
+      "minecraft:furnace",
+      "minecraft:smoker",
+      "minecraft:blast_furnace"
+    ],
+    "source": "existing pinned26.3 class extraction from NativeControls; concrete getShape inheritance returns filled Shapes.block() for all states",
+    "scope": "outline picking only",
+    "campfire_supported": false,
+    "reference_receipt": "evidence/player-cooking-protocol-reference.json",
+    "reference": "reference/player_cooking_protocol.json",
+    "reference_sha256": "28bfe6fa8dfd422e7df04375bdaaff84c04423e02c9bdb4bc7dfbff6e5a1eecb",
+    "jar_sha256": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d"
+  },
+  "full_four_law_kernel_checked": false,
+  "fixture_source_check": {
+    "directory": "build/local-player-cooking-edit/source-003",
+    "seconds": 9.32994,
+    "original_book_entries": 4992,
+    "all_original_entries_checked": true,
+    "exit_code": 0,
+    "group_absent": true
+  },
+  "four_law_ordinary_check": {
+    "directory": "build/local-player-cooking-edit/proof-001",
+    "seconds": 9.414464,
+    "original_book_entries": 4872,
+    "all_original_entries_checked": true,
+    "source_types_and_bodies_unchanged": true
+  },
+  "independent_kernel": {
+    "certified_roots": [
+      "local_player_cooking_edit_laws.refused_prepared_edit_retains_core_light_and_entry_owners"
+    ],
+    "bytes": 197116,
+    "sha256": "0f48b342db1bdaae8e410f63d3c9a92d59129b5dc41046326c1f8774a4d974cb",
+    "seconds": 0.053429,
+    "declarations": 316,
+    "all_referenced_declarations_unchanged": true,
+    "excluded_roots": [
+      "- local_player_cooking_edit_laws.disabled_build_retains_complete_core_and_cooking_owner: names local_player_cooking_edit.player_edit, out of scope: a mutual recursion through Nat.show.fin, Nat.show.go that no live parameter of Nat.show.fin leads\n",
+      "- local_player_cooking_edit_laws.observer_retains_complete_core_and_cooking_owner: names local_player_cooking_edit.player_edit, out of scope: a mutual recursion through Nat.show.fin, Nat.show.go that no live parameter of Nat.show.fin leads\n",
+      "- local_player_cooking_edit_laws.invalid_player_retains_complete_core_and_cooking_owner: names local_player_cooking_edit.player_edit, out of scope: a mutual recursion through Nat.show.fin, Nat.show.go that no live parameter of Nat.show.fin leads\n"
+    ],
+    "full_four_root_kernel_passed": false
+  },
+  "retained_failed_attempts": [
+    {
+      "directory": "build/local-player-cooking-edit/source-001",
+      "failure": "local test later-binder world destructure, repaired by typed helper"
+    },
+    {
+      "directory": "build/local-player-cooking-edit/source-002",
+      "failure": "parse_patt stack overflow on raw numeric literal patterns, repaired by binders plus exact word equality without changing payload or assertion"
+    }
+  ],
+  "session_consumer_check": {
+    "owner": "player_motion_current_ultra",
+    "generation": 21,
+    "source_seconds": 18.0295,
+    "entries": 9054,
+    "files": 191,
+    "holes": 0,
+    "returned_owner_kernel_seconds": 0.014642,
+    "exclusions": 0,
+    "separate_scope": true
+  },
+  "expected_native_guards": 22,
+  "production_pins": {
+    "src/player_block_interaction.bend": "f869542322a3e90cdfce389aa593be27a91a289b2882c397030c9917d6f00e44",
+    "src/local_player_cooking_edit.bend": "06ef50ca4107fb9fd5c1b3c4236936714e5e18c6e804d9646e737c230e76419a"
+  }
+}
