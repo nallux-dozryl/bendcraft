@@ -14,6 +14,14 @@ manual lead grants or serial review/seal/replay ceremonies; stable source/cache
 identity and bounded cleanup stay automated. Reuse unchanged passing evidence.
 Coordinate at most two heavy jobs; never repeat an equivalent timed-out build.
 
+Human delivery priority: actor022 plus cooking client011, verified through
+open → input/fuel → progress → output take → close → save → reload and public
+launch. Keep the accepted022 artifact fixed. Future format5/manager/lighting
+work does not gate cooking; existing owners finish scoped checkpoints and
+then help integration. Catalog owns the caller/build, root owns pair delivery,
+NativeControls owns matched responsiveness, and Motion prepares the bounded
+visible OS scenario. Reserve heavy capacity for the delivery build.
+
 Current disjoint implementation owners (2026-10-05):
 
 | Active owner | Exclusive production files / namespace | Concrete deliverable and actual consumer |
@@ -24,9 +32,9 @@ Current disjoint implementation owners (2026-10-05):
 | Motion incarnation-guard child | Additive Core prospective admission, scheduled cooking preflight, NEW local_player_cooking_incarnation_guard* | MAX48 scheduled preflight passes 16 native owner/admission rows and nine kernel roots. Preserve the open universal numeric comparison theorem and Java parity scope. |
 | `actor_compiler_memory_ultra` | NEW entity_chunk_loading* only; direct-edit checkpoint complete | Direct MAX48 edit passes 39 native guards. Implement separate witnessed Full-status/visibility and entity-file Fresh/Pending/Loaded owners and supply actual current facts to membership recovery. Core/camera residency cannot substitute for completion authority. |
 | Root publication observer | Actual publication TCP/save/cold continuation | Genuine022 passes3 menu mutations,2 two-chunk ignition publications,9 complete saves,1 real SIGKILL/cold restore and sequence4→5 continuation. Legacy/stale ordered refusals retain owners. Nonzero pending capture is UNOBSERVED when a real pulse wins. |
-| `native_controls_current_ultra` | NEW entity membership codec/proofs and actual command20 network observer | Codec24/277 and five kernel laws pass; live loader installation is separate. Genuine022 SceneFrame TCP passes5 full frames,8 refusals and2 byte-identical complete Item/Orb owner saves, with all owned groups/listeners reaped. |
+| `native_controls_current_ultra` | NEW matched client responsiveness helper/evidence; wire checkpoint complete | Genuine022 SceneFrame TCP5/8 and2 complete saves pass. Compare008/010/011 under identical quiet scene/settings and prove image/state equivalence; do not put this comparison on Catalog's cooking caller/build path. |
 | `saved_inventory_ultra` | NEW entity_scene_lighting* only; format5 checkpoint complete | Format5 runtime/sound/manager/clocks checks pass. Join actual retained block/sky engines around the sole Core and publish stamped settled samples at actual face/vertex/entity stencils. Evaluated Lightmap RGB and AO require the real parent contracts; no cell-center or white substitute. |
-| `block_resource_catalog_ultra` | Generic client/resource lifecycle and actual cooking client join | Public017/010 exact startup/demand/pixels/save/cold/grass/EOF/refusal/reconnect adoption passes. Next: coherent010 plus the actual cooking menu/input/render caller, verify and build011, then test the limited022 gameplay pair. Prepare matched010/008 responsiveness comparison; future entity/light source work does not gate cooking. |
+| `block_resource_catalog_ultra` | Generic client/resource lifecycle and actual cooking client join | Public017/010 exact startup/demand/pixels/save/cold/grass/EOF/refusal/reconnect adoption passes. Next: coherent010 plus the actual cooking menu/input/render caller, verify and build011, then test the limited022 gameplay pair. Future entity/light source work does not gate cooking. |
 | Parent membership recovery owner | NEW entity_section_membership_recovery* only | Validate saved M.View against actual E.View and current real loader facts, returning a proposal for atomic activation. Preserve insertion/callback/cursor authority; no assumed visible or loaded defaults. |
 | Parent managed tick owner | Additive item_entity_tick_managed_scene*; checkpoint complete | Managed actual movement/removal/merge passes ten Java/native cases, seven complete-owner refusals and five kernel laws. Stable tick_id returns both sole T.State and M.State plus ordered publications/callbacks. |
 | Parent lighting owners | NEW sky_light* and vanilla_lightmap* only | Derive actual sky fields and evaluated Lightmap shader RGB from pinned26.3; connect future stamped world/entity lighting. Shared compositor61b2719 is stable and refuses missing lighting. |

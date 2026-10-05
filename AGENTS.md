@@ -2,6 +2,8 @@
 
 The persistent goal in chat 01a101ff-32b6-7910-a9af-96488bfb0c2f is authoritative. This project is a full Minecraft Java **26.3** reimplementation, not a voxel demonstration. A milestone never establishes completion. Preserve ../tetris, ../inker, and ../bend user changes. Never stage the entire parent repository.
 
+Current human delivery priority (2026-10-05): deliver the limited actor022/cooking-client011 pair through actual open, input/fuel, progress, output take, close, save, reload and public launch. Actor022 already passes its real publication/SceneFrame/save/cold consumers; reuse that fixed artifact unless a required defect emerges. Future format5, membership and lighting do not gate this slice. Catalog owns the client caller/build, root owns pair integration and delivery, and NativeControls owns the separate matched responsiveness comparison. Existing owners finish their current scoped checkpoints; start no new independent feature lanes before this delivery. Reserve heavy capacity for delivery builds, keep source work parallel, and prepare visible OS acceptance alongside implementation without unsolicited focus changes. Full scope and proof correctness remain required.
+
 ## Language and ownership
 
 - Baseline compiler: /Users/chuah/.bend/bin/bend 2.0.35; source ../bend at 79df8d9c40722ee9507a1e253f283b51025f9d6c. Read `bend guide`, `bend guide shaders`, and `bend guide effects` before corresponding work.
