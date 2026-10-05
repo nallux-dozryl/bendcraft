@@ -53,8 +53,13 @@ each recursive tail twice. Patch order, values and the existing
 30-second runtime cap; a one-stew diagnostic took about 25 seconds, while an
 empty fixture took 0.94 seconds. The changed 42-case batch passed in 3.23 seconds.
 The exact prior recurrences and structural equivalence obligations are retained
-in `player_item_component_patch_laws.bend`; their verification status is
-separate from the native observations.
+in `player_item_component_patch_laws.bend`. All four laws pass ordinary checking.
+The independent kernel passes both actual branch selectors and the complete
+arbitrary ordered removals equivalence. The full additions export is blocked
+in the imported `json.encode_go` definition by the kernel's "affine live code,
+calls that descend" verdict. No required definition was omitted to obtain a
+passing scope. Exact selected roots, term/source pins and failed verdicts are in
+`evidence/player-item-components-proof-001.json`.
 
 `tools/test_player_item_components.py` is an executor-only native fixture helper.
 It compares eleven pinned Java outputs plus targeted invalid/capacity cases,
@@ -67,4 +72,8 @@ recovery. The four connected laws in `player_item_components_laws.bend` cover
 missing defaults, disabled definitions and preservation of the definition
 owner through initialization and complete inventory preservation when metadata
 is missing; mathematical verdict status is recorded in the
-evidence separately from source checks and native observations.
+evidence separately from source checks and native observations. All four laws
+pass ordinary checking; the independent kernel passes complete definition/count
+preservation. The other three laws remain blocked by the same imported JSON
+encoder verdict. These limitations do not change the recorded native result or
+establish actor/pickup/whole-save acceptance.

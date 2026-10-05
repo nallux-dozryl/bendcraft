@@ -1,0 +1,651 @@
+{
+  "schema": 1,
+  "status": "partial-independent-kernel-verdict",
+  "scope": "Connected initialized catalog and inventory refusal laws; actual cooking component additions/removals linear-tail refactor against exact previous eager recurrences. Native acceptance remains separately recorded.",
+  "native_checkpoint": "a186705",
+  "native_evidence": {
+    "path": "evidence/player-item-components-native-003.json",
+    "bytes": 23943,
+    "sha256": "5930b6f0058d93e81d2b8aa3a913eb5de97a9a0dc6a76ea37f090c0d29897b5b",
+    "revision": "a186705"
+  },
+  "law_files": [
+    {
+      "path": "src/player_item_component_patch_laws.bend",
+      "bytes": 3623,
+      "sha256": "744e3a82a074cf499d5e059c6c91b2794383cefc29f0c43e1c41dd6db67e88d3"
+    },
+    {
+      "path": "src/player_item_components_laws.bend",
+      "bytes": 1989,
+      "sha256": "7d918f1f2180c9a1c7cfe4ae2598927b0dac077114ad6e3c17498818d402e628"
+    }
+  ],
+  "production_files": [
+    {
+      "path": "src/cooking_block_entity_codec_components.bend",
+      "bytes": 11348,
+      "sha256": "1d5d5f8957ef3cae3c5bf8b3101ff29355286874ef95d84183bd751ce0a663da"
+    },
+    {
+      "path": "src/player_item_definitions.bend",
+      "bytes": 18179,
+      "sha256": "83a4f184e48de82b770ceec268feb55b70afdd69a9d0a008ba901d7ed146fa98"
+    },
+    {
+      "path": "src/player_item_components.bend",
+      "bytes": 5440,
+      "sha256": "93eb104f612f8f6505c8c019daeef481fd367f733ec65ff7694a8ad88e531749"
+    },
+    {
+      "path": "src/player_item_component_patch.bend",
+      "bytes": 2884,
+      "sha256": "2e1be17dc860c0d6df180fc4539f0d552516d64aec13a1ff9c8aeeb96355aff6"
+    },
+    {
+      "path": "src/item_component.bend",
+      "bytes": 12905,
+      "sha256": "05c81ea37efaca17694133046c974a7c6229079f834ee482777888aa0bd89a1c"
+    },
+    {
+      "path": "src/player_inventory.bend",
+      "bytes": 28820,
+      "sha256": "a1a4a8d0cbb63038c9f01edaadb90a2ec5996cf88fbc2c489a5a0050ca318c6c"
+    },
+    {
+      "path": "src/item_component_inventory_codec.bend",
+      "bytes": 3870,
+      "sha256": "26bc8b6039c4706e33882f0a75e57f09f72e17d0ba88fe7e5a4ae43bbf80882f"
+    }
+  ],
+  "ordinary_checks": [
+    {
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/player_item_component_patch_laws.bend",
+        "--check-only"
+      ],
+      "seconds": 1.2668762505054474,
+      "exit_code": 0,
+      "timed_out": false,
+      "error": null,
+      "receipt": {
+        "path": "build/player-item-components/patch-ordinary-001/process.json",
+        "bytes": 883,
+        "sha256": "c80352b27e190b69ab260afdc13dcf76f37714822894077e1fcc4f93c01dad8a"
+      },
+      "output_pins": {
+        "stdout": {
+          "bytes": 58,
+          "sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1"
+        },
+        "stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "owned_group_absent": true,
+      "leader_reaped": true,
+      "cleanup_errors": []
+    },
+    {
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/player_item_components_laws.bend",
+        "--check-only"
+      ],
+      "seconds": 11.065654790960252,
+      "exit_code": 0,
+      "timed_out": false,
+      "error": null,
+      "receipt": {
+        "path": "build/player-item-components/admission-ordinary-001/process.json",
+        "bytes": 898,
+        "sha256": "4ef39d334c5215f830c99cc2b245ac1ce6ca2a5ced87bce7b5ecafe9abf7bdd7"
+      },
+      "output_pins": {
+        "stdout": {
+          "bytes": 58,
+          "sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1"
+        },
+        "stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "owned_group_absent": true,
+      "leader_reaped": true,
+      "cleanup_errors": []
+    }
+  ],
+  "complete_attempts": [
+    {
+      "status": "blocked-imported-json-encoder",
+      "roots": [
+        "addition_selector_matches_previous_branch",
+        "removal_selector_matches_previous_branch",
+        "linear_additions_preserves_complete_previous_delta",
+        "linear_removals_preserves_complete_previous_delta"
+      ],
+      "original_root_count": 1115,
+      "selected_root_count": 4,
+      "checked_types_and_bodies_unchanged": true,
+      "all_original_tlds_ctrs_tmps_retained": true,
+      "term_pins": [
+        {
+          "name": "addition_selector_matches_previous_branch",
+          "type_sha256": "84fa15fd3ba877d9b2c493982e189fc3d4c59e526313b88b4ed56e20d1526edc",
+          "checked_proof_sha256": "6b1e177beed75bd9f71c3a9705405ee9dad5f50771cbf7dfc985e524124c642a",
+          "source_body_sha256": "15f808e9610613df0d981c903e28c36d441d6f716122a11ed0f53b4fdfb6b882"
+        },
+        {
+          "name": "removal_selector_matches_previous_branch",
+          "type_sha256": "b1479a4db508658b5a9d0b2acf66d55652bfe2b6e47d9b059c599a0918766883",
+          "checked_proof_sha256": "d424f8150158048e63e55b272aec108e5f9222ffca371928fabb5b5de5bebab4",
+          "source_body_sha256": "fb53ead8fb38eb6ca5bcd48abd74e7841e52ada8d5dd40e9d2501bdd80af18c9"
+        },
+        {
+          "name": "linear_additions_preserves_complete_previous_delta",
+          "type_sha256": "63e38f0ec18a71c4aa640dad534d15dda13f207788d6d354a080972e175b282f",
+          "checked_proof_sha256": "ccfc333cea2a8c0b33465aa768336e8bd860ed90a0036f01936e3e8512754221",
+          "source_body_sha256": "24be32cabdea2ea0b6718c415766f456eb3b4753edf34dfdfcf94dffcc8770c4"
+        },
+        {
+          "name": "linear_removals_preserves_complete_previous_delta",
+          "type_sha256": "a9caab321d74239814dea99a9f63675babcf58ecb0588670a45de303936abc30",
+          "checked_proof_sha256": "afa657a72476662347cfe9096e8f8aeddac772c43ae16a5e7cd7c56baa3eab00",
+          "source_body_sha256": "6043b87b332852ebf69b21cae6d97b3dccd5c23d50b6bb52722993a41e5e5e38"
+        }
+      ],
+      "source_file_count": 14,
+      "source_manifest": {
+        "path": "build/player-item-components/patch-proof-001/source-pins.json",
+        "bytes": 2086,
+        "sha256": "708328f990bae9cb57b17b64911f2f9142902786140834054d9e4805975bd340"
+      },
+      "sources_unchanged_during_export": true,
+      "exporter": {
+        "path": "build/player-item-components/patch-proof-001/export.mjs",
+        "bytes": 3046,
+        "sha256": "8879592bd7f6404b8935c74ed46f2351ce47e8172cda4cf861163004f3e4c665"
+      },
+      "ir": {
+        "path": "build/player-item-components/patch-proof-001/selected.bendtt",
+        "bytes": 674825,
+        "sha256": "01ef7920572ff45b6ecba4cc08524152fc7ea02ec71e153ac8a53e76f66d832c"
+      },
+      "selection": {
+        "path": "build/player-item-components/patch-proof-001/selection.json",
+        "bytes": 3407,
+        "sha256": "ebfadf74a25802642d96f4d168acf5b35e6a7639bea7c37841290d80a3d8dfb0"
+      },
+      "exclusions": [],
+      "export": {
+        "argv": [
+          "/opt/homebrew/bin/node",
+          "--max-old-space-size=2048",
+          "--stack-size=4096",
+          "--experimental-transform-types",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/patch-proof-001/export.mjs",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/patch-proof-001",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_item_component_patch_laws.bend"
+        ],
+        "seconds": 1.8218818325549364,
+        "exit_code": 0,
+        "timed_out": false,
+        "error": null,
+        "receipt": {
+          "path": "build/player-item-components/patch-proof-001/export-process.json",
+          "bytes": 1155,
+          "sha256": "3c7580d2f50cdc5911e70e0af4ca6b2aabe60995ef15f18db65aa276a2c9164b"
+        },
+        "output_pins": {
+          "stdout": {
+            "bytes": 323,
+            "sha256": "0ae3aa7aee18a4ba42262fc6613081a97265cf5893365161fac783fbe9872970"
+          },
+          "stderr": {
+            "bytes": 177,
+            "sha256": "5783348802f83183fd6c37edf03858dd45e26b204ee95da7d4b4085c0ba451bd"
+          }
+        },
+        "owned_group_absent": true,
+        "leader_reaped": true,
+        "cleanup_errors": []
+      },
+      "kernel": {
+        "argv": [
+          "/usr/bin/env",
+          "LEAN_STACK_SIZE=67108864",
+          "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/patch-proof-001/selected.bendtt"
+        ],
+        "seconds": 0.3117172922939062,
+        "exit_code": 1,
+        "timed_out": false,
+        "error": null,
+        "receipt": {
+          "path": "build/player-item-components/patch-proof-001/kernel-process.json",
+          "bytes": 959,
+          "sha256": "b75f33e58eb0f895e85969e7deb9f423ac88e39cec05f22f41f67a06c948e78b"
+        },
+        "output_pins": {
+          "stdout": {
+            "bytes": 73,
+            "sha256": "2275b00118525c37690bd0f4ff7ea0c6e31d3c0da890a188b519a556706ee11f"
+          },
+          "stderr": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "owned_group_absent": true,
+        "leader_reaped": true,
+        "cleanup_errors": []
+      },
+      "kernel_stdout": "SOME PROOFS FAIL\nIn json.encode_go:\naffine live code, calls that descend\n"
+    },
+    {
+      "status": "blocked-imported-json-encoder",
+      "roots": [
+        "missing_initialized_defaults_cannot_authorize_a_modified_key",
+        "disabled_registered_definition_cannot_authorize_a_modified_key",
+        "initialized_default_join_retains_every_definition_and_count",
+        "missing_item_metadata_preserves_complete_inventory_owner"
+      ],
+      "original_root_count": 2108,
+      "selected_root_count": 4,
+      "checked_types_and_bodies_unchanged": true,
+      "all_original_tlds_ctrs_tmps_retained": true,
+      "term_pins": [
+        {
+          "name": "missing_initialized_defaults_cannot_authorize_a_modified_key",
+          "type_sha256": "fbf1ca13795ce00b84eb7268f29857ee2eeb38c67a7f9869cb3d658ee597fc82",
+          "checked_proof_sha256": "532ce44b87dd334cec3045fd3494fddc76c13e53267dd93a900c59197dba9a7e",
+          "source_body_sha256": "b71fa25aad890b9e0bb8d7372c01ea0b5113a4069b94b19dfa8a649ddb87a874"
+        },
+        {
+          "name": "disabled_registered_definition_cannot_authorize_a_modified_key",
+          "type_sha256": "9c22e75e62f87cc0fa18c4817578928a5e1e558916ce138843e5742dcaf5bf66",
+          "checked_proof_sha256": "2ae13806eb0adefd73988039ce82dfd65f2d2de92533f7a247e1770cbdc85128",
+          "source_body_sha256": "bdd4f1c69b7abdefb2e1ccc2c566f9498c2c7596a1a71f9f179241f5b3aab0b0"
+        },
+        {
+          "name": "initialized_default_join_retains_every_definition_and_count",
+          "type_sha256": "b5cf769fe3f2f30e3b96048881fd2aef1225aee73b4e59757e4272dbf3d432f6",
+          "checked_proof_sha256": "079b4566fd9d1b12b298f5d44b81a98b3230ebff8a2fdada9be8011bf10d76fc",
+          "source_body_sha256": "d9d8336292dc4e203a7f69391c622b4f01e8b3ec2045590731ebfc7fe23b6bad"
+        },
+        {
+          "name": "missing_item_metadata_preserves_complete_inventory_owner",
+          "type_sha256": "a56b50170984013b2be620527d0caa524e7d1489a1d9272233cf670cd0254ed1",
+          "checked_proof_sha256": "e71d55001fdabd825408c99079dd6dedff575fd7c69112992ff5dc154e42c7f5",
+          "source_body_sha256": "2e4ac070475811001457593f45c3b40e870844296d4f1a9eda727eb94b14b696"
+        }
+      ],
+      "source_file_count": 31,
+      "source_manifest": {
+        "path": "build/player-item-components/proof-001/source-pins.json",
+        "bytes": 4558,
+        "sha256": "95f3cef54188a90050f3756c6da93f9b045ddc2de1e3331687ba4695fc4ed256"
+      },
+      "sources_unchanged_during_export": true,
+      "exporter": {
+        "path": "build/player-item-components/proof-001/export.mjs",
+        "bytes": 3100,
+        "sha256": "6b310fc9e689b4dd2d09053893ed6e0bca2a5115bd22f611c6b24f11ff00baf9"
+      },
+      "ir": {
+        "path": "build/player-item-components/proof-001/selected.bendtt",
+        "bytes": 16625334,
+        "sha256": "743a024077b3738b8c306d77f8083aa03a3f94483c7e8dee71f4f0274f239e7e"
+      },
+      "selection": {
+        "path": "build/player-item-components/proof-001/selection.json",
+        "bytes": 4923,
+        "sha256": "8235e61ddfea22e8a136c3d67da449154bd515c6bbb83ce66a985e3439292a3e"
+      },
+      "exclusions": [],
+      "export": {
+        "argv": [
+          "/opt/homebrew/bin/node",
+          "--max-old-space-size=2048",
+          "--stack-size=4096",
+          "--experimental-transform-types",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/proof-001/export.mjs",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/proof-001",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_item_components_laws.bend"
+        ],
+        "seconds": 14.121460874564946,
+        "exit_code": 0,
+        "timed_out": false,
+        "error": null,
+        "receipt": {
+          "path": "build/player-item-components/proof-001/export-process.json",
+          "bytes": 1127,
+          "sha256": "b7c92c439f0ab61d26bec25c1c8d0b49455fc005b403603c2f50b832af281ad6"
+        },
+        "output_pins": {
+          "stdout": {
+            "bytes": 382,
+            "sha256": "dca35ac894b119b03a7e1e53148cae1ead7b8cb01dbd97bab5956c8f2962ae79"
+          },
+          "stderr": {
+            "bytes": 177,
+            "sha256": "555725eba71ada0924eb007dc75c7467e13373daba47cef9eeb3c703ba16dba6"
+          }
+        },
+        "owned_group_absent": true,
+        "leader_reaped": true,
+        "cleanup_errors": []
+      },
+      "kernel": {
+        "argv": [
+          "/usr/bin/env",
+          "LEAN_STACK_SIZE=67108864",
+          "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/proof-001/selected.bendtt"
+        ],
+        "seconds": 2.803408792242408,
+        "exit_code": 1,
+        "timed_out": false,
+        "error": null,
+        "receipt": {
+          "path": "build/player-item-components/proof-001/kernel-process.json",
+          "bytes": 940,
+          "sha256": "2ca75b293304cfad5581218affc3a83dbf12c73909407d42133d7306461748f5"
+        },
+        "output_pins": {
+          "stdout": {
+            "bytes": 73,
+            "sha256": "2275b00118525c37690bd0f4ff7ea0c6e31d3c0da890a188b519a556706ee11f"
+          },
+          "stderr": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "owned_group_absent": true,
+        "leader_reaped": true,
+        "cleanup_errors": []
+      },
+      "kernel_stdout": "SOME PROOFS FAIL\nIn json.encode_go:\naffine live code, calls that descend\n"
+    }
+  ],
+  "passing_scopes": [
+    {
+      "status": "passed",
+      "roots": [
+        "addition_selector_matches_previous_branch",
+        "removal_selector_matches_previous_branch",
+        "linear_removals_preserves_complete_previous_delta"
+      ],
+      "original_root_count": 1115,
+      "selected_root_count": 3,
+      "checked_types_and_bodies_unchanged": true,
+      "all_original_tlds_ctrs_tmps_retained": true,
+      "term_pins": [
+        {
+          "name": "addition_selector_matches_previous_branch",
+          "type_sha256": "84fa15fd3ba877d9b2c493982e189fc3d4c59e526313b88b4ed56e20d1526edc",
+          "checked_proof_sha256": "6b1e177beed75bd9f71c3a9705405ee9dad5f50771cbf7dfc985e524124c642a",
+          "source_body_sha256": "15f808e9610613df0d981c903e28c36d441d6f716122a11ed0f53b4fdfb6b882"
+        },
+        {
+          "name": "removal_selector_matches_previous_branch",
+          "type_sha256": "b1479a4db508658b5a9d0b2acf66d55652bfe2b6e47d9b059c599a0918766883",
+          "checked_proof_sha256": "d424f8150158048e63e55b272aec108e5f9222ffca371928fabb5b5de5bebab4",
+          "source_body_sha256": "fb53ead8fb38eb6ca5bcd48abd74e7841e52ada8d5dd40e9d2501bdd80af18c9"
+        },
+        {
+          "name": "linear_removals_preserves_complete_previous_delta",
+          "type_sha256": "a9caab321d74239814dea99a9f63675babcf58ecb0588670a45de303936abc30",
+          "checked_proof_sha256": "afa657a72476662347cfe9096e8f8aeddac772c43ae16a5e7cd7c56baa3eab00",
+          "source_body_sha256": "6043b87b332852ebf69b21cae6d97b3dccd5c23d50b6bb52722993a41e5e5e38"
+        }
+      ],
+      "source_file_count": 14,
+      "source_manifest": {
+        "path": "build/player-item-components/patch-proof-002/source-pins.json",
+        "bytes": 2086,
+        "sha256": "708328f990bae9cb57b17b64911f2f9142902786140834054d9e4805975bd340"
+      },
+      "sources_unchanged_during_export": true,
+      "exporter": {
+        "path": "build/player-item-components/patch-proof-002/export.mjs",
+        "bytes": 2992,
+        "sha256": "9ee7815c6c814720415eaa68f24dd603b4685aacc80ad6cd1b635ad29a761a25"
+      },
+      "ir": {
+        "path": "build/player-item-components/patch-proof-002/selected.bendtt",
+        "bytes": 14542,
+        "sha256": "757b4cba191dd2dc2825ef31dc305df11cda2888c5a48bac0bc35c218a82fb5a"
+      },
+      "selection": {
+        "path": "build/player-item-components/patch-proof-002/selection.json",
+        "bytes": 2928,
+        "sha256": "e84bb935bfe9702b724c175e56e46f222ebf276eba2fae252394824e59e63360"
+      },
+      "exclusions": [],
+      "export": {
+        "argv": [
+          "/opt/homebrew/bin/node",
+          "--max-old-space-size=2048",
+          "--stack-size=4096",
+          "--experimental-transform-types",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/patch-proof-002/export.mjs",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/patch-proof-002",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_item_component_patch_laws.bend"
+        ],
+        "seconds": 1.5643722917884588,
+        "exit_code": 0,
+        "timed_out": false,
+        "error": null,
+        "receipt": {
+          "path": "build/player-item-components/patch-proof-002/export-process.json",
+          "bytes": 1155,
+          "sha256": "7b77ca14eeae55e621211c1c92197dde4ac3fe0482a5e17bece511883a4ceb54"
+        },
+        "output_pins": {
+          "stdout": {
+            "bytes": 269,
+            "sha256": "d52658119fdf4f8154ecb596e35259e17ea3803090774e6df85e151e051ec70e"
+          },
+          "stderr": {
+            "bytes": 177,
+            "sha256": "f3ce364e6582fcecf2522b7df8f19805d3981bca54dccf557ba67906871a9d29"
+          }
+        },
+        "owned_group_absent": true,
+        "leader_reaped": true,
+        "cleanup_errors": []
+      },
+      "kernel": {
+        "argv": [
+          "/usr/bin/env",
+          "LEAN_STACK_SIZE=67108864",
+          "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/patch-proof-002/selected.bendtt"
+        ],
+        "seconds": 0.14895062521100044,
+        "exit_code": 0,
+        "timed_out": false,
+        "error": null,
+        "receipt": {
+          "path": "build/player-item-components/patch-proof-002/kernel-process.json",
+          "bytes": 960,
+          "sha256": "862191926a5332b56cb15f111b5d1efecad286befb1ce49292d7d7555a6aff97"
+        },
+        "output_pins": {
+          "stdout": {
+            "bytes": 17,
+            "sha256": "61b73cda11b6b665b9f99f2defd3d3b57f985c865225e942a5bdaa594a503e47"
+          },
+          "stderr": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "owned_group_absent": true,
+        "leader_reaped": true,
+        "cleanup_errors": []
+      },
+      "kernel_stdout": "ALL PROOFS CHECK\n"
+    },
+    {
+      "status": "passed",
+      "roots": [
+        "initialized_default_join_retains_every_definition_and_count"
+      ],
+      "original_root_count": 2108,
+      "selected_root_count": 1,
+      "checked_types_and_bodies_unchanged": true,
+      "all_original_tlds_ctrs_tmps_retained": true,
+      "term_pins": [
+        {
+          "name": "initialized_default_join_retains_every_definition_and_count",
+          "type_sha256": "b5cf769fe3f2f30e3b96048881fd2aef1225aee73b4e59757e4272dbf3d432f6",
+          "checked_proof_sha256": "079b4566fd9d1b12b298f5d44b81a98b3230ebff8a2fdada9be8011bf10d76fc",
+          "source_body_sha256": "d9d8336292dc4e203a7f69391c622b4f01e8b3ec2045590731ebfc7fe23b6bad"
+        }
+      ],
+      "source_file_count": 31,
+      "source_manifest": {
+        "path": "build/player-item-components/proof-002/source-pins.json",
+        "bytes": 4558,
+        "sha256": "95f3cef54188a90050f3756c6da93f9b045ddc2de1e3331687ba4695fc4ed256"
+      },
+      "sources_unchanged_during_export": true,
+      "exporter": {
+        "path": "build/player-item-components/proof-002/export.mjs",
+        "bytes": 2913,
+        "sha256": "a344d5da6175dcd09db8fc90e6d7d9c05a5f4b147c5e799044eed0d37d09093d"
+      },
+      "ir": {
+        "path": "build/player-item-components/proof-002/selected.bendtt",
+        "bytes": 6052,
+        "sha256": "063434dc017b0771ed85726ae3536b6e0ac4fd683cf629c52fce7a0ec7a3df88"
+      },
+      "selection": {
+        "path": "build/player-item-components/proof-002/selection.json",
+        "bytes": 3402,
+        "sha256": "bfcccf1934aed00e79a407e68f5a3b683fe99b6e179bf4289447a18e4eb7b360"
+      },
+      "exclusions": [],
+      "export": {
+        "argv": [
+          "/opt/homebrew/bin/node",
+          "--max-old-space-size=2048",
+          "--stack-size=4096",
+          "--experimental-transform-types",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/proof-002/export.mjs",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/proof-002",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_item_components_laws.bend"
+        ],
+        "seconds": 9.809346042573452,
+        "exit_code": 0,
+        "timed_out": false,
+        "error": null,
+        "receipt": {
+          "path": "build/player-item-components/proof-002/export-process.json",
+          "bytes": 1125,
+          "sha256": "9009240ba62308a55dc59e261c5f44e86f3d2c51c89c19013e3755ba79ba981a"
+        },
+        "output_pins": {
+          "stdout": {
+            "bytes": 191,
+            "sha256": "0a465993f4ca2b81e9ab09a82b48b685445ecff58ab27d7c63b9e07e9be7bf57"
+          },
+          "stderr": {
+            "bytes": 177,
+            "sha256": "c348311f0f569365e0d4b0f1da553a473c7e19f33116e3fbc33456d62e5faecd"
+          }
+        },
+        "owned_group_absent": true,
+        "leader_reaped": true,
+        "cleanup_errors": []
+      },
+      "kernel": {
+        "argv": [
+          "/usr/bin/env",
+          "LEAN_STACK_SIZE=67108864",
+          "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/proof-002/selected.bendtt"
+        ],
+        "seconds": 0.12804266717284918,
+        "exit_code": 0,
+        "timed_out": false,
+        "error": null,
+        "receipt": {
+          "path": "build/player-item-components/proof-002/kernel-process.json",
+          "bytes": 942,
+          "sha256": "70cf08e4b0826f2ed0dde4112b3f1fdb0547bebf602bf7366ed5b15d2f92d077"
+        },
+        "output_pins": {
+          "stdout": {
+            "bytes": 17,
+            "sha256": "61b73cda11b6b665b9f99f2defd3d3b57f985c865225e942a5bdaa594a503e47"
+          },
+          "stderr": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "owned_group_absent": true,
+        "leader_reaped": true,
+        "cleanup_errors": []
+      },
+      "kernel_stdout": "ALL PROOFS CHECK\n"
+    }
+  ],
+  "kernel": {
+    "path": "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+    "bytes": 3271216,
+    "sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7"
+  },
+  "compiler_source_api": [
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/bend.ts",
+      "bytes": 137761,
+      "sha256": "7deae3693eb896f33c73867081b99d2c6f3ed3b57e77e55eb5f6260840dd0e63"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/safe.ts",
+      "bytes": 63418,
+      "sha256": "54cb3a534ab7cc9ee313bf6383b3948ccdcac022469b3020e00745bbfe6f7e04"
+    }
+  ],
+  "blocked_laws": [
+    "linear_additions_preserves_complete_previous_delta",
+    "missing_initialized_defaults_cannot_authorize_a_modified_key",
+    "disabled_registered_definition_cannot_authorize_a_modified_key",
+    "missing_item_metadata_preserves_complete_inventory_owner"
+  ],
+  "limitation": {
+    "definition": "json.encode_go",
+    "diagnostic": "affine live code, calls that descend",
+    "source": {
+      "path": "src/json.bend",
+      "bytes": 21384,
+      "sha256": "a1789e3b4f5bea158ec0d95a8bcb39aa5b7c7e7355a5254d3de1d52a93c719d1"
+    },
+    "claim": "Full exports contain actual imported encoder dependencies and have no exporter exclusions; they are retained as failed mathematical verdicts. Source checking and the42 native cases do not replace these verdicts."
+  },
+  "reproduction": {
+    "ordinary": [
+      "/Users/chuah/.bend/bin/bend src/player_item_component_patch_laws.bend --check-only",
+      "/Users/chuah/.bend/bin/bend src/player_item_components_laws.bend --check-only"
+    ],
+    "exact_root_exports": "Each retained exporter loads/checks the complete original book, retains all types/bodies/declarations, and filters only checked Book.order roots. Exact commands, script/IR/source/term pins and process receipts are included above.",
+    "timeouts_seconds": {
+      "ordinary": 30,
+      "export": 60,
+      "kernel": 30
+    },
+    "retries": 0
+  },
+  "remaining_gaps": [
+    "Independent full additions and three admission-law verdicts require the actual JSON encoder descent issue to be resolved.",
+    "Actor transport, pickup and whole-save crash recovery remain independent source-generation-specific boundary obligations."
+  ]
+}
