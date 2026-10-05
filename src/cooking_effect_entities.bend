@@ -20,6 +20,7 @@ def plan(~Geometry:Data,~place:Geometry -> String -> V.Vec3 -> Result<&2,&2,E.Er
     case Store.BlockUpdate{position,0n}: Done{E.Plan{view,times}}
     case Store.BlockChange{position,0n}: Done{E.Plan{view,times}}
     case Store.Dirty{position}: Fail{E.Refused{"cooking-entities:block-entity-and-comparator-publisher-required"}}
+    case Store.OwnedDirty{source}: Fail{E.Refused{"cooking-entities:publication-owner-required"}}
     case Store.BlockUpdate{position,1n+count}: Fail{E.Refused{"cooking-entities:block-update-publisher-required"}}
     case Store.BlockChange{position,1n+count}: Fail{E.Refused{"cooking-entities:game-event-publisher-required"}}
 def planned(~Geometry:Data,~place:Geometry -> String -> V.Vec3 -> Result<&2,&2,E.Error,V.Vec3>,

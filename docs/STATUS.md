@@ -27,7 +27,7 @@ live journal. A pulse may consume pending effects before a save; a nonzero
 pending capture is an observation, never an assumed scheduling guarantee.
 See `evidence/local-player-cooking-publication-codec-native-002.json`,
 `evidence/local-player-cooking-storage-008.json`, and
-`docs/REMOTE_ENTITY_SCENE_NETWORK.md`.
+`docs/REMOTE_ENTITY_SCENE_WIRE.md`.
 
 Item tick33 section-order cases and the earlier native24 tick/merge cases are
 verified in the separate production Tick.Scene lane. Actual section membership,
