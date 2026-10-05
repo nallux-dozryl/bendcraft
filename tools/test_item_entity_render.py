@@ -85,7 +85,10 @@ def compare(got,obs):
 def main():
     WORK.mkdir(parents=True,exist_ok=True);T.WORK=WORK
     ref=json.loads((ROOT/'reference/item_entity_render.json').read_text());assert ref['pin']=='26.3'
-    catalog=copy.deepcopy(json.loads((ROOT/'reference/campfire_authority.json').read_text())['inputs']['catalog']);catalog['recipes']=[]
+    # Rendering receives initialized defaults, not cooking recipe/feature authority.
+    # Keep every actual initialized item row and the complete registry table,
+    # while avoiding an unrelated quadratic full cooking-catalog replay.
+    catalog={'items':copy.deepcopy(json.loads((ROOT/'reference/campfire_authority.json').read_text())['inputs']['catalog']['items'])}
     payload={'catalog':catalog,'item_table':(ROOT/'generated/reference_item_metadata.tsv').read_text(),'jar':str(R.CLIENT),'sine':str(ROOT/'generated/reference_mth_sin.f32'),'cases':inputs(ref['observations'])}
     (WORK/'input.json').write_text(json.dumps(payload,separators=(',',':'))+'\n')
     checks=[T.run('emit',[T.NODE,'--experimental-transform-types','--stack-size=4096','--max-old-space-size=2048','tools/item_entity_render_emit.mjs','tests/item_entity_render.bend',WORK/'receiver.c'],timeout=60,max_rss=2560*1024**2)]
@@ -95,6 +98,6 @@ def main():
         checks.append(T.run('native-'+str(threads),['/usr/bin/time','-l',WORK/'receiver','--gpu','off','--threads',str(threads),WORK/'input.json'],timeout=60,max_rss=1024**3))
         got=json.loads((WORK/('native-'+str(threads)+'.stdout')).read_text());outputs.append(got);compares.append(compare(got,ref['observations']))
     assert outputs[0]==outputs[1]
-    evidence={'status':'passed','pin':'26.3','command':'python3 tools/test_item_entity_render.py','checks':checks,'source':json.loads((WORK/'receiver.c.sources.json').read_text()),'reference_sha256':T.digest(ROOT/'reference/item_entity_render.json'),'comparisons':compares[0],'threads':[1,4],'boundary':'Actual initialized full item keys, installed jar model/PNG loading, production generated geometry, affine Mth table and immutable render Snapshot; no entity simulation RNG/tick. Item cluster numerical portability is measured separately from exact resource geometry/billboard parity. No GPU shader, actual world lightmap, full item selectors, wire or OS presentation acceptance.'}
+    evidence={'status':'passed','pin':'26.3','command':'python3 tools/test_item_entity_render.py','checks':checks,'source':json.loads((WORK/'receiver.c.sources.json').read_text()),'reference_sha256':T.digest(ROOT/'reference/item_entity_render.json'),'input_sha256':T.digest(WORK/'input.json'),'initialized_default_source_sha256':T.digest(ROOT/'reference/campfire_authority.json'),'item_table_sha256':T.digest(ROOT/'generated/reference_item_metadata.tsv'),'mth_table_sha256':T.digest(ROOT/'generated/reference_mth_sin.f32'),'installed_client_sha256':T.digest(R.CLIENT),'native_emitted_c_sha256':T.digest(WORK/'receiver.c'),'native_binary_sha256':T.digest(WORK/'receiver'),'comparisons':compares[0],'threads':[1,4],'source_api_basis':'Original ../bend/bend2/bend.ts book_load/book_valid and comp.ts compile_book; no observational/private compiler C and no installed-CLI build claim.','boundary':'Actual initialized full item keys, installed jar model/PNG loading, production generated geometry, affine Mth table and immutable render Snapshot; no entity simulation RNG/tick. Item cluster numerical portability is measured separately from exact resource geometry/billboard parity. No GPU shader, actual world lightmap, full item selectors, wire or OS presentation acceptance.'}
     (ROOT/'evidence/item-entity-render-native.json').write_text(json.dumps(evidence,indent=2)+'\n');print(json.dumps(evidence['comparisons']))
 if __name__=='__main__':main()

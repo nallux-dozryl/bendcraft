@@ -31,9 +31,9 @@ def neighbor(texture:R.Texture,position:U32 & U32) -> Bool:
   opaque(texture,x,y)
 def inset_uv(direction:B.Direction,+x:F32,+y:F32,+sx:F32,+sy:F32) -> B.UV:
   match direction:
-    case B.East{}: B.UV{F32.mul(F32.add(x,0.1),sx),F32.mul(F32.add(y,0.1),sy),F32.mul(F32.sub(F32.add(x,1.0),0.1),sx),F32.mul(F32.sub(F32.add(y,1.0),0.1),sy)}
-    case B.West{}: B.UV{F32.mul(F32.add(x,0.1),sx),F32.mul(F32.add(y,0.1),sy),F32.mul(F32.sub(F32.add(x,1.0),0.1),sx),F32.mul(F32.sub(F32.add(y,1.0),0.1),sy)}
-    case _: B.UV{F32.mul(F32.add(x,0.1),sx),F32.mul(F32.sub(F32.add(y,1.0),0.1),sy),F32.mul(F32.sub(F32.add(x,1.0),0.1),sx),F32.mul(F32.add(y,0.1),sy)}
+    case B.East{}: B.UV{F32.mul(F32.add(x,0.1),sx),F32.mul(F32.sub(F32.add(y,1.0),0.1),sy),F32.mul(F32.sub(F32.add(x,1.0),0.1),sx),F32.mul(F32.add(y,0.1),sy)}
+    case B.West{}: B.UV{F32.mul(F32.add(x,0.1),sx),F32.mul(F32.sub(F32.add(y,1.0),0.1),sy),F32.mul(F32.sub(F32.add(x,1.0),0.1),sx),F32.mul(F32.add(y,0.1),sy)}
+    case _: B.UV{F32.mul(F32.add(x,0.1),sx),F32.mul(F32.add(y,0.1),sy),F32.mul(F32.sub(F32.add(x,1.0),0.1),sx),F32.mul(F32.sub(F32.add(y,1.0),0.1),sy)}
 def side_bounds(direction:B.Direction,+x:F32,+y:F32,+sx:F32,+sy:F32) -> B.Vec3 & B.Vec3:
   match direction:
     case B.Up{}: (B.Vec3{F32.mul(x,sx),F32.sub(16.0,F32.mul(y,sy)),7.5},B.Vec3{F32.mul(F32.add(x,1.0),sx),F32.sub(16.0,F32.mul(y,sy)),8.5})

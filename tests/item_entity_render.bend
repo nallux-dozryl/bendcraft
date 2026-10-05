@@ -1,8 +1,7 @@
 import Base
 import ../src/json.bend as J
 import ../src/crafting_recipe_decoder.bend as Decode
-import ../src/campfire_authority_loader.bend as Load
-import ../src/campfire_authority_items.bend as CI
+import ../src/crafting_recipe_components.bend as Components
 import ../src/player_item_definitions.bend as Definitions
 import ../src/inventory.bend as I
 import ../src/random.bend as RNG
@@ -201,19 +200,20 @@ def tables_ready(result:Result<&2,&1,Sine.Error,Sine.Tables>,definitions:Definit
       do IO<Unit>:
         result : Result<&2,&1,String,Resources.Assets> <- Resources.load(jar,definitions,[I.ItemKey{"minecraft:stone",""},I.ItemKey{"minecraft:cooked_beef",""},I.ItemKey{"minecraft:iron_ingot",""},I.ItemKey{"minecraft:suspicious_stew",""}],BR.defaults())
         loaded(result,values,tables)
-def initialized(definitions:Definitions.Catalog,context:CI.Context,jar:String,sine:String,values:List<&2,J.Value>) -> Result<&2,&2,String,Input>:
-  CI.Context{recipes,defaults,features} = context
+def initialized(definitions:Definitions.Catalog,defaults:List<&2,Components.Default>,jar:String,sine:String,values:List<&2,J.Value>) -> Result<&2,&2,String,Input>:
   Done{Input{Definitions.with_initialized_defaults(definitions,defaults),jar,sine,values}}
 def input(+value:J.Value) -> Result<&2,&2,String,Input>:
   do Result<&2,&2,String,Input>:
-    raw : J.Value <- Decode.field(value,"catalog")
-    context : CI.Context <- Load.catalog(raw)
+    +raw : J.Value <- Decode.field(value,"catalog")
+    raw_items : J.Value <- Decode.field(raw,"items")
+    items : List<&2,J.Value> <- Decode.array(raw_items)
+    defaults : List<&2,Components.Default> <- Decode.defaults_rows(items,[])
     item_table : String <- Decode.text_field(value,"item_table")
     definitions : Definitions.Catalog <- Definitions.parse(item_table)
     jar : String <- Decode.text_field(value,"jar")
     sine : String <- Decode.text_field(value,"sine")
     values : List<&2,J.Value> <- T.array_field(value,"cases")
-    initialized(definitions,context,jar,sine,values)
+    initialized(definitions,defaults,jar,sine,values)
 
 def input_ready(value:Result<&2,&2,String,Input>) -> IO(Unit):
   match value:

@@ -1,15 +1,16 @@
 This is the production visual projection and resource-backed ItemEntity /
-ExperienceOrb preparation for the pinned Java26.3 entity owner. Confidence is
-high in the independently observed receiver formulas and immutable ownership
-seams. All production/resource/receiver declarations pass the original ordinary
-checker, and14implementation-connected laws pass the independent kernel with
-zero exclusions. The actual Java reference covers4resource bakes,72item clusters
-and22XP billboards. Native resource comparison is prepared but currently blocked
-by original C-producer expansion in shared block_model.int_scan_admitted; the
-precise retained trace is evidence/item-entity-render-source.json. No successful
-C/native pixel or transform parity is claimed yet. Verification receipts keep
-floating-point and integration boundaries explicit; this is not a finished
-vanilla renderer.
+ExperienceOrb preparation for the pinned Java 26.3 entity owner. Confidence is
+high within the independently observed receiver and native boundaries. The
+original source API checks the complete production/resource/receiver book and
+emits its C without compiler changes. Four actual resource bakes match Java's
+complete geometry and UVs exactly; 72 item clusters and 22 XP billboards pass the
+native comparison on both one and four threads, with identical output. The
+comparison also checks 16 actual PNG texel samples, eight guards and complete
+entity-owner retention on success/refusal. Fourteen implementation-connected
+laws pass the independent kernel with zero exclusions. Receipts are
+`evidence/item-entity-render-{native,proof,source}.json`; retained source failures
+and their subsequent repairs remain explicit. This is an implemented body pass,
+with the shader, item-model and live scene boundaries described below.
 
 The live consumer must use the actual Session's existing entity owner and one
 atomic world/entity capture. The additive wire DTO is defined in
@@ -93,8 +94,12 @@ sin-based red,255,sin-based blue,128. Item bob uses that same table; spin uses t
 actual ItemEntity.getSpin formula. JOML's half-angle quaternion path is implemented
 with native F32 sine and the pinned cosFromSin arithmetic. Native sinf versus
 Java `(float)Math.sin(double)` and pre-applying ground geometry versus composing
-matrices are named numerical boundaries to be measured in the prepared native comparison; they
-are not part of a raw-bit parity claim or the pure kernel proof.
+matrices remain named numerical boundaries. Of 2,784 observed item-position
+components, 1,520 match raw bits and 1,264 differ; the maximum absolute difference
+is 5.960464477539063e-8. Item age/bob/spin scalars and copy counts match exactly.
+All 22 observed XP billboard positions, UVs and colors match raw bits. These
+observations are separate from the pure kernel proof and do not establish full
+floating-point parity.
 
 `Resources.inspect` lends the immutable catalog while returning its sole asset
 owner. `Resources.draw(Frame,Assets,camera,settings,width,height)` feeds real
@@ -127,3 +132,22 @@ jar, metadata and library hashes are recorded; no proprietary PNGs, jars or
 binaries are committed. Kernel receipts preserve all original checked terms and
 verify actual production projection/refusal/material laws. Native/Java and pixel
 boundaries remain distinct from proof and from live wire/world/OS acceptance.
+
+The native fixture retains all actual initialized default rows and the complete
+item registry table. It decodes those facts directly with the existing default
+row decoder; rendering does not need the unrelated cooking recipe/feature
+catalog validation. A bounded attempt through that cooking loader timed out
+before resource rendering, and the retained runtime sample located it in
+crafting item-definition lookup. The corrected focused fixture completes in
+30.6/29.1 seconds on one/four threads at approximately 310 MB peak RSS. These are
+whole fixture times, including initialization, installed archive/PNG/model
+loading and JSON output; they are not frame-time or gameplay benchmarks.
+
+Native observations also exposed reversed V coordinates on generated side
+faces. The corrected production `G.inset_uv` preserves the independently observed
+positions and winding and now matches every side UV in all three generated
+oracle resources. The proof receipt predates the separate shared model scanner
+repair; its own law/model/transform/render source pins remain unchanged. The
+scanner's changed original source/C and native boundaries are recorded in the
+source receipt, while resource I/O/generated UV arithmetic belongs to the
+Java/native evidence rather than those fourteen pure laws.

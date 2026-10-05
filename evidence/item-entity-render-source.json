@@ -1,5 +1,5 @@
 {
-  "status": "ordinary-source-checked-native-producer-blocked",
+  "status": "passed-original-source-and-native",
   "original_checked_entry": "tests/item_entity_render.bend",
   "ordinary_source_check_receipt": {
     "kind": "emit008",
@@ -204,22 +204,124 @@
       "stderr_sha256": "ba801b09c995c192a7cdf69c811a6c44e2bd864a77a42bb9a54665de4ff40e62"
     }
   ],
-  "repair_required": "API-preserving Bool char/stage dispatch in shared block_model.int_scan_admitted, file mutation requires assigned ownership",
+  "repair_required": "resolved by shared owner; native acceptance passed",
   "current_owned_sha256": {
-    "docs/ITEM_ENTITY_RENDER.md": "df53028b815c2d33f375b14642a81e976743a9c9f4669f083dbcdf6bc35b3329",
+    "docs/ITEM_ENTITY_RENDER.md": "b38cc07c3373c4f18dcaa588db4bf08fc11c43ff45b7d7a34ee49c3c489fcd80",
     "src/item_entity_render.bend": "01b4de2a13bbdb3e7d17707953bf52abff7b13c591ed2871db359ca12b6185b3",
-    "src/item_entity_render_generated.bend": "338603974611e83df98b4d538fd615702493dd807efa31331882c94bc50b24e4",
+    "src/item_entity_render_generated.bend": "801f8f9bb7a1a5f4ea64152b90575ca25532ceb55a62246a2f3600af996b6605",
     "src/item_entity_render_laws.bend": "d2f04c0e16948911859f696a53f1838e75e8a036da386c3fc77efd2981cd85da",
     "src/item_entity_render_model.bend": "c4f9e8179157115f482826c41fa1a9098bee29e1d5b4b7572fbc750036ab291a",
     "src/item_entity_render_proof.bend": "0257d87bc092656e02c38958229bb7041e50e5758d9cedfa951929fb6e293325",
     "src/item_entity_render_resources.bend": "57fc53a3e5f83d8686ec5b58703ac42d302c83296e6e49ee7b9192e7670f4cf4",
     "src/item_entity_render_transform.bend": "3e6541c16dde68ee55e1219739efcae2e0b29b6fe3483dfd0c1ab8a76e6a93ee",
-    "tests/item_entity_render.bend": "c31f9366fd099e0a8b27604e53f0c2fd51922934083325f576cd905849c46571",
+    "tests/item_entity_render.bend": "4128a7962a5204e9d1957de7b2e43e7a3972e8f56596130dd282833336a965f5",
     "tools/item_entity_render_emit.mjs": "fb362ffaeed6d7f38c971b149b9a84f52cb2d585f78be8b9a8898194d7ffe411",
     "tools/item_entity_render_proof.mjs": "46edf69d0da5d986a394248bd4deda8e91dd66491ecebe9da1e18a898e664770",
     "tools/reference_item_entity_render.py": "846ae72f69b2772fe5cfcd30f0b0cf9d58676b036728ef54148781dde65113d6",
-    "tools/test_item_entity_render.py": "9854032289adedff23bb9e6d6d65ee170ebfe20a3ee3245f2d8024049559958a",
+    "tools/test_item_entity_render.py": "e4d8b47e8bb9ba8eaf35c3509be041aaefd53e3d81ca2aec9d9e93fea37d52ac",
     "tools/test_item_entity_render_proof.py": "96702e6577f29784bbb515aa96a0be92975a86c8fb4b421bdc3084631be3e2c8"
   },
-  "note": "Production/test source unchanged since original ordinary-check marker; this is a source-check/producer-failure receipt, not successful C or native parity."
+  "note": "Production/test source unchanged since original ordinary-check marker; this is a source-check/producer-failure receipt, not successful C or native parity.",
+  "resolved_by": "API-preserving Bool char/stage dispatch in actual shared block_model.int_scan_admitted/int_scan_owner, supplied by its owner; no private compiler or scanner used for acceptance.",
+  "accepted_native_receipt": "evidence/item-entity-render-native.json",
+  "changed_original_source_c_receipt": {
+    "kind": "emit",
+    "command": [
+      "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+      "--experimental-transform-types",
+      "--stack-size=4096",
+      "--max-old-space-size=2048",
+      "tools/item_entity_render_emit.mjs",
+      "tests/item_entity_render.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-entity-render-native/receiver.c"
+    ],
+    "exit": 0,
+    "seconds": 25.2002,
+    "sampled_process_tree_peak_rss_bytes": 1912029184,
+    "bounded_stop": null,
+    "stdout_sha256": "a6b0f2a500525497b5ff76b163e6d3d874561a4c3452bfcfe5095c272b0a060f",
+    "stderr_sha256": "0b1d41abca1abcc6644d645ff5cba0a8d6a8138ec3ac84433eef4264d6a5af49"
+  },
+  "prior_original_source_c_success_receipt": {
+    "kind": "emit",
+    "command": [
+      "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+      "--experimental-transform-types",
+      "--stack-size=4096",
+      "--max-old-space-size=2048",
+      "tools/item_entity_render_emit.mjs",
+      "tests/item_entity_render.bend",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-entity-render-native/receiver.c"
+    ],
+    "exit": 0,
+    "seconds": 24.136,
+    "sampled_process_tree_peak_rss_bytes": 1977073664,
+    "bounded_stop": null,
+    "stdout_sha256": "80f2c272a0ac4da6a95df951e6e88042efdaac29e17aa52cca770f178ce227d7",
+    "stderr_sha256": "4e99a2c11fb6ea6bfe99df0e9ca99bec88eea231538cd802330f733bb591cc8c"
+  },
+  "runtime_fixture_failure_receipt": {
+    "kind": "native-1",
+    "command": [
+      "/usr/bin/time",
+      "-l",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-entity-render-native/receiver",
+      "--gpu",
+      "off",
+      "--threads",
+      "1",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-entity-render-native/input.json"
+    ],
+    "exit": -15,
+    "seconds": 60.0764,
+    "sampled_process_tree_peak_rss_bytes": 269058048,
+    "bounded_stop": "time bound",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "runtime_one_case_failure_receipt": {
+    "kind": "one-case",
+    "command": [
+      "/usr/bin/time",
+      "-l",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-entity-render-native/receiver",
+      "--gpu",
+      "off",
+      "--threads",
+      "1",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-entity-render-native/one-case.json"
+    ],
+    "exit": -15,
+    "seconds": 30.1617,
+    "sampled_process_tree_peak_rss_bytes": 65372160,
+    "bounded_stop": "time bound",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "runtime_sample_sha256": "6e25e963922ffe359cf75e4f78cc8ab522ccc66b341aba23dbb3c11839d63f83",
+  "runtime_fixture_repair": "The owned receiver decodes every actual initialized default row directly through Decode.defaults_rows and the complete Definitions.parse table; it no longer invokes unrelated full cooking recipe/feature catalog validation. Original sample showed crafting_recipe.item_definition and String.cmp before render resources.",
+  "native_generated_side_uv_failure": {
+    "receipt": {
+      "kind": "native-1",
+      "command": [
+        "/usr/bin/time",
+        "-l",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-entity-render-native/receiver",
+        "--gpu",
+        "off",
+        "--threads",
+        "1",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/item-entity-render-native/input.json"
+      ],
+      "exit": 0,
+      "seconds": 29.7523,
+      "sampled_process_tree_peak_rss_bytes": 306102272,
+      "bounded_stop": null,
+      "stdout_sha256": "56ef045099a53ae98222fad93b68016d17fc31443c4744f7906287f312d401de",
+      "stderr_sha256": "dca9e99a681a7269eabe4d6768319c334fb6d33042c0254c69d6bd414ea0eb6d",
+      "peak_rss_bytes": 310312960
+    },
+    "finding": "All generated side positions and winding matched the actual Java multiset, but all side V coordinates were reversed. Front/back and stone cuboid geometry were exact. Corrected three owned G.inset_uv branches; final native comparison includes UVs and winding."
+  },
+  "source_api_boundary": "Acceptance uses original ../bend/bend2/bend.ts book_load/book_valid and ../bend/bend2/comp.ts compile_book through tools/item_entity_render_emit.mjs, followed by native clang execution; not an installed-CLI native-build receipt or observational-copy C."
 }
