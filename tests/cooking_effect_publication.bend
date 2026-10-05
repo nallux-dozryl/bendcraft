@@ -268,9 +268,24 @@ def journal_inspected(label:String,result:J.State & J.View) -> IO(J.State):
     return kept
 def journal_output(label:String,owner:J.State) -> IO(J.State):
   journal_inspected(label,J.inspect(owner))
+def duplicate_snapshot(+position:C.Position) -> J.Snapshot:
+  J.Snapshot{4n,[J.DirtyChunk{J.chunk(position),4n},J.DirtyChunk{J.chunk(position),4n}]}
+def zero_snapshot(position:C.Position) -> J.Snapshot:
+  J.Snapshot{4n,[J.DirtyChunk{J.chunk(position),4n},J.DirtyChunk{J.Chunk{"minecraft:overworld",1,0},0n}]}
+def coordinate_snapshot(position:C.Position) -> J.Snapshot:
+  J.Snapshot{4n,[J.DirtyChunk{J.chunk(position),4n},J.DirtyChunk{J.Chunk{"minecraft:overworld",134217728,0},4n}]}
+def dimension_snapshot(position:C.Position) -> J.Snapshot:
+  J.Snapshot{4n,[J.DirtyChunk{J.chunk(position),4n},J.DirtyChunk{J.Chunk{"fixture:unknown",1,0},4n}]}
+def projected(label:String,saved:J.Snapshot,result:J.State & J.View) -> IO(J.State):
+  (owner,view) = result
+  do IO<J.State>:
+    IO.print(Json.encode(Json.JObject{[Json.JMember{"label",text(label)},Json.JMember{"journal",view_value(J.saved_view(view,saved))}]}))
+    return owner
 def journal_saved4(result:J.State & J.Snapshot) -> IO(Unit):
-  (owner,saved) = result
+  (owner,+saved) = result
   do IO<Unit>:
+    owner : J.State <- projected("save-image-current",saved,J.inspect(owner))
+    owner : J.State <- journal_output("save-image-keeps-live-owner",owner)
     final : J.State <- journal_output("save-current",J.save_completed(owner,Done{J.FullCookingSaveCommitted{saved}}))
     return Unit{}
 def journal_marked4(saved:J.Snapshot,+position:C.Position,result:J.State & J.Receipt) -> IO(Unit):
@@ -279,6 +294,11 @@ def journal_marked4(saved:J.Snapshot,+position:C.Position,result:J.State & J.Rec
     four : J.State <- journal_output("save-covered-prefix",J.save_completed(owner,Done{J.FullCookingSaveCommitted{saved}}))
     four : J.State <- journal_output("save-future-refused",J.save_completed(four,Done{J.FullCookingSaveCommitted{J.Snapshot{5n,[J.DirtyChunk{J.chunk(position),5n}]}}}))
     four : J.State <- journal_output("save-invalid-chunk-refused",J.save_completed(four,Done{J.FullCookingSaveCommitted{J.Snapshot{4n,[J.DirtyChunk{J.chunk(position),5n}]}}}))
+    four : J.State <- journal_output("save-duplicate-chunks-refused",J.save_completed(four,Done{J.FullCookingSaveCommitted{duplicate_snapshot(position)}}))
+    four : J.State <- journal_output("save-zero-chunk-refused",J.save_completed(four,Done{J.FullCookingSaveCommitted{zero_snapshot(position)}}))
+    four : J.State <- journal_output("save-coordinate-refused",J.save_completed(four,Done{J.FullCookingSaveCommitted{coordinate_snapshot(position)}}))
+    four : J.State <- journal_output("save-dimension-refused",J.save_completed(four,Done{J.FullCookingSaveCommitted{dimension_snapshot(position)}}))
+    four : J.State <- projected("save-image-duplicate-refused",duplicate_snapshot(position),J.inspect(four))
     journal_saved4(J.snapshot(four))
 def journal_saved3(+source:J.Source,+position:C.Position,result:J.State & J.Snapshot) -> IO(Unit):
   (owner,saved) = result

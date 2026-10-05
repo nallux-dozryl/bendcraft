@@ -7,7 +7,7 @@ def Laws.failed_full_save_retains_complete_journal(owner,message): {==}
 def Laws.future_snapshot_cannot_clear_complete_journal(sequence,unsaved,last,saved,chunks,future):
   %Equal.sym(Bool,Nat.is_le(saved,sequence),False{},future) :
     {J.committed_valid(J.State{J.View{sequence,unsaved,last}},J.Snapshot{saved,chunks},
-        (_ && J.bounded(chunks,saved))) ==
+        (_ && J.chunks_valid(chunks,saved,Set.new()))) ==
       J.State{J.View{sequence,unsaved,last}} : J.State}
   {==}
 

@@ -185,7 +185,11 @@ def prepare(directory):
     journal_cases = [dict(label=i, journal=copy.deepcopy(v)) for i, v in
                      [('journal-three', three), ('save-failed', three), ('save-old', three),
                       ('save-covered-prefix', four), ('save-future-refused', four),
-                      ('save-invalid-chunk-refused', four), ('save-current', journal(4, [], r4))]]
+                      ('save-invalid-chunk-refused', four), ('save-duplicate-chunks-refused', four),
+                      ('save-zero-chunk-refused', four), ('save-coordinate-refused', four),
+                      ('save-dimension-refused', four), ('save-image-duplicate-refused', four),
+                      ('save-image-current', journal(4, [], r4)), ('save-image-keeps-live-owner', four),
+                      ('save-current', journal(4, [], r4))]]
     valid = journal(3, [(chunk(p), 3)], receipt(p, source(p), 3))
     restore_cases = []
     def restored(label, value=None, error='invalid-recovered-journal'):

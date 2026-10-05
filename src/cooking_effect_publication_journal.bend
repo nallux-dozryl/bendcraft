@@ -123,7 +123,7 @@ def saved_view_valid(view:View,snapshot:Snapshot,valid:Bool) -> View:
 def saved_view(+view:View,+snapshot:Snapshot) -> View:
   View{+sequence,unsaved,last} = view
   Snapshot{+saved,+chunks} = snapshot
-  saved_view_valid(view,snapshot,Nat.is_le(saved,sequence) && bounded(chunks,saved))
+  saved_view_valid(view,snapshot,Nat.is_le(saved,sequence) && chunks_valid(chunks,saved,Set.new()))
 def committed_valid(owner:State,snapshot:Snapshot,valid:Bool) -> State:
   State{view} = owner
   State{saved_view_valid(view,snapshot,valid)}
@@ -131,7 +131,7 @@ def committed(owner:State,+snapshot:Snapshot) -> State:
   State{View{+sequence,unsaved,last}} = owner
   Snapshot{+saved,+chunks} = snapshot
   committed_valid(State{View{sequence,unsaved,last}},snapshot,
-    Nat.is_le(saved,sequence) && bounded(chunks,saved))
+    Nat.is_le(saved,sequence) && chunks_valid(chunks,saved,Set.new()))
 def save_completed(owner:State,result:Result<&2,&1,String,SaveCommit>) -> State:
   match result:
     case Fail{message}: owner

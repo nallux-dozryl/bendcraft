@@ -72,6 +72,10 @@ the save commits. Request admission, JSON encoding, and a menu reply are not
 save commits. `save_completed` leaves a failed write unchanged. A valid older
 save clears only included chunk revisions; later dirt in the same chunk and
 new chunks remain unsaved. The latest publication receipt remains observable.
+Both acknowledgment and save-image projection validate the complete snapshot
+chunk list before clearing any revision. A duplicate key, zero or future
+revision, unknown dimension or impossible chunk coordinate preserves the
+entire input view, including otherwise valid covered chunks in that token.
 
 `saved_view` makes the prospective clean immutable save image from a view and
 its snapshot. It creates no second journal owner. The live owner remains dirty
@@ -104,8 +108,8 @@ attestation, and lit-transition versus incarnation identity. The subsequent
 catalog-authenticated restore helper is checked by the full original source
 checker and actual native consumer; it is outside those seven kernel roots.
 
-The actual focused native consumer passed 47 exact observations with identical
-outputs on one and four threads: 26 publication cases, seven save-journal cases
+The actual focused native consumer passed 54 exact observations with identical
+outputs on one and four threads: 26 publication cases, 14 save-journal cases
 and 14 recovery cases. It loads the real full registry and authenticated
 cooking catalog, reads loaded Core cells, and compares complete serialized
 Core bytes and registry identity. Its actual retained furnace entry includes
@@ -114,11 +118,16 @@ timers, recipe uses and speed bits. Refusal retains all those fields and the
 complete prior journal. Successful publication preserves the producer's
 cached source through a same-incarnation LIT transition. Sequence exhaustion,
 each horizontal refusal position, old-save/later-dirty chronology, malformed
-recovery and forged historical bindings are exercised. Native runs took
-2.7313 and 2.2405 seconds with approximately 16.9 MB sampled RSS. There was one
-native build, no native retries, no imported source drift and no remaining
-owned processes. The exact receipts are
-`evidence/cooking-effect-publication-native-011.json` and
+recovery and forged historical bindings are exercised. Malformed save tokens
+contain a valid covered prefix followed by the malformed chunk, establishing
+that acknowledgment cannot partially clear the journal. Save-image tests
+exercise valid and invalid projection and retain the dirty live owner until
+commit. Native runs took 2.7231 and 2.2387 seconds with approximately 16.9 MB
+sampled RSS. Each native generation used one build, with no unchanged retries,
+imported source drift or remaining owned processes. Generation 012 verifies
+the stronger snapshot guard; the prior generation 011 receipt remains intact.
+The exact current receipts are
+`evidence/cooking-effect-publication-native-012.json` and
 `evidence/cooking-effect-publication-proof.json`.
 
 Actor 020 is immutable and retains its existing legacy dirty refusal. The next

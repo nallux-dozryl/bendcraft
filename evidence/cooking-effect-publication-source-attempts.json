@@ -599,9 +599,70 @@
       "status": "PASS",
       "source_snapshot_retained": true,
       "final_native_receipt": "evidence/cooking-effect-publication-native-011.json"
+    },
+    {
+      "attempt": 12,
+      "status": "PASS",
+      "source": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/012/source.json",
+        "bytes": 475,
+        "sha256": "9a5cefcabfd83d9667adde9ad4c6c2f71882048a4fc02b8b754d1b873bf462fa"
+      },
+      "stdout": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/012/source.stdout",
+        "bytes": 58,
+        "sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1"
+      },
+      "stderr": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/012/source.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "source_snapshot_retained": true,
+      "final_native_receipt": "evidence/cooking-effect-publication-native-012.json",
+      "reason": "Substantive full snapshot structure guard and seven new journal observations, not an unchanged rebuild."
     }
   ],
-  "native_build_attempts": 1,
+  "native_build_attempts": 2,
   "native_build_retries": 0,
-  "native_attempt_boundary": "Native consumer source attempts 001 through 010 repair fixture syntax, annotations, quantities and affine test-owner reuse. All raw diagnostics and source-pin receipts are retained; failed complete source snapshots were not captured. Production publication semantics were not changed in response to those fixture failures. Generation 011 is the first native build and comparison."
+  "native_attempt_boundary": "Native source attempts001 through010 repair only fixture syntax, annotations and affine test-owner reuse; failed raw diagnostics and source pins retained, failed complete source snapshots were not captured. Generation011 is the first native build. Substantive production snapshot hardening and seven new save-journal observations justify fresh generation012, with one native build and no retry. Proof013 records the genuine stale future-token proof context; changed proof014 checks the actual new production guard.",
+  "snapshot_hardening_proof_attempts": [
+    {
+      "attempt": 13,
+      "status": "FAILED",
+      "reason": "(node:99648) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\nError:\n- expected : {J.State{J.saved_view_valid(J.View{sequence, unsaved, last}, J.Snapshot{saved, chunks}, Bool.and(Cmp.is_le(Nat.cmp(saved, sequence)), J.chunks_valid(chunks, saved, MTip{})))} == J.State{J.View{sequence, unsaved, last}} : J.State}\n- observed : {J.State{J.saved_view_valid(J.View{sequence, unsaved, last}, J.Snapshot{saved, chunks}, Bool.and(Cmp.is_le(Nat.cmp(saved, sequence)), J.bounded(chunks, saved)))} == J.State{J.View{sequence, unsaved, last}} : J.State}\nContext:\n- sequence : Nat\n- unsaved  : List<&2, J.DirtyChunk>\n- last     : Maybe<&2, J.Receipt>\n- saved    : Nat\n- chunks   : List<&2, J.DirtyChunk>\n- future   : {Cmp.is_le(Nat.cmp(saved, sequence)) == False{} : Bool}\nLocation: Laws.future_snapshot_cannot_clear_complete_journal\n7 | def Laws.future_snapshot_cannot_clear_complete_journal(sequence,unsaved,last,saved,chunks,future):\n8>|   %Equal.sym(Bool,Nat.is_le(saved,sequence),False{},future) :\n  |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n9 |     {J.committed_valid(J.State{J.View{sequence,unsaved,last}},J.Snapshot{saved,chunks},\nfile:///Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication/proof-013/proof.mjs:35\n  process.exitCode=1; throw Error(\"Original ordinary checker rejected source\");\n                            ^\n\nError: Original ordinary checker rejected source\n    at file:///Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication/proof-013/proof.mjs:35:29\n\nNode.js v23.5.0",
+      "check": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication/proof-013/export.json",
+        "bytes": 649,
+        "sha256": "be2892469384eb1765856b93327de0eaf60f0d7c1f9d2400bd472621a5b5cbf9"
+      },
+      "stdout": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication/proof-013/export.stdout",
+        "bytes": 252142,
+        "sha256": "81a5fc6d7d8ee25b0c2aae5deda274b3c35739e9c58a467a126e7ba752db9dfb"
+      },
+      "stderr": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication/proof-013/export.stderr",
+        "bytes": 1672,
+        "sha256": "3a74e735f2c344532f8274f88df356f3a0a5ff1bce1e0c94614c3a6483077669"
+      },
+      "source_snapshot_retained": false
+    },
+    {
+      "attempt": 14,
+      "status": "PASS",
+      "reason": "Changed future-snapshot proof context from old bounded predicate to the actual chunks_valid guard; all seven original roots and independent kernel passed without exclusions.",
+      "check": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication/proof-014/result.json",
+        "bytes": 2079,
+        "sha256": "0896d9071adaec18be017159799a50948742699bea86c7c4ea95e9c625ecbc84"
+      },
+      "source_pins": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication/proof-014/source-pins.json",
+        "bytes": 3801,
+        "sha256": "97734b02a41215629cae49e50a2052f037a8c6c756c5d32804fb1ba272af7889"
+      },
+      "source_snapshot_retained": true
+    }
+  ]
 }
