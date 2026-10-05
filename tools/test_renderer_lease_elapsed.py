@@ -25,13 +25,22 @@ def select(generation):
     A.SOURCE, A.ACTOR = A.WORK / 'source', A.WORK / 'actor'
 
 
-def held(client, expected, label, checks):
+def held(client, expected, label, checks, *, wait_seconds=0):
     # Inspect the actual Receiver after its next scheduled physics tick; the
     # saved record's keys alone do not expose a newly released controller.
-    client.call('simulation.step', {'ticks': 1})
-    record = S.decode_local(bytes(client.call('player.inspect', {})['nbt_bytes']))
-    S.require(record.keys == expected, label + ': next Receiver keys differ')
-    checks.append({'label': label, 'keys': list(record.keys), 'count': record.count})
+    started = time.monotonic()
+    observations = []
+    while True:
+        client.call('simulation.step', {'ticks': 1})
+        record = S.decode_local(bytes(client.call('player.inspect', {})['nbt_bytes']))
+        observations.append({'keys': list(record.keys), 'count': record.count,
+                             'host_seconds': time.monotonic() - started})
+        if record.keys == expected:
+            break
+        S.require(time.monotonic() - started < wait_seconds,
+                  label + ': next Receiver keys differ')
+        time.sleep(.02)
+    checks.append({'label': label, 'observations': observations})
 
 
 def scenario(directory, binary):
@@ -55,6 +64,7 @@ def scenario(directory, binary):
         # Actual socket deadline is renewed on successful send. Host time is
         # measured after receiving the ACK, so this bounds observed closure;
         # it is not a timestamp inside the actor or an immediate-release claim.
+        control.call(Motion.packet(1))
         started = time.monotonic()
         control.socket.settimeout(4.2)
         try:
@@ -67,7 +77,8 @@ def scenario(directory, binary):
         elapsed = time.monotonic() - started
         S.require(4.5 <= elapsed < 10.2, 'Observed idle EOF outside bounded interval')
         timings.append({'label': 'real monotonic idle socket EOF', 'host_seconds_after_ACK': elapsed})
-        held(public, (0,) * 7, 'idle disconnect releases actual next-tick controls', checks)
+        held(public, (0,) * 7, 'idle disconnect releases actual next-tick controls', checks,
+             wait_seconds=3)
         control.close()
 
         control = B.connect(actor)
@@ -78,11 +89,13 @@ def scenario(directory, binary):
         started = time.monotonic()
         control.socket.shutdown(socket.SHUT_RDWR)
         control.close()
+        # Observe before Hello, which independently releases controls itself.
+        held(public, (0,) * 7, 'EOF disconnect releases actual next-tick controls', checks,
+             wait_seconds=3)
         control = B.connect(actor)
         timings.append({'label': 'EOF release and fresh lease reacquisition',
                         'host_seconds': time.monotonic() - started})
         S.require(control.epoch != eof_epoch, 'EOF reacquisition reused epoch')
-        held(public, (0,) * 7, 'EOF disconnect releases actual next-tick controls', checks)
 
         # An old unassigned connection cannot disconnect the newly assigned
         # owner. No incoming epoch is used as cleanup authority.
@@ -91,6 +104,8 @@ def scenario(directory, binary):
                      [1, 3, eof_epoch, 1, 'Wire:SocketEpoch'], directory, 'old-socket-epoch')
         B.peer_fault(actor, [1, 0, 'wrong-test-capability'],
                      [1, 3, '', 0, 'RendererAuthenticationFailed'], directory, 'bad-capability')
+        time.sleep(.1)
+        control.call([15, 0], 8)
         held(public, (1, 0, 0, 0, 0, 0, 0), 'foreign EOF preserves new owner controls', checks)
 
         # Twelve seconds exceed the old nominal five-second pulse budget.
@@ -118,7 +133,7 @@ def scenario(directory, binary):
                   'Replay guard changed')
         control.socket.settimeout(5)
         S.require(control.socket.recv(1) == b'', 'Replay fault did not close old socket')
-        held(public, (0,) * 7, 'replay fault disconnect releases controls', checks)
+        held(public, (0,) * 7, 'replay fault disconnect releases controls', checks, wait_seconds=3)
         control.close()
         control = B.connect(actor)
         control.call(Motion.packet(1))
@@ -128,7 +143,7 @@ def scenario(directory, binary):
                   'Skipped sequence guard changed')
         control.socket.settimeout(5)
         S.require(control.socket.recv(1) == b'', 'Skipped sequence did not close old socket')
-        held(public, (0,) * 7, 'skipped sequence disconnect releases controls', checks)
+        held(public, (0,) * 7, 'skipped sequence disconnect releases controls', checks, wait_seconds=3)
         S.require(R.pin(path) == initial, 'Unsaved lease tests published durable world bytes')
     except BaseException:
         actor.stop(failed=True)

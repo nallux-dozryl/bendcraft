@@ -1,0 +1,259 @@
+{
+  "C": {
+    "bytes": 62366523,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-023/diagnostic.c",
+    "sha256": "07e29f4f5ca2ad5c3b8d0e7ed0d0e2d6552a7207e99f1097934c89fa88ffa05d"
+  },
+  "backend": {
+    "bytes": 38246,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-023/source/src/remote_resource_backend.bend",
+    "sha256": "f91f68e7081da172216a4c504411fd7a2c677395195962d0d82948dc0defc09a"
+  },
+  "binary": {
+    "bytes": 16246584,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-023/actor",
+    "sha256": "7fd7ee9269802a6e128716f53bf34030ec592728ef954f9b61bebecac36719d1"
+  },
+  "build": {
+    "bytes": 3896,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/playable-client-actor004-build-023.json",
+    "sha256": "1769010597eef5211eff69296c7426430279b66636e86c628d17e42d42710286"
+  },
+  "change": "Both actual Backend runtime Scene-step paths no longer charge the legacy100-pulse lease budget. Every Scene simulation pulse remains consumed; existing private monotonic5000ms socket inactivity/epoch-matched disconnect is sole runtime expiry authority. ABI, authentication, sequence guards and frozen022 remaining sources retained.",
+  "changed_graph": {
+    "bytes": 195276,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-023/source/source-map.json",
+    "sha256": "1508c034ab9b614551ef2353bfbd5de434b0111e51c2ef1790803b0deb9c97f2"
+  },
+  "clang_seconds": 206.499197749421,
+  "compiler_guards_preserved": true,
+  "confidence": "high for source route and stated actual TCP/native boundaries; run009 catch-up causation remains inference",
+  "emission_seconds": 331.01039008330554,
+  "loaded_final_source_pins_equal": true,
+  "native_socket_checks": {
+    "all_own_groups_absent": true,
+    "historical012_untouched": true,
+    "receipt": {
+      "bytes": 2568,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/renderer-lease-elapsed-native-001.json",
+      "sha256": "07541336e61cc80f79b29934c514889be3754980c682a863b3d46a99ab30aca3"
+    },
+    "result": {
+      "checks": [
+        {
+          "label": "actual W held before idle",
+          "observations": [
+            {
+              "count": 1,
+              "host_seconds": 0.004039541818201542,
+              "keys": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "label": "idle disconnect releases actual next-tick controls",
+          "observations": [
+            {
+              "count": 2,
+              "host_seconds": 0.0044138748198747635,
+              "keys": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "label": "reacquired owner can hold W",
+          "observations": [
+            {
+              "count": 3,
+              "host_seconds": 0.004141167737543583,
+              "keys": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "label": "EOF disconnect releases actual next-tick controls",
+          "observations": [
+            {
+              "count": 4,
+              "host_seconds": 0.00399087555706501,
+              "keys": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "label": "foreign EOF preserves new owner controls",
+          "observations": [
+            {
+              "count": 5,
+              "host_seconds": 0.004252665676176548,
+              "keys": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "label": "replay fault disconnect releases controls",
+          "observations": [
+            {
+              "count": 6,
+              "host_seconds": 0.007897667586803436,
+              "keys": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "label": "skipped sequence disconnect releases controls",
+          "observations": [
+            {
+              "count": 7,
+              "host_seconds": 0.006085500121116638,
+              "keys": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        }
+      ],
+      "scope": "Real private TCP idle/EOF/replay and epoch isolation; actual next scheduled Receiver tick observes control release. All simulation pulses remain enabled. Paused heartbeat continuation is not ambient cooking completion or a direct measurement of old pulse backlog. Actor mailbox serializes release; immediate wall-time control release is unclaimed.",
+      "status": "PASS",
+      "timings": [
+        {
+          "host_seconds_after_ACK": 5.008313582278788,
+          "label": "real monotonic idle socket EOF"
+        },
+        {
+          "host_seconds": 0.005560542456805706,
+          "label": "EOF release and fresh lease reacquisition"
+        },
+        {
+          "host_seconds": 12.02972170803696,
+          "inspect_input_pairs": 58,
+          "label": "actual CookingInspect/Input continuation"
+        }
+      ]
+    }
+  },
+  "only_project_source_deltas": [
+    "src/remote_resource_backend.bend"
+  ],
+  "original_graph": {
+    "bytes": 195212,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-022/source/source-map.json",
+    "sha256": "95acf6a8c10c4f0eca5c696ef9126a5bfc27cdec36806288147714e2510835db"
+  },
+  "original_source_check": {
+    "holes": 0,
+    "loaded_files": 203,
+    "observer": "Original loader/book_valid, threshold GC and read-only progress proxy; no declaration selection or semantic/checker edits",
+    "order_events": 9586,
+    "original_order_restored": true,
+    "process": {
+      "bytes": 1257,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/renderer-lease-elapsed/source-002/original-source/result.full.json",
+      "sha256": "9cd2cf69289f9220b17c9e73ffba8abf6548ad12c833b00b1765cfd46b3edfff"
+    },
+    "receipt": {
+      "bytes": 40684,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/renderer-lease-elapsed/source-002/source-check.json",
+      "sha256": "a633780d6cf9f2a5c4aa38a84c60775236d39635aa1c901a1f7b0b4d06b4ab8a"
+    },
+    "seconds": 14.511282000690699,
+    "source_unchanged_during_check": true,
+    "status": "PASS"
+  },
+  "performance_scope": "No isolated speed or peak-memory improvement claim; producer timings record artifact creation only.",
+  "producer_attempts": 1,
+  "project_map_files": 208,
+  "reproduce": {
+    "build": "/Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 -B tools/test_playable_client_actor004.py --actor-generation 23 --baseline-generation 22 --backend-overlay src/remote_resource_backend.bend --native-seconds 600",
+    "native": "/Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 -B tools/test_renderer_lease_elapsed.py --actor-generation 23 --native"
+  },
+  "retained_delivery_negative": {
+    "compact_checkpoint": "729ca1f",
+    "facts": "CookInspect98 accepted with cooked_beef2, exact next Input99 sameepoch rejected RendererLeaseOrSequence, no intervening admitted call/no hostpause; epoch/sequence mismatch excluded by relay.",
+    "raw": {
+      "bytes": 8724,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/009/native/diagnosis.json",
+      "sha256": "508d6f84b863c7383e642ed069b625215012627003de5632953a94ce519503b2"
+    },
+    "receipt": {
+      "bytes": 15994,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/generic_resource_world_sample_cooking_runtime_001.json",
+      "sha256": "8f4324e0bd83b81c937fe5c89a82db0b9437175b18a2660720b06f44039e188a"
+    },
+    "timing_limit": "Host file mtimes do not identify the actual backend renewal instant. Queued catch-up pulses are source-grounded possible cause, not directly observed timestamps."
+  },
+  "retained_diagnostic_failure": {
+    "exit_code": -15,
+    "group_absent": true,
+    "reason": "Accidental CRAFT_BACKEND_GC=1 forced collection after every declaration; own process stopped while progressing slowly. Diagnostic configuration corrected to thresholdGC; no source rejection inferred.",
+    "receipt": {
+      "bytes": 1257,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/renderer-lease-elapsed/source-001/original-source/result.full.json",
+      "sha256": "e77f7a56c59962d83810dfe0d89ace59b4b3512c918f1dcd22202d62c303c5fd"
+    },
+    "seconds": 75.34905174933374
+  },
+  "sampled_peak_RSS_bytes": 3925950464,
+  "source_checkpoint": "f5d2157",
+  "status": "PASS_NARROW",
+  "unverified": [
+    "Normal unpaused ambient fuel/progress/output pickup/close/save/reload regression is delegated to Catalog with unchanged client012; no verdict in this scoped receipt.",
+    "Exact old queued-pulse count and timestamp causation of run009.",
+    "Immediate wall-time control release: timeout/EOF disconnect is serialized through bounded actor mail.",
+    "Visible OS input/presentation or whole-game parity."
+  ]
+}

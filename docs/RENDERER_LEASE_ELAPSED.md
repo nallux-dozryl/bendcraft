@@ -53,5 +53,19 @@ disconnect remains serialized in the actor mailbox. The meaningful unpaused
 input/fuel/progress/output/close/save/reload flow belongs to the existing cooking
 runtime consumer with Actor023 and the unchanged client012.
 
-Native acceptance is pending until its actual receipt exists. This change makes
-no future entity, lighting, membership, save-format or visible-OS acceptance claim.
+The actual Actor023 native build passed: binary SHA256
+`7fd7ee9269802a6e128716f53bf34030ec592728ef954f9b61bebecac36719d1`,
+16,246,584 bytes. The targeted native001 consumer passed: idle EOF was observed
+5.008314 seconds after its ACK, all seven actual Receiver observations passed
+on their first next tick, and 58 CookingInspect/Input pairs continued over
+12.029722 seconds. EOF control release was observed before Hello reacquisition;
+neutral observation is bounded because socket EOF precedes queued disconnect.
+Replay and skipped-sequence faults still closed their sockets and released
+controls. All owned producer/compiler/consumer groups were reaped; historical
+Actor012 was untouched. Compact receipts are
+`evidence/renderer-lease-elapsed-023.json` and
+`evidence/renderer-lease-elapsed-native-001.json`.
+
+The actual unpaused cooking completion regression remains delegated to Catalog.
+This checkpoint makes no future entity, lighting, membership, save-format,
+immediate wall-time release, isolated performance or visible-OS acceptance claim.
