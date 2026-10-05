@@ -118,7 +118,7 @@ the copied save snapshot. `new_cooking_inventory` now returns a fourth value,
 An unbound actor preserves the old format1/2 bytes.
 
 `Scene.realtime_step_io`, `Scene.advance_io` and `Scene.dispatch_io` close the
-actual `local_player_cooking_entities.deliver_io` supplier. It uses
+actual Session `cooking_deliver_pending_io` supplier. Its current Engine route invokes `local_player_cooking_entities.deliver_engine_io`. It uses
 `cooking_effect_consumer.deliver_io`, then installs the returned entity owner,
 pending suffix and remaining clock list together. An entropy retry does not
 repeat a completed Core/player tick. Both the pre-tick and post-completion
@@ -132,16 +132,50 @@ checking. This is a typing verdict, not final Entry adoption or native entity
 gameplay. The initial matcher refusal and parser repairs are retained in
 `evidence/local-player-cooking-integration-attempts-020.json`.
 
-Fresh or legacy startup still needs the pinned Level random-factory transition
-using actual monotonic observations. It cannot substitute the world seed for
-Level's Legacy RNG or reconstruct a historical factory from an absent View.
-Creation of a new XP orb currently refuses the missing actual collision
-placement service; item creation and existing-orb merge plans remain supplied
-by the real entity consumer. The separately owned geometry and Entry producers
-must complete those joins before a fresh live entity-delivery claim.
+The later generation20 working source adds the fresh isolated actor factory
+boundary. Absent recovery uses two actual monotonic clock observations: one
+Level Legacy factory and one sound factory advance of the same uniquifier.
+A saved complete View restores without either draw. This is the explicitly
+supported isolated factory/ID profile; it does not infer a historical seed or
+cursor. The entity context uses the authenticated cooking items and explicit
+whole-effect resource budgets (4096 spawn steps, 65536 rejection/ID steps),
+with no other resident entity-ID owner. A different Level still needs its own
+random owner; item/XP effects outside the overworld refuse with their suffix.
 
-Run the changed source check with:
+The same carrier now retains an authenticated affine Slab collision catalog
+and the actual driver's declared collision environment. Entry loads
+`generated/reference_slab_collision.tsv` against the retained live Registry
+after physical bodies and entity-owner initialization. The actual Scene IO
+supplier moves Engine plus Sidecar, permitting the parent's shape capture to
+return the sole Core, Registry and catalog together. Every saved/player/Shell
+field remains in the Session detour. Geometry is transient and reauthenticated
+on reload; complete RNG/entity View and unused clocks remain durable format3.
+
+Ordered delivery first attempts each atomic effect using the real entity
+consumer. Existing-orb merges require no shape query. Only a new-orb placement
+request captures a fresh current Core region and retries that uncommitted
+effect with retained clock inputs. Successful earlier effects are preserved;
+a missing section, unsupported state, unresolved border/entity policy or later
+missing publisher retains the complete current suffix. The shape scanner has
+its actual one-block halo; absent sections are never treated as air. This
+catalog currently supports the actual neutral full blocks and registered slab
+shapes, and does not invent furnace collision support. Dirty/comparator,
+nonzero block-update and game-event publication remain explicit dependencies.
+
+The earlier Scene020 receipt above predates these bootstrap and geometry
+changes. The complete changed Entry now passes the original Book with 8,998
+declarations, 187 imported files, zero holes and 18.232369 seconds in
+`evidence/local-player-cooking-source-020.json`. Every source hash remained
+unchanged during checking and matches the retained working source. This covers
+the actual IO serving driver, authenticated defaults/collision catalog,
+bootstrap, geometry/delivery and format3 save/recovery integration. It does
+not establish native gameplay or save/reload execution; those verdicts belong
+to the actual generation20 consumer. The six prior full Entry refusals remain
+in the generation20 failure ledger, including the new driver matcher/recursion
+repairs and actual Backend/Transport/Entry ownership annotations.
+
+Run the changed full Entry source check with:
 
 ```
-python3 tools/test_local_player_cooking_source.py --generation 19
+python3 tools/test_local_player_cooking_source.py --generation 20
 ```

@@ -1,7 +1,7 @@
 import Base
 import ./local_player_session.bend as S
 import ./local_player_cooking.bend as Cooking
-import ./local_player_cooking_entities.bend as CookingEntities
+import ./local_collision_world.bend as Collision
 import ./local_player_runtime.bend as R
 import ./player_input.bend as I
 import ./client_controls.bend as CC
@@ -29,6 +29,9 @@ import ./superflat_player.bend as TerrainPlayer
 # resolves ground and post-sprint attributes from the authoritative owner.
 def motion_driver() -> R.Driver:
   R.driver()
+
+def cooking_environment() -> Collision.Environment:
+  R.driver_environment(motion_driver())
 
 def followed(result:S.State & Unit) -> S.State:
   (state,unit) = result
@@ -262,7 +265,7 @@ def advance_go(fuel:Nat,state:S.State) -> S.State:
 def advance(state:S.State,ticks:U32) -> S.State:
   advance_go(U32.to_nat(ticks),state)
 
-def realtime_ensured_io(~delivery:C.World -> Cooking.Sidecar -> IO(C.World & Cooking.Sidecar & Result<&2,&2,String,Unit>),
+def realtime_ensured_io(~delivery:S.State -> IO(S.State & Result<&2,&2,String,Unit>),
     result:S.State & Result<&2,&2,String,Unit>) -> IO(S.State):
   (state,status) = result
   match status:
@@ -272,14 +275,14 @@ def realtime_ensured_io(~delivery:C.World -> Cooking.Sidecar -> IO(C.World & Coo
         stepped : S.State <- S.realtime_step_io(~delivery,motion_driver(),state)
         return follow(stepped)
 
-def realtime_step_with_io(~delivery:C.World -> Cooking.Sidecar -> IO(C.World & Cooking.Sidecar & Result<&2,&2,String,Unit>),
+def realtime_step_with_io(~delivery:S.State -> IO(S.State & Result<&2,&2,String,Unit>),
     state:S.State) -> IO(S.State):
   realtime_ensured_io(~delivery,ensure(state))
 
 def realtime_step_io(state:S.State) -> IO(S.State):
-  realtime_step_with_io(~CookingEntities.deliver_io,state)
+  realtime_step_with_io(~S.cooking_deliver_pending_io,state)
 
-def scheduled_step_with_io(~delivery:C.World -> Cooking.Sidecar -> IO(C.World & Cooking.Sidecar & Result<&2,&2,String,Unit>),
+def scheduled_step_with_io(~delivery:S.State -> IO(S.State & Result<&2,&2,String,Unit>),
     state:S.State) -> IO(S.State):
   S.step_io(~delivery,motion_driver(),state)
 
@@ -289,7 +292,7 @@ def advance_checked_io(next:S.State -> IO(S.State),result:S.State & Maybe<&2,Str
     case Some{message}: IO.pure(S.State,state)
     case None{}: next(state)
 
-def advance_ensured_io(~delivery:C.World -> Cooking.Sidecar -> IO(C.World & Cooking.Sidecar & Result<&2,&2,String,Unit>),
+def advance_ensured_io(~delivery:S.State -> IO(S.State & Result<&2,&2,String,Unit>),
     next:S.State -> IO(S.State),result:S.State & Result<&2,&2,String,Unit>) -> IO(S.State):
   (state,status) = result
   match status:
@@ -299,18 +302,18 @@ def advance_ensured_io(~delivery:C.World -> Cooking.Sidecar -> IO(C.World & Cook
         stepped : S.State <- scheduled_step_with_io(~delivery,state)
         advance_checked_io(next,S.query(Maybe<&2,String>,follow(stepped),player_step_error))
 
-def advance_go_io(~delivery:C.World -> Cooking.Sidecar -> IO(C.World & Cooking.Sidecar & Result<&2,&2,String,Unit>),
+def advance_go_io(~delivery:S.State -> IO(S.State & Result<&2,&2,String,Unit>),
     fuel:Nat,state:S.State) -> IO(S.State):
   match fuel:
     case 0n: IO.pure(S.State,state)
     case 1n+rest: advance_ensured_io(~delivery,state => advance_go_io(~delivery,rest,state),ensure(state))
 
-def advance_with_io(~delivery:C.World -> Cooking.Sidecar -> IO(C.World & Cooking.Sidecar & Result<&2,&2,String,Unit>),
+def advance_with_io(~delivery:S.State -> IO(S.State & Result<&2,&2,String,Unit>),
     state:S.State,ticks:U32) -> IO(S.State):
   advance_go_io(~delivery,U32.to_nat(ticks),state)
 
 def advance_io(state:S.State,ticks:U32) -> IO(S.State):
-  advance_with_io(~CookingEntities.deliver_io,state,ticks)
+  advance_with_io(~S.cooking_deliver_pending_io,state,ticks)
 
 def dispatched(result:S.State & L.Session & J.Value) -> S.State & L.Session & J.Value:
   (state,session,value) = result
@@ -350,7 +353,7 @@ def dispatch(state:S.State,session:L.Session,token:String,+request:J.Value) -> I
     result : S.State & L.Session & J.Value <- S.dispatch_using(state => ticks => advance(state,ticks),state,session,token,request)
     return dispatch_response(request,result)
 
-def dispatch_with_io(~delivery:C.World -> Cooking.Sidecar -> IO(C.World & Cooking.Sidecar & Result<&2,&2,String,Unit>),
+def dispatch_with_io(~delivery:S.State -> IO(S.State & Result<&2,&2,String,Unit>),
     state:S.State,session:L.Session,token:String,+request:J.Value) -> IO(S.State & L.Session & J.Value):
   do IO<S.State & L.Session & J.Value>:
     result : S.State & L.Session & J.Value <- S.dispatch_using_io(
@@ -358,7 +361,7 @@ def dispatch_with_io(~delivery:C.World -> Cooking.Sidecar -> IO(C.World & Cookin
     return dispatch_response(request,result)
 
 def dispatch_io(state:S.State,session:L.Session,token:String,request:J.Value) -> IO(S.State & L.Session & J.Value):
-  dispatch_with_io(~CookingEntities.deliver_io,state,session,token,request)
+  dispatch_with_io(~S.cooking_deliver_pending_io,state,session,token,request)
 
 # Base macOS lowercases characters; modifier events use 65536 + hardware code.
 # Physical input verification remains separate from this source-derived mapping.

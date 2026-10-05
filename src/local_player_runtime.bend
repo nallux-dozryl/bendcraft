@@ -271,6 +271,12 @@ def driver() -> Driver:
     E.Environment{E.KnownEmptyEntityCollisions{}, E.KnownClearBorderInterior{A.AABB{F.from_i32(4294967232), F.from_i32(4294967232), F.from_i32(4294967232), F.from_u32(64), F.from_u32(64), F.from_u32(64)}}},
     2n, 512n, 4096n, 3n, []}}
 
+# The same explicit collision environment is supplied to entity placement.
+# Reading this Data policy does not duplicate any simulation owner.
+def driver_environment(driver:Driver) -> E.Environment:
+  Driver{X.PrepareRequest{life,common,facts,environment,cf,mf,rf,pf,tail}} = driver
+  environment
+
 # This bounded supplier policy is staged separately from apply_resolved. Native
 # supplier admission precedes enabling the saved LocalPlayer resume entry.
 def reset_policy() -> TH.ResetPolicy:

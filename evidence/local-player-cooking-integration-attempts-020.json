@@ -64,5 +64,215 @@
     "files": 138,
     "scope": "Original book_load only; not checking or execution."
   },
-  "successful_changed_receipt": "evidence/local-player-cooking-source-scene-020.json"
+  "successful_changed_receipt": "evidence/local-player-cooking-source-scene-020.json",
+  "complete_entry_failures": [
+    {
+      "directory": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking/source/1791157825369122000",
+      "receipt": {
+        "argv": [
+          "/opt/homebrew/bin/node",
+          "--expose-gc",
+          "--max-old-space-size=8192",
+          "--stack-size=4096",
+          "--experimental-transform-types",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/local_player_cooking_source.mjs",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking/source/1791157825369122000"
+        ],
+        "exit_code": 1,
+        "group_absent": true,
+        "pid": 36620,
+        "seconds": 20.338686,
+        "stderr": {
+          "bytes": 469,
+          "file": "original-source.stderr",
+          "sha1": "9a0f9c80854e16ab06a14bb65809e057693a6cdd",
+          "sha256": "bbbcfac6376ed6e5eab80ec54e8f5e2de9abbb9cacb58c0d7c3de7b0fd60dfaa"
+        },
+        "stdout": {
+          "bytes": 0,
+          "file": "original-source.stdout",
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "timed_out": false
+      },
+      "diagnostic": "(node:36620) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\nError:\n- expected : id\n- observed : id (consumed more than once)\nLocation: cooking_metadata_valid\n404 |     case PCMenu.Closed{}: U32.is_gt(next,0)\n405>|     case PCMenu.Furnace{id,peer,position,block,kind,token}: U32.is_gt(id,0) && U32.is_gt(next,id)\n    |                         ^^\n406 | \n",
+      "repair": "Backend owner added +id to the actual cooking_metadata_valid Furnace pattern; follow-up changed graph includes authenticated geometry and fresh factory startup."
+    },
+    {
+      "directory": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking/source/1791159233218580000",
+      "receipt": {
+        "argv": [
+          "/opt/homebrew/bin/node",
+          "--expose-gc",
+          "--max-old-space-size=8192",
+          "--stack-size=4096",
+          "--experimental-transform-types",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/local_player_cooking_source.mjs",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking/source/1791159233218580000"
+        ],
+        "exit_code": 1,
+        "group_absent": true,
+        "pid": 44620,
+        "seconds": 7.251145,
+        "stderr": {
+          "bytes": 601,
+          "file": "original-source.stderr",
+          "sha1": "a239cbdf6a821a652257bcbf159be68911019991",
+          "sha256": "b2c41bc8f1c395570873320b19a0ea11e311ebb95887855678484f2eccb95565"
+        },
+        "stdout": {
+          "bytes": 0,
+          "file": "original-source.stdout",
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "timed_out": false
+      },
+      "diagnostic": "(node:44620) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\nError:\n- message  : 'result' can't be matched in this position (it is matched after a local statement or after a match on a later binder, it was already matched, or it is a def)\nLocation:\n79 |     case True{}:\n80>|       (owner,Entities.Outcome{pending,status,times}) = result\n   |                                                        ^^^^^^\n81 |       capture_needed(effect,rest,engine,geometry,context,owner,times,next)\n",
+      "repair": "Moved current atomic result destructuring to capture_result before the later needs Bool matcher."
+    },
+    {
+      "directory": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking/source/1791159277663981000",
+      "receipt": {
+        "argv": [
+          "/opt/homebrew/bin/node",
+          "--expose-gc",
+          "--max-old-space-size=8192",
+          "--stack-size=4096",
+          "--experimental-transform-types",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/local_player_cooking_source.mjs",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking/source/1791159277663981000"
+        ],
+        "exit_code": 1,
+        "group_absent": true,
+        "pid": 44964,
+        "seconds": 14.164266,
+        "stderr": {
+          "bytes": 958,
+          "file": "original-source.stderr",
+          "sha1": "7917748dee22bf2e7f78f52e329ad51805bd8089",
+          "sha256": "97f9e51bb11b01a0d92662c04257a238467706bc393a8192851f8b8d41ebaaac"
+        },
+        "stdout": {
+          "bytes": 0,
+          "file": "original-source.stdout",
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "timed_out": false
+      },
+      "diagnostic": "(node:44964) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\nError:\n- expected : a decreasing self-call (arguments are read left to right: each passed unchanged until one shrinks)\n- observed : deliver_io\nContext:\n- engine   : G.Engine\n- geometry : Maybe<&1, Owner.Owner>\n- context  : Model.Context\n- effect   : Store.Effect\n- rest     : List<&2, Store.Effect>\n- owner    : Model.State\n- times    : List<&2, Random.Bits64>\n- engine   : G.Engine\n- geometry : Maybe<&1, Owner.Owner>\n- owner    : Model.State\n- times    : List<&2, Random.Bits64>\nLocation: deliver_io\n124 |       admitted(effect,rest,engine,geometry,context,owner,times,\n125>|         engine => geometry => owner => times => deliver_io(~supported,engine,geometry,context,rest,owner,times),supported(effect))\n    |                                                 ^^^^^^^^^^\n126 | \n",
+      "repair": "Moved the decreasing effects list before the changing Engine/geometry parameters in ordered deliver_io."
+    },
+    {
+      "directory": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking/source/1791159320923370000",
+      "receipt": {
+        "argv": [
+          "/opt/homebrew/bin/node",
+          "--expose-gc",
+          "--max-old-space-size=8192",
+          "--stack-size=4096",
+          "--experimental-transform-types",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/local_player_cooking_source.mjs",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking/source/1791159320923370000"
+        ],
+        "exit_code": 1,
+        "group_absent": true,
+        "pid": 45420,
+        "seconds": 31.978207,
+        "stderr": {
+          "bytes": 757,
+          "file": "original-source.stderr",
+          "sha1": "72a1928a794aba2984983e39521f91d0b7b1976f",
+          "sha256": "fe03d279548ce70ae30aad4d89e0471e15737b352a0934d43f662775ea1b2e8c"
+        },
+        "stdout": {
+          "bytes": 0,
+          "file": "original-source.stdout",
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "timed_out": false
+      },
+      "diagnostic": "(node:45420) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\nError:\n- expected : owner\n- observed : owner (consumed more than once)\nContext:\n- saved      : S.State\n- lease      : Lease\n- counter    : Nat\n- nonce      : String\n- capability : String\nLocation: cooking_checked\n432 |     case _ False{}: (state,Fail{\"RendererLeaseOrSequence\"})\n433>|     case State{saved,lease,counter,nonce,capability,owner,crafting,+cooking,+next_cooking_menu} True{}:\n    |                                                     ^^^^^\n434 |       cooking_reported(lease,counter,nonce,capability,owner,crafting,cooking,next_cooking_menu,cooking_opening(request),\n",
+      "repair": "Backend owner added +owner Data Capability to actual cooking_checked pattern reused by reply report and request."
+    },
+    {
+      "directory": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking/source/1791159437853719000",
+      "receipt": {
+        "argv": [
+          "/opt/homebrew/bin/node",
+          "--expose-gc",
+          "--max-old-space-size=8192",
+          "--stack-size=4096",
+          "--experimental-transform-types",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/local_player_cooking_source.mjs",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking/source/1791159437853719000"
+        ],
+        "exit_code": 1,
+        "group_absent": true,
+        "pid": 47651,
+        "seconds": 34.679997,
+        "stderr": {
+          "bytes": 865,
+          "file": "original-source.stderr",
+          "sha1": "364b0b8421e767fc90eec6fb907128f656901951",
+          "sha256": "51f5ae4a852aeda4218f5da4e5d80e7a2ac6ae79626bb6d8fb1cdf36c888f4d5"
+        },
+        "stdout": {
+          "bytes": 0,
+          "file": "original-source.stdout",
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "timed_out": false
+      },
+      "diagnostic": "(node:47651) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\nError:\n- expected : next_cooking_menu\n- observed : next_cooking_menu (consumed more than once)\nContext:\n- lease      : B.Lease\n- counter    : Nat\n- nonce      : String\n- capability : String\n- owner      : Core.Capability\n- crafting   : Maybe<&2, Craft.Context>\n- cooking    : PCMenu.Handle\nLocation: candidate_saved\n138 | def candidate_saved(+lease:B.Lease,counter:Nat,nonce:String,capability:String,owner:Core.Capability,\n139>|     +crafting:Maybe<&2,Craft.Context>,cooking:PCMenu.Handle,next_cooking_menu:U32,result:Session.State & I.State) -> B.State & MenuRollback:\n    |                                                             ^^^^^^^^^^^^^^^^^\n140 |   (saved,original) = result\n",
+      "repair": "Transport owner repairs duplicated Data cooking Handle and next_cooking_menu in candidate_saved continuation."
+    },
+    {
+      "directory": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking/source/1791159756049546000",
+      "receipt": {
+        "argv": [
+          "/opt/homebrew/bin/node",
+          "--expose-gc",
+          "--max-old-space-size=8192",
+          "--stack-size=4096",
+          "--experimental-transform-types",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/local_player_cooking_source.mjs",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking/source/1791159756049546000"
+        ],
+        "exit_code": 1,
+        "group_absent": true,
+        "pid": 51571,
+        "seconds": 33.514535,
+        "stderr": {
+          "bytes": 967,
+          "file": "original-source.stderr",
+          "sha1": "509df50dbced63e3b2b3f8ec584bdfda22c3d238",
+          "sha256": "258e50fcf7cec48879c8e76ce536a7c760e4f5a3b604b13d18c312ff89a1c63f"
+        },
+        "stdout": {
+          "bytes": 0,
+          "file": "original-source.stdout",
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "timed_out": false
+      },
+      "diagnostic": "(node:51571) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\nError:\n- expected : Data\n- observed : Type\nContext:\n- catalogs : Catalogs\n- enabled  : Map<&2, Bool>\n- light    : Result<&2, &2, LightLoad.Error, LightRegistry.Catalog>\n- bindings : Result<&2, &2, String, CookingBindings.Catalog>\nLocation: cooking_context\n326 | \n327>| def cooking_context(catalogs:Catalogs,enabled:Map<&2,Bool>,light:Result<&2,&2,LightLoad.Error,LightRegistry.Catalog>,bindings:Result<&2,&2,String,CookingBindings.Catalog>) -> Result<&2,&2,String,Cooking.Context & CookingEntities.Context>:\n    |                                                                                                                                                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n328 |   match catalogs light bindings:\n",
+      "repair": "Entry owner changed Result success qualifier to &1 at context-pair return and receiving parameter; tuple is affine Type and consumed once."
+    }
+  ],
+  "complete_entry_success": {
+    "evidence": "evidence/local-player-cooking-source-020.json",
+    "status": "source_checked",
+    "declarations": 8998,
+    "source_files": 187,
+    "holes": 0,
+    "seconds": 18.232369,
+    "source_hashes_unchanged": true,
+    "native_or_kernel_claim": false
+  }
 }

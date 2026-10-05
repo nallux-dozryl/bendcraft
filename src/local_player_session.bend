@@ -5,6 +5,9 @@ import ./cooking_world_store.bend as CookingStore
 import ./nbt.bend as Nbt
 import ./local_player_cooking_storage.bend as CookingStorage
 import ./local_player_cooking_entities.bend as CookingEntities
+import ./local_player_cooking_bootstrap.bend as CookingBootstrap
+import ./local_player_cooking_geometry.bend as CookingGeometry
+import ./local_collision_world.bend as Collision
 import ./cooking_effect_entities_model.bend as CookingModel
 import ./random.bend as Random
 import ./player_block_inside_stuck.bend as Inside
@@ -120,6 +123,28 @@ def cooking_query_io(-A:Data,state:State,
     operation:C.World -> Cooking.Sidecar -> IO(C.World & Cooking.Sidecar & Result<&2,&2,String,A>)) -> IO(State & Result<&2,&2,String,A>):
   cooking_detached_io(A,operation,to_bundle(state))
 
+# Geometry suppliers borrow the sole Engine so the authenticated Registry and
+# Core travel together. Every saved/player/Shell owner stays in this detour.
+def cooking_engine_returned(-A:Data,identity:String,path:String,highwater:U32,
+    limits:P.Limits,lease:WL.Lease,saved:IC.Saved,maximum:U32,catalog:List<&2,E.Operation>,
+    player:R.Detached,result:G.Engine & Cooking.Sidecar & Result<&2,&2,String,A>) -> State & Result<&2,&2,String,A>:
+  (engine,cooking,status) = result
+  (from_bundle(E.State{P.State{engine,identity,path,highwater,limits,lease},saved,maximum,catalog},
+    R.Transient{player,cooking}),status)
+
+def cooking_engine_detached_io(-A:Data,
+    operation:G.Engine -> Cooking.Sidecar -> IO(G.Engine & Cooking.Sidecar & Result<&2,&2,String,A>),
+    result:E.State<IC.Saved> & R.Transient) -> IO(State & Result<&2,&2,String,A>):
+  (E.State{P.State{engine,identity,path,highwater,limits,lease},saved,maximum,catalog},
+    R.Transient{player,cooking}) = result
+  do IO<State & Result<&2,&2,String,A>>:
+    returned : G.Engine & Cooking.Sidecar & Result<&2,&2,String,A> <- operation(engine,cooking)
+    return cooking_engine_returned(A,identity,path,highwater,limits,lease,saved,maximum,catalog,player,returned)
+
+def cooking_engine_query_io(-A:Data,state:State,
+    operation:G.Engine -> Cooking.Sidecar -> IO(G.Engine & Cooking.Sidecar & Result<&2,&2,String,A>)) -> IO(State & Result<&2,&2,String,A>):
+  cooking_engine_detached_io(A,operation,to_bundle(state))
+
 # A container transaction also transfers the actual player inventory once.
 # The operation returns both array owners before the Session is reconstructed.
 def cooking_inventory_returned(-A:Data,registry:B.Registry,identity:String,path:String,highwater:U32,
@@ -190,7 +215,12 @@ def cooking_deliver_pending(state:State) -> State & Result<&2,&2,String,Unit>:
   cooking_sidecar_query(Result<&2,&2,String,Unit>,state,Cooking.deliver_pending)
 
 def cooking_deliver_pending_io(state:State) -> IO(State & Result<&2,&2,String,Unit>):
-  cooking_query_io(Unit,state,CookingEntities.deliver_io)
+  cooking_engine_query_io(Unit,state,engine => sidecar => CookingEntities.deliver_engine_io(sidecar,engine))
+
+# Geometry initialization authenticates the catalog against the retained live
+# Registry after body/entity initialization and before pending effect delivery.
+def cooking_load_geometry(state:State,path:String,environment:Collision.Environment) -> IO(State & Result<&2,&2,String,Unit>):
+  cooking_engine_query_io(Unit,state,engine => sidecar => CookingGeometry.load(sidecar,engine,path,environment))
 
 def cooking_recovery(view:Maybe<&2,CookingModel.View>,inputs:List<&2,Random.Bits64>) -> Maybe<&2,CookingStorage.EntityRecovery>:
   match view:
@@ -214,6 +244,14 @@ def cooking_restore_entities(state:State,context:CookingModel.Context,recovery:M
       cooking_sidecar_query(Result<&2,&2,String,Unit>,state,sidecar => Cooking.restore_entity_view(sidecar,context,None{},[]))
     case Some{CookingStorage.EntityRecovery{view,inputs}}:
       cooking_sidecar_query(Result<&2,&2,String,Unit>,state,sidecar => Cooking.restore_entity_view(sidecar,context,Some{view},inputs))
+
+# Existing Views restore their exact owner and supplied clock queue with no
+# factory draws. Legacy/fresh absence enters only the declared fresh process
+# factory boundary, after actual Sidecar admission and before pending delivery.
+def cooking_initialize_entities(state:State,context:CookingModel.Context,recovery:Maybe<&2,CookingStorage.EntityRecovery>) -> IO(State & Result<&2,&2,String,Unit>):
+  match recovery:
+    case None{}: cooking_query_io(Unit,state,world => sidecar => CookingBootstrap.begin(world,sidecar,context))
+    case Some{value}: IO.pure(State & Result<&2,&2,String,Unit>,cooking_restore_entities(state,context,Some{value}))
 
 def cooking_entity_bound(player:X.State,identity:String,path:String,highwater:U32,limits:P.Limits,lease:WL.Lease,
     maximum:U32,catalog:List<&2,E.Operation>,inventory:I.State,fresh:Bool,generation:WG.Settings,
@@ -399,7 +437,7 @@ def step(driver:R.Driver,state:State) -> State:
 
 # The closed delivery supplier may obtain real monotonic inputs while retaining
 # the actual World. No player/common continuation starts before that IO returns.
-def cooking_tick_completed_io(~delivery:C.World -> Cooking.Sidecar -> IO(C.World & Cooking.Sidecar & Result<&2,&2,String,Unit>),
+def cooking_tick_completed_io(~delivery:State -> IO(State & Result<&2,&2,String,Unit>),
     driver:R.Driver,result:State & Result<&2,&2,String,Bool>) -> IO(State):
   (state,status) = result
   match status:
@@ -407,11 +445,11 @@ def cooking_tick_completed_io(~delivery:C.World -> Cooking.Sidecar -> IO(C.World
     case Done{False{}}: IO.pure(State,state)
     case Done{True{}}:
       do IO<State>:
-        delivered : State & Result<&2,&2,String,Unit> <- cooking_query_io(Unit,
-          run_with_status(state,status => player => R.status_after_world_tick(driver,status,player)),delivery)
+        delivered : State & Result<&2,&2,String,Unit> <- delivery(
+          run_with_status(state,status => player => R.status_after_world_tick(driver,status,player)))
         return cooking_delivery_completed(delivered)
 
-def cooking_tick_shaped_io(~delivery:C.World -> Cooking.Sidecar -> IO(C.World & Cooking.Sidecar & Result<&2,&2,String,Unit>),
+def cooking_tick_shaped_io(~delivery:State -> IO(State & Result<&2,&2,String,Unit>),
     driver:R.Driver,scheduled:Bool,result:State & Maybe<&2,X.Error>) -> IO(State):
   (state,error) = result
   match error:
@@ -419,24 +457,24 @@ def cooking_tick_shaped_io(~delivery:C.World -> Cooking.Sidecar -> IO(C.World & 
     case None{}:
       cooking_tick_completed_io(~delivery,driver,cooking_query(Bool,state,world => sidecar => Cooking.tick(world,sidecar,scheduled)))
 
-def cooking_step_delivered_io(~delivery:C.World -> Cooking.Sidecar -> IO(C.World & Cooking.Sidecar & Result<&2,&2,String,Unit>),
+def cooking_step_delivered_io(~delivery:State -> IO(State & Result<&2,&2,String,Unit>),
     driver:R.Driver,scheduled:Bool,result:State & Result<&2,&2,String,Unit>) -> IO(State):
   (state,status) = result
   match status:
     case Fail{message}: IO.pure(State,cooking_error(state,message))
     case Done{unit}: cooking_tick_shaped_io(~delivery,driver,scheduled,query(Maybe<&2,X.Error>,state,X.stage_shape))
 
-def cooking_step_io(~delivery:C.World -> Cooking.Sidecar -> IO(C.World & Cooking.Sidecar & Result<&2,&2,String,Unit>),
+def cooking_step_io(~delivery:State -> IO(State & Result<&2,&2,String,Unit>),
     driver:R.Driver,state:State,scheduled:Bool) -> IO(State):
   do IO<State>:
-    delivered : State & Result<&2,&2,String,Unit> <- cooking_query_io(Unit,state,delivery)
+    delivered : State & Result<&2,&2,String,Unit> <- delivery(state)
     cooking_step_delivered_io(~delivery,driver,scheduled,delivered)
 
-def realtime_step_io(~delivery:C.World -> Cooking.Sidecar -> IO(C.World & Cooking.Sidecar & Result<&2,&2,String,Unit>),
+def realtime_step_io(~delivery:State -> IO(State & Result<&2,&2,String,Unit>),
     driver:R.Driver,state:State) -> IO(State):
   cooking_step_io(~delivery,driver,state,False{})
 
-def step_io(~delivery:C.World -> Cooking.Sidecar -> IO(C.World & Cooking.Sidecar & Result<&2,&2,String,Unit>),
+def step_io(~delivery:State -> IO(State & Result<&2,&2,String,Unit>),
     driver:R.Driver,state:State) -> IO(State):
   cooking_step_io(~delivery,driver,state,True{})
 
@@ -465,7 +503,7 @@ def advance_completed_io(next:State -> IO(State),result:State & Maybe<&2,String>
     case Some{message}: IO.pure(State,state)
     case None{}: next(state)
 
-def advance_go_io(~delivery:C.World -> Cooking.Sidecar -> IO(C.World & Cooking.Sidecar & Result<&2,&2,String,Unit>),
+def advance_go_io(~delivery:State -> IO(State & Result<&2,&2,String,Unit>),
     +driver:R.Driver,ticks:Nat,state:State) -> IO(State):
   match ticks:
     case 0n: IO.pure(State,state)
@@ -474,7 +512,7 @@ def advance_go_io(~delivery:C.World -> Cooking.Sidecar -> IO(C.World & Cooking.S
         stepped : State <- step_io(~delivery,driver,state)
         advance_completed_io(state => advance_go_io(~delivery,driver,rest,state),query(Maybe<&2,String>,stepped,advance_runtime_error))
 
-def advance_io(~delivery:C.World -> Cooking.Sidecar -> IO(C.World & Cooking.Sidecar & Result<&2,&2,String,Unit>),
+def advance_io(~delivery:State -> IO(State & Result<&2,&2,String,Unit>),
     driver:R.Driver,state:State,ticks:U32) -> IO(State):
   advance_go_io(~delivery,driver,U32.to_nat(ticks),state)
 
