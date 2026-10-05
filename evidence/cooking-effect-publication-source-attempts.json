@@ -1,0 +1,151 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "FAILED",
+      "reason": "- message  : 'owner' can't be matched in this position (it is matched after a local statement or after a match on a later binder, it was already matched, or it is a def)\nLocation:\n76 | def committed_valid(owner:State,snapshot:Snapshot,valid:Bool) -> State:\n77>|   match valid owner snapshot:\n   |               ^^^^^\n78 |     case False{} owner _: owner",
+      "stdout": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication/source-001/check.stdout",
+        "bytes": 69,
+        "sha256": "0ea31bc7579a068e348c5ac80ebaa660a57542f93dcdbbc1ed0c478908446eb5"
+      },
+      "stderr": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication/source-001/check.stderr",
+        "bytes": 538,
+        "sha256": "6bc6c7adaf9896083f204baeae33963d750d9f71c38f35337698abf15a5f43b9"
+      },
+      "source_snapshot_retained": false
+    },
+    {
+      "attempt": 2,
+      "status": "FAILED",
+      "reason": "- message  : 'bindings' can't be matched in this position (it is matched after a local statement or after a match on a later binder, it was already matched, or it is a def)\nLocation:\n40 |   (registry,status) = result\n41>|   B.Catalog{+expected,+count,values} = bindings\n   |                                        ^^^^^^^^\n42 |   C.World{tick,time,paused,daylight,revision,+states,sections,pending,events} = world",
+      "stdout": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication/source-002/check.stdout",
+        "bytes": 69,
+        "sha256": "0ea31bc7579a068e348c5ac80ebaa660a57542f93dcdbbc1ed0c478908446eb5"
+      },
+      "stderr": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication/source-002/check.stderr",
+        "bytes": 598,
+        "sha256": "127baf2dc436f561605ff2a3f10e37cbf20b2b5fe797c9b989009bf924d4a9b3"
+      },
+      "source_snapshot_retained": false
+    },
+    {
+      "attempt": 3,
+      "status": "FAILED",
+      "reason": "- message  : 'status' can't be matched in this position (it is matched after a local statement or after a match on a later binder, it was already matched, or it is a def)\nLocation:\n43 |   +same_count = U32.is_eq(states,count)\n44>|   match status:\n   |         ^^^^^^\n45 |     case Fail{message}: (G.Engine{C.World{tick,time,paused,daylight,revision,states,sections,pending,events},registry},Fail{message})",
+      "stdout": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication/source-003/check.stdout",
+        "bytes": 69,
+        "sha256": "0ea31bc7579a068e348c5ac80ebaa660a57542f93dcdbbc1ed0c478908446eb5"
+      },
+      "stderr": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication/source-003/check.stderr",
+        "bytes": 590,
+        "sha256": "5ebfa06c608bf85ca5486eeb7109591cd8e0173d349174f42cfadb0cb9647f64"
+      },
+      "source_snapshot_retained": false
+    },
+    {
+      "attempt": 4,
+      "status": "FAILED",
+      "reason": "- message  : a parameter or field scrutinee (a match cannot scrutinize a computed value: give it its own def)\nLocation:\n106 |     case Done{+actual}:\n107>|       (registry,decoded) = R.Registry.decode(registry,actual)\n    |                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n108 |       target_decoded(world,current,(registry,Result.bind(&2,&2,R.Error,R.Resolved,R.Resolved,",
+      "stdout": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication/source-004/check.stdout",
+        "bytes": 69,
+        "sha256": "0ea31bc7579a068e348c5ac80ebaa660a57542f93dcdbbc1ed0c478908446eb5"
+      },
+      "stderr": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication/source-004/check.stderr",
+        "bytes": 570,
+        "sha256": "72dc1d59f1a78c7b4a40eb70698442aeae8b1f24ace94bf13445716fe4eeda11"
+      },
+      "source_snapshot_retained": false
+    },
+    {
+      "attempt": 5,
+      "status": "FAILED",
+      "reason": "- expected : tail\n- observed : tail (consumed more than once)\nContext:\n- candidate : Chunk\n- sequence  : Nat\n- target    : Chunk\nLocation: remove_cons\n42 |   B.equal_position(position,other) && B.same_block(left,right) && Nat.is_eq(i,j)\n43>| def remove_cons(+head:DirtyChunk,+target:Chunk,tail:List<&2,DirtyChunk>) -> List<&2,DirtyChunk>:\n   |                                                ^^^^\n44 |   DirtyChunk{candidate,sequence} = head",
+      "stdout": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication/source-005/check.stdout",
+        "bytes": 236999,
+        "sha256": "407ec0d8fc65e2ef44fd8255900862d2517a62a537002da501c0327a9ba83475"
+      },
+      "stderr": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication/source-005/check.stderr",
+        "bytes": 1008,
+        "sha256": "0a6ad64c57ed4bdef7a04d1013c5345fbcd5f40d6c200c014d616fc12c3b573d"
+      },
+      "source_snapshot_retained": false
+    },
+    {
+      "attempt": 6,
+      "status": "FAILED",
+      "reason": "- expected : an annotated term (cannot infer)\n- observed : 1n+sequence\nContext:\n- position : C.Position\n- source   : Source\n- sequence : Nat\n- unsaved  : List<&2, DirtyChunk>\n- last     : Maybe<&2, Receipt>\nLocation: marked\n51 |   State{View{sequence,unsaved,last}} = owner\n52>|   +next = 1n+sequence\n   |           ^^^^^^^^^^^\n53 |   +target = chunk(position)",
+      "stdout": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication/source-006/check.stdout",
+        "bytes": 237296,
+        "sha256": "fa3710b275951072a72ba036349822ff86c59a4d48197bae95701848e3c7fda6"
+      },
+      "stderr": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication/source-006/check.stderr",
+        "bytes": 928,
+        "sha256": "b948be21be0d53da89058fe09705d0ce6185432941d8a8cf57f310ebea1a1fcd"
+      },
+      "source_snapshot_retained": false
+    },
+    {
+      "attempt": 7,
+      "status": "FAILED",
+      "reason": "- expected : position\n- observed : position (consumed more than once)\nContext:\n- engine      : G.Engine\n- context     : Context\n- captured    : C.Position\n- binding     : B.Binding\n- incarnation : Nat\n- current     : Maybe<&2, J.Source>\nLocation: dirty\n139 | def dirty(engine:G.Engine,+context:Context,+source:J.Source,current:Maybe<&2,J.Source>,\n140>|     position:C.Position,owner:J.State) -> G.Engine & J.State & Result<&2,&2,String,J.Receipt>:\n    |     ^^^^^^^^\n141 |   J.Source{+captured,binding,incarnation} = source",
+      "stdout": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication/source-007/check.stdout",
+        "bytes": 242871,
+        "sha256": "65c678515ae3fec77db6efcfdcd4fafee2612feae8f46fe227ad8291e4f94651"
+      },
+      "stderr": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication/source-007/check.stderr",
+        "bytes": 1091,
+        "sha256": "f884cc39db5410d3b417c6f4b8e84f5312a3c33b76b1db4fd951c213a5a6ac33"
+      },
+      "source_snapshot_retained": false
+    },
+    {
+      "attempt": 8,
+      "status": "FAILED",
+      "reason": "- expected : lit\n- observed : lit (consumed more than once)\nLocation: furnace\n34 | # authentication of an arbitrary Registry or run neighbour receivers.\n35>| def furnace(lit:Bool) -> B.Binding:\n   |             ^^^\n36 |   B.Binding{Bool.pick(U32,lit,6883,6884),\"minecraft:furnace\",",
+      "stdout": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication/source-008/check.stdout",
+        "bytes": 246458,
+        "sha256": "cb2a21ce0538f63a0eac7087119039c0db45879e4c90a9379c7fca7e0545b7fd"
+      },
+      "stderr": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication/source-008/check.stderr",
+        "bytes": 849,
+        "sha256": "1d132fa77a74786549ce3520d07e1ca7a423b11878198a82aa604692a5d39252"
+      },
+      "source_snapshot_retained": false
+    },
+    {
+      "attempt": 9,
+      "status": "PASS",
+      "reason": null,
+      "stdout": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication/source-009/check.stdout",
+        "bytes": 250318,
+        "sha256": "bc382550458d2da35731fa4bbd2b0f31cac7877e5d78f6b1a57fddafb0a57cde"
+      },
+      "stderr": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication/source-009/check.stderr",
+        "bytes": 177,
+        "sha256": "3f54ce527c8a99b3c9c6c2915c9e2e759be50c8eea21cc579591482867dc136c"
+      },
+      "source_snapshot_retained": true
+    }
+  ],
+  "unchanged_attempt_retries": 0,
+  "final_changed_source_and_proof": "evidence/cooking-effect-publication-proof.json",
+  "boundary": "Parser, affine-kind and annotation repairs. Failed attempt raw logs retained in ignored build directories; pre-change complete source snapshots were not captured for failed checks."
+}
