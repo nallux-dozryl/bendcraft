@@ -1,0 +1,116 @@
+{
+  "status": "passed",
+  "ordinary_laws": 7,
+  "independent_kernel_laws": 7,
+  "checks": [
+    {
+      "kind": "export",
+      "command": [
+        "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+        "--experimental-transform-types",
+        "--stack-size=4096",
+        "--max-old-space-size=1536",
+        "tools/vanilla_block_lighting_proof.mjs",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft"
+      ],
+      "exit": 0,
+      "seconds": 1.1319,
+      "sampled_process_tree_peak_rss_bytes": 409010176,
+      "bounded_stop": null,
+      "stdout_sha256": "703866baab61ddb58318eed73af6e898fb970eb11a31f68458f2ac01f01764da",
+      "stderr_sha256": "835df2c8bd1b21f3c52069c426c60af6774b18768ecbb24b882cce8a05b89ec6"
+    },
+    {
+      "kind": "kernel",
+      "command": [
+        "/usr/bin/env",
+        "LEAN_STACK_SIZE=4194304",
+        "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/vanilla-block-lighting-proof/selected.bendtt"
+      ],
+      "exit": 0,
+      "seconds": 0.2357,
+      "sampled_process_tree_peak_rss_bytes": 163840,
+      "bounded_stop": null,
+      "stdout_sha256": "61b73cda11b6b665b9f99f2defd3d3b57f985c865225e942a5bdaa594a503e47",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "selection": {
+    "roots": [
+      "vanilla_block_lighting_laws:no_element_emission_preserves_every_fractional_coordinate_bit",
+      "vanilla_block_lighting_laws:emissive_state_uses_java_full_brightness_without_reading_absent_fields",
+      "vanilla_block_lighting_laws:closed_diagonal_preserves_complete_edge_light_and_shade",
+      "vanilla_block_lighting_laws:full_face_retains_all_four_corner_results_without_weighting",
+      "vanilla_block_lighting_laws:flat_known_light_is_uniform_and_does_not_consult_neighbour_facts",
+      "vanilla_block_lighting_laws:missing_state_information_is_refused",
+      "vanilla_block_lighting_laws:missing_block_brightness_is_refused"
+    ],
+    "termPins": [
+      {
+        "name": "vanilla_block_lighting_laws:no_element_emission_preserves_every_fractional_coordinate_bit",
+        "type_sha256": "abfa80d92be74855b952402e5e24dee55f651e6b3e9c96a2f26d1b9af7e1d40c",
+        "checked_proof_sha256": "877cdd2fe22482fd099e84cec233ac073a714baa264afd082f68e182aedcd478",
+        "source_body_sha256": "3d9b9f621d59ce1ded486c4f84c3fac9511c448ea0bd71af32f1f187bba1bb5b"
+      },
+      {
+        "name": "vanilla_block_lighting_laws:emissive_state_uses_java_full_brightness_without_reading_absent_fields",
+        "type_sha256": "d485b23c06946af74a965e2038a5c431df5a650f8704a07f91931ed6a6290f50",
+        "checked_proof_sha256": "71a55fb4231e398a6a39abc0eee0acc3372204649ea9f9c5b9eab0f47dff00a2",
+        "source_body_sha256": "f7845503e5cc3b1712ba50f3d70baa23351fcf612c66534ce4b064e71bc2a20f"
+      },
+      {
+        "name": "vanilla_block_lighting_laws:closed_diagonal_preserves_complete_edge_light_and_shade",
+        "type_sha256": "e517d56154a6d922560f280ffe0d3aa41f449ada55be0007685364b5a5b4337c",
+        "checked_proof_sha256": "1a30d03ffcd804dab3440097432374894e01b87e7b6b0e4cab351c5a5348dc71",
+        "source_body_sha256": "80bb907459c67ba2c82428d9a69d9a0cf70fb955627b147551e0cc3ff14afe8b"
+      },
+      {
+        "name": "vanilla_block_lighting_laws:full_face_retains_all_four_corner_results_without_weighting",
+        "type_sha256": "9470ad7cccae41585bd74cb4f6fba9d54e04a9865ddc3b674a35be73b02b235a",
+        "checked_proof_sha256": "d2c1aeb2b41f4bf77d6f52b2e4ae9d7239ad4dbc19ae9f79993423d80d87adbc",
+        "source_body_sha256": "63491b1bf9fb2c0c1ef22d45fbdaf5649e1457cc2248848f03c1b93bbdcb56e3"
+      },
+      {
+        "name": "vanilla_block_lighting_laws:flat_known_light_is_uniform_and_does_not_consult_neighbour_facts",
+        "type_sha256": "4ca19cf2846f78e81f80f09b51cac39a265f3cfcb09458b06dbc4c9af0e23651",
+        "checked_proof_sha256": "c20d201f1f9052ff1c7142f3eaf2b5fdf04d871c3d87c3d4408703e6dbcc7583",
+        "source_body_sha256": "b835df1528eaaea8a86aecc87f1b956ce9ad4ac3b83edd7b79867888bf890704"
+      },
+      {
+        "name": "vanilla_block_lighting_laws:missing_state_information_is_refused",
+        "type_sha256": "fdf000a5630d62d89945106864efbe427921a1afbdbb692264d28c5e240194a3",
+        "checked_proof_sha256": "0d7fc222cdcb3619e218ea51af2932b2fe1adb8b304b8edb3d92a46fc58ebd25",
+        "source_body_sha256": "574c772defae68ff0b08712730067bad9c871e81a9104e9fe9be41547869df7c"
+      },
+      {
+        "name": "vanilla_block_lighting_laws:missing_block_brightness_is_refused",
+        "type_sha256": "4e2ffb9cece22592ddf8f47b960ff63b1400b6b2edcdb0fe2456c1845adde938",
+        "checked_proof_sha256": "ded507f7cbc9afaaa83c99cb8490ae9b5eabe4a8bf1da8e85400405e9c49e637",
+        "source_body_sha256": "fdfc50904457b30a3c356f6659ef745c2620e0cdc1d08604d1fc9008da4c0288"
+      }
+    ],
+    "exclusions": [],
+    "ordinary_only_roots": [],
+    "checked_types_and_bodies_unchanged": true,
+    "all_original_declaration_maps_retained": true,
+    "source_pins": {
+      "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/base.bend": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/big_uint.bend": "fbe5965ee16ee3d6864def33fbc6e5e4b1b9bc7da4735d99311c1a23c65e2444",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/block_model.bend": "140ce3e00961f144a43a4dd93d510a54002feb31f4b0cb64715e734a29ac9350",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/float_parse.bend": "fe22007f0805f3c955fcaada88c1da76a3cceda74f0ff3840ae47af49a02c683",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/json.bend": "a1789e3b4f5bea158ec0d95a8bcb39aa5b7c7e7355a5254d3de1d52a93c719d1",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/u32_decimal.bend": "d0b4b33f10b9e9801c4e99b83803afba5031ea40013a9263f9090bed8543d25c",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/vanilla_block_lighting.bend": "69f16ce586c27743b219fcbf3f7debb50cdbcde9f0b3a88266bfc8d289a7001e",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/vanilla_block_lighting_geometry.bend": "eeaeb3209c99bd0d5fb6523aad0172d33b04b98190c262f592632147e92a214f",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/vanilla_block_lighting_laws.bend": "43967a622938455a8716a9bfe2e5c736402c13edf3011b35edadd41e45eec883",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/vanilla_block_lighting_math.bend": "02dfb52612ee07a89975a983d5e79b558bd22e21ac8ca361c55efe9ef587d05d",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/vanilla_block_lighting_model.bend": "f20094b68c34d755036042f9c3f3f5e34560abbc5e93d6c7368265f05610a0e3",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/vanilla_block_lighting_proof.bend": "b251af7400451842e30cb9dd8a69d0395eed104e654cee7447f20dcebdecbd26",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/vanilla_block_lighting_tables.bend": "fa2ad30ff022209b31f02bb12b15a6b8ac77cb6c71d97fd811eaae8c7b9bc8b3"
+    }
+  },
+  "artifact_sha256": "6e581196966c934d2498aa01c85ea035b5eaab6d5f28526ef7bdffff6047b80f",
+  "kernel_sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7",
+  "boundary": "Actual pervertex lighting paths: zero emission retains fractional coordinates, emissive bypass, opaque diagonal fallback, unweighted corner preservation, arbitrary known flat quad light uniformity, missing state and brightness refusal. These laws do not claim Java specification, actual Core capture or renderer/GPU integration."
+}

@@ -1,0 +1,85 @@
+{
+  "status": "passed",
+  "pin": "26.3",
+  "actual_java_cases": 42,
+  "actual_vertex_records": 168,
+  "native_refusals": 8,
+  "checks": [
+    {
+      "kind": "emit",
+      "command": [
+        "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+        "--experimental-transform-types",
+        "--stack-size=4096",
+        "--max-old-space-size=1536",
+        "tools/item_entity_tick_emit.mjs",
+        "tests/vanilla_block_lighting.bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/vanilla-block-lighting-native/receiver.c"
+      ],
+      "exit": 0,
+      "seconds": 4.5413,
+      "sampled_process_tree_peak_rss_bytes": 809746432,
+      "bounded_stop": null,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "15986300913c39036fd7b79c50ed69a8c51f2bf47f0c9d1d3355c13f20052f37"
+    },
+    {
+      "kind": "clang",
+      "command": [
+        "/usr/bin/clang",
+        "-std=c11",
+        "-O2",
+        "-ffp-contract=off",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/vanilla-block-lighting-native/receiver.c",
+        "-lpthread",
+        "-lm",
+        "-o",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/vanilla-block-lighting-native/receiver"
+      ],
+      "exit": 0,
+      "seconds": 3.8797,
+      "sampled_process_tree_peak_rss_bytes": 381337600,
+      "bounded_stop": null,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "native",
+      "command": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/vanilla-block-lighting-native/receiver",
+        "--gpu",
+        "off",
+        "--threads",
+        "1",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/vanilla-block-lighting-native/input.json"
+      ],
+      "exit": 0,
+      "seconds": 0.701,
+      "sampled_process_tree_peak_rss_bytes": 32768,
+      "bounded_stop": null,
+      "stdout_sha256": "544daeaa7b90734f599755b3aecd1d5973ee2ba749c6aef37ff9f3ed5a287d69",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "reference_sha256": "994957fa12b32773b782500132326c3583e6409fad2b4ad5a1e2f4d6565e0133",
+  "source": {
+    "entry": "tests/vanilla_block_lighting.bend",
+    "source_sha256": {
+      "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/base.bend": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/big_uint.bend": "fbe5965ee16ee3d6864def33fbc6e5e4b1b9bc7da4735d99311c1a23c65e2444",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/block_model.bend": "140ce3e00961f144a43a4dd93d510a54002feb31f4b0cb64715e734a29ac9350",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/float_parse.bend": "fe22007f0805f3c955fcaada88c1da76a3cceda74f0ff3840ae47af49a02c683",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/json.bend": "a1789e3b4f5bea158ec0d95a8bcb39aa5b7c7e7355a5254d3de1d52a93c719d1",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/u32_decimal.bend": "d0b4b33f10b9e9801c4e99b83803afba5031ea40013a9263f9090bed8543d25c",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/vanilla_block_lighting.bend": "69f16ce586c27743b219fcbf3f7debb50cdbcde9f0b3a88266bfc8d289a7001e",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/vanilla_block_lighting_geometry.bend": "eeaeb3209c99bd0d5fb6523aad0172d33b04b98190c262f592632147e92a214f",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/vanilla_block_lighting_math.bend": "02dfb52612ee07a89975a983d5e79b558bd22e21ac8ca361c55efe9ef587d05d",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/vanilla_block_lighting_model.bend": "f20094b68c34d755036042f9c3f3f5e34560abbc5e93d6c7368265f05610a0e3",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/vanilla_block_lighting_tables.bend": "fa2ad30ff022209b31f02bb12b15a6b8ac77cb6c71d97fd811eaae8c7b9bc8b3",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/vanilla_block_lighting.bend": "a8218da4f427f329b636d81df5a52131207d8a735416d42a0af32fbc68221bcc"
+    },
+    "compiler_sha256": "32fb66e09f608ce9e4b173384bcfeec453db8c5bc96650e26ad861bef815a8d9",
+    "ordinary_checked_original_book": true
+  },
+  "boundary": "Actual BlockModelLighter flat/smooth, face shape flags, LightCoordsUtil blends, actual registered state flags and QuadInstance pervertex emission/ARGB compare. Six directions, partial/inset/nonplanar/outside-unit geometry, opaque diagonal fallback, mixed permeability, source/model emission, custom side shade/override and threshold boundaries. Conservative deduplicated stencil contains every actual world query. Missing/stale facts refuse. No liveCore field capture, shared mesh, GPU/world renderer or unchanged corpus replay claimed."
+}
