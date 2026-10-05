@@ -628,8 +628,8 @@ def save_admission(sidecar:Sidecar) -> Sidecar & Result<&2,&2,String,Unit>:
       (Initialized{context,light,None{},[],CW.Idle{},[],effect <> rest,[],incarnations,acknowledged_resets,entity_owner,owned_tail},Fail{"local-cooking:save-undelivered-effects"})
     case Initialized{context,light,None{},Nil{},CW.Idle{},Nil{},Nil{},Nil{},incarnations,acknowledged_resets,Owner.Unbound{},Nil{}}:
       (Initialized{context,light,None{},[],CW.Idle{},[],[],[],incarnations,acknowledged_resets,Owner.Unbound{},[]},Done{Unit{}})
-    case Initialized{context,light,None{},Nil{},CW.Idle{},Nil{},Nil{},Nil{},incarnations,acknowledged_resets,Owner.Bound{entity_context,state,inputs},Nil{}}:
-      (Initialized{context,light,None{},[],CW.Idle{},[],[],[],incarnations,acknowledged_resets,Owner.Bound{entity_context,state,inputs},[]},
+    case Initialized{context,light,None{},Nil{},CW.Idle{},Nil{},Nil{},Nil{},incarnations,acknowledged_resets,Owner.Bound{entity_context,state,inputs,geometry},Nil{}}:
+      (Initialized{context,light,None{},[],CW.Idle{},[],[],[],incarnations,acknowledged_resets,Owner.Bound{entity_context,state,inputs,geometry},[]},
         Fail{"local-cooking:save-entity-owner-required"})
     case Initialized{context,light,None{},Nil{},CW.Idle{},Nil{},Nil{},Nil{},incarnations,acknowledged_resets,entity_owner,child <> rest}:
       (Initialized{context,light,None{},[],CW.Idle{},[],[],[],incarnations,acknowledged_resets,entity_owner,child <> rest},Fail{"local-cooking:noncanonical-sidecar-tail"})
