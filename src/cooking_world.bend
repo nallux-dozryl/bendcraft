@@ -9,6 +9,7 @@ import ./cooking_world_store.bend as S
 import ./campfire_authority_items.bend as AI
 import ./furnace_authority_fuel.bend as FF
 import ./player_core_edit.bend as PE
+import ./local_player_cooking_incarnation_guard.bend as Incarnation
 
 type Context is Data:
   Context{bindings:B.Catalog,campfire:AI.Context,fuel:FF.Catalog,max_provider_depth:Nat}
@@ -223,3 +224,81 @@ def admit(~Light:Data,~properties:Light -> U32 -> Maybe<&2,L.Descriptor>,~enable
     light_context:Light,state:State,cap:C.Capability,stamp:Q.Stamp,mutation:C.Mutation) -> State & Result<&2,&2,Error,Unit>:
   State{world,entries,phase,keys} = state
   admitted(entries,phase,keys,W.admit(~Light,~properties,~enabled,light_context,world,cap,stamp,mutation))
+
+def incarnation_operations(values:List<&2,Operation>) -> List<&2,Incarnation.Operation>:
+  match values:
+    case Nil{}: []
+    case Operation{W.Due{stamp,prepared},classification} <> rest:
+      Incarnation.Operation{prepared,classification} <> incarnation_operations(rest)
+
+def owned_guarded(views:List<&2,S.View>,light:L.State,loading:Maybe<&2,W.Cursor>,entries:List<&1,S.Entry>,
+    phase:Phase,keys:List<&2,String>,future:List<&2,Q.Pending<C.Mutation>>,ops:List<&2,Operation>,
+    result:C.World & Result<&2,&2,String,Unit>) -> State & Result<&2,&2,Error,Unit>:
+  match result:
+    case (world,Fail{text}): (State{W.State{world,light,loading},entries,phase,keys},Fail{Authority{text}})
+    case (world,Done{unit}): started(views,State{W.State{world,light,loading},entries,phase,keys},future,Done{ops})
+
+def owned_ready(+views:List<&2,S.View>,future:List<&2,Q.Pending<C.Mutation>>,+ops:List<&2,Operation>,
+    incarnations:Map<&2,Nat>,acknowledged:Nat,state:State) -> State & Result<&2,&2,Error,Unit>:
+  State{W.State{world,light,loading},entries,phase,keys} = state
+  owned_guarded(views,light,loading,entries,phase,keys,future,ops,
+    Incarnation.check(world,views,incarnation_operations(ops),incarnations,acknowledged))
+
+def owned_classified(views:List<&2,S.View>,state:State,future:List<&2,Q.Pending<C.Mutation>>,
+    incarnations:Map<&2,Nat>,acknowledged:Nat,result:Result<&2,&2,String,List<&2,Operation>>) -> State & Result<&2,&2,Error,Unit>:
+  match result:
+    case Fail{text}: (state,Fail{Authority{text}})
+    case Done{ops}: owned_ready(views,future,ops,incarnations,acknowledged,state)
+
+def owned_prepared(views:List<&2,S.View>,state:State,future:List<&2,Q.Pending<C.Mutation>>,catalog:B.Catalog,
+    incarnations:Map<&2,Nat>,acknowledged:Nat,result:Result<&2,&2,W.Error,List<&2,W.Due>>) -> State & Result<&2,&2,Error,Unit>:
+  match result:
+    case Fail{error}: (state,Fail{World{error}})
+    case Done{due}: owned_classified(views,state,future,incarnations,acknowledged,operations(due,catalog))
+
+def owned_partition(~Light:Data,~properties:Light -> U32 -> Maybe<&2,L.Descriptor>,~enabled:Light -> C.Position -> Bool,
+    light_context:Light,views:List<&2,S.View>,state:State,catalog:B.Catalog,count:U32,incarnations:Map<&2,Nat>,acknowledged:Nat,
+    partition:List<&2,Q.Pending<C.Mutation>> & List<&2,Q.Pending<C.Mutation>>) -> State & Result<&2,&2,Error,Unit>:
+  (due,future) = partition
+  owned_prepared(views,state,future,catalog,incarnations,acknowledged,
+    W.prepare_due(~Light,~properties,~enabled,due,light_context,count))
+
+def owned_world(~Light:Data,~properties:Light -> U32 -> Maybe<&2,L.Descriptor>,~enabled:Light -> C.Position -> Bool,
+    light_context:Light,views:List<&2,S.View>,entries:List<&1,S.Entry>,catalog:B.Catalog,incarnations:Map<&2,Nat>,acknowledged:Nat,
+    world:W.State) -> State & Result<&2,&2,Error,Unit>:
+  W.State{C.World{+tick,time,paused,daylight,revision,+count,sections,+pending,events},light,loading} = world
+  owned_partition(~Light,~properties,~enabled,light_context,views,
+    State{W.State{C.World{tick,time,paused,daylight,revision,count,sections,pending,events},light,loading},entries,Idle{},[]},
+    catalog,count,incarnations,acknowledged,Q.take_due(C.Mutation,pending,1n+tick))
+
+def owned_resident(~Light:Data,~properties:Light -> U32 -> Maybe<&2,L.Descriptor>,~enabled:Light -> C.Position -> Bool,
+    light_context:Light,views:List<&2,S.View>,entries:List<&1,S.Entry>,catalog:B.Catalog,incarnations:Map<&2,Nat>,acknowledged:Nat,
+    result:W.State & Result<&2,&2,Error,Unit>) -> State & Result<&2,&2,Error,Unit>:
+  (world,status) = result
+  match status:
+    case Fail{error}: (State{world,entries,Idle{},[]},Fail{error})
+    case Done{unit}: owned_world(~Light,~properties,~enabled,light_context,views,entries,catalog,incarnations,acknowledged,world)
+
+def owned_inspected(~Light:Data,~properties:Light -> U32 -> Maybe<&2,L.Descriptor>,~enabled:Light -> C.Position -> Bool,
+    light_context:Light,world:W.State,catalog:B.Catalog,incarnations:Map<&2,Nat>,acknowledged:Nat,
+    result:List<&1,S.Entry> & Result<&2,&2,String,List<&2,S.View>>) -> State & Result<&2,&2,Error,Unit>:
+  (entries,status) = result
+  match status:
+    case Fail{text}: (State{world,entries,Idle{},[]},Fail{Authority{text}})
+    case Done{+views}:
+      owned_resident(~Light,~properties,~enabled,light_context,views,entries,catalog,incarnations,acknowledged,resident(views,world))
+
+# The original start API remains unchanged. This owned actor seam admits the
+# entire prospective reset sequence before tick/time/pending/events or any
+# section/light/Entry write. Refusal retains the complete input owner.
+def start_tick_owned(~Light:Data,~properties:Light -> U32 -> Maybe<&2,L.Descriptor>,~enabled:Light -> C.Position -> Bool,
+    light_context:Light,context:Context,incarnations:Map<&2,Nat>,acknowledged_resets:Nat,state:State) ->
+    State & Result<&2,&2,Error,Unit>:
+  Context{catalog,AI.Context{recipes,defaults,features},fuel,depth} = context
+  match state:
+    case State{world,entries,Cooking{tick,effects},keys}: (State{world,entries,Cooking{tick,effects},keys},Fail{Busy{}})
+    case State{world,entries,Idle{},key <> rest}: (State{world,entries,Idle{},key <> rest},Fail{Loading{}})
+    case State{W.State{world,light,Some{cursor}},entries,Idle{},Nil{}}:
+      (State{W.State{world,light,Some{cursor}},entries,Idle{},[]},Fail{World{W.LoadingInProgress{}}})
+    case State{world,entries,Idle{},Nil{}}:
+      owned_inspected(~Light,~properties,~enabled,light_context,world,catalog,incarnations,acknowledged_resets,S.inspect(recipes,entries))

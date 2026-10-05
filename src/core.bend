@@ -224,6 +224,105 @@ def apply(w: World, m: Mutation) -> World & Result<&2, &2, Error, Unit>:
     case DaylightSet{enabled}:
       (set_daylight(w, enabled), Done{Unit{}})
 
+# Read the actual update admission path without writing arrays, creating
+# sections, normalizing empty buckets or moving colliding bucket entries.
+def prospective_present(creating:Bool,key:String,exists:Bool) -> Result<&2,&2,Error,Unit>:
+  match creating exists:
+    case True{} True{}: Fail{SectionExists{key}}
+    case True{} False{}: Done{Unit{}}
+    case False{} True{}: Done{Unit{}}
+    case False{} False{}: Fail{MissingSection{key}}
+
+def prospective_malformed(creating:Bool,key:String) -> Result<&2,&2,Error,Unit>:
+  match creating:
+    case True{}: Fail{InvalidCoordinate{}}
+    case False{}: Fail{MissingSection{key}}
+
+def prospective_bucket(creating:Bool,key:String,result:List<&1,M.Entry> & Bool) ->
+    M.Sections & Result<&2,&2,Error,Unit>:
+  (entries,exists) = result
+  (M.Bucket{entries},prospective_present(creating,key,exists))
+
+def prospective_left(hi:M.Sections,result:M.Sections & Result<&2,&2,Error,Unit>) ->
+    M.Sections & Result<&2,&2,Error,Unit>:
+  (lo,status) = result
+  (M.Branch{lo,hi},status)
+
+def prospective_right(lo:M.Sections,result:M.Sections & Result<&2,&2,Error,Unit>) ->
+    M.Sections & Result<&2,&2,Error,Unit>:
+  (hi,status) = result
+  (M.Branch{lo,hi},status)
+
+def prospective_route(route:List<&2,Bool>,sections:M.Sections,+key:String,+creating:Bool) ->
+    M.Sections & Result<&2,&2,Error,Unit>:
+  match route sections:
+    case Nil{} M.EmptySections{}: (M.EmptySections{},prospective_present(creating,key,False{}))
+    case Nil{} M.Bucket{entries}: prospective_bucket(creating,key,Update.contains(entries,key))
+    case False{} <> rest M.Branch{lo,hi}: prospective_left(hi,prospective_route(rest,lo,key,creating))
+    case True{} <> rest M.Branch{lo,hi}: prospective_right(lo,prospective_route(rest,hi,key,creating))
+    case False{} <> rest M.EmptySections{}: (M.EmptySections{},prospective_present(creating,key,False{}))
+    case True{} <> rest M.EmptySections{}: (M.EmptySections{},prospective_present(creating,key,False{}))
+    case _ other: (other,prospective_malformed(creating,key))
+
+def prospective_retained(tick:Nat,time:Nat,paused:Bool,daylight:Bool,revision:Nat,count:U32,
+    pending:List<&2,Q.Pending<Mutation>>,events:List<&2,CoreEvent>,
+    result:M.Sections & Result<&2,&2,Error,Unit>) -> World & Result<&2,&2,Error,Unit>:
+  (sections,status) = result
+  (World{tick,time,paused,daylight,revision,count,sections,pending,events},status)
+
+def prospective_section(world:World,+key:String,creating:Bool) -> World & Result<&2,&2,Error,Unit>:
+  World{tick,time,paused,daylight,revision,count,sections,pending,events} = world
+  prospective_retained(tick,time,paused,daylight,revision,count,pending,events,
+    prospective_route(Update.path(32n,M.hash(key)),sections,key,creating))
+
+def prospective_overlay(hit:Bool,world:World,key:String,creating:Bool) -> World & Result<&2,&2,Error,Unit>:
+  match hit:
+    case False{}: prospective_section(world,key,creating)
+    case True{}: (world,prospective_present(creating,key,True{}))
+
+def prospective_position(world:World,created:List<&2,String>,position:Position,creating:Bool) ->
+    World & Result<&2,&2,Error,Unit>:
+  +key = section_key(position)
+  prospective_overlay(Update.member(created,key),world,key,creating)
+
+def prospective_one(world:World,created:List<&2,String>,mutation:Mutation) -> World & Result<&2,&2,Error,Unit>:
+  match mutation:
+    case SectionCreate{position,fill}: prospective_position(world,created,position,True{})
+    case BlockSet{position,state}: prospective_position(world,created,position,False{})
+    case TimeSet{time}: (world,Done{Unit{}})
+    case DaylightSet{enabled}: (world,Done{Unit{}})
+
+def prospective_created(created:List<&2,String>,mutation:Mutation,status:Result<&2,&2,Error,Unit>) -> List<&2,String>:
+  match mutation status:
+    case SectionCreate{position,fill} Done{unit}: section_key(position) <> created
+    case _ _: created
+
+def prospective_prepend(status:Result<&2,&2,Error,Unit>,result:World & List<&2,Result<&2,&2,Error,Unit>>) ->
+    World & List<&2,Result<&2,&2,Error,Unit>>:
+  (world,rest) = result
+  (world,status <> rest)
+
+def prospective_join(mutation:Mutation,created:List<&2,String>,result:World & Result<&2,&2,Error,Unit>,
+    next:World -> List<&2,String> -> World & List<&2,Result<&2,&2,Error,Unit>>) ->
+    World & List<&2,Result<&2,&2,Error,Unit>>:
+  (world,+status) = result
+  prospective_prepend(status,next(world)(prospective_created(created,mutation,status)))
+
+def prospective_loop(mutations:List<&2,Mutation>,+created:List<&2,String>,world:World) ->
+    World & List<&2,Result<&2,&2,Error,Unit>>:
+  match mutations:
+    case Nil{}: (world,[])
+    case +head <> rest:
+      prospective_join(head,created,prospective_one(world,created,head),
+        owner => added => prospective_loop(rest,added,owner))
+
+# Like apply, this observes application admission, not capability or catalog
+# admission. Callers prepare/validate the batch first. Successful earlier
+# creates are recorded only as immutable keys; the actual World stays intact.
+def prospective_results(world:World,mutations:List<&2,Mutation>) ->
+    World & List<&2,Result<&2,&2,Error,Unit>>:
+  prospective_loop(mutations,[],world)
+
 def apply_finished(stamp: Q.Stamp, r: World & Result<&2, &2, Error, Unit>) -> World:
   (w, result) = r
   finish(w, stamp, result)
