@@ -1,0 +1,134 @@
+{
+  "C": {
+    "bytes": 62361745,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-024/diagnostic.c",
+    "sha256": "b1b5c18ff5453f143f389f8b6cddaf457575b3d9f4d34ec6c7b1231f08000107"
+  },
+  "actor_build": {
+    "bytes": 4238,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/playable-client-actor004-build-024.json",
+    "sha256": "a7954d6fe06393212dbdd8db9f840099a098de8f91c9a7826f5c58452228eb93"
+  },
+  "actual_emitted_execution": {
+    "ID_branch_line": 586445,
+    "cached_id_equality_line": 586400,
+    "hit_only_matches_line": 586563,
+    "match_true_only_plan_line": 586813,
+    "miss_only_closure_call_line": 586473,
+    "miss_only_tail_recursion_line": 586613
+  },
+  "binary": {
+    "bytes": 16246664,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-024/actor",
+    "sha256": "c8dd57c0f5cd6d3607bc932bf6bb74ce27009f8b90efa7db4309beea5d1e2cc4"
+  },
+  "clang_seconds": 198.33676229044795,
+  "consumer": "actual paused production simulation.step batching, then actual ambient cooking delivery; no renderer/PPM cost in batch measurement",
+  "emission_seconds": 323.46624349988997,
+  "exact_project_source_deltas": [
+    "src/furnace_authority.bend"
+  ],
+  "furnace_source": {
+    "bytes": 20110,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-024/source/src/furnace_authority.bend",
+    "sha256": "2e1a76c2d81d050421e47c0e3e57e1ef98f1e44429b7d19d2c161e28ee7389e1"
+  },
+  "kernel_and_focused_native": {
+    "bytes": 6320,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/furnace-authority-cache-001.json",
+    "sha256": "973de166827f5024b271baf5e400563889b635c4ab4508b064c4416b4d1271ad"
+  },
+  "loaded_final_source_pins_equal": true,
+  "matched_paused_throughput": {
+    "all_ten_complete_clock_and_menu_checks": true,
+    "baseline_cooking_seconds": 53.60821262560785,
+    "baseline_input_empty_seconds": 1.4552222909405828,
+    "baseline_post_close_save_stage": "UNOBSERVED: retained host Close revision assertion stopped wrapper before this stage.",
+    "candidate_cooking_seconds": 7.1593713741749525,
+    "candidate_final_save": {
+      "bytes": 1713688,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-tick-throughput/003/world.nbt",
+      "sha256": "01c716bb83a6b45e9f0200b511a431c4c51ec86d0d12da0503353daaecccb9ee"
+    },
+    "candidate_full_saved_owner_checks": {
+      "clock_inputs_empty": true,
+      "complete43": true,
+      "complete_clean_journal": true,
+      "complete_incarnation_map_retained": true,
+      "effects_empty": true,
+      "entities_rng_retained": true,
+      "full104_core": true,
+      "peer_highwater46": true,
+      "physical_furnace_slots_timers_recipes_used": true,
+      "physical_player_matches_actual_inspect": true
+    },
+    "candidate_input_empty_seconds": 1.3919900422915816,
+    "candidate_journal_sequence": 6,
+    "candidate_original_wrapper_status": "FAIL: host max_peer None expectation; unchanged actual ignition peer0 event correctly yields decoded max_peer0.",
+    "candidate_typed_durable_save": {
+      "bytes": 1713688,
+      "durable": true,
+      "peer_highwater": 46,
+      "published": true,
+      "status": "durable"
+    },
+    "complete_saved_bytes_AB_equality": null,
+    "confidence": "high for measured synchronous fixture improvement; ambient delivery remains a separate acceptance boundary",
+    "cooking_ticks": 400,
+    "evidence": {
+      "bytes": 8993,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/cooking-tick-throughput-024.json",
+      "sha256": "428885906b44dd2d4860361ff710a0c35e4cf488a472a8155227de20cdc4a64a"
+    },
+    "fixture": {
+      "bytes": 1712990,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-demo.1bCC7c/world.nbt",
+      "sha256": "517d8848128a5f7432232a3bd5fb57bb3df82f031c68ebd6700964b7b9a3d039"
+    },
+    "input_empty_ticks": 100,
+    "native_replays": 0,
+    "observed_throughput_ratio": 7.487837943283906,
+    "scope": "Actual paused production simulation.step RPC throughput. No renderer, trace-image I/O, ambient cadence, hardware input or whole-game speed claim."
+  },
+  "original_compiler": {
+    "bytes": 185829,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/comp.ts",
+    "sha256": "32fb66e09f608ce9e4b173384bcfeec453db8c5bc96650e26ad861bef815a8d9"
+  },
+  "original_timed_stage": {
+    "bytes": 6137,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/cooking-tick-throughput-023.json",
+    "sha256": "ae20bcd84c8532066bd8daecdb58b98c563f9bc36d28c316f65cb34df40c75d2"
+  },
+  "private_compiler": {
+    "bytes": 191680,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-024/comp_instrumented.ts",
+    "sha256": "d2e149a6c97c6f57af8bb8c2bc86b4203a933cf18e430916efe40f456e818f4a"
+  },
+  "project_source_path_count": 208,
+  "retries": 0,
+  "runtime_inputs": {
+    "bytes": 2453,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-024/runtime-inputs.json",
+    "sha256": "561b9fd31c5e712a1bef5a1c2616cc67718494cc4dee586617994a65d9d4d532"
+  },
+  "sampled_peak_RSS_bytes": 3638640640,
+  "scope": "One substantive coherent Actor024 generation: frozen023 plus only first-ID/match branch dispatch in actual furnace_authority. Original full Entry and five independent-kernel result-preservation laws passed;24 focused native cases passed. Matched paused production batches observed 7.487837943-fold cooking throughput improvement, exact timed owner checks and candidate typed durable save. No ambient speedup, baseline final-save equality or new whole-game parity claim.",
+  "source_API": {
+    "bytes": 137761,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/bend.ts",
+    "sha256": "7deae3693eb896f33c73867081b99d2c6f3ed3b57e77e55eb5f6260840dd0e63"
+  },
+  "source_check": {
+    "bytes": 3280,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/furnace-authority-cache-source-024.json",
+    "sha256": "3964b3ab49554da5544b9c49798a12deccbdd68159837c2f5d2867be92a7ef86"
+  },
+  "source_checkpoint": "e62f1dc",
+  "source_map": {
+    "bytes": 195359,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-024/source/source-map.json",
+    "sha256": "3a6229d827f4b91bf56c744afc38cf644732b2fa09f5ab16b0560fd6676a8cd6"
+  },
+  "status": "PASS_NATIVE_BUILD_AND_MATCHED_PAUSED_THROUGHPUT"
+}
