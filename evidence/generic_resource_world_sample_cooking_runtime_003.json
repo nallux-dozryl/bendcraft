@@ -1,0 +1,1168 @@
+{
+  "schema": 1,
+  "status": "actual_ambient_cooking_save_cold_cleanup_PASS",
+  "actual_execution_generation": 12,
+  "production_client_generation": 12,
+  "actor_generation": 24,
+  "promotion": false,
+  "actual_command": "/Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 -B tools/generic_resource_world_sample_cooking_runtime.py --generation 12 --client-generation 12 --actor-generation 24 --clock ambient --native",
+  "driver_exit_code": 0,
+  "first_failure": null,
+  "native_replay_or_retry": false,
+  "new_compiler_or_emitter_processes": 0,
+  "executed_helper": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/generic_resource_world_sample_cooking_runtime.py",
+    "bytes": 54122,
+    "sha256": "2da362ff0758ae9be5d0848fe36f6c1d7c98c0de13ad83e0272ee16d2989f99a"
+  },
+  "executed_preparation": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/prepared.json",
+    "bytes": 10994,
+    "sha256": "759a8c6255b997eef0b85f2f755b6ccc1ee27f00ebcca1afb04e0c40fe216f21"
+  },
+  "native_summary": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/native/summary.json",
+    "bytes": 16630,
+    "sha256": "86c6833ecb6097a0115840056953a9da7c9e409fa6255ce29c3507f07f23ceb0"
+  },
+  "actual_actor": {
+    "bytes": 16246664,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-024/actor",
+    "sha256": "c8dd57c0f5cd6d3607bc932bf6bb74ce27009f8b90efa7db4309beea5d1e2cc4"
+  },
+  "actor_native_build": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-024/native-build.json",
+    "bytes": 3886,
+    "sha256": "52274c990860162a49831623ada22f6c26d0c08d716cd5d4e75009e11c8e37fe"
+  },
+  "original_immutable_client_build": {
+    "bytes": 10076,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/012/build.json",
+    "sha256": "0ccbe71835a81a89ebfdd187174fcf9461ba49980e52cb6b7944723c818e8422"
+  },
+  "original_immutable_client_C": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/012/renderer.c",
+    "bytes": 24951887,
+    "sha256": "eed88e41373aaff2d41145e690f6776deb12a6bb2893911df5b467ef1dff980d"
+  },
+  "original_immutable_client_binary": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/012/renderer",
+    "bytes": 6986328,
+    "sha256": "3bd945855c7526f713ed1df03ab89e136429fbc36132f6152ef16fc7a491a232"
+  },
+  "exact_artifact_reuse": {
+    "renderer-callback.c": {
+      "current": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/renderer-callback.c",
+        "bytes": 24957984,
+        "sha256": "c8c98dcb674dad6c3a566027cf09fc9894c56cb0153ed12fee1fe8c270d7c4f7"
+      },
+      "retained011": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/011/renderer-callback.c",
+        "bytes": 24957984,
+        "sha256": "c8c98dcb674dad6c3a566027cf09fc9894c56cb0153ed12fee1fe8c270d7c4f7"
+      },
+      "sha256_equal": true
+    },
+    "renderer-callback": {
+      "current": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/renderer-callback",
+        "bytes": 6989616,
+        "sha256": "023dc60d28bc916b0363ad42b9d56c5cbb38e6182faf95b78479cd7d5017ec19"
+      },
+      "retained011": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/011/renderer-callback",
+        "bytes": 6989616,
+        "sha256": "023dc60d28bc916b0363ad42b9d56c5cbb38e6182faf95b78479cd7d5017ec19"
+      },
+      "sha256_equal": true
+    },
+    "observer.swift": {
+      "current": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/observer.swift",
+        "bytes": 2633,
+        "sha256": "ea59b9e930e9e6dcacaeaf3d5bf60d7ff2782bbeae53529da30c117d6440b150"
+      },
+      "retained011": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/011/observer.swift",
+        "bytes": 2633,
+        "sha256": "ea59b9e930e9e6dcacaeaf3d5bf60d7ff2782bbeae53529da30c117d6440b150"
+      },
+      "sha256_equal": true
+    },
+    "observer": {
+      "current": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/observer",
+        "bytes": 84872,
+        "sha256": "07041fe700b9b5cf464c644161ea6c27d99c9aac3531383f8754705205ac82e6"
+      },
+      "retained011": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/011/observer",
+        "bytes": 84872,
+        "sha256": "07041fe700b9b5cf464c644161ea6c27d99c9aac3531383f8754705205ac82e6"
+      },
+      "sha256_equal": true
+    },
+    "seed.nbt": {
+      "current": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/seed.nbt",
+        "bytes": 1712794,
+        "sha256": "b7f7882b308716743e9cabd2437c8d6584d940d52ff6bef9f36e1d80b0f494a2"
+      },
+      "retained011": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/011/seed.nbt",
+        "bytes": 1712794,
+        "sha256": "b7f7882b308716743e9cabd2437c8d6584d940d52ff6bef9f36e1d80b0f494a2"
+      },
+      "sha256_equal": true
+    },
+    "events.json": {
+      "current": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/events.json",
+        "bytes": 1065,
+        "sha256": "6a54f72bbf90af61ecb91adf19ccd346130b3d647907dd086fbe654cdf63003d"
+      },
+      "retained011": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/011/events.json",
+        "bytes": 1065,
+        "sha256": "6a54f72bbf90af61ecb91adf19ccd346130b3d647907dd086fbe654cdf63003d"
+      },
+      "sha256_equal": true
+    }
+  },
+  "callback_build": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/callback-build.json",
+    "bytes": 3058,
+    "sha256": "f6f9b18f444206a51971a5a0275c07ad902d3c93acc639d131f453633c4e72cb"
+  },
+  "observer_build": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/observer-build.json",
+    "bytes": 2088,
+    "sha256": "a24a66dfcdeeb0463d097a99d447f8ca1f382ebc572df72141b55a715b04a01d"
+  },
+  "private_four_seams": {
+    "declaration_sha256": "df35838c0900cea03924814bb1a37a7f8722ab54e89636324fbb3307999dfc44",
+    "edits": [
+      "Only queried BEND_MINECRAFT_LAUNCH_MODE returns human under explicit hidden callback marker; all other effect/env reads exact",
+      "Private declaration before the actual Objective-C Window.frame",
+      "After original window_show, before unchanged window_list/queue clearing",
+      "Test-only virtual grab branch; no Base cursor effects; real releaseKeys retained",
+      "Test-only focused=True/captured=virtual grab, within actual Native.status",
+      "Local callback implementation after actual MCPlayerPresentationView declaration"
+    ],
+    "event_callback_source_sha256": "9691fd6ced9f7a6290a0428ad4d0b73f937413e0c7a0083169b9d8af95187e6d",
+    "interactive_mode_read": {
+      "actual_native_environment": "hidden",
+      "effect": "CID_IO_GET_ENV",
+      "other_queries_changed": false,
+      "query": "BEND_MINECRAFT_LAUNCH_MODE",
+      "returned": "human"
+    },
+    "original_C_edits": 0,
+    "original_window_show_list_and_drawing_retained": true,
+    "production_Bend_edits": 0,
+    "production_Native_edits": 0,
+    "scope": "Synthetic local NSEvent callbacks and virtual focus/capture only; no OS event posting, focus, capture, cursor or input-latency claim."
+  },
+  "actual_callback_batches": 9,
+  "callback_acknowledgements": [
+    {
+      "label": "use-ray",
+      "token": 1,
+      "frame": 1,
+      "actual_pixel_point_extent": [
+        960,
+        540
+      ],
+      "queue_words": [
+        126,
+        480,
+        270,
+        1,
+        1,
+        126,
+        480,
+        270,
+        1,
+        0
+      ]
+    },
+    {
+      "label": "pick-beef",
+      "token": 2,
+      "frame": 3,
+      "actual_pixel_point_extent": [
+        960,
+        540
+      ],
+      "queue_words": [
+        126,
+        408,
+        337,
+        0,
+        1,
+        126,
+        408,
+        337,
+        0,
+        0
+      ]
+    },
+    {
+      "label": "put-input",
+      "token": 3,
+      "frame": 5,
+      "actual_pixel_point_extent": [
+        960,
+        540
+      ],
+      "queue_words": [
+        126,
+        456,
+        212,
+        0,
+        1,
+        126,
+        456,
+        212,
+        0,
+        0
+      ]
+    },
+    {
+      "label": "pick-coal",
+      "token": 4,
+      "frame": 7,
+      "actual_pixel_point_extent": [
+        960,
+        540
+      ],
+      "queue_words": [
+        126,
+        426,
+        337,
+        0,
+        1,
+        126,
+        426,
+        337,
+        0,
+        0
+      ]
+    },
+    {
+      "label": "put-fuel",
+      "token": 5,
+      "frame": 9,
+      "actual_pixel_point_extent": [
+        960,
+        540
+      ],
+      "queue_words": [
+        126,
+        456,
+        248,
+        0,
+        1,
+        126,
+        456,
+        248,
+        0,
+        0
+      ]
+    },
+    {
+      "label": "pick-output",
+      "token": 6,
+      "frame": 20,
+      "actual_pixel_point_extent": [
+        960,
+        540
+      ],
+      "queue_words": [
+        126,
+        516,
+        230,
+        0,
+        1,
+        126,
+        516,
+        230,
+        0,
+        0
+      ]
+    },
+    {
+      "label": "put-main2",
+      "token": 7,
+      "frame": 22,
+      "actual_pixel_point_extent": [
+        960,
+        540
+      ],
+      "queue_words": [
+        126,
+        444,
+        337,
+        0,
+        1,
+        126,
+        444,
+        337,
+        0,
+        0
+      ]
+    },
+    {
+      "label": "close-cooking",
+      "token": 8,
+      "frame": 24,
+      "actual_pixel_point_extent": [
+        960,
+        540
+      ],
+      "queue_words": [
+        125,
+        2147549198,
+        1,
+        0,
+        0,
+        125,
+        101,
+        1,
+        0,
+        0,
+        125,
+        2147549198,
+        0,
+        0,
+        0,
+        125,
+        101,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "label": "close-window",
+      "token": 9,
+      "frame": 26,
+      "actual_pixel_point_extent": [
+        960,
+        540
+      ],
+      "queue_words": [
+        130,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "clock_mode": "ambient",
+  "normal_speed_bits": 1065353216,
+  "simulation_step_calls": 0,
+  "progress_seconds": 23.862784083001316,
+  "partial_to_completion_presented_seconds": 21.507980749942362,
+  "correlated_ambient_inspect_observations": [
+    {
+      "sequence": 44,
+      "request": [
+        15,
+        1
+      ],
+      "snapshot": [
+        1,
+        0,
+        [
+          1,
+          "minecraft:beef",
+          "",
+          2
+        ],
+        [
+          1,
+          "minecraft:coal",
+          "",
+          1
+        ],
+        [
+          0
+        ],
+        1600,
+        1600,
+        1,
+        200
+      ],
+      "exact_Core_tick": 1,
+      "pin": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/native/reply-000044-ambient cooking inspect.json",
+        "bytes": 638,
+        "sha256": "895605e13f7c94a27d5a07328d0abc476e42ff6659b5e4a42f4e653cd34fa661"
+      }
+    },
+    {
+      "sequence": 47,
+      "request": [
+        15,
+        1
+      ],
+      "snapshot": [
+        1,
+        0,
+        [
+          1,
+          "minecraft:beef",
+          "",
+          2
+        ],
+        [
+          1,
+          "minecraft:coal",
+          "",
+          1
+        ],
+        [
+          0
+        ],
+        1553,
+        1600,
+        48,
+        200
+      ],
+      "exact_Core_tick": 48,
+      "pin": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/native/reply-000047-ambient cooking inspect.json",
+        "bytes": 639,
+        "sha256": "6768dc0d9a67dfe69b941a3e484d8f2ae9426207b3c4637a799d08b428405807"
+      }
+    },
+    {
+      "sequence": 50,
+      "request": [
+        15,
+        1
+      ],
+      "snapshot": [
+        1,
+        0,
+        [
+          1,
+          "minecraft:beef",
+          "",
+          2
+        ],
+        [
+          1,
+          "minecraft:coal",
+          "",
+          1
+        ],
+        [
+          0
+        ],
+        1502,
+        1600,
+        99,
+        200
+      ],
+      "exact_Core_tick": 99,
+      "pin": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/native/reply-000050-ambient cooking inspect.json",
+        "bytes": 639,
+        "sha256": "2401280b99d4c87519cc6f7407a4cde5d093fbb8e9a8725890b0786d624708a1"
+      }
+    },
+    {
+      "sequence": 53,
+      "request": [
+        15,
+        1
+      ],
+      "snapshot": [
+        1,
+        0,
+        [
+          1,
+          "minecraft:beef",
+          "",
+          2
+        ],
+        [
+          1,
+          "minecraft:coal",
+          "",
+          1
+        ],
+        [
+          0
+        ],
+        1452,
+        1600,
+        149,
+        200
+      ],
+      "exact_Core_tick": 149,
+      "pin": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/native/reply-000053-ambient cooking inspect.json",
+        "bytes": 640,
+        "sha256": "ac2d1b448bd3f3e9188cc9e4758e2a007863c45a6360921fca70f3cc18ac769b"
+      }
+    },
+    {
+      "sequence": 56,
+      "request": [
+        15,
+        1
+      ],
+      "snapshot": [
+        1,
+        0,
+        [
+          1,
+          "minecraft:beef",
+          "",
+          1
+        ],
+        [
+          1,
+          "minecraft:coal",
+          "",
+          1
+        ],
+        [
+          1,
+          "minecraft:cooked_beef",
+          "",
+          1
+        ],
+        1396,
+        1600,
+        5,
+        200
+      ],
+      "exact_Core_tick": 205,
+      "pin": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/native/reply-000056-ambient cooking inspect.json",
+        "bytes": 667,
+        "sha256": "a3258c7bdc272742bd0dd033b7bc80607735a1525f249c60b3c1ba953651b774"
+      }
+    },
+    {
+      "sequence": 59,
+      "request": [
+        15,
+        1
+      ],
+      "snapshot": [
+        1,
+        0,
+        [
+          1,
+          "minecraft:beef",
+          "",
+          1
+        ],
+        [
+          1,
+          "minecraft:coal",
+          "",
+          1
+        ],
+        [
+          1,
+          "minecraft:cooked_beef",
+          "",
+          1
+        ],
+        1344,
+        1600,
+        57,
+        200
+      ],
+      "exact_Core_tick": 257,
+      "pin": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/native/reply-000059-ambient cooking inspect.json",
+        "bytes": 668,
+        "sha256": "815f4c575c2a134f60d6c00ac31cf04475880d99b690d4cb89c22bee5740c833"
+      }
+    },
+    {
+      "sequence": 62,
+      "request": [
+        15,
+        1
+      ],
+      "snapshot": [
+        1,
+        0,
+        [
+          1,
+          "minecraft:beef",
+          "",
+          1
+        ],
+        [
+          1,
+          "minecraft:coal",
+          "",
+          1
+        ],
+        [
+          1,
+          "minecraft:cooked_beef",
+          "",
+          1
+        ],
+        1290,
+        1600,
+        111,
+        200
+      ],
+      "exact_Core_tick": 311,
+      "pin": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/native/reply-000062-ambient cooking inspect.json",
+        "bytes": 669,
+        "sha256": "799ba6f1425ec7620f26627296f76665dacc80282c3df1fb3ac865ad721dccf0"
+      }
+    },
+    {
+      "sequence": 65,
+      "request": [
+        15,
+        1
+      ],
+      "snapshot": [
+        1,
+        0,
+        [
+          1,
+          "minecraft:beef",
+          "",
+          1
+        ],
+        [
+          1,
+          "minecraft:coal",
+          "",
+          1
+        ],
+        [
+          1,
+          "minecraft:cooked_beef",
+          "",
+          1
+        ],
+        1238,
+        1600,
+        163,
+        200
+      ],
+      "exact_Core_tick": 363,
+      "pin": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/native/reply-000065-ambient cooking inspect.json",
+        "bytes": 669,
+        "sha256": "7b094f2fe3a860a3e40b2028bffa306f7e4857278a1320090fabe5fd48fe05bc"
+      }
+    },
+    {
+      "sequence": 68,
+      "request": [
+        15,
+        1
+      ],
+      "snapshot": [
+        1,
+        0,
+        [
+          0
+        ],
+        [
+          1,
+          "minecraft:coal",
+          "",
+          1
+        ],
+        [
+          1,
+          "minecraft:cooked_beef",
+          "",
+          2
+        ],
+        1179,
+        1600,
+        0,
+        200
+      ],
+      "exact_Core_tick": 422,
+      "pin": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/native/reply-000068-ambient cooking inspect.json",
+        "bytes": 645,
+        "sha256": "19b93673e289dc797987d2ac0469c1a58ec41307c92e1eccc4da1861feae0a0e"
+      }
+    }
+  ],
+  "transfer_clock_observations": [
+    {
+      "burn_remaining": 1058,
+      "inferred_exact_Core_tick": 543,
+      "label": "pick-output",
+      "minimum_Core_tick": 543
+    },
+    {
+      "burn_remaining": 954,
+      "inferred_exact_Core_tick": 647,
+      "label": "put-main2",
+      "minimum_Core_tick": 647
+    }
+  ],
+  "completion_inspect_exact_Core_tick": 422,
+  "completion_catalog_frame_Core_tick": 420,
+  "final_paused_Core_clock": {
+    "day_time": 0,
+    "daylight": false,
+    "paused": true,
+    "pending": 0,
+    "revision": 2,
+    "tick": 858
+  },
+  "pause_after_renderer_close": true,
+  "observer": {
+    "activation_notification_pids": [],
+    "after_frontmost_pid": 7356,
+    "before_frontmost_pid": 7356,
+    "child_pid": 36160,
+    "child_status": 0,
+    "cleanup": {
+      "after": [],
+      "before": [],
+      "errors": [],
+      "leader_reaped": true,
+      "live_group_absent": true,
+      "seconds": 0.12637183349579573
+    },
+    "drawable_readback": false,
+    "elapsed_seconds": 63.3250949382782,
+    "frame_descriptions": 0,
+    "same_returned_cpu_image": true,
+    "sampled_frontmost_pids": [
+      7356
+    ],
+    "samples": 2169,
+    "space_change_notifications": 0,
+    "stderr": {
+      "bytes": 14,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/native/callback-client/stderr",
+      "sha256": "5707ca3d063ed4edad9ab2803a94a3e4bfe1d0f5c6a47be2ac168b361cc746fd"
+    },
+    "stdout": {
+      "bytes": 4027,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/native/callback-client/stdout",
+      "sha256": "06c2aacc81b022b1e8355df18624c4a1e2b715cc0ec4eb7010b2e469d4d9dd1f"
+    },
+    "timed_out": false
+  },
+  "driver_observer_cap_seconds": 120,
+  "paused_clock_stabilization_cap_seconds": 10,
+  "actual_FrameCatalog_replies": 26,
+  "sampled_cells_per_reply": 512,
+  "aggregate_actual_cell_observations": 13312,
+  "retained_exchanges": 95,
+  "retained_wire": {
+    "bytes": 761194,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/native/callback-relay.json",
+    "sha256": "7dfdaf561a185549d04a466bdaf2ef41af62a00041b33e7055904f4da3e4a9ef"
+  },
+  "all_retained_native_requests_and_replies_forwarded_unchanged": true,
+  "representative_complete_P6_images": [
+    {
+      "label": "ambient-completed",
+      "serial": 18,
+      "elapsed_since_observer_start": 45.054608083330095,
+      "receipt": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/native/presented-ambient-completed.json",
+        "bytes": 619,
+        "sha256": "3695465081e0faa2d8044a0ccf2a116f15c50a8e629cf79fa42136c534e5743b"
+      },
+      "CPU_image": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/native/callback-client/images/18.ppm",
+        "bytes": 1555215,
+        "sha256": "4947d981febcdad72cbeddcfbaa9e920fc2cb59a66b71594638db078f0e72d88"
+      },
+      "complete_P6_payload": true,
+      "completed_resource_image_marker": "resource.image|18|960|540|2703417456"
+    },
+    {
+      "label": "ambient-partial",
+      "serial": 10,
+      "elapsed_since_observer_start": 23.546627333387733,
+      "receipt": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/native/presented-ambient-partial.json",
+        "bytes": 616,
+        "sha256": "54c83b01a3914a4d9aeb08692855945234d0d3ca693b53c0e38a88a36efdc08c"
+      },
+      "CPU_image": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/native/callback-client/images/10.ppm",
+        "bytes": 1555215,
+        "sha256": "927ae53a4ebd86e67f07520263bc9cb3bae3e22d4a7cc1550bacf227f8bd43ff"
+      },
+      "complete_P6_payload": true,
+      "completed_resource_image_marker": "resource.image|10|960|540|958638528"
+    },
+    {
+      "label": "closed",
+      "serial": 24,
+      "elapsed_since_observer_start": 61.1148462081328,
+      "receipt": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/native/presented-closed.json",
+        "bytes": 606,
+        "sha256": "64c8070aeca703c2d3f0ecad753f233a4fbb2e3a6804f219769b65253fa2ab4f"
+      },
+      "CPU_image": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/native/callback-client/images/24.ppm",
+        "bytes": 1555215,
+        "sha256": "7cdf36c8834c20d56381a5ecc6098c3ac635907f5733b742c670a11f9d0447cd"
+      },
+      "complete_P6_payload": true,
+      "completed_resource_image_marker": "resource.image|24|960|540|1984943669"
+    },
+    {
+      "label": "opened",
+      "serial": 1,
+      "elapsed_since_observer_start": 10.961111083626747,
+      "receipt": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/native/presented-opened.json",
+        "bytes": 605,
+        "sha256": "6f8fee1e38551de3c229d03a0d27b59f6327515e019bad5801f44a5b2cef1870"
+      },
+      "CPU_image": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/native/callback-client/images/1.ppm",
+        "bytes": 1555215,
+        "sha256": "e0e9929126a646e1245ce143d4de5d84811508dda50e0c23b98c59174faefa95"
+      },
+      "complete_P6_payload": true,
+      "completed_resource_image_marker": "resource.image|1|960|540|3894504310"
+    },
+    {
+      "label": "pick-beef",
+      "serial": 3,
+      "elapsed_since_observer_start": 12.447977042756975,
+      "receipt": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/native/presented-pick-beef.json",
+        "bytes": 608,
+        "sha256": "9c72fb037bac99477a89e991374fa02de4e5fecc4adc580ca0b00f1db5a08020"
+      },
+      "CPU_image": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/native/callback-client/images/3.ppm",
+        "bytes": 1555215,
+        "sha256": "00fe6e8c4ebe1d678f75bbee2f6165bb30f3390238eb358b857e322d7116c0a9"
+      },
+      "complete_P6_payload": true,
+      "completed_resource_image_marker": "resource.image|3|960|540|4141954024"
+    },
+    {
+      "label": "pick-coal",
+      "serial": 7,
+      "elapsed_since_observer_start": 17.10806329268962,
+      "receipt": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/native/presented-pick-coal.json",
+        "bytes": 606,
+        "sha256": "594d345a488608d1613ae38bb8c9b9f7658bd5fda9ff49bc73f1a1bb1f9239dc"
+      },
+      "CPU_image": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/native/callback-client/images/7.ppm",
+        "bytes": 1555215,
+        "sha256": "25936fc98dbdf8e19739daa89e2447123c2d6afc754e4e8823aec371ab3e7337"
+      },
+      "complete_P6_payload": true,
+      "completed_resource_image_marker": "resource.image|7|960|540|691711854"
+    },
+    {
+      "label": "pick-output",
+      "serial": 20,
+      "elapsed_since_observer_start": 50.99998487532139,
+      "receipt": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/native/presented-pick-output.json",
+        "bytes": 612,
+        "sha256": "d3a32529f16fdadc2cdd75709325c3fd6f7b43db0e0435e638e69a2e26d94a63"
+      },
+      "CPU_image": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/native/callback-client/images/20.ppm",
+        "bytes": 1555215,
+        "sha256": "fd29f5d782aa11660af09394920208527fbe3c1d232f958d4ebcf49fb5ecf855"
+      },
+      "complete_P6_payload": true,
+      "completed_resource_image_marker": "resource.image|20|960|540|4008076684"
+    },
+    {
+      "label": "put-fuel",
+      "serial": 9,
+      "elapsed_since_observer_start": 21.191769500263035,
+      "receipt": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/native/presented-put-fuel.json",
+        "bytes": 607,
+        "sha256": "9c95b40dc79b538e680aa197c92ae43561fa093c4103404d6b58f9a0c4f9938d"
+      },
+      "CPU_image": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/native/callback-client/images/9.ppm",
+        "bytes": 1555215,
+        "sha256": "39863b29e4a2fb6410e7199b0f12b7cc00d46a2e1484d6c12dc4c40466e1a21d"
+      },
+      "complete_P6_payload": true,
+      "completed_resource_image_marker": "resource.image|9|960|540|1710019786"
+    },
+    {
+      "label": "put-input",
+      "serial": 5,
+      "elapsed_since_observer_start": 14.4495217083022,
+      "receipt": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/native/presented-put-input.json",
+        "bytes": 606,
+        "sha256": "bef5ba25403187a0f7720d637fb49e0a52e84d46ec2a4e92617a8502037ff972"
+      },
+      "CPU_image": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/native/callback-client/images/5.ppm",
+        "bytes": 1555215,
+        "sha256": "25f0f79542bc81312f2ec2aaf16062925abc153c429c726d7a05dad429407a5a"
+      },
+      "complete_P6_payload": true,
+      "completed_resource_image_marker": "resource.image|5|960|540|2935174420"
+    },
+    {
+      "label": "put-main2",
+      "serial": 22,
+      "elapsed_since_observer_start": 56.09373695868999,
+      "receipt": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/native/presented-put-main2.json",
+        "bytes": 610,
+        "sha256": "9ba47527a5f242b2c59a2ce640612e5047d6f5645ff04edd2b4780d978f3426e"
+      },
+      "CPU_image": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/native/callback-client/images/22.ppm",
+        "bytes": 1555215,
+        "sha256": "a4cb9b1eb6114b8c455f3b73a52e59b64007cb8d0fc07a0ea95b5a56dbcf401c"
+      },
+      "complete_P6_payload": true,
+      "completed_resource_image_marker": "resource.image|22|960|540|3354193935"
+    }
+  ],
+  "save_and_cold": {
+    "status": "PASS",
+    "complete_reconstruction": true,
+    "loaded_sections": 104,
+    "durable_cells": 43,
+    "initial_save_highwater": 43,
+    "cold_save_highwater": 45,
+    "cold_transient_menu_empty": true,
+    "complete_cold_owner_equality": true,
+    "raw_LocalPlayer_retained": true,
+    "full43_status_WG_retained": true,
+    "complete_Core_events_sections_retained": true,
+    "physical_Details_root_slots_timers_RecipesUsed_retained": true,
+    "entity_factory_ID_RNG_effects_clock_inputs_retained": true,
+    "incarnation_topology_retained": true,
+    "publication_retained": {
+      "last": {
+        "chunk": {
+          "dimension": [
+            109,
+            105,
+            110,
+            101,
+            99,
+            114,
+            97,
+            102,
+            116,
+            58,
+            111,
+            118,
+            101,
+            114,
+            119,
+            111,
+            114,
+            108,
+            100
+          ],
+          "x": 0,
+          "z": 0
+        },
+        "position": {
+          "dimension": [
+            109,
+            105,
+            110,
+            101,
+            99,
+            114,
+            97,
+            102,
+            116,
+            58,
+            111,
+            118,
+            101,
+            114,
+            119,
+            111,
+            114,
+            108,
+            100
+          ],
+          "x": 12,
+          "y": 8,
+          "z": 12
+        },
+        "sequence": 7,
+        "source": {
+          "binding": {
+            "block": [
+              109,
+              105,
+              110,
+              101,
+              99,
+              114,
+              97,
+              102,
+              116,
+              58,
+              102,
+              117,
+              114,
+              110,
+              97,
+              99,
+              101
+            ],
+            "family": 0,
+            "lit": 1,
+            "lit_state": 6883,
+            "state": 6883,
+            "unlit_state": 6884
+          },
+          "incarnation": 3,
+          "position": {
+            "dimension": [
+              109,
+              105,
+              110,
+              101,
+              99,
+              114,
+              97,
+              102,
+              116,
+              58,
+              111,
+              118,
+              101,
+              114,
+              119,
+              111,
+              114,
+              108,
+              100
+            ],
+            "x": 12,
+            "y": 8,
+            "z": 12
+          }
+        }
+      },
+      "sequence": 7,
+      "unsaved": []
+    },
+    "furnace_state": 6883,
+    "burn_remaining_total": [
+      743,
+      1600
+    ],
+    "cook_spent_total": [
+      0,
+      200
+    ],
+    "fuel": "minecraft:coal",
+    "fuel_count": 1,
+    "main2": "minecraft:cooked_beef",
+    "main2_count": 2,
+    "RecipesUsed_count": 2,
+    "output_pick_after_extinction": false,
+    "saved_before_cold_sha256": "f2b59e20607f7e1075e7ff96b75bd4258be482112f29b3ef1a36a4f89450784c",
+    "saved_after_cold": {
+      "bytes": 1713677,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/native/world.nbt",
+      "sha256": "a5495329b9e42a669f6fcf1a8607971a318160055a828d711d5b9a3b47c97750"
+    },
+    "independent_save_projection": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/native/save-projection.json",
+      "bytes": 1456,
+      "sha256": "3ef96a869bd418ec29b6509fa93f665d7198f384d84ec644c5d9196dfd5f1f74"
+    },
+    "actual_cold_actor_process": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/native/actor-cold/process.json",
+      "bytes": 899,
+      "sha256": "7b0a0144f2a6bcc418b3ad218895a93be6f862f185baa4d4a23caf36b897e88c"
+    }
+  },
+  "cleanup": {
+    "status": "PASS",
+    "own_groups": 3,
+    "owned_group_journal": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/native/owned-groups.ndjson",
+      "bytes": 1518,
+      "sha256": "acd13213d16eb4e6f2b3fe3e9f779b15136705fb552fed748cf0708a5691f220"
+    },
+    "own_group_cleanup": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/native/owned-groups-cleanup.json",
+      "bytes": 1625,
+      "sha256": "e10f4e686ce4650dc56cd8f3a4d885d2fb6b8504ee06d418b47a7d0af4560949"
+    },
+    "observer_cleanup": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/native/callback-client/cleanup.full.json",
+      "bytes": 113,
+      "sha256": "f4d68c412f1fa9667ab9dafb609055eb48c8df1087822ef056e94fdb56653461"
+    },
+    "post_exit_verification": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/012/native/post-exit-verification.json",
+      "bytes": 1414,
+      "sha256": "630294efc97794a21f5bd5b76ac137d8fa16b352587470236d72a9d7c11c76b6"
+    },
+    "all_own_groups_absent": true,
+    "all_five_own_listeners_absent": true,
+    "primary_or_secondary_cleanup_failure": null
+  },
+  "historical_receipts_preserved": [
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/generic_resource_world_sample_cooking_runtime_001.json",
+      "bytes": 15994,
+      "sha256": "8f4324e0bd83b81c937fe5c89a82db0b9437175b18a2660720b06f44039e188a"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/generic_resource_world_sample_cooking_runtime_002.json",
+      "bytes": 40367,
+      "sha256": "5dca8339bddc95cb9d836bd7d46bf8d8354e7005bbe536621ee6ebc2bdce4691"
+    }
+  ],
+  "documentation": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/docs/generic_resource_world_sample_cooking_runtime.md",
+    "bytes": 14551,
+    "sha256": "356172594d9f4093d6f0889ade23b3b30910105338c4ba3a190ff453f53eaba0"
+  },
+  "limits": {
+    "synthetic_native_callbacks": true,
+    "virtual_test_focus_capture": true,
+    "production_Bend_or_Native_source_edits": 0,
+    "production_C_edits": 0,
+    "foreground_hardware_OS_input": false,
+    "drawable_readback": false,
+    "same_returned_composed_CPU_images": true,
+    "full_vanilla_frame_parity": false,
+    "ambient_20TPS_inference": false,
+    "public_unmodified_wrapper_acceptance": "Separate parent-owned run; not claimed here.",
+    "XP_extraction": "Not invoked or claimed."
+  }
+}

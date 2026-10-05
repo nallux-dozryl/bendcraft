@@ -1,7 +1,8 @@
 # Generic cooking caller fixture
 
 The helper `tools/generic_resource_world_sample_cooking_runtime.py` prepares a
-private callback test of the actual Generic client and Actor022. Preparation is
+private callback test of the actual Generic client and an explicitly selected
+actor generation. Preparation is
 file-only. The original production renderer, frozen Bend sources, original
 emitted C and native adapters remain unchanged. Native execution uses the
 explicitly declared synthetic callback copy; it does not establish OS
@@ -184,3 +185,38 @@ from the original seed only at byte330, paused1→0. Its SHA256 is
 Actual unmodified public-wrapper acceptance remains a separate result. The
 checked-in positive receipt explicitly retains behaviour/save/cold PASS,
 original host cleanup FAIL, and completed post-exit cleanup verification.
+
+Actual012 selected the genuinely built Actor024 after its cached-recipe ID
+short circuit repair. It reused the same production012 callback C/binary,
+120-second observer, fixture and nine callback batches from011, with no new
+compiler process or native retry. The driver exited0 PASS, including its own
+normal cleanup. The earlier001/002 receipts and original011 cleanup failure
+remain unchanged.
+
+The complete partial-progress image appeared23.547 seconds after observer
+start; completed output appeared45.055 seconds, pickup51.000, main2
+placement56.094, and E close61.115. The measured ambient cooking interval was
+23.863 seconds. The correlated inspectors observed cook spent1,48,99,149,
+then one output with spent5,57,111,163, and finally two outputs with spent0.
+The completion burn1179 fixes that reply's exact Core tick422; the corresponding
+Catalog frame sampled tick420. These asynchronous observations do not assign
+one tick to both replies. There were26 real Catalog frames with512 cells each
+and ten verified complete960×540 CPU image receipts. No simulation.step was
+issued.
+
+Unlike011, fuel remained at save. Pickup burn1058 fixes tick543, deposit
+burn954 fixes647, and the final paused clock is858/day0/revision2. The source
+oracle admits this path unchanged: furnace lit6883, remaining burn743/1600,
+cook spent0/200, coal1, RecipesUsed2, main2 cooked_beef2, and seven ordered
+dirty receipts whose last source is LIT6883. Complete104-section/Core/player43/
+physical-body/entity/RNG/clock/incarnation/publication reconstruction passed
+at highwater43. A new real Actor024 cold-loaded it, verified the empty transient
+menu and every retained owner, and resaved at highwater45 with exact equality.
+
+The observer completed in63.325 seconds with child status0, no timeout, no
+activation notifications and no Spaces changes. Its actual frontmost PID
+remained7356. All three owned groups were reaped with no cleanup errors; a
+post-exit check found all five old/cold public/private/relay listeners absent.
+The compact003 receipt records the exact artifacts, replies, complete-image
+pins, save/cold reconstruction and cleanup. This remains synthetic callback
+acceptance; public unmodified wrapper acceptance is a separate run.
