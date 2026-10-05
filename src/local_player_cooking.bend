@@ -4,7 +4,6 @@ import ./block_light.bend as L
 import ./block_light_world.bend as BW
 import ./block_light_registry.bend as LR
 import ./cooking_world.bend as CW
-import ./cooking_world_actor.bend as Actor
 import ./cooking_world_tick.bend as Tick
 import ./cooking_world_store.bend as Store
 import ./cooking_world_bindings.bend as Bindings
@@ -17,6 +16,7 @@ import ./cooking_effect_delivery.bend as Delivery
 import ./local_player_cooking_entity_owner.bend as Owner
 import ./cooking_effect_entities_model.bend as Model
 import ./random.bend as Random
+import ./local_player_cooking_publication_owner.bend as Publisher
 
 # Catalogs must come from the authenticated registry loaders and the same
 # initialized recipe/item/fuel reload. The tail is an explicit canonical gate.
@@ -383,15 +383,39 @@ def completed(context:Context,effects:List<&2,Store.Effect>,lifecycle:Lifecycle,
       (world,installed(context,light,loading,entries,phase,keys,List.append(&2,Store.Effect,effects,more),
         lifecycle_completed(lifecycle_effects(lifecycle,more)),entity_owner,owned_tail),Done{True{}})
 
+# Accepted start_tick lifecycle markers must be acknowledged before the new
+# block-entity tick captures its producer source. The acknowledgement is kept
+# if finish refuses, so resuming the same phase cannot advance tokens twice.
+def finish_owned_lifecycle(+context:Context,effects:List<&2,Store.Effect>,lifecycle:Lifecycle,
+    entity_owner:Owner.Carrier,owned_tail:List<&1,Sidecar>,state:CW.State) ->
+    C.World & Sidecar & Result<&2,&2,String,Bool>:
+  Lifecycle{details,+incarnations,acknowledged} = lifecycle
+  completed(context,effects,Lifecycle{details,incarnations,acknowledged},entity_owner,owned_tail,
+    Tick.finish_tick_owned(~Context,~properties,~enabled,context,cooking_context(context),incarnations,state))
+
+def finish_owned(+context:Context,effects:List<&2,Store.Effect>,lifecycle:Lifecycle,
+    entity_owner:Owner.Carrier,owned_tail:List<&1,Sidecar>,state:CW.State) ->
+    C.World & Sidecar & Result<&2,&2,String,Bool>:
+  CW.State{world,entries,+phase,keys} = state
+  finish_owned_lifecycle(context,effects,lifecycle_phase(phase,lifecycle),entity_owner,owned_tail,
+    CW.State{world,entries,phase,keys})
+
+def tick_started(context:Context,effects:List<&2,Store.Effect>,lifecycle:Lifecycle,
+    entity_owner:Owner.Carrier,owned_tail:List<&1,Sidecar>,result:CW.State & Result<&2,&2,CW.Error,Unit>) ->
+    C.World & Sidecar & Result<&2,&2,String,Bool>:
+  match result:
+    case (state,Fail{error}): completed(context,effects,lifecycle,entity_owner,owned_tail,(state,Fail{error}))
+    case (state,Done{unit}): finish_owned(context,effects,lifecycle,entity_owner,owned_tail,state)
+
 def tick_activated(world:C.World,+context:Context,light:L.State,loading:Maybe<&2,BW.Cursor>,
     entries:List<&1,Store.Entry>,keys:List<&2,String>,effects:List<&2,Store.Effect>,details:List<&2,BodyDetails>,
-    incarnations:Map<&2,Nat>,acknowledged_resets:Nat,entity_owner:Owner.Carrier,owned_tail:List<&1,Sidecar>) ->
+    +incarnations:Map<&2,Nat>,+acknowledged_resets:Nat,entity_owner:Owner.Carrier,owned_tail:List<&1,Sidecar>) ->
     C.World & Sidecar & Result<&2,&2,String,Bool>:
   match owned_tail:
     case Nil{}:
-      completed(context,effects,Lifecycle{details,incarnations,acknowledged_resets},entity_owner,[],Actor.started(~Context,~properties,~enabled,context,cooking_context(context),
-        CW.start_tick(~Context,~properties,~enabled,context,cooking_context(context),
-          CW.State{BW.State{world,light,loading},entries,CW.Idle{},keys})))
+      tick_started(context,effects,Lifecycle{details,incarnations,acknowledged_resets},entity_owner,[],
+        CW.start_tick_owned(~Context,~properties,~enabled,context,cooking_context(context),incarnations,acknowledged_resets,
+          CW.State{BW.State{world,light,loading},entries,CW.Idle{},keys}))
     case child <> rest:
       (world,Initialized{context,light,loading,entries,CW.Idle{},keys,effects,details,incarnations,acknowledged_resets,entity_owner,child <> rest},Fail{"local-cooking:noncanonical-sidecar-tail"})
 
@@ -418,8 +442,8 @@ def resume_tick(world:C.World,+context:Context,light:L.State,loading:Maybe<&2,BW
     C.World & Sidecar & Result<&2,&2,String,Bool>:
   match owned_tail:
     case Nil{}:
-      completed(context,effects,lifecycle,entity_owner,[],Tick.finish_tick(~Context,~properties,~enabled,context,cooking_context(context),
-        CW.State{BW.State{world,light,loading},entries,phase,keys}))
+      finish_owned(context,effects,lifecycle,entity_owner,[],
+        CW.State{BW.State{world,light,loading},entries,phase,keys})
     case child <> rest:
       (world,installed(context,light,loading,entries,phase,keys,effects,lifecycle,entity_owner,child <> rest),Fail{"local-cooking:noncanonical-sidecar-tail"})
 
@@ -628,11 +652,19 @@ def save_admission(sidecar:Sidecar) -> Sidecar & Result<&2,&2,String,Unit>:
       (Initialized{context,light,None{},[],CW.Idle{},[],effect <> rest,[],incarnations,acknowledged_resets,entity_owner,owned_tail},Fail{"local-cooking:save-undelivered-effects"})
     case Initialized{context,light,None{},Nil{},CW.Idle{},Nil{},Nil{},Nil{},incarnations,acknowledged_resets,Owner.Unbound{},Nil{}}:
       (Initialized{context,light,None{},[],CW.Idle{},[],[],[],incarnations,acknowledged_resets,Owner.Unbound{},[]},Done{Unit{}})
-    case Initialized{context,light,None{},Nil{},CW.Idle{},Nil{},Nil{},Nil{},incarnations,acknowledged_resets,Owner.Bound{entity_context,state,inputs,geometry},Nil{}}:
-      (Initialized{context,light,None{},[],CW.Idle{},[],[],[],incarnations,acknowledged_resets,Owner.Bound{entity_context,state,inputs,geometry},[]},
+    case Initialized{context,light,None{},Nil{},CW.Idle{},Nil{},Nil{},Nil{},incarnations,acknowledged_resets,Owner.PublicationOnly{publisher},Nil{}}:
+      (Initialized{context,light,None{},[],CW.Idle{},[],[],[],incarnations,acknowledged_resets,Owner.PublicationOnly{publisher},[]},
+        Fail{"local-cooking:save-publication-owner-required"})
+    case Initialized{context,light,None{},Nil{},CW.Idle{},Nil{},Nil{},Nil{},incarnations,acknowledged_resets,Owner.Bound{entity_context,state,inputs,geometry,publisher},Nil{}}:
+      (Initialized{context,light,None{},[],CW.Idle{},[],[],[],incarnations,acknowledged_resets,Owner.Bound{entity_context,state,inputs,geometry,publisher},[]},
         Fail{"local-cooking:save-entity-owner-required"})
     case Initialized{context,light,None{},Nil{},CW.Idle{},Nil{},Nil{},Nil{},incarnations,acknowledged_resets,entity_owner,child <> rest}:
       (Initialized{context,light,None{},[],CW.Idle{},[],[],[],incarnations,acknowledged_resets,entity_owner,child <> rest},Fail{"local-cooking:noncanonical-sidecar-tail"})
+
+def persistence_owner_checked(restore:Owner.Carrier -> Sidecar,result:Owner.Carrier & Result<&2,&2,String,Unit>) ->
+    Sidecar & Result<&2,&2,String,Unit>:
+  (owner,status) = result
+  (restore(owner),status)
 
 # Complete physical framing may retain known bodies and their base/extras.
 # Released intents are now captured in the actor's same atomic physical frame.
@@ -646,8 +678,10 @@ def persistence_ready(sidecar:Sidecar) -> Sidecar & Result<&2,&2,String,Unit>:
       (Initialized{context,light,Some{cursor},entries,CW.Idle{},keys,effects,details,incarnations,acknowledged_resets,entity_owner,owned_tail},Fail{"local-cooking:save-light-loading"})
     case Initialized{context,light,None{},entries,CW.Idle{},key <> rest,effects,details,incarnations,acknowledged_resets,entity_owner,owned_tail}:
       (Initialized{context,light,None{},entries,CW.Idle{},key <> rest,effects,details,incarnations,acknowledged_resets,entity_owner,owned_tail},Fail{"local-cooking:save-section-discovery"})
-    case Initialized{context,light,None{},entries,CW.Idle{},Nil{},effects,details,incarnations,acknowledged_resets,entity_owner,Nil{}}:
-      (Initialized{context,light,None{},entries,CW.Idle{},[],effects,details,incarnations,acknowledged_resets,entity_owner,[]},Done{Unit{}})
+    case Initialized{context,light,None{},entries,CW.Idle{},Nil{},+effects,details,+incarnations,acknowledged_resets,entity_owner,Nil{}}:
+      persistence_owner_checked(owner => Initialized{context,light,None{},entries,CW.Idle{},[],effects,details,incarnations,acknowledged_resets,owner,[]},
+        Owner.with_publisher(Result<&2,&2,String,Unit>,entity_owner,
+          publisher => Publisher.ready(publisher,effects,incarnations)))
     case Initialized{context,light,None{},entries,CW.Idle{},Nil{},effects,details,incarnations,acknowledged_resets,entity_owner,child <> rest}:
       (Initialized{context,light,None{},entries,CW.Idle{},[],effects,details,incarnations,acknowledged_resets,entity_owner,child <> rest},Fail{"local-cooking:noncanonical-sidecar-tail"})
 

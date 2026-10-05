@@ -6,6 +6,7 @@ import ./cooking_effect_entities_model.bend as Model
 import ./cooking_effect_entities_math.bend as Math
 import ./cooking_effect_entities_clock.bend as Clock
 import ./random.bend as Random
+import ./local_player_cooking_publication_owner.bend as Publisher
 
 # A declared fresh isolated actor process owns this factory boundary. Its
 # Level Legacy source is independent of the world seed. The following sound
@@ -41,15 +42,20 @@ def ready(world:C.World,sidecar:Cooking.Sidecar,entity_context:Model.Context) ->
       IO.pure(C.World & Cooking.Sidecar & Result<&2,&2,String,Unit>,
         (world,Cooking.Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,entity_owner,child <> rest},
           Fail{"local-cooking:noncanonical-sidecar-tail"}))
-    case Cooking.Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,Owner.Bound{previous,owner,inputs,geometry},Nil{}}:
+    case Cooking.Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,Owner.Bound{previous,owner,inputs,geometry,publisher},Nil{}}:
       IO.pure(C.World & Cooking.Sidecar & Result<&2,&2,String,Unit>,
-        (world,Cooking.Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,Owner.Bound{previous,owner,inputs,geometry},[]},
+        (world,Cooking.Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,Owner.Bound{previous,owner,inputs,geometry,publisher},[]},
           Fail{"local-cooking:entity-owner-already-bound"}))
     case Cooking.Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,Owner.Unbound{},Nil{}}:
       do IO<C.World & Cooking.Sidecar & Result<&2,&2,String,Unit>>:
         owner : Model.State <- fresh()
         return finished(world,owner => Cooking.Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,
-          Owner.Bound{entity_context,owner,[],None{}},[]},owner)
+          Owner.Bound{entity_context,owner,[],None{},Publisher.empty()},[]},owner)
+    case Cooking.Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,Owner.PublicationOnly{publisher},Nil{}}:
+      do IO<C.World & Cooking.Sidecar & Result<&2,&2,String,Unit>>:
+        owner : Model.State <- fresh()
+        return finished(world,owner => Cooking.Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,
+          Owner.Bound{entity_context,owner,[],None{},publisher},[]},owner)
 
 def checked(sidecar:Cooking.Sidecar,context:Model.Context,result:C.World & Bool) -> IO(C.World & Cooking.Sidecar & Result<&2,&2,String,Unit>):
   (world,valid) = result

@@ -1,0 +1,458 @@
+{
+  "status": "complete actual source passed; prior failures and optional export failure retained",
+  "attempts": [
+    {
+      "directory": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-entity-scene/proof-001-1791163935594707000",
+      "generation": 1,
+      "graph": "actual Frame/Scene closure plus six owner laws",
+      "receipt": {
+        "argv": [
+          "/opt/homebrew/bin/node",
+          "--expose-gc",
+          "--max-old-space-size=8192",
+          "--stack-size=4096",
+          "--experimental-transform-types",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/local_player_entity_scene_proof.mjs",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-entity-scene/proof-001-1791163935594707000"
+        ],
+        "exit_code": 1,
+        "group_absent": true,
+        "pid": 85634,
+        "seconds": 1.188631,
+        "stderr": {
+          "bytes": 594,
+          "file": "original-source-export.stderr",
+          "sha1": "ba8e86f652ff868fdfd2942c07e110679bee7746",
+          "sha256": "b7e276776e403250e9ecaa2acef9086b23d262af2410e0ee86fc74ced10fc48e"
+        },
+        "stdout": {
+          "bytes": 0,
+          "file": "original-source-export.stdout",
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "timed_out": false
+      },
+      "error": "(node:85634) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\nError:\n- message  : 'source' can't be matched in this position (it is matched after a local statement or after a match on a later binder, it was already matched, or it is a def)\nLocation:\n84 |     case S.Dirty{position}:\n85>|       J.Source{captured,binding,incarnation} = source\n   |                                                ^^^^^^\n86 |       dirty_checked(source,position,B.equal_position(captured,position))",
+      "source_success": false,
+      "kernel_claim": false,
+      "native_claim": false
+    },
+    {
+      "directory": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-entity-scene/proof-002-1791164099977810000",
+      "generation": 2,
+      "graph": "actual Frame/Scene closure plus six owner laws",
+      "receipt": {
+        "argv": [
+          "/opt/homebrew/bin/node",
+          "--expose-gc",
+          "--max-old-space-size=8192",
+          "--stack-size=4096",
+          "--experimental-transform-types",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/local_player_entity_scene_proof.mjs",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-entity-scene/proof-002-1791164099977810000"
+        ],
+        "exit_code": 1,
+        "group_absent": true,
+        "pid": 87135,
+        "seconds": 1.198575,
+        "stderr": {
+          "bytes": 607,
+          "file": "original-source-export.stderr",
+          "sha1": "9a73a729dd80dbcc7da9c6d1d49445e0669fe2b5",
+          "sha256": "3511082d851ff27bf7c51abac4078b0e0dacc0639a28a70d2f4e130a26712a44"
+        },
+        "stdout": {
+          "bytes": 0,
+          "file": "original-source-export.stdout",
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "timed_out": false
+      },
+      "error": "(node:87135) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\nError:\n- message  : a parameter or field scrutinee (a match cannot scrutinize a computed value: give it its own def)\nLocation:\n264 |     case Done{cache}:\n265>|       AI.Context{recipes,defaults,features} = CW.recipes(context)\n    |                                               ^^^^^^^^^^^^^^^^^^^\n266 |       finish_inspected_owned(~Light,~properties,~enabled,light_context,context,world,phase,cache,S.inspect(recipes,entries))",
+      "source_success": false,
+      "kernel_claim": false,
+      "native_claim": false
+    },
+    {
+      "directory": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-entity-scene/proof-003-1791164264685130000",
+      "generation": 3,
+      "graph": "actual Frame/Scene closure plus six owner laws",
+      "receipt": {
+        "argv": [
+          "/opt/homebrew/bin/node",
+          "--expose-gc",
+          "--max-old-space-size=8192",
+          "--stack-size=4096",
+          "--experimental-transform-types",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/local_player_entity_scene_proof.mjs",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-entity-scene/proof-003-1791164264685130000"
+        ],
+        "exit_code": 1,
+        "group_absent": true,
+        "pid": 88385,
+        "seconds": 10.554006,
+        "stderr": {
+          "bytes": 442,
+          "file": "original-source-export.stderr",
+          "sha1": "150f0b9ff78afbe314a4c822c4d5cf28e2599fb7",
+          "sha256": "5ded6c9c3b90333d73d9a96714cb4e9a67beac5bd9620d8b1ef45e5a29e28e90"
+        },
+        "stdout": {
+          "bytes": 0,
+          "file": "original-source-export.stdout",
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "timed_out": false
+      },
+      "error": "(node:88385) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\nError:\n- expected : position\n- observed : position (consumed more than once)\nLocation: dirty_effect\n78 | \n79>| def dirty_effect(position:C.Position,+source:J.Source) -> S.Effect:\n   |                  ^^^^^^^^\n80 |   J.Source{captured,binding,incarnation} = source",
+      "source_success": false,
+      "kernel_claim": false,
+      "native_claim": false
+    },
+    {
+      "directory": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-entity-scene/proof-004-1791164415145708000",
+      "generation": 4,
+      "graph": "actual Frame/Scene closure plus six owner laws",
+      "receipt": {
+        "argv": [
+          "/opt/homebrew/bin/node",
+          "--expose-gc",
+          "--max-old-space-size=8192",
+          "--stack-size=4096",
+          "--experimental-transform-types",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/local_player_entity_scene_proof.mjs",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-entity-scene/proof-004-1791164415145708000"
+        ],
+        "exit_code": 1,
+        "group_absent": true,
+        "pid": 89903,
+        "seconds": 6.220806,
+        "stderr": {
+          "bytes": 1477,
+          "file": "original-source-export.stderr",
+          "sha1": "96515fa1f4b34a0686cadc6dccc97ee8636767a0",
+          "sha256": "f2ab8ef404d733a8ab75ad6e18749bff19925b9933963c4b773373438374e7a8"
+        },
+        "stdout": {
+          "bytes": 0,
+          "file": "original-source-export.stdout",
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "timed_out": false
+      },
+      "error": "(node:89903) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\nError:\n- expected : a pattern (a binder or a constructor)\n- observed : Result.bind(&2, &2, String, Unit, cooking_effect_publication_journal.Source, local_player_cooking_publication_codec.guard(Bool.and(Bool.and(local_player_cooking_publication_codec.name(a, \"position\"), local_player_cooking_publication_codec.name(b, \"binding\")), local_player_cooking_publication_codec.name(c, \"incarnation\")), \"source schema\"), _ => Result.bind(&2, &2, String, core.Position, cooking_effect_publication_journal.Source, local_player_cooking_publication_codec.position_read(position), point => Result.bind(&2, &2, String, cooking_world_bindings.Binding, cooking_effect_publication_journal.Source, local_player_cooking_publication_codec.binding_read(binding), cached => Result.bind(&2, &2, String, Nat, cooking_effect_publication_journal.Source, local_player_cooking_publication_codec.nat_read(incarnation), token => {source : Result<&2, &2, String, cooking_effect_publication_journal.Source>}))))\nLocation:\n104 |       do Result<&2,&2,String,J.Source>:\n105>|         guard(name(a,\"position\") && name(b,\"binding\") && name(c,\"incarnation\"),\"source schema\")\n    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n106 |         point : C.Position <- position_read(position)",
+      "source_success": false,
+      "kernel_claim": false,
+      "native_claim": false
+    },
+    {
+      "directory": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-entity-scene/proof-005-1791166980119886000",
+      "generation": 5,
+      "graph": "full actual Entry plus owner laws",
+      "receipt": {
+        "argv": [
+          "/opt/homebrew/bin/node",
+          "--expose-gc",
+          "--max-old-space-size=8192",
+          "--stack-size=4096",
+          "--experimental-transform-types",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/local_player_entity_scene_proof.mjs",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-entity-scene/proof-005-1791166980119886000"
+        ],
+        "exit_code": 1,
+        "group_absent": true,
+        "pid": 13970,
+        "seconds": 0.93353,
+        "stderr": {
+          "bytes": 380,
+          "file": "original-source-export.stderr",
+          "sha1": "6f8745260e10e1fd29b490c7fde631050b6aec8d",
+          "sha256": "9cd7787db1306d80fa9b26f4f5543584f66ea2adb31ef68545dca6a07df1d8e9"
+        },
+        "stdout": {
+          "bytes": 0,
+          "file": "original-source-export.stdout",
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "timed_out": false
+      },
+      "error": "(node:13970) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\nError:\n- expected : a nat literal up to 4294967295n (got 281474976710655n)\n- observed : '\n'\nLocation:\n17 | \n18>| def maximum() -> Nat: 281474976710655n\n   |                                       ^\n19 |",
+      "source_success": false,
+      "kernel_claim": false,
+      "native_claim": false
+    },
+    {
+      "directory": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-entity-scene/proof-006-1791167036592812000",
+      "generation": 6,
+      "graph": "full actual Entry plus owner laws",
+      "receipt": {
+        "argv": [
+          "/opt/homebrew/bin/node",
+          "--expose-gc",
+          "--max-old-space-size=8192",
+          "--stack-size=4096",
+          "--experimental-transform-types",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/local_player_entity_scene_proof.mjs",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-entity-scene/proof-006-1791167036592812000"
+        ],
+        "exit_code": 1,
+        "group_absent": true,
+        "pid": 14730,
+        "seconds": 10.822881,
+        "stderr": {
+          "bytes": 585,
+          "file": "original-source-export.stderr",
+          "sha1": "b04dc1dcccf3e7184415afb1a7f3dc1e22f33782",
+          "sha256": "1042265cc153d1d809f75226a8fbb46cb62119dfbd3168e8337b5897ed4cdaf7"
+        },
+        "stdout": {
+          "bytes": 0,
+          "file": "original-source-export.stdout",
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "timed_out": false
+      },
+      "error": "(node:14730) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\nError:\n- message  : 'session' can't be matched in this position (it is matched after a local statement or after a match on a later binder, it was already matched, or it is a def)\nLocation:\n885 |   (E.State{base,saved,maximum,catalog},transient) = result\n886>|   L.Session{+peer,sequence,capability} = session\n    |                                          ^^^^^^^\n887 |   do IO<State & L.Session & J.Value>:",
+      "source_success": false,
+      "kernel_claim": false,
+      "native_claim": false
+    },
+    {
+      "directory": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-entity-scene/proof-007-1791167137037653000",
+      "generation": 7,
+      "graph": "full actual Entry plus owner laws",
+      "receipt": {
+        "argv": [
+          "/opt/homebrew/bin/node",
+          "--expose-gc",
+          "--max-old-space-size=8192",
+          "--stack-size=4096",
+          "--experimental-transform-types",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/local_player_entity_scene_proof.mjs",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-entity-scene/proof-007-1791167137037653000"
+        ],
+        "exit_code": 1,
+        "group_absent": true,
+        "pid": 16220,
+        "seconds": 16.010362,
+        "stderr": {
+          "bytes": 503,
+          "file": "original-source-export.stderr",
+          "sha1": "e1de76c565f643e6b3ffebad7bdc1b9e513d131f",
+          "sha256": "f42ec1a4a85ef42eab09803a9c35831e32b3ebaa5be55cce41c37ba3a355c367"
+        },
+        "stdout": {
+          "bytes": 0,
+          "file": "original-source-export.stdout",
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "timed_out": false
+      },
+      "error": "(node:16220) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\nError:\n- expected : position\n- observed : position (consumed more than once)\nContext:\n- candidate : C.Position\nLocation: changed\n34 | \n35>| def changed(same:Bool,candidate:C.Position,position:C.Position,\n   |                                            ^^^^^^^^\n36 |     value:B.Classification,rest:List<&2,Header>) -> Change:",
+      "source_success": false,
+      "kernel_claim": false,
+      "native_claim": false
+    },
+    {
+      "directory": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-entity-scene/proof-008-1791167280798130000",
+      "generation": 8,
+      "graph": "full actual Entry plus owner laws",
+      "receipt": {
+        "argv": [
+          "/opt/homebrew/bin/node",
+          "--expose-gc",
+          "--max-old-space-size=8192",
+          "--stack-size=4096",
+          "--experimental-transform-types",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/local_player_entity_scene_proof.mjs",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-entity-scene/proof-008-1791167280798130000"
+        ],
+        "exit_code": 1,
+        "group_absent": true,
+        "pid": 18083,
+        "seconds": 11.568796,
+        "stderr": {
+          "bytes": 689,
+          "file": "original-source-export.stderr",
+          "sha1": "2a1e3f5b646b5f7e6dc6d30c6de9ded0cacf4a2c",
+          "sha256": "43dc577577d45f0b540800310d35c1849bac75462c2f03fb1fff1279576900af"
+        },
+        "stdout": {
+          "bytes": 0,
+          "file": "original-source-export.stdout",
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "timed_out": false
+      },
+      "error": "(node:18083) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\nError:\n- expected : a decreasing self-call (arguments are read left to right: each passed unchanged until one shrinks)\n- observed : change\nContext:\n- candidate : C.Position\n- binding   : B.Binding\n- rest      : List<&2, Header>\n- position  : C.Position\n- value     : B.Classification\n- remaining : List<&2, Header>\nLocation: change\n63 |       choose(B.equal_position(candidate,position),head,position,value,rest,\n64>|         remaining => change(remaining,position,value))\n   |                      ^^^^^^\n65 |",
+      "source_success": false,
+      "kernel_claim": false,
+      "native_claim": false
+    },
+    {
+      "directory": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-entity-scene/proof-009-1791167531085170000",
+      "generation": 9,
+      "graph": "full actual Entry plus owner laws",
+      "receipt": {
+        "argv": [
+          "/opt/homebrew/bin/node",
+          "--expose-gc",
+          "--max-old-space-size=8192",
+          "--stack-size=4096",
+          "--experimental-transform-types",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/local_player_entity_scene_proof.mjs",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-entity-scene/proof-009-1791167531085170000"
+        ],
+        "exit_code": 1,
+        "group_absent": true,
+        "pid": 19817,
+        "seconds": 10.570779,
+        "stderr": {
+          "bytes": 427,
+          "file": "original-source-export.stderr",
+          "sha1": "60bc40ba584c026c56a58ec945b4235296682ae2",
+          "sha256": "7b0c188624312b679f7d40fe9b67ce4af698e43df55c4445c2bf55d5758843d0"
+        },
+        "stdout": {
+          "bytes": 0,
+          "file": "original-source-export.stdout",
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "timed_out": false
+      },
+      "error": "(node:19817) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\nError:\n- expected : cases for src/cooking_world_store.OwnedDirty\n- observed : \\{}\nLocation: deliver\n15 | def deliver(effects:List<&2,Store.Effect>) -> Outcome:\n16>|   match effects:\n   |   ^^^^^^^^^^^^^^\n17 |     case Nil{}: Outcome{[],Done{Unit{}}}",
+      "source_success": false,
+      "kernel_claim": false,
+      "native_claim": false
+    },
+    {
+      "directory": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-entity-scene/proof-010-1791168276765574000",
+      "generation": 10,
+      "graph": "full actual Entry plus owner laws",
+      "receipt": {
+        "argv": [
+          "/opt/homebrew/bin/node",
+          "--expose-gc",
+          "--max-old-space-size=8192",
+          "--stack-size=4096",
+          "--experimental-transform-types",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/local_player_entity_scene_proof.mjs",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-entity-scene/proof-010-1791168276765574000"
+        ],
+        "exit_code": 1,
+        "group_absent": true,
+        "pid": 28172,
+        "seconds": 6.417268,
+        "stderr": {
+          "bytes": 622,
+          "file": "original-source-export.stderr",
+          "sha1": "b8e89a006c35be55458611ea010622a446b84b59",
+          "sha256": "5ee14ecd4a3723a4b6f747f89c048736a5ca58d571d668d8ba21b569f61f60e8"
+        },
+        "stdout": {
+          "bytes": 0,
+          "file": "original-source-export.stdout",
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "timed_out": false
+      },
+      "error": "(node:28172) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\nError:\n- message  : 'world' can't be matched in this position (it is matched after a local statement or after a match on a later binder, it was already matched, or it is a def)\nLocation:\n80 |     case Done{unit}:\n81>|       W.State{owner,light,loading} = world\n   |                                      ^^^^^\n82 |       player_read(light,loading,entries,views,operation,classification,incarnations,cap,position,state,expected,sequence,maybuild,",
+      "source_success": false,
+      "kernel_claim": false,
+      "native_claim": false
+    },
+    {
+      "directory": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-entity-scene/proof-011-1791168638976203000",
+      "generation": 11,
+      "graph": "full actual Entry plus owner laws",
+      "receipt": {
+        "argv": [
+          "/opt/homebrew/bin/node",
+          "--expose-gc",
+          "--max-old-space-size=8192",
+          "--stack-size=4096",
+          "--experimental-transform-types",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/local_player_entity_scene_proof.mjs",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-entity-scene/proof-011-1791168638976203000"
+        ],
+        "exit_code": 1,
+        "group_absent": true,
+        "pid": 33262,
+        "seconds": 10.970274,
+        "stderr": {
+          "bytes": 1135,
+          "file": "original-source-export.stderr",
+          "sha1": "b6c0af8acd869c5560434eaf20c6a1c37b009ce6",
+          "sha256": "11e55f2ebb6d4e88d6189f447567b28def408d4580f1c9141ed5590c3b7f8dc7"
+        },
+        "stdout": {
+          "bytes": 0,
+          "file": "original-source-export.stdout",
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "timed_out": false
+      },
+      "error": "(node:33262) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\nError:\n- expected : a function type\n- observed : Nat\nContext:\n- context      : Cooking.Context\n- light        : src/block_light.State\n- loading      : Maybe<&2, src/block_light_world.Cursor>\n- entries      : List<&1, Store.Entry>\n- phase        : CW.Phase\n- keys         : List<&2, String>\n- effects      : List<&2, Store.Effect>\n- details      : List<&2, Cooking.BodyDetails>\n- incarnations : Map<&2, Nat>\n- acknowledged : Nat\n- owner        : Owner.Carrier\n- tail         : List<&1, Cooking.Sidecar>\n- result       : Result<&2, &1, String, Journal.SaveCommit>\n- publisher    : Publisher.Carrier\nLocation: save_completed\n90 |       save_returned(owner => Cooking.Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged,owner,tail},\n91>|         Owner.with_publisher(Unit,owner,publisher => acknowledged(publisher,result)))\n   |                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n92 |",
+      "source_success": false,
+      "kernel_claim": false,
+      "native_claim": false
+    },
+    {
+      "directory": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-entity-scene/proof-012-1791169034583099000",
+      "generation": 12,
+      "graph": "full actual Entry plus owner laws",
+      "receipt": {
+        "argv": [
+          "/opt/homebrew/bin/node",
+          "--expose-gc",
+          "--max-old-space-size=8192",
+          "--stack-size=4096",
+          "--experimental-transform-types",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/local_player_entity_scene_proof.mjs",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-entity-scene/proof-012-1791169034583099000"
+        ],
+        "exit_code": 1,
+        "group_absent": true,
+        "pid": 37996,
+        "seconds": 14.101547,
+        "stderr": {
+          "bytes": 222,
+          "file": "original-source-export.stderr",
+          "sha1": "0ee8dce3e59348b49745bc53960540a2e0043ad8",
+          "sha256": "e436770c5cd1b586660f634b95f03a62bcad69871d3ac2fe2b06a95b55c2a225"
+        },
+        "stdout": {
+          "bytes": 111,
+          "file": "original-source-export.stdout",
+          "sha1": "abd65efa4e085bae9e019eaedd73f59f93489ab1",
+          "sha256": "fd1d1cec8075dcaff4da265a75ea9f9d656cda0487034a2f22acd968358cccec"
+        },
+        "timed_out": false
+      },
+      "error": "(node:37996) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\nRangeError: Maximum call stack size exceeded",
+      "source_success": true,
+      "kernel_claim": false,
+      "native_claim": false,
+      "source_verdict": {
+        "status": "source_checked",
+        "declarations": 9564,
+        "holes": 0,
+        "original_book_checks": 1,
+        "check_seconds": 4.758042250000001
+      },
+      "followup_phase": "original Safe.safe_emit after genuine source PASS"
+    }
+  ],
+  "scope": "Original parser, ownership, structural-recursion, enum and helper diagnostics are retained before the genuine complete Entry012 source verdict. Source PASS is recorded before the independent export stack failure; no kernel/native claim follows from it."
+}

@@ -12,6 +12,7 @@ import ./game.bend as G
 import ./registry.bend as Registry
 import ./local_player_cooking_geometry_owner.bend as GeometryOwner
 import ./local_player_cooking_entity_delivery.bend as Delivery
+import ./local_player_cooking_publication_owner.bend as Publisher
 
 # This actor currently binds one overworld Level RNG. Global factory/IDs are
 # retained, but a different Level needs its own random owner before consuming
@@ -83,9 +84,9 @@ def status(result:Result<&2,&2,Model.Error,Unit>) -> Result<&2,&2,String,Unit>:
 # the consumer owns the entity state. It installs exactly the returned carrier
 # and suffix, with no temporary carrier published in the Session.
 def delivered(world:C.World,restore:Owner.Carrier -> List<&2,Store.Effect> -> Cooking.Sidecar,entity_context:Model.Context,
-    geometry:Maybe<&1,GeometryOwner.Owner>,result:Model.State & Entities.Outcome) -> C.World & Cooking.Sidecar & Result<&2,&2,String,Unit>:
+    geometry:Maybe<&1,GeometryOwner.Owner>,publisher:Publisher.Carrier,result:Model.State & Entities.Outcome) -> C.World & Cooking.Sidecar & Result<&2,&2,String,Unit>:
   (owner,Entities.Outcome{pending,outcome,inputs}) = result
-  (world,restore(Owner.Bound{entity_context,owner,inputs,geometry})(pending),status(outcome))
+  (world,restore(Owner.Bound{entity_context,owner,inputs,geometry,publisher})(pending),status(outcome))
 
 def clock_budget(context:Model.Context) -> Nat:
   Model.Context{items,Model.Limits{steps,rejections,ids},reserved} = context
@@ -99,10 +100,10 @@ def scoped_io(+entity_context:Model.Context,owner:Model.State,inputs:List<&2,Ran
     return scoped_result(result,suffix)
 
 def bound(world:C.World,restore:Owner.Carrier -> List<&2,Store.Effect> -> Cooking.Sidecar,+entity_context:Model.Context,
-    effects:List<&2,Store.Effect>,owner:Model.State,inputs:List<&2,Random.Bits64>,geometry:Maybe<&1,GeometryOwner.Owner>) -> IO(C.World & Cooking.Sidecar & Result<&2,&2,String,Unit>):
+    effects:List<&2,Store.Effect>,owner:Model.State,inputs:List<&2,Random.Bits64>,geometry:Maybe<&1,GeometryOwner.Owner>,publisher:Publisher.Carrier) -> IO(C.World & Cooking.Sidecar & Result<&2,&2,String,Unit>):
   do IO<C.World & Cooking.Sidecar & Result<&2,&2,String,Unit>>:
     result : Model.State & Entities.Outcome <- scoped_io(entity_context,owner,inputs,scope(effects))
-    return delivered(world,restore,entity_context,geometry,result)
+    return delivered(world,restore,entity_context,geometry,publisher,result)
 
 def fallback(world:C.World,result:Cooking.Sidecar & Result<&2,&2,String,Unit>) -> IO(C.World & Cooking.Sidecar & Result<&2,&2,String,Unit>):
   (sidecar,outcome) = result
@@ -117,9 +118,11 @@ def ready(world:C.World,sidecar:Cooking.Sidecar) -> IO(C.World & Cooking.Sidecar
           Fail{"local-cooking:noncanonical-sidecar-tail"}))
     case Cooking.Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,Owner.Unbound{},Nil{}}:
       fallback(world,Cooking.deliver_pending(Cooking.Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,Owner.Unbound{},[]}))
-    case Cooking.Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,Owner.Bound{entity_context,owner,inputs,geometry},Nil{}}:
+    case Cooking.Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,Owner.PublicationOnly{publisher},Nil{}}:
+      fallback(world,Cooking.deliver_pending(Cooking.Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,Owner.PublicationOnly{publisher},[]}))
+    case Cooking.Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,Owner.Bound{entity_context,owner,inputs,geometry,publisher},Nil{}}:
       bound(world,carrier => pending => Cooking.Initialized{context,light,loading,entries,phase,keys,pending,details,incarnations,acknowledged_resets,carrier,[]},
-        entity_context,effects,owner,inputs,geometry)
+        entity_context,effects,owner,inputs,geometry,publisher)
 
 def checked(sidecar:Cooking.Sidecar,result:C.World & Bool) -> IO(C.World & Cooking.Sidecar & Result<&2,&2,String,Unit>):
   (world,valid) = result
@@ -139,20 +142,20 @@ def deliver_io(world:C.World,sidecar:Cooking.Sidecar) -> IO(C.World & Cooking.Si
 # The engine detour permits real shape capture with the same Registry/Core.
 # The returned collision catalog and entity owner are installed together.
 def delivered_engine(restore:Owner.Carrier -> List<&2,Store.Effect> -> Cooking.Sidecar,
-    entity_context:Model.Context,
+    entity_context:Model.Context,publisher:Publisher.Carrier,
     result:G.Engine & Maybe<&1,GeometryOwner.Owner> & Model.State & Entities.Outcome) ->
     G.Engine & Cooking.Sidecar & Result<&2,&2,String,Unit>:
   (engine,geometry,owner,Entities.Outcome{pending,outcome,inputs}) = result
-  (engine,restore(Owner.Bound{entity_context,owner,inputs,geometry})(pending),status(outcome))
+  (engine,restore(Owner.Bound{entity_context,owner,inputs,geometry,publisher})(pending),status(outcome))
 
 def bound_engine(engine:G.Engine,restore:Owner.Carrier -> List<&2,Store.Effect> -> Cooking.Sidecar,
     +entity_context:Model.Context,effects:List<&2,Store.Effect>,owner:Model.State,
-    inputs:List<&2,Random.Bits64>,geometry:Maybe<&1,GeometryOwner.Owner>) ->
+    inputs:List<&2,Random.Bits64>,geometry:Maybe<&1,GeometryOwner.Owner>,publisher:Publisher.Carrier) ->
     IO(G.Engine & Cooking.Sidecar & Result<&2,&2,String,Unit>):
   do IO<G.Engine & Cooking.Sidecar & Result<&2,&2,String,Unit>>:
     result : G.Engine & Maybe<&1,GeometryOwner.Owner> & Model.State & Entities.Outcome <-
       Delivery.deliver_io(~supported,effects,engine,geometry,entity_context,owner,inputs)
-    return delivered_engine(restore,entity_context,result)
+    return delivered_engine(restore,entity_context,publisher,result)
 
 def engine_fallback(engine:G.Engine,result:Cooking.Sidecar & Result<&2,&2,String,Unit>) ->
     IO(G.Engine & Cooking.Sidecar & Result<&2,&2,String,Unit>):
@@ -170,10 +173,12 @@ def engine_ready(engine:G.Engine,sidecar:Cooking.Sidecar) ->
           Fail{"local-cooking:noncanonical-sidecar-tail"}))
     case Cooking.Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged,Owner.Unbound{},Nil{}}:
       engine_fallback(engine,Cooking.deliver_pending(Cooking.Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged,Owner.Unbound{},[]}))
+    case Cooking.Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged,Owner.PublicationOnly{publisher},Nil{}}:
+      engine_fallback(engine,Cooking.deliver_pending(Cooking.Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged,Owner.PublicationOnly{publisher},[]}))
     case Cooking.Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged,
-        Owner.Bound{entity_context,owner,inputs,geometry},Nil{}}:
+        Owner.Bound{entity_context,owner,inputs,geometry,publisher},Nil{}}:
       bound_engine(engine,carrier => pending => Cooking.Initialized{context,light,loading,entries,phase,keys,pending,details,incarnations,acknowledged,carrier,[]},
-        entity_context,effects,owner,inputs,geometry)
+        entity_context,effects,owner,inputs,geometry,publisher)
 
 def engine_checked(registry:Registry.Registry,sidecar:Cooking.Sidecar,result:C.World & Bool) ->
     IO(G.Engine & Cooking.Sidecar & Result<&2,&2,String,Unit>):

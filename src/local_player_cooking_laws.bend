@@ -1,6 +1,8 @@
 import Base
+import ./local_player_cooking_publication_owner.bend as Publisher
 import ./local_player_cooking.bend as K
 import ./local_player_cooking_entity_owner.bend as Owner
+import ./local_player_cooking_geometry_owner.bend as GeometryOwner
 import ./cooking_effect_entities_model.bend as Model
 import ./random.bend as Random
 import ./local_player_session.bend as Session
@@ -117,7 +119,7 @@ law noncanonical_context_save_retains_complete_cooking_owner:
 # cooking tick can commit Core before a later supplier refuses its finish.
 # Registry, tables, inventory, lease and every owned/Data runtime tail remain.
 # Arbitrary input/returned Sidecar includes incarnation counters, reset ack,
-# the complete actual entity/RNG Carrier and recursively boxed affine tail.
+# the complete actual entity/RNG/geometry Carrier and recursively boxed tail.
 law cooking_query_publishes_supplied_owner_and_retains_complete_session:
   for world:C.World
   for registry:B.Registry
@@ -280,14 +282,45 @@ law entity_restore_refusal_retains_bound_owner_and_complete_sidecar:
   for prior_context:Model.Context
   for prior_state:Model.State
   for prior_inputs:List<&2,Random.Bits64>
+  for geometry:Maybe<&1,GeometryOwner.Owner>
+  for publisher:Publisher.Carrier
   for incoming_context:Model.Context
   for incoming_view:Maybe<&2,Model.View>
   for incoming_inputs:List<&2,Random.Bits64>
   for admitted:{K.context_ready(context) == True{} : Bool}
   {K.restore_entity_view(K.Initialized{context,light,loading,entries,phase,keys,effects,details,
-      incarnations,acknowledged_resets,Owner.Bound{prior_context,prior_state,prior_inputs},[]},
+      incarnations,acknowledged_resets,Owner.Bound{prior_context,prior_state,prior_inputs,geometry,publisher},[]},
       incoming_context,incoming_view,incoming_inputs) ==
     (K.Initialized{context,light,loading,entries,phase,keys,effects,details,
-      incarnations,acknowledged_resets,Owner.Bound{prior_context,prior_state,prior_inputs},[]},
+      incarnations,acknowledged_resets,Owner.Bound{prior_context,prior_state,prior_inputs,geometry,publisher},[]},
       Fail{"local-cooking:entity-owner-already-bound"}) :
     K.Sidecar & Result<&2,&2,String,Unit>}
+
+# Snapshot publication retains the actual geometry catalog owner beside the
+# actual inspected entity/RNG result. The sole premise is that subsystem's
+# complete returned owner/View; this does not invent an inspection algorithm.
+law entity_snapshot_publishes_actual_inspection_and_retains_complete_sidecar:
+  for context:K.Context
+  for light:Light.State
+  for loading:Maybe<&2,BW.Cursor>
+  for entries:List<&1,Store.Entry>
+  for phase:CW.Phase
+  for keys:List<&2,String>
+  for effects:List<&2,Store.Effect>
+  for details:List<&2,K.BodyDetails>
+  for incarnations:Map<&2,Nat>
+  for acknowledged_resets:Nat
+  for sidecar_tail:List<&1,K.Sidecar>
+  for entity_context:Model.Context
+  for state:Model.State
+  for +inputs:List<&2,Random.Bits64>
+  for geometry:Maybe<&1,GeometryOwner.Owner>
+  for publisher:Publisher.Carrier
+  for returned_state:Model.State
+  for +view:Model.View
+  for supplied:{Model.inspect(state) == (returned_state,view) : Model.State & Model.View}
+  {K.entity_snapshot(K.Initialized{context,light,loading,entries,phase,keys,effects,details,
+      incarnations,acknowledged_resets,Owner.Bound{entity_context,state,inputs,geometry,publisher},sidecar_tail}) ==
+    (K.Initialized{context,light,loading,entries,phase,keys,effects,details,
+      incarnations,acknowledged_resets,Owner.Bound{entity_context,returned_state,inputs,geometry,publisher},sidecar_tail},
+      Some{view},inputs) : K.Sidecar & Maybe<&2,Model.View> & List<&2,Random.Bits64>}

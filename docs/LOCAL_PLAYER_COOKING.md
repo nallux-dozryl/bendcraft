@@ -22,8 +22,8 @@ started Core tick and pending phase. A successful retry releases common/player
 processing once even when the Core tick number did not change.
 
 Startup uses `new_cooking_inventory(E.Ready<CookingStorage.Saved>, tables)` and
-returns the adopted Session, pending physical bodies and the saved ordered
-effect queue. Entry retains those values while terrain initialization, authenticated context installation,
+returns the adopted Session, pending physical bodies, the saved ordered
+effect queue and optional entity/publication recoveries. Entry retains those values while terrain initialization, authenticated context installation,
 lighting bootstrap and cooking discovery complete, then attaches each body
 through `cooking_load_body` with the trusted loader capability. It restores the
 exact queue once, then attempts delivery before opening listeners. A missing
@@ -34,10 +34,12 @@ recipes, initialized item defaults, feature admission and fuel providers.
 Valid, permitted `world.save` collects every current cooking body's known
 physical bytes and merges its retained root name and unknown/base fields using
 `CookingStorage.with_details`. The bodies and unchanged inventory/player record
-then enter the same existing `E.dispatch_codec` atomic Core/extension transaction.
+then enter the same atomic Core/extension writer through `E.save_codec_receipt`.
+Only its actual DurablyCommitted receipt clears the live publication journal;
+PublishedUnsynced and failures retain that owner.
 The same publication includes a read-only snapshot of released pending effects;
 returning from that transaction keeps the live queue without replaying the
-snapshot. Empty bodies and an empty queue preserve the old payload bytes and
+snapshot. When entity and publication recovery are absent, empty bodies and an empty queue preserve the old payload bytes and
 `IC.Saved` ABI; nonempty pending effects use the strict format2 wrapper. Pending
 cooking and loading/discovery still refuse save while retaining the live owner. Ordinary queries continue using the existing codec
 and do not collect physical bodies.
@@ -45,12 +47,14 @@ and do not collect physical bodies.
 Accepted `Store.OwnerReset{position}` markers clear only the old keyed physical
 details. Both retained pending-phase markers and completed-tick effects are
 processed, including removal followed by recreation of the same block in one
-due batch. Each accepted reset also increments its transient container incarnation once;
+due batch. Each accepted reset also increments its Sidecar container incarnation once;
 a pending finish retry does not count acknowledged markers again. The ordered
-effects then pass to `cooking_effect_delivery.deliver`. It acknowledges applied
-OwnerReset and zero-count notifications, and retains the first unavailable
-effect with its complete suffix. Item/XP entities, level RNG and notification
-publishers remain concrete owner dependencies.
+effects pass to the actual combined publication/entity IO driver. It uses
+producer-captured OwnedDirty with real Core/registry and loaded-air admission,
+then the existing real item/XP RNG/geometry/clock consumer. Legacy Dirty and
+unavailable notification/comparator receivers retain their exact suffix.
+See `LOCAL_PLAYER_COOKING_PUBLICATION.md` for the current producer, restore and
+typed durable-save contract; the earlier frozen artifacts retain their scope.
 
 Successful cooking completion runs common/player processing once before this
 delivery attempt. A missing publisher blocks subsequent Core ticks. The player
@@ -118,7 +122,9 @@ the copied save snapshot. `new_cooking_inventory` now returns a fourth value,
 An unbound actor preserves the old format1/2 bytes.
 
 `Scene.realtime_step_io`, `Scene.advance_io` and `Scene.dispatch_io` close the
-actual Session `cooking_deliver_pending_io` supplier. Its current Engine route invokes `local_player_cooking_entities.deliver_engine_io`. It uses
+actual Session `cooking_deliver_pending_io` supplier. Its Engine route invokes `local_player_cooking_publication_delivery.deliver_io`,
+which intercepts actual OwnedDirty and delegates entity effects to
+`local_player_cooking_entities.deliver_engine_io`. The entity path uses
 `cooking_effect_consumer.deliver_io`, then installs the returned entity owner,
 pending suffix and remaining clock list together. An entropy retry does not
 repeat a completed Core/player tick. Both the pre-tick and post-completion

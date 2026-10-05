@@ -7,6 +7,7 @@ import ./furnace_authority.bend as F
 import ./furnace_authority_xp.bend as X
 import ./campfire_authority.bend as A
 import ./campfire_authority_items.bend as AI
+import ./cooking_effect_publication_journal.bend as Journal
 
 type Entity is Type:
   Furnace{state:F.State}
@@ -21,6 +22,7 @@ type Effect is Data:
   Drop{position:C.Position,slot:U32,item:I.Slot}
   Experience{position:C.Position,request:F.XpRequest}
   Dirty{position:C.Position}
+  OwnedDirty{source:Journal.Source}
   BlockUpdate{position:C.Position,count:Nat}
   BlockChange{position:C.Position,count:Nat}
 type View is Data:

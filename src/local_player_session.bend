@@ -5,6 +5,11 @@ import ./cooking_world_store.bend as CookingStore
 import ./nbt.bend as Nbt
 import ./local_player_cooking_storage.bend as CookingStorage
 import ./local_player_cooking_entities.bend as CookingEntities
+import ./local_player_cooking_publication.bend as CookingPublication
+import ./local_player_cooking_publication_delivery.bend as CookingDelivery
+import ./local_player_cooking_publication_codec.bend as PublicationCodec
+import ./local_player_cooking_publication_owner.bend as PublicationOwner
+import ./cooking_effect_publication_journal.bend as PublicationJournal
 import ./local_player_cooking_bootstrap.bend as CookingBootstrap
 import ./local_player_cooking_geometry.bend as CookingGeometry
 import ./local_player_cooking_edit.bend as CookingEdit
@@ -146,6 +151,16 @@ def cooking_engine_query_io(-A:Data,state:State,
     operation:G.Engine -> Cooking.Sidecar -> IO(G.Engine & Cooking.Sidecar & Result<&2,&2,String,A>)) -> IO(State & Result<&2,&2,String,A>):
   cooking_engine_detached_io(A,operation,to_bundle(state))
 
+def cooking_engine_detached(-A:Data,
+    operation:G.Engine -> Cooking.Sidecar -> G.Engine & Cooking.Sidecar & Result<&2,&2,String,A>,
+    result:E.State<IC.Saved> & R.Transient) -> State & Result<&2,&2,String,A>:
+  (E.State{P.State{engine,identity,path,highwater,limits,lease},saved,maximum,catalog},R.Transient{player,cooking}) = result
+  cooking_engine_returned(A,identity,path,highwater,limits,lease,saved,maximum,catalog,player,operation(engine,cooking))
+
+def cooking_engine_query(-A:Data,state:State,
+    operation:G.Engine -> Cooking.Sidecar -> G.Engine & Cooking.Sidecar & Result<&2,&2,String,A>) -> State & Result<&2,&2,String,A>:
+  cooking_engine_detached(A,operation,to_bundle(state))
+
 # A container transaction also transfers the actual player inventory once.
 # The operation returns both array owners before the Session is reconstructed.
 def cooking_inventory_returned(-A:Data,registry:B.Registry,identity:String,path:String,highwater:U32,
@@ -216,7 +231,16 @@ def cooking_deliver_pending(state:State) -> State & Result<&2,&2,String,Unit>:
   cooking_sidecar_query(Result<&2,&2,String,Unit>,state,Cooking.deliver_pending)
 
 def cooking_deliver_pending_io(state:State) -> IO(State & Result<&2,&2,String,Unit>):
-  cooking_engine_query_io(Unit,state,engine => sidecar => CookingEntities.deliver_engine_io(sidecar,engine))
+  cooking_engine_query_io(Unit,state,engine => sidecar => CookingDelivery.deliver_io(engine,sidecar))
+
+def cooking_initialize_publication(state:State,recovery:Maybe<&2,PublicationCodec.Recovery>,pending:List<&2,CookingStore.Effect>) -> State & Result<&2,&2,String,Unit>:
+  cooking_engine_query(Unit,state,engine => sidecar => CookingPublication.initialize(engine,sidecar,recovery,pending))
+
+def cooking_publication(state:State) -> State & Maybe<&2,PublicationCodec.Recovery>:
+  cooking_sidecar_query(Maybe<&2,PublicationCodec.Recovery>,state,CookingPublication.snapshot)
+
+def cooking_prepare_publication_save(state:State) -> State & Maybe<&2,PublicationOwner.Prepared>:
+  cooking_sidecar_query(Maybe<&2,PublicationOwner.Prepared>,state,CookingPublication.prepare_save)
 
 # Geometry initialization authenticates the catalog against the retained live
 # Registry after body/entity initialization and before pending effect delivery.
@@ -823,16 +847,16 @@ def record_refused(state:State,session:L.Session,id:String,code:String,message:S
   failure(observed(state,peer),L.Session{peer,1n+sequence,capability},id,L.bad(code,message))
 
 def from_cooking_bundle(stored:E.State<CookingStorage.Saved>,transient:R.Transient) -> State:
-  E.State{base,CookingStorage.Saved{saved,bodies,pending,entities},maximum,catalog} = stored
+  E.State{base,CookingStorage.Saved{saved,bodies,pending,entities,publication},maximum,catalog} = stored
   from_bundle(E.State{base,saved,maximum,catalog},transient)
 
-def cooking_inventory_answer(bodies:List<&2,CookingStorage.Body>,pending:List<&2,CookingStore.Effect>,entities:Maybe<&2,CookingStorage.EntityRecovery>,result:G.Engine & IC.Saved & Result<&2,&2,L.Fault,J.Value>) -> G.Engine & CookingStorage.Saved & Result<&2,&2,L.Fault,J.Value>:
+def cooking_inventory_answer(bodies:List<&2,CookingStorage.Body>,pending:List<&2,CookingStore.Effect>,entities:Maybe<&2,CookingStorage.EntityRecovery>,publication:Maybe<&2,PublicationCodec.Recovery>,result:G.Engine & IC.Saved & Result<&2,&2,L.Fault,J.Value>) -> G.Engine & CookingStorage.Saved & Result<&2,&2,L.Fault,J.Value>:
   (engine,saved,status) = result
-  (engine,CookingStorage.Saved{saved,bodies,pending,entities},status)
+  (engine,CookingStorage.Saved{saved,bodies,pending,entities,publication},status)
 
 def cooking_inventory_dispatch(engine:G.Engine,saved:CookingStorage.Saved,session:L.Session,envelope:L.Envelope) -> G.Engine & CookingStorage.Saved & Result<&2,&2,L.Fault,J.Value>:
-  CookingStorage.Saved{player,bodies,pending,entities} = saved
-  cooking_inventory_answer(bodies,pending,entities,inventory_operation_dispatch(engine,player,session,envelope))
+  CookingStorage.Saved{player,bodies,pending,entities,publication} = saved
+  cooking_inventory_answer(bodies,pending,entities,publication,inventory_operation_dispatch(engine,player,session,envelope))
 
 def cooking_inventory_operations() -> E.Operations<CookingStorage.Saved>:
   E.Operations{inventory_catalog,cooking_inventory_dispatch}
@@ -841,37 +865,73 @@ def cooking_dispatched(transient:R.Transient,result:E.State<CookingStorage.Saved
   (stored,session,value) = result
   (from_cooking_bundle(stored,transient),session,value)
 
-def cooking_delegate_bundle(definitions:D.Catalog,bodies:List<&2,CookingStorage.Body>,pending:List<&2,CookingStore.Effect>,entities:Maybe<&2,CookingStorage.EntityRecovery>,session:L.Session,token:String,request:J.Value,
+def cooking_save_acknowledged(state:State,snapshot:PublicationJournal.Snapshot) -> State:
+  State{player,Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation,cooking}} = state
+  State{player,Shell{identity,path,highwater,limits,lease,maximum,catalog,inventory,fresh,generation,
+    CookingPublication.save_completed(cooking,Done{PublicationJournal.FullCookingSaveCommitted{snapshot}})}}
+
+def cooking_save_committed(state:State,snapshot:Maybe<&2,PublicationJournal.Snapshot>) -> State:
+  match snapshot:
+    case None{}: state
+    case Some{value}: cooking_save_acknowledged(state,value)
+
+# The actual typed durable receipt is the first admission gate. JSON success,
+# a missing snapshot and an unsynced publication cannot acknowledge a journal.
+def cooking_save_completed(state:State,snapshot:Maybe<&2,PublicationJournal.Snapshot>,completion:E.SaveCompletion) -> State:
+  match completion:
+    case E.NotCommitted{}: state
+    case E.DurablyCommitted{}: cooking_save_committed(state,snapshot)
+
+def cooking_saved(transient:R.Transient,snapshot:Maybe<&2,PublicationJournal.Snapshot>,
+    result:E.State<CookingStorage.Saved> & L.Session & J.Value & E.SaveCompletion) -> State & L.Session & J.Value:
+  (stored,session,value,completion) = result
+  (cooking_save_completed(from_cooking_bundle(stored,transient),snapshot,completion),session,value)
+
+def cooking_delegate_bundle(definitions:D.Catalog,bodies:List<&2,CookingStorage.Body>,pending:List<&2,CookingStore.Effect>,entities:Maybe<&2,CookingStorage.EntityRecovery>,publication:Maybe<&2,PublicationCodec.Recovery>,snapshot:Maybe<&2,PublicationJournal.Snapshot>,+session:L.Session,id:String,
     result:E.State<IC.Saved> & R.Transient) -> IO(State & L.Session & J.Value):
+  L.Session{+peer,sequence,capability} = session
   (E.State{base,saved,maximum,catalog},transient) = result
   do IO<State & L.Session & J.Value>:
-    result : E.State<CookingStorage.Saved> & L.Session & J.Value <-
-      E.dispatch_codec(~CookingStorage.Saved,~cooking_inventory_operations(),
+    result : E.State<CookingStorage.Saved> & L.Session & J.Value & E.SaveCompletion <-
+      E.save_codec_receipt(~CookingStorage.Saved,
         CookingStorage.codec_with(definitions,False{},WG.legacy()),
-        E.State{base,CookingStorage.Saved{saved,bodies,pending,entities},maximum,catalog},session,token,request)
-    return cooking_dispatched(transient,result)
+        E.observe(CookingStorage.Saved,E.State{base,CookingStorage.Saved{saved,bodies,pending,entities,publication},maximum,catalog},peer),
+        L.Session{peer,1n+sequence,capability},id)
+    return cooking_saved(transient,snapshot,result)
 
-def cooking_save_entities(definitions:D.Catalog,bodies:List<&2,CookingStorage.Body>,pending:List<&2,CookingStore.Effect>,session:L.Session,token:String,request:J.Value,
+def cooking_save_prepared(definitions:D.Catalog,bodies:List<&2,CookingStorage.Body>,pending:List<&2,CookingStore.Effect>,entities:Maybe<&2,CookingStorage.EntityRecovery>,session:L.Session,id:String,state:State,
+    value:Maybe<&2,PublicationOwner.Prepared>) -> IO(State & L.Session & J.Value):
+  match value:
+    case None{}: cooking_delegate_bundle(definitions,bodies,pending,entities,None{},None{},session,id,to_bundle(state))
+    case Some{PublicationOwner.Prepared{publication,snapshot}}:
+      cooking_delegate_bundle(definitions,bodies,pending,entities,Some{publication},Some{snapshot},session,id,to_bundle(state))
+
+def cooking_save_publication(definitions:D.Catalog,bodies:List<&2,CookingStorage.Body>,pending:List<&2,CookingStore.Effect>,entities:Maybe<&2,CookingStorage.EntityRecovery>,session:L.Session,id:String,
+    result:State & Maybe<&2,PublicationOwner.Prepared>) -> IO(State & L.Session & J.Value):
+  (state,publication) = result
+  cooking_save_prepared(definitions,bodies,pending,entities,session,id,state,publication)
+
+def cooking_save_entities(definitions:D.Catalog,bodies:List<&2,CookingStorage.Body>,pending:List<&2,CookingStore.Effect>,session:L.Session,id:String,
     result:State & Maybe<&2,CookingStorage.EntityRecovery>) -> IO(State & L.Session & J.Value):
   (state,entities) = result
-  cooking_delegate_bundle(definitions,bodies,pending,entities,session,token,request,to_bundle(state))
+  cooking_save_publication(definitions,bodies,pending,entities,session,id,cooking_prepare_publication_save(state))
 
-def cooking_save_pending(definitions:D.Catalog,bodies:List<&2,CookingStorage.Body>,session:L.Session,token:String,request:J.Value,
+def cooking_save_pending(definitions:D.Catalog,bodies:List<&2,CookingStorage.Body>,session:L.Session,id:String,
     result:State & List<&2,CookingStore.Effect>) -> IO(State & L.Session & J.Value):
   (state,pending) = result
-  cooking_save_entities(definitions,bodies,pending,session,token,request,cooking_entities(state))
+  cooking_save_entities(definitions,bodies,pending,session,id,cooking_entities(state))
 
-def cooking_save_definitions(bodies:List<&2,CookingStorage.Body>,session:L.Session,token:String,request:J.Value,
+def cooking_save_definitions(bodies:List<&2,CookingStorage.Body>,session:L.Session,id:String,
     result:State & D.Catalog) -> IO(State & L.Session & J.Value):
   (state,definitions) = result
-  cooking_save_pending(definitions,bodies,session,token,request,cooking_pending(state))
+  cooking_save_pending(definitions,bodies,session,id,cooking_pending(state))
 
 def cooking_save_collected(session:L.Session,token:String,request:J.Value,id:String,
     result:State & Result<&2,&2,String,List<&2,CookingStorage.Body>>) -> IO(State & L.Session & J.Value):
   (state,status) = result
   match status:
     case Fail{message}: IO.pure(State & L.Session & J.Value,record_refused(state,session,id,"SaveEncodingFailed",message))
-    case Done{bodies}: cooking_save_definitions(bodies,session,token,request,inventory_definitions(state))
+    case Done{bodies}: cooking_save_definitions(bodies,session,id,inventory_definitions(state))
 
 def cooking_save(state:State,session:L.Session,token:String,request:J.Value,id:String) -> IO(State & L.Session & J.Value):
   cooking_save_collected(session,token,request,id,cooking_bodies(state))
@@ -988,11 +1048,11 @@ def new_inventory(ready:E.Ready<IC.Saved>,tables:T.Tables) -> IO(Ready):
 
 # Pending body bytes remain with Entry until its real context/bootstrap and
 # discovery succeed. No transient fallback or second durable save is created.
-def new_cooking_inventory(ready:E.Ready<CookingStorage.Saved>,tables:T.Tables) -> IO(Ready & List<&2,CookingStorage.Body> & List<&2,CookingStore.Effect> & Maybe<&2,CookingStorage.EntityRecovery>):
-  E.Ready{E.State{base,CookingStorage.Saved{saved,bodies,pending,entities},maximum,catalog},first_peer} = ready
-  do IO<Ready & List<&2,CookingStorage.Body> & List<&2,CookingStore.Effect> & Maybe<&2,CookingStorage.EntityRecovery>>:
+def new_cooking_inventory(ready:E.Ready<CookingStorage.Saved>,tables:T.Tables) -> IO(Ready & List<&2,CookingStorage.Body> & List<&2,CookingStore.Effect> & Maybe<&2,CookingStorage.EntityRecovery> & Maybe<&2,PublicationCodec.Recovery>):
+  E.Ready{E.State{base,CookingStorage.Saved{saved,bodies,pending,entities,publication},maximum,catalog},first_peer} = ready
+  do IO<Ready & List<&2,CookingStorage.Body> & List<&2,CookingStore.Effect> & Maybe<&2,CookingStorage.EntityRecovery> & Maybe<&2,PublicationCodec.Recovery>>:
     ready : Ready <- startup_inventory_base(base,saved,maximum,catalog,first_peer,tables)
-    return (ready,bodies,pending,entities)
+    return (ready,bodies,pending,entities,publication)
 
 def returned_bundle(result:E.State<IC.Saved> & R.Transient) -> State:
   (stored,transient) = result

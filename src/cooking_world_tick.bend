@@ -12,6 +12,8 @@ import ./furnace_authority.bend as F
 import ./furnace_authority_fuel.bend as FF
 import ./campfire_authority.bend as A
 import ./campfire_authority_items.bend as AI
+import ./cooking_effect_publication_journal.bend as Journal
+import ./local_player_cooking_dirty_stamp.bend as DirtyStamp
 
 type Change is Data:
   Furnace{transition:F.Transition}
@@ -176,3 +178,112 @@ def finish_tick(~Light:Data,~properties:Light -> U32 -> Maybe<&2,L.Descriptor>,~
     case CW.State{world,entries,phase,key <> rest}: (CW.State{world,entries,phase,key <> rest},Fail{CW.Loading{}})
     case CW.State{world,entries,phase,Nil{}}:
       finish_with_context(~Light,~properties,~enabled,light_context,context,world,entries,phase,CW.recipes(context))
+
+# Owned publication is additive. Legacy finish_tick and its callers retain the
+# original position-only Dirty stream. The pending phase effects are passed
+# verbatim; only effects produced by the commits below receive a cached source.
+def owned_plan_aligned(+source:Journal.Source,value:Plan) -> Bool:
+  Journal.Source{position,+previous,incarnation} = source
+  Plan{candidate,binding,change,operation} = value
+  B.equal_position(position,candidate) && B.same_block(previous,binding)
+
+def owned_plans_aligned(values:List<&2,Plan>,sources:List<&2,Journal.Source>) -> Bool:
+  match values sources:
+    case Nil{} Nil{}: True{}
+    case value <> rest source <> tail:
+      owned_plan_aligned(source,value) && owned_plans_aligned(rest,tail)
+    case _ _: False{}
+
+def commit_entries_owned(entries:List<&1,S.Entry>,values:List<&2,Plan>,sources:List<&2,Journal.Source>) ->
+    List<&1,S.Entry> & List<&2,S.Effect>:
+  match entries values sources:
+    case Nil{} _ _: ([],[])
+    case head <> rest value <> tail source <> more:
+      commit_cons(DirtyStamp.committed(source,commit_entry(head,value)),
+        commit_entries_owned(rest,tail,more))
+    case entries _ _: (entries,[])
+
+def finish_entries_owned(world:W.State,effects:List<&2,S.Effect>,
+    result:List<&1,S.Entry> & List<&2,S.Effect>) -> CW.State & Result<&2,&2,CW.Error,List<&2,S.Effect>>:
+  (entries,more) = result
+  (CW.State{world,entries,CW.Idle{},[]},Done{List.append(&2,S.Effect,effects,more)})
+
+def finish_written_owned(entries:List<&1,S.Entry>,tick:Nat,effects:List<&2,S.Effect>,
+    +values:List<&2,Plan>,sources:List<&2,Journal.Source>,
+    result:W.State & Result<&2,&2,CW.Error,Unit>) -> CW.State & Result<&2,&2,CW.Error,List<&2,S.Effect>>:
+  (world,status) = result
+  match status:
+    case Fail{error}: (CW.State{world,entries,CW.Cooking{tick,effects},[]},Fail{error})
+    case Done{unit}: finish_entries_owned(world,effects,commit_entries_owned(entries,values,sources))
+
+def finish_aligned_owned(entries:List<&1,S.Entry>,tick:Nat,effects:List<&2,S.Effect>,
+    +values:List<&2,Plan>,sources:List<&2,Journal.Source>,world:W.State,aligned:Bool) ->
+    CW.State & Result<&2,&2,CW.Error,List<&2,S.Effect>>:
+  match aligned:
+    case False{}:
+      (CW.State{world,entries,CW.Cooking{tick,effects},[]},
+        Fail{CW.Authority{"cooking-dirty-stamp:source-plan-alignment"}})
+    case True{}: finish_written_owned(entries,tick,effects,values,sources,write_lit(values,world))
+
+def finish_planned_owned(state:CW.State,cache:DirtyStamp.Cache,
+    result:Result<&2,&2,String,List<&2,Plan>>) -> CW.State & Result<&2,&2,CW.Error,List<&2,S.Effect>>:
+  match state cache result:
+    case state _ Fail{message}: (state,Fail{CW.Authority{message}})
+    case CW.State{world,entries,CW.Cooking{tick,effects},keys} DirtyStamp.Cache{+sources} Done{+values}:
+      finish_aligned_owned(entries,tick,effects,values,sources,world,owned_plans_aligned(values,sources))
+    case state _ Done{values}: (state,Fail{CW.Busy{}})
+
+def finish_resident_owned(~Light:Data,~properties:Light -> U32 -> Maybe<&2,L.Descriptor>,~enabled:Light -> C.Position -> Bool,
+    light_context:Light,context:CW.Context,entries:List<&1,S.Entry>,phase:CW.Phase,+views:List<&2,S.View>,
+    cache:DirtyStamp.Cache,result:W.State & Result<&2,&2,CW.Error,Unit>) ->
+    CW.State & Result<&2,&2,CW.Error,List<&2,S.Effect>>:
+  (world,status) = result
+  match status:
+    case Fail{error}: (CW.State{world,entries,phase,[]},Fail{error})
+    case Done{unit}:
+      finish_planned_owned(CW.State{world,entries,phase,[]},cache,
+        plans(~Light,~properties,~enabled,views,light_context,context))
+
+def finish_inspected_owned(~Light:Data,~properties:Light -> U32 -> Maybe<&2,L.Descriptor>,~enabled:Light -> C.Position -> Bool,
+    light_context:Light,context:CW.Context,world:W.State,phase:CW.Phase,cache:DirtyStamp.Cache,
+    result:List<&1,S.Entry> & Result<&2,&2,String,List<&2,S.View>>) ->
+    CW.State & Result<&2,&2,CW.Error,List<&2,S.Effect>>:
+  (entries,status) = result
+  match status:
+    case Fail{message}: (CW.State{world,entries,phase,[]},Fail{CW.Authority{message}})
+    case Done{+views}:
+      finish_resident_owned(~Light,~properties,~enabled,light_context,context,entries,phase,views,cache,CW.resident(views,world))
+
+def finish_with_context_owned(~Light:Data,~properties:Light -> U32 -> Maybe<&2,L.Descriptor>,~enabled:Light -> C.Position -> Bool,
+    light_context:Light,context:CW.Context,world:W.State,entries:List<&1,S.Entry>,phase:CW.Phase,
+    cache:DirtyStamp.Cache,campfire:AI.Context) -> CW.State & Result<&2,&2,CW.Error,List<&2,S.Effect>>:
+  AI.Context{recipes,defaults,features} = campfire
+  finish_inspected_owned(~Light,~properties,~enabled,light_context,context,world,phase,cache,S.inspect(recipes,entries))
+
+def finish_captured_owned(~Light:Data,~properties:Light -> U32 -> Maybe<&2,L.Descriptor>,~enabled:Light -> C.Position -> Bool,
+    light_context:Light,+context:CW.Context,world:W.State,phase:CW.Phase,keys:List<&2,String>,
+    result:List<&1,S.Entry> & Result<&2,&2,String,DirtyStamp.Cache>) ->
+    CW.State & Result<&2,&2,CW.Error,List<&2,S.Effect>>:
+  (entries,status) = result
+  match status:
+    case Fail{message}: (CW.State{world,entries,phase,keys},Fail{CW.Authority{message}})
+    case Done{cache}:
+      finish_with_context_owned(~Light,~properties,~enabled,light_context,context,world,entries,phase,cache,CW.recipes(context))
+
+# The supplied map is the actual Sidecar incarnation map AFTER acknowledgement
+# of the accepted start_tick's pending OwnerReset markers. No Core step occurs
+# here beyond the existing finish writes. Sources are captured and validated
+# before any write, with complete pre-lit bindings and unique positions.
+def owned_catalog(context:CW.Context) -> B.Catalog:
+  CW.Context{catalog,campfire,fuel,depth} = context
+  catalog
+
+def finish_tick_owned(~Light:Data,~properties:Light -> U32 -> Maybe<&2,L.Descriptor>,~enabled:Light -> C.Position -> Bool,
+    light_context:Light,+context:CW.Context,incarnations:Map<&2,Nat>,state:CW.State) ->
+    CW.State & Result<&2,&2,CW.Error,List<&2,S.Effect>>:
+  match state:
+    case CW.State{world,entries,CW.Idle{},keys}: (CW.State{world,entries,CW.Idle{},keys},Done{[]})
+    case CW.State{world,entries,phase,key <> rest}: (CW.State{world,entries,phase,key <> rest},Fail{CW.Loading{}})
+    case CW.State{world,entries,phase,Nil{}}:
+      finish_captured_owned(~Light,~properties,~enabled,light_context,context,world,phase,[],
+        DirtyStamp.capture(owned_catalog(context),incarnations,entries))

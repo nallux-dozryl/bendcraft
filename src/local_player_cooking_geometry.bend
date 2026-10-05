@@ -57,17 +57,21 @@ def load(sidecar:Cooking.Sidecar,engine:G.Engine,path:String,environment:Collisi
       IO.pure(G.Engine & Cooking.Sidecar & Result<&2,&2,String,Unit>,
         (engine,Cooking.Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged,Carrier.Unbound{},[]},
           Fail{"local-cooking:entity-owner-unbound"}))
+    case Cooking.Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged,Carrier.PublicationOnly{publisher},Nil{}}:
+      IO.pure(G.Engine & Cooking.Sidecar & Result<&2,&2,String,Unit>,
+        (engine,Cooking.Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged,Carrier.PublicationOnly{publisher},[]},
+          Fail{"local-cooking:entity-owner-unbound"}))
     case Cooking.Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged,
-        Carrier.Bound{entity_context,owner,inputs,Some{geometry}},Nil{}}:
+        Carrier.Bound{entity_context,owner,inputs,Some{geometry},publisher},Nil{}}:
       IO.pure(G.Engine & Cooking.Sidecar & Result<&2,&2,String,Unit>,
         (engine,Cooking.Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged,
-          Carrier.Bound{entity_context,owner,inputs,Some{geometry}},[]},Fail{"local-cooking:geometry-owner-already-bound"}))
+          Carrier.Bound{entity_context,owner,inputs,Some{geometry},publisher},[]},Fail{"local-cooking:geometry-owner-already-bound"}))
     case Cooking.Initialized{+context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged,
-        Carrier.Bound{entity_context,owner,inputs,None{}},Nil{}}:
+        Carrier.Bound{entity_context,owner,inputs,None{},publisher},Nil{}}:
       G.Engine{world,registry} = engine
       checked(registry,path,environment,
         geometry => Cooking.Initialized{context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged,
-          Carrier.Bound{entity_context,owner,inputs,geometry},[]},Cooking.checked_world(world,context))
+          Carrier.Bound{entity_context,owner,inputs,geometry,publisher},[]},Cooking.checked_world(world,context))
 
 def request_prepared(position:C.Position,environment:Collision.Environment,value:Geometry.Prepared) -> World.Request:
   Geometry.Prepared{point,body,center,search,outer} = value

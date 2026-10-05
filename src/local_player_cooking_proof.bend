@@ -2,6 +2,8 @@ import Base
 import ./local_player_cooking_laws.bend as Laws
 import ./local_player_cooking.bend as K
 import ./local_player_cooking_entity_owner.bend as Owner
+import ./cooking_effect_entities_model.bend as Model
+import ./random.bend as Random
 import ./local_player_session.bend as Session
 import ./core.bend as C
 import ./cooking_world.bend as CW
@@ -94,13 +96,22 @@ def Laws.noncanonical_tail_active_tick_retains_complete_cooking_owner(tick,time,
       C.World & K.Sidecar & Result<&2,&2,String,Bool>}
   {==}
 
-def Laws.entity_restore_refusal_retains_bound_owner_and_complete_sidecar(context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,prior_context,prior_state,prior_inputs,incoming_context,incoming_view,incoming_inputs,admitted):
+def Laws.entity_restore_refusal_retains_bound_owner_and_complete_sidecar(context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,prior_context,prior_state,prior_inputs,geometry,publisher,incoming_context,incoming_view,incoming_inputs,admitted):
   %Equal.sym(Bool,K.context_ready(context),True{},admitted) :
     {K.entity_restore_checked(_,K.Initialized{context,light,loading,entries,phase,keys,effects,details,
-        incarnations,acknowledged_resets,Owner.Bound{prior_context,prior_state,prior_inputs},[]},
+        incarnations,acknowledged_resets,Owner.Bound{prior_context,prior_state,prior_inputs,geometry,publisher},[]},
         incoming_context,incoming_view,incoming_inputs) ==
       (K.Initialized{context,light,loading,entries,phase,keys,effects,details,
-        incarnations,acknowledged_resets,Owner.Bound{prior_context,prior_state,prior_inputs},[]},
+        incarnations,acknowledged_resets,Owner.Bound{prior_context,prior_state,prior_inputs,geometry,publisher},[]},
         Fail{"local-cooking:entity-owner-already-bound"}) :
       K.Sidecar & Result<&2,&2,String,Unit>}
+  {==}
+
+def Laws.entity_snapshot_publishes_actual_inspection_and_retains_complete_sidecar(context,light,loading,entries,phase,keys,effects,details,incarnations,acknowledged_resets,sidecar_tail,entity_context,state,inputs,geometry,publisher,returned_state,view,supplied):
+  %Equal.sym(Model.State & Model.View,Model.inspect(state),(returned_state,view),supplied) :
+    {K.entity_snapshotted(context,light,loading,entries,phase,keys,effects,details,
+        incarnations,acknowledged_resets,sidecar_tail,Owner.snapshotted(entity_context,inputs,geometry,publisher,_)) ==
+      (K.Initialized{context,light,loading,entries,phase,keys,effects,details,
+        incarnations,acknowledged_resets,Owner.Bound{entity_context,returned_state,inputs,geometry,publisher},sidecar_tail},
+        Some{view},inputs) : K.Sidecar & Maybe<&2,Model.View> & List<&2,Random.Bits64>}
   {==}
