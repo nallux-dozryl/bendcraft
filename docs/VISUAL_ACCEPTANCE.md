@@ -66,7 +66,7 @@ actual player tick/held-input path is still being implemented. The next visible
 step is a bounded smoke scenario once that path is stable, using the session
 policy above. Visible acceptance remains **unverified**.
 
-## Cooking delivery: actor022 and client012
+## Cooking delivery: client012, actor lease correction pending
 
 This is a prepared visible run, **not an executed acceptance record**. Confidence
 is high for the source-derived gestures below. Actual window presentation,
@@ -75,14 +75,24 @@ sequence remain unverified. The existing actor022 publication/save/cold-restart
 and SceneFrame TCP receipts cover their stated scopes; they do not supply these
 OS observations.
 
-### Ready pair and foreground boundary
+### Candidate pins and foreground boundary
 
-The immutable actor is
+The previously verified immutable actor022 is
 `build/compiler-producer-diagnostic-022/actor`, 16,246,616 bytes, SHA-256
 `1ba545e7ccd84e5011f51199c2ee9562e4063c24b98c64148323551039357712`.
 Its source map is SHA-256
 `95acf6a8c10c4f0eca5c696ef9126a5bfc27cdec36806288147714e2510835db`,
 recorded in [the native build receipt](../evidence/playable-client-actor004-build-022.json).
+Its earlier bounded consumers remain valid, but the normal ambient cooking
+caller now exposes a required lease defect: callback run009 accepted sequence
+98 with two cooked beef, then refused the correct next sequence 99 Input before
+the output take. The run used normal ambient ticks with no host pause. Full CPU
+frame 28 is retained at 90.4008217 seconds; it is not an OS screenshot or a
+successful take/close/save/reload observation. The actor owner is narrowly
+removing duplicate pulse-count charging while retaining the existing real
+5,000 ms transport timeout. The changed actor023 build and acceptance are
+pending. Record its actual executable/source hashes after adoption; do not use
+actor022's earlier receipts to declare the current pair ready.
 The production client is
 `build/generic-resource-world-sample-client-native/012/renderer`, 6,986,328
 bytes, SHA-256
@@ -96,18 +106,29 @@ failures. The same generated C then compiled successfully with O3 and
 `-fno-stack-check`; that flag is part of this candidate's recorded build, not
 evidence of OS behavior.
 
-The exact candidate launcher command, fixture digest and matched hidden pair
-receipt must be recorded here or in the linked session record when available.
+The exact adopted actor digest, candidate launcher command and matched hidden
+pair receipt must be recorded here or in the linked session record when
+available.
 At this update `tools/play_minecraft.sh` still selected actor017 and client010;
-that historical route must not be labelled 022/012. The callback acceptance
-run is underway, so neither a paired GUI acceptance nor public promotion is
-claimed. Its test-only native callback queue is a separate hidden consumer
+that historical route must not be labelled the new cooking pair. The ambient
+callback run has not completed the required take/close/save/reload sequence,
+so neither paired acceptance nor public promotion is claimed. Its test-only
+native callback queue is a separate hidden consumer
 method, not an OS keyboard/mouse input surface. Catalog's new
-`tools/play_minecraft_cooking_demo.sh` is guarded until actual 022/012 promotion
+`tools/play_minecraft_cooking_demo.sh` is guarded until actual pair promotion
 and will copy the validated demo seed into a new world directory, protecting
-old saves. Final fixture, launcher and close/reconnect pins follow the owners'
-accepted pair. The demo seed must start unpaused; the paused controlled test
-seed is not a substitute for it.
+old saves. Final actor, launcher and close/reconnect pins follow the owners'
+accepted pair. There is no OS acceptance claim.
+
+The validated unpaused demo seed is
+`build/generic-resource-world-sample-cooking-runtime/009/demo-seed.nbt`,
+1,712,794 bytes, SHA-256
+`e88e15ab0267beb9fea4ad55c9b9b7cd3cca27eea0cf5a3cc6d7b59a2ad1b859`.
+Compared with its controlled source seed, only the Core.paused byte at offset
+3301 changes to zero; all 104 terrain sections, 43 durable player inventory
+cells and furnace owners are retained. This is the initial demo image, not a
+successful cooking-run save. The paused controlled seed is not a substitute
+for it.
 
 Prepare the candidate and its exclusive disposable world before asking for
 foreground access. Reuse the verified binaries and the existing launcher and
@@ -118,8 +139,11 @@ Record the actual pinned Java 26.3 jar, registry, item table, sine table and
 candidate settings. Use the human launch mode, CPU renderer and a **windowed**
 presentation; record measured content, drawable and HUD extents. Do not switch
 Spaces or enter fullscreen. The prepared interactive candidate requests
-960 by 540 geometry; measure the actual content/backing/HUD extents instead of
-assuming those are all the same units.
+960 by 540 geometry. The demo CLI supplies `--hud-scale 3` before caller
+overrides: the 176 by 166 logical panel has a nominal scaled extent of 528 by
+498. Record the final effective settings and measure actual
+content/backing/HUD extents instead of assuming these are all the same units
+or that nominal scale determines global OS click coordinates.
 
 No isolated controllable desktop has been established by the existing
 [input preflight](VISIBLE_INPUT_PREFLIGHT.md). The unavoidable action is to
@@ -155,8 +179,9 @@ at it. Catalog's prepared GUI fixture has the empty unlit overworld furnace at
 z 6..13. The furnace collision/light scan halo is resident. Main inventory
 slots 0/1 contain two plain `minecraft:beef` and two plain `minecraft:coal`,
 which appear as cooking menu cells 30/31. Empty cells remain for returns and
-output. These are prepared fixture facts, pending its final saved-byte pin and
-paired acceptance; do not silently substitute the paused publication fixture.
+output. These fixture facts are pinned by the unpaused demo image above;
+paired acceptance remains pending. Do not silently substitute the paused
+publication fixture.
 Setup is fixture preparation, not an observed world edit or acquisition of
 those items.
 The furnace body must use the normal initialized recipe/speed profile with no
@@ -215,7 +240,8 @@ applications. Never print authentication tokens or private reconnect contents
 in the acceptance record.
 
 The resulting record must distinguish PASS, FAIL and unobserved steps, name
-the exact 022/012 pair, retain real OS screenshots and correlated/save witnesses,
+the exact adopted actor/client012 pair, retain real OS screenshots and
+correlated/save witnesses,
 and record foreground/cursor restoration. A successful bounded furnace flow
 would establish that flow only. Continuous collision, all inventory/settings
 paths, campfires, pickup, audio, multiplayer and whole-game vanilla parity
