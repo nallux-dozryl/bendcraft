@@ -1,0 +1,42 @@
+{
+  "processes": [
+    {
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/local_player_effect_tick_recovery.bend",
+        "--check-only"
+      ],
+      "attempts": 1,
+      "cap_seconds": 60,
+      "cleanup": {
+        "after": [],
+        "before": [],
+        "errors": [],
+        "leader_reaped": true,
+        "live_group_absent": true
+      },
+      "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+      "error": null,
+      "exit_code": 0,
+      "pid": 23719,
+      "seconds": 1.3314469577744603,
+      "stderr": {
+        "bytes": 0,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-effect-tick-recovery/checks/002/ordinary/stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 58,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-effect-tick-recovery/checks/002/ordinary/stdout",
+        "sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1"
+      },
+      "timed_out": false
+    }
+  ],
+  "source_manifest": {
+    "bytes": 27714,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-effect-tick-recovery/checks/002/sources.json",
+    "sha256": "855b62beb9dff3dae1299b1c31bd7fe33183d67dcb7d7d4278f81db5a4329ec1"
+  },
+  "status": "SOURCE_PASS"
+}

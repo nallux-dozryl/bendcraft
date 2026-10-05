@@ -1,0 +1,274 @@
+{
+  "status": "PASS",
+  "obligations": 6,
+  "exclusions": [],
+  "processes": [
+    {
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/local_player_effect_tick_recovery_proof.bend",
+        "--check-only"
+      ],
+      "attempts": 1,
+      "cap_seconds": 60,
+      "cleanup": {
+        "after": [],
+        "before": [],
+        "errors": [],
+        "leader_reaped": true,
+        "live_group_absent": true
+      },
+      "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+      "error": null,
+      "exit_code": 0,
+      "pid": 27305,
+      "seconds": 1.45837533287704,
+      "stderr": {
+        "bytes": 0,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-effect-tick-recovery/proof-001/ordinary/stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 58,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-effect-tick-recovery/proof-001/ordinary/stdout",
+        "sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1"
+      },
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+        "--experimental-transform-types",
+        "--stack-size=4096",
+        "--max-old-space-size=1536",
+        "tools/local_player_effect_tick_recovery_proof.mjs",
+        "build/local-player-effect-tick-recovery/proof-001"
+      ],
+      "attempts": 1,
+      "cap_seconds": 60,
+      "cleanup": {
+        "after": [],
+        "before": [],
+        "errors": [],
+        "leader_reaped": true,
+        "live_group_absent": true
+      },
+      "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+      "error": null,
+      "exit_code": 0,
+      "pid": 28121,
+      "seconds": 1.8237676247954369,
+      "stderr": {
+        "bytes": 177,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-effect-tick-recovery/proof-001/selected-export/stderr",
+        "sha256": "bb42caf9c7fe52dcf39ac60e4fc0eb1ca344ae47ff610cac418c9698bf34f5eb"
+      },
+      "stdout": {
+        "bytes": 48,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-effect-tick-recovery/proof-001/selected-export/stdout",
+        "sha256": "62c0c37384e8f984d2097354f94341637414a4ae6313c441fbebea0a3e4eee57"
+      },
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/env",
+        "LEAN_STACK_SIZE_KB=4194304",
+        "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+        "build/local-player-effect-tick-recovery/proof-001/recovery.bendtt"
+      ],
+      "attempts": 1,
+      "cap_seconds": 60,
+      "cleanup": {
+        "after": [],
+        "before": [],
+        "errors": [],
+        "leader_reaped": true,
+        "live_group_absent": true
+      },
+      "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+      "error": null,
+      "exit_code": 0,
+      "pid": 28681,
+      "seconds": 0.12242554221302271,
+      "stderr": {
+        "bytes": 0,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-effect-tick-recovery/proof-001/independent-kernel/stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 17,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-effect-tick-recovery/proof-001/independent-kernel/stdout",
+        "sha256": "61b73cda11b6b665b9f99f2defd3d3b57f985c865225e942a5bdaa594a503e47"
+      },
+      "timed_out": false
+    }
+  ],
+  "source_proof": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-effect-tick-recovery/proof-001/source-proof.json",
+    "bytes": 8308,
+    "sha256": "850b6cc5a4cc075b574c35c6d686365d54faab9000c8b0c61d5161c64e3e8e27"
+  },
+  "artifact": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-effect-tick-recovery/proof-001/recovery.bendtt",
+    "bytes": 57671,
+    "sha256": "ee3252e48c79ae1981bf4dc68deaa2eab89c3fe2169aef876794d59e3ec6f037"
+  },
+  "kernel": {
+    "path": "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+    "bytes": 3271216,
+    "sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7"
+  },
+  "exporter": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/local_player_effect_tick_recovery_proof.mjs",
+    "bytes": 3337,
+    "sha256": "410ad409058bf4090b7ebba686f0fad7087c58742516ac70f77b31af59eeb221"
+  },
+  "source_files": [
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/base.bend",
+      "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/campfire_authority_items.bend",
+      "sha256": "cc8e33b0636309348135ec32aabb8f6cfceb23a24863fd064fc30bf730ba79c2"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_effect_entities_model.bend",
+      "sha256": "c637fa93acc5707c8c5c101e23bfde7d7549d06523ae157581e32dae53f3d07c"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_effect_geometry.bend",
+      "sha256": "4c5ced891db8b8cdc3dd5801e77af51d3b77f9de18acc3e778342a1fa972063a"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_effect_geometry_voxel.bend",
+      "sha256": "9c3b4ff3083722cf6be4675305a84fcc4bf3aac3d3a8537cb2307414e092469d"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_recipe.bend",
+      "sha256": "085bfe968f3e7169e5c7bacf633029ebd9e4fc8c8ecb79ad81f63a193110f795"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe.bend",
+      "sha256": "3c5f3fc7b3e0be9be7d553da2a107dc1245fe13f17afac0efdf84bc41c15ffe2"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe_component_registry.bend",
+      "sha256": "911786032b2c22759208edaf7112ae403b2a03663d9237c3e036c2b5ba4ece2a"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe_components.bend",
+      "sha256": "2a35e31f26187ebbdab1c4261d54083acb68072a56a7b5869e5dfc490bc946be"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/f64.bend",
+      "sha256": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/geometry.bend",
+      "sha256": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/inventory.bend",
+      "sha256": "9d2be7fb88afa1dc6386ab9e8b046b15d2a2a73b7e14566e5bfad3e6dd1f2702"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_entity_tick_model.bend",
+      "sha256": "4f7c8d51970004d363aa0e070b55277fa2f2d814c382fc04540ad4303408f2ac"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/json.bend",
+      "sha256": "a1789e3b4f5bea158ec0d95a8bcb39aa5b7c7e7355a5254d3de1d52a93c719d1"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/local_player_effect_tick_recovery.bend",
+      "sha256": "464d0a0610864997f9468f0ab527cb20ae419c69d1a3bc8b4300843d2b22d5ed"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/local_player_effect_tick_recovery_laws.bend",
+      "sha256": "900419fef54e99ed6e7efa23d2088243565895af80fd972e72c33f053e39b6c3"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/local_player_effect_tick_recovery_proof.bend",
+      "sha256": "4f7883c76a1999c194ba000f424d96a0beb4d3c973bf7fae18f195a7127dff6f"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/locomotion.bend",
+      "sha256": "ccf8aa12636ba1fce5575606383bf75c02a8ac79ba952645b89aea2eef6cd459"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/movement.bend",
+      "sha256": "31f5a4c47903506c0f388f688eaeaf78a36a0d266efde52bc57ea8cc89627b45"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/nbt.bend",
+      "sha256": "b677546b5fc02aaa38f5c09e5b798c0d35aec32b1c4b37cbd7042b9a1a5275e4"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_look.bend",
+      "sha256": "35ec863e078e46f2c2502b975f3e9f259114aec7baac614c68ba6e46773260ca"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/random.bend",
+      "sha256": "76302d587a74d2601994f6b0bc7c9000b04a65a0bbd06cc0ce643c5452eb3162"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/support.bend",
+      "sha256": "aca42f24e0a32bd89356ac33f6d9bbe2ab5975ce938e2d2750496c01a6137455"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/travel.bend",
+      "sha256": "f04bc69579d1b1a5fa048f1e07976e646c1c2f2e817e334ee632397fbe99b589"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/u32_decimal.bend",
+      "sha256": "d0b4b33f10b9e9801c4e99b83803afba5031ea40013a9263f9090bed8543d25c"
+    },
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/vanilla_entity_fields.bend",
+      "sha256": "c5b2e1f2982d8470ba246c425db78bb09d988f58941a8db6a3f2d959a7b6b7fe"
+    }
+  ],
+  "term_pins": [
+    {
+      "name": "local_player_effect_tick_recovery_laws:records_install_inspect_is_lossless",
+      "type_sha256": "292ac451d81696140ca55f34cfdadc2b2c6b70121e1395fc0a5331a4ca2b4ab3",
+      "source_body_sha256": "a76402a64eb62949a71ec5482464c1ad68d2f3099cb43105a411fa534670b857",
+      "checked_body_sha256": "00376f26688cbd14a37ffdc61efe797fdd9ad1b02ec749453e45f56a5c8729a1"
+    },
+    {
+      "name": "local_player_effect_tick_recovery_laws:entity_install_inspect_is_lossless",
+      "type_sha256": "03888f0a284227fd35ee98bb2f93e4addca8ee69906b4f612ec3cf58f77678f1",
+      "source_body_sha256": "555bc69b71b27de521ff3393e393eef57f2f3623aa3d675be726e16dc4a2f4df",
+      "checked_body_sha256": "ceb400e216a289e02d7ce2070671c1a135642ad2ede1f327d165569d28bfd4ea"
+    },
+    {
+      "name": "local_player_effect_tick_recovery_laws:tick_inspect_retains_complete_owner",
+      "type_sha256": "a6525459c89f319e7dfc72a11fc89b7cdda13db37d8bf0a8b2803046e762a3b9",
+      "source_body_sha256": "806d07fbaa645d0bcbde2d5bd7b66752d6cd820449fe4b5648b57d6dd2bc42a7",
+      "checked_body_sha256": "f92510dbcbde680c926e06a073a7b202035520308b43617c1cb4050b76c2daa8"
+    },
+    {
+      "name": "local_player_effect_tick_recovery_laws:restore_inspect_retains_complete_recovery",
+      "type_sha256": "a7e3b30afc66aceda475700b418d9512b2210dc309546ab0561b02cd15979509",
+      "source_body_sha256": "da750a3f7434b8015f51d3f8d44de488fdea198190d7a68ecaef145757b04ddb",
+      "checked_body_sha256": "6c4919403e869662fffca5ad7cd92d5b7cdca7db16a49382fcc24f293ce98b59"
+    },
+    {
+      "name": "local_player_effect_tick_recovery_laws:unavailable_runtime_refuses_full_restore",
+      "type_sha256": "73bedbd6be276dfac5a56e081de221db8d5576fd77549d3d40a8a15c83d79073",
+      "source_body_sha256": "071bac2eadbcf5df33c54a81dff029b46b15ac9fc4f8bf26db629f427c274bc4",
+      "checked_body_sha256": "e6d37c1a67968dc70a976e495a4e6553bac467c2895611abf7d57602f401bcbc"
+    },
+    {
+      "name": "local_player_effect_tick_recovery_laws:absent_sound_cannot_borrow_level_source",
+      "type_sha256": "e9e377b6afcf5bd337bb258c282f1febd35ffa13039d0c2a8bf6e8a603785ebc",
+      "source_body_sha256": "85a31557589becea8860a552967e4125e763ef8f7da93140a96ba8db73ed56ba",
+      "checked_body_sha256": "ef6dca92637fcd0c9758302da2936124f3ba0ecb677f00f7e5c74c56d4510a61"
+    }
+  ],
+  "checked_types_and_bodies_unchanged": true,
+  "all_original_declaration_maps_retained": true,
+  "scope": "Six full actual record/sole-owner inspect/install composition and missing-authority refusal laws. No NBT parsing, serialization limits, bootstrap, durable IO, live tick or Session theorem."
+}
