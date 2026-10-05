@@ -33,7 +33,21 @@ words, below the 247-word entry limit. This is not a full native emission verdic
 
 The source and diagnostic receipt is
 [`generic_resource_world_sample_cooking_client.json`](../evidence/generic_resource_world_sample_cooking_client.json).
-The changed011 producer is bounded by the established600-second/8GiB limits.
+The changed011 producer reached its established600-second limit while emitting
+the historical integer scanner in ownership pass7. No C or native artifact was
+produced, and the failure and cleanup remain intact. Changed012 uses the same
+frozen010 graph and caller with only the separately native-verified block-model
+Bool/scalar admission repair added. Its600-second/8GiB limits are unchanged.
+The changed012 whole C emission passed in267.87 seconds. Apple clang17's
+default `-O3` invocation failed in backend prologue insertion. The failed native
+receipt and crash reproducer are retained. Compiling that exact C with
+`-O3 -fno-stack-check` passed in105.05 seconds under the unchanged300-second
+native limit. The driver accepts this flag and omits its stack-check option.
+The resulting6,986,328-byte renderer is pinned in the receipt; this compilation
+does not establish interactive or OS acceptance.
+
+These results and the retained011 failure are recorded in
+[`generic_resource_world_sample_cooking_build.json`](../evidence/generic_resource_world_sample_cooking_build.json).
 Native compilation, injected callback acceptance and visible OS input acceptance
 are separate results. Injected callback acceptance retains the original drawing,
 Bend caller, menu and TCP backend; it cannot establish foreground keyboard/mouse

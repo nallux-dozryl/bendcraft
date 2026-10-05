@@ -33,6 +33,8 @@ MEMORY_EVIDENCE = ROOT/'evidence/actor-compiler-memory-001.json'
 BASELINE_GENERATION = None
 CLIENT_OVERLAY_EVIDENCE = ROOT/'evidence/generic_resource_world_sample_client_config_box.json'
 INITIAL_OVERLAY_EVIDENCE = None
+MODEL_OVERLAY_EVIDENCE = None
+NO_STACK_CHECK = False
 SCOPE = ('Actual standalone remote_resource_catalog_client production graph, '
          'including correlated catalog frames, CW.Assets, WRF.draw_catalog, '
          'hardware-key/menu consumer, retained Registry demand owner and native Window loop. Compilation alone '
@@ -64,12 +66,16 @@ def commands(memory):
             f'--generation {int(WORK.name)}')
     if memory:
         base += ' --memory-producer'
+    if NO_STACK_CHECK:
+        base += ' --no-stack-check'
     if BASELINE_GENERATION is not None:
         base += f' --baseline-generation {BASELINE_GENERATION}'
         if INITIAL_OVERLAY_EVIDENCE is not None:
             base += ' --initial-overlay-evidence ' + shlex.quote(str(INITIAL_OVERLAY_EVIDENCE))
         else:
             base += ' --client-overlay-evidence ' + shlex.quote(str(CLIENT_OVERLAY_EVIDENCE))
+        if MODEL_OVERLAY_EVIDENCE is not None:
+            base += ' --model-overlay-evidence ' + shlex.quote(str(MODEL_OVERLAY_EVIDENCE))
     return {'prepare':base, 'build':base+' --build',
             'finish_native_from_retained_C':base+' --finish-native'}
 
@@ -238,11 +244,28 @@ def prepare_baseline():
         assert checked['termination_reason'] is None
     else:
         assert checked['exit_code'] == 0 and checked['cleanup']['live_group_absent']
+    model = ROOT/'src/block_model.bend'
+    model_proof = None
+    if MODEL_OVERLAY_EVIDENCE is not None:
+        model_proof = json.loads(MODEL_OVERLAY_EVIDENCE.read_text())
+        assert model_proof['status'] == 'PASS'
+        assert model_proof['files']['src/block_model.bend'] == Remote.pin(model)
+        assert model_proof['native']['changed_model_java_cases'] == 17
+        assert model_proof['native']['changed_model_exact_refusals'] == 2
+        assert model_proof['build']['binary'] == Remote.pin(model_proof['build']['binary']['path'])
+        prior_model = (baseline/'source/src/block_model.bend').read_text()
+        next_model = model.read_text()
+        start, end = 'def int_scan_admitted(', 'def int_scan('
+        assert prior_model.split(start)[0] == next_model.split('def int_scan_character(')[0]
+        assert prior_model.split(end)[1] == next_model.split(end)[1]
     manifest_path = Catalog.PRIVATE/'manifest.json'
     if manifest_path.exists():
         value = json.loads(manifest_path.read_text())
         assert value['generation_basis']['baseline_generation'] == BASELINE_GENERATION
         assert value['generation_basis']['working_client'] == Remote.pin(client)
+        assert value['generation_basis'].get('model_overlay') == (
+            {'source':Remote.pin(model), 'evidence':Remote.pin(MODEL_OVERLAY_EVIDENCE)}
+            if MODEL_OVERLAY_EVIDENCE is not None else None)
         assert all(Catalog.sha(path) == expected for path, expected in value['files'].items())
         return value
     assert not Catalog.PRIVATE.exists(), 'Preserve unrecorded private generation'
@@ -254,6 +277,11 @@ def prepare_baseline():
     overlay.chmod(0o644)
     overlay.write_bytes(client.read_bytes())
     overlay.chmod(0o444)
+    if MODEL_OVERLAY_EVIDENCE is not None:
+        target = Catalog.PRIVATE/'source/src/block_model.bend'
+        target.chmod(0o644)
+        target.write_bytes(model.read_bytes())
+        target.chmod(0o444)
     relocate = lambda text: text.replace(str(baseline), str(Catalog.PRIVATE))
     for name in ('comp_instrumented.ts', 'diagnose.mjs', 'run.py'):
         (Catalog.PRIVATE/name).write_text(relocate((baseline/name).read_text()))
@@ -263,6 +291,9 @@ def prepare_baseline():
         row['mapped'] = relocate(row['mapped'])
         if row['original'] == str(client):
             row.update(sha256=Catalog.sha(overlay), bytes=overlay.stat().st_size)
+        if MODEL_OVERLAY_EVIDENCE is not None and row['original'] == str(model):
+            target = Catalog.PRIVATE/'source/src/block_model.bend'
+            row.update(sha256=Catalog.sha(target), bytes=target.stat().st_size)
     write(Catalog.PRIVATE/'source-map.json', mapping)
     value = json.loads(relocate(json.dumps(previous)))
     value['production_sources'][str(client)] = {
@@ -270,9 +301,15 @@ def prepare_baseline():
         'sha256':Catalog.sha(overlay), 'bytes':overlay.stat().st_size}
     value['files'] = {relocate(path):Catalog.sha(relocate(path)) for path in previous['files']}
     value['files'][str(verified)] = Catalog.sha(verified)
+    if MODEL_OVERLAY_EVIDENCE is not None:
+        value['files'][str(MODEL_OVERLAY_EVIDENCE)] = Catalog.sha(MODEL_OVERLAY_EVIDENCE)
+        value['production_sources'][str(model)] = {
+            **previous['production_sources'][str(model)],
+            'sha256':Catalog.sha(model), 'bytes':model.stat().st_size}
     changed = [row['original'] for row in mapping['files']
         if Catalog.sha(row['mapped']) != prior_map[row['original']]]
-    assert changed == [str(client)], ('Unexpected project or foreign overlay', changed)
+    expected = [str(client)] + ([str(model)] if MODEL_OVERLAY_EVIDENCE is not None else [])
+    assert sorted(changed) == sorted(expected), ('Unexpected project or foreign overlay', changed)
     value['generation_basis'] = {'baseline_generation':BASELINE_GENERATION,
         'baseline_manifest':Remote.pin(baseline/'manifest.json'),
         'baseline_source_map':Remote.pin(baseline/'source-map.json'),
@@ -281,11 +318,20 @@ def prepare_baseline():
         'verified_overlay':Remote.pin(verified),
         'only_project_source_delta':'src/generic_resource_world_sample_client.bend',
         'current_working_dependency_graph_claim':False}
+    if MODEL_OVERLAY_EVIDENCE is not None:
+        value['generation_basis'].pop('only_project_source_delta')
+        value['generation_basis']['only_project_source_deltas'] = [
+            'src/generic_resource_world_sample_client.bend', 'src/block_model.bend']
+        value['generation_basis']['model_overlay'] = {
+            'source':Remote.pin(model), 'evidence':Remote.pin(MODEL_OVERLAY_EVIDENCE)}
     actor = proof.get('consumer_actor_generation', 17)
     assert actor in (17, 22)
     value['scope'] = ('Coherent immutable generic baseline graph with only the verified '
         f'working GenericClient continuation overlay; explicit Actor{actor:03d} consumer baseline. '
         'Changing working publication/entity joins are outside this generation.')
+    if MODEL_OVERLAY_EVIDENCE is not None:
+        value['scope'] += (' The sole additional source delta is the separately native-verified '
+            'block-model integer scanner Bool/scalar admission dispatch repair.')
     write(manifest_path, value)
     return value
 
@@ -362,8 +408,11 @@ def finish_native(memory=False, emission=None):
     write(WORK/'window-transform.json', {'base_window_sha256':Platform.PINNED_WINDOW_SHA256,
           'raw':Remote.pin(raw_path), 'transformed':Remote.pin(transformed), 'gpu_bangs':False,
           'route':'existing guarded platform transform and pinned project presentation effects'})
+    native_flags = ['-fno-stack-check'] if NO_STACK_CHECK else []
+    tag = 'native-clang-no-stack-check' if NO_STACK_CHECK else 'native-clang'
+    assert not (WORK/(tag+'.receipt.json')).exists(), 'Preserve the existing native compiler attempt'
     compiled, native = Catalog.run(['/usr/bin/clang', '-x', 'objective-c', '-fobjc-arc', '-fmodules',
-                '-std=c11', '-O3', transformed, '-lpthread', '-lm', '-o', Catalog.BINARY], 'native-clang', 300)
+                '-std=c11', '-O3', *native_flags, transformed, '-lpthread', '-lm', '-o', Catalog.BINARY], tag, 300)
     assert compiled.stderr == ''
     assert all(Catalog.sha(path) == sha for path, sha in manifest['files'].items())
     result = {'status':'native_built_consumer_run_pending', 'scope':manifest['scope'],
@@ -392,17 +441,23 @@ if __name__ == '__main__':
                        help='Compile a completed immutable C emission; never rerun the emitter')
     parser.add_argument('--memory-producer', action='store_true',
                         help='Use the separately byte/native-verified private cache/progress correction')
+    parser.add_argument('--no-stack-check', action='store_true',
+                        help='Retained-C native workaround for Apple clang prologue register clobber')
     parser.add_argument('--baseline-generation', type=int,
                         help='Reuse a coherent immutable graph with only the verified working client overlay')
     parser.add_argument('--client-overlay-evidence', type=Path,
                         default=CLIENT_OVERLAY_EVIDENCE,
                         help='Exact retained source-check receipt for the changed client overlay')
     parser.add_argument('--initial-overlay-evidence',type=Path,help='Exact complete source-check receipt for initial worker+entry on completed009')
+    parser.add_argument('--model-overlay-evidence',type=Path,
+        help='Verified minimal block-model scalar admission repair on the coherent client baseline')
     args = parser.parse_args()
     configure(args.generation)
     BASELINE_GENERATION = args.baseline_generation
     CLIENT_OVERLAY_EVIDENCE = args.client_overlay_evidence.resolve()
     INITIAL_OVERLAY_EVIDENCE = args.initial_overlay_evidence.resolve() if args.initial_overlay_evidence is not None else None
+    MODEL_OVERLAY_EVIDENCE = args.model_overlay_evidence.resolve() if args.model_overlay_evidence is not None else None
+    NO_STACK_CHECK = args.no_stack_check
     try:
         if args.build:
             build(args.memory_producer)
