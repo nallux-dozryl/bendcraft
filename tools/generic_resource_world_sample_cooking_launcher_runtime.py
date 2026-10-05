@@ -27,6 +27,7 @@ import generic_resource_world_sample_cooking_runtime as C
 
 G, R, S, Host, Pair, A = C.G, C.R, C.S, C.Host, C.Pair, C.A
 ROOT, require, pin = C.ROOT, C.require, C.pin
+ACTOR_GENERATION = 23
 ACTOR = ROOT/'build/compiler-producer-diagnostic-023/actor'
 CLIENT = ROOT/'build/generic-resource-world-sample-client-native/012/renderer'
 LAUNCH = ROOT/'tools/play_minecraft.sh'
@@ -57,25 +58,66 @@ def parse_lines(path):
             if line.startswith(b'{')]
 
 
-def run(directory, runtime_generation, *, finish_retained=False):
+def select_actor(generation):
+    """Select an explicit completed actor generation; never fall back."""
+    global ACTOR_GENERATION, ACTOR, ACTOR_SHA
+    actor_work = ROOT/f'build/compiler-producer-diagnostic-{generation:03d}'
+    with Host.bindings(A, {'WORK': actor_work, 'SOURCE': actor_work/'source',
+                          'ACTOR': actor_work/'actor'}):
+        build = C.B.artifact()
+    if generation == 23:
+        require(build['binary']['sha256'] == ACTOR_SHA, 'Accepted Actor023 pin changed')
+    ACTOR_GENERATION = generation
+    ACTOR = actor_work/'actor'
+    ACTOR_SHA = build['binary']['sha256']
+
+
+def accepted_teardown(runtime, acceptance):
+    """Admit either a clean actual run or its explicit retained finalization."""
+    native = runtime/'native'
+    finalization_path = native/'retained-finalization.json'
+    if finalization_path.exists():
+        finalization = json.loads(finalization_path.read_bytes())
+        require(finalization['status'] == 'retained_behaviour_save_cold_PASS_cleanup_driver_FAIL_finalized'
+                and finalization['all_own_groups_absent']
+                and finalization['summary'] == pin(native/'summary.json')
+                and all(value['absent'] for value in finalization['listeners']),
+                'Retained native PASS requires its completed teardown record')
+        return pin(finalization_path)
+    require(acceptance['complete_cold_owner_equality']
+            and not any((native/name).exists() for name in
+                        ('first-failure.json', 'final-cleanup.json', 'owned-groups-cleanup-secondary.json')),
+            'A fresh normal PASS must finish without a driver or cleanup failure')
+    groups = json.loads((native/'owned-groups-cleanup.json').read_bytes())
+    require(len(groups) == 3 and all(not row['errors'] and not R.live(row['after']) for row in groups),
+            'Actual callback and both actor groups finished')
+    for label in ('actor-callback', 'actor-cold'):
+        result = json.loads((native/label/'process.json').read_bytes())
+        require(result['exit_code'] == 0 and result['group_absent']
+                and all(result['listeners_absent']) and not result['errors'],
+                'Actual actor teardown incomplete: '+label)
+    relay = json.loads((native/'callback-relay.json').read_bytes())
+    require(relay['thread_finished'] and relay['failure'] is None,
+            'Actual private callback channel drained')
+    require(acceptance['observer']['child_status'] == 0
+            and not acceptance['observer']['timed_out'], 'Actual callback client exited')
+    return pin(native/'owned-groups-cleanup.json')
+
+
+def run(directory, runtime_generation, seed_generation, *, finish_retained=False):
     runtime = ROOT/'build/generic-resource-world-sample-cooking-runtime'/f'{runtime_generation:03d}'
     acceptance = json.loads((runtime/'native/summary.json').read_bytes())
     require(acceptance['status'] == 'PASS' and acceptance['clock_mode'] == 'ambient',
             'Actual normal cooking caller acceptance must precede public selection')
-    finalization_path = runtime/'native/retained-finalization.json'
-    finalization = json.loads(finalization_path.read_bytes())
-    require(finalization['status'] == 'retained_behaviour_save_cold_PASS_cleanup_driver_FAIL_finalized'
-            and finalization['all_own_groups_absent']
-            and finalization['summary'] == pin(runtime/'native/summary.json')
-            and all(value['absent'] for value in finalization['listeners']),
-            'Retained native behaviour PASS has explicit completed teardown despite its driver failure')
-    demo_seed = json.loads((runtime/'demo-seed.json').read_bytes())
+    teardown = accepted_teardown(runtime, acceptance)
+    seed_runtime = ROOT/'build/generic-resource-world-sample-cooking-runtime'/f'{seed_generation:03d}'
+    demo_seed = json.loads((seed_runtime/'demo-seed.json').read_bytes())
     require(demo_seed['status'] == 'file_only_validated_demo_seed_actual_public_wrapper_acceptance_pending'
             and demo_seed['complete_format4_reconstruction'] and demo_seed['all_other_owners_identical']
             and demo_seed['exact_byte_differences'] == [[330, 1, 0]]
-            and demo_seed['retained_cleanup_finalization'] == pin(finalization_path),
+            and demo_seed['retained_cleanup_finalization'] == pin(seed_runtime/'native/retained-finalization.json'),
             'Validated unpaused demo seed; public execution remains pending')
-    seed = runtime/'demo-seed.nbt'
+    seed = seed_runtime/'demo-seed.nbt'
     require(demo_seed['demo_seed'] == pin(seed), 'Exact reconstructed demo seed')
     require(pin(seed)['sha256'] in DEMO.read_text(), 'Demo wrapper pins the validated seed')
     require(pin(ACTOR)['sha256'] == ACTOR_SHA and pin(CLIENT)['sha256'] == CLIENT_SHA,
@@ -84,10 +126,10 @@ def run(directory, runtime_generation, *, finish_retained=False):
             and acceptance['original_build'] == pin(CLIENT.parent/'build.json'),
             'The cooking caller PASS belongs to this exact production pair')
     launcher = LAUNCH.read_text()
-    require('actor="$root/build/compiler-producer-diagnostic-023/actor"' in launcher
+    require(f'actor="$root/build/compiler-producer-diagnostic-{ACTOR_GENERATION:03d}/actor"' in launcher
             and 'renderer="$root/build/generic-resource-world-sample-client-native/012/renderer"' in launcher
             and 'export MC_COOKING_PROTOCOL=1' in launcher,
-            'Actual public023/012 cooking protocol selection')
+            'Actual explicitly selected actor/Client012 cooking protocol pair')
     require('MC_COOKING_PROTOCOL MC_WORLD_PATH' in launcher,
             'Retained0600 reconnect metadata contains cooking protocol')
     if finish_retained:
@@ -260,6 +302,8 @@ def run(directory, runtime_generation, *, finish_retained=False):
     result = {'status': 'PASS', 'actor': pin(ACTOR), 'renderer': pin(CLIENT),
               'launcher': pin(LAUNCH), 'demo': pin(DEMO), 'seed': pin(seed),
               'observer': report, 'process': process, 'world': str(path),
+              'actor_generation': ACTOR_GENERATION, 'cooking_acceptance': pin(runtime/'native/summary.json'),
+              'cooking_teardown': teardown, 'seed_generation': seed_generation,
               'automatic_ports': ports, 'protected_actor': before,
               'default_worlds_before': None if finish_retained else default_world_pins,
               'default_world_hash_retention_checked': not finish_retained,
@@ -272,7 +316,7 @@ def run(directory, runtime_generation, *, finish_retained=False):
               'retained_public_shell_replayed': False if finish_retained else None,
               'retained_first_failure': pin(directory/'first-failure.json') if finish_retained else None,
               'final_verifier_repair': 'Preserve seeded max_peer=None until an actual developer Core command; only pending cold actor executed.' if finish_retained else None,
-              'scope': 'Real public demo shell and original023/012 artifacts. Two returned960x540 CPU images, close/save and cold restore. No injected callbacks, foreground OS input/presentation, full RGB vanilla parity or whole game claim.'}
+              'scope': f'Real public demo shell and original Actor{ACTOR_GENERATION:03d}/Client012 artifacts. Two returned 960x540 CPU images, close/save and cold restore. No injected callbacks, foreground OS input/presentation, full RGB vanilla parity or whole game claim.'}
     G.exclusive(directory/'summary.json', result)
     return result
 
@@ -397,15 +441,22 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--generation', type=int, default=1)
     parser.add_argument('--runtime-generation', type=int, required=True)
+    parser.add_argument('--actor-generation', type=int, default=23)
+    parser.add_argument('--demo-seed-generation', type=int, default=11)
     parser.add_argument('--finish-retained', action='store_true')
     parser.add_argument('--finish-saved', action='store_true')
     args = parser.parse_args()
-    require(1 <= args.generation <= 999 and 1 <= args.runtime_generation <= 999,
+    require(all(1 <= value <= 999 for value in
+                (args.generation, args.runtime_generation, args.actor_generation, args.demo_seed_generation)),
             'Bounded explicit generations')
+    require(not (args.finish_retained or args.finish_saved) or args.actor_generation == 23,
+            'Historical retained public finalization is scoped to Actor023')
+    select_actor(args.actor_generation)
     directory = ROOT/'build/generic-resource-world-sample-cooking-launcher-runtime'/f'{args.generation:03d}'
     try:
         result = finish_saved(directory, args.runtime_generation) if args.finish_saved else \
-            run(directory, args.runtime_generation, finish_retained=args.finish_retained)
+            run(directory, args.runtime_generation, args.demo_seed_generation,
+                finish_retained=args.finish_retained)
     except BaseException as error:
         if directory.exists() and not (directory/'first-failure.json').exists():
             G.exclusive(directory/'first-failure.json', {'type': type(error).__name__, 'message': str(error)})

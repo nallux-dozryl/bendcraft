@@ -63,3 +63,11 @@ procedurally with colored rectangles and font labels; they do not use loaded
 GUI textures in the frozen Client012 screen.
 Output transfer does not invoke furnace XP authority. Lighting, entity drawing,
 full vanilla GPU appearance and whole-game completion are outside this slice.
+
+For an actor-only follow-up, the existing public acceptance helper now takes an
+explicit `--actor-generation` and validates its completed native-build receipt.
+It accepts either a clean cooking runtime teardown or the historical explicit
+cleanup finalization. The validated unpaused seed can be retained separately
+with `--demo-seed-generation 11`. These helper changes leave the accepted public
+Actor023/Client012 selection unchanged; a future actor requires its own actual
+cooking flow and public-shell/save/reload acceptance.
