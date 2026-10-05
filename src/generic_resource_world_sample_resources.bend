@@ -14,6 +14,9 @@ type Config is Data:
   Config{jar:String,admission:Demand.Admission,limits:Demand.Limits}
 type Session is Type:
   Session{owner:Demand.Owner,assets:CW.Assets,config:Config}
+type Preparation is Type:
+  Ready{value:Session & Result<&2,&2,C.Error,Unit>}
+  Pending{sample:GS.Sample,session:Session,catalog:C.Catalog,error:C.Error}
 
 # The caller supplies the Registry and complete request inventory returned by
 # the same validated successful load as assets. This retains that real owner;
@@ -155,6 +158,37 @@ def informed(value:CW.Assets & CW.Info,+sample:GS.Sample,width:U32,height:U32,
 def ensure(sample:GS.Sample,width:U32,height:U32,session:Session) -> IO(Session & Result<&2,&2,C.Error,Unit>):
   Session{owner,assets,config} = session
   informed(CW.info(assets),sample,width,height,owner,config)
+
+# This same actual frame result decides whether the client needs a background
+# resource load. Warm frames do not spawn workers or perform a second lookup.
+def preparation(valid:Bool,error:C.Error,sample:GS.Sample,session:Session,catalog:C.Catalog) -> Preparation:
+  match valid:
+    case False{}:
+      Session{owner,assets,config} = session
+      Ready{retained(error,owner,assets,config)}
+    case True{}: Pending{sample,session,catalog,error}
+
+def prepare_frame(value:Result<&2,&2,C.Error,CW.Frame>,sample:GS.Sample,
+    session:Session,catalog:C.Catalog) -> Preparation:
+  match value:
+    case Fail{C.Error{+code,resource,detail}}:
+      preparation(String.eq(code,"StateNotLoaded"),C.Error{code,resource,detail},sample,session,catalog)
+    case Done{frame}: Ready{(session,Done{Unit{}})}
+
+def prepare_info(value:CW.Assets & CW.Info,+sample:GS.Sample,
+    owner:Demand.Owner,config:Config) -> Preparation:
+  (assets,CW.Info{+catalog,textures}) = value
+  prepare_frame(Frame.draw_frame(sample,CW.Info{catalog,textures}),sample,Session{owner,assets,config},catalog)
+
+def prepare(sample:GS.Sample,session:Session) -> Preparation:
+  Session{owner,assets,config} = session
+  prepare_info(CW.info(assets),sample,owner,config)
+
+def resolve(value:Preparation,width:U32,height:U32) -> IO(Session & Result<&2,&2,C.Error,Unit>):
+  match value:
+    case Ready{result}: IO.pure(Session & Result<&2,&2,C.Error,Unit>,result)
+    case Pending{sample,Session{owner,assets,config},catalog,error}:
+      missing(True{},error,sample,width,height,owner,assets,config,catalog)
 
 def drawn(value:CW.Assets & Result<&2,&2,String,Image>,owner:Demand.Owner,
     config:Config) -> Session & Result<&2,&2,String,Image>:

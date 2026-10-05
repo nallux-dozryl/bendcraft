@@ -29,14 +29,16 @@ import ./resource_block_catalog.bend as Catalog
 import ./generic_resource_world_sample.bend as GS
 import ./generic_resource_world_sample_presenter.bend as Draw
 import ./generic_resource_world_sample_resources.bend as Session
+import ./generic_resource_world_sample_resource_transport.bend as ResourceTransport
 import ./generic_resource_world_sample_demand.bend as Demand
+import ./player_cooking_client_input.bend as CookingInput
 
 # Native resource owner/window consumer. Shared transport, hardware-key/menu
 # contracts and presentation policy are imported from the real remote client.
 # Only the scene sampling/model/resource owner differs from its legacy route.
 def frame_description(sample:GS.Sample,config:P.Config) -> IO(Unit):
   GS.Sample{identity,tick,revision,origin,Pixels.Camera{x,y,z,yaw,pitch},cells} = sample
-  P.Config{human,frames,width,height,mode,serial,plan,started,menu,keys,physical_keys} = config
+  P.Config{human,frames,width,height,mode,serial,plan,started,menu,keys,physical_keys,cooking} = config
   IO.print("catalog.frame|" ++ Nat.show(serial) ++ "|" ++ identity ++ "|" ++ Nat.show(tick) ++ "|" ++
     Nat.show(revision) ++ "|" ++ Nat.show(List.length(&2,GS.Cell,cells)))
 
@@ -48,8 +50,8 @@ def closing(window:Window,assets:Session.Session,link:P.Link,code:U32,message:St
     IO.die(Unit,code,message)
 
 def advance(config:P.Config) -> P.Config:
-  P.Config{human,frames,width,height,trace,serial,+plan,started,menu,keys,physical_keys} = config
-  P.Config{human,Common.remaining(frames),width,height,trace,1n+serial,plan,started,menu,keys,physical_keys}
+  P.Config{human,frames,width,height,trace,serial,+plan,started,menu,keys,physical_keys,cooking} = config
+  P.Config{human,Common.remaining(frames),width,height,trace,1n+serial,plan,started,menu,keys,physical_keys,cooking}
 
 def scheduled(window:Window,assets:Session.Session,link:P.Link,config:P.Config,captured:Bool,keep:Bool,
     resume:Window -> Session.Session -> P.Link -> P.Config -> Bool -> IO(Unit)) -> IO(Unit):
@@ -62,7 +64,7 @@ def scheduled(window:Window,assets:Session.Session,link:P.Link,config:P.Config,c
 
 def packet_advance(window:Window,assets:Session.Session,link:P.Link,+next:P.Config,captured:Bool,keep:Bool,
     resume:Window -> Session.Session -> P.Link -> P.Config -> Bool -> IO(Unit)) -> IO(Unit):
-  P.Config{human,frames,width,height,trace,serial,+plan,started,menu,keys,physical_keys} = next
+  P.Config{human,frames,width,height,trace,serial,+plan,started,menu,keys,physical_keys,cooking} = next
   scheduled(window,assets,link,next,captured,keep && Common.continuing(frames),resume)
 
 def commands_sent(window:Window,assets:Session.Session,config:P.Config,captured:Bool,keep:Bool,
@@ -117,7 +119,7 @@ def packet_initial(assets:Session.Session,link:P.Link,config:P.Config,pending:Li
 
 def menu_events_sent(assets:Session.Session,+config:P.Config,pending:List<Event>,old:Bool,result:P.MenuResult,
     resume:Window -> Session.Session -> P.Link -> P.Config -> Bool -> IO(Unit)) -> IO(Unit):
-  P.Config{+human,frames,width,height,trace,serial,plan,started,previous,keys,physical_keys} = config
+  P.Config{+human,frames,width,height,trace,serial,plan,started,previous,keys,physical_keys,cooking} = config
   match result:
     case P.MenuResult{window,link,state,False{},Done{unit}}: closing(window,assets,link,0,"client closed")
     case P.MenuResult{window,link,+state,True{},Done{unit}}:
@@ -128,7 +130,7 @@ def menu_events_sent(assets:Session.Session,+config:P.Config,pending:List<Event>
 
 def menu_intercepted(assets:Session.Session,link:P.Link,+config:P.Config,old:Bool,window:Window,
     batch:MenuInput.Batch,resume:Window -> Session.Session -> P.Link -> P.Config -> Bool -> IO(Unit)) -> IO(Unit):
-  P.Config{human,frames,width,height,trace,serial,plan,started,menu,keys,physical_keys} = config
+  P.Config{human,frames,width,height,trace,serial,plan,started,menu,keys,physical_keys,cooking} = config
   MenuInput.Batch{state,intents,events} = batch
   do IO<Unit>:
     sent : P.MenuResult <- P.send_menu_intents(intents,window,link,state,human,True{})
@@ -136,14 +138,14 @@ def menu_intercepted(assets:Session.Session,link:P.Link,+config:P.Config,old:Boo
 
 def menu_intercept(assets:Session.Session,link:P.Link,+config:P.Config,pending:List<Event>,old:Bool,
     result:Window & Bool & Bool,resume:Window -> Session.Session -> P.Link -> P.Config -> Bool -> IO(Unit)) -> IO(Unit):
-  P.Config{human,frames,width,height,trace,serial,+plan,started,menu,keys,physical_keys} = config
+  P.Config{human,frames,width,height,trace,serial,+plan,started,menu,keys,physical_keys,cooking} = config
   (window,focused,captured) = result
   menu_intercepted(assets,link,config,old,window,MenuInput.packet_keys(physical_keys,keys,menu,pending,
     MenuInput.viewport(Presentation.hud_viewport(plan)),focused,captured),resume)
 
 def input_presented(window:Window,assets:Session.Session,link:P.Link,+config:P.Config,captured:Bool,+image:Image,pending:List<Event>,
     resume:Window -> Session.Session -> P.Link -> P.Config -> Bool -> IO(Unit)) -> IO(Unit):
-  P.Config{+human,frames,width,height,trace,serial,+plan,started,menu,keys,physical_keys} = config
+  P.Config{+human,frames,width,height,trace,serial,+plan,started,menu,keys,physical_keys,cooking} = config
   do IO<Unit>:
     P.image_description(image,config)
     window : Window <- Common.window_policy(window,human)
@@ -158,7 +160,7 @@ def traced(window:Window,assets:Session.Session,link:P.Link,config:P.Config,capt
 
 def presented(assets:Session.Session,link:P.Link,+config:P.Config,captured:Bool,result:Window & Image & List<Event>,
     resume:Window -> Session.Session -> P.Link -> P.Config -> Bool -> IO(Unit)) -> IO(Unit):
-  P.Config{human,frames,width,height,mode,serial,plan,started,menu,keys,physical_keys} = config
+  P.Config{human,frames,width,height,mode,serial,plan,started,menu,keys,physical_keys,cooking} = config
   (window,+image,pending) = result
   do IO<Unit>:
     now : U32 <- NativePresentation.Native.milliseconds()
@@ -168,7 +170,7 @@ def presented(assets:Session.Session,link:P.Link,+config:P.Config,captured:Bool,
 
 def drawn(window:Window,link:P.Link,+config:P.Config,captured:Bool,view:HUD.View,screen:Maybe<&2,Screen.View>,result:Session.Session & Result<&2,&2,String,Image>,
     resume:Window -> Session.Session -> P.Link -> P.Config -> Bool -> IO(Unit)) -> IO(Unit):
-  P.Config{human,frames,width,height,trace,serial,+plan,started,menu,keys,physical_keys} = config
+  P.Config{human,frames,width,height,trace,serial,+plan,started,menu,keys,physical_keys,cooking} = config
   (assets,status) = result
   match status:
     case Fail{message}: closing(window,assets,link,1,"render: " ++ message)
@@ -217,15 +219,15 @@ def menu_views(session:Session.Session,menu:MenuInput.State) -> Session.Session 
 def inventory_timed(window:Window,assets:Session.Session,link:P.Link,+config:P.Config,captured:Bool,+sample:GS.Sample,
     view:HUD.View,screen:Maybe<&2,Screen.View>,begin:U32,
     resume:Window -> Session.Session -> P.Link -> P.Config -> Bool -> IO(Unit)) -> IO(Unit):
-  P.Config{human,frames,width,height,trace,serial,plan,started,menu,keys,physical_keys} = config
-  +timed : P.Config = P.Config{human,frames,width,height,trace,serial,plan,begin,menu,keys,physical_keys}
+  P.Config{human,frames,width,height,trace,serial,plan,started,menu,keys,physical_keys,cooking} = config
+  +timed : P.Config = P.Config{human,frames,width,height,trace,serial,plan,begin,menu,keys,physical_keys,cooking}
   do IO<Unit>:
     frame_description(sample,timed)
     drawn(window,link,timed,captured,view,screen,Session.draw(sample,assets,width,height),resume)
 
 def inventory_draw(window:Window,link:P.Link,+config:P.Config,captured:Bool,+sample:GS.Sample,
     prepared:Session.Session & Result<&2,&1,String,HUD.View & Maybe<&2,Screen.View>>,resume:Window -> Session.Session -> P.Link -> P.Config -> Bool -> IO(Unit)) -> IO(Unit):
-  P.Config{human,frames,width,height,trace,serial,+plan,started,menu,keys,physical_keys} = config
+  P.Config{human,frames,width,height,trace,serial,+plan,started,menu,keys,physical_keys,cooking} = config
   (assets,status) = prepared
   match status:
     case Fail{message}: closing(window,assets,link,1,message)
@@ -255,12 +257,26 @@ def resources_ready(window:Window,link:P.Link,+config:P.Config,captured:Bool,sam
         reply : P.Link & Result<&2,&2,String,Wire.Reply> <- P.call(link,Wire.MenuInspect{})
         inventoried(window,assets,config,captured,sample,reply,resume)
 
-def snapshot_ready(window:Window,assets:Session.Session,link:P.Link,+config:P.Config,captured:Bool,+sample:GS.Sample,
+def resources_linked(window:Window,+config:P.Config,captured:Bool,sample:GS.Sample,
+    value:P.Link & (Session.Session & Result<&2,&2,Catalog.Error,Unit>),
     resume:Window -> Session.Session -> P.Link -> P.Config -> Bool -> IO(Unit)) -> IO(Unit):
-  P.Config{human,frames,width,height,trace,serial,plan,started,menu,keys,physical_keys} = config
-  do IO<Unit>:
-    prepared:Session.Session & Result<&2,&2,Catalog.Error,Unit> <- Session.ensure(sample,width,height,assets)
-    resources_ready(window,link,config,captured,sample,prepared,resume)
+  (link,result) = value
+  resources_ready(window,link,config,captured,sample,result,resume)
+
+def resources_prepared(window:Window,link:P.Link,+config:P.Config,captured:Bool,sample:GS.Sample,
+    prepared:Session.Preparation,resume:Window -> Session.Session -> P.Link -> P.Config -> Bool -> IO(Unit)) -> IO(Unit):
+  P.Config{human,frames,width,height,trace,serial,plan,started,menu,keys,physical_keys,cooking} = config
+  match prepared:
+    case Session.Ready{result}: resources_ready(window,link,config,captured,sample,result,resume)
+    case Session.Pending{missing,owner,catalog,error}:
+      do IO<Unit>:
+        value:P.Link & (Session.Session & Result<&2,&2,Catalog.Error,Unit>) <-
+          ResourceTransport.load(link,Session.Pending{missing,owner,catalog,error},width,height)
+        resources_linked(window,config,captured,sample,value,resume)
+
+def snapshot_ready(window:Window,assets:Session.Session,link:P.Link,config:P.Config,captured:Bool,+sample:GS.Sample,
+    resume:Window -> Session.Session -> P.Link -> P.Config -> Bool -> IO(Unit)) -> IO(Unit):
+  resources_prepared(window,link,config,captured,sample,Session.prepare(sample,assets),resume)
 
 def sampled(window:Window,assets:Session.Session,config:P.Config,captured:Bool,result:P.Link & Result<&2,&2,String,Wire.Reply>,
     resume:Window -> Session.Session -> P.Link -> P.Config -> Bool -> IO(Unit)) -> IO(Unit):
@@ -274,19 +290,19 @@ def query_planned(window:Window,assets:Session.Session,link:P.Link,+config:P.Con
     resume:Window -> Session.Session -> P.Link -> P.Config -> Bool -> IO(Unit)) -> IO(Unit):
   match config valid:
     case _ False{}: closing(window,assets,link,1,"drawable dimensions exceed the configured presentation allocation policy")
-    case P.Config{human,frames,width,height,trace,serial,plan,started,menu,keys,physical_keys} True{}:
+    case P.Config{human,frames,width,height,trace,serial,plan,started,menu,keys,physical_keys,cooking} True{}:
       do IO<Unit>:
         reply : P.Link & Result<&2,&2,String,Wire.Reply> <- P.call(link,Wire.FrameCatalog{width,height})
         sampled(window,assets,config,captured,reply,resume)
 
 def planned(assets:Session.Session,link:P.Link,+config:P.Config,captured:Bool,
     result:Window & Presentation.Geometry,resume:Window -> Session.Session -> P.Link -> P.Config -> Bool -> IO(Unit)) -> IO(Unit):
-  P.Config{+human,frames,width,height,trace,serial,Presentation.Plan{+settings,viewport,sw,sh,pw,ph},started,menu,keys,physical_keys} = config
+  P.Config{+human,frames,width,height,trace,serial,Presentation.Plan{+settings,viewport,sw,sh,pw,ph},started,menu,keys,physical_keys,cooking} = config
   (actual,+geometry) = result
   +next_plan = Presentation.plan(settings,geometry,human)
   +next_width = Presentation.scene_width(next_plan)
   +next_height = Presentation.scene_height(next_plan)
-  +next : P.Config = P.Config{human,frames,next_width,next_height,trace,serial,next_plan,started,menu,keys,physical_keys}
+  +next : P.Config = P.Config{human,frames,next_width,next_height,trace,serial,next_plan,started,menu,keys,physical_keys,cooking}
   query_planned(actual,assets,link,next,captured,
     Presentation.geometry_valid(geometry) &&
       Presentation.dimensions(Presentation.output_width(next_plan),Presentation.output_height(next_plan)),resume)
@@ -298,7 +314,7 @@ def loop(window:Window,assets:Session.Session,link:P.Link,+config:P.Config,captu
     planned(assets,link,config,captured,actual,w => a => l => c => capture => loop(w,a,l,c,capture))
 
 def starting(window:Window,assets:Session.Session,link:P.Link,+config:P.Config,captured:Bool,sample:GS.Sample) -> IO(Unit):
-  P.Config{human,frames,width,height,trace,serial,+plan,started,menu,keys,physical_keys} = config
+  P.Config{human,frames,width,height,trace,serial,+plan,started,menu,keys,physical_keys,cooking} = config
   match frames:
     case Some{0n}: closing(window,assets,link,0,"client closed")
     case _: snapshot_ready(window,assets,link,config,captured,sample,w => a => l => c => capture => loop(w,a,l,c,capture))
@@ -310,29 +326,29 @@ def captured(assets:Session.Session,link:P.Link,config:P.Config,sample:GS.Sample
 def capture_configured(window:Window,assets:Session.Session,link:P.Link,+config:P.Config,sample:GS.Sample,valid:Bool) -> IO(Unit):
   match config valid:
     case _ False{}: closing(window,assets,link,1,"drawable/content dimensions exceed the configured presentation allocation policy")
-    case P.Config{+human,frames,width,height,trace,serial,plan,started,menu,keys,physical_keys} True{}:
+    case P.Config{+human,frames,width,height,trace,serial,plan,started,menu,keys,physical_keys,cooking} True{}:
       do IO<Unit>:
         actual : Window & Bool <- Input.capture(window,human)
         captured(assets,link,config,sample,actual)
 
 def configured_window(assets:Session.Session,link:P.Link,+config:P.Config,sample:GS.Sample,
     actual:Window & Presentation.Geometry) -> IO(Unit):
-  P.Config{+human,frames,width,height,trace,serial,Presentation.Plan{+settings,viewport,sw,sh,pw,ph},started,menu,keys,physical_keys} = config
+  P.Config{+human,frames,width,height,trace,serial,Presentation.Plan{+settings,viewport,sw,sh,pw,ph},started,menu,keys,physical_keys,cooking} = config
   (window,+geometry) = actual
   +plan = Presentation.plan(settings,geometry,human)
-  +next : P.Config = P.Config{human,frames,Presentation.scene_width(plan),Presentation.scene_height(plan),trace,serial,plan,started,menu,keys,physical_keys}
+  +next : P.Config = P.Config{human,frames,Presentation.scene_width(plan),Presentation.scene_height(plan),trace,serial,plan,started,menu,keys,physical_keys,cooking}
   capture_configured(window,assets,link,next,sample,Presentation.geometry_valid(geometry) &&
     Presentation.dimensions(Presentation.output_width(plan),Presentation.output_height(plan)))
 
 def keys_enabled(assets:Session.Session,link:P.Link,config:P.Config,sample:GS.Sample,result:Window & Bool) -> IO(Unit):
-  P.Config{human,frames,width,height,trace,serial,plan,started,menu,keys,previous} = config
+  P.Config{human,frames,width,height,trace,serial,plan,started,menu,keys,previous,cooking} = config
   (window,enabled) = result
   do IO<Unit>:
     actual : Window & Presentation.Geometry <- NativePresentation.measure(window)
-    configured_window(assets,link,P.Config{human,frames,width,height,trace,serial,plan,started,menu,keys,enabled},sample,actual)
+    configured_window(assets,link,P.Config{human,frames,width,height,trace,serial,plan,started,menu,keys,enabled,cooking},sample,actual)
 
 def opened(assets:Session.Session,link:P.Link,+config:P.Config,sample:GS.Sample,result:Result<&1,&1,U32 & String,Window>) -> IO(Unit):
-  P.Config{+human,frames,width,height,trace,serial,Presentation.Plan{Presentation.Settings{+ow,+oh,percent,scale,+native,+fullscreen},viewport,sw,sh,pw,ph},started,menu,keys,physical_keys} = config
+  P.Config{+human,frames,width,height,trace,serial,Presentation.Plan{Presentation.Settings{+ow,+oh,percent,scale,+native,+fullscreen},viewport,sw,sh,pw,ph},started,menu,keys,physical_keys,cooking} = config
   match result:
     case Fail{(code,message)}:
       do IO<Unit>:
@@ -353,7 +369,7 @@ def open_catalogued_valid(assets:Session.Session,link:P.Link,sample:GS.Sample,+h
     window : Result<&1,&1,U32 & String,Window> <- Window.open("Minecraft 26.3 — remote LocalPlayer resource client",
       PNG.choose(U32,960,PNG.choose(U32,512,ow,U32.is_eq(ow,128) && U32.is_eq(oh,128)),human),
       PNG.choose(U32,540,PNG.choose(U32,512,oh,U32.is_eq(ow,128) && U32.is_eq(oh,128)),human))
-    opened(assets,link,P.Config{human,frames,Presentation.scene_width(plan),Presentation.scene_height(plan),P.trace_mode(mode),0n,plan,0,MenuInput.new(catalog),keys,False{}},sample,window)
+    opened(assets,link,P.Config{human,frames,Presentation.scene_width(plan),Presentation.scene_height(plan),P.trace_mode(mode),0n,plan,0,MenuInput.new(catalog),keys,False{},CookingInput.new()},sample,window)
 
 def open_catalogued_checked(assets:Session.Session,link:P.Link,sample:GS.Sample,human:Bool,frames:Maybe<&2,Nat>,settings:Presentation.Settings,catalog:ItemDefinitions.Catalog,
     result:Result<&2,&2,String,Keys.Profile>) -> IO(Unit):
