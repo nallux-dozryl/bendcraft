@@ -9,8 +9,17 @@ the successful019 TCP/MCP/process/save helpers and leaves that runner, fixture a
 establishes atomic physical Details and unsupported intent recovery; it does not
 establish the new entity delivery path.
 
+The complete actual Entry passed original `B.book_valid` in 18.232369 seconds,
+with 8998 declarations and zero holes. `evidence/local-player-cooking-source-020.json`
+pins the checked source, including this startup geometry join, authenticated
+defaults and IO serving driver. This verdict establishes source typing; native
+delivery and recovery remain pending the actual generation020 artifact.
+
 The new test uses the same loaded legacy one-section Core, y7 stone floor, y8
-player and north-facing furnace at overworld12,1,12. Its physical beef2/coal2 body
+player and a north-facing furnace moved to overworld12,8,12 for the new geometry
+consumer. Its complete expanded scan halo is x9..15/y5..11/z9..15, inside the
+resident section; unavailable neighbors are never treated as air. The verified019
+fixture keeps its original furnace position. The physical beef2/coal2 body
 retains the019 root code units, unknown/duplicate Details and raw numeric words.
 It adds actual `RecipesUsed[minecraft:cooked_beef]=20`. The pinned Java recipe has
 experience bits `0x3eb33333`; float multiplication produces exactly7, so this
@@ -40,7 +49,7 @@ The planned five complete atomic save comparisons are:
    typed Items (beef2, coal2) and one value7 Orb, drain the ordered queue, and
    consume the empty output Drop's three Level doubles. The resident air cell
    lets the actual geometry owner establish `noCollision`; the clear Java Orb
-   constructor retains the requested center12.5,1.5,12.5.
+   constructor retains the requested center12.5,8.5,12.5.
 4. Scheduled unlit furnace recreation on the next actual Core tick. The atomic
    save must contain the fresh empty body with no prior keyed Details, alongside
    the complete unchanged Item/Orb records, Level RNG, factory and IDs. Actual
@@ -92,7 +101,11 @@ entity reservations. `Some EntityRecovery` restores the complete View and remain
 clock inputs with zero fresh factory draws. `None` uses the declared isolated
 fresh Level-then-Sound clock boundary and allocator cursor0. Physical bodies load
 first, then owner initialization/restoration, then pending restoration and actual
-IO delivery before listeners. The serving actor uses `Backend.driver_io()`.
+IO delivery before listeners. Between owner initialization and pending restore,
+Entry loads the authenticated `generated/reference_slab_collision.tsv` against
+the same retained Registry with `Scene.cooking_environment()` from the actual
+motion driver. It does not duplicate or widen the supported environment facts.
+The serving actor uses `Backend.driver_io()`.
 
 Future producers and Levels must join one global constructor factory/allocator
 and retain distinct per-Level RNG owners. This fixture covers the declared

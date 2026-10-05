@@ -21,14 +21,15 @@ ROOT = C19.ROOT
 WORK = ROOT / 'build/playable-client-cooking-entities'
 REFERENCE = ROOT / 'reference/cooking_effect_entities.json'
 VERIFIED19 = ROOT / 'evidence/playable-client-cooking-native-011.json'
-POSITION = C19.POSITION
+POSITION = ('minecraft:overworld', 12, 8, 12)
 USES = 20
 RATE_BITS = 0x3eb33333
 
 
 def runtime_pins():
     return C19.runtime_pins() | {str(path): R.pin(path) for path in
-        (REFERENCE, ROOT / 'reference/vanilla_entity_fields.json', VERIFIED19,
+        (REFERENCE, ROOT / 'reference/vanilla_entity_fields.json',
+         ROOT / 'generated/reference_slab_collision.tsv', VERIFIED19,
          Path(C19.__file__), Path(E.__file__))}
 
 
@@ -87,6 +88,10 @@ def bundle(world, highwater, record, full, bodies, entities=None, clocks=()):
 
 def fixture(facts):
     world, record, full, _, _ = C19.fixture(facts)
+    # The geometry capture's expanded scan must stay entirely resident. This
+    # is a new020 fixture change; the verified019 fixture remains at y1.
+    S.BASE.set_block(world, *C19.POSITION[1:], facts['palette']['minecraft:air'])
+    S.BASE.set_block(world, *POSITION[1:], facts['lit'])
     body = physical(facts)
     return world, record, full, body, bundle(world, 40, record, full, (body,))
 
@@ -316,6 +321,9 @@ def prepare():
         'seed': R.pin(directory / 'seed.nbt'), 'framing_fixture': R.pin(directory / 'format3-framing.nbt'),
         'Java_constructor_expectations': facts['constructor_reference'],
         'recipesUsed': {'minecraft:cooked_beef': USES}, 'experience_bits': RATE_BITS, 'XP_award': 7,
+        'cooking_position': POSITION,
+        'resident_geometry_scan_halo': {'min': [9, 5, 9], 'max_inclusive': [15, 11, 15],
+                                        'sections': [[0, 0, 0]], 'absent_air_fallback': False},
         'expected_records': ['Item beef2/full default component identity', 'Item coal2/full default component identity', 'Orb7'],
         'live_entropy_policy': 'First actual save reveals LEVEL seed; recover constructor times from stored local raw RNG and bound them within actual CLOCK_MONOTONIC launch/operation intervals. No fixed clock/UUID is supplied.',
         'effect_queue': 'Must drain completely where Item/Orb publishers and actual resident geometry are joined; any real missing-owner refusal fails this claimed delivery sequence.',

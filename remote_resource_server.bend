@@ -280,11 +280,21 @@ def cooking_restored(first_peer:U32,result:Session.State & Result<&2,&2,String,U
         delivered : Session.State & Result<&2,&2,String,Unit> <- Session.cooking_deliver_pending_io(state)
         cooking_delivered(first_peer,delivered)
 
-def cooking_entities_ready(first_peer:U32,pending:List<&2,CookingStore.Effect>,result:Session.State & Result<&2,&2,String,Unit>) -> IO(Session.Ready):
+def cooking_geometry_ready(first_peer:U32,pending:List<&2,CookingStore.Effect>,result:Session.State & Result<&2,&2,String,Unit>) -> IO(Session.Ready):
   (state,status) = result
   match status:
     case Fail{message}: cooking_failed(state,message)
     case Done{unit}: cooking_restored(first_peer,Session.cooking_restore_pending(state,pending))
+
+def cooking_entities_ready(first_peer:U32,pending:List<&2,CookingStore.Effect>,result:Session.State & Result<&2,&2,String,Unit>) -> IO(Session.Ready):
+  (state,status) = result
+  match status:
+    case Fail{message}: cooking_failed(state,message)
+    case Done{unit}:
+      do IO<Session.Ready>:
+        loaded : Session.State & Result<&2,&2,String,Unit> <- Session.cooking_load_geometry(state,
+          "generated/reference_slab_collision.tsv",Scene.cooking_environment())
+        cooking_geometry_ready(first_peer,pending,loaded)
 
 def cooking_bodies_ready(first_peer:U32,pending:List<&2,CookingStore.Effect>,
     recovery:Maybe<&2,CookingStorage.EntityRecovery>,context:CookingEntities.Context,
@@ -314,7 +324,7 @@ def cooking_begun(first_peer:U32,bodies:List<&2,CookingStorage.Body>,pending:Lis
     case Fail{message}: cooking_failed(state,message)
     case Done{unit}: cooking_resumed(first_peer,bodies,pending,recovery,context,Session.cooking_resume_loading(state,budget))
 
-def cooking_context(catalogs:Catalogs,enabled:Map<&2,Bool>,light:Result<&2,&2,LightLoad.Error,LightRegistry.Catalog>,bindings:Result<&2,&2,String,CookingBindings.Catalog>) -> Result<&2,&2,String,Cooking.Context & CookingEntities.Context>:
+def cooking_context(catalogs:Catalogs,enabled:Map<&2,Bool>,light:Result<&2,&2,LightLoad.Error,LightRegistry.Catalog>,bindings:Result<&2,&2,String,CookingBindings.Catalog>) -> Result<&2,&1,String,Cooking.Context & CookingEntities.Context>:
   match catalogs light bindings:
     case _ Fail{error} _: Fail{"authenticated light registry does not match the actual world"}
     case _ Done{registry} Fail{message}: Fail{message}
@@ -324,7 +334,7 @@ def cooking_context(catalogs:Catalogs,enabled:Map<&2,Bool>,light:Result<&2,&2,Li
 
 def cooking_configured(first_peer:U32,bodies:List<&2,CookingStorage.Body>,pending:List<&2,CookingStore.Effect>,
     recovery:Maybe<&2,CookingStorage.EntityRecovery>,budget:Nat,state:Session.State,
-    status:Result<&2,&2,String,Cooking.Context & CookingEntities.Context>) -> IO(Session.Ready):
+    status:Result<&2,&1,String,Cooking.Context & CookingEntities.Context>) -> IO(Session.Ready):
   match status:
     case Fail{message}: cooking_failed(state,message)
     case Done{pair}:
