@@ -1,0 +1,656 @@
+{
+  "accepted": 6,
+  "actual_wire": {
+    "bytes": 9784,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/actual.nbt",
+    "sha256": "753229bbd5184fa90b94cc52926da983c8faf8c9002a2e1c51c3053e36d961db"
+  },
+  "binary": {
+    "bytes": 2335448,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/native",
+    "sha256": "641ee5dd702b8ac65644663e1cfa00fe667ff74493e566e056bacc253e07ac8b"
+  },
+  "build": {
+    "bytes": 634433,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/build.json",
+    "sha256": "2d39dc630c5fc7d2f76dceaa6d07f664e0ca5381e4c0ac7db06980950d5562b8"
+  },
+  "cases": [
+    {
+      "accepted": true,
+      "input": {
+        "bytes": 9784,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/full-owner-and-clocks.nbt",
+        "sha256": "753229bbd5184fa90b94cc52926da983c8faf8c9002a2e1c51c3053e36d961db"
+      },
+      "name": "full-owner-and-clocks"
+    },
+    {
+      "accepted": true,
+      "input": {
+        "bytes": 9752,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/empty-clock-source.nbt",
+        "sha256": "ec6558be1d256876837be2337aebfc641f8c8232f007b533b5d4387e22a9bb32"
+      },
+      "name": "empty-clock-source"
+    },
+    {
+      "accepted": true,
+      "input": {
+        "bytes": 9784,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/reversed-clock-source.nbt",
+        "sha256": "bb4135f366b7be61f84505f356576143bf0b234c15113a250a6411cb1796cd18"
+      },
+      "name": "reversed-clock-source"
+    },
+    {
+      "accepted": true,
+      "input": {
+        "bytes": 5725,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/legacy-unavailable.nbt",
+        "sha256": "37ff7e6e5998eee2f54a756e6be6cb43e935bd78414aa614b4799eb89a8a9c9a"
+      },
+      "name": "legacy-unavailable"
+    },
+    {
+      "accepted": true,
+      "input": {
+        "bytes": 9903,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/known-empty-manager.nbt",
+        "sha256": "be814e57dd1ccf6511073fe87e738fe4e5e3ea26485fbd2ba4efa83043ecf009"
+      },
+      "name": "known-empty-manager"
+    },
+    {
+      "accepted": true,
+      "input": {
+        "bytes": 12350,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/full-manager-and-tick.nbt",
+        "sha256": "07a10103bef54b7a7cc1924a95d9a47deadab0d2e5d287d7e6271b5983bc71c3"
+      },
+      "name": "full-manager-and-tick"
+    },
+    {
+      "accepted": false,
+      "input": {
+        "bytes": 9748,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/wrong-component-root.nbt",
+        "sha256": "477682a040e3949e93df82d2dc8bcf781ab2b711f9ec555907393bd5632b81a8"
+      },
+      "name": "wrong-component-root"
+    },
+    {
+      "accepted": false,
+      "input": {
+        "bytes": 48,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/component-wrong-type.nbt",
+        "sha256": "a3ec1e3b4bbae05eb283c1d76b2be471c09d9fc20f13b3886b1d0826eb2dc36c"
+      },
+      "name": "component-wrong-type"
+    },
+    {
+      "accepted": false,
+      "input": {
+        "bytes": 96,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/entities-missing.nbt",
+        "sha256": "bb6ba9eb072944b045bacc4f4fcafc1c605e37435f50d766ad9799d1559f4681"
+      },
+      "name": "entities-missing"
+    },
+    {
+      "accepted": false,
+      "input": {
+        "bytes": 19472,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/entities-duplicate.nbt",
+        "sha256": "2e49c0d456cfbbc91b53007354697b4a79895d45b43cbb8f192332b638d7cf58"
+      },
+      "name": "entities-duplicate"
+    },
+    {
+      "accepted": false,
+      "input": {
+        "bytes": 111,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/entities-wrong-type.nbt",
+        "sha256": "63abf05bf0872ccbf33448ab8611d1434566e83c8c925aef0507ad0063ebb875"
+      },
+      "name": "entities-wrong-type"
+    },
+    {
+      "accepted": false,
+      "input": {
+        "bytes": 9733,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/clock_inputs-missing.nbt",
+        "sha256": "db872fcd62c5d1bfa03ada49d0d618c46d4d74d2f51d494df8eaceeb386aaf71"
+      },
+      "name": "clock_inputs-missing"
+    },
+    {
+      "accepted": false,
+      "input": {
+        "bytes": 9835,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/clock_inputs-duplicate.nbt",
+        "sha256": "df4969cb5e70dd097239ec3394dc042752ac185210c7eb2cad726527114152f4"
+      },
+      "name": "clock_inputs-duplicate"
+    },
+    {
+      "accepted": false,
+      "input": {
+        "bytes": 9752,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/clock_inputs-wrong-type.nbt",
+        "sha256": "a0f3087bbc025e5212897b57d3893ca4e892aa4e92edd15fb85dc10a2e511ff7"
+      },
+      "name": "clock_inputs-wrong-type"
+    },
+    {
+      "accepted": false,
+      "input": {
+        "bytes": 9784,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/component-reordered.nbt",
+        "sha256": "5fc6a2c37f74431f8cce3d24e3036d5f6c927c204c94b2f818affd8bb66d8eb1"
+      },
+      "name": "component-reordered"
+    },
+    {
+      "accepted": false,
+      "input": {
+        "bytes": 9801,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/component-extra.nbt",
+        "sha256": "db2558df2ef461a56796e8c31bff68f3aa7306fadb709f2618b60ea35d3e360a"
+      },
+      "name": "component-extra"
+    },
+    {
+      "accepted": false,
+      "input": {
+        "bytes": 9760,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/clocks-int-array.nbt",
+        "sha256": "71ed75a919db601f5917275b3ea08c4ca8e1360728ab022ef52a69b40e1607e1"
+      },
+      "name": "clocks-int-array"
+    },
+    {
+      "accepted": false,
+      "input": {
+        "bytes": 9761,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/clocks-long-list.nbt",
+        "sha256": "cf96f5504da4caade76eea8d11adc28a8db96b0136a51284a11c2de947494370"
+      },
+      "name": "clocks-long-list"
+    },
+    {
+      "accepted": false,
+      "input": {
+        "bytes": 111,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/empty-entity-payload.nbt",
+        "sha256": "2e587a2672ea0d5f192bc7e21bc66f96a5914a4f55d55c37807c1d7353d0c2ff"
+      },
+      "name": "empty-entity-payload"
+    },
+    {
+      "accepted": false,
+      "input": {
+        "bytes": 9771,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/envelope-format-missing.nbt",
+        "sha256": "23772dc12d966bdde18ec32f4685c43e6c07baefaca547445448ff82ee48a29d"
+      },
+      "name": "envelope-format-missing"
+    },
+    {
+      "accepted": false,
+      "input": {
+        "bytes": 9797,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/envelope-format-duplicate.nbt",
+        "sha256": "3ffb5f995bc6512957981f275680a5b5c2a5ed5b032b86ef137b87ca1e40553a"
+      },
+      "name": "envelope-format-duplicate"
+    },
+    {
+      "accepted": false,
+      "input": {
+        "bytes": 9784,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/envelope-format-type.nbt",
+        "sha256": "e4b22a3db567c9f2f832688aad1a736b37cc7a0c9c281f6209fc61d7de871aba"
+      },
+      "name": "envelope-format-type"
+    },
+    {
+      "accepted": false,
+      "input": {
+        "bytes": 186,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/envelope-recovery-missing.nbt",
+        "sha256": "f86867a3f513fcbad14d597154eeb0ac873c753f2610eab3531774464faca100"
+      },
+      "name": "envelope-recovery-missing"
+    },
+    {
+      "accepted": false,
+      "input": {
+        "bytes": 19382,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/envelope-recovery-duplicate.nbt",
+        "sha256": "6329da80a510f2ed1fc6da3fb66011d2695348e4e30c7e7d2d95e319427c6199"
+      },
+      "name": "envelope-recovery-duplicate"
+    },
+    {
+      "accepted": false,
+      "input": {
+        "bytes": 201,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/envelope-recovery-type.nbt",
+        "sha256": "b5fb130a115680f36ffd8984c6945d9bdf16eba0c1f43855171c52a548458419"
+      },
+      "name": "envelope-recovery-type"
+    },
+    {
+      "accepted": false,
+      "input": {
+        "bytes": 9766,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/envelope-membership-missing.nbt",
+        "sha256": "b9242d365268e56652a61c603ec5285db66232ce9fa25bd87cd758e3e72f09cd"
+      },
+      "name": "envelope-membership-missing"
+    },
+    {
+      "accepted": false,
+      "input": {
+        "bytes": 9802,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/envelope-membership-duplicate.nbt",
+        "sha256": "f5f239d50f2cf254cd0b4a642d9a1c2ce30818e2c3e8bd06a89777efa794ca59"
+      },
+      "name": "envelope-membership-duplicate"
+    },
+    {
+      "accepted": false,
+      "input": {
+        "bytes": 9783,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/envelope-membership-type.nbt",
+        "sha256": "d3b34847938abe9a2ba3d5add71a8b7241189ed8f083cb701b32adfb96b1ae94"
+      },
+      "name": "envelope-membership-type"
+    },
+    {
+      "accepted": false,
+      "input": {
+        "bytes": 9784,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/envelope-format-0.nbt",
+        "sha256": "e4b22a3db567c9f2f832688aad1a736b37cc7a0c9c281f6209fc61d7de871aba"
+      },
+      "name": "envelope-format-0"
+    },
+    {
+      "accepted": false,
+      "input": {
+        "bytes": 9784,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/envelope-format-2.nbt",
+        "sha256": "4ad1f06e31453893e7848b91656353d286889cd30ce5922d20e2bd5c8bef8b50"
+      },
+      "name": "envelope-format-2"
+    },
+    {
+      "accepted": false,
+      "input": {
+        "bytes": 9784,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/envelope-format-4294967295.nbt",
+        "sha256": "cc57fe0e1982f5613bfe97a32e555460ce014a52de115a31db88fe6ecb7dbf3a"
+      },
+      "name": "envelope-format-4294967295"
+    },
+    {
+      "accepted": false,
+      "input": {
+        "bytes": 9749,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/envelope-root-name.nbt",
+        "sha256": "99a3877c2dc6ec68f6472349fb65601359fb0b43fa6bb5d43b7a2a5e8e6eca65"
+      },
+      "name": "envelope-root-name"
+    },
+    {
+      "accepted": false,
+      "input": {
+        "bytes": 9784,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/envelope-reordered.nbt",
+        "sha256": "a9f6f92ebcbf2b2d8548001705a68ff184f5fee655f16df0ae315fa769b7f228"
+      },
+      "name": "envelope-reordered"
+    },
+    {
+      "accepted": false,
+      "input": {
+        "bytes": 9801,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/envelope-extra.nbt",
+        "sha256": "8e2d907993bf187396112b753af2d53ff44ea7dd48249c6d02889fe96e2750fc"
+      },
+      "name": "envelope-extra"
+    },
+    {
+      "accepted": false,
+      "input": {
+        "bytes": 9792,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/membership-two-values.nbt",
+        "sha256": "b16e0b733ce297face618887216b1b4f253507b25a4c0b79b454cfb1c30b1a1b"
+      },
+      "name": "membership-two-values"
+    },
+    {
+      "accepted": false,
+      "input": {
+        "bytes": 9788,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/membership-empty-present.nbt",
+        "sha256": "862ba7d18a8d9ee519f75599c88f405da4b2a30d4887df79108c8380e660ab1c"
+      },
+      "name": "membership-empty-present"
+    },
+    {
+      "accepted": false,
+      "input": {
+        "bytes": 9797,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/membership-unknown-present.nbt",
+        "sha256": "8598506146bb74dd2f84b3599490d038f651b083e8c608602902721163d77e74"
+      },
+      "name": "membership-unknown-present"
+    },
+    {
+      "accepted": false,
+      "input": {
+        "bytes": 9784,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/membership-empty-element-0.nbt",
+        "sha256": "1bdcabff388a568aa50839a89b5bf7ad51ae10565a9970bbe84df4ef0a1bebf8"
+      },
+      "name": "membership-empty-element-0"
+    },
+    {
+      "accepted": false,
+      "input": {
+        "bytes": 9784,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/membership-empty-element-3.nbt",
+        "sha256": "7f3f019be7372a879eae2271d34b9087fcb847dc7165a631ef4eec74727d1c8b"
+      },
+      "name": "membership-empty-element-3"
+    },
+    {
+      "accepted": false,
+      "input": {
+        "bytes": 9784,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/membership-empty-element-10.nbt",
+        "sha256": "f648be731941a2055cc1c6c70cd68b0cbb4ce4d59d3d6becac7b8d65d22c4d6a"
+      },
+      "name": "membership-empty-element-10"
+    },
+    {
+      "accepted": false,
+      "input": {
+        "bytes": 201,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/nested-q-empty.nbt",
+        "sha256": "3efefb3cc3dd6501086d53d0b6c678ef8f7a69ddf8a9969dade9b8f28df13386"
+      },
+      "name": "nested-q-empty"
+    },
+    {
+      "accepted": false,
+      "input": {
+        "bytes": 9785,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/nested-q-trailing.nbt",
+        "sha256": "e5da4ea8aa61ae26b3e9e92a7b94e154738b3ed10c3879c7adea361b41db6466"
+      },
+      "name": "nested-q-trailing"
+    },
+    {
+      "accepted": false,
+      "input": {
+        "bytes": 9751,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/nested-q-unknown-field.nbt",
+        "sha256": "b57c6545499bd44c086e52af200c49e9a0507180efbbf5cae8a30ac33b6c7f7e"
+      },
+      "name": "nested-q-unknown-field"
+    },
+    {
+      "accepted": false,
+      "input": {
+        "bytes": 9783,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/envelope-truncated.nbt",
+        "sha256": "07d4892ff09030c1a7c55837723e2e0005efd8b711c782082b37ebd25768bfad"
+      },
+      "name": "envelope-truncated"
+    },
+    {
+      "accepted": false,
+      "input": {
+        "bytes": 9785,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/envelope-trailing.nbt",
+        "sha256": "1df738e27ea17cc0830cd7c1ee89dd5246471ca08644a6d16dbcf24f70b8042d"
+      },
+      "name": "envelope-trailing"
+    },
+    {
+      "accepted": false,
+      "input": {
+        "bytes": 9783,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/component-truncated.nbt",
+        "sha256": "af8f19ef1cc2e9face07f02f8dd7ab44c5070e4e371ee1d8a4619afd8277cc53"
+      },
+      "name": "component-truncated"
+    },
+    {
+      "accepted": false,
+      "input": {
+        "bytes": 9785,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/component-trailing.nbt",
+        "sha256": "4dbc5a79e6577a25a380b0e6342cf4d64f7517ee13918b8886061fe58567f0d2"
+      },
+      "name": "component-trailing"
+    }
+  ],
+  "expected_wire": {
+    "bytes": 9784,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/expected.nbt",
+    "sha256": "753229bbd5184fa90b94cc52926da983c8faf8c9002a2e1c51c3053e36d961db"
+  },
+  "guards": [
+    "constructor clock duplicates and order retained",
+    "legacy projection retains unavailable runtime and sound",
+    "legacy cannot restore guessed runtime",
+    "clock field must be LongArray",
+    "known recovery cannot be replaced by empty entity bytes",
+    "noncanonical runtime tail refuses storage encode",
+    "storage encode byte limit refuses",
+    "storage encode depth limit refuses",
+    "storage encode element limit refuses",
+    "known empty manager remains distinct from unavailable",
+    "known empty manager survives full restoration as data",
+    "aggregate envelope bound refuses individually fitting nested images",
+    "full recovery and remaining clock words roundtrip",
+    "sole owner and clock inputs survive repeated inspect",
+    "physical component trailing bytes refuse"
+  ],
+  "processes": [
+    {
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/local_player_cooking_tick_storage.bend",
+        "--check-only"
+      ],
+      "attempts": 1,
+      "cap_seconds": 60,
+      "cleanup": {
+        "after": [],
+        "before": [],
+        "errors": [],
+        "leader_reaped": true,
+        "live_group_absent": true
+      },
+      "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+      "error": null,
+      "exit_code": 0,
+      "pid": 56681,
+      "seconds": 5.463794750161469,
+      "stderr": {
+        "bytes": 0,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/ordinary/stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 58,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/ordinary/stdout",
+        "sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1"
+      },
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_local_player_cooking_tick_storage.py",
+        "--build-child",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004"
+      ],
+      "attempts": 1,
+      "cap_seconds": 600,
+      "cleanup": {
+        "after": [],
+        "before": [],
+        "errors": [],
+        "leader_reaped": true,
+        "live_group_absent": true
+      },
+      "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+      "error": null,
+      "exit_code": 0,
+      "pid": 56824,
+      "seconds": 9.244471583515406,
+      "stderr": {
+        "bytes": 0,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/native-build/stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 0,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/native-build/stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/native",
+        "--gpu",
+        "off",
+        "--threads",
+        "1",
+        "cases"
+      ],
+      "attempts": 1,
+      "cap_seconds": 60,
+      "cleanup": {
+        "after": [],
+        "before": [],
+        "errors": [],
+        "leader_reaped": true,
+        "live_group_absent": true
+      },
+      "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+      "error": null,
+      "exit_code": 0,
+      "pid": 57061,
+      "seconds": 1.0369273331016302,
+      "stderr": {
+        "bytes": 0,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/actual-native/stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 30189,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/actual-native/stdout",
+        "sha256": "82df5610660dfa750df8331b850b3768dcfb1e4cc785bcbeb51fd2287c3f6aa9"
+      },
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/native",
+        "--gpu",
+        "off",
+        "--threads",
+        "1",
+        "decode",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/full-owner-and-clocks.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/empty-clock-source.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/reversed-clock-source.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/legacy-unavailable.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/known-empty-manager.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/full-manager-and-tick.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/wrong-component-root.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/component-wrong-type.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/entities-missing.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/entities-duplicate.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/entities-wrong-type.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/clock_inputs-missing.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/clock_inputs-duplicate.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/clock_inputs-wrong-type.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/component-reordered.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/component-extra.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/clocks-int-array.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/clocks-long-list.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/empty-entity-payload.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/envelope-format-missing.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/envelope-format-duplicate.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/envelope-format-type.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/envelope-recovery-missing.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/envelope-recovery-duplicate.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/envelope-recovery-type.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/envelope-membership-missing.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/envelope-membership-duplicate.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/envelope-membership-type.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/envelope-format-0.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/envelope-format-2.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/envelope-format-4294967295.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/envelope-root-name.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/envelope-reordered.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/envelope-extra.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/membership-two-values.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/membership-empty-present.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/membership-unknown-present.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/membership-empty-element-0.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/membership-empty-element-3.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/membership-empty-element-10.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/nested-q-empty.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/nested-q-trailing.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/nested-q-unknown-field.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/envelope-truncated.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/envelope-trailing.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/component-truncated.nbt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/component-trailing.nbt"
+      ],
+      "attempts": 1,
+      "cap_seconds": 60,
+      "cleanup": {
+        "after": [],
+        "before": [],
+        "errors": [],
+        "leader_reaped": true,
+        "live_group_absent": true
+      },
+      "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+      "error": null,
+      "exit_code": 0,
+      "pid": 57082,
+      "seconds": 1.6021940419450402,
+      "stderr": {
+        "bytes": 0,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/physical-corpus-native/stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 177766,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/physical-corpus-native/stdout",
+        "sha256": "f3520889cb120de0fd1cfae874f8d7ed216f9825db514fee887cb9b403ba5479"
+      },
+      "timed_out": false
+    }
+  ],
+  "scope": "Actual single Q recovery image, separate remaining constructor clocks and manager availability envelope. No M.State restore, cached visibility authority, format5 CS/save/coldrestart consumer claim.",
+  "source_manifest": {
+    "bytes": 31236,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/004/sources.json",
+    "sha256": "240d77d0550952100ff60190443ae7c944f672cb619ef799be10599c9c22451c"
+  },
+  "status": "PASS"
+}

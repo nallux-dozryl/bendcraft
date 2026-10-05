@@ -13,6 +13,7 @@ import ./cooking_effect_entities_model.bend as Entities
 import ./local_player_effect_entities_codec.bend as EntityCodec
 import ./random.bend as Random
 import ./local_player_cooking_publication_codec.bend as Publication
+import ./local_player_cooking_tick_storage.bend as TickStorage
 
 # The inventory ABI and existing empty-cooking payload remain intact. Cooking
 # bodies travel inside the same Core/extension atomic publication, never in a
@@ -21,6 +22,7 @@ type Body is Data:
   Body{position:C.Position,bytes:List<&2,U32>}
 type EntityRecovery is Data:
   EntityRecovery{view:Entities.View,clock_inputs:List<&2,Random.Bits64>}
+  TickRecovery{snapshot:TickStorage.Stored}
 type Saved is Type:
   Saved{player:I.Saved,bodies:List<&2,Body>,pending:List<&2,Store.Effect>,entities:Maybe<&2,EntityRecovery>,publication:Maybe<&2,Publication.Recovery>}
 
@@ -102,6 +104,26 @@ def clocks_value(value:N.Value) -> Result<&2,&2,String,List<&2,Random.Bits64>>:
     case N.LongArray{values}: Done{clock_read(values)}
     case _: Fail{"cooking entity clock inputs require LongArray"}
 
+def tick_root(player:List<&2,U32>,bodies:List<&2,Body>,effects:List<&2,U32>,snapshot:TickStorage.Payload,publication:List<&2,U32>) -> N.Root:
+  TickStorage.Payload{entities,clocks} = snapshot
+  N.Root{P.text("bendex:local-player-cooking-record"),N.Compound{[
+    P.member("format",N.Int{5}),P.member("player",N.ByteArray{player}),
+    P.member("bodies",N.ListTag{10,body_values(bodies)}),P.member("effects",N.ByteArray{effects}),
+    P.member("entities",N.ByteArray{entities}),P.member("clock_inputs",N.LongArray{clocks}),
+    P.member("publication",N.ByteArray{publication})]}}
+
+def tick_encoded(player:List<&2,U32>,bodies:List<&2,Body>,effects:List<&2,U32>,publication:List<&2,U32>,value:Result<&2,&2,String,TickStorage.Payload>) -> Result<&2,&2,String,List<&2,U32>>:
+  match value:
+    case Fail{message}: Fail{message}
+    case Done{snapshot}: N.encode_with(nbt_limits(),tick_root(player,bodies,effects,snapshot,publication))
+
+def payload_tick(+bodies:List<&2,Body>,+pending:List<&2,Store.Effect>,snapshot:TickStorage.Stored,player:List<&2,U32>) -> Result<&2,&2,String,List<&2,U32>>:
+  do Result<&2,&2,String,List<&2,U32>>:
+    I.require(unique_bodies(bodies),"duplicate cooking body position")
+    I.require(Bool.not(Effects.has_owned(pending)),"owned cooking publication requires complete recovery")
+    effects : List<&2,U32> <- Effects.encode(nbt_limits(),pending)
+    tick_encoded(player,bodies,effects,[],TickStorage.encode(nbt_limits(),snapshot))
+
 def entity_root(player:List<&2,U32>,bodies:List<&2,Body>,effects:List<&2,U32>,entities:List<&2,U32>,clocks:List<&2,Random.Bits64>) -> N.Root:
   N.Root{P.text("bendex:local-player-cooking-record"),N.Compound{[
     P.member("format",N.Int{3}),P.member("player",N.ByteArray{player}),
@@ -118,6 +140,7 @@ def payload_entities(+bodies:List<&2,Body>,pending:List<&2,Store.Effect>,entitie
         effects : List<&2,U32> <- Effects.encode(nbt_limits(),pending)
         records : List<&2,U32> <- EntityCodec.encode(nbt_limits(),view)
         N.encode_with(nbt_limits(),entity_root(player,bodies,effects,records,clocks))
+    case Some{TickRecovery{snapshot}}: payload_tick(bodies,pending,snapshot,player)
 
 def publication_root(player:List<&2,U32>,bodies:List<&2,Body>,effects:List<&2,U32>,entities:List<&2,U32>,clocks:List<&2,Random.Bits64>,publication:List<&2,U32>) -> N.Root:
   N.Root{P.text("bendex:local-player-cooking-record"),N.Compound{[
@@ -132,6 +155,8 @@ def publication_entities(player:List<&2,U32>,bodies:List<&2,Body>,effects:List<&
       do Result<&2,&2,String,List<&2,U32>>:
         records : List<&2,U32> <- EntityCodec.encode(nbt_limits(),view)
         N.encode_with(nbt_limits(),publication_root(player,bodies,effects,records,clocks,publication))
+    case Some{TickRecovery{snapshot}}:
+      tick_encoded(player,bodies,effects,publication,TickStorage.encode(nbt_limits(),snapshot))
 def payload_publication(+bodies:List<&2,Body>,+pending:List<&2,Store.Effect>,entities:Maybe<&2,EntityRecovery>,publication:Maybe<&2,Publication.Recovery>,player:List<&2,U32>) -> Result<&2,&2,String,List<&2,U32>>:
   match publication:
     case None{}:
@@ -252,11 +277,46 @@ def projection_publication(value:N.Value) -> Result<&2,&2,String,Projection>:
     recovery : Publication.Recovery <- Publication.decode(nbt_limits(),publication_bytes)
     return Projection{player,bodies,pending,entities,Some{recovery}}
 
+def tick_publication(+pending:List<&2,Store.Effect>,bytes:List<&2,U32>) -> Result<&2,&2,String,Maybe<&2,Publication.Recovery>>:
+  match bytes:
+    case Nil{}:
+      do Result<&2,&2,String,Maybe<&2,Publication.Recovery>>:
+        I.require(Bool.not(Effects.has_owned(pending)),"owned cooking publication requires complete recovery")
+        return None{}
+    case head <> rest:
+      Result.map(&2,&2,String,Publication.Recovery,Maybe<&2,Publication.Recovery>,view => Some{view},Publication.decode(nbt_limits(),head <> rest))
+
+def projection_tick(value:N.Value) -> Result<&2,&2,String,Projection>:
+  do Result<&2,&2,String,Projection>:
+    +fields : List<&2,P.Field> <- I.schema(List<&2,P.Field>,P.fields(value,["format","player","bodies","effects","entities","clock_inputs","publication"]))
+    format : U32 <- I.schema(U32,P.int_value(P.field(fields,"format"),"format"))
+    I.require(U32.is_eq(format,5),"unsupported cooking tick payload format")
+    player : List<&2,U32> <- I.byte_array(P.field(fields,"player"))
+    bodies : List<&2,Body> <- bodies_value(P.field(fields,"bodies"))
+    effect_bytes : List<&2,U32> <- I.byte_array(P.field(fields,"effects"))
+    +pending : List<&2,Store.Effect> <- Effects.decode(nbt_limits(),effect_bytes)
+    entity_bytes : List<&2,U32> <- I.byte_array(P.field(fields,"entities"))
+    snapshot : TickStorage.Stored <- TickStorage.decode_fields(nbt_limits(),entity_bytes,P.field(fields,"clock_inputs"))
+    publication_bytes : List<&2,U32> <- I.byte_array(P.field(fields,"publication"))
+    recovery : Maybe<&2,Publication.Recovery> <- tick_publication(pending,publication_bytes)
+    return Projection{player,bodies,pending,Some{TickRecovery{snapshot}},recovery}
+
+def projection_version(value:N.Value,version:U32) -> Result<&2,&2,String,Projection>:
+  match version:
+    case 4: projection_publication(value)
+    case 5: projection_tick(value)
+    case _: Fail{"unsupported cooking publication payload format"}
+def projection_versions(+value:N.Value) -> Result<&2,&2,String,Projection>:
+  do Result<&2,&2,String,Projection>:
+    +fields : List<&2,P.Field> <- I.schema(List<&2,P.Field>,P.fields(value,["format","player","bodies","effects","entities","clock_inputs","publication"]))
+    version : U32 <- I.schema(U32,P.int_value(P.field(fields,"format"),"format"))
+    projection_version(value,version)
+
 def projection_shape(value:N.Value,count:Nat) -> Result<&2,&2,String,Projection>:
   match count:
     case 3n: projection_legacy(value)
     case 4n: projection_recovery(value)
-    case 7n: projection_publication(value)
+    case 7n: projection_versions(value)
     case _: projection_entities(value)
 
 # Each selected schema still requires exactly its fields and its version.

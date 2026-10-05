@@ -1,0 +1,95 @@
+{
+  "kernel_input": {
+    "bytes": 60185,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/proof/001/recovery.bendtt",
+    "sha256": "5130bf78667d01bdfc59dea38ebaf518e806d5367bf6d48ddcf8d22ae2f9ca58"
+  },
+  "processes": [
+    {
+      "argv": [
+        "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+        "--stack-size=4096",
+        "--experimental-transform-types",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/local_player_cooking_tick_storage_proof.mjs",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/proof/001"
+      ],
+      "attempts": 1,
+      "cap_seconds": 60,
+      "cleanup": {
+        "after": [],
+        "before": [],
+        "errors": [],
+        "leader_reaped": true,
+        "live_group_absent": true
+      },
+      "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+      "error": null,
+      "exit_code": 0,
+      "pid": 58936,
+      "seconds": 4.770557667128742,
+      "stderr": {
+        "bytes": 177,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/proof/001/source-export/stderr",
+        "sha256": "f770335e23240a7598010ee537b434c5dbdcb7dd9bc31ff7cb3c5798ef10f9a3"
+      },
+      "stdout": {
+        "bytes": 48,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/proof/001/source-export/stdout",
+        "sha256": "4f0681e6c43a2d21af438a8ab53d84156f1357e5c8e5ab8906410f2968b23949"
+      },
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/env",
+        "LEAN_STACK_SIZE_KB=4194304",
+        "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/proof/001/recovery.bendtt"
+      ],
+      "attempts": 1,
+      "cap_seconds": 60,
+      "cleanup": {
+        "after": [],
+        "before": [],
+        "errors": [],
+        "leader_reaped": true,
+        "live_group_absent": true
+      },
+      "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+      "error": null,
+      "exit_code": 0,
+      "pid": 59069,
+      "seconds": 0.987944457679987,
+      "stderr": {
+        "bytes": 0,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/proof/001/independent-kernel/stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 17,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/proof/001/independent-kernel/stdout",
+        "sha256": "61b73cda11b6b665b9f99f2defd3d3b57f985c865225e942a5bdaa594a503e47"
+      },
+      "timed_out": false
+    }
+  ],
+  "roots": [
+    "local_player_cooking_tick_storage_laws:inspect_retains_complete_tick_owner_and_sidecars",
+    "local_player_cooking_tick_storage_laws:restore_retains_complete_separate_authorities",
+    "local_player_cooking_tick_storage_laws:full_restore_inspect_is_lossless",
+    "local_player_cooking_tick_storage_laws:unavailable_runtime_cannot_be_restored_from_entity_records",
+    "local_player_cooking_tick_storage:constructor_clock_words_are_lossless"
+  ],
+  "scope": "Five actual full tick/sidecar owner composition, missing-runtime refusal and ordered raw constructor-word conversion laws. Reuses the proven full entity/runtime inspect foundation. No NBT decoder theorem, manager authority install, loader revalidation, bootstrap or durable IO claim.",
+  "source_manifest": {
+    "bytes": 31372,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/proof/001/sources.json",
+    "sha256": "4f02bdbc1b9c7c0cf113f0e053fa2773ba8b75e16013849fc47965088b49e9e7"
+  },
+  "source_proof": {
+    "bytes": 10203,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/proof/001/source-proof.json",
+    "sha256": "ad4a757a138a2cbff79b4141b993c67c968ba9ff62caa2a70c5691c3b7622ca9"
+  },
+  "status": "PASS"
+}

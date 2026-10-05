@@ -1,0 +1,43 @@
+{
+  "error": "AssertionError(\"Bounded owned process failed: {'argv': ['/Users/chuah/.bend/bin/bend', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/local_player_cooking_tick_storage.bend', '--check-only'], 'cwd': '/Users/chuah/Documents/ChatGPT/bendex/minecraft', 'cap_seconds': 60, 'attempts': 1, 'pid': 46660, 'exit_code': 1, 'timed_out': False, 'error': None, 'cleanup': {'before': [], 'after': [], 'errors': [], 'leader_reaped': True, 'live_group_absent': True}, 'seconds': 0.6231747074052691, 'stdout': {'path': '/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/001/ordinary/stdout', 'bytes': 0, 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'}, 'stderr': {'path': '/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/001/ordinary/stderr', 'bytes': 336, 'sha256': 'bf98a9f90be84651189566451bf090bb6ef7d12eebd975b940ca950d659141bf'}}\")",
+  "processes": [
+    {
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/local_player_cooking_tick_storage.bend",
+        "--check-only"
+      ],
+      "attempts": 1,
+      "cap_seconds": 60,
+      "cleanup": {
+        "after": [],
+        "before": [],
+        "errors": [],
+        "leader_reaped": true,
+        "live_group_absent": true
+      },
+      "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+      "error": null,
+      "exit_code": 1,
+      "pid": 46660,
+      "seconds": 0.6231747074052691,
+      "stderr": {
+        "bytes": 336,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/001/ordinary/stderr",
+        "sha256": "bf98a9f90be84651189566451bf090bb6ef7d12eebd975b940ca950d659141bf"
+      },
+      "stdout": {
+        "bytes": 0,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/001/ordinary/stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "timed_out": false
+    }
+  ],
+  "source_manifest": {
+    "bytes": 30990,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-tick-storage/checks/001/sources.json",
+    "sha256": "e7bdeb93b5025a887172e541b9378126620e6b44f2a60e5771190574caa06a42"
+  },
+  "status": "FAIL"
+}

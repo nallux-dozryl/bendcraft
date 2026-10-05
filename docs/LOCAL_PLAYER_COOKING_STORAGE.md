@@ -160,3 +160,26 @@ legacy-wrapper admission and orphan clock refusal. See
 parser error in the newly added owned-effect helper; its repaired helper was
 checked in 008. Standalone native recovery bytes, the Session carrier and the
 actual durable actor save/restore join remain separate consumers.
+
+The additive format 5 branch retains the same seven-member topology and the
+five-field `Saved`/`Projection` ABI. `EntityRecovery.TickRecovery` carries one
+complete tick snapshot, the remaining real constructor clocks, and optional
+complete manager Data. Its `entities` ByteArray contains the strict versioned
+`local_player_cooking_tick_storage` envelope, with one complete entity image
+inside the tick recovery. Formats 1–4 retain their existing encoder branches.
+Missing runtime, sound or manager information remains explicitly unavailable;
+decoding does not manufacture fresh values or loader authority. Empty
+publication bytes are allowed only without pending `OwnedDirty` effects.
+
+Attempt 009 passed all 30 **native** wrapper guards, including a complete actual
+player/body/owned-effect/publication/tick encode/decode/re-encode round trip and
+eight format 5 availability/refusal checks. The build took 209.674 seconds and
+the native guards 0.769 seconds. The standalone tick component additionally
+passed 15 guards and 47 independent physical cases, including a nonempty
+complete manager image. Five actual full-owner/sidecar/clock laws passed the
+independent kernel with zero exclusions. See
+`evidence/local-player-cooking-storage-009.json` and
+[the complete format 5 contract](LOCAL_PLAYER_COOKING_TICK_STORAGE.md).
+Format 5 live carrier/save/interruption/cold-restart acceptance remains the
+subsequent coherent actor consumer; actor021's immutable format 4 source is
+unchanged by this join.

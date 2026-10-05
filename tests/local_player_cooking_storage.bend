@@ -11,6 +11,14 @@ import ../src/cooking_world_store.bend as Store
 import ../src/cooking_effect_recovery.bend as Effects
 import ../src/cooking_effect_entities_model.bend as Entities
 import ../src/local_player_effect_entities_codec.bend as EntityCodec
+import ../src/local_player_cooking_tick_storage.bend as TickStorage
+import ../src/local_player_effect_tick_recovery.bend as TickRecovery
+import ../src/item_entity_tick_model.bend as Tick
+import ../src/vanilla_entity_fields.bend as V
+import ../src/f64.bend as F
+import ../src/support.bend as Support
+import ../src/entity_section_membership_model.bend as Manager
+import ../src/player_item_definitions.bend as Definitions
 import ../src/random.bend as Random
 import ../src/local_player_cooking_publication_codec.bend as Publication
 import ../src/cooking_effect_publication_journal.bend as Journal
@@ -237,6 +245,74 @@ def unbound_clocks_refused(result:Result<&2,&2,String,Maybe<&2,S.EntityRecovery>
     case Fail{message}: True{}
     case Done{entity}: False{}
 
+def tick_vector() -> V.Vec3:
+  V.Vec3{F.F64{2146964020,1450744508},F.F64{2147483648,0},F.F64{2146435072,0}}
+def tick_runtime() -> Tick.Runtime:
+  Tick.Runtime{Tick.Physical{True{},False{},True{},False{},True{},False{},True{},tick_vector()},
+    Tick.BaseState{4294967295,2147483648,True{},False{},True{},False{},True{},False{},True{},False{},Some{tick_vector()},tick_vector()},
+    Tick.Fluids{Tick.Fluid{F.F64{2146435072,1},tick_vector(),4294967295,True{}},
+      Tick.Fluid{F.F64{2147483648,0},tick_vector(),2147483648,False{}},True{},False{},True{}},
+    [Tick.Movement{tick_vector(),tick_vector(),tick_vector()}],
+    [Tick.Movement{tick_vector(),tick_vector(),tick_vector()},Tick.Movement{tick_vector(),tick_vector(),tick_vector()}],
+    Support.State{None{},True{}},[]}
+def tick_snapshot() -> TickStorage.Stored:
+  TickStorage.Stored{TickRecovery.Recovery{entity_view(),Some{[Tick.RuntimeEntry{99,tick_runtime()}]},
+    Some{Random.Legacy{Random.Bits64{65535,4294967295}}}},entity_clocks(),Some{Manager.View{[],[],[],[],[]}}}
+def tick_without_manager() -> TickStorage.Stored:
+  TickStorage.Stored{TickRecovery.Recovery{entity_view(),Some{[Tick.RuntimeEntry{99,tick_runtime()}]},
+    Some{Random.Legacy{Random.Bits64{65535,4294967295}}}},entity_clocks(),None{}}
+def tick_projected(+before:List<&2,U32>,result:Result<&2,&2,String,S.Projection>) -> Bool:
+  match result:
+    case Fail{message}: False{}
+    case Done{S.Projection{player,bodies,pending,Some{S.TickRecovery{snapshot}},publication}}:
+      status_equal(Done{before},S.payload_publication(bodies,pending,Some{S.TickRecovery{snapshot}},publication,player))
+    case _: False{}
+def tick_parsed(+before:List<&2,U32>,result:Result<&2,&2,String,N.Root>) -> Bool:
+  match result:
+    case Fail{message}: False{}
+    case Done{N.Root{name,value}}: tick_projected(before,S.projection(value))
+def tick_roundtrip(result:Result<&2,&2,String,List<&2,U32>>) -> Bool:
+  match result:
+    case Fail{message}: False{}
+    case Done{+bytes}: tick_parsed(bytes,N.decode_with(S.nbt_limits(),bytes))
+def root_value(value:N.Root) -> N.Value:
+  N.Root{name,payload}=value
+  payload
+def tick_fields_refused(player:List<&2,U32>,bodies:List<&2,S.Body>,effects:List<&2,U32>,publication:List<&2,U32>,value:Result<&2,&2,String,TickStorage.Payload>) -> Bool:
+  match value:
+    case Fail{message}: False{}
+    case Done{snapshot}: projection_refused(S.projection_tick(root_value(S.tick_root(player,bodies,effects,snapshot,publication))))
+def missing_tick_publication(value:Result<&2,&2,String,List<&2,U32>>) -> Bool:
+  match value:
+    case Fail{message}: False{}
+    case Done{effects}: tick_fields_refused([7,8],[],effects,[],TickStorage.encode(S.nbt_limits(),tick_snapshot()))
+def wrong_tick_clock(payload:TickStorage.Payload,effects:List<&2,U32>) -> Bool:
+  TickStorage.Payload{bytes,clocks}=payload
+  projection_refused(S.projection_tick(N.Compound{[
+    P.member("format",N.Int{5}),P.member("player",N.ByteArray{[7,8]}),P.member("bodies",N.ListTag{10,[]}),
+    P.member("effects",N.ByteArray{effects}),P.member("entities",N.ByteArray{bytes}),
+    P.member("clock_inputs",N.IntArray{[]}),P.member("publication",N.ByteArray{[]})]}))
+def wrong_tick_clock_encoded(effects:List<&2,U32>,value:Result<&2,&2,String,TickStorage.Payload>) -> Bool:
+  match value:
+    case Fail{message}: False{}
+    case Done{payload}: wrong_tick_clock(payload,effects)
+def wrong_tick_clock_effects(value:Result<&2,&2,String,List<&2,U32>>) -> Bool:
+  match value:
+    case Fail{message}: False{}
+    case Done{effects}: wrong_tick_clock_encoded(effects,TickStorage.encode(S.nbt_limits(),tick_snapshot()))
+def tick_loaded_equal(+before:List<&2,U32>,value:Result<&2,&1,String,S.Saved>) -> Bool:
+  match value:
+    case Fail{message}: False{}
+    case Done{owner}: encoded_equal(Done{before},S.encode(owner))
+def tick_actual_encoded(result:S.Saved & Result<&2,&2,String,List<&2,U32>>) -> Bool:
+  match result:
+    case (owner,Fail{message}): False{}
+    case (owner,Done{+bytes}): tick_loaded_equal(bytes,S.decode_with(Definitions.legacy(),1,bytes))
+def tick_actual_initial(value:Result<&2,&1,String,I.Saved>) -> Bool:
+  match value:
+    case Fail{message}: False{}
+    case Done{player}: tick_actual_encoded(S.encode(S.Saved{player,bodies(),publication_pending(),Some{S.TickRecovery{tick_snapshot()}},Some{publication_recovery()}}))
+
 def check(valid:Bool,name:String) -> IO(Unit):
   match valid:
     case False{}: IO.die(Unit,1,"failed " ++ name)
@@ -266,3 +342,11 @@ def main() -> IO(Unit):
     check(refused(S.payload_publication([],publication_pending(),None{},None{},[7,8])),"owned pending effects require publication recovery when encoding")
     check(owned_effects_wrong_version(Effects.encode(S.nbt_limits(),publication_pending())),"owned pending effects refuse legacy wrapper when decoding")
     check(unbound_clocks_refused(S.publication_entity_read([],entity_clocks())),"format4 unbound entity owner refuses orphan clock inputs")
+    check(tick_roundtrip(S.payload_entities([],[],Some{S.TickRecovery{tick_snapshot()}},[7,8])),"format5 retains one full tick and manager snapshot without publication")
+    check(tick_roundtrip(S.payload_publication(bodies(),publication_pending(),Some{S.TickRecovery{tick_snapshot()}},Some{publication_recovery()},[7,8])),"format5 retains real publisher pending effects and clock inputs")
+    check(refused(S.payload_publication([],publication_pending(),Some{S.TickRecovery{tick_snapshot()}},None{},[7,8])),"format5 refuses owned pending without publication when encoding")
+    check(missing_tick_publication(Effects.encode(S.nbt_limits(),publication_pending())),"format5 refuses owned pending without publication when decoding")
+    check(Bool.not(status_equal(S.payload_entities([],[],Some{S.TickRecovery{tick_snapshot()}},[7,8]),S.payload_entities([],[],Some{S.TickRecovery{tick_without_manager()}},[7,8]))),"format5 unavailable manager differs from known empty manager")
+    check(tick_roundtrip(S.payload_entities([],[],Some{S.TickRecovery{TickStorage.legacy(entity_view(),entity_clocks())}},[7,8])),"format5 explicit unavailable runtime and sound stays unavailable")
+    check(wrong_tick_clock_effects(Effects.encode(S.nbt_limits(),[])),"format5 clock inputs require LongArray")
+    check(tick_actual_initial(I.initial(Unit{})),"actual format5 player cooking tick and publication encode decode roundtrip")
