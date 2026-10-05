@@ -4,8 +4,9 @@ The changed Generic client uses the existing production cooking protocol and
 screen while retaining the Registry, demand ledger, CW resources and native
 Window owner. Its initial authority query sends `CookingInspect{0}` and expects
 the real cooking reply introduced in Actor022; Actor017 cannot serve this caller.
-The public launcher now selects the accepted Actor023/Generic012 pair, including
-the lease repair and actual cooking, save and cold-reload acceptance recorded in
+The public launcher now selects the accepted Actor024/Generic012 pair, including
+the lease and cached-recipe repairs and actual cooking, save and cold-reload
+acceptance recorded in
 [Cooking client delivery](generic_resource_world_sample_cooking_launcher.md).
 
 World use runs through `RemotePresenter.send_game_commands`, which maps the

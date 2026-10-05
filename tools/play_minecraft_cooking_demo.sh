@@ -8,10 +8,10 @@ import hashlib,sys
 from pathlib import Path
 root,seed=map(Path,sys.argv[1:])
 launcher=(root/'tools/play_minecraft.sh').read_text()
-for declaration in ('actor="$root/build/compiler-producer-diagnostic-023/actor"',
+for declaration in ('actor="$root/build/compiler-producer-diagnostic-024/actor"',
                     'renderer="$root/build/generic-resource-world-sample-client-native/012/renderer"'):
     if declaration not in launcher:
-        sys.exit('The verified actor023/cooking-client012 public pair must be selected first.')
+        sys.exit('The verified actor024/cooking-client012 public pair must be selected first.')
 if not seed.is_file() or hashlib.sha256(seed.read_bytes()).hexdigest()!='e88e15ab0267beb9fea4ad55c9b9b7cd3cca27eea0cf5a3cc6d7b59a2ad1b859':
     sys.exit('The validated empty-furnace demo seed is unavailable or changed.')
 CHECK

@@ -1,16 +1,16 @@
 #!/bin/bash
 set -euo pipefail
 root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-actor="$root/build/compiler-producer-diagnostic-023/actor"
+actor="$root/build/compiler-producer-diagnostic-024/actor"
 renderer="$root/build/generic-resource-world-sample-client-native/012/renderer"
 python='/Users/chuah/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3'
 cd "$root"
 if [ ! -x "$actor" ] || [ ! -x "$renderer" ] || [ ! -x "$python" ]; then
-  echo "Current actor023, cooking catalog renderer012 and bundled Python are required." >&2; exit 1
+  echo "Current actor024, cooking catalog renderer012 and bundled Python are required." >&2; exit 1
 fi
 "$python" - "$actor" "$renderer" <<'CHECK'
 import hashlib,sys
-for path,expected in zip(sys.argv[1:],['7fd7ee9269802a6e128716f53bf34030ec592728ef954f9b61bebecac36719d1','3bd945855c7526f713ed1df03ab89e136429fbc36132f6152ef16fc7a491a232']):
+for path,expected in zip(sys.argv[1:],['c8dd57c0f5cd6d3607bc932bf6bb74ce27009f8b90efa7db4309beea5d1e2cc4','3bd945855c7526f713ed1df03ab89e136429fbc36132f6152ef16fc7a491a232']):
     if hashlib.sha256(open(path,'rb').read()).hexdigest()!=expected:
         sys.exit('Current playable binary changed: '+path)
 CHECK

@@ -1,12 +1,12 @@
 # Cooking client delivery
 
-The public launcher now selects the verified Actor023/Generic012 pair. Run
+The public launcher now selects the verified Actor024/Generic012 pair. Run
 `./tools/play_minecraft_cooking_demo.sh` for a fresh unpaused cooking world.
 It creates a separate save and prints its exact resume command. Confidence is
 high for the recorded limited cooking/save/reload slice. Coordinated foreground
 OS input and presentation acceptance remains pending.
 
-The launcher pins Actor023 SHA `7fd7ee9269802a6e128716f53bf34030ec592728ef954f9b61bebecac36719d1`
+The launcher pins Actor024 SHA `c8dd57c0f5cd6d3607bc932bf6bb74ce27009f8b90efa7db4309beea5d1e2cc4`
 and Generic012 SHA `3bd945855c7526f713ed1df03ab89e136429fbc36132f6152ef16fc7a491a232`.
 It retains `MC_COOKING_PROTOCOL=1` in its private reconnect metadata. The existing
 cooking-aware shutdown helper is root-owned and separately verified against
@@ -28,34 +28,43 @@ furnace ahead at `(12,8,12)` and player feet `(12.5,8,10.5)`, yaw 0°, pitch 30�
 Two normal 200-tick recipes take their real actor cadence; the test never
 accelerates the cooking simulation.
 
-The actual unmodified public shell ran in 56.763 seconds, returned two complete
-960×540 P6 CPU images, chose free ports 54907/54908, and completed cooking-aware
+The actual unmodified public shell ran in 53.357 seconds, returned two complete
+960×540 P6 CPU images, chose free ports 58834/58835, and completed cooking-aware
 close and durable save at highwater 42. A new actual actor cold-loaded that
 save, returned the full player and 43-slot cooking authority, and saved at
-highwater 44; its 44.346-second owner was reaped. Complete format-4 reconstruction
+highwater 44; its 43.582-second owner was reaped. Complete format-4 reconstruction
 checks all 104 sections, Core clock, player metadata, status/WG, empty furnace
 Details, effects, entity/RNG owner and publication state. Historical Actor012
-and its conventional listeners remain alive. The initial default-world hashes
-were not persisted; the actual save used only the separate unique demo path.
+and its conventional listeners remain alive. Both default-world paths were
+recorded before launch and checked unchanged afterward; the actual save used
+only the separate unique demo path. The public and cold stages passed without
+a host failure or retry, and all owned groups and listeners were closed.
 
-The public and cold host oracles wrongly expected `Core.max_peer=0`. The seed and
-both actual saves preserved `None`; those host failures remain retained. Pure
-verification finished their existing records without replaying either native
-stage. The synthetic cooking run separately passed open, four input/fuel clicks,
+The Actor024 synthetic cooking run separately passed open, four input/fuel clicks,
 partial/completed images, two output clicks, E close, native window close,
-full durable save and actual cold reload. Its duplicate Relay cleanup receipt
-failed afterward; a separate retained finalization verified all owned groups
-and listeners absent without replay. These qualified results are in
-`evidence/generic_resource_world_sample_cooking_runtime_002.json` and
-`evidence/generic_resource_world_sample_cooking_launcher_runtime_001.json`.
+full durable save and actual cold reload. Its driver and cleanup passed directly.
+The final paused Core tick was 858, with fuel remaining at 743/1600 and the
+furnace still lit. The full cooking save retained RecipesUsed×2 and advanced
+highwater 43 to 45 through the actual cold restore/save. These results are in
+`evidence/generic_resource_world_sample_cooking_runtime_003.json` and
+`evidence/generic_resource_world_sample_cooking_launcher_runtime_002.json`.
 
-The two ordinary 200-tick beef recipes took 67.009 seconds of wall time in the
-synthetic workload. Tick catch-up after input completion also exhausted the
-first fuel before final save. This does not establish 20 ticks per second or
-vanilla responsiveness. The original renderer uses the admitted Appleclang
+The two ordinary 200-tick beef recipes took 23.863 seconds in the Actor024
+synthetic workload, compared with 67.009 seconds in the retained Actor023 run.
+Both values use the same unpause-through-completed-image boundary and include
+protocol and presentation work. Actor024 changes only cached-recipe selection
+to check its ID before evaluating unrelated matches and plans. These observed
+consumer intervals do not establish exact 20 ticks per second or vanilla
+responsiveness. The original renderer uses the admitted Appleclang
 `-O3 -fno-stack-check` native command; the initial stack-check compiler crash
 and the failed011 emission are retained separately. No original compiler was
 changed.
+
+The earlier Actor023 public/cold host oracles wrongly expected
+`Core.max_peer=0` instead of the seeded `None`, and its synthetic run had a
+duplicate Relay cleanup receipt failure. Those qualified records and their
+explicit finalization remain preserved in the preceding runtime002 and
+launcher001 receipts; the current accepted pair has fresh clean results.
 
 Coal/beef/cooked-beef artwork is still explicitly marked missing in the current
 item icon owner. The furnace panel, flame indicator and progress bar are drawn
@@ -68,6 +77,6 @@ For an actor-only follow-up, the existing public acceptance helper now takes an
 explicit `--actor-generation` and validates its completed native-build receipt.
 It accepts either a clean cooking runtime teardown or the historical explicit
 cleanup finalization. The validated unpaused seed can be retained separately
-with `--demo-seed-generation 11`. These helper changes leave the accepted public
-Actor023/Client012 selection unchanged; a future actor requires its own actual
-cooking flow and public-shell/save/reload acceptance.
+with `--demo-seed-generation 11`. Explicit generation selection does not change
+the public launcher. A future actor requires its own actual cooking flow and
+public-shell/save/reload acceptance.
