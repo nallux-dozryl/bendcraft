@@ -11,6 +11,9 @@ import ./player_inventory.bend as I
 import ./inventory.bend as Inv
 import ./generic_resource_world_sample.bend as GS
 import ./mesh_render.bend as Mesh
+import ./core.bend as Core
+import ./cooking_recipe.bend as Cooking
+import ./player_cooking_menu.bend as CookingMenu
 
 # Pure, monomorphic renderer wire DTOs. Authentication, matching lease cleanup,
 # strict expected-sequence transition and expiry belong to the backend actor.
@@ -29,6 +32,12 @@ type Command is Data:
   MenuClick{index:U32,click:I.Click}
   Select{index:U32}
   FrameCatalog{width:U32,height:U32}
+  CookingOpen{position:Core.Position}
+  CookingInspect{menu:U32}
+  CookingClick{menu:U32,index:U32,button:U32}
+  CookingQuickMove{menu:U32,index:U32}
+  CookingClose{menu:U32}
+  CookingUse{offhand:Bool}
 type Request is Data:
   Hello{capability:String}
   Call{epoch:String,sequence:Nat,command:Command}
@@ -41,6 +50,7 @@ type Reply is Data:
   ActionReply{epoch:String,sequence:Nat,changed:Bool,message:String}
   MenuReply{epoch:String,sequence:Nat,accepted:Bool,message:String,snapshot:I.MenuSnapshot}
   CatalogFrameReply{epoch:String,sequence:Nat,sample:GS.Sample}
+  CookingReply{epoch:String,sequence:Nat,accepted:Bool,message:String,snapshot:CookingMenu.Snapshot}
 type Row is Data:
   Row{raw:W.RawBlock,block:R.Block,visibility:V.Visibility}
 type Rows is Data:
@@ -374,11 +384,12 @@ def menu_click(value:J.Value) -> Result<&2,&2,String,I.Click>:
     case _: Fail{"wire:menu-click-tag-or-cardinality"}
 
 def acquire_component_count(key:Inv.ItemKey,count:U32) -> Bool:
-  Inv.ItemKey{id,components} = key
-  String.is_empty(components) || U32.is_le(count,1)
+  # Count0 keeps the existing no-op request, with a real admitted key. Positive
+  # requests use the validated effective limit, including modified stackables.
+  I.structural_slot(Inv.InvStack{key,U32.max(count,1)})
 
 def acquire_valid(index:U32,+key:Inv.ItemKey,+count:U32) -> Bool:
-  U32.is_lt(index,36) && I.structural_slot(Inv.InvStack{key,1}) && U32.is_le(count,99) && acquire_component_count(key,count)
+  U32.is_lt(index,36) && U32.is_le(count,99) && acquire_component_count(key,count)
 
 def admitted_item_key(+key:Inv.ItemKey) -> Result<&2,&2,String,Inv.ItemKey>:
   do Result<&2,&2,String,Inv.ItemKey>:
@@ -393,6 +404,61 @@ def item_key(value:J.Value) -> Result<&2,&2,String,Inv.ItemKey>:
         patch:String <- text(components)
         admitted_item_key(Inv.ItemKey{id,patch})
     case _: Fail{"wire:item-key-cardinality"}
+
+# Cooking DTOs are observations of the actual menu authority. The client never
+# supplies Access, peer, block identity, timers or an incarnation to a command.
+def cooking_position_valid(position:Core.Position) -> Bool:
+  Core.Position{dimension,x,y,z} = position
+  Core.dimension_known(dimension)
+
+def cooking_position(value:J.Value) -> Result<&2,&2,String,Core.Position>:
+  match value:
+    case J.JArray{[dimension,x,y,z]}:
+      do Result<&2,&2,String,Core.Position>:
+        d:String <- text(dimension)
+        a:U32 <- uint(x)
+        b:U32 <- uint(y)
+        c:U32 <- uint(z)
+        +position:Core.Position = Core.Position{d,a,b,c}
+        guard(cooking_position_valid(position),"wire:cooking-position")
+        Done{position}
+    case _: Fail{"wire:cooking-position-cardinality"}
+
+def cooking_kind(value:J.Value) -> Result<&2,&2,String,Cooking.CookingKind>:
+  match value:
+    case J.JNumber{"0"}: Done{Cooking.Smelting{}}
+    case J.JNumber{"1"}: Done{Cooking.Blasting{}}
+    case J.JNumber{"2"}: Done{Cooking.Smoking{}}
+    case _: Fail{"wire:cooking-furnace-kind"}
+
+def cooking_block(kind:Cooking.CookingKind,block:String) -> Bool:
+  match kind:
+    case Cooking.Smelting{}: String.eq(block,"minecraft:furnace")
+    case Cooking.Blasting{}: String.eq(block,"minecraft:blast_furnace")
+    case Cooking.Smoking{}: String.eq(block,"minecraft:smoker")
+    case Cooking.Campfire{}: False{}
+
+def cooking_handle_valid(handle:CookingMenu.Handle) -> Bool:
+  match handle:
+    case CookingMenu.Closed{}: True{}
+    case CookingMenu.Furnace{menu,peer,position,block,kind,incarnation}:
+      U32.is_gt(menu,0) && cooking_position_valid(position) && cooking_block(kind,block) && Nat.is_le(incarnation,nat_max())
+
+def cooking_handle(value:J.Value) -> Result<&2,&2,String,CookingMenu.Handle>:
+  match value:
+    case J.JArray{[J.JNumber{"0"}]}: Done{CookingMenu.Closed{}}
+    case J.JArray{[J.JNumber{"1"},menu,peer,position,block,kind,incarnation]}:
+      do Result<&2,&2,String,CookingMenu.Handle>:
+        id:U32 <- uint(menu)
+        player:U32 <- uint(peer)
+        at:Core.Position <- cooking_position(position)
+        name:String <- text(block)
+        family:Cooking.CookingKind <- cooking_kind(kind)
+        token:Nat <- natural(incarnation)
+        +handle:CookingMenu.Handle = CookingMenu.Furnace{id,player,at,name,family,token}
+        guard(cooking_handle_valid(handle),"wire:cooking-handle")
+        Done{handle}
+    case _: Fail{"wire:cooking-handle-cardinality"}
 
 def command_valid(command:Command) -> Bool:
   match command:
@@ -410,6 +476,12 @@ def command_valid(command:Command) -> Bool:
     case MenuClose{}: True{}
     case MenuClick{index,click}: click_valid(click)
     case Select{index}: U32.is_lt(index,9)
+    case CookingOpen{position}: cooking_position_valid(position)
+    case CookingInspect{menu}: True{}
+    case CookingClick{menu,index,button}: U32.is_gt(menu,0) && U32.is_lt(index,39) && U32.is_le(button,1)
+    case CookingQuickMove{menu,index}: U32.is_gt(menu,0) && U32.is_lt(index,39)
+    case CookingClose{menu}: U32.is_gt(menu,0)
+    case CookingUse{offhand}: True{}
 
 def command(value:J.Value) -> Result<&2,&2,String,Command>:
   match value:
@@ -469,6 +541,36 @@ def command(value:J.Value) -> Result<&2,&2,String,Command>:
         +h:U32 <- uint(height)
         guard(WM.frame_valid(WM.frame(w,h)),"wire:catalog-frame-dimensions")
         Done{FrameCatalog{w,h}}
+    case J.JArray{[J.JNumber{"14"},body]}:
+      do Result<&2,&2,String,Command>:
+        position:Core.Position <- cooking_position(body)
+        Done{CookingOpen{position}}
+    case J.JArray{[J.JNumber{"15"},menu]}:
+      do Result<&2,&2,String,Command>:
+        id:U32 <- uint(menu)
+        Done{CookingInspect{id}}
+    case J.JArray{[J.JNumber{"16"},menu,index,button]}:
+      do Result<&2,&2,String,Command>:
+        +id:U32 <- uint(menu)
+        +i:U32 <- uint(index)
+        +b:U32 <- uint(button)
+        guard(U32.is_gt(id,0) && U32.is_lt(i,39) && U32.is_le(b,1),"wire:cooking-click")
+        Done{CookingClick{id,i,b}}
+    case J.JArray{[J.JNumber{"17"},menu,index]}:
+      do Result<&2,&2,String,Command>:
+        +id:U32 <- uint(menu)
+        +i:U32 <- uint(index)
+        guard(U32.is_gt(id,0) && U32.is_lt(i,39),"wire:cooking-quick-move")
+        Done{CookingQuickMove{id,i}}
+    case J.JArray{[J.JNumber{"18"},menu]}:
+      do Result<&2,&2,String,Command>:
+        +id:U32 <- uint(menu)
+        guard(U32.is_gt(id,0),"wire:cooking-close")
+        Done{CookingClose{id}}
+    case J.JArray{[J.JNumber{"19"},offhand]}:
+      do Result<&2,&2,String,Command>:
+        hand:Bool <- boolean(offhand)
+        Done{CookingUse{hand}}
     case _: Fail{"wire:command-tag-or-cardinality"}
 
 def request_value(value:J.Value) -> Result<&2,&2,String,Request>:
@@ -587,6 +689,53 @@ def menu_snapshot(value:J.Value) -> Result<&2,&2,String,I.MenuSnapshot>:
         guard(menu_snapshot_valid(snapshot),"wire:menu-snapshot")
         Done{snapshot}
     case _: Fail{"wire:menu-snapshot-cardinality"}
+
+def cooking_furnace_valid(value:CookingMenu.FurnaceView) -> Bool:
+  CookingMenu.FurnaceView{kind,Cooking.FurnaceSlots{input,fuel,output},a,b,c,d} = value
+  Bool.not(Cooking.kind_equal(kind,Cooking.Campfire{})) && I.structural_slot(input) && I.structural_slot(fuel) && I.structural_slot(output)
+
+def cooking_furnace(value:J.Value) -> Result<&2,&2,String,Maybe<&2,CookingMenu.FurnaceView>>:
+  match value:
+    case J.JArray{[J.JNumber{"0"}]}: Done{None{}}
+    case J.JArray{[J.JNumber{"1"},kind,input,fuel,output,lit_remaining,lit_total,cooking_spent,cooking_total]}:
+      do Result<&2,&2,String,Maybe<&2,CookingMenu.FurnaceView>>:
+        family:Cooking.CookingKind <- cooking_kind(kind)
+        a:Inv.Slot <- inventory_slot(input)
+        b:Inv.Slot <- inventory_slot(fuel)
+        c:Inv.Slot <- inventory_slot(output)
+        lr:U32 <- uint(lit_remaining)
+        lt:U32 <- uint(lit_total)
+        cs:U32 <- uint(cooking_spent)
+        ct:U32 <- uint(cooking_total)
+        +view:CookingMenu.FurnaceView = CookingMenu.FurnaceView{family,Cooking.FurnaceSlots{a,b,c},lr,lt,cs,ct}
+        guard(cooking_furnace_valid(view),"wire:cooking-furnace")
+        Done{Some{view}}
+    case _: Fail{"wire:cooking-furnace-cardinality"}
+
+def cooking_snapshot_body(handle:CookingMenu.Handle,furnace:Maybe<&2,CookingMenu.FurnaceView>) -> Bool:
+  match handle furnace:
+    case CookingMenu.Closed{} None{}: True{}
+    case CookingMenu.Closed{} Some{view}: False{}
+    case CookingMenu.Furnace{id,peer,position,block,kind,token} None{}: True{}
+    case CookingMenu.Furnace{id,peer,position,block,kind,token} Some{+view}:
+      CookingMenu.FurnaceView{other,slots,a,b,c,d} = view
+      cooking_furnace_valid(view) && Cooking.kind_equal(kind,other)
+
+def cooking_snapshot_valid(value:CookingMenu.Snapshot) -> Bool:
+  CookingMenu.Snapshot{+handle,furnace,inventory} = value
+  cooking_handle_valid(handle) && menu_snapshot_valid(inventory) && cooking_snapshot_body(handle,furnace)
+
+def cooking_snapshot(value:J.Value) -> Result<&2,&2,String,CookingMenu.Snapshot>:
+  match value:
+    case J.JArray{[handle,furnace,inventory]}:
+      do Result<&2,&2,String,CookingMenu.Snapshot>:
+        h:CookingMenu.Handle <- cooking_handle(handle)
+        f:Maybe<&2,CookingMenu.FurnaceView> <- cooking_furnace(furnace)
+        i:I.MenuSnapshot <- menu_snapshot(inventory)
+        +snapshot:CookingMenu.Snapshot = CookingMenu.Snapshot{h,f,i}
+        guard(cooking_snapshot_valid(snapshot),"wire:cooking-snapshot")
+        Done{snapshot}
+    case _: Fail{"wire:cooking-snapshot-cardinality"}
 
 def catalog_address(value:J.Value) -> Result<&2,&2,String,Mesh.Address>:
   match value:
@@ -721,6 +870,15 @@ def reply_value(value:J.Value) -> Result<&2,&2,String,Reply>:
         value:GS.Sample <- catalog_sample(body)
         guard(epoch_valid(e) && sequence_valid(s),"wire:catalog-frame-correlation")
         Done{CatalogFrameReply{e,s,value}}
+    case J.JArray{[J.JNumber{"1"},J.JNumber{"8"},epoch,sequence,accepted,message,body]}:
+      do Result<&2,&2,String,Reply>:
+        +e:String <- text(epoch)
+        +s:Nat <- natural(sequence)
+        value:Bool <- boolean(accepted)
+        +m:String <- text(message)
+        snapshot:CookingMenu.Snapshot <- cooking_snapshot(body)
+        guard(epoch_valid(e) && sequence_valid(s) && diagnostic_valid(m),"wire:cooking-correlation-or-message")
+        Done{CookingReply{e,s,value,m,snapshot}}
     case _: Fail{"wire:reply-version-tag-or-cardinality"}
 
 def decode_request(input:String) -> Result<&2,&2,String,Request>:
@@ -841,6 +999,23 @@ def click_value(click:I.Click) -> J.Value:
     case I.QuickCraft{phase,button}: J.JArray{[u(5),u(phase),u(button)]}
     case I.PickupAll{}: J.JArray{[u(6)]}
 
+def cooking_position_value(value:Core.Position) -> J.Value:
+  Core.Position{dimension,x,y,z} = value
+  J.JArray{[s(dimension),u(x),u(y),u(z)]}
+
+def cooking_kind_value(kind:Cooking.CookingKind) -> J.Value:
+  match kind:
+    case Cooking.Smelting{}: u(0)
+    case Cooking.Blasting{}: u(1)
+    case Cooking.Smoking{}: u(2)
+    case Cooking.Campfire{}: u(3)
+
+def cooking_handle_value(handle:CookingMenu.Handle) -> J.Value:
+  match handle:
+    case CookingMenu.Closed{}: J.JArray{[u(0)]}
+    case CookingMenu.Furnace{menu,peer,position,block,kind,incarnation}:
+      J.JArray{[u(1),u(menu),u(peer),cooking_position_value(position),s(block),cooking_kind_value(kind),n(incarnation)]}
+
 def command_value(value:Command) -> J.Value:
   match value:
     case Frame{width,height}: J.JArray{[u(0),u(width),u(height)]}
@@ -857,6 +1032,12 @@ def command_value(value:Command) -> J.Value:
     case MenuClose{}: J.JArray{[u(10)]}
     case MenuClick{index,click}: J.JArray{[u(11),u(index),click_value(click)]}
     case Select{index}: J.JArray{[u(12),u(index)]}
+    case CookingOpen{position}: J.JArray{[u(14),cooking_position_value(position)]}
+    case CookingInspect{menu}: J.JArray{[u(15),u(menu)]}
+    case CookingClick{menu,index,button}: J.JArray{[u(16),u(menu),u(index),u(button)]}
+    case CookingQuickMove{menu,index}: J.JArray{[u(17),u(menu),u(index)]}
+    case CookingClose{menu}: J.JArray{[u(18),u(menu)]}
+    case CookingUse{offhand}: J.JArray{[u(19),b(offhand)]}
 
 def request_valid(request:Request) -> Bool:
   match request:
@@ -878,6 +1059,7 @@ def reply_valid(reply:Reply) -> Bool:
     case InventoryReply{epoch,sequence,snapshot}: epoch_valid(epoch) && sequence_valid(sequence) && main_snapshot_valid(snapshot)
     case ActionReply{epoch,sequence,changed,message}: epoch_valid(epoch) && sequence_valid(sequence) && diagnostic_valid(message)
     case MenuReply{epoch,sequence,accepted,message,snapshot}: epoch_valid(epoch) && sequence_valid(sequence) && diagnostic_valid(message) && menu_snapshot_valid(snapshot)
+    case CookingReply{epoch,sequence,accepted,message,snapshot}: epoch_valid(epoch) && sequence_valid(sequence) && diagnostic_valid(message) && cooking_snapshot_valid(snapshot)
 
 def inventory_slot_value(value:Inv.Slot) -> J.Value:
   match value:
@@ -907,6 +1089,16 @@ def menu_snapshot_value(snapshot:I.MenuSnapshot) -> J.Value:
   J.JArray{[inventory_snapshot_value(main),J.JArray{inventory_slot_values(equipment)},menu_status_value(status),
     J.JArray{inventory_slot_values(craft)},inventory_slot_value(carried),menu_result_value(result),b(opened),n(revision)]}
 
+def cooking_furnace_value(furnace:Maybe<&2,CookingMenu.FurnaceView>) -> J.Value:
+  match furnace:
+    case None{}: J.JArray{[u(0)]}
+    case Some{CookingMenu.FurnaceView{kind,Cooking.FurnaceSlots{input,fuel,output},a,b,c,d}}:
+      J.JArray{[u(1),cooking_kind_value(kind),inventory_slot_value(input),inventory_slot_value(fuel),inventory_slot_value(output),u(a),u(b),u(c),u(d)]}
+
+def cooking_snapshot_value(snapshot:CookingMenu.Snapshot) -> J.Value:
+  CookingMenu.Snapshot{handle,furnace,inventory} = snapshot
+  J.JArray{[cooking_handle_value(handle),cooking_furnace_value(furnace),menu_snapshot_value(inventory)]}
+
 def reply_json(reply:Reply) -> Result<&2,&2,String,J.Value>:
   match reply:
     case HelloAck{epoch,sequence}: Done{J.JArray{[u(1),u(0),s(epoch),n(sequence)]}}
@@ -921,6 +1113,7 @@ def reply_json(reply:Reply) -> Result<&2,&2,String,J.Value>:
     case InventoryReply{epoch,sequence,snapshot}: Done{J.JArray{[u(1),u(4),s(epoch),n(sequence),inventory_snapshot_value(snapshot)]}}
     case ActionReply{epoch,sequence,changed,message}: Done{J.JArray{[u(1),u(5),s(epoch),n(sequence),b(changed),s(message)]}}
     case MenuReply{epoch,sequence,accepted,message,snapshot}: Done{J.JArray{[u(1),u(6),s(epoch),n(sequence),b(accepted),s(message),menu_snapshot_value(snapshot)]}}
+    case CookingReply{epoch,sequence,accepted,message,snapshot}: Done{J.JArray{[u(1),u(8),s(epoch),n(sequence),b(accepted),s(message),cooking_snapshot_value(snapshot)]}}
 
 def hex4(+word:U32) -> String:
   Char.show(J.hex_char(U32.and(U32.shrn(word,12n),15))) ++
@@ -993,6 +1186,7 @@ def correlation(+epoch:String,+sequence:Nat,reply:Reply) -> Bool:
     case InventoryReply{other,number,snapshot}: String.eq(epoch,other) && Nat.is_eq(sequence,number)
     case ActionReply{other,number,changed,message}: String.eq(epoch,other) && Nat.is_eq(sequence,number)
     case MenuReply{other,number,accepted,message,snapshot}: String.eq(epoch,other) && Nat.is_eq(sequence,number)
+    case CookingReply{other,number,accepted,message,snapshot}: String.eq(epoch,other) && Nat.is_eq(sequence,number)
 
 law raw_look_preserves_signed_zero_and_nan_payload:
   {event(J.JArray{[u(3),u(2147483648),u(2143289345)]}) ==

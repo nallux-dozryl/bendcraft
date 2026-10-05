@@ -13,6 +13,8 @@ import ./local_player_session.bend as Session
 import ./player_crafting_session_adapter.bend as Craft
 import ./item_component_wire_candidate.bend as Candidate
 import ./core.bend as Core
+import ./player_cooking_menu.bend as PCMenu
+import ./player_cooking_session.bend as CookingSession
 
 # The socket remembers its assigned epoch. Cleanup never trusts an incoming
 # request's epoch, so a stale socket cannot clear a newer renderer's controls.
@@ -23,7 +25,7 @@ type Answer is Data:
 type PreparedAnswer is Data:
   PreparedAnswer{answer:Answer,encoding:Result<&2,&2,String,String>}
 type MenuRollback is Type:
-  MenuRollback{inventory:I.State,lease:B.Lease,crafting:Maybe<&2,Craft.Context>}
+  MenuRollback{inventory:I.State,lease:B.Lease,crafting:Maybe<&2,Craft.Context>,cooking:PCMenu.Handle,next_cooking_menu:U32}
 
 def hello_answer(result:B.State & Result<&2,&2,String,String>) -> B.State & Answer:
   (state,status) = result
@@ -68,6 +70,27 @@ def menu_answer(+epoch:String,sequence:Nat,result:B.State & Result<&2,&2,String,
     case Done{B.MenuOutcome{accepted,message,snapshot}}:
       (state,Answer{W.MenuReply{epoch,sequence,accepted,message,snapshot},epoch,True{}})
 
+def cooking_wire(+epoch:String,+sequence:Nat,reply:PCMenu.Reply) -> W.Reply:
+  PCMenu.Reply{accepted,message,snapshot,effects} = reply
+  W.CookingReply{epoch,sequence,accepted,message,snapshot}
+
+def cooking_admitted(result:Result<&2,&2,String,String>) -> Result<&2,&2,String,Unit>:
+  match result:
+    case Fail{message}: Fail{"cooking-menu:prospective-reply-refused"}
+    case Done{encoded}: Done{Unit{}}
+
+def cooking_admit(epoch:String,sequence:Nat,reply:PCMenu.Reply) -> Result<&2,&2,String,Unit>:
+  cooking_admitted(W.encode_reply(cooking_wire(epoch,sequence,reply)))
+
+def cooking_answer(+epoch:String,+sequence:Nat,result:B.State & Result<&2,&2,String,PCMenu.Reply>) -> B.State & Answer:
+  (state,status) = result
+  match status:
+    case Fail{message}: (state,Answer{W.Fault{epoch,sequence,message},epoch,False{}})
+    case Done{reply}: (state,Answer{cooking_wire(epoch,sequence,reply),epoch,True{}})
+
+def cooking_command(state:B.State,+epoch:String,+sequence:Nat,request:CookingSession.Request) -> B.State & Answer:
+  cooking_answer(epoch,sequence,B.cooking_request(state,epoch,sequence,request,reply => cooking_admit(epoch,sequence,reply)))
+
 def command(state:B.State,+epoch:String,+sequence:Nat,value:W.Command) -> B.State & Answer:
   match value:
     case W.Frame{width,height}: frame_answer(epoch,sequence,B.frame(state,epoch,sequence,width,height))
@@ -84,6 +107,12 @@ def command(state:B.State,+epoch:String,+sequence:Nat,value:W.Command) -> B.Stat
     case W.MenuClose{}: menu_answer(epoch,sequence,B.menu_close(state,epoch,sequence))
     case W.MenuClick{index,click}: menu_answer(epoch,sequence,B.menu_click(state,epoch,sequence,index,click))
     case W.Select{index}: menu_answer(epoch,sequence,B.select(state,epoch,sequence,index))
+    case W.CookingOpen{position}: cooking_command(state,epoch,sequence,CookingSession.Open{position})
+    case W.CookingInspect{menu}: cooking_command(state,epoch,sequence,CookingSession.Act{PCMenu.MenuInspect{menu}})
+    case W.CookingClick{menu,index,button}: cooking_command(state,epoch,sequence,CookingSession.Act{PCMenu.MenuPickup{menu,index,button}})
+    case W.CookingQuickMove{menu,index}: cooking_command(state,epoch,sequence,CookingSession.Act{PCMenu.MenuQuickMove{menu,index}})
+    case W.CookingClose{menu}: cooking_command(state,epoch,sequence,CookingSession.Act{PCMenu.MenuClose{menu}})
+    case W.CookingUse{offhand}: cooking_command(state,epoch,sequence,CookingSession.Use{offhand,sequence})
 
 # These commands own only inventory, immutable recipe context and the lease.
 # A frame, world edit or physical packet must never use inventory-only rollback.
@@ -107,26 +136,26 @@ def prepared(result:B.State & Answer) -> B.State & PreparedAnswer:
   (state,PreparedAnswer{value,W.encode_reply(answer_reply(value))})
 
 def candidate_saved(+lease:B.Lease,counter:Nat,nonce:String,capability:String,owner:Core.Capability,
-    +crafting:Maybe<&2,Craft.Context>,result:Session.State & I.State) -> B.State & MenuRollback:
+    +crafting:Maybe<&2,Craft.Context>,+cooking:PCMenu.Handle,+next_cooking_menu:U32,result:Session.State & I.State) -> B.State & MenuRollback:
   (saved,original) = result
-  (B.State{saved,lease,counter,nonce,capability,owner,crafting},MenuRollback{original,lease,crafting})
+  (B.State{saved,lease,counter,nonce,capability,owner,crafting,cooking,next_cooking_menu},MenuRollback{original,lease,crafting,cooking,next_cooking_menu})
 
 def menu_candidate(state:B.State) -> B.State & MenuRollback:
-  B.State{saved,lease,counter,nonce,capability,owner,crafting} = state
-  candidate_saved(lease,counter,nonce,capability,owner,crafting,Session.inventory_query(I.State,saved,Candidate.prepare))
+  B.State{saved,lease,counter,nonce,capability,owner,crafting,cooking,next_cooking_menu} = state
+  candidate_saved(lease,counter,nonce,capability,owner,crafting,cooking,next_cooking_menu,Session.inventory_query(I.State,saved,Candidate.prepare))
 
 def restored_inventory(original:I.State,candidate:I.State) -> I.State & Unit:
   (original,Unit{})
 
 def restored_saved(lease:B.Lease,counter:Nat,nonce:String,capability:String,owner:Core.Capability,
-    crafting:Maybe<&2,Craft.Context>,result:Session.State & Unit) -> B.State:
+    crafting:Maybe<&2,Craft.Context>,cooking:PCMenu.Handle,next_cooking_menu:U32,result:Session.State & Unit) -> B.State:
   (saved,unit) = result
-  B.State{saved,B.renewed(lease),counter,nonce,capability,owner,crafting}
+  B.State{saved,B.renewed(lease),counter,nonce,capability,owner,crafting,cooking,next_cooking_menu}
 
 def restore_menu(rollback:MenuRollback,candidate:B.State) -> B.State:
-  MenuRollback{original,lease,crafting} = rollback
-  B.State{saved,new_lease,counter,nonce,capability,owner,new_crafting} = candidate
-  restored_saved(lease,counter,nonce,capability,owner,crafting,
+  MenuRollback{original,lease,crafting,cooking,next_cooking_menu} = rollback
+  B.State{saved,new_lease,counter,nonce,capability,owner,new_crafting,new_cooking,new_next_cooking_menu} = candidate
+  restored_saved(lease,counter,nonce,capability,owner,crafting,cooking,next_cooking_menu,
     Session.inventory_query(Unit,saved,discarded => restored_inventory(original,discarded)))
 
 def fallback_encoded(+epoch:String,+sequence:Nat,state:B.State,+value:Answer,
@@ -137,15 +166,15 @@ def fallback_encoded(+epoch:String,+sequence:Nat,state:B.State,+value:Answer,
       prepared((state,Answer{W.Fault{epoch,sequence,"Wire:InventoryReplyEncoding"},epoch,False{}}))
 
 def fallback_observed(+epoch:String,+sequence:Nat,lease:B.Lease,counter:Nat,nonce:String,capability:String,
-    owner:Core.Capability,crafting:Maybe<&2,Craft.Context>,result:Session.State & I.MenuSnapshot) -> B.State & PreparedAnswer:
+    owner:Core.Capability,crafting:Maybe<&2,Craft.Context>,cooking:PCMenu.Handle,next_cooking_menu:U32,result:Session.State & I.MenuSnapshot) -> B.State & PreparedAnswer:
   (saved,snapshot) = result
   +value:Answer = Answer{W.MenuReply{epoch,sequence,False{},"inventory:prospective-reply-refused",snapshot},epoch,True{}}
-  fallback_encoded(epoch,sequence,B.State{saved,lease,counter,nonce,capability,owner,crafting},value,W.encode_reply(answer_reply(value)))
+  fallback_encoded(epoch,sequence,B.State{saved,lease,counter,nonce,capability,owner,crafting,cooking,next_cooking_menu},value,W.encode_reply(answer_reply(value)))
 
 # Observation of the restored owner does not refresh or replace its cache.
 def menu_fallback(+epoch:String,+sequence:Nat,state:B.State) -> B.State & PreparedAnswer:
-  B.State{saved,lease,counter,nonce,capability,owner,crafting} = state
-  fallback_observed(epoch,sequence,lease,counter,nonce,capability,owner,crafting,
+  B.State{saved,lease,counter,nonce,capability,owner,crafting,cooking,next_cooking_menu} = state
+  fallback_observed(epoch,sequence,lease,counter,nonce,capability,owner,crafting,cooking,next_cooking_menu,
     Session.inventory_query(I.MenuSnapshot,saved,Candidate.inspect))
 
 def prospective_encoded(epoch:String,sequence:Nat,rollback:MenuRollback,candidate:B.State,value:Answer,
@@ -166,13 +195,13 @@ def prospective_geometry(+epoch:String,+sequence:Nat,value:W.Command,rollback:Me
     case True{}: prospective_completed(epoch,sequence,rollback,command(candidate,epoch,sequence,value))
 
 def geometry_saved(lease:B.Lease,counter:Nat,nonce:String,capability:String,owner:Core.Capability,
-    crafting:Maybe<&2,Craft.Context>,result:Session.State & Bool) -> B.State & Bool:
+    crafting:Maybe<&2,Craft.Context>,cooking:PCMenu.Handle,next_cooking_menu:U32,result:Session.State & Bool) -> B.State & Bool:
   (saved,valid) = result
-  (B.State{saved,lease,counter,nonce,capability,owner,crafting},valid)
+  (B.State{saved,lease,counter,nonce,capability,owner,crafting,cooking,next_cooking_menu},valid)
 
 def menu_geometry(state:B.State) -> B.State & Bool:
-  B.State{saved,lease,counter,nonce,capability,owner,crafting} = state
-  geometry_saved(lease,counter,nonce,capability,owner,crafting,Session.inventory_query(Bool,saved,Candidate.geometry))
+  B.State{saved,lease,counter,nonce,capability,owner,crafting,cooking,next_cooking_menu} = state
+  geometry_saved(lease,counter,nonce,capability,owner,crafting,cooking,next_cooking_menu,Session.inventory_query(Bool,saved,Candidate.geometry))
 
 def prospective_cloned(+epoch:String,+sequence:Nat,value:W.Command,result:B.State & MenuRollback) -> B.State & PreparedAnswer:
   (candidate,rollback) = result
@@ -185,8 +214,8 @@ def prospective_checked(state:B.State,+epoch:String,+sequence:Nat,+value:W.Comma
     case True{}: prospective_cloned(epoch,sequence,value,menu_candidate(state))
 
 def command_prepared(state:B.State,+epoch:String,+sequence:Nat,+value:W.Command) -> B.State & PreparedAnswer:
-  B.State{saved,+lease,counter,nonce,capability,owner,crafting} = state
-  prospective_checked(B.State{saved,lease,counter,nonce,capability,owner,crafting},epoch,sequence,value,
+  B.State{saved,+lease,counter,nonce,capability,owner,crafting,cooking,next_cooking_menu} = state
+  prospective_checked(B.State{saved,lease,counter,nonce,capability,owner,crafting,cooking,next_cooking_menu},epoch,sequence,value,
     prospective_menu(value) && B.admitted(lease,epoch,sequence))
 
 def close_link(+handle:S.Handle<B.State>,link:Link) -> IO(Maybe<&1,Link>):
