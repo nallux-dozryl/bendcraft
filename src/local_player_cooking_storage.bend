@@ -12,6 +12,7 @@ import ./cooking_effect_recovery.bend as Effects
 import ./cooking_effect_entities_model.bend as Entities
 import ./local_player_effect_entities_codec.bend as EntityCodec
 import ./random.bend as Random
+import ./local_player_cooking_publication_codec.bend as Publication
 
 # The inventory ABI and existing empty-cooking payload remain intact. Cooking
 # bodies travel inside the same Core/extension atomic publication, never in a
@@ -21,7 +22,7 @@ type Body is Data:
 type EntityRecovery is Data:
   EntityRecovery{view:Entities.View,clock_inputs:List<&2,Random.Bits64>}
 type Saved is Type:
-  Saved{player:I.Saved,bodies:List<&2,Body>,pending:List<&2,Store.Effect>,entities:Maybe<&2,EntityRecovery>}
+  Saved{player:I.Saved,bodies:List<&2,Body>,pending:List<&2,Store.Effect>,entities:Maybe<&2,EntityRecovery>,publication:Maybe<&2,Publication.Recovery>}
 
 def nbt_limits() -> N.Limits:
   N.default_limits()
@@ -118,14 +119,40 @@ def payload_entities(+bodies:List<&2,Body>,pending:List<&2,Store.Effect>,entitie
         records : List<&2,U32> <- EntityCodec.encode(nbt_limits(),view)
         N.encode_with(nbt_limits(),entity_root(player,bodies,effects,records,clocks))
 
-def encoded(+bodies:List<&2,Body>,+pending:List<&2,Store.Effect>,+entities:Maybe<&2,EntityRecovery>,result:I.Saved & Result<&2,&2,String,List<&2,U32>>) -> Saved & Result<&2,&2,String,List<&2,U32>>:
+def publication_root(player:List<&2,U32>,bodies:List<&2,Body>,effects:List<&2,U32>,entities:List<&2,U32>,clocks:List<&2,Random.Bits64>,publication:List<&2,U32>) -> N.Root:
+  N.Root{P.text("bendex:local-player-cooking-record"),N.Compound{[
+    P.member("format",N.Int{4}),P.member("player",N.ByteArray{player}),
+    P.member("bodies",N.ListTag{10,body_values(bodies)}),
+    P.member("effects",N.ByteArray{effects}),P.member("entities",N.ByteArray{entities}),
+    P.member("clock_inputs",N.LongArray{clock_values(clocks)}),P.member("publication",N.ByteArray{publication})]}}
+def publication_entities(player:List<&2,U32>,bodies:List<&2,Body>,effects:List<&2,U32>,publication:List<&2,U32>,entities:Maybe<&2,EntityRecovery>) -> Result<&2,&2,String,List<&2,U32>>:
+  match entities:
+    case None{}: N.encode_with(nbt_limits(),publication_root(player,bodies,effects,[],[],publication))
+    case Some{EntityRecovery{view,clocks}}:
+      do Result<&2,&2,String,List<&2,U32>>:
+        records : List<&2,U32> <- EntityCodec.encode(nbt_limits(),view)
+        N.encode_with(nbt_limits(),publication_root(player,bodies,effects,records,clocks,publication))
+def payload_publication(+bodies:List<&2,Body>,+pending:List<&2,Store.Effect>,entities:Maybe<&2,EntityRecovery>,publication:Maybe<&2,Publication.Recovery>,player:List<&2,U32>) -> Result<&2,&2,String,List<&2,U32>>:
+  match publication:
+    case None{}:
+      do Result<&2,&2,String,List<&2,U32>>:
+        I.require(Bool.not(Effects.has_owned(pending)),"owned cooking publication requires complete recovery")
+        payload_entities(bodies,pending,entities,player)
+    case Some{recovery}:
+      do Result<&2,&2,String,List<&2,U32>>:
+        I.require(unique_bodies(bodies),"duplicate cooking body position")
+        effects : List<&2,U32> <- Effects.encode(nbt_limits(),pending)
+        publisher : List<&2,U32> <- Publication.encode(nbt_limits(),recovery)
+        publication_entities(player,bodies,effects,publisher,entities)
+
+def encoded(+bodies:List<&2,Body>,+pending:List<&2,Store.Effect>,+entities:Maybe<&2,EntityRecovery>,+publication:Maybe<&2,Publication.Recovery>,result:I.Saved & Result<&2,&2,String,List<&2,U32>>) -> Saved & Result<&2,&2,String,List<&2,U32>>:
   (player,status) = result
-  (Saved{player,bodies,pending,entities},Result.bind(&2,&2,String,List<&2,U32>,List<&2,U32>,status,
-    bytes => payload_entities(bodies,pending,entities,bytes)))
+  (Saved{player,bodies,pending,entities,publication},Result.bind(&2,&2,String,List<&2,U32>,List<&2,U32>,status,
+    bytes => payload_publication(bodies,pending,entities,publication,bytes)))
 
 def encode(saved:Saved) -> Saved & Result<&2,&2,String,List<&2,U32>>:
-  Saved{player,bodies,pending,entities} = saved
-  encoded(bodies,pending,entities,I.encode(player))
+  Saved{player,bodies,pending,entities,publication} = saved
+  encoded(bodies,pending,entities,publication,I.encode(player))
 
 def body_decoded(value:N.Value) -> Result<&2,&2,String,Body>:
   do Result<&2,&2,String,Body>:
@@ -156,13 +183,13 @@ def bodies_value(value:N.Value) -> Result<&2,&2,String,List<&2,Body>>:
     case N.ListTag{10,values}: body_list(values)
     case _: Fail{"cooking bodies require Compound list"}
 
-def wrap(bodies:List<&2,Body>,pending:List<&2,Store.Effect>,entities:Maybe<&2,EntityRecovery>,result:Result<&2,&1,String,I.Saved>) -> Result<&2,&1,String,Saved>:
+def wrap(bodies:List<&2,Body>,pending:List<&2,Store.Effect>,entities:Maybe<&2,EntityRecovery>,publication:Maybe<&2,Publication.Recovery>,result:Result<&2,&1,String,I.Saved>) -> Result<&2,&1,String,Saved>:
   match result:
     case Fail{message}: Fail{message}
-    case Done{player}: Done{Saved{player,bodies,pending,entities}}
+    case Done{player}: Done{Saved{player,bodies,pending,entities,publication}}
 
 type Projection is Data:
-  Projection{player:List<&2,U32>,bodies:List<&2,Body>,pending:List<&2,Store.Effect>,entities:Maybe<&2,EntityRecovery>}
+  Projection{player:List<&2,U32>,bodies:List<&2,Body>,pending:List<&2,Store.Effect>,entities:Maybe<&2,EntityRecovery>,publication:Maybe<&2,Publication.Recovery>}
 
 def projection_legacy(value:N.Value) -> Result<&2,&2,String,Projection>:
   do Result<&2,&2,String,Projection>:
@@ -171,7 +198,7 @@ def projection_legacy(value:N.Value) -> Result<&2,&2,String,Projection>:
     I.require(U32.is_eq(format,1),"unsupported cooking payload format")
     player : List<&2,U32> <- I.byte_array(P.field(fields,"player"))
     bodies : List<&2,Body> <- bodies_value(P.field(fields,"bodies"))
-    return Projection{player,bodies,[],None{}}
+    return Projection{player,bodies,[],None{},None{}}
 
 def projection_recovery(value:N.Value) -> Result<&2,&2,String,Projection>:
   do Result<&2,&2,String,Projection>:
@@ -183,7 +210,8 @@ def projection_recovery(value:N.Value) -> Result<&2,&2,String,Projection>:
     bytes : List<&2,U32> <- I.byte_array(P.field(fields,"effects"))
     +pending : List<&2,Store.Effect> <- Effects.decode(nbt_limits(),bytes)
     I.require(Bool.not(List.is_empty(&2,Store.Effect,pending)),"empty cooking recovery payload")
-    return Projection{player,bodies,pending,None{}}
+    I.require(Bool.not(Effects.has_owned(pending)),"owned cooking publication requires complete recovery")
+    return Projection{player,bodies,pending,None{},None{}}
 
 def projection_entities(value:N.Value) -> Result<&2,&2,String,Projection>:
   do Result<&2,&2,String,Projection>:
@@ -193,16 +221,42 @@ def projection_entities(value:N.Value) -> Result<&2,&2,String,Projection>:
     player : List<&2,U32> <- I.byte_array(P.field(fields,"player"))
     bodies : List<&2,Body> <- bodies_value(P.field(fields,"bodies"))
     effect_bytes : List<&2,U32> <- I.byte_array(P.field(fields,"effects"))
-    pending : List<&2,Store.Effect> <- Effects.decode(nbt_limits(),effect_bytes)
+    +pending : List<&2,Store.Effect> <- Effects.decode(nbt_limits(),effect_bytes)
+    I.require(Bool.not(Effects.has_owned(pending)),"owned cooking publication requires complete recovery")
     entity_bytes : List<&2,U32> <- I.byte_array(P.field(fields,"entities"))
     view : Entities.View <- EntityCodec.decode(nbt_limits(),entity_bytes)
     clocks : List<&2,Random.Bits64> <- clocks_value(P.field(fields,"clock_inputs"))
-    return Projection{player,bodies,pending,Some{EntityRecovery{view,clocks}}}
+    return Projection{player,bodies,pending,Some{EntityRecovery{view,clocks}},None{}}
+
+def publication_entity_read(bytes:List<&2,U32>,clocks:List<&2,Random.Bits64>) -> Result<&2,&2,String,Maybe<&2,EntityRecovery>>:
+  match bytes:
+    case Nil{}:
+      do Result<&2,&2,String,Maybe<&2,EntityRecovery>>:
+        I.require(List.is_empty(&2,Random.Bits64,clocks),"unbound entity recovery has clock inputs")
+        return None{}
+    case head <> rest:
+      Result.map(&2,&2,String,Entities.View,Maybe<&2,EntityRecovery>,view => Some{EntityRecovery{view,clocks}},EntityCodec.decode(nbt_limits(),head <> rest))
+def projection_publication(value:N.Value) -> Result<&2,&2,String,Projection>:
+  do Result<&2,&2,String,Projection>:
+    +fields : List<&2,P.Field> <- I.schema(List<&2,P.Field>,P.fields(value,["format","player","bodies","effects","entities","clock_inputs","publication"]))
+    format : U32 <- I.schema(U32,P.int_value(P.field(fields,"format"),"format"))
+    I.require(U32.is_eq(format,4),"unsupported cooking publication payload format")
+    player : List<&2,U32> <- I.byte_array(P.field(fields,"player"))
+    bodies : List<&2,Body> <- bodies_value(P.field(fields,"bodies"))
+    effect_bytes : List<&2,U32> <- I.byte_array(P.field(fields,"effects"))
+    pending : List<&2,Store.Effect> <- Effects.decode(nbt_limits(),effect_bytes)
+    entity_bytes : List<&2,U32> <- I.byte_array(P.field(fields,"entities"))
+    clocks : List<&2,Random.Bits64> <- clocks_value(P.field(fields,"clock_inputs"))
+    entities : Maybe<&2,EntityRecovery> <- publication_entity_read(entity_bytes,clocks)
+    publication_bytes : List<&2,U32> <- I.byte_array(P.field(fields,"publication"))
+    recovery : Publication.Recovery <- Publication.decode(nbt_limits(),publication_bytes)
+    return Projection{player,bodies,pending,entities,Some{recovery}}
 
 def projection_shape(value:N.Value,count:Nat) -> Result<&2,&2,String,Projection>:
   match count:
     case 3n: projection_legacy(value)
     case 4n: projection_recovery(value)
+    case 7n: projection_publication(value)
     case _: projection_entities(value)
 
 # Each selected schema still requires exactly its fields and its version.
@@ -216,7 +270,7 @@ def projection(value:N.Value) -> Result<&2,&2,String,Projection>:
 def projected(definitions:D.Catalog,result:Result<&2,&2,String,Projection>) -> Result<&2,&1,String,Saved>:
   match result:
     case Fail{message}: Fail{message}
-    case Done{Projection{player,bodies,pending,entities}}: wrap(bodies,pending,entities,I.decode_with(definitions,1,player))
+    case Done{Projection{player,bodies,pending,entities,publication}}: wrap(bodies,pending,entities,publication,I.decode_with(definitions,1,player))
 
 def cooking_root(definitions:D.Catalog,root:N.Root) -> Result<&2,&1,String,Saved>:
   N.Root{name,value} = root
@@ -226,7 +280,7 @@ def named(+definitions:D.Catalog,+root:N.Root,result:Result<&2,&2,String,String>
   match result:
     case Fail{message}: Fail{message}
     case Done{"bendex:local-player-cooking-record"}: cooking_root(definitions,root)
-    case Done{other}: wrap([],[],None{},I.decoded_with(definitions,Done{root}))
+    case Done{other}: wrap([],[],None{},None{},I.decoded_with(definitions,Done{root}))
 
 def parsed(definitions:D.Catalog,result:Result<&2,&2,String,N.Root>) -> Result<&2,&1,String,Saved>:
   match result:
@@ -241,7 +295,7 @@ def decode_with(definitions:D.Catalog,schema:U32,bytes:List<&2,U32>) -> Result<&
     case _: Fail{"unsupported local-player-record schema"}
 
 def initial_with(definitions:D.Catalog,creative:Bool,generation:WG.Settings,unit:Unit) -> Result<&2,&1,String,Saved>:
-  wrap([],[],None{},I.initial_with(definitions,creative,generation,unit))
+  wrap([],[],None{},None{},I.initial_with(definitions,creative,generation,unit))
 
 def refuse_core_only(unit:Unit) -> Result<&2,&1,String,Saved>:
   Fail{"Core-only or plain-Player saves require explicit LocalPlayer migration"}

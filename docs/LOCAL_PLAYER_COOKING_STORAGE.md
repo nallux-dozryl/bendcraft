@@ -121,3 +121,42 @@ crashing during an unfinished atomic write remains a separate case. See
 the declared isolated overworld factory/allocator and supported remove-to-air
 geometry. Entity ticking, pickup, rendering and wider collision admission
 remain separate joins.
+
+The additive format 4 wrapper carries the complete publication recovery in a
+seventh required ByteArray member, `publication`. Its other six members retain
+the format 3 names and physical types. An empty `entities` ByteArray represents
+an unbound entity owner and requires an empty `clock_inputs` LongArray. A bound
+owner retains its complete existing entity encoding and ordered clocks. When
+publication recovery is absent, formats 1, 2 and 3 retain their exact encoding.
+The outer extension namespace and schema remain unchanged.
+
+`local_player_cooking_publication_codec` preserves the complete incarnation
+Patricia tree, including counters for removed owners, plus the journal sequence,
+ordered unsaved chunks and complete last receipt. Tree nodes are serialized
+directly rather than reconstructed from a flattened map. Decoding checks
+canonical position keys, native 48-bit natural bounds, nonempty children,
+strictly increasing branch positions and the actual key-bit partition. Journal
+validation checks the registered dimensions, signed chunk bounds, unique chunk
+keys, positive bounded revisions and exact latest receipt/source position. A
+historical receipt's incarnation may be lower than the saved position counter;
+it may not exceed it. Binding and string words are preserved as IntArrays.
+This internal codec does not authenticate a binding against the actual loaded
+catalog; `cooking_effect_publication.restore_journal` performs that separate
+runtime admission before installing the sole affine publisher.
+
+New `OwnedDirty` effects use tag 6 with the full producer position, cached
+binding and incarnation. Their inner effects root uses format 2; a queue with
+only existing effect kinds retains the exact format 1 bytes, including legacy
+tag 3 `Dirty`. The parser rejects an owned effect whose duplicated position
+disagrees with its captured source, or whose source is structurally invalid.
+Format 4 is required whenever an owned notification is persisted; the older
+wrappers refuse it instead of recovering an owner from the queue.
+
+Attempt 008 passed all 22 actual default-JavaScript wrapper guards, including
+six new checks for absent-publication byte identity, both entity binding states,
+complete format 4 recovery, owned notifications without publication recovery,
+legacy-wrapper admission and orphan clock refusal. See
+`evidence/local-player-cooking-storage-008.json`. Attempt 007 retains the actual
+parser error in the newly added owned-effect helper; its repaired helper was
+checked in 008. Standalone native recovery bytes, the Session carrier and the
+actual durable actor save/restore join remain separate consumers.

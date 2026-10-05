@@ -4,6 +4,9 @@ import ./cooking_world_store.bend as S
 import ./furnace_authority.bend as F
 import ./inventory.bend as I
 import ./nbt.bend as N
+import ./local_player_cooking_publication_codec.bend as Publication
+import ./cooking_effect_publication_journal.bend as Journal
+import ./cooking_world_bindings.bend as Bindings
 
 # Internal recovery framing, not vanilla entity NBT. Raw char words preserve
 # complete component identities without UTF normalization or StringTag's
@@ -80,8 +83,16 @@ def effect_value(value:S.Effect) -> N.Value:
     case S.Experience{position,F.XpRequest{id,uses,xp}}:
       encoded(2,position,N.Compound{[member("recipe",N.IntArray{words(id)}),member("uses",N.Int{uses}),member("experience_bits",N.Int{F32.bits(xp)})]})
     case S.Dirty{position}: encoded(3,position,N.Compound{[]})
+    case S.OwnedDirty{+source}:
+      Journal.Source{position,binding,incarnation} = source
+      encoded(6,position,Publication.source_value(source))
     case S.BlockUpdate{position,count}: encoded(4,position,N.IntArray{words(Nat.show(count))})
     case S.BlockChange{position,count}: encoded(5,position,N.IntArray{words(Nat.show(count))})
+def owned_source_checked(position:C.Position,+source:Journal.Source) -> Result<&2,&2,String,S.Effect>:
+  Journal.Source{point,binding,incarnation} = source
+  do Result<&2,&2,String,S.Effect>:
+    guard(Bindings.equal_position(position,point),"owned dirty position")
+    return S.OwnedDirty{source}
 def effect_payload(tag:U32,+position:C.Position,value:N.Value) -> Result<&2,&2,String,S.Effect>:
   match tag value:
     case 0 N.Compound{Nil{}}: Done{S.OwnerReset{position}}
@@ -99,6 +110,9 @@ def effect_payload(tag:U32,+position:C.Position,value:N.Value) -> Result<&2,&2,S
       Result.map(&2,&2,String,Nat,S.Effect,count => S.BlockUpdate{position,count},count_read(units))
     case 5 N.IntArray{units}:
       Result.map(&2,&2,String,Nat,S.Effect,count => S.BlockChange{position,count},count_read(units))
+    case 6 source:
+      Result.bind(&2,&2,String,Journal.Source,S.Effect,Publication.source_read(source),
+        producer => owned_source_checked(position,producer))
     case _ _: Fail{"cooking-effects-recovery:effect kind or payload schema"}
 def effect_read(value:N.Value) -> Result<&2,&2,String,S.Effect>:
   match value:
@@ -125,16 +139,33 @@ def read(value:N.Value) -> Result<&2,&2,String,List<&2,S.Effect>>:
   match value:
     case N.ListTag{10,values}: effects(values)
     case _: Fail{"cooking-effects-recovery:effects require Compound list"}
-def root(effects:List<&2,S.Effect>) -> N.Root:
-  N.Root{text("bendex:cooking-effects"),N.Compound{[member("format",N.Int{1}),member("effects",value(effects))]}}
+def has_owned(effects:List<&2,S.Effect>) -> Bool:
+  match effects:
+    case Nil{}: False{}
+    case S.OwnedDirty{source} <> rest: True{}
+    case head <> rest: has_owned(rest)
+def root(+effects:List<&2,S.Effect>) -> N.Root:
+  N.Root{text("bendex:cooking-effects"),N.Compound{[member("format",N.Int{Bool.pick(U32,has_owned(effects),2,1)}),member("effects",value(effects))]}}
+def root_effects(+format:U32,value:N.Value) -> Result<&2,&2,String,List<&2,S.Effect>>:
+  do Result<&2,&2,String,List<&2,S.Effect>>:
+    +pending : List<&2,S.Effect> <- read(value)
+    guard(U32.is_eq(format,Bool.pick(U32,has_owned(pending),2,1)),"noncanonical effect recovery format")
+    return pending
+def sources_valid(effects:List<&2,S.Effect>) -> Bool:
+  match effects:
+    case Nil{}: True{}
+    case S.OwnedDirty{source} <> rest: Journal.source_valid(source) && sources_valid(rest)
+    case head <> rest: sources_valid(rest)
 def root_read(value:N.Root) -> Result<&2,&2,String,List<&2,S.Effect>>:
   match value:
-    case N.Root{n,N.Compound{N.Member{a,N.Int{1}} <> N.Member{b,effects} <> Nil{}}}:
+    case N.Root{n,N.Compound{N.Member{a,N.Int{format}} <> N.Member{b,effects} <> Nil{}}}:
       do Result<&2,&2,String,List<&2,S.Effect>>:
         guard(name(n,"bendex:cooking-effects") && name(a,"format") && name(b,"effects"),"root schema")
-        read(effects)
+        root_effects(format,effects)
     case _: Fail{"cooking-effects-recovery:root schema"}
-def encode(limits:N.Limits,effects:List<&2,S.Effect>) -> Result<&2,&2,String,List<&2,U32>>:
-  N.encode_with(limits,root(effects))
+def encode(limits:N.Limits,+effects:List<&2,S.Effect>) -> Result<&2,&2,String,List<&2,U32>>:
+  do Result<&2,&2,String,List<&2,U32>>:
+    guard(sources_valid(effects),"owned dirty source structure")
+    N.encode_with(limits,root(effects))
 def decode(limits:N.Limits,bytes:List<&2,U32>) -> Result<&2,&2,String,List<&2,S.Effect>>:
   Result.bind(&2,&2,String,N.Root,List<&2,S.Effect>,N.decode_with(limits,bytes),root_read)

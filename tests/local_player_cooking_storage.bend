@@ -12,6 +12,10 @@ import ../src/cooking_effect_recovery.bend as Effects
 import ../src/cooking_effect_entities_model.bend as Entities
 import ../src/local_player_effect_entities_codec.bend as EntityCodec
 import ../src/random.bend as Random
+import ../src/local_player_cooking_publication_codec.bend as Publication
+import ../src/cooking_effect_publication_journal.bend as Journal
+import ../src/cooking_world_bindings.bend as Bindings
+import ../src/cooking_recipe.bend as Recipe
 
 def bytes_equal(a:List<&2,U32>,b:List<&2,U32>) -> Bool:
   match a b:
@@ -33,7 +37,7 @@ def encoded_equal(expected:Result<&2,&2,String,List<&2,U32>>,result:S.Saved & Re
 
 def legacy_encoded(result:I.Saved & Result<&2,&2,String,List<&2,U32>>) -> Bool:
   (owner,expected) = result
-  encoded_equal(expected,S.encode(S.Saved{owner,[],[],None{}}))
+  encoded_equal(expected,S.encode(S.Saved{owner,[],[],None{},None{}}))
 
 def legacy_initial(result:Result<&2,&1,String,I.Saved>) -> Bool:
   match result:
@@ -48,7 +52,7 @@ def projection_valid(result:Result<&2,&2,String,S.Projection>) -> Bool:
   match result:
     case Done{S.Projection{player,
       S.Body{C.Position{"minecraft:overworld",4294967295,2147483648,0},first} <>
-      S.Body{C.Position{"minecraft:the_end",0,2147483647,4294967295},second} <> Nil{},Nil{},None{}}}:
+      S.Body{C.Position{"minecraft:the_end",0,2147483647,4294967295},second} <> Nil{},Nil{},None{},None{}}}:
       bytes_equal(player,[7,8]) && bytes_equal(first,[1,2,3]) && bytes_equal(second,[255,0])
     case _: False{}
 
@@ -123,7 +127,7 @@ def recovery_projection(result:Result<&2,&2,String,S.Projection>) -> Bool:
   match result:
     case Done{S.Projection{player,Nil{},
       Store.OwnerReset{C.Position{"minecraft:overworld",1,2,3}} <>
-      Store.Dirty{C.Position{"minecraft:the_end",4294967295,0,2147483648}} <> Nil{},None{}}}:
+      Store.Dirty{C.Position{"minecraft:the_end",4294967295,0,2147483648}} <> Nil{},None{},None{}}}:
       bytes_equal(player,[7,8])
     case _: False{}
 
@@ -154,7 +158,7 @@ def entity_projection(result:Result<&2,&2,String,S.Projection>) -> Bool:
     case Done{S.Projection{player,Nil{},Nil{},Some{S.EntityRecovery{
         Entities.View{Random.Xoroshiro{Random.Bits64{4294967295,0},Random.Bits64{2147483648,4294967295}},
           Random.Bits64{3735928559,4275878552},99,order,Nil{}},
-        Random.Bits64{2147483648,4294967295} <> Random.Bits64{4294967295,0} <> Nil{}}}}}:
+        Random.Bits64{2147483648,4294967295} <> Random.Bits64{4294967295,0} <> Nil{}}},None{}}}:
       bytes_equal(player,[7,8]) && Nat.is_eq(order,Nat.add(4294967295n,1n))
     case _: False{}
 
@@ -201,6 +205,38 @@ def duplicate_clock_effects(result:Result<&2,&2,String,List<&2,U32>>) -> Bool:
     case Fail{message}: False{}
     case Done{effects}: duplicate_clock_records(effects,EntityCodec.encode(S.nbt_limits(),entity_view()))
 
+def publication_position() -> C.Position: C.Position{"minecraft:overworld",4294967295,64,2}
+def publication_source() -> Journal.Source:
+  Journal.Source{publication_position(),Bindings.Binding{80,"minecraft:furnace",Bindings.Furnace{Recipe.Smelting{}},False{},80,81},2n}
+def publication_recovery() -> Publication.Recovery:
+  Publication.Recovery{MLeaf{Bindings.key(publication_position()),2n},
+    Journal.View{3n,[Journal.DirtyChunk{Journal.chunk(publication_position()),3n}],
+      Some{Journal.Receipt{publication_position(),publication_source(),Journal.chunk(publication_position()),3n}}}}
+def publication_pending() -> List<&2,Store.Effect>:
+  [Store.OwnerReset{publication_position()},Store.OwnedDirty{publication_source()}]
+def projection_publication_roundtrip(+before:List<&2,U32>,result:Result<&2,&2,String,S.Projection>) -> Bool:
+  match result:
+    case Fail{message}: False{}
+    case Done{S.Projection{player,bodies,pending,entities,Some{publisher}}}:
+      status_equal(Done{before},S.payload_publication(bodies,pending,entities,Some{publisher},player))
+    case _: False{}
+def publication_decoded(+before:List<&2,U32>,result:Result<&2,&2,String,N.Root>) -> Bool:
+  match result:
+    case Fail{message}: False{}
+    case Done{N.Root{name,value}}: projection_publication_roundtrip(before,S.projection(value))
+def publication_roundtrip(result:Result<&2,&2,String,List<&2,U32>>) -> Bool:
+  match result:
+    case Fail{message}: False{}
+    case Done{+bytes}: publication_decoded(bytes,N.decode_with(S.nbt_limits(),bytes))
+def owned_effects_wrong_version(result:Result<&2,&2,String,List<&2,U32>>) -> Bool:
+  match result:
+    case Fail{message}: False{}
+    case Done{bytes}: duplicate_root(S.recovery_root([7,8],[],bytes))
+def unbound_clocks_refused(result:Result<&2,&2,String,Maybe<&2,S.EntityRecovery>>) -> Bool:
+  match result:
+    case Fail{message}: True{}
+    case Done{entity}: False{}
+
 def check(valid:Bool,name:String) -> IO(Unit):
   match valid:
     case False{}: IO.die(Unit,1,"failed " ++ name)
@@ -224,3 +260,9 @@ def main() -> IO(Unit):
     check(status_equal(S.payload_pending([],pending(),[7,8]),S.payload_entities([],pending(),None{},[7,8])),"absent entity owner preserves format2 bytes exactly")
     check(wrong_clock_effects(Effects.encode(S.nbt_limits(),[])),"entity clock inputs require complete LongArray")
     check(duplicate_clock_effects(Effects.encode(S.nbt_limits(),[])),"duplicate entity recovery clock field refuses")
+    check(status_equal(S.payload_entities([],pending(),None{},[7,8]),S.payload_publication([],pending(),None{},None{},[7,8])),"absent publication preserves legacy recovery bytes exactly")
+    check(publication_roundtrip(S.payload_publication([],publication_pending(),None{},Some{publication_recovery()},[7,8])),"format4 retains complete publication and pending producer with unbound entities")
+    check(publication_roundtrip(S.payload_publication(bodies(),publication_pending(),Some{S.EntityRecovery{entity_view(),entity_clocks()}},Some{publication_recovery()},[7,8])),"format4 retains publication together with full entity clock recovery")
+    check(refused(S.payload_publication([],publication_pending(),None{},None{},[7,8])),"owned pending effects require publication recovery when encoding")
+    check(owned_effects_wrong_version(Effects.encode(S.nbt_limits(),publication_pending())),"owned pending effects refuse legacy wrapper when decoding")
+    check(unbound_clocks_refused(S.publication_entity_read([],entity_clocks())),"format4 unbound entity owner refuses orphan clock inputs")

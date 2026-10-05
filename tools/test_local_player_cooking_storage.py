@@ -27,6 +27,12 @@ EXPECTED = [
     'absent entity owner preserves format2 bytes exactly',
     'entity clock inputs require complete LongArray',
     'duplicate entity recovery clock field refuses',
+    'absent publication preserves legacy recovery bytes exactly',
+    'format4 retains complete publication and pending producer with unbound entities',
+    'format4 retains publication together with full entity clock recovery',
+    'owned pending effects require publication recovery when encoding',
+    'owned pending effects refuse legacy wrapper when decoding',
+    'format4 unbound entity owner refuses orphan clock inputs',
 ]
 
 
