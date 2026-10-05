@@ -1,0 +1,38 @@
+{
+  "commands": [
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "src/vanilla_entity_fields.bend"
+      ],
+      "exit_code": 0,
+      "seconds": 0.5405835835263133,
+      "stderr": "",
+      "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+    },
+    {
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/vanilla_entity_fields.bend"
+      ],
+      "exit_code": 0,
+      "seconds": 1.2662001671269536,
+      "stderr": "",
+      "stdout": ""
+    }
+  ],
+  "pins": {
+    "reference/player_save.json": "762a02a965cea86390ad0582bebc187eccd4b847a9f9db5552d9311c73d3dbc2",
+    "reference/vanilla_entity_fields.json": "f1fa2378cc4e19a2f9f850415855a031484cce1848f1dc3a214da0df5f283bea",
+    "src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "src/nbt.bend": "b677546b5fc02aaa38f5c09e5b798c0d35aec32b1c4b37cbd7042b9a1a5275e4",
+    "src/player_look.bend": "35ec863e078e46f2c2502b975f3e9f259114aec7baac614c68ba6e46773260ca",
+    "src/vanilla_entity_fields.bend": "c5b2e1f2982d8470ba246c425db78bb09d988f58941a8db6a3f2d959a7b6b7fe",
+    "tests/vanilla_entity_fields.bend": "c3769762b968aa322b92f62cef7c03df95b65275cf75f62d450770c1c8af541e",
+    "tools/reference_vanilla_entity_fields_probe.py": "adfab1c0c998d13d08299958dd8fe89e2e0e21ac5b5d7db517ddf4589a488187",
+    "tools/test_vanilla_entity_fields.py": "f2832601211955ab76f5fe9e08046d7864ec7a41698fd3045646d8ec1c86df02"
+  },
+  "schema": 1,
+  "scope": "Ordinary source/harness validation only; mathematical independent verdict and native execution remain queued.",
+  "status": "ordinary_passed_native_kernel_pending"
+}
