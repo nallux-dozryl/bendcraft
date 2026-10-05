@@ -1,0 +1,52 @@
+{
+  "complete_receipt": {
+    "bytes": 2444,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-publication-codec/checks/001/failure.json",
+    "sha256": "b601de7f2c7308c85cb21bd439567521bf5eb019a6f9dd591b74e5cef14173a7"
+  },
+  "message": "Bounded owned process failed: {'argv': ['/Users/chuah/.bend/bin/bend', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/local_player_cooking_publication_codec.bend', '--check-only'], 'cwd': '/Users/chuah/Documents/ChatGPT/bendex/minecraft', 'cap_seconds': 60, 'attempts': 1, 'pid': 99596, 'exit_code': 1, 'timed_out': False, 'error': None, 'cleanup': {'before': [], 'after': [], 'errors': [], 'leader_reaped': True, 'live_group_absent': True}, 'seconds': 0.6883534165099263, 'stdout': {'path': '/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-publication-codec/checks/001/ordinary/stdout', 'bytes': 0, 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'}, 'stderr': {'path': '/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-publication-codec/checks/001/ordinary/stderr', 'bytes': 274, 'sha256': 'c16861967bd08285c8ca7b8101238e349c0c298a35221795027178495b65e62c'}}",
+  "processes": [
+    {
+      "argument_count": 3,
+      "attempt": {
+        "bytes": 277,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-publication-codec/checks/001/ordinary/attempt.json",
+        "sha256": "5b0148f43a57f8389cc2c7d793693933dc1b74cbf62ca11a9a55f43868bd98b7"
+      },
+      "cleanup": {
+        "after": [],
+        "before": [],
+        "errors": [],
+        "leader_reaped": true,
+        "live_group_absent": true
+      },
+      "complete_process_receipt": {
+        "bytes": 1017,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-publication-codec/checks/001/ordinary/result.json",
+        "sha256": "095fc18e929667def7014e570cb2d4526cc32c4a7b4a970f79814d17c7350b9e"
+      },
+      "error": null,
+      "exit_code": 1,
+      "pid": 99596,
+      "seconds": 0.6883534165099263,
+      "stderr": {
+        "bytes": 274,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-publication-codec/checks/001/ordinary/stderr",
+        "sha256": "c16861967bd08285c8ca7b8101238e349c0c298a35221795027178495b65e62c"
+      },
+      "stdout": {
+        "bytes": 0,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-publication-codec/checks/001/ordinary/stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "timed_out": false
+    }
+  ],
+  "source_manifest": {
+    "bytes": 25847,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/local-player-cooking-publication-codec/checks/001/sources.json",
+    "sha256": "4af40100aed47d0c8b66f7360650708e2e70b4c7a102d57fa7ad84f8847d41cd"
+  },
+  "status": "FAIL",
+  "type": "AssertionError"
+}
