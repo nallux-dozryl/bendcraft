@@ -231,7 +231,13 @@ def handle(menu, index, peer, *, incarnation=None):
 
 def acknowledge(raw, path, facts, world, record, full, bodies, highwater, entities,
                 directory, label, *, expected_effects=None, expected_journal=None, fresh_interval=None):
+    before_session = raw.call('ping')
     reply = raw.call('world.save', {})
+    after_session = raw.call('ping')
+    S.require(before_session['peer'] == after_session['peer'] == highwater and
+              before_session['mode'] == after_session['mode'] == 'developer' and
+              after_session['sequence'] == before_session['sequence'] + 2,
+              'Actual save observes developer peer and increments Session exactly once: ' + label)
     data = path.read_bytes()
     (directory / (label + '.nbt')).write_bytes(data)
     actual = projection(data, facts)
@@ -258,6 +264,9 @@ def acknowledge(raw, path, facts, world, record, full, bodies, highwater, entiti
             actual['publication']['journal']['unsaved'], actual['publication']['journal']['last'], catalog()))
     S.require(data == expected, 'Exact full atomic bytes: ' + label)
     receipt = {'label': label, 'reply': reply, 'physical': R.pin(directory / (label + '.nbt')),
+        'save_session_sequence_before': before_session['sequence'],
+        'save_session_sequence_after_following_ping': after_session['sequence'],
+        'exactly_one_save_session_increment': True,
         'independent_expected_sha256': S.sha(expected), 'complete_bytes_equal': True,
         'pending_effects': actual['effects'], 'publication': actual['publication']['journal'],
         'constructor': constructor, 'full_incarnation_topology_equal': True,

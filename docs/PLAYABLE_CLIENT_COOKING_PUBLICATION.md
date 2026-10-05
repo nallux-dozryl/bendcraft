@@ -6,7 +6,8 @@ or substitutes an actor. Producer 020 and its successful earlier receipts remain
 immutable. Native execution is pending the root's next coherent actor build.
 
 File-only preparation passed in
-`evidence/playable-client-cooking-publication-prepared-002.json`. The first
+`evidence/playable-client-cooking-publication-prepared-003.json`. Preparation 002
+is retained for the prior runner before the actual save Session check was added. The first
 preparation's ordinary Python mapping-iteration error is retained in
 `build/playable-client-cooking-publication/001/first-failure.json`; it occurred
 before any actor launch and was repaired by using the mapping's `.items()`.
@@ -35,6 +36,8 @@ The planned positive native run performs these actual operations:
    source must remain valid against the same current incarnations and actual
    lit Core/Entry state. The expected final sequence is 4.
 4. Require the real full atomic writer's published/durable acknowledgement.
+   Ping around each save to verify the same developer peer and exactly one save
+   Session increment; the following ping accounts for the other increment.
    Independently reconstruct and compare every saved byte. The publication
    image has an empty projected unsaved list and retains its complete latest
    receipt and exact incarnation-map topology.
