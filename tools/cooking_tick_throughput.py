@@ -90,6 +90,8 @@ def expected_world(initial, ticks, facts):
     world['revision'] += 1
     world['events'].insert(0, {'stamp': (initial['tick']+1, 0, world['revision']),
                               'kind': 0, 'revision': world['revision']})
+    # The retained ignition event contributes peer0 to the codec projection.
+    world['max_peer'] = 0
     return world
 
 
