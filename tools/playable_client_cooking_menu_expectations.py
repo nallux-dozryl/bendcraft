@@ -42,7 +42,7 @@ def body(facts, slots, *, progress=40, remaining=10):
     original = C19.body_root(facts, progress=progress, remaining=remaining)
     items = tuple(C19.JavaBody.item(index, value['id'], value['count'])
                   for index, value in enumerate(slots) if value is not None)
-    values = tuple((name, S.N.Value(9, (10, items)) if name == S.N.text('Items') else value)
+    values = tuple((name, S.N.Value(9, (10 if items else 0, items)) if name == S.N.text('Items') else value)
                    for name, value in original.value.payload)
     return S.N.encode_root(S.N.RootTag(original.name, S.N.Value(10, values)))
 

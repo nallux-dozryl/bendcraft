@@ -253,7 +253,8 @@ def scenario(directory, binary, bridge, *, component_overflow=False):
             'complete_exposed_player_furnace_snapshots_equal': True,
             'Core_player_time_unchanged': True,
             'scope': 'Published before explicit lifecycle tick or optional large-component work.'})
-        _, saved = physical_save(raw, path, facts, world, record, full)
+        _, saved = physical_save(raw, path, facts, world, record, full,
+                                 expected_body=E.body(facts, [None] * 3, progress=0, remaining=10))
         # Publish the positive result before an optional expensive old-CC path,
         # so its failure cannot obscure actual menu availability and routing.
         positive = {'status': 'PASS', 'checks': len(checks), 'lease_header_faults': faults,

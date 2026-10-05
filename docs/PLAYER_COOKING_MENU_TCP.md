@@ -86,3 +86,12 @@ Both runs used binary SHA256
 `54b79ea92479b84ebd3d194d2f2fadd8f8504970d6aa9db2b42beb2d865741e8`.
 Owned actor groups and listeners were cleaned. Neither run requested the
 optional aggregate component case.
+
+`evidence/playable-client-cooking-menu-save-body-006.json` adds a file-only
+byte comparison of the already acknowledged006 save against the independent
+physical encoder. Its283byte furnace body exactly retains the original raw
+root name and ordered duplicate extra members, with three empty slots,
+timers10/10/0/200, empty RecipesUsed and speed bits1065353216. The original
+acknowledged file hash is required; this projection neither reruns the actor
+nor fabricates another save acknowledgement. Future default runs assert those
+exact body bytes directly.
