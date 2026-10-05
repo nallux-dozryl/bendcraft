@@ -52,10 +52,16 @@ Nat.show.fin/go mutual-recursion limitation reached through player_edit's
 actual successful Sidecar error path. Their ordinary derivations are not
 independent-kernel certificates. No replacement model or axiom is supplied.
 
-The native fixture's 22 guards additionally exercise successful direct and
+The native fixture's 22 guards pass and exercise successful direct and
 actual-ray furnace teardown, exact reset/drop/XP ordering, stale revision,
-absent residency and complete retained raw Core/Sidecar observations. Native
-execution is still pending at this source/proof checkpoint. The two earlier
+absent residency and complete retained raw Core/Sidecar observations. One
+guarded ordinary C emission takes 17.063 seconds, its direct CPU clang build
+11.225 seconds, the cache/dependency recheck 1.112 seconds and the actual native
+run 0.734 seconds. All process groups are reaped. Exact raw receipts and frozen
+sources remain in `build/local-player-cooking-edit/native-001`; the compact
+record is [local-player-cooking-edit-prepared-001.json](../evidence/local-player-cooking-edit-prepared-001.json).
+No TCP, physical input, complete placement or entity delivery IO claim follows
+from these finite fixtures. The two earlier
 fixture attempts are retained: a repaired match-order error and a parser
 stack overflow on large raw numeric patterns, corrected to binders with exact
 word comparisons without changing the payload or assertion.
@@ -65,9 +71,9 @@ route. Each work directory must be new:
 
 ```sh
 python3 tools/test_local_player_cooking_edit.py --mode source --work build/local-player-cooking-edit/source-004
-python3 tools/test_local_player_cooking_edit.py --mode proof --work build/local-player-cooking-edit/proof-001
+python3 tools/test_local_player_cooking_edit.py --mode proof --work build/local-player-cooking-edit/proof-002
 python3 tools/test_local_player_cooking_edit.py --mode included-proof --export build/local-player-cooking-edit/proof-001 --work build/local-player-cooking-edit/included-proof-002
-python3 tools/test_local_player_cooking_edit.py --mode native --work build/local-player-cooking-edit/native-001
+python3 tools/test_local_player_cooking_edit.py --mode native --work build/local-player-cooking-edit/native-002
 ```
 
 The complete proof command currently returns the recorded three export
