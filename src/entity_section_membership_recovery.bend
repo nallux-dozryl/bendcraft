@@ -186,13 +186,15 @@ def prior_ids_retained(values:List<&2,E.Record>,+constructed:List<&2,E.Record>) 
     case Nil{}: True{}
     case +head <> rest:
       Nat.is_eq(record_count(constructed,E.record_id(head)),1n) && prior_ids_retained(rest,constructed)
+def constructor_capacity(before:Nat) -> Result<&2,&2,T.Error,Unit>:
+  U.guard(Nat.is_lt(before,Check.maximum_order()),"fresh registration insertion cursor is exhausted")
 def constructor_cursor(+before:Nat,+after:Nat) -> Result<&2,&2,T.Error,Unit>:
   do Result<&2,&2,T.Error,Unit>:
-    U.guard(Nat.is_lt(before,Check.maximum_order()),"fresh registration insertion cursor is exhausted")
+    constructor_capacity(before)
     U.guard(Nat.is_eq(after,1n+before),"fresh registration requires exactly one constructor cursor advance")
 def constructor_ready(before:E.View) -> Result<&2,&2,T.Error,Unit>:
   E.View{level,unique,id,order,records}=before
-  U.guard(Nat.is_lt(order,Check.maximum_order()),"fresh registration insertion cursor is exhausted")
+  constructor_capacity(order)
 def fresh_added(+base:D.Plan,+constructed:E.Plan,+record:E.Record,+runtime:T.Runtime,proposal:M.Proposal) -> D.Fresh:
   D.Plan{entities,+runtimes,membership,+prior}=base
   E.Plan{E.View{+level,+unique,+id,order,records},remaining}=constructed
