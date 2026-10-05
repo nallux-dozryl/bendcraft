@@ -66,7 +66,7 @@ actual player tick/held-input path is still being implemented. The next visible
 step is a bounded smoke scenario once that path is stable, using the session
 policy above. Visible acceptance remains **unverified**.
 
-## Cooking delivery: client012, actor lease correction pending
+## Cooking delivery: actor023 and client012
 
 This is a prepared visible run, **not an executed acceptance record**. Confidence
 is high for the source-derived gestures below. Actual window presentation,
@@ -88,11 +88,18 @@ caller now exposes a required lease defect: callback run009 accepted sequence
 98 with two cooked beef, then refused the correct next sequence 99 Input before
 the output take. The run used normal ambient ticks with no host pause. Full CPU
 frame 28 is retained at 90.4008217 seconds; it is not an OS screenshot or a
-successful take/close/save/reload observation. The actor owner is narrowly
-removing duplicate pulse-count charging while retaining the existing real
-5,000 ms transport timeout. The changed actor023 build and acceptance are
-pending. Record its actual executable/source hashes after adoption; do not use
-actor022's earlier receipts to declare the current pair ready.
+successful take/close/save/reload observation.
+
+The changed native actor is
+`build/compiler-producer-diagnostic-023/actor`, 16,246,584 bytes, SHA-256
+`7fd7ee9269802a6e128716f53bf34030ec592728ef954f9b61bebecac36719d1`.
+Its source-map SHA-256 is
+`1508c034ab9b614551ef2353bfbd5de434b0111e51c2ef1790803b0deb9c97f2`.
+The sole change removes Backend runtime pulse charging: every actual Scene
+pulse remains, as does the real 5,000 ms transport idle timeout. The actual
+socket idle/EOF/epoch/replay suite passed. These facts do not establish
+presentation or cooking timing parity.
+
 The production client is
 `build/generic-resource-world-sample-client-native/012/renderer`, 6,986,328
 bytes, SHA-256
@@ -106,19 +113,30 @@ failures. The same generated C then compiled successfully with O3 and
 `-fno-stack-check`; that flag is part of this candidate's recorded build, not
 evidence of OS behavior.
 
-The exact adopted actor digest, candidate launcher command and matched hidden
-pair receipt must be recorded here or in the linked session record when
-available.
-At this update `tools/play_minecraft.sh` still selected actor017 and client010;
-that historical route must not be labelled the new cooking pair. The ambient
-callback run has not completed the required take/close/save/reload sequence,
-so neither paired acceptance nor public promotion is claimed. Its test-only
-native callback queue is a separate hidden consumer
-method, not an OS keyboard/mouse input surface. Catalog's new
+Actual ambient callback run011 completed the full functional cooking flow,
+durable save and cold stage with this 023/012 pair. Its observer ran for
+107.234 seconds without a focus or Space change. This is **synthetic UI
+consumer evidence only**. The outer duplicate-relay-receipt cleanup failed;
+that failure is retained and owner-journal finalization is underway. Preserve
+that completed stage and failure without replaying the functional run. Neither
+complete outer-run success nor OS acceptance is claimed.
+
+Material timing remains unresolved: two recipes with 200 cooking ticks each
+took **67.009 seconds** in the actual callback run. This is substantially slower
+than the intended simulation cadence. Do not report achieved 20 TPS or a
+20-second cooking flow for this artifact. Record wall time and actual tick/
+progress observations separately; timing parity remains open.
+
+The original-binary public launcher acceptance is the next delivery check.
+Its final public launcher/fixture/close-route pins and result must be recorded
+here or in the linked session record after actual adoption. Historical
+actor017/client010 public launch receipts do not certify this pair. The
+test-only native callback queue is a separate hidden consumer method, not an
+OS keyboard/mouse input surface. Catalog's new
 `tools/play_minecraft_cooking_demo.sh` is guarded until actual pair promotion
 and will copy the validated demo seed into a new world directory, protecting
-old saves. Final actor, launcher and close/reconnect pins follow the owners'
-accepted pair. There is no OS acceptance claim.
+old saves. Public promotion remains pending; root will coordinate foreground
+access only after the actual public result. There is no OS acceptance claim.
 
 The validated unpaused demo seed is
 `build/generic-resource-world-sample-cooking-runtime/009/demo-seed.nbt`,
@@ -180,15 +198,17 @@ z 6..13. The furnace collision/light scan halo is resident. Main inventory
 slots 0/1 contain two plain `minecraft:beef` and two plain `minecraft:coal`,
 which appear as cooking menu cells 30/31. Empty cells remain for returns and
 output. These fixture facts are pinned by the unpaused demo image above;
-paired acceptance remains pending. Do not silently substitute the paused
-publication fixture.
+final public adoption and outer-run finalization remain pending. Do not
+silently substitute the paused publication fixture.
 Setup is fixture preparation, not an observed world edit or acquisition of
 those items.
 The furnace body must use the normal initialized recipe/speed profile with no
 accelerated cooking component. Before interaction, verify that the shared
 simulation is unpaused and the ordinary beef recipe has its actual 200-tick
-cooking total. Progress must come from real 50 ms simulation ticks, not explicit
-`simulation.step` calls or frame polling.
+cooking total. Progress must come from the actual ambient simulation path,
+not explicit `simulation.step` calls or frame polling. Fifty milliseconds is
+the intended tick cadence, not an established achieved cadence for this pair;
+retain the measured 67.009-second two-recipe observation above.
 
 The actual `player_cooking_menu_screen.bend` panel is 176 by 166 logical HUD
 units, centered in the measured HUD viewport. Input, fuel and output are slots
@@ -213,7 +233,7 @@ absolute coordinates or assume a Retina scale.
 | 3. Open furnace | Recapture with a left-click, aim at the furnace and right-click. This sends actual main-hand CookingUse. Inspect the FURNACE panel, three furnace cells and player inventory; the cursor must now be usable over slots. | Retain the correlated accepted `client.menu` reply/sequence and the fixture's furnace position. A private TCP open command does not substitute for this gesture. |
 | 4. Insert input | Left-click the beef stack, then left-click furnace input slot 0 to deposit it. Observe two beef in that cell and an empty carried stack. | Correlated accepted menu replies and the actual visible slot counts. No direct inventory or block-entity mutation during the run. |
 | 5. Insert fuel | Left-click the coal stack, then left-click fuel slot 1. Observe fuel consumption and the flame. | Record actual furnace timing/counts from the received menu snapshot where logged; retain a public clock observation to distinguish unpaused simulation from polling. |
-| 6. Watch progress | Take OS screenshots of the flame/progress arrow and successive output counts. Allow two normal beef recipes to finish, about 20 seconds at 20 ticks/second; allow up to 30 seconds of measured wall time before recording a timing/progress defect. | The real menu must reach two cooked beef; input is empty and one coal remains after the first coal ignites. Compare the actual total/speed and tick delta, not an assumed frame count. A CPU image alone does not show presentation. |
+| 6. Watch progress | Take OS screenshots of the flame/progress arrow and successive output counts. Record a timing defect if two recipes take more than 30 seconds. If targeting, lease and accepted progress remain safe, continue observing functional progress for up to 90 seconds, within the ten-minute session budget. The hidden caller measured 67.009 seconds; do not label that normal timing. | The real menu must reach two cooked beef; input is empty and one coal remains after the first coal ignites. Preserve elapsed wall time, actual recipe total/speed and tick/progress observations. Functional completion after 30 seconds does not clear the timing defect. A CPU image alone does not show presentation. |
 | 7. Take output | Left-click output slot 2, then an empty visible player cell. Observe two `minecraft:cooked_beef` in that cell, empty output and empty carried stack. | Retain both accepted correlated replies and the before/after slot counts. Do not count a merely predicted cursor icon as an accepted take. |
 | 8. Close and focus recovery | Press E or Escape in the menu through CUA and wait for the correlated closed snapshot; the world should recapture while focused. Test Escape release once more. Use CUA to briefly select the prior application and return; confirm a usable outside cursor and no new movement without a new key action. | Record actual OS focus/cursor/presentation observations and public player observations. This discrete focus test does not verify focus loss while a movement key is held. Keep that stronger held-input lane unverified unless supported and actually exercised. |
 | 9. Save through exit | With no carried stack, use the native close button. If the menu is open, its actual authenticated cooking close must finish before Quit. Wait for the launcher close/save helper. There is no save keyboard shortcut. | Require the actual `world.save` result `status=durable`, `published=true`, `durable=true`, plus saved path, byte count and SHA-256. A JSON success with `published-unsynced` is not this witness. |
@@ -224,8 +244,9 @@ Read-only public queries and physical saved-body inspection supplement the OS
 record; they do not supply the mouse/keyboard evidence. The renderer owns the
 private lease throughout interaction. Do not acquire a competing private
 observer lease or issue menu mutations from a test client. The visible run
-does not require another SIGKILL: actor022 already has separate interruption
-and cold-recovery evidence, and this run tests ordinary native exit/reload.
+does not require another SIGKILL: separate actor022 recovery receipts and the
+actor023 callback cold stage retain their stated scopes, while this run tests
+ordinary native exit/reload.
 
 Stop posting input at the first unsafe targeting, unexpected capture, menu
 refusal, startup timeout or save failure. Release every physically held key
