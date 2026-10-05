@@ -1,0 +1,214 @@
+{
+  "status": "passed",
+  "ordinary_laws": 12,
+  "independent_kernel_laws": 12,
+  "roots": [
+    "entity_scene_render_laws:texture_prefix_split_is_exact",
+    "entity_scene_render_laws:joined_owner_can_recover_both_complete_original_owners",
+    "entity_scene_render_laws:failed_texture_admission_retains_both_owners",
+    "entity_scene_render_laws:texture_rebasing_preserves_every_material_field",
+    "entity_scene_render_laws:composition_preserves_vertices_uv_culling_and_uses_global_order",
+    "entity_scene_render_laws:sampled_light_retains_all_other_world_appearance",
+    "entity_scene_render_laws:missing_light_authority_cannot_publish_a_scene",
+    "entity_scene_render_laws:missing_world_light_cannot_become_fullbright",
+    "entity_scene_render_laws:no_entities_preserves_existing_world_accumulator",
+    "entity_scene_render_laws:mismatched_publication_retains_numerical_owner",
+    "entity_scene_render_laws:preparation_failure_preserves_full_physical_owner",
+    "entity_scene_render_laws:failed_preparation_performs_no_render_and_retains_both_owners"
+  ],
+  "checks": [
+    {
+      "kind": "export",
+      "command": [
+        "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+        "--experimental-transform-types",
+        "--stack-size=4096",
+        "--max-old-space-size=2048",
+        "tools/entity_scene_render_proof.mjs",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-scene-render-proof"
+      ],
+      "exit": 0,
+      "seconds": 11.1884,
+      "sampled_process_tree_peak_rss_bytes": 2180874240,
+      "bounded_stop": null,
+      "stdout_sha256": "39a3d87002e40b8b8690651eab82f4a49484322285d0a7d637242509db4ff71c",
+      "stderr_sha256": "766835e22381e1c56bdf643c3bd47a560e01fae596031d06793131c0707ad4e0"
+    },
+    {
+      "kind": "kernel",
+      "command": [
+        "/usr/bin/env",
+        "LEAN_STACK_SIZE=4194304",
+        "/Users/chuah/.bend/bendtt/e15042434e73aab0/bendtt",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-scene-render-proof/selected.bendtt"
+      ],
+      "exit": 0,
+      "seconds": 0.4547,
+      "sampled_process_tree_peak_rss_bytes": 63864832,
+      "bounded_stop": null,
+      "stdout_sha256": "61b73cda11b6b665b9f99f2defd3d3b57f985c865225e942a5bdaa594a503e47",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "scope_exclusions": [],
+  "checked_types_and_bodies_unchanged": true,
+  "all_original_declaration_maps_retained": true,
+  "source_sha256": {
+    "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/base.bend": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/archive.bend": "c0f7b34a22726d220f6b867730b7d080d57d82c84d619c35721b9b8d18fa5d6e",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/big_uint.bend": "fbe5965ee16ee3d6864def33fbc6e5e4b1b9bc7da4735d99311c1a23c65e2444",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/block_bake.bend": "3611116e0ba63915d6013463c1640f83b6b80cb08e802f93be5f7eaa4d600595",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/block_model.bend": "140ce3e00961f144a43a4dd93d510a54002feb31f4b0cb64715e734a29ac9350",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/block_resources.bend": "34fd345b8239dde6d097e6051839a28fef475f0f6d3d147c8dc1b4adb9512fb0",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/blockstate_model.bend": "36ccabcfc4a2db8040336b6a7398a6c219512a8f8c1864c2ac6cc419f6ac73a9",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/campfire_authority_items.bend": "cc8e33b0636309348135ec32aabb8f6cfceb23a24863fd064fc30bf730ba79c2",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/client_render.bend": "735b643d733bd190d7ad3b6c2462773f6d8aa713eb156750dc9865ac7842b5f6",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/client_world.bend": "05040abf35b2b9ceaf87fed5c48f8d074d211750a59ab00fa6ff08e60a9ea5d7",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/compression.bend": "255cdff06a33050c7b0a48fdea75c1842ebe2dab0439cfe4f03d126d4edc20aa",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_block_entity_codec_components.bend": "1d5d5f8957ef3cae3c5bf8b3101ff29355286874ef95d84183bd751ce0a663da",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_block_entity_codec_nbt.bend": "ceacb780ad51bd196c2317a31b990756ef42a1e22852fc733296f2ad21331a8a",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_effect_entities_model.bend": "c637fa93acc5707c8c5c101e23bfde7d7549d06523ae157581e32dae53f3d07c",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_recipe.bend": "085bfe968f3e7169e5c7bacf633029ebd9e4fc8c8ecb79ad81f63a193110f795",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/cooking_recipe_number.bend": "c3b8b18a323f9c95602c55d0063c2ae49796979ed6d7a4506b00a4091db1921a",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/core.bend": "cb5a9a6ea1a5fe01127a58b1d45cd5c96c89a400e8cee282edd4f3acc16abb7e",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe.bend": "3c5f3fc7b3e0be9be7d553da2a107dc1245fe13f17afac0efdf84bc41c15ffe2",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe_component_registry.bend": "911786032b2c22759208edaf7112ae403b2a03663d9237c3e036c2b5ba4ece2a",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe_components.bend": "2a35e31f26187ebbdab1c4261d54083acb68072a56a7b5869e5dfc490bc946be",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/crafting_recipe_decoder.bend": "739037cf939bcef5a8008c34216b717ed60574c66690f627d11dc949e8542397",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/entity_scene_render.bend": "8c34b8e967b44c626ae0c6482ebacfc4fd38c6cfbeb41ef509ca62d6d9a8f028",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/entity_scene_render_assets.bend": "79ab44f7adc92053774ef63da8916ce58cd2550536a6fda9f3588d73e5170b40",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/entity_scene_render_camera.bend": "033814b969b75ed92bbee8b5fa40bb643433f28ab548707bf6f436c36bbb6dc9",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/entity_scene_render_laws.bend": "fc6896ff832434d7a7f2a0204304ff92c826528310ac978913cc34f636423584",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/entity_scene_render_model.bend": "54b7a9874be07d0e1672379f7c9b18ed5be67b9059ecb4fa880e8c0907a3f1b1",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/entity_scene_render_proof.bend": "7e141ced922d7eaaf5a1741c40802b76c1e8e1231678db444897da1c620bc3c3",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/f64.bend": "93e0801c114843653098a4415af3431b9bf927688afadcfd6e58f938ac2a41a7",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/float_parse.bend": "fe22007f0805f3c955fcaada88c1da76a3cceda74f0ff3840ae47af49a02c683",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/framing.bend": "307f95049df03d92687b7bd0eafb2cd566e660926510bb88163f9bc825fccdb5",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/game.bend": "43e3eee5d15613bb06cc608fe43657aa14d8c0fbe899d4efa580fc8335d23882",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/generic_resource_world_sample.bend": "2f46f290d54c6c0d8547d80fb247bc4a5278d52f3d16d131b98a2fa22931ab6b",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/generic_resource_world_sample_frame.bend": "1064f0aca13324c6ec4feb55a42f8a5773244e0ae9c15ce69bc1dd0604c97a41",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/geometry.bend": "178b2d6e4f819b2dffe7c60892f32d79e4d927fe7b9420c1b87763dd790dfd0f",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/hash.bend": "d2473695632b19e68c8d636668e4617f04d70892fb2ab6559cb24d4b33c1b978",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/inventory.bend": "9d2be7fb88afa1dc6386ab9e8b046b15d2a2a73b7e14566e5bfad3e6dd1f2702",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_component.bend": "7e0cde89009db5b497c160e5875a1f52e771b45a6a94cee746e50b0555b37589",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_component_effects.bend": "453c1ab97ddb1e3956dac8b7e6a2334324b87e4a13a608a95aca7b53fb3933be",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_entity_pickup_patch.bend": "79f9e27f91b8b6e9d8d666bcf7a4dd9398c6d0085b2fec6ab565c783e97b2d75",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_entity_render.bend": "01b4de2a13bbdb3e7d17707953bf52abff7b13c591ed2871db359ca12b6185b3",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_entity_render_generated.bend": "801f8f9bb7a1a5f4ea64152b90575ca25532ceb55a62246a2f3600af996b6605",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_entity_render_model.bend": "c4f9e8179157115f482826c41fa1a9098bee29e1d5b4b7572fbc750036ab291a",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_entity_render_resources.bend": "57fc53a3e5f83d8686ec5b58703ac42d302c83296e6e49ee7b9192e7670f4cf4",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_entity_render_transform.bend": "3e6541c16dde68ee55e1219739efcae2e0b29b6fe3483dfd0c1ab8a76e6a93ee",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/json.bend": "a1789e3b4f5bea158ec0d95a8bcb39aa5b7c7e7355a5254d3de1d52a93c719d1",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/live.bend": "cb5a2f8237a53e48d3f6751d321a023e11694721f789373984d7d77620f32e87",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/locomotion.bend": "ccf8aa12636ba1fce5575606383bf75c02a8ac79ba952645b89aea2eef6cd459",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/mesh_render.bend": "cc8c7d3cf4badf3ec76a6dfd32939ec1d4c9d856fc181fa36a45cfe268df7424",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/movement.bend": "31f5a4c47903506c0f388f688eaeaf78a36a0d266efde52bc57ea8cc89627b45",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/nbt.bend": "b677546b5fc02aaa38f5c09e5b798c0d35aec32b1c4b37cbd7042b9a1a5275e4",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_codec.bend": "98a5d7e8e11bb1a811c4e3b1e19dcee010e9f36eb15967810fbe95f4222a09a7",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_inventory.bend": "a1a4a8d0cbb63038c9f01edaadb90a2ec5996cf88fbc2c489a5a0050ca318c6c",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_inventory_click_swap.bend": "2284a56e93d10299419701acc9cba2aec4427acf7ed4a9196fb56ec75f831048",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_inventory_return.bend": "53f4d0cea442ebcc6abfc306f520101a01cca8e46a139ebb89930fd94a5ac3ab",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_item_component_patch.bend": "2e1be17dc860c0d6df180fc4539f0d552516d64aec13a1ff9c8aeeb96355aff6",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_item_components.bend": "93eb104f612f8f6505c8c019daeef481fd367f733ec65ff7694a8ad88e531749",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_item_definitions.bend": "83a4f184e48de82b770ceec268feb55b70afdd69a9d0a008ba901d7ed146fa98",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_look.bend": "35ec863e078e46f2c2502b975f3e9f259114aec7baac614c68ba6e46773260ca",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_presentation.bend": "795422051d936dbc70de658b6e6600cf6d7eeb9f759d842b2d4f40e00eee5137",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_tick.bend": "07a35c96b0887bc7c600340835ec29bfdea98cdbfb283af67826f93ec57dba9d",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/png.bend": "8c24c14a250cf6dbdf0c2804e4b28bfebd7ef62ed5d9ee97a1d07094d4745f22",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/random.bend": "76302d587a74d2601994f6b0bc7c9000b04a65a0bbd06cc0ce643c5452eb3162",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/registry.bend": "821c53d9cfa3044be3cae2af968f55563c0be2bebc9beae55a29d77d47b140a0",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/remote_entity_frame.bend": "20311e4f3cd50b2fc1017441d71a7b43dc38645cbe7b3e633786d45f39c64ee6",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/remote_entity_snapshot_wire.bend": "19a86148ae5bde2fa5a3932a92a9849b249b765a970b0cfce7d647328791b60e",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/resource_block_catalog.bend": "3b260902eb9a4e1e0cd69713026ee7867b56e2b1ef4f7ea168b32d96a47246dc",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/resource_catalog_world.bend": "3791faabef71f28ebd525d34334fa51babbc95525440e560250cbcbff2223069",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/resource_json.bend": "271f9ace6304fdd42ced039ab2e7f95459eed1f20f011115f399b619f2bc6ffb",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/schedule.bend": "93aa79895fe340e27ae5fd562102d5980f0938003eb1bbde669a84010779b8c9",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/section.bend": "02b5c15c57b173c7eb8b4c55a1433c10c192926e91af5e3e69050b4404044aa5",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/section_map.bend": "ded59d7938c02fd0876d65e37f9f90ea0cfebf3ca4bd107394342f8adbf33965",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/section_map_read.bend": "7a6a0d6fe8b8736ab64adb34b896074da709f91f2ae5bd205a7301c868690fc1",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/section_map_update.bend": "93a1cb016ac86eaaea2773ab8b75b95e93f1976348b3c2c500fc0de0cc9831be",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/support.bend": "aca42f24e0a32bd89356ac33f6d9bbe2ab5975ce938e2d2750496c01a6137455",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/travel.bend": "f04bc69579d1b1a5fa048f1e07976e646c1c2f2e817e334ee632397fbe99b589",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/u32_decimal.bend": "d0b4b33f10b9e9801c4e99b83803afba5031ea40013a9263f9090bed8543d25c",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/unicode.bend": "8f0cd9bbcd0e7f938af370675eca0c73a9b97b90c2789a1e77e5a29a918455bd",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/vanilla_entity_fields.bend": "c5b2e1f2982d8470ba246c425db78bb09d988f58941a8db6a3f2d959a7b6b7fe",
+    "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/world_mesh.bend": "97df63c4f20c855350f254873ed05b7112015781e212f5d0b7837bd7e32c4e22"
+  },
+  "term_pins": [
+    {
+      "name": "entity_scene_render_laws:texture_prefix_split_is_exact",
+      "type_sha256": "0f57354d85c5b55c1c33852d79662370da19c356f2f4e2cb0fd344c56aa249fe",
+      "checked_proof_sha256": "795ad83474f1aa85c25dbcb58dc87f742cf2e3bea948faded161aecfcb4706e5",
+      "source_body_sha256": "738b171631d2646ad7181f49f66d94cb447dccb31701c6461a540ec0d53e3872"
+    },
+    {
+      "name": "entity_scene_render_laws:joined_owner_can_recover_both_complete_original_owners",
+      "type_sha256": "70ef8dc7d1d065d4ade157263b23d37b6dc0cfe5ae67e59058cec7a43086d547",
+      "checked_proof_sha256": "d6373188223c94886af96925c9cd80a37cc0534f2629692a5e97a9db5fcacb5c",
+      "source_body_sha256": "010cceccd4371dd8437c76ef6b769deb0ed9f4f22f97a7f8e328c4c0cc0591b2"
+    },
+    {
+      "name": "entity_scene_render_laws:failed_texture_admission_retains_both_owners",
+      "type_sha256": "35210e9c53de3ba75eafa1649803d6f1fe0129d4c6a5ecce7a203b97c9a8a139",
+      "checked_proof_sha256": "ce0e864c254219b5d000a8713249c98019b36a92fa5544a271b807278b9cc570",
+      "source_body_sha256": "eb4a1c2cdfd758640a9b0f067d6ef2ca638d15ff7232b838555716ea11739bc8"
+    },
+    {
+      "name": "entity_scene_render_laws:texture_rebasing_preserves_every_material_field",
+      "type_sha256": "2d34365a35bedaeb1870571a5641ad8f638e05583c5624583ddc705649b70d93",
+      "checked_proof_sha256": "100fc46f32a43164e6226698043d97ff1e530c8a7aec011524b5d30ec0626d71",
+      "source_body_sha256": "ecb6328d1169072bd4a3d464686e9710a17e3e5f96171ecf62e84aff7dc89525"
+    },
+    {
+      "name": "entity_scene_render_laws:composition_preserves_vertices_uv_culling_and_uses_global_order",
+      "type_sha256": "29da31c4e1f19f320fcd2b0afaff3a43b0a3c23b56e26d9be1aab922dc1da89f",
+      "checked_proof_sha256": "f842f4e21eba65e24fd15bbb8efac7480f64f59120ec95fb41b44bb0c700baf1",
+      "source_body_sha256": "12230491a88c567f0cabc565a28c5954e360a3f65d7e3a8300c6e82af2297257"
+    },
+    {
+      "name": "entity_scene_render_laws:sampled_light_retains_all_other_world_appearance",
+      "type_sha256": "b1c682998160bfd6a132683df9526b73a91c7274f5f2f1366e0332f1ab3c11e2",
+      "checked_proof_sha256": "36d4ae473978f8b4e56192cc0ccec7ced96ba2ef80cbcf2571f53270b9ba3934",
+      "source_body_sha256": "cd0a1416d22967cf75b021067dcbf43aa6f79bf3bb6b9855b0e0d13ac182a282"
+    },
+    {
+      "name": "entity_scene_render_laws:missing_light_authority_cannot_publish_a_scene",
+      "type_sha256": "28b04165326150bcefcb9ff7ccd3482d677236db4d9ffb607180806db98815c3",
+      "checked_proof_sha256": "f909b47f01fd5e4c8872d7decc8fd1b922841731894a37d1dadb0895227f6a37",
+      "source_body_sha256": "0d28ea0b086b0e844a136f61bd46bdadf4d8d574bfb03c675f08d634bba13d6c"
+    },
+    {
+      "name": "entity_scene_render_laws:missing_world_light_cannot_become_fullbright",
+      "type_sha256": "96ee754f1ce79654b50b536bb8c403541c1777c147bf978f3ffa5a4638c103eb",
+      "checked_proof_sha256": "da2405eb9adecf27e581b8c99083368ea0a8d576bbf6de1bf12af1b8faf606f4",
+      "source_body_sha256": "1bb53de924fa414053adc278ce12b7c2264ef8cb0ebc7973b2265a1baa7ff69b"
+    },
+    {
+      "name": "entity_scene_render_laws:no_entities_preserves_existing_world_accumulator",
+      "type_sha256": "60c541a947c7f6a5e97f76a0d300920dd464bb30009f6bcd3f68c574a8ff37e7",
+      "checked_proof_sha256": "25cbdd97a1335612aecf0746fbe6d1a81a354264425b82cf954e4ade60eff5f1",
+      "source_body_sha256": "55a5e0f25a8f698369bf9a5265af90057eacc65b5be88caffed753a7664cc1ff"
+    },
+    {
+      "name": "entity_scene_render_laws:mismatched_publication_retains_numerical_owner",
+      "type_sha256": "34d8bb1119768c2a393d0382aac1910ed58b9b636bfa5513b3301ffe8b58617e",
+      "checked_proof_sha256": "ba0fd483468baaebef116ac9ad834618724fae574624f770fd693e402e31c560",
+      "source_body_sha256": "9150f052def1d31215b0b310866d044f6dc2475efc1e1407861a080626252ded"
+    },
+    {
+      "name": "entity_scene_render_laws:preparation_failure_preserves_full_physical_owner",
+      "type_sha256": "8212c61a6b7467996ced5c5caeaed9957e6853b8448b4e47faff1d28f60ed0c6",
+      "checked_proof_sha256": "f393b8f872135e8a72379572494cf7792666b09e4089f43e75d00c3260641671",
+      "source_body_sha256": "fea2a2dce7b04d28860eedc97e2e9a3c01255d943fdef12b1a60827b38f1ed96"
+    },
+    {
+      "name": "entity_scene_render_laws:failed_preparation_performs_no_render_and_retains_both_owners",
+      "type_sha256": "6c195bb7162ce7c60d18228738b4a2c665cb33a21e7171ab7ebdf44b9eba5fb0",
+      "checked_proof_sha256": "1801e4624ed60ac81fdcdfde8d6866e61362fec303d4c509665a6bf3d034079d",
+      "source_body_sha256": "6992ec9ed00e326cb9235d384f08aeb2977e8eddbbe99a8ffa44d971a15cca51"
+    }
+  ],
+  "selected_artifact_sha256": "0bf93253ccfe3e590749e84018783bcea6ea58e6a7129a8d1242de3ee5b97f1e",
+  "kernel_sha256": "04f97a0aba640bf1246c425ba70f3790584e42f8bcf8c608991f293d78ef58a7",
+  "boundary": "Actual production shared physical texture owner has inductive exact prefix/suffix inverse and recovers both complete original CW/item owners; texture/admission/preparation/draw failure retains owners; rebasing preserves every vertex, UV, material field and culling while assigning global order; actual missing authority cannot become fullbright. Native resource IO, transcendental camera boundary, scene overlap/occlusion and actual authoritative live light publication remain separate."
+}
