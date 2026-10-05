@@ -1,0 +1,432 @@
+{
+  "schema": 1,
+  "status": "CONCRETE_RESIDUAL_CALLBACK_OVERFLOWS_OBSERVED",
+  "confidence": "high for measured selected widths, captures, and snapshot113; final ownership-pass suffixes and complete executable verdict unobserved",
+  "basis": {
+    "frozen_generation": 8,
+    "entry": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/008/private/source/remote_resource_catalog_client.bend",
+      "bytes": 6783,
+      "sha256": "32806e671351f0398ef3f9ac4763927777e0a51f5aaf05717f62dff44c1be102"
+    },
+    "frozen_manifest": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/008/private/manifest.json",
+      "bytes": 70609,
+      "sha256": "d02368758b35b993d34b7f8bdd6027c1aa5b8a9b4cacac54a0c26ac48dd2602d"
+    },
+    "frozen_source_map": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/008/private/source-map.json",
+      "bytes": 54200,
+      "sha256": "806383cb9b9f15451cab55d954acfef8fbdea119f324b176309cefd73c6d4114"
+    },
+    "client": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/008/private/source/src/generic_resource_world_sample_client.bend",
+      "bytes": 28412,
+      "sha256": "7710589f6964f09966e80fd3ae94b9d2e85449e113d1b3c76defe9bdf2ab7a8c"
+    },
+    "actual_failed_producer": {
+      "seconds": 513.2422274155542,
+      "passes": 7,
+      "message": "an arity over 247",
+      "complete_C": false,
+      "group_absent": true,
+      "failure": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/008/failure.json",
+        "bytes": 925,
+        "sha256": "342f5363858cee421bc44fc74713a8e026a55f507b1cd103cda4dbecb7a98f0f"
+      }
+    },
+    "loaded_files": 113,
+    "loaded_frozen_project_pins_match": 112,
+    "original_Base_equal_frozen_Base": true,
+    "loaded_pin_table_canonical_sha256": "4c9457f9ee90019773b19437fbf53374e572b298fece5d4581ddef3ea789e976"
+  },
+  "original_compiler": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/comp.ts",
+    "bytes": 185829,
+    "sha256": "32fb66e09f608ce9e4b173384bcfeec453db8c5bc96650e26ad861bef815a8d9"
+  },
+  "original_source_api": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/bend/bend2/bend.ts",
+    "bytes": 137761,
+    "sha256": "7deae3693eb896f33c73867081b99d2c6f3ed3b57e77e55eb5f6260840dd0e63"
+  },
+  "original_compiler_or_api_modified": false,
+  "frozen008_sources_modified": false,
+  "product_sources_modified_by_diagnostic": false,
+  "guard": {
+    "live_entry_parameters_limit": 247,
+    "encoded_constructor_arity_limit": 255,
+    "ordinary_formals_auto_boxed_when_over_limit": true,
+    "generated_segment_captures_auto_boxed": false
+  },
+  "retained_partial003": {
+    "process": {
+      "command": ["/opt/homebrew/bin/node", "--expose-gc", "--max-old-space-size=8192", "--stack-size=4096", "--experimental-transform-types", "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-client-arity-003/probe.mjs"],
+      "pid": 2467,
+      "group_absent": true,
+      "returncode": -15,
+      "termination_reason": "total_deadline",
+      "seconds": 90.47369037475437,
+      "sampled_peak_rss_bytes": 4182392832,
+      "scope": "Unchanged original full source elaboration, then one pass over selected GenericClient bodies only; no whole C/fixpoint replay.",
+      "limits": {
+        "seconds": 90,
+        "rss_bytes": 8589934592
+      }
+    },
+    "checked_declarations": 5762,
+    "source_check_seconds": 19.057228833,
+    "source_holes": 0,
+    "complete_body_count": 13,
+    "complete_body_maximum_words": 222,
+    "complete_bodies": ["src/generic_resource_world_sample_client:open_item_table", "src/generic_resource_world_sample_client:open_item_table_bindings", "src/generic_resource_world_sample_client:catalog_loaded_bindings", "src/generic_resource_world_sample_client:open_catalogued_bindings", "src/generic_resource_world_sample_client:open_catalogued_checked", "src/generic_resource_world_sample_client:open_catalogued_valid", "src/generic_resource_world_sample_client:opened", "src/generic_resource_world_sample_client:keys_enabled", "src/generic_resource_world_sample_client:configured_window", "src/generic_resource_world_sample_client:capture_configured", "src/generic_resource_world_sample_client:closing", "src/generic_resource_world_sample_client:captured", "src/generic_resource_world_sample_client:starting"],
+    "final_probe_receipt_written": false,
+    "stdout": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-client-arity-003/stdout.txt",
+      "bytes": 1942,
+      "sha256": "b94ceee03b50e3a4ef8ee36937253aa4d39e294bb8d48db606bcf58a204ac57e"
+    },
+    "cause_of_diagnostic_revision": "003 used the original strong telescope cache, forced per-body GC and startup-first selection and reached the unchanged90s cap before frame/resource cuts. 004 uses actual tested008 WeakMap cache and threshold GC, prioritizes remaining frame cuts and excludes13completed bodies; no isolated cache-speedup inference or limit increase."
+  },
+  "completed_selected004": {
+    "process": {
+      "command": ["/opt/homebrew/bin/node", "--expose-gc", "--max-old-space-size=8192", "--stack-size=4096", "--experimental-transform-types", "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-client-arity-004/probe.mjs"],
+      "pid": 4488,
+      "group_absent": true,
+      "returncode": 0,
+      "termination_reason": null,
+      "seconds": 49.9931949172169,
+      "sampled_peak_rss_bytes": 4310351872,
+      "scope": "Unchanged original full source elaboration, then one pass over selected GenericClient bodies only; no whole C/fixpoint replay.",
+      "limits": {
+        "seconds": 90,
+        "rss_bytes": 8589934592
+      }
+    },
+    "checked_declarations": 5762,
+    "source_holes": 0,
+    "unchanged_order_checked_entries": 5853,
+    "source_check_seconds": 22.098543624999998,
+    "complete_body_count": 34,
+    "previous_completed_bodies_reemitted_as_roots": false,
+    "combined_distinct_selected_roots": 47,
+    "reachable_constructor_count": 479,
+    "reachable_constructor_max": {
+      "name": "src/generic_resource_world_sample_client:Config",
+      "words": 150
+    },
+    "reachable_foreign_cid_max": {
+      "name": "src/player_presentation_native:Native.configure",
+      "words": 7
+    },
+    "wide_root_count": 11,
+    "maximum_reachable_segment_words": 261,
+    "facts_after_first_and_last_body": [
+      {
+        "own": 14,
+        "hot": 0,
+        "stat": 0
+      },
+      {
+        "own": 183,
+        "hot": 201,
+        "stat": 1
+      }
+    ],
+    "receipt": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-client-arity-004/probe.json",
+      "bytes": 2470853,
+      "sha256": "e599bc31787c99a2c07a696bcbfadeb555d1bb2aeba95f4be7450cde391690e8"
+    },
+    "selection": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-client-arity-004/selection.json",
+      "bytes": 1204,
+      "sha256": "423ba1a03838a2f83cf2e901c632b870dbbc4e5bad3c4b3435f1db1e69c8ef37"
+    },
+    "scope": "One pass over remaining reachable GenericClient root bodies using existing008 tested private compiler semantics. Ownership facts start empty and evolve only through selected bodies; inlined callees may be regenerated in different roots. No whole compile_book, ownership fixpoint, final live-main closure, C output or native executable."
+  },
+  "snapshot_repair_measured": {
+    "function": "src/generic_resource_world_sample_client:snapshot_ready",
+    "formal_words": 74,
+    "segment": "src/generic_resource_world_sample_client:snapshot_ready$k1",
+    "fid": "FID_SRC_GENERIC_RESOURCE_WORLD_SAMPLE_CLIENT_SNAPSHOT_READY_K1",
+    "parameter_words": 113,
+    "previous006_words": 261,
+    "previous006_receipt": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/generic_resource_world_sample_client_arity_006.json",
+      "bytes": 10733,
+      "sha256": "299856e813e6a338a6a0094070a1868441b659d5827d0b88270ece588de9e927"
+    },
+    "reduction_words": 148,
+    "changed_source_measurement": true
+  },
+  "oversized_roots": [
+    {
+      "root": "src/generic_resource_world_sample_client:resources_ready",
+      "formal_words": 78,
+      "reachable_oversized_segments": 7,
+      "maximum_words": 261,
+      "segments": [
+        ["resources_ready$c8", 248],
+        ["resources_ready$c9", 248],
+        ["resources_ready$k40", 259],
+        ["resources_ready$k41", 259],
+        ["resources_ready$k44", 261],
+        ["resources_ready$c46", 258],
+        ["resources_ready$c47", 257]
+      ]
+    },
+    {
+      "root": "src/generic_resource_world_sample_client:inventoried",
+      "formal_words": 130,
+      "reachable_oversized_segments": 7,
+      "maximum_words": 261,
+      "segments": [
+        ["inventoried$c3", 248],
+        ["inventoried$c4", 248],
+        ["inventoried$k34", 259],
+        ["inventoried$k35", 252],
+        ["inventoried$k38", 261],
+        ["inventoried$c40", 258],
+        ["inventoried$c41", 257]
+      ]
+    },
+    {
+      "root": "src/generic_resource_world_sample_client:inventory_draw",
+      "formal_words": 99,
+      "reachable_oversized_segments": 7,
+      "maximum_words": 261,
+      "segments": [
+        ["inventory_draw$c1", 248],
+        ["inventory_draw$c2", 248],
+        ["inventory_draw$k32", 259],
+        ["inventory_draw$k33", 252],
+        ["inventory_draw$k36", 261],
+        ["inventory_draw$c38", 258],
+        ["inventory_draw$c39", 257]
+      ]
+    },
+    {
+      "root": "src/generic_resource_world_sample_client:presented",
+      "formal_words": 61,
+      "reachable_oversized_segments": 5,
+      "maximum_words": 261,
+      "segments": [
+        ["presented$k21", 259],
+        ["presented$k22", 252],
+        ["presented$k25", 261],
+        ["presented$c27", 258],
+        ["presented$c28", 257]
+      ]
+    },
+    {
+      "root": "src/generic_resource_world_sample_client:input_presented",
+      "formal_words": 61,
+      "reachable_oversized_segments": 5,
+      "maximum_words": 261,
+      "segments": [
+        ["input_presented$k9", 259],
+        ["input_presented$k10", 252],
+        ["input_presented$k13", 261],
+        ["input_presented$c15", 258],
+        ["input_presented$c16", 257]
+      ]
+    },
+    {
+      "root": "src/generic_resource_world_sample_client:inventory_timed",
+      "formal_words": 99,
+      "reachable_oversized_segments": 5,
+      "maximum_words": 261,
+      "segments": [
+        ["inventory_timed$k30", 259],
+        ["inventory_timed$k31", 252],
+        ["inventory_timed$k34", 261],
+        ["inventory_timed$c36", 258],
+        ["inventory_timed$c37", 257]
+      ]
+    },
+    {
+      "root": "src/generic_resource_world_sample_client:drawn",
+      "formal_words": 85,
+      "reachable_oversized_segments": 5,
+      "maximum_words": 261,
+      "segments": [
+        ["drawn$k26", 259],
+        ["drawn$k27", 252],
+        ["drawn$k30", 261],
+        ["drawn$c32", 258],
+        ["drawn$c33", 257]
+      ]
+    },
+    {
+      "root": "src/generic_resource_world_sample_client:traced",
+      "formal_words": 63,
+      "reachable_oversized_segments": 5,
+      "maximum_words": 261,
+      "segments": [
+        ["traced$k9", 259],
+        ["traced$k10", 252],
+        ["traced$k13", 261],
+        ["traced$c15", 258],
+        ["traced$c16", 257]
+      ]
+    },
+    {
+      "root": "src/generic_resource_world_sample_client:menu_intercept",
+      "formal_words": 62,
+      "reachable_oversized_segments": 5,
+      "maximum_words": 261,
+      "segments": [
+        ["menu_intercept$k1", 258],
+        ["menu_intercept$k2", 251],
+        ["menu_intercept$k5", 261],
+        ["menu_intercept$c7", 258],
+        ["menu_intercept$c8", 257]
+      ]
+    },
+    {
+      "root": "src/generic_resource_world_sample_client:menu_intercepted",
+      "formal_words": 109,
+      "reachable_oversized_segments": 3,
+      "maximum_words": 260,
+      "segments": [
+        ["menu_intercepted$k4", 260],
+        ["menu_intercepted$c6", 258],
+        ["menu_intercepted$c7", 257]
+      ]
+    },
+    {
+      "root": "src/generic_resource_world_sample_client:menu_events_sent",
+      "formal_words": 111,
+      "reachable_oversized_segments": 2,
+      "maximum_words": 258,
+      "segments": [
+        ["menu_events_sent$c2", 258],
+        ["menu_events_sent$c3", 257]
+      ]
+    }
+  ],
+  "representative_actual_captures": [
+    {
+      "name": "src/generic_resource_world_sample_client:inventory_draw$c1",
+      "fid": "FID_SRC_GENERIC_RESOURCE_WORLD_SAMPLE_CLIENT_INVENTORY_DRAW_C1",
+      "parameter_words": 248,
+      "captured_words": 247,
+      "cut": "NativePresentation.Native.milliseconds result; inventory_draw has an unused full Config destructor before this IO",
+      "captures": [
+        ["window", 1, "Window"],
+        ["link", 7, "src/remote_resource_presenter:Link"],
+        ["shared_native_config_head_captures", 149, "menu field captured as menu"],
+        ["tail", 1, "List"],
+        ["captured", 1, "Bool"],
+        ["sample", 15, "src/generic_resource_world_sample:Sample"],
+        ["assets", 48, "src/generic_resource_world_sample_resources:Session"],
+        ["view", 2, "src/player_hud:View"],
+        ["screen", 22, "Maybe"],
+        ["resume", 1, "Window -> Session.Session -> P.Link -> Config -> Bool -> IO(Unit)"]
+      ],
+      "continuation_argument_words": 1,
+      "continuation_argument_type": "BOX: emit_clo generic closure argument; no logical native result type inferred",
+      "capture_column_order": ["name_or_shared_layout", "word_count", "source_type_abbreviated"]
+    },
+    {
+      "name": "src/generic_resource_world_sample_client:menu_intercept$k1",
+      "fid": "FID_SRC_GENERIC_RESOURCE_WORLD_SAMPLE_CLIENT_MENU_INTERCEPT_K1",
+      "parameter_words": 258,
+      "captured_words": 208,
+      "cut": "MenuInput.packet_keys pure return: State48 + intents List1 + events List1",
+      "captures": [
+        ["assets", 48, "src/generic_resource_world_sample_resources:Session"],
+        ["link", 7, "src/remote_resource_presenter:Link"],
+        ["shared_native_config_head_captures", 149, "menu field captured as menu"],
+        ["tail", 1, "List"],
+        ["old", 1, "Bool"],
+        ["window", 1, "Window"],
+        ["resume", 1, "Window -> Session.Session -> P.Link -> Config -> Bool -> IO(Unit)"]
+      ],
+      "continuation_argument_words": 50,
+      "continuation_argument_type": "src/player_menu_input:Batch",
+      "capture_column_order": ["name_or_shared_layout", "word_count", "source_type_abbreviated"]
+    },
+    {
+      "name": "src/generic_resource_world_sample_client:menu_events_sent$c2",
+      "fid": "FID_SRC_GENERIC_RESOURCE_WORLD_SAMPLE_CLIENT_MENU_EVENTS_SENT_C2",
+      "parameter_words": 258,
+      "captured_words": 257,
+      "cut": "Input.Native.status IO continuation; with_menu absorption happens after the IO in frozen008",
+      "captures": [
+        ["assets", 48, "src/generic_resource_world_sample_resources:Session"],
+        ["shared_native_config_head_captures", 149, "menu field captured as previous"],
+        ["tail", 1, "List"],
+        ["pending", 1, "List"],
+        ["old", 1, "Bool"],
+        ["window", 1, "Window"],
+        ["link", 7, "src/remote_resource_presenter:Link"],
+        ["state", 48, "src/player_menu_input:State"],
+        ["resume", 1, "Window -> Session.Session -> P.Link -> Config -> Bool -> IO(Unit)"]
+      ],
+      "continuation_argument_words": 1,
+      "continuation_argument_type": "BOX: emit_clo generic closure argument; no logical native result type inferred",
+      "capture_column_order": ["name_or_shared_layout", "word_count", "source_type_abbreviated"]
+    }
+  ],
+  "conclusion": {
+    "branch_observed": "Actual reachable generated function entry parameters exceed247; all479 checked reachable constructor layouts fit raw150 maximum and foreign CID7 maximum.",
+    "measured_retention": "The recursive Config owner is1word while closed; destructuring its head exposes nativeConfig149words and tail1. Those fields include menu48,cooking70,plan14 and keys7 and remain live across pure-return/IO cuts. menu_events_sent additionally retains updatedState48 alongside previousMenu48.",
+    "source_repair_boundary": "Keep recursiveConfig closed across cuts. Remove unused inventory_draw destructor; pure narrow packet/compose/scalar helpers return only values consumed; absorb returnedMenuState and capture-allowed flag into updated closedConfig before Native.status. Preserve exact IO order,Hud compose/draw order,allConfig fields and recursive tail. Catalog owns the production repair.",
+    "native_config_only_hypothesis_confirmed": false,
+    "final_pass_suffix_reproduced": false,
+    "all_final_pass_module_offenders_enumerated": false,
+    "changed_repair_native_verdict": false,
+    "no_unchanged_full008_retry": true
+  },
+  "reproduction": {
+    "retained_partial_command": "python3 -B build/generic-client-arity-003/run.py",
+    "completed_command": "python3 -B build/generic-client-arity-004/run.py",
+    "private_helper_basis": {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/008/private/comp_instrumented.ts",
+      "bytes": 191752,
+      "sha256": "badcd6ad9069183572dc4ab61f2bb528240a3bd8fd2f9318ca4433d8edca1c9d"
+    },
+    "private_delta": "Identical source API import redirected to originalB; seg_open capture telemetry plus selected-root driver appended. Actual semantic emitter helpers are unchanged from tested008 private WeakMap compiler.",
+    "changed_diff_lines_including_headers": 39,
+    "private_helpers": [
+      {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-client-arity-004/probe_comp.ts",
+        "bytes": 195555,
+        "sha256": "59cd6fd1864592d8ba6df65ba24495959c2674b69c7ee49768726013d35d5e72"
+      },
+      {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-client-arity-004/probe.mjs",
+        "bytes": 2549,
+        "sha256": "aed025b0f78c5fe2bf718c44a0644e6b6460625e6baa3edff766337c9ca266f4"
+      },
+      {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-client-arity-004/run.py",
+        "bytes": 1717,
+        "sha256": "b77f04f37b2cd9c96812055437da2201e3b6479a525ae23b11b23bfc3b20d0b4"
+      }
+    ],
+    "telemetry_caveat": "seg_open telemetry calls res.ws length returned_words. For $c this is emit_clo generic boxed argument; for $k it is the direct returned value. Compact captures report continuation_argument_words to avoid conflating native logical tuple widths."
+  },
+  "scope": "Compiler/source ownership diagnosis only. Full original source check retained; no selective checker, axiom,checker bypass,compiler ABI relaxation,whole C retry,native parity or performance-gain claim.",
+  "shared_native_config_head_captures": {
+    "words": 149,
+    "columns": ["field", "word_count", "source_type_abbreviated"],
+    "fields": [
+      ["human", 1, "Bool"],
+      ["frames", 2, "Maybe"],
+      ["width", 1, "U32"],
+      ["height", 1, "U32"],
+      ["trace", 2, "Maybe"],
+      ["serial", 1, "Nat"],
+      ["plan", 14, "src/player_presentation:Plan"],
+      ["started", 1, "U32"],
+      ["menu", 48, "src/player_menu_input:State"],
+      ["keys", 7, "src/inventory_key_consumer:Profile"],
+      ["physical_keys", 1, "Bool"],
+      ["cooking", 70, "src/player_cooking_client_input:State"]
+    ]
+  }
+}
