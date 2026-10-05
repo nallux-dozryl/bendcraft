@@ -18,8 +18,10 @@ its full C/native build. Its actual initial grass case maintains the lease,
 then reaches the explicit missing-tint refusal; the initial EOF case drains
 the worker and closes before creating a window. Positive demand loading,
 all 32,768 reference pixels and complete save/cold restoration also pass.
-Changed public-shell acceptance is in progress; the verified017/008 pair is
-retained until that acceptance completes. See
+Changed public-shell fresh, grass-refusal, capacity-refusal and same-process
+reconnect/save acceptance also passes. The public launcher now selects017/010.
+The new cooking client join is separate work; matched performance against008
+remains open. See
 `evidence/generic_resource_world_sample_client_native_009.json` and the actual
 `build/generic-resource-world-sample-demand-runtime/002/result.json`.
 
@@ -38,8 +40,20 @@ A bounded changed-body diagnostic identifies cooking-save callbacks with
 typed save result reduces the actual codec and return cuts to 199 and 58
 words. Coherent022 retains frozen021 plus only that Session change; all 202
 mapped Bend sources match its full original9546-declaration, zero-hole check.
-The actual022 producer is running. No newer actor native/TCP or
-public adoption verdict is claimed. Only a typed receipt from actual durable publication may clean the
+The actual022 producer clears the original guard and emits 62,421,836 bytes
+of C in 310.238 seconds, at 5,395,726,336 bytes peak sampled RSS. Native clang
+finishes in 210.630 seconds, producing a 16,246,616-byte executable. Actual
+SceneFrame TCP acceptance passes five complete replies, eight refusal cases
+and two byte-identical 136,449-byte full format4 saves. Actual cooking
+publication acceptance passes in 144.816 seconds: three menu mutations, two
+ignition publications in two chunks, nine complete atomic save comparisons
+and one real SIGKILL/cold restore. Cold continuation advances publication
+sequence4 to5; legacy and stale queued sources preserve their full ordered
+suffix on refusal. Each save increments the peer session exactly once.
+The nonzero pending capture is UNOBSERVED because the actual50ms pulse won;
+no crash-during-unfinished-write or direct live dirty-flag observation is
+claimed. Client cooking controls and the changed playable pair remain the
+next integration work. Only a typed receipt from actual durable publication may clean the
 live journal. A pulse may consume pending effects before a save; a nonzero
 pending capture is an observation, never an assumed scheduling guarantee.
 See `evidence/local-player-cooking-publication-codec-native-002.json`,
@@ -48,7 +62,10 @@ See `evidence/local-player-cooking-publication-codec-native-002.json`,
 `evidence/playable-client-actor004-source-021.json`, and
 `evidence/playable-client-actor004-build-failure-021.json`. Changed022 source
 identity and measured capture scope are in
-`evidence/playable-client-actor004-source-022.json`.
+`evidence/playable-client-actor004-source-022.json`. Actual build and consumers:
+`evidence/playable-client-actor004-build-022.json`,
+`evidence/playable-client-cooking-publication-native-004.json`, and
+`evidence/remote-entity-scene-network-native-004.json`.
 
 Item tick33 section-order cases and the earlier native24 tick/merge cases are
 verified in the separate production Tick.Scene lane. The additive managed
@@ -127,8 +144,8 @@ wrapper guards also pass on the changed initialized component/inventory graph
 in attempt006. Crashes during unfinished writes remain a separate case.
 See `evidence/local-player-cooking-storage-006.json`,
 `evidence/local-player-effect-entities-codec-002.json`, and
-`evidence/cooking-effect-consumer-native-001.json`. The public launcher remains
-the verified017/008 pair below.
+`evidence/cooking-effect-consumer-native-001.json`. The current public pair is
+017/010; the original017/008 adoption remains retained evidence.
 
 Actor004's immutable producer016 builds original-JAR crafting startup,
 retained crafting context, prospective menu-reply publication, generic sampling
@@ -160,12 +177,14 @@ See `evidence/playable-client-actor004-build-017.json`,
 `evidence/playable-client-actor004-boundary-001.json`, and
 `evidence/runtime-block-inside-actor-motion-002.json`.
 
-The recommended launch is `tools/play_minecraft.sh`: verified renderer008 with
+The recommended launch is `tools/play_minecraft.sh`: verified renderer010 with
 actor017, two CPU workers, 1920×1080 output and 100% scene resolution. The exact
 binary hash guard pins both successful artifacts. The launcher retains its
 close/save/refusal/reconnect and signal handling, allows 150 seconds of healthy
 startup, and passed an actual fresh hidden run. See
-`evidence/playable-017-008-launcher-adoption.json`. The previous six007/003
+`evidence/generic_resource_world_sample_launcher_runtime_010.json`. The prior
+017/008 adoption is retained in `evidence/playable-017-008-launcher-adoption.json`.
+The previous six007/003
 checks remain historical evidence for that generation. Physical input,
 visible drawable, audio and complete gameplay acceptance remain open.
 
