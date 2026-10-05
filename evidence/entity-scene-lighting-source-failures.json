@@ -1,0 +1,174 @@
+{
+  "attempts": [
+    {
+      "attempt": "001",
+      "diagnostic": "SOME PROOFS FAIL\nError:\n- message  : 'block' can't be matched in this position (it is matched after a local statement or after a match on a later binder, it was already matched, or it is a def)\nLocation:\n29 |     case True{}:\n30>|       BW.State{world,light,loading} = block\n   |                                       ^^^^^\n31 |       attached(light,loading,authority,epoch,SW.begin(world))\n",
+      "result": {
+        "argv": [
+          "/Users/chuah/.bend/bin/bend",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/entity_scene_lighting_sample.bend",
+          "--check-only"
+        ],
+        "attempts": 1,
+        "cap_seconds": 60,
+        "cleanup": {
+          "after": [],
+          "before": [],
+          "errors": [],
+          "leader_reaped": true,
+          "live_group_absent": true
+        },
+        "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+        "error": null,
+        "exit_code": 1,
+        "pid": 77624,
+        "seconds": 4.220633417367935,
+        "stderr": {
+          "bytes": 391,
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-scene-lighting/source/001/ordinary/stderr",
+          "sha256": "4415de46cc0a2902645808ddf728443c3d0e0154a1667f676d82dca0981d2c0f"
+        },
+        "stdout": {
+          "bytes": 0,
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-scene-lighting/source/001/ordinary/stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "timed_out": false
+      },
+      "scope": "Failed original source attempt; no kernel/native/actor run. Initial manifests are before-only, not an unchanged-source claim.",
+      "source_manifest": {
+        "bytes": 41382,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-scene-lighting/source/001/sources.json",
+        "sha256": "c3fefa804310e576d44b5434b55d0132e9d8fe7c7303afe67315210e803ade81"
+      }
+    },
+    {
+      "attempt": "002",
+      "diagnostic": "SOME PROOFS FAIL\nError:\n- message  : 'stamp' can't be matched in this position (it is matched after a local statement or after a match on a later binder, it was already matched, or it is a def)\nLocation:\n47 |   M.Request{+expected,+requested,sites} = request\n48>|   W.Stamp{registry,tick,revision,dimension,origin,camera,+partial} = stamp\n   |                                                                      ^^^^^\n49 |   capture_checked(String.eq(actual,epoch) && String.eq(expected,epoch),\n",
+      "result": {
+        "argv": [
+          "/Users/chuah/.bend/bin/bend",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/entity_scene_lighting_sample.bend",
+          "--check-only"
+        ],
+        "attempts": 1,
+        "cap_seconds": 30,
+        "cleanup": {
+          "after": [],
+          "before": [],
+          "errors": [],
+          "leader_reaped": true,
+          "live_group_absent": true
+        },
+        "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+        "error": null,
+        "exit_code": 1,
+        "pid": 78461,
+        "seconds": 4.56039079092443,
+        "stderr": {
+          "bytes": 496,
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-scene-lighting/source/002/ordinary/stderr",
+          "sha256": "18bacc23bf9023cb740133fea3b4c21e7fbd99df5789b697cd4a3498aad6f4a7"
+        },
+        "stdout": {
+          "bytes": 0,
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-scene-lighting/source/002/ordinary/stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "timed_out": false
+      },
+      "scope": "Failed original source attempt; no kernel/native/actor run. Initial manifests are before-only, not an unchanged-source claim.",
+      "source_manifest": {
+        "bytes": 41382,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-scene-lighting/source/002/sources.json",
+        "sha256": "592293ffac6c813369c2867b87a6733649a7a826f80b9a5cf83b76eb10c40270"
+      }
+    },
+    {
+      "attempt": "003",
+      "diagnostic": "SOME PROOFS FAIL\nError:\n- message  : 'state' can't be matched in this position (it is matched after a local statement or after a match on a later binder, it was already matched, or it is a def)\nLocation:\n135 |     case True{}:\n136>|       M.State{block,sky,authority,epoch} = state\n    |                                            ^^^^^\n137 |       sampled_block(capture,sites,sky,authority,epoch,BW.sample_batch(positions(sites),block))\n",
+      "result": {
+        "argv": [
+          "/Users/chuah/.bend/bin/bend",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/entity_scene_lighting_sample.bend",
+          "--check-only"
+        ],
+        "attempts": 1,
+        "cap_seconds": 30,
+        "cleanup": {
+          "after": [],
+          "before": [],
+          "errors": [],
+          "leader_reaped": true,
+          "live_group_absent": true
+        },
+        "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+        "error": null,
+        "exit_code": 1,
+        "pid": 78680,
+        "seconds": 4.635117166675627,
+        "stderr": {
+          "bytes": 438,
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-scene-lighting/source/003/ordinary/stderr",
+          "sha256": "7747a2ddc1f34e799718bd461a2610ac51bd4f4e3c059797d26619268d73dbb1"
+        },
+        "stdout": {
+          "bytes": 0,
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-scene-lighting/source/003/ordinary/stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "timed_out": false
+      },
+      "scope": "Failed original source attempt; no kernel/native/actor run. Initial manifests are before-only, not an unchanged-source claim.",
+      "source_manifest": {
+        "bytes": 41382,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-scene-lighting/source/003/sources.json",
+        "sha256": "87d916315e46ff083c5b9734993a637c7b2d27394f921fb2a60b8fbb4306262f"
+      }
+    },
+    {
+      "attempt": "004",
+      "diagnostic": "SOME PROOFS FAIL\nError:\n- expected : clock\n- observed : clock (consumed more than once)\nContext:\n- capture : M.Capture\n- sites   : List<&2, M.Site>\nLocation: sampled_sky_checked\n107 |     case True{}: (state,publication(capture,clock,samples))\n108>| def sampled_sky_checked(capture:M.Capture,sites:List<&2,M.Site>,clock:C.Clock,\n    |                                                                 ^^^^^\n109 |     cells:List<&2,BW.Observation>,state:M.State,status:Result<&2,&2,SW.Error,SW.FrameSamples>) ->\n",
+      "result": {
+        "argv": [
+          "/Users/chuah/.bend/bin/bend",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/entity_scene_lighting_proof.bend",
+          "--check-only"
+        ],
+        "attempts": 1,
+        "cap_seconds": 30,
+        "cleanup": {
+          "after": [],
+          "before": [],
+          "errors": [],
+          "leader_reaped": true,
+          "live_group_absent": true
+        },
+        "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+        "error": null,
+        "exit_code": 1,
+        "pid": 79970,
+        "seconds": 6.385601750575006,
+        "stderr": {
+          "bytes": 509,
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-scene-lighting/source/004/ordinary/stderr",
+          "sha256": "a41771a5dbf3db003fcb2fda23066a9c84026f3bf4c28433571e9f2480eaf303"
+        },
+        "stdout": {
+          "bytes": 0,
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-scene-lighting/source/004/ordinary/stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "timed_out": false
+      },
+      "scope": "Failed original source attempt; no kernel/native/actor run. Initial manifests are before-only, not an unchanged-source claim.",
+      "source_manifest": {
+        "bytes": 42042,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-scene-lighting/source/004/sources.json",
+        "sha256": "b5266beba7480066c5a3d3db15bc9a302de8f16559dbbc2c7cbd9c8767551620"
+      }
+    }
+  ],
+  "followup": "evidence/entity-scene-lighting-003.json is the final source-only pass; all failed groups reaped.",
+  "status": "RETAINED_FAILURES"
+}

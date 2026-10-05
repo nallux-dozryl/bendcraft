@@ -1,0 +1,43 @@
+{
+  "error": "AssertionError(\"Bounded owned process failed: {'argv': ['/Users/chuah/.bend/bin/bend', '/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/entity_scene_lighting.bend', '--check-only'], 'cwd': '/Users/chuah/Documents/ChatGPT/bendex/minecraft', 'cap_seconds': 30, 'attempts': 1, 'pid': 81478, 'exit_code': 1, 'timed_out': False, 'error': None, 'cleanup': {'before': [], 'after': [], 'errors': [], 'leader_reaped': True, 'live_group_absent': True}, 'seconds': 5.493565457873046, 'stdout': {'path': '/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-scene-lighting/checks/001/ordinary/stdout', 'bytes': 0, 'sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'}, 'stderr': {'path': '/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-scene-lighting/checks/001/ordinary/stderr', 'bytes': 633, 'sha256': 'c75d97021ddf1a5036209e7692bb85128663f8f1a0119551a00ee07d0feccf6e'}}\")",
+  "processes": [
+    {
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/entity_scene_lighting.bend",
+        "--check-only"
+      ],
+      "attempts": 1,
+      "cap_seconds": 30,
+      "cleanup": {
+        "after": [],
+        "before": [],
+        "errors": [],
+        "leader_reaped": true,
+        "live_group_absent": true
+      },
+      "cwd": "/Users/chuah/Documents/ChatGPT/bendex/minecraft",
+      "error": null,
+      "exit_code": 1,
+      "pid": 81478,
+      "seconds": 5.493565457873046,
+      "stderr": {
+        "bytes": 633,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-scene-lighting/checks/001/ordinary/stderr",
+        "sha256": "c75d97021ddf1a5036209e7692bb85128663f8f1a0119551a00ee07d0feccf6e"
+      },
+      "stdout": {
+        "bytes": 0,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-scene-lighting/checks/001/ordinary/stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "timed_out": false
+    }
+  ],
+  "source_manifest": {
+    "bytes": 42401,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/entity-scene-lighting/checks/001/sources.json",
+    "sha256": "3cf048384f7895c5ea38c797cfde85cee46c7fc414276d5a37206757fc8994b3"
+  },
+  "status": "FAILED"
+}
