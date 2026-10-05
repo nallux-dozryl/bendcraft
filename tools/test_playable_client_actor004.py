@@ -23,6 +23,8 @@ PRIVATE_PINS={
     'run.py':'3dc542c1e956b42ea1052344f40cdf94dd2b33a68ec7387113e16952a91e5fbd',
 }
 NATIVE_SECONDS=300
+BASELINE_GENERATION=None
+SESSION_OVERLAY=None
 
 def generation():
     return int(WORK.name.rsplit('-',1)[1])
@@ -56,11 +58,62 @@ playable_spawn=P.playable_spawn
 playable_look=P.playable_look
 pin=R.pin
 
+def snapshot_baseline():
+    """Keep a checked older graph while changing only its measured save carrier."""
+    baseline=ROOT/f'build/compiler-producer-diagnostic-{BASELINE_GENERATION:03}'
+    source=baseline/'source'
+    before=pin(source/'source-map.json')
+    mapping=json.loads((source/'source-map.json').read_bytes())
+    overlay_before=pin(SESSION_OVERLAY)
+    relative='src/local_player_session.bend'
+    original={row['path']:row for row in mapping['files']}
+    R.require(relative in original,'Baseline lacks the actual Session consumer')
+    R.require(overlay_before['sha256']!=original[relative]['original_sha256'],
+              'Unchanged Session overlay cannot start another actor generation')
+    for row in mapping['files']:
+        R.require(pin(source/row['path'])['sha256']==row['original_sha256'],
+                  'Baseline source drift: '+row['path'])
+    runtime=json.loads((baseline/'runtime-inputs.json').read_bytes())
+    for row in runtime['files']:
+        R.require(pin(row['mapped']['path'])==row['mapped'],'Baseline runtime drift')
+    shutil.copytree(source,SOURCE)
+    (SOURCE/relative).write_bytes(SESSION_OVERLAY.read_bytes())
+    R.require(pin(SESSION_OVERLAY)==overlay_before and pin(source/'source-map.json')==before,
+              'Baseline or Session overlay changed while copying')
+    mapping.pop('seal_sha256',None)
+    mapping['status']='frozen-baseline-session-overlay'
+    mapping['scope']='Immutable baseline production actor graph plus only the measured Session save-carrier change; no current working dependency graph claim.'
+    mapping['generation_basis']={'baseline_generation':BASELINE_GENERATION,
+        'baseline_source_map':before,'session_overlay':overlay_before,
+        'only_project_source_deltas':[relative],
+        'current_working_dependency_graph_claim':False}
+    for row in mapping['files']:
+        mapped=P.pin(SOURCE/row['path'])
+        row['mapped']=mapped
+        if row['path']==relative:
+            row['baseline_original_sha256']=row['original_sha256']
+            row['original_sha256']=mapped['sha256'];row['original_bytes']=mapped['bytes']
+        R.require(mapped['sha256']==row['original_sha256'],'Unexpected baseline overlay delta: '+row['path'])
+    mapping['entry']=P.pin(SOURCE/'remote_resource_server.bend')
+    R.write(SOURCE/'source-map.json',P.Host.sealed(mapping))
+    for row in runtime['files']:
+        name=Path(row['mapped']['path']).relative_to(source)
+        row['mapped']=pin(SOURCE/name)
+        R.require(row['mapped']['sha256']==row['original']['sha256'],'Copied runtime drift')
+    R.write(WORK/'runtime-inputs.json',runtime,True)
+
 def snapshot():
     """Copy the real graph once; later working-source edits cannot alter it."""
     if not (SOURCE/'source-map.json').exists():
-        with H.bindings(P,{'SOURCE_ROOT':SOURCE}):P.map_current_sources(Builder)
+        if BASELINE_GENERATION is not None:snapshot_baseline()
+        else:
+            with H.bindings(P,{'SOURCE_ROOT':SOURCE}):P.map_current_sources(Builder)
     mapping=json.loads((SOURCE/'source-map.json').read_bytes())
+    if BASELINE_GENERATION is not None:
+        basis=mapping.get('generation_basis',{})
+        R.require(basis.get('baseline_generation')==BASELINE_GENERATION and
+                  basis.get('session_overlay')==pin(SESSION_OVERLAY),
+                  'Existing frozen baseline/Session overlay differs')
     for row in mapping['files']:
         actual=pin(SOURCE/row['path'])
         R.require(actual['sha256']==row['original_sha256'],'Mapped source drift: '+row['path'])
@@ -143,9 +196,10 @@ def build():
             with (WORK/name).open('x') as output:output.write(text)
         inputs={**original,**{str(path):pin(path)['sha256'] for path in [WORK/name for name in ('comp_instrumented.ts','run.py','diagnose.mjs')]+[PRIVATE/name for name in PRIVATE_PINS]+[SOURCE/'remote_resource_server.bend',SOURCE/'source-map.json',WORK/'runtime-inputs.json']+[Path(row['mapped']['path']) for row in runtime['files']]}}
         limits={'heap_mib':8192,'total_seconds':600,'silence_only_termination':False,'sampled_rss_bytes':8589934592,'native_seconds':NATIVE_SECONDS}
-        scope=('Actor004/producer019 boxes the sole live cooking owner and joins strict pending-effect recovery to original-JAR cooking/fuel startup, authenticated light/cooking discovery and physical bodies in the atomic world save. This changed source addresses the retained018 native argument-limit failure; successful source typing and layout reduction do not establish native completion.' if generation()==19 else
+        scope=(f'Actor004/producer{generation():03} uses immutable producer{mapping["generation_basis"]["baseline_generation"]:03} plus only the measured Session save-carrier overlay. The baseline full production Entry, runtime facts and every other project source are retained; this is not the newer mutable working graph.' if 'generation_basis' in mapping else
+            'Actor004/producer019 boxes the sole live cooking owner and joins strict pending-effect recovery to original-JAR cooking/fuel startup, authenticated light/cooking discovery and physical bodies in the atomic world save. This changed source addresses the retained018 native argument-limit failure; successful source typing and layout reduction do not establish native completion.' if generation()==19 else
             f'Actor004/producer{generation():03} freezes the actual current production Entry graph, including original-JAR cooking/fuel startup, authenticated light/cooking discovery, complete cooking entity/RNG recovery and IO actor stepping. Native delivery/save/cold-restore acceptance is a separate actual consumer; source typing alone does not establish it.')
-        R.write(WORK/'manifest.json',{'scope':scope+' Includes the native-verified numeric continuation fix. Retains private65536-byte framing, crafting, prospective menu publication, generic samples and moving receiver. Tested private WeakMap/per-function producer; original checker/compiler unchanged. No cache promotion or compiler-wide certification.','files':inputs,'limits':limits,'entry':str(SOURCE/'remote_resource_server.bend')},True)
+        R.write(WORK/'manifest.json',{'scope':scope+' Includes the native-verified numeric continuation fix. Retains private65536-byte framing, crafting, prospective menu publication, generic samples and moving receiver. Tested private WeakMap/per-function producer; original checker/compiler unchanged. No cache promotion or compiler-wide certification.','files':inputs,'limits':limits,'entry':str(SOURCE/'remote_resource_server.bend'),'generation_basis':mapping.get('generation_basis')},True)
         with H.bindings(R,{'WORK':WORK}):
             emitted=R.bounded([sys.executable,str(WORK/'run.py')],605,'emission-process')
             R.process_ok(emitted)
@@ -168,26 +222,37 @@ def build():
         R.require(Path(compiled['stderr']['path']).read_bytes()==b'' and pin(c)==cpin and pin('/usr/bin/clang')==clangpin,'Unexpected native compiler diagnostic or input drift')
     R.require(pin(ACTOR)['sha256']!=pin(OLD/'actor')['sha256'],'New actor reused old binary')
     done={'status':'PASS','generation':generation_name(),'binary':pin(ACTOR),'source_map':pin(SOURCE/'source-map.json'),'runtime_inputs':pin(WORK/'runtime-inputs.json'),'entry':pin(SOURCE/'remote_resource_server.bend'),'C':cpin,'producer':pin(WORK/'receipt.json'),'source_API':pin(ROOT.parent/'bend/bend2/bend.ts'),'private_compiler':pin(WORK/'comp_instrumented.ts'),'original_compiler':pin(ROOT.parent/'bend/bend2/comp.ts'),'loaded_source_pins':pin(WORK/'loaded-source-pins.json'),'final_source_pins':pin(WORK/'final-source-pins.json'),'emission_seconds':receipt['seconds'],'sampled_peak_RSS_bytes':receipt['sampled_peak_rss_bytes'],'clang':{'command':command,'SDKROOT':sdk,'seconds':compiled['seconds'],'cap_seconds':NATIVE_SECONDS,'process':pin(WORK/'native-build-process/result.full.json')},'retries':0,'product_cache_promoted':False,'behavior':'pending actual native cooking/socket/save/reload consumer'}
+    done['generation_basis']=mapping.get('generation_basis')
     R.write(result,done,True);R.write(ROOT/f'evidence/playable-client-actor004-build-{generation():03}.json',done,True)
     print(json.dumps({'status':done['status'],'binary':done['binary'],'emission_seconds':done['emission_seconds'],'clang_seconds':compiled['seconds']}),flush=True)
 
 
 def main():
-    global WORK,SOURCE,ACTOR,NATIVE_SECONDS
+    global WORK,SOURCE,ACTOR,NATIVE_SECONDS,BASELINE_GENERATION,SESSION_OVERLAY
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--snapshot-only',action='store_true')
     parser.add_argument('--actor-generation',type=int,default=19,
                         help='immutable producer generation; default19 preserves existing callers')
     parser.add_argument('--native-seconds',type=int,default=300,
                         help='explicit native compilation bound; actor019 measured240 seconds')
+    parser.add_argument('--baseline-generation',type=int,
+                        help='retain this immutable actor graph while changing only Session')
+    parser.add_argument('--session-overlay',type=Path,
+                        help='measured Session source used with --baseline-generation')
     args=parser.parse_args()
     if args.actor_generation<19 or args.native_seconds<1:
         parser.error('actor generation must be19 or later and native seconds positive')
+    if (args.baseline_generation is None)!=(args.session_overlay is None):
+        parser.error('--baseline-generation and --session-overlay must be supplied together')
+    if args.baseline_generation is not None and not (19<=args.baseline_generation<args.actor_generation):
+        parser.error('baseline must be19 or later and precede the new actor generation')
     WORK=ROOT/f'build/compiler-producer-diagnostic-{args.actor_generation:03}'
     SOURCE=WORK/'source';ACTOR=WORK/'actor';NATIVE_SECONDS=args.native_seconds
+    BASELINE_GENERATION=args.baseline_generation
+    SESSION_OVERLAY=args.session_overlay.resolve() if args.session_overlay is not None else None
     if args.snapshot_only:
         mapping=snapshot()
-        print(json.dumps({'status':'frozen-production-source','generation':generation_name(),
+        print(json.dumps({'status':mapping['status'],'generation':generation_name(),
             'source_map':pin(SOURCE/'source-map.json'),'runtime_inputs':pin(WORK/'runtime-inputs.json'),
             'project_files':len(mapping['files'])}),flush=True)
     else:build()

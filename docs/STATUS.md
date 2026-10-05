@@ -13,9 +13,13 @@ acknowledgements, with a measured maximum reply gap of 4,113.850 ms under the
 continuation repair, not the newer publication/entity actor graph. Public
 adoption remains held: a cold grass startup exposed an initial catalog load
 that did not maintain the lease before its first frame. The changed010 graph
-joins the actual catalog worker to bounded transport heartbeats; its whole
-original source check passes, and its genuine native build is in progress.
-The public launcher remains the verified017/008 pair. See
+joins the actual catalog worker to bounded transport heartbeats and passes
+its full C/native build. Its actual initial grass case maintains the lease,
+then reaches the explicit missing-tint refusal; the initial EOF case drains
+the worker and closes before creating a window. Positive demand loading,
+all 32,768 reference pixels and complete save/cold restoration also pass.
+Changed public-shell acceptance is in progress; the verified017/008 pair is
+retained until that acceptance completes. See
 `evidence/generic_resource_world_sample_client_native_009.json` and the actual
 `build/generic-resource-world-sample-demand-runtime/002/result.json`.
 
@@ -30,8 +34,11 @@ match that checked source. The actual021 producer completes nine ownership
 passes, then fails the original 247-word argument guard after 360.755 seconds
 at 5,109,366,784 bytes peak sampled RSS. No C, clang or native binary exists.
 A bounded changed-body diagnostic identifies cooking-save callbacks with
-268 and 250 words; a small private boxed save-owner change is being measured
-against the same frozen graph before generation022. No newer actor TCP or
+268 and 250 words. Boxing the sole transient/snapshot anchor and completed
+typed save result reduces the actual codec and return cuts to 199 and 58
+words. Coherent022 retains frozen021 plus only that Session change; all 202
+mapped Bend sources match its full original9546-declaration, zero-hole check.
+The actual022 producer is running. No newer actor native/TCP or
 public adoption verdict is claimed. Only a typed receipt from actual durable publication may clean the
 live journal. A pulse may consume pending effects before a save; a nonzero
 pending capture is an observation, never an assumed scheduling guarantee.
@@ -39,7 +46,9 @@ See `evidence/local-player-cooking-publication-codec-native-002.json`,
 `evidence/local-player-cooking-storage-008.json`, and
 `docs/REMOTE_ENTITY_SCENE_WIRE.md`,
 `evidence/playable-client-actor004-source-021.json`, and
-`evidence/playable-client-actor004-build-failure-021.json`.
+`evidence/playable-client-actor004-build-failure-021.json`. Changed022 source
+identity and measured capture scope are in
+`evidence/playable-client-actor004-source-022.json`.
 
 Item tick33 section-order cases and the earlier native24 tick/merge cases are
 verified in the separate production Tick.Scene lane. The additive managed
