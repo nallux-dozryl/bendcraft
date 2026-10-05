@@ -156,7 +156,7 @@ The validated unpaused demo seed is
 1,712,794 bytes, SHA-256
 `e88e15ab0267beb9fea4ad55c9b9b7cd3cca27eea0cf5a3cc6d7b59a2ad1b859`.
 Compared with its controlled source seed, only the Core.paused byte at offset
-3301 changes to zero; all 104 terrain sections, 43 durable player inventory
+330 changes to zero; all 104 terrain sections, 43 durable player inventory
 cells and furnace owners are retained. This is the initial demo image, not a
 successful cooking-run save. The paused controlled seed is not a substitute
 for it.
