@@ -115,7 +115,7 @@ def replace_record(values:List<&2,E.Record>,+replacement:E.Record) -> List<&2,E.
   match values:
     case Nil{}: []
     case +head <> rest:
-      choose(E.Record,replacement,head,U32.is_eq(E.record_id(head),E.record_id(replacement))) <> replace_record(rest,replacement)
+      choose(E.Record,replacement,head,U32.is_eq(E.record_id(head),E.record_id(replacement)) && String.eq(common_dimension(E.common(head)),common_dimension(E.common(replacement)))) <> replace_record(rest,replacement)
 def id_count(values:List<&2,U32>,+id:U32) -> Nat:
   match values:
     case Nil{}: 0n
@@ -281,6 +281,7 @@ def verified_move(+view:M.View,+original:E.Common,+registered:M.SectionKey,+prop
   +new_key=key(U.pos(record))
   do Result<&2,&2,T.Error,M.Moved>:
     _ : Unit <- U.guard(key_eq(old_key,registered) && Nat.is_eq(order,common_order(original)) && bool_eq(accessible(visibility),common_accessible(original)) && uuid_eq(uuid,common_uuid(original)),"original entity Common disagrees with registered section authority")
+    _ : Unit <- U.guard(Nat.is_eq(common_order(E.common(record)),order) && bool_eq(common_accessible(E.common(record)),accessible(visibility)),"proposed entity must retain prior section facts until its move callback")
     _ : Unit <- U.guard(Nat.is_lt(order,next_order),"entity section insertion cursor must follow registered order")
     move_key(view,located,proposed,box,records,next_order,new_key,key_eq(registered,new_key))
 def on_move(+view:M.View,+original:E.Common,+registered:M.SectionKey,+proposed:T.Snapshot,+box:A.AABB,+next_order:Nat,+records:List<&2,E.Record>) -> Result<&2,&2,T.Error,M.Moved>:
@@ -305,11 +306,22 @@ def removed_located(+view:M.View,+located:M.Located,+destroy:Bool,+next_order:Na
     choose(List<&2,M.CallbackEvent>,[M.TrackingEnd{dimension,id}],[],accessible(visibility)),List.append(&2,M.CallbackEvent,
     choose(List<&2,M.CallbackEvent>,[M.Destroyed{dimension,id}],[],destroy),deleted_event(dimension,key,remaining)))))
   stage(M.View{erase_member(members,dimension,id),retained_section(dimension,key,visibility,remaining,erase_section(sections,dimension,key)),chunks,tracked,ticked},next_order,records,events)
+def record(values:List<&2,E.Record>,+dimension:String,+id:U32) -> Result<&2,&2,T.Error,E.Record>:
+  match values:
+    case Nil{}: Fail{T.Refused{"registered entity query record is missing"}}
+    case +head <> +rest:
+      choose(Result<&2,&2,T.Error,E.Record>,Done{head},record(rest,dimension,id),U32.is_eq(E.record_id(head),id) && String.eq(common_dimension(E.common(head)),dimension))
+def removed_verified(+view:M.View,+located:M.Located,+destroy:Bool,+next_order:Nat,+records:List<&2,E.Record>,+actual:E.Record) -> Result<&2,&2,T.Error,M.Proposal>:
+  M.Located{M.Member{dimension,id,key,+order,box,+uuid},M.Section{d,k,+visibility,ids}}=located
+  do Result<&2,&2,T.Error,M.Proposal>:
+    _ : Unit <- U.guard(uuid_eq(uuid,common_uuid(E.common(actual))) && Nat.is_eq(order,common_order(E.common(actual))) && bool_eq(accessible(visibility),common_accessible(E.common(actual))),"removal record disagrees with registered section authority")
+    return removed_located(view,located,destroy,next_order,records)
 def on_removed(+view:M.View,+dimension:String,+id:U32,+destroy:Bool,+next_order:Nat,+records:List<&2,E.Record>) -> Result<&2,&2,T.Error,M.Proposal>:
   do Result<&2,&2,T.Error,M.Proposal>:
     _ : Unit <- U.guard(Nat.is_eq(record_count(records,dimension,id),1n),"removed section entity record must be retained until publication")
     +located : M.Located <- locate(view,dimension,id)
-    return removed_located(view,located,destroy,next_order,records)
+    +actual : E.Record <- record(records,dimension,id)
+    removed_verified(view,located,destroy,next_order,records,actual)
 def orders_before(values:List<&2,M.Member>,+next_order:Nat) -> Bool:
   match values:
     case Nil{}: True{}
@@ -371,11 +383,6 @@ def section_in_box(value:M.SectionKey,box:A.AABB) -> Bool:
   within(signed_axis(x,2097152,4290772992),signed_section(F.sub(minx,F.from_u32(2))),signed_section(F.add(maxx,F.from_u32(2)))) &&
   within(signed_axis(y,524288,4293918720),signed_section(F.sub(miny,F.from_u32(4))),signed_section(maxy)) &&
   within(signed_axis(z,2097152,4290772992),signed_section(F.sub(minz,F.from_u32(2))),signed_section(F.add(maxz,F.from_u32(2))))
-def record(values:List<&2,E.Record>,+dimension:String,+id:U32) -> Result<&2,&2,T.Error,E.Record>:
-  match values:
-    case Nil{}: Fail{T.Refused{"registered entity query record is missing"}}
-    case +head <> +rest:
-      choose(Result<&2,&2,T.Error,E.Record>,Done{head},record(rest,dimension,id),U32.is_eq(E.record_id(head),id) && String.eq(common_dimension(E.common(head)),dimension))
 def query_member(+member:M.Member,+record:E.Record,+query_box:A.AABB) -> Result<&2,&2,T.Error,List<&2,E.Record>>:
   M.Member{dimension,id,key,order,box,uuid}=member
   do Result<&2,&2,T.Error,List<&2,E.Record>>:
