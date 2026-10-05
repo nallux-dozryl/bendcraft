@@ -19,6 +19,12 @@ type Codec<-Extra: Type> is Type:
     fresh: Unit -> Result<&2, &1, String, Extra>,
     core_only: Unit -> Result<&2, &1, String, Extra>}
 
+# A successful response may report a published but unsynced file. Only the
+# actual durable atomic writer result authorizes a durable owner's save ack.
+type SaveCompletion is Data:
+  NotCommitted{}
+  DurablyCommitted{}
+
 type Operation is Data:
   Operation{name: String, access: L.Access, fields: List<&2, L.Field>, description: String}
 
@@ -434,6 +440,38 @@ def save_result(-Extra: Type, session: L.Session, id: String, encoded: State<Ext
 
 def save_codec(~Extra: Type, codec: Codec<Extra>, state: State<Extra>, session: L.Session, id: String) -> IO(State<Extra> & L.Session & J.Value):
   save_result(Extra, session, id, encode_codec(~Extra, codec, state))
+
+def save_completion(outcome:A.Outcome) -> SaveCompletion:
+  match outcome:
+    case A.Durable{}: DurablyCommitted{}
+    case _: NotCommitted{}
+def save_receipt_packed(-Extra:Type,completion:SaveCompletion,result:State<Extra> & L.Session & J.Value) -> State<Extra> & L.Session & J.Value & SaveCompletion:
+  (state,session,value) = result
+  (state,session,value,completion)
+def save_receipt_published(-Extra:Type,extra:Extra,maximum:U32,catalog:List<&2,Operation>,base:P.State,
+    session:L.Session,id:String,bytes:U32,highwater:U32,+outcome:A.Outcome) -> State<Extra> & L.Session & J.Value & SaveCompletion:
+  save_receipt_packed(Extra,save_completion(outcome),pack(Extra,extra,maximum,catalog,
+    P.published(base,session,id,bytes,highwater,outcome)))
+def save_encoded_receipt(-Extra:Type,encoded:Result<&2,&2,String,List<&2,U32>>,state:State<Extra>,+session:L.Session,+id:String) -> IO(State<Extra> & L.Session & J.Value & SaveCompletion):
+  match encoded:
+    case Fail{message}:
+      IO.pure(State<Extra> & L.Session & J.Value & SaveCompletion,
+        save_receipt_packed(Extra,NotCommitted{},failure(Extra,state,session,id,L.bad("SaveEncodingFailed",message))))
+    case Done{+bytes}:
+      State{P.State{engine,identity,+path,+highwater,limits,lease},extra,maximum,catalog} = state
+      do IO<State<Extra> & L.Session & J.Value & SaveCompletion>:
+        outcome : A.Outcome <- A.publish(path,"save-" ++ U32.show(L.peer(session)) ++ "-" ++ Nat.show(L.sequence(session)),bytes)
+        return save_receipt_published(Extra,extra,maximum,catalog,
+          P.State{engine,identity,path,highwater,limits,lease},session,id,
+          U32.from_nat(List.length(&2,U32,bytes)),highwater,outcome)
+def save_receipt_result(-Extra:Type,session:L.Session,id:String,encoded:State<Extra> & Result<&2,&2,String,List<&2,U32>>) -> IO(State<Extra> & L.Session & J.Value & SaveCompletion):
+  (state,bytes) = encoded
+  save_encoded_receipt(Extra,bytes,state,session,id)
+# Same low-level convention as save_codec: the caller has observed the peer
+# and advanced the admitted request's Session exactly once before encoding.
+# Preserve P.published's response, including successful PublishedUnsynced.
+def save_codec_receipt(~Extra:Type,codec:Codec<Extra>,state:State<Extra>,session:L.Session,id:String) -> IO(State<Extra> & L.Session & J.Value & SaveCompletion):
+  save_receipt_result(Extra,session,id,encode_codec(~Extra,codec,state))
 
 def save(~Extra: Type, ~codec: Codec<Extra>, state: State<Extra>, session: L.Session, id: String) -> IO(State<Extra> & L.Session & J.Value):
   save_codec(~Extra, codec, state, session, id)
