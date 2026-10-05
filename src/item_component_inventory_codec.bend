@@ -25,7 +25,7 @@ def stack_tag(catalog:D.Catalog,+key:Inv.ItemKey,+count:U32,plain:Bool) -> Resul
   Inv.ItemKey{+id,identity} = key
   match plain:
     case True{}: Done{N.Compound{[P.member("id",N.StringTag{P.text(id)}),P.member("count",N.Int{count})]}}
-    case False{}: C.encode_modified_slot(D.component_defaults(catalog,id),key,count)
+    case False{}: D.encode_modified_slot(catalog,key,count)
 
 def validated_tag(catalog:D.Catalog,result:Result<&2,&2,String,Inv.Slot>) -> Result<&2,&2,String,N.Value>:
   match result:
@@ -59,7 +59,7 @@ def fields_slot(catalog:D.Catalog,+value:N.Value,modified:Bool) -> Result<&2,&2,
       do Result<&2,&2,String,Inv.Slot>:
         fields : List<&2,P.Field> <- E.schema(List<&2,P.Field>,P.fields(value,["id","count","components"]))
         +id : String <- C.nbt_id(P.field(fields,"id"))
-        C.decode_modified_slot(D.component_defaults(catalog,id),value)
+        D.decode_modified_slot(catalog,value)
 
 def slot_value(catalog:D.Catalog,value:N.Value) -> Result<&2,&2,String,Inv.Slot>:
   match value:

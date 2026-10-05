@@ -2,6 +2,12 @@ import Base
 import ./inventory.bend as Inv
 import ./png.bend as P
 import ./item_component.bend as C
+import ./player_item_components.bend as Registered
+import ./crafting_recipe_components.bend as RecipeComponents
+import ./json.bend as J
+import ./nbt.bend as N
+import ./player_codec.bend as Codec
+import ./item_component_effects.bend as Effects
 
 # The full pinned table is an input to the game, not a Python item implementation.
 # Empty components mean the item's observed defaults, not absent components.
@@ -11,6 +17,7 @@ type Definition is Data:
 
 type Catalog is Data:
   Catalog{definitions:List<&2,Definition>,count:U32}
+  InitializedCatalog{definitions:List<&2,Definition>,count:U32,defaults:List<&2,RecipeComponents.Default>}
 
 def guard(valid:Bool,message:String) -> Result<&2,&2,String,Unit>:
   match valid:
@@ -53,8 +60,36 @@ def known(definitions:List<&2,Definition>,+wanted:String) -> Maybe<&2,Definition
       P.choose(Maybe<&2,Definition>,Some{head},known(rest,wanted),String.eq(id,wanted))
 
 def definition(catalog:Catalog,id:String) -> Maybe<&2,Definition>:
-  Catalog{definitions,count} = catalog
-  known(definitions,id)
+  match catalog:
+    case Catalog{definitions,count}: known(definitions,id)
+    case InitializedCatalog{definitions,count,defaults}: known(definitions,id)
+
+def count(catalog:Catalog) -> U32:
+  match catalog:
+    case Catalog{definitions,count}: count
+    case InitializedCatalog{definitions,count,defaults}: count
+
+def all(catalog:Catalog) -> List<&2,Definition>:
+  match catalog:
+    case Catalog{definitions,count}: definitions
+    case InitializedCatalog{definitions,count,defaults}: definitions
+
+# Only the startup consumer calls this after authenticating the complete facts
+# and checking their rows against the table. A parsed table or envelope does
+# not supply initialized-default authority. Preserve the historical constructor
+# for callers that have not performed that initialization.
+def with_initialized_defaults(+catalog:Catalog,defaults:List<&2,RecipeComponents.Default>) -> Catalog:
+  InitializedCatalog{all(catalog),count(catalog),defaults}
+
+def initialized_defaults(catalog:Catalog,id:String) -> Maybe<&2,J.Value>:
+  match catalog:
+    case Catalog{definitions,count}: None{}
+    case InitializedCatalog{definitions,count,defaults}: RecipeComponents.default_for(defaults,id)
+
+def initialized(catalog:Catalog) -> Bool:
+  match catalog:
+    case Catalog{definitions,count}: False{}
+    case InitializedCatalog{definitions,count,defaults}: True{}
 
 def metadata_known(item:Maybe<&2,Definition>,key:Inv.ItemKey) -> Maybe<&2,Inv.ItemMetadata>:
   match item:
@@ -75,9 +110,30 @@ def component_defaults_known(item:Maybe<&2,Definition>) -> Maybe<&2,C.Defaults>:
 def component_defaults(catalog:Catalog,id:String) -> Maybe<&2,C.Defaults>:
   component_defaults_known(definition(catalog,id))
 
-def metadata_modified(catalog:Catalog,+key:Inv.ItemKey) -> Maybe<&2,Inv.ItemMetadata>:
+def metadata_registered_result(result:Result<&2,&2,String,Inv.ItemMetadata>) -> Maybe<&2,Inv.ItemMetadata>:
+  match result:
+    case Fail{message}: None{}
+    case Done{metadata}: Some{metadata}
+
+def metadata_registered_defaults(defaults:Maybe<&2,J.Value>,key:Inv.ItemKey,allowed:Bool) -> Maybe<&2,Inv.ItemMetadata>:
+  match defaults allowed:
+    case Some{map} True{}: metadata_registered_result(Registered.authenticated(map,key))
+    case _ _: None{}
+
+def metadata_registered(item:Maybe<&2,Definition>,defaults:Maybe<&2,J.Value>,key:Inv.ItemKey) -> Maybe<&2,Inv.ItemMetadata>:
+  match item:
+    case None{}: None{}
+    case Some{Definition{number,id,description,limit,set,digest,enabled}}:
+      metadata_registered_defaults(defaults,key,enabled && Bool.not(String.eq(id,"minecraft:air")))
+
+def metadata_modified_kind(+catalog:Catalog,+key:Inv.ItemKey,registered:Bool) -> Maybe<&2,Inv.ItemMetadata>:
   Inv.ItemKey{id,components} = key
-  C.metadata(component_defaults(catalog,id),key)
+  match registered:
+    case False{}: C.metadata(component_defaults(catalog,id),key)
+    case True{}: metadata_registered(definition(catalog,id),initialized_defaults(catalog,id),key)
+
+def metadata_modified(+catalog:Catalog,key:Inv.ItemKey) -> Maybe<&2,Inv.ItemMetadata>:
+  metadata_modified_kind(catalog,key,initialized(catalog))
 
 def metadata_components(catalog:Catalog,key:Inv.ItemKey,plain:Bool) -> Maybe<&2,Inv.ItemMetadata>:
   match plain:
@@ -87,6 +143,61 @@ def metadata_components(catalog:Catalog,key:Inv.ItemKey,plain:Bool) -> Maybe<&2,
 def metadata(catalog:Catalog,+key:Inv.ItemKey) -> Maybe<&2,Inv.ItemMetadata>:
   Inv.ItemKey{id,components} = key
   metadata_components(catalog,key,String.is_empty(components))
+
+def admitted_metadata(slot:Inv.Slot,value:Maybe<&2,Inv.ItemMetadata>) -> Result<&2,&2,String,Unit>:
+  match value:
+    case None{}: Fail{"inventory slot requires admitted item components"}
+    case Some{metadata}: guard(Inv.slot_valid(slot,metadata),"inventory slot violates admitted stack limit")
+
+def admitted_slot(+catalog:Catalog,+slot:Inv.Slot) -> Result<&2,&2,String,Unit>:
+  match slot:
+    case Inv.InvEmpty{}: Done{Unit{}}
+    case Inv.InvStack{key,count}: admitted_metadata(slot,metadata(catalog,key))
+
+def encoded_registered(map:Maybe<&2,J.Value>,key:Inv.ItemKey,count:U32) -> Result<&2,&2,String,N.Value>:
+  match map:
+    case None{}: Fail{"modified item lacks actual initialized defaults"}
+    case Some{defaults}: Registered.encoded_slot(defaults,key,count)
+
+def encode_modified_kind(+catalog:Catalog,+key:Inv.ItemKey,+count:U32,registered:Bool) -> Result<&2,&2,String,N.Value>:
+  Inv.ItemKey{id,components} = key
+  match registered:
+    case False{}: C.encode_modified_slot(component_defaults(catalog,id),key,count)
+    case True{}:
+      do Result<&2,&2,String,N.Value>:
+        admitted_slot(catalog,Inv.InvStack{key,count})
+        encoded_registered(initialized_defaults(catalog,id),key,count)
+
+def encode_modified_slot(+catalog:Catalog,key:Inv.ItemKey,count:U32) -> Result<&2,&2,String,N.Value>:
+  encode_modified_kind(catalog,key,count,initialized(catalog))
+
+def decoded_registered(map:Maybe<&2,J.Value>,id:String,value:N.Value) -> Result<&2,&2,String,Inv.ItemKey>:
+  match map:
+    case None{}: Fail{"modified item lacks actual initialized defaults"}
+    case Some{defaults}: Registered.decoded_key(defaults,id,value)
+
+def decode_modified_legacy(+catalog:Catalog,+value:N.Value) -> Result<&2,&2,String,Inv.Slot>:
+  do Result<&2,&2,String,Inv.Slot>:
+    +fields : List<&2,Codec.Field> <- Effects.schema(List<&2,Codec.Field>,Codec.fields(value,["id","count","components"]))
+    +id : String <- C.nbt_id(Codec.field(fields,"id"))
+    C.decode_modified_slot(component_defaults(catalog,id),value)
+
+def decode_modified_registered(+catalog:Catalog,value:N.Value) -> Result<&2,&2,String,Inv.Slot>:
+  do Result<&2,&2,String,Inv.Slot>:
+    +fields : List<&2,Codec.Field> <- Effects.schema(List<&2,Codec.Field>,Codec.fields(value,["id","count","components"]))
+    +id : String <- C.nbt_id(Codec.field(fields,"id"))
+    +count : U32 <- Effects.schema(U32,Codec.int_value(Codec.field(fields,"count"),"count"))
+    +key : Inv.ItemKey <- decoded_registered(initialized_defaults(catalog,id),id,Codec.field(fields,"components"))
+    admitted_slot(catalog,Inv.InvStack{key,count})
+    return Inv.InvStack{key,count}
+
+def decode_modified_kind(catalog:Catalog,value:N.Value,registered:Bool) -> Result<&2,&2,String,Inv.Slot>:
+  match registered:
+    case False{}: decode_modified_legacy(catalog,value)
+    case True{}: decode_modified_registered(catalog,value)
+
+def decode_modified_slot(+catalog:Catalog,value:N.Value) -> Result<&2,&2,String,Inv.Slot>:
+  decode_modified_kind(catalog,value,initialized(catalog))
 
 def fields(expected:U32,values:List<&2,String>,+previous:List<&2,Definition>) -> Result<&2,&2,String,Definition>:
   match values:
@@ -155,15 +266,6 @@ def legacy() -> Catalog:
   Catalog{[Definition{1,"minecraft:stone","block.minecraft.stone",64,1386,"5b59e002f4f7936d6af1fe77fc08cdfd019c0ab140dcc2b62f0ce3562be37a6b",True{}},
     Definition{55,"minecraft:dirt","block.minecraft.dirt",64,454,"8cc25b8a8b7ea7bf7b95173f23fde8e1716e70150455faca1feafccb1111def6",True{}},
     Definition{63,"minecraft:oak_planks","block.minecraft.oak_planks",64,805,"b7cfa5f9c09e2124e8f7b46a18eeee35cd08942c68b0a873624b41f3efb8c8b9",True{}}],3}
-
-def count(catalog:Catalog) -> U32:
-  Catalog{definitions,count} = catalog
-  count
-
-def all(catalog:Catalog) -> List<&2,Definition>:
-  Catalog{definitions,count} = catalog
-  definitions
-
 
 law missing_component_definition_cannot_admit_defaults:
   {component_defaults_known(None{}) == None{} : Maybe<&2,C.Defaults>}

@@ -9,7 +9,7 @@ import ./item_component.bend as Components
 # One owner retains main inventory, equipment and temporary menu storage.
 # The legacy36 projection keeps slots0..8 as the hotbar.
 # Empty component strings denote unmodified pinned item defaults, not an NBT
-# component payload. Modified keys require the closed typed profile and actual
+# component payload. Modified keys require canonical structure and actual
 # catalog admission; their complete canonical identity travels with the stack.
 type Abilities is Data:
   Abilities{instabuild:Bool,maybuild:Bool}
@@ -312,7 +312,8 @@ def structural_stack(+key:Inv.ItemKey,+count:U32,plain:Bool) -> Bool:
   Inv.ItemKey{+id,components} = key
   match plain:
     case False{}:
-      structural_components(Components.slot_metadata(Some{Components.InitializedSuspiciousStew{}},Inv.InvStack{key,count}))
+      Nat.is_gt(String.length(id),0n) && Nat.is_le(String.length(id),256n) && D.identifier(id) &&
+        structural_components(Components.structural_slot_metadata(Inv.InvStack{key,count}))
     case True{}:
       Nat.is_gt(String.length(id),0n) && Nat.is_le(String.length(id),256n) && D.identifier(id) &&
         U32.is_gt(count,0) && U32.is_le(count,99)

@@ -93,11 +93,10 @@ def component_row(definitions:List<&2,D.Definition>,+mode:String) -> List<&2,D.D
       modified_definition(mode,number,description,limit,set,digest,enabled) <> component_row(rest,mode)
     case head <> rest: head <> component_row(rest,mode)
 
-def selected_catalog(catalog:D.Catalog,mode:String) -> D.Catalog:
-  D.Catalog{definitions,count} = catalog
+def selected_catalog(+catalog:D.Catalog,mode:String) -> D.Catalog:
   match mode:
     case "missing": D.legacy()
-    case _: D.Catalog{component_row(definitions,mode),count}
+    case _: D.Catalog{component_row(D.all(catalog),mode),D.count(catalog)}
 
 def result_slot(value:Maybe<&2,Inv.Slot>) -> J.Value:
   match value:

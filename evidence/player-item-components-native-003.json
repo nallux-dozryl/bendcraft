@@ -1,0 +1,597 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "scope": "Actual initialized-default metadata, inventory structural/admission/acquire, physical slot codec and strict raw-patch loss refusal. Exact complete64-cell inventory backing and raw abilities/status/menu observations. No actor/network/whole-save/pickup/OS acceptance inferred.",
+  "cases": 30,
+  "physical_cases": 12,
+  "pinned_java_outputs": 11,
+  "initialized_maps": 5,
+  "definition_table_count": 1658,
+  "source_files": [
+    {
+      "path": "src/player_item_definitions.bend",
+      "bytes": 18179,
+      "sha256": "83a4f184e48de82b770ceec268feb55b70afdd69a9d0a008ba901d7ed146fa98"
+    },
+    {
+      "path": "src/item_component.bend",
+      "bytes": 12905,
+      "sha256": "05c81ea37efaca17694133046c974a7c6229079f834ee482777888aa0bd89a1c"
+    },
+    {
+      "path": "src/player_inventory.bend",
+      "bytes": 28820,
+      "sha256": "a1a4a8d0cbb63038c9f01edaadb90a2ec5996cf88fbc2c489a5a0050ca318c6c"
+    },
+    {
+      "path": "src/item_component_inventory_codec.bend",
+      "bytes": 3870,
+      "sha256": "26bc8b6039c4706e33882f0a75e57f09f72e17d0ba88fe7e5a4ae43bbf80882f"
+    },
+    {
+      "path": "src/player_item_components.bend",
+      "bytes": 5440,
+      "sha256": "93eb104f612f8f6505c8c019daeef481fd367f733ec65ff7694a8ad88e531749"
+    },
+    {
+      "path": "src/player_item_component_patch.bend",
+      "bytes": 2884,
+      "sha256": "2e1be17dc860c0d6df180fc4539f0d552516d64aec13a1ff9c8aeeb96355aff6"
+    },
+    {
+      "path": "src/cooking_block_entity_codec_components.bend",
+      "bytes": 11348,
+      "sha256": "1d5d5f8957ef3cae3c5bf8b3101ff29355286874ef95d84183bd751ce0a663da"
+    },
+    {
+      "path": "tests/player_item_components.bend",
+      "bytes": 10431,
+      "sha256": "b7de15be34146e98bbfc6609af46b931fef5dd307f8460bc284bb23038101bf2"
+    },
+    {
+      "path": "tools/test_player_item_components.py",
+      "bytes": 13089,
+      "sha256": "52702d4f80dbe0d4d5c41a3632c44910b73c032485d23ead650e9042c2638768"
+    },
+    {
+      "path": "tests/item_component_inventory.bend",
+      "bytes": 10955,
+      "sha256": "4fec5c0a906bf1c41a06b48b158e6414015bacdece54413b1b476c82dc2ac7d6"
+    },
+    {
+      "path": "tests/item_component_wire.bend",
+      "bytes": 14165,
+      "sha256": "a06beedaa12e695ec277cd78310ad10d4dd12c99c02f8a18394c89c9d8f104fe"
+    },
+    {
+      "path": "tests/player_crafting_authority_observer.bend",
+      "bytes": 6988,
+      "sha256": "dd9d98b17fe1278755e7bf9f50dab83cfb88c30a2e6a8f1ad1640668430d1664"
+    },
+    {
+      "path": "src/player_item_components_laws.bend",
+      "bytes": 1989,
+      "sha256": "7d918f1f2180c9a1c7cfe4ae2598927b0dac077114ad6e3c17498818d402e628"
+    },
+    {
+      "path": "src/player_item_component_patch_laws.bend",
+      "bytes": 3623,
+      "sha256": "744e3a82a074cf499d5e059c6c91b2794383cefc29f0c43e1c41dd6db67e88d3"
+    },
+    {
+      "path": "docs/PLAYER_ITEM_COMPONENT_ADMISSION.md",
+      "bytes": 4603,
+      "sha256": "b759f74e4a689bcb3b4fee56fff7707d7a50bae48b2a26231344fdcedafd0b45"
+    }
+  ],
+  "native_binary": {
+    "bytes": 2286584,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/native-003/native",
+    "sha256": "5a8817b5b1571aec808759a7ea0e2ea5d4d2f5405e1ebbb5ec9094fe87784814"
+  },
+  "emitted_c": {
+    "bytes": 9460108,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/native-003/receiver.c",
+    "sha256": "975f18d6633c324f1b06839835669528c76c270070771b17ecef3ff444d7a603"
+  },
+  "compiled_sources": {
+    "bytes": 15996,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/native-003/receiver.c.sources.json",
+    "sha256": "7716f940422bdd142affdf7f48ab85f06c9ffacbbdbe0388ebea39742b05d7c3"
+  },
+  "compiled_loaded_sources": 104,
+  "source_manifest": {
+    "bytes": 21364,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/native-003/sources.json",
+    "sha256": "5aa5afb121a0d22bc6ee9f502a87633d0da26f3ddf76f57a2327b60c8c680c82"
+  },
+  "sources_unchanged": true,
+  "binary_unchanged": true,
+  "build": {
+    "private_producer": true,
+    "original_full_checker": true,
+    "producer_basis": {
+      "bytes": 7468,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/evidence/actor-compiler-memory-001.json",
+      "sha256": "cff0eaf29e8e985c1b8dce36bc524d91a28a2c1c070c1c7dcbc16c74bd9515ff"
+    },
+    "cache_hit": false,
+    "retries": 0,
+    "cpu_guard": "passed; BANGS0; no graphics route",
+    "emit": {
+      "receipt": {
+        "path": "build/player-item-components/native-003/emit-process.json",
+        "bytes": 1298,
+        "sha256": "1a33c48f61ae8fecf3c1e923346227f694205fd9e73e2ea7a43b3012dc14ad7f"
+      },
+      "argv": [
+        "/usr/bin/env",
+        "BEND_PRODUCER_LOG=/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/native-003/emit-functions.jsonl",
+        "BEND_PRODUCER_GC=1",
+        "/opt/homebrew/bin/node",
+        "--expose-gc",
+        "--max-old-space-size=8192",
+        "--stack-size=4096",
+        "--experimental-transform-types",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/player_cooking_menu_emit.mjs",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_item_components.bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/native-003/receiver.c"
+      ],
+      "seconds": 45.19055466540158,
+      "exit_code": 0,
+      "timed_out": false,
+      "pid": 57160,
+      "cleanup": {
+        "after": [],
+        "before": [],
+        "errors": [],
+        "leader_reaped": true,
+        "live_group_absent": true,
+        "seconds": 0.11310508288443089
+      },
+      "stdout": {
+        "bytes": 459,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/native-003/emit/stdout",
+        "sha256": "d822a2b1c02d0cd72aed88d1b37c710b1a2d3570ab29c169c65b2fffc26e10c3"
+      },
+      "stderr": {
+        "bytes": 177,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/native-003/emit/stderr",
+        "sha256": "9eede0420efc6e746ad9072b900606f981e08bcebb2d4ca351bb50e23bc57b20"
+      }
+    },
+    "clang": {
+      "receipt": {
+        "path": "build/player-item-components/native-003/clang-process.json",
+        "bytes": 997,
+        "sha256": "62f56aeb988070519695eb6576ada564ad5b09aec8a45ab2e57db27a0efaf9d1"
+      },
+      "argv": [
+        "/usr/bin/clang",
+        "-std=c11",
+        "-O3",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/native-003/receiver.c",
+        "-lpthread",
+        "-lm",
+        "-o",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/native-003/native"
+      ],
+      "seconds": 13.354581042192876,
+      "exit_code": 0,
+      "timed_out": false,
+      "pid": 57484,
+      "cleanup": {
+        "after": [],
+        "before": [],
+        "errors": [],
+        "leader_reaped": true,
+        "live_group_absent": true,
+        "seconds": 0.10779229272156954
+      },
+      "stdout": {
+        "bytes": 0,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/native-003/clang/stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 0,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/native-003/clang/stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  },
+  "native": {
+    "receipt": {
+      "path": "build/player-item-components/native-003/player-item-components-process.json",
+      "bytes": 1105,
+      "sha256": "8054cf22bbbf8ca4187d16fa66edccee9cdb6cd95b0d60622a28dfbdaa797c20"
+    },
+    "argv": [
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/native-003/native",
+      "--gpu",
+      "off",
+      "--threads",
+      "1",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_item_metadata.tsv",
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/native-003/fixtures/fixtures.json"
+    ],
+    "seconds": 3.23449616599828,
+    "exit_code": 0,
+    "timed_out": false,
+    "pid": 57586,
+    "cleanup": {
+      "after": [],
+      "before": [],
+      "errors": [],
+      "leader_reaped": true,
+      "live_group_absent": true,
+      "seconds": 0.24795475043356419
+    },
+    "stdout": {
+      "bytes": 60415,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/native-003/player-item-components/stdout",
+      "sha256": "006537b2dbad0b916e9a16f9dce474ab86a67b99571d628c3fe74feabd620a95"
+    },
+    "stderr": {
+      "bytes": 0,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/native-003/player-item-components/stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "inputs": {
+    "input": {
+      "bytes": 30246,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/native-003/fixtures/fixtures.json",
+      "sha256": "6d1f39a3f8b043fdbc76c4f28479b5d75de12357c0d7ba62fd8641bb9a397647"
+    },
+    "table": {
+      "bytes": 556426,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_item_metadata.tsv",
+      "sha256": "1cf2669ac760fed886b33d19b12e4782d5011c68c629d22328147d8a9a9bfa22"
+    },
+    "reference": {
+      "bytes": 1762172,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/reference/crafting_recipe_components.json",
+      "sha256": "2a677248a345741d810a1f03fc19c7c34b6ac709c06c99ac8a6433bc2d3e9e64"
+    }
+  },
+  "source_checks": [
+    {
+      "receipt": {
+        "path": "build/player-item-components/ordinary-006/process.json",
+        "bytes": 885,
+        "sha256": "68bba8756b478b98f44f619ef724a6117d7bb8e32d96d62c78681eca80ed0b71"
+      },
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/player_item_definitions.bend",
+        "--check-only"
+      ],
+      "seconds": 6.549693583510816,
+      "exit_code": 0,
+      "timed_out": false,
+      "pid": 40187,
+      "cleanup": {
+        "after": [],
+        "before": [],
+        "errors": [],
+        "leader_reaped": true,
+        "live_group_absent": true,
+        "seconds": 0.10360312554985285
+      },
+      "stdout": {
+        "bytes": 58,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/ordinary-006/definitions/stdout",
+        "sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1"
+      },
+      "stderr": {
+        "bytes": 0,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/ordinary-006/definitions/stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "receipt": {
+        "path": "build/player-item-components/ordinary-013/process.json",
+        "bytes": 878,
+        "sha256": "1bff68f71ad0d94e6a679569645193d91cacf782993ad0a6d31a9f6ed41c64bc"
+      },
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_item_components.bend",
+        "--check-only"
+      ],
+      "seconds": 7.657989332452416,
+      "exit_code": 0,
+      "timed_out": false,
+      "pid": 41712,
+      "cleanup": {
+        "after": [],
+        "before": [],
+        "errors": [],
+        "leader_reaped": true,
+        "live_group_absent": true,
+        "seconds": 0.09585841745138168
+      },
+      "stdout": {
+        "bytes": 58,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/ordinary-013/harness/stdout",
+        "sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1"
+      },
+      "stderr": {
+        "bytes": 0,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/ordinary-013/harness/stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "receipt": {
+        "path": "build/player-item-components/ordinary-016/process.json",
+        "bytes": 878,
+        "sha256": "5ae6e915e0d0d29bc7b643eded95d6b35f572d2ee2efe2a2b116f44b0dc0c01a"
+      },
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_item_components.bend",
+        "--check-only"
+      ],
+      "seconds": 7.547817459329963,
+      "exit_code": 0,
+      "timed_out": false,
+      "pid": 53944,
+      "cleanup": {
+        "after": [],
+        "before": [],
+        "errors": [],
+        "leader_reaped": true,
+        "live_group_absent": true,
+        "seconds": 0.09646183345466852
+      },
+      "stdout": {
+        "bytes": 58,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/ordinary-016/harness/stdout",
+        "sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1"
+      },
+      "stderr": {
+        "bytes": 0,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/ordinary-016/harness/stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "receipt": {
+        "path": "build/player-item-components/ordinary-017/process.json",
+        "bytes": 879,
+        "sha256": "b066a3444aea6cd45cd540167f72756bc67bd816aaf3dc215ec11024417aaae3"
+      },
+      "argv": [
+        "/Users/chuah/.bend/bin/bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/player_item_components.bend",
+        "--check-only"
+      ],
+      "seconds": 18.238755125552416,
+      "exit_code": 0,
+      "timed_out": false,
+      "pid": 56825,
+      "cleanup": {
+        "after": [],
+        "before": [],
+        "errors": [],
+        "leader_reaped": true,
+        "live_group_absent": true,
+        "seconds": 0.10889504197984934
+      },
+      "stdout": {
+        "bytes": 58,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/ordinary-017/harness/stdout",
+        "sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1"
+      },
+      "stderr": {
+        "bytes": 0,
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/ordinary-017/harness/stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "retained_failures": {
+    "001": {
+      "failure": {
+        "path": "build/player-item-components/native-001/first-failure.json",
+        "bytes": 1217,
+        "sha256": "a73808f15736d4c3519315a686727cf409f5aad8c91dbc26d526fa8b32eeb6a9"
+      },
+      "native": {
+        "receipt": {
+          "path": "build/player-item-components/native-001/player-item-components-process.json",
+          "bytes": 1098,
+          "sha256": "5faae19c496015b47f4f905276ff67cfd4eb0f939e5fdebe6164f2870c541039"
+        },
+        "argv": [
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/native-001/native",
+          "--gpu",
+          "off",
+          "--threads",
+          "1",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_item_metadata.tsv",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/native-001/fixtures/fixtures.json"
+        ],
+        "seconds": 1.9587422078475356,
+        "exit_code": 2,
+        "timed_out": false,
+        "pid": 51089,
+        "cleanup": {
+          "after": [],
+          "before": [],
+          "errors": [],
+          "leader_reaped": true,
+          "live_group_absent": true,
+          "seconds": 0.12864679098129272
+        },
+        "stdout": {
+          "bytes": 0,
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/native-001/player-item-components/stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "bytes": 45,
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/native-001/player-item-components/stderr",
+          "sha256": "9cba6b6134c019de674b9fc53ef0660a272500c88a944e80e0b866c40040a212"
+        }
+      },
+      "cause": "Owned fixture reader reused digest-checked item table text decoder for unrelated fixture JSON; replaced with Unicode.decode. Changed inputs archived before edits.",
+      "preservation": {
+        "path": "build/player-item-components/native-001/failed-inputs/manifest.json",
+        "bytes": 1273,
+        "sha256": "bd6e57dfcb95e924c47f8ad4c9e020178013a96b4c0e97bb36cdc08cc3bc40c8"
+      }
+    },
+    "002": {
+      "failure": {
+        "path": "build/player-item-components/native-002/first-failure.json",
+        "bytes": 1593,
+        "sha256": "302c42c033f707c557dbeb19fe058dd985788940a2972507eeea61a09b7e0a73"
+      },
+      "native": {
+        "receipt": {
+          "path": "build/player-item-components/native-002/player-item-components-process.json",
+          "bytes": 1467,
+          "sha256": "2fd4a579afa78ec68090ba44cd6da79d1830a43a5e293ebba87af67c03b4dd26"
+        },
+        "argv": [
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/native-002/native",
+          "--gpu",
+          "off",
+          "--threads",
+          "1",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_item_metadata.tsv",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/native-002/fixtures/fixtures.json"
+        ],
+        "seconds": 30.160560292191803,
+        "exit_code": -15,
+        "timed_out": true,
+        "pid": 54551,
+        "cleanup": {
+          "after": [],
+          "before": [
+            {
+              "argv": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/native-002/native --gpu off --threads 1 /Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_item_metadata.tsv /Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/native-002/fixtures/fixtures.json",
+              "group": 54551,
+              "pid": 54551,
+              "state": "Rs"
+            }
+          ],
+          "errors": [],
+          "leader_reaped": true,
+          "live_group_absent": true,
+          "seconds": 0.15460591670125723
+        },
+        "stdout": {
+          "bytes": 0,
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/native-002/player-item-components/stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "bytes": 0,
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/native-002/player-item-components/stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "cause": "Eager choose computed each additions/removals recursive tail twice, giving exponential patch reconstruction. Actual CC now computes each recursive tail once and matches the same complete ordered branches; authentication remains shared Patch.authenticated/C.resolve.",
+      "preservation": {
+        "path": "build/player-item-components/native-002/failed-inputs/manifest.json",
+        "bytes": 544,
+        "sha256": "de2ccf48215964e316b7fc694ec7bb8c9155d260d4284c9d4f8a287a415f7f79"
+      },
+      "empty_diagnostic": {
+        "receipt": {
+          "path": "build/player-item-components/native-002/empty-case/process.json",
+          "bytes": 1093,
+          "sha256": "8a5f90dc26bd442a39c5202f508d42182328b4b477d65b2468ad3381e59fa522"
+        },
+        "argv": [
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/native-002/native",
+          "--gpu",
+          "off",
+          "--threads",
+          "1",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_item_metadata.tsv",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/native-002/empty-case/input.json"
+        ],
+        "seconds": 0.9409966664388776,
+        "exit_code": 0,
+        "timed_out": false,
+        "pid": 55574,
+        "cleanup": {
+          "after": [],
+          "before": [],
+          "errors": [],
+          "leader_reaped": true,
+          "live_group_absent": true,
+          "seconds": 0.09826404135674238
+        },
+        "stdout": {
+          "bytes": 31,
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/native-002/empty-case/native/stdout",
+          "sha256": "158e95f9379633809a8b8a3fbcbe284ed0e5fe3d02188e41e5773d0f52d56247"
+        },
+        "stderr": {
+          "bytes": 0,
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/native-002/empty-case/native/stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "one_case": {
+        "receipt": {
+          "path": "build/player-item-components/native-002/one-case/process.json",
+          "bytes": 1089,
+          "sha256": "14f37ef6195c7b50346e6a592da4ae36aa3821475a1b0f1c5f658aaf72482ff3"
+        },
+        "argv": [
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/native-002/native",
+          "--gpu",
+          "off",
+          "--threads",
+          "1",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/generated/reference_item_metadata.tsv",
+          "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/native-002/one-case/input.json"
+        ],
+        "seconds": 25.158277959562838,
+        "exit_code": 0,
+        "timed_out": false,
+        "pid": 55232,
+        "cleanup": {
+          "after": [],
+          "before": [],
+          "errors": [],
+          "leader_reaped": true,
+          "live_group_absent": true,
+          "seconds": 0.10003587510436773
+        },
+        "stdout": {
+          "bytes": 2978,
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/native-002/one-case/native/stdout",
+          "sha256": "37ebac370c467f8fe44183aebffa003cf4b3998c401c29188df39e3ccbe76424"
+        },
+        "stderr": {
+          "bytes": 0,
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-item-components/native-002/one-case/native/stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "native_sample": {
+        "path": "build/player-item-components/native-002/profile-case/sample.txt",
+        "bytes": 10647,
+        "sha256": "f888b1a78366ba9d904b96d488a905dc44ce39bf1ab49716353e26a7495c0125"
+      }
+    }
+  },
+  "proof_status": {
+    "admission_laws": "First3 laws source-clean at ordinary015; subsequently added complete-owner refusal law is authored, current4-law source/kernel verification pending.",
+    "linear_patch_equivalence": "Four laws authored, including structural induction against exact archived previous recursive definitions for complete arbitrary ordered lists/default/effective maps; source/kernel verification pending.",
+    "native_is_not_parametric_proof": true
+  },
+  "remaining_gaps": [
+    "Changed value codecs outside the existing seven typed setters remain explicit refusals; registered persistent removals and unchanged initialized values are retained.",
+    "Current actor transport, picked-up drop integration and whole-save crash recovery must consume this source generation independently."
+  ]
+}

@@ -4,6 +4,8 @@ import ../src/player_item_definitions.bend as D
 import ../src/crafting_recipe.bend as R
 import ../src/player_crafting_authority_components.bend as M
 import ../src/item_component.bend as C
+import ../src/crafting_recipe_components.bend as Components
+import ../src/json.bend as J
 
 # Test-only structural observation. Ordering, constructor choice and every
 # stored field are part of the expected context; no matcher or admission path
@@ -40,10 +42,21 @@ def definitions_same(expected:List<&2,D.Definition>,actual:List<&2,D.Definition>
     case head <> rest other <> tail: definition_same(head,other) && definitions_same(rest,tail)
     case _ _: False{}
 
-def definition_catalog_same(expected:D.Catalog,actual:D.Catalog) -> Bool:
-  D.Catalog{definitions,count} = expected
-  D.Catalog{other,amount} = actual
-  U32.is_eq(count,amount) && definitions_same(definitions,other)
+def defaults_same(expected:List<&2,Components.Default>,actual:List<&2,Components.Default>) -> Bool:
+  match expected actual:
+    case Nil{} Nil{}: True{}
+    case Components.Default{id,value} <> rest Components.Default{other,map} <> tail:
+      String.eq(id,other) && String.eq(J.encode(value),J.encode(map)) && defaults_same(rest,tail)
+    case _ _: False{}
+
+def catalog_defaults_same(expected:D.Catalog,actual:D.Catalog) -> Bool:
+  match expected actual:
+    case D.Catalog{definitions,count} D.Catalog{other,amount}: True{}
+    case D.InitializedCatalog{definitions,count,defaults} D.InitializedCatalog{other,amount,maps}: defaults_same(defaults,maps)
+    case _ _: False{}
+
+def definition_catalog_same(+expected:D.Catalog,+actual:D.Catalog) -> Bool:
+  U32.is_eq(D.count(expected),D.count(actual)) && definitions_same(D.all(expected),D.all(actual)) && catalog_defaults_same(expected,actual)
 
 def selector_same(expected:R.Selector,actual:R.Selector) -> Bool:
   match expected actual:

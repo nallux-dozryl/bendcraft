@@ -15,17 +15,25 @@ def unchanged(+a:J.Value,+b:Maybe<&2,J.Value>) -> Bool:
   match b:
     case None{}: False{}
     case Some{value}: String.eq(J.encode(a),J.encode(value))
+def additions_tail(equal:Bool,head:J.Member,tail:List<&2,J.Member>) -> List<&2,J.Member>:
+  match equal:
+    case True{}: tail
+    case False{}: head <> tail
 def additions(values:List<&2,J.Member>,+defaults:J.Value) -> List<&2,J.Member>:
   match values:
     case Nil{}: []
-    case +head <> +rest:
+    case +head <> rest:
       J.JMember{id,+value} = head
-      R.choose(List<&2,J.Member>,additions(rest,defaults),head <> additions(rest,defaults),unchanged(value,J.member(defaults,id)))
+      additions_tail(unchanged(value,J.member(defaults,id)),head,additions(rest,defaults))
+def removals_tail(present:Bool,id:String,tail:List<&2,J.Member>) -> List<&2,J.Member>:
+  match present:
+    case True{}: tail
+    case False{}: J.JMember{"!" ++ id,J.JObject{[]}} <> tail
 def removals(values:List<&2,J.Member>,+effective:J.Value) -> List<&2,J.Member>:
   match values:
     case Nil{}: []
-    case J.JMember{+id,value} <> +rest:
-      R.choose(List<&2,J.Member>,removals(rest,effective),J.JMember{"!" ++ id,J.JObject{[]}} <> removals(rest,effective),Maybe.is_some(&2,J.Value,J.member(effective,id)))
+    case J.JMember{+id,value} <> rest:
+      removals_tail(Maybe.is_some(&2,J.Value,J.member(effective,id)),id,removals(rest,effective))
 def diff(+defaults:J.Value,+effective:J.Value) -> Result<&2,&2,String,J.Value>:
   match defaults effective:
     case J.JObject{original} J.JObject{actual}: Done{J.JObject{List.append(&2,J.Member,additions(actual,defaults),removals(original,effective))}}

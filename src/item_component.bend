@@ -5,6 +5,7 @@ import ./player_codec.bend as P
 import ./inventory.bend as Inv
 import ./crafting_recipe_components.bend as RecipeComponents
 import ./item_component_effects.bend as E
+import ./player_item_components.bend as Registered
 
 # A closed, typed effective profile for the seventeen patched 26.3 recipes.
 # The variant represents all seventeen fixed initialized defaults; only its
@@ -153,6 +154,11 @@ def slot_metadata(defaults:Maybe<&2,Defaults>,slot:Inv.Slot) -> Result<&2,&2,Str
         admitted : Validated <- validate(defaults,key)
         guard(U32.is_eq(count,1),"suspicious stew count requires one item")
         return Inv.ItemMetadata{key,1}
+
+# Canonical transport shape only; initialized catalog authority remains the
+# separate player_item_definitions.metadata/codec boundary.
+def structural_slot_metadata(slot:Inv.Slot) -> Result<&2,&2,String,Inv.ItemMetadata>:
+  Registered.structural_slot_metadata(slot)
 
 def installed(result:Inv.Inventory & Bool) -> Inv.Inventory & Result<&2,&2,String,Unit>:
   (owner,accepted) = result
