@@ -24,6 +24,8 @@ def deliver(effects:List<&2,Store.Effect>) -> Outcome:
       refused(Store.Experience{position,request} <> rest,"xp-orb-and-level-rng")
     case Store.Dirty{position} <> rest:
       refused(Store.Dirty{position} <> rest,"block-entity-and-comparator-publisher")
+    case Store.OwnedDirty{source} <> rest:
+      refused(Store.OwnedDirty{source} <> rest,"publication")
     case Store.BlockUpdate{position,1n+count} <> rest:
       refused(Store.BlockUpdate{position,1n+count} <> rest,"block-update-publisher")
     case Store.BlockChange{position,1n+count} <> rest:
