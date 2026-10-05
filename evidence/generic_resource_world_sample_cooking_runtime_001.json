@@ -1,0 +1,397 @@
+{
+  "schema": 1,
+  "status": "FAIL_named_renderer_lease_refusal_before_output_transfer",
+  "source_helper": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/generic_resource_world_sample_cooking_runtime.py",
+    "bytes": 50630,
+    "sha256": "a42a9fb5cb48fd28bbb869a0be3e5e6c5a366593ccaa5a7aee2d48a30985c78c"
+  },
+  "documentation": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/docs/generic_resource_world_sample_cooking_runtime.md",
+    "bytes": 8593,
+    "sha256": "2a68e96e8536cad77630e970ca5144a7d85f3d189ffc59bec344c09366f14cbd"
+  },
+  "executed_preparation": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/009/prepared.json",
+    "bytes": 10994,
+    "sha256": "40c2905cd9e05f819072c37cb9b01345b65b2708dc1f7e200ab93dbd4fc270bf"
+  },
+  "production_client_generation": 12,
+  "production_client_build": {
+    "bytes": 10076,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/012/build.json",
+    "sha256": "0ccbe71835a81a89ebfdd187174fcf9461ba49980e52cb6b7944723c818e8422"
+  },
+  "original_C": {
+    "bytes": 24951887,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-client-native/012/renderer.c",
+    "sha256": "eed88e41373aaff2d41145e690f6776deb12a6bb2893911df5b467ef1dff980d"
+  },
+  "private_callback_C": {
+    "bytes": 24957984,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/009/renderer-callback.c",
+    "sha256": "c8c98dcb674dad6c3a566027cf09fc9894c56cb0153ed12fee1fe8c270d7c4f7"
+  },
+  "private_callback_binary": {
+    "bytes": 6989616,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/009/renderer-callback",
+    "sha256": "023dc60d28bc916b0363ad42b9d56c5cbb38e6182faf95b78479cd7d5017ec19"
+  },
+  "one_actual_callback_compile": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/004/callback-build.json",
+    "bytes": 2338,
+    "sha256": "d63af40e53929266faf0e755e0c6c5d156c14ea3e0be977b7e027641ac9ea966"
+  },
+  "unchanged_callback_reuse": {
+    "build": {
+      "bytes": 3058,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/008/callback-build.json",
+      "sha256": "f4479f25d3a80dc38cde0ed3f7b7d350c123fa99e0ea64fcd3b37ee7998453dd"
+    },
+    "new_compiler_or_emitter_processes": 0,
+    "original_binary": {
+      "bytes": 6989616,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/008/renderer-callback",
+      "sha256": "023dc60d28bc916b0363ad42b9d56c5cbb38e6182faf95b78479cd7d5017ec19"
+    },
+    "reason": "Host-only observer/driver repair; byte-identical C and binary retained.",
+    "same_binary_sha256": "023dc60d28bc916b0363ad42b9d56c5cbb38e6182faf95b78479cd7d5017ec19"
+  },
+  "private120s_observer_source": {
+    "bytes": 2633,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/009/observer.swift",
+    "sha256": "ea59b9e930e9e6dcacaeaf3d5bf60d7ff2782bbeae53529da30c117d6440b150"
+  },
+  "private120s_observer_binary": {
+    "bytes": 84872,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/009/observer",
+    "sha256": "07041fe700b9b5cf464c644161ea6c27d99c9aac3531383f8754705205ac82e6"
+  },
+  "observer_unchanged_reuse": {
+    "build": {
+      "bytes": 1561,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/008/observer-build.json",
+      "sha256": "7a2f3816dcdd11dd1de4e411a5dd74fcf4f6373d86eafc279bcc8bf5fcec2a6f"
+    },
+    "new_compiler_processes": 0,
+    "original_binary": {
+      "bytes": 84872,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/008/observer",
+      "sha256": "07041fe700b9b5cf464c644161ea6c27d99c9aac3531383f8754705205ac82e6"
+    }
+  },
+  "runtime_cap_seconds": 120,
+  "actual_actor": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/compiler-producer-diagnostic-022/actor",
+    "bytes": 16246616,
+    "sha256": "1ba545e7ccd84e5011f51199c2ee9562e4063c24b98c64148323551039357712"
+  },
+  "actual_commands": {
+    "prepare": "python3 -B tools/generic_resource_world_sample_cooking_runtime.py --generation 9 --client-generation 12 --prepare",
+    "reuse": "python3 -B tools/generic_resource_world_sample_cooking_runtime.py --generation 9 --client-generation 12 --reuse-hook-generation 8",
+    "native": "python3 -B tools/generic_resource_world_sample_cooking_runtime.py --generation 9 --client-generation 12 --actor-generation 22 --clock ambient --native"
+  },
+  "fixture": {
+    "HUD_scale": 1,
+    "body_speed_bits": 1065353216,
+    "feet": [
+      12.5,
+      8,
+      10.5
+    ],
+    "full43": true,
+    "incarnation": 3,
+    "initial_registry_state": 6884,
+    "look_degrees": [
+      0,
+      30
+    ],
+    "main0": "minecraft:beef*2",
+    "main1": "minecraft:coal*2",
+    "position": [
+      "minecraft:overworld",
+      12,
+      8,
+      12
+    ],
+    "render_extent": [
+      960,
+      540
+    ],
+    "sections": 104,
+    "selected": 2
+  },
+  "seed": {
+    "bytes": 1712794,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/009/seed.nbt",
+    "sha256": "b7f7882b308716743e9cabd2437c8d6584d940d52ff6bef9f36e1d80b0f494a2"
+  },
+  "events": {
+    "bytes": 1065,
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/009/events.json",
+    "sha256": "6a54f72bbf90af61ecb91adf19ccd346130b3d647907dd086fbe654cdf63003d"
+  },
+  "actual_scope": {
+    "production_Bend_changes": 0,
+    "production_Native_changes": 0,
+    "original_compiler_changes": 0,
+    "private_semantic_seams": 4,
+    "event_callback_scope": {
+      "declaration_sha256": "df35838c0900cea03924814bb1a37a7f8722ab54e89636324fbb3307999dfc44",
+      "edits": [
+        "Only queried BEND_MINECRAFT_LAUNCH_MODE returns human under explicit hidden callback marker; all other effect/env reads exact",
+        "Private declaration before the actual Objective-C Window.frame",
+        "After original window_show, before unchanged window_list/queue clearing",
+        "Test-only virtual grab branch; no Base cursor effects; real releaseKeys retained",
+        "Test-only focused=True/captured=virtual grab, within actual Native.status",
+        "Local callback implementation after actual MCPlayerPresentationView declaration"
+      ],
+      "event_callback_source_sha256": "9691fd6ced9f7a6290a0428ad4d0b73f937413e0c7a0083169b9d8af95187e6d",
+      "interactive_mode_read": {
+        "actual_native_environment": "hidden",
+        "effect": "CID_IO_GET_ENV",
+        "other_queries_changed": false,
+        "query": "BEND_MINECRAFT_LAUNCH_MODE",
+        "returned": "human"
+      },
+      "original_C_edits": 0,
+      "original_window_show_list_and_drawing_retained": true,
+      "production_Bend_edits": 0,
+      "production_Native_edits": 0,
+      "scope": "Synthetic local NSEvent callbacks and virtual focus/capture only; no OS event posting, focus, capture, cursor or input-latency claim."
+    },
+    "real_private_protocol_forwarding": true,
+    "real_actor_ambient_ticks": true,
+    "simulation_step_calls": 0,
+    "actual_completed_phases": [
+      "CookingUse ray opens real furnace",
+      "beef pickup main0",
+      "beef placement input",
+      "coal pickup main1",
+      "coal placement fuel",
+      "painted partial progress",
+      "real cooked_beef2 completion and complete painted CPU image"
+    ],
+    "not_passed": [
+      "output pickup",
+      "output placement",
+      "E close",
+      "window close",
+      "durable save",
+      "cold reload"
+    ],
+    "no_OS_input_or_foreground_acceptance": true,
+    "no_full_vanilla_GPU_frame_claim": true,
+    "ordinary_unmodified012_compatibility": "Separate parent-owned acceptance, not established by this callback fixture"
+  },
+  "named_refusal": {
+    "accepted_epoch": "playable-test-actor-callback:1",
+    "accepted_sequence": 98,
+    "refused_sequence": 99,
+    "refused_command": [
+      1,
+      [
+        true,
+        false,
+        []
+      ]
+    ],
+    "message": "RendererLeaseOrSequence",
+    "active_lease_false": "Source-derived identification after exact next epoch/sequence acceptance; no pulse timestamps recorded",
+    "confirmed_at_seconds_after_observer_start": 90.4,
+    "cause_confidence": "high inference for queued pulse catch-up; specific host-pause explanation falsified by009",
+    "reply_file_to_refusal_file_mtime_seconds": 2.8144280910491943
+  },
+  "historical_failures": [
+    {
+      "generation": 4,
+      "first_failure": {
+        "pin": {
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/004/native/first-failure.json",
+          "bytes": 43,
+          "sha256": "9a952b2c5eccaeec1447faef91be282e2fa3dd2a1d0db9f3a2216f20d1bdd329"
+        },
+        "value": {
+          "message": "'artifact'",
+          "type": "KeyError"
+        }
+      },
+      "cleanup": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/004/native/owned-groups-cleanup.json",
+        "bytes": 1217,
+        "sha256": "1d8cd147ee31340a4828cae8ea42c94a8632a34490f4cc180d0227f2427adf2f"
+      },
+      "all_registered_groups_absent": true
+    },
+    {
+      "generation": 6,
+      "first_failure": {
+        "pin": {
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/006/native/first-failure.json",
+          "bytes": 95,
+          "sha256": "5cd393c360c2a2700a56acec9156245cfa3d9430204f1a4596d2537ee93e11ea"
+        },
+        "value": {
+          "message": "Fixed native55s driver deadline: ambient cooking inspect",
+          "type": "AssertionError"
+        }
+      },
+      "cleanup": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/006/native/owned-groups-cleanup.json",
+        "bytes": 2450,
+        "sha256": "526a85c380502eed3e87613e4af0338f12be50a05e14fccbf62399ba384b1221"
+      },
+      "all_registered_groups_absent": true
+    },
+    {
+      "generation": 8,
+      "first_failure": {
+        "pin": {
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/008/native/first-failure.json",
+          "bytes": 91,
+          "sha256": "86a54316e9b2493ee67fdec54e87ac03d28285ce8c4bc4d61d9b42fc89a095ab"
+        },
+        "value": {
+          "message": "Actual client exited before paused completed cooking",
+          "type": "AssertionError"
+        }
+      },
+      "cleanup": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/008/native/owned-groups-cleanup.json",
+        "bytes": 3719,
+        "sha256": "b0b9d8f88c11df0c3c36641e76f6c833b19089cb321681c7704a41b3572b4b71"
+      },
+      "all_registered_groups_absent": true,
+      "diagnosis": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/008/native/diagnosis.json",
+        "bytes": 7888,
+        "sha256": "1f9c524a8f3381243653797bf0ce605e1e3efa4456644a3f1be7d016b2a568f2"
+      },
+      "wire": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/008/native/callback-relay.json",
+        "bytes": 846578,
+        "sha256": "b3314a625694a325bf30bd2adc3490caad1d93a1f2790c7d347290f8168e169c"
+      },
+      "rechecked_complete_P6_frames": 6,
+      "accepted_cooking": [
+        1,
+        0,
+        [
+          0
+        ],
+        [
+          1,
+          "minecraft:coal",
+          "",
+          1
+        ],
+        [
+          1,
+          "minecraft:cooked_beef",
+          "",
+          2
+        ],
+        1157,
+        1600,
+        0,
+        200
+      ],
+      "host_pause_before_refusal": true
+    },
+    {
+      "generation": 9,
+      "first_failure": {
+        "pin": {
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/009/native/first-failure.json",
+          "bytes": 103,
+          "sha256": "af95c8d6155d2913caa9e318ea6fb59925851a5fef1ab19ff26d7b1c95b61ac5"
+        },
+        "value": {
+          "message": "Actual client exited before callback acknowledgement pick-output",
+          "type": "AssertionError"
+        }
+      },
+      "cleanup": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/009/native/owned-groups-cleanup.json",
+        "bytes": 4984,
+        "sha256": "16756a653054679761b9642606b729f23ee4690276c0702bf8fd3e6927bb5e30"
+      },
+      "all_registered_groups_absent": true,
+      "diagnosis": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/009/native/diagnosis.json",
+        "bytes": 8724,
+        "sha256": "508d6f84b863c7383e642ed069b625215012627003de5632953a94ce519503b2"
+      },
+      "wire": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/009/native/callback-relay.json",
+        "bytes": 846579,
+        "sha256": "e13646c382a1207b76c3cf3e2d5310cd418d4040f422fb6fb4543fcd17b896b4"
+      },
+      "rechecked_complete_P6_frames": 7,
+      "accepted_cooking": [
+        1,
+        0,
+        [
+          0
+        ],
+        [
+          1,
+          "minecraft:coal",
+          "",
+          1
+        ],
+        [
+          1,
+          "minecraft:cooked_beef",
+          "",
+          2
+        ],
+        1158,
+        1600,
+        0,
+        200
+      ],
+      "host_pause_before_refusal": false
+    }
+  ],
+  "old006_incomplete_PPM_claim_corrected": {
+    "receipt_pinned_bytes": 15,
+    "later_completed_file_bytes": 1555215,
+    "historical_receipt_is_failure": true,
+    "current_rule": "Exact P6 header + width*height*3 payload + later finished resource.image and client.timing serial, full content hash verified"
+  },
+  "validated_demo_seed_pending_native_acceptance": {
+    "all_other_owners_identical": true,
+    "complete_format4_reconstruction": true,
+    "demo": false,
+    "demo_seed": {
+      "bytes": 1712794,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/009/demo-seed.nbt",
+      "sha256": "e88e15ab0267beb9fea4ad55c9b9b7cd3cca27eea0cf5a3cc6d7b59a2ad1b859"
+    },
+    "entity_owner_constructor_pending_actor_load": true,
+    "exact_byte_differences": [
+      [
+        330,
+        1,
+        0
+      ]
+    ],
+    "highwater": 40,
+    "incarnation_map_retained": true,
+    "only_changed_field": "Core.paused",
+    "original": true,
+    "scope": "File-only unpaused seed; actual cooking caller009 failed RendererLeaseOrSequence beforetake. No public demo/OS/native acceptance or promotion.",
+    "sections": 104,
+    "seed": {
+      "bytes": 1712794,
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/generic-resource-world-sample-cooking-runtime/009/seed.nbt",
+      "sha256": "b7f7882b308716743e9cabd2437c8d6584d940d52ff6bef9f36e1d80b0f494a2"
+    },
+    "source_fixture": "tools/generic_resource_world_sample_cooking_runtime.py",
+    "status": "file_only_validated_native_acceptance_pending"
+  },
+  "all_own_runtime_groups_absent": true,
+  "source_preflight": "Python AST PASS only; actual executed helper matches prepared source pin; no new Bend/source check/export/kernel/native build",
+  "promotion": false
+}
