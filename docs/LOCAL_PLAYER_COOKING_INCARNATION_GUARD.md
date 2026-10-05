@@ -53,14 +53,23 @@ the original ordered due operations. Legacy `CW.start_tick` is unchanged. The
 LocalCooking caller supplies its retained map and acknowledgement, and later
 actual OwnerReset publication remains the only counter mutation authority.
 
-Current verification: the exact `Core`, `CookingWorld` and guard production
+Production verification: the exact `Core`, `CookingWorld` and guard production
 bytes passed the original complete Entry012 Book check: 9,564 declarations,
 211 source files, zero holes, 4.75804225 seconds. The source checkpoint pins
 that complete closure and all three matching production files in
 `evidence/local-player-cooking-incarnation-guard-checkpoint.json`. This is a
-source/API result. The newly revised narrow laws and receiver remain prepared;
-no independent kernel or native guard run has completed. Seven failed narrow
-source attempts, including their exact process/output receipts, are retained.
+source/API result. Its checkpoint preserves the first seven failed narrow
+source attempts, including their exact process/output receipts.
+
+The revised narrow source and receiver subsequently passed one original Book
+check: 1,683 declarations, all 11 laws, 0.4549085 seconds. Nine unchanged roots
+exported with no exclusions; the independent kernel accepted that exact
+881,770-byte artifact with `ALL PROOFS CHECK` in 0.16387 seconds. Source and
+kernel receipts are recorded separately in
+`evidence/local-player-cooking-incarnation-guard-{source,kernel}.json`. The two
+additional source failures are retained. The native receiver is source-checked
+but has not run, so the numeric MAX48 threshold behavior remains unverified by
+this new receiver.
 
 The new laws quantify over arbitrary owners. The inductive route law retains
 every actual trie path, including malformed shapes and collision arrays;
