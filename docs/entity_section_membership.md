@@ -97,3 +97,16 @@ source pins, exact commands, native boundary and named exclusions. These
 checks establish this manager consumer; they do not establish full Java
 callback intermediate-state observation, abortable streaming traversal,
 entity persistence, actor adoption, or whole-game parity.
+
+The independent proof command
+`python3 tools/test_entity_section_membership_proof.py --generation 1` passes
+30 actual production theorem roots with zero exclusions. The complete unchanged
+referenced artifact is 364,865 bytes; original ordinary checking takes 0.4574
+seconds and the pinned independent kernel takes 0.0597 seconds. Use a fresh
+generation number to retain a new rerun. See
+`evidence/entity-section-membership-proof.json` and
+`docs/entity_section_membership_proof.md` for the precise statements and
+premises, including the ID/UUID relationship required for UUID release. These
+laws prove the stated manager/record/registry ownership and branch contracts;
+they do not prove universal Java equivalence, IEEE numerical correctness,
+world-service completeness, scene atomicity, durable restoration or performance.
