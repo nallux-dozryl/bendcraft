@@ -30,8 +30,26 @@ caller passes the original full5812-declaration check and selected new sender
 capture measurement. Client011 then hits its unchanged600-second producer
 limit in the historical block-model integer scanner, before producing C.
 Changed012 retains that graph plus only the already native-verified scalar
-scanner admission repair; its actual build is running. No new cooking client
-executable or public promotion is claimed yet. Root shutdown acceptance passes
+scanner admission repair. It emits C in267.871seconds, with4.099GB peak sampled
+RSS and the original argument guard passing. Apple clang17's first O3 attempt
+fails in56.296seconds with a stack-probe/register-clobber error. A native-only
+O3 `-fno-stack-check` build of the unchanged C then passes in105.047seconds,
+producing renderer012,6,986,328bytes, SHA-256
+`3bd945855c7526f713ed1df03ab89e136429fbc36132f6152ef16fc7a491a232`.
+The full callback cooking consumer is still pending; public017/010 remains
+selected. Real opened/input/fuel/partial-progress frames are observed. Ambient
+run009 reaches cooked_beef2 and pins its complete960×540 CPU frame at90.401s,
+then rejects correctly correlated next private sequence99 after accepting98,
+before output pickup. This also occurs without the earlier test pause, so the
+pause-specific explanation is insufficient. The real renderer lease is
+inactive; queued timer catch-up is the source-supported cause under diagnosis,
+not an independently observed internal queue trace. All009-owned groups reap.
+A required narrow timer/lease repair now precedes the same full consumer and
+public promotion. No output/close/save/cold success is inferred from009.
+See `evidence/generic_resource_world_sample_cooking_build.json`.
+The retained callback attempts and validated unpaused demo seed are in
+`evidence/generic_resource_world_sample_cooking_runtime_001.json`.
+Root shutdown acceptance passes
 actual cooking Inspect/Close, carried return, full-inventory refusal retaining
 the old save and same actor, reconnect/recovery, and the already-closed route.
 A genuine empty-furnace remove/recreate also passes refused stale Inspect then

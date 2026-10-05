@@ -23,7 +23,15 @@ NativeControls owns matched responsiveness, and Motion prepares the bounded
 visible OS scenario. Reserve heavy capacity for the delivery build.
 Coherent caller011 passed source/capture checks but timed out at600seconds
 before C. Changed012 adds only the verified block-model scalar-admission
-repair. Its build is active; no unchanged retry or future source joins.
+repair. Its producer and original argument guard pass. The first Apple O3
+native attempt fails in the stack-probe backend; unchanged C builds with the
+recorded O3 `-fno-stack-check` flag. Renderer012 is ready for the actual full
+cooking consumer. Actual normal ambient run009 produces cooked_beef2, then
+refuses correct next sequence99 after98 because its lease is inactive. The
+earlier test-pause hypothesis does not explain009. ActorCompiler now owns the
+required narrow server/backend timer/lease repair; keep012 fixed and hold
+public promotion until the same full flow passes. No unchanged producer retry
+or future source joins.
 Root's actual cooking shutdown return/refusal/reconnect/stale-handle checks
 pass. The public launcher must coexist with the protected historical actor's
 occupied25565/25566 ports and use a separate cooking demo save.
@@ -36,11 +44,11 @@ Current disjoint implementation owners (2026-10-05):
 | `terrain_client_ultra` | Private frozen021 Session overlay and bounded arity diagnostic | Two measured product boxes reduce codec268→199 and return250/251→58 words; original full9546-declaration source passes. Preserve diagnosed failed candidate and selected-body scope separately from full022 production. No compiler guard changes or unchanged re-emission. |
 | `player_motion_current_ultra` | Visible cooking acceptance preparation; future Session checkpoint held | Future TickBound runtime/separate sound checkpoint passes source and owner laws. The concrete cooking/capture/save/reload OS scenario is prepared; execute only after a ready pair and coordinated foreground session. |
 | Motion incarnation-guard child | Additive Core prospective admission, scheduled cooking preflight, NEW local_player_cooking_incarnation_guard* | MAX48 scheduled preflight passes 16 native owner/admission rows and nine kernel roots. Preserve the open universal numeric comparison theorem and Java parity scope. |
-| `actor_compiler_memory_ultra` | Cooking caller integration review; future chunk-loader checkpoint held | Loader metadata passes source and13 kernel laws; actual terrain/bundle producers and live installation remain absent. Narrow cooking caller review is complete; assist concrete pair defects without a new feature lane. |
+| `actor_compiler_memory_ultra` | Required timer/lease repair in coherent022 overlay; future chunk-loader checkpoint held | Actual ambient009 rejects correct next private sequence before output pickup. Fix elapsed-time/catch-up lease semantics without skipping simulation ticks, then build the substantively changed actor and rerun the same consumer. Loader metadata checkpoint remains held. |
 | Root publication observer | Actual publication TCP/save/cold continuation | Genuine022 passes3 menu mutations,2 two-chunk ignition publications,9 complete saves,1 real SIGKILL/cold restore and sequence4→5 continuation. Legacy/stale ordered refusals retain owners. Nonzero pending capture is UNOBSERVED when a real pulse wins. |
 | `native_controls_current_ultra` | NEW matched client responsiveness helper/evidence; wire checkpoint complete | Genuine022 SceneFrame TCP5/8 and2 complete saves pass. Compare008/010 and the actual cooking candidate under identical quiet scene/settings and prove image/state equivalence; keep it off Catalog's critical path. Native comparison remains pending. |
 | `saved_inventory_ultra` | Cooking shutdown integration review; future lighting/format5 checkpoint held | Future retained block/sky source checkpoint is complete; native/live joins remain held. Shutdown review found and fixed stale Inspect versus Close authority; assist concrete cooking defects. |
-| `block_resource_catalog_ultra` | Generic cooking caller/build, public launcher and demo | Public017/010 remains accepted. Caller011 source/capture passes, producer600s timeout is retained. Build changed012 with only the verified scanner repair; then test actual022 cooking flow and adopt free default ports, close-protocol persistence and separate demo save. |
+| `block_resource_catalog_ultra` | Generic cooking caller/build, public launcher and demo | Public017/010 remains accepted. Caller011's producer600s timeout and012's first native failure are retained. The verified scanner repair plus native-only stack-check flag produces012. Finish actual022 cooking flow, then adopt free default ports, close-protocol persistence and separate demo save. |
 | Parent membership recovery owner | NEW entity_section_membership_recovery* only | Validate saved M.View against actual E.View and current real loader facts, returning a proposal for atomic activation. Preserve insertion/callback/cursor authority; no assumed visible or loaded defaults. |
 | Parent managed tick owner | Additive item_entity_tick_managed_scene*; checkpoint complete | Managed actual movement/removal/merge passes ten Java/native cases, seven complete-owner refusals and five kernel laws. Stable tick_id returns both sole T.State and M.State plus ordered publications/callbacks. |
 | Parent lighting owners | NEW sky_light* and vanilla_lightmap* only | Derive actual sky fields and evaluated Lightmap shader RGB from pinned26.3; connect future stamped world/entity lighting. Shared compositor61b2719 is stable and refuses missing lighting. |
@@ -51,7 +59,7 @@ owners coordinate actual occupancy directly. No manual grants, sealing ladders
 or duplicate broad build attempts. Required physical input, visible drawable,
 audio, sustained full-quality performance and complete gameplay parity remain
 open. The verified public actor017/renderer010 pair remains available while
-the next limited022 cooking client is built. Actor020's separate native cooking entity
+the next limited022/012 cooking pair is verified. Actor020's separate native cooking entity
 consumer passes; it is not a public client promotion or a complete game.
 
 Prior results remain in [LOCAL_PLAYER_SESSION_NATIVE_RESULTS.md](LOCAL_PLAYER_SESSION_NATIVE_RESULTS.md),
