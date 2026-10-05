@@ -54,6 +54,20 @@ def initialized(world:C.World,bindings:B.Catalog,result:R.Registry & Result<&2,&
 def initialize(engine:G.Engine,bindings:B.Catalog) -> G.Engine & Result<&2,&2,String,Context>:
   G.Engine{world,registry} = engine
   initialized(world,bindings,R.Registry.identity(registry))
+def last_authenticated(catalog:B.Catalog,value:Maybe<&2,J.Receipt>) -> Result<&2,&2,String,Unit>:
+  match value:
+    case None{}: Done{Unit{}}
+    case Some{J.Receipt{position,source,chunk,sequence}}: validate_source(catalog,source)
+def restore_authenticated(view:J.View,status:Result<&2,&2,String,Unit>) -> Result<&2,&1,String,J.State>:
+  match status:
+    case Fail{message}: Fail{message}
+    case Done{unit}: J.restore(view)
+# Historical last publication is authenticated against the immutable current
+# catalog, not against a current incarnation which may legitimately be newer.
+def restore_journal(context:Context,+view:J.View) -> Result<&2,&1,String,J.State>:
+  Context{catalog} = context
+  J.View{sequence,unsaved,last} = view
+  restore_authenticated(view,last_authenticated(catalog,last))
 def no_assignments(values:List<&2,R.Assignment>) -> Bool:
   match values:
     case Nil{}: True{}
@@ -116,7 +130,7 @@ def marked(engine:G.Engine,result:J.State & J.Receipt) -> G.Engine & J.State & R
   (owner,receipt) = result
   (engine,owner,Done{receipt})
 def maximum_sequence() -> Nat:
-  Nat.add(Nat.mul(65536n,4294967295n),65535n)
+  J.maximum_sequence()
 def mark_valid(engine:G.Engine,position:C.Position,source:J.Source,owner:J.State,room:Bool) ->
     G.Engine & J.State & Result<&2,&2,String,J.Receipt>:
   match room:

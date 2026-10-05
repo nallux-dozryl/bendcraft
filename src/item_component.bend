@@ -49,13 +49,8 @@ def normalized(value:J.Value) -> J.Value:
     case J.JObject{members}: J.JObject{RecipeComponents.sorted(normalized_members(members))}
     case _: value
 
-def initial_number_valid(raw:String) -> Bool:
-  match raw:
-    case "0": True{}
-    case "1": True{}
-    case "6": True{}
-    case "7.2000003": True{}
-    case _: False{}
+def initial_number_valid(+raw:String) -> Bool:
+  String.eq(raw,"0") || (String.eq(raw,"1") || (String.eq(raw,"6") || String.eq(raw,"7.2000003")))
 
 def initial_member_values(values:List<&2,J.Member>) -> List<&2,J.Value>:
   match values:

@@ -40,6 +40,46 @@ def same_owner(a:Source,b:Source) -> Bool:
   Source{position,left,i} = a
   Source{other,right,j} = b
   B.equal_position(position,other) && B.same_block(left,right) && Nat.is_eq(i,j)
+def maximum_sequence() -> Nat:
+  Nat.add(Nat.mul(65536n,4294967295n),65535n)
+def chunk_valid(value:Chunk) -> Bool:
+  Chunk{dimension,x,z} = value
+  C.dimension_known(dimension) && Section.Coord.section_valid(x) && Section.Coord.section_valid(z)
+def chunk_key(value:Chunk) -> String:
+  Chunk{dimension,x,z} = value
+  dimension ++ "/" ++ U32.show(x) ++ "/" ++ U32.show(z)
+def unique_checked(+key:String,result:Set() & Bool,next:Set() -> Bool) -> Bool:
+  match result:
+    case (seen,True{}): False{}
+    case (seen,False{}): next(Set.add(seen,key))
+def chunks_valid(values:List<&2,DirtyChunk>,+sequence:Nat,seen:Set()) -> Bool:
+  match values:
+    case Nil{}: True{}
+    case DirtyChunk{+target,+revision} <> +rest:
+      chunk_valid(target) && Nat.is_gt(revision,0n) && Nat.is_le(revision,sequence) &&
+        unique_checked(chunk_key(target),Set.has(seen,chunk_key(target)),
+          seen => chunks_valid(rest,sequence,seen))
+def source_valid(source:Source) -> Bool:
+  Source{position,B.Binding{+state,block,family,+lit,+dark,+bright},incarnation} = source
+  C.dimension_known(C.dimension(position)) && Nat.is_le(incarnation,maximum_sequence()) &&
+    U32.is_eq(state,Bool.pick(U32,lit,bright,dark))
+def last_valid(sequence:Nat,value:Maybe<&2,Receipt>) -> Bool:
+  match sequence value:
+    case 0n None{}: True{}
+    case 1n+previous Some{Receipt{+position,+source,target,revision}}:
+      Source{captured,binding,incarnation} = source
+      Nat.is_eq(1n+previous,revision) && B.equal_position(position,captured) &&
+        chunk_equal(chunk(position),target) && source_valid(source)
+    case _ _: False{}
+def view_valid(view:View) -> Bool:
+  View{+sequence,unsaved,last} = view
+  Nat.is_le(sequence,maximum_sequence()) && chunks_valid(unsaved,sequence,Set.new()) && last_valid(sequence,last)
+def restore_checked(view:View,valid:Bool) -> Result<&2,&1,String,State>:
+  match valid:
+    case False{}: Fail{"cooking-publication:invalid-recovered-journal"}
+    case True{}: Done{State{view}}
+def restore(+view:View) -> Result<&2,&1,String,State>:
+  restore_checked(view,view_valid(view))
 def remove_cons(+head:DirtyChunk,+target:Chunk,+tail:List<&2,DirtyChunk>) -> List<&2,DirtyChunk>:
   DirtyChunk{candidate,sequence} = head
   Bool.pick(List<&2,DirtyChunk>,chunk_equal(candidate,target),tail,head <> tail)
@@ -73,11 +113,20 @@ def bounded(values:List<&2,DirtyChunk>,+sequence:Nat) -> Bool:
     case Nil{}: True{}
     case DirtyChunk{target,revision} <> rest:
       Nat.is_le(revision,sequence) && bounded(rest,sequence)
+def saved_view_valid(view:View,snapshot:Snapshot,valid:Bool) -> View:
+  match view snapshot valid:
+    case view _ False{}: view
+    case View{sequence,unsaved,last} Snapshot{saved,chunks} True{}:
+      View{sequence,retained(unsaved,chunks),last}
+# Immutable save-image projection; the caller's sole live State remains owned
+# until the real full save issues its affine successful commit receipt.
+def saved_view(+view:View,+snapshot:Snapshot) -> View:
+  View{+sequence,unsaved,last} = view
+  Snapshot{+saved,+chunks} = snapshot
+  saved_view_valid(view,snapshot,Nat.is_le(saved,sequence) && bounded(chunks,saved))
 def committed_valid(owner:State,snapshot:Snapshot,valid:Bool) -> State:
-  match owner snapshot valid:
-    case owner _ False{}: owner
-    case State{View{sequence,unsaved,last}} Snapshot{saved,chunks} True{}:
-      State{View{sequence,retained(unsaved,chunks),last}}
+  State{view} = owner
+  State{saved_view_valid(view,snapshot,valid)}
 def committed(owner:State,+snapshot:Snapshot) -> State:
   State{View{+sequence,unsaved,last}} = owner
   Snapshot{+saved,+chunks} = snapshot

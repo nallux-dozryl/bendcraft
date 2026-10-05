@@ -73,6 +73,20 @@ save commits. `save_completed` leaves a failed write unchanged. A valid older
 save clears only included chunk revisions; later dirt in the same chunk and
 new chunks remain unsaved. The latest publication receipt remains observable.
 
+`saved_view` makes the prospective clean immutable save image from a view and
+its snapshot. It creates no second journal owner. The live owner remains dirty
+until the durable writer returns the successful commit token; the saved bytes
+and acknowledged live journal then agree on which revisions were covered.
+
+`view_valid` and `restore` reject duplicate chunk keys, impossible chunk
+coordinates, future or zero chunk revisions, and a missing or inconsistent
+latest receipt. `restore_journal` additionally authenticates the historical
+receipt's cached binding against the actual initialized catalog. It does not
+compare that old receipt with a current incarnation which may legitimately be
+newer. Pending owned effects still require the current entry and incarnation
+at delivery. The incarnation map uses existing canonical `Bindings.key`
+position keys and must retain its complete topology and values on recovery.
+
 The native Nat representation permits values through 281474976710655. Public
 dirty delivery refuses increment at that maximum. Durable decoding must retain
 canonical Nat values within that range and complete raw U32 coordinate bits;
@@ -81,13 +95,31 @@ This consumer adds no fixture-sized list or world limit.
 
 ## Verification and integration status
 
-The complete original source checker passed 1,428 declarations with no open
-holes. Seven meaningful production laws passed the independent kernel with
-zero exclusions. They cover failed full saves, future-token refusal, repeated
-chunk marking, old-save/later-dirty chronology, required current attestation,
-and lit-transition versus incarnation identity. These facts do not establish
-native execution or an installed actor save hook. The focused native test is
-being prepared; its result must be recorded separately.
+The latest complete original proof-entry source checker passed 1,443
+declarations with no open holes. Seven meaningful production laws passed the
+independent kernel with zero exclusions after the journal recovery and save
+image helpers were added. They cover failed full saves, future-token refusal,
+repeated chunk marking, old-save/later-dirty chronology, required current
+attestation, and lit-transition versus incarnation identity. The subsequent
+catalog-authenticated restore helper is checked by the full original source
+checker and actual native consumer; it is outside those seven kernel roots.
+
+The actual focused native consumer passed 47 exact observations with identical
+outputs on one and four threads: 26 publication cases, seven save-journal cases
+and 14 recovery cases. It loads the real full registry and authenticated
+cooking catalog, reads loaded Core cells, and compares complete serialized
+Core bytes and registry identity. Its actual retained furnace entry includes
+four backing cells behind three logical slots, an opaque component tail,
+timers, recipe uses and speed bits. Refusal retains all those fields and the
+complete prior journal. Successful publication preserves the producer's
+cached source through a same-incarnation LIT transition. Sequence exhaustion,
+each horizontal refusal position, old-save/later-dirty chronology, malformed
+recovery and forged historical bindings are exercised. Native runs took
+2.7313 and 2.2405 seconds with approximately 16.9 MB sampled RSS. There was one
+native build, no native retries, no imported source drift and no remaining
+owned processes. The exact receipts are
+`evidence/cooking-effect-publication-native-011.json` and
+`evidence/cooking-effect-publication-proof.json`.
 
 Actor 020 is immutable and retains its existing legacy dirty refusal. The next
 actor integration owns producer stamping, persistence of current incarnation

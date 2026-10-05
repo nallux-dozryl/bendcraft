@@ -147,5 +147,461 @@
   ],
   "unchanged_attempt_retries": 0,
   "final_changed_source_and_proof": "evidence/cooking-effect-publication-proof.json",
-  "boundary": "Parser, affine-kind and annotation repairs. Failed attempt raw logs retained in ignored build directories; pre-change complete source snapshots were not captured for failed checks."
+  "boundary": "Parser, affine-kind and annotation repairs. Failed attempt raw logs retained in ignored build directories; pre-change complete source snapshots were not captured for failed checks.",
+  "native_consumer_source_attempts": [
+    {
+      "attempt": 1,
+      "source": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/001/source.json",
+        "bytes": 474,
+        "sha256": "dd0742f2ffe0dda30c53823b4f0df030a187472e5ca16bdbfbd5dcc5441cb684"
+      },
+      "stdout": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/001/source.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/001/source.stderr",
+        "bytes": 331,
+        "sha256": "82ddb5a8c6938c926c3f7a29af9117fa66fcc6bfe5ae03e6a56f8437cbd4cc0e"
+      },
+      "status": "FAILED",
+      "reason": "SOME PROOFS FAIL\nError:\n- message  : 'left' can't be matched in this position (it is matched after a local statement or after a match on a later binder, it was already matched, or it is a def)\nLocation:\n151 |   (engine,owner,status) = result\n152>|   match left status:\n    |         ^^^^\n153 |     case 0n _: (engine,owner,status)",
+      "failure_receipt": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/001/failure-source.json",
+        "bytes": 2625,
+        "sha256": "76de5743e1ec33eb92ed9dc0678b2a2fcea3a3ede40357ed18d99f13325ac348"
+      },
+      "consumer_pins": {
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/cooking_effect_publication.bend": {
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/cooking_effect_publication.bend",
+          "bytes": 17930,
+          "sha256": "c961667e91f31a7303ede26ae31087c0fabf91501f139c735a6aa95cfa30925d"
+        },
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_cooking_effect_publication.py": {
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_cooking_effect_publication.py",
+          "bytes": 16627,
+          "sha256": "2a39b4d4ea70b96d4853bf8ada82e3d3d81d28eb3c7a84646ccd70f64c209fa0"
+        },
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/player_cooking_menu_emit.mjs": {
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/player_cooking_menu_emit.mjs",
+          "bytes": 2816,
+          "sha256": "a24a1b2c2006a4958acc63951b1200a237c9450eb324cae812f411e2214237a1"
+        }
+      },
+      "source_snapshot_retained": false
+    },
+    {
+      "attempt": 2,
+      "source": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/002/source.json",
+        "bytes": 474,
+        "sha256": "13d041800e103620e5568951e6fd88a53a877c1636419e20a1a63e2d0404c303"
+      },
+      "stdout": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/002/source.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/002/source.stderr",
+        "bytes": 374,
+        "sha256": "1f9812be4c73379f0fe6edd773c627399353e29191488e23804a155dd6c9e999"
+      },
+      "status": "FAILED",
+      "reason": "SOME PROOFS FAIL\nError:\n- message  : a name (a parallel or typed let binds names; destructure in its body)\nLocation:\n170 |   do IO<R.Registry>:\n171>|     bytes : List<&2,U32> <- need(List<&2,U32>,encoded)\n    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n172 |     (kept,actual_identity) : R.Registry & Result<&2,&2,String,String> = R.Registry.identity(registry)",
+      "failure_receipt": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/002/failure-source.json",
+        "bytes": 2666,
+        "sha256": "f45f65e5fcace0c8393e7ee1c6752e59a7d37019d912ae517d10efae2d24fd20"
+      },
+      "consumer_pins": {
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/cooking_effect_publication.bend": {
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/cooking_effect_publication.bend",
+          "bytes": 17930,
+          "sha256": "2a6c9d514a12f22f3bc44c9ee85c1789de4c729c9f7f0e69016f97e269ddea35"
+        },
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_cooking_effect_publication.py": {
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_cooking_effect_publication.py",
+          "bytes": 16627,
+          "sha256": "2a39b4d4ea70b96d4853bf8ada82e3d3d81d28eb3c7a84646ccd70f64c209fa0"
+        },
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/player_cooking_menu_emit.mjs": {
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/player_cooking_menu_emit.mjs",
+          "bytes": 2816,
+          "sha256": "a24a1b2c2006a4958acc63951b1200a237c9450eb324cae812f411e2214237a1"
+        }
+      },
+      "source_snapshot_retained": false
+    },
+    {
+      "attempt": 3,
+      "source": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/003/source.json",
+        "bytes": 474,
+        "sha256": "2b1b1e643efde96da346d484f6b5ffb7ccb72fa70d34d246b45ab8a45cf46c04"
+      },
+      "stdout": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/003/source.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/003/source.stderr",
+        "bytes": 624,
+        "sha256": "1b2e57af7c777ec0e214916184a8cbe961e130c69cabad7aedb4cc9b64f751e6"
+      },
+      "status": "FAILED",
+      "reason": "SOME PROOFS FAIL\nError:\n- expected : a pattern (a binder or a constructor)\n- observed : IO.bind(List<&2, U32>, ../src/registry.Registry, need(List<&2, U32>, encoded), bytes => identity_result = {../src/registry.Registry.identity(registry) : Pair(../src/registry.Registry, Result<&2, &2, String, String>)}; {(kept, actual_identity) : IO(../src/registry.Registry)})\nLocation:\n170 |   do IO<R.Registry>:\n171>|     bytes : List<&2,U32> <- need(List<&2,U32>,encoded)\n    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n172 |     identity_result : R.Registry & Result<&2,&2,String,String> = R.Registry.identity(registry)",
+      "failure_receipt": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/003/failure-source.json",
+        "bytes": 2918,
+        "sha256": "15d79603b96e66dff299b9d80d837238597e2f3ec7c6ddfbd30ab62b4fd59ef9"
+      },
+      "consumer_pins": {
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/cooking_effect_publication.bend": {
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/cooking_effect_publication.bend",
+          "bytes": 18326,
+          "sha256": "bdc6fd78681669f1784cb66f2a6afad4a10227b5ac525fd1df96ce46e2c0e069"
+        },
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_cooking_effect_publication.py": {
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_cooking_effect_publication.py",
+          "bytes": 16627,
+          "sha256": "2a39b4d4ea70b96d4853bf8ada82e3d3d81d28eb3c7a84646ccd70f64c209fa0"
+        },
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/player_cooking_menu_emit.mjs": {
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/player_cooking_menu_emit.mjs",
+          "bytes": 2816,
+          "sha256": "a24a1b2c2006a4958acc63951b1200a237c9450eb324cae812f411e2214237a1"
+        }
+      },
+      "source_snapshot_retained": false
+    },
+    {
+      "attempt": 4,
+      "source": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/004/source.json",
+        "bytes": 473,
+        "sha256": "9e4a26ebda32a5b664c05153496f087d35872dc512ce257462ec81e0f598d329"
+      },
+      "stdout": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/004/source.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/004/source.stderr",
+        "bytes": 494,
+        "sha256": "4c5a441a7727700c3a480898f9b2fe8b68ee65415b2382d37996ad1b76f0044d"
+      },
+      "status": "FAILED",
+      "reason": "SOME PROOFS FAIL\nError:\n- message  : 'fixture' can't be matched in this position (it is matched after a local statement or after a match on a later binder, it was already matched, or it is a def)\nLocation:\n215 |     case Done{WC.Loaded{world,peer}}:\n216>|       Fixture{label,path,+position,source_state,current_state,gate,sequence,repeats} = fixture\n    |                                                                                        ^^^^^^^\n217 |       P.Context{+catalog} = context",
+      "failure_receipt": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/004/failure-source.json",
+        "bytes": 2787,
+        "sha256": "ddbe8325505df597f595839d427c4c60aed43d4abc1cffabdc3e0e394a5f4abe"
+      },
+      "consumer_pins": {
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/cooking_effect_publication.bend": {
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/cooking_effect_publication.bend",
+          "bytes": 20116,
+          "sha256": "292d803b7a0955d06b248f7f1b6d3e40403c80685b98fdf8d0ea3ea7e52ca8f1"
+        },
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_cooking_effect_publication.py": {
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_cooking_effect_publication.py",
+          "bytes": 16627,
+          "sha256": "2a39b4d4ea70b96d4853bf8ada82e3d3d81d28eb3c7a84646ccd70f64c209fa0"
+        },
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/player_cooking_menu_emit.mjs": {
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/player_cooking_menu_emit.mjs",
+          "bytes": 2816,
+          "sha256": "a24a1b2c2006a4958acc63951b1200a237c9450eb324cae812f411e2214237a1"
+        }
+      },
+      "source_snapshot_retained": false
+    },
+    {
+      "attempt": 5,
+      "source": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/005/source.json",
+        "bytes": 474,
+        "sha256": "c94156f80eb0400816cae366f7984cd92afcb502401d470c8d97e5872a97a641"
+      },
+      "stdout": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/005/source.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/005/source.stderr",
+        "bytes": 315,
+        "sha256": "60f986f8f82fc428d0011ad3071168038818d0e23ee44c3796b9850dd2530db2"
+      },
+      "status": "FAILED",
+      "reason": "SOME PROOFS FAIL\nError:\n- message  : a parameter or field scrutinee (a match cannot scrutinize a computed value: give it its own def)\nLocation:\n260 | def journal_output(label:String,owner:J.State) -> IO(J.State):\n261>|   (kept,view) = J.inspect(owner)\n    |                 ^^^^^^^^^^^^^^^^\n262 |   do IO<J.State>:",
+      "failure_receipt": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/005/failure-source.json",
+        "bytes": 2607,
+        "sha256": "87f4e52f85a674b1c87882b84c07d5b8a802848e34bc616cb1e7cfb1d922f6cc"
+      },
+      "consumer_pins": {
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/cooking_effect_publication.bend": {
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/cooking_effect_publication.bend",
+          "bytes": 20108,
+          "sha256": "b003f96cb6d124431c0f60431b3fe6b140323c0db7a963ac03b47a8f2bd97d99"
+        },
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_cooking_effect_publication.py": {
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_cooking_effect_publication.py",
+          "bytes": 16627,
+          "sha256": "2a39b4d4ea70b96d4853bf8ada82e3d3d81d28eb3c7a84646ccd70f64c209fa0"
+        },
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/player_cooking_menu_emit.mjs": {
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/player_cooking_menu_emit.mjs",
+          "bytes": 2816,
+          "sha256": "a24a1b2c2006a4958acc63951b1200a237c9450eb324cae812f411e2214237a1"
+        }
+      },
+      "source_snapshot_retained": false
+    },
+    {
+      "attempt": 6,
+      "source": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/006/source.json",
+        "bytes": 474,
+        "sha256": "db7676c03a7b7201a2b5618f05ba7169a9c6d7bebeba8ae5a5c95a3e0a10714c"
+      },
+      "stdout": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/006/source.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/006/source.stderr",
+        "bytes": 656,
+        "sha256": "b9b5301aeef07175c1c0d285ab78e9b3c3fc8d9e6cca910f365ded419ee582f7"
+      },
+      "status": "FAILED",
+      "reason": "SOME PROOFS FAIL\nError:\n- expected : length\n- observed : length (consumed more than once)\nContext:\n- position    : C.Position\n- binding     : B.Binding\n- incarnation : Nat\n- frame       : F.Frame\nLocation: queried\n85 |   Json.JArray{[text(cooking_kind(kind)),num(remaining),num(total),num(spent),num(cook),num(F32.bits(speed)),cache(cached),Json.JArray{use_values(uses)}]}\n86>| def queried(+position:C.Position,+binding:B.Binding,+incarnation:Nat,+frame:F.Frame,length:U32,\n   |                                                                                     ^^^^^^\n87 |     result:Array<I.Slot> & Array<I.Slot>) -> OwnedEntry & J.Source & Json.Value:",
+      "failure_receipt": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/006/failure-source.json",
+        "bytes": 2960,
+        "sha256": "ae177256ce2313ce15c6263709992ce67ce344064a953f42e52683c4eaf17a3a"
+      },
+      "consumer_pins": {
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/cooking_effect_publication.bend": {
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/cooking_effect_publication.bend",
+          "bytes": 20218,
+          "sha256": "e81522b7009c4e9aae19e4e61f6a07808c959d964ffedaf1e73b88ed26b81a1b"
+        },
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_cooking_effect_publication.py": {
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_cooking_effect_publication.py",
+          "bytes": 16627,
+          "sha256": "2a39b4d4ea70b96d4853bf8ada82e3d3d81d28eb3c7a84646ccd70f64c209fa0"
+        },
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/player_cooking_menu_emit.mjs": {
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/player_cooking_menu_emit.mjs",
+          "bytes": 2816,
+          "sha256": "a24a1b2c2006a4958acc63951b1200a237c9450eb324cae812f411e2214237a1"
+        }
+      },
+      "source_snapshot_retained": false
+    },
+    {
+      "attempt": 7,
+      "source": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/007/source.json",
+        "bytes": 474,
+        "sha256": "0d3bf02168d8f166026043923198e768653927005f54483549244fa953d4cdcd"
+      },
+      "stdout": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/007/source.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/007/source.stderr",
+        "bytes": 433,
+        "sha256": "2ab5dd842ec2a9283ae0310f3065a7f88f862eaf42edcae40e4d1ce27166ad57"
+      },
+      "status": "FAILED",
+      "reason": "SOME PROOFS FAIL\nError:\n- expected : gate\n- observed : gate (consumed more than once)\nContext:\n- position    : C.Position\n- binding     : B.Binding\n- incarnation : Nat\nLocation: current_gate\n123 |   J.Source{position,forged(binding,gate,True{}),incarnation}\n124>| def current_gate(source:J.Source,gate:String) -> Maybe<&2,J.Source>:\n    |                                  ^^^^\n125 |   J.Source{position,binding,incarnation} = source",
+      "failure_receipt": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/007/failure-source.json",
+        "bytes": 2735,
+        "sha256": "d934d2ca9734e3755659e1eb71ecd473ec0c1ed2d91334bf8f8914b1660f6f8f"
+      },
+      "consumer_pins": {
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/cooking_effect_publication.bend": {
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/cooking_effect_publication.bend",
+          "bytes": 23365,
+          "sha256": "2ad6f7611ab26c5674c4fadff2120af0b9b0c4e234ef1b1f214dda6360e218be"
+        },
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_cooking_effect_publication.py": {
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_cooking_effect_publication.py",
+          "bytes": 18026,
+          "sha256": "86b29ec5d8e5daa77d4ab63fdc56a9cbba4cd5f80c878ac2c92d852f20239f92"
+        },
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/player_cooking_menu_emit.mjs": {
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/player_cooking_menu_emit.mjs",
+          "bytes": 2816,
+          "sha256": "a24a1b2c2006a4958acc63951b1200a237c9450eb324cae812f411e2214237a1"
+        }
+      },
+      "source_snapshot_retained": false
+    },
+    {
+      "attempt": 8,
+      "source": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/008/source.json",
+        "bytes": 474,
+        "sha256": "fd64f74b4b392732c9beb349ad1360c883f08bbbd94ae2ae70b35dca959df029"
+      },
+      "stdout": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/008/source.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/008/source.stderr",
+        "bytes": 307,
+        "sha256": "4e1ed24755fa7990498860432b558556f155dd475f8069f0b3572bb954e11eb7"
+      },
+      "status": "FAILED",
+      "reason": "SOME PROOFS FAIL\nError:\n- expected : rest\n- observed : rest (consumed more than once)\nLocation: dirty_repeat\n161 |     case 0n: (engine,owner,Fail{\"fixture zero repeat\"})\n162>|     case 1n+rest:\n    |             ^^^^\n163 |       repeat_completed(P.dirty(engine,context,source,current,position,owner),rest,",
+      "failure_receipt": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/008/failure-source.json",
+        "bytes": 2603,
+        "sha256": "c6b94eb49b3ebacc2076b0299e15c8044c3dfb71acb287b9d6a38e24de766a36"
+      },
+      "consumer_pins": {
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/cooking_effect_publication.bend": {
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/cooking_effect_publication.bend",
+          "bytes": 23366,
+          "sha256": "c7104cfec2799881916886f47fc285acd0df3dd986861d203b474f66b254694b"
+        },
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_cooking_effect_publication.py": {
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_cooking_effect_publication.py",
+          "bytes": 18026,
+          "sha256": "86b29ec5d8e5daa77d4ab63fdc56a9cbba4cd5f80c878ac2c92d852f20239f92"
+        },
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/player_cooking_menu_emit.mjs": {
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/player_cooking_menu_emit.mjs",
+          "bytes": 2816,
+          "sha256": "a24a1b2c2006a4958acc63951b1200a237c9450eb324cae812f411e2214237a1"
+        }
+      },
+      "source_snapshot_retained": false
+    },
+    {
+      "attempt": 9,
+      "source": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/009/source.json",
+        "bytes": 474,
+        "sha256": "101600e64097c92bdeb5a2b59ca7f3ed06bf5f6ec3cdbd9231ebf7fa06f0628a"
+      },
+      "stdout": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/009/source.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/009/source.stderr",
+        "bytes": 368,
+        "sha256": "463fb634f0c0311a2bfcea558c5e5202c49162e03c6390be8a88caae64392336"
+      },
+      "status": "FAILED",
+      "reason": "SOME PROOFS FAIL\nError:\n- expected : an annotated term (cannot infer)\n- observed : _ => ../src/json.Value\nContext:\n- before  : ../src/json.Value\n- owner   : OwnedEntry\n- current : ../src/cooking_effect_publication_journal.Source\nLocation: entry_observation\n129 | def Pair(-A: Type, -B: Type) -> Type:\n130>|   Sigma<&1, &1, A, _ => B>\n    |                    ^\n131 |",
+      "failure_receipt": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/009/failure-source.json",
+        "bytes": 2670,
+        "sha256": "4457199b8001edd857b78c77fe0a41fcf7323aed53aa026d246f085ec4ecf800"
+      },
+      "consumer_pins": {
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/cooking_effect_publication.bend": {
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/cooking_effect_publication.bend",
+          "bytes": 23367,
+          "sha256": "d3519d3ca1298acdb456b216dc7b1a3356643eaf9941845464ceaf9fc07f94c7"
+        },
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_cooking_effect_publication.py": {
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_cooking_effect_publication.py",
+          "bytes": 18026,
+          "sha256": "86b29ec5d8e5daa77d4ab63fdc56a9cbba4cd5f80c878ac2c92d852f20239f92"
+        },
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/player_cooking_menu_emit.mjs": {
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/player_cooking_menu_emit.mjs",
+          "bytes": 2816,
+          "sha256": "a24a1b2c2006a4958acc63951b1200a237c9450eb324cae812f411e2214237a1"
+        }
+      },
+      "source_snapshot_retained": false
+    },
+    {
+      "attempt": 10,
+      "source": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/010/source.json",
+        "bytes": 474,
+        "sha256": "246253885a2487947a292082109e566c990cf0c2884ea4c80573f994a158aae1"
+      },
+      "stdout": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/010/source.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/010/source.stderr",
+        "bytes": 741,
+        "sha256": "aa1ea8fa43f4d1f4184676c0bc6b2008de7df4da6709f996ae1595824c7b6638"
+      },
+      "status": "FAILED",
+      "reason": "SOME PROOFS FAIL\nError:\n- expected : identity\n- observed : identity (consumed more than once)\nContext:\n- label         : String\n- path          : String\n- position      : C.Position\n- source_state  : U32\n- current_state : U32\n- gate          : String\n- sequence      : Nat\n- repeats       : Nat\n- before        : List<&2, U32>\nLocation: observed\n193 |     output_identity(label,before,identity,owner,entry_before,journal,status,bytes,R.Registry.identity(registry))\n194>| def observed(+fixture:Fixture,+before:List<&2,U32>,identity:String,entry_owner:OwnedEntry,entry_before:Json.Value,\n    |                                                    ^^^^^^^^\n195 |     result:G.Engine & J.State & Result<&2,&2,String,J.Receipt>) -> IO(R.Registry):",
+      "failure_receipt": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/010/failure-source.json",
+        "bytes": 3055,
+        "sha256": "ef8a949b23a367348429b2020989cffeca29e660c94b9a51b3c99eb3c2dc81cd"
+      },
+      "consumer_pins": {
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/cooking_effect_publication.bend": {
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tests/cooking_effect_publication.bend",
+          "bytes": 23373,
+          "sha256": "693783c0fb92471ff60f69d56d18d6a798cb7800578f45f6ec598cde431aaed3"
+        },
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_cooking_effect_publication.py": {
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/test_cooking_effect_publication.py",
+          "bytes": 18026,
+          "sha256": "86b29ec5d8e5daa77d4ab63fdc56a9cbba4cd5f80c878ac2c92d852f20239f92"
+        },
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/player_cooking_menu_emit.mjs": {
+          "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/tools/player_cooking_menu_emit.mjs",
+          "bytes": 2816,
+          "sha256": "a24a1b2c2006a4958acc63951b1200a237c9450eb324cae812f411e2214237a1"
+        }
+      },
+      "source_snapshot_retained": false
+    },
+    {
+      "attempt": 11,
+      "source": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/011/source.json",
+        "bytes": 474,
+        "sha256": "8d285d451a46077e3f43c7c9229e1903ea51f9a00a35a7f8a8ddf61728beab8b"
+      },
+      "stdout": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/011/source.stdout",
+        "bytes": 58,
+        "sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1"
+      },
+      "stderr": {
+        "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/cooking-effect-publication-native/011/source.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "status": "PASS",
+      "source_snapshot_retained": true,
+      "final_native_receipt": "evidence/cooking-effect-publication-native-011.json"
+    }
+  ],
+  "native_build_attempts": 1,
+  "native_build_retries": 0,
+  "native_attempt_boundary": "Native consumer source attempts 001 through 010 repair fixture syntax, annotations, quantities and affine test-owner reuse. All raw diagnostics and source-pin receipts are retained; failed complete source snapshots were not captured. Production publication semantics were not changed in response to those fixture failures. Generation 011 is the first native build and comparison."
 }
