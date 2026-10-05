@@ -8,6 +8,7 @@ import ../src/cooking_recipe.bend as K
 import ../src/core.bend as C
 import ../src/json.bend as J
 import ../src/live.bend as L
+import ../src/player_hud.bend as H
 
 def empty(left:Nat) -> List<&2,Inv.Slot>:
   match left:
@@ -64,6 +65,12 @@ def closed_state() -> S.State:
   S.State{0,False{},True{},True{},0,0,0,False{},None{},viewport(),None{},"",0}
 def progress(label:String,amount:U32,total:U32,extent:U32) -> IO(Unit):
   IO.print(J.encode(L.obj([J.JMember{"id",L.text(label)},J.JMember{"progress",L.uint(S.progress(amount,total,extent))},J.JMember{"intents",J.JArray{[]}}])))
+def pixel_spans_view(label:String,+view:S.View) -> IO(Unit):
+  S.View{slots,carried,caption,lit,burn,labels,available} = view
+  IO.print(J.encode(L.obj([J.JMember{"id",L.text(label)},J.JMember{"lit",L.uint(lit)},J.JMember{"burn",L.uint(burn)},
+    J.JMember{"pixels",J.JArray{[L.uint(S.content(view,56,44)),L.uint(S.content(view,56,45)),L.uint(S.content(view,56,49)),L.uint(S.content(view,56,50)),L.uint(S.content(view,78,34)),L.uint(S.content(view,79,34)),L.uint(S.content(view,81,34)),L.uint(S.content(view,82,34))]}},J.JMember{"intents",J.JArray{[]}}])))
+def pixel_spans(label:String,remaining:U32,total:U32,spent:U32,duration:U32) -> IO(Unit):
+  pixel_spans_view(label,S.prepare(Menu.Snapshot{N_handle(True{}),Some{Menu.FurnaceView{K.Smelting{},K.FurnaceSlots{Inv.InvEmpty{},Inv.InvEmpty{},Inv.InvEmpty{}},remaining,total,spent,duration}},inventory(True{})},[],H.Icons{None{},None{},None{}}))
 def run() -> IO(Unit):
   do IO<Unit>:
     report("left-pickup",S.step(state(0,0,False{}),viewport(),Mouse{512,100,0,True{}},True{},False{}))
@@ -94,5 +101,11 @@ def run() -> IO(Unit):
     progress("progress-minimum",2147483648,2147483648,24)
     progress("progress-zero-duration",1,0,24)
     progress("progress-lit-fallback",50,200,13)
+    pixel_spans("pixels-quarter",50,200,1,10)
+    pixel_spans("pixels-negative-lit",4294967295,4294967294,4294967295,4294967294)
+    pixel_spans("pixels-full",200,200,200,200)
+    pixel_spans("pixels-fallback",50,0,0,0)
+    pixel_spans("pixels-zero",0,200,0,200)
+    pixel_spans("pixels-negative-duration",1,4294967295,1,4294967295)
 
 def main() -> IO(Unit): run()

@@ -1,0 +1,29 @@
+{
+  "status": "SOURCE_FAIL_REPAIRED",
+  "process": {
+    "kind": "screen-ordinary",
+    "command": [
+      "/Users/chuah/.bend/bin/bend",
+      "tests/player_cooking_menu_screen.bend",
+      "--check-only"
+    ],
+    "exit": 1,
+    "seconds": 8.1186,
+    "sampled_process_tree_peak_rss_bytes": 1310572544,
+    "bounded_stop": null,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "2cc3d74753f893b37af965932a4991d070e500edb9ae0b99e38c0999ff57c9b6"
+  },
+  "stdout": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-cooking-menu-native/002/screen-ordinary.stdout",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stderr": {
+    "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-cooking-menu-native/002/screen-ordinary.stderr",
+    "bytes": 560,
+    "sha256": "2cc3d74753f893b37af965932a4991d070e500edb9ae0b99e38c0999ff57c9b6"
+  },
+  "cause": "New pixel_spans test destructured computed local view; moved destructor to pixel_spans_view parameter helper.",
+  "subsequent_pass": "evidence/player-cooking-menu-screen-native-003.json"
+}

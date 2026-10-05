@@ -114,3 +114,18 @@ dirt input was rerun on the same binary. Source emission40.8957s/native compile
 controller0.2301s are recorded in `evidence/player-cooking-menu-native.json`.
 These are not isolated operation latency measurements or OS/native-window input
 acceptance. Independent production theorem checks remain separately pending.
+
+A later pinned class-bytecode inspection found a concrete display correction:
+the flame requires signed `lit_time_remaining > 0`, uses
+`ceil(clamped_ratio * 13) + 1` pixels and ends at panel y50; the cooking arrow
+uses `ceil(clamped_ratio * 24)`. The working screen and six literal pixel-span
+guards implement that correction. The existing51/28 receipt and frozen actor020
+retain the earlier source. Focused generation003 now passes34 native synthetic
+controller/pixel cases, including the six new spans, in0.6908seconds. Its complete
+original source check, emission and compile passed; its exact150-file compiled
+closure is retained. A subsequent unrelated item-component-effects source edit
+is recorded explicitly in the receipt, so this is not a certification of the
+entire current working import graph. The unchanged51 owner cases were not
+replayed. See `evidence/player-cooking-menu-screen-native-003.json`. This display
+correction preserves all four raw authoritative timer words and makes no OS
+input or complete vanilla-resource appearance claim.

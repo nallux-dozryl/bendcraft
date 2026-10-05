@@ -130,6 +130,7 @@ def screen_compare():
   'os-close-unfocused':['release','capture:0','close'],'closed-mouse-world':[],'closed-close-world':[],'too-small-suppresses':[],
   'progress-third':[],'progress-negative':[],'progress-both-negative':[],'progress-minimum':[],
   'progress-zero-duration':[],'progress-lit-fallback':[]}
+ expected.update({name:[] for name in ('pixels-quarter','pixels-negative-lit','pixels-full','pixels-fallback','pixels-zero','pixels-negative-duration')})
  assert set(got)==set(expected)
  for name,intents in expected.items():assert got[name]['intents']==intents,got[name]
  assert got['same-open-shift-kept']['shift']==3 and not got['same-open-shift-kept']['pending']
@@ -140,9 +141,56 @@ def screen_compare():
  assert got['os-close-followup']['pending'] and got['os-close-followup']['quit']==2
  assert got['os-close-refused']['open'] and got['os-close-refused']['quit']==0
  assert not got['os-close-ack']['open'] and not got['os-close-followup-ack']['open']
- for name,value in {'progress-third':8,'progress-negative':0,'progress-both-negative':12,'progress-minimum':24,'progress-zero-duration':0,'progress-lit-fallback':3}.items():assert got[name]['progress']==value,got[name]
+ for name,value in {'progress-third':8,'progress-negative':0,'progress-both-negative':12,'progress-minimum':24,'progress-zero-duration':0,'progress-lit-fallback':4}.items():assert got[name]['progress']==value,got[name]
+ base,flame,arrow=4290822336,4294967040,4293454056
+ spans={'pixels-quarter':(5,3,[base,flame,flame,base,base,arrow,arrow,base]),
+  'pixels-negative-lit':(0,12,[base,base,base,base,base,arrow,arrow,arrow]),
+  'pixels-full':(14,24,[flame,flame,flame,base,base,arrow,arrow,arrow]),
+  'pixels-fallback':(5,0,[base,flame,flame,base,base,base,base,base]),
+  'pixels-zero':(0,0,[base]*8),'pixels-negative-duration':(1,0,[base,base,flame,base,base,base,base,base])}
+ for name,(lit,burn,pixels) in spans.items():assert (got[name]['lit'],got[name]['burn'],got[name]['pixels'])==(lit,burn,pixels),got[name]
  assert not got['closed-mouse-world']['consumed'] and not got['closed-close-world']['consumed']
  return got
+
+def screen_only(phase):
+ # The changed pixel spans need the production Screen receiver, not a replay
+ # of the unchanged51 transfer/authority cases.
+ WORK.mkdir(parents=True,exist_ok=True);B.WORK=WORK
+ files=('src/player_cooking_menu_screen.bend','tests/player_cooking_menu_screen.bend',
+        'tools/test_player_cooking_menu.py','tools/player_cooking_menu_emit.mjs',
+        'reference/player_cooking_protocol.json','evidence/player-cooking-protocol-reference.json')
+ pins={name:sha(ROOT/name) for name in files}
+ if phase=='prepare':
+  print(json.dumps(dict(status='prepared; native pending',screen_only=True,screen_cases=34,source_sha256=pins)));return
+ checks=[]
+ if phase in ('ordinary','all'):
+  checks.append(B.run('screen-ordinary',[B.BEND,'tests/player_cooking_menu_screen.bend','--check-only'],60,8*1024**3))
+ if phase=='ordinary':return
+ if phase in ('build','all'):
+  checks.append(B.run('screen-emit',['/usr/bin/env','BEND_PRODUCER_LOG='+str(WORK/'screen-emit-functions.jsonl'),'BEND_PRODUCER_GC=1',B.NODE,'--expose-gc','--max-old-space-size=8192','--stack-size=4096','--experimental-transform-types','tools/player_cooking_menu_emit.mjs','tests/player_cooking_menu_screen.bend',WORK/'screen-receiver.c'],600,8*1024**3))
+  checks.append(B.run('screen-clang',[shutil.which('clang') or '/usr/bin/clang','-std=c11','-O1',WORK/'screen-receiver.c','-lpthread','-lm','-o',WORK/'screen-receiver'],300,3*1024**3))
+ if phase=='build':return
+ if phase=='native':checks=[json.loads((WORK/(name+'.json')).read_text()) for name in ('screen-ordinary','screen-emit','screen-clang') if (WORK/(name+'.json')).exists()]
+ compiled=json.loads((WORK/'screen-receiver.c.sources.json').read_text())
+ # The immutable binary does not reload working sources. Keep its exact
+ # successful producer closure, require the changed Screen/test themselves
+ # to match, and report any subsequent unrelated imported source edits.
+ for name in ('src/player_cooking_menu_screen.bend','tests/player_cooking_menu_screen.bend'):
+  assert compiled['source_sha256'][str(ROOT/name)]==sha(ROOT/name),'owned screen source changed'
+ drift=[dict(path=path,compiled_sha256=value,current_sha256=sha(path))
+        for path,value in compiled['source_sha256'].items() if sha(path)!=value]
+ native=B.run('screen',[WORK/'screen-receiver','--gpu','off','--threads','1'],60,1024**3)
+ rows=screen_compare()
+ assert all(sha(ROOT/name)==value for name,value in pins.items()),'screen inputs changed'
+ evidence=dict(status='PASS',screen_only=True,screen_cases=len(rows),new_literal_pixel_cases=6,
+  checks=checks,native=native,source_sha256=pins,compiled_source_count=len(compiled['source_sha256']),
+  compiled_source_manifest_sha256=sha(WORK/'screen-receiver.c.sources.json'),binary_sha256=sha(WORK/'screen-receiver'),
+  emitted_c_sha256=sha(WORK/'screen-receiver.c'),raw_stdout_sha256=sha(WORK/'screen.stdout'),
+  post_emission_import_drift=drift,
+  scope='Actual production controller34 synthetic event/pixel cases. Pinned AbstractFurnaceScreen ceil spans, signed isLit guard, bottom50 and raw signed timers. No network, native Window/OS input or complete vanilla resource appearance claim. Unchanged51 owner cases not replayed.')
+ output=ROOT/'evidence'/('player-cooking-menu-screen-native-'+WORK.name+'.json')
+ assert not output.exists(),'keep earlier screen receipt immutable'
+ output.write_text(json.dumps(evidence,indent=2)+'\n');print(json.dumps(dict(status='PASS',screen_cases=len(rows),evidence=str(output))))
 
 def run(phase,repair_case=None):
  rows=prepare();B.WORK=WORK;checks=[]
@@ -177,9 +225,11 @@ def run(phase,repair_case=None):
  evidence=dict(status='passed',java_cases=26,whole_owner_refusals=9,open_refusal_cases=2,campfire_hand_cases=sum(bool(r.get('campfire')) for r in rows),checks=checks,native=native,screen=screen,screen_cases=len(screen_rows),source_sha256=pins,compiled_source_manifest_sha256=sha(WORK/'receiver.c.sources.json'),compiled_source_count=len(compiled['source_sha256']),producer_basis=compiled['producer_basis'],binary_sha256=sha(WORK/'receiver'),emitted_c_sha256=sha(WORK/'receiver.c'),raw_native_sha256=sha(WORK/'native.stdout'),comparison_sha256=sha(WORK/'comparison.stdout' if repair_case else WORK/'native.stdout'),corrected_input_case=repair_case,boundary='Actual production Menu.dispatch, same Store/Core, three logical/four furnace backing cells,48 logical/64 player backing cells, whole player profile and full encoded Core. Java SimpleContainer comparison covers pickup/quick-move counts and routing. Furnace timers/RecipesUsed retention are explicit additional production guards. No network/UI/ServerPlayer XP or RNG/entity consumer inferred.')
  (ROOT/'evidence/player-cooking-menu-native.json').write_text(json.dumps(evidence,indent=2)+'\n');print(json.dumps(dict(status='passed',java_cases=26,refusals=9,open_refusal_cases=2,campfire_hand_cases=sum(bool(r.get('campfire')) for r in rows),native_seconds=native['seconds'])))
 def main():
- p=argparse.ArgumentParser(description=__doc__);p.add_argument('--generation',type=int,default=1);p.add_argument('--repair-case');p.add_argument('--phase',choices=('prepare','ordinary','build','native','all'),default='all');a=p.parse_args();
+ p=argparse.ArgumentParser(description=__doc__);p.add_argument('--generation',type=int,default=1);p.add_argument('--repair-case');p.add_argument('--screen-only',action='store_true');p.add_argument('--phase',choices=('prepare','ordinary','build','native','all'),default='all');a=p.parse_args();
  global WORK
  assert 1<=a.generation<=999
  WORK=ROOT/'build/player-cooking-menu-native'/f'{a.generation:03d}'
- run(a.phase,a.repair_case)
+ assert not (a.screen_only and a.repair_case)
+ if a.screen_only:screen_only(a.phase)
+ else:run(a.phase,a.repair_case)
 if __name__=='__main__':main()

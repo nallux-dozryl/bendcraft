@@ -251,13 +251,19 @@ def caption(kind:K.CookingKind) -> String:
     case K.Smoking{}: "SMOKER"
     case _: "FURNACE"
 def progress_ratio(+ratio:F32,extent:U32) -> U32:
-  F32.to_u32(F32.mul(N.choose(F32,0.0,N.choose(F32,1.0,ratio,F.is_gt(F.from_f32(ratio),F.from_u32(1))),F.is_lt(F.from_f32(ratio),F.from_u32(0))),U32.to_f32(extent)))
+  F32.to_u32(F32.ceil(F32.mul(N.choose(F32,0.0,N.choose(F32,1.0,ratio,F.is_gt(F.from_f32(ratio),F.from_u32(1))),F.is_lt(F.from_f32(ratio),F.from_u32(0))),U32.to_f32(extent))))
 def progress_valid(allowed:Bool,+amount:U32,+total:U32,extent:U32) -> U32:
   match allowed:
     case False{}: 0
     case True{}: progress_ratio(F32.div(F.to_f32(F.from_i32(amount)),F.to_f32(F.from_i32(total))),extent)
 def progress(+amount:U32,+total:U32,+extent:U32) -> U32:
   progress_valid(U32.is_ne(amount,0) && U32.is_ne(total,0),amount,total,extent)
+def lit_progress_valid(allowed:Bool,amount:U32,total:U32) -> U32:
+  match allowed:
+    case False{}: 0
+    case True{}: U32.add(progress(amount,total,13),1)
+def lit_progress(+amount:U32,+total:U32) -> U32:
+  lit_progress_valid(U32.is_gt(amount,0) && U32.is_lt(amount,2147483648),amount,N.choose(U32,200,total,U32.is_zero(total)))
 def prepared_view(furnace:Maybe<&2,Menu.FurnaceView>,+inventory:I.MenuSnapshot,+rows:List<&2,Screen.ItemIcon>,+icons:H.Icons) -> View:
   match furnace:
     case None{}:
@@ -268,7 +274,7 @@ def prepared_view(furnace:Maybe<&2,Menu.FurnaceView>,+inventory:I.MenuSnapshot,+
     case Some{Menu.FurnaceView{kind,+slots,r,+t,s,c}}:
       I.MenuSnapshot{saved,craft,carried,result,opened,revision} = inventory
       View{prepare_slots(39n,0,combined(slots,I.menu_slots(inventory)),rows,icons),
-        Screen.draw_slot(carried,rows,icons),caption(kind),progress(r,N.choose(U32,200,t,U32.is_zero(t)),13),progress(s,c,24),prepare_labels(39n,0,combined(slots,I.menu_slots(inventory))),True{}}
+        Screen.draw_slot(carried,rows,icons),caption(kind),lit_progress(r,t),progress(s,c,24),prepare_labels(39n,0,combined(slots,I.menu_slots(inventory))),True{}}
 def prepared_furnace(snapshot:Menu.Snapshot,+rows:List<&2,Screen.ItemIcon>,+icons:H.Icons) -> View:
   Menu.Snapshot{handle,furnace,inventory} = snapshot
   prepared_view(furnace,inventory,rows,icons)
@@ -289,7 +295,7 @@ def content(+view:View,+x:U32,+y:U32) -> U32:
   N.choose(U32,4282400832,N.choose(U32,4294967040,N.choose(U32,4293454056,
     stack_hit(view,x,y,logical_hit(39n,0,x,y)),
     H.inside(x,y,79,34,burn,16)),
-    H.inside(x,y,56,U32.sub(49,lit),14,lit)),
+    H.inside(x,y,56,U32.sub(50,lit),14,lit)),
     Screen.label_pixel(caption,x,y,8,6) || Screen.label_pixel("INVENTORY",x,y,8,73))
 def carried_position(+carried:H.DrawSlot,+viewport:Screen.Viewport,+x:U32,+y:U32,+world:U32,point:Point) -> U32:
   Screen.Viewport{+w,+h,+nw,+nh} = viewport

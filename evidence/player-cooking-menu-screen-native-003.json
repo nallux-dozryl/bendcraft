@@ -1,0 +1,100 @@
+{
+  "status": "PASS",
+  "screen_only": true,
+  "screen_cases": 34,
+  "new_literal_pixel_cases": 6,
+  "checks": [
+    {
+      "kind": "screen-ordinary",
+      "command": [
+        "/Users/chuah/.bend/bin/bend",
+        "tests/player_cooking_menu_screen.bend",
+        "--check-only"
+      ],
+      "exit": 0,
+      "seconds": 18.5403,
+      "sampled_process_tree_peak_rss_bytes": 3075915776,
+      "bounded_stop": null,
+      "stdout_sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "screen-emit",
+      "command": [
+        "/usr/bin/env",
+        "BEND_PRODUCER_LOG=/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-cooking-menu-native/003/screen-emit-functions.jsonl",
+        "BEND_PRODUCER_GC=1",
+        "/opt/homebrew/Cellar/node/23.5.0/bin/node",
+        "--expose-gc",
+        "--max-old-space-size=8192",
+        "--stack-size=4096",
+        "--experimental-transform-types",
+        "tools/player_cooking_menu_emit.mjs",
+        "tests/player_cooking_menu_screen.bend",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-cooking-menu-native/003/screen-receiver.c"
+      ],
+      "exit": 0,
+      "seconds": 18.8653,
+      "sampled_process_tree_peak_rss_bytes": 2478899200,
+      "bounded_stop": null,
+      "stdout_sha256": "e560935186ab7a92237007556d2fb592e6679cfd2f0231d72cc6430987743a87",
+      "stderr_sha256": "9c26cf6817a1575dbbeaed1fa04744effb07c2829340d05cbc7bcde9cc16fb34"
+    },
+    {
+      "kind": "screen-clang",
+      "command": [
+        "/usr/bin/clang",
+        "-std=c11",
+        "-O1",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-cooking-menu-native/003/screen-receiver.c",
+        "-lpthread",
+        "-lm",
+        "-o",
+        "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-cooking-menu-native/003/screen-receiver"
+      ],
+      "exit": 0,
+      "seconds": 1.5727,
+      "sampled_process_tree_peak_rss_bytes": 247463936,
+      "bounded_stop": null,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "native": {
+    "kind": "screen",
+    "command": [
+      "/Users/chuah/Documents/ChatGPT/bendex/minecraft/build/player-cooking-menu-native/003/screen-receiver",
+      "--gpu",
+      "off",
+      "--threads",
+      "1"
+    ],
+    "exit": 0,
+    "seconds": 0.6908,
+    "sampled_process_tree_peak_rss_bytes": 32768,
+    "bounded_stop": null,
+    "stdout_sha256": "749c41091b4bb7c9840fd87358a5c84680cd5278ca88a166d7fdddff419812bf",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "source_sha256": {
+    "src/player_cooking_menu_screen.bend": "9c99f5597a973586d6d8306de68bc50afab68f1568c2965a3c0f699ab1c7a0d0",
+    "tests/player_cooking_menu_screen.bend": "fe9af92b09d8335f4a8a2ea44840a0b755d356d7a3639d0237cd44a5efb8c490",
+    "tools/test_player_cooking_menu.py": "b928422d8f7e1063142a226e06cf99174ba3c7e3b5d0752cb269e1472a551d7f",
+    "tools/player_cooking_menu_emit.mjs": "a24a1b2c2006a4958acc63951b1200a237c9450eb324cae812f411e2214237a1",
+    "reference/player_cooking_protocol.json": "28bfe6fa8dfd422e7df04375bdaaff84c04423e02c9bdb4bc7dfbff6e5a1eecb",
+    "evidence/player-cooking-protocol-reference.json": "3a00d5db2626083489fb6879efb3896bcc3f9f574fde3fed84bb72c3b0ec0653"
+  },
+  "compiled_source_count": 150,
+  "compiled_source_manifest_sha256": "ba00d86c69335c30e39e4a364364da0bd5a709fc0c432b4f48963fd7fd4ce329",
+  "binary_sha256": "5e2a37d54be0621a2019ba62eb7d9db2ac87799ccbfd294f3eeafe32b5fcd531",
+  "emitted_c_sha256": "1797dde3da62b3f8ffd77ce17df388dfe5dc84ec2c2ed32eb4ee588a655f7442",
+  "raw_stdout_sha256": "749c41091b4bb7c9840fd87358a5c84680cd5278ca88a166d7fdddff419812bf",
+  "post_emission_import_drift": [
+    {
+      "path": "/Users/chuah/Documents/ChatGPT/bendex/minecraft/src/item_component_effects.bend",
+      "compiled_sha256": "717a46a1603866be6f3f1458721cb2281a135b36f27a652da9432756b168ae35",
+      "current_sha256": "453c1ab97ddb1e3956dac8b7e6a2334324b87e4a13a608a95aca7b53fb3933be"
+    }
+  ],
+  "scope": "Actual production controller34 synthetic event/pixel cases. Pinned AbstractFurnaceScreen ceil spans, signed isLit guard, bottom50 and raw signed timers. No network, native Window/OS input or complete vanilla resource appearance claim. Unchanged51 owner cases not replayed."
+}
