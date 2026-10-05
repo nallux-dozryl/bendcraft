@@ -58,6 +58,9 @@ def expired(lease:Lease) -> Lease:
   Lease{epoch,next,remaining,active} = lease
   Lease{epoch,next,0,False{}}
 
+# Legacy explicit pulse-budget operation retained for existing callers/tests.
+# Runtime inactivity belongs to the private socket's monotonic deadline in
+# remote_resource_transport. Catch-up simulation pulses are not elapsed time.
 def lease_tick(state:State) -> State:
   match state:
     case State{saved,Lease{epoch,next,remaining,False{}},counter,nonce,capability,owner,crafting,cooking,next_cooking_menu}:
@@ -69,8 +72,9 @@ def lease_tick(state:State) -> State:
     case State{saved,Lease{epoch,next,remaining,True{}},counter,nonce,capability,owner,crafting,cooking,next_cooking_menu}:
       State{saved,Lease{epoch,next,U32.sub(remaining,1),True{}},counter,nonce,capability,owner,crafting,cooking,next_cooking_menu}
 
-# Lease expiry is checked on real actor pulses, including paused pulses, and
-# releases physical controls before the same pulse can advance player physics.
+# Every queued pulse still advances the actual Scene once. The private socket
+# timeout/EOF serializes epoch-matched disconnect and physical-control release;
+# charging its lease for queued old pulses could expire a freshly renewed lease.
 def pulsed(state:State) -> State:
   State{saved,lease,counter,nonce,capability,owner,crafting,cooking,next_cooking_menu} = state
   State{Scene.realtime_step(saved),lease,counter,nonce,capability,owner,crafting,cooking,next_cooking_menu}
@@ -78,7 +82,7 @@ def pulsed(state:State) -> State:
 def realtime_active(state:State,live:Bool) -> State:
   match live:
     case False{}: state
-    case True{}: pulsed(lease_tick(state))
+    case True{}: pulsed(state)
 
 def realtime_step(state:State) -> State:
   State{saved,lease,counter,nonce,+capability,owner,crafting,cooking,next_cooking_menu} = state
@@ -450,7 +454,7 @@ def pulsed_io(state:State) -> IO(State):
 def realtime_active_io(state:State,live:Bool) -> IO(State):
   match live:
     case False{}: IO.pure(State,state)
-    case True{}: pulsed_io(lease_tick(state))
+    case True{}: pulsed_io(state)
 
 def realtime_step_io(state:State) -> IO(State):
   State{saved,lease,counter,nonce,+capability,owner,crafting,cooking,next_cooking_menu} = state
